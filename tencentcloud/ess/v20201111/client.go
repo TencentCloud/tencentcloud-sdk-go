@@ -267,13 +267,29 @@ func NewCancelFlowResponse() (response *CancelFlowResponse) {
 //
 // 
 //
-// 2. 有对应合同撤销权限的人:  <font color='red'>合同的发起人（并已经授予撤销权限）或者发起人所在企业的超管、法人</font>
+// 2. 有对应合同撤销权限的人:  
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/1f9f07fea6a70766cd286e0d58682ee2.png)
+//  <img src=https://qcloudimg.tencent-cloud.cn/raw/37ac3b4ee65fb2ce6fba45ef7e192a65.png width = "300" height = "200" />
 //
 // 
 //
-// 3. <font color='red'>只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。</font>
+// 
+//
+// - 发起人所在企业的**超管、法人**
+//
+// - 合同的**发起人**<font color='red'>（并已经授予撤销我发起的合同权限）</font>
+//
+// - 其它员工<font color='red'>（并已经授予撤销我发起的合同后）</font>：
+//
+//     - 撤销人与发起人<font color='red'>**不在**</font>同一个部门：<font color='red'>（确保已授予查询合同 - 企业全部合同权限）</font>
+//
+//     - 撤销人与发起人<font color='red'>**在**</font>用一个部门：<font color='red'>（确保授予查询合同 - 本部门全部合同权限 或 企业全部合同权限）</font>
+//
+// 
+//
+// 
+//
+// 3. <font color='red'>**只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。**</font>
 //
 // 
 //
@@ -318,13 +334,29 @@ func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowRes
 //
 // 
 //
-// 2. 有对应合同撤销权限的人:  <font color='red'>合同的发起人（并已经授予撤销权限）或者发起人所在企业的超管、法人</font>
+// 2. 有对应合同撤销权限的人:  
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/1f9f07fea6a70766cd286e0d58682ee2.png)
+//  <img src=https://qcloudimg.tencent-cloud.cn/raw/37ac3b4ee65fb2ce6fba45ef7e192a65.png width = "300" height = "200" />
 //
 // 
 //
-// 3. <font color='red'>只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。</font>
+// 
+//
+// - 发起人所在企业的**超管、法人**
+//
+// - 合同的**发起人**<font color='red'>（并已经授予撤销我发起的合同权限）</font>
+//
+// - 其它员工<font color='red'>（并已经授予撤销我发起的合同后）</font>：
+//
+//     - 撤销人与发起人<font color='red'>**不在**</font>同一个部门：<font color='red'>（确保已授予查询合同 - 企业全部合同权限）</font>
+//
+//     - 撤销人与发起人<font color='red'>**在**</font>用一个部门：<font color='red'>（确保授予查询合同 - 本部门全部合同权限 或 企业全部合同权限）</font>
+//
+// 
+//
+// 
+//
+// 3. <font color='red'>**只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。**</font>
 //
 // 
 //
@@ -751,13 +783,29 @@ func NewCreateBatchCancelFlowUrlResponse() (response *CreateBatchCancelFlowUrlRe
 //
 // 
 //
-// 2. 有对应合同撤销权限的人:  <font color='red'>合同的发起人（并已经授予撤销权限）或者发起人所在企业的超管、法人</font>
+// 2. 有对应合同撤销权限的人:  
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/1f9f07fea6a70766cd286e0d58682ee2.png)
+//  <img src=https://qcloudimg.tencent-cloud.cn/raw/37ac3b4ee65fb2ce6fba45ef7e192a65.png width = "300" height = "200" />
 //
 // 
 //
-// 3. <font color='red'>只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。</font>
+// 
+//
+// - 发起人所在企业的**超管、法人**
+//
+// - 合同的**发起人**<font color='red'>（并已经授予撤销我发起的合同权限）</font>
+//
+// - 其它员工<font color='red'>（并已经授予撤销我发起的合同后）</font>：
+//
+//     - 撤销人与发起人<font color='red'>**不在**</font>同一个部门：<font color='red'>（确保已授予查询合同 - 企业全部合同权限）</font>
+//
+//     - 撤销人与发起人<font color='red'>**在**</font>用一个部门：<font color='red'>（确保授予查询合同 - 本部门全部合同权限 或 企业全部合同权限）</font>
+//
+// 
+//
+// 
+//
+// 3. <font color='red'>**只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。**</font>
 //
 // 
 //
@@ -803,13 +851,29 @@ func (c *Client) CreateBatchCancelFlowUrl(request *CreateBatchCancelFlowUrlReque
 //
 // 
 //
-// 2. 有对应合同撤销权限的人:  <font color='red'>合同的发起人（并已经授予撤销权限）或者发起人所在企业的超管、法人</font>
+// 2. 有对应合同撤销权限的人:  
 //
-// ![image](https://qcloudimg.tencent-cloud.cn/raw/1f9f07fea6a70766cd286e0d58682ee2.png)
+//  <img src=https://qcloudimg.tencent-cloud.cn/raw/37ac3b4ee65fb2ce6fba45ef7e192a65.png width = "300" height = "200" />
 //
 // 
 //
-// 3. <font color='red'>只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。</font>
+// 
+//
+// - 发起人所在企业的**超管、法人**
+//
+// - 合同的**发起人**<font color='red'>（并已经授予撤销我发起的合同权限）</font>
+//
+// - 其它员工<font color='red'>（并已经授予撤销我发起的合同后）</font>：
+//
+//     - 撤销人与发起人<font color='red'>**不在**</font>同一个部门：<font color='red'>（确保已授予查询合同 - 企业全部合同权限）</font>
+//
+//     - 撤销人与发起人<font color='red'>**在**</font>用一个部门：<font color='red'>（确保授予查询合同 - 本部门全部合同权限 或 企业全部合同权限）</font>
+//
+// 
+//
+// 
+//
+// 3. <font color='red'>**只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。**</font>
 //
 // 
 //

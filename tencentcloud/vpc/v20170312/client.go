@@ -7928,6 +7928,7 @@ func NewCreateVpnGatewaySslServerResponse() (response *CreateVpnGatewaySslServer
 // 本接口（CreateVpnGatewaySslServer）用于创建SSL-VPN Server端。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CIDRCONFLICT = "InvalidParameterValue.CidrConflict"
 //  INVALIDPARAMETERVALUE_CIDRNOTINSSLVPNVPC = "InvalidParameterValue.CidrNotInSslVpnVpc"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_SSLCCNVPNSERVERCIDRCONFLICT = "InvalidParameterValue.SslCcnVpnServerCidrConflict"
@@ -7937,6 +7938,7 @@ func NewCreateVpnGatewaySslServerResponse() (response *CreateVpnGatewaySslServer
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTEDLOCALADDRESSTYPE = "UnsupportedOperation.NotSupportedLocalAddressType"
+//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORTED = "UnsupportedOperation.VersionNotSupported"
 func (c *Client) CreateVpnGatewaySslServer(request *CreateVpnGatewaySslServerRequest) (response *CreateVpnGatewaySslServerResponse, err error) {
     return c.CreateVpnGatewaySslServerWithContext(context.Background(), request)
 }
@@ -7945,6 +7947,7 @@ func (c *Client) CreateVpnGatewaySslServer(request *CreateVpnGatewaySslServerReq
 // 本接口（CreateVpnGatewaySslServer）用于创建SSL-VPN Server端。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CIDRCONFLICT = "InvalidParameterValue.CidrConflict"
 //  INVALIDPARAMETERVALUE_CIDRNOTINSSLVPNVPC = "InvalidParameterValue.CidrNotInSslVpnVpc"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_SSLCCNVPNSERVERCIDRCONFLICT = "InvalidParameterValue.SslCcnVpnServerCidrConflict"
@@ -7954,6 +7957,7 @@ func (c *Client) CreateVpnGatewaySslServer(request *CreateVpnGatewaySslServerReq
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTEDLOCALADDRESSTYPE = "UnsupportedOperation.NotSupportedLocalAddressType"
+//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORTED = "UnsupportedOperation.VersionNotSupported"
 func (c *Client) CreateVpnGatewaySslServerWithContext(ctx context.Context, request *CreateVpnGatewaySslServerRequest) (response *CreateVpnGatewaySslServerResponse, err error) {
     if request == nil {
         request = NewCreateVpnGatewaySslServerRequest()
@@ -26048,11 +26052,13 @@ func NewModifyVpnGatewaySslServerResponse() (response *ModifyVpnGatewaySslServer
 // 本接口用于修改 SSL-VPN 服务端属性
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CIDRCONFLICT = "InvalidParameterValue.CidrConflict"
 //  INVALIDPARAMETERVALUE_CIDRNOTINSSLVPNVPC = "InvalidParameterValue.CidrNotInSslVpnVpc"
 //  INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
 //  LIMITEXCEEDED_SSLVPNCLIENTLIMITEXCEEDED = "LimitExceeded.SslVpnClientLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORTED = "UnsupportedOperation.VersionNotSupported"
 func (c *Client) ModifyVpnGatewaySslServer(request *ModifyVpnGatewaySslServerRequest) (response *ModifyVpnGatewaySslServerResponse, err error) {
     return c.ModifyVpnGatewaySslServerWithContext(context.Background(), request)
 }
@@ -26061,11 +26067,13 @@ func (c *Client) ModifyVpnGatewaySslServer(request *ModifyVpnGatewaySslServerReq
 // 本接口用于修改 SSL-VPN 服务端属性
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CIDRCONFLICT = "InvalidParameterValue.CidrConflict"
 //  INVALIDPARAMETERVALUE_CIDRNOTINSSLVPNVPC = "InvalidParameterValue.CidrNotInSslVpnVpc"
 //  INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
 //  LIMITEXCEEDED_SSLVPNCLIENTLIMITEXCEEDED = "LimitExceeded.SslVpnClientLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORTED = "UnsupportedOperation.VersionNotSupported"
 func (c *Client) ModifyVpnGatewaySslServerWithContext(ctx context.Context, request *ModifyVpnGatewaySslServerRequest) (response *ModifyVpnGatewaySslServerResponse, err error) {
     if request == nil {
         request = NewModifyVpnGatewaySslServerRequest()

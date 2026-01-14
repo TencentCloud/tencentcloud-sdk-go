@@ -641,6 +641,67 @@ type CallBackInfo struct {
 }
 
 // Predefined struct for user
+type CancelRebuildIndexTaskRequestParams struct {
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 索引重建任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type CancelRebuildIndexTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 索引重建任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *CancelRebuildIndexTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelRebuildIndexTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelRebuildIndexTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelRebuildIndexTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CancelRebuildIndexTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelRebuildIndexTaskResponseParams `json:"Response"`
+}
+
+func (r *CancelRebuildIndexTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelRebuildIndexTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CheckFunctionRequestParams struct {
 	// 加工语句。 当FuncType为2时，EtlContent必须使用[log_auto_output](https://cloud.tencent.com/document/product/614/70733#b3c58797-4825-4807-bef4-68106e25024f) 
 	// 
@@ -4735,6 +4796,83 @@ func (r *CreateNoticeContentResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateNoticeContentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRebuildIndexTaskRequestParams struct {
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 重建起始时间戳，毫秒
+	// 起始时间不允许超过日志生命周期
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 重建结束时间戳，毫秒
+	// 结束时间不晚于当前时间往前推15分钟
+	// 注意：建议提前使用“预估重建索引任务(EstimateRebuildIndexTask)”接口评估该时间范围重建索引涉及到的数据量及耗时，避免因数据量过大导致费用成本过高或耗时过长
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type CreateRebuildIndexTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 重建起始时间戳，毫秒
+	// 起始时间不允许超过日志生命周期
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 重建结束时间戳，毫秒
+	// 结束时间不晚于当前时间往前推15分钟
+	// 注意：建议提前使用“预估重建索引任务(EstimateRebuildIndexTask)”接口评估该时间范围重建索引涉及到的数据量及耗时，避免因数据量过大导致费用成本过高或耗时过长
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *CreateRebuildIndexTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRebuildIndexTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRebuildIndexTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRebuildIndexTaskResponseParams struct {
+	// 索引重建任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateRebuildIndexTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRebuildIndexTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateRebuildIndexTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRebuildIndexTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11780,6 +11918,91 @@ func (r *DescribePartitionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRebuildIndexTasksRequestParams struct {
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 索引重建任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 索引重建任务状态，不填返回所有状态任务列表，多种状态之间用逗号分隔，0:索引重建任务已创建，1:已创建索引重建资源，2:重建中，3:重建完成，4:重建成功（可检索），5:任务取消，6:元数据和索引已删除
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为10，最大值20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeRebuildIndexTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 索引重建任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 索引重建任务状态，不填返回所有状态任务列表，多种状态之间用逗号分隔，0:索引重建任务已创建，1:已创建索引重建资源，2:重建中，3:重建完成，4:重建成功（可检索），5:任务取消，6:元数据和索引已删除
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为10，最大值20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRebuildIndexTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRebuildIndexTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "TaskId")
+	delete(f, "Status")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRebuildIndexTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRebuildIndexTasksResponseParams struct {
+	// 索引重建任务列表
+	RebuildTasks []*RebuildIndexTaskInfo `json:"RebuildTasks,omitnil,omitempty" name:"RebuildTasks"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRebuildIndexTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRebuildIndexTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeRebuildIndexTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRebuildIndexTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeScheduledSqlInfoRequestParams struct {
 	// 分页的偏移量，默认值为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -12899,6 +13122,80 @@ type EscalateNoticeInfo struct {
 
 	// 告警升级后下一个环节的通知渠道配置，最多可配置5个环节。
 	EscalateNotice *EscalateNoticeInfo `json:"EscalateNotice,omitnil,omitempty" name:"EscalateNotice"`
+}
+
+// Predefined struct for user
+type EstimateRebuildIndexTaskRequestParams struct {
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 预估任务起始时间，毫秒
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 预估任务结束时间，毫秒
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type EstimateRebuildIndexTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 预估任务起始时间，毫秒
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 预估任务结束时间，毫秒
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *EstimateRebuildIndexTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EstimateRebuildIndexTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EstimateRebuildIndexTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EstimateRebuildIndexTaskResponseParams struct {
+	// 预估索引重建需要时间，单位秒
+	RemainTime *uint64 `json:"RemainTime,omitnil,omitempty" name:"RemainTime"`
+
+	// 预估写流量大小，单位MB
+	WriteTraffic *uint64 `json:"WriteTraffic,omitnil,omitempty" name:"WriteTraffic"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EstimateRebuildIndexTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *EstimateRebuildIndexTaskResponseParams `json:"Response"`
+}
+
+func (r *EstimateRebuildIndexTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EstimateRebuildIndexTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EventLog struct {
@@ -18733,6 +19030,35 @@ func (r *QueryRangeMetricResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RebuildIndexTaskInfo struct {
+	// 索引重建任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 索引重建任务当前状态，0:索引重建任务已创建，1:创建索引重建资源，2:索引重建资源创建完成，3:重建中，4:暂停，5:重建索引成功，6:重建成功（可检索），7:重建失败，8:撤销，9:删除元数据和索引
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 重建任务开始时间戳
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 重建任务结束时间戳
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 重投预估剩余时间，单位秒
+	RemainTime *int64 `json:"RemainTime,omitnil,omitempty" name:"RemainTime"`
+
+	// 重建任务创建时间戳
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 重投完成度，百分比
+	Progress *float64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 重建任务更新时间
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 附加状态描述信息（目前仅描述失败时失败原因）
+	StatusMessage *string `json:"StatusMessage,omitnil,omitempty" name:"StatusMessage"`
+}
+
 type Relabeling struct {
 	// 基于正则表达式匹配执行的动作。
 	// - replace: Label替换, 必填: SourceLabels, Separator, Regex, TargetLabel, Replacement
@@ -20048,7 +20374,8 @@ type UserKafkaMeta struct {
 }
 
 type ValueInfo struct {
-	// 字段类型，目前支持的类型有：long、text、double
+	// 字段类型，支持的类型有：long、text、double、json
+	// 注意：json 类型目前仅部分用户或日志主题支持，如需使用请联系我们开启功能白名单
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 字段的分词符，其中的每个字符代表一个分词符；
@@ -20065,6 +20392,14 @@ type ValueInfo struct {
 
 	// 字段别名
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// 仅为子节点开启索引，本字段不开启。
+	// 注意：仅json类型字段可配置该参数
+	OpenIndexForChildOnly *bool `json:"OpenIndexForChildOnly,omitnil,omitempty" name:"OpenIndexForChildOnly"`
+
+	// json子节点列表
+	// 注意：仅json类型字段可配置该参数
+	ChildNode []*KeyValueInfo `json:"ChildNode,omitnil,omitempty" name:"ChildNode"`
 }
 
 type WebCallback struct {

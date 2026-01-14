@@ -5473,6 +5473,74 @@ func (c *Client) DeleteTKEEdgeClusterWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDeleteUserPermissionsRequest() (request *DeleteUserPermissionsRequest) {
+    request = &DeleteUserPermissionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteUserPermissions")
+    
+    
+    return
+}
+
+func NewDeleteUserPermissionsResponse() (response *DeleteUserPermissionsResponse) {
+    response = &DeleteUserPermissionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteUserPermissions
+// 使用请求中提供的权限集合，删除用户对应的权限
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
+//  FAILEDOPERATION_KUBERNETESDELETEOPERATIONERROR = "FailedOperation.KubernetesDeleteOperationError"
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DeleteUserPermissions(request *DeleteUserPermissionsRequest) (response *DeleteUserPermissionsResponse, err error) {
+    return c.DeleteUserPermissionsWithContext(context.Background(), request)
+}
+
+// DeleteUserPermissions
+// 使用请求中提供的权限集合，删除用户对应的权限
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
+//  FAILEDOPERATION_KUBERNETESDELETEOPERATIONERROR = "FailedOperation.KubernetesDeleteOperationError"
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DeleteUserPermissionsWithContext(ctx context.Context, request *DeleteUserPermissionsRequest) (response *DeleteUserPermissionsResponse, err error) {
+    if request == nil {
+        request = NewDeleteUserPermissionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteUserPermissions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUserPermissions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteUserPermissionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAddonRequest() (request *DescribeAddonRequest) {
     request = &DescribeAddonRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12121,6 +12189,68 @@ func (c *Client) DescribeUpgradeTasksWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeUserPermissionsRequest() (request *DescribeUserPermissionsRequest) {
+    request = &DescribeUserPermissionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeUserPermissions")
+    
+    
+    return
+}
+
+func NewDescribeUserPermissionsResponse() (response *DescribeUserPermissionsResponse) {
+    response = &DescribeUserPermissionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserPermissions
+// 查询一个指定用户在当前地域下所有 TKE 集群中的聚合权限信息。返回用户在各集群中的 ClusterRoleBinding 和 RoleBinding 信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DescribeUserPermissions(request *DescribeUserPermissionsRequest) (response *DescribeUserPermissionsResponse, err error) {
+    return c.DescribeUserPermissionsWithContext(context.Background(), request)
+}
+
+// DescribeUserPermissions
+// 查询一个指定用户在当前地域下所有 TKE 集群中的聚合权限信息。返回用户在各集群中的 ClusterRoleBinding 和 RoleBinding 信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DescribeUserPermissionsWithContext(ctx context.Context, request *DescribeUserPermissionsRequest) (response *DescribeUserPermissionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserPermissionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeUserPermissions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserPermissions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserPermissionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVersionsRequest() (request *DescribeVersionsRequest) {
     request = &DescribeVersionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13387,6 +13517,74 @@ func (c *Client) GetUpgradeInstanceProgressWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewGetUpgradeInstanceProgressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGrantUserPermissionsRequest() (request *GrantUserPermissionsRequest) {
+    request = &GrantUserPermissionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "GrantUserPermissions")
+    
+    
+    return
+}
+
+func NewGrantUserPermissionsResponse() (response *GrantUserPermissionsResponse) {
+    response = &GrantUserPermissionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GrantUserPermissions
+// 使用请求中提供的权限集合，为用户授予对应的 RBAC 权限。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
+//  FAILEDOPERATION_KUBERNETESDELETEOPERATIONERROR = "FailedOperation.KubernetesDeleteOperationError"
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) GrantUserPermissions(request *GrantUserPermissionsRequest) (response *GrantUserPermissionsResponse, err error) {
+    return c.GrantUserPermissionsWithContext(context.Background(), request)
+}
+
+// GrantUserPermissions
+// 使用请求中提供的权限集合，为用户授予对应的 RBAC 权限。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
+//  FAILEDOPERATION_KUBERNETESDELETEOPERATIONERROR = "FailedOperation.KubernetesDeleteOperationError"
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) GrantUserPermissionsWithContext(ctx context.Context, request *GrantUserPermissionsRequest) (response *GrantUserPermissionsResponse, err error) {
+    if request == nil {
+        request = NewGrantUserPermissionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "GrantUserPermissions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GrantUserPermissions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGrantUserPermissionsResponse()
     err = c.Send(request, response)
     return
 }

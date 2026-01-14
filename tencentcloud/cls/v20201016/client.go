@@ -167,6 +167,74 @@ func (c *Client) ApplyConfigToMachineGroupWithContext(ctx context.Context, reque
     return
 }
 
+func NewCancelRebuildIndexTaskRequest() (request *CancelRebuildIndexTaskRequest) {
+    request = &CancelRebuildIndexTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CancelRebuildIndexTask")
+    
+    
+    return
+}
+
+func NewCancelRebuildIndexTaskResponse() (response *CancelRebuildIndexTaskResponse) {
+    response = &CancelRebuildIndexTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CancelRebuildIndexTask
+// 取消重建索引任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CancelRebuildIndexTask(request *CancelRebuildIndexTaskRequest) (response *CancelRebuildIndexTaskResponse, err error) {
+    return c.CancelRebuildIndexTaskWithContext(context.Background(), request)
+}
+
+// CancelRebuildIndexTask
+// 取消重建索引任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CancelRebuildIndexTaskWithContext(ctx context.Context, request *CancelRebuildIndexTaskRequest) (response *CancelRebuildIndexTaskResponse, err error) {
+    if request == nil {
+        request = NewCancelRebuildIndexTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CancelRebuildIndexTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelRebuildIndexTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelRebuildIndexTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckFunctionRequest() (request *CheckFunctionRequest) {
     request = &CheckFunctionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2263,6 +2331,96 @@ func (c *Client) CreateNoticeContentWithContext(ctx context.Context, request *Cr
     request.SetContext(ctx)
     
     response = NewCreateNoticeContentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRebuildIndexTaskRequest() (request *CreateRebuildIndexTaskRequest) {
+    request = &CreateRebuildIndexTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateRebuildIndexTask")
+    
+    
+    return
+}
+
+func NewCreateRebuildIndexTaskResponse() (response *CreateRebuildIndexTaskResponse) {
+    response = &CreateRebuildIndexTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRebuildIndexTask
+// 创建重建索引任务
+//
+// 注意：
+//
+// - 单个日志主题同时仅允许运行一个重建索引任务，单个日志主题最多同时拥有10个重建索引任务记录，需删除不再需要的任务记录后才能新建索引任务。
+//
+// - 同一时间范围内的日志，仅允许重建一次索引，需删除之前的任务记录后才能再次重建。
+//
+// - 删除重建索引任务记录将恢复重建索引前的索引数据。
+//
+// - 所选时间范围对应日志写流量不能超出5TB。
+//
+// - 重建索引时间范围以日志时间为准，日志上传时间与重建索引时间范围有超过1小时的偏差时（例如16:00上传了一条02:00的日志到 CLS，重建00:00～12:00的日志索引）不会被重建且后续无法进行检索。新上报一条日志到已经被重建的日志时间范围时，也不会被重建且后续无法进行检索。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CreateRebuildIndexTask(request *CreateRebuildIndexTaskRequest) (response *CreateRebuildIndexTaskResponse, err error) {
+    return c.CreateRebuildIndexTaskWithContext(context.Background(), request)
+}
+
+// CreateRebuildIndexTask
+// 创建重建索引任务
+//
+// 注意：
+//
+// - 单个日志主题同时仅允许运行一个重建索引任务，单个日志主题最多同时拥有10个重建索引任务记录，需删除不再需要的任务记录后才能新建索引任务。
+//
+// - 同一时间范围内的日志，仅允许重建一次索引，需删除之前的任务记录后才能再次重建。
+//
+// - 删除重建索引任务记录将恢复重建索引前的索引数据。
+//
+// - 所选时间范围对应日志写流量不能超出5TB。
+//
+// - 重建索引时间范围以日志时间为准，日志上传时间与重建索引时间范围有超过1小时的偏差时（例如16:00上传了一条02:00的日志到 CLS，重建00:00～12:00的日志索引）不会被重建且后续无法进行检索。新上报一条日志到已经被重建的日志时间范围时，也不会被重建且后续无法进行检索。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CreateRebuildIndexTaskWithContext(ctx context.Context, request *CreateRebuildIndexTaskRequest) (response *CreateRebuildIndexTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateRebuildIndexTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateRebuildIndexTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRebuildIndexTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRebuildIndexTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -7873,6 +8031,74 @@ func (c *Client) DescribePartitionsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeRebuildIndexTasksRequest() (request *DescribeRebuildIndexTasksRequest) {
+    request = &DescribeRebuildIndexTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeRebuildIndexTasks")
+    
+    
+    return
+}
+
+func NewDescribeRebuildIndexTasksResponse() (response *DescribeRebuildIndexTasksResponse) {
+    response = &DescribeRebuildIndexTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRebuildIndexTasks
+// 获取重建索引任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeRebuildIndexTasks(request *DescribeRebuildIndexTasksRequest) (response *DescribeRebuildIndexTasksResponse, err error) {
+    return c.DescribeRebuildIndexTasksWithContext(context.Background(), request)
+}
+
+// DescribeRebuildIndexTasks
+// 获取重建索引任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeRebuildIndexTasksWithContext(ctx context.Context, request *DescribeRebuildIndexTasksRequest) (response *DescribeRebuildIndexTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeRebuildIndexTasksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeRebuildIndexTasks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRebuildIndexTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRebuildIndexTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeScheduledSqlInfoRequest() (request *DescribeScheduledSqlInfoRequest) {
     request = &DescribeScheduledSqlInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8539,6 +8765,72 @@ func (c *Client) DescribeWebCallbacksWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeWebCallbacksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEstimateRebuildIndexTaskRequest() (request *EstimateRebuildIndexTaskRequest) {
+    request = &EstimateRebuildIndexTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "EstimateRebuildIndexTask")
+    
+    
+    return
+}
+
+func NewEstimateRebuildIndexTaskResponse() (response *EstimateRebuildIndexTaskResponse) {
+    response = &EstimateRebuildIndexTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EstimateRebuildIndexTask
+// 预估重建索引任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) EstimateRebuildIndexTask(request *EstimateRebuildIndexTaskRequest) (response *EstimateRebuildIndexTaskResponse, err error) {
+    return c.EstimateRebuildIndexTaskWithContext(context.Background(), request)
+}
+
+// EstimateRebuildIndexTask
+// 预估重建索引任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) EstimateRebuildIndexTaskWithContext(ctx context.Context, request *EstimateRebuildIndexTaskRequest) (response *EstimateRebuildIndexTaskResponse, err error) {
+    if request == nil {
+        request = NewEstimateRebuildIndexTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "EstimateRebuildIndexTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EstimateRebuildIndexTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEstimateRebuildIndexTaskResponse()
     err = c.Send(request, response)
     return
 }

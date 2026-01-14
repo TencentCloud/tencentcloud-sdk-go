@@ -19618,6 +19618,12 @@ type WorkGroupDetailInfo struct {
 	// 数据目录权限集
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CatalogPolicyInfo *Policy `json:"CatalogPolicyInfo,omitnil,omitempty" name:"CatalogPolicyInfo"`
+
+	// 数据目录权限
+	DataCatalogPolicyInfo *Policys `json:"DataCatalogPolicyInfo,omitnil,omitempty" name:"DataCatalogPolicyInfo"`
+
+	// 模型权限
+	ModelPolicyInfo *Policys `json:"ModelPolicyInfo,omitnil,omitempty" name:"ModelPolicyInfo"`
 }
 
 type WorkGroupIdSetOfUserId struct {

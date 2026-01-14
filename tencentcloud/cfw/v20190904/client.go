@@ -3425,6 +3425,64 @@ func (c *Client) DescribeIPStatusListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeIpsModeSwitchRequest() (request *DescribeIpsModeSwitchRequest) {
+    request = &DescribeIpsModeSwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeIpsModeSwitch")
+    
+    
+    return
+}
+
+func NewDescribeIpsModeSwitchResponse() (response *DescribeIpsModeSwitchResponse) {
+    response = &DescribeIpsModeSwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIpsModeSwitch
+// 获取入侵防御防护模式
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeIpsModeSwitch(request *DescribeIpsModeSwitchRequest) (response *DescribeIpsModeSwitchResponse, err error) {
+    return c.DescribeIpsModeSwitchWithContext(context.Background(), request)
+}
+
+// DescribeIpsModeSwitch
+// 获取入侵防御防护模式
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeIpsModeSwitchWithContext(ctx context.Context, request *DescribeIpsModeSwitchRequest) (response *DescribeIpsModeSwitchResponse, err error) {
+    if request == nil {
+        request = NewDescribeIpsModeSwitchRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeIpsModeSwitch")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIpsModeSwitch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIpsModeSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLogStorageStatisticRequest() (request *DescribeLogStorageStatisticRequest) {
     request = &DescribeLogStorageStatisticRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6263,6 +6321,64 @@ func (c *Client) ModifyFwGroupSwitchWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyFwGroupSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyIpsModeSwitchRequest() (request *ModifyIpsModeSwitchRequest) {
+    request = &ModifyIpsModeSwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyIpsModeSwitch")
+    
+    
+    return
+}
+
+func NewModifyIpsModeSwitchResponse() (response *ModifyIpsModeSwitchResponse) {
+    response = &ModifyIpsModeSwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyIpsModeSwitch
+// 修改入侵防御防护模式
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyIpsModeSwitch(request *ModifyIpsModeSwitchRequest) (response *ModifyIpsModeSwitchResponse, err error) {
+    return c.ModifyIpsModeSwitchWithContext(context.Background(), request)
+}
+
+// ModifyIpsModeSwitch
+// 修改入侵防御防护模式
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyIpsModeSwitchWithContext(ctx context.Context, request *ModifyIpsModeSwitchRequest) (response *ModifyIpsModeSwitchResponse, err error) {
+    if request == nil {
+        request = NewModifyIpsModeSwitchRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "ModifyIpsModeSwitch")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyIpsModeSwitch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyIpsModeSwitchResponse()
     err = c.Send(request, response)
     return
 }

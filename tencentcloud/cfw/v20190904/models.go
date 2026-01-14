@@ -5077,6 +5077,66 @@ func (r *DescribeIPStatusListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeIpsModeSwitchRequestParams struct {
+
+}
+
+type DescribeIpsModeSwitchRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeIpsModeSwitchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIpsModeSwitchRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIpsModeSwitchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIpsModeSwitchResponseParams struct {
+	// // Mode 取值校验：0-观察模式, 1-拦截模式, 2-严格模式
+	Data *ModeInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 0 成功 非0失败
+	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
+
+	// success 成功 其他失败
+	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeIpsModeSwitchResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIpsModeSwitchResponseParams `json:"Response"`
+}
+
+func (r *DescribeIpsModeSwitchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIpsModeSwitchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLogStorageStatisticRequestParams struct {
 
 }
@@ -7806,6 +7866,11 @@ type LogItems struct {
 	Data []*LogItem `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
+type ModeInfo struct {
+	// 0-观察模式, 1-拦截模式, 2-严格模式
+	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+}
+
 // Predefined struct for user
 type ModifyAcRuleRequestParams struct {
 	// 规则数组
@@ -9075,6 +9140,60 @@ func (r *ModifyFwGroupSwitchResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyFwGroupSwitchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIpsModeSwitchRequestParams struct {
+	// 防护模式：0-观察模式, 1-拦截模式, 2-严格模式
+	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+}
+
+type ModifyIpsModeSwitchRequest struct {
+	*tchttp.BaseRequest
+	
+	// 防护模式：0-观察模式, 1-拦截模式, 2-严格模式
+	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+}
+
+func (r *ModifyIpsModeSwitchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIpsModeSwitchRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Mode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyIpsModeSwitchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIpsModeSwitchResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyIpsModeSwitchResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyIpsModeSwitchResponseParams `json:"Response"`
+}
+
+func (r *ModifyIpsModeSwitchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIpsModeSwitchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

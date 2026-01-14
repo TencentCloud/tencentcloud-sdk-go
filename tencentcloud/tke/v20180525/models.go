@@ -6789,6 +6789,67 @@ func (r *DeleteTKEEdgeClusterResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteUserPermissionsRequestParams struct {
+	// 要授权的用户的唯一标识符（支持子账号 UIN和角色UIN）
+	TargetUin *string `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
+
+	// 用户最终应拥有的完整权限列表。采用声明式语义，传入的列表代表用户最终应该拥有的全部权限，系统会自动计算差异并执行必要的创建/删除操作。为空或不提供时将清除该用户的所有权限。最大支持 100 个权限项。
+	Permissions []*PermissionItem `json:"Permissions,omitnil,omitempty" name:"Permissions"`
+}
+
+type DeleteUserPermissionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要授权的用户的唯一标识符（支持子账号 UIN和角色UIN）
+	TargetUin *string `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
+
+	// 用户最终应拥有的完整权限列表。采用声明式语义，传入的列表代表用户最终应该拥有的全部权限，系统会自动计算差异并执行必要的创建/删除操作。为空或不提供时将清除该用户的所有权限。最大支持 100 个权限项。
+	Permissions []*PermissionItem `json:"Permissions,omitnil,omitempty" name:"Permissions"`
+}
+
+func (r *DeleteUserPermissionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserPermissionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TargetUin")
+	delete(f, "Permissions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUserPermissionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteUserPermissionsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteUserPermissionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteUserPermissionsResponseParams `json:"Response"`
+}
+
+func (r *DeleteUserPermissionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserPermissionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAddonRequestParams struct {
 	// 集群ID，请从容器服务控制台集群列表中获取（https://console.cloud.tencent.com/tke2/cluster）。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -14479,6 +14540,67 @@ func (r *DescribeUpgradeTasksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeUserPermissionsRequestParams struct {
+	// 要查询的用户的唯一标识符（支持子账号 UIN和角色UIN）
+	TargetUin *string `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
+}
+
+type DescribeUserPermissionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要查询的用户的唯一标识符（支持子账号 UIN和角色UIN）
+	TargetUin *string `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
+}
+
+func (r *DescribeUserPermissionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserPermissionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TargetUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserPermissionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserPermissionsResponseParams struct {
+	// 用户在当前地域下所有集群中的权限列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Permissions []*PermissionItem `json:"Permissions,omitnil,omitempty" name:"Permissions"`
+
+	// 用户唯一标识符
+	TargetUin *string `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUserPermissionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserPermissionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserPermissionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserPermissionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeVersionsRequestParams struct {
 
 }
@@ -16384,6 +16506,67 @@ type GlobalMaintenanceWindowAndExclusion struct {
 
 	// 维护窗口ID
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+// Predefined struct for user
+type GrantUserPermissionsRequestParams struct {
+	// 要授权的用户的唯一标识符（支持子账号 UIN和角色UIN）
+	TargetUin *string `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
+
+	// 用户最终应拥有的完整权限列表。采用声明式语义，传入的列表代表用户最终应该拥有的全部权限，系统会自动计算差异并执行必要的创建/删除操作。为空或不提供时将清除该用户的所有权限。最大支持 100 个权限项。
+	Permissions []*PermissionItem `json:"Permissions,omitnil,omitempty" name:"Permissions"`
+}
+
+type GrantUserPermissionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要授权的用户的唯一标识符（支持子账号 UIN和角色UIN）
+	TargetUin *string `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
+
+	// 用户最终应拥有的完整权限列表。采用声明式语义，传入的列表代表用户最终应该拥有的全部权限，系统会自动计算差异并执行必要的创建/删除操作。为空或不提供时将清除该用户的所有权限。最大支持 100 个权限项。
+	Permissions []*PermissionItem `json:"Permissions,omitnil,omitempty" name:"Permissions"`
+}
+
+func (r *GrantUserPermissionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GrantUserPermissionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TargetUin")
+	delete(f, "Permissions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GrantUserPermissionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GrantUserPermissionsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GrantUserPermissionsResponse struct {
+	*tchttp.BaseResponse
+	Response *GrantUserPermissionsResponseParams `json:"Response"`
+}
+
+func (r *GrantUserPermissionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GrantUserPermissionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type HttpGet struct {
@@ -19840,6 +20023,24 @@ type PendingRelease struct {
 
 	// 更新时间
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
+}
+
+type PermissionItem struct {
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 角色名称。预置角色包括：tke:admin（集群管理员）、tke:ops（运维人员）、tke:dev（开发人员）、tke:ro（只读用户）、tke:ns:dev（命名空间开发人员）、tke:ns:ro（命名空间只读用户），其余为用户自定义角色
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// 授权类型。枚举值：cluster（集群级别权限，对应 ClusterRoleBinding）、namespace（命名空间级别权限，对应 RoleBinding）
+	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
+
+	// 是否为自定义角色，默认 false
+	IsCustom *bool `json:"IsCustom,omitnil,omitempty" name:"IsCustom"`
+
+	// 命名空间。当 RoleType 为 namespace 时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 }
 
 type PodChargeInfo struct {

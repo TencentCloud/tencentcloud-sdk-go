@@ -1,27 +1,10 @@
-# Release v1.3.32
+# Release v1.3.33
 
-## Agent 沙箱服务(ags) 版本：2025-09-20
+## 腾讯混元生3D(ai3d) 版本：2025-05-13
 
-### 第 4 次发布
+### 第 9 次发布
 
-发布时间：2026-01-14 01:08:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreatePreCacheImageTask](https://cloud.tencent.com/document/api/1814/127508)
-* [DescribePreCacheImageTask](https://cloud.tencent.com/document/api/1814/127507)
-
-
-
-## 云联络中心(ccc) 版本：2020-02-10
-
-### 第 119 次发布
-
-发布时间：2026-01-13 01:17:27
+发布时间：2026-01-15 01:08:02
 
 本次发布包含了以下内容：
 
@@ -29,41 +12,65 @@
 
 修改接口：
 
-* [CreateAIAgentCall](https://cloud.tencent.com/document/api/679/115681)
+* [SubmitHunyuanTo3DProJob](https://cloud.tencent.com/document/api/1804/123447)
 
-	* 新增入参：MaxRingTimeoutSecond
+	* 新增入参：Model
 
-* [CreateAICall](https://cloud.tencent.com/document/api/679/111211)
 
-	* 新增入参：MaxCallDurationMs
 
-* [CreateAutoCalloutTask](https://cloud.tencent.com/document/api/679/69194)
 
-	* 新增入参：MaxRingTimeoutSecond
+## 运维安全中心（堡垒机）(bh) 版本：2023-04-18
 
-* [CreateIVRSession](https://cloud.tencent.com/document/api/679/106913)
+### 第 23 次发布
 
-	* 新增入参：MaxRingTimeoutSecond
+发布时间：2026-01-15 01:12:17
 
-* [DescribeAutoCalloutTask](https://cloud.tencent.com/document/api/679/69193)
+本次发布包含了以下内容：
 
-	* 新增出参：MaxRingTimeoutSecond
+改善已有的文档。
+
+修改接口：
+
+* [SearchAuditLog](https://cloud.tencent.com/document/api/1025/112716)
+
+	* 新增入参：OperationSet, ProtocolSet
 
 
 修改数据结构：
 
-* [AutoCalloutTaskInfo](https://cloud.tencent.com/document/api/679/47715#AutoCalloutTaskInfo)
+* [SessionResult](https://cloud.tencent.com/document/api/1025/74416#SessionResult)
 
-	* 新增成员：MaxRingTimeoutSecond
+	* 新增成员：Mode, DisableMonitor, RealTimeBandwidthIn, RealTimeBandwidthOut
 
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 92 次发布
+
+发布时间：2026-01-15 01:22:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeIpsModeSwitch](https://cloud.tencent.com/document/api/1132/127533)
+* [ModifyIpsModeSwitch](https://cloud.tencent.com/document/api/1132/127532)
+
+新增数据结构：
+
+* [ModeInfo](https://cloud.tencent.com/document/api/1132/49071#ModeInfo)
 
 
 
 ## 日志服务(cls) 版本：2020-10-16
 
-### 第 146 次发布
+### 第 147 次发布
 
-发布时间：2026-01-14 01:26:21
+发布时间：2026-01-15 01:26:59
 
 本次发布包含了以下内容：
 
@@ -71,17 +78,29 @@
 
 新增接口：
 
-* [CreateDashboard](https://cloud.tencent.com/document/api/614/127511)
-* [DeleteDashboard](https://cloud.tencent.com/document/api/614/127510)
-* [ModifyDashboard](https://cloud.tencent.com/document/api/614/127509)
+* [CancelRebuildIndexTask](https://cloud.tencent.com/document/api/614/127537)
+* [CreateRebuildIndexTask](https://cloud.tencent.com/document/api/614/127536)
+* [DescribeRebuildIndexTasks](https://cloud.tencent.com/document/api/614/127535)
+* [EstimateRebuildIndexTask](https://cloud.tencent.com/document/api/614/127534)
+
+新增数据结构：
+
+* [RebuildIndexTaskInfo](https://cloud.tencent.com/document/api/614/56471#RebuildIndexTaskInfo)
+
+修改数据结构：
+
+* [ValueInfo](https://cloud.tencent.com/document/api/614/56471#ValueInfo)
+
+	* 新增成员：OpenIndexForChildOnly, ChildNode
 
 
 
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
-### 第 152 次发布
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
 
-发布时间：2026-01-14 01:35:19
+### 第 149 次发布
+
+发布时间：2026-01-15 01:40:15
 
 本次发布包含了以下内容：
 
@@ -89,14 +108,18 @@
 
 修改数据结构：
 
-* [GdnTaskInfo](https://cloud.tencent.com/document/api/1003/48097#GdnTaskInfo)
+* [WorkGroupDetailInfo](https://cloud.tencent.com/document/api/1342/53778#WorkGroupDetailInfo)
 
-	* 新增成员：ForceSwitchGdn, Code, Message, IsSupportForce
+	* 新增成员：DataCatalogPolicyInfo, ModelPolicyInfo
 
 
-### 第 151 次发布
 
-发布时间：2026-01-13 01:37:43
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 230 次发布
+
+发布时间：2026-01-15 02:22:23
 
 本次发布包含了以下内容：
 
@@ -104,125 +127,18 @@
 
 修改接口：
 
-* [CreateClusters](https://cloud.tencent.com/document/api/1003/48087)
+* [MLIDPassportOCR](https://cloud.tencent.com/document/api/866/37657)
 
-	* 新增入参：CynosVersion
-
-
-
-
-## 腾讯云数据分析智能体(dataagent) 版本：2025-05-13
-
-### 第 11 次发布
-
-发布时间：2026-01-13 01:39:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AddScene](https://cloud.tencent.com/document/api/1800/127492)
-* [DeleteScene](https://cloud.tencent.com/document/api/1800/127491)
-* [QuerySceneList](https://cloud.tencent.com/document/api/1800/127490)
-* [UpdateScene](https://cloud.tencent.com/document/api/1800/127489)
-
-修改接口：
-
-* [ModifyUserAuthority](https://cloud.tencent.com/document/api/1800/127476)
-
-	* 新增入参：InstanceId, Module, ObjectId
-
-* [QueryUserAuthority](https://cloud.tencent.com/document/api/1800/127475)
-
-	* 新增入参：InstanceId, Module, ObjectId
-
-
-新增数据结构：
-
-* [ExampleQA](https://cloud.tencent.com/document/api/1800/125016#ExampleQA)
-* [Scene](https://cloud.tencent.com/document/api/1800/125016#Scene)
-* [SearchConfig](https://cloud.tencent.com/document/api/1800/125016#SearchConfig)
+	* 新增出参：IsComplete
 
 
 
-## Elasticsearch Service(es) 版本：2025-01-01
 
+## 凭据管理系统(ssm) 版本：2019-09-23
 
+### 第 13 次发布
 
-## Elasticsearch Service(es) 版本：2018-04-16
-
-### 第 94 次发布
-
-发布时间：2026-01-14 01:46:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateAutoBackUpStrategy](https://cloud.tencent.com/document/api/845/127517)
-* [DeleteAutoBackUpStrategy](https://cloud.tencent.com/document/api/845/127516)
-* [DescribeAutoBackUpStrategy](https://cloud.tencent.com/document/api/845/127515)
-* [ModifyAutoBackUpCommonInfo](https://cloud.tencent.com/document/api/845/127514)
-* [ModifyAutoBackUpStrategy](https://cloud.tencent.com/document/api/845/127513)
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 270 次发布
-
-发布时间：2026-01-14 01:47:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateContractReviewChecklistWebUrl](https://cloud.tencent.com/document/api/1323/127522)
-* [DescribeContractReviewChecklistWebUrl](https://cloud.tencent.com/document/api/1323/127521)
-* [DescribeContractReviewChecklistsWebUrl](https://cloud.tencent.com/document/api/1323/127520)
-* [DescribeContractReviewTaskListWebUrl](https://cloud.tencent.com/document/api/1323/127519)
-* [ExportContractReviewResult](https://cloud.tencent.com/document/api/1323/127518)
-
-修改接口：
-
-* [CreateBatchInitOrganizationUrl](https://cloud.tencent.com/document/api/1323/109910)
-
-	* 新增入参：ChangeAdminAuthAutoSign
-
-
-新增数据结构：
-
-* [ContractReviewChecklistWebUrlOption](https://cloud.tencent.com/document/api/1323/70369#ContractReviewChecklistWebUrlOption)
-
-
-
-## 云直播CSS(live) 版本：2018-08-01
-
-### 第 160 次发布
-
-发布时间：2026-01-14 02:02:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateAuditKeywordLib](https://cloud.tencent.com/document/api/267/127523)
-
-
-
-## 消息队列 TDMQ(tdmq) 版本：2020-02-17
-
-### 第 163 次发布
-
-发布时间：2026-01-14 02:56:03
+发布时间：2026-01-15 02:42:39
 
 本次发布包含了以下内容：
 
@@ -230,33 +146,25 @@
 
 修改接口：
 
-* [ModifyRabbitMQVipInstance](https://cloud.tencent.com/document/api/1179/88450)
+* [CreateProductSecret](https://cloud.tencent.com/document/api/1140/58266)
 
-	* 新增入参：EnableRiskWarning
+	* 新增入参：AccountRemark
 
 
 修改数据结构：
 
-* [RabbitMQClusterAccessInfo](https://cloud.tencent.com/document/api/1179/46089#RabbitMQClusterAccessInfo)
+* [ProductPrivilegeUnit](https://cloud.tencent.com/document/api/1140/40530#ProductPrivilegeUnit)
 
-	* 新增成员：PublicWebConsoleErrorMessage, VpcWebConsoleErrorMessage, PublicDataStreamErrorMessage
-
-* [RabbitMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RabbitMQClusterInfo)
-
-	* 新增成员：MirroredQueueRisk, EnableRiskWarning, ConsumeTimeout, ChannelMax
-
-* [VpcEndpointInfo](https://cloud.tencent.com/document/api/1179/46089#VpcEndpointInfo)
-
-	* 新增成员：VpcErrorMessage
+	* 新增成员：SchemaName, SequenceName, ProcedureName, TypeName, FunctionName, ViewName, MatviewName
 
 
 
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
-### 第 132 次发布
+### 第 133 次发布
 
-发布时间：2026-01-13 03:06:33
+发布时间：2026-01-15 03:01:25
 
 本次发布包含了以下内容：
 
@@ -264,9 +172,9 @@
 
 修改接口：
 
-* [DescribeTimingL7OriginPullData](https://cloud.tencent.com/document/api/1552/123320)
+* [DescribeTopL7CacheData](https://cloud.tencent.com/document/api/1552/80645)
 
-	* 新增入参：DimensionName
+	* <font color="#dd0000">**修改入参**：</font>ZoneIds
 
 
 
@@ -275,11 +183,37 @@
 
 
 
-## 私有网络(vpc) 版本：2017-03-12
+## 容器服务(tke) 版本：2022-05-01
 
-### 第 289 次发布
 
-发布时间：2026-01-14 03:29:46
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 215 次发布
+
+发布时间：2026-01-15 03:08:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteUserPermissions](https://cloud.tencent.com/document/api/457/127541)
+* [DescribeUserPermissions](https://cloud.tencent.com/document/api/457/127540)
+* [GrantUserPermissions](https://cloud.tencent.com/document/api/457/127539)
+
+新增数据结构：
+
+* [PermissionItem](https://cloud.tencent.com/document/api/457/31866#PermissionItem)
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 132 次发布
+
+发布时间：2026-01-15 03:17:25
 
 本次发布包含了以下内容：
 
@@ -287,14 +221,51 @@
 
 修改数据结构：
 
-* [CCN](https://cloud.tencent.com/document/api/215/15824#CCN)
+* [MixLayoutParams](https://cloud.tencent.com/document/api/647/44055#MixLayoutParams)
 
-	* 新增成员：InstanceMeteringType
+	* 新增成员：PureAudioDisableLayout
+
+* [RecordParams](https://cloud.tencent.com/document/api/647/44055#RecordParams)
+
+	* 新增成员：SubscribeAbility
 
 
-### 第 288 次发布
 
-发布时间：2026-01-13 03:37:36
+
+## 云点播(vod) 版本：2024-07-18
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 221 次发布
+
+发布时间：2026-01-15 03:27:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateAigcCustomElement](https://cloud.tencent.com/document/api/266/127544)
+* [CreateSceneAigcVideoTask](https://cloud.tencent.com/document/api/266/127542)
+
+新增数据结构：
+
+* [AigcVideoSceneInfo](https://cloud.tencent.com/document/api/266/31773#AigcVideoSceneInfo)
+* [ElementReferInfo](https://cloud.tencent.com/document/api/266/31773#ElementReferInfo)
+* [ProductShowcaseConfig](https://cloud.tencent.com/document/api/266/31773#ProductShowcaseConfig)
+* [SceneAigcVideoOutputConfig](https://cloud.tencent.com/document/api/266/31773#SceneAigcVideoOutputConfig)
+* [SceneAigcVideoTaskInputFileInfo](https://cloud.tencent.com/document/api/266/31773#SceneAigcVideoTaskInputFileInfo)
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 290 次发布
+
+发布时间：2026-01-15 03:31:50
 
 本次发布包含了以下内容：
 
@@ -302,40 +273,9 @@
 
 修改接口：
 
-* [AddBandwidthPackageResources](https://cloud.tencent.com/document/api/215/19213)
+* [CreateCcn](https://cloud.tencent.com/document/api/215/19204)
 
-	* 新增入参：InternetMaxBandwidthOut
-
-* [RemoveBandwidthPackageResources](https://cloud.tencent.com/document/api/215/19207)
-
-	* 新增入参：InternetMaxBandwidthOut, InternetChargeType
-
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2025-08-06
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
-
-### 第 178 次发布
-
-发布时间：2026-01-13 03:49:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [LifecycleInfo](https://cloud.tencent.com/document/api/1267/76336#LifecycleInfo)
-
-	* <font color="#dd0000">**修改成员**：</font>Lifecycle, Columns, DateFormat
-
-* [TableMeta](https://cloud.tencent.com/document/api/1267/76336#TableMeta)
-
-	* 新增成员：DateFormat
+	* 新增入参：InstanceMeteringType
 
 
 

@@ -72,6 +72,9 @@ type CreateProductSecretRequestParams struct {
 
 	// KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
 	KmsHsmClusterId *string `json:"KmsHsmClusterId,omitnil,omitempty" name:"KmsHsmClusterId"`
+
+	// 账户备注
+	AccountRemark *string `json:"AccountRemark,omitnil,omitempty" name:"AccountRemark"`
 }
 
 type CreateProductSecretRequest struct {
@@ -127,6 +130,9 @@ type CreateProductSecretRequest struct {
 
 	// KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
 	KmsHsmClusterId *string `json:"KmsHsmClusterId,omitnil,omitempty" name:"KmsHsmClusterId"`
+
+	// 账户备注
+	AccountRemark *string `json:"AccountRemark,omitnil,omitempty" name:"AccountRemark"`
 }
 
 func (r *CreateProductSecretRequest) ToJsonString() string {
@@ -154,6 +160,7 @@ func (r *CreateProductSecretRequest) FromJsonString(s string) error {
 	delete(f, "EnableRotation")
 	delete(f, "RotationFrequency")
 	delete(f, "KmsHsmClusterId")
+	delete(f, "AccountRemark")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProductSecretRequest has unknown keys!", "")
 	}
@@ -1585,6 +1592,34 @@ type ProductPrivilegeUnit struct {
 	// Database - 显式指明所在的数据库实例。
 	// TableName - 显式指明所在表
 	ColumnName *string `json:"ColumnName,omitnil,omitempty" name:"ColumnName"`
+
+	// 仅当PrivilegeName为SchemaPrivileges时这个值才生效，并且此时必须填充：
+	// 目前仅postgresSQL需要
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 仅当PrivilegeName为SequencePrivileges时这个值才生效，并且此时必须填充：
+	// 目前仅postgresSQL需要
+	SequenceName *string `json:"SequenceName,omitnil,omitempty" name:"SequenceName"`
+
+	// 仅当PrivilegeName为ProcedurePrivileges时这个值才生效，并且此时必须填充：
+	// 目前仅postgresSQL需要
+	ProcedureName *string `json:"ProcedureName,omitnil,omitempty" name:"ProcedureName"`
+
+	// 仅当PrivilegeName为TypePrivileges时这个值才生效，并且此时必须填充：
+	// 目前仅postgresSQL需要
+	TypeName *string `json:"TypeName,omitnil,omitempty" name:"TypeName"`
+
+	// 仅当PrivilegeName为FunctionPrivileges时这个值才生效，并且此时必须填充：
+	// 目前仅postgresSQL需要
+	FunctionName *string `json:"FunctionName,omitnil,omitempty" name:"FunctionName"`
+
+	// 仅当PrivilegeName为ViewPrivileges时这个值才生效，并且此时必须填充：
+	// 目前仅postgresSQL需要
+	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
+
+	// 仅当PrivilegeName为MatviewPrivileges时这个值才生效，并且此时必须填充：
+	// 目前仅postgresSQL需要
+	MatviewName *string `json:"MatviewName,omitnil,omitempty" name:"MatviewName"`
 }
 
 // Predefined struct for user

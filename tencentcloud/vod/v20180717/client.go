@@ -653,6 +653,94 @@ func (c *Client) CreateAdaptiveDynamicStreamingTemplateWithContext(ctx context.C
     return
 }
 
+func NewCreateAigcCustomElementRequest() (request *CreateAigcCustomElementRequest) {
+    request = &CreateAigcCustomElementRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateAigcCustomElement")
+    
+    
+    return
+}
+
+func NewCreateAigcCustomElementResponse() (response *CreateAigcCustomElementResponse) {
+    response = &CreateAigcCustomElementResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAigcCustomElement
+// 调用该接口，针对指定模型进行主体创建。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_BITRATE = "InvalidParameterValue.Bitrate"
+//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEOBITRATE = "InvalidParameterValue.DisableHigherVideoBitrate"
+//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEORESOLUTION = "InvalidParameterValue.DisableHigherVideoResolution"
+//  INVALIDPARAMETERVALUE_DRMTYPE = "InvalidParameterValue.DrmType"
+//  INVALIDPARAMETERVALUE_FILLTYPE = "InvalidParameterValue.FillType"
+//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
+//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
+//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+//  INVALIDPARAMETERVALUE_SOUNDSYSTEM = "InvalidParameterValue.SoundSystem"
+//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) CreateAigcCustomElement(request *CreateAigcCustomElementRequest) (response *CreateAigcCustomElementResponse, err error) {
+    return c.CreateAigcCustomElementWithContext(context.Background(), request)
+}
+
+// CreateAigcCustomElement
+// 调用该接口，针对指定模型进行主体创建。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_BITRATE = "InvalidParameterValue.Bitrate"
+//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEOBITRATE = "InvalidParameterValue.DisableHigherVideoBitrate"
+//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEORESOLUTION = "InvalidParameterValue.DisableHigherVideoResolution"
+//  INVALIDPARAMETERVALUE_DRMTYPE = "InvalidParameterValue.DrmType"
+//  INVALIDPARAMETERVALUE_FILLTYPE = "InvalidParameterValue.FillType"
+//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
+//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
+//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+//  INVALIDPARAMETERVALUE_SOUNDSYSTEM = "InvalidParameterValue.SoundSystem"
+//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) CreateAigcCustomElementWithContext(ctx context.Context, request *CreateAigcCustomElementRequest) (response *CreateAigcCustomElementResponse, err error) {
+    if request == nil {
+        request = NewCreateAigcCustomElementRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateAigcCustomElement")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAigcCustomElement require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAigcCustomElementResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAigcImageTaskRequest() (request *CreateAigcImageTaskRequest) {
     request = &CreateAigcImageTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2217,6 +2305,74 @@ func (c *Client) CreateSceneAigcImageTaskWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewCreateSceneAigcImageTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSceneAigcVideoTaskRequest() (request *CreateSceneAigcVideoTaskRequest) {
+    request = &CreateSceneAigcVideoTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateSceneAigcVideoTask")
+    
+    
+    return
+}
+
+func NewCreateSceneAigcVideoTaskResponse() (response *CreateSceneAigcVideoTaskResponse) {
+    response = &CreateSceneAigcVideoTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSceneAigcVideoTask
+// 该接口用于生成场景化 AIGC 图片。<b>接口处于内测阶段，如需使用请[联系我们](https://cloud.tencent.com/online-service?from=sales_sales&source=PRESALE)，接口调用会产生实际费用。</b>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateSceneAigcVideoTask(request *CreateSceneAigcVideoTaskRequest) (response *CreateSceneAigcVideoTaskResponse, err error) {
+    return c.CreateSceneAigcVideoTaskWithContext(context.Background(), request)
+}
+
+// CreateSceneAigcVideoTask
+// 该接口用于生成场景化 AIGC 图片。<b>接口处于内测阶段，如需使用请[联系我们](https://cloud.tencent.com/online-service?from=sales_sales&source=PRESALE)，接口调用会产生实际费用。</b>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateSceneAigcVideoTaskWithContext(ctx context.Context, request *CreateSceneAigcVideoTaskRequest) (response *CreateSceneAigcVideoTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateSceneAigcVideoTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateSceneAigcVideoTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSceneAigcVideoTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSceneAigcVideoTaskResponse()
     err = c.Send(request, response)
     return
 }

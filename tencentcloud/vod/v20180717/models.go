@@ -2148,6 +2148,15 @@ type AigcVideoOutputConfig struct {
 	FrameInterpolate *string `json:"FrameInterpolate,omitnil,omitempty" name:"FrameInterpolate"`
 }
 
+type AigcVideoSceneInfo struct {
+	// AI生视频场景类型，可选值：
+	// - product_showcase： 产品360度展示。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 产品展示参数
+	ProductShowcaseConfig *ProductShowcaseConfig `json:"ProductShowcaseConfig,omitnil,omitempty" name:"ProductShowcaseConfig"`
+}
+
 type AigcVideoTask struct {
 	// 任务 ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -4294,6 +4303,94 @@ func (r *CreateAdaptiveDynamicStreamingTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAigcCustomElementRequestParams struct {
+	// 主体名称。不能超过20个字符
+	ElementName *string `json:"ElementName,omitnil,omitempty" name:"ElementName"`
+
+	// 主体描述。
+	// 
+	// 不能超过100个字符。
+	ElementDescription *string `json:"ElementDescription,omitnil,omitempty" name:"ElementDescription"`
+
+	// 主体正面参考图。
+	// 支持传入图片URL（确保可访问）
+	// 图片格式支持.jpg / .jpeg / .png
+	// 图片文件大小不能超过10MB，图片宽高尺寸不小于300px，图片宽高比要在1:2.5 ~ 2.5:1之间。
+	ElementFrontalImage *string `json:"ElementFrontalImage,omitnil,omitempty" name:"ElementFrontalImage"`
+
+	// 主体其他参考列表  可通过上传多张、不同角度的主体参考图来定义主体外观 至少上传1张参考图，至多上传3张参考图。
+	ElementReferList []*ElementReferInfo `json:"ElementReferList,omitnil,omitempty" name:"ElementReferList"`
+}
+
+type CreateAigcCustomElementRequest struct {
+	*tchttp.BaseRequest
+	
+	// 主体名称。不能超过20个字符
+	ElementName *string `json:"ElementName,omitnil,omitempty" name:"ElementName"`
+
+	// 主体描述。
+	// 
+	// 不能超过100个字符。
+	ElementDescription *string `json:"ElementDescription,omitnil,omitempty" name:"ElementDescription"`
+
+	// 主体正面参考图。
+	// 支持传入图片URL（确保可访问）
+	// 图片格式支持.jpg / .jpeg / .png
+	// 图片文件大小不能超过10MB，图片宽高尺寸不小于300px，图片宽高比要在1:2.5 ~ 2.5:1之间。
+	ElementFrontalImage *string `json:"ElementFrontalImage,omitnil,omitempty" name:"ElementFrontalImage"`
+
+	// 主体其他参考列表  可通过上传多张、不同角度的主体参考图来定义主体外观 至少上传1张参考图，至多上传3张参考图。
+	ElementReferList []*ElementReferInfo `json:"ElementReferList,omitnil,omitempty" name:"ElementReferList"`
+}
+
+func (r *CreateAigcCustomElementRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAigcCustomElementRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ElementName")
+	delete(f, "ElementDescription")
+	delete(f, "ElementFrontalImage")
+	delete(f, "ElementReferList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAigcCustomElementRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAigcCustomElementResponseParams struct {
+	// 主体ID。需自行记录下返回的主体ID。
+	ElementId *string `json:"ElementId,omitnil,omitempty" name:"ElementId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAigcCustomElementResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAigcCustomElementResponseParams `json:"Response"`
+}
+
+func (r *CreateAigcCustomElementResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAigcCustomElementResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6917,6 +7014,114 @@ func (r *CreateSceneAigcImageTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateSceneAigcImageTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSceneAigcVideoTaskRequestParams struct {
+	// **点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。**
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 场景化生视频参数配置。
+	SceneInfo *AigcVideoSceneInfo `json:"SceneInfo,omitnil,omitempty" name:"SceneInfo"`
+
+	// 场景化生视频任务的输出媒体文件配置。
+	OutputConfig *SceneAigcVideoOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
+
+	// 输入图片列表，支持的图片格式：jpg、jpeg、png、webp。
+	// 
+	FileInfos []*SceneAigcVideoTaskInputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
+
+	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+
+	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
+
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+}
+
+type CreateSceneAigcVideoTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// **点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。**
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 场景化生视频参数配置。
+	SceneInfo *AigcVideoSceneInfo `json:"SceneInfo,omitnil,omitempty" name:"SceneInfo"`
+
+	// 场景化生视频任务的输出媒体文件配置。
+	OutputConfig *SceneAigcVideoOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
+
+	// 输入图片列表，支持的图片格式：jpg、jpeg、png、webp。
+	// 
+	FileInfos []*SceneAigcVideoTaskInputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
+
+	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+
+	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
+
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+}
+
+func (r *CreateSceneAigcVideoTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSceneAigcVideoTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "SceneInfo")
+	delete(f, "OutputConfig")
+	delete(f, "FileInfos")
+	delete(f, "SessionId")
+	delete(f, "SessionContext")
+	delete(f, "TasksPriority")
+	delete(f, "ExtInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSceneAigcVideoTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSceneAigcVideoTaskResponseParams struct {
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSceneAigcVideoTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSceneAigcVideoTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateSceneAigcVideoTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSceneAigcVideoTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -15062,6 +15267,13 @@ type EditMediaVideoStream struct {
 	// 当取值为0，将自动为视频设置帧率。
 	// 默认值为 0。
 	Fps *int64 `json:"Fps,omitnil,omitempty" name:"Fps"`
+}
+
+type ElementReferInfo struct {
+	// 不同角度的主体参考图片URL。
+	// 图片格式支持.jpg / .jpeg / .png
+	// 图片文件大小不能超过10MB，图片宽高尺寸不小于300px，图片宽高比要在1:2.5 ~ 2.5:1之间。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
 
 type EmptyTrackItem struct {
@@ -23348,6 +23560,11 @@ type ProductInstanceResource struct {
 	Left *int64 `json:"Left,omitnil,omitempty" name:"Left"`
 }
 
+type ProductShowcaseConfig struct {
+	// 镜头运动方式。支持的值：AutoMatch（自动匹配）、ZoomIn（推进）、ZoomOut（拉远）、GlideRight（右移）、GlideLeft（左移）、CraneDown（下降）
+	CameraMovement *string `json:"CameraMovement,omitnil,omitempty" name:"CameraMovement"`
+}
+
 type ProhibitedAsrReviewTemplateInfo struct {
 	// 语音违禁任务开关，可选值：
 	// <li>ON：开启语音违禁任务；</li>
@@ -25992,6 +26209,45 @@ type SceneAigcImageTaskOutputFileInfo struct {
 
 	// 输出视频的元信息。当 StorageMode 为 Permanent 时有效。
 	MetaData *MediaMetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
+}
+
+type SceneAigcVideoOutputConfig struct {
+	// 存储模式。取值有： <li>Permanent：永久存储，生成的图片文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的图片文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li>
+	// 默认值：Temporary
+	StorageMode *string `json:"StorageMode,omitnil,omitempty" name:"StorageMode"`
+
+	// 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+	MediaName *string `json:"MediaName,omitnil,omitempty" name:"MediaName"`
+
+	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+	// <li>默认值：0，表示其他分类。</li>
+	ClassId *int64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
+
+	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 指定所生成视频的宽高比。输入格式为 W:H。仅生商品图场景有效。可选：16:9、9:16。
+	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
+
+	// 生成视频时长。可选值4、6、8秒
+	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+}
+
+type SceneAigcVideoTaskInputFileInfo struct {
+	// 输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 URL；</li> 
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 图片文件的媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。当 Type 取值为 File 时，本参数有效。
+	// 说明：
+	// 1. 推荐使用小于7M的图片；
+	// 2. 图片格式的取值为：jpeg，jpg, png, webp。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。
+	// 说明：
+	// 1. 推荐使用小于7M的图片；
+	// 2. 图片格式的取值为：jpeg，jpg, png, webp。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 type ScratchRepairInfo struct {

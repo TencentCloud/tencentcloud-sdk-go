@@ -8726,6 +8726,12 @@ type SearchAuditLogRequestParams struct {
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
+	// 操作类型
+	OperationSet []*uint64 `json:"OperationSet,omitnil,omitempty" name:"OperationSet"`
+
+	// 会话类型
+	ProtocolSet []*string `json:"ProtocolSet,omitnil,omitempty" name:"ProtocolSet"`
+
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
@@ -8741,6 +8747,12 @@ type SearchAuditLogRequest struct {
 
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 操作类型
+	OperationSet []*uint64 `json:"OperationSet,omitnil,omitempty" name:"OperationSet"`
+
+	// 会话类型
+	ProtocolSet []*string `json:"ProtocolSet,omitnil,omitempty" name:"ProtocolSet"`
 
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -8763,6 +8775,8 @@ func (r *SearchAuditLogRequest) FromJsonString(s string) error {
 	}
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "OperationSet")
+	delete(f, "ProtocolSet")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
@@ -9627,7 +9641,7 @@ type SearchSessionRequestParams struct {
 	// 主机名，长度不超过64
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 状态，1为活跃，2为结束，3为强制离线，4为其他错误
+	// 状态，1为活跃，2为结束，3为强制离线，4为其他错误，5暂停会话
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 状态，1为活跃，2为结束，3为强制离线
@@ -9688,7 +9702,7 @@ type SearchSessionRequest struct {
 	// 主机名，长度不超过64
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 状态，1为活跃，2为结束，3为强制离线，4为其他错误
+	// 状态，1为活跃，2为结束，3为强制离线，4为其他错误，5暂停会话
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 状态，1为活跃，2为结束，3为强制离线
@@ -10068,6 +10082,18 @@ type SessionResult struct {
 
 	// K8S集群容器名称
 	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// 访问方式 1-直链 2-客户端 3-web 大部分情况下是2
+	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 是否禁用会话监控。0-不禁用；1-禁用会话，仅展示中断；2-禁用会话，不展示中断
+	DisableMonitor *int64 `json:"DisableMonitor,omitnil,omitempty" name:"DisableMonitor"`
+
+	// 实时入带宽，单位Mbps
+	RealTimeBandwidthIn *float64 `json:"RealTimeBandwidthIn,omitnil,omitempty" name:"RealTimeBandwidthIn"`
+
+	// 实时出带宽，单位Mbps
+	RealTimeBandwidthOut *float64 `json:"RealTimeBandwidthOut,omitnil,omitempty" name:"RealTimeBandwidthOut"`
 }
 
 // Predefined struct for user
