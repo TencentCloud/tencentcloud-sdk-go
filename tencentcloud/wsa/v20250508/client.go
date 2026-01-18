@@ -71,6 +71,8 @@ func NewSearchProResponse() (response *SearchProResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) SearchPro(request *SearchProRequest) (response *SearchProResponse, err error) {
     return c.SearchProWithContext(context.Background(), request)
@@ -83,6 +85,8 @@ func (c *Client) SearchPro(request *SearchProRequest) (response *SearchProRespon
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) SearchProWithContext(ctx context.Context, request *SearchProRequest) (response *SearchProResponse, err error) {
     if request == nil {

@@ -299,6 +299,9 @@ const (
 	// FileIds 数组为空。
 	INVALIDPARAMETERVALUE_FILEIDSEMPTY = "InvalidParameterValue.FileIdsEmpty"
 
+	// FileIds 数组超限
+	INVALIDPARAMETERVALUE_FILEIDSOVERLIMIT = "InvalidParameterValue.FileIdsOverLimit"
+
 	// 参数值错误：FileId 过多。
 	INVALIDPARAMETERVALUE_FILEIDSTOOMANY = "InvalidParameterValue.FileIdsTooMany"
 

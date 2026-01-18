@@ -6562,7 +6562,7 @@ type CreateIntegrationRoleRequestParams struct {
 	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil,omitempty" name:"PermissionGroups"`
 
 	// 集团角色的话，需要传递集团子企业列表，如果是全选，则传1
-	SubOrganizationIds *string `json:"SubOrganizationIds,omitnil,omitempty" name:"SubOrganizationIds"`
+	SubOrganizationIds []*string `json:"SubOrganizationIds,omitnil,omitempty" name:"SubOrganizationIds"`
 
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -6592,7 +6592,7 @@ type CreateIntegrationRoleRequest struct {
 	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil,omitempty" name:"PermissionGroups"`
 
 	// 集团角色的话，需要传递集团子企业列表，如果是全选，则传1
-	SubOrganizationIds *string `json:"SubOrganizationIds,omitnil,omitempty" name:"SubOrganizationIds"`
+	SubOrganizationIds []*string `json:"SubOrganizationIds,omitnil,omitempty" name:"SubOrganizationIds"`
 
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。

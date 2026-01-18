@@ -3240,6 +3240,277 @@ func (r *DescribeDataPvUrlStatisticsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDataPvUrlStatisticsV2RequestParams struct {
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 网络类型
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// group by 参数值枚举1:1m  2:5m  3:30m  4:1h 
+	//  5:1d
+	GroupByType *int64 `json:"GroupByType,omitnil,omitempty" name:"GroupByType"`
+
+	// 1: 查询智研
+	// 0: 走旧逻辑，已下线，勿使用
+	IsNewData *int64 `json:"IsNewData,omitnil,omitempty" name:"IsNewData"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+type DescribeDataPvUrlStatisticsV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 网络类型
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// group by 参数值枚举1:1m  2:5m  3:30m  4:1h 
+	//  5:1d
+	GroupByType *int64 `json:"GroupByType,omitnil,omitempty" name:"GroupByType"`
+
+	// 1: 查询智研
+	// 0: 走旧逻辑，已下线，勿使用
+	IsNewData *int64 `json:"IsNewData,omitnil,omitempty" name:"IsNewData"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeDataPvUrlStatisticsV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataPvUrlStatisticsV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "Type")
+	delete(f, "EndTime")
+	delete(f, "ID")
+	delete(f, "ExtSecond")
+	delete(f, "Engine")
+	delete(f, "Isp")
+	delete(f, "From")
+	delete(f, "Level")
+	delete(f, "Brand")
+	delete(f, "Area")
+	delete(f, "VersionNum")
+	delete(f, "Platform")
+	delete(f, "ExtThird")
+	delete(f, "ExtFirst")
+	delete(f, "NetType")
+	delete(f, "Device")
+	delete(f, "IsAbroad")
+	delete(f, "Os")
+	delete(f, "Browser")
+	delete(f, "Env")
+	delete(f, "GroupByType")
+	delete(f, "IsNewData")
+	delete(f, "ExtFourth")
+	delete(f, "ExtFifth")
+	delete(f, "ExtSixth")
+	delete(f, "ExtSeventh")
+	delete(f, "ExtEighth")
+	delete(f, "ExtNinth")
+	delete(f, "ExtTenth")
+	delete(f, "Granularity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataPvUrlStatisticsV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataPvUrlStatisticsV2ResponseParams struct {
+	// 返回值
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataPvUrlStatisticsV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataPvUrlStatisticsV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataPvUrlStatisticsV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataPvUrlStatisticsV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDataReportCountRequestParams struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`

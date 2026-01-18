@@ -269,7 +269,7 @@ func NewCancelFlowResponse() (response *CancelFlowResponse) {
 //
 // 2. 有对应合同撤销权限的人:  
 //
-//  <img src=https://qcloudimg.tencent-cloud.cn/raw/37ac3b4ee65fb2ce6fba45ef7e192a65.png width = "300" height = "200" />
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/5967e502c56c267b693c90a5da110b6c.png)
 //
 // 
 //
@@ -336,7 +336,7 @@ func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowRes
 //
 // 2. 有对应合同撤销权限的人:  
 //
-//  <img src=https://qcloudimg.tencent-cloud.cn/raw/37ac3b4ee65fb2ce6fba45ef7e192a65.png width = "300" height = "200" />
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/5967e502c56c267b693c90a5da110b6c.png)
 //
 // 
 //
@@ -785,7 +785,7 @@ func NewCreateBatchCancelFlowUrlResponse() (response *CreateBatchCancelFlowUrlRe
 //
 // 2. 有对应合同撤销权限的人:  
 //
-//  <img src=https://qcloudimg.tencent-cloud.cn/raw/37ac3b4ee65fb2ce6fba45ef7e192a65.png width = "300" height = "200" />
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/5967e502c56c267b693c90a5da110b6c.png)
 //
 // 
 //
@@ -853,7 +853,7 @@ func (c *Client) CreateBatchCancelFlowUrl(request *CreateBatchCancelFlowUrlReque
 //
 // 2. 有对应合同撤销权限的人:  
 //
-//  <img src=https://qcloudimg.tencent-cloud.cn/raw/37ac3b4ee65fb2ce6fba45ef7e192a65.png width = "300" height = "200" />
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/5967e502c56c267b693c90a5da110b6c.png)
 //
 // 
 //

@@ -200,7 +200,7 @@ const (
 	// 全链路灰度规则启用失败。
 	FAILEDOPERATION_LANERULEENABLECONSULFAILED = "FailedOperation.LaneRuleEnableConsulFailed"
 
-	// 用户全链路灰度规则最大100条。
+	// 用户全链路灰度规则最大1000条。
 	FAILEDOPERATION_LANERULEMAXLIMIT = "FailedOperation.LaneRuleMaxLimit"
 
 	// 无法创建命名空间。

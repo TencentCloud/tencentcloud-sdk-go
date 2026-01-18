@@ -77,6 +77,14 @@ func (r *DescribeLicenseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DisplayMetadata struct {
+	// <p>展示的名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>展示的值</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type Filter struct {
 	// 需要过滤的字段
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -141,6 +149,23 @@ type License struct {
 
 	// <p>授权的层级：Master 主授权；Child 子授权/增强型授权</p>
 	LicenseLevel *string `json:"LicenseLevel,omitnil,omitempty" name:"LicenseLevel"`
+
+	// <p>License 内容信息</p>
+	LicenseData *LicenseData `json:"LicenseData,omitnil,omitempty" name:"LicenseData"`
+
+	// <p>License 颁发地址</p>
+	IssueURL *string `json:"IssueURL,omitnil,omitempty" name:"IssueURL"`
+}
+
+type LicenseData struct {
+	// <p>License 文本内容。支持密钥、证书等文本形式，二进制的密钥需要伙伴进行 base64 转码</p>
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// <p>部署服务输出信息，基于部署签发 License 时需要该参数。</p>
+	DeploymentOutput *string `json:"DeploymentOutput,omitnil,omitempty" name:"DeploymentOutput"`
+
+	// <p>License 前端展示信息。key、value 形式，比如可传入，颁发机构：XXXX 有限公司</p>
+	Metadata []*DisplayMetadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 type SaleParam struct {

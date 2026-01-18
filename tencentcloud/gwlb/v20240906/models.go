@@ -511,46 +511,38 @@ func (r *DeregisterTargetGroupInstancesResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeGatewayLoadBalancersRequestParams struct {
-	// 网关负载均衡实例ID。支持批量筛选的实例ID数量上限为20个。
+	// <p>网关负载均衡实例ID。支持批量筛选的实例ID数量上限为20个。</p>
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
-	// 一次批量返回网关负载均衡实例的数量，默认为20，最大值为100。
+	// <p>一次批量返回网关负载均衡实例的数量，默认为20，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 返回网关负载均衡实例列表的起始偏移量，默认0。
+	// <p>返回网关负载均衡实例列表的起始偏移量，默认0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询负载均衡详细信息列表的过滤条件，每次请求的Filters的上限为10，Filter.Values的上限为100。
-	// Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
-	// - VpcId - String - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“vpc-bhqk****”。
-	// - Vips - String  - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“10.1.1.1”
-	// - tag:tag-key - String - 是否必填：否 - （过滤条件）按照GWLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。
+	// <p>查询负载均衡详细信息列表的过滤条件，每次请求的Filters的上限为10，Filter.Values的上限为100。Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：- VpcId - String - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“vpc-bhqk****”。- Vips - String  - 是否必填：否 - （过滤条件）按照网关负载均衡实例的VIP进行过滤，如“10.1.1.1”- tag:tag-key - String - 是否必填：否 - （过滤条件）按照GWLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 搜索字段，模糊匹配名称、VIP。
+	// <p>搜索字段，模糊匹配名称、VIP。</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 }
 
 type DescribeGatewayLoadBalancersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 网关负载均衡实例ID。支持批量筛选的实例ID数量上限为20个。
+	// <p>网关负载均衡实例ID。支持批量筛选的实例ID数量上限为20个。</p>
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
-	// 一次批量返回网关负载均衡实例的数量，默认为20，最大值为100。
+	// <p>一次批量返回网关负载均衡实例的数量，默认为20，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 返回网关负载均衡实例列表的起始偏移量，默认0。
+	// <p>返回网关负载均衡实例列表的起始偏移量，默认0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询负载均衡详细信息列表的过滤条件，每次请求的Filters的上限为10，Filter.Values的上限为100。
-	// Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
-	// - VpcId - String - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“vpc-bhqk****”。
-	// - Vips - String  - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“10.1.1.1”
-	// - tag:tag-key - String - 是否必填：否 - （过滤条件）按照GWLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。
+	// <p>查询负载均衡详细信息列表的过滤条件，每次请求的Filters的上限为10，Filter.Values的上限为100。Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：- VpcId - String - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“vpc-bhqk****”。- Vips - String  - 是否必填：否 - （过滤条件）按照网关负载均衡实例的VIP进行过滤，如“10.1.1.1”- tag:tag-key - String - 是否必填：否 - （过滤条件）按照GWLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 搜索字段，模糊匹配名称、VIP。
+	// <p>搜索字段，模糊匹配名称、VIP。</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 }
 
@@ -646,10 +638,10 @@ func (r *DescribeGatewayLoadBalancersResourcesResponse) FromJsonString(s string)
 
 // Predefined struct for user
 type DescribeGatewayLoadBalancersResponseParams struct {
-	// 满足过滤条件的负载均衡实例总数。此数值与入参中的Limit无关。
+	// <p>满足过滤条件的负载均衡实例总数。此数值与入参中的Limit无关。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 返回的网关负载均衡实例数组。
+	// <p>返回的网关负载均衡实例数组。</p>
 	LoadBalancerSet []*GatewayLoadBalancer `json:"LoadBalancerSet,omitnil,omitempty" name:"LoadBalancerSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

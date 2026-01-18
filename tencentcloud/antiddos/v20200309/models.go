@@ -4892,7 +4892,7 @@ func (r *DescribeCcBlackWhiteIpListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCcGeoIPBlockConfigListRequestParams struct {
-	// DDoS防护子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
+	// DDoS防护子产品代号（bgp-multip：表示高防包；bgpip：表示高防IP）
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
 
 	// 页起始偏移，取值为(页码-1)*一页条数
@@ -4917,7 +4917,7 @@ type DescribeCcGeoIPBlockConfigListRequestParams struct {
 type DescribeCcGeoIPBlockConfigListRequest struct {
 	*tchttp.BaseRequest
 	
-	// DDoS防护子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
+	// DDoS防护子产品代号（bgp-multip：表示高防包；bgpip：表示高防IP）
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
 
 	// 页起始偏移，取值为(页码-1)*一页条数

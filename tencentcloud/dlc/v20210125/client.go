@@ -1819,6 +1819,82 @@ func (c *Client) CreateDatabaseWithContext(ctx context.Context, request *CreateD
     return
 }
 
+func NewCreateDatasourceConnectionRequest() (request *CreateDatasourceConnectionRequest) {
+    request = &CreateDatasourceConnectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateDatasourceConnection")
+    
+    
+    return
+}
+
+func NewCreateDatasourceConnectionResponse() (response *CreateDatasourceConnectionResponse) {
+    response = &CreateDatasourceConnectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDatasourceConnection
+// 创建数据源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ANOTHERCREATEPROCESSRUNNING = "FailedOperation.AnotherCreateProcessRunning"
+//  FAILEDOPERATION_ANOTHERPROCESSRUNNING = "FailedOperation.AnotherProcessRunning"
+//  FAILEDOPERATION_ANOTHERREQUESTPROCESSING = "FailedOperation.AnotherRequestProcessing"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATASOURCETYPEERROR = "InvalidParameter.DatasourceTypeError"
+//  INVALIDPARAMETER_DUPLICATEDATASOURCENAME = "InvalidParameter.DuplicateDatasourceName"
+//  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
+//  INVALIDPARAMETER_INVALIDDATASOURCECONNECTIONCONFIG = "InvalidParameter.InvalidDatasourceConnectionConfig"
+//  INVALIDPARAMETER_INVALIDHIVEVERSION = "InvalidParameter.InvalidHiveVersion"
+//  INVALIDPARAMETER_URLFORMATERROR = "InvalidParameter.UrlFormatError"
+//  INVALIDPARAMETER_VPCCIDRFORMATERROR = "InvalidParameter.VpcCidrFormatError"
+//  INVALIDPARAMETER_VPCCIDROVERLAP = "InvalidParameter.VpcCidrOverlap"
+//  RESOURCENOTFOUND_EKSRESOURCENOTFOUND = "ResourceNotFound.EksResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CREATECATALOG = "UnauthorizedOperation.CreateCatalog"
+func (c *Client) CreateDatasourceConnection(request *CreateDatasourceConnectionRequest) (response *CreateDatasourceConnectionResponse, err error) {
+    return c.CreateDatasourceConnectionWithContext(context.Background(), request)
+}
+
+// CreateDatasourceConnection
+// 创建数据源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ANOTHERCREATEPROCESSRUNNING = "FailedOperation.AnotherCreateProcessRunning"
+//  FAILEDOPERATION_ANOTHERPROCESSRUNNING = "FailedOperation.AnotherProcessRunning"
+//  FAILEDOPERATION_ANOTHERREQUESTPROCESSING = "FailedOperation.AnotherRequestProcessing"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATASOURCETYPEERROR = "InvalidParameter.DatasourceTypeError"
+//  INVALIDPARAMETER_DUPLICATEDATASOURCENAME = "InvalidParameter.DuplicateDatasourceName"
+//  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
+//  INVALIDPARAMETER_INVALIDDATASOURCECONNECTIONCONFIG = "InvalidParameter.InvalidDatasourceConnectionConfig"
+//  INVALIDPARAMETER_INVALIDHIVEVERSION = "InvalidParameter.InvalidHiveVersion"
+//  INVALIDPARAMETER_URLFORMATERROR = "InvalidParameter.UrlFormatError"
+//  INVALIDPARAMETER_VPCCIDRFORMATERROR = "InvalidParameter.VpcCidrFormatError"
+//  INVALIDPARAMETER_VPCCIDROVERLAP = "InvalidParameter.VpcCidrOverlap"
+//  RESOURCENOTFOUND_EKSRESOURCENOTFOUND = "ResourceNotFound.EksResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CREATECATALOG = "UnauthorizedOperation.CreateCatalog"
+func (c *Client) CreateDatasourceConnectionWithContext(ctx context.Context, request *CreateDatasourceConnectionRequest) (response *CreateDatasourceConnectionResponse, err error) {
+    if request == nil {
+        request = NewCreateDatasourceConnectionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CreateDatasourceConnection")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDatasourceConnection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDatasourceConnectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateExportTaskRequest() (request *CreateExportTaskRequest) {
     request = &CreateExportTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

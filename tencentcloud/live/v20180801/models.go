@@ -2707,6 +2707,91 @@ func (r *CreateLiveCallbackTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateLiveCloudEffectRequestParams struct {
+	// <p>用于生成云端特效的 Prompt。示例：飞鸟。Prompt 和 ImageUrl 二选一。</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>模板生礼物的模板ID。目前支持的模板ID：queen_accession, wizard_of_oz，red_envelopes，fishermen，captain_america。</p>
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>输入我的图片地址，用于生成云端特效。ImageUrl 和 Prompt 二选一。</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>指定生成云端特效的方式。默认自动选取。标准方式：text2video，高品质方式：text2video_hq。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>操作者名称。</p>
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type CreateLiveCloudEffectRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>用于生成云端特效的 Prompt。示例：飞鸟。Prompt 和 ImageUrl 二选一。</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>模板生礼物的模板ID。目前支持的模板ID：queen_accession, wizard_of_oz，red_envelopes，fishermen，captain_america。</p>
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>输入我的图片地址，用于生成云端特效。ImageUrl 和 Prompt 二选一。</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>指定生成云端特效的方式。默认自动选取。标准方式：text2video，高品质方式：text2video_hq。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>操作者名称。</p>
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+func (r *CreateLiveCloudEffectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveCloudEffectRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Prompt")
+	delete(f, "TemplateId")
+	delete(f, "ImageUrl")
+	delete(f, "Type")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveCloudEffectRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLiveCloudEffectResponseParams struct {
+	// <p>云端特效 ID。</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateLiveCloudEffectResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLiveCloudEffectResponseParams `json:"Response"`
+}
+
+func (r *CreateLiveCloudEffectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveCloudEffectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateLivePadRuleRequestParams struct {
 	// 推流域名。
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`

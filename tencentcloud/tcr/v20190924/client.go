@@ -6517,6 +6517,62 @@ func (c *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyI
     return
 }
 
+func NewModifyInstanceStorageRequest() (request *ModifyInstanceStorageRequest) {
+    request = &ModifyInstanceStorageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "ModifyInstanceStorage")
+    
+    
+    return
+}
+
+func NewModifyInstanceStorageResponse() (response *ModifyInstanceStorageResponse) {
+    response = &ModifyInstanceStorageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInstanceStorage
+// TCR实例存储桶切换
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyInstanceStorage(request *ModifyInstanceStorageRequest) (response *ModifyInstanceStorageResponse, err error) {
+    return c.ModifyInstanceStorageWithContext(context.Background(), request)
+}
+
+// ModifyInstanceStorage
+// TCR实例存储桶切换
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyInstanceStorageWithContext(ctx context.Context, request *ModifyInstanceStorageRequest) (response *ModifyInstanceStorageResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceStorageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcr", APIVersion, "ModifyInstanceStorage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceStorage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceStorageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyInstanceTokenRequest() (request *ModifyInstanceTokenRequest) {
     request = &ModifyInstanceTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7283,6 +7339,56 @@ func (c *Client) RenewInstanceWithContext(ctx context.Context, request *RenewIns
     request.SetContext(ctx)
     
     response = NewRenewInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateGCJobRequest() (request *TerminateGCJobRequest) {
+    request = &TerminateGCJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "TerminateGCJob")
+    
+    
+    return
+}
+
+func NewTerminateGCJobResponse() (response *TerminateGCJobResponse) {
+    response = &TerminateGCJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TerminateGCJob
+// 终止制品清理任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) TerminateGCJob(request *TerminateGCJobRequest) (response *TerminateGCJobResponse, err error) {
+    return c.TerminateGCJobWithContext(context.Background(), request)
+}
+
+// TerminateGCJob
+// 终止制品清理任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) TerminateGCJobWithContext(ctx context.Context, request *TerminateGCJobRequest) (response *TerminateGCJobResponse, err error) {
+    if request == nil {
+        request = NewTerminateGCJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcr", APIVersion, "TerminateGCJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateGCJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTerminateGCJobResponse()
     err = c.Send(request, response)
     return
 }

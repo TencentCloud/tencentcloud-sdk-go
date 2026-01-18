@@ -71,6 +71,8 @@ func NewSearchByTextResponse() (response *SearchByTextResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) SearchByText(request *SearchByTextRequest) (response *SearchByTextResponse, err error) {
     return c.SearchByTextWithContext(context.Background(), request)
@@ -83,6 +85,8 @@ func (c *Client) SearchByText(request *SearchByTextRequest) (response *SearchByT
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) SearchByTextWithContext(ctx context.Context, request *SearchByTextRequest) (response *SearchByTextResponse, err error) {
     if request == nil {

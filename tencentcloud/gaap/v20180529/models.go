@@ -80,32 +80,32 @@ type AccessRegionDomainConf struct {
 
 // Predefined struct for user
 type AddRealServersRequestParams struct {
-	// 源站对应的项目ID
+	// <p>源站对应的项目ID</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 源站对应的IP或域名
+	// <p>源站对应的IP或域名</p>
 	RealServerIP []*string `json:"RealServerIP,omitnil,omitempty" name:"RealServerIP"`
 
-	// 源站名称
+	// <p>源站名称</p>
 	RealServerName *string `json:"RealServerName,omitnil,omitempty" name:"RealServerName"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	TagSet []*TagPair `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
 type AddRealServersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 源站对应的项目ID
+	// <p>源站对应的项目ID</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 源站对应的IP或域名
+	// <p>源站对应的IP或域名</p>
 	RealServerIP []*string `json:"RealServerIP,omitnil,omitempty" name:"RealServerIP"`
 
-	// 源站名称
+	// <p>源站名称</p>
 	RealServerName *string `json:"RealServerName,omitnil,omitempty" name:"RealServerName"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	TagSet []*TagPair `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
@@ -133,7 +133,7 @@ func (r *AddRealServersRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddRealServersResponseParams struct {
-	// 源站信息列表
+	// <p>源站信息列表</p>
 	RealServerSet []*NewRealServer `json:"RealServerSet,omitnil,omitempty" name:"RealServerSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -220,20 +220,20 @@ type BandwidthPriceGradient struct {
 
 // Predefined struct for user
 type BindListenerRealServersRequestParams struct {
-	// 监听器ID
+	// <p>监听器ID</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 待绑定源站列表。如果该监听器的源站调度策略是加权轮询，需要填写源站权重 RealServerWeight, 不填或者其他调度类型默认源站权重为1。
+	// <p>待绑定源站列表。如果该监听器的源站调度策略是加权轮询，需要填写源站权重 RealServerWeight, 不填或者其他调度类型默认源站权重为1。</p>
 	RealServerBindSet []*RealServerBindSetReq `json:"RealServerBindSet,omitnil,omitempty" name:"RealServerBindSet"`
 }
 
 type BindListenerRealServersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 监听器ID
+	// <p>监听器ID</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 待绑定源站列表。如果该监听器的源站调度策略是加权轮询，需要填写源站权重 RealServerWeight, 不填或者其他调度类型默认源站权重为1。
+	// <p>待绑定源站列表。如果该监听器的源站调度策略是加权轮询，需要填写源站权重 RealServerWeight, 不填或者其他调度类型默认源站权重为1。</p>
 	RealServerBindSet []*RealServerBindSetReq `json:"RealServerBindSet,omitnil,omitempty" name:"RealServerBindSet"`
 }
 
@@ -460,62 +460,62 @@ type CertificateDetail struct {
 
 // Predefined struct for user
 type CheckProxyCreateRequestParams struct {
-	// 通道的接入(加速)区域。取值可通过接口DescribeAccessRegionsByDestRegion获取到
+	// <p>通道的接入(加速)区域。取值可通过接口DescribeAccessRegionsByDestRegion获取到</p>
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
-	// 通道的源站区域。取值可通过接口DescribeDestRegions获取到
+	// <p>通道的源站区域。取值可通过接口DescribeDestRegions获取到</p>
 	RealServerRegion *string `json:"RealServerRegion,omitnil,omitempty" name:"RealServerRegion"`
 
-	// 通道带宽上限，单位：Mbps。
+	// <p>通道带宽上限，单位：Mbps。</p>
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// 通道并发量上限，表示同时在线的连接数，单位：万。
+	// <p>通道并发量上限，表示同时在线的连接数，单位：万。</p>
 	Concurrent *uint64 `json:"Concurrent,omitnil,omitempty" name:"Concurrent"`
 
-	// 如果在通道组下创建通道，需要填写通道组的ID
+	// <p>如果在通道组下创建通道，需要填写通道组的ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// IP版本，可取值：IPv4、IPv6，默认值IPv4
+	// <p>IP版本，可取值：IPv4、IPv6，默认值IPv4</p>
 	IPAddressVersion *string `json:"IPAddressVersion,omitnil,omitempty" name:"IPAddressVersion"`
 
-	// 网络类型，可取值：normal、cn2，默认值normal
+	// <p>网络类型，可取值：normal、cn2，默认值normal</p>
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
-	// 通道套餐类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
+	// <p>通道套餐类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。</p>
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
-	// 该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道默认支持Http3.0；当为IPv6，默认不支持Http3.0。
+	// <p>该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道默认支持Http3.0；当为IPv6，默认不支持Http3.0。</p>
 	Http3Supported *int64 `json:"Http3Supported,omitnil,omitempty" name:"Http3Supported"`
 }
 
 type CheckProxyCreateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通道的接入(加速)区域。取值可通过接口DescribeAccessRegionsByDestRegion获取到
+	// <p>通道的接入(加速)区域。取值可通过接口DescribeAccessRegionsByDestRegion获取到</p>
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
-	// 通道的源站区域。取值可通过接口DescribeDestRegions获取到
+	// <p>通道的源站区域。取值可通过接口DescribeDestRegions获取到</p>
 	RealServerRegion *string `json:"RealServerRegion,omitnil,omitempty" name:"RealServerRegion"`
 
-	// 通道带宽上限，单位：Mbps。
+	// <p>通道带宽上限，单位：Mbps。</p>
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// 通道并发量上限，表示同时在线的连接数，单位：万。
+	// <p>通道并发量上限，表示同时在线的连接数，单位：万。</p>
 	Concurrent *uint64 `json:"Concurrent,omitnil,omitempty" name:"Concurrent"`
 
-	// 如果在通道组下创建通道，需要填写通道组的ID
+	// <p>如果在通道组下创建通道，需要填写通道组的ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// IP版本，可取值：IPv4、IPv6，默认值IPv4
+	// <p>IP版本，可取值：IPv4、IPv6，默认值IPv4</p>
 	IPAddressVersion *string `json:"IPAddressVersion,omitnil,omitempty" name:"IPAddressVersion"`
 
-	// 网络类型，可取值：normal、cn2，默认值normal
+	// <p>网络类型，可取值：normal、cn2，默认值normal</p>
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
-	// 通道套餐类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
+	// <p>通道套餐类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。</p>
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
-	// 该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道默认支持Http3.0；当为IPv6，默认不支持Http3.0。
+	// <p>该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道默认支持Http3.0；当为IPv6，默认不支持Http3.0。</p>
 	Http3Supported *int64 `json:"Http3Supported,omitnil,omitempty" name:"Http3Supported"`
 }
 
@@ -548,7 +548,7 @@ func (r *CheckProxyCreateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckProxyCreateResponseParams struct {
-	// 查询能否创建给定配置的通道，1可以创建，0不可创建。
+	// <p>查询能否创建给定配置的通道，1可以创建，0不可创建。</p>
 	CheckFlag *uint64 `json:"CheckFlag,omitnil,omitempty" name:"CheckFlag"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -796,46 +796,32 @@ type CountryAreaMap struct {
 
 // Predefined struct for user
 type CreateCertificateRequestParams struct {
-	// 证书类型。其中：
-	// 0，表示基础认证配置；
-	// 1，表示客户端CA证书；
-	// 2，服务器SSL证书；
-	// 3，表示源站CA证书；
-	// 4，表示通道SSL证书。
+	// <p>证书类型。其中：0，表示基础认证配置；1，表示客户端CA证书；2，服务器SSL证书；3，表示源站CA证书；4，表示通道SSL证书。</p>
 	CertificateType *int64 `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
-	// 证书内容。采用url编码。其中：
-	// 当证书类型为基础认证配置时，该参数填写用户名/密码对。格式：“用户名：密码”，例如：root:FSGdT。其中密码使用htpasswd或者openssl，例如：openssl passwd -crypt 123456。
-	// 当证书类型为CA/SSL证书时，该参数填写证书内容，格式为pem。
+	// <p>证书内容。采用url编码。其中：当证书类型为基础认证配置时，该参数填写用户名/密码对。格式：“用户名：密码”，例如：root:FSGdT。其中密码使用htpasswd或者openssl，例如：openssl passwd -crypt 123456。当证书类型为CA/SSL证书时，该参数填写证书内容，格式为pem。</p>
 	CertificateContent *string `json:"CertificateContent,omitnil,omitempty" name:"CertificateContent"`
 
-	// 证书名称
+	// <p>证书名称</p>
 	CertificateAlias *string `json:"CertificateAlias,omitnil,omitempty" name:"CertificateAlias"`
 
-	// 密钥内容。采用url编码。仅当证书类型为SSL证书时，需要填写该参数。格式为pem。
+	// <p>密钥内容。采用url编码。仅当证书类型为SSL证书时，需要填写该参数。格式为pem。</p>
 	CertificateKey *string `json:"CertificateKey,omitnil,omitempty" name:"CertificateKey"`
 }
 
 type CreateCertificateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 证书类型。其中：
-	// 0，表示基础认证配置；
-	// 1，表示客户端CA证书；
-	// 2，服务器SSL证书；
-	// 3，表示源站CA证书；
-	// 4，表示通道SSL证书。
+	// <p>证书类型。其中：0，表示基础认证配置；1，表示客户端CA证书；2，服务器SSL证书；3，表示源站CA证书；4，表示通道SSL证书。</p>
 	CertificateType *int64 `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
-	// 证书内容。采用url编码。其中：
-	// 当证书类型为基础认证配置时，该参数填写用户名/密码对。格式：“用户名：密码”，例如：root:FSGdT。其中密码使用htpasswd或者openssl，例如：openssl passwd -crypt 123456。
-	// 当证书类型为CA/SSL证书时，该参数填写证书内容，格式为pem。
+	// <p>证书内容。采用url编码。其中：当证书类型为基础认证配置时，该参数填写用户名/密码对。格式：“用户名：密码”，例如：root:FSGdT。其中密码使用htpasswd或者openssl，例如：openssl passwd -crypt 123456。当证书类型为CA/SSL证书时，该参数填写证书内容，格式为pem。</p>
 	CertificateContent *string `json:"CertificateContent,omitnil,omitempty" name:"CertificateContent"`
 
-	// 证书名称
+	// <p>证书名称</p>
 	CertificateAlias *string `json:"CertificateAlias,omitnil,omitempty" name:"CertificateAlias"`
 
-	// 密钥内容。采用url编码。仅当证书类型为SSL证书时，需要填写该参数。格式为pem。
+	// <p>密钥内容。采用url编码。仅当证书类型为SSL证书时，需要填写该参数。格式为pem。</p>
 	CertificateKey *string `json:"CertificateKey,omitnil,omitempty" name:"CertificateKey"`
 }
 
@@ -863,7 +849,7 @@ func (r *CreateCertificateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCertificateResponseParams struct {
-	// 证书ID
+	// <p>证书ID</p>
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -949,50 +935,50 @@ func (r *CreateCustomHeaderResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDomainErrorPageInfoRequestParams struct {
-	// 监听器ID
+	// <p>监听器ID</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 域名
+	// <p>域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 原始错误码
+	// <p>原始错误码</p>
 	ErrorNos []*int64 `json:"ErrorNos,omitnil,omitempty" name:"ErrorNos"`
 
-	// 新的响应包体
+	// <p>新的响应包体</p>
 	Body *string `json:"Body,omitnil,omitempty" name:"Body"`
 
-	// 新错误码
+	// <p>新错误码</p>
 	NewErrorNo *int64 `json:"NewErrorNo,omitnil,omitempty" name:"NewErrorNo"`
 
-	// 需要删除的响应头
+	// <p>需要删除的响应头</p>
 	ClearHeaders []*string `json:"ClearHeaders,omitnil,omitempty" name:"ClearHeaders"`
 
-	// 需要设置的响应头
+	// <p>需要设置的响应头</p>
 	SetHeaders []*HttpHeaderParam `json:"SetHeaders,omitnil,omitempty" name:"SetHeaders"`
 }
 
 type CreateDomainErrorPageInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 监听器ID
+	// <p>监听器ID</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 域名
+	// <p>域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 原始错误码
+	// <p>原始错误码</p>
 	ErrorNos []*int64 `json:"ErrorNos,omitnil,omitempty" name:"ErrorNos"`
 
-	// 新的响应包体
+	// <p>新的响应包体</p>
 	Body *string `json:"Body,omitnil,omitempty" name:"Body"`
 
-	// 新错误码
+	// <p>新错误码</p>
 	NewErrorNo *int64 `json:"NewErrorNo,omitnil,omitempty" name:"NewErrorNo"`
 
-	// 需要删除的响应头
+	// <p>需要删除的响应头</p>
 	ClearHeaders []*string `json:"ClearHeaders,omitnil,omitempty" name:"ClearHeaders"`
 
-	// 需要设置的响应头
+	// <p>需要设置的响应头</p>
 	SetHeaders []*HttpHeaderParam `json:"SetHeaders,omitnil,omitempty" name:"SetHeaders"`
 }
 
@@ -1023,7 +1009,7 @@ func (r *CreateDomainErrorPageInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDomainErrorPageInfoResponseParams struct {
-	// 错误定制响应的配置ID
+	// <p>错误定制响应的配置ID</p>
 	ErrorPageId *string `json:"ErrorPageId,omitnil,omitempty" name:"ErrorPageId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1300,32 +1286,32 @@ func (r *CreateGlobalDomainResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateHTTPListenerRequestParams struct {
-	// 监听器名称
+	// <p>监听器名称</p>
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
-	// 监听器端口，基于同种传输层协议（TCP 或 UDP）的监听器，端口不可重复
+	// <p>监听器端口，基于同种传输层协议（TCP 或 UDP）的监听器，端口不可重复</p>
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 通道ID，与GroupId不能同时设置，对应为通道创建监听器
+	// <p>通道ID，与GroupId不能同时设置，对应为通道创建监听器</p>
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
 
-	// 通道组ID，与ProxyId不能同时设置，对应为通道组创建监听器
+	// <p>通道组ID，与ProxyId不能同时设置，对应为通道组创建监听器</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type CreateHTTPListenerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 监听器名称
+	// <p>监听器名称</p>
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
-	// 监听器端口，基于同种传输层协议（TCP 或 UDP）的监听器，端口不可重复
+	// <p>监听器端口，基于同种传输层协议（TCP 或 UDP）的监听器，端口不可重复</p>
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 通道ID，与GroupId不能同时设置，对应为通道创建监听器
+	// <p>通道ID，与GroupId不能同时设置，对应为通道创建监听器</p>
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
 
-	// 通道组ID，与ProxyId不能同时设置，对应为通道组创建监听器
+	// <p>通道组ID，与ProxyId不能同时设置，对应为通道组创建监听器</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
@@ -1353,7 +1339,7 @@ func (r *CreateHTTPListenerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateHTTPListenerResponseParams struct {
-	// 创建的监听器ID
+	// <p>创建的监听器ID</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1378,82 +1364,68 @@ func (r *CreateHTTPListenerResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateHTTPSListenerRequestParams struct {
-	// 监听器名称
+	// <p>监听器名称</p>
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
-	// 监听器端口，基于同种传输层协议（TCP 或 UDP）的监听器，端口不可重复
+	// <p>监听器端口，基于同种传输层协议（TCP 或 UDP）的监听器，端口不可重复</p>
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 服务器证书ID
+	// <p>服务器证书ID</p>
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 加速通道转发到源站的协议类型：HTTP | HTTPS
+	// <p>加速通道转发到源站的协议类型：HTTP | HTTPS</p>
 	ForwardProtocol *string `json:"ForwardProtocol,omitnil,omitempty" name:"ForwardProtocol"`
 
-	// 通道ID，与GroupId之间只能设置一个。表示创建通道的监听器。
+	// <p>通道ID，与GroupId之间只能设置一个。表示创建通道的监听器。</p>
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
 
-	// 认证类型，其中：
-	// 0，单向认证；
-	// 1，双向认证。
-	// 默认使用单向认证。
+	// <p>认证类型，其中：0，单向认证；1，双向认证。默认使用单向认证。</p>
 	AuthType *uint64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 
-	// 客户端CA单证书ID，仅当双向认证时设置该参数或PolyClientCertificateIds参数
+	// <p>客户端CA单证书ID，仅当双向认证时设置该参数或PolyClientCertificateIds参数</p>
 	ClientCertificateId *string `json:"ClientCertificateId,omitnil,omitempty" name:"ClientCertificateId"`
 
-	// 新的客户端多CA证书ID，仅当双向认证时设置该参数或设置ClientCertificateId参数
+	// <p>新的客户端多CA证书ID，仅当双向认证时设置该参数或设置ClientCertificateId参数</p>
 	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitnil,omitempty" name:"PolyClientCertificateIds"`
 
-	// 通道组ID，与ProxyId之间只能设置一个。表示创建通道组的监听器。
+	// <p>通道组ID，与ProxyId之间只能设置一个。表示创建通道组的监听器。</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 支持Http3的开关，其中：
-	// 0，表示不需要支持Http3接入；
-	// 1，表示需要支持Http3接入。
-	// 注意：如果支持了Http3的功能，那么该监听器会占用对应的UDP接入端口，不可再创建相同端口的UDP监听器。
-	// 该功能的启停无法在监听器创建完毕后再修改。
+	// <p>支持Http3的开关，其中：0，表示不需要支持Http3接入；1，表示需要支持Http3接入。注意：如果支持了Http3的功能，那么该监听器会占用对应的UDP接入端口，不可再创建相同端口的UDP监听器。该功能的启停无法在监听器创建完毕后再修改。</p>
 	Http3Supported *int64 `json:"Http3Supported,omitnil,omitempty" name:"Http3Supported"`
 }
 
 type CreateHTTPSListenerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 监听器名称
+	// <p>监听器名称</p>
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
-	// 监听器端口，基于同种传输层协议（TCP 或 UDP）的监听器，端口不可重复
+	// <p>监听器端口，基于同种传输层协议（TCP 或 UDP）的监听器，端口不可重复</p>
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 服务器证书ID
+	// <p>服务器证书ID</p>
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 加速通道转发到源站的协议类型：HTTP | HTTPS
+	// <p>加速通道转发到源站的协议类型：HTTP | HTTPS</p>
 	ForwardProtocol *string `json:"ForwardProtocol,omitnil,omitempty" name:"ForwardProtocol"`
 
-	// 通道ID，与GroupId之间只能设置一个。表示创建通道的监听器。
+	// <p>通道ID，与GroupId之间只能设置一个。表示创建通道的监听器。</p>
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
 
-	// 认证类型，其中：
-	// 0，单向认证；
-	// 1，双向认证。
-	// 默认使用单向认证。
+	// <p>认证类型，其中：0，单向认证；1，双向认证。默认使用单向认证。</p>
 	AuthType *uint64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 
-	// 客户端CA单证书ID，仅当双向认证时设置该参数或PolyClientCertificateIds参数
+	// <p>客户端CA单证书ID，仅当双向认证时设置该参数或PolyClientCertificateIds参数</p>
 	ClientCertificateId *string `json:"ClientCertificateId,omitnil,omitempty" name:"ClientCertificateId"`
 
-	// 新的客户端多CA证书ID，仅当双向认证时设置该参数或设置ClientCertificateId参数
+	// <p>新的客户端多CA证书ID，仅当双向认证时设置该参数或设置ClientCertificateId参数</p>
 	PolyClientCertificateIds []*string `json:"PolyClientCertificateIds,omitnil,omitempty" name:"PolyClientCertificateIds"`
 
-	// 通道组ID，与ProxyId之间只能设置一个。表示创建通道组的监听器。
+	// <p>通道组ID，与ProxyId之间只能设置一个。表示创建通道组的监听器。</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 支持Http3的开关，其中：
-	// 0，表示不需要支持Http3接入；
-	// 1，表示需要支持Http3接入。
-	// 注意：如果支持了Http3的功能，那么该监听器会占用对应的UDP接入端口，不可再创建相同端口的UDP监听器。
-	// 该功能的启停无法在监听器创建完毕后再修改。
+	// <p>支持Http3的开关，其中：0，表示不需要支持Http3接入；1，表示需要支持Http3接入。注意：如果支持了Http3的功能，那么该监听器会占用对应的UDP接入端口，不可再创建相同端口的UDP监听器。该功能的启停无法在监听器创建完毕后再修改。</p>
 	Http3Supported *int64 `json:"Http3Supported,omitnil,omitempty" name:"Http3Supported"`
 }
 
@@ -1487,7 +1459,7 @@ func (r *CreateHTTPSListenerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateHTTPSListenerResponseParams struct {
-	// 创建的监听器ID
+	// <p>创建的监听器ID</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1569,56 +1541,56 @@ func (r *CreateProxyGroupDomainResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateProxyGroupRequestParams struct {
-	// 通道组所属项目ID
+	// <p>通道组所属项目ID</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 通道组别名
+	// <p>通道组别名</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 源站地域，参考接口 [https://cloud.tencent.com/document/api/608/36964] 返回参数RegionDetail中的RegionId
+	// <p>源站地域，参考接口 [https://cloud.tencent.com/document/api/608/36964] 返回参数RegionDetail中的RegionId</p>
 	RealServerRegion *string `json:"RealServerRegion,omitnil,omitempty" name:"RealServerRegion"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	TagSet []*TagPair `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
-	// 加速地域列表，包括加速地域名，及该地域对应的带宽和并发配置。
+	// <p>加速地域列表，包括加速地域名，及该地域对应的带宽和并发配置。</p>
 	AccessRegionSet []*AccessConfiguration `json:"AccessRegionSet,omitnil,omitempty" name:"AccessRegionSet"`
 
-	// IP版本，可取值：IPv4、IPv6，默认值IPv4
+	// <p>IP版本，可取值：IPv4、IPv6，默认值IPv4</p>
 	IPAddressVersion *string `json:"IPAddressVersion,omitnil,omitempty" name:"IPAddressVersion"`
 
-	// 通道组套餐类型，可取值：Thunder、Accelerator，默认值Thunder
+	// <p>通道组套餐类型，可取值：Thunder、Accelerator，默认值Thunder</p>
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
-	// 该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道组默认支持Http3.0；当为IPv6，默认不支持Http3.0。
+	// <p>该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道组默认支持Http3.0；当为IPv6，默认不支持Http3.0。</p>
 	Http3Supported *int64 `json:"Http3Supported,omitnil,omitempty" name:"Http3Supported"`
 }
 
 type CreateProxyGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通道组所属项目ID
+	// <p>通道组所属项目ID</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 通道组别名
+	// <p>通道组别名</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 源站地域，参考接口 [https://cloud.tencent.com/document/api/608/36964] 返回参数RegionDetail中的RegionId
+	// <p>源站地域，参考接口 [https://cloud.tencent.com/document/api/608/36964] 返回参数RegionDetail中的RegionId</p>
 	RealServerRegion *string `json:"RealServerRegion,omitnil,omitempty" name:"RealServerRegion"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	TagSet []*TagPair `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
-	// 加速地域列表，包括加速地域名，及该地域对应的带宽和并发配置。
+	// <p>加速地域列表，包括加速地域名，及该地域对应的带宽和并发配置。</p>
 	AccessRegionSet []*AccessConfiguration `json:"AccessRegionSet,omitnil,omitempty" name:"AccessRegionSet"`
 
-	// IP版本，可取值：IPv4、IPv6，默认值IPv4
+	// <p>IP版本，可取值：IPv4、IPv6，默认值IPv4</p>
 	IPAddressVersion *string `json:"IPAddressVersion,omitnil,omitempty" name:"IPAddressVersion"`
 
-	// 通道组套餐类型，可取值：Thunder、Accelerator，默认值Thunder
+	// <p>通道组套餐类型，可取值：Thunder、Accelerator，默认值Thunder</p>
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
-	// 该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道组默认支持Http3.0；当为IPv6，默认不支持Http3.0。
+	// <p>该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道组默认支持Http3.0；当为IPv6，默认不支持Http3.0。</p>
 	Http3Supported *int64 `json:"Http3Supported,omitnil,omitempty" name:"Http3Supported"`
 }
 
@@ -1650,7 +1622,7 @@ func (r *CreateProxyGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateProxyGroupResponseParams struct {
-	// 通道组ID
+	// <p>通道组ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1834,82 +1806,80 @@ func (r *CreateProxyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRuleRequestParams struct {
-	// 7层监听器ID
+	// <p>7层监听器ID</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 转发规则的域名
+	// <p>转发规则的域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 转发规则的路径
+	// <p>转发规则的路径</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 转发规则对应源站的类型，支持IP和DOMAIN类型。
+	// <p>转发规则对应源站的类型，支持IP和DOMAIN类型。</p>
 	RealServerType *string `json:"RealServerType,omitnil,omitempty" name:"RealServerType"`
 
-	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数。
+	// <p>监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数。</p>
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
-	// 规则是否开启健康检查，1开启，0关闭。
+	// <p>规则是否开启健康检查，1开启，0关闭。</p>
 	HealthCheck *uint64 `json:"HealthCheck,omitnil,omitempty" name:"HealthCheck"`
 
-	// 源站健康检查相关参数
+	// <p>源站健康检查相关参数</p>
 	CheckParams *RuleCheckParams `json:"CheckParams,omitnil,omitempty" name:"CheckParams"`
 
-	// 加速通道转发到源站的协议类型：支持HTTP或HTTPS。
-	// 不传递该字段时表示使用对应监听器的ForwardProtocol。
+	// <p>加速通道转发到源站的协议类型：支持HTTP或HTTPS。不传递该字段时表示使用对应监听器的ForwardProtocol。</p>
 	ForwardProtocol *string `json:"ForwardProtocol,omitnil,omitempty" name:"ForwardProtocol"`
 
-	// 回源Host。加速通道转发到源站的host，不设置该参数时，使用默认的host设置，即客户端发起的http请求的host。
+	// <p>回源Host。加速通道转发到源站的host，不设置该参数时，使用默认的host设置，即客户端发起的http请求的host。</p>
 	ForwardHost *string `json:"ForwardHost,omitnil,omitempty" name:"ForwardHost"`
 
-	// 服务器名称指示（ServerNameIndication，简称SNI）开关。ON表示开启，OFF表示关闭。创建HTTP监听器转发规则时，SNI功能默认关闭。
+	// <p>服务器名称指示（ServerNameIndication，简称SNI）开关。ON表示开启，OFF表示关闭。创建HTTP监听器转发规则时，SNI功能默认关闭。</p>
 	ServerNameIndicationSwitch *string `json:"ServerNameIndicationSwitch,omitnil,omitempty" name:"ServerNameIndicationSwitch"`
 
-	// 服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。
+	// <p>服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。</p>
 	ServerNameIndication *string `json:"ServerNameIndication,omitnil,omitempty" name:"ServerNameIndication"`
 
-	// HTTP强制跳转HTTPS。输入当前规则对应的域名与地址。
+	// <p>HTTP强制跳转HTTPS。输入当前规则对应的域名与地址。</p>
 	ForcedRedirect *string `json:"ForcedRedirect,omitnil,omitempty" name:"ForcedRedirect"`
 }
 
 type CreateRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 7层监听器ID
+	// <p>7层监听器ID</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 转发规则的域名
+	// <p>转发规则的域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 转发规则的路径
+	// <p>转发规则的路径</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 转发规则对应源站的类型，支持IP和DOMAIN类型。
+	// <p>转发规则对应源站的类型，支持IP和DOMAIN类型。</p>
 	RealServerType *string `json:"RealServerType,omitnil,omitempty" name:"RealServerType"`
 
-	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数。
+	// <p>监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数。</p>
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
-	// 规则是否开启健康检查，1开启，0关闭。
+	// <p>规则是否开启健康检查，1开启，0关闭。</p>
 	HealthCheck *uint64 `json:"HealthCheck,omitnil,omitempty" name:"HealthCheck"`
 
-	// 源站健康检查相关参数
+	// <p>源站健康检查相关参数</p>
 	CheckParams *RuleCheckParams `json:"CheckParams,omitnil,omitempty" name:"CheckParams"`
 
-	// 加速通道转发到源站的协议类型：支持HTTP或HTTPS。
-	// 不传递该字段时表示使用对应监听器的ForwardProtocol。
+	// <p>加速通道转发到源站的协议类型：支持HTTP或HTTPS。不传递该字段时表示使用对应监听器的ForwardProtocol。</p>
 	ForwardProtocol *string `json:"ForwardProtocol,omitnil,omitempty" name:"ForwardProtocol"`
 
-	// 回源Host。加速通道转发到源站的host，不设置该参数时，使用默认的host设置，即客户端发起的http请求的host。
+	// <p>回源Host。加速通道转发到源站的host，不设置该参数时，使用默认的host设置，即客户端发起的http请求的host。</p>
 	ForwardHost *string `json:"ForwardHost,omitnil,omitempty" name:"ForwardHost"`
 
-	// 服务器名称指示（ServerNameIndication，简称SNI）开关。ON表示开启，OFF表示关闭。创建HTTP监听器转发规则时，SNI功能默认关闭。
+	// <p>服务器名称指示（ServerNameIndication，简称SNI）开关。ON表示开启，OFF表示关闭。创建HTTP监听器转发规则时，SNI功能默认关闭。</p>
 	ServerNameIndicationSwitch *string `json:"ServerNameIndicationSwitch,omitnil,omitempty" name:"ServerNameIndicationSwitch"`
 
-	// 服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。
+	// <p>服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。</p>
 	ServerNameIndication *string `json:"ServerNameIndication,omitnil,omitempty" name:"ServerNameIndication"`
 
-	// HTTP强制跳转HTTPS。输入当前规则对应的域名与地址。
+	// <p>HTTP强制跳转HTTPS。输入当前规则对应的域名与地址。</p>
 	ForcedRedirect *string `json:"ForcedRedirect,omitnil,omitempty" name:"ForcedRedirect"`
 }
 
@@ -1945,7 +1915,7 @@ func (r *CreateRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRuleResponseParams struct {
-	// 创建转发规则成功返回规则ID
+	// <p>创建转发规则成功返回规则ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3923,14 +3893,14 @@ func (r *DescribeGlobalDomainsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGroupAndStatisticsProxyRequestParams struct {
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type DescribeGroupAndStatisticsProxyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -3955,10 +3925,10 @@ func (r *DescribeGroupAndStatisticsProxyRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeGroupAndStatisticsProxyResponseParams struct {
-	// 可以统计的通道组信息
+	// <p>可以统计的通道组信息</p>
 	GroupSet []*GroupStatisticsInfo `json:"GroupSet,omitnil,omitempty" name:"GroupSet"`
 
-	// 通道组数量
+	// <p>通道组数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4049,56 +4019,56 @@ func (r *DescribeGroupDomainConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHTTPListenersRequestParams struct {
-	// 通道ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
+	// <p>通道ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。</p>
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
 
-	// 通道组ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
+	// <p>通道组ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 过滤条件，按照监听器ID进行精确查询。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
+	// <p>过滤条件，按照监听器ID进行精确查询。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 过滤条件，按照监听器名称进行精确查询
+	// <p>过滤条件，按照监听器名称进行精确查询</p>
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
-	// 过滤条件，按照监听器端口进行精确查询
+	// <p>过滤条件，按照监听器端口进行精确查询</p>
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数量，默认为20个
+	// <p>限制数量，默认为20个</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件，支持按照端口或监听器名称进行模糊查询，该参数不能与ListenerName和Port同时使用
+	// <p>过滤条件，支持按照端口或监听器名称进行模糊查询，该参数不能与ListenerName和Port同时使用</p>
 	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
 }
 
 type DescribeHTTPListenersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通道ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
+	// <p>通道ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。</p>
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
 
-	// 通道组ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
+	// <p>通道组ID。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 过滤条件，按照监听器ID进行精确查询。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。
+	// <p>过滤条件，按照监听器ID进行精确查询。ListenerId、ProxyId、GroupId须至少填写一个，且ProxyId与GroupId至多只能填写其中一个。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 过滤条件，按照监听器名称进行精确查询
+	// <p>过滤条件，按照监听器名称进行精确查询</p>
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
-	// 过滤条件，按照监听器端口进行精确查询
+	// <p>过滤条件，按照监听器端口进行精确查询</p>
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制数量，默认为20个
+	// <p>限制数量，默认为20个</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件，支持按照端口或监听器名称进行模糊查询，该参数不能与ListenerName和Port同时使用
+	// <p>过滤条件，支持按照端口或监听器名称进行模糊查询，该参数不能与ListenerName和Port同时使用</p>
 	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
 }
 
@@ -4130,10 +4100,10 @@ func (r *DescribeHTTPListenersRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHTTPListenersResponseParams struct {
-	// 监听器数量
+	// <p>监听器数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// HTTP监听器列表
+	// <p>HTTP监听器列表</p>
 	ListenerSet []*HTTPListener `json:"ListenerSet,omitnil,omitempty" name:"ListenerSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4439,98 +4409,62 @@ func (r *DescribeListenerStatisticsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProxiesRequestParams struct {
-	// （旧参数，请切换到ProxyIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
+	// <p>（旧参数，请切换到ProxyIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件。   
-	// 每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定InstanceIds和Filters。 
-	// ProjectId - String - 是否必填：否 -（过滤条件）按照项目ID过滤。   
-	// AccessRegion - String - 是否必填：否 - （过滤条件）按照接入地域过滤。    
-	// RealServerRegion - String - 是否必填：否 - （过滤条件）按照源站地域过滤。
-	// GroupId - String - 是否必填：否 - （过滤条件）按照通道组ID过滤。
-	// IPAddressVersion - String - 是否必填：否 - （过滤条件）按照IP版本过滤。
-	// PackageType - String - 是否必填：否 - （过滤条件）按照通道套餐类型过滤。
+	// <p>过滤条件。 <br />每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定InstanceIds和Filters。 ProjectId - String - 是否必填：否 -（过滤条件）按照项目ID过滤。 <br />AccessRegion - String - 是否必填：否 - （过滤条件）按照接入地域过滤。  <br />RealServerRegion - String - 是否必填：否 - （过滤条件）按照源站地域过滤。GroupId - String - 是否必填：否 - （过滤条件）按照通道组ID过滤。IPAddressVersion - String - 是否必填：否 - （过滤条件）按照IP版本过滤。PackageType - String - 是否必填：否 - （过滤条件）按照通道套餐类型过滤。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// （新参数，替代InstanceIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
+	// <p>（新参数，替代InstanceIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。</p>
 	ProxyIds []*string `json:"ProxyIds,omitnil,omitempty" name:"ProxyIds"`
 
-	// 标签列表，当存在该字段时，拉取对应标签下的资源列表。
-	// 最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，通道会被拉取出来。
+	// <p>标签列表，当存在该字段时，拉取对应标签下的资源列表。最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，通道会被拉取出来。</p>
 	TagSet []*TagPair `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
-	// 当该字段为1时，仅拉取非通道组的通道，
-	// 当该字段为0时，仅拉取通道组的通道，
-	// 不存在该字段时，拉取所有通道，包括独立通道和通道组通道。
+	// <p>当该字段为1时，仅拉取非通道组的通道，当该字段为0时，仅拉取通道组的通道，不存在该字段时，拉取所有通道，包括独立通道和通道组通道。</p>
 	Independent *int64 `json:"Independent,omitnil,omitempty" name:"Independent"`
 
-	// 输出通道列表的排列顺序。取值范围：
-	// asc：升序排列；
-	// desc：降序排列。
-	// 默认为降序。
+	// <p>输出通道列表的排列顺序。取值范围：asc：升序排列；desc：降序排列。默认为降序。</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 通道列表排序的依据字段。取值范围：
-	// create_time：依据通道的创建时间排序；
-	// proxy_id：依据通道的ID排序；
-	// bandwidth：依据通道带宽上限排序；
-	// concurrent_connections：依据通道并发排序；
-	// 默认按通道创建时间排序。
+	// <p>通道列表排序的依据字段。取值范围：create_time：依据通道的创建时间排序；proxy_id：依据通道的ID排序；bandwidth：依据通道带宽上限排序；concurrent_connections：依据通道并发排序；默认按通道创建时间排序。</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
 type DescribeProxiesRequest struct {
 	*tchttp.BaseRequest
 	
-	// （旧参数，请切换到ProxyIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
+	// <p>（旧参数，请切换到ProxyIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件。   
-	// 每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定InstanceIds和Filters。 
-	// ProjectId - String - 是否必填：否 -（过滤条件）按照项目ID过滤。   
-	// AccessRegion - String - 是否必填：否 - （过滤条件）按照接入地域过滤。    
-	// RealServerRegion - String - 是否必填：否 - （过滤条件）按照源站地域过滤。
-	// GroupId - String - 是否必填：否 - （过滤条件）按照通道组ID过滤。
-	// IPAddressVersion - String - 是否必填：否 - （过滤条件）按照IP版本过滤。
-	// PackageType - String - 是否必填：否 - （过滤条件）按照通道套餐类型过滤。
+	// <p>过滤条件。 <br />每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定InstanceIds和Filters。 ProjectId - String - 是否必填：否 -（过滤条件）按照项目ID过滤。 <br />AccessRegion - String - 是否必填：否 - （过滤条件）按照接入地域过滤。  <br />RealServerRegion - String - 是否必填：否 - （过滤条件）按照源站地域过滤。GroupId - String - 是否必填：否 - （过滤条件）按照通道组ID过滤。IPAddressVersion - String - 是否必填：否 - （过滤条件）按照IP版本过滤。PackageType - String - 是否必填：否 - （过滤条件）按照通道套餐类型过滤。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// （新参数，替代InstanceIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
+	// <p>（新参数，替代InstanceIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。</p>
 	ProxyIds []*string `json:"ProxyIds,omitnil,omitempty" name:"ProxyIds"`
 
-	// 标签列表，当存在该字段时，拉取对应标签下的资源列表。
-	// 最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，通道会被拉取出来。
+	// <p>标签列表，当存在该字段时，拉取对应标签下的资源列表。最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，通道会被拉取出来。</p>
 	TagSet []*TagPair `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
-	// 当该字段为1时，仅拉取非通道组的通道，
-	// 当该字段为0时，仅拉取通道组的通道，
-	// 不存在该字段时，拉取所有通道，包括独立通道和通道组通道。
+	// <p>当该字段为1时，仅拉取非通道组的通道，当该字段为0时，仅拉取通道组的通道，不存在该字段时，拉取所有通道，包括独立通道和通道组通道。</p>
 	Independent *int64 `json:"Independent,omitnil,omitempty" name:"Independent"`
 
-	// 输出通道列表的排列顺序。取值范围：
-	// asc：升序排列；
-	// desc：降序排列。
-	// 默认为降序。
+	// <p>输出通道列表的排列顺序。取值范围：asc：升序排列；desc：降序排列。默认为降序。</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 通道列表排序的依据字段。取值范围：
-	// create_time：依据通道的创建时间排序；
-	// proxy_id：依据通道的ID排序；
-	// bandwidth：依据通道带宽上限排序；
-	// concurrent_connections：依据通道并发排序；
-	// 默认按通道创建时间排序。
+	// <p>通道列表排序的依据字段。取值范围：create_time：依据通道的创建时间排序；proxy_id：依据通道的ID排序；bandwidth：依据通道带宽上限排序；concurrent_connections：依据通道并发排序；默认按通道创建时间排序。</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 }
 
@@ -4563,13 +4497,13 @@ func (r *DescribeProxiesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProxiesResponseParams struct {
-	// 通道个数。
+	// <p>通道个数。</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// （旧参数，请切换到ProxySet）通道实例信息列表。
+	// <p>（旧参数，请切换到ProxySet）通道实例信息列表。</p>
 	InstanceSet []*ProxyInfo `json:"InstanceSet,omitnil,omitempty" name:"InstanceSet"`
 
-	// （新参数）通道实例信息列表。
+	// <p>（新参数）通道实例信息列表。</p>
 	ProxySet []*ProxyInfo `json:"ProxySet,omitnil,omitempty" name:"ProxySet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4658,14 +4592,14 @@ func (r *DescribeProxiesStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProxyAndStatisticsListenersRequestParams struct {
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type DescribeProxyAndStatisticsListenersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -4690,10 +4624,10 @@ func (r *DescribeProxyAndStatisticsListenersRequest) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeProxyAndStatisticsListenersResponseParams struct {
-	// 可以统计的通道信息
+	// <p>可以统计的通道信息</p>
 	ProxySet []*ProxySimpleInfo `json:"ProxySet,omitnil,omitempty" name:"ProxySet"`
 
-	// 通道数量
+	// <p>通道数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4832,52 +4766,38 @@ func (r *DescribeProxyGroupDetailsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProxyGroupListRequestParams struct {
-	// 偏移量，默认值为0。
+	// <p>偏移量，默认值为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认值为20，最大值为100。
+	// <p>返回数量，默认值为20，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 项目ID。取值范围：
-	// -1，该用户下所有项目
-	// 0，默认项目
-	// 其他值，指定的项目
+	// <p>项目ID。取值范围：-1，该用户下所有项目0，默认项目其他值，指定的项目</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 过滤条件。   
-	// 每次请求的Filter.Values的上限为5。
-	// RealServerRegion - String - 是否必填：否 -（过滤条件）按照源站地域过滤，可参考DescribeDestRegions接口返回结果中的RegionId。
-	// PackageType - String - 是否必填：否 - （过滤条件）通道组类型，Thunder表示标准通道组，Accelerator表示银牌加速通道组。
+	// <p>过滤条件。 <br />每次请求的Filter.Values的上限为5。RealServerRegion - String - 是否必填：否 -（过滤条件）按照源站地域过滤，可参考DescribeDestRegions接口返回结果中的RegionId。PackageType - String - 是否必填：否 - （过滤条件）通道组类型，Thunder表示标准通道组，Accelerator表示银牌加速通道组。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 标签列表，当存在该字段时，拉取对应标签下的资源列表。
-	// 最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，该通道组会被拉取出来。
+	// <p>标签列表，当存在该字段时，拉取对应标签下的资源列表。最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，该通道组会被拉取出来。</p>
 	TagSet []*TagPair `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
 type DescribeProxyGroupListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量，默认值为0。
+	// <p>偏移量，默认值为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认值为20，最大值为100。
+	// <p>返回数量，默认值为20，最大值为100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 项目ID。取值范围：
-	// -1，该用户下所有项目
-	// 0，默认项目
-	// 其他值，指定的项目
+	// <p>项目ID。取值范围：-1，该用户下所有项目0，默认项目其他值，指定的项目</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 过滤条件。   
-	// 每次请求的Filter.Values的上限为5。
-	// RealServerRegion - String - 是否必填：否 -（过滤条件）按照源站地域过滤，可参考DescribeDestRegions接口返回结果中的RegionId。
-	// PackageType - String - 是否必填：否 - （过滤条件）通道组类型，Thunder表示标准通道组，Accelerator表示银牌加速通道组。
+	// <p>过滤条件。 <br />每次请求的Filter.Values的上限为5。RealServerRegion - String - 是否必填：否 -（过滤条件）按照源站地域过滤，可参考DescribeDestRegions接口返回结果中的RegionId。PackageType - String - 是否必填：否 - （过滤条件）通道组类型，Thunder表示标准通道组，Accelerator表示银牌加速通道组。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 标签列表，当存在该字段时，拉取对应标签下的资源列表。
-	// 最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，该通道组会被拉取出来。
+	// <p>标签列表，当存在该字段时，拉取对应标签下的资源列表。最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，该通道组会被拉取出来。</p>
 	TagSet []*TagPair `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
@@ -4906,10 +4826,10 @@ func (r *DescribeProxyGroupListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProxyGroupListResponseParams struct {
-	// 通道组总数。
+	// <p>通道组总数。</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 通道组列表。
+	// <p>通道组列表。</p>
 	ProxyGroupList []*ProxyGroupInfo `json:"ProxyGroupList,omitnil,omitempty" name:"ProxyGroupList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4934,44 +4854,38 @@ func (r *DescribeProxyGroupListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProxyGroupStatisticsRequestParams struct {
-	// 通道组ID
+	// <p>通道组ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 起始时间
+	// <p>起始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 统计指标名称列表，支持: 入带宽:InBandwidth, 出带宽:OutBandwidth, 并发:Concurrent, 入包量:InPackets, 出包量:OutPackets
+	// <p>统计指标名称列表，支持: 入带宽:InBandwidth, 出带宽:OutBandwidth, 并发:Concurrent, 入包量:InPackets, 出包量:OutPackets</p>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
-	// 监控粒度，目前支持60，300，3600，86400，单位：秒。
-	// 当时间范围不超过1天，支持最小粒度60秒；
-	// 当时间范围不超过7天，支持最小粒度3600秒；
-	// 当时间范围不超过30天，支持最小粒度86400秒。
+	// <p>监控粒度，目前支持60，300，3600，86400，单位：秒。当时间范围不超过1天，支持最小粒度60秒；当时间范围不超过7天，支持最小粒度3600秒；当时间范围不超过30天，支持最小粒度86400秒。</p>
 	Granularity *uint64 `json:"Granularity,omitnil,omitempty" name:"Granularity"`
 }
 
 type DescribeProxyGroupStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通道组ID
+	// <p>通道组ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 起始时间
+	// <p>起始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 统计指标名称列表，支持: 入带宽:InBandwidth, 出带宽:OutBandwidth, 并发:Concurrent, 入包量:InPackets, 出包量:OutPackets
+	// <p>统计指标名称列表，支持: 入带宽:InBandwidth, 出带宽:OutBandwidth, 并发:Concurrent, 入包量:InPackets, 出包量:OutPackets</p>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
-	// 监控粒度，目前支持60，300，3600，86400，单位：秒。
-	// 当时间范围不超过1天，支持最小粒度60秒；
-	// 当时间范围不超过7天，支持最小粒度3600秒；
-	// 当时间范围不超过30天，支持最小粒度86400秒。
+	// <p>监控粒度，目前支持60，300，3600，86400，单位：秒。当时间范围不超过1天，支持最小粒度60秒；当时间范围不超过7天，支持最小粒度3600秒；当时间范围不超过30天，支持最小粒度86400秒。</p>
 	Granularity *uint64 `json:"Granularity,omitnil,omitempty" name:"Granularity"`
 }
 
@@ -5000,7 +4914,7 @@ func (r *DescribeProxyGroupStatisticsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProxyGroupStatisticsResponseParams struct {
-	// 通道组统计数据
+	// <p>通道组统计数据</p>
 	StatisticsData []*MetricStatisticsInfo `json:"StatisticsData,omitnil,omitempty" name:"StatisticsData"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7217,32 +7131,32 @@ func (r *ModifyGlobalDomainAttributeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyGlobalDomainDnsRequestParams struct {
-	// 解析记录ID
+	// <p>解析记录ID</p>
 	DnsRecordId *uint64 `json:"DnsRecordId,omitnil,omitempty" name:"DnsRecordId"`
 
-	// 域名ID
+	// <p>域名ID</p>
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
-	// 国家ID列表
+	// <p>国家ID列表</p>
 	NationCountryInnerCodes []*string `json:"NationCountryInnerCodes,omitnil,omitempty" name:"NationCountryInnerCodes"`
 
-	// 通道ID列表
+	// <p>通道ID列表</p>
 	ProxyIdList []*string `json:"ProxyIdList,omitnil,omitempty" name:"ProxyIdList"`
 }
 
 type ModifyGlobalDomainDnsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 解析记录ID
+	// <p>解析记录ID</p>
 	DnsRecordId *uint64 `json:"DnsRecordId,omitnil,omitempty" name:"DnsRecordId"`
 
-	// 域名ID
+	// <p>域名ID</p>
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
-	// 国家ID列表
+	// <p>国家ID列表</p>
 	NationCountryInnerCodes []*string `json:"NationCountryInnerCodes,omitnil,omitempty" name:"NationCountryInnerCodes"`
 
-	// 通道ID列表
+	// <p>通道ID列表</p>
 	ProxyIdList []*string `json:"ProxyIdList,omitnil,omitempty" name:"ProxyIdList"`
 }
 
@@ -7678,50 +7592,44 @@ func (r *ModifyProxiesProjectResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyProxyConfigurationRequestParams struct {
-	// （旧参数，请切换到ProxyId）通道的实例ID。
+	// <p>（旧参数，请切换到ProxyId）通道的实例ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 需要调整到的目标带宽，单位：Mbps。
-	// Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAccessRegionsByDestRegion接口获取得到
+	// <p>需要调整到的目标带宽，单位：Mbps。Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAccessRegionsByDestRegion接口获取得到</p>
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// 需要调整到的目标并发值，单位：万。
-	// Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAccessRegionsByDestRegion接口获取得到
+	// <p>需要调整到的目标并发值，单位：万。Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAccessRegionsByDestRegion接口获取得到</p>
 	Concurrent *uint64 `json:"Concurrent,omitnil,omitempty" name:"Concurrent"`
 
-	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
-	// 更多详细信息请参阅：如何保证幂等性。
+	// <p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。更多详细信息请参阅：如何保证幂等性。</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
-	// （新参数）通道的实例ID。
+	// <p>（新参数）通道的实例ID。</p>
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
 
-	// 计费方式 (0:按带宽计费，1:按流量计费 默认按带宽计费）
+	// <p>计费方式 (0:按带宽计费，1:按流量计费 默认按带宽计费）</p>
 	BillingType *int64 `json:"BillingType,omitnil,omitempty" name:"BillingType"`
 }
 
 type ModifyProxyConfigurationRequest struct {
 	*tchttp.BaseRequest
 	
-	// （旧参数，请切换到ProxyId）通道的实例ID。
+	// <p>（旧参数，请切换到ProxyId）通道的实例ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 需要调整到的目标带宽，单位：Mbps。
-	// Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAccessRegionsByDestRegion接口获取得到
+	// <p>需要调整到的目标带宽，单位：Mbps。Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAccessRegionsByDestRegion接口获取得到</p>
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// 需要调整到的目标并发值，单位：万。
-	// Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAccessRegionsByDestRegion接口获取得到
+	// <p>需要调整到的目标并发值，单位：万。Bandwidth与Concurrent必须至少设置一个。取值范围根据DescribeAccessRegionsByDestRegion接口获取得到</p>
 	Concurrent *uint64 `json:"Concurrent,omitnil,omitempty" name:"Concurrent"`
 
-	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
-	// 更多详细信息请参阅：如何保证幂等性。
+	// <p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。更多详细信息请参阅：如何保证幂等性。</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
-	// （新参数）通道的实例ID。
+	// <p>（新参数）通道的实例ID。</p>
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
 
-	// 计费方式 (0:按带宽计费，1:按流量计费 默认按带宽计费）
+	// <p>计费方式 (0:按带宽计费，1:按流量计费 默认按带宽计费）</p>
 	BillingType *int64 `json:"BillingType,omitnil,omitempty" name:"BillingType"`
 }
 
@@ -8138,74 +8046,74 @@ func (r *ModifySecurityRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTCPListenerAttributeRequestParams struct {
-	// 监听器ID
+	// <p>监听器ID</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 通道组ID，ProxyId和GroupId必须设置一个，但不能同时设置。
+	// <p>通道组ID，ProxyId和GroupId必须设置一个，但不能同时设置。</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 通道ID，ProxyId和GroupId必须设置一个，但不能同时设置。
+	// <p>通道ID，ProxyId和GroupId必须设置一个，但不能同时设置。</p>
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
 
-	// 监听器名称
+	// <p>监听器名称</p>
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
-	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。注意：lrtt需要开通白名单；RealServerType 为 DOMAIN 不支持wrr 和 lrtt。
+	// <p>监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。注意：lrtt需要开通白名单；RealServerType 为 DOMAIN 不支持wrr 和 lrtt。</p>
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
-	// 源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。
+	// <p>源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。</p>
 	DelayLoop *uint64 `json:"DelayLoop,omitnil,omitempty" name:"DelayLoop"`
 
-	// 源站健康检查响应超时时间，单位：秒。超时时间取值在[2，60]之间。超时时间应小于健康检查时间间隔DelayLoop。
+	// <p>源站健康检查响应超时时间，单位：秒。超时时间取值在[2，60]之间。超时时间应小于健康检查时间间隔DelayLoop。</p>
 	ConnectTimeout *uint64 `json:"ConnectTimeout,omitnil,omitempty" name:"ConnectTimeout"`
 
-	// 是否开启健康检查，1开启，0关闭。
+	// <p>是否开启健康检查，1开启，0关闭。</p>
 	HealthCheck *uint64 `json:"HealthCheck,omitnil,omitempty" name:"HealthCheck"`
 
-	// 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
+	// <p>源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启</p>
 	FailoverSwitch *uint64 `json:"FailoverSwitch,omitnil,omitempty" name:"FailoverSwitch"`
 
-	// 健康阈值，表示连续检查成功多少次数后认定源站健康。范围为1到10
+	// <p>健康阈值，表示连续检查成功多少次数后认定源站健康。范围为1到10</p>
 	HealthyThreshold *uint64 `json:"HealthyThreshold,omitnil,omitempty" name:"HealthyThreshold"`
 
-	// 不健康阈值，表示连续检查失败次数后认定源站不健康。范围为1到10
+	// <p>不健康阈值，表示连续检查失败次数后认定源站不健康。范围为1到10</p>
 	UnhealthyThreshold *uint64 `json:"UnhealthyThreshold,omitnil,omitempty" name:"UnhealthyThreshold"`
 }
 
 type ModifyTCPListenerAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 监听器ID
+	// <p>监听器ID</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 通道组ID，ProxyId和GroupId必须设置一个，但不能同时设置。
+	// <p>通道组ID，ProxyId和GroupId必须设置一个，但不能同时设置。</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 通道ID，ProxyId和GroupId必须设置一个，但不能同时设置。
+	// <p>通道ID，ProxyId和GroupId必须设置一个，但不能同时设置。</p>
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
 
-	// 监听器名称
+	// <p>监听器名称</p>
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
-	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。注意：lrtt需要开通白名单；RealServerType 为 DOMAIN 不支持wrr 和 lrtt。
+	// <p>监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。注意：lrtt需要开通白名单；RealServerType 为 DOMAIN 不支持wrr 和 lrtt。</p>
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
-	// 源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。
+	// <p>源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。</p>
 	DelayLoop *uint64 `json:"DelayLoop,omitnil,omitempty" name:"DelayLoop"`
 
-	// 源站健康检查响应超时时间，单位：秒。超时时间取值在[2，60]之间。超时时间应小于健康检查时间间隔DelayLoop。
+	// <p>源站健康检查响应超时时间，单位：秒。超时时间取值在[2，60]之间。超时时间应小于健康检查时间间隔DelayLoop。</p>
 	ConnectTimeout *uint64 `json:"ConnectTimeout,omitnil,omitempty" name:"ConnectTimeout"`
 
-	// 是否开启健康检查，1开启，0关闭。
+	// <p>是否开启健康检查，1开启，0关闭。</p>
 	HealthCheck *uint64 `json:"HealthCheck,omitnil,omitempty" name:"HealthCheck"`
 
-	// 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
+	// <p>源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启</p>
 	FailoverSwitch *uint64 `json:"FailoverSwitch,omitnil,omitempty" name:"FailoverSwitch"`
 
-	// 健康阈值，表示连续检查成功多少次数后认定源站健康。范围为1到10
+	// <p>健康阈值，表示连续检查成功多少次数后认定源站健康。范围为1到10</p>
 	HealthyThreshold *uint64 `json:"HealthyThreshold,omitnil,omitempty" name:"HealthyThreshold"`
 
-	// 不健康阈值，表示连续检查失败次数后认定源站不健康。范围为1到10
+	// <p>不健康阈值，表示连续检查失败次数后认定源站不健康。范围为1到10</p>
 	UnhealthyThreshold *uint64 `json:"UnhealthyThreshold,omitnil,omitempty" name:"UnhealthyThreshold"`
 }
 

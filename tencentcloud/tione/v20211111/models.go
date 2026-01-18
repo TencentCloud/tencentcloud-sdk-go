@@ -4610,6 +4610,60 @@ func (r *DescribePlatformImagesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSubAccountLinuxUserInfosRequestParams struct {
+
+}
+
+type DescribeSubAccountLinuxUserInfosRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeSubAccountLinuxUserInfosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubAccountLinuxUserInfosRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubAccountLinuxUserInfosRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSubAccountLinuxUserInfosResponseParams struct {
+	// 子账号信息列表
+	SubAccountList []*SubAccountInfo `json:"SubAccountList,omitnil,omitempty" name:"SubAccountList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSubAccountLinuxUserInfosResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSubAccountLinuxUserInfosResponseParams `json:"Response"`
+}
+
+func (r *DescribeSubAccountLinuxUserInfosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubAccountLinuxUserInfosResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTrainingModelVersionRequestParams struct {
 	// 模型版本ID
 	TrainingModelVersionId *string `json:"TrainingModelVersionId,omitnil,omitempty" name:"TrainingModelVersionId"`
@@ -8315,6 +8369,23 @@ func (r *StopTrainingTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SubAccountInfo struct {
+	// 腾讯云主账号UIN
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 腾讯云子账号UIN
+	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
+
+	// 子账号名称
+	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
+
+	// 子账号在Linux下的UID
+	LinuxUid *int64 `json:"LinuxUid,omitnil,omitempty" name:"LinuxUid"`
+
+	// 子账号在Linux下的GID
+	LinuxGid *int64 `json:"LinuxGid,omitnil,omitempty" name:"LinuxGid"`
+}
+
 type TCPSocketAction struct {
 	// 调用端口
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
@@ -8710,6 +8781,60 @@ type TrainingTaskSetItem struct {
 
 	// 任务AppId
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+}
+
+// Predefined struct for user
+type UpdateSubAccountLinuxUserInfoRequestParams struct {
+	// 子账号信息列表
+	SubAccountList []*SubAccountInfo `json:"SubAccountList,omitnil,omitempty" name:"SubAccountList"`
+}
+
+type UpdateSubAccountLinuxUserInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 子账号信息列表
+	SubAccountList []*SubAccountInfo `json:"SubAccountList,omitnil,omitempty" name:"SubAccountList"`
+}
+
+func (r *UpdateSubAccountLinuxUserInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateSubAccountLinuxUserInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAccountList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateSubAccountLinuxUserInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateSubAccountLinuxUserInfoResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateSubAccountLinuxUserInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateSubAccountLinuxUserInfoResponseParams `json:"Response"`
+}
+
+func (r *UpdateSubAccountLinuxUserInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateSubAccountLinuxUserInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Usage struct {

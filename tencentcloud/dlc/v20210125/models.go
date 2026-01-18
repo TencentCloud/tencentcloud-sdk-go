@@ -2564,6 +2564,126 @@ func (r *CreateDatabaseResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDatasourceConnectionRequestParams struct {
+	// 数据连接名称
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
+
+	// 数据连接类型
+	DatasourceConnectionType *string `json:"DatasourceConnectionType,omitnil,omitempty" name:"DatasourceConnectionType"`
+
+	// 数据连接属性
+	DatasourceConnectionConfig *DatasourceConnectionConfig `json:"DatasourceConnectionConfig,omitnil,omitempty" name:"DatasourceConnectionConfig"`
+
+	// 数据连接所属服务
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 数据连接描述
+	DatasourceConnectionDesc *string `json:"DatasourceConnectionDesc,omitnil,omitempty" name:"DatasourceConnectionDesc"`
+
+	// 数据引擎名称数组
+	DataEngineNames []*string `json:"DataEngineNames,omitnil,omitempty" name:"DataEngineNames"`
+
+	// 网络连接名称
+	NetworkConnectionName *string `json:"NetworkConnectionName,omitnil,omitempty" name:"NetworkConnectionName"`
+
+	// 网络连接描述
+	NetworkConnectionDesc *string `json:"NetworkConnectionDesc,omitnil,omitempty" name:"NetworkConnectionDesc"`
+
+	// 网络连接类型 （2-夸源型，4-增强型）
+	NetworkConnectionType *int64 `json:"NetworkConnectionType,omitnil,omitempty" name:"NetworkConnectionType"`
+
+	// 自定义配置
+	CustomConfig []*CustomConfig `json:"CustomConfig,omitnil,omitempty" name:"CustomConfig"`
+}
+
+type CreateDatasourceConnectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据连接名称
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
+
+	// 数据连接类型
+	DatasourceConnectionType *string `json:"DatasourceConnectionType,omitnil,omitempty" name:"DatasourceConnectionType"`
+
+	// 数据连接属性
+	DatasourceConnectionConfig *DatasourceConnectionConfig `json:"DatasourceConnectionConfig,omitnil,omitempty" name:"DatasourceConnectionConfig"`
+
+	// 数据连接所属服务
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 数据连接描述
+	DatasourceConnectionDesc *string `json:"DatasourceConnectionDesc,omitnil,omitempty" name:"DatasourceConnectionDesc"`
+
+	// 数据引擎名称数组
+	DataEngineNames []*string `json:"DataEngineNames,omitnil,omitempty" name:"DataEngineNames"`
+
+	// 网络连接名称
+	NetworkConnectionName *string `json:"NetworkConnectionName,omitnil,omitempty" name:"NetworkConnectionName"`
+
+	// 网络连接描述
+	NetworkConnectionDesc *string `json:"NetworkConnectionDesc,omitnil,omitempty" name:"NetworkConnectionDesc"`
+
+	// 网络连接类型 （2-夸源型，4-增强型）
+	NetworkConnectionType *int64 `json:"NetworkConnectionType,omitnil,omitempty" name:"NetworkConnectionType"`
+
+	// 自定义配置
+	CustomConfig []*CustomConfig `json:"CustomConfig,omitnil,omitempty" name:"CustomConfig"`
+}
+
+func (r *CreateDatasourceConnectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDatasourceConnectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatasourceConnectionName")
+	delete(f, "DatasourceConnectionType")
+	delete(f, "DatasourceConnectionConfig")
+	delete(f, "ServiceType")
+	delete(f, "DatasourceConnectionDesc")
+	delete(f, "DataEngineNames")
+	delete(f, "NetworkConnectionName")
+	delete(f, "NetworkConnectionDesc")
+	delete(f, "NetworkConnectionType")
+	delete(f, "CustomConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDatasourceConnectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDatasourceConnectionResponseParams struct {
+	// 数据连接Id
+	DatasourceConnectionId *string `json:"DatasourceConnectionId,omitnil,omitempty" name:"DatasourceConnectionId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDatasourceConnectionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDatasourceConnectionResponseParams `json:"Response"`
+}
+
+func (r *CreateDatasourceConnectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDatasourceConnectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateExportTaskRequestParams struct {
 	// 数据来源，lakefsStorage、taskResult
 	InputType *string `json:"InputType,omitnil,omitempty" name:"InputType"`

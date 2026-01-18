@@ -1167,7 +1167,7 @@ type CreateAICallRequestParams struct {
 	//         &quot;APIUrl&quot;: &quot;https://api.minimax.chat/v1/t2a_v2&quot;,
 	//         &quot;APIKey&quot;: &quot;eyxxxx&quot;,
 	//         &quot;GroupId&quot;: &quot;181000000000000&quot;,
-	//         &quot;VoiceType&quot;:&quot;female-tianmei-jingpin&quot;,
+	//         &quot;VoiceType&quot;:&quot;female-tianmei&quot;,
 	//         &quot;Speed&quot;: 1.2
 	// }
 	// </code></pre>
@@ -1264,6 +1264,9 @@ type CreateAICallRequestParams struct {
 
 	// 最大通话时长， 默认不限制。单位毫秒(ms)
 	MaxCallDurationMs *uint64 `json:"MaxCallDurationMs,omitnil,omitempty" name:"MaxCallDurationMs"`
+
+	// 最大振铃时长，达到时长阈值自动挂断。 **仅自携号码支持当前参数**
+	MaxRingTimeoutSecond *int64 `json:"MaxRingTimeoutSecond,omitnil,omitempty" name:"MaxRingTimeoutSecond"`
 }
 
 type CreateAICallRequest struct {
@@ -1453,7 +1456,7 @@ type CreateAICallRequest struct {
 	//         &quot;APIUrl&quot;: &quot;https://api.minimax.chat/v1/t2a_v2&quot;,
 	//         &quot;APIKey&quot;: &quot;eyxxxx&quot;,
 	//         &quot;GroupId&quot;: &quot;181000000000000&quot;,
-	//         &quot;VoiceType&quot;:&quot;female-tianmei-jingpin&quot;,
+	//         &quot;VoiceType&quot;:&quot;female-tianmei&quot;,
 	//         &quot;Speed&quot;: 1.2
 	// }
 	// </code></pre>
@@ -1548,6 +1551,9 @@ type CreateAICallRequest struct {
 
 	// 最大通话时长， 默认不限制。单位毫秒(ms)
 	MaxCallDurationMs *uint64 `json:"MaxCallDurationMs,omitnil,omitempty" name:"MaxCallDurationMs"`
+
+	// 最大振铃时长，达到时长阈值自动挂断。 **仅自携号码支持当前参数**
+	MaxRingTimeoutSecond *int64 `json:"MaxRingTimeoutSecond,omitnil,omitempty" name:"MaxRingTimeoutSecond"`
 }
 
 func (r *CreateAICallRequest) ToJsonString() string {
@@ -1599,6 +1605,7 @@ func (r *CreateAICallRequest) FromJsonString(s string) error {
 	delete(f, "VoicemailAction")
 	delete(f, "LLMExtraBody")
 	delete(f, "MaxCallDurationMs")
+	delete(f, "MaxRingTimeoutSecond")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAICallRequest has unknown keys!", "")
 	}

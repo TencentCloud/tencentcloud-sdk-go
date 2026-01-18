@@ -2580,7 +2580,10 @@ func NewDescribeCostSummaryByProductResponse() (response *DescribeCostSummaryByP
 // 获取按产品汇总消耗详情
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeCostSummaryByProduct(request *DescribeCostSummaryByProductRequest) (response *DescribeCostSummaryByProductResponse, err error) {
     return c.DescribeCostSummaryByProductWithContext(context.Background(), request)
 }
@@ -2589,7 +2592,10 @@ func (c *Client) DescribeCostSummaryByProduct(request *DescribeCostSummaryByProd
 // 获取按产品汇总消耗详情
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeCostSummaryByProductWithContext(ctx context.Context, request *DescribeCostSummaryByProductRequest) (response *DescribeCostSummaryByProductResponse, err error) {
     if request == nil {
         request = NewDescribeCostSummaryByProductRequest()
@@ -2630,7 +2636,10 @@ func NewDescribeCostSummaryByProjectResponse() (response *DescribeCostSummaryByP
 // 获取按项目汇总消耗详情
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeCostSummaryByProject(request *DescribeCostSummaryByProjectRequest) (response *DescribeCostSummaryByProjectResponse, err error) {
     return c.DescribeCostSummaryByProjectWithContext(context.Background(), request)
 }
@@ -2639,7 +2648,10 @@ func (c *Client) DescribeCostSummaryByProject(request *DescribeCostSummaryByProj
 // 获取按项目汇总消耗详情
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeCostSummaryByProjectWithContext(ctx context.Context, request *DescribeCostSummaryByProjectRequest) (response *DescribeCostSummaryByProjectResponse, err error) {
     if request == nil {
         request = NewDescribeCostSummaryByProjectRequest()
@@ -2680,7 +2692,10 @@ func NewDescribeCostSummaryByRegionResponse() (response *DescribeCostSummaryByRe
 // 获取按地域汇总消耗详情
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeCostSummaryByRegion(request *DescribeCostSummaryByRegionRequest) (response *DescribeCostSummaryByRegionResponse, err error) {
     return c.DescribeCostSummaryByRegionWithContext(context.Background(), request)
 }
@@ -2689,7 +2704,10 @@ func (c *Client) DescribeCostSummaryByRegion(request *DescribeCostSummaryByRegio
 // 获取按地域汇总消耗详情
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeCostSummaryByRegionWithContext(ctx context.Context, request *DescribeCostSummaryByRegionRequest) (response *DescribeCostSummaryByRegionResponse, err error) {
     if request == nil {
         request = NewDescribeCostSummaryByRegionRequest()
@@ -2730,7 +2748,10 @@ func NewDescribeCostSummaryByResourceResponse() (response *DescribeCostSummaryBy
 // 获取按资源汇总消耗详情
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeCostSummaryByResource(request *DescribeCostSummaryByResourceRequest) (response *DescribeCostSummaryByResourceResponse, err error) {
     return c.DescribeCostSummaryByResourceWithContext(context.Background(), request)
 }
@@ -2739,7 +2760,10 @@ func (c *Client) DescribeCostSummaryByResource(request *DescribeCostSummaryByRes
 // 获取按资源汇总消耗详情
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeCostSummaryByResourceWithContext(ctx context.Context, request *DescribeCostSummaryByResourceRequest) (response *DescribeCostSummaryByResourceResponse, err error) {
     if request == nil {
         request = NewDescribeCostSummaryByResourceRequest()

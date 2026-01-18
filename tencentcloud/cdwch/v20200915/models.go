@@ -1246,6 +1246,129 @@ func (r *DescribeClusterConfigsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEventTasksRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 过滤的事件任务id
+	EventTaskId *int64 `json:"EventTaskId,omitnil,omitempty" name:"EventTaskId"`
+
+	// 页码，默认为1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页数量（支持10、20、30、50、100、200），默认为100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 事件名称过滤
+	EventCode *string `json:"EventCode,omitnil,omitempty" name:"EventCode"`
+
+	// (1-待处理;2-已预约;3-处理中;4-已结束;5-处理中;-1-已忽略;-2-已删除)
+	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 创建时间范围开始 (格式: YYYY-MM-DD HH:MM:SS)，最大支持查询180天信息
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 创建时间范围结束 (格式: YYYY-MM-DD HH:MM:SS)
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 排序字段（事件类型：event_code；触发时间：create_time；完成时间：end_time）
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序顺序 (asc/desc)
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+}
+
+type DescribeEventTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 过滤的事件任务id
+	EventTaskId *int64 `json:"EventTaskId,omitnil,omitempty" name:"EventTaskId"`
+
+	// 页码，默认为1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页数量（支持10、20、30、50、100、200），默认为100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 事件名称过滤
+	EventCode *string `json:"EventCode,omitnil,omitempty" name:"EventCode"`
+
+	// (1-待处理;2-已预约;3-处理中;4-已结束;5-处理中;-1-已忽略;-2-已删除)
+	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 创建时间范围开始 (格式: YYYY-MM-DD HH:MM:SS)，最大支持查询180天信息
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 创建时间范围结束 (格式: YYYY-MM-DD HH:MM:SS)
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 排序字段（事件类型：event_code；触发时间：create_time；完成时间：end_time）
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序顺序 (asc/desc)
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+}
+
+func (r *DescribeEventTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEventTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "EventTaskId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "EventCode")
+	delete(f, "Status")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "SortField")
+	delete(f, "SortOrder")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEventTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEventTasksResponseParams struct {
+	// 产生的事件任务
+	EventTasks []*EventTask `json:"EventTasks,omitnil,omitempty" name:"EventTasks"`
+
+	// 事件任务总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEventTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEventTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeEventTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEventTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceClustersRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -1938,6 +2061,56 @@ type DiskSpec struct {
 	DiskCount *int64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
 }
 
+type EventTask struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 事件任务的id	
+	EventTaskId *int64 `json:"EventTaskId,omitnil,omitempty" name:"EventTaskId"`
+
+	// 处理人uin
+	HandleUser *string `json:"HandleUser,omitnil,omitempty" name:"HandleUser"`
+
+	// 事件名称	
+	EventCode *string `json:"EventCode,omitnil,omitempty" name:"EventCode"`
+
+	// CVM相关事件的维修id
+	RepairId *string `json:"RepairId,omitnil,omitempty" name:"RepairId"`
+
+	// 事件名称描述	
+	EventNameDescribe *string `json:"EventNameDescribe,omitnil,omitempty" name:"EventNameDescribe"`
+
+	// 事件等级（0-低；1-中；2-高；3-严重）	
+	EventPriority *int64 `json:"EventPriority,omitnil,omitempty" name:"EventPriority"`
+
+	// 事件详情	
+	EventDetail *string `json:"EventDetail,omitnil,omitempty" name:"EventDetail"`
+
+	// 影响集群节点	
+	IP *string `json:"IP,omitnil,omitempty" name:"IP"`
+
+	// 事件触发时间	
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 事件状态(1-待处理;2-已预约;3-处理中;4-已完成;5-处理中;6-自动处理中;-1-已忽略;-2-已删除)	
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 是否需要授权维修：1-不需要，2-需要
+	NeedAuthorization *int64 `json:"NeedAuthorization,omitnil,omitempty" name:"NeedAuthorization"`
+
+	// 该事件涉及到的操作类型（OnlineMigrationForInstance-实例在线迁移,OnlineMaintenanceForInstance-实例在线维修,等）	
+	OperationType []*string `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+
+	// 完成时间
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// 操作指引
+	OperationGuide *string `json:"OperationGuide,omitnil,omitempty" name:"OperationGuide"`
+
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
 type GroupInfo struct {
 	// 分组名称
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
@@ -2162,6 +2335,12 @@ type InstanceInfo struct {
 
 	// 可升级的zk版本
 	UpgradeZkVersions *string `json:"UpgradeZkVersions,omitnil,omitempty" name:"UpgradeZkVersions"`
+
+	// 是否显示rip
+	ShowRip *string `json:"ShowRip,omitnil,omitempty" name:"ShowRip"`
+
+	// 实例类型：标准型 standard，无keeper节点类型noKeeper；
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
 type InstanceNode struct {

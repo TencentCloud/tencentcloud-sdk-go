@@ -1482,6 +1482,9 @@ func (r *QuerySceneListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type QuerySceneListResponseParams struct {
+	// 场景列表
+	Datas []*Scene `json:"Datas,omitnil,omitempty" name:"Datas"`
+
 	// 总数
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 

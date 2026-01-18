@@ -110,7 +110,7 @@ const (
 	// 存量公网禁止修改
 	FAILEDOPERATION_INVALIDEXISTPUBLICACCESSPOINTERROR = "FailedOperation.InvalidExistPublicAccessPointError"
 
-	// 参数不合法
+	// 白名单列表不合法，格式错误或者数量超限
 	FAILEDOPERATION_INVALIDWHITELISTERROR = "FailedOperation.InvalidWhiteListError"
 
 	// 当前集群不支持设置该参数

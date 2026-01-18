@@ -1971,7 +1971,7 @@ func (r *CreateClusterInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateClusterMaintenanceWindowAndExclusionsRequestParams struct {
-	// 集群ID
+	// 集群ID，可以从容器服务集群控制台获取（https://console.cloud.tencent.com/tke2/cluster）。
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
 	// 维护开始时间
@@ -1980,7 +1980,15 @@ type CreateClusterMaintenanceWindowAndExclusionsRequestParams struct {
 	// 维护时长（小时）
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 维护周期（一周中的哪几天）
+	// 维护周期（一周中的哪几天），支持的参数值如下：
+	// 
+	// - MO：周一
+	// - TU：周二
+	// - WE：周三
+	// - TH：周四
+	// - FR：周五
+	// - SA：周六
+	// - SU：周日
 	DayOfWeek []*string `json:"DayOfWeek,omitnil,omitempty" name:"DayOfWeek"`
 
 	// 维护排除项
@@ -1990,7 +1998,7 @@ type CreateClusterMaintenanceWindowAndExclusionsRequestParams struct {
 type CreateClusterMaintenanceWindowAndExclusionsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 集群ID，可以从容器服务集群控制台获取（https://console.cloud.tencent.com/tke2/cluster）。
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
 	// 维护开始时间
@@ -1999,7 +2007,15 @@ type CreateClusterMaintenanceWindowAndExclusionsRequest struct {
 	// 维护时长（小时）
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 维护周期（一周中的哪几天）
+	// 维护周期（一周中的哪几天），支持的参数值如下：
+	// 
+	// - MO：周一
+	// - TU：周二
+	// - WE：周三
+	// - TH：周四
+	// - FR：周五
+	// - SA：周六
+	// - SU：周日
 	DayOfWeek []*string `json:"DayOfWeek,omitnil,omitempty" name:"DayOfWeek"`
 
 	// 维护排除项
@@ -5119,14 +5135,14 @@ func (r *DeleteClusterInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteClusterMaintenanceWindowAndExclusionRequestParams struct {
-	// 集群ID
+	// 集群ID，可以从容器服务控制台计划升级功能集群维护窗口页面获取（https://console.cloud.tencent.com/tke2/upgrade-plan）。
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 }
 
 type DeleteClusterMaintenanceWindowAndExclusionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 集群ID，可以从容器服务控制台计划升级功能集群维护窗口页面获取（https://console.cloud.tencent.com/tke2/upgrade-plan）。
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 }
 
@@ -18031,7 +18047,15 @@ type ModifyClusterMaintenanceWindowAndExclusionsRequestParams struct {
 	// 维护时长（小时）
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 维护周期（一周中的哪几天）
+	// 维护周期（一周中的哪几天），支持的参数值如下：
+	// 
+	// - MO：周一
+	// - TU：周二
+	// - WE：周三
+	// - TH：周四
+	// - FR：周五
+	// - SA：周六
+	// - SU：周日
 	DayOfWeek []*string `json:"DayOfWeek,omitnil,omitempty" name:"DayOfWeek"`
 
 	// 维护排除项
@@ -18050,7 +18074,15 @@ type ModifyClusterMaintenanceWindowAndExclusionsRequest struct {
 	// 维护时长（小时）
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 维护周期（一周中的哪几天）
+	// 维护周期（一周中的哪几天），支持的参数值如下：
+	// 
+	// - MO：周一
+	// - TU：周二
+	// - WE：周三
+	// - TH：周四
+	// - FR：周五
+	// - SA：周六
+	// - SU：周日
 	DayOfWeek []*string `json:"DayOfWeek,omitnil,omitempty" name:"DayOfWeek"`
 
 	// 维护排除项
@@ -18291,20 +18323,24 @@ func (r *ModifyClusterNodePoolResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyClusterRollOutSequenceTagsRequestParams struct {
-	// 集群ID
+	// 集群ID，可以从容器服务集群控制台获取（https://console.cloud.tencent.com/tke2/cluster）。
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
-	// 集群发布序列标签（为空时表示移除集群标签）
+	// 集群发布序列标签（为空时表示移除集群标签）。支持以下集群标签：
+	// - 标签键："Env"，支持的标签值：["Test","Pre-Production","Production"]
+	// - 标签键："Protection-Level"，支持的标签值：["Low","Medium","High"]
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type ModifyClusterRollOutSequenceTagsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 集群ID，可以从容器服务集群控制台获取（https://console.cloud.tencent.com/tke2/cluster）。
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
-	// 集群发布序列标签（为空时表示移除集群标签）
+	// 集群发布序列标签（为空时表示移除集群标签）。支持以下集群标签：
+	// - 标签键："Env"，支持的标签值：["Test","Pre-Production","Production"]
+	// - 标签键："Protection-Level"，支持的标签值：["Low","Medium","High"]
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -23596,6 +23632,9 @@ type UpgradePlan struct {
 
 	// 集群名称
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 集群地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 预计开始时间
 	PlanedStartAt *string `json:"PlanedStartAt,omitnil,omitempty" name:"PlanedStartAt"`

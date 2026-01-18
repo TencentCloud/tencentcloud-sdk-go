@@ -3159,6 +3159,58 @@ func (c *Client) DescribePlatformImagesWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeSubAccountLinuxUserInfosRequest() (request *DescribeSubAccountLinuxUserInfosRequest) {
+    request = &DescribeSubAccountLinuxUserInfosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeSubAccountLinuxUserInfos")
+    
+    
+    return
+}
+
+func NewDescribeSubAccountLinuxUserInfosResponse() (response *DescribeSubAccountLinuxUserInfosResponse) {
+    response = &DescribeSubAccountLinuxUserInfosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSubAccountLinuxUserInfos
+// 批量查询子账号Linux用户信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOPERMISSION = "FailedOperation.NoPermission"
+func (c *Client) DescribeSubAccountLinuxUserInfos(request *DescribeSubAccountLinuxUserInfosRequest) (response *DescribeSubAccountLinuxUserInfosResponse, err error) {
+    return c.DescribeSubAccountLinuxUserInfosWithContext(context.Background(), request)
+}
+
+// DescribeSubAccountLinuxUserInfos
+// 批量查询子账号Linux用户信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOPERMISSION = "FailedOperation.NoPermission"
+func (c *Client) DescribeSubAccountLinuxUserInfosWithContext(ctx context.Context, request *DescribeSubAccountLinuxUserInfosRequest) (response *DescribeSubAccountLinuxUserInfosResponse, err error) {
+    if request == nil {
+        request = NewDescribeSubAccountLinuxUserInfosRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeSubAccountLinuxUserInfos")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSubAccountLinuxUserInfos require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSubAccountLinuxUserInfosResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTrainingModelVersionRequest() (request *DescribeTrainingModelVersionRequest) {
     request = &DescribeTrainingModelVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4389,6 +4441,66 @@ func (c *Client) StopTrainingTaskWithContext(ctx context.Context, request *StopT
     request.SetContext(ctx)
     
     response = NewStopTrainingTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateSubAccountLinuxUserInfoRequest() (request *UpdateSubAccountLinuxUserInfoRequest) {
+    request = &UpdateSubAccountLinuxUserInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "UpdateSubAccountLinuxUserInfo")
+    
+    
+    return
+}
+
+func NewUpdateSubAccountLinuxUserInfoResponse() (response *UpdateSubAccountLinuxUserInfoResponse) {
+    response = &UpdateSubAccountLinuxUserInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateSubAccountLinuxUserInfo
+// 更新子账号Linux用户信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_NOPERMISSION = "FailedOperation.NoPermission"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+func (c *Client) UpdateSubAccountLinuxUserInfo(request *UpdateSubAccountLinuxUserInfoRequest) (response *UpdateSubAccountLinuxUserInfoResponse, err error) {
+    return c.UpdateSubAccountLinuxUserInfoWithContext(context.Background(), request)
+}
+
+// UpdateSubAccountLinuxUserInfo
+// 更新子账号Linux用户信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_NOPERMISSION = "FailedOperation.NoPermission"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+func (c *Client) UpdateSubAccountLinuxUserInfoWithContext(ctx context.Context, request *UpdateSubAccountLinuxUserInfoRequest) (response *UpdateSubAccountLinuxUserInfoResponse, err error) {
+    if request == nil {
+        request = NewUpdateSubAccountLinuxUserInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "UpdateSubAccountLinuxUserInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateSubAccountLinuxUserInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateSubAccountLinuxUserInfoResponse()
     err = c.Send(request, response)
     return
 }

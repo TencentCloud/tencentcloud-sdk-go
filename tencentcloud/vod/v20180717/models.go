@@ -2199,6 +2199,12 @@ type AigcVideoTaskInput struct {
 	// 用于作为尾帧画面来生成视频的媒体文件 ID。该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
 	LastFrameFileId *string `json:"LastFrameFileId,omitnil,omitempty" name:"LastFrameFileId"`
 
+	// 用于作为尾帧画面来生成视频的媒体文件 URL。说明：
+	// 1. 只支持模型 GV 、Kling、Vidu，其他模型暂不支持。当 ModelName 为 GV 时，如果指定该参数，则需同时指定 FileInfos 作为待生成视频的首帧。当 ModelName 为 Kling 、ModelVersion 为 2.1 并且指定输出分辨率 Resolution 为 1080P 时，才能指定该参数。当 ModelName 为 Vidu、ModelVersion 为 q2-pro、q2-turbo 时，才能指定该参数。
+	// 2. 图片大小需小于5M。
+	// 3. 3. 图片格式的取值为：jpeg，jpg, png, webp。
+	LastFrameUrl *string `json:"LastFrameUrl,omitnil,omitempty" name:"LastFrameUrl"`
+
 	// 生成视频的提示词。最大支持1000字符，当 FileInfos 为空时，此参数必填。
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
@@ -2213,11 +2219,22 @@ type AigcVideoTaskInput struct {
 
 	// AIGC 生图输出结果文件输出。
 	OutputConfig *AigcVideoOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
+
+	// 输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。
+	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
+
+	// 场景类型。取值如下：<li>当 ModelName 为 Kling 时，取值 motion_control 表示动作控制；</li><li>其他 ModelName 暂不支持。</li>
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
 }
 
 type AigcVideoTaskInputFileInfo struct {
 	// 输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 URL；</li> 
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 文件分类。取值为：
+	// <li>Image: 图片；</li>
+	// <li>Video: 视频。</li>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 
 	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。当 Type 取值为 File 时，本参数有效。说明：
 	// 1. 推荐使用小于10M的图片；
@@ -4551,13 +4568,13 @@ type CreateAigcVideoTaskRequestParams struct {
 	// 模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-Fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// 最多包含三张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。
+	// 最多包含三张素材资源文件的列表，用于描述模型在生成视频时要使用的资源文件。
 	// 
-	// 首尾帧视频生成：用FileInfos第一张表示首帧（此时FileInfos最多包含一张图片），LastFrameFileId或者LastFrameUrl表示尾帧。
+	// 首尾帧视频生成：用 FileInfos 第一张表示首帧（此时 FileInfos 最多包含一张图片），LastFrameFileId 或者 LastFrameUrl 表示尾帧。
 	// 
 	// 支持多图输入的模型：
-	// 1. GV，使用多图输入时，不可使用LastFrameFileId和LastFrameUrl。
-	// 2. Vidu，支持多图参考生视频。q2模型1-7张图片，可通过FileInfos里面的ObjectId作为主体id来传入。
+	// 1. GV，使用多图输入时，不可使用 LastFrameFileId 和 LastFrameUrl。
+	// 2. Vidu，支持多图参考生视频。q2 模型1-7张图片，可通过 FileInfos 里面的 ObjectId 作为主体 id 来传入。
 	// 
 	// 注意：
 	// 1. 图片大小不超过10M。
@@ -4589,6 +4606,14 @@ type CreateAigcVideoTaskRequestParams struct {
 	// 生视频任务的输出媒体文件配置。
 	OutputConfig *AigcVideoOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
 
+	// 输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。
+	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
+
+	// 场景类型。取值如下：
+	// <li>当 ModelName 为 Kling 时，取值 motion_control 表示动作控制；</li>
+	// <li>其他 ModelName 暂不支持。</li>
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
 	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
@@ -4600,9 +4625,6 @@ type CreateAigcVideoTaskRequestParams struct {
 
 	// 保留字段，特殊用途时使用。
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
-
-	// 输入图片的区域信息。当图片url是国外地址时候，可选Oversea。默认Mainland。
-	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
 }
 
 type CreateAigcVideoTaskRequest struct {
@@ -4617,13 +4639,13 @@ type CreateAigcVideoTaskRequest struct {
 	// 模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-Fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// 最多包含三张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。
+	// 最多包含三张素材资源文件的列表，用于描述模型在生成视频时要使用的资源文件。
 	// 
-	// 首尾帧视频生成：用FileInfos第一张表示首帧（此时FileInfos最多包含一张图片），LastFrameFileId或者LastFrameUrl表示尾帧。
+	// 首尾帧视频生成：用 FileInfos 第一张表示首帧（此时 FileInfos 最多包含一张图片），LastFrameFileId 或者 LastFrameUrl 表示尾帧。
 	// 
 	// 支持多图输入的模型：
-	// 1. GV，使用多图输入时，不可使用LastFrameFileId和LastFrameUrl。
-	// 2. Vidu，支持多图参考生视频。q2模型1-7张图片，可通过FileInfos里面的ObjectId作为主体id来传入。
+	// 1. GV，使用多图输入时，不可使用 LastFrameFileId 和 LastFrameUrl。
+	// 2. Vidu，支持多图参考生视频。q2 模型1-7张图片，可通过 FileInfos 里面的 ObjectId 作为主体 id 来传入。
 	// 
 	// 注意：
 	// 1. 图片大小不超过10M。
@@ -4655,6 +4677,14 @@ type CreateAigcVideoTaskRequest struct {
 	// 生视频任务的输出媒体文件配置。
 	OutputConfig *AigcVideoOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
 
+	// 输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。
+	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
+
+	// 场景类型。取值如下：
+	// <li>当 ModelName 为 Kling 时，取值 motion_control 表示动作控制；</li>
+	// <li>其他 ModelName 暂不支持。</li>
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
 	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
@@ -4666,9 +4696,6 @@ type CreateAigcVideoTaskRequest struct {
 
 	// 保留字段，特殊用途时使用。
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
-
-	// 输入图片的区域信息。当图片url是国外地址时候，可选Oversea。默认Mainland。
-	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
 }
 
 func (r *CreateAigcVideoTaskRequest) ToJsonString() string {
@@ -4693,11 +4720,12 @@ func (r *CreateAigcVideoTaskRequest) FromJsonString(s string) error {
 	delete(f, "NegativePrompt")
 	delete(f, "EnhancePrompt")
 	delete(f, "OutputConfig")
+	delete(f, "InputRegion")
+	delete(f, "SceneType")
 	delete(f, "SessionId")
 	delete(f, "SessionContext")
 	delete(f, "TasksPriority")
 	delete(f, "ExtInfo")
-	delete(f, "InputRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAigcVideoTaskRequest has unknown keys!", "")
 	}
@@ -7043,6 +7071,9 @@ type CreateSceneAigcVideoTaskRequestParams struct {
 
 	// 保留字段，特殊用途时使用。
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 用户自定义prompt
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 }
 
 type CreateSceneAigcVideoTaskRequest struct {
@@ -7072,6 +7103,9 @@ type CreateSceneAigcVideoTaskRequest struct {
 
 	// 保留字段，特殊用途时使用。
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 用户自定义prompt
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 }
 
 func (r *CreateSceneAigcVideoTaskRequest) ToJsonString() string {
@@ -7094,6 +7128,7 @@ func (r *CreateSceneAigcVideoTaskRequest) FromJsonString(s string) error {
 	delete(f, "SessionContext")
 	delete(f, "TasksPriority")
 	delete(f, "ExtInfo")
+	delete(f, "Prompt")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSceneAigcVideoTaskRequest has unknown keys!", "")
 	}
@@ -14172,7 +14207,7 @@ func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskDetailResponseParams struct {
-	// 任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li>
+	// 任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 任务状态，取值：
@@ -14293,6 +14328,9 @@ type DescribeTaskDetailResponseParams struct {
 
 	// 场景化 AIGC 生图任务信息，仅当 TaskType 为 SceneAigcImageTask，该字段有值。
 	SceneAigcImageTask *SceneAigcImageTask `json:"SceneAigcImageTask,omitnil,omitempty" name:"SceneAigcImageTask"`
+
+	// 场景化 AIGC 生视频任务信息，仅当 TaskType 为 SceneAigcVideoTask，该字段有值。
+	SceneAigcVideoTask *SceneAigcVideoTask `json:"SceneAigcVideoTask,omitnil,omitempty" name:"SceneAigcVideoTask"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -17316,10 +17354,26 @@ type MPSAiMediaInfo struct {
 }
 
 type MPSAiMediaItem struct {
-	// MPS智能处理任务类型
+	// MPS智能处理任务类型，可取值：
+	// <li>AiAnalysis.ClassificationTask：智能分类任务。</li>
+	// <li>AiAnalysis.CoverTask：智能封面任务。</li>
+	// <li>AiAnalysis.TagTask：智能标签任务。</li>
+	// <li>AiAnalysis.FrameTagTask：智能按帧标签任务。</li>
+	// <li>AiAnalysis.HighlightTask：智能高光任务。</li>
+	// <li>AiAnalysis.SegmentTask：智能拆条任务。</li>
+	// <li>AiAnalysis.HeadTailTask：智能片头片尾任务。</li>
+	// <li>AiAnalysis.DescriptionTask：智能摘要任务。</li>
+	// <li>AiAnalysis.HorizontalToVerticalTask：智能横转竖任务。</li>
+	// <li>AiAnalysis.DubbingTask：智能译制任务。</li>
+	// <li>AiAnalysis.VideoRemakeTask：智能去重任务。</li>
+	// <li>AiAnalysis.VideoComprehensionTask：视频理解任务。</li>
+	// <li>SmartSubtitle.AsrFullTextTask：智能语音全文识别任务。</li>
+	// <li>SmartSubtitle.TransTextTask：	翻译结果。</li>
+	// <li>SmartSubtitle.PureSubtitleTransTask：返回纯字幕文件翻译结果。</li>
+	// <li>SmartSubtitle.OcrFullTextTask：智能文字提取字幕任务。</li>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// MPS 智能媒资任务输出
+	// MPS 智能处理任务结果集合
 	AiMediaTasks []*MPSAiMediaTask `json:"AiMediaTasks,omitnil,omitempty" name:"AiMediaTasks"`
 }
 
@@ -17330,7 +17384,24 @@ type MPSAiMediaTask struct {
 	// MPS智能任务输出文件集合
 	OutputFile []*MPSOutputFileInfo `json:"OutputFile,omitnil,omitempty" name:"OutputFile"`
 
-	// MPS智能任务输出
+	// MPS智能任务返回的结果，该字段对应 MPS 任务返回中的Output结果，以 JSON 格式返回
+	// 不同MPS任务输出结果结构不同，具体返回内容参考MPS任务输出结构体
+	// [智能分类结果](https://cloud.tencent.com/document/product/862/37615#AiAnalysisTaskClassificationOutput)
+	// [智能封面结果](https://cloud.tencent.com/document/product/862/37615#AiAnalysisTaskCoverOutput)
+	// [智能标签结果](https://cloud.tencent.com/document/product/862/37615#AiAnalysisTaskTagOutput)
+	// [智能按帧标签分类结果](https://cloud.tencent.com/document/product/862/37615#AiAnalysisTaskFrameTagOutput)
+	// [智能高光结果](https://cloud.tencent.com/document/product/862/37615#AiAnalysisTaskHighlightOutput)
+	// [智能拆条结果](https://cloud.tencent.com/document/product/862/37615#AiAnalysisTaskSegmentOutput)
+	// [智能片头片尾结果](https://cloud.tencent.com/document/product/862/37615#AiAnalysisTaskHeadTailOutput)
+	// [智能摘要结果](https://cloud.tencent.com/document/product/862/37615#AiAnalysisTaskDescriptionOutput)
+	// [智能横转竖结果](https://cloud.tencent.com/document/product/862/37615#AiAnalysisTaskHorizontalToVerticalOutput)
+	// [智能译制结果](https://cloud.tencent.com/document/product/862/37615#AiAnalysisTaskDubbingOutput)
+	// [智能视频理解结果](https://cloud.tencent.com/document/product/862/37615#AiAnalysisTaskVideoComprehensionOutput)
+	// [智能字幕语音全文识别结果](https://cloud.tencent.com/document/product/862/37615#SmartSubtitleTaskAsrFullTextResultOutput)
+	// [智能字幕翻译结果](https://cloud.tencent.com/document/product/862/37615#SmartSubtitleTaskTransTextResultOutput)
+	// [智能字幕纯字幕文件翻译结果](https://cloud.tencent.com/document/product/862/37615#PureSubtitleTransResultOutput)
+	// [智能字幕文字提取字幕结果](https://cloud.tencent.com/document/product/862/37615#SmartSubtitleTaskTextResultOutput)
+	// 
 	OutputText *string `json:"OutputText,omitnil,omitempty" name:"OutputText"`
 }
 
@@ -26233,6 +26304,46 @@ type SceneAigcVideoOutputConfig struct {
 	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 }
 
+type SceneAigcVideoTask struct {
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// AIGC 生视频任务的输入信息。
+	Input *SceneAigcVideoTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// AIGC 生视频任务的输出信息。
+	Output *SceneAigcVideoTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+}
+
+type SceneAigcVideoTaskInput struct {
+	// 场景化生图参数配置。
+	SceneInfo *AigcVideoSceneInfo `json:"SceneInfo,omitnil,omitempty" name:"SceneInfo"`
+
+	// 输入图片列表。
+	FileInfos []*SceneAigcVideoTaskInputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
+
+	// 场景化生图任务的输出媒体文件配置。
+	OutputConfig *SceneAigcVideoOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
+}
+
 type SceneAigcVideoTaskInputFileInfo struct {
 	// 输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 URL；</li> 
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -26248,6 +26359,11 @@ type SceneAigcVideoTaskInputFileInfo struct {
 	// 1. 推荐使用小于7M的图片；
 	// 2. 图片格式的取值为：jpeg，jpg, png, webp。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+type SceneAigcVideoTaskOutput struct {
+	// AIGC 生视频任务的输出文件信息。
+	FileInfos []*SceneAigcImageTaskOutputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 }
 
 type ScratchRepairInfo struct {

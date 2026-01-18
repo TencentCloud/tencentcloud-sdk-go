@@ -9337,9 +9337,6 @@ type RecognizeThaiIDCardOCRResponseParams struct {
 	// 卡证正面图片中，证件主体的数量（仅请求曼谷地域[ap-bangkok]返回）
 	CardCount *int64 `json:"CardCount,omitnil,omitempty" name:"CardCount"`
 
-	// 卡证字段是否完整，true：完整；false：不完整
-	IsComplete *bool `json:"IsComplete,omitnil,omitempty" name:"IsComplete"`
-
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

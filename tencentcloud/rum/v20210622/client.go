@@ -2051,6 +2051,98 @@ func (c *Client) DescribeDataPvUrlStatisticsWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeDataPvUrlStatisticsV2Request() (request *DescribeDataPvUrlStatisticsV2Request) {
+    request = &DescribeDataPvUrlStatisticsV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeDataPvUrlStatisticsV2")
+    
+    
+    return
+}
+
+func NewDescribeDataPvUrlStatisticsV2Response() (response *DescribeDataPvUrlStatisticsV2Response) {
+    response = &DescribeDataPvUrlStatisticsV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDataPvUrlStatisticsV2
+// 获取DescribeDataPvUrlStatistics信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDataPvUrlStatisticsV2(request *DescribeDataPvUrlStatisticsV2Request) (response *DescribeDataPvUrlStatisticsV2Response, err error) {
+    return c.DescribeDataPvUrlStatisticsV2WithContext(context.Background(), request)
+}
+
+// DescribeDataPvUrlStatisticsV2
+// 获取DescribeDataPvUrlStatistics信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDataPvUrlStatisticsV2WithContext(ctx context.Context, request *DescribeDataPvUrlStatisticsV2Request) (response *DescribeDataPvUrlStatisticsV2Response, err error) {
+    if request == nil {
+        request = NewDescribeDataPvUrlStatisticsV2Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeDataPvUrlStatisticsV2")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataPvUrlStatisticsV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataPvUrlStatisticsV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDataReportCountRequest() (request *DescribeDataReportCountRequest) {
     request = &DescribeDataReportCountRequest{
         BaseRequest: &tchttp.BaseRequest{},

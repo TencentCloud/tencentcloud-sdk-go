@@ -1657,6 +1657,96 @@ func (c *Client) CreateLiveCallbackTemplateWithContext(ctx context.Context, requ
     return
 }
 
+func NewCreateLiveCloudEffectRequest() (request *CreateLiveCloudEffectRequest) {
+    request = &CreateLiveCloudEffectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateLiveCloudEffect")
+    
+    
+    return
+}
+
+func NewCreateLiveCloudEffectResponse() (response *CreateLiveCloudEffectResponse) {
+    response = &CreateLiveCloudEffectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateLiveCloudEffect
+// 使用该接口生成云端特效。特效可用于叠加到直播流上，供播放端观看。
+//
+// 注意：云端特效生成需要一定时间，调用生成接口后，可通过查询接口，获取是否特效已生成。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) CreateLiveCloudEffect(request *CreateLiveCloudEffectRequest) (response *CreateLiveCloudEffectResponse, err error) {
+    return c.CreateLiveCloudEffectWithContext(context.Background(), request)
+}
+
+// CreateLiveCloudEffect
+// 使用该接口生成云端特效。特效可用于叠加到直播流上，供播放端观看。
+//
+// 注意：云端特效生成需要一定时间，调用生成接口后，可通过查询接口，获取是否特效已生成。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) CreateLiveCloudEffectWithContext(ctx context.Context, request *CreateLiveCloudEffectRequest) (response *CreateLiveCloudEffectResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveCloudEffectRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "CreateLiveCloudEffect")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveCloudEffect require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLiveCloudEffectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLivePadRuleRequest() (request *CreateLivePadRuleRequest) {
     request = &CreateLivePadRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},

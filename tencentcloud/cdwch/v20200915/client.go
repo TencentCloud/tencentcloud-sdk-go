@@ -623,6 +623,58 @@ func (c *Client) DescribeClusterConfigsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeEventTasksRequest() (request *DescribeEventTasksRequest) {
+    request = &DescribeEventTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "DescribeEventTasks")
+    
+    
+    return
+}
+
+func NewDescribeEventTasksResponse() (response *DescribeEventTasksResponse) {
+    response = &DescribeEventTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEventTasks
+// 获取产生的事件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeEventTasks(request *DescribeEventTasksRequest) (response *DescribeEventTasksResponse, err error) {
+    return c.DescribeEventTasksWithContext(context.Background(), request)
+}
+
+// DescribeEventTasks
+// 获取产生的事件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeEventTasksWithContext(ctx context.Context, request *DescribeEventTasksRequest) (response *DescribeEventTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeEventTasksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "DescribeEventTasks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEventTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEventTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceRequest() (request *DescribeInstanceRequest) {
     request = &DescribeInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -647,8 +699,7 @@ func NewDescribeInstanceResponse() (response *DescribeInstanceResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeInstance(request *DescribeInstanceRequest) (response *DescribeInstanceResponse, err error) {
     return c.DescribeInstanceWithContext(context.Background(), request)
 }
@@ -658,8 +709,7 @@ func (c *Client) DescribeInstance(request *DescribeInstanceRequest) (response *D
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *DescribeInstanceRequest) (response *DescribeInstanceResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceRequest()
@@ -701,8 +751,7 @@ func NewDescribeInstanceClustersResponse() (response *DescribeInstanceClustersRe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeInstanceClusters(request *DescribeInstanceClustersRequest) (response *DescribeInstanceClustersResponse, err error) {
     return c.DescribeInstanceClustersWithContext(context.Background(), request)
 }
@@ -712,8 +761,7 @@ func (c *Client) DescribeInstanceClusters(request *DescribeInstanceClustersReque
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeInstanceClustersWithContext(ctx context.Context, request *DescribeInstanceClustersRequest) (response *DescribeInstanceClustersResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceClustersRequest()
@@ -755,8 +803,7 @@ func NewDescribeInstanceKeyValConfigsResponse() (response *DescribeInstanceKeyVa
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeInstanceKeyValConfigs(request *DescribeInstanceKeyValConfigsRequest) (response *DescribeInstanceKeyValConfigsResponse, err error) {
     return c.DescribeInstanceKeyValConfigsWithContext(context.Background(), request)
 }
@@ -766,8 +813,7 @@ func (c *Client) DescribeInstanceKeyValConfigs(request *DescribeInstanceKeyValCo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeInstanceKeyValConfigsWithContext(ctx context.Context, request *DescribeInstanceKeyValConfigsRequest) (response *DescribeInstanceKeyValConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceKeyValConfigsRequest()

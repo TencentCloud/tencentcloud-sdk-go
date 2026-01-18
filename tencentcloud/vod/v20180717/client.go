@@ -6740,6 +6740,7 @@ func NewDescribeMediaInfosResponse() (response *DescribeMediaInfosResponse) {
 //  INVALIDPARAMETERVALUE_APPID = "InvalidParameterValue.AppId"
 //  INVALIDPARAMETERVALUE_FILEIDS = "InvalidParameterValue.FileIds"
 //  INVALIDPARAMETERVALUE_FILEIDSEMPTY = "InvalidParameterValue.FileIdsEmpty"
+//  INVALIDPARAMETERVALUE_FILEIDSOVERLIMIT = "InvalidParameterValue.FileIdsOverLimit"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeMediaInfos(request *DescribeMediaInfosRequest) (response *DescribeMediaInfosResponse, err error) {
     return c.DescribeMediaInfosWithContext(context.Background(), request)
@@ -6779,6 +6780,7 @@ func (c *Client) DescribeMediaInfos(request *DescribeMediaInfosRequest) (respons
 //  INVALIDPARAMETERVALUE_APPID = "InvalidParameterValue.AppId"
 //  INVALIDPARAMETERVALUE_FILEIDS = "InvalidParameterValue.FileIds"
 //  INVALIDPARAMETERVALUE_FILEIDSEMPTY = "InvalidParameterValue.FileIdsEmpty"
+//  INVALIDPARAMETERVALUE_FILEIDSOVERLIMIT = "InvalidParameterValue.FileIdsOverLimit"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeMediaInfosWithContext(ctx context.Context, request *DescribeMediaInfosRequest) (response *DescribeMediaInfosResponse, err error) {
     if request == nil {

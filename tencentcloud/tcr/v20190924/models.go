@@ -7476,6 +7476,74 @@ func (r *ModifyInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyInstanceStorageRequestParams struct {
+	// <p>实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>目标存储资源地域</p>
+	TargetRegion *string `json:"TargetRegion,omitnil,omitempty" name:"TargetRegion"`
+
+	// <p>目标存储资源名称</p>
+	TargetStorageName *string `json:"TargetStorageName,omitnil,omitempty" name:"TargetStorageName"`
+}
+
+type ModifyInstanceStorageRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>目标存储资源地域</p>
+	TargetRegion *string `json:"TargetRegion,omitnil,omitempty" name:"TargetRegion"`
+
+	// <p>目标存储资源名称</p>
+	TargetStorageName *string `json:"TargetStorageName,omitnil,omitempty" name:"TargetStorageName"`
+}
+
+func (r *ModifyInstanceStorageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceStorageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "TargetRegion")
+	delete(f, "TargetStorageName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceStorageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceStorageResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyInstanceStorageResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyInstanceStorageResponseParams `json:"Response"`
+}
+
+func (r *ModifyInstanceStorageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceStorageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyInstanceTokenRequestParams struct {
 	// 实例长期访问凭证 ID
 	TokenId *string `json:"TokenId,omitnil,omitempty" name:"TokenId"`
@@ -9081,6 +9149,66 @@ type TcrRepositoryInfo struct {
 
 	// 更新时间，格式"2006-01-02 15:04:05.999999999 -0700 MST"
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+// Predefined struct for user
+type TerminateGCJobRequestParams struct {
+	// <p>实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+}
+
+type TerminateGCJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+}
+
+func (r *TerminateGCJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateGCJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateGCJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TerminateGCJobResponseParams struct {
+	// <p>操作结果</p>枚举值：<ul><li> success： 操作成功</li><li> error： 操作失败</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>操作结果详细信息</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TerminateGCJobResponse struct {
+	*tchttp.BaseResponse
+	Response *TerminateGCJobResponseParams `json:"Response"`
+}
+
+func (r *TerminateGCJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateGCJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TriggerInvokeCondition struct {

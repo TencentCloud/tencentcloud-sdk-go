@@ -26,6 +26,12 @@ const (
 	// 请求的次数超过了频率限制。
 	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 
+	// 用户资源未开通。
+	RESOURCENOTFOUND = "ResourceNotFound"
+
+	// 用户资源不可用。
+	RESOURCEUNAVAILABLE = "ResourceUnavailable"
+
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 )

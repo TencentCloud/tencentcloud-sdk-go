@@ -43,7 +43,7 @@ type SearchProRequestParams struct {
 	// cnt=10/20/30/40/50，最多可支持返回50条搜索结果，**仅限尊享版使用**
 	Cnt *uint64 `json:"Cnt,omitnil,omitempty" name:"Cnt"`
 
-	// Industry=gov/news/acad，对应党政机关、权威媒体、学术（英文），**仅限尊享版使用**
+	// Industry=gov/news/acad/finance，对应党政机关、权威媒体、学术（英文）、金融，**仅限尊享版使用**
 	Industry *string `json:"Industry,omitnil,omitempty" name:"Industry"`
 }
 
@@ -71,7 +71,7 @@ type SearchProRequest struct {
 	// cnt=10/20/30/40/50，最多可支持返回50条搜索结果，**仅限尊享版使用**
 	Cnt *uint64 `json:"Cnt,omitnil,omitempty" name:"Cnt"`
 
-	// Industry=gov/news/acad，对应党政机关、权威媒体、学术（英文），**仅限尊享版使用**
+	// Industry=gov/news/acad/finance，对应党政机关、权威媒体、学术（英文）、金融，**仅限尊享版使用**
 	Industry *string `json:"Industry,omitnil,omitempty" name:"Industry"`
 }
 
@@ -116,6 +116,9 @@ type SearchProResponseParams struct {
 	// images：图片列表
 	// favicon：网站图标链接，部分不知名站点结果可能为空
 	Pages []*string `json:"Pages,omitnil,omitempty" name:"Pages"`
+
+	// 用户版本：standard/premium/lite
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 提示信息
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
