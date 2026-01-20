@@ -1539,6 +1539,9 @@ type CreateClusterRequestParams struct {
 
 	// 是否开通数据库审计
 	NeedCdbAudit *int64 `json:"NeedCdbAudit,omitnil,omitempty" name:"NeedCdbAudit"`
+
+	// 安全指定来源ip
+	SgIP *string `json:"SgIP,omitnil,omitempty" name:"SgIP"`
 }
 
 type CreateClusterRequest struct {
@@ -1637,6 +1640,9 @@ type CreateClusterRequest struct {
 
 	// 是否开通数据库审计
 	NeedCdbAudit *int64 `json:"NeedCdbAudit,omitnil,omitempty" name:"NeedCdbAudit"`
+
+	// 安全指定来源ip
+	SgIP *string `json:"SgIP,omitnil,omitempty" name:"SgIP"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -1676,6 +1682,7 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "LoadBalancerId")
 	delete(f, "DefaultMetaVersion")
 	delete(f, "NeedCdbAudit")
+	delete(f, "SgIP")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}
@@ -1922,6 +1929,9 @@ type CreateInstanceRequestParams struct {
 
 	// 是否开通审计：0:不开通,1:开通
 	NeedCdbAudit *int64 `json:"NeedCdbAudit,omitnil,omitempty" name:"NeedCdbAudit"`
+
+	// 安全组指定来源ip
+	SgIP *string `json:"SgIP,omitnil,omitempty" name:"SgIP"`
 }
 
 type CreateInstanceRequest struct {
@@ -2076,6 +2086,9 @@ type CreateInstanceRequest struct {
 
 	// 是否开通审计：0:不开通,1:开通
 	NeedCdbAudit *int64 `json:"NeedCdbAudit,omitnil,omitempty" name:"NeedCdbAudit"`
+
+	// 安全组指定来源ip
+	SgIP *string `json:"SgIP,omitnil,omitempty" name:"SgIP"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -2127,6 +2140,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "LoadBalancerId")
 	delete(f, "DefaultMetaVersion")
 	delete(f, "NeedCdbAudit")
+	delete(f, "SgIP")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}

@@ -263,6 +263,81 @@ func (r *DeleteRoleUserResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type PutEventRequestParams struct {
+	// <p>插件ID</p>
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// <p>需要推送的事件数据内容，格式为json，字段定义需要与事件中的定义一致</p>
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>数据推送来源，会在生成的单据中展示数据来源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>可以接受当前消息的Uin</p>
+	TargetUin *uint64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
+}
+
+type PutEventRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>插件ID</p>
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// <p>需要推送的事件数据内容，格式为json，字段定义需要与事件中的定义一致</p>
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>数据推送来源，会在生成的单据中展示数据来源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>可以接受当前消息的Uin</p>
+	TargetUin *uint64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
+}
+
+func (r *PutEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PutEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PluginId")
+	delete(f, "Data")
+	delete(f, "Source")
+	delete(f, "TargetUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PutEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PutEventResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PutEventResponse struct {
+	*tchttp.BaseResponse
+	Response *PutEventResponseParams `json:"Response"`
+}
+
+func (r *PutEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PutEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type PutMessageRequestParams struct {
 	// <p>事件ID</p>
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`

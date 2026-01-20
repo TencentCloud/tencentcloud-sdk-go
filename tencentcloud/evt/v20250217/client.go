@@ -177,6 +177,50 @@ func (c *Client) DeleteRoleUserWithContext(ctx context.Context, request *DeleteR
     return
 }
 
+func NewPutEventRequest() (request *PutEventRequest) {
+    request = &PutEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("evt", APIVersion, "PutEvent")
+    
+    
+    return
+}
+
+func NewPutEventResponse() (response *PutEventResponse) {
+    response = &PutEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PutEvent
+// 推送事件数据
+func (c *Client) PutEvent(request *PutEventRequest) (response *PutEventResponse, err error) {
+    return c.PutEventWithContext(context.Background(), request)
+}
+
+// PutEvent
+// 推送事件数据
+func (c *Client) PutEventWithContext(ctx context.Context, request *PutEventRequest) (response *PutEventResponse, err error) {
+    if request == nil {
+        request = NewPutEventRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "evt", APIVersion, "PutEvent")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PutEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPutEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPutMessageRequest() (request *PutMessageRequest) {
     request = &PutMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},

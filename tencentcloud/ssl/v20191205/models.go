@@ -925,265 +925,189 @@ func (r *CertificateOrderSubmitResponse) FromJsonString(s string) error {
 }
 
 type Certificates struct {
-	// 用户 UIN。
+	// <p>用户 UIN。</p>
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 项目 ID。
+	// <p>项目 ID。</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 证书来源：
-	// trustasia：亚洲诚信，
-	// upload：用户上传。
-	// wosign：沃通
-	// sheca：上海CA
+	// <p>证书来源：trustasia：亚洲诚信，upload：用户上传。wosign：沃通sheca：上海CA</p>
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
-	// 证书套餐类型：
-	// null：用户上传证书（没有套餐类型），
-	// 2：TrustAsia TLS RSA CA， 
-	// 3：SecureSite 增强型企业版（EV Pro）， 
-	// 4：SecureSite 增强型（EV）， 
-	// 5：SecureSite 企业型专业版（OV Pro），
-	// 6：SecureSite 企业型（OV）， 
-	// 7：SecureSite 企业型（OV）通配符， 
-	// 8：Geotrust 增强型（EV）， 
-	// 9：Geotrust 企业型（OV）， 
-	// 10：Geotrust 企业型（OV）通配符， 
-	// 11：TrustAsia 域名型多域名 SSL 证书， 
-	// 12：TrustAsia 域名型（DV）通配符， 
-	// 13：TrustAsia 企业型通配符（OV）SSL 证书（D3）， 
-	// 14：TrustAsia 企业型（OV）SSL 证书（D3）， 
-	// 15：TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 
-	// 16：TrustAsia 增强型 （EV）SSL 证书（D3）， 
-	// 17：TrustAsia 增强型多域名（EV）SSL 证书（D3）， 
-	// 18：GlobalSign 企业型（OV）SSL 证书， 
-	// 19：GlobalSign 企业型通配符 （OV）SSL 证书， 
-	// 20：GlobalSign 增强型 （EV）SSL 证书， 
-	// 21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 
-	// 22：GlobalSign 企业型多域名（OV）SSL 证书， 
-	// 23：GlobalSign 企业型通配符多域名（OV）SSL 证书，
-	// 24：GlobalSign 增强型多域名（EV）SSL 证书，
-	// 25：Wotrus 域名型证书，
-	// 26：Wotrus 域名型多域名证书，
-	// 27：Wotrus 域名型通配符证书，
-	// 28：Wotrus 企业型证书，
-	// 29：Wotrus 企业型多域名证书，
-	// 30：Wotrus 企业型通配符证书，
-	// 31：Wotrus 增强型证书，
-	// 32：Wotrus 增强型多域名证书，
-	// 33：WoTrus-国密域名型证书，
-	// 34：WoTrus-国密域名型证书（多域名），
-	// 35：WoTrus-国密域名型证书（通配符），
-	// 37：WoTrus-国密企业型证书，
-	// 38：WoTrus-国密企业型证书（多域名），
-	// 39：WoTrus-国密企业型证书（通配符），
-	// 40：WoTrus-国密增强型证书，
-	// 41：WoTrus-国密增强型证书（多域名），
-	// 42：TrustAsia-域名型证书（通配符多域名），
-	// 43：DNSPod-企业型(OV)SSL证书
-	// 44：DNSPod-企业型(OV)通配符SSL证书
-	// 45：DNSPod-企业型(OV)多域名SSL证书
-	// 46：DNSPod-增强型(EV)SSL证书
-	// 47：DNSPod-增强型(EV)多域名SSL证书
-	// 48：DNSPod-域名型(DV)SSL证书
-	// 49：DNSPod-域名型(DV)通配符SSL证书
-	// 50：DNSPod-域名型(DV)多域名SSL证书
-	// 51：DNSPod（国密）-企业型(OV)SSL证书
-	// 52：DNSPod（国密）-企业型(OV)通配符SSL证书
-	// 53：DNSPod（国密）-企业型(OV)多域名SSL证书
-	// 54：DNSPod（国密）-域名型(DV)SSL证书
-	// 55：DNSPod（国密）-域名型(DV)通配符SSL证书
-	// 56：DNSPod（国密）-域名型(DV)多域名SSL证书
-	// 57：SecureSite 企业型专业版多域名(OV Pro)
-	// 58：SecureSite 企业型多域名(OV)
-	// 59：SecureSite 增强型专业版多域名(EV Pro)
-	// 60：SecureSite 增强型多域名(EV)
-	// 61：Geotrust 增强型多域名(EV)
-	// 75：SecureSite 企业型(OV)
-	// 76：SecureSite 企业型(OV)通配符
-	// 77：SecureSite 增强型(EV)
-	// 78：Geotrust 企业型(OV)
-	// 79：Geotrust 企业型(OV)通配符
-	// 80：Geotrust 增强型(EV)
-	// 81：GlobalSign 企业型（OV）SSL证书
-	// 82：GlobalSign 企业型通配符 （OV）SSL证书
-	// 83：TrustAsia C1 DV Free
-	// 85：GlobalSign 增强型 （EV）SSL证书
-	// 88：GlobalSign 企业型通配符多域名 （OV）SSL证书
-	// 89：GlobalSign 企业型多域名 （OV）SSL证书
-	// 90：GlobalSign 增强型多域名（EV） SSL证书
-	// 91：Geotrust 增强型多域名(EV)
-	// 92：SecureSite 企业型专业版多域名(OV Pro)
-	// 93：SecureSite 企业型多域名(OV)
-	// 94：SecureSite 增强型专业版多域名(EV Pro)
-	// 95：SecureSite 增强型多域名(EV)
-	// 96：SecureSite 增强型专业版(EV Pro)
-	// 97：SecureSite 企业型专业版(OV Pro)
-	// 98：CFCA 企业型(OV)SSL证书
-	// 99：CFCA 企业型多域名(OV)SSL证书
-	// 100：CFCA 企业型通配符(OV)SSL证书
-	// 101：CFCA 增强型(EV)SSL证书
+	// <p>证书套餐类型：null：用户上传证书（没有套餐类型），2：TrustAsia TLS RSA CA， 3：SecureSite 增强型企业版（EV Pro）， 4：SecureSite 增强型（EV）， 5：SecureSite 企业型专业版（OV Pro），6：SecureSite 企业型（OV）， 7：SecureSite 企业型（OV）通配符， 8：Geotrust 增强型（EV）， 9：Geotrust 企业型（OV）， 10：Geotrust 企业型（OV）通配符， 11：TrustAsia 域名型多域名 SSL 证书， 12：TrustAsia 域名型（DV）通配符， 13：TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14：TrustAsia 企业型（OV）SSL 证书（D3）， 15：TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16：TrustAsia 增强型 （EV）SSL 证书（D3）， 17：TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18：GlobalSign 企业型（OV）SSL 证书， 19：GlobalSign 企业型通配符 （OV）SSL 证书， 20：GlobalSign 增强型 （EV）SSL 证书， 21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22：GlobalSign 企业型多域名（OV）SSL 证书， 23：GlobalSign 企业型通配符多域名（OV）SSL 证书，24：GlobalSign 增强型多域名（EV）SSL 证书，25：Wotrus 域名型证书，26：Wotrus 域名型多域名证书，27：Wotrus 域名型通配符证书，28：Wotrus 企业型证书，29：Wotrus 企业型多域名证书，30：Wotrus 企业型通配符证书，31：Wotrus 增强型证书，32：Wotrus 增强型多域名证书，33：WoTrus-国密域名型证书，34：WoTrus-国密域名型证书（多域名），35：WoTrus-国密域名型证书（通配符），37：WoTrus-国密企业型证书，38：WoTrus-国密企业型证书（多域名），39：WoTrus-国密企业型证书（通配符），40：WoTrus-国密增强型证书，41：WoTrus-国密增强型证书（多域名），42：TrustAsia-域名型证书（通配符多域名），43：DNSPod-企业型(OV)SSL证书44：DNSPod-企业型(OV)通配符SSL证书45：DNSPod-企业型(OV)多域名SSL证书46：DNSPod-增强型(EV)SSL证书47：DNSPod-增强型(EV)多域名SSL证书48：DNSPod-域名型(DV)SSL证书49：DNSPod-域名型(DV)通配符SSL证书50：DNSPod-域名型(DV)多域名SSL证书51：DNSPod（国密）-企业型(OV)SSL证书52：DNSPod（国密）-企业型(OV)通配符SSL证书53：DNSPod（国密）-企业型(OV)多域名SSL证书54：DNSPod（国密）-域名型(DV)SSL证书55：DNSPod（国密）-域名型(DV)通配符SSL证书56：DNSPod（国密）-域名型(DV)多域名SSL证书57：SecureSite 企业型专业版多域名(OV Pro)58：SecureSite 企业型多域名(OV)59：SecureSite 增强型专业版多域名(EV Pro)60：SecureSite 增强型多域名(EV)61：Geotrust 增强型多域名(EV)75：SecureSite 企业型(OV)76：SecureSite 企业型(OV)通配符77：SecureSite 增强型(EV)78：Geotrust 企业型(OV)79：Geotrust 企业型(OV)通配符80：Geotrust 增强型(EV)81：GlobalSign 企业型（OV）SSL证书82：GlobalSign 企业型通配符 （OV）SSL证书83：TrustAsia C1 DV Free85：GlobalSign 增强型 （EV）SSL证书88：GlobalSign 企业型通配符多域名 （OV）SSL证书89：GlobalSign 企业型多域名 （OV）SSL证书90：GlobalSign 增强型多域名（EV） SSL证书91：Geotrust 增强型多域名(EV)92：SecureSite 企业型专业版多域名(OV Pro)93：SecureSite 企业型多域名(OV)94：SecureSite 增强型专业版多域名(EV Pro)95：SecureSite 增强型多域名(EV)96：SecureSite 增强型专业版(EV Pro)97：SecureSite 企业型专业版(OV Pro)98：CFCA 企业型(OV)SSL证书99：CFCA 企业型多域名(OV)SSL证书100：CFCA 企业型通配符(OV)SSL证书101：CFCA 增强型(EV)SSL证书</p>
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
-	// 证书类型：CA = 客户端证书，SVR = 服务器证书。
+	// <p>证书类型：CA = 客户端证书，SVR = 服务器证书。</p>
 	CertificateType *string `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
-	// 证书产品名称
+	// <p>证书产品名称</p>
 	ProductZhName *string `json:"ProductZhName,omitnil,omitempty" name:"ProductZhName"`
 
-	// 主域名。
+	// <p>主域名。</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 备注名称。
+	// <p>备注名称。</p>
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
-	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
+	// <p>证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 证书扩展信息。
+	// <p>证书扩展信息。</p>
 	CertificateExtra *CertificateExtra `json:"CertificateExtra,omitnil,omitempty" name:"CertificateExtra"`
 
-	// 漏洞扫描状态：INACTIVE = 未开启，ACTIVE = 已开启
+	// <p>漏洞扫描状态：INACTIVE = 未开启，ACTIVE = 已开启</p>
 	VulnerabilityStatus *string `json:"VulnerabilityStatus,omitnil,omitempty" name:"VulnerabilityStatus"`
 
-	// 状态信息。
+	// <p>状态信息。</p>
 	StatusMsg *string `json:"StatusMsg,omitnil,omitempty" name:"StatusMsg"`
 
-	// 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证
+	// <p>验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证</p>
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
-	// 证书生效时间。时区为GMT+8:00
+	// <p>证书生效时间。时区为GMT+8:00</p>
 	CertBeginTime *string `json:"CertBeginTime,omitnil,omitempty" name:"CertBeginTime"`
 
-	// 证书过期时间。时区为GMT+8:00
+	// <p>证书过期时间。时区为GMT+8:00</p>
 	CertEndTime *string `json:"CertEndTime,omitnil,omitempty" name:"CertEndTime"`
 
-	// 证书有效期，单位（月）。
+	// <p>证书有效期，单位（月）。</p>
 	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
-	// 创建时间。时区为GMT+8:00
+	// <p>创建时间。时区为GMT+8:00</p>
 	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
-	// 证书 ID。
+	// <p>证书 ID。</p>
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 证书包含的多个域名（包含主域名）。
+	// <p>证书包含的多个域名（包含主域名）。</p>
 	SubjectAltName []*string `json:"SubjectAltName,omitnil,omitempty" name:"SubjectAltName"`
 
-	// 证书类型名称。
+	// <p>证书类型名称。</p>
 	PackageTypeName *string `json:"PackageTypeName,omitnil,omitempty" name:"PackageTypeName"`
 
-	// 状态名称。
+	// <p>状态名称。</p>
 	StatusName *string `json:"StatusName,omitnil,omitempty" name:"StatusName"`
 
-	// 是否为 VIP 客户。
+	// <p>是否为 VIP 客户。</p>
 	IsVip *bool `json:"IsVip,omitnil,omitempty" name:"IsVip"`
 
-	// 是否为 DV 版证书。
+	// <p>是否为 DV 版证书。</p>
 	IsDv *bool `json:"IsDv,omitnil,omitempty" name:"IsDv"`
 
-	// 是否为泛域名证书。
+	// <p>是否为泛域名证书。</p>
 	IsWildcard *bool `json:"IsWildcard,omitnil,omitempty" name:"IsWildcard"`
 
-	// 是否启用了漏洞扫描功能。
+	// <p>是否启用了漏洞扫描功能。</p>
 	IsVulnerability *bool `json:"IsVulnerability,omitnil,omitempty" name:"IsVulnerability"`
 
-	// 是否可续费。
+	// <p>是否可续费。</p>
 	RenewAble *bool `json:"RenewAble,omitnil,omitempty" name:"RenewAble"`
 
-	// 项目信息。
+	// <p>项目信息。</p>
 	ProjectInfo *ProjectInfo `json:"ProjectInfo,omitnil,omitempty" name:"ProjectInfo"`
 
-	// 关联的云资源，暂不可用
+	// <p>关联的云资源，暂不可用</p>
 	BoundResource []*string `json:"BoundResource,omitnil,omitempty" name:"BoundResource"`
 
-	// 是否可部署。
+	// <p>是否可部署。</p>
 	Deployable *bool `json:"Deployable,omitnil,omitempty" name:"Deployable"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否已忽略到期通知
+	// <p>是否已忽略到期通知</p>
 	IsIgnore *bool `json:"IsIgnore,omitnil,omitempty" name:"IsIgnore"`
 
-	// 是否国密证书
+	// <p>是否国密证书</p>
 	IsSM *bool `json:"IsSM,omitnil,omitempty" name:"IsSM"`
 
-	// 证书算法
+	// <p>证书算法</p>
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitnil,omitempty" name:"EncryptAlgorithm"`
 
-	// 上传CA证书的加密算法
+	// <p>上传CA证书的加密算法</p>
 	CAEncryptAlgorithms []*string `json:"CAEncryptAlgorithms,omitnil,omitempty" name:"CAEncryptAlgorithms"`
 
-	// 上传CA证书的过期时间
+	// <p>上传CA证书的过期时间</p>
 	CAEndTimes []*string `json:"CAEndTimes,omitnil,omitempty" name:"CAEndTimes"`
 
-	// 上传CA证书的通用名称
+	// <p>上传CA证书的通用名称</p>
 	CACommonNames []*string `json:"CACommonNames,omitnil,omitempty" name:"CACommonNames"`
 
-	// 证书预审核信息
+	// <p>证书预审核信息</p>
 	PreAuditInfo *PreAuditInfo `json:"PreAuditInfo,omitnil,omitempty" name:"PreAuditInfo"`
 
-	// 是否自动续费
+	// <p>是否自动续费</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 托管状态，0，托管中，5，资源替换中， 10， 托管完成， -1未托管 
+	// <p>托管状态，0，托管中，5，资源替换中， 10， 托管完成， -1未托管 </p>
 	HostingStatus *int64 `json:"HostingStatus,omitnil,omitempty" name:"HostingStatus"`
 
-	// 托管完成时间
+	// <p>托管完成时间</p>
 	HostingCompleteTime *string `json:"HostingCompleteTime,omitnil,omitempty" name:"HostingCompleteTime"`
 
-	// 托管新证书ID
+	// <p>托管新证书ID</p>
 	HostingRenewCertId *string `json:"HostingRenewCertId,omitnil,omitempty" name:"HostingRenewCertId"`
 
-	// 存在的续费证书ID
+	// <p>存在的续费证书ID</p>
 	HasRenewOrder *string `json:"HasRenewOrder,omitnil,omitempty" name:"HasRenewOrder"`
 
-	// 重颁发证书原证书是否删除
+	// <p>重颁发证书原证书是否删除</p>
 	ReplaceOriCertIsDelete *bool `json:"ReplaceOriCertIsDelete,omitnil,omitempty" name:"ReplaceOriCertIsDelete"`
 
-	// 是否即将过期， 证书即将到期的30天内为即将过期
+	// <p>是否即将过期， 证书即将到期的30天内为即将过期</p>
 	IsExpiring *bool `json:"IsExpiring,omitnil,omitempty" name:"IsExpiring"`
 
-	// DV证书添加验证截止时间，时区为GMT+8:00
+	// <p>DV证书添加验证截止时间，时区为GMT+8:00</p>
 	DVAuthDeadline *string `json:"DVAuthDeadline,omitnil,omitempty" name:"DVAuthDeadline"`
 
-	// 域名验证通过时间，时区为GMT+8:00
+	// <p>域名验证通过时间，时区为GMT+8:00</p>
 	ValidationPassedTime *string `json:"ValidationPassedTime,omitnil,omitempty" name:"ValidationPassedTime"`
 
-	// 证书关联的多域名
+	// <p>证书关联的多域名</p>
 	CertSANs []*string `json:"CertSANs,omitnil,omitempty" name:"CertSANs"`
 
-	// 域名验证驳回信息
+	// <p>域名验证驳回信息</p>
 	AwaitingValidationMsg *string `json:"AwaitingValidationMsg,omitnil,omitempty" name:"AwaitingValidationMsg"`
 
-	// 是否允许下载
+	// <p>是否允许下载</p>
 	AllowDownload *bool `json:"AllowDownload,omitnil,omitempty" name:"AllowDownload"`
 
-	// 证书域名是否全部在DNSPOD托管解析
+	// <p>证书域名是否全部在DNSPOD托管解析</p>
 	IsDNSPODResolve *bool `json:"IsDNSPODResolve,omitnil,omitempty" name:"IsDNSPODResolve"`
 
-	// 是否是权益点购买的证书
+	// <p>是否是权益点购买的证书</p>
 	IsPackage *bool `json:"IsPackage,omitnil,omitempty" name:"IsPackage"`
 
-	// 是否存在私钥密码
+	// <p>是否存在私钥密码</p>
 	KeyPasswordCustomFlag *bool `json:"KeyPasswordCustomFlag,omitnil,omitempty" name:"KeyPasswordCustomFlag"`
 
-	// 支持下载的WEB服务器类型： nginx、apache、iis、tomcat、jks、root、other
+	// <p>支持下载的WEB服务器类型： nginx、apache、iis、tomcat、jks、root、other</p>
 	SupportDownloadType *SupportDownloadType `json:"SupportDownloadType,omitnil,omitempty" name:"SupportDownloadType"`
 
-	// 证书吊销完成时间，时区为GMT+8:00
+	// <p>证书吊销完成时间，时区为GMT+8:00</p>
 	CertRevokedTime *string `json:"CertRevokedTime,omitnil,omitempty" name:"CertRevokedTime"`
 
-	// 托管资源类型列表
+	// <p>托管资源类型列表</p>
 	HostingResourceTypes []*string `json:"HostingResourceTypes,omitnil,omitempty" name:"HostingResourceTypes"`
 
-	// 托管配置信息
+	// <p>托管配置信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostingConfig *HostingConfig `json:"HostingConfig,omitnil,omitempty" name:"HostingConfig"`
 
-	// 是否是上传托管续费证书
+	// <p>是否是上传托管续费证书</p>
 	IsHostingUploadRenewCert *bool `json:"IsHostingUploadRenewCert,omitnil,omitempty" name:"IsHostingUploadRenewCert"`
+
+	// <p>订阅服务ID</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>订阅服务状态</p>枚举值：<ul><li> initing： 未激活</li><li> running： 生效中</li><li> expired： 已过期</li><li> refunded： 已退款</li><li> nearExpire： 即将到期</li></ul>
+	ServiceStatus *string `json:"ServiceStatus,omitnil,omitempty" name:"ServiceStatus"`
+
+	// <p>订阅服务开始时间</p>
+	CertServiceBeginTime *string `json:"CertServiceBeginTime,omitnil,omitempty" name:"CertServiceBeginTime"`
+
+	// <p>订阅服务结束时间</p>
+	CertServiceEndTime *string `json:"CertServiceEndTime,omitnil,omitempty" name:"CertServiceEndTime"`
 }
 
 // Predefined struct for user
@@ -3990,111 +3914,117 @@ func (r *DescribeCertificateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCertificatesRequestParams struct {
-	// 分页偏移量，从0开始。 默认为0
+	// <p>分页偏移量，从0开始。 默认为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页数量，默认10。最大值1000，如超过1000按1000处理
+	// <p>每页数量，默认10。最大值1000，如超过1000按1000处理</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 搜索关键词，模糊匹配证书 ID、备注名称、证书域名
+	// <p>搜索关键词，模糊匹配证书 ID、备注名称、证书域名</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 证书类型：CA = 客户端证书，SVR = 服务器证书。
+	// <p>证书类型：CA = 客户端证书，SVR = 服务器证书。</p>
 	CertificateType *string `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
-	// 项目 ID。
+	// <p>项目 ID。</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 默认按照证书申请时间降序； 若传排序则按到期时间排序：DESC = 证书到期时间降序， ASC = 证书到期时间升序。
+	// <p>默认按照证书申请时间降序； 若传排序则按到期时间排序：DESC = 证书到期时间降序， ASC = 证书到期时间升序。</p>
 	ExpirationSort *string `json:"ExpirationSort,omitnil,omitempty" name:"ExpirationSort"`
 
-	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 已退款。 15 = 证书迁移中
+	// <p>证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 已退款。 15 = 证书迁移中</p>
 	CertificateStatus []*uint64 `json:"CertificateStatus,omitnil,omitempty" name:"CertificateStatus"`
 
-	// 是否可部署，可选值：1 = 可部署，0 =  不可部署。
+	// <p>是否可部署，可选值：1 = 可部署，0 =  不可部署。</p>
 	Deployable *uint64 `json:"Deployable,omitnil,omitempty" name:"Deployable"`
 
-	// 是否筛选上传托管的 1筛选，0不筛选
+	// <p>是否筛选上传托管的 1筛选，0不筛选</p>
 	Upload *int64 `json:"Upload,omitnil,omitempty" name:"Upload"`
 
-	// 是否筛选可续期证书 1筛选 0不筛选
+	// <p>是否筛选可续期证书 1筛选 0不筛选</p>
 	Renew *int64 `json:"Renew,omitnil,omitempty" name:"Renew"`
 
-	// 筛选来源， upload：上传证书， buy：腾讯云证书， 不传默认全部
+	// <p>筛选来源， upload：上传证书， buy：腾讯云证书， 不传默认全部</p>
 	FilterSource *string `json:"FilterSource,omitnil,omitempty" name:"FilterSource"`
 
-	// 是否筛选国密证书。1:筛选  0:不筛选
+	// <p>是否筛选国密证书。1:筛选  0:不筛选</p>
 	IsSM *int64 `json:"IsSM,omitnil,omitempty" name:"IsSM"`
 
-	// 筛选证书是否即将过期，传1是筛选，0不筛选
+	// <p>筛选证书是否即将过期，传1是筛选，0不筛选</p>
 	FilterExpiring *uint64 `json:"FilterExpiring,omitnil,omitempty" name:"FilterExpiring"`
 
-	// 是否可托管，可选值：1 = 可托管，0 =  不可托管。
+	// <p>是否可托管，可选值：1 = 可托管，0 =  不可托管。</p>
 	Hostable *uint64 `json:"Hostable,omitnil,omitempty" name:"Hostable"`
 
-	// 筛选指定标签的证书
+	// <p>筛选指定标签的证书</p>
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否筛选等待签发的证书，传1是筛选，0和null不筛选
+	// <p>是否筛选等待签发的证书，传1是筛选，0和null不筛选</p>
 	IsPendingIssue *int64 `json:"IsPendingIssue,omitnil,omitempty" name:"IsPendingIssue"`
 
-	// 筛选指定证书ID的证书，只支持有权限的证书ID
+	// <p>筛选指定证书ID的证书，只支持有权限的证书ID</p>
 	CertIds []*string `json:"CertIds,omitnil,omitempty" name:"CertIds"`
+
+	// <p>订阅服务ID</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 }
 
 type DescribeCertificatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分页偏移量，从0开始。 默认为0
+	// <p>分页偏移量，从0开始。 默认为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页数量，默认10。最大值1000，如超过1000按1000处理
+	// <p>每页数量，默认10。最大值1000，如超过1000按1000处理</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 搜索关键词，模糊匹配证书 ID、备注名称、证书域名
+	// <p>搜索关键词，模糊匹配证书 ID、备注名称、证书域名</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 证书类型：CA = 客户端证书，SVR = 服务器证书。
+	// <p>证书类型：CA = 客户端证书，SVR = 服务器证书。</p>
 	CertificateType *string `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
-	// 项目 ID。
+	// <p>项目 ID。</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 默认按照证书申请时间降序； 若传排序则按到期时间排序：DESC = 证书到期时间降序， ASC = 证书到期时间升序。
+	// <p>默认按照证书申请时间降序； 若传排序则按到期时间排序：DESC = 证书到期时间降序， ASC = 证书到期时间升序。</p>
 	ExpirationSort *string `json:"ExpirationSort,omitnil,omitempty" name:"ExpirationSort"`
 
-	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 已退款。 15 = 证书迁移中
+	// <p>证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 已退款。 15 = 证书迁移中</p>
 	CertificateStatus []*uint64 `json:"CertificateStatus,omitnil,omitempty" name:"CertificateStatus"`
 
-	// 是否可部署，可选值：1 = 可部署，0 =  不可部署。
+	// <p>是否可部署，可选值：1 = 可部署，0 =  不可部署。</p>
 	Deployable *uint64 `json:"Deployable,omitnil,omitempty" name:"Deployable"`
 
-	// 是否筛选上传托管的 1筛选，0不筛选
+	// <p>是否筛选上传托管的 1筛选，0不筛选</p>
 	Upload *int64 `json:"Upload,omitnil,omitempty" name:"Upload"`
 
-	// 是否筛选可续期证书 1筛选 0不筛选
+	// <p>是否筛选可续期证书 1筛选 0不筛选</p>
 	Renew *int64 `json:"Renew,omitnil,omitempty" name:"Renew"`
 
-	// 筛选来源， upload：上传证书， buy：腾讯云证书， 不传默认全部
+	// <p>筛选来源， upload：上传证书， buy：腾讯云证书， 不传默认全部</p>
 	FilterSource *string `json:"FilterSource,omitnil,omitempty" name:"FilterSource"`
 
-	// 是否筛选国密证书。1:筛选  0:不筛选
+	// <p>是否筛选国密证书。1:筛选  0:不筛选</p>
 	IsSM *int64 `json:"IsSM,omitnil,omitempty" name:"IsSM"`
 
-	// 筛选证书是否即将过期，传1是筛选，0不筛选
+	// <p>筛选证书是否即将过期，传1是筛选，0不筛选</p>
 	FilterExpiring *uint64 `json:"FilterExpiring,omitnil,omitempty" name:"FilterExpiring"`
 
-	// 是否可托管，可选值：1 = 可托管，0 =  不可托管。
+	// <p>是否可托管，可选值：1 = 可托管，0 =  不可托管。</p>
 	Hostable *uint64 `json:"Hostable,omitnil,omitempty" name:"Hostable"`
 
-	// 筛选指定标签的证书
+	// <p>筛选指定标签的证书</p>
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否筛选等待签发的证书，传1是筛选，0和null不筛选
+	// <p>是否筛选等待签发的证书，传1是筛选，0和null不筛选</p>
 	IsPendingIssue *int64 `json:"IsPendingIssue,omitnil,omitempty" name:"IsPendingIssue"`
 
-	// 筛选指定证书ID的证书，只支持有权限的证书ID
+	// <p>筛选指定证书ID的证书，只支持有权限的证书ID</p>
 	CertIds []*string `json:"CertIds,omitnil,omitempty" name:"CertIds"`
+
+	// <p>订阅服务ID</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 }
 
 func (r *DescribeCertificatesRequest) ToJsonString() string {
@@ -4126,6 +4056,7 @@ func (r *DescribeCertificatesRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "IsPendingIssue")
 	delete(f, "CertIds")
+	delete(f, "ServiceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertificatesRequest has unknown keys!", "")
 	}
@@ -4134,10 +4065,10 @@ func (r *DescribeCertificatesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCertificatesResponseParams struct {
-	// 总数量。
+	// <p>总数量。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 列表。
+	// <p>列表。</p>
 	Certificates []*Certificates `json:"Certificates,omitnil,omitempty" name:"Certificates"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -1165,6 +1165,9 @@ type AssetRiskItem struct {
 
 	// 等保合规
 	StandardTerms []*StandardTerm `json:"StandardTerms,omitnil,omitempty" name:"StandardTerms"`
+
+	// 资产类型
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 type AssetTag struct {
@@ -3718,6 +3721,9 @@ type DescribeAssetRiskListResponseParams struct {
 	// 等保规范名称集合
 	StandardNameList []*StandardItem `json:"StandardNameList,omitnil,omitempty" name:"StandardNameList"`
 
+	// 资产类型集合
+	AssetTypeList []*AttributeOptionSet `json:"AssetTypeList,omitnil,omitempty" name:"AssetTypeList"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4303,6 +4309,9 @@ type DescribeCheckViewRisksResponseParams struct {
 
 	// 检查视角下cspm规范标签列表
 	StandardNameList []*StandardItem `json:"StandardNameList,omitnil,omitempty" name:"StandardNameList"`
+
+	// 资产类型集合
+	AssetTypeList []*AttributeOptionSet `json:"AssetTypeList,omitnil,omitempty" name:"AssetTypeList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

@@ -7517,6 +7517,92 @@ func (c *Client) DescribeLiveCertsWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeLiveCloudEffectConfigRequest() (request *DescribeLiveCloudEffectConfigRequest) {
+    request = &DescribeLiveCloudEffectConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveCloudEffectConfig")
+    
+    
+    return
+}
+
+func NewDescribeLiveCloudEffectConfigResponse() (response *DescribeLiveCloudEffectConfigResponse) {
+    response = &DescribeLiveCloudEffectConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLiveCloudEffectConfig
+// 使用该接口查询云端特效配置信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeLiveCloudEffectConfig(request *DescribeLiveCloudEffectConfigRequest) (response *DescribeLiveCloudEffectConfigResponse, err error) {
+    return c.DescribeLiveCloudEffectConfigWithContext(context.Background(), request)
+}
+
+// DescribeLiveCloudEffectConfig
+// 使用该接口查询云端特效配置信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeLiveCloudEffectConfigWithContext(ctx context.Context, request *DescribeLiveCloudEffectConfigRequest) (response *DescribeLiveCloudEffectConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveCloudEffectConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeLiveCloudEffectConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveCloudEffectConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveCloudEffectConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveCloudEffectListRequest() (request *DescribeLiveCloudEffectListRequest) {
     request = &DescribeLiveCloudEffectListRequest{
         BaseRequest: &tchttp.BaseRequest{},

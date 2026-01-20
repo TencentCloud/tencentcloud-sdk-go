@@ -5215,83 +5215,75 @@ func (r *CreateShipperResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSplunkDeliverRequestParams struct {
-	// 日志主题id
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// <p>日志主题id- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// splunk投递任务名称；
-	// name有如下限制：
-	// - 不能为空
-	// - 长度不大于64
-	// - 只能包含aA-zZ、下划线、-、0-9
+	// <p>splunk投递任务名称；name有如下限制：- 不能为空- 长度不大于64- 只能包含aA-zZ、下划线、-、0-9</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// Splunk投递任务-目标配置-网络信息
+	// <p>Splunk投递任务-目标配置-网络信息</p>
 	NetInfo *NetInfo `json:"NetInfo,omitnil,omitempty" name:"NetInfo"`
 
-	// Splunk投递任务元信息
+	// <p>Splunk投递任务元信息</p>
 	MetadataInfo *MetadataInfo `json:"MetadataInfo,omitnil,omitempty" name:"MetadataInfo"`
 
-	// 是否开启服务日志 1:关闭；2:开启 ;默认开启
+	// <p>是否开启服务日志 1:关闭；2:开启 ;默认开启</p>
 	HasServiceLog *int64 `json:"HasServiceLog,omitnil,omitempty" name:"HasServiceLog"`
 
-	// 高级配置-是否启用索引器；1-不启用；2-启用；
-	// 默认：1
+	// <p>高级配置-是否启用索引器；1-不启用；2-启用；默认：1</p>
 	IndexAck *int64 `json:"IndexAck,omitnil,omitempty" name:"IndexAck"`
 
-	// 高级配置-数据来源；不超过64个字符
+	// <p>高级配置-数据来源；不超过64个字符</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 高级配置-数据来源类型；不超过64个字符
+	// <p>高级配置-数据来源类型；不超过64个字符</p>
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// 高级配置-Splunk写入的索引；不超过64个字符
+	// <p>高级配置-Splunk写入的索引；不超过64个字符</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 高级配置-通道
-	// 需满足限制：如果启用索引器，那么Channel必填
+	// <p>高级配置-通道需满足限制：如果启用索引器，那么Channel必填</p>
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+
+	// <p>日志预过滤-数据写入 Splunk 的原始数据进行预过滤处理</p>
+	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
 }
 
 type CreateSplunkDeliverRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志主题id
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// <p>日志主题id- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// splunk投递任务名称；
-	// name有如下限制：
-	// - 不能为空
-	// - 长度不大于64
-	// - 只能包含aA-zZ、下划线、-、0-9
+	// <p>splunk投递任务名称；name有如下限制：- 不能为空- 长度不大于64- 只能包含aA-zZ、下划线、-、0-9</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// Splunk投递任务-目标配置-网络信息
+	// <p>Splunk投递任务-目标配置-网络信息</p>
 	NetInfo *NetInfo `json:"NetInfo,omitnil,omitempty" name:"NetInfo"`
 
-	// Splunk投递任务元信息
+	// <p>Splunk投递任务元信息</p>
 	MetadataInfo *MetadataInfo `json:"MetadataInfo,omitnil,omitempty" name:"MetadataInfo"`
 
-	// 是否开启服务日志 1:关闭；2:开启 ;默认开启
+	// <p>是否开启服务日志 1:关闭；2:开启 ;默认开启</p>
 	HasServiceLog *int64 `json:"HasServiceLog,omitnil,omitempty" name:"HasServiceLog"`
 
-	// 高级配置-是否启用索引器；1-不启用；2-启用；
-	// 默认：1
+	// <p>高级配置-是否启用索引器；1-不启用；2-启用；默认：1</p>
 	IndexAck *int64 `json:"IndexAck,omitnil,omitempty" name:"IndexAck"`
 
-	// 高级配置-数据来源；不超过64个字符
+	// <p>高级配置-数据来源；不超过64个字符</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 高级配置-数据来源类型；不超过64个字符
+	// <p>高级配置-数据来源类型；不超过64个字符</p>
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// 高级配置-Splunk写入的索引；不超过64个字符
+	// <p>高级配置-Splunk写入的索引；不超过64个字符</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 高级配置-通道
-	// 需满足限制：如果启用索引器，那么Channel必填
+	// <p>高级配置-通道需满足限制：如果启用索引器，那么Channel必填</p>
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+
+	// <p>日志预过滤-数据写入 Splunk 的原始数据进行预过滤处理</p>
+	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
 }
 
 func (r *CreateSplunkDeliverRequest) ToJsonString() string {
@@ -5316,6 +5308,7 @@ func (r *CreateSplunkDeliverRequest) FromJsonString(s string) error {
 	delete(f, "SourceType")
 	delete(f, "Index")
 	delete(f, "Channel")
+	delete(f, "DSLFilter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSplunkDeliverRequest has unknown keys!", "")
 	}
@@ -5324,7 +5317,7 @@ func (r *CreateSplunkDeliverRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSplunkDeliverResponseParams struct {
-	// splunk投递任务id
+	// <p>splunk投递任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12293,40 +12286,32 @@ func (r *DescribeShippersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSplunkDeliversRequestParams struct {
-	// 日志主题Id
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// <p>日志主题Id- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// - taskId 按照【任务id】进行过滤。 类型：String 必选：否  
-	// - name 按照【任务名称】进行过滤。 类型：String 必选：否  
-	// - statusFlag 按照【状态】进行过滤。 类型：String 必选：否  
-	//  每次请求的Filters的上限为10，Filter.Values的上限为10。
+	// <ul><li>taskId 按照【任务id】进行过滤。 类型：String 必选：否  </li><li>name 按照【任务名称】进行过滤。 类型：String 必选：否  </li><li>statusFlag 按照【状态】进行过滤。 类型：String 必选：否<br /> 每次请求的Filters的上限为10，Filter.Values的上限为10。</li></ul>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页的偏移量，默认值为0。
+	// <p>分页的偏移量，默认值为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页单页限制数目，默认值为20，最大值100。
+	// <p>分页单页限制数目，默认值为20，最大值100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeSplunkDeliversRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志主题Id
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// <p>日志主题Id- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// - taskId 按照【任务id】进行过滤。 类型：String 必选：否  
-	// - name 按照【任务名称】进行过滤。 类型：String 必选：否  
-	// - statusFlag 按照【状态】进行过滤。 类型：String 必选：否  
-	//  每次请求的Filters的上限为10，Filter.Values的上限为10。
+	// <ul><li>taskId 按照【任务id】进行过滤。 类型：String 必选：否  </li><li>name 按照【任务名称】进行过滤。 类型：String 必选：否  </li><li>statusFlag 按照【状态】进行过滤。 类型：String 必选：否<br /> 每次请求的Filters的上限为10，Filter.Values的上限为10。</li></ul>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页的偏移量，默认值为0。
+	// <p>分页的偏移量，默认值为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页单页限制数目，默认值为20，最大值100。
+	// <p>分页单页限制数目，默认值为20，最大值100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -12354,10 +12339,10 @@ func (r *DescribeSplunkDeliversRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSplunkDeliversResponseParams struct {
-	// Splunk投递任务信息列表
+	// <p>Splunk投递任务信息列表</p>
 	Infos []*SplunkDeliverInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
 
-	// 符合条件的任务总数。
+	// <p>符合条件的任务总数。</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12382,23 +12367,27 @@ func (r *DescribeSplunkDeliversResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSplunkPreviewRequestParams struct {
-	// 日志主题id。
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// <p>日志主题id。- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// splunk投递任务-元信息
+	// <p>splunk投递任务-元信息</p>
 	MetadataInfo *MetadataInfo `json:"MetadataInfo,omitnil,omitempty" name:"MetadataInfo"`
+
+	// <p>splunk投递任务-投递 splunk过滤原始日志语句</p>
+	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
 }
 
 type DescribeSplunkPreviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志主题id。
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// <p>日志主题id。- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// splunk投递任务-元信息
+	// <p>splunk投递任务-元信息</p>
 	MetadataInfo *MetadataInfo `json:"MetadataInfo,omitnil,omitempty" name:"MetadataInfo"`
+
+	// <p>splunk投递任务-投递 splunk过滤原始日志语句</p>
+	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
 }
 
 func (r *DescribeSplunkPreviewRequest) ToJsonString() string {
@@ -12415,6 +12404,7 @@ func (r *DescribeSplunkPreviewRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TopicId")
 	delete(f, "MetadataInfo")
+	delete(f, "DSLFilter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSplunkPreviewRequest has unknown keys!", "")
 	}
@@ -12423,8 +12413,11 @@ func (r *DescribeSplunkPreviewRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSplunkPreviewResponseParams struct {
-	// 预览结果
+	// <p>预览结果</p>
 	PreviewInfos []*string `json:"PreviewInfos,omitnil,omitempty" name:"PreviewInfos"`
+
+	// <p>数据过滤结果</p>
+	FilterStats *FilterStatistics `json:"FilterStats,omitnil,omitempty" name:"FilterStats"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -13411,6 +13404,17 @@ type FilterRuleInfo struct {
 
 	// 过滤规则Value
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type FilterStatistics struct {
+	// <p>原始日志数</p>
+	OriginalCount *uint64 `json:"OriginalCount,omitnil,omitempty" name:"OriginalCount"`
+
+	// <p>过滤后日志数</p>
+	FilteredCount *uint64 `json:"FilteredCount,omitnil,omitempty" name:"FilteredCount"`
+
+	// <p>过滤后结果</p>
+	FilteredResult []*string `json:"FilteredResult,omitnil,omitempty" name:"FilteredResult"`
 }
 
 type FullTextInfo struct {
@@ -17865,95 +17869,87 @@ func (r *ModifyShipperResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifySplunkDeliverRequestParams struct {
-	// 任务id
+	// <p>任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 日志主题id
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// <p>日志主题id- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 投递任务名称
-	// name有以下限制：
-	// - 不能为空
-	// - 长度不大于64
-	// - 只能包含aA-zZ、下划线、-、0-9
+	// <p>投递任务名称name有以下限制：- 不能为空- 长度不大于64- 只能包含aA-zZ、下划线、-、0-9</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 投递任务启用状态；0:禁用；1:启用
+	// <p>投递任务启用状态；0:禁用；1:启用</p>
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// splunk投递任务-目标配置
+	// <p>splunk投递任务-目标配置</p>
 	NetInfo *NetInfo `json:"NetInfo,omitnil,omitempty" name:"NetInfo"`
 
-	// splunk投递任务元信息
+	// <p>splunk投递任务元信息</p>
 	MetadataInfo *MetadataInfo `json:"MetadataInfo,omitnil,omitempty" name:"MetadataInfo"`
 
-	// 是否启用服务日志；1:关闭；2:开启
+	// <p>是否启用服务日志；1:关闭；2:开启</p>
 	HasServiceLog *int64 `json:"HasServiceLog,omitnil,omitempty" name:"HasServiceLog"`
 
-	// 高级配置-是否启用索引器;
-	// 1-不开启；2-开启；默认为：1
+	// <p>高级配置-是否启用索引器;1-不开启；2-开启；默认为：1</p>
 	IndexAck *int64 `json:"IndexAck,omitnil,omitempty" name:"IndexAck"`
 
-	// 高级配置-数据来源；不超过64个字符
+	// <p>高级配置-数据来源；不超过64个字符</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 高级配置-数据来源类型；不超过64个字符
+	// <p>高级配置-数据来源类型；不超过64个字符</p>
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// 高级配置-Splunk写入的索引；不超过64个字符
+	// <p>高级配置-Splunk写入的索引；不超过64个字符</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 高级配置-通道。
-	// 需满足限制：如果启用索引器，该值不能为空
+	// <p>高级配置-通道。需满足限制：如果启用索引器，该值不能为空</p>
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+
+	// <p>预过滤处理-对写入 Splunk 原始数据进行预过滤处理</p>
+	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
 }
 
 type ModifySplunkDeliverRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务id
+	// <p>任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 日志主题id
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// <p>日志主题id- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 投递任务名称
-	// name有以下限制：
-	// - 不能为空
-	// - 长度不大于64
-	// - 只能包含aA-zZ、下划线、-、0-9
+	// <p>投递任务名称name有以下限制：- 不能为空- 长度不大于64- 只能包含aA-zZ、下划线、-、0-9</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 投递任务启用状态；0:禁用；1:启用
+	// <p>投递任务启用状态；0:禁用；1:启用</p>
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// splunk投递任务-目标配置
+	// <p>splunk投递任务-目标配置</p>
 	NetInfo *NetInfo `json:"NetInfo,omitnil,omitempty" name:"NetInfo"`
 
-	// splunk投递任务元信息
+	// <p>splunk投递任务元信息</p>
 	MetadataInfo *MetadataInfo `json:"MetadataInfo,omitnil,omitempty" name:"MetadataInfo"`
 
-	// 是否启用服务日志；1:关闭；2:开启
+	// <p>是否启用服务日志；1:关闭；2:开启</p>
 	HasServiceLog *int64 `json:"HasServiceLog,omitnil,omitempty" name:"HasServiceLog"`
 
-	// 高级配置-是否启用索引器;
-	// 1-不开启；2-开启；默认为：1
+	// <p>高级配置-是否启用索引器;1-不开启；2-开启；默认为：1</p>
 	IndexAck *int64 `json:"IndexAck,omitnil,omitempty" name:"IndexAck"`
 
-	// 高级配置-数据来源；不超过64个字符
+	// <p>高级配置-数据来源；不超过64个字符</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 高级配置-数据来源类型；不超过64个字符
+	// <p>高级配置-数据来源类型；不超过64个字符</p>
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// 高级配置-Splunk写入的索引；不超过64个字符
+	// <p>高级配置-Splunk写入的索引；不超过64个字符</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 高级配置-通道。
-	// 需满足限制：如果启用索引器，该值不能为空
+	// <p>高级配置-通道。需满足限制：如果启用索引器，该值不能为空</p>
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+
+	// <p>预过滤处理-对写入 Splunk 原始数据进行预过滤处理</p>
+	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
 }
 
 func (r *ModifySplunkDeliverRequest) ToJsonString() string {
@@ -17980,6 +17976,7 @@ func (r *ModifySplunkDeliverRequest) FromJsonString(s string) error {
 	delete(f, "SourceType")
 	delete(f, "Index")
 	delete(f, "Channel")
+	delete(f, "DSLFilter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySplunkDeliverRequest has unknown keys!", "")
 	}
@@ -20074,53 +20071,56 @@ func (r *SplitPartitionResponse) FromJsonString(s string) error {
 }
 
 type SplunkDeliverInfo struct {
-	// 任务id
+	// <p>任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务名称
+	// <p>任务名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 用户id
+	// <p>用户id</p>
 	Uin *uint64 `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 日志主题id
+	// <p>日志主题id</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 任务状态；1.运行中；2:暂停；3：异常
+	// <p>任务状态；1.运行中；2:暂停；3：异常</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 启用状态；0:禁用；1:启用
+	// <p>启用状态；0:禁用；1:启用</p>
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 创建时间；单位：秒
+	// <p>创建时间；单位：秒</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间；单位：秒
+	// <p>更新时间；单位：秒</p>
 	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// splunk投递任务-目标配置
+	// <p>splunk投递任务-目标配置</p>
 	NetInfo *NetInfo `json:"NetInfo,omitnil,omitempty" name:"NetInfo"`
 
-	// splunk投递任务元信息
+	// <p>splunk投递任务元信息</p>
 	Metadata *MetadataInfo `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 
-	// 是否启用服务日志；1:关闭；2:开启
+	// <p>是否启用服务日志；1:关闭；2:开启</p>
 	HasServiceLog *int64 `json:"HasServiceLog,omitnil,omitempty" name:"HasServiceLog"`
 
-	// 高级配置-数据来源；
+	// <p>高级配置-数据来源；</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 高级配置-数据来源类型；
+	// <p>高级配置-数据来源类型；</p>
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// 高级配置-Splunk写入的索引
+	// <p>高级配置-Splunk写入的索引</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 高级配置-是否启用索引器；1-不开启；2-开启；
+	// <p>高级配置-是否启用索引器；1-不开启；2-开启；</p>
 	IndexAck *int64 `json:"IndexAck,omitnil,omitempty" name:"IndexAck"`
 
-	// 高级配置-通道
+	// <p>高级配置-通道</p>
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
+
+	// <p>预过滤处理-对写入 Splunk 原始数据进行预过滤处理语句</p>
+	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
 }
 
 type Tag struct {

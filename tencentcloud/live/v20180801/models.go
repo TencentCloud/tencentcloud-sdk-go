@@ -1565,6 +1565,23 @@ type CloudEffectInfo struct {
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
+type CloudEffectTemplateInfo struct {
+	// <p>特效模板ID。</p>
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>特效模板名称。</p>
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
+
+	// <p>模板预览URL。</p>
+	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
+
+	// <p>模板封面图片URL。</p>
+	CoverImageUrl *string `json:"CoverImageUrl,omitnil,omitempty" name:"CoverImageUrl"`
+
+	// <p>模板视频宽高比。</p>
+	VideoRatio *string `json:"VideoRatio,omitnil,omitempty" name:"VideoRatio"`
+}
+
 type CommonMixControlParams struct {
 	// 取值范围[0,1]。
 	// 填1时，当参数中图层分辨率参数与视频实际分辨率不一致时，自动从视频中按图层设置的分辨率比例进行裁剪。
@@ -8914,6 +8931,60 @@ func (r *DescribeLiveCertsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLiveCertsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveCloudEffectConfigRequestParams struct {
+
+}
+
+type DescribeLiveCloudEffectConfigRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeLiveCloudEffectConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveCloudEffectConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveCloudEffectConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveCloudEffectConfigResponseParams struct {
+	// <p>模板生礼物的模板信息列表。</p>
+	EffectTemplateList []*CloudEffectTemplateInfo `json:"EffectTemplateList,omitnil,omitempty" name:"EffectTemplateList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveCloudEffectConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveCloudEffectConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveCloudEffectConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveCloudEffectConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

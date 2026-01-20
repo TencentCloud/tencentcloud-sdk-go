@@ -2071,52 +2071,38 @@ func (r *SubmitMemeJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitTemplateToImageJobRequestParams struct {
-	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
-	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
-	// 图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	// <p>算法将根据输入的图片，结合文本描述智能生成与之相关的图像。Base64 和 Url 必须提供一个，如果都提供以 Url 为准。图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。</p>
 	Image *Image `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 绘画风格当前仅支持美术馆风格（gallerying）。
+	// <p>绘画风格当前仅支持美术馆风格（gallerying）。</p>
 	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
 
-	// 特效模式，默认使用人像模式。 Person：人像模式，仅支持上传人像图片，人像生成效果更好【这里需要加非人脸的拦截】。 Pet：宠物模式，支持宠物等非人像图片。 示例值：Person
+	// <p>特效模式，默认使用人像模式。</p>枚举值：<ul><li> Person： 人像模式，仅支持上传人像图片。</li><li> Pet： 宠物模式，支持宠物等非人像图片。</li></ul>默认值：Person
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 为生成结果图添加显式水印标识的开关，默认为1。  
-	// 1：添加。  
-	// 0：不添加。  
-	// 其他数值：默认按1处理。  
-	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+	// <p>为生成结果图添加显式水印标识的开关，默认为1。<br />1：添加。<br />0：不添加。<br />其他数值：默认按1处理。<br />建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。</p>
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 
-	// 标识内容设置。
-	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	// <p>标识内容设置。默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。</p>
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 }
 
 type SubmitTemplateToImageJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
-	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
-	// 图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	// <p>算法将根据输入的图片，结合文本描述智能生成与之相关的图像。Base64 和 Url 必须提供一个，如果都提供以 Url 为准。图片限制：单边分辨率小于5000且大于50，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。</p>
 	Image *Image `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 绘画风格当前仅支持美术馆风格（gallerying）。
+	// <p>绘画风格当前仅支持美术馆风格（gallerying）。</p>
 	Style *string `json:"Style,omitnil,omitempty" name:"Style"`
 
-	// 特效模式，默认使用人像模式。 Person：人像模式，仅支持上传人像图片，人像生成效果更好【这里需要加非人脸的拦截】。 Pet：宠物模式，支持宠物等非人像图片。 示例值：Person
+	// <p>特效模式，默认使用人像模式。</p>枚举值：<ul><li> Person： 人像模式，仅支持上传人像图片。</li><li> Pet： 宠物模式，支持宠物等非人像图片。</li></ul>默认值：Person
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 为生成结果图添加显式水印标识的开关，默认为1。  
-	// 1：添加。  
-	// 0：不添加。  
-	// 其他数值：默认按1处理。  
-	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
+	// <p>为生成结果图添加显式水印标识的开关，默认为1。<br />1：添加。<br />0：不添加。<br />其他数值：默认按1处理。<br />建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。</p>
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 
-	// 标识内容设置。
-	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	// <p>标识内容设置。默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。</p>
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 }
 
@@ -2145,7 +2131,7 @@ func (r *SubmitTemplateToImageJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitTemplateToImageJobResponseParams struct {
-	// 任务 ID。
+	// <p>任务 ID。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

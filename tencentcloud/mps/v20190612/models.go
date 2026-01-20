@@ -4110,9 +4110,7 @@ type CreateAdaptiveDynamicStreamingTemplateRequestParams struct {
 	// 此值只是区分模板类型，任务使用RemoveAudio和RemoveVideo的值
 	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
 
-	// 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment
-	//  
-	// 注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-byterange。
+	// 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：HLS+TS+Packed Audio 切片</li> <li>mp4-packed-audio：HLS+MP4+Packed Audio 切片</li> <li>ts-ts-segment：HLS+TS+TS 切片</li> <li>ts-ts-byterange：HLS+TS+TS byte range</li> <li>mp4-mp4-segment：HLS+MP4+MP4 切片</li> <li>mp4-mp4-byterange：HLS/DASH+MP4+MP4 byte range</li> <li>ts-packed-audio-byterange：HLS+TS+Packed Audio byte range</li> <li>mp4-packed-audio-byterange：HLS+MP4+Packed Audio byte range</li> 默认值：ts-segment 注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-byterange或mp4-mp4-byterange。
 	SegmentType *string `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
 }
 
@@ -4158,9 +4156,7 @@ type CreateAdaptiveDynamicStreamingTemplateRequest struct {
 	// 此值只是区分模板类型，任务使用RemoveAudio和RemoveVideo的值
 	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
 
-	// 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment
-	//  
-	// 注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-byterange。
+	// 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：HLS+TS+Packed Audio 切片</li> <li>mp4-packed-audio：HLS+MP4+Packed Audio 切片</li> <li>ts-ts-segment：HLS+TS+TS 切片</li> <li>ts-ts-byterange：HLS+TS+TS byte range</li> <li>mp4-mp4-segment：HLS+MP4+MP4 切片</li> <li>mp4-mp4-byterange：HLS/DASH+MP4+MP4 byte range</li> <li>ts-packed-audio-byterange：HLS+TS+Packed Audio byte range</li> <li>mp4-packed-audio-byterange：HLS+MP4+Packed Audio byte range</li> 默认值：ts-segment 注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-byterange或mp4-mp4-byterange。
 	SegmentType *string `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
 }
 
@@ -13720,6 +13716,7 @@ type DescribeUsageDataRequestParams struct {
 	// <li>AddBlindWatermark: 添加基础版权数字水印</li>
 	// <li>AddNagraWatermark: 添加NAGRA数字水印</li>
 	// <li>ExtractBlindWatermark: 提取基础版权数字水印</li>
+	// <li>AIGC: AIGC</li>
 	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
 
 	// 媒体处理园区，默认返回 ap-guangzhou 园区。
@@ -13765,6 +13762,7 @@ type DescribeUsageDataRequest struct {
 	// <li>AddBlindWatermark: 添加基础版权数字水印</li>
 	// <li>AddNagraWatermark: 添加NAGRA数字水印</li>
 	// <li>ExtractBlindWatermark: 提取基础版权数字水印</li>
+	// <li>AIGC: AIGC</li>
 	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
 
 	// 媒体处理园区，默认返回 ap-guangzhou 园区。
@@ -17839,8 +17837,7 @@ type ModifyAdaptiveDynamicStreamingTemplateRequestParams struct {
 	// 此值只是区分模板类型，任务使用RemoveAudio和RemoveVideo的值
 	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
 
-	// 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
-	// 注：自适应码流的hls分片格式已此字段为准。DASH格式下SegmentType只能为mp4-byterange。
+	// 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：HLS+TS+Packed Audio 切片</li> <li>mp4-packed-audio：HLS+MP4+Packed Audio 切片</li> <li>ts-ts-segment：HLS+TS+TS 切片</li> <li>ts-ts-byterange：HLS+TS+TS byte range</li> <li>mp4-mp4-segment：HLS+MP4+MP4 切片</li> <li>mp4-mp4-byterange：HLS/DASH+MP4+MP4 byte range</li> <li>ts-packed-audio-byterange：HLS+TS+Packed Audio byte range</li> <li>mp4-packed-audio-byterange：HLS+MP4+Packed Audio byte range</li> 默认值：ts-segment 注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-byterange或mp4-mp4-byterange。
 	SegmentType *string `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
 }
 
@@ -17889,8 +17886,7 @@ type ModifyAdaptiveDynamicStreamingTemplateRequest struct {
 	// 此值只是区分模板类型，任务使用RemoveAudio和RemoveVideo的值
 	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
 
-	// 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：TS+Packed Audio</li> <li>mp4-packed-audio：MP4+Packed Audio</li> 默认值：ts-segment 
-	// 注：自适应码流的hls分片格式已此字段为准。DASH格式下SegmentType只能为mp4-byterange。
+	// 分片类型，可选值： <li>ts-segment：HLS+TS 切片</li> <li>ts-byterange：HLS+TS byte range</li> <li>mp4-segment：HLS+MP4 切片</li> <li>mp4-byterange：HLS/DASH+MP4 byte range</li> <li>ts-packed-audio：HLS+TS+Packed Audio 切片</li> <li>mp4-packed-audio：HLS+MP4+Packed Audio 切片</li> <li>ts-ts-segment：HLS+TS+TS 切片</li> <li>ts-ts-byterange：HLS+TS+TS byte range</li> <li>mp4-mp4-segment：HLS+MP4+MP4 切片</li> <li>mp4-mp4-byterange：HLS/DASH+MP4+MP4 byte range</li> <li>ts-packed-audio-byterange：HLS+TS+Packed Audio byte range</li> <li>mp4-packed-audio-byterange：HLS+MP4+Packed Audio byte range</li> 默认值：ts-segment 注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-byterange或mp4-mp4-byterange。
 	SegmentType *string `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
 }
 
@@ -24402,6 +24398,9 @@ type SmartSubtitleTaskAsrFullTextSegmentItem struct {
 	// 字词时间戳信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Wordlist []*WordResult `json:"Wordlist,omitnil,omitempty" name:"Wordlist"`
+
+	// 说话人ID（如启用说话人识别）
+	SpeakerId *string `json:"SpeakerId,omitnil,omitempty" name:"SpeakerId"`
 }
 
 type SmartSubtitleTaskBatchOutput struct {
