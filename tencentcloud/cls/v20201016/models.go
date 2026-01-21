@@ -3554,64 +3554,62 @@ func (r *CreateDeliverCloudFunctionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDlcDeliverRequestParams struct {
-	// 日志主题id。
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// <p>日志主题id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。
+	// <p>名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 投递类型。0:批投递,1:实时投递
+	// <p>投递类型。0:批投递,1:实时投递</p>
 	DeliverType *uint64 `json:"DeliverType,omitnil,omitempty" name:"DeliverType"`
 
-	// 投递时间范围的开始时间
+	// <p>投递时间范围的开始时间</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// dlc配置信息
+	// <p>dlc配置信息</p>
 	DlcInfo *DlcInfo `json:"DlcInfo,omitnil,omitempty" name:"DlcInfo"`
 
-	// 投递文件大小,单位MB。 DeliverType=0时必填，范围 5<= MaxSize <= 256。
+	// <p>投递文件大小,单位MB。 DeliverType=0时必填，范围 5&lt;= MaxSize &lt;= 256。</p>
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 投递间隔，单位秒。 DeliverType=0时必填，范围 300<= Interval <=900。
+	// <p>投递间隔，单位秒。 DeliverType=0时必填，范围 300&lt;= Interval &lt;=900。</p>
 	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 投递时间范围的结束时间。 如果为空，则表示不限时。EndTime不为空时，需要大于StartTime。
+	// <p>投递时间范围的结束时间。 如果为空，则表示不限时。EndTime不为空时，需要大于StartTime。</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 是否开启投递服务日志。1关闭，2开启。默认开启
+	// <p>是否开启投递服务日志。1关闭，2开启。默认开启</p>
 	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
 }
 
 type CreateDlcDeliverRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志主题id。
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// <p>日志主题id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。
+	// <p>名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 投递类型。0:批投递,1:实时投递
+	// <p>投递类型。0:批投递,1:实时投递</p>
 	DeliverType *uint64 `json:"DeliverType,omitnil,omitempty" name:"DeliverType"`
 
-	// 投递时间范围的开始时间
+	// <p>投递时间范围的开始时间</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// dlc配置信息
+	// <p>dlc配置信息</p>
 	DlcInfo *DlcInfo `json:"DlcInfo,omitnil,omitempty" name:"DlcInfo"`
 
-	// 投递文件大小,单位MB。 DeliverType=0时必填，范围 5<= MaxSize <= 256。
+	// <p>投递文件大小,单位MB。 DeliverType=0时必填，范围 5&lt;= MaxSize &lt;= 256。</p>
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 投递间隔，单位秒。 DeliverType=0时必填，范围 300<= Interval <=900。
+	// <p>投递间隔，单位秒。 DeliverType=0时必填，范围 300&lt;= Interval &lt;=900。</p>
 	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 投递时间范围的结束时间。 如果为空，则表示不限时。EndTime不为空时，需要大于StartTime。
+	// <p>投递时间范围的结束时间。 如果为空，则表示不限时。EndTime不为空时，需要大于StartTime。</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 是否开启投递服务日志。1关闭，2开启。默认开启
+	// <p>是否开启投递服务日志。1关闭，2开启。默认开启</p>
 	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
 }
 
@@ -3644,7 +3642,7 @@ func (r *CreateDlcDeliverRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDlcDeliverResponseParams struct {
-	// 配置id
+	// <p>配置id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

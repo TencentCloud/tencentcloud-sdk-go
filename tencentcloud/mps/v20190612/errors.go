@@ -56,6 +56,9 @@ const (
 	// 内部错误：生成模板 ID 失败。
 	INTERNALERROR_GENDEFINITION = "InternalError.GenDefinition"
 
+	// 识别出错
+	INTERNALERROR_RECOGNITIONERROR = "InternalError.RecognitionError"
+
 	// 内部错误：上传水印图片失败。
 	INTERNALERROR_UPLOADWATERMARKERROR = "InternalError.UploadWatermarkError"
 

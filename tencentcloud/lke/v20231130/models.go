@@ -600,6 +600,12 @@ type AgentToolInfo struct {
 
 	// 工具高级设置
 	ToolAdvanceConfig *ToolAdvanceConfig `json:"ToolAdvanceConfig,omitnil,omitempty" name:"ToolAdvanceConfig"`
+
+	// 授权模式； 0-开发者授权；1-使用者授权
+	AuthMode *int64 `json:"AuthMode,omitnil,omitempty" name:"AuthMode"`
+
+	// 授权类型; 0-无鉴权；1-APIKey；2-CAM授权；3-Oauth2.0授权；
+	AuthType *int64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 }
 
 type AgentToolReqParam struct {
@@ -915,6 +921,36 @@ type AttributeLabelRefByWorkflow struct {
 
 	// 标签值引用的工作流列表
 	WorkflowList []*WorkflowRef `json:"WorkflowList,omitnil,omitempty" name:"WorkflowList"`
+}
+
+type Audio struct {
+	// 音频文件格式
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 音频文件地址
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
+	// 音频标题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 音频文件在正文中的位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Position *int64 `json:"Position,omitnil,omitempty" name:"Position"`
+
+	// 音频转录后的文字列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioTranscripts []*AudioTranscript `json:"AudioTranscripts,omitnil,omitempty" name:"AudioTranscripts"`
+}
+
+type AudioTranscript struct {
+	// 音频的发言者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Speaker *string `json:"Speaker,omitnil,omitempty" name:"Speaker"`
+
+	// 音频转录为文字后的内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Transcript *string `json:"Transcript,omitnil,omitempty" name:"Transcript"`
 }
 
 type BackgroundImageConfig struct {
@@ -8811,6 +8847,10 @@ type ListReferShareKnowledgeResponseParams struct {
 	// 共享知识库信息列表
 	List []*KnowledgeBaseInfo `json:"List,omitnil,omitempty" name:"List"`
 
+	// 共享知识库数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *string `json:"Total,omitnil,omitempty" name:"Total"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -11158,6 +11198,10 @@ type MsgRecord struct {
 	// Widget动作信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WidgetAction *WidgetAction `json:"WidgetAction,omitnil,omitempty" name:"WidgetAction"`
+
+	// 音频信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Audios []*Audio `json:"Audios,omitnil,omitempty" name:"Audios"`
 }
 
 type MsgRecordReference struct {

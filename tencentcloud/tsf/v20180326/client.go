@@ -2922,6 +2922,7 @@ func NewDeleteApplicationResponse() (response *DeleteApplicationResponse) {
 // 删除应用
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONREPODELETEPKG = "FailedOperation.ApplicationRepoDeletePkg"
 //  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  FAILEDOPERATION_IMAGEVALIDATEISUSED = "FailedOperation.ImageValidateIsUsed"
 //  FAILEDOPERATION_IMAGEREPOREJECTDELERROR = "FailedOperation.ImagerepoRejectDelError"
@@ -2939,6 +2940,7 @@ func (c *Client) DeleteApplication(request *DeleteApplicationRequest) (response 
 // 删除应用
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONREPODELETEPKG = "FailedOperation.ApplicationRepoDeletePkg"
 //  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  FAILEDOPERATION_IMAGEVALIDATEISUSED = "FailedOperation.ImageValidateIsUsed"
 //  FAILEDOPERATION_IMAGEREPOREJECTDELERROR = "FailedOperation.ImagerepoRejectDelError"

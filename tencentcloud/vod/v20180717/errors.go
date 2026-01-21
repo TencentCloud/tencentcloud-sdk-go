@@ -389,6 +389,9 @@ const (
 	// 参数取值错误：MediaManifestContent。
 	INVALIDPARAMETERVALUE_MEDIAMANIFESTCONTENT = "InvalidParameterValue.MediaManifestContent"
 
+	// 参数值错误：媒体存储路径。
+	INVALIDPARAMETERVALUE_MEDIASTORAGEPATH = "InvalidParameterValue.MediaStoragePath"
+
 	// 参数值错误：媒体类型。
 	INVALIDPARAMETERVALUE_MEDIATYPE = "InvalidParameterValue.MediaType"
 

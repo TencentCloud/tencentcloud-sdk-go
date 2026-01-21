@@ -6615,6 +6615,71 @@ func (r *ModifyNotebookTagsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyServiceGroupWeightsRequestParams struct {
+	// 服务组id
+	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
+
+	// 权重设置
+	Weights []*WeightEntry `json:"Weights,omitnil,omitempty" name:"Weights"`
+}
+
+type ModifyServiceGroupWeightsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务组id
+	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
+
+	// 权重设置
+	Weights []*WeightEntry `json:"Weights,omitnil,omitempty" name:"Weights"`
+}
+
+func (r *ModifyServiceGroupWeightsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyServiceGroupWeightsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceGroupId")
+	delete(f, "Weights")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyServiceGroupWeightsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyServiceGroupWeightsResponseParams struct {
+	// 更新权重后的服务组信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceGroup *ServiceGroup `json:"ServiceGroup,omitnil,omitempty" name:"ServiceGroup"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyServiceGroupWeightsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyServiceGroupWeightsResponseParams `json:"Response"`
+}
+
+func (r *ModifyServiceGroupWeightsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyServiceGroupWeightsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MultiModalContent struct {
 	// 对话类型，text表示文本对话内容，image_url表示图片对话内容
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -8858,6 +8923,14 @@ type VolumeMount struct {
 	// 自定义容器内挂载路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MountPath *string `json:"MountPath,omitnil,omitempty" name:"MountPath"`
+}
+
+type WeightEntry struct {
+	// 服务id
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 流量权重值，同 ServiceGroup 下 总和应为 100
+	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 
 type WorkloadStatus struct {

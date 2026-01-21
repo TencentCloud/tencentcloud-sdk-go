@@ -83,6 +83,9 @@ type DBInstanceDetail struct {
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 可用区列表
+	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 }
 
 // Predefined struct for user
@@ -338,6 +341,9 @@ type DescribeInstanceDetail struct {
 
 	// CPU类型：Intel/AMD,Hygon
 	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
+
+	// 可用区列表
+	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 }
 
 // Predefined struct for user
@@ -457,6 +463,9 @@ type DescribeInstanceDetailResponseParams struct {
 
 	// CPU类型，Intel/AMD,Hygon
 	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
+
+	// 可用区列表
+	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -825,6 +834,9 @@ type HostDetail struct {
 
 	// 独享集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 可用区列表
+	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 }
 
 type InstanceDetail struct {

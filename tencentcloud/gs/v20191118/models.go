@@ -143,6 +143,11 @@ type AndroidInstance struct {
 
 	// 机箱 ID
 	HostServerSerialNumber *string `json:"HostServerSerialNumber,omitnil,omitempty" name:"HostServerSerialNumber"`
+
+	// 服务状态。
+	// IDLE：未连接
+	// ESTABLISHED：连接中
+	ServiceStatus *string `json:"ServiceStatus,omitnil,omitempty" name:"ServiceStatus"`
 }
 
 type AndroidInstanceAppBlacklist struct {

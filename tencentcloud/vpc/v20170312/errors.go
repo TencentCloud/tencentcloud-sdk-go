@@ -1169,8 +1169,32 @@ const (
 	// NAT网关类型不支持SNAT规则。
 	UNSUPPORTEDOPERATION_NATGATEWAYTYPENOTSUPPORTSNAT = "UnsupportedOperation.NatGatewayTypeNotSupportSNAT"
 
+	// NAT网关绑定了vpg，不支持该操作。
+	UNSUPPORTEDOPERATION_NATHASBOUNDVPG = "UnsupportedOperation.NatHasBoundVpg"
+
+	// NAT网关开启了ECMP，不支持该操作。
+	UNSUPPORTEDOPERATION_NATHASECMP = "UnsupportedOperation.NatHasECMP"
+
+	// NAT网关开启了网关流控，不支持该操作。
+	UNSUPPORTEDOPERATION_NATHASENABLEDGATEWAYFLOWCONTROL = "UnsupportedOperation.NatHasEnabledGatewayFlowControl"
+
+	// NAT网关开启了流日志，不支持该操作。
+	UNSUPPORTEDOPERATION_NATHASFLOWLOG = "UnsupportedOperation.NatHasFlowLog"
+
+	// 独享型NAT不支持该操作。
+	UNSUPPORTEDOPERATION_NATINSTANCEEXCLUSIVE = "UnsupportedOperation.NatInstanceExclusive"
+
 	// NAT实例不支持该操作。
 	UNSUPPORTEDOPERATION_NATNOTSUPPORTED = "UnsupportedOperation.NatNotSupported"
+
+	// NAT网关规格超过标准型nat规格，不支持该操作。
+	UNSUPPORTEDOPERATION_NATSPECIFICATIONEXCEEDED = "UnsupportedOperation.NatSpecificationExceeded"
+
+	// NAT网关实例类型不支持该操作。
+	UNSUPPORTEDOPERATION_NATTYPEERROR = "UnsupportedOperation.NatTypeError"
+
+	// NAT网关近30天的最大用量超过标准型NAT规格，不支持该操作。
+	UNSUPPORTEDOPERATION_NATUSAGEEXCEEDED = "UnsupportedOperation.NatUsageExceeded"
 
 	// 没有CDC专线网关。
 	UNSUPPORTEDOPERATION_NOCDCDCGW = "UnsupportedOperation.NoCdcDcGw"
@@ -1423,6 +1447,12 @@ const (
 
 	// 指定机型不支持弹性网卡。
 	UNSUPPORTEDOPERATION_UNSUPPORTEDINSTANCEFAMILY = "UnsupportedOperation.UnsupportedInstanceFamily"
+
+	// 传统型账号不支持该操作。
+	UNSUPPORTEDOPERATION_UNSUPPORTEDLEGACYACCOUNT = "UnsupportedOperation.UnsupportedLegacyAccount"
+
+	// NAT网关部署在local zone，不支持该操作。
+	UNSUPPORTEDOPERATION_UNSUPPORTEDLOCALZONENAT = "UnsupportedOperation.UnsupportedLocalZoneNat"
 
 	// 暂无法在此国家/地区提供该服务。
 	UNSUPPORTEDOPERATION_UNSUPPORTEDREGION = "UnsupportedOperation.UnsupportedRegion"

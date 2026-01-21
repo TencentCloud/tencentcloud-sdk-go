@@ -1068,6 +1068,32 @@ type CcInfo struct {
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 }
 
+type Checklist struct {
+	// 审查清单id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 审查清单名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 审查点数量
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 启用状态
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 修改人
+	Updater *string `json:"Updater,omitnil,omitempty" name:"Updater"`
+
+	// 修改时间
+	ModifiedOn *int64 `json:"ModifiedOn,omitnil,omitempty" name:"ModifiedOn"`
+
+	// 是否官方清单
+	Official *bool `json:"Official,omitnil,omitempty" name:"Official"`
+
+	// 配置状态，[0(未配置), 1(已配置)]
+	ConfigStatus *int64 `json:"ConfigStatus,omitnil,omitempty" name:"ConfigStatus"`
+}
+
 type ComparisonDetail struct {
 	// 合同对比差异点唯一ID。
 	ComparisonPointId *string `json:"ComparisonPointId,omitnil,omitempty" name:"ComparisonPointId"`
@@ -8603,19 +8629,26 @@ type CreatePrepareFlowRequestParams struct {
 	// 具体定制化内容详见数据接口说明
 	FlowOption *CreateFlowOption `json:"FlowOption,omitnil,omitempty" name:"FlowOption"`
 
-	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
-	// <ul><li> **false**：（默认）不需要审批，直接签署。</li>
-	// <li> **true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>
-	// 企业可以通过CreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
-	// <ul><li> 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li>
-	// <li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
-	// 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
+	// 发起方企业签署员工，在进行签署操作前，是否需要先通过企业内部审批流程 （签署审核）
+	// 1. **false（默认）**：  无需审批，发起方企业签署员工可直接进行签署操作。
+	// 2. **true**：  需要先走企业内部审批流程。 当流程进展到发起方企业签署员工时，其签署操作会被阻塞，等待企业内部审批结果。
+	// 
+	// 企业应通过 <a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowSignReview" target="_blank">提交签署流程审批结果</a>审批接口，将内部审批结果通知腾讯电子签平台：
+	// 1. 若通知为“审核通过”，发起方企业签署员工可继续完成签署操作。
+	// 2. 若通知为“审核未通过”，平台将继续阻塞该签署方的签署操作，直到企业再次通知平台审核通过为止。
+	// 
+	// 说明： 此能力可用于与企业内部审批流程打通，适用于手动签署和自动签署两种模式。
 	NeedSignReview *bool `json:"NeedSignReview,omitnil,omitempty" name:"NeedSignReview"`
 
-	// 发起方企业的签署人进行发起操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
+	// 发起方在创建合同流程前，是否必须先通过企业内部审批流程 （发起审核）
 	// 
-	// 若设置为true，发起审核结果需通过接口 CreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行发起操作，否则会阻塞其发起操作。
+	// 当设置为 `true` 时：  
+	//   1. 您需要在企业内部完成审批，并通过接口 <a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowSignReview" target="_blank">提交签署流程审批结果</a> 将审批结果回传给腾讯电子签。 
+	//   2. 只有当审核状态为“通过”时，合同流程正常发起。  
+	//   3. 若未通过或未回传审核结果，发起操作将被阻塞，阻止合同流程。
 	// 
+	// 当设置为 `false` （默认值）时：  
+	//   发起方无需经过企业内部审批，可直接发起合同流程。
 	NeedCreateReview *bool `json:"NeedCreateReview,omitnil,omitempty" name:"NeedCreateReview"`
 
 	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 20480长度。
@@ -8715,19 +8748,26 @@ type CreatePrepareFlowRequest struct {
 	// 具体定制化内容详见数据接口说明
 	FlowOption *CreateFlowOption `json:"FlowOption,omitnil,omitempty" name:"FlowOption"`
 
-	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
-	// <ul><li> **false**：（默认）不需要审批，直接签署。</li>
-	// <li> **true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>
-	// 企业可以通过CreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
-	// <ul><li> 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li>
-	// <li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
-	// 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
+	// 发起方企业签署员工，在进行签署操作前，是否需要先通过企业内部审批流程 （签署审核）
+	// 1. **false（默认）**：  无需审批，发起方企业签署员工可直接进行签署操作。
+	// 2. **true**：  需要先走企业内部审批流程。 当流程进展到发起方企业签署员工时，其签署操作会被阻塞，等待企业内部审批结果。
+	// 
+	// 企业应通过 <a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowSignReview" target="_blank">提交签署流程审批结果</a>审批接口，将内部审批结果通知腾讯电子签平台：
+	// 1. 若通知为“审核通过”，发起方企业签署员工可继续完成签署操作。
+	// 2. 若通知为“审核未通过”，平台将继续阻塞该签署方的签署操作，直到企业再次通知平台审核通过为止。
+	// 
+	// 说明： 此能力可用于与企业内部审批流程打通，适用于手动签署和自动签署两种模式。
 	NeedSignReview *bool `json:"NeedSignReview,omitnil,omitempty" name:"NeedSignReview"`
 
-	// 发起方企业的签署人进行发起操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
+	// 发起方在创建合同流程前，是否必须先通过企业内部审批流程 （发起审核）
 	// 
-	// 若设置为true，发起审核结果需通过接口 CreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行发起操作，否则会阻塞其发起操作。
+	// 当设置为 `true` 时：  
+	//   1. 您需要在企业内部完成审批，并通过接口 <a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowSignReview" target="_blank">提交签署流程审批结果</a> 将审批结果回传给腾讯电子签。 
+	//   2. 只有当审核状态为“通过”时，合同流程正常发起。  
+	//   3. 若未通过或未回传审核结果，发起操作将被阻塞，阻止合同流程。
 	// 
+	// 当设置为 `false` （默认值）时：  
+	//   发起方无需经过企业内部审批，可直接发起合同流程。
 	NeedCreateReview *bool `json:"NeedCreateReview,omitnil,omitempty" name:"NeedCreateReview"`
 
 	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 20480长度。
@@ -12388,6 +12428,98 @@ func (r *DescribeContractReviewWebUrlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeContractReviewWebUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEnterpriseContractReviewChecklistsRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 过滤条件
+	Filters *Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 指定每页返回的数据条数，和Offset参数配合使用。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeEnterpriseContractReviewChecklistsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 过滤条件
+	Filters *Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 指定每页返回的数据条数，和Offset参数配合使用。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeEnterpriseContractReviewChecklistsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnterpriseContractReviewChecklistsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Agent")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnterpriseContractReviewChecklistsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEnterpriseContractReviewChecklistsResponseParams struct {
+	// 查询的总条数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 清单列表
+	Checklists []*Checklist `json:"Checklists,omitnil,omitempty" name:"Checklists"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEnterpriseContractReviewChecklistsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEnterpriseContractReviewChecklistsResponseParams `json:"Response"`
+}
+
+func (r *DescribeEnterpriseContractReviewChecklistsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnterpriseContractReviewChecklistsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

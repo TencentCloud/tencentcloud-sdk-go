@@ -2678,9 +2678,6 @@ type CreateRocketMQVipInstanceRequestParams struct {
 	// 集群规格，支持规格有 1.通用型:rocket-vip-basic-0; 2.基础型:rocket-vip-basic-1; 3.标准型:rocket-vip-basic-2; 4.高阶Ⅰ型:rocket-vip-basic-3; 5.高阶Ⅱ型:rocket-vip-basic-4
 	Spec *string `json:"Spec,omitnil,omitempty" name:"Spec"`
 
-	// 节点数量，最小2，最大20
-	NodeCount *int64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
-
 	// 单节点存储空间，GB为单位，最低200GB
 	StorageSize *int64 `json:"StorageSize,omitnil,omitempty" name:"StorageSize"`
 
@@ -2692,6 +2689,12 @@ type CreateRocketMQVipInstanceRequestParams struct {
 
 	// 购买时长，月为单位
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 节点数量，创建专享集群时必填
+	NodeCount *int64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
+
+	// 通用集群规格标识，新购通用集群时必填，从 [DescribeRocketMQGeneralSKUs](https://cloud.tencent.com/document/api/1179/127066) 接口返回的 [GeneralSKU](https://cloud.tencent.com/document/api/1179/46089#GeneralSKU) 字段获取。
+	GeneralSkuCode *string `json:"GeneralSkuCode,omitnil,omitempty" name:"GeneralSkuCode"`
 
 	// 是否用于迁移上云，默认为false
 	SupportsMigrateToCloud *bool `json:"SupportsMigrateToCloud,omitnil,omitempty" name:"SupportsMigrateToCloud"`
@@ -2718,9 +2721,6 @@ type CreateRocketMQVipInstanceRequest struct {
 	// 集群规格，支持规格有 1.通用型:rocket-vip-basic-0; 2.基础型:rocket-vip-basic-1; 3.标准型:rocket-vip-basic-2; 4.高阶Ⅰ型:rocket-vip-basic-3; 5.高阶Ⅱ型:rocket-vip-basic-4
 	Spec *string `json:"Spec,omitnil,omitempty" name:"Spec"`
 
-	// 节点数量，最小2，最大20
-	NodeCount *int64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
-
 	// 单节点存储空间，GB为单位，最低200GB
 	StorageSize *int64 `json:"StorageSize,omitnil,omitempty" name:"StorageSize"`
 
@@ -2732,6 +2732,12 @@ type CreateRocketMQVipInstanceRequest struct {
 
 	// 购买时长，月为单位
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 节点数量，创建专享集群时必填
+	NodeCount *int64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
+
+	// 通用集群规格标识，新购通用集群时必填，从 [DescribeRocketMQGeneralSKUs](https://cloud.tencent.com/document/api/1179/127066) 接口返回的 [GeneralSKU](https://cloud.tencent.com/document/api/1179/46089#GeneralSKU) 字段获取。
+	GeneralSkuCode *string `json:"GeneralSkuCode,omitnil,omitempty" name:"GeneralSkuCode"`
 
 	// 是否用于迁移上云，默认为false
 	SupportsMigrateToCloud *bool `json:"SupportsMigrateToCloud,omitnil,omitempty" name:"SupportsMigrateToCloud"`
@@ -2763,11 +2769,12 @@ func (r *CreateRocketMQVipInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Name")
 	delete(f, "Spec")
-	delete(f, "NodeCount")
 	delete(f, "StorageSize")
 	delete(f, "ZoneIds")
 	delete(f, "VpcInfo")
 	delete(f, "TimeSpan")
+	delete(f, "NodeCount")
+	delete(f, "GeneralSkuCode")
 	delete(f, "SupportsMigrateToCloud")
 	delete(f, "EnablePublic")
 	delete(f, "Bandwidth")
@@ -15151,6 +15158,13 @@ type RocketMQInstanceConfig struct {
 
 	// 控制生产和消费消息的 TPS 占比，取值范围0～1，默认值为0.5
 	SendReceiveRatio *float64 `json:"SendReceiveRatio,omitnil,omitempty" name:"SendReceiveRatio"`
+
+	// 收发 TPS 峰值上限
+	TpsLimit *int64 `json:"TpsLimit,omitnil,omitempty" name:"TpsLimit"`
+
+	// 通用集群规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GeneralSkuCode *string `json:"GeneralSkuCode,omitnil,omitempty" name:"GeneralSkuCode"`
 }
 
 type RocketMQMessageTrack struct {

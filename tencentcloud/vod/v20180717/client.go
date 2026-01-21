@@ -77,6 +77,7 @@ func NewApplyUploadResponse() (response *ApplyUploadResponse) {
 //  INVALIDPARAMETER_EXPIRETIME = "InvalidParameter.ExpireTime"
 //  INVALIDPARAMETERVALUE_COVERTYPE = "InvalidParameterValue.CoverType"
 //  INVALIDPARAMETERVALUE_EXPIRETIME = "InvalidParameterValue.ExpireTime"
+//  INVALIDPARAMETERVALUE_MEDIASTORAGEPATH = "InvalidParameterValue.MediaStoragePath"
 //  INVALIDPARAMETERVALUE_MEDIATYPE = "InvalidParameterValue.MediaType"
 //  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -97,6 +98,7 @@ func (c *Client) ApplyUpload(request *ApplyUploadRequest) (response *ApplyUpload
 //  INVALIDPARAMETER_EXPIRETIME = "InvalidParameter.ExpireTime"
 //  INVALIDPARAMETERVALUE_COVERTYPE = "InvalidParameterValue.CoverType"
 //  INVALIDPARAMETERVALUE_EXPIRETIME = "InvalidParameterValue.ExpireTime"
+//  INVALIDPARAMETERVALUE_MEDIASTORAGEPATH = "InvalidParameterValue.MediaStoragePath"
 //  INVALIDPARAMETERVALUE_MEDIATYPE = "InvalidParameterValue.MediaType"
 //  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -9013,6 +9015,64 @@ func (c *Client) InspectMediaQualityWithContext(ctx context.Context, request *In
     return
 }
 
+func NewListFilesRequest() (request *ListFilesRequest) {
+    request = &ListFilesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "ListFiles")
+    
+    
+    return
+}
+
+func NewListFilesResponse() (response *ListFilesResponse) {
+    response = &ListFilesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListFiles
+// 用于列出子应用下存储的文件条目。
+//
+// 
+//
+// **此API只在“FileID+Path模式”下可用**
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+func (c *Client) ListFiles(request *ListFilesRequest) (response *ListFilesResponse, err error) {
+    return c.ListFilesWithContext(context.Background(), request)
+}
+
+// ListFiles
+// 用于列出子应用下存储的文件条目。
+//
+// 
+//
+// **此API只在“FileID+Path模式”下可用**
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+func (c *Client) ListFilesWithContext(ctx context.Context, request *ListFilesRequest) (response *ListFilesResponse, err error) {
+    if request == nil {
+        request = NewListFilesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "ListFiles")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListFiles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewLiveRealTimeClipRequest() (request *LiveRealTimeClipRequest) {
     request = &LiveRealTimeClipRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12088,6 +12148,7 @@ func NewPullUploadResponse() (response *PullUploadResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_COVERURL = "InvalidParameterValue.CoverUrl"
 //  INVALIDPARAMETERVALUE_EXPIRETIME = "InvalidParameterValue.ExpireTime"
+//  INVALIDPARAMETERVALUE_MEDIASTORAGEPATH = "InvalidParameterValue.MediaStoragePath"
 //  INVALIDPARAMETERVALUE_MEDIAURL = "InvalidParameterValue.MediaUrl"
 //  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
 //  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
@@ -12114,6 +12175,7 @@ func (c *Client) PullUpload(request *PullUploadRequest) (response *PullUploadRes
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_COVERURL = "InvalidParameterValue.CoverUrl"
 //  INVALIDPARAMETERVALUE_EXPIRETIME = "InvalidParameterValue.ExpireTime"
+//  INVALIDPARAMETERVALUE_MEDIASTORAGEPATH = "InvalidParameterValue.MediaStoragePath"
 //  INVALIDPARAMETERVALUE_MEDIAURL = "InvalidParameterValue.MediaUrl"
 //  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
 //  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"

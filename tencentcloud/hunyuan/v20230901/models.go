@@ -760,6 +760,72 @@ type Delta struct {
 	ReasoningContent *string `json:"ReasoningContent,omitnil,omitempty" name:"ReasoningContent"`
 }
 
+// Predefined struct for user
+type Describe3DSmartTopologyJobRequestParams struct {
+	// 任务ID。	
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type Describe3DSmartTopologyJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID。	
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *Describe3DSmartTopologyJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *Describe3DSmartTopologyJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "Describe3DSmartTopologyJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type Describe3DSmartTopologyJobResponseParams struct {
+	// 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功 示例值：RUN。	
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码。	
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 错误信息。	
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 生成文件的URL地址，有效期1天。	
+	ResultFile3Ds []*File3D `json:"ResultFile3Ds,omitnil,omitempty" name:"ResultFile3Ds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type Describe3DSmartTopologyJobResponse struct {
+	*tchttp.BaseResponse
+	Response *Describe3DSmartTopologyJobResponseParams `json:"Response"`
+}
+
+func (r *Describe3DSmartTopologyJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *Describe3DSmartTopologyJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type EmbeddingData struct {
 	// Embedding 信息，目前为 1024 维浮点数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -790,6 +856,17 @@ type ErrorMsg struct {
 	// 4000 服务内部异常。
 	// 4001 请求模型超时。
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+}
+
+type File3D struct {
+	// 3D文件的格式。取值范围：GIF, OBJ
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 文件的Url（有效期24小时）
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 预览图片Url
+	PreviewImageUrl *string `json:"PreviewImageUrl,omitnil,omitempty" name:"PreviewImageUrl"`
 }
 
 type FileObject struct {
@@ -1745,6 +1822,14 @@ type ImageUrl struct {
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
+type InputFile3D struct {
+	// 文件的Url（有效期24小时）	
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 文件格式	
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
 type Knowledge struct {
 	// 表示具体的知识信息文本
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
@@ -2340,6 +2425,87 @@ type SongExt struct {
 
 	// 歌曲是否为vip。1：vip歌曲； 0：普通歌曲。
 	Vip *int64 `json:"Vip,omitnil,omitempty" name:"Vip"`
+}
+
+// Predefined struct for user
+type Submit3DSmartTopologyJobRequestParams struct {
+	// 源3D文件模型链接，参考值：
+	// Type：glb，obj格式文件必选其一。
+	// Url：文件大小不超过200MB。
+	// 3D模型要求：复杂模型和拓扑过的模型暂无法支持减面操作，建议输入未拓扑过的高模，比如混元3D生成的模型，适用度比较高的类别：硬表面、游戏角色、道具、日常生活用品等。
+	File3D *InputFile3D `json:"File3D,omitnil,omitempty" name:"File3D"`
+
+	// 多边形类型，表示模型的表面由几边形网格构成，默认为triangle,参考值:
+	// triangle:三角形面。
+	// quadrilateral：四边形面。
+	PolygonType *string `json:"PolygonType,omitnil,omitempty" name:"PolygonType"`
+
+	// 减面后面数档位类型，可选值：high，medium, low。
+	FaceLevel *string `json:"FaceLevel,omitnil,omitempty" name:"FaceLevel"`
+}
+
+type Submit3DSmartTopologyJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 源3D文件模型链接，参考值：
+	// Type：glb，obj格式文件必选其一。
+	// Url：文件大小不超过200MB。
+	// 3D模型要求：复杂模型和拓扑过的模型暂无法支持减面操作，建议输入未拓扑过的高模，比如混元3D生成的模型，适用度比较高的类别：硬表面、游戏角色、道具、日常生活用品等。
+	File3D *InputFile3D `json:"File3D,omitnil,omitempty" name:"File3D"`
+
+	// 多边形类型，表示模型的表面由几边形网格构成，默认为triangle,参考值:
+	// triangle:三角形面。
+	// quadrilateral：四边形面。
+	PolygonType *string `json:"PolygonType,omitnil,omitempty" name:"PolygonType"`
+
+	// 减面后面数档位类型，可选值：high，medium, low。
+	FaceLevel *string `json:"FaceLevel,omitnil,omitempty" name:"FaceLevel"`
+}
+
+func (r *Submit3DSmartTopologyJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *Submit3DSmartTopologyJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "File3D")
+	delete(f, "PolygonType")
+	delete(f, "FaceLevel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "Submit3DSmartTopologyJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type Submit3DSmartTopologyJobResponseParams struct {
+	// 任务ID。	
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type Submit3DSmartTopologyJobResponse struct {
+	*tchttp.BaseResponse
+	Response *Submit3DSmartTopologyJobResponseParams `json:"Response"`
+}
+
+func (r *Submit3DSmartTopologyJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *Submit3DSmartTopologyJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

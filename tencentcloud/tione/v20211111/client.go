@@ -3947,6 +3947,106 @@ func (c *Client) ModifyNotebookTagsWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyServiceGroupWeightsRequest() (request *ModifyServiceGroupWeightsRequest) {
+    request = &ModifyServiceGroupWeightsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "ModifyServiceGroupWeights")
+    
+    
+    return
+}
+
+func NewModifyServiceGroupWeightsResponse() (response *ModifyServiceGroupWeightsResponse) {
+    response = &ModifyServiceGroupWeightsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyServiceGroupWeights
+// 更新推理服务组流量分配
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APIGATEWAYQUERYFAILED = "FailedOperation.ApiGatewayQueryFailed"
+//  FAILEDOPERATION_BILLINGQUERYFAILED = "FailedOperation.BillingQueryFailed"
+//  FAILEDOPERATION_CLSSERVICENOTACTIVED = "FailedOperation.ClsServiceNotActived"
+//  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_INVALIDUSERTYPE = "FailedOperation.InvalidUserType"
+//  FAILEDOPERATION_KMSKEYNOTOPEN = "FailedOperation.KmsKeyNotOpen"
+//  FAILEDOPERATION_NOFREEBUCKET = "FailedOperation.NoFreeBucket"
+//  FAILEDOPERATION_NOPERMISSION = "FailedOperation.NoPermission"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_PROCESSING = "FailedOperation.Processing"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_REPOBINDBYINSTANCE = "FailedOperation.RepoBindByInstance"
+//  FAILEDOPERATION_STSQUERYFAILED = "FailedOperation.StsQueryFailed"
+//  FAILEDOPERATION_TIMEDOUT = "FailedOperation.Timedout"
+//  FAILEDOPERATION_UNKNOWNINSTANCETYPE = "FailedOperation.UnknownInstanceType"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyServiceGroupWeights(request *ModifyServiceGroupWeightsRequest) (response *ModifyServiceGroupWeightsResponse, err error) {
+    return c.ModifyServiceGroupWeightsWithContext(context.Background(), request)
+}
+
+// ModifyServiceGroupWeights
+// 更新推理服务组流量分配
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APIGATEWAYQUERYFAILED = "FailedOperation.ApiGatewayQueryFailed"
+//  FAILEDOPERATION_BILLINGQUERYFAILED = "FailedOperation.BillingQueryFailed"
+//  FAILEDOPERATION_CLSSERVICENOTACTIVED = "FailedOperation.ClsServiceNotActived"
+//  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_INVALIDUSERTYPE = "FailedOperation.InvalidUserType"
+//  FAILEDOPERATION_KMSKEYNOTOPEN = "FailedOperation.KmsKeyNotOpen"
+//  FAILEDOPERATION_NOFREEBUCKET = "FailedOperation.NoFreeBucket"
+//  FAILEDOPERATION_NOPERMISSION = "FailedOperation.NoPermission"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_PROCESSING = "FailedOperation.Processing"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_REPOBINDBYINSTANCE = "FailedOperation.RepoBindByInstance"
+//  FAILEDOPERATION_STSQUERYFAILED = "FailedOperation.StsQueryFailed"
+//  FAILEDOPERATION_TIMEDOUT = "FailedOperation.Timedout"
+//  FAILEDOPERATION_UNKNOWNINSTANCETYPE = "FailedOperation.UnknownInstanceType"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyServiceGroupWeightsWithContext(ctx context.Context, request *ModifyServiceGroupWeightsRequest) (response *ModifyServiceGroupWeightsResponse, err error) {
+    if request == nil {
+        request = NewModifyServiceGroupWeightsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "ModifyServiceGroupWeights")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyServiceGroupWeights require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyServiceGroupWeightsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPushTrainingMetricsRequest() (request *PushTrainingMetricsRequest) {
     request = &PushTrainingMetricsRequest{
         BaseRequest: &tchttp.BaseRequest{},

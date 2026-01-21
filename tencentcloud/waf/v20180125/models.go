@@ -13389,6 +13389,60 @@ func (r *GetInstanceQpsLimitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetOrganizationRoleRequestParams struct {
+
+}
+
+type GetOrganizationRoleRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *GetOrganizationRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetOrganizationRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetOrganizationRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetOrganizationRoleResponseParams struct {
+	// Admin:集团账号创建，DelegatedAdmin:委派管理员，Member：成员，NoMember：非集团账号成员
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetOrganizationRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *GetOrganizationRoleResponseParams `json:"Response"`
+}
+
+func (r *GetOrganizationRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetOrganizationRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type GlobalSceneInfo struct {
 	// 场景ID
 	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`

@@ -1312,6 +1312,9 @@ type CreateCloudInstanceRequestParams struct {
 
 	// 是否开通审计
 	NeedCdbAudit *int64 `json:"NeedCdbAudit,omitnil,omitempty" name:"NeedCdbAudit"`
+
+	// 安全组来源IP
+	SgIP *string `json:"SgIP,omitnil,omitempty" name:"SgIP"`
 }
 
 type CreateCloudInstanceRequest struct {
@@ -1381,6 +1384,9 @@ type CreateCloudInstanceRequest struct {
 
 	// 是否开通审计
 	NeedCdbAudit *int64 `json:"NeedCdbAudit,omitnil,omitempty" name:"NeedCdbAudit"`
+
+	// 安全组来源IP
+	SgIP *string `json:"SgIP,omitnil,omitempty" name:"SgIP"`
 }
 
 func (r *CreateCloudInstanceRequest) ToJsonString() string {
@@ -1413,6 +1419,7 @@ func (r *CreateCloudInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ZoneId")
 	delete(f, "DefaultMetaVersion")
 	delete(f, "NeedCdbAudit")
+	delete(f, "SgIP")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudInstanceRequest has unknown keys!", "")
 	}

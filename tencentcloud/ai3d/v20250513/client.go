@@ -133,6 +133,54 @@ func (c *Client) DescribeHunyuanTo3DUVJobWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeProfileTo3DJobRequest() (request *DescribeProfileTo3DJobRequest) {
+    request = &DescribeProfileTo3DJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ai3d", APIVersion, "DescribeProfileTo3DJob")
+    
+    
+    return
+}
+
+func NewDescribeProfileTo3DJobResponse() (response *DescribeProfileTo3DJobResponse) {
+    response = &DescribeProfileTo3DJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeProfileTo3DJob
+// 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+func (c *Client) DescribeProfileTo3DJob(request *DescribeProfileTo3DJobRequest) (response *DescribeProfileTo3DJobResponse, err error) {
+    return c.DescribeProfileTo3DJobWithContext(context.Background(), request)
+}
+
+// DescribeProfileTo3DJob
+// 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+func (c *Client) DescribeProfileTo3DJobWithContext(ctx context.Context, request *DescribeProfileTo3DJobRequest) (response *DescribeProfileTo3DJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeProfileTo3DJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ai3d", APIVersion, "DescribeProfileTo3DJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProfileTo3DJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProfileTo3DJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeReduceFaceJobRequest() (request *DescribeReduceFaceJobRequest) {
     request = &DescribeReduceFaceJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -549,6 +597,54 @@ func (c *Client) SubmitHunyuanTo3DUVJobWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewSubmitHunyuanTo3DUVJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitProfileTo3DJobRequest() (request *SubmitProfileTo3DJobRequest) {
+    request = &SubmitProfileTo3DJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ai3d", APIVersion, "SubmitProfileTo3DJob")
+    
+    
+    return
+}
+
+func NewSubmitProfileTo3DJobResponse() (response *SubmitProfileTo3DJobResponse) {
+    response = &SubmitProfileTo3DJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitProfileTo3DJob
+// 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+func (c *Client) SubmitProfileTo3DJob(request *SubmitProfileTo3DJobRequest) (response *SubmitProfileTo3DJobResponse, err error) {
+    return c.SubmitProfileTo3DJobWithContext(context.Background(), request)
+}
+
+// SubmitProfileTo3DJob
+// 混元生3D接口，基于混元大模型，根据输入的文本描述/图片智能生成3D。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+func (c *Client) SubmitProfileTo3DJobWithContext(ctx context.Context, request *SubmitProfileTo3DJobRequest) (response *SubmitProfileTo3DJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitProfileTo3DJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ai3d", APIVersion, "SubmitProfileTo3DJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitProfileTo3DJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitProfileTo3DJobResponse()
     err = c.Send(request, response)
     return
 }

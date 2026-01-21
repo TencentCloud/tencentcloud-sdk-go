@@ -10851,6 +10851,70 @@ func (c *Client) DescribeContractReviewWebUrlWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeEnterpriseContractReviewChecklistsRequest() (request *DescribeEnterpriseContractReviewChecklistsRequest) {
+    request = &DescribeEnterpriseContractReviewChecklistsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeEnterpriseContractReviewChecklists")
+    
+    
+    return
+}
+
+func NewDescribeEnterpriseContractReviewChecklistsResponse() (response *DescribeEnterpriseContractReviewChecklistsResponse) {
+    response = &DescribeEnterpriseContractReviewChecklistsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEnterpriseContractReviewChecklists
+// 本接口（DescribeEnterpriseContractReviewChecklists）用于获取企业全部审查要点清单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+func (c *Client) DescribeEnterpriseContractReviewChecklists(request *DescribeEnterpriseContractReviewChecklistsRequest) (response *DescribeEnterpriseContractReviewChecklistsResponse, err error) {
+    return c.DescribeEnterpriseContractReviewChecklistsWithContext(context.Background(), request)
+}
+
+// DescribeEnterpriseContractReviewChecklists
+// 本接口（DescribeEnterpriseContractReviewChecklists）用于获取企业全部审查要点清单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+func (c *Client) DescribeEnterpriseContractReviewChecklistsWithContext(ctx context.Context, request *DescribeEnterpriseContractReviewChecklistsRequest) (response *DescribeEnterpriseContractReviewChecklistsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnterpriseContractReviewChecklistsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeEnterpriseContractReviewChecklists")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnterpriseContractReviewChecklists require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEnterpriseContractReviewChecklistsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeExtendedServiceAuthDetailRequest() (request *DescribeExtendedServiceAuthDetailRequest) {
     request = &DescribeExtendedServiceAuthDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

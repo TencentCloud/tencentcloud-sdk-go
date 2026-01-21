@@ -151,6 +151,72 @@ func (r *DescribeHunyuanTo3DUVJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeProfileTo3DJobRequestParams struct {
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DescribeProfileTo3DJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DescribeProfileTo3DJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProfileTo3DJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProfileTo3DJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProfileTo3DJobResponseParams struct {
+	// 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 生成的3D文件数组。
+	ResultFile3Ds []*File3D `json:"ResultFile3Ds,omitnil,omitempty" name:"ResultFile3Ds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeProfileTo3DJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeProfileTo3DJobResponseParams `json:"Response"`
+}
+
+func (r *DescribeProfileTo3DJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProfileTo3DJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeReduceFaceJobRequestParams struct {
 	// 任务ID。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -912,6 +978,154 @@ func (r *SubmitHunyuanTo3DUVJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SubmitHunyuanTo3DUVJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitProfileTo3DJobRequestParams struct {
+	// 真人头像参考图 Base64 数据和参考图 Url。
+	// - Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// - 图片限制：单边分辨率小于4096且大于500，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png。
+	Profile *Image `json:"Profile,omitnil,omitempty" name:"Profile"`
+
+	// 生成人物模板，参考值：
+	// 
+	// basketball: 动感球手；
+	// 
+	// badminton: 羽扬中华；
+	// 
+	// pingpong: 国球荣耀；
+	// 
+	// gymnastics:勇攀巅峰；
+	// 
+	// pilidance: 舞动青春；
+	// 
+	// tennis: 网球甜心；
+	// 
+	// athletics: 东方疾风；
+	// 
+	// footballboykicking1:激情逐风；
+	// 
+	// footballboykicking2: 绿茵之星；
+	// 
+	// guitar:甜酷弦音；
+	// 
+	// footballboy: 足球小将；
+	// 
+	// skateboard: 滑跃青春；
+	// 
+	// futuresoilder: 未来战士；
+	// 
+	// explorer: 逐梦旷野；
+	// 
+	// beardollgirl:可爱女孩；
+	// 
+	// bibpantsboy:都市白领；
+	// 
+	// womansitpose: 职业丽影；
+	// 
+	// womanstandpose2: 悠闲时光；
+	// 
+	// mysteriousprincess: 海洋公主；
+	// 
+	// manstandpose2: 演讲之星；
+	Template *string `json:"Template,omitnil,omitempty" name:"Template"`
+}
+
+type SubmitProfileTo3DJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 真人头像参考图 Base64 数据和参考图 Url。
+	// - Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// - 图片限制：单边分辨率小于4096且大于500，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png。
+	Profile *Image `json:"Profile,omitnil,omitempty" name:"Profile"`
+
+	// 生成人物模板，参考值：
+	// 
+	// basketball: 动感球手；
+	// 
+	// badminton: 羽扬中华；
+	// 
+	// pingpong: 国球荣耀；
+	// 
+	// gymnastics:勇攀巅峰；
+	// 
+	// pilidance: 舞动青春；
+	// 
+	// tennis: 网球甜心；
+	// 
+	// athletics: 东方疾风；
+	// 
+	// footballboykicking1:激情逐风；
+	// 
+	// footballboykicking2: 绿茵之星；
+	// 
+	// guitar:甜酷弦音；
+	// 
+	// footballboy: 足球小将；
+	// 
+	// skateboard: 滑跃青春；
+	// 
+	// futuresoilder: 未来战士；
+	// 
+	// explorer: 逐梦旷野；
+	// 
+	// beardollgirl:可爱女孩；
+	// 
+	// bibpantsboy:都市白领；
+	// 
+	// womansitpose: 职业丽影；
+	// 
+	// womanstandpose2: 悠闲时光；
+	// 
+	// mysteriousprincess: 海洋公主；
+	// 
+	// manstandpose2: 演讲之星；
+	Template *string `json:"Template,omitnil,omitempty" name:"Template"`
+}
+
+func (r *SubmitProfileTo3DJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitProfileTo3DJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Profile")
+	delete(f, "Template")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitProfileTo3DJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitProfileTo3DJobResponseParams struct {
+	// 任务ID（有效期24小时）
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitProfileTo3DJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitProfileTo3DJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitProfileTo3DJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitProfileTo3DJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

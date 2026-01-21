@@ -859,6 +859,68 @@ func (c *Client) CreateDocumentWithContext(ctx context.Context, request *CreateD
     return
 }
 
+func NewCreateGroupLiveCodesRequest() (request *CreateGroupLiveCodesRequest) {
+    request = &CreateGroupLiveCodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "CreateGroupLiveCodes")
+    
+    
+    return
+}
+
+func NewCreateGroupLiveCodesResponse() (response *CreateGroupLiveCodesResponse) {
+    response = &CreateGroupLiveCodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateGroupLiveCodes
+// 创建分组直播参加码
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateGroupLiveCodes(request *CreateGroupLiveCodesRequest) (response *CreateGroupLiveCodesResponse, err error) {
+    return c.CreateGroupLiveCodesWithContext(context.Background(), request)
+}
+
+// CreateGroupLiveCodes
+// 创建分组直播参加码
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateGroupLiveCodesWithContext(ctx context.Context, request *CreateGroupLiveCodesRequest) (response *CreateGroupLiveCodesResponse, err error) {
+    if request == nil {
+        request = NewCreateGroupLiveCodesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lcic", APIVersion, "CreateGroupLiveCodes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGroupLiveCodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGroupLiveCodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateGroupWithMembersRequest() (request *CreateGroupWithMembersRequest) {
     request = &CreateGroupWithMembersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2409,6 +2471,78 @@ func (c *Client) DescribeGroupListWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeGroupListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGroupLiveCodesRequest() (request *DescribeGroupLiveCodesRequest) {
+    request = &DescribeGroupLiveCodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeGroupLiveCodes")
+    
+    
+    return
+}
+
+func NewDescribeGroupLiveCodesResponse() (response *DescribeGroupLiveCodesResponse) {
+    response = &DescribeGroupLiveCodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGroupLiveCodes
+// 获取分组直播参加码
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ROOMTYPEINVALID = "InvalidParameter.RoomTypeInvalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT_RECORD = "ResourceInsufficient.Record"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_VERSION = "UnsupportedOperation.Version"
+func (c *Client) DescribeGroupLiveCodes(request *DescribeGroupLiveCodesRequest) (response *DescribeGroupLiveCodesResponse, err error) {
+    return c.DescribeGroupLiveCodesWithContext(context.Background(), request)
+}
+
+// DescribeGroupLiveCodes
+// 获取分组直播参加码
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ROOMTYPEINVALID = "InvalidParameter.RoomTypeInvalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT_RECORD = "ResourceInsufficient.Record"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_VERSION = "UnsupportedOperation.Version"
+func (c *Client) DescribeGroupLiveCodesWithContext(ctx context.Context, request *DescribeGroupLiveCodesRequest) (response *DescribeGroupLiveCodesResponse, err error) {
+    if request == nil {
+        request = NewDescribeGroupLiveCodesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lcic", APIVersion, "DescribeGroupLiveCodes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGroupLiveCodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGroupLiveCodesResponse()
     err = c.Send(request, response)
     return
 }

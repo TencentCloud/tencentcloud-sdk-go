@@ -9270,9 +9270,11 @@ func NewRecognizeAudioResponse() (response *RecognizeAudioResponse) {
 // 同步接口，返回语音识别结果
 //
 // 可能返回的错误码:
+//  INTERNALERROR_RECOGNITIONERROR = "InternalError.RecognitionError"
 //  INVALIDPARAMETERVALUE_AUDIODATA = "InvalidParameterValue.AudioData"
 //  INVALIDPARAMETERVALUE_AUDIODATATOOLONG = "InvalidParameterValue.AudioDataTooLong"
 //  INVALIDPARAMETERVALUE_AUDIOFORMAT = "InvalidParameterValue.AudioFormat"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
 //  INVALIDPARAMETERVALUE_SOURCELANGUAGE = "InvalidParameterValue.SourceLanguage"
 //  RESOURCENOTFOUND_USERUNREGISTER = "ResourceNotFound.UserUnregister"
 func (c *Client) RecognizeAudio(request *RecognizeAudioRequest) (response *RecognizeAudioResponse, err error) {
@@ -9283,9 +9285,11 @@ func (c *Client) RecognizeAudio(request *RecognizeAudioRequest) (response *Recog
 // 同步接口，返回语音识别结果
 //
 // 可能返回的错误码:
+//  INTERNALERROR_RECOGNITIONERROR = "InternalError.RecognitionError"
 //  INVALIDPARAMETERVALUE_AUDIODATA = "InvalidParameterValue.AudioData"
 //  INVALIDPARAMETERVALUE_AUDIODATATOOLONG = "InvalidParameterValue.AudioDataTooLong"
 //  INVALIDPARAMETERVALUE_AUDIOFORMAT = "InvalidParameterValue.AudioFormat"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
 //  INVALIDPARAMETERVALUE_SOURCELANGUAGE = "InvalidParameterValue.SourceLanguage"
 //  RESOURCENOTFOUND_USERUNREGISTER = "ResourceNotFound.UserUnregister"
 func (c *Client) RecognizeAudioWithContext(ctx context.Context, request *RecognizeAudioRequest) (response *RecognizeAudioResponse, err error) {

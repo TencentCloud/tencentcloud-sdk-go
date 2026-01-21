@@ -449,7 +449,7 @@ const (
 	// 该账号未授权开通CLS。
 	UNAUTHORIZEDOPERATION_CDNCLSNOTREGISTERED = "UnauthorizedOperation.CdnClsNotRegistered"
 
-	// 域名解析未进行验证。
+	// 域名未进行归属权校验。
 	UNAUTHORIZEDOPERATION_CDNDOMAINRECORDNOTVERIFIED = "UnauthorizedOperation.CdnDomainRecordNotVerified"
 
 	// 域名在内部系统已存在，请提工单处理。

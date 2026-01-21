@@ -8827,6 +8827,72 @@ func (c *Client) GetInstanceQpsLimitWithContext(ctx context.Context, request *Ge
     return
 }
 
+func NewGetOrganizationRoleRequest() (request *GetOrganizationRoleRequest) {
+    request = &GetOrganizationRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "GetOrganizationRole")
+    
+    
+    return
+}
+
+func NewGetOrganizationRoleResponse() (response *GetOrganizationRoleResponse) {
+    response = &GetOrganizationRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetOrganizationRole
+// 获取集团账号角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSDBOPERATIONFAILED = "FailedOperation.CLSDBOperationFailed"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERR = "InternalError.UnknownErr"
+//  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
+//  INVALIDPARAMETER_QUERYSTRINGSYNTAXERR = "InvalidParameter.QueryStringSyntaxErr"
+//  INVALIDPARAMETER_SQLSYNTAXERR = "InvalidParameter.SQLSyntaxErr"
+//  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
+func (c *Client) GetOrganizationRole(request *GetOrganizationRoleRequest) (response *GetOrganizationRoleResponse, err error) {
+    return c.GetOrganizationRoleWithContext(context.Background(), request)
+}
+
+// GetOrganizationRole
+// 获取集团账号角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSDBOPERATIONFAILED = "FailedOperation.CLSDBOperationFailed"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERR = "InternalError.UnknownErr"
+//  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
+//  INVALIDPARAMETER_QUERYSTRINGSYNTAXERR = "InvalidParameter.QueryStringSyntaxErr"
+//  INVALIDPARAMETER_SQLSYNTAXERR = "InvalidParameter.SQLSyntaxErr"
+//  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
+func (c *Client) GetOrganizationRoleWithContext(ctx context.Context, request *GetOrganizationRoleRequest) (response *GetOrganizationRoleResponse, err error) {
+    if request == nil {
+        request = NewGetOrganizationRoleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "GetOrganizationRole")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetOrganizationRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetOrganizationRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewImportIpAccessControlRequest() (request *ImportIpAccessControlRequest) {
     request = &ImportIpAccessControlRequest{
         BaseRequest: &tchttp.BaseRequest{},

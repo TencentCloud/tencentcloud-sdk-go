@@ -28673,10 +28673,10 @@ type ModifyNatGatewayAttributeRequestParams struct {
 	// NAT网关的ID，形如：`nat-df45454`。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// NAT网关的名称，形如：`test_nat`。
+	// NAT网关的名称，形如：`test_nat`，边界值：[1,60] 字符。
 	NatGatewayName *string `json:"NatGatewayName,omitnil,omitempty" name:"NatGatewayName"`
 
-	// NAT网关最大外网出带宽(单位:Mbps)。
+	// NAT网关最大外网出带宽(单位:Mbps)，边界值：[0,50000]。
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
 	// 是否修改NAT网关绑定的安全组。
@@ -28687,6 +28687,9 @@ type ModifyNatGatewayAttributeRequestParams struct {
 
 	// NAT实例是否开启删除保护
 	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitnil,omitempty" name:"DeletionProtectionEnabled"`
+
+	// 同一个内网地址通过NAT网关访问同一个目的IP时，是否使用固定的弹性公网IP。默认为true，使用固定IP；false代表使用随机IP。当前适用于标准型NAT网关。
+	PublicAddressAffinity *bool `json:"PublicAddressAffinity,omitnil,omitempty" name:"PublicAddressAffinity"`
 }
 
 type ModifyNatGatewayAttributeRequest struct {
@@ -28695,10 +28698,10 @@ type ModifyNatGatewayAttributeRequest struct {
 	// NAT网关的ID，形如：`nat-df45454`。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
-	// NAT网关的名称，形如：`test_nat`。
+	// NAT网关的名称，形如：`test_nat`，边界值：[1,60] 字符。
 	NatGatewayName *string `json:"NatGatewayName,omitnil,omitempty" name:"NatGatewayName"`
 
-	// NAT网关最大外网出带宽(单位:Mbps)。
+	// NAT网关最大外网出带宽(单位:Mbps)，边界值：[0,50000]。
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
 	// 是否修改NAT网关绑定的安全组。
@@ -28709,6 +28712,9 @@ type ModifyNatGatewayAttributeRequest struct {
 
 	// NAT实例是否开启删除保护
 	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitnil,omitempty" name:"DeletionProtectionEnabled"`
+
+	// 同一个内网地址通过NAT网关访问同一个目的IP时，是否使用固定的弹性公网IP。默认为true，使用固定IP；false代表使用随机IP。当前适用于标准型NAT网关。
+	PublicAddressAffinity *bool `json:"PublicAddressAffinity,omitnil,omitempty" name:"PublicAddressAffinity"`
 }
 
 func (r *ModifyNatGatewayAttributeRequest) ToJsonString() string {
@@ -28729,6 +28735,7 @@ func (r *ModifyNatGatewayAttributeRequest) FromJsonString(s string) error {
 	delete(f, "ModifySecurityGroup")
 	delete(f, "SecurityGroupIds")
 	delete(f, "DeletionProtectionEnabled")
+	delete(f, "PublicAddressAffinity")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNatGatewayAttributeRequest has unknown keys!", "")
 	}
@@ -36548,6 +36555,83 @@ func (r *UpdateTrafficMirrorDirectionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateTrafficMirrorDirectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpgradeNatGatewayProductVersionRequestParams struct {
+	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// NAT网关的ID，形如：`nat-ig8xpno8`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 是否热迁移。1表示冷迁移，0表示热迁移，默认值是0。
+	Force *int64 `json:"Force,omitnil,omitempty" name:"Force"`
+
+	// 是否仅校验迁移可能性。true表示仅校验能否迁移，不做实际迁移。false表示正常迁移。默认值为false。
+	// 仅校验模式，不报错表示校验迁移成功。
+	CheckOnlyMode *bool `json:"CheckOnlyMode,omitnil,omitempty" name:"CheckOnlyMode"`
+}
+
+type UpgradeNatGatewayProductVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// NAT网关的ID，形如：`nat-ig8xpno8`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 是否热迁移。1表示冷迁移，0表示热迁移，默认值是0。
+	Force *int64 `json:"Force,omitnil,omitempty" name:"Force"`
+
+	// 是否仅校验迁移可能性。true表示仅校验能否迁移，不做实际迁移。false表示正常迁移。默认值为false。
+	// 仅校验模式，不报错表示校验迁移成功。
+	CheckOnlyMode *bool `json:"CheckOnlyMode,omitnil,omitempty" name:"CheckOnlyMode"`
+}
+
+func (r *UpgradeNatGatewayProductVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeNatGatewayProductVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "NatGatewayId")
+	delete(f, "Force")
+	delete(f, "CheckOnlyMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeNatGatewayProductVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpgradeNatGatewayProductVersionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpgradeNatGatewayProductVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *UpgradeNatGatewayProductVersionResponseParams `json:"Response"`
+}
+
+func (r *UpgradeNatGatewayProductVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeNatGatewayProductVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

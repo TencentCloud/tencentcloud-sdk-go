@@ -6955,7 +6955,7 @@ func NewUpgradeVersionToMultiAvailabilityZonesResponse() (response *UpgradeVersi
 }
 
 // UpgradeVersionToMultiAvailabilityZones
-// 本接口（UpgradeVersionToMultiAvailabilityZones）用于升级实例支持多AZ。
+// 本接口已废弃。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -6969,7 +6969,7 @@ func (c *Client) UpgradeVersionToMultiAvailabilityZones(request *UpgradeVersionT
 }
 
 // UpgradeVersionToMultiAvailabilityZones
-// 本接口（UpgradeVersionToMultiAvailabilityZones）用于升级实例支持多AZ。
+// 本接口已废弃。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

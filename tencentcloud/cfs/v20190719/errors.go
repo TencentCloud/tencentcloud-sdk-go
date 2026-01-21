@@ -122,6 +122,9 @@ const (
 	// 标签键重复
 	INVALIDPARAMETERVALUE_DUPLICATEDTAGKEY = "InvalidParameterValue.DuplicatedTagKey"
 
+	// ExternalStorage 生命周期模式只支持数据流动
+	INVALIDPARAMETERVALUE_EXTERNALSTORAGESUPPORTDATAFLOWONLY = "InvalidParameterValue.ExternalStorageSupportDataflowOnly"
+
 	// 用户自定义名称过长（超过64字节)。
 	INVALIDPARAMETERVALUE_FSNAMELIMITEXCEEDED = "InvalidParameterValue.FsNameLimitExceeded"
 
@@ -319,6 +322,9 @@ const (
 
 	// 用户区域选择错误 (Zone) 或 (Zone_id)二者必选一。
 	INVALIDPARAMETERVALUE_MISSINGZONEORZONEID = "InvalidParameterValue.MissingZoneOrZoneId"
+
+	// 该文件系统目录已配置数据流动，请配置其他规则
+	INVALIDPARAMETERVALUE_PATHUSEDINDATAFLOW = "InvalidParameterValue.PathUsedInDataflow"
 
 	// 权限组描述长度超过限制（不能超过255字节）。
 	INVALIDPARAMETERVALUE_PGROUPDESCINFOLIMITEXCEEDED = "InvalidParameterValue.PgroupDescinfoLimitExceeded"

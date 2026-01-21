@@ -69,7 +69,9 @@ func NewApplyPathLifecyclePolicyResponse() (response *ApplyPathLifecyclePolicyRe
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_BINDINFREQUENTACCESSFIRST = "InvalidParameterValue.BindInfrequentaccessFirst"
+//  INVALIDPARAMETERVALUE_EXTERNALSTORAGESUPPORTDATAFLOWONLY = "InvalidParameterValue.ExternalStorageSupportDataflowOnly"
 //  INVALIDPARAMETERVALUE_INVALIDPOLICYFSPATH = "InvalidParameterValue.InvalidPolicyFsPath"
+//  INVALIDPARAMETERVALUE_PATHUSEDINDATAFLOW = "InvalidParameterValue.PathUsedInDataflow"
 //  RESOURCEINSUFFICIENT_POLICYFSLIMITEXCEEDED = "ResourceInsufficient.PolicyFsLimitExceeded"
 //  RESOURCEINSUFFICIENT_POLICYFSPATHLIMITEXCEEDED = "ResourceInsufficient.PolicyFsPathLimitExceeded"
 //  RESOURCEINSUFFICIENT_POLICYLIMITEXCEEDED = "ResourceInsufficient.PolicyLimitExceeded"
@@ -83,7 +85,9 @@ func (c *Client) ApplyPathLifecyclePolicy(request *ApplyPathLifecyclePolicyReque
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_BINDINFREQUENTACCESSFIRST = "InvalidParameterValue.BindInfrequentaccessFirst"
+//  INVALIDPARAMETERVALUE_EXTERNALSTORAGESUPPORTDATAFLOWONLY = "InvalidParameterValue.ExternalStorageSupportDataflowOnly"
 //  INVALIDPARAMETERVALUE_INVALIDPOLICYFSPATH = "InvalidParameterValue.InvalidPolicyFsPath"
+//  INVALIDPARAMETERVALUE_PATHUSEDINDATAFLOW = "InvalidParameterValue.PathUsedInDataflow"
 //  RESOURCEINSUFFICIENT_POLICYFSLIMITEXCEEDED = "ResourceInsufficient.PolicyFsLimitExceeded"
 //  RESOURCEINSUFFICIENT_POLICYFSPATHLIMITEXCEEDED = "ResourceInsufficient.PolicyFsPathLimitExceeded"
 //  RESOURCEINSUFFICIENT_POLICYLIMITEXCEEDED = "ResourceInsufficient.PolicyLimitExceeded"

@@ -29427,6 +29427,90 @@ func (c *Client) UpdateTrafficMirrorDirectionWithContext(ctx context.Context, re
     return
 }
 
+func NewUpgradeNatGatewayProductVersionRequest() (request *UpgradeNatGatewayProductVersionRequest) {
+    request = &UpgradeNatGatewayProductVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "UpgradeNatGatewayProductVersion")
+    
+    
+    return
+}
+
+func NewUpgradeNatGatewayProductVersionResponse() (response *UpgradeNatGatewayProductVersionResponse) {
+    response = &UpgradeNatGatewayProductVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpgradeNatGatewayProductVersion
+// 本接口（UpgradeNatGatewayProductVersion）用于升级NAT实例产品版本，将传统型NAT实例升级到标准型NAT。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCEINSUFFICIENT_INSTANCE = "ResourceInsufficient.Instance"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = "UnsupportedOperation.InsufficientFunds"
+//  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+//  UNSUPPORTEDOPERATION_NATGATEWAYRESTRICTED = "UnsupportedOperation.NatGatewayRestricted"
+//  UNSUPPORTEDOPERATION_NATHASBOUNDVPG = "UnsupportedOperation.NatHasBoundVpg"
+//  UNSUPPORTEDOPERATION_NATHASECMP = "UnsupportedOperation.NatHasECMP"
+//  UNSUPPORTEDOPERATION_NATHASENABLEDGATEWAYFLOWCONTROL = "UnsupportedOperation.NatHasEnabledGatewayFlowControl"
+//  UNSUPPORTEDOPERATION_NATHASFLOWLOG = "UnsupportedOperation.NatHasFlowLog"
+//  UNSUPPORTEDOPERATION_NATINSTANCEEXCLUSIVE = "UnsupportedOperation.NatInstanceExclusive"
+//  UNSUPPORTEDOPERATION_NATSPECIFICATIONEXCEEDED = "UnsupportedOperation.NatSpecificationExceeded"
+//  UNSUPPORTEDOPERATION_NATTYPEERROR = "UnsupportedOperation.NatTypeError"
+//  UNSUPPORTEDOPERATION_NATUSAGEEXCEEDED = "UnsupportedOperation.NatUsageExceeded"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDLEGACYACCOUNT = "UnsupportedOperation.UnsupportedLegacyAccount"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDLOCALZONENAT = "UnsupportedOperation.UnsupportedLocalZoneNat"
+func (c *Client) UpgradeNatGatewayProductVersion(request *UpgradeNatGatewayProductVersionRequest) (response *UpgradeNatGatewayProductVersionResponse, err error) {
+    return c.UpgradeNatGatewayProductVersionWithContext(context.Background(), request)
+}
+
+// UpgradeNatGatewayProductVersion
+// 本接口（UpgradeNatGatewayProductVersion）用于升级NAT实例产品版本，将传统型NAT实例升级到标准型NAT。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCEINSUFFICIENT_INSTANCE = "ResourceInsufficient.Instance"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = "UnsupportedOperation.InsufficientFunds"
+//  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+//  UNSUPPORTEDOPERATION_NATGATEWAYRESTRICTED = "UnsupportedOperation.NatGatewayRestricted"
+//  UNSUPPORTEDOPERATION_NATHASBOUNDVPG = "UnsupportedOperation.NatHasBoundVpg"
+//  UNSUPPORTEDOPERATION_NATHASECMP = "UnsupportedOperation.NatHasECMP"
+//  UNSUPPORTEDOPERATION_NATHASENABLEDGATEWAYFLOWCONTROL = "UnsupportedOperation.NatHasEnabledGatewayFlowControl"
+//  UNSUPPORTEDOPERATION_NATHASFLOWLOG = "UnsupportedOperation.NatHasFlowLog"
+//  UNSUPPORTEDOPERATION_NATINSTANCEEXCLUSIVE = "UnsupportedOperation.NatInstanceExclusive"
+//  UNSUPPORTEDOPERATION_NATSPECIFICATIONEXCEEDED = "UnsupportedOperation.NatSpecificationExceeded"
+//  UNSUPPORTEDOPERATION_NATTYPEERROR = "UnsupportedOperation.NatTypeError"
+//  UNSUPPORTEDOPERATION_NATUSAGEEXCEEDED = "UnsupportedOperation.NatUsageExceeded"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDLEGACYACCOUNT = "UnsupportedOperation.UnsupportedLegacyAccount"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDLOCALZONENAT = "UnsupportedOperation.UnsupportedLocalZoneNat"
+func (c *Client) UpgradeNatGatewayProductVersionWithContext(ctx context.Context, request *UpgradeNatGatewayProductVersionRequest) (response *UpgradeNatGatewayProductVersionResponse, err error) {
+    if request == nil {
+        request = NewUpgradeNatGatewayProductVersionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "UpgradeNatGatewayProductVersion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeNatGatewayProductVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradeNatGatewayProductVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewWithdrawNotifyRoutesRequest() (request *WithdrawNotifyRoutesRequest) {
     request = &WithdrawNotifyRoutesRequest{
         BaseRequest: &tchttp.BaseRequest{},

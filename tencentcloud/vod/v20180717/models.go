@@ -2400,6 +2400,9 @@ type ApplyUploadRequestParams struct {
 
 	// 保留字段，特殊用途时使用。
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 媒体存储路径，以/开头。
+	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 }
 
 type ApplyUploadRequest struct {
@@ -2438,6 +2441,9 @@ type ApplyUploadRequest struct {
 
 	// 保留字段，特殊用途时使用。
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 媒体存储路径，以/开头。
+	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 }
 
 func (r *ApplyUploadRequest) ToJsonString() string {
@@ -2463,6 +2469,7 @@ func (r *ApplyUploadRequest) FromJsonString(s string) error {
 	delete(f, "SourceContext")
 	delete(f, "SessionContext")
 	delete(f, "ExtInfo")
+	delete(f, "MediaStoragePath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyUploadRequest has unknown keys!", "")
 	}
@@ -7373,6 +7380,18 @@ type CreateSubAppIdRequestParams struct {
 
 	// 应用类型， 取值有：<li>AllInOne：一体化；</li><li>Professional：专业版。</li>默认值为 AllInOne。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 此应用的模式，可选值为：
+	// - fileid：仅FileID模式
+	// - fileid+path：FileID & Path模式
+	// 留空时默认选择仅FileID模式
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 存储地域
+	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
+
+	// 此应用需要绑定的tag
+	Tags []*ResourceTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateSubAppIdRequest struct {
@@ -7386,6 +7405,18 @@ type CreateSubAppIdRequest struct {
 
 	// 应用类型， 取值有：<li>AllInOne：一体化；</li><li>Professional：专业版。</li>默认值为 AllInOne。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 此应用的模式，可选值为：
+	// - fileid：仅FileID模式
+	// - fileid+path：FileID & Path模式
+	// 留空时默认选择仅FileID模式
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 存储地域
+	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
+
+	// 此应用需要绑定的tag
+	Tags []*ResourceTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateSubAppIdRequest) ToJsonString() string {
@@ -7403,6 +7434,9 @@ func (r *CreateSubAppIdRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Description")
 	delete(f, "Type")
+	delete(f, "Mode")
+	delete(f, "StorageRegion")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSubAppIdRequest has unknown keys!", "")
 	}
@@ -15473,12 +15507,16 @@ type EnhanceMediaQualityOutputConfig struct {
 
 // Predefined struct for user
 type EnhanceMediaQualityRequestParams struct {
-	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
-	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
-
 	// 音画质重生模板 ID。
 	// 针对典型的使用场景，云点播提供了多个[预置模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 媒体的存储路径。
+	// FileId和MediaStoragePath必须提供其中一个。
+	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
@@ -15499,12 +15537,16 @@ type EnhanceMediaQualityRequestParams struct {
 type EnhanceMediaQualityRequest struct {
 	*tchttp.BaseRequest
 	
-	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
-	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
-
 	// 音画质重生模板 ID。
 	// 针对典型的使用场景，云点播提供了多个[预置模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 媒体的存储路径。
+	// FileId和MediaStoragePath必须提供其中一个。
+	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
@@ -15534,8 +15576,9 @@ func (r *EnhanceMediaQualityRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "FileId")
 	delete(f, "Definition")
+	delete(f, "FileId")
+	delete(f, "MediaStoragePath")
 	delete(f, "SubAppId")
 	delete(f, "OutputConfig")
 	delete(f, "SessionId")
@@ -16262,6 +16305,46 @@ func (r *FastEditMediaResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *FastEditMediaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type FileContent struct {
+	// 对象键。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 对象最后修改时间，为 ISO8601格式，例如2019-05-24T10:56:40Z。
+	LastModified *string `json:"LastModified,omitnil,omitempty" name:"LastModified"`
+
+	// 对象的实体标签（Entity Tag），是对象被创建时标识对象内容的信息标签，可用于检查对象的内容是否发生变化。
+	ETag *string `json:"ETag,omitnil,omitempty" name:"ETag"`
+
+	// 对象大小，单位为Byte。
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 枚举值请参见[存储类型](https://cloud.tencent.com/document/product/436/33417)文档，例如 STANDARD_IA，ARCHIVE。
+	StorageClass *string `json:"StorageClass,omitnil,omitempty" name:"StorageClass"`
+
+	// 此文件对应的媒体文件的唯一标识。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 文件分类： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li> <li>Other: 其他文件</li>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// 可选值有：
+	//  - OriginalFiles：原文件
+	// - TranscodeFiles：转码文件
+	// - AdaptiveDynamicStreamingFiles：转自适应码流文件
+	// - SubtitleFiles：字幕文件
+	// - SampleSnapshotFiles：采样截图文件
+	// - ImageSpriteFiles：雪碧图截图文件
+	// - SnapshotByTimeOffsetFiles：时间点截图文件
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 视频模板号，模板定义参见转码模板。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 字幕ID。
+	// 仅当FileType=SubtitleFiles时有值。
+	SubtitleID *string `json:"SubtitleID,omitnil,omitempty" name:"SubtitleID"`
 }
 
 type FileDeleteResultItem struct {
@@ -17137,6 +17220,107 @@ type LicenseUsageDataItem struct {
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 
+// Predefined struct for user
+type ListFilesRequestParams struct {
+	// 点播[应用](/document/product/266/14574) ID。
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 对象键匹配前缀，限定响应中只包含指定前缀的对象键。
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+
+	// 一个字符的分隔符，用于对对象键进行分组。所有对象键中从 prefix 或从头（如未指定 prefix）到首个 delimiter 之间相同的部分将作为 CommonPrefixes 下的一个 Prefix 节点。被分组的对象键不再出现在后续对象列表中。
+	Delimiter *string `json:"Delimiter,omitnil,omitempty" name:"Delimiter"`
+
+	// ys 	 单次返回最大的条目数量，默认值为100，最小为1，最大为100。
+	MaxKeys *int64 `json:"MaxKeys,omitnil,omitempty" name:"MaxKeys"`
+
+	// 起始对象键标记
+	Marker *string `json:"Marker,omitnil,omitempty" name:"Marker"`
+
+	// 文件类型。匹配集合中的任意元素： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li>
+	Categories []*string `json:"Categories,omitnil,omitempty" name:"Categories"`
+}
+
+type ListFilesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 点播[应用](/document/product/266/14574) ID。
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 对象键匹配前缀，限定响应中只包含指定前缀的对象键。
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+
+	// 一个字符的分隔符，用于对对象键进行分组。所有对象键中从 prefix 或从头（如未指定 prefix）到首个 delimiter 之间相同的部分将作为 CommonPrefixes 下的一个 Prefix 节点。被分组的对象键不再出现在后续对象列表中。
+	Delimiter *string `json:"Delimiter,omitnil,omitempty" name:"Delimiter"`
+
+	// ys 	 单次返回最大的条目数量，默认值为100，最小为1，最大为100。
+	MaxKeys *int64 `json:"MaxKeys,omitnil,omitempty" name:"MaxKeys"`
+
+	// 起始对象键标记
+	Marker *string `json:"Marker,omitnil,omitempty" name:"Marker"`
+
+	// 文件类型。匹配集合中的任意元素： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li>
+	Categories []*string `json:"Categories,omitnil,omitempty" name:"Categories"`
+}
+
+func (r *ListFilesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListFilesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "Prefix")
+	delete(f, "Delimiter")
+	delete(f, "MaxKeys")
+	delete(f, "Marker")
+	delete(f, "Categories")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListFilesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListFilesResponseParams struct {
+	// 响应条目是否被截断。
+	IsTruncated *bool `json:"IsTruncated,omitnil,omitempty" name:"IsTruncated"`
+
+	// 仅当响应条目有截断（IsTruncated 为 true）才会返回该节点，该节点的值为当前响应条目中的最后一个对象键，当需要继续请求后续条目时，将该节点的值作为下一次请求的 marker 参数传入。
+	NextMarker *string `json:"NextMarker,omitnil,omitempty" name:"NextMarker"`
+
+	// 从 prefix 或从头（如未指定 prefix）到首个 delimiter 之间相同的部分，定义为 Common Prefix。仅当请求中指定了 delimiter 参数才有可能返回该节点。
+	CommonPrefixes []*string `json:"CommonPrefixes,omitnil,omitempty" name:"CommonPrefixes"`
+
+	// 对象条目。
+	Contents []*FileContent `json:"Contents,omitnil,omitempty" name:"Contents"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListFilesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListFilesResponseParams `json:"Response"`
+}
+
+func (r *ListFilesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListFilesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type LiveRealTimeClipMediaSegmentInfo struct {
 	// 片段的起始时间。格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -17759,6 +17943,9 @@ type MediaBasicInfo struct {
 
 	// 媒体文件存储地区，如 ap-chongqing，参见[地域列表](https://cloud.tencent.com/document/product/266/9760#.E5.B7.B2.E6.94.AF.E6.8C.81.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)。
 	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
+
+	// 媒体的存储路径。
+	StoragePath *string `json:"StoragePath,omitnil,omitempty" name:"StoragePath"`
 
 	// 媒体文件的标签信息。
 	TagSet []*string `json:"TagSet,omitnil,omitempty" name:"TagSet"`
@@ -23150,11 +23337,16 @@ func (r *ProcessMediaByMPSResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ProcessMediaByProcedureRequestParams struct {
-	// 媒体文件 ID。
-	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
-
 	// [任务流](https://cloud.tencent.com/document/product/266/33475#.E4.BB.BB.E5.8A.A1.E6.B5.81)名称。
 	ProcedureName *string `json:"ProcedureName,omitnil,omitempty" name:"ProcedureName"`
+
+	// 媒体文件 ID。
+	// FileId和MediaStoragePath必须提供其中一个。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 媒体的存储路径。
+	// FileId和MediaStoragePath必须提供其中一个。
+	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
@@ -23178,11 +23370,16 @@ type ProcessMediaByProcedureRequestParams struct {
 type ProcessMediaByProcedureRequest struct {
 	*tchttp.BaseRequest
 	
-	// 媒体文件 ID。
-	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
-
 	// [任务流](https://cloud.tencent.com/document/product/266/33475#.E4.BB.BB.E5.8A.A1.E6.B5.81)名称。
 	ProcedureName *string `json:"ProcedureName,omitnil,omitempty" name:"ProcedureName"`
+
+	// 媒体文件 ID。
+	// FileId和MediaStoragePath必须提供其中一个。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 媒体的存储路径。
+	// FileId和MediaStoragePath必须提供其中一个。
+	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
@@ -23215,8 +23412,9 @@ func (r *ProcessMediaByProcedureRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "FileId")
 	delete(f, "ProcedureName")
+	delete(f, "FileId")
+	delete(f, "MediaStoragePath")
 	delete(f, "SubAppId")
 	delete(f, "TasksPriority")
 	delete(f, "TasksNotifyMode")
@@ -23380,7 +23578,12 @@ func (r *ProcessMediaByUrlResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ProcessMediaRequestParams struct {
 	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+	// FileId和MediaStoragePath必须提供其中一个。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 媒体的存储路径。
+	// FileId和MediaStoragePath必须提供其中一个。
+	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
@@ -23418,7 +23621,12 @@ type ProcessMediaRequest struct {
 	*tchttp.BaseRequest
 	
 	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+	// FileId和MediaStoragePath必须提供其中一个。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 媒体的存储路径。
+	// FileId和MediaStoragePath必须提供其中一个。
+	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
@@ -23465,6 +23673,7 @@ func (r *ProcessMediaRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "FileId")
+	delete(f, "MediaStoragePath")
 	delete(f, "SubAppId")
 	delete(f, "MediaProcessTask")
 	delete(f, "AiContentReviewTask")
@@ -23816,6 +24025,9 @@ type PullUploadRequestParams struct {
 
 	// 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。
 	SourceContext *string `json:"SourceContext,omitnil,omitempty" name:"SourceContext"`
+
+	// 媒体存储路径，以/开头。
+	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 }
 
 type PullUploadRequest struct {
@@ -23866,6 +24078,9 @@ type PullUploadRequest struct {
 
 	// 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。
 	SourceContext *string `json:"SourceContext,omitnil,omitempty" name:"SourceContext"`
+
+	// 媒体存储路径，以/开头。
+	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 }
 
 func (r *PullUploadRequest) ToJsonString() string {
@@ -23894,6 +24109,7 @@ func (r *PullUploadRequest) FromJsonString(s string) error {
 	delete(f, "SessionId")
 	delete(f, "ExtInfo")
 	delete(f, "SourceContext")
+	delete(f, "MediaStoragePath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PullUploadRequest has unknown keys!", "")
 	}
@@ -25814,12 +26030,17 @@ type ReviewAudioVideoTaskOutput struct {
 
 // Predefined struct for user
 type ReviewImageRequestParams struct {
-	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符。本接口要求媒体文件必须是图片格式。
-	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
-
 	// 图片审核模板 ID，取值范围：
 	// <li>10：预置模板，支持检测的违规标签包括色情（Porn）、暴力（Terror）和不适宜的信息（Polity）。</li>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符。本接口要求媒体文件必须是图片格式。
+	// FileId和MediaStoragePath必须提供其中一个。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 媒体的存储路径。
+	// FileId和MediaStoragePath必须提供其中一个。
+	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
@@ -25828,12 +26049,17 @@ type ReviewImageRequestParams struct {
 type ReviewImageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符。本接口要求媒体文件必须是图片格式。
-	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
-
 	// 图片审核模板 ID，取值范围：
 	// <li>10：预置模板，支持检测的违规标签包括色情（Porn）、暴力（Terror）和不适宜的信息（Polity）。</li>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符。本接口要求媒体文件必须是图片格式。
+	// FileId和MediaStoragePath必须提供其中一个。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 媒体的存储路径。
+	// FileId和MediaStoragePath必须提供其中一个。
+	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
@@ -25851,8 +26077,9 @@ func (r *ReviewImageRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "FileId")
 	delete(f, "Definition")
+	delete(f, "FileId")
+	delete(f, "MediaStoragePath")
 	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReviewImageRequest has unknown keys!", "")
@@ -27721,6 +27948,18 @@ type SubAppIdInfo struct {
 
 	// 子应用名称（该字段已不推荐使用，建议使用新的子应用名称字段 SubAppIdName）。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 此应用的模式，可选值为：
+	// - fileid：仅FileID模式
+	// - - fileid+path：FileID & Path模式
+	// 留空时默认选择仅FileID模式
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 子应用已启用的存储地域。
+	StorageRegions []*string `json:"StorageRegions,omitnil,omitempty" name:"StorageRegions"`
+
+	// 子应用绑定的tag。
+	Tags []*ResourceTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type SubtitleFormatsOperation struct {

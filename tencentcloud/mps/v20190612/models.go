@@ -439,6 +439,9 @@ type AddOnParameter struct {
 
 	// 图片处理输出配置。
 	OutputConfig *ImageProcessOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
+
+	// 图片处理附加 prompt，只针对某些场景可用。
+	ExtPrompt []*ImageProcessPrompt `json:"ExtPrompt,omitnil,omitempty" name:"ExtPrompt"`
 }
 
 type AddOnSubtitle struct {
@@ -785,6 +788,9 @@ type AiAnalysisTaskDubbingOutput struct {
 
 	// 标记文件路径
 	SpeakerPath *string `json:"SpeakerPath,omitnil,omitempty" name:"SpeakerPath"`
+
+	// 音色id
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
 
 	// 译制视频存储位置。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
@@ -4370,6 +4376,13 @@ type CreateAigcVideoTaskRequestParams struct {
 	// 5. OS，可选[2.0]。
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
+	// 指定场景生视频。
+	// 注意：仅部分模型支持指定场景。
+	// 1. Kling支持动作控制，motion_control。
+	// 2. Mingmou支持横转竖，land2port。
+	// 3. Vidu支持特效模板，template_effect。
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
 	// 生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
@@ -4458,6 +4471,13 @@ type CreateAigcVideoTaskRequest struct {
 	// 5. OS，可选[2.0]。
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
+	// 指定场景生视频。
+	// 注意：仅部分模型支持指定场景。
+	// 1. Kling支持动作控制，motion_control。
+	// 2. Mingmou支持横转竖，land2port。
+	// 3. Vidu支持特效模板，template_effect。
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
 	// 生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
@@ -4539,6 +4559,7 @@ func (r *CreateAigcVideoTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ModelName")
 	delete(f, "ModelVersion")
+	delete(f, "SceneType")
 	delete(f, "Prompt")
 	delete(f, "NegativePrompt")
 	delete(f, "EnhancePrompt")
@@ -15783,6 +15804,17 @@ type ImageProcessOutputConfig struct {
 
 	// 图片输出分辨率，取值：1K/2K/4K。
 	ImageSize *string `json:"ImageSize,omitnil,omitempty" name:"ImageSize"`
+
+	// 图片输出编码格式，可取值：PNG、JPG、WEBP、HEIF、AVIF。
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 图片质量，对于某些输出格式可用，只有Format 有效的情况下生效，取值范围 0-100。
+	Quality *int64 `json:"Quality,omitnil,omitempty" name:"Quality"`
+}
+
+type ImageProcessPrompt struct {
+	// 图片处理相关的prompt。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 }
 
 type ImageProcessTaskOutput struct {
@@ -23144,8 +23176,17 @@ type RecognizeAudioRequestParams struct {
 
 	// 音频数据格式，默认为 pcm
 	// 
-	// 支持的格式：pcm (16k 采样率的单声道 16 位采样 pcm 数据)
+	// 支持的格式：
+	// pcm (16000 采样率的单声道 16 位采样 pcm 数据)
+	// ogg-opus (16000 / 24000 / 48000 采样率的单声道 opus 编码的 ogg 数据)
 	AudioFormat *string `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+
+	// 音频的采样率
+	// 
+	// 支持的采样率：
+	// pcm 16000
+	// ogg-opus 16000 / 24000 / 48000
+	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
 	// 扩展参数，默认不填，特殊需求使用
 	UserExtPara *string `json:"UserExtPara,omitnil,omitempty" name:"UserExtPara"`
@@ -23243,8 +23284,17 @@ type RecognizeAudioRequest struct {
 
 	// 音频数据格式，默认为 pcm
 	// 
-	// 支持的格式：pcm (16k 采样率的单声道 16 位采样 pcm 数据)
+	// 支持的格式：
+	// pcm (16000 采样率的单声道 16 位采样 pcm 数据)
+	// ogg-opus (16000 / 24000 / 48000 采样率的单声道 opus 编码的 ogg 数据)
 	AudioFormat *string `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+
+	// 音频的采样率
+	// 
+	// 支持的采样率：
+	// pcm 16000
+	// ogg-opus 16000 / 24000 / 48000
+	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
 	// 扩展参数，默认不填，特殊需求使用
 	UserExtPara *string `json:"UserExtPara,omitnil,omitempty" name:"UserExtPara"`
@@ -23265,6 +23315,7 @@ func (r *RecognizeAudioRequest) FromJsonString(s string) error {
 	delete(f, "AudioData")
 	delete(f, "Source")
 	delete(f, "AudioFormat")
+	delete(f, "SampleRate")
 	delete(f, "UserExtPara")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeAudioRequest has unknown keys!", "")

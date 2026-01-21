@@ -7038,7 +7038,7 @@ type TencentVod struct {
 	// 默认值：0，表示其他分类。
 	ClassId *uint64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
 
-	// 点播 子应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// 点播子应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。注意：不建议填写“托管类型”的点播子应用ID，只能填写“标准类型”的点播子应用ID，否则会导致无法通过点播域名正常播放视频。
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
 	// 任务流上下文，任务完成回调时透传。

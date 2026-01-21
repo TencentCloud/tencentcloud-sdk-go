@@ -379,6 +379,80 @@ func (c *Client) CreateThreadWithContext(ctx context.Context, request *CreateThr
     return
 }
 
+func NewDescribe3DSmartTopologyJobRequest() (request *Describe3DSmartTopologyJobRequest) {
+    request = &Describe3DSmartTopologyJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "Describe3DSmartTopologyJob")
+    
+    
+    return
+}
+
+func NewDescribe3DSmartTopologyJobResponse() (response *Describe3DSmartTopologyJobResponse) {
+    response = &Describe3DSmartTopologyJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// Describe3DSmartTopologyJob
+// 混元生3D接口，采用 Polygon 1.5模型，输入3D 高模后，可生成布线规整，较低面数的3D 模型。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+func (c *Client) Describe3DSmartTopologyJob(request *Describe3DSmartTopologyJobRequest) (response *Describe3DSmartTopologyJobResponse, err error) {
+    return c.Describe3DSmartTopologyJobWithContext(context.Background(), request)
+}
+
+// Describe3DSmartTopologyJob
+// 混元生3D接口，采用 Polygon 1.5模型，输入3D 高模后，可生成布线规整，较低面数的3D 模型。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINEREQUESTTIMEOUT = "FailedOperation.EngineRequestTimeout"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  FAILEDOPERATION_ENGINESERVERLIMITEXCEEDED = "FailedOperation.EngineServerLimitExceeded"
+//  FAILEDOPERATION_FREERESOURCEPACKEXHAUSTED = "FailedOperation.FreeResourcePackExhausted"
+//  FAILEDOPERATION_RESOURCEPACKEXHAUSTED = "FailedOperation.ResourcePackExhausted"
+//  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
+//  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
+//  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
+func (c *Client) Describe3DSmartTopologyJobWithContext(ctx context.Context, request *Describe3DSmartTopologyJobRequest) (response *Describe3DSmartTopologyJobResponse, err error) {
+    if request == nil {
+        request = NewDescribe3DSmartTopologyJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "Describe3DSmartTopologyJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("Describe3DSmartTopologyJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribe3DSmartTopologyJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewFilesDeletionsRequest() (request *FilesDeletionsRequest) {
     request = &FilesDeletionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1411,6 +1485,62 @@ func (c *Client) SetPayModeWithContext(ctx context.Context, request *SetPayModeR
     request.SetContext(ctx)
     
     response = NewSetPayModeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmit3DSmartTopologyJobRequest() (request *Submit3DSmartTopologyJobRequest) {
+    request = &Submit3DSmartTopologyJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "Submit3DSmartTopologyJob")
+    
+    
+    return
+}
+
+func NewSubmit3DSmartTopologyJobResponse() (response *Submit3DSmartTopologyJobResponse) {
+    response = &Submit3DSmartTopologyJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// Submit3DSmartTopologyJob
+// 混元生3D接口，采用 Polygon 1.5模型，输入3D 高模后，可生成布线规整，较低面数的3D 模型。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONSOLESERVERERROR = "FailedOperation.ConsoleServerError"
+//  FAILEDOPERATION_SETPAYMODEEXCEED = "FailedOperation.SetPayModeExceed"
+func (c *Client) Submit3DSmartTopologyJob(request *Submit3DSmartTopologyJobRequest) (response *Submit3DSmartTopologyJobResponse, err error) {
+    return c.Submit3DSmartTopologyJobWithContext(context.Background(), request)
+}
+
+// Submit3DSmartTopologyJob
+// 混元生3D接口，采用 Polygon 1.5模型，输入3D 高模后，可生成布线规整，较低面数的3D 模型。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONSOLESERVERERROR = "FailedOperation.ConsoleServerError"
+//  FAILEDOPERATION_SETPAYMODEEXCEED = "FailedOperation.SetPayModeExceed"
+func (c *Client) Submit3DSmartTopologyJobWithContext(ctx context.Context, request *Submit3DSmartTopologyJobRequest) (response *Submit3DSmartTopologyJobResponse, err error) {
+    if request == nil {
+        request = NewSubmit3DSmartTopologyJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "Submit3DSmartTopologyJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("Submit3DSmartTopologyJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmit3DSmartTopologyJobResponse()
     err = c.Send(request, response)
     return
 }

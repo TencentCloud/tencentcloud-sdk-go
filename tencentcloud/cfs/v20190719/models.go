@@ -1084,6 +1084,9 @@ type CreateLifecycleDataTaskRequestParams struct {
 
 	// 数据流动 ID ，该接口可以通过 DescribeDataFlow 查询
 	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
+
+	// 	 当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。  ture：覆盖  false：不覆盖（同时也不会释放热存数据）  为空时，默认为false
+	IsOverwrite *bool `json:"IsOverwrite,omitnil,omitempty" name:"IsOverwrite"`
 }
 
 type CreateLifecycleDataTaskRequest struct {
@@ -1103,6 +1106,9 @@ type CreateLifecycleDataTaskRequest struct {
 
 	// 数据流动 ID ，该接口可以通过 DescribeDataFlow 查询
 	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
+
+	// 	 当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。  ture：覆盖  false：不覆盖（同时也不会释放热存数据）  为空时，默认为false
+	IsOverwrite *bool `json:"IsOverwrite,omitnil,omitempty" name:"IsOverwrite"`
 }
 
 func (r *CreateLifecycleDataTaskRequest) ToJsonString() string {
@@ -1122,6 +1128,7 @@ func (r *CreateLifecycleDataTaskRequest) FromJsonString(s string) error {
 	delete(f, "TaskPath")
 	delete(f, "TaskName")
 	delete(f, "DataFlowId")
+	delete(f, "IsOverwrite")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLifecycleDataTaskRequest has unknown keys!", "")
 	}
@@ -3657,6 +3664,14 @@ type LifecycleDataTaskInfo struct {
 
 	// 数据流动Id
 	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
+
+	// 当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。
+	// 
+	// ture：覆盖
+	// 
+	// false：不覆盖（同时也不会释放热存数据）
+	// 为空时，默认为false
+	IsOverwrite *bool `json:"IsOverwrite,omitnil,omitempty" name:"IsOverwrite"`
 }
 
 type LifecyclePolicy struct {
@@ -3700,6 +3715,24 @@ type LifecycleRule struct {
 	// 数据转储文件最小规格。其数值需使用“数字+单位”格式进行表示，单位支持K（KiB）、M（MiB）、G（GiB）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileMinSize *string `json:"FileMinSize,omitnil,omitempty" name:"FileMinSize"`
+
+	// 策略类型
+	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+
+	// 阈值范围[10-90]
+	ExpireThreshold *uint64 `json:"ExpireThreshold,omitnil,omitempty" name:"ExpireThreshold"`
+
+	// 阈值范围[10-90]
+	TargetThreshold *uint64 `json:"TargetThreshold,omitnil,omitempty" name:"TargetThreshold"`
+
+	// 当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。
+	// 
+	// ture：覆盖
+	// 
+	// false：不覆盖（同时也不会释放热存数据）
+	// 
+	// 为空时，默认为false
+	IsOverwrite *bool `json:"IsOverwrite,omitnil,omitempty" name:"IsOverwrite"`
 }
 
 type MigrationTaskInfo struct {
@@ -4151,6 +4184,9 @@ type PathInfo struct {
 
 	// 目录绝对路径
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 数据流动Id
+	DataFlowId *string `json:"DataFlowId,omitnil,omitempty" name:"DataFlowId"`
 }
 
 // Predefined struct for user

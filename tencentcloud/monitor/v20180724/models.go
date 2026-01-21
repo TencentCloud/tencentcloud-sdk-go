@@ -16569,6 +16569,9 @@ type UpdateExporterIntegrationRequestParams struct {
 
 	// 集群 ID，可不填
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 值为true时禁用集成
+	Disable *bool `json:"Disable,omitnil,omitempty" name:"Disable"`
 }
 
 type UpdateExporterIntegrationRequest struct {
@@ -16591,6 +16594,9 @@ type UpdateExporterIntegrationRequest struct {
 
 	// 集群 ID，可不填
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 值为true时禁用集成
+	Disable *bool `json:"Disable,omitnil,omitempty" name:"Disable"`
 }
 
 func (r *UpdateExporterIntegrationRequest) ToJsonString() string {
@@ -16610,6 +16616,7 @@ func (r *UpdateExporterIntegrationRequest) FromJsonString(s string) error {
 	delete(f, "Content")
 	delete(f, "KubeType")
 	delete(f, "ClusterId")
+	delete(f, "Disable")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateExporterIntegrationRequest has unknown keys!", "")
 	}

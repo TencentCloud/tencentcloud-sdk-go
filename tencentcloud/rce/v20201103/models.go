@@ -719,6 +719,7 @@ type InputManageMarketingRisk struct {
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 数据授权信息。
+	// 注意：新接入通用业务欺诈保护（RCE）服务的客户该字段【必传】。
 	DataAuthorization *DataAuthorizationInfo `json:"DataAuthorization,omitnil,omitempty" name:"DataAuthorization"`
 }
 

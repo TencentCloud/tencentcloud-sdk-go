@@ -23735,6 +23735,9 @@ type VirtualNodeSpec struct {
 
 	// 腾讯云标签
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 按量配额
+	Quota *SuperNodeResource `json:"Quota,omitnil,omitempty" name:"Quota"`
 }
 
 type VolumeMount struct {

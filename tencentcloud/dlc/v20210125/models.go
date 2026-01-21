@@ -16781,7 +16781,9 @@ type SmartOptimizerLifecyclePolicy struct {
 	// 过期时间
 	Expiration *int64 `json:"Expiration,omitnil,omitempty" name:"Expiration"`
 
-	// 是否删表
+	// 是否删表，该字段废弃已使用，用TableExpiration策略替代
+	//
+	// Deprecated: DropTable is deprecated.
 	DropTable *bool `json:"DropTable,omitnil,omitempty" name:"DropTable"`
 
 	// 过期字段
@@ -16795,15 +16797,15 @@ type SmartOptimizerPolicy struct {
 	// 是否继承
 	Inherit *string `json:"Inherit,omitnil,omitempty" name:"Inherit"`
 
-	// ResourceInfo
+	// 数据治理资源
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resources []*ResourceInfo `json:"Resources,omitnil,omitempty" name:"Resources"`
 
-	// SmartOptimizerWrittenPolicy
+	// 数据重写策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Written *SmartOptimizerWrittenPolicy `json:"Written,omitnil,omitempty" name:"Written"`
 
-	// SmartOptimizerLifecyclePolicy
+	// 数据过期策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Lifecycle *SmartOptimizerLifecyclePolicy `json:"Lifecycle,omitnil,omitempty" name:"Lifecycle"`
 

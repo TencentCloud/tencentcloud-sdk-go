@@ -1607,6 +1607,60 @@ func (c *Client) ModifyInitNodeScriptsWithContext(ctx context.Context, request *
     return
 }
 
+func NewModifyNodeAttributeRequest() (request *ModifyNodeAttributeRequest) {
+    request = &ModifyNodeAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "ModifyNodeAttribute")
+    
+    
+    return
+}
+
+func NewModifyNodeAttributeResponse() (response *ModifyNodeAttributeResponse) {
+    response = &ModifyNodeAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyNodeAttribute
+// 本接口用于修改节点属性
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
+//  UNSUPPORTEDOPERATION_NODESTATUSNOTSUPPORT = "UnsupportedOperation.NodeStatusNotSupport"
+func (c *Client) ModifyNodeAttribute(request *ModifyNodeAttributeRequest) (response *ModifyNodeAttributeResponse, err error) {
+    return c.ModifyNodeAttributeWithContext(context.Background(), request)
+}
+
+// ModifyNodeAttribute
+// 本接口用于修改节点属性
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
+//  UNSUPPORTEDOPERATION_NODESTATUSNOTSUPPORT = "UnsupportedOperation.NodeStatusNotSupport"
+func (c *Client) ModifyNodeAttributeWithContext(ctx context.Context, request *ModifyNodeAttributeRequest) (response *ModifyNodeAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyNodeAttributeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "thpc", APIVersion, "ModifyNodeAttribute")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNodeAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNodeAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyWorkspacesAttributeRequest() (request *ModifyWorkspacesAttributeRequest) {
     request = &ModifyWorkspacesAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
