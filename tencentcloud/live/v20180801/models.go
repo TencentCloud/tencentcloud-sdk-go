@@ -11678,66 +11678,50 @@ func (r *DescribeLiveTimeShiftWriteSizeInfoListResponse) FromJsonString(s string
 
 // Predefined struct for user
 type DescribeLiveTranscodeDetailInfoRequestParams struct {
-	// 推流域名。
+	// <p>推流域名。</p>
 	PushDomain *string `json:"PushDomain,omitnil,omitempty" name:"PushDomain"`
 
-	// 流名称。
+	// <p>流名称。</p>
 	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
 
-	// 查询时间，北京时间，
-	// 格式：yyyymmdd。
-	// 注意：支持查询近1个月内某天的详细数据，截止到昨天。
+	// <p>查询时间，北京时间，<br>格式：yyyymmdd。<br>注意：支持查询近1个月内某天的详细数据，截止到昨天。</p>
 	DayTime *string `json:"DayTime,omitnil,omitempty" name:"DayTime"`
 
-	// 页数，默认1，
-	// 不超过100页。
+	// <p>页数，默认1，<br>不超过100页。</p>
 	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 
-	// 每页个数，默认20，
-	// 范围：[10,1000]。
+	// <p>每页个数，默认20，<br>范围：[10,1000]。</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 起始天时间，北京时间，
-	// 格式：yyyymmdd。
-	// 注意：支持查询近1个月内的详细数据。
+	// <p>起始天时间，北京时间，<br>格式：yyyymmdd。<br>注意：支持查询近1个月内的详细数据。</p>
 	StartDayTime *string `json:"StartDayTime,omitnil,omitempty" name:"StartDayTime"`
 
-	// 结束天时间，北京时间，
-	// 格式：yyyymmdd。
-	// 注意：支持查询近1个月内的详细数据，截止到昨天，注意DayTime 与（StartDayTime，EndDayTime）必须要传一个，如果都传，会以DayTime为准 。
+	// <p>结束天时间，北京时间，<br>格式：yyyymmdd。<br>注意：支持查询近1个月内的详细数据，截止到昨天，注意DayTime 与（StartDayTime，EndDayTime）必须要传一个，如果都传，会以DayTime为准 。</p>
 	EndDayTime *string `json:"EndDayTime,omitnil,omitempty" name:"EndDayTime"`
 }
 
 type DescribeLiveTranscodeDetailInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 推流域名。
+	// <p>推流域名。</p>
 	PushDomain *string `json:"PushDomain,omitnil,omitempty" name:"PushDomain"`
 
-	// 流名称。
+	// <p>流名称。</p>
 	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
 
-	// 查询时间，北京时间，
-	// 格式：yyyymmdd。
-	// 注意：支持查询近1个月内某天的详细数据，截止到昨天。
+	// <p>查询时间，北京时间，<br>格式：yyyymmdd。<br>注意：支持查询近1个月内某天的详细数据，截止到昨天。</p>
 	DayTime *string `json:"DayTime,omitnil,omitempty" name:"DayTime"`
 
-	// 页数，默认1，
-	// 不超过100页。
+	// <p>页数，默认1，<br>不超过100页。</p>
 	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 
-	// 每页个数，默认20，
-	// 范围：[10,1000]。
+	// <p>每页个数，默认20，<br>范围：[10,1000]。</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 起始天时间，北京时间，
-	// 格式：yyyymmdd。
-	// 注意：支持查询近1个月内的详细数据。
+	// <p>起始天时间，北京时间，<br>格式：yyyymmdd。<br>注意：支持查询近1个月内的详细数据。</p>
 	StartDayTime *string `json:"StartDayTime,omitnil,omitempty" name:"StartDayTime"`
 
-	// 结束天时间，北京时间，
-	// 格式：yyyymmdd。
-	// 注意：支持查询近1个月内的详细数据，截止到昨天，注意DayTime 与（StartDayTime，EndDayTime）必须要传一个，如果都传，会以DayTime为准 。
+	// <p>结束天时间，北京时间，<br>格式：yyyymmdd。<br>注意：支持查询近1个月内的详细数据，截止到昨天，注意DayTime 与（StartDayTime，EndDayTime）必须要传一个，如果都传，会以DayTime为准 。</p>
 	EndDayTime *string `json:"EndDayTime,omitnil,omitempty" name:"EndDayTime"`
 }
 
@@ -11768,19 +11752,19 @@ func (r *DescribeLiveTranscodeDetailInfoRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeLiveTranscodeDetailInfoResponseParams struct {
-	// 统计数据列表。
+	// <p>统计数据列表。</p>
 	DataInfoList []*TranscodeDetailInfo `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
-	// 页码。
+	// <p>页码。</p>
 	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 
-	// 每页个数。
+	// <p>每页个数。</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 总个数。
+	// <p>总个数。</p>
 	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
 
-	// 总页数。
+	// <p>总页数。</p>
 	TotalPage *uint64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

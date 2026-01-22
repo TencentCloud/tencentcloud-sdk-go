@@ -497,13 +497,13 @@ type CreateCloudModerationRequestParams struct {
 	// 机器人的UserId，用于进房发起审核任务。【*注意】这个UserId不能与当前房间内的主播观众UserId重复。如果一个房间发起多个切片任务时，机器人的userid也不能相互重复，否则会中断前一个切片任务。建议可以把房间ID作为UserId的标识的一部分，即机器人UserId在房间内唯一。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
-	UserSig *string `json:"UserSig,omitnil,omitempty" name:"UserSig"`
-
 	// 云端审核控制参数。
 	ModerationParams *ModerationParams `json:"ModerationParams,omitnil,omitempty" name:"ModerationParams"`
 
-	// 云端审核文件上传到云存储的参数
+	// 机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
+	UserSig *string `json:"UserSig,omitnil,omitempty" name:"UserSig"`
+
+	// 云端审核文件上传到云存储的参数。
 	ModerationStorageParams *ModerationStorageParams `json:"ModerationStorageParams,omitnil,omitempty" name:"ModerationStorageParams"`
 
 	// TRTC房间号的类型。 【*注意】必须和录制的房间所对应的RoomId类型相同: 0: 字符串类型的RoomId 1: 32位整型的RoomId（默认） 示例值：1
@@ -525,13 +525,13 @@ type CreateCloudModerationRequest struct {
 	// 机器人的UserId，用于进房发起审核任务。【*注意】这个UserId不能与当前房间内的主播观众UserId重复。如果一个房间发起多个切片任务时，机器人的userid也不能相互重复，否则会中断前一个切片任务。建议可以把房间ID作为UserId的标识的一部分，即机器人UserId在房间内唯一。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
-	UserSig *string `json:"UserSig,omitnil,omitempty" name:"UserSig"`
-
 	// 云端审核控制参数。
 	ModerationParams *ModerationParams `json:"ModerationParams,omitnil,omitempty" name:"ModerationParams"`
 
-	// 云端审核文件上传到云存储的参数
+	// 机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
+	UserSig *string `json:"UserSig,omitnil,omitempty" name:"UserSig"`
+
+	// 云端审核文件上传到云存储的参数。
 	ModerationStorageParams *ModerationStorageParams `json:"ModerationStorageParams,omitnil,omitempty" name:"ModerationStorageParams"`
 
 	// TRTC房间号的类型。 【*注意】必须和录制的房间所对应的RoomId类型相同: 0: 字符串类型的RoomId 1: 32位整型的RoomId（默认） 示例值：1
@@ -556,8 +556,8 @@ func (r *CreateCloudModerationRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "RoomId")
 	delete(f, "UserId")
-	delete(f, "UserSig")
 	delete(f, "ModerationParams")
+	delete(f, "UserSig")
 	delete(f, "ModerationStorageParams")
 	delete(f, "RoomIdType")
 	delete(f, "ResourceExpiredHour")

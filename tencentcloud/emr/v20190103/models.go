@@ -8662,6 +8662,9 @@ type LoadAutoScaleStrategy struct {
 
 	// soft例如yarn
 	Soft *string `json:"Soft,omitnil,omitempty" name:"Soft"`
+
+	// 任务保护时间
+	GraceDownProtectTime *int64 `json:"GraceDownProtectTime,omitnil,omitempty" name:"GraceDownProtectTime"`
 }
 
 type LoadMetricsCondition struct {
@@ -13770,6 +13773,9 @@ type TimeAutoScaleStrategy struct {
 
 	// 优雅缩容业务pod标签，当node不存在上述pod或超过优雅缩容时间时，缩容节点
 	GraceDownLabel []*TkeLabel `json:"GraceDownLabel,omitnil,omitempty" name:"GraceDownLabel"`
+
+	// 任务保护时间
+	GraceDownProtectTime *int64 `json:"GraceDownProtectTime,omitnil,omitempty" name:"GraceDownProtectTime"`
 }
 
 type TkeLabel struct {

@@ -35,6 +35,60 @@ type Conditions struct {
 }
 
 // Predefined struct for user
+type CreateAdvisorAuthorizationRequestParams struct {
+
+}
+
+type CreateAdvisorAuthorizationRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *CreateAdvisorAuthorizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAdvisorAuthorizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAdvisorAuthorizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAdvisorAuthorizationResponseParams struct {
+	// 返回信息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAdvisorAuthorizationResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAdvisorAuthorizationResponseParams `json:"Response"`
+}
+
+func (r *CreateAdvisorAuthorizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAdvisorAuthorizationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeStrategiesRequestParams struct {
 
 }

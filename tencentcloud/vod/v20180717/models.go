@@ -2402,6 +2402,7 @@ type ApplyUploadRequestParams struct {
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 
 	// 媒体存储路径，以/开头。
+	// 只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以指定存储路径。
 	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 }
 
@@ -2443,6 +2444,7 @@ type ApplyUploadRequest struct {
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 
 	// 媒体存储路径，以/开头。
+	// 只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以指定存储路径。
 	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 }
 
@@ -15515,6 +15517,7 @@ type EnhanceMediaQualityRequestParams struct {
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
 	// 媒体的存储路径。
+	// 只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
 	// FileId和MediaStoragePath必须提供其中一个。
 	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 
@@ -15545,6 +15548,7 @@ type EnhanceMediaQualityRequest struct {
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
 	// 媒体的存储路径。
+	// 只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
 	// FileId和MediaStoragePath必须提供其中一个。
 	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 
@@ -23345,6 +23349,7 @@ type ProcessMediaByProcedureRequestParams struct {
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
 	// 媒体的存储路径。
+	// 只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
 	// FileId和MediaStoragePath必须提供其中一个。
 	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 
@@ -23378,6 +23383,7 @@ type ProcessMediaByProcedureRequest struct {
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
 	// 媒体的存储路径。
+	// 只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
 	// FileId和MediaStoragePath必须提供其中一个。
 	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 
@@ -23582,6 +23588,7 @@ type ProcessMediaRequestParams struct {
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
 	// 媒体的存储路径。
+	// 只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
 	// FileId和MediaStoragePath必须提供其中一个。
 	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 
@@ -23625,6 +23632,7 @@ type ProcessMediaRequest struct {
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
 	// 媒体的存储路径。
+	// 只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
 	// FileId和MediaStoragePath必须提供其中一个。
 	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 
@@ -24027,6 +24035,7 @@ type PullUploadRequestParams struct {
 	SourceContext *string `json:"SourceContext,omitnil,omitempty" name:"SourceContext"`
 
 	// 媒体存储路径，以/开头。
+	// 只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以指定存储路径。
 	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 }
 
@@ -24080,6 +24089,7 @@ type PullUploadRequest struct {
 	SourceContext *string `json:"SourceContext,omitnil,omitempty" name:"SourceContext"`
 
 	// 媒体存储路径，以/开头。
+	// 只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以指定存储路径。
 	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 }
 
@@ -25787,6 +25797,11 @@ type ReviewAudioVideoRequestParams struct {
 	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
+	// 媒体的存储路径。
+	// 只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
+	// FileId和MediaStoragePath必须提供其中一个。
+	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
+
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
@@ -25818,6 +25833,11 @@ type ReviewAudioVideoRequest struct {
 	
 	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 媒体的存储路径。
+	// 只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
+	// FileId和MediaStoragePath必须提供其中一个。
+	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
@@ -25858,6 +25878,7 @@ func (r *ReviewAudioVideoRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "FileId")
+	delete(f, "MediaStoragePath")
 	delete(f, "SubAppId")
 	delete(f, "ReviewContents")
 	delete(f, "Definition")
@@ -26039,6 +26060,7 @@ type ReviewImageRequestParams struct {
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
 	// 媒体的存储路径。
+	// 只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
 	// FileId和MediaStoragePath必须提供其中一个。
 	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 
@@ -26058,6 +26080,7 @@ type ReviewImageRequest struct {
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
 	// 媒体的存储路径。
+	// 只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
 	// FileId和MediaStoragePath必须提供其中一个。
 	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 

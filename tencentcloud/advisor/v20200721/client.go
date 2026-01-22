@@ -45,6 +45,50 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateAdvisorAuthorizationRequest() (request *CreateAdvisorAuthorizationRequest) {
+    request = &CreateAdvisorAuthorizationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("advisor", APIVersion, "CreateAdvisorAuthorization")
+    
+    
+    return
+}
+
+func NewCreateAdvisorAuthorizationResponse() (response *CreateAdvisorAuthorizationResponse) {
+    response = &CreateAdvisorAuthorizationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAdvisorAuthorization
+// 开启智能顾问授权。会同步开启报告解读和云架构协作权限
+func (c *Client) CreateAdvisorAuthorization(request *CreateAdvisorAuthorizationRequest) (response *CreateAdvisorAuthorizationResponse, err error) {
+    return c.CreateAdvisorAuthorizationWithContext(context.Background(), request)
+}
+
+// CreateAdvisorAuthorization
+// 开启智能顾问授权。会同步开启报告解读和云架构协作权限
+func (c *Client) CreateAdvisorAuthorizationWithContext(ctx context.Context, request *CreateAdvisorAuthorizationRequest) (response *CreateAdvisorAuthorizationResponse, err error) {
+    if request == nil {
+        request = NewCreateAdvisorAuthorizationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "advisor", APIVersion, "CreateAdvisorAuthorization")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAdvisorAuthorization require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAdvisorAuthorizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStrategiesRequest() (request *DescribeStrategiesRequest) {
     request = &DescribeStrategiesRequest{
         BaseRequest: &tchttp.BaseRequest{},

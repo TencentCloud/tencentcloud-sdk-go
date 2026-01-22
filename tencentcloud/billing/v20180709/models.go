@@ -3190,6 +3190,144 @@ func (r *CreateGatherRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateInstanceRequestParams struct {
+	// ClientToken是一个由客户端生成的唯一的、区分大小写、不超过64个ASCII字符的字符串。例如，ClientToken=123e4567-e89b-12d3-a456-42665544****。
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 产品一层code
+	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
+
+	// 产品二层code
+	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
+
+	// 地域code
+	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
+
+	// 可用区code
+	ZoneCode *string `json:"ZoneCode,omitnil,omitempty" name:"ZoneCode"`
+
+	// 付费类型，取值：  PrePay：预付费
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 商品详情信息
+	Parameter *string `json:"Parameter,omitnil,omitempty" name:"Parameter"`
+
+	// 商品数量，默认取值1
+	Quantity *int64 `json:"Quantity,omitnil,omitempty" name:"Quantity"`
+
+	// 项目id，默认取0
+	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 新购时长，取值上限：36，默认取值1
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 新购时长单位，取值：m：按月购买，y：按年购买，默认取值m
+	PeriodUnit *string `json:"PeriodUnit,omitnil,omitempty" name:"PeriodUnit"`
+
+	// 自动续费标识，取值：NOTIFY_AND_MANUAL_RENEW：手动续费，NOTIFY_AND_AUTO_RENEW：自动续费，DISABLE_NOTIFY_AND_MANUAL_RENEW：到期不续，默认取值NOTIFY_AND_MANUAL_RENEW
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+}
+
+type CreateInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// ClientToken是一个由客户端生成的唯一的、区分大小写、不超过64个ASCII字符的字符串。例如，ClientToken=123e4567-e89b-12d3-a456-42665544****。
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 产品一层code
+	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
+
+	// 产品二层code
+	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
+
+	// 地域code
+	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
+
+	// 可用区code
+	ZoneCode *string `json:"ZoneCode,omitnil,omitempty" name:"ZoneCode"`
+
+	// 付费类型，取值：  PrePay：预付费
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 商品详情信息
+	Parameter *string `json:"Parameter,omitnil,omitempty" name:"Parameter"`
+
+	// 商品数量，默认取值1
+	Quantity *int64 `json:"Quantity,omitnil,omitempty" name:"Quantity"`
+
+	// 项目id，默认取0
+	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 新购时长，取值上限：36，默认取值1
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 新购时长单位，取值：m：按月购买，y：按年购买，默认取值m
+	PeriodUnit *string `json:"PeriodUnit,omitnil,omitempty" name:"PeriodUnit"`
+
+	// 自动续费标识，取值：NOTIFY_AND_MANUAL_RENEW：手动续费，NOTIFY_AND_AUTO_RENEW：自动续费，DISABLE_NOTIFY_AND_MANUAL_RENEW：到期不续，默认取值NOTIFY_AND_MANUAL_RENEW
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+}
+
+func (r *CreateInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientToken")
+	delete(f, "ProductCode")
+	delete(f, "SubProductCode")
+	delete(f, "RegionCode")
+	delete(f, "ZoneCode")
+	delete(f, "PayMode")
+	delete(f, "Parameter")
+	delete(f, "Quantity")
+	delete(f, "ProjectId")
+	delete(f, "Period")
+	delete(f, "PeriodUnit")
+	delete(f, "RenewFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateInstanceResponseParams struct {
+	// 订单号
+	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
+
+	// 实例列表，商品发货延迟可能返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateInstanceResponseParams `json:"Response"`
+}
+
+func (r *CreateInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DataForBudgetInfoPage struct {
 	// 分页
 	Pages *uint64 `json:"Pages,omitnil,omitempty" name:"Pages"`
@@ -7673,7 +7811,7 @@ type DescribeCostExplorerSummaryRequestParams struct {
 	// ownerUin=使用者账号
 	Dimensions *string `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
 
-	// 费用类型：cost-总费用，totalCost-原价费用
+	// 费用类型：cost-折后总费用，totalCost-原价费用
 	FeeType *string `json:"FeeType,omitnil,omitempty" name:"FeeType"`
 
 	// 数量，每页最大值为100
@@ -7723,7 +7861,7 @@ type DescribeCostExplorerSummaryRequest struct {
 	// ownerUin=使用者账号
 	Dimensions *string `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
 
-	// 费用类型：cost-总费用，totalCost-原价费用
+	// 费用类型：cost-折后总费用，totalCost-原价费用
 	FeeType *string `json:"FeeType,omitnil,omitempty" name:"FeeType"`
 
 	// 数量，每页最大值为100
@@ -10421,6 +10559,91 @@ type ProjectSummaryOverviewItem struct {
 	TotalCost *string `json:"TotalCost,omitnil,omitempty" name:"TotalCost"`
 }
 
+// Predefined struct for user
+type RefundInstanceRequestParams struct {
+	// ClientToken是一个由客户端生成的唯一的、区分大小写、不超过64个ASCII字符的字符串。例如，ClientToken=123e4567-e89b-12d3-a456-42665544****。
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 产品一层code
+	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
+
+	// 产品二层code
+	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 地域code
+	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
+}
+
+type RefundInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// ClientToken是一个由客户端生成的唯一的、区分大小写、不超过64个ASCII字符的字符串。例如，ClientToken=123e4567-e89b-12d3-a456-42665544****。
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 产品一层code
+	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
+
+	// 产品二层code
+	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 地域code
+	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
+}
+
+func (r *RefundInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefundInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientToken")
+	delete(f, "ProductCode")
+	delete(f, "SubProductCode")
+	delete(f, "InstanceId")
+	delete(f, "RegionCode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RefundInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RefundInstanceResponseParams struct {
+	// 订单号列表
+	OrderIdList []*string `json:"OrderIdList,omitnil,omitempty" name:"OrderIdList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RefundInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *RefundInstanceResponseParams `json:"Response"`
+}
+
+func (r *RefundInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefundInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RegionSummaryOverviewItem struct {
 	// 地域ID
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
@@ -10451,6 +10674,105 @@ type RegionSummaryOverviewItem struct {
 
 	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
 	TotalCost *string `json:"TotalCost,omitnil,omitempty" name:"TotalCost"`
+}
+
+// Predefined struct for user
+type RenewInstanceRequestParams struct {
+	// ClientToken是一个由客户端生成的唯一的、区分大小写、不超过64个ASCII字符的字符串。例如，ClientToken=123e4567-e89b-12d3-a456-42665544****。
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 产品一层code
+	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
+
+	// 产品二层code
+	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
+
+	// 地域code
+	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 手动续费时长，取值上限：36，默认取值1
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 手动续费时长单位，取值：m：按月续费，y：按年续费，默认取值m
+	PeriodUnit *string `json:"PeriodUnit,omitnil,omitempty" name:"PeriodUnit"`
+}
+
+type RenewInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// ClientToken是一个由客户端生成的唯一的、区分大小写、不超过64个ASCII字符的字符串。例如，ClientToken=123e4567-e89b-12d3-a456-42665544****。
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 产品一层code
+	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
+
+	// 产品二层code
+	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
+
+	// 地域code
+	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 手动续费时长，取值上限：36，默认取值1
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 手动续费时长单位，取值：m：按月续费，y：按年续费，默认取值m
+	PeriodUnit *string `json:"PeriodUnit,omitnil,omitempty" name:"PeriodUnit"`
+}
+
+func (r *RenewInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientToken")
+	delete(f, "ProductCode")
+	delete(f, "SubProductCode")
+	delete(f, "RegionCode")
+	delete(f, "InstanceId")
+	delete(f, "Period")
+	delete(f, "PeriodUnit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RenewInstanceResponseParams struct {
+	// 订单号列表
+	OrderIdList []*string `json:"OrderIdList,omitnil,omitempty" name:"OrderIdList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RenewInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *RenewInstanceResponseParams `json:"Response"`
+}
+
+func (r *RenewInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SummaryDetail struct {
