@@ -1,10 +1,48 @@
-# Release v1.3.37
+# Release v1.3.38
 
-## 智能顾问(advisor) 版本：2020-07-21
+## 腾讯混元生3D(ai3d) 版本：2025-05-13
 
-### 第 6 次发布
+### 第 11 次发布
 
-发布时间：2026-01-23 01:07:51
+发布时间：2026-01-26 01:07:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SubmitHunyuan3DPartJob](https://cloud.tencent.com/document/api/1804/126295)
+
+	* 新增入参：Model
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 146 次发布
+
+发布时间：2026-01-26 01:13:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTargetGroup](https://cloud.tencent.com/document/api/214/40559)
+
+	* 新增入参：SnatEnable
+
+
+
+
+## 多网聚合加速(mna) 版本：2021-01-19
+
+### 第 31 次发布
+
+发布时间：2026-01-26 01:32:35
 
 本次发布包含了以下内容：
 
@@ -12,15 +50,84 @@
 
 新增接口：
 
-* [CreateAdvisorAuthorization](https://cloud.tencent.com/document/api/1264/127787)
+* [GetDestIPByName](https://cloud.tencent.com/document/api/1385/127805)
+* [GetFlowStatisticByName](https://cloud.tencent.com/document/api/1385/127804)
+* [GetMonitorDataByName](https://cloud.tencent.com/document/api/1385/127803)
+* [GetNetMonitorByName](https://cloud.tencent.com/document/api/1385/127802)
+* [GetStatisticDataByName](https://cloud.tencent.com/document/api/1385/127801)
+
+新增数据结构：
+
+* [DestIpInfo](https://cloud.tencent.com/document/api/1385/55846#DestIpInfo)
 
 
 
-## 费用中心(billing) 版本：2018-07-09
+## 媒体处理(mps) 版本：2019-06-12
 
-### 第 82 次发布
+### 第 176 次发布
 
-发布时间：2026-01-23 01:10:22
+发布时间：2026-01-26 01:36:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ProcessImage](https://cloud.tencent.com/document/api/862/112896)
+
+	* 新增入参：StdExtInfo
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 165 次发布
+
+发布时间：2026-01-26 02:08:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEnvironment](https://cloud.tencent.com/document/api/1179/46081)
+
+	* 新增入参：Tags
+
+* [CreateTopic](https://cloud.tencent.com/document/api/1179/46088)
+
+	* 新增入参：Tags, DelayMessagePolicy
+
+* [ModifyTopic](https://cloud.tencent.com/document/api/1179/46085)
+
+	* 新增入参：DelayMessagePolicy
+
+
+修改数据结构：
+
+* [Environment](https://cloud.tencent.com/document/api/1179/46089#Environment)
+
+	* 新增成员：Tags
+
+* [PulsarProClusterSpecInfo](https://cloud.tencent.com/document/api/1179/46089#PulsarProClusterSpecInfo)
+
+	* 新增成员：MaxTopicsPartitioned, BrokerMaxConnections, BrokerMaxConnectionsPerIp, MaximumElasticStorage
+
+* [Topic](https://cloud.tencent.com/document/api/1179/46089#Topic)
+
+	* 新增成员：Tags, DelayMessagePolicy
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 134 次发布
+
+发布时间：2026-01-26 02:11:15
 
 本次发布包含了以下内容：
 
@@ -28,17 +135,30 @@
 
 新增接口：
 
-* [CreateInstance](https://cloud.tencent.com/document/api/555/127790)
-* [RefundInstance](https://cloud.tencent.com/document/api/555/127789)
-* [RenewInstance](https://cloud.tencent.com/document/api/555/127788)
+* [ModifyZoneWorkMode](https://cloud.tencent.com/document/api/1552/127806)
+
+新增数据结构：
+
+* [ConfigGroupWorkModeInfo](https://cloud.tencent.com/document/api/1552/80721#ConfigGroupWorkModeInfo)
+
+修改数据结构：
+
+* [Zone](https://cloud.tencent.com/document/api/1552/80721#Zone)
+
+	* 新增成员：WorkModeInfos
 
 
 
-## 弹性 MapReduce(emr) 版本：2019-01-03
 
-### 第 131 次发布
+## 边缘安全加速平台(teo) 版本：2022-01-06
 
-发布时间：2026-01-23 01:46:24
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2025-08-06
+
+### 第 12 次发布
+
+发布时间：2026-01-26 02:41:42
 
 本次发布包含了以下内容：
 
@@ -46,106 +166,18 @@
 
 修改数据结构：
 
-* [LoadAutoScaleStrategy](https://cloud.tencent.com/document/api/589/33981#LoadAutoScaleStrategy)
+* [DatabaseInfo](https://cloud.tencent.com/document/api/1267/123643#DatabaseInfo)
 
-	* 新增成员：GraceDownProtectTime
+	* 新增成员：DatasourceId, DatasourceType
 
-* [TimeAutoScaleStrategy](https://cloud.tencent.com/document/api/589/33981#TimeAutoScaleStrategy)
+* [TableInfo](https://cloud.tencent.com/document/api/1267/123643#TableInfo)
 
-	* 新增成员：GraceDownProtectTime
-
-
-
-
-## 高性能计算平台(thpc) 版本：2023-03-21
-
-### 第 33 次发布
-
-发布时间：2026-01-23 03:00:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [QueueConfig](https://cloud.tencent.com/document/api/1527/89579#QueueConfig)
-
-	* 新增成员：LaunchTemplateIds
+	* 新增成员：CatalogName, DatasourceId, DatasourceType
 
 
 
 
-## 高性能计算平台(thpc) 版本：2022-04-01
-
-
-
-## 高性能计算平台(thpc) 版本：2021-11-09
-
-
-
-## 实时音视频(trtc) 版本：2019-07-22
-
-### 第 133 次发布
-
-发布时间：2026-01-23 03:09:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateCloudModeration](https://cloud.tencent.com/document/api/647/121442)
-
-	* <font color="#dd0000">**修改入参**：</font>ModerationStorageParams
-
-
-
-
-## 云点播(vod) 版本：2024-07-18
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 225 次发布
-
-发布时间：2026-01-23 03:16:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ReviewAudioVideo](https://cloud.tencent.com/document/api/266/80283)
-
-	* 新增入参：MediaStoragePath
-
-	* <font color="#dd0000">**修改入参**：</font>FileId
-
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 292 次发布
-
-发布时间：2026-01-23 03:20:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeSubnets](https://cloud.tencent.com/document/api/215/15784)
-
-	* 新增入参：MaxResults, NextToken
-
-	* 新增出参：NextToken
-
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
 
 
 

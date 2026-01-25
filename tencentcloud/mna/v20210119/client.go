@@ -653,6 +653,62 @@ func (c *Client) GetActiveDeviceCountWithContext(ctx context.Context, request *G
     return
 }
 
+func NewGetDestIPByNameRequest() (request *GetDestIPByNameRequest) {
+    request = &GetDestIPByNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetDestIPByName")
+    
+    
+    return
+}
+
+func NewGetDestIPByNameResponse() (response *GetDestIPByNameResponse) {
+    response = &GetDestIPByNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetDestIPByName
+// 统计单个设备访问目标IP地址信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetDestIPByName(request *GetDestIPByNameRequest) (response *GetDestIPByNameResponse, err error) {
+    return c.GetDestIPByNameWithContext(context.Background(), request)
+}
+
+// GetDestIPByName
+// 统计单个设备访问目标IP地址信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetDestIPByNameWithContext(ctx context.Context, request *GetDestIPByNameRequest) (response *GetDestIPByNameResponse, err error) {
+    if request == nil {
+        request = NewGetDestIPByNameRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetDestIPByName")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDestIPByName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetDestIPByNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetDeviceRequest() (request *GetDeviceRequest) {
     request = &GetDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1041,6 +1097,64 @@ func (c *Client) GetFlowStatisticByGroupWithContext(ctx context.Context, request
     return
 }
 
+func NewGetFlowStatisticByNameRequest() (request *GetFlowStatisticByNameRequest) {
+    request = &GetFlowStatisticByNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetFlowStatisticByName")
+    
+    
+    return
+}
+
+func NewGetFlowStatisticByNameResponse() (response *GetFlowStatisticByNameResponse) {
+    response = &GetFlowStatisticByNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetFlowStatisticByName
+// 获取指定设备Id，指定时间点数据流量使用情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_MONITORDATAREQUESTERROR = "InternalError.MonitorDataRequestError"
+//  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetFlowStatisticByName(request *GetFlowStatisticByNameRequest) (response *GetFlowStatisticByNameResponse, err error) {
+    return c.GetFlowStatisticByNameWithContext(context.Background(), request)
+}
+
+// GetFlowStatisticByName
+// 获取指定设备Id，指定时间点数据流量使用情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_MONITORDATAREQUESTERROR = "InternalError.MonitorDataRequestError"
+//  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetFlowStatisticByNameWithContext(ctx context.Context, request *GetFlowStatisticByNameRequest) (response *GetFlowStatisticByNameResponse, err error) {
+    if request == nil {
+        request = NewGetFlowStatisticByNameRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetFlowStatisticByName")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetFlowStatisticByName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetFlowStatisticByNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetFlowStatisticByRegionRequest() (request *GetFlowStatisticByRegionRequest) {
     request = &GetFlowStatisticByRegionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1317,6 +1431,66 @@ func (c *Client) GetL3ConnListWithContext(ctx context.Context, request *GetL3Con
     return
 }
 
+func NewGetMonitorDataByNameRequest() (request *GetMonitorDataByNameRequest) {
+    request = &GetMonitorDataByNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetMonitorDataByName")
+    
+    
+    return
+}
+
+func NewGetMonitorDataByNameResponse() (response *GetMonitorDataByNameResponse) {
+    response = &GetMonitorDataByNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetMonitorDataByName
+// 获取单个设备所有监控指标的下载文件链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_COSREQUESTERROR = "InternalError.CosRequestError"
+//  INTERNALERROR_FILEIOERROR = "InternalError.FileIOError"
+//  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetMonitorDataByName(request *GetMonitorDataByNameRequest) (response *GetMonitorDataByNameResponse, err error) {
+    return c.GetMonitorDataByNameWithContext(context.Background(), request)
+}
+
+// GetMonitorDataByName
+// 获取单个设备所有监控指标的下载文件链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_COSREQUESTERROR = "InternalError.CosRequestError"
+//  INTERNALERROR_FILEIOERROR = "InternalError.FileIOError"
+//  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetMonitorDataByNameWithContext(ctx context.Context, request *GetMonitorDataByNameRequest) (response *GetMonitorDataByNameResponse, err error) {
+    if request == nil {
+        request = NewGetMonitorDataByNameRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetMonitorDataByName")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetMonitorDataByName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetMonitorDataByNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetMultiFlowStatisticRequest() (request *GetMultiFlowStatisticRequest) {
     request = &GetMultiFlowStatisticRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1427,6 +1601,62 @@ func (c *Client) GetNetMonitorWithContext(ctx context.Context, request *GetNetMo
     return
 }
 
+func NewGetNetMonitorByNameRequest() (request *GetNetMonitorByNameRequest) {
+    request = &GetNetMonitorByNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetNetMonitorByName")
+    
+    
+    return
+}
+
+func NewGetNetMonitorByNameResponse() (response *GetNetMonitorByNameResponse) {
+    response = &GetNetMonitorByNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetNetMonitorByName
+// 获取单设备的实时流量统计指标
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetNetMonitorByName(request *GetNetMonitorByNameRequest) (response *GetNetMonitorByNameResponse, err error) {
+    return c.GetNetMonitorByNameWithContext(context.Background(), request)
+}
+
+// GetNetMonitorByName
+// 获取单设备的实时流量统计指标
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetNetMonitorByNameWithContext(ctx context.Context, request *GetNetMonitorByNameRequest) (response *GetNetMonitorByNameResponse, err error) {
+    if request == nil {
+        request = NewGetNetMonitorByNameRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetNetMonitorByName")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetNetMonitorByName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetNetMonitorByNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetPublicKeyRequest() (request *GetPublicKeyRequest) {
     request = &GetPublicKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1533,6 +1763,66 @@ func (c *Client) GetStatisticDataWithContext(ctx context.Context, request *GetSt
     request.SetContext(ctx)
     
     response = NewGetStatisticDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetStatisticDataByNameRequest() (request *GetStatisticDataByNameRequest) {
+    request = &GetStatisticDataByNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetStatisticDataByName")
+    
+    
+    return
+}
+
+func NewGetStatisticDataByNameResponse() (response *GetStatisticDataByNameResponse) {
+    response = &GetStatisticDataByNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetStatisticDataByName
+// 在用量统计页面下载流量数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_FILEIOERROR = "InternalError.FileIOError"
+//  INTERNALERROR_MONITORDATAREQUESTERROR = "InternalError.MonitorDataRequestError"
+//  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) GetStatisticDataByName(request *GetStatisticDataByNameRequest) (response *GetStatisticDataByNameResponse, err error) {
+    return c.GetStatisticDataByNameWithContext(context.Background(), request)
+}
+
+// GetStatisticDataByName
+// 在用量统计页面下载流量数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_FILEIOERROR = "InternalError.FileIOError"
+//  INTERNALERROR_MONITORDATAREQUESTERROR = "InternalError.MonitorDataRequestError"
+//  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) GetStatisticDataByNameWithContext(ctx context.Context, request *GetStatisticDataByNameRequest) (response *GetStatisticDataByNameResponse, err error) {
+    if request == nil {
+        request = NewGetStatisticDataByNameRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetStatisticDataByName")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetStatisticDataByName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetStatisticDataByNameResponse()
     err = c.Send(request, response)
     return
 }

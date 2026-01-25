@@ -21747,6 +21747,9 @@ type ProcessImageRequestParams struct {
 
 	// 图片处理附加参数。
 	AddOnParameter *AddOnParameter `json:"AddOnParameter,omitnil,omitempty" name:"AddOnParameter"`
+
+	// 图片处理拓展参数。
+	StdExtInfo *string `json:"StdExtInfo,omitnil,omitempty" name:"StdExtInfo"`
 }
 
 type ProcessImageRequest struct {
@@ -21790,6 +21793,9 @@ type ProcessImageRequest struct {
 
 	// 图片处理附加参数。
 	AddOnParameter *AddOnParameter `json:"AddOnParameter,omitnil,omitempty" name:"AddOnParameter"`
+
+	// 图片处理拓展参数。
+	StdExtInfo *string `json:"StdExtInfo,omitnil,omitempty" name:"StdExtInfo"`
 }
 
 func (r *ProcessImageRequest) ToJsonString() string {
@@ -21813,6 +21819,7 @@ func (r *ProcessImageRequest) FromJsonString(s string) error {
 	delete(f, "ImageTask")
 	delete(f, "ScheduleId")
 	delete(f, "AddOnParameter")
+	delete(f, "StdExtInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessImageRequest has unknown keys!", "")
 	}

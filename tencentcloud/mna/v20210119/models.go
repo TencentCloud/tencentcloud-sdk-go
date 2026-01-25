@@ -683,6 +683,27 @@ func (r *DeleteL3ConnResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DestIpInfo struct {
+	// 时间：s
+	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// 网关IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayIp *string `json:"GatewayIp,omitnil,omitempty" name:"GatewayIp"`
+
+	// 网关地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewaySite *string `json:"GatewaySite,omitnil,omitempty" name:"GatewaySite"`
+
+	// 目标IP数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpCount *int64 `json:"IpCount,omitnil,omitempty" name:"IpCount"`
+
+	// 目标IP列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
+}
+
 type DeviceBaseInfo struct {
 	// 设备唯一ID
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
@@ -1069,6 +1090,88 @@ func (r *GetActiveDeviceCountResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetActiveDeviceCountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetDestIPByNameRequestParams struct {
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 开始时间
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+}
+
+type GetDestIPByNameRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 开始时间
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+}
+
+func (r *GetDestIPByNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDestIPByNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceName")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "GatewayType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDestIPByNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetDestIPByNameResponseParams struct {
+	// 目标IP信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DestIpInfo []*DestIpInfo `json:"DestIpInfo,omitnil,omitempty" name:"DestIpInfo"`
+
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲
+	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetDestIPByNameResponse struct {
+	*tchttp.BaseResponse
+	Response *GetDestIPByNameResponseParams `json:"Response"`
+}
+
+func (r *GetDestIPByNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDestIPByNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1536,6 +1639,121 @@ func (r *GetFlowStatisticByGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetFlowStatisticByGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetFlowStatisticByNameRequestParams struct {
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 开始查找时间
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 截止时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 流量种类（1：上行流量，2：下行流量，3：上下行总和）
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 时间粒度（1：按小时统计，2：按天统计）
+	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
+
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+
+	// 设备名列表，用于查询多设备流量，该字段启用时DeviceId可传"-1"
+	DeviceList []*string `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+}
+
+type GetFlowStatisticByNameRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 开始查找时间
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 截止时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 流量种类（1：上行流量，2：下行流量，3：上下行总和）
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 时间粒度（1：按小时统计，2：按天统计）
+	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
+
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+
+	// 设备名列表，用于查询多设备流量，该字段启用时DeviceId可传"-1"
+	DeviceList []*string `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+}
+
+func (r *GetFlowStatisticByNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFlowStatisticByNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceName")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Type")
+	delete(f, "TimeGranularity")
+	delete(f, "AccessRegion")
+	delete(f, "GatewayType")
+	delete(f, "DeviceList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFlowStatisticByNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetFlowStatisticByNameResponseParams struct {
+	// 流量详细信息
+	NetDetails []*NetDetails `json:"NetDetails,omitnil,omitempty" name:"NetDetails"`
+
+	// 查找时间段流量使用最大值（单位：byte）
+	MaxValue *float64 `json:"MaxValue,omitnil,omitempty" name:"MaxValue"`
+
+	// 查找时间段流量使用平均值（单位：byte）
+	AvgValue *float64 `json:"AvgValue,omitnil,omitempty" name:"AvgValue"`
+
+	// 查找时间段流量使用总量（单位：byte）
+	TotalValue *float64 `json:"TotalValue,omitnil,omitempty" name:"TotalValue"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetFlowStatisticByNameResponse struct {
+	*tchttp.BaseResponse
+	Response *GetFlowStatisticByNameResponseParams `json:"Response"`
+}
+
+func (r *GetFlowStatisticByNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetFlowStatisticByNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2082,6 +2300,84 @@ func (r *GetL3ConnListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetMonitorDataByNameRequestParams struct {
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 开始时间
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+}
+
+type GetMonitorDataByNameRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 开始时间
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+}
+
+func (r *GetMonitorDataByNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetMonitorDataByNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceName")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "GatewayType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetMonitorDataByNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetMonitorDataByNameResponseParams struct {
+	// 文件下载链接
+	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetMonitorDataByNameResponse struct {
+	*tchttp.BaseResponse
+	Response *GetMonitorDataByNameResponseParams `json:"Response"`
+}
+
+func (r *GetMonitorDataByNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetMonitorDataByNameResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetMultiFlowStatisticRequestParams struct {
 	// 设备id列表，单次最多请求10个设备
 	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
@@ -2177,6 +2473,98 @@ func (r *GetMultiFlowStatisticResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetMultiFlowStatisticResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetNetMonitorByNameRequestParams struct {
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 开始时间
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 统计指标（上行速率："TxRate":bit/s，下行速率："RxRate":bit/s，丢包："Loss":%，时延："RTT":ms）
+	Metrics *string `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+}
+
+type GetNetMonitorByNameRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 开始时间
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 统计指标（上行速率："TxRate":bit/s，下行速率："RxRate":bit/s，丢包："Loss":%，时延："RTT":ms）
+	Metrics *string `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+}
+
+func (r *GetNetMonitorByNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetNetMonitorByNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceName")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Metrics")
+	delete(f, "GatewayType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetNetMonitorByNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetNetMonitorByNameResponseParams struct {
+	// 监控数据
+	MonitorData []*MonitorData `json:"MonitorData,omitnil,omitempty" name:"MonitorData"`
+
+	// 接入区域。取值范围：['MC','AP','EU','AM']
+	// MC=中国大陆
+	// AP=亚太
+	// EU=欧洲
+	// AM=美洲
+	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetNetMonitorByNameResponse struct {
+	*tchttp.BaseResponse
+	Response *GetNetMonitorByNameResponseParams `json:"Response"`
+}
+
+func (r *GetNetMonitorByNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetNetMonitorByNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2323,6 +2711,123 @@ func (r *GetPublicKeyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetPublicKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetStatisticDataByNameRequestParams struct {
+	// 设备名。若不指定设备，可传"-1"
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 统计开始时间，单位：s
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 统计结束时间，单位：s
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 聚合粒度：
+	// 1:按小时统计
+	// 2:按天统计
+	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
+
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+
+	// 设备名列表，最多10个设备，下载多个设备流量时使用，此时DeviceName可传"-1"
+	DeviceList []*string `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+
+	// 设备分组ID，若不指定分组则不传，按分组下载数据时使用
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 应用ID，若不指定应用不填，按应用下载数据时使用
+	MpApplicationId *string `json:"MpApplicationId,omitnil,omitempty" name:"MpApplicationId"`
+}
+
+type GetStatisticDataByNameRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备名。若不指定设备，可传"-1"
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 统计开始时间，单位：s
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 统计结束时间，单位：s
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 聚合粒度：
+	// 1:按小时统计
+	// 2:按天统计
+	TimeGranularity *int64 `json:"TimeGranularity,omitnil,omitempty" name:"TimeGranularity"`
+
+	// 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填代表全量区域。
+	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
+
+	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+
+	// 设备名列表，最多10个设备，下载多个设备流量时使用，此时DeviceName可传"-1"
+	DeviceList []*string `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
+
+	// 设备分组ID，若不指定分组则不传，按分组下载数据时使用
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 应用ID，若不指定应用不填，按应用下载数据时使用
+	MpApplicationId *string `json:"MpApplicationId,omitnil,omitempty" name:"MpApplicationId"`
+}
+
+func (r *GetStatisticDataByNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetStatisticDataByNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceName")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "TimeGranularity")
+	delete(f, "AccessRegion")
+	delete(f, "GatewayType")
+	delete(f, "DeviceList")
+	delete(f, "GroupId")
+	delete(f, "MpApplicationId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetStatisticDataByNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetStatisticDataByNameResponseParams struct {
+	// 文件地址url
+	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetStatisticDataByNameResponse struct {
+	*tchttp.BaseResponse
+	Response *GetStatisticDataByNameResponseParams `json:"Response"`
+}
+
+func (r *GetStatisticDataByNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetStatisticDataByNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

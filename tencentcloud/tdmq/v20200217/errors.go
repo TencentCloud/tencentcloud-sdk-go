@@ -398,6 +398,9 @@ const (
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"
 
+	// 延迟消息策略未知入参
+	UNKNOWNPARAMETER_DELAYMESSAGEPOLICY = "UnknownParameter.DelayMessagePolicy"
+
 	// Policy 参数错误
 	UNKNOWNPARAMETER_POLICY = "UnknownParameter.Policy"
 
@@ -406,6 +409,9 @@ const (
 
 	// 该实例不支持降配操作。
 	UNSUPPORTEDOPERATION_INSTANCEDOWNGRADE = "UnsupportedOperation.InstanceDowngrade"
+
+	// 不支持设置主题延迟消息策略操作
+	UNSUPPORTEDOPERATION_TOPICDELAYMESSAGE = "UnsupportedOperation.TopicDelayMessage"
 
 	// 当前集群不支持Unack 操作
 	UNSUPPORTEDOPERATION_TOPICUNACK = "UnsupportedOperation.TopicUnack"

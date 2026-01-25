@@ -3939,6 +3939,7 @@ func NewGetTableResponse() (response *GetTableResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GetTable(request *GetTableRequest) (response *GetTableResponse, err error) {
     return c.GetTableWithContext(context.Background(), request)
@@ -3949,6 +3950,7 @@ func (c *Client) GetTable(request *GetTableRequest) (response *GetTableResponse,
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GetTableWithContext(ctx context.Context, request *GetTableRequest) (response *GetTableResponse, err error) {
     if request == nil {

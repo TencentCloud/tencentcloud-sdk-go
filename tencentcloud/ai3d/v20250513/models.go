@@ -577,6 +577,9 @@ func (r *QueryHunyuanTo3DRapidJobResponse) FromJsonString(s string) error {
 type SubmitHunyuan3DPartJobRequestParams struct {
 	// 需进行组件生成的3D模型文件，仅支持FBX格式。
 	File *InputFile3D `json:"File,omitnil,omitempty" name:"File"`
+
+	// 组件生成模型版本，默认为1.0，可选项：1.0，1.5；
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 }
 
 type SubmitHunyuan3DPartJobRequest struct {
@@ -584,6 +587,9 @@ type SubmitHunyuan3DPartJobRequest struct {
 	
 	// 需进行组件生成的3D模型文件，仅支持FBX格式。
 	File *InputFile3D `json:"File,omitnil,omitempty" name:"File"`
+
+	// 组件生成模型版本，默认为1.0，可选项：1.0，1.5；
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 }
 
 func (r *SubmitHunyuan3DPartJobRequest) ToJsonString() string {
@@ -599,6 +605,7 @@ func (r *SubmitHunyuan3DPartJobRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "File")
+	delete(f, "Model")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitHunyuan3DPartJobRequest has unknown keys!", "")
 	}

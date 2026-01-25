@@ -4997,7 +4997,7 @@ func NewChannelDescribeSignFaceVideoResponse() (response *ChannelDescribeSignFac
 //
 // 2. 该接口**不支持小程序端**的签署认证的视频获取。
 //
-// 3. 请在**签署完成后的三天内**获取视频，**过期后将无法获取**。
+// 3. 请在**签署完成后的24小时内**获取视频，**过期后将无法获取**。
 //
 // 
 //
@@ -5022,7 +5022,7 @@ func (c *Client) ChannelDescribeSignFaceVideo(request *ChannelDescribeSignFaceVi
 //
 // 2. 该接口**不支持小程序端**的签署认证的视频获取。
 //
-// 3. 请在**签署完成后的三天内**获取视频，**过期后将无法获取**。
+// 3. 请在**签署完成后的24小时内**获取视频，**过期后将无法获取**。
 //
 // 
 //

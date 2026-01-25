@@ -1718,7 +1718,9 @@ func NewCreateTopicResponse() (response *CreateTopicResponse) {
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
+//  UNKNOWNPARAMETER_DELAYMESSAGEPOLICY = "UnknownParameter.DelayMessagePolicy"
 //  UNKNOWNPARAMETER_POLICY = "UnknownParameter.Policy"
+//  UNSUPPORTEDOPERATION_TOPICDELAYMESSAGE = "UnsupportedOperation.TopicDelayMessage"
 //  UNSUPPORTEDOPERATION_TOPICUNACK = "UnsupportedOperation.TopicUnack"
 func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopicResponse, err error) {
     return c.CreateTopicWithContext(context.Background(), request)
@@ -1748,7 +1750,9 @@ func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopic
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
+//  UNKNOWNPARAMETER_DELAYMESSAGEPOLICY = "UnknownParameter.DelayMessagePolicy"
 //  UNKNOWNPARAMETER_POLICY = "UnknownParameter.Policy"
+//  UNSUPPORTEDOPERATION_TOPICDELAYMESSAGE = "UnsupportedOperation.TopicDelayMessage"
 //  UNSUPPORTEDOPERATION_TOPICUNACK = "UnsupportedOperation.TopicUnack"
 func (c *Client) CreateTopicWithContext(ctx context.Context, request *CreateTopicRequest) (response *CreateTopicResponse, err error) {
     if request == nil {
@@ -8387,6 +8391,8 @@ func NewModifyTopicResponse() (response *ModifyTopicResponse) {
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  UNKNOWNPARAMETER_DELAYMESSAGEPOLICY = "UnknownParameter.DelayMessagePolicy"
+//  UNSUPPORTEDOPERATION_TOPICDELAYMESSAGE = "UnsupportedOperation.TopicDelayMessage"
 func (c *Client) ModifyTopic(request *ModifyTopicRequest) (response *ModifyTopicResponse, err error) {
     return c.ModifyTopicWithContext(context.Background(), request)
 }
@@ -8406,6 +8412,8 @@ func (c *Client) ModifyTopic(request *ModifyTopicRequest) (response *ModifyTopic
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  UNKNOWNPARAMETER_DELAYMESSAGEPOLICY = "UnknownParameter.DelayMessagePolicy"
+//  UNSUPPORTEDOPERATION_TOPICDELAYMESSAGE = "UnsupportedOperation.TopicDelayMessage"
 func (c *Client) ModifyTopicWithContext(ctx context.Context, request *ModifyTopicRequest) (response *ModifyTopicResponse, err error) {
     if request == nil {
         request = NewModifyTopicRequest()

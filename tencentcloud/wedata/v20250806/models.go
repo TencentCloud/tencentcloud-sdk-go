@@ -3825,6 +3825,14 @@ type DatabaseInfo struct {
 	// 数据库存储大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageSize *int64 `json:"StorageSize,omitnil,omitempty" name:"StorageSize"`
+
+	// 数据源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *int64 `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 数据源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceType *string `json:"DatasourceType,omitnil,omitempty" name:"DatasourceType"`
 }
 
 type DatasourceRelationTaskInfo struct {
@@ -9250,7 +9258,7 @@ type ListCatalogRequestParams struct {
 	// 分页大小，最大500
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 父目录ID
+	// 父目录ID(此参数还未支持)
 	ParentCatalogId *string `json:"ParentCatalogId,omitnil,omitempty" name:"ParentCatalogId"`
 }
 
@@ -9263,7 +9271,7 @@ type ListCatalogRequest struct {
 	// 分页大小，最大500
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 父目录ID
+	// 父目录ID(此参数还未支持)
 	ParentCatalogId *string `json:"ParentCatalogId,omitnil,omitempty" name:"ParentCatalogId"`
 }
 
@@ -19251,6 +19259,18 @@ type TableInfo struct {
 	// 表的业务元数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessMetadata *BusinessMetadata `json:"BusinessMetadata,omitnil,omitempty" name:"BusinessMetadata"`
+
+	// 数据目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 数据源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *int64 `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 数据源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceType *string `json:"DatasourceType,omitnil,omitempty" name:"DatasourceType"`
 }
 
 type Task struct {

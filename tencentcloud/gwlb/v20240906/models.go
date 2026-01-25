@@ -84,44 +84,44 @@ type AssociationItem struct {
 
 // Predefined struct for user
 type CreateGatewayLoadBalancerRequestParams struct {
-	// 网关负载均衡后端目标设备所属的私有网络 ID，如vpc-azd4dt1c，可以通过 [DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)  接口获取。
+	// <p>网关负载均衡后端目标设备所属的私有网络 ID，如vpc-azd4dt1c，可以通过 <a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>  接口获取。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 网关负载均衡后端目标设备所属的私有网络的子网ID。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
+	// <p>网关负载均衡后端目标设备所属的私有网络的子网ID。可通过<a href="https://cloud.tencent.com/document/product/215/15784">DescribeSubnets</a>接口获取。</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 网关负载均衡实例名称。可支持输入1-60个字符。不填写时默认自动生成。
+	// <p>网关负载均衡实例名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。不填写时默认自动生成。</p>
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
-	// 创建网关负载均衡的个数，默认值为 1。批量创建数量最大支持10个。
+	// <p>创建网关负载均衡的个数，默认值为 1。批量创建数量最大支持10个。</p>
 	Number *uint64 `json:"Number,omitnil,omitempty" name:"Number"`
 
-	// 购买网关负载均衡的同时，给负载均衡打上标签，最大支持20个标签键值对。
+	// <p>购买网关负载均衡的同时，给负载均衡打上标签，最大支持20个标签键值对。</p>
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 网关负载均衡实例计费类型，当前只支持传POSTPAID_BY_HOUR（按量计费），默认是POSTPAID_BY_HOUR。
+	// <p>网关负载均衡实例计费类型，当前只支持传POSTPAID_BY_HOUR（按量计费），默认是POSTPAID_BY_HOUR。</p>
 	LBChargeType *string `json:"LBChargeType,omitnil,omitempty" name:"LBChargeType"`
 }
 
 type CreateGatewayLoadBalancerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 网关负载均衡后端目标设备所属的私有网络 ID，如vpc-azd4dt1c，可以通过 [DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)  接口获取。
+	// <p>网关负载均衡后端目标设备所属的私有网络 ID，如vpc-azd4dt1c，可以通过 <a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>  接口获取。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 网关负载均衡后端目标设备所属的私有网络的子网ID。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
+	// <p>网关负载均衡后端目标设备所属的私有网络的子网ID。可通过<a href="https://cloud.tencent.com/document/product/215/15784">DescribeSubnets</a>接口获取。</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 网关负载均衡实例名称。可支持输入1-60个字符。不填写时默认自动生成。
+	// <p>网关负载均衡实例名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。不填写时默认自动生成。</p>
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
-	// 创建网关负载均衡的个数，默认值为 1。批量创建数量最大支持10个。
+	// <p>创建网关负载均衡的个数，默认值为 1。批量创建数量最大支持10个。</p>
 	Number *uint64 `json:"Number,omitnil,omitempty" name:"Number"`
 
-	// 购买网关负载均衡的同时，给负载均衡打上标签，最大支持20个标签键值对。
+	// <p>购买网关负载均衡的同时，给负载均衡打上标签，最大支持20个标签键值对。</p>
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 网关负载均衡实例计费类型，当前只支持传POSTPAID_BY_HOUR（按量计费），默认是POSTPAID_BY_HOUR。
+	// <p>网关负载均衡实例计费类型，当前只支持传POSTPAID_BY_HOUR（按量计费），默认是POSTPAID_BY_HOUR。</p>
 	LBChargeType *string `json:"LBChargeType,omitnil,omitempty" name:"LBChargeType"`
 }
 
@@ -151,11 +151,10 @@ func (r *CreateGatewayLoadBalancerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateGatewayLoadBalancerResponseParams struct {
-	// 由网关负载均衡实例唯一 ID 组成的数组。
-	// 存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过[DescribeTaskStatus](https://cloud.tencent.com/document/api/1782/111700)接口查询创建的资源ID。
+	// <p>由网关负载均衡实例唯一 ID 组成的数组。<br>存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过<a href="https://cloud.tencent.com/document/api/1782/111700">DescribeTaskStatus</a>接口查询创建的资源ID。</p>
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
-	// 订单号。
+	// <p>订单号。</p>
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -180,7 +179,7 @@ func (r *CreateGatewayLoadBalancerResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTargetGroupRequestParams struct {
-	// <p>目标组名称，限定60个字符。</p>
+	// <p>目标组名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
 	TargetGroupName *string `json:"TargetGroupName,omitnil,omitempty" name:"TargetGroupName"`
 
 	// <p>网关负载均衡后端目标组所属的网络 ID，如vpc-12345678，可以通过 <a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>  接口获取。 不填此参数则默认为DefaultVPC。</p>
@@ -192,7 +191,7 @@ type CreateTargetGroupRequestParams struct {
 	// <p>目标组绑定的后端服务器</p>
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitnil,omitempty" name:"TargetGroupInstances"`
 
-	// <p>网关负载均衡目标组协议。- TENCENT_GENEVE ：GENEVE 标准协议- AWS_GENEVE：GENEVE 兼容协议</p>
+	// <p>网关负载均衡目标组协议。</p><ul><li>TENCENT_GENEVE ：GENEVE 标准协议</li><li>AWS_GENEVE：GENEVE 兼容协议</li></ul>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// <p>健康检查设置。</p>
@@ -232,7 +231,7 @@ type CreateTargetGroupRequestParams struct {
 type CreateTargetGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>目标组名称，限定60个字符。</p>
+	// <p>目标组名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
 	TargetGroupName *string `json:"TargetGroupName,omitnil,omitempty" name:"TargetGroupName"`
 
 	// <p>网关负载均衡后端目标组所属的网络 ID，如vpc-12345678，可以通过 <a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>  接口获取。 不填此参数则默认为DefaultVPC。</p>
@@ -244,7 +243,7 @@ type CreateTargetGroupRequest struct {
 	// <p>目标组绑定的后端服务器</p>
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitnil,omitempty" name:"TargetGroupInstances"`
 
-	// <p>网关负载均衡目标组协议。- TENCENT_GENEVE ：GENEVE 标准协议- AWS_GENEVE：GENEVE 兼容协议</p>
+	// <p>网关负载均衡目标组协议。</p><ul><li>TENCENT_GENEVE ：GENEVE 标准协议</li><li>AWS_GENEVE：GENEVE 兼容协议</li></ul>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// <p>健康检查设置。</p>
@@ -1238,26 +1237,26 @@ type ItemPrice struct {
 
 // Predefined struct for user
 type ModifyGatewayLoadBalancerAttributeRequestParams struct {
-	// 网关负载均衡的唯一ID。可通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/api/1782/111683) 接口获取。
+	// <p>网关负载均衡的唯一ID。可通过<a href="https://cloud.tencent.com/document/api/1782/111683">DescribeGatewayLoadBalancers</a> 接口获取。</p>
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 网关负载均衡实例名称。可支持输入1-60个字符。
+	// <p>网关负载均衡实例名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
-	// 是否开启删除保护。
+	// <p>是否开启删除保护。</p>
 	DeleteProtect *bool `json:"DeleteProtect,omitnil,omitempty" name:"DeleteProtect"`
 }
 
 type ModifyGatewayLoadBalancerAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 网关负载均衡的唯一ID。可通过[DescribeGatewayLoadBalancers](https://cloud.tencent.com/document/api/1782/111683) 接口获取。
+	// <p>网关负载均衡的唯一ID。可通过<a href="https://cloud.tencent.com/document/api/1782/111683">DescribeGatewayLoadBalancers</a> 接口获取。</p>
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 网关负载均衡实例名称。可支持输入1-60个字符。
+	// <p>网关负载均衡实例名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
-	// 是否开启删除保护。
+	// <p>是否开启删除保护。</p>
 	DeleteProtect *bool `json:"DeleteProtect,omitnil,omitempty" name:"DeleteProtect"`
 }
 
@@ -1306,68 +1305,68 @@ func (r *ModifyGatewayLoadBalancerAttributeResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type ModifyTargetGroupAttributeRequestParams struct {
-	// 目标组的ID，可以通过[DescribeTargetGroups](https://cloud.tencent.com/document/product/214/40554)获取。
+	// <p>目标组的ID，可以通过<a href="https://cloud.tencent.com/document/product/214/40554">DescribeTargetGroups</a>获取。</p>
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
-	// 目标组的新名称。
+	// <p>目标组的新名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
 	TargetGroupName *string `json:"TargetGroupName,omitnil,omitempty" name:"TargetGroupName"`
 
-	// 健康检查详情。
+	// <p>健康检查详情。</p>
 	HealthCheck *TargetGroupHealthCheck `json:"HealthCheck,omitnil,omitempty" name:"HealthCheck"`
 
-	// 是否支持全死全活。
+	// <p>是否支持全死全活。</p>
 	AllDeadToAlive *bool `json:"AllDeadToAlive,omitnil,omitempty" name:"AllDeadToAlive"`
 
-	// TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。
+	// <p>TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。</p>
 	TcpIdleConnectTimeout *int64 `json:"TcpIdleConnectTimeout,omitnil,omitempty" name:"TcpIdleConnectTimeout"`
 
-	// 其他协议连接空闲超时时间，可配置5s-180s，默认120s
+	// <p>其他协议连接空闲超时时间，可配置5s-180s，默认120s</p>
 	OthersIdleConnectTimeout *int64 `json:"OthersIdleConnectTimeout,omitnil,omitempty" name:"OthersIdleConnectTimeout"`
 
-	// 重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。
+	// <p>重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。</p>
 	RescheduleUnbindRs *bool `json:"RescheduleUnbindRs,omitnil,omitempty" name:"RescheduleUnbindRs"`
 
-	// 解绑RS后开启重调度的时间，可配置0s-3600s，默认0s
+	// <p>解绑RS后开启重调度的时间，可配置0s-3600s，默认0s</p>
 	RescheduleUnbindRsStartTime *int64 `json:"RescheduleUnbindRsStartTime,omitnil,omitempty" name:"RescheduleUnbindRsStartTime"`
 
-	// 重新调度功能内的后端服务健康探测异常开关，开关打开后后端服务健康检查异常会触发重新调度。
+	// <p>重新调度功能内的后端服务健康探测异常开关，开关打开后后端服务健康检查异常会触发重新调度。</p>
 	RescheduleUnhealthy *bool `json:"RescheduleUnhealthy,omitnil,omitempty" name:"RescheduleUnhealthy"`
 
-	// 后端服务健康探测异常后开启重调度的时间，可配置0s-3600s，默认0s
+	// <p>后端服务健康探测异常后开启重调度的时间，可配置0s-3600s，默认0s</p>
 	RescheduleUnhealthyStartTime *int64 `json:"RescheduleUnhealthyStartTime,omitnil,omitempty" name:"RescheduleUnhealthyStartTime"`
 }
 
 type ModifyTargetGroupAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 目标组的ID，可以通过[DescribeTargetGroups](https://cloud.tencent.com/document/product/214/40554)获取。
+	// <p>目标组的ID，可以通过<a href="https://cloud.tencent.com/document/product/214/40554">DescribeTargetGroups</a>获取。</p>
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
-	// 目标组的新名称。
+	// <p>目标组的新名称。命名规则：1-80 个英文字母、汉字等国际通用语言字符，数字，连接线“-”、下划线“_”等常见字符（禁止Unicode补充字符，如emoji表情、生僻汉字等）。</p>
 	TargetGroupName *string `json:"TargetGroupName,omitnil,omitempty" name:"TargetGroupName"`
 
-	// 健康检查详情。
+	// <p>健康检查详情。</p>
 	HealthCheck *TargetGroupHealthCheck `json:"HealthCheck,omitnil,omitempty" name:"HealthCheck"`
 
-	// 是否支持全死全活。
+	// <p>是否支持全死全活。</p>
 	AllDeadToAlive *bool `json:"AllDeadToAlive,omitnil,omitempty" name:"AllDeadToAlive"`
 
-	// TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。
+	// <p>TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。</p>
 	TcpIdleConnectTimeout *int64 `json:"TcpIdleConnectTimeout,omitnil,omitempty" name:"TcpIdleConnectTimeout"`
 
-	// 其他协议连接空闲超时时间，可配置5s-180s，默认120s
+	// <p>其他协议连接空闲超时时间，可配置5s-180s，默认120s</p>
 	OthersIdleConnectTimeout *int64 `json:"OthersIdleConnectTimeout,omitnil,omitempty" name:"OthersIdleConnectTimeout"`
 
-	// 重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。
+	// <p>重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。</p>
 	RescheduleUnbindRs *bool `json:"RescheduleUnbindRs,omitnil,omitempty" name:"RescheduleUnbindRs"`
 
-	// 解绑RS后开启重调度的时间，可配置0s-3600s，默认0s
+	// <p>解绑RS后开启重调度的时间，可配置0s-3600s，默认0s</p>
 	RescheduleUnbindRsStartTime *int64 `json:"RescheduleUnbindRsStartTime,omitnil,omitempty" name:"RescheduleUnbindRsStartTime"`
 
-	// 重新调度功能内的后端服务健康探测异常开关，开关打开后后端服务健康检查异常会触发重新调度。
+	// <p>重新调度功能内的后端服务健康探测异常开关，开关打开后后端服务健康检查异常会触发重新调度。</p>
 	RescheduleUnhealthy *bool `json:"RescheduleUnhealthy,omitnil,omitempty" name:"RescheduleUnhealthy"`
 
-	// 后端服务健康探测异常后开启重调度的时间，可配置0s-3600s，默认0s
+	// <p>后端服务健康探测异常后开启重调度的时间，可配置0s-3600s，默认0s</p>
 	RescheduleUnhealthyStartTime *int64 `json:"RescheduleUnhealthyStartTime,omitnil,omitempty" name:"RescheduleUnhealthyStartTime"`
 }
 

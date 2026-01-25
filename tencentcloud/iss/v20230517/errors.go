@@ -353,7 +353,7 @@ const (
 	// 时间范围超限
 	INVALIDPARAMETERVALUE_OUTOFTIMERANGE = "InvalidParameterValue.OutOfTimeRange"
 
-	// 页面大小超出限制，单页最多请求2000条记录
+	// 页面大小超出限制
 	INVALIDPARAMETERVALUE_PAGESIZEEXCEEDLIMIT = "InvalidParameterValue.PageSizeExceedLimit"
 
 	// 通道数量一次最多添加5000路
@@ -422,7 +422,7 @@ const (
 	// 不支持的流协议
 	INVALIDPARAMETERVALUE_UNSUPPORTEDSTREAMPROTOCOL = "InvalidParameterValue.UnsupportedStreamProtocol"
 
-	// 查询的通道数量不能超过3000个
+	// 通道数量超出限制
 	LIMITEXCEEDED_CHANNELNUMEXCEEDED = "LimitExceeded.ChannelNumExceeded"
 
 	// 查询的设备数量不能超过200个

@@ -8660,7 +8660,7 @@ type DescribeProxyNodesRequestParams struct {
 	// <li> DESC：降序排序 </li>
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 
-	// 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+	// 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。目前支持的搜索字段：Status、ProxyNodeId、ClusterId、OssProxyNodeName。
 	Filters []*QueryFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -8683,7 +8683,7 @@ type DescribeProxyNodesRequest struct {
 	// <li> DESC：降序排序 </li>
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 
-	// 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+	// 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。目前支持的搜索字段：Status、ProxyNodeId、ClusterId、OssProxyNodeName。
 	Filters []*QueryFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 

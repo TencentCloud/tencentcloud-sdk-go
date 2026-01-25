@@ -1282,6 +1282,9 @@ type CreateEnvironmentRequestParams struct {
 
 	// 离线订阅过期自动清理时间开关
 	SubscriptionExpirationTimeEnable *bool `json:"SubscriptionExpirationTimeEnable,omitnil,omitempty" name:"SubscriptionExpirationTimeEnable"`
+
+	// 命名空间标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateEnvironmentRequest struct {
@@ -1310,6 +1313,9 @@ type CreateEnvironmentRequest struct {
 
 	// 离线订阅过期自动清理时间开关
 	SubscriptionExpirationTimeEnable *bool `json:"SubscriptionExpirationTimeEnable,omitnil,omitempty" name:"SubscriptionExpirationTimeEnable"`
+
+	// 命名空间标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateEnvironmentRequest) ToJsonString() string {
@@ -1332,6 +1338,7 @@ func (r *CreateEnvironmentRequest) FromJsonString(s string) error {
 	delete(f, "AutoSubscriptionCreation")
 	delete(f, "SubscriptionExpirationTime")
 	delete(f, "SubscriptionExpirationTimeEnable")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEnvironmentRequest has unknown keys!", "")
 	}
@@ -3045,6 +3052,12 @@ type CreateTopicRequestParams struct {
 
 	// Pulsar主题消息类型0: 混合消息1:普通消息2:延迟消息
 	PulsarTopicMessageType *int64 `json:"PulsarTopicMessageType,omitnil,omitempty" name:"PulsarTopicMessageType"`
+
+	// 主题标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// defaultPolicy/timingwheelPolicy不传默认是社区版本延迟消息策略
+	DelayMessagePolicy *string `json:"DelayMessagePolicy,omitnil,omitempty" name:"DelayMessagePolicy"`
 }
 
 type CreateTopicRequest struct {
@@ -3094,6 +3107,12 @@ type CreateTopicRequest struct {
 
 	// Pulsar主题消息类型0: 混合消息1:普通消息2:延迟消息
 	PulsarTopicMessageType *int64 `json:"PulsarTopicMessageType,omitnil,omitempty" name:"PulsarTopicMessageType"`
+
+	// 主题标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// defaultPolicy/timingwheelPolicy不传默认是社区版本延迟消息策略
+	DelayMessagePolicy *string `json:"DelayMessagePolicy,omitnil,omitempty" name:"DelayMessagePolicy"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -3120,6 +3139,8 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "IsolateConsumerEnable")
 	delete(f, "AckTimeOut")
 	delete(f, "PulsarTopicMessageType")
+	delete(f, "Tags")
+	delete(f, "DelayMessagePolicy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
 	}
@@ -10683,6 +10704,9 @@ type Environment struct {
 
 	// 离线订阅过期自动清理时间开关
 	SubscriptionExpirationTimeEnable *bool `json:"SubscriptionExpirationTimeEnable,omitnil,omitempty" name:"SubscriptionExpirationTimeEnable"`
+
+	// 命名空间标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type EnvironmentRole struct {
@@ -13119,6 +13143,9 @@ type ModifyTopicRequestParams struct {
 
 	// 消费者 Ack 超时时间，单位：秒，范围60-（3600*24
 	AckTimeOut *int64 `json:"AckTimeOut,omitnil,omitempty" name:"AckTimeOut"`
+
+	// defaultPolicy/timingwheelPolicy不传默认是社区版本延迟消息策略
+	DelayMessagePolicy *string `json:"DelayMessagePolicy,omitnil,omitempty" name:"DelayMessagePolicy"`
 }
 
 type ModifyTopicRequest struct {
@@ -13150,6 +13177,9 @@ type ModifyTopicRequest struct {
 
 	// 消费者 Ack 超时时间，单位：秒，范围60-（3600*24
 	AckTimeOut *int64 `json:"AckTimeOut,omitnil,omitempty" name:"AckTimeOut"`
+
+	// defaultPolicy/timingwheelPolicy不传默认是社区版本延迟消息策略
+	DelayMessagePolicy *string `json:"DelayMessagePolicy,omitnil,omitempty" name:"DelayMessagePolicy"`
 }
 
 func (r *ModifyTopicRequest) ToJsonString() string {
@@ -13173,6 +13203,7 @@ func (r *ModifyTopicRequest) FromJsonString(s string) error {
 	delete(f, "UnackPolicy")
 	delete(f, "IsolateConsumerEnable")
 	delete(f, "AckTimeOut")
+	delete(f, "DelayMessagePolicy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTopicRequest has unknown keys!", "")
 	}
@@ -13614,7 +13645,7 @@ type PulsarProClusterSpecInfo struct {
 	// 最大命名空间个数
 	MaxNamespaces *uint64 `json:"MaxNamespaces,omitnil,omitempty" name:"MaxNamespaces"`
 
-	// 最大主题分区数
+	// 可以创建的最大主题数
 	MaxTopics *uint64 `json:"MaxTopics,omitnil,omitempty" name:"MaxTopics"`
 
 	// 规格外弹性TPS
@@ -13626,8 +13657,20 @@ type PulsarProClusterSpecInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxPartitions *uint64 `json:"MaxPartitions,omitnil,omitempty" name:"MaxPartitions"`
 
-	// 商品最大延迟消息数量。0代表没有限制	
+	// 最大延迟消息数量。0代表没有限制	
 	MaxDelayedMessages *int64 `json:"MaxDelayedMessages,omitnil,omitempty" name:"MaxDelayedMessages"`
+
+	// 可以创建的最大主题分区数
+	MaxTopicsPartitioned *int64 `json:"MaxTopicsPartitioned,omitnil,omitempty" name:"MaxTopicsPartitioned"`
+
+	// 单broker最大链接数
+	BrokerMaxConnections *int64 `json:"BrokerMaxConnections,omitnil,omitempty" name:"BrokerMaxConnections"`
+
+	// 单IP最大链接数
+	BrokerMaxConnectionsPerIp *int64 `json:"BrokerMaxConnectionsPerIp,omitnil,omitempty" name:"BrokerMaxConnectionsPerIp"`
+
+	// 弹性存储集群最大存储规格；固定存储该值为0
+	MaximumElasticStorage *int64 `json:"MaximumElasticStorage,omitnil,omitempty" name:"MaximumElasticStorage"`
 }
 
 type PulsarProInstance struct {
@@ -16299,6 +16342,12 @@ type Topic struct {
 
 	// Pulsar主题消息类型0: 混合消息1:普通消息2:延迟消息
 	PulsarTopicMessageType *int64 `json:"PulsarTopicMessageType,omitnil,omitempty" name:"PulsarTopicMessageType"`
+
+	// 主题标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// defaultPolicy/timingwheelPolicy不传默认是社区版本延迟消息策略
+	DelayMessagePolicy *string `json:"DelayMessagePolicy,omitnil,omitempty" name:"DelayMessagePolicy"`
 }
 
 type TopicRecord struct {
