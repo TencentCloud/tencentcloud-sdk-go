@@ -414,6 +414,129 @@ func (r *AuthorizeDataSourceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AuthorizePrivilegesRequestParams struct {
+	// 资源数组
+	// ResourceType：来源于TCCATALOG模块的GetGrantPrivilegesSTD接口中返回的ResourceType，并改为首字母大写，例如METALAKE对应Metalake
+	// ResourceUri，取决于 ResourceType，Metalake时固定为default，其他类别采用catalog的三段式结构，例如
+	// - Metalake，固定为default
+	// - Catalog，取catalogName
+	// - Schema，取catalogName.SchemaName
+	// - Table,，取catalogName.SchemaName.TableName
+	Resources []*PrivilegeResource `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// 授权主体数组，SubjectType及对应SubjectValue取值规则
+	// - User 用户
+	//     - 取自DescribeTenantUserList中的UserId
+	// - Project 项目
+	//     - 取自DescribeUserProjects中的ProjectId
+	// - Role 角色（项目级角色）
+	//     - 先调用DescribeUserProjects获取项目ID（ProjectId），再调用DescribeRoleList中的角色ID（RoleId），拼装为$ProjectId.$ProjectId. RoleId，例如"3085649716411588608.308335260274237440"
+	// - GlobalRole （平台级角色）
+	//     - AllAccountUsers 全部用户
+	//     - 其他ID，取自DescribeTenantRole中的RoleId
+	Subjects []*Subject `json:"Subjects,omitnil,omitempty" name:"Subjects"`
+
+	// 权限点，来源于TCCATALOG模块的GetGrantPrivilegesSTD接口中返回的各类Privileges中的NAME
+	Privileges []*PrivilegeInfo `json:"Privileges,omitnil,omitempty" name:"Privileges"`
+}
+
+type AuthorizePrivilegesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源数组
+	// ResourceType：来源于TCCATALOG模块的GetGrantPrivilegesSTD接口中返回的ResourceType，并改为首字母大写，例如METALAKE对应Metalake
+	// ResourceUri，取决于 ResourceType，Metalake时固定为default，其他类别采用catalog的三段式结构，例如
+	// - Metalake，固定为default
+	// - Catalog，取catalogName
+	// - Schema，取catalogName.SchemaName
+	// - Table,，取catalogName.SchemaName.TableName
+	Resources []*PrivilegeResource `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// 授权主体数组，SubjectType及对应SubjectValue取值规则
+	// - User 用户
+	//     - 取自DescribeTenantUserList中的UserId
+	// - Project 项目
+	//     - 取自DescribeUserProjects中的ProjectId
+	// - Role 角色（项目级角色）
+	//     - 先调用DescribeUserProjects获取项目ID（ProjectId），再调用DescribeRoleList中的角色ID（RoleId），拼装为$ProjectId.$ProjectId. RoleId，例如"3085649716411588608.308335260274237440"
+	// - GlobalRole （平台级角色）
+	//     - AllAccountUsers 全部用户
+	//     - 其他ID，取自DescribeTenantRole中的RoleId
+	Subjects []*Subject `json:"Subjects,omitnil,omitempty" name:"Subjects"`
+
+	// 权限点，来源于TCCATALOG模块的GetGrantPrivilegesSTD接口中返回的各类Privileges中的NAME
+	Privileges []*PrivilegeInfo `json:"Privileges,omitnil,omitempty" name:"Privileges"`
+}
+
+func (r *AuthorizePrivilegesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AuthorizePrivilegesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Resources")
+	delete(f, "Subjects")
+	delete(f, "Privileges")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AuthorizePrivilegesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AuthorizePrivilegesResponseParams struct {
+	// 结果
+	Data *AuthorizePrivilegesRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AuthorizePrivilegesResponse struct {
+	*tchttp.BaseResponse
+	Response *AuthorizePrivilegesResponseParams `json:"Response"`
+}
+
+func (r *AuthorizePrivilegesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AuthorizePrivilegesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AuthorizePrivilegesRsp struct {
+	// 批量授权结果
+	OverallSuccess *bool `json:"OverallSuccess,omitnil,omitempty" name:"OverallSuccess"`
+
+	// 授权详情列表
+	Results []*AuthorizeResult `json:"Results,omitnil,omitempty" name:"Results"`
+}
+
+type AuthorizeResult struct {
+	// 授权资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *PrivilegeResource `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+}
+
 type BackfillInstance struct {
 	// 任务名称
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
@@ -7196,6 +7319,14 @@ func (r *GetResourceGroupMetricsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GetResourcePrivilegeDetailRsp struct {
+	// 权限详情列表
+	Details []*ResourcePrivilegeDetail `json:"Details,omitnil,omitempty" name:"Details"`
+
+	// 总计
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+}
+
 // Predefined struct for user
 type GetSQLFolderRequestParams struct {
 	// 项目id
@@ -8928,6 +9059,12 @@ type LineageNodeInfo struct {
 	// 关系
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Relation *LineageRelation `json:"Relation,omitnil,omitempty" name:"Relation"`
+
+	// 上游数量
+	DownStreamCount *int64 `json:"DownStreamCount,omitnil,omitempty" name:"DownStreamCount"`
+
+	// 下游数量
+	UpStreamCount *int64 `json:"UpStreamCount,omitnil,omitempty" name:"UpStreamCount"`
 }
 
 type LineagePair struct {
@@ -11044,6 +11181,97 @@ func (r *ListOpsWorkflowsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListOpsWorkflowsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListPermissionsRequestParams struct {
+	// 资源
+	// ResourceType：来源于TCCATALOG模块的GetGrantPrivilegesSTD接口中返回的ResourceType，并改为首字母大写，例如METALAKE对应Metalake
+	// ResourceUri，取决于 ResourceType，Metalake时固定为default，其他类别采用catalog的三段式结构，例如
+	// - Metalake，固定为default
+	// - Catalog，取catalogName
+	// - Schema，取catalogName.SchemaName
+	// - Table,，取catalogName.SchemaName.TableName
+	Resource *PrivilegeResource `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 过滤条件(此参数还未支持)
+	Filters []*SecurityFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段(此参数还未支持)
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+
+	// 页参数(此参数还未支持)
+	Page *Page `json:"Page,omitnil,omitempty" name:"Page"`
+}
+
+type ListPermissionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源
+	// ResourceType：来源于TCCATALOG模块的GetGrantPrivilegesSTD接口中返回的ResourceType，并改为首字母大写，例如METALAKE对应Metalake
+	// ResourceUri，取决于 ResourceType，Metalake时固定为default，其他类别采用catalog的三段式结构，例如
+	// - Metalake，固定为default
+	// - Catalog，取catalogName
+	// - Schema，取catalogName.SchemaName
+	// - Table,，取catalogName.SchemaName.TableName
+	Resource *PrivilegeResource `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 过滤条件(此参数还未支持)
+	Filters []*SecurityFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段(此参数还未支持)
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+
+	// 页参数(此参数还未支持)
+	Page *Page `json:"Page,omitnil,omitempty" name:"Page"`
+}
+
+func (r *ListPermissionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListPermissionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Resource")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	delete(f, "Page")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListPermissionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListPermissionsResponseParams struct {
+	// 获取资源权限详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *GetResourcePrivilegeDetailRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListPermissionsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListPermissionsResponseParams `json:"Response"`
+}
+
+func (r *ListPermissionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListPermissionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -16106,6 +16334,16 @@ type OutTaskParameter struct {
 	ParamValue *string `json:"ParamValue,omitnil,omitempty" name:"ParamValue"`
 }
 
+type Page struct {
+	// 页大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 页码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+}
+
 type PageRoles struct {
 	// 角色信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -16227,6 +16465,73 @@ func (r *PauseOpsTasksAsyncResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *PauseOpsTasksAsyncResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type PrivilegeInfo struct {
+	// 权限名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 权限展示名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
+
+	// 权限描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 是否为读取权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsRead *bool `json:"IsRead,omitnil,omitempty" name:"IsRead"`
+
+	// 是否为管理权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsManage *bool `json:"IsManage,omitnil,omitempty" name:"IsManage"`
+
+	// 是否拥有此权限，检查权限时使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Granted *bool `json:"Granted,omitnil,omitempty" name:"Granted"`
+
+	// 继承自哪个资源，查询权限详情时使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InheritedObject *PrivilegeResource `json:"InheritedObject,omitnil,omitempty" name:"InheritedObject"`
+
+	// 否继承获得，查询权限详情时使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Inherited *bool `json:"Inherited,omitnil,omitempty" name:"Inherited"`
+
+	// 是否为编辑权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsEdit *bool `json:"IsEdit,omitnil,omitempty" name:"IsEdit"`
+
+	// 是否元数据权限（前端展示）
+	IsMetaDataPermission *bool `json:"IsMetaDataPermission,omitnil,omitempty" name:"IsMetaDataPermission"`
+
+	// CatalogID(废弃)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogID *string `json:"CatalogID,omitnil,omitempty" name:"CatalogID"`
+
+	// catalog名称(废弃)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 空间ID(废弃)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkSpaceID *string `json:"WorkSpaceID,omitnil,omitempty" name:"WorkSpaceID"`
+
+	// 空间名称(废弃)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkSpaceName *string `json:"WorkSpaceName,omitnil,omitempty" name:"WorkSpaceName"`
+}
+
+type PrivilegeResource struct {
+	// 资源类型 Catalog、Schema等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源URI
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceUri *string `json:"ResourceUri,omitnil,omitempty" name:"ResourceUri"`
 }
 
 type Project struct {
@@ -18399,6 +18704,17 @@ type ResourceNumber struct {
 	Quantity *int64 `json:"Quantity,omitnil,omitempty" name:"Quantity"`
 }
 
+type ResourcePrivilegeDetail struct {
+	// 资源
+	Resource *PrivilegeResource `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 主体
+	SubjectDetails []*SubjectInfo `json:"SubjectDetails,omitnil,omitempty" name:"SubjectDetails"`
+
+	// 权限详情
+	PermissionDetails []*PrivilegeInfo `json:"PermissionDetails,omitnil,omitempty" name:"PermissionDetails"`
+}
+
 type ResourceResult struct {
 	// 是否成功
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -18518,6 +18834,89 @@ func (r *RevokeDataSourceAuthorizationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RevokeDataSourceAuthorizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RevokePrivilegesRequestParams struct {
+	// 资源数组，数据来源于ListPermissions接口返回的Resource中的ResourceType和ResourceUri
+	Resources []*PrivilegeResource `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// 授权回收主体数组，参数组装需要注意：
+	// 1.SubjectType 和SubjectValues的取值参考ListPermissions接口中返回SubjectDetails中的SubjectType和SubjectValue
+	// 2.批量回收时，Subjects数组长度需要与权限点Privileges长度一致，并且数据一一对应
+	Subjects []*Subject `json:"Subjects,omitnil,omitempty" name:"Subjects"`
+
+	// 权限点，Name来源于ListPermissions接口返回的PermissionDetails中的Name，例如：BROWSE 、GRANT_PRIVILEGES
+	Privileges []*PrivilegeInfo `json:"Privileges,omitnil,omitempty" name:"Privileges"`
+}
+
+type RevokePrivilegesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源数组，数据来源于ListPermissions接口返回的Resource中的ResourceType和ResourceUri
+	Resources []*PrivilegeResource `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// 授权回收主体数组，参数组装需要注意：
+	// 1.SubjectType 和SubjectValues的取值参考ListPermissions接口中返回SubjectDetails中的SubjectType和SubjectValue
+	// 2.批量回收时，Subjects数组长度需要与权限点Privileges长度一致，并且数据一一对应
+	Subjects []*Subject `json:"Subjects,omitnil,omitempty" name:"Subjects"`
+
+	// 权限点，Name来源于ListPermissions接口返回的PermissionDetails中的Name，例如：BROWSE 、GRANT_PRIVILEGES
+	Privileges []*PrivilegeInfo `json:"Privileges,omitnil,omitempty" name:"Privileges"`
+}
+
+func (r *RevokePrivilegesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RevokePrivilegesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Resources")
+	delete(f, "Subjects")
+	delete(f, "Privileges")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RevokePrivilegesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RevokePrivilegesResponseParams struct {
+	// 返回
+	Data *RevokePrivilegesRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RevokePrivilegesResponse struct {
+	*tchttp.BaseResponse
+	Response *RevokePrivilegesResponseParams `json:"Response"`
+}
+
+func (r *RevokePrivilegesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RevokePrivilegesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RevokePrivilegesRsp struct {
+	// 结果
+	OverallSuccess *bool `json:"OverallSuccess,omitnil,omitempty" name:"OverallSuccess"`
+
+	// 详情列表
+	Results []*AuthorizeResult `json:"Results,omitnil,omitempty" name:"Results"`
 }
 
 // Predefined struct for user
@@ -18766,6 +19165,14 @@ type SchemaInfo struct {
 	// 数据库名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+}
+
+type SecurityFilter struct {
+	// key
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// values
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 // Predefined struct for user
@@ -19047,6 +19454,28 @@ func (r *StopSQLScriptRunResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopSQLScriptRunResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Subject struct {
+	// 主体类型
+	SubjectType *string `json:"SubjectType,omitnil,omitempty" name:"SubjectType"`
+
+	// 主体列表
+	SubjectValues []*string `json:"SubjectValues,omitnil,omitempty" name:"SubjectValues"`
+}
+
+type SubjectInfo struct {
+	// 主体类型
+	SubjectType *string `json:"SubjectType,omitnil,omitempty" name:"SubjectType"`
+
+	// 主题类型展示名
+	SubjectTypeDisplayName *string `json:"SubjectTypeDisplayName,omitnil,omitempty" name:"SubjectTypeDisplayName"`
+
+	// 主体id
+	SubjectValue *string `json:"SubjectValue,omitnil,omitempty" name:"SubjectValue"`
+
+	// 主体名
+	SubjectValueDisplayName *string `json:"SubjectValueDisplayName,omitnil,omitempty" name:"SubjectValueDisplayName"`
 }
 
 // Predefined struct for user

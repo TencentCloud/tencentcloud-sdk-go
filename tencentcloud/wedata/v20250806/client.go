@@ -205,6 +205,66 @@ func (c *Client) AuthorizeDataSourceWithContext(ctx context.Context, request *Au
     return
 }
 
+func NewAuthorizePrivilegesRequest() (request *AuthorizePrivilegesRequest) {
+    request = &AuthorizePrivilegesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "AuthorizePrivileges")
+    
+    
+    return
+}
+
+func NewAuthorizePrivilegesResponse() (response *AuthorizePrivilegesResponse) {
+    response = &AuthorizePrivilegesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AuthorizePrivileges
+// Catalog模式下授权
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) AuthorizePrivileges(request *AuthorizePrivilegesRequest) (response *AuthorizePrivilegesResponse, err error) {
+    return c.AuthorizePrivilegesWithContext(context.Background(), request)
+}
+
+// AuthorizePrivileges
+// Catalog模式下授权
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) AuthorizePrivilegesWithContext(ctx context.Context, request *AuthorizePrivilegesRequest) (response *AuthorizePrivilegesResponse, err error) {
+    if request == nil {
+        request = NewAuthorizePrivilegesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "AuthorizePrivileges")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AuthorizePrivileges require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAuthorizePrivilegesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCodeFileRequest() (request *CreateCodeFileRequest) {
     request = &CreateCodeFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5911,6 +5971,64 @@ func (c *Client) ListOpsWorkflowsWithContext(ctx context.Context, request *ListO
     return
 }
 
+func NewListPermissionsRequest() (request *ListPermissionsRequest) {
+    request = &ListPermissionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ListPermissions")
+    
+    
+    return
+}
+
+func NewListPermissionsResponse() (response *ListPermissionsResponse) {
+    response = &ListPermissionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListPermissions
+// 获取可授权权限详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMSERROR = "InvalidParameter.InvalidParamsError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ListPermissions(request *ListPermissionsRequest) (response *ListPermissionsResponse, err error) {
+    return c.ListPermissionsWithContext(context.Background(), request)
+}
+
+// ListPermissions
+// 获取可授权权限详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMSERROR = "InvalidParameter.InvalidParamsError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ListPermissionsWithContext(ctx context.Context, request *ListPermissionsRequest) (response *ListPermissionsResponse, err error) {
+    if request == nil {
+        request = NewListPermissionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "ListPermissions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListPermissions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListPermissionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListProcessLineageRequest() (request *ListProcessLineageRequest) {
     request = &ListProcessLineageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5934,8 +6052,11 @@ func NewListProcessLineageResponse() (response *ListProcessLineageResponse) {
 // 获取资产血缘信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMSERROR = "InvalidParameter.InvalidParamsError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ListProcessLineage(request *ListProcessLineageRequest) (response *ListProcessLineageResponse, err error) {
     return c.ListProcessLineageWithContext(context.Background(), request)
 }
@@ -5944,8 +6065,11 @@ func (c *Client) ListProcessLineage(request *ListProcessLineageRequest) (respons
 // 获取资产血缘信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INVALIDPARAMETER = "InternalError.InvalidParameter"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMSERROR = "InvalidParameter.InvalidParamsError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ListProcessLineageWithContext(ctx context.Context, request *ListProcessLineageRequest) (response *ListProcessLineageResponse, err error) {
     if request == nil {
         request = NewListProcessLineageRequest()
@@ -8185,6 +8309,66 @@ func (c *Client) RevokeDataSourceAuthorizationWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewRevokeDataSourceAuthorizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRevokePrivilegesRequest() (request *RevokePrivilegesRequest) {
+    request = &RevokePrivilegesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "RevokePrivileges")
+    
+    
+    return
+}
+
+func NewRevokePrivilegesResponse() (response *RevokePrivilegesResponse) {
+    response = &RevokePrivilegesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RevokePrivileges
+// Catalog模式下授权回收
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RevokePrivileges(request *RevokePrivilegesRequest) (response *RevokePrivilegesResponse, err error) {
+    return c.RevokePrivilegesWithContext(context.Background(), request)
+}
+
+// RevokePrivileges
+// Catalog模式下授权回收
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RevokePrivilegesWithContext(ctx context.Context, request *RevokePrivilegesRequest) (response *RevokePrivilegesResponse, err error) {
+    if request == nil {
+        request = NewRevokePrivilegesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "RevokePrivileges")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RevokePrivileges require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRevokePrivilegesResponse()
     err = c.Send(request, response)
     return
 }

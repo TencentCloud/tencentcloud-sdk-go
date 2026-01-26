@@ -3245,6 +3245,70 @@ func (c *Client) DescribeGatherRuleDetailWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeRenewInstancesRequest() (request *DescribeRenewInstancesRequest) {
+    request = &DescribeRenewInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeRenewInstances")
+    
+    
+    return
+}
+
+func NewDescribeRenewInstancesResponse() (response *DescribeRenewInstancesResponse) {
+    response = &DescribeRenewInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRenewInstances
+// 注意事项：
+//
+// 1、本接口支持查询已接入续费管理页的包年包月实例，包括运行中、已隔离（部分产品不支持）
+//
+// 2、子用户使用该接口时，应具备QcloudFinanceRenewManageFullAccess权限策略。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRenewInstances(request *DescribeRenewInstancesRequest) (response *DescribeRenewInstancesResponse, err error) {
+    return c.DescribeRenewInstancesWithContext(context.Background(), request)
+}
+
+// DescribeRenewInstances
+// 注意事项：
+//
+// 1、本接口支持查询已接入续费管理页的包年包月实例，包括运行中、已隔离（部分产品不支持）
+//
+// 2、子用户使用该接口时，应具备QcloudFinanceRenewManageFullAccess权限策略。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRenewInstancesWithContext(ctx context.Context, request *DescribeRenewInstancesRequest) (response *DescribeRenewInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRenewInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "billing", APIVersion, "DescribeRenewInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRenewInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRenewInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSavingPlanResourceInfoRequest() (request *DescribeSavingPlanResourceInfoRequest) {
     request = &DescribeSavingPlanResourceInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

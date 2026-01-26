@@ -13023,6 +13023,92 @@ func (c *Client) EnableControlPlaneLogsWithContext(ctx context.Context, request 
     return
 }
 
+func NewEnableEksEventPersistenceRequest() (request *EnableEksEventPersistenceRequest) {
+    request = &EnableEksEventPersistenceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "EnableEksEventPersistence")
+    
+    
+    return
+}
+
+func NewEnableEksEventPersistenceResponse() (response *EnableEksEventPersistenceResponse) {
+    response = &EnableEksEventPersistenceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableEksEventPersistence
+// Eks集群开启事件持久化功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_CREATECLSCLIENT = "FailedOperation.CreateClsClient"
+//  FAILEDOPERATION_CREATECLSCONFIG = "FailedOperation.CreateClsConfig"
+//  FAILEDOPERATION_CREATECLSTOPIC = "FailedOperation.CreateClsTopic"
+//  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
+//  FAILEDOPERATION_KUBERNETESPATCHOPERATIONERROR = "FailedOperation.KubernetesPatchOperationError"
+//  FAILEDOPERATION_MODIFYCLSINDEX = "FailedOperation.ModifyClsIndex"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) EnableEksEventPersistence(request *EnableEksEventPersistenceRequest) (response *EnableEksEventPersistenceResponse, err error) {
+    return c.EnableEksEventPersistenceWithContext(context.Background(), request)
+}
+
+// EnableEksEventPersistence
+// Eks集群开启事件持久化功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_CREATECLSCLIENT = "FailedOperation.CreateClsClient"
+//  FAILEDOPERATION_CREATECLSCONFIG = "FailedOperation.CreateClsConfig"
+//  FAILEDOPERATION_CREATECLSTOPIC = "FailedOperation.CreateClsTopic"
+//  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
+//  FAILEDOPERATION_KUBERNETESPATCHOPERATIONERROR = "FailedOperation.KubernetesPatchOperationError"
+//  FAILEDOPERATION_MODIFYCLSINDEX = "FailedOperation.ModifyClsIndex"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) EnableEksEventPersistenceWithContext(ctx context.Context, request *EnableEksEventPersistenceRequest) (response *EnableEksEventPersistenceResponse, err error) {
+    if request == nil {
+        request = NewEnableEksEventPersistenceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "EnableEksEventPersistence")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableEksEventPersistence require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableEksEventPersistenceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableEncryptionProtectionRequest() (request *EnableEncryptionProtectionRequest) {
     request = &EnableEncryptionProtectionRequest{
         BaseRequest: &tchttp.BaseRequest{},

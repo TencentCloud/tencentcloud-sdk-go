@@ -1842,54 +1842,50 @@ type ImageOcr struct {
 
 // Predefined struct for user
 type ImportMediaRequestParams struct {
-	// 待分析视频的URL，目前只支持*不带签名的*COS地址，字段输入内容最大为1KB
+	// <p>待分析视频的URL，目前只支持<em>不带签名的</em>COS地址，字段输入内容最大为1KB</p>
 	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
 
-	// 待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32
+	// <p>待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32</p>
 	MD5 *string `json:"MD5,omitnil,omitempty" name:"MD5"`
 
-	// 待分析视频的名称，指定后可支持筛选，视频名称的大小长度不能超过64
+	// <p>待分析视频的名称，指定后可支持筛选，视频名称的大小长度不能超过64</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
-	// 推荐采用本主帐号COS桶，如果使用其他帐号COS桶，请确保COS桶可写，否则可导致分析失败
+	// <p>当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。推荐采用本主账号COS桶，如果使用其他账号COS桶，请确保COS桶可写，否则可导致分析失败</p>
 	WriteBackCosPath *string `json:"WriteBackCosPath,omitnil,omitempty" name:"WriteBackCosPath"`
 
-	// 自定义标签，可用于查询
+	// <p>自定义标签，可用于查询</p>
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
-	// 媒资导入完成的回调地址，该设置优先级高于控制台全局的设置；
+	// <p>媒资导入完成的回调地址，该设置优先级高于控制台全局的设置；</p>
 	CallbackURL *string `json:"CallbackURL,omitnil,omitempty" name:"CallbackURL"`
 
-	// 媒资文件类型，详细定义参见[MediaPreknownInfo.MediaType](https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo)
-	// 默认为2(视频)
+	// <p>媒资文件类型，详细定义参见<a href="https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo">MediaPreknownInfo.MediaType</a><br>默认为2(视频)</p>
 	MediaType *int64 `json:"MediaType,omitnil,omitempty" name:"MediaType"`
 }
 
 type ImportMediaRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待分析视频的URL，目前只支持*不带签名的*COS地址，字段输入内容最大为1KB
+	// <p>待分析视频的URL，目前只支持<em>不带签名的</em>COS地址，字段输入内容最大为1KB</p>
 	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
 
-	// 待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32
+	// <p>待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32</p>
 	MD5 *string `json:"MD5,omitnil,omitempty" name:"MD5"`
 
-	// 待分析视频的名称，指定后可支持筛选，视频名称的大小长度不能超过64
+	// <p>待分析视频的名称，指定后可支持筛选，视频名称的大小长度不能超过64</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
-	// 推荐采用本主帐号COS桶，如果使用其他帐号COS桶，请确保COS桶可写，否则可导致分析失败
+	// <p>当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。推荐采用本主账号COS桶，如果使用其他账号COS桶，请确保COS桶可写，否则可导致分析失败</p>
 	WriteBackCosPath *string `json:"WriteBackCosPath,omitnil,omitempty" name:"WriteBackCosPath"`
 
-	// 自定义标签，可用于查询
+	// <p>自定义标签，可用于查询</p>
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
-	// 媒资导入完成的回调地址，该设置优先级高于控制台全局的设置；
+	// <p>媒资导入完成的回调地址，该设置优先级高于控制台全局的设置；</p>
 	CallbackURL *string `json:"CallbackURL,omitnil,omitempty" name:"CallbackURL"`
 
-	// 媒资文件类型，详细定义参见[MediaPreknownInfo.MediaType](https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo)
-	// 默认为2(视频)
+	// <p>媒资文件类型，详细定义参见<a href="https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo">MediaPreknownInfo.MediaType</a><br>默认为2(视频)</p>
 	MediaType *int64 `json:"MediaType,omitnil,omitempty" name:"MediaType"`
 }
 
@@ -1920,7 +1916,7 @@ func (r *ImportMediaRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ImportMediaResponseParams struct {
-	// 媒资文件在系统中的ID
+	// <p>媒资文件在系统中的ID</p>
 	MediaId *string `json:"MediaId,omitnil,omitempty" name:"MediaId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

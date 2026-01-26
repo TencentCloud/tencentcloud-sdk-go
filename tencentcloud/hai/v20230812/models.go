@@ -920,6 +920,12 @@ type ItemPrice struct {
 
 	// 商品数量
 	Amount *uint64 `json:"Amount,omitnil,omitempty" name:"Amount"`
+
+	// 原价
+	OriginPrice *float64 `json:"OriginPrice,omitnil,omitempty" name:"OriginPrice"`
+
+	// 折扣价
+	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 }
 
 type ItemPriceDetail struct {

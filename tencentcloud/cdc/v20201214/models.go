@@ -1684,14 +1684,14 @@ func (r *DescribeDedicatedClustersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDedicatedSupportedZonesRequestParams struct {
-	// 传入region列表
+	// <p>传入region列表</p>
 	Regions []*int64 `json:"Regions,omitnil,omitempty" name:"Regions"`
 }
 
 type DescribeDedicatedSupportedZonesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 传入region列表
+	// <p>传入region列表</p>
 	Regions []*int64 `json:"Regions,omitnil,omitempty" name:"Regions"`
 }
 
@@ -1716,7 +1716,7 @@ func (r *DescribeDedicatedSupportedZonesRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeDedicatedSupportedZonesResponseParams struct {
-	// 支持的可用区列表
+	// <p>支持的可用区列表</p>
 	ZoneSet []*RegionZoneInfo `json:"ZoneSet,omitnil,omitempty" name:"ZoneSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

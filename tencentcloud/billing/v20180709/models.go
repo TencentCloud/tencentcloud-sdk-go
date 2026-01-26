@@ -9261,6 +9261,119 @@ func (r *DescribeGatherRuleDetailResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRenewInstancesRequestParams struct {
+	// 每页的最大实例条数。 取值范围：1~100。
+	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// 查询返回结果下一页的令牌。首次调用 API 不需要NextToken。
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// 获取实例的排序方向。枚举值如下：
+	// false=正序（默认）
+	// true=倒序
+	Reverse *bool `json:"Reverse,omitnil,omitempty" name:"Reverse"`
+
+	// 续费标识。多个值用英文逗号分隔。枚举值如下：
+	// NOTIFY_AND_MANUAL_RENEW：手动续费
+	// NOTIFY_AND_AUTO_RENEW：自动续费
+	// DISABLE_NOTIFY_AND_MANUAL_RENEW：到期不续
+	RenewFlagList []*string `json:"RenewFlagList,omitnil,omitempty" name:"RenewFlagList"`
+
+	// 实例ID。多个ID用英文逗号分隔，最多不超过100个。
+	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
+
+	// 到期时间段起，格式为yyyy-MM-dd HH:mm:ss。
+	ExpireTimeStart *string `json:"ExpireTimeStart,omitnil,omitempty" name:"ExpireTimeStart"`
+
+	// 到期时间段止，格式为yyyy-MM-dd HH:mm:ss。
+	ExpireTimeEnd *string `json:"ExpireTimeEnd,omitnil,omitempty" name:"ExpireTimeEnd"`
+}
+
+type DescribeRenewInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每页的最大实例条数。 取值范围：1~100。
+	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// 查询返回结果下一页的令牌。首次调用 API 不需要NextToken。
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// 获取实例的排序方向。枚举值如下：
+	// false=正序（默认）
+	// true=倒序
+	Reverse *bool `json:"Reverse,omitnil,omitempty" name:"Reverse"`
+
+	// 续费标识。多个值用英文逗号分隔。枚举值如下：
+	// NOTIFY_AND_MANUAL_RENEW：手动续费
+	// NOTIFY_AND_AUTO_RENEW：自动续费
+	// DISABLE_NOTIFY_AND_MANUAL_RENEW：到期不续
+	RenewFlagList []*string `json:"RenewFlagList,omitnil,omitempty" name:"RenewFlagList"`
+
+	// 实例ID。多个ID用英文逗号分隔，最多不超过100个。
+	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
+
+	// 到期时间段起，格式为yyyy-MM-dd HH:mm:ss。
+	ExpireTimeStart *string `json:"ExpireTimeStart,omitnil,omitempty" name:"ExpireTimeStart"`
+
+	// 到期时间段止，格式为yyyy-MM-dd HH:mm:ss。
+	ExpireTimeEnd *string `json:"ExpireTimeEnd,omitnil,omitempty" name:"ExpireTimeEnd"`
+}
+
+func (r *DescribeRenewInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRenewInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MaxResults")
+	delete(f, "NextToken")
+	delete(f, "Reverse")
+	delete(f, "RenewFlagList")
+	delete(f, "InstanceIdList")
+	delete(f, "ExpireTimeStart")
+	delete(f, "ExpireTimeEnd")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRenewInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRenewInstancesResponseParams struct {
+	// 实例汇总列表。
+	InstanceList []*RenewInstance `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
+
+	// 查询返回结果下一页的令牌。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRenewInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRenewInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeRenewInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRenewInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSavingPlanResourceInfoRequestParams struct {
 	// 数量，最大值为100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -10674,6 +10787,58 @@ type RegionSummaryOverviewItem struct {
 
 	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
 	TotalCost *string `json:"TotalCost,omitnil,omitempty" name:"TotalCost"`
+}
+
+type RenewInstance struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 产品编码
+	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
+
+	// 子产品编码
+	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
+
+	// 地域编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
+
+	// 实例状态：
+	// NORMAL 正常，
+	// ISOLATED 已隔离
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 续费标识：
+	// NOTIFY_AND_MANUAL_RENEW 手动续费，
+	// NOTIFY_AND_AUTO_RENEW 自动续费，
+	// DISABLE_NOTIFY_AND_MANUAL_RENEW 到期不续
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 实例到期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 实例别名：用户在控制台为实例设置的名称，如果未设置，则默认为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 产品名称：用户所采购的各类云产品，例如：云服务器 CVM
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// 项目名称：实例归属的项目，用户在控制台给实例自主分配项目，未分配则是默认项目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
+
+	// 自动续费周期长度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewPeriod *uint64 `json:"RenewPeriod,omitnil,omitempty" name:"RenewPeriod"`
+
+	// 自动续费周期单位：y 年，m 月
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewPeriodUnit *string `json:"RenewPeriodUnit,omitnil,omitempty" name:"RenewPeriodUnit"`
 }
 
 // Predefined struct for user

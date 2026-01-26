@@ -15698,6 +15698,81 @@ func (r *EnableControlPlaneLogsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type EnableEksEventPersistenceRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// cls服务的logsetID
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// cls服务的topicID
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// topic所在region
+	TopicRegion *string `json:"TopicRegion,omitnil,omitempty" name:"TopicRegion"`
+}
+
+type EnableEksEventPersistenceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// cls服务的logsetID
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// cls服务的topicID
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// topic所在region
+	TopicRegion *string `json:"TopicRegion,omitnil,omitempty" name:"TopicRegion"`
+}
+
+func (r *EnableEksEventPersistenceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableEksEventPersistenceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "LogsetId")
+	delete(f, "TopicId")
+	delete(f, "TopicRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableEksEventPersistenceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableEksEventPersistenceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnableEksEventPersistenceResponse struct {
+	*tchttp.BaseResponse
+	Response *EnableEksEventPersistenceResponseParams `json:"Response"`
+}
+
+func (r *EnableEksEventPersistenceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableEksEventPersistenceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type EnableEncryptionProtectionRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`

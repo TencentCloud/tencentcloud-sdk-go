@@ -691,45 +691,51 @@ func (r *DescribeDeviceInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDeviceListRequestParams struct {
-	// 设备所属项目ID
+	// <p>设备所属项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 设备类型筛选，不填默认为全部设备类型
+	// <p>设备类型筛选，不填默认为全部设备类型</p>
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 对设备ID或Name按关键字进行模糊匹配，不填则不进行模糊匹配
+	// <p>对设备ID或Name按关键字进行模糊匹配，不填则不进行模糊匹配</p>
 	SearchWords *string `json:"SearchWords,omitnil,omitempty" name:"SearchWords"`
 
-	// 每页返回的最大设备数，不填默认为10
+	// <p>每页返回的最大设备数，不填默认为10</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 当前页码，不填默认为1（首页）
+	// <p>当前页码，不填默认为1（首页）</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 设备状态筛选，不填默认为不过滤。取值：["ready","connected","online"]，online代表ready或connected
+	// <p>设备状态筛选，不填默认为不过滤。取值：[&quot;ready&quot;,&quot;connected&quot;,&quot;online&quot;]，online代表ready或connected</p>
 	DeviceStatus *string `json:"DeviceStatus,omitnil,omitempty" name:"DeviceStatus"`
+
+	// <p>标识查询项目下的设备注册类型，默认不包含免注册登录设备。 若存在免注册登录设备，该参数传&quot;1&quot;</p><p>枚举值：</p><ul><li>0： 项目不包含免注册登录设备</li><li>1： 项目包含免注册登录设备</li></ul><p>默认值：0</p>
+	RegisterType *int64 `json:"RegisterType,omitnil,omitempty" name:"RegisterType"`
 }
 
 type DescribeDeviceListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 设备所属项目ID
+	// <p>设备所属项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 设备类型筛选，不填默认为全部设备类型
+	// <p>设备类型筛选，不填默认为全部设备类型</p>
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 对设备ID或Name按关键字进行模糊匹配，不填则不进行模糊匹配
+	// <p>对设备ID或Name按关键字进行模糊匹配，不填则不进行模糊匹配</p>
 	SearchWords *string `json:"SearchWords,omitnil,omitempty" name:"SearchWords"`
 
-	// 每页返回的最大设备数，不填默认为10
+	// <p>每页返回的最大设备数，不填默认为10</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 当前页码，不填默认为1（首页）
+	// <p>当前页码，不填默认为1（首页）</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 设备状态筛选，不填默认为不过滤。取值：["ready","connected","online"]，online代表ready或connected
+	// <p>设备状态筛选，不填默认为不过滤。取值：[&quot;ready&quot;,&quot;connected&quot;,&quot;online&quot;]，online代表ready或connected</p>
 	DeviceStatus *string `json:"DeviceStatus,omitnil,omitempty" name:"DeviceStatus"`
+
+	// <p>标识查询项目下的设备注册类型，默认不包含免注册登录设备。 若存在免注册登录设备，该参数传&quot;1&quot;</p><p>枚举值：</p><ul><li>0： 项目不包含免注册登录设备</li><li>1： 项目包含免注册登录设备</li></ul><p>默认值：0</p>
+	RegisterType *int64 `json:"RegisterType,omitnil,omitempty" name:"RegisterType"`
 }
 
 func (r *DescribeDeviceListRequest) ToJsonString() string {
@@ -750,6 +756,7 @@ func (r *DescribeDeviceListRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "PageNumber")
 	delete(f, "DeviceStatus")
+	delete(f, "RegisterType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceListRequest has unknown keys!", "")
 	}
@@ -758,13 +765,13 @@ func (r *DescribeDeviceListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDeviceListResponseParams struct {
-	// 设备信息列表
+	// <p>设备信息列表</p>
 	Devices []*DeviceInfo `json:"Devices,omitnil,omitempty" name:"Devices"`
 
-	// 设备总数
+	// <p>设备总数</p>
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 本次返回的设备数
+	// <p>本次返回的设备数</p>
 	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

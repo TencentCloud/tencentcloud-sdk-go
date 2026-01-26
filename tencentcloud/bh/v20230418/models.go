@@ -4176,6 +4176,9 @@ type DescribeDeviceGroupMembersRequestParams struct {
 	// 资产名或资产IP，模糊查询
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
+	// 主机绑定的堡垒机服务ID集合  未绑定的通过Filters进行传递
+	ResourceIdSet []*string `json:"ResourceIdSet,omitnil,omitempty" name:"ResourceIdSet"`
+
 	// 分页偏移位置，默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
@@ -4190,6 +4193,9 @@ type DescribeDeviceGroupMembersRequestParams struct {
 
 	// 所属部门ID
 	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
+
+	// 过滤条件,支持 BindingStatus｜VpcId ｜InstanceId ｜DeviceAccount ｜ManageDimension｜DomainId｜Ip｜Name
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
@@ -4210,6 +4216,9 @@ type DescribeDeviceGroupMembersRequest struct {
 	// 资产名或资产IP，模糊查询
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
+	// 主机绑定的堡垒机服务ID集合  未绑定的通过Filters进行传递
+	ResourceIdSet []*string `json:"ResourceIdSet,omitnil,omitempty" name:"ResourceIdSet"`
+
 	// 分页偏移位置，默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
@@ -4224,6 +4233,9 @@ type DescribeDeviceGroupMembersRequest struct {
 
 	// 所属部门ID
 	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
+
+	// 过滤条件,支持 BindingStatus｜VpcId ｜InstanceId ｜DeviceAccount ｜ManageDimension｜DomainId｜Ip｜Name
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
@@ -4245,11 +4257,13 @@ func (r *DescribeDeviceGroupMembersRequest) FromJsonString(s string) error {
 	delete(f, "Id")
 	delete(f, "IdSet")
 	delete(f, "Name")
+	delete(f, "ResourceIdSet")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Kind")
 	delete(f, "KindSet")
 	delete(f, "DepartmentId")
+	delete(f, "Filters")
 	delete(f, "TagFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceGroupMembersRequest has unknown keys!", "")
@@ -6305,6 +6319,70 @@ func (r *ImportExternalDeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type LDAPSetting struct {
+	// 是否开启LDAP认证，false-不开启，true-开启
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// 服务器地址
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 备用服务器地址
+	IpBackup *string `json:"IpBackup,omitnil,omitempty" name:"IpBackup"`
+
+	// 服务端口
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 是否开启SSL，false-不开启，true-开启
+	EnableSSL *bool `json:"EnableSSL,omitnil,omitempty" name:"EnableSSL"`
+
+	// Base DN
+	BaseDN *string `json:"BaseDN,omitnil,omitempty" name:"BaseDN"`
+
+	// 管理员账号
+	AdminAccount *string `json:"AdminAccount,omitnil,omitempty" name:"AdminAccount"`
+
+	// 用户属性
+	AttributeUser *string `json:"AttributeUser,omitnil,omitempty" name:"AttributeUser"`
+
+	// 用户名属性
+	AttributeUserName *string `json:"AttributeUserName,omitnil,omitempty" name:"AttributeUserName"`
+
+	// 自动同步，false-不开启，true-开启
+	AutoSync *bool `json:"AutoSync,omitnil,omitempty" name:"AutoSync"`
+
+	// 覆盖用户信息，false-不开启，true-开启
+	Overwrite *bool `json:"Overwrite,omitnil,omitempty" name:"Overwrite"`
+
+	// 同步周期，30～60000之间的整数
+	SyncPeriod *uint64 `json:"SyncPeriod,omitnil,omitempty" name:"SyncPeriod"`
+
+	// 是否同步全部，false-不开启，true-开启
+	SyncAll *bool `json:"SyncAll,omitnil,omitempty" name:"SyncAll"`
+
+	// 同步OU列表
+	SyncUnitSet []*string `json:"SyncUnitSet,omitnil,omitempty" name:"SyncUnitSet"`
+
+	// 组织单元属性
+	AttributeUnit *string `json:"AttributeUnit,omitnil,omitempty" name:"AttributeUnit"`
+
+	// 用户姓名属性
+	AttributeRealName *string `json:"AttributeRealName,omitnil,omitempty" name:"AttributeRealName"`
+
+	// 手机号属性
+	AttributePhone *string `json:"AttributePhone,omitnil,omitempty" name:"AttributePhone"`
+
+	// 邮箱属性
+	AttributeEmail *string `json:"AttributeEmail,omitnil,omitempty" name:"AttributeEmail"`
+
+	// 请求LDAP服务的堡垒机实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 网络域Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
 type LoginEvent struct {
 	// 用户名
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
@@ -6323,6 +6401,20 @@ type LoginEvent struct {
 
 	// 操作结果，1-成功，2-失败
 	Result *uint64 `json:"Result,omitnil,omitempty" name:"Result"`
+}
+
+type LoginSetting struct {
+	// 登录会话超时，10分钟，20分钟，30分钟，默认20分钟
+	TimeOut *uint64 `json:"TimeOut,omitnil,omitempty" name:"TimeOut"`
+
+	// 连续密码错误次数，超过锁定账号，3-5
+	LockThreshold *uint64 `json:"LockThreshold,omitnil,omitempty" name:"LockThreshold"`
+
+	// 账号锁定时长，10分钟，20分钟，30分钟
+	LockTime *uint64 `json:"LockTime,omitnil,omitempty" name:"LockTime"`
+
+	// 用户多少天不活跃，账号自动锁定
+	InactiveUserLock *uint64 `json:"InactiveUserLock,omitnil,omitempty" name:"InactiveUserLock"`
 }
 
 // Predefined struct for user
@@ -6818,20 +6910,30 @@ func (r *ModifyAssetSyncFlagResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAuthModeSettingRequestParams struct {
-	// 双因子认证，0-不开启，1-OTP，2-短信，3-USB Key
+	// 双因子认证，0-不开启（暂停使用），1-OTP，2-短信，3-USB Key（只有ResourceType=1且AuthModeGM不传时有效，其他情况不能为3）    
+	// 备注：AuthMode和AuthModeGM至少有一个有效传参
 	AuthMode *uint64 `json:"AuthMode,omitnil,omitempty" name:"AuthMode"`
 
-	// 资源类型，0：普通 1：国密
+	// 国密双因子认证，0-不开启（暂停使用），1-OTP，2-短信，3-USB Key
+	// 备注：AuthMode和AuthModeGM至少有一个有效传参，AuthModeGM优先级高于ResourceType
+	AuthModeGM *uint64 `json:"AuthModeGM,omitnil,omitempty" name:"AuthModeGM"`
+
+	// 资源类型，0：普通（暂停使用，由AuthMode和AuthModeGM传参决定） 1：国密
 	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
 type ModifyAuthModeSettingRequest struct {
 	*tchttp.BaseRequest
 	
-	// 双因子认证，0-不开启，1-OTP，2-短信，3-USB Key
+	// 双因子认证，0-不开启（暂停使用），1-OTP，2-短信，3-USB Key（只有ResourceType=1且AuthModeGM不传时有效，其他情况不能为3）    
+	// 备注：AuthMode和AuthModeGM至少有一个有效传参
 	AuthMode *uint64 `json:"AuthMode,omitnil,omitempty" name:"AuthMode"`
 
-	// 资源类型，0：普通 1：国密
+	// 国密双因子认证，0-不开启（暂停使用），1-OTP，2-短信，3-USB Key
+	// 备注：AuthMode和AuthModeGM至少有一个有效传参，AuthModeGM优先级高于ResourceType
+	AuthModeGM *uint64 `json:"AuthModeGM,omitnil,omitempty" name:"AuthModeGM"`
+
+	// 资源类型，0：普通（暂停使用，由AuthMode和AuthModeGM传参决定） 1：国密
 	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
@@ -6848,6 +6950,7 @@ func (r *ModifyAuthModeSettingRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "AuthMode")
+	delete(f, "AuthModeGM")
 	delete(f, "ResourceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAuthModeSettingRequest has unknown keys!", "")
@@ -8128,6 +8231,29 @@ func (r *ModifyUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type OAuthSetting struct {
+	// 是否开启OAuth认证
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// OAuth认证方式。
+	AuthMethod *string `json:"AuthMethod,omitnil,omitempty" name:"AuthMethod"`
+
+	// OAuth认证客户端Id。
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 获取OAuth认证授权码URL。
+	CodeUrl *string `json:"CodeUrl,omitnil,omitempty" name:"CodeUrl"`
+
+	// 获取OAuth令牌URL。
+	TokenUrl *string `json:"TokenUrl,omitnil,omitempty" name:"TokenUrl"`
+
+	// 获取OAuth用户信息URL。
+	UserInfoUrl *string `json:"UserInfoUrl,omitnil,omitempty" name:"UserInfoUrl"`
+
+	// 使用Okta认证时指定范围。
+	Scopes []*string `json:"Scopes,omitnil,omitempty" name:"Scopes"`
+}
+
 type OperationEvent struct {
 	// 用户名
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
@@ -8181,6 +8307,20 @@ type OperationTask struct {
 
 	// 下一次执行时间
 	FirstTime *string `json:"FirstTime,omitnil,omitempty" name:"FirstTime"`
+}
+
+type PasswordSetting struct {
+	// 密码最小长度，8-20，默认8。
+	MinLength *uint64 `json:"MinLength,omitnil,omitempty" name:"MinLength"`
+
+	// 密码复杂度，0不限制，1包含字母和数字，2至少包括大写字母、小写字母、数字、特殊符号，默认2。
+	Complexity *uint64 `json:"Complexity,omitnil,omitempty" name:"Complexity"`
+
+	// 密码有效期，0不限制，30天，90天，180天。
+	ValidTerm *uint64 `json:"ValidTerm,omitnil,omitempty" name:"ValidTerm"`
+
+	// 检查最近n次密码设置是否存在相同密码，2-10，默认5。
+	CheckHistory *uint64 `json:"CheckHistory,omitnil,omitempty" name:"CheckHistory"`
 }
 
 type ReconnectionSetting struct {
@@ -9997,6 +10137,21 @@ func (r *SearchTaskResultResponse) FromJsonString(s string) error {
 }
 
 type SecuritySetting struct {
+	// 认证方式设置
+	AuthMode *AuthModeSetting `json:"AuthMode,omitnil,omitempty" name:"AuthMode"`
+
+	// 密码安全设置
+	Password *PasswordSetting `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 登录安全设置
+	Login *LoginSetting `json:"Login,omitnil,omitempty" name:"Login"`
+
+	// LDAP配置信息
+	LDAP *LDAPSetting `json:"LDAP,omitnil,omitempty" name:"LDAP"`
+
+	// OAuth配置信息
+	OAuth *OAuthSetting `json:"OAuth,omitnil,omitempty" name:"OAuth"`
+
 	// 国密认证方式设置
 	AuthModeGM *AuthModeSetting `json:"AuthModeGM,omitnil,omitempty" name:"AuthModeGM"`
 

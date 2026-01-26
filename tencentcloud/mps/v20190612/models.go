@@ -25082,6 +25082,9 @@ type SubtitleTemplate struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubtitleFileInput *MediaInputInfo `json:"SubtitleFileInput,omitnil,omitempty" name:"SubtitleFileInput"`
 
+	// 压制字幕字体文件的输入信息，目前仅支持url和cos。都填时url优先于cos。填了FontFileInput时FontFileInput优先于FontType
+	FontFileInput *MediaInputInfo `json:"FontFileInput,omitnil,omitempty" name:"FontFileInput"`
+
 	// 字体类型，支持：
 	// <li>hei.ttf：黑体</li>
 	// <li>song.ttf：宋体</li>
@@ -25100,12 +25103,21 @@ type SubtitleTemplate struct {
 	// <li>korean.ttf：韩语</li>
 	// <li>japanese.ttf：日语</li>
 	// <li>thai.ttf：泰语</li>
-	// 默认：hei.ttf 黑体。注意：楷体推荐使用kai.ttf
+	// 默认：hei.ttf 黑体。
+	// <br>注意：
+	// <li>楷体推荐使用kai.ttf</li>
+	// <li>填了FontFileInput时FontFileInput优先</li>
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FontType *string `json:"FontType,omitnil,omitempty" name:"FontType"`
 
-	// 字体大小，格式：Npx，N 为数值，不指定则以字幕文件中为准。
-	// 默认源视频高度的5%。
+	// 字体大小，不指定则以字幕文件中为准。支持像素和百分比格式：
+	// 
+	// - 像素：Npx，N范围：(0,4096]。
+	// - 百分百：N%，N范围：(0,100]；例如10%表示字幕字体大小=10%*源视频高度。
+	// 
+	// 不填且字幕文件无设置时，默认源视频高度的5%。
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FontSize *string `json:"FontSize,omitnil,omitempty" name:"FontSize"`
 
@@ -25144,14 +25156,19 @@ type SubtitleTemplate struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BoardY *string `json:"BoardY,omitnil,omitempty" name:"BoardY"`
 
-	// 底板的宽度，单位为像素，取值范围：[0,4096]。
-	// 默认源视频宽像素的90%。
+	// 底板的宽度，正整数。
+	// - 代表像素时，取值范围：[0,4096]。
+	// - 代表百分数时，[0, 100]。
+	// 开启底板且不填此值时，默认源视频宽像素的90%。
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BoardWidth *int64 `json:"BoardWidth,omitnil,omitempty" name:"BoardWidth"`
 
-	// 底板的高度。单位为像素，取值范围：[0,4096]。
-	// 默认为源视频高像素的15%。
+	// 底板的高度，正整数。
+	// - 代表像素时，取值范围：[0,4096]。
+	// - 代表百分数时，[0, 100]。
+	// 开启底板且不填此值时，默认为源视频高像素的15%。
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BoardHeight *int64 `json:"BoardHeight,omitnil,omitempty" name:"BoardHeight"`
 
@@ -25167,37 +25184,52 @@ type SubtitleTemplate struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BoardAlpha *float64 `json:"BoardAlpha,omitnil,omitempty" name:"BoardAlpha"`
 
-	// 描边宽度
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 描边宽度。浮点数。
+	// - 代表像素值时， [0, 1000]。
+	// - 代表百分数时，[0, 100]。
+	// 不填默认源视频高度的0.3%。
 	OutlineWidth *float64 `json:"OutlineWidth,omitnil,omitempty" name:"OutlineWidth"`
 
-	// 描边颜色。6位16进制RGB
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 描边颜色。6位16进制RGB。不填默认黑色。
 	OutlineColor *string `json:"OutlineColor,omitnil,omitempty" name:"OutlineColor"`
 
-	// 描边透明度。(0，1] 正浮点数
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 描边透明度。(0，1] 正浮点数。不填默认1，完全不透明
 	OutlineAlpha *float64 `json:"OutlineAlpha,omitnil,omitempty" name:"OutlineAlpha"`
 
-	// 阴影宽度。浮点数  [0, 1000]
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 阴影宽度。浮点数。
+	// - 代表像素值时， [0, 1000]。
+	// - 代表百分数时，[0, 100]。
+	// 不填默认无阴影。
 	ShadowWidth *float64 `json:"ShadowWidth,omitnil,omitempty" name:"ShadowWidth"`
 
-	// 阴影颜色。6位16进制RGB
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 阴影颜色。6位16进制RGB。不填默认黑色（有设置阴影的情况下）
 	ShadowColor *string `json:"ShadowColor,omitnil,omitempty" name:"ShadowColor"`
 
-	// 阴影透明度。(0，1] 正浮点数
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 阴影透明度。(0，1] 正浮点数。不填默认1，完全不透明（有设置阴影的情况下）
 	ShadowAlpha *float64 `json:"ShadowAlpha,omitnil,omitempty" name:"ShadowAlpha"`
 
-	// 行间距。正整数  [0, 1000]
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 行间距。正整数。
+	// - 代表像素值时， [0, 1000]。
+	// - 代表百分数时，[0, 100]。不填默认0。
 	LineSpacing *int64 `json:"LineSpacing,omitnil,omitempty" name:"LineSpacing"`
 
-	// 对齐方式，，取值：top: 顶部对齐，字幕顶部按位置固定，底部随行数变化。bottom: 底部对齐，字幕底部按位置固定，顶部随行数变化。
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 对齐方式，取值：top: 顶部对齐，字幕顶部按位置固定，底部随行数变化。bottom: 底部对齐，字幕底部按位置固定，顶部随行数变化。不填默认底部对齐。
 	Alignment *string `json:"Alignment,omitnil,omitempty" name:"Alignment"`
+
+	// 默认0。为1时BoardWidth代表百分之几，以视频宽为基准
+	BoardWidthUnit *int64 `json:"BoardWidthUnit,omitnil,omitempty" name:"BoardWidthUnit"`
+
+	// 默认0。为1时BoardHeight代表百分之几，以视频高为基准
+	BoardHeightUnit *int64 `json:"BoardHeightUnit,omitnil,omitempty" name:"BoardHeightUnit"`
+
+	// 默认0。为1时OutlineWidth代表百分之几，以视频高为基准
+	OutlineWidthUnit *int64 `json:"OutlineWidthUnit,omitnil,omitempty" name:"OutlineWidthUnit"`
+
+	// 默认0。为1时ShadowWidth代表百分之几，以视频高为基准
+	ShadowWidthUnit *int64 `json:"ShadowWidthUnit,omitnil,omitempty" name:"ShadowWidthUnit"`
+
+	// 默认0。为1时LineSpacing代表百分之几，以视频高为基准
+	LineSpacingUnit *int64 `json:"LineSpacingUnit,omitnil,omitempty" name:"LineSpacingUnit"`
 }
 
 type SubtitleTransResultItem struct {

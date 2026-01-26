@@ -1,29 +1,10 @@
-# Release v1.3.38
+# Release v1.3.39
 
-## 腾讯混元生3D(ai3d) 版本：2025-05-13
+## 运维安全中心（堡垒机）(bh) 版本：2023-04-18
 
-### 第 11 次发布
+### 第 24 次发布
 
-发布时间：2026-01-26 01:07:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [SubmitHunyuan3DPartJob](https://cloud.tencent.com/document/api/1804/126295)
-
-	* 新增入参：Model
-
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 146 次发布
-
-发布时间：2026-01-26 01:13:51
+发布时间：2026-01-27 01:09:24
 
 本次发布包含了以下内容：
 
@@ -31,18 +12,38 @@
 
 修改接口：
 
-* [CreateTargetGroup](https://cloud.tencent.com/document/api/214/40559)
+* [DescribeDeviceGroupMembers](https://cloud.tencent.com/document/api/1025/74787)
 
-	* 新增入参：SnatEnable
+	* 新增入参：ResourceIdSet, Filters
+
+* [ModifyAuthModeSetting](https://cloud.tencent.com/document/api/1025/125048)
+
+	* 新增入参：AuthModeGM
+
+	* <font color="#dd0000">**修改入参**：</font>AuthMode
+
+
+新增数据结构：
+
+* [LDAPSetting](https://cloud.tencent.com/document/api/1025/74416#LDAPSetting)
+* [LoginSetting](https://cloud.tencent.com/document/api/1025/74416#LoginSetting)
+* [OAuthSetting](https://cloud.tencent.com/document/api/1025/74416#OAuthSetting)
+* [PasswordSetting](https://cloud.tencent.com/document/api/1025/74416#PasswordSetting)
+
+修改数据结构：
+
+* [SecuritySetting](https://cloud.tencent.com/document/api/1025/74416#SecuritySetting)
+
+	* 新增成员：AuthMode, Password, Login, LDAP, OAuth
 
 
 
 
-## 多网聚合加速(mna) 版本：2021-01-19
+## 费用中心(billing) 版本：2018-07-09
 
-### 第 31 次发布
+### 第 83 次发布
 
-发布时间：2026-01-26 01:32:35
+发布时间：2026-01-27 01:10:01
 
 本次发布包含了以下内容：
 
@@ -50,84 +51,61 @@
 
 新增接口：
 
-* [GetDestIPByName](https://cloud.tencent.com/document/api/1385/127805)
-* [GetFlowStatisticByName](https://cloud.tencent.com/document/api/1385/127804)
-* [GetMonitorDataByName](https://cloud.tencent.com/document/api/1385/127803)
-* [GetNetMonitorByName](https://cloud.tencent.com/document/api/1385/127802)
-* [GetStatisticDataByName](https://cloud.tencent.com/document/api/1385/127801)
+* [DescribeRenewInstances](https://cloud.tencent.com/document/api/555/127836)
 
 新增数据结构：
 
-* [DestIpInfo](https://cloud.tencent.com/document/api/1385/55846#DestIpInfo)
+* [RenewInstance](https://cloud.tencent.com/document/api/555/19183#RenewInstance)
+
+
+
+## 高性能应用服务(hai) 版本：2023-08-12
+
+### 第 14 次发布
+
+发布时间：2026-01-27 01:24:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ItemPrice](https://cloud.tencent.com/document/api/1721/101518#ItemPrice)
+
+	* 新增成员：OriginPrice, DiscountPrice
+
 
 
 
 ## 媒体处理(mps) 版本：2019-06-12
 
-### 第 176 次发布
+### 第 177 次发布
 
-发布时间：2026-01-26 01:36:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ProcessImage](https://cloud.tencent.com/document/api/862/112896)
-
-	* 新增入参：StdExtInfo
-
-
-
-
-## 消息队列 TDMQ(tdmq) 版本：2020-02-17
-
-### 第 165 次发布
-
-发布时间：2026-01-26 02:08:14
+发布时间：2026-01-27 01:36:32
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [CreateEnvironment](https://cloud.tencent.com/document/api/1179/46081)
-
-	* 新增入参：Tags
-
-* [CreateTopic](https://cloud.tencent.com/document/api/1179/46088)
-
-	* 新增入参：Tags, DelayMessagePolicy
-
-* [ModifyTopic](https://cloud.tencent.com/document/api/1179/46085)
-
-	* 新增入参：DelayMessagePolicy
-
 
 修改数据结构：
 
-* [Environment](https://cloud.tencent.com/document/api/1179/46089#Environment)
+* [SubtitleTemplate](https://cloud.tencent.com/document/api/862/37615#SubtitleTemplate)
 
-	* 新增成员：Tags
-
-* [PulsarProClusterSpecInfo](https://cloud.tencent.com/document/api/1179/46089#PulsarProClusterSpecInfo)
-
-	* 新增成员：MaxTopicsPartitioned, BrokerMaxConnections, BrokerMaxConnectionsPerIp, MaximumElasticStorage
-
-* [Topic](https://cloud.tencent.com/document/api/1179/46089#Topic)
-
-	* 新增成员：Tags, DelayMessagePolicy
+	* 新增成员：FontFileInput, BoardWidthUnit, BoardHeightUnit, OutlineWidthUnit, ShadowWidthUnit, LineSpacingUnit
 
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-09-01
+## 容器服务(tke) 版本：2022-05-01
 
-### 第 134 次发布
 
-发布时间：2026-01-26 02:11:15
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 218 次发布
+
+发布时间：2026-01-27 02:15:50
 
 本次发布包含了以下内容：
 
@@ -135,44 +113,64 @@
 
 新增接口：
 
-* [ModifyZoneWorkMode](https://cloud.tencent.com/document/api/1552/127806)
-
-新增数据结构：
-
-* [ConfigGroupWorkModeInfo](https://cloud.tencent.com/document/api/1552/80721#ConfigGroupWorkModeInfo)
-
-修改数据结构：
-
-* [Zone](https://cloud.tencent.com/document/api/1552/80721#Zone)
-
-	* 新增成员：WorkModeInfos
+* [EnableEksEventPersistence](https://cloud.tencent.com/document/api/457/127837)
 
 
 
-
-## 边缘安全加速平台(teo) 版本：2022-01-06
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2025-08-06
+## 实时互动-工业能源版(trro) 版本：2022-03-25
 
 ### 第 12 次发布
 
-发布时间：2026-01-26 02:41:42
+发布时间：2026-01-27 02:21:39
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+修改接口：
+
+* [DescribeDeviceList](https://cloud.tencent.com/document/api/1584/89815)
+
+	* 新增入参：RegisterType
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2025-08-06
+
+### 第 13 次发布
+
+发布时间：2026-01-27 02:40:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AuthorizePrivileges](https://cloud.tencent.com/document/api/1267/127840)
+* [ListPermissions](https://cloud.tencent.com/document/api/1267/127842)
+* [RevokePrivileges](https://cloud.tencent.com/document/api/1267/127839)
+
+新增数据结构：
+
+* [AuthorizePrivilegesRsp](https://cloud.tencent.com/document/api/1267/123643#AuthorizePrivilegesRsp)
+* [AuthorizeResult](https://cloud.tencent.com/document/api/1267/123643#AuthorizeResult)
+* [GetResourcePrivilegeDetailRsp](https://cloud.tencent.com/document/api/1267/123643#GetResourcePrivilegeDetailRsp)
+* [Page](https://cloud.tencent.com/document/api/1267/123643#Page)
+* [PrivilegeInfo](https://cloud.tencent.com/document/api/1267/123643#PrivilegeInfo)
+* [PrivilegeResource](https://cloud.tencent.com/document/api/1267/123643#PrivilegeResource)
+* [ResourcePrivilegeDetail](https://cloud.tencent.com/document/api/1267/123643#ResourcePrivilegeDetail)
+* [RevokePrivilegesRsp](https://cloud.tencent.com/document/api/1267/123643#RevokePrivilegesRsp)
+* [SecurityFilter](https://cloud.tencent.com/document/api/1267/123643#SecurityFilter)
+* [Subject](https://cloud.tencent.com/document/api/1267/123643#Subject)
+* [SubjectInfo](https://cloud.tencent.com/document/api/1267/123643#SubjectInfo)
+
 修改数据结构：
 
-* [DatabaseInfo](https://cloud.tencent.com/document/api/1267/123643#DatabaseInfo)
+* [LineageNodeInfo](https://cloud.tencent.com/document/api/1267/123643#LineageNodeInfo)
 
-	* 新增成员：DatasourceId, DatasourceType
-
-* [TableInfo](https://cloud.tencent.com/document/api/1267/123643#TableInfo)
-
-	* 新增成员：CatalogName, DatasourceId, DatasourceType
+	* 新增成员：DownStreamCount, UpStreamCount
 
 
 
