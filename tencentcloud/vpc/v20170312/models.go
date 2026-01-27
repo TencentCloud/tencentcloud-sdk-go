@@ -3690,7 +3690,7 @@ type ConnectionStateTimeouts struct {
 	TCPEstablishedConnectionTimeout *uint64 `json:"TCPEstablishedConnectionTimeout,omitnil,omitempty" name:"TCPEstablishedConnectionTimeout"`
 
 	// TCP TIME_WAIT超时，指完全关闭的TCP连接在到期后保留在NAT映射中的秒数。取值范围为：10-600秒，默认为120秒。
-	TcpTimeWaitTimeout *uint64 `json:"TcpTimeWaitTimeout,omitnil,omitempty" name:"TcpTimeWaitTimeout"`
+	TCPTimeWaitTimeout *uint64 `json:"TCPTimeWaitTimeout,omitnil,omitempty" name:"TCPTimeWaitTimeout"`
 }
 
 // Predefined struct for user

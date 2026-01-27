@@ -2077,6 +2077,70 @@ func (c *Client) DeleteClusterDatabaseWithContext(ctx context.Context, request *
     return
 }
 
+func NewDeleteClusterSaveBackupRequest() (request *DeleteClusterSaveBackupRequest) {
+    request = &DeleteClusterSaveBackupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DeleteClusterSaveBackup")
+    
+    
+    return
+}
+
+func NewDeleteClusterSaveBackupResponse() (response *DeleteClusterSaveBackupResponse) {
+    response = &DeleteClusterSaveBackupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteClusterSaveBackup
+// 本接口（DeleteClusterSaveBackup）用于为集群删除遗留备份
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DeleteClusterSaveBackup(request *DeleteClusterSaveBackupRequest) (response *DeleteClusterSaveBackupResponse, err error) {
+    return c.DeleteClusterSaveBackupWithContext(context.Background(), request)
+}
+
+// DeleteClusterSaveBackup
+// 本接口（DeleteClusterSaveBackup）用于为集群删除遗留备份
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DeleteClusterSaveBackupWithContext(ctx context.Context, request *DeleteClusterSaveBackupRequest) (response *DeleteClusterSaveBackupResponse, err error) {
+    if request == nil {
+        request = NewDeleteClusterSaveBackupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DeleteClusterSaveBackup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteClusterSaveBackup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteClusterSaveBackupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteParamTemplateRequest() (request *DeleteParamTemplateRequest) {
     request = &DeleteParamTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5395,6 +5459,80 @@ func (c *Client) DescribeProxySpecsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeRedoLogsRequest() (request *DescribeRedoLogsRequest) {
+    request = &DescribeRedoLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeRedoLogs")
+    
+    
+    return
+}
+
+func NewDescribeRedoLogsResponse() (response *DescribeRedoLogsResponse) {
+    response = &DescribeRedoLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRedoLogs
+// 本接口（DescribeRedoLogs）用于查询redo日志列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_TRADECREATEORDERERROR = "FailedOperation.TradeCreateOrderError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_CLUSTERNOTFOUND = "InvalidParameterValue.ClusterNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDREGIONIDERROR = "InvalidParameterValue.InvalidRegionIdError"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = "ResourceUnavailable.InstanceLockFail"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeRedoLogs(request *DescribeRedoLogsRequest) (response *DescribeRedoLogsResponse, err error) {
+    return c.DescribeRedoLogsWithContext(context.Background(), request)
+}
+
+// DescribeRedoLogs
+// 本接口（DescribeRedoLogs）用于查询redo日志列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_TRADECREATEORDERERROR = "FailedOperation.TradeCreateOrderError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_CLUSTERNOTFOUND = "InvalidParameterValue.ClusterNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDREGIONIDERROR = "InvalidParameterValue.InvalidRegionIdError"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = "ResourceUnavailable.InstanceLockFail"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeRedoLogsWithContext(ctx context.Context, request *DescribeRedoLogsRequest) (response *DescribeRedoLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRedoLogsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeRedoLogs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRedoLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRedoLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResourcePackageDetailRequest() (request *DescribeResourcePackageDetailRequest) {
     request = &DescribeResourcePackageDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5767,6 +5905,80 @@ func (c *Client) DescribeSSLStatusWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeSSLStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSaveBackupClustersRequest() (request *DescribeSaveBackupClustersRequest) {
+    request = &DescribeSaveBackupClustersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeSaveBackupClusters")
+    
+    
+    return
+}
+
+func NewDescribeSaveBackupClustersResponse() (response *DescribeSaveBackupClustersResponse) {
+    response = &DescribeSaveBackupClustersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSaveBackupClusters
+// 本接口（DescribeSaveBackupClusters）用于查询遗留备份集群信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_TRADECREATEORDERERROR = "FailedOperation.TradeCreateOrderError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_CLUSTERNOTFOUND = "InvalidParameterValue.ClusterNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDREGIONIDERROR = "InvalidParameterValue.InvalidRegionIdError"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = "ResourceUnavailable.InstanceLockFail"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeSaveBackupClusters(request *DescribeSaveBackupClustersRequest) (response *DescribeSaveBackupClustersResponse, err error) {
+    return c.DescribeSaveBackupClustersWithContext(context.Background(), request)
+}
+
+// DescribeSaveBackupClusters
+// 本接口（DescribeSaveBackupClusters）用于查询遗留备份集群信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_TRADECREATEORDERERROR = "FailedOperation.TradeCreateOrderError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_CLUSTERNOTFOUND = "InvalidParameterValue.ClusterNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDREGIONIDERROR = "InvalidParameterValue.InvalidRegionIdError"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = "ResourceUnavailable.InstanceLockFail"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeSaveBackupClustersWithContext(ctx context.Context, request *DescribeSaveBackupClustersRequest) (response *DescribeSaveBackupClustersResponse, err error) {
+    if request == nil {
+        request = NewDescribeSaveBackupClustersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeSaveBackupClusters")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSaveBackupClusters require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSaveBackupClustersResponse()
     err = c.Send(request, response)
     return
 }
@@ -9045,6 +9257,70 @@ func (c *Client) ModifyServerlessStrategyWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewModifyServerlessStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySnapBackupCrossRegionConfigRequest() (request *ModifySnapBackupCrossRegionConfigRequest) {
+    request = &ModifySnapBackupCrossRegionConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ModifySnapBackupCrossRegionConfig")
+    
+    
+    return
+}
+
+func NewModifySnapBackupCrossRegionConfigResponse() (response *ModifySnapBackupCrossRegionConfigResponse) {
+    response = &ModifySnapBackupCrossRegionConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySnapBackupCrossRegionConfig
+// 本接口（ModifySnapBackupCrossRegionConfig）用于修改指定集群的快照备份跨地域配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CYNOSDBMYSQLSETBACKUPSTRATEGY = "FailedOperation.CynosdbMysqlSetBackupStrategy"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifySnapBackupCrossRegionConfig(request *ModifySnapBackupCrossRegionConfigRequest) (response *ModifySnapBackupCrossRegionConfigResponse, err error) {
+    return c.ModifySnapBackupCrossRegionConfigWithContext(context.Background(), request)
+}
+
+// ModifySnapBackupCrossRegionConfig
+// 本接口（ModifySnapBackupCrossRegionConfig）用于修改指定集群的快照备份跨地域配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CYNOSDBMYSQLSETBACKUPSTRATEGY = "FailedOperation.CynosdbMysqlSetBackupStrategy"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifySnapBackupCrossRegionConfigWithContext(ctx context.Context, request *ModifySnapBackupCrossRegionConfigRequest) (response *ModifySnapBackupCrossRegionConfigResponse, err error) {
+    if request == nil {
+        request = NewModifySnapBackupCrossRegionConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifySnapBackupCrossRegionConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySnapBackupCrossRegionConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySnapBackupCrossRegionConfigResponse()
     err = c.Send(request, response)
     return
 }

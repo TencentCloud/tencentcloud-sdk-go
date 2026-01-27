@@ -9216,7 +9216,7 @@ type DescribeInstanceUpgradeTypeRequestParams struct {
 	// 独享集群 CDB 实例的节点分布情况。
 	NodeDistribution *NodeDistribution `json:"NodeDistribution,omitnil,omitempty" name:"NodeDistribution"`
 
-	// 集群版的节点拓扑配置。Nodeld信息可通过 [DescribeClusterInfo](https://cloud.tencent.com/document/api/236/105116) 接口获取。
+	// 云盘版的节点拓扑配置。Nodeld 信息可通过 [DescribeClusterInfo](https://cloud.tencent.com/document/api/236/105116) 接口获取。
 	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
 }
 
@@ -9259,7 +9259,7 @@ type DescribeInstanceUpgradeTypeRequest struct {
 	// 独享集群 CDB 实例的节点分布情况。
 	NodeDistribution *NodeDistribution `json:"NodeDistribution,omitnil,omitempty" name:"NodeDistribution"`
 
-	// 集群版的节点拓扑配置。Nodeld信息可通过 [DescribeClusterInfo](https://cloud.tencent.com/document/api/236/105116) 接口获取。
+	// 云盘版的节点拓扑配置。Nodeld 信息可通过 [DescribeClusterInfo](https://cloud.tencent.com/document/api/236/105116) 接口获取。
 	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
 }
 
@@ -12119,7 +12119,7 @@ type ModifyAccountPasswordRequestParams struct {
 	// 云数据库账号。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
-	// 是否跳过校验密码复杂度
+	// 该字段已废弃。
 	//
 	// Deprecated: SkipValidatePassword is deprecated.
 	SkipValidatePassword *bool `json:"SkipValidatePassword,omitnil,omitempty" name:"SkipValidatePassword"`
@@ -12137,7 +12137,7 @@ type ModifyAccountPasswordRequest struct {
 	// 云数据库账号。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
-	// 是否跳过校验密码复杂度
+	// 该字段已废弃。
 	SkipValidatePassword *bool `json:"SkipValidatePassword,omitnil,omitempty" name:"SkipValidatePassword"`
 }
 

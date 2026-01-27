@@ -272,6 +272,35 @@ type AdaptiveStreamTemplate struct {
 	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
 }
 
+type AdvancedSuperResolutionConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 类型，可选值：
+	// <li>standard：通用超分</li>
+	// <li>super：高级超分。</li>
+	// 默认值：standard。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 输出图片模式，默认percent。
+	// <li> aspect: 超分至指定宽高的较大矩形。</li>
+	// <li> fixed: 超分至固定宽高，强制缩放。</li>
+	// <li> percent: 超分倍率，可以为小数。</li>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 超分倍率，可以为小数。
+	Percent *float64 `json:"Percent,omitnil,omitempty" name:"Percent"`
+
+	// 目标图片宽度，不能超过4096。
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 目标图片高度，不能超过4096。
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
+}
+
 type AiAnalysisResult struct {
 	// 任务的类型，可以取的值有：
 	// <li>Classification：智能分类</li>
@@ -3253,6 +3282,9 @@ type CdnLogInfo struct {
 type ChangeClothesConfig struct {
 	// 输入需要更换的**衣物**图片列表。目前最大支持4张图片。
 	ClothesFileInfos []*SceneAigcImageTaskInputFileInfo `json:"ClothesFileInfos,omitnil,omitempty" name:"ClothesFileInfos"`
+
+	// AI换衣的提示词。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 }
 
 type ClassificationConfigureInfo struct {
@@ -6290,6 +6322,84 @@ func (r *CreateProcedureTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateProcessImageAsyncTemplateRequestParams struct {
+	// 图片异步处理任务配置。
+	ProcessImageConfigure *ProcessImageAsyncTask `json:"ProcessImageConfigure,omitnil,omitempty" name:"ProcessImageConfigure"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 图片异步处理模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 图片异步处理模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+}
+
+type CreateProcessImageAsyncTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片异步处理任务配置。
+	ProcessImageConfigure *ProcessImageAsyncTask `json:"ProcessImageConfigure,omitnil,omitempty" name:"ProcessImageConfigure"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 图片异步处理模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 图片异步处理模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+}
+
+func (r *CreateProcessImageAsyncTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProcessImageAsyncTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProcessImageConfigure")
+	delete(f, "SubAppId")
+	delete(f, "Name")
+	delete(f, "Comment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProcessImageAsyncTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateProcessImageAsyncTemplateResponseParams struct {
+	// 图片异步处理模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateProcessImageAsyncTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateProcessImageAsyncTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateProcessImageAsyncTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProcessImageAsyncTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateQualityInspectTemplateRequestParams struct {
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
@@ -9124,6 +9234,67 @@ func (r *DeleteProcedureTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteProcedureTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteProcessImageAsyncTemplateRequestParams struct {
+	// 图片异步处理模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+}
+
+type DeleteProcessImageAsyncTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片异步处理模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+}
+
+func (r *DeleteProcessImageAsyncTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteProcessImageAsyncTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteProcessImageAsyncTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteProcessImageAsyncTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteProcessImageAsyncTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteProcessImageAsyncTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteProcessImageAsyncTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteProcessImageAsyncTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13111,6 +13282,87 @@ func (r *DescribeProcedureTemplatesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeProcessImageAsyncTemplatesRequestParams struct {
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 图片异步处理模板唯一标识过滤条件，数组长度最大值：100。
+	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeProcessImageAsyncTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 图片异步处理模板唯一标识过滤条件，数组长度最大值：100。
+	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeProcessImageAsyncTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProcessImageAsyncTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "Definitions")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProcessImageAsyncTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProcessImageAsyncTemplatesResponseParams struct {
+	// 符合过滤条件的记录总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 图片异步处理模板详情列表。
+	ProcessImageAsyncTemplateSet []*ProcessImageAsyncTemplateItem `json:"ProcessImageAsyncTemplateSet,omitnil,omitempty" name:"ProcessImageAsyncTemplateSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeProcessImageAsyncTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeProcessImageAsyncTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeProcessImageAsyncTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProcessImageAsyncTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeQualityInspectTemplatesRequestParams struct {
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
@@ -14367,6 +14619,9 @@ type DescribeTaskDetailResponseParams struct {
 
 	// 场景化 AIGC 生视频任务信息，仅当 TaskType 为 SceneAigcVideoTask，该字段有值。
 	SceneAigcVideoTask *SceneAigcVideoTask `json:"SceneAigcVideoTask,omitnil,omitempty" name:"SceneAigcVideoTask"`
+
+	// 图像异步处理任务信息，仅当 TaskType 为 ProcessImageAsync，该字段有值。
+	ProcessImageAsyncTask *ProcessImageAsync `json:"ProcessImageAsyncTask,omitnil,omitempty" name:"ProcessImageAsyncTask"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -16745,6 +17000,62 @@ type ImageContentReviewInput struct {
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 }
 
+type ImageDenoiseConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 类型，可选值：
+	// <li>weak</li>
+	// <li>strong</li>
+	// 默认值：weak。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type ImageEncodeConfig struct {
+	// 图片格式，取值范围：JPEG、PNG、BMP、WebP，缺省为原图格式。不支持动画。
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 图片的相对质量，取值范围：1 - 100，数值以原图质量为标准，缺省为原图质量。
+	Quality *int64 `json:"Quality,omitnil,omitempty" name:"Quality"`
+}
+
+type ImageEnhanceConfig struct {
+	// 超分配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuperResolution *SuperResolutionInfo `json:"SuperResolution,omitnil,omitempty" name:"SuperResolution"`
+
+	// 高级超分配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdvancedSuperResolution *AdvancedSuperResolutionConfig `json:"AdvancedSuperResolution,omitnil,omitempty" name:"AdvancedSuperResolution"`
+
+	// 降噪配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Denoise *ImageDenoiseConfig `json:"Denoise,omitnil,omitempty" name:"Denoise"`
+
+	// 综合增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageQualityEnhance *ImageQualityEnhanceInfo `json:"ImageQualityEnhance,omitnil,omitempty" name:"ImageQualityEnhance"`
+
+	// 色彩增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColorEnhance *ColorEnhanceInfo `json:"ColorEnhance,omitnil,omitempty" name:"ColorEnhance"`
+
+	// 细节增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SharpEnhance *SharpEnhanceInfo `json:"SharpEnhance,omitnil,omitempty" name:"SharpEnhance"`
+
+	// 人脸增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FaceEnhance *FaceEnhanceInfo `json:"FaceEnhance,omitnil,omitempty" name:"FaceEnhance"`
+
+	// 低光照增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LowLightEnhance *LowLightEnhanceInfo `json:"LowLightEnhance,omitnil,omitempty" name:"LowLightEnhance"`
+}
+
 type ImageOperation struct {
 	// 图片处理类型。可选类型有：
 	// <li>Scale : 图片缩略处理；</li>
@@ -16827,6 +17138,14 @@ type ImageScale struct {
 
 	// 输出图片的短边长度，单位为像素。当 Type 取值为 ShortEdgeFirst 时此字段有效。
 	ShortEdge *uint64 `json:"ShortEdge,omitnil,omitempty" name:"ShortEdge"`
+}
+
+type ImageSceneAigcEncodeConfig struct {
+	// 图片格式，取值范围：JPEG、PNG，缺省为原图格式。不支持动画。
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 图片的相对质量，取值范围：1 - 100，数值以原图质量为标准，缺省为原图质量。
+	Quality *int64 `json:"Quality,omitnil,omitempty" name:"Quality"`
 }
 
 type ImageSpriteTaskInput struct {
@@ -20809,6 +21128,88 @@ func (r *ModifyPersonSampleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyProcessImageAsyncTemplateRequestParams struct {
+	// 图片异步处理模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 图片异步处理模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 图片异步处理模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 图片异步处理配置。
+	ProcessImageConfigure *ProcessImageAsyncTask `json:"ProcessImageConfigure,omitnil,omitempty" name:"ProcessImageConfigure"`
+}
+
+type ModifyProcessImageAsyncTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片异步处理模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 图片异步处理模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 图片异步处理模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 图片异步处理配置。
+	ProcessImageConfigure *ProcessImageAsyncTask `json:"ProcessImageConfigure,omitnil,omitempty" name:"ProcessImageConfigure"`
+}
+
+func (r *ModifyProcessImageAsyncTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyProcessImageAsyncTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "SubAppId")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "ProcessImageConfigure")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyProcessImageAsyncTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyProcessImageAsyncTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyProcessImageAsyncTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyProcessImageAsyncTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyProcessImageAsyncTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyProcessImageAsyncTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyQualityInspectTemplateRequestParams struct {
 	// 模板 ID。
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -23154,6 +23555,230 @@ type ProcedureTemplate struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type ProcessImageAsync struct {
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 图片异步处理任务的输入信息。
+	Input *ProcessImageAsyncInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 图片异步处理任务的输出信息。
+	Output *ProcessImageAsyncOutput `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+}
+
+type ProcessImageAsyncInput struct {
+	// 图片处理的FileId。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 图片处理参数。
+	ImageTaskInput *ProcessImageAsyncTaskInput `json:"ImageTaskInput,omitnil,omitempty" name:"ImageTaskInput"`
+
+	// 图片处理任务的输出媒体文件配置。
+	OutputConfig *ProcessImageAsyncOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
+}
+
+type ProcessImageAsyncOutput struct {
+	// 图片异步处理任务的输出文件信息。
+	FileInfo *ProcessImageAsyncOutputFileInfo `json:"FileInfo,omitnil,omitempty" name:"FileInfo"`
+}
+
+type ProcessImageAsyncOutputConfig struct {
+	// 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+	MediaName *string `json:"MediaName,omitnil,omitempty" name:"MediaName"`
+
+	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+	// <li>默认值：0，表示其他分类。</li>
+	ClassId *int64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
+
+	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+}
+
+type ProcessImageAsyncOutputFileInfo struct {
+	// 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+	MediaName *string `json:"MediaName,omitnil,omitempty" name:"MediaName"`
+
+	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。当 StorageMode 为 Permanent 时有效。
+	ClassId *int64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
+
+	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 文件类型，例如 mp4、flv 等。
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 媒体文件播放地址。
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// 媒体文件 ID。当 StorageMode 为 Permanent 时有效。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 输出视频的元信息。当 StorageMode 为 Permanent 时有效。
+	MetaData *MediaMetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
+}
+
+// Predefined struct for user
+type ProcessImageAsyncRequestParams struct {
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 需要进行图片处理的FileId。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 图片处理参数。
+	ImageTaskInput *ProcessImageAsyncTaskInput `json:"ImageTaskInput,omitnil,omitempty" name:"ImageTaskInput"`
+
+	// 图片处理任务的输出媒体文件配置。
+	OutputConfig *ProcessImageAsyncOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
+
+	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+
+	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
+
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+}
+
+type ProcessImageAsyncRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 需要进行图片处理的FileId。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 图片处理参数。
+	ImageTaskInput *ProcessImageAsyncTaskInput `json:"ImageTaskInput,omitnil,omitempty" name:"ImageTaskInput"`
+
+	// 图片处理任务的输出媒体文件配置。
+	OutputConfig *ProcessImageAsyncOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
+
+	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+
+	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
+
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+}
+
+func (r *ProcessImageAsyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ProcessImageAsyncRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "FileId")
+	delete(f, "ImageTaskInput")
+	delete(f, "OutputConfig")
+	delete(f, "SessionId")
+	delete(f, "SessionContext")
+	delete(f, "TasksPriority")
+	delete(f, "ExtInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessImageAsyncRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ProcessImageAsyncResponseParams struct {
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ProcessImageAsyncResponse struct {
+	*tchttp.BaseResponse
+	Response *ProcessImageAsyncResponseParams `json:"Response"`
+}
+
+func (r *ProcessImageAsyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ProcessImageAsyncResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ProcessImageAsyncTask struct {
+	// 图片转码输出配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncodeConfig *ImageEncodeConfig `json:"EncodeConfig,omitnil,omitempty" name:"EncodeConfig"`
+
+	// 图片增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnhanceConfig *ImageEnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
+}
+
+type ProcessImageAsyncTaskInput struct {
+	// 图片异步处理模板ID。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+type ProcessImageAsyncTemplateItem struct {
+	// 图片异步处理模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 模板类型。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 图片异步处理模板名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 图片异步处理模板描述信息。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 图片异步处理模板配置。
+	ProcessImageConfigure *ProcessImageAsyncTask `json:"ProcessImageConfigure,omitnil,omitempty" name:"ProcessImageConfigure"`
 }
 
 // Predefined struct for user
@@ -26442,6 +27067,9 @@ type SceneAigcImageOutputConfig struct {
 	// 
 	// 仅生商品图场景有效，可选值为：1:1、3:2、2:3、3:4、4:3、4:5、5:4、16:9、9:16、21:9
 	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
+
+	// 输出图片编码格式参数。**仅AI换衣场景有效。**
+	EncodeConfig *ImageSceneAigcEncodeConfig `json:"EncodeConfig,omitnil,omitempty" name:"EncodeConfig"`
 }
 
 type SceneAigcImageTask struct {

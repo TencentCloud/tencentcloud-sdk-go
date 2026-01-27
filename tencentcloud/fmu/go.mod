@@ -2,4 +2,4 @@ module github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/fmu
 
 go 1.14
 
-require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.39
+require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.40

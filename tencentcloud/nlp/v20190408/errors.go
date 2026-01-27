@@ -23,9 +23,6 @@ const (
 	// 服务内部错误，请重试。
 	FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 
-	// 暂无春联生成，请更换关键词重试。
-	FAILEDOPERATION_NOCOUPLETS = "FailedOperation.NoCouplets"
-
 	// 暂无结果，请更换文本重试。
 	FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
 
@@ -70,9 +67,6 @@ const (
 
 	// Text输入含有敏感信息。
 	INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
-
-	// TargetType非法，请参考TargetType参数说明。
-	INVALIDPARAMETERVALUE_TARGETTYPE = "InvalidParameterValue.TargetType"
 
 	// Text非法，请参考Text参数说明。
 	INVALIDPARAMETERVALUE_TEXT = "InvalidParameterValue.Text"

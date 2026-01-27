@@ -690,6 +690,39 @@ type AuditRuleTemplateInfo struct {
 	AffectedInstances []*string `json:"AffectedInstances,omitnil,omitempty" name:"AffectedInstances"`
 }
 
+type BackupConfigInfo struct {
+	// 系统自动时间
+	BackupCustomAutoTime *bool `json:"BackupCustomAutoTime,omitnil,omitempty" name:"BackupCustomAutoTime"`
+
+	// 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+	BackupTimeBeg *uint64 `json:"BackupTimeBeg,omitnil,omitempty" name:"BackupTimeBeg"`
+
+	// 表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+	BackupTimeEnd *uint64 `json:"BackupTimeEnd,omitnil,omitempty" name:"BackupTimeEnd"`
+
+	// 该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周日到周六的备份方式，full-全量备份，increment-增量备份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupWeekDays []*string `json:"BackupWeekDays,omitnil,omitempty" name:"BackupWeekDays"`
+
+	// 间隔时间
+	BackupIntervalTime *int64 `json:"BackupIntervalTime,omitnil,omitempty" name:"BackupIntervalTime"`
+
+	// 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600247=604800，最大为158112000
+	ReserveDuration *uint64 `json:"ReserveDuration,omitnil,omitempty" name:"ReserveDuration"`
+
+	// 跨地域备份开启
+	// yes-开启
+	// no-关闭
+	CrossRegionsEnable *string `json:"CrossRegionsEnable,omitnil,omitempty" name:"CrossRegionsEnable"`
+
+	// 跨地域备份地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CrossRegions []*string `json:"CrossRegions,omitnil,omitempty" name:"CrossRegions"`
+
+	// 动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
+	BackupTriggerStrategy *string `json:"BackupTriggerStrategy,omitnil,omitempty" name:"BackupTriggerStrategy"`
+}
+
 type BackupFileInfo struct {
 	// 快照文件ID，已废弃，请使用BackupId
 	SnapshotId *uint64 `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
@@ -761,6 +794,14 @@ type BackupLimitVpcItem struct {
 
 	// 限制下载的vpc列表
 	VpcList []*string `json:"VpcList,omitnil,omitempty" name:"VpcList"`
+}
+
+type BackupRegionAndIds struct {
+	// 备份地域
+	BackupRegion *string `json:"BackupRegion,omitnil,omitempty" name:"BackupRegion"`
+
+	// 备份ID
+	BackupId *int64 `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 }
 
 type BillingResourceInfo struct {
@@ -3786,6 +3827,9 @@ type CynosdbClusterDetail struct {
 
 	// 归档进度，百分比。
 	ArchiveProgress *int64 `json:"ArchiveProgress,omitnil,omitempty" name:"ArchiveProgress"`
+
+	// 是否开启透明加密
+	IsOpenTDE *bool `json:"IsOpenTDE,omitnil,omitempty" name:"IsOpenTDE"`
 }
 
 type CynosdbErrorLogItem struct {
@@ -4678,6 +4722,70 @@ func (r *DeleteClusterDatabaseResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteClusterSaveBackupRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 保留备份文件ID，推荐使用
+	SaveBackupId *int64 `json:"SaveBackupId,omitnil,omitempty" name:"SaveBackupId"`
+}
+
+type DeleteClusterSaveBackupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 保留备份文件ID，推荐使用
+	SaveBackupId *int64 `json:"SaveBackupId,omitnil,omitempty" name:"SaveBackupId"`
+}
+
+func (r *DeleteClusterSaveBackupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteClusterSaveBackupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "SaveBackupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteClusterSaveBackupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteClusterSaveBackupResponseParams struct {
+	// 任务ID
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteClusterSaveBackupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteClusterSaveBackupResponseParams `json:"Response"`
+}
+
+func (r *DeleteClusterSaveBackupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteClusterSaveBackupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteParamTemplateRequestParams struct {
 	// 参数模板ID
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
@@ -5523,6 +5631,10 @@ type DescribeBackupConfigResponseParams struct {
 
 	// 自动逻辑备份配置
 	LogicBackupConfig *LogicBackupConfigInfo `json:"LogicBackupConfig,omitnil,omitempty" name:"LogicBackupConfig"`
+
+	// 二级快照备份配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapshotSecondaryBackupConfig *BackupConfigInfo `json:"SnapshotSecondaryBackupConfig,omitnil,omitempty" name:"SnapshotSecondaryBackupConfig"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -8796,6 +8908,101 @@ func (r *DescribeProxySpecsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRedoLogsRequestParams struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 每页条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// redolog文件名
+	FileNames []*string `json:"FileNames,omitnil,omitempty" name:"FileNames"`
+}
+
+type DescribeRedoLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 每页条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// redolog文件名
+	FileNames []*string `json:"FileNames,omitnil,omitempty" name:"FileNames"`
+}
+
+func (r *DescribeRedoLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedoLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "FileNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRedoLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedoLogsResponseParams struct {
+	// 总条数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// redo日志信息
+	RedoLogs []*RedoLogItem `json:"RedoLogs,omitnil,omitempty" name:"RedoLogs"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRedoLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRedoLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeRedoLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedoLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeResourcePackageDetailRequestParams struct {
 	// 资源包唯一ID
 	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
@@ -9322,6 +9529,80 @@ func (r *DescribeSSLStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSSLStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSaveBackupClustersRequestParams struct {
+	// 每页条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 检索条件
+	Filters []*QuerySimpleFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeSaveBackupClustersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每页条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 检索条件
+	Filters []*QuerySimpleFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeSaveBackupClustersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSaveBackupClustersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSaveBackupClustersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSaveBackupClustersResponseParams struct {
+	// 总条数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 遗留备份信息
+	SaveBackupClusterInfos []*SaveBackupClusterInfo `json:"SaveBackupClusterInfos,omitnil,omitempty" name:"SaveBackupClusterInfos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSaveBackupClustersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSaveBackupClustersResponseParams `json:"Response"`
+}
+
+func (r *DescribeSaveBackupClustersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSaveBackupClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11058,6 +11339,9 @@ type IsolateClusterRequestParams struct {
 
 	// 实例退还原因补充
 	IsolateReason *string `json:"IsolateReason,omitnil,omitempty" name:"IsolateReason"`
+
+	// 保留备份,true-保留（会产生费用）
+	SaveBackup *bool `json:"SaveBackup,omitnil,omitempty" name:"SaveBackup"`
 }
 
 type IsolateClusterRequest struct {
@@ -11074,6 +11358,9 @@ type IsolateClusterRequest struct {
 
 	// 实例退还原因补充
 	IsolateReason *string `json:"IsolateReason,omitnil,omitempty" name:"IsolateReason"`
+
+	// 保留备份,true-保留（会产生费用）
+	SaveBackup *bool `json:"SaveBackup,omitnil,omitempty" name:"SaveBackup"`
 }
 
 func (r *IsolateClusterRequest) ToJsonString() string {
@@ -11092,6 +11379,7 @@ func (r *IsolateClusterRequest) FromJsonString(s string) error {
 	delete(f, "DbType")
 	delete(f, "IsolateReasonTypes")
 	delete(f, "IsolateReason")
+	delete(f, "SaveBackup")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IsolateClusterRequest has unknown keys!", "")
 	}
@@ -11143,6 +11431,9 @@ type IsolateInstanceRequestParams struct {
 
 	// 实例退还原因补充
 	IsolateReason *string `json:"IsolateReason,omitnil,omitempty" name:"IsolateReason"`
+
+	// 保留备份
+	SaveBackup *bool `json:"SaveBackup,omitnil,omitempty" name:"SaveBackup"`
 }
 
 type IsolateInstanceRequest struct {
@@ -11162,6 +11453,9 @@ type IsolateInstanceRequest struct {
 
 	// 实例退还原因补充
 	IsolateReason *string `json:"IsolateReason,omitnil,omitempty" name:"IsolateReason"`
+
+	// 保留备份
+	SaveBackup *bool `json:"SaveBackup,omitnil,omitempty" name:"SaveBackup"`
 }
 
 func (r *IsolateInstanceRequest) ToJsonString() string {
@@ -11181,6 +11475,7 @@ func (r *IsolateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "DbType")
 	delete(f, "IsolateReasonTypes")
 	delete(f, "IsolateReason")
+	delete(f, "SaveBackup")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IsolateInstanceRequest has unknown keys!", "")
 	}
@@ -11769,6 +12064,9 @@ type ModifyBackupConfigRequestParams struct {
 
 	// 是否删除自动逻辑备份
 	DeleteAutoLogicBackup *bool `json:"DeleteAutoLogicBackup,omitnil,omitempty" name:"DeleteAutoLogicBackup"`
+
+	// 二级快照备份参数
+	SnapshotSecondaryBackupConfig *SnapshotBackupConfig `json:"SnapshotSecondaryBackupConfig,omitnil,omitempty" name:"SnapshotSecondaryBackupConfig"`
 }
 
 type ModifyBackupConfigRequest struct {
@@ -11797,6 +12095,9 @@ type ModifyBackupConfigRequest struct {
 
 	// 是否删除自动逻辑备份
 	DeleteAutoLogicBackup *bool `json:"DeleteAutoLogicBackup,omitnil,omitempty" name:"DeleteAutoLogicBackup"`
+
+	// 二级快照备份参数
+	SnapshotSecondaryBackupConfig *SnapshotBackupConfig `json:"SnapshotSecondaryBackupConfig,omitnil,omitempty" name:"SnapshotSecondaryBackupConfig"`
 }
 
 func (r *ModifyBackupConfigRequest) ToJsonString() string {
@@ -11819,6 +12120,7 @@ func (r *ModifyBackupConfigRequest) FromJsonString(s string) error {
 	delete(f, "BackupType")
 	delete(f, "LogicBackupConfig")
 	delete(f, "DeleteAutoLogicBackup")
+	delete(f, "SnapshotSecondaryBackupConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupConfigRequest has unknown keys!", "")
 	}
@@ -13934,6 +14236,77 @@ func (r *ModifyServerlessStrategyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifySnapBackupCrossRegionConfigRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 是否开启跨地域快照备份ON/OFF
+	CrossRegionsEnable *string `json:"CrossRegionsEnable,omitnil,omitempty" name:"CrossRegionsEnable"`
+
+	// 快照备份所跨地域
+	CrossRegions []*string `json:"CrossRegions,omitnil,omitempty" name:"CrossRegions"`
+}
+
+type ModifySnapBackupCrossRegionConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 是否开启跨地域快照备份ON/OFF
+	CrossRegionsEnable *string `json:"CrossRegionsEnable,omitnil,omitempty" name:"CrossRegionsEnable"`
+
+	// 快照备份所跨地域
+	CrossRegions []*string `json:"CrossRegions,omitnil,omitempty" name:"CrossRegions"`
+}
+
+func (r *ModifySnapBackupCrossRegionConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySnapBackupCrossRegionConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "CrossRegionsEnable")
+	delete(f, "CrossRegions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySnapBackupCrossRegionConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySnapBackupCrossRegionConfigResponseParams struct {
+	// 任务id
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifySnapBackupCrossRegionConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySnapBackupCrossRegionConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifySnapBackupCrossRegionConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySnapBackupCrossRegionConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyVipVportRequestParams struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -15449,6 +15822,43 @@ type QueryParamFilter struct {
 	ExactMatch *bool `json:"ExactMatch,omitnil,omitempty" name:"ExactMatch"`
 }
 
+type QuerySimpleFilter struct {
+	// 字段名称
+	Names []*string `json:"Names,omitnil,omitempty" name:"Names"`
+
+	// 字段值
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+
+	// 模糊匹配，true-是，false否
+	ExactMatch *bool `json:"ExactMatch,omitnil,omitempty" name:"ExactMatch"`
+}
+
+type RedoLogItem struct {
+	// 文件名
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 文件大小
+	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+
+	// 备份时间
+	BackupTime *string `json:"BackupTime,omitnil,omitempty" name:"BackupTime"`
+
+	// redoLogId
+	RedoLogId *int64 `json:"RedoLogId,omitnil,omitempty" name:"RedoLogId"`
+
+	// 跨地域信息
+	RedoCrossRegions []*BackupRegionAndIds `json:"RedoCrossRegions,omitnil,omitempty" name:"RedoCrossRegions"`
+
+	// 状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 完成时间
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+}
+
 // Predefined struct for user
 type RefundResourcePackageRequestParams struct {
 	// 资源包唯一ID
@@ -16473,6 +16883,9 @@ type RollbackToNewClusterRequestParams struct {
 
 	// 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
 	AutoArchive *string `json:"AutoArchive,omitnil,omitempty" name:"AutoArchive"`
+
+	// 是否从保存备份中恢复
+	FromSaveBackup *bool `json:"FromSaveBackup,omitnil,omitempty" name:"FromSaveBackup"`
 }
 
 type RollbackToNewClusterRequest struct {
@@ -16570,6 +16983,9 @@ type RollbackToNewClusterRequest struct {
 
 	// 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
 	AutoArchive *string `json:"AutoArchive,omitnil,omitempty" name:"AutoArchive"`
+
+	// 是否从保存备份中恢复
+	FromSaveBackup *bool `json:"FromSaveBackup,omitnil,omitempty" name:"FromSaveBackup"`
 }
 
 func (r *RollbackToNewClusterRequest) ToJsonString() string {
@@ -16612,6 +17028,7 @@ func (r *RollbackToNewClusterRequest) FromJsonString(s string) error {
 	delete(f, "OriginalROInstanceList")
 	delete(f, "ProjectId")
 	delete(f, "AutoArchive")
+	delete(f, "FromSaveBackup")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollbackToNewClusterRequest has unknown keys!", "")
 	}
@@ -16761,6 +17178,38 @@ type SaleZone struct {
 
 	// 当前可用区是否允许新购集群，1:允许，0:不允许
 	IsSupportCreateCluster *int64 `json:"IsSupportCreateCluster,omitnil,omitempty" name:"IsSupportCreateCluster"`
+}
+
+type SaveBackupClusterInfo struct {
+	// 遗照备份id
+	BackupId *int64 `json:"BackupId,omitnil,omitempty" name:"BackupId"`
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 备份时间
+	BackupTime *string `json:"BackupTime,omitnil,omitempty" name:"BackupTime"`
+
+	// 数据库版本
+	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
+
+	// Db类型(NORMAL, SERVERLESS)
+	DbMode *string `json:"DbMode,omitnil,omitempty" name:"DbMode"`
+
+	// 集群状态
+	ClusterStatus *string `json:"ClusterStatus,omitnil,omitempty" name:"ClusterStatus"`
+
+	// 任务列表
+	Tasks []*ObjectTask `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 }
 
 // Predefined struct for user
@@ -17131,6 +17580,29 @@ type SlowQueriesItem struct {
 	// 事务提交延迟（微秒）
 	// 数据库内核版本大于3.1.12
 	TrxCommitDelay *int64 `json:"TrxCommitDelay,omitnil,omitempty" name:"TrxCommitDelay"`
+}
+
+type SnapshotBackupConfig struct {
+	// 系统自动时间
+	BackupCustomAutoTime *bool `json:"BackupCustomAutoTime,omitnil,omitempty" name:"BackupCustomAutoTime"`
+
+	// 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+	BackupTimeBeg *uint64 `json:"BackupTimeBeg,omitnil,omitempty" name:"BackupTimeBeg"`
+
+	// 表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+	BackupTimeEnd *uint64 `json:"BackupTimeEnd,omitnil,omitempty" name:"BackupTimeEnd"`
+
+	// 该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周日到周六的备份方式，full-全量备份，increment-增量备份
+	BackupWeekDays []*string `json:"BackupWeekDays,omitnil,omitempty" name:"BackupWeekDays"`
+
+	// 间隔时间
+	BackupIntervalTime *int64 `json:"BackupIntervalTime,omitnil,omitempty" name:"BackupIntervalTime"`
+
+	// 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600247=604800，最大为158112000
+	ReserveDuration *uint64 `json:"ReserveDuration,omitnil,omitempty" name:"ReserveDuration"`
+
+	// 动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
+	BackupTriggerStrategy *string `json:"BackupTriggerStrategy,omitnil,omitempty" name:"BackupTriggerStrategy"`
 }
 
 // Predefined struct for user

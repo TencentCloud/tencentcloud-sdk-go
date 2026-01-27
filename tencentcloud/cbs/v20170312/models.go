@@ -533,6 +533,74 @@ type CdcSize struct {
 }
 
 // Predefined struct for user
+type CopyAutoSnapshotPolicyCrossAccountRequestParams struct {
+	// 要备份的定期快照策略ID列表
+	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitnil,omitempty" name:"AutoSnapshotPolicyIds"`
+
+	// 目标账户uin
+	TargetAccountUin *string `json:"TargetAccountUin,omitnil,omitempty" name:"TargetAccountUin"`
+}
+
+type CopyAutoSnapshotPolicyCrossAccountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要备份的定期快照策略ID列表
+	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitnil,omitempty" name:"AutoSnapshotPolicyIds"`
+
+	// 目标账户uin
+	TargetAccountUin *string `json:"TargetAccountUin,omitnil,omitempty" name:"TargetAccountUin"`
+}
+
+func (r *CopyAutoSnapshotPolicyCrossAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CopyAutoSnapshotPolicyCrossAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AutoSnapshotPolicyIds")
+	delete(f, "TargetAccountUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CopyAutoSnapshotPolicyCrossAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CopyAutoSnapshotPolicyCrossAccountResponseParams struct {
+	// 已备份的定期快照策略ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitnil,omitempty" name:"AutoSnapshotPolicyIds"`
+
+	// 目标账户uin
+	TargetAccountUin *string `json:"TargetAccountUin,omitnil,omitempty" name:"TargetAccountUin"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CopyAutoSnapshotPolicyCrossAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *CopyAutoSnapshotPolicyCrossAccountResponseParams `json:"Response"`
+}
+
+func (r *CopyAutoSnapshotPolicyCrossAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CopyAutoSnapshotPolicyCrossAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CopySnapshotCrossRegionsRequestParams struct {
 	// 快照需要复制到的目标地域，各地域的标准取值可通过接口[DescribeRegions](https://cloud.tencent.com/document/product/213/9456)查询，且只能传入支持快照的地域。
 	DestinationRegions []*string `json:"DestinationRegions,omitnil,omitempty" name:"DestinationRegions"`

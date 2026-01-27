@@ -17159,10 +17159,10 @@ type InstanceUpgradeProgressItem struct {
 }
 
 type KMSConfiguration struct {
-	// kms id，可以在密钥管理控制台获取
+	// 自定义密钥,当不指定KeyId时，采用默认生成密钥（TKE-KMS）
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
 
-	// kms 地域
+	// 默认生成密钥或自定义密钥地域信息
 	KmsRegion *string `json:"KmsRegion,omitnil,omitempty" name:"KmsRegion"`
 }
 

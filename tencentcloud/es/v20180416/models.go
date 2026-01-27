@@ -247,6 +247,110 @@ type ClusterView struct {
 	SearchableSnapshotCosAppId *string `json:"SearchableSnapshotCosAppId,omitnil,omitempty" name:"SearchableSnapshotCosAppId"`
 }
 
+type CollectorConfigInfo struct {
+	// 采集器的主配置文件名，如filebeat.yml，metricbeat.yml等
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 采集器的主配置文件内容
+	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
+}
+
+type CollectorOutputInstance struct {
+	// 采集器输出的实例类型（支持elasticsearch、logstash）
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 采集器输出的实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 采集器输出到的ES实例的用户名
+	ESUserName *string `json:"ESUserName,omitnil,omitempty" name:"ESUserName"`
+
+	// 采集器输出到的ES实例的密码
+	ESUserPasswd *string `json:"ESUserPasswd,omitnil,omitempty" name:"ESUserPasswd"`
+
+	// 采集器输出到ES实例时，是否开启监控（1为开启，0为不开启，默认为0）
+	EnableMonitoring *int64 `json:"EnableMonitoring,omitnil,omitempty" name:"EnableMonitoring"`
+
+	// 采集器输出到ES实例时，是否开启自动在kibana中生成Dashboard（1为开启，0为不开启，默认为0）
+	EnableDashboard *int64 `json:"EnableDashboard,omitnil,omitempty" name:"EnableDashboard"`
+
+	// Ckafka实例的vip
+	KafkaEndpoint *string `json:"KafkaEndpoint,omitnil,omitempty" name:"KafkaEndpoint"`
+
+	// Ckafka实例中的Topic
+	KafkaTopic *string `json:"KafkaTopic,omitnil,omitempty" name:"KafkaTopic"`
+
+	// Ckafka实例的版本号
+	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
+
+	// topic id
+	SesTopicId *string `json:"SesTopicId,omitnil,omitempty" name:"SesTopicId"`
+
+	// topic name
+	SesTopicName *string `json:"SesTopicName,omitnil,omitempty" name:"SesTopicName"`
+
+	// topic address
+	SesTopicAddress *string `json:"SesTopicAddress,omitnil,omitempty" name:"SesTopicAddress"`
+
+	// /
+	SesTopicUserName *string `json:"SesTopicUserName,omitnil,omitempty" name:"SesTopicUserName"`
+
+	// /
+	SesTopicPasswd *string `json:"SesTopicPasswd,omitnil,omitempty" name:"SesTopicPasswd"`
+
+	// /
+	LogstashListenPort *uint64 `json:"LogstashListenPort,omitnil,omitempty" name:"LogstashListenPort"`
+}
+
+type CollectorTarget struct {
+	// 采集配置名称
+	TargetName *string `json:"TargetName,omitnil,omitempty" name:"TargetName"`
+
+	// 命名空间列表，包括Include包含和Exclude不包含选项，两者都为空时等同于全部命名空间(包含当前所有的以及未来创建的)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespaces *Namespaces `json:"Namespaces,omitnil,omitempty" name:"Namespaces"`
+
+	// Pod标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodLabels []*PodLabel `json:"PodLabels,omitnil,omitempty" name:"PodLabels"`
+
+	// 容器名称，支持小写字母、数字、连接符-、下划线_，最多支持63个字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerName *string `json:"ContainerName,omitnil,omitempty" name:"ContainerName"`
+
+	// ES索引名称前缀，如果当前采集配置下的容器日志输出到ES集群，则使用该字段作为ES索引名称的前缀，支持大小写字母、数字、连接符-、下划线_，最多支持50个字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexPrefix *string `json:"IndexPrefix,omitnil,omitempty" name:"IndexPrefix"`
+
+	// 日志内容过滤，以逗号分隔，支持大小写字母、数字、连接符-、下划线_以及逗号，最多支持50个字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogFilters *string `json:"LogFilters,omitnil,omitempty" name:"LogFilters"`
+
+	// 高级配置，可自定义采集规则，最多支持2048个字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigContent *string `json:"ConfigContent,omitnil,omitempty" name:"ConfigContent"`
+
+	// Ckafka实例的Topic
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaTopic *string `json:"KafkaTopic,omitnil,omitempty" name:"KafkaTopic"`
+
+	// ES索引名称，如果当前采集配置下的容器日志输出到ES集群，则使用该字段作为ES索引名称，支持大小写字母、数字、连接符-、下划线_，最多支持50个字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexAlias *string `json:"IndexAlias,omitnil,omitempty" name:"IndexAlias"`
+
+	// /
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputType *string `json:"InputType,omitnil,omitempty" name:"InputType"`
+
+	// 日志采集host路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputPath *string `json:"InputPath,omitnil,omitempty" name:"InputPath"`
+
+	// inputs.tail_files
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputsTailFiles *bool `json:"InputsTailFiles,omitnil,omitempty" name:"InputsTailFiles"`
+}
+
 type CommonIndexInfo struct {
 	// 普通索引名
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -529,6 +633,126 @@ func (r *CreateClusterSnapshotResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateClusterSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCollectorRequestParams struct {
+	// 采集器名称（1-50 个英文、汉字、数字、连接线-或下划线_）
+	CollectorName *string `json:"CollectorName,omitnil,omitempty" name:"CollectorName"`
+
+	// 采集器版本（支持"6.8.15"、"7.10.2"）
+	CollectorVersion *string `json:"CollectorVersion,omitnil,omitempty" name:"CollectorVersion"`
+
+	// 采集器类型（支持filebeat、metricbeat、heartbeat、auditbeat、packetbeat）
+	CollectorType *string `json:"CollectorType,omitnil,omitempty" name:"CollectorType"`
+
+	// 采集器输出的ES实例信息
+	OutputInstance *CollectorOutputInstance `json:"OutputInstance,omitnil,omitempty" name:"OutputInstance"`
+
+	// 采集器配置
+	CollectorConfigs []*CollectorConfigInfo `json:"CollectorConfigs,omitnil,omitempty" name:"CollectorConfigs"`
+
+	// 采集器下发的CVM实例ID列表
+	CVMInstanceIds []*string `json:"CVMInstanceIds,omitnil,omitempty" name:"CVMInstanceIds"`
+
+	// 采集目标类型，CVM或者TKE
+	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
+
+	// 容器集群ID，采集目标为TKE时必填
+	ContainerClusterId *string `json:"ContainerClusterId,omitnil,omitempty" name:"ContainerClusterId"`
+
+	// 采集器配置，采集目标为TKE时必填
+	CollectorTargets []*CollectorTarget `json:"CollectorTargets,omitnil,omitempty" name:"CollectorTargets"`
+
+	// 标签信息
+	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
+}
+
+type CreateCollectorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 采集器名称（1-50 个英文、汉字、数字、连接线-或下划线_）
+	CollectorName *string `json:"CollectorName,omitnil,omitempty" name:"CollectorName"`
+
+	// 采集器版本（支持"6.8.15"、"7.10.2"）
+	CollectorVersion *string `json:"CollectorVersion,omitnil,omitempty" name:"CollectorVersion"`
+
+	// 采集器类型（支持filebeat、metricbeat、heartbeat、auditbeat、packetbeat）
+	CollectorType *string `json:"CollectorType,omitnil,omitempty" name:"CollectorType"`
+
+	// 采集器输出的ES实例信息
+	OutputInstance *CollectorOutputInstance `json:"OutputInstance,omitnil,omitempty" name:"OutputInstance"`
+
+	// 采集器配置
+	CollectorConfigs []*CollectorConfigInfo `json:"CollectorConfigs,omitnil,omitempty" name:"CollectorConfigs"`
+
+	// 采集器下发的CVM实例ID列表
+	CVMInstanceIds []*string `json:"CVMInstanceIds,omitnil,omitempty" name:"CVMInstanceIds"`
+
+	// 采集目标类型，CVM或者TKE
+	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
+
+	// 容器集群ID，采集目标为TKE时必填
+	ContainerClusterId *string `json:"ContainerClusterId,omitnil,omitempty" name:"ContainerClusterId"`
+
+	// 采集器配置，采集目标为TKE时必填
+	CollectorTargets []*CollectorTarget `json:"CollectorTargets,omitnil,omitempty" name:"CollectorTargets"`
+
+	// 标签信息
+	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
+}
+
+func (r *CreateCollectorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCollectorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CollectorName")
+	delete(f, "CollectorVersion")
+	delete(f, "CollectorType")
+	delete(f, "OutputInstance")
+	delete(f, "CollectorConfigs")
+	delete(f, "CVMInstanceIds")
+	delete(f, "TargetType")
+	delete(f, "ContainerClusterId")
+	delete(f, "CollectorTargets")
+	delete(f, "TagList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCollectorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCollectorResponseParams struct {
+	// 采集器ID
+	CollectorId *string `json:"CollectorId,omitnil,omitempty" name:"CollectorId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCollectorResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCollectorResponseParams `json:"Response"`
+}
+
+func (r *CreateCollectorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCollectorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6058,6 +6282,14 @@ func (r *ModifyEsVipSecurityGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Namespaces struct {
+	// 包含的命名空间的列表，单个命名空间支持小写字母、数字、连接符-、下划线_，最多支持63个字符
+	Include []*string `json:"Include,omitnil,omitempty" name:"Include"`
+
+	// 不包含的命名空间列表，单个命名空间支持小写字母、数字、连接符-、下划线_，最多支持63个字符
+	Exclude []*string `json:"Exclude,omitnil,omitempty" name:"Exclude"`
+}
+
 type NodeInfo struct {
 	// 节点数量
 	NodeNum *uint64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
@@ -6290,6 +6522,14 @@ type OutboundPublicAcl struct {
 	// 允许节点出站访问的白名单
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WhiteHostList []*string `json:"WhiteHostList,omitnil,omitempty" name:"WhiteHostList"`
+}
+
+type PodLabel struct {
+	// 标签键，支持大小写字母、数字、以及-_./，最多支持63个字符
+	LabelKey *string `json:"LabelKey,omitnil,omitempty" name:"LabelKey"`
+
+	// 标签值，支持大小写字母、数字、以及-_./，最多支持63个字符
+	LabelValue *string `json:"LabelValue,omitnil,omitempty" name:"LabelValue"`
 }
 
 type ProcessDetail struct {

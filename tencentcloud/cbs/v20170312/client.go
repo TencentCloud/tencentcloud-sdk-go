@@ -479,6 +479,78 @@ func (c *Client) BindAutoSnapshotPolicyWithContext(ctx context.Context, request 
     return
 }
 
+func NewCopyAutoSnapshotPolicyCrossAccountRequest() (request *CopyAutoSnapshotPolicyCrossAccountRequest) {
+    request = &CopyAutoSnapshotPolicyCrossAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "CopyAutoSnapshotPolicyCrossAccount")
+    
+    
+    return
+}
+
+func NewCopyAutoSnapshotPolicyCrossAccountResponse() (response *CopyAutoSnapshotPolicyCrossAccountResponse) {
+    response = &CopyAutoSnapshotPolicyCrossAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CopyAutoSnapshotPolicyCrossAccount
+// 针对白名单内用户实现自动快照策略的跨账号复制功能
+//
+// 可能返回的错误码:
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INTERNALERROR_FAILQUERYRESOURCE = "InternalError.FailQueryResource"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDAUTOSNAPSHOTPOLICYID_NOTFOUND = "InvalidAutoSnapshotPolicyId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDACTION = "InvalidParameterValue.InvalidAction"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEBUSY = "ResourceBusy"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_OVERQUOTA = "ResourceInsufficient.OverQuota"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHFAILURE = "UnauthorizedOperation.AuthFailure"
+func (c *Client) CopyAutoSnapshotPolicyCrossAccount(request *CopyAutoSnapshotPolicyCrossAccountRequest) (response *CopyAutoSnapshotPolicyCrossAccountResponse, err error) {
+    return c.CopyAutoSnapshotPolicyCrossAccountWithContext(context.Background(), request)
+}
+
+// CopyAutoSnapshotPolicyCrossAccount
+// 针对白名单内用户实现自动快照策略的跨账号复制功能
+//
+// 可能返回的错误码:
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INTERNALERROR_FAILQUERYRESOURCE = "InternalError.FailQueryResource"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDAUTOSNAPSHOTPOLICYID_NOTFOUND = "InvalidAutoSnapshotPolicyId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDACTION = "InvalidParameterValue.InvalidAction"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEBUSY = "ResourceBusy"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_OVERQUOTA = "ResourceInsufficient.OverQuota"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHFAILURE = "UnauthorizedOperation.AuthFailure"
+func (c *Client) CopyAutoSnapshotPolicyCrossAccountWithContext(ctx context.Context, request *CopyAutoSnapshotPolicyCrossAccountRequest) (response *CopyAutoSnapshotPolicyCrossAccountResponse, err error) {
+    if request == nil {
+        request = NewCopyAutoSnapshotPolicyCrossAccountRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "CopyAutoSnapshotPolicyCrossAccount")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CopyAutoSnapshotPolicyCrossAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCopyAutoSnapshotPolicyCrossAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCopySnapshotCrossRegionsRequest() (request *CopySnapshotCrossRegionsRequest) {
     request = &CopySnapshotCrossRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},

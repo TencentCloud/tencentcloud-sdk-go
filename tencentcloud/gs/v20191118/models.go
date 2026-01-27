@@ -3872,6 +3872,9 @@ type InstallAndroidInstancesAppWithURLRequestParams struct {
 
 	// 安卓应用下载 URL
 	AndroidAppURL *string `json:"AndroidAppURL,omitnil,omitempty" name:"AndroidAppURL"`
+
+	// 安卓应用MD5码值（32位小写十六进制字符串）
+	AndroidAppMD5 *string `json:"AndroidAppMD5,omitnil,omitempty" name:"AndroidAppMD5"`
 }
 
 type InstallAndroidInstancesAppWithURLRequest struct {
@@ -3882,6 +3885,9 @@ type InstallAndroidInstancesAppWithURLRequest struct {
 
 	// 安卓应用下载 URL
 	AndroidAppURL *string `json:"AndroidAppURL,omitnil,omitempty" name:"AndroidAppURL"`
+
+	// 安卓应用MD5码值（32位小写十六进制字符串）
+	AndroidAppMD5 *string `json:"AndroidAppMD5,omitnil,omitempty" name:"AndroidAppMD5"`
 }
 
 func (r *InstallAndroidInstancesAppWithURLRequest) ToJsonString() string {
@@ -3898,6 +3904,7 @@ func (r *InstallAndroidInstancesAppWithURLRequest) FromJsonString(s string) erro
 	}
 	delete(f, "AndroidInstanceIds")
 	delete(f, "AndroidAppURL")
+	delete(f, "AndroidAppMD5")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InstallAndroidInstancesAppWithURLRequest has unknown keys!", "")
 	}

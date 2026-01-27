@@ -104,6 +104,9 @@ const (
 	// 标签绑定云盘超过限制。
 	INVALIDPARAMETERVALUE_BINDDISKLIMITEXCEEDED = "InvalidParameterValue.BindDiskLimitExceeded"
 
+	// 请求接口不存在。
+	INVALIDPARAMETERVALUE_INVALIDACTION = "InvalidParameterValue.InvalidAction"
+
 	// 参数值数量超过限制。
 	INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 
@@ -202,6 +205,9 @@ const (
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+
+	// 鉴权错误。
+	UNAUTHORIZEDOPERATION_AUTHFAILURE = "UnauthorizedOperation.AuthFailure"
 
 	// CAM鉴权Token不可用。
 	UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"

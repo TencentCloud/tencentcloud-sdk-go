@@ -65,6 +65,10 @@ func NewAddAndPublishNetworkFirewallPolicyDetailResponse() (response *AddAndPubl
 }
 
 // AddAndPublishNetworkFirewallPolicyDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建网络策略添加并发布任务
 //
 // 可能返回的错误码:
@@ -80,6 +84,10 @@ func (c *Client) AddAndPublishNetworkFirewallPolicyDetail(request *AddAndPublish
 }
 
 // AddAndPublishNetworkFirewallPolicyDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建网络策略添加并发布任务
 //
 // 可能返回的错误码:
@@ -127,6 +135,10 @@ func NewAddAndPublishNetworkFirewallPolicyYamlDetailResponse() (response *AddAnd
 }
 
 // AddAndPublishNetworkFirewallPolicyYamlDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建Yaml网络策略并发布任务
 //
 // 可能返回的错误码:
@@ -142,6 +154,10 @@ func (c *Client) AddAndPublishNetworkFirewallPolicyYamlDetail(request *AddAndPub
 }
 
 // AddAndPublishNetworkFirewallPolicyYamlDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建Yaml网络策略并发布任务
 //
 // 可能返回的错误码:
@@ -1011,6 +1027,10 @@ func NewAddNetworkFirewallPolicyDetailResponse() (response *AddNetworkFirewallPo
 }
 
 // AddNetworkFirewallPolicyDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建网络策略添加任务
 //
 // 可能返回的错误码:
@@ -1026,6 +1046,10 @@ func (c *Client) AddNetworkFirewallPolicyDetail(request *AddNetworkFirewallPolic
 }
 
 // AddNetworkFirewallPolicyDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建网络策略添加任务
 //
 // 可能返回的错误码:
@@ -1073,6 +1097,10 @@ func NewAddNetworkFirewallPolicyYamlDetailResponse() (response *AddNetworkFirewa
 }
 
 // AddNetworkFirewallPolicyYamlDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建Yaml网络策略添加任务
 //
 // 可能返回的错误码:
@@ -1088,6 +1116,10 @@ func (c *Client) AddNetworkFirewallPolicyYamlDetail(request *AddNetworkFirewallP
 }
 
 // AddNetworkFirewallPolicyYamlDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建Yaml网络策略添加任务
 //
 // 可能返回的错误码:
@@ -1135,6 +1167,10 @@ func NewCheckNetworkFirewallPolicyYamlResponse() (response *CheckNetworkFirewall
 }
 
 // CheckNetworkFirewallPolicyYaml
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建检查Yaml网络策略任务
 //
 // 可能返回的错误码:
@@ -1150,6 +1186,10 @@ func (c *Client) CheckNetworkFirewallPolicyYaml(request *CheckNetworkFirewallPol
 }
 
 // CheckNetworkFirewallPolicyYaml
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建检查Yaml网络策略任务
 //
 // 可能返回的错误码:
@@ -1263,6 +1303,10 @@ func NewConfirmNetworkFirewallPolicyResponse() (response *ConfirmNetworkFirewall
 }
 
 // ConfirmNetworkFirewallPolicy
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建网络策略确认任务
 //
 // 可能返回的错误码:
@@ -1278,6 +1322,10 @@ func (c *Client) ConfirmNetworkFirewallPolicy(request *ConfirmNetworkFirewallPol
 }
 
 // ConfirmNetworkFirewallPolicy
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建网络策略确认任务
 //
 // 可能返回的错误码:
@@ -2635,6 +2683,10 @@ func NewCreateNetworkFirewallClusterRefreshResponse() (response *CreateNetworkFi
 }
 
 // CreateNetworkFirewallClusterRefresh
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络集群下发刷新任务
 //
 // 可能返回的错误码:
@@ -2650,6 +2702,10 @@ func (c *Client) CreateNetworkFirewallClusterRefresh(request *CreateNetworkFirew
 }
 
 // CreateNetworkFirewallClusterRefresh
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络集群下发刷新任务
 //
 // 可能返回的错误码:
@@ -2697,6 +2753,10 @@ func NewCreateNetworkFirewallPolicyDiscoverResponse() (response *CreateNetworkFi
 }
 
 // CreateNetworkFirewallPolicyDiscover
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络集群网络策略创建自动发现任务
 //
 // 可能返回的错误码:
@@ -2712,6 +2772,10 @@ func (c *Client) CreateNetworkFirewallPolicyDiscover(request *CreateNetworkFirew
 }
 
 // CreateNetworkFirewallPolicyDiscover
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络集群网络策略创建自动发现任务
 //
 // 可能返回的错误码:
@@ -2759,6 +2823,10 @@ func NewCreateNetworkFirewallPublishResponse() (response *CreateNetworkFirewallP
 }
 
 // CreateNetworkFirewallPublish
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建网络策略发布任务
 //
 // 可能返回的错误码:
@@ -2774,6 +2842,10 @@ func (c *Client) CreateNetworkFirewallPublish(request *CreateNetworkFirewallPubl
 }
 
 // CreateNetworkFirewallPublish
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建网络策略发布任务
 //
 // 可能返回的错误码:
@@ -2821,6 +2893,10 @@ func NewCreateNetworkFirewallUndoPublishResponse() (response *CreateNetworkFirew
 }
 
 // CreateNetworkFirewallUndoPublish
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建网络策略撤销任务
 //
 // 可能返回的错误码:
@@ -2836,6 +2912,10 @@ func (c *Client) CreateNetworkFirewallUndoPublish(request *CreateNetworkFirewall
 }
 
 // CreateNetworkFirewallUndoPublish
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建网络策略撤销任务
 //
 // 可能返回的错误码:
@@ -4423,6 +4503,10 @@ func NewDeleteNetworkFirewallPolicyDetailResponse() (response *DeleteNetworkFire
 }
 
 // DeleteNetworkFirewallPolicyDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建网络策略删除任务
 //
 // 可能返回的错误码:
@@ -4438,6 +4522,10 @@ func (c *Client) DeleteNetworkFirewallPolicyDetail(request *DeleteNetworkFirewal
 }
 
 // DeleteNetworkFirewallPolicyDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建网络策略删除任务
 //
 // 可能返回的错误码:
@@ -11183,6 +11271,10 @@ func NewDescribeNetworkFirewallAuditRecordResponse() (response *DescribeNetworkF
 }
 
 // DescribeNetworkFirewallAuditRecord
+// 功能已下线待三合一重构
+//
+// 
+//
 // 查询集群策略审计列表
 //
 // 可能返回的错误码:
@@ -11198,6 +11290,10 @@ func (c *Client) DescribeNetworkFirewallAuditRecord(request *DescribeNetworkFire
 }
 
 // DescribeNetworkFirewallAuditRecord
+// 功能已下线待三合一重构
+//
+// 
+//
 // 查询集群策略审计列表
 //
 // 可能返回的错误码:
@@ -11245,6 +11341,10 @@ func NewDescribeNetworkFirewallClusterListResponse() (response *DescribeNetworkF
 }
 
 // DescribeNetworkFirewallClusterList
+// 功能已下线待三合一重构
+//
+// 
+//
 // 查询集群策略列表
 //
 // 可能返回的错误码:
@@ -11260,6 +11360,10 @@ func (c *Client) DescribeNetworkFirewallClusterList(request *DescribeNetworkFire
 }
 
 // DescribeNetworkFirewallClusterList
+// 功能已下线待三合一重构
+//
+// 
+//
 // 查询集群策略列表
 //
 // 可能返回的错误码:
@@ -11307,6 +11411,10 @@ func NewDescribeNetworkFirewallClusterRefreshStatusResponse() (response *Describ
 }
 
 // DescribeNetworkFirewallClusterRefreshStatus
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络查询资产任务进度
 //
 // 可能返回的错误码:
@@ -11322,6 +11430,10 @@ func (c *Client) DescribeNetworkFirewallClusterRefreshStatus(request *DescribeNe
 }
 
 // DescribeNetworkFirewallClusterRefreshStatus
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络查询资产任务进度
 //
 // 可能返回的错误码:
@@ -11369,6 +11481,10 @@ func NewDescribeNetworkFirewallNamespaceLabelListResponse() (response *DescribeN
 }
 
 // DescribeNetworkFirewallNamespaceLabelList
+// 功能已下线待三合一重构
+//
+// 
+//
 // 查询集群网络空间标签列表
 //
 // 可能返回的错误码:
@@ -11384,6 +11500,10 @@ func (c *Client) DescribeNetworkFirewallNamespaceLabelList(request *DescribeNetw
 }
 
 // DescribeNetworkFirewallNamespaceLabelList
+// 功能已下线待三合一重构
+//
+// 
+//
 // 查询集群网络空间标签列表
 //
 // 可能返回的错误码:
@@ -11431,6 +11551,10 @@ func NewDescribeNetworkFirewallNamespaceListResponse() (response *DescribeNetwor
 }
 
 // DescribeNetworkFirewallNamespaceList
+// 功能已下线待三合一重构
+//
+// 
+//
 // 查询集群网络空间列表
 //
 // 可能返回的错误码:
@@ -11446,6 +11570,10 @@ func (c *Client) DescribeNetworkFirewallNamespaceList(request *DescribeNetworkFi
 }
 
 // DescribeNetworkFirewallNamespaceList
+// 功能已下线待三合一重构
+//
+// 
+//
 // 查询集群网络空间列表
 //
 // 可能返回的错误码:
@@ -11493,6 +11621,10 @@ func NewDescribeNetworkFirewallPodLabelsListResponse() (response *DescribeNetwor
 }
 
 // DescribeNetworkFirewallPodLabelsList
+// 功能已下线待三合一重构
+//
+// 
+//
 // 查询集群网络pod标签
 //
 // 可能返回的错误码:
@@ -11508,6 +11640,10 @@ func (c *Client) DescribeNetworkFirewallPodLabelsList(request *DescribeNetworkFi
 }
 
 // DescribeNetworkFirewallPodLabelsList
+// 功能已下线待三合一重构
+//
+// 
+//
 // 查询集群网络pod标签
 //
 // 可能返回的错误码:
@@ -11555,6 +11691,10 @@ func NewDescribeNetworkFirewallPolicyDetailResponse() (response *DescribeNetwork
 }
 
 // DescribeNetworkFirewallPolicyDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络集群查看策略详情
 //
 // 可能返回的错误码:
@@ -11570,6 +11710,10 @@ func (c *Client) DescribeNetworkFirewallPolicyDetail(request *DescribeNetworkFir
 }
 
 // DescribeNetworkFirewallPolicyDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络集群查看策略详情
 //
 // 可能返回的错误码:
@@ -11617,6 +11761,10 @@ func NewDescribeNetworkFirewallPolicyDiscoverResponse() (response *DescribeNetwo
 }
 
 // DescribeNetworkFirewallPolicyDiscover
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络查询网络策略自动发现任务进度
 //
 // 可能返回的错误码:
@@ -11632,6 +11780,10 @@ func (c *Client) DescribeNetworkFirewallPolicyDiscover(request *DescribeNetworkF
 }
 
 // DescribeNetworkFirewallPolicyDiscover
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络查询网络策略自动发现任务进度
 //
 // 可能返回的错误码:
@@ -11679,6 +11831,10 @@ func NewDescribeNetworkFirewallPolicyListResponse() (response *DescribeNetworkFi
 }
 
 // DescribeNetworkFirewallPolicyList
+// 功能已下线待三合一重构
+//
+// 
+//
 // 查询集群网络策略列表
 //
 // 可能返回的错误码:
@@ -11694,6 +11850,10 @@ func (c *Client) DescribeNetworkFirewallPolicyList(request *DescribeNetworkFirew
 }
 
 // DescribeNetworkFirewallPolicyList
+// 功能已下线待三合一重构
+//
+// 
+//
 // 查询集群网络策略列表
 //
 // 可能返回的错误码:
@@ -11741,6 +11901,10 @@ func NewDescribeNetworkFirewallPolicyStatusResponse() (response *DescribeNetwork
 }
 
 // DescribeNetworkFirewallPolicyStatus
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络查询网络策略策略执行状态
 //
 // 可能返回的错误码:
@@ -11756,6 +11920,10 @@ func (c *Client) DescribeNetworkFirewallPolicyStatus(request *DescribeNetworkFir
 }
 
 // DescribeNetworkFirewallPolicyStatus
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络查询网络策略策略执行状态
 //
 // 可能返回的错误码:
@@ -11803,6 +11971,10 @@ func NewDescribeNetworkFirewallPolicyYamlDetailResponse() (response *DescribeNet
 }
 
 // DescribeNetworkFirewallPolicyYamlDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络集群查看Yaml网络策略详情
 //
 // 可能返回的错误码:
@@ -11818,6 +11990,10 @@ func (c *Client) DescribeNetworkFirewallPolicyYamlDetail(request *DescribeNetwor
 }
 
 // DescribeNetworkFirewallPolicyYamlDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络集群查看Yaml网络策略详情
 //
 // 可能返回的错误码:
@@ -20023,6 +20199,10 @@ func NewUpdateAndPublishNetworkFirewallPolicyDetailResponse() (response *UpdateA
 }
 
 // UpdateAndPublishNetworkFirewallPolicyDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建网络策略更新并发布任务
 //
 // 可能返回的错误码:
@@ -20038,6 +20218,10 @@ func (c *Client) UpdateAndPublishNetworkFirewallPolicyDetail(request *UpdateAndP
 }
 
 // UpdateAndPublishNetworkFirewallPolicyDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建网络策略更新并发布任务
 //
 // 可能返回的错误码:
@@ -20085,6 +20269,10 @@ func NewUpdateAndPublishNetworkFirewallPolicyYamlDetailResponse() (response *Upd
 }
 
 // UpdateAndPublishNetworkFirewallPolicyYamlDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络更新Yaml网络策略并发布任务
 //
 // 可能返回的错误码:
@@ -20100,6 +20288,10 @@ func (c *Client) UpdateAndPublishNetworkFirewallPolicyYamlDetail(request *Update
 }
 
 // UpdateAndPublishNetworkFirewallPolicyYamlDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络更新Yaml网络策略并发布任务
 //
 // 可能返回的错误码:
@@ -20265,6 +20457,10 @@ func NewUpdateNetworkFirewallPolicyDetailResponse() (response *UpdateNetworkFire
 }
 
 // UpdateNetworkFirewallPolicyDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建网络策略更新任务
 //
 // 可能返回的错误码:
@@ -20280,6 +20476,10 @@ func (c *Client) UpdateNetworkFirewallPolicyDetail(request *UpdateNetworkFirewal
 }
 
 // UpdateNetworkFirewallPolicyDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络创建网络策略更新任务
 //
 // 可能返回的错误码:
@@ -20327,6 +20527,10 @@ func NewUpdateNetworkFirewallPolicyYamlDetailResponse() (response *UpdateNetwork
 }
 
 // UpdateNetworkFirewallPolicyYamlDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络更新Yaml网络策略任务
 //
 // 可能返回的错误码:
@@ -20342,6 +20546,10 @@ func (c *Client) UpdateNetworkFirewallPolicyYamlDetail(request *UpdateNetworkFir
 }
 
 // UpdateNetworkFirewallPolicyYamlDetail
+// 功能已下线待三合一重构
+//
+// 
+//
 // 容器网络更新Yaml网络策略任务
 //
 // 可能返回的错误码:

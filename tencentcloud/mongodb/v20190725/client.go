@@ -2013,6 +2013,62 @@ func (c *Client) DescribeMongodbLogsWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeSRVConnectionDomainRequest() (request *DescribeSRVConnectionDomainRequest) {
+    request = &DescribeSRVConnectionDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeSRVConnectionDomain")
+    
+    
+    return
+}
+
+func NewDescribeSRVConnectionDomainResponse() (response *DescribeSRVConnectionDomainResponse) {
+    response = &DescribeSRVConnectionDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSRVConnectionDomain
+// 本接口（DescribeSRVConnectionDomain）用于查询MongoDB数据库当前的域名信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) DescribeSRVConnectionDomain(request *DescribeSRVConnectionDomainRequest) (response *DescribeSRVConnectionDomainResponse, err error) {
+    return c.DescribeSRVConnectionDomainWithContext(context.Background(), request)
+}
+
+// DescribeSRVConnectionDomain
+// 本接口（DescribeSRVConnectionDomain）用于查询MongoDB数据库当前的域名信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) DescribeSRVConnectionDomainWithContext(ctx context.Context, request *DescribeSRVConnectionDomainRequest) (response *DescribeSRVConnectionDomainResponse, err error) {
+    if request == nil {
+        request = NewDescribeSRVConnectionDomainRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "DescribeSRVConnectionDomain")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSRVConnectionDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSRVConnectionDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecurityGroupRequest() (request *DescribeSecurityGroupRequest) {
     request = &DescribeSecurityGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2305,6 +2361,60 @@ func (c *Client) DescribeTransparentDataEncryptionStatusWithContext(ctx context.
     return
 }
 
+func NewDisableSRVConnectionUrlRequest() (request *DisableSRVConnectionUrlRequest) {
+    request = &DisableSRVConnectionUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "DisableSRVConnectionUrl")
+    
+    
+    return
+}
+
+func NewDisableSRVConnectionUrlResponse() (response *DisableSRVConnectionUrlResponse) {
+    response = &DisableSRVConnectionUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisableSRVConnectionUrl
+// 本接口（DisableSRVConnectionUrl）用于关闭MongoDB数据库的SRV访问地址。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) DisableSRVConnectionUrl(request *DisableSRVConnectionUrlRequest) (response *DisableSRVConnectionUrlResponse, err error) {
+    return c.DisableSRVConnectionUrlWithContext(context.Background(), request)
+}
+
+// DisableSRVConnectionUrl
+// 本接口（DisableSRVConnectionUrl）用于关闭MongoDB数据库的SRV访问地址。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) DisableSRVConnectionUrlWithContext(ctx context.Context, request *DisableSRVConnectionUrlRequest) (response *DisableSRVConnectionUrlResponse, err error) {
+    if request == nil {
+        request = NewDisableSRVConnectionUrlRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "DisableSRVConnectionUrl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableSRVConnectionUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableSRVConnectionUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDropDBInstanceParamTplRequest() (request *DropDBInstanceParamTplRequest) {
     request = &DropDBInstanceParamTplRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2357,6 +2467,62 @@ func (c *Client) DropDBInstanceParamTplWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDropDBInstanceParamTplResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableSRVConnectionUrlRequest() (request *EnableSRVConnectionUrlRequest) {
+    request = &EnableSRVConnectionUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "EnableSRVConnectionUrl")
+    
+    
+    return
+}
+
+func NewEnableSRVConnectionUrlResponse() (response *EnableSRVConnectionUrlResponse) {
+    response = &EnableSRVConnectionUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableSRVConnectionUrl
+// 本接口（EnableSRVConnectionUrl）用于开启MongoDB数据库的SRV访问地址。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) EnableSRVConnectionUrl(request *EnableSRVConnectionUrlRequest) (response *EnableSRVConnectionUrlResponse, err error) {
+    return c.EnableSRVConnectionUrlWithContext(context.Background(), request)
+}
+
+// EnableSRVConnectionUrl
+// 本接口（EnableSRVConnectionUrl）用于开启MongoDB数据库的SRV访问地址。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) EnableSRVConnectionUrlWithContext(ctx context.Context, request *EnableSRVConnectionUrlRequest) (response *EnableSRVConnectionUrlResponse, err error) {
+    if request == nil {
+        request = NewEnableSRVConnectionUrlRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "EnableSRVConnectionUrl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableSRVConnectionUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableSRVConnectionUrlResponse()
     err = c.Send(request, response)
     return
 }
@@ -3289,6 +3455,60 @@ func (c *Client) ModifyInstanceParamsWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyInstanceParamsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySRVConnectionUrlRequest() (request *ModifySRVConnectionUrlRequest) {
+    request = &ModifySRVConnectionUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "ModifySRVConnectionUrl")
+    
+    
+    return
+}
+
+func NewModifySRVConnectionUrlResponse() (response *ModifySRVConnectionUrlResponse) {
+    response = &ModifySRVConnectionUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySRVConnectionUrl
+// 本接口（DisableSRVConnectionUrl）用于修改MongoDB数据库的SRV访问地址的TTL时长。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) ModifySRVConnectionUrl(request *ModifySRVConnectionUrlRequest) (response *ModifySRVConnectionUrlResponse, err error) {
+    return c.ModifySRVConnectionUrlWithContext(context.Background(), request)
+}
+
+// ModifySRVConnectionUrl
+// 本接口（DisableSRVConnectionUrl）用于修改MongoDB数据库的SRV访问地址的TTL时长。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) ModifySRVConnectionUrlWithContext(ctx context.Context, request *ModifySRVConnectionUrlRequest) (response *ModifySRVConnectionUrlResponse, err error) {
+    if request == nil {
+        request = NewModifySRVConnectionUrlRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "ModifySRVConnectionUrl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySRVConnectionUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySRVConnectionUrlResponse()
     err = c.Send(request, response)
     return
 }

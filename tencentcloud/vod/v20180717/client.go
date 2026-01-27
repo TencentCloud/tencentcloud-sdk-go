@@ -1911,6 +1911,68 @@ func (c *Client) CreateProcedureTemplateWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateProcessImageAsyncTemplateRequest() (request *CreateProcessImageAsyncTemplateRequest) {
+    request = &CreateProcessImageAsyncTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateProcessImageAsyncTemplate")
+    
+    
+    return
+}
+
+func NewCreateProcessImageAsyncTemplateResponse() (response *CreateProcessImageAsyncTemplateResponse) {
+    response = &CreateProcessImageAsyncTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateProcessImageAsyncTemplate
+// 创建用户自定义图像异步处理模板，数量上限：50。暂时不支持 HLS 格式。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateProcessImageAsyncTemplate(request *CreateProcessImageAsyncTemplateRequest) (response *CreateProcessImageAsyncTemplateResponse, err error) {
+    return c.CreateProcessImageAsyncTemplateWithContext(context.Background(), request)
+}
+
+// CreateProcessImageAsyncTemplate
+// 创建用户自定义图像异步处理模板，数量上限：50。暂时不支持 HLS 格式。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateProcessImageAsyncTemplateWithContext(ctx context.Context, request *CreateProcessImageAsyncTemplateRequest) (response *CreateProcessImageAsyncTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateProcessImageAsyncTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateProcessImageAsyncTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProcessImageAsyncTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateProcessImageAsyncTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateQualityInspectTemplateRequest() (request *CreateQualityInspectTemplateRequest) {
     request = &CreateQualityInspectTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3917,6 +3979,74 @@ func (c *Client) DeleteProcedureTemplateWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDeleteProcedureTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteProcessImageAsyncTemplateRequest() (request *DeleteProcessImageAsyncTemplateRequest) {
+    request = &DeleteProcessImageAsyncTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteProcessImageAsyncTemplate")
+    
+    
+    return
+}
+
+func NewDeleteProcessImageAsyncTemplateResponse() (response *DeleteProcessImageAsyncTemplateResponse) {
+    response = &DeleteProcessImageAsyncTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteProcessImageAsyncTemplate
+// 删除用户自定义图像异步处理模板。
+//
+// 
+//
+// 注意：模板 ID 为 10000 以下的为系统预置模板，不允许删除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DELETEDEFAULTTEMPLATE = "InvalidParameterValue.DeleteDefaultTemplate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteProcessImageAsyncTemplate(request *DeleteProcessImageAsyncTemplateRequest) (response *DeleteProcessImageAsyncTemplateResponse, err error) {
+    return c.DeleteProcessImageAsyncTemplateWithContext(context.Background(), request)
+}
+
+// DeleteProcessImageAsyncTemplate
+// 删除用户自定义图像异步处理模板。
+//
+// 
+//
+// 注意：模板 ID 为 10000 以下的为系统预置模板，不允许删除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DELETEDEFAULTTEMPLATE = "InvalidParameterValue.DeleteDefaultTemplate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteProcessImageAsyncTemplateWithContext(ctx context.Context, request *DeleteProcessImageAsyncTemplateRequest) (response *DeleteProcessImageAsyncTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteProcessImageAsyncTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DeleteProcessImageAsyncTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteProcessImageAsyncTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteProcessImageAsyncTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -7115,6 +7245,68 @@ func (c *Client) DescribeProcedureTemplatesWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeProcedureTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProcessImageAsyncTemplatesRequest() (request *DescribeProcessImageAsyncTemplatesRequest) {
+    request = &DescribeProcessImageAsyncTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeProcessImageAsyncTemplates")
+    
+    
+    return
+}
+
+func NewDescribeProcessImageAsyncTemplatesResponse() (response *DescribeProcessImageAsyncTemplatesResponse) {
+    response = &DescribeProcessImageAsyncTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeProcessImageAsyncTemplates
+// 根据图像异步处理模板唯一标识，获取图像异步处理模板详情列表。返回结果包含符合条件的所有用户自定义图像异步处理模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeProcessImageAsyncTemplates(request *DescribeProcessImageAsyncTemplatesRequest) (response *DescribeProcessImageAsyncTemplatesResponse, err error) {
+    return c.DescribeProcessImageAsyncTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeProcessImageAsyncTemplates
+// 根据图像异步处理模板唯一标识，获取图像异步处理模板详情列表。返回结果包含符合条件的所有用户自定义图像异步处理模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeProcessImageAsyncTemplatesWithContext(ctx context.Context, request *DescribeProcessImageAsyncTemplatesRequest) (response *DescribeProcessImageAsyncTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeProcessImageAsyncTemplatesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DescribeProcessImageAsyncTemplates")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProcessImageAsyncTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProcessImageAsyncTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -10571,6 +10763,86 @@ func (c *Client) ModifyPersonSampleWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyProcessImageAsyncTemplateRequest() (request *ModifyProcessImageAsyncTemplateRequest) {
+    request = &ModifyProcessImageAsyncTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyProcessImageAsyncTemplate")
+    
+    
+    return
+}
+
+func NewModifyProcessImageAsyncTemplateResponse() (response *ModifyProcessImageAsyncTemplateResponse) {
+    response = &ModifyProcessImageAsyncTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyProcessImageAsyncTemplate
+// 修改用户自定义图像异步处理模板。
+//
+// 
+//
+// 注意：模板 ID 10000 以下的为系统预置模板，不允许修改。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CLASSIFCATIONCONFIGURE = "InvalidParameterValue.ClassifcationConfigure"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_COVERCONFIGURE = "InvalidParameterValue.CoverConfigure"
+//  INVALIDPARAMETERVALUE_FRAMETAGCONFIGURE = "InvalidParameterValue.FrameTagConfigure"
+//  INVALIDPARAMETERVALUE_HIGHLIGHTCONFIGURE = "InvalidParameterValue.HighlightConfigure"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_TAGCONFIGURE = "InvalidParameterValue.TagConfigure"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyProcessImageAsyncTemplate(request *ModifyProcessImageAsyncTemplateRequest) (response *ModifyProcessImageAsyncTemplateResponse, err error) {
+    return c.ModifyProcessImageAsyncTemplateWithContext(context.Background(), request)
+}
+
+// ModifyProcessImageAsyncTemplate
+// 修改用户自定义图像异步处理模板。
+//
+// 
+//
+// 注意：模板 ID 10000 以下的为系统预置模板，不允许修改。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CLASSIFCATIONCONFIGURE = "InvalidParameterValue.ClassifcationConfigure"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_COVERCONFIGURE = "InvalidParameterValue.CoverConfigure"
+//  INVALIDPARAMETERVALUE_FRAMETAGCONFIGURE = "InvalidParameterValue.FrameTagConfigure"
+//  INVALIDPARAMETERVALUE_HIGHLIGHTCONFIGURE = "InvalidParameterValue.HighlightConfigure"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_TAGCONFIGURE = "InvalidParameterValue.TagConfigure"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyProcessImageAsyncTemplateWithContext(ctx context.Context, request *ModifyProcessImageAsyncTemplateRequest) (response *ModifyProcessImageAsyncTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyProcessImageAsyncTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "ModifyProcessImageAsyncTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProcessImageAsyncTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyProcessImageAsyncTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyQualityInspectTemplateRequest() (request *ModifyQualityInspectTemplateRequest) {
     request = &ModifyQualityInspectTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11633,6 +11905,74 @@ func (c *Client) ProcessImageWithContext(ctx context.Context, request *ProcessIm
     request.SetContext(ctx)
     
     response = NewProcessImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewProcessImageAsyncRequest() (request *ProcessImageAsyncRequest) {
+    request = &ProcessImageAsyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "ProcessImageAsync")
+    
+    
+    return
+}
+
+func NewProcessImageAsyncResponse() (response *ProcessImageAsyncResponse) {
+    response = &ProcessImageAsyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ProcessImageAsync
+// 该接口用于图片处理任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ProcessImageAsync(request *ProcessImageAsyncRequest) (response *ProcessImageAsyncResponse, err error) {
+    return c.ProcessImageAsyncWithContext(context.Background(), request)
+}
+
+// ProcessImageAsync
+// 该接口用于图片处理任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ProcessImageAsyncWithContext(ctx context.Context, request *ProcessImageAsyncRequest) (response *ProcessImageAsyncResponse, err error) {
+    if request == nil {
+        request = NewProcessImageAsyncRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "ProcessImageAsync")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ProcessImageAsync require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewProcessImageAsyncResponse()
     err = c.Send(request, response)
     return
 }

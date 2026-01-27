@@ -254,80 +254,39 @@ type RegionProduct struct {
 }
 
 type ZoneInfo struct {
-	// 可用区名称，例如，ap-guangzhou-3
-	// 全网可用区名称如下：
-	// <li> ap-chongqing-1 </li>
-	// <li> ap-seoul-1 </li>
-	// <li> ap-seoul-2 </li>
-	// <li> ap-chengdu-1 </li>
-	// <li> ap-chengdu-2 </li>
-	// <li> ap-hongkong-1 </li>
-	// <li> ap-hongkong-2 </li>
-	// <li> ap-shenzhen-fsi-1 </li>
-	// <li> ap-shenzhen-fsi-2 </li>
-	// <li> ap-shenzhen-fsi-3 </li>
-	// <li> ap-guangzhou-1（售罄）</li>
-	// <li> ap-guangzhou-3 </li>
-	// <li> ap-guangzhou-4 </li>
-	// <li> ap-guangzhou-6 </li>
-	// <li> ap-tokyo-1 </li>
-	// <li> ap-singapore-1 </li>
-	// <li> ap-singapore-2 </li>
-	// <li> ap-shanghai-fsi-1 </li>
-	// <li> ap-shanghai-fsi-2 </li>
-	// <li> ap-shanghai-fsi-3 </li>
-	// <li> ap-bangkok-1 </li>
-	// <li> ap-shanghai-1（售罄） </li>
-	// <li> ap-shanghai-2 </li>
-	// <li> ap-shanghai-3 </li>
-	// <li> ap-shanghai-4 </li>
-	// <li> ap-shanghai-5 </li>
-	// <li> ap-mumbai-1 </li>
-	// <li> ap-mumbai-2 </li>
-	// <li> ap-beijing-1 </li>
-	// <li> ap-beijing-2 </li>
-	// <li> ap-beijing-3 </li>
-	// <li> ap-beijing-4 </li>
-	// <li> ap-beijing-5 </li>
-	// <li> na-siliconvalley-1 </li>
-	// <li> na-siliconvalley-2 </li>
-	// <li> eu-frankfurt-1 </li>
-	// <li> na-ashburn-1 </li>
-	// <li> na-ashburn-2 </li>
-	// <li> ap-nanjing-1 </li>
-	// <li> ap-nanjing-2 </li>
+	// <p>可用区名称，例如，ap-guangzhou-3<br>全网可用区名称如下：</p><li> ap-chongqing-1 </li><li> ap-seoul-1 </li><li> ap-seoul-2 </li><li> ap-chengdu-1 </li><li> ap-chengdu-2 </li><li> ap-hongkong-1 </li><li> ap-hongkong-2 </li><li> ap-shenzhen-fsi-1 </li><li> ap-shenzhen-fsi-2 </li><li> ap-shenzhen-fsi-3 </li><li> ap-guangzhou-1（售罄）</li><li> ap-guangzhou-3 </li><li> ap-guangzhou-4 </li><li> ap-guangzhou-6 </li><li> ap-tokyo-1 </li><li> ap-singapore-1 </li><li> ap-singapore-2 </li><li> ap-shanghai-fsi-1 </li><li> ap-shanghai-fsi-2 </li><li> ap-shanghai-fsi-3 </li><li> ap-bangkok-1 </li><li> ap-shanghai-2 </li><li> ap-shanghai-3 </li><li> ap-shanghai-4 </li><li> ap-shanghai-5 </li><li> ap-beijing-1 </li><li> ap-beijing-3 </li><li> ap-beijing-4 </li><li> ap-beijing-5 </li><li> na-siliconvalley-1 </li><li> na-siliconvalley-2 </li><li> eu-frankfurt-1 </li><li> na-ashburn-1 </li><li> na-ashburn-2 </li><li> ap-nanjing-1 </li><li> ap-nanjing-2 </li>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 可用区描述，例如，广州三区
+	// <p>可用区描述，例如，广州三区</p>
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 
-	// 可用区ID
+	// <p>可用区ID</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 可用区状态，包含AVAILABLE和UNAVAILABLE。AVAILABLE代表可用，UNAVAILABLE代表不可用。
+	// <p>可用区状态，包含AVAILABLE和UNAVAILABLE。AVAILABLE代表可用，UNAVAILABLE代表不可用。</p>
 	ZoneState *string `json:"ZoneState,omitnil,omitempty" name:"ZoneState"`
 
-	// 父级zone
+	// <p>父级zone</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentZone *string `json:"ParentZone,omitnil,omitempty" name:"ParentZone"`
 
-	// 父级可用区ID
+	// <p>父级可用区ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentZoneId *string `json:"ParentZoneId,omitnil,omitempty" name:"ParentZoneId"`
 
-	// 父级可用区描述
+	// <p>父级可用区描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentZoneName *string `json:"ParentZoneName,omitnil,omitempty" name:"ParentZoneName"`
 
-	// zone类型
+	// <p>zone类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneType *string `json:"ZoneType,omitnil,omitempty" name:"ZoneType"`
 
-	// 控制台类型
+	// <p>控制台类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineRoomTypeMC *string `json:"MachineRoomTypeMC,omitnil,omitempty" name:"MachineRoomTypeMC"`
 
-	// 和ZoneId一样，适用于控制台调用。
+	// <p>和ZoneId一样，适用于控制台调用。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneIdMC *string `json:"ZoneIdMC,omitnil,omitempty" name:"ZoneIdMC"`
 }

@@ -11910,38 +11910,38 @@ func (r *DescribePartitionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRebuildIndexTasksRequestParams struct {
-	// 日志主题ID
+	// <p>日志主题ID</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 索引重建任务ID
+	// <p>索引重建任务ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 索引重建任务状态，不填返回所有状态任务列表，多种状态之间用逗号分隔，0:索引重建任务已创建，1:已创建索引重建资源，2:重建中，3:重建完成，4:重建成功（可检索），5:任务取消，6:元数据和索引已删除
+	// <p>索引重建任务状态，不填返回所有状态任务列表，多种状态之间用逗号分隔。</p><p>枚举值：</p><ul><li>0： 索引重建任务已创建</li><li>1： 正在创建索引重建资源</li><li>2： 已创建索引重建资源</li><li>3： 重建中</li><li>4： 暂停</li><li>5： 重建完成</li><li>6： 重建成功（可检索）</li><li>7： 重建失败</li><li>8： 任务取消</li><li>9： 元数据和索引已删除</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 分页的偏移量，默认值为0。
+	// <p>分页的偏移量，默认值为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页单页限制数目，默认值为10，最大值20。
+	// <p>分页单页限制数目，默认值为10，最大值20。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeRebuildIndexTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志主题ID
+	// <p>日志主题ID</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 索引重建任务ID
+	// <p>索引重建任务ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 索引重建任务状态，不填返回所有状态任务列表，多种状态之间用逗号分隔，0:索引重建任务已创建，1:已创建索引重建资源，2:重建中，3:重建完成，4:重建成功（可检索），5:任务取消，6:元数据和索引已删除
+	// <p>索引重建任务状态，不填返回所有状态任务列表，多种状态之间用逗号分隔。</p><p>枚举值：</p><ul><li>0： 索引重建任务已创建</li><li>1： 正在创建索引重建资源</li><li>2： 已创建索引重建资源</li><li>3： 重建中</li><li>4： 暂停</li><li>5： 重建完成</li><li>6： 重建成功（可检索）</li><li>7： 重建失败</li><li>8： 任务取消</li><li>9： 元数据和索引已删除</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 分页的偏移量，默认值为0。
+	// <p>分页的偏移量，默认值为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页单页限制数目，默认值为10，最大值20。
+	// <p>分页单页限制数目，默认值为10，最大值20。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -11970,7 +11970,7 @@ func (r *DescribeRebuildIndexTasksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRebuildIndexTasksResponseParams struct {
-	// 索引重建任务列表
+	// <p>索引重建任务列表</p>
 	RebuildTasks []*RebuildIndexTaskInfo `json:"RebuildTasks,omitnil,omitempty" name:"RebuildTasks"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

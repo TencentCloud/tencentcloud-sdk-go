@@ -213,6 +213,70 @@ func (c *Client) CreateClusterSnapshotWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateCollectorRequest() (request *CreateCollectorRequest) {
+    request = &CreateCollectorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "CreateCollector")
+    
+    
+    return
+}
+
+func NewCreateCollectorResponse() (response *CreateCollectorResponse) {
+    response = &CreateCollectorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCollector
+// 用于创建Beats采集器
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateCollector(request *CreateCollectorRequest) (response *CreateCollectorResponse, err error) {
+    return c.CreateCollectorWithContext(context.Background(), request)
+}
+
+// CreateCollector
+// 用于创建Beats采集器
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+//  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateCollectorWithContext(ctx context.Context, request *CreateCollectorRequest) (response *CreateCollectorResponse, err error) {
+    if request == nil {
+        request = NewCreateCollectorRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "CreateCollector")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCollector require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCollectorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCosMigrateToServerlessInstanceRequest() (request *CreateCosMigrateToServerlessInstanceRequest) {
     request = &CreateCosMigrateToServerlessInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
