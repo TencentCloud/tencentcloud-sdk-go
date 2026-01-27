@@ -80,3 +80,7 @@ func (c *CvmRoleCredential) refresh() {
 	c.token = newCred.token
 	c.source = newCred.source
 }
+
+func (c *CvmRoleCredential) GetExpiration() time.Time {
+	return time.Unix(c.expiredTime, 0)
+}
