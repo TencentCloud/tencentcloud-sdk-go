@@ -1530,6 +1530,8 @@ type ClusterInstanceDetail struct {
 	InstanceTasks []*ObjectTask `json:"InstanceTasks,omitnil,omitempty" name:"InstanceTasks"`
 
 	// 实例机器类型
+	// 1. common，通用型。
+	// 2. exclusive，独享型。
 	InstanceDeviceType *string `json:"InstanceDeviceType,omitnil,omitempty" name:"InstanceDeviceType"`
 
 	// 实例存储类型
@@ -4012,6 +4014,8 @@ type CynosdbInstance struct {
 	InstanceAbility *InstanceAbility `json:"InstanceAbility,omitnil,omitempty" name:"InstanceAbility"`
 
 	// 实例机器类型
+	// 1. common，通用型。
+	// 2. exclusive，独享型。
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
 	// 实例存储类型
@@ -10566,7 +10570,9 @@ type GoodsSpec struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
-	// 机器类型
+	// 实例机器类型
+	// 1. common，通用型。
+	// 2. exclusive，独享型。
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 }
 
@@ -11203,6 +11209,8 @@ type InstanceInitInfo struct {
 	MaxRoCpu *float64 `json:"MaxRoCpu,omitnil,omitempty" name:"MaxRoCpu"`
 
 	// 实例机器类型
+	// 1. common，通用型。
+	// 2. exclusive，独享型。
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 }
 
@@ -13228,9 +13236,13 @@ type ModifyInstanceData struct {
 	OldStorageLimit *int64 `json:"OldStorageLimit,omitnil,omitempty" name:"OldStorageLimit"`
 
 	// 变配前实例机器类型
+	// 1. common，通用型。
+	// 2. exclusive，独享型。
 	OldDeviceType *string `json:"OldDeviceType,omitnil,omitempty" name:"OldDeviceType"`
 
 	// 变配后实例机器类型
+	// 1. common，通用型。
+	// 2. exclusive，独享型。
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
 	// 升级方式。升级完成后切换或维护时间内切换

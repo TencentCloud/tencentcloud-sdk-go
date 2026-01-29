@@ -1,26 +1,10 @@
-# Release v1.3.40
+# Release v1.3.41
 
-## 云硬盘(cbs) 版本：2017-03-12
+## Agent 沙箱服务(ags) 版本：2025-09-20
 
-### 第 73 次发布
+### 第 5 次发布
 
-发布时间：2026-01-28 01:17:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CopyAutoSnapshotPolicyCrossAccount](https://cloud.tencent.com/document/api/362/127847)
-
-
-
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
-
-### 第 153 次发布
-
-发布时间：2026-01-28 01:36:20
+发布时间：2026-01-29 01:07:54
 
 本次发布包含了以下内容：
 
@@ -28,61 +12,35 @@
 
 新增接口：
 
-* [DeleteClusterSaveBackup](https://cloud.tencent.com/document/api/1003/127851)
-* [DescribeRedoLogs](https://cloud.tencent.com/document/api/1003/127850)
-* [DescribeSaveBackupClusters](https://cloud.tencent.com/document/api/1003/127849)
-* [ModifySnapBackupCrossRegionConfig](https://cloud.tencent.com/document/api/1003/127848)
-
-修改接口：
-
-* [DescribeBackupConfig](https://cloud.tencent.com/document/api/1003/48094)
-
-	* 新增出参：SnapshotSecondaryBackupConfig
-
-* [IsolateCluster](https://cloud.tencent.com/document/api/1003/48082)
-
-	* 新增入参：SaveBackup
-
-* [IsolateInstance](https://cloud.tencent.com/document/api/1003/48081)
-
-	* 新增入参：SaveBackup
-
-* [ModifyBackupConfig](https://cloud.tencent.com/document/api/1003/48090)
-
-	* 新增入参：SnapshotSecondaryBackupConfig
-
-* [RollbackToNewCluster](https://cloud.tencent.com/document/api/1003/104727)
-
-	* 新增入参：FromSaveBackup
+* [PauseSandboxInstance](https://cloud.tencent.com/document/api/1814/127876)
+* [ResumeSandboxInstance](https://cloud.tencent.com/document/api/1814/127875)
 
 
-新增数据结构：
 
-* [BackupConfigInfo](https://cloud.tencent.com/document/api/1003/48097#BackupConfigInfo)
-* [BackupRegionAndIds](https://cloud.tencent.com/document/api/1003/48097#BackupRegionAndIds)
-* [QuerySimpleFilter](https://cloud.tencent.com/document/api/1003/48097#QuerySimpleFilter)
-* [RedoLogItem](https://cloud.tencent.com/document/api/1003/48097#RedoLogItem)
-* [SaveBackupClusterInfo](https://cloud.tencent.com/document/api/1003/48097#SaveBackupClusterInfo)
-* [SnapshotBackupConfig](https://cloud.tencent.com/document/api/1003/48097#SnapshotBackupConfig)
+## 云应用(cloudapp) 版本：2022-05-30
+
+### 第 8 次发布
+
+发布时间：2026-01-29 01:27:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [CynosdbClusterDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbClusterDetail)
+* [License](https://cloud.tencent.com/document/api/1689/108875#License)
 
-	* 新增成员：IsOpenTDE
-
-
-
-
-## Elasticsearch Service(es) 版本：2025-01-01
+	* 新增成员：ProviderUin, CreateSource
 
 
 
-## Elasticsearch Service(es) 版本：2018-04-16
 
-### 第 95 次发布
+## 高性能应用服务(hai) 版本：2023-08-12
 
-发布时间：2026-01-28 01:48:30
+### 第 15 次发布
+
+发布时间：2026-01-29 01:59:55
 
 本次发布包含了以下内容：
 
@@ -90,42 +48,15 @@
 
 新增接口：
 
-* [CreateCollector](https://cloud.tencent.com/document/api/845/127853)
-
-新增数据结构：
-
-* [CollectorConfigInfo](https://cloud.tencent.com/document/api/845/30634#CollectorConfigInfo)
-* [CollectorOutputInstance](https://cloud.tencent.com/document/api/845/30634#CollectorOutputInstance)
-* [CollectorTarget](https://cloud.tencent.com/document/api/845/30634#CollectorTarget)
-* [Namespaces](https://cloud.tencent.com/document/api/845/30634#Namespaces)
-* [PodLabel](https://cloud.tencent.com/document/api/845/30634#PodLabel)
+* [UpdateServiceConfigs](https://cloud.tencent.com/document/api/1721/127878)
 
 
 
-## 云游戏(gs) 版本：2019-11-18
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-### 第 64 次发布
+### 第 130 次发布
 
-发布时间：2026-01-28 01:54:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [InstallAndroidInstancesAppWithURL](https://cloud.tencent.com/document/api/1162/118979)
-
-	* 新增入参：AndroidAppMD5
-
-
-
-
-## 云数据库 MongoDB(mongodb) 版本：2019-07-25
-
-### 第 63 次发布
-
-发布时间：2026-01-28 02:13:30
+发布时间：2026-01-28 10:27:48
 
 本次发布包含了以下内容：
 
@@ -133,45 +64,33 @@
 
 新增接口：
 
-* [DescribeSRVConnectionDomain](https://cloud.tencent.com/document/api/240/127857)
-* [DisableSRVConnectionUrl](https://cloud.tencent.com/document/api/240/127856)
-* [EnableSRVConnectionUrl](https://cloud.tencent.com/document/api/240/127855)
-* [ModifySRVConnectionUrl](https://cloud.tencent.com/document/api/240/127854)
-
-
-
-## 云数据库 MongoDB(mongodb) 版本：2018-04-08
-
-
-
-## NLP 技术(nlp) 版本：2019-04-08
-
-### 第 26 次发布
-
-发布时间：2026-01-28 02:23:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [CreateDeviceSDPAnswer](https://cloud.tencent.com/document/api/1081/127863)
 
 <font color="#dd0000">**删除接口**：</font>
 
-* ClassifyContent
-* ComposeCouplet
-* EvaluateSentenceSimilarity
+* CancelAssignTWeCallLicense
 
-<font color="#dd0000">**删除数据结构**：</font>
+修改接口：
 
-* Category
-* SentencePair
+* [GetTWeTalkAIBotList](https://cloud.tencent.com/document/api/1081/125987)
 
+	* 新增入参：Name
 
 
-## 容器镜像服务(tcr) 版本：2019-09-24
+修改数据结构：
 
-### 第 74 次发布
+* [TalkAIBotInfo](https://cloud.tencent.com/document/api/1081/34988#TalkAIBotInfo)
 
-发布时间：2026-01-28 02:52:46
+	* 新增成员：BoundProducts
+
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 178 次发布
+
+发布时间：2026-01-29 02:27:13
 
 本次发布包含了以下内容：
 
@@ -179,153 +98,118 @@
 
 修改接口：
 
-* [CreateTagRetentionRule](https://cloud.tencent.com/document/api/1141/54803)
+* [CreateProcessImageTemplate](https://cloud.tencent.com/document/api/862/125879)
 
-	* 新增入参：AdvancedRuleItems
+	* 新增入参：StdExtInfo
 
-	* <font color="#dd0000">**修改入参**：</font>RetentionRule
-
-* [DeleteRepository](https://cloud.tencent.com/document/api/1141/42724)
-
-	* 新增入参：ForceDelete
-
-* [ModifyTagRetentionRule](https://cloud.tencent.com/document/api/1141/54798)
-
-	* 新增入参：AdvancedRuleItems
-
-	* <font color="#dd0000">**修改入参**：</font>RetentionRule
-
-
-新增数据结构：
-
-* [FilterSelector](https://cloud.tencent.com/document/api/1141/41603#FilterSelector)
-* [RetentionRuleItem](https://cloud.tencent.com/document/api/1141/41603#RetentionRuleItem)
 
 修改数据结构：
 
-* [RetentionPolicy](https://cloud.tencent.com/document/api/1141/41603#RetentionPolicy)
+* [ScheduleQualityControlTaskResult](https://cloud.tencent.com/document/api/862/37615#ScheduleQualityControlTaskResult)
 
-	* 新增成员：AdvancedRuleItems
+	* 新增成员：Progress
 
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 117 次发布
+
+发布时间：2026-01-29 03:01:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [RunSql](https://cloud.tencent.com/document/api/876/127880)
+
+<font color="#dd0000">**删除接口**：</font>
+
+* SearchClsLog
+
+新增数据结构：
+
+* [DbInstance](https://cloud.tencent.com/document/api/876/34822#DbInstance)
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* LogObject
+* LogResObject
 
 
 
 ## 容器安全服务(tcss) 版本：2020-11-01
 
-### 第 86 次发布
+### 第 87 次发布
 
-发布时间：2026-01-28 02:54:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**预下线接口**：</font>
-
-* AddAndPublishNetworkFirewallPolicyDetail
-* AddAndPublishNetworkFirewallPolicyYamlDetail
-* AddNetworkFirewallPolicyDetail
-* AddNetworkFirewallPolicyYamlDetail
-* CheckNetworkFirewallPolicyYaml
-* ConfirmNetworkFirewallPolicy
-* CreateNetworkFirewallClusterRefresh
-* CreateNetworkFirewallPolicyDiscover
-* CreateNetworkFirewallPublish
-* CreateNetworkFirewallUndoPublish
-* DeleteNetworkFirewallPolicyDetail
-* DescribeNetworkFirewallAuditRecord
-* DescribeNetworkFirewallClusterList
-* DescribeNetworkFirewallClusterRefreshStatus
-* DescribeNetworkFirewallNamespaceLabelList
-* DescribeNetworkFirewallNamespaceList
-* DescribeNetworkFirewallPodLabelsList
-* DescribeNetworkFirewallPolicyDetail
-* DescribeNetworkFirewallPolicyDiscover
-* DescribeNetworkFirewallPolicyList
-* DescribeNetworkFirewallPolicyStatus
-* DescribeNetworkFirewallPolicyYamlDetail
-* UpdateAndPublishNetworkFirewallPolicyDetail
-* UpdateAndPublishNetworkFirewallPolicyYamlDetail
-* UpdateNetworkFirewallPolicyDetail
-* UpdateNetworkFirewallPolicyYamlDetail
-
-
-
-## 云点播(vod) 版本：2024-07-18
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 226 次发布
-
-发布时间：2026-01-28 03:33:19
+发布时间：2026-01-29 03:06:16
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [CreateProcessImageAsyncTemplate](https://cloud.tencent.com/document/api/266/127862)
-* [DeleteProcessImageAsyncTemplate](https://cloud.tencent.com/document/api/266/127861)
-* [DescribeProcessImageAsyncTemplates](https://cloud.tencent.com/document/api/266/127860)
-* [ModifyProcessImageAsyncTemplate](https://cloud.tencent.com/document/api/266/127859)
-* [ProcessImageAsync](https://cloud.tencent.com/document/api/266/127858)
+* [AssetClusterListItem](https://cloud.tencent.com/document/api/1285/65614#AssetClusterListItem)
+
+	* 新增成员：ClusterAuditStatus, AccessedStatus
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 135 次发布
+
+发布时间：2026-01-29 03:18:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改接口：
 
-* [DescribeTaskDetail](https://cloud.tencent.com/document/api/266/33431)
+* [DescribeTimingL4Data](https://cloud.tencent.com/document/api/1552/80649)
 
-	* 新增出参：ProcessImageAsyncTask
+	* <font color="#dd0000">**修改入参**：</font>ZoneIds
 
 
 新增数据结构：
 
-* [AdvancedSuperResolutionConfig](https://cloud.tencent.com/document/api/266/31773#AdvancedSuperResolutionConfig)
-* [ImageDenoiseConfig](https://cloud.tencent.com/document/api/266/31773#ImageDenoiseConfig)
-* [ImageEncodeConfig](https://cloud.tencent.com/document/api/266/31773#ImageEncodeConfig)
-* [ImageEnhanceConfig](https://cloud.tencent.com/document/api/266/31773#ImageEnhanceConfig)
-* [ImageSceneAigcEncodeConfig](https://cloud.tencent.com/document/api/266/31773#ImageSceneAigcEncodeConfig)
-* [ProcessImageAsync](https://cloud.tencent.com/document/api/266/31773#ProcessImageAsync)
-* [ProcessImageAsyncInput](https://cloud.tencent.com/document/api/266/31773#ProcessImageAsyncInput)
-* [ProcessImageAsyncOutput](https://cloud.tencent.com/document/api/266/31773#ProcessImageAsyncOutput)
-* [ProcessImageAsyncOutputConfig](https://cloud.tencent.com/document/api/266/31773#ProcessImageAsyncOutputConfig)
-* [ProcessImageAsyncOutputFileInfo](https://cloud.tencent.com/document/api/266/31773#ProcessImageAsyncOutputFileInfo)
-* [ProcessImageAsyncTask](https://cloud.tencent.com/document/api/266/31773#ProcessImageAsyncTask)
-* [ProcessImageAsyncTaskInput](https://cloud.tencent.com/document/api/266/31773#ProcessImageAsyncTaskInput)
-* [ProcessImageAsyncTemplateItem](https://cloud.tencent.com/document/api/266/31773#ProcessImageAsyncTemplateItem)
+* [FloatTimingDataItem](https://cloud.tencent.com/document/api/1552/80721#FloatTimingDataItem)
+* [FloatTimingTypeValue](https://cloud.tencent.com/document/api/1552/80721#FloatTimingTypeValue)
 
 修改数据结构：
 
-* [ChangeClothesConfig](https://cloud.tencent.com/document/api/266/31773#ChangeClothesConfig)
+* [TimingDataRecord](https://cloud.tencent.com/document/api/1552/80721#TimingDataRecord)
 
-	* 新增成员：Prompt
-
-* [SceneAigcImageOutputConfig](https://cloud.tencent.com/document/api/266/31773#SceneAigcImageOutputConfig)
-
-	* 新增成员：EncodeConfig
+	* 新增成员：FloatTypeValue
 
 
 
 
-## 私有网络(vpc) 版本：2017-03-12
+## 边缘安全加速平台(teo) 版本：2022-01-06
 
-### 第 293 次发布
 
-发布时间：2026-01-28 03:38:00
+
+## TSF-应用管理&Consul(tsf) 版本：2018-03-26
+
+### 第 138 次发布
+
+发布时间：2026-01-29 03:40:21
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [ConnectionStateTimeouts](https://cloud.tencent.com/document/api/215/15824#ConnectionStateTimeouts)
+* [DescribeLaneRules](https://cloud.tencent.com/document/api/649/44505)
 
-	* 新增成员：TCPTimeWaitTimeout
-
-	* <font color="#dd0000">**删除成员**：</font>TcpTimeWaitTimeout
+	* 新增入参：QueryAll
 
 
 

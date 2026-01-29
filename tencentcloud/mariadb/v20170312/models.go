@@ -1414,163 +1414,163 @@ type DBBackupTimeConfig struct {
 }
 
 type DBInstance struct {
-	// 实例 ID，唯一标识一个 TDSQL 实例
+	// <p>实例 ID，唯一标识一个 TDSQL 实例</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称，用户可修改
+	// <p>实例名称，用户可修改</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例所属应用 ID
+	// <p>实例所属应用 ID</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 实例所属项目 ID
+	// <p>实例所属项目 ID</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 实例所在地域名称，如 ap-shanghai
+	// <p>实例所在地域名称，如 ap-shanghai</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 实例所在可用区名称，如 ap-shanghai-1
+	// <p>实例所在可用区名称，如 ap-shanghai-2</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 私有网络 ID，基础网络时为 0
+	// <p>私有网络 ID，基础网络时为 0</p>
 	VpcId *int64 `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网 ID，基础网络时为 0
+	// <p>子网 ID，基础网络时为 0</p>
 	SubnetId *int64 `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 实例状态：0 创建中，1 流程处理中， 2 运行中，3 实例未初始化，-1 实例已隔离，4 实例初始化中，5 实例删除中，6 实例重启中，7 数据迁移中
+	// <p>实例状态：0 创建中，1 流程处理中， 2 运行中，3 实例未初始化，-1 实例已隔离，4 实例初始化中，5 实例删除中，6 实例重启中，7 数据迁移中</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 内网 IP 地址
+	// <p>内网 IP 地址</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 内网端口
+	// <p>内网端口</p>
 	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// 外网访问的域名，公网可解析
+	// <p>外网访问的域名，公网可解析</p>
 	WanDomain *string `json:"WanDomain,omitnil,omitempty" name:"WanDomain"`
 
-	// 外网 IP 地址，公网可访问
+	// <p>外网 IP 地址，公网可访问</p>
 	WanVip *string `json:"WanVip,omitnil,omitempty" name:"WanVip"`
 
-	// 外网端口
+	// <p>外网端口</p>
 	WanPort *int64 `json:"WanPort,omitnil,omitempty" name:"WanPort"`
 
-	// 实例创建时间，格式为 2006-01-02 15:04:05
+	// <p>实例创建时间，格式为 2006-01-02 15:04:05</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 实例最后更新时间，格式为 2006-01-02 15:04:05
+	// <p>实例最后更新时间，格式为 2006-01-02 15:04:05</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 自动续费标志：0 否，1 是
+	// <p>自动续费标志：0 否，1 是</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 实例到期时间，格式为 2006-01-02 15:04:05
+	// <p>实例到期时间，格式为 2006-01-02 15:04:05</p>
 	PeriodEndTime *string `json:"PeriodEndTime,omitnil,omitempty" name:"PeriodEndTime"`
 
-	// 实例所属账号
+	// <p>实例所属账号</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// TDSQL 版本信息
+	// <p>TDSQL 版本信息</p>
 	TdsqlVersion *string `json:"TdsqlVersion,omitnil,omitempty" name:"TdsqlVersion"`
 
-	// 实例内存大小，单位 GB
+	// <p>实例内存大小，单位 GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例存储大小，单位 GB
+	// <p>实例存储大小，单位 GB</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 字符串型的私有网络ID
+	// <p>字符串型的私有网络ID</p>
 	UniqueVpcId *string `json:"UniqueVpcId,omitnil,omitempty" name:"UniqueVpcId"`
 
-	// 字符串型的私有网络子网ID
+	// <p>字符串型的私有网络子网ID</p>
 	UniqueSubnetId *string `json:"UniqueSubnetId,omitnil,omitempty" name:"UniqueSubnetId"`
 
-	// 原始实例ID（过时字段，请勿依赖该值）
+	// <p>原始实例ID（过时字段，请勿依赖该值）</p>
 	OriginSerialId *string `json:"OriginSerialId,omitnil,omitempty" name:"OriginSerialId"`
 
-	// 节点数，2为一主一从，3为一主二从
+	// <p>节点数，2为一主一从，3为一主二从</p>
 	NodeCount *uint64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
 
-	// 是否临时实例，0为否，非0为是
+	// <p>是否临时实例，0为否，非0为是</p>
 	IsTmp *uint64 `json:"IsTmp,omitnil,omitempty" name:"IsTmp"`
 
-	// 独享集群ID，为空表示为普通实例
+	// <p>独享集群ID，为空表示为普通实例</p>
 	ExclusterId *string `json:"ExclusterId,omitnil,omitempty" name:"ExclusterId"`
 
-	// 数字实例ID（过时字段，请勿依赖该值）
+	// <p>数字实例ID（过时字段，请勿依赖该值）</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 产品类型 ID
+	// <p>产品类型 ID</p>
 	Pid *int64 `json:"Pid,omitnil,omitempty" name:"Pid"`
 
-	// 最大 Qps 值
+	// <p>最大 Qps 值</p>
 	Qps *int64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
-	// 付费模式
+	// <p>付费模式</p>
 	Paymode *string `json:"Paymode,omitnil,omitempty" name:"Paymode"`
 
-	// 实例处于异步任务时的异步任务流程ID
+	// <p>实例处于异步任务时的异步任务流程ID</p>
 	Locker *int64 `json:"Locker,omitnil,omitempty" name:"Locker"`
 
-	// 实例目前运行状态描述
+	// <p>实例目前运行状态描述</p>
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
-	// 外网状态，0-未开通；1-已开通；2-关闭；3-开通中
+	// <p>外网状态，0-未开通；1-已开通；2-关闭；3-开通中</p>
 	WanStatus *int64 `json:"WanStatus,omitnil,omitempty" name:"WanStatus"`
 
-	// 该实例是否支持审计。1-支持；0-不支持
+	// <p>该实例是否支持审计。1-支持；0-不支持</p>
 	IsAuditSupported *uint64 `json:"IsAuditSupported,omitnil,omitempty" name:"IsAuditSupported"`
 
-	// 机器型号
+	// <p>机器型号</p>
 	Machine *string `json:"Machine,omitnil,omitempty" name:"Machine"`
 
-	// 是否支持数据加密。1-支持；0-不支持
+	// <p>是否支持数据加密。1-支持；0-不支持</p>
 	IsEncryptSupported *int64 `json:"IsEncryptSupported,omitnil,omitempty" name:"IsEncryptSupported"`
 
-	// 实例CPU核数
+	// <p>实例CPU核数</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 实例IPv6标志
+	// <p>实例IPv6标志</p>
 	Ipv6Flag *uint64 `json:"Ipv6Flag,omitnil,omitempty" name:"Ipv6Flag"`
 
-	// 内网IPv6
+	// <p>内网IPv6</p>
 	Vipv6 *string `json:"Vipv6,omitnil,omitempty" name:"Vipv6"`
 
-	// 外网IPv6
+	// <p>外网IPv6</p>
 	WanVipv6 *string `json:"WanVipv6,omitnil,omitempty" name:"WanVipv6"`
 
-	// 外网IPv6端口
+	// <p>外网IPv6端口</p>
 	WanPortIpv6 *uint64 `json:"WanPortIpv6,omitnil,omitempty" name:"WanPortIpv6"`
 
-	// 外网IPv6状态
+	// <p>外网IPv6状态</p>
 	WanStatusIpv6 *uint64 `json:"WanStatusIpv6,omitnil,omitempty" name:"WanStatusIpv6"`
 
-	// 数据库引擎
+	// <p>数据库引擎</p>
 	DbEngine *string `json:"DbEngine,omitnil,omitempty" name:"DbEngine"`
 
-	// 数据库版本
+	// <p>数据库版本</p>
 	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 
-	// DCN标志，0-无，1-主实例，2-灾备实例
+	// <p>DCN标志，0-无，1-主实例，2-灾备实例</p>
 	DcnFlag *int64 `json:"DcnFlag,omitnil,omitempty" name:"DcnFlag"`
 
-	// DCN状态，0-无，1-创建中，2-同步中，3-已断开
+	// <p>DCN状态，0-无，1-创建中，2-同步中，3-已断开</p>
 	DcnStatus *int64 `json:"DcnStatus,omitnil,omitempty" name:"DcnStatus"`
 
-	// DCN灾备实例数
+	// <p>DCN灾备实例数</p>
 	DcnDstNum *int64 `json:"DcnDstNum,omitnil,omitempty" name:"DcnDstNum"`
 
-	// 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
+	// <p>1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）</p>
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例标签信息
+	// <p>实例标签信息</p>
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 数据库版本
+	// <p>数据库版本</p>
 	DbVersionId *string `json:"DbVersionId,omitnil,omitempty" name:"DbVersionId"`
 
-	// 实例删除保护标签，1: 已开启删除保护，0: 未开启删除保护
+	// <p>实例删除保护标签，1: 已开启删除保护，0: 未开启删除保护</p>
 	ProtectedProperty *int64 `json:"ProtectedProperty,omitnil,omitempty" name:"ProtectedProperty"`
 }
 
@@ -2360,14 +2360,14 @@ func (r *DescribeDBEncryptAttributesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstanceDetailRequestParams struct {
-	// 实例Id形如：tdsql-ow728lmc。
+	// <p>实例Id形如：tdsql-ow728lmc。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeDBInstanceDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id形如：tdsql-ow728lmc。
+	// <p>实例Id形如：tdsql-ow728lmc。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -2392,195 +2392,195 @@ func (r *DescribeDBInstanceDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstanceDetailResponseParams struct {
-	// 实例Id
+	// <p>实例Id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例状态
+	// <p>实例状态</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 实例目前运行状态描述
+	// <p>实例目前运行状态描述</p>
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
-	// 内网 IP 地址
+	// <p>内网 IP 地址</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 内网端口
+	// <p>内网端口</p>
 	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// 是否临时实例，0为否，非0为是
+	// <p>是否临时实例，0为否，非0为是</p>
 	IsTmp *int64 `json:"IsTmp,omitnil,omitempty" name:"IsTmp"`
 
-	// 节点数，2为一主一从，3为一主二从
+	// <p>节点数，2为一主一从，3为一主二从</p>
 	NodeCount *int64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
 
-	// 实例所在地域名称，如 ap-shanghai
+	// <p>实例所在地域名称，如 ap-shanghai</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 实例所在可用区名称，如 ap-shanghai-1
+	// <p>实例所在可用区名称，如 ap-shanghai-2</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 字符串型的私有网络Id
+	// <p>字符串型的私有网络Id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 字符串型的私有网络子网Id
+	// <p>字符串型的私有网络子网Id</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中
+	// <p>外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中</p>
 	WanStatus *int64 `json:"WanStatus,omitnil,omitempty" name:"WanStatus"`
 
-	// 外网访问的域名，公网可解析
+	// <p>外网访问的域名，公网可解析</p>
 	WanDomain *string `json:"WanDomain,omitnil,omitempty" name:"WanDomain"`
 
-	// 外网 IP 地址，公网可访问
+	// <p>外网 IP 地址，公网可访问</p>
 	WanVip *string `json:"WanVip,omitnil,omitempty" name:"WanVip"`
 
-	// 外网端口
+	// <p>外网端口</p>
 	WanPort *int64 `json:"WanPort,omitnil,omitempty" name:"WanPort"`
 
-	// 实例所属项目 Id
+	// <p>实例所属项目 Id</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// TDSQL 版本信息
+	// <p>TDSQL 版本信息</p>
 	TdsqlVersion *string `json:"TdsqlVersion,omitnil,omitempty" name:"TdsqlVersion"`
 
-	// 实例内存大小，单位 GB
+	// <p>实例内存大小，单位 GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例存储大小，单位 GB
+	// <p>实例存储大小，单位 GB</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 主可用区，如 ap-shanghai-1
+	// <p>主可用区，如 ap-shanghai-2</p>
 	MasterZone *string `json:"MasterZone,omitnil,omitempty" name:"MasterZone"`
 
-	// 从可用区列表，如 [ap-shanghai-2]
+	// <p>从可用区列表，如 [ap-shanghai-2]</p>
 	SlaveZones []*string `json:"SlaveZones,omitnil,omitempty" name:"SlaveZones"`
 
-	// 自动续费标志：0 否，1 是
+	// <p>自动续费标志：0 否，1 是</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 独享集群Id，普通实例为空
+	// <p>独享集群Id，普通实例为空</p>
 	ExclusterId *string `json:"ExclusterId,omitnil,omitempty" name:"ExclusterId"`
 
-	// 付费模式：prepaid 表示预付费
+	// <p>付费模式：prepaid 表示预付费</p>
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 实例创建时间，格式为 2006-01-02 15:04:05
+	// <p>实例创建时间，格式为 2006-01-02 15:04:05</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 实例是否支持审计
+	// <p>实例是否支持审计</p>
 	IsAuditSupported *bool `json:"IsAuditSupported,omitnil,omitempty" name:"IsAuditSupported"`
 
-	// 实例到期时间，格式为 2006-01-02 15:04:05
+	// <p>实例到期时间，格式为 2006-01-02 15:04:05</p>
 	PeriodEndTime *string `json:"PeriodEndTime,omitnil,omitempty" name:"PeriodEndTime"`
 
-	// 机型信息
+	// <p>机型信息</p>
 	Machine *string `json:"Machine,omitnil,omitempty" name:"Machine"`
 
-	// 存储空间使用率
+	// <p>存储空间使用率</p>
 	StorageUsage *string `json:"StorageUsage,omitnil,omitempty" name:"StorageUsage"`
 
-	// 日志存储空间大小，单位 GB
+	// <p>日志存储空间大小，单位 GB</p>
 	LogStorage *int64 `json:"LogStorage,omitnil,omitempty" name:"LogStorage"`
 
-	// 是否支持数据加密。1-支持；0-不支持
+	// <p>是否支持数据加密。1-支持；0-不支持</p>
 	IsEncryptSupported *int64 `json:"IsEncryptSupported,omitnil,omitempty" name:"IsEncryptSupported"`
 
-	// 内网IPv6
+	// <p>内网IPv6</p>
 	Vip6 *string `json:"Vip6,omitnil,omitempty" name:"Vip6"`
 
-	// 实例Cpu核数
+	// <p>实例Cpu核数</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 产品类型ID
+	// <p>产品类型ID</p>
 	Pid *int64 `json:"Pid,omitnil,omitempty" name:"Pid"`
 
-	// 最大QPS
+	// <p>最大QPS</p>
 	Qps *int64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
-	// 是否支持IPv6
+	// <p>是否支持IPv6</p>
 	Ipv6Flag *int64 `json:"Ipv6Flag,omitnil,omitempty" name:"Ipv6Flag"`
 
-	// 外网IPv6地址，公网可访问
+	// <p>外网IPv6地址，公网可访问</p>
 	WanVipv6 *string `json:"WanVipv6,omitnil,omitempty" name:"WanVipv6"`
 
-	// 外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中
+	// <p>外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中</p>
 	WanStatusIpv6 *int64 `json:"WanStatusIpv6,omitnil,omitempty" name:"WanStatusIpv6"`
 
-	// 外网IPv6端口
+	// <p>外网IPv6端口</p>
 	WanPortIpv6 *int64 `json:"WanPortIpv6,omitnil,omitempty" name:"WanPortIpv6"`
 
-	// 数据库引擎
+	// <p>数据库引擎</p>
 	DbEngine *string `json:"DbEngine,omitnil,omitempty" name:"DbEngine"`
 
-	// 数据库版本
+	// <p>数据库版本</p>
 	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 
-	// 标签信息
+	// <p>标签信息</p>
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// DCN标志，0-无，1-主实例，2-灾备实例
+	// <p>DCN标志，0-无，1-主实例，2-灾备实例</p>
 	DcnFlag *int64 `json:"DcnFlag,omitnil,omitempty" name:"DcnFlag"`
 
-	// DCN状态，0-无，1-创建中，2-同步中，3-已断开
+	// <p>DCN状态，0-无，1-创建中，2-同步中，3-已断开</p>
 	DcnStatus *int64 `json:"DcnStatus,omitnil,omitempty" name:"DcnStatus"`
 
-	// DCN灾备实例数
+	// <p>DCN灾备实例数</p>
 	DcnDstNum *int64 `json:"DcnDstNum,omitnil,omitempty" name:"DcnDstNum"`
 
-	// 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
+	// <p>1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）</p>
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例的各个DB节点信息
+	// <p>实例的各个DB节点信息</p>
 	NodesInfo []*NodeInfo `json:"NodesInfo,omitnil,omitempty" name:"NodesInfo"`
 
-	// 实例是否支持设置用户连接数限制，内核为10.1暂不支持。
+	// <p>实例是否支持设置用户连接数限制，内核为10.1暂不支持。</p>
 	IsMaxUserConnectionsSupported *bool `json:"IsMaxUserConnectionsSupported,omitnil,omitempty" name:"IsMaxUserConnectionsSupported"`
 
-	// 对外显示的数据库版本
+	// <p>对外显示的数据库版本</p>
 	DbVersionId *string `json:"DbVersionId,omitnil,omitempty" name:"DbVersionId"`
 
-	// 加密状态, 0-未开启，1-已开启
+	// <p>加密状态, 0-未开启，1-已开启</p>
 	EncryptStatus *int64 `json:"EncryptStatus,omitnil,omitempty" name:"EncryptStatus"`
 
-	// DCN的配置信息
+	// <p>DCN的配置信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplicaConfig *DCNReplicaConfig `json:"ReplicaConfig,omitnil,omitempty" name:"ReplicaConfig"`
 
-	// DCN的运行状态
+	// <p>DCN的运行状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplicaStatus *DCNReplicaStatus `json:"ReplicaStatus,omitnil,omitempty" name:"ReplicaStatus"`
 
-	// 独享集群类型，0:公有云, 1:金融围笼, 2:CDC集群
+	// <p>独享集群类型，0:公有云, 1:金融围笼, 2:CDC集群</p>
 	ExclusterType *int64 `json:"ExclusterType,omitnil,omitempty" name:"ExclusterType"`
 
-	// VPC就近访问
+	// <p>VPC就近访问</p>
 	RsAccessStrategy *int64 `json:"RsAccessStrategy,omitnil,omitempty" name:"RsAccessStrategy"`
 
-	// 尚未回收的网络资源
+	// <p>尚未回收的网络资源</p>
 	ReservedNetResources []*ReservedNetResource `json:"ReservedNetResources,omitnil,omitempty" name:"ReservedNetResources"`
 
-	// 是否支持物理复制
+	// <p>是否支持物理复制</p>
 	IsPhysicalReplicationSupported *bool `json:"IsPhysicalReplicationSupported,omitnil,omitempty" name:"IsPhysicalReplicationSupported"`
 
-	// 是否支持强同步DCN
+	// <p>是否支持强同步DCN</p>
 	IsDcnStrongSyncSupported *int64 `json:"IsDcnStrongSyncSupported,omitnil,omitempty" name:"IsDcnStrongSyncSupported"`
 
-	// 是否支持DCN切换
+	// <p>是否支持DCN切换</p>
 	IsDcnSwitchSupported *int64 `json:"IsDcnSwitchSupported,omitnil,omitempty" name:"IsDcnSwitchSupported"`
 
-	// proxy版本号
+	// <p>proxy版本号</p>
 	ProxyVersion *string `json:"ProxyVersion,omitnil,omitempty" name:"ProxyVersion"`
 
-	// Cpu类型，如：英特尔：Intel/AMD，海光：Hygon
+	// <p>Cpu类型，如：英特尔：Intel/AMD，海光：Hygon</p>
 	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 
-	// 删除保护标记，1: 已开启删除保护，0: 未开启删除保护
+	// <p>删除保护标记，1: 已开启删除保护，0: 未开启删除保护</p>
 	ProtectedProperty *int64 `json:"ProtectedProperty,omitnil,omitempty" name:"ProtectedProperty"`
 
-	// 流程Id，标志实例当前所处的异步任务
+	// <p>流程Id，标志实例当前所处的异步任务</p>
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

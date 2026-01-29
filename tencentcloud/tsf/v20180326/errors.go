@@ -200,6 +200,9 @@ const (
 	// 泳道发布到mesh失败。
 	FAILEDOPERATION_LANEINFORELEASEMESHFAILED = "FailedOperation.LaneInfoReleaseMeshFailed"
 
+	// 全链路灰度规则创建失败
+	FAILEDOPERATION_LANERULECREATEFAILED = "FailedOperation.LaneRuleCreateFailed"
+
 	// 全链路灰度规则启用失败。
 	FAILEDOPERATION_LANERULEENABLECONSULFAILED = "FailedOperation.LaneRuleEnableConsulFailed"
 

@@ -1847,6 +1847,17 @@ type DatabasesInfo struct {
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
+type DbInstance struct {
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// MySQL 连接器实例 ID；`"default"` 或为空表示使用 TCB 环境的默认连接器
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 数据库名；为空时使用连接器配置的默认数据库名
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+}
+
 // Predefined struct for user
 type DeleteCloudBaseProjectLatestVersionRequestParams struct {
 	// 环境id
@@ -6440,40 +6451,6 @@ type KVPair struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
-type LogObject struct {
-	// 日志属于的 topic ID
-	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
-
-	// 日志主题的名字
-	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
-
-	// 日志时间
-	Timestamp *string `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
-
-	// 日志内容
-	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
-
-	// 采集路径
-	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
-
-	// 日志来源设备
-	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
-}
-
-type LogResObject struct {
-	// 获取更多检索结果的游标
-	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
-
-	// 搜索结果是否已经全部返回
-	ListOver *bool `json:"ListOver,omitnil,omitempty" name:"ListOver"`
-
-	// 日志内容信息
-	Results []*LogObject `json:"Results,omitnil,omitempty" name:"Results"`
-
-	// 日志聚合结果
-	AnalysisRecords []*string `json:"AnalysisRecords,omitnil,omitempty" name:"AnalysisRecords"`
-}
-
 type LogServiceInfo struct {
 	// log名
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
@@ -7241,108 +7218,86 @@ func (r *ReplaceActivityRecordResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type SearchClsLogRequestParams struct {
-	// 环境唯一ID
+type RunSqlRequestParams struct {
+	// 要执行的SQL语句
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// 云开发环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 查询起始时间条件
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+	// 数据库连接器实例信息
+	DbInstance *DbInstance `json:"DbInstance,omitnil,omitempty" name:"DbInstance"`
 
-	// 查询结束时间条件
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// 查询语句，详情参考 https://cloud.tencent.com/document/product/614/47044
-	QueryString *string `json:"QueryString,omitnil,omitempty" name:"QueryString"`
-
-	// 单次要返回的日志条数，单次返回的最大条数为100
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 加载更多使用，透传上次返回的 context 值，获取后续的日志内容，通过游标最多可获取10000条，请尽可能缩小时间范围
-	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
-
-	// 按时间排序 asc（升序）或者 desc（降序），默认为 desc
-	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
-
-	// 是否使用Lucene语法，默认为false
-	UseLucene *bool `json:"UseLucene,omitnil,omitempty" name:"UseLucene"`
+	// 是否只读；当 `true` 时仅允许以 `SELECT/WITH/SHOW/DESCRIBE/DESC/EXPLAIN` 开头的 SQL
+	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 }
 
-type SearchClsLogRequest struct {
+type RunSqlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 环境唯一ID
+	// 要执行的SQL语句
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// 云开发环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 查询起始时间条件
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+	// 数据库连接器实例信息
+	DbInstance *DbInstance `json:"DbInstance,omitnil,omitempty" name:"DbInstance"`
 
-	// 查询结束时间条件
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// 查询语句，详情参考 https://cloud.tencent.com/document/product/614/47044
-	QueryString *string `json:"QueryString,omitnil,omitempty" name:"QueryString"`
-
-	// 单次要返回的日志条数，单次返回的最大条数为100
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 加载更多使用，透传上次返回的 context 值，获取后续的日志内容，通过游标最多可获取10000条，请尽可能缩小时间范围
-	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
-
-	// 按时间排序 asc（升序）或者 desc（降序），默认为 desc
-	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
-
-	// 是否使用Lucene语法，默认为false
-	UseLucene *bool `json:"UseLucene,omitnil,omitempty" name:"UseLucene"`
+	// 是否只读；当 `true` 时仅允许以 `SELECT/WITH/SHOW/DESCRIBE/DESC/EXPLAIN` 开头的 SQL
+	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 }
 
-func (r *SearchClsLogRequest) ToJsonString() string {
+func (r *RunSqlRequest) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *SearchClsLogRequest) FromJsonString(s string) error {
+func (r *RunSqlRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Sql")
 	delete(f, "EnvId")
-	delete(f, "StartTime")
-	delete(f, "EndTime")
-	delete(f, "QueryString")
-	delete(f, "Limit")
-	delete(f, "Context")
-	delete(f, "Sort")
-	delete(f, "UseLucene")
+	delete(f, "DbInstance")
+	delete(f, "ReadOnly")
 	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchClsLogRequest has unknown keys!", "")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunSqlRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
-type SearchClsLogResponseParams struct {
-	// 日志内容结果
-	LogResults *LogResObject `json:"LogResults,omitnil,omitempty" name:"LogResults"`
+type RunSqlResponseParams struct {
+	// 查询结果行，每个元素为 JSON 字符串
+	Items []*string `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 列元数据信息，每个元素为 JSON 字符串，字段包含 `name/databaseType/nullable/length/precision/scale`
+	Infos []*string `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// 受影响的行数（INSERT/UPDATE/DELETE 等语句）
+	RowsAffected *int64 `json:"RowsAffected,omitnil,omitempty" name:"RowsAffected"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
-type SearchClsLogResponse struct {
+type RunSqlResponse struct {
 	*tchttp.BaseResponse
-	Response *SearchClsLogResponseParams `json:"Response"`
+	Response *RunSqlResponseParams `json:"Response"`
 }
 
-func (r *SearchClsLogResponse) ToJsonString() string {
+func (r *RunSqlResponse) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *SearchClsLogResponse) FromJsonString(s string) error {
+func (r *RunSqlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

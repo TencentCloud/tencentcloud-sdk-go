@@ -101,17 +101,26 @@ const (
 	// 场景ID格式非法
 	INVALIDPARAMETERVALUE_INVALIDSCENEIDMALFORMED = "InvalidParameterValue.InvalidSceneIdMalformed"
 
+	// 服务ID格式错误
+	INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
+
 	// 地域非法
 	INVALIDPARAMETERVALUE_REGIONINVALID = "InvalidParameterValue.RegionInvalid"
 
 	// 无法找到指定的安全组
 	INVALIDPARAMETERVALUE_SECURITYGROUPNOTFOUND = "InvalidParameterValue.SecurityGroupNotFound"
 
+	// 服务ID不存在
+	INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"
+
 	// 入参中若存在子网ID，则必须同时存在VPC ID。
 	INVALIDPARAMETERVALUE_SUBNETMUSTCOEXISTWITHVPC = "InvalidParameterValue.SubnetMustCoexistWithVpc"
 
 	// 无法找到指定的子网，或该子网不属于指定的VPC
 	INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+
+	// 目标副本数不能与运行中副本数相同
+	INVALIDPARAMETERVALUE_TARGETREPLICASMUSTDIFFERFROMRUNNINGREPLICAS = "InvalidParameterValue.TargetReplicasMustDifferFromRunningReplicas"
 
 	// 无法找到指定的VPC
 	INVALIDPARAMETERVALUE_VPCNOTFOUND = "InvalidParameterValue.VpcNotFound"
@@ -124,6 +133,9 @@ const (
 
 	// 指定实例有正在执行的操作，不能执行新的操作
 	OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+
+	// 指定服务有正在执行的操作，不能执行新的操作
+	OPERATIONDENIED_SERVICEOPERATIONINPROGRESS = "OperationDenied.ServiceOperationInProgress"
 
 	// 指定的算力套餐库存不足
 	RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"

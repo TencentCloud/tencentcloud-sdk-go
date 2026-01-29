@@ -155,6 +155,12 @@ type License struct {
 
 	// <p>License 颁发地址</p>
 	IssueURL *string `json:"IssueURL,omitnil,omitempty" name:"IssueURL"`
+
+	// <p>商品供应商 UIN</p>
+	ProviderUin *string `json:"ProviderUin,omitnil,omitempty" name:"ProviderUin"`
+
+	// <p>License 创建来源 ID</p>
+	CreateSource *string `json:"CreateSource,omitnil,omitempty" name:"CreateSource"`
 }
 
 type LicenseData struct {

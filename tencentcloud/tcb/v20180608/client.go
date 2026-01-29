@@ -3801,70 +3801,70 @@ func (c *Client) ReplaceActivityRecordWithContext(ctx context.Context, request *
     return
 }
 
-func NewSearchClsLogRequest() (request *SearchClsLogRequest) {
-    request = &SearchClsLogRequest{
+func NewRunSqlRequest() (request *RunSqlRequest) {
+    request = &RunSqlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("tcb", APIVersion, "SearchClsLog")
+    request.Init().WithApiInfo("tcb", APIVersion, "RunSql")
     
     
     return
 }
 
-func NewSearchClsLogResponse() (response *SearchClsLogResponse) {
-    response = &SearchClsLogResponse{
+func NewRunSqlResponse() (response *RunSqlResponse) {
+    response = &RunSqlResponse{
         BaseResponse: &tchttp.BaseResponse{},
     } 
     return
 
 }
 
-// SearchClsLog
-// 搜索CLS日志，TCB角色密钥访问
+// RunSql
+// 执行SQL语句
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
-//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
-//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
-//  FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
-//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
-func (c *Client) SearchClsLog(request *SearchClsLogRequest) (response *SearchClsLogResponse, err error) {
-    return c.SearchClsLogWithContext(context.Background(), request)
+//  FAILEDOPERATION_DATABASECONNECTERROR = "FailedOperation.DatabaseConnectError"
+//  FAILEDOPERATION_DATABASEEXECSQLERROR = "FailedOperation.DatabaseExecSqlError"
+//  FAILEDOPERATION_DATABASESCHEMAERROR = "FailedOperation.DatabaseSchemaError"
+//  FAILEDOPERATION_EMPTYDATABASEENDPOINT = "FailedOperation.EmptyDatabaseEndpoint"
+//  FAILEDOPERATION_TDSQLPAUSED = "FailedOperation.TdsqlPaused"
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_TABLENOTFOUND = "ResourceNotFound.TableNotFound"
+//  UNSUPPORTEDOPERATION_TOOMANYTABLES = "UnsupportedOperation.TooManyTables"
+func (c *Client) RunSql(request *RunSqlRequest) (response *RunSqlResponse, err error) {
+    return c.RunSqlWithContext(context.Background(), request)
 }
 
-// SearchClsLog
-// 搜索CLS日志，TCB角色密钥访问
+// RunSql
+// 执行SQL语句
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
-//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
-//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
-//  FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
-//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
-func (c *Client) SearchClsLogWithContext(ctx context.Context, request *SearchClsLogRequest) (response *SearchClsLogResponse, err error) {
+//  FAILEDOPERATION_DATABASECONNECTERROR = "FailedOperation.DatabaseConnectError"
+//  FAILEDOPERATION_DATABASEEXECSQLERROR = "FailedOperation.DatabaseExecSqlError"
+//  FAILEDOPERATION_DATABASESCHEMAERROR = "FailedOperation.DatabaseSchemaError"
+//  FAILEDOPERATION_EMPTYDATABASEENDPOINT = "FailedOperation.EmptyDatabaseEndpoint"
+//  FAILEDOPERATION_TDSQLPAUSED = "FailedOperation.TdsqlPaused"
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_TABLENOTFOUND = "ResourceNotFound.TableNotFound"
+//  UNSUPPORTEDOPERATION_TOOMANYTABLES = "UnsupportedOperation.TooManyTables"
+func (c *Client) RunSqlWithContext(ctx context.Context, request *RunSqlRequest) (response *RunSqlResponse, err error) {
     if request == nil {
-        request = NewSearchClsLogRequest()
+        request = NewRunSqlRequest()
     }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "SearchClsLog")
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "RunSql")
     
     if c.GetCredential() == nil {
-        return nil, errors.New("SearchClsLog require credential")
+        return nil, errors.New("RunSql require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewSearchClsLogResponse()
+    response = NewRunSqlResponse()
     err = c.Send(request, response)
     return
 }

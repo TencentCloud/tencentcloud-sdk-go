@@ -10037,7 +10037,6 @@ type ZoneInfo struct {
 	// <li> ap-shanghai-fsi-3 </li>
 	// <li> ap-bangkok-1 </li>
 	// <li> ap-bangkok-2 </li>
-	// <li> ap-shanghai-1（售罄） </li>
 	// <li> ap-shanghai-2 </li>
 	// <li> ap-shanghai-3 </li>
 	// <li> ap-shanghai-4 </li>
@@ -10046,7 +10045,6 @@ type ZoneInfo struct {
 	// <li> ap-mumbai-1 </li>
 	// <li> ap-mumbai-2 </li>
 	// <li> ap-beijing-1（售罄）</li>
-	// <li> ap-beijing-2 </li>
 	// <li> ap-beijing-3 </li>
 	// <li> ap-beijing-4 </li>
 	// <li> ap-beijing-5 </li>

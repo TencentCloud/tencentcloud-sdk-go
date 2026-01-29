@@ -653,6 +653,118 @@ func (c *Client) DescribeSandboxToolListWithContext(ctx context.Context, request
     return
 }
 
+func NewPauseSandboxInstanceRequest() (request *PauseSandboxInstanceRequest) {
+    request = &PauseSandboxInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ags", APIVersion, "PauseSandboxInstance")
+    
+    
+    return
+}
+
+func NewPauseSandboxInstanceResponse() (response *PauseSandboxInstanceResponse) {
+    response = &PauseSandboxInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PauseSandboxInstance
+// 暂停沙箱实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_SANDBOXINSTANCE = "ResourceNotFound.SandboxInstance"
+func (c *Client) PauseSandboxInstance(request *PauseSandboxInstanceRequest) (response *PauseSandboxInstanceResponse, err error) {
+    return c.PauseSandboxInstanceWithContext(context.Background(), request)
+}
+
+// PauseSandboxInstance
+// 暂停沙箱实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_SANDBOXINSTANCE = "ResourceNotFound.SandboxInstance"
+func (c *Client) PauseSandboxInstanceWithContext(ctx context.Context, request *PauseSandboxInstanceRequest) (response *PauseSandboxInstanceResponse, err error) {
+    if request == nil {
+        request = NewPauseSandboxInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ags", APIVersion, "PauseSandboxInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PauseSandboxInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPauseSandboxInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResumeSandboxInstanceRequest() (request *ResumeSandboxInstanceRequest) {
+    request = &ResumeSandboxInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ags", APIVersion, "ResumeSandboxInstance")
+    
+    
+    return
+}
+
+func NewResumeSandboxInstanceResponse() (response *ResumeSandboxInstanceResponse) {
+    response = &ResumeSandboxInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResumeSandboxInstance
+// 恢复沙箱实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_SANDBOXINSTANCE = "ResourceNotFound.SandboxInstance"
+func (c *Client) ResumeSandboxInstance(request *ResumeSandboxInstanceRequest) (response *ResumeSandboxInstanceResponse, err error) {
+    return c.ResumeSandboxInstanceWithContext(context.Background(), request)
+}
+
+// ResumeSandboxInstance
+// 恢复沙箱实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_SANDBOXINSTANCE = "ResourceNotFound.SandboxInstance"
+func (c *Client) ResumeSandboxInstanceWithContext(ctx context.Context, request *ResumeSandboxInstanceRequest) (response *ResumeSandboxInstanceResponse, err error) {
+    if request == nil {
+        request = NewResumeSandboxInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ags", APIVersion, "ResumeSandboxInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResumeSandboxInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResumeSandboxInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartSandboxInstanceRequest() (request *StartSandboxInstanceRequest) {
     request = &StartSandboxInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

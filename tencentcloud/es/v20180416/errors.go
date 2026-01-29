@@ -584,6 +584,9 @@ const (
 	// 不支持变配节点或磁盘的配置。
 	UNSUPPORTEDOPERATION_CHANGENODETYPE = "UnsupportedOperation.ChangeNodeType"
 
+	// 集群开启了saml登录，不能直接从https调整到http协议
+	UNSUPPORTEDOPERATION_CLOSEHTTPSWITHSAML = "UnsupportedOperation.CloseHttpsWithSaml"
+
 	// 不支持该操作，在集群中存在分配的分片。
 	UNSUPPORTEDOPERATION_CLUSTERSHARDNUM = "UnsupportedOperation.ClusterShardNum"
 

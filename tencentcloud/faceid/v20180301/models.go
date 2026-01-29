@@ -3313,42 +3313,38 @@ func (r *IdCardVerificationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ImageRecognitionRequestParams struct {
-	// 身份证号
+	// <p>身份证号</p>
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名。中文请使用UTF-8编码。
+	// <p>姓名。中文请使用UTF-8编码。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 用于人脸比对的照片，图片的Base64值；
-	// Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
-	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	// <p>用于人脸比对的照片，图片的Base64值；<br>Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。<br>请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 本接口不需要传递此参数。
+	// <p>本接口不需要传递此参数。</p>
 	Optional *string `json:"Optional,omitnil,omitempty" name:"Optional"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// <p>敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。</p>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type ImageRecognitionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 身份证号
+	// <p>身份证号</p>
 	IdCard *string `json:"IdCard,omitnil,omitempty" name:"IdCard"`
 
-	// 姓名。中文请使用UTF-8编码。
+	// <p>姓名。中文请使用UTF-8编码。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 用于人脸比对的照片，图片的Base64值；
-	// Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
-	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+	// <p>用于人脸比对的照片，图片的Base64值；<br>Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。<br>请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 本接口不需要传递此参数。
+	// <p>本接口不需要传递此参数。</p>
 	Optional *string `json:"Optional,omitnil,omitempty" name:"Optional"`
 
-	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// <p>敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。</p>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -3377,13 +3373,13 @@ func (r *ImageRecognitionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ImageRecognitionResponseParams struct {
-	// 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
+	// <p>相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）</p>
 	Sim *float64 `json:"Sim,omitnil,omitempty" name:"Sim"`
 
-	// 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+	// <p>业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 业务结果描述。
+	// <p>业务结果描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -12174,12 +12174,14 @@ type DescribeTimingL4DataRequestParams struct {
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 查询指标，取值有：
-	// <li>l4Flow_connections: 访问并发连接数；</li>
-	// <li>l4Flow_flux: 访问总流量；</li>
-	// <li>l4Flow_inFlux: 访问入流量；</li>
-	// <li>l4Flow_outFlux: 访问出流量；</li>
-	// <li>l4Flow_inBandwidth: 访问入向带宽峰值；</li>
-	// <li>l4Flow_outBandwidth: 访问出向带宽峰值。</li>
+	// <ul><li>**l4Flow_flux**: 访问总流量，单位：Byte，指标值类型：Integer；</li>
+	// <li>**l4Flow_inFlux**: 访问入流量，单位：Byte，指标值类型：Integer；</li>
+	// <li>**l4Flow_outFlux**: 访问出流量，单位：Byte，指标值类型：Integer；</li>
+	// <li>**l4Flow_inBandwidth**: 访问入向带宽峰值，单位：bps，指标值类型：Integer；</li>
+	// <li>**l4Flow_outBandwidth**: 访问出向带宽峰值，单位：bps，指标值类型：Integer；</li>
+	// <li>**l4Flow_connections**: 访问并发连接数，单位：个，指标值类型：Integer ；</li>
+	// <li>**l4Flow_newConnectionsRate**: 新建连接数速率，单位：个/秒，指标值类型： Float，保留两位小数。</li></ul>**注意**：<ul><li><code> Integer</code> 值类型的指标将从  <code>Data.N.TypeValue</code> 返回对应时序数据；</li>
+	// <li><code>Float</code> 值类型的指标将从 <code>Data.N.FloatTypeValue</code> 返回对应时序数据。</li></ul>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
 	// 站点ID，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。
@@ -12190,18 +12192,20 @@ type DescribeTimingL4DataRequestParams struct {
 	ProxyIds []*string `json:"ProxyIds,omitnil,omitempty" name:"ProxyIds"`
 
 	// 查询时间粒度，取值有：
-	// <li>min: 1分钟 ；</li>
-	// <li>5min: 5分钟 ；</li>
-	// <li>hour: 1小时 ；</li>
-	// <li>day: 1天 。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：1小时范围内以min粒度查询，2天范围内以5min粒度查询，7天范围内以hour粒度查询，超过7天以day粒度查询。
+	// <ul><li>**min**: 1分钟 ；</li>
+	// <li>**5min**: 5分钟 ；</li>
+	// <li>**hour**: 1小时 ；</li>
+	// <li>**day**: 1天 。</li></ul>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：1小时范围内以 <code>min</code> 粒度查询，2天范围内以 <code>5min</code> 粒度查询，7天范围内以 <code>hour</code> 粒度查询，超过7天以 <code>day</code> 粒度查询。
 	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
 
 	// 过滤条件，详细的过滤条件Key值如下：
-	// <li>ruleId：按照转发规则 ID 进行过滤。</li>
-	// <li>proxyId：按照四层代理实例 ID 进行过滤。</li>
+	// <ul><li>**ruleId**：按照转发规则 ID 进行过滤。</li>
+	// <li>**proxyId**：按照四层代理实例 ID 进行过滤。</li></ul>
 	Filters []*QueryCondition `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 数据归属地区。该参数已废弃。请在 Filters.country 中按客户端地域过滤数据。
+	//
+	// Deprecated: Area is deprecated.
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 }
 
@@ -12215,12 +12219,14 @@ type DescribeTimingL4DataRequest struct {
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 查询指标，取值有：
-	// <li>l4Flow_connections: 访问并发连接数；</li>
-	// <li>l4Flow_flux: 访问总流量；</li>
-	// <li>l4Flow_inFlux: 访问入流量；</li>
-	// <li>l4Flow_outFlux: 访问出流量；</li>
-	// <li>l4Flow_inBandwidth: 访问入向带宽峰值；</li>
-	// <li>l4Flow_outBandwidth: 访问出向带宽峰值。</li>
+	// <ul><li>**l4Flow_flux**: 访问总流量，单位：Byte，指标值类型：Integer；</li>
+	// <li>**l4Flow_inFlux**: 访问入流量，单位：Byte，指标值类型：Integer；</li>
+	// <li>**l4Flow_outFlux**: 访问出流量，单位：Byte，指标值类型：Integer；</li>
+	// <li>**l4Flow_inBandwidth**: 访问入向带宽峰值，单位：bps，指标值类型：Integer；</li>
+	// <li>**l4Flow_outBandwidth**: 访问出向带宽峰值，单位：bps，指标值类型：Integer；</li>
+	// <li>**l4Flow_connections**: 访问并发连接数，单位：个，指标值类型：Integer ；</li>
+	// <li>**l4Flow_newConnectionsRate**: 新建连接数速率，单位：个/秒，指标值类型： Float，保留两位小数。</li></ul>**注意**：<ul><li><code> Integer</code> 值类型的指标将从  <code>Data.N.TypeValue</code> 返回对应时序数据；</li>
+	// <li><code>Float</code> 值类型的指标将从 <code>Data.N.FloatTypeValue</code> 返回对应时序数据。</li></ul>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
 	// 站点ID，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。
@@ -12231,15 +12237,15 @@ type DescribeTimingL4DataRequest struct {
 	ProxyIds []*string `json:"ProxyIds,omitnil,omitempty" name:"ProxyIds"`
 
 	// 查询时间粒度，取值有：
-	// <li>min: 1分钟 ；</li>
-	// <li>5min: 5分钟 ；</li>
-	// <li>hour: 1小时 ；</li>
-	// <li>day: 1天 。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：1小时范围内以min粒度查询，2天范围内以5min粒度查询，7天范围内以hour粒度查询，超过7天以day粒度查询。
+	// <ul><li>**min**: 1分钟 ；</li>
+	// <li>**5min**: 5分钟 ；</li>
+	// <li>**hour**: 1小时 ；</li>
+	// <li>**day**: 1天 。</li></ul>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：1小时范围内以 <code>min</code> 粒度查询，2天范围内以 <code>5min</code> 粒度查询，7天范围内以 <code>hour</code> 粒度查询，超过7天以 <code>day</code> 粒度查询。
 	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
 
 	// 过滤条件，详细的过滤条件Key值如下：
-	// <li>ruleId：按照转发规则 ID 进行过滤。</li>
-	// <li>proxyId：按照四层代理实例 ID 进行过滤。</li>
+	// <ul><li>**ruleId**：按照转发规则 ID 进行过滤。</li>
+	// <li>**proxyId**：按照四层代理实例 ID 进行过滤。</li></ul>
 	Filters []*QueryCondition `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 数据归属地区。该参数已废弃。请在 Filters.country 中按客户端地域过滤数据。
@@ -12277,7 +12283,8 @@ type DescribeTimingL4DataResponseParams struct {
 	// 查询结果的总条数。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 四层时序流量数据列表。
+	// <p>四层时序流量数据列表。<br>对于不同的查询指标，根据指标值类型的不同，会从不同的参数返回时序数据。<br>目前存在的值类型有以下两种：</p><ul><li><strong>Integer</strong>：<code>Integer</code> 值类型的指标将从 <code>Data.N.TypeValue</code> 返回对应时序数据。<br>对应的查询指标 <code>MetricName</code> 有：<ul><li><code>l4Flow_flux</code>：访问总流量；</li><li><code>l4Flow_inFlux</code>：访问入流量；</li><li><code>l4Flow_outFlux</code>：访问出流量；</li><li><code>l4Flow_inBandwidth</code>：访问入向带宽峰值；</li><li><code>l4Flow_outBandwidth</code>：访问出向带宽峰值；</li><li><code>l4Flow_connections</code>：访问并发连接数。</li></ul></li><li><strong>Float</strong>：<code>Float</code> 值类型的指标将从 <code>Data.N.FloatTypeValue</code> 返回对应时序数据。<br>对应的查询指标 <code>MetricName</code> 有：<ul><li><code>l4Flow_newConnectionsRate</code>：新建连接数速率。</li></ul></li>
+	// </ul><p>本接口暂不支持指定维度查询，默认按主账号汇总返回数据，即 <code>Data.N.TypeKey = AppId</code>，AppId 是腾讯云主账号唯一标识，N 恒等于 1。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*TimingDataRecord `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -14307,6 +14314,31 @@ type FirstPartConfig struct {
 
 	// 首段包的统计时长，单位是秒，即期望首段包的统计时长是多少，默认5秒。
 	StatTime *uint64 `json:"StatTime,omitnil,omitempty" name:"StatTime"`
+}
+
+type FloatTimingDataItem struct {
+	// 返回数据对应时间点，采用 unix 秒级时间戳。
+	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 具体数值。
+	Value *float64 `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type FloatTimingTypeValue struct {
+	// 数据和。
+	Sum *float64 `json:"Sum,omitnil,omitempty" name:"Sum"`
+
+	// 最大值。
+	Max *float64 `json:"Max,omitnil,omitempty" name:"Max"`
+
+	// 平均值。
+	Avg *float64 `json:"Avg,omitnil,omitempty" name:"Avg"`
+
+	// 指标名。
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 详细数据。
+	Detail []*FloatTimingDataItem `json:"Detail,omitnil,omitempty" name:"Detail"`
 }
 
 type FollowOrigin struct {
@@ -21996,8 +22028,11 @@ type TimingDataRecord struct {
 	// 查询维度值。
 	TypeKey *string `json:"TypeKey,omitnil,omitempty" name:"TypeKey"`
 
-	// 详细时序数据。
+	// <code>Integer</code> 类型的详细时序数据，查询指标值类型为 <code>Integer</code> 指标会由本字段返回对应时序数据。<br> **注意**：若查询指标未明确说明指标值类型，默认由本字段返回数据。
 	TypeValue []*TimingTypeValue `json:"TypeValue,omitnil,omitempty" name:"TypeValue"`
+
+	// <code>Float</code> 类型的详细时序数据，查询指标值类型为 <code>Float</code> 指标会由本字段返回对应时序数据。
+	FloatTypeValue []*FloatTimingTypeValue `json:"FloatTypeValue,omitnil,omitempty" name:"FloatTypeValue"`
 }
 
 type TimingTypeValue struct {

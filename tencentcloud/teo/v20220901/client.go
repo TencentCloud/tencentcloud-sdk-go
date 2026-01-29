@@ -8979,7 +8979,7 @@ func NewDescribeTimingL4DataResponse() (response *DescribeTimingL4DataResponse) 
 }
 
 // DescribeTimingL4Data
-// 本接口（DescribeTimingL4Data）用于查询四层时序流量数据列表。
+// <p>本接口（<code>DescribeTimingL4Data</code>）用于查询四层时序数据列表。</p>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8994,7 +8994,7 @@ func (c *Client) DescribeTimingL4Data(request *DescribeTimingL4DataRequest) (res
 }
 
 // DescribeTimingL4Data
-// 本接口（DescribeTimingL4Data）用于查询四层时序流量数据列表。
+// <p>本接口（<code>DescribeTimingL4Data</code>）用于查询四层时序数据列表。</p>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

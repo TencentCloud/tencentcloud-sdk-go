@@ -1062,3 +1062,63 @@ func (c *Client) TerminateInstancesWithContext(ctx context.Context, request *Ter
     err = c.Send(request, response)
     return
 }
+
+func NewUpdateServiceConfigsRequest() (request *UpdateServiceConfigsRequest) {
+    request = &UpdateServiceConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "UpdateServiceConfigs")
+    
+    
+    return
+}
+
+func NewUpdateServiceConfigsResponse() (response *UpdateServiceConfigsResponse) {
+    response = &UpdateServiceConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateServiceConfigs
+// 本接口(UpdateServiceConfigs)用于更新服务配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
+//  INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"
+//  INVALIDPARAMETERVALUE_TARGETREPLICASMUSTDIFFERFROMRUNNINGREPLICAS = "InvalidParameterValue.TargetReplicasMustDifferFromRunningReplicas"
+//  OPERATIONDENIED_SERVICEOPERATIONINPROGRESS = "OperationDenied.ServiceOperationInProgress"
+//  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
+func (c *Client) UpdateServiceConfigs(request *UpdateServiceConfigsRequest) (response *UpdateServiceConfigsResponse, err error) {
+    return c.UpdateServiceConfigsWithContext(context.Background(), request)
+}
+
+// UpdateServiceConfigs
+// 本接口(UpdateServiceConfigs)用于更新服务配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
+//  INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"
+//  INVALIDPARAMETERVALUE_TARGETREPLICASMUSTDIFFERFROMRUNNINGREPLICAS = "InvalidParameterValue.TargetReplicasMustDifferFromRunningReplicas"
+//  OPERATIONDENIED_SERVICEOPERATIONINPROGRESS = "OperationDenied.ServiceOperationInProgress"
+//  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
+func (c *Client) UpdateServiceConfigsWithContext(ctx context.Context, request *UpdateServiceConfigsRequest) (response *UpdateServiceConfigsResponse, err error) {
+    if request == nil {
+        request = NewUpdateServiceConfigsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "UpdateServiceConfigs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateServiceConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateServiceConfigsResponse()
+    err = c.Send(request, response)
+    return
+}

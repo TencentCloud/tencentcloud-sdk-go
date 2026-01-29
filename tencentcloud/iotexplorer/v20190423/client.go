@@ -681,68 +681,6 @@ func (c *Client) CallDeviceActionSyncWithContext(ctx context.Context, request *C
     return
 }
 
-func NewCancelAssignTWeCallLicenseRequest() (request *CancelAssignTWeCallLicenseRequest) {
-    request = &CancelAssignTWeCallLicenseRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("iotexplorer", APIVersion, "CancelAssignTWeCallLicense")
-    
-    
-    return
-}
-
-func NewCancelAssignTWeCallLicenseResponse() (response *CancelAssignTWeCallLicenseResponse) {
-    response = &CancelAssignTWeCallLicenseResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CancelAssignTWeCallLicense
-// 业务已下线
-//
-// 
-//
-// 取消分配
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) CancelAssignTWeCallLicense(request *CancelAssignTWeCallLicenseRequest) (response *CancelAssignTWeCallLicenseResponse, err error) {
-    return c.CancelAssignTWeCallLicenseWithContext(context.Background(), request)
-}
-
-// CancelAssignTWeCallLicense
-// 业务已下线
-//
-// 
-//
-// 取消分配
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) CancelAssignTWeCallLicenseWithContext(ctx context.Context, request *CancelAssignTWeCallLicenseRequest) (response *CancelAssignTWeCallLicenseResponse, err error) {
-    if request == nil {
-        request = NewCancelAssignTWeCallLicenseRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "CancelAssignTWeCallLicense")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CancelAssignTWeCallLicense require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCancelAssignTWeCallLicenseResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewChangeP2PRouteRequest() (request *ChangeP2PRouteRequest) {
     request = &ChangeP2PRouteRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1146,13 +1084,19 @@ func NewCreateCloudStorageAIServiceResponse() (response *CreateCloudStorageAISer
 // 开通设备云存AI分析服务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
 //  FAILEDOPERATION_CLOUDSTORAGEAIPACKAGEEXPIRETIMEEXCEEDED = "FailedOperation.CloudStorageAIPackageExpireTimeExceeded"
 //  FAILEDOPERATION_CLOUDSTORAGEAISERVICENOTENABLED = "FailedOperation.CloudStorageAIServiceNotEnabled"
 //  FAILEDOPERATION_CLOUDSTORAGEPACKAGEREQUIRED = "FailedOperation.CloudStoragePackageRequired"
 //  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_CLOUDSTORAGEAIPACKAGEIDNOTEXIST = "InvalidParameterValue.CloudStorageAIPackageIdNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_CLOUDSTORAGEPACKAGETIMEMISMATCH = "UnsupportedOperation.CloudStoragePackageTimeMismatch"
 //  UNSUPPORTEDOPERATION_CLOUDSTORAGEPACKAGETYPEMISMATCH = "UnsupportedOperation.CloudStoragePackageTypeMismatch"
@@ -1164,13 +1108,19 @@ func (c *Client) CreateCloudStorageAIService(request *CreateCloudStorageAIServic
 // 开通设备云存AI分析服务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ANOTHEROPERATIONISRUNNING = "FailedOperation.AnotherOperationIsRunning"
 //  FAILEDOPERATION_CLOUDSTORAGEAIPACKAGEEXPIRETIMEEXCEEDED = "FailedOperation.CloudStorageAIPackageExpireTimeExceeded"
 //  FAILEDOPERATION_CLOUDSTORAGEAISERVICENOTENABLED = "FailedOperation.CloudStorageAIServiceNotEnabled"
 //  FAILEDOPERATION_CLOUDSTORAGEPACKAGEREQUIRED = "FailedOperation.CloudStoragePackageRequired"
 //  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_CLOUDSTORAGEAIPACKAGEIDNOTEXIST = "InvalidParameterValue.CloudStorageAIPackageIdNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_CLOUDSTORAGEPACKAGETIMEMISMATCH = "UnsupportedOperation.CloudStoragePackageTimeMismatch"
 //  UNSUPPORTEDOPERATION_CLOUDSTORAGEPACKAGETYPEMISMATCH = "UnsupportedOperation.CloudStoragePackageTypeMismatch"
@@ -1395,6 +1345,60 @@ func (c *Client) CreateDeviceChannelWithContext(ctx context.Context, request *Cr
     request.SetContext(ctx)
     
     response = NewCreateDeviceChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDeviceSDPAnswerRequest() (request *CreateDeviceSDPAnswerRequest) {
+    request = &CreateDeviceSDPAnswerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateDeviceSDPAnswer")
+    
+    
+    return
+}
+
+func NewCreateDeviceSDPAnswerResponse() (response *CreateDeviceSDPAnswerResponse) {
+    response = &CreateDeviceSDPAnswerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDeviceSDPAnswer
+// 创建设备SDP应答
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDeviceSDPAnswer(request *CreateDeviceSDPAnswerRequest) (response *CreateDeviceSDPAnswerResponse, err error) {
+    return c.CreateDeviceSDPAnswerWithContext(context.Background(), request)
+}
+
+// CreateDeviceSDPAnswer
+// 创建设备SDP应答
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDeviceSDPAnswerWithContext(ctx context.Context, request *CreateDeviceSDPAnswerRequest) (response *CreateDeviceSDPAnswerResponse, err error) {
+    if request == nil {
+        request = NewCreateDeviceSDPAnswerRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "CreateDeviceSDPAnswer")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDeviceSDPAnswer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDeviceSDPAnswerResponse()
     err = c.Send(request, response)
     return
 }
@@ -6884,10 +6888,14 @@ func NewDescribeTWeSeeConfigResponse() (response *DescribeTWeSeeConfigResponse) 
 // 拉取 TWeSee 配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) DescribeTWeSeeConfig(request *DescribeTWeSeeConfigRequest) (response *DescribeTWeSeeConfigResponse, err error) {
     return c.DescribeTWeSeeConfigWithContext(context.Background(), request)
 }
@@ -6896,10 +6904,14 @@ func (c *Client) DescribeTWeSeeConfig(request *DescribeTWeSeeConfigRequest) (res
 // 拉取 TWeSee 配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) DescribeTWeSeeConfigWithContext(ctx context.Context, request *DescribeTWeSeeConfigRequest) (response *DescribeTWeSeeConfigResponse, err error) {
     if request == nil {
         request = NewDescribeTWeSeeConfigRequest()
@@ -10664,26 +10676,15 @@ func NewModifyTWeSeeConfigResponse() (response *ModifyTWeSeeConfigResponse) {
 // 修改 TWeSee 配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
-//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
-//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_MODELDEFINEDONTMATCHTEMPLATE = "InvalidParameterValue.ModelDefineDontMatchTemplate"
-//  INVALIDPARAMETERVALUE_PRODUCTALREADYEXIST = "InvalidParameterValue.ProductAlreadyExist"
-//  INVALIDPARAMETERVALUE_PRODUCTIDINVALID = "InvalidParameterValue.ProductIDInvalid"
-//  INVALIDPARAMETERVALUE_PRODUCTPARMSERROR = "InvalidParameterValue.ProductParmsError"
-//  LIMITEXCEEDED_STUDIOPRODUCTEXCEEDLIMIT = "LimitExceeded.StudioProductExceedLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
-//  RESOURCENOTFOUND_PRODUCTORDEVICENOTEXIST = "ResourceNotFound.ProductOrDeviceNotExist"
-//  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
-//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = "UnauthorizedOperation.NoPermissionToProject"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
-//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
-//  UNSUPPORTEDOPERATION_VIDEOPRODUCTNOTEXIST = "UnsupportedOperation.VideoProductNotExist"
 func (c *Client) ModifyTWeSeeConfig(request *ModifyTWeSeeConfigRequest) (response *ModifyTWeSeeConfigResponse, err error) {
     return c.ModifyTWeSeeConfigWithContext(context.Background(), request)
 }
@@ -10692,26 +10693,15 @@ func (c *Client) ModifyTWeSeeConfig(request *ModifyTWeSeeConfigRequest) (respons
 // 修改 TWeSee 配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PRODUCTIOTVIDEOSERVICENOTENABLED = "FailedOperation.ProductIotVideoServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
-//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
-//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_MODELDEFINEDONTMATCHTEMPLATE = "InvalidParameterValue.ModelDefineDontMatchTemplate"
-//  INVALIDPARAMETERVALUE_PRODUCTALREADYEXIST = "InvalidParameterValue.ProductAlreadyExist"
-//  INVALIDPARAMETERVALUE_PRODUCTIDINVALID = "InvalidParameterValue.ProductIDInvalid"
-//  INVALIDPARAMETERVALUE_PRODUCTPARMSERROR = "InvalidParameterValue.ProductParmsError"
-//  LIMITEXCEEDED_STUDIOPRODUCTEXCEEDLIMIT = "LimitExceeded.StudioProductExceedLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
-//  RESOURCENOTFOUND_PRODUCTORDEVICENOTEXIST = "ResourceNotFound.ProductOrDeviceNotExist"
-//  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
-//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = "UnauthorizedOperation.NoPermissionToProject"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
-//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
-//  UNSUPPORTEDOPERATION_VIDEOPRODUCTNOTEXIST = "UnsupportedOperation.VideoProductNotExist"
 func (c *Client) ModifyTWeSeeConfigWithContext(ctx context.Context, request *ModifyTWeSeeConfigRequest) (response *ModifyTWeSeeConfigResponse, err error) {
     if request == nil {
         request = NewModifyTWeSeeConfigRequest()

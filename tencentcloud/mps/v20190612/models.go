@@ -5728,6 +5728,9 @@ type CreateProcessImageTemplateRequestParams struct {
 
 	// 图片处理模板描述信息，长度限制：256个字符。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 图片处理模板拓展参数。
+	StdExtInfo *string `json:"StdExtInfo,omitnil,omitempty" name:"StdExtInfo"`
 }
 
 type CreateProcessImageTemplateRequest struct {
@@ -5741,6 +5744,9 @@ type CreateProcessImageTemplateRequest struct {
 
 	// 图片处理模板描述信息，长度限制：256个字符。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 图片处理模板拓展参数。
+	StdExtInfo *string `json:"StdExtInfo,omitnil,omitempty" name:"StdExtInfo"`
 }
 
 func (r *CreateProcessImageTemplateRequest) ToJsonString() string {
@@ -5758,6 +5764,7 @@ func (r *CreateProcessImageTemplateRequest) FromJsonString(s string) error {
 	delete(f, "ProcessImageTemplate")
 	delete(f, "Name")
 	delete(f, "Comment")
+	delete(f, "StdExtInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProcessImageTemplateRequest has unknown keys!", "")
 	}
@@ -23865,6 +23872,9 @@ type ScheduleQualityControlTaskResult struct {
 	// 媒体质检任务的输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *QualityControlData `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// 任务执行进度。
+	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 }
 
 type ScheduleRecognitionTaskResult struct {

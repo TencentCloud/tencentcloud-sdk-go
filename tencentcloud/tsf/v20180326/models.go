@@ -12656,6 +12656,9 @@ type DescribeLaneRulesRequestParams struct {
 
 	// 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
 	RuleIdList []*string `json:"RuleIdList,omitnil,omitempty" name:"RuleIdList"`
+
+	// 查询全部标记
+	QueryAll *bool `json:"QueryAll,omitnil,omitempty" name:"QueryAll"`
 }
 
 type DescribeLaneRulesRequest struct {
@@ -12675,6 +12678,9 @@ type DescribeLaneRulesRequest struct {
 
 	// 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
 	RuleIdList []*string `json:"RuleIdList,omitnil,omitempty" name:"RuleIdList"`
+
+	// 查询全部标记
+	QueryAll *bool `json:"QueryAll,omitnil,omitempty" name:"QueryAll"`
 }
 
 func (r *DescribeLaneRulesRequest) ToJsonString() string {
@@ -12694,6 +12700,7 @@ func (r *DescribeLaneRulesRequest) FromJsonString(s string) error {
 	delete(f, "SearchWord")
 	delete(f, "RuleId")
 	delete(f, "RuleIdList")
+	delete(f, "QueryAll")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLaneRulesRequest has unknown keys!", "")
 	}

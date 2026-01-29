@@ -794,38 +794,38 @@ type DeleteResult struct {
 
 // Predefined struct for user
 type DeleteRoomMemberRequestParams struct {
-	// 要操作的房间id
+	// <p>要操作的房间id</p>
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 剔除类型 1-删除房间 2-剔除用户
+	// <p>剔除类型 1-删除房间 2-剔除用户</p>
 	DeleteType *uint64 `json:"DeleteType,omitnil,omitempty" name:"DeleteType"`
 
-	// 应用id
+	// <p>应用id</p>
 	BizId *uint64 `json:"BizId,omitnil,omitempty" name:"BizId"`
 
-	// 要剔除的用户列表（整型）
+	// <p>要剔除的用户列表（整型）</p>
 	Uids []*string `json:"Uids,omitnil,omitempty" name:"Uids"`
 
-	// 要剔除的用户列表（字符串类型）
+	// <p>要剔除的用户列表（字符串类型）</p>
 	StrUids []*string `json:"StrUids,omitnil,omitempty" name:"StrUids"`
 }
 
 type DeleteRoomMemberRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要操作的房间id
+	// <p>要操作的房间id</p>
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 剔除类型 1-删除房间 2-剔除用户
+	// <p>剔除类型 1-删除房间 2-剔除用户</p>
 	DeleteType *uint64 `json:"DeleteType,omitnil,omitempty" name:"DeleteType"`
 
-	// 应用id
+	// <p>应用id</p>
 	BizId *uint64 `json:"BizId,omitnil,omitempty" name:"BizId"`
 
-	// 要剔除的用户列表（整型）
+	// <p>要剔除的用户列表（整型）</p>
 	Uids []*string `json:"Uids,omitnil,omitempty" name:"Uids"`
 
-	// 要剔除的用户列表（字符串类型）
+	// <p>要剔除的用户列表（字符串类型）</p>
 	StrUids []*string `json:"StrUids,omitnil,omitempty" name:"StrUids"`
 }
 
@@ -854,7 +854,7 @@ func (r *DeleteRoomMemberRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRoomMemberResponseParams struct {
-	// 剔除房间或成员的操作结果
+	// <p>剔除房间或成员的操作结果</p>
 	DeleteResult *DeleteResult `json:"DeleteResult,omitnil,omitempty" name:"DeleteResult"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1150,32 +1150,32 @@ func (r *DescribeAgeDetectTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAppStatisticsRequestParams struct {
-	// GME应用ID
+	// <p>GME应用ID</p>
 	BizId *uint64 `json:"BizId,omitnil,omitempty" name:"BizId"`
 
-	// 数据开始时间，东八区时间，格式: 年-月-日，如: 2018-07-13
+	// <p>数据开始时间，东八区时间，格式: 年-月-日，如: 2018-07-13</p>
 	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
 
-	// 数据结束时间，东八区时间，格式: 年-月-日，如: 2018-07-13
+	// <p>数据结束时间，东八区时间，格式: 年-月-日，如: 2018-07-13</p>
 	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
 
-	// 要查询的服务列表，取值：RealTimeSpeech/VoiceMessage/VoiceFilter/SpeechToText
+	// <p>要查询的服务列表，取值：RealTimeSpeech/VoiceMessage/VoiceFilter/SpeechToText</p>
 	Services []*string `json:"Services,omitnil,omitempty" name:"Services"`
 }
 
 type DescribeAppStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
-	// GME应用ID
+	// <p>GME应用ID</p>
 	BizId *uint64 `json:"BizId,omitnil,omitempty" name:"BizId"`
 
-	// 数据开始时间，东八区时间，格式: 年-月-日，如: 2018-07-13
+	// <p>数据开始时间，东八区时间，格式: 年-月-日，如: 2018-07-13</p>
 	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
 
-	// 数据结束时间，东八区时间，格式: 年-月-日，如: 2018-07-13
+	// <p>数据结束时间，东八区时间，格式: 年-月-日，如: 2018-07-13</p>
 	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
 
-	// 要查询的服务列表，取值：RealTimeSpeech/VoiceMessage/VoiceFilter/SpeechToText
+	// <p>要查询的服务列表，取值：RealTimeSpeech/VoiceMessage/VoiceFilter/SpeechToText</p>
 	Services []*string `json:"Services,omitnil,omitempty" name:"Services"`
 }
 
@@ -1208,7 +1208,7 @@ type DescribeAppStatisticsResp struct {
 
 // Predefined struct for user
 type DescribeAppStatisticsResponseParams struct {
-	// 应用用量统计数据
+	// <p>应用用量统计数据</p>
 	Data *DescribeAppStatisticsResp `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1669,26 +1669,26 @@ func (r *DescribeRecordInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRoomInfoRequestParams struct {
-	// 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+	// <p>应用ID，登录<a href="https://console.cloud.tencent.com/gamegme">控制台 - 服务管理</a>创建应用得到的AppID</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）
+	// <p>房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）</p>
 	RoomIds []*uint64 `json:"RoomIds,omitnil,omitempty" name:"RoomIds"`
 
-	// 字符串类型房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）
+	// <p>字符串类型房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）</p>
 	StrRoomIds []*string `json:"StrRoomIds,omitnil,omitempty" name:"StrRoomIds"`
 }
 
 type DescribeRoomInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+	// <p>应用ID，登录<a href="https://console.cloud.tencent.com/gamegme">控制台 - 服务管理</a>创建应用得到的AppID</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）
+	// <p>房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）</p>
 	RoomIds []*uint64 `json:"RoomIds,omitnil,omitempty" name:"RoomIds"`
 
-	// 字符串类型房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）
+	// <p>字符串类型房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）</p>
 	StrRoomIds []*string `json:"StrRoomIds,omitnil,omitempty" name:"StrRoomIds"`
 }
 
@@ -1715,10 +1715,10 @@ func (r *DescribeRoomInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRoomInfoResponseParams struct {
-	// 操作结果, 0成功, 非0失败
+	// <p>操作结果, 0成功, 非0失败</p>
 	Result *uint64 `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 房间用户信息
+	// <p>房间用户信息</p>
 	RoomUsers []*RoomUser `json:"RoomUsers,omitnil,omitempty" name:"RoomUsers"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2398,32 +2398,32 @@ func (r *ModifyCustomizationStateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRecordInfoRequestParams struct {
-	// 进行中的任务taskid（StartRecord接口返回）。
+	// <p>进行中的任务taskid（StartRecord接口返回）。</p>
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 录制类型：1代表单流 2代表混流 3代表单流和混流。
+	// <p>录制类型：1代表单流 2代表混流 3代表单流和混流。</p>
 	RecordMode *uint64 `json:"RecordMode,omitnil,omitempty" name:"RecordMode"`
 
-	// 应用ID。
+	// <p>应用ID。</p>
 	BizId *uint64 `json:"BizId,omitnil,omitempty" name:"BizId"`
 
-	// 指定订阅流白名单或者黑名单。
+	// <p>指定订阅流白名单或者黑名单。</p>
 	SubscribeRecordUserIds *SubscribeRecordUserIds `json:"SubscribeRecordUserIds,omitnil,omitempty" name:"SubscribeRecordUserIds"`
 }
 
 type ModifyRecordInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 进行中的任务taskid（StartRecord接口返回）。
+	// <p>进行中的任务taskid（StartRecord接口返回）。</p>
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 录制类型：1代表单流 2代表混流 3代表单流和混流。
+	// <p>录制类型：1代表单流 2代表混流 3代表单流和混流。</p>
 	RecordMode *uint64 `json:"RecordMode,omitnil,omitempty" name:"RecordMode"`
 
-	// 应用ID。
+	// <p>应用ID。</p>
 	BizId *uint64 `json:"BizId,omitnil,omitempty" name:"BizId"`
 
-	// 指定订阅流白名单或者黑名单。
+	// <p>指定订阅流白名单或者黑名单。</p>
 	SubscribeRecordUserIds *SubscribeRecordUserIds `json:"SubscribeRecordUserIds,omitnil,omitempty" name:"SubscribeRecordUserIds"`
 }
 
@@ -3086,32 +3086,32 @@ func (r *StartAIConversationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StartRecordRequestParams struct {
-	// 应用ID。
+	// <p>应用ID。</p>
 	BizId *uint64 `json:"BizId,omitnil,omitempty" name:"BizId"`
 
-	// 房间ID。
+	// <p>房间ID。</p>
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 录制类型：1代表单流 2代表混流 3代表单流和混流。
+	// <p>录制类型：1代表单流 2代表混流 3代表单流和混流。</p>
 	RecordMode *uint64 `json:"RecordMode,omitnil,omitempty" name:"RecordMode"`
 
-	// 指定订阅流白名单或者黑名单（不传默认订阅房间内所有音频流）。
+	// <p>指定订阅流白名单或者黑名单（不传默认订阅房间内所有音频流）。</p>
 	SubscribeRecordUserIds *SubscribeRecordUserIds `json:"SubscribeRecordUserIds,omitnil,omitempty" name:"SubscribeRecordUserIds"`
 }
 
 type StartRecordRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID。
+	// <p>应用ID。</p>
 	BizId *uint64 `json:"BizId,omitnil,omitempty" name:"BizId"`
 
-	// 房间ID。
+	// <p>房间ID。</p>
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 录制类型：1代表单流 2代表混流 3代表单流和混流。
+	// <p>录制类型：1代表单流 2代表混流 3代表单流和混流。</p>
 	RecordMode *uint64 `json:"RecordMode,omitnil,omitempty" name:"RecordMode"`
 
-	// 指定订阅流白名单或者黑名单（不传默认订阅房间内所有音频流）。
+	// <p>指定订阅流白名单或者黑名单（不传默认订阅房间内所有音频流）。</p>
 	SubscribeRecordUserIds *SubscribeRecordUserIds `json:"SubscribeRecordUserIds,omitnil,omitempty" name:"SubscribeRecordUserIds"`
 }
 
@@ -3139,7 +3139,7 @@ func (r *StartRecordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StartRecordResponseParams struct {
-	// 任务taskid。
+	// <p>任务taskid。</p>
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

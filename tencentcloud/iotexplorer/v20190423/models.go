@@ -957,60 +957,6 @@ type CamTag struct {
 }
 
 // Predefined struct for user
-type CancelAssignTWeCallLicenseRequestParams struct {
-	// 订单号
-	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
-}
-
-type CancelAssignTWeCallLicenseRequest struct {
-	*tchttp.BaseRequest
-	
-	// 订单号
-	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
-}
-
-func (r *CancelAssignTWeCallLicenseRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CancelAssignTWeCallLicenseRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "PkgId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelAssignTWeCallLicenseRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CancelAssignTWeCallLicenseResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CancelAssignTWeCallLicenseResponse struct {
-	*tchttp.BaseResponse
-	Response *CancelAssignTWeCallLicenseResponseParams `json:"Response"`
-}
-
-func (r *CancelAssignTWeCallLicenseResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CancelAssignTWeCallLicenseResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type ChangeP2PRouteRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -2028,6 +1974,77 @@ func (r *CreateDeviceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDeviceSDPAnswerRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// SDP提议
+	SDPOffer *string `json:"SDPOffer,omitnil,omitempty" name:"SDPOffer"`
+}
+
+type CreateDeviceSDPAnswerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// SDP提议
+	SDPOffer *string `json:"SDPOffer,omitnil,omitempty" name:"SDPOffer"`
+}
+
+func (r *CreateDeviceSDPAnswerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDeviceSDPAnswerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "SDPOffer")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDeviceSDPAnswerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDeviceSDPAnswerResponseParams struct {
+	// SDP应答
+	SDPAnswer *string `json:"SDPAnswer,omitnil,omitempty" name:"SDPAnswer"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDeviceSDPAnswerResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDeviceSDPAnswerResponseParams `json:"Response"`
+}
+
+func (r *CreateDeviceSDPAnswerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDeviceSDPAnswerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11876,6 +11893,9 @@ type GetTWeTalkAIBotListRequestParams struct {
 	// 智能体ID
 	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
 
+	// 智能体名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
@@ -11897,6 +11917,9 @@ type GetTWeTalkAIBotListRequest struct {
 	
 	// 智能体ID
 	BotId *string `json:"BotId,omitnil,omitempty" name:"BotId"`
+
+	// 智能体名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -11927,6 +11950,7 @@ func (r *GetTWeTalkAIBotListRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "BotId")
+	delete(f, "Name")
 	delete(f, "ProductId")
 	delete(f, "InstanceId")
 	delete(f, "IncludeCredentials")
@@ -17063,6 +17087,8 @@ type TalkAIBotInfo struct {
 	AgentConfig *TalkAgentConfigInfo `json:"AgentConfig,omitnil,omitempty" name:"AgentConfig"`
 
 	// 产品信息列表
+	//
+	// Deprecated: ProductList is deprecated.
 	ProductList *TalkProductInfo `json:"ProductList,omitnil,omitempty" name:"ProductList"`
 
 	// 创建时间
@@ -17070,6 +17096,9 @@ type TalkAIBotInfo struct {
 
 	// 更新时间
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 已关联产品信息列表
+	BoundProducts []*TalkProductInfo `json:"BoundProducts,omitnil,omitempty" name:"BoundProducts"`
 }
 
 type TalkAgentConfigInfo struct {
@@ -17100,7 +17129,7 @@ type TalkAgentConfigInfo struct {
 	// 是否启用噪声过滤
 	NoiseFilterEnabled *bool `json:"NoiseFilterEnabled,omitnil,omitempty" name:"NoiseFilterEnabled"`
 
-	// 是否开启长记忆，默认开启
+	// 是否开启长记忆，默认关闭
 	LongTermMemoryEnabled *bool `json:"LongTermMemoryEnabled,omitnil,omitempty" name:"LongTermMemoryEnabled"`
 
 	// 系统提示词，仅当未配置LLMConfig时使用
