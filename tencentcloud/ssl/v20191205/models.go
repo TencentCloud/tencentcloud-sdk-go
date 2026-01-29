@@ -8062,82 +8062,82 @@ type TkeSecretDetail struct {
 
 // Predefined struct for user
 type UpdateCertificateInstanceRequestParams struct {
-	// 一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新
+	// <p>一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新</p>
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
-	// 需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse、cos
+	// <p>需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse、cos、mqtt、scf、tdmq、gaap</p>
 	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
 
-	// 一键更新的新证书ID。 不传该参数，则公钥证书和私钥证书必传
+	// <p>一键更新的新证书ID。 不传该参数，则公钥证书和私钥证书必传</p>
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 需要部署的地域列表（废弃）
+	// <p>需要部署的地域列表（废弃）</p>
 	//
 	// Deprecated: Regions is deprecated.
 	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
 
-	// 云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb、tke、apigateway、waf、tcb、tse、cos、mqtt
+	// <p>云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb、tke、apigateway、waf、tcb、tse、cos、mqtt、scf、tdmq</p>
 	ResourceTypesRegions []*ResourceTypeRegions `json:"ResourceTypesRegions,omitnil,omitempty" name:"ResourceTypesRegions"`
 
-	// 公钥证书， 若上传公钥证书，那么私钥证书必传。  则CertificateId不用传
+	// <p>公钥证书， 若上传公钥证书，那么私钥证书必传。  则CertificateId不用传</p>
 	CertificatePublicKey *string `json:"CertificatePublicKey,omitnil,omitempty" name:"CertificatePublicKey"`
 
-	// 私钥证书，若上传私钥证书， 那么公钥证书必传；  则CertificateId不用传
+	// <p>私钥证书，若上传私钥证书， 那么公钥证书必传；  则CertificateId不用传</p>
 	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitnil,omitempty" name:"CertificatePrivateKey"`
 
-	// 旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知，忽略OldCertificateId到期提醒
+	// <p>旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知，忽略OldCertificateId到期提醒</p>
 	ExpiringNotificationSwitch *uint64 `json:"ExpiringNotificationSwitch,omitnil,omitempty" name:"ExpiringNotificationSwitch"`
 
-	// 相同的证书是否允许重复上传，若选择上传公钥私钥证书， 则可以配置该参数。 若存在相同重复证书，则更新任务会失败
+	// <p>相同的证书是否允许重复上传，若选择上传公钥私钥证书， 则可以配置该参数。 若存在相同重复证书，则更新任务会失败</p>
 	Repeatable *bool `json:"Repeatable,omitnil,omitempty" name:"Repeatable"`
 
-	// 是否允许下载，若选择上传公私钥证书， 则可以配置该参数
+	// <p>是否允许下载，若选择上传公私钥证书， 则可以配置该参数</p>
 	AllowDownload *bool `json:"AllowDownload,omitnil,omitempty" name:"AllowDownload"`
 
-	// 标签列表，若选择上传公私钥证书， 则可以配置该参数
+	// <p>标签列表，若选择上传公私钥证书， 则可以配置该参数</p>
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 项目 ID，若选择上传公私钥证书， 则可以配置该参数
+	// <p>项目 ID，若选择上传公私钥证书， 则可以配置该参数</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type UpdateCertificateInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新
+	// <p>一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新</p>
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
-	// 需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse、cos
+	// <p>需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse、cos、mqtt、scf、tdmq、gaap</p>
 	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
 
-	// 一键更新的新证书ID。 不传该参数，则公钥证书和私钥证书必传
+	// <p>一键更新的新证书ID。 不传该参数，则公钥证书和私钥证书必传</p>
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 需要部署的地域列表（废弃）
+	// <p>需要部署的地域列表（废弃）</p>
 	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
 
-	// 云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb、tke、apigateway、waf、tcb、tse、cos、mqtt
+	// <p>云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb、tke、apigateway、waf、tcb、tse、cos、mqtt、scf、tdmq</p>
 	ResourceTypesRegions []*ResourceTypeRegions `json:"ResourceTypesRegions,omitnil,omitempty" name:"ResourceTypesRegions"`
 
-	// 公钥证书， 若上传公钥证书，那么私钥证书必传。  则CertificateId不用传
+	// <p>公钥证书， 若上传公钥证书，那么私钥证书必传。  则CertificateId不用传</p>
 	CertificatePublicKey *string `json:"CertificatePublicKey,omitnil,omitempty" name:"CertificatePublicKey"`
 
-	// 私钥证书，若上传私钥证书， 那么公钥证书必传；  则CertificateId不用传
+	// <p>私钥证书，若上传私钥证书， 那么公钥证书必传；  则CertificateId不用传</p>
 	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitnil,omitempty" name:"CertificatePrivateKey"`
 
-	// 旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知，忽略OldCertificateId到期提醒
+	// <p>旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知，忽略OldCertificateId到期提醒</p>
 	ExpiringNotificationSwitch *uint64 `json:"ExpiringNotificationSwitch,omitnil,omitempty" name:"ExpiringNotificationSwitch"`
 
-	// 相同的证书是否允许重复上传，若选择上传公钥私钥证书， 则可以配置该参数。 若存在相同重复证书，则更新任务会失败
+	// <p>相同的证书是否允许重复上传，若选择上传公钥私钥证书， 则可以配置该参数。 若存在相同重复证书，则更新任务会失败</p>
 	Repeatable *bool `json:"Repeatable,omitnil,omitempty" name:"Repeatable"`
 
-	// 是否允许下载，若选择上传公私钥证书， 则可以配置该参数
+	// <p>是否允许下载，若选择上传公私钥证书， 则可以配置该参数</p>
 	AllowDownload *bool `json:"AllowDownload,omitnil,omitempty" name:"AllowDownload"`
 
-	// 标签列表，若选择上传公私钥证书， 则可以配置该参数
+	// <p>标签列表，若选择上传公私钥证书， 则可以配置该参数</p>
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 项目 ID，若选择上传公私钥证书， 则可以配置该参数
+	// <p>项目 ID，若选择上传公私钥证书， 则可以配置该参数</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -8173,13 +8173,13 @@ func (r *UpdateCertificateInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateCertificateInstanceResponseParams struct {
-	// 云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
+	// <p>云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常</p>
 	DeployRecordId *uint64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
-	// 更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID
+	// <p>更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID</p>
 	DeployStatus *int64 `json:"DeployStatus,omitnil,omitempty" name:"DeployStatus"`
 
-	// 更新异步创建任务进度详情
+	// <p>更新异步创建任务进度详情</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateSyncProgress []*UpdateSyncProgress `json:"UpdateSyncProgress,omitnil,omitempty" name:"UpdateSyncProgress"`
 

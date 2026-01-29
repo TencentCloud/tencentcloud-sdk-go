@@ -26,6 +26,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// FailedOperation.CreateTable
+	FAILEDOPERATION_CREATETABLE = "FailedOperation.CreateTable"
+
 	// 数据库建立链接失败。
 	FAILEDOPERATION_DATABASECONNECTERROR = "FailedOperation.DatabaseConnectError"
 
@@ -35,14 +38,26 @@ const (
 	// 数据库元信息异常。
 	FAILEDOPERATION_DATABASESCHEMAERROR = "FailedOperation.DatabaseSchemaError"
 
+	// FailedOperation.DuplicatedData
+	FAILEDOPERATION_DUPLICATEDDATA = "FailedOperation.DuplicatedData"
+
 	// 数据库链接点为空。
 	FAILEDOPERATION_EMPTYDATABASEENDPOINT = "FailedOperation.EmptyDatabaseEndpoint"
+
+	// FailedOperation.FlexdbResourceOverdue
+	FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
+
+	// FailedOperation.ListTable
+	FAILEDOPERATION_LISTTABLE = "FailedOperation.ListTable"
 
 	// 操作失败，后台依赖平台错误。
 	FAILEDOPERATION_PLATFORMERROR = "FailedOperation.PlatformError"
 
 	// Instance is resuming, please try connecting again.
 	FAILEDOPERATION_TDSQLPAUSED = "FailedOperation.TdsqlPaused"
+
+	// FailedOperation.Timeout
+	FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
@@ -95,6 +110,18 @@ const (
 	// 镜像容器超过配额。
 	LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
 
+	// LimitExceeded.NoValidConnection
+	LIMITEXCEEDED_NOVALIDCONNECTION = "LimitExceeded.NoValidConnection"
+
+	// LimitExceeded.OutOfIndexQuota
+	LIMITEXCEEDED_OUTOFINDEXQUOTA = "LimitExceeded.OutOfIndexQuota"
+
+	// LimitExceeded.OutOfReadRequestQuota
+	LIMITEXCEEDED_OUTOFREADREQUESTQUOTA = "LimitExceeded.OutOfReadRequestQuota"
+
+	// LimitExceeded.OutOfTableQuota
+	LIMITEXCEEDED_OUTOFTABLEQUOTA = "LimitExceeded.OutOfTableQuota"
+
 	// 请求次数超过配额限制。
 	LIMITEXCEEDED_REQUEST = "LimitExceeded.Request"
 
@@ -119,17 +146,26 @@ const (
 	// 云存储目前后后台任务正在执行，请稍后再重试。
 	RESOURCEINUSE_FSACLJOBUNDONE = "ResourceInUse.FsACLJobUnDone"
 
+	// ResourceInUse.IndexCreating
+	RESOURCEINUSE_INDEXCREATING = "ResourceInUse.IndexCreating"
+
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"
 
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
+	// 连接器未找到,请创建连接器或检查连接器参数是否正确
+	RESOURCENOTFOUND_CONNECTOR = "ResourceNotFound.Connector"
+
 	// 数据库实例不存在。
 	RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 
 	// 请求的云托管服务未找到
 	RESOURCENOTFOUND_SERVERNOTFOUND = "ResourceNotFound.ServerNotFound"
+
+	// 表未找到,请创建表或检查表名参数是否正确
+	RESOURCENOTFOUND_TABLE = "ResourceNotFound.Table"
 
 	// 表不存在。
 	RESOURCENOTFOUND_TABLENOTFOUND = "ResourceNotFound.TableNotFound"
@@ -149,14 +185,23 @@ const (
 	// 资源不可用，CDN冻结。
 	RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
 
+	// 索引对应的字段已经存在
+	RESOURCEUNAVAILABLE_INDEXOPTIONSCONFLICT = "ResourceUnavailable.IndexOptionsConflict"
+
 	// 当前发票余额不足，无法退费。
 	RESOURCEUNAVAILABLE_INVOICEAMOUNTLACK = "ResourceUnavailable.InvoiceAmountLack"
+
+	// MongoDB集群已隔离,由于集群已被隔离写入被禁止,请跳转MongoDB控制台查看详情
+	RESOURCEUNAVAILABLE_MONGOISOLATED = "ResourceUnavailable.MongoIsolated"
 
 	// 云项目oAuth授权失效（即RefreshToken过期）。
 	RESOURCEUNAVAILABLE_REFRESHTOKENEXPIRED = "ResourceUnavailable.RefreshTokenExpired"
 
 	// 资源被封禁
 	RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+
+	// ResourceUnavailable.ResourceExist
+	RESOURCEUNAVAILABLE_RESOURCEEXIST = "ResourceUnavailable.ResourceExist"
 
 	// 资源已冻结
 	RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"

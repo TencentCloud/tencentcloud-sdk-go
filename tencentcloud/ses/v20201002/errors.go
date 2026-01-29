@@ -275,6 +275,9 @@ const (
 	// 发信地址不存在或者状态不是通过状态。
 	OPERATIONDENIED_SENDADDRESSSTATUSERROR = "OperationDenied.SendAddressStatusError"
 
+	// 与该域名相关的发信地址不为空
+	OPERATIONDENIED_SENDERWITHDOMAINISNOTEMPTY = "OperationDenied.SenderWithDomainIsNotEmpty"
+
 	// 发信模板不存在或者状态不是审核通过状态。
 	OPERATIONDENIED_TEMPLATESTATUSERROR = "OperationDenied.TemplateStatusError"
 

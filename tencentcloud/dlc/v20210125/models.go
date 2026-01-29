@@ -14267,7 +14267,7 @@ type LakeFsInfo struct {
 	// 托管存储类型
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 容量
+	// 存储用量
 	SpaceUsedSize *float64 `json:"SpaceUsedSize,omitnil,omitempty" name:"SpaceUsedSize"`
 
 	// 创建时候的时间戳
@@ -14284,6 +14284,9 @@ type LakeFsInfo struct {
 
 	// 托管桶状态，当前取值为：creating、bind、readOnly、isolate
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 托管存储桶标签列表
+	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 // Predefined struct for user
@@ -15934,6 +15937,9 @@ type Policy struct {
 
 	// 需要授权的Model名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 权限来源是否为管理员
+	IsAdminPolicy *bool `json:"IsAdminPolicy,omitnil,omitempty" name:"IsAdminPolicy"`
 }
 
 type Policys struct {
@@ -16816,6 +16822,9 @@ type SmartOptimizerPolicy struct {
 	// SmartOptimizerChangeTablePolicy
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChangeTable *SmartOptimizerChangeTablePolicy `json:"ChangeTable,omitnil,omitempty" name:"ChangeTable"`
+
+	// 表过期策略
+	TableExpiration *TableExpirationPolicy `json:"TableExpiration,omitnil,omitempty" name:"TableExpiration"`
 }
 
 type SmartOptimizerWrittenPolicy struct {
@@ -17661,6 +17670,14 @@ type TableBaseInfo struct {
 	// T-ICEBERG表的主键
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrimaryKeys []*string `json:"PrimaryKeys,omitnil,omitempty" name:"PrimaryKeys"`
+}
+
+type TableExpirationPolicy struct {
+	// 是否启用策略
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 表过期时间，单位：天
+	Expiration *uint64 `json:"Expiration,omitnil,omitempty" name:"Expiration"`
 }
 
 type TableInfo struct {

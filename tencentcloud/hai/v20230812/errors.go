@@ -181,4 +181,7 @@ const (
 
 	// 不支持同时操作预付费和后付费实例
 	UNSUPPORTEDOPERATION_NOTSUPPORTTERMINATEPREPAIDANDPOSTPAID = "UnsupportedOperation.NotSupportTerminatePrePaidAndPostPaid"
+
+	// 后付费服务缩容不支持询价
+	UNSUPPORTEDOPERATION_NOTSUPPORTTOINQUIRYPRICE = "UnsupportedOperation.NotSupportToInquiryPrice"
 )

@@ -942,6 +942,7 @@ func NewDeleteEmailIdentityResponse() (response *DeleteEmailIdentityResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOTALLOWDELETE = "OperationDenied.NotAllowDelete"
+//  OPERATIONDENIED_SENDERWITHDOMAINISNOTEMPTY = "OperationDenied.SenderWithDomainIsNotEmpty"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DeleteEmailIdentity(request *DeleteEmailIdentityRequest) (response *DeleteEmailIdentityResponse, err error) {
     return c.DeleteEmailIdentityWithContext(context.Background(), request)
@@ -959,6 +960,7 @@ func (c *Client) DeleteEmailIdentity(request *DeleteEmailIdentityRequest) (respo
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOTALLOWDELETE = "OperationDenied.NotAllowDelete"
+//  OPERATIONDENIED_SENDERWITHDOMAINISNOTEMPTY = "OperationDenied.SenderWithDomainIsNotEmpty"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DeleteEmailIdentityWithContext(ctx context.Context, request *DeleteEmailIdentityRequest) (response *DeleteEmailIdentityResponse, err error) {
     if request == nil {

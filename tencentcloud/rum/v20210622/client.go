@@ -2235,6 +2235,98 @@ func (c *Client) DescribeDataReportCountWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeDataReportCountV2Request() (request *DescribeDataReportCountV2Request) {
+    request = &DescribeDataReportCountV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeDataReportCountV2")
+    
+    
+    return
+}
+
+func NewDescribeDataReportCountV2Response() (response *DescribeDataReportCountV2Response) {
+    response = &DescribeDataReportCountV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDataReportCountV2
+// 获取项目上报量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDataReportCountV2(request *DescribeDataReportCountV2Request) (response *DescribeDataReportCountV2Response, err error) {
+    return c.DescribeDataReportCountV2WithContext(context.Background(), request)
+}
+
+// DescribeDataReportCountV2
+// 获取项目上报量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  FAILEDOPERATION_INFRASTRUCTUREERROR = "FailedOperation.InfrastructureError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDataReportCountV2WithContext(ctx context.Context, request *DescribeDataReportCountV2Request) (response *DescribeDataReportCountV2Response, err error) {
+    if request == nil {
+        request = NewDescribeDataReportCountV2Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeDataReportCountV2")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataReportCountV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataReportCountV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDataSetUrlStatisticsRequest() (request *DescribeDataSetUrlStatisticsRequest) {
     request = &DescribeDataSetUrlStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},

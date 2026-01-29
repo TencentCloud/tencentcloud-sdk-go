@@ -10389,7 +10389,7 @@ func (r *ModifyAttributeLabelResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDocAttrRangeRequestParams struct {
-	// 应用ID
+	// 应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -10398,14 +10398,14 @@ type ModifyDocAttrRangeRequestParams struct {
 	// 属性标签适用范围 1：全部，2：按条件
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
-	// 属性标签引用
+	// 属性标签引用，LabelBizIds可通过 DescribeAttributeLabel 接口获取
 	AttrLabels []*AttrLabelRefer `json:"AttrLabels,omitnil,omitempty" name:"AttrLabels"`
 }
 
 type ModifyDocAttrRangeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -10414,7 +10414,7 @@ type ModifyDocAttrRangeRequest struct {
 	// 属性标签适用范围 1：全部，2：按条件
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
-	// 属性标签引用
+	// 属性标签引用，LabelBizIds可通过 DescribeAttributeLabel 接口获取
 	AttrLabels []*AttrLabelRefer `json:"AttrLabels,omitnil,omitempty" name:"AttrLabels"`
 }
 

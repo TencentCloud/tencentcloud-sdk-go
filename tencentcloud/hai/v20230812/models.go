@@ -812,6 +812,60 @@ func (r *InquirePriceRunInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type InquirePriceUpdateServiceConfigsRequestParams struct {
+
+}
+
+type InquirePriceUpdateServiceConfigsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *InquirePriceUpdateServiceConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceUpdateServiceConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceUpdateServiceConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquirePriceUpdateServiceConfigsResponseParams struct {
+	// 发货参数对应的价格组合。
+	Price *ServicePriceDetail `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InquirePriceUpdateServiceConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *InquirePriceUpdateServiceConfigsResponseParams `json:"Response"`
+}
+
+func (r *InquirePriceUpdateServiceConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceUpdateServiceConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Instance struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -1270,6 +1324,11 @@ type SceneInfo struct {
 
 	// 场景名
 	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
+}
+
+type ServicePriceDetail struct {
+	// 推理集群价格信息	
+	ServicePrice *ItemPrice `json:"ServicePrice,omitnil,omitempty" name:"ServicePrice"`
 }
 
 // Predefined struct for user

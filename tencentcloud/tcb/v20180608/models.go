@@ -1578,6 +1578,14 @@ func (r *CreateHostingDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateIndex struct {
+	// 索引名称
+	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
+
+	// 索引结构
+	MgoKeySchema *MgoKeySchema `json:"MgoKeySchema,omitnil,omitempty" name:"MgoKeySchema"`
+}
+
 // Predefined struct for user
 type CreatePostpayPackageRequestParams struct {
 	// 环境ID，需要系统自动创建环境时，此字段不传
@@ -1789,6 +1797,220 @@ func (r *CreateStaticStoreResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateStaticStoreResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTableRequestParams struct {
+	// 数据表名；长度不超过96个字符，可以为英文字母、数字、下划线(_)和短横线(-)的组合，且不能以下划线开头
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// FlexDB实例ID，如：tnt-nl7hjzasw
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// FlexDB数据库权限信息
+	PermissionInfo *PermissionInfo `json:"PermissionInfo,omitnil,omitempty" name:"PermissionInfo"`
+
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// MongoDB连接器配置
+	MongoConnector *MongoConnector `json:"MongoConnector,omitnil,omitempty" name:"MongoConnector"`
+}
+
+type CreateTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据表名；长度不超过96个字符，可以为英文字母、数字、下划线(_)和短横线(-)的组合，且不能以下划线开头
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// FlexDB实例ID，如：tnt-nl7hjzasw
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// FlexDB数据库权限信息
+	PermissionInfo *PermissionInfo `json:"PermissionInfo,omitnil,omitempty" name:"PermissionInfo"`
+
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// MongoDB连接器配置
+	MongoConnector *MongoConnector `json:"MongoConnector,omitnil,omitempty" name:"MongoConnector"`
+}
+
+func (r *CreateTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableName")
+	delete(f, "Tag")
+	delete(f, "PermissionInfo")
+	delete(f, "EnvId")
+	delete(f, "MongoConnector")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTableResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTableResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTableResponseParams `json:"Response"`
+}
+
+func (r *CreateTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUserRequestParams struct {
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 用户名，用户名规则：1. 长度1-64字符 2. 只能包含大小写英文字母、数字和符号 . _ - 3. 只能以字母或数字开头 4. 不能重复
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 用户ID，最多64字符，如不传则系统自动生成
+	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
+
+	// 用户类型：internalUser-内部用户、externalUser-外部用户，默认internalUser（内部用户）
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 密码，传入Uid时密码可不传。密码规则：1. 长度8-32字符（推荐12位以上） 2. 不能以特殊字符开头 3. 至少包含以下四项中的三项：小写字母a-z、大写字母A-Z、数字0-9、特殊字符()!@#$%^&*\|?><_-
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 用户状态：ACTIVE（激活）、BLOCKED（冻结），默认激活
+	UserStatus *string `json:"UserStatus,omitnil,omitempty" name:"UserStatus"`
+
+	// 用户昵称，长度2-64字符
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
+
+	// 手机号，不能重复
+	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
+
+	// 邮箱地址，不能重复
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 头像链接，可访问的公网URL
+	AvatarUrl *string `json:"AvatarUrl,omitnil,omitempty" name:"AvatarUrl"`
+
+	// 用户描述，最多200字符
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type CreateUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 用户名，用户名规则：1. 长度1-64字符 2. 只能包含大小写英文字母、数字和符号 . _ - 3. 只能以字母或数字开头 4. 不能重复
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 用户ID，最多64字符，如不传则系统自动生成
+	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
+
+	// 用户类型：internalUser-内部用户、externalUser-外部用户，默认internalUser（内部用户）
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 密码，传入Uid时密码可不传。密码规则：1. 长度8-32字符（推荐12位以上） 2. 不能以特殊字符开头 3. 至少包含以下四项中的三项：小写字母a-z、大写字母A-Z、数字0-9、特殊字符()!@#$%^&*\|?><_-
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 用户状态：ACTIVE（激活）、BLOCKED（冻结），默认激活
+	UserStatus *string `json:"UserStatus,omitnil,omitempty" name:"UserStatus"`
+
+	// 用户昵称，长度2-64字符
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
+
+	// 手机号，不能重复
+	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
+
+	// 邮箱地址，不能重复
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 头像链接，可访问的公网URL
+	AvatarUrl *string `json:"AvatarUrl,omitnil,omitempty" name:"AvatarUrl"`
+
+	// 用户描述，最多200字符
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *CreateUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "Name")
+	delete(f, "Uid")
+	delete(f, "Type")
+	delete(f, "Password")
+	delete(f, "UserStatus")
+	delete(f, "NickName")
+	delete(f, "Phone")
+	delete(f, "Email")
+	delete(f, "AvatarUrl")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateUserResp struct {
+	// 用户ID
+	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
+}
+
+// Predefined struct for user
+type CreateUserResponseParams struct {
+	// 结果返回
+	Data *CreateUserResp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateUserResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateUserResponseParams `json:"Response"`
+}
+
+func (r *CreateUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2121,6 +2343,153 @@ func (r *DeleteGatewayVersionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteGatewayVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTableRequestParams struct {
+	// 待删除的表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// FlexDB实例ID
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// MongoDB连接器配置
+	MongoConnector *MongoConnector `json:"MongoConnector,omitnil,omitempty" name:"MongoConnector"`
+}
+
+type DeleteTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待删除的表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// FlexDB实例ID
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// MongoDB连接器配置
+	MongoConnector *MongoConnector `json:"MongoConnector,omitnil,omitempty" name:"MongoConnector"`
+}
+
+func (r *DeleteTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableName")
+	delete(f, "Tag")
+	delete(f, "EnvId")
+	delete(f, "MongoConnector")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTableResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteTableResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteTableResponseParams `json:"Response"`
+}
+
+func (r *DeleteTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteUsersRequestParams struct {
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// tcb用户id列表, 一次最多支持删除100个
+	Uids []*string `json:"Uids,omitnil,omitempty" name:"Uids"`
+}
+
+type DeleteUsersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// tcb用户id列表, 一次最多支持删除100个
+	Uids []*string `json:"Uids,omitnil,omitempty" name:"Uids"`
+}
+
+func (r *DeleteUsersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUsersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "Uids")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUsersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteUsersResp struct {
+	// 成功个数
+	SuccessCount *int64 `json:"SuccessCount,omitnil,omitempty" name:"SuccessCount"`
+
+	// 失败个数
+	FailedCount *int64 `json:"FailedCount,omitnil,omitempty" name:"FailedCount"`
+}
+
+// Predefined struct for user
+type DeleteUsersResponseParams struct {
+	// 删除用户结果
+	Data *DeleteUsersResp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteUsersResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteUsersResponseParams `json:"Response"`
+}
+
+func (r *DeleteUsersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUsersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5338,6 +5707,177 @@ func (r *DescribeSpecialCostItemsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTableRequestParams struct {
+	// 表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// FlecDB实例ID
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// MongoDB连接器配置
+	MongoConnector *MongoConnector `json:"MongoConnector,omitnil,omitempty" name:"MongoConnector"`
+}
+
+type DescribeTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// FlecDB实例ID
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// MongoDB连接器配置
+	MongoConnector *MongoConnector `json:"MongoConnector,omitnil,omitempty" name:"MongoConnector"`
+}
+
+func (r *DescribeTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableName")
+	delete(f, "Tag")
+	delete(f, "EnvId")
+	delete(f, "MongoConnector")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTableResponseParams struct {
+	// 索引相关信息
+	Indexes []*IndexInfo `json:"Indexes,omitnil,omitempty" name:"Indexes"`
+
+	// 索引个数
+	IndexNum *int64 `json:"IndexNum,omitnil,omitempty" name:"IndexNum"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTableResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTableResponseParams `json:"Response"`
+}
+
+func (r *DescribeTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTablesRequestParams struct {
+	// 分页条件
+	MgoLimit *int64 `json:"MgoLimit,omitnil,omitempty" name:"MgoLimit"`
+
+	// 实例ID
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// 分页条件
+	MgoOffset *int64 `json:"MgoOffset,omitnil,omitempty" name:"MgoOffset"`
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// MongoConnector
+	MongoConnector *MongoConnector `json:"MongoConnector,omitnil,omitempty" name:"MongoConnector"`
+}
+
+type DescribeTablesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页条件
+	MgoLimit *int64 `json:"MgoLimit,omitnil,omitempty" name:"MgoLimit"`
+
+	// 实例ID
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// 分页条件
+	MgoOffset *int64 `json:"MgoOffset,omitnil,omitempty" name:"MgoOffset"`
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// MongoConnector
+	MongoConnector *MongoConnector `json:"MongoConnector,omitnil,omitempty" name:"MongoConnector"`
+}
+
+func (r *DescribeTablesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTablesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MgoLimit")
+	delete(f, "Tag")
+	delete(f, "MgoOffset")
+	delete(f, "EnvId")
+	delete(f, "MongoConnector")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTablesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTablesResponseParams struct {
+	// 表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tables []*TableInfo `json:"Tables,omitnil,omitempty" name:"Tables"`
+
+	// 分页信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pager *Pager `json:"Pager,omitnil,omitempty" name:"Pager"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTablesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTablesResponseParams `json:"Response"`
+}
+
+func (r *DescribeTablesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTablesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUserActivityInfoRequestParams struct {
 	// 活动id
 	ActivityId *int64 `json:"ActivityId,omitnil,omitempty" name:"ActivityId"`
@@ -5424,6 +5964,113 @@ func (r *DescribeUserActivityInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeUserActivityInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserListRequestParams struct {
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 页码，从1开始，默认1
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 每页数量，默认20，最大100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 用户名，模糊查询
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 用户昵称，模糊查询
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
+
+	// 手机号，模糊查询
+	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
+
+	// 邮箱，模糊查询
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+}
+
+type DescribeUserListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 页码，从1开始，默认1
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 每页数量，默认20，最大100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 用户名，模糊查询
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 用户昵称，模糊查询
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
+
+	// 手机号，模糊查询
+	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
+
+	// 邮箱，模糊查询
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+}
+
+func (r *DescribeUserListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "PageNo")
+	delete(f, "PageSize")
+	delete(f, "Name")
+	delete(f, "NickName")
+	delete(f, "Phone")
+	delete(f, "Email")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserListResp struct {
+	// 用户总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 用户列表
+	UserList []*User `json:"UserList,omitnil,omitempty" name:"UserList"`
+}
+
+// Predefined struct for user
+type DescribeUserListResponseParams struct {
+	// 结果返回
+	Data *DescribeUserListResp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUserListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserListResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5726,6 +6373,11 @@ func (r *DestroyStaticStoreResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DestroyStaticStoreResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DropIndex struct {
+	// 索引名称
+	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
 }
 
 // Predefined struct for user
@@ -6443,12 +7095,163 @@ type HpaPolicy struct {
 	PolicyThreshold *int64 `json:"PolicyThreshold,omitnil,omitempty" name:"PolicyThreshold"`
 }
 
+type IndexAccesses struct {
+	// 索引命中次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ops *int64 `json:"Ops,omitnil,omitempty" name:"Ops"`
+
+	// 命中次数从何时开始计数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Since *string `json:"Since,omitnil,omitempty" name:"Since"`
+}
+
+type IndexInfo struct {
+	// 索引名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 索引大小，单位: 字节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 索引键值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Keys []*Indexkey `json:"Keys,omitnil,omitempty" name:"Keys"`
+
+	// 索引使用信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Accesses *IndexAccesses `json:"Accesses,omitnil,omitempty" name:"Accesses"`
+
+	// 是否为唯一索引
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unique *bool `json:"Unique,omitnil,omitempty" name:"Unique"`
+}
+
+type Indexkey struct {
+	// 键名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 方向：specify 1 for ascending or -1 for descending
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+}
+
 type KVPair struct {
 	// 键
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+// Predefined struct for user
+type ListTablesRequestParams struct {
+	// 每页返回数量（0-1000)
+	MgoLimit *int64 `json:"MgoLimit,omitnil,omitempty" name:"MgoLimit"`
+
+	// FlexDB实例ID
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// 分页偏移量
+	MgoOffset *int64 `json:"MgoOffset,omitnil,omitempty" name:"MgoOffset"`
+
+	// 过滤标签数组，用于过滤表名，可选值如：HIDDEN、WEDA、WEDA_SYSTEM
+	Filters []*string `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 模糊搜索查询值
+	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
+
+	// 是否展示隐藏表
+	ShowHidden *bool `json:"ShowHidden,omitnil,omitempty" name:"ShowHidden"`
+
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// mongo连接器信息
+	MongoConnector *MongoConnector `json:"MongoConnector,omitnil,omitempty" name:"MongoConnector"`
+}
+
+type ListTablesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每页返回数量（0-1000)
+	MgoLimit *int64 `json:"MgoLimit,omitnil,omitempty" name:"MgoLimit"`
+
+	// FlexDB实例ID
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// 分页偏移量
+	MgoOffset *int64 `json:"MgoOffset,omitnil,omitempty" name:"MgoOffset"`
+
+	// 过滤标签数组，用于过滤表名，可选值如：HIDDEN、WEDA、WEDA_SYSTEM
+	Filters []*string `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 模糊搜索查询值
+	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
+
+	// 是否展示隐藏表
+	ShowHidden *bool `json:"ShowHidden,omitnil,omitempty" name:"ShowHidden"`
+
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// mongo连接器信息
+	MongoConnector *MongoConnector `json:"MongoConnector,omitnil,omitempty" name:"MongoConnector"`
+}
+
+func (r *ListTablesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTablesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MgoLimit")
+	delete(f, "Tag")
+	delete(f, "MgoOffset")
+	delete(f, "Filters")
+	delete(f, "SearchValue")
+	delete(f, "ShowHidden")
+	delete(f, "EnvId")
+	delete(f, "MongoConnector")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTablesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListTablesResponseParams struct {
+	// 表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tables []*TableInfo `json:"Tables,omitnil,omitempty" name:"Tables"`
+
+	// 分页信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pager *Pager `json:"Pager,omitnil,omitempty" name:"Pager"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListTablesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListTablesResponseParams `json:"Response"`
+}
+
+func (r *ListTablesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTablesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type LogServiceInfo struct {
@@ -6469,6 +7272,25 @@ type LogServiceInfo struct {
 
 	// topic保存时长 默认7天
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+}
+
+type MgoIndexKeys struct {
+	// 无
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 无
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+}
+
+type MgoKeySchema struct {
+	// 索引字段
+	MgoIndexKeys []*MgoIndexKeys `json:"MgoIndexKeys,omitnil,omitempty" name:"MgoIndexKeys"`
+
+	// 是否唯一索引
+	MgoIsUnique *bool `json:"MgoIsUnique,omitnil,omitempty" name:"MgoIsUnique"`
+
+	// 是否稀疏索引
+	MgoIsSparse *bool `json:"MgoIsSparse,omitnil,omitempty" name:"MgoIsSparse"`
 }
 
 // Predefined struct for user
@@ -6956,6 +7778,147 @@ func (r *ModifyGatewayVersionTrafficResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyUserRequestParams struct {
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 用户Id, 不做修改
+	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
+
+	// 用户名，用户名规则：1. 长度1-64字符 2. 只能包含大小写英文字母、数字和符号 . _ - 3. 只能以字母或数字开头 4. 不能重复，不传该字段或传空字符不修改
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 用户类型：0-内部用户、1-外部用户，默认0（内部用户），不传该字段或传空字符串不修改
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 密码，传入Uid时密码可不传。密码规则：1. 长度8-32字符（推荐12位以上） 2. 不能以特殊字符开头 3. 至少包含以下四项中的三项：小写字母a-z、大写字母A-Z、数字0-9、特殊字符()!@#$%^&*\|?><_-，不传该字段或传空字符串不修改
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 用户状态：ACTIVE（激活）、BLOCKED（冻结），默认冻结，不传该字段或传空字符串不修改
+	UserStatus *string `json:"UserStatus,omitnil,omitempty" name:"UserStatus"`
+
+	// 用户昵称，长度2-64字符，不传该字段不修改，传空字符修改为空
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
+
+	// 手机号，11位数字，不传该字段不修改，传空字符串修改为空
+	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
+
+	// 邮箱地址，不传该字段不修改，传空字符修改为空
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 头像链接，可访问的公网URL，不传该字段不修改，传空字符串修改为空
+	AvatarUrl *string `json:"AvatarUrl,omitnil,omitempty" name:"AvatarUrl"`
+
+	// 用户描述，最多200字符，不传该字段不修改，传空字符修改为空
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type ModifyUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 用户Id, 不做修改
+	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
+
+	// 用户名，用户名规则：1. 长度1-64字符 2. 只能包含大小写英文字母、数字和符号 . _ - 3. 只能以字母或数字开头 4. 不能重复，不传该字段或传空字符不修改
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 用户类型：0-内部用户、1-外部用户，默认0（内部用户），不传该字段或传空字符串不修改
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 密码，传入Uid时密码可不传。密码规则：1. 长度8-32字符（推荐12位以上） 2. 不能以特殊字符开头 3. 至少包含以下四项中的三项：小写字母a-z、大写字母A-Z、数字0-9、特殊字符()!@#$%^&*\|?><_-，不传该字段或传空字符串不修改
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 用户状态：ACTIVE（激活）、BLOCKED（冻结），默认冻结，不传该字段或传空字符串不修改
+	UserStatus *string `json:"UserStatus,omitnil,omitempty" name:"UserStatus"`
+
+	// 用户昵称，长度2-64字符，不传该字段不修改，传空字符修改为空
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
+
+	// 手机号，11位数字，不传该字段不修改，传空字符串修改为空
+	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
+
+	// 邮箱地址，不传该字段不修改，传空字符修改为空
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 头像链接，可访问的公网URL，不传该字段不修改，传空字符串修改为空
+	AvatarUrl *string `json:"AvatarUrl,omitnil,omitempty" name:"AvatarUrl"`
+
+	// 用户描述，最多200字符，不传该字段不修改，传空字符修改为空
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *ModifyUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "Uid")
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "Password")
+	delete(f, "UserStatus")
+	delete(f, "NickName")
+	delete(f, "Phone")
+	delete(f, "Email")
+	delete(f, "AvatarUrl")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyUserResp struct {
+	// 是否成功
+	Success *bool `json:"Success,omitnil,omitempty" name:"Success"`
+}
+
+// Predefined struct for user
+type ModifyUserResponseParams struct {
+	// 修改用户返回值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ModifyUserResp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyUserResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyUserResponseParams `json:"Response"`
+}
+
+func (r *ModifyUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type MongoConnector struct {
+	// 连接器实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// MongoDB数据库名
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+}
+
 type ObjectKV struct {
 	// object 的 key
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -7040,6 +8003,35 @@ type PackageFreeQuotaInfo struct {
 	// 免费量类型
 	// <li>basic:通用量抵扣</li>
 	FreeQuotaType *string `json:"FreeQuotaType,omitnil,omitempty" name:"FreeQuotaType"`
+}
+
+type Pager struct {
+	// 分页偏移量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页返回记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 文档集合总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+}
+
+type PermissionInfo struct {
+	// "READONLY",   //公有读，私有写。所有用户可读，仅创建者及管理员可写  
+	// "PRIVATE",    //私有读写，仅创建者及管理员可读写  
+	// "ADMINWRITE", //所有用户可读，仅管理员可写  
+	// "ADMINONLY",  //仅管理员可操作  
+	// "CUSTOM",     // 安全规则
+	AclTag *string `json:"AclTag,omitnil,omitempty" name:"AclTag"`
+
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 自定义规则
+	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 }
 
 type PostPaidEnvDeductInfo struct {
@@ -7364,6 +8356,28 @@ type StorageInfo struct {
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 }
 
+type TableInfo struct {
+	// 表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 表中文档数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 表的大小（即表中文档总大小），单位：字节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 索引数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexCount *int64 `json:"IndexCount,omitnil,omitempty" name:"IndexCount"`
+
+	// 索引占用空间，单位：字节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexSize *int64 `json:"IndexSize,omitnil,omitempty" name:"IndexSize"`
+}
+
 type Tag struct {
 	// 标签键
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -7453,6 +8467,124 @@ func (r *UnfreezeCloudBaseRunServersResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UnfreezeCloudBaseRunServersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateTableRequestParams struct {
+	// 表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// FlexDB实例ID
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// 待删除索引信息
+	DropIndexes []*DropIndex `json:"DropIndexes,omitnil,omitempty" name:"DropIndexes"`
+
+	// 待创建索引信息
+	CreateIndexes []*CreateIndex `json:"CreateIndexes,omitnil,omitempty" name:"CreateIndexes"`
+
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// MongoDB连接器配置
+	MongoConnector *MongoConnector `json:"MongoConnector,omitnil,omitempty" name:"MongoConnector"`
+}
+
+type UpdateTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// FlexDB实例ID
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// 待删除索引信息
+	DropIndexes []*DropIndex `json:"DropIndexes,omitnil,omitempty" name:"DropIndexes"`
+
+	// 待创建索引信息
+	CreateIndexes []*CreateIndex `json:"CreateIndexes,omitnil,omitempty" name:"CreateIndexes"`
+
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// MongoDB连接器配置
+	MongoConnector *MongoConnector `json:"MongoConnector,omitnil,omitempty" name:"MongoConnector"`
+}
+
+func (r *UpdateTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableName")
+	delete(f, "Tag")
+	delete(f, "DropIndexes")
+	delete(f, "CreateIndexes")
+	delete(f, "EnvId")
+	delete(f, "MongoConnector")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateTableResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateTableResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateTableResponseParams `json:"Response"`
+}
+
+func (r *UpdateTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type User struct {
+	// 用户ID
+	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
+
+	// 用户名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 用户类型：internalUser-内部用户、externalUser-外部用户
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 用户状态：ACTIVE（激活）、BLOCKED（冻结）
+	UserStatus *string `json:"UserStatus,omitnil,omitempty" name:"UserStatus"`
+
+	// 用户昵称
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
+
+	// 手机号
+	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
+
+	// 邮箱
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 头像链接
+	AvatarUrl *string `json:"AvatarUrl,omitnil,omitempty" name:"AvatarUrl"`
+
+	// 用户描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type WxGatewayCustomConfig struct {

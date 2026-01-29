@@ -2862,7 +2862,12 @@ type CreateCloneInstanceRequestParams struct {
 	SpecifiedSubBackupId *int64 `json:"SpecifiedSubBackupId,omitnil,omitempty" name:"SpecifiedSubBackupId"`
 
 	// 新产生的克隆实例主库的可用区信息，默认同源实例 Zone 的值。
+	//
+	// Deprecated: MasterZone is deprecated.
 	MasterZone *string `json:"MasterZone,omitnil,omitempty" name:"MasterZone"`
+
+	// 新产生的克隆实例主库的可用区信息，默认同源实例 Zone 的值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 type CreateCloneInstanceRequest struct {
@@ -2950,6 +2955,9 @@ type CreateCloneInstanceRequest struct {
 
 	// 新产生的克隆实例主库的可用区信息，默认同源实例 Zone 的值。
 	MasterZone *string `json:"MasterZone,omitnil,omitempty" name:"MasterZone"`
+
+	// 新产生的克隆实例主库的可用区信息，默认同源实例 Zone 的值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 func (r *CreateCloneInstanceRequest) ToJsonString() string {
@@ -2991,6 +2999,7 @@ func (r *CreateCloneInstanceRequest) FromJsonString(s string) error {
 	delete(f, "SrcRegion")
 	delete(f, "SpecifiedSubBackupId")
 	delete(f, "MasterZone")
+	delete(f, "Zone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloneInstanceRequest has unknown keys!", "")
 	}

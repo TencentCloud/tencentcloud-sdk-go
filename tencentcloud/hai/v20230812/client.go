@@ -635,6 +635,66 @@ func (c *Client) InquirePriceRunInstancesWithContext(ctx context.Context, reques
     return
 }
 
+func NewInquirePriceUpdateServiceConfigsRequest() (request *InquirePriceUpdateServiceConfigsRequest) {
+    request = &InquirePriceUpdateServiceConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "InquirePriceUpdateServiceConfigs")
+    
+    
+    return
+}
+
+func NewInquirePriceUpdateServiceConfigsResponse() (response *InquirePriceUpdateServiceConfigsResponse) {
+    response = &InquirePriceUpdateServiceConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InquirePriceUpdateServiceConfigs
+// 本接口(InquirePriceUpdateServiceConfigs)用于更新服务配置询价
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
+//  INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"
+//  INVALIDPARAMETERVALUE_TARGETREPLICASMUSTDIFFERFROMRUNNINGREPLICAS = "InvalidParameterValue.TargetReplicasMustDifferFromRunningReplicas"
+//  OPERATIONDENIED_SERVICEOPERATIONINPROGRESS = "OperationDenied.ServiceOperationInProgress"
+//  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTTOINQUIRYPRICE = "UnsupportedOperation.NotSupportToInquiryPrice"
+func (c *Client) InquirePriceUpdateServiceConfigs(request *InquirePriceUpdateServiceConfigsRequest) (response *InquirePriceUpdateServiceConfigsResponse, err error) {
+    return c.InquirePriceUpdateServiceConfigsWithContext(context.Background(), request)
+}
+
+// InquirePriceUpdateServiceConfigs
+// 本接口(InquirePriceUpdateServiceConfigs)用于更新服务配置询价
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
+//  INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"
+//  INVALIDPARAMETERVALUE_TARGETREPLICASMUSTDIFFERFROMRUNNINGREPLICAS = "InvalidParameterValue.TargetReplicasMustDifferFromRunningReplicas"
+//  OPERATIONDENIED_SERVICEOPERATIONINPROGRESS = "OperationDenied.ServiceOperationInProgress"
+//  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTTOINQUIRYPRICE = "UnsupportedOperation.NotSupportToInquiryPrice"
+func (c *Client) InquirePriceUpdateServiceConfigsWithContext(ctx context.Context, request *InquirePriceUpdateServiceConfigsRequest) (response *InquirePriceUpdateServiceConfigsResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceUpdateServiceConfigsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "InquirePriceUpdateServiceConfigs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquirePriceUpdateServiceConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquirePriceUpdateServiceConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResetInstancesPasswordRequest() (request *ResetInstancesPasswordRequest) {
     request = &ResetInstancesPasswordRequest{
         BaseRequest: &tchttp.BaseRequest{},

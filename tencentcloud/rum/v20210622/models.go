@@ -3596,6 +3596,91 @@ func (r *DescribeDataReportCountResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDataReportCountV2RequestParams struct {
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 上报类型（custom，event，log，miniProgramData，performance，pv，speed，webvitals）
+	ReportType *string `json:"ReportType,omitnil,omitempty" name:"ReportType"`
+
+	// 实例ID
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+}
+
+type DescribeDataReportCountV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 上报类型（custom，event，log，miniProgramData，performance，pv，speed，webvitals）
+	ReportType *string `json:"ReportType,omitnil,omitempty" name:"ReportType"`
+
+	// 实例ID
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+}
+
+func (r *DescribeDataReportCountV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataReportCountV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ID")
+	delete(f, "ReportType")
+	delete(f, "InstanceID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataReportCountV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataReportCountV2ResponseParams struct {
+	// 返回值
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataReportCountV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataReportCountV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataReportCountV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataReportCountV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDataRequestParams struct {
 	// 查询字符串
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`

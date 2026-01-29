@@ -6393,6 +6393,60 @@ func (c *Client) CreateIntegrationUserRolesWithContext(ctx context.Context, requ
     return
 }
 
+func NewCreateLMInformationExtractionTaskFieldFeedbackRequest() (request *CreateLMInformationExtractionTaskFieldFeedbackRequest) {
+    request = &CreateLMInformationExtractionTaskFieldFeedbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateLMInformationExtractionTaskFieldFeedback")
+    
+    
+    return
+}
+
+func NewCreateLMInformationExtractionTaskFieldFeedbackResponse() (response *CreateLMInformationExtractionTaskFieldFeedbackResponse) {
+    response = &CreateLMInformationExtractionTaskFieldFeedbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateLMInformationExtractionTaskFieldFeedback
+// 此接口（CreateLMInformationExtractionTaskFieldFeedback）用于创建合同智能提取任务字段结果的反馈。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateLMInformationExtractionTaskFieldFeedback(request *CreateLMInformationExtractionTaskFieldFeedbackRequest) (response *CreateLMInformationExtractionTaskFieldFeedbackResponse, err error) {
+    return c.CreateLMInformationExtractionTaskFieldFeedbackWithContext(context.Background(), request)
+}
+
+// CreateLMInformationExtractionTaskFieldFeedback
+// 此接口（CreateLMInformationExtractionTaskFieldFeedback）用于创建合同智能提取任务字段结果的反馈。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateLMInformationExtractionTaskFieldFeedbackWithContext(ctx context.Context, request *CreateLMInformationExtractionTaskFieldFeedbackRequest) (response *CreateLMInformationExtractionTaskFieldFeedbackResponse, err error) {
+    if request == nil {
+        request = NewCreateLMInformationExtractionTaskFieldFeedbackRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateLMInformationExtractionTaskFieldFeedback")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLMInformationExtractionTaskFieldFeedback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLMInformationExtractionTaskFieldFeedbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLegalSealQrCodeRequest() (request *CreateLegalSealQrCodeRequest) {
     request = &CreateLegalSealQrCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8565,6 +8619,60 @@ func (c *Client) CreateReleaseFlowWithContext(ctx context.Context, request *Crea
     request.SetContext(ctx)
     
     response = NewCreateReleaseFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRiskIdentificationTaskFeedbackRequest() (request *CreateRiskIdentificationTaskFeedbackRequest) {
+    request = &CreateRiskIdentificationTaskFeedbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateRiskIdentificationTaskFeedback")
+    
+    
+    return
+}
+
+func NewCreateRiskIdentificationTaskFeedbackResponse() (response *CreateRiskIdentificationTaskFeedbackResponse) {
+    response = &CreateRiskIdentificationTaskFeedbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRiskIdentificationTaskFeedback
+// 此接口（CreateRiskIdentificationTaskFeedback）用于创建合同审查任务结果反馈。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateRiskIdentificationTaskFeedback(request *CreateRiskIdentificationTaskFeedbackRequest) (response *CreateRiskIdentificationTaskFeedbackResponse, err error) {
+    return c.CreateRiskIdentificationTaskFeedbackWithContext(context.Background(), request)
+}
+
+// CreateRiskIdentificationTaskFeedback
+// 此接口（CreateRiskIdentificationTaskFeedback）用于创建合同审查任务结果反馈。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateRiskIdentificationTaskFeedbackWithContext(ctx context.Context, request *CreateRiskIdentificationTaskFeedbackRequest) (response *CreateRiskIdentificationTaskFeedbackResponse, err error) {
+    if request == nil {
+        request = NewCreateRiskIdentificationTaskFeedbackRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateRiskIdentificationTaskFeedback")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRiskIdentificationTaskFeedback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRiskIdentificationTaskFeedbackResponse()
     err = c.Send(request, response)
     return
 }
@@ -12387,6 +12495,60 @@ func (c *Client) DescribeIntegrationRolesWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeLMInformationExtractionTaskFieldFeedbackRequest() (request *DescribeLMInformationExtractionTaskFieldFeedbackRequest) {
+    request = &DescribeLMInformationExtractionTaskFieldFeedbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeLMInformationExtractionTaskFieldFeedback")
+    
+    
+    return
+}
+
+func NewDescribeLMInformationExtractionTaskFieldFeedbackResponse() (response *DescribeLMInformationExtractionTaskFieldFeedbackResponse) {
+    response = &DescribeLMInformationExtractionTaskFieldFeedbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLMInformationExtractionTaskFieldFeedback
+// 此接口（DescribeLMInformationExtractionTaskFieldFeedback）用于查询合同智能提取任务字段反馈信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeLMInformationExtractionTaskFieldFeedback(request *DescribeLMInformationExtractionTaskFieldFeedbackRequest) (response *DescribeLMInformationExtractionTaskFieldFeedbackResponse, err error) {
+    return c.DescribeLMInformationExtractionTaskFieldFeedbackWithContext(context.Background(), request)
+}
+
+// DescribeLMInformationExtractionTaskFieldFeedback
+// 此接口（DescribeLMInformationExtractionTaskFieldFeedback）用于查询合同智能提取任务字段反馈信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeLMInformationExtractionTaskFieldFeedbackWithContext(ctx context.Context, request *DescribeLMInformationExtractionTaskFieldFeedbackRequest) (response *DescribeLMInformationExtractionTaskFieldFeedbackResponse, err error) {
+    if request == nil {
+        request = NewDescribeLMInformationExtractionTaskFieldFeedbackRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeLMInformationExtractionTaskFieldFeedback")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLMInformationExtractionTaskFieldFeedback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLMInformationExtractionTaskFieldFeedbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOrganizationAuthStatusRequest() (request *DescribeOrganizationAuthStatusRequest) {
     request = &DescribeOrganizationAuthStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12697,6 +12859,60 @@ func (c *Client) DescribePersonCertificateWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribePersonCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRiskIdentificationTaskFeedbackRequest() (request *DescribeRiskIdentificationTaskFeedbackRequest) {
+    request = &DescribeRiskIdentificationTaskFeedbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeRiskIdentificationTaskFeedback")
+    
+    
+    return
+}
+
+func NewDescribeRiskIdentificationTaskFeedbackResponse() (response *DescribeRiskIdentificationTaskFeedbackResponse) {
+    response = &DescribeRiskIdentificationTaskFeedbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRiskIdentificationTaskFeedback
+// 此接口（DescribeRiskIdentificationTaskFeedback）用于查询合同审查任务结果反馈信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeRiskIdentificationTaskFeedback(request *DescribeRiskIdentificationTaskFeedbackRequest) (response *DescribeRiskIdentificationTaskFeedbackResponse, err error) {
+    return c.DescribeRiskIdentificationTaskFeedbackWithContext(context.Background(), request)
+}
+
+// DescribeRiskIdentificationTaskFeedback
+// 此接口（DescribeRiskIdentificationTaskFeedback）用于查询合同审查任务结果反馈信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeRiskIdentificationTaskFeedbackWithContext(ctx context.Context, request *DescribeRiskIdentificationTaskFeedbackRequest) (response *DescribeRiskIdentificationTaskFeedbackResponse, err error) {
+    if request == nil {
+        request = NewDescribeRiskIdentificationTaskFeedbackRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeRiskIdentificationTaskFeedback")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRiskIdentificationTaskFeedback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRiskIdentificationTaskFeedbackResponse()
     err = c.Send(request, response)
     return
 }

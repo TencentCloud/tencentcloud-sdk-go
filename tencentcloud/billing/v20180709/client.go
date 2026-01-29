@@ -3998,3 +3998,99 @@ func (c *Client) RenewInstanceWithContext(ctx context.Context, request *RenewIns
     err = c.Send(request, response)
     return
 }
+
+func NewSetRenewalRequest() (request *SetRenewalRequest) {
+    request = &SetRenewalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "SetRenewal")
+    
+    
+    return
+}
+
+func NewSetRenewalResponse() (response *SetRenewalResponse) {
+    response = &SetRenewalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetRenewal
+// 注意事项：
+//
+// 1、本接口支持对包年包月实例设置自动续费模式及周期
+//
+// 2、可通过实例查询接口获取到产品编码、地域编码
+//
+// 3、子用户使用该接口时，应具备QcloudFinanceRenewManageFullAccess权限策略。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_BUSINESSCHECKERRCODE = "FailedOperation.BusinessCheckErrCode"
+//  FAILEDOPERATION_DISTRIBUTEERROR = "FailedOperation.DistributeError"
+//  FAILEDOPERATION_GETPRICEPARAMERROR = "FailedOperation.GetPriceParamError"
+//  FAILEDOPERATION_INVALIDDEAL = "FailedOperation.InvalidDeal"
+//  FAILEDOPERATION_INVALIDGOODSCATEGORYID = "FailedOperation.InvalidGoodsCategoryId"
+//  FAILEDOPERATION_DEALCREATEWHITELISTERROR = "FailedOperation.dealCreateWhitelistError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APIPARAMERROR = "InvalidParameter.ApiParamError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_RESOURCELOCKED = "InvalidParameter.ResourceLocked"
+//  UNAUTHORIZEDOPERATION_CERTIFICATIONNEEDUPGRADE = "UnauthorizedOperation.CertificationNeedUpgrade"
+//  UNAUTHORIZEDOPERATION_NOTCERTIFICATION = "UnauthorizedOperation.NotCertification"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_NOT_SUPPORT_THIS_ACTION = "UnsupportedOperation.NOT_SUPPORT_THIS_ACTION"
+func (c *Client) SetRenewal(request *SetRenewalRequest) (response *SetRenewalResponse, err error) {
+    return c.SetRenewalWithContext(context.Background(), request)
+}
+
+// SetRenewal
+// 注意事项：
+//
+// 1、本接口支持对包年包月实例设置自动续费模式及周期
+//
+// 2、可通过实例查询接口获取到产品编码、地域编码
+//
+// 3、子用户使用该接口时，应具备QcloudFinanceRenewManageFullAccess权限策略。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_BUSINESSCHECKERRCODE = "FailedOperation.BusinessCheckErrCode"
+//  FAILEDOPERATION_DISTRIBUTEERROR = "FailedOperation.DistributeError"
+//  FAILEDOPERATION_GETPRICEPARAMERROR = "FailedOperation.GetPriceParamError"
+//  FAILEDOPERATION_INVALIDDEAL = "FailedOperation.InvalidDeal"
+//  FAILEDOPERATION_INVALIDGOODSCATEGORYID = "FailedOperation.InvalidGoodsCategoryId"
+//  FAILEDOPERATION_DEALCREATEWHITELISTERROR = "FailedOperation.dealCreateWhitelistError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APIPARAMERROR = "InvalidParameter.ApiParamError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_RESOURCELOCKED = "InvalidParameter.ResourceLocked"
+//  UNAUTHORIZEDOPERATION_CERTIFICATIONNEEDUPGRADE = "UnauthorizedOperation.CertificationNeedUpgrade"
+//  UNAUTHORIZEDOPERATION_NOTCERTIFICATION = "UnauthorizedOperation.NotCertification"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_NOT_SUPPORT_THIS_ACTION = "UnsupportedOperation.NOT_SUPPORT_THIS_ACTION"
+func (c *Client) SetRenewalWithContext(ctx context.Context, request *SetRenewalRequest) (response *SetRenewalResponse, err error) {
+    if request == nil {
+        request = NewSetRenewalRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "billing", APIVersion, "SetRenewal")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetRenewal require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetRenewalResponse()
+    err = c.Send(request, response)
+    return
+}

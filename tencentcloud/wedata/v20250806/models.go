@@ -11192,7 +11192,7 @@ type ListPermissionsRequestParams struct {
 	// - Metalake，固定为default
 	// - Catalog，取catalogName
 	// - Schema，取catalogName.SchemaName
-	// - Table,，取catalogName.SchemaName.TableName
+	// - Table，取catalogName.SchemaName.TableName
 	Resource *PrivilegeResource `json:"Resource,omitnil,omitempty" name:"Resource"`
 
 	// 过滤条件(此参数还未支持)
@@ -11214,7 +11214,7 @@ type ListPermissionsRequest struct {
 	// - Metalake，固定为default
 	// - Catalog，取catalogName
 	// - Schema，取catalogName.SchemaName
-	// - Table,，取catalogName.SchemaName.TableName
+	// - Table，取catalogName.SchemaName.TableName
 	Resource *PrivilegeResource `json:"Resource,omitnil,omitempty" name:"Resource"`
 
 	// 过滤条件(此参数还未支持)

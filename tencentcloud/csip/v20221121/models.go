@@ -8919,7 +8919,7 @@ type KeyValue struct {
 
 // Predefined struct for user
 type ModifyOrganizationAccountStatusRequestParams struct {
-	// 修改集团账号状态，1 开启， 2关闭
+	// 修改集团账号状态，1 开启， 0关闭
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 集团账号的成员id
@@ -8929,7 +8929,7 @@ type ModifyOrganizationAccountStatusRequestParams struct {
 type ModifyOrganizationAccountStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 修改集团账号状态，1 开启， 2关闭
+	// 修改集团账号状态，1 开启， 0关闭
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 集团账号的成员id

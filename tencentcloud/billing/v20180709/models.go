@@ -10492,6 +10492,20 @@ func (r *ModifyGatherRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type OperateRsp struct {
+	// 实例维度操作失败code码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 资源操作失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
 type OrderDto struct {
 	// 字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -10937,6 +10951,114 @@ func (r *RenewInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RenewInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetRenewalRequestParams struct {
+	// 产品编码。
+	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
+
+	// 地域编码。
+	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
+
+	// 实例ID，仅支持指定一个。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 续费标识。枚举值如下：
+	// NOTIFY_AND_MANUAL_RENEW：手动续费
+	// NOTIFY_AND_AUTO_RENEW：自动续费
+	// DISABLE_NOTIFY_AND_MANUAL_RENEW：到期不续
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 自动续费周期长度，不填写时默认按产品侧设置的默认值
+	// 如果是月，支持：1-11
+	// 如果是年，支持：1-5
+	// 实际按产品侧支持的范围为主
+	RenewPeriod *string `json:"RenewPeriod,omitnil,omitempty" name:"RenewPeriod"`
+
+	// 自动续费周期单位，不填写时默认按产品侧设置的默认值
+	// y 年，m 月
+	// 实际按产品侧支持的范围为主
+	RenewPeriodUnit *string `json:"RenewPeriodUnit,omitnil,omitempty" name:"RenewPeriodUnit"`
+}
+
+type SetRenewalRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品编码。
+	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
+
+	// 地域编码。
+	RegionCode *string `json:"RegionCode,omitnil,omitempty" name:"RegionCode"`
+
+	// 实例ID，仅支持指定一个。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 续费标识。枚举值如下：
+	// NOTIFY_AND_MANUAL_RENEW：手动续费
+	// NOTIFY_AND_AUTO_RENEW：自动续费
+	// DISABLE_NOTIFY_AND_MANUAL_RENEW：到期不续
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 自动续费周期长度，不填写时默认按产品侧设置的默认值
+	// 如果是月，支持：1-11
+	// 如果是年，支持：1-5
+	// 实际按产品侧支持的范围为主
+	RenewPeriod *string `json:"RenewPeriod,omitnil,omitempty" name:"RenewPeriod"`
+
+	// 自动续费周期单位，不填写时默认按产品侧设置的默认值
+	// y 年，m 月
+	// 实际按产品侧支持的范围为主
+	RenewPeriodUnit *string `json:"RenewPeriodUnit,omitnil,omitempty" name:"RenewPeriodUnit"`
+}
+
+func (r *SetRenewalRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetRenewalRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductCode")
+	delete(f, "RegionCode")
+	delete(f, "InstanceId")
+	delete(f, "RenewFlag")
+	delete(f, "RenewPeriod")
+	delete(f, "RenewPeriodUnit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetRenewalRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetRenewalResponseParams struct {
+	// 操作失败时的实例列表。
+	InstanceList []*OperateRsp `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SetRenewalResponse struct {
+	*tchttp.BaseResponse
+	Response *SetRenewalResponseParams `json:"Response"`
+}
+
+func (r *SetRenewalResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetRenewalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

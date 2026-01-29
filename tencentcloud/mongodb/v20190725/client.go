@@ -4267,9 +4267,12 @@ func NewUpgradeDbInstanceVersionResponse() (response *UpgradeDbInstanceVersionRe
 }
 
 // UpgradeDbInstanceVersion
-// 本接口用于跨版本升级数据库内核。当前仅支持3.6版本升级为4.0版本、4.0版本升级为4.2版本、4.2版本升级为4.4版本及4.4版本升级为5.0版本。
+// 本接口（UpgradeDbInstanceVersion）用于升级数据库版本。
+//
+// **说明**：支持3.6及以上版本升级，仅支持从低版本向高版本逐级升级，不支持跨版本升级或版本降级。
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBOPERATEERROR = "InternalError.DBOperateError"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 func (c *Client) UpgradeDbInstanceVersion(request *UpgradeDbInstanceVersionRequest) (response *UpgradeDbInstanceVersionResponse, err error) {
@@ -4277,9 +4280,12 @@ func (c *Client) UpgradeDbInstanceVersion(request *UpgradeDbInstanceVersionReque
 }
 
 // UpgradeDbInstanceVersion
-// 本接口用于跨版本升级数据库内核。当前仅支持3.6版本升级为4.0版本、4.0版本升级为4.2版本、4.2版本升级为4.4版本及4.4版本升级为5.0版本。
+// 本接口（UpgradeDbInstanceVersion）用于升级数据库版本。
+//
+// **说明**：支持3.6及以上版本升级，仅支持从低版本向高版本逐级升级，不支持跨版本升级或版本降级。
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBOPERATEERROR = "InternalError.DBOperateError"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 func (c *Client) UpgradeDbInstanceVersionWithContext(ctx context.Context, request *UpgradeDbInstanceVersionRequest) (response *UpgradeDbInstanceVersionResponse, err error) {

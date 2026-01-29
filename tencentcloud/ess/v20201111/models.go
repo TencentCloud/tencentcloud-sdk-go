@@ -6818,6 +6818,74 @@ func (r *CreateIntegrationUserRolesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateLMInformationExtractionTaskFieldFeedbackRequestParams struct {
+	// 执行合同智能提取任务的员工信息。
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同智能提取任务结果字段ID值。该参数通过调用接口[获取合同智能提取任务详情](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeInformationExtractionTask)返回中的Results. ExtractionFieldResults.Id获取。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 合同智能提取任务反馈信息
+	Feedback *FeedbackInfo `json:"Feedback,omitnil,omitempty" name:"Feedback"`
+}
+
+type CreateLMInformationExtractionTaskFieldFeedbackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行合同智能提取任务的员工信息。
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同智能提取任务结果字段ID值。该参数通过调用接口[获取合同智能提取任务详情](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeInformationExtractionTask)返回中的Results. ExtractionFieldResults.Id获取。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 合同智能提取任务反馈信息
+	Feedback *FeedbackInfo `json:"Feedback,omitnil,omitempty" name:"Feedback"`
+}
+
+func (r *CreateLMInformationExtractionTaskFieldFeedbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLMInformationExtractionTaskFieldFeedbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Id")
+	delete(f, "Feedback")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLMInformationExtractionTaskFieldFeedbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLMInformationExtractionTaskFieldFeedbackResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateLMInformationExtractionTaskFieldFeedbackResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLMInformationExtractionTaskFieldFeedbackResponseParams `json:"Response"`
+}
+
+func (r *CreateLMInformationExtractionTaskFieldFeedbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLMInformationExtractionTaskFieldFeedbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateLegalSealQrCodeRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -9211,6 +9279,97 @@ type CreateResultPageConfig struct {
 
 	// 结果页描述，不超过200字
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+// Predefined struct for user
+type CreateRiskIdentificationTaskFeedbackRequestParams struct {
+	// 执行合同审查任务的员工信息。
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同审查风险结果ID，取值如下：
+	// 
+	// - 反馈风险项结果。该参数通过调用接口[获取合同审查任务详情](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractReviewTask)获取（取Risks.RiskId值）。
+	// 
+	// - 反馈通过项结果。该参数通过调用接口[获取合同审查任务详情](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractReviewTask)获取（取ApprovedLists.RiskId值）
+	RiskId *string `json:"RiskId,omitnil,omitempty" name:"RiskId"`
+
+	// 反馈结果
+	// 
+	// - 1: 其他错误
+	// - 2: 审查错误
+	// - 3: 审查正确
+	FeedbackResult *int64 `json:"FeedbackResult,omitnil,omitempty" name:"FeedbackResult"`
+
+	// 审查反馈原因
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+}
+
+type CreateRiskIdentificationTaskFeedbackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行合同审查任务的员工信息。
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同审查风险结果ID，取值如下：
+	// 
+	// - 反馈风险项结果。该参数通过调用接口[获取合同审查任务详情](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractReviewTask)获取（取Risks.RiskId值）。
+	// 
+	// - 反馈通过项结果。该参数通过调用接口[获取合同审查任务详情](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/DescribeContractReviewTask)获取（取ApprovedLists.RiskId值）
+	RiskId *string `json:"RiskId,omitnil,omitempty" name:"RiskId"`
+
+	// 反馈结果
+	// 
+	// - 1: 其他错误
+	// - 2: 审查错误
+	// - 3: 审查正确
+	FeedbackResult *int64 `json:"FeedbackResult,omitnil,omitempty" name:"FeedbackResult"`
+
+	// 审查反馈原因
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+}
+
+func (r *CreateRiskIdentificationTaskFeedbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRiskIdentificationTaskFeedbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "RiskId")
+	delete(f, "FeedbackResult")
+	delete(f, "Reason")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRiskIdentificationTaskFeedbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRiskIdentificationTaskFeedbackResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateRiskIdentificationTaskFeedbackResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRiskIdentificationTaskFeedbackResponseParams `json:"Response"`
+}
+
+func (r *CreateRiskIdentificationTaskFeedbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRiskIdentificationTaskFeedbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -14001,6 +14160,73 @@ func (r *DescribeIntegrationRolesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLMInformationExtractionTaskFieldFeedbackRequestParams struct {
+	// 执行合同智能提取任务的员工信息。
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同智能提取任务ID，该参数通过调用接口[批量创建合同智能提取任务](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchInformationExtractionTask/)获取。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeLMInformationExtractionTaskFieldFeedbackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行合同智能提取任务的员工信息。
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同智能提取任务ID，该参数通过调用接口[批量创建合同智能提取任务](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchInformationExtractionTask/)获取。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeLMInformationExtractionTaskFieldFeedbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLMInformationExtractionTaskFieldFeedbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLMInformationExtractionTaskFieldFeedbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLMInformationExtractionTaskFieldFeedbackResponseParams struct {
+	// 合同智能提取子任务反馈信息
+	SubTaskFeedbackList []*SubTaskFeedback `json:"SubTaskFeedbackList,omitnil,omitempty" name:"SubTaskFeedbackList"`
+
+	// 合同智能提取任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLMInformationExtractionTaskFieldFeedbackResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLMInformationExtractionTaskFieldFeedbackResponseParams `json:"Response"`
+}
+
+func (r *DescribeLMInformationExtractionTaskFieldFeedbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLMInformationExtractionTaskFieldFeedbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeOrganizationAuthStatusRequestParams struct {
 	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。 支持填入集团子公司经办人 userId 代发合同。  注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
@@ -14522,6 +14748,70 @@ func (r *DescribePersonCertificateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribePersonCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRiskIdentificationTaskFeedbackRequestParams struct {
+	// 执行合同审查任务的员工信息。
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同审查任务ID，该参数通过调用接口[批量创建合同智能提取任务](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchInformationExtractionTask)获取。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeRiskIdentificationTaskFeedbackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行合同审查任务的员工信息。
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同审查任务ID，该参数通过调用接口[批量创建合同智能提取任务](https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchInformationExtractionTask)获取。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeRiskIdentificationTaskFeedbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskIdentificationTaskFeedbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskIdentificationTaskFeedbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRiskIdentificationTaskFeedbackResponseParams struct {
+	// 合同审查任务反馈信息列表
+	FeedbackList []*RiskIdentificationFeedbackInfo `json:"FeedbackList,omitnil,omitempty" name:"FeedbackList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRiskIdentificationTaskFeedbackResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRiskIdentificationTaskFeedbackResponseParams `json:"Response"`
+}
+
+func (r *DescribeRiskIdentificationTaskFeedbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskIdentificationTaskFeedbackResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -15569,6 +15859,37 @@ type FailedUpdateStaffData struct {
 
 	// 员工在第三方平台的openId
 	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
+}
+
+type FeedbackInfo struct {
+	// 合同信息提取结果反馈。
+	// `值如下`：
+	// - 0:  未反馈
+	// - 1: 信息提取正确
+	// - 2: 信息提取有错误
+	Result *int64 `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 信息提取错误原因，当Result为2时需要填写此信息
+	Reason *FeedbackInfoReason `json:"Reason,omitnil,omitempty" name:"Reason"`
+}
+
+type FeedbackInfoReason struct {
+	// 反馈信息提取错误原因。
+	// `值如下`：
+	// - 1: 提取错误(提取不精准、提取为空等)
+	// - 2: 其他错误
+	ReasonType *int64 `json:"ReasonType,omitnil,omitempty" name:"ReasonType"`
+
+	// 反馈提取错误详细错误原因，不能超过500个字符
+	ReasonContent *string `json:"ReasonContent,omitnil,omitempty" name:"ReasonContent"`
+}
+
+type FeedbackList struct {
+	// 信息提取结果字段ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 反馈信息
+	Info *FeedbackInfo `json:"Info,omitnil,omitempty" name:"Info"`
 }
 
 type FileInfo struct {
@@ -18505,6 +18826,21 @@ type ReviewerInfo struct {
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 }
 
+type RiskIdentificationFeedbackInfo struct {
+	// 审查结果ID
+	RiskId *string `json:"RiskId,omitnil,omitempty" name:"RiskId"`
+
+	// 反馈结果
+	// 
+	// - 1: 其他错误
+	// - 2: 审查错误
+	// - 3: 审查正确
+	FeedbackResult *int64 `json:"FeedbackResult,omitnil,omitempty" name:"FeedbackResult"`
+
+	// 反馈原因
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+}
+
 type RiskIdentificationRoleInfo struct {
 	// 风险识别角色的名称。用于唯一标识和区分不同的风险识别角色。
 	// 
@@ -18798,6 +19134,14 @@ type SubOrgBillUsage struct {
 	// <li>**AuthService**: 企业工商信息查询</li>
 	// </ul>
 	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+}
+
+type SubTaskFeedback struct {
+	// 信息提取子任务ID
+	SubTaskId *string `json:"SubTaskId,omitnil,omitempty" name:"SubTaskId"`
+
+	// 提取结果反馈信息
+	FeedbackList []*FeedbackList `json:"FeedbackList,omitnil,omitempty" name:"FeedbackList"`
 }
 
 type SuccessCreateStaffData struct {

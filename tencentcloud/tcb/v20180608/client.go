@@ -637,6 +637,146 @@ func (c *Client) CreateStaticStoreWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateTableRequest() (request *CreateTableRequest) {
+    request = &CreateTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateTable")
+    
+    
+    return
+}
+
+func NewCreateTableResponse() (response *CreateTableResponse) {
+    response = &CreateTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTable
+// 本接口(CreateTable)用于创建表，支持创建capped类型集合，暂时不支持分片表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATETABLE = "FailedOperation.CreateTable"
+//  FAILEDOPERATION_LISTTABLE = "FailedOperation.ListTable"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_NOVALIDCONNECTION = "LimitExceeded.NoValidConnection"
+//  LIMITEXCEEDED_OUTOFTABLEQUOTA = "LimitExceeded.OutOfTableQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_CONNECTOR = "ResourceNotFound.Connector"
+//  RESOURCENOTFOUND_TABLE = "ResourceNotFound.Table"
+//  RESOURCEUNAVAILABLE_MONGOISOLATED = "ResourceUnavailable.MongoIsolated"
+//  RESOURCEUNAVAILABLE_RESOURCEEXIST = "ResourceUnavailable.ResourceExist"
+//  RESOURCEUNAVAILABLE_RESOURCEOVERDUE = "ResourceUnavailable.ResourceOverdue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateTable(request *CreateTableRequest) (response *CreateTableResponse, err error) {
+    return c.CreateTableWithContext(context.Background(), request)
+}
+
+// CreateTable
+// 本接口(CreateTable)用于创建表，支持创建capped类型集合，暂时不支持分片表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATETABLE = "FailedOperation.CreateTable"
+//  FAILEDOPERATION_LISTTABLE = "FailedOperation.ListTable"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_NOVALIDCONNECTION = "LimitExceeded.NoValidConnection"
+//  LIMITEXCEEDED_OUTOFTABLEQUOTA = "LimitExceeded.OutOfTableQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_CONNECTOR = "ResourceNotFound.Connector"
+//  RESOURCENOTFOUND_TABLE = "ResourceNotFound.Table"
+//  RESOURCEUNAVAILABLE_MONGOISOLATED = "ResourceUnavailable.MongoIsolated"
+//  RESOURCEUNAVAILABLE_RESOURCEEXIST = "ResourceUnavailable.ResourceExist"
+//  RESOURCEUNAVAILABLE_RESOURCEOVERDUE = "ResourceUnavailable.ResourceOverdue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateTableWithContext(ctx context.Context, request *CreateTableRequest) (response *CreateTableResponse, err error) {
+    if request == nil {
+        request = NewCreateTableRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateTable")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateUserRequest() (request *CreateUserRequest) {
+    request = &CreateUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateUser")
+    
+    
+    return
+}
+
+func NewCreateUserResponse() (response *CreateUserResponse) {
+    response = &CreateUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUser
+// 创建tcb用户
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATEDDATA = "FailedOperation.DuplicatedData"
+//  FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserResponse, err error) {
+    return c.CreateUserWithContext(context.Background(), request)
+}
+
+// CreateUser
+// 创建tcb用户
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATEDDATA = "FailedOperation.DuplicatedData"
+//  FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserRequest) (response *CreateUserResponse, err error) {
+    if request == nil {
+        request = NewCreateUserRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateUser")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCloudBaseProjectLatestVersionRequest() (request *DeleteCloudBaseProjectLatestVersionRequest) {
     request = &DeleteCloudBaseProjectLatestVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -805,6 +945,138 @@ func (c *Client) DeleteGatewayVersionWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDeleteGatewayVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTableRequest() (request *DeleteTableRequest) {
+    request = &DeleteTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DeleteTable")
+    
+    
+    return
+}
+
+func NewDeleteTableResponse() (response *DeleteTableResponse) {
+    response = &DeleteTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTable
+// 本接口(DeleteTable)用于删除表，删除表后表中数据将会被删除且无法恢复，请谨慎操作
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LISTTABLE = "FailedOperation.ListTable"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_NOVALIDCONNECTION = "LimitExceeded.NoValidConnection"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CONNECTOR = "ResourceNotFound.Connector"
+//  RESOURCENOTFOUND_TABLE = "ResourceNotFound.Table"
+//  RESOURCEUNAVAILABLE_MONGOISOLATED = "ResourceUnavailable.MongoIsolated"
+//  RESOURCEUNAVAILABLE_RESOURCEOVERDUE = "ResourceUnavailable.ResourceOverdue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteTable(request *DeleteTableRequest) (response *DeleteTableResponse, err error) {
+    return c.DeleteTableWithContext(context.Background(), request)
+}
+
+// DeleteTable
+// 本接口(DeleteTable)用于删除表，删除表后表中数据将会被删除且无法恢复，请谨慎操作
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LISTTABLE = "FailedOperation.ListTable"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_NOVALIDCONNECTION = "LimitExceeded.NoValidConnection"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CONNECTOR = "ResourceNotFound.Connector"
+//  RESOURCENOTFOUND_TABLE = "ResourceNotFound.Table"
+//  RESOURCEUNAVAILABLE_MONGOISOLATED = "ResourceUnavailable.MongoIsolated"
+//  RESOURCEUNAVAILABLE_RESOURCEOVERDUE = "ResourceUnavailable.ResourceOverdue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteTableWithContext(ctx context.Context, request *DeleteTableRequest) (response *DeleteTableResponse, err error) {
+    if request == nil {
+        request = NewDeleteTableRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteTable")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteUsersRequest() (request *DeleteUsersRequest) {
+    request = &DeleteUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DeleteUsers")
+    
+    
+    return
+}
+
+func NewDeleteUsersResponse() (response *DeleteUsersResponse) {
+    response = &DeleteUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteUsers
+// 删除tcb用户
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteUsers(request *DeleteUsersRequest) (response *DeleteUsersResponse, err error) {
+    return c.DeleteUsersWithContext(context.Background(), request)
+}
+
+// DeleteUsers
+// 删除tcb用户
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteUsersWithContext(ctx context.Context, request *DeleteUsersRequest) (response *DeleteUsersResponse, err error) {
+    if request == nil {
+        request = NewDeleteUsersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteUsers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteUsersResponse()
     err = c.Send(request, response)
     return
 }
@@ -2821,6 +3093,156 @@ func (c *Client) DescribeSpecialCostItemsWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeTableRequest() (request *DescribeTableRequest) {
+    request = &DescribeTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeTable")
+    
+    
+    return
+}
+
+func NewDescribeTableResponse() (response *DescribeTableResponse) {
+    response = &DescribeTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTable
+// 查询表的相关信息，包括索引等信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LISTTABLE = "FailedOperation.ListTable"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_NOVALIDCONNECTION = "LimitExceeded.NoValidConnection"
+//  LIMITEXCEEDED_OUTOFREADREQUESTQUOTA = "LimitExceeded.OutOfReadRequestQuota"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CONNECTOR = "ResourceNotFound.Connector"
+//  RESOURCENOTFOUND_TABLE = "ResourceNotFound.Table"
+//  RESOURCEUNAVAILABLE_MONGOISOLATED = "ResourceUnavailable.MongoIsolated"
+//  RESOURCEUNAVAILABLE_RESOURCEOVERDUE = "ResourceUnavailable.ResourceOverdue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeTable(request *DescribeTableRequest) (response *DescribeTableResponse, err error) {
+    return c.DescribeTableWithContext(context.Background(), request)
+}
+
+// DescribeTable
+// 查询表的相关信息，包括索引等信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LISTTABLE = "FailedOperation.ListTable"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_NOVALIDCONNECTION = "LimitExceeded.NoValidConnection"
+//  LIMITEXCEEDED_OUTOFREADREQUESTQUOTA = "LimitExceeded.OutOfReadRequestQuota"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CONNECTOR = "ResourceNotFound.Connector"
+//  RESOURCENOTFOUND_TABLE = "ResourceNotFound.Table"
+//  RESOURCEUNAVAILABLE_MONGOISOLATED = "ResourceUnavailable.MongoIsolated"
+//  RESOURCEUNAVAILABLE_RESOURCEOVERDUE = "ResourceUnavailable.ResourceOverdue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeTableWithContext(ctx context.Context, request *DescribeTableRequest) (response *DescribeTableResponse, err error) {
+    if request == nil {
+        request = NewDescribeTableRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeTable")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTablesRequest() (request *DescribeTablesRequest) {
+    request = &DescribeTablesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeTables")
+    
+    
+    return
+}
+
+func NewDescribeTablesResponse() (response *DescribeTablesResponse) {
+    response = &DescribeTablesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTables
+// 本接口(ListTables)用于查询所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LISTTABLE = "FailedOperation.ListTable"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_NOVALIDCONNECTION = "LimitExceeded.NoValidConnection"
+//  LIMITEXCEEDED_OUTOFREADREQUESTQUOTA = "LimitExceeded.OutOfReadRequestQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEUNAVAILABLE_RESOURCEOVERDUE = "ResourceUnavailable.ResourceOverdue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeTables(request *DescribeTablesRequest) (response *DescribeTablesResponse, err error) {
+    return c.DescribeTablesWithContext(context.Background(), request)
+}
+
+// DescribeTables
+// 本接口(ListTables)用于查询所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LISTTABLE = "FailedOperation.ListTable"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_NOVALIDCONNECTION = "LimitExceeded.NoValidConnection"
+//  LIMITEXCEEDED_OUTOFREADREQUESTQUOTA = "LimitExceeded.OutOfReadRequestQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEUNAVAILABLE_RESOURCEOVERDUE = "ResourceUnavailable.ResourceOverdue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeTablesWithContext(ctx context.Context, request *DescribeTablesRequest) (response *DescribeTablesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTablesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeTables")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTables require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserActivityInfoRequest() (request *DescribeUserActivityInfoRequest) {
     request = &DescribeUserActivityInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2873,6 +3295,62 @@ func (c *Client) DescribeUserActivityInfoWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeUserActivityInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserListRequest() (request *DescribeUserListRequest) {
+    request = &DescribeUserListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeUserList")
+    
+    
+    return
+}
+
+func NewDescribeUserListResponse() (response *DescribeUserListResponse) {
+    response = &DescribeUserListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserList
+// 查询tcb用户列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeUserList(request *DescribeUserListRequest) (response *DescribeUserListResponse, err error) {
+    return c.DescribeUserListWithContext(context.Background(), request)
+}
+
+// DescribeUserList
+// 查询tcb用户列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeUserListWithContext(ctx context.Context, request *DescribeUserListRequest) (response *DescribeUserListResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeUserList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserListResponse()
     err = c.Send(request, response)
     return
 }
@@ -3335,6 +3813,78 @@ func (c *Client) FreezeCloudBaseRunServersWithContext(ctx context.Context, reque
     return
 }
 
+func NewListTablesRequest() (request *ListTablesRequest) {
+    request = &ListTablesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ListTables")
+    
+    
+    return
+}
+
+func NewListTablesResponse() (response *ListTablesResponse) {
+    response = &ListTablesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListTables
+// 本接口(ListTables)用于查询所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LISTTABLE = "FailedOperation.ListTable"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_NOVALIDCONNECTION = "LimitExceeded.NoValidConnection"
+//  LIMITEXCEEDED_OUTOFREADREQUESTQUOTA = "LimitExceeded.OutOfReadRequestQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEUNAVAILABLE_RESOURCEOVERDUE = "ResourceUnavailable.ResourceOverdue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ListTables(request *ListTablesRequest) (response *ListTablesResponse, err error) {
+    return c.ListTablesWithContext(context.Background(), request)
+}
+
+// ListTables
+// 本接口(ListTables)用于查询所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LISTTABLE = "FailedOperation.ListTable"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_NOVALIDCONNECTION = "LimitExceeded.NoValidConnection"
+//  LIMITEXCEEDED_OUTOFREADREQUESTQUOTA = "LimitExceeded.OutOfReadRequestQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEUNAVAILABLE_RESOURCEOVERDUE = "ResourceUnavailable.ResourceOverdue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ListTablesWithContext(ctx context.Context, request *ListTablesRequest) (response *ListTablesResponse, err error) {
+    if request == nil {
+        request = NewListTablesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ListTables")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListTables require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCloudBaseRunServerFlowConfRequest() (request *ModifyCloudBaseRunServerFlowConfRequest) {
     request = &ModifyCloudBaseRunServerFlowConfRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3683,6 +4233,68 @@ func (c *Client) ModifyGatewayVersionTrafficWithContext(ctx context.Context, req
     return
 }
 
+func NewModifyUserRequest() (request *ModifyUserRequest) {
+    request = &ModifyUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyUser")
+    
+    
+    return
+}
+
+func NewModifyUserResponse() (response *ModifyUserResponse) {
+    response = &ModifyUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyUser
+// 修改tcb用户
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATEDDATA = "FailedOperation.DuplicatedData"
+//  FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_USERNOTEXISTS = "ResourceNotFound.UserNotExists"
+func (c *Client) ModifyUser(request *ModifyUserRequest) (response *ModifyUserResponse, err error) {
+    return c.ModifyUserWithContext(context.Background(), request)
+}
+
+// ModifyUser
+// 修改tcb用户
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATEDDATA = "FailedOperation.DuplicatedData"
+//  FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_USERNOTEXISTS = "ResourceNotFound.UserNotExists"
+func (c *Client) ModifyUserWithContext(ctx context.Context, request *ModifyUserRequest) (response *ModifyUserResponse, err error) {
+    if request == nil {
+        request = NewModifyUserRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyUser")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReinstateEnvRequest() (request *ReinstateEnvRequest) {
     request = &ReinstateEnvRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3923,6 +4535,92 @@ func (c *Client) UnfreezeCloudBaseRunServersWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewUnfreezeCloudBaseRunServersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateTableRequest() (request *UpdateTableRequest) {
+    request = &UpdateTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "UpdateTable")
+    
+    
+    return
+}
+
+func NewUpdateTableResponse() (response *UpdateTableResponse) {
+    response = &UpdateTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateTable
+// 本接口(UpdateTable)用于修改表信息，当前可以支持创建和删除索引
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LISTTABLE = "FailedOperation.ListTable"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_NOVALIDCONNECTION = "LimitExceeded.NoValidConnection"
+//  LIMITEXCEEDED_OUTOFINDEXQUOTA = "LimitExceeded.OutOfIndexQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE_INDEXCREATING = "ResourceInUse.IndexCreating"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CONNECTOR = "ResourceNotFound.Connector"
+//  RESOURCENOTFOUND_TABLE = "ResourceNotFound.Table"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_INDEXOPTIONSCONFLICT = "ResourceUnavailable.IndexOptionsConflict"
+//  RESOURCEUNAVAILABLE_MONGOISOLATED = "ResourceUnavailable.MongoIsolated"
+//  RESOURCEUNAVAILABLE_RESOURCEOVERDUE = "ResourceUnavailable.ResourceOverdue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) UpdateTable(request *UpdateTableRequest) (response *UpdateTableResponse, err error) {
+    return c.UpdateTableWithContext(context.Background(), request)
+}
+
+// UpdateTable
+// 本接口(UpdateTable)用于修改表信息，当前可以支持创建和删除索引
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LISTTABLE = "FailedOperation.ListTable"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_NOVALIDCONNECTION = "LimitExceeded.NoValidConnection"
+//  LIMITEXCEEDED_OUTOFINDEXQUOTA = "LimitExceeded.OutOfIndexQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE_INDEXCREATING = "ResourceInUse.IndexCreating"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CONNECTOR = "ResourceNotFound.Connector"
+//  RESOURCENOTFOUND_TABLE = "ResourceNotFound.Table"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_INDEXOPTIONSCONFLICT = "ResourceUnavailable.IndexOptionsConflict"
+//  RESOURCEUNAVAILABLE_MONGOISOLATED = "ResourceUnavailable.MongoIsolated"
+//  RESOURCEUNAVAILABLE_RESOURCEOVERDUE = "ResourceUnavailable.ResourceOverdue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) UpdateTableWithContext(ctx context.Context, request *UpdateTableRequest) (response *UpdateTableResponse, err error) {
+    if request == nil {
+        request = NewUpdateTableRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "UpdateTable")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateTableResponse()
     err = c.Send(request, response)
     return
 }

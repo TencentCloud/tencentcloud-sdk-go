@@ -1499,6 +1499,9 @@ type CreateUserOIDCConfigRequestParams struct {
 
 	// 描述信息。由用户自行定义。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// OIDC公钥自动轮转开关（默认为0代表关闭，1代表开启）如果不传的话会默认置0
+	AutoRotateKey *uint64 `json:"AutoRotateKey,omitnil,omitempty" name:"AutoRotateKey"`
 }
 
 type CreateUserOIDCConfigRequest struct {
@@ -1531,6 +1534,9 @@ type CreateUserOIDCConfigRequest struct {
 
 	// 描述信息。由用户自行定义。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// OIDC公钥自动轮转开关（默认为0代表关闭，1代表开启）如果不传的话会默认置0
+	AutoRotateKey *uint64 `json:"AutoRotateKey,omitnil,omitempty" name:"AutoRotateKey"`
 }
 
 func (r *CreateUserOIDCConfigRequest) ToJsonString() string {
@@ -1554,6 +1560,7 @@ func (r *CreateUserOIDCConfigRequest) FromJsonString(s string) error {
 	delete(f, "IdentityKey")
 	delete(f, "Scope")
 	delete(f, "Description")
+	delete(f, "AutoRotateKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserOIDCConfigRequest has unknown keys!", "")
 	}
@@ -2787,6 +2794,9 @@ type DescribeUserOIDCConfigResponseParams struct {
 
 	// 描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// OIDC公钥自动轮转开关（默认为0代表关闭，1代表开启）
+	AutoRotateKey *uint64 `json:"AutoRotateKey,omitnil,omitempty" name:"AutoRotateKey"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6846,6 +6856,9 @@ type UpdateUserOIDCConfigRequestParams struct {
 
 	// 描述，长度为1~255个英文或中文字符，默认值为空。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// OIDC公钥自动轮转开关（默认为0代表关闭，1代表开启）如果不传的话，会默认置0
+	AutoRotateKey *uint64 `json:"AutoRotateKey,omitnil,omitempty" name:"AutoRotateKey"`
 }
 
 type UpdateUserOIDCConfigRequest struct {
@@ -6878,6 +6891,9 @@ type UpdateUserOIDCConfigRequest struct {
 
 	// 描述，长度为1~255个英文或中文字符，默认值为空。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// OIDC公钥自动轮转开关（默认为0代表关闭，1代表开启）如果不传的话，会默认置0
+	AutoRotateKey *uint64 `json:"AutoRotateKey,omitnil,omitempty" name:"AutoRotateKey"`
 }
 
 func (r *UpdateUserOIDCConfigRequest) ToJsonString() string {
@@ -6901,6 +6917,7 @@ func (r *UpdateUserOIDCConfigRequest) FromJsonString(s string) error {
 	delete(f, "IdentityKey")
 	delete(f, "Scope")
 	delete(f, "Description")
+	delete(f, "AutoRotateKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateUserOIDCConfigRequest has unknown keys!", "")
 	}

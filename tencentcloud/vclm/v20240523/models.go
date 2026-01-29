@@ -1670,6 +1670,9 @@ type SubmitVideoEditJobRequestParams struct {
 	// Deprecated: Image is deprecated.
 	Image *Image `json:"Image,omitnil,omitempty" name:"Image"`
 
+	// 扩展字段。
+	VideoEditParam *VideoEditParam `json:"VideoEditParam,omitnil,omitempty" name:"VideoEditParam"`
+
 	// 为生成视频添加标识的开关，默认为1。传0 需前往  [控制台](https://console.cloud.tencent.com/vtc/setting)  申请开启显式标识自主完成后方可生效。
 	// 1：添加标识；
 	// 0：不添加标识；
@@ -1712,6 +1715,9 @@ type SubmitVideoEditJobRequest struct {
 	// - 单边分辨率不超过5000，不小于50，长宽限制1:4 ~ 4:1
 	Image *Image `json:"Image,omitnil,omitempty" name:"Image"`
 
+	// 扩展字段。
+	VideoEditParam *VideoEditParam `json:"VideoEditParam,omitnil,omitempty" name:"VideoEditParam"`
+
 	// 为生成视频添加标识的开关，默认为1。传0 需前往  [控制台](https://console.cloud.tencent.com/vtc/setting)  申请开启显式标识自主完成后方可生效。
 	// 1：添加标识；
 	// 0：不添加标识；
@@ -1740,6 +1746,7 @@ func (r *SubmitVideoEditJobRequest) FromJsonString(s string) error {
 	delete(f, "Prompt")
 	delete(f, "Images")
 	delete(f, "Image")
+	delete(f, "VideoEditParam")
 	delete(f, "LogoAdd")
 	delete(f, "LogoParam")
 	if len(f) > 0 {
@@ -2082,4 +2089,10 @@ func (r *SubmitVideoVoiceJobResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SubmitVideoVoiceJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type VideoEditParam struct {
+	// 魔法词，针对特定场景生效。不同场景传不同的值。默认不传。
+	// - 换人场景：1
+	Magic *string `json:"Magic,omitnil,omitempty" name:"Magic"`
 }
