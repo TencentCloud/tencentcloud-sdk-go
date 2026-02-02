@@ -11593,11 +11593,10 @@ type QAList struct {
 }
 
 type QAQuery struct {
-	// 页码
-	// 
+	// 页码 从1开始
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量
+	// 页大小 默认15 最大100
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 应用ID
@@ -11609,10 +11608,10 @@ type QAQuery struct {
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 
-	// 校验状态
+	// 校验状态的枚举值
 	AcceptStatus []*uint64 `json:"AcceptStatus,omitnil,omitempty" name:"AcceptStatus"`
 
-	// 发布状态
+	// 发布状态的枚举值
 	ReleaseStatus []*uint64 `json:"ReleaseStatus,omitnil,omitempty" name:"ReleaseStatus"`
 
 	// 文档ID
@@ -11629,6 +11628,10 @@ type QAQuery struct {
 
 	// 查询类型 filename 名称、 attribute 标签
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
+	// 问答生效域检索，不检索不传。枚举值如下：
+	// 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
 type QaReference struct {

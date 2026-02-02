@@ -20,6 +20,20 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AICrawlerDetection struct {
+	// AI 爬虫检测是否开启。取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// AI 爬虫检测的执行动作，当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值仅支持：
+	// <li>Deny：拦截；</li>
+	// <li>Monitor：观察；</li>
+	// <li>Allow：放行；</li>
+	// <li>Challenge：挑战，其中 ChallengeActionParameters 中的 ChallengeOption 仅支持 JSChallenge 和 ManagedChallenge。</li>
+	Action *SecurityAction `json:"Action,omitnil,omitempty" name:"Action"`
+}
+
 type APIResource struct {
 	// 资源 ID。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -1223,6 +1237,14 @@ type BotManagementCustomRules struct {
 	Rules []*BotManagementCustomRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
+type BotManagementLite struct {
+	// 人机校验页的具体配置。
+	CAPTCHAPageChallenge *CAPTCHAPageChallenge `json:"CAPTCHAPageChallenge,omitnil,omitempty" name:"CAPTCHAPageChallenge"`
+
+	// AI爬虫检测的具体配置。
+	AICrawlerDetection *AICrawlerDetection `json:"AICrawlerDetection,omitnil,omitempty" name:"AICrawlerDetection"`
+}
+
 type BotPortraitRule struct {
 	// 本功能的开关，取值有：
 	// <li>on：开启；</li>
@@ -1366,6 +1388,11 @@ type BrowserImpersonationDetectionRule struct {
 
 	// 浏览器伪造识别规则的处置方式，包括 Cookie 校验和会话跟踪配置以及客户端行为校验配置。
 	Action *BrowserImpersonationDetectionAction `json:"Action,omitnil,omitempty" name:"Action"`
+}
+
+type CAPTCHAPageChallenge struct {
+	// 人机校验页是否开启，取值有：<li>on：开启；</li><li>off：关闭。</li>
+	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 }
 
 type CC struct {
@@ -1644,7 +1671,7 @@ type CheckCnameStatusRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 加速域名列表。
+	// 需要检测 CNAME 配置状态的域名列表，可以为：<li>加速域名;</li><li>别称域名。</li>
 	RecordNames []*string `json:"RecordNames,omitnil,omitempty" name:"RecordNames"`
 }
 
@@ -1654,7 +1681,7 @@ type CheckCnameStatusRequest struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 加速域名列表。
+	// 需要检测 CNAME 配置状态的域名列表，可以为：<li>加速域名;</li><li>别称域名。</li>
 	RecordNames []*string `json:"RecordNames,omitnil,omitempty" name:"RecordNames"`
 }
 
@@ -1680,7 +1707,7 @@ func (r *CheckCnameStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckCnameStatusResponseParams struct {
-	// 加速域名 CNAME 状态信息列表。
+	// 接入域名的 CNAME 配置状态信息列表。
 	CnameStatus []*CnameStatus `json:"CnameStatus,omitnil,omitempty" name:"CnameStatus"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1924,16 +1951,16 @@ type ClientIpHeader struct {
 }
 
 type CnameStatus struct {
-	// 记录名称。
+	// 接入域名。
 	RecordName *string `json:"RecordName,omitnil,omitempty" name:"RecordName"`
 
-	// CNAME 地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// EdgeOne 分配给接入域名的 CNAME。
 	Cname *string `json:"Cname,omitnil,omitempty" name:"Cname"`
 
-	// CNAME 状态信息，取值有：
-	// <li>active：生效；</li>
-	// <li>moved：不生效；</li>
+	// CNAME 配置状态校验结果，取值有：
+	// <li>active：表示接入域名已正确配置到 EdgeOne 为其分配的指定 CNAME；</li>
+	// <li>moved：表示接入域名未配置到 EdgeOne 为其分配的指定 CNAME；</li>
+	// <li>invalid：表示接入域名配置的 CNAME 为 EdgeOne 为其他域名分配的 CNAME，会导致服务异常，请修改为 EdgeOne 为该接入域名提供的指定 CNAME，您可通过本结构体的 Cname 字段获取 EdgeOne 为该接入域名提供的 CNAME。</li>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -21646,6 +21673,9 @@ type SecurityPolicy struct {
 
 	// Bot 管理配置。
 	BotManagement *BotManagement `json:"BotManagement,omitnil,omitempty" name:"BotManagement"`
+
+	// 基础 Bot 管理配置。
+	BotManagementLite *BotManagementLite `json:"BotManagementLite,omitnil,omitempty" name:"BotManagementLite"`
 }
 
 type SecurityPolicyTemplateInfo struct {

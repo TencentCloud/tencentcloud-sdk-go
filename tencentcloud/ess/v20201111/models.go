@@ -1131,7 +1131,8 @@ type Component struct {
 	// <li> <b>SELECTOR</b> : 选择器控件，ComponentValue填写选择的字符串内容；</li>
 	// <li> <b>DATE</b> : 日期控件；默认是格式化为xxxx年xx月xx日字符串；</li>
 	// <li> <b>WATERMARK</b> : 水印控件；只能分配给发起方，必须设置ComponentExtra；</li>
-	// <li> <b>DISTRICT</b> : 省市区行政区控件，ComponentValue填写省市区行政区字符串内容；</li></ul>
+	// <li> <b>DISTRICT</b> : 省市区行政区控件，ComponentValue填写省市区行政区字符串内容；</li>
+	// <li> <b>VIRTUAL_COMBINATION</b> : 虚拟控件，内部特定控件（CHECK_BOX），本身不填充任何文字内容</li></ul>
 	// 
 	// **如果是SignComponent签署控件类型，
 	// 需要根据签署人的类型可选的字段为**
@@ -1309,13 +1310,13 @@ type Component struct {
 	// 场景说明：如果使用关键字进行定位，但是指定的PDF文件中又没有设置的关键字时，发起合同会进行关键字是否存在的校验，如果关键字不存在，会进行报错返回。如果不希望进行报错，可以设置"IgnoreKeywordError"来忽略错误。请注意，如果关键字签署控件对应的签署方在整个PDF文件中一个签署控件都没有，还是会触发报错逻辑。
 	// <b>参数样例</b>：` "{"IgnoreKeywordError":1}"`
 	// 
-	// <font color="red">ComponentType为SIGN_VIRTUAL_COMBINATION时</font>，支持以下参数：
+	// <font color="red">ComponentType为SIGN_VIRTUAL_COMBINATION或者VIRTUAL_COMBINATION时</font>，支持以下参数：
 	// <ul>
 	// <li><b>Children:</b> 绝对定位模式下，用来指定此签批控件的组合子控件 </li>
 	// <b>参数样例</b>：<br>`{"Children":["ComponentId_29","ComponentId_27","ComponentId_28","ComponentId_30"]}`
 	// <li><b>ChildrenComponents:</b> 关键字定位模式下，用来指定此签批控件的组合子控件 </li>
 	// ChildrenComponent结构体定义:
-	// <table border="1">     <thead>         <tr>             <th>字段名称</th>             <th>类型</th>             <th>描述</th>         </tr>     </thead>     <tbody>         <tr>             <td>ComponentType</td>             <td>string</td>             <td>子控件类型-可选值:SIGN_SIGNATURE,SIGN_DATE,SIGN_SELECTOR,SIGN_MULTI_LINE_TEXT</td>         </tr>         <tr>             <td>ComponentName</td>             <td>string</td>             <td>子控件名称</td>         </tr>         <tr>             <td>Placeholder</td>             <td>string</td>             <td>子控件提示语</td>         </tr>         <tr>             <td>ComponentOffsetX</td>             <td>float</td>             <td>控件偏移位置X（相对于父控件（签批控件的ComponentX））</td>         </tr>         <tr>             <td>ComponentOffsetY</td>             <td>float</td>             <td>控件偏移位置Y 相对于父控件（签批控件的ComponentY））</td>         </tr>         <tr>             <td>ComponentWidth</td>             <td>float</td>             <td>控件宽</td>         </tr>         <tr>             <td>ComponentHeight</td>             <td>float</td>             <td>控件高</td>         </tr>         <tr>             <td>ComponentExtra</td>             <td>string</td>             <td>控件的附属信息，根据ComponentType设置</td>         </tr>     </tbody> </table>
+	// <table border="1">     <thead>         <tr>             <th>字段名称</th>             <th>类型</th>             <th>描述</th>         </tr>     </thead>     <tbody>         <tr>             <td>ComponentType</td>             <td>string</td>             <td>子控件类型-可选值:SIGN_SIGNATURE,SIGN_DATE,SIGN_SELECTOR,SIGN_MULTI_LINE_TEXT</td>         </tr>         <tr>             <td>ComponentName</td>             <td>string</td>             <td>子控件名称</td>         </tr>         <tr>             <td>Placeholder</td>             <td>string</td>             <td>子控件提示语<tr>             <td>ComponentValue</td>             <td>string</td>             <td>子控件值（签署方不可设置）</td>         </tr>  </td>         </tr>         <tr>             <td>ComponentOffsetX</td>             <td>float</td>             <td>控件偏移位置X（相对于父控件（签批控件的ComponentX））</td>         </tr>         <tr>             <td>ComponentOffsetY</td>             <td>float</td>             <td>控件偏移位置Y 相对于父控件（签批控件的ComponentY））</td>         </tr>         <tr>             <td>ComponentWidth</td>             <td>float</td>             <td>控件宽</td>         </tr>         <tr>             <td>ComponentHeight</td>             <td>float</td>             <td>控件高</td>         </tr>         <tr>             <td>ComponentExtra</td>             <td>string</td>             <td>控件的附属信息，根据ComponentType设置</td>         </tr>     </tbody> </table>
 	// <b>参数样例</b>：
 	//   
 	// 输入:
@@ -4513,15 +4514,15 @@ type CreateFlowByFilesRequestParams struct {
 	// 该名称还将用于合同签署完成后文件下载的默认文件名称。
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
-	// 合同流程的参与方列表，最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，具体定义可以参考开发者中心的ApproverInfo结构体。
-	// 
-	// 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序，请确保列表中参与人的顺序符合实际签署顺序。
-	Approvers []*ApproverInfo `json:"Approvers,omitnil,omitempty" name:"Approvers"`
-
 	// 本合同流程需包含的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。
 	// 
 	// 注:  `目前，此接口仅支持单个文件发起。`
 	FileIds []*string `json:"FileIds,omitnil,omitempty" name:"FileIds"`
+
+	// 合同流程的参与方列表，最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，具体定义可以参考开发者中心的ApproverInfo结构体。
+	// 
+	// 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序，请确保列表中参与人的顺序符合实际签署顺序。
+	Approvers []*ApproverInfo `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
 	// 合同流程描述信息(可自定义此描述)，最大长度1000个字符。
 	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
@@ -4635,9 +4636,7 @@ type CreateFlowByFilesRequestParams struct {
 	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
 	FlowDisplayType *int64 `json:"FlowDisplayType,omitnil,omitempty" name:"FlowDisplayType"`
 
-	// 是否开启动态签署合同：
-	// <ul><li> **true**：开启动态签署合同，可在签署过程中追加签署人（必须满足：1，发起方企业开启了模块化计费能力；2，发起方企业在企业应用管理中开启了动态签署人2.0能力）    。</li>
-	// <li> **false**：不开启动态签署合同。</li></ul>
+	// 是否开启动态签署合同：<ul><li> **true**：开启动态签署合同，可在发起时可以不传签署人，在签署过程中追加签署人（必须满足：1，发起方企业开启了模块化计费能力；2，发起方企业在企业应用管理中开启了动态签署人2.0能力）    。</li><li> **false**：不开启动态签署合同。</li></ul>
 	OpenDynamicSignFlow *bool `json:"OpenDynamicSignFlow,omitnil,omitempty" name:"OpenDynamicSignFlow"`
 }
 
@@ -4654,15 +4653,15 @@ type CreateFlowByFilesRequest struct {
 	// 该名称还将用于合同签署完成后文件下载的默认文件名称。
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
-	// 合同流程的参与方列表，最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，具体定义可以参考开发者中心的ApproverInfo结构体。
-	// 
-	// 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序，请确保列表中参与人的顺序符合实际签署顺序。
-	Approvers []*ApproverInfo `json:"Approvers,omitnil,omitempty" name:"Approvers"`
-
 	// 本合同流程需包含的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。
 	// 
 	// 注:  `目前，此接口仅支持单个文件发起。`
 	FileIds []*string `json:"FileIds,omitnil,omitempty" name:"FileIds"`
+
+	// 合同流程的参与方列表，最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，具体定义可以参考开发者中心的ApproverInfo结构体。
+	// 
+	// 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序，请确保列表中参与人的顺序符合实际签署顺序。
+	Approvers []*ApproverInfo `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
 	// 合同流程描述信息(可自定义此描述)，最大长度1000个字符。
 	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
@@ -4776,9 +4775,7 @@ type CreateFlowByFilesRequest struct {
 	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
 	FlowDisplayType *int64 `json:"FlowDisplayType,omitnil,omitempty" name:"FlowDisplayType"`
 
-	// 是否开启动态签署合同：
-	// <ul><li> **true**：开启动态签署合同，可在签署过程中追加签署人（必须满足：1，发起方企业开启了模块化计费能力；2，发起方企业在企业应用管理中开启了动态签署人2.0能力）    。</li>
-	// <li> **false**：不开启动态签署合同。</li></ul>
+	// 是否开启动态签署合同：<ul><li> **true**：开启动态签署合同，可在发起时可以不传签署人，在签署过程中追加签署人（必须满足：1，发起方企业开启了模块化计费能力；2，发起方企业在企业应用管理中开启了动态签署人2.0能力）    。</li><li> **false**：不开启动态签署合同。</li></ul>
 	OpenDynamicSignFlow *bool `json:"OpenDynamicSignFlow,omitnil,omitempty" name:"OpenDynamicSignFlow"`
 }
 
@@ -4796,8 +4793,8 @@ func (r *CreateFlowByFilesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Operator")
 	delete(f, "FlowName")
-	delete(f, "Approvers")
 	delete(f, "FileIds")
+	delete(f, "Approvers")
 	delete(f, "FlowDescription")
 	delete(f, "FlowType")
 	delete(f, "Components")

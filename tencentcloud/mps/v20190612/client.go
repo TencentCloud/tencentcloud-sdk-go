@@ -9529,6 +9529,68 @@ func (c *Client) StopStreamLinkFlowWithContext(ctx context.Context, request *Sto
     return
 }
 
+func NewSyncDubbingRequest() (request *SyncDubbingRequest) {
+    request = &SyncDubbingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "SyncDubbing")
+    
+    
+    return
+}
+
+func NewSyncDubbingResponse() (response *SyncDubbingResponse) {
+    response = &SyncDubbingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SyncDubbing
+// # 同步配音接口
+//
+// ## 音色克隆
+//
+// ## 语音合成
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+func (c *Client) SyncDubbing(request *SyncDubbingRequest) (response *SyncDubbingResponse, err error) {
+    return c.SyncDubbingWithContext(context.Background(), request)
+}
+
+// SyncDubbing
+// # 同步配音接口
+//
+// ## 音色克隆
+//
+// ## 语音合成
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+func (c *Client) SyncDubbingWithContext(ctx context.Context, request *SyncDubbingRequest) (response *SyncDubbingResponse, err error) {
+    if request == nil {
+        request = NewSyncDubbingRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "SyncDubbing")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SyncDubbing require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSyncDubbingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTextTranslationRequest() (request *TextTranslationRequest) {
     request = &TextTranslationRequest{
         BaseRequest: &tchttp.BaseRequest{},

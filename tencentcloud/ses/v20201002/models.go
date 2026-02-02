@@ -2285,11 +2285,12 @@ type SendEmailRequestParams struct {
 	// 发件人邮箱地址。不使用别名时请直接填写发件人邮箱地址，例如：noreply@mail.qcloud.com如需填写发件人别名时，请按照如下方式（注意别名与邮箱地址之间必须使用一个空格隔开）：别名+一个空格+<邮箱地址>，别名中不能带有冒号(:)。
 	FromEmailAddress *string `json:"FromEmailAddress,omitnil,omitempty" name:"FromEmailAddress"`
 
-	// 收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
-	Destination []*string `json:"Destination,omitnil,omitempty" name:"Destination"`
-
 	// 邮件主题
 	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
+
+	// 收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
+	// Destination/Cc/Bcc三个参数必须至少存在一个。
+	Destination []*string `json:"Destination,omitnil,omitempty" name:"Destination"`
 
 	// 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
 	ReplyToAddresses *string `json:"ReplyToAddresses,omitnil,omitempty" name:"ReplyToAddresses"`
@@ -2333,11 +2334,12 @@ type SendEmailRequest struct {
 	// 发件人邮箱地址。不使用别名时请直接填写发件人邮箱地址，例如：noreply@mail.qcloud.com如需填写发件人别名时，请按照如下方式（注意别名与邮箱地址之间必须使用一个空格隔开）：别名+一个空格+<邮箱地址>，别名中不能带有冒号(:)。
 	FromEmailAddress *string `json:"FromEmailAddress,omitnil,omitempty" name:"FromEmailAddress"`
 
-	// 收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
-	Destination []*string `json:"Destination,omitnil,omitempty" name:"Destination"`
-
 	// 邮件主题
 	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
+
+	// 收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
+	// Destination/Cc/Bcc三个参数必须至少存在一个。
+	Destination []*string `json:"Destination,omitnil,omitempty" name:"Destination"`
 
 	// 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
 	ReplyToAddresses *string `json:"ReplyToAddresses,omitnil,omitempty" name:"ReplyToAddresses"`
@@ -2388,8 +2390,8 @@ func (r *SendEmailRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "FromEmailAddress")
-	delete(f, "Destination")
 	delete(f, "Subject")
+	delete(f, "Destination")
 	delete(f, "ReplyToAddresses")
 	delete(f, "Cc")
 	delete(f, "Bcc")

@@ -655,6 +655,62 @@ func (c *Client) CreateAdaptiveDynamicStreamingTemplateWithContext(ctx context.C
     return
 }
 
+func NewCreateAigcApiTokenRequest() (request *CreateAigcApiTokenRequest) {
+    request = &CreateAigcApiTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateAigcApiToken")
+    
+    
+    return
+}
+
+func NewCreateAigcApiTokenResponse() (response *CreateAigcApiTokenResponse) {
+    response = &CreateAigcApiTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAigcApiToken
+// 创建AIGC调用API的Token。创建后数据同步有延时，约30秒后可查询或删除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) CreateAigcApiToken(request *CreateAigcApiTokenRequest) (response *CreateAigcApiTokenResponse, err error) {
+    return c.CreateAigcApiTokenWithContext(context.Background(), request)
+}
+
+// CreateAigcApiToken
+// 创建AIGC调用API的Token。创建后数据同步有延时，约30秒后可查询或删除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) CreateAigcApiTokenWithContext(ctx context.Context, request *CreateAigcApiTokenRequest) (response *CreateAigcApiTokenResponse, err error) {
+    if request == nil {
+        request = NewCreateAigcApiTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateAigcApiToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAigcApiToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAigcApiTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAigcCustomElementRequest() (request *CreateAigcCustomElementRequest) {
     request = &CreateAigcCustomElementRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -678,26 +734,10 @@ func NewCreateAigcCustomElementResponse() (response *CreateAigcCustomElementResp
 // 调用该接口，针对指定模型进行主体创建。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_BITRATE = "InvalidParameterValue.Bitrate"
-//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
-//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
-//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEOBITRATE = "InvalidParameterValue.DisableHigherVideoBitrate"
-//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEORESOLUTION = "InvalidParameterValue.DisableHigherVideoResolution"
-//  INVALIDPARAMETERVALUE_DRMTYPE = "InvalidParameterValue.DrmType"
-//  INVALIDPARAMETERVALUE_FILLTYPE = "InvalidParameterValue.FillType"
-//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
-//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
-//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
-//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
-//  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
-//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
-//  INVALIDPARAMETERVALUE_SOUNDSYSTEM = "InvalidParameterValue.SoundSystem"
-//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
-//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) CreateAigcCustomElement(request *CreateAigcCustomElementRequest) (response *CreateAigcCustomElementResponse, err error) {
     return c.CreateAigcCustomElementWithContext(context.Background(), request)
 }
@@ -706,26 +746,10 @@ func (c *Client) CreateAigcCustomElement(request *CreateAigcCustomElementRequest
 // 调用该接口，针对指定模型进行主体创建。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_BITRATE = "InvalidParameterValue.Bitrate"
-//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
-//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
-//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEOBITRATE = "InvalidParameterValue.DisableHigherVideoBitrate"
-//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEORESOLUTION = "InvalidParameterValue.DisableHigherVideoResolution"
-//  INVALIDPARAMETERVALUE_DRMTYPE = "InvalidParameterValue.DrmType"
-//  INVALIDPARAMETERVALUE_FILLTYPE = "InvalidParameterValue.FillType"
-//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
-//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
-//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
-//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
-//  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
-//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
-//  INVALIDPARAMETERVALUE_SOUNDSYSTEM = "InvalidParameterValue.SoundSystem"
-//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
-//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) CreateAigcCustomElementWithContext(ctx context.Context, request *CreateAigcCustomElementRequest) (response *CreateAigcCustomElementResponse, err error) {
     if request == nil {
         request = NewCreateAigcCustomElementRequest()
@@ -3213,6 +3237,60 @@ func (c *Client) DeleteAdaptiveDynamicStreamingTemplateWithContext(ctx context.C
     return
 }
 
+func NewDeleteAigcApiTokenRequest() (request *DeleteAigcApiTokenRequest) {
+    request = &DeleteAigcApiTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteAigcApiToken")
+    
+    
+    return
+}
+
+func NewDeleteAigcApiTokenResponse() (response *DeleteAigcApiTokenResponse) {
+    response = &DeleteAigcApiTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAigcApiToken
+// 删除 AIGC API Token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DeleteAigcApiToken(request *DeleteAigcApiTokenRequest) (response *DeleteAigcApiTokenResponse, err error) {
+    return c.DeleteAigcApiTokenWithContext(context.Background(), request)
+}
+
+// DeleteAigcApiToken
+// 删除 AIGC API Token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DeleteAigcApiTokenWithContext(ctx context.Context, request *DeleteAigcApiTokenRequest) (response *DeleteAigcApiTokenResponse, err error) {
+    if request == nil {
+        request = NewDeleteAigcApiTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DeleteAigcApiToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAigcApiToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAigcApiTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAnimatedGraphicsTemplateRequest() (request *DeleteAnimatedGraphicsTemplateRequest) {
     request = &DeleteAnimatedGraphicsTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4871,6 +4949,120 @@ func (c *Client) DescribeAdaptiveDynamicStreamingTemplatesWithContext(ctx contex
     request.SetContext(ctx)
     
     response = NewDescribeAdaptiveDynamicStreamingTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAigcApiTokensRequest() (request *DescribeAigcApiTokensRequest) {
+    request = &DescribeAigcApiTokensRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeAigcApiTokens")
+    
+    
+    return
+}
+
+func NewDescribeAigcApiTokensResponse() (response *DescribeAigcApiTokensResponse) {
+    response = &DescribeAigcApiTokensResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAigcApiTokens
+// 查询 AIGC API Token 列表。创建或删除后数据同步有延时，约30秒后可查询最新数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeAigcApiTokens(request *DescribeAigcApiTokensRequest) (response *DescribeAigcApiTokensResponse, err error) {
+    return c.DescribeAigcApiTokensWithContext(context.Background(), request)
+}
+
+// DescribeAigcApiTokens
+// 查询 AIGC API Token 列表。创建或删除后数据同步有延时，约30秒后可查询最新数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeAigcApiTokensWithContext(ctx context.Context, request *DescribeAigcApiTokensRequest) (response *DescribeAigcApiTokensResponse, err error) {
+    if request == nil {
+        request = NewDescribeAigcApiTokensRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DescribeAigcApiTokens")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAigcApiTokens require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAigcApiTokensResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAigcFaceInfoRequest() (request *DescribeAigcFaceInfoRequest) {
+    request = &DescribeAigcFaceInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeAigcFaceInfo")
+    
+    
+    return
+}
+
+func NewDescribeAigcFaceInfoResponse() (response *DescribeAigcFaceInfoResponse) {
+    response = &DescribeAigcFaceInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAigcFaceInfo
+// 该接口用于获取 AIGC 人脸信息。注意，调用本接口会产生人脸识别费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAigcFaceInfo(request *DescribeAigcFaceInfoRequest) (response *DescribeAigcFaceInfoResponse, err error) {
+    return c.DescribeAigcFaceInfoWithContext(context.Background(), request)
+}
+
+// DescribeAigcFaceInfo
+// 该接口用于获取 AIGC 人脸信息。注意，调用本接口会产生人脸识别费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAigcFaceInfoWithContext(ctx context.Context, request *DescribeAigcFaceInfoRequest) (response *DescribeAigcFaceInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAigcFaceInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DescribeAigcFaceInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAigcFaceInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAigcFaceInfoResponse()
     err = c.Send(request, response)
     return
 }

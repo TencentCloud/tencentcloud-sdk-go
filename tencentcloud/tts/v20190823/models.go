@@ -22,92 +22,92 @@ import (
 
 // Predefined struct for user
 type CreateTtsTaskRequestParams struct {
-	// 合成语音的源文本，按UTF-8编码统一计算，最多支持10万字符
+	// <p>合成语音的源文本，按UTF-8编码统一计算，最多支持10万字符</p>
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 音量大小，范围[-10，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。
+	// <p>音量大小，范围[-10，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。</p>
 	Volume *float64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
-	// 语速，范围：[-2，6]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li><li>6代表2.5倍</li>如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。<br>参数值与实际语速转换，可参考[代码示例](https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz)
+	// <p>语速，范围：[-2，6]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li><li>6代表2.5倍</li>如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。<br>参数值与实际语速转换，可参考<a href="https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz">代码示例</a></p>
 	Speed *float64 `json:"Speed,omitnil,omitempty" name:"Speed"`
 
-	// 项目id，用户自定义，默认为0。
+	// <p>项目id，用户自定义，默认为0。</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 模型类型，1-默认模型。
+	// <p>模型类型，1-默认模型。</p>
 	ModelType *int64 `json:"ModelType,omitnil,omitempty" name:"ModelType"`
 
-	// 音色 ID，价格请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
+	// <p>音色 ID，价格请参见<a href="https://cloud.tencent.com/document/product/1073/34112">购买指南</a>。完整的音色 ID 列表请参见<a href="https://cloud.tencent.com/document/product/1073/92668">音色列表</a>。</p>
 	VoiceType *int64 `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
 
-	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
+	// <p>主语言类型：<li>1-中文（默认）</li><li>2-英文</li></p>
 	PrimaryLanguage *int64 `json:"PrimaryLanguage,omitnil,omitempty" name:"PrimaryLanguage"`
 
-	// 音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li>
+	// <p>音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li></p>
 	SampleRate *uint64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
-	// 返回音频格式，可取值：mp3（默认），wav，pcm
+	// <p>返回音频格式，可取值：mp3（默认），wav，pcm</p>
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
-	// 回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。[回调说明](https://cloud.tencent.com/document/product/1073/55746)
+	// <p>回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。<a href="https://cloud.tencent.com/document/product/1073/55746">回调说明</a></p>
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
-	// 是否开启时间戳功能，默认为false。
+	// <p>是否开启时间戳功能，默认为false。</p>
 	EnableSubtitle *bool `json:"EnableSubtitle,omitnil,omitempty" name:"EnableSubtitle"`
 
-	// 旁白与对白文本解析，分别合成相应风格（仅适用于旁对白音色10510000、100510000），默认 false
+	// <p>旁白与对白文本解析，分别合成相应风格（仅适用于旁对白音色10510000、100510000），默认 false</p>
 	VoiceoverDialogueSplit *bool `json:"VoiceoverDialogueSplit,omitnil,omitempty" name:"VoiceoverDialogueSplit"`
 
-	// 控制合成音频的情感，仅支持多情感音色使用。取值: neutral(中性)、sad(悲伤)、happy(高兴)、angry(生气)、fear(恐惧)、news(新闻)、story(故事)、radio(广播)、poetry(诗歌)、call(客服)、sajiao(撒娇)、disgusted(厌恶)、amaze(震惊)、peaceful(平静)、exciting(兴奋)、aojiao(傲娇)、jieshuo(解说)
+	// <p>控制合成音频的情感，仅支持多情感音色使用。取值: neutral(中性)、sad(悲伤)、happy(高兴)、angry(生气)、fear(恐惧)、news(新闻)、story(故事)、radio(广播)、poetry(诗歌)、call(客服)、sajiao(撒娇)、disgusted(厌恶)、amaze(震惊)、peaceful(平静)、exciting(兴奋)、aojiao(傲娇)、jieshuo(解说)</p>
 	EmotionCategory *string `json:"EmotionCategory,omitnil,omitempty" name:"EmotionCategory"`
 
-	// 控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效。
+	// <p>控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效。</p>
 	EmotionIntensity *int64 `json:"EmotionIntensity,omitnil,omitempty" name:"EmotionIntensity"`
 }
 
 type CreateTtsTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 合成语音的源文本，按UTF-8编码统一计算，最多支持10万字符
+	// <p>合成语音的源文本，按UTF-8编码统一计算，最多支持10万字符</p>
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 音量大小，范围[-10，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。
+	// <p>音量大小，范围[-10，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。</p>
 	Volume *float64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
-	// 语速，范围：[-2，6]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li><li>6代表2.5倍</li>如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。<br>参数值与实际语速转换，可参考[代码示例](https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz)
+	// <p>语速，范围：[-2，6]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li><li>6代表2.5倍</li>如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。<br>参数值与实际语速转换，可参考<a href="https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz">代码示例</a></p>
 	Speed *float64 `json:"Speed,omitnil,omitempty" name:"Speed"`
 
-	// 项目id，用户自定义，默认为0。
+	// <p>项目id，用户自定义，默认为0。</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 模型类型，1-默认模型。
+	// <p>模型类型，1-默认模型。</p>
 	ModelType *int64 `json:"ModelType,omitnil,omitempty" name:"ModelType"`
 
-	// 音色 ID，价格请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
+	// <p>音色 ID，价格请参见<a href="https://cloud.tencent.com/document/product/1073/34112">购买指南</a>。完整的音色 ID 列表请参见<a href="https://cloud.tencent.com/document/product/1073/92668">音色列表</a>。</p>
 	VoiceType *int64 `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
 
-	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
+	// <p>主语言类型：<li>1-中文（默认）</li><li>2-英文</li></p>
 	PrimaryLanguage *int64 `json:"PrimaryLanguage,omitnil,omitempty" name:"PrimaryLanguage"`
 
-	// 音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li>
+	// <p>音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li></p>
 	SampleRate *uint64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
-	// 返回音频格式，可取值：mp3（默认），wav，pcm
+	// <p>返回音频格式，可取值：mp3（默认），wav，pcm</p>
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
-	// 回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。[回调说明](https://cloud.tencent.com/document/product/1073/55746)
+	// <p>回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。<a href="https://cloud.tencent.com/document/product/1073/55746">回调说明</a></p>
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
-	// 是否开启时间戳功能，默认为false。
+	// <p>是否开启时间戳功能，默认为false。</p>
 	EnableSubtitle *bool `json:"EnableSubtitle,omitnil,omitempty" name:"EnableSubtitle"`
 
-	// 旁白与对白文本解析，分别合成相应风格（仅适用于旁对白音色10510000、100510000），默认 false
+	// <p>旁白与对白文本解析，分别合成相应风格（仅适用于旁对白音色10510000、100510000），默认 false</p>
 	VoiceoverDialogueSplit *bool `json:"VoiceoverDialogueSplit,omitnil,omitempty" name:"VoiceoverDialogueSplit"`
 
-	// 控制合成音频的情感，仅支持多情感音色使用。取值: neutral(中性)、sad(悲伤)、happy(高兴)、angry(生气)、fear(恐惧)、news(新闻)、story(故事)、radio(广播)、poetry(诗歌)、call(客服)、sajiao(撒娇)、disgusted(厌恶)、amaze(震惊)、peaceful(平静)、exciting(兴奋)、aojiao(傲娇)、jieshuo(解说)
+	// <p>控制合成音频的情感，仅支持多情感音色使用。取值: neutral(中性)、sad(悲伤)、happy(高兴)、angry(生气)、fear(恐惧)、news(新闻)、story(故事)、radio(广播)、poetry(诗歌)、call(客服)、sajiao(撒娇)、disgusted(厌恶)、amaze(震惊)、peaceful(平静)、exciting(兴奋)、aojiao(傲娇)、jieshuo(解说)</p>
 	EmotionCategory *string `json:"EmotionCategory,omitnil,omitempty" name:"EmotionCategory"`
 
-	// 控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效。
+	// <p>控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效。</p>
 	EmotionIntensity *int64 `json:"EmotionIntensity,omitnil,omitempty" name:"EmotionIntensity"`
 }
 
@@ -150,7 +150,7 @@ type CreateTtsTaskRespData struct {
 
 // Predefined struct for user
 type CreateTtsTaskResponseParams struct {
-	// 任务 id
+	// <p>任务 id</p>
 	Data *CreateTtsTaskRespData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

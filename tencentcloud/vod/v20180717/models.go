@@ -187,6 +187,9 @@ type AdaptiveDynamicStreamingTaskInput struct {
 	// 版权水印。
 	CopyRightWatermark *CopyRightWatermarkInput `json:"CopyRightWatermark,omitnil,omitempty" name:"CopyRightWatermark"`
 
+	// 数字水印。
+	BlindWatermark *BlindWatermarkInput `json:"BlindWatermark,omitnil,omitempty" name:"BlindWatermark"`
+
 	// 字幕列表，元素为字幕 ID，支持多个字幕，最大可支持16个。
 	SubtitleSet []*string `json:"SubtitleSet,omitnil,omitempty" name:"SubtitleSet"`
 }
@@ -1920,6 +1923,39 @@ type AiSampleWordInfo struct {
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
+type AigcFaceIdentityInfo struct {
+	// 视频中的人脸 ID。同一个人脸在视频中间隔超过1s时会视作不同 ID。
+	FaceId *string `json:"FaceId,omitnil,omitempty" name:"FaceId"`
+
+	// 从视频中截取的人脸示意图。
+	FaceImage *string `json:"FaceImage,omitnil,omitempty" name:"FaceImage"`
+
+	// 该人脸可对口型区间的起点时间，可作为对口型最佳开始时间。单位：毫秒。
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 该人脸可对口型区间的终点时间；注：此结果存在毫秒级误差，会长于实际区间终点。单位：毫秒。
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type AigcFaceInfo struct {
+	// 主体 ID。需自行记录下返回的主体 ID。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 人脸信息列表。
+	FaceInfoList []*AigcFaceIdentityInfo `json:"FaceInfoList,omitnil,omitempty" name:"FaceInfoList"`
+}
+
+type AigcFaceInputFileInfo struct {
+	// 输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li> 
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。当 Type 取值为 File 时，本参数有效。
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
 type AigcImageOutputConfig struct {
 	// 存储模式。取值有： <li>Permanent：永久存储，生成的图片文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的图片文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li>
 	// 默认值：Temporary
@@ -2020,7 +2056,7 @@ type AigcImageTaskInput struct {
 }
 
 type AigcImageTaskInputFileInfo struct {
-	// 输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 URL；</li> 
+	// 输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li> 
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 图片文件的媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。当 Type 取值为 File 时，本参数有效。
@@ -2175,6 +2211,10 @@ type AigcVideoOutputConfig struct {
 
 	// 是否开启vidu智能插帧。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
 	FrameInterpolate *string `json:"FrameInterpolate,omitnil,omitempty" name:"FrameInterpolate"`
+
+	// 是否开启图标水印。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+	// 目前支持的模型有 Vidu，其他模型暂不支持。
+	LogoAdd *string `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 }
 
 type AigcVideoSceneInfo struct {
@@ -2257,7 +2297,7 @@ type AigcVideoTaskInput struct {
 }
 
 type AigcVideoTaskInputFileInfo struct {
-	// 输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 URL；</li> 
+	// 输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li> 
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 文件分类。取值为：
@@ -3210,6 +3250,11 @@ type BlackWhiteEdgeConfigureInfoForUpdate struct {
 	// <li>ON：开启；</li>
 	// <li>OFF：关闭。</li>
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+}
+
+type BlindWatermarkInput struct {
+	// 数字水印模板ID
+	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 }
 
 type BlurConfigureInfo struct {
@@ -4365,6 +4410,63 @@ func (r *CreateAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string
 }
 
 // Predefined struct for user
+type CreateAigcApiTokenRequestParams struct {
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+}
+
+type CreateAigcApiTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+}
+
+func (r *CreateAigcApiTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAigcApiTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAigcApiTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAigcApiTokenResponseParams struct {
+	// API的Token
+	ApiToken *string `json:"ApiToken,omitnil,omitempty" name:"ApiToken"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAigcApiTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAigcApiTokenResponseParams `json:"Response"`
+}
+
+func (r *CreateAigcApiTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAigcApiTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateAigcCustomElementRequestParams struct {
 	// 主体名称。不能超过20个字符
 	ElementName *string `json:"ElementName,omitnil,omitempty" name:"ElementName"`
@@ -4606,7 +4708,7 @@ type CreateAigcVideoTaskRequestParams struct {
 	// 模型名称。取值：<li>Hailuo：海螺；</li><li>Kling：可灵；</li><li> Jimeng：即梦；</li><li>Vidu；</li><li>Hunyuan：混元；</li><li>Mingmou：明眸；</li>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-Fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
+	// 模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
 	// 最多包含三张素材资源文件的列表，用于描述模型在生成视频时要使用的资源文件。
@@ -4651,7 +4753,10 @@ type CreateAigcVideoTaskRequestParams struct {
 	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
 
 	// 场景类型。取值如下：
-	// <li>当 ModelName 为 Kling 时，取值 motion_control 表示动作控制；</li>
+	// <li>当 ModelName 为 Kling 时：
+	//     motion_control 表示动作控制；
+	//     avatar_i2v 表示数字人；
+	//     lip_sync 表示对口型；</li>
 	// <li>其他 ModelName 暂不支持。</li>
 	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
 
@@ -4677,7 +4782,7 @@ type CreateAigcVideoTaskRequest struct {
 	// 模型名称。取值：<li>Hailuo：海螺；</li><li>Kling：可灵；</li><li> Jimeng：即梦；</li><li>Vidu；</li><li>Hunyuan：混元；</li><li>Mingmou：明眸；</li>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-Fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
+	// 模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
 	// 最多包含三张素材资源文件的列表，用于描述模型在生成视频时要使用的资源文件。
@@ -4722,7 +4827,10 @@ type CreateAigcVideoTaskRequest struct {
 	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
 
 	// 场景类型。取值如下：
-	// <li>当 ModelName 为 Kling 时，取值 motion_control 表示动作控制；</li>
+	// <li>当 ModelName 为 Kling 时：
+	//     motion_control 表示动作控制；
+	//     avatar_i2v 表示数字人；
+	//     lip_sync 表示对口型；</li>
 	// <li>其他 ModelName 暂不支持。</li>
 	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
 
@@ -8429,6 +8537,67 @@ func (r *DeleteAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string
 }
 
 // Predefined struct for user
+type DeleteAigcApiTokenRequestParams struct {
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// API 的 Token
+	ApiToken *string `json:"ApiToken,omitnil,omitempty" name:"ApiToken"`
+}
+
+type DeleteAigcApiTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// API 的 Token
+	ApiToken *string `json:"ApiToken,omitnil,omitempty" name:"ApiToken"`
+}
+
+func (r *DeleteAigcApiTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAigcApiTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "ApiToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAigcApiTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAigcApiTokenResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAigcApiTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAigcApiTokenResponseParams `json:"Response"`
+}
+
+func (r *DeleteAigcApiTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAigcApiTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAnimatedGraphicsTemplateRequestParams struct {
 	// 转动图模板唯一标识。
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -10227,6 +10396,127 @@ func (r *DescribeAdaptiveDynamicStreamingTemplatesResponse) ToJsonString() strin
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAdaptiveDynamicStreamingTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcApiTokensRequestParams struct {
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+}
+
+type DescribeAigcApiTokensRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeAigcApiTokensRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcApiTokensRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAigcApiTokensRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcApiTokensResponseParams struct {
+	// API Token 列表
+	ApiTokens []*string `json:"ApiTokens,omitnil,omitempty" name:"ApiTokens"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAigcApiTokensResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAigcApiTokensResponseParams `json:"Response"`
+}
+
+func (r *DescribeAigcApiTokensResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcApiTokensResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcFaceInfoRequestParams struct {
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 需要获取人脸信息的输入视频信息，最多包含一个文件。
+	FileInfos []*AigcFaceInputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
+}
+
+type DescribeAigcFaceInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 需要获取人脸信息的输入视频信息，最多包含一个文件。
+	FileInfos []*AigcFaceInputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
+}
+
+func (r *DescribeAigcFaceInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcFaceInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "FileInfos")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAigcFaceInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcFaceInfoResponseParams struct {
+	// 人脸信息。
+	FaceInfoSet []*AigcFaceInfo `json:"FaceInfoSet,omitnil,omitempty" name:"FaceInfoSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAigcFaceInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAigcFaceInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeAigcFaceInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcFaceInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14495,7 +14785,7 @@ func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskDetailResponseParams struct {
-	// 任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li>
+	// 任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 任务状态，取值：
@@ -14622,6 +14912,9 @@ type DescribeTaskDetailResponseParams struct {
 
 	// 图像异步处理任务信息，仅当 TaskType 为 ProcessImageAsync，该字段有值。
 	ProcessImageAsyncTask *ProcessImageAsync `json:"ProcessImageAsyncTask,omitnil,omitempty" name:"ProcessImageAsyncTask"`
+
+	// 提取数字水印任务信息，仅当 TaskType 为 ExtractBlindWatermark，该字段有值。
+	ExtractBlindWatermarkTask *ExtractBlindWatermarkTask `json:"ExtractBlindWatermarkTask,omitnil,omitempty" name:"ExtractBlindWatermarkTask"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -16025,6 +16318,15 @@ type EventContent struct {
 
 	// AIGC 生视频任务信息，仅当 EventType 为 AigcVideoTaskComplete 时有效。
 	AigcVideoCompleteEvent *AigcVideoTask `json:"AigcVideoCompleteEvent,omitnil,omitempty" name:"AigcVideoCompleteEvent"`
+
+	// 提取数字水印信息，仅当 EventType 为 ExtractBlindWatermarkComplete 时有效。
+	ExtractBlindWatermarkComplete *ExtractBlindWatermarkTask `json:"ExtractBlindWatermarkComplete,omitnil,omitempty" name:"ExtractBlindWatermarkComplete"`
+
+	// AIGC 场景化生图任务信息，仅当 EventType 为 SceneAigcImageCompleteEvent 时有效。
+	SceneAigcImageCompleteEvent *SceneAigcImageTask `json:"SceneAigcImageCompleteEvent,omitnil,omitempty" name:"SceneAigcImageCompleteEvent"`
+
+	// 图片异步处理任务信息，仅当 EventType 为 ProcessImageAsyncCompleteEvent 时有效。
+	ProcessImageAsyncCompleteEvent *ProcessImageAsyncTask `json:"ProcessImageAsyncCompleteEvent,omitnil,omitempty" name:"ProcessImageAsyncCompleteEvent"`
 }
 
 // Predefined struct for user
@@ -16117,6 +16419,64 @@ func (r *ExecuteFunctionResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ExecuteFunctionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ExtractBlindWatermarkInputInfo struct {
+	// 提取数字水印输入类型，可选值：<li>FILEID：文件媒资ID；</li><li>URL：文件url；</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 需要提取的文件媒资ID
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 需要提取的视频文件url
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+type ExtractBlindWatermarkTask struct {
+	// 媒体处理任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务流状态，取值：
+	// <li>WAITING：等待中；</li>
+	// <li>PROCESSING：处理中；</li>
+	// <li>FINISH：已完成。</li>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码，0 表示成功，其他值表示失败。
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 提取数字水印的文件输入信息。
+	InputInfo *ExtractBlindWatermarkInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
+
+	// 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li> <li>blind-ab：ab版权数字水印；</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 标记是否检测到水印，如果该参数为true， Result字段将返回水印提取结果，如果该参数为false，Result字段不会返回。
+	IsDetected *bool `json:"IsDetected,omitnil,omitempty" name:"IsDetected"`
+
+	// 提取出的数字水印内容，当没有检测到水印时该字段不会返回。
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 溯源水印提取出的播放者的 ID，以十六进制表示，共6位。
+	ResultUV *string `json:"ResultUV,omitnil,omitempty" name:"ResultUV"`
+
+	// 提取数字水印配置。
+	ExtractBlindWatermarkConfig *ExtractBlindWatermarkTaskConfig `json:"ExtractBlindWatermarkConfig,omitnil,omitempty" name:"ExtractBlindWatermarkConfig"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+type ExtractBlindWatermarkTaskConfig struct {
+	// 当提取数字水印类型为blind-abseq时有效，用于指定输入视频的切片时长，单位：毫秒。
+	// 如果不填默认切片时长为5秒。
+	SegmentDuration *int64 `json:"SegmentDuration,omitnil,omitempty" name:"SegmentDuration"`
 }
 
 // Predefined struct for user
@@ -29126,6 +29486,9 @@ type TranscodeTaskInput struct {
 
 	// 版权水印。
 	CopyRightWatermark *CopyRightWatermarkInput `json:"CopyRightWatermark,omitnil,omitempty" name:"CopyRightWatermark"`
+
+	// 数字水印。
+	BlindWatermark *BlindWatermarkInput `json:"BlindWatermark,omitnil,omitempty" name:"BlindWatermark"`
 
 	// 马赛克列表，最大可支持 10 张。
 	MosaicSet []*MosaicInput `json:"MosaicSet,omitnil,omitempty" name:"MosaicSet"`

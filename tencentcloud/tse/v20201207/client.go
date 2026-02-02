@@ -5913,6 +5913,7 @@ func NewDescribeInstanceTagInfosResponse() (response *DescribeInstanceTagInfosRe
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInstanceTagInfos(request *DescribeInstanceTagInfosRequest) (response *DescribeInstanceTagInfosResponse, err error) {
     return c.DescribeInstanceTagInfosWithContext(context.Background(), request)
@@ -5925,6 +5926,7 @@ func (c *Client) DescribeInstanceTagInfos(request *DescribeInstanceTagInfosReque
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInstanceTagInfosWithContext(ctx context.Context, request *DescribeInstanceTagInfosRequest) (response *DescribeInstanceTagInfosResponse, err error) {
     if request == nil {
@@ -6474,6 +6476,7 @@ func NewDescribeSREInstancesResponse() (response *DescribeSREInstancesResponse) 
 //  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
 //  INTERNALERROR_HTTPSTATUSCODEERROR = "InternalError.HttpStatusCodeError"
 //  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -6494,6 +6497,7 @@ func (c *Client) DescribeSREInstances(request *DescribeSREInstancesRequest) (res
 //  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
 //  INTERNALERROR_HTTPSTATUSCODEERROR = "InternalError.HttpStatusCodeError"
 //  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"

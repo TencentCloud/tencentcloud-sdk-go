@@ -2810,48 +2810,44 @@ type ScanPiece struct {
 
 // Predefined struct for user
 type ScanVoiceRequestParams struct {
-	// 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+	// <p>应用ID，登录<a href="https://console.cloud.tencent.com/gamegme">控制台 - 服务管理</a>创建应用得到的AppID</p>
 	BizId *uint64 `json:"BizId,omitnil,omitempty" name:"BizId"`
 
-	// 语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、广告、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a>
+	// <p>语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、广告、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a></p>
 	Scenes []*string `json:"Scenes,omitnil,omitempty" name:"Scenes"`
 
-	// 是否为直播流。值为 false 时表示普通语音文件检测；为 true 时表示语音流检测。
+	// <p>是否为直播流。值为 false 时表示普通语音文件检测；为 true 时表示语音流检测。</p>
 	Live *bool `json:"Live,omitnil,omitempty" name:"Live"`
 
-	// 语音检测任务列表，列表最多支持100个检测任务。结构体中包含：
-	// <li>DataId：数据的唯一ID</li>
-	// <li>Url：数据文件的url，为 urlencode 编码，流式则为拉流地址</li>
+	// <p>语音检测任务列表，列表最多支持100个检测任务。结构体中包含：</p><li>DataId：数据的唯一ID</li><li>Url：数据文件的url，为 urlencode 编码，流式则为拉流地址</li>
 	Tasks []*Task `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
-	// 异步检测结果回调地址，具体见上述<a href="#Callback_Declare">回调相关说明</a>。（说明：该字段为空时，必须通过接口(查询语音检测结果)获取检测结果）。
+	// <p>异步检测结果回调地址，具体见上述<a href="#Callback_Declare">回调相关说明</a>。（说明：该字段为空时，必须通过接口(查询语音检测结果)获取检测结果）。</p>
 	Callback *string `json:"Callback,omitnil,omitempty" name:"Callback"`
 
-	// 语种，不传默认中文
+	// <p>语种，不传默认中文</p>
 	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
 }
 
 type ScanVoiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+	// <p>应用ID，登录<a href="https://console.cloud.tencent.com/gamegme">控制台 - 服务管理</a>创建应用得到的AppID</p>
 	BizId *uint64 `json:"BizId,omitnil,omitempty" name:"BizId"`
 
-	// 语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、广告、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a>
+	// <p>语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、广告、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a></p>
 	Scenes []*string `json:"Scenes,omitnil,omitempty" name:"Scenes"`
 
-	// 是否为直播流。值为 false 时表示普通语音文件检测；为 true 时表示语音流检测。
+	// <p>是否为直播流。值为 false 时表示普通语音文件检测；为 true 时表示语音流检测。</p>
 	Live *bool `json:"Live,omitnil,omitempty" name:"Live"`
 
-	// 语音检测任务列表，列表最多支持100个检测任务。结构体中包含：
-	// <li>DataId：数据的唯一ID</li>
-	// <li>Url：数据文件的url，为 urlencode 编码，流式则为拉流地址</li>
+	// <p>语音检测任务列表，列表最多支持100个检测任务。结构体中包含：</p><li>DataId：数据的唯一ID</li><li>Url：数据文件的url，为 urlencode 编码，流式则为拉流地址</li>
 	Tasks []*Task `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
-	// 异步检测结果回调地址，具体见上述<a href="#Callback_Declare">回调相关说明</a>。（说明：该字段为空时，必须通过接口(查询语音检测结果)获取检测结果）。
+	// <p>异步检测结果回调地址，具体见上述<a href="#Callback_Declare">回调相关说明</a>。（说明：该字段为空时，必须通过接口(查询语音检测结果)获取检测结果）。</p>
 	Callback *string `json:"Callback,omitnil,omitempty" name:"Callback"`
 
-	// 语种，不传默认中文
+	// <p>语种，不传默认中文</p>
 	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
 }
 
@@ -2881,8 +2877,7 @@ func (r *ScanVoiceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ScanVoiceResponseParams struct {
-	// 语音检测返回。Data 字段是 JSON 数组，每一个元素包含：<li>DataId： 请求中对应的 DataId。</li>
-	// <li>TaskID ：该检测任务的 ID，用于轮询语音检测结果。</li>
+	// <p>语音检测返回。Data 字段是 JSON 数组，每一个元素包含：<li>DataId： 请求中对应的 DataId。</li></p><li>TaskID ：该检测任务的 ID，用于轮询语音检测结果。</li>
 	Data []*ScanVoiceResult `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

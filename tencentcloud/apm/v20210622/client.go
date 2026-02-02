@@ -827,9 +827,7 @@ func NewDescribeGeneralMetricDataResponse() (response *DescribeGeneralMetricData
 //
 // 用于指定返回结果中包含的一个或多个指标项。
 //
-// 例如：request_count（请求数）、duration_avg（平均耗时）、error_rate（错误率）。关于APM 支持的指标](Metrics)，请参考 [APM 指标协议标准](https://cloud.tencent.com/document/product/248/101681)，每种视图（ViewName）支持专属的指标集。
-//
-// 
+// 例如：request_count（请求数）、duration_avg（平均耗时）、error_rate（错误率）。关于APM 支持的指标，请参考 [APM 指标协议标准](https://cloud.tencent.com/document/product/248/101681)，每种视图（ViewName）支持专属的指标集。
 //
 // 3. 过滤（Filters）
 //
@@ -895,9 +893,7 @@ func (c *Client) DescribeGeneralMetricData(request *DescribeGeneralMetricDataReq
 //
 // 用于指定返回结果中包含的一个或多个指标项。
 //
-// 例如：request_count（请求数）、duration_avg（平均耗时）、error_rate（错误率）。关于APM 支持的指标](Metrics)，请参考 [APM 指标协议标准](https://cloud.tencent.com/document/product/248/101681)，每种视图（ViewName）支持专属的指标集。
-//
-// 
+// 例如：request_count（请求数）、duration_avg（平均耗时）、error_rate（错误率）。关于APM 支持的指标，请参考 [APM 指标协议标准](https://cloud.tencent.com/document/product/248/101681)，每种视图（ViewName）支持专属的指标集。
 //
 // 3. 过滤（Filters）
 //

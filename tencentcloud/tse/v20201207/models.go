@@ -9059,7 +9059,6 @@ type GovernanceAlias struct {
 	Editable *bool `json:"Editable,omitnil,omitempty" name:"Editable"`
 
 	// 元数据信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Metadatas []*Metadata `json:"Metadatas,omitnil,omitempty" name:"Metadatas"`
 }
 
@@ -9271,7 +9270,6 @@ type GovernanceNamespace struct {
 	SyncToGlobalRegistry *bool `json:"SyncToGlobalRegistry,omitnil,omitempty" name:"SyncToGlobalRegistry"`
 
 	// 元数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Metadatas []*Metadata `json:"Metadatas,omitnil,omitempty" name:"Metadatas"`
 }
 
@@ -9404,7 +9402,6 @@ type GovernanceServiceContract struct {
 	Interfaces []*GovernanceInterfaceDescription `json:"Interfaces,omitnil,omitempty" name:"Interfaces"`
 
 	// 元数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Metadatas []*Metadata `json:"Metadatas,omitnil,omitempty" name:"Metadatas"`
 }
 

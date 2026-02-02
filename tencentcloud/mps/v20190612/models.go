@@ -25327,6 +25327,193 @@ type SvgWatermarkInputForUpdate struct {
 	Height *string `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
+// Predefined struct for user
+type SyncDubbingRequestParams struct {
+	// 合成文本，语音合成时必填，文本长度不超过2000字符
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 文本语言，不填默认中文。
+	// 当前支持语言：
+	// zh	中文 (Chinese)
+	// en	英语 (English)
+	// ja	日语 (Japanese)
+	// de	德语 (German)
+	// fr	法语 (French)
+	// ko	韩语 (Korean)
+	// ru	俄语 (Russian)
+	// uk	乌克兰语 (Ukrainian)
+	// pt	葡萄牙语 (Portuguese)
+	// it	意大利语 (Italian)
+	// es	西班牙语 (Spanish)
+	// id	印度尼西亚语 (Indonesian)
+	// nl	荷兰语 (Dutch)
+	// tr	土耳其语 (Turkish)
+	// fil	菲律宾语 (Filipino)
+	// ms	马来语 (Malay)
+	// el	希腊语 (Greek)
+	// fi	芬兰语 (Finnish)
+	// hr	克罗地亚语 (Croatian)
+	// sk	斯洛伐克语 (Slovak)
+	// pl	波兰语 (Polish)
+	// sv	瑞典语 (Swedish)
+	// hi	印地语 (Hindi)
+	// bg	保加利亚语 (Bulgarian)
+	// ro	罗马尼亚语 (Romanian)
+	// ar	阿拉伯语 (Arabic)
+	// cs	捷克语 (Czech)
+	// da	丹麦语 (Danish)
+	// ta	泰米尔语 (Tamil)
+	// hun	匈牙利语（Hungarian）
+	// vi	越南语（Vietnamese）
+	// no	挪威语（Norwegian）
+	// yue	粤语（Cantonese）
+	// th	泰语（Thai）
+	// he	希伯来语（Hebrew）
+	// ca	加泰罗尼亚语（Catalan）
+	// nn	尼诺斯克语（Nynorsk）
+	// af	阿非利卡语（Afrikaans）
+	// fa	波斯语（Persian）
+	// sl	斯洛文尼亚语（Slovenian）
+	TextLang *string `json:"TextLang,omitnil,omitempty" name:"TextLang"`
+
+	// 音色Id，指定音色合成时填写，支持系统音色和克隆音色。
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// 克隆音频base64编码。
+	AudioData *string `json:"AudioData,omitnil,omitempty" name:"AudioData"`
+
+	// 克隆音频语言，默认中文。
+	// 当前支持语言同TextLang
+	AudioLang *string `json:"AudioLang,omitnil,omitempty" name:"AudioLang"`
+
+	// 扩展参数，json字符串
+	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
+}
+
+type SyncDubbingRequest struct {
+	*tchttp.BaseRequest
+	
+	// 合成文本，语音合成时必填，文本长度不超过2000字符
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 文本语言，不填默认中文。
+	// 当前支持语言：
+	// zh	中文 (Chinese)
+	// en	英语 (English)
+	// ja	日语 (Japanese)
+	// de	德语 (German)
+	// fr	法语 (French)
+	// ko	韩语 (Korean)
+	// ru	俄语 (Russian)
+	// uk	乌克兰语 (Ukrainian)
+	// pt	葡萄牙语 (Portuguese)
+	// it	意大利语 (Italian)
+	// es	西班牙语 (Spanish)
+	// id	印度尼西亚语 (Indonesian)
+	// nl	荷兰语 (Dutch)
+	// tr	土耳其语 (Turkish)
+	// fil	菲律宾语 (Filipino)
+	// ms	马来语 (Malay)
+	// el	希腊语 (Greek)
+	// fi	芬兰语 (Finnish)
+	// hr	克罗地亚语 (Croatian)
+	// sk	斯洛伐克语 (Slovak)
+	// pl	波兰语 (Polish)
+	// sv	瑞典语 (Swedish)
+	// hi	印地语 (Hindi)
+	// bg	保加利亚语 (Bulgarian)
+	// ro	罗马尼亚语 (Romanian)
+	// ar	阿拉伯语 (Arabic)
+	// cs	捷克语 (Czech)
+	// da	丹麦语 (Danish)
+	// ta	泰米尔语 (Tamil)
+	// hun	匈牙利语（Hungarian）
+	// vi	越南语（Vietnamese）
+	// no	挪威语（Norwegian）
+	// yue	粤语（Cantonese）
+	// th	泰语（Thai）
+	// he	希伯来语（Hebrew）
+	// ca	加泰罗尼亚语（Catalan）
+	// nn	尼诺斯克语（Nynorsk）
+	// af	阿非利卡语（Afrikaans）
+	// fa	波斯语（Persian）
+	// sl	斯洛文尼亚语（Slovenian）
+	TextLang *string `json:"TextLang,omitnil,omitempty" name:"TextLang"`
+
+	// 音色Id，指定音色合成时填写，支持系统音色和克隆音色。
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// 克隆音频base64编码。
+	AudioData *string `json:"AudioData,omitnil,omitempty" name:"AudioData"`
+
+	// 克隆音频语言，默认中文。
+	// 当前支持语言同TextLang
+	AudioLang *string `json:"AudioLang,omitnil,omitempty" name:"AudioLang"`
+
+	// 扩展参数，json字符串
+	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
+}
+
+func (r *SyncDubbingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncDubbingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "TextLang")
+	delete(f, "VoiceId")
+	delete(f, "AudioData")
+	delete(f, "AudioLang")
+	delete(f, "ExtParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncDubbingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SyncDubbingResponseParams struct {
+	// 错误码，成功时返回0
+	ErrorCode *int64 `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 错误信息，成功时返回success
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 合成音频的base64编码，wav格式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioData *string `json:"AudioData,omitnil,omitempty" name:"AudioData"`
+
+	// 克隆的音色Id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SyncDubbingResponse struct {
+	*tchttp.BaseResponse
+	Response *SyncDubbingResponseParams `json:"Response"`
+}
+
+func (r *SyncDubbingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncDubbingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type TEHDConfig struct {
 	// 极速高清类型，可选值：
 	// <li>TEHD-100：极速高清-100（视频极速高清）。</li>
