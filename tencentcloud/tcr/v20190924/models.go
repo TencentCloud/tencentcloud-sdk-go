@@ -420,6 +420,67 @@ func (r *CreateApplicationTriggerPersonalResponse) FromJsonString(s string) erro
 }
 
 // Predefined struct for user
+type CreateGCJobRequestParams struct {
+	// 实例 Id
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// GC 参数
+	GCParameters *GCParameters `json:"GCParameters,omitnil,omitempty" name:"GCParameters"`
+}
+
+type CreateGCJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 Id
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// GC 参数
+	GCParameters *GCParameters `json:"GCParameters,omitnil,omitempty" name:"GCParameters"`
+}
+
+func (r *CreateGCJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGCJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "GCParameters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGCJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGCJobResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateGCJobResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateGCJobResponseParams `json:"Response"`
+}
+
+func (r *CreateGCJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGCJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateImageAccelerationServiceRequestParams struct {
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
@@ -6866,6 +6927,11 @@ type GCJobInfo struct {
 
 	// 调度信息
 	Schedule *Schedule `json:"Schedule,omitnil,omitempty" name:"Schedule"`
+}
+
+type GCParameters struct {
+	// 模拟运行
+	Dryrun *bool `json:"Dryrun,omitnil,omitempty" name:"Dryrun"`
 }
 
 type Header struct {

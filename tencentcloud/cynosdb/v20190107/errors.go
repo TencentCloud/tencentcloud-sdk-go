@@ -104,6 +104,9 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 访问DB异常
+	INTERNALERROR_DBERROR = "InternalError.DBError"
+
 	// 查询数据库失败。
 	INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 
@@ -124,6 +127,9 @@ const (
 
 	// http请求执行异常。
 	INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+
+	// 服务内部错误
+	INTERNALERROR_INTERNALINNERSERVICEERROR = "InternalError.InternalInnerServiceError"
 
 	// 安全组查询实例失败。
 	INTERNALERROR_LISTINSTANCEFAILED = "InternalError.ListInstanceFailed"
@@ -230,6 +236,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
 
+	// 入参{{1}}，请检查参数后重试
+	INVALIDPARAMETERVALUE_PARAMETERMISMATCHERROR = "InvalidParameterValue.ParameterMismatchError"
+
 	// 参数值无效，超过允许范围。
 	INVALIDPARAMETERVALUE_PARAMETEROUTRANGEERROR = "InvalidParameterValue.ParameterOutRangeError"
 
@@ -278,6 +287,9 @@ const (
 	// 审计状态异常
 	OPERATIONDENIED_AUDITSTATUSERROR = "OperationDenied.AuditStatusError"
 
+	// 备份保险箱资源 {{1}} 处于{{2}}中无法进行{{3}}的操作
+	OPERATIONDENIED_BACKUPVAULTTASKCONFLICTERROR = "OperationDenied.BackupVaultTaskConflictError"
+
 	// 权限校验失败。
 	OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
 
@@ -286,6 +298,12 @@ const (
 
 	// 集群当前状态不允许该操作。
 	OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+
+	// 集群 {{1}} 正在进行{{2}}操作，无法执行{{3}}操作
+	OPERATIONDENIED_CLUSTERTASKCONFLICTERROR = "OperationDenied.ClusterTaskConflictError"
+
+	// 创建任务失败。{{1}}
+	OPERATIONDENIED_CREATETASKANDFLOWERROR = "OperationDenied.CreateTaskAndFlowError"
 
 	// 功能{{1}}暂不支持
 	OPERATIONDENIED_FEATURENOTSUPPORTERROR = "OperationDenied.FeatureNotSupportError"
@@ -296,14 +314,23 @@ const (
 	// 您没有权限操作资源。
 	OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
 
+	// 实例组 {{1}} 正在进行{{2}}操作，无法执行{{3}}操作
+	OPERATIONDENIED_INSTANCEGRPTASKCONFLICTERROR = "OperationDenied.InstanceGrpTaskConflictError"
+
 	// 实例当前状态不允许该操作。
 	OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
 
 	// 实例未处于运行状态
 	OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
 
+	// 实例 {{1}} 正在进行{{2}}操作，无法执行{{3}}操作
+	OPERATIONDENIED_INSTANCETASKCONFLICTERROR = "OperationDenied.InstanceTaskConflictError"
+
 	// 账号余额不足。
 	OPERATIONDENIED_INSUFFICIENTBALANCEERROR = "OperationDenied.InsufficientBalanceError"
+
+	// 传入了无效的地域
+	OPERATIONDENIED_INVALIDREGIONFORROLLBACKNEWCLUSTER = "OperationDenied.InvalidRegionForRollbackNewCluster"
 
 	// 不是{{1}}的回档集群
 	OPERATIONDENIED_ISNOTROLLBACKCLUSTERERROR = "OperationDenied.IsNotRollbackClusterError"
@@ -313,6 +340,12 @@ const (
 
 	// 非{{1}}天内{{2}}的克隆集群。
 	OPERATIONDENIED_LIMITDAYFORAUDITREPLAYERROR = "OperationDenied.LimitDayForAuditReplayError"
+
+	// 缺少参数，{{1}}
+	OPERATIONDENIED_MISSINGPARAMETERERROR = "OperationDenied.MissingParameterError"
+
+	// 没有可用资源。
+	OPERATIONDENIED_NOAVALIABLERESOUCEERROR = "OperationDenied.NoAvaliableResouceError"
 
 	// 您没有权限操作该资源（进行该操作）。
 	OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
@@ -341,6 +374,9 @@ const (
 	// proxy可用区校验失败
 	OPERATIONDENIED_PROXYZONECHECKERROR = "OperationDenied.ProxyZoneCheckError"
 
+	// 未知异常。请联系客服进行处理。{{1}}
+	OPERATIONDENIED_SECONDARYCACHEUNKNOWNERROR = "OperationDenied.SecondaryCacheUnknownError"
+
 	// serverless集群当前状态不允许该操作。
 	OPERATIONDENIED_SERVERLESSCLUSTERSTATUSDENIED = "OperationDenied.ServerlessClusterStatusDenied"
 
@@ -356,6 +392,9 @@ const (
 	// 用户未进行实名认证，请先进行实名认证才可购买。
 	OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = "OperationDenied.UserNotAuthenticatedError"
 
+	// 用户资源 {{1}} 正在进行{{2}}操作，无法执行{{3}}操作
+	OPERATIONDENIED_USERRESOURCETASKCONFLICTERROR = "OperationDenied.UserResourceTaskConflictError"
+
 	// Serverless不支持该版本。
 	OPERATIONDENIED_VERSIONNOTSUPPORTERROR = "OperationDenied.VersionNotSupportError"
 
@@ -367,6 +406,9 @@ const (
 
 	// 参数对应资源不存在。
 	RESOURCENOTFOUND_RESOURCEERROR = "ResourceNotFound.ResourceError"
+
+	// 用户资源未找到
+	RESOURCENOTFOUND_RESOURCENOTFOUNDERR = "ResourceNotFound.ResourceNotFoundErr"
 
 	// 锁定实例失败，暂时不可操作。
 	RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = "ResourceUnavailable.InstanceLockFail"

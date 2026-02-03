@@ -4158,6 +4158,9 @@ type DescribeCallRecordRequestParams struct {
 	// 访问账号uin
 	AccUin *string `json:"AccUin,omitnil,omitempty" name:"AccUin"`
 
+	// 访问密钥，注意：不支持临时密钥的情况
+	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
+
 	// 过滤器
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
@@ -4176,6 +4179,9 @@ type DescribeCallRecordRequest struct {
 
 	// 访问账号uin
 	AccUin *string `json:"AccUin,omitnil,omitempty" name:"AccUin"`
+
+	// 访问密钥，注意：不支持临时密钥的情况
+	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
 
 	// 过滤器
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
@@ -4197,6 +4203,7 @@ func (r *DescribeCallRecordRequest) FromJsonString(s string) error {
 	delete(f, "AccessKeyID")
 	delete(f, "SourceIPID")
 	delete(f, "AccUin")
+	delete(f, "AccessKey")
 	delete(f, "Filter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCallRecordRequest has unknown keys!", "")

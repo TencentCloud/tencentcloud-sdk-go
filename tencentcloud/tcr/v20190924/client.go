@@ -379,6 +379,70 @@ func (c *Client) CreateApplicationTriggerPersonalWithContext(ctx context.Context
     return
 }
 
+func NewCreateGCJobRequest() (request *CreateGCJobRequest) {
+    request = &CreateGCJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "CreateGCJob")
+    
+    
+    return
+}
+
+func NewCreateGCJobResponse() (response *CreateGCJobResponse) {
+    response = &CreateGCJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateGCJob
+// 创建 GC 作业
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateGCJob(request *CreateGCJobRequest) (response *CreateGCJobResponse, err error) {
+    return c.CreateGCJobWithContext(context.Background(), request)
+}
+
+// CreateGCJob
+// 创建 GC 作业
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
+//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
+//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateGCJobWithContext(ctx context.Context, request *CreateGCJobRequest) (response *CreateGCJobResponse, err error) {
+    if request == nil {
+        request = NewCreateGCJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcr", APIVersion, "CreateGCJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGCJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGCJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateImageAccelerationServiceRequest() (request *CreateImageAccelerationServiceRequest) {
     request = &CreateImageAccelerationServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},

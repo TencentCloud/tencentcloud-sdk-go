@@ -551,6 +551,60 @@ func (c *Client) DescribeLicenseWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewIssueLicenseRequest() (request *IssueLicenseRequest) {
+    request = &IssueLicenseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cloudapp", APIVersion, "IssueLicense")
+    
+    
+    return
+}
+
+func NewIssueLicenseResponse() (response *IssueLicenseResponse) {
+    response = &IssueLicenseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// IssueLicense
+// 颁发 License
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_FAILTOSIGN = "InternalError.FailToSign"
+//  RESOURCENOTFOUND_LICENSENOTFOUNDERR = "ResourceNotFound.LicenseNotFoundErr"
+func (c *Client) IssueLicense(request *IssueLicenseRequest) (response *IssueLicenseResponse, err error) {
+    return c.IssueLicenseWithContext(context.Background(), request)
+}
+
+// IssueLicense
+// 颁发 License
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_FAILTOSIGN = "InternalError.FailToSign"
+//  RESOURCENOTFOUND_LICENSENOTFOUNDERR = "ResourceNotFound.LicenseNotFoundErr"
+func (c *Client) IssueLicenseWithContext(ctx context.Context, request *IssueLicenseRequest) (response *IssueLicenseResponse, err error) {
+    if request == nil {
+        request = NewIssueLicenseRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cloudapp", APIVersion, "IssueLicense")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("IssueLicense require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewIssueLicenseResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVerifyLicenseRequest() (request *VerifyLicenseRequest) {
     request = &VerifyLicenseRequest{
         BaseRequest: &tchttp.BaseRequest{},

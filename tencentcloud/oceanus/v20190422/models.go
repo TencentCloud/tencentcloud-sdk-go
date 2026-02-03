@@ -5437,60 +5437,65 @@ type SessionClusterRefItem struct {
 }
 
 type Setats struct {
-	// setats serialId
+	// <p>setats serialId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetatsSerialId *string `json:"SetatsSerialId,omitnil,omitempty" name:"SetatsSerialId"`
 
-	// 1  // 停止
-	// 2  // 运行中
-	// 3  // 初始化中
-	// 4  // 扩容中
-	// 5  // Warehoouse未配置
-	// 6  // Warehoouse配置中
-	// 7  // 重启中
-	// -2 // 已删除(集群被销毁时更新为此状态)
+	// <p>1  // 停止<br>2  // 运行中<br>3  // 初始化中<br>4  // 扩容中<br>5  // Warehoouse未配置<br>6  // Warehoouse配置中<br>7  // 重启中<br>-2 // 已删除(集群被销毁时更新为此状态)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// setats warehouse
+	// <p>setats warehouse</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Warehouse *Warehouse `json:"Warehouse,omitnil,omitempty" name:"Warehouse"`
 
-	// setats master 机器规格
+	// <p>setats master 机器规格</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MasterInfo *SetatsCvmInfo `json:"MasterInfo,omitnil,omitempty" name:"MasterInfo"`
 
-	// setats worker规格
+	// <p>setats worker规格</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkerInfo *SetatsCvmInfo `json:"WorkerInfo,omitnil,omitempty" name:"WorkerInfo"`
 
-	// 标签
+	// <p>标签</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 自动续费
+	// <p>自动续费</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 过期时间
+	// <p>过期时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 过期时间 秒
+	// <p>过期时间 秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecondsUntilExpiry *string `json:"SecondsUntilExpiry,omitnil,omitempty" name:"SecondsUntilExpiry"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// manager url
+	// <p>manager url</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ManagerUrl *string `json:"ManagerUrl,omitnil,omitempty" name:"ManagerUrl"`
 
-	// 隔离时间
+	// <p>隔离时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolatedTime *string `json:"IsolatedTime,omitnil,omitempty" name:"IsolatedTime"`
+
+	// <p>Setats集群自己的id</p>
+	OwnerClusterGroupSerialId *string `json:"OwnerClusterGroupSerialId,omitnil,omitempty" name:"OwnerClusterGroupSerialId"`
+
+	// <p>setats 集群类型</p>
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>Setats UI url</p>
+	SetatsUiUrl *string `json:"SetatsUiUrl,omitnil,omitempty" name:"SetatsUiUrl"`
+
+	// <p>setats镜像版本</p>
+	ImageVersion *string `json:"ImageVersion,omitnil,omitempty" name:"ImageVersion"`
 }
 
 type SetatsCvmInfo struct {
@@ -5944,41 +5949,44 @@ func (r *TriggerJobSavepointResponse) FromJsonString(s string) error {
 }
 
 type Warehouse struct {
-	// 状态
+	// <p>状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// location
+	// <p>location</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
 
-	// catalogtype
+	// <p>catalogtype</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CatalogType *string `json:"CatalogType,omitnil,omitempty" name:"CatalogType"`
 
-	// uri
+	// <p>uri</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
 
-	// warehouse url
+	// <p>warehouse url</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarehouseUrl *string `json:"WarehouseUrl,omitnil,omitempty" name:"WarehouseUrl"`
 
-	// 认证方式
+	// <p>认证方式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Authentication *string `json:"Authentication,omitnil,omitempty" name:"Authentication"`
 
-	// 资源
+	// <p>资源</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRefs []*ResourceRefLatest `json:"ResourceRefs,omitnil,omitempty" name:"ResourceRefs"`
 
-	// hive warehouse uri
+	// <p>hive warehouse uri</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HiveUri *string `json:"HiveUri,omitnil,omitempty" name:"HiveUri"`
 
-	// 高级参数
+	// <p>高级参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Properties []*Property `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// <p>hive cata 类型</p>
+	HiveCatalogType *uint64 `json:"HiveCatalogType,omitnil,omitempty" name:"HiveCatalogType"`
 }
 
 type WorkSpaceClusterItem struct {

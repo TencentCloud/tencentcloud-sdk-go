@@ -47,17 +47,32 @@ const (
 	// FailedOperation.FlexdbResourceOverdue
 	FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
 
+	// 无效上下文
+	FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
+
 	// FailedOperation.ListTable
 	FAILEDOPERATION_LISTTABLE = "FailedOperation.ListTable"
 
+	// 网络异常
+	FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+
 	// 操作失败，后台依赖平台错误。
 	FAILEDOPERATION_PLATFORMERROR = "FailedOperation.PlatformError"
+
+	// 查询异常
+	FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+
+	// 查询语句解析错误
+	FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
 
 	// Instance is resuming, please try connecting again.
 	FAILEDOPERATION_TDSQLPAUSED = "FailedOperation.TdsqlPaused"
 
 	// FailedOperation.Timeout
 	FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+
+	// Topic隔离
+	FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
@@ -68,17 +83,44 @@ const (
 	// 系统内部异常。
 	INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
 
+	// 系统失败。
+	INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
 	// API已经创建。
 	INVALIDPARAMETER_APICREATED = "InvalidParameter.APICreated"
 
+	// API不存在。
+	INVALIDPARAMETER_APINOEXIST = "InvalidParameter.APINoExist"
+
+	// API不存在。
+	INVALIDPARAMETER_APINOTEXIST = "InvalidParameter.APINotExist"
+
+	// API超过阈值。
+	INVALIDPARAMETER_APITHRESHOLD = "InvalidParameter.APIThreshold"
+
+	// API类型不支持。
+	INVALIDPARAMETER_APITYPENOTSUPPORT = "InvalidParameter.APITypeNotSupport"
+
 	// 接口名非法。
 	INVALIDPARAMETER_ACTION = "InvalidParameter.Action"
 
+	// 域名cname不正确。
+	INVALIDPARAMETER_CNAMENOTMATCH = "InvalidParameter.CNAMENotMatch"
+
+	// 域名已经绑定。
+	INVALIDPARAMETER_DOMAINEXIST = "InvalidParameter.DomainExist"
+
+	// 域名不存在。
+	INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
+
 	// 环境ID非法。
 	INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+
+	// 独占证书。
+	INVALIDPARAMETER_EXCLUSIVECERT = "InvalidParameter.ExclusiveCert"
 
 	// 请求参数错误。
 	INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
@@ -92,8 +134,14 @@ const (
 	// 没有操作权限。
 	INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
 
+	// 域名没有备案。
+	INVALIDPARAMETER_SERVICEICP = "InvalidParameter.ServiceICP"
+
 	// 服务不存在。
 	INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+
+	// Domain超上限了。
+	INVALIDPARAMETER_SERVICETHRESHOLD = "InvalidParameter.ServiceThreshold"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -170,6 +218,9 @@ const (
 	// 表不存在。
 	RESOURCENOTFOUND_TABLENOTFOUND = "ResourceNotFound.TableNotFound"
 
+	// 主题不存在
+	RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+
 	// 用户不存在。
 	RESOURCENOTFOUND_USERNOTEXISTS = "ResourceNotFound.UserNotExists"
 
@@ -202,6 +253,9 @@ const (
 
 	// ResourceUnavailable.ResourceExist
 	RESOURCEUNAVAILABLE_RESOURCEEXIST = "ResourceUnavailable.ResourceExist"
+
+	// 资源已到期
+	RESOURCEUNAVAILABLE_RESOURCEEXPIRED = "ResourceUnavailable.ResourceExpired"
 
 	// 资源已冻结
 	RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"

@@ -86,6 +86,121 @@ type Cluster struct {
 	Security []*string `json:"Security,omitnil,omitempty" name:"Security"`
 }
 
+type ClusterDetail struct {
+	// <p>用户APPID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppID *uint64 `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// <p>实例id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
+
+	// <p>账号id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountID *string `json:"AccountID,omitnil,omitempty" name:"AccountID"`
+
+	// <p>自定义实例名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>地域</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>网络信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Networks []*Network `json:"Networks,omitnil,omitempty" name:"Networks"`
+
+	// <p>实例状态</p>枚举值：<ul><li> 0： 运行中</li><li> 1： 创建中</li><li> 16： 变配中</li><li> 17： 隔离中</li><li> 18： 已隔离</li><li> 19： 恢复中</li><li> 20： 已关机</li><li> 21： 销毁中</li><li> 22： 已销毁</li><li> 30： 扩展节点添加中</li><li> 31： 扩展节点变配中</li><li> 32： 扩展节点删除中</li><li> 33： 扩展节点禁用中</li><li> 34： 扩展节点启用中</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>创建时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// <p>最后修改时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
+
+	// <p>标签</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>安全组信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Security []*string `json:"Security,omitnil,omitempty" name:"Security"`
+
+	// <p>组件信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
+
+	// <p>过期时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpiredAt *string `json:"ExpiredAt,omitnil,omitempty" name:"ExpiredAt"`
+
+	// <p>续费标识</p>枚举值：<ul><li> 0： 默认</li><li> 1： 自动续费</li><li> 2： 不自动续费</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// <p>关机时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShutdownAt *string `json:"ShutdownAt,omitnil,omitempty" name:"ShutdownAt"`
+
+	// <p>隔离时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsolatedAt *string `json:"IsolatedAt,omitnil,omitempty" name:"IsolatedAt"`
+
+	// <p>实例类型</p>枚举值：<ul><li> 0： 共享型</li><li> 1： 独享型</li><li> 2： 标准型</li></ul>
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type Component struct {
+	// <p>所属实例id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>组件类型</p>枚举值：<ul><li> gateway： 时序节点</li><li> database： 数据节点</li><li> gateway-worker： 扩展节点</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>cpu</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// <p>内存</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// <p>磁盘</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Disk *uint64 `json:"Disk,omitnil,omitempty" name:"Disk"`
+
+	// <p>节点数量</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Shards *uint64 `json:"Shards,omitnil,omitempty" name:"Shards"`
+
+	// <p>副本数量</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Replicas *uint64 `json:"Replicas,omitnil,omitempty" name:"Replicas"`
+
+	// <p>网络</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Networks []*Network `json:"Networks,omitnil,omitempty" name:"Networks"`
+
+	// <p>组件状态</p>枚举值：<ul><li> 0： 运行中</li><li> 1： 创建中</li><li> 2： 变配中</li><li> 3： 隔离中</li><li> 4： 已隔离</li><li> 5： 删除中</li><li> 6： 已删除</li><li> 7： 禁用中</li><li> 8： 已禁用</li><li> 9： 启用中</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *uint64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// <p>组件内部ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
 type Database struct {
 	// 实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -118,6 +233,61 @@ type Database struct {
 	// 最后修改时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
+}
+
+// Predefined struct for user
+type DescribeClusterDetailRequestParams struct {
+
+}
+
+type DescribeClusterDetailRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeClusterDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterDetailResponseParams struct {
+	// <p>实例详情</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cluster *ClusterDetail `json:"Cluster,omitnil,omitempty" name:"Cluster"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

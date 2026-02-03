@@ -45,6 +45,58 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewDescribeClusterDetailRequest() (request *DescribeClusterDetailRequest) {
+    request = &DescribeClusterDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ctsdb", APIVersion, "DescribeClusterDetail")
+    
+    
+    return
+}
+
+func NewDescribeClusterDetailResponse() (response *DescribeClusterDetailResponse) {
+    response = &DescribeClusterDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterDetail
+// 查询实例详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeClusterDetail(request *DescribeClusterDetailRequest) (response *DescribeClusterDetailResponse, err error) {
+    return c.DescribeClusterDetailWithContext(context.Background(), request)
+}
+
+// DescribeClusterDetail
+// 查询实例详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeClusterDetailWithContext(ctx context.Context, request *DescribeClusterDetailRequest) (response *DescribeClusterDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ctsdb", APIVersion, "DescribeClusterDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
     request = &DescribeClustersRequest{
         BaseRequest: &tchttp.BaseRequest{},

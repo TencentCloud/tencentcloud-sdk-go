@@ -93,6 +93,88 @@ type Filter struct {
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
+// Predefined struct for user
+type IssueLicenseRequestParams struct {
+	// <p>云应用实例 ID</p>
+	CloudappId *string `json:"CloudappId,omitnil,omitempty" name:"CloudappId"`
+
+	// <p>云应用颁发的 License 授权 ID。系统中唯一，伙伴可通过 License 颁发的订阅接口中获取</p>
+	LicenseId *string `json:"LicenseId,omitnil,omitempty" name:"LicenseId"`
+
+	// <p>License 的详细数据</p>
+	LicenseData *PartnerLicenseData `json:"LicenseData,omitnil,omitempty" name:"LicenseData"`
+
+	// <p>License 的激活模式</p>枚举值：<ul><li> immediate ： 立即激活</li><li> scheduled： 指定时间激活</li></ul>
+	ActivateMode *string `json:"ActivateMode,omitnil,omitempty" name:"ActivateMode"`
+
+	// <p>激活时间，指定时间激活时需要传该字段</p>
+	ActivateAt *string `json:"ActivateAt,omitnil,omitempty" name:"ActivateAt"`
+}
+
+type IssueLicenseRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>云应用实例 ID</p>
+	CloudappId *string `json:"CloudappId,omitnil,omitempty" name:"CloudappId"`
+
+	// <p>云应用颁发的 License 授权 ID。系统中唯一，伙伴可通过 License 颁发的订阅接口中获取</p>
+	LicenseId *string `json:"LicenseId,omitnil,omitempty" name:"LicenseId"`
+
+	// <p>License 的详细数据</p>
+	LicenseData *PartnerLicenseData `json:"LicenseData,omitnil,omitempty" name:"LicenseData"`
+
+	// <p>License 的激活模式</p>枚举值：<ul><li> immediate ： 立即激活</li><li> scheduled： 指定时间激活</li></ul>
+	ActivateMode *string `json:"ActivateMode,omitnil,omitempty" name:"ActivateMode"`
+
+	// <p>激活时间，指定时间激活时需要传该字段</p>
+	ActivateAt *string `json:"ActivateAt,omitnil,omitempty" name:"ActivateAt"`
+}
+
+func (r *IssueLicenseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *IssueLicenseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CloudappId")
+	delete(f, "LicenseId")
+	delete(f, "LicenseData")
+	delete(f, "ActivateMode")
+	delete(f, "ActivateAt")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IssueLicenseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type IssueLicenseResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type IssueLicenseResponse struct {
+	*tchttp.BaseResponse
+	Response *IssueLicenseResponseParams `json:"Response"`
+}
+
+func (r *IssueLicenseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *IssueLicenseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type License struct {
 	// <p>License ID</p>
 	LicenseId *string `json:"LicenseId,omitnil,omitempty" name:"LicenseId"`
@@ -172,6 +254,14 @@ type LicenseData struct {
 
 	// <p>License 前端展示信息。key、value 形式，比如可传入，颁发机构：XXXX 有限公司</p>
 	Metadata []*DisplayMetadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+}
+
+type PartnerLicenseData struct {
+	// <p>License 文本内容。可传入密钥、证书等文本型 License 内容，二进制内容请进行 base64 编码</p>
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// <p>License 的额外信息，JSON 字符串格式</p>
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 }
 
 type SaleParam struct {

@@ -9549,11 +9549,7 @@ func NewSyncDubbingResponse() (response *SyncDubbingResponse) {
 }
 
 // SyncDubbing
-// # 同步配音接口
-//
-// ## 音色克隆
-//
-// ## 语音合成
+// 同步接口，返回克隆音色Id或合成音频结果
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -9564,11 +9560,7 @@ func (c *Client) SyncDubbing(request *SyncDubbingRequest) (response *SyncDubbing
 }
 
 // SyncDubbing
-// # 同步配音接口
-//
-// ## 音色克隆
-//
-// ## 语音合成
+// 同步接口，返回克隆音色Id或合成音频结果
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

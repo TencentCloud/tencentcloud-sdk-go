@@ -410,6 +410,9 @@ type CosBackup struct {
 	// 备份索引列表，如果不填表示备份所有索引
 	Indices *string `json:"Indices,omitnil,omitempty" name:"Indices"`
 
+	// cos多AZ备份 0 单AZ; 1 多AZ
+	MultiAz *uint64 `json:"MultiAz,omitnil,omitempty" name:"MultiAz"`
+
 	// 策略创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
@@ -542,6 +545,9 @@ type CreateClusterSnapshotRequestParams struct {
 
 	// 跨地域备份地域名称 ap-guangzhou
 	RemoteCosRegion *string `json:"RemoteCosRegion,omitnil,omitempty" name:"RemoteCosRegion"`
+
+	// cos多AZ备份 0 单AZ; 1 多AZ
+	MultiAz *uint64 `json:"MultiAz,omitnil,omitempty" name:"MultiAz"`
 }
 
 type CreateClusterSnapshotRequest struct {
@@ -579,6 +585,9 @@ type CreateClusterSnapshotRequest struct {
 
 	// 跨地域备份地域名称 ap-guangzhou
 	RemoteCosRegion *string `json:"RemoteCosRegion,omitnil,omitempty" name:"RemoteCosRegion"`
+
+	// cos多AZ备份 0 单AZ; 1 多AZ
+	MultiAz *uint64 `json:"MultiAz,omitnil,omitempty" name:"MultiAz"`
 }
 
 func (r *CreateClusterSnapshotRequest) ToJsonString() string {
@@ -604,6 +613,7 @@ func (r *CreateClusterSnapshotRequest) FromJsonString(s string) error {
 	delete(f, "RetentionGraceTime")
 	delete(f, "RemoteCos")
 	delete(f, "RemoteCosRegion")
+	delete(f, "MultiAz")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterSnapshotRequest has unknown keys!", "")
 	}
@@ -6514,6 +6524,14 @@ type OptionalWebServiceInfo struct {
 	CustomPrivateUrl *string `json:"CustomPrivateUrl,omitnil,omitempty" name:"CustomPrivateUrl"`
 }
 
+type OtherConfig struct {
+	// es的yml额外配置
+	EsConfig *string `json:"EsConfig,omitnil,omitempty" name:"EsConfig"`
+
+	// es的jvm heap config
+	JvmHeapConfig *string `json:"JvmHeapConfig,omitnil,omitempty" name:"JvmHeapConfig"`
+}
+
 type OutboundPublicAcl struct {
 	// 允许节点出站访问的节点类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7582,6 +7600,10 @@ type Snapshots struct {
 	// 策略名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
+
+	// cos多AZ备份 0 单AZ; 1 多AZ
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MultiAz *uint64 `json:"MultiAz,omitnil,omitempty" name:"MultiAz"`
 }
 
 // Predefined struct for user
@@ -8181,6 +8203,9 @@ type UpdateInstanceRequestParams struct {
 
 	// 自动扩盘删除参数
 	AutoScaleDiskDeleteNodeTypeList []*string `json:"AutoScaleDiskDeleteNodeTypeList,omitnil,omitempty" name:"AutoScaleDiskDeleteNodeTypeList"`
+
+	// 其他附加配置，jvm或者yml
+	OtherConfig *OtherConfig `json:"OtherConfig,omitnil,omitempty" name:"OtherConfig"`
 }
 
 type UpdateInstanceRequest struct {
@@ -8343,6 +8368,9 @@ type UpdateInstanceRequest struct {
 
 	// 自动扩盘删除参数
 	AutoScaleDiskDeleteNodeTypeList []*string `json:"AutoScaleDiskDeleteNodeTypeList,omitnil,omitempty" name:"AutoScaleDiskDeleteNodeTypeList"`
+
+	// 其他附加配置，jvm或者yml
+	OtherConfig *OtherConfig `json:"OtherConfig,omitnil,omitempty" name:"OtherConfig"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {
@@ -8403,6 +8431,7 @@ func (r *UpdateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "EnableDestroyProtection")
 	delete(f, "AutoScaleDiskInfoList")
 	delete(f, "AutoScaleDiskDeleteNodeTypeList")
+	delete(f, "OtherConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateInstanceRequest has unknown keys!", "")
 	}

@@ -975,6 +975,66 @@ func (c *Client) CreateAnimatedGraphicsTemplateWithContext(ctx context.Context, 
     return
 }
 
+func NewCreateBlindWatermarkTemplateRequest() (request *CreateBlindWatermarkTemplateRequest) {
+    request = &CreateBlindWatermarkTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateBlindWatermarkTemplate")
+    
+    
+    return
+}
+
+func NewCreateBlindWatermarkTemplateResponse() (response *CreateBlindWatermarkTemplateResponse) {
+    response = &CreateBlindWatermarkTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBlindWatermarkTemplate
+// 创建用户自定义数字水印模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GENDEFINITION = "InternalError.GenDefinition"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) CreateBlindWatermarkTemplate(request *CreateBlindWatermarkTemplateRequest) (response *CreateBlindWatermarkTemplateResponse, err error) {
+    return c.CreateBlindWatermarkTemplateWithContext(context.Background(), request)
+}
+
+// CreateBlindWatermarkTemplate
+// 创建用户自定义数字水印模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GENDEFINITION = "InternalError.GenDefinition"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) CreateBlindWatermarkTemplateWithContext(ctx context.Context, request *CreateBlindWatermarkTemplateRequest) (response *CreateBlindWatermarkTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateBlindWatermarkTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateBlindWatermarkTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBlindWatermarkTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBlindWatermarkTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCLSLogsetRequest() (request *CreateCLSLogsetRequest) {
     request = &CreateCLSLogsetRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3347,6 +3407,60 @@ func (c *Client) DeleteAnimatedGraphicsTemplateWithContext(ctx context.Context, 
     return
 }
 
+func NewDeleteBlindWatermarkTemplateRequest() (request *DeleteBlindWatermarkTemplateRequest) {
+    request = &DeleteBlindWatermarkTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteBlindWatermarkTemplate")
+    
+    
+    return
+}
+
+func NewDeleteBlindWatermarkTemplateResponse() (response *DeleteBlindWatermarkTemplateResponse) {
+    response = &DeleteBlindWatermarkTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteBlindWatermarkTemplate
+// 删除用户自定义数字水印模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteBlindWatermarkTemplate(request *DeleteBlindWatermarkTemplateRequest) (response *DeleteBlindWatermarkTemplateResponse, err error) {
+    return c.DeleteBlindWatermarkTemplateWithContext(context.Background(), request)
+}
+
+// DeleteBlindWatermarkTemplate
+// 删除用户自定义数字水印模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteBlindWatermarkTemplateWithContext(ctx context.Context, request *DeleteBlindWatermarkTemplateRequest) (response *DeleteBlindWatermarkTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteBlindWatermarkTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DeleteBlindWatermarkTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBlindWatermarkTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBlindWatermarkTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCLSTopicRequest() (request *DeleteCLSTopicRequest) {
     request = &DeleteCLSTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3370,10 +3484,9 @@ func NewDeleteCLSTopicResponse() (response *DeleteCLSTopicResponse) {
 // 删除点播开通的日志主题。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteCLSTopic(request *DeleteCLSTopicRequest) (response *DeleteCLSTopicResponse, err error) {
     return c.DeleteCLSTopicWithContext(context.Background(), request)
 }
@@ -3382,10 +3495,9 @@ func (c *Client) DeleteCLSTopic(request *DeleteCLSTopicRequest) (response *Delet
 // 删除点播开通的日志主题。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteCLSTopicWithContext(ctx context.Context, request *DeleteCLSTopicRequest) (response *DeleteCLSTopicResponse, err error) {
     if request == nil {
         request = NewDeleteCLSTopicRequest()
@@ -5249,6 +5361,64 @@ func (c *Client) DescribeAnimatedGraphicsTemplatesWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewDescribeAnimatedGraphicsTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBlindWatermarkTemplatesRequest() (request *DescribeBlindWatermarkTemplatesRequest) {
+    request = &DescribeBlindWatermarkTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeBlindWatermarkTemplates")
+    
+    
+    return
+}
+
+func NewDescribeBlindWatermarkTemplatesResponse() (response *DescribeBlindWatermarkTemplatesResponse) {
+    response = &DescribeBlindWatermarkTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBlindWatermarkTemplates
+// 查询用户自定义数字水印模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DescribeBlindWatermarkTemplates(request *DescribeBlindWatermarkTemplatesRequest) (response *DescribeBlindWatermarkTemplatesResponse, err error) {
+    return c.DescribeBlindWatermarkTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeBlindWatermarkTemplates
+// 查询用户自定义数字水印模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DescribeBlindWatermarkTemplatesWithContext(ctx context.Context, request *DescribeBlindWatermarkTemplatesRequest) (response *DescribeBlindWatermarkTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeBlindWatermarkTemplatesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DescribeBlindWatermarkTemplates")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBlindWatermarkTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBlindWatermarkTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -8953,6 +9123,60 @@ func (c *Client) ExecuteFunctionWithContext(ctx context.Context, request *Execut
     return
 }
 
+func NewExtractBlindWatermarkRequest() (request *ExtractBlindWatermarkRequest) {
+    request = &ExtractBlindWatermarkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "ExtractBlindWatermark")
+    
+    
+    return
+}
+
+func NewExtractBlindWatermarkResponse() (response *ExtractBlindWatermarkResponse) {
+    response = &ExtractBlindWatermarkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExtractBlindWatermark
+// 用于发起提取视频数字水印任务，提取结果可以通过DescribeTaskDetail查询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SRCFILE = "InvalidParameterValue.SrcFile"
+func (c *Client) ExtractBlindWatermark(request *ExtractBlindWatermarkRequest) (response *ExtractBlindWatermarkResponse, err error) {
+    return c.ExtractBlindWatermarkWithContext(context.Background(), request)
+}
+
+// ExtractBlindWatermark
+// 用于发起提取视频数字水印任务，提取结果可以通过DescribeTaskDetail查询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SRCFILE = "InvalidParameterValue.SrcFile"
+func (c *Client) ExtractBlindWatermarkWithContext(ctx context.Context, request *ExtractBlindWatermarkRequest) (response *ExtractBlindWatermarkResponse, err error) {
+    if request == nil {
+        request = NewExtractBlindWatermarkRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "ExtractBlindWatermark")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExtractBlindWatermark require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExtractBlindWatermarkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExtractCopyRightWatermarkRequest() (request *ExtractCopyRightWatermarkRequest) {
     request = &ExtractCopyRightWatermarkRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8976,13 +9200,9 @@ func NewExtractCopyRightWatermarkResponse() (response *ExtractCopyRightWatermark
 // 如果有盗录溯源需求，请参考 [幽灵水印](https://cloud.tencent.com/document/product/266/94228)。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_FUNCTIONARG = "InvalidParameterValue.FunctionArg"
-//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
-//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SRCFILE = "InvalidParameterValue.SrcFile"
 func (c *Client) ExtractCopyRightWatermark(request *ExtractCopyRightWatermarkRequest) (response *ExtractCopyRightWatermarkResponse, err error) {
     return c.ExtractCopyRightWatermarkWithContext(context.Background(), request)
 }
@@ -8991,13 +9211,9 @@ func (c *Client) ExtractCopyRightWatermark(request *ExtractCopyRightWatermarkReq
 // 如果有盗录溯源需求，请参考 [幽灵水印](https://cloud.tencent.com/document/product/266/94228)。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_FUNCTIONARG = "InvalidParameterValue.FunctionArg"
-//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
-//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SRCFILE = "InvalidParameterValue.SrcFile"
 func (c *Client) ExtractCopyRightWatermarkWithContext(ctx context.Context, request *ExtractCopyRightWatermarkRequest) (response *ExtractCopyRightWatermarkResponse, err error) {
     if request == nil {
         request = NewExtractCopyRightWatermarkRequest()
@@ -9038,13 +9254,9 @@ func NewExtractTraceWatermarkResponse() (response *ExtractTraceWatermarkResponse
 // 如果有盗录溯源需求，推荐使用 [幽灵水印](https://cloud.tencent.com/document/product/266/94228)。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_FUNCTIONARG = "InvalidParameterValue.FunctionArg"
-//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
-//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SRCFILE = "InvalidParameterValue.SrcFile"
 func (c *Client) ExtractTraceWatermark(request *ExtractTraceWatermarkRequest) (response *ExtractTraceWatermarkResponse, err error) {
     return c.ExtractTraceWatermarkWithContext(context.Background(), request)
 }
@@ -9053,13 +9265,9 @@ func (c *Client) ExtractTraceWatermark(request *ExtractTraceWatermarkRequest) (r
 // 如果有盗录溯源需求，推荐使用 [幽灵水印](https://cloud.tencent.com/document/product/266/94228)。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_FUNCTIONARG = "InvalidParameterValue.FunctionArg"
-//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
-//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SRCFILE = "InvalidParameterValue.SrcFile"
 func (c *Client) ExtractTraceWatermarkWithContext(ctx context.Context, request *ExtractTraceWatermarkRequest) (response *ExtractTraceWatermarkResponse, err error) {
     if request == nil {
         request = NewExtractTraceWatermarkRequest()
@@ -10003,6 +10211,64 @@ func (c *Client) ModifyAnimatedGraphicsTemplateWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewModifyAnimatedGraphicsTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBlindWatermarkTemplateRequest() (request *ModifyBlindWatermarkTemplateRequest) {
+    request = &ModifyBlindWatermarkTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyBlindWatermarkTemplate")
+    
+    
+    return
+}
+
+func NewModifyBlindWatermarkTemplateResponse() (response *ModifyBlindWatermarkTemplateResponse) {
+    response = &ModifyBlindWatermarkTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyBlindWatermarkTemplate
+// 修改用户自定义数字水印模板，数字水印类型不允许修改。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) ModifyBlindWatermarkTemplate(request *ModifyBlindWatermarkTemplateRequest) (response *ModifyBlindWatermarkTemplateResponse, err error) {
+    return c.ModifyBlindWatermarkTemplateWithContext(context.Background(), request)
+}
+
+// ModifyBlindWatermarkTemplate
+// 修改用户自定义数字水印模板，数字水印类型不允许修改。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) ModifyBlindWatermarkTemplateWithContext(ctx context.Context, request *ModifyBlindWatermarkTemplateRequest) (response *ModifyBlindWatermarkTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyBlindWatermarkTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "ModifyBlindWatermarkTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBlindWatermarkTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBlindWatermarkTemplateResponse()
     err = c.Send(request, response)
     return
 }

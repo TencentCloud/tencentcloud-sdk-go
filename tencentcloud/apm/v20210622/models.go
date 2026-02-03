@@ -264,6 +264,9 @@ type ApmAppConfig struct {
 
 	// spanId的索引key: 当CLS索引类型为键值索引时生效
 	LogSpanIdKey *string `json:"LogSpanIdKey,omitnil,omitempty" name:"LogSpanIdKey"`
+
+	// 自动性能剖析配置
+	AutoProfilingConfig *AutoProfilingConfig `json:"AutoProfilingConfig,omitnil,omitempty" name:"AutoProfilingConfig"`
 }
 
 type ApmApplicationConfigView struct {
@@ -341,6 +344,9 @@ type ApmApplicationConfigView struct {
 
 	// 脱敏规则
 	DesensitizationRule *string `json:"DesensitizationRule,omitnil,omitempty" name:"DesensitizationRule"`
+
+	// 自动性能剖析任务配置
+	AutoProfilingConfig *AutoProfilingConfig `json:"AutoProfilingConfig,omitnil,omitempty" name:"AutoProfilingConfig"`
 }
 
 type ApmAssociation struct {
@@ -651,6 +657,26 @@ type ApmTag struct {
 
 	// 维度值（标签值）
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type AutoProfilingConfig struct {
+	// 自动CPU剖析任务开关
+	CpuProfilingEnable *bool `json:"CpuProfilingEnable,omitnil,omitempty" name:"CpuProfilingEnable"`
+
+	// 自动内存剖析任务开关
+	MemoryProfilingEnable *bool `json:"MemoryProfilingEnable,omitnil,omitempty" name:"MemoryProfilingEnable"`
+
+	// 自动CPU剖析任务阈值
+	CpuProfilingThreshold *int64 `json:"CpuProfilingThreshold,omitnil,omitempty" name:"CpuProfilingThreshold"`
+
+	// 自动内存剖析任务阈值
+	MemoryProfilingThreshold *int64 `json:"MemoryProfilingThreshold,omitnil,omitempty" name:"MemoryProfilingThreshold"`
+
+	// CPU自动剖析任务时长
+	CpuProfilingDuration *int64 `json:"CpuProfilingDuration,omitnil,omitempty" name:"CpuProfilingDuration"`
+
+	// 内存自动剖析任务时长
+	MemoryProfilingDuration *int64 `json:"MemoryProfilingDuration,omitnil,omitempty" name:"MemoryProfilingDuration"`
 }
 
 type CVMMeta struct {
@@ -2953,6 +2979,9 @@ type ModifyApmApplicationConfigRequestParams struct {
 
 	// spanId的索引key: 当CLS索引类型为键值索引时生效
 	LogSpanIdKey *string `json:"LogSpanIdKey,omitnil,omitempty" name:"LogSpanIdKey"`
+
+	// 自动性能剖析任务配置
+	AutoProfilingConfig *AutoProfilingConfig `json:"AutoProfilingConfig,omitnil,omitempty" name:"AutoProfilingConfig"`
 }
 
 type ModifyApmApplicationConfigRequest struct {
@@ -3119,6 +3148,9 @@ type ModifyApmApplicationConfigRequest struct {
 
 	// spanId的索引key: 当CLS索引类型为键值索引时生效
 	LogSpanIdKey *string `json:"LogSpanIdKey,omitnil,omitempty" name:"LogSpanIdKey"`
+
+	// 自动性能剖析任务配置
+	AutoProfilingConfig *AutoProfilingConfig `json:"AutoProfilingConfig,omitnil,omitempty" name:"AutoProfilingConfig"`
 }
 
 func (r *ModifyApmApplicationConfigRequest) ToJsonString() string {
@@ -3187,6 +3219,7 @@ func (r *ModifyApmApplicationConfigRequest) FromJsonString(s string) error {
 	delete(f, "EnableDesensitizationRule")
 	delete(f, "DesensitizationRule")
 	delete(f, "LogSpanIdKey")
+	delete(f, "AutoProfilingConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmApplicationConfigRequest has unknown keys!", "")
 	}

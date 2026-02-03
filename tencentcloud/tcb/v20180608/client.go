@@ -45,6 +45,134 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewBindCloudBaseAccessDomainRequest() (request *BindCloudBaseAccessDomainRequest) {
+    request = &BindCloudBaseAccessDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "BindCloudBaseAccessDomain")
+    
+    
+    return
+}
+
+func NewBindCloudBaseAccessDomainResponse() (response *BindCloudBaseAccessDomainResponse) {
+    response = &BindCloudBaseAccessDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BindCloudBaseAccessDomain
+// 绑定云开发自定义域名，用于云接入和静态托管
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_CNAMENOTMATCH = "InvalidParameter.CNAMENotMatch"
+//  INVALIDPARAMETER_DOMAINEXIST = "InvalidParameter.DomainExist"
+//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+//  INVALIDPARAMETER_SERVICEICP = "InvalidParameter.ServiceICP"
+//  INVALIDPARAMETER_SERVICETHRESHOLD = "InvalidParameter.ServiceThreshold"
+//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
+func (c *Client) BindCloudBaseAccessDomain(request *BindCloudBaseAccessDomainRequest) (response *BindCloudBaseAccessDomainResponse, err error) {
+    return c.BindCloudBaseAccessDomainWithContext(context.Background(), request)
+}
+
+// BindCloudBaseAccessDomain
+// 绑定云开发自定义域名，用于云接入和静态托管
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_CNAMENOTMATCH = "InvalidParameter.CNAMENotMatch"
+//  INVALIDPARAMETER_DOMAINEXIST = "InvalidParameter.DomainExist"
+//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+//  INVALIDPARAMETER_SERVICEICP = "InvalidParameter.ServiceICP"
+//  INVALIDPARAMETER_SERVICETHRESHOLD = "InvalidParameter.ServiceThreshold"
+//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
+func (c *Client) BindCloudBaseAccessDomainWithContext(ctx context.Context, request *BindCloudBaseAccessDomainRequest) (response *BindCloudBaseAccessDomainResponse, err error) {
+    if request == nil {
+        request = NewBindCloudBaseAccessDomainRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "BindCloudBaseAccessDomain")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindCloudBaseAccessDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindCloudBaseAccessDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBindCloudBaseGWDomainRequest() (request *BindCloudBaseGWDomainRequest) {
+    request = &BindCloudBaseGWDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "BindCloudBaseGWDomain")
+    
+    
+    return
+}
+
+func NewBindCloudBaseGWDomainResponse() (response *BindCloudBaseGWDomainResponse) {
+    response = &BindCloudBaseGWDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BindCloudBaseGWDomain
+// 绑定自定义域名
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APINOEXIST = "InvalidParameter.APINoExist"
+//  INVALIDPARAMETER_CNAMENOTMATCH = "InvalidParameter.CNAMENotMatch"
+//  INVALIDPARAMETER_DOMAINEXIST = "InvalidParameter.DomainExist"
+//  INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
+//  INVALIDPARAMETER_EXCLUSIVECERT = "InvalidParameter.ExclusiveCert"
+//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+//  INVALIDPARAMETER_SERVICEICP = "InvalidParameter.ServiceICP"
+//  INVALIDPARAMETER_SERVICETHRESHOLD = "InvalidParameter.ServiceThreshold"
+func (c *Client) BindCloudBaseGWDomain(request *BindCloudBaseGWDomainRequest) (response *BindCloudBaseGWDomainResponse, err error) {
+    return c.BindCloudBaseGWDomainWithContext(context.Background(), request)
+}
+
+// BindCloudBaseGWDomain
+// 绑定自定义域名
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APINOEXIST = "InvalidParameter.APINoExist"
+//  INVALIDPARAMETER_CNAMENOTMATCH = "InvalidParameter.CNAMENotMatch"
+//  INVALIDPARAMETER_DOMAINEXIST = "InvalidParameter.DomainExist"
+//  INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
+//  INVALIDPARAMETER_EXCLUSIVECERT = "InvalidParameter.ExclusiveCert"
+//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+//  INVALIDPARAMETER_SERVICEICP = "InvalidParameter.ServiceICP"
+//  INVALIDPARAMETER_SERVICETHRESHOLD = "InvalidParameter.ServiceThreshold"
+func (c *Client) BindCloudBaseGWDomainWithContext(ctx context.Context, request *BindCloudBaseGWDomainRequest) (response *BindCloudBaseGWDomainResponse, err error) {
+    if request == nil {
+        request = NewBindCloudBaseGWDomainRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "BindCloudBaseGWDomain")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindCloudBaseGWDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindCloudBaseGWDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindEnvGatewayRequest() (request *BindEnvGatewayRequest) {
     request = &BindEnvGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -335,6 +463,132 @@ func (c *Client) CreateAuthDomainWithContext(ctx context.Context, request *Creat
     request.SetContext(ctx)
     
     response = NewCreateAuthDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateBillDealRequest() (request *CreateBillDealRequest) {
+    request = &CreateBillDealRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateBillDeal")
+    
+    
+    return
+}
+
+func NewCreateBillDealResponse() (response *CreateBillDealResponse) {
+    response = &CreateBillDealResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBillDeal
+// 创建云开发产品计费订单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  OPERATIONDENIED_FREEPACKAGEDENIED = "OperationDenied.FreePackageDenied"
+//  OPERATIONDENIED_RESOURCEFROZEN = "OperationDenied.ResourceFrozen"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateBillDeal(request *CreateBillDealRequest) (response *CreateBillDealResponse, err error) {
+    return c.CreateBillDealWithContext(context.Background(), request)
+}
+
+// CreateBillDeal
+// 创建云开发产品计费订单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  OPERATIONDENIED_FREEPACKAGEDENIED = "OperationDenied.FreePackageDenied"
+//  OPERATIONDENIED_RESOURCEFROZEN = "OperationDenied.ResourceFrozen"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateBillDealWithContext(ctx context.Context, request *CreateBillDealRequest) (response *CreateBillDealResponse, err error) {
+    if request == nil {
+        request = NewCreateBillDealRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateBillDeal")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBillDeal require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBillDealResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCloudBaseGWAPIRequest() (request *CreateCloudBaseGWAPIRequest) {
+    request = &CreateCloudBaseGWAPIRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateCloudBaseGWAPI")
+    
+    
+    return
+}
+
+func NewCreateCloudBaseGWAPIResponse() (response *CreateCloudBaseGWAPIResponse) {
+    response = &CreateCloudBaseGWAPIResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCloudBaseGWAPI
+// 创建云开发网关API
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  INVALIDPARAMETER_APICREATED = "InvalidParameter.APICreated"
+//  INVALIDPARAMETER_APINOTEXIST = "InvalidParameter.APINotExist"
+//  INVALIDPARAMETER_APITHRESHOLD = "InvalidParameter.APIThreshold"
+//  INVALIDPARAMETER_APITYPENOTSUPPORT = "InvalidParameter.APITypeNotSupport"
+//  INVALIDPARAMETER_PATHEXIST = "InvalidParameter.PathExist"
+//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
+func (c *Client) CreateCloudBaseGWAPI(request *CreateCloudBaseGWAPIRequest) (response *CreateCloudBaseGWAPIResponse, err error) {
+    return c.CreateCloudBaseGWAPIWithContext(context.Background(), request)
+}
+
+// CreateCloudBaseGWAPI
+// 创建云开发网关API
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  INVALIDPARAMETER_APICREATED = "InvalidParameter.APICreated"
+//  INVALIDPARAMETER_APINOTEXIST = "InvalidParameter.APINotExist"
+//  INVALIDPARAMETER_APITHRESHOLD = "InvalidParameter.APIThreshold"
+//  INVALIDPARAMETER_APITYPENOTSUPPORT = "InvalidParameter.APITypeNotSupport"
+//  INVALIDPARAMETER_PATHEXIST = "InvalidParameter.PathExist"
+//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
+func (c *Client) CreateCloudBaseGWAPIWithContext(ctx context.Context, request *CreateCloudBaseGWAPIRequest) (response *CreateCloudBaseGWAPIResponse, err error) {
+    if request == nil {
+        request = NewCreateCloudBaseGWAPIRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateCloudBaseGWAPI")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCloudBaseGWAPI require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCloudBaseGWAPIResponse()
     err = c.Send(request, response)
     return
 }
@@ -773,6 +1027,120 @@ func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserR
     request.SetContext(ctx)
     
     response = NewCreateUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCloudBaseGWAPIRequest() (request *DeleteCloudBaseGWAPIRequest) {
+    request = &DeleteCloudBaseGWAPIRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DeleteCloudBaseGWAPI")
+    
+    
+    return
+}
+
+func NewDeleteCloudBaseGWAPIResponse() (response *DeleteCloudBaseGWAPIResponse) {
+    response = &DeleteCloudBaseGWAPIResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCloudBaseGWAPI
+// 删除网关API
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APITYPENOTSUPPORT = "InvalidParameter.APITypeNotSupport"
+//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
+func (c *Client) DeleteCloudBaseGWAPI(request *DeleteCloudBaseGWAPIRequest) (response *DeleteCloudBaseGWAPIResponse, err error) {
+    return c.DeleteCloudBaseGWAPIWithContext(context.Background(), request)
+}
+
+// DeleteCloudBaseGWAPI
+// 删除网关API
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APITYPENOTSUPPORT = "InvalidParameter.APITypeNotSupport"
+//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
+func (c *Client) DeleteCloudBaseGWAPIWithContext(ctx context.Context, request *DeleteCloudBaseGWAPIRequest) (response *DeleteCloudBaseGWAPIResponse, err error) {
+    if request == nil {
+        request = NewDeleteCloudBaseGWAPIRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteCloudBaseGWAPI")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCloudBaseGWAPI require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCloudBaseGWAPIResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCloudBaseGWDomainRequest() (request *DeleteCloudBaseGWDomainRequest) {
+    request = &DeleteCloudBaseGWDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DeleteCloudBaseGWDomain")
+    
+    
+    return
+}
+
+func NewDeleteCloudBaseGWDomainResponse() (response *DeleteCloudBaseGWDomainResponse) {
+    response = &DeleteCloudBaseGWDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCloudBaseGWDomain
+// 删除网关域名
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
+//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+func (c *Client) DeleteCloudBaseGWDomain(request *DeleteCloudBaseGWDomainRequest) (response *DeleteCloudBaseGWDomainResponse, err error) {
+    return c.DeleteCloudBaseGWDomainWithContext(context.Background(), request)
+}
+
+// DeleteCloudBaseGWDomain
+// 删除网关域名
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
+//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+func (c *Client) DeleteCloudBaseGWDomainWithContext(ctx context.Context, request *DeleteCloudBaseGWDomainRequest) (response *DeleteCloudBaseGWDomainResponse, err error) {
+    if request == nil {
+        request = NewDeleteCloudBaseGWDomainRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteCloudBaseGWDomain")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCloudBaseGWDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCloudBaseGWDomainResponse()
     err = c.Send(request, response)
     return
 }
@@ -1493,6 +1861,124 @@ func (c *Client) DescribeCloudBaseBuildServiceWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeCloudBaseGWAPIRequest() (request *DescribeCloudBaseGWAPIRequest) {
+    request = &DescribeCloudBaseGWAPIRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseGWAPI")
+    
+    
+    return
+}
+
+func NewDescribeCloudBaseGWAPIResponse() (response *DescribeCloudBaseGWAPIResponse) {
+    response = &DescribeCloudBaseGWAPIResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudBaseGWAPI
+// 获取网关API列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APINOEXIST = "InvalidParameter.APINoExist"
+//  INVALIDPARAMETER_APITYPENOTSUPPORT = "InvalidParameter.APITypeNotSupport"
+//  INVALIDPARAMETER_EXCLUSIVECERT = "InvalidParameter.ExclusiveCert"
+//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+func (c *Client) DescribeCloudBaseGWAPI(request *DescribeCloudBaseGWAPIRequest) (response *DescribeCloudBaseGWAPIResponse, err error) {
+    return c.DescribeCloudBaseGWAPIWithContext(context.Background(), request)
+}
+
+// DescribeCloudBaseGWAPI
+// 获取网关API列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APINOEXIST = "InvalidParameter.APINoExist"
+//  INVALIDPARAMETER_APITYPENOTSUPPORT = "InvalidParameter.APITypeNotSupport"
+//  INVALIDPARAMETER_EXCLUSIVECERT = "InvalidParameter.ExclusiveCert"
+//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+func (c *Client) DescribeCloudBaseGWAPIWithContext(ctx context.Context, request *DescribeCloudBaseGWAPIRequest) (response *DescribeCloudBaseGWAPIResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudBaseGWAPIRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseGWAPI")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseGWAPI require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudBaseGWAPIResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudBaseGWServiceRequest() (request *DescribeCloudBaseGWServiceRequest) {
+    request = &DescribeCloudBaseGWServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseGWService")
+    
+    
+    return
+}
+
+func NewDescribeCloudBaseGWServiceResponse() (response *DescribeCloudBaseGWServiceResponse) {
+    response = &DescribeCloudBaseGWServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudBaseGWService
+// 获取网关服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
+//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+//  INVALIDPARAMETER_SERVICEICP = "InvalidParameter.ServiceICP"
+func (c *Client) DescribeCloudBaseGWService(request *DescribeCloudBaseGWServiceRequest) (response *DescribeCloudBaseGWServiceResponse, err error) {
+    return c.DescribeCloudBaseGWServiceWithContext(context.Background(), request)
+}
+
+// DescribeCloudBaseGWService
+// 获取网关服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
+//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+//  INVALIDPARAMETER_SERVICEICP = "InvalidParameter.ServiceICP"
+func (c *Client) DescribeCloudBaseGWServiceWithContext(ctx context.Context, request *DescribeCloudBaseGWServiceRequest) (response *DescribeCloudBaseGWServiceResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudBaseGWServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseGWService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseGWService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudBaseGWServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudBaseProjectLatestVersionListRequest() (request *DescribeCloudBaseProjectLatestVersionListRequest) {
     request = &DescribeCloudBaseProjectLatestVersionListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2119,6 +2605,64 @@ func (c *Client) DescribeDownloadFileWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeDownloadFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEnvAccountCircleRequest() (request *DescribeEnvAccountCircleRequest) {
+    request = &DescribeEnvAccountCircleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeEnvAccountCircle")
+    
+    
+    return
+}
+
+func NewDescribeEnvAccountCircleResponse() (response *DescribeEnvAccountCircleResponse) {
+    response = &DescribeEnvAccountCircleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEnvAccountCircle
+// 查询环境计费周期
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEUNAVAILABLE_RESOURCEEXPIRED = "ResourceUnavailable.ResourceExpired"
+func (c *Client) DescribeEnvAccountCircle(request *DescribeEnvAccountCircleRequest) (response *DescribeEnvAccountCircleResponse, err error) {
+    return c.DescribeEnvAccountCircleWithContext(context.Background(), request)
+}
+
+// DescribeEnvAccountCircle
+// 查询环境计费周期
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEUNAVAILABLE_RESOURCEEXPIRED = "ResourceUnavailable.ResourceExpired"
+func (c *Client) DescribeEnvAccountCircleWithContext(ctx context.Context, request *DescribeEnvAccountCircleRequest) (response *DescribeEnvAccountCircleResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnvAccountCircleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeEnvAccountCircle")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnvAccountCircle require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEnvAccountCircleResponse()
     err = c.Send(request, response)
     return
 }
@@ -2969,6 +3513,62 @@ func (c *Client) DescribeQuotaDataWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeSafeRuleRequest() (request *DescribeSafeRuleRequest) {
+    request = &DescribeSafeRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeSafeRule")
+    
+    
+    return
+}
+
+func NewDescribeSafeRuleResponse() (response *DescribeSafeRuleResponse) {
+    response = &DescribeSafeRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSafeRule
+// 查询数据库安全规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+func (c *Client) DescribeSafeRule(request *DescribeSafeRuleRequest) (response *DescribeSafeRuleResponse, err error) {
+    return c.DescribeSafeRuleWithContext(context.Background(), request)
+}
+
+// DescribeSafeRule
+// 查询数据库安全规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+func (c *Client) DescribeSafeRuleWithContext(ctx context.Context, request *DescribeSafeRuleRequest) (response *DescribeSafeRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeSafeRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeSafeRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSafeRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSafeRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSmsQuotasRequest() (request *DescribeSmsQuotasRequest) {
     request = &DescribeSmsQuotasRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3089,6 +3689,58 @@ func (c *Client) DescribeSpecialCostItemsWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeSpecialCostItemsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStaticStoreRequest() (request *DescribeStaticStoreRequest) {
+    request = &DescribeStaticStoreRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeStaticStore")
+    
+    
+    return
+}
+
+func NewDescribeStaticStoreResponse() (response *DescribeStaticStoreResponse) {
+    response = &DescribeStaticStoreResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStaticStore
+// 查看当前环境下静态托管资源信息，根据返回结果判断静态资源的状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeStaticStore(request *DescribeStaticStoreRequest) (response *DescribeStaticStoreResponse, err error) {
+    return c.DescribeStaticStoreWithContext(context.Background(), request)
+}
+
+// DescribeStaticStore
+// 查看当前环境下静态托管资源信息，根据返回结果判断静态资源的状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeStaticStoreWithContext(ctx context.Context, request *DescribeStaticStoreRequest) (response *DescribeStaticStoreResponse, err error) {
+    if request == nil {
+        request = NewDescribeStaticStoreRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeStaticStore")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStaticStore require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStaticStoreResponse()
     err = c.Send(request, response)
     return
 }
@@ -3885,6 +4537,70 @@ func (c *Client) ListTablesWithContext(ctx context.Context, request *ListTablesR
     return
 }
 
+func NewModifyCloudBaseGWAPIRequest() (request *ModifyCloudBaseGWAPIRequest) {
+    request = &ModifyCloudBaseGWAPIRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyCloudBaseGWAPI")
+    
+    
+    return
+}
+
+func NewModifyCloudBaseGWAPIResponse() (response *ModifyCloudBaseGWAPIResponse) {
+    response = &ModifyCloudBaseGWAPIResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCloudBaseGWAPI
+// 修改云开发网关API
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyCloudBaseGWAPI(request *ModifyCloudBaseGWAPIRequest) (response *ModifyCloudBaseGWAPIResponse, err error) {
+    return c.ModifyCloudBaseGWAPIWithContext(context.Background(), request)
+}
+
+// ModifyCloudBaseGWAPI
+// 修改云开发网关API
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyCloudBaseGWAPIWithContext(ctx context.Context, request *ModifyCloudBaseGWAPIRequest) (response *ModifyCloudBaseGWAPIResponse, err error) {
+    if request == nil {
+        request = NewModifyCloudBaseGWAPIRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyCloudBaseGWAPI")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCloudBaseGWAPI require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCloudBaseGWAPIResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCloudBaseRunServerFlowConfRequest() (request *ModifyCloudBaseRunServerFlowConfRequest) {
     request = &ModifyCloudBaseRunServerFlowConfRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4477,6 +5193,74 @@ func (c *Client) RunSqlWithContext(ctx context.Context, request *RunSqlRequest) 
     request.SetContext(ctx)
     
     response = NewRunSqlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchClsLogRequest() (request *SearchClsLogRequest) {
+    request = &SearchClsLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "SearchClsLog")
+    
+    
+    return
+}
+
+func NewSearchClsLogResponse() (response *SearchClsLogResponse) {
+    response = &SearchClsLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SearchClsLog
+// 搜索CLS日志，TCB角色密钥访问
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) SearchClsLog(request *SearchClsLogRequest) (response *SearchClsLogResponse, err error) {
+    return c.SearchClsLogWithContext(context.Background(), request)
+}
+
+// SearchClsLog
+// 搜索CLS日志，TCB角色密钥访问
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) SearchClsLogWithContext(ctx context.Context, request *SearchClsLogRequest) (response *SearchClsLogResponse, err error) {
+    if request == nil {
+        request = NewSearchClsLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "SearchClsLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchClsLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchClsLogResponse()
     err = c.Send(request, response)
     return
 }

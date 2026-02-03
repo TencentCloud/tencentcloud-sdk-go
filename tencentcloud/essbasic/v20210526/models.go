@@ -73,42 +73,22 @@ type ApproverItem struct {
 }
 
 type ApproverOption struct {
-	// 是否可以拒签 默认false-可以拒签 true-不可以拒签
+	// <p>是否可以拒签 默认false-可以拒签 true-不可以拒签</p>
 	NoRefuse *bool `json:"NoRefuse,omitnil,omitempty" name:"NoRefuse"`
 
-	// 是否可以转发 默认false-可以转发 true-不可以转发
+	// <p>是否可以转发 默认false-可以转发 true-不可以转发</p>
 	NoTransfer *bool `json:"NoTransfer,omitnil,omitempty" name:"NoTransfer"`
 
-	// 当签署方有多个签署区时候，是否隐藏一键所有的签署区
-	// 
-	// false：（默认）不隐藏
-	// true：隐藏，每个签署区要单独选择印章或者签名
+	// <p>当签署方有多个签署区时候，是否隐藏一键所有的签署区</p><p>false：（默认）不隐藏<br>true：隐藏，每个签署区要单独选择印章或者签名</p>
 	HideOneKeySign *bool `json:"HideOneKeySign,omitnil,omitempty" name:"HideOneKeySign"`
 
-	// 签署人信息补充类型，默认无需补充。
-	// 
-	// <ul><li> **1** :  动态签署人（可发起合同后再补充签署人信息）注：`企业自动签不支持动态补充`</li></ul>
-	// 
-	// 注：
-	// `使用动态签署人能力前，需登陆腾讯电子签控制台打开服务开关`
+	// <p>签署人信息补充类型，默认无需补充。<ul><li> <strong>1</strong> :  动态签署人（可发起合同后再补充签署人信息）注：<code>企业自动签不支持动态补充</code></li></ul>注：<code>使用动态签署人能力前，需登录腾讯电子签控制台打开服务开关</code></p><p>枚举值：</p><ul><li>1： 动态签署人</li></ul>
 	FillType *int64 `json:"FillType,omitnil,omitempty" name:"FillType"`
 
-	// 签署人阅读合同限制参数
-	//  <br/>取值：
-	// <ul>
-	// <li> LimitReadTimeAndBottom，阅读合同必须限制阅读时长并且必须阅读到底</li>
-	// <li> LimitReadTime，阅读合同仅限制阅读时长</li>
-	// <li> LimitBottom，阅读合同仅限制必须阅读到底</li>
-	// <li> NoReadTimeAndBottom，阅读合同不限制阅读时长且不限制阅读到底（白名单功能，请联系客户经理开白使用）</li>
-	// </ul>
+	// <p>签署人阅读合同限制参数<br> <br>取值：</p><ul><li> LimitReadTimeAndBottom，阅读合同必须限制阅读时长并且必须阅读到底</li><li> LimitReadTime，阅读合同仅限制阅读时长</li><li> LimitBottom，阅读合同仅限制必须阅读到底</li><li> NoReadTimeAndBottom，阅读合同不限制阅读时长且不限制阅读到底（白名单功能，请联系客户经理开白使用）</li></ul>
 	FlowReadLimit *string `json:"FlowReadLimit,omitnil,omitempty" name:"FlowReadLimit"`
 
-	// 禁止在签署过程中添加签署日期控件
-	//  <br/>前置条件：文件发起合同时，指定SignBeanTag=1（可以在签署过程中添加签署控件）：
-	// <ul>
-	// <li> 默认值：false，在开启：签署过程中添加签署控件时，添加签署控件会默认自带签署日期控件</li>
-	// <li> 可选值：true，在开启：签署过程中添加签署控件时，添加签署控件不会自带签署日期控件</li>
-	// </ul>
+	// <p>禁止在签署过程中添加签署日期控件<br> <br>前置条件：文件发起合同时，指定SignBeanTag=1（可以在签署过程中添加签署控件）：</p><ul><li> 默认值：false，在开启：签署过程中添加签署控件时，添加签署控件会默认自带签署日期控件</li><li> 可选值：true，在开启：签署过程中添加签署控件时，添加签署控件不会自带签署日期控件</li></ul>
 	ForbidAddSignDate *bool `json:"ForbidAddSignDate,omitnil,omitempty" name:"ForbidAddSignDate"`
 }
 
