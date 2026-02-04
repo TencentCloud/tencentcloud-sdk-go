@@ -8169,35 +8169,38 @@ func (r *ListUsersResponse) FromJsonString(s string) error {
 }
 
 type ManagerShareUnit struct {
-	// 共享单元ID。
+	// <p>共享单元ID。</p>
 	UnitId *string `json:"UnitId,omitnil,omitempty" name:"UnitId"`
 
-	// 共享单元名称。
+	// <p>共享单元名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 共享单元管理员Uin。
+	// <p>共享单元管理员Uin。</p>
 	Uin *int64 `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 共享单元管理员OwnerUin。
+	// <p>共享单元管理员OwnerUin。</p>
 	OwnerUin *int64 `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 共享单元地域。
+	// <p>共享单元地域。</p>
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
-	// 描述。
+	// <p>描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 创建时间。
+	// <p>创建时间。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 共享单元资源数。
+	// <p>共享单元资源数。</p>
 	ShareResourceNum *int64 `json:"ShareResourceNum,omitnil,omitempty" name:"ShareResourceNum"`
 
-	// 共享单元成员数。
+	// <p>共享单元成员数。</p>
 	ShareMemberNum *int64 `json:"ShareMemberNum,omitnil,omitempty" name:"ShareMemberNum"`
 
-	// 共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号
+	// <p>共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号</p>
 	ShareScope *uint64 `json:"ShareScope,omitnil,omitempty" name:"ShareScope"`
+
+	// <p>共享单元部门数。</p>
+	ShareNodeNum *int64 `json:"ShareNodeNum,omitnil,omitempty" name:"ShareNodeNum"`
 }
 
 type MemberIdentity struct {

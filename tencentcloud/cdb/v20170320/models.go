@@ -11685,6 +11685,9 @@ type InstanceInfo struct {
 
 	// 实例销毁保护状态，on表示开启保护，否则为关闭保护
 	DestroyProtect *string `json:"DestroyProtect,omitnil,omitempty" name:"DestroyProtect"`
+
+	// TDSQL引擎参数
+	CpuModel *string `json:"CpuModel,omitnil,omitempty" name:"CpuModel"`
 }
 
 type InstanceRebootTime struct {

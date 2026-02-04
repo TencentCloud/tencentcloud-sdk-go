@@ -1484,6 +1484,9 @@ type ApiDetailSampleHistory struct {
 
 	// 响应样例
 	RspLog *string `json:"RspLog,omitnil,omitempty" name:"RspLog"`
+
+	// 完整请求样例
+	FullReqLog *string `json:"FullReqLog,omitnil,omitempty" name:"FullReqLog"`
 }
 
 type ApiNameMethod struct {
@@ -1622,6 +1625,23 @@ type ApiSecCustomSensitiveRule struct {
 
 	// 规则是否泛化，默认0表示不泛化
 	IsPan *int64 `json:"IsPan,omitnil,omitempty" name:"IsPan"`
+}
+
+type ApiSecExcludeRule struct {
+	// 规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 匹配类型，regex、prefix、suffix、contain匹配模式
+	MatchType *string `json:"MatchType,omitnil,omitempty" name:"MatchType"`
+
+	// 匹配内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 状态开关
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 规则更新时间
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type ApiSecExtractRule struct {
@@ -1996,7 +2016,15 @@ type BotIdDetail struct {
 	// 风险等级
 	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
 
-	// 规则类型
+	// "cbe-01": "爬虫型BOT",
+	// 	"cbe-02": "刷量型BOT",
+	// 	"cbe-03": "账号穷举型BOT",
+	// 	"cbe-04": "恶意扫描型BOT",
+	// 	"cbe-05": "DDoS型BOT",
+	// 	"cbe-06": "垃圾邮件发送型BOT",
+	// 	"cbe-07": "社交媒体自动化型BOT",
+	// 	"cbe-08": "竞争对手数据收集型BOT",
+	// 	"cbe-09": "恶意软件传播型BOT"
 	BotIdType *string `json:"BotIdType,omitnil,omitempty" name:"BotIdType"`
 
 	// 修改时间
@@ -2377,6 +2405,9 @@ type BotToken struct {
 
 	// token有效性配置信息
 	TokenValidation *TokenValidation `json:"TokenValidation,omitnil,omitempty" name:"TokenValidation"`
+
+	// 1表示开启了禁用嵌套功能
+	DisableMultiJson *uint64 `json:"DisableMultiJson,omitnil,omitempty" name:"DisableMultiJson"`
 }
 
 type CCRuleData struct {
@@ -4025,6 +4056,12 @@ type CreateRateLimitV2ResponseParams struct {
 	// 操作结果
 	BaseInfo *RateLimitCommonRsp `json:"BaseInfo,omitnil,omitempty" name:"BaseInfo"`
 
+	// 创建规则的ruleID
+	LimitRuleID *int64 `json:"LimitRuleID,omitnil,omitempty" name:"LimitRuleID"`
+
+	// 所属域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4052,10 +4089,10 @@ type CronJob struct {
 	// 每个星期的星期几执行
 	WDays []*uint64 `json:"WDays,omitnil,omitempty" name:"WDays"`
 
-	// 开始时间
+	// 开始时间戳
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间戳
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -4065,6 +4102,35 @@ type DealData struct {
 
 	// 大订单号，一个大订单号下可以有多个子订单，说明是同一次下单[{},{}]
 	BigDealId *string `json:"BigDealId,omitnil,omitempty" name:"BigDealId"`
+}
+
+type DedicatedIPPkg struct {
+	// 资源id
+	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 地域
+	Region *int64 `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 开始时间
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 申请数量
+	InquireNum *int64 `json:"InquireNum,omitnil,omitempty" name:"InquireNum"`
+
+	// 使用数量
+	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
+
+	// 续费标志
+	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 计费项
+	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
 }
 
 // Predefined struct for user
@@ -6013,6 +6079,9 @@ type DescribeApiDetailResponseParams struct {
 	// 请求样例，json字符串格式
 	Log *string `json:"Log,omitnil,omitempty" name:"Log"`
 
+	// 完整请求样例
+	FullReqLog *string `json:"FullReqLog,omitnil,omitempty" name:"FullReqLog"`
+
 	// 请求参数样例列表
 	ParameterList []*ApiParameterType `json:"ParameterList,omitnil,omitempty" name:"ParameterList"`
 
@@ -6904,7 +6973,7 @@ type DescribeBotIdRuleRequestParams struct {
 	// 风险等级筛选
 	Level []*int64 `json:"Level,omitnil,omitempty" name:"Level"`
 
-	// 规则类型筛选
+	// 规则类型筛选"cbe-01": "爬虫型BOT", 	"cbe-02": "刷量型BOT", 	"cbe-03": "账号穷举型BOT", 	"cbe-04": "恶意扫描型BOT", 	"cbe-05": "DDoS型BOT", 	"cbe-06": "垃圾邮件发送型BOT", 	"cbe-07": "社交媒体自动化型BOT", 	"cbe-08": "竞争对手数据收集型BOT", 	"cbe-09": "恶意软件传播型BOT"
 	BotIdType []*string `json:"BotIdType,omitnil,omitempty" name:"BotIdType"`
 
 	// 规则开关-用于筛选: 0-全部 1-关闭 2-开启
@@ -6932,7 +7001,7 @@ type DescribeBotIdRuleRequest struct {
 	// 风险等级筛选
 	Level []*int64 `json:"Level,omitnil,omitempty" name:"Level"`
 
-	// 规则类型筛选
+	// 规则类型筛选"cbe-01": "爬虫型BOT", 	"cbe-02": "刷量型BOT", 	"cbe-03": "账号穷举型BOT", 	"cbe-04": "恶意扫描型BOT", 	"cbe-05": "DDoS型BOT", 	"cbe-06": "垃圾邮件发送型BOT", 	"cbe-07": "社交媒体自动化型BOT", 	"cbe-08": "竞争对手数据收集型BOT", 	"cbe-09": "恶意软件传播型BOT"
 	BotIdType []*string `json:"BotIdType,omitnil,omitempty" name:"BotIdType"`
 
 	// 规则开关-用于筛选: 0-全部 1-关闭 2-开启
@@ -7218,6 +7287,9 @@ type DescribeBotSceneUCBRuleRequestParams struct {
 
 	// 规则id
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// batch表示批量规则、scene表示场景规则，不传表示全部
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 }
 
 type DescribeBotSceneUCBRuleRequest struct {
@@ -7255,6 +7327,9 @@ type DescribeBotSceneUCBRuleRequest struct {
 
 	// 规则id
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// batch表示批量规则、scene表示场景规则，不传表示全部
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 }
 
 func (r *DescribeBotSceneUCBRuleRequest) ToJsonString() string {
@@ -7280,6 +7355,7 @@ func (r *DescribeBotSceneUCBRuleRequest) FromJsonString(s string) error {
 	delete(f, "TimerType")
 	delete(f, "ValidStatus")
 	delete(f, "RuleId")
+	delete(f, "Source")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBotSceneUCBRuleRequest has unknown keys!", "")
 	}
@@ -9864,7 +9940,7 @@ type DescribeOwaspRulesRequestParams struct {
 	// 每页容量，默认为10
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段，支持 RuleId, UpdateTime
+	// 排序字段，支持 RuleId, ModifyTime
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
 	// 排序方式，支持asc、desc
@@ -9886,7 +9962,7 @@ type DescribeOwaspRulesRequest struct {
 	// 每页容量，默认为10
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序字段，支持 RuleId, UpdateTime
+	// 排序字段，支持 RuleId, ModifyTime
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
 	// 排序方式，支持asc、desc
@@ -12422,6 +12498,9 @@ type DomainInfo struct {
 
 	// 域名标签
 	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// saaswaf独享ip状态，0是关闭，1是开启，2是开启中
+	PrivateVipStatus *int64 `json:"PrivateVipStatus,omitnil,omitempty" name:"PrivateVipStatus"`
 }
 
 type DomainPackageNew struct {
@@ -12700,6 +12779,9 @@ type DomainsPartInfo struct {
 	// 8：绑定LB失败 
 	// 10：内部错误
 	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// saaswaf独享ip状态，0是关闭状态，1是开启状态，2是开启中
+	PrivateVipStatus *int64 `json:"PrivateVipStatus,omitnil,omitempty" name:"PrivateVipStatus"`
 }
 
 type DownloadAttackRecordInfo struct {
@@ -12905,6 +12987,10 @@ type FieldWriteConfig struct {
 
 	// 1:开启 0:不开启
 	EnableBot *int64 `json:"EnableBot,omitnil,omitempty" name:"EnableBot"`
+
+	// 响应方向body
+	// 1:开启 0:不开启
+	EnableResponse *int64 `json:"EnableResponse,omitnil,omitempty" name:"EnableResponse"`
 }
 
 type FilterCls struct {
@@ -13845,6 +13931,15 @@ func (r *ImportIpAccessControlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ImportIpAccessControlResponseParams struct {
+	// 成功导入数量
+	SuccessCount *int64 `json:"SuccessCount,omitnil,omitempty" name:"SuccessCount"`
+
+	// 导入数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 执行时间
+	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -13937,6 +14032,12 @@ type InOutputBotUCBRule struct {
 
 	// 惩罚时间
 	DelayTime *int64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
+
+	// 是否为批量规则：0表示场景规则，1表示批量规则
+	Batch *int64 `json:"Batch,omitnil,omitempty" name:"Batch"`
+
+	// 24小时内命中数
+	HitCount *uint64 `json:"HitCount,omitnil,omitempty" name:"HitCount"`
 }
 
 type InOutputUCBRuleEntry struct {
@@ -14144,6 +14245,12 @@ type InstanceInfo struct {
 
 	// BOT安全监测资源信息
 	BotMonitorPkg *BotMonitorPkg `json:"BotMonitorPkg,omitnil,omitempty" name:"BotMonitorPkg"`
+
+	// 独享ip资源信息
+	DedicatedIPPkg *DedicatedIPPkg `json:"DedicatedIPPkg,omitnil,omitempty" name:"DedicatedIPPkg"`
+
+	// 已经配置独享ip的数量
+	DedicatedIPCount *int64 `json:"DedicatedIPCount,omitnil,omitempty" name:"DedicatedIPCount"`
 }
 
 type IpAccessControlData struct {
@@ -14210,6 +14317,15 @@ type IpAccessControlParam struct {
 
 	// 备注
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
+
+	// 任务类型（TimedJob/CronJob）
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 任务时间配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 生效状态
+	ValidStatus *int64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
 }
 
 type IpHitItem struct {
@@ -14769,6 +14885,9 @@ type MiniPkg struct {
 
 	// 计费项
 	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
+
+	// 小程序网关类型 1新网关；0老网关
+	GatewayType *uint64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 }
 
 // Predefined struct for user
@@ -15287,6 +15406,12 @@ type ModifyApiSecSensitiveRuleRequestParams struct {
 
 	// 自定义事件规则
 	ApiSecCustomEventRuleRule *ApiSecCustomEventRule `json:"ApiSecCustomEventRuleRule,omitnil,omitempty" name:"ApiSecCustomEventRuleRule"`
+
+	// 无效api排除规则
+	CustomApiExcludeRule *ApiSecExcludeRule `json:"CustomApiExcludeRule,omitnil,omitempty" name:"CustomApiExcludeRule"`
+
+	// 批量操作的时候的无效api排除规则
+	ApiExcludeRuleName []*string `json:"ApiExcludeRuleName,omitnil,omitempty" name:"ApiExcludeRuleName"`
 }
 
 type ModifyApiSecSensitiveRuleRequest struct {
@@ -15330,6 +15455,12 @@ type ModifyApiSecSensitiveRuleRequest struct {
 
 	// 自定义事件规则
 	ApiSecCustomEventRuleRule *ApiSecCustomEventRule `json:"ApiSecCustomEventRuleRule,omitnil,omitempty" name:"ApiSecCustomEventRuleRule"`
+
+	// 无效api排除规则
+	CustomApiExcludeRule *ApiSecExcludeRule `json:"CustomApiExcludeRule,omitnil,omitempty" name:"CustomApiExcludeRule"`
+
+	// 批量操作的时候的无效api排除规则
+	ApiExcludeRuleName []*string `json:"ApiExcludeRuleName,omitnil,omitempty" name:"ApiExcludeRuleName"`
 }
 
 func (r *ModifyApiSecSensitiveRuleRequest) ToJsonString() string {
@@ -15357,6 +15488,8 @@ func (r *ModifyApiSecSensitiveRuleRequest) FromJsonString(s string) error {
 	delete(f, "ApiSecSceneRule")
 	delete(f, "ApiSecCustomEventRuleNameList")
 	delete(f, "ApiSecCustomEventRuleRule")
+	delete(f, "CustomApiExcludeRule")
+	delete(f, "ApiExcludeRuleName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApiSecSensitiveRuleRequest has unknown keys!", "")
 	}
@@ -17854,7 +17987,7 @@ type ModifyObjectRequestParams struct {
 	// 改动作类型:Status修改开关，InstanceId绑定实例, Proxy设置代理状态
 	OpType *string `json:"OpType,omitnil,omitempty" name:"OpType"`
 
-	// 新的Waf开关状态，如果和已有状态相同认为修改成功
+	// 新的Waf开关状态，如果和已有状态相同认为修改成功。状态可以为0或1
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 新的实例ID，如果和已绑定的实例相同认为修改成功
@@ -17882,7 +18015,7 @@ type ModifyObjectRequest struct {
 	// 改动作类型:Status修改开关，InstanceId绑定实例, Proxy设置代理状态
 	OpType *string `json:"OpType,omitnil,omitempty" name:"OpType"`
 
-	// 新的Waf开关状态，如果和已有状态相同认为修改成功
+	// 新的Waf开关状态，如果和已有状态相同认为修改成功。状态可以为0或1
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 新的实例ID，如果和已绑定的实例相同认为修改成功
@@ -19981,6 +20114,9 @@ type PostCLSFlowInfo struct {
 
 	// CLS日志集合ID
 	LogTopicID *string `json:"LogTopicID,omitnil,omitempty" name:"LogTopicID"`
+
+	// 写配置
+	WriteConfig *FieldWriteConfig `json:"WriteConfig,omitnil,omitempty" name:"WriteConfig"`
 }
 
 type ProductInfo struct {
@@ -21613,6 +21749,12 @@ type UpdateRateLimitV2ResponseParams struct {
 	// 操作结果
 	BaseInfo *RateLimitCommonRsp `json:"BaseInfo,omitnil,omitempty" name:"BaseInfo"`
 
+	// 操作的规则ID
+	LimitRuleID *int64 `json:"LimitRuleID,omitnil,omitempty" name:"LimitRuleID"`
+
+	// 所属域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -21780,6 +21922,18 @@ type UpsertCCRuleRequestParams struct {
 
 	// 规则来源
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// forever
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 无
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 0
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 有效性
+	ValidStatus *int64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
 }
 
 type UpsertCCRuleRequest struct {
@@ -21859,6 +22013,18 @@ type UpsertCCRuleRequest struct {
 
 	// 规则来源
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// forever
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 无
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 0
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 有效性
+	ValidStatus *int64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
 }
 
 func (r *UpsertCCRuleRequest) ToJsonString() string {
@@ -21898,6 +22064,10 @@ func (r *UpsertCCRuleRequest) FromJsonString(s string) error {
 	delete(f, "PageId")
 	delete(f, "ActionRatio")
 	delete(f, "Source")
+	delete(f, "JobType")
+	delete(f, "JobDateTime")
+	delete(f, "ExpireTime")
+	delete(f, "ValidStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpsertCCRuleRequest has unknown keys!", "")
 	}

@@ -344,6 +344,9 @@ const (
 	// 共享成员不存在。
 	FAILEDOPERATION_SHAREMEMBERNOTEXIST = "FailedOperation.ShareMemberNotExist"
 
+	// 部门在共享单元中。
+	FAILEDOPERATION_SHARENODEEXISTED = "FailedOperation.ShareNodeExisted"
+
 	// 成员正在使用共享资源。
 	FAILEDOPERATION_SHARERESOURCEMEMBERINUSE = "FailedOperation.ShareResourceMemberInUse"
 

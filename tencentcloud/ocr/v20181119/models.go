@@ -979,7 +979,7 @@ func (r *BusInvoiceOCRResponse) FromJsonString(s string) error {
 
 type BusinessCardInfo struct {
 	// 识别出的字段名称（关键字，可能重复，比如多个手机），能识别的字段名为：
-	// 姓名、英文姓名、英文地址、公司、英文公司、职位、英文职位、部门、英文部门、手机、电话、传真、社交帐号、QQ、MSN、微信、微博、邮箱、邮编、网址、公司账号、其他。
+	// 姓名、英文姓名、英文地址、公司、英文公司、职位、英文职位、部门、英文部门、手机、电话、传真、社交账号、QQ、MSN、微信、微博、邮箱、邮编、网址、公司账号、其他。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段name对应的字符串结果。
@@ -4988,7 +4988,20 @@ type IDCardOCRRequestParams struct {
 	// 该参数如果不填，将为您自动判断身份证正反面。
 	CardSide *string `json:"CardSide,omitnil,omitempty" name:"CardSide"`
 
-	// 以下可选字段均为bool 类型，默认false：CropIdCard，身份证照片裁剪（去掉证件外多余的边缘、自动矫正拍摄角度）CropPortrait，人像照片裁剪（自动抠取身份证头像区域）CopyWarn，复印件告警BorderCheckWarn，边框和框内遮挡告警ReshootWarn，翻拍告警DetectPsWarn，疑似存在PS痕迹告警（CardWarnType参数为 Advanced时同时开启电子身份证告警）TempIdWarn，临时身份证告警InvalidDateWarn，身份证有效日期不合法告警Quality，图片质量分数（评价图片的模糊程度）MultiCardDetect，是否开启正反面同框识别（仅支持二代身份证正反页同框识别或临时身份证正反页同框识别）ReflectWarn，是否开启反光检测SDK 设置方式参考：Config = Json.stringify({"CropIdCard":true,"CropPortrait":true})API 3.0 Explorer 设置方式参考：Config = {"CropIdCard":true,"CropPortrait":true}
+	// 以下可选字段均为bool 类型，默认false：
+	// CropIdCard，身份证照片裁剪（去掉证件外多余的边缘、自动矫正拍摄角度）
+	// CropPortrait，人像照片裁剪（自动抠取身份证头像区域）
+	// CopyWarn，复印件告警
+	// BorderCheckWarn，边框不完整和框内遮挡告警
+	// ReshootWarn，屏幕翻拍告警
+	// DetectPsWarn，疑似存在PS痕迹告警（CardWarnType参数为 Advanced时同时开启电子身份证告警）
+	// TempIdWarn，临时身份证告警
+	// InvalidDateWarn，身份证有效日期不合法告警
+	// Quality，图片质量分数（评价图片的模糊程度）
+	// MultiCardDetect，是否开启正反面同框识别（仅支持二代身份证正反页同框识别或临时身份证正反页同框识别）
+	// ReflectWarn，是否开启反光检测
+	// SDK 设置方式参考：Config = Json.stringify({"CropIdCard":true,"CropPortrait":true})
+	// API 3.0 Explorer 设置方式参考：Config = {"CropIdCard":true,"CropPortrait":true}
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 
 	// 默认值为true，打开识别结果纠正开关。开关开启后，身份证号、出生日期、性别，三个字段会进行矫正补齐，统一结果输出；若关闭此开关，以上三个字段不会进行矫正补齐，保持原始识别结果输出，若原图出现篡改情况，这三个字段的识别结果可能会不统一。
@@ -5022,7 +5035,20 @@ type IDCardOCRRequest struct {
 	// 该参数如果不填，将为您自动判断身份证正反面。
 	CardSide *string `json:"CardSide,omitnil,omitempty" name:"CardSide"`
 
-	// 以下可选字段均为bool 类型，默认false：CropIdCard，身份证照片裁剪（去掉证件外多余的边缘、自动矫正拍摄角度）CropPortrait，人像照片裁剪（自动抠取身份证头像区域）CopyWarn，复印件告警BorderCheckWarn，边框和框内遮挡告警ReshootWarn，翻拍告警DetectPsWarn，疑似存在PS痕迹告警（CardWarnType参数为 Advanced时同时开启电子身份证告警）TempIdWarn，临时身份证告警InvalidDateWarn，身份证有效日期不合法告警Quality，图片质量分数（评价图片的模糊程度）MultiCardDetect，是否开启正反面同框识别（仅支持二代身份证正反页同框识别或临时身份证正反页同框识别）ReflectWarn，是否开启反光检测SDK 设置方式参考：Config = Json.stringify({"CropIdCard":true,"CropPortrait":true})API 3.0 Explorer 设置方式参考：Config = {"CropIdCard":true,"CropPortrait":true}
+	// 以下可选字段均为bool 类型，默认false：
+	// CropIdCard，身份证照片裁剪（去掉证件外多余的边缘、自动矫正拍摄角度）
+	// CropPortrait，人像照片裁剪（自动抠取身份证头像区域）
+	// CopyWarn，复印件告警
+	// BorderCheckWarn，边框不完整和框内遮挡告警
+	// ReshootWarn，屏幕翻拍告警
+	// DetectPsWarn，疑似存在PS痕迹告警（CardWarnType参数为 Advanced时同时开启电子身份证告警）
+	// TempIdWarn，临时身份证告警
+	// InvalidDateWarn，身份证有效日期不合法告警
+	// Quality，图片质量分数（评价图片的模糊程度）
+	// MultiCardDetect，是否开启正反面同框识别（仅支持二代身份证正反页同框识别或临时身份证正反页同框识别）
+	// ReflectWarn，是否开启反光检测
+	// SDK 设置方式参考：Config = Json.stringify({"CropIdCard":true,"CropPortrait":true})
+	// API 3.0 Explorer 设置方式参考：Config = {"CropIdCard":true,"CropPortrait":true}
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 
 	// 默认值为true，打开识别结果纠正开关。开关开启后，身份证号、出生日期、性别，三个字段会进行矫正补齐，统一结果输出；若关闭此开关，以上三个字段不会进行矫正补齐，保持原始识别结果输出，若原图出现篡改情况，这三个字段的识别结果可能会不统一。
@@ -5092,7 +5118,22 @@ type IDCardOCRResponseParams struct {
 	// 证件有效期（国徽面）
 	ValidDate *string `json:"ValidDate,omitnil,omitempty" name:"ValidDate"`
 
-	// 扩展信息，不请求则不返回，具体输入参考示例3和示例4。 IdCard，裁剪后身份证照片的base64编码，请求 Config.CropIdCard 时返回； Portrait，身份证头像照片的base64编码，请求 Config.CropPortrait 时返回； Quality，图片质量分数，请求 Config.Quality 时返回（取值范围：0 ~ 100，分数越低越模糊，建议阈值≥50）; BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0 ~ 100，分数越低边框遮挡可能性越低，建议阈值≤50）; WarnInfos，告警信息，Code 告警码列表和释义： -9101 身份证边框不完整告警， -9102 身份证复印件告警（黑白及彩色复印件）, -9108 身份证复印件告警（仅黑白复印件）， -9103 身份证翻拍告警， -9105 身份证框内遮挡告警， -9104 临时身份证告警， -9106 身份证疑似存在PS痕迹告警， -9107 身份证反光告警。
+	// 扩展信息，不请求则不返回，具体输入参考示例3和示例4。
+	// IdCard，裁剪后身份证照片的base64编码，请求 Config.CropIdCard 时返回；
+	// Portrait，身份证头像照片的base64编码，请求 Config.CropPortrait 时返回；
+	// Quality，图片质量分数，请求 Config.Quality 时返回（取值范围：0 ~ 100，分数越低越模糊，建议阈值≥50）;
+	// BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0 ~ 100，分数越低边框遮挡可能性越低，建议阈值≤50）;
+	// WarnInfos，告警信息，Code 告警码列表和释义：
+	// -9100 身份证有效日期不合法告警，
+	// -9101 身份证边框不完整告警，
+	// -9102 身份证复印件告警（黑白及彩色复印件）,
+	// -9108 身份证复印件告警（仅黑白复印件），
+	// -9103 身份证翻拍告警，
+	// -9105 身份证框内遮挡告警，
+	// -9104 临时身份证告警，
+	// -9106 身份证疑似存在PS痕迹告警，
+	// -9107 身份证反光告警，
+	// -9110 电子身份证告警
 	AdvancedInfo *string `json:"AdvancedInfo,omitnil,omitempty" name:"AdvancedInfo"`
 
 	// 反光点覆盖区域详情结果，具体内容请点击左侧链接
@@ -7451,7 +7492,10 @@ type QuestionSplitLayoutOCRRequestParams struct {
 	// 是否开启切边增强和弯曲矫正,默认为false不开启
 	EnableImageCrop *bool `json:"EnableImageCrop,omitnil,omitempty" name:"EnableImageCrop"`
 
-	// false: 使用当前默认模型  true: 使用新的多模态推理模型，速度更快推理效果更强，仅 `EnableOnlyDetectBorder` 为 `true` 时生效，公测中
+	// false: 使用当前默认模型返回结构化信息更全面，但检测精度一般
+	// true:  使用多模态推理模型，速度更快精度更高，但只返回题目最外层边框
+	// 
+	// API默认false, demo默认使用的是true
 	UseNewModel *bool `json:"UseNewModel,omitnil,omitempty" name:"UseNewModel"`
 }
 
@@ -7473,7 +7517,10 @@ type QuestionSplitLayoutOCRRequest struct {
 	// 是否开启切边增强和弯曲矫正,默认为false不开启
 	EnableImageCrop *bool `json:"EnableImageCrop,omitnil,omitempty" name:"EnableImageCrop"`
 
-	// false: 使用当前默认模型  true: 使用新的多模态推理模型，速度更快推理效果更强，仅 `EnableOnlyDetectBorder` 为 `true` 时生效，公测中
+	// false: 使用当前默认模型返回结构化信息更全面，但检测精度一般
+	// true:  使用多模态推理模型，速度更快精度更高，但只返回题目最外层边框
+	// 
+	// API默认false, demo默认使用的是true
 	UseNewModel *bool `json:"UseNewModel,omitnil,omitempty" name:"UseNewModel"`
 }
 
@@ -7546,7 +7593,10 @@ type QuestionSplitOCRRequestParams struct {
 	// 是否只返回检测框，默认false
 	EnableOnlyDetectBorder *bool `json:"EnableOnlyDetectBorder,omitnil,omitempty" name:"EnableOnlyDetectBorder"`
 
-	// false: 使用当前默认模型  true: 使用新的多模态推理模型，速度更快推理效果更强，仅 `EnableOnlyDetectBorder` 为 `true` 时生效，公测中
+	// false: 使用当前默认模型(结构化信息更全面，但手写答案坐标精度一般)  
+	// true:  使用多模态推理模型，推理效果更强（题目框选、手写答案坐标定位能力更优，但不返回题目选项和题目类型信息）
+	// 
+	// API默认false, demo默认使用的是true
 	UseNewModel *bool `json:"UseNewModel,omitnil,omitempty" name:"UseNewModel"`
 }
 
@@ -7571,7 +7621,10 @@ type QuestionSplitOCRRequest struct {
 	// 是否只返回检测框，默认false
 	EnableOnlyDetectBorder *bool `json:"EnableOnlyDetectBorder,omitnil,omitempty" name:"EnableOnlyDetectBorder"`
 
-	// false: 使用当前默认模型  true: 使用新的多模态推理模型，速度更快推理效果更强，仅 `EnableOnlyDetectBorder` 为 `true` 时生效，公测中
+	// false: 使用当前默认模型(结构化信息更全面，但手写答案坐标精度一般)  
+	// true:  使用多模态推理模型，推理效果更强（题目框选、手写答案坐标定位能力更优，但不返回题目选项和题目类型信息）
+	// 
+	// API默认false, demo默认使用的是true
 	UseNewModel *bool `json:"UseNewModel,omitnil,omitempty" name:"UseNewModel"`
 }
 
@@ -7951,7 +8004,20 @@ type RecognizeEncryptedIDCardOCRRequestParams struct {
 	// 该参数如果不填，将为您自动判断身份证正反面。
 	CardSide *string `json:"CardSide,omitnil,omitempty" name:"CardSide"`
 
-	// 以下可选字段均为bool 类型，默认false：CropIdCard，身份证照片裁剪（去掉证件外多余的边缘、自动矫正拍摄角度）CropPortrait，人像照片裁剪（自动抠取身份证头像区域）CopyWarn，复印件告警BorderCheckWarn，边框和框内遮挡告警ReshootWarn，DetectPsWarn，疑似存在PS痕迹告警（CardWarnType参数为 Advanced时同时开启电子身份证告警）TempIdWarn，临时身份证告警InvalidDateWarn，身份证有效日期不合法告警Quality，图片质量分数（评价图片的模糊程度）MultiCardDetect，是否开启正反面同框识别（仅支持二代身份证正反页同框识别或临时身份证正反页同框识别）ReflectWarn，是否开启反光检测SDK 设置方式参考：Config = Json.stringify({"CropIdCard":true,"CropPortrait":true})API 3.0 Explorer 设置方式参考：Config = {"CropIdCard":true,"CropPortrait":true}
+	// 以下可选字段均为bool 类型，默认false：
+	// CropIdCard，身份证照片裁剪（去掉证件外多余的边缘、自动矫正拍摄角度）
+	// CropPortrait，人像照片裁剪（自动抠取身份证头像区域）
+	// CopyWarn，复印件告警
+	// BorderCheckWarn，边框不完整和框内遮挡告警
+	// ReshootWarn，屏幕翻拍告警
+	// DetectPsWarn，疑似存在PS痕迹告警（CardWarnType参数为 Advanced时同时开启电子身份证告警）
+	// TempIdWarn，临时身份证告警
+	// InvalidDateWarn，身份证有效日期不合法告警
+	// Quality，图片质量分数（评价图片的模糊程度）
+	// MultiCardDetect，是否开启正反面同框识别（仅支持二代身份证正反页同框识别或临时身份证正反页同框识别）
+	// ReflectWarn，是否开启反光检测
+	// SDK 设置方式参考：Config = Json.stringify({"CropIdCard":true,"CropPortrait":true})
+	// API 3.0 Explorer 设置方式参考：Config = {"CropIdCard":true,"CropPortrait":true}
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 
 	// 默认值为true，打开识别结果纠正开关。开关开启后，身份证号、出生日期、性别，三个字段会进行矫正补齐，统一结果输出；若关闭此开关，以上三个字段不会进行矫正补齐，保持原始识别结果输出，若原图出现篡改情况，这三个字段的识别结果可能会不统一。
@@ -7986,7 +8052,20 @@ type RecognizeEncryptedIDCardOCRRequest struct {
 	// 该参数如果不填，将为您自动判断身份证正反面。
 	CardSide *string `json:"CardSide,omitnil,omitempty" name:"CardSide"`
 
-	// 以下可选字段均为bool 类型，默认false：CropIdCard，身份证照片裁剪（去掉证件外多余的边缘、自动矫正拍摄角度）CropPortrait，人像照片裁剪（自动抠取身份证头像区域）CopyWarn，复印件告警BorderCheckWarn，边框和框内遮挡告警ReshootWarn，DetectPsWarn，疑似存在PS痕迹告警（CardWarnType参数为 Advanced时同时开启电子身份证告警）TempIdWarn，临时身份证告警InvalidDateWarn，身份证有效日期不合法告警Quality，图片质量分数（评价图片的模糊程度）MultiCardDetect，是否开启正反面同框识别（仅支持二代身份证正反页同框识别或临时身份证正反页同框识别）ReflectWarn，是否开启反光检测SDK 设置方式参考：Config = Json.stringify({"CropIdCard":true,"CropPortrait":true})API 3.0 Explorer 设置方式参考：Config = {"CropIdCard":true,"CropPortrait":true}
+	// 以下可选字段均为bool 类型，默认false：
+	// CropIdCard，身份证照片裁剪（去掉证件外多余的边缘、自动矫正拍摄角度）
+	// CropPortrait，人像照片裁剪（自动抠取身份证头像区域）
+	// CopyWarn，复印件告警
+	// BorderCheckWarn，边框不完整和框内遮挡告警
+	// ReshootWarn，屏幕翻拍告警
+	// DetectPsWarn，疑似存在PS痕迹告警（CardWarnType参数为 Advanced时同时开启电子身份证告警）
+	// TempIdWarn，临时身份证告警
+	// InvalidDateWarn，身份证有效日期不合法告警
+	// Quality，图片质量分数（评价图片的模糊程度）
+	// MultiCardDetect，是否开启正反面同框识别（仅支持二代身份证正反页同框识别或临时身份证正反页同框识别）
+	// ReflectWarn，是否开启反光检测
+	// SDK 设置方式参考：Config = Json.stringify({"CropIdCard":true,"CropPortrait":true})
+	// API 3.0 Explorer 设置方式参考：Config = {"CropIdCard":true,"CropPortrait":true}
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 
 	// 默认值为true，打开识别结果纠正开关。开关开启后，身份证号、出生日期、性别，三个字段会进行矫正补齐，统一结果输出；若关闭此开关，以上三个字段不会进行矫正补齐，保持原始识别结果输出，若原图出现篡改情况，这三个字段的识别结果可能会不统一。
@@ -8054,7 +8133,22 @@ type RecognizeEncryptedIDCardOCRResponseParams struct {
 	// 证件有效期（国徽面）
 	ValidDate *string `json:"ValidDate,omitnil,omitempty" name:"ValidDate"`
 
-	// 扩展信息，不请求则不返回，具体输入参考示例3和示例4。IdCard，裁剪后身份证照片的base64编码，请求 Config.CropIdCard 时返回；Portrait，身份证头像照片的base64编码，请求 Config.CropPortrait 时返回；Quality，图片质量分数，请求 Config.Quality 时返回（取值范围：0 ~ 100，分数越低越模糊，建议阈值≥50）;BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0 ~ 100，分数越低边框遮挡可能性越低，建议阈值≤50）;WarnInfos，告警信息，Code 告警码列表和释义：-9100 身份证有效日期不合法告警，-9101 身份证边框不完整告警，-9102 身份证复印件告警（黑白及彩色复印件）,-9108 身份证复印件告警（仅黑白复印件），-9103 身份证翻拍告警，-9105 身份证框内遮挡告警，-9104 临时身份证告警，-9106 身份证疑似存在PS痕迹告警，-9107 身份证反光告警，-9110 电子身份证告警
+	// 扩展信息，不请求则不返回，具体输入参考示例3和示例4。
+	// IdCard，裁剪后身份证照片的base64编码，请求 Config.CropIdCard 时返回；
+	// Portrait，身份证头像照片的base64编码，请求 Config.CropPortrait 时返回；
+	// Quality，图片质量分数，请求 Config.Quality 时返回（取值范围：0 ~ 100，分数越低越模糊，建议阈值≥50）;
+	// BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0 ~ 100，分数越低边框遮挡可能性越低，建议阈值≤50）;
+	// WarnInfos，告警信息，Code 告警码列表和释义：
+	// -9100 身份证有效日期不合法告警，
+	// -9101 身份证边框不完整告警，
+	// -9102 身份证复印件告警（黑白及彩色复印件）,
+	// -9108 身份证复印件告警（仅黑白复印件），
+	// -9103 身份证翻拍告警，
+	// -9105 身份证框内遮挡告警，
+	// -9104 临时身份证告警，
+	// -9106 身份证疑似存在PS痕迹告警，
+	// -9107 身份证反光告警，
+	// -9110 电子身份证告警
 	AdvancedInfo *string `json:"AdvancedInfo,omitnil,omitempty" name:"AdvancedInfo"`
 
 	// 反光点覆盖区域详情结果，具体内容请点击左侧链接

@@ -2493,6 +2493,58 @@ func (c *Client) DescribeExtensionsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeFlashSMSListRequest() (request *DescribeFlashSMSListRequest) {
+    request = &DescribeFlashSMSListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeFlashSMSList")
+    
+    
+    return
+}
+
+func NewDescribeFlashSMSListResponse() (response *DescribeFlashSMSListResponse) {
+    response = &DescribeFlashSMSListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFlashSMSList
+// 获取闪信记录列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeFlashSMSList(request *DescribeFlashSMSListRequest) (response *DescribeFlashSMSListResponse, err error) {
+    return c.DescribeFlashSMSListWithContext(context.Background(), request)
+}
+
+// DescribeFlashSMSList
+// 获取闪信记录列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeFlashSMSListWithContext(ctx context.Context, request *DescribeFlashSMSListRequest) (response *DescribeFlashSMSListResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlashSMSListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ccc", APIVersion, "DescribeFlashSMSList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlashSMSList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFlashSMSListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeIMCdrListRequest() (request *DescribeIMCdrListRequest) {
     request = &DescribeIMCdrListRequest{
         BaseRequest: &tchttp.BaseRequest{},

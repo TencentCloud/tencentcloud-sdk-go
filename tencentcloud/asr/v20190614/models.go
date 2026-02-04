@@ -3041,39 +3041,45 @@ func (r *VoicePrintDeleteResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type VoicePrintEnrollRequestParams struct {
-	// 音频格式 0: pcm, 1: wav
+	// <p>音频格式 0: pcm, 1: wav</p>
 	VoiceFormat *int64 `json:"VoiceFormat,omitnil,omitempty" name:"VoiceFormat"`
 
-	// 音频采样率，目前支持16000，单位：Hz，必填
+	// <p>音频采样率，目前支持16000，单位：Hz，必填</p>
 	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
-	// 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M
+	// <p>音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 说话人昵称  不超过32字节
+	// <p>说话人昵称  不超过32字节</p>
 	SpeakerNick *string `json:"SpeakerNick,omitnil,omitempty" name:"SpeakerNick"`
 
-	// 分组id, 仅支持大小写字母和下划线的组合，不超过128个字符
+	// <p>分组id, 仅支持大小写字母和下划线的组合，不超过128个字符</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// <p>声纹cos url 注意:仅支持腾讯云cos url 地址</p>
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
 }
 
 type VoicePrintEnrollRequest struct {
 	*tchttp.BaseRequest
 	
-	// 音频格式 0: pcm, 1: wav
+	// <p>音频格式 0: pcm, 1: wav</p>
 	VoiceFormat *int64 `json:"VoiceFormat,omitnil,omitempty" name:"VoiceFormat"`
 
-	// 音频采样率，目前支持16000，单位：Hz，必填
+	// <p>音频采样率，目前支持16000，单位：Hz，必填</p>
 	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
-	// 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M
+	// <p>音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 说话人昵称  不超过32字节
+	// <p>说话人昵称  不超过32字节</p>
 	SpeakerNick *string `json:"SpeakerNick,omitnil,omitempty" name:"SpeakerNick"`
 
-	// 分组id, 仅支持大小写字母和下划线的组合，不超过128个字符
+	// <p>分组id, 仅支持大小写字母和下划线的组合，不超过128个字符</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// <p>声纹cos url 注意:仅支持腾讯云cos url 地址</p>
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
 }
 
 func (r *VoicePrintEnrollRequest) ToJsonString() string {
@@ -3093,6 +3099,7 @@ func (r *VoicePrintEnrollRequest) FromJsonString(s string) error {
 	delete(f, "Data")
 	delete(f, "SpeakerNick")
 	delete(f, "GroupId")
+	delete(f, "AudioUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoicePrintEnrollRequest has unknown keys!", "")
 	}
@@ -3101,7 +3108,7 @@ func (r *VoicePrintEnrollRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type VoicePrintEnrollResponseParams struct {
-	// 说话人基本数据
+	// <p>说话人基本数据</p>
 	Data *VoicePrintBaseData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3211,39 +3218,45 @@ func (r *VoicePrintGroupVerifyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type VoicePrintUpdateRequestParams struct {
-	// 音频格式 0: pcm, 1: wav
+	// <p>音频格式 0: pcm, 1: wav</p>
 	VoiceFormat *int64 `json:"VoiceFormat,omitnil,omitempty" name:"VoiceFormat"`
 
-	// 音频采样率 目前仅支持16000 单位Hz
+	// <p>音频采样率 目前仅支持16000 单位Hz</p>
 	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
-	// 说话人id， 说话人唯一标识
+	// <p>说话人id， 说话人唯一标识</p>
 	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
 
-	// 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M	
+	// <p>音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 说话人昵称  不超过32字节
+	// <p>说话人昵称  不超过32字节</p>
 	SpeakerNick *string `json:"SpeakerNick,omitnil,omitempty" name:"SpeakerNick"`
+
+	// <p>声纹cos url 注意:仅支持腾讯云cos url 地址</p>
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
 }
 
 type VoicePrintUpdateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 音频格式 0: pcm, 1: wav
+	// <p>音频格式 0: pcm, 1: wav</p>
 	VoiceFormat *int64 `json:"VoiceFormat,omitnil,omitempty" name:"VoiceFormat"`
 
-	// 音频采样率 目前仅支持16000 单位Hz
+	// <p>音频采样率 目前仅支持16000 单位Hz</p>
 	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
-	// 说话人id， 说话人唯一标识
+	// <p>说话人id， 说话人唯一标识</p>
 	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
 
-	// 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M	
+	// <p>音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 说话人昵称  不超过32字节
+	// <p>说话人昵称  不超过32字节</p>
 	SpeakerNick *string `json:"SpeakerNick,omitnil,omitempty" name:"SpeakerNick"`
+
+	// <p>声纹cos url 注意:仅支持腾讯云cos url 地址</p>
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
 }
 
 func (r *VoicePrintUpdateRequest) ToJsonString() string {
@@ -3263,6 +3276,7 @@ func (r *VoicePrintUpdateRequest) FromJsonString(s string) error {
 	delete(f, "VoicePrintId")
 	delete(f, "Data")
 	delete(f, "SpeakerNick")
+	delete(f, "AudioUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoicePrintUpdateRequest has unknown keys!", "")
 	}
@@ -3271,7 +3285,7 @@ func (r *VoicePrintUpdateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type VoicePrintUpdateResponseParams struct {
-	// 说话人基础数据
+	// <p>说话人基础数据</p>
 	Data *VoicePrintBaseData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3310,33 +3324,39 @@ type VoicePrintVerifyData struct {
 
 // Predefined struct for user
 type VoicePrintVerifyRequestParams struct {
-	// 音频格式 0: pcm, 1: wav
+	// <p>音频格式 0: pcm, 1: wav</p>
 	VoiceFormat *int64 `json:"VoiceFormat,omitnil,omitempty" name:"VoiceFormat"`
 
-	// 音频采样率，目前支持16000，单位：Hz，必填
+	// <p>音频采样率，目前支持16000，单位：Hz，必填</p>
 	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
-	// 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M	
+	// <p>说话人id, 说话人唯一标识</p>
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// <p>音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 说话人id, 说话人唯一标识
-	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+	// <p>声纹cos url 注意:仅支持腾讯云cos url 地址</p>
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
 }
 
 type VoicePrintVerifyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 音频格式 0: pcm, 1: wav
+	// <p>音频格式 0: pcm, 1: wav</p>
 	VoiceFormat *int64 `json:"VoiceFormat,omitnil,omitempty" name:"VoiceFormat"`
 
-	// 音频采样率，目前支持16000，单位：Hz，必填
+	// <p>音频采样率，目前支持16000，单位：Hz，必填</p>
 	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
-	// 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M	
+	// <p>说话人id, 说话人唯一标识</p>
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// <p>音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 说话人id, 说话人唯一标识
-	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+	// <p>声纹cos url 注意:仅支持腾讯云cos url 地址</p>
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
 }
 
 func (r *VoicePrintVerifyRequest) ToJsonString() string {
@@ -3353,8 +3373,9 @@ func (r *VoicePrintVerifyRequest) FromJsonString(s string) error {
 	}
 	delete(f, "VoiceFormat")
 	delete(f, "SampleRate")
-	delete(f, "Data")
 	delete(f, "VoicePrintId")
+	delete(f, "Data")
+	delete(f, "AudioUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoicePrintVerifyRequest has unknown keys!", "")
 	}
@@ -3363,7 +3384,7 @@ func (r *VoicePrintVerifyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type VoicePrintVerifyResponseParams struct {
-	// 说话人验证数据
+	// <p>说话人验证数据</p>
 	Data *VoicePrintVerifyData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

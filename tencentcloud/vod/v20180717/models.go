@@ -1974,10 +1974,21 @@ type AigcImageOutputConfig struct {
 	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 生成图片的分辨率。可选值为 720P、1080P、2K、4K、1024x1024、2048x2048、2304x1728、2496x1664、2560x1440、3024x1296、4096x4096、4694x3520、4992x3328、5404x3040、6198x2656。
+	// 生成图片的分辨率。
+	// 
+	// * GEM 2.5 可选值：1K、2K、4K；
+	// * GEM 3.0 可选值：1K、2K、4K；
+	// * Vidu q2 可选值：1080p、2K、4K，默认1080p；
+	// * Kling 2.1 可选值：1k、2k；
+	// * Hunyuan 3.0 可选值：768:768、768:1024、1024:768、1024:1024、720:1280、1280:720、768:1280、1280:768，不传默认使用1024:1024。
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 指定所生成图片的宽高比。<li>当 ModelName 是 GEM，可选值是 1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9 和 21:9；</li><li>当 ModelName 是 Qwen，则暂不支持。</li>
+	// 指定所生成图片的宽高比。
+	// <li>当 ModelName 是 GEM，可选值是 1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9 和 21:9；</li>
+	// <li>当 ModelName 是 Qwen，则暂不支持。</li>
+	// <li>当 ModelName 是 Hunyuan，则暂不支持。</li>
+	// <li>当 ModelName 是 Vidu，可选值16:9、9:16、1:1、3:4、4:3、21:9、2:3、3:2。</li>
+	// <li>当 ModelName 是 Kling，可选值16:9、9:16、1:1、4:3、3:4、3:2、2:3、21:9。</li>
 	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
 
 	// 是否允许人物或人脸生成。取值有： <li>AllowAdult：允许生成成人；</li> <li>Disallowed：禁止在图片中包含人物或人脸；</li> 
@@ -4589,15 +4600,22 @@ type CreateAigcImageTaskRequestParams struct {
 	// <li>GEM：Gemini；</li>
 	// <li>Qwen：千问。</li>
 	// <li>Hunyuan：混元。</li>
+	// <li>Vidu：生数。</li>
+	// <li>Kling：可灵。</li>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// 模型版本。取值：
 	// <li>当 ModelName 是 GEM，可选值为 2.5、3.0；</li>
 	// <li>当 ModelName 是 Qwen，可选值为 0925；</li>
 	// <li>当 ModelName 是 Hunyuan，可选值为 3.0；</li>
+	// <li>当 ModelName 是 Vidu，可选值为 q2；</li>
+	// <li>当 ModelName 是 Kling，可选值为 2.1；</li>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// AIGC 生图任务的输入图片的文件信息。默认只支持指定1个，使用模型 GEM 时，版本2.5最多指定3个，版本3.0最多指定14个。
+	// AIGC 生图任务的输入图片的文件信息。默认只支持指定1个。下列模型可传多张参考图：
+	// * GEM 2.5：0～3张图片；
+	// * GEM 3.0：0～14张图片；
+	// * Vidu q2：0～7张图片，图片支持 png、jpeg、jpg、webp格式，图片像素不能小于 128x128，且比例需要小于1:4或4:1；
 	FileInfos []*AigcImageTaskInputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
 	// 生成图片的提示词。当 FileInfos 为空时，此参数必填。
@@ -4635,15 +4653,22 @@ type CreateAigcImageTaskRequest struct {
 	// <li>GEM：Gemini；</li>
 	// <li>Qwen：千问。</li>
 	// <li>Hunyuan：混元。</li>
+	// <li>Vidu：生数。</li>
+	// <li>Kling：可灵。</li>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// 模型版本。取值：
 	// <li>当 ModelName 是 GEM，可选值为 2.5、3.0；</li>
 	// <li>当 ModelName 是 Qwen，可选值为 0925；</li>
 	// <li>当 ModelName 是 Hunyuan，可选值为 3.0；</li>
+	// <li>当 ModelName 是 Vidu，可选值为 q2；</li>
+	// <li>当 ModelName 是 Kling，可选值为 2.1；</li>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// AIGC 生图任务的输入图片的文件信息。默认只支持指定1个，使用模型 GEM 时，版本2.5最多指定3个，版本3.0最多指定14个。
+	// AIGC 生图任务的输入图片的文件信息。默认只支持指定1个。下列模型可传多张参考图：
+	// * GEM 2.5：0～3张图片；
+	// * GEM 3.0：0～14张图片；
+	// * Vidu q2：0～7张图片，图片支持 png、jpeg、jpg、webp格式，图片像素不能小于 128x128，且比例需要小于1:4或4:1；
 	FileInfos []*AigcImageTaskInputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
 	// 生成图片的提示词。当 FileInfos 为空时，此参数必填。

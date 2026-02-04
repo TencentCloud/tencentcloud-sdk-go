@@ -397,6 +397,56 @@ func (c *Client) DescribeApmAgentWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeApmAllVulCountRequest() (request *DescribeApmAllVulCountRequest) {
+    request = &DescribeApmAllVulCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeApmAllVulCount")
+    
+    
+    return
+}
+
+func NewDescribeApmAllVulCountResponse() (response *DescribeApmAllVulCountResponse) {
+    response = &DescribeApmAllVulCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApmAllVulCount
+// 查询用户所有漏洞信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeApmAllVulCount(request *DescribeApmAllVulCountRequest) (response *DescribeApmAllVulCountResponse, err error) {
+    return c.DescribeApmAllVulCountWithContext(context.Background(), request)
+}
+
+// DescribeApmAllVulCount
+// 查询用户所有漏洞信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeApmAllVulCountWithContext(ctx context.Context, request *DescribeApmAllVulCountRequest) (response *DescribeApmAllVulCountResponse, err error) {
+    if request == nil {
+        request = NewDescribeApmAllVulCountRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "DescribeApmAllVulCount")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApmAllVulCount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApmAllVulCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApmApplicationConfigRequest() (request *DescribeApmApplicationConfigRequest) {
     request = &DescribeApmApplicationConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -727,6 +777,106 @@ func (c *Client) DescribeApmServiceMetricWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeApmServiceMetricResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApmVulnerabilityCountRequest() (request *DescribeApmVulnerabilityCountRequest) {
+    request = &DescribeApmVulnerabilityCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeApmVulnerabilityCount")
+    
+    
+    return
+}
+
+func NewDescribeApmVulnerabilityCountResponse() (response *DescribeApmVulnerabilityCountResponse) {
+    response = &DescribeApmVulnerabilityCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApmVulnerabilityCount
+// 查询漏洞指标
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeApmVulnerabilityCount(request *DescribeApmVulnerabilityCountRequest) (response *DescribeApmVulnerabilityCountResponse, err error) {
+    return c.DescribeApmVulnerabilityCountWithContext(context.Background(), request)
+}
+
+// DescribeApmVulnerabilityCount
+// 查询漏洞指标
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeApmVulnerabilityCountWithContext(ctx context.Context, request *DescribeApmVulnerabilityCountRequest) (response *DescribeApmVulnerabilityCountResponse, err error) {
+    if request == nil {
+        request = NewDescribeApmVulnerabilityCountRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "DescribeApmVulnerabilityCount")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApmVulnerabilityCount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApmVulnerabilityCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApmVulnerabilityDetailRequest() (request *DescribeApmVulnerabilityDetailRequest) {
+    request = &DescribeApmVulnerabilityDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeApmVulnerabilityDetail")
+    
+    
+    return
+}
+
+func NewDescribeApmVulnerabilityDetailResponse() (response *DescribeApmVulnerabilityDetailResponse) {
+    response = &DescribeApmVulnerabilityDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApmVulnerabilityDetail
+// 查询漏洞详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeApmVulnerabilityDetail(request *DescribeApmVulnerabilityDetailRequest) (response *DescribeApmVulnerabilityDetailResponse, err error) {
+    return c.DescribeApmVulnerabilityDetailWithContext(context.Background(), request)
+}
+
+// DescribeApmVulnerabilityDetail
+// 查询漏洞详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeApmVulnerabilityDetailWithContext(ctx context.Context, request *DescribeApmVulnerabilityDetailRequest) (response *DescribeApmVulnerabilityDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeApmVulnerabilityDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "DescribeApmVulnerabilityDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApmVulnerabilityDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApmVulnerabilityDetailResponse()
     err = c.Send(request, response)
     return
 }
@@ -1135,6 +1285,56 @@ func (c *Client) DescribeMetricRecordsWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeMetricRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOPRAllVulCountRequest() (request *DescribeOPRAllVulCountRequest) {
+    request = &DescribeOPRAllVulCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeOPRAllVulCount")
+    
+    
+    return
+}
+
+func NewDescribeOPRAllVulCountResponse() (response *DescribeOPRAllVulCountResponse) {
+    response = &DescribeOPRAllVulCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeOPRAllVulCount
+// 查询用户所有漏洞信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeOPRAllVulCount(request *DescribeOPRAllVulCountRequest) (response *DescribeOPRAllVulCountResponse, err error) {
+    return c.DescribeOPRAllVulCountWithContext(context.Background(), request)
+}
+
+// DescribeOPRAllVulCount
+// 查询用户所有漏洞信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeOPRAllVulCountWithContext(ctx context.Context, request *DescribeOPRAllVulCountRequest) (response *DescribeOPRAllVulCountResponse, err error) {
+    if request == nil {
+        request = NewDescribeOPRAllVulCountRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "DescribeOPRAllVulCount")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOPRAllVulCount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOPRAllVulCountResponse()
     err = c.Send(request, response)
     return
 }

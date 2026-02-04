@@ -18246,6 +18246,12 @@ type OutputRisk struct {
 	// 审查出的PDF段落位置信息
 	Positions []*PositionInfo `json:"Positions,omitnil,omitempty" name:"Positions"`
 
+	// 是否已修订
+	IsMark *bool `json:"IsMark,omitnil,omitempty" name:"IsMark"`
+
+	// 是否已忽略
+	IsIgnore *bool `json:"IsIgnore,omitnil,omitempty" name:"IsIgnore"`
+
 	// 审查依据
 	RiskBasis *string `json:"RiskBasis,omitnil,omitempty" name:"RiskBasis"`
 
@@ -18266,6 +18272,9 @@ type OutputRisk struct {
 
 	// 创建时间
 	CreatedOn *int64 `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
+
+	// 风险等级别名
+	RiskLevelAliasName *string `json:"RiskLevelAliasName,omitnil,omitempty" name:"RiskLevelAliasName"`
 }
 
 type PdfVerifyResult struct {

@@ -3599,7 +3599,13 @@ func NewIDCardOCRResponse() (response *IDCardOCRResponse) {
 //
 //         <tr>
 //
-//           <td>身份证边框不完整告警</td>
+//          <td>身份证有效日期不合法告警</td>
+//
+//         </tr> 
+//
+//         <tr>
+//
+//          <td>身份证边框不完整告警</td>
 //
 //         </tr>
 //
@@ -3718,7 +3724,13 @@ func (c *Client) IDCardOCR(request *IDCardOCRRequest) (response *IDCardOCRRespon
 //
 //         <tr>
 //
-//           <td>身份证边框不完整告警</td>
+//          <td>身份证有效日期不合法告警</td>
+//
+//         </tr> 
+//
+//         <tr>
+//
+//          <td>身份证边框不完整告警</td>
 //
 //         </tr>
 //
@@ -4851,7 +4863,7 @@ func NewQuestionSplitLayoutOCRResponse() (response *QuestionSplitLayoutOCRRespon
 }
 
 // QuestionSplitLayoutOCR
-// 试卷切题（仅检测）可将整页练习册、试卷或教辅中的题目进行自动切题，返回试题边框和题目元素的坐标位置。
+// 试卷切题（仅检测）可将整页练习册、试卷或教辅中的题目进行自动切题，返回试题边框的坐标位置。新客户请注意UseNewMode的选择。
 //
 // 
 //
@@ -4873,7 +4885,7 @@ func (c *Client) QuestionSplitLayoutOCR(request *QuestionSplitLayoutOCRRequest) 
 }
 
 // QuestionSplitLayoutOCR
-// 试卷切题（仅检测）可将整页练习册、试卷或教辅中的题目进行自动切题，返回试题边框和题目元素的坐标位置。
+// 试卷切题（仅检测）可将整页练习册、试卷或教辅中的题目进行自动切题，返回试题边框的坐标位置。新客户请注意UseNewMode的选择。
 //
 // 
 //
@@ -4927,7 +4939,7 @@ func NewQuestionSplitOCRResponse() (response *QuestionSplitOCRResponse) {
 }
 
 // QuestionSplitOCR
-// 试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置。
+// 试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置。新接入客户请注意UseNewModel选择
 //
 // 
 //
@@ -4949,7 +4961,7 @@ func (c *Client) QuestionSplitOCR(request *QuestionSplitOCRRequest) (response *Q
 }
 
 // QuestionSplitOCR
-// 试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置。
+// 试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置。新接入客户请注意UseNewModel选择
 //
 // 
 //
@@ -5199,7 +5211,7 @@ func NewRecognizeEncryptedIDCardOCRResponse() (response *RecognizeEncryptedIDCar
 //
 //           <td rowspan="9">告警功能</td>
 //
-//           <td>身份证有效日期不合法，即有效日期不符合5年、10年、20年、长期期限
+//           <td>身份证有效日期不合法
 //
 // 
 //
@@ -5328,7 +5340,7 @@ func (c *Client) RecognizeEncryptedIDCardOCR(request *RecognizeEncryptedIDCardOC
 //
 //           <td rowspan="9">告警功能</td>
 //
-//           <td>身份证有效日期不合法，即有效日期不符合5年、10年、20年、长期期限
+//           <td>身份证有效日期不合法
 //
 // 
 //

@@ -977,6 +977,9 @@ type Cluster struct {
 
 	// 本地专用集群Id
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
+
+	// 集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行
+	IsHighAvailability *bool `json:"IsHighAvailability,omitnil,omitempty" name:"IsHighAvailability"`
 }
 
 type ClusterAdvancedSettings struct {
@@ -1051,6 +1054,9 @@ type ClusterAdvancedSettings struct {
 
 	// 区分共享网卡多IP模式和独立网卡模式，共享网卡多 IP 模式填写"tke-route-eni"，独立网卡模式填写"tke-direct-eni"，默认为共享网卡模式
 	VpcCniType *string `json:"VpcCniType,omitnil,omitempty" name:"VpcCniType"`
+
+	// 集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行，默认为true
+	IsHighAvailability *bool `json:"IsHighAvailability,omitnil,omitempty" name:"IsHighAvailability"`
 }
 
 type ClusterAsGroup struct {
@@ -17691,6 +17697,9 @@ type ModifyClusterAttributeRequestParams struct {
 
 	// 集群属性
 	ClusterProperty *ClusterProperty `json:"ClusterProperty,omitnil,omitempty" name:"ClusterProperty"`
+
+	// 集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行
+	IsHighAvailability *bool `json:"IsHighAvailability,omitnil,omitempty" name:"IsHighAvailability"`
 }
 
 type ModifyClusterAttributeRequest struct {
@@ -17719,6 +17728,9 @@ type ModifyClusterAttributeRequest struct {
 
 	// 集群属性
 	ClusterProperty *ClusterProperty `json:"ClusterProperty,omitnil,omitempty" name:"ClusterProperty"`
+
+	// 集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行
+	IsHighAvailability *bool `json:"IsHighAvailability,omitnil,omitempty" name:"IsHighAvailability"`
 }
 
 func (r *ModifyClusterAttributeRequest) ToJsonString() string {
@@ -17741,6 +17753,7 @@ func (r *ModifyClusterAttributeRequest) FromJsonString(s string) error {
 	delete(f, "AutoUpgradeClusterLevel")
 	delete(f, "QGPUShareEnable")
 	delete(f, "ClusterProperty")
+	delete(f, "IsHighAvailability")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterAttributeRequest has unknown keys!", "")
 	}
@@ -17769,6 +17782,9 @@ type ModifyClusterAttributeResponseParams struct {
 
 	// 集群属性
 	ClusterProperty *ClusterProperty `json:"ClusterProperty,omitnil,omitempty" name:"ClusterProperty"`
+
+	// 集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行
+	IsHighAvailability *bool `json:"IsHighAvailability,omitnil,omitempty" name:"IsHighAvailability"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

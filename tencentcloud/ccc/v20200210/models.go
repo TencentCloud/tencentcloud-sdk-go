@@ -26,6 +26,9 @@ type AIAgentInfo struct {
 
 	// 智能体名称
 	AIAgentName *string `json:"AIAgentName,omitnil,omitempty" name:"AIAgentName"`
+
+	// 智能体变量名列表
+	VariableNames []*string `json:"VariableNames,omitnil,omitempty" name:"VariableNames"`
 }
 
 type AIAnalysisResult struct {
@@ -4484,6 +4487,122 @@ func (r *DescribeExtensionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeFlashSMSListRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 起始时间戳，Unix 秒级时间戳，最大支持近180天。
+	StartTimestamp *int64 `json:"StartTimestamp,omitnil,omitempty" name:"StartTimestamp"`
+
+	// 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
+	EndTimestamp *int64 `json:"EndTimestamp,omitnil,omitempty" name:"EndTimestamp"`
+
+	// 闪信投递号码（被叫号码）
+	DeliveryNumber *string `json:"DeliveryNumber,omitnil,omitempty" name:"DeliveryNumber"`
+
+	// 呼叫关联的系统号码
+	ServingNumber *string `json:"ServingNumber,omitnil,omitempty" name:"ServingNumber"`
+
+	// 会话 ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 投递结果 1 为成功，其他为失败
+	DeliveryStatus *int64 `json:"DeliveryStatus,omitnil,omitempty" name:"DeliveryStatus"`
+
+	// 分页大小，默认 20，最大 100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页页码，从 0 开始
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+}
+
+type DescribeFlashSMSListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 起始时间戳，Unix 秒级时间戳，最大支持近180天。
+	StartTimestamp *int64 `json:"StartTimestamp,omitnil,omitempty" name:"StartTimestamp"`
+
+	// 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
+	EndTimestamp *int64 `json:"EndTimestamp,omitnil,omitempty" name:"EndTimestamp"`
+
+	// 闪信投递号码（被叫号码）
+	DeliveryNumber *string `json:"DeliveryNumber,omitnil,omitempty" name:"DeliveryNumber"`
+
+	// 呼叫关联的系统号码
+	ServingNumber *string `json:"ServingNumber,omitnil,omitempty" name:"ServingNumber"`
+
+	// 会话 ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 投递结果 1 为成功，其他为失败
+	DeliveryStatus *int64 `json:"DeliveryStatus,omitnil,omitempty" name:"DeliveryStatus"`
+
+	// 分页大小，默认 20，最大 100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 分页页码，从 0 开始
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+}
+
+func (r *DescribeFlashSMSListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlashSMSListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "StartTimestamp")
+	delete(f, "EndTimestamp")
+	delete(f, "DeliveryNumber")
+	delete(f, "ServingNumber")
+	delete(f, "SessionId")
+	delete(f, "DeliveryStatus")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlashSMSListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFlashSMSListResponseParams struct {
+	// 记录总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 闪信记录列表
+	FlashSMSList []*FlashSMSRecord `json:"FlashSMSList,omitnil,omitempty" name:"FlashSMSList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFlashSMSListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFlashSMSListResponseParams `json:"Response"`
+}
+
+func (r *DescribeFlashSMSListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlashSMSListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeIMCdrListRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -6299,6 +6418,29 @@ type Filter struct {
 
 	// 筛选条件值
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type FlashSMSRecord struct {
+	// 会话 ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 闪信投递号码（被叫）
+	DeliveryNumber *string `json:"DeliveryNumber,omitnil,omitempty" name:"DeliveryNumber"`
+
+	// 呼叫关联的系统号码
+	ServingNumber *string `json:"ServingNumber,omitnil,omitempty" name:"ServingNumber"`
+
+	// 投递状态，1 表示成功，其他表示失败
+	DeliveryStatus *int64 `json:"DeliveryStatus,omitnil,omitempty" name:"DeliveryStatus"`
+
+	// 投递失败原因
+	DeliveryMessage *string `json:"DeliveryMessage,omitnil,omitempty" name:"DeliveryMessage"`
+
+	// 投递时间戳，Unix 秒级时间戳
+	DeliveryTimestamp *int64 `json:"DeliveryTimestamp,omitnil,omitempty" name:"DeliveryTimestamp"`
+
+	// 送达时间（送达成功），Unix 秒级时间戳
+	ArriveTimestamp *int64 `json:"ArriveTimestamp,omitnil,omitempty" name:"ArriveTimestamp"`
 }
 
 // Predefined struct for user

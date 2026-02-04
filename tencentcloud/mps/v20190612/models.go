@@ -586,11 +586,11 @@ type AiAnalysisResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoComprehensionTask *AiAnalysisTaskVideoComprehensionResult `json:"VideoComprehensionTask,omitnil,omitempty" name:"VideoComprehensionTask"`
 
-	// 视频内容分析抠图任务的查询结果，当任务类型为Cutout时有效。
+	// 视频内容分析智能抠图任务的查询结果，当任务类型为Cutout时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CutoutTask *AiAnalysisTaskCutoutResult `json:"CutoutTask,omitnil,omitempty" name:"CutoutTask"`
 
-	// 视频内容分析成片任务的查询结果，当任务类型为Reel时有效。
+	// 视频内容分析AI解说二创任务的查询结果，当任务类型为Reel时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReelTask *AiAnalysisTaskReelResult `json:"ReelTask,omitnil,omitempty" name:"ReelTask"`
 }
@@ -972,13 +972,20 @@ type AiAnalysisTaskReelInput struct {
 }
 
 type AiAnalysisTaskReelOutput struct {
-	// 成片视频路径。
+	// 解说视频路径。
 	VideoPath *string `json:"VideoPath,omitnil,omitempty" name:"VideoPath"`
+
+	// 解说视频路径列表。
+	// 
+	// **注意**：
+	// 1. 当返回一个文件时，`VideoPath `返回一个文件路径，`VideoPaths `也会填充同样路径的一个元素。
+	// 2. 当返回多个文件时，`VideoPath `返回为空字符串，`VideoPaths `返回多文件路径列表。
+	VideoPaths []*string `json:"VideoPaths,omitnil,omitempty" name:"VideoPaths"`
 
 	// 脚本文件路径
 	ScriptPath *string `json:"ScriptPath,omitnil,omitempty" name:"ScriptPath"`
 
-	// 成片视频存储位置。
+	// 解说视频存储位置。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 }
 
@@ -992,10 +999,10 @@ type AiAnalysisTaskReelResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 智能成片任务输入。
+	// AI解说二创任务输入。
 	Input *AiAnalysisTaskReelInput `json:"Input,omitnil,omitempty" name:"Input"`
 
-	// 智能成片任务输出。
+	// AI解说二创任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskReelOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
@@ -1087,6 +1094,12 @@ type AiAnalysisTaskVideoComprehensionInput struct {
 type AiAnalysisTaskVideoComprehensionOutput struct {
 	// 视频（音频）理解内容详情
 	VideoComprehensionAnalysisResult *string `json:"VideoComprehensionAnalysisResult,omitnil,omitempty" name:"VideoComprehensionAnalysisResult"`
+
+	// 视频（音频）理解扩展信息
+	VideoComprehensionExtInfo *string `json:"VideoComprehensionExtInfo,omitnil,omitempty" name:"VideoComprehensionExtInfo"`
+
+	// 视频分镜理解结果
+	VideoComprehensionResultList []*VideoComprehensionResultItem `json:"VideoComprehensionResultList,omitnil,omitempty" name:"VideoComprehensionResultList"`
 }
 
 type AiAnalysisTaskVideoComprehensionResult struct {
@@ -2839,7 +2852,7 @@ type BatchProcessMediaRequestParams struct {
 	InputInfo []*MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
 
 	// 媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。
-	// 注意：当InputInfo.Type为URL时，该参数是必填项
+	// 注意：当InputInfo.Type为URL时，该参数是必填项，目前只支持COS输出
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
 	// 媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
@@ -2858,7 +2871,7 @@ type BatchProcessMediaRequestParams struct {
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 
-	// 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+	// 资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 是否跳过元信息获取，可选值： 
@@ -2875,7 +2888,7 @@ type BatchProcessMediaRequest struct {
 	InputInfo []*MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
 
 	// 媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。
-	// 注意：当InputInfo.Type为URL时，该参数是必填项
+	// 注意：当InputInfo.Type为URL时，该参数是必填项，目前只支持COS输出
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
 	// 媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
@@ -2894,7 +2907,7 @@ type BatchProcessMediaRequest struct {
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 
-	// 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+	// 资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 是否跳过元信息获取，可选值： 
@@ -3214,6 +3227,9 @@ type BlindWatermarkTemplate struct {
 
 	// 数字水印模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 数字水印强度。 default: 默认，高清画质和抗性平衡 stronger:画质清晰，抗性较强 strongest:画质一般，抗性最强
+	Strength *string `json:"Strength,omitnil,omitempty" name:"Strength"`
 }
 
 type ClassificationConfigureInfo struct {
@@ -4835,6 +4851,12 @@ type CreateBlindWatermarkTemplateRequestParams struct {
 
 	// 数字水印模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 数字水印强度。
+	// default: 默认，高清画质和抗性平衡
+	// stronger:画质清晰，抗性较强
+	// strongest:画质一般，抗性最强
+	Strength *string `json:"Strength,omitnil,omitempty" name:"Strength"`
 }
 
 type CreateBlindWatermarkTemplateRequest struct {
@@ -4851,6 +4873,12 @@ type CreateBlindWatermarkTemplateRequest struct {
 
 	// 数字水印模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 数字水印强度。
+	// default: 默认，高清画质和抗性平衡
+	// stronger:画质清晰，抗性较强
+	// strongest:画质一般，抗性最强
+	Strength *string `json:"Strength,omitnil,omitempty" name:"Strength"`
 }
 
 func (r *CreateBlindWatermarkTemplateRequest) ToJsonString() string {
@@ -4869,6 +4897,7 @@ func (r *CreateBlindWatermarkTemplateRequest) FromJsonString(s string) error {
 	delete(f, "TextContent")
 	delete(f, "Name")
 	delete(f, "Comment")
+	delete(f, "Strength")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBlindWatermarkTemplateRequest has unknown keys!", "")
 	}
@@ -13724,7 +13753,7 @@ func (r *DescribeTranscodeTemplatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUsageDataRequestParams struct {
-	// 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 起始日期。使用 ISO 日期格式。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
@@ -13770,7 +13799,7 @@ type DescribeUsageDataRequestParams struct {
 type DescribeUsageDataRequest struct {
 	*tchttp.BaseRequest
 	
-	// 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// 起始日期。使用 ISO 日期格式。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
@@ -16308,6 +16337,44 @@ type LiveScheduleTask struct {
 	LiveActivityResultSet []*LiveActivityResult `json:"LiveActivityResultSet,omitnil,omitempty" name:"LiveActivityResultSet"`
 }
 
+type LiveSmartSubtitleResult struct {
+	// 识别文本。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 翻译片段起始的 PTS 时间，单位：秒。
+	StartPTSTime *float64 `json:"StartPTSTime,omitnil,omitempty" name:"StartPTSTime"`
+
+	// 翻译片段终止的 PTS 时间，单位：秒。
+	EndPTSTime *float64 `json:"EndPTSTime,omitnil,omitempty" name:"EndPTSTime"`
+
+	// 翻译文本。
+	Trans *string `json:"Trans,omitnil,omitempty" name:"Trans"`
+
+	// 翻译开始UTC时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 翻译结束UTC时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 稳态标记。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SteadyState *bool `json:"SteadyState,omitnil,omitempty" name:"SteadyState"`
+
+	// websocket与trtc实时翻译的UserId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+type LiveSmartSubtitlesTaskInput struct {
+	// 智能字幕模板 ID 。	
+	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 用户扩展字段，一般场景不用填。
+	UserExtPara *string `json:"UserExtPara,omitnil,omitempty" name:"UserExtPara"`
+}
+
 type LiveStreamAiAnalysisResultInfo struct {
 	// 直播分析子任务结果，支持：
 	// <li>直播拆条</li>
@@ -16553,6 +16620,11 @@ type LiveStreamAiReviewVoicePornResult struct {
 	// 视频鉴黄结果标签，取值范围：
 	// <li>sexual_moan：呻吟。</li>
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+}
+
+type LiveStreamAiSmartSubtitleResultInfo struct {
+	// 直播智能字幕任务结果列表。
+	SmartSubtitleResult []*LiveSmartSubtitleResult `json:"SmartSubtitleResult,omitnil,omitempty" name:"SmartSubtitleResult"`
 }
 
 type LiveStreamAsrFullTextRecognitionResult struct {
@@ -18217,6 +18289,9 @@ type ModifyBlindWatermarkTemplateRequestParams struct {
 
 	// 数字水印文字内容，长度不超过64个字符，NAGRA水印类型的模板不支持修改文字内容。
 	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
+
+	// 数字水印强度。 default: 默认，高清画质和抗性平衡 stronger:画质清晰，抗性较强 strongest:画质一般，抗性最强
+	Strength *string `json:"Strength,omitnil,omitempty" name:"Strength"`
 }
 
 type ModifyBlindWatermarkTemplateRequest struct {
@@ -18233,6 +18308,9 @@ type ModifyBlindWatermarkTemplateRequest struct {
 
 	// 数字水印文字内容，长度不超过64个字符，NAGRA水印类型的模板不支持修改文字内容。
 	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
+
+	// 数字水印强度。 default: 默认，高清画质和抗性平衡 stronger:画质清晰，抗性较强 strongest:画质一般，抗性最强
+	Strength *string `json:"Strength,omitnil,omitempty" name:"Strength"`
 }
 
 func (r *ModifyBlindWatermarkTemplateRequest) ToJsonString() string {
@@ -18251,6 +18329,7 @@ func (r *ModifyBlindWatermarkTemplateRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Comment")
 	delete(f, "TextContent")
+	delete(f, "Strength")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBlindWatermarkTemplateRequest has unknown keys!", "")
 	}
@@ -21312,6 +21391,7 @@ type ParseLiveStreamProcessNotificationResponseParams struct {
 	// <li>LiveRecordResult：直播录制结果；</li>
 	// <li>AiQualityControlResult：媒体质检结果；</li>
 	// <li>AiAnalysisResult：内容分析结果；</li>
+	// <li>AiSmartSubtitleResult：智能字幕结果；</li>
 	// <li>ProcessEof：直播流处理结束。</li>
 	NotificationType *string `json:"NotificationType,omitnil,omitempty" name:"NotificationType"`
 
@@ -21341,6 +21421,9 @@ type ParseLiveStreamProcessNotificationResponseParams struct {
 	// 直播录制结果，当 NotificationType 为 LiveRecordResult 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LiveRecordResultInfo *LiveStreamRecordResultInfo `json:"LiveRecordResultInfo,omitnil,omitempty" name:"LiveRecordResultInfo"`
+
+	// 智能字幕结果，当 NotificationType 为 AiSmartSubtitleResult 时有效。
+	AiSmartSubtitleResultInfo *LiveStreamAiSmartSubtitleResultInfo `json:"AiSmartSubtitleResultInfo,omitnil,omitempty" name:"AiSmartSubtitleResultInfo"`
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长50个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
@@ -21883,13 +21966,18 @@ type ProcessImageTemplate struct {
 
 // Predefined struct for user
 type ProcessLiveStreamRequestParams struct {
-	// 直播流 URL（必须是直播文件地址，支持 rtmp，hls 和 flv, trtc 等）。
+	// 直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。
 	// trtc地址如下：
 	//  trtc: //trtc.rtc.qq.com/mps/`<roomid>`?sdkappid=`<sdkappid>`&userid=`<userid>`&usersig=<`usersig>`
 	// `<roomid>` 为trtc的房间号id, 为数字
 	// `<sdkappid>` 为trtc的sdk app id
 	// `<userid>` 为服务进入房间的用户id,可以区分谁是机器人
 	// <`usersig>` 为trtc 用户的签名
+	// 
+	// webrtc 支持[LEB](https://cloud.tencent.com/product/leb)的直播流，地址获取请[参考](https://cloud.tencent.com/document/product/267/32720)
+	// 
+	// srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
+	// 
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 任务的事件通知信息，用于指定直播流处理的结果。
@@ -21912,6 +22000,9 @@ type ProcessLiveStreamRequestParams struct {
 
 	// 媒体质检类型任务参数。
 	AiQualityControlTask *AiQualityControlTaskInput `json:"AiQualityControlTask,omitnil,omitempty" name:"AiQualityControlTask"`
+
+	// 智能字幕任务参数。
+	SmartSubtitlesTask *LiveSmartSubtitlesTaskInput `json:"SmartSubtitlesTask,omitnil,omitempty" name:"SmartSubtitlesTask"`
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
@@ -21930,13 +22021,18 @@ type ProcessLiveStreamRequestParams struct {
 type ProcessLiveStreamRequest struct {
 	*tchttp.BaseRequest
 	
-	// 直播流 URL（必须是直播文件地址，支持 rtmp，hls 和 flv, trtc 等）。
+	// 直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。
 	// trtc地址如下：
 	//  trtc: //trtc.rtc.qq.com/mps/`<roomid>`?sdkappid=`<sdkappid>`&userid=`<userid>`&usersig=<`usersig>`
 	// `<roomid>` 为trtc的房间号id, 为数字
 	// `<sdkappid>` 为trtc的sdk app id
 	// `<userid>` 为服务进入房间的用户id,可以区分谁是机器人
 	// <`usersig>` 为trtc 用户的签名
+	// 
+	// webrtc 支持[LEB](https://cloud.tencent.com/product/leb)的直播流，地址获取请[参考](https://cloud.tencent.com/document/product/267/32720)
+	// 
+	// srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
+	// 
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 任务的事件通知信息，用于指定直播流处理的结果。
@@ -21959,6 +22055,9 @@ type ProcessLiveStreamRequest struct {
 
 	// 媒体质检类型任务参数。
 	AiQualityControlTask *AiQualityControlTaskInput `json:"AiQualityControlTask,omitnil,omitempty" name:"AiQualityControlTask"`
+
+	// 智能字幕任务参数。
+	SmartSubtitlesTask *LiveSmartSubtitlesTaskInput `json:"SmartSubtitlesTask,omitnil,omitempty" name:"SmartSubtitlesTask"`
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
@@ -21994,6 +22093,7 @@ func (r *ProcessLiveStreamRequest) FromJsonString(s string) error {
 	delete(f, "AiRecognitionTask")
 	delete(f, "AiAnalysisTask")
 	delete(f, "AiQualityControlTask")
+	delete(f, "SmartSubtitlesTask")
 	delete(f, "SessionId")
 	delete(f, "SessionContext")
 	delete(f, "ScheduleId")
@@ -25732,7 +25832,7 @@ type TaskStatData struct {
 }
 
 type TaskStatDataItem struct {
-	// 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
+	// 数据所在时间区间的开始时间，使用 ISO 日期格式。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 
 	// 任务数。
@@ -27220,6 +27320,23 @@ type VODOutputStorage struct {
 
 	// 点播专业版应用Id
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+}
+
+type VideoComprehensionResultItem struct {
+	// 分镜片段起始时间（单位：秒）
+	StartTime *float64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 分镜片段结束时间（单位：秒）
+	EndTime *float64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分镜片段标题
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 分镜片段信息描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 分镜片段关键词
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 }
 
 type VideoDBEntryTaskResult struct {

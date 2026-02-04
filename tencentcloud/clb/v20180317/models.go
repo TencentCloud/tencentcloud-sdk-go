@@ -1237,7 +1237,7 @@ type CreateListenerRequestParams struct {
 	// <p>监听器最大新增连接数，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。基础网络实例不支持该参数。</p>
 	MaxCps *int64 `json:"MaxCps,omitnil,omitempty" name:"MaxCps"`
 
-	// <p>空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。默认值：TCP监听器默认值为900s，UDP监听器默认值为300s。取值范围：共享型实例和独占型实例支持：10-900，性能容量型实例支持：10-1980。如需设置超过取值范围的值请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>。</p>
+	// <p>空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。默认值：TCP监听器默认值为900s，UDP监听器默认值为300s。取值范围：共享型实例和独占型实例支持：10-900，性能容量型实例支持：10-1980。如需设置超过取值范围的值请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>。</p><p>取值范围：[10, 1980]</p><p>单位：秒</p><p>默认值：900</p><p>TCP监听器默认值为900s，UDP监听器默认值为300s。取值范围：共享型实例和独占型实例支持：10-900，性能容量型实例支持：10-1980。</p>
 	IdleConnectTimeout *int64 `json:"IdleConnectTimeout,omitnil,omitempty" name:"IdleConnectTimeout"`
 
 	// <p>TCP_SSL和QUIC是否支持PP</p>
@@ -1328,7 +1328,7 @@ type CreateListenerRequest struct {
 	// <p>监听器最大新增连接数，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。基础网络实例不支持该参数。</p>
 	MaxCps *int64 `json:"MaxCps,omitnil,omitempty" name:"MaxCps"`
 
-	// <p>空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。默认值：TCP监听器默认值为900s，UDP监听器默认值为300s。取值范围：共享型实例和独占型实例支持：10-900，性能容量型实例支持：10-1980。如需设置超过取值范围的值请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>。</p>
+	// <p>空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。默认值：TCP监听器默认值为900s，UDP监听器默认值为300s。取值范围：共享型实例和独占型实例支持：10-900，性能容量型实例支持：10-1980。如需设置超过取值范围的值请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>。</p><p>取值范围：[10, 1980]</p><p>单位：秒</p><p>默认值：900</p><p>TCP监听器默认值为900s，UDP监听器默认值为300s。取值范围：共享型实例和独占型实例支持：10-900，性能容量型实例支持：10-1980。</p>
 	IdleConnectTimeout *int64 `json:"IdleConnectTimeout,omitnil,omitempty" name:"IdleConnectTimeout"`
 
 	// <p>TCP_SSL和QUIC是否支持PP</p>
@@ -5103,32 +5103,32 @@ func (r *DescribeTargetGroupInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTargetGroupListRequestParams struct {
-	// 目标组ID数组。
+	// <p>目标组ID数组。</p>
 	TargetGroupIds []*string `json:"TargetGroupIds,omitnil,omitempty" name:"TargetGroupIds"`
 
-	// 过滤条件数组，支持TargetGroupVpcId和TargetGroupName。与TargetGroupIds互斥，优先使用目标组ID。
+	// <p>过滤条件数组，支持TargetGroupVpcId和TargetGroupName。与TargetGroupIds互斥，优先使用目标组ID。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 显示的偏移起始量。
+	// <p>显示的偏移起始量。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 显示条数限制，默认为20。
+	// <p>每页显示条目数。</p><p>取值范围：[0, 100]</p><p>默认值：20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeTargetGroupListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 目标组ID数组。
+	// <p>目标组ID数组。</p>
 	TargetGroupIds []*string `json:"TargetGroupIds,omitnil,omitempty" name:"TargetGroupIds"`
 
-	// 过滤条件数组，支持TargetGroupVpcId和TargetGroupName。与TargetGroupIds互斥，优先使用目标组ID。
+	// <p>过滤条件数组，支持TargetGroupVpcId和TargetGroupName。与TargetGroupIds互斥，优先使用目标组ID。</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 显示的偏移起始量。
+	// <p>显示的偏移起始量。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 显示条数限制，默认为20。
+	// <p>每页显示条目数。</p><p>取值范围：[0, 100]</p><p>默认值：20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -5156,10 +5156,10 @@ func (r *DescribeTargetGroupListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTargetGroupListResponseParams struct {
-	// 显示的结果数量。
+	// <p>显示的结果数量。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 显示的目标组信息集合。
+	// <p>显示的目标组信息集合。</p>
 	TargetGroupSet []*TargetGroupInfo `json:"TargetGroupSet,omitnil,omitempty" name:"TargetGroupSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7287,7 +7287,7 @@ type ModifyListenerRequestParams struct {
 	// <p>监听器粒度新建连接数上限，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持。取值范围：1-实例规格新建连接上限，其中-1表示关闭监听器粒度新建连接数限速。基础网络实例不支持该参数。<br>默认为 -1 表示不限速。</p>
 	MaxCps *int64 `json:"MaxCps,omitnil,omitempty" name:"MaxCps"`
 
-	// <p>空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。TCP监听器默认值：900，UDP监听器默认值：300s。取值范围：共享型实例和独占型实例支持：10～900，性能容量型实例支持：10~1980。如需设置超过1980s，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>,最大可设置到3600s。</p>
+	// <p>空闲连接超时时间，此参数仅适用于TCP/UDP监听器。如需设置超过1980s，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>,最大可设置到3600s。</p><p>取值范围：[10, 1980]</p><p>单位：秒</p><p>默认值：900</p><p>TCP监听器默认值：900，UDP监听器默认值：300s。取值范围：共享型实例和独占型实例支持：10～900，性能容量型实例支持：10~1980。</p>
 	IdleConnectTimeout *int64 `json:"IdleConnectTimeout,omitnil,omitempty" name:"IdleConnectTimeout"`
 
 	// <p>TCP_SSL和QUIC是否支持PP</p>
@@ -7363,7 +7363,7 @@ type ModifyListenerRequest struct {
 	// <p>监听器粒度新建连接数上限，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持。取值范围：1-实例规格新建连接上限，其中-1表示关闭监听器粒度新建连接数限速。基础网络实例不支持该参数。<br>默认为 -1 表示不限速。</p>
 	MaxCps *int64 `json:"MaxCps,omitnil,omitempty" name:"MaxCps"`
 
-	// <p>空闲连接超时时间，此参数仅适用于TCP/UDP监听器，单位：秒。TCP监听器默认值：900，UDP监听器默认值：300s。取值范围：共享型实例和独占型实例支持：10～900，性能容量型实例支持：10~1980。如需设置超过1980s，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>,最大可设置到3600s。</p>
+	// <p>空闲连接超时时间，此参数仅适用于TCP/UDP监听器。如需设置超过1980s，请通过 <a href="https://console.cloud.tencent.com/workorder/category">工单申请</a>,最大可设置到3600s。</p><p>取值范围：[10, 1980]</p><p>单位：秒</p><p>默认值：900</p><p>TCP监听器默认值：900，UDP监听器默认值：300s。取值范围：共享型实例和独占型实例支持：10～900，性能容量型实例支持：10~1980。</p>
 	IdleConnectTimeout *int64 `json:"IdleConnectTimeout,omitnil,omitempty" name:"IdleConnectTimeout"`
 
 	// <p>TCP_SSL和QUIC是否支持PP</p>
@@ -9656,73 +9656,67 @@ type TargetGroupHealthCheck struct {
 }
 
 type TargetGroupInfo struct {
-	// 目标组ID
+	// <p>目标组ID</p>
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
-	// 目标组的vpcid
+	// <p>目标组的vpcid</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 目标组的名字
+	// <p>目标组的名字</p>
 	TargetGroupName *string `json:"TargetGroupName,omitnil,omitempty" name:"TargetGroupName"`
 
-	// 目标组的默认端口，全监听目标组此字段返回0，表示无效端口。
+	// <p>目标组的默认端口，全监听目标组此字段返回0，表示无效端口。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 目标组的创建时间
+	// <p>目标组的创建时间</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 目标组的修改时间
+	// <p>目标组的修改时间</p>
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 
-	// 关联到的规则数组。在DescribeTargetGroupList接口调用时无法获取到该参数。
+	// <p>关联到的规则数组。在DescribeTargetGroupList接口调用时无法获取到该参数。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssociatedRule []*AssociationItem `json:"AssociatedRule,omitnil,omitempty" name:"AssociatedRule"`
 
-	// 目标组后端转发协议, 仅v2新版目标组返回有效值。
+	// <p>目标组后端转发协议, 仅v2新版目标组返回有效值。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 调度算法，仅后端转发协议为(HTTP、HTTPS、GRPC)的目标组返回有效值， 可选值：
-	// <ur>
-	// <li>WRR:按权重轮询。</li>
-	// <li>LEAST_CONN:最小连接数。</li>
-	// <li>IP_HASH:按IP哈希。</li>
-	// </ur>
-	// 
+	// <p>调度算法，仅后端转发协议为(HTTP、HTTPS、GRPC)的目标组返回有效值， 可选值：<br><ur></p><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li></ur>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleAlgorithm *string `json:"ScheduleAlgorithm,omitnil,omitempty" name:"ScheduleAlgorithm"`
 
-	// 健康检查详情。
+	// <p>健康检查详情。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthCheck *TargetGroupHealthCheck `json:"HealthCheck,omitnil,omitempty" name:"HealthCheck"`
 
-	// 目标组类型，当前支持v1(旧版目标组), v2(新版目标组)。默认为v1旧版目标组。
+	// <p>目标组类型，当前支持v1(旧版目标组), v2(新版目标组)。默认为v1旧版目标组。</p>
 	TargetGroupType *string `json:"TargetGroupType,omitnil,omitempty" name:"TargetGroupType"`
 
-	// 目标组已关联的规则数。
+	// <p>目标组已关联的规则数。</p>
 	AssociatedRuleCount *int64 `json:"AssociatedRuleCount,omitnil,omitempty" name:"AssociatedRuleCount"`
 
-	// 目标组内的实例数量。
+	// <p>目标组内的实例数量。</p>
 	RegisteredInstancesCount *int64 `json:"RegisteredInstancesCount,omitnil,omitempty" name:"RegisteredInstancesCount"`
 
-	// 标签。
+	// <p>标签。</p>
 	Tag []*TagInfo `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 默认权重。只有v2类型目标组返回该字段。当返回为NULL时， 表示未设置默认权重。
+	// <p>默认权重。只有v2类型目标组返回该字段。当返回为NULL时， 表示未设置默认权重。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// 是否全监听目标组。
+	// <p>是否全监听目标组。</p>
 	FullListenSwitch *bool `json:"FullListenSwitch,omitnil,omitempty" name:"FullListenSwitch"`
 
-	// 是否开启长连接,  仅后端转发协议为HTTP/HTTPS/GRPC目标组返回有效值。
+	// <p>是否开启长连接,  仅后端转发协议为HTTP/HTTPS/GRPC目标组返回有效值。</p>
 	KeepaliveEnable *bool `json:"KeepaliveEnable,omitnil,omitempty" name:"KeepaliveEnable"`
 
-	// 会话保持时间，仅后端转发协议为HTTP/HTTPS/GRPC目标组返回有效值。
+	// <p>会话保持时间，仅后端转发协议为HTTP/HTTPS/GRPC目标组返回有效值。</p>
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 
-	// IP版本。
+	// <p>IP版本。</p>
 	IpVersion *string `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
 }
 

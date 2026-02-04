@@ -1660,6 +1660,9 @@ type CreateTrainingTaskRequestParams struct {
 
 	// 代码仓库配置
 	CodeRepos []*CodeRepoConfig `json:"CodeRepos,omitnil,omitempty" name:"CodeRepos"`
+
+	// 网络暴露配置
+	ExposeNetworkConfig *ExposeNetworkConfig `json:"ExposeNetworkConfig,omitnil,omitempty" name:"ExposeNetworkConfig"`
 }
 
 type CreateTrainingTaskRequest struct {
@@ -1737,6 +1740,9 @@ type CreateTrainingTaskRequest struct {
 
 	// 代码仓库配置
 	CodeRepos []*CodeRepoConfig `json:"CodeRepos,omitnil,omitempty" name:"CodeRepos"`
+
+	// 网络暴露配置
+	ExposeNetworkConfig *ExposeNetworkConfig `json:"ExposeNetworkConfig,omitnil,omitempty" name:"ExposeNetworkConfig"`
 }
 
 func (r *CreateTrainingTaskRequest) ToJsonString() string {
@@ -1775,6 +1781,7 @@ func (r *CreateTrainingTaskRequest) FromJsonString(s string) error {
 	delete(f, "CallbackUrl")
 	delete(f, "EncodedStartCmdInfo")
 	delete(f, "CodeRepos")
+	delete(f, "ExposeNetworkConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrainingTaskRequest has unknown keys!", "")
 	}
@@ -5085,6 +5092,14 @@ type Event struct {
 type ExecAction struct {
 	// 执行命令列表
 	Command []*string `json:"Command,omitnil,omitempty" name:"Command"`
+}
+
+type ExposeNetworkConfig struct {
+	// ssh配置
+	SSHConfig *SSHConfig `json:"SSHConfig,omitnil,omitempty" name:"SSHConfig"`
+
+	// 容器端口暴露到公网配置
+	ExposePortConfig *ExposePortConfig `json:"ExposePortConfig,omitnil,omitempty" name:"ExposePortConfig"`
 }
 
 type ExposePortConfig struct {
@@ -8747,6 +8762,9 @@ type TrainingTaskDetail struct {
 
 	// 任务关联的代码仓库配置
 	CodeRepos []*CodeRepoConfig `json:"CodeRepos,omitnil,omitempty" name:"CodeRepos"`
+
+	// 暴露网络配置
+	ExposeNetworkConfig *ExposeNetworkConfig `json:"ExposeNetworkConfig,omitnil,omitempty" name:"ExposeNetworkConfig"`
 }
 
 type TrainingTaskSetItem struct {
@@ -8917,12 +8935,15 @@ type VolumeMount struct {
 	// cfs的配置信息
 	CFSConfig *CFSConfig `json:"CFSConfig,omitnil,omitempty" name:"CFSConfig"`
 
-	// 挂载源类型，CFS、COS，默认为CFS
+	// 挂载源类型，CFS、COS、PUBLIC_DATA_SOURCE，默认为CFS
 	VolumeSourceType *string `json:"VolumeSourceType,omitnil,omitempty" name:"VolumeSourceType"`
 
 	// 自定义容器内挂载路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MountPath *string `json:"MountPath,omitnil,omitempty" name:"MountPath"`
+
+	// 挂载数据源时的配置信息
+	PublicDataSource *PublicDataSourceFS `json:"PublicDataSource,omitnil,omitempty" name:"PublicDataSource"`
 }
 
 type WeightEntry struct {

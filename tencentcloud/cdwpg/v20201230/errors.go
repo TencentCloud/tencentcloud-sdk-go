@@ -17,9 +17,15 @@ package v20201230
 const (
 	// 此产品的特有错误码
 
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
 	// InternalError.SystemError
 	INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+
+	// 参数错误。
+	INVALIDPARAMETER = "InvalidParameter"
 )

@@ -659,6 +659,20 @@ type ApmTag struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type ApmVulnerabilityServiceDetail struct {
+	// 应用实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceInstance *string `json:"ServiceInstance,omitnil,omitempty" name:"ServiceInstance"`
+
+	// 漏洞所在jar包路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 最近发生时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastOccurTime *int64 `json:"LastOccurTime,omitnil,omitempty" name:"LastOccurTime"`
+}
+
 type AutoProfilingConfig struct {
 	// 自动CPU剖析任务开关
 	CpuProfilingEnable *bool `json:"CpuProfilingEnable,omitnil,omitempty" name:"CpuProfilingEnable"`
@@ -1239,6 +1253,79 @@ func (r *DescribeApmAgentResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeApmAllVulCountRequestParams struct {
+	// 秒级时间戳
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 秒级时间戳
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribeApmAllVulCountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 秒级时间戳
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 秒级时间戳
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeApmAllVulCountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApmAllVulCountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApmAllVulCountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApmAllVulCountResponseParams struct {
+	// 包含漏洞指标以及业务系统个数	
+	VulnerabilityList []*ApmMetricRecord `json:"VulnerabilityList,omitnil,omitempty" name:"VulnerabilityList"`
+
+	// 总漏洞个数
+	VulnerabilityCount *int64 `json:"VulnerabilityCount,omitnil,omitempty" name:"VulnerabilityCount"`
+
+	// 严重漏洞个数
+	ImportantVulnerabilityCount *int64 `json:"ImportantVulnerabilityCount,omitnil,omitempty" name:"ImportantVulnerabilityCount"`
+
+	// 高危漏洞个数
+	CriticalVulnerabilityCount *int64 `json:"CriticalVulnerabilityCount,omitnil,omitempty" name:"CriticalVulnerabilityCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApmAllVulCountResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApmAllVulCountResponseParams `json:"Response"`
+}
+
+func (r *DescribeApmAllVulCountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApmAllVulCountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeApmApplicationConfigRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -1733,6 +1820,181 @@ func (r *DescribeApmServiceMetricResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeApmServiceMetricResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApmVulnerabilityCountRequestParams struct {
+	// APM业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// APM应用名称
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 秒级时间戳
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 秒级时间戳
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 查询的数据类型，攻击检测为“attack_detect”
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type DescribeApmVulnerabilityCountRequest struct {
+	*tchttp.BaseRequest
+	
+	// APM业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// APM应用名称
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 秒级时间戳
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 秒级时间戳
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 查询的数据类型，攻击检测为“attack_detect”
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *DescribeApmVulnerabilityCountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApmVulnerabilityCountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ServiceName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApmVulnerabilityCountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApmVulnerabilityCountResponseParams struct {
+	// 包含漏洞指标以及业务系统个数
+	VulnerabilityList []*ApmMetricRecord `json:"VulnerabilityList,omitnil,omitempty" name:"VulnerabilityList"`
+
+	// 总漏洞个数
+	VulnerabilityCount *int64 `json:"VulnerabilityCount,omitnil,omitempty" name:"VulnerabilityCount"`
+
+	// 严重漏洞个数
+	ImportantVulnerabilityCount *int64 `json:"ImportantVulnerabilityCount,omitnil,omitempty" name:"ImportantVulnerabilityCount"`
+
+	// 高危漏洞个数
+	CriticalVulnerabilityCount *int64 `json:"CriticalVulnerabilityCount,omitnil,omitempty" name:"CriticalVulnerabilityCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApmVulnerabilityCountResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApmVulnerabilityCountResponseParams `json:"Response"`
+}
+
+func (r *DescribeApmVulnerabilityCountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApmVulnerabilityCountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApmVulnerabilityDetailRequestParams struct {
+	// 秒级时间戳
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 秒级时间戳
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// APM业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 条件过滤，必填service.name, instrumentation.name, version, vul.id
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeApmVulnerabilityDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 秒级时间戳
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 秒级时间戳
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// APM业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 条件过滤，必填service.name, instrumentation.name, version, vul.id
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeApmVulnerabilityDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApmVulnerabilityDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "InstanceId")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApmVulnerabilityDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApmVulnerabilityDetailResponseParams struct {
+	// 漏洞详情
+	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 漏洞相关业务系统列表
+	ServiceInstanceList []*ApmVulnerabilityServiceDetail `json:"ServiceInstanceList,omitnil,omitempty" name:"ServiceInstanceList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApmVulnerabilityDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApmVulnerabilityDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeApmVulnerabilityDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApmVulnerabilityDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2367,6 +2629,79 @@ func (r *DescribeMetricRecordsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeMetricRecordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOPRAllVulCountRequestParams struct {
+	// 秒级时间戳
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 秒级时间戳
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribeOPRAllVulCountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 秒级时间戳
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 秒级时间戳
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeOPRAllVulCountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOPRAllVulCountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOPRAllVulCountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOPRAllVulCountResponseParams struct {
+	// 包含漏洞指标以及业务系统个数	
+	VulnerabilityList []*ApmMetricRecord `json:"VulnerabilityList,omitnil,omitempty" name:"VulnerabilityList"`
+
+	// 总漏洞个数
+	VulnerabilityCount *int64 `json:"VulnerabilityCount,omitnil,omitempty" name:"VulnerabilityCount"`
+
+	// 严重漏洞个数
+	ImportantVulnerabilityCount *int64 `json:"ImportantVulnerabilityCount,omitnil,omitempty" name:"ImportantVulnerabilityCount"`
+
+	// 高危漏洞个数
+	CriticalVulnerabilityCount *int64 `json:"CriticalVulnerabilityCount,omitnil,omitempty" name:"CriticalVulnerabilityCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOPRAllVulCountResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOPRAllVulCountResponseParams `json:"Response"`
+}
+
+func (r *DescribeOPRAllVulCountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOPRAllVulCountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -21251,7 +21251,7 @@ type SnapshotBackupConfig struct {
 	// 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600247=604800，最大为158112000
 	ReserveDuration *uint64 `json:"ReserveDuration,omitnil,omitempty" name:"ReserveDuration"`
 
-	// 动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
+	// 自动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
 	BackupTriggerStrategy *string `json:"BackupTriggerStrategy,omitnil,omitempty" name:"BackupTriggerStrategy"`
 }
 

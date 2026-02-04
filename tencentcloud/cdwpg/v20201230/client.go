@@ -212,7 +212,8 @@ func NewDescribeDBParamsResponse() (response *DescribeDBParamsResponse) {
 // 配置描述
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDBParams(request *DescribeDBParamsRequest) (response *DescribeDBParamsResponse, err error) {
     return c.DescribeDBParamsWithContext(context.Background(), request)
 }
@@ -221,7 +222,8 @@ func (c *Client) DescribeDBParams(request *DescribeDBParamsRequest) (response *D
 // 配置描述
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDBParamsWithContext(ctx context.Context, request *DescribeDBParamsRequest) (response *DescribeDBParamsResponse, err error) {
     if request == nil {
         request = NewDescribeDBParamsRequest()
@@ -262,7 +264,8 @@ func NewDescribeErrorLogResponse() (response *DescribeErrorLogResponse) {
 // 查询错误日志
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeErrorLog(request *DescribeErrorLogRequest) (response *DescribeErrorLogResponse, err error) {
     return c.DescribeErrorLogWithContext(context.Background(), request)
 }
@@ -271,7 +274,8 @@ func (c *Client) DescribeErrorLog(request *DescribeErrorLogRequest) (response *D
 // 查询错误日志
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeErrorLogWithContext(ctx context.Context, request *DescribeErrorLogRequest) (response *DescribeErrorLogResponse, err error) {
     if request == nil {
         request = NewDescribeErrorLogRequest()
@@ -312,7 +316,8 @@ func NewDescribeInstanceResponse() (response *DescribeInstanceResponse) {
 // 根据实例ID查询某个实例的具体信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeInstance(request *DescribeInstanceRequest) (response *DescribeInstanceResponse, err error) {
     return c.DescribeInstanceWithContext(context.Background(), request)
 }
@@ -321,7 +326,8 @@ func (c *Client) DescribeInstance(request *DescribeInstanceRequest) (response *D
 // 根据实例ID查询某个实例的具体信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *DescribeInstanceRequest) (response *DescribeInstanceResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceRequest()
@@ -362,7 +368,8 @@ func NewDescribeInstanceInfoResponse() (response *DescribeInstanceInfoResponse) 
 // 获取集群信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeInstanceInfo(request *DescribeInstanceInfoRequest) (response *DescribeInstanceInfoResponse, err error) {
     return c.DescribeInstanceInfoWithContext(context.Background(), request)
 }
@@ -371,7 +378,8 @@ func (c *Client) DescribeInstanceInfo(request *DescribeInstanceInfoRequest) (res
 // 获取集群信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeInstanceInfoWithContext(ctx context.Context, request *DescribeInstanceInfoRequest) (response *DescribeInstanceInfoResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceInfoRequest()
@@ -412,7 +420,8 @@ func NewDescribeInstanceNodesResponse() (response *DescribeInstanceNodesResponse
 // 节点list
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeInstanceNodes(request *DescribeInstanceNodesRequest) (response *DescribeInstanceNodesResponse, err error) {
     return c.DescribeInstanceNodesWithContext(context.Background(), request)
 }
@@ -421,7 +430,8 @@ func (c *Client) DescribeInstanceNodes(request *DescribeInstanceNodesRequest) (r
 // 节点list
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeInstanceNodesWithContext(ctx context.Context, request *DescribeInstanceNodesRequest) (response *DescribeInstanceNodesResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceNodesRequest()
@@ -462,7 +472,8 @@ func NewDescribeInstanceOperationsResponse() (response *DescribeInstanceOperatio
 // 在集群详情页面，拉取该集群的操作
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeInstanceOperations(request *DescribeInstanceOperationsRequest) (response *DescribeInstanceOperationsResponse, err error) {
     return c.DescribeInstanceOperationsWithContext(context.Background(), request)
 }
@@ -471,7 +482,8 @@ func (c *Client) DescribeInstanceOperations(request *DescribeInstanceOperationsR
 // 在集群详情页面，拉取该集群的操作
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeInstanceOperationsWithContext(ctx context.Context, request *DescribeInstanceOperationsRequest) (response *DescribeInstanceOperationsResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceOperationsRequest()
@@ -512,7 +524,8 @@ func NewDescribeInstanceStateResponse() (response *DescribeInstanceStateResponse
 // 集群详情页中显示集群状态、流程进度等
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeInstanceState(request *DescribeInstanceStateRequest) (response *DescribeInstanceStateResponse, err error) {
     return c.DescribeInstanceStateWithContext(context.Background(), request)
 }
@@ -521,7 +534,8 @@ func (c *Client) DescribeInstanceState(request *DescribeInstanceStateRequest) (r
 // 集群详情页中显示集群状态、流程进度等
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeInstanceStateWithContext(ctx context.Context, request *DescribeInstanceStateRequest) (response *DescribeInstanceStateResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceStateRequest()

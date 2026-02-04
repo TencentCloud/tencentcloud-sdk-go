@@ -9651,7 +9651,7 @@ func NewDescribeUsageResponse() (response *DescribeUsageResponse) {
 //
 // 
 //
-// <font color="red">此接口即将下线， 请使用新接口</font>  [查询渠道计费消耗情况](https://qian.tencent.com/developers/partnerApis/fee/ChannelDescribeBillUsageDetail)
+// <font color="red">此接口于 2026 年 2 月 3 日下线</font>， 请使用新接口:<a   href="https://qian.tencent.com/developers/partnerApis/fee/ChannelDescribeBillUsageDetail">查询渠道计费消耗情况 </a>
 //
 // 
 //
@@ -9685,7 +9685,7 @@ func (c *Client) DescribeUsage(request *DescribeUsageRequest) (response *Describ
 //
 // 
 //
-// <font color="red">此接口即将下线， 请使用新接口</font>  [查询渠道计费消耗情况](https://qian.tencent.com/developers/partnerApis/fee/ChannelDescribeBillUsageDetail)
+// <font color="red">此接口于 2026 年 2 月 3 日下线</font>， 请使用新接口:<a   href="https://qian.tencent.com/developers/partnerApis/fee/ChannelDescribeBillUsageDetail">查询渠道计费消耗情况 </a>
 //
 // 
 //

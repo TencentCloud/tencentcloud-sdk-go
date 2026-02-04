@@ -144,6 +144,9 @@ type AggrSoftDeviceRow struct {
 
 	// 0:win 2:mac
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+
+	// 所有权
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 type ComplexRule struct {
@@ -169,6 +172,14 @@ type Condition struct {
 
 	// PageNum 获取第几页(只支持32位)
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 复杂查询规则条件查询项（支持任意层级AND/OR组合）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RulePayload *RulePayload `json:"RulePayload,omitnil,omitempty" name:"RulePayload"`
+
+	// 规则模式：0-使用旧的FilterGroups，1-使用新的RulePayload
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RulePayloadMode *int64 `json:"RulePayloadMode,omitnil,omitempty" name:"RulePayloadMode"`
 }
 
 type CreateDLPFileDetectTaskData struct {
@@ -999,6 +1010,12 @@ type DescribeAggrSoftDeviceListRequestParams struct {
 
 	// 0:win 2:mac
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+
+	// 分组ID
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 分组类型 1-终端分组 2-组织架构(账号分组) 3/4-虚拟分组
+	GroupType *int64 `json:"GroupType,omitnil,omitempty" name:"GroupType"`
 }
 
 type DescribeAggrSoftDeviceListRequest struct {
@@ -1012,6 +1029,12 @@ type DescribeAggrSoftDeviceListRequest struct {
 
 	// 0:win 2:mac
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+
+	// 分组ID
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 分组类型 1-终端分组 2-组织架构(账号分组) 3/4-虚拟分组
+	GroupType *int64 `json:"GroupType,omitnil,omitempty" name:"GroupType"`
 }
 
 func (r *DescribeAggrSoftDeviceListRequest) ToJsonString() string {
@@ -1029,6 +1052,8 @@ func (r *DescribeAggrSoftDeviceListRequest) FromJsonString(s string) error {
 	delete(f, "Condition")
 	delete(f, "Name")
 	delete(f, "OsType")
+	delete(f, "GroupId")
+	delete(f, "GroupType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAggrSoftDeviceListRequest has unknown keys!", "")
 	}
@@ -3507,6 +3532,38 @@ type RuleItem struct {
 
 	// 内容，v2多值版本使用
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type RulePayload struct {
+	// 条件组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Groups []*RulePayloadItem `json:"Groups,omitnil,omitempty" name:"Groups"`
+
+	// 条件关系 or/and
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelateOption *string `json:"RelateOption,omitnil,omitempty" name:"RelateOption"`
+}
+
+type RulePayloadItem struct {
+	// 字段Key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldKey *string `json:"FieldKey,omitnil,omitempty" name:"FieldKey"`
+
+	// 选项（eq:等于,neq:不等于,like,nlike,gt:大于,lt:小于,egt:大于等于,elt:小于等于）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Option *string `json:"Option,omitnil,omitempty" name:"Option"`
+
+	// 值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value []*string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 嵌套条件组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Groups []*RulePayloadItem `json:"Groups,omitnil,omitempty" name:"Groups"`
+
+	// RelateOption 关系操作符（and/or），用于根级别条件关系
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelateOption *string `json:"RelateOption,omitnil,omitempty" name:"RelateOption"`
 }
 
 type SimpleRule struct {

@@ -770,6 +770,9 @@ type DescribeInstanceOperationsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operations []*InstanceOperation `json:"Operations,omitnil,omitempty" name:"Operations"`
 
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -826,6 +829,9 @@ func (r *DescribeInstanceRequest) FromJsonString(s string) error {
 type DescribeInstanceResponseParams struct {
 	// 实例描述信息
 	InstanceInfo *InstanceInfo `json:"InstanceInfo,omitnil,omitempty" name:"InstanceInfo"`
+
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -904,6 +910,9 @@ type DescribeInstanceStateResponseParams struct {
 
 	// 集群备份任务开启状态
 	BackupStatus *int64 `json:"BackupStatus,omitnil,omitempty" name:"BackupStatus"`
+
+	// 集群备份任务开启状态2
+	BackupOpenStatus *int64 `json:"BackupOpenStatus,omitnil,omitempty" name:"BackupOpenStatus"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1293,6 +1302,9 @@ type DescribeUpgradeListResponseParams struct {
 	// 升级记录总数
 	TotalCount *string `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1566,6 +1578,21 @@ type InstanceInfo struct {
 
 	// 访问信息
 	AccessDetails []*AccessInfo `json:"AccessDetails,omitnil,omitempty" name:"AccessDetails"`
+
+	// 集群是否跨az，为0不跨az；为1跨az
+	IsAz *int64 `json:"IsAz,omitnil,omitempty" name:"IsAz"`
+
+	// 备可用区
+	SecondaryZone *string `json:"SecondaryZone,omitnil,omitempty" name:"SecondaryZone"`
+
+	// 备子网
+	SecondarySubnet *string `json:"SecondarySubnet,omitnil,omitempty" name:"SecondarySubnet"`
+
+	// 访问信息
+	AccessInfo *string `json:"AccessInfo,omitnil,omitempty" name:"AccessInfo"`
+
+	// GTM节点信息
+	GTMNodes []*InstanceNodeGroup `json:"GTMNodes,omitnil,omitempty" name:"GTMNodes"`
 }
 
 type InstanceNode struct {
@@ -1577,6 +1604,39 @@ type InstanceNode struct {
 
 	// ip
 	NodeIp *string `json:"NodeIp,omitnil,omitempty" name:"NodeIp"`
+
+	// 私有ip
+	PrivateNetworkIp *string `json:"PrivateNetworkIp,omitnil,omitempty" name:"PrivateNetworkIp"`
+
+	// 节点角色
+	NodeRole *string `json:"NodeRole,omitnil,omitempty" name:"NodeRole"`
+
+	// 节点名称
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// 规格名称
+	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
+
+	// cpu
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 内存
+	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 数据盘数量
+	DataDiskCount *int64 `json:"DataDiskCount,omitnil,omitempty" name:"DataDiskCount"`
+
+	// 数据盘大小
+	DataDiskSize *int64 `json:"DataDiskSize,omitnil,omitempty" name:"DataDiskSize"`
+
+	// 数据盘类型
+	DataDiskType *string `json:"DataDiskType,omitnil,omitempty" name:"DataDiskType"`
+
+	// 唯一uuid
+	UUID *string `json:"UUID,omitnil,omitempty" name:"UUID"`
+
+	// 区域
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 type InstanceNodeGroup struct {
@@ -1981,6 +2041,9 @@ type ParamDetail struct {
 
 	// 参数名
 	ParameterName *string `json:"ParameterName,omitnil,omitempty" name:"ParameterName"`
+
+	// 最新修改值
+	LatestValue *string `json:"LatestValue,omitnil,omitempty" name:"LatestValue"`
 }
 
 type ParamItem struct {

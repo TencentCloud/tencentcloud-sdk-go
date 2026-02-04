@@ -1225,7 +1225,7 @@ type CreateRoomRequestParams struct {
 	// <p>直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播</p>
 	LiveType *uint64 `json:"LiveType,omitnil,omitempty" name:"LiveType"`
 
-	// <p>伪直播链接。 支持的协议以及格式： 协议：HTTP、HTTPS、RTMP、HLS 。格式：FLV、MP3、MP4、MPEG-TS、MOV、MKV、M4A。视频编码：H.264、VP8。音频编码：AAC、OPUS。</p>
+	// <p>伪直播链接。 支持的协议以及格式： 协议：HTTP、HTTPS、RTMP、HLS 。格式：FLV、MP3、MP4、MPEG-TS、MOV、MKV、M4A。视频编码：H.264、VP8。音频编码：AAC、OPUS。</p><p>注意：伪直播视频规格建议最高使用1080p 30fps，4k视频会有兼容性问题导致直播失败。</p>
 	RecordLiveUrl *string `json:"RecordLiveUrl,omitnil,omitempty" name:"RecordLiveUrl"`
 
 	// <p>是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1或2的时候有效</p>
@@ -1333,7 +1333,7 @@ type CreateRoomRequest struct {
 	// <p>直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播</p>
 	LiveType *uint64 `json:"LiveType,omitnil,omitempty" name:"LiveType"`
 
-	// <p>伪直播链接。 支持的协议以及格式： 协议：HTTP、HTTPS、RTMP、HLS 。格式：FLV、MP3、MP4、MPEG-TS、MOV、MKV、M4A。视频编码：H.264、VP8。音频编码：AAC、OPUS。</p>
+	// <p>伪直播链接。 支持的协议以及格式： 协议：HTTP、HTTPS、RTMP、HLS 。格式：FLV、MP3、MP4、MPEG-TS、MOV、MKV、M4A。视频编码：H.264、VP8。音频编码：AAC、OPUS。</p><p>注意：伪直播视频规格建议最高使用1080p 30fps，4k视频会有兼容性问题导致直播失败。</p>
 	RecordLiveUrl *string `json:"RecordLiveUrl,omitnil,omitempty" name:"RecordLiveUrl"`
 
 	// <p>是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1或2的时候有效</p>
@@ -5258,238 +5258,190 @@ func (r *ModifyGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRoomRequestParams struct {
-	// 房间ID。
+	// <p>房间ID。</p>
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 低代码互动课堂的SdkAppId
+	// <p>低代码互动课堂的SdkAppId</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 预定的房间开始时间，unix时间戳（秒）。直播开始后不允许修改。
+	// <p>预定的房间开始时间，unix时间戳（秒）。直播开始后不允许修改。</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 预定的房间结束时间，unix时间戳（秒）。直播开始后不允许修改。
+	// <p>预定的房间结束时间，unix时间戳（秒）。直播开始后不允许修改。</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 老师ID。直播开始后不允许修改。
+	// <p>老师ID。直播开始后不允许修改。</p>
 	TeacherId *string `json:"TeacherId,omitnil,omitempty" name:"TeacherId"`
 
-	// 房间名称。
-	// 字符数不超过256
+	// <p>房间名称。<br>字符数不超过256</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 分辨率。可以有如下取值：
-	// 1 标清
-	// 2 高清
-	// 3 全高清
-	// 直播开始后不允许修改。
+	// <p>分辨率。可以有如下取值：<br>1 标清<br>2 高清<br>3 全高清<br>直播开始后不允许修改。</p>
 	Resolution *uint64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
+	// <p>设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。</p>
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil,omitempty" name:"MaxMicNumber"`
 
-	// 进入房间时是否自动连麦。可以有以下取值：
-	// 0 不自动连麦（默认值）
-	// 1 自动连麦
-	// 直播开始后不允许修改。
+	// <p>进入房间时是否自动连麦。可以有以下取值：<br>0 不自动连麦（默认值）<br>1 自动连麦<br>直播开始后不允许修改。</p>
 	AutoMic *uint64 `json:"AutoMic,omitnil,omitempty" name:"AutoMic"`
 
-	// 高音质模式。可以有以下取值：
-	// 0 不开启高音质（默认值）
-	// 1 开启高音质
-	// 直播开始后不允许修改。
+	// <p>高音质模式。可以有以下取值：<br>0 不开启高音质（默认值）<br>1 开启高音质<br>直播开始后不允许修改。</p>
 	AudioQuality *uint64 `json:"AudioQuality,omitnil,omitempty" name:"AudioQuality"`
 
-	// 房间子类型，可以有以下取值：
-	// videodoc 文档+视频
-	// video 纯视频
-	// 直播开始后不允许修改。
+	// <p>房间子类型，可以有以下取值：<br>videodoc 文档+视频<br>video 纯视频<br>直播开始后不允许修改。</p>
 	SubType *string `json:"SubType,omitnil,omitempty" name:"SubType"`
 
-	// 禁止录制。可以有以下取值：
-	// 0 不禁止录制（默认值）
-	// 1 禁止录制
-	// 直播开始后不允许修改。
+	// <p>禁止录制。可以有以下取值：<br>0 不禁止录制（默认值）<br>1 禁止录制<br>直播开始后不允许修改。</p>
 	DisableRecord *uint64 `json:"DisableRecord,omitnil,omitempty" name:"DisableRecord"`
 
-	// 助教Id列表。直播开始后不允许修改。
+	// <p>助教Id列表。直播开始后不允许修改。</p>
 	Assistants []*string `json:"Assistants,omitnil,omitempty" name:"Assistants"`
 
-	// 房间绑定的群组ID。直播开始后不允许修改。
+	// <p>房间绑定的群组ID。直播开始后不允许修改。</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 打开学生麦克风/摄像头的授权开关。直播开始后不允许修改。
+	// <p>打开学生麦克风/摄像头的授权开关。直播开始后不允许修改。</p>
 	EnableDirectControl *uint64 `json:"EnableDirectControl,omitnil,omitempty" name:"EnableDirectControl"`
 
-	// 开启专注模式。
-	// 0 收看全部角色音视频(默认)
-	// 1 只看老师和助教
+	// <p>开启专注模式。<br>0 收看全部角色音视频(默认)<br>1 只看老师和助教</p>
 	InteractionMode *uint64 `json:"InteractionMode,omitnil,omitempty" name:"InteractionMode"`
 
-	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+	// <p>横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型</p>
 	VideoOrientation *uint64 `json:"VideoOrientation,omitnil,omitempty" name:"VideoOrientation"`
 
-	// 开启课后评分。 0：不开启(默认)  1：开启
+	// <p>开启课后评分。 0：不开启(默认)  1：开启</p>
 	IsGradingRequiredPostClass *uint64 `json:"IsGradingRequiredPostClass,omitnil,omitempty" name:"IsGradingRequiredPostClass"`
 
-	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 （预留参数、暂未开放)
-	// 注：大班课的布局(layout)只有三分屏
+	// <p>房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 （预留参数、暂未开放)<br>注：大班课的布局(layout)只有三分屏</p>
 	RoomType *uint64 `json:"RoomType,omitnil,omitempty" name:"RoomType"`
 
-	// 录制模板。仅可修改还未开始的房间。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+	// <p>录制模板。仅可修改还未开始的房间。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744</p>
 	RecordLayout *uint64 `json:"RecordLayout,omitnil,omitempty" name:"RecordLayout"`
 
-	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+	// <p>拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟</p>
 	EndDelayTime *int64 `json:"EndDelayTime,omitnil,omitempty" name:"EndDelayTime"`
 
-	// 直播方式：0 常规模式（默认）1 回放直播模式（伪直播）。 目前支持从回放直播模式（伪直播）改为常规模式，不支持从常规模式改为回放直播模式（伪直播）
+	// <p>直播方式：0 常规模式（默认）1 回放直播模式（伪直播）。 目前支持从回放直播模式（伪直播）改为常规模式，不支持从常规模式改为回放直播模式（伪直播）</p>
 	LiveType *uint64 `json:"LiveType,omitnil,omitempty" name:"LiveType"`
 
-	// 伪直播链接
+	// <p>伪直播链接。 支持的协议以及格式： 协议：HTTP、HTTPS、RTMP、HLS 。格式：FLV、MP3、MP4、MPEG-TS、MOV、MKV、M4A。视频编码：H.264、VP8。音频编码：AAC、OPUS。</p><p>注意：伪直播视频规格建议最高使用1080p 30fps，4k视频会有兼容性问题导致直播失败。</p>
 	RecordLiveUrl *string `json:"RecordLiveUrl,omitnil,omitempty" name:"RecordLiveUrl"`
 
-	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
+	// <p>是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效</p>
 	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil,omitempty" name:"EnableAutoStart"`
 
-	// 录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
+	// <p>录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。</p>
 	RecordScene *string `json:"RecordScene,omitnil,omitempty" name:"RecordScene"`
 
-	// 录制自定义语言，仅recordlayout=9的时候此参数有效
+	// <p>录制自定义语言，仅recordlayout=9的时候此参数有效</p>
 	//
 	// Deprecated: RecordLang is deprecated.
 	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
 
-	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+	// <p>板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式</p>
 	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 
-	// 字幕转写功能开关。可以有以下取值：
-	// 0 不开启字幕转写功能（默认值）
-	// 1 自动转写模式：上课自动开启，下课自动停止
-	// 2 手动转写模式：支持老师或者助教通过客户端API手动开启/关闭字幕转写
-	// 设置0和1时客户端均不展示手动开关，设置2时老师或者助教端展示字幕转写开关
+	// <p>字幕转写功能开关。可以有以下取值：<br>0 不开启字幕转写功能（默认值）<br>1 自动转写模式：上课自动开启，下课自动停止<br>2 手动转写模式：支持老师或者助教通过客户端API手动开启/关闭字幕转写<br>设置0和1时客户端均不展示手动开关，设置2时老师或者助教端展示字幕转写开关</p>
 	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 
-	// 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
+	// <p>嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效</p>
 	Guests []*string `json:"Guests,omitnil,omitempty" name:"Guests"`
 
-	// 录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
+	// <p>录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效</p>
 	RecordMerge *uint64 `json:"RecordMerge,omitnil,omitempty" name:"RecordMerge"`
 }
 
 type ModifyRoomRequest struct {
 	*tchttp.BaseRequest
 	
-	// 房间ID。
+	// <p>房间ID。</p>
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 低代码互动课堂的SdkAppId
+	// <p>低代码互动课堂的SdkAppId</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 预定的房间开始时间，unix时间戳（秒）。直播开始后不允许修改。
+	// <p>预定的房间开始时间，unix时间戳（秒）。直播开始后不允许修改。</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 预定的房间结束时间，unix时间戳（秒）。直播开始后不允许修改。
+	// <p>预定的房间结束时间，unix时间戳（秒）。直播开始后不允许修改。</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 老师ID。直播开始后不允许修改。
+	// <p>老师ID。直播开始后不允许修改。</p>
 	TeacherId *string `json:"TeacherId,omitnil,omitempty" name:"TeacherId"`
 
-	// 房间名称。
-	// 字符数不超过256
+	// <p>房间名称。<br>字符数不超过256</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 分辨率。可以有如下取值：
-	// 1 标清
-	// 2 高清
-	// 3 全高清
-	// 直播开始后不允许修改。
+	// <p>分辨率。可以有如下取值：<br>1 标清<br>2 高清<br>3 全高清<br>直播开始后不允许修改。</p>
 	Resolution *uint64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
+	// <p>设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。</p>
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil,omitempty" name:"MaxMicNumber"`
 
-	// 进入房间时是否自动连麦。可以有以下取值：
-	// 0 不自动连麦（默认值）
-	// 1 自动连麦
-	// 直播开始后不允许修改。
+	// <p>进入房间时是否自动连麦。可以有以下取值：<br>0 不自动连麦（默认值）<br>1 自动连麦<br>直播开始后不允许修改。</p>
 	AutoMic *uint64 `json:"AutoMic,omitnil,omitempty" name:"AutoMic"`
 
-	// 高音质模式。可以有以下取值：
-	// 0 不开启高音质（默认值）
-	// 1 开启高音质
-	// 直播开始后不允许修改。
+	// <p>高音质模式。可以有以下取值：<br>0 不开启高音质（默认值）<br>1 开启高音质<br>直播开始后不允许修改。</p>
 	AudioQuality *uint64 `json:"AudioQuality,omitnil,omitempty" name:"AudioQuality"`
 
-	// 房间子类型，可以有以下取值：
-	// videodoc 文档+视频
-	// video 纯视频
-	// 直播开始后不允许修改。
+	// <p>房间子类型，可以有以下取值：<br>videodoc 文档+视频<br>video 纯视频<br>直播开始后不允许修改。</p>
 	SubType *string `json:"SubType,omitnil,omitempty" name:"SubType"`
 
-	// 禁止录制。可以有以下取值：
-	// 0 不禁止录制（默认值）
-	// 1 禁止录制
-	// 直播开始后不允许修改。
+	// <p>禁止录制。可以有以下取值：<br>0 不禁止录制（默认值）<br>1 禁止录制<br>直播开始后不允许修改。</p>
 	DisableRecord *uint64 `json:"DisableRecord,omitnil,omitempty" name:"DisableRecord"`
 
-	// 助教Id列表。直播开始后不允许修改。
+	// <p>助教Id列表。直播开始后不允许修改。</p>
 	Assistants []*string `json:"Assistants,omitnil,omitempty" name:"Assistants"`
 
-	// 房间绑定的群组ID。直播开始后不允许修改。
+	// <p>房间绑定的群组ID。直播开始后不允许修改。</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 打开学生麦克风/摄像头的授权开关。直播开始后不允许修改。
+	// <p>打开学生麦克风/摄像头的授权开关。直播开始后不允许修改。</p>
 	EnableDirectControl *uint64 `json:"EnableDirectControl,omitnil,omitempty" name:"EnableDirectControl"`
 
-	// 开启专注模式。
-	// 0 收看全部角色音视频(默认)
-	// 1 只看老师和助教
+	// <p>开启专注模式。<br>0 收看全部角色音视频(默认)<br>1 只看老师和助教</p>
 	InteractionMode *uint64 `json:"InteractionMode,omitnil,omitempty" name:"InteractionMode"`
 
-	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+	// <p>横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型</p>
 	VideoOrientation *uint64 `json:"VideoOrientation,omitnil,omitempty" name:"VideoOrientation"`
 
-	// 开启课后评分。 0：不开启(默认)  1：开启
+	// <p>开启课后评分。 0：不开启(默认)  1：开启</p>
 	IsGradingRequiredPostClass *uint64 `json:"IsGradingRequiredPostClass,omitnil,omitempty" name:"IsGradingRequiredPostClass"`
 
-	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 （预留参数、暂未开放)
-	// 注：大班课的布局(layout)只有三分屏
+	// <p>房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 （预留参数、暂未开放)<br>注：大班课的布局(layout)只有三分屏</p>
 	RoomType *uint64 `json:"RoomType,omitnil,omitempty" name:"RoomType"`
 
-	// 录制模板。仅可修改还未开始的房间。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+	// <p>录制模板。仅可修改还未开始的房间。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744</p>
 	RecordLayout *uint64 `json:"RecordLayout,omitnil,omitempty" name:"RecordLayout"`
 
-	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+	// <p>拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟</p>
 	EndDelayTime *int64 `json:"EndDelayTime,omitnil,omitempty" name:"EndDelayTime"`
 
-	// 直播方式：0 常规模式（默认）1 回放直播模式（伪直播）。 目前支持从回放直播模式（伪直播）改为常规模式，不支持从常规模式改为回放直播模式（伪直播）
+	// <p>直播方式：0 常规模式（默认）1 回放直播模式（伪直播）。 目前支持从回放直播模式（伪直播）改为常规模式，不支持从常规模式改为回放直播模式（伪直播）</p>
 	LiveType *uint64 `json:"LiveType,omitnil,omitempty" name:"LiveType"`
 
-	// 伪直播链接
+	// <p>伪直播链接。 支持的协议以及格式： 协议：HTTP、HTTPS、RTMP、HLS 。格式：FLV、MP3、MP4、MPEG-TS、MOV、MKV、M4A。视频编码：H.264、VP8。音频编码：AAC、OPUS。</p><p>注意：伪直播视频规格建议最高使用1080p 30fps，4k视频会有兼容性问题导致直播失败。</p>
 	RecordLiveUrl *string `json:"RecordLiveUrl,omitnil,omitempty" name:"RecordLiveUrl"`
 
-	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
+	// <p>是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效</p>
 	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil,omitempty" name:"EnableAutoStart"`
 
-	// 录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
+	// <p>录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。</p>
 	RecordScene *string `json:"RecordScene,omitnil,omitempty" name:"RecordScene"`
 
-	// 录制自定义语言，仅recordlayout=9的时候此参数有效
+	// <p>录制自定义语言，仅recordlayout=9的时候此参数有效</p>
 	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
 
-	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+	// <p>板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式</p>
 	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 
-	// 字幕转写功能开关。可以有以下取值：
-	// 0 不开启字幕转写功能（默认值）
-	// 1 自动转写模式：上课自动开启，下课自动停止
-	// 2 手动转写模式：支持老师或者助教通过客户端API手动开启/关闭字幕转写
-	// 设置0和1时客户端均不展示手动开关，设置2时老师或者助教端展示字幕转写开关
+	// <p>字幕转写功能开关。可以有以下取值：<br>0 不开启字幕转写功能（默认值）<br>1 自动转写模式：上课自动开启，下课自动停止<br>2 手动转写模式：支持老师或者助教通过客户端API手动开启/关闭字幕转写<br>设置0和1时客户端均不展示手动开关，设置2时老师或者助教端展示字幕转写开关</p>
 	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 
-	// 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
+	// <p>嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效</p>
 	Guests []*string `json:"Guests,omitnil,omitempty" name:"Guests"`
 
-	// 录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
+	// <p>录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效</p>
 	RecordMerge *uint64 `json:"RecordMerge,omitnil,omitempty" name:"RecordMerge"`
 }
 
@@ -5759,115 +5711,107 @@ func (r *RegisterUserResponse) FromJsonString(s string) error {
 }
 
 type RoomInfo struct {
-	// 房间名称。
-	// 字符数不超过256
+	// <p>房间名称。<br>字符数不超过256</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 预定的房间开始时间，unix时间戳。
+	// <p>预定的房间开始时间，unix时间戳。</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 预定的房间结束时间，unix时间戳。
+	// <p>预定的房间结束时间，unix时间戳。</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 头像区域，摄像头视频画面的分辨率。可以有如下取值：
-	// 1 标清
-	// 2 高清
-	// 3 全高清
+	// <p>头像区域，摄像头视频画面的分辨率。可以有如下取值：<br>1 标清<br>2 高清<br>3 全高清</p>
 	Resolution *uint64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
+	// <p>设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。</p>
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil,omitempty" name:"MaxMicNumber"`
 
-	// 房间子类型，可以有以下取值： videodoc 文档+视频 video 纯视频
+	// <p>房间子类型，可以有以下取值： videodoc 文档+视频 video 纯视频</p>
 	SubType *string `json:"SubType,omitnil,omitempty" name:"SubType"`
 
-	// 老师ID。通过[注册用户]接口获取的UserId。
+	// <p>老师ID。通过[注册用户]接口获取的UserId。</p>
 	TeacherId *string `json:"TeacherId,omitnil,omitempty" name:"TeacherId"`
 
-	// 进入课堂时是否自动连麦。可以有以下取值： 0 不自动连麦（需要手动申请上麦，默认值） 1 自动连麦
+	// <p>进入课堂时是否自动连麦。可以有以下取值： 0 不自动连麦（需要手动申请上麦，默认值） 1 自动连麦</p>
 	AutoMic *uint64 `json:"AutoMic,omitnil,omitempty" name:"AutoMic"`
 
-	// 释放音视频权限后是否自动取消连麦。可以有以下取值： 0 自动取消连麦（默认值） 1 保持连麦状态
+	// <p>释放音视频权限后是否自动取消连麦。可以有以下取值： 0 自动取消连麦（默认值） 1 保持连麦状态</p>
 	TurnOffMic *uint64 `json:"TurnOffMic,omitnil,omitempty" name:"TurnOffMic"`
 
-	// 高音质模式。可以有以下取值： 0 不开启高音质（默认值） 1 开启高音质
+	// <p>高音质模式。可以有以下取值： 0 不开启高音质（默认值） 1 开启高音质</p>
 	AudioQuality *uint64 `json:"AudioQuality,omitnil,omitempty" name:"AudioQuality"`
 
-	// 上课后是否禁止自动录制。可以有以下取值： 0 不禁止录制（自动开启录制，默认值） 1 禁止录制 注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。
+	// <p>上课后是否禁止自动录制。可以有以下取值： 0 不禁止录制（自动开启录制，默认值） 1 禁止录制 注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。</p>
 	DisableRecord *uint64 `json:"DisableRecord,omitnil,omitempty" name:"DisableRecord"`
 
-	// 助教Id列表。通过[注册用户]接口获取的UserId。
+	// <p>助教Id列表。通过[注册用户]接口获取的UserId。</p>
 	Assistants []*string `json:"Assistants,omitnil,omitempty" name:"Assistants"`
 
-	// rtc人数。
+	// <p>rtc人数。</p>
 	//
 	// Deprecated: RTCAudienceNumber is deprecated.
 	RTCAudienceNumber *uint64 `json:"RTCAudienceNumber,omitnil,omitempty" name:"RTCAudienceNumber"`
 
-	// 观看类型。
+	// <p>观看类型。</p>
 	AudienceType *uint64 `json:"AudienceType,omitnil,omitempty" name:"AudienceType"`
 
-	// 录制布局。
+	// <p>录制布局。</p>
 	RecordLayout *uint64 `json:"RecordLayout,omitnil,omitempty" name:"RecordLayout"`
 
-	// 房间绑定的群组ID
+	// <p>房间绑定的群组ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 打开学生麦克风/摄像头的授权开关
+	// <p>打开学生麦克风/摄像头的授权开关</p>
 	EnableDirectControl *uint64 `json:"EnableDirectControl,omitnil,omitempty" name:"EnableDirectControl"`
 
-	// 开启专注模式。 0 收看全部角色音视频(默认) 1 只看老师和助教
+	// <p>开启专注模式。 0 收看全部角色音视频(默认) 1 只看老师和助教</p>
 	InteractionMode *int64 `json:"InteractionMode,omitnil,omitempty" name:"InteractionMode"`
 
-	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+	// <p>横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型</p>
 	VideoOrientation *int64 `json:"VideoOrientation,omitnil,omitempty" name:"VideoOrientation"`
 
-	// 开启课后评分。 0：不开启(默认)  1：开启
+	// <p>开启课后评分。 0：不开启(默认)  1：开启</p>
 	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitnil,omitempty" name:"IsGradingRequiredPostClass"`
 
-	// 课堂类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (预留参数，暂未开放); 3 圆桌会议 注：大班课的布局(layout)只有三分屏
+	// <p>课堂类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (预留参数，暂未开放); 3 圆桌会议 注：大班课的布局(layout)只有三分屏</p>
 	RoomType *int64 `json:"RoomType,omitnil,omitempty" name:"RoomType"`
 
-	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+	// <p>拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟</p>
 	EndDelayTime *int64 `json:"EndDelayTime,omitnil,omitempty" name:"EndDelayTime"`
 
-	// 直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播
+	// <p>直播类型：0 常规（默认）1 伪直播 2 RTMP推流直播</p>
 	LiveType *uint64 `json:"LiveType,omitnil,omitempty" name:"LiveType"`
 
-	// 伪直播回放链接
+	// <p>伪直播链接。 支持的协议以及格式： 协议：HTTP、HTTPS、RTMP、HLS 。格式：FLV、MP3、MP4、MPEG-TS、MOV、MKV、M4A。视频编码：H.264、VP8。音频编码：AAC、OPUS。</p><p>注意：伪直播视频规格建议最高使用1080p 30fps，4k视频会有兼容性问题导致直播失败。</p>
 	RecordLiveUrl *string `json:"RecordLiveUrl,omitnil,omitempty" name:"RecordLiveUrl"`
 
-	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1或2的时候有效
+	// <p>是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1或2的时候有效</p>
 	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil,omitempty" name:"EnableAutoStart"`
 
-	// 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
+	// <p>录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道</p>
 	RecordBackground *string `json:"RecordBackground,omitnil,omitempty" name:"RecordBackground"`
 
-	// 录制自定义场景。注意：仅recordlayout=9的时候此参数有效。需注意各类参数配置正确能够生效。不然会造成录制失败，失败后无法补救。数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。自定义场景参数的含义。如下：     scene：自定义js/css对应的场景值。如scene=recordScene，会加载 recordScene 场景对应的 js/css，这样就可以自定义录制页面的元素。     lng：录制页面对应的语种。如lng=en，则录制界面为en。（枚举值：en,zh，zh-TW，jp，ar，kr，vi）     customToken：录制页面中涉及客户自己的服务需要鉴权时进行配置。一般情况下，无需配置。
+	// <p>录制自定义场景。注意：仅recordlayout=9的时候此参数有效。需注意各类参数配置正确能够生效。不然会造成录制失败，失败后无法补救。数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。自定义场景参数的含义。如下：     scene：自定义js/css对应的场景值。如scene=recordScene，会加载 recordScene 场景对应的 js/css，这样就可以自定义录制页面的元素。     lng：录制页面对应的语种。如lng=en，则录制界面为en。（枚举值：en,zh，zh-TW，jp，ar，kr，vi）     customToken：录制页面中涉及客户自己的服务需要鉴权时进行配置。一般情况下，无需配置。</p>
 	RecordScene *string `json:"RecordScene,omitnil,omitempty" name:"RecordScene"`
 
-	// 录制自定义语言，仅recordlayout=9的时候此参数有效
+	// <p>录制自定义语言，仅recordlayout=9的时候此参数有效</p>
 	//
 	// Deprecated: RecordLang is deprecated.
 	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
 
-	// 录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
+	// <p>录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0</p>
 	RecordStream *uint64 `json:"RecordStream,omitnil,omitempty" name:"RecordStream"`
 
-	// 板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
+	// <p>板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式</p>
 	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 
-	// 字幕转写功能开关。可以有以下取值：
-	// 0 不开启字幕转写功能（默认值）
-	// 1 自动转写模式：上课自动开启，下课自动停止
-	// 2 手动转写模式：支持老师或者助教通过客户端API手动开启/关闭字幕转写
-	// 设置0和1时客户端均不展示手动开关，设置2时老师或者助教端展示字幕转写开关
+	// <p>字幕转写功能开关。可以有以下取值：<br>0 不开启字幕转写功能（默认值）<br>1 自动转写模式：上课自动开启，下课自动停止<br>2 手动转写模式：支持老师或者助教通过客户端API手动开启/关闭字幕转写<br>设置0和1时客户端均不展示手动开关，设置2时老师或者助教端展示字幕转写开关</p>
 	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 
-	// 嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效
+	// <p>嘉宾Id列表。当圆桌会议模式（RoomType==3）时生效</p>
 	Guests []*string `json:"Guests,omitnil,omitempty" name:"Guests"`
 
-	// 录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效
+	// <p>录制文件合并开关。0 关闭 1 开启 注：只有在一节课多次启用手动录制时，此功能才有效</p>
 	RecordMerge *uint64 `json:"RecordMerge,omitnil,omitempty" name:"RecordMerge"`
 }
 
