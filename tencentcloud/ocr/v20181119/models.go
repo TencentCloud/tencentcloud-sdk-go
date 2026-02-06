@@ -274,6 +274,39 @@ type AirTransport struct {
 	TaxAmount *string `json:"TaxAmount,omitnil,omitempty" name:"TaxAmount"`
 }
 
+type AnswerInfo struct {
+	// 手写答案内容，比如选择题的手写的选项、填空题的手写内容
+	HandwriteInfo *string `json:"HandwriteInfo,omitnil,omitempty" name:"HandwriteInfo"`
+
+	// 答案是否正确
+	IsCorrect *bool `json:"IsCorrect,omitnil,omitempty" name:"IsCorrect"`
+
+	// 答案分析结果
+	AnswerAnalysis *string `json:"AnswerAnalysis,omitnil,omitempty" name:"AnswerAnalysis"`
+
+	// 答案区域的4个角点坐标, 是个长度为8的数组
+	// 
+	// [0,1,2,3,4,5,6,7]
+	// 
+	// (0,1) 左上角坐标
+	// (2,3) 右上角坐标
+	// (4,5) 右下角坐标
+	// (6,7) 左下角坐标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HandwriteInfoPositions []*int64 `json:"HandwriteInfoPositions,omitnil,omitempty" name:"HandwriteInfoPositions"`
+
+	// 返回正确答案内容
+	// 
+	// QuestionConfigMap配置了（“TrueAnswer”：1）才生效返回
+	RightAnswer *string `json:"RightAnswer,omitnil,omitempty" name:"RightAnswer"`
+
+	// 返回题目的知识点内容
+	// 
+	// QuestionConfigMap配置了（“KnowledgePoints”：1）才生效返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KnowledgePoints []*string `json:"KnowledgePoints,omitnil,omitempty" name:"KnowledgePoints"`
+}
+
 // Predefined struct for user
 type ArithmeticOCRRequestParams struct {
 	// 图片的 Base64 值。
@@ -1573,6 +1606,75 @@ func (r *DescribeExtractDocAgentJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeExtractDocAgentJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeQuestionMarkAgentJobRequestParams struct {
+	// 任务唯一ID。由服务端生成。	
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DescribeQuestionMarkAgentJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务唯一ID。由服务端生成。	
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DescribeQuestionMarkAgentJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQuestionMarkAgentJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQuestionMarkAgentJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeQuestionMarkAgentJobResponseParams struct {
+	// 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+	JobStatus *string `json:"JobStatus,omitnil,omitempty" name:"JobStatus"`
+
+	// 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
+
+	// 试题批改信息
+	MarkInfos []*MarkInfo `json:"MarkInfos,omitnil,omitempty" name:"MarkInfos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeQuestionMarkAgentJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeQuestionMarkAgentJobResponseParams `json:"Response"`
+}
+
+func (r *DescribeQuestionMarkAgentJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQuestionMarkAgentJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6256,6 +6358,18 @@ type MainlandTravelPermitBackInfos struct {
 	HistoryNumber *string `json:"HistoryNumber,omitnil,omitempty" name:"HistoryNumber"`
 }
 
+type MarkInfo struct {
+	// 题目的题干信息 
+	// 
+	MarkItemTitle *string `json:"MarkItemTitle,omitnil,omitempty" name:"MarkItemTitle"`
+
+	// 批改答案列表（每个小题存在多个答案，比如多个填空区域答案，循序按照从左到右，从上到下排列）
+	AnswerInfos []*AnswerInfo `json:"AnswerInfos,omitnil,omitempty" name:"AnswerInfos"`
+
+	// 嵌套题目结构（如果有多层嵌套则会返回子题信息，如果没有嵌套题目则返回空）
+	MarkInfos []*MarkInfo `json:"MarkInfos,omitnil,omitempty" name:"MarkInfos"`
+}
+
 type MedicalInvoice struct {
 	// 发票名称
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
@@ -10702,6 +10816,115 @@ func (r *SubmitExtractDocAgentJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SubmitExtractDocAgentJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitQuestionMarkAgentJobRequestParams struct {
+	// 图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。  示例值：/9j/4AAQSkZJRg.....s97n//2Q==
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。  示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.jpg
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
+
+	// 表示整张试卷批改需要先切题，默认为false
+	//
+	// Deprecated: BoolSingleQuestion is deprecated.
+	BoolSingleQuestion *bool `json:"BoolSingleQuestion,omitnil,omitempty" name:"BoolSingleQuestion"`
+
+	// 默认false 表示关闭深度思考  true 表示打开深度思考，更深层次推理分析，速度更慢
+	//
+	// Deprecated: EnableDeepThink is deprecated.
+	EnableDeepThink *bool `json:"EnableDeepThink,omitnil,omitempty" name:"EnableDeepThink"`
+
+	// 题目信息输出配置，当key对应为true表示开启配置开关。     当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；当key为TrueAnswer  value为true 表示输出每道题的正确答案 ；当key为ReturnAnswerPosition  value为false表示不输出手写答案坐标（降低处理耗时，按需输出）； 设置方式参考  {"KnowledgePoints":true,"TrueAnswer":true}
+	QuestionConfigMap *string `json:"QuestionConfigMap,omitnil,omitempty" name:"QuestionConfigMap"`
+
+	// 仅有单题有效，如果切题有多题则不生效，单题批改的时候作为参考答案输入到批改模型中
+	ReferenceAnswer *string `json:"ReferenceAnswer,omitnil,omitempty" name:"ReferenceAnswer"`
+}
+
+type SubmitQuestionMarkAgentJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。  示例值：/9j/4AAQSkZJRg.....s97n//2Q==
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。  示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.jpg
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
+
+	// 表示整张试卷批改需要先切题，默认为false
+	BoolSingleQuestion *bool `json:"BoolSingleQuestion,omitnil,omitempty" name:"BoolSingleQuestion"`
+
+	// 默认false 表示关闭深度思考  true 表示打开深度思考，更深层次推理分析，速度更慢
+	EnableDeepThink *bool `json:"EnableDeepThink,omitnil,omitempty" name:"EnableDeepThink"`
+
+	// 题目信息输出配置，当key对应为true表示开启配置开关。     当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；当key为TrueAnswer  value为true 表示输出每道题的正确答案 ；当key为ReturnAnswerPosition  value为false表示不输出手写答案坐标（降低处理耗时，按需输出）； 设置方式参考  {"KnowledgePoints":true,"TrueAnswer":true}
+	QuestionConfigMap *string `json:"QuestionConfigMap,omitnil,omitempty" name:"QuestionConfigMap"`
+
+	// 仅有单题有效，如果切题有多题则不生效，单题批改的时候作为参考答案输入到批改模型中
+	ReferenceAnswer *string `json:"ReferenceAnswer,omitnil,omitempty" name:"ReferenceAnswer"`
+}
+
+func (r *SubmitQuestionMarkAgentJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitQuestionMarkAgentJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "PdfPageNumber")
+	delete(f, "BoolSingleQuestion")
+	delete(f, "EnableDeepThink")
+	delete(f, "QuestionConfigMap")
+	delete(f, "ReferenceAnswer")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitQuestionMarkAgentJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitQuestionMarkAgentJobResponseParams struct {
+	// 任务唯一ID。由服务端生成.
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 切题题目边框坐标列表 （如果BoolSingleQuestion为true则返回空）
+	QuestionInfo []*QuestionInfo `json:"QuestionInfo,omitnil,omitempty" name:"QuestionInfo"`
+
+	// 题目切题数量，作为计费题目数总量
+	QuestionCount *string `json:"QuestionCount,omitnil,omitempty" name:"QuestionCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitQuestionMarkAgentJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitQuestionMarkAgentJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitQuestionMarkAgentJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitQuestionMarkAgentJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

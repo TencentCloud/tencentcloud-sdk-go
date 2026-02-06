@@ -1976,17 +1976,17 @@ type AigcImageOutputConfig struct {
 
 	// 生成图片的分辨率。
 	// 
-	// * GEM 2.5 可选值：1K、2K、4K；
-	// * GEM 3.0 可选值：1K、2K、4K；
+	// * GEM 2.5 可选值：1K、2K、4K，默认1K；
+	// * GEM 3.0 可选值：1K、2K、4K，默认1K；
 	// * Vidu q2 可选值：1080p、2K、4K，默认1080p；
-	// * Kling 2.1 可选值：1k、2k；
-	// * Hunyuan 3.0 可选值：768:768、768:1024、1024:768、1024:1024、720:1280、1280:720、768:1280、1280:768，不传默认使用1024:1024。
+	// * Kling 2.1 可选值：1k、2k，默认1k；
+	// * Hunyuan 3.0 可选值：720P、1080P、2K、4K。
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
 	// 指定所生成图片的宽高比。
 	// <li>当 ModelName 是 GEM，可选值是 1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9 和 21:9；</li>
 	// <li>当 ModelName 是 Qwen，则暂不支持。</li>
-	// <li>当 ModelName 是 Hunyuan，则暂不支持。</li>
+	// <li>当 ModelName 是 Hunyuan，可选值16:9、9:16、1:1、4:3、3:4、3:2、2:3、21:9。</li>
 	// <li>当 ModelName 是 Vidu，可选值16:9、9:16、1:1、3:4、4:3、21:9、2:3、3:2。</li>
 	// <li>当 ModelName 是 Kling，可选值16:9、9:16、1:1、4:3、3:4、3:2、2:3、21:9。</li>
 	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
@@ -2005,6 +2005,7 @@ type AigcImageSceneInfo struct {
 	// AI生图场景类型，可选值：
 	// - change_clothes：AI换衣。
 	// - product_image：AI生商品图。
+	// - outpainting: AI扩图。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 当 Type 为 change_clothes 时有效，则该项为必填，表示AI 换衣生图配置参数。
@@ -2124,46 +2125,73 @@ type AigcUsageDataItem struct {
 	// AIGC规格。
 	// 取值有：
 	// <li>Qwen2.0</li>
-	// <li>Gem2.5</li>
-	// <li>Gem3.0_1K</li>
-	// <li>Gem3.0_2K</li>
-	// <li>Gem3.0_4K</li>
-	// <li>Sora2</li>
-	// <li>Veo3.1Fast</li>
-	// <li>Veo3.1Standard</li>
-	// <li>Kling2.5pro_720P</li>
-	// <li>Kling2.5pro_1080P</li>
-	// <li>KlingO1_1080P</li>
-	// <li>Kling2.0&2.1std_720P</li>
-	// <li>Kling2.0&2.1pro_1080P</li>
-	// <li>KlingO1_720P</li>
-	// <li>Hailuo02&2.3_1080P</li>
-	// <li>Hailuo02&2.3_768P</li>
-	// <li>Hailuo2.3fast_768P</li>
-	// <li>Hailuo2.3fast_1080P</li>
-	// <li>ViduQ2_720P</li>
-	// <li>ViduQ2_1080P</li>
-	// <li>ViduQ2pro_720P</li>
-	// <li>ViduQ2pro_1080P</li>
-	// <li>ViduQ2turbo_720P</li>
-	// <li>ViduQ2turbo_1080P</li>
-	// <li>ViduQ2_720P_OffPeak</li>
-	// <li>ViduQ2_1080P_OffPeak</li>
-	// <li>ViduQ2turbo_720P_OffPeak</li>
-	// <li>ViduQ2turbo_1080P_OffPeak</li>
-	// <li>ViduQ2pro_720P_OffPeak</li>
-	// <li>ViduQ2pro_1080P_OffPeak</li>
-	// <li>Hunyuan1.5_720P</li>
-	// <li>Hunyuan1.5_1080P</li>
 	// <li>Hunyuan3.0_1K</li>
 	// <li>Hunyuan3.0_2K</li>
 	// <li>Hunyuan3.0_4K</li>
-	// <li>Mingmou1.0_1080P</li>
 	// <li>Mingmou1.0_1K</li>
 	// <li>Mingmou1.0_2K</li>
 	// <li>Mingmou1.0_4K</li>
+	// <li>ViduQ2_T2i_1080P</li>
+	// <li>ViduQ2_T2i_2K</li>
+	// <li>ViduQ2_T2i_4K</li>
+	// <li>ViduQ2_I2i_1080P</li>
+	// <li>ViduQ2_I2i_2K</li>
+	// <li>ViduQ2_I2i_4K</li>
+	// <li>ViduQ2_Refer2i_1080P</li>
+	// <li>ViduQ2_Refer2i_2K</li>
+	// <li>ViduQ2_Refer2i_4K</li>
+	// <li>Kling2.1_T2i_1K2K</li>
+	// <li>Kling2.1_T2i_4K</li>
+	// <li>Kling2.1_Refer2i_1K</li>
+	// <li>Kling2.1_Refer2i_2K</li>
+	// <li>Kling2.1_Refer2i_4K</li>
+	// <li>Veo3.1Standard</li>
+	// <li>Veo3.1Fast</li>
+	// <li>Kling2.0&2.1std_720P</li>
+	// <li>Kling2.0&2.1pro_1080P</li>
+	// <li>Kling2.5pro_720P</li>
+	// <li>Kling2.5pro_1080P</li>
+	// <li>KlingO1_720P</li>
+	// <li>KlingO1_1080P</li>
+	// <li>KlingO1_NoVideo_720P</li>
+	// <li>KlingO1_NoVideo_1080P</li>
+	// <li>Kling2.6</li>
+	// <li>Kling2.6Sound</li>
+	// <li>Kling2.6MotionControl_720P</li>
+	// <li>Kling2.6MotionControl_1080P</li>
+	// <li>Kling_Avatar_I2v_720P</li>
+	// <li>Kling_Avatar_I2v_1080P</li>
+	// <li>Kling_Identifyface</li>
+	// <li>Hailuo02&2.3_768P</li>
+	// <li>Hailuo02&2.3_1080P</li>
+	// <li>Hailuo2.3fast_768P</li>
+	// <li>Hailuo2.3fast_1080P</li>
+	// <li>ViduQ2_720P</li>
+	// <li>ViduQ2_720P_OffPeak</li>
+	// <li>ViduQ2_1080P</li>
+	// <li>ViduQ2_1080P_OffPeak</li>
+	// <li>ViduQ2pro_720P</li>
+	// <li>ViduQ2pro_720P_OffPeak</li>
+	// <li>ViduQ2pro_1080P</li>
+	// <li>ViduQ2pro_1080P_OffPeak</li>
+	// <li>ViduQ2turbo_720P</li>
+	// <li>ViduQ2turbo_720P_OffPeak</li>
+	// <li>ViduQ2turbo_1080P</li>
+	// <li>ViduQ2turbo_1080P_OffPeak</li>
+	// <li>ViduQ3pro_720P</li>
+	// <li>ViduQ3pro_720P_OffPeak</li>
+	// <li>ViduQ3pro_1080P</li>
+	// <li>ViduQ3pro_1080P_OffPeak</li>
+	// <li>Vidu_TemplateEffect</li>
+	// <li>Hunyuan1.5_720P</li>
+	// <li>Hunyuan1.5_1080P</li>
 	// <li>Mingmou1.0_720P</li>
-	// <li> unknown</li>
+	// <li>Mingmou1.0_1080P</li>
+	// <li>ImageProductImage</li>
+	// <li>ImageChangeClothes</li>
+	// <li>VideoProductShowcase</li>
+	// <li>ImageOutPainting</li>
+	// <li>unknown</li>
 	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
 
 	// 用量数据。
@@ -10725,7 +10753,7 @@ type DescribeAigcUsageDataRequestParams struct {
 	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// AIGC类型，取值有：<li> Video：视频。</li><li> Image：图片。</li>
+	// AIGC类型，取值有：<li> Video：视频。</li><li> Image：图片。</li><li> Text：文本。</li>
 	AigcType *string `json:"AigcType,omitnil,omitempty" name:"AigcType"`
 
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
@@ -10741,7 +10769,7 @@ type DescribeAigcUsageDataRequest struct {
 	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// AIGC类型，取值有：<li> Video：视频。</li><li> Image：图片。</li>
+	// AIGC类型，取值有：<li> Video：视频。</li><li> Image：图片。</li><li> Text：文本。</li>
 	AigcType *string `json:"AigcType,omitnil,omitempty" name:"AigcType"`
 
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
@@ -27897,12 +27925,22 @@ type SceneAigcImageOutputConfig struct {
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 指定所生成图片的宽高比。输入格式为 W:H。
-	// 
-	// 仅生商品图场景有效，可选值为：1:1、3:2、2:3、3:4、4:3、4:5、5:4、16:9、9:16、21:9
+	// 本字段在以下场景有效：
+	// * 生商品图场景，可选值为：1:1、3:2、2:3、3:4、4:3、4:5、5:4、16:9、9:16、21:9
+	// * AI扩图场景。可选值为：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9、21:9，可以配合 ImageWidth 和 ImageHeight 使用，规则如下： 
+	//     1. 仅指定 AspectRatio 时，根据原图输入进行自适应调整。
+	//     2. 指定 AspectRatio 和 ImageWidth 时，ImageHeight  由两者计算得出，反亦是如此。
+	//     3. 当AspectRatio、ImageWidth、ImageHeight 同时指定的时候，优先使用ImageWidth、ImageHeight。
 	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
 
 	// 输出图片编码格式参数。**仅AI换衣场景有效。**
 	EncodeConfig *ImageSceneAigcEncodeConfig `json:"EncodeConfig,omitnil,omitempty" name:"EncodeConfig"`
+
+	// 输出图像宽度，**仅AI扩图场景有效**。
+	ImageWidth *uint64 `json:"ImageWidth,omitnil,omitempty" name:"ImageWidth"`
+
+	// 输出图像高度，**仅AI扩图场景有效**。
+	ImageHeight *uint64 `json:"ImageHeight,omitnil,omitempty" name:"ImageHeight"`
 }
 
 type SceneAigcImageTask struct {

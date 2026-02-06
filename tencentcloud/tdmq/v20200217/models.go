@@ -2326,6 +2326,116 @@ func (r *CreateRocketMQGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateRocketMQGroupV2RequestParams struct {
+	// 消费组名称
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 是否开启消费
+	ReadEnable *bool `json:"ReadEnable,omitnil,omitempty" name:"ReadEnable"`
+
+	// 是否开启广播消费
+	BroadcastEnable *bool `json:"BroadcastEnable,omitnil,omitempty" name:"BroadcastEnable"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// Group类型（TCP/HTTP）
+	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
+
+	// Group最大重试次数
+	RetryMaxTimes *uint64 `json:"RetryMaxTimes,omitnil,omitempty" name:"RetryMaxTimes"`
+
+	// 标签列表
+	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
+}
+
+type CreateRocketMQGroupV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 消费组名称
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 消费组所在的命名空间，4.x 通用集群命名空间固定为: tdmq_default
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 是否开启消费
+	ReadEnable *bool `json:"ReadEnable,omitnil,omitempty" name:"ReadEnable"`
+
+	// 是否开启广播消费
+	BroadcastEnable *bool `json:"BroadcastEnable,omitnil,omitempty" name:"BroadcastEnable"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// Group类型（TCP/HTTP）
+	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
+
+	// Group最大重试次数
+	RetryMaxTimes *uint64 `json:"RetryMaxTimes,omitnil,omitempty" name:"RetryMaxTimes"`
+
+	// 标签列表
+	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
+}
+
+func (r *CreateRocketMQGroupV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRocketMQGroupV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "Namespace")
+	delete(f, "ReadEnable")
+	delete(f, "BroadcastEnable")
+	delete(f, "ClusterId")
+	delete(f, "Remark")
+	delete(f, "GroupType")
+	delete(f, "RetryMaxTimes")
+	delete(f, "TagList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRocketMQGroupV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRocketMQGroupV2ResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateRocketMQGroupV2Response struct {
+	*tchttp.BaseResponse
+	Response *CreateRocketMQGroupV2ResponseParams `json:"Response"`
+}
+
+func (r *CreateRocketMQGroupV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRocketMQGroupV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateRocketMQNamespaceRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`

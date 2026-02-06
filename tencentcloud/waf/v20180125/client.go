@@ -3359,6 +3359,56 @@ func (c *Client) DescribeAntiInfoLeakageRulesWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeApiAggregateTopNRequest() (request *DescribeApiAggregateTopNRequest) {
+    request = &DescribeApiAggregateTopNRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeApiAggregateTopN")
+    
+    
+    return
+}
+
+func NewDescribeApiAggregateTopNResponse() (response *DescribeApiAggregateTopNResponse) {
+    response = &DescribeApiAggregateTopNResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApiAggregateTopN
+// 获取Api安全模块的访问日志聚合topN
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApiAggregateTopN(request *DescribeApiAggregateTopNRequest) (response *DescribeApiAggregateTopNResponse, err error) {
+    return c.DescribeApiAggregateTopNWithContext(context.Background(), request)
+}
+
+// DescribeApiAggregateTopN
+// 获取Api安全模块的访问日志聚合topN
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApiAggregateTopNWithContext(ctx context.Context, request *DescribeApiAggregateTopNRequest) (response *DescribeApiAggregateTopNResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiAggregateTopNRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeApiAggregateTopN")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApiAggregateTopN require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApiAggregateTopNResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApiDetailRequest() (request *DescribeApiDetailRequest) {
     request = &DescribeApiDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

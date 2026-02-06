@@ -1983,6 +1983,17 @@ type BotActionScopeRuleEntry struct {
 	ValueArray []*string `json:"ValueArray,omitnil,omitempty" name:"ValueArray"`
 }
 
+type BotDataFilter struct {
+	// 查询维度
+	Entity *string `json:"Entity,omitnil,omitempty" name:"Entity"`
+
+	// 操作符
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 操作值，多个值用
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type BotIdConfig struct {
 	// 规则ID
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
@@ -2408,6 +2419,17 @@ type BotToken struct {
 
 	// 1表示开启了禁用嵌套功能
 	DisableMultiJson *uint64 `json:"DisableMultiJson,omitnil,omitempty" name:"DisableMultiJson"`
+}
+
+type BotTopItem struct {
+	// 对应的key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 对应的值
+	Value *uint64 `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// key对应的展示描述语
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 }
 
 type CCRuleData struct {
@@ -6012,6 +6034,106 @@ type DescribeAntiLeakageItem struct {
 
 	// 修改时间
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+}
+
+// Predefined struct for user
+type DescribeApiAggregateTopNRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 需要的Top数，默认5， 最大值100
+	TopN *uint64 `json:"TopN,omitnil,omitempty" name:"TopN"`
+
+	// 开始时间
+	StartTs *uint64 `json:"StartTs,omitnil,omitempty" name:"StartTs"`
+
+	// 结束时间
+	EndTs *uint64 `json:"EndTs,omitnil,omitempty" name:"EndTs"`
+
+	// 需要查询TOP的维度名
+	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
+
+	// 过滤条件
+	Filters []*BotDataFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 是否查询全域名的三个特殊图标
+	GlobalFlag *bool `json:"GlobalFlag,omitnil,omitempty" name:"GlobalFlag"`
+}
+
+type DescribeApiAggregateTopNRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 需要的Top数，默认5， 最大值100
+	TopN *uint64 `json:"TopN,omitnil,omitempty" name:"TopN"`
+
+	// 开始时间
+	StartTs *uint64 `json:"StartTs,omitnil,omitempty" name:"StartTs"`
+
+	// 结束时间
+	EndTs *uint64 `json:"EndTs,omitnil,omitempty" name:"EndTs"`
+
+	// 需要查询TOP的维度名
+	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
+
+	// 过滤条件
+	Filters []*BotDataFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 是否查询全域名的三个特殊图标
+	GlobalFlag *bool `json:"GlobalFlag,omitnil,omitempty" name:"GlobalFlag"`
+}
+
+func (r *DescribeApiAggregateTopNRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiAggregateTopNRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "TopN")
+	delete(f, "StartTs")
+	delete(f, "EndTs")
+	delete(f, "Dimension")
+	delete(f, "Filters")
+	delete(f, "GlobalFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApiAggregateTopNRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApiAggregateTopNResponseParams struct {
+	// topN结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*BotTopItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApiAggregateTopNResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApiAggregateTopNResponseParams `json:"Response"`
+}
+
+func (r *DescribeApiAggregateTopNResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiAggregateTopNResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

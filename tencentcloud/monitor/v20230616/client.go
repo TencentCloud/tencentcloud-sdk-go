@@ -45,6 +45,50 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateNoticeContentTmplRequest() (request *CreateNoticeContentTmplRequest) {
+    request = &CreateNoticeContentTmplRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "CreateNoticeContentTmpl")
+    
+    
+    return
+}
+
+func NewCreateNoticeContentTmplResponse() (response *CreateNoticeContentTmplResponse) {
+    response = &CreateNoticeContentTmplResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateNoticeContentTmpl
+// 创建自定义通知内容模板
+func (c *Client) CreateNoticeContentTmpl(request *CreateNoticeContentTmplRequest) (response *CreateNoticeContentTmplResponse, err error) {
+    return c.CreateNoticeContentTmplWithContext(context.Background(), request)
+}
+
+// CreateNoticeContentTmpl
+// 创建自定义通知内容模板
+func (c *Client) CreateNoticeContentTmplWithContext(ctx context.Context, request *CreateNoticeContentTmplRequest) (response *CreateNoticeContentTmplResponse, err error) {
+    if request == nil {
+        request = NewCreateNoticeContentTmplRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "CreateNoticeContentTmpl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNoticeContentTmpl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateNoticeContentTmplResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAlarmNotifyHistoriesRequest() (request *DescribeAlarmNotifyHistoriesRequest) {
     request = &DescribeAlarmNotifyHistoriesRequest{
         BaseRequest: &tchttp.BaseRequest{},

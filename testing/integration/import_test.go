@@ -247,6 +247,7 @@ import (
 	tdcpgv20211118 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tdcpg/v20211118"
 	tdidv20210519 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tdid/v20210519"
 	tdmqv20200217 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tdmq/v20200217"
+	tdmysqlv20211122 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tdmysql/v20211122"
 	tdsv20220801 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tds/v20220801"
 	temv20201221 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tem/v20201221"
 	temv20210701 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tem/v20210701"
@@ -3253,6 +3254,19 @@ func TestTdmqv20200217Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init tdmq_v20200217 client: %v", err)
+    }
+}
+
+func TestTdmysqlv20211122Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := tdmysqlv20211122.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init tdmysql_v20211122 client: %v", err)
     }
 }
 

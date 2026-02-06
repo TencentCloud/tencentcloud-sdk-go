@@ -97,6 +97,14 @@ func (r *AcquireSandboxInstanceTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CfsStorageSource struct {
+	// CFS资源ID
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// CFS挂载路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+}
+
 type CosStorageSource struct {
 	// 对象存储访问域名
 	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
@@ -1285,6 +1293,9 @@ type StorageSource struct {
 
 	// 镜像卷配置
 	Image *ImageStorageSource `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// 文件存储配置
+	Cfs *CfsStorageSource `json:"Cfs,omitnil,omitempty" name:"Cfs"`
 }
 
 type Tag struct {

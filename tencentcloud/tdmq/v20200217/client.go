@@ -1159,6 +1159,72 @@ func (c *Client) CreateRocketMQGroupWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateRocketMQGroupV2Request() (request *CreateRocketMQGroupV2Request) {
+    request = &CreateRocketMQGroupV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateRocketMQGroupV2")
+    
+    
+    return
+}
+
+func NewCreateRocketMQGroupV2Response() (response *CreateRocketMQGroupV2Response) {
+    response = &CreateRocketMQGroupV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRocketMQGroupV2
+// 创建 RocketMQ 消费组。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。创建 5.x 集群消费组的接口文档见 [CreateConsumerGroup](https://cloud.tencent.com/document/api/1493/97943)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) CreateRocketMQGroupV2(request *CreateRocketMQGroupV2Request) (response *CreateRocketMQGroupV2Response, err error) {
+    return c.CreateRocketMQGroupV2WithContext(context.Background(), request)
+}
+
+// CreateRocketMQGroupV2
+// 创建 RocketMQ 消费组。
+//
+// 当前 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。创建 5.x 集群消费组的接口文档见 [CreateConsumerGroup](https://cloud.tencent.com/document/api/1493/97943)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) CreateRocketMQGroupV2WithContext(ctx context.Context, request *CreateRocketMQGroupV2Request) (response *CreateRocketMQGroupV2Response, err error) {
+    if request == nil {
+        request = NewCreateRocketMQGroupV2Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateRocketMQGroupV2")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRocketMQGroupV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRocketMQGroupV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRocketMQNamespaceRequest() (request *CreateRocketMQNamespaceRequest) {
     request = &CreateRocketMQNamespaceRequest{
         BaseRequest: &tchttp.BaseRequest{},

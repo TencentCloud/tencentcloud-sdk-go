@@ -2199,96 +2199,6 @@ func (c *Client) DescribeTRTCMarketQualityDataWithContext(ctx context.Context, r
     return
 }
 
-func NewDescribeTRTCMarketQualityMetricDataRequest() (request *DescribeTRTCMarketQualityMetricDataRequest) {
-    request = &DescribeTRTCMarketQualityMetricDataRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("trtc", APIVersion, "DescribeTRTCMarketQualityMetricData")
-    
-    
-    return
-}
-
-func NewDescribeTRTCMarketQualityMetricDataResponse() (response *DescribeTRTCMarketQualityMetricDataResponse) {
-    response = &DescribeTRTCMarketQualityMetricDataResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeTRTCMarketQualityMetricData
-// 云监控monitor接口已下线，trtc同步下线接口
-//
-// 
-//
-// 查询TRTC监控仪表盘-数据大盘质量指标（包括下列指标）
-//
-// joinSuccessRate：加入频道成功率。
-//
-// joinSuccessIn5sRate：5s内加入频道成功率。
-//
-// audioFreezeRate：音频卡顿率。
-//
-// videoFreezeRate：视频卡顿率。
-//
-// networkDelay ：网络延迟率。
-//
-// 注意：
-//
-// 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
-//
-// 2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
-//
-// 可能返回的错误码:
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) DescribeTRTCMarketQualityMetricData(request *DescribeTRTCMarketQualityMetricDataRequest) (response *DescribeTRTCMarketQualityMetricDataResponse, err error) {
-    return c.DescribeTRTCMarketQualityMetricDataWithContext(context.Background(), request)
-}
-
-// DescribeTRTCMarketQualityMetricData
-// 云监控monitor接口已下线，trtc同步下线接口
-//
-// 
-//
-// 查询TRTC监控仪表盘-数据大盘质量指标（包括下列指标）
-//
-// joinSuccessRate：加入频道成功率。
-//
-// joinSuccessIn5sRate：5s内加入频道成功率。
-//
-// audioFreezeRate：音频卡顿率。
-//
-// videoFreezeRate：视频卡顿率。
-//
-// networkDelay ：网络延迟率。
-//
-// 注意：
-//
-// 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
-//
-// 2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
-//
-// 可能返回的错误码:
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) DescribeTRTCMarketQualityMetricDataWithContext(ctx context.Context, request *DescribeTRTCMarketQualityMetricDataRequest) (response *DescribeTRTCMarketQualityMetricDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeTRTCMarketQualityMetricDataRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeTRTCMarketQualityMetricData")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeTRTCMarketQualityMetricData require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeTRTCMarketQualityMetricDataResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeTRTCMarketScaleDataRequest() (request *DescribeTRTCMarketScaleDataRequest) {
     request = &DescribeTRTCMarketScaleDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2326,7 +2236,11 @@ func NewDescribeTRTCMarketScaleDataResponse() (response *DescribeTRTCMarketScale
 // 2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
 //
 // 可能返回的错误码:
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  FAILEDOPERATION_QUERYTASKINFOFAILED = "FailedOperation.QueryTaskInfoFailed"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
 func (c *Client) DescribeTRTCMarketScaleData(request *DescribeTRTCMarketScaleDataRequest) (response *DescribeTRTCMarketScaleDataResponse, err error) {
     return c.DescribeTRTCMarketScaleDataWithContext(context.Background(), request)
 }
@@ -2349,7 +2263,11 @@ func (c *Client) DescribeTRTCMarketScaleData(request *DescribeTRTCMarketScaleDat
 // 2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
 //
 // 可能返回的错误码:
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  FAILEDOPERATION_QUERYTASKINFOFAILED = "FailedOperation.QueryTaskInfoFailed"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
 func (c *Client) DescribeTRTCMarketScaleDataWithContext(ctx context.Context, request *DescribeTRTCMarketScaleDataRequest) (response *DescribeTRTCMarketScaleDataResponse, err error) {
     if request == nil {
         request = NewDescribeTRTCMarketScaleDataRequest()
@@ -2523,84 +2441,6 @@ func (c *Client) DescribeTRTCRealTimeQualityDataWithContext(ctx context.Context,
     return
 }
 
-func NewDescribeTRTCRealTimeQualityMetricDataRequest() (request *DescribeTRTCRealTimeQualityMetricDataRequest) {
-    request = &DescribeTRTCRealTimeQualityMetricDataRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("trtc", APIVersion, "DescribeTRTCRealTimeQualityMetricData")
-    
-    
-    return
-}
-
-func NewDescribeTRTCRealTimeQualityMetricDataResponse() (response *DescribeTRTCRealTimeQualityMetricDataResponse) {
-    response = &DescribeTRTCRealTimeQualityMetricDataResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeTRTCRealTimeQualityMetricData
-// 云监控monitor接口已下线，trtc同步下线接口
-//
-// 
-//
-// 查询TRTC监控仪表盘-实时监控质量指标（会返回下列指标）
-//
-// -视频卡顿率
-//
-// -音频卡顿率
-//
-// 注意：
-//
-// 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
-//
-// 2.查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
-//
-// 可能返回的错误码:
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) DescribeTRTCRealTimeQualityMetricData(request *DescribeTRTCRealTimeQualityMetricDataRequest) (response *DescribeTRTCRealTimeQualityMetricDataResponse, err error) {
-    return c.DescribeTRTCRealTimeQualityMetricDataWithContext(context.Background(), request)
-}
-
-// DescribeTRTCRealTimeQualityMetricData
-// 云监控monitor接口已下线，trtc同步下线接口
-//
-// 
-//
-// 查询TRTC监控仪表盘-实时监控质量指标（会返回下列指标）
-//
-// -视频卡顿率
-//
-// -音频卡顿率
-//
-// 注意：
-//
-// 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
-//
-// 2.查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
-//
-// 可能返回的错误码:
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) DescribeTRTCRealTimeQualityMetricDataWithContext(ctx context.Context, request *DescribeTRTCRealTimeQualityMetricDataRequest) (response *DescribeTRTCRealTimeQualityMetricDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeTRTCRealTimeQualityMetricDataRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeTRTCRealTimeQualityMetricData")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeTRTCRealTimeQualityMetricData require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeTRTCRealTimeQualityMetricDataResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeTRTCRealTimeScaleDataRequest() (request *DescribeTRTCRealTimeScaleDataRequest) {
     request = &DescribeTRTCRealTimeScaleDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2691,6 +2531,10 @@ func NewDescribeTRTCRealTimeScaleMetricDataResponse() (response *DescribeTRTCRea
 }
 
 // DescribeTRTCRealTimeScaleMetricData
+// 腾讯云可观测平台monitor接口已下线，TRTC同步下线接口
+//
+// 
+//
 // 查询TRTC监控仪表盘-实时监控规模指标（会返回下列指标）
 //
 // -userCount（在线用户数）
@@ -2714,6 +2558,10 @@ func (c *Client) DescribeTRTCRealTimeScaleMetricData(request *DescribeTRTCRealTi
 }
 
 // DescribeTRTCRealTimeScaleMetricData
+// 腾讯云可观测平台monitor接口已下线，TRTC同步下线接口
+//
+// 
+//
 // 查询TRTC监控仪表盘-实时监控规模指标（会返回下列指标）
 //
 // -userCount（在线用户数）

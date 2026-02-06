@@ -3603,6 +3603,9 @@ type CreateTWeTalkAIBotRequestParams struct {
 
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 自定义工具配置，最多可创建10个
+	CustomTools *string `json:"CustomTools,omitnil,omitempty" name:"CustomTools"`
 }
 
 type CreateTWeTalkAIBotRequest struct {
@@ -3631,6 +3634,9 @@ type CreateTWeTalkAIBotRequest struct {
 
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 自定义工具配置，最多可创建10个
+	CustomTools *string `json:"CustomTools,omitnil,omitempty" name:"CustomTools"`
 }
 
 func (r *CreateTWeTalkAIBotRequest) ToJsonString() string {
@@ -3653,6 +3659,7 @@ func (r *CreateTWeTalkAIBotRequest) FromJsonString(s string) error {
 	delete(f, "TTSConfig")
 	delete(f, "AgentConfig")
 	delete(f, "InstanceId")
+	delete(f, "CustomTools")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTWeTalkAIBotRequest has unknown keys!", "")
 	}
@@ -15149,6 +15156,9 @@ type ModifyTWeTalkAIBotRequestParams struct {
 
 	// 智能体配置
 	AgentConfig *TalkAgentConfigInfo `json:"AgentConfig,omitnil,omitempty" name:"AgentConfig"`
+
+	// 自定义工具配置，最多可创建10个
+	CustomTools *string `json:"CustomTools,omitnil,omitempty" name:"CustomTools"`
 }
 
 type ModifyTWeTalkAIBotRequest struct {
@@ -15177,6 +15187,9 @@ type ModifyTWeTalkAIBotRequest struct {
 
 	// 智能体配置
 	AgentConfig *TalkAgentConfigInfo `json:"AgentConfig,omitnil,omitempty" name:"AgentConfig"`
+
+	// 自定义工具配置，最多可创建10个
+	CustomTools *string `json:"CustomTools,omitnil,omitempty" name:"CustomTools"`
 }
 
 func (r *ModifyTWeTalkAIBotRequest) ToJsonString() string {
@@ -15199,6 +15212,7 @@ func (r *ModifyTWeTalkAIBotRequest) FromJsonString(s string) error {
 	delete(f, "LLMConfig")
 	delete(f, "TTSConfig")
 	delete(f, "AgentConfig")
+	delete(f, "CustomTools")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTWeTalkAIBotRequest has unknown keys!", "")
 	}
@@ -17099,6 +17113,9 @@ type TalkAIBotInfo struct {
 
 	// 已关联产品信息列表
 	BoundProducts []*TalkProductInfo `json:"BoundProducts,omitnil,omitempty" name:"BoundProducts"`
+
+	// 自定义工具列表，最多可创建10个
+	CustomTools *string `json:"CustomTools,omitnil,omitempty" name:"CustomTools"`
 }
 
 type TalkAgentConfigInfo struct {

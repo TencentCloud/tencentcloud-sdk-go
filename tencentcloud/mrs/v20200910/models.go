@@ -1375,15 +1375,35 @@ type EyeChildItem struct {
 	Se *BaseItem2 `json:"Se,omitnil,omitempty" name:"Se"`
 }
 
+type EyeFinalItem struct {
+	// <p>球镜</p>
+	Sph *BaseItem3 `json:"Sph,omitnil,omitempty" name:"Sph"`
+
+	// <p>柱镜</p>
+	Cyl *BaseItem3 `json:"Cyl,omitnil,omitempty" name:"Cyl"`
+
+	// <p>轴位</p>
+	Ax *BaseItem3 `json:"Ax,omitnil,omitempty" name:"Ax"`
+
+	// <p>等效球镜</p>
+	Se *BaseItem2 `json:"Se,omitnil,omitempty" name:"Se"`
+}
+
 type EyeItem struct {
-	// 左眼
+	// <p>左眼</p>
 	Left *EyeChildItem `json:"Left,omitnil,omitempty" name:"Left"`
 
-	// 右眼
+	// <p>右眼</p>
 	Right *EyeChildItem `json:"Right,omitnil,omitempty" name:"Right"`
 
-	// 瞳距
+	// <p>瞳距</p>
 	Pd *BaseItem2 `json:"Pd,omitnil,omitempty" name:"Pd"`
+
+	// <p>右眼平均后结果</p>
+	RightFinal *EyeFinalItem `json:"RightFinal,omitnil,omitempty" name:"RightFinal"`
+
+	// <p>左眼平均后结果</p>
+	LeftFinal *EyeFinalItem `json:"LeftFinal,omitnil,omitempty" name:"LeftFinal"`
 }
 
 type EyeItemsInfo struct {
