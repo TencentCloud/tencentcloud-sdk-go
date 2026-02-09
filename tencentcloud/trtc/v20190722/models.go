@@ -2911,85 +2911,6 @@ func (r *DescribeTRTCRealTimeScaleDataResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeTRTCRealTimeScaleMetricDataRequestParams struct {
-	// 用户SdkAppId（如：1400xxxxxx）
-	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
-
-	// 开始时间，unix时间戳，单位：秒（查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时）
-	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
-	// 结束时间，unix时间戳，单位：秒
-	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// 房间ID
-	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
-}
-
-type DescribeTRTCRealTimeScaleMetricDataRequest struct {
-	*tchttp.BaseRequest
-	
-	// 用户SdkAppId（如：1400xxxxxx）
-	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
-
-	// 开始时间，unix时间戳，单位：秒（查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时）
-	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
-	// 结束时间，unix时间戳，单位：秒
-	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// 房间ID
-	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
-}
-
-func (r *DescribeTRTCRealTimeScaleMetricDataRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeTRTCRealTimeScaleMetricDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "SdkAppId")
-	delete(f, "StartTime")
-	delete(f, "EndTime")
-	delete(f, "RoomId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTRTCRealTimeScaleMetricDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeTRTCRealTimeScaleMetricDataResponseParams struct {
-	// TRTC监控数据出参
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *TRTCDataResp `json:"Data,omitnil,omitempty" name:"Data"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeTRTCRealTimeScaleMetricDataResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeTRTCRealTimeScaleMetricDataResponseParams `json:"Response"`
-}
-
-func (r *DescribeTRTCRealTimeScaleMetricDataResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeTRTCRealTimeScaleMetricDataResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeTrtcMcuTranscodeTimeRequestParams struct {
 	// 查询开始时间，格式为YYYY-MM-DD。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -7028,7 +6949,15 @@ type TextToSpeechSSERequestParams struct {
 	// TTS的模型，当前固定为：flow_01_turbo
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	//  需要合成的语言（ISO 639-1），支持 zh（中文）、en（英文）、yue（粤语）、ja（日语）、ko（韩语），默认自动识别
+	//  需要合成的语言（ISO 639-1），默认自动识别，支持如下语言：
+	// - zh（中文）
+	// - en（英文）
+	// - yue（粤语）
+	// - ja（日语）
+	// - ko（韩语）
+	// - ar（阿拉伯语）
+	// - id（印尼语）
+	// - th（泰语）
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 
@@ -7053,7 +6982,15 @@ type TextToSpeechSSERequest struct {
 	// TTS的模型，当前固定为：flow_01_turbo
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	//  需要合成的语言（ISO 639-1），支持 zh（中文）、en（英文）、yue（粤语）、ja（日语）、ko（韩语），默认自动识别
+	//  需要合成的语言（ISO 639-1），默认自动识别，支持如下语言：
+	// - zh（中文）
+	// - en（英文）
+	// - yue（粤语）
+	// - ja（日语）
+	// - ko（韩语）
+	// - ar（阿拉伯语）
+	// - id（印尼语）
+	// - th（泰语）
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 

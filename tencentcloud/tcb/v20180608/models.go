@@ -1087,6 +1087,47 @@ type ClsInfo struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
+type ClusterDetail struct {
+	// 是否开启公网访问
+	IsOpenPubNetAccess *bool `json:"IsOpenPubNetAccess,omitnil,omitempty" name:"IsOpenPubNetAccess"`
+
+	// 最大算力
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
+
+	// 最小算力
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinCpu *float64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
+
+	// TDSQL-C集群状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 存储用量（单位：MB）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedStorage *int64 `json:"UsedStorage,omitnil,omitempty" name:"UsedStorage"`
+
+	// 最大存储量（单位：GB）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageLimit *int64 `json:"StorageLimit,omitnil,omitempty" name:"StorageLimit"`
+
+	// 数据库类型
+	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
+
+	// 数据库类型
+	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
+
+	// 公网访问状态；open开启，opening开启中，closed关闭，closing关闭中
+	WanStatus *string `json:"WanStatus,omitnil,omitempty" name:"WanStatus"`
+
+	// 数据库集群状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterStatus *string `json:"ClusterStatus,omitnil,omitempty" name:"ClusterStatus"`
+
+	// serverless状态
+	ServerlessStatus *string `json:"ServerlessStatus,omitnil,omitempty" name:"ServerlessStatus"`
+}
+
 type CodeSource struct {
 	// 类型, 可能的枚举: "coding","package","package_url","github","gitlab","gitee","rawcode"
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -1394,12 +1435,111 @@ func (r *CreateAuthDomainResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBillDealRequestParams struct {
+	// 当前下单的操作类型，可取[purchase,renew,modify]三种值，分别代表新购，续费，变配。
+	DealType *string `json:"DealType,omitnil,omitempty" name:"DealType"`
 
+	// 购买的产品类型，可取[tcb-baas,tcb-promotion,tcb-package], 分别代表baas套餐、大促包、资源包
+	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
+
+	// 目标下单产品/套餐Id
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
+	// 默认只下单不支付，为ture则下单并支付
+	CreateAndPay *bool `json:"CreateAndPay,omitnil,omitempty" name:"CreateAndPay"`
+
+	// 购买时长
+	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 购买时长单位,按各产品规则可选d(天),m(月),y(年),p(一次性)
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+
+	// 资源唯一标识
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 来源可选[qcloud,miniapp]，默认qcloud
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 资源别名
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 开启超限按量
+	EnableExcess *bool `json:"EnableExcess,omitnil,omitempty" name:"EnableExcess"`
+
+	// 变配目标产品/套餐id
+	ModifyPackageId *string `json:"ModifyPackageId,omitnil,omitempty" name:"ModifyPackageId"`
+
+	// jsonstr附加信息
+	Extension *string `json:"Extension,omitnil,omitempty" name:"Extension"`
+
+	// 是否自动选择代金券支付
+	AutoVoucher *bool `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
+
+	// 资源类型。
+	// 代表新购环境（DealType=purchase 并且 ProductType=tcb-baas ）时需要发货哪些资源。
+	// 可取值：flexdb, cos, cdn, scf
+	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
+
+	// 环境标签。
+	//  代表新购环境（DealType=purchase 并且 ProductType=tcb-baas ）时需要打的标签。
+	EnvTags []*Tag `json:"EnvTags,omitnil,omitempty" name:"EnvTags"`
 }
 
 type CreateBillDealRequest struct {
 	*tchttp.BaseRequest
 	
+	// 当前下单的操作类型，可取[purchase,renew,modify]三种值，分别代表新购，续费，变配。
+	DealType *string `json:"DealType,omitnil,omitempty" name:"DealType"`
+
+	// 购买的产品类型，可取[tcb-baas,tcb-promotion,tcb-package], 分别代表baas套餐、大促包、资源包
+	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
+
+	// 目标下单产品/套餐Id
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
+	// 默认只下单不支付，为ture则下单并支付
+	CreateAndPay *bool `json:"CreateAndPay,omitnil,omitempty" name:"CreateAndPay"`
+
+	// 购买时长
+	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 购买时长单位,按各产品规则可选d(天),m(月),y(年),p(一次性)
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+
+	// 资源唯一标识
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 来源可选[qcloud,miniapp]，默认qcloud
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 资源别名
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 开启超限按量
+	EnableExcess *bool `json:"EnableExcess,omitnil,omitempty" name:"EnableExcess"`
+
+	// 变配目标产品/套餐id
+	ModifyPackageId *string `json:"ModifyPackageId,omitnil,omitempty" name:"ModifyPackageId"`
+
+	// jsonstr附加信息
+	Extension *string `json:"Extension,omitnil,omitempty" name:"Extension"`
+
+	// 是否自动选择代金券支付
+	AutoVoucher *bool `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
+
+	// 资源类型。
+	// 代表新购环境（DealType=purchase 并且 ProductType=tcb-baas ）时需要发货哪些资源。
+	// 可取值：flexdb, cos, cdn, scf
+	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
+
+	// 环境标签。
+	//  代表新购环境（DealType=purchase 并且 ProductType=tcb-baas ）时需要打的标签。
+	EnvTags []*Tag `json:"EnvTags,omitnil,omitempty" name:"EnvTags"`
 }
 
 func (r *CreateBillDealRequest) ToJsonString() string {
@@ -1414,7 +1554,22 @@ func (r *CreateBillDealRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "DealType")
+	delete(f, "ProductType")
+	delete(f, "PackageId")
+	delete(f, "CreateAndPay")
+	delete(f, "TimeSpan")
+	delete(f, "TimeUnit")
+	delete(f, "ResourceId")
+	delete(f, "Source")
+	delete(f, "Alias")
+	delete(f, "EnvId")
+	delete(f, "EnableExcess")
+	delete(f, "ModifyPackageId")
+	delete(f, "Extension")
+	delete(f, "AutoVoucher")
+	delete(f, "ResourceTypes")
+	delete(f, "EnvTags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBillDealRequest has unknown keys!", "")
 	}
@@ -2108,6 +2263,103 @@ type CreateIndex struct {
 
 	// 索引结构
 	MgoKeySchema *MgoKeySchema `json:"MgoKeySchema,omitnil,omitempty" name:"MgoKeySchema"`
+}
+
+// Predefined struct for user
+type CreateMySQLRequestParams struct {
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// Db类型 1. FLEXDB 2.MYSQL
+	DbInstanceType *string `json:"DbInstanceType,omitnil,omitempty" name:"DbInstanceType"`
+
+	// mysql版本
+	MysqlVersion *string `json:"MysqlVersion,omitnil,omitempty" name:"MysqlVersion"`
+
+	// vpc Id
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 0 区分表名大小写；1 不区分表名大小写(默认)
+	LowerCaseTableNames *string `json:"LowerCaseTableNames,omitnil,omitempty" name:"LowerCaseTableNames"`
+}
+
+type CreateMySQLRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// Db类型 1. FLEXDB 2.MYSQL
+	DbInstanceType *string `json:"DbInstanceType,omitnil,omitempty" name:"DbInstanceType"`
+
+	// mysql版本
+	MysqlVersion *string `json:"MysqlVersion,omitnil,omitempty" name:"MysqlVersion"`
+
+	// vpc Id
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 0 区分表名大小写；1 不区分表名大小写(默认)
+	LowerCaseTableNames *string `json:"LowerCaseTableNames,omitnil,omitempty" name:"LowerCaseTableNames"`
+}
+
+func (r *CreateMySQLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMySQLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "DbInstanceType")
+	delete(f, "MysqlVersion")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "LowerCaseTableNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMySQLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMySQLResponseParams struct {
+	// 开通结果
+	Data *CreateMySQLResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMySQLResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMySQLResponseParams `json:"Response"`
+}
+
+func (r *CreateMySQLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMySQLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateMySQLResult struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 // Predefined struct for user
@@ -4958,6 +5210,82 @@ func (r *DescribeCloudBaseRunVersionSnapshotResponse) FromJsonString(s string) e
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCreateMySQLResult struct {
+	// 状态 notexist | init | doing | success | fail
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
+
+	// 是否冻结
+	FreezeStatus *bool `json:"FreezeStatus,omitnil,omitempty" name:"FreezeStatus"`
+}
+
+// Predefined struct for user
+type DescribeCreateMySQLResultRequestParams struct {
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// OpenMysql 返回任务 Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeCreateMySQLResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// OpenMysql 返回任务 Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeCreateMySQLResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCreateMySQLResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCreateMySQLResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCreateMySQLResultResponseParams struct {
+	// 查询开通结果
+	Data *DescribeCreateMySQLResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCreateMySQLResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCreateMySQLResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeCreateMySQLResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCreateMySQLResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type DescribeCurveDataRequestParams struct {
 	// 环境ID
@@ -6306,6 +6634,134 @@ func (r *DescribeHostingDomainTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMySQLClusterDetailRequestParams struct {
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+type DescribeMySQLClusterDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+func (r *DescribeMySQLClusterDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMySQLClusterDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMySQLClusterDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMySQLClusterDetailResponseParams struct {
+	// 集群详情
+	Data *MySQLClusterDetail `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMySQLClusterDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMySQLClusterDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeMySQLClusterDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMySQLClusterDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMySQLTaskStatusRequestParams struct {
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务名
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+}
+
+type DescribeMySQLTaskStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务名
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+}
+
+func (r *DescribeMySQLTaskStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMySQLTaskStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "TaskId")
+	delete(f, "TaskName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMySQLTaskStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMySQLTaskStatusResponseParams struct {
+	// 任务状态
+	Data *MySQLTaskStatus `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMySQLTaskStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMySQLTaskStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeMySQLTaskStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMySQLTaskStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePostpayFreeQuotasRequestParams struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -7434,6 +7890,74 @@ func (r *DestroyEnvResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DestroyEnvResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyMySQLRequestParams struct {
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+type DestroyMySQLRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云开发环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+func (r *DestroyMySQLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyMySQLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DestroyMySQLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyMySQLResponseParams struct {
+	// 销毁结果
+	Data *DestroyMySQLResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DestroyMySQLResponse struct {
+	*tchttp.BaseResponse
+	Response *DestroyMySQLResponseParams `json:"Response"`
+}
+
+func (r *DestroyMySQLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyMySQLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DestroyMySQLResult struct {
+	// 是否成功
+	IsSuccess *bool `json:"IsSuccess,omitnil,omitempty" name:"IsSuccess"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务名
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 }
 
 // Predefined struct for user
@@ -9144,6 +9668,54 @@ type MongoConnector struct {
 
 	// MongoDB数据库名
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+}
+
+type MySQLClusterDetail struct {
+	// 集群ID
+	DbClusterId *string `json:"DbClusterId,omitnil,omitempty" name:"DbClusterId"`
+
+	// 网络详情
+	NetInfo *MySQLNetDetail `json:"NetInfo,omitnil,omitempty" name:"NetInfo"`
+
+	// 数据库详情
+	DbInfo *ClusterDetail `json:"DbInfo,omitnil,omitempty" name:"DbInfo"`
+}
+
+type MySQLNetDetail struct {
+	// 内网地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateNetAddress *string `json:"PrivateNetAddress,omitnil,omitempty" name:"PrivateNetAddress"`
+
+	// 外网地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PubNetAddress *string `json:"PubNetAddress,omitnil,omitempty" name:"PubNetAddress"`
+
+	// 网络信息（VPCID/SubnetID）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Net *string `json:"Net,omitnil,omitempty" name:"Net"`
+
+	// 是否开通公网
+	PubNetAccessEnabled *bool `json:"PubNetAccessEnabled,omitnil,omitempty" name:"PubNetAccessEnabled"`
+
+	// vpc id 
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// vpc name
+	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 子网名
+	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
+}
+
+type MySQLTaskStatus struct {
+	// SUCCESS | FAILED | PENDING
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 状态描述
+	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 }
 
 type ObjectKV struct {

@@ -775,6 +775,58 @@ func (c *Client) CreateHostingDomainWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateMySQLRequest() (request *CreateMySQLRequest) {
+    request = &CreateMySQLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateMySQL")
+    
+    
+    return
+}
+
+func NewCreateMySQLResponse() (response *CreateMySQLResponse) {
+    response = &CreateMySQLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMySQL
+// 开通Mysql
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) CreateMySQL(request *CreateMySQLRequest) (response *CreateMySQLResponse, err error) {
+    return c.CreateMySQLWithContext(context.Background(), request)
+}
+
+// CreateMySQL
+// 开通Mysql
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) CreateMySQLWithContext(ctx context.Context, request *CreateMySQLRequest) (response *CreateMySQLResponse, err error) {
+    if request == nil {
+        request = NewCreateMySQLRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateMySQL")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMySQL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMySQLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePostpayPackageRequest() (request *CreatePostpayPackageRequest) {
     request = &CreatePostpayPackageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2433,6 +2485,62 @@ func (c *Client) DescribeCloudBaseRunVersionSnapshotWithContext(ctx context.Cont
     return
 }
 
+func NewDescribeCreateMySQLResultRequest() (request *DescribeCreateMySQLResultRequest) {
+    request = &DescribeCreateMySQLResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCreateMySQLResult")
+    
+    
+    return
+}
+
+func NewDescribeCreateMySQLResultResponse() (response *DescribeCreateMySQLResultResponse) {
+    response = &DescribeCreateMySQLResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCreateMySQLResult
+// 查询开通Mysql结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+func (c *Client) DescribeCreateMySQLResult(request *DescribeCreateMySQLResultRequest) (response *DescribeCreateMySQLResultResponse, err error) {
+    return c.DescribeCreateMySQLResultWithContext(context.Background(), request)
+}
+
+// DescribeCreateMySQLResult
+// 查询开通Mysql结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+func (c *Client) DescribeCreateMySQLResultWithContext(ctx context.Context, request *DescribeCreateMySQLResultRequest) (response *DescribeCreateMySQLResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeCreateMySQLResultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCreateMySQLResult")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCreateMySQLResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCreateMySQLResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCurveDataRequest() (request *DescribeCurveDataRequest) {
     request = &DescribeCurveDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3327,6 +3435,106 @@ func (c *Client) DescribeHostingDomainTaskWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeMySQLClusterDetailRequest() (request *DescribeMySQLClusterDetailRequest) {
+    request = &DescribeMySQLClusterDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeMySQLClusterDetail")
+    
+    
+    return
+}
+
+func NewDescribeMySQLClusterDetailResponse() (response *DescribeMySQLClusterDetailResponse) {
+    response = &DescribeMySQLClusterDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMySQLClusterDetail
+// 销毁Mysql
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATASOURCENOTEXIST = "FailedOperation.DataSourceNotExist"
+func (c *Client) DescribeMySQLClusterDetail(request *DescribeMySQLClusterDetailRequest) (response *DescribeMySQLClusterDetailResponse, err error) {
+    return c.DescribeMySQLClusterDetailWithContext(context.Background(), request)
+}
+
+// DescribeMySQLClusterDetail
+// 销毁Mysql
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATASOURCENOTEXIST = "FailedOperation.DataSourceNotExist"
+func (c *Client) DescribeMySQLClusterDetailWithContext(ctx context.Context, request *DescribeMySQLClusterDetailRequest) (response *DescribeMySQLClusterDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeMySQLClusterDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeMySQLClusterDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMySQLClusterDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMySQLClusterDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMySQLTaskStatusRequest() (request *DescribeMySQLTaskStatusRequest) {
+    request = &DescribeMySQLTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeMySQLTaskStatus")
+    
+    
+    return
+}
+
+func NewDescribeMySQLTaskStatusResponse() (response *DescribeMySQLTaskStatusResponse) {
+    response = &DescribeMySQLTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMySQLTaskStatus
+// 查询Mysql任务状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATASOURCENOTEXIST = "FailedOperation.DataSourceNotExist"
+func (c *Client) DescribeMySQLTaskStatus(request *DescribeMySQLTaskStatusRequest) (response *DescribeMySQLTaskStatusResponse, err error) {
+    return c.DescribeMySQLTaskStatusWithContext(context.Background(), request)
+}
+
+// DescribeMySQLTaskStatus
+// 查询Mysql任务状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATASOURCENOTEXIST = "FailedOperation.DataSourceNotExist"
+func (c *Client) DescribeMySQLTaskStatusWithContext(ctx context.Context, request *DescribeMySQLTaskStatusRequest) (response *DescribeMySQLTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeMySQLTaskStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeMySQLTaskStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMySQLTaskStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMySQLTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePostpayFreeQuotasRequest() (request *DescribePostpayFreeQuotasRequest) {
     request = &DescribePostpayFreeQuotasRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4173,6 +4381,56 @@ func (c *Client) DestroyEnvWithContext(ctx context.Context, request *DestroyEnvR
     request.SetContext(ctx)
     
     response = NewDestroyEnvResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDestroyMySQLRequest() (request *DestroyMySQLRequest) {
+    request = &DestroyMySQLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DestroyMySQL")
+    
+    
+    return
+}
+
+func NewDestroyMySQLResponse() (response *DestroyMySQLResponse) {
+    response = &DestroyMySQLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DestroyMySQL
+// 销毁Mysql
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATASOURCENOTEXIST = "FailedOperation.DataSourceNotExist"
+func (c *Client) DestroyMySQL(request *DestroyMySQLRequest) (response *DestroyMySQLResponse, err error) {
+    return c.DestroyMySQLWithContext(context.Background(), request)
+}
+
+// DestroyMySQL
+// 销毁Mysql
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATASOURCENOTEXIST = "FailedOperation.DataSourceNotExist"
+func (c *Client) DestroyMySQLWithContext(ctx context.Context, request *DestroyMySQLRequest) (response *DestroyMySQLResponse, err error) {
+    if request == nil {
+        request = NewDestroyMySQLRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DestroyMySQL")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyMySQL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDestroyMySQLResponse()
     err = c.Send(request, response)
     return
 }

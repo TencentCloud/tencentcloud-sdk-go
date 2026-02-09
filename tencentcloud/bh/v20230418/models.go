@@ -9946,7 +9946,7 @@ type SearchSubtaskResultByIdRequestParams struct {
 	// 运维父任务执行日志ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 运维父任务执行状态
+	// 运维父任务执行状态。1 - 执行中，2 - 成功，3 - 失败，4 - 超时
 	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -9965,7 +9965,7 @@ type SearchSubtaskResultByIdRequest struct {
 	// 运维父任务执行日志ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 运维父任务执行状态
+	// 运维父任务执行状态。1 - 执行中，2 - 成功，3 - 失败，4 - 超时
 	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -9996,6 +9996,9 @@ func (r *SearchSubtaskResultByIdRequest) FromJsonString(s string) error {
 type SearchSubtaskResultByIdResponseParams struct {
 	// 记录数
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 运维子任务执行结果
+	SubtaskResult []*SubtaskResult `json:"SubtaskResult,omitnil,omitempty" name:"SubtaskResult"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -10317,6 +10320,55 @@ type SourceType struct {
 
 	// 区分ioa原来和iam-mini
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+}
+
+type SubtaskResult struct {
+	// 执行日志ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 执行主机实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 执行主机名称
+	//
+	// Deprecated: Name is deprecated.
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 执行主机地域
+	ApCode *string `json:"ApCode,omitnil,omitempty" name:"ApCode"`
+
+	// 执行主机外网IP
+	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
+
+	// 执行主机内网IP
+	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
+
+	// 运维任务状态 1 - 执行中，2 - 成功， 3 - 失败，4 - 超时
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 运维任务失败原因
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// 运维任务命令退出码
+	ExitCode *int64 `json:"ExitCode,omitnil,omitempty" name:"ExitCode"`
+
+	// 运维任务开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 运维任务结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 运维任务执行结果输出。默认超出16384字节的内容会被自动截断
+	StdOut *string `json:"StdOut,omitnil,omitempty" name:"StdOut"`
+
+	// 运维任务执行结果错误
+	StdErr *string `json:"StdErr,omitnil,omitempty" name:"StdErr"`
+
+	// 资产名
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 资产账号
+	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 }
 
 // Predefined struct for user

@@ -495,6 +495,9 @@ type DeleteDataAgentSessionRequestParams struct {
 
 	// 会话ID
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 批量删除 会话id 列表
+	SessionIds []*string `json:"SessionIds,omitnil,omitempty" name:"SessionIds"`
 }
 
 type DeleteDataAgentSessionRequest struct {
@@ -505,6 +508,9 @@ type DeleteDataAgentSessionRequest struct {
 
 	// 会话ID
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 批量删除 会话id 列表
+	SessionIds []*string `json:"SessionIds,omitnil,omitempty" name:"SessionIds"`
 }
 
 func (r *DeleteDataAgentSessionRequest) ToJsonString() string {
@@ -521,6 +527,7 @@ func (r *DeleteDataAgentSessionRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "SessionId")
+	delete(f, "SessionIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDataAgentSessionRequest has unknown keys!", "")
 	}
@@ -531,6 +538,9 @@ func (r *DeleteDataAgentSessionRequest) FromJsonString(s string) error {
 type DeleteDataAgentSessionResponseParams struct {
 	// 删除的会话ID
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 删除的会话ID列表
+	SessionIds []*string `json:"SessionIds,omitnil,omitempty" name:"SessionIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

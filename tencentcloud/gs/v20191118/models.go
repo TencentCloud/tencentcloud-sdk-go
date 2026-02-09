@@ -148,6 +148,11 @@ type AndroidInstance struct {
 	// IDLE：未连接
 	// ESTABLISHED：连接中
 	ServiceStatus *string `json:"ServiceStatus,omitnil,omitempty" name:"ServiceStatus"`
+
+	// 安卓实例型号。
+	// YS1：默认值，基础型云手机
+	// GC0、GC1、GC2：三种性能型云手机
+	AndroidInstanceModel *string `json:"AndroidInstanceModel,omitnil,omitempty" name:"AndroidInstanceModel"`
 }
 
 type AndroidInstanceAppBlacklist struct {
@@ -249,6 +254,11 @@ type AndroidInstanceImage struct {
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 镜像型号。
+	// YS1：基础型云手机
+	// GC0、GC1、GC2：三种性能型云手机
+	AndroidInstanceImageModel *string `json:"AndroidInstanceImageModel,omitnil,omitempty" name:"AndroidInstanceImageModel"`
 }
 
 type AndroidInstanceInformation struct {
@@ -1416,6 +1426,9 @@ type CreateAndroidInstancesRequestParams struct {
 
 	// 安卓实例标签列表
 	Labels []*AndroidInstanceLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// 安卓实例型号。YS1：默认值，基础型云手机GC0、GC1、GC2：三种性能型云手机
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 }
 
 type CreateAndroidInstancesRequest struct {
@@ -1449,6 +1462,9 @@ type CreateAndroidInstancesRequest struct {
 
 	// 安卓实例标签列表
 	Labels []*AndroidInstanceLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// 安卓实例型号。YS1：默认值，基础型云手机GC0、GC1、GC2：三种性能型云手机
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 }
 
 func (r *CreateAndroidInstancesRequest) ToJsonString() string {
@@ -1469,6 +1485,7 @@ func (r *CreateAndroidInstancesRequest) FromJsonString(s string) error {
 	delete(f, "HostSerialNumbers")
 	delete(f, "ImageId")
 	delete(f, "Labels")
+	delete(f, "Model")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndroidInstancesRequest has unknown keys!", "")
 	}
@@ -2428,6 +2445,7 @@ type DescribeAndroidInstanceImagesRequestParams struct {
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 字段过滤器。Filter 的 Name 有以下值：
+	// ImageModel：镜像型号
 	// ImageName：镜像名称
 	// ImageState：镜像状态
 	// AndroidVersion：安卓版本
@@ -2450,6 +2468,7 @@ type DescribeAndroidInstanceImagesRequest struct {
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 字段过滤器。Filter 的 Name 有以下值：
+	// ImageModel：镜像型号
 	// ImageName：镜像名称
 	// ImageState：镜像状态
 	// AndroidVersion：安卓版本
@@ -2848,6 +2867,7 @@ type DescribeAndroidInstancesRequestParams struct {
 	// UserId：实例用户ID
 	// HostSerialNumber：宿主机序列号
 	// HostServerSerialNumber：机箱序列号
+	// AndroidInstanceModel：实例型号
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -2880,6 +2900,7 @@ type DescribeAndroidInstancesRequest struct {
 	// UserId：实例用户ID
 	// HostSerialNumber：宿主机序列号
 	// HostServerSerialNumber：机箱序列号
+	// AndroidInstanceModel：实例型号
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 

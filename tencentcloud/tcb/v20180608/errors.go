@@ -29,6 +29,9 @@ const (
 	// FailedOperation.CreateTable
 	FAILEDOPERATION_CREATETABLE = "FailedOperation.CreateTable"
 
+	// 数据不存在
+	FAILEDOPERATION_DATASOURCENOTEXIST = "FailedOperation.DataSourceNotExist"
+
 	// 数据库建立链接失败。
 	FAILEDOPERATION_DATABASECONNECTERROR = "FailedOperation.DatabaseConnectError"
 
