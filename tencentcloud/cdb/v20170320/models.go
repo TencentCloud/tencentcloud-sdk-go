@@ -5092,6 +5092,9 @@ type DescribeAccountsRequestParams struct {
 
 	// 待排序的时间字段，可选：CreateTime(账号创建时间)、ModifyTime(账号更新时间)、ModifyPasswordTime(密码修改时间)
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 匹配账号主机地址（Host）的正则表达式，规则同 MySQL 官网
+	HostRegexp *string `json:"HostRegexp,omitnil,omitempty" name:"HostRegexp"`
 }
 
 type DescribeAccountsRequest struct {
@@ -5114,6 +5117,9 @@ type DescribeAccountsRequest struct {
 
 	// 待排序的时间字段，可选：CreateTime(账号创建时间)、ModifyTime(账号更新时间)、ModifyPasswordTime(密码修改时间)
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 匹配账号主机地址（Host）的正则表达式，规则同 MySQL 官网
+	HostRegexp *string `json:"HostRegexp,omitnil,omitempty" name:"HostRegexp"`
 }
 
 func (r *DescribeAccountsRequest) ToJsonString() string {
@@ -5134,6 +5140,7 @@ func (r *DescribeAccountsRequest) FromJsonString(s string) error {
 	delete(f, "AccountRegexp")
 	delete(f, "SortBy")
 	delete(f, "OrderBy")
+	delete(f, "HostRegexp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccountsRequest has unknown keys!", "")
 	}

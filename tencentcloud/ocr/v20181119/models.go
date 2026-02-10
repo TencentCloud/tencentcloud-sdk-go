@@ -6233,7 +6233,7 @@ type MainlandPermitOCRRequestParams struct {
 
 	// 图片正反面
 	// FRONT：正面
-	// BACK：反面
+	// BACK：反面 （仅支持来往内地通行证反面识别，不支持港澳台通行证反面识别）
 	// 默认为FRONT
 	CardSide *string `json:"CardSide,omitnil,omitempty" name:"CardSide"`
 }
@@ -6252,7 +6252,7 @@ type MainlandPermitOCRRequest struct {
 
 	// 图片正反面
 	// FRONT：正面
-	// BACK：反面
+	// BACK：反面 （仅支持来往内地通行证反面识别，不支持港澳台通行证反面识别）
 	// 默认为FRONT
 	CardSide *string `json:"CardSide,omitnil,omitempty" name:"CardSide"`
 }

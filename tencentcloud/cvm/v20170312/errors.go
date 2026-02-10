@@ -386,6 +386,15 @@ const (
 	// CDC不支持指定的计费模式。
 	INVALIDPARAMETERVALUE_DEDICATEDCLUSTERNOTSUPPORTEDCHARGETYPE = "InvalidParameterValue.DedicatedClusterNotSupportedChargeType"
 
+	// 指定的专有资源包ID不存在
+	INVALIDPARAMETERVALUE_DEDICATEDRESOURCEPACKIDSNOTFOUND = "InvalidParameterValue.DedicatedResourcePackIdsNotFound"
+
+	// 未找到有效的专有资源包
+	INVALIDPARAMETERVALUE_DEDICATEDRESOURCEPACKNOTVALID = "InvalidParameterValue.DedicatedResourcePackNotValid"
+
+	// 专有资源包ID与专有预扣资源类型不匹配
+	INVALIDPARAMETERVALUE_DEDICATEDRESOURCEPACKTENANCYMISMATCH = "InvalidParameterValue.DedicatedResourcePackTenancyMismatch"
+
 	// 已经存在部署VPC。
 	INVALIDPARAMETERVALUE_DEPLOYVPCALREADYEXISTS = "InvalidParameterValue.DeployVpcAlreadyExists"
 

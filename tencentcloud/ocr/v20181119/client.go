@@ -3643,6 +3643,12 @@ func NewIDCardOCRResponse() (response *IDCardOCRResponse) {
 //
 // 
 //
+// 重要提醒：本产品告警功能依托AI检测技术，不可作为审核的唯一依据，应用前请做好效果测试。
+//
+// 
+//
+// 
+//
 // <table style="width:650px">
 //
 //       <thead>
@@ -3765,6 +3771,12 @@ func (c *Client) IDCardOCR(request *IDCardOCRRequest) (response *IDCardOCRRespon
 // 
 //
 // 另外，本接口还支持多种扩展能力，满足不同场景的需求。如身份证照片、人像照片的裁剪功能，同时具备7种告警功能，如下表所示。
+//
+// 
+//
+// 重要提醒：本产品告警功能依托AI检测技术，不可作为审核的唯一依据，应用前请做好效果测试。
+//
+// 
 //
 // 
 //
@@ -5259,6 +5271,12 @@ func NewRecognizeEncryptedIDCardOCRResponse() (response *RecognizeEncryptedIDCar
 //
 // 
 //
+// 重要提醒：本产品告警功能依托AI检测技术，不可作为审核的唯一依据，应用前请做好效果测试。
+//
+// 
+//
+// 
+//
 // <table style="width:650px">
 //
 //       <thead>
@@ -5385,6 +5403,12 @@ func (c *Client) RecognizeEncryptedIDCardOCR(request *RecognizeEncryptedIDCardOC
 // 
 //
 // 另外，本接口还支持多种扩展能力，满足不同场景的需求。如身份证照片、人像照片的裁剪功能，同时具备9种告警功能，如下表所示。
+//
+// 
+//
+// 重要提醒：本产品告警功能依托AI检测技术，不可作为审核的唯一依据，应用前请做好效果测试。
+//
+// 
 //
 // 
 //
@@ -5617,6 +5641,10 @@ func NewRecognizeGeneralCardWarnResponse() (response *RecognizeGeneralCardWarnRe
 //
 // 
 //
+// 重要提醒：本产品依托AI检测技术，不可作为审核的唯一依据，应用前请做好效果测试。
+//
+// 
+//
 // 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
@@ -5636,6 +5664,10 @@ func (c *Client) RecognizeGeneralCardWarn(request *RecognizeGeneralCardWarnReque
 
 // RecognizeGeneralCardWarn
 // 支持通用证照的有效性检测告警，包括卡证复印件告警、卡证翻拍告警等功能，支持通用证照的ps伪造检测，可以应用于各种证件信息有效性校验场景。
+//
+// 
+//
+// 重要提醒：本产品依托AI检测技术，不可作为审核的唯一依据，应用前请做好效果测试。
 //
 // 
 //
@@ -7325,6 +7357,10 @@ func NewRecognizeValidIDCardOCRResponse() (response *RecognizeValidIDCardOCRResp
 //
 // 
 //
+// 重要提醒：本产品告警功能依托AI检测技术，不可作为审核的唯一依据，应用前请做好效果测试。
+//
+// 
+//
 // 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
@@ -7353,6 +7389,10 @@ func (c *Client) RecognizeValidIDCardOCR(request *RecognizeValidIDCardOCRRequest
 
 // RecognizeValidIDCardOCR
 // 本接口支持二代身份证、临时身份证、港澳台居住证、外国人永久居留证，字段内容识别功能，包括姓名、性别、民族、出生、出生日期、住址、公民身份号码、签发机关、有效期限、国籍、通行证号码、持证人持有号码；支持返回证件类型；支持翻拍、复印、边框不完整、遮挡、字段级反光和字段级完整性告警；支持卡片主体框裁剪和头像裁剪。
+//
+// 
+//
+// 重要提醒：本产品告警功能依托AI检测技术，不可作为审核的唯一依据，应用前请做好效果测试。
 //
 // 
 //

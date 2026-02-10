@@ -265,6 +265,74 @@ func (c *Client) BuildClientNodeMountCommandWithContext(ctx context.Context, req
     return
 }
 
+func NewCancelLoadTaskRequest() (request *CancelLoadTaskRequest) {
+    request = &CancelLoadTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "CancelLoadTask")
+    
+    
+    return
+}
+
+func NewCancelLoadTaskResponse() (response *CancelLoadTaskResponse) {
+    response = &CancelLoadTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CancelLoadTask
+// 取消单个预热任务，仅任务在 waiting、running 状态时可以调用此接口。注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CancelLoadTask(request *CancelLoadTaskRequest) (response *CancelLoadTaskResponse, err error) {
+    return c.CancelLoadTaskWithContext(context.Background(), request)
+}
+
+// CancelLoadTask
+// 取消单个预热任务，仅任务在 waiting、running 状态时可以调用此接口。注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CancelLoadTaskWithContext(ctx context.Context, request *CancelLoadTaskRequest) (response *CancelLoadTaskResponse, err error) {
+    if request == nil {
+        request = NewCancelLoadTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "CancelLoadTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelLoadTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelLoadTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDataRepositoryTaskRequest() (request *CreateDataRepositoryTaskRequest) {
     request = &CreateDataRepositoryTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -286,12 +354,36 @@ func NewCreateDataRepositoryTaskResponse() (response *CreateDataRepositoryTaskRe
 
 // CreateDataRepositoryTask
 // 创建数据流通任务,包括从将文件系统的数据上传到存储桶下, 以及从存储桶下载到文件系统里。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDataRepositoryTask(request *CreateDataRepositoryTaskRequest) (response *CreateDataRepositoryTaskResponse, err error) {
     return c.CreateDataRepositoryTaskWithContext(context.Background(), request)
 }
 
 // CreateDataRepositoryTask
 // 创建数据流通任务,包括从将文件系统的数据上传到存储桶下, 以及从存储桶下载到文件系统里。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDataRepositoryTaskWithContext(ctx context.Context, request *CreateDataRepositoryTaskRequest) (response *CreateDataRepositoryTaskResponse, err error) {
     if request == nil {
         request = NewCreateDataRepositoryTaskRequest()
@@ -330,12 +422,36 @@ func NewCreateFileSystemResponse() (response *CreateFileSystemResponse) {
 
 // CreateFileSystem
 // 创建文件系统
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateFileSystem(request *CreateFileSystemRequest) (response *CreateFileSystemResponse, err error) {
     return c.CreateFileSystemWithContext(context.Background(), request)
 }
 
 // CreateFileSystem
 // 创建文件系统
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateFileSystemWithContext(ctx context.Context, request *CreateFileSystemRequest) (response *CreateFileSystemResponse, err error) {
     if request == nil {
         request = NewCreateFileSystemRequest()
@@ -374,12 +490,36 @@ func NewCreateFilesetResponse() (response *CreateFilesetResponse) {
 
 // CreateFileset
 // 创建Fileset
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateFileset(request *CreateFilesetRequest) (response *CreateFilesetResponse, err error) {
     return c.CreateFilesetWithContext(context.Background(), request)
 }
 
 // CreateFileset
 // 创建Fileset
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateFilesetWithContext(ctx context.Context, request *CreateFilesetRequest) (response *CreateFilesetResponse, err error) {
     if request == nil {
         request = NewCreateFilesetRequest()
@@ -393,6 +533,72 @@ func (c *Client) CreateFilesetWithContext(ctx context.Context, request *CreateFi
     request.SetContext(ctx)
     
     response = NewCreateFilesetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateLoadTaskRequest() (request *CreateLoadTaskRequest) {
+    request = &CreateLoadTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "CreateLoadTask")
+    
+    
+    return
+}
+
+func NewCreateLoadTaskResponse() (response *CreateLoadTaskResponse) {
+    response = &CreateLoadTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateLoadTask
+// GooseFS 预热相关接口，用于下发，列出，查询，修改预热任务。用于元数据预热、数据预热场景。 注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateLoadTask(request *CreateLoadTaskRequest) (response *CreateLoadTaskResponse, err error) {
+    return c.CreateLoadTaskWithContext(context.Background(), request)
+}
+
+// CreateLoadTask
+// GooseFS 预热相关接口，用于下发，列出，查询，修改预热任务。用于元数据预热、数据预热场景。 注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateLoadTaskWithContext(ctx context.Context, request *CreateLoadTaskRequest) (response *CreateLoadTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateLoadTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "CreateLoadTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLoadTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLoadTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -418,12 +624,34 @@ func NewDeleteCrossVpcSubnetSupportForClientNodeResponse() (response *DeleteCros
 
 // DeleteCrossVpcSubnetSupportForClientNode
 // 为客户端节点删除跨vpc子网访问能力
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteCrossVpcSubnetSupportForClientNode(request *DeleteCrossVpcSubnetSupportForClientNodeRequest) (response *DeleteCrossVpcSubnetSupportForClientNodeResponse, err error) {
     return c.DeleteCrossVpcSubnetSupportForClientNodeWithContext(context.Background(), request)
 }
 
 // DeleteCrossVpcSubnetSupportForClientNode
 // 为客户端节点删除跨vpc子网访问能力
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteCrossVpcSubnetSupportForClientNodeWithContext(ctx context.Context, request *DeleteCrossVpcSubnetSupportForClientNodeRequest) (response *DeleteCrossVpcSubnetSupportForClientNodeResponse, err error) {
     if request == nil {
         request = NewDeleteCrossVpcSubnetSupportForClientNodeRequest()
@@ -462,12 +690,34 @@ func NewDeleteFileSystemResponse() (response *DeleteFileSystemResponse) {
 
 // DeleteFileSystem
 // 删除文件系统
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteFileSystem(request *DeleteFileSystemRequest) (response *DeleteFileSystemResponse, err error) {
     return c.DeleteFileSystemWithContext(context.Background(), request)
 }
 
 // DeleteFileSystem
 // 删除文件系统
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteFileSystemWithContext(ctx context.Context, request *DeleteFileSystemRequest) (response *DeleteFileSystemResponse, err error) {
     if request == nil {
         request = NewDeleteFileSystemRequest()
@@ -506,12 +756,34 @@ func NewDeleteFilesetResponse() (response *DeleteFilesetResponse) {
 
 // DeleteFileset
 // 删除Fileset
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteFileset(request *DeleteFilesetRequest) (response *DeleteFilesetResponse, err error) {
     return c.DeleteFilesetWithContext(context.Background(), request)
 }
 
 // DeleteFileset
 // 删除Fileset
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteFilesetWithContext(ctx context.Context, request *DeleteFilesetRequest) (response *DeleteFilesetResponse, err error) {
     if request == nil {
         request = NewDeleteFilesetRequest()
@@ -550,12 +822,34 @@ func NewDescribeClientNodesResponse() (response *DescribeClientNodesResponse) {
 
 // DescribeClientNodes
 // 列出集群中所有的客户端节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClientNodes(request *DescribeClientNodesRequest) (response *DescribeClientNodesResponse, err error) {
     return c.DescribeClientNodesWithContext(context.Background(), request)
 }
 
 // DescribeClientNodes
 // 列出集群中所有的客户端节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClientNodesWithContext(ctx context.Context, request *DescribeClientNodesRequest) (response *DescribeClientNodesResponse, err error) {
     if request == nil {
         request = NewDescribeClientNodesRequest()
@@ -594,12 +888,34 @@ func NewDescribeClusterClientTokenResponse() (response *DescribeClusterClientTok
 
 // DescribeClusterClientToken
 // 查询GooseFS集群客户端凭证
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterClientToken(request *DescribeClusterClientTokenRequest) (response *DescribeClusterClientTokenResponse, err error) {
     return c.DescribeClusterClientTokenWithContext(context.Background(), request)
 }
 
 // DescribeClusterClientToken
 // 查询GooseFS集群客户端凭证
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterClientTokenWithContext(ctx context.Context, request *DescribeClusterClientTokenRequest) (response *DescribeClusterClientTokenResponse, err error) {
     if request == nil {
         request = NewDescribeClusterClientTokenRequest()
@@ -638,12 +954,34 @@ func NewDescribeClusterRoleTokenResponse() (response *DescribeClusterRoleTokenRe
 
 // DescribeClusterRoleToken
 // 查询GooseFS集群角色凭证
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterRoleToken(request *DescribeClusterRoleTokenRequest) (response *DescribeClusterRoleTokenResponse, err error) {
     return c.DescribeClusterRoleTokenWithContext(context.Background(), request)
 }
 
 // DescribeClusterRoleToken
 // 查询GooseFS集群角色凭证
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterRoleTokenWithContext(ctx context.Context, request *DescribeClusterRoleTokenRequest) (response *DescribeClusterRoleTokenResponse, err error) {
     if request == nil {
         request = NewDescribeClusterRoleTokenRequest()
@@ -657,58 +995,6 @@ func (c *Client) DescribeClusterRoleTokenWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeClusterRoleTokenResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeClusterRolesRequest() (request *DescribeClusterRolesRequest) {
-    request = &DescribeClusterRolesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("goosefs", APIVersion, "DescribeClusterRoles")
-    
-    
-    return
-}
-
-func NewDescribeClusterRolesResponse() (response *DescribeClusterRolesResponse) {
-    response = &DescribeClusterRolesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeClusterRoles
-// 接口废弃
-//
-// 
-//
-// 查询GooseFS集群角色
-func (c *Client) DescribeClusterRoles(request *DescribeClusterRolesRequest) (response *DescribeClusterRolesResponse, err error) {
-    return c.DescribeClusterRolesWithContext(context.Background(), request)
-}
-
-// DescribeClusterRoles
-// 接口废弃
-//
-// 
-//
-// 查询GooseFS集群角色
-func (c *Client) DescribeClusterRolesWithContext(ctx context.Context, request *DescribeClusterRolesRequest) (response *DescribeClusterRolesResponse, err error) {
-    if request == nil {
-        request = NewDescribeClusterRolesRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DescribeClusterRoles")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeClusterRoles require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeClusterRolesResponse()
     err = c.Send(request, response)
     return
 }
@@ -734,12 +1020,34 @@ func NewDescribeDataRepositoryTaskStatusResponse() (response *DescribeDataReposi
 
 // DescribeDataRepositoryTaskStatus
 // 获取数据流通任务实时状态，用作客户端控制
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataRepositoryTaskStatus(request *DescribeDataRepositoryTaskStatusRequest) (response *DescribeDataRepositoryTaskStatusResponse, err error) {
     return c.DescribeDataRepositoryTaskStatusWithContext(context.Background(), request)
 }
 
 // DescribeDataRepositoryTaskStatus
 // 获取数据流通任务实时状态，用作客户端控制
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataRepositoryTaskStatusWithContext(ctx context.Context, request *DescribeDataRepositoryTaskStatusRequest) (response *DescribeDataRepositoryTaskStatusResponse, err error) {
     if request == nil {
         request = NewDescribeDataRepositoryTaskStatusRequest()
@@ -778,12 +1086,34 @@ func NewDescribeFileSystemBucketsResponse() (response *DescribeFileSystemBuckets
 
 // DescribeFileSystemBuckets
 // 罗列文件系统关联的Bucket映射
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFileSystemBuckets(request *DescribeFileSystemBucketsRequest) (response *DescribeFileSystemBucketsResponse, err error) {
     return c.DescribeFileSystemBucketsWithContext(context.Background(), request)
 }
 
 // DescribeFileSystemBuckets
 // 罗列文件系统关联的Bucket映射
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFileSystemBucketsWithContext(ctx context.Context, request *DescribeFileSystemBucketsRequest) (response *DescribeFileSystemBucketsResponse, err error) {
     if request == nil {
         request = NewDescribeFileSystemBucketsRequest()
@@ -822,12 +1152,34 @@ func NewDescribeFileSystemsResponse() (response *DescribeFileSystemsResponse) {
 
 // DescribeFileSystems
 // 列出所有的文件系统
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFileSystems(request *DescribeFileSystemsRequest) (response *DescribeFileSystemsResponse, err error) {
     return c.DescribeFileSystemsWithContext(context.Background(), request)
 }
 
 // DescribeFileSystems
 // 列出所有的文件系统
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFileSystemsWithContext(ctx context.Context, request *DescribeFileSystemsRequest) (response *DescribeFileSystemsResponse, err error) {
     if request == nil {
         request = NewDescribeFileSystemsRequest()
@@ -866,12 +1218,34 @@ func NewDescribeFilesetGeneralConfigResponse() (response *DescribeFilesetGeneral
 
 // DescribeFilesetGeneralConfig
 // 查询Fileset通用配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFilesetGeneralConfig(request *DescribeFilesetGeneralConfigRequest) (response *DescribeFilesetGeneralConfigResponse, err error) {
     return c.DescribeFilesetGeneralConfigWithContext(context.Background(), request)
 }
 
 // DescribeFilesetGeneralConfig
 // 查询Fileset通用配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFilesetGeneralConfigWithContext(ctx context.Context, request *DescribeFilesetGeneralConfigRequest) (response *DescribeFilesetGeneralConfigResponse, err error) {
     if request == nil {
         request = NewDescribeFilesetGeneralConfigRequest()
@@ -910,12 +1284,34 @@ func NewDescribeFilesetsResponse() (response *DescribeFilesetsResponse) {
 
 // DescribeFilesets
 // 查询Fileset列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFilesets(request *DescribeFilesetsRequest) (response *DescribeFilesetsResponse, err error) {
     return c.DescribeFilesetsWithContext(context.Background(), request)
 }
 
 // DescribeFilesets
 // 查询Fileset列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFilesetsWithContext(ctx context.Context, request *DescribeFilesetsRequest) (response *DescribeFilesetsResponse, err error) {
     if request == nil {
         request = NewDescribeFilesetsRequest()
@@ -929,6 +1325,74 @@ func (c *Client) DescribeFilesetsWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeFilesetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLoadTaskRequest() (request *DescribeLoadTaskRequest) {
+    request = &DescribeLoadTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "DescribeLoadTask")
+    
+    
+    return
+}
+
+func NewDescribeLoadTaskResponse() (response *DescribeLoadTaskResponse) {
+    response = &DescribeLoadTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLoadTask
+// 查询单个预热任务执行情况。注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeLoadTask(request *DescribeLoadTaskRequest) (response *DescribeLoadTaskResponse, err error) {
+    return c.DescribeLoadTaskWithContext(context.Background(), request)
+}
+
+// DescribeLoadTask
+// 查询单个预热任务执行情况。注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeLoadTaskWithContext(ctx context.Context, request *DescribeLoadTaskRequest) (response *DescribeLoadTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeLoadTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DescribeLoadTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLoadTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLoadTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -954,12 +1418,36 @@ func NewDetachFileSystemBucketResponse() (response *DetachFileSystemBucketRespon
 
 // DetachFileSystemBucket
 // 解绑文件系统与Bucket的映射
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DetachFileSystemBucket(request *DetachFileSystemBucketRequest) (response *DetachFileSystemBucketResponse, err error) {
     return c.DetachFileSystemBucketWithContext(context.Background(), request)
 }
 
 // DetachFileSystemBucket
 // 解绑文件系统与Bucket的映射
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DetachFileSystemBucketWithContext(ctx context.Context, request *DetachFileSystemBucketRequest) (response *DetachFileSystemBucketResponse, err error) {
     if request == nil {
         request = NewDetachFileSystemBucketRequest()
@@ -998,12 +1486,36 @@ func NewExpandCapacityResponse() (response *ExpandCapacityResponse) {
 
 // ExpandCapacity
 // 扩展文件系统容量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ExpandCapacity(request *ExpandCapacityRequest) (response *ExpandCapacityResponse, err error) {
     return c.ExpandCapacityWithContext(context.Background(), request)
 }
 
 // ExpandCapacity
 // 扩展文件系统容量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ExpandCapacityWithContext(ctx context.Context, request *ExpandCapacityRequest) (response *ExpandCapacityResponse, err error) {
     if request == nil {
         request = NewExpandCapacityRequest()
@@ -1017,6 +1529,74 @@ func (c *Client) ExpandCapacityWithContext(ctx context.Context, request *ExpandC
     request.SetContext(ctx)
     
     response = NewExpandCapacityResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListLoadTasksRequest() (request *ListLoadTasksRequest) {
+    request = &ListLoadTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "ListLoadTasks")
+    
+    
+    return
+}
+
+func NewListLoadTasksResponse() (response *ListLoadTasksResponse) {
+    response = &ListLoadTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListLoadTasks
+// 列出该集群下所有预热任务。注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ListLoadTasks(request *ListLoadTasksRequest) (response *ListLoadTasksResponse, err error) {
+    return c.ListLoadTasksWithContext(context.Background(), request)
+}
+
+// ListLoadTasks
+// 列出该集群下所有预热任务。注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ListLoadTasksWithContext(ctx context.Context, request *ListLoadTasksRequest) (response *ListLoadTasksResponse, err error) {
+    if request == nil {
+        request = NewListLoadTasksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "ListLoadTasks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListLoadTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListLoadTasksResponse()
     err = c.Send(request, response)
     return
 }
@@ -1042,12 +1622,36 @@ func NewModifyDataRepositoryBandwidthResponse() (response *ModifyDataRepositoryB
 
 // ModifyDataRepositoryBandwidth
 // 修改数据流动带宽
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyDataRepositoryBandwidth(request *ModifyDataRepositoryBandwidthRequest) (response *ModifyDataRepositoryBandwidthResponse, err error) {
     return c.ModifyDataRepositoryBandwidthWithContext(context.Background(), request)
 }
 
 // ModifyDataRepositoryBandwidth
 // 修改数据流动带宽
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyDataRepositoryBandwidthWithContext(ctx context.Context, request *ModifyDataRepositoryBandwidthRequest) (response *ModifyDataRepositoryBandwidthResponse, err error) {
     if request == nil {
         request = NewModifyDataRepositoryBandwidthRequest()
@@ -1086,12 +1690,36 @@ func NewQueryCrossVpcSubnetSupportForClientNodeResponse() (response *QueryCrossV
 
 // QueryCrossVpcSubnetSupportForClientNode
 // 查询客户端节点跨vpc子网访问能力
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) QueryCrossVpcSubnetSupportForClientNode(request *QueryCrossVpcSubnetSupportForClientNodeRequest) (response *QueryCrossVpcSubnetSupportForClientNodeResponse, err error) {
     return c.QueryCrossVpcSubnetSupportForClientNodeWithContext(context.Background(), request)
 }
 
 // QueryCrossVpcSubnetSupportForClientNode
 // 查询客户端节点跨vpc子网访问能力
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) QueryCrossVpcSubnetSupportForClientNodeWithContext(ctx context.Context, request *QueryCrossVpcSubnetSupportForClientNodeRequest) (response *QueryCrossVpcSubnetSupportForClientNodeResponse, err error) {
     if request == nil {
         request = NewQueryCrossVpcSubnetSupportForClientNodeRequest()
@@ -1130,12 +1758,36 @@ func NewQueryDataRepositoryBandwidthResponse() (response *QueryDataRepositoryBan
 
 // QueryDataRepositoryBandwidth
 // 查询数据流动带宽
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) QueryDataRepositoryBandwidth(request *QueryDataRepositoryBandwidthRequest) (response *QueryDataRepositoryBandwidthResponse, err error) {
     return c.QueryDataRepositoryBandwidthWithContext(context.Background(), request)
 }
 
 // QueryDataRepositoryBandwidth
 // 查询数据流动带宽
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) QueryDataRepositoryBandwidthWithContext(ctx context.Context, request *QueryDataRepositoryBandwidthRequest) (response *QueryDataRepositoryBandwidthResponse, err error) {
     if request == nil {
         request = NewQueryDataRepositoryBandwidthRequest()
@@ -1174,12 +1826,36 @@ func NewUpdateFilesetResponse() (response *UpdateFilesetResponse) {
 
 // UpdateFileset
 // 修改FIleset
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateFileset(request *UpdateFilesetRequest) (response *UpdateFilesetResponse, err error) {
     return c.UpdateFilesetWithContext(context.Background(), request)
 }
 
 // UpdateFileset
 // 修改FIleset
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateFilesetWithContext(ctx context.Context, request *UpdateFilesetRequest) (response *UpdateFilesetResponse, err error) {
     if request == nil {
         request = NewUpdateFilesetRequest()
@@ -1218,12 +1894,36 @@ func NewUpdateFilesetGeneralConfigResponse() (response *UpdateFilesetGeneralConf
 
 // UpdateFilesetGeneralConfig
 // 修改Fileset通用配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateFilesetGeneralConfig(request *UpdateFilesetGeneralConfigRequest) (response *UpdateFilesetGeneralConfigResponse, err error) {
     return c.UpdateFilesetGeneralConfigWithContext(context.Background(), request)
 }
 
 // UpdateFilesetGeneralConfig
 // 修改Fileset通用配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateFilesetGeneralConfigWithContext(ctx context.Context, request *UpdateFilesetGeneralConfigRequest) (response *UpdateFilesetGeneralConfigResponse, err error) {
     if request == nil {
         request = NewUpdateFilesetGeneralConfigRequest()
@@ -1237,6 +1937,72 @@ func (c *Client) UpdateFilesetGeneralConfigWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewUpdateFilesetGeneralConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateLoadTaskPriorityRequest() (request *UpdateLoadTaskPriorityRequest) {
+    request = &UpdateLoadTaskPriorityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "UpdateLoadTaskPriority")
+    
+    
+    return
+}
+
+func NewUpdateLoadTaskPriorityResponse() (response *UpdateLoadTaskPriorityResponse) {
+    response = &UpdateLoadTaskPriorityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateLoadTaskPriority
+// 变更已有 GooseFS 预热任务配置，仅任务状态为 waiting 时可调用该接口。注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateLoadTaskPriority(request *UpdateLoadTaskPriorityRequest) (response *UpdateLoadTaskPriorityResponse, err error) {
+    return c.UpdateLoadTaskPriorityWithContext(context.Background(), request)
+}
+
+// UpdateLoadTaskPriority
+// 变更已有 GooseFS 预热任务配置，仅任务状态为 waiting 时可调用该接口。注意，该接口需要 GooseFS 集群版本 ≥ 1.5.1。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateLoadTaskPriorityWithContext(ctx context.Context, request *UpdateLoadTaskPriorityRequest) (response *UpdateLoadTaskPriorityResponse, err error) {
+    if request == nil {
+        request = NewUpdateLoadTaskPriorityRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "UpdateLoadTaskPriority")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateLoadTaskPriority require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateLoadTaskPriorityResponse()
     err = c.Send(request, response)
     return
 }

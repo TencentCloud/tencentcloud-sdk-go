@@ -305,6 +305,14 @@ type AdvancedSuperResolutionConfig struct {
 
 	// 目标图片高度，不能超过4096。
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
+
+	// 目标图片长边长度，不能超过4096。
+	// 注意：当Mode等于aspect或fixed，且未配置Width和Height字段时使用此配置。
+	LongSide *int64 `json:"LongSide,omitnil,omitempty" name:"LongSide"`
+
+	// 目标图片短边长度，不能超过4096。
+	// 注意：当Mode等于aspect或fixed，且未配置Width和Height字段时使用此配置。
+	ShortSide *int64 `json:"ShortSide,omitnil,omitempty" name:"ShortSide"`
 }
 
 type AiAnalysisResult struct {
@@ -2360,18 +2368,23 @@ type AigcVideoTaskInputFileInfo struct {
 
 	// 参考类型，GV模型适用。
 	// 注意：
-	// 
-	// 当使用GV模型时，可作为参考方式,可选asset(素材)、style(风格)。
+	// 当使用 GV 模型时，可作为参考方式，可选值：asset 表示素材、style 表示风格；
+	// 当使用 Kling 模型以及 Category 为 Video 时，可区分参考视频类型，feature 表示特征参考视频，base 表示待编辑视频。
 	ReferenceType *string `json:"ReferenceType,omitnil,omitempty" name:"ReferenceType"`
 
-	// 主体id.
+	// 主体 Id。
 	// 适用模型：Vidu-q2.
-	// 当需要对图片标识主体时，需要每个图片都带主体id，后续生成时可以通过@主体id的方式使用。
+	// 当需要对图片标识主体时，需要每个图片都带主体 Id，后续生成时可以通过@主体 Id 的方式使用。当 Category 为 Image 时有效。
 	ObjectId *string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
 
-	// 适用于Vidu-q2模型。
-	// 当全部图片携带主体id时，可针对主体设置音色id。 音色列表：https://shengshu.feishu.cn/sheets/EgFvs6DShhiEBStmjzccr5gonOg
+	// 适用于 Vidu-q2 模型。
+	// 当全部图片携带主体 Id 时，可针对主体设置音色 Id。 当 Category 为 Image 时有效。音色列表：https://shengshu.feishu.cn/sheets/EgFvs6DShhiEBStmjzccr5gonOg
 	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// 是否保留视频原声。当 Category 为 Video 时有效。取值如下：
+	// <li>Enabled：保留</li>
+	// <li>Disabled：不保留</li>
+	KeepOriginalSound *string `json:"KeepOriginalSound,omitnil,omitempty" name:"KeepOriginalSound"`
 }
 
 type AigcVideoTaskOutput struct {
@@ -4658,6 +4671,9 @@ type CreateAigcImageTaskRequestParams struct {
 	// 生图任务的输出媒体文件配置。
 	OutputConfig *AigcImageOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
 
+	// 输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。
+	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
+
 	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
@@ -4711,6 +4727,9 @@ type CreateAigcImageTaskRequest struct {
 	// 生图任务的输出媒体文件配置。
 	OutputConfig *AigcImageOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
 
+	// 输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。
+	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
+
 	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
@@ -4744,6 +4763,7 @@ func (r *CreateAigcImageTaskRequest) FromJsonString(s string) error {
 	delete(f, "NegativePrompt")
 	delete(f, "EnhancePrompt")
 	delete(f, "OutputConfig")
+	delete(f, "InputRegion")
 	delete(f, "SessionId")
 	delete(f, "SessionContext")
 	delete(f, "TasksPriority")
@@ -4836,6 +4856,9 @@ type CreateAigcVideoTaskRequestParams struct {
 	//     motion_control 表示动作控制；
 	//     avatar_i2v 表示数字人；
 	//     lip_sync 表示对口型；</li>
+	// <li>当 ModelName 为 Vidu 时：
+	//     template_effect 表示特效模板；
+	// </li>
 	// <li>其他 ModelName 暂不支持。</li>
 	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
 
@@ -4910,6 +4933,9 @@ type CreateAigcVideoTaskRequest struct {
 	//     motion_control 表示动作控制；
 	//     avatar_i2v 表示数字人；
 	//     lip_sync 表示对口型；</li>
+	// <li>当 ModelName 为 Vidu 时：
+	//     template_effect 表示特效模板；
+	// </li>
 	// <li>其他 ModelName 暂不支持。</li>
 	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
 
@@ -6288,6 +6314,102 @@ func (r *CreateJustInTimeTranscodeTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateJustInTimeTranscodeTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLLMComprehendTemplateRequestParams struct {
+	// 解析级别，可选值为：
+	// - Audio: 音频级解析
+	// - Video: 视频级解析
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 大模型解析模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 大模型解析模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 分段摘要解析配置
+	Summary *LLMComprehendSummary `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// 文本转录解析配置
+	Asr *LLMComprehendAsr `json:"Asr,omitnil,omitempty" name:"Asr"`
+}
+
+type CreateLLMComprehendTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 解析级别，可选值为：
+	// - Audio: 音频级解析
+	// - Video: 视频级解析
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 大模型解析模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 大模型解析模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 分段摘要解析配置
+	Summary *LLMComprehendSummary `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// 文本转录解析配置
+	Asr *LLMComprehendAsr `json:"Asr,omitnil,omitempty" name:"Asr"`
+}
+
+func (r *CreateLLMComprehendTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLLMComprehendTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Level")
+	delete(f, "SubAppId")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "Summary")
+	delete(f, "Asr")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLLMComprehendTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLLMComprehendTemplateResponseParams struct {
+	// 大模型理解模板的唯一标识
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateLLMComprehendTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLLMComprehendTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateLLMComprehendTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLLMComprehendTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9368,6 +9490,67 @@ func (r *DeleteJustInTimeTranscodeTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteJustInTimeTranscodeTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLLMComprehendTemplateRequestParams struct {
+	// 大模型理解模板的唯一标识
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+}
+
+type DeleteLLMComprehendTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 大模型理解模板的唯一标识
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+}
+
+func (r *DeleteLLMComprehendTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLLMComprehendTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLLMComprehendTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLLMComprehendTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteLLMComprehendTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLLMComprehendTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteLLMComprehendTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLLMComprehendTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13158,6 +13341,87 @@ func (r *DescribeJustInTimeTranscodeTemplatesResponse) FromJsonString(s string) 
 }
 
 // Predefined struct for user
+type DescribeLLMComprehendTemplatesRequestParams struct {
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 大模型解析模板唯一标识过滤条件，数组长度最大值：100。
+	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeLLMComprehendTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 大模型解析模板唯一标识过滤条件，数组长度最大值：100。
+	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeLLMComprehendTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLLMComprehendTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "Definitions")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLLMComprehendTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLLMComprehendTemplatesResponseParams struct {
+	// 符合过滤条件的记录总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 图片异步处理模板详情列表。
+	LLMComprehendTemplateSet []*LLMComprehendTemplateItem `json:"LLMComprehendTemplateSet,omitnil,omitempty" name:"LLMComprehendTemplateSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLLMComprehendTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLLMComprehendTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeLLMComprehendTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLLMComprehendTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLicenseUsageDataRequestParams struct {
 	// 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -13540,6 +13804,18 @@ type DescribeMediaProcessUsageDataRequestParams struct {
 	// <li>JITTranscoding: 即时转码</li>
 	// <li>VideoSnapshot: 视频截图</li>
 	// <li>JITEncryption: 即时加密</li>
+	// <li>MediaEnhancement: 音视频增强</li>
+	// <li>ImageCompression: 图片压缩</li>
+	// <li>ImageEnhancement: 图片增强</li>
+	// <li>ImageSuperResolution: 图片超分</li>
+	// <li>ImageAdvanceCompression: 图片高级压缩</li>
+	// <li>ImageUnderstanding: 图片理解</li>
+	// <li>AddTraceWatermark: 添加溯源水印</li>
+	// <li>AddBlindWatermark: 添加盲水印</li>
+	// <li>AddNagraWatermark: 添加NAGRA数字水印</li>
+	// <li>ExtractTraceWatermark: 提取溯源水印</li>
+	// <li>ExtractBlindWatermark: 提取盲水印</li>
+	// <li>ExtractNagraWatermark: 提取NAGRA数字水印</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -13580,6 +13856,18 @@ type DescribeMediaProcessUsageDataRequest struct {
 	// <li>JITTranscoding: 即时转码</li>
 	// <li>VideoSnapshot: 视频截图</li>
 	// <li>JITEncryption: 即时加密</li>
+	// <li>MediaEnhancement: 音视频增强</li>
+	// <li>ImageCompression: 图片压缩</li>
+	// <li>ImageEnhancement: 图片增强</li>
+	// <li>ImageSuperResolution: 图片超分</li>
+	// <li>ImageAdvanceCompression: 图片高级压缩</li>
+	// <li>ImageUnderstanding: 图片理解</li>
+	// <li>AddTraceWatermark: 添加溯源水印</li>
+	// <li>AddBlindWatermark: 添加盲水印</li>
+	// <li>AddNagraWatermark: 添加NAGRA数字水印</li>
+	// <li>ExtractTraceWatermark: 提取溯源水印</li>
+	// <li>ExtractBlindWatermark: 提取盲水印</li>
+	// <li>ExtractNagraWatermark: 提取NAGRA数字水印</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -18010,6 +18298,19 @@ type ImageTransform struct {
 	Flip *string `json:"Flip,omitnil,omitempty" name:"Flip"`
 }
 
+type ImageUnderstandingInfo struct {
+	// 图片理解项集合。
+	ImageUnderstandingSet []*ImageUnderstandingItem `json:"ImageUnderstandingSet,omitnil,omitempty" name:"ImageUnderstandingSet"`
+}
+
+type ImageUnderstandingItem struct {
+	// 模板id。
+	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 任务输出文件。
+	OutputFile []*MPSOutputFileInfo `json:"OutputFile,omitnil,omitempty" name:"OutputFile"`
+}
+
 type ImageWatermarkInput struct {
 	// 水印图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串。支持 jpeg、png、gif 图片格式。
 	ImageContent *string `json:"ImageContent,omitnil,omitempty" name:"ImageContent"`
@@ -18100,9 +18401,14 @@ type ImportMediaKnowledgeRequestParams struct {
 	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
+	// 大模型理解模板的唯一标识
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
 	// 需要导入知识库任务类型，可选值有：
 	// - AiAnalysis.DescriptionTask
 	// - SmartSubtitle.AsrFullTextTask
+	//
+	// Deprecated: ImportTasks is deprecated.
 	ImportTasks []*string `json:"ImportTasks,omitnil,omitempty" name:"ImportTasks"`
 }
 
@@ -18114,6 +18420,9 @@ type ImportMediaKnowledgeRequest struct {
 
 	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 大模型理解模板的唯一标识
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
 	// 需要导入知识库任务类型，可选值有：
 	// - AiAnalysis.DescriptionTask
@@ -18135,6 +18444,7 @@ func (r *ImportMediaKnowledgeRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SubAppId")
 	delete(f, "FileId")
+	delete(f, "Definition")
 	delete(f, "ImportTasks")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportMediaKnowledgeRequest has unknown keys!", "")
@@ -18309,6 +18619,68 @@ type JustInTimeTranscodeTemplate struct {
 
 	// 水印参数配置。
 	WatermarkConfigure *WatermarkConfigureData `json:"WatermarkConfigure,omitnil,omitempty" name:"WatermarkConfigure"`
+}
+
+type LLMComprehendAsr struct {
+	// 文本转录任务开关，可选值：
+	// - ON：开启文本转录任务；
+	// - OFF：关闭文本转录任务。
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+}
+
+type LLMComprehendAsrForUpdate struct {
+	// 文本转录任务开关，可选值：
+	// - ON：开启文本转录任务；
+	// - OFF：关闭文本转录任务。
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+}
+
+type LLMComprehendSummary struct {
+	// 分段摘要任务开关，可选值：
+	// - ON：开启分段摘要任务；
+	// - OFF：关闭分段摘要任
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 扩展参数，其值为序列化的 json字符串。可参考[扩展参数说明](/document/product/862/104493#note)
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
+}
+
+type LLMComprehendSummaryForUpdate struct {
+	// 分段摘要任务开关，可选值：
+	// - ON：开启分段摘要任务；
+	// - OFF：关闭分段摘要任
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 扩展参数，其值为序列化的 json字符串。可参考[扩展参数说明](/document/product/862/104493#note)
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
+}
+
+type LLMComprehendTemplateItem struct {
+	// 图片异步处理模板唯一标识。
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 图片异步处理模板名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 图片异步处理模板描述信息。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 解析级别，可选值为：
+	// - Audio: 音频级解析
+	// - Video: 视频级解析
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 分段摘要解析配置
+	Summary *LLMComprehendSummary `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// 文本转录解析配置
+	Asr *LLMComprehendAsr `json:"Asr,omitnil,omitempty" name:"Asr"`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type LicenseUsageDataItem struct {
@@ -19339,6 +19711,10 @@ type MediaInfo struct {
 
 	// MPS智能媒资信息
 	MPSAiMediaInfo *MPSAiMediaInfo `json:"MPSAiMediaInfo,omitnil,omitempty" name:"MPSAiMediaInfo"`
+
+	// 图片理解信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageUnderstandingInfo *ImageUnderstandingInfo `json:"ImageUnderstandingInfo,omitnil,omitempty" name:"ImageUnderstandingInfo"`
 }
 
 type MediaInputInfo struct {
@@ -21533,6 +21909,106 @@ func (r *ModifyJustInTimeTranscodeTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyJustInTimeTranscodeTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLLMComprehendTemplateRequestParams struct {
+	// 大模型理解模板的唯一标识
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 大模型解析模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 大模型解析模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 解析模型，可选值为：
+	// - Basic: 基础模型
+	// - Pro: 优化模型
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 分段摘要解析配置
+	Summary *LLMComprehendSummaryForUpdate `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// 文本转录解析配置
+	Asr *LLMComprehendAsrForUpdate `json:"Asr,omitnil,omitempty" name:"Asr"`
+}
+
+type ModifyLLMComprehendTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 大模型理解模板的唯一标识
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 大模型解析模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 大模型解析模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 解析模型，可选值为：
+	// - Basic: 基础模型
+	// - Pro: 优化模型
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 分段摘要解析配置
+	Summary *LLMComprehendSummaryForUpdate `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// 文本转录解析配置
+	Asr *LLMComprehendAsrForUpdate `json:"Asr,omitnil,omitempty" name:"Asr"`
+}
+
+func (r *ModifyLLMComprehendTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLLMComprehendTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "SubAppId")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "Model")
+	delete(f, "Summary")
+	delete(f, "Asr")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLLMComprehendTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLLMComprehendTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLLMComprehendTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLLMComprehendTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyLLMComprehendTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLLMComprehendTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -24458,9 +24934,17 @@ type ProcessImageAsyncInput struct {
 	OutputConfig *ProcessImageAsyncOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
 }
 
+type ProcessImageAsyncInputExtendedParameter struct {
+	// 输入模型的提示词。
+	Prompts []*string `json:"Prompts,omitnil,omitempty" name:"Prompts"`
+}
+
 type ProcessImageAsyncOutput struct {
 	// 图片异步处理任务的输出文件信息。
 	FileInfo *ProcessImageAsyncOutputFileInfo `json:"FileInfo,omitnil,omitempty" name:"FileInfo"`
+
+	// 图片理解结果。
+	OutputText *string `json:"OutputText,omitnil,omitempty" name:"OutputText"`
 }
 
 type ProcessImageAsyncOutputConfig struct {
@@ -24617,6 +25101,9 @@ type ProcessImageAsyncTask struct {
 type ProcessImageAsyncTaskInput struct {
 	// 图片异步处理模板ID。
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 图片异步处理扩展参数。
+	ExtendedParameter *ProcessImageAsyncInputExtendedParameter `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
 }
 
 type ProcessImageAsyncTemplateItem struct {

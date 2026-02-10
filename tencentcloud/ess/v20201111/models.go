@@ -14320,10 +14320,10 @@ type DescribeOrganizationGroupOrganizationsRequestParams struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 指定分页每页返回的数据条数，单页最大1000
+	// 指定分页每页返回的数据条数，单页最大支持 200。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
+	// 偏移量，默认为0，最大20000。关于<code>Offset</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688" target="_blank">简介</a>中的相关小节。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 查询成员企业的企业名，模糊匹配
@@ -14343,6 +14343,9 @@ type DescribeOrganizationGroupOrganizationsRequestParams struct {
 	// 是否导出当前成员企业数据
 	// <ul><li> **false**：不导出（默认值）</li>
 	// <li> **true**：导出</li></ul>
+	// 
+	// p.s.
+	// 若传入此参数， LImit参数将无效，导出的为全量数据。
 	Export *bool `json:"Export,omitnil,omitempty" name:"Export"`
 
 	// 成员企业机构 ID，32 位字符串，在PC控制台 集团管理可获取
@@ -14356,10 +14359,10 @@ type DescribeOrganizationGroupOrganizationsRequest struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 指定分页每页返回的数据条数，单页最大1000
+	// 指定分页每页返回的数据条数，单页最大支持 200。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
+	// 偏移量，默认为0，最大20000。关于<code>Offset</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688" target="_blank">简介</a>中的相关小节。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 查询成员企业的企业名，模糊匹配
@@ -14377,6 +14380,9 @@ type DescribeOrganizationGroupOrganizationsRequest struct {
 	// 是否导出当前成员企业数据
 	// <ul><li> **false**：不导出（默认值）</li>
 	// <li> **true**：导出</li></ul>
+	// 
+	// p.s.
+	// 若传入此参数， LImit参数将无效，导出的为全量数据。
 	Export *bool `json:"Export,omitnil,omitempty" name:"Export"`
 
 	// 成员企业机构 ID，32 位字符串，在PC控制台 集团管理可获取

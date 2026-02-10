@@ -1271,6 +1271,14 @@ type CreateAICallRequestParams struct {
 
 	// 最大振铃时长，达到时长阈值自动挂断。 **仅自携号码支持当前参数**
 	MaxRingTimeoutSecond *int64 `json:"MaxRingTimeoutSecond,omitnil,omitempty" name:"MaxRingTimeoutSecond"`
+
+	// 环境音场景，没有的话不填。
+	// coffee_shops：咖啡店氛围，背景中有人聊天
+	// busy_office：客服中心
+	AmbientSoundType *string `json:"AmbientSoundType,omitnil,omitempty" name:"AmbientSoundType"`
+
+	// 环境音音量。如果AmbientSoundType 为空，该字段不填。取值的范围是 [0,2]。值越低，环境音越小；值越高，环境音越响亮。如果未设置，则使用默认值 1。
+	AmbientSoundVolume *float64 `json:"AmbientSoundVolume,omitnil,omitempty" name:"AmbientSoundVolume"`
 }
 
 type CreateAICallRequest struct {
@@ -1558,6 +1566,14 @@ type CreateAICallRequest struct {
 
 	// 最大振铃时长，达到时长阈值自动挂断。 **仅自携号码支持当前参数**
 	MaxRingTimeoutSecond *int64 `json:"MaxRingTimeoutSecond,omitnil,omitempty" name:"MaxRingTimeoutSecond"`
+
+	// 环境音场景，没有的话不填。
+	// coffee_shops：咖啡店氛围，背景中有人聊天
+	// busy_office：客服中心
+	AmbientSoundType *string `json:"AmbientSoundType,omitnil,omitempty" name:"AmbientSoundType"`
+
+	// 环境音音量。如果AmbientSoundType 为空，该字段不填。取值的范围是 [0,2]。值越低，环境音越小；值越高，环境音越响亮。如果未设置，则使用默认值 1。
+	AmbientSoundVolume *float64 `json:"AmbientSoundVolume,omitnil,omitempty" name:"AmbientSoundVolume"`
 }
 
 func (r *CreateAICallRequest) ToJsonString() string {
@@ -1610,6 +1626,8 @@ func (r *CreateAICallRequest) FromJsonString(s string) error {
 	delete(f, "LLMExtraBody")
 	delete(f, "MaxCallDurationMs")
 	delete(f, "MaxRingTimeoutSecond")
+	delete(f, "AmbientSoundType")
+	delete(f, "AmbientSoundVolume")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAICallRequest has unknown keys!", "")
 	}
@@ -8444,6 +8462,12 @@ type TelCdrInfo struct {
 
 	// 如果是智能体相关通话，这里是智能体名称
 	AIAgentName *string `json:"AIAgentName,omitnil,omitempty" name:"AIAgentName"`
+
+	// 接通后系统挂断原因，枚举类似
+	SysHangupReason *int64 `json:"SysHangupReason,omitnil,omitempty" name:"SysHangupReason"`
+
+	// 接通后系统挂断原因，文字描述信息
+	SysHangupReasonString *string `json:"SysHangupReasonString,omitnil,omitempty" name:"SysHangupReasonString"`
 }
 
 type TimeRange struct {

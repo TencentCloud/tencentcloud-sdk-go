@@ -601,6 +601,74 @@ func (c *Client) BatchDescribeDocumentWithContext(ctx context.Context, request *
     return
 }
 
+func NewBatchGetPlaybackTokenRequest() (request *BatchGetPlaybackTokenRequest) {
+    request = &BatchGetPlaybackTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "BatchGetPlaybackToken")
+    
+    
+    return
+}
+
+func NewBatchGetPlaybackTokenResponse() (response *BatchGetPlaybackTokenResponse) {
+    response = &BatchGetPlaybackTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchGetPlaybackToken
+// 批量获取信令录制回放token，用于回放指定课堂时鉴权
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BatchGetPlaybackToken(request *BatchGetPlaybackTokenRequest) (response *BatchGetPlaybackTokenResponse, err error) {
+    return c.BatchGetPlaybackTokenWithContext(context.Background(), request)
+}
+
+// BatchGetPlaybackToken
+// 批量获取信令录制回放token，用于回放指定课堂时鉴权
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BatchGetPlaybackTokenWithContext(ctx context.Context, request *BatchGetPlaybackTokenRequest) (response *BatchGetPlaybackTokenResponse, err error) {
+    if request == nil {
+        request = NewBatchGetPlaybackTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lcic", APIVersion, "BatchGetPlaybackToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchGetPlaybackToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchGetPlaybackTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchRegisterRequest() (request *BatchRegisterRequest) {
     request = &BatchRegisterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1481,6 +1549,64 @@ func (c *Client) DeleteGroupMemberWithContext(ctx context.Context, request *Dele
     request.SetContext(ctx)
     
     response = NewDeleteGroupMemberResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePlaybackItemRequest() (request *DeletePlaybackItemRequest) {
+    request = &DeletePlaybackItemRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DeletePlaybackItem")
+    
+    
+    return
+}
+
+func NewDeletePlaybackItemResponse() (response *DeletePlaybackItemResponse) {
+    response = &DeletePlaybackItemResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeletePlaybackItem
+// 删除该堂课的录制记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+func (c *Client) DeletePlaybackItem(request *DeletePlaybackItemRequest) (response *DeletePlaybackItemResponse, err error) {
+    return c.DeletePlaybackItemWithContext(context.Background(), request)
+}
+
+// DeletePlaybackItem
+// 删除该堂课的录制记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+func (c *Client) DeletePlaybackItemWithContext(ctx context.Context, request *DeletePlaybackItemRequest) (response *DeletePlaybackItemResponse, err error) {
+    if request == nil {
+        request = NewDeletePlaybackItemRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lcic", APIVersion, "DeletePlaybackItem")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePlaybackItem require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeletePlaybackItemResponse()
     err = c.Send(request, response)
     return
 }
@@ -2687,6 +2813,118 @@ func (c *Client) DescribeMarqueeWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribePlayRecordsRequest() (request *DescribePlayRecordsRequest) {
+    request = &DescribePlayRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribePlayRecords")
+    
+    
+    return
+}
+
+func NewDescribePlayRecordsResponse() (response *DescribePlayRecordsResponse) {
+    response = &DescribePlayRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePlayRecords
+// 信令录制视频观看记录查询接口，用于查询指定课堂在指定时间段内的用户播放记录。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribePlayRecords(request *DescribePlayRecordsRequest) (response *DescribePlayRecordsResponse, err error) {
+    return c.DescribePlayRecordsWithContext(context.Background(), request)
+}
+
+// DescribePlayRecords
+// 信令录制视频观看记录查询接口，用于查询指定课堂在指定时间段内的用户播放记录。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribePlayRecordsWithContext(ctx context.Context, request *DescribePlayRecordsRequest) (response *DescribePlayRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribePlayRecordsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lcic", APIVersion, "DescribePlayRecords")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePlayRecords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePlayRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePlaybackListRequest() (request *DescribePlaybackListRequest) {
+    request = &DescribePlaybackListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribePlaybackList")
+    
+    
+    return
+}
+
+func NewDescribePlaybackListResponse() (response *DescribePlaybackListResponse) {
+    response = &DescribePlaybackListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePlaybackList
+// 查询录制信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribePlaybackList(request *DescribePlaybackListRequest) (response *DescribePlaybackListResponse, err error) {
+    return c.DescribePlaybackListWithContext(context.Background(), request)
+}
+
+// DescribePlaybackList
+// 查询录制信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribePlaybackListWithContext(ctx context.Context, request *DescribePlaybackListRequest) (response *DescribePlaybackListResponse, err error) {
+    if request == nil {
+        request = NewDescribePlaybackListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lcic", APIVersion, "DescribePlaybackList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePlaybackList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePlaybackListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeQuestionListRequest() (request *DescribeQuestionListRequest) {
     request = &DescribeQuestionListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3633,6 +3871,74 @@ func (c *Client) ForbidSendMsgWithContext(ctx context.Context, request *ForbidSe
     request.SetContext(ctx)
     
     response = NewForbidSendMsgResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetPlaybackTokenRequest() (request *GetPlaybackTokenRequest) {
+    request = &GetPlaybackTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "GetPlaybackToken")
+    
+    
+    return
+}
+
+func NewGetPlaybackTokenResponse() (response *GetPlaybackTokenResponse) {
+    response = &GetPlaybackTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetPlaybackToken
+// 获取信令录制回放token，用于回放指定课堂时鉴权
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetPlaybackToken(request *GetPlaybackTokenRequest) (response *GetPlaybackTokenResponse, err error) {
+    return c.GetPlaybackTokenWithContext(context.Background(), request)
+}
+
+// GetPlaybackToken
+// 获取信令录制回放token，用于回放指定课堂时鉴权
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetPlaybackTokenWithContext(ctx context.Context, request *GetPlaybackTokenRequest) (response *GetPlaybackTokenResponse, err error) {
+    if request == nil {
+        request = NewGetPlaybackTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lcic", APIVersion, "GetPlaybackToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetPlaybackToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetPlaybackTokenResponse()
     err = c.Send(request, response)
     return
 }

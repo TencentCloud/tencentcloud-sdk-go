@@ -2985,6 +2985,84 @@ type ResourceSpec struct {
 }
 
 // Predefined struct for user
+type RestartInstanceRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 节点类型，可选值：CK / ZK / CHPROXY
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 符合节点类型的要重启的节点ip列表
+	NodeIpList []*string `json:"NodeIpList,omitnil,omitempty" name:"NodeIpList"`
+
+	// 是否滚动重启，默认为true
+	RollingRestart *bool `json:"RollingRestart,omitnil,omitempty" name:"RollingRestart"`
+}
+
+type RestartInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 节点类型，可选值：CK / ZK / CHPROXY
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 符合节点类型的要重启的节点ip列表
+	NodeIpList []*string `json:"NodeIpList,omitnil,omitempty" name:"NodeIpList"`
+
+	// 是否滚动重启，默认为true
+	RollingRestart *bool `json:"RollingRestart,omitnil,omitempty" name:"RollingRestart"`
+}
+
+func (r *RestartInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "NodeType")
+	delete(f, "NodeIpList")
+	delete(f, "RollingRestart")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestartInstanceResponseParams struct {
+	// 任务id
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RestartInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *RestartInstanceResponseParams `json:"Response"`
+}
+
+func (r *RestartInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ScaleCNOutUpInstanceRequestParams struct {
 	// 实例唯一ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

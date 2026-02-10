@@ -1495,6 +1495,60 @@ func (c *Client) ResizeDiskWithContext(ctx context.Context, request *ResizeDiskR
     return
 }
 
+func NewRestartInstanceRequest() (request *RestartInstanceRequest) {
+    request = &RestartInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "RestartInstance")
+    
+    
+    return
+}
+
+func NewRestartInstanceResponse() (response *RestartInstanceResponse) {
+    response = &RestartInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RestartInstance
+// 重启实例，可以按节点类型和节点进行重启，可选滚动重启
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) RestartInstance(request *RestartInstanceRequest) (response *RestartInstanceResponse, err error) {
+    return c.RestartInstanceWithContext(context.Background(), request)
+}
+
+// RestartInstance
+// 重启实例，可以按节点类型和节点进行重启，可选滚动重启
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) RestartInstanceWithContext(ctx context.Context, request *RestartInstanceRequest) (response *RestartInstanceResponse, err error) {
+    if request == nil {
+        request = NewRestartInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cdwch", APIVersion, "RestartInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestartInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRestartInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewScaleCNOutUpInstanceRequest() (request *ScaleCNOutUpInstanceRequest) {
     request = &ScaleCNOutUpInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1518,7 +1572,9 @@ func NewScaleCNOutUpInstanceResponse() (response *ScaleCNOutUpInstanceResponse) 
 // open-api接口提供弹性伸缩云原生集群能力
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ScaleCNOutUpInstance(request *ScaleCNOutUpInstanceRequest) (response *ScaleCNOutUpInstanceResponse, err error) {
     return c.ScaleCNOutUpInstanceWithContext(context.Background(), request)
 }
@@ -1527,7 +1583,9 @@ func (c *Client) ScaleCNOutUpInstance(request *ScaleCNOutUpInstanceRequest) (res
 // open-api接口提供弹性伸缩云原生集群能力
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ScaleCNOutUpInstanceWithContext(ctx context.Context, request *ScaleCNOutUpInstanceRequest) (response *ScaleCNOutUpInstanceResponse, err error) {
     if request == nil {
         request = NewScaleCNOutUpInstanceRequest()
@@ -1568,7 +1626,9 @@ func NewScaleOutInstanceResponse() (response *ScaleOutInstanceResponse) {
 // 调整clickhouse节点数量
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ScaleOutInstance(request *ScaleOutInstanceRequest) (response *ScaleOutInstanceResponse, err error) {
     return c.ScaleOutInstanceWithContext(context.Background(), request)
 }
@@ -1577,7 +1637,9 @@ func (c *Client) ScaleOutInstance(request *ScaleOutInstanceRequest) (response *S
 // 调整clickhouse节点数量
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ScaleOutInstanceWithContext(ctx context.Context, request *ScaleOutInstanceRequest) (response *ScaleOutInstanceResponse, err error) {
     if request == nil {
         request = NewScaleOutInstanceRequest()
@@ -1618,7 +1680,9 @@ func NewScaleUpInstanceResponse() (response *ScaleUpInstanceResponse) {
 // 垂直扩缩容节点规格，修改节点cvm的规格cpu，内存。 规格变化阶段，服务不可用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ScaleUpInstance(request *ScaleUpInstanceRequest) (response *ScaleUpInstanceResponse, err error) {
     return c.ScaleUpInstanceWithContext(context.Background(), request)
 }
@@ -1627,7 +1691,9 @@ func (c *Client) ScaleUpInstance(request *ScaleUpInstanceRequest) (response *Sca
 // 垂直扩缩容节点规格，修改节点cvm的规格cpu，内存。 规格变化阶段，服务不可用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ScaleUpInstanceWithContext(ctx context.Context, request *ScaleUpInstanceRequest) (response *ScaleUpInstanceResponse, err error) {
     if request == nil {
         request = NewScaleUpInstanceRequest()

@@ -6622,10 +6622,10 @@ type UserInfo struct {
 	// 用户名
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 密码
+	// base64加密后的密码
 	PassWord *string `json:"PassWord,omitnil,omitempty" name:"PassWord"`
 
-	// 用户链接来自的 IP
+	// 用户链接来自的 IP地址
 	WhiteHost *string `json:"WhiteHost,omitnil,omitempty" name:"WhiteHost"`
 
 	// 修改前用户链接来自的 IP

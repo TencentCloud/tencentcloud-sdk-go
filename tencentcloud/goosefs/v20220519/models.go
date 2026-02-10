@@ -152,6 +152,9 @@ type BatchAddClientNodesRequestParams struct {
 
 	// 是否单集群默认是false	
 	SingleClusterFlag *bool `json:"SingleClusterFlag,omitnil,omitempty" name:"SingleClusterFlag"`
+
+	// 客户端集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 type BatchAddClientNodesRequest struct {
@@ -165,6 +168,9 @@ type BatchAddClientNodesRequest struct {
 
 	// 是否单集群默认是false	
 	SingleClusterFlag *bool `json:"SingleClusterFlag,omitnil,omitempty" name:"SingleClusterFlag"`
+
+	// 客户端集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 func (r *BatchAddClientNodesRequest) ToJsonString() string {
@@ -182,6 +188,7 @@ func (r *BatchAddClientNodesRequest) FromJsonString(s string) error {
 	delete(f, "FileSystemId")
 	delete(f, "ClientNodes")
 	delete(f, "SingleClusterFlag")
+	delete(f, "ClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchAddClientNodesRequest has unknown keys!", "")
 	}
@@ -220,6 +227,9 @@ type BatchDeleteClientNodesRequestParams struct {
 
 	// 是否单集群，默认是false
 	SingleClusterFlag *bool `json:"SingleClusterFlag,omitnil,omitempty" name:"SingleClusterFlag"`
+
+	// 客户端集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 type BatchDeleteClientNodesRequest struct {
@@ -233,6 +243,9 @@ type BatchDeleteClientNodesRequest struct {
 
 	// 是否单集群，默认是false
 	SingleClusterFlag *bool `json:"SingleClusterFlag,omitnil,omitempty" name:"SingleClusterFlag"`
+
+	// 客户端集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 func (r *BatchDeleteClientNodesRequest) ToJsonString() string {
@@ -250,6 +263,7 @@ func (r *BatchDeleteClientNodesRequest) FromJsonString(s string) error {
 	delete(f, "FileSystemId")
 	delete(f, "ClientNodes")
 	delete(f, "SingleClusterFlag")
+	delete(f, "ClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDeleteClientNodesRequest has unknown keys!", "")
 	}
@@ -285,6 +299,9 @@ type BuildClientNodeMountCommandRequestParams struct {
 
 	// 自定义挂载目录的绝对路径, 如果未指定, 则会使用默认值, 格式/goosefsx/${fs_id}-proxy. 比如/goosefsx/x-c60-a2b3d4-proxy
 	CustomMountDir *string `json:"CustomMountDir,omitnil,omitempty" name:"CustomMountDir"`
+
+	// 客户端集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 type BuildClientNodeMountCommandRequest struct {
@@ -295,6 +312,9 @@ type BuildClientNodeMountCommandRequest struct {
 
 	// 自定义挂载目录的绝对路径, 如果未指定, 则会使用默认值, 格式/goosefsx/${fs_id}-proxy. 比如/goosefsx/x-c60-a2b3d4-proxy
 	CustomMountDir *string `json:"CustomMountDir,omitnil,omitempty" name:"CustomMountDir"`
+
+	// 客户端集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 func (r *BuildClientNodeMountCommandRequest) ToJsonString() string {
@@ -311,6 +331,7 @@ func (r *BuildClientNodeMountCommandRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FileSystemId")
 	delete(f, "CustomMountDir")
+	delete(f, "ClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BuildClientNodeMountCommandRequest has unknown keys!", "")
 	}
@@ -342,6 +363,67 @@ func (r *BuildClientNodeMountCommandResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CancelLoadTaskRequestParams struct {
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 预热任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type CancelLoadTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 预热任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *CancelLoadTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelLoadTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelLoadTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelLoadTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CancelLoadTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelLoadTaskResponseParams `json:"Response"`
+}
+
+func (r *CancelLoadTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelLoadTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ChargeAttribute struct {
 	// 到期时间
 	CurDeadline *string `json:"CurDeadline,omitnil,omitempty" name:"CurDeadline"`
@@ -365,6 +447,9 @@ type ClientClusterManagerNodeInfo struct {
 
 	// 初始密码
 	InitialPassword *string `json:"InitialPassword,omitnil,omitempty" name:"InitialPassword"`
+
+	// 所属集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 type ClientNodeAttribute struct {
@@ -408,20 +493,6 @@ type ClientToken struct {
 	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
 }
 
-type ClusterRole struct {
-	// 集群ID
-	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
-
-	// 角色名
-	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
-
-	// 描述
-	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
-
-	// 目录列表
-	DirectoryList []*string `json:"DirectoryList,omitnil,omitempty" name:"DirectoryList"`
-}
-
 // Predefined struct for user
 type CreateDataRepositoryTaskRequestParams struct {
 	// 数据流通任务类型, FS_TO_COS(文件系统到COS Bucket),或者COS_TO_FS(COS Bucket到文件系统)
@@ -444,6 +515,12 @@ type CreateDataRepositoryTaskRequestParams struct {
 
 	// 文件列表下载地址，以http开头
 	TextLocation *string `json:"TextLocation,omitnil,omitempty" name:"TextLocation"`
+
+	// 是否开启自定义路径(暂时仅供预热使用)
+	EnableDataFlowSubPath *bool `json:"EnableDataFlowSubPath,omitnil,omitempty" name:"EnableDataFlowSubPath"`
+
+	// 自定义路径(暂时仅供预热使用)
+	DataFlowSubPath *string `json:"DataFlowSubPath,omitnil,omitempty" name:"DataFlowSubPath"`
 }
 
 type CreateDataRepositoryTaskRequest struct {
@@ -469,6 +546,12 @@ type CreateDataRepositoryTaskRequest struct {
 
 	// 文件列表下载地址，以http开头
 	TextLocation *string `json:"TextLocation,omitnil,omitempty" name:"TextLocation"`
+
+	// 是否开启自定义路径(暂时仅供预热使用)
+	EnableDataFlowSubPath *bool `json:"EnableDataFlowSubPath,omitnil,omitempty" name:"EnableDataFlowSubPath"`
+
+	// 自定义路径(暂时仅供预热使用)
+	DataFlowSubPath *string `json:"DataFlowSubPath,omitnil,omitempty" name:"DataFlowSubPath"`
 }
 
 func (r *CreateDataRepositoryTaskRequest) ToJsonString() string {
@@ -490,6 +573,8 @@ func (r *CreateDataRepositoryTaskRequest) FromJsonString(s string) error {
 	delete(f, "TaskName")
 	delete(f, "RepositoryType")
 	delete(f, "TextLocation")
+	delete(f, "EnableDataFlowSubPath")
+	delete(f, "DataFlowSubPath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataRepositoryTaskRequest has unknown keys!", "")
 	}
@@ -523,9 +608,6 @@ func (r *CreateDataRepositoryTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFileSystemRequestParams struct {
-	// 文件系统类型, 可填goosefs和goosefsx
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
 	// 文件系统名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
@@ -540,6 +622,11 @@ type CreateFileSystemRequestParams struct {
 
 	// 子网所在的可用区
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 文件系统类型, 可填goosefs和goosefsx
+	//
+	// Deprecated: Type is deprecated.
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 文件系统关联的tag
 	Tag []*Tag `json:"Tag,omitnil,omitempty" name:"Tag"`
@@ -557,9 +644,6 @@ type CreateFileSystemRequestParams struct {
 type CreateFileSystemRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统类型, 可填goosefs和goosefsx
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
 	// 文件系统名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
@@ -574,6 +658,9 @@ type CreateFileSystemRequest struct {
 
 	// 子网所在的可用区
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 文件系统类型, 可填goosefs和goosefsx
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 文件系统关联的tag
 	Tag []*Tag `json:"Tag,omitnil,omitempty" name:"Tag"`
@@ -600,12 +687,12 @@ func (r *CreateFileSystemRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Type")
 	delete(f, "Name")
 	delete(f, "Description")
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
 	delete(f, "Zone")
+	delete(f, "Type")
 	delete(f, "Tag")
 	delete(f, "GooseFSxBuildElements")
 	delete(f, "SecurityGroupId")
@@ -618,6 +705,9 @@ func (r *CreateFileSystemRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFileSystemResponseParams struct {
+	// 创建成功返回的文件系统ID：
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -727,6 +817,70 @@ func (r *CreateFilesetResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateFilesetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLoadTaskRequestParams struct {
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 创建预热任务参数
+	LoadTaskCreationAttrs *LoadTaskCreationAttrs `json:"LoadTaskCreationAttrs,omitnil,omitempty" name:"LoadTaskCreationAttrs"`
+}
+
+type CreateLoadTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 创建预热任务参数
+	LoadTaskCreationAttrs *LoadTaskCreationAttrs `json:"LoadTaskCreationAttrs,omitnil,omitempty" name:"LoadTaskCreationAttrs"`
+}
+
+func (r *CreateLoadTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLoadTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "LoadTaskCreationAttrs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLoadTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLoadTaskResponseParams struct {
+	// 预热任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateLoadTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLoadTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateLoadTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLoadTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1085,70 +1239,6 @@ func (r *DescribeClusterRoleTokenResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeClusterRolesRequestParams struct {
-	// 集群ID
-	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
-
-	// 角色名
-	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
-}
-
-type DescribeClusterRolesRequest struct {
-	*tchttp.BaseRequest
-	
-	// 集群ID
-	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
-
-	// 角色名
-	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
-}
-
-func (r *DescribeClusterRolesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeClusterRolesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ClusterId")
-	delete(f, "RoleName")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterRolesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeClusterRolesResponseParams struct {
-	// 集群角色
-	ClusterRoles []*ClusterRole `json:"ClusterRoles,omitnil,omitempty" name:"ClusterRoles"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeClusterRolesResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeClusterRolesResponseParams `json:"Response"`
-}
-
-func (r *DescribeClusterRolesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeClusterRolesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeDataRepositoryTaskStatusRequestParams struct {
 	// task id
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -1477,6 +1567,70 @@ func (r *DescribeFilesetsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLoadTaskRequestParams struct {
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 预热任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeLoadTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 预热任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeLoadTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLoadTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLoadTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLoadTaskResponseParams struct {
+	// 预热任务参数
+	LoadTaskAttrs *LoadTaskAttrs `json:"LoadTaskAttrs,omitnil,omitempty" name:"LoadTaskAttrs"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLoadTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLoadTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeLoadTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLoadTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DetachFileSystemBucketRequestParams struct {
 	// 文件系统ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
@@ -1535,6 +1689,26 @@ func (r *DetachFileSystemBucketResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DetachFileSystemBucketResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DistributedLoadAttrs struct {
+	// 预热类型，枚举值 LoadByPath｜LoadByList
+	LoadType *string `json:"LoadType,omitnil,omitempty" name:"LoadType"`
+
+	// 是否跳过相同文件，默认为 true
+	SkipIfExists *bool `json:"SkipIfExists,omitnil,omitempty" name:"SkipIfExists"`
+
+	// 预热路径，入参单条挂载路径。入参数LoadType为LoadByPath，该参数不应为空
+	LoadByPath *string `json:"LoadByPath,omitnil,omitempty" name:"LoadByPath"`
+
+	// 通过文件列表批量预热，入参为 cos://bucket-appid/ 开头的 COS 路径，且仅支持 txt 格式文件，长度不能超过255个字符。入参数LoadType为LoadByList，该参数不应为空
+	LoadByList *string `json:"LoadByList,omitnil,omitempty" name:"LoadByList"`
+
+	// 副本数配置，枚举值，可选值 SingleReplica（单副本，默认）｜MaxReplica（最大副本）
+	Replica *string `json:"Replica,omitnil,omitempty" name:"Replica"`
+
+	// 同步执行元数据预热，并基于预热后的元数据执行 DistributedLoad。默认为 false
+	MetadataSync *bool `json:"MetadataSync,omitnil,omitempty" name:"MetadataSync"`
 }
 
 // Predefined struct for user
@@ -1709,6 +1883,8 @@ type GooseFSxBuildElement struct {
 	Capacity *uint64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
 
 	// 要关联映射的bucket列表
+	//
+	// Deprecated: MappedBucketList is deprecated.
 	MappedBucketList []*MappedBucket `json:"MappedBucketList,omitnil,omitempty" name:"MappedBucketList"`
 }
 
@@ -1727,6 +1903,166 @@ type LinuxNodeAttribute struct {
 
 	// 自定义挂载点
 	MountPoint *string `json:"MountPoint,omitnil,omitempty" name:"MountPoint"`
+}
+
+// Predefined struct for user
+type ListLoadTasksRequestParams struct {
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 偏移量
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 任务创建起始时间戳，默认为3天前：当前时间戳-86400*3
+	StartTimestamp *uint64 `json:"StartTimestamp,omitnil,omitempty" name:"StartTimestamp"`
+
+	// 任务变更时间戳
+	EndTimestamp *uint64 `json:"EndTimestamp,omitnil,omitempty" name:"EndTimestamp"`
+
+	// 筛选任务状态，枚举Waiting,Running,Canceled,Completed。默认返回所有任务
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 筛选优先级任务，默认返回所有任务
+	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+}
+
+type ListLoadTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 偏移量
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 任务创建起始时间戳，默认为3天前：当前时间戳-86400*3
+	StartTimestamp *uint64 `json:"StartTimestamp,omitnil,omitempty" name:"StartTimestamp"`
+
+	// 任务变更时间戳
+	EndTimestamp *uint64 `json:"EndTimestamp,omitnil,omitempty" name:"EndTimestamp"`
+
+	// 筛选任务状态，枚举Waiting,Running,Canceled,Completed。默认返回所有任务
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 筛选优先级任务，默认返回所有任务
+	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+}
+
+func (r *ListLoadTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListLoadTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "StartTimestamp")
+	delete(f, "EndTimestamp")
+	delete(f, "State")
+	delete(f, "Priority")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListLoadTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListLoadTasksResponseParams struct {
+	// 预热任务参数
+	LoadTaskList []*LoadTaskAttrs `json:"LoadTaskList,omitnil,omitempty" name:"LoadTaskList"`
+
+	// 任务数总量
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListLoadTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *ListLoadTasksResponseParams `json:"Response"`
+}
+
+func (r *ListLoadTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListLoadTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type LoadTaskAttrs struct {
+	// 预热任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 预热任务类型，枚举值，MetadataLoad｜DistributedLoad
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 任务描述，支持中文
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 任务优先级，数值越高代表优先级越高，边界值 1-9999，默认值为 1
+	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 元数据预热任务参数，用于仅预热元数据时入参。入参数TaskType为MetadataLoad时，该参数不应为空。
+	MetadataLoadAttrs *MetadataLoadAttrs `json:"MetadataLoadAttrs,omitnil,omitempty" name:"MetadataLoadAttrs"`
+
+	// 数据预热任务参数。入参数TaskType为DistributedLoad时，该参数不应为空。
+	DistributedLoadAttrs *DistributedLoadAttrs `json:"DistributedLoadAttrs,omitnil,omitempty" name:"DistributedLoadAttrs"`
+
+	// 将任务执行报告写入 COS 的路径，如果不需要报告则入参空
+	ReportPath *string `json:"ReportPath,omitnil,omitempty" name:"ReportPath"`
+
+	// 枚举，Completed，Running，Waiting，Cancelled
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 任务执行信息，打印预热文件成功个数，失败个数，预热耗时信息 
+	TaskMessage *string `json:"TaskMessage,omitnil,omitempty" name:"TaskMessage"`
+
+	// 预热任务创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 预热任务变更时间
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 任务提交账号，子账号或服务角色 ID
+	Requester *string `json:"Requester,omitnil,omitempty" name:"Requester"`
+}
+
+type LoadTaskCreationAttrs struct {
+	// 预热任务类型，枚举值，MetadataLoad｜DistributedLoad。
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 任务优先级，数值越高代表优先级越高，边界值 1-9999，默认值为 1
+	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 任务描述，支持中文
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 元数据预热任务参数，用于仅预热元数据时入参。入参数TaskType为MetadataLoad时，该参数不应为空。
+	MetadataLoadAttrs *MetadataLoadAttrs `json:"MetadataLoadAttrs,omitnil,omitempty" name:"MetadataLoadAttrs"`
+
+	// 数据预热任务参数。入参数TaskType为DistributedLoad时，该参数不应为空。
+	DistributedLoadAttrs *DistributedLoadAttrs `json:"DistributedLoadAttrs,omitnil,omitempty" name:"DistributedLoadAttrs"`
+
+	// 将任务执行报告写入 COS 的路径，如果不需要报告则入参空
+	ReportPath *string `json:"ReportPath,omitnil,omitempty" name:"ReportPath"`
 }
 
 type MappedBucket struct {
@@ -1763,6 +2099,20 @@ type MappedBucket struct {
 
 	// 自定义Endpoint
 	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+}
+
+type MetadataLoadAttrs struct {
+	// 预热类型，枚举值 LoadByPath｜LoadByList
+	LoadType *string `json:"LoadType,omitnil,omitempty" name:"LoadType"`
+
+	// 是否跳过相同文件，默认为 true
+	SkipIfExists *bool `json:"SkipIfExists,omitnil,omitempty" name:"SkipIfExists"`
+
+	// 预热路径，入参单条挂载路径，长度不能超过255个字符。入参数LoadType为LoadByPath，该参数不应为空
+	LoadByPath *string `json:"LoadByPath,omitnil,omitempty" name:"LoadByPath"`
+
+	// 通过文件列表批量预热，入参为 cos://bucket-appid/ 开头的 COS 路径，且仅支持 txt 格式文件，长度不能超过255个字符。入参数LoadType为LoadByList，该参数不应为空
+	LoadByList *string `json:"LoadByList,omitnil,omitempty" name:"LoadByList"`
 }
 
 // Predefined struct for user
@@ -1960,6 +2310,15 @@ type SubnetInfo struct {
 
 	// 子网ID
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 应用的集群；可以是集群id,也可以是All
+	UsedCluster *string `json:"UsedCluster,omitnil,omitempty" name:"UsedCluster"`
+
+	// cidr，只有当IsDirectConnect为true时才生效
+	CIDR *string `json:"CIDR,omitnil,omitempty" name:"CIDR"`
+
+	// 是否为专线接入场景
+	IsDirectConnect *bool `json:"IsDirectConnect,omitnil,omitempty" name:"IsDirectConnect"`
 }
 
 type Tag struct {
@@ -2110,5 +2469,73 @@ func (r *UpdateFilesetResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateFilesetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateLoadTaskPriorityRequestParams struct {
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 预热任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务优先级，数值越高代表优先级越高，边界值 1-9999，默认值为 1
+	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+}
+
+type UpdateLoadTaskPriorityRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 预热任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务优先级，数值越高代表优先级越高，边界值 1-9999，默认值为 1
+	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+}
+
+func (r *UpdateLoadTaskPriorityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateLoadTaskPriorityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "TaskId")
+	delete(f, "Priority")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateLoadTaskPriorityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateLoadTaskPriorityResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateLoadTaskPriorityResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateLoadTaskPriorityResponseParams `json:"Response"`
+}
+
+func (r *UpdateLoadTaskPriorityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateLoadTaskPriorityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

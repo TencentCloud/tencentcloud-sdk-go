@@ -97,6 +97,11 @@ func (r *AcquireSandboxInstanceTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CLSConfig struct {
+	// 沙箱工具日志推送所使用的CLS日志主题ID
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+}
+
 type CfsStorageSource struct {
 	// CFS资源ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
@@ -280,6 +285,9 @@ type CreateSandboxToolRequestParams struct {
 
 	// 沙箱工具自定义配置
 	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
+
+	// 沙箱工具日志推送相关配置
+	LogConfiguration *LogConfiguration `json:"LogConfiguration,omitnil,omitempty" name:"LogConfiguration"`
 }
 
 type CreateSandboxToolRequest struct {
@@ -314,6 +322,9 @@ type CreateSandboxToolRequest struct {
 
 	// 沙箱工具自定义配置
 	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
+
+	// 沙箱工具日志推送相关配置
+	LogConfiguration *LogConfiguration `json:"LogConfiguration,omitnil,omitempty" name:"LogConfiguration"`
 }
 
 func (r *CreateSandboxToolRequest) ToJsonString() string {
@@ -338,6 +349,7 @@ func (r *CreateSandboxToolRequest) FromJsonString(s string) error {
 	delete(f, "RoleArn")
 	delete(f, "StorageMounts")
 	delete(f, "CustomConfiguration")
+	delete(f, "LogConfiguration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSandboxToolRequest has unknown keys!", "")
 	}
@@ -882,6 +894,11 @@ type ImageStorageSource struct {
 	Digest *string `json:"Digest,omitnil,omitempty" name:"Digest"`
 }
 
+type LogConfiguration struct {
+	// 日志推送CLS的配置。
+	CLSConfig *CLSConfig `json:"CLSConfig,omitnil,omitempty" name:"CLSConfig"`
+}
+
 type MountOption struct {
 	// 指定沙箱工具中的存储配置名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -1125,6 +1142,9 @@ type SandboxTool struct {
 
 	// 沙箱工具自定义配置
 	CustomConfiguration *CustomConfigurationDetail `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
+
+	// 沙箱工具日志推送相关配置
+	LogConfiguration *LogConfiguration `json:"LogConfiguration,omitnil,omitempty" name:"LogConfiguration"`
 }
 
 // Predefined struct for user

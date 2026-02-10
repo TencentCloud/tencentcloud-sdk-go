@@ -515,7 +515,7 @@ type AddressChargePrepaid struct {
 	// 购买实例的时长，单位是月。可支持时长：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 自动续费标志。0表示手动续费，1表示自动续费，2表示到期不续费。默认缺省为0即手动续费
+	// 自动续费标志。0表示手动续费，1表示自动续费，2表示到期不续费。默认缺省为1即自动续费。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 }
 
@@ -31602,10 +31602,10 @@ type NatGateway struct {
 	// 标准型NAT网关自动扩容
 	AutoScaling *bool `json:"AutoScaling,omitnil,omitempty" name:"AutoScaling"`
 
-	// 是否代答公网发给NAT网关上弹性公网IP的ICMP echo请求报文，当前适用于标准型NAT网关
+	// 是否代答公网发给NAT网关上弹性公网IP的ICMP echo请求报文，默认为true，应答请求报文；false代表不应答。
 	ICMPProxy *bool `json:"ICMPProxy,omitnil,omitempty" name:"ICMPProxy"`
 
-	// true代表同一个私网IP访问同一个公网目的IP时，固定使用同一个NAT网关上的弹性公网IP；false代表这种情况下使用的弹性公网IP不固定。默认为true。
+	// 同一个内网地址通过NAT网关访问同一个目的IP时，是否使用固定的弹性公网IP。默认为true，使用固定IP；false代表使用随机IP。
 	PublicAddressAffinity *bool `json:"PublicAddressAffinity,omitnil,omitempty" name:"PublicAddressAffinity"`
 }
 

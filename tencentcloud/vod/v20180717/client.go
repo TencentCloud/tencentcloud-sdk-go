@@ -1791,6 +1791,64 @@ func (c *Client) CreateJustInTimeTranscodeTemplateWithContext(ctx context.Contex
     return
 }
 
+func NewCreateLLMComprehendTemplateRequest() (request *CreateLLMComprehendTemplateRequest) {
+    request = &CreateLLMComprehendTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateLLMComprehendTemplate")
+    
+    
+    return
+}
+
+func NewCreateLLMComprehendTemplateResponse() (response *CreateLLMComprehendTemplateResponse) {
+    response = &CreateLLMComprehendTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateLLMComprehendTemplate
+// 创建大模型解析模板
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_EXTENDEDPARAMETER = "InvalidParameterValue.ExtendedParameter"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_SWITCH = "InvalidParameterValue.Switch"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) CreateLLMComprehendTemplate(request *CreateLLMComprehendTemplateRequest) (response *CreateLLMComprehendTemplateResponse, err error) {
+    return c.CreateLLMComprehendTemplateWithContext(context.Background(), request)
+}
+
+// CreateLLMComprehendTemplate
+// 创建大模型解析模板
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_EXTENDEDPARAMETER = "InvalidParameterValue.ExtendedParameter"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_SWITCH = "InvalidParameterValue.Switch"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) CreateLLMComprehendTemplateWithContext(ctx context.Context, request *CreateLLMComprehendTemplateRequest) (response *CreateLLMComprehendTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateLLMComprehendTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateLLMComprehendTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLLMComprehendTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLLMComprehendTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMPSTemplateRequest() (request *CreateMPSTemplateRequest) {
     request = &CreateMPSTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3933,6 +3991,74 @@ func (c *Client) DeleteJustInTimeTranscodeTemplateWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewDeleteJustInTimeTranscodeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLLMComprehendTemplateRequest() (request *DeleteLLMComprehendTemplateRequest) {
+    request = &DeleteLLMComprehendTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteLLMComprehendTemplate")
+    
+    
+    return
+}
+
+func NewDeleteLLMComprehendTemplateResponse() (response *DeleteLLMComprehendTemplateResponse) {
+    response = &DeleteLLMComprehendTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteLLMComprehendTemplate
+// 删除用户自定义图像异步处理模板。
+//
+// 
+//
+// 注意：模板 ID 为 10000 以下的为系统预置模板，不允许删除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DELETEDEFAULTTEMPLATE = "InvalidParameterValue.DeleteDefaultTemplate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteLLMComprehendTemplate(request *DeleteLLMComprehendTemplateRequest) (response *DeleteLLMComprehendTemplateResponse, err error) {
+    return c.DeleteLLMComprehendTemplateWithContext(context.Background(), request)
+}
+
+// DeleteLLMComprehendTemplate
+// 删除用户自定义图像异步处理模板。
+//
+// 
+//
+// 注意：模板 ID 为 10000 以下的为系统预置模板，不允许删除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DELETEDEFAULTTEMPLATE = "InvalidParameterValue.DeleteDefaultTemplate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteLLMComprehendTemplateWithContext(ctx context.Context, request *DeleteLLMComprehendTemplateRequest) (response *DeleteLLMComprehendTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteLLMComprehendTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DeleteLLMComprehendTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLLMComprehendTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLLMComprehendTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -7051,6 +7177,68 @@ func (c *Client) DescribeJustInTimeTranscodeTemplatesWithContext(ctx context.Con
     request.SetContext(ctx)
     
     response = NewDescribeJustInTimeTranscodeTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLLMComprehendTemplatesRequest() (request *DescribeLLMComprehendTemplatesRequest) {
+    request = &DescribeLLMComprehendTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeLLMComprehendTemplates")
+    
+    
+    return
+}
+
+func NewDescribeLLMComprehendTemplatesResponse() (response *DescribeLLMComprehendTemplatesResponse) {
+    response = &DescribeLLMComprehendTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLLMComprehendTemplates
+// 根据大模型解析模板唯一标识，获取大模型解析模板详情列表。返回结果包含符合条件的所有用户自定义大模型解析模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeLLMComprehendTemplates(request *DescribeLLMComprehendTemplatesRequest) (response *DescribeLLMComprehendTemplatesResponse, err error) {
+    return c.DescribeLLMComprehendTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeLLMComprehendTemplates
+// 根据大模型解析模板唯一标识，获取大模型解析模板详情列表。返回结果包含符合条件的所有用户自定义大模型解析模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeLLMComprehendTemplatesWithContext(ctx context.Context, request *DescribeLLMComprehendTemplatesRequest) (response *DescribeLLMComprehendTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLLMComprehendTemplatesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DescribeLLMComprehendTemplates")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLLMComprehendTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLLMComprehendTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -10881,6 +11069,64 @@ func (c *Client) ModifyJustInTimeTranscodeTemplateWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewModifyJustInTimeTranscodeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLLMComprehendTemplateRequest() (request *ModifyLLMComprehendTemplateRequest) {
+    request = &ModifyLLMComprehendTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyLLMComprehendTemplate")
+    
+    
+    return
+}
+
+func NewModifyLLMComprehendTemplateResponse() (response *ModifyLLMComprehendTemplateResponse) {
+    response = &ModifyLLMComprehendTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLLMComprehendTemplate
+// 修改大模型解析模板
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_EXTENDEDPARAMETER = "InvalidParameterValue.ExtendedParameter"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_SWITCH = "InvalidParameterValue.Switch"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) ModifyLLMComprehendTemplate(request *ModifyLLMComprehendTemplateRequest) (response *ModifyLLMComprehendTemplateResponse, err error) {
+    return c.ModifyLLMComprehendTemplateWithContext(context.Background(), request)
+}
+
+// ModifyLLMComprehendTemplate
+// 修改大模型解析模板
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_EXTENDEDPARAMETER = "InvalidParameterValue.ExtendedParameter"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_SWITCH = "InvalidParameterValue.Switch"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) ModifyLLMComprehendTemplateWithContext(ctx context.Context, request *ModifyLLMComprehendTemplateRequest) (response *ModifyLLMComprehendTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyLLMComprehendTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "ModifyLLMComprehendTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLLMComprehendTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLLMComprehendTemplateResponse()
     err = c.Send(request, response)
     return
 }

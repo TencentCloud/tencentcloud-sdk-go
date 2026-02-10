@@ -2742,7 +2742,9 @@ type DescribeBillingResourceGroupRequestParams struct {
 	//     InstanceId (资源组节点id)
 	//     InstanceStatus (资源组节点状态)
 	// 2. Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询
-	// 3. 每次请求的Filters的上限为10，Filter.Values的上限为100
+	// 3. Filter.Negative: 是否取反，默认为false
+	// 4. Filter.Fuzzy: 是否模糊查询，默认为false
+	// 5. 每次请求的Filters的上限为10，Filter.Values的上限为100
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10...即每页左边为闭区间; 默认0
@@ -2770,7 +2772,9 @@ type DescribeBillingResourceGroupRequest struct {
 	//     InstanceId (资源组节点id)
 	//     InstanceStatus (资源组节点状态)
 	// 2. Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询
-	// 3. 每次请求的Filters的上限为10，Filter.Values的上限为100
+	// 3. Filter.Negative: 是否取反，默认为false
+	// 4. Filter.Fuzzy: 是否模糊查询，默认为false
+	// 5. 每次请求的Filters的上限为10，Filter.Values的上限为100
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10...即每页左边为闭区间; 默认0
@@ -2845,12 +2849,7 @@ func (r *DescribeBillingResourceGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBillingResourceGroupsRequestParams struct {
-	// 资源组类型;
-	// 枚举值:
-	// 空: 通用, TRAIN: 训练, INFERENCE: 推理
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// Filter.Name: 枚举值: ResourceGroupId (资源组id列表)                    ResourceGroupName (资源组名称列表)                    AvailableNodeCount（资源组中可用节点数量）Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询每次请求的Filters的上限为5，Filter.Values的上限为100
+	// Filter.Name: 枚举值: ResourceGroupId (资源组id列表)                    ResourceGroupName (资源组名称列表)                    AvailableNodeCount（资源组中可用节点数量） Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询每次请求的Filters的上限为5，Filter.Values的上限为100
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 标签过滤
@@ -2874,12 +2873,7 @@ type DescribeBillingResourceGroupsRequestParams struct {
 type DescribeBillingResourceGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源组类型;
-	// 枚举值:
-	// 空: 通用, TRAIN: 训练, INFERENCE: 推理
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// Filter.Name: 枚举值: ResourceGroupId (资源组id列表)                    ResourceGroupName (资源组名称列表)                    AvailableNodeCount（资源组中可用节点数量）Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询每次请求的Filters的上限为5，Filter.Values的上限为100
+	// Filter.Name: 枚举值: ResourceGroupId (资源组id列表)                    ResourceGroupName (资源组名称列表)                    AvailableNodeCount（资源组中可用节点数量） Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询每次请求的Filters的上限为5，Filter.Values的上限为100
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 标签过滤
@@ -2912,7 +2906,6 @@ func (r *DescribeBillingResourceGroupsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Type")
 	delete(f, "Filters")
 	delete(f, "TagFilters")
 	delete(f, "Offset")

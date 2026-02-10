@@ -84,6 +84,9 @@ type Agent struct {
 
 	// 高级设置
 	AdvancedConfig *AgentAdvancedConfig `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
+
+	// 工具数量上限
+	MaxToolCount *int64 `json:"MaxToolCount,omitnil,omitempty" name:"MaxToolCount"`
 }
 
 type AgentAdvancedConfig struct {
@@ -321,12 +324,14 @@ type AgentPluginInfo struct {
 	Headers []*AgentPluginHeader `json:"Headers,omitnil,omitempty" name:"Headers"`
 
 	// 插件调用LLM时使用的模型配置，一般用于指定知识库问答插件的生成模型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Model *AgentModelInfo `json:"Model,omitnil,omitempty" name:"Model"`
 
 	// 插件信息类型; 0: 未指定类型; 1: 知识库问答插件
 	PluginInfoType *uint64 `json:"PluginInfoType,omitnil,omitempty" name:"PluginInfoType"`
 
 	// 知识库问答插件配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	KnowledgeQa *AgentKnowledgeQAPlugin `json:"KnowledgeQa,omitnil,omitempty" name:"KnowledgeQa"`
 
 	// 是否使用一键授权
@@ -606,6 +611,9 @@ type AgentToolInfo struct {
 
 	// 授权类型; 0-无鉴权；1-APIKey；2-CAM授权；3-Oauth2.0授权；
 	AuthType *int64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
+
+	// 工具授权配置状态；0：不需要授权，1：需要授权-未配置，2：需要授权-已配置
+	AuthConfigStatus *int64 `json:"AuthConfigStatus,omitnil,omitempty" name:"AuthConfigStatus"`
 }
 
 type AgentToolReqParam struct {
@@ -826,6 +834,11 @@ type AppModelDetailInfo struct {
 
 	// 模型别名
 	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
+}
+
+type AsyncWorkflowMessage struct {
+	// 内容数组，包含多个内容对象
+	Contents []*Content `json:"Contents,omitnil,omitempty" name:"Contents"`
 }
 
 type AttrLabel struct {
@@ -2551,20 +2564,20 @@ func (r *DeleteAgentResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAppRequestParams struct {
-	// 应用ID
+	// 应用ID，获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
-	// 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classifys-知识标签提取
+	// 应用类型；`"knowledge_qa"` 知识问答应用（包含标准模式 单工作流 Multi-Agent 等模式）
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 }
 
 type DeleteAppRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID，获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
-	// 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classifys-知识标签提取
+	// 应用类型；`"knowledge_qa"` 知识问答应用（包含标准模式 单工作流 Multi-Agent 等模式）
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 }
 
@@ -3161,6 +3174,9 @@ type DescribeAppAgentListResponseParams struct {
 
 	// Agent转交高级设置
 	HandoffAdvancedSetting *AgentHandoffAdvancedSetting `json:"HandoffAdvancedSetting,omitnil,omitempty" name:"HandoffAdvancedSetting"`
+
+	// Agent数量上限
+	MaxAgentCount *int64 `json:"MaxAgentCount,omitnil,omitempty" name:"MaxAgentCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4844,7 +4860,7 @@ type DescribeStorageCredentialRequestParams struct {
 	// 应用ID，参数非必填不代表不需要填写，下面不同的参数组合会获取到不同的权限，具体请参考 https://cloud.tencent.com/document/product/1759/116238
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 文件类型,正常的文件名类型后缀，例如 xlsx、pdf、 docx、png 等
+	// 文件类型,正常的文件名类型后缀，支持 docx、doc、pdf、txt、md、wps、pages、html、mhtml、epub、xml、json、log、xlsx、xls、csv、tsv、numbers、pptx、ppt、ppsx、ppsm、key、png、jpg、jpeg、gif、bmp、tiff、webp、heif、heic、jp2、eps、icns、im、pcx、ppm、xbm、xmind
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
 	// IsPublic用于上传文件或图片时选择场景，当上传对话端图片时IsPublic为true，上传文件（包括文档库文件/图片等和对话端文件）时IsPublic为false
@@ -4860,7 +4876,7 @@ type DescribeStorageCredentialRequest struct {
 	// 应用ID，参数非必填不代表不需要填写，下面不同的参数组合会获取到不同的权限，具体请参考 https://cloud.tencent.com/document/product/1759/116238
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 文件类型,正常的文件名类型后缀，例如 xlsx、pdf、 docx、png 等
+	// 文件类型,正常的文件名类型后缀，支持 docx、doc、pdf、txt、md、wps、pages、html、mhtml、epub、xml、json、log、xlsx、xls、csv、tsv、numbers、pptx、ppt、ppsx、ppsm、key、png、jpg、jpeg、gif、bmp、tiff、webp、heif、heic、jp2、eps、icns、im、pcx、ppm、xbm、xmind
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
 	// IsPublic用于上传文件或图片时选择场景，当上传对话端图片时IsPublic为true，上传文件（包括文档库文件/图片等和对话端文件）时IsPublic为false
@@ -4915,7 +4931,7 @@ type DescribeStorageCredentialResponseParams struct {
 	// 存储类型
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 主号
+	// 企业主账号
 	CorpUin *string `json:"CorpUin,omitnil,omitempty" name:"CorpUin"`
 
 	// 图片存储目录
@@ -4923,6 +4939,12 @@ type DescribeStorageCredentialResponseParams struct {
 
 	// 上传存储路径，到具体文件
 	UploadPath *string `json:"UploadPath,omitnil,omitempty" name:"UploadPath"`
+
+	// 文件上传地址，使用put请求上传文件到该地址
+	UploadUrl *string `json:"UploadUrl,omitnil,omitempty" name:"UploadUrl"`
+
+	// 文件的预签名地址，支持下载
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5829,6 +5851,9 @@ type FileInfo struct {
 
 type FileInfoContent struct {
 	// 实时文档解析接口返回的 DocBizId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: DocBizId is deprecated.
 	DocBizId *uint64 `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
 
 	// 文件名称
@@ -5846,6 +5871,14 @@ type FileInfoContent struct {
 	// 文件 URL
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// 实时文档解析接口返回的 doc_id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocId *uint64 `json:"DocId,omitnil,omitempty" name:"DocId"`
+
+	// 文件创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type Filters struct {
@@ -12784,6 +12817,9 @@ type SearchStrategy struct {
 	// NL2SQL模型配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NatureLanguageToSqlModelConfig *NL2SQLModelConfig `json:"NatureLanguageToSqlModelConfig,omitnil,omitempty" name:"NatureLanguageToSqlModelConfig"`
+
+	// 是否开启图谱检索
+	GraphRetrieval *bool `json:"GraphRetrieval,omitnil,omitempty" name:"GraphRetrieval"`
 }
 
 type ShareKnowledgeBase struct {
@@ -13659,6 +13695,10 @@ type Widget struct {
 	// Widget实例ID
 	WidgetRunId *string `json:"WidgetRunId,omitnil,omitempty" name:"WidgetRunId"`
 
+	// Widget显示数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	View *string `json:"View,omitnil,omitempty" name:"View"`
+
 	// Widget状态数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
@@ -13884,6 +13924,10 @@ type WorkflowRunDetail struct {
 
 	// 工作流的流程图
 	WorkflowGraph *string `json:"WorkflowGraph,omitnil,omitempty" name:"WorkflowGraph"`
+
+	// 当前的回复消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestMessage *AsyncWorkflowMessage `json:"LatestMessage,omitnil,omitempty" name:"LatestMessage"`
 }
 
 type WorkflowRunNodeInfo struct {

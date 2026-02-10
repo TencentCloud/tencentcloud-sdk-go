@@ -1689,7 +1689,7 @@ func NewDescribeBillingResourceGroupsResponse() (response *DescribeBillingResour
 }
 
 // DescribeBillingResourceGroups
-// 查询资源组详情
+// 查询资源组列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
@@ -1713,7 +1713,7 @@ func (c *Client) DescribeBillingResourceGroups(request *DescribeBillingResourceG
 }
 
 // DescribeBillingResourceGroups
-// 查询资源组详情
+// 查询资源组列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"

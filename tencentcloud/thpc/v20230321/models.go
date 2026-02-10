@@ -1351,15 +1351,21 @@ func (r *DeleteQueueResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAutoScalingConfigurationRequestParams struct {
-	// 集群ID。	
+	// <p>集群ID。</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>队列名称</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 }
 
 type DescribeAutoScalingConfigurationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID。	
+	// <p>集群ID。</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>队列名称</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 }
 
 func (r *DescribeAutoScalingConfigurationRequest) ToJsonString() string {
@@ -1375,6 +1381,7 @@ func (r *DescribeAutoScalingConfigurationRequest) FromJsonString(s string) error
 		return err
 	}
 	delete(f, "ClusterId")
+	delete(f, "QueueName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAutoScalingConfigurationRequest has unknown keys!", "")
 	}
@@ -1383,16 +1390,16 @@ func (r *DescribeAutoScalingConfigurationRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeAutoScalingConfigurationResponseParams struct {
-	// 集群ID。
+	// <p>集群ID。</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 任务连续等待时间，队列的任务处于连续等待的时间。单位秒。
+	// <p>任务连续等待时间，队列的任务处于连续等待的时间。单位秒。</p>
 	ExpansionBusyTime *int64 `json:"ExpansionBusyTime,omitnil,omitempty" name:"ExpansionBusyTime"`
 
-	// 节点连续空闲（未运行作业）时间，一个节点连续处于空闲状态时间。
+	// <p>节点连续空闲（未运行作业）时间，一个节点连续处于空闲状态时间。</p>
 	ShrinkIdleTime *int64 `json:"ShrinkIdleTime,omitnil,omitempty" name:"ShrinkIdleTime"`
 
-	// 扩容队列配置概览列表。
+	// <p>扩容队列配置概览列表。</p>
 	QueueConfigs []*QueueConfigOverview `json:"QueueConfigs,omitnil,omitempty" name:"QueueConfigs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

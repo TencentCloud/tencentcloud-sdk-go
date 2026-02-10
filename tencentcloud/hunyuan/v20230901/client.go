@@ -243,6 +243,7 @@ func NewChatTranslationsResponse() (response *ChatTranslationsResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChatTranslations(request *ChatTranslationsRequest) (response *ChatTranslationsResponse, err error) {
     return c.ChatTranslationsWithContext(context.Background(), request)
 }
@@ -274,6 +275,7 @@ func (c *Client) ChatTranslations(request *ChatTranslationsRequest) (response *C
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChatTranslationsWithContext(ctx context.Context, request *ChatTranslationsRequest) (response *ChatTranslationsResponse, err error) {
     if request == nil {
         request = NewChatTranslationsRequest()

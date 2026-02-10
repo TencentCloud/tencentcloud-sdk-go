@@ -514,6 +514,9 @@ type ChatTranslationsRequestParams struct {
 
 	// 参考示例，最多10个
 	References []*Reference `json:"References,omitnil,omitempty" name:"References"`
+
+	// 关联的术语库 ID 列表，用于术语翻译，最大支持5个术语库
+	GlossaryIDs []*string `json:"GlossaryIDs,omitnil,omitempty" name:"GlossaryIDs"`
 }
 
 type ChatTranslationsRequest struct {
@@ -561,6 +564,9 @@ type ChatTranslationsRequest struct {
 
 	// 参考示例，最多10个
 	References []*Reference `json:"References,omitnil,omitempty" name:"References"`
+
+	// 关联的术语库 ID 列表，用于术语翻译，最大支持5个术语库
+	GlossaryIDs []*string `json:"GlossaryIDs,omitnil,omitempty" name:"GlossaryIDs"`
 }
 
 func (r *ChatTranslationsRequest) ToJsonString() string {
@@ -582,6 +588,7 @@ func (r *ChatTranslationsRequest) FromJsonString(s string) error {
 	delete(f, "Target")
 	delete(f, "Field")
 	delete(f, "References")
+	delete(f, "GlossaryIDs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatTranslationsRequest has unknown keys!", "")
 	}

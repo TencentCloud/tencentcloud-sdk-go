@@ -598,6 +598,80 @@ func (r *BatchDescribeDocumentResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type BatchGetPlaybackTokenRequestParams struct {
+	// <p>低代码平台的SdkAppId。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>房间ID。</p>
+	RoomIds []*uint64 `json:"RoomIds,omitnil,omitempty" name:"RoomIds"`
+
+	// <p>token过期时间，单位秒。如果传0则表示不过期</p>
+	ExpireSeconds *uint64 `json:"ExpireSeconds,omitnil,omitempty" name:"ExpireSeconds"`
+}
+
+type BatchGetPlaybackTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>低代码平台的SdkAppId。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>房间ID。</p>
+	RoomIds []*uint64 `json:"RoomIds,omitnil,omitempty" name:"RoomIds"`
+
+	// <p>token过期时间，单位秒。如果传0则表示不过期</p>
+	ExpireSeconds *uint64 `json:"ExpireSeconds,omitnil,omitempty" name:"ExpireSeconds"`
+}
+
+func (r *BatchGetPlaybackTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchGetPlaybackTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomIds")
+	delete(f, "ExpireSeconds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchGetPlaybackTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchGetPlaybackTokenResponseParams struct {
+	// <p>token值，用于回放鉴权。</p>
+	Results []*TokenResult `json:"Results,omitnil,omitempty" name:"Results"`
+
+	// <p>房间ID。</p>
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BatchGetPlaybackTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchGetPlaybackTokenResponseParams `json:"Response"`
+}
+
+func (r *BatchGetPlaybackTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchGetPlaybackTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type BatchRegisterRequestParams struct {
 	// 批量注册用户信息列表
 	Users []*BatchUserRequest `json:"Users,omitnil,omitempty" name:"Users"`
@@ -1181,7 +1255,7 @@ type CreateRoomRequestParams struct {
 	// <p>声音音质。可以有以下取值：<br>0：流畅模式（默认值），占用更小的带宽、拥有更好的降噪效果，适用于1对1、小班教学、多人音视频会议等场景。<br>1：高音质模式，适合需要高保真传输音乐的场景，但降噪效果会被削弱，适用于音乐教学场景。</p>
 	AudioQuality *uint64 `json:"AudioQuality,omitnil,omitempty" name:"AudioQuality"`
 
-	// <p>录制方式，可以有以下取值：0 开启自动录制（默认值）1  禁止录制2 开启手动录制 注： - 如果该配置取值为0，录制将从上课后开始，课堂结束后停止。 - 如果该配置取值为2，需通过startRecord、stopRecord接口控制录制的开始和结束。</p>
+	// <p>录制方式。</p><p>枚举值：</p><ul><li>0： 开启自动录制（默认）</li><li>1： 禁止录制</li><li>2： 开启手动录制。（仅支持页面录制，需通过startRecord、stopRecord接口控制录制的开始和结束。）</li><li>3： 信令录制。</li></ul>
 	DisableRecord *uint64 `json:"DisableRecord,omitnil,omitempty" name:"DisableRecord"`
 
 	// <p>助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。</p>
@@ -1291,7 +1365,7 @@ type CreateRoomRequest struct {
 	// <p>声音音质。可以有以下取值：<br>0：流畅模式（默认值），占用更小的带宽、拥有更好的降噪效果，适用于1对1、小班教学、多人音视频会议等场景。<br>1：高音质模式，适合需要高保真传输音乐的场景，但降噪效果会被削弱，适用于音乐教学场景。</p>
 	AudioQuality *uint64 `json:"AudioQuality,omitnil,omitempty" name:"AudioQuality"`
 
-	// <p>录制方式，可以有以下取值：0 开启自动录制（默认值）1  禁止录制2 开启手动录制 注： - 如果该配置取值为0，录制将从上课后开始，课堂结束后停止。 - 如果该配置取值为2，需通过startRecord、stopRecord接口控制录制的开始和结束。</p>
+	// <p>录制方式。</p><p>枚举值：</p><ul><li>0： 开启自动录制（默认）</li><li>1： 禁止录制</li><li>2： 开启手动录制。（仅支持页面录制，需通过startRecord、stopRecord接口控制录制的开始和结束。）</li><li>3： 信令录制。</li></ul>
 	DisableRecord *uint64 `json:"DisableRecord,omitnil,omitempty" name:"DisableRecord"`
 
 	// <p>助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。</p>
@@ -1777,6 +1851,67 @@ func (r *DeleteGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePlaybackItemRequestParams struct {
+	// <p>低代码互动课堂的SdkAppId。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>课堂ID。</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+type DeletePlaybackItemRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>低代码互动课堂的SdkAppId。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>课堂ID。</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+func (r *DeletePlaybackItemRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePlaybackItemRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePlaybackItemRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePlaybackItemResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeletePlaybackItemResponse struct {
+	*tchttp.BaseResponse
+	Response *DeletePlaybackItemResponseParams `json:"Response"`
+}
+
+func (r *DeletePlaybackItemResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePlaybackItemResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3063,6 +3198,182 @@ func (r *DescribeMarqueeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeMarqueeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePlayRecordsRequestParams struct {
+	// <p>低代码互动课堂的SdkAppId。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>房间ID。</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>开始时间，unix时间戳（秒）。</p>
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间，unix时间戳（秒）。</p>
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>页码，从1开始递增。</p><p>默认值：1</p>
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// <p>每页获取的记录条数。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>用户ID。</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+type DescribePlayRecordsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>低代码互动课堂的SdkAppId。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>房间ID。</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>开始时间，unix时间戳（秒）。</p>
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间，unix时间戳（秒）。</p>
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>页码，从1开始递增。</p><p>默认值：1</p>
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// <p>每页获取的记录条数。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>用户ID。</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+func (r *DescribePlayRecordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlayRecordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Page")
+	delete(f, "PageSize")
+	delete(f, "UserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePlayRecordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePlayRecordsResponseParams struct {
+	// <p>总条数。</p>
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>信令录制视频回放观看记录列表。</p>
+	Records []*PlayRecord `json:"Records,omitnil,omitempty" name:"Records"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePlayRecordsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePlayRecordsResponseParams `json:"Response"`
+}
+
+func (r *DescribePlayRecordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlayRecordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePlaybackListRequestParams struct {
+	// <p>低代码平台的SdkAppId。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>分页查询当前页数，从1开始递增</p>
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// <p>默认10条，最大上限为100条</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribePlaybackListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>低代码平台的SdkAppId。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>分页查询当前页数，从1开始递增</p>
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// <p>默认10条，最大上限为100条</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribePlaybackListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlaybackListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Page")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePlaybackListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePlaybackListResponseParams struct {
+	// <p>总数</p>
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>课堂回放信息列表</p>
+	Items []*PlaybackItem `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePlaybackListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePlaybackListResponseParams `json:"Response"`
+}
+
+func (r *DescribePlaybackListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlaybackListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4369,6 +4680,90 @@ func (r *ForbidSendMsgResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetPlaybackTokenRequestParams struct {
+	// <p>低代码平台的SdkAppId。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>房间ID。</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>用户ID。</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>token过期时间，单位秒。如果传0则表示不过期</p>
+	ExpireSeconds *uint64 `json:"ExpireSeconds,omitnil,omitempty" name:"ExpireSeconds"`
+}
+
+type GetPlaybackTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>低代码平台的SdkAppId。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>房间ID。</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>用户ID。</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>token过期时间，单位秒。如果传0则表示不过期</p>
+	ExpireSeconds *uint64 `json:"ExpireSeconds,omitnil,omitempty" name:"ExpireSeconds"`
+}
+
+func (r *GetPlaybackTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetPlaybackTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	delete(f, "UserId")
+	delete(f, "ExpireSeconds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetPlaybackTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetPlaybackTokenResponseParams struct {
+	// <p>token值，用于回放鉴权。</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// <p>房间ID。</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>用户ID。</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetPlaybackTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *GetPlaybackTokenResponseParams `json:"Response"`
+}
+
+func (r *GetPlaybackTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetPlaybackTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetRoomEventRequestParams struct {
 	// 课堂Id。
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
@@ -5612,6 +6007,40 @@ type MutedAccountList struct {
 	MutedUntil *uint64 `json:"MutedUntil,omitnil,omitempty" name:"MutedUntil"`
 }
 
+type PlayRecord struct {
+	// <p>房间ID。</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>用户ID。</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>单次播放会话ID。</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>播放开始时间，unix时间戳（秒）。</p>
+	PlayBeginTime *uint64 `json:"PlayBeginTime,omitnil,omitempty" name:"PlayBeginTime"`
+
+	// <p>播放结束时间，unix时间戳（秒）。</p>
+	PlayEndTime *uint64 `json:"PlayEndTime,omitnil,omitempty" name:"PlayEndTime"`
+
+	// <p>播放时长（毫秒）。</p>
+	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+}
+
+type PlaybackItem struct {
+	// <p>房间id</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>回放地址</p>
+	PlaybackUrl *string `json:"PlaybackUrl,omitnil,omitempty" name:"PlaybackUrl"`
+
+	// <p>录制时长</p>
+	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// <p>录制开始时间</p>
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
 type QuestionInfo struct {
 	// 问题ID
 	QuestionId *string `json:"QuestionId,omitnil,omitempty" name:"QuestionId"`
@@ -6652,6 +7081,14 @@ type TextMarkConfig struct {
 type TextMsgContent struct {
 	// 文本消息。
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type TokenResult struct {
+	// <p>房间id</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>该房间信令回放的token</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
 }
 
 type TransferItem struct {
