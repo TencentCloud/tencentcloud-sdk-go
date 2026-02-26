@@ -89,6 +89,50 @@ func (c *Client) CreateNoticeContentTmplWithContext(ctx context.Context, request
     return
 }
 
+func NewDeleteNoticeContentTmplsRequest() (request *DeleteNoticeContentTmplsRequest) {
+    request = &DeleteNoticeContentTmplsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DeleteNoticeContentTmpls")
+    
+    
+    return
+}
+
+func NewDeleteNoticeContentTmplsResponse() (response *DeleteNoticeContentTmplsResponse) {
+    response = &DeleteNoticeContentTmplsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteNoticeContentTmpls
+// 删除通知内容模板
+func (c *Client) DeleteNoticeContentTmpls(request *DeleteNoticeContentTmplsRequest) (response *DeleteNoticeContentTmplsResponse, err error) {
+    return c.DeleteNoticeContentTmplsWithContext(context.Background(), request)
+}
+
+// DeleteNoticeContentTmpls
+// 删除通知内容模板
+func (c *Client) DeleteNoticeContentTmplsWithContext(ctx context.Context, request *DeleteNoticeContentTmplsRequest) (response *DeleteNoticeContentTmplsResponse, err error) {
+    if request == nil {
+        request = NewDeleteNoticeContentTmplsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DeleteNoticeContentTmpls")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNoticeContentTmpls require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteNoticeContentTmplsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAlarmNotifyHistoriesRequest() (request *DescribeAlarmNotifyHistoriesRequest) {
     request = &DescribeAlarmNotifyHistoriesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -137,6 +181,110 @@ func (c *Client) DescribeAlarmNotifyHistoriesWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeAlarmNotifyHistoriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNoticeContentTmplRequest() (request *DescribeNoticeContentTmplRequest) {
+    request = &DescribeNoticeContentTmplRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeNoticeContentTmpl")
+    
+    
+    return
+}
+
+func NewDescribeNoticeContentTmplResponse() (response *DescribeNoticeContentTmplResponse) {
+    response = &DescribeNoticeContentTmplResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNoticeContentTmpl
+// 根据查询条件获取自定义通知内容模板，若所有查询条件空，则获取账号下所有模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNoticeContentTmpl(request *DescribeNoticeContentTmplRequest) (response *DescribeNoticeContentTmplResponse, err error) {
+    return c.DescribeNoticeContentTmplWithContext(context.Background(), request)
+}
+
+// DescribeNoticeContentTmpl
+// 根据查询条件获取自定义通知内容模板，若所有查询条件空，则获取账号下所有模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNoticeContentTmplWithContext(ctx context.Context, request *DescribeNoticeContentTmplRequest) (response *DescribeNoticeContentTmplResponse, err error) {
+    if request == nil {
+        request = NewDescribeNoticeContentTmplRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribeNoticeContentTmpl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNoticeContentTmpl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNoticeContentTmplResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNoticeContentTmplRequest() (request *ModifyNoticeContentTmplRequest) {
+    request = &ModifyNoticeContentTmplRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "ModifyNoticeContentTmpl")
+    
+    
+    return
+}
+
+func NewModifyNoticeContentTmplResponse() (response *ModifyNoticeContentTmplResponse) {
+    response = &ModifyNoticeContentTmplResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyNoticeContentTmpl
+// 修改通知内容模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyNoticeContentTmpl(request *ModifyNoticeContentTmplRequest) (response *ModifyNoticeContentTmplResponse, err error) {
+    return c.ModifyNoticeContentTmplWithContext(context.Background(), request)
+}
+
+// ModifyNoticeContentTmpl
+// 修改通知内容模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyNoticeContentTmplWithContext(ctx context.Context, request *ModifyNoticeContentTmplRequest) (response *ModifyNoticeContentTmplResponse, err error) {
+    if request == nil {
+        request = NewModifyNoticeContentTmplRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "ModifyNoticeContentTmpl")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNoticeContentTmpl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNoticeContentTmplResponse()
     err = c.Send(request, response)
     return
 }

@@ -2889,6 +2889,70 @@ type CcnInstanceWithoutRegion struct {
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
+type CcnPolicyBasedRoutingNextHop struct {
+	// 策略路由下一跳ID
+	PolicyBasedRoutingNextHopId *string `json:"PolicyBasedRoutingNextHopId,omitnil,omitempty" name:"PolicyBasedRoutingNextHopId"`
+
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 下一跳地域
+	NextHopRegion *string `json:"NextHopRegion,omitnil,omitempty" name:"NextHopRegion"`
+
+	// 关联实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 状态(ENABLE/DISABLE)
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 关联实例类型[VPC,DIRECTCONNECT,VPNGW]
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 下一跳资源类型[HAVIP,GWLB_ENDPOINT]
+	NextHopResourceType *string `json:"NextHopResourceType,omitnil,omitempty" name:"NextHopResourceType"`
+
+	// 下一跳资源ID
+	NextHopResourceId *string `json:"NextHopResourceId,omitnil,omitempty" name:"NextHopResourceId"`
+
+	// 下一跳资源ip
+	NextHopIp *string `json:"NextHopIp,omitnil,omitempty" name:"NextHopIp"`
+
+	// 0
+	PolicyBasedRoutingRulesCount *int64 `json:"PolicyBasedRoutingRulesCount,omitnil,omitempty" name:"PolicyBasedRoutingRulesCount"`
+}
+
+type CcnPolicyBasedRoutingRule struct {
+	// 策略路由下一跳ID
+	PolicyBasedRoutingNextHopId *string `json:"PolicyBasedRoutingNextHopId,omitnil,omitempty" name:"PolicyBasedRoutingNextHopId"`
+
+	// 实例类型[VPC,DIRECTCONNECT,VPNGW]
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 源地址CIDR
+	SourceCidrBlock *string `json:"SourceCidrBlock,omitnil,omitempty" name:"SourceCidrBlock"`
+
+	// 目的地址CIDR
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitnil,omitempty" name:"DestinationCidrBlock"`
+
+	// 优先级
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 策略路由匹配策略ID
+	PolicyBasedRoutingRuleId *string `json:"PolicyBasedRoutingRuleId,omitnil,omitempty" name:"PolicyBasedRoutingRuleId"`
+}
+
 type CcnRegionBandwidthLimit struct {
 	// 地域，例如：ap-guangzhou
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
@@ -4184,6 +4248,183 @@ func (r *CreateBandwidthPackageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateBandwidthPackageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCcnPolicyBasedRoutingNextHopRequestParams struct {
+	// 云联网ID
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 下一跳地域
+	NextHopRegion *string `json:"NextHopRegion,omitnil,omitempty" name:"NextHopRegion"`
+
+	// 关联实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 关联实例类型[VPC,DIRECTCONNECT,VPNGW]
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 状态
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 下一跳资源类型[HAVIP, GWLB_ENDPOINT]]
+	NextHopResourceType *string `json:"NextHopResourceType,omitnil,omitempty" name:"NextHopResourceType"`
+
+	// 下一跳资源ID
+	NextHopResourceId *string `json:"NextHopResourceId,omitnil,omitempty" name:"NextHopResourceId"`
+}
+
+type CreateCcnPolicyBasedRoutingNextHopRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云联网ID
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 下一跳地域
+	NextHopRegion *string `json:"NextHopRegion,omitnil,omitempty" name:"NextHopRegion"`
+
+	// 关联实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 关联实例类型[VPC,DIRECTCONNECT,VPNGW]
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 状态
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 下一跳资源类型[HAVIP, GWLB_ENDPOINT]]
+	NextHopResourceType *string `json:"NextHopResourceType,omitnil,omitempty" name:"NextHopResourceType"`
+
+	// 下一跳资源ID
+	NextHopResourceId *string `json:"NextHopResourceId,omitnil,omitempty" name:"NextHopResourceId"`
+}
+
+func (r *CreateCcnPolicyBasedRoutingNextHopRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCcnPolicyBasedRoutingNextHopRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CcnId")
+	delete(f, "NextHopRegion")
+	delete(f, "InstanceId")
+	delete(f, "Name")
+	delete(f, "InstanceType")
+	delete(f, "State")
+	delete(f, "Description")
+	delete(f, "NextHopResourceType")
+	delete(f, "NextHopResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCcnPolicyBasedRoutingNextHopRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCcnPolicyBasedRoutingNextHopResponseParams struct {
+	// 策略路由下一跳ID
+	PolicyBasedRoutingNextHopId *string `json:"PolicyBasedRoutingNextHopId,omitnil,omitempty" name:"PolicyBasedRoutingNextHopId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCcnPolicyBasedRoutingNextHopResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCcnPolicyBasedRoutingNextHopResponseParams `json:"Response"`
+}
+
+func (r *CreateCcnPolicyBasedRoutingNextHopResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCcnPolicyBasedRoutingNextHopResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCcnPolicyBasedRoutingRulesRequestParams struct {
+	// 云联网ID
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 云联网策略路由匹配规则
+	CcnPolicyBasedRoutingRuleSet []*CcnPolicyBasedRoutingRule `json:"CcnPolicyBasedRoutingRuleSet,omitnil,omitempty" name:"CcnPolicyBasedRoutingRuleSet"`
+}
+
+type CreateCcnPolicyBasedRoutingRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云联网ID
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 云联网策略路由匹配规则
+	CcnPolicyBasedRoutingRuleSet []*CcnPolicyBasedRoutingRule `json:"CcnPolicyBasedRoutingRuleSet,omitnil,omitempty" name:"CcnPolicyBasedRoutingRuleSet"`
+}
+
+func (r *CreateCcnPolicyBasedRoutingRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCcnPolicyBasedRoutingRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CcnId")
+	delete(f, "CcnPolicyBasedRoutingRuleSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCcnPolicyBasedRoutingRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCcnPolicyBasedRoutingRulesResponseParams struct {
+	// 策略路由匹配规则ID
+	PolicyBasedRoutingRuleIdSet []*string `json:"PolicyBasedRoutingRuleIdSet,omitnil,omitempty" name:"PolicyBasedRoutingRuleIdSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCcnPolicyBasedRoutingRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCcnPolicyBasedRoutingRulesResponseParams `json:"Response"`
+}
+
+func (r *CreateCcnPolicyBasedRoutingRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCcnPolicyBasedRoutingRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9379,6 +9620,128 @@ func (r *DeleteBandwidthPackageResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteCcnPolicyBasedRoutingNextHopRequestParams struct {
+	// 云联网ID
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 策略路由下一跳ID
+	PolicyBasedRoutingNextHopIds []*string `json:"PolicyBasedRoutingNextHopIds,omitnil,omitempty" name:"PolicyBasedRoutingNextHopIds"`
+}
+
+type DeleteCcnPolicyBasedRoutingNextHopRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云联网ID
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 策略路由下一跳ID
+	PolicyBasedRoutingNextHopIds []*string `json:"PolicyBasedRoutingNextHopIds,omitnil,omitempty" name:"PolicyBasedRoutingNextHopIds"`
+}
+
+func (r *DeleteCcnPolicyBasedRoutingNextHopRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCcnPolicyBasedRoutingNextHopRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CcnId")
+	delete(f, "PolicyBasedRoutingNextHopIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCcnPolicyBasedRoutingNextHopRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCcnPolicyBasedRoutingNextHopResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCcnPolicyBasedRoutingNextHopResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCcnPolicyBasedRoutingNextHopResponseParams `json:"Response"`
+}
+
+func (r *DeleteCcnPolicyBasedRoutingNextHopResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCcnPolicyBasedRoutingNextHopResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCcnPolicyBasedRoutingRuleRequestParams struct {
+	// 云联网ID
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 策略路由匹配规则ID
+	PolicyBasedRoutingRuleIds []*string `json:"PolicyBasedRoutingRuleIds,omitnil,omitempty" name:"PolicyBasedRoutingRuleIds"`
+}
+
+type DeleteCcnPolicyBasedRoutingRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云联网ID
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 策略路由匹配规则ID
+	PolicyBasedRoutingRuleIds []*string `json:"PolicyBasedRoutingRuleIds,omitnil,omitempty" name:"PolicyBasedRoutingRuleIds"`
+}
+
+func (r *DeleteCcnPolicyBasedRoutingRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCcnPolicyBasedRoutingRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CcnId")
+	delete(f, "PolicyBasedRoutingRuleIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCcnPolicyBasedRoutingRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCcnPolicyBasedRoutingRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCcnPolicyBasedRoutingRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCcnPolicyBasedRoutingRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteCcnPolicyBasedRoutingRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCcnPolicyBasedRoutingRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteCcnRequestParams struct {
 	// CCN实例ID。形如：ccn-f49l6u0z。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
@@ -13604,6 +13967,154 @@ func (r *DescribeCcnAttachedInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCcnAttachedInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCcnPolicyBasedRoutingNextHopRequestParams struct {
+	// 云联网 ID
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 偏移量
+	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量
+	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeCcnPolicyBasedRoutingNextHopRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云联网 ID
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 偏移量
+	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量
+	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeCcnPolicyBasedRoutingNextHopRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCcnPolicyBasedRoutingNextHopRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CcnId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCcnPolicyBasedRoutingNextHopRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCcnPolicyBasedRoutingNextHopResponseParams struct {
+	// 云联网策略路由下一跳信息
+	CcnPolicyBasedRoutingNextHopSet []*CcnPolicyBasedRoutingNextHop `json:"CcnPolicyBasedRoutingNextHopSet,omitnil,omitempty" name:"CcnPolicyBasedRoutingNextHopSet"`
+
+	// 符合条件的对象数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCcnPolicyBasedRoutingNextHopResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCcnPolicyBasedRoutingNextHopResponseParams `json:"Response"`
+}
+
+func (r *DescribeCcnPolicyBasedRoutingNextHopResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCcnPolicyBasedRoutingNextHopResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCcnPolicyBasedRoutingRuleRequestParams struct {
+	// 云联网 ID
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeCcnPolicyBasedRoutingRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云联网 ID
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeCcnPolicyBasedRoutingRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCcnPolicyBasedRoutingRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CcnId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCcnPolicyBasedRoutingRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCcnPolicyBasedRoutingRuleResponseParams struct {
+	// 云联网策略路由下一跳信息
+	CcnPolicyBasedRoutingRuleSet []*CcnPolicyBasedRoutingRule `json:"CcnPolicyBasedRoutingRuleSet,omitnil,omitempty" name:"CcnPolicyBasedRoutingRuleSet"`
+
+	// 符合条件的对象数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCcnPolicyBasedRoutingRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCcnPolicyBasedRoutingRuleResponseParams `json:"Response"`
+}
+
+func (r *DescribeCcnPolicyBasedRoutingRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCcnPolicyBasedRoutingRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -27253,6 +27764,191 @@ func (r *ModifyCcnAttributeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyCcnAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCcnPolicyBasedRoutingNextHopAttributeRequestParams struct {
+	// 云联网ID
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 策略路由下一跳ID
+	PolicyBasedRoutingNextHopId *string `json:"PolicyBasedRoutingNextHopId,omitnil,omitempty" name:"PolicyBasedRoutingNextHopId"`
+
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 下一跳地域
+	NextHopRegion *string `json:"NextHopRegion,omitnil,omitempty" name:"NextHopRegion"`
+
+	// 实例类型[VPC,DIRECTCONNECT,VPNGW]
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 关联实例ID	
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 下一跳资源类型[HAVIP,GWLB_ENDPOINT]
+	NextHopResourceType *string `json:"NextHopResourceType,omitnil,omitempty" name:"NextHopResourceType"`
+
+	// 下一跳资源ID
+	NextHopResourceId *string `json:"NextHopResourceId,omitnil,omitempty" name:"NextHopResourceId"`
+
+	// 状态
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+}
+
+type ModifyCcnPolicyBasedRoutingNextHopAttributeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云联网ID
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 策略路由下一跳ID
+	PolicyBasedRoutingNextHopId *string `json:"PolicyBasedRoutingNextHopId,omitnil,omitempty" name:"PolicyBasedRoutingNextHopId"`
+
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 下一跳地域
+	NextHopRegion *string `json:"NextHopRegion,omitnil,omitempty" name:"NextHopRegion"`
+
+	// 实例类型[VPC,DIRECTCONNECT,VPNGW]
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 关联实例ID	
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 下一跳资源类型[HAVIP,GWLB_ENDPOINT]
+	NextHopResourceType *string `json:"NextHopResourceType,omitnil,omitempty" name:"NextHopResourceType"`
+
+	// 下一跳资源ID
+	NextHopResourceId *string `json:"NextHopResourceId,omitnil,omitempty" name:"NextHopResourceId"`
+
+	// 状态
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+}
+
+func (r *ModifyCcnPolicyBasedRoutingNextHopAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCcnPolicyBasedRoutingNextHopAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CcnId")
+	delete(f, "PolicyBasedRoutingNextHopId")
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "NextHopRegion")
+	delete(f, "InstanceType")
+	delete(f, "InstanceId")
+	delete(f, "NextHopResourceType")
+	delete(f, "NextHopResourceId")
+	delete(f, "State")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCcnPolicyBasedRoutingNextHopAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCcnPolicyBasedRoutingNextHopAttributeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyCcnPolicyBasedRoutingNextHopAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCcnPolicyBasedRoutingNextHopAttributeResponseParams `json:"Response"`
+}
+
+func (r *ModifyCcnPolicyBasedRoutingNextHopAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCcnPolicyBasedRoutingNextHopAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCcnPolicyBasedRoutingRuleAttributeRequestParams struct {
+	// 云联网ID
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 策略路由匹配规则ID
+	PolicyBasedRoutingRuleId *string `json:"PolicyBasedRoutingRuleId,omitnil,omitempty" name:"PolicyBasedRoutingRuleId"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type ModifyCcnPolicyBasedRoutingRuleAttributeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云联网ID
+	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
+
+	// 策略路由匹配规则ID
+	PolicyBasedRoutingRuleId *string `json:"PolicyBasedRoutingRuleId,omitnil,omitempty" name:"PolicyBasedRoutingRuleId"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *ModifyCcnPolicyBasedRoutingRuleAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCcnPolicyBasedRoutingRuleAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CcnId")
+	delete(f, "PolicyBasedRoutingRuleId")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCcnPolicyBasedRoutingRuleAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCcnPolicyBasedRoutingRuleAttributeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyCcnPolicyBasedRoutingRuleAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCcnPolicyBasedRoutingRuleAttributeResponseParams `json:"Response"`
+}
+
+func (r *ModifyCcnPolicyBasedRoutingRuleAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCcnPolicyBasedRoutingRuleAttributeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

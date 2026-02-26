@@ -3792,14 +3792,17 @@ type ForwardLoadBalancer struct {
 }
 
 type ForwardLoadBalancerIdentification struct {
-	// 负载均衡器ID
+	// <p>负载均衡器ID</p>
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 应用型负载均衡监听器 ID
+	// <p>应用型负载均衡监听器 ID</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 转发规则ID，注意：针对七层监听器此参数必填
+	// <p>转发规则ID，注意：针对七层监听器此参数必填</p>
 	LocationId *string `json:"LocationId,omitnil,omitempty" name:"LocationId"`
+
+	// <p>监听器或转发路径需解绑的端口号列表。</p><p>取值范围：[1, 65535]</p><p>不传递该参数时，默认解绑指定监听器或转发路径关联的所有端口。</p>
+	PortList []*uint64 `json:"PortList,omitnil,omitempty" name:"PortList"`
 }
 
 type HostNameIndexSettings struct {

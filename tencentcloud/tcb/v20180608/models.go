@@ -1441,40 +1441,55 @@ type CreateBillDealRequestParams struct {
 	// 购买的产品类型，可取[tcb-baas,tcb-promotion,tcb-package], 分别代表baas套餐、大促包、资源包
 	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 
-	// 目标下单产品/套餐Id
+	// 目标下单产品/套餐Id。
+	// 对于云开发环境套餐，可通过 DescribeBaasPackageList 接口获取，对应其出参的PackageName
 	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
-	// 默认只下单不支付，为ture则下单并支付
+	// 默认只下单不支付，为ture则下单并支付。
+	// 如果需要下单并支付，请确保账户下有足够的余额，否则会导致下单失败。
 	CreateAndPay *bool `json:"CreateAndPay,omitnil,omitempty" name:"CreateAndPay"`
 
-	// 购买时长
+	// 购买时长，与TimeUnit字段搭配使用。
 	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 购买时长单位,按各产品规则可选d(天),m(月),y(年),p(一次性)
+	// 购买时长单位,按各产品规则可选d(天),m(月),y(年),p(一次性)。
+	// 对于 云开发环境的 新购和续费，目前仅支持 按月购买（即 TimeUnit=m）。
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
-	// 资源唯一标识
+	// 资源唯一标识。
+	// 在云开发环境 续费和变配 场景下必传，取值为环境ID。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 来源可选[qcloud,miniapp]，默认qcloud
+	// 来源可选[qcloud,miniapp]，默认qcloud。
+	// miniapp表示微信云开发，主要适用于[小程序云开发](https://developers.weixin.qq.com/miniprogram/dev/wxcloudservice/wxcloud/billing/price.html)。
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 资源别名
+	// 环境别名，用于新购云开发环境时，给云开发环境起别名。
+	// 仅当 新购云开发环境（DealType=purchase 并且 ProductType=tcb-baas ）时有效。
+	// 
+	// ### 格式要求
+	// - 可选字符： 小写字母(a~z)、数字、减号(-)
+	// - 不能以 减号(-) 开头或结尾
+	// - 不能有连个连续的 减号(-)
+	// - 长度不超过20位
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
-	// 环境id
+	// 环境id，当购买资源包和大促包时（ProductType取值为tcb-promotion 或 tcb-package）必传，表示资源包在哪个环境下生效。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 开启超限按量
+	// 开启超限按量。
+	// 开启后，当 套餐内的资源点 和 资源包 都用尽后，会自动按量计费。
+	// 详见 [计费说明](https://cloud.tencent.com/document/product/876/127357)。
 	EnableExcess *bool `json:"EnableExcess,omitnil,omitempty" name:"EnableExcess"`
 
-	// 变配目标产品/套餐id
+	// 变配目标套餐id，对于云开发环境变配场景下必传。
+	// 对于云开发环境套餐，可通过 DescribeBaasPackageList 接口获取，对应其出参的PackageName
 	ModifyPackageId *string `json:"ModifyPackageId,omitnil,omitempty" name:"ModifyPackageId"`
 
 	// jsonstr附加信息
 	Extension *string `json:"Extension,omitnil,omitempty" name:"Extension"`
 
-	// 是否自动选择代金券支付
+	// 是否自动选择代金券支付。
 	AutoVoucher *bool `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
 	// 资源类型。
@@ -1496,40 +1511,55 @@ type CreateBillDealRequest struct {
 	// 购买的产品类型，可取[tcb-baas,tcb-promotion,tcb-package], 分别代表baas套餐、大促包、资源包
 	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 
-	// 目标下单产品/套餐Id
+	// 目标下单产品/套餐Id。
+	// 对于云开发环境套餐，可通过 DescribeBaasPackageList 接口获取，对应其出参的PackageName
 	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
-	// 默认只下单不支付，为ture则下单并支付
+	// 默认只下单不支付，为ture则下单并支付。
+	// 如果需要下单并支付，请确保账户下有足够的余额，否则会导致下单失败。
 	CreateAndPay *bool `json:"CreateAndPay,omitnil,omitempty" name:"CreateAndPay"`
 
-	// 购买时长
+	// 购买时长，与TimeUnit字段搭配使用。
 	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 购买时长单位,按各产品规则可选d(天),m(月),y(年),p(一次性)
+	// 购买时长单位,按各产品规则可选d(天),m(月),y(年),p(一次性)。
+	// 对于 云开发环境的 新购和续费，目前仅支持 按月购买（即 TimeUnit=m）。
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
-	// 资源唯一标识
+	// 资源唯一标识。
+	// 在云开发环境 续费和变配 场景下必传，取值为环境ID。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 来源可选[qcloud,miniapp]，默认qcloud
+	// 来源可选[qcloud,miniapp]，默认qcloud。
+	// miniapp表示微信云开发，主要适用于[小程序云开发](https://developers.weixin.qq.com/miniprogram/dev/wxcloudservice/wxcloud/billing/price.html)。
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 资源别名
+	// 环境别名，用于新购云开发环境时，给云开发环境起别名。
+	// 仅当 新购云开发环境（DealType=purchase 并且 ProductType=tcb-baas ）时有效。
+	// 
+	// ### 格式要求
+	// - 可选字符： 小写字母(a~z)、数字、减号(-)
+	// - 不能以 减号(-) 开头或结尾
+	// - 不能有连个连续的 减号(-)
+	// - 长度不超过20位
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
-	// 环境id
+	// 环境id，当购买资源包和大促包时（ProductType取值为tcb-promotion 或 tcb-package）必传，表示资源包在哪个环境下生效。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 开启超限按量
+	// 开启超限按量。
+	// 开启后，当 套餐内的资源点 和 资源包 都用尽后，会自动按量计费。
+	// 详见 [计费说明](https://cloud.tencent.com/document/product/876/127357)。
 	EnableExcess *bool `json:"EnableExcess,omitnil,omitempty" name:"EnableExcess"`
 
-	// 变配目标产品/套餐id
+	// 变配目标套餐id，对于云开发环境变配场景下必传。
+	// 对于云开发环境套餐，可通过 DescribeBaasPackageList 接口获取，对应其出参的PackageName
 	ModifyPackageId *string `json:"ModifyPackageId,omitnil,omitempty" name:"ModifyPackageId"`
 
 	// jsonstr附加信息
 	Extension *string `json:"Extension,omitnil,omitempty" name:"Extension"`
 
-	// 是否自动选择代金券支付
+	// 是否自动选择代金券支付。
 	AutoVoucher *bool `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
 	// 资源类型。
@@ -2190,6 +2220,132 @@ func (r *CreateCloudBaseRunServerVersionResponse) FromJsonString(s string) error
 }
 
 // Predefined struct for user
+type CreateEnvRequestParams struct {
+	// 环境别名。
+	// 
+	// ### 格式要求
+	// - 可选字符： 小写字母(a~z)、数字、减号(-)
+	// - 不能以 减号(-) 开头或结尾
+	// - 不能有连个连续的 减号(-)
+	// - 长度不超过20位
+	// 示例值：cloud
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// 云开发环境套餐Id。
+	// 对于云开发环境套餐，可通过 [DescribeBaasPackageList](https://cloud.tencent.com/document/product/876/78167) 接口获取，对应其出参的PackageName。
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
+	// 资源类型。代表新购环境时需要发货哪些资源。
+	// 可取值以及含义：
+	// - flexdb : 表示文档型数据库
+	// - storage : 表示云存储
+	// - function : 表示云函数
+	// 
+	// **该字段不可为空**
+	Resources []*string `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24。
+	// 默认值为1，即1个月。
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 是否自动选择代金券支付。
+	AutoVoucher *bool `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
+
+	// 环境标签。
+	// 可取值通过接口 [tag:DescribeTags](https://cloud.tencent.com/document/product/651/35316) 可获取到。
+	// 不传或为空则默认不打任何标签。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type CreateEnvRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境别名。
+	// 
+	// ### 格式要求
+	// - 可选字符： 小写字母(a~z)、数字、减号(-)
+	// - 不能以 减号(-) 开头或结尾
+	// - 不能有连个连续的 减号(-)
+	// - 长度不超过20位
+	// 示例值：cloud
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// 云开发环境套餐Id。
+	// 对于云开发环境套餐，可通过 [DescribeBaasPackageList](https://cloud.tencent.com/document/product/876/78167) 接口获取，对应其出参的PackageName。
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
+	// 资源类型。代表新购环境时需要发货哪些资源。
+	// 可取值以及含义：
+	// - flexdb : 表示文档型数据库
+	// - storage : 表示云存储
+	// - function : 表示云函数
+	// 
+	// **该字段不可为空**
+	Resources []*string `json:"Resources,omitnil,omitempty" name:"Resources"`
+
+	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24。
+	// 默认值为1，即1个月。
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 是否自动选择代金券支付。
+	AutoVoucher *bool `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
+
+	// 环境标签。
+	// 可取值通过接口 [tag:DescribeTags](https://cloud.tencent.com/document/product/651/35316) 可获取到。
+	// 不传或为空则默认不打任何标签。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *CreateEnvRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEnvRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Alias")
+	delete(f, "PackageId")
+	delete(f, "Resources")
+	delete(f, "Period")
+	delete(f, "AutoVoucher")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEnvRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateEnvResponseParams struct {
+	// 自动生成的环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateEnvResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateEnvResponseParams `json:"Response"`
+}
+
+func (r *CreateEnvResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEnvResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateHostingDomainRequestParams struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -2270,7 +2426,7 @@ type CreateMySQLRequestParams struct {
 	// 云开发环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// Db类型 1. FLEXDB 2.MYSQL
+	// Db类型: MYSQL
 	DbInstanceType *string `json:"DbInstanceType,omitnil,omitempty" name:"DbInstanceType"`
 
 	// mysql版本
@@ -2292,7 +2448,7 @@ type CreateMySQLRequest struct {
 	// 云开发环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// Db类型 1. FLEXDB 2.MYSQL
+	// Db类型: MYSQL
 	DbInstanceType *string `json:"DbInstanceType,omitnil,omitempty" name:"DbInstanceType"`
 
 	// mysql版本
@@ -5218,7 +5374,7 @@ type DescribeCreateMySQLResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
 
-	// 是否冻结
+	// 是否已被冻结（只在 Status=success时有效）
 	FreezeStatus *bool `json:"FreezeStatus,omitnil,omitempty" name:"FreezeStatus"`
 }
 
@@ -5470,6 +5626,9 @@ type DescribeCurveDataResponseParams struct {
 
 	// 有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到
 	NewValues []*float64 `json:"NewValues,omitnil,omitempty" name:"NewValues"`
+
+	// 聚合方式
+	Statistics *string `json:"Statistics,omitnil,omitempty" name:"Statistics"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -9401,6 +9560,76 @@ func (r *ModifyDatabaseACLResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyEnvPlanRequestParams struct {
+	// 所需变更套餐的环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 目标套餐Id。
+	// 对于云开发环境套餐，可通过 [DescribeBaasPackageList](https://cloud.tencent.com/document/product/876/78167) 接口获取，对应其出参的PackageName
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
+	// 是否自动选择代金券支付。
+	AutoVoucher *bool `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
+}
+
+type ModifyEnvPlanRequest struct {
+	*tchttp.BaseRequest
+	
+	// 所需变更套餐的环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 目标套餐Id。
+	// 对于云开发环境套餐，可通过 [DescribeBaasPackageList](https://cloud.tencent.com/document/product/876/78167) 接口获取，对应其出参的PackageName
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
+	// 是否自动选择代金券支付。
+	AutoVoucher *bool `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
+}
+
+func (r *ModifyEnvPlanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEnvPlanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "PackageId")
+	delete(f, "AutoVoucher")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEnvPlanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyEnvPlanResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyEnvPlanResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyEnvPlanResponseParams `json:"Response"`
+}
+
+func (r *ModifyEnvPlanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEnvPlanResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyEnvRequestParams struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -9923,6 +10152,76 @@ func (r *ReinstateEnvResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ReinstateEnvResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RenewEnvRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 续费周期，单位：月。
+	// 默认值为 1，即续费1个月。
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 是否自动选择代金券支付。
+	AutoVoucher *bool `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
+}
+
+type RenewEnvRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 续费周期，单位：月。
+	// 默认值为 1，即续费1个月。
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 是否自动选择代金券支付。
+	AutoVoucher *bool `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
+}
+
+func (r *RenewEnvRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewEnvRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "Period")
+	delete(f, "AutoVoucher")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewEnvRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RenewEnvResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RenewEnvResponse struct {
+	*tchttp.BaseResponse
+	Response *RenewEnvResponseParams `json:"Response"`
+}
+
+func (r *RenewEnvResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewEnvResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

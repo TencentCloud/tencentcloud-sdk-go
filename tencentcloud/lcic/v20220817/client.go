@@ -4313,6 +4313,60 @@ func (c *Client) LoginOriginIdWithContext(ctx context.Context, request *LoginOri
     return
 }
 
+func NewLoginOriginIdWithRoomRequest() (request *LoginOriginIdWithRoomRequest) {
+    request = &LoginOriginIdWithRoomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "LoginOriginIdWithRoom")
+    
+    
+    return
+}
+
+func NewLoginOriginIdWithRoomResponse() (response *LoginOriginIdWithRoomResponse) {
+    response = &LoginOriginIdWithRoomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// LoginOriginIdWithRoom
+// 使用源账号登录课堂，源账号为注册时填入的originId
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+func (c *Client) LoginOriginIdWithRoom(request *LoginOriginIdWithRoomRequest) (response *LoginOriginIdWithRoomResponse, err error) {
+    return c.LoginOriginIdWithRoomWithContext(context.Background(), request)
+}
+
+// LoginOriginIdWithRoom
+// 使用源账号登录课堂，源账号为注册时填入的originId
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+func (c *Client) LoginOriginIdWithRoomWithContext(ctx context.Context, request *LoginOriginIdWithRoomRequest) (response *LoginOriginIdWithRoomResponse, err error) {
+    if request == nil {
+        request = NewLoginOriginIdWithRoomRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lcic", APIVersion, "LoginOriginIdWithRoom")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("LoginOriginIdWithRoom require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewLoginOriginIdWithRoomResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewLoginUserRequest() (request *LoginUserRequest) {
     request = &LoginUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4361,6 +4415,58 @@ func (c *Client) LoginUserWithContext(ctx context.Context, request *LoginUserReq
     request.SetContext(ctx)
     
     response = NewLoginUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewLoginUserWithRoomRequest() (request *LoginUserWithRoomRequest) {
+    request = &LoginUserWithRoomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "LoginUserWithRoom")
+    
+    
+    return
+}
+
+func NewLoginUserWithRoomResponse() (response *LoginUserWithRoomResponse) {
+    response = &LoginUserWithRoomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// LoginUserWithRoom
+// 登录课堂
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+func (c *Client) LoginUserWithRoom(request *LoginUserWithRoomRequest) (response *LoginUserWithRoomResponse, err error) {
+    return c.LoginUserWithRoomWithContext(context.Background(), request)
+}
+
+// LoginUserWithRoom
+// 登录课堂
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+func (c *Client) LoginUserWithRoomWithContext(ctx context.Context, request *LoginUserWithRoomRequest) (response *LoginUserWithRoomResponse, err error) {
+    if request == nil {
+        request = NewLoginUserWithRoomRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lcic", APIVersion, "LoginUserWithRoom")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("LoginUserWithRoom require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewLoginUserWithRoomResponse()
     err = c.Send(request, response)
     return
 }

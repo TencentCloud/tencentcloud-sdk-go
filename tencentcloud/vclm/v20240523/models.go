@@ -132,6 +132,81 @@ func (r *CheckAnimateImageJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAigcVideoJobRequestParams struct {
+	// 任务ID。
+	// 
+	// 示例值：1194931538865782784
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DescribeAigcVideoJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID。
+	// 
+	// 示例值：1194931538865782784
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DescribeAigcVideoJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcVideoJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAigcVideoJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcVideoJobResponseParams struct {
+	// 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+	// 示例值：RUN
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+	// 示例值：FailedOperation.DriverFailed
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+	// 示例值：驱动失败
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 结果视频 URL。有效期 24 小时。
+	// 
+	// 示例值：https://console.cloud.tencent.com/result.mp4
+	ResultUrl *string `json:"ResultUrl,omitnil,omitempty" name:"ResultUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAigcVideoJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAigcVideoJobResponseParams `json:"Response"`
+}
+
+func (r *DescribeAigcVideoJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcVideoJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeHumanActorJobRequestParams struct {
 	// 任务ID。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -899,6 +974,98 @@ type LogoRect struct {
 
 	// 水印图框高度。
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
+}
+
+// Predefined struct for user
+type SubmitAigcVideoJobRequestParams struct {
+	// <p>模型名称。</p><p>枚举值：</p><p>● Vidu；</p><p>● Kling：可灵；</p><p>● SA；</p><p>● VO；</p><p>● HY：混元；</p><p>● YT：优图；</p><p>示例值：Vidu</p>
+	Vendor *string `json:"Vendor,omitnil,omitempty" name:"Vendor"`
+
+	// <p>模型版本。</p><p>按照【厂商-版本号】</p><p>枚举值：</p><p>● 当ModelName为Vidu时，可选值[q2, q2-pro, q2-turbo]</p><p>● 当ModelName为Kling时，可选值[v1.6, v2.0, v2.1, v2.5 , v2.6]</p><p>● 当ModelName为SA时，可选值[SA2]</p><p>● 当ModelName为VO时，可选值[V3, V3.1, V3-Fast, V3.1-Fast]</p><p>● 当ModelName为HY时，默认选择：v1.5</p><p>● 当ModelName为YT时，默认值选择：v2.0</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>模型参数Json-Format字符串</p>
+	ModelParam *string `json:"ModelParam,omitnil,omitempty" name:"ModelParam"`
+
+	// <p>正向文本提示词。不能超过2000个字符</p><p>示例值：一只小猫在草地奔跑</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>为生成结果图添加显式水印标识的开关，默认为1。<br>1：添加。<br>0：不添加。<br>其他数值：默认按1处理。<br>建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。<br>示例值：1</p>
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// <p>标识内容设置。<br>默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。</p>
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+}
+
+type SubmitAigcVideoJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型名称。</p><p>枚举值：</p><p>● Vidu；</p><p>● Kling：可灵；</p><p>● SA；</p><p>● VO；</p><p>● HY：混元；</p><p>● YT：优图；</p><p>示例值：Vidu</p>
+	Vendor *string `json:"Vendor,omitnil,omitempty" name:"Vendor"`
+
+	// <p>模型版本。</p><p>按照【厂商-版本号】</p><p>枚举值：</p><p>● 当ModelName为Vidu时，可选值[q2, q2-pro, q2-turbo]</p><p>● 当ModelName为Kling时，可选值[v1.6, v2.0, v2.1, v2.5 , v2.6]</p><p>● 当ModelName为SA时，可选值[SA2]</p><p>● 当ModelName为VO时，可选值[V3, V3.1, V3-Fast, V3.1-Fast]</p><p>● 当ModelName为HY时，默认选择：v1.5</p><p>● 当ModelName为YT时，默认值选择：v2.0</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>模型参数Json-Format字符串</p>
+	ModelParam *string `json:"ModelParam,omitnil,omitempty" name:"ModelParam"`
+
+	// <p>正向文本提示词。不能超过2000个字符</p><p>示例值：一只小猫在草地奔跑</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>为生成结果图添加显式水印标识的开关，默认为1。<br>1：添加。<br>0：不添加。<br>其他数值：默认按1处理。<br>建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。<br>示例值：1</p>
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// <p>标识内容设置。<br>默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。</p>
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+}
+
+func (r *SubmitAigcVideoJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitAigcVideoJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Vendor")
+	delete(f, "Model")
+	delete(f, "ModelParam")
+	delete(f, "Prompt")
+	delete(f, "LogoAdd")
+	delete(f, "LogoParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitAigcVideoJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitAigcVideoJobResponseParams struct {
+	// <p>任务ID。</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitAigcVideoJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitAigcVideoJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitAigcVideoJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitAigcVideoJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1782,7 +1949,7 @@ func (r *SubmitVideoEditJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitVideoFaceFusionJobRequestParams struct {
-	// 视频素材下载地址。用户自定义模版视频下载地址，使用前需要先调用视频审核接口进行内容审核。视频限制：分辨率≤4k，fps≤25，视频大小≤1G，时长≤20 秒，支持格式mp4。
+	// 视频素材下载地址。用户自定义模板视频下载地址，使用前需要先调用视频审核接口进行内容审核。视频限制：分辨率≤4k，fps≤25，视频大小≤1G，时长≤20 秒，支持格式mp4。
 	// 
 	// 输入视频建议：
 	// 姿态：人脸相对镜头水平方向角度转动不超过 90°,垂直方向角度转动不超过 20°。遮挡：脸部遮挡面积不超过 50%，不要完全遮挡五官，不要有半透明遮挡（强光，玻璃，透明眼镜等）、以及细碎离散的脸部遮挡（如飘落的花瓣）。妆容及光照：避免浓妆、复杂妆容，避免复杂光照、闪烁，这些属性无法完全恢复，并对稳定性有影响。针对特殊表情和微表情，针对局部肌肉控制下的微表情，以及过于夸张的特殊表情等不保证表情效果完全恢复。
@@ -1823,7 +1990,7 @@ type SubmitVideoFaceFusionJobRequestParams struct {
 type SubmitVideoFaceFusionJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 视频素材下载地址。用户自定义模版视频下载地址，使用前需要先调用视频审核接口进行内容审核。视频限制：分辨率≤4k，fps≤25，视频大小≤1G，时长≤20 秒，支持格式mp4。
+	// 视频素材下载地址。用户自定义模板视频下载地址，使用前需要先调用视频审核接口进行内容审核。视频限制：分辨率≤4k，fps≤25，视频大小≤1G，时长≤20 秒，支持格式mp4。
 	// 
 	// 输入视频建议：
 	// 姿态：人脸相对镜头水平方向角度转动不超过 90°,垂直方向角度转动不超过 20°。遮挡：脸部遮挡面积不超过 50%，不要完全遮挡五官，不要有半透明遮挡（强光，玻璃，透明眼镜等）、以及细碎离散的脸部遮挡（如飘落的花瓣）。妆容及光照：避免浓妆、复杂妆容，避免复杂光照、闪烁，这些属性无法完全恢复，并对稳定性有影响。针对特殊表情和微表情，针对局部肌肉控制下的微表情，以及过于夸张的特殊表情等不保证表情效果完全恢复。

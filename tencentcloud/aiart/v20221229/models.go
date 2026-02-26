@@ -154,7 +154,7 @@ type FaceInfo struct {
 	// 用户图 URL 列表
 	ImageUrls []*string `json:"ImageUrls,omitnil,omitempty" name:"ImageUrls"`
 
-	// 模版图人脸坐标。
+	// 模板图人脸坐标。
 	TemplateFaceRect *Rect `json:"TemplateFaceRect,omitnil,omitempty" name:"TemplateFaceRect"`
 }
 

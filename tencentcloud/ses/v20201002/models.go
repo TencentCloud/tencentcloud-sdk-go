@@ -20,6 +20,47 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AbuseReport struct {
+	// 发送时间
+	DeliverTime *string `json:"DeliverTime,omitnil,omitempty" name:"DeliverTime"`
+
+	// 发信地址
+	OriginalMailFrom *string `json:"OriginalMailFrom,omitnil,omitempty" name:"OriginalMailFrom"`
+
+	// 收信地址
+	OriginalRcptTo *string `json:"OriginalRcptTo,omitnil,omitempty" name:"OriginalRcptTo"`
+
+	// 发信域名
+	FromDomain *string `json:"FromDomain,omitnil,omitempty" name:"FromDomain"`
+
+	// 投诉时间
+	ComplainTime *string `json:"ComplainTime,omitnil,omitempty" name:"ComplainTime"`
+
+	// 收信域名
+	Mta *string `json:"Mta,omitnil,omitempty" name:"Mta"`
+
+	// 来源ip
+	SourceIp *string `json:"SourceIp,omitnil,omitempty" name:"SourceIp"`
+
+	// 数据时间
+	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
+
+	// 模板id
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// bulkId
+	BulkId *string `json:"BulkId,omitnil,omitempty" name:"BulkId"`
+
+	// 邮件Message-Id
+	MessageId *string `json:"MessageId,omitnil,omitempty" name:"MessageId"`
+
+	// 投诉时间
+	AbuseTime *string `json:"AbuseTime,omitnil,omitempty" name:"AbuseTime"`
+
+	// 邮件主题
+	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
+}
+
 type AddressUnsubscribeConfigData struct {
 	// 发信地址
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
@@ -1213,6 +1254,122 @@ type EmailSender struct {
 
 	// smtp密码类型,0=没有设置密码,1=已经设置了密码
 	SmtpPwdType *uint64 `json:"SmtpPwdType,omitnil,omitempty" name:"SmtpPwdType"`
+}
+
+// Predefined struct for user
+type GetAbuseReportRequestParams struct {
+	// 起始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制数量（默认为1000）
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 发信域名
+	FromDomain *string `json:"FromDomain,omitnil,omitempty" name:"FromDomain"`
+
+	// 发信地址
+	FromAddress *string `json:"FromAddress,omitnil,omitempty" name:"FromAddress"`
+
+	// 收信域名
+	Mta *string `json:"Mta,omitnil,omitempty" name:"Mta"`
+
+	// 收信地址
+	ToAddress *string `json:"ToAddress,omitnil,omitempty" name:"ToAddress"`
+
+	// 模版id
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+type GetAbuseReportRequest struct {
+	*tchttp.BaseRequest
+	
+	// 起始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制数量（默认为1000）
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 发信域名
+	FromDomain *string `json:"FromDomain,omitnil,omitempty" name:"FromDomain"`
+
+	// 发信地址
+	FromAddress *string `json:"FromAddress,omitnil,omitempty" name:"FromAddress"`
+
+	// 收信域名
+	Mta *string `json:"Mta,omitnil,omitempty" name:"Mta"`
+
+	// 收信地址
+	ToAddress *string `json:"ToAddress,omitnil,omitempty" name:"ToAddress"`
+
+	// 模版id
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+func (r *GetAbuseReportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAbuseReportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "FromDomain")
+	delete(f, "FromAddress")
+	delete(f, "Mta")
+	delete(f, "ToAddress")
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetAbuseReportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetAbuseReportResponseParams struct {
+	// 打开日志数据
+	Data []*AbuseReport `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 总条数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetAbuseReportResponse struct {
+	*tchttp.BaseResponse
+	Response *GetAbuseReportResponseParams `json:"Response"`
+}
+
+func (r *GetAbuseReportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAbuseReportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

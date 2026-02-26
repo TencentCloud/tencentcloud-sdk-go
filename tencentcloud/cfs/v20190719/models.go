@@ -3675,21 +3675,21 @@ type LifecycleDataTaskInfo struct {
 }
 
 type LifecyclePolicy struct {
-	// 生命周期管理策略创建的时间
+	// <p>生命周期管理策略创建的时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 生命周期管理策略ID
+	// <p>生命周期管理策略ID</p>
 	LifecyclePolicyID *string `json:"LifecyclePolicyID,omitnil,omitempty" name:"LifecyclePolicyID"`
 
-	// 生命周期管理策略名称
+	// <p>生命周期管理策略名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LifecyclePolicyName *string `json:"LifecyclePolicyName,omitnil,omitempty" name:"LifecyclePolicyName"`
 
-	// 生命周期管理策略关联的管理规则列表
+	// <p>生命周期管理策略关联的管理规则列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LifecycleRules []*LifecycleRule `json:"LifecycleRules,omitnil,omitempty" name:"LifecycleRules"`
 
-	// 生命周期管理策略关联目录的绝对路径列表
+	// <p>生命周期管理策略关联目录的绝对路径列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Paths []*PathInfo `json:"Paths,omitnil,omitempty" name:"Paths"`
 }

@@ -1095,6 +1095,64 @@ func (c *Client) DeleteReceiverWithContext(ctx context.Context, request *DeleteR
     return
 }
 
+func NewGetAbuseReportRequest() (request *GetAbuseReportRequest) {
+    request = &GetAbuseReportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ses", APIVersion, "GetAbuseReport")
+    
+    
+    return
+}
+
+func NewGetAbuseReportResponse() (response *GetAbuseReportResponse) {
+    response = &GetAbuseReportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetAbuseReport
+// 获取垃圾投诉数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDLIMIT = "FailedOperation.InvalidLimit"
+//  INTERNALERROR_QUERYDATABASEFAILED = "InternalError.QueryDataBaseFailed"
+//  INVALIDPARAMETER_APPIDISREQUIRED = "InvalidParameter.AppIdIsRequired"
+//  INVALIDPARAMETER_INVALIDENDTIMEFORMAT = "InvalidParameter.InvalidEndTimeFormat"
+//  INVALIDPARAMETER_INVALIDSTARTTIMEFORMAT = "InvalidParameter.InvalidStartTimeFormat"
+func (c *Client) GetAbuseReport(request *GetAbuseReportRequest) (response *GetAbuseReportResponse, err error) {
+    return c.GetAbuseReportWithContext(context.Background(), request)
+}
+
+// GetAbuseReport
+// 获取垃圾投诉数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDLIMIT = "FailedOperation.InvalidLimit"
+//  INTERNALERROR_QUERYDATABASEFAILED = "InternalError.QueryDataBaseFailed"
+//  INVALIDPARAMETER_APPIDISREQUIRED = "InvalidParameter.AppIdIsRequired"
+//  INVALIDPARAMETER_INVALIDENDTIMEFORMAT = "InvalidParameter.InvalidEndTimeFormat"
+//  INVALIDPARAMETER_INVALIDSTARTTIMEFORMAT = "InvalidParameter.InvalidStartTimeFormat"
+func (c *Client) GetAbuseReportWithContext(ctx context.Context, request *GetAbuseReportRequest) (response *GetAbuseReportResponse, err error) {
+    if request == nil {
+        request = NewGetAbuseReportRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ses", APIVersion, "GetAbuseReport")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetAbuseReport require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetAbuseReportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetEmailIdentityRequest() (request *GetEmailIdentityRequest) {
     request = &GetEmailIdentityRequest{
         BaseRequest: &tchttp.BaseRequest{},

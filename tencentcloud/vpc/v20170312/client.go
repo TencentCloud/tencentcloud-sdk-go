@@ -3291,6 +3291,112 @@ func (c *Client) CreateCcnWithContext(ctx context.Context, request *CreateCcnReq
     return
 }
 
+func NewCreateCcnPolicyBasedRoutingNextHopRequest() (request *CreateCcnPolicyBasedRoutingNextHopRequest) {
+    request = &CreateCcnPolicyBasedRoutingNextHopRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateCcnPolicyBasedRoutingNextHop")
+    
+    
+    return
+}
+
+func NewCreateCcnPolicyBasedRoutingNextHopResponse() (response *CreateCcnPolicyBasedRoutingNextHopResponse) {
+    response = &CreateCcnPolicyBasedRoutingNextHopResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCcnPolicyBasedRoutingNextHop
+// 创建云联网策略路由下一跳
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYBASEDROUTINGFLAG = "UnsupportedOperation.CcnNotEnablePolicyBasedRoutingFlag"
+func (c *Client) CreateCcnPolicyBasedRoutingNextHop(request *CreateCcnPolicyBasedRoutingNextHopRequest) (response *CreateCcnPolicyBasedRoutingNextHopResponse, err error) {
+    return c.CreateCcnPolicyBasedRoutingNextHopWithContext(context.Background(), request)
+}
+
+// CreateCcnPolicyBasedRoutingNextHop
+// 创建云联网策略路由下一跳
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYBASEDROUTINGFLAG = "UnsupportedOperation.CcnNotEnablePolicyBasedRoutingFlag"
+func (c *Client) CreateCcnPolicyBasedRoutingNextHopWithContext(ctx context.Context, request *CreateCcnPolicyBasedRoutingNextHopRequest) (response *CreateCcnPolicyBasedRoutingNextHopResponse, err error) {
+    if request == nil {
+        request = NewCreateCcnPolicyBasedRoutingNextHopRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "CreateCcnPolicyBasedRoutingNextHop")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCcnPolicyBasedRoutingNextHop require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCcnPolicyBasedRoutingNextHopResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCcnPolicyBasedRoutingRulesRequest() (request *CreateCcnPolicyBasedRoutingRulesRequest) {
+    request = &CreateCcnPolicyBasedRoutingRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateCcnPolicyBasedRoutingRules")
+    
+    
+    return
+}
+
+func NewCreateCcnPolicyBasedRoutingRulesResponse() (response *CreateCcnPolicyBasedRoutingRulesResponse) {
+    response = &CreateCcnPolicyBasedRoutingRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCcnPolicyBasedRoutingRules
+// 创建云联网策略路由匹配规则
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYBASEDROUTINGFLAG = "UnsupportedOperation.CcnNotEnablePolicyBasedRoutingFlag"
+//  UNSUPPORTEDOPERATION_RECORDEXISTS = "UnsupportedOperation.RecordExists"
+func (c *Client) CreateCcnPolicyBasedRoutingRules(request *CreateCcnPolicyBasedRoutingRulesRequest) (response *CreateCcnPolicyBasedRoutingRulesResponse, err error) {
+    return c.CreateCcnPolicyBasedRoutingRulesWithContext(context.Background(), request)
+}
+
+// CreateCcnPolicyBasedRoutingRules
+// 创建云联网策略路由匹配规则
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYBASEDROUTINGFLAG = "UnsupportedOperation.CcnNotEnablePolicyBasedRoutingFlag"
+//  UNSUPPORTEDOPERATION_RECORDEXISTS = "UnsupportedOperation.RecordExists"
+func (c *Client) CreateCcnPolicyBasedRoutingRulesWithContext(ctx context.Context, request *CreateCcnPolicyBasedRoutingRulesRequest) (response *CreateCcnPolicyBasedRoutingRulesResponse, err error) {
+    if request == nil {
+        request = NewCreateCcnPolicyBasedRoutingRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "CreateCcnPolicyBasedRoutingRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCcnPolicyBasedRoutingRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCcnPolicyBasedRoutingRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCcnRouteTablesRequest() (request *CreateCcnRouteTablesRequest) {
     request = &CreateCcnRouteTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8333,6 +8439,106 @@ func (c *Client) DeleteCcnWithContext(ctx context.Context, request *DeleteCcnReq
     return
 }
 
+func NewDeleteCcnPolicyBasedRoutingNextHopRequest() (request *DeleteCcnPolicyBasedRoutingNextHopRequest) {
+    request = &DeleteCcnPolicyBasedRoutingNextHopRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteCcnPolicyBasedRoutingNextHop")
+    
+    
+    return
+}
+
+func NewDeleteCcnPolicyBasedRoutingNextHopResponse() (response *DeleteCcnPolicyBasedRoutingNextHopResponse) {
+    response = &DeleteCcnPolicyBasedRoutingNextHopResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCcnPolicyBasedRoutingNextHop
+// 删除云联网策略路由下一跳
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCcnPolicyBasedRoutingNextHop(request *DeleteCcnPolicyBasedRoutingNextHopRequest) (response *DeleteCcnPolicyBasedRoutingNextHopResponse, err error) {
+    return c.DeleteCcnPolicyBasedRoutingNextHopWithContext(context.Background(), request)
+}
+
+// DeleteCcnPolicyBasedRoutingNextHop
+// 删除云联网策略路由下一跳
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCcnPolicyBasedRoutingNextHopWithContext(ctx context.Context, request *DeleteCcnPolicyBasedRoutingNextHopRequest) (response *DeleteCcnPolicyBasedRoutingNextHopResponse, err error) {
+    if request == nil {
+        request = NewDeleteCcnPolicyBasedRoutingNextHopRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "DeleteCcnPolicyBasedRoutingNextHop")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCcnPolicyBasedRoutingNextHop require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCcnPolicyBasedRoutingNextHopResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCcnPolicyBasedRoutingRuleRequest() (request *DeleteCcnPolicyBasedRoutingRuleRequest) {
+    request = &DeleteCcnPolicyBasedRoutingRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteCcnPolicyBasedRoutingRule")
+    
+    
+    return
+}
+
+func NewDeleteCcnPolicyBasedRoutingRuleResponse() (response *DeleteCcnPolicyBasedRoutingRuleResponse) {
+    response = &DeleteCcnPolicyBasedRoutingRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCcnPolicyBasedRoutingRule
+// 删除云联网策略路由匹配规则
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCcnPolicyBasedRoutingRule(request *DeleteCcnPolicyBasedRoutingRuleRequest) (response *DeleteCcnPolicyBasedRoutingRuleResponse, err error) {
+    return c.DeleteCcnPolicyBasedRoutingRuleWithContext(context.Background(), request)
+}
+
+// DeleteCcnPolicyBasedRoutingRule
+// 删除云联网策略路由匹配规则
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCcnPolicyBasedRoutingRuleWithContext(ctx context.Context, request *DeleteCcnPolicyBasedRoutingRuleRequest) (response *DeleteCcnPolicyBasedRoutingRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteCcnPolicyBasedRoutingRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "DeleteCcnPolicyBasedRoutingRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCcnPolicyBasedRoutingRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCcnPolicyBasedRoutingRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCcnRouteTablesRequest() (request *DeleteCcnRouteTablesRequest) {
     request = &DeleteCcnRouteTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12323,6 +12529,106 @@ func (c *Client) DescribeCcnAttachedInstancesWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeCcnAttachedInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCcnPolicyBasedRoutingNextHopRequest() (request *DescribeCcnPolicyBasedRoutingNextHopRequest) {
+    request = &DescribeCcnPolicyBasedRoutingNextHopRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeCcnPolicyBasedRoutingNextHop")
+    
+    
+    return
+}
+
+func NewDescribeCcnPolicyBasedRoutingNextHopResponse() (response *DescribeCcnPolicyBasedRoutingNextHopResponse) {
+    response = &DescribeCcnPolicyBasedRoutingNextHopResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCcnPolicyBasedRoutingNextHop
+// 查询云联网策略路由下一跳
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCcnPolicyBasedRoutingNextHop(request *DescribeCcnPolicyBasedRoutingNextHopRequest) (response *DescribeCcnPolicyBasedRoutingNextHopResponse, err error) {
+    return c.DescribeCcnPolicyBasedRoutingNextHopWithContext(context.Background(), request)
+}
+
+// DescribeCcnPolicyBasedRoutingNextHop
+// 查询云联网策略路由下一跳
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCcnPolicyBasedRoutingNextHopWithContext(ctx context.Context, request *DescribeCcnPolicyBasedRoutingNextHopRequest) (response *DescribeCcnPolicyBasedRoutingNextHopResponse, err error) {
+    if request == nil {
+        request = NewDescribeCcnPolicyBasedRoutingNextHopRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "DescribeCcnPolicyBasedRoutingNextHop")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCcnPolicyBasedRoutingNextHop require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCcnPolicyBasedRoutingNextHopResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCcnPolicyBasedRoutingRuleRequest() (request *DescribeCcnPolicyBasedRoutingRuleRequest) {
+    request = &DescribeCcnPolicyBasedRoutingRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeCcnPolicyBasedRoutingRule")
+    
+    
+    return
+}
+
+func NewDescribeCcnPolicyBasedRoutingRuleResponse() (response *DescribeCcnPolicyBasedRoutingRuleResponse) {
+    response = &DescribeCcnPolicyBasedRoutingRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCcnPolicyBasedRoutingRule
+// 查询云联网策略路由匹配规则
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCcnPolicyBasedRoutingRule(request *DescribeCcnPolicyBasedRoutingRuleRequest) (response *DescribeCcnPolicyBasedRoutingRuleResponse, err error) {
+    return c.DescribeCcnPolicyBasedRoutingRuleWithContext(context.Background(), request)
+}
+
+// DescribeCcnPolicyBasedRoutingRule
+// 查询云联网策略路由匹配规则
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCcnPolicyBasedRoutingRuleWithContext(ctx context.Context, request *DescribeCcnPolicyBasedRoutingRuleRequest) (response *DescribeCcnPolicyBasedRoutingRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeCcnPolicyBasedRoutingRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "DescribeCcnPolicyBasedRoutingRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCcnPolicyBasedRoutingRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCcnPolicyBasedRoutingRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -22369,6 +22675,106 @@ func (c *Client) ModifyCcnAttributeWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyCcnAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCcnPolicyBasedRoutingNextHopAttributeRequest() (request *ModifyCcnPolicyBasedRoutingNextHopAttributeRequest) {
+    request = &ModifyCcnPolicyBasedRoutingNextHopAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyCcnPolicyBasedRoutingNextHopAttribute")
+    
+    
+    return
+}
+
+func NewModifyCcnPolicyBasedRoutingNextHopAttributeResponse() (response *ModifyCcnPolicyBasedRoutingNextHopAttributeResponse) {
+    response = &ModifyCcnPolicyBasedRoutingNextHopAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCcnPolicyBasedRoutingNextHopAttribute
+// 更新云联网策略路由下一跳参数
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MUSTHASONE = "InvalidParameterValue.MustHasOne"
+func (c *Client) ModifyCcnPolicyBasedRoutingNextHopAttribute(request *ModifyCcnPolicyBasedRoutingNextHopAttributeRequest) (response *ModifyCcnPolicyBasedRoutingNextHopAttributeResponse, err error) {
+    return c.ModifyCcnPolicyBasedRoutingNextHopAttributeWithContext(context.Background(), request)
+}
+
+// ModifyCcnPolicyBasedRoutingNextHopAttribute
+// 更新云联网策略路由下一跳参数
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MUSTHASONE = "InvalidParameterValue.MustHasOne"
+func (c *Client) ModifyCcnPolicyBasedRoutingNextHopAttributeWithContext(ctx context.Context, request *ModifyCcnPolicyBasedRoutingNextHopAttributeRequest) (response *ModifyCcnPolicyBasedRoutingNextHopAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyCcnPolicyBasedRoutingNextHopAttributeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "ModifyCcnPolicyBasedRoutingNextHopAttribute")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCcnPolicyBasedRoutingNextHopAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCcnPolicyBasedRoutingNextHopAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCcnPolicyBasedRoutingRuleAttributeRequest() (request *ModifyCcnPolicyBasedRoutingRuleAttributeRequest) {
+    request = &ModifyCcnPolicyBasedRoutingRuleAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyCcnPolicyBasedRoutingRuleAttribute")
+    
+    
+    return
+}
+
+func NewModifyCcnPolicyBasedRoutingRuleAttributeResponse() (response *ModifyCcnPolicyBasedRoutingRuleAttributeResponse) {
+    response = &ModifyCcnPolicyBasedRoutingRuleAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCcnPolicyBasedRoutingRuleAttribute
+// 更新云联网策略路由匹配规则参数
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MUSTHASONE = "InvalidParameterValue.MustHasOne"
+func (c *Client) ModifyCcnPolicyBasedRoutingRuleAttribute(request *ModifyCcnPolicyBasedRoutingRuleAttributeRequest) (response *ModifyCcnPolicyBasedRoutingRuleAttributeResponse, err error) {
+    return c.ModifyCcnPolicyBasedRoutingRuleAttributeWithContext(context.Background(), request)
+}
+
+// ModifyCcnPolicyBasedRoutingRuleAttribute
+// 更新云联网策略路由匹配规则参数
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MUSTHASONE = "InvalidParameterValue.MustHasOne"
+func (c *Client) ModifyCcnPolicyBasedRoutingRuleAttributeWithContext(ctx context.Context, request *ModifyCcnPolicyBasedRoutingRuleAttributeRequest) (response *ModifyCcnPolicyBasedRoutingRuleAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyCcnPolicyBasedRoutingRuleAttributeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "ModifyCcnPolicyBasedRoutingRuleAttribute")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCcnPolicyBasedRoutingRuleAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCcnPolicyBasedRoutingRuleAttributeResponse()
     err = c.Send(request, response)
     return
 }

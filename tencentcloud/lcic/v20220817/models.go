@@ -5341,6 +5341,80 @@ func (r *LoginOriginIdResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type LoginOriginIdWithRoomRequestParams struct {
+	// <p>低代码互动课堂的SdkAppId。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>用户在客户系统的Id，需要在同一应用下唯一。</p>
+	OriginId *string `json:"OriginId,omitnil,omitempty" name:"OriginId"`
+
+	// <p>课堂 ID</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+type LoginOriginIdWithRoomRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>低代码互动课堂的SdkAppId。</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>用户在客户系统的Id，需要在同一应用下唯一。</p>
+	OriginId *string `json:"OriginId,omitnil,omitempty" name:"OriginId"`
+
+	// <p>课堂 ID</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+func (r *LoginOriginIdWithRoomRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *LoginOriginIdWithRoomRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "OriginId")
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LoginOriginIdWithRoomRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type LoginOriginIdWithRoomResponseParams struct {
+	// <p>用户Id。</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>登录/注册成功后返回登录态token。有效期7天。</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type LoginOriginIdWithRoomResponse struct {
+	*tchttp.BaseResponse
+	Response *LoginOriginIdWithRoomResponseParams `json:"Response"`
+}
+
+func (r *LoginOriginIdWithRoomResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *LoginOriginIdWithRoomResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type LoginUserRequestParams struct {
 	// 注册获取的用户id。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
@@ -5397,6 +5471,73 @@ func (r *LoginUserResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *LoginUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type LoginUserWithRoomRequestParams struct {
+	// <p>注册获取的用户id。</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>课堂 ID</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+type LoginUserWithRoomRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>注册获取的用户id。</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>课堂 ID</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+func (r *LoginUserWithRoomRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *LoginUserWithRoomRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserId")
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LoginUserWithRoomRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type LoginUserWithRoomResponseParams struct {
+	// <p>用户Id。</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// <p>注册成功后返回登录态token，有效期7天。token过期后可以通过调用“登录”或“源账号登录”进行更新。</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type LoginUserWithRoomResponse struct {
+	*tchttp.BaseResponse
+	Response *LoginUserWithRoomResponseParams `json:"Response"`
+}
+
+func (r *LoginUserWithRoomResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *LoginUserWithRoomResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -4634,112 +4634,86 @@ func (r *CreateAigcCustomElementResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAigcImageTaskRequestParams struct {
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 模型名称。取值：
-	// <li>GEM：Gemini；</li>
-	// <li>Qwen：千问。</li>
-	// <li>Hunyuan：混元。</li>
-	// <li>Vidu：生数。</li>
-	// <li>Kling：可灵。</li>
+	// <p>模型名称。取值：</p><li>GEM：Gemini；</li><li>Qwen：千问。</li><li>Hunyuan：混元。</li><li>Vidu：生数。</li><li>Kling：可灵。</li>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 模型版本。取值：
-	// <li>当 ModelName 是 GEM，可选值为 2.5、3.0；</li>
-	// <li>当 ModelName 是 Qwen，可选值为 0925；</li>
-	// <li>当 ModelName 是 Hunyuan，可选值为 3.0；</li>
-	// <li>当 ModelName 是 Vidu，可选值为 q2；</li>
-	// <li>当 ModelName 是 Kling，可选值为 2.1；</li>
+	// <p>模型版本。取值：<li>当 ModelName 是 GEM，可选值为 2.5；</li><li>当 ModelName 是 Qwen，可选值为 0925；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1；</li></p>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// AIGC 生图任务的输入图片的文件信息。默认只支持指定1个。下列模型可传多张参考图：
-	// * GEM 2.5：0～3张图片；
-	// * GEM 3.0：0～14张图片；
-	// * Vidu q2：0～7张图片，图片支持 png、jpeg、jpg、webp格式，图片像素不能小于 128x128，且比例需要小于1:4或4:1；
+	// <p>AIGC 生图任务的输入图片的文件信息。默认只支持指定1个。下列模型可传多张参考图：<li>GEM 2.5：0～3张图片；</li><li>Vidu q2：0～7张图片，图片支持 png、jpeg、jpg、webp格式，图片像素不能小于 128x128，且比例需要小于1:4或4:1；</li></p>
 	FileInfos []*AigcImageTaskInputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
-	// 生成图片的提示词。当 FileInfos 为空时，此参数必填。
+	// <p>生成图片的提示词。当 FileInfos 为空时，此参数必填。</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// 要阻止模型生成图片的提示词。
+	// <p>要阻止模型生成图片的提示词。</p>
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
-	// 是否自动优化提示词。开启时将自动优化传入的 Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+	// <p>是否自动优化提示词。开启时将自动优化传入的 Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
 	EnhancePrompt *string `json:"EnhancePrompt,omitnil,omitempty" name:"EnhancePrompt"`
 
-	// 生图任务的输出媒体文件配置。
+	// <p>生图任务的输出媒体文件配置。</p>
 	OutputConfig *AigcImageOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
 
-	// 输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。
+	// <p>输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。</p>
 	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
 
-	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
+	// <p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 
-	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	// <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
 	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
 
-	// 保留字段，特殊用途时使用。
+	// <p>保留字段，特殊用途时使用。</p>
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
 type CreateAigcImageTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 模型名称。取值：
-	// <li>GEM：Gemini；</li>
-	// <li>Qwen：千问。</li>
-	// <li>Hunyuan：混元。</li>
-	// <li>Vidu：生数。</li>
-	// <li>Kling：可灵。</li>
+	// <p>模型名称。取值：</p><li>GEM：Gemini；</li><li>Qwen：千问。</li><li>Hunyuan：混元。</li><li>Vidu：生数。</li><li>Kling：可灵。</li>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 模型版本。取值：
-	// <li>当 ModelName 是 GEM，可选值为 2.5、3.0；</li>
-	// <li>当 ModelName 是 Qwen，可选值为 0925；</li>
-	// <li>当 ModelName 是 Hunyuan，可选值为 3.0；</li>
-	// <li>当 ModelName 是 Vidu，可选值为 q2；</li>
-	// <li>当 ModelName 是 Kling，可选值为 2.1；</li>
+	// <p>模型版本。取值：<li>当 ModelName 是 GEM，可选值为 2.5；</li><li>当 ModelName 是 Qwen，可选值为 0925；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1；</li></p>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// AIGC 生图任务的输入图片的文件信息。默认只支持指定1个。下列模型可传多张参考图：
-	// * GEM 2.5：0～3张图片；
-	// * GEM 3.0：0～14张图片；
-	// * Vidu q2：0～7张图片，图片支持 png、jpeg、jpg、webp格式，图片像素不能小于 128x128，且比例需要小于1:4或4:1；
+	// <p>AIGC 生图任务的输入图片的文件信息。默认只支持指定1个。下列模型可传多张参考图：<li>GEM 2.5：0～3张图片；</li><li>Vidu q2：0～7张图片，图片支持 png、jpeg、jpg、webp格式，图片像素不能小于 128x128，且比例需要小于1:4或4:1；</li></p>
 	FileInfos []*AigcImageTaskInputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
-	// 生成图片的提示词。当 FileInfos 为空时，此参数必填。
+	// <p>生成图片的提示词。当 FileInfos 为空时，此参数必填。</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// 要阻止模型生成图片的提示词。
+	// <p>要阻止模型生成图片的提示词。</p>
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
-	// 是否自动优化提示词。开启时将自动优化传入的 Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+	// <p>是否自动优化提示词。开启时将自动优化传入的 Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
 	EnhancePrompt *string `json:"EnhancePrompt,omitnil,omitempty" name:"EnhancePrompt"`
 
-	// 生图任务的输出媒体文件配置。
+	// <p>生图任务的输出媒体文件配置。</p>
 	OutputConfig *AigcImageOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
 
-	// 输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。
+	// <p>输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。</p>
 	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
 
-	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
+	// <p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 
-	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	// <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
 	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
 
-	// 保留字段，特殊用途时使用。
+	// <p>保留字段，特殊用途时使用。</p>
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
@@ -4776,7 +4750,7 @@ func (r *CreateAigcImageTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAigcImageTaskResponseParams struct {
-	// 任务 ID。
+	// <p>任务 ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

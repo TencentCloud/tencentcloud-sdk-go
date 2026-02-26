@@ -99,6 +99,60 @@ func (r *CreateNoticeContentTmplResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteNoticeContentTmplsRequestParams struct {
+	// 要删除的模板id
+	TmplIDs []*string `json:"TmplIDs,omitnil,omitempty" name:"TmplIDs"`
+}
+
+type DeleteNoticeContentTmplsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要删除的模板id
+	TmplIDs []*string `json:"TmplIDs,omitnil,omitempty" name:"TmplIDs"`
+}
+
+func (r *DeleteNoticeContentTmplsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNoticeContentTmplsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TmplIDs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNoticeContentTmplsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteNoticeContentTmplsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteNoticeContentTmplsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteNoticeContentTmplsResponseParams `json:"Response"`
+}
+
+func (r *DeleteNoticeContentTmplsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNoticeContentTmplsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAlarmNotifyHistoriesRequestParams struct {
 	// 监控类型
 	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
@@ -194,6 +248,118 @@ func (r *DescribeAlarmNotifyHistoriesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeNoticeContentTmplRequestParams struct {
+	// 分页数
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 指定模板ID查询，查询参数都为空则默认查询账号下所有模板
+	TmplIDs []*string `json:"TmplIDs,omitnil,omitempty" name:"TmplIDs"`
+
+	// 指定模板名称查询，查询参数都为空则默认查询账号下所有模板
+	TmplName *string `json:"TmplName,omitnil,omitempty" name:"TmplName"`
+
+	// 指定通知模板ID查询，查询参数都为空则默认查询账号下所有模板
+	NoticeID *string `json:"NoticeID,omitnil,omitempty" name:"NoticeID"`
+
+	// 模板语言 en/zh 缺省不过滤
+	TmplLanguage *string `json:"TmplLanguage,omitnil,omitempty" name:"TmplLanguage"`
+
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+}
+
+type DescribeNoticeContentTmplRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页数
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 指定模板ID查询，查询参数都为空则默认查询账号下所有模板
+	TmplIDs []*string `json:"TmplIDs,omitnil,omitempty" name:"TmplIDs"`
+
+	// 指定模板名称查询，查询参数都为空则默认查询账号下所有模板
+	TmplName *string `json:"TmplName,omitnil,omitempty" name:"TmplName"`
+
+	// 指定通知模板ID查询，查询参数都为空则默认查询账号下所有模板
+	NoticeID *string `json:"NoticeID,omitnil,omitempty" name:"NoticeID"`
+
+	// 模板语言 en/zh 缺省不过滤
+	TmplLanguage *string `json:"TmplLanguage,omitnil,omitempty" name:"TmplLanguage"`
+
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+}
+
+func (r *DescribeNoticeContentTmplRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNoticeContentTmplRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "TmplIDs")
+	delete(f, "TmplName")
+	delete(f, "NoticeID")
+	delete(f, "TmplLanguage")
+	delete(f, "MonitorType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNoticeContentTmplRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNoticeContentTmplResponseParams struct {
+	// 自定义通知内容模板
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoticeContentTmpls []*NoticeContentTmpl `json:"NoticeContentTmpls,omitnil,omitempty" name:"NoticeContentTmpls"`
+
+	// 通知内容模板绑定的告警策略数量
+	NoticeContentTmplBindPolicyCounts []*NoticeContentTmplBindPolicyCount `json:"NoticeContentTmplBindPolicyCounts,omitnil,omitempty" name:"NoticeContentTmplBindPolicyCounts"`
+
+	// 分页数
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 结果总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNoticeContentTmplResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNoticeContentTmplResponseParams `json:"Response"`
+}
+
+func (r *DescribeNoticeContentTmplResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNoticeContentTmplResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DingDingRobotNoticeTmpl struct {
 	// 内容模板
 	ContentTmpl *string `json:"ContentTmpl,omitnil,omitempty" name:"ContentTmpl"`
@@ -226,6 +392,118 @@ type FeiShuRobotNoticeTmplMatcher struct {
 
 	// 模板配置
 	Template *FeiShuRobotNoticeTmpl `json:"Template,omitnil,omitempty" name:"Template"`
+}
+
+// Predefined struct for user
+type ModifyNoticeContentTmplRequestParams struct {
+	// 模板名称
+	TmplName *string `json:"TmplName,omitnil,omitempty" name:"TmplName"`
+
+	// 模板内容
+	TmplContents *NoticeContentTmplItem `json:"TmplContents,omitnil,omitempty" name:"TmplContents"`
+
+	// 需要修改的模板ID
+	TmplID *string `json:"TmplID,omitnil,omitempty" name:"TmplID"`
+}
+
+type ModifyNoticeContentTmplRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板名称
+	TmplName *string `json:"TmplName,omitnil,omitempty" name:"TmplName"`
+
+	// 模板内容
+	TmplContents *NoticeContentTmplItem `json:"TmplContents,omitnil,omitempty" name:"TmplContents"`
+
+	// 需要修改的模板ID
+	TmplID *string `json:"TmplID,omitnil,omitempty" name:"TmplID"`
+}
+
+func (r *ModifyNoticeContentTmplRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNoticeContentTmplRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TmplName")
+	delete(f, "TmplContents")
+	delete(f, "TmplID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNoticeContentTmplRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNoticeContentTmplResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyNoticeContentTmplResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyNoticeContentTmplResponseParams `json:"Response"`
+}
+
+func (r *ModifyNoticeContentTmplResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNoticeContentTmplResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type NoticeContentTmpl struct {
+	// 自定义通知内容模板id，唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TmplID *string `json:"TmplID,omitnil,omitempty" name:"TmplID"`
+
+	// 自定义通知内容模板名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TmplName *string `json:"TmplName,omitnil,omitempty" name:"TmplName"`
+
+	// 通知内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TmplContents *NoticeContentTmplItem `json:"TmplContents,omitnil,omitempty" name:"TmplContents"`
+
+	// Unix时间戳，秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// Unix时间戳，秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 最后修改人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastModifier *string `json:"LastModifier,omitnil,omitempty" name:"LastModifier"`
+
+	// 创建人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+
+	// 模板语言 en/zh
+	TmplLanguage *string `json:"TmplLanguage,omitnil,omitempty" name:"TmplLanguage"`
+}
+
+type NoticeContentTmplBindPolicyCount struct {
+	// 通知内容模板ID
+	NoticeContentTmplID *string `json:"NoticeContentTmplID,omitnil,omitempty" name:"NoticeContentTmplID"`
+
+	// 绑定告警策略数量
+	BindCount *uint64 `json:"BindCount,omitnil,omitempty" name:"BindCount"`
 }
 
 type NoticeContentTmplItem struct {

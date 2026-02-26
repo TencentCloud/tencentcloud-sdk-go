@@ -6848,7 +6848,15 @@ type TextToSpeechRequestParams struct {
 	// TTS的模型，当前固定为：flow_01_turbo
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	//  需要合成的语言（ISO 639-1），支持 zh（中文）、en（英文）、yue（粤语）、ja（日语）、ko（韩语），默认自动识别
+	//  需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：
+	// - zh（中文）
+	// - en（英文）
+	// - yue（粤语）
+	// - ja（日语）
+	// - ko（韩语）
+	// - ar（阿拉伯语）
+	// - id（印尼语）
+	// - th（泰语）
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 
@@ -6873,7 +6881,15 @@ type TextToSpeechRequest struct {
 	// TTS的模型，当前固定为：flow_01_turbo
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	//  需要合成的语言（ISO 639-1），支持 zh（中文）、en（英文）、yue（粤语）、ja（日语）、ko（韩语），默认自动识别
+	//  需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：
+	// - zh（中文）
+	// - en（英文）
+	// - yue（粤语）
+	// - ja（日语）
+	// - ko（韩语）
+	// - ar（阿拉伯语）
+	// - id（印尼语）
+	// - th（泰语）
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 

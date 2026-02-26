@@ -1345,6 +1345,10 @@ func NewCreatePrometheusGlobalNotificationResponse() (response *CreatePrometheus
 }
 
 // CreatePrometheusGlobalNotification
+// 之前TPS的接口，迁移后已经不需要该功能
+//
+// 
+//
 // 创建全局告警通知渠道。集群内创建的告警规则如果未配置告警通知渠道，默认走全局告警通知渠道（建议在控制台创建告警，集群内创建告警不易维护）
 //
 // 可能返回的错误码:
@@ -1356,6 +1360,10 @@ func (c *Client) CreatePrometheusGlobalNotification(request *CreatePrometheusGlo
 }
 
 // CreatePrometheusGlobalNotification
+// 之前TPS的接口，迁移后已经不需要该功能
+//
+// 
+//
 // 创建全局告警通知渠道。集群内创建的告警规则如果未配置告警通知渠道，默认走全局告警通知渠道（建议在控制台创建告警，集群内创建告警不易维护）
 //
 // 可能返回的错误码:
@@ -5163,6 +5171,58 @@ func (c *Client) DescribeMonitorTypesWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeNotificationContentTemplateSupportsRequest() (request *DescribeNotificationContentTemplateSupportsRequest) {
+    request = &DescribeNotificationContentTemplateSupportsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeNotificationContentTemplateSupports")
+    
+    
+    return
+}
+
+func NewDescribeNotificationContentTemplateSupportsResponse() (response *DescribeNotificationContentTemplateSupportsResponse) {
+    response = &DescribeNotificationContentTemplateSupportsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNotificationContentTemplateSupports
+// 查询告警通知内容模板支持的变量或者函数列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeNotificationContentTemplateSupports(request *DescribeNotificationContentTemplateSupportsRequest) (response *DescribeNotificationContentTemplateSupportsResponse, err error) {
+    return c.DescribeNotificationContentTemplateSupportsWithContext(context.Background(), request)
+}
+
+// DescribeNotificationContentTemplateSupports
+// 查询告警通知内容模板支持的变量或者函数列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeNotificationContentTemplateSupportsWithContext(ctx context.Context, request *DescribeNotificationContentTemplateSupportsRequest) (response *DescribeNotificationContentTemplateSupportsResponse, err error) {
+    if request == nil {
+        request = NewDescribeNotificationContentTemplateSupportsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribeNotificationContentTemplateSupports")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotificationContentTemplateSupports require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNotificationContentTemplateSupportsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePhoneAlarmFlowTotalCountRequest() (request *DescribePhoneAlarmFlowTotalCountRequest) {
     request = &DescribePhoneAlarmFlowTotalCountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6365,6 +6425,10 @@ func NewDescribePrometheusGlobalNotificationResponse() (response *DescribePromet
 }
 
 // DescribePrometheusGlobalNotification
+// 之前TPS的接口，迁移后已经不需要
+//
+// 
+//
 // 查询全局告警通知渠道
 //
 // 可能返回的错误码:
@@ -6381,6 +6445,10 @@ func (c *Client) DescribePrometheusGlobalNotification(request *DescribePrometheu
 }
 
 // DescribePrometheusGlobalNotification
+// 之前TPS的接口，迁移后已经不需要
+//
+// 
+//
 // 查询全局告警通知渠道
 //
 // 可能返回的错误码:
@@ -9173,6 +9241,10 @@ func NewModifyPrometheusGlobalNotificationResponse() (response *ModifyPrometheus
 }
 
 // ModifyPrometheusGlobalNotification
+// 之前TPS接口，迁移后不需要
+//
+// 
+//
 // 修改全局告警通知渠道
 //
 // 可能返回的错误码:
@@ -9187,6 +9259,10 @@ func (c *Client) ModifyPrometheusGlobalNotification(request *ModifyPrometheusGlo
 }
 
 // ModifyPrometheusGlobalNotification
+// 之前TPS接口，迁移后不需要
+//
+// 
+//
 // 修改全局告警通知渠道
 //
 // 可能返回的错误码:

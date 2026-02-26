@@ -146,7 +146,6 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *ChatCompletionsResponse, err error) {
@@ -179,7 +178,6 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) ChatCompletionsWithContext(ctx context.Context, request *ChatCompletionsRequest) (response *ChatCompletionsResponse, err error) {
@@ -238,7 +236,6 @@ func NewChatTranslationsResponse() (response *ChatTranslationsResponse) {
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
@@ -270,7 +267,6 @@ func (c *Client) ChatTranslations(request *ChatTranslationsRequest) (response *C
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
@@ -289,6 +285,108 @@ func (c *Client) ChatTranslationsWithContext(ctx context.Context, request *ChatT
     request.SetContext(ctx)
     
     response = NewChatTranslationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateGlossaryRequest() (request *CreateGlossaryRequest) {
+    request = &CreateGlossaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "CreateGlossary")
+    
+    
+    return
+}
+
+func NewCreateGlossaryResponse() (response *CreateGlossaryResponse) {
+    response = &CreateGlossaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateGlossary
+// 创建自定义术语库，在翻译时自动将源语言术语替换为指定的目标语言译文，确保专业术语翻译的一致性和准确性。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CreateGlossary(request *CreateGlossaryRequest) (response *CreateGlossaryResponse, err error) {
+    return c.CreateGlossaryWithContext(context.Background(), request)
+}
+
+// CreateGlossary
+// 创建自定义术语库，在翻译时自动将源语言术语替换为指定的目标语言译文，确保专业术语翻译的一致性和准确性。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CreateGlossaryWithContext(ctx context.Context, request *CreateGlossaryRequest) (response *CreateGlossaryResponse, err error) {
+    if request == nil {
+        request = NewCreateGlossaryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "CreateGlossary")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGlossary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGlossaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateGlossaryEntryRequest() (request *CreateGlossaryEntryRequest) {
+    request = &CreateGlossaryEntryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "CreateGlossaryEntry")
+    
+    
+    return
+}
+
+func NewCreateGlossaryEntryResponse() (response *CreateGlossaryEntryResponse) {
+    response = &CreateGlossaryEntryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateGlossaryEntry
+// 添加术语条目。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CreateGlossaryEntry(request *CreateGlossaryEntryRequest) (response *CreateGlossaryEntryResponse, err error) {
+    return c.CreateGlossaryEntryWithContext(context.Background(), request)
+}
+
+// CreateGlossaryEntry
+// 添加术语条目。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CreateGlossaryEntryWithContext(ctx context.Context, request *CreateGlossaryEntryRequest) (response *CreateGlossaryEntryResponse, err error) {
+    if request == nil {
+        request = NewCreateGlossaryEntryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "CreateGlossaryEntry")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGlossaryEntry require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGlossaryEntryResponse()
     err = c.Send(request, response)
     return
 }
@@ -332,7 +430,6 @@ func NewCreateThreadResponse() (response *CreateThreadResponse) {
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) CreateThread(request *CreateThreadRequest) (response *CreateThreadResponse, err error) {
@@ -361,7 +458,6 @@ func (c *Client) CreateThread(request *CreateThreadRequest) (response *CreateThr
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) CreateThreadWithContext(ctx context.Context, request *CreateThreadRequest) (response *CreateThreadResponse, err error) {
@@ -377,6 +473,106 @@ func (c *Client) CreateThreadWithContext(ctx context.Context, request *CreateThr
     request.SetContext(ctx)
     
     response = NewCreateThreadResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGlossaryRequest() (request *DeleteGlossaryRequest) {
+    request = &DeleteGlossaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "DeleteGlossary")
+    
+    
+    return
+}
+
+func NewDeleteGlossaryResponse() (response *DeleteGlossaryResponse) {
+    response = &DeleteGlossaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGlossary
+// 删除术语库。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteGlossary(request *DeleteGlossaryRequest) (response *DeleteGlossaryResponse, err error) {
+    return c.DeleteGlossaryWithContext(context.Background(), request)
+}
+
+// DeleteGlossary
+// 删除术语库。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteGlossaryWithContext(ctx context.Context, request *DeleteGlossaryRequest) (response *DeleteGlossaryResponse, err error) {
+    if request == nil {
+        request = NewDeleteGlossaryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "DeleteGlossary")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGlossary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGlossaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGlossaryEntryRequest() (request *DeleteGlossaryEntryRequest) {
+    request = &DeleteGlossaryEntryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "DeleteGlossaryEntry")
+    
+    
+    return
+}
+
+func NewDeleteGlossaryEntryResponse() (response *DeleteGlossaryEntryResponse) {
+    response = &DeleteGlossaryEntryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGlossaryEntry
+// 删除术语条目。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteGlossaryEntry(request *DeleteGlossaryEntryRequest) (response *DeleteGlossaryEntryResponse, err error) {
+    return c.DeleteGlossaryEntryWithContext(context.Background(), request)
+}
+
+// DeleteGlossaryEntry
+// 删除术语条目。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteGlossaryEntryWithContext(ctx context.Context, request *DeleteGlossaryEntryRequest) (response *DeleteGlossaryEntryResponse, err error) {
+    if request == nil {
+        request = NewDeleteGlossaryEntryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "DeleteGlossaryEntry")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGlossaryEntry require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGlossaryEntryResponse()
     err = c.Send(request, response)
     return
 }
@@ -410,7 +606,6 @@ func NewFilesDeletionsResponse() (response *FilesDeletionsResponse) {
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) FilesDeletions(request *FilesDeletionsRequest) (response *FilesDeletionsResponse, err error) {
@@ -429,7 +624,6 @@ func (c *Client) FilesDeletions(request *FilesDeletionsRequest) (response *Files
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) FilesDeletionsWithContext(ctx context.Context, request *FilesDeletionsRequest) (response *FilesDeletionsResponse, err error) {
@@ -478,7 +672,6 @@ func NewFilesListResponse() (response *FilesListResponse) {
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) FilesList(request *FilesListRequest) (response *FilesListResponse, err error) {
@@ -497,7 +690,6 @@ func (c *Client) FilesList(request *FilesListRequest) (response *FilesListRespon
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) FilesListWithContext(ctx context.Context, request *FilesListRequest) (response *FilesListResponse, err error) {
@@ -548,7 +740,6 @@ func NewFilesUploadsResponse() (response *FilesUploadsResponse) {
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) FilesUploads(request *FilesUploadsRequest) (response *FilesUploadsResponse, err error) {
@@ -569,7 +760,6 @@ func (c *Client) FilesUploads(request *FilesUploadsRequest) (response *FilesUplo
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) FilesUploadsWithContext(ctx context.Context, request *FilesUploadsRequest) (response *FilesUploadsResponse, err error) {
@@ -682,7 +872,6 @@ func NewGetThreadResponse() (response *GetThreadResponse) {
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) GetThread(request *GetThreadRequest) (response *GetThreadResponse, err error) {
@@ -711,7 +900,6 @@ func (c *Client) GetThread(request *GetThreadRequest) (response *GetThreadRespon
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) GetThreadWithContext(ctx context.Context, request *GetThreadRequest) (response *GetThreadResponse, err error) {
@@ -770,7 +958,6 @@ func NewGetThreadMessageResponse() (response *GetThreadMessageResponse) {
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) GetThreadMessage(request *GetThreadMessageRequest) (response *GetThreadMessageResponse, err error) {
@@ -799,7 +986,6 @@ func (c *Client) GetThreadMessage(request *GetThreadMessageRequest) (response *G
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) GetThreadMessageWithContext(ctx context.Context, request *GetThreadMessageRequest) (response *GetThreadMessageResponse, err error) {
@@ -858,7 +1044,6 @@ func NewGetThreadMessageListResponse() (response *GetThreadMessageListResponse) 
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) GetThreadMessageList(request *GetThreadMessageListRequest) (response *GetThreadMessageListResponse, err error) {
@@ -887,7 +1072,6 @@ func (c *Client) GetThreadMessageList(request *GetThreadMessageListRequest) (res
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) GetThreadMessageListWithContext(ctx context.Context, request *GetThreadMessageListRequest) (response *GetThreadMessageListResponse, err error) {
@@ -1000,7 +1184,6 @@ func NewGroupChatCompletionsResponse() (response *GroupChatCompletionsResponse) 
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) GroupChatCompletions(request *GroupChatCompletionsRequest) (response *GroupChatCompletionsResponse, err error) {
@@ -1033,7 +1216,6 @@ func (c *Client) GroupChatCompletions(request *GroupChatCompletionsRequest) (res
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) GroupChatCompletionsWithContext(ctx context.Context, request *GroupChatCompletionsRequest) (response *GroupChatCompletionsResponse, err error) {
@@ -1096,7 +1278,6 @@ func NewImageQuestionResponse() (response *ImageQuestionResponse) {
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) ImageQuestion(request *ImageQuestionRequest) (response *ImageQuestionResponse, err error) {
@@ -1129,7 +1310,6 @@ func (c *Client) ImageQuestion(request *ImageQuestionRequest) (response *ImageQu
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) ImageQuestionWithContext(ctx context.Context, request *ImageQuestionRequest) (response *ImageQuestionResponse, err error) {
@@ -1145,6 +1325,110 @@ func (c *Client) ImageQuestionWithContext(ctx context.Context, request *ImageQue
     request.SetContext(ctx)
     
     response = NewImageQuestionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListGlossaryRequest() (request *ListGlossaryRequest) {
+    request = &ListGlossaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "ListGlossary")
+    
+    
+    return
+}
+
+func NewListGlossaryResponse() (response *ListGlossaryResponse) {
+    response = &ListGlossaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListGlossary
+// 查询术语库。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ListGlossary(request *ListGlossaryRequest) (response *ListGlossaryResponse, err error) {
+    return c.ListGlossaryWithContext(context.Background(), request)
+}
+
+// ListGlossary
+// 查询术语库。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ListGlossaryWithContext(ctx context.Context, request *ListGlossaryRequest) (response *ListGlossaryResponse, err error) {
+    if request == nil {
+        request = NewListGlossaryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "ListGlossary")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListGlossary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListGlossaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListGlossaryEntryRequest() (request *ListGlossaryEntryRequest) {
+    request = &ListGlossaryEntryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "ListGlossaryEntry")
+    
+    
+    return
+}
+
+func NewListGlossaryEntryResponse() (response *ListGlossaryEntryResponse) {
+    response = &ListGlossaryEntryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListGlossaryEntry
+// 查询术语条目。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ListGlossaryEntry(request *ListGlossaryEntryRequest) (response *ListGlossaryEntryResponse, err error) {
+    return c.ListGlossaryEntryWithContext(context.Background(), request)
+}
+
+// ListGlossaryEntry
+// 查询术语条目。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ListGlossaryEntryWithContext(ctx context.Context, request *ListGlossaryEntryRequest) (response *ListGlossaryEntryResponse, err error) {
+    if request == nil {
+        request = NewListGlossaryEntryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "ListGlossaryEntry")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListGlossaryEntry require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListGlossaryEntryResponse()
     err = c.Send(request, response)
     return
 }
@@ -1316,7 +1600,6 @@ func NewRunThreadResponse() (response *RunThreadResponse) {
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) RunThread(request *RunThreadRequest) (response *RunThreadResponse, err error) {
@@ -1345,7 +1628,6 @@ func (c *Client) RunThread(request *RunThreadRequest) (response *RunThreadRespon
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) RunThreadWithContext(ctx context.Context, request *RunThreadRequest) (response *RunThreadResponse, err error) {
@@ -1621,6 +1903,56 @@ func (c *Client) TextToImageLiteWithContext(ctx context.Context, request *TextTo
     request.SetContext(ctx)
     
     response = NewTextToImageLiteResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateGlossaryEntryRequest() (request *UpdateGlossaryEntryRequest) {
+    request = &UpdateGlossaryEntryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hunyuan", APIVersion, "UpdateGlossaryEntry")
+    
+    
+    return
+}
+
+func NewUpdateGlossaryEntryResponse() (response *UpdateGlossaryEntryResponse) {
+    response = &UpdateGlossaryEntryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateGlossaryEntry
+// 更新术语条目。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UpdateGlossaryEntry(request *UpdateGlossaryEntryRequest) (response *UpdateGlossaryEntryResponse, err error) {
+    return c.UpdateGlossaryEntryWithContext(context.Background(), request)
+}
+
+// UpdateGlossaryEntry
+// 更新术语条目。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UpdateGlossaryEntryWithContext(ctx context.Context, request *UpdateGlossaryEntryRequest) (response *UpdateGlossaryEntryResponse, err error) {
+    if request == nil {
+        request = NewUpdateGlossaryEntryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "hunyuan", APIVersion, "UpdateGlossaryEntry")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateGlossaryEntry require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateGlossaryEntryResponse()
     err = c.Send(request, response)
     return
 }

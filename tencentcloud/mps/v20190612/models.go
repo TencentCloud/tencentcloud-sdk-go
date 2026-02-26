@@ -2302,46 +2302,23 @@ type AigcStoreCosParam struct {
 }
 
 type AigcVideoExtraParam struct {
-	// 生成视频的分辨率，分辨率与选择模型及设置的视频时长相关。 
-	// 
-	// 不同模型支持的分辨率选项:
-	// 1. Kling 720P(默认), 1080P。
-	// 2. Hailuo 768P(默认), 1080P。
-	// 3. Vidu 720P(默认)，1080P。
-	// 4. GV 720P(默认),1080P。
-	// 5. OS 720P, 图片仅支持1280x720、720x1280，暂不支持指定。
-	// 
-	// 注意：除模型可支持的分辨率外，还可以生成 2K、4K分辨率。
+	// <p>生成视频的分辨率，分辨率与选择模型及设置的视频时长相关。 </p><p>不同模型支持的分辨率选项:</p><ol><li>Kling 720P(默认), 1080P。</li><li>Hailuo 768P(默认), 1080P。</li><li>Vidu 720P(默认)，1080P。</li><li>GV 720P(默认),1080P。</li><li>OS 720P, 图片仅支持1280x720、720x1280，暂不支持指定。</li></ol><p>注意：除模型可支持的分辨率外，还可以生成 2K、4K分辨率。</p>
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 指定所生成视频的宽高比。 
-	// 
-	// 不同模型对于此参数的支持：
-	// 1. Kling 仅文生视频支持, 16:9(默认值)、9:16、 1:1。
-	// 2. Hailuo 暂不支持。
-	// 3. Vidu 仅文生和参考图生视频 支持[16:9、9:16、4:3、3:4、1:1]，其中仅q2支持4:3、3:4。
-	// 4. GV 16:9(默认值)、9:16。
-	// 5. OS 仅文生视频支持, 16:9(默认), 9:16。
-	// 
-	// 注：关于具体模型支持的宽高比例，可查看具体模型官网介绍获取更完整描述。
+	// <p>指定所生成视频的宽高比。 </p><p>不同模型对于此参数的支持：</p><ol><li>Kling 仅文生视频支持, 16:9(默认值)、9:16、 1:1。</li><li>Hailuo 暂不支持。</li><li>Vidu 仅文生和参考图生视频 支持[16:9、9:16、4:3、3:4、1:1]，其中仅q2支持4:3、3:4。</li><li>GV 16:9(默认值)、9:16。</li><li>OS 仅文生视频支持, 16:9(默认), 9:16。</li></ol><p>注：关于具体模型支持的宽高比例，可查看具体模型官网介绍获取更完整描述。</p>
 	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
 
-	// 是否添加图标水印。
-	// 1. Hailuo 支持此参数。
-	// 2. Kling 支持此参数。
-	// 3. Vidu 支持此参数。
+	// <p>是否添加图标水印。</p><ol><li>Hailuo 支持此参数。</li><li>Kling 支持此参数。</li><li>Vidu 支持此参数。</li></ol>
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 
-	// 为视频生成音频。接受的值包括 true 或 false。 
-	// 
-	// 支持此参数的模型：
-	// 1. GV，默认true。
-	// 2. OS，默认true。
+	// <p>为视频生成音频。接受的值包括 true 或 false。 </p><p>支持此参数的模型：</p><ol><li>GV，默认true。</li><li>OS，默认true。</li></ol>
 	EnableAudio *bool `json:"EnableAudio,omitnil,omitempty" name:"EnableAudio"`
 
-	// 错峰模型，目前仅支持Vidu模型。
-	// 错峰模式下提交的任务，会在48小时内生成，未能完成的任务会被自动取消。
+	// <p>错峰模型，目前仅支持Vidu模型。<br>错峰模式下提交的任务，会在48小时内生成，未能完成的任务会被自动取消。</p>
 	OffPeak *bool `json:"OffPeak,omitnil,omitempty" name:"OffPeak"`
+
+	// <p>是否为生成的视频添加背景音乐。默认：false，可选值 true 、false。<br>注意：部分模型的版本支持。</p>
+	EnableBgm *bool `json:"EnableBgm,omitnil,omitempty" name:"EnableBgm"`
 }
 
 type AigcVideoReferenceImageInfo struct {
@@ -2352,6 +2329,20 @@ type AigcVideoReferenceImageInfo struct {
 	// 注意：
 	// 1. 当使用GV模型时，可作为参考方式,可选asset(素材)、style(风格)。
 	ReferenceType *string `json:"ReferenceType,omitnil,omitempty" name:"ReferenceType"`
+}
+
+type AigcVideoReferenceVideoInfo struct {
+	// 参考视频url。需要外网可访问。
+	// 可作为特征参考视频，也可作为待编辑视频，默认为待编辑视频；可选择性保留视频原声
+	// 通过ReferType参数区分参考视频类型：feature为特征参考视频，base为待编辑视频
+	// 参考视频为待编辑视频时，不能定义视频首尾帧。
+	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
+
+	// 通过ReferType参数区分参考视频类型：feature为特征参考视频，base为待编辑视频。
+	ReferType *string `json:"ReferType,omitnil,omitempty" name:"ReferType"`
+
+	// 通过KeepOriginalSound参数选择是否保留视频原声，yes为保留，no为不保留；当前参数对特征参考视频（feature）也生效。
+	KeepOriginalSound *string `json:"KeepOriginalSound,omitnil,omitempty" name:"KeepOriginalSound"`
 }
 
 type AnimatedGraphicTaskInput struct {
@@ -4374,190 +4365,98 @@ func (r *CreateAigcImageTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAigcVideoTaskRequestParams struct {
-	// 模型名称。
-	// 当前支持的模型列表:
-	// Hunyuan,
-	// Hailuo，
-	// Kling，
-	// Vidu，
-	// OS，
-	// GV。
+	// <p>模型名称。<br>当前支持的模型列表:<br>Hunyuan,<br>Hailuo，<br>Kling，<br>Vidu，<br>OS，<br>GV。</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。
-	// 1. Hailuo， 可选[02、2.3]。
-	// 2. Kling，可选[2.0、2.1、2.5、O1、2.6]。
-	// 3. Vidu,可选[q2、q2-pro、q2-turbo]。
-	// 4. GV, 可选[3.1]。
-	// 5. OS，可选[2.0]。
+	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hailuo， 可选[02、2.3]。</li><li>Kling，可选[2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu,可选[q2、q2-pro、q2-turbo、q3-pro、q3-turbo]。</li><li>GV, 可选[3.1]。</li><li>OS，可选[2.0]。</li></ol>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// 指定场景生视频。
-	// 注意：仅部分模型支持指定场景。
-	// 1. Kling支持动作控制，motion_control。
-	// 2. Mingmou支持横转竖，land2port。
-	// 3. Vidu支持特效模板，template_effect。
+	// <p>指定场景生视频。<br>注意：仅部分模型支持指定场景。</p><ol><li>Kling支持动作控制，motion_control。</li><li>Mingmou支持横转竖，land2port。</li><li>Vidu支持特效模板，template_effect。</li></ol>
 	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
 
-	// 生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。
+	// <p>生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// 用于描述您想要阻止模型生成的内容。
-	// 注意：部分模型支持。
-	// 例如：
-	// 顶部照明、明亮的色彩
-	// 人物、动物
-	// 多辆汽车、风。
+	// <p>用于描述您想要阻止模型生成的内容。<br>注意：部分模型支持。<br>例如：<br>顶部照明、明亮的色彩<br>人物、动物<br>多辆汽车、风。</p>
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
-	// 默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。
+	// <p>默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。</p>
 	EnhancePrompt *bool `json:"EnhancePrompt,omitnil,omitempty" name:"EnhancePrompt"`
 
-	// 用于指导视频生成的图片 URL。该URL需外网可访问。
-	// 注意：
-	// 1. 推荐图片大小不超过10M，不同模型大小限制不相同。
-	// 2. 支持的图片格式：jpeg、png。
-	// 3. 使用OS模型时，需输入图片尺寸为: 1280x720、720x1280。
+	// <p>用于指导视频生成的图片 URL。该URL需外网可访问。<br>注意：</p><ol><li>推荐图片大小不超过10M，不同模型大小限制不相同。</li><li>支持的图片格式：jpeg、png。</li><li>使用OS模型时，需输入图片尺寸为: 1280x720、720x1280。</li></ol>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 模型将以此参数传入的图片作为尾帧画面来生成视频。
-	// 支持此参数的模型：
-	// 1. GV，传入尾帧图片时，必须同时传入ImageUrl作为首帧。
-	// 2. Kling， 在Resolution:1080P的情况下 2.1版本支持首尾帧。
-	// 3. Vidu, q2-pro, q2-turbo 支持首尾帧。
-	// 
-	// 注意：
-	// 1. 推荐图片大小不超过10M，各模型限制不同。
-	// 2. 支持的图片格式：jpeg、png。
+	// <p>模型将以此参数传入的图片作为尾帧画面来生成视频。<br>支持此参数的模型：</p><ol><li>GV，传入尾帧图片时，必须同时传入ImageUrl作为首帧。</li><li>Kling， 在Resolution:1080P的情况下 2.1版本支持首尾帧。</li><li>Vidu, q2-pro, q2-turbo 支持首尾帧。</li></ol><p>注意：</p><ol><li>推荐图片大小不超过10M，各模型限制不同。</li><li>支持的图片格式：jpeg、png。</li></ol>
 	LastImageUrl *string `json:"LastImageUrl,omitnil,omitempty" name:"LastImageUrl"`
 
-	// 最多包含三张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。
-	// 
-	// 支持多图输入的模型：
-	// 1. GV，使用多图输入时，不可使用ImageUrl和LastImageUrl。
-	// 2. Vidu，支持多图参考生视频。q2模型1-7张图片，可通过ImageInfos里面的ReferenceType作为主体id来传入。
-	// 
-	// 注意：
-	// 1. 图片大小不超过10M。
-	// 2. 支持的图片格式：jpeg、png。
+	// <p>最多包含三张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。</p><p>支持多图输入的模型：</p><ol><li>GV，使用多图输入时，不可使用ImageUrl和LastImageUrl。</li><li>Vidu，支持多图参考生视频。q2模型1-7张图片，可通过ImageInfos里面的ReferenceType作为主体id来传入。</li></ol><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、png。</li></ol>
 	ImageInfos []*AigcVideoReferenceImageInfo `json:"ImageInfos,omitnil,omitempty" name:"ImageInfos"`
 
-	// 生成视频的时长。
-	// 注意：
-	// 1. Kling支持 5、10秒。默认: 5秒。
-	// 2. Hailuo的std模式可支持6、10秒，其他仅6秒。默认：6秒。
-	// 3. Vidu支持1-10秒。
-	// 4. GV支持 8秒。 默认：8秒。
-	// 5. OS支持4、8、12秒。 默认：8秒。
+	// <p>目前仅Kling O1版本支持参考视频信息传入。<br>可作为特征参考视频，也可作为待编辑视频，默认为待编辑视频；可选择性保留视频原声。</p>
+	VideoInfos []*AigcVideoReferenceVideoInfo `json:"VideoInfos,omitnil,omitempty" name:"VideoInfos"`
+
+	// <p>生成视频的时长。<br>注意：</p><ol><li>Kling支持 5、10秒。默认: 5秒。</li><li>Hailuo的std模式可支持6、10秒，其他仅6秒。默认：6秒。</li><li>Vidu支持1-10秒。</li><li>GV支持 8秒。 默认：8秒。</li><li>OS支持4、8、12秒。 默认：8秒。</li></ol>
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 用于传入要求的额外参数。
+	// <p>用于传入要求的额外参数。</p>
 	ExtraParameters *AigcVideoExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
 
-	// 文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。
+	// <p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
 	StoreCosParam *AigcStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
 
-	// 用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。
-	// 示例：
-	// {\"camera_control\":{\"type\":\"simple\"}}
+	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例：<br>{"camera_control":{"type":"simple"}}</p>
 	AdditionalParameters *string `json:"AdditionalParameters,omitnil,omitempty" name:"AdditionalParameters"`
 
-	// 接口操作者名称。
+	// <p>接口操作者名称。</p>
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type CreateAigcVideoTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模型名称。
-	// 当前支持的模型列表:
-	// Hunyuan,
-	// Hailuo，
-	// Kling，
-	// Vidu，
-	// OS，
-	// GV。
+	// <p>模型名称。<br>当前支持的模型列表:<br>Hunyuan,<br>Hailuo，<br>Kling，<br>Vidu，<br>OS，<br>GV。</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。
-	// 1. Hailuo， 可选[02、2.3]。
-	// 2. Kling，可选[2.0、2.1、2.5、O1、2.6]。
-	// 3. Vidu,可选[q2、q2-pro、q2-turbo]。
-	// 4. GV, 可选[3.1]。
-	// 5. OS，可选[2.0]。
+	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hailuo， 可选[02、2.3]。</li><li>Kling，可选[2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu,可选[q2、q2-pro、q2-turbo、q3-pro、q3-turbo]。</li><li>GV, 可选[3.1]。</li><li>OS，可选[2.0]。</li></ol>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// 指定场景生视频。
-	// 注意：仅部分模型支持指定场景。
-	// 1. Kling支持动作控制，motion_control。
-	// 2. Mingmou支持横转竖，land2port。
-	// 3. Vidu支持特效模板，template_effect。
+	// <p>指定场景生视频。<br>注意：仅部分模型支持指定场景。</p><ol><li>Kling支持动作控制，motion_control。</li><li>Mingmou支持横转竖，land2port。</li><li>Vidu支持特效模板，template_effect。</li></ol>
 	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
 
-	// 生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。
+	// <p>生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// 用于描述您想要阻止模型生成的内容。
-	// 注意：部分模型支持。
-	// 例如：
-	// 顶部照明、明亮的色彩
-	// 人物、动物
-	// 多辆汽车、风。
+	// <p>用于描述您想要阻止模型生成的内容。<br>注意：部分模型支持。<br>例如：<br>顶部照明、明亮的色彩<br>人物、动物<br>多辆汽车、风。</p>
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
-	// 默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。
+	// <p>默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。</p>
 	EnhancePrompt *bool `json:"EnhancePrompt,omitnil,omitempty" name:"EnhancePrompt"`
 
-	// 用于指导视频生成的图片 URL。该URL需外网可访问。
-	// 注意：
-	// 1. 推荐图片大小不超过10M，不同模型大小限制不相同。
-	// 2. 支持的图片格式：jpeg、png。
-	// 3. 使用OS模型时，需输入图片尺寸为: 1280x720、720x1280。
+	// <p>用于指导视频生成的图片 URL。该URL需外网可访问。<br>注意：</p><ol><li>推荐图片大小不超过10M，不同模型大小限制不相同。</li><li>支持的图片格式：jpeg、png。</li><li>使用OS模型时，需输入图片尺寸为: 1280x720、720x1280。</li></ol>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 模型将以此参数传入的图片作为尾帧画面来生成视频。
-	// 支持此参数的模型：
-	// 1. GV，传入尾帧图片时，必须同时传入ImageUrl作为首帧。
-	// 2. Kling， 在Resolution:1080P的情况下 2.1版本支持首尾帧。
-	// 3. Vidu, q2-pro, q2-turbo 支持首尾帧。
-	// 
-	// 注意：
-	// 1. 推荐图片大小不超过10M，各模型限制不同。
-	// 2. 支持的图片格式：jpeg、png。
+	// <p>模型将以此参数传入的图片作为尾帧画面来生成视频。<br>支持此参数的模型：</p><ol><li>GV，传入尾帧图片时，必须同时传入ImageUrl作为首帧。</li><li>Kling， 在Resolution:1080P的情况下 2.1版本支持首尾帧。</li><li>Vidu, q2-pro, q2-turbo 支持首尾帧。</li></ol><p>注意：</p><ol><li>推荐图片大小不超过10M，各模型限制不同。</li><li>支持的图片格式：jpeg、png。</li></ol>
 	LastImageUrl *string `json:"LastImageUrl,omitnil,omitempty" name:"LastImageUrl"`
 
-	// 最多包含三张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。
-	// 
-	// 支持多图输入的模型：
-	// 1. GV，使用多图输入时，不可使用ImageUrl和LastImageUrl。
-	// 2. Vidu，支持多图参考生视频。q2模型1-7张图片，可通过ImageInfos里面的ReferenceType作为主体id来传入。
-	// 
-	// 注意：
-	// 1. 图片大小不超过10M。
-	// 2. 支持的图片格式：jpeg、png。
+	// <p>最多包含三张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。</p><p>支持多图输入的模型：</p><ol><li>GV，使用多图输入时，不可使用ImageUrl和LastImageUrl。</li><li>Vidu，支持多图参考生视频。q2模型1-7张图片，可通过ImageInfos里面的ReferenceType作为主体id来传入。</li></ol><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、png。</li></ol>
 	ImageInfos []*AigcVideoReferenceImageInfo `json:"ImageInfos,omitnil,omitempty" name:"ImageInfos"`
 
-	// 生成视频的时长。
-	// 注意：
-	// 1. Kling支持 5、10秒。默认: 5秒。
-	// 2. Hailuo的std模式可支持6、10秒，其他仅6秒。默认：6秒。
-	// 3. Vidu支持1-10秒。
-	// 4. GV支持 8秒。 默认：8秒。
-	// 5. OS支持4、8、12秒。 默认：8秒。
+	// <p>目前仅Kling O1版本支持参考视频信息传入。<br>可作为特征参考视频，也可作为待编辑视频，默认为待编辑视频；可选择性保留视频原声。</p>
+	VideoInfos []*AigcVideoReferenceVideoInfo `json:"VideoInfos,omitnil,omitempty" name:"VideoInfos"`
+
+	// <p>生成视频的时长。<br>注意：</p><ol><li>Kling支持 5、10秒。默认: 5秒。</li><li>Hailuo的std模式可支持6、10秒，其他仅6秒。默认：6秒。</li><li>Vidu支持1-10秒。</li><li>GV支持 8秒。 默认：8秒。</li><li>OS支持4、8、12秒。 默认：8秒。</li></ol>
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 用于传入要求的额外参数。
+	// <p>用于传入要求的额外参数。</p>
 	ExtraParameters *AigcVideoExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
 
-	// 文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。
+	// <p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
 	StoreCosParam *AigcStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
 
-	// 用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。
-	// 示例：
-	// {\"camera_control\":{\"type\":\"simple\"}}
+	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例：<br>{"camera_control":{"type":"simple"}}</p>
 	AdditionalParameters *string `json:"AdditionalParameters,omitnil,omitempty" name:"AdditionalParameters"`
 
-	// 接口操作者名称。
+	// <p>接口操作者名称。</p>
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
@@ -4582,6 +4481,7 @@ func (r *CreateAigcVideoTaskRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "LastImageUrl")
 	delete(f, "ImageInfos")
+	delete(f, "VideoInfos")
 	delete(f, "Duration")
 	delete(f, "ExtraParameters")
 	delete(f, "StoreCosParam")
@@ -4595,8 +4495,7 @@ func (r *CreateAigcVideoTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAigcVideoTaskResponseParams struct {
-	// 任务创建成功后，返回的任务ID。
-	// 调用查询接口，轮询获取任务进度及生成结果。
+	// <p>任务创建成功后，返回的任务ID。<br>调用查询接口，轮询获取任务进度及生成结果。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

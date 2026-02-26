@@ -489,6 +489,9 @@ type CloudNativeAPIGatewayRateLimitDetail struct {
 	// 外部redis配置
 	ExternalRedis *ExternalRedis `json:"ExternalRedis,omitnil,omitempty" name:"ExternalRedis"`
 
+	// 全局配置中的redis配置
+	GlobalConfigId *string `json:"GlobalConfigId,omitnil,omitempty" name:"GlobalConfigId"`
+
 	// 计数器策略 
 	// local 单机
 	// redis  默认redis

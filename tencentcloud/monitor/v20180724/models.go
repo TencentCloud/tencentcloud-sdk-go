@@ -7815,6 +7815,64 @@ func (r *DescribeMonitorTypesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeNotificationContentTemplateSupportsRequestParams struct {
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+}
+
+type DescribeNotificationContentTemplateSupportsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+}
+
+func (r *DescribeNotificationContentTemplateSupportsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotificationContentTemplateSupportsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MonitorType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotificationContentTemplateSupportsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotificationContentTemplateSupportsResponseParams struct {
+	// 配置详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Support *NotificationContentTemplateSupport `json:"Support,omitnil,omitempty" name:"Support"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNotificationContentTemplateSupportsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNotificationContentTemplateSupportsResponseParams `json:"Response"`
+}
+
+func (r *DescribeNotificationContentTemplateSupportsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotificationContentTemplateSupportsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePhoneAlarmFlowTotalCountRequestParams struct {
 	// 默认monitor
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
@@ -14112,6 +14170,30 @@ type NoticeContentTmplBindInfo struct {
 
 	// 通知模板ID
 	NoticeID *string `json:"NoticeID,omitnil,omitempty" name:"NoticeID"`
+}
+
+type NotificationContentTemplateSupport struct {
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitnil,omitempty" name:"MonitorType"`
+
+	// 支持的变量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Variables []*NotificationContentTemplateSupportDetail `json:"Variables,omitnil,omitempty" name:"Variables"`
+
+	// 支持的函数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Functions []*NotificationContentTemplateSupportDetail `json:"Functions,omitnil,omitempty" name:"Functions"`
+}
+
+type NotificationContentTemplateSupportDetail struct {
+	// 变量/函数名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 描述
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 示例
+	Example *string `json:"Example,omitnil,omitempty" name:"Example"`
 }
 
 type Operator struct {

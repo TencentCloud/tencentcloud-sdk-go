@@ -926,6 +926,9 @@ const (
 	// 添加 community 时，vpg 需要开通传播 community 白名单
 	UNSUPPORTEDOPERATION_CCNNOTENABLECOMMUNITY = "UnsupportedOperation.CcnNotEnableCommunity"
 
+	// 云联网未开启策略路由开关
+	UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYBASEDROUTINGFLAG = "UnsupportedOperation.CcnNotEnablePolicyBasedRoutingFlag"
+
 	// 跨账号场景下不支持自驾云账号实例 关联普通账号云联网。
 	UNSUPPORTEDOPERATION_CCNORDINARYACCOUNTREFUSEATTACH = "UnsupportedOperation.CcnOrdinaryAccountRefuseAttach"
 

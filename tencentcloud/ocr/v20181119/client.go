@@ -915,6 +915,86 @@ func (c *Client) DescribeExtractDocAgentJobWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeMarkEssayAgentJobRequest() (request *DescribeMarkEssayAgentJobRequest) {
+    request = &DescribeMarkEssayAgentJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "DescribeMarkEssayAgentJob")
+    
+    
+    return
+}
+
+func NewDescribeMarkEssayAgentJobResponse() (response *DescribeMarkEssayAgentJobResponse) {
+    response = &DescribeMarkEssayAgentJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMarkEssayAgentJob
+// 用于作文批改Agent查询任务。基于业界领先的千亿参数多模态大模型技术，提供中英文手写作文的精准批改端到端服务。核心功能涵盖错别字智能识别、好词好句点评、错句纠错，并能够在原文中定位至具体段落与字符位置，同时提供详细的修改建议与优化内容。此能力是作业批改场景中的核心模块。
+//
+// 
+//
+// 默认接口请求并发限制：2次/分钟。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) DescribeMarkEssayAgentJob(request *DescribeMarkEssayAgentJobRequest) (response *DescribeMarkEssayAgentJobResponse, err error) {
+    return c.DescribeMarkEssayAgentJobWithContext(context.Background(), request)
+}
+
+// DescribeMarkEssayAgentJob
+// 用于作文批改Agent查询任务。基于业界领先的千亿参数多模态大模型技术，提供中英文手写作文的精准批改端到端服务。核心功能涵盖错别字智能识别、好词好句点评、错句纠错，并能够在原文中定位至具体段落与字符位置，同时提供详细的修改建议与优化内容。此能力是作业批改场景中的核心模块。
+//
+// 
+//
+// 默认接口请求并发限制：2次/分钟。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) DescribeMarkEssayAgentJobWithContext(ctx context.Context, request *DescribeMarkEssayAgentJobRequest) (response *DescribeMarkEssayAgentJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeMarkEssayAgentJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "DescribeMarkEssayAgentJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMarkEssayAgentJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMarkEssayAgentJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeQuestionMarkAgentJobRequest() (request *DescribeQuestionMarkAgentJobRequest) {
     request = &DescribeQuestionMarkAgentJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7975,6 +8055,88 @@ func (c *Client) SubmitExtractDocAgentJobWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewSubmitExtractDocAgentJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitMarkEssayAgentJobRequest() (request *SubmitMarkEssayAgentJobRequest) {
+    request = &SubmitMarkEssayAgentJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "SubmitMarkEssayAgentJob")
+    
+    
+    return
+}
+
+func NewSubmitMarkEssayAgentJobResponse() (response *SubmitMarkEssayAgentJobResponse) {
+    response = &SubmitMarkEssayAgentJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitMarkEssayAgentJob
+// 用于作文批改Agent提交任务。基于业界领先的千亿参数多模态大模型技术，提供中英文手写作文的精准批改端到端服务。核心功能涵盖错别字智能识别、好词好句点评、错句纠错，并能够在原文中定位至具体段落与字符位置，同时提供详细的修改建议与优化内容。此能力是作业批改场景中的核心模块。
+//
+// 
+//
+// 默认接口请求并发限制：2次/分钟。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitMarkEssayAgentJob(request *SubmitMarkEssayAgentJobRequest) (response *SubmitMarkEssayAgentJobResponse, err error) {
+    return c.SubmitMarkEssayAgentJobWithContext(context.Background(), request)
+}
+
+// SubmitMarkEssayAgentJob
+// 用于作文批改Agent提交任务。基于业界领先的千亿参数多模态大模型技术，提供中英文手写作文的精准批改端到端服务。核心功能涵盖错别字智能识别、好词好句点评、错句纠错，并能够在原文中定位至具体段落与字符位置，同时提供详细的修改建议与优化内容。此能力是作业批改场景中的核心模块。
+//
+// 
+//
+// 默认接口请求并发限制：2次/分钟。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitMarkEssayAgentJobWithContext(ctx context.Context, request *SubmitMarkEssayAgentJobRequest) (response *SubmitMarkEssayAgentJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitMarkEssayAgentJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "SubmitMarkEssayAgentJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitMarkEssayAgentJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitMarkEssayAgentJobResponse()
     err = c.Send(request, response)
     return
 }

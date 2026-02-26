@@ -125,8 +125,20 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 查询数据库超时或失败
+	INTERNALERROR_QUERYDATABASEFAILED = "InternalError.QueryDataBaseFailed"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
+
+	// AppId不存在
+	INVALIDPARAMETER_APPIDISREQUIRED = "InvalidParameter.AppIdIsRequired"
+
+	// 结束时间格式错误
+	INVALIDPARAMETER_INVALIDENDTIMEFORMAT = "InvalidParameter.InvalidEndTimeFormat"
+
+	// 开始时间格式错误
+	INVALIDPARAMETER_INVALIDSTARTTIMEFORMAT = "InvalidParameter.InvalidStartTimeFormat"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"

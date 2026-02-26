@@ -3082,6 +3082,21 @@ type CreateTaskSchedulerConfiguration struct {
 
 	// 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
 	WaitExecutionTotalTTLMinute *int64 `json:"WaitExecutionTotalTTLMinute,omitnil,omitempty" name:"WaitExecutionTotalTTLMinute"`
+
+	// - 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
+	// - ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
+	// - ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
+	// - ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
+	// - ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
+	// - ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
+	// - ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
+	// - ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
+	// - ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
+	// - NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
+	// - ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
+	// - NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
+	// - ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+	DependencyTriggerPolicy *string `json:"DependencyTriggerPolicy,omitnil,omitempty" name:"DependencyTriggerPolicy"`
 }
 
 type CreateTriggerTaskBaseAttribute struct {
@@ -3266,6 +3281,21 @@ type CreateTriggerTaskSchedulerConfiguration struct {
 
 	// 产出登记
 	TaskOutputRegistryList []*TaskDataRegistry `json:"TaskOutputRegistryList,omitnil,omitempty" name:"TaskOutputRegistryList"`
+
+	// - 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
+	// - ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
+	// - ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
+	// - ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
+	// - ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
+	// - ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
+	// - ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
+	// - ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
+	// - ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
+	// - NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
+	// - ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
+	// - NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
+	// - ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+	DependencyTriggerPolicy *string `json:"DependencyTriggerPolicy,omitnil,omitempty" name:"DependencyTriggerPolicy"`
 }
 
 // Predefined struct for user
@@ -14735,10 +14765,10 @@ type ListTriggerWorkflowRunsRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 过滤参数,工作流名称或ID查询名称：Keyword,工作流ID查询名称：WorkflowId,文件夹查询名称：FolderId,负责人查询名称：InChargeUin, 工作流执行id: ExecutionId
+	// 过滤参数, 工作流名称或ID查询名称: Keyword, 工作流ID查询名称: WorkflowId,文件夹查询名称: FolderId, 负责人查询名称: InChargeUin, 工作流执行id: ExecutionId, 计划调度时间区间: ScheduleTimeGreaterEqual, ScheduleTimeLessEqual
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序字段，排序字段名称	如下开始时间：CreateTime，结束时间：EndTime
+	// 排序字段，排序字段名称	如下开始时间：CreateTime，结束时间：EndTime，计划调度时间：ScheduleTime
 	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
 
 	// 页码
@@ -14754,10 +14784,10 @@ type ListTriggerWorkflowRunsRequest struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 过滤参数,工作流名称或ID查询名称：Keyword,工作流ID查询名称：WorkflowId,文件夹查询名称：FolderId,负责人查询名称：InChargeUin, 工作流执行id: ExecutionId
+	// 过滤参数, 工作流名称或ID查询名称: Keyword, 工作流ID查询名称: WorkflowId,文件夹查询名称: FolderId, 负责人查询名称: InChargeUin, 工作流执行id: ExecutionId, 计划调度时间区间: ScheduleTimeGreaterEqual, ScheduleTimeLessEqual
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序字段，排序字段名称	如下开始时间：CreateTime，结束时间：EndTime
+	// 排序字段，排序字段名称	如下开始时间：CreateTime，结束时间：EndTime，计划调度时间：ScheduleTime
 	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
 
 	// 页码
@@ -19952,6 +19982,18 @@ type TaskDataRegistry struct {
 	// 表唯一标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableGuid *string `json:"TableGuid,omitnil,omitempty" name:"TableGuid"`
+
+	// Catalog名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 数据源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceName *string `json:"DatasourceName,omitnil,omitempty" name:"DatasourceName"`
+
+	// Catalog(如有).数据库(如有).表名名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualifiedName *string `json:"QualifiedName,omitnil,omitempty" name:"QualifiedName"`
 }
 
 type TaskDependDto struct {
@@ -20748,6 +20790,22 @@ type TaskSchedulerConfiguration struct {
 	// 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WaitExecutionTotalTTLMinute *int64 `json:"WaitExecutionTotalTTLMinute,omitnil,omitempty" name:"WaitExecutionTotalTTLMinute"`
+
+	// - 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
+	// - ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
+	// - ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
+	// - ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
+	// - ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
+	// - ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
+	// - ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
+	// - ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
+	// - ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
+	// - NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
+	// - ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
+	// - NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
+	// - ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DependencyTriggerPolicy *string `json:"DependencyTriggerPolicy,omitnil,omitempty" name:"DependencyTriggerPolicy"`
 }
 
 type TaskSchedulingParameter struct {
@@ -21088,6 +21146,10 @@ type TriggerTaskBrief struct {
 	// 运行开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitnil,omitempty" name:"ExecutionStartTime"`
+
+	// 依赖策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DependencyTriggerPolicy *string `json:"DependencyTriggerPolicy,omitnil,omitempty" name:"DependencyTriggerPolicy"`
 }
 
 type TriggerTaskConfiguration struct {
@@ -21325,6 +21387,10 @@ type TriggerTaskRunBrief struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
+	// 计划调度时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleTime *string `json:"ScheduleTime,omitnil,omitempty" name:"ScheduleTime"`
+
 	// 更新时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
@@ -21480,6 +21546,10 @@ type TriggerTaskRunBrief struct {
 	// 任务执行结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionResult *string `json:"ExecutionResult,omitnil,omitempty" name:"ExecutionResult"`
+
+	// 依赖策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DependencyTriggerPolicy *string `json:"DependencyTriggerPolicy,omitnil,omitempty" name:"DependencyTriggerPolicy"`
 }
 
 type TriggerTaskSchedulerConfiguration struct {
@@ -21522,6 +21592,22 @@ type TriggerTaskSchedulerConfiguration struct {
 	// 产出登记
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskOutputRegistryList []*TaskDataRegistry `json:"TaskOutputRegistryList,omitnil,omitempty" name:"TaskOutputRegistryList"`
+
+	// - 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
+	// - ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
+	// - ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
+	// - ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
+	// - ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
+	// - ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
+	// - ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
+	// - ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
+	// - ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
+	// - NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
+	// - ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
+	// - NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
+	// - ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DependencyTriggerPolicy *string `json:"DependencyTriggerPolicy,omitnil,omitempty" name:"DependencyTriggerPolicy"`
 }
 
 type TriggerTaskVersion struct {
@@ -21771,6 +21857,10 @@ type TriggerWorkflowRunBrief struct {
 	// 工作流触发时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 计划调度时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleTime *string `json:"ScheduleTime,omitnil,omitempty" name:"ScheduleTime"`
 
 	// 执行开始时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。

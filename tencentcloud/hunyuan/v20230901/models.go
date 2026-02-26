@@ -686,6 +686,151 @@ type Content struct {
 }
 
 // Predefined struct for user
+type CreateGlossaryEntryRequestParams struct {
+	// 术语库 ID
+	GlossaryId *string `json:"GlossaryId,omitnil,omitempty" name:"GlossaryId"`
+
+	// 术语条目列表，单次请求限制100个
+	Entries []*GlossaryEntryCreateItem `json:"Entries,omitnil,omitempty" name:"Entries"`
+}
+
+type CreateGlossaryEntryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 术语库 ID
+	GlossaryId *string `json:"GlossaryId,omitnil,omitempty" name:"GlossaryId"`
+
+	// 术语条目列表，单次请求限制100个
+	Entries []*GlossaryEntryCreateItem `json:"Entries,omitnil,omitempty" name:"Entries"`
+}
+
+func (r *CreateGlossaryEntryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGlossaryEntryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlossaryId")
+	delete(f, "Entries")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGlossaryEntryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGlossaryEntryResponseParams struct {
+	// 成功创建的术语条目
+	Entries []*GlossaryEntry `json:"Entries,omitnil,omitempty" name:"Entries"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateGlossaryEntryResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateGlossaryEntryResponseParams `json:"Response"`
+}
+
+func (r *CreateGlossaryEntryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGlossaryEntryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGlossaryRequestParams struct {
+	// 术语库名称，限制50个字符
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 源语言代码，取值范围：zh(中文)、en(英语)、fr(法语)、pt(葡萄牙语)、es(西班牙语)、ja(日语)、tr(土耳其语)、ru(俄语)、ar(阿拉伯语)、ko(韩语)、th(泰语)、it(意大利语)、de(德语)、vi(越南语)、ms(马来语)、id(印尼语)、yue(粤语)、zh-TR(繁体中文)、hi(印地语)、fil(菲律宾语)、pl(波兰语)、cs(捷克语)、nl(荷兰语)、km(高棉语)、my(缅甸语)、fa(波斯语)、gu(古吉拉特语)、ur(乌尔都语)、te(泰卢固语)、mr(马拉地语)、he(希伯来语)、bn(孟加拉语)、ta(泰米尔语)、uk(乌克兰语)、bo(藏语)、kk(哈萨克语)、mn(蒙古语)、ug(维吾尔语)
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 目标语言代码，取值范围：zh(中文)、en(英语)、fr(法语)、pt(葡萄牙语)、es(西班牙语)、ja(日语)、tr(土耳其语)、ru(俄语)、ar(阿拉伯语)、ko(韩语)、th(泰语)、it(意大利语)、de(德语)、vi(越南语)、ms(马来语)、id(印尼语)、yue(粤语)、zh-TR(繁体中文)、hi(印地语)、fil(菲律宾语)、pl(波兰语)、cs(捷克语)、nl(荷兰语)、km(高棉语)、my(缅甸语)、fa(波斯语)、gu(古吉拉特语)、ur(乌尔都语)、te(泰卢固语)、mr(马拉地语)、he(希伯来语)、bn(孟加拉语)、ta(泰米尔语)、uk(乌克兰语)、bo(藏语)、kk(哈萨克语)、mn(蒙古语)、ug(维吾尔语)
+	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// 术语库描述，限制255个字符
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type CreateGlossaryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 术语库名称，限制50个字符
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 源语言代码，取值范围：zh(中文)、en(英语)、fr(法语)、pt(葡萄牙语)、es(西班牙语)、ja(日语)、tr(土耳其语)、ru(俄语)、ar(阿拉伯语)、ko(韩语)、th(泰语)、it(意大利语)、de(德语)、vi(越南语)、ms(马来语)、id(印尼语)、yue(粤语)、zh-TR(繁体中文)、hi(印地语)、fil(菲律宾语)、pl(波兰语)、cs(捷克语)、nl(荷兰语)、km(高棉语)、my(缅甸语)、fa(波斯语)、gu(古吉拉特语)、ur(乌尔都语)、te(泰卢固语)、mr(马拉地语)、he(希伯来语)、bn(孟加拉语)、ta(泰米尔语)、uk(乌克兰语)、bo(藏语)、kk(哈萨克语)、mn(蒙古语)、ug(维吾尔语)
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 目标语言代码，取值范围：zh(中文)、en(英语)、fr(法语)、pt(葡萄牙语)、es(西班牙语)、ja(日语)、tr(土耳其语)、ru(俄语)、ar(阿拉伯语)、ko(韩语)、th(泰语)、it(意大利语)、de(德语)、vi(越南语)、ms(马来语)、id(印尼语)、yue(粤语)、zh-TR(繁体中文)、hi(印地语)、fil(菲律宾语)、pl(波兰语)、cs(捷克语)、nl(荷兰语)、km(高棉语)、my(缅甸语)、fa(波斯语)、gu(古吉拉特语)、ur(乌尔都语)、te(泰卢固语)、mr(马拉地语)、he(希伯来语)、bn(孟加拉语)、ta(泰米尔语)、uk(乌克兰语)、bo(藏语)、kk(哈萨克语)、mn(蒙古语)、ug(维吾尔语)
+	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// 术语库描述，限制255个字符
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *CreateGlossaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGlossaryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Source")
+	delete(f, "Target")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGlossaryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGlossaryResponseParams struct {
+	// 术语库名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 术语库唯一 ID
+	GlossaryId *string `json:"GlossaryId,omitnil,omitempty" name:"GlossaryId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateGlossaryResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateGlossaryResponseParams `json:"Response"`
+}
+
+func (r *CreateGlossaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGlossaryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateThreadRequestParams struct {
 
 }
@@ -746,6 +891,121 @@ func (r *CreateThreadResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateThreadResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGlossaryEntryRequestParams struct {
+	// 术语库 ID
+	GlossaryId *string `json:"GlossaryId,omitnil,omitempty" name:"GlossaryId"`
+
+	// 需要更新的术语条目列表，单次请求限制100个
+	Entries []*GlossaryEntryDeleteItem `json:"Entries,omitnil,omitempty" name:"Entries"`
+}
+
+type DeleteGlossaryEntryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 术语库 ID
+	GlossaryId *string `json:"GlossaryId,omitnil,omitempty" name:"GlossaryId"`
+
+	// 需要更新的术语条目列表，单次请求限制100个
+	Entries []*GlossaryEntryDeleteItem `json:"Entries,omitnil,omitempty" name:"Entries"`
+}
+
+func (r *DeleteGlossaryEntryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGlossaryEntryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlossaryId")
+	delete(f, "Entries")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGlossaryEntryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGlossaryEntryResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteGlossaryEntryResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGlossaryEntryResponseParams `json:"Response"`
+}
+
+func (r *DeleteGlossaryEntryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGlossaryEntryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGlossaryRequestParams struct {
+	// 术语库 ID
+	GlossaryId *string `json:"GlossaryId,omitnil,omitempty" name:"GlossaryId"`
+}
+
+type DeleteGlossaryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 术语库 ID
+	GlossaryId *string `json:"GlossaryId,omitnil,omitempty" name:"GlossaryId"`
+}
+
+func (r *DeleteGlossaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGlossaryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlossaryId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGlossaryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGlossaryResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteGlossaryResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGlossaryResponseParams `json:"Response"`
+}
+
+func (r *DeleteGlossaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGlossaryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1429,6 +1689,58 @@ func (r *GetTokenCountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Glossary struct {
+	// 术语库唯一 ID
+	GlossaryId *string `json:"GlossaryId,omitnil,omitempty" name:"GlossaryId"`
+
+	// 术语库名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 术语库描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 源语言代码
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 目标语言代码
+	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+}
+
+type GlossaryEntry struct {
+	// 源语言术语，限制1000字符
+	SourceTerm *string `json:"SourceTerm,omitnil,omitempty" name:"SourceTerm"`
+
+	// 目标语言术语，限制1000字符
+	TargetTerm *string `json:"TargetTerm,omitnil,omitempty" name:"TargetTerm"`
+
+	// 术语条目 ID
+	EntryId *string `json:"EntryId,omitnil,omitempty" name:"EntryId"`
+}
+
+type GlossaryEntryCreateItem struct {
+	// 源语言术语，限制1000字符
+	SourceTerm *string `json:"SourceTerm,omitnil,omitempty" name:"SourceTerm"`
+
+	// 目标语言术语，限制1000字符
+	TargetTerm *string `json:"TargetTerm,omitnil,omitempty" name:"TargetTerm"`
+}
+
+type GlossaryEntryDeleteItem struct {
+	// 术语条目 ID
+	EntryId *string `json:"EntryId,omitnil,omitempty" name:"EntryId"`
+}
+
+type GlossaryEntryUpdateItem struct {
+	// 术语条目 ID
+	EntryId *string `json:"EntryId,omitnil,omitempty" name:"EntryId"`
+
+	// 源语言术语，限制1000字符
+	SourceTerm *string `json:"SourceTerm,omitnil,omitempty" name:"SourceTerm"`
+
+	// 目标语言术语，限制1000字符
+	TargetTerm *string `json:"TargetTerm,omitnil,omitempty" name:"TargetTerm"`
+}
+
 // Predefined struct for user
 type GroupChatCompletionsRequestParams struct {
 	// 模型名称，可选值包括 hunyuan-large-role-group。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
@@ -1755,6 +2067,159 @@ type ImageUrl struct {
 type Knowledge struct {
 	// 表示具体的知识信息文本
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+// Predefined struct for user
+type ListGlossaryEntryRequestParams struct {
+	// 术语库 ID
+	GlossaryId *string `json:"GlossaryId,omitnil,omitempty" name:"GlossaryId"`
+
+	// 页码，默认 1
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 每页数量，默认 10，最大200
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type ListGlossaryEntryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 术语库 ID
+	GlossaryId *string `json:"GlossaryId,omitnil,omitempty" name:"GlossaryId"`
+
+	// 页码，默认 1
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 每页数量，默认 10，最大200
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *ListGlossaryEntryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListGlossaryEntryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlossaryId")
+	delete(f, "Page")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListGlossaryEntryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListGlossaryEntryResponseParams struct {
+	// 术语条目列表
+	Entries []*GlossaryEntry `json:"Entries,omitnil,omitempty" name:"Entries"`
+
+	// 条目总数量
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 当前页码
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 每页数量
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListGlossaryEntryResponse struct {
+	*tchttp.BaseResponse
+	Response *ListGlossaryEntryResponseParams `json:"Response"`
+}
+
+func (r *ListGlossaryEntryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListGlossaryEntryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListGlossaryRequestParams struct {
+	// 页码，默认 1
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 每页数量，默认 10，最大 100
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type ListGlossaryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码，默认 1
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 每页数量，默认 10，最大 100
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *ListGlossaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListGlossaryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Page")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListGlossaryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListGlossaryResponseParams struct {
+	// 术语库列表
+	Glossaries []*Glossary `json:"Glossaries,omitnil,omitempty" name:"Glossaries"`
+
+	// 术语库总数量
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 当前页码
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 每页数量
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListGlossaryResponse struct {
+	*tchttp.BaseResponse
+	Response *ListGlossaryResponseParams `json:"Response"`
+}
+
+func (r *ListGlossaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListGlossaryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type LogoParam struct {
@@ -2912,6 +3377,70 @@ type TranslationMessage struct {
 
 	// 文本内容
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+// Predefined struct for user
+type UpdateGlossaryEntryRequestParams struct {
+	// 术语库 ID
+	GlossaryId *string `json:"GlossaryId,omitnil,omitempty" name:"GlossaryId"`
+
+	// 需要更新的术语条目列表，单次请求限制100个
+	Entries []*GlossaryEntryUpdateItem `json:"Entries,omitnil,omitempty" name:"Entries"`
+}
+
+type UpdateGlossaryEntryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 术语库 ID
+	GlossaryId *string `json:"GlossaryId,omitnil,omitempty" name:"GlossaryId"`
+
+	// 需要更新的术语条目列表，单次请求限制100个
+	Entries []*GlossaryEntryUpdateItem `json:"Entries,omitnil,omitempty" name:"Entries"`
+}
+
+func (r *UpdateGlossaryEntryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateGlossaryEntryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlossaryId")
+	delete(f, "Entries")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateGlossaryEntryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateGlossaryEntryResponseParams struct {
+	// 成功更新的术语条目
+	Entries []*GlossaryEntry `json:"Entries,omitnil,omitempty" name:"Entries"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateGlossaryEntryResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateGlossaryEntryResponseParams `json:"Response"`
+}
+
+func (r *UpdateGlossaryEntryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateGlossaryEntryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Usage struct {
