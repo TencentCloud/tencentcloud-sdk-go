@@ -209,12 +209,6 @@ type CreateTargetGroupRequestParams struct {
 	// <p>流量分发方式</p><ul><li>STATELESS：无状态</li><li>STATEFUL： 有状态</li></ul>
 	ForwardingMode *string `json:"ForwardingMode,omitnil,omitempty" name:"ForwardingMode"`
 
-	// <p>TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。</p>
-	TcpIdleConnectTimeout *int64 `json:"TcpIdleConnectTimeout,omitnil,omitempty" name:"TcpIdleConnectTimeout"`
-
-	// <p>其他协议连接空闲超时时间，可配置5s-180s，默认120s</p>
-	OthersIdleConnectTimeout *int64 `json:"OthersIdleConnectTimeout,omitnil,omitempty" name:"OthersIdleConnectTimeout"`
-
 	// <p>重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。</p>
 	RescheduleUnbindRs *bool `json:"RescheduleUnbindRs,omitnil,omitempty" name:"RescheduleUnbindRs"`
 
@@ -261,12 +255,6 @@ type CreateTargetGroupRequest struct {
 	// <p>流量分发方式</p><ul><li>STATELESS：无状态</li><li>STATEFUL： 有状态</li></ul>
 	ForwardingMode *string `json:"ForwardingMode,omitnil,omitempty" name:"ForwardingMode"`
 
-	// <p>TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。</p>
-	TcpIdleConnectTimeout *int64 `json:"TcpIdleConnectTimeout,omitnil,omitempty" name:"TcpIdleConnectTimeout"`
-
-	// <p>其他协议连接空闲超时时间，可配置5s-180s，默认120s</p>
-	OthersIdleConnectTimeout *int64 `json:"OthersIdleConnectTimeout,omitnil,omitempty" name:"OthersIdleConnectTimeout"`
-
 	// <p>重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。</p>
 	RescheduleUnbindRs *bool `json:"RescheduleUnbindRs,omitnil,omitempty" name:"RescheduleUnbindRs"`
 
@@ -302,8 +290,6 @@ func (r *CreateTargetGroupRequest) FromJsonString(s string) error {
 	delete(f, "AllDeadToAlive")
 	delete(f, "Tags")
 	delete(f, "ForwardingMode")
-	delete(f, "TcpIdleConnectTimeout")
-	delete(f, "OthersIdleConnectTimeout")
 	delete(f, "RescheduleUnbindRs")
 	delete(f, "RescheduleUnbindRsStartTime")
 	delete(f, "RescheduleUnhealthy")
@@ -1317,12 +1303,6 @@ type ModifyTargetGroupAttributeRequestParams struct {
 	// <p>是否支持全死全活。</p>
 	AllDeadToAlive *bool `json:"AllDeadToAlive,omitnil,omitempty" name:"AllDeadToAlive"`
 
-	// <p>TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。</p>
-	TcpIdleConnectTimeout *int64 `json:"TcpIdleConnectTimeout,omitnil,omitempty" name:"TcpIdleConnectTimeout"`
-
-	// <p>其他协议连接空闲超时时间，可配置5s-180s，默认120s</p>
-	OthersIdleConnectTimeout *int64 `json:"OthersIdleConnectTimeout,omitnil,omitempty" name:"OthersIdleConnectTimeout"`
-
 	// <p>重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。</p>
 	RescheduleUnbindRs *bool `json:"RescheduleUnbindRs,omitnil,omitempty" name:"RescheduleUnbindRs"`
 
@@ -1350,12 +1330,6 @@ type ModifyTargetGroupAttributeRequest struct {
 
 	// <p>是否支持全死全活。</p>
 	AllDeadToAlive *bool `json:"AllDeadToAlive,omitnil,omitempty" name:"AllDeadToAlive"`
-
-	// <p>TCP协议连接空闲超时时间，可配置60s-6000s，默认350s。</p>
-	TcpIdleConnectTimeout *int64 `json:"TcpIdleConnectTimeout,omitnil,omitempty" name:"TcpIdleConnectTimeout"`
-
-	// <p>其他协议连接空闲超时时间，可配置5s-180s，默认120s</p>
-	OthersIdleConnectTimeout *int64 `json:"OthersIdleConnectTimeout,omitnil,omitempty" name:"OthersIdleConnectTimeout"`
 
 	// <p>重新调度功能内的解绑后端服务开关，开关打开后解绑后端服务会触发重新调度。</p>
 	RescheduleUnbindRs *bool `json:"RescheduleUnbindRs,omitnil,omitempty" name:"RescheduleUnbindRs"`
@@ -1386,8 +1360,6 @@ func (r *ModifyTargetGroupAttributeRequest) FromJsonString(s string) error {
 	delete(f, "TargetGroupName")
 	delete(f, "HealthCheck")
 	delete(f, "AllDeadToAlive")
-	delete(f, "TcpIdleConnectTimeout")
-	delete(f, "OthersIdleConnectTimeout")
 	delete(f, "RescheduleUnbindRs")
 	delete(f, "RescheduleUnbindRsStartTime")
 	delete(f, "RescheduleUnhealthy")

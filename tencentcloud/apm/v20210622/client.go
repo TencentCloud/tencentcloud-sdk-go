@@ -669,6 +669,56 @@ func (c *Client) DescribeApmPrometheusRuleWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeApmSQLInjectionDetailRequest() (request *DescribeApmSQLInjectionDetailRequest) {
+    request = &DescribeApmSQLInjectionDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeApmSQLInjectionDetail")
+    
+    
+    return
+}
+
+func NewDescribeApmSQLInjectionDetailResponse() (response *DescribeApmSQLInjectionDetailResponse) {
+    response = &DescribeApmSQLInjectionDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApmSQLInjectionDetail
+// 查询SQL注入详情信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeApmSQLInjectionDetail(request *DescribeApmSQLInjectionDetailRequest) (response *DescribeApmSQLInjectionDetailResponse, err error) {
+    return c.DescribeApmSQLInjectionDetailWithContext(context.Background(), request)
+}
+
+// DescribeApmSQLInjectionDetail
+// 查询SQL注入详情信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeApmSQLInjectionDetailWithContext(ctx context.Context, request *DescribeApmSQLInjectionDetailRequest) (response *DescribeApmSQLInjectionDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeApmSQLInjectionDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "DescribeApmSQLInjectionDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApmSQLInjectionDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApmSQLInjectionDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApmSampleConfigRequest() (request *DescribeApmSampleConfigRequest) {
     request = &DescribeApmSampleConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

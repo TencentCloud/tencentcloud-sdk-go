@@ -323,6 +323,9 @@ const (
 	// 指定的云盘备份点名称不可大于最大长度。
 	INVALIDPARAMETERVALUE_DISKBACKUPNAMETOOLONG = "InvalidParameterValue.DiskBackupNameTooLong"
 
+	// 云硬盘备份点配额低于当前云硬盘备份点个数。
+	INVALIDPARAMETERVALUE_DISKBACKUPQUOTALESSTHANCURRENTDISKBACKUPNUM = "InvalidParameterValue.DiskBackupQuotaLessThanCurrentDiskBackupNum"
+
 	// 云硬盘备份点配额小于当前云硬盘备份点数量。
 	INVALIDPARAMETERVALUE_DISKBACKUPQUOTALESSTHENCURRENTDISKBACKUPNUM = "InvalidParameterValue.DiskBackupQuotaLessThenCurrentDiskBackupNum"
 

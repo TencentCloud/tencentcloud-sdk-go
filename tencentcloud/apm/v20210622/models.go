@@ -1604,6 +1604,122 @@ func (r *DescribeApmPrometheusRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeApmSQLInjectionDetailRequestParams struct {
+	// 业务系统 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 限制
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 秒级时间戳
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 秒级时间戳
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 排序
+	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 查询过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 聚合维度
+	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
+
+	// 指标列表
+	Metrics []*QueryMetricItem `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+}
+
+type DescribeApmSQLInjectionDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务系统 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 限制
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 秒级时间戳
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 秒级时间戳
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 排序
+	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 查询过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 聚合维度
+	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
+
+	// 指标列表
+	Metrics []*QueryMetricItem `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+}
+
+func (r *DescribeApmSQLInjectionDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApmSQLInjectionDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "OrderBy")
+	delete(f, "Filters")
+	delete(f, "GroupBy")
+	delete(f, "Metrics")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApmSQLInjectionDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApmSQLInjectionDetailResponseParams struct {
+	// SQL相关维度信息
+	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 链路相关信息
+	Records []*ApmMetricRecord `json:"Records,omitnil,omitempty" name:"Records"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApmSQLInjectionDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApmSQLInjectionDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeApmSQLInjectionDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApmSQLInjectionDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeApmSampleConfigRequestParams struct {
 	// 业务系统ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

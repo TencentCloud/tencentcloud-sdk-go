@@ -1837,6 +1837,58 @@ func (c *Client) DescribeDAGInfoWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeEMREventListRequest() (request *DescribeEMREventListRequest) {
+    request = &DescribeEMREventListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeEMREventList")
+    
+    
+    return
+}
+
+func NewDescribeEMREventListResponse() (response *DescribeEMREventListResponse) {
+    response = &DescribeEMREventListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEMREventList
+// 查询EMR事件监控数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeEMREventList(request *DescribeEMREventListRequest) (response *DescribeEMREventListResponse, err error) {
+    return c.DescribeEMREventListWithContext(context.Background(), request)
+}
+
+// DescribeEMREventList
+// 查询EMR事件监控数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeEMREventListWithContext(ctx context.Context, request *DescribeEMREventListRequest) (response *DescribeEMREventListResponse, err error) {
+    if request == nil {
+        request = NewDescribeEMREventListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeEMREventList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEMREventList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEMREventListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEmrApplicationStaticsRequest() (request *DescribeEmrApplicationStaticsRequest) {
     request = &DescribeEmrApplicationStaticsRequest{
         BaseRequest: &tchttp.BaseRequest{},

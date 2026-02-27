@@ -1104,47 +1104,50 @@ type SandboxInstance struct {
 }
 
 type SandboxTool struct {
-	// 沙箱工具唯一标识符
+	// <p>沙箱工具唯一标识符</p>
 	ToolId *string `json:"ToolId,omitnil,omitempty" name:"ToolId"`
 
-	// 沙箱工具名称，长度 1-50 字符，支持中英文、数字、下划线。同一 AppId 下沙箱工具名称必须唯一
+	// <p>沙箱工具名称，长度 1-50 字符，支持中英文、数字、下划线。同一 AppId 下沙箱工具名称必须唯一</p>
 	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
 
-	// 沙箱工具类型，取值：browser（浏览器工具）、code-interpreter（代码解释器工具）、computer（计算机控制工具）、mobile（移动设备工具）
+	// <p>沙箱工具类型，取值：browser（浏览器工具）、code-interpreter（代码解释器工具）、computer（计算机控制工具）、mobile（移动设备工具）</p>
 	ToolType *string `json:"ToolType,omitnil,omitempty" name:"ToolType"`
 
-	// 沙箱工具状态，取值：CREATING（创建中）、ACTIVE（可用）、DELETING（删除中）、FAILED（失败）
+	// <p>沙箱工具状态，取值：CREATING（创建中）、ACTIVE（可用）、DELETING（删除中）、FAILED（失败）</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 沙箱工具描述信息，最大长度 200 字符
+	// <p>沙箱工具描述信息，最大长度 200 字符</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 默认超时时间，支持格式：5m、300s、1h 等，不指定则使用系统默认值（5 分钟）。最大 24 小时
+	// <p>默认超时时间，支持格式：5m、300s、1h 等，不指定则使用系统默认值（5 分钟）。最大 24 小时</p>
 	DefaultTimeoutSeconds *uint64 `json:"DefaultTimeoutSeconds,omitnil,omitempty" name:"DefaultTimeoutSeconds"`
 
-	// 网络配置
+	// <p>网络配置</p>
 	NetworkConfiguration *NetworkConfiguration `json:"NetworkConfiguration,omitnil,omitempty" name:"NetworkConfiguration"`
 
-	// 标签规格，包含资源标签绑定关系。用于为沙箱工具绑定标签，支持多种资源类型的标签绑定
+	// <p>标签规格，包含资源标签绑定关系。用于为沙箱工具绑定标签，支持多种资源类型的标签绑定</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 沙箱工具创建时间，格式：ISO8601
+	// <p>沙箱工具创建时间，格式：ISO8601</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 沙箱工具更新时间，格式：ISO8601
+	// <p>沙箱工具更新时间，格式：ISO8601</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 沙箱工具绑定角色ARN
+	// <p>沙箱工具绑定角色ARN</p>
 	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
 
-	// 沙箱工具中实例存储挂载配置
+	// <p>沙箱工具中实例存储挂载配置</p>
 	StorageMounts []*StorageMount `json:"StorageMounts,omitnil,omitempty" name:"StorageMounts"`
 
-	// 沙箱工具自定义配置
+	// <p>沙箱工具自定义配置</p>
 	CustomConfiguration *CustomConfigurationDetail `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
 
-	// 沙箱工具日志推送相关配置
+	// <p>沙箱工具日志推送相关配置</p>
 	LogConfiguration *LogConfiguration `json:"LogConfiguration,omitnil,omitempty" name:"LogConfiguration"`
+
+	// <p>用于说明沙箱工具处于该状态的原因</p>
+	StatusReason *string `json:"StatusReason,omitnil,omitempty" name:"StatusReason"`
 }
 
 // Predefined struct for user

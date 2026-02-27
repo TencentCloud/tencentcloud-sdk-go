@@ -274,22 +274,22 @@ type BaseBackup struct {
 }
 
 type ClassInfo struct {
-	// 规格ID
+	// <p>规格ID</p>
 	SpecCode *string `json:"SpecCode,omitnil,omitempty" name:"SpecCode"`
 
-	// CPU核数
+	// <p>CPU核数</p>
 	CPU *uint64 `json:"CPU,omitnil,omitempty" name:"CPU"`
 
-	// 内存大小，单位：MB
+	// <p>内存大小，单位：MB</p>
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 该规格所支持最大存储容量，单位：GB
+	// <p>该规格所支持最大存储容量，单位：GB</p>
 	MaxStorage *uint64 `json:"MaxStorage,omitnil,omitempty" name:"MaxStorage"`
 
-	// 该规格所支持最小存储容量，单位：GB
+	// <p>该规格所支持最小存储容量，单位：GB</p>
 	MinStorage *uint64 `json:"MinStorage,omitnil,omitempty" name:"MinStorage"`
 
-	// 该规格的预估QPS
+	// <p>该规格的预估QPS</p>
 	QPS *uint64 `json:"QPS,omitnil,omitempty" name:"QPS"`
 }
 
@@ -2088,159 +2088,129 @@ type DBBackup struct {
 }
 
 type DBInstance struct {
-	// 实例所属地域，如: ap-guangzhou，对应RegionSet的Region字段。
+	// <p>实例所属地域，如: ap-guangzhou，对应RegionSet的Region字段。</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 实例所属可用区， 如：ap-guangzhou-3，对应ZoneSet的Zone字段。
+	// <p>实例所属可用区， 如：ap-guangzhou-3，对应ZoneSet的Zone字段。</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 私有网络ID，形如vpc-e6w23k31。有效的VpcId可通过登录控制台查询；也可以调用接口 [DescribeVpcs](https://cloud.tencent.com/document/api/215/15778) ，从接口返回中的unVpcId字段获取。
+	// <p>私有网络ID，形如vpc-e6w23k31。有效的VpcId可通过登录控制台查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/15778">DescribeVpcs</a> ，从接口返回中的unVpcId字段获取。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有网络子网ID，形如subnet-51lcif9y。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 [DescribeSubnets ](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的unSubnetId字段获取。
+	// <p>私有网络子网ID，形如subnet-51lcif9y。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/15784">DescribeSubnets </a>，从接口返回中的unSubnetId字段获取。</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 实例ID。
+	// <p>实例ID。</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 实例名称。
+	// <p>实例名称。</p>
 	DBInstanceName *string `json:"DBInstanceName,omitnil,omitempty" name:"DBInstanceName"`
 
-	// 实例状态，分别为：applying（申请中）、init(待初始化)、initing(初始化中)、running(运行中)、limited run（受限运行）、isolating（隔离中）、isolated（已隔离）、disisolating（解隔离中）、recycling（回收中）、recycled（已回收）、job running（任务执行中）、offline（下线）、migrating（迁移中）、expanding（扩容中）、waitSwitch（等待切换）、switching（切换中）、readonly（只读）、restarting（重启中）、network changing（网络变更中）、upgrading（内核版本升级中）、audit-switching（审计状态变更中）、primary-switching（主备切换中）、offlining(下线中)、deployment changing（可用区变更中）、cloning（恢复数据中）、parameter modifying（参数修改中）、log-switching（日志状态变更中）、restoring（恢复中）、expanding（变配中）
+	// <p>实例状态，分别为：applying（申请中）、init(待初始化)、initing(初始化中)、running(运行中)、limited run（受限运行）、isolating（隔离中）、isolated（已隔离）、disisolating（解隔离中）、recycling（回收中）、recycled（已回收）、job running（任务执行中）、offline（下线）、migrating（迁移中）、expanding（扩容中）、waitSwitch（等待切换）、switching（切换中）、readonly（只读）、restarting（重启中）、network changing（网络变更中）、upgrading（内核版本升级中）、audit-switching（审计状态变更中）、primary-switching（主备切换中）、offlining(下线中)、deployment changing（可用区变更中）、cloning（恢复数据中）、parameter modifying（参数修改中）、log-switching（日志状态变更中）、restoring（恢复中）、expanding（变配中）</p>
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitnil,omitempty" name:"DBInstanceStatus"`
 
-	// 实例分配的内存大小，单位：GB
+	// <p>实例分配的内存大小，单位：GB</p>
 	DBInstanceMemory *uint64 `json:"DBInstanceMemory,omitnil,omitempty" name:"DBInstanceMemory"`
 
-	// 实例分配的存储空间大小，单位：GB
+	// <p>实例分配的存储空间大小，单位：GB</p>
 	DBInstanceStorage *uint64 `json:"DBInstanceStorage,omitnil,omitempty" name:"DBInstanceStorage"`
 
-	// 实例分配的CPU数量，单位：个
+	// <p>实例分配的CPU数量，单位：个</p>
 	DBInstanceCpu *uint64 `json:"DBInstanceCpu,omitnil,omitempty" name:"DBInstanceCpu"`
 
-	// 售卖规格ID
+	// <p>售卖规格ID</p>
 	DBInstanceClass *string `json:"DBInstanceClass,omitnil,omitempty" name:"DBInstanceClass"`
 
-	// PostgreSQL大版本号，版本信息可从[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)获取，目前支持10，11，12，13，14，15这几个大版本。
+	// <p>PostgreSQL大版本号，版本信息可从<a href="https://cloud.tencent.com/document/api/409/89018">DescribeDBVersions</a>获取，目前支持10，11，12，13，14，15这几个大版本。</p>
 	DBMajorVersion *string `json:"DBMajorVersion,omitnil,omitempty" name:"DBMajorVersion"`
 
-	// PostgreSQL社区大版本+小版本号，如12.4，版本信息可从[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)获取。
+	// <p>PostgreSQL社区大版本+小版本号，如12.4，版本信息可从<a href="https://cloud.tencent.com/document/api/409/89018">DescribeDBVersions</a>获取。</p>
 	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
 
-	// PostgreSQL内核版本号，如v12.7_r1.8，版本信息可从[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)获取。
+	// <p>PostgreSQL内核版本号，如v12.7_r1.8，版本信息可从<a href="https://cloud.tencent.com/document/api/409/89018">DescribeDBVersions</a>获取。</p>
 	DBKernelVersion *string `json:"DBKernelVersion,omitnil,omitempty" name:"DBKernelVersion"`
 
-	// 实例类型，类型有：
-	// <li>primary：主实例</li>
-	// <li>readonly：只读实例</li>
-	// <li>guard：灾备实例</li>
-	// <li>temp：临时实例</li>
+	// <p>实例类型，类型有：</p><li>primary：主实例</li><li>readonly：只读实例</li><li>guard：灾备实例</li><li>temp：临时实例</li>
 	DBInstanceType *string `json:"DBInstanceType,omitnil,omitempty" name:"DBInstanceType"`
 
-	// 实例版本，目前只支持standard（双机高可用版, 一主一从）。
+	// <p>实例版本，目前只支持standard（双机高可用版, 一主一从）。</p>
 	DBInstanceVersion *string `json:"DBInstanceVersion,omitnil,omitempty" name:"DBInstanceVersion"`
 
-	// 实例字符集，目前只支持：
-	// <li> UTF8</li>
-	// <li> LATIN1</li>
+	// <p>实例字符集，目前只支持：</p><li> UTF8</li><li> LATIN1</li>
 	DBCharset *string `json:"DBCharset,omitnil,omitempty" name:"DBCharset"`
 
-	// 实例创建时间。
+	// <p>实例创建时间。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 实例执行最后一次更新的时间。
+	// <p>实例执行最后一次更新的时间。</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 实例到期时间。
+	// <p>实例到期时间。</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 实例隔离时间。
+	// <p>实例隔离时间。</p>
 	IsolatedTime *string `json:"IsolatedTime,omitnil,omitempty" name:"IsolatedTime"`
 
-	// 计费模式：
-	// <li>prepaid：包年包月,预付费</li>
-	// <li>postpaid：按量计费，后付费</li>
+	// <p>计费模式：</p><li>prepaid：包年包月,预付费</li><li>postpaid：按量计费，后付费</li>
 	PayType *string `json:"PayType,omitnil,omitempty" name:"PayType"`
 
-	// 是否自动续费：
-	// <li>0：手动续费</li>
-	// <li>1：自动续费</li>
-	// 默认值：0
+	// <p>是否自动续费：</p><li>0：手动续费</li><li>1：自动续费</li>默认值：0
 	AutoRenew *uint64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
-	// 实例网络连接信息。
+	// <p>实例网络连接信息。</p>
 	DBInstanceNetInfo []*DBInstanceNetInfo `json:"DBInstanceNetInfo,omitnil,omitempty" name:"DBInstanceNetInfo"`
 
-	// 机器类型。
+	// <p>机器类型。</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 用户的AppId。
+	// <p>用户的AppId。</p>
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 实例的Uid。
+	// <p>实例的Uid。</p>
 	Uid *uint64 `json:"Uid,omitnil,omitempty" name:"Uid"`
 
-	// 项目ID。
+	// <p>项目ID。</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 实例绑定的标签信息。
+	// <p>实例绑定的标签信息。</p>
 	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 
-	// 主实例信息，仅在实例为只读实例时返回。
+	// <p>主实例信息，仅在实例为只读实例时返回。</p>
 	MasterDBInstanceId *string `json:"MasterDBInstanceId,omitnil,omitempty" name:"MasterDBInstanceId"`
 
-	// 只读实例数量。
+	// <p>只读实例数量。</p>
 	ReadOnlyInstanceNum *int64 `json:"ReadOnlyInstanceNum,omitnil,omitempty" name:"ReadOnlyInstanceNum"`
 
-	// 只读实例在只读组中的状态。
+	// <p>只读实例在只读组中的状态。</p>
 	StatusInReadonlyGroup *string `json:"StatusInReadonlyGroup,omitnil,omitempty" name:"StatusInReadonlyGroup"`
 
-	// 下线时间。
+	// <p>下线时间。</p>
 	OfflineTime *string `json:"OfflineTime,omitnil,omitempty" name:"OfflineTime"`
 
-	// 实例的节点信息。
+	// <p>实例的节点信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DBNodeSet []*DBNode `json:"DBNodeSet,omitnil,omitempty" name:"DBNodeSet"`
 
-	// 实例是否支持TDE数据加密：
-	// <li>0：不支持</li>
-	// <li>1：支持</li>
-	// 默认值：0
-	// TDE数据加密可参考[数据透明加密概述](https://cloud.tencent.com/document/product/409/71748)
+	// <p>实例是否支持TDE数据加密：</p><li>0：不支持</li><li>1：支持</li>默认值：0TDE数据加密可参考[数据透明加密概述](https://cloud.tencent.com/document/product/409/71748)
 	IsSupportTDE *int64 `json:"IsSupportTDE,omitnil,omitempty" name:"IsSupportTDE"`
 
-	// 数据库引擎，支持：
-	// <li>postgresql：云数据库PostgreSQL</li>
-	// <li>mssql_compatible：MSSQL兼容-云数据库PostgreSQL</li>
-	// 默认值：postgresql
+	// <p>数据库引擎，支持：</p><li>postgresql：云数据库PostgreSQL</li><li>mssql_compatible：MSSQL兼容-云数据库PostgreSQL</li>默认值：postgresql
 	DBEngine *string `json:"DBEngine,omitnil,omitempty" name:"DBEngine"`
 
-	// 数据库引擎的配置信息，配置格式如下：
-	// {"$key1":"$value1", "$key2":"$value2"}
-	// 各引擎支持如下：
-	// mssql_compatible引擎：
-	// <li>migrationMode：数据库模式，可选参数，可取值：single-db（单数据库模式），multi-db（多数据库模式）。默认为single-db。</li>
-	// <li>defaultLocale：排序区域规则，可选参数，在初始化后不可修改，默认为en_US，可选值如下：
-	// "af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", "vi_VN"。</li>
-	// <li>serverCollationName：排序规则名称，可选参数，在初始化后不可修改，默认为sql_latin1_general_cp1_ci_as，可选值如下："bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as"。</li>
+	// <p>数据库引擎的配置信息，配置格式如下：<br>{&quot;$key1&quot;:&quot;$value1&quot;, &quot;$key2&quot;:&quot;$value2&quot;}<br>各引擎支持如下：<br>mssql_compatible引擎：</p><li>migrationMode：数据库模式，可选参数，可取值：single-db（单数据库模式），multi-db（多数据库模式）。默认为single-db。</li><li>defaultLocale：排序区域规则，可选参数，在初始化后不可修改，默认为en_US，可选值如下："af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", "vi_VN"。</li><li>serverCollationName：排序规则名称，可选参数，在初始化后不可修改，默认为sql_latin1_general_cp1_ci_as，可选值如下："bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as"。</li>
 	DBEngineConfig *string `json:"DBEngineConfig,omitnil,omitempty" name:"DBEngineConfig"`
 
-	// 实例网络信息列表（此字段已废弃）
+	// <p>实例网络信息列表（此字段已废弃）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkAccessList []*NetworkAccess `json:"NetworkAccessList,omitnil,omitempty" name:"NetworkAccessList"`
 
-	// 实例是否支持Ipv6：
-	// <li>0：否</li>
-	// <li>1：是</li>
-	// 默认值：0
+	// <p>实例是否支持Ipv6：</p><li>0：否</li><li>1：是</li>默认值：0
 	SupportIpv6 *uint64 `json:"SupportIpv6,omitnil,omitempty" name:"SupportIpv6"`
 
-	// 实例已经弹性扩容的cpu核数
+	// <p>实例已经弹性扩容的cpu核数</p>
 	ExpandedCpu *uint64 `json:"ExpandedCpu,omitnil,omitempty" name:"ExpandedCpu"`
 
-	// 实例是否开启删除保护，取值如下：
-	// - true：开启删除保护
-	// - false：关闭删除保护
+	// <p>实例是否开启删除保护，取值如下：</p><ul><li>true：开启删除保护</li><li>false：关闭删除保护</li></ul>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
 }
 
@@ -9448,43 +9418,43 @@ type SpecInfo struct {
 }
 
 type SpecItemInfo struct {
-	// 规格ID
+	// <p>规格ID</p>
 	SpecCode *string `json:"SpecCode,omitnil,omitempty" name:"SpecCode"`
 
-	// PostgreSQL的版本编号
+	// <p>PostgreSQL的版本编号</p>
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 内核编号对应的完整版本名称
+	// <p>内核编号对应的完整版本名称</p>
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 
-	// CPU核数
+	// <p>CPU核数</p>
 	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存大小，单位：MB
+	// <p>内存大小，单位：MB</p>
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 该规格所支持最大存储容量，单位：GB
+	// <p>该规格所支持最大存储容量，单位：GB</p>
 	MaxStorage *uint64 `json:"MaxStorage,omitnil,omitempty" name:"MaxStorage"`
 
-	// 该规格所支持最小存储容量，单位：GB
+	// <p>该规格所支持最小存储容量，单位：GB</p>
 	MinStorage *uint64 `json:"MinStorage,omitnil,omitempty" name:"MinStorage"`
 
-	// 该规格的预估QPS
+	// <p>该规格的预估QPS</p>
 	Qps *uint64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
-	// 【该字段废弃】
+	// <p>【该字段废弃】</p>
 	Pid *uint64 `json:"Pid,omitnil,omitempty" name:"Pid"`
 
-	// 机器类型
+	// <p>机器类型</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// PostgreSQL的主要版本编号
+	// <p>PostgreSQL的主要版本编号</p>
 	MajorVersion *string `json:"MajorVersion,omitnil,omitempty" name:"MajorVersion"`
 
-	// PostgreSQL的内核版本编号
+	// <p>PostgreSQL的内核版本编号</p>
 	KernelVersion *string `json:"KernelVersion,omitnil,omitempty" name:"KernelVersion"`
 
-	// 是否支持TDE数据加密功能，0-不支持，1-支持
+	// <p>是否支持TDE数据加密功能，0-不支持，1-支持</p>
 	IsSupportTDE *int64 `json:"IsSupportTDE,omitnil,omitempty" name:"IsSupportTDE"`
 }
 

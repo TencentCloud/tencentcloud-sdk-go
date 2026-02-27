@@ -5973,6 +5973,7 @@ func NewModifyDisksBackupQuotaResponse() (response *ModifyDisksBackupQuotaRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  INVALIDPARAMETERVALUE_DISKBACKUPQUOTALESSTHANCURRENTDISKBACKUPNUM = "InvalidParameterValue.DiskBackupQuotaLessThanCurrentDiskBackupNum"
 //  INVALIDPARAMETERVALUE_DISKBACKUPQUOTALESSTHENCURRENTDISKBACKUPNUM = "InvalidParameterValue.DiskBackupQuotaLessThenCurrentDiskBackupNum"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
@@ -5998,6 +5999,7 @@ func (c *Client) ModifyDisksBackupQuota(request *ModifyDisksBackupQuotaRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  INVALIDPARAMETERVALUE_DISKBACKUPQUOTALESSTHANCURRENTDISKBACKUPNUM = "InvalidParameterValue.DiskBackupQuotaLessThanCurrentDiskBackupNum"
 //  INVALIDPARAMETERVALUE_DISKBACKUPQUOTALESSTHENCURRENTDISKBACKUPNUM = "InvalidParameterValue.DiskBackupQuotaLessThenCurrentDiskBackupNum"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"

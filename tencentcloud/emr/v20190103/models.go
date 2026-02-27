@@ -3424,6 +3424,115 @@ func (r *DescribeDAGInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEMREventListRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询事件的开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询事件的结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 事件触发的IP
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 事件受影响服务角色
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 事件名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 事件列表的偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 事件列表的Limit
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeEMREventListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询事件的开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询事件的结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 事件触发的IP
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 事件受影响服务角色
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 事件名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 事件列表的偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 事件列表的Limit
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeEMREventListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEMREventListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Host")
+	delete(f, "Role")
+	delete(f, "Name")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEMREventListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEMREventListResponseParams struct {
+	// 事件详情列表
+	EventList []*EMREventListItem `json:"EventList,omitnil,omitempty" name:"EventList"`
+
+	// 符合的事件总量
+	TotalNum *int64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEMREventListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEMREventListResponseParams `json:"Response"`
+}
+
+func (r *DescribeEMREventListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEMREventListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeEmrApplicationStaticsRequestParams struct {
 	// 集群id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -7094,6 +7203,23 @@ type DynamicPodSpec struct {
 
 	// 需求最大memory，单位MB
 	LimitMemory *float64 `json:"LimitMemory,omitnil,omitempty" name:"LimitMemory"`
+}
+
+type EMREventListItem struct {
+	// 事件受影响ip
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 事件受影响的服务角色
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 事件名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 事件告警详情
+	Detail *string `json:"Detail,omitnil,omitempty" name:"Detail"`
+
+	// 事件发生时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type EmrListInstance struct {

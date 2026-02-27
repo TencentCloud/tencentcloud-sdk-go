@@ -8457,6 +8457,9 @@ type SubAccountInfo struct {
 
 	// 子账号在Linux下的GID
 	LinuxGid *int64 `json:"LinuxGid,omitnil,omitempty" name:"LinuxGid"`
+
+	// 子账号在Linux下的用户名
+	LinuxUserName *string `json:"LinuxUserName,omitnil,omitempty" name:"LinuxUserName"`
 }
 
 type TCPSocketAction struct {
