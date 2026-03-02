@@ -7646,10 +7646,12 @@ type VoiceCloneRequestParams struct {
 	// 声音克隆的名称, 只允许使用数字、字母、下划线，不能超过36位
 	VoiceName *string `json:"VoiceName,omitnil,omitempty" name:"VoiceName"`
 
-	// 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在10秒～180秒之间
+	// 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在6秒～180秒之间
 	PromptAudio *string `json:"PromptAudio,omitnil,omitempty" name:"PromptAudio"`
 
 	// TTS的API密钥
+	//
+	// Deprecated: APIKey is deprecated.
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
 
 	// 声音克隆的参考文本，为参考音频对应的文字。
@@ -7671,7 +7673,7 @@ type VoiceCloneRequest struct {
 	// 声音克隆的名称, 只允许使用数字、字母、下划线，不能超过36位
 	VoiceName *string `json:"VoiceName,omitnil,omitempty" name:"VoiceName"`
 
-	// 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在10秒～180秒之间
+	// 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在6秒～180秒之间
 	PromptAudio *string `json:"PromptAudio,omitnil,omitempty" name:"PromptAudio"`
 
 	// TTS的API密钥

@@ -30,6 +30,9 @@ type Agent struct {
 	// 智能体类型
 	AgentInternalName *string `json:"AgentInternalName,omitnil,omitempty" name:"AgentInternalName"`
 
+	// 架构：共享版-intranet，企业版-userVpc
+	DeployPlace *string `json:"DeployPlace,omitnil,omitempty" name:"DeployPlace"`
+
 	// 智能体状态
 	AgentStatus *string `json:"AgentStatus,omitnil,omitempty" name:"AgentStatus"`
 
@@ -240,38 +243,38 @@ func (r *ContinueAgentWorkResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAgentInstanceRequestParams struct {
-	// 智能体ID
+	// <p>智能体ID</p>
 	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
 
-	// 智能体版本
+	// <p>智能体版本</p>
 	AgentVersion *string `json:"AgentVersion,omitnil,omitempty" name:"AgentVersion"`
 
-	// 实例名
+	// <p>实例名</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 智能体实例的参数列表
+	// <p>智能体实例的参数列表</p>
 	Parameters []*Parameter `json:"Parameters,omitnil,omitempty" name:"Parameters"`
 
-	// 资源的标签信息
+	// <p>资源的标签信息</p>
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateAgentInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 智能体ID
+	// <p>智能体ID</p>
 	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
 
-	// 智能体版本
+	// <p>智能体版本</p>
 	AgentVersion *string `json:"AgentVersion,omitnil,omitempty" name:"AgentVersion"`
 
-	// 实例名
+	// <p>实例名</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 智能体实例的参数列表
+	// <p>智能体实例的参数列表</p>
 	Parameters []*Parameter `json:"Parameters,omitnil,omitempty" name:"Parameters"`
 
-	// 资源的标签信息
+	// <p>资源的标签信息</p>
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -300,10 +303,10 @@ func (r *CreateAgentInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAgentInstanceResponseParams struct {
-	// 智能体实例ID
+	// <p>智能体实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 智能体实例名称
+	// <p>智能体实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -780,6 +783,9 @@ type DescribeAgentsRequestParams struct {
 
 	// 智能体状态，为空时查询所有，如果填写则会根据AgentStatus筛选
 	AgentStatus *string `json:"AgentStatus,omitnil,omitempty" name:"AgentStatus"`
+
+	// 架构，共享版-intranet，企业版-userVpc
+	DeployPlace *string `json:"DeployPlace,omitnil,omitempty" name:"DeployPlace"`
 }
 
 type DescribeAgentsRequest struct {
@@ -802,6 +808,9 @@ type DescribeAgentsRequest struct {
 
 	// 智能体状态，为空时查询所有，如果填写则会根据AgentStatus筛选
 	AgentStatus *string `json:"AgentStatus,omitnil,omitempty" name:"AgentStatus"`
+
+	// 架构，共享版-intranet，企业版-userVpc
+	DeployPlace *string `json:"DeployPlace,omitnil,omitempty" name:"DeployPlace"`
 }
 
 func (r *DescribeAgentsRequest) ToJsonString() string {
@@ -822,6 +831,7 @@ func (r *DescribeAgentsRequest) FromJsonString(s string) error {
 	delete(f, "AgentName")
 	delete(f, "AgentInternalName")
 	delete(f, "AgentStatus")
+	delete(f, "DeployPlace")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentsRequest has unknown keys!", "")
 	}

@@ -3308,6 +3308,9 @@ type DescribePlaybackListRequestParams struct {
 	// <p>低代码平台的SdkAppId。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
+	// <p>房间ID</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
 	// <p>分页查询当前页数，从1开始递增</p>
 	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
 
@@ -3320,6 +3323,9 @@ type DescribePlaybackListRequest struct {
 	
 	// <p>低代码平台的SdkAppId。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>房间ID</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// <p>分页查询当前页数，从1开始递增</p>
 	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
@@ -3341,6 +3347,7 @@ func (r *DescribePlaybackListRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SdkAppId")
+	delete(f, "RoomId")
 	delete(f, "Page")
 	delete(f, "Limit")
 	if len(f) > 0 {

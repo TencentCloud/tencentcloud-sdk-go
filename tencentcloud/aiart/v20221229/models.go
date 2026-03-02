@@ -2010,6 +2010,12 @@ type SubmitTextToImageJobRequestParams struct {
 	// <p>垫图url列表，base64后大小不超过10MB，支持 jpg jpeg png webp格式，最多3张图</p>
 	Images []*string `json:"Images,omitnil,omitempty" name:"Images"`
 
+	// <p>选择适配的生图能力类型。</p><p>枚举值：</p><ul><li>default： 通用生图</li><li>cover： 文章封面</li><li>ppt： 幻灯片PPT</li><li>poster： 创意海报</li></ul><p>默认值：default</p>
+	SkillType *string `json:"SkillType,omitnil,omitempty" name:"SkillType"`
+
+	// <p>生成的结果图片数量<br>取值范围： </p><ul><li>default：通用生图任务（1）</li><li>cover:：封面（1）</li><li>ppt：幻灯片页数（1～20）</li><li>poster：生成图片张数（1）</li></ul><p>默认值：1</p>
+	GeneratedImageCount *int64 `json:"GeneratedImageCount,omitnil,omitempty" name:"GeneratedImageCount"`
+
 	// <p>生成图分辨率，默认1024:1024：</p><ul><li>宽高维度均在 [512, 2048] 像素范围内;</li><li>宽高乘积（即图像面积）不超过 1024×1024 像素;</li></ul>
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
@@ -2034,6 +2040,12 @@ type SubmitTextToImageJobRequest struct {
 
 	// <p>垫图url列表，base64后大小不超过10MB，支持 jpg jpeg png webp格式，最多3张图</p>
 	Images []*string `json:"Images,omitnil,omitempty" name:"Images"`
+
+	// <p>选择适配的生图能力类型。</p><p>枚举值：</p><ul><li>default： 通用生图</li><li>cover： 文章封面</li><li>ppt： 幻灯片PPT</li><li>poster： 创意海报</li></ul><p>默认值：default</p>
+	SkillType *string `json:"SkillType,omitnil,omitempty" name:"SkillType"`
+
+	// <p>生成的结果图片数量<br>取值范围： </p><ul><li>default：通用生图任务（1）</li><li>cover:：封面（1）</li><li>ppt：幻灯片页数（1～20）</li><li>poster：生成图片张数（1）</li></ul><p>默认值：1</p>
+	GeneratedImageCount *int64 `json:"GeneratedImageCount,omitnil,omitempty" name:"GeneratedImageCount"`
 
 	// <p>生成图分辨率，默认1024:1024：</p><ul><li>宽高维度均在 [512, 2048] 像素范围内;</li><li>宽高乘积（即图像面积）不超过 1024×1024 像素;</li></ul>
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
@@ -2065,6 +2077,8 @@ func (r *SubmitTextToImageJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Prompt")
 	delete(f, "Images")
+	delete(f, "SkillType")
+	delete(f, "GeneratedImageCount")
 	delete(f, "Resolution")
 	delete(f, "Seed")
 	delete(f, "LogoAdd")

@@ -6071,13 +6071,13 @@ func (r *DescribeSlowLogTopSqlsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSlowLogUserHostStatsRequestParams struct {
-	// 实例ID。
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 查询范围的开始时间，时间格式如：2019-09-10 12:13:14。
+	// 查询范围的开始时间，格式: "yyyy-MM-dd'T'HH:mm:ssXXX"。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 查询范围的结束时间，时间格式如：2019-09-10 12:13:14。
+	// 查询范围的结束时间，格式: "yyyy-MM-dd'T'HH:mm:ssXXX"。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
@@ -6085,18 +6085,24 @@ type DescribeSlowLogUserHostStatsRequestParams struct {
 
 	// SQL模板的MD5值
 	Md5 *string `json:"Md5,omitnil,omitempty" name:"Md5"`
+
+	// 仅Redis产品使用；实例Proxy ID。
+	InstanceProxyId *string `json:"InstanceProxyId,omitnil,omitempty" name:"InstanceProxyId"`
+
+	// 仅Redis产品使用；命令。
+	Cmd *string `json:"Cmd,omitnil,omitempty" name:"Cmd"`
 }
 
 type DescribeSlowLogUserHostStatsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 查询范围的开始时间，时间格式如：2019-09-10 12:13:14。
+	// 查询范围的开始时间，格式: "yyyy-MM-dd'T'HH:mm:ssXXX"。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 查询范围的结束时间，时间格式如：2019-09-10 12:13:14。
+	// 查询范围的结束时间，格式: "yyyy-MM-dd'T'HH:mm:ssXXX"。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
@@ -6104,6 +6110,12 @@ type DescribeSlowLogUserHostStatsRequest struct {
 
 	// SQL模板的MD5值
 	Md5 *string `json:"Md5,omitnil,omitempty" name:"Md5"`
+
+	// 仅Redis产品使用；实例Proxy ID。
+	InstanceProxyId *string `json:"InstanceProxyId,omitnil,omitempty" name:"InstanceProxyId"`
+
+	// 仅Redis产品使用；命令。
+	Cmd *string `json:"Cmd,omitnil,omitempty" name:"Cmd"`
 }
 
 func (r *DescribeSlowLogUserHostStatsRequest) ToJsonString() string {
@@ -6123,6 +6135,8 @@ func (r *DescribeSlowLogUserHostStatsRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "Product")
 	delete(f, "Md5")
+	delete(f, "InstanceProxyId")
+	delete(f, "Cmd")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlowLogUserHostStatsRequest has unknown keys!", "")
 	}

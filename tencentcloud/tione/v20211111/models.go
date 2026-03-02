@@ -3627,7 +3627,7 @@ type DescribeLogsRequestParams struct {
 	// 日志查询结束时间（RFC3339格式的时间字符串），默认值为当前时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 日志查询条数，默认值100，最大值100
+	// 日志查询条数，默认值100，最大值1000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
@@ -3668,6 +3668,9 @@ type DescribeLogsRequestParams struct {
 	// 2. Filter.Values：表示过滤日志的关键字；Values为多个的时候表示同时满足
 	// 3. Filter. Negative和Filter. Fuzzy没有使用
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 使用OFFSET分页查询时，指定返回的数据偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeLogsRequest struct {
@@ -3687,7 +3690,7 @@ type DescribeLogsRequest struct {
 	// 日志查询结束时间（RFC3339格式的时间字符串），默认值为当前时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 日志查询条数，默认值100，最大值100
+	// 日志查询条数，默认值100，最大值1000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
@@ -3728,6 +3731,9 @@ type DescribeLogsRequest struct {
 	// 2. Filter.Values：表示过滤日志的关键字；Values为多个的时候表示同时满足
 	// 3. Filter. Negative和Filter. Fuzzy没有使用
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 使用OFFSET分页查询时，指定返回的数据偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeLogsRequest) ToJsonString() string {
@@ -3752,6 +3758,7 @@ func (r *DescribeLogsRequest) FromJsonString(s string) error {
 	delete(f, "OrderField")
 	delete(f, "Context")
 	delete(f, "Filters")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogsRequest has unknown keys!", "")
 	}
@@ -8946,7 +8953,7 @@ type WeightEntry struct {
 	// 服务id
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// 流量权重值，同 ServiceGroup 下 总和应为 100
+	// 流量权重值，ServiceGroup 下，不同服务版本根据权重比例分配流量
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 

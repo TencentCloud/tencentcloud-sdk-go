@@ -1,138 +1,107 @@
-# Release v1.3.50
+# Release v1.3.51
 
-## Agent 沙箱服务(ags) 版本：2025-09-20
+## 腾讯混元生图(aiart) 版本：2022-12-29
 
-### 第 8 次发布
+### 第 29 次发布
 
-发布时间：2026-02-27 01:08:28
+发布时间：2026-03-02 01:07:52
 
 本次发布包含了以下内容：
 
 改善已有的文档。
+
+修改接口：
+
+* [SubmitTextToImageJob](https://cloud.tencent.com/document/api/1668/124632)
+
+	* 新增入参：SkillType, GeneratedImageCount
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 52 次发布
+
+发布时间：2026-03-02 01:18:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSlowLogUserHostStats](https://cloud.tencent.com/document/api/1130/57783)
+
+	* 新增入参：InstanceProxyId, Cmd
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## 实时互动-教育版(lcic) 版本：2022-08-17
+
+### 第 81 次发布
+
+发布时间：2026-03-02 01:27:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribePlaybackList](https://cloud.tencent.com/document/api/1639/128400)
+
+	* 新增入参：RoomId
+
+
+
+
+## 腾讯云数据库 AI 服务(tdai) 版本：2025-07-17
+
+### 第 10 次发布
+
+发布时间：2026-03-02 02:07:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAgents](https://cloud.tencent.com/document/api/1813/123265)
+
+	* 新增入参：DeployPlace
+
 
 修改数据结构：
 
-* [SandboxTool](https://cloud.tencent.com/document/api/1814/124823#SandboxTool)
+* [Agent](https://cloud.tencent.com/document/api/1813/123239#Agent)
 
-	* 新增成员：StatusReason
-
-
-
-
-## 应用性能监控(apm) 版本：2021-06-22
-
-### 第 55 次发布
-
-发布时间：2026-02-27 01:09:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeApmSQLInjectionDetail](https://cloud.tencent.com/document/api/1463/128637)
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 147 次发布
-
-发布时间：2026-02-27 01:15:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AssociateCustomizedConfig](https://cloud.tencent.com/document/api/214/116389)
-* [DisassociateCustomizedConfig](https://cloud.tencent.com/document/api/214/116387)
-
-新增数据结构：
-
-* [BindItem](https://cloud.tencent.com/document/api/214/30694#BindItem)
-
-
-
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
-
-### 第 155 次发布
-
-发布时间：2026-02-27 01:19:16
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ModifyDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/1003/48096)
-
-	* 新增入参：UniqVpcId, Vip, Vport
-
-
-
-
-## 弹性 MapReduce(emr) 版本：2019-01-03
-
-### 第 132 次发布
-
-发布时间：2026-02-27 01:23:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeEMREventList](https://cloud.tencent.com/document/api/589/128638)
-
-新增数据结构：
-
-* [EMREventListItem](https://cloud.tencent.com/document/api/589/33981#EMREventListItem)
-
-
-
-## 网关负载均衡(gwlb) 版本：2024-09-06
-
-### 第 8 次发布
-
-发布时间：2026-02-27 01:26:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateTargetGroup](https://cloud.tencent.com/document/api/1782/111697)
-
-	* <font color="#dd0000">**删除入参**：</font>TcpIdleConnectTimeout, OthersIdleConnectTimeout
-
-* [ModifyTargetGroupAttribute](https://cloud.tencent.com/document/api/1782/111689)
-
-	* <font color="#dd0000">**删除入参**：</font>TcpIdleConnectTimeout, OthersIdleConnectTimeout
+	* 新增成员：DeployPlace
 
 
 
 
 ## TI-ONE 训练平台(tione) 版本：2021-11-11
 
-### 第 102 次发布
+### 第 103 次发布
 
-发布时间：2026-02-27 02:17:32
+发布时间：2026-03-02 02:15:34
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [SubAccountInfo](https://cloud.tencent.com/document/api/851/75051#SubAccountInfo)
+* [DescribeLogs](https://cloud.tencent.com/document/api/851/117840)
 
-	* 新增成员：LinuxUserName
+	* 新增入参：Offset
 
 
 
@@ -141,15 +110,11 @@
 
 
 
-## 容器服务(tke) 版本：2022-05-01
+## 实时音视频(trtc) 版本：2019-07-22
 
+### 第 137 次发布
 
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 220 次发布
-
-发布时间：2026-02-27 02:18:59
+发布时间：2026-03-02 02:23:28
 
 本次发布包含了以下内容：
 
@@ -157,9 +122,43 @@
 
 修改接口：
 
-* [DescribeClusterEndpoints](https://cloud.tencent.com/document/api/457/78051)
+* [VoiceClone](https://cloud.tencent.com/document/api/647/122473)
 
-	* 新增出参：IntranetSecurityGroup
+
+
+
+## 云点播(vod) 版本：2024-07-18
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 232 次发布
+
+发布时间：2026-03-02 02:31:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ProcessImageAsync](https://cloud.tencent.com/document/api/266/127858)
+
+	* 新增入参：Url
+
+	* <font color="#dd0000">**修改入参**：</font>FileId
+
+
+修改数据结构：
+
+* [AigcImageTask](https://cloud.tencent.com/document/api/266/31773#AigcImageTask)
+
+	* 新增成员：ErrCodeExt
+
+* [AigcVideoTask](https://cloud.tencent.com/document/api/266/31773#AigcVideoTask)
+
+	* 新增成员：ErrCodeExt
 
 
 

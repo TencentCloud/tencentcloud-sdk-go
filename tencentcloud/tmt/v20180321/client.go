@@ -302,6 +302,7 @@ func NewImageTranslateLLMResponse() (response *ImageTranslateLLMResponse) {
 // 提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DECODEERR = "FailedOperation.DecodeErr"
 //  FAILEDOPERATION_DOWNLOADERR = "FailedOperation.DownloadErr"
 //  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
@@ -339,6 +340,7 @@ func (c *Client) ImageTranslateLLM(request *ImageTranslateLLMRequest) (response 
 // 提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DECODEERR = "FailedOperation.DecodeErr"
 //  FAILEDOPERATION_DOWNLOADERR = "FailedOperation.DownloadErr"
 //  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"

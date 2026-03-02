@@ -1376,6 +1376,7 @@ type CreateDataSourceRequestParams struct {
 	// - TDENGINE
 	// - TDSQLC
 	// - FileSystem
+	// - TCLake
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同
@@ -1578,6 +1579,7 @@ type CreateDataSourceRequest struct {
 	// - TDENGINE
 	// - TDSQLC
 	// - FileSystem
+	// - TCLake
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同

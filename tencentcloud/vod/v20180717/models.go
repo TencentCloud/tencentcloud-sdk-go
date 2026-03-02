@@ -2024,31 +2024,34 @@ type AigcImageSceneInfo struct {
 }
 
 type AigcImageTask struct {
-	// 任务 ID。
+	// <p>任务 ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+	// <p>任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li></p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。
+	// <p>错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。</p>
 	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
-	// 错误信息。
+	// <p>扩展错误码。空字符串表示成功，其它值表示失败。</p><p>枚举值：</p><ul><li>RequestLimitExceeded： 模型调用超出并发限制。</li><li>InvalidParameter.VoilationContent： 输入 prompt 违反内容安全策略。</li><li>InvalidParameterValue： 参数错误。</li><li>FailedOperation： 模型任务堆积。</li><li>InternalError： 内部错误。</li></ul>
+	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
+
+	// <p>错误信息。</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 任务进度，取值范围 [0-100] 。
+	// <p>任务进度，取值范围 [0-100] 。</p>
 	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
-	// AIGC 生图任务的输入信息。
+	// <p>AIGC 生图任务的输入信息。</p>
 	Input *AigcImageTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
-	// AIGC 生图任务的输出信息。
+	// <p>AIGC 生图任务的输出信息。</p>
 	Output *AigcImageTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
-	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// <p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	// <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 }
 
@@ -2130,79 +2133,10 @@ type AigcImageTaskOutputFileInfo struct {
 }
 
 type AigcUsageDataItem struct {
-	// AIGC规格。
-	// 取值有：
-	// <li>Qwen2.0</li>
-	// <li>Hunyuan3.0_1K</li>
-	// <li>Hunyuan3.0_2K</li>
-	// <li>Hunyuan3.0_4K</li>
-	// <li>Mingmou1.0_1K</li>
-	// <li>Mingmou1.0_2K</li>
-	// <li>Mingmou1.0_4K</li>
-	// <li>ViduQ2_T2i_1080P</li>
-	// <li>ViduQ2_T2i_2K</li>
-	// <li>ViduQ2_T2i_4K</li>
-	// <li>ViduQ2_I2i_1080P</li>
-	// <li>ViduQ2_I2i_2K</li>
-	// <li>ViduQ2_I2i_4K</li>
-	// <li>ViduQ2_Refer2i_1080P</li>
-	// <li>ViduQ2_Refer2i_2K</li>
-	// <li>ViduQ2_Refer2i_4K</li>
-	// <li>Kling2.1_T2i_1K2K</li>
-	// <li>Kling2.1_T2i_4K</li>
-	// <li>Kling2.1_Refer2i_1K</li>
-	// <li>Kling2.1_Refer2i_2K</li>
-	// <li>Kling2.1_Refer2i_4K</li>
-	// <li>Veo3.1Standard</li>
-	// <li>Veo3.1Fast</li>
-	// <li>Kling2.0&2.1std_720P</li>
-	// <li>Kling2.0&2.1pro_1080P</li>
-	// <li>Kling2.5pro_720P</li>
-	// <li>Kling2.5pro_1080P</li>
-	// <li>KlingO1_720P</li>
-	// <li>KlingO1_1080P</li>
-	// <li>KlingO1_NoVideo_720P</li>
-	// <li>KlingO1_NoVideo_1080P</li>
-	// <li>Kling2.6</li>
-	// <li>Kling2.6Sound</li>
-	// <li>Kling2.6MotionControl_720P</li>
-	// <li>Kling2.6MotionControl_1080P</li>
-	// <li>Kling_Avatar_I2v_720P</li>
-	// <li>Kling_Avatar_I2v_1080P</li>
-	// <li>Kling_Identifyface</li>
-	// <li>Hailuo02&2.3_768P</li>
-	// <li>Hailuo02&2.3_1080P</li>
-	// <li>Hailuo2.3fast_768P</li>
-	// <li>Hailuo2.3fast_1080P</li>
-	// <li>ViduQ2_720P</li>
-	// <li>ViduQ2_720P_OffPeak</li>
-	// <li>ViduQ2_1080P</li>
-	// <li>ViduQ2_1080P_OffPeak</li>
-	// <li>ViduQ2pro_720P</li>
-	// <li>ViduQ2pro_720P_OffPeak</li>
-	// <li>ViduQ2pro_1080P</li>
-	// <li>ViduQ2pro_1080P_OffPeak</li>
-	// <li>ViduQ2turbo_720P</li>
-	// <li>ViduQ2turbo_720P_OffPeak</li>
-	// <li>ViduQ2turbo_1080P</li>
-	// <li>ViduQ2turbo_1080P_OffPeak</li>
-	// <li>ViduQ3pro_720P</li>
-	// <li>ViduQ3pro_720P_OffPeak</li>
-	// <li>ViduQ3pro_1080P</li>
-	// <li>ViduQ3pro_1080P_OffPeak</li>
-	// <li>Vidu_TemplateEffect</li>
-	// <li>Hunyuan1.5_720P</li>
-	// <li>Hunyuan1.5_1080P</li>
-	// <li>Mingmou1.0_720P</li>
-	// <li>Mingmou1.0_1080P</li>
-	// <li>ImageProductImage</li>
-	// <li>ImageChangeClothes</li>
-	// <li>VideoProductShowcase</li>
-	// <li>ImageOutPainting</li>
-	// <li>unknown</li>
+	// <p>AIGC规格。<br>取值有：</p><li>Qwen2.0</li><li>Hunyuan3.0_1K</li><li>Hunyuan3.0_2K</li><li>Hunyuan3.0_4K</li><li>Mingmou1.0_1K</li><li>Mingmou1.0_2K</li><li>Mingmou1.0_4K</li><li>ViduQ2_T2i_1080P</li><li>ViduQ2_T2i_2K</li><li>ViduQ2_T2i_4K</li><li>ViduQ2_I2i_1080P</li><li>ViduQ2_I2i_2K</li><li>ViduQ2_I2i_4K</li><li>ViduQ2_Refer2i_1080P</li><li>ViduQ2_Refer2i_2K</li><li>ViduQ2_Refer2i_4K</li><li>Kling2.1_T2i_1K2K</li><li>Kling2.1_T2i_4K</li><li>Kling2.1_Refer2i_1K</li><li>Kling2.1_Refer2i_2K</li><li>Kling2.1_Refer2i_4K</li><li>Veo3.1Standard</li><li>Veo3.1Fast</li><li>Kling2.0&amp;2.1std_720P</li><li>Kling2.0&amp;2.1pro_1080P</li><li>Kling2.5pro_720P</li><li>Kling2.5pro_1080P</li><li>KlingO1_720P</li><li>KlingO1_1080P</li><li>KlingO1_NoVideo_720P</li><li>KlingO1_NoVideo_1080P</li><li>Kling2.6</li><li>Kling2.6Sound</li><li>Kling2.6MotionControl_720P</li><li>Kling2.6MotionControl_1080P</li><li>Kling_Avatar_I2v_720P</li><li>Kling_Avatar_I2v_1080P</li><li>Kling_Identifyface</li><li>Hailuo02&amp;2.3_768P</li><li>Hailuo02&amp;2.3_1080P</li><li>Hailuo2.3fast_768P</li><li>Hailuo2.3fast_1080P</li><li>ViduQ2_720P</li><li>ViduQ2_720P_OffPeak</li><li>ViduQ2_1080P</li><li>ViduQ2_1080P_OffPeak</li><li>ViduQ2_Refer_540P_OffPeak</li><li>ViduQ2_Refer_720P</li><li>ViduQ2_Refer_720P_OffPeak</li><li>ViduQ2_Refer_1080P</li><li>ViduQ2_Refer_1080P_OffPeak</li><li>ViduQ2pro_720P</li><li>ViduQ2pro_720P_OffPeak</li><li>ViduQ2pro_1080P</li><li>ViduQ2pro_1080P_OffPeak</li><li>ViduQ2pro_Refer_720P</li><li>ViduQ2pro_Refer_720P_OffPeak</li><li>ViduQ2pro_Refer_720P</li><li>ViduQ2pro_Refer_720P_OffPeak</li><li>ViduQ2pro_Refer_1080P</li><li>ViduQ2pro_Refer_1080P_OffPeak</li><li>ViduQ2turbo_720P</li><li>ViduQ2turbo_720P_OffPeak</li><li>ViduQ2turbo_1080P</li><li>ViduQ2turbo_1080P_OffPeak</li><li>ViduQ3pro_540P</li><li>ViduQ3pro_540P_OffPeak</li><li>ViduQ3pro_720P</li><li>ViduQ3pro_720P_OffPeak</li><li>ViduQ3pro_1080P</li><li>ViduQ3pro_1080P_OffPeak</li><li>Vidu_TemplateEffect</li><li>Hunyuan1.5_720P</li><li>Hunyuan1.5_1080P</li><li>Mingmou1.0_720P</li><li>Mingmou1.0_1080P</li><li>ImageProductImage</li><li>ImageChangeClothes</li><li>VideoProductShowcase</li><li>ImageOutPainting</li><li>unknown</li>
 	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
 
-	// 用量数据。
+	// <p>用量数据。</p>
 	DataSet []*TaskStatDataItem `json:"DataSet,omitnil,omitempty" name:"DataSet"`
 }
 
@@ -2277,31 +2211,34 @@ type AigcVideoSceneInfo struct {
 }
 
 type AigcVideoTask struct {
-	// 任务 ID。
+	// <p>任务 ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+	// <p>任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li></p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。
+	// <p>错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。</p>
 	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
-	// 错误信息。
+	// <p>扩展错误码。</p><p>枚举值：</p><ul><li>RequestLimitExceeded： 调用超出并发限制。</li><li>InvalidParameter.VoilationContent： 输入 prompt 违反内容安全策略。</li><li>InvalidParameterValue： 参数错误。</li><li>FailedOperation： 模型任务堆积。</li><li>InternalError： 内部错误。</li></ul>
+	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
+
+	// <p>错误信息。</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 任务进度，取值范围 [0-100] 。
+	// <p>任务进度，取值范围 [0-100] 。</p>
 	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
-	// AIGC 生视频任务的输入信息。
+	// <p>AIGC 生视频任务的输入信息。</p>
 	Input *AigcVideoTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
-	// AIGC 生视频任务的输出信息。
+	// <p>AIGC 生视频任务的输出信息。</p>
 	Output *AigcVideoTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
-	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// <p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	// <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 }
 
@@ -4637,10 +4574,10 @@ type CreateAigcImageTaskRequestParams struct {
 	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// <p>模型名称。取值：</p><li>GEM：Gemini；</li><li>Qwen：千问。</li><li>Hunyuan：混元。</li><li>Vidu：生数。</li><li>Kling：可灵。</li>
+	// <p>模型名称。取值：</p><li>Qwen：千问。</li><li>Hunyuan：混元。</li><li>Vidu：生数。</li><li>Kling：可灵。</li>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// <p>模型版本。取值：<li>当 ModelName 是 GEM，可选值为 2.5；</li><li>当 ModelName 是 Qwen，可选值为 0925；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1；</li></p>
+	// <p>模型版本。取值：<li>当 ModelName 是 Qwen，可选值为 0925；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1；</li></p>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
 	// <p>AIGC 生图任务的输入图片的文件信息。默认只支持指定1个。下列模型可传多张参考图：<li>GEM 2.5：0～3张图片；</li><li>Vidu q2：0～7张图片，图片支持 png、jpeg、jpg、webp格式，图片像素不能小于 128x128，且比例需要小于1:4或4:1；</li></p>
@@ -4680,10 +4617,10 @@ type CreateAigcImageTaskRequest struct {
 	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// <p>模型名称。取值：</p><li>GEM：Gemini；</li><li>Qwen：千问。</li><li>Hunyuan：混元。</li><li>Vidu：生数。</li><li>Kling：可灵。</li>
+	// <p>模型名称。取值：</p><li>Qwen：千问。</li><li>Hunyuan：混元。</li><li>Vidu：生数。</li><li>Kling：可灵。</li>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// <p>模型版本。取值：<li>当 ModelName 是 GEM，可选值为 2.5；</li><li>当 ModelName 是 Qwen，可选值为 0925；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1；</li></p>
+	// <p>模型版本。取值：<li>当 ModelName 是 Qwen，可选值为 0925；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1；</li></p>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
 	// <p>AIGC 生图任务的输入图片的文件信息。默认只支持指定1个。下列模型可传多张参考图：<li>GEM 2.5：0～3张图片；</li><li>Vidu q2：0～7张图片，图片支持 png、jpeg、jpg、webp格式，图片像素不能小于 128x128，且比例需要小于1:4或4:1；</li></p>
@@ -24958,56 +24895,62 @@ type ProcessImageAsyncOutputFileInfo struct {
 
 // Predefined struct for user
 type ProcessImageAsyncRequestParams struct {
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 需要进行图片处理的FileId。
+	// <p>需要进行图片处理的FileId。不能与Url同时输入。</p>
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
-	// 图片处理参数。
+	// <p>需要进行图片处理的Url。不能与FileId同时输入。</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>图片处理参数。</p>
 	ImageTaskInput *ProcessImageAsyncTaskInput `json:"ImageTaskInput,omitnil,omitempty" name:"ImageTaskInput"`
 
-	// 图片处理任务的输出媒体文件配置。
+	// <p>图片处理任务的输出媒体文件配置。</p>
 	OutputConfig *ProcessImageAsyncOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
 
-	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
+	// <p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 
-	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	// <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
 	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
 
-	// 保留字段，特殊用途时使用。
+	// <p>保留字段，特殊用途时使用。</p>
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
 type ProcessImageAsyncRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 需要进行图片处理的FileId。
+	// <p>需要进行图片处理的FileId。不能与Url同时输入。</p>
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
-	// 图片处理参数。
+	// <p>需要进行图片处理的Url。不能与FileId同时输入。</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>图片处理参数。</p>
 	ImageTaskInput *ProcessImageAsyncTaskInput `json:"ImageTaskInput,omitnil,omitempty" name:"ImageTaskInput"`
 
-	// 图片处理任务的输出媒体文件配置。
+	// <p>图片处理任务的输出媒体文件配置。</p>
 	OutputConfig *ProcessImageAsyncOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
 
-	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
+	// <p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 
-	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	// <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
 	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
 
-	// 保留字段，特殊用途时使用。
+	// <p>保留字段，特殊用途时使用。</p>
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
@@ -25025,6 +24968,7 @@ func (r *ProcessImageAsyncRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SubAppId")
 	delete(f, "FileId")
+	delete(f, "Url")
 	delete(f, "ImageTaskInput")
 	delete(f, "OutputConfig")
 	delete(f, "SessionId")
@@ -25039,7 +24983,7 @@ func (r *ProcessImageAsyncRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ProcessImageAsyncResponseParams struct {
-	// 任务 ID。
+	// <p>任务 ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

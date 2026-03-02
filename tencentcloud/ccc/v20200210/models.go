@@ -5541,13 +5541,13 @@ type DescribeSessionDetailResponseParams struct {
 	// 排队技能组名称
 	QueuedSkillGroupName *string `json:"QueuedSkillGroupName,omitnil,omitempty" name:"QueuedSkillGroupName"`
 
-	// 录音链接，带鉴权和有效期，获取之后请在短时间内拉取，不要持久化此链接
+	// 录音链接，带鉴权和有效期，获取之后请在24 小时内拉取，不要持久化此链接。如此链接已过期，请重新调用此接口获取新的链接
 	RecordURL *string `json:"RecordURL,omitnil,omitempty" name:"RecordURL"`
 
 	// 录音转存第三方 COS 链接
 	CustomRecordURL *string `json:"CustomRecordURL,omitnil,omitempty" name:"CustomRecordURL"`
 
-	// 录音文本信息链接，带鉴权和有效期，获取之后请在短时间内拉取，不要持久化此链接
+	// 录音文本信息链接，带鉴权和有效期，获取之后请在24 小时拉取，不要持久化此链接。如此链接已过期，请重新调用此接口获取新的链接
 	AsrURL *string `json:"AsrURL,omitnil,omitempty" name:"AsrURL"`
 
 	// 语音留言录音链接
