@@ -806,6 +806,9 @@ type CreateModelServiceRequestParams struct {
 
 	// 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
 	SchedulingStrategy *string `json:"SchedulingStrategy,omitnil,omitempty" name:"SchedulingStrategy"`
+
+	// 网关日志投递相关配置
+	GatewayLogConfig *LogConfig `json:"GatewayLogConfig,omitnil,omitempty" name:"GatewayLogConfig"`
 }
 
 type CreateModelServiceRequest struct {
@@ -962,6 +965,9 @@ type CreateModelServiceRequest struct {
 
 	// 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
 	SchedulingStrategy *string `json:"SchedulingStrategy,omitnil,omitempty" name:"SchedulingStrategy"`
+
+	// 网关日志投递相关配置
+	GatewayLogConfig *LogConfig `json:"GatewayLogConfig,omitnil,omitempty" name:"GatewayLogConfig"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -1019,6 +1025,7 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "Sidecar")
 	delete(f, "VolumeMounts")
 	delete(f, "SchedulingStrategy")
+	delete(f, "GatewayLogConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -7896,6 +7903,9 @@ type ServiceGroup struct {
 
 	// 子用户的 nickname
 	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
+
+	// 网关日志投递相关配置
+	GatewayLogConfig *LogConfig `json:"GatewayLogConfig,omitnil,omitempty" name:"GatewayLogConfig"`
 }
 
 type ServiceInfo struct {

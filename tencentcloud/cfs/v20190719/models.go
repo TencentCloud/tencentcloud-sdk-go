@@ -4191,7 +4191,7 @@ type PathInfo struct {
 
 // Predefined struct for user
 type ScaleUpFileSystemRequestParams struct {
-	// 文件系统Id,该参数通过查询文件系统列表接口获取
+	// 文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 扩容的目标容量（单位GiB）
@@ -4201,7 +4201,7 @@ type ScaleUpFileSystemRequestParams struct {
 type ScaleUpFileSystemRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统Id,该参数通过查询文件系统列表接口获取
+	// 文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 扩容的目标容量（单位GiB）
@@ -4403,50 +4403,50 @@ func (r *SignUpCfsServiceResponse) FromJsonString(s string) error {
 }
 
 type SnapshotInfo struct {
-	// 创建快照时间
+	// <p>创建快照时间</p>
 	CreationTime *string `json:"CreationTime,omitnil,omitempty" name:"CreationTime"`
 
-	// 快照名称
+	// <p>快照名称</p>
 	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
 
-	// 快照ID
+	// <p>快照ID</p>
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 快照状态，creating-创建中；available-运行中；deleting-删除中；rollbacking-new 创建新文件系统中；create-failed 创建失败
+	// <p>快照状态，creating-创建中；available-运行中；deleting-删除中；rollbacking-new 创建新文件系统中；create-failed 创建失败</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 地域名称
+	// <p>地域名称</p>
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
-	// 文件系统ID
+	// <p>文件系统ID</p>
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 快照大小
+	// <p>快照大小</p><p>单位：MiB</p>
 	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 保留时长天
+	// <p>保留时长天</p>
 	AliveDay *uint64 `json:"AliveDay,omitnil,omitempty" name:"AliveDay"`
 
-	// 快照进度百分比，1表示1% 范围1-100
+	// <p>快照进度百分比，1表示1% 范围1-100</p>
 	Percent *uint64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
-	// 账号ID
+	// <p>账号ID</p>
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 快照删除时间
+	// <p>快照删除时间</p>
 	DeleteTime *string `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
 
-	// 文件系统名称
+	// <p>文件系统名称</p>
 	FsName *string `json:"FsName,omitnil,omitempty" name:"FsName"`
 
-	// 快照标签
+	// <p>快照标签</p>
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 快照类型，general为通用系列快照，turbo为Turbo系列快照
+	// <p>快照类型，general为通用系列快照，turbo为Turbo系列快照</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotType *string `json:"SnapshotType,omitnil,omitempty" name:"SnapshotType"`
 
-	// 实际快照时间，反映快照对应文件系统某个时刻的数据。
+	// <p>实际快照时间，反映快照对应文件系统某个时刻的数据。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotTime *string `json:"SnapshotTime,omitnil,omitempty" name:"SnapshotTime"`
 }
@@ -4610,10 +4610,10 @@ type TagInfo struct {
 }
 
 type TieringDetailInfo struct {
-	// 低频存储容量
+	// <p>低频存储容量</p><p>单位：Byte, B, 字节</p>
 	TieringSizeInBytes *int64 `json:"TieringSizeInBytes,omitnil,omitempty" name:"TieringSizeInBytes"`
 
-	// 冷存储容量
+	// <p>冷存储容量</p><p>单位：Byte, B, 字节</p>
 	SecondaryTieringSizeInBytes *int64 `json:"SecondaryTieringSizeInBytes,omitnil,omitempty" name:"SecondaryTieringSizeInBytes"`
 }
 

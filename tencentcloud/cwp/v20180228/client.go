@@ -14259,6 +14259,130 @@ func (c *Client) DescribeOverviewStatisticsWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribePatchEffectHostListRequest() (request *DescribePatchEffectHostListRequest) {
+    request = &DescribePatchEffectHostListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribePatchEffectHostList")
+    
+    
+    return
+}
+
+func NewDescribePatchEffectHostListResponse() (response *DescribePatchEffectHostListResponse) {
+    response = &DescribePatchEffectHostListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePatchEffectHostList
+// 查询补丁影响的主机信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribePatchEffectHostList(request *DescribePatchEffectHostListRequest) (response *DescribePatchEffectHostListResponse, err error) {
+    return c.DescribePatchEffectHostListWithContext(context.Background(), request)
+}
+
+// DescribePatchEffectHostList
+// 查询补丁影响的主机信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribePatchEffectHostListWithContext(ctx context.Context, request *DescribePatchEffectHostListRequest) (response *DescribePatchEffectHostListResponse, err error) {
+    if request == nil {
+        request = NewDescribePatchEffectHostListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribePatchEffectHostList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePatchEffectHostList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePatchEffectHostListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePatchInfoRequest() (request *DescribePatchInfoRequest) {
+    request = &DescribePatchInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribePatchInfo")
+    
+    
+    return
+}
+
+func NewDescribePatchInfoResponse() (response *DescribePatchInfoResponse) {
+    response = &DescribePatchInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePatchInfo
+// 补丁详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribePatchInfo(request *DescribePatchInfoRequest) (response *DescribePatchInfoResponse, err error) {
+    return c.DescribePatchInfoWithContext(context.Background(), request)
+}
+
+// DescribePatchInfo
+// 补丁详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribePatchInfoWithContext(ctx context.Context, request *DescribePatchInfoRequest) (response *DescribePatchInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribePatchInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribePatchInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePatchInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePatchInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePrivilegeEventInfoRequest() (request *DescribePrivilegeEventInfoRequest) {
     request = &DescribePrivilegeEventInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -20671,6 +20795,66 @@ func (c *Client) DescribeWebPageServiceInfoWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeWindowsPatchListRequest() (request *DescribeWindowsPatchListRequest) {
+    request = &DescribeWindowsPatchListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeWindowsPatchList")
+    
+    
+    return
+}
+
+func NewDescribeWindowsPatchListResponse() (response *DescribeWindowsPatchListResponse) {
+    response = &DescribeWindowsPatchListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWindowsPatchList
+// 获取补丁信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeWindowsPatchList(request *DescribeWindowsPatchListRequest) (response *DescribeWindowsPatchListResponse, err error) {
+    return c.DescribeWindowsPatchListWithContext(context.Background(), request)
+}
+
+// DescribeWindowsPatchList
+// 获取补丁信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeWindowsPatchListWithContext(ctx context.Context, request *DescribeWindowsPatchListRequest) (response *DescribeWindowsPatchListResponse, err error) {
+    if request == nil {
+        request = NewDescribeWindowsPatchListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeWindowsPatchList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWindowsPatchList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWindowsPatchListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDestroyOrderRequest() (request *DestroyOrderRequest) {
     request = &DestroyOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -23397,6 +23581,70 @@ func (c *Client) ExportNonlocalLoginPlacesWithContext(ctx context.Context, reque
     return
 }
 
+func NewExportPatchEffectHostListRequest() (request *ExportPatchEffectHostListRequest) {
+    request = &ExportPatchEffectHostListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ExportPatchEffectHostList")
+    
+    
+    return
+}
+
+func NewExportPatchEffectHostListResponse() (response *ExportPatchEffectHostListResponse) {
+    response = &ExportPatchEffectHostListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExportPatchEffectHostList
+// 导出补丁影响主机列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ExportPatchEffectHostList(request *ExportPatchEffectHostListRequest) (response *ExportPatchEffectHostListResponse, err error) {
+    return c.ExportPatchEffectHostListWithContext(context.Background(), request)
+}
+
+// ExportPatchEffectHostList
+// 导出补丁影响主机列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ExportPatchEffectHostListWithContext(ctx context.Context, request *ExportPatchEffectHostListRequest) (response *ExportPatchEffectHostListResponse, err error) {
+    if request == nil {
+        request = NewExportPatchEffectHostListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "ExportPatchEffectHostList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportPatchEffectHostList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportPatchEffectHostListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExportPrivilegeEventsRequest() (request *ExportPrivilegeEventsRequest) {
     request = &ExportPrivilegeEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -24735,6 +24983,64 @@ func (c *Client) ExportWebPageEventListWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewExportWebPageEventListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportWindowsPatchListRequest() (request *ExportWindowsPatchListRequest) {
+    request = &ExportWindowsPatchListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ExportWindowsPatchList")
+    
+    
+    return
+}
+
+func NewExportWindowsPatchListResponse() (response *ExportWindowsPatchListResponse) {
+    response = &ExportWindowsPatchListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExportWindowsPatchList
+// 导出Windows补丁列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ExportWindowsPatchList(request *ExportWindowsPatchListRequest) (response *ExportWindowsPatchListResponse, err error) {
+    return c.ExportWindowsPatchListWithContext(context.Background(), request)
+}
+
+// ExportWindowsPatchList
+// 导出Windows补丁列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ExportWindowsPatchListWithContext(ctx context.Context, request *ExportWindowsPatchListRequest) (response *ExportWindowsPatchListResponse, err error) {
+    if request == nil {
+        request = NewExportWindowsPatchListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "ExportWindowsPatchList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportWindowsPatchList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportWindowsPatchListResponse()
     err = c.Send(request, response)
     return
 }

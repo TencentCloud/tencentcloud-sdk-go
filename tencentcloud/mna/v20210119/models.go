@@ -125,6 +125,90 @@ type ActiveDeviceList struct {
 }
 
 // Predefined struct for user
+type AddApplicationRequestParams struct {
+	// 新建应用的应用名
+	MpApplicationName *string `json:"MpApplicationName,omitnil,omitempty" name:"MpApplicationName"`
+
+	// 新建设备的备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 新建应用的base64密钥字符串，非必选，如果不填写则由系统自动生成
+	MpApplicationKey *string `json:"MpApplicationKey,omitnil,omitempty" name:"MpApplicationKey"`
+
+	// 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+	AccessScope *int64 `json:"AccessScope,omitnil,omitempty" name:"AccessScope"`
+}
+
+type AddApplicationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 新建应用的应用名
+	MpApplicationName *string `json:"MpApplicationName,omitnil,omitempty" name:"MpApplicationName"`
+
+	// 新建设备的备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 新建应用的base64密钥字符串，非必选，如果不填写则由系统自动生成
+	MpApplicationKey *string `json:"MpApplicationKey,omitnil,omitempty" name:"MpApplicationKey"`
+
+	// 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+	AccessScope *int64 `json:"AccessScope,omitnil,omitempty" name:"AccessScope"`
+}
+
+func (r *AddApplicationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddApplicationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MpApplicationName")
+	delete(f, "Remark")
+	delete(f, "MpApplicationKey")
+	delete(f, "AccessScope")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddApplicationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddApplicationResponseParams struct {
+	// 应用ID
+	MpApplicationId *string `json:"MpApplicationId,omitnil,omitempty" name:"MpApplicationId"`
+
+	// 经过加密算法加密后的base64格式密钥
+	MpApplicationKey *string `json:"MpApplicationKey,omitnil,omitempty" name:"MpApplicationKey"`
+
+	// 应用名
+	MpApplicationName *string `json:"MpApplicationName,omitnil,omitempty" name:"MpApplicationName"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddApplicationResponse struct {
+	*tchttp.BaseResponse
+	Response *AddApplicationResponseParams `json:"Response"`
+}
+
+func (r *AddApplicationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddApplicationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AddDeviceRequestParams struct {
 	// 新建设备的名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
@@ -518,6 +602,65 @@ func (r *CreateEncryptedKeyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateEncryptedKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DelApplicationList struct {
+	// 应用id
+	MpApplicationId *string `json:"MpApplicationId,omitnil,omitempty" name:"MpApplicationId"`
+}
+
+// Predefined struct for user
+type DeleteApplicationRequestParams struct {
+	// 应用id列表
+	MpApplicationIdList []*DelApplicationList `json:"MpApplicationIdList,omitnil,omitempty" name:"MpApplicationIdList"`
+}
+
+type DeleteApplicationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用id列表
+	MpApplicationIdList []*DelApplicationList `json:"MpApplicationIdList,omitnil,omitempty" name:"MpApplicationIdList"`
+}
+
+func (r *DeleteApplicationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteApplicationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MpApplicationIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteApplicationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteApplicationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteApplicationResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteApplicationResponseParams `json:"Response"`
+}
+
+func (r *DeleteApplicationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteApplicationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1090,6 +1233,75 @@ func (r *GetActiveDeviceCountResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetActiveDeviceCountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetApplicationRequestParams struct {
+	// 应用id
+	MpApplicationId *string `json:"MpApplicationId,omitnil,omitempty" name:"MpApplicationId"`
+}
+
+type GetApplicationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用id
+	MpApplicationId *string `json:"MpApplicationId,omitnil,omitempty" name:"MpApplicationId"`
+}
+
+func (r *GetApplicationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetApplicationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MpApplicationId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetApplicationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetApplicationResponseParams struct {
+	// 应用ID
+	MpApplicationId *string `json:"MpApplicationId,omitnil,omitempty" name:"MpApplicationId"`
+
+	// 经过加密算法加密后的base64格式密钥
+	MpApplicationKey *string `json:"MpApplicationKey,omitnil,omitempty" name:"MpApplicationKey"`
+
+	// 应用名
+	MpApplicationName *string `json:"MpApplicationName,omitnil,omitempty" name:"MpApplicationName"`
+
+	// 设备的备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+	AccessScope *int64 `json:"AccessScope,omitnil,omitempty" name:"AccessScope"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetApplicationResponse struct {
+	*tchttp.BaseResponse
+	Response *GetApplicationResponseParams `json:"Response"`
+}
+
+func (r *GetApplicationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetApplicationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3739,6 +3951,142 @@ type SlotNetInfo struct {
 
 	// 指标数据（bps/ms/%）
 	Current *float64 `json:"Current,omitnil,omitempty" name:"Current"`
+}
+
+// Predefined struct for user
+type UpdateApplicationInfoRequestParams struct {
+	// 应用ID
+	MpApplicationId *string `json:"MpApplicationId,omitnil,omitempty" name:"MpApplicationId"`
+
+	// 新建应用的应用名
+	MpApplicationName *string `json:"MpApplicationName,omitnil,omitempty" name:"MpApplicationName"`
+
+	// 新建设备的备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+	AccessScope *int64 `json:"AccessScope,omitnil,omitempty" name:"AccessScope"`
+}
+
+type UpdateApplicationInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID
+	MpApplicationId *string `json:"MpApplicationId,omitnil,omitempty" name:"MpApplicationId"`
+
+	// 新建应用的应用名
+	MpApplicationName *string `json:"MpApplicationName,omitnil,omitempty" name:"MpApplicationName"`
+
+	// 新建设备的备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+	AccessScope *int64 `json:"AccessScope,omitnil,omitempty" name:"AccessScope"`
+}
+
+func (r *UpdateApplicationInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateApplicationInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MpApplicationId")
+	delete(f, "MpApplicationName")
+	delete(f, "Remark")
+	delete(f, "AccessScope")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateApplicationInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateApplicationInfoResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateApplicationInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateApplicationInfoResponseParams `json:"Response"`
+}
+
+func (r *UpdateApplicationInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateApplicationInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateApplicationKeyRequestParams struct {
+	// 应用的base64密钥字符串
+	MpApplicationKey *string `json:"MpApplicationKey,omitnil,omitempty" name:"MpApplicationKey"`
+
+	// 应用ID
+	MpApplicationId *string `json:"MpApplicationId,omitnil,omitempty" name:"MpApplicationId"`
+}
+
+type UpdateApplicationKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用的base64密钥字符串
+	MpApplicationKey *string `json:"MpApplicationKey,omitnil,omitempty" name:"MpApplicationKey"`
+
+	// 应用ID
+	MpApplicationId *string `json:"MpApplicationId,omitnil,omitempty" name:"MpApplicationId"`
+}
+
+func (r *UpdateApplicationKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateApplicationKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MpApplicationKey")
+	delete(f, "MpApplicationId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateApplicationKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateApplicationKeyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateApplicationKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateApplicationKeyResponseParams `json:"Response"`
+}
+
+func (r *UpdateApplicationKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateApplicationKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

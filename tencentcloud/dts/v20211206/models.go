@@ -201,6 +201,7 @@ type CompareOptions struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 校验类型，枚举值：structureCheck-结构校验(目前仅postgresql支持)、full-全量校验、increment-增量校验(如果勾选了增量校验，Method只能选dataCheck)、advanceObject-数据库信息校验(目前仅mongodb支持) 
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompareMode []*string `json:"CompareMode,omitnil,omitempty" name:"CompareMode"`
 
 	// 复检次数
@@ -1616,7 +1617,7 @@ type DBEndpointInfo struct {
 	// 实例具体的连接信息，如ip、port、接入方式等
 	Info []*DBInfo `json:"Info,omitnil,omitempty" name:"Info"`
 
-	// 实例服务提供商，如:"aliyun","others"
+	// 实例服务提供商，如:"others","aliyun","aws"
 	Supplier *string `json:"Supplier,omitnil,omitempty" name:"Supplier"`
 
 	// 此参数为数组类型，可以传多个键值对结构对象。
@@ -1641,70 +1642,70 @@ type DBEndpointInfo struct {
 }
 
 type DBInfo struct {
-	// 表示节点角色，针对分布式数据库，如mongodb中的mongos节点。tdsqlmysql的可选项：proxy表示节点类型为主机，set表示节点类型为节点。proxy类型必须填在数组第一项。tdsqlmysql类型的源/目标配置必填。
+	// <p>表示节点角色，针对分布式数据库，如mongodb中的mongos节点。tdsqlmysql的可选项：proxy表示节点类型为主机，set表示节点类型为节点。proxy类型必须填在数组第一项。tdsqlmysql类型的源/目标配置必填。</p>
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
-	// 内核版本，针对mariadb的不同内核版本等
+	// <p>内核版本，针对mariadb的不同内核版本等</p>
 	DbKernel *string `json:"DbKernel,omitnil,omitempty" name:"DbKernel"`
 
-	// 实例的IP地址，对于公网、专线、VPN、云联网、自研上云、VPC等接入方式此项必填
+	// <p>实例的IP地址，对于公网、专线、VPN、云联网、自研上云、VPC等接入方式此项必填</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 实例的端口，对于公网、云主机自建、专线、VPN、云联网、自研上云、VPC等接入方式此项必填
+	// <p>实例的端口，对于公网、云主机自建、专线、VPN、云联网、自研上云、VPC等接入方式此项必填</p>
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 实例的用户名
+	// <p>实例的用户名</p>
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// 实例的密码
+	// <p>实例的密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// CVM实例短ID，格式如：ins-olgl39y8；与云服务器控制台页面显示的实例ID相同；如果接入类型为云主机自建的方式，此项必填
+	// <p>CVM实例短ID，格式如：ins-olgl39y8；与云服务器控制台页面显示的实例ID相同；如果接入类型为云主机自建的方式，此项必填</p>
 	CvmInstanceId *string `json:"CvmInstanceId,omitnil,omitempty" name:"CvmInstanceId"`
 
-	// VPN网关ID，格式如：vpngw-9ghexg7q；如果接入类型为vpncloud的方式，此项必填
+	// <p>VPN网关ID，格式如：vpngw-9ghexg7q；如果接入类型为vpncloud的方式，此项必填</p>
 	UniqVpnGwId *string `json:"UniqVpnGwId,omitnil,omitempty" name:"UniqVpnGwId"`
 
-	// 专线网关ID，格式如：dcg-0rxtqqxb；如果接入类型为专线接入的方式，此项必填
+	// <p>专线网关ID，格式如：dcg-0rxtqqxb；如果接入类型为专线接入的方式，此项必填</p>
 	UniqDcgId *string `json:"UniqDcgId,omitnil,omitempty" name:"UniqDcgId"`
 
-	// 数据库实例ID，格式如：cdb-powiqx8q；如果接入类型为云数据库的方式，此项必填
+	// <p>数据库实例ID，格式如：cdb-powiqx8q；如果接入类型为云数据库的方式，此项必填</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 云联网ID，如：ccn-afp6kltc 注意：此字段可能返回 null，表示取不到有效值。
+	// <p>云联网ID，如：ccn-afp6kltc 注意：此字段可能返回 null，表示取不到有效值。</p>
 	CcnGwId *string `json:"CcnGwId,omitnil,omitempty" name:"CcnGwId"`
 
-	// 私有网络ID，格式如：vpc-92jblxto；如果接入类型为vpc、vpncloud、ccn、dcg的方式，此项必填
+	// <p>私有网络ID，格式如：vpc-92jblxto；如果接入类型为vpc、vpncloud、ccn、dcg的方式，此项必填</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有网络下的子网ID，格式如：subnet-3paxmkdz；如果接入类型为vpc、vpncloud、ccn、dcg的方式，此项必填
+	// <p>私有网络下的子网ID，格式如：subnet-3paxmkdz；如果接入类型为vpc、vpncloud、ccn、dcg的方式，此项必填</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 数据库版本，当实例为RDS实例时才有效，格式如：5.6或者5.7，默认为5.6
+	// <p>数据库版本，当实例为RDS实例时才有效，格式如：5.6或者5.7，默认为5.6</p>
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// 实例所属账号
+	// <p>实例所属账号</p>
 	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 
-	// 跨账号迁移时的角色,只允许[a-zA-Z0-9\-\_]+
+	// <p>跨账号迁移时的角色,只允许[a-zA-Z0-9-_]+</p>
 	AccountRole *string `json:"AccountRole,omitnil,omitempty" name:"AccountRole"`
 
-	// 资源所属账号 为空或self(表示本账号内资源)、other(表示其他账户资源)
+	// <p>资源所属账号 为空或self(表示本账号内资源)、other(表示其他账户资源)</p>
 	AccountMode *string `json:"AccountMode,omitnil,omitempty" name:"AccountMode"`
 
-	// 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
+	// <p>临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。</p>
 	TmpSecretId *string `json:"TmpSecretId,omitnil,omitempty" name:"TmpSecretId"`
 
-	// 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
+	// <p>临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。</p>
 	TmpSecretKey *string `json:"TmpSecretKey,omitnil,omitempty" name:"TmpSecretKey"`
 
-	// 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
+	// <p>临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。</p>
 	TmpToken *string `json:"TmpToken,omitnil,omitempty" name:"TmpToken"`
 
-	// 是否走加密传输、UnEncrypted表示不走加密传输，Encrypted表示走加密传输，默认UnEncrypted
+	// <p>是否走加密传输、UnEncrypted表示不走加密传输，Encrypted表示走加密传输，默认UnEncrypted</p>
 	EncryptConn *string `json:"EncryptConn,omitnil,omitempty" name:"EncryptConn"`
 
-	// tdsql的分片id。如节点类型为set必填。
+	// <p>tdsql的分片id。如节点类型为set必填。</p>
 	SetId *string `json:"SetId,omitnil,omitempty" name:"SetId"`
 }
 
@@ -4167,94 +4168,94 @@ type DynamicOptions struct {
 }
 
 type Endpoint struct {
-	// 地域英文名，如：ap-guangzhou
+	// <p>地域英文名，如：ap-guangzhou</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 节点类型，proxy表示节点类型为主机，set表示节点类型为节点。proxy类型必须填在数组第一项。tdsqlmysql类型的源/目标配置必填
+	// <p>节点类型，proxy表示节点类型为主机，set表示节点类型为节点。proxy类型必须填在数组第一项。tdsqlmysql类型的源/目标配置必填</p>
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
-	// 数据库内核类型，tdsql中用于区分不同内核：percona,mariadb,mysql。注意TDSQL-C MySQL、TDSQL PostgreSQL无需填写此项值。
+	// <p>数据库内核类型，tdsql中用于区分不同内核：percona,mariadb,mysql。注意TDSQL-C MySQL、TDSQL PostgreSQL无需填写此项值。</p>
 	DbKernel *string `json:"DbKernel,omitnil,omitempty" name:"DbKernel"`
 
-	// 数据库实例ID，格式如：cdb-powiqx8q
+	// <p>数据库实例ID，格式如：cdb-powiqx8q</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例的IP地址，接入类型为非cdb时此项必填
+	// <p>实例的IP地址，接入类型为非cdb时此项必填</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 实例端口，接入类型为非cdb时此项必填
+	// <p>实例端口，接入类型为非cdb时此项必填</p>
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 用户名，对于访问需要用户名密码认证的实例必填
+	// <p>用户名，对于访问需要用户名密码认证的实例必填</p>
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// 密码，对于访问需要用户名密码认证的实例必填
+	// <p>密码，对于访问需要用户名密码认证的实例必填</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 数据库名，数据库为cdwpg时，需要提供
+	// <p>数据库名，数据库为cdwpg时，需要提供</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 私有网络ID，对于私有网络、专线、VPN的接入方式此项必填，格式如：vpc-92jblxto
+	// <p>私有网络ID，对于私有网络、专线、VPN的接入方式此项必填，格式如：vpc-92jblxto</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有网络下的子网ID，对于私有网络、专线、VPN的接入方式此项必填，格式如：subnet-3paxmkdz
+	// <p>私有网络下的子网ID，对于私有网络、专线、VPN的接入方式此项必填，格式如：subnet-3paxmkdz</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// CVM实例短ID，格式如：ins-olgl39y8，与云服务器控制台页面显示的实例ID相同。如果是CVM自建实例，需要传递此字段
+	// <p>CVM实例短ID，格式如：ins-olgl39y8，与云服务器控制台页面显示的实例ID相同。如果是CVM自建实例，需要传递此字段</p>
 	CvmInstanceId *string `json:"CvmInstanceId,omitnil,omitempty" name:"CvmInstanceId"`
 
-	// 专线网关ID，对于专线接入类型此项必填，格式如：dcg-0rxtqqxb
+	// <p>专线网关ID，对于专线接入类型此项必填，格式如：dcg-0rxtqqxb</p>
 	UniqDcgId *string `json:"UniqDcgId,omitnil,omitempty" name:"UniqDcgId"`
 
-	// VPN网关ID，对于vpn接入类型此项必填，格式如：vpngw-9ghexg7q
+	// <p>VPN网关ID，对于vpn接入类型此项必填，格式如：vpngw-9ghexg7q</p>
 	UniqVpnGwId *string `json:"UniqVpnGwId,omitnil,omitempty" name:"UniqVpnGwId"`
 
-	// 云联网ID，对于云联网接入类型此项必填，如：ccn-afp6kltc
+	// <p>云联网ID，对于云联网接入类型此项必填，如：ccn-afp6kltc</p>
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
-	// 云厂商类型，当实例为RDS实例时，填写为aliyun, 其他情况均填写others，默认为others
+	// <p>云厂商类型，当实例为RDS实例时，填写为aliyun, 其他情况均填写others，默认为others</p>
 	Supplier *string `json:"Supplier,omitnil,omitempty" name:"Supplier"`
 
-	// 数据库版本，当实例为RDS实例时才有效，其他实例忽略，格式如：5.6或者5.7，默认为5.6
+	// <p>数据库版本，当实例为RDS实例时才有效，其他实例忽略，格式如：5.6或者5.7，默认为5.6</p>
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// 实例所属账号，如果为跨账号实例此项必填
+	// <p>实例所属账号，如果为跨账号实例此项必填</p>
 	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 
-	// 资源所属账号 为空或self(表示本账号内资源)、other(表示跨账号资源)
+	// <p>资源所属账号 为空或self(表示本账号内资源)、other(表示跨账号资源)</p>
 	AccountMode *string `json:"AccountMode,omitnil,omitempty" name:"AccountMode"`
 
-	// 跨账号同步时的角色，只允许[a-zA-Z0-9\-\_]+，如果为跨账号实例此项必填
+	// <p>跨账号同步时的角色，只允许[a-zA-Z0-9-_]+，如果为跨账号实例此项必填</p>
 	AccountRole *string `json:"AccountRole,omitnil,omitempty" name:"AccountRole"`
 
-	// 外部角色id
+	// <p>外部角色id</p>
 	RoleExternalId *string `json:"RoleExternalId,omitnil,omitempty" name:"RoleExternalId"`
 
-	// 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号同步文档(https://cloud.tencent.com/document/product/571/68729)第4节中关于角色的定义。
+	// <p>临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号同步文档(https://cloud.tencent.com/document/product/571/68729)第4节中关于角色的定义。</p>
 	TmpSecretId *string `json:"TmpSecretId,omitnil,omitempty" name:"TmpSecretId"`
 
-	// 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号同步文档(https://cloud.tencent.com/document/product/571/68729)第4节中关于角色的定义。
+	// <p>临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号同步文档(https://cloud.tencent.com/document/product/571/68729)第4节中关于角色的定义。</p>
 	TmpSecretKey *string `json:"TmpSecretKey,omitnil,omitempty" name:"TmpSecretKey"`
 
-	// 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号同步文档(https://cloud.tencent.com/document/product/571/68729)第4节中关于角色的定义。
+	// <p>临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号同步文档(https://cloud.tencent.com/document/product/571/68729)第4节中关于角色的定义。</p>
 	TmpToken *string `json:"TmpToken,omitnil,omitempty" name:"TmpToken"`
 
-	// 是否走加密传输、UnEncrypted表示不走加密传输，Encrypted表示走加密传输，默认UnEncrypted
+	// <p>是否走加密传输、UnEncrypted表示不走加密传输，Encrypted表示走加密传输，默认UnEncrypted</p>
 	EncryptConn *string `json:"EncryptConn,omitnil,omitempty" name:"EncryptConn"`
 
-	// 数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
+	// <p>数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；</p>
 	DatabaseNetEnv *string `json:"DatabaseNetEnv,omitnil,omitempty" name:"DatabaseNetEnv"`
 
-	// 数据库为跨账号云联网下的实例时、表示云联网所属主账号
+	// <p>数据库为跨账号云联网下的实例时、表示云联网所属主账号</p>
 	CcnOwnerUin *string `json:"CcnOwnerUin,omitnil,omitempty" name:"CcnOwnerUin"`
 
-	// 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的ID
+	// <p>数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的ID</p>
 	ChildInstanceId *string `json:"ChildInstanceId,omitnil,omitempty" name:"ChildInstanceId"`
 
-	// 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的类型、例如：只读实例传ro、读写实例传rw
+	// <p>数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的类型、例如：只读实例传ro、读写实例传rw</p>
 	ChildInstanceType *string `json:"ChildInstanceType,omitnil,omitempty" name:"ChildInstanceType"`
 
-	// tdsql的分片id。如节点类型为set必填。
+	// <p>tdsql的分片id。如节点类型为set必填。</p>
 	SetId *string `json:"SetId,omitnil,omitempty" name:"SetId"`
 }
 
@@ -4578,9 +4579,7 @@ type JobItem struct {
 	// 迁移任务错误信息
 	BriefMsg *string `json:"BriefMsg,omitnil,omitempty" name:"BriefMsg"`
 
-	// 任务状态，取值为：creating(创建中)、created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)、
-	// pausing(暂停中)、
-	// manualPaused(已暂停)
+	// 任务状态，取值为：creating(创建中)、created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(终止中)、completing(完成中)、pausing(暂停中)、manualPaused(已暂停)、resumableErr(可重试错误)、resuming(重试中)、unknown(未知状态)、error(任务错误)、canceled(已取消)
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 任务运行模式，值包括：immediate(立即运行)，timed(定时运行)
@@ -5312,62 +5311,62 @@ func (r *ModifyMigrateRuntimeAttributeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyMigrationJobRequestParams struct {
-	// 任务id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+	// <p>任务id，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 运行模式，取值如：immediate(表示立即运行)、timed(表示定时运行)
+	// <p>运行模式，取值如：immediate(表示立即运行)、timed(表示定时运行)</p>
 	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
 
-	// 迁移任务配置选项，描述任务如何执行迁移等一系列配置信息；字段下的RateLimitOption不可配置、如果需要修改任务的限速信息、请在任务运行后通过ModifyMigrateRateLimit接口修改
+	// <p>迁移任务配置选项，描述任务如何执行迁移等一系列配置信息；字段下的RateLimitOption不可配置、如果需要修改任务的限速信息、请在任务运行后通过ModifyMigrateRateLimit接口修改</p>
 	MigrateOption *MigrateOption `json:"MigrateOption,omitnil,omitempty" name:"MigrateOption"`
 
-	// 源实例信息
+	// <p>源实例信息</p>
 	SrcInfo *DBEndpointInfo `json:"SrcInfo,omitnil,omitempty" name:"SrcInfo"`
 
-	// 目标实例信息
+	// <p>目标实例信息</p>
 	DstInfo *DBEndpointInfo `json:"DstInfo,omitnil,omitempty" name:"DstInfo"`
 
-	// 迁移任务名称，最大长度128
+	// <p>迁移任务名称，最大长度128</p>
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
-	// 期待启动时间，当RunMode取值为timed时，此值必填，形如："2006-01-02 15:04:05"
+	// <p>期待启动时间，当RunMode取值为timed时，此值必填，形如：&quot;2006-01-02 15:04:05&quot;</p>
 	ExpectRunTime *string `json:"ExpectRunTime,omitnil,omitempty" name:"ExpectRunTime"`
 
-	// 标签信息
+	// <p>标签信息</p>
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 自动重试的时间段、可设置5至720分钟、0表示不重试
+	// <p>自动重试的时间段、可设置5至720分钟、0表示不重试</p>
 	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitnil,omitempty" name:"AutoRetryTimeRangeMinutes"`
 }
 
 type ModifyMigrationJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+	// <p>任务id，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 运行模式，取值如：immediate(表示立即运行)、timed(表示定时运行)
+	// <p>运行模式，取值如：immediate(表示立即运行)、timed(表示定时运行)</p>
 	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
 
-	// 迁移任务配置选项，描述任务如何执行迁移等一系列配置信息；字段下的RateLimitOption不可配置、如果需要修改任务的限速信息、请在任务运行后通过ModifyMigrateRateLimit接口修改
+	// <p>迁移任务配置选项，描述任务如何执行迁移等一系列配置信息；字段下的RateLimitOption不可配置、如果需要修改任务的限速信息、请在任务运行后通过ModifyMigrateRateLimit接口修改</p>
 	MigrateOption *MigrateOption `json:"MigrateOption,omitnil,omitempty" name:"MigrateOption"`
 
-	// 源实例信息
+	// <p>源实例信息</p>
 	SrcInfo *DBEndpointInfo `json:"SrcInfo,omitnil,omitempty" name:"SrcInfo"`
 
-	// 目标实例信息
+	// <p>目标实例信息</p>
 	DstInfo *DBEndpointInfo `json:"DstInfo,omitnil,omitempty" name:"DstInfo"`
 
-	// 迁移任务名称，最大长度128
+	// <p>迁移任务名称，最大长度128</p>
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
-	// 期待启动时间，当RunMode取值为timed时，此值必填，形如："2006-01-02 15:04:05"
+	// <p>期待启动时间，当RunMode取值为timed时，此值必填，形如：&quot;2006-01-02 15:04:05&quot;</p>
 	ExpectRunTime *string `json:"ExpectRunTime,omitnil,omitempty" name:"ExpectRunTime"`
 
-	// 标签信息
+	// <p>标签信息</p>
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 自动重试的时间段、可设置5至720分钟、0表示不重试
+	// <p>自动重试的时间段、可设置5至720分钟、0表示不重试</p>
 	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitnil,omitempty" name:"AutoRetryTimeRangeMinutes"`
 }
 

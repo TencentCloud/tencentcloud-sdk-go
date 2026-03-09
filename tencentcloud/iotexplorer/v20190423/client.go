@@ -9293,7 +9293,7 @@ func NewInvokeTWeSeeRecognitionTaskWithFileResponse() (response *InvokeTWeSeeRec
 }
 
 // InvokeTWeSeeRecognitionTaskWithFile
-// 同步执行 TWeSee 语义理解任务
+// 上传文件并同步执行 TWeSee 语义理解任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
@@ -9308,7 +9308,7 @@ func (c *Client) InvokeTWeSeeRecognitionTaskWithFile(request *InvokeTWeSeeRecogn
 }
 
 // InvokeTWeSeeRecognitionTaskWithFile
-// 同步执行 TWeSee 语义理解任务
+// 上传文件并同步执行 TWeSee 语义理解任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"

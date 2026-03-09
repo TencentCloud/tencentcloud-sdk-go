@@ -1586,7 +1586,7 @@ type Encryption struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptList []*string `json:"EncryptList,omitnil,omitempty" name:"EncryptList"`
 
-	// <p>加密后的对称密钥，关于密钥的生成和使用请查阅<a href="https://www.tencentcloud.com/document/product/1061/77849">数据加密</a> 文档。</p>
+	// <p>加密后的对称密钥，关于密钥的生成和使用请查阅<a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CiphertextBlob *string `json:"CiphertextBlob,omitnil,omitempty" name:"CiphertextBlob"`
 

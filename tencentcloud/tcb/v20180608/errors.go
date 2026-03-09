@@ -59,9 +59,6 @@ const (
 	// 网络异常
 	FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
 
-	// 操作失败，后台依赖平台错误。
-	FAILEDOPERATION_PLATFORMERROR = "FailedOperation.PlatformError"
-
 	// 查询异常
 	FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
 
@@ -79,9 +76,6 @@ const (
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
-
-	// 数据库错误。
-	INTERNALERROR_DATABASE = "InternalError.Database"
 
 	// 系统内部异常。
 	INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
@@ -131,9 +125,6 @@ const (
 	// 路径已存在。
 	INVALIDPARAMETER_PATHEXIST = "InvalidParameter.PathExist"
 
-	// 对应资源不存在。
-	INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
-
 	// 没有操作权限。
 	INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
 
@@ -149,17 +140,14 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// InvalidParameterValue.InvalidDoc
+	INVALIDPARAMETERVALUE_INVALIDDOC = "InvalidParameterValue.InvalidDoc"
+
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
 	// 并发请求超过配额限制。
 	LIMITEXCEEDED_CONCURRENT = "LimitExceeded.Concurrent"
-
-	// 命名空间超过配额。
-	LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
-
-	// 镜像容器超过配额。
-	LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
 
 	// LimitExceeded.NoValidConnection
 	LIMITEXCEEDED_NOVALIDCONNECTION = "LimitExceeded.NoValidConnection"
@@ -169,6 +157,9 @@ const (
 
 	// LimitExceeded.OutOfReadRequestQuota
 	LIMITEXCEEDED_OUTOFREADREQUESTQUOTA = "LimitExceeded.OutOfReadRequestQuota"
+
+	// 超过响应大小限制
+	LIMITEXCEEDED_OUTOFRESULTSIZELIMIT = "LimitExceeded.OutOfResultSizeLimit"
 
 	// LimitExceeded.OutOfTableQuota
 	LIMITEXCEEDED_OUTOFTABLEQUOTA = "LimitExceeded.OutOfTableQuota"
@@ -181,9 +172,6 @@ const (
 
 	// 缺少必要参数。
 	MISSINGPARAMETER_PARAM = "MissingParameter.Param"
-
-	// 操作被拒绝。
-	OPERATIONDENIED = "OperationDenied"
 
 	// 免费套餐拒绝此操作
 	OPERATIONDENIED_FREEPACKAGEDENIED = "OperationDenied.FreePackageDenied"
@@ -212,9 +200,6 @@ const (
 	// 数据库实例不存在。
 	RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 
-	// 请求的云托管服务未找到
-	RESOURCENOTFOUND_SERVERNOTFOUND = "ResourceNotFound.ServerNotFound"
-
 	// 表未找到,请创建表或检查表名参数是否正确
 	RESOURCENOTFOUND_TABLE = "ResourceNotFound.Table"
 
@@ -224,6 +209,9 @@ const (
 	// 主题不存在
 	RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
 
+	// 用户不存在
+	RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+
 	// 用户不存在。
 	RESOURCENOTFOUND_USERNOTEXISTS = "ResourceNotFound.UserNotExists"
 
@@ -232,9 +220,6 @@ const (
 
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
-
-	// 资源不可用-余额不足。
-	RESOURCEUNAVAILABLE_BALANCENOTENOUGH = "ResourceUnavailable.BalanceNotEnough"
 
 	// 资源不可用，CDN冻结。
 	RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
@@ -247,9 +232,6 @@ const (
 
 	// MongoDB集群已隔离,由于集群已被隔离写入被禁止,请跳转MongoDB控制台查看详情
 	RESOURCEUNAVAILABLE_MONGOISOLATED = "ResourceUnavailable.MongoIsolated"
-
-	// 云项目oAuth授权失效（即RefreshToken过期）。
-	RESOURCEUNAVAILABLE_REFRESHTOKENEXPIRED = "ResourceUnavailable.RefreshTokenExpired"
 
 	// 资源被封禁
 	RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
@@ -269,14 +251,8 @@ const (
 	// 资源过期。
 	RESOURCEUNAVAILABLE_RESOURCEOVERDUE = "ResourceUnavailable.ResourceOverdue"
 
-	// 资源售罄。后付费套餐已不再支持购买。
-	RESOURCESSOLDOUT_POSTPAYPACKAGENOTAVAILABLE = "ResourcesSoldOut.PostpayPackageNotAvailable"
-
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-
-	// 外部代码仓库未授权。
-	UNAUTHORIZEDOPERATION_CODEOAUTHUNAUTHORIZED = "UnauthorizedOperation.CodeOAuthUnauthorized"
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"

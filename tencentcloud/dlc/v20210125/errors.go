@@ -542,6 +542,9 @@ const (
 	// 任务已经结束，不能取消。
 	INVALIDPARAMETER_TASKALREADYFINISHED = "InvalidParameter.TaskAlreadyFinished"
 
+	// 筛选参数不匹配
+	INVALIDPARAMETER_TASKLISTFILTERSKEYTYPENOTMATH = "InvalidParameter.TaskListFiltersKeyTypeNotMath"
+
 	// 过滤字段类型不匹配，当前仅支持： task-id/task-sql-keyword/task-kind/task-operator/batch-id/session-id/task-state/task-time-sum/stage-start-time/input-records-sum/output-records-sum/output-bytes-sum/output-files-num/output-small-files-num/shuffle-read-records-sum/shuffle-read-bytes-sum
 	INVALIDPARAMETER_TASKLISTSORTBYTYPENOTMATCH = "InvalidParameter.TaskListSortByTypeNotMatch"
 
@@ -625,6 +628,9 @@ const (
 
 	// Eks计算集群初始化或迁移中，请稍后再试。
 	RESOURCENOTFOUND_EKSRESOURCENOTFOUND = "ResourceNotFound.EksResourceNotFound"
+
+	// 网关不存在
+	RESOURCENOTFOUND_GATEWAYNOTFOUND = "ResourceNotFound.GatewayNotFound"
 
 	// 指定集群镜像Session配置不存在
 	RESOURCENOTFOUND_IMAGESESSIONCONFIGNOTFOUND = "ResourceNotFound.ImageSessionConfigNotFound"

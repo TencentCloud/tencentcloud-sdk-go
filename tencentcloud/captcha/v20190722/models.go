@@ -91,36 +91,36 @@ type CaptchaQueryData struct {
 }
 
 type CaptchaStatisticObj struct {
-	// 请求总量
+	// <p>请求总量</p>
 	ActionTotal *int64 `json:"ActionTotal,omitnil,omitempty" name:"ActionTotal"`
 
-	// 验证总量
+	// <p>验证总量</p>
 	VerifyTotal *int64 `json:"VerifyTotal,omitnil,omitempty" name:"VerifyTotal"`
 
-	// 验证通过总量
+	// <p>验证通过总量</p>
 	VerifyThroughTotal *int64 `json:"VerifyThroughTotal,omitnil,omitempty" name:"VerifyThroughTotal"`
 
-	// 验证拦截总量
+	// <p>验证拦截总量</p>
 	VerifyInterceptTotal *int64 `json:"VerifyInterceptTotal,omitnil,omitempty" name:"VerifyInterceptTotal"`
 
-	// 票据校验总量
+	// <p>票据校验总量</p>
 	TicketTotal *int64 `json:"TicketTotal,omitnil,omitempty" name:"TicketTotal"`
 
-	// 票据通过总量
+	// <p>票据通过总量</p>
 	TicketThroughTotal *int64 `json:"TicketThroughTotal,omitnil,omitempty" name:"TicketThroughTotal"`
 
-	// 票据拦截总量
+	// <p>票据拦截总量</p>
 	TicketInterceptTotal *int64 `json:"TicketInterceptTotal,omitnil,omitempty" name:"TicketInterceptTotal"`
 
-	// 请求趋势图
+	// <p>请求趋势图</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RequestTrend []*RequestTrendObj `json:"RequestTrend,omitnil,omitempty" name:"RequestTrend"`
 
-	// 拦截率趋势图
+	// <p>拦截率趋势图</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InterceptPerTrend []*InterceptPerTrendObj `json:"InterceptPerTrend,omitnil,omitempty" name:"InterceptPerTrend"`
 
-	// 票据校验趋势图
+	// <p>票据校验趋势图</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TicketCheckTrend []*TicketCheckTrendObj `json:"TicketCheckTrend,omitnil,omitempty" name:"TicketCheckTrend"`
 }
@@ -1502,32 +1502,32 @@ func (r *DescribeCaptchaUserAllAppIdResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetRequestStatisticsRequestParams struct {
-	// 验证码AppId
+	// <p>验证码AppId</p>
 	CaptchaAppId *string `json:"CaptchaAppId,omitnil,omitempty" name:"CaptchaAppId"`
 
-	// 开始时间字符串
+	// <p>开始时间字符串</p>
 	StartTimeStr *string `json:"StartTimeStr,omitnil,omitempty" name:"StartTimeStr"`
 
-	// 结束时间字符串
+	// <p>结束时间字符串</p>
 	EndTimeStr *string `json:"EndTimeStr,omitnil,omitempty" name:"EndTimeStr"`
 
-	// 查询粒度
+	// <p>查询粒度</p>
 	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
 }
 
 type GetRequestStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 验证码AppId
+	// <p>验证码AppId</p>
 	CaptchaAppId *string `json:"CaptchaAppId,omitnil,omitempty" name:"CaptchaAppId"`
 
-	// 开始时间字符串
+	// <p>开始时间字符串</p>
 	StartTimeStr *string `json:"StartTimeStr,omitnil,omitempty" name:"StartTimeStr"`
 
-	// 结束时间字符串
+	// <p>结束时间字符串</p>
 	EndTimeStr *string `json:"EndTimeStr,omitnil,omitempty" name:"EndTimeStr"`
 
-	// 查询粒度
+	// <p>查询粒度</p>
 	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
 }
 
@@ -1555,14 +1555,14 @@ func (r *GetRequestStatisticsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetRequestStatisticsResponseParams struct {
-	// 查询后数据块
+	// <p>查询后数据块</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CaptchaStatisticObj `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 验证码返回码
+	// <p>验证码返回码</p>
 	CaptchaCode *int64 `json:"CaptchaCode,omitnil,omitempty" name:"CaptchaCode"`
 
-	// 验证码返回信息
+	// <p>验证码返回信息</p>
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1672,26 +1672,26 @@ func (r *GetTicketStatisticsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTotalRequestStatisticsRequestParams struct {
-	// 开始时间字符串
+	// <p>开始时间字符串</p>
 	StartTimeStr *string `json:"StartTimeStr,omitnil,omitempty" name:"StartTimeStr"`
 
-	// 结束时间字符串
+	// <p>结束时间字符串</p>
 	EndTimeStr *string `json:"EndTimeStr,omitnil,omitempty" name:"EndTimeStr"`
 
-	// 查询粒度
+	// <p>查询粒度</p>
 	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
 }
 
 type GetTotalRequestStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开始时间字符串
+	// <p>开始时间字符串</p>
 	StartTimeStr *string `json:"StartTimeStr,omitnil,omitempty" name:"StartTimeStr"`
 
-	// 结束时间字符串
+	// <p>结束时间字符串</p>
 	EndTimeStr *string `json:"EndTimeStr,omitnil,omitempty" name:"EndTimeStr"`
 
-	// 查询粒度
+	// <p>查询粒度</p>
 	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
 }
 
@@ -1718,14 +1718,14 @@ func (r *GetTotalRequestStatisticsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTotalRequestStatisticsResponseParams struct {
-	// 查询后数据块
+	// <p>查询后数据块</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CaptchaStatisticObj `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 验证码返回码
+	// <p>验证码返回码</p>
 	CaptchaCode *int64 `json:"CaptchaCode,omitnil,omitempty" name:"CaptchaCode"`
 
-	// 验证码返回信息
+	// <p>验证码返回信息</p>
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1750,32 +1750,26 @@ func (r *GetTotalRequestStatisticsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTotalTicketStatisticsRequestParams struct {
-	// 开始时间
+	// <p>开始时间</p>
 	StartTimeStr *string `json:"StartTimeStr,omitnil,omitempty" name:"StartTimeStr"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTimeStr *string `json:"EndTimeStr,omitnil,omitempty" name:"EndTimeStr"`
 
-	// 查询粒度
-	// 分钟：“1”
-	// 小时：“2”
-	// 天：“3”
+	// <p>查询粒度<br>分钟：“1”<br>小时：“2”<br>天：“3”</p>
 	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
 }
 
 type GetTotalTicketStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开始时间
+	// <p>开始时间</p>
 	StartTimeStr *string `json:"StartTimeStr,omitnil,omitempty" name:"StartTimeStr"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTimeStr *string `json:"EndTimeStr,omitnil,omitempty" name:"EndTimeStr"`
 
-	// 查询粒度
-	// 分钟：“1”
-	// 小时：“2”
-	// 天：“3”
+	// <p>查询粒度<br>分钟：“1”<br>小时：“2”<br>天：“3”</p>
 	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
 }
 
@@ -1802,14 +1796,14 @@ func (r *GetTotalTicketStatisticsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTotalTicketStatisticsResponseParams struct {
-	// 返回数据
+	// <p>返回数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CaptchaStatisticObj `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 返回码
+	// <p>返回码</p>
 	CaptchaCode *int64 `json:"CaptchaCode,omitnil,omitempty" name:"CaptchaCode"`
 
-	// 返回信息
+	// <p>返回信息</p>
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

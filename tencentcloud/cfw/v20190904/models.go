@@ -7484,6 +7484,12 @@ type EnterpriseSecurityGroupRuleRuleInfo struct {
 
 	// 规则最近更新时间
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 规则分区，1最前分区，2中间分区，3最后分区
+	RulePartition *int64 `json:"RulePartition,omitnil,omitempty" name:"RulePartition"`
+
+	// 规则生效范围，SG安全组，LH轻量服务器
+	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 }
 
 // Predefined struct for user
@@ -11638,6 +11644,9 @@ type SecurityGroupRule struct {
 
 	// 规则对应的唯一内部id
 	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
+
+	// 规则生效范围，SG安全组，LH轻量服务器
+	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 }
 
 type SecurityGroupSimplifyRule struct {
@@ -11670,6 +11679,9 @@ type SecurityGroupSimplifyRule struct {
 
 	// 规则序号
 	Sequence *int64 `json:"Sequence,omitnil,omitempty" name:"Sequence"`
+
+	// 规则生效范围，SG安全组，LH轻量服务器
+	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 }
 
 type SequenceData struct {

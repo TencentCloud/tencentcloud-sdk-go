@@ -21633,6 +21633,179 @@ func (r *DescribeOverviewStatisticsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePatchEffectHostListRequestParams struct {
+	// 补丁id
+	KbId *uint64 `json:"KbId,omitnil,omitempty" name:"KbId"`
+
+	// 分页limit 最大100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤条件：  
+	// <li>HostVersion : uint64类型 非必填 版本信息 : 0-基础版 1-专业版 2-旗舰版 3-轻量版 </li>
+	// <li>InstanceState : string类型 非必填 主机状态 : "PENDING"-创建中 "LAUNCH_FAILED"-创建失败 "RUNNING"-运行中 "STOPPED"-关机 "STARTING"-开机中 "STOPPING"-关机中 "REBOOTING"-重启中 "SHUTDOWN"-待销毁 "TERMINATING"-销毁中 "UNKNOWN"-未知（针对非腾讯云机器，且客户端离线的场景）</li>
+	// <li>Status : uint64类型 非必填 处理状态 0表示待处理，1表示忽略，3表示已修复</li>
+	// <li>HostName : string类型 非必填 主机名称</li>
+	// <li>InstanceID : string类型 非必填 主机id</li>
+	// <li>IpAddress : string类型 非必填 主机的ip地址</li>
+	// <li>Uuid : string类型 非必填 主机uuid</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribePatchEffectHostListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 补丁id
+	KbId *uint64 `json:"KbId,omitnil,omitempty" name:"KbId"`
+
+	// 分页limit 最大100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤条件：  
+	// <li>HostVersion : uint64类型 非必填 版本信息 : 0-基础版 1-专业版 2-旗舰版 3-轻量版 </li>
+	// <li>InstanceState : string类型 非必填 主机状态 : "PENDING"-创建中 "LAUNCH_FAILED"-创建失败 "RUNNING"-运行中 "STOPPED"-关机 "STARTING"-开机中 "STOPPING"-关机中 "REBOOTING"-重启中 "SHUTDOWN"-待销毁 "TERMINATING"-销毁中 "UNKNOWN"-未知（针对非腾讯云机器，且客户端离线的场景）</li>
+	// <li>Status : uint64类型 非必填 处理状态 0表示待处理，1表示忽略，3表示已修复</li>
+	// <li>HostName : string类型 非必填 主机名称</li>
+	// <li>InstanceID : string类型 非必填 主机id</li>
+	// <li>IpAddress : string类型 非必填 主机的ip地址</li>
+	// <li>Uuid : string类型 非必填 主机uuid</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribePatchEffectHostListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePatchEffectHostListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KbId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePatchEffectHostListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePatchEffectHostListResponseParams struct {
+	// 影响主机总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 补丁影响主机列表
+	PatchEffectHostList []*PatchEffectHostList `json:"PatchEffectHostList,omitnil,omitempty" name:"PatchEffectHostList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePatchEffectHostListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePatchEffectHostListResponseParams `json:"Response"`
+}
+
+func (r *DescribePatchEffectHostListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePatchEffectHostListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePatchInfoRequestParams struct {
+	// 补丁id
+	KbId *uint64 `json:"KbId,omitnil,omitempty" name:"KbId"`
+}
+
+type DescribePatchInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 补丁id
+	KbId *uint64 `json:"KbId,omitnil,omitempty" name:"KbId"`
+}
+
+func (r *DescribePatchInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePatchInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KbId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePatchInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePatchInfoResponseParams struct {
+	// kb编号
+	KbNo *string `json:"KbNo,omitnil,omitempty" name:"KbNo"`
+
+	// kb名称
+	PatchName *string `json:"PatchName,omitnil,omitempty" name:"PatchName"`
+
+	// kb 发布日期
+	PublishTime *string `json:"PublishTime,omitnil,omitempty" name:"PublishTime"`
+
+	// 参考链接
+	ReferUrl *string `json:"ReferUrl,omitnil,omitempty" name:"ReferUrl"`
+
+	// 包含漏洞数
+	VulCount *uint64 `json:"VulCount,omitnil,omitempty" name:"VulCount"`
+
+	// 补丁关联的漏洞详情列表
+	RelateVulInfoList []*RelateVulInfo `json:"RelateVulInfoList,omitnil,omitempty" name:"RelateVulInfoList"`
+
+	// 补丁id
+	KbId *uint64 `json:"KbId,omitnil,omitempty" name:"KbId"`
+
+	// 关联的漏洞CveId，多个id由","分隔
+	RelateVulCveId *string `json:"RelateVulCveId,omitnil,omitempty" name:"RelateVulCveId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePatchInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePatchInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribePatchInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePatchInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePrivilegeEventInfoRequestParams struct {
 	// 事件id
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -29606,6 +29779,100 @@ func (r *DescribeWebPageServiceInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeWindowsPatchListRequestParams struct {
+	// 分页参数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序顺序：desc 默认asc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 可选排序字段
+	// <li>PublishTime</li>
+	// <li>LastScanTime</li>
+	// <li>HostCount</li>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤条件。  <li>Status : string类型 非必填 处理状态 0待处理,1忽略,3修复</li><li>ShowNew : int类型 非必填 展示最新版本 1-开启 0-关闭</li><li>Name : string类型 非必填 补丁名称</li><li>KbNo : string类型 非必填 补丁编号</li><li>VulName : string类型 非必填 漏洞名称</li><li>CVEId : string类型 非必填 漏洞CVE编号</li><li>Uuid : string类型 非必填 主机uuid</li>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeWindowsPatchListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页参数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序顺序：desc 默认asc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 可选排序字段
+	// <li>PublishTime</li>
+	// <li>LastScanTime</li>
+	// <li>HostCount</li>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤条件。  <li>Status : string类型 非必填 处理状态 0待处理,1忽略,3修复</li><li>ShowNew : int类型 非必填 展示最新版本 1-开启 0-关闭</li><li>Name : string类型 非必填 补丁名称</li><li>KbNo : string类型 非必填 补丁编号</li><li>VulName : string类型 非必填 漏洞名称</li><li>CVEId : string类型 非必填 漏洞CVE编号</li><li>Uuid : string类型 非必填 主机uuid</li>
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeWindowsPatchListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWindowsPatchListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWindowsPatchListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWindowsPatchListResponseParams struct {
+	// 补丁和漏洞的总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// Windows补丁信息列表
+	PatchInfoList []*EventPatchInfo `json:"PatchInfoList,omitnil,omitempty" name:"PatchInfoList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeWindowsPatchListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWindowsPatchListResponseParams `json:"Response"`
+}
+
+func (r *DescribeWindowsPatchListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWindowsPatchListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DestroyOrderRequestParams struct {
 	// 资源ID
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
@@ -30185,6 +30452,47 @@ type EmergencyVul struct {
 
 	// 是否有漏洞主机开启漏洞防御
 	DefenseState *bool `json:"DefenseState,omitnil,omitempty" name:"DefenseState"`
+}
+
+type EventPatchInfo struct {
+	// 补丁名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 补丁编号
+	KbNo *string `json:"KbNo,omitnil,omitempty" name:"KbNo"`
+
+	// 披露时间
+	PublishTime *string `json:"PublishTime,omitnil,omitempty" name:"PublishTime"`
+
+	// 影响主机数量
+	EffectHostCount *uint64 `json:"EffectHostCount,omitnil,omitempty" name:"EffectHostCount"`
+
+	// 关联的漏洞数
+	RelateVulCount *uint64 `json:"RelateVulCount,omitnil,omitempty" name:"RelateVulCount"`
+
+	// 关联的漏洞编号数组
+	RelateVulList []*string `json:"RelateVulList,omitnil,omitempty" name:"RelateVulList"`
+
+	// 是否为最新披露，0否，1是，默认为否
+	IsNew *int64 `json:"IsNew,omitnil,omitempty" name:"IsNew"`
+
+	// 最后扫描时间
+	LastScanTime *string `json:"LastScanTime,omitnil,omitempty" name:"LastScanTime"`
+
+	// 0待处理,1忽略,3修复
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 安装该kb的前置条件，一般为其他kb，且可能有多个，kb之间用", "分隔
+	KbPreCondition *string `json:"KbPreCondition,omitnil,omitempty" name:"KbPreCondition"`
+
+	// 该kb关联的windows product名称
+	RelatedProduct *string `json:"RelatedProduct,omitnil,omitempty" name:"RelatedProduct"`
+
+	// 补丁id
+	KbId *uint64 `json:"KbId,omitnil,omitempty" name:"KbId"`
+
+	// 相关kb事件的id集合
+	Ids *string `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type EventStat struct {
@@ -33585,6 +33893,84 @@ func (r *ExportNonlocalLoginPlacesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ExportPatchEffectHostListRequestParams struct {
+	// 补丁id
+	KbId *uint64 `json:"KbId,omitnil,omitempty" name:"KbId"`
+
+	// 过滤条件：  
+	// <li>ProtectType : uint64类型 非必填 防护版本类型  0表示BASIC_VERSION，1表示Flagship </li>
+	// <li>InstanceState : string类型 非必填 主机状态 : "PENDING"-创建中 "LAUNCH_FAILED"-创建失败 "RUNNING"-运行中 "STOPPED"-关机 "STARTING"-开机中 "STOPPING"-关机中 "REBOOTING"-重启中 "SHUTDOWN"-待销毁 "TERMINATING"-销毁中 "UNKNOWN"-未知（针对非腾讯云机器，且客户端离线的场景） </li>
+	// <li>Status : uint64类型 非必填 处理状态 0表示待处理，1表示忽略，3表示已修复</li>
+	// <li>HostName : string类型 非必填 主机名称 </li>
+	// <li>InstanceID : string类型 非必填 主机id </li>
+	// <li>IpAddress : string类型 非必填 主机的ip地址 </li>
+	// <li>Uuid : string类型 非必填 主机uuid</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type ExportPatchEffectHostListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 补丁id
+	KbId *uint64 `json:"KbId,omitnil,omitempty" name:"KbId"`
+
+	// 过滤条件：  
+	// <li>ProtectType : uint64类型 非必填 防护版本类型  0表示BASIC_VERSION，1表示Flagship </li>
+	// <li>InstanceState : string类型 非必填 主机状态 : "PENDING"-创建中 "LAUNCH_FAILED"-创建失败 "RUNNING"-运行中 "STOPPED"-关机 "STARTING"-开机中 "STOPPING"-关机中 "REBOOTING"-重启中 "SHUTDOWN"-待销毁 "TERMINATING"-销毁中 "UNKNOWN"-未知（针对非腾讯云机器，且客户端离线的场景） </li>
+	// <li>Status : uint64类型 非必填 处理状态 0表示待处理，1表示忽略，3表示已修复</li>
+	// <li>HostName : string类型 非必填 主机名称 </li>
+	// <li>InstanceID : string类型 非必填 主机id </li>
+	// <li>IpAddress : string类型 非必填 主机的ip地址 </li>
+	// <li>Uuid : string类型 非必填 主机uuid</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *ExportPatchEffectHostListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportPatchEffectHostListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KbId")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportPatchEffectHostListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExportPatchEffectHostListResponseParams struct {
+	// 导出任务Id , 可通过ExportTasks 接口下载
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ExportPatchEffectHostListResponse struct {
+	*tchttp.BaseResponse
+	Response *ExportPatchEffectHostListResponseParams `json:"Response"`
+}
+
+func (r *ExportPatchEffectHostListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportPatchEffectHostListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ExportPrivilegeEventsRequestParams struct {
 	// 过滤参数
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -35266,6 +35652,73 @@ func (r *ExportWebPageEventListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ExportWebPageEventListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExportWindowsPatchListRequestParams struct {
+	// 过滤条件。  
+	// <li>Status : String类型 非必填 处理状态 0待处理,1忽略,3修复</li>
+	// <li>ShowNew : int类型 非必填 展示最新版本 0-开启 1-关闭</li>
+	// <li>Name : string类型 非必填 补丁名称 </li>
+	// <li>KbNo : string类型 非必填 补丁编号 </li>
+	// <li>Uuid : string类型 非必填 主机uuid</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type ExportWindowsPatchListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件。  
+	// <li>Status : String类型 非必填 处理状态 0待处理,1忽略,3修复</li>
+	// <li>ShowNew : int类型 非必填 展示最新版本 0-开启 1-关闭</li>
+	// <li>Name : string类型 非必填 补丁名称 </li>
+	// <li>KbNo : string类型 非必填 补丁编号 </li>
+	// <li>Uuid : string类型 非必填 主机uuid</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *ExportWindowsPatchListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportWindowsPatchListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportWindowsPatchListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExportWindowsPatchListResponseParams struct {
+	// 导出文件Id 可通过ExportTasks接口下载
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ExportWindowsPatchListResponse struct {
+	*tchttp.BaseResponse
+	Response *ExportWindowsPatchListResponseParams `json:"Response"`
+}
+
+func (r *ExportWindowsPatchListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportWindowsPatchListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -41812,6 +42265,56 @@ type OsName struct {
 	MachineOSType *uint64 `json:"MachineOSType,omitnil,omitempty" name:"MachineOSType"`
 }
 
+type PatchEffectHostList struct {
+	// 版本信息：0-基础版 1-专业版 2-旗舰版 3-轻量版
+	HostVersion *uint64 `json:"HostVersion,omitnil,omitempty" name:"HostVersion"`
+
+	// 实例状态: "PENDING"-创建中 "LAUNCH_FAILED"-创建失败 "RUNNING"-运行中 "STOPPED"-关机 "STARTING"-表示开机中 "STOPPING"-表示关机中 "REBOOTING"-重启中 "SHUTDOWN"-表示停止待销毁 "TERMINATING"-表示销毁中 
+	InstanceState *string `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
+
+	// 首次扫描时间
+	FirstScanTime *string `json:"FirstScanTime,omitnil,omitempty" name:"FirstScanTime"`
+
+	// 最近扫描时间
+	LatestScanTime *string `json:"LatestScanTime,omitnil,omitempty" name:"LatestScanTime"`
+
+	// 修复状态：0-未进行修复；1-修复中；2-修复失败；3-修复成功；4-修复超时
+	FixStatus *uint64 `json:"FixStatus,omitnil,omitempty" name:"FixStatus"`
+
+	// 主机基础信息
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitnil,omitempty" name:"MachineExtraInfo"`
+
+	// 主机安全Uuid
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
+
+	// CVM或BM机器唯一Uuid
+	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
+
+	// 事件id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 状态：0: 待处理 1:忽略  3:已修复  5:检测中 6:修复中 7: 回滚中 8:修复失败
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 修复时间
+	LatestFixTime *string `json:"LatestFixTime,omitnil,omitempty" name:"LatestFixTime"`
+
+	// KB id
+	KbId *uint64 `json:"KbId,omitnil,omitempty" name:"KbId"`
+
+	// 是否需要重启 0不需要，1需要
+	RestartRequired *uint64 `json:"RestartRequired,omitnil,omitempty" name:"RestartRequired"`
+
+	// 可用区ID	
+	RegionId *uint64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// 机器类型信息
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
+
+	// 修复任务是否创建了快照： 0-未创建，其他-已创建
+	HasSnapshot *uint64 `json:"HasSnapshot,omitnil,omitempty" name:"HasSnapshot"`
+}
+
 type PatchInfoDetail struct {
 	// KB编号
 	KBNo *string `json:"KBNo,omitnil,omitempty" name:"KBNo"`
@@ -42821,6 +43324,29 @@ type RegionSet struct {
 
 	// 可用区信息
 	ZoneSet []*ZoneInfo `json:"ZoneSet,omitnil,omitempty" name:"ZoneSet"`
+}
+
+type RelateVulInfo struct {
+	// CVEid
+	CveId *string `json:"CveId,omitnil,omitempty" name:"CveId"`
+
+	// 漏洞名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 漏洞标签
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 漏洞等级
+	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// CVSS评分
+	CVSS *float64 `json:"CVSS,omitnil,omitempty" name:"CVSS"`
+
+	// 漏洞披露时间
+	PublishTime *string `json:"PublishTime,omitnil,omitempty" name:"PublishTime"`
+
+	// 漏洞id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 // Predefined struct for user

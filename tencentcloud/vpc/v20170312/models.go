@@ -4274,7 +4274,7 @@ type CreateCcnPolicyBasedRoutingNextHopRequestParams struct {
 	// 描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 下一跳资源类型[HAVIP, GWLB_ENDPOINT]]
+	// 下一跳资源类型[HAVIP, GWLB_ENDPOINT]
 	NextHopResourceType *string `json:"NextHopResourceType,omitnil,omitempty" name:"NextHopResourceType"`
 
 	// 下一跳资源ID
@@ -4305,7 +4305,7 @@ type CreateCcnPolicyBasedRoutingNextHopRequest struct {
 	// 描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 下一跳资源类型[HAVIP, GWLB_ENDPOINT]]
+	// 下一跳资源类型[HAVIP, GWLB_ENDPOINT]
 	NextHopResourceType *string `json:"NextHopResourceType,omitnil,omitempty" name:"NextHopResourceType"`
 
 	// 下一跳资源ID
@@ -4442,7 +4442,7 @@ type CreateCcnRequestParams struct {
 	// 计费模式，`PREPAID`：表示预付费，即包年包月，`POSTPAID`：表示后付费，即按量计费。默认：`POSTPAID`。
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 计量模式
+	// 计量模式,`BANDWIDTH`：表示带宽,即带宽计量模式，`TRAFFIC`：表示流量,即流量计量模式。
 	InstanceMeteringType *string `json:"InstanceMeteringType,omitnil,omitempty" name:"InstanceMeteringType"`
 
 	// 限速类型，`OUTER_REGION_LIMIT`表示地域出口限速，`INTER_REGION_LIMIT`为地域间限速，默认为`OUTER_REGION_LIMIT`。预付费模式仅支持地域间限速，后付费模式支持地域间限速和地域出口限速。
@@ -4467,7 +4467,7 @@ type CreateCcnRequest struct {
 	// 计费模式，`PREPAID`：表示预付费，即包年包月，`POSTPAID`：表示后付费，即按量计费。默认：`POSTPAID`。
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 计量模式
+	// 计量模式,`BANDWIDTH`：表示带宽,即带宽计量模式，`TRAFFIC`：表示流量,即流量计量模式。
 	InstanceMeteringType *string `json:"InstanceMeteringType,omitnil,omitempty" name:"InstanceMeteringType"`
 
 	// 限速类型，`OUTER_REGION_LIMIT`表示地域出口限速，`INTER_REGION_LIMIT`为地域间限速，默认为`OUTER_REGION_LIMIT`。预付费模式仅支持地域间限速，后付费模式支持地域间限速和地域出口限速。
@@ -9121,6 +9121,9 @@ type CreateVpnGatewaySslServerRequestParams struct {
 
 	// 指定绑定的标签列表
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// DNS Server 地址
+	DnsServers *DnsServers `json:"DnsServers,omitnil,omitempty" name:"DnsServers"`
 }
 
 type CreateVpnGatewaySslServerRequest struct {
@@ -9164,6 +9167,9 @@ type CreateVpnGatewaySslServerRequest struct {
 
 	// 指定绑定的标签列表
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// DNS Server 地址
+	DnsServers *DnsServers `json:"DnsServers,omitnil,omitempty" name:"DnsServers"`
 }
 
 func (r *CreateVpnGatewaySslServerRequest) ToJsonString() string {
@@ -9191,6 +9197,7 @@ func (r *CreateVpnGatewaySslServerRequest) FromJsonString(s string) error {
 	delete(f, "AccessPolicyEnabled")
 	delete(f, "SamlData")
 	delete(f, "Tags")
+	delete(f, "DnsServers")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpnGatewaySslServerRequest has unknown keys!", "")
 	}
@@ -15342,6 +15349,63 @@ func (r *DescribeCustomerGatewaysResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCustomerGatewaysResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDesignatedZonesRequestParams struct {
+
+}
+
+type DescribeDesignatedZonesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeDesignatedZonesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDesignatedZonesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDesignatedZonesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDesignatedZonesResponseParams struct {
+	// 用户可选的可用区总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 用户可选的可用区详细信息
+	DesignatedZoneInfo []*DesignatedZoneInfoDict `json:"DesignatedZoneInfo,omitnil,omitempty" name:"DesignatedZoneInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDesignatedZonesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDesignatedZonesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDesignatedZonesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDesignatedZonesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -23109,6 +23173,17 @@ func (r *DescribeVpnGatewaysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DesignatedZoneInfoDict struct {
+	// 可用区Id
+	DesignatedZone *string `json:"DesignatedZone,omitnil,omitempty" name:"DesignatedZone"`
+
+	// 可用区名称
+	DesignatedZoneName *string `json:"DesignatedZoneName,omitnil,omitempty" name:"DesignatedZoneName"`
+
+	// 可用区类型
+	DesignatedZoneType *string `json:"DesignatedZoneType,omitnil,omitempty" name:"DesignatedZoneType"`
+}
+
 type DestinationIpPortTranslationNatRule struct {
 	// 网络协议，可选值：`TCP`、`UDP`。
 	IpProtocol *string `json:"IpProtocol,omitnil,omitempty" name:"IpProtocol"`
@@ -24470,6 +24545,14 @@ func (r *DisassociateVpcEndPointSecurityGroupsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DisassociateVpcEndPointSecurityGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DnsServers struct {
+	// 主DNS配置
+	PrimaryDns *string `json:"PrimaryDns,omitnil,omitempty" name:"PrimaryDns"`
+
+	// 备DNS配置
+	SecondaryDns *string `json:"SecondaryDns,omitnil,omitempty" name:"SecondaryDns"`
 }
 
 // Predefined struct for user
@@ -32103,6 +32186,9 @@ type ModifyVpnGatewaySslServerRequestParams struct {
 
 	// SAML-DATA
 	SamlData *string `json:"SamlData,omitnil,omitempty" name:"SamlData"`
+
+	// DNS Server地址
+	DnsServers *DnsServers `json:"DnsServers,omitnil,omitempty" name:"DnsServers"`
 }
 
 type ModifyVpnGatewaySslServerRequest struct {
@@ -32140,6 +32226,9 @@ type ModifyVpnGatewaySslServerRequest struct {
 
 	// SAML-DATA
 	SamlData *string `json:"SamlData,omitnil,omitempty" name:"SamlData"`
+
+	// DNS Server地址
+	DnsServers *DnsServers `json:"DnsServers,omitnil,omitempty" name:"DnsServers"`
 }
 
 func (r *ModifyVpnGatewaySslServerRequest) ToJsonString() string {
@@ -32165,6 +32254,7 @@ func (r *ModifyVpnGatewaySslServerRequest) FromJsonString(s string) error {
 	delete(f, "Compress")
 	delete(f, "SsoEnabled")
 	delete(f, "SamlData")
+	delete(f, "DnsServers")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVpnGatewaySslServerRequest has unknown keys!", "")
 	}
@@ -32372,7 +32462,8 @@ type NatGatewayFlowMonitorDetail struct {
 }
 
 type NatRegionInfoWithArea struct {
-
+	// 地域ID，如：ap-guangzhou。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
 type NatZoneInfo struct {
@@ -36270,6 +36361,9 @@ type SslVpnSever struct {
 
 	// CAM服务提供商Name
 	SpName *string `json:"SpName,omitnil,omitempty" name:"SpName"`
+
+	// DNS Server地址
+	DnsServers *DnsServers `json:"DnsServers,omitnil,omitempty" name:"DnsServers"`
 }
 
 // Predefined struct for user

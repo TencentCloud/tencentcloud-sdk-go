@@ -54,6 +54,34 @@ type ApolloEnvParam struct {
 	EnvDesc *string `json:"EnvDesc,omitnil,omitempty" name:"EnvDesc"`
 }
 
+type Argument struct {
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// key值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 匹配条件参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *ArgumentValue `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type ArgumentValue struct {
+	// 表达式类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 匹配值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 值类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueType *string `json:"ValueType,omitnil,omitempty" name:"ValueType"`
+}
+
 type AutoScalerBehavior struct {
 	// 扩容行为配置
 	ScaleUp *AutoScalerRules `json:"ScaleUp,omitnil,omitempty" name:"ScaleUp"`
@@ -2700,6 +2728,70 @@ func (r *CreateGovernanceInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateGovernanceLaneGroupsRequestParams struct {
+	// 引擎实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 泳道组规则列表
+	LaneGroups []*GovernanceLaneGroup `json:"LaneGroups,omitnil,omitempty" name:"LaneGroups"`
+}
+
+type CreateGovernanceLaneGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 泳道组规则列表
+	LaneGroups []*GovernanceLaneGroup `json:"LaneGroups,omitnil,omitempty" name:"LaneGroups"`
+}
+
+func (r *CreateGovernanceLaneGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGovernanceLaneGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "LaneGroups")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGovernanceLaneGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGovernanceLaneGroupsResponseParams struct {
+	// 是否创建成功
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateGovernanceLaneGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateGovernanceLaneGroupsResponseParams `json:"Response"`
+}
+
+func (r *CreateGovernanceLaneGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGovernanceLaneGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateGovernanceNamespacesRequestParams struct {
 	// tse 实例id。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -4411,6 +4503,112 @@ func (r *DeleteGovernanceInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteGovernanceInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteGovernanceLaneGroup struct {
+	// 泳道名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 泳道组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 泳道入口服务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrafficEntries []*LaneTrafficEntry `json:"TrafficEntries,omitnil,omitempty" name:"TrafficEntries"`
+
+	// 泳道服务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Destinations []*GovernanceServiceDestination `json:"Destinations,omitnil,omitempty" name:"Destinations"`
+
+	// 泳道组描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 规则内容摘要
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Revision *string `json:"Revision,omitnil,omitempty" name:"Revision"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 规则一致性状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Consistency *string `json:"Consistency,omitnil,omitempty" name:"Consistency"`
+
+	// 泳道规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rules []*GovernanceLaneRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+}
+
+// Predefined struct for user
+type DeleteGovernanceLaneGroupsRequestParams struct {
+	// 引擎实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 泳道组规则列表
+	LaneGroups []*DeleteGovernanceLaneGroup `json:"LaneGroups,omitnil,omitempty" name:"LaneGroups"`
+}
+
+type DeleteGovernanceLaneGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 泳道组规则列表
+	LaneGroups []*DeleteGovernanceLaneGroup `json:"LaneGroups,omitnil,omitempty" name:"LaneGroups"`
+}
+
+func (r *DeleteGovernanceLaneGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGovernanceLaneGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "LaneGroups")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGovernanceLaneGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGovernanceLaneGroupsResponseParams struct {
+	// 是否创建成功
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteGovernanceLaneGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGovernanceLaneGroupsResponseParams `json:"Response"`
+}
+
+func (r *DeleteGovernanceLaneGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGovernanceLaneGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7239,6 +7437,101 @@ func (r *DescribeGovernanceInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeGovernanceLaneGroupsRequestParams struct {
+	// 引擎实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 分页查询偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 泳道名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 泳道ID
+	GroupID *string `json:"GroupID,omitnil,omitempty" name:"GroupID"`
+
+	// 是否展示泳道规则列表
+	Brief *bool `json:"Brief,omitnil,omitempty" name:"Brief"`
+}
+
+type DescribeGovernanceLaneGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 分页查询偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 泳道名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 泳道ID
+	GroupID *string `json:"GroupID,omitnil,omitempty" name:"GroupID"`
+
+	// 是否展示泳道规则列表
+	Brief *bool `json:"Brief,omitnil,omitempty" name:"Brief"`
+}
+
+func (r *DescribeGovernanceLaneGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGovernanceLaneGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Name")
+	delete(f, "GroupID")
+	delete(f, "Brief")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGovernanceLaneGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGovernanceLaneGroupsResponseParams struct {
+	// 总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 泳道规则列表
+	LaneGroups []*GovernanceLaneGroup `json:"LaneGroups,omitnil,omitempty" name:"LaneGroups"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeGovernanceLaneGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGovernanceLaneGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeGovernanceLaneGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGovernanceLaneGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeGovernanceNamespacesRequestParams struct {
 	// tse实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -9226,6 +9519,113 @@ type GovernanceInterfaceDescription struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
+type GovernanceLaneGroup struct {
+	// 泳道名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 泳道组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 泳道入口服务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrafficEntries []*LaneTrafficEntry `json:"TrafficEntries,omitnil,omitempty" name:"TrafficEntries"`
+
+	// 泳道服务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Destinations []*GovernanceServiceDestination `json:"Destinations,omitnil,omitempty" name:"Destinations"`
+
+	// 泳道组描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 该泳道组下的所有泳道规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rules []*GovernanceLaneRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// 规则内容摘要
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Revision *string `json:"Revision,omitnil,omitempty" name:"Revision"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 规则一致性状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Consistency *string `json:"Consistency,omitnil,omitempty" name:"Consistency"`
+}
+
+type GovernanceLaneRule struct {
+	// 泳道规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 泳道名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 泳道所属泳道组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaneGroup *string `json:"LaneGroup,omitnil,omitempty" name:"LaneGroup"`
+
+	// 泳道规则启用状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// 流量标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrafficLabels []*Argument `json:"TrafficLabels,omitnil,omitempty" name:"TrafficLabels"`
+
+	// 多个流量标签匹配方式
+	// AND：与
+	// OR：或
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrafficMatchMode *string `json:"TrafficMatchMode,omitnil,omitempty" name:"TrafficMatchMode"`
+
+	// 泳道匹配方式
+	// STRICT：严格匹配
+	// PERMISSIVE：宽松匹配
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaneMatchMode *string `json:"LaneMatchMode,omitnil,omitempty" name:"LaneMatchMode"`
+
+	// 泳道灰度规则
+	TrafficGray *TrafficGray `json:"TrafficGray,omitnil,omitempty" name:"TrafficGray"`
+
+	// 泳道规则描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 泳道标签内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LaneLabelValue *string `json:"LaneLabelValue,omitnil,omitempty" name:"LaneLabelValue"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 启用时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableTime *string `json:"EnableTime,omitnil,omitempty" name:"EnableTime"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 泳道规则优先级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 规则摘要
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Revision *string `json:"Revision,omitnil,omitempty" name:"Revision"`
+}
+
 type GovernanceNamespace struct {
 	// 命名空间名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -9417,6 +9817,20 @@ type GovernanceServiceContractVersion struct {
 
 	// 唯一名称
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+}
+
+type GovernanceServiceDestination struct {
+	// 命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// 实例标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Labels []*RoutingDestinationRuleLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
 
 type GovernanceServiceInput struct {
@@ -9892,6 +10306,34 @@ type KongUpstreamPreview struct {
 
 	// 后端配置
 	Target []*KongTarget `json:"Target,omitnil,omitempty" name:"Target"`
+}
+
+type Label struct {
+	// 标签键名称
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 标签值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type LaneTrafficEntry struct {
+	//    // type == "polarismesh.cn/gateway/tse-gateway, 则 selector 为 TSEGatewaySelector
+	//    // type == "polarismesh.cn/gateway/spring-cloud-gateway", 则 selector 为 ServiceGatewaySelector
+	//    // type == "polarismesh.cn/service, 则 selector 为 ServiceSelector
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EntryType *string `json:"EntryType,omitnil,omitempty" name:"EntryType"`
+
+	// TSE云原生网关选择器
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TSEGatewaySelector *TSEGatewaySelector `json:"TSEGatewaySelector,omitnil,omitempty" name:"TSEGatewaySelector"`
+
+	// 微服务网关选择器
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceGatewaySelector *ServiceGatewaySelector `json:"ServiceGatewaySelector,omitnil,omitempty" name:"ServiceGatewaySelector"`
+
+	// 普通微服务选择器
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceSelector *ServiceSelector `json:"ServiceSelector,omitnil,omitempty" name:"ServiceSelector"`
 }
 
 type LimitRule struct {
@@ -11189,6 +11631,70 @@ func (r *ModifyGovernanceInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyGovernanceLaneGroupsRequestParams struct {
+	// 引擎实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 泳道组规则列表
+	LaneGroups []*GovernanceLaneGroup `json:"LaneGroups,omitnil,omitempty" name:"LaneGroups"`
+}
+
+type ModifyGovernanceLaneGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 泳道组规则列表
+	LaneGroups []*GovernanceLaneGroup `json:"LaneGroups,omitnil,omitempty" name:"LaneGroups"`
+}
+
+func (r *ModifyGovernanceLaneGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGovernanceLaneGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "LaneGroups")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyGovernanceLaneGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGovernanceLaneGroupsResponseParams struct {
+	// 是否创建成功
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyGovernanceLaneGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyGovernanceLaneGroupsResponseParams `json:"Response"`
+}
+
+func (r *ModifyGovernanceLaneGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGovernanceLaneGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyGovernanceNamespacesRequestParams struct {
 	// tse实例id。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -12267,6 +12773,24 @@ type RouteWafStatus struct {
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 }
 
+type RoutingDestinationRuleLabel struct {
+	// 标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelKey *string `json:"LabelKey,omitnil,omitempty" name:"LabelKey"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelValue *string `json:"LabelValue,omitnil,omitempty" name:"LabelValue"`
+
+	// 表达式类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelType *string `json:"LabelType,omitnil,omitempty" name:"LabelType"`
+
+	// 值类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelValueType *string `json:"LabelValueType,omitnil,omitempty" name:"LabelValueType"`
+}
+
 type RuleFilter struct {
 	// 限流条件的Key
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -12403,6 +12927,20 @@ type SREInstance struct {
 	IsMainRegion *bool `json:"IsMainRegion,omitnil,omitempty" name:"IsMainRegion"`
 }
 
+type ServiceGatewaySelector struct {
+	// 命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// 实例标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
+}
+
 type ServiceGovernanceInfo struct {
 	// 引擎所在的地域
 	EngineRegion *string `json:"EngineRegion,omitnil,omitempty" name:"EngineRegion"`
@@ -12433,6 +12971,20 @@ type ServiceGovernanceInfo struct {
 
 	// 子用户密码
 	SubPassword *string `json:"SubPassword,omitnil,omitempty" name:"SubPassword"`
+}
+
+type ServiceSelector struct {
+	// 命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// 实例标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
 
 type ServiceWafStatus struct {
@@ -12488,6 +13040,30 @@ type StorageOption struct {
 
 	// 存储容量，[50, 3200]的范围
 	Capacity *uint64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
+}
+
+type TSEGatewaySelector struct {
+	// 网关引擎实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 网关服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Services []*string `json:"Services,omitnil,omitempty" name:"Services"`
+}
+
+type TrafficGray struct {
+	// 流量灰度规则，按比例灰度或预热方式
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 按比例灰度的百分比值1-100
+	Percent *int64 `json:"Percent,omitnil,omitempty" name:"Percent"`
+
+	// 预热的间隔
+	IntervalSecond *int64 `json:"IntervalSecond,omitnil,omitempty" name:"IntervalSecond"`
+
+	// 预热的曲度
+	Curvature *int64 `json:"Curvature,omitnil,omitempty" name:"Curvature"`
 }
 
 // Predefined struct for user

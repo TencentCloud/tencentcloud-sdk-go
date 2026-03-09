@@ -107,6 +107,68 @@ func (c *Client) ActivateHardwareWithContext(ctx context.Context, request *Activ
     return
 }
 
+func NewAddApplicationRequest() (request *AddApplicationRequest) {
+    request = &AddApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "AddApplication")
+    
+    
+    return
+}
+
+func NewAddApplicationResponse() (response *AddApplicationResponse) {
+    response = &AddApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddApplication
+// 新建应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_DUPLICATEDEVICENAME = "InternalError.DuplicateDeviceName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_HARDWAREHASACTIVATED = "OperationDenied.HardwareHasActivated"
+//  OPERATIONDENIED_HARDWARENOTEXIST = "OperationDenied.HardwareNotExist"
+//  OPERATIONDENIED_VENDORNOTREGISTER = "OperationDenied.VendorNotRegister"
+func (c *Client) AddApplication(request *AddApplicationRequest) (response *AddApplicationResponse, err error) {
+    return c.AddApplicationWithContext(context.Background(), request)
+}
+
+// AddApplication
+// 新建应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_DUPLICATEDEVICENAME = "InternalError.DuplicateDeviceName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_HARDWAREHASACTIVATED = "OperationDenied.HardwareHasActivated"
+//  OPERATIONDENIED_HARDWARENOTEXIST = "OperationDenied.HardwareNotExist"
+//  OPERATIONDENIED_VENDORNOTREGISTER = "OperationDenied.VendorNotRegister"
+func (c *Client) AddApplicationWithContext(ctx context.Context, request *AddApplicationRequest) (response *AddApplicationResponse, err error) {
+    if request == nil {
+        request = NewAddApplicationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "AddApplication")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddApplication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddDeviceRequest() (request *AddDeviceRequest) {
     request = &AddDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -387,6 +449,56 @@ func (c *Client) CreateEncryptedKeyWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewDeleteApplicationRequest() (request *DeleteApplicationRequest) {
+    request = &DeleteApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "DeleteApplication")
+    
+    
+    return
+}
+
+func NewDeleteApplicationResponse() (response *DeleteApplicationResponse) {
+    response = &DeleteApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteApplication
+// 删除应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteApplication(request *DeleteApplicationRequest) (response *DeleteApplicationResponse, err error) {
+    return c.DeleteApplicationWithContext(context.Background(), request)
+}
+
+// DeleteApplication
+// 删除应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteApplicationWithContext(ctx context.Context, request *DeleteApplicationRequest) (response *DeleteApplicationResponse, err error) {
+    if request == nil {
+        request = NewDeleteApplicationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "DeleteApplication")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteApplication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
     request = &DeleteDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -649,6 +761,60 @@ func (c *Client) GetActiveDeviceCountWithContext(ctx context.Context, request *G
     request.SetContext(ctx)
     
     response = NewGetActiveDeviceCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetApplicationRequest() (request *GetApplicationRequest) {
+    request = &GetApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetApplication")
+    
+    
+    return
+}
+
+func NewGetApplicationResponse() (response *GetApplicationResponse) {
+    response = &GetApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetApplication
+// 应用查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) GetApplication(request *GetApplicationRequest) (response *GetApplicationResponse, err error) {
+    return c.GetApplicationWithContext(context.Background(), request)
+}
+
+// GetApplication
+// 应用查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) GetApplicationWithContext(ctx context.Context, request *GetApplicationRequest) (response *GetApplicationResponse, err error) {
+    if request == nil {
+        request = NewGetApplicationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetApplication")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetApplication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetApplicationResponse()
     err = c.Send(request, response)
     return
 }
@@ -2319,6 +2485,118 @@ func (c *Client) SetNotifyUrlWithContext(ctx context.Context, request *SetNotify
     request.SetContext(ctx)
     
     response = NewSetNotifyUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateApplicationInfoRequest() (request *UpdateApplicationInfoRequest) {
+    request = &UpdateApplicationInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "UpdateApplicationInfo")
+    
+    
+    return
+}
+
+func NewUpdateApplicationInfoResponse() (response *UpdateApplicationInfoResponse) {
+    response = &UpdateApplicationInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateApplicationInfo
+// 更新应用信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ILLEGALREQUEST = "OperationDenied.IllegalRequest"
+func (c *Client) UpdateApplicationInfo(request *UpdateApplicationInfoRequest) (response *UpdateApplicationInfoResponse, err error) {
+    return c.UpdateApplicationInfoWithContext(context.Background(), request)
+}
+
+// UpdateApplicationInfo
+// 更新应用信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ILLEGALREQUEST = "OperationDenied.IllegalRequest"
+func (c *Client) UpdateApplicationInfoWithContext(ctx context.Context, request *UpdateApplicationInfoRequest) (response *UpdateApplicationInfoResponse, err error) {
+    if request == nil {
+        request = NewUpdateApplicationInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "UpdateApplicationInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateApplicationInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateApplicationInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateApplicationKeyRequest() (request *UpdateApplicationKeyRequest) {
+    request = &UpdateApplicationKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "UpdateApplicationKey")
+    
+    
+    return
+}
+
+func NewUpdateApplicationKeyResponse() (response *UpdateApplicationKeyResponse) {
+    response = &UpdateApplicationKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateApplicationKey
+// 更新应用密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ILLEGALREQUEST = "OperationDenied.IllegalRequest"
+func (c *Client) UpdateApplicationKey(request *UpdateApplicationKeyRequest) (response *UpdateApplicationKeyResponse, err error) {
+    return c.UpdateApplicationKeyWithContext(context.Background(), request)
+}
+
+// UpdateApplicationKey
+// 更新应用密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ILLEGALREQUEST = "OperationDenied.IllegalRequest"
+func (c *Client) UpdateApplicationKeyWithContext(ctx context.Context, request *UpdateApplicationKeyRequest) (response *UpdateApplicationKeyResponse, err error) {
+    if request == nil {
+        request = NewUpdateApplicationKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "UpdateApplicationKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateApplicationKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateApplicationKeyResponse()
     err = c.Send(request, response)
     return
 }

@@ -176,6 +176,9 @@ type AddExistedInstancesRequestParams struct {
 
 	// 节点镜像
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// 直接添加为原生节点
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 }
 
 type AddExistedInstancesRequest struct {
@@ -213,6 +216,9 @@ type AddExistedInstancesRequest struct {
 
 	// 节点镜像
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// 直接添加为原生节点
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 }
 
 func (r *AddExistedInstancesRequest) ToJsonString() string {
@@ -238,6 +244,7 @@ func (r *AddExistedInstancesRequest) FromJsonString(s string) error {
 	delete(f, "SkipValidateOptions")
 	delete(f, "InstanceAdvancedSettingsOverrides")
 	delete(f, "ImageId")
+	delete(f, "NodeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddExistedInstancesRequest has unknown keys!", "")
 	}
@@ -2848,7 +2855,7 @@ type CreateECMInstancesRequestParams struct {
 	// 密码
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 公网带宽
+	// 公网带宽，单位为Mbps
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
 	// 镜像id
@@ -2888,7 +2895,7 @@ type CreateECMInstancesRequest struct {
 	// 密码
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 公网带宽
+	// 公网带宽，单位为Mbps
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
 	// 镜像id
@@ -18897,7 +18904,7 @@ type ModifyNodePoolDesiredCapacityAboutAsgRequestParams struct {
 	// 节点池id
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
-	// 节点池所关联的伸缩组的期望实例数
+	// 节点池所关联的伸缩组的期望实例数，单位个
 	DesiredCapacity *int64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
 }
 
@@ -18910,7 +18917,7 @@ type ModifyNodePoolDesiredCapacityAboutAsgRequest struct {
 	// 节点池id
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
-	// 节点池所关联的伸缩组的期望实例数
+	// 节点池所关联的伸缩组的期望实例数，单位个
 	DesiredCapacity *int64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
 }
 

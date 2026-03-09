@@ -2266,6 +2266,7 @@ func NewCreateProgramResponse() (response *CreateProgramResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DUPLICATEPROGRAMNAME = "InvalidParameterValue.DuplicateProgramName"
 //  INVALIDPARAMETERVALUE_INVALIDPROGRAMNAME = "InvalidParameterValue.InvalidProgramName"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTS = "InvalidParameterValue.ResourceNotExists"
 func (c *Client) CreateProgram(request *CreateProgramRequest) (response *CreateProgramResponse, err error) {
     return c.CreateProgramWithContext(context.Background(), request)
 }
@@ -2276,6 +2277,7 @@ func (c *Client) CreateProgram(request *CreateProgramRequest) (response *CreateP
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DUPLICATEPROGRAMNAME = "InvalidParameterValue.DuplicateProgramName"
 //  INVALIDPARAMETERVALUE_INVALIDPROGRAMNAME = "InvalidParameterValue.InvalidProgramName"
+//  INVALIDPARAMETERVALUE_RESOURCENOTEXISTS = "InvalidParameterValue.ResourceNotExists"
 func (c *Client) CreateProgramWithContext(ctx context.Context, request *CreateProgramRequest) (response *CreateProgramResponse, err error) {
     if request == nil {
         request = NewCreateProgramRequest()

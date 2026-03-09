@@ -9577,6 +9577,7 @@ func NewForbidMediaDistributionResponse() (response *ForbidMediaDistributionResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_FILEIDSTOOMANY = "InvalidParameterValue.FileIdsTooMany"
 //  INVALIDPARAMETERVALUE_OPERATION = "InvalidParameterValue.Operation"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ForbidMediaDistribution(request *ForbidMediaDistributionRequest) (response *ForbidMediaDistributionResponse, err error) {
     return c.ForbidMediaDistributionWithContext(context.Background(), request)
@@ -9597,6 +9598,7 @@ func (c *Client) ForbidMediaDistribution(request *ForbidMediaDistributionRequest
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_FILEIDSTOOMANY = "InvalidParameterValue.FileIdsTooMany"
 //  INVALIDPARAMETERVALUE_OPERATION = "InvalidParameterValue.Operation"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ForbidMediaDistributionWithContext(ctx context.Context, request *ForbidMediaDistributionRequest) (response *ForbidMediaDistributionResponse, err error) {
     if request == nil {

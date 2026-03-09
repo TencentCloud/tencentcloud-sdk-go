@@ -7932,6 +7932,7 @@ func NewCreateVpnGatewayRoutesResponse() (response *CreateVpnGatewayRoutesRespon
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_VPNGATEWAYROUTEDUPLICATE = "InvalidParameterValue.VpnGatewayRouteDuplicate"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_VPNGATEWAYROUTESLIMITEXCEEDED = "LimitExceeded.VpnGatewayRoutesLimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -7951,6 +7952,7 @@ func (c *Client) CreateVpnGatewayRoutes(request *CreateVpnGatewayRoutesRequest) 
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_VPNGATEWAYROUTEDUPLICATE = "InvalidParameterValue.VpnGatewayRouteDuplicate"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_VPNGATEWAYROUTESLIMITEXCEEDED = "LimitExceeded.VpnGatewayRoutesLimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -13561,6 +13563,62 @@ func (c *Client) DescribeCustomerGatewaysWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeDesignatedZonesRequest() (request *DescribeDesignatedZonesRequest) {
+    request = &DescribeDesignatedZonesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeDesignatedZones")
+    
+    
+    return
+}
+
+func NewDescribeDesignatedZonesResponse() (response *DescribeDesignatedZonesResponse) {
+    response = &DescribeDesignatedZonesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDesignatedZones
+// 用于查询用户创建带宽包时可指定的可用区信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDesignatedZones(request *DescribeDesignatedZonesRequest) (response *DescribeDesignatedZonesResponse, err error) {
+    return c.DescribeDesignatedZonesWithContext(context.Background(), request)
+}
+
+// DescribeDesignatedZones
+// 用于查询用户创建带宽包时可指定的可用区信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDesignatedZonesWithContext(ctx context.Context, request *DescribeDesignatedZonesRequest) (response *DescribeDesignatedZonesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDesignatedZonesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "DescribeDesignatedZones")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDesignatedZones require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDesignatedZonesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDhcpIpsRequest() (request *DescribeDhcpIpsRequest) {
     request = &DescribeDhcpIpsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15713,6 +15771,7 @@ func NewDescribePrivateNatGatewayLimitsResponse() (response *DescribePrivateNatG
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
+//  UNSUPPORTEDOPERATION_NATNFVUNSUPPORTEDREGION = "UnsupportedOperation.NatNfvUnsupportedRegion"
 func (c *Client) DescribePrivateNatGatewayLimits(request *DescribePrivateNatGatewayLimitsRequest) (response *DescribePrivateNatGatewayLimitsResponse, err error) {
     return c.DescribePrivateNatGatewayLimitsWithContext(context.Background(), request)
 }
@@ -15730,6 +15789,7 @@ func (c *Client) DescribePrivateNatGatewayLimits(request *DescribePrivateNatGate
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
+//  UNSUPPORTEDOPERATION_NATNFVUNSUPPORTEDREGION = "UnsupportedOperation.NatNfvUnsupportedRegion"
 func (c *Client) DescribePrivateNatGatewayLimitsWithContext(ctx context.Context, request *DescribePrivateNatGatewayLimitsRequest) (response *DescribePrivateNatGatewayLimitsResponse, err error) {
     if request == nil {
         request = NewDescribePrivateNatGatewayLimitsRequest()
@@ -15771,6 +15831,7 @@ func NewDescribePrivateNatGatewayRegionsResponse() (response *DescribePrivateNat
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
+//  UNSUPPORTEDOPERATION_NATNFVUNSUPPORTEDREGION = "UnsupportedOperation.NatNfvUnsupportedRegion"
 func (c *Client) DescribePrivateNatGatewayRegions(request *DescribePrivateNatGatewayRegionsRequest) (response *DescribePrivateNatGatewayRegionsResponse, err error) {
     return c.DescribePrivateNatGatewayRegionsWithContext(context.Background(), request)
 }
@@ -15780,6 +15841,7 @@ func (c *Client) DescribePrivateNatGatewayRegions(request *DescribePrivateNatGat
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
+//  UNSUPPORTEDOPERATION_NATNFVUNSUPPORTEDREGION = "UnsupportedOperation.NatNfvUnsupportedRegion"
 func (c *Client) DescribePrivateNatGatewayRegionsWithContext(ctx context.Context, request *DescribePrivateNatGatewayRegionsRequest) (response *DescribePrivateNatGatewayRegionsResponse, err error) {
     if request == nil {
         request = NewDescribePrivateNatGatewayRegionsRequest()
@@ -26186,6 +26248,7 @@ func NewModifyVpnConnectionAttributeResponse() (response *ModifyVpnConnectionAtt
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  INVALIDPARAMETERVALUE_VPNCONNCIDRCONFLICT = "InvalidParameterValue.VpnConnCidrConflict"
 //  INVALIDPARAMETERVALUE_VPNCONNHEALTHCHECKIPCONFLICT = "InvalidParameterValue.VpnConnHealthCheckIpConflict"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -26205,6 +26268,7 @@ func (c *Client) ModifyVpnConnectionAttribute(request *ModifyVpnConnectionAttrib
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  INVALIDPARAMETERVALUE_VPNCONNCIDRCONFLICT = "InvalidParameterValue.VpnConnCidrConflict"
 //  INVALIDPARAMETERVALUE_VPNCONNHEALTHCHECKIPCONFLICT = "InvalidParameterValue.VpnConnHealthCheckIpConflict"
 //  RESOURCENOTFOUND = "ResourceNotFound"

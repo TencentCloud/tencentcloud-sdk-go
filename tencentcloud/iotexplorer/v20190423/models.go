@@ -3606,6 +3606,15 @@ type CreateTWeTalkAIBotRequestParams struct {
 
 	// 自定义工具配置，最多可创建10个
 	CustomTools *string `json:"CustomTools,omitnil,omitempty" name:"CustomTools"`
+
+	// WebHook工具配置(JSON字符串格式)
+	WebhookTools *string `json:"WebhookTools,omitnil,omitempty" name:"WebhookTools"`
+
+	// 智能体模板类型
+	BotType *string `json:"BotType,omitnil,omitempty" name:"BotType"`
+
+	// 知识库相关配置(JSON字符串格式)
+	RAGConfig *string `json:"RAGConfig,omitnil,omitempty" name:"RAGConfig"`
 }
 
 type CreateTWeTalkAIBotRequest struct {
@@ -3637,6 +3646,15 @@ type CreateTWeTalkAIBotRequest struct {
 
 	// 自定义工具配置，最多可创建10个
 	CustomTools *string `json:"CustomTools,omitnil,omitempty" name:"CustomTools"`
+
+	// WebHook工具配置(JSON字符串格式)
+	WebhookTools *string `json:"WebhookTools,omitnil,omitempty" name:"WebhookTools"`
+
+	// 智能体模板类型
+	BotType *string `json:"BotType,omitnil,omitempty" name:"BotType"`
+
+	// 知识库相关配置(JSON字符串格式)
+	RAGConfig *string `json:"RAGConfig,omitnil,omitempty" name:"RAGConfig"`
 }
 
 func (r *CreateTWeTalkAIBotRequest) ToJsonString() string {
@@ -3660,6 +3678,9 @@ func (r *CreateTWeTalkAIBotRequest) FromJsonString(s string) error {
 	delete(f, "AgentConfig")
 	delete(f, "InstanceId")
 	delete(f, "CustomTools")
+	delete(f, "WebhookTools")
+	delete(f, "BotType")
+	delete(f, "RAGConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTWeTalkAIBotRequest has unknown keys!", "")
 	}
@@ -15159,6 +15180,15 @@ type ModifyTWeTalkAIBotRequestParams struct {
 
 	// 自定义工具配置，最多可创建10个
 	CustomTools *string `json:"CustomTools,omitnil,omitempty" name:"CustomTools"`
+
+	// WebHook工具配置(JSON字符串格式)
+	WebhookTools *string `json:"WebhookTools,omitnil,omitempty" name:"WebhookTools"`
+
+	// 智能体模板类型
+	BotType *string `json:"BotType,omitnil,omitempty" name:"BotType"`
+
+	// 知识库相关配置(JSON字符串格式)
+	RAGConfig *string `json:"RAGConfig,omitnil,omitempty" name:"RAGConfig"`
 }
 
 type ModifyTWeTalkAIBotRequest struct {
@@ -15190,6 +15220,15 @@ type ModifyTWeTalkAIBotRequest struct {
 
 	// 自定义工具配置，最多可创建10个
 	CustomTools *string `json:"CustomTools,omitnil,omitempty" name:"CustomTools"`
+
+	// WebHook工具配置(JSON字符串格式)
+	WebhookTools *string `json:"WebhookTools,omitnil,omitempty" name:"WebhookTools"`
+
+	// 智能体模板类型
+	BotType *string `json:"BotType,omitnil,omitempty" name:"BotType"`
+
+	// 知识库相关配置(JSON字符串格式)
+	RAGConfig *string `json:"RAGConfig,omitnil,omitempty" name:"RAGConfig"`
 }
 
 func (r *ModifyTWeTalkAIBotRequest) ToJsonString() string {
@@ -15213,6 +15252,9 @@ func (r *ModifyTWeTalkAIBotRequest) FromJsonString(s string) error {
 	delete(f, "TTSConfig")
 	delete(f, "AgentConfig")
 	delete(f, "CustomTools")
+	delete(f, "WebhookTools")
+	delete(f, "BotType")
+	delete(f, "RAGConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTWeTalkAIBotRequest has unknown keys!", "")
 	}
@@ -17116,6 +17158,15 @@ type TalkAIBotInfo struct {
 
 	// 自定义工具列表，最多可创建10个
 	CustomTools *string `json:"CustomTools,omitnil,omitempty" name:"CustomTools"`
+
+	// WebHook工具配置(JSON字符串格式)
+	WebhookTools *string `json:"WebhookTools,omitnil,omitempty" name:"WebhookTools"`
+
+	// 智能体模板类型
+	BotType *string `json:"BotType,omitnil,omitempty" name:"BotType"`
+
+	// 知识库相关配置(JSON字符串格式)
+	RAGConfig *string `json:"RAGConfig,omitnil,omitempty" name:"RAGConfig"`
 }
 
 type TalkAgentConfigInfo struct {
@@ -17160,6 +17211,15 @@ type TalkAgentConfigInfo struct {
 
 	// 复刻音色
 	FastVoiceType *string `json:"FastVoiceType,omitnil,omitempty" name:"FastVoiceType"`
+
+	// 实时字幕回调地址，支持HTTP/HTTPS
+	SubtitleCallbackUrl *string `json:"SubtitleCallbackUrl,omitnil,omitempty" name:"SubtitleCallbackUrl"`
+
+	// 回调签名密钥，最大32字符，用于HMAC SHA256签名
+	SubtitleCallbackSignKey *string `json:"SubtitleCallbackSignKey,omitnil,omitempty" name:"SubtitleCallbackSignKey"`
+
+	// 字幕推送超时时间（秒），参考TRTC规范
+	SubtitleCallbackTimeout *int64 `json:"SubtitleCallbackTimeout,omitnil,omitempty" name:"SubtitleCallbackTimeout"`
 }
 
 type TalkBasicConfigInfo struct {

@@ -4506,62 +4506,62 @@ func (r *DescribeExtensionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFlashSMSListRequestParams struct {
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 起始时间戳，Unix 秒级时间戳，最大支持近180天。
+	// <p>起始时间戳，Unix 秒级时间戳，最大支持近180天。</p>
 	StartTimestamp *int64 `json:"StartTimestamp,omitnil,omitempty" name:"StartTimestamp"`
 
-	// 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
+	// <p>结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。</p>
 	EndTimestamp *int64 `json:"EndTimestamp,omitnil,omitempty" name:"EndTimestamp"`
 
-	// 闪信投递号码（被叫号码）
+	// <p>闪信投递号码（被叫号码）</p>
 	DeliveryNumber *string `json:"DeliveryNumber,omitnil,omitempty" name:"DeliveryNumber"`
 
-	// 呼叫关联的系统号码
+	// <p>呼叫关联的系统号码</p>
 	ServingNumber *string `json:"ServingNumber,omitnil,omitempty" name:"ServingNumber"`
 
-	// 会话 ID
+	// <p>会话 ID</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 投递结果 1 为成功，其他为失败
+	// <p>投递结果 1 为成功，其他为失败</p>
 	DeliveryStatus *int64 `json:"DeliveryStatus,omitnil,omitempty" name:"DeliveryStatus"`
 
-	// 分页大小，默认 20，最大 100
+	// <p>分页大小，默认 20，最大 1000</p><p>取值范围：[20, 1000]</p><p>单位：条</p><p>默认值：20</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 分页页码，从 0 开始
+	// <p>分页页码，从 0 开始</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 }
 
 type DescribeFlashSMSListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 起始时间戳，Unix 秒级时间戳，最大支持近180天。
+	// <p>起始时间戳，Unix 秒级时间戳，最大支持近180天。</p>
 	StartTimestamp *int64 `json:"StartTimestamp,omitnil,omitempty" name:"StartTimestamp"`
 
-	// 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
+	// <p>结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。</p>
 	EndTimestamp *int64 `json:"EndTimestamp,omitnil,omitempty" name:"EndTimestamp"`
 
-	// 闪信投递号码（被叫号码）
+	// <p>闪信投递号码（被叫号码）</p>
 	DeliveryNumber *string `json:"DeliveryNumber,omitnil,omitempty" name:"DeliveryNumber"`
 
-	// 呼叫关联的系统号码
+	// <p>呼叫关联的系统号码</p>
 	ServingNumber *string `json:"ServingNumber,omitnil,omitempty" name:"ServingNumber"`
 
-	// 会话 ID
+	// <p>会话 ID</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 投递结果 1 为成功，其他为失败
+	// <p>投递结果 1 为成功，其他为失败</p>
 	DeliveryStatus *int64 `json:"DeliveryStatus,omitnil,omitempty" name:"DeliveryStatus"`
 
-	// 分页大小，默认 20，最大 100
+	// <p>分页大小，默认 20，最大 1000</p><p>取值范围：[20, 1000]</p><p>单位：条</p><p>默认值：20</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 分页页码，从 0 开始
+	// <p>分页页码，从 0 开始</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 }
 
@@ -4594,10 +4594,10 @@ func (r *DescribeFlashSMSListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFlashSMSListResponseParams struct {
-	// 记录总数
+	// <p>记录总数</p>
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 闪信记录列表
+	// <p>闪信记录列表</p>
 	FlashSMSList []*FlashSMSRecord `json:"FlashSMSList,omitnil,omitempty" name:"FlashSMSList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5452,32 +5452,32 @@ func (r *DescribeProtectedTelCdrResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSessionDetailRequestParams struct {
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 通话的 session id
+	// <p>通话的 session id</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 起始时间戳，Unix 秒级时间戳，最大支持近180天。
+	// <p>起始时间戳，Unix 秒级时间戳，最大支持近180天。</p>
 	StartTimestamp *int64 `json:"StartTimestamp,omitnil,omitempty" name:"StartTimestamp"`
 
-	// 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
+	// <p>结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。</p>
 	EndTimestamp *int64 `json:"EndTimestamp,omitnil,omitempty" name:"EndTimestamp"`
 }
 
 type DescribeSessionDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 通话的 session id
+	// <p>通话的 session id</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 起始时间戳，Unix 秒级时间戳，最大支持近180天。
+	// <p>起始时间戳，Unix 秒级时间戳，最大支持近180天。</p>
 	StartTimestamp *int64 `json:"StartTimestamp,omitnil,omitempty" name:"StartTimestamp"`
 
-	// 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
+	// <p>结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。</p>
 	EndTimestamp *int64 `json:"EndTimestamp,omitnil,omitempty" name:"EndTimestamp"`
 }
 
@@ -5505,74 +5505,80 @@ func (r *DescribeSessionDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSessionDetailResponseParams struct {
-	// 主叫号码
+	// <p>主叫号码</p>
 	Caller *string `json:"Caller,omitnil,omitempty" name:"Caller"`
 
-	// 被叫号码
+	// <p>被叫号码</p>
 	Callee *string `json:"Callee,omitnil,omitempty" name:"Callee"`
 
-	// 通话类型 1 呼出 2 呼入 3 音频呼入 5 预测式外呼 6 内线呼叫
+	// <p>通话类型 1 呼出 2 呼入 3 音频呼入 5 预测式外呼 6 内线呼叫</p>
 	CallType *int64 `json:"CallType,omitnil,omitempty" name:"CallType"`
 
-	// 开始时间戳，Unix 秒级时间戳
+	// <p>开始时间戳，Unix 秒级时间戳</p>
 	StartTimeStamp *int64 `json:"StartTimeStamp,omitnil,omitempty" name:"StartTimeStamp"`
 
-	// 振铃时间戳，UNIX 秒级时间戳
+	// <p>振铃时间戳，UNIX 秒级时间戳</p>
 	RingTimestamp *int64 `json:"RingTimestamp,omitnil,omitempty" name:"RingTimestamp"`
 
-	// 接听时间戳，UNIX 秒级时间戳
+	// <p>接听时间戳，UNIX 秒级时间戳</p>
 	AcceptTimestamp *int64 `json:"AcceptTimestamp,omitnil,omitempty" name:"AcceptTimestamp"`
 
-	// 结束时间戳，UNIX 秒级时间戳
+	// <p>结束时间戳，UNIX 秒级时间戳</p>
 	EndedTimestamp *int64 `json:"EndedTimestamp,omitnil,omitempty" name:"EndedTimestamp"`
 
-	// 进入排队时间，Unix 秒级时间戳
+	// <p>进入排队时间，Unix 秒级时间戳</p>
 	QueuedTimestamp *int64 `json:"QueuedTimestamp,omitnil,omitempty" name:"QueuedTimestamp"`
 
-	// 座席账号
+	// <p>座席账号</p>
 	StaffUserId *string `json:"StaffUserId,omitnil,omitempty" name:"StaffUserId"`
 
-	// 参考 DescribeTelCdr 接口 EndStatus 字段
+	// <p>参考 DescribeTelCdr 接口 EndStatus 字段</p>
 	EndStatus *int64 `json:"EndStatus,omitnil,omitempty" name:"EndStatus"`
 
-	// 排队技能组 ID
+	// <p>排队技能组 ID</p>
 	QueuedSkillGroupId *int64 `json:"QueuedSkillGroupId,omitnil,omitempty" name:"QueuedSkillGroupId"`
 
-	// 排队技能组名称
+	// <p>排队技能组名称</p>
 	QueuedSkillGroupName *string `json:"QueuedSkillGroupName,omitnil,omitempty" name:"QueuedSkillGroupName"`
 
-	// 录音链接，带鉴权和有效期，获取之后请在24 小时内拉取，不要持久化此链接。如此链接已过期，请重新调用此接口获取新的链接
+	// <p>录音链接，带鉴权和有效期，获取之后请在24 小时内拉取，不要持久化此链接。如此链接已过期，请重新调用此接口获取新的链接</p>
 	RecordURL *string `json:"RecordURL,omitnil,omitempty" name:"RecordURL"`
 
-	// 录音转存第三方 COS 链接
+	// <p>录音转存第三方 COS 链接</p>
 	CustomRecordURL *string `json:"CustomRecordURL,omitnil,omitempty" name:"CustomRecordURL"`
 
-	// 录音文本信息链接，带鉴权和有效期，获取之后请在24 小时拉取，不要持久化此链接。如此链接已过期，请重新调用此接口获取新的链接
+	// <p>录音文本信息链接，带鉴权和有效期，获取之后请在24 小时拉取，不要持久化此链接。如此链接已过期，请重新调用此接口获取新的链接</p>
 	AsrURL *string `json:"AsrURL,omitnil,omitempty" name:"AsrURL"`
 
-	// 语音留言录音链接
+	// <p>语音留言录音链接</p>
 	VoicemailRecordURL []*string `json:"VoicemailRecordURL,omitnil,omitempty" name:"VoicemailRecordURL"`
 
-	// 语音留言录音文本信息链接，需在控制台购买离线语音识别套餐包并开启离线语音识别开关
+	// <p>语音留言录音文本信息链接，需在控制台购买离线语音识别套餐包并开启离线语音识别开关</p>
 	VoicemailAsrURL []*string `json:"VoicemailAsrURL,omitnil,omitempty" name:"VoicemailAsrURL"`
 
-	// IVR 按键信息
+	// <p>IVR 按键信息</p>
 	IVRKeyPressed []*IVRKeyPressedElement `json:"IVRKeyPressed,omitnil,omitempty" name:"IVRKeyPressed"`
 
-	// 满意度按键信息
+	// <p>满意度按键信息</p>
 	PostIVRKeyPressed []*IVRKeyPressedElement `json:"PostIVRKeyPressed,omitnil,omitempty" name:"PostIVRKeyPressed"`
 
-	// 挂机方 seat 座席 user 用户 system 系统
+	// <p>挂机方 seat 座席 user 用户 system 系统</p>
 	HungUpSide *string `json:"HungUpSide,omitnil,omitempty" name:"HungUpSide"`
 
-	// 客户自定义数据（User-to-User Interface）
+	// <p>客户自定义数据（User-to-User Interface）</p>
 	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
 
-	// 通话中的事件列表
+	// <p>通话中的事件列表</p>
 	Events []*SessionEvent `json:"Events,omitnil,omitempty" name:"Events"`
 
-	// 服务参与者列表
+	// <p>服务参与者列表</p>
 	ServeParticipants []*ServeParticipant `json:"ServeParticipants,omitnil,omitempty" name:"ServeParticipants"`
+
+	// <p>接通后系统挂断原因状态码</p><p><a href="https://cloud.tencent.com/document/product/679/123938">详见</a></p>
+	SysHangupReason *int64 `json:"SysHangupReason,omitnil,omitempty" name:"SysHangupReason"`
+
+	// <p>接通后系统挂断原因</p><p><a href="https://cloud.tencent.com/document/product/679/123938">详见</a></p>
+	SysHangupReasonString *string `json:"SysHangupReasonString,omitnil,omitempty" name:"SysHangupReasonString"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

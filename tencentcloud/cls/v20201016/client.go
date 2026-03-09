@@ -2271,6 +2271,88 @@ func (c *Client) CreateMetricSubscribeWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateNetworkApplicationRequest() (request *CreateNetworkApplicationRequest) {
+    request = &CreateNetworkApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateNetworkApplication")
+    
+    
+    return
+}
+
+func NewCreateNetworkApplicationResponse() (response *CreateNetworkApplicationResponse) {
+    response = &CreateNetworkApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateNetworkApplication
+// 创建网络应用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateNetworkApplication(request *CreateNetworkApplicationRequest) (response *CreateNetworkApplicationResponse, err error) {
+    return c.CreateNetworkApplicationWithContext(context.Background(), request)
+}
+
+// CreateNetworkApplication
+// 创建网络应用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateNetworkApplicationWithContext(ctx context.Context, request *CreateNetworkApplicationRequest) (response *CreateNetworkApplicationResponse, err error) {
+    if request == nil {
+        request = NewCreateNetworkApplicationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateNetworkApplication")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNetworkApplication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateNetworkApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNoticeContentRequest() (request *CreateNoticeContentRequest) {
     request = &CreateNoticeContentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4529,6 +4611,88 @@ func (c *Client) DeleteMetricSubscribeWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDeleteMetricSubscribeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteNetworkApplicationRequest() (request *DeleteNetworkApplicationRequest) {
+    request = &DeleteNetworkApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteNetworkApplication")
+    
+    
+    return
+}
+
+func NewDeleteNetworkApplicationResponse() (response *DeleteNetworkApplicationResponse) {
+    response = &DeleteNetworkApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteNetworkApplication
+// 删除网络应用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteNetworkApplication(request *DeleteNetworkApplicationRequest) (response *DeleteNetworkApplicationResponse, err error) {
+    return c.DeleteNetworkApplicationWithContext(context.Background(), request)
+}
+
+// DeleteNetworkApplication
+// 删除网络应用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteNetworkApplicationWithContext(ctx context.Context, request *DeleteNetworkApplicationRequest) (response *DeleteNetworkApplicationResponse, err error) {
+    if request == nil {
+        request = NewDeleteNetworkApplicationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteNetworkApplication")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNetworkApplication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteNetworkApplicationResponse()
     err = c.Send(request, response)
     return
 }
@@ -7897,6 +8061,142 @@ func (c *Client) DescribeMetricSubscribesWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeNetworkApplicationDetailRequest() (request *DescribeNetworkApplicationDetailRequest) {
+    request = &DescribeNetworkApplicationDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeNetworkApplicationDetail")
+    
+    
+    return
+}
+
+func NewDescribeNetworkApplicationDetailResponse() (response *DescribeNetworkApplicationDetailResponse) {
+    response = &DescribeNetworkApplicationDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNetworkApplicationDetail
+// 获取网络应用详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) DescribeNetworkApplicationDetail(request *DescribeNetworkApplicationDetailRequest) (response *DescribeNetworkApplicationDetailResponse, err error) {
+    return c.DescribeNetworkApplicationDetailWithContext(context.Background(), request)
+}
+
+// DescribeNetworkApplicationDetail
+// 获取网络应用详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) DescribeNetworkApplicationDetailWithContext(ctx context.Context, request *DescribeNetworkApplicationDetailRequest) (response *DescribeNetworkApplicationDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeNetworkApplicationDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeNetworkApplicationDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNetworkApplicationDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNetworkApplicationDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNetworkApplicationsRequest() (request *DescribeNetworkApplicationsRequest) {
+    request = &DescribeNetworkApplicationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeNetworkApplications")
+    
+    
+    return
+}
+
+func NewDescribeNetworkApplicationsResponse() (response *DescribeNetworkApplicationsResponse) {
+    response = &DescribeNetworkApplicationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNetworkApplications
+// 获取网络应用列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) DescribeNetworkApplications(request *DescribeNetworkApplicationsRequest) (response *DescribeNetworkApplicationsResponse, err error) {
+    return c.DescribeNetworkApplicationsWithContext(context.Background(), request)
+}
+
+// DescribeNetworkApplications
+// 获取网络应用列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) DescribeNetworkApplicationsWithContext(ctx context.Context, request *DescribeNetworkApplicationsRequest) (response *DescribeNetworkApplicationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeNetworkApplicationsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeNetworkApplications")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNetworkApplications require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNetworkApplicationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNoticeContentsRequest() (request *DescribeNoticeContentsRequest) {
     request = &DescribeNoticeContentsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10829,6 +11129,88 @@ func (c *Client) ModifyMetricSubscribeWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyMetricSubscribeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNetworkApplicationRequest() (request *ModifyNetworkApplicationRequest) {
+    request = &ModifyNetworkApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyNetworkApplication")
+    
+    
+    return
+}
+
+func NewModifyNetworkApplicationResponse() (response *ModifyNetworkApplicationResponse) {
+    response = &ModifyNetworkApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyNetworkApplication
+// 修改网络应用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyNetworkApplication(request *ModifyNetworkApplicationRequest) (response *ModifyNetworkApplicationResponse, err error) {
+    return c.ModifyNetworkApplicationWithContext(context.Background(), request)
+}
+
+// ModifyNetworkApplication
+// 修改网络应用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ILLEGALROLE = "InternalError.IllegalRole"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_RECORDOUTOFLIMIT = "LimitExceeded.RecordOutOfLimit"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyNetworkApplicationWithContext(ctx context.Context, request *ModifyNetworkApplicationRequest) (response *ModifyNetworkApplicationResponse, err error) {
+    if request == nil {
+        request = NewModifyNetworkApplicationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyNetworkApplication")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNetworkApplication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNetworkApplicationResponse()
     err = c.Send(request, response)
     return
 }

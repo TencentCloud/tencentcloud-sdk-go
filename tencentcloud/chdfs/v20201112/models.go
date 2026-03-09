@@ -1899,26 +1899,26 @@ func (r *ModifyLifeCycleRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyMountPointRequestParams struct {
-	// 挂载点ID
+	// <p>挂载点ID</p>
 	MountPointId *string `json:"MountPointId,omitnil,omitempty" name:"MountPointId"`
 
-	// 挂载点名称
+	// <p>挂载点名称</p>
 	MountPointName *string `json:"MountPointName,omitnil,omitempty" name:"MountPointName"`
 
-	// 挂载点状态
+	// <p>挂载点状态</p><p>枚举值：</p><ul><li>1： 打开</li><li>2： 关闭</li></ul>
 	MountPointStatus *uint64 `json:"MountPointStatus,omitnil,omitempty" name:"MountPointStatus"`
 }
 
 type ModifyMountPointRequest struct {
 	*tchttp.BaseRequest
 	
-	// 挂载点ID
+	// <p>挂载点ID</p>
 	MountPointId *string `json:"MountPointId,omitnil,omitempty" name:"MountPointId"`
 
-	// 挂载点名称
+	// <p>挂载点名称</p>
 	MountPointName *string `json:"MountPointName,omitnil,omitempty" name:"MountPointName"`
 
-	// 挂载点状态
+	// <p>挂载点状态</p><p>枚举值：</p><ul><li>1： 打开</li><li>2： 关闭</li></ul>
 	MountPointStatus *uint64 `json:"MountPointStatus,omitnil,omitempty" name:"MountPointStatus"`
 }
 

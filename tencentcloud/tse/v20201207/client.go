@@ -1361,6 +1361,66 @@ func (c *Client) CreateGovernanceInstancesWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateGovernanceLaneGroupsRequest() (request *CreateGovernanceLaneGroupsRequest) {
+    request = &CreateGovernanceLaneGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "CreateGovernanceLaneGroups")
+    
+    
+    return
+}
+
+func NewCreateGovernanceLaneGroupsResponse() (response *CreateGovernanceLaneGroupsResponse) {
+    response = &CreateGovernanceLaneGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateGovernanceLaneGroups
+// 创建泳道组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateGovernanceLaneGroups(request *CreateGovernanceLaneGroupsRequest) (response *CreateGovernanceLaneGroupsResponse, err error) {
+    return c.CreateGovernanceLaneGroupsWithContext(context.Background(), request)
+}
+
+// CreateGovernanceLaneGroups
+// 创建泳道组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateGovernanceLaneGroupsWithContext(ctx context.Context, request *CreateGovernanceLaneGroupsRequest) (response *CreateGovernanceLaneGroupsResponse, err error) {
+    if request == nil {
+        request = NewCreateGovernanceLaneGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "CreateGovernanceLaneGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGovernanceLaneGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGovernanceLaneGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateGovernanceNamespacesRequest() (request *CreateGovernanceNamespacesRequest) {
     request = &CreateGovernanceNamespacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3121,6 +3181,64 @@ func (c *Client) DeleteGovernanceInstancesByHostWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewDeleteGovernanceInstancesByHostResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGovernanceLaneGroupsRequest() (request *DeleteGovernanceLaneGroupsRequest) {
+    request = &DeleteGovernanceLaneGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DeleteGovernanceLaneGroups")
+    
+    
+    return
+}
+
+func NewDeleteGovernanceLaneGroupsResponse() (response *DeleteGovernanceLaneGroupsResponse) {
+    response = &DeleteGovernanceLaneGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGovernanceLaneGroups
+// 删除泳道组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteGovernanceLaneGroups(request *DeleteGovernanceLaneGroupsRequest) (response *DeleteGovernanceLaneGroupsResponse, err error) {
+    return c.DeleteGovernanceLaneGroupsWithContext(context.Background(), request)
+}
+
+// DeleteGovernanceLaneGroups
+// 删除泳道组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteGovernanceLaneGroupsWithContext(ctx context.Context, request *DeleteGovernanceLaneGroupsRequest) (response *DeleteGovernanceLaneGroupsResponse, err error) {
+    if request == nil {
+        request = NewDeleteGovernanceLaneGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DeleteGovernanceLaneGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGovernanceLaneGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGovernanceLaneGroupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -5649,6 +5767,66 @@ func (c *Client) DescribeGovernanceInstancesWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeGovernanceLaneGroupsRequest() (request *DescribeGovernanceLaneGroupsRequest) {
+    request = &DescribeGovernanceLaneGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeGovernanceLaneGroups")
+    
+    
+    return
+}
+
+func NewDescribeGovernanceLaneGroupsResponse() (response *DescribeGovernanceLaneGroupsResponse) {
+    response = &DescribeGovernanceLaneGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGovernanceLaneGroups
+// 查询泳道组列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeGovernanceLaneGroups(request *DescribeGovernanceLaneGroupsRequest) (response *DescribeGovernanceLaneGroupsResponse, err error) {
+    return c.DescribeGovernanceLaneGroupsWithContext(context.Background(), request)
+}
+
+// DescribeGovernanceLaneGroups
+// 查询泳道组列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeGovernanceLaneGroupsWithContext(ctx context.Context, request *DescribeGovernanceLaneGroupsRequest) (response *DescribeGovernanceLaneGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeGovernanceLaneGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "DescribeGovernanceLaneGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGovernanceLaneGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGovernanceLaneGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGovernanceNamespacesRequest() (request *DescribeGovernanceNamespacesRequest) {
     request = &DescribeGovernanceNamespacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7899,6 +8077,64 @@ func (c *Client) ModifyGovernanceInstancesWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewModifyGovernanceInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyGovernanceLaneGroupsRequest() (request *ModifyGovernanceLaneGroupsRequest) {
+    request = &ModifyGovernanceLaneGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "ModifyGovernanceLaneGroups")
+    
+    
+    return
+}
+
+func NewModifyGovernanceLaneGroupsResponse() (response *ModifyGovernanceLaneGroupsResponse) {
+    response = &ModifyGovernanceLaneGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyGovernanceLaneGroups
+// 创建泳道组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyGovernanceLaneGroups(request *ModifyGovernanceLaneGroupsRequest) (response *ModifyGovernanceLaneGroupsResponse, err error) {
+    return c.ModifyGovernanceLaneGroupsWithContext(context.Background(), request)
+}
+
+// ModifyGovernanceLaneGroups
+// 创建泳道组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GOVERNANCEFAILURE = "InternalError.GovernanceFailure"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyGovernanceLaneGroupsWithContext(ctx context.Context, request *ModifyGovernanceLaneGroupsRequest) (response *ModifyGovernanceLaneGroupsResponse, err error) {
+    if request == nil {
+        request = NewModifyGovernanceLaneGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tse", APIVersion, "ModifyGovernanceLaneGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGovernanceLaneGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGovernanceLaneGroupsResponse()
     err = c.Send(request, response)
     return
 }

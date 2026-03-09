@@ -4271,7 +4271,7 @@ func NewSearchFacesResponse() (response *SearchFacesResponse) {
 //
 // 
 //
-// 与[人员搜索](https://cloud.tencent.com/document/product/867/38881)及[人员搜索按库返回](https://cloud.tencent.com/document/product/867/38880)接口不同的是，本接口将该人员（Person）下的每个人脸（Face）都作为单独个体进行验证，而人员搜索及人员搜索按库返回接口 会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个Person下有4张 Face，本接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使搜索更加准确。
+// 与[人员搜索](https://cloud.tencent.com/document/product/867/38881)及[人员搜索按库返回](https://cloud.tencent.com/document/product/867/38880)接口不同的是，本接口将该人员（Person）下的每个人脸（Face）都作为单独个体进行验证，而人员搜索及人员搜索按库返回接口 会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个Person下有4张 Face，[人员搜索](https://cloud.tencent.com/document/product/867/38881)和[人员搜索按库返回](https://cloud.tencent.com/document/product/867/38880)接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使搜索更加准确。
 //
 // 
 //
@@ -4375,7 +4375,7 @@ func (c *Client) SearchFaces(request *SearchFacesRequest) (response *SearchFaces
 //
 // 
 //
-// 与[人员搜索](https://cloud.tencent.com/document/product/867/38881)及[人员搜索按库返回](https://cloud.tencent.com/document/product/867/38880)接口不同的是，本接口将该人员（Person）下的每个人脸（Face）都作为单独个体进行验证，而人员搜索及人员搜索按库返回接口 会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个Person下有4张 Face，本接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使搜索更加准确。
+// 与[人员搜索](https://cloud.tencent.com/document/product/867/38881)及[人员搜索按库返回](https://cloud.tencent.com/document/product/867/38880)接口不同的是，本接口将该人员（Person）下的每个人脸（Face）都作为单独个体进行验证，而人员搜索及人员搜索按库返回接口 会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个Person下有4张 Face，[人员搜索](https://cloud.tencent.com/document/product/867/38881)和[人员搜索按库返回](https://cloud.tencent.com/document/product/867/38880)接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使搜索更加准确。
 //
 // 
 //
@@ -4511,7 +4511,7 @@ func NewSearchFacesReturnsByGroupResponse() (response *SearchFacesReturnsByGroup
 //
 // 
 //
-// 与[人员搜索](https://cloud.tencent.com/document/product/867/38881)及[人员搜索按库返回](https://cloud.tencent.com/document/product/867/38880)接口不同的是，本接口将该人员（Person）下的每个人脸（Face）都作为单独个体进行验证，而[人员搜索](https://cloud.tencent.com/document/product/867/38881)及[人员搜索按库返回](https://cloud.tencent.com/document/product/867/38880)接口 会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个Person下有4张 Face，本接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使搜索更加准确。
+// 与[人员搜索](https://cloud.tencent.com/document/product/867/38881)及[人员搜索按库返回](https://cloud.tencent.com/document/product/867/38880)接口不同的是，本接口将该人员（Person）下的每个人脸（Face）都作为单独个体进行验证，而[人员搜索](https://cloud.tencent.com/document/product/867/38881)及[人员搜索按库返回](https://cloud.tencent.com/document/product/867/38880)接口 会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个Person下有4张 Face，[人员搜索](https://cloud.tencent.com/document/product/867/38881)和[人员搜索按库返回](https://cloud.tencent.com/document/product/867/38880)接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使搜索更加准确。
 //
 // 
 //
@@ -4613,7 +4613,7 @@ func (c *Client) SearchFacesReturnsByGroup(request *SearchFacesReturnsByGroupReq
 //
 // 
 //
-// 与[人员搜索](https://cloud.tencent.com/document/product/867/38881)及[人员搜索按库返回](https://cloud.tencent.com/document/product/867/38880)接口不同的是，本接口将该人员（Person）下的每个人脸（Face）都作为单独个体进行验证，而[人员搜索](https://cloud.tencent.com/document/product/867/38881)及[人员搜索按库返回](https://cloud.tencent.com/document/product/867/38880)接口 会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个Person下有4张 Face，本接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使搜索更加准确。
+// 与[人员搜索](https://cloud.tencent.com/document/product/867/38881)及[人员搜索按库返回](https://cloud.tencent.com/document/product/867/38880)接口不同的是，本接口将该人员（Person）下的每个人脸（Face）都作为单独个体进行验证，而[人员搜索](https://cloud.tencent.com/document/product/867/38881)及[人员搜索按库返回](https://cloud.tencent.com/document/product/867/38880)接口 会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个Person下有4张 Face，[人员搜索](https://cloud.tencent.com/document/product/867/38881)和[人员搜索按库返回](https://cloud.tencent.com/document/product/867/38880)接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使搜索更加准确。
 //
 // 
 //

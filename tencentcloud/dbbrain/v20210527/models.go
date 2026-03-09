@@ -1232,6 +1232,109 @@ func (r *CreateMailProfileResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateMongoDBKillTaskRequestParams struct {
+	// kill会话任务的关联实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 任务持续时间，单位秒，手动关闭任务传-1。
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 任务过滤条件，客户端IP。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 命名空间
+	DB []*string `json:"DB,omitnil,omitempty" name:"DB"`
+
+	// update,insert,query,getmore,remove,killcursors,command,compressed,none
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// kill任务过滤条件，会话持续时长，单位秒。
+	Time *int64 `json:"Time,omitnil,omitempty" name:"Time"`
+}
+
+type CreateMongoDBKillTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// kill会话任务的关联实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 任务持续时间，单位秒，手动关闭任务传-1。
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 任务过滤条件，客户端IP。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 命名空间
+	DB []*string `json:"DB,omitnil,omitempty" name:"DB"`
+
+	// update,insert,query,getmore,remove,killcursors,command,compressed,none
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// kill任务过滤条件，会话持续时长，单位秒。
+	Time *int64 `json:"Time,omitnil,omitempty" name:"Time"`
+}
+
+func (r *CreateMongoDBKillTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMongoDBKillTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Duration")
+	delete(f, "Product")
+	delete(f, "Host")
+	delete(f, "DB")
+	delete(f, "Type")
+	delete(f, "Time")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMongoDBKillTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMongoDBKillTaskResponseParams struct {
+	// kill会话任务创建成功返回1
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 异常信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMongoDBKillTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMongoDBKillTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateMongoDBKillTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMongoDBKillTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateProxySessionKillTaskRequestParams struct {
 	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

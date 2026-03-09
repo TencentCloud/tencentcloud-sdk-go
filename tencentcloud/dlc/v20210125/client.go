@@ -2921,6 +2921,7 @@ func NewCreateStandardEngineResourceGroupResponse() (response *CreateStandardEng
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND_GATEWAYNOTFOUND = "ResourceNotFound.GatewayNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
 //  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
 func (c *Client) CreateStandardEngineResourceGroup(request *CreateStandardEngineResourceGroupRequest) (response *CreateStandardEngineResourceGroupResponse, err error) {
@@ -2936,6 +2937,7 @@ func (c *Client) CreateStandardEngineResourceGroup(request *CreateStandardEngine
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND_GATEWAYNOTFOUND = "ResourceNotFound.GatewayNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_GATEWAYNOTFOUND = "ResourceNotFound.ResourceNotFoundCode_GatewayNotFound"
 //  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLECODE_GATEWAYNOTRUNNING = "ResourceUnavailable.ResourceUnavailableCode_GatewayNotRunning"
 func (c *Client) CreateStandardEngineResourceGroupWithContext(ctx context.Context, request *CreateStandardEngineResourceGroupRequest) (response *CreateStandardEngineResourceGroupResponse, err error) {
@@ -7660,6 +7662,7 @@ func NewDescribeTaskListResponse() (response *DescribeTaskListResponse) {
 //  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
 //  INVALIDPARAMETER_SQLTASKSORTBYTYPENOTMATCH = "InvalidParameter.SQLTaskSortByTypeNotMatch"
 //  INVALIDPARAMETER_SPARKJOBNOTFOUND = "InvalidParameter.SparkJobNotFound"
+//  INVALIDPARAMETER_TASKLISTFILTERSKEYTYPENOTMATH = "InvalidParameter.TaskListFiltersKeyTypeNotMath"
 //  INVALIDPARAMETER_TASKLISTSORTBYTYPENOTMATCH = "InvalidParameter.TaskListSortByTypeNotMatch"
 //  INVALIDPARAMETER_TASKSTATETYPENOTMATH = "InvalidParameter.TaskStateTypeNotMath"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -7685,6 +7688,7 @@ func (c *Client) DescribeTaskList(request *DescribeTaskListRequest) (response *D
 //  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
 //  INVALIDPARAMETER_SQLTASKSORTBYTYPENOTMATCH = "InvalidParameter.SQLTaskSortByTypeNotMatch"
 //  INVALIDPARAMETER_SPARKJOBNOTFOUND = "InvalidParameter.SparkJobNotFound"
+//  INVALIDPARAMETER_TASKLISTFILTERSKEYTYPENOTMATH = "InvalidParameter.TaskListFiltersKeyTypeNotMath"
 //  INVALIDPARAMETER_TASKLISTSORTBYTYPENOTMATCH = "InvalidParameter.TaskListSortByTypeNotMatch"
 //  INVALIDPARAMETER_TASKSTATETYPENOTMATH = "InvalidParameter.TaskStateTypeNotMath"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

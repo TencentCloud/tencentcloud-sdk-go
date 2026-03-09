@@ -4550,48 +4550,48 @@ type MediaCastVideoSetting struct {
 }
 
 type MediaImageSpriteInfo struct {
-	// 雪碧图小图的高度。
+	// <p>雪碧图小图的高度。</p>
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 
-	// 雪碧图小图的宽度。
+	// <p>雪碧图小图的宽度。</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 雪碧图小图的总数量。
+	// <p>雪碧图小图的总数量。</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 截取雪碧图输出的地址。
+	// <p>截取雪碧图输出的地址。</p>
 	ImageUrlSet []*string `json:"ImageUrlSet,omitnil,omitempty" name:"ImageUrlSet"`
 
-	// 雪碧图子图位置与时间关系的 WebVtt 文件地址。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在雪碧大图里的坐标位置，一般被播放器用于实现预览。
+	// <p>雪碧图子图位置与时间关系的 WebVtt 文件地址。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在雪碧大图里的坐标位置，一般被播放器用于实现预览。</p>
 	WebVttUrl *string `json:"WebVttUrl,omitnil,omitempty" name:"WebVttUrl"`
 }
 
 type MediaMetaData struct {
-	// 大小。
+	// <p>大小。</p>
 	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 容器类型。
+	// <p>容器类型。</p>
 	Container *string `json:"Container,omitnil,omitempty" name:"Container"`
 
-	// 视频流码率平均值与音频流码率平均值之和，单位：bps。
+	// <p>视频流码率平均值与音频流码率平均值之和，单位：bps。</p>
 	Bitrate *uint64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
-	// 视频流高度的最大值，单位：px。
+	// <p>视频流高度的最大值，单位：px。</p>
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
-	// 视频流宽度的最大值，单位：px。
+	// <p>视频流宽度的最大值，单位：px。</p>
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 时长，单位：秒。
+	// <p>时长，单位：秒。</p>
 	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 视频拍摄时的选择角度，单位：度
+	// <p>视频拍摄时的选择角度，单位：度</p>
 	Rotate *int64 `json:"Rotate,omitnil,omitempty" name:"Rotate"`
 
-	// 视频流信息。
+	// <p>视频流信息。</p>
 	VideoStreamInfoSet []*VideoStreamInfo `json:"VideoStreamInfoSet,omitnil,omitempty" name:"VideoStreamInfoSet"`
 
-	// 音频流信息。
+	// <p>音频流信息。</p>
 	AudioStreamInfoSet []*AudioStreamInfo `json:"AudioStreamInfoSet,omitnil,omitempty" name:"AudioStreamInfoSet"`
 }
 
@@ -6306,43 +6306,28 @@ type VideoExportCompletedEvent struct {
 }
 
 type VideoExportExtensionArgs struct {
-	// 封装格式，可选值：
-	// <li>mp4 </li>
-	// <li>mov </li>
-	// 不填则使用视频导出编码配置。
+	// <p>封装格式，可选值：</p><li>mp4 </li><li>mov </li>不填则使用视频导出编码配置。
 	Container *string `json:"Container,omitnil,omitempty" name:"Container"`
 
-	// 视频短边尺寸，取值范围： [128, 4096]，单位：px。
-	// 视频最后的分辨率，根据短边尺寸和宽高比进行计算。
-	// 例如：项目的宽高比是 16：9 ：
-	// <li>短边尺寸为 1080，则导出视频的分辨率为 1920 * 1080。</li>
-	// <li>短边尺寸为 720，则导出视频的分辨率为 1280 * 720</li>
-	// 不填则使用视频导出编码配置。
+	// <p>视频短边尺寸，取值范围： [128, 4096]，单位：px。<br>视频最后的分辨率，根据短边尺寸和宽高比进行计算。<br>例如：项目的宽高比是 16：9 ：</p><li>短边尺寸为 1080，则导出视频的分辨率为 1920 * 1080。</li><li>短边尺寸为 720，则导出视频的分辨率为 1280 * 720</li>不填则使用视频导出编码配置。
 	ShortEdge *uint64 `json:"ShortEdge,omitnil,omitempty" name:"ShortEdge"`
 
-	// 指定码率，单位 bps。当该参数为 0 时则不强制限定码率。
-	// 不填则使用视频导出编码配置。
+	// <p>指定码率，单位 bps。当该参数为 0 时则不强制限定码率。<br>不填则使用视频导出编码配置。</p>
 	VideoBitrate *uint64 `json:"VideoBitrate,omitnil,omitempty" name:"VideoBitrate"`
 
-	// 帧率。取值范围：[15, 60]，不填默认值为 25。
+	// <p>帧率。取值范围：[15, 60]，不填默认值为 25。</p><p>单位：帧</p>
 	FrameRate *float64 `json:"FrameRate,omitnil,omitempty" name:"FrameRate"`
 
-	// 是否去除视频数据，可选值：
-	// <li>0：保留；</li>
-	// <li>1：去除。</li>
-	// 不填则使用视频导出编码配置。
+	// <p>是否去除视频数据，可选值：</p><li>0：保留；</li><li>1：去除。</li>不填则使用视频导出编码配置。
 	RemoveVideo *int64 `json:"RemoveVideo,omitnil,omitempty" name:"RemoveVideo"`
 
-	// 是否去除音频数据，可选值：
-	// <li>0：保留；</li>
-	// <li>1：去除。</li>
-	// 不填则使用视频导出编码配置。
+	// <p>是否去除音频数据，可选值：</p><li>0：保留；</li><li>1：去除。</li>不填则使用视频导出编码配置。
 	RemoveAudio *int64 `json:"RemoveAudio,omitnil,omitempty" name:"RemoveAudio"`
 
-	// 片段起始时间，单位：毫秒。
+	// <p>片段起始时间，单位：毫秒。</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 片段结束时间，单位：毫秒。
+	// <p>片段结束时间，单位：毫秒。</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 

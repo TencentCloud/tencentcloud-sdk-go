@@ -752,6 +752,9 @@ const (
 	// 可创建的对等连接个数超过总上限。
 	LIMITEXCEEDED_VPCPEERTOTALLIMITEXCEEDED = "LimitExceeded.VpcPeerTotalLimitExceeded"
 
+	// VPN网关:`%(value)s`创建的路由条目数超过上限：`%(limit)s`。
+	LIMITEXCEEDED_VPNGATEWAYROUTESLIMITEXCEEDED = "LimitExceeded.VpnGatewayRoutesLimitExceeded"
+
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
@@ -1207,6 +1210,9 @@ const (
 
 	// 独享型NAT不支持该操作。
 	UNSUPPORTEDOPERATION_NATINSTANCEEXCLUSIVE = "UnsupportedOperation.NatInstanceExclusive"
+
+	// NFV NAT服务不支持该地域。
+	UNSUPPORTEDOPERATION_NATNFVUNSUPPORTEDREGION = "UnsupportedOperation.NatNfvUnsupportedRegion"
 
 	// NAT实例不支持该操作。
 	UNSUPPORTEDOPERATION_NATNOTSUPPORTED = "UnsupportedOperation.NatNotSupported"

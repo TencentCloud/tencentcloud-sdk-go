@@ -861,6 +861,78 @@ func (c *Client) CreateMailProfileWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateMongoDBKillTaskRequest() (request *CreateMongoDBKillTaskRequest) {
+    request = &CreateMongoDBKillTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "CreateMongoDBKillTask")
+    
+    
+    return
+}
+
+func NewCreateMongoDBKillTaskResponse() (response *CreateMongoDBKillTaskResponse) {
+    response = &CreateMongoDBKillTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMongoDBKillTask
+// 创建中断会话的任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateMongoDBKillTask(request *CreateMongoDBKillTaskRequest) (response *CreateMongoDBKillTaskResponse, err error) {
+    return c.CreateMongoDBKillTaskWithContext(context.Background(), request)
+}
+
+// CreateMongoDBKillTask
+// 创建中断会话的任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateMongoDBKillTaskWithContext(ctx context.Context, request *CreateMongoDBKillTaskRequest) (response *CreateMongoDBKillTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateMongoDBKillTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dbbrain", APIVersion, "CreateMongoDBKillTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMongoDBKillTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMongoDBKillTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateProxySessionKillTaskRequest() (request *CreateProxySessionKillTaskRequest) {
     request = &CreateProxySessionKillTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

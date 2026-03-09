@@ -1117,6 +1117,19 @@ type ComparisonDetail struct {
 
 	// 对比文本。
 	DiffText *string `json:"DiffText,omitnil,omitempty" name:"DiffText"`
+
+	// 合同文本的格式类型。
+	// 类型如下：
+	// <ul><li> **0**：段落（正文）</li>
+	// <li> **1**：标点符号</li>
+	// <li> **2**：页眉页脚</li>
+	// <li> **3**：目录</li>
+	// <li> **4**：印章</li>
+	// <li> **5**：序号</li>
+	// <li> **6**：水印</li>
+	// <li> **7**：下划线内容（填写区）</li>
+	// </ul>
+	FormatType *int64 `json:"FormatType,omitnil,omitempty" name:"FormatType"`
 }
 
 type Component struct {
@@ -11995,6 +12008,23 @@ type DescribeContractComparisonTaskRequestParams struct {
 	// 是否返回详细的对比结果。为 true时，响应中将包含详细的对比信息，如相似度、文本差异具体内容等；为 false时，仅返回任务基本状态信息。
 	// 注：`详细结果数据量可能较大，请按需开启。`
 	ShowDetail *bool `json:"ShowDetail,omitnil,omitempty" name:"ShowDetail"`
+
+	// 搜索条件，具体参考Filter结构体。本接口取值：
+	// 
+	// 1. **format-type：**
+	// 按照【 合同文本格式类型 】进行过滤；
+	// 类型：String；
+	// 是否必填项：否；
+	// 类型如下：
+	// <ul><li> **0**：段落（正文）</li>
+	// <li> **1**：标点符号</li>
+	// <li> **2**：页眉页脚</li>
+	// <li> **3**：目录</li>
+	// <li> **4**：印章</li>
+	// <li> **5**：序号</li>
+	// <li> **7**：下划线内容（填写区）</li>
+	// </ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeContractComparisonTaskRequest struct {
@@ -12010,6 +12040,23 @@ type DescribeContractComparisonTaskRequest struct {
 	// 是否返回详细的对比结果。为 true时，响应中将包含详细的对比信息，如相似度、文本差异具体内容等；为 false时，仅返回任务基本状态信息。
 	// 注：`详细结果数据量可能较大，请按需开启。`
 	ShowDetail *bool `json:"ShowDetail,omitnil,omitempty" name:"ShowDetail"`
+
+	// 搜索条件，具体参考Filter结构体。本接口取值：
+	// 
+	// 1. **format-type：**
+	// 按照【 合同文本格式类型 】进行过滤；
+	// 类型：String；
+	// 是否必填项：否；
+	// 类型如下：
+	// <ul><li> **0**：段落（正文）</li>
+	// <li> **1**：标点符号</li>
+	// <li> **2**：页眉页脚</li>
+	// <li> **3**：目录</li>
+	// <li> **4**：印章</li>
+	// <li> **5**：序号</li>
+	// <li> **7**：下划线内容（填写区）</li>
+	// </ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeContractComparisonTaskRequest) ToJsonString() string {
@@ -12027,6 +12074,7 @@ func (r *DescribeContractComparisonTaskRequest) FromJsonString(s string) error {
 	delete(f, "Operator")
 	delete(f, "TaskId")
 	delete(f, "ShowDetail")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContractComparisonTaskRequest has unknown keys!", "")
 	}
@@ -15743,6 +15791,12 @@ type ExtendAuthInfo struct {
 
 type ExtendScene struct {
 	// 印章来源类型
+	// 印章来源类型包括下面几种：
+	// <ul>
+	// <li>CREATE-客户上传图片创建</li>
+	// <li>GENERATE-系统模版印章生成</li>
+	// <li>SIST_SEAL-深圳电子印章</li>
+	// </ul>
 	GenerateType *string `json:"GenerateType,omitnil,omitempty" name:"GenerateType"`
 
 	// 印章来源类型描述
@@ -18382,16 +18436,16 @@ type PermissionGroup struct {
 }
 
 type PositionInfo struct {
-	// PDF文件页X坐标位置,以PDF单页左上角为坐标原点
+	// PDF文件页X坐标位置,以PDF单页左上角为坐标原点，单位是 “点”（Point，简称 pt）
 	X *float64 `json:"X,omitnil,omitempty" name:"X"`
 
-	// PDF文件页Y坐标位置,以PDF单页左上角为坐标原点
+	// PDF文件页Y坐标位置,以PDF单页左上角为坐标原点，单位是 “点”（Point，简称 pt）
 	Y *float64 `json:"Y,omitnil,omitempty" name:"Y"`
 
-	// 距离X坐标的宽度，用于在PDF文件进行画框。
+	// 距离X坐标的宽度，用于在PDF文件进行画框，单位是 “点”（Point，简称 pt）
 	Width *float64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 距离Y坐标的高度，用于在PDF文件进行画框。
+	// 距离Y坐标的高度，用于在PDF文件进行画框，单位是 “点”（Point，简称 pt）
 	Height *float64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// PDF文件页码索引，此值加1就是对应PDF文件的页码。

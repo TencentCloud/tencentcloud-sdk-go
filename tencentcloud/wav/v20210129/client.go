@@ -109,6 +109,10 @@ func NewCreateCorpTagResponse() (response *CreateCorpTagResponse) {
 }
 
 // CreateCorpTag
+// 产品已EOL
+//
+// 
+//
 // 该接口用户设置标签库, 每个企业最多可配置3000个企业标签。
 //
 // 可能返回的错误码:
@@ -125,6 +129,10 @@ func (c *Client) CreateCorpTag(request *CreateCorpTagRequest) (response *CreateC
 }
 
 // CreateCorpTag
+// 产品已EOL
+//
+// 
+//
 // 该接口用户设置标签库, 每个企业最多可配置3000个企业标签。
 //
 // 可能返回的错误码:

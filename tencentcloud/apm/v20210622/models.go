@@ -71,282 +71,363 @@ type ApmAgentInfo struct {
 }
 
 type ApmAppConfig struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceKey *string `json:"InstanceKey,omitnil,omitempty" name:"InstanceKey"`
 
-	// 服务名
+	// <p>服务名</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// URL收敛开关
+	// <p>URL收敛开关</p>
 	UrlConvergenceSwitch *int64 `json:"UrlConvergenceSwitch,omitnil,omitempty" name:"UrlConvergenceSwitch"`
 
-	// URL收敛阈值
+	// <p>URL收敛阈值</p>
 	UrlConvergenceThreshold *int64 `json:"UrlConvergenceThreshold,omitnil,omitempty" name:"UrlConvergenceThreshold"`
 
-	// URL收敛正则
+	// <p>URL收敛正则</p>
 	UrlConvergence *string `json:"UrlConvergence,omitnil,omitempty" name:"UrlConvergence"`
 
-	// 异常过滤正则
+	// <p>异常过滤正则</p>
 	ExceptionFilter *string `json:"ExceptionFilter,omitnil,omitempty" name:"ExceptionFilter"`
 
-	// 错误码过滤
+	// <p>错误码过滤</p>
 	ErrorCodeFilter *string `json:"ErrorCodeFilter,omitnil,omitempty" name:"ErrorCodeFilter"`
 
-	// 服务组件类型
+	// <p>服务组件类型</p>
 	Components *string `json:"Components,omitnil,omitempty" name:"Components"`
 
-	// URL排除正则
+	// <p>URL排除正则</p>
 	UrlExclude *string `json:"UrlExclude,omitnil,omitempty" name:"UrlExclude"`
 
-	// 日志来源
+	// <p>日志来源</p>
 	LogSource *string `json:"LogSource,omitnil,omitempty" name:"LogSource"`
 
-	// 日志所在地域
+	// <p>日志所在地域</p>
 	LogRegion *string `json:"LogRegion,omitnil,omitempty" name:"LogRegion"`
 
-	// 是否开启日志 0 关 1 开
+	// <p>是否开启日志 0 关 1 开</p>
 	IsRelatedLog *int64 `json:"IsRelatedLog,omitnil,omitempty" name:"IsRelatedLog"`
 
-	// 日志主题ID
+	// <p>日志主题ID</p>
 	LogTopicID *string `json:"LogTopicID,omitnil,omitempty" name:"LogTopicID"`
 
-	// 需过滤的接口名
+	// <p>需过滤的接口名</p>
 	IgnoreOperationName *string `json:"IgnoreOperationName,omitnil,omitempty" name:"IgnoreOperationName"`
 
-	// CLS日志集 | ES集群ID
+	// <p>CLS日志集 | ES集群ID</p>
 	LogSet *string `json:"LogSet,omitnil,omitempty" name:"LogSet"`
 
-	// 探针每秒上报trace数
+	// <p>探针每秒上报trace数</p>
 	TraceRateLimit *int64 `json:"TraceRateLimit,omitnil,omitempty" name:"TraceRateLimit"`
 
-	// 是否开启线程剖析
+	// <p>是否开启线程剖析</p>
 	EnableSnapshot *bool `json:"EnableSnapshot,omitnil,omitempty" name:"EnableSnapshot"`
 
-	// 线程剖析超时阈值
+	// <p>线程剖析超时阈值</p>
 	SnapshotTimeout *int64 `json:"SnapshotTimeout,omitnil,omitempty" name:"SnapshotTimeout"`
 
-	// 是否开启agent
+	// <p>是否开启agent</p>
 	AgentEnable *bool `json:"AgentEnable,omitnil,omitempty" name:"AgentEnable"`
 
-	// 组件列表
+	// <p>组件列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstrumentList []*Instrument `json:"InstrumentList,omitnil,omitempty" name:"InstrumentList"`
 
-	// 是否开启链路压缩
+	// <p>是否开启链路压缩</p>
 	TraceSquash *bool `json:"TraceSquash,omitnil,omitempty" name:"TraceSquash"`
 
-	// 是否开启应用诊断开关
+	// <p>是否开启应用诊断开关</p>
 	EventEnable *bool `json:"EventEnable,omitnil,omitempty" name:"EventEnable"`
 
-	// 探针接口相关配置
+	// <p>探针接口相关配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AgentOperationConfigView *AgentOperationConfigView `json:"AgentOperationConfigView,omitnil,omitempty" name:"AgentOperationConfigView"`
 
-	// 是否开启应用日志配置
+	// <p>是否开启应用日志配置</p>
 	EnableLogConfig *bool `json:"EnableLogConfig,omitnil,omitempty" name:"EnableLogConfig"`
 
-	// 应用ID
+	// <p>应用ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceID *string `json:"ServiceID,omitnil,omitempty" name:"ServiceID"`
 
-	// 应用是否开启dashboard配置： false 关（与业务系统保持一致）/true 开（应用级配置）
+	// <p>应用是否开启dashboard配置： false 关（与业务系统保持一致）/true 开（应用级配置）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableDashboardConfig *bool `json:"EnableDashboardConfig,omitnil,omitempty" name:"EnableDashboardConfig"`
 
-	// 是否关联dashboard： 0 关 1 开
+	// <p>是否关联dashboard： 0 关 1 开</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsRelatedDashboard *int64 `json:"IsRelatedDashboard,omitnil,omitempty" name:"IsRelatedDashboard"`
 
-	// dashboard ID
+	// <p>dashboard ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DashboardTopicID *string `json:"DashboardTopicID,omitnil,omitempty" name:"DashboardTopicID"`
 
-	// 是否开启应用级别配置
+	// <p>是否开启应用级别配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableSecurityConfig *bool `json:"EnableSecurityConfig,omitnil,omitempty" name:"EnableSecurityConfig"`
 
-	// 是否开启组件漏洞检测
+	// <p>是否开启组件漏洞检测</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsInstrumentationVulnerabilityScan *int64 `json:"IsInstrumentationVulnerabilityScan,omitnil,omitempty" name:"IsInstrumentationVulnerabilityScan"`
 
-	// 是否开启SQL注入分析
+	// <p>是否开启SQL注入分析</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSqlInjectionAnalysis *int64 `json:"IsSqlInjectionAnalysis,omitnil,omitempty" name:"IsSqlInjectionAnalysis"`
 
-	// 是否开启远程命令执行分析
+	// <p>是否开启远程命令执行分析</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsRemoteCommandExecutionAnalysis *int64 `json:"IsRemoteCommandExecutionAnalysis,omitnil,omitempty" name:"IsRemoteCommandExecutionAnalysis"`
 
-	// 是否开启内存马检测分析
+	// <p>是否开启内存马检测分析</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsMemoryHijackingAnalysis *int64 `json:"IsMemoryHijackingAnalysis,omitnil,omitempty" name:"IsMemoryHijackingAnalysis"`
 
-	// CLS索引类型(0=全文索引，1=键值索引)
+	// <p>CLS索引类型(0=全文索引，1=键值索引)</p>
 	LogIndexType *int64 `json:"LogIndexType,omitnil,omitempty" name:"LogIndexType"`
 
-	// traceId的索引key: 当CLS索引类型为键值索引时生效
+	// <p>traceId的索引key: 当CLS索引类型为键值索引时生效</p>
 	LogTraceIdKey *string `json:"LogTraceIdKey,omitnil,omitempty" name:"LogTraceIdKey"`
 
-	// 是否开启删除任意文件检测（0-关闭，1-开启）
+	// <p>是否开启删除任意文件检测（0-关闭，1-开启）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDeleteAnyFileAnalysis *int64 `json:"IsDeleteAnyFileAnalysis,omitnil,omitempty" name:"IsDeleteAnyFileAnalysis"`
 
-	// 是否开启读取任意文件检测（0-关闭，1-开启）
+	// <p>是否开启读取任意文件检测（0-关闭，1-开启）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsReadAnyFileAnalysis *int64 `json:"IsReadAnyFileAnalysis,omitnil,omitempty" name:"IsReadAnyFileAnalysis"`
 
-	// 是否开启上传任意文件检测（0-关闭，1-开启）
+	// <p>是否开启上传任意文件检测（0-关闭，1-开启）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUploadAnyFileAnalysis *int64 `json:"IsUploadAnyFileAnalysis,omitnil,omitempty" name:"IsUploadAnyFileAnalysis"`
 
-	// 是否开启包含任意文件检测（0-关闭，1-开启）
+	// <p>是否开启包含任意文件检测（0-关闭，1-开启）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsIncludeAnyFileAnalysis *int64 `json:"IsIncludeAnyFileAnalysis,omitnil,omitempty" name:"IsIncludeAnyFileAnalysis"`
 
-	// 是否开启目录遍历检测（0-关闭，1-开启）
+	// <p>是否开启目录遍历检测（0-关闭，1-开启）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDirectoryTraversalAnalysis *int64 `json:"IsDirectoryTraversalAnalysis,omitnil,omitempty" name:"IsDirectoryTraversalAnalysis"`
 
-	// 是否开启模板引擎注入检测（0-关闭，1-开启）
+	// <p>是否开启模板引擎注入检测（0-关闭，1-开启）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsTemplateEngineInjectionAnalysis *int64 `json:"IsTemplateEngineInjectionAnalysis,omitnil,omitempty" name:"IsTemplateEngineInjectionAnalysis"`
 
-	// 是否开启脚本引擎注入检测（0-关闭，1-开启）
+	// <p>是否开启脚本引擎注入检测（0-关闭，1-开启）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsScriptEngineInjectionAnalysis *int64 `json:"IsScriptEngineInjectionAnalysis,omitnil,omitempty" name:"IsScriptEngineInjectionAnalysis"`
 
-	// 是否开启表达式注入检测（0-关闭，1-开启）
+	// <p>是否开启表达式注入检测（0-关闭，1-开启）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsExpressionInjectionAnalysis *int64 `json:"IsExpressionInjectionAnalysis,omitnil,omitempty" name:"IsExpressionInjectionAnalysis"`
 
-	// 是否开启JNDI注入检测（0-关闭，1-开启）
+	// <p>是否开启JNDI注入检测（0-关闭，1-开启）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsJNDIInjectionAnalysis *int64 `json:"IsJNDIInjectionAnalysis,omitnil,omitempty" name:"IsJNDIInjectionAnalysis"`
 
-	// 是否开启JNI注入检测（0-关闭，1-开启）
+	// <p>是否开启JNI注入检测（0-关闭，1-开启）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsJNIInjectionAnalysis *int64 `json:"IsJNIInjectionAnalysis,omitnil,omitempty" name:"IsJNIInjectionAnalysis"`
 
-	// 是否开启Webshell后门检测（0-关闭，1-开启）
+	// <p>是否开启Webshell后门检测（0-关闭，1-开启）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsWebshellBackdoorAnalysis *int64 `json:"IsWebshellBackdoorAnalysis,omitnil,omitempty" name:"IsWebshellBackdoorAnalysis"`
 
-	// 是否开启反序列化检测（0-关闭，1-开启）
+	// <p>是否开启反序列化检测（0-关闭，1-开启）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDeserializationAnalysis *int64 `json:"IsDeserializationAnalysis,omitnil,omitempty" name:"IsDeserializationAnalysis"`
 
-	// 接口名称自动收敛开关（0-关闭，1-开启）
+	// <p>接口名称自动收敛开关（0-关闭，1-开启）</p>
 	UrlAutoConvergenceEnable *bool `json:"UrlAutoConvergenceEnable,omitnil,omitempty" name:"UrlAutoConvergenceEnable"`
 
-	// URL长分段收敛阈值
+	// <p>URL长分段收敛阈值</p>
 	UrlLongSegmentThreshold *int64 `json:"UrlLongSegmentThreshold,omitnil,omitempty" name:"UrlLongSegmentThreshold"`
 
-	// URL数字分段收敛阈值
+	// <p>URL数字分段收敛阈值</p>
 	UrlNumberSegmentThreshold *int64 `json:"UrlNumberSegmentThreshold,omitnil,omitempty" name:"UrlNumberSegmentThreshold"`
 
-	// 探针熔断内存阈值
+	// <p>探针熔断内存阈值</p>
 	DisableMemoryUsed *int64 `json:"DisableMemoryUsed,omitnil,omitempty" name:"DisableMemoryUsed"`
 
-	// 探针熔断CPU阈值
+	// <p>探针熔断CPU阈值</p>
 	DisableCpuUsed *int64 `json:"DisableCpuUsed,omitnil,omitempty" name:"DisableCpuUsed"`
 
-	// 是否开启SQL参数获取
+	// <p>是否开启SQL参数获取</p>
 	DbStatementParametersEnabled *bool `json:"DbStatementParametersEnabled,omitnil,omitempty" name:"DbStatementParametersEnabled"`
 
-	// 慢SQL阈值
+	// <p>慢SQL阈值</p>
 	SlowSQLThresholds []*ApmTag `json:"SlowSQLThresholds,omitnil,omitempty" name:"SlowSQLThresholds"`
 
-	// 是否开启脱敏规则
+	// <p>是否开启脱敏规则</p>
 	EnableDesensitizationRule *int64 `json:"EnableDesensitizationRule,omitnil,omitempty" name:"EnableDesensitizationRule"`
 
-	// 脱敏规则
+	// <p>脱敏规则</p>
 	DesensitizationRule *string `json:"DesensitizationRule,omitnil,omitempty" name:"DesensitizationRule"`
 
-	// spanId的索引key: 当CLS索引类型为键值索引时生效
+	// <p>spanId的索引key: 当CLS索引类型为键值索引时生效</p>
 	LogSpanIdKey *string `json:"LogSpanIdKey,omitnil,omitempty" name:"LogSpanIdKey"`
 
-	// 自动性能剖析配置
+	// <p>自动性能剖析配置</p>
 	AutoProfilingConfig *AutoProfilingConfig `json:"AutoProfilingConfig,omitnil,omitempty" name:"AutoProfilingConfig"`
+
+	// <p>阈值配置开关。true 表示使用应用级阈值；false 表示使用业务系统级阈值</p>
+	EnableThresholdConfig *bool `json:"EnableThresholdConfig,omitnil,omitempty" name:"EnableThresholdConfig"`
+
+	// <p>错误率阈值（%），用于判断应用健康状态为&quot;红色&quot;</p>
+	ErrRateThreshold *int64 `json:"ErrRateThreshold,omitnil,omitempty" name:"ErrRateThreshold"`
+
+	// <p>响应时间预警阈值（ms），用于判断应用健康状态为&quot;黄色&quot;</p>
+	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
 }
 
 type ApmApplicationConfigView struct {
-	// 业务系统 ID
+	// <p>业务系统 ID</p>
 	InstanceKey *string `json:"InstanceKey,omitnil,omitempty" name:"InstanceKey"`
 
-	// 应用名	
+	// <p>应用名</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 接口过滤
+	// <p>接口过滤</p>
 	OperationNameFilter *string `json:"OperationNameFilter,omitnil,omitempty" name:"OperationNameFilter"`
 
-	// 错误类型过滤
+	// <p>错误类型过滤</p>
 	ExceptionFilter *string `json:"ExceptionFilter,omitnil,omitempty" name:"ExceptionFilter"`
 
-	// HTTP 状态码过滤
+	// <p>HTTP 状态码过滤</p>
 	ErrorCodeFilter *string `json:"ErrorCodeFilter,omitnil,omitempty" name:"ErrorCodeFilter"`
 
-	// 应用诊断开关（已废弃）
+	// <p>应用诊断开关（已废弃）</p>
 	EventEnable *bool `json:"EventEnable,omitnil,omitempty" name:"EventEnable"`
 
-	// URL 收敛开关 0 关 1 开
+	// <p>URL 收敛开关 0 关 1 开</p>
 	UrlConvergenceSwitch *int64 `json:"UrlConvergenceSwitch,omitnil,omitempty" name:"UrlConvergenceSwitch"`
 
-	// URL 收敛阈值	
+	// <p>URL 收敛阈值</p>
 	UrlConvergenceThreshold *int64 `json:"UrlConvergenceThreshold,omitnil,omitempty" name:"UrlConvergenceThreshold"`
 
-	// URL 收敛规则正则	
+	// <p>URL 收敛规则正则</p>
 	UrlConvergence *string `json:"UrlConvergence,omitnil,omitempty" name:"UrlConvergence"`
 
-	// URL 排除规则正则
+	// <p>URL 排除规则正则</p>
 	UrlExclude *string `json:"UrlExclude,omitnil,omitempty" name:"UrlExclude"`
 
-	// 是否开启日志 0 关 1 开
+	// <p>是否开启日志 0 关 1 开</p>
 	IsRelatedLog *int64 `json:"IsRelatedLog,omitnil,omitempty" name:"IsRelatedLog"`
 
-	// 日志源	
+	// <p>日志源</p>
 	LogSource *string `json:"LogSource,omitnil,omitempty" name:"LogSource"`
 
-	// 日志集 
+	// <p>日志集</p>
 	LogSet *string `json:"LogSet,omitnil,omitempty" name:"LogSet"`
 
-	// 日志主题
+	// <p>日志主题</p>
 	LogTopicID *string `json:"LogTopicID,omitnil,omitempty" name:"LogTopicID"`
 
-	// 方法栈快照开关 true 开启 false 关闭
+	// <p>方法栈快照开关 true 开启 false 关闭</p>
 	SnapshotEnable *bool `json:"SnapshotEnable,omitnil,omitempty" name:"SnapshotEnable"`
 
-	// 慢调用监听触发阈值
+	// <p>慢调用监听触发阈值</p>
 	SnapshotTimeout *int64 `json:"SnapshotTimeout,omitnil,omitempty" name:"SnapshotTimeout"`
 
-	// 探针总开关
+	// <p>探针总开关</p>
 	AgentEnable *bool `json:"AgentEnable,omitnil,omitempty" name:"AgentEnable"`
 
-	// 组件列表开关（已废弃）
+	// <p>组件列表开关（已废弃）</p>
 	InstrumentList []*Instrument `json:"InstrumentList,omitnil,omitempty" name:"InstrumentList"`
 
-	// 链路压缩开关（已废弃）
+	// <p>链路压缩开关（已废弃）</p>
 	TraceSquash *bool `json:"TraceSquash,omitnil,omitempty" name:"TraceSquash"`
 
-	// 探针熔断内存阈值
+	// <p>链路过滤配置</p>
+	AgentIgnoreOperation *string `json:"AgentIgnoreOperation,omitnil,omitempty" name:"AgentIgnoreOperation"`
+
+	// <p>开启应用安全开关</p>
+	EnableSecurityConfig *bool `json:"EnableSecurityConfig,omitnil,omitempty" name:"EnableSecurityConfig"`
+
+	// <p>是否开启SQL注入检测</p>
+	IsSqlInjectionAnalysis *int64 `json:"IsSqlInjectionAnalysis,omitnil,omitempty" name:"IsSqlInjectionAnalysis"`
+
+	// <p>是否开启组件漏洞检测</p>
+	IsInstrumentationVulnerabilityScan *int64 `json:"IsInstrumentationVulnerabilityScan,omitnil,omitempty" name:"IsInstrumentationVulnerabilityScan"`
+
+	// <p>是否开启远程命令执行检测</p>
+	IsRemoteCommandExecutionAnalysis *int64 `json:"IsRemoteCommandExecutionAnalysis,omitnil,omitempty" name:"IsRemoteCommandExecutionAnalysis"`
+
+	// <p>是否开启内存泄漏检测</p>
+	IsMemoryHijackingAnalysis *int64 `json:"IsMemoryHijackingAnalysis,omitnil,omitempty" name:"IsMemoryHijackingAnalysis"`
+
+	// <p>是否开启删除任意文件检测</p>
+	IsDeleteAnyFileAnalysis *int64 `json:"IsDeleteAnyFileAnalysis,omitnil,omitempty" name:"IsDeleteAnyFileAnalysis"`
+
+	// <p>是否开启读取任意文件检测</p>
+	IsReadAnyFileAnalysis *int64 `json:"IsReadAnyFileAnalysis,omitnil,omitempty" name:"IsReadAnyFileAnalysis"`
+
+	// <p>是否开启上传任意文件检测</p>
+	IsUploadAnyFileAnalysis *int64 `json:"IsUploadAnyFileAnalysis,omitnil,omitempty" name:"IsUploadAnyFileAnalysis"`
+
+	// <p>是否开启包含任意文件检测</p>
+	IsIncludeAnyFileAnalysis *int64 `json:"IsIncludeAnyFileAnalysis,omitnil,omitempty" name:"IsIncludeAnyFileAnalysis"`
+
+	// <p>是否开启目录遍历检测</p>
+	IsDirectoryTraversalAnalysis *int64 `json:"IsDirectoryTraversalAnalysis,omitnil,omitempty" name:"IsDirectoryTraversalAnalysis"`
+
+	// <p>是否开启模板引擎注入检测</p>
+	IsTemplateEngineInjectionAnalysis *int64 `json:"IsTemplateEngineInjectionAnalysis,omitnil,omitempty" name:"IsTemplateEngineInjectionAnalysis"`
+
+	// <p>是否开启脚本引擎注入检测</p>
+	IsScriptEngineInjectionAnalysis *int64 `json:"IsScriptEngineInjectionAnalysis,omitnil,omitempty" name:"IsScriptEngineInjectionAnalysis"`
+
+	// <p>是否开启表达式注入检测</p>
+	IsExpressionInjectionAnalysis *int64 `json:"IsExpressionInjectionAnalysis,omitnil,omitempty" name:"IsExpressionInjectionAnalysis"`
+
+	// <p>是否开启JNDI注入检测</p>
+	IsJndiInjectionAnalysis *int64 `json:"IsJndiInjectionAnalysis,omitnil,omitempty" name:"IsJndiInjectionAnalysis"`
+
+	// <p>是否开启JNI注入检测</p>
+	IsJniInjectionAnalysis *int64 `json:"IsJniInjectionAnalysis,omitnil,omitempty" name:"IsJniInjectionAnalysis"`
+
+	// <p>是否开启Webshell后门检测</p>
+	IsWebshellBackdoorAnalysis *int64 `json:"IsWebshellBackdoorAnalysis,omitnil,omitempty" name:"IsWebshellBackdoorAnalysis"`
+
+	// <p>是否开启反序列化检测</p>
+	IsDeserializationAnalysis *int64 `json:"IsDeserializationAnalysis,omitnil,omitempty" name:"IsDeserializationAnalysis"`
+
+	// <p>是否开启控制台开关</p>
+	EnableDashboardConfig *bool `json:"EnableDashboardConfig,omitnil,omitempty" name:"EnableDashboardConfig"`
+
+	// <p>是否关联Dashboard</p>
+	IsRelatedDashboard *int64 `json:"IsRelatedDashboard,omitnil,omitempty" name:"IsRelatedDashboard"`
+
+	// <p>Dashboard topic</p>
+	DashboardTopicID *string `json:"DashboardTopicID,omitnil,omitempty" name:"DashboardTopicID"`
+
+	// <p>探针熔断内存阈值</p>
 	DisableMemoryUsed *int64 `json:"DisableMemoryUsed,omitnil,omitempty" name:"DisableMemoryUsed"`
 
-	// 探针熔断CPU阈值
+	// <p>探针熔断CPU阈值</p>
 	DisableCpuUsed *int64 `json:"DisableCpuUsed,omitnil,omitempty" name:"DisableCpuUsed"`
 
-	// 是否开启SQL参数获取
+	// <p>是否开启SQL参数获取</p>
 	DbStatementParametersEnabled *bool `json:"DbStatementParametersEnabled,omitnil,omitempty" name:"DbStatementParametersEnabled"`
 
-	// 慢SQL阈值
+	// <p>慢SQL阈值</p>
 	SlowSQLThresholds []*ApmTag `json:"SlowSQLThresholds,omitnil,omitempty" name:"SlowSQLThresholds"`
 
-	// 是否开启脱敏规则
+	// <p>是否开启脱敏规则</p>
 	EnableDesensitizationRule *int64 `json:"EnableDesensitizationRule,omitnil,omitempty" name:"EnableDesensitizationRule"`
 
-	// 脱敏规则
+	// <p>脱敏规则</p>
 	DesensitizationRule *string `json:"DesensitizationRule,omitnil,omitempty" name:"DesensitizationRule"`
 
-	// 自动性能剖析任务配置
+	// <p>自动性能剖析任务配置</p>
 	AutoProfilingConfig *AutoProfilingConfig `json:"AutoProfilingConfig,omitnil,omitempty" name:"AutoProfilingConfig"`
+
+	// <p>阈值配置开关</p>
+	EnableThresholdConfig *bool `json:"EnableThresholdConfig,omitnil,omitempty" name:"EnableThresholdConfig"`
+
+	// <p>错误率阈值</p><p>单位：%</p>
+	ErrRateThreshold *int64 `json:"ErrRateThreshold,omitnil,omitempty" name:"ErrRateThreshold"`
+
+	// <p>响应时间预警阈值</p><p>单位：ms</p>
+	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
 }
 
 type ApmAssociation struct {
@@ -3269,339 +3350,357 @@ type Line struct {
 
 // Predefined struct for user
 type ModifyApmApplicationConfigRequestParams struct {
-	// 业务系统 ID
+	// <p>业务系统 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 应用名
+	// <p>应用名</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// URL收敛开关,0 关 | 1 开
+	// <p>URL收敛开关,0 关 | 1 开</p>
 	UrlConvergenceSwitch *int64 `json:"UrlConvergenceSwitch,omitnil,omitempty" name:"UrlConvergenceSwitch"`
 
-	// URL收敛阈值
+	// <p>URL收敛阈值</p>
 	UrlConvergenceThreshold *int64 `json:"UrlConvergenceThreshold,omitnil,omitempty" name:"UrlConvergenceThreshold"`
 
-	// 异常过滤正则规则，逗号分隔
+	// <p>异常过滤正则规则，逗号分隔</p>
 	ExceptionFilter *string `json:"ExceptionFilter,omitnil,omitempty" name:"ExceptionFilter"`
 
-	// URL收敛正则规则，逗号分隔
+	// <p>URL收敛正则规则，逗号分隔</p>
 	UrlConvergence *string `json:"UrlConvergence,omitnil,omitempty" name:"UrlConvergence"`
 
-	// 错误码过滤，逗号分隔
+	// <p>错误码过滤，逗号分隔</p>
 	ErrorCodeFilter *string `json:"ErrorCodeFilter,omitnil,omitempty" name:"ErrorCodeFilter"`
 
-	// URL排除正则规则，逗号分隔
+	// <p>URL排除正则规则，逗号分隔</p>
 	UrlExclude *string `json:"UrlExclude,omitnil,omitempty" name:"UrlExclude"`
 
-	// 日志开关 0 关 1 开
+	// <p>日志开关 0 关 1 开</p>
 	IsRelatedLog *int64 `json:"IsRelatedLog,omitnil,omitempty" name:"IsRelatedLog"`
 
-	// 日志地域
+	// <p>日志地域</p>
 	LogRegion *string `json:"LogRegion,omitnil,omitempty" name:"LogRegion"`
 
-	// 日志主题ID
+	// <p>日志主题ID</p>
 	LogTopicID *string `json:"LogTopicID,omitnil,omitempty" name:"LogTopicID"`
 
-	// CLS 日志集 | ES 集群ID
+	// <p>CLS 日志集 | ES 集群ID</p>
 	LogSet *string `json:"LogSet,omitnil,omitempty" name:"LogSet"`
 
-	// 日志来源 CLS | ES
+	// <p>日志来源 CLS | ES</p>
 	LogSource *string `json:"LogSource,omitnil,omitempty" name:"LogSource"`
 
-	// 需过滤的接口
+	// <p>需过滤的接口</p>
 	IgnoreOperationName *string `json:"IgnoreOperationName,omitnil,omitempty" name:"IgnoreOperationName"`
 
-	// 是否开启线程剖析
+	// <p>是否开启线程剖析</p>
 	EnableSnapshot *bool `json:"EnableSnapshot,omitnil,omitempty" name:"EnableSnapshot"`
 
-	// 线程剖析超时阈值
+	// <p>线程剖析超时阈值</p>
 	SnapshotTimeout *int64 `json:"SnapshotTimeout,omitnil,omitempty" name:"SnapshotTimeout"`
 
-	// 是否开启agent
+	// <p>是否开启agent</p>
 	AgentEnable *bool `json:"AgentEnable,omitnil,omitempty" name:"AgentEnable"`
 
-	// 是否开启链路压缩
+	// <p>是否开启链路压缩</p>
 	TraceSquash *bool `json:"TraceSquash,omitnil,omitempty" name:"TraceSquash"`
 
-	// 是否开启应用诊断的开关
+	// <p>是否开启应用诊断的开关</p>
 	EventEnable *bool `json:"EventEnable,omitnil,omitempty" name:"EventEnable"`
 
-	// 组件列表
+	// <p>组件列表</p>
 	InstrumentList []*Instrument `json:"InstrumentList,omitnil,omitempty" name:"InstrumentList"`
 
-	// 探针接口相关配置
+	// <p>探针接口相关配置</p>
 	AgentOperationConfigView *AgentOperationConfigView `json:"AgentOperationConfigView,omitnil,omitempty" name:"AgentOperationConfigView"`
 
-	// 是否开启应用日志配置
+	// <p>是否开启应用日志配置</p>
 	EnableLogConfig *bool `json:"EnableLogConfig,omitnil,omitempty" name:"EnableLogConfig"`
 
-	// 应用是否开启dashboard配置： false 关（与业务系统保持一致）/true 开（应用级配置）
+	// <p>应用是否开启dashboard配置： false 关（与业务系统保持一致）/true 开（应用级配置）</p>
 	EnableDashboardConfig *bool `json:"EnableDashboardConfig,omitnil,omitempty" name:"EnableDashboardConfig"`
 
-	// 是否关联dashboard： 0 关 1 开
+	// <p>是否关联dashboard： 0 关 1 开</p>
 	IsRelatedDashboard *int64 `json:"IsRelatedDashboard,omitnil,omitempty" name:"IsRelatedDashboard"`
 
-	// dashboard ID
+	// <p>dashboard ID</p>
 	DashboardTopicID *string `json:"DashboardTopicID,omitnil,omitempty" name:"DashboardTopicID"`
 
-	// CLS索引类型(0=全文索引，1=键值索引)
+	// <p>CLS索引类型(0=全文索引，1=键值索引)</p>
 	LogIndexType *int64 `json:"LogIndexType,omitnil,omitempty" name:"LogIndexType"`
 
-	// traceId的索引key: 当CLS索引类型为键值索引时生效
+	// <p>traceId的索引key: 当CLS索引类型为键值索引时生效</p>
 	LogTraceIdKey *string `json:"LogTraceIdKey,omitnil,omitempty" name:"LogTraceIdKey"`
 
-	// 是否开启应用安全配置
+	// <p>是否开启应用安全配置</p>
 	EnableSecurityConfig *bool `json:"EnableSecurityConfig,omitnil,omitempty" name:"EnableSecurityConfig"`
 
-	// 是否开启SQL注入分析
+	// <p>是否开启SQL注入分析</p>
 	IsSqlInjectionAnalysis *int64 `json:"IsSqlInjectionAnalysis,omitnil,omitempty" name:"IsSqlInjectionAnalysis"`
 
-	// 是否开启组件漏洞检测
+	// <p>是否开启组件漏洞检测</p>
 	IsInstrumentationVulnerabilityScan *int64 `json:"IsInstrumentationVulnerabilityScan,omitnil,omitempty" name:"IsInstrumentationVulnerabilityScan"`
 
-	// 是否开启远程命令检测
+	// <p>是否开启远程命令检测</p>
 	IsRemoteCommandExecutionAnalysis *int64 `json:"IsRemoteCommandExecutionAnalysis,omitnil,omitempty" name:"IsRemoteCommandExecutionAnalysis"`
 
-	// 是否开启内存马检测
+	// <p>是否开启内存马检测</p>
 	IsMemoryHijackingAnalysis *int64 `json:"IsMemoryHijackingAnalysis,omitnil,omitempty" name:"IsMemoryHijackingAnalysis"`
 
-	// 是否开启删除任意文件检测（0-关闭，1-开启）
+	// <p>是否开启删除任意文件检测（0-关闭，1-开启）</p>
 	IsDeleteAnyFileAnalysis *int64 `json:"IsDeleteAnyFileAnalysis,omitnil,omitempty" name:"IsDeleteAnyFileAnalysis"`
 
-	// 是否开启读取任意文件检测（0-关闭，1-开启）
+	// <p>是否开启读取任意文件检测（0-关闭，1-开启）</p>
 	IsReadAnyFileAnalysis *int64 `json:"IsReadAnyFileAnalysis,omitnil,omitempty" name:"IsReadAnyFileAnalysis"`
 
-	// 是否开启上传任意文件检测（0-关闭，1-开启）
+	// <p>是否开启上传任意文件检测（0-关闭，1-开启）</p>
 	IsUploadAnyFileAnalysis *int64 `json:"IsUploadAnyFileAnalysis,omitnil,omitempty" name:"IsUploadAnyFileAnalysis"`
 
-	// 是否开启包含任意文件检测（0-关闭，1-开启）
+	// <p>是否开启包含任意文件检测（0-关闭，1-开启）</p>
 	IsIncludeAnyFileAnalysis *int64 `json:"IsIncludeAnyFileAnalysis,omitnil,omitempty" name:"IsIncludeAnyFileAnalysis"`
 
-	// 是否开启目录遍历检测（0-关闭，1-开启）
+	// <p>是否开启目录遍历检测（0-关闭，1-开启）</p>
 	IsDirectoryTraversalAnalysis *int64 `json:"IsDirectoryTraversalAnalysis,omitnil,omitempty" name:"IsDirectoryTraversalAnalysis"`
 
-	// 是否开启模板引擎注入检测（0-关闭，1-开启）
+	// <p>是否开启模板引擎注入检测（0-关闭，1-开启）</p>
 	IsTemplateEngineInjectionAnalysis *int64 `json:"IsTemplateEngineInjectionAnalysis,omitnil,omitempty" name:"IsTemplateEngineInjectionAnalysis"`
 
-	// 是否开启脚本引擎注入检测（0-关闭，1-开启）
+	// <p>是否开启脚本引擎注入检测（0-关闭，1-开启）</p>
 	IsScriptEngineInjectionAnalysis *int64 `json:"IsScriptEngineInjectionAnalysis,omitnil,omitempty" name:"IsScriptEngineInjectionAnalysis"`
 
-	// 是否开启表达式注入检测（0-关闭，1-开启）
+	// <p>是否开启表达式注入检测（0-关闭，1-开启）</p>
 	IsExpressionInjectionAnalysis *int64 `json:"IsExpressionInjectionAnalysis,omitnil,omitempty" name:"IsExpressionInjectionAnalysis"`
 
-	// 是否开启JNDI注入检测（0-关闭，1-开启）
+	// <p>是否开启JNDI注入检测（0-关闭，1-开启）</p>
 	IsJNDIInjectionAnalysis *int64 `json:"IsJNDIInjectionAnalysis,omitnil,omitempty" name:"IsJNDIInjectionAnalysis"`
 
-	// 是否开启JNI注入检测（0-关闭，1-开启）
+	// <p>是否开启JNI注入检测（0-关闭，1-开启）</p>
 	IsJNIInjectionAnalysis *int64 `json:"IsJNIInjectionAnalysis,omitnil,omitempty" name:"IsJNIInjectionAnalysis"`
 
-	// 是否开启Webshell后门检测（0-关闭，1-开启）
+	// <p>是否开启Webshell后门检测（0-关闭，1-开启）</p>
 	IsWebshellBackdoorAnalysis *int64 `json:"IsWebshellBackdoorAnalysis,omitnil,omitempty" name:"IsWebshellBackdoorAnalysis"`
 
-	// 是否开启反序列化检测（0-关闭，1-开启）
+	// <p>是否开启反序列化检测（0-关闭，1-开启）</p>
 	IsDeserializationAnalysis *int64 `json:"IsDeserializationAnalysis,omitnil,omitempty" name:"IsDeserializationAnalysis"`
 
-	// 接口自动收敛开关,0 关 | 1 开
+	// <p>接口自动收敛开关,0 关 | 1 开</p>
 	UrlAutoConvergenceEnable *bool `json:"UrlAutoConvergenceEnable,omitnil,omitempty" name:"UrlAutoConvergenceEnable"`
 
-	// URL长分段收敛阈值
+	// <p>URL长分段收敛阈值</p>
 	UrlLongSegmentThreshold *int64 `json:"UrlLongSegmentThreshold,omitnil,omitempty" name:"UrlLongSegmentThreshold"`
 
-	// URL数字分段收敛阈值
+	// <p>URL数字分段收敛阈值</p>
 	UrlNumberSegmentThreshold *int64 `json:"UrlNumberSegmentThreshold,omitnil,omitempty" name:"UrlNumberSegmentThreshold"`
 
-	// 探针熔断内存阈值
+	// <p>探针熔断内存阈值</p>
 	DisableMemoryUsed *int64 `json:"DisableMemoryUsed,omitnil,omitempty" name:"DisableMemoryUsed"`
 
-	// 探针熔断CPU阈值
+	// <p>探针熔断CPU阈值</p>
 	DisableCpuUsed *int64 `json:"DisableCpuUsed,omitnil,omitempty" name:"DisableCpuUsed"`
 
-	// 是否开启SQL参数获取
+	// <p>是否开启SQL参数获取</p>
 	DbStatementParametersEnabled *bool `json:"DbStatementParametersEnabled,omitnil,omitempty" name:"DbStatementParametersEnabled"`
 
-	// 慢SQL阈值
+	// <p>慢SQL阈值</p>
 	SlowSQLThresholds []*ApmTag `json:"SlowSQLThresholds,omitnil,omitempty" name:"SlowSQLThresholds"`
 
-	// 是否开启脱敏规则
+	// <p>是否开启脱敏规则</p>
 	EnableDesensitizationRule *int64 `json:"EnableDesensitizationRule,omitnil,omitempty" name:"EnableDesensitizationRule"`
 
-	// 脱敏规则
+	// <p>脱敏规则</p>
 	DesensitizationRule *string `json:"DesensitizationRule,omitnil,omitempty" name:"DesensitizationRule"`
 
-	// spanId的索引key: 当CLS索引类型为键值索引时生效
+	// <p>spanId的索引key: 当CLS索引类型为键值索引时生效</p>
 	LogSpanIdKey *string `json:"LogSpanIdKey,omitnil,omitempty" name:"LogSpanIdKey"`
 
-	// 自动性能剖析任务配置
+	// <p>自动性能剖析任务配置</p>
 	AutoProfilingConfig *AutoProfilingConfig `json:"AutoProfilingConfig,omitnil,omitempty" name:"AutoProfilingConfig"`
+
+	// <p>阈值配置开关。true 表示使用应用级阈值；false 表示使用业务系统级阈值</p>
+	EnableThresholdConfig *bool `json:"EnableThresholdConfig,omitnil,omitempty" name:"EnableThresholdConfig"`
+
+	// <p>错误率阈值（%），用于判断应用健康状态为&quot;红色&quot;</p>
+	ErrRateThreshold *int64 `json:"ErrRateThreshold,omitnil,omitempty" name:"ErrRateThreshold"`
+
+	// <p>响应时间预警阈值（ms），用于判断应用健康状态为&quot;黄色&quot;</p>
+	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
 }
 
 type ModifyApmApplicationConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务系统 ID
+	// <p>业务系统 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 应用名
+	// <p>应用名</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// URL收敛开关,0 关 | 1 开
+	// <p>URL收敛开关,0 关 | 1 开</p>
 	UrlConvergenceSwitch *int64 `json:"UrlConvergenceSwitch,omitnil,omitempty" name:"UrlConvergenceSwitch"`
 
-	// URL收敛阈值
+	// <p>URL收敛阈值</p>
 	UrlConvergenceThreshold *int64 `json:"UrlConvergenceThreshold,omitnil,omitempty" name:"UrlConvergenceThreshold"`
 
-	// 异常过滤正则规则，逗号分隔
+	// <p>异常过滤正则规则，逗号分隔</p>
 	ExceptionFilter *string `json:"ExceptionFilter,omitnil,omitempty" name:"ExceptionFilter"`
 
-	// URL收敛正则规则，逗号分隔
+	// <p>URL收敛正则规则，逗号分隔</p>
 	UrlConvergence *string `json:"UrlConvergence,omitnil,omitempty" name:"UrlConvergence"`
 
-	// 错误码过滤，逗号分隔
+	// <p>错误码过滤，逗号分隔</p>
 	ErrorCodeFilter *string `json:"ErrorCodeFilter,omitnil,omitempty" name:"ErrorCodeFilter"`
 
-	// URL排除正则规则，逗号分隔
+	// <p>URL排除正则规则，逗号分隔</p>
 	UrlExclude *string `json:"UrlExclude,omitnil,omitempty" name:"UrlExclude"`
 
-	// 日志开关 0 关 1 开
+	// <p>日志开关 0 关 1 开</p>
 	IsRelatedLog *int64 `json:"IsRelatedLog,omitnil,omitempty" name:"IsRelatedLog"`
 
-	// 日志地域
+	// <p>日志地域</p>
 	LogRegion *string `json:"LogRegion,omitnil,omitempty" name:"LogRegion"`
 
-	// 日志主题ID
+	// <p>日志主题ID</p>
 	LogTopicID *string `json:"LogTopicID,omitnil,omitempty" name:"LogTopicID"`
 
-	// CLS 日志集 | ES 集群ID
+	// <p>CLS 日志集 | ES 集群ID</p>
 	LogSet *string `json:"LogSet,omitnil,omitempty" name:"LogSet"`
 
-	// 日志来源 CLS | ES
+	// <p>日志来源 CLS | ES</p>
 	LogSource *string `json:"LogSource,omitnil,omitempty" name:"LogSource"`
 
-	// 需过滤的接口
+	// <p>需过滤的接口</p>
 	IgnoreOperationName *string `json:"IgnoreOperationName,omitnil,omitempty" name:"IgnoreOperationName"`
 
-	// 是否开启线程剖析
+	// <p>是否开启线程剖析</p>
 	EnableSnapshot *bool `json:"EnableSnapshot,omitnil,omitempty" name:"EnableSnapshot"`
 
-	// 线程剖析超时阈值
+	// <p>线程剖析超时阈值</p>
 	SnapshotTimeout *int64 `json:"SnapshotTimeout,omitnil,omitempty" name:"SnapshotTimeout"`
 
-	// 是否开启agent
+	// <p>是否开启agent</p>
 	AgentEnable *bool `json:"AgentEnable,omitnil,omitempty" name:"AgentEnable"`
 
-	// 是否开启链路压缩
+	// <p>是否开启链路压缩</p>
 	TraceSquash *bool `json:"TraceSquash,omitnil,omitempty" name:"TraceSquash"`
 
-	// 是否开启应用诊断的开关
+	// <p>是否开启应用诊断的开关</p>
 	EventEnable *bool `json:"EventEnable,omitnil,omitempty" name:"EventEnable"`
 
-	// 组件列表
+	// <p>组件列表</p>
 	InstrumentList []*Instrument `json:"InstrumentList,omitnil,omitempty" name:"InstrumentList"`
 
-	// 探针接口相关配置
+	// <p>探针接口相关配置</p>
 	AgentOperationConfigView *AgentOperationConfigView `json:"AgentOperationConfigView,omitnil,omitempty" name:"AgentOperationConfigView"`
 
-	// 是否开启应用日志配置
+	// <p>是否开启应用日志配置</p>
 	EnableLogConfig *bool `json:"EnableLogConfig,omitnil,omitempty" name:"EnableLogConfig"`
 
-	// 应用是否开启dashboard配置： false 关（与业务系统保持一致）/true 开（应用级配置）
+	// <p>应用是否开启dashboard配置： false 关（与业务系统保持一致）/true 开（应用级配置）</p>
 	EnableDashboardConfig *bool `json:"EnableDashboardConfig,omitnil,omitempty" name:"EnableDashboardConfig"`
 
-	// 是否关联dashboard： 0 关 1 开
+	// <p>是否关联dashboard： 0 关 1 开</p>
 	IsRelatedDashboard *int64 `json:"IsRelatedDashboard,omitnil,omitempty" name:"IsRelatedDashboard"`
 
-	// dashboard ID
+	// <p>dashboard ID</p>
 	DashboardTopicID *string `json:"DashboardTopicID,omitnil,omitempty" name:"DashboardTopicID"`
 
-	// CLS索引类型(0=全文索引，1=键值索引)
+	// <p>CLS索引类型(0=全文索引，1=键值索引)</p>
 	LogIndexType *int64 `json:"LogIndexType,omitnil,omitempty" name:"LogIndexType"`
 
-	// traceId的索引key: 当CLS索引类型为键值索引时生效
+	// <p>traceId的索引key: 当CLS索引类型为键值索引时生效</p>
 	LogTraceIdKey *string `json:"LogTraceIdKey,omitnil,omitempty" name:"LogTraceIdKey"`
 
-	// 是否开启应用安全配置
+	// <p>是否开启应用安全配置</p>
 	EnableSecurityConfig *bool `json:"EnableSecurityConfig,omitnil,omitempty" name:"EnableSecurityConfig"`
 
-	// 是否开启SQL注入分析
+	// <p>是否开启SQL注入分析</p>
 	IsSqlInjectionAnalysis *int64 `json:"IsSqlInjectionAnalysis,omitnil,omitempty" name:"IsSqlInjectionAnalysis"`
 
-	// 是否开启组件漏洞检测
+	// <p>是否开启组件漏洞检测</p>
 	IsInstrumentationVulnerabilityScan *int64 `json:"IsInstrumentationVulnerabilityScan,omitnil,omitempty" name:"IsInstrumentationVulnerabilityScan"`
 
-	// 是否开启远程命令检测
+	// <p>是否开启远程命令检测</p>
 	IsRemoteCommandExecutionAnalysis *int64 `json:"IsRemoteCommandExecutionAnalysis,omitnil,omitempty" name:"IsRemoteCommandExecutionAnalysis"`
 
-	// 是否开启内存马检测
+	// <p>是否开启内存马检测</p>
 	IsMemoryHijackingAnalysis *int64 `json:"IsMemoryHijackingAnalysis,omitnil,omitempty" name:"IsMemoryHijackingAnalysis"`
 
-	// 是否开启删除任意文件检测（0-关闭，1-开启）
+	// <p>是否开启删除任意文件检测（0-关闭，1-开启）</p>
 	IsDeleteAnyFileAnalysis *int64 `json:"IsDeleteAnyFileAnalysis,omitnil,omitempty" name:"IsDeleteAnyFileAnalysis"`
 
-	// 是否开启读取任意文件检测（0-关闭，1-开启）
+	// <p>是否开启读取任意文件检测（0-关闭，1-开启）</p>
 	IsReadAnyFileAnalysis *int64 `json:"IsReadAnyFileAnalysis,omitnil,omitempty" name:"IsReadAnyFileAnalysis"`
 
-	// 是否开启上传任意文件检测（0-关闭，1-开启）
+	// <p>是否开启上传任意文件检测（0-关闭，1-开启）</p>
 	IsUploadAnyFileAnalysis *int64 `json:"IsUploadAnyFileAnalysis,omitnil,omitempty" name:"IsUploadAnyFileAnalysis"`
 
-	// 是否开启包含任意文件检测（0-关闭，1-开启）
+	// <p>是否开启包含任意文件检测（0-关闭，1-开启）</p>
 	IsIncludeAnyFileAnalysis *int64 `json:"IsIncludeAnyFileAnalysis,omitnil,omitempty" name:"IsIncludeAnyFileAnalysis"`
 
-	// 是否开启目录遍历检测（0-关闭，1-开启）
+	// <p>是否开启目录遍历检测（0-关闭，1-开启）</p>
 	IsDirectoryTraversalAnalysis *int64 `json:"IsDirectoryTraversalAnalysis,omitnil,omitempty" name:"IsDirectoryTraversalAnalysis"`
 
-	// 是否开启模板引擎注入检测（0-关闭，1-开启）
+	// <p>是否开启模板引擎注入检测（0-关闭，1-开启）</p>
 	IsTemplateEngineInjectionAnalysis *int64 `json:"IsTemplateEngineInjectionAnalysis,omitnil,omitempty" name:"IsTemplateEngineInjectionAnalysis"`
 
-	// 是否开启脚本引擎注入检测（0-关闭，1-开启）
+	// <p>是否开启脚本引擎注入检测（0-关闭，1-开启）</p>
 	IsScriptEngineInjectionAnalysis *int64 `json:"IsScriptEngineInjectionAnalysis,omitnil,omitempty" name:"IsScriptEngineInjectionAnalysis"`
 
-	// 是否开启表达式注入检测（0-关闭，1-开启）
+	// <p>是否开启表达式注入检测（0-关闭，1-开启）</p>
 	IsExpressionInjectionAnalysis *int64 `json:"IsExpressionInjectionAnalysis,omitnil,omitempty" name:"IsExpressionInjectionAnalysis"`
 
-	// 是否开启JNDI注入检测（0-关闭，1-开启）
+	// <p>是否开启JNDI注入检测（0-关闭，1-开启）</p>
 	IsJNDIInjectionAnalysis *int64 `json:"IsJNDIInjectionAnalysis,omitnil,omitempty" name:"IsJNDIInjectionAnalysis"`
 
-	// 是否开启JNI注入检测（0-关闭，1-开启）
+	// <p>是否开启JNI注入检测（0-关闭，1-开启）</p>
 	IsJNIInjectionAnalysis *int64 `json:"IsJNIInjectionAnalysis,omitnil,omitempty" name:"IsJNIInjectionAnalysis"`
 
-	// 是否开启Webshell后门检测（0-关闭，1-开启）
+	// <p>是否开启Webshell后门检测（0-关闭，1-开启）</p>
 	IsWebshellBackdoorAnalysis *int64 `json:"IsWebshellBackdoorAnalysis,omitnil,omitempty" name:"IsWebshellBackdoorAnalysis"`
 
-	// 是否开启反序列化检测（0-关闭，1-开启）
+	// <p>是否开启反序列化检测（0-关闭，1-开启）</p>
 	IsDeserializationAnalysis *int64 `json:"IsDeserializationAnalysis,omitnil,omitempty" name:"IsDeserializationAnalysis"`
 
-	// 接口自动收敛开关,0 关 | 1 开
+	// <p>接口自动收敛开关,0 关 | 1 开</p>
 	UrlAutoConvergenceEnable *bool `json:"UrlAutoConvergenceEnable,omitnil,omitempty" name:"UrlAutoConvergenceEnable"`
 
-	// URL长分段收敛阈值
+	// <p>URL长分段收敛阈值</p>
 	UrlLongSegmentThreshold *int64 `json:"UrlLongSegmentThreshold,omitnil,omitempty" name:"UrlLongSegmentThreshold"`
 
-	// URL数字分段收敛阈值
+	// <p>URL数字分段收敛阈值</p>
 	UrlNumberSegmentThreshold *int64 `json:"UrlNumberSegmentThreshold,omitnil,omitempty" name:"UrlNumberSegmentThreshold"`
 
-	// 探针熔断内存阈值
+	// <p>探针熔断内存阈值</p>
 	DisableMemoryUsed *int64 `json:"DisableMemoryUsed,omitnil,omitempty" name:"DisableMemoryUsed"`
 
-	// 探针熔断CPU阈值
+	// <p>探针熔断CPU阈值</p>
 	DisableCpuUsed *int64 `json:"DisableCpuUsed,omitnil,omitempty" name:"DisableCpuUsed"`
 
-	// 是否开启SQL参数获取
+	// <p>是否开启SQL参数获取</p>
 	DbStatementParametersEnabled *bool `json:"DbStatementParametersEnabled,omitnil,omitempty" name:"DbStatementParametersEnabled"`
 
-	// 慢SQL阈值
+	// <p>慢SQL阈值</p>
 	SlowSQLThresholds []*ApmTag `json:"SlowSQLThresholds,omitnil,omitempty" name:"SlowSQLThresholds"`
 
-	// 是否开启脱敏规则
+	// <p>是否开启脱敏规则</p>
 	EnableDesensitizationRule *int64 `json:"EnableDesensitizationRule,omitnil,omitempty" name:"EnableDesensitizationRule"`
 
-	// 脱敏规则
+	// <p>脱敏规则</p>
 	DesensitizationRule *string `json:"DesensitizationRule,omitnil,omitempty" name:"DesensitizationRule"`
 
-	// spanId的索引key: 当CLS索引类型为键值索引时生效
+	// <p>spanId的索引key: 当CLS索引类型为键值索引时生效</p>
 	LogSpanIdKey *string `json:"LogSpanIdKey,omitnil,omitempty" name:"LogSpanIdKey"`
 
-	// 自动性能剖析任务配置
+	// <p>自动性能剖析任务配置</p>
 	AutoProfilingConfig *AutoProfilingConfig `json:"AutoProfilingConfig,omitnil,omitempty" name:"AutoProfilingConfig"`
+
+	// <p>阈值配置开关。true 表示使用应用级阈值；false 表示使用业务系统级阈值</p>
+	EnableThresholdConfig *bool `json:"EnableThresholdConfig,omitnil,omitempty" name:"EnableThresholdConfig"`
+
+	// <p>错误率阈值（%），用于判断应用健康状态为&quot;红色&quot;</p>
+	ErrRateThreshold *int64 `json:"ErrRateThreshold,omitnil,omitempty" name:"ErrRateThreshold"`
+
+	// <p>响应时间预警阈值（ms），用于判断应用健康状态为&quot;黄色&quot;</p>
+	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
 }
 
 func (r *ModifyApmApplicationConfigRequest) ToJsonString() string {
@@ -3671,6 +3770,9 @@ func (r *ModifyApmApplicationConfigRequest) FromJsonString(s string) error {
 	delete(f, "DesensitizationRule")
 	delete(f, "LogSpanIdKey")
 	delete(f, "AutoProfilingConfig")
+	delete(f, "EnableThresholdConfig")
+	delete(f, "ErrRateThreshold")
+	delete(f, "ResponseDurationWarningThreshold")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmApplicationConfigRequest has unknown keys!", "")
 	}

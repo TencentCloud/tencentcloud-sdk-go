@@ -1325,7 +1325,7 @@ type Disk struct {
 	// 云盘类型
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 云盘大小(G）
+	// 云盘大小 (G）
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
 	// 是否自动化格式盘并挂载
@@ -1340,6 +1340,14 @@ type Disk struct {
 	// 云盘ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
+
+	// 加密系统盘
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Encrypt *string `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
+
+	// 自定义 KMS ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
 }
 
 type ExternalNodeInfo struct {
@@ -1577,7 +1585,7 @@ type IntOrString struct {
 }
 
 type InternetAccessible struct {
-	// 带宽
+	// 带宽，单位为Mbps
 	MaxBandwidthOut *int64 `json:"MaxBandwidthOut,omitnil,omitempty" name:"MaxBandwidthOut"`
 
 	// 网络计费方式

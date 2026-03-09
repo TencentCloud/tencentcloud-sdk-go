@@ -297,32 +297,32 @@ func (r *BatchCreateAclResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BatchModifyGroupOffsetsRequestParams struct {
-	// 消费分组名称
+	// <p>消费分组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// partition信息
+	// <p>partition信息</p>
 	Partitions []*Partitions `json:"Partitions,omitnil,omitempty" name:"Partitions"`
 
-	// 指定topic，默认所有topic
+	// <p>指定topic，默认所有topic</p>
 	TopicName []*string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 }
 
 type BatchModifyGroupOffsetsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 消费分组名称
+	// <p>消费分组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// partition信息
+	// <p>partition信息</p>
 	Partitions []*Partitions `json:"Partitions,omitnil,omitempty" name:"Partitions"`
 
-	// 指定topic，默认所有topic
+	// <p>指定topic，默认所有topic</p>
 	TopicName []*string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 }
 
@@ -350,7 +350,7 @@ func (r *BatchModifyGroupOffsetsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BatchModifyGroupOffsetsResponseParams struct {
-	// 返回结果
+	// <p>返回结果</p>
 	Result *JgwOperateResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1737,17 +1737,20 @@ func (r *CreateDatahubTopicResponse) FromJsonString(s string) error {
 }
 
 type CreateInstancePostData struct {
-	// CreateInstancePre返回固定为0，不能作为CheckTaskStatus的查询条件。只是为了保证和后台数据结构对齐。
+	// <p>CreateInstancePre返回固定为0，不能作为CheckTaskStatus的查询条件。只是为了保证和后台数据结构对齐。</p>
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 订单号列表
+	// <p>订单号列表</p>
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
-	// ckafka集群实例Id，当购买多个实例时，默认返回购买的第一个实例 id
+	// <p>ckafka集群实例Id，当购买多个实例时，默认返回购买的第一个实例 id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 订单和购买实例对应映射列表
+	// <p>订单和购买实例对应映射列表</p>
 	DealNameInstanceIdMapping []*DealInstanceDTO `json:"DealNameInstanceIdMapping,omitnil,omitempty" name:"DealNameInstanceIdMapping"`
+
+	// <p>CAM鉴权返回的eventId</p>
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
 }
 
 type CreateInstancePostResp struct {
@@ -1762,17 +1765,20 @@ type CreateInstancePostResp struct {
 }
 
 type CreateInstancePreData struct {
-	// CreateInstancePre返回固定为0，不能作为CheckTaskStatus的查询条件。只是为了保证和后台数据结构对齐。
+	// <p>CreateInstancePre返回固定为0，不能作为CheckTaskStatus的查询条件。只是为了保证和后台数据结构对齐。</p>
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 订单号列表
+	// <p>订单号列表</p>
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
-	// ckafka集群实例Id，当购买多个实例时，默认返回购买的第一个实例 id
+	// <p>ckafka集群实例Id，当购买多个实例时，默认返回购买的第一个实例 id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 订单和购买实例对应映射列表
+	// <p>订单和购买实例对应映射列表</p>
 	DealNameInstanceIdMapping []*DealInstanceDTO `json:"DealNameInstanceIdMapping,omitnil,omitempty" name:"DealNameInstanceIdMapping"`
+
+	// <p>CAM鉴权返回的eventId</p>
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
 }
 
 // Predefined struct for user
@@ -2606,116 +2612,116 @@ func (r *CreateTopicIpWhiteListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTopicRequestParams struct {
-	// 实例Id，可通过DescribeInstances接口获取。
+	// <p>实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 只能包含字母、数字、下划线、“-”、“.”
+	// <p>只能包含字母、数字、下划线、“-”、“.”</p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// Partition个数，大于0
+	// <p>Partition个数，大于0</p>
 	PartitionNum *int64 `json:"PartitionNum,omitnil,omitempty" name:"PartitionNum"`
 
-	// 副本个数，不能多于 broker 数，最大为3
+	// <p>副本个数，不能多于 broker 数，最大为3</p>
 	ReplicaNum *int64 `json:"ReplicaNum,omitnil,omitempty" name:"ReplicaNum"`
 
-	// ip白名单开关, 1:打开  0:关闭，默认不打开
+	// <p>ip白名单开关, 1:打开  0:关闭，默认不打开</p>
 	EnableWhiteList *int64 `json:"EnableWhiteList,omitnil,omitempty" name:"EnableWhiteList"`
 
-	// Ip白名单列表，配额限制，enableWhileList=1时必选
+	// <p>Ip白名单列表，配额限制，enableWhileList=1时必选</p>
 	IpWhiteList []*string `json:"IpWhiteList,omitnil,omitempty" name:"IpWhiteList"`
 
-	// 清理日志策略，日志清理模式，默认为"delete"。"delete"：日志按保存时间删除，"compact"：日志按 key 压缩，"compact, delete"：日志按 key 压缩且会按保存时间删除。
+	// <p>清理日志策略，日志清理模式，默认为&quot;delete&quot;。&quot;delete&quot;：日志按保存时间删除，&quot;compact&quot;：日志按 key 压缩，&quot;compact, delete&quot;：日志按 key 压缩且会按保存时间删除。</p>
 	CleanUpPolicy *string `json:"CleanUpPolicy,omitnil,omitempty" name:"CleanUpPolicy"`
 
-	// 主题备注，是一个不超过 64 个字符的字符串，可以用字母和数字为首字符，剩余部分可以包含字母、数字和横划线(-)
+	// <p>主题备注</p><p>入参限制：不超过 64 个字符</p>
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 最小同步副本数，默认为1
+	// <p>最小同步副本数</p><p>默认值：1</p><p>最小值为1</p>
 	MinInsyncReplicas *int64 `json:"MinInsyncReplicas,omitnil,omitempty" name:"MinInsyncReplicas"`
 
-	// 是否允许未同步的副本选为leader，0:不允许，1:允许，默认不允许
+	// <p>是否允许未同步的副本选为leader，0:不允许，1:允许，默认不允许</p>
 	UncleanLeaderElectionEnable *int64 `json:"UncleanLeaderElectionEnable,omitnil,omitempty" name:"UncleanLeaderElectionEnable"`
 
-	// 可选参数。消息保留时间，单位ms，当前最小值为60000。默认值为7200000ms（2小时），最大值为7776000000 ms（90天）。
+	// <p>可选参数，消息保留时间</p><p>取值范围：[60000, 7776000000]</p><p>单位：毫秒</p><p>默认值：7200000</p>
 	RetentionMs *int64 `json:"RetentionMs,omitnil,omitempty" name:"RetentionMs"`
 
-	// Segment分片滚动的时长，单位ms，最小值为86400000ms（1天）。
+	// <p>Segment分片滚动的时长</p><p>单位：毫秒</p><p>默认值：86400000</p><p>最小值为86400000ms（1天）</p>
 	SegmentMs *int64 `json:"SegmentMs,omitnil,omitempty" name:"SegmentMs"`
 
-	// 主题消息最大值，单位为 Byte，最小值1024Bytes(即1KB)，最大值为12582912Bytes（即12MB）
+	// <p>主题消息最大值，单位为 Byte，最小值1024Bytes(即1KB)，最大值为12582912Bytes（即12MB）</p>
 	MaxMessageBytes *int64 `json:"MaxMessageBytes,omitnil,omitempty" name:"MaxMessageBytes"`
 
-	// 预设ACL规则, 1:打开  0:关闭，默认不打开
+	// <p>预设ACL规则, 1:打开  0:关闭，默认不打开</p>
 	EnableAclRule *int64 `json:"EnableAclRule,omitnil,omitempty" name:"EnableAclRule"`
 
-	// 预设ACL规则的名称
+	// <p>预设ACL规则的名称</p>
 	AclRuleName *string `json:"AclRuleName,omitnil,omitempty" name:"AclRuleName"`
 
-	// 可选, 保留文件大小. 默认为-1,单位Byte, 当前最小值为1073741824。
+	// <p>可选, 保留文件大小. 默认为-1,单位Byte, 当前最小值为1073741824。</p><p>取值范围：[1073741824, 1099511627776]</p><p>单位：字节</p><p>特殊值：-1表示无限制</p>
 	RetentionBytes *int64 `json:"RetentionBytes,omitnil,omitempty" name:"RetentionBytes"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 消息保存的时间类型:CreateTime/LogAppendTime
+	// <p>消息保存的时间类型:CreateTime/LogAppendTime</p>
 	LogMsgTimestampType *string `json:"LogMsgTimestampType,omitnil,omitempty" name:"LogMsgTimestampType"`
 }
 
 type CreateTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id，可通过DescribeInstances接口获取。
+	// <p>实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 只能包含字母、数字、下划线、“-”、“.”
+	// <p>只能包含字母、数字、下划线、“-”、“.”</p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// Partition个数，大于0
+	// <p>Partition个数，大于0</p>
 	PartitionNum *int64 `json:"PartitionNum,omitnil,omitempty" name:"PartitionNum"`
 
-	// 副本个数，不能多于 broker 数，最大为3
+	// <p>副本个数，不能多于 broker 数，最大为3</p>
 	ReplicaNum *int64 `json:"ReplicaNum,omitnil,omitempty" name:"ReplicaNum"`
 
-	// ip白名单开关, 1:打开  0:关闭，默认不打开
+	// <p>ip白名单开关, 1:打开  0:关闭，默认不打开</p>
 	EnableWhiteList *int64 `json:"EnableWhiteList,omitnil,omitempty" name:"EnableWhiteList"`
 
-	// Ip白名单列表，配额限制，enableWhileList=1时必选
+	// <p>Ip白名单列表，配额限制，enableWhileList=1时必选</p>
 	IpWhiteList []*string `json:"IpWhiteList,omitnil,omitempty" name:"IpWhiteList"`
 
-	// 清理日志策略，日志清理模式，默认为"delete"。"delete"：日志按保存时间删除，"compact"：日志按 key 压缩，"compact, delete"：日志按 key 压缩且会按保存时间删除。
+	// <p>清理日志策略，日志清理模式，默认为&quot;delete&quot;。&quot;delete&quot;：日志按保存时间删除，&quot;compact&quot;：日志按 key 压缩，&quot;compact, delete&quot;：日志按 key 压缩且会按保存时间删除。</p>
 	CleanUpPolicy *string `json:"CleanUpPolicy,omitnil,omitempty" name:"CleanUpPolicy"`
 
-	// 主题备注，是一个不超过 64 个字符的字符串，可以用字母和数字为首字符，剩余部分可以包含字母、数字和横划线(-)
+	// <p>主题备注</p><p>入参限制：不超过 64 个字符</p>
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 最小同步副本数，默认为1
+	// <p>最小同步副本数</p><p>默认值：1</p><p>最小值为1</p>
 	MinInsyncReplicas *int64 `json:"MinInsyncReplicas,omitnil,omitempty" name:"MinInsyncReplicas"`
 
-	// 是否允许未同步的副本选为leader，0:不允许，1:允许，默认不允许
+	// <p>是否允许未同步的副本选为leader，0:不允许，1:允许，默认不允许</p>
 	UncleanLeaderElectionEnable *int64 `json:"UncleanLeaderElectionEnable,omitnil,omitempty" name:"UncleanLeaderElectionEnable"`
 
-	// 可选参数。消息保留时间，单位ms，当前最小值为60000。默认值为7200000ms（2小时），最大值为7776000000 ms（90天）。
+	// <p>可选参数，消息保留时间</p><p>取值范围：[60000, 7776000000]</p><p>单位：毫秒</p><p>默认值：7200000</p>
 	RetentionMs *int64 `json:"RetentionMs,omitnil,omitempty" name:"RetentionMs"`
 
-	// Segment分片滚动的时长，单位ms，最小值为86400000ms（1天）。
+	// <p>Segment分片滚动的时长</p><p>单位：毫秒</p><p>默认值：86400000</p><p>最小值为86400000ms（1天）</p>
 	SegmentMs *int64 `json:"SegmentMs,omitnil,omitempty" name:"SegmentMs"`
 
-	// 主题消息最大值，单位为 Byte，最小值1024Bytes(即1KB)，最大值为12582912Bytes（即12MB）
+	// <p>主题消息最大值，单位为 Byte，最小值1024Bytes(即1KB)，最大值为12582912Bytes（即12MB）</p>
 	MaxMessageBytes *int64 `json:"MaxMessageBytes,omitnil,omitempty" name:"MaxMessageBytes"`
 
-	// 预设ACL规则, 1:打开  0:关闭，默认不打开
+	// <p>预设ACL规则, 1:打开  0:关闭，默认不打开</p>
 	EnableAclRule *int64 `json:"EnableAclRule,omitnil,omitempty" name:"EnableAclRule"`
 
-	// 预设ACL规则的名称
+	// <p>预设ACL规则的名称</p>
 	AclRuleName *string `json:"AclRuleName,omitnil,omitempty" name:"AclRuleName"`
 
-	// 可选, 保留文件大小. 默认为-1,单位Byte, 当前最小值为1073741824。
+	// <p>可选, 保留文件大小. 默认为-1,单位Byte, 当前最小值为1073741824。</p><p>取值范围：[1073741824, 1099511627776]</p><p>单位：字节</p><p>特殊值：-1表示无限制</p>
 	RetentionBytes *int64 `json:"RetentionBytes,omitnil,omitempty" name:"RetentionBytes"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 消息保存的时间类型:CreateTime/LogAppendTime
+	// <p>消息保存的时间类型:CreateTime/LogAppendTime</p>
 	LogMsgTimestampType *string `json:"LogMsgTimestampType,omitnil,omitempty" name:"LogMsgTimestampType"`
 }
 
@@ -2762,7 +2768,7 @@ type CreateTopicResp struct {
 
 // Predefined struct for user
 type CreateTopicResponseParams struct {
-	// 返回创建结果
+	// <p>返回创建结果</p>
 	Result *CreateTopicResp `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3640,14 +3646,14 @@ func (r *DeleteInstancePostResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteInstancePreRequestParams struct {
-	// ckafka集群实例Id，可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+	// <p>ckafka集群实例Id，可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DeleteInstancePreRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id，可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+	// <p>ckafka集群实例Id，可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -3672,7 +3678,7 @@ func (r *DeleteInstancePreRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteInstancePreResponseParams struct {
-	// 返回结果
+	// <p>返回结果</p>
 	Result *CreateInstancePreResp `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4039,18 +4045,6 @@ type DescModifyType struct {
 
 	// 是否迁移标志
 	MigrateFlag *bool `json:"MigrateFlag,omitnil,omitempty" name:"MigrateFlag"`
-
-	// 迁移预计耗时(稳定模式)秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	MigrateCostTime *int64 `json:"MigrateCostTime,omitnil,omitempty" name:"MigrateCostTime"`
-
-	// 升配模式(1:稳定模式，2:高速模式)
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpgradeStrategy *int64 `json:"UpgradeStrategy,omitnil,omitempty" name:"UpgradeStrategy"`
-
-	// 迁移预计耗时(高速模式)秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	MigrateCostTimeHighSpeed *int64 `json:"MigrateCostTimeHighSpeed,omitnil,omitempty" name:"MigrateCostTimeHighSpeed"`
 }
 
 // Predefined struct for user
@@ -5370,44 +5364,44 @@ func (r *DescribeGroupInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGroupOffsetsRequestParams struct {
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Kafka 消费分组
+	// <p>Kafka 消费分组</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40840">DescribeGroup</a></p>
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
-	// group 订阅的主题名称数组，如果没有该数组，则表示指定的 group 下所有 topic 信息
+	// <p>group 订阅的主题名称数组，如果没有该数组，则表示指定的 group 下所有 topic 信息</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40847">DescribeTopic</a></p>
 	Topics []*string `json:"Topics,omitnil,omitempty" name:"Topics"`
 
-	// 模糊匹配 topicName
+	// <p>模糊匹配 topicName</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 本次查询的偏移位置，默认为0
+	// <p>本次查询的偏移位置，默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 本次返回结果的最大个数，默认为50，最大值为50
+	// <p>本次返回结果的最大个数，默认为50，最大值为50</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeGroupOffsetsRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Kafka 消费分组
+	// <p>Kafka 消费分组</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40840">DescribeGroup</a></p>
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
-	// group 订阅的主题名称数组，如果没有该数组，则表示指定的 group 下所有 topic 信息
+	// <p>group 订阅的主题名称数组，如果没有该数组，则表示指定的 group 下所有 topic 信息</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40847">DescribeTopic</a></p>
 	Topics []*string `json:"Topics,omitnil,omitempty" name:"Topics"`
 
-	// 模糊匹配 topicName
+	// <p>模糊匹配 topicName</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 本次查询的偏移位置，默认为0
+	// <p>本次查询的偏移位置，默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 本次返回结果的最大个数，默认为50，最大值为50
+	// <p>本次返回结果的最大个数，默认为50，最大值为50</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -5437,7 +5431,7 @@ func (r *DescribeGroupOffsetsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGroupOffsetsResponseParams struct {
-	// 返回结果
+	// <p>返回结果</p>
 	Result *GroupOffsetResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5462,38 +5456,38 @@ func (r *DescribeGroupOffsetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGroupRequestParams struct {
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 搜索关键字
+	// <p>搜索关键字</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 最大返回数量
+	// <p>最大返回数量</p><p>默认值：20</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 仅支持 GroupState 筛选,   支持的筛选状态有 Empty/Stable  注意：该参数只能在2.8/3.2 版本生效
+	// <p>仅支持 GroupState 筛选,   支持的筛选状态有 Empty/Stable  注意：该参数只能在2.8/3.2 版本生效</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 搜索关键字
+	// <p>搜索关键字</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 最大返回数量
+	// <p>最大返回数量</p><p>默认值：20</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 仅支持 GroupState 筛选,   支持的筛选状态有 Empty/Stable  注意：该参数只能在2.8/3.2 版本生效
+	// <p>仅支持 GroupState 筛选,   支持的筛选状态有 Empty/Stable  注意：该参数只能在2.8/3.2 版本生效</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -5522,7 +5516,7 @@ func (r *DescribeGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGroupResponseParams struct {
-	// 返回结果
+	// <p>返回结果</p>
 	Result *GroupResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5604,70 +5598,70 @@ func (r *DescribeInstanceAttributesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesDetailRequestParams struct {
-	// （过滤条件）按照实例ID过滤
+	// <p>（过滤条件）按照实例ID过滤</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// （过滤条件）按照实例名,实例Id,可用区,私有网络id,子网id 过滤，支持模糊查询
+	// <p>（过滤条件）按照实例名,实例Id,可用区,私有网络id,子网id 过滤，支持模糊查询</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// （过滤条件）实例的状态。0：创建中，1：运行中，2：删除中，不填默认返回全部
+	// <p>（过滤条件）实例的状态，不填默认返回全部</p><p>枚举值：</p><ul><li>-1： 创建失败</li><li>0： 创建中</li><li>1： 运行中</li><li>2： 删除中</li><li>3： 已删除</li><li>4： 删除失败</li><li>5： 隔离中</li><li>7： 升级中</li></ul>
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 偏移量，不填默认为0。
+	// <p>偏移量，不填默认为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，不填则默认10，最大值20。
+	// <p>返回数量，不填则默认10，最大值20。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 匹配标签key值。
+	// <p>匹配标签key值。</p>
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// 过滤器。filter.Name 支持('Ip', 'VpcId', 'SubNetId', 'InstanceType','InstanceId') ,filter.Values最多传递10个值.
+	// <p>过滤器。filter.Name 支持(&#39;Ip&#39;, &#39;VpcId&#39;, &#39;SubNetId&#39;, &#39;InstanceType&#39;,&#39;InstanceId&#39;) ,filter.Values最多传递10个值.</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 已经废弃， 使用InstanceIdList
+	// <p>已经废弃， 使用InstanceIdList</p>
 	//
 	// Deprecated: InstanceIds is deprecated.
 	InstanceIds *string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 按照实例ID过滤
+	// <p>按照实例ID过滤</p>
 	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
 
-	// 根据标签列表过滤实例（取交集）
+	// <p>根据标签列表过滤实例（取交集）</p>
 	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 type DescribeInstancesDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// （过滤条件）按照实例ID过滤
+	// <p>（过滤条件）按照实例ID过滤</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// （过滤条件）按照实例名,实例Id,可用区,私有网络id,子网id 过滤，支持模糊查询
+	// <p>（过滤条件）按照实例名,实例Id,可用区,私有网络id,子网id 过滤，支持模糊查询</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// （过滤条件）实例的状态。0：创建中，1：运行中，2：删除中，不填默认返回全部
+	// <p>（过滤条件）实例的状态，不填默认返回全部</p><p>枚举值：</p><ul><li>-1： 创建失败</li><li>0： 创建中</li><li>1： 运行中</li><li>2： 删除中</li><li>3： 已删除</li><li>4： 删除失败</li><li>5： 隔离中</li><li>7： 升级中</li></ul>
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 偏移量，不填默认为0。
+	// <p>偏移量，不填默认为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，不填则默认10，最大值20。
+	// <p>返回数量，不填则默认10，最大值20。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 匹配标签key值。
+	// <p>匹配标签key值。</p>
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// 过滤器。filter.Name 支持('Ip', 'VpcId', 'SubNetId', 'InstanceType','InstanceId') ,filter.Values最多传递10个值.
+	// <p>过滤器。filter.Name 支持(&#39;Ip&#39;, &#39;VpcId&#39;, &#39;SubNetId&#39;, &#39;InstanceType&#39;,&#39;InstanceId&#39;) ,filter.Values最多传递10个值.</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 已经废弃， 使用InstanceIdList
+	// <p>已经废弃， 使用InstanceIdList</p>
 	InstanceIds *string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 按照实例ID过滤
+	// <p>按照实例ID过滤</p>
 	InstanceIdList []*string `json:"InstanceIdList,omitnil,omitempty" name:"InstanceIdList"`
 
-	// 根据标签列表过滤实例（取交集）
+	// <p>根据标签列表过滤实例（取交集）</p>
 	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
@@ -5701,7 +5695,7 @@ func (r *DescribeInstancesDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesDetailResponseParams struct {
-	// 返回的实例详情结果对象
+	// <p>返回的实例详情结果对象</p>
 	Result *InstanceDetailResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5726,52 +5720,52 @@ func (r *DescribeInstancesDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesRequestParams struct {
-	// （查询条件）按照ckafka集群实例Id过滤
+	// <p>（查询条件）按照ckafka集群实例Id过滤</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 搜索词   ex:（查询条件）按照实例名称过滤，支持模糊查询
+	// <p>搜索词   ex:（查询条件）按照实例名称过滤，支持模糊查询</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// （查询条件）实例的状态  0：创建中，1：运行中，2：删除中，5: 隔离中,  7:升级中 不填默认返回全部
+	// <p>（查询条件）实例的状态 不填默认返回全部</p><p>枚举值：</p><ul><li>-1： 创建失败</li><li>0： 创建中</li><li>1： 运行中</li><li>2： 删除中</li><li>3： 已删除</li><li>4： 删除失败</li><li>5： 隔离中</li><li>7： 升级中</li></ul>
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 偏移量，不填默认为0
+	// <p>偏移量，不填默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，不填则默认10，最大值100
+	// <p>返回数量，不填则默认10，最大值100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 已废弃。匹配标签key值。
+	// <p>已废弃。匹配标签key值。</p>
 	//
 	// Deprecated: TagKey is deprecated.
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// （查询条件）私有网络Id
+	// <p>（查询条件）私有网络Id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 }
 
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// （查询条件）按照ckafka集群实例Id过滤
+	// <p>（查询条件）按照ckafka集群实例Id过滤</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 搜索词   ex:（查询条件）按照实例名称过滤，支持模糊查询
+	// <p>搜索词   ex:（查询条件）按照实例名称过滤，支持模糊查询</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// （查询条件）实例的状态  0：创建中，1：运行中，2：删除中，5: 隔离中,  7:升级中 不填默认返回全部
+	// <p>（查询条件）实例的状态 不填默认返回全部</p><p>枚举值：</p><ul><li>-1： 创建失败</li><li>0： 创建中</li><li>1： 运行中</li><li>2： 删除中</li><li>3： 已删除</li><li>4： 删除失败</li><li>5： 隔离中</li><li>7： 升级中</li></ul>
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 偏移量，不填默认为0
+	// <p>偏移量，不填默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，不填则默认10，最大值100
+	// <p>返回数量，不填则默认10，最大值100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 已废弃。匹配标签key值。
+	// <p>已废弃。匹配标签key值。</p>
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// （查询条件）私有网络Id
+	// <p>（查询条件）私有网络Id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 }
 
@@ -5802,7 +5796,7 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesResponseParams struct {
-	// 返回的结果
+	// <p>返回的结果</p>
 	Result *InstanceResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5827,57 +5821,63 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeModifyTypeRequestParams struct {
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 升配后的带宽，单位mb
+	// <p>升配后的带宽，单位mb</p>
 	BandWidth *int64 `json:"BandWidth,omitnil,omitempty" name:"BandWidth"`
 
-	// 升配后的磁盘，单位G
+	// <p>升配后的磁盘，单位G</p>
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 磁盘类型，例如 CLOUD_PREMIUM
+	// <p>磁盘类型，例如 CLOUD_PREMIUM</p>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 分区数量
+	// <p>分区数量</p>
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// topic数量
+	// <p>topic数量</p>
 	Topic *int64 `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 实例类型例如 sp_ckafka_profession
+	// <p>实例类型例如 sp_ckafka_profession</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 变配入口
+	// <p>变配入口</p>
 	ModifyEntry *string `json:"ModifyEntry,omitnil,omitempty" name:"ModifyEntry"`
+
+	// <p>是否可用区变更  false: 非可用区变更  true: 可用区变更  默认false</p>
+	ModifyZone *bool `json:"ModifyZone,omitnil,omitempty" name:"ModifyZone"`
 }
 
 type DescribeModifyTypeRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 升配后的带宽，单位mb
+	// <p>升配后的带宽，单位mb</p>
 	BandWidth *int64 `json:"BandWidth,omitnil,omitempty" name:"BandWidth"`
 
-	// 升配后的磁盘，单位G
+	// <p>升配后的磁盘，单位G</p>
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 磁盘类型，例如 CLOUD_PREMIUM
+	// <p>磁盘类型，例如 CLOUD_PREMIUM</p>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 分区数量
+	// <p>分区数量</p>
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// topic数量
+	// <p>topic数量</p>
 	Topic *int64 `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 实例类型例如 sp_ckafka_profession
+	// <p>实例类型例如 sp_ckafka_profession</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 变配入口
+	// <p>变配入口</p>
 	ModifyEntry *string `json:"ModifyEntry,omitnil,omitempty" name:"ModifyEntry"`
+
+	// <p>是否可用区变更  false: 非可用区变更  true: 可用区变更  默认false</p>
+	ModifyZone *bool `json:"ModifyZone,omitnil,omitempty" name:"ModifyZone"`
 }
 
 func (r *DescribeModifyTypeRequest) ToJsonString() string {
@@ -5900,6 +5900,7 @@ func (r *DescribeModifyTypeRequest) FromJsonString(s string) error {
 	delete(f, "Topic")
 	delete(f, "Type")
 	delete(f, "ModifyEntry")
+	delete(f, "ModifyZone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModifyTypeRequest has unknown keys!", "")
 	}
@@ -5908,7 +5909,7 @@ func (r *DescribeModifyTypeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeModifyTypeResponseParams struct {
-	// 返回的变配类型结构
+	// <p>返回的变配类型结构</p>
 	Result *DescModifyType `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5990,32 +5991,32 @@ func (r *DescribePrometheusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRegionRequestParams struct {
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回最大结果数
+	// <p>返回最大结果数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 业务字段，可忽略
+	// <p>业务字段，可忽略</p><p>枚举值：</p><ul><li>ckafka： ckafka业务</li><li>cmq： cmq业务</li></ul><p>默认值：ckafka</p>
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
 
-	// cdc专有集群业务字段，可忽略
+	// <p>cdc专有集群业务字段，可忽略</p>
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 }
 
 type DescribeRegionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回最大结果数
+	// <p>返回最大结果数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 业务字段，可忽略
+	// <p>业务字段，可忽略</p><p>枚举值：</p><ul><li>ckafka： ckafka业务</li><li>cmq： cmq业务</li></ul><p>默认值：ckafka</p>
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
 
-	// cdc专有集群业务字段，可忽略
+	// <p>cdc专有集群业务字段，可忽略</p>
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 }
 
@@ -6043,7 +6044,7 @@ func (r *DescribeRegionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRegionResponseParams struct {
-	// 返回地域枚举结果列表
+	// <p>返回地域枚举结果列表</p>
 	Result []*Region `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6068,26 +6069,26 @@ func (r *DescribeRegionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRouteRequestParams struct {
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 路由Id
+	// <p>路由Id</p>
 	RouteId *int64 `json:"RouteId,omitnil,omitempty" name:"RouteId"`
 
-	// 是否显示主路由，true时会在返回原路由列表的基础上,再额外展示实例创建时的主路由信息(且不被InternalFlag/UsedFor等参数过滤影响)	
+	// <p>是否显示主路由，true时会在返回原路由列表的基础上,再额外展示实例创建时的主路由信息(且不被InternalFlag/UsedFor等参数过滤影响)</p>
 	MainRouteFlag *bool `json:"MainRouteFlag,omitnil,omitempty" name:"MainRouteFlag"`
 }
 
 type DescribeRouteRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 路由Id
+	// <p>路由Id</p>
 	RouteId *int64 `json:"RouteId,omitnil,omitempty" name:"RouteId"`
 
-	// 是否显示主路由，true时会在返回原路由列表的基础上,再额外展示实例创建时的主路由信息(且不被InternalFlag/UsedFor等参数过滤影响)	
+	// <p>是否显示主路由，true时会在返回原路由列表的基础上,再额外展示实例创建时的主路由信息(且不被InternalFlag/UsedFor等参数过滤影响)</p>
 	MainRouteFlag *bool `json:"MainRouteFlag,omitnil,omitempty" name:"MainRouteFlag"`
 }
 
@@ -6114,7 +6115,7 @@ func (r *DescribeRouteRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRouteResponseParams struct {
-	// 返回的路由信息结果集
+	// <p>返回的路由信息结果集</p>
 	Result *RouteResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6345,56 +6346,56 @@ func (r *DescribeTopicAttributesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicDetailRequestParams struct {
-	// ckafka集群实例Id，可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+	// <p>ckafka集群实例Id，可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// （过滤条件）按照topicName过滤，支持模糊查询
+	// <p>（过滤条件）按照topicName过滤，支持模糊查询</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 偏移量，不填默认为0
+	// <p>偏移量，不填默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，不填则默认 20，取值要大于0
+	// <p>返回数量，不填则默认 20，取值要大于0</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// Acl预设策略名称
+	// <p>Acl预设策略名称</p>
 	AclRuleName *string `json:"AclRuleName,omitnil,omitempty" name:"AclRuleName"`
 
-	// 根据特定的属性排序(目前支持PartitionNum/CreateTime)，默认值为CreateTime。
+	// <p>根据特定的属性排序(目前支持PartitionNum/CreateTime)，默认值为CreateTime。</p><p>该参数为空时，默认按CreateTime倒序排序</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 0-顺序、1-倒序，默认值为0。
+	// <p>0-顺序、1-倒序，默认值为0。</p>
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 目前支持 ReplicaNum （副本数）筛选
+	// <p>目前支持 ReplicaNum （副本数）筛选</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeTopicDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id，可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+	// <p>ckafka集群实例Id，可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// （过滤条件）按照topicName过滤，支持模糊查询
+	// <p>（过滤条件）按照topicName过滤，支持模糊查询</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 偏移量，不填默认为0
+	// <p>偏移量，不填默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，不填则默认 20，取值要大于0
+	// <p>返回数量，不填则默认 20，取值要大于0</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// Acl预设策略名称
+	// <p>Acl预设策略名称</p>
 	AclRuleName *string `json:"AclRuleName,omitnil,omitempty" name:"AclRuleName"`
 
-	// 根据特定的属性排序(目前支持PartitionNum/CreateTime)，默认值为CreateTime。
+	// <p>根据特定的属性排序(目前支持PartitionNum/CreateTime)，默认值为CreateTime。</p><p>该参数为空时，默认按CreateTime倒序排序</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 0-顺序、1-倒序，默认值为0。
+	// <p>0-顺序、1-倒序，默认值为0。</p>
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 目前支持 ReplicaNum （副本数）筛选
+	// <p>目前支持 ReplicaNum （副本数）筛选</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -6426,7 +6427,7 @@ func (r *DescribeTopicDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicDetailResponseParams struct {
-	// 返回的主题详情实体
+	// <p>返回的主题详情实体</p>
 	Result *TopicDetailResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6600,38 +6601,38 @@ func (r *DescribeTopicProduceConnectionResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeTopicRequestParams struct {
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 过滤条件，按照 topicName 过滤，支持模糊查询
+	// <p>过滤条件，按照 topicName 过滤，支持模糊查询</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 偏移量，不填默认为0
+	// <p>偏移量，不填默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，不填则默认为20，最大值为50
+	// <p>返回数量，不填则默认为20，最大值为50</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// Acl预设策略名称
+	// <p>Acl预设策略名称</p>
 	AclRuleName *string `json:"AclRuleName,omitnil,omitempty" name:"AclRuleName"`
 }
 
 type DescribeTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 过滤条件，按照 topicName 过滤，支持模糊查询
+	// <p>过滤条件，按照 topicName 过滤，支持模糊查询</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 偏移量，不填默认为0
+	// <p>偏移量，不填默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，不填则默认为20，最大值为50
+	// <p>返回数量，不填则默认为20，最大值为50</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// Acl预设策略名称
+	// <p>Acl预设策略名称</p>
 	AclRuleName *string `json:"AclRuleName,omitnil,omitempty" name:"AclRuleName"`
 }
 
@@ -6660,7 +6661,7 @@ func (r *DescribeTopicRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicResponseParams struct {
-	// 返回的结果
+	// <p>返回的结果</p>
 	Result *TopicResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6685,32 +6686,32 @@ func (r *DescribeTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicSubscribeGroupRequestParams struct {
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名
+	// <p>主题名</p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 分页时的起始位置
+	// <p>分页时的起始位置</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页时的个数
+	// <p>分页时的个数</p><p>默认值：20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeTopicSubscribeGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名
+	// <p>主题名</p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 分页时的起始位置
+	// <p>分页时的起始位置</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页时的个数
+	// <p>分页时的个数</p><p>默认值：20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -6738,7 +6739,7 @@ func (r *DescribeTopicSubscribeGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicSubscribeGroupResponseParams struct {
-	// 返回结果
+	// <p>返回结果</p>
 	Result *TopicSubscribeGroup `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6763,38 +6764,38 @@ func (r *DescribeTopicSubscribeGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicSyncReplicaRequestParams struct {
-	// 实例ID
+	// <p>实例ID</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称
+	// <p>主题名称</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40847">DescribeTopic</a></p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 偏移量，不填默认为0
+	// <p>偏移量，不填默认为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认值为20，必须大于0。
+	// <p>返回数量，默认值为20，必须大于0。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 仅筛选未同步副本
+	// <p>仅筛选未同步副本</p>
 	OutOfSyncReplicaOnly *bool `json:"OutOfSyncReplicaOnly,omitnil,omitempty" name:"OutOfSyncReplicaOnly"`
 }
 
 type DescribeTopicSyncReplicaRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// <p>实例ID</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称
+	// <p>主题名称</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40847">DescribeTopic</a></p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 偏移量，不填默认为0
+	// <p>偏移量，不填默认为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认值为20，必须大于0。
+	// <p>返回数量，默认值为20，必须大于0。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 仅筛选未同步副本
+	// <p>仅筛选未同步副本</p>
 	OutOfSyncReplicaOnly *bool `json:"OutOfSyncReplicaOnly,omitnil,omitempty" name:"OutOfSyncReplicaOnly"`
 }
 
@@ -6823,7 +6824,7 @@ func (r *DescribeTopicSyncReplicaRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicSyncReplicaResponseParams struct {
-	// 返回topic 副本详情
+	// <p>返回topic 副本详情</p>
 	Result *TopicInSyncReplicaResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6848,44 +6849,44 @@ func (r *DescribeTopicSyncReplicaResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTypeInstancesRequestParams struct {
-	// （过滤条件）按照实例ID过滤
+	// <p>（过滤条件）按照实例ID过滤</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// （过滤条件）按照实例名称过滤，支持模糊查询
+	// <p>（过滤条件）按照实例名称过滤，支持模糊查询</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// （过滤条件）实例的状态。0：创建中，1：运行中，2：删除中，不填默认返回全部
+	// <p>（过滤条件）实例的状态，不填默认返回全部</p><p>枚举值：</p><ul><li>-1： 创建失败</li><li>0： 创建中</li><li>1： 运行中</li><li>2： 删除中</li><li>3： 已删除</li><li>4： 删除失败</li><li>5： 隔离中</li><li>7： 升级中</li></ul>
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 偏移量，不填默认为0
+	// <p>偏移量，不填默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，不填则默认10，最大值100
+	// <p>返回数量，不填则默认10，最大值100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 匹配标签key值。
+	// <p>匹配标签key值。</p>
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 }
 
 type DescribeTypeInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// （过滤条件）按照实例ID过滤
+	// <p>（过滤条件）按照实例ID过滤</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// （过滤条件）按照实例名称过滤，支持模糊查询
+	// <p>（过滤条件）按照实例名称过滤，支持模糊查询</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// （过滤条件）实例的状态。0：创建中，1：运行中，2：删除中，不填默认返回全部
+	// <p>（过滤条件）实例的状态，不填默认返回全部</p><p>枚举值：</p><ul><li>-1： 创建失败</li><li>0： 创建中</li><li>1： 运行中</li><li>2： 删除中</li><li>3： 已删除</li><li>4： 删除失败</li><li>5： 隔离中</li><li>7： 升级中</li></ul>
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 偏移量，不填默认为0
+	// <p>偏移量，不填默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，不填则默认10，最大值100
+	// <p>返回数量，不填则默认10，最大值100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 匹配标签key值。
+	// <p>匹配标签key值。</p>
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 }
 
@@ -6915,7 +6916,7 @@ func (r *DescribeTypeInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTypeInstancesResponseParams struct {
-	// 返回的结果
+	// <p>返回的结果</p>
 	Result *InstanceResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6940,32 +6941,32 @@ func (r *DescribeTypeInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserRequestParams struct {
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 按照名称过滤
+	// <p>按照名称过滤</p><p>支持模糊匹配</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量
+	// <p>返回数量</p><p>默认值：20</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 按照名称过滤
+	// <p>按照名称过滤</p><p>支持模糊匹配</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量
+	// <p>返回数量</p><p>默认值：20</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -6993,7 +6994,7 @@ func (r *DescribeUserRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserResponseParams struct {
-	// 返回结果
+	// <p>返回结果</p>
 	Result *UserResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7513,32 +7514,32 @@ func (r *FetchLatestDatahubMessageListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type FetchMessageByOffsetRequestParams struct {
-	// ckafka集群实例Id，可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+	// <p>ckafka集群实例Id，可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名，可通过[DescribeTopic](https://cloud.tencent.com/document/product/597/40847)接口获取
+	// <p>主题名，可通过<a href="https://cloud.tencent.com/document/product/597/40847">DescribeTopic</a>接口获取</p>
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 分区id
+	// <p>分区id</p>
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 位点信息
+	// <p>位点信息</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type FetchMessageByOffsetRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id，可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+	// <p>ckafka集群实例Id，可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名，可通过[DescribeTopic](https://cloud.tencent.com/document/product/597/40847)接口获取
+	// <p>主题名，可通过<a href="https://cloud.tencent.com/document/product/597/40847">DescribeTopic</a>接口获取</p>
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 分区id
+	// <p>分区id</p>
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 位点信息
+	// <p>位点信息</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -7566,7 +7567,7 @@ func (r *FetchMessageByOffsetRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type FetchMessageByOffsetResponseParams struct {
-	// 返回结果
+	// <p>返回结果</p>
 	Result *ConsumerRecord `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7591,38 +7592,38 @@ func (r *FetchMessageByOffsetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type FetchMessageListByOffsetRequestParams struct {
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名
+	// <p>主题名</p>
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 分区id
+	// <p>分区id</p>
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 位点信息
+	// <p>位点信息</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 最大查询条数，默认20，最大20
+	// <p>最大查询条数，默认20，最大20</p>
 	SinglePartitionRecordNumber *int64 `json:"SinglePartitionRecordNumber,omitnil,omitempty" name:"SinglePartitionRecordNumber"`
 }
 
 type FetchMessageListByOffsetRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名
+	// <p>主题名</p>
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 分区id
+	// <p>分区id</p>
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 位点信息
+	// <p>位点信息</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 最大查询条数，默认20，最大20
+	// <p>最大查询条数，默认20，最大20</p>
 	SinglePartitionRecordNumber *int64 `json:"SinglePartitionRecordNumber,omitnil,omitempty" name:"SinglePartitionRecordNumber"`
 }
 
@@ -7651,7 +7652,7 @@ func (r *FetchMessageListByOffsetRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type FetchMessageListByOffsetResponseParams struct {
-	// 返回结果。注意，列表中不返回具体的消息内容（key、value），如果需要查询具体消息内容，请使用FetchMessageByOffset接口
+	// <p>返回结果。注意，列表中不返回具体的消息内容（key、value），如果需要查询具体消息内容，请使用FetchMessageByOffset接口</p>
 	Result []*ConsumerRecord `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8330,6 +8331,12 @@ type InstanceAttributesResponse struct {
 
 	// <p>实例删除保护开关: 1 开启 0 关闭</p>
 	DeleteProtectionEnable *int64 `json:"DeleteProtectionEnable,omitnil,omitempty" name:"DeleteProtectionEnable"`
+
+	// <p>实例级别消息保留大小</p>单位：bytes<br>默认值：-1
+	RetentionBytes *int64 `json:"RetentionBytes,omitnil,omitempty" name:"RetentionBytes"`
+
+	// <p>事务ID最大空闲时间，超时未提交的事务将被标记为过期</p>单位：ms
+	TransactionalIdExpirationMs *int64 `json:"TransactionalIdExpirationMs,omitnil,omitempty" name:"TransactionalIdExpirationMs"`
 }
 
 type InstanceChargeParam struct {
@@ -8452,6 +8459,9 @@ type InstanceDetail struct {
 
 	// <p>实例功能列表</p>
 	Features []*string `json:"Features,omitnil,omitempty" name:"Features"`
+
+	// <p>实例级别消息保留大小</p>单位：byte<br>默认值：-1<br><p>实例级别消息保留大小</p>
+	RetentionBytes *int64 `json:"RetentionBytes,omitnil,omitempty" name:"RetentionBytes"`
 }
 
 type InstanceDetailResponse struct {
@@ -8584,23 +8594,26 @@ func (r *InstanceScalingDownResponse) FromJsonString(s string) error {
 }
 
 type InstanceVersion struct {
-	// ckafka集群实例版本
+	// <p>ckafka集群实例版本</p>
 	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
 
-	// broker版本信息
+	// <p>broker版本信息</p>
 	CurBrokerVersion *string `json:"CurBrokerVersion,omitnil,omitempty" name:"CurBrokerVersion"`
 
-	// 最新版本信息
+	// <p>最新版本信息</p>
 	LatestBrokerVersion []*LatestBrokerVersion `json:"LatestBrokerVersion,omitnil,omitempty" name:"LatestBrokerVersion"`
 
-	// 允许跨大版本内核升级
+	// <p>允许跨大版本内核升级</p>
 	AllowUpgradeHighVersion *bool `json:"AllowUpgradeHighVersion,omitnil,omitempty" name:"AllowUpgradeHighVersion"`
 
-	// 允许升级的大版本
+	// <p>允许升级的大版本</p>
 	HighVersionSet []*string `json:"HighVersionSet,omitnil,omitempty" name:"HighVersionSet"`
 
-	// 允许小版本号配置自动删除消费者组
+	// <p>允许小版本号配置自动删除消费者组</p>
 	AllowAutoDeleteTimestamp *bool `json:"AllowAutoDeleteTimestamp,omitnil,omitempty" name:"AllowAutoDeleteTimestamp"`
+
+	// <p>允许修改事务ID过期时间配置</p>
+	AllowModifyTxnIdExpiration *bool `json:"AllowModifyTxnIdExpiration,omitnil,omitempty" name:"AllowModifyTxnIdExpiration"`
 }
 
 type JgwOperateResponse struct {
@@ -8854,26 +8867,26 @@ type MariaDBParam struct {
 
 // Predefined struct for user
 type ModifyAclRuleRequestParams struct {
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// ACL规则名
+	// <p>ACL规则名</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 修改预设规则时传入,是否应用到新增的Topic
+	// <p>修改预设规则时传入,是否应用到新增的Topic</p><p>枚举值：</p><ul><li>0： 不允许应用到新增的topic</li><li>1： 允许应用到新增的topic</li></ul><p>默认值：0</p>
 	IsApplied *int64 `json:"IsApplied,omitnil,omitempty" name:"IsApplied"`
 }
 
 type ModifyAclRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// ACL规则名
+	// <p>ACL规则名</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 修改预设规则时传入,是否应用到新增的Topic
+	// <p>修改预设规则时传入,是否应用到新增的Topic</p><p>枚举值：</p><ul><li>0： 不允许应用到新增的topic</li><li>1： 允许应用到新增的topic</li></ul><p>默认值：0</p>
 	IsApplied *int64 `json:"IsApplied,omitnil,omitempty" name:"IsApplied"`
 }
 
@@ -8900,7 +8913,7 @@ func (r *ModifyAclRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAclRuleResponseParams struct {
-	// 规则的唯一表示Key
+	// <p>规则的唯一表示Key</p>
 	Result *int64 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9353,77 +9366,95 @@ type ModifyInstanceAttributesConfig struct {
 
 // Predefined struct for user
 type ModifyInstanceAttributesRequestParams struct {
-	// ckafka集群实例Id,可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+	// <p>ckafka集群实例Id,可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例日志的最长保留时间，单位分钟，最大90天，最小为1min
+	// <p>实例日志的最长保留时间，单位分钟，最大90天，最小为1min</p>
 	MsgRetentionTime *int64 `json:"MsgRetentionTime,omitnil,omitempty" name:"MsgRetentionTime"`
 
-	// ckafka集群实例Name
+	// <p>ckafka集群实例Name</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例配置
+	// <p>实例配置</p>
 	Config *ModifyInstanceAttributesConfig `json:"Config,omitnil,omitempty" name:"Config"`
 
-	// 动态消息保留策略配置
+	// <p>动态消息保留策略配置</p>
 	DynamicRetentionConfig *DynamicRetentionTime `json:"DynamicRetentionConfig,omitnil,omitempty" name:"DynamicRetentionConfig"`
 
-	// 用于修改升级版本或升配定时任务的执行时间，Unix时间戳，精确到秒
+	// <p>用于修改升级版本或升配定时任务的执行时间，Unix时间戳，精确到秒</p>
 	RebalanceTime *int64 `json:"RebalanceTime,omitnil,omitempty" name:"RebalanceTime"`
 
-	// 公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写
+	// <p>公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写</p>
 	PublicNetwork *int64 `json:"PublicNetwork,omitnil,omitempty" name:"PublicNetwork"`
 
-	// 动态硬盘扩容策略配置
+	// <p>动态硬盘扩容策略配置</p>
 	//
 	// Deprecated: DynamicDiskConfig is deprecated.
 	DynamicDiskConfig *DynamicDiskConfig `json:"DynamicDiskConfig,omitnil,omitempty" name:"DynamicDiskConfig"`
 
-	// 实例级别单条消息大小（单位byte)  最大 12582912(不包含)  最小1024(不包含)
+	// <p>实例级别单条消息大小（单位byte)  最大 12582912(不包含)  最小1024(不包含)</p>
 	MaxMessageByte *uint64 `json:"MaxMessageByte,omitnil,omitempty" name:"MaxMessageByte"`
 
-	// 是否允许未同步的副本选为 leader: 1 开启  0 关闭
+	// <p>是否允许未同步的副本选为 leader: 1 开启  0 关闭</p>
 	UncleanLeaderElectionEnable *int64 `json:"UncleanLeaderElectionEnable,omitnil,omitempty" name:"UncleanLeaderElectionEnable"`
 
-	// 实例删除保护开关: 1 开启  0 关闭
+	// <p>实例删除保护开关: 1 开启  0 关闭</p>
 	DeleteProtectionEnable *int64 `json:"DeleteProtectionEnable,omitnil,omitempty" name:"DeleteProtectionEnable"`
+
+	// <p>实例级别消息保留大小</p>单位：byte<br>默认值：-1<br><p>实例级别消息保留大小</p>
+	RetentionBytes *int64 `json:"RetentionBytes,omitnil,omitempty" name:"RetentionBytes"`
+
+	// <p>是否封禁高风险admin接口; true则封禁高风险adminApi; 关闭后不支持打开,仅专业版支持; 默认是false 对高风险admin接口不做处理</p>
+	AdminSecurity *bool `json:"AdminSecurity,omitnil,omitempty" name:"AdminSecurity"`
+
+	// <p>事务ID最大空闲时间，超时未提交的事务将被标记为过期</p>取值范围：[3600000, 604800000]<br>单位：ms
+	TransactionalIdExpirationMs *int64 `json:"TransactionalIdExpirationMs,omitnil,omitempty" name:"TransactionalIdExpirationMs"`
 }
 
 type ModifyInstanceAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id,可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+	// <p>ckafka集群实例Id,可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例日志的最长保留时间，单位分钟，最大90天，最小为1min
+	// <p>实例日志的最长保留时间，单位分钟，最大90天，最小为1min</p>
 	MsgRetentionTime *int64 `json:"MsgRetentionTime,omitnil,omitempty" name:"MsgRetentionTime"`
 
-	// ckafka集群实例Name
+	// <p>ckafka集群实例Name</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例配置
+	// <p>实例配置</p>
 	Config *ModifyInstanceAttributesConfig `json:"Config,omitnil,omitempty" name:"Config"`
 
-	// 动态消息保留策略配置
+	// <p>动态消息保留策略配置</p>
 	DynamicRetentionConfig *DynamicRetentionTime `json:"DynamicRetentionConfig,omitnil,omitempty" name:"DynamicRetentionConfig"`
 
-	// 用于修改升级版本或升配定时任务的执行时间，Unix时间戳，精确到秒
+	// <p>用于修改升级版本或升配定时任务的执行时间，Unix时间戳，精确到秒</p>
 	RebalanceTime *int64 `json:"RebalanceTime,omitnil,omitempty" name:"RebalanceTime"`
 
-	// 公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写
+	// <p>公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写</p>
 	PublicNetwork *int64 `json:"PublicNetwork,omitnil,omitempty" name:"PublicNetwork"`
 
-	// 动态硬盘扩容策略配置
+	// <p>动态硬盘扩容策略配置</p>
 	DynamicDiskConfig *DynamicDiskConfig `json:"DynamicDiskConfig,omitnil,omitempty" name:"DynamicDiskConfig"`
 
-	// 实例级别单条消息大小（单位byte)  最大 12582912(不包含)  最小1024(不包含)
+	// <p>实例级别单条消息大小（单位byte)  最大 12582912(不包含)  最小1024(不包含)</p>
 	MaxMessageByte *uint64 `json:"MaxMessageByte,omitnil,omitempty" name:"MaxMessageByte"`
 
-	// 是否允许未同步的副本选为 leader: 1 开启  0 关闭
+	// <p>是否允许未同步的副本选为 leader: 1 开启  0 关闭</p>
 	UncleanLeaderElectionEnable *int64 `json:"UncleanLeaderElectionEnable,omitnil,omitempty" name:"UncleanLeaderElectionEnable"`
 
-	// 实例删除保护开关: 1 开启  0 关闭
+	// <p>实例删除保护开关: 1 开启  0 关闭</p>
 	DeleteProtectionEnable *int64 `json:"DeleteProtectionEnable,omitnil,omitempty" name:"DeleteProtectionEnable"`
+
+	// <p>实例级别消息保留大小</p>单位：byte<br>默认值：-1<br><p>实例级别消息保留大小</p>
+	RetentionBytes *int64 `json:"RetentionBytes,omitnil,omitempty" name:"RetentionBytes"`
+
+	// <p>是否封禁高风险admin接口; true则封禁高风险adminApi; 关闭后不支持打开,仅专业版支持; 默认是false 对高风险admin接口不做处理</p>
+	AdminSecurity *bool `json:"AdminSecurity,omitnil,omitempty" name:"AdminSecurity"`
+
+	// <p>事务ID最大空闲时间，超时未提交的事务将被标记为过期</p>取值范围：[3600000, 604800000]<br>单位：ms
+	TransactionalIdExpirationMs *int64 `json:"TransactionalIdExpirationMs,omitnil,omitempty" name:"TransactionalIdExpirationMs"`
 }
 
 func (r *ModifyInstanceAttributesRequest) ToJsonString() string {
@@ -9449,6 +9480,9 @@ func (r *ModifyInstanceAttributesRequest) FromJsonString(s string) error {
 	delete(f, "MaxMessageByte")
 	delete(f, "UncleanLeaderElectionEnable")
 	delete(f, "DeleteProtectionEnable")
+	delete(f, "RetentionBytes")
+	delete(f, "AdminSecurity")
+	delete(f, "TransactionalIdExpirationMs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceAttributesRequest has unknown keys!", "")
 	}
@@ -9457,7 +9491,7 @@ func (r *ModifyInstanceAttributesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstanceAttributesResponseParams struct {
-	// 返回结果
+	// <p>返回结果</p>
 	Result *JgwOperateResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9482,38 +9516,32 @@ func (r *ModifyInstanceAttributesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstancePreRequestParams struct {
-	// ckafka集群实例Id,可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+	// <p>ckafka集群实例Id,可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 磁盘大小 单位 GB     最大值为500000,步长100
-	// 可以通过以下链接查看规格限制：https://cloud.tencent.com/document/product/597/122562
+	// <p>磁盘大小 单位 GB     最大值为500000,步长100可以通过以下链接查看规格限制：https://cloud.tencent.com/document/product/597/122562</p>
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 峰值带宽 单位 MB/s
-	// 可以通过以下链接查看规格限制及对应步长: https://cloud.tencent.com/document/product/597/11745
+	// <p>峰值带宽 单位 MB/s可以通过以下链接查看规格限制及对应步长: https://cloud.tencent.com/document/product/597/11745</p>
 	BandWidth *int64 `json:"BandWidth,omitnil,omitempty" name:"BandWidth"`
 
-	// 分区上限 最大值: 40000, 步长: 100
-	// 可以通过以下链接查看规格限制: https://cloud.tencent.com/document/product/597/122563
+	// <p>分区上限 最大值: 40000, 步长: 100可以通过以下链接查看规格限制: https://cloud.tencent.com/document/product/597/122563</p>
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 }
 
 type ModifyInstancePreRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id,可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+	// <p>ckafka集群实例Id,可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 磁盘大小 单位 GB     最大值为500000,步长100
-	// 可以通过以下链接查看规格限制：https://cloud.tencent.com/document/product/597/122562
+	// <p>磁盘大小 单位 GB     最大值为500000,步长100可以通过以下链接查看规格限制：https://cloud.tencent.com/document/product/597/122562</p>
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 峰值带宽 单位 MB/s
-	// 可以通过以下链接查看规格限制及对应步长: https://cloud.tencent.com/document/product/597/11745
+	// <p>峰值带宽 单位 MB/s可以通过以下链接查看规格限制及对应步长: https://cloud.tencent.com/document/product/597/11745</p>
 	BandWidth *int64 `json:"BandWidth,omitnil,omitempty" name:"BandWidth"`
 
-	// 分区上限 最大值: 40000, 步长: 100
-	// 可以通过以下链接查看规格限制: https://cloud.tencent.com/document/product/597/122563
+	// <p>分区上限 最大值: 40000, 步长: 100可以通过以下链接查看规格限制: https://cloud.tencent.com/document/product/597/122563</p>
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 }
 
@@ -9541,7 +9569,7 @@ func (r *ModifyInstancePreRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstancePreResponseParams struct {
-	// 变更预付费实例配置返回结构
+	// <p>变更预付费实例配置返回结构</p>
 	Result *CreateInstancePreResp `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9771,122 +9799,122 @@ func (r *ModifyRoutineMaintenanceTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTopicAttributesRequestParams struct {
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名
+	// <p>主题名</p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 主题备注，是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线-。
+	// <p>主题备注</p><p>入参限制：不超过64个字符</p><p>默认值：&quot;&quot;</p>
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// IP 白名单开关，1：打开；0：关闭。
+	// <p>IP 白名单开关，1：打开；0：关闭。</p>
 	EnableWhiteList *int64 `json:"EnableWhiteList,omitnil,omitempty" name:"EnableWhiteList"`
 
-	// 默认为1。
+	// <p>最小同步副本数</p><p>默认值：1</p><p>最小值为1</p>
 	MinInsyncReplicas *int64 `json:"MinInsyncReplicas,omitnil,omitempty" name:"MinInsyncReplicas"`
 
-	// 默认为 0，0：false；1：true。
+	// <p>是否允许未同步的副本选为leader</p><p>枚举值：</p><ul><li>0： 不允许</li><li>1： 允许</li></ul><p>默认值：0</p>
 	UncleanLeaderElectionEnable *int64 `json:"UncleanLeaderElectionEnable,omitnil,omitempty" name:"UncleanLeaderElectionEnable"`
 
-	// 消息保留时间，单位：ms，当前最小值为60000ms。
+	// <p>Segment分片滚动的时长</p><p>单位：毫秒</p><p>默认值：86400000</p><p>最小值为86400000ms（1天）</p>
 	RetentionMs *int64 `json:"RetentionMs,omitnil,omitempty" name:"RetentionMs"`
 
-	// 主题消息最大值，单位为 Byte，最大值为12582912Byte（即12MB）。
+	// <p>主题消息最大值</p><p>取值范围：[1024, 12582912]</p><p>单位：Bytes</p>
 	MaxMessageBytes *int64 `json:"MaxMessageBytes,omitnil,omitempty" name:"MaxMessageBytes"`
 
-	// Segment 分片滚动的时长，单位：ms，当前最小值86400000ms。
+	// <p>Segment 分片滚动的时长</p><p>单位：毫秒</p><p>最小值为86400000ms（1天）</p>
 	SegmentMs *int64 `json:"SegmentMs,omitnil,omitempty" name:"SegmentMs"`
 
-	// 消息删除策略，可以选择delete 或者compact
+	// <p>消息删除策略，可以选择delete 或者compact</p>
 	CleanUpPolicy *string `json:"CleanUpPolicy,omitnil,omitempty" name:"CleanUpPolicy"`
 
-	// Ip白名单列表，配额限制，enableWhileList=1时必选
+	// <p>Ip白名单列表，配额限制，enableWhileList=1时必选</p>
 	IpWhiteList []*string `json:"IpWhiteList,omitnil,omitempty" name:"IpWhiteList"`
 
-	// 预设ACL规则, 1:打开  0:关闭，默认不打开
+	// <p>预设ACL规则, 1:打开  0:关闭，默认不打开</p>
 	EnableAclRule *int64 `json:"EnableAclRule,omitnil,omitempty" name:"EnableAclRule"`
 
-	// ACL规则名
+	// <p>ACL规则名</p>
 	AclRuleName *string `json:"AclRuleName,omitnil,omitempty" name:"AclRuleName"`
 
-	// 可选, 保留文件大小. 默认为-1,单位bytes, 当前最小值为1048576B
+	// <p>可选, 保留文件大小</p><p>取值范围：[1073741824, 1099511627776]</p><p>单位：Bytes</p><p>默认值：-1</p><p>特殊值：-1表示无限制</p>
 	RetentionBytes *int64 `json:"RetentionBytes,omitnil,omitempty" name:"RetentionBytes"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 生产限流，单位 MB/s；设置为-1，则生产不限流
+	// <p>生产限流，单位 MB/s；设置为-1，则生产不限流</p>
 	QuotaProducerByteRate *int64 `json:"QuotaProducerByteRate,omitnil,omitempty" name:"QuotaProducerByteRate"`
 
-	// 消费限流，单位 MB/s；设置为-1，则消费不限流
+	// <p>消费限流，单位 MB/s；设置为-1，则消费不限流</p>
 	QuotaConsumerByteRate *int64 `json:"QuotaConsumerByteRate,omitnil,omitempty" name:"QuotaConsumerByteRate"`
 
-	// topic副本数  最小值 1,最大值 3
+	// <p>topic副本数  最小值 1,最大值 3</p>
 	ReplicaNum *int64 `json:"ReplicaNum,omitnil,omitempty" name:"ReplicaNum"`
 
-	// 消息保存的时间类型：CreateTime/LogAppendTime
+	// <p>消息保存的时间类型：CreateTime/LogAppendTime</p>
 	LogMsgTimestampType *string `json:"LogMsgTimestampType,omitnil,omitempty" name:"LogMsgTimestampType"`
 }
 
 type ModifyTopicAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/40835">DescribeInstances</a></p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名
+	// <p>主题名</p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 主题备注，是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线-。
+	// <p>主题备注</p><p>入参限制：不超过64个字符</p><p>默认值：&quot;&quot;</p>
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// IP 白名单开关，1：打开；0：关闭。
+	// <p>IP 白名单开关，1：打开；0：关闭。</p>
 	EnableWhiteList *int64 `json:"EnableWhiteList,omitnil,omitempty" name:"EnableWhiteList"`
 
-	// 默认为1。
+	// <p>最小同步副本数</p><p>默认值：1</p><p>最小值为1</p>
 	MinInsyncReplicas *int64 `json:"MinInsyncReplicas,omitnil,omitempty" name:"MinInsyncReplicas"`
 
-	// 默认为 0，0：false；1：true。
+	// <p>是否允许未同步的副本选为leader</p><p>枚举值：</p><ul><li>0： 不允许</li><li>1： 允许</li></ul><p>默认值：0</p>
 	UncleanLeaderElectionEnable *int64 `json:"UncleanLeaderElectionEnable,omitnil,omitempty" name:"UncleanLeaderElectionEnable"`
 
-	// 消息保留时间，单位：ms，当前最小值为60000ms。
+	// <p>Segment分片滚动的时长</p><p>单位：毫秒</p><p>默认值：86400000</p><p>最小值为86400000ms（1天）</p>
 	RetentionMs *int64 `json:"RetentionMs,omitnil,omitempty" name:"RetentionMs"`
 
-	// 主题消息最大值，单位为 Byte，最大值为12582912Byte（即12MB）。
+	// <p>主题消息最大值</p><p>取值范围：[1024, 12582912]</p><p>单位：Bytes</p>
 	MaxMessageBytes *int64 `json:"MaxMessageBytes,omitnil,omitempty" name:"MaxMessageBytes"`
 
-	// Segment 分片滚动的时长，单位：ms，当前最小值86400000ms。
+	// <p>Segment 分片滚动的时长</p><p>单位：毫秒</p><p>最小值为86400000ms（1天）</p>
 	SegmentMs *int64 `json:"SegmentMs,omitnil,omitempty" name:"SegmentMs"`
 
-	// 消息删除策略，可以选择delete 或者compact
+	// <p>消息删除策略，可以选择delete 或者compact</p>
 	CleanUpPolicy *string `json:"CleanUpPolicy,omitnil,omitempty" name:"CleanUpPolicy"`
 
-	// Ip白名单列表，配额限制，enableWhileList=1时必选
+	// <p>Ip白名单列表，配额限制，enableWhileList=1时必选</p>
 	IpWhiteList []*string `json:"IpWhiteList,omitnil,omitempty" name:"IpWhiteList"`
 
-	// 预设ACL规则, 1:打开  0:关闭，默认不打开
+	// <p>预设ACL规则, 1:打开  0:关闭，默认不打开</p>
 	EnableAclRule *int64 `json:"EnableAclRule,omitnil,omitempty" name:"EnableAclRule"`
 
-	// ACL规则名
+	// <p>ACL规则名</p>
 	AclRuleName *string `json:"AclRuleName,omitnil,omitempty" name:"AclRuleName"`
 
-	// 可选, 保留文件大小. 默认为-1,单位bytes, 当前最小值为1048576B
+	// <p>可选, 保留文件大小</p><p>取值范围：[1073741824, 1099511627776]</p><p>单位：Bytes</p><p>默认值：-1</p><p>特殊值：-1表示无限制</p>
 	RetentionBytes *int64 `json:"RetentionBytes,omitnil,omitempty" name:"RetentionBytes"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 生产限流，单位 MB/s；设置为-1，则生产不限流
+	// <p>生产限流，单位 MB/s；设置为-1，则生产不限流</p>
 	QuotaProducerByteRate *int64 `json:"QuotaProducerByteRate,omitnil,omitempty" name:"QuotaProducerByteRate"`
 
-	// 消费限流，单位 MB/s；设置为-1，则消费不限流
+	// <p>消费限流，单位 MB/s；设置为-1，则消费不限流</p>
 	QuotaConsumerByteRate *int64 `json:"QuotaConsumerByteRate,omitnil,omitempty" name:"QuotaConsumerByteRate"`
 
-	// topic副本数  最小值 1,最大值 3
+	// <p>topic副本数  最小值 1,最大值 3</p>
 	ReplicaNum *int64 `json:"ReplicaNum,omitnil,omitempty" name:"ReplicaNum"`
 
-	// 消息保存的时间类型：CreateTime/LogAppendTime
+	// <p>消息保存的时间类型：CreateTime/LogAppendTime</p>
 	LogMsgTimestampType *string `json:"LogMsgTimestampType,omitnil,omitempty" name:"LogMsgTimestampType"`
 }
 
@@ -9929,7 +9957,7 @@ func (r *ModifyTopicAttributesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTopicAttributesResponseParams struct {
-	// 返回结果
+	// <p>返回结果</p>
 	Result *JgwOperateResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10565,20 +10593,20 @@ type Region struct {
 
 // Predefined struct for user
 type RenewCkafkaInstanceRequestParams struct {
-	// ckafka集群实例Id,可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+	// <p>ckafka集群实例Id,可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 续费时长, 默认为1, 单位是月
+	// <p>续费时长, 默认为1, 单位是月</p>
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 }
 
 type RenewCkafkaInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id,可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+	// <p>ckafka集群实例Id,可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 续费时长, 默认为1, 单位是月
+	// <p>续费时长, 默认为1, 单位是月</p>
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 }
 
@@ -10612,7 +10640,7 @@ type RenewCkafkaInstanceResp struct {
 
 // Predefined struct for user
 type RenewCkafkaInstanceResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Result *RenewCkafkaInstanceResp `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10760,49 +10788,45 @@ func (r *ResumeDatahubTaskResponse) FromJsonString(s string) error {
 }
 
 type Route struct {
-	// 实例接入方式
-	// 0：PLAINTEXT (明文方式，没有带用户信息老版本及社区版本都支持)
-	// 1：SASL_PLAINTEXT（明文方式，不过在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
-	// 2：SSL（SSL加密通信，没有带用户信息，老版本及社区版本都支持）
-	// 3：SASL_SSL（SSL加密通信，在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
+	// <p>实例接入方式0：PLAINTEXT (明文方式，没有带用户信息老版本及社区版本都支持)1：SASL_PLAINTEXT（明文方式，不过在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）2：SSL（SSL加密通信，没有带用户信息，老版本及社区版本都支持）3：SASL_SSL（SSL加密通信，在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）</p>
 	AccessType *int64 `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
-	// 路由Id
+	// <p>路由Id</p>
 	RouteId *int64 `json:"RouteId,omitnil,omitempty" name:"RouteId"`
 
-	// 路由网络类型(3:vpc路由;7:内部支撑路由;1:公网路由)
+	// <p>路由网络类型(3:vpc路由;7:内部支撑路由;1:公网路由)</p>
 	VipType *int64 `json:"VipType,omitnil,omitempty" name:"VipType"`
 
-	// 虚拟IP列表
+	// <p>虚拟IP列表</p>
 	VipList []*VipEntity `json:"VipList,omitnil,omitempty" name:"VipList"`
 
-	// 域名
+	// <p>域名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 域名port
+	// <p>域名port</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainPort *int64 `json:"DomainPort,omitnil,omitempty" name:"DomainPort"`
 
-	// 时间戳
+	// <p>时间戳</p>
 	DeleteTimestamp *string `json:"DeleteTimestamp,omitnil,omitempty" name:"DeleteTimestamp"`
 
-	// 子网Id
+	// <p>子网Id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Subnet *string `json:"Subnet,omitnil,omitempty" name:"Subnet"`
 
-	// 虚拟IP列表(1对1 broker节点)
+	// <p>虚拟IP列表(1对1 broker节点)</p>
 	BrokerVipList []*VipEntity `json:"BrokerVipList,omitnil,omitempty" name:"BrokerVipList"`
 
-	// 私有网络Id
+	// <p>私有网络Id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 备注信息
+	// <p>备注信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 路由的状态。1: 创建中，2: 创建成功，3: 创建失败，4: 删除中，6: 删除失败
+	// <p>路由的状态。1: 创建中，2: 创建成功，3: 创建失败，4: 删除中，6: 删除失败</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
@@ -11634,36 +11658,36 @@ type VipEntity struct {
 }
 
 type ZoneInfo struct {
-	// 可用区
+	// <p>可用区</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 是否内部APP
+	// <p>是否内部APP</p><p>枚举值：</p><ul><li>0： 外部</li><li>1： 内部</li></ul><p>默认值：0</p>
 	IsInternalApp *int64 `json:"IsInternalApp,omitnil,omitempty" name:"IsInternalApp"`
 
-	// 应用标识
+	// <p>应用标识</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 可用区是否售罄标识，true表示已售罄，false表示未售罄。
+	// <p>可用区是否售罄标识，true表示已售罄，false表示未售罄。</p>
 	Flag *bool `json:"Flag,omitnil,omitempty" name:"Flag"`
 
-	// 可用区名称
+	// <p>可用区名称</p>
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 
-	// 可用区状态  枚举示例:  3: 开启，4: 关闭;  可用区状态以SoldOut为准
+	// <p>可用区状态</p><p>枚举值：</p><ul><li>3： 开启</li><li>4： 关闭</li></ul><p>可用区状态以SoldOut为准</p>
 	ZoneStatus *int64 `json:"ZoneStatus,omitnil,omitempty" name:"ZoneStatus"`
 
-	// 额外标识
+	// <p>额外标识</p>
 	//
 	// Deprecated: Exflag is deprecated.
 	Exflag *string `json:"Exflag,omitnil,omitempty" name:"Exflag"`
 
-	// true为售罄，false为未售罄
+	// <p>true为售罄，false为未售罄</p>
 	SoldOut *string `json:"SoldOut,omitnil,omitempty" name:"SoldOut"`
 
-	// 标准版售罄信息
+	// <p>标准版售罄信息</p>
 	SalesInfo []*SaleInfo `json:"SalesInfo,omitnil,omitempty" name:"SalesInfo"`
 
-	// 额外标识
+	// <p>额外标识</p>
 	ExtraFlag *string `json:"ExtraFlag,omitnil,omitempty" name:"ExtraFlag"`
 }
 

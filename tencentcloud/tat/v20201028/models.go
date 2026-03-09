@@ -117,61 +117,61 @@ func (r *CancelInvocationResponse) FromJsonString(s string) error {
 }
 
 type Command struct {
-	// 命令ID。
+	// <p>命令ID。</p>
 	CommandId *string `json:"CommandId,omitnil,omitempty" name:"CommandId"`
 
-	// 命令名称。
+	// <p>命令名称。</p>
 	CommandName *string `json:"CommandName,omitnil,omitempty" name:"CommandName"`
 
-	// 命令描述。
+	// <p>命令描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// Base64编码后的命令内容。
+	// <p>Base64编码后的命令内容。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 命令类型。取值为 SHELL、POWERSHELL、BAT 之一。
+	// <p>命令类型。取值为 SHELL、POWERSHELL、BAT 之一。</p>
 	CommandType *string `json:"CommandType,omitnil,omitempty" name:"CommandType"`
 
-	// 命令执行路径。
+	// <p>命令执行路径。</p>
 	WorkingDirectory *string `json:"WorkingDirectory,omitnil,omitempty" name:"WorkingDirectory"`
 
-	// 命令超时时间。
+	// <p>命令超时时间。</p><p>单位：秒</p><p>指定 OutputCOSBucketUrl 参数时，超时时间将包含命令输出上传 COS 的耗时</p>
 	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 命令创建时间。格式为：YYYY-MM-DDThh:mm:ssZ
+	// <p>命令创建时间。格式为：YYYY-MM-DDThh:mm:ssZ</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 命令更新时间。格式为：YYYY-MM-DDThh:mm:ssZ
+	// <p>命令更新时间。格式为：YYYY-MM-DDThh:mm:ssZ</p>
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 
-	// 是否启用自定义参数功能。
+	// <p>是否启用自定义参数功能。</p>
 	EnableParameter *bool `json:"EnableParameter,omitnil,omitempty" name:"EnableParameter"`
 
-	// 自定义参数的默认取值。
+	// <p>自定义参数的默认取值。</p>
 	DefaultParameters *string `json:"DefaultParameters,omitnil,omitempty" name:"DefaultParameters"`
 
-	// 自定义参数的默认取值。
+	// <p>自定义参数的默认取值。</p>
 	DefaultParameterConfs []*DefaultParameterConf `json:"DefaultParameterConfs,omitnil,omitempty" name:"DefaultParameterConfs"`
 
-	// 命令关联的场景
+	// <p>命令关联的场景</p>
 	Scenes []*string `json:"Scenes,omitnil,omitempty" name:"Scenes"`
 
-	// 命令的结构化描述。公共命令有值，用户命令为空字符串。
+	// <p>命令的结构化描述。公共命令有值，用户命令为空字符串。</p>
 	FormattedDescription *string `json:"FormattedDescription,omitnil,omitempty" name:"FormattedDescription"`
 
-	// 命令创建者。TAT 代表公共命令，USER 代表个人命令。
+	// <p>命令创建者。</p><p>枚举值：</p><ul><li>TAT： 公共命令</li><li>USER： 个人创建的命令</li></ul>
 	CreatedBy *string `json:"CreatedBy,omitnil,omitempty" name:"CreatedBy"`
 
-	// 命令关联的标签列表。
+	// <p>命令关联的标签列表。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 在实例上执行命令的用户名。
+	// <p>在实例上执行命令的用户名。</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 日志上传的cos bucket 地址。
+	// <p>日志上传的cos bucket 地址。</p>
 	OutputCOSBucketUrl *string `json:"OutputCOSBucketUrl,omitnil,omitempty" name:"OutputCOSBucketUrl"`
 
-	// 日志在cos bucket中的目录。
+	// <p>日志在cos bucket中的目录。</p>
 	OutputCOSKeyPrefix *string `json:"OutputCOSKeyPrefix,omitnil,omitempty" name:"OutputCOSKeyPrefix"`
 }
 
@@ -2563,106 +2563,80 @@ type InvokerRecord struct {
 
 // Predefined struct for user
 type ModifyCommandRequestParams struct {
-	// 命令ID。可通过 [DescribeCommands(查询命令详情)](https://cloud.tencent.com/document/api/1340/52681) 接口获取。
+	// <p>命令ID。可通过 <a href="https://cloud.tencent.com/document/api/1340/52681">DescribeCommands(查询命令详情)</a> 接口获取。</p>
 	CommandId *string `json:"CommandId,omitnil,omitempty" name:"CommandId"`
 
-	// 命令名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
+	// <p>命令名称。名称仅支持中文、英文、数字、下划线、分隔符&quot;-&quot;、小数点，最大长度不能超60个字节。</p>
 	CommandName *string `json:"CommandName,omitnil,omitempty" name:"CommandName"`
 
-	// 命令描述。不超过120字符。
+	// <p>命令描述。不超过120字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// Base64编码后的命令内容，长度不可超过64KB。
+	// <p>Base64编码后的命令内容，长度不可超过64KB。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 命令类型，目前支持取值：SHELL、POWERSHELL、BAT。
+	// <p>命令类型，目前支持取值：SHELL、POWERSHELL、BAT。</p>
 	CommandType *string `json:"CommandType,omitnil,omitempty" name:"CommandType"`
 
-	// 命令执行路径。
+	// <p>命令执行路径。</p>
 	WorkingDirectory *string `json:"WorkingDirectory,omitnil,omitempty" name:"WorkingDirectory"`
 
-	// 命令超时时间。取值范围[1, 86400]。
+	// <p>命令超时时间。</p><p>取值范围：[1, 86400]</p><p>单位：秒</p><p>默认值：60</p><p>指定 OutputCOSBucketUrl 参数时，超时时间将包含命令输出上传 COS 的耗时</p>
 	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 启用自定义参数功能时，自定义参数的默认取值。字段类型为json encoded string。如：{"varA": "222"}。
-	// 参数不支持同时指定 `DefaultParameters` 和 `DefaultParameterConfs` 。
-	// 采取整体全覆盖式修改，即修改时必须提供所有新默认值。
-	// 仅在命令的 EnableParameter 为 true 时，才允许修改此参数。可通过 [DescribeCommands(查询命令详情)](https://cloud.tencent.com/document/api/1340/52681) 接口获取命令的 EnableParameter 设置。
-	// key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
-	// 自定义参数最多20个。
-	// 自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
+	// <p>启用自定义参数功能时，自定义参数的默认取值。字段类型为json encoded string。如：{&quot;varA&quot;: &quot;222&quot;}。<br>参数不支持同时指定 <code>DefaultParameters</code> 和 <code>DefaultParameterConfs</code> 。<br>采取整体全覆盖式修改，即修改时必须提供所有新默认值。<br>仅在命令的 EnableParameter 为 true 时，才允许修改此参数。可通过 <a href="https://cloud.tencent.com/document/api/1340/52681">DescribeCommands(查询命令详情)</a> 接口获取命令的 EnableParameter 设置。<br>key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。<br>自定义参数最多20个。<br>自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。</p>
 	DefaultParameters *string `json:"DefaultParameters,omitnil,omitempty" name:"DefaultParameters"`
 
-	// 自定义参数数组。如果 InvokeCommand 时未提供参数取值，将使用这里的默认值进行替换。
-	// 参数不支持同时指定 `DefaultParameters` 和 `DefaultParameterConfs` 。
-	// 仅在命令的 EnableParameter 为 true 时，才允许修改此参数。可通过 [DescribeCommands(查询命令详情)](https://cloud.tencent.com/document/api/1340/52681) 接口获取命令的 EnableParameter 设置。
-	// 自定义参数最多20个。
+	// <p>自定义参数数组。如果 InvokeCommand 时未提供参数取值，将使用这里的默认值进行替换。<br>参数不支持同时指定 <code>DefaultParameters</code> 和 <code>DefaultParameterConfs</code> 。<br>仅在命令的 EnableParameter 为 true 时，才允许修改此参数。可通过 <a href="https://cloud.tencent.com/document/api/1340/52681">DescribeCommands(查询命令详情)</a> 接口获取命令的 EnableParameter 设置。<br>自定义参数最多20个。</p>
 	DefaultParameterConfs []*DefaultParameterConf `json:"DefaultParameterConfs,omitnil,omitempty" name:"DefaultParameterConfs"`
 
-	// 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
-	// 使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。
+	// <p>在 CVM 或 Lighthouse 实例中执行命令的用户名称。<br>使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 指定日志上传的cos bucket 地址，必须以https开头，如 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。
+	// <p>指定日志上传的cos bucket 地址，必须以https开头，如 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。</p>
 	OutputCOSBucketUrl *string `json:"OutputCOSBucketUrl,omitnil,omitempty" name:"OutputCOSBucketUrl"`
 
-	// 指定日志在cos bucket中的目录，目录命名有如下规则：
-	// 1. 可用数字、中英文和可见字符的组合，长度最多为60。
-	// 2. 用 / 分割路径，可快速创建子目录。
-	// 3. 不允许连续 / ；不允许以 / 开头；不允许以..作为文件夹名称。
+	// <p>指定日志在cos bucket中的目录，目录命名有如下规则：</p><ol><li>可用数字、中英文和可见字符的组合，长度最多为60。</li><li>用 / 分割路径，可快速创建子目录。</li><li>不允许连续 / ；不允许以 / 开头；不允许以..作为文件夹名称。</li></ol>
 	OutputCOSKeyPrefix *string `json:"OutputCOSKeyPrefix,omitnil,omitempty" name:"OutputCOSKeyPrefix"`
 }
 
 type ModifyCommandRequest struct {
 	*tchttp.BaseRequest
 	
-	// 命令ID。可通过 [DescribeCommands(查询命令详情)](https://cloud.tencent.com/document/api/1340/52681) 接口获取。
+	// <p>命令ID。可通过 <a href="https://cloud.tencent.com/document/api/1340/52681">DescribeCommands(查询命令详情)</a> 接口获取。</p>
 	CommandId *string `json:"CommandId,omitnil,omitempty" name:"CommandId"`
 
-	// 命令名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
+	// <p>命令名称。名称仅支持中文、英文、数字、下划线、分隔符&quot;-&quot;、小数点，最大长度不能超60个字节。</p>
 	CommandName *string `json:"CommandName,omitnil,omitempty" name:"CommandName"`
 
-	// 命令描述。不超过120字符。
+	// <p>命令描述。不超过120字符。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// Base64编码后的命令内容，长度不可超过64KB。
+	// <p>Base64编码后的命令内容，长度不可超过64KB。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 命令类型，目前支持取值：SHELL、POWERSHELL、BAT。
+	// <p>命令类型，目前支持取值：SHELL、POWERSHELL、BAT。</p>
 	CommandType *string `json:"CommandType,omitnil,omitempty" name:"CommandType"`
 
-	// 命令执行路径。
+	// <p>命令执行路径。</p>
 	WorkingDirectory *string `json:"WorkingDirectory,omitnil,omitempty" name:"WorkingDirectory"`
 
-	// 命令超时时间。取值范围[1, 86400]。
+	// <p>命令超时时间。</p><p>取值范围：[1, 86400]</p><p>单位：秒</p><p>默认值：60</p><p>指定 OutputCOSBucketUrl 参数时，超时时间将包含命令输出上传 COS 的耗时</p>
 	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 启用自定义参数功能时，自定义参数的默认取值。字段类型为json encoded string。如：{"varA": "222"}。
-	// 参数不支持同时指定 `DefaultParameters` 和 `DefaultParameterConfs` 。
-	// 采取整体全覆盖式修改，即修改时必须提供所有新默认值。
-	// 仅在命令的 EnableParameter 为 true 时，才允许修改此参数。可通过 [DescribeCommands(查询命令详情)](https://cloud.tencent.com/document/api/1340/52681) 接口获取命令的 EnableParameter 设置。
-	// key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
-	// 自定义参数最多20个。
-	// 自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
+	// <p>启用自定义参数功能时，自定义参数的默认取值。字段类型为json encoded string。如：{&quot;varA&quot;: &quot;222&quot;}。<br>参数不支持同时指定 <code>DefaultParameters</code> 和 <code>DefaultParameterConfs</code> 。<br>采取整体全覆盖式修改，即修改时必须提供所有新默认值。<br>仅在命令的 EnableParameter 为 true 时，才允许修改此参数。可通过 <a href="https://cloud.tencent.com/document/api/1340/52681">DescribeCommands(查询命令详情)</a> 接口获取命令的 EnableParameter 设置。<br>key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。<br>自定义参数最多20个。<br>自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。</p>
 	DefaultParameters *string `json:"DefaultParameters,omitnil,omitempty" name:"DefaultParameters"`
 
-	// 自定义参数数组。如果 InvokeCommand 时未提供参数取值，将使用这里的默认值进行替换。
-	// 参数不支持同时指定 `DefaultParameters` 和 `DefaultParameterConfs` 。
-	// 仅在命令的 EnableParameter 为 true 时，才允许修改此参数。可通过 [DescribeCommands(查询命令详情)](https://cloud.tencent.com/document/api/1340/52681) 接口获取命令的 EnableParameter 设置。
-	// 自定义参数最多20个。
+	// <p>自定义参数数组。如果 InvokeCommand 时未提供参数取值，将使用这里的默认值进行替换。<br>参数不支持同时指定 <code>DefaultParameters</code> 和 <code>DefaultParameterConfs</code> 。<br>仅在命令的 EnableParameter 为 true 时，才允许修改此参数。可通过 <a href="https://cloud.tencent.com/document/api/1340/52681">DescribeCommands(查询命令详情)</a> 接口获取命令的 EnableParameter 设置。<br>自定义参数最多20个。</p>
 	DefaultParameterConfs []*DefaultParameterConf `json:"DefaultParameterConfs,omitnil,omitempty" name:"DefaultParameterConfs"`
 
-	// 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
-	// 使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。
+	// <p>在 CVM 或 Lighthouse 实例中执行命令的用户名称。<br>使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 指定日志上传的cos bucket 地址，必须以https开头，如 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。
+	// <p>指定日志上传的cos bucket 地址，必须以https开头，如 https://BucketName-123454321.cos.ap-beijing.myqcloud.com。</p>
 	OutputCOSBucketUrl *string `json:"OutputCOSBucketUrl,omitnil,omitempty" name:"OutputCOSBucketUrl"`
 
-	// 指定日志在cos bucket中的目录，目录命名有如下规则：
-	// 1. 可用数字、中英文和可见字符的组合，长度最多为60。
-	// 2. 用 / 分割路径，可快速创建子目录。
-	// 3. 不允许连续 / ；不允许以 / 开头；不允许以..作为文件夹名称。
+	// <p>指定日志在cos bucket中的目录，目录命名有如下规则：</p><ol><li>可用数字、中英文和可见字符的组合，长度最多为60。</li><li>用 / 分割路径，可快速创建子目录。</li><li>不允许连续 / ；不允许以 / 开头；不允许以..作为文件夹名称。</li></ol>
 	OutputCOSKeyPrefix *string `json:"OutputCOSKeyPrefix,omitnil,omitempty" name:"OutputCOSKeyPrefix"`
 }
 

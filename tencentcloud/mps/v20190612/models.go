@@ -14552,71 +14552,69 @@ type EditMediaOutputConfig struct {
 
 // Predefined struct for user
 type EditMediaRequestParams struct {
-	// 输入的视频文件信息。
+	// <p>输入的视频文件信息。</p>
 	FileInfos []*EditMediaFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
-	// 媒体处理输出文件的目标存储。
+	// <p>媒体处理输出文件的目标存储。</p>
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
-	// 媒体处理输出文件的目标路径。
-	// 
-	// 注意：对于复杂合成任务，路径中的文件名只可为数字、字母、-、_ 的组合，最长 64 个字符。
+	// <p>媒体处理输出文件的目标路径。</p><p>注意：对于复杂合成任务，路径中的文件名只可为数字、字母、-、_ 的组合，最长 64 个字符。</p>
 	OutputObjectPath *string `json:"OutputObjectPath,omitnil,omitempty" name:"OutputObjectPath"`
 
-	// 【剪辑】任务生成的文件配置。
+	// <p>【剪辑】任务生成的文件配置。</p>
 	OutputConfig *EditMediaOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
 
-	// 【合成】任务配置。
-	// 
-	// 注意：当其不为空时，认为是合成任务，否则按剪辑任务处理。
+	// <p>【合成】任务配置。</p><p>注意：当其不为空时，认为是合成任务，否则按剪辑任务处理。</p>
 	ComposeConfig *ComposeMediaConfig `json:"ComposeConfig,omitnil,omitempty" name:"ComposeConfig"`
 
-	// 任务的事件通知信息，不填代表不获取事件通知。
+	// <p>任务的事件通知信息，不填代表不获取事件通知。</p>
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
 
-	// 任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
+	// <p>任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。</p>
 	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
 
-	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	// <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+
+	// <p>资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 type EditMediaRequest struct {
 	*tchttp.BaseRequest
 	
-	// 输入的视频文件信息。
+	// <p>输入的视频文件信息。</p>
 	FileInfos []*EditMediaFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
-	// 媒体处理输出文件的目标存储。
+	// <p>媒体处理输出文件的目标存储。</p>
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
-	// 媒体处理输出文件的目标路径。
-	// 
-	// 注意：对于复杂合成任务，路径中的文件名只可为数字、字母、-、_ 的组合，最长 64 个字符。
+	// <p>媒体处理输出文件的目标路径。</p><p>注意：对于复杂合成任务，路径中的文件名只可为数字、字母、-、_ 的组合，最长 64 个字符。</p>
 	OutputObjectPath *string `json:"OutputObjectPath,omitnil,omitempty" name:"OutputObjectPath"`
 
-	// 【剪辑】任务生成的文件配置。
+	// <p>【剪辑】任务生成的文件配置。</p>
 	OutputConfig *EditMediaOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
 
-	// 【合成】任务配置。
-	// 
-	// 注意：当其不为空时，认为是合成任务，否则按剪辑任务处理。
+	// <p>【合成】任务配置。</p><p>注意：当其不为空时，认为是合成任务，否则按剪辑任务处理。</p>
 	ComposeConfig *ComposeMediaConfig `json:"ComposeConfig,omitnil,omitempty" name:"ComposeConfig"`
 
-	// 任务的事件通知信息，不填代表不获取事件通知。
+	// <p>任务的事件通知信息，不填代表不获取事件通知。</p>
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
 
-	// 任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
+	// <p>任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。</p>
 	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
 
-	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	// <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+
+	// <p>资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 func (r *EditMediaRequest) ToJsonString() string {
@@ -14640,6 +14638,7 @@ func (r *EditMediaRequest) FromJsonString(s string) error {
 	delete(f, "TasksPriority")
 	delete(f, "SessionId")
 	delete(f, "SessionContext")
+	delete(f, "ResourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EditMediaRequest has unknown keys!", "")
 	}
@@ -14648,7 +14647,7 @@ func (r *EditMediaRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EditMediaResponseParams struct {
-	// 编辑视频的任务 ID，可以通过该 ID 查询编辑任务的状态。
+	// <p>编辑视频的任务 ID，可以通过该 ID 查询编辑任务的状态。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21865,111 +21864,87 @@ type ProcessImageTemplate struct {
 
 // Predefined struct for user
 type ProcessLiveStreamRequestParams struct {
-	// 直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。
-	// trtc地址如下：
-	//  trtc: //trtc.rtc.qq.com/mps/`<roomid>`?sdkappid=`<sdkappid>`&userid=`<userid>`&usersig=<`usersig>`
-	// `<roomid>` 为trtc的房间号id, 为数字
-	// `<sdkappid>` 为trtc的sdk app id
-	// `<userid>` 为服务进入房间的用户id,可以区分谁是机器人
-	// <`usersig>` 为trtc 用户的签名
-	// 
-	// webrtc 支持[LEB](https://cloud.tencent.com/product/leb)的直播流，地址获取请[参考](https://cloud.tencent.com/document/product/267/32720)
-	// 
-	// srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
-	// 
+	// <p>直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。<br>trtc地址如下：<br> trtc: //trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=&lt;<code>usersig&gt;</code><br><code>&lt;roomid&gt;</code> 为trtc的房间号id, 为数字<br><code>&lt;sdkappid&gt;</code> 为trtc的sdk app id<br><code>&lt;userid&gt;</code> 为服务进入房间的用户id,可以区分谁是机器人<br>&lt;<code>usersig&gt;</code> 为trtc 用户的签名</p><p>webrtc 支持<a href="https://cloud.tencent.com/product/leb">LEB</a>的直播流，地址获取请<a href="https://cloud.tencent.com/document/product/267/32720">参考</a></p><p>srt支持地址请<a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">参考</a></p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 任务的事件通知信息，用于指定直播流处理的结果。
+	// <p>任务的事件通知信息，用于指定直播流处理的结果。</p>
 	TaskNotifyConfig *LiveStreamTaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
 
-	// 直播流处理输出文件的目标存储。如处理有文件输出，该参数为必填项。
+	// <p>直播流处理输出文件的目标存储。如处理有文件输出，该参数为必填项。</p>
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
-	// 直播流处理生成的文件输出的目标目录，如`/movie/201909/`，如果不填为 `/` 目录。
+	// <p>直播流处理生成的文件输出的目标目录，如<code>/movie/201909/</code>，如果不填为 <code>/</code> 目录。</p>
 	OutputDir *string `json:"OutputDir,omitnil,omitempty" name:"OutputDir"`
 
-	// 视频内容审核类型任务参数。
+	// <p>视频内容审核类型任务参数。</p>
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitnil,omitempty" name:"AiContentReviewTask"`
 
-	// 视频内容识别类型任务参数。
+	// <p>视频内容识别类型任务参数。</p>
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitnil,omitempty" name:"AiRecognitionTask"`
 
-	// 视频内容分析类型任务参数。
+	// <p>视频内容分析类型任务参数。</p>
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitnil,omitempty" name:"AiAnalysisTask"`
 
-	// 媒体质检类型任务参数。
+	// <p>媒体质检类型任务参数。</p>
 	AiQualityControlTask *AiQualityControlTaskInput `json:"AiQualityControlTask,omitnil,omitempty" name:"AiQualityControlTask"`
 
-	// 智能字幕任务参数。
+	// <p>智能字幕任务参数。</p>
 	SmartSubtitlesTask *LiveSmartSubtitlesTaskInput `json:"SmartSubtitlesTask,omitnil,omitempty" name:"SmartSubtitlesTask"`
 
-	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// <p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	// <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 
-	// 直播编排ID。
-	// 注意1：对于OutputStorage、OutputDir参数：
-	// <li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li>
-	// <li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若对直播流发起处理（ProcessLiveStream）有输出，将覆盖原有编排的默认输出。</li>
-	// 注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessLiveStream）有设置，将覆盖原有编排的默认回调。
+	// <p>直播编排ID。<br>注意1：对于OutputStorage、OutputDir参数：</p><li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li><li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若对直播流发起处理（ProcessLiveStream）有输出，将覆盖原有编排的默认输出。</li>注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessLiveStream）有设置，将覆盖原有编排的默认回调。
 	ScheduleId *int64 `json:"ScheduleId,omitnil,omitempty" name:"ScheduleId"`
+
+	// <p>资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 type ProcessLiveStreamRequest struct {
 	*tchttp.BaseRequest
 	
-	// 直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。
-	// trtc地址如下：
-	//  trtc: //trtc.rtc.qq.com/mps/`<roomid>`?sdkappid=`<sdkappid>`&userid=`<userid>`&usersig=<`usersig>`
-	// `<roomid>` 为trtc的房间号id, 为数字
-	// `<sdkappid>` 为trtc的sdk app id
-	// `<userid>` 为服务进入房间的用户id,可以区分谁是机器人
-	// <`usersig>` 为trtc 用户的签名
-	// 
-	// webrtc 支持[LEB](https://cloud.tencent.com/product/leb)的直播流，地址获取请[参考](https://cloud.tencent.com/document/product/267/32720)
-	// 
-	// srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
-	// 
+	// <p>直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。<br>trtc地址如下：<br> trtc: //trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=&lt;<code>usersig&gt;</code><br><code>&lt;roomid&gt;</code> 为trtc的房间号id, 为数字<br><code>&lt;sdkappid&gt;</code> 为trtc的sdk app id<br><code>&lt;userid&gt;</code> 为服务进入房间的用户id,可以区分谁是机器人<br>&lt;<code>usersig&gt;</code> 为trtc 用户的签名</p><p>webrtc 支持<a href="https://cloud.tencent.com/product/leb">LEB</a>的直播流，地址获取请<a href="https://cloud.tencent.com/document/product/267/32720">参考</a></p><p>srt支持地址请<a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">参考</a></p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 任务的事件通知信息，用于指定直播流处理的结果。
+	// <p>任务的事件通知信息，用于指定直播流处理的结果。</p>
 	TaskNotifyConfig *LiveStreamTaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
 
-	// 直播流处理输出文件的目标存储。如处理有文件输出，该参数为必填项。
+	// <p>直播流处理输出文件的目标存储。如处理有文件输出，该参数为必填项。</p>
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
-	// 直播流处理生成的文件输出的目标目录，如`/movie/201909/`，如果不填为 `/` 目录。
+	// <p>直播流处理生成的文件输出的目标目录，如<code>/movie/201909/</code>，如果不填为 <code>/</code> 目录。</p>
 	OutputDir *string `json:"OutputDir,omitnil,omitempty" name:"OutputDir"`
 
-	// 视频内容审核类型任务参数。
+	// <p>视频内容审核类型任务参数。</p>
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitnil,omitempty" name:"AiContentReviewTask"`
 
-	// 视频内容识别类型任务参数。
+	// <p>视频内容识别类型任务参数。</p>
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitnil,omitempty" name:"AiRecognitionTask"`
 
-	// 视频内容分析类型任务参数。
+	// <p>视频内容分析类型任务参数。</p>
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitnil,omitempty" name:"AiAnalysisTask"`
 
-	// 媒体质检类型任务参数。
+	// <p>媒体质检类型任务参数。</p>
 	AiQualityControlTask *AiQualityControlTaskInput `json:"AiQualityControlTask,omitnil,omitempty" name:"AiQualityControlTask"`
 
-	// 智能字幕任务参数。
+	// <p>智能字幕任务参数。</p>
 	SmartSubtitlesTask *LiveSmartSubtitlesTaskInput `json:"SmartSubtitlesTask,omitnil,omitempty" name:"SmartSubtitlesTask"`
 
-	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// <p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	// <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 
-	// 直播编排ID。
-	// 注意1：对于OutputStorage、OutputDir参数：
-	// <li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li>
-	// <li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若对直播流发起处理（ProcessLiveStream）有输出，将覆盖原有编排的默认输出。</li>
-	// 注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessLiveStream）有设置，将覆盖原有编排的默认回调。
+	// <p>直播编排ID。<br>注意1：对于OutputStorage、OutputDir参数：</p><li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li><li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若对直播流发起处理（ProcessLiveStream）有输出，将覆盖原有编排的默认输出。</li>注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessLiveStream）有设置，将覆盖原有编排的默认回调。
 	ScheduleId *int64 `json:"ScheduleId,omitnil,omitempty" name:"ScheduleId"`
+
+	// <p>资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 func (r *ProcessLiveStreamRequest) ToJsonString() string {
@@ -21996,6 +21971,7 @@ func (r *ProcessLiveStreamRequest) FromJsonString(s string) error {
 	delete(f, "SessionId")
 	delete(f, "SessionContext")
 	delete(f, "ScheduleId")
+	delete(f, "ResourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessLiveStreamRequest has unknown keys!", "")
 	}
@@ -22004,7 +21980,7 @@ func (r *ProcessLiveStreamRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ProcessLiveStreamResponseParams struct {
-	// 任务 ID
+	// <p>任务 ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

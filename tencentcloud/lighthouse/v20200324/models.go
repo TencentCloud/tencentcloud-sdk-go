@@ -1603,22 +1603,22 @@ func (r *CreateMcpServerResponse) FromJsonString(s string) error {
 }
 
 type DataDiskPrice struct {
-	// 云硬盘ID。
+	// <p>云硬盘ID。</p>
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 
-	// 云硬盘单价。
+	// <p>云硬盘单价。</p><p>单位：元</p>
 	OriginalDiskPrice *float64 `json:"OriginalDiskPrice,omitnil,omitempty" name:"OriginalDiskPrice"`
 
-	// 云硬盘总价。
+	// <p>云硬盘总价。</p><p>单位：元</p>
 	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
 
-	// 折扣。
+	// <p>折扣。</p>
 	Discount *float64 `json:"Discount,omitnil,omitempty" name:"Discount"`
 
-	// 折后总价。
+	// <p>折后总价。</p><p>单位：元</p>
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 
-	// 数据盘挂载的实例ID。
+	// <p>数据盘挂载的实例ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -5718,23 +5718,19 @@ func (r *DetachDisksResponse) FromJsonString(s string) error {
 }
 
 type DetailPrice struct {
-	// 描述计费项目名称，目前取值
-	// <li>"DiskSpace"代表云硬盘空间收费项。</li>
-	// <li>"DiskBackupQuota"代表数据盘备份点配额收费项。</li>
-	// <li>"Instance"代表实例收费项。</li>
-	// <li>"SystemDiskBackupQuota"代表系统盘备份点配额收费项。</li>
+	// <p>描述计费项目名称，目前取值</p><li>"DiskSpace"代表云硬盘空间收费项。</li><li>"DiskBackupQuota"代表数据盘备份点配额收费项。</li><li>"Instance"代表实例收费项。</li><li>"SystemDiskBackupQuota"代表系统盘备份点配额收费项。</li>
 	PriceName *string `json:"PriceName,omitnil,omitempty" name:"PriceName"`
 
-	// 计费项维度单价。
+	// <p>计费项维度单价。</p><p>单位：元</p>
 	OriginUnitPrice *float64 `json:"OriginUnitPrice,omitnil,omitempty" name:"OriginUnitPrice"`
 
-	// 计费项维度总价。
+	// <p>计费项维度总价。</p><p>单位：元</p>
 	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
 
-	// 计费项维度折扣。
+	// <p>计费项维度折扣。</p>
 	Discount *float64 `json:"Discount,omitnil,omitempty" name:"Discount"`
 
-	// 计费项维度折后总价。
+	// <p>计费项维度折后总价。</p><p>单位：元</p>
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 }
 
@@ -5800,25 +5796,22 @@ func (r *DisassociateInstancesKeyPairsResponse) FromJsonString(s string) error {
 }
 
 type DiscountDetail struct {
-	// 计费时长。
+	// <p>计费时长。</p>
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 时间单位。
-	// 取值为：
-	// - m - 月
-	// - d - 日
+	// <p>时间单位。<br>取值为：</p><ul><li>m - 月</li><li>d - 日</li></ul>
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
-	// 总价。
+	// <p>总价。</p><p>单位：元</p>
 	TotalCost *float64 `json:"TotalCost,omitnil,omitempty" name:"TotalCost"`
 
-	// 折后总价。
+	// <p>折后总价。</p><p>单位：元</p>
 	RealTotalCost *float64 `json:"RealTotalCost,omitnil,omitempty" name:"RealTotalCost"`
 
-	// 折扣。
+	// <p>折扣。</p>
 	Discount *float64 `json:"Discount,omitnil,omitempty" name:"Discount"`
 
-	// 具体折扣详情。
+	// <p>具体折扣详情。</p>
 	PolicyDetail *PolicyDetail `json:"PolicyDetail,omitnil,omitempty" name:"PolicyDetail"`
 }
 
@@ -5983,26 +5976,22 @@ type DiskChargePrepaid struct {
 }
 
 type DiskConfig struct {
-	// 可用区。
+	// <p>可用区。</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 云硬盘类型。枚举值如下：
-	// 
-	// <li>CLOUD_BASIC：普通云硬盘</li>
-	// <li>CLOUD_PREMIUM：高性能云硬盘</li>
-	// <li>CLOUD_SSD：SSD云硬盘</li>
+	// <p>云硬盘类型。枚举值如下：</p><li>CLOUD_BASIC：普通云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_SSD：SSD云硬盘</li>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 云硬盘可售卖状态。
+	// <p>云硬盘可售卖状态。</p>
 	DiskSalesState *string `json:"DiskSalesState,omitnil,omitempty" name:"DiskSalesState"`
 
-	// 最大云硬盘大小。
+	// <p>最大云硬盘大小。</p><p>单位：GB</p>
 	MaxDiskSize *int64 `json:"MaxDiskSize,omitnil,omitempty" name:"MaxDiskSize"`
 
-	// 最小云硬盘大小。
+	// <p>最小云硬盘大小。</p><p>单位：GB</p>
 	MinDiskSize *int64 `json:"MinDiskSize,omitnil,omitempty" name:"MinDiskSize"`
 
-	// 云硬盘步长。
+	// <p>云硬盘步长。</p><p>单位：GB</p>
 	DiskStepSize *int64 `json:"DiskStepSize,omitnil,omitempty" name:"DiskStepSize"`
 }
 
@@ -6948,22 +6937,22 @@ type InstanceIdentifier struct {
 }
 
 type InstancePrice struct {
-	// 套餐单价原价。
+	// <p>套餐单价原价。</p><p>单位：元</p>
 	OriginalBundlePrice *float64 `json:"OriginalBundlePrice,omitnil,omitempty" name:"OriginalBundlePrice"`
 
-	// 原价。
+	// <p>原价。</p><p>单位：元</p>
 	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
 
-	// 折扣。
+	// <p>折扣。</p>
 	Discount *float64 `json:"Discount,omitnil,omitempty" name:"Discount"`
 
-	// 折后价。
+	// <p>折后价。</p><p>单位：元</p>
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 
-	// 价格货币单位。取值范围CNY:人民币。USD:美元。
+	// <p>价格货币单位。取值范围CNY:人民币。USD:美元。</p>
 	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
 
-	// 计费项目明细。
+	// <p>计费项目明细。</p>
 	DetailPrices []*DetailPrice `json:"DetailPrices,omitnil,omitempty" name:"DetailPrices"`
 }
 
@@ -10316,10 +10305,10 @@ func (r *TerminateInstancesResponse) FromJsonString(s string) error {
 }
 
 type TotalPrice struct {
-	// 原始总计价格。
+	// <p>原始总计价格。</p><p>单位：元</p>
 	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
 
-	// 折扣总计价格。
+	// <p>折扣总计价格。</p><p>单位：元</p>
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 }
 

@@ -58,10 +58,10 @@ type ApplicationVersion struct {
 }
 
 type CVMOption struct {
-	// 云服务器可用区。
+	// <p>云服务器可用区。</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 云服务器实例规格。
+	// <p>云服务器实例规格。详情参见<a href="https://cloud.tencent.com/document/product/213/11518">实例规格</a>描述</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
@@ -77,29 +77,28 @@ type CacheInfo struct {
 }
 
 type ClusterOption struct {
-	// 计算集群可用区。
+	// <p>计算集群可用区。</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 计算集群类型，取值范围：
-	// - KUBERNETES
+	// <p>计算集群类型，取值范围：</p><ul><li>KUBERNETES</li></ul>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 计算集群Service CIDR，不能与VPC网段重合。
+	// <p>计算集群Service CIDR，不能与VPC网段重合。</p>
 	ServiceCidr *string `json:"ServiceCidr,omitnil,omitempty" name:"ServiceCidr"`
 
-	// 资源配额。
+	// <p>资源配额。</p>
 	ResourceQuota *ResourceQuota `json:"ResourceQuota,omitnil,omitempty" name:"ResourceQuota"`
 
-	// 限制范围。
+	// <p>限制范围。</p>
 	LimitRange *LimitRange `json:"LimitRange,omitnil,omitempty" name:"LimitRange"`
 
-	// 系统节点池实例规格。
+	// <p>系统节点池实例规格。详情参见<a href="https://cloud.tencent.com/document/product/213/11518">实例规格</a>描述</p>
 	SystemNodeInstanceType *string `json:"SystemNodeInstanceType,omitnil,omitempty" name:"SystemNodeInstanceType"`
 
-	// 系统节点池实例数量。
+	// <p>系统节点池实例数量。</p>
 	SystemNodeCount *uint64 `json:"SystemNodeCount,omitnil,omitempty" name:"SystemNodeCount"`
 
-	// 纳管环境自动升配
+	// <p>纳管环境自动升配</p>
 	AutoUpgradeClusterLevel *bool `json:"AutoUpgradeClusterLevel,omitnil,omitempty" name:"AutoUpgradeClusterLevel"`
 }
 

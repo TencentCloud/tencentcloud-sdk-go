@@ -978,13 +978,13 @@ type LogoRect struct {
 
 // Predefined struct for user
 type SubmitAigcVideoJobRequestParams struct {
-	// <p>模型名称。</p><p>枚举值：</p><p>● Vidu；</p><p>● Kling：可灵；</p><p>● SA；</p><p>● VO；</p><p>● HY：混元；</p><p>● YT：优图；</p><p>示例值：Vidu</p>
+	// <p>模型名称。</p><p>枚举值：</p><p>● Vidu；</p><p>● Kling：可灵；</p><p>● HY：混元；</p><p>● YT：优图；</p><p>示例值：Vidu</p>
 	Vendor *string `json:"Vendor,omitnil,omitempty" name:"Vendor"`
 
-	// <p>模型版本。</p><p>枚举值：</p><p>● 当Vendor为Vidu时，可选值[q2, q2-pro, q2-turbo]</p><p>● 当Vendor为Kling时，可选值[v1.6, v2.0, v2.1, v2.5, , v2.6, O1]</p><p>● 当Vendor为SA时，默认值[SA2]</p><p>● 当Vendor为VO时，可选值[V3, V3.1, V3-Fast, V3.1-Fast]</p><p>● 当Vendor为HY时，默认值：[v1.5]</p><p>● 当Vendor为YT时，默认值：[v2.0]</p>
+	// <p>模型版本。</p><p>枚举值：</p><p>● 当Vendor为Vidu时，可选值[q2, q2-pro, q2-turbo]</p><p>● 当Vendor为Kling时，可选值[v1.6, v2.0, v2.1, v2.5, , v2.6, O1]</p><p>● 当Vendor为HY时，默认值：[v1.5]</p><p>● 当Vendor为YT时，默认值：[v2.0]</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// <p>模型参数Json-Format字符串</p>
+	// <p>模型参数Json-Format字符串<br> <a href="https://cloud.tencent.com/document/product/1616/128996">模型参数列表</a></p>
 	ModelParam *string `json:"ModelParam,omitnil,omitempty" name:"ModelParam"`
 
 	// <p>正向文本提示词。不能超过2000个字符</p><p>示例值：一只小猫在草地奔跑</p>
@@ -1000,13 +1000,13 @@ type SubmitAigcVideoJobRequestParams struct {
 type SubmitAigcVideoJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>模型名称。</p><p>枚举值：</p><p>● Vidu；</p><p>● Kling：可灵；</p><p>● SA；</p><p>● VO；</p><p>● HY：混元；</p><p>● YT：优图；</p><p>示例值：Vidu</p>
+	// <p>模型名称。</p><p>枚举值：</p><p>● Vidu；</p><p>● Kling：可灵；</p><p>● HY：混元；</p><p>● YT：优图；</p><p>示例值：Vidu</p>
 	Vendor *string `json:"Vendor,omitnil,omitempty" name:"Vendor"`
 
-	// <p>模型版本。</p><p>枚举值：</p><p>● 当Vendor为Vidu时，可选值[q2, q2-pro, q2-turbo]</p><p>● 当Vendor为Kling时，可选值[v1.6, v2.0, v2.1, v2.5, , v2.6, O1]</p><p>● 当Vendor为SA时，默认值[SA2]</p><p>● 当Vendor为VO时，可选值[V3, V3.1, V3-Fast, V3.1-Fast]</p><p>● 当Vendor为HY时，默认值：[v1.5]</p><p>● 当Vendor为YT时，默认值：[v2.0]</p>
+	// <p>模型版本。</p><p>枚举值：</p><p>● 当Vendor为Vidu时，可选值[q2, q2-pro, q2-turbo]</p><p>● 当Vendor为Kling时，可选值[v1.6, v2.0, v2.1, v2.5, , v2.6, O1]</p><p>● 当Vendor为HY时，默认值：[v1.5]</p><p>● 当Vendor为YT时，默认值：[v2.0]</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// <p>模型参数Json-Format字符串</p>
+	// <p>模型参数Json-Format字符串<br> <a href="https://cloud.tencent.com/document/product/1616/128996">模型参数列表</a></p>
 	ModelParam *string `json:"ModelParam,omitnil,omitempty" name:"ModelParam"`
 
 	// <p>正向文本提示词。不能超过2000个字符</p><p>示例值：一只小猫在草地奔跑</p>
