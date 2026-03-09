@@ -3511,6 +3511,56 @@ func (c *Client) DescribeApiListVersionTwoWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeApiSecSensitiveRuleListRequest() (request *DescribeApiSecSensitiveRuleListRequest) {
+    request = &DescribeApiSecSensitiveRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeApiSecSensitiveRuleList")
+    
+    
+    return
+}
+
+func NewDescribeApiSecSensitiveRuleListResponse() (response *DescribeApiSecSensitiveRuleListResponse) {
+    response = &DescribeApiSecSensitiveRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApiSecSensitiveRuleList
+// 获取api安全敏感规则列表
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApiSecSensitiveRuleList(request *DescribeApiSecSensitiveRuleListRequest) (response *DescribeApiSecSensitiveRuleListResponse, err error) {
+    return c.DescribeApiSecSensitiveRuleListWithContext(context.Background(), request)
+}
+
+// DescribeApiSecSensitiveRuleList
+// 获取api安全敏感规则列表
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApiSecSensitiveRuleListWithContext(ctx context.Context, request *DescribeApiSecSensitiveRuleListRequest) (response *DescribeApiSecSensitiveRuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiSecSensitiveRuleListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeApiSecSensitiveRuleList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApiSecSensitiveRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApiSecSensitiveRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAreaBanAreasRequest() (request *DescribeAreaBanAreasRequest) {
     request = &DescribeAreaBanAreasRequest{
         BaseRequest: &tchttp.BaseRequest{},

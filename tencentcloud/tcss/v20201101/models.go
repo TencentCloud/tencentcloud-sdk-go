@@ -29,19 +29,20 @@ type ABTestConfig struct {
 }
 
 type AbnormalProcessChildRuleInfo struct {
-	// 策略模式，   RULE_MODE_RELEASE: 放行
-	//    RULE_MODE_ALERT: 告警
-	//    RULE_MODE_HOLDUP:拦截
+	// <p>策略模式，   RULE_MODE_RELEASE: 放行<br>   RULE_MODE_ALERT: 告警<br>   RULE_MODE_HOLDUP:拦截</p>
 	RuleMode *string `json:"RuleMode,omitnil,omitempty" name:"RuleMode"`
 
-	// 进程路径
+	// <p>进程路径</p>
 	ProcessPath *string `json:"ProcessPath,omitnil,omitempty" name:"ProcessPath"`
 
-	// 子策略id
+	// <p>子策略id</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 威胁等级，HIGH:高，MIDDLE:中，LOW:低
+	// <p>威胁等级，HIGH:高，MIDDLE:中，LOW:低</p>
 	RuleLevel *string `json:"RuleLevel,omitnil,omitempty" name:"RuleLevel"`
+
+	// <p>命令行参数</p>
+	CmdLine *string `json:"CmdLine,omitnil,omitempty" name:"CmdLine"`
 }
 
 type AbnormalProcessEventDescription struct {
@@ -71,145 +72,119 @@ type AbnormalProcessEventDescription struct {
 }
 
 type AbnormalProcessEventInfo struct {
-	// 进程目录
+	// <p>进程目录</p>
 	ProcessPath *string `json:"ProcessPath,omitnil,omitempty" name:"ProcessPath"`
 
-	// 事件类型，MALICE_PROCESS_START:恶意进程启动
+	// <p>事件类型，MALICE_PROCESS_START:恶意进程启动</p>
 	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
 
-	// 命中规则名称，PROXY_TOOL：代理软件，TRANSFER_CONTROL：横向渗透，ATTACK_CMD：恶意命令，REVERSE_SHELL：反弹shell，FILELESS：无文件程序执行，RISK_CMD：高危命令，ABNORMAL_CHILD_PROC：敏感服务异常子进程启动，USER_DEFINED_RULE：用户自定义规则
+	// <p>命中规则名称，PROXY_TOOL：代理软件，TRANSFER_CONTROL：横向渗透，ATTACK_CMD：恶意命令，REVERSE_SHELL：反弹shell，FILELESS：无文件程序执行，RISK_CMD：高危命令，ABNORMAL_CHILD_PROC：敏感服务异常子进程启动，USER_DEFINED_RULE：用户自定义规则</p>
 	MatchRuleName *string `json:"MatchRuleName,omitnil,omitempty" name:"MatchRuleName"`
 
-	// 生成时间
+	// <p>生成时间</p>
 	FoundTime *string `json:"FoundTime,omitnil,omitempty" name:"FoundTime"`
 
-	// 容器名
+	// <p>容器名</p>
 	ContainerName *string `json:"ContainerName,omitnil,omitempty" name:"ContainerName"`
 
-	// 镜像名
+	// <p>镜像名</p>
 	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
 
-	// 动作执行结果，    BEHAVIOR_NONE: 无
-	//     BEHAVIOR_ALERT: 告警
-	//     BEHAVIOR_RELEASE：放行
-	//     BEHAVIOR_HOLDUP_FAILED:拦截失败
-	//     BEHAVIOR_HOLDUP_SUCCESSED：拦截失败
+	// <p>动作执行结果，    BEHAVIOR_NONE: 无<br>    BEHAVIOR_ALERT: 告警<br>    BEHAVIOR_RELEASE：放行<br>    BEHAVIOR_HOLDUP_FAILED:拦截失败<br>    BEHAVIOR_HOLDUP_SUCCESSED：拦截失败</p>
 	Behavior *string `json:"Behavior,omitnil,omitempty" name:"Behavior"`
 
-	// 状态，EVENT_UNDEAL:事件未处理
-	//     EVENT_DEALED:事件已经处理
-	//     EVENT_INGNORE：事件已经忽略
+	// <p>状态，EVENT_UNDEAL:事件未处理<br>    EVENT_DEALED:事件已经处理<br>    EVENT_INGNORE：事件已经忽略</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 事件记录的唯一id
+	// <p>事件记录的唯一id</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 镜像id，用于跳转
+	// <p>镜像id，用于跳转</p>
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
-	// 容器id，用于跳转
+	// <p>容器id，用于跳转</p>
 	ContainerId *string `json:"ContainerId,omitnil,omitempty" name:"ContainerId"`
 
-	// 事件解决方案
+	// <p>事件解决方案</p>
 	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 
-	// 事件详细描述
+	// <p>事件详细描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 命中策略id
+	// <p>命中策略id</p>
 	MatchRuleId *string `json:"MatchRuleId,omitnil,omitempty" name:"MatchRuleId"`
 
-	// 命中规则行为：
-	// RULE_MODE_RELEASE 放行
-	// RULE_MODE_ALERT  告警
-	// RULE_MODE_HOLDUP 拦截
+	// <p>命中规则行为：<br>RULE_MODE_RELEASE 放行<br>RULE_MODE_ALERT  告警<br>RULE_MODE_HOLDUP 拦截</p>
 	MatchAction *string `json:"MatchAction,omitnil,omitempty" name:"MatchAction"`
 
-	// 命中规则进程信息
+	// <p>命中规则进程信息</p>
 	MatchProcessPath *string `json:"MatchProcessPath,omitnil,omitempty" name:"MatchProcessPath"`
 
-	// 规则是否存在
+	// <p>规则是否存在</p>
 	RuleExist *bool `json:"RuleExist,omitnil,omitempty" name:"RuleExist"`
 
-	// 事件数量
+	// <p>事件数量</p>
 	EventCount *int64 `json:"EventCount,omitnil,omitempty" name:"EventCount"`
 
-	// 最近生成时间
+	// <p>最近生成时间</p>
 	LatestFoundTime *string `json:"LatestFoundTime,omitnil,omitempty" name:"LatestFoundTime"`
 
-	// 规则组Id
+	// <p>规则组Id</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 命中策略名称：SYSTEM_DEFINED_RULE （系统策略）或  用户自定义的策略名字
+	// <p>命中策略名称：SYSTEM_DEFINED_RULE （系统策略）或  用户自定义的策略名字</p>
 	MatchGroupName *string `json:"MatchGroupName,omitnil,omitempty" name:"MatchGroupName"`
 
-	// 命中规则等级，HIGH：高危，MIDDLE：中危，LOW：低危。
+	// <p>命中规则等级，HIGH：高危，MIDDLE：中危，LOW：低危。</p>
 	MatchRuleLevel *string `json:"MatchRuleLevel,omitnil,omitempty" name:"MatchRuleLevel"`
 
-	// 网络状态
-	// 未隔离  	NORMAL
-	// 已隔离		ISOLATED
-	// 隔离中		ISOLATING
-	// 隔离失败	ISOLATE_FAILED
-	// 解除隔离中  RESTORING
-	// 解除隔离失败 RESTORE_FAILED
+	// <p>网络状态<br>未隔离      NORMAL<br>已隔离        ISOLATED<br>隔离中        ISOLATING<br>隔离失败    ISOLATE_FAILED<br>解除隔离中  RESTORING<br>解除隔离失败 RESTORE_FAILED</p>
 	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil,omitempty" name:"ContainerNetStatus"`
 
-	// 容器子状态
-	// "AGENT_OFFLINE"       //Agent离线
-	// "NODE_DESTROYED"      //节点已销毁
-	// "CONTAINER_EXITED"    //容器已退出
-	// "CONTAINER_DESTROYED" //容器已销毁
-	// "SHARED_HOST"         // 容器与主机共享网络
-	// "RESOURCE_LIMIT"      //隔离操作资源超限
-	// "UNKNOW"              // 原因未知
+	// <p>容器子状态<br>&quot;AGENT_OFFLINE&quot;       //Agent离线<br>&quot;NODE_DESTROYED&quot;      //节点已销毁<br>&quot;CONTAINER_EXITED&quot;    //容器已退出<br>&quot;CONTAINER_DESTROYED&quot; //容器已销毁<br>&quot;SHARED_HOST&quot;         // 容器与主机共享网络<br>&quot;RESOURCE_LIMIT&quot;      //隔离操作资源超限<br>&quot;UNKNOW&quot;              // 原因未知</p>
 	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil,omitempty" name:"ContainerNetSubStatus"`
 
-	// 容器隔离操作来源
+	// <p>容器隔离操作来源</p>
 	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil,omitempty" name:"ContainerIsolateOperationSrc"`
 
-	// 容器状态
-	// 正在运行: RUNNING
-	// 暂停: PAUSED
-	// 停止: STOPPED
-	// 已经创建: CREATED
-	// 已经销毁: DESTROYED
-	// 正在重启中: RESTARTING
-	// 迁移中: REMOVING
+	// <p>容器状态<br>正在运行: RUNNING<br>暂停: PAUSED<br>停止: STOPPED<br>已经创建: CREATED<br>已经销毁: DESTROYED<br>正在重启中: RESTARTING<br>迁移中: REMOVING</p>
 	ContainerStatus *string `json:"ContainerStatus,omitnil,omitempty" name:"ContainerStatus"`
 
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
-	// 节点类型：NORMAL普通节点、SUPER超级节点
+	// <p>节点类型：NORMAL普通节点、SUPER超级节点</p>
 	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 
-	// pod 名称
+	// <p>pod 名称</p>
 	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
 
-	// pod ip
+	// <p>pod ip</p>
 	PodIP *string `json:"PodIP,omitnil,omitempty" name:"PodIP"`
 
-	// 集群id
+	// <p>集群id</p>
 	NodeUniqueID *string `json:"NodeUniqueID,omitnil,omitempty" name:"NodeUniqueID"`
 
-	// 节点公网ip
+	// <p>节点公网ip</p>
 	PublicIP *string `json:"PublicIP,omitnil,omitempty" name:"PublicIP"`
 
-	// 节点名称
+	// <p>节点名称</p>
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// 节点id
+	// <p>节点id</p>
 	NodeID *string `json:"NodeID,omitnil,omitempty" name:"NodeID"`
 
-	// uuid
+	// <p>uuid</p>
 	HostID *string `json:"HostID,omitnil,omitempty" name:"HostID"`
 
-	// 节点内网ip
+	// <p>节点内网ip</p>
 	HostIP *string `json:"HostIP,omitnil,omitempty" name:"HostIP"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// <p>命令行参数</p>
+	CmdLine *string `json:"CmdLine,omitnil,omitempty" name:"CmdLine"`
 }
 
 type AbnormalProcessEventTendencyInfo struct {
@@ -291,19 +266,20 @@ type AbnormalProcessSystemChildRuleInfo struct {
 }
 
 type AccessControlChildRuleInfo struct {
-	// 策略模式,  RULE_MODE_RELEASE: 放行
-	//    RULE_MODE_ALERT: 告警
-	//    RULE_MODE_HOLDUP:拦截
+	// <p>策略模式,  RULE_MODE_RELEASE: 放行<br>   RULE_MODE_ALERT: 告警<br>   RULE_MODE_HOLDUP:拦截</p>
 	RuleMode *string `json:"RuleMode,omitnil,omitempty" name:"RuleMode"`
 
-	// 进程路径
+	// <p>进程路径</p>
 	ProcessPath *string `json:"ProcessPath,omitnil,omitempty" name:"ProcessPath"`
 
-	// 被访问文件路径，仅仅在访问控制生效
+	// <p>被访问文件路径，仅仅在访问控制生效</p>
 	TargetFilePath *string `json:"TargetFilePath,omitnil,omitempty" name:"TargetFilePath"`
 
-	// 子策略id
+	// <p>子策略id</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>命令行参数</p>
+	CmdLine *string `json:"CmdLine,omitnil,omitempty" name:"CmdLine"`
 }
 
 type AccessControlEventDescription struct {
@@ -330,148 +306,122 @@ type AccessControlEventDescription struct {
 }
 
 type AccessControlEventInfo struct {
-	// 进程名称
+	// <p>进程名称</p>
 	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
-	// 命中规则名称
+	// <p>命中规则名称</p>
 	MatchRuleName *string `json:"MatchRuleName,omitnil,omitempty" name:"MatchRuleName"`
 
-	// 生成时间
+	// <p>生成时间</p>
 	FoundTime *string `json:"FoundTime,omitnil,omitempty" name:"FoundTime"`
 
-	// 容器名
+	// <p>容器名</p>
 	ContainerName *string `json:"ContainerName,omitnil,omitempty" name:"ContainerName"`
 
-	// 镜像名
+	// <p>镜像名</p>
 	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
 
-	// 动作执行结果，   BEHAVIOR_NONE: 无
-	//     BEHAVIOR_ALERT: 告警
-	//     BEHAVIOR_RELEASE：放行
-	//     BEHAVIOR_HOLDUP_FAILED:拦截失败
-	//     BEHAVIOR_HOLDUP_SUCCESSED：拦截失败
+	// <p>动作执行结果，   BEHAVIOR_NONE: 无<br>    BEHAVIOR_ALERT: 告警<br>    BEHAVIOR_RELEASE：放行<br>    BEHAVIOR_HOLDUP_FAILED:拦截失败<br>    BEHAVIOR_HOLDUP_SUCCESSED：拦截失败</p>
 	Behavior *string `json:"Behavior,omitnil,omitempty" name:"Behavior"`
 
-	// 状态0:未处理  “EVENT_UNDEAL”:事件未处理
-	//     "EVENT_DEALED":事件已经处理
-	//     "EVENT_INGNORE"：事件已经忽略
+	// <p>状态0:未处理  “EVENT_UNDEAL”:事件未处理<br>    &quot;EVENT_DEALED&quot;:事件已经处理<br>    &quot;EVENT_INGNORE&quot;：事件已经忽略</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 事件记录的唯一id
+	// <p>事件记录的唯一id</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 文件名称
+	// <p>文件名称</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 事件类型， FILE_ABNORMAL_READ:文件异常读取
+	// <p>事件类型， FILE_ABNORMAL_READ:文件异常读取</p>
 	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
 
-	// 镜像id, 用于跳转
+	// <p>镜像id, 用于跳转</p>
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
-	// 容器id, 用于跳转
+	// <p>容器id, 用于跳转</p>
 	ContainerId *string `json:"ContainerId,omitnil,omitempty" name:"ContainerId"`
 
-	// 事件解决方案
+	// <p>事件解决方案</p>
 	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 
-	// 事件详细描述
+	// <p>事件详细描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 命中策略id
+	// <p>命中策略id</p>
 	MatchRuleId *string `json:"MatchRuleId,omitnil,omitempty" name:"MatchRuleId"`
 
-	// 命中规则行为：
-	// RULE_MODE_RELEASE 放行
-	// RULE_MODE_ALERT  告警
-	// RULE_MODE_HOLDUP 拦截
+	// <p>命中规则行为：<br>RULE_MODE_RELEASE 放行<br>RULE_MODE_ALERT  告警<br>RULE_MODE_HOLDUP 拦截</p>
 	MatchAction *string `json:"MatchAction,omitnil,omitempty" name:"MatchAction"`
 
-	// 命中规则进程信息
+	// <p>命中规则进程信息</p>
 	MatchProcessPath *string `json:"MatchProcessPath,omitnil,omitempty" name:"MatchProcessPath"`
 
-	// 命中规则文件信息
+	// <p>命中规则文件信息</p>
 	MatchFilePath *string `json:"MatchFilePath,omitnil,omitempty" name:"MatchFilePath"`
 
-	// 文件路径，包含名字
+	// <p>文件路径，包含名字</p>
 	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
 
-	// 规则是否存在
+	// <p>规则是否存在</p>
 	RuleExist *bool `json:"RuleExist,omitnil,omitempty" name:"RuleExist"`
 
-	// 事件数量
+	// <p>事件数量</p>
 	EventCount *int64 `json:"EventCount,omitnil,omitempty" name:"EventCount"`
 
-	// 最近生成时间
+	// <p>最近生成时间</p>
 	LatestFoundTime *string `json:"LatestFoundTime,omitnil,omitempty" name:"LatestFoundTime"`
 
-	// 规则组id
+	// <p>规则组id</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 网络状态
-	// 未隔离  	NORMAL
-	// 已隔离		ISOLATED
-	// 隔离中		ISOLATING
-	// 隔离失败	ISOLATE_FAILED
-	// 解除隔离中  RESTORING
-	// 解除隔离失败 RESTORE_FAILED
+	// <p>网络状态<br>未隔离      NORMAL<br>已隔离        ISOLATED<br>隔离中        ISOLATING<br>隔离失败    ISOLATE_FAILED<br>解除隔离中  RESTORING<br>解除隔离失败 RESTORE_FAILED</p>
 	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil,omitempty" name:"ContainerNetStatus"`
 
-	// 容器子状态
-	// "AGENT_OFFLINE"       //Agent离线
-	// "NODE_DESTROYED"      //节点已销毁
-	// "CONTAINER_EXITED"    //容器已退出
-	// "CONTAINER_DESTROYED" //容器已销毁
-	// "SHARED_HOST"         // 容器与主机共享网络
-	// "RESOURCE_LIMIT"      //隔离操作资源超限
-	// "UNKNOW"              // 原因未知
+	// <p>容器子状态<br>&quot;AGENT_OFFLINE&quot;       //Agent离线<br>&quot;NODE_DESTROYED&quot;      //节点已销毁<br>&quot;CONTAINER_EXITED&quot;    //容器已退出<br>&quot;CONTAINER_DESTROYED&quot; //容器已销毁<br>&quot;SHARED_HOST&quot;         // 容器与主机共享网络<br>&quot;RESOURCE_LIMIT&quot;      //隔离操作资源超限<br>&quot;UNKNOW&quot;              // 原因未知</p>
 	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil,omitempty" name:"ContainerNetSubStatus"`
 
-	// 容器隔离操作来源
+	// <p>容器隔离操作来源</p>
 	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil,omitempty" name:"ContainerIsolateOperationSrc"`
 
-	// 容器状态
-	// 正在运行: RUNNING
-	// 暂停: PAUSED
-	// 停止: STOPPED
-	// 已经创建: CREATED
-	// 已经销毁: DESTROYED
-	// 正在重启中: RESTARTING
-	// 迁移中: REMOVING
+	// <p>容器状态<br>正在运行: RUNNING<br>暂停: PAUSED<br>停止: STOPPED<br>已经创建: CREATED<br>已经销毁: DESTROYED<br>正在重启中: RESTARTING<br>迁移中: REMOVING</p>
 	ContainerStatus *string `json:"ContainerStatus,omitnil,omitempty" name:"ContainerStatus"`
 
-	// 节点名称：如果是超级节点，展示的实质上是它的node_id
+	// <p>节点名称：如果是超级节点，展示的实质上是它的node_id</p>
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// pod名称
+	// <p>pod名称</p>
 	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
 
-	// pod ip
+	// <p>pod ip</p>
 	PodIP *string `json:"PodIP,omitnil,omitempty" name:"PodIP"`
 
-	// 节点类型：NORMAL普通节点、SUPER超级节点
+	// <p>节点类型：NORMAL普通节点、SUPER超级节点</p>
 	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 
-	// 集群id
+	// <p>集群id</p>
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
-	// 节点的唯一id，主要是超级节点使用
+	// <p>节点的唯一id，主要是超级节点使用</p>
 	NodeUniqueID *string `json:"NodeUniqueID,omitnil,omitempty" name:"NodeUniqueID"`
 
-	// 节点公网IP
+	// <p>节点公网IP</p>
 	PublicIP *string `json:"PublicIP,omitnil,omitempty" name:"PublicIP"`
 
-	// 节点id
+	// <p>节点id</p>
 	NodeID *string `json:"NodeID,omitnil,omitempty" name:"NodeID"`
 
-	// uuid
+	// <p>uuid</p>
 	HostID *string `json:"HostID,omitnil,omitempty" name:"HostID"`
 
-	// 节点内网ip
+	// <p>节点内网ip</p>
 	HostIP *string `json:"HostIP,omitnil,omitempty" name:"HostIP"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// <p>命令行参数</p>
+	CmdLine *string `json:"CmdLine,omitnil,omitempty" name:"CmdLine"`
 }
 
 type AccessControlRuleInfo struct {
@@ -21319,6 +21269,9 @@ func (r *DescribeSecLogJoinTypeListRequest) FromJsonString(s string) error {
 type DescribeSecLogJoinTypeListResponseParams struct {
 	// 接入日志列表
 	List []*SecLogJoinInfo `json:"List,omitnil,omitempty" name:"List"`
+
+	// 语言类型
+	MsgLanguage *string `json:"MsgLanguage,omitnil,omitempty" name:"MsgLanguage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

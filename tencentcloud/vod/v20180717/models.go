@@ -6346,49 +6346,51 @@ func (r *CreateJustInTimeTranscodeTemplateResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type CreateLLMComprehendTemplateRequestParams struct {
-	// 解析级别，可选值为：
-	// - Audio: 音频级解析
-	// - Video: 视频级解析
+	// <p>解析级别，可选值为：</p><ul><li>Audio: 音频级解析</li><li>Video: 视频级解析</li></ul>
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 大模型解析模板名称，长度限制：64 个字符。
+	// <p>大模型解析模板名称，长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 大模型解析模板描述信息，长度限制：256 个字符。
+	// <p>大模型解析模板描述信息，长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 分段摘要解析配置
+	// <p>分段摘要解析配置</p>
 	Summary *LLMComprehendSummary `json:"Summary,omitnil,omitempty" name:"Summary"`
 
-	// 文本转录解析配置
+	// <p>文本转录解析配置</p>
 	Asr *LLMComprehendAsr `json:"Asr,omitnil,omitempty" name:"Asr"`
+
+	// <p>人脸识别配置</p>
+	FaceRecognition *LLMComprehendFaceRecognition `json:"FaceRecognition,omitnil,omitempty" name:"FaceRecognition"`
 }
 
 type CreateLLMComprehendTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 解析级别，可选值为：
-	// - Audio: 音频级解析
-	// - Video: 视频级解析
+	// <p>解析级别，可选值为：</p><ul><li>Audio: 音频级解析</li><li>Video: 视频级解析</li></ul>
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 大模型解析模板名称，长度限制：64 个字符。
+	// <p>大模型解析模板名称，长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 大模型解析模板描述信息，长度限制：256 个字符。
+	// <p>大模型解析模板描述信息，长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 分段摘要解析配置
+	// <p>分段摘要解析配置</p>
 	Summary *LLMComprehendSummary `json:"Summary,omitnil,omitempty" name:"Summary"`
 
-	// 文本转录解析配置
+	// <p>文本转录解析配置</p>
 	Asr *LLMComprehendAsr `json:"Asr,omitnil,omitempty" name:"Asr"`
+
+	// <p>人脸识别配置</p>
+	FaceRecognition *LLMComprehendFaceRecognition `json:"FaceRecognition,omitnil,omitempty" name:"FaceRecognition"`
 }
 
 func (r *CreateLLMComprehendTemplateRequest) ToJsonString() string {
@@ -6409,6 +6411,7 @@ func (r *CreateLLMComprehendTemplateRequest) FromJsonString(s string) error {
 	delete(f, "Comment")
 	delete(f, "Summary")
 	delete(f, "Asr")
+	delete(f, "FaceRecognition")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLLMComprehendTemplateRequest has unknown keys!", "")
 	}
@@ -6417,7 +6420,7 @@ func (r *CreateLLMComprehendTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLLMComprehendTemplateResponseParams struct {
-	// 大模型理解模板的唯一标识
+	// <p>大模型理解模板的唯一标识</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18672,6 +18675,40 @@ type LLMComprehendAsrForUpdate struct {
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 }
 
+type LLMComprehendFaceRecognition struct {
+
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+
+	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+
+	DefaultLibraryLabelSet []*string `json:"DefaultLibraryLabelSet,omitnil,omitempty" name:"DefaultLibraryLabelSet"`
+
+
+	UserDefineLibraryLabelSet []*string `json:"UserDefineLibraryLabelSet,omitnil,omitempty" name:"UserDefineLibraryLabelSet"`
+
+
+	FaceLibrary *string `json:"FaceLibrary,omitnil,omitempty" name:"FaceLibrary"`
+}
+
+type LLMComprehendFaceRecognitionForUpdate struct {
+
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+
+	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+
+	DefaultLibraryLabelSet []*string `json:"DefaultLibraryLabelSet,omitnil,omitempty" name:"DefaultLibraryLabelSet"`
+
+
+	UserDefineLibraryLabelSet []*string `json:"UserDefineLibraryLabelSet,omitnil,omitempty" name:"UserDefineLibraryLabelSet"`
+
+
+	FaceLibrary *string `json:"FaceLibrary,omitnil,omitempty" name:"FaceLibrary"`
+}
+
 type LLMComprehendSummary struct {
 	// 分段摘要任务开关，可选值：
 	// - ON：开启分段摘要任务；
@@ -21957,55 +21994,57 @@ func (r *ModifyJustInTimeTranscodeTemplateResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type ModifyLLMComprehendTemplateRequestParams struct {
-	// 大模型理解模板的唯一标识
+	// <p>大模型理解模板的唯一标识</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 大模型解析模板名称，长度限制：64 个字符。
+	// <p>大模型解析模板名称，长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 大模型解析模板描述信息，长度限制：256 个字符。
+	// <p>大模型解析模板描述信息，长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 解析模型，可选值为：
-	// - Basic: 基础模型
-	// - Pro: 优化模型
+	// <p>解析模型，可选值为：</p><ul><li>Basic: 基础模型</li><li>Pro: 优化模型</li></ul>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 分段摘要解析配置
+	// <p>分段摘要解析配置</p>
 	Summary *LLMComprehendSummaryForUpdate `json:"Summary,omitnil,omitempty" name:"Summary"`
 
-	// 文本转录解析配置
+	// <p>文本转录解析配置</p>
 	Asr *LLMComprehendAsrForUpdate `json:"Asr,omitnil,omitempty" name:"Asr"`
+
+	// <p>人脸识别配置</p>
+	FaceRecognition *LLMComprehendFaceRecognitionForUpdate `json:"FaceRecognition,omitnil,omitempty" name:"FaceRecognition"`
 }
 
 type ModifyLLMComprehendTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 大模型理解模板的唯一标识
+	// <p>大模型理解模板的唯一标识</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 大模型解析模板名称，长度限制：64 个字符。
+	// <p>大模型解析模板名称，长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 大模型解析模板描述信息，长度限制：256 个字符。
+	// <p>大模型解析模板描述信息，长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 解析模型，可选值为：
-	// - Basic: 基础模型
-	// - Pro: 优化模型
+	// <p>解析模型，可选值为：</p><ul><li>Basic: 基础模型</li><li>Pro: 优化模型</li></ul>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 分段摘要解析配置
+	// <p>分段摘要解析配置</p>
 	Summary *LLMComprehendSummaryForUpdate `json:"Summary,omitnil,omitempty" name:"Summary"`
 
-	// 文本转录解析配置
+	// <p>文本转录解析配置</p>
 	Asr *LLMComprehendAsrForUpdate `json:"Asr,omitnil,omitempty" name:"Asr"`
+
+	// <p>人脸识别配置</p>
+	FaceRecognition *LLMComprehendFaceRecognitionForUpdate `json:"FaceRecognition,omitnil,omitempty" name:"FaceRecognition"`
 }
 
 func (r *ModifyLLMComprehendTemplateRequest) ToJsonString() string {
@@ -22027,6 +22066,7 @@ func (r *ModifyLLMComprehendTemplateRequest) FromJsonString(s string) error {
 	delete(f, "Model")
 	delete(f, "Summary")
 	delete(f, "Asr")
+	delete(f, "FaceRecognition")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLLMComprehendTemplateRequest has unknown keys!", "")
 	}
@@ -28672,48 +28712,50 @@ type ScratchRepairInfo struct {
 
 // Predefined struct for user
 type SearchMediaBySemanticsRequestParams struct {
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 需要进行搜索的内容
+	// <p>需要进行搜索的内容</p>
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 返回的记录条数，默认值：20。
+	// <p>返回的记录条数，默认值：20。</p><p>取值范围：[1, 100]</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 文件类型。匹配集合中的任意元素： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li>
+	// <p>文件类型。匹配集合中的任意元素： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li></p>
 	Categories []*string `json:"Categories,omitnil,omitempty" name:"Categories"`
 
-	// 标签集合，匹配集合中任意元素。 <li>单个标签长度限制：32个字符。</li> <li>数组长度限制：16。</li>
+	// <p>标签集合，匹配集合中任意元素。</p><p>入参限制：单个标签长度限制：32个字符。数组长度限制：16。</p>
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 搜索的任务类型，可选值有： 
-	// - AiAnalysis.DescriptionTask 
-	// - SmartSubtitle.AsrFullTextTask
+	// <p>人物集合，匹配出现了所有传入人物的片段</p><p>入参限制：数组长度限制：16</p>
+	Persons []*string `json:"Persons,omitnil,omitempty" name:"Persons"`
+
+	// <p>搜索的任务类型，可选值有： </p><ul><li>AiAnalysis.DescriptionTask </li><li>SmartSubtitle.AsrFullTextTask</li></ul>
 	TaskTypes []*string `json:"TaskTypes,omitnil,omitempty" name:"TaskTypes"`
 }
 
 type SearchMediaBySemanticsRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 需要进行搜索的内容
+	// <p>需要进行搜索的内容</p>
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 返回的记录条数，默认值：20。
+	// <p>返回的记录条数，默认值：20。</p><p>取值范围：[1, 100]</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 文件类型。匹配集合中的任意元素： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li>
+	// <p>文件类型。匹配集合中的任意元素： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li></p>
 	Categories []*string `json:"Categories,omitnil,omitempty" name:"Categories"`
 
-	// 标签集合，匹配集合中任意元素。 <li>单个标签长度限制：32个字符。</li> <li>数组长度限制：16。</li>
+	// <p>标签集合，匹配集合中任意元素。</p><p>入参限制：单个标签长度限制：32个字符。数组长度限制：16。</p>
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 搜索的任务类型，可选值有： 
-	// - AiAnalysis.DescriptionTask 
-	// - SmartSubtitle.AsrFullTextTask
+	// <p>人物集合，匹配出现了所有传入人物的片段</p><p>入参限制：数组长度限制：16</p>
+	Persons []*string `json:"Persons,omitnil,omitempty" name:"Persons"`
+
+	// <p>搜索的任务类型，可选值有： </p><ul><li>AiAnalysis.DescriptionTask </li><li>SmartSubtitle.AsrFullTextTask</li></ul>
 	TaskTypes []*string `json:"TaskTypes,omitnil,omitempty" name:"TaskTypes"`
 }
 
@@ -28734,6 +28776,7 @@ func (r *SearchMediaBySemanticsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Categories")
 	delete(f, "Tags")
+	delete(f, "Persons")
 	delete(f, "TaskTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchMediaBySemanticsRequest has unknown keys!", "")
@@ -28743,7 +28786,7 @@ func (r *SearchMediaBySemanticsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SearchMediaBySemanticsResponseParams struct {
-	// 媒体列表。
+	// <p>媒体列表。</p>
 	SearchResults []*SemanticsSearchResult `json:"SearchResults,omitnil,omitempty" name:"SearchResults"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -23746,7 +23746,13 @@ type UpgradePlan struct {
 	// 升级结束时间
 	UpgradeEndAt *string `json:"UpgradeEndAt,omitnil,omitempty" name:"UpgradeEndAt"`
 
-	// 升级状态
+	// 升级状态，包括以下状态值：
+	// - Pending：等待中
+	// - Processing：升级配置处理中
+	// - Running：升级中
+	// - Succeed：升级成功
+	// - Failed：升级失败
+	// - Cancelled：已取消
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 原因

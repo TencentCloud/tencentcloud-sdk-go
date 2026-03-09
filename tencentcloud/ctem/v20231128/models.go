@@ -2441,8 +2441,11 @@ type DescribeApiSecsRequestParams struct {
 	// 查询数组
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 企业ID
+	// <p>企业ID</p>
 	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// <p>排序方式</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 }
 
 type DescribeApiSecsRequest struct {
@@ -2487,8 +2490,11 @@ type DescribeApiSecsRequest struct {
 	// 查询数组
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 企业ID
+	// <p>企业ID</p>
 	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// <p>排序方式</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 }
 
 func (r *DescribeApiSecsRequest) ToJsonString() string {
@@ -2517,6 +2523,7 @@ func (r *DescribeApiSecsRequest) FromJsonString(s string) error {
 	delete(f, "EnterpriseUidList")
 	delete(f, "Filters")
 	delete(f, "CustomerId")
+	delete(f, "OrderBy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApiSecsRequest has unknown keys!", "")
 	}
@@ -2525,10 +2532,10 @@ func (r *DescribeApiSecsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApiSecsResponseParams struct {
-	// 总数
+	// <p>总数</p>
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// API安全数组
+	// <p>API安全数组</p>
 	List []*DisplayApiSec `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

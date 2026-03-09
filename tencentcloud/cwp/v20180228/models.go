@@ -18928,6 +18928,9 @@ type DescribeLogStorageConfigResponseParams struct {
 	// 日志存储时长单位，年year/月month/天day
 	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
 
+	// 语言类型
+	MsgLanguage *string `json:"MsgLanguage,omitnil,omitempty" name:"MsgLanguage"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -39428,6 +39431,9 @@ type ModifyLogStorageConfigRequestParams struct {
 
 	// 日志存储时长单位，年year/月month/天day
 	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+
+	// 语言类型
+	MsgLanguage *string `json:"MsgLanguage,omitnil,omitempty" name:"MsgLanguage"`
 }
 
 type ModifyLogStorageConfigRequest struct {
@@ -39444,6 +39450,9 @@ type ModifyLogStorageConfigRequest struct {
 
 	// 日志存储时长单位，年year/月month/天day
 	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+
+	// 语言类型
+	MsgLanguage *string `json:"MsgLanguage,omitnil,omitempty" name:"MsgLanguage"`
 }
 
 func (r *ModifyLogStorageConfigRequest) ToJsonString() string {
@@ -39462,6 +39471,7 @@ func (r *ModifyLogStorageConfigRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "Period")
 	delete(f, "Granularity")
+	delete(f, "MsgLanguage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLogStorageConfigRequest has unknown keys!", "")
 	}

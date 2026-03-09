@@ -968,10 +968,10 @@ func (r *ModifyFairPlayPemResponse) FromJsonString(s string) error {
 }
 
 type PlaybackPolicy struct {
-	// 播放许可证的有效期
+	// <p>播放许可证的有效期</p><p>单位：秒</p>
 	LicenseDurationSeconds *uint64 `json:"LicenseDurationSeconds,omitnil,omitempty" name:"LicenseDurationSeconds"`
 
-	// 开始播放后，允许最长播放时间
+	// <p>开始播放后，允许最长播放时间</p><p>单位：秒</p>
 	PlaybackDurationSeconds *uint64 `json:"PlaybackDurationSeconds,omitnil,omitempty" name:"PlaybackDurationSeconds"`
 }
 

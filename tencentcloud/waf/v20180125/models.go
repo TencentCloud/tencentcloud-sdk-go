@@ -1736,6 +1736,29 @@ type ApiSecSceneRuleEntry struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
+type ApiSecSensitiveRule struct {
+	// 身份证号，唯一主键
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 表示OS系统内置，"custom"表示客户自定义
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 开关状态，0：表示关，1表示开
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 风险等级，100，200,300表示低中高三个等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 修改时间，默认0，表示没有进行修改
+	Timestamp *uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 自定义规则部分
+	CustomRule *ApiSecCustomSensitiveRule `json:"CustomRule,omitnil,omitempty" name:"CustomRule"`
+
+	// 是否泛化 0:不泛化，1:泛化
+	IsPan *int64 `json:"IsPan,omitnil,omitempty" name:"IsPan"`
+}
+
 type Area struct {
 	// 国家，除了标准的国家外还支持国内、国外这两个特殊的标识
 	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
@@ -6366,6 +6389,137 @@ func (r *DescribeApiListVersionTwoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeApiListVersionTwoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApiSecSensitiveRuleListRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 是否查询api提取规则策略，true表示查询
+	IsQueryApiExtractRule *bool `json:"IsQueryApiExtractRule,omitnil,omitempty" name:"IsQueryApiExtractRule"`
+
+	// 是否查询api鉴权规则
+	IsQueryApiPrivilegeRule *bool `json:"IsQueryApiPrivilegeRule,omitnil,omitempty" name:"IsQueryApiPrivilegeRule"`
+
+	// 是否查询api场景规则
+	IsQueryApiSceneRule *bool `json:"IsQueryApiSceneRule,omitnil,omitempty" name:"IsQueryApiSceneRule"`
+
+	// 查询鉴权配置的时候，该rule只返回鉴权配置的规则
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 是否查询api自定义事件规则
+	IsQueryApiCustomEventRule *bool `json:"IsQueryApiCustomEventRule,omitnil,omitempty" name:"IsQueryApiCustomEventRule"`
+
+	// 是否查询无效api排除策略
+	IsQueryApiExcludeRule *bool `json:"IsQueryApiExcludeRule,omitnil,omitempty" name:"IsQueryApiExcludeRule"`
+}
+
+type DescribeApiSecSensitiveRuleListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 是否查询api提取规则策略，true表示查询
+	IsQueryApiExtractRule *bool `json:"IsQueryApiExtractRule,omitnil,omitempty" name:"IsQueryApiExtractRule"`
+
+	// 是否查询api鉴权规则
+	IsQueryApiPrivilegeRule *bool `json:"IsQueryApiPrivilegeRule,omitnil,omitempty" name:"IsQueryApiPrivilegeRule"`
+
+	// 是否查询api场景规则
+	IsQueryApiSceneRule *bool `json:"IsQueryApiSceneRule,omitnil,omitempty" name:"IsQueryApiSceneRule"`
+
+	// 查询鉴权配置的时候，该rule只返回鉴权配置的规则
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 是否查询api自定义事件规则
+	IsQueryApiCustomEventRule *bool `json:"IsQueryApiCustomEventRule,omitnil,omitempty" name:"IsQueryApiCustomEventRule"`
+
+	// 是否查询无效api排除策略
+	IsQueryApiExcludeRule *bool `json:"IsQueryApiExcludeRule,omitnil,omitempty" name:"IsQueryApiExcludeRule"`
+}
+
+func (r *DescribeApiSecSensitiveRuleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiSecSensitiveRuleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "IsQueryApiExtractRule")
+	delete(f, "IsQueryApiPrivilegeRule")
+	delete(f, "IsQueryApiSceneRule")
+	delete(f, "RuleName")
+	delete(f, "IsQueryApiCustomEventRule")
+	delete(f, "IsQueryApiExcludeRule")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApiSecSensitiveRuleListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApiSecSensitiveRuleListResponseParams struct {
+	// api敏感规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*ApiSecSensitiveRule `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 规则数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 自定义敏感检测规则总开关
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 非内置规则的rulename列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleNameList []*string `json:"RuleNameList,omitnil,omitempty" name:"RuleNameList"`
+
+	// api提取规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiExtractRule []*ApiSecExtractRule `json:"ApiExtractRule,omitnil,omitempty" name:"ApiExtractRule"`
+
+	// api鉴权规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiSecPrivilegeRule []*ApiSecPrivilegeRule `json:"ApiSecPrivilegeRule,omitnil,omitempty" name:"ApiSecPrivilegeRule"`
+
+	// api场景规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiSecSceneRule []*ApiSecSceneRule `json:"ApiSecSceneRule,omitnil,omitempty" name:"ApiSecSceneRule"`
+
+	// 自定义事件规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiSecCustomEventRule []*ApiSecCustomEventRule `json:"ApiSecCustomEventRule,omitnil,omitempty" name:"ApiSecCustomEventRule"`
+
+	// 无效api排除规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiExcludeRule []*ApiSecExcludeRule `json:"ApiExcludeRule,omitnil,omitempty" name:"ApiExcludeRule"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApiSecSensitiveRuleListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApiSecSensitiveRuleListResponseParams `json:"Response"`
+}
+
+func (r *DescribeApiSecSensitiveRuleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiSecSensitiveRuleListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -5697,44 +5697,44 @@ func (r *DescribeSkillGroupInfoListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeStaffInfoListRequestParams struct {
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 分页尺寸，上限 9999
+	// <p>分页尺寸，上限 9999</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 分页页码，从 0 开始
+	// <p>分页页码，从 0 开始</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 坐席账号，查询单个坐席时使用
+	// <p>坐席账号，查询单个坐席时使用</p>
 	StaffMail *string `json:"StaffMail,omitnil,omitempty" name:"StaffMail"`
 
-	// 查询修改时间大于等于ModifiedTime的坐席时使用
+	// <p>查询修改时间大于等于ModifiedTime的坐席时使用</p>
 	ModifiedTime *int64 `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
 
-	// 技能组ID
+	// <p>技能组ID</p>
 	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
 }
 
 type DescribeStaffInfoListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 分页尺寸，上限 9999
+	// <p>分页尺寸，上限 9999</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 分页页码，从 0 开始
+	// <p>分页页码，从 0 开始</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 坐席账号，查询单个坐席时使用
+	// <p>坐席账号，查询单个坐席时使用</p>
 	StaffMail *string `json:"StaffMail,omitnil,omitempty" name:"StaffMail"`
 
-	// 查询修改时间大于等于ModifiedTime的坐席时使用
+	// <p>查询修改时间大于等于ModifiedTime的坐席时使用</p>
 	ModifiedTime *int64 `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
 
-	// 技能组ID
+	// <p>技能组ID</p>
 	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
 }
 
@@ -5764,10 +5764,10 @@ func (r *DescribeStaffInfoListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeStaffInfoListResponseParams struct {
-	// 坐席用户总数
+	// <p>坐席用户总数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 坐席用户信息列表
+	// <p>坐席用户信息列表</p>
 	StaffList []*StaffInfo `json:"StaffList,omitnil,omitempty" name:"StaffList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5962,26 +5962,26 @@ func (r *DescribeStaffStatusMetricsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTelCallInfoRequestParams struct {
-	// 起始时间戳，Unix 时间戳(查询维度仅支持天，例如查询5月1日应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-01 23:59:59"的时间戳,查5月1日和5月2日的应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-02 23:59:59"的时间戳)
+	// <p>起始时间戳，Unix 时间戳(查询维度仅支持天，例如查询5月1日应该传startTime:&quot;2023-05-01 00:00:00&quot;,&quot;endTime&quot;:&quot;2023-05-01 23:59:59&quot;的时间戳,查5月1日和5月2日的应该传startTime:&quot;2023-05-01 00:00:00&quot;,&quot;endTime&quot;:&quot;2023-05-02 23:59:59&quot;的时间戳)</p>
 	StartTimeStamp *int64 `json:"StartTimeStamp,omitnil,omitempty" name:"StartTimeStamp"`
 
-	// 结束时间戳，Unix 时间戳，查询时间范围最大为90天(查询维度仅支持天，例如查询5月1日应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-01 23:59:59"的时间戳,查5月1日和5月2日的应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-02 23:59:59"的时间戳)
+	// <p>结束时间戳，Unix 时间戳，查询时间范围最大为90天(查询维度仅支持天，例如查询5月1日应该传startTime:&quot;2023-05-01 00:00:00&quot;,&quot;endTime&quot;:&quot;2023-05-01 23:59:59&quot;的时间戳,查5月1日和5月2日的应该传startTime:&quot;2023-05-01 00:00:00&quot;,&quot;endTime&quot;:&quot;2023-05-02 23:59:59&quot;的时间戳)</p>
 	EndTimeStamp *int64 `json:"EndTimeStamp,omitnil,omitempty" name:"EndTimeStamp"`
 
-	// 应用ID列表，多个ID时，返回值为多个ID使用总和
+	// <p>应用ID列表，多个ID时，返回值为多个ID使用总和</p>
 	SdkAppIdList []*int64 `json:"SdkAppIdList,omitnil,omitempty" name:"SdkAppIdList"`
 }
 
 type DescribeTelCallInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 起始时间戳，Unix 时间戳(查询维度仅支持天，例如查询5月1日应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-01 23:59:59"的时间戳,查5月1日和5月2日的应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-02 23:59:59"的时间戳)
+	// <p>起始时间戳，Unix 时间戳(查询维度仅支持天，例如查询5月1日应该传startTime:&quot;2023-05-01 00:00:00&quot;,&quot;endTime&quot;:&quot;2023-05-01 23:59:59&quot;的时间戳,查5月1日和5月2日的应该传startTime:&quot;2023-05-01 00:00:00&quot;,&quot;endTime&quot;:&quot;2023-05-02 23:59:59&quot;的时间戳)</p>
 	StartTimeStamp *int64 `json:"StartTimeStamp,omitnil,omitempty" name:"StartTimeStamp"`
 
-	// 结束时间戳，Unix 时间戳，查询时间范围最大为90天(查询维度仅支持天，例如查询5月1日应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-01 23:59:59"的时间戳,查5月1日和5月2日的应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-02 23:59:59"的时间戳)
+	// <p>结束时间戳，Unix 时间戳，查询时间范围最大为90天(查询维度仅支持天，例如查询5月1日应该传startTime:&quot;2023-05-01 00:00:00&quot;,&quot;endTime&quot;:&quot;2023-05-01 23:59:59&quot;的时间戳,查5月1日和5月2日的应该传startTime:&quot;2023-05-01 00:00:00&quot;,&quot;endTime&quot;:&quot;2023-05-02 23:59:59&quot;的时间戳)</p>
 	EndTimeStamp *int64 `json:"EndTimeStamp,omitnil,omitempty" name:"EndTimeStamp"`
 
-	// 应用ID列表，多个ID时，返回值为多个ID使用总和
+	// <p>应用ID列表，多个ID时，返回值为多个ID使用总和</p>
 	SdkAppIdList []*int64 `json:"SdkAppIdList,omitnil,omitempty" name:"SdkAppIdList"`
 }
 
@@ -6008,27 +6008,27 @@ func (r *DescribeTelCallInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTelCallInfoResponseParams struct {
-	// 呼出套餐包消耗分钟数
+	// <p>呼出套餐包消耗分钟数</p>
 	TelCallOutCount *int64 `json:"TelCallOutCount,omitnil,omitempty" name:"TelCallOutCount"`
 
-	// 呼入套餐包消耗分钟数
+	// <p>呼入套餐包消耗分钟数</p>
 	TelCallInCount *int64 `json:"TelCallInCount,omitnil,omitempty" name:"TelCallInCount"`
 
-	// 坐席使用统计个数
+	// <p>坐席使用统计个数</p>
 	SeatUsedCount *int64 `json:"SeatUsedCount,omitnil,omitempty" name:"SeatUsedCount"`
 
-	// 音频套餐包消耗分钟数
+	// <p>音频套餐包消耗分钟数</p>
 	//
 	// Deprecated: VoipCallInCount is deprecated.
 	VoipCallInCount *int64 `json:"VoipCallInCount,omitnil,omitempty" name:"VoipCallInCount"`
 
-	// 音频套餐包消耗分钟数
+	// <p>音频套餐包消耗分钟数</p>
 	VOIPCallInCount *int64 `json:"VOIPCallInCount,omitnil,omitempty" name:"VOIPCallInCount"`
 
-	// 离线语音转文字套餐包消耗分钟数
+	// <p>离线语音转文字套餐包消耗分钟数</p>
 	AsrOfflineCount *int64 `json:"AsrOfflineCount,omitnil,omitempty" name:"AsrOfflineCount"`
 
-	// 实时语音转文字套餐包消耗分钟数
+	// <p>实时语音转文字套餐包消耗分钟数</p>
 	AsrRealtimeCount *int64 `json:"AsrRealtimeCount,omitnil,omitempty" name:"AsrRealtimeCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

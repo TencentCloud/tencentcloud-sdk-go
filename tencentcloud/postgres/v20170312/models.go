@@ -3445,30 +3445,26 @@ func (r *DescribeBaseBackupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClassesRequestParams struct {
-	// 可用区名称。可以通过接口[DescribeZones](https://cloud.tencent.com/document/product/409/16769)获取。
+	// <p>可用区名称。可以通过接口<a href="https://cloud.tencent.com/document/product/409/16769">DescribeZones</a>获取。</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 数据库引擎，支持：
-	// 1、postgresql（云数据库PostgreSQL）；
-	// 2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
+	// <p>数据库引擎，支持：<br>1、postgresql（云数据库PostgreSQL）；<br>2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；</p>
 	DBEngine *string `json:"DBEngine,omitnil,omitempty" name:"DBEngine"`
 
-	// 数据库主版本号。例如12，13，可以通过接口[DescribeDBVersions](https://cloud.tencent.com/document/product/409/89018)获取。
+	// <p>数据库主版本号。例如12，13，可以通过接口<a href="https://cloud.tencent.com/document/product/409/89018">DescribeDBVersions</a>获取。</p>
 	DBMajorVersion *string `json:"DBMajorVersion,omitnil,omitempty" name:"DBMajorVersion"`
 }
 
 type DescribeClassesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 可用区名称。可以通过接口[DescribeZones](https://cloud.tencent.com/document/product/409/16769)获取。
+	// <p>可用区名称。可以通过接口<a href="https://cloud.tencent.com/document/product/409/16769">DescribeZones</a>获取。</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 数据库引擎，支持：
-	// 1、postgresql（云数据库PostgreSQL）；
-	// 2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
+	// <p>数据库引擎，支持：<br>1、postgresql（云数据库PostgreSQL）；<br>2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；</p>
 	DBEngine *string `json:"DBEngine,omitnil,omitempty" name:"DBEngine"`
 
-	// 数据库主版本号。例如12，13，可以通过接口[DescribeDBVersions](https://cloud.tencent.com/document/product/409/89018)获取。
+	// <p>数据库主版本号。例如12，13，可以通过接口<a href="https://cloud.tencent.com/document/product/409/89018">DescribeDBVersions</a>获取。</p>
 	DBMajorVersion *string `json:"DBMajorVersion,omitnil,omitempty" name:"DBMajorVersion"`
 }
 
@@ -3495,7 +3491,7 @@ func (r *DescribeClassesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClassesResponseParams struct {
-	// 数据库规格列表
+	// <p>数据库规格列表</p>
 	ClassInfoSet []*ClassInfo `json:"ClassInfoSet,omitnil,omitempty" name:"ClassInfoSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4258,7 +4254,7 @@ func (r *DescribeDBVersionsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBVersionsResponseParams struct {
-	// 数据库版本号信息列表
+	// <p>数据库版本号信息列表</p>
 	VersionSet []*Version `json:"VersionSet,omitnil,omitempty" name:"VersionSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5204,26 +5200,20 @@ func (r *DescribeParamsEventResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProductConfigRequestParams struct {
-	// 可用区名称
+	// <p>可用区名称</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 数据库引擎，支持：
-	// 1、postgresql（云数据库PostgreSQL）；
-	// 2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
-	// 如不指定默认使用postgresql。
+	// <p>数据库引擎，支持：<br>1、postgresql（云数据库PostgreSQL）；<br>2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；<br>如不指定默认使用postgresql。</p>
 	DBEngine *string `json:"DBEngine,omitnil,omitempty" name:"DBEngine"`
 }
 
 type DescribeProductConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 可用区名称
+	// <p>可用区名称</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 数据库引擎，支持：
-	// 1、postgresql（云数据库PostgreSQL）；
-	// 2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
-	// 如不指定默认使用postgresql。
+	// <p>数据库引擎，支持：<br>1、postgresql（云数据库PostgreSQL）；<br>2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；<br>如不指定默认使用postgresql。</p>
 	DBEngine *string `json:"DBEngine,omitnil,omitempty" name:"DBEngine"`
 }
 
@@ -5249,7 +5239,7 @@ func (r *DescribeProductConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProductConfigResponseParams struct {
-	// 售卖规格列表。
+	// <p>售卖规格列表。</p>
 	SpecInfoList []*SpecInfo `json:"SpecInfoList,omitnil,omitempty" name:"SpecInfoList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8199,20 +8189,20 @@ func (r *ModifyReadOnlyGroupConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifySwitchTimePeriodRequestParams struct {
-	// 处于等待切换状态中的实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	// <p>处于等待切换状态中的实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 入参取值为 0 ，代表立即切换。
+	// <p>入参取值为 0 ，代表立即切换。</p>
 	SwitchTag *uint64 `json:"SwitchTag,omitnil,omitempty" name:"SwitchTag"`
 }
 
 type ModifySwitchTimePeriodRequest struct {
 	*tchttp.BaseRequest
 	
-	// 处于等待切换状态中的实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	// <p>处于等待切换状态中的实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 入参取值为 0 ，代表立即切换。
+	// <p>入参取值为 0 ，代表立即切换。</p>
 	SwitchTag *uint64 `json:"SwitchTag,omitnil,omitempty" name:"SwitchTag"`
 }
 

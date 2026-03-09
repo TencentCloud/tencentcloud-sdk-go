@@ -61,6 +61,9 @@ type AuthTokenBase struct {
 
 	// token状态
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// token的唯一id，与value一一对应，重置后id也会一并变化
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type AuthTokenLimit struct {
@@ -1138,6 +1141,9 @@ type CreateNotebookRequestParams struct {
 
 	// GooseFS存储配置
 	VolumeSourceGooseFS *GooseFS `json:"VolumeSourceGooseFS,omitnil,omitempty" name:"VolumeSourceGooseFS"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type CreateNotebookRequest struct {
@@ -1222,6 +1228,9 @@ type CreateNotebookRequest struct {
 
 	// GooseFS存储配置
 	VolumeSourceGooseFS *GooseFS `json:"VolumeSourceGooseFS,omitnil,omitempty" name:"VolumeSourceGooseFS"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *CreateNotebookRequest) ToJsonString() string {
@@ -1260,6 +1269,7 @@ func (r *CreateNotebookRequest) FromJsonString(s string) error {
 	delete(f, "ImageType")
 	delete(f, "SSHConfig")
 	delete(f, "VolumeSourceGooseFS")
+	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotebookRequest has unknown keys!", "")
 	}
@@ -4881,6 +4891,9 @@ func (r *DescribeTrainingTaskPodsResponse) FromJsonString(s string) error {
 type DescribeTrainingTaskRequestParams struct {
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 训练任务实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeTrainingTaskRequest struct {
@@ -4888,6 +4901,9 @@ type DescribeTrainingTaskRequest struct {
 	
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 训练任务实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 func (r *DescribeTrainingTaskRequest) ToJsonString() string {
@@ -4903,6 +4919,7 @@ func (r *DescribeTrainingTaskRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Id")
+	delete(f, "InstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrainingTaskRequest has unknown keys!", "")
 	}
@@ -6424,6 +6441,9 @@ type ModifyNotebookRequestParams struct {
 
 	// 自定义环境变量
 	Envs []*EnvVar `json:"Envs,omitnil,omitempty" name:"Envs"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type ModifyNotebookRequest struct {
@@ -6509,6 +6529,9 @@ type ModifyNotebookRequest struct {
 
 	// 自定义环境变量
 	Envs []*EnvVar `json:"Envs,omitnil,omitempty" name:"Envs"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *ModifyNotebookRequest) ToJsonString() string {
@@ -6548,6 +6571,7 @@ func (r *ModifyNotebookRequest) FromJsonString(s string) error {
 	delete(f, "ImageType")
 	delete(f, "SSHConfig")
 	delete(f, "Envs")
+	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNotebookRequest has unknown keys!", "")
 	}
@@ -6877,6 +6901,10 @@ type NotebookDetail struct {
 	// Appid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type NotebookSetItem struct {
@@ -6997,6 +7025,10 @@ type NotebookSetItem struct {
 
 	// 容器服务暴露端口配置
 	ExposePortConfig *ExposePortConfig `json:"ExposePortConfig,omitnil,omitempty" name:"ExposePortConfig"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type NumOrPercent struct {

@@ -270,131 +270,106 @@ type AutoScalingAdvice struct {
 }
 
 type AutoScalingGroup struct {
-	// 伸缩组ID
+	// <p>伸缩组ID</p>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 伸缩组名称
+	// <p>伸缩组名称</p>
 	AutoScalingGroupName *string `json:"AutoScalingGroupName,omitnil,omitempty" name:"AutoScalingGroupName"`
 
-	// 伸缩组当前状态。取值范围：
-	// <li>NORMAL：正常</li>
-	// <li>CVM_ABNORMAL：启动配置异常</li>
-	// <li>LB_ABNORMAL：负载均衡器异常</li>
-	// <li>LB_LISTENER_ABNORMAL：负载均衡器监听器异常</li>
-	// <li>LB_LOCATION_ABNORMAL：负载均衡器监听器转发配置异常</li>
-	// <li>VPC_ABNORMAL：VPC网络异常</li>
-	// <li>SUBNET_ABNORMAL：VPC子网异常</li>
-	// <li>INSUFFICIENT_BALANCE：余额不足</li>
-	// <li>LB_BACKEND_REGION_NOT_MATCH：CLB实例后端地域与AS服务所在地域不匹配</li>
-	// <li>LB_BACKEND_VPC_NOT_MATCH：CLB实例VPC与伸缩组VPC不匹配</li>
+	// <p>伸缩组当前状态。取值范围：</p><li>NORMAL：正常</li><li>CVM_ABNORMAL：启动配置异常</li><li>LB_ABNORMAL：负载均衡器异常</li><li>LB_LISTENER_ABNORMAL：负载均衡器监听器异常</li><li>LB_LOCATION_ABNORMAL：负载均衡器监听器转发配置异常</li><li>VPC_ABNORMAL：VPC网络异常</li><li>SUBNET_ABNORMAL：VPC子网异常</li><li>INSUFFICIENT_BALANCE：余额不足</li><li>LB_BACKEND_REGION_NOT_MATCH：CLB实例后端地域与AS服务所在地域不匹配</li><li>LB_BACKEND_VPC_NOT_MATCH：CLB实例VPC与伸缩组VPC不匹配</li>
 	AutoScalingGroupStatus *string `json:"AutoScalingGroupStatus,omitnil,omitempty" name:"AutoScalingGroupStatus"`
 
-	// 创建时间，采用UTC标准计时
+	// <p>创建时间，采用UTC标准计时</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 默认冷却时间，单位秒
+	// <p>默认冷却时间，单位秒</p>
 	DefaultCooldown *int64 `json:"DefaultCooldown,omitnil,omitempty" name:"DefaultCooldown"`
 
-	// 期望实例数
+	// <p>期望实例数</p>
 	DesiredCapacity *int64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
 
-	// 启用状态，取值包括`ENABLED`和`DISABLED`
+	// <p>启用状态，取值包括<code>ENABLED</code>和<code>DISABLED</code></p>
 	EnabledStatus *string `json:"EnabledStatus,omitnil,omitempty" name:"EnabledStatus"`
 
-	// 应用型负载均衡器列表
+	// <p>应用型负载均衡器列表</p>
 	ForwardLoadBalancerSet []*ForwardLoadBalancer `json:"ForwardLoadBalancerSet,omitnil,omitempty" name:"ForwardLoadBalancerSet"`
 
-	// 实例数量
+	// <p>实例数量</p>
 	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
-	// 状态为`IN_SERVICE`实例的数量
+	// <p>状态为<code>IN_SERVICE</code>实例的数量</p>
 	InServiceInstanceCount *int64 `json:"InServiceInstanceCount,omitnil,omitempty" name:"InServiceInstanceCount"`
 
-	// 启动配置ID
+	// <p>启动配置ID</p>
 	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitnil,omitempty" name:"LaunchConfigurationId"`
 
-	// 启动配置名称
+	// <p>启动配置名称</p>
 	LaunchConfigurationName *string `json:"LaunchConfigurationName,omitnil,omitempty" name:"LaunchConfigurationName"`
 
-	// 传统型负载均衡器ID列表
+	// <p>传统型负载均衡器ID列表</p>
 	LoadBalancerIdSet []*string `json:"LoadBalancerIdSet,omitnil,omitempty" name:"LoadBalancerIdSet"`
 
-	// 最大实例数
+	// <p>最大实例数</p>
 	MaxSize *int64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 最小实例数
+	// <p>最小实例数</p>
 	MinSize *int64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 子网ID列表
+	// <p>子网ID列表</p>
 	SubnetIdSet []*string `json:"SubnetIdSet,omitnil,omitempty" name:"SubnetIdSet"`
 
-	// 销毁策略。取值范围如下：
-	// <li>OLDEST_INSTANCE：优先销毁伸缩组中最旧的实例，默认取值。</li>
-	// <li>NEWEST_INSTANCE：优先销毁伸缩组中最新的实例。</li>
+	// <p>销毁策略。取值范围如下：</p><li>OLDEST_INSTANCE：优先销毁伸缩组中最旧的实例，默认取值。</li><li>NEWEST_INSTANCE：优先销毁伸缩组中最新的实例。</li>
 	TerminationPolicySet []*string `json:"TerminationPolicySet,omitnil,omitempty" name:"TerminationPolicySet"`
 
-	// 私有网络ID。
+	// <p>私有网络ID。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 可用区列表
+	// <p>可用区列表</p>
 	ZoneSet []*string `json:"ZoneSet,omitnil,omitempty" name:"ZoneSet"`
 
-	// 重试策略，部分成功的伸缩活动判定为一次失败活动。取值范围如下：
-	// <li>IMMEDIATE_RETRY：默认取值，表示立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。</li>
-	// <li>INCREMENTAL_INTERVALS：间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大。前 10 次重试为快速重试，后续重试间隔逐步递增至 10 分钟、30 分钟、60 分钟、一天。</li>
-	// <li>NO_RETRY，不进行重试，直到再次收到用户调用或者告警信息后才会重试。</li>
+	// <p>重试策略，部分成功的伸缩活动判定为一次失败活动。取值范围如下：</p><li>IMMEDIATE_RETRY：默认取值，表示立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。</li><li>INCREMENTAL_INTERVALS：间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大。前 10 次重试为快速重试，后续重试间隔逐步递增至 10 分钟、30 分钟、60 分钟、一天。</li><li>NO_RETRY，不进行重试，直到再次收到用户调用或者告警信息后才会重试。</li>
 	RetryPolicy *string `json:"RetryPolicy,omitnil,omitempty" name:"RetryPolicy"`
 
-	// 伸缩组是否处于伸缩活动中，`IN_ACTIVITY`表示处于伸缩活动中，`NOT_IN_ACTIVITY`表示不处于伸缩活动中。
+	// <p>伸缩组是否处于伸缩活动中，<code>IN_ACTIVITY</code>表示处于伸缩活动中，<code>NOT_IN_ACTIVITY</code>表示不处于伸缩活动中。</p>
 	InActivityStatus *string `json:"InActivityStatus,omitnil,omitempty" name:"InActivityStatus"`
 
-	// 伸缩组标签列表
+	// <p>伸缩组标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 服务设置
+	// <p>服务设置</p>
 	ServiceSettings *ServiceSettings `json:"ServiceSettings,omitnil,omitempty" name:"ServiceSettings"`
 
-	// 实例具有IPv6地址数量的配置，取值包括0、1。默认值为 0，表示实例不分配 IPv6 地址。需使用支持 IPv6 的私有网络，需在子网中开启 IPv6 CIDR，其他使用限制可参考 [IPv6使用限制](https://cloud.tencent.com/document/product/1142/38369)。
+	// <p>实例具有IPv6地址数量的配置，取值包括0、1。默认值为 0，表示实例不分配 IPv6 地址。需使用支持 IPv6 的私有网络，需在子网中开启 IPv6 CIDR，其他使用限制可参考 <a href="https://cloud.tencent.com/document/product/1142/38369">IPv6使用限制</a>。</p>
 	Ipv6AddressCount *int64 `json:"Ipv6AddressCount,omitnil,omitempty" name:"Ipv6AddressCount"`
 
-	// 多可用区/子网策略。
-	// <li> PRIORITY，按照可用区/子网列表的顺序，作为优先级来尝试创建实例，如果优先级最高的可用区/子网可以创建成功，则总在该可用区/子网创建。</li>
-	// <li> EQUALITY：每次选择当前实例数最少的可用区/子网进行扩容，使得每个可用区/子网都有机会发生扩容，多次扩容出的实例会打散到多个可用区/子网。</li>
+	// <p>多可用区/子网策略。</p><li> PRIORITY，按照可用区/子网列表的顺序，作为优先级来尝试创建实例，如果优先级最高的可用区/子网可以创建成功，则总在该可用区/子网创建。</li><li> EQUALITY：每次选择当前实例数最少的可用区/子网进行扩容，使得每个可用区/子网都有机会发生扩容，多次扩容出的实例会打散到多个可用区/子网。</li>
 	MultiZoneSubnetPolicy *string `json:"MultiZoneSubnetPolicy,omitnil,omitempty" name:"MultiZoneSubnetPolicy"`
 
-	// 伸缩组实例健康检查类型，取值如下：
-	// <li>CVM：根据实例网络状态判断实例是否处于不健康状态，不健康的网络状态即发生实例 PING 不可达事件，详细判断标准可参考[实例健康检查](https://cloud.tencent.com/document/product/377/8553)</li>
-	// <li>CLB：根据 CLB 的健康检查状态判断实例是否处于不健康状态，CLB健康检查原理可参考[健康检查](https://cloud.tencent.com/document/product/214/6097)</li>
+	// <p>伸缩组实例健康检查类型，取值如下：</p><li>CVM：根据实例网络状态判断实例是否处于不健康状态，不健康的网络状态即发生实例 PING 不可达事件，详细判断标准可参考[实例健康检查](https://cloud.tencent.com/document/product/377/8553)</li><li>CLB：根据 CLB 的健康检查状态判断实例是否处于不健康状态，CLB健康检查原理可参考[健康检查](https://cloud.tencent.com/document/product/214/6097)</li>
 	HealthCheckType *string `json:"HealthCheckType,omitnil,omitempty" name:"HealthCheckType"`
 
-	// CLB健康检查宽限期.当扩容的实例进入IN_SERVICE后，在宽限期时间范围内将不会被标记为不健康CLB_UNHEALTHY。
-	// 默认值：0。取值范围[0, 7200]，单位：秒。
+	// <p>CLB健康检查宽限期.当扩容的实例进入IN_SERVICE后，在宽限期时间范围内将不会被标记为不健康CLB_UNHEALTHY。<br>默认值：0。取值范围[0, 7200]，单位：秒。</p>
 	LoadBalancerHealthCheckGracePeriod *uint64 `json:"LoadBalancerHealthCheckGracePeriod,omitnil,omitempty" name:"LoadBalancerHealthCheckGracePeriod"`
 
-	// 实例分配策略，取值包括 LAUNCH_CONFIGURATION 和 SPOT_MIXED。
-	// <li> LAUNCH_CONFIGURATION，代表传统的按照启动配置模式。</li>
-	// <li> SPOT_MIXED，代表竞价混合模式。目前仅支持启动配置为按量计费模式时使用混合模式，混合模式下，伸缩组将根据设定扩容按量或竞价机型。使用混合模式时，关联的启动配置的计费类型不可被修改。</li>
+	// <p>实例分配策略，取值包括 LAUNCH_CONFIGURATION 和 SPOT_MIXED。</p><li> LAUNCH_CONFIGURATION，代表传统的按照启动配置模式。</li><li> SPOT_MIXED，代表竞价混合模式。目前仅支持启动配置为按量计费模式时使用混合模式，混合模式下，伸缩组将根据设定扩容按量或竞价机型。使用混合模式时，关联的启动配置的计费类型不可被修改。</li>
 	InstanceAllocationPolicy *string `json:"InstanceAllocationPolicy,omitnil,omitempty" name:"InstanceAllocationPolicy"`
 
-	// 竞价混合模式下，各计费类型实例的分配策略。
-	// 仅当 InstanceAllocationPolicy 取 SPOT_MIXED 时才会返回有效值。
+	// <p>竞价混合模式下，各计费类型实例的分配策略。<br>仅当 InstanceAllocationPolicy 取 SPOT_MIXED 时才会返回有效值。</p>
 	SpotMixedAllocationPolicy *SpotMixedAllocationPolicy `json:"SpotMixedAllocationPolicy,omitnil,omitempty" name:"SpotMixedAllocationPolicy"`
 
-	// 容量重平衡功能，仅对伸缩组内的竞价实例有效。取值范围：
-	// <li> TRUE，开启该功能，当伸缩组内的竞价实例即将被竞价实例服务自动回收前，AS 主动发起竞价实例销毁流程，如果有配置过缩容 hook，则销毁前 hook 会生效。销毁流程启动后，AS 会异步开启一个扩容活动，用于补齐期望实例数。</li>
-	// <li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。</li>
+	// <p>容量重平衡功能，仅对伸缩组内的竞价实例有效。取值范围：</p><li> TRUE，开启该功能，当伸缩组内的竞价实例即将被竞价实例服务自动回收前，AS 主动发起竞价实例销毁流程，如果有配置过缩容 hook，则销毁前 hook 会生效。销毁流程启动后，AS 会异步开启一个扩容活动，用于补齐期望实例数。</li><li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。</li>
 	CapacityRebalance *bool `json:"CapacityRebalance,omitnil,omitempty" name:"CapacityRebalance"`
 
-	// 实例名称序号相关设置。
+	// <p>实例名称序号相关设置。</p>
 	InstanceNameIndexSettings *InstanceNameIndexSettings `json:"InstanceNameIndexSettings,omitnil,omitempty" name:"InstanceNameIndexSettings"`
 
-	// 实例主机名序号相关设置。
+	// <p>实例主机名序号相关设置。</p>
 	HostNameIndexSettings *HostNameIndexSettings `json:"HostNameIndexSettings,omitnil,omitempty" name:"HostNameIndexSettings"`
 
-	// 匹配期望数并发扩容功能，不能在InstanceAllocationPolicy为竞价混合模式时设置，也不能在ScalingMode为扩容优先开机模式时设置。目前仅支持两个匹配期望数扩容活动并发进行，不支持指定数量扩容、缩容等其他类型活动并发。默认值为FALSE，表示不开启。
+	// <p>匹配期望数并发扩容功能，不能在InstanceAllocationPolicy为竞价混合模式时设置，也不能在ScalingMode为扩容优先开机模式时设置。目前仅支持两个匹配期望数扩容活动并发进行，不支持指定数量扩容、缩容等其他类型活动并发。默认值为FALSE，表示不开启。</p>
 	ConcurrentScaleOutForDesiredCapacity *bool `json:"ConcurrentScaleOutForDesiredCapacity,omitnil,omitempty" name:"ConcurrentScaleOutForDesiredCapacity"`
 }
 
@@ -4321,214 +4296,158 @@ type MetricAlarm struct {
 
 // Predefined struct for user
 type ModifyAutoScalingGroupRequestParams struct {
-	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
-	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
-	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
+	// <p>伸缩组ID。可以通过如下方式获取可用的伸缩组ID:</p><li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li><li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 伸缩组名称，在您账号中必须唯一。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超55个字节。
+	// <p>伸缩组名称，在您账号中必须唯一。名称仅支持中文、英文、数字、下划线、分隔符&quot;-&quot;、小数点，最大长度不能超55个字节。</p>
 	AutoScalingGroupName *string `json:"AutoScalingGroupName,omitnil,omitempty" name:"AutoScalingGroupName"`
 
-	// 默认冷却时间，单位秒，取值范围 [0,3600]，默认值为300。
+	// <p>默认冷却时间，单位秒，取值范围 [0,3600]，默认值为300。</p>
 	DefaultCooldown *uint64 `json:"DefaultCooldown,omitnil,omitempty" name:"DefaultCooldown"`
 
-	// 期望实例数，取值范围 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// <p>期望实例数，取值范围 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。</p>
 	DesiredCapacity *uint64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
 
-	// 启动配置ID。可以通过如下方式获取可用的启动配置ID:
-	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 查询启动配置ID。</li>
-	// <li>通过调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。</li>
+	// <p>启动配置ID。可以通过如下方式获取可用的启动配置ID:</p><li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 查询启动配置ID。</li><li>通过调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。</li>
 	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitnil,omitempty" name:"LaunchConfigurationId"`
 
-	// 最大实例数，取值范围为 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// <p>最大实例数，取值范围为 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。</p>
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 最小实例数，取值范围为 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// <p>最小实例数，取值范围为 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。</p>
 	MinSize *uint64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
-	// 项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 ProjectId 字段来获取。默认值为 0，表示使用默认项目。
+	// <p>项目ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/651/78725">DescribeProject</a> 的返回值中的 ProjectId 字段来获取。默认值为 0，表示使用默认项目。</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 子网ID列表。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet)查询；也可以调用接口 [DescribeSubnets](https://cloud.tencent.com/document/product/215/15784) ，从接口返回中的SubnetId字段获取。
+	// <p>子网ID列表。有效的私有网络子网ID可通过登录<a href="https://console.cloud.tencent.com/vpc/subnet">控制台</a>查询；也可以调用接口 <a href="https://cloud.tencent.com/document/product/215/15784">DescribeSubnets</a> ，从接口返回中的SubnetId字段获取。</p>
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
-	// 销毁策略，目前长度上限为1。取值包括 OLDEST_INSTANCE 和 NEWEST_INSTANCE。
-	// <li> OLDEST_INSTANCE 优先销毁伸缩组中最旧的实例。</li>
-	// <li> NEWEST_INSTANCE，优先销毁伸缩组中最新的实例。</li>
+	// <p>销毁策略，目前长度上限为1。取值包括 OLDEST_INSTANCE 和 NEWEST_INSTANCE。</p><li> OLDEST_INSTANCE 优先销毁伸缩组中最旧的实例。</li><li> NEWEST_INSTANCE，优先销毁伸缩组中最新的实例。</li>
 	TerminationPolicies []*string `json:"TerminationPolicies,omitnil,omitempty" name:"TerminationPolicies"`
 
-	// 私有网络ID。修改私有网络时，需将 SubnetIds 参数同步修改为该私有网络的子网。有效的 VpcId 可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc)查询；也可以调用接口 [DescribeVpc](https://cloud.tencent.com/document/api/215/15778) ，从接口返回中的 VpcId 字段获取。
+	// <p>私有网络ID。修改私有网络时，需将 SubnetIds 参数同步修改为该私有网络的子网。有效的 VpcId 可通过登录<a href="https://console.cloud.tencent.com/vpc/vpc">控制台</a>查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/15778">DescribeVpc</a> ，从接口返回中的 VpcId 字段获取。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 可用区列表
+	// <p>可用区列表</p>
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 
-	// 重试策略，取值包括 IMMEDIATE_RETRY、 INCREMENTAL_INTERVALS、NO_RETRY，默认取值为 IMMEDIATE_RETRY。部分成功的伸缩活动判定为一次失败活动。
-	// <li>IMMEDIATE_RETRY，立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。</li>
-	// <li>INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大，重试间隔从秒级到1天不等。</li>
-	// <li> NO_RETRY，不进行重试，直到再次收到用户调用或者告警信息后才会重试。</li>
+	// <p>重试策略，取值包括 IMMEDIATE_RETRY、 INCREMENTAL_INTERVALS、NO_RETRY，默认取值为 IMMEDIATE_RETRY。部分成功的伸缩活动判定为一次失败活动。</p><li>IMMEDIATE_RETRY，立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。</li><li>INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大，重试间隔从秒级到1天不等。</li><li> NO_RETRY，不进行重试，直到再次收到用户调用或者告警信息后才会重试。</li>
 	RetryPolicy *string `json:"RetryPolicy,omitnil,omitempty" name:"RetryPolicy"`
 
-	// 可用区校验策略，取值包括 ALL 和 ANY，默认取值为ANY。在伸缩组实际变更资源相关字段时（启动配置、可用区、子网）发挥作用。
-	// <li> ALL，所有可用区（Zone）或子网（SubnetId）都可用则通过校验，否则校验报错。</li>
-	// <li> ANY，存在任何一个可用区（Zone）或子网（SubnetId）可用则通过校验，否则校验报错。</li>
-	// 
-	// 可用区或子网不可用的常见原因包括该可用区CVM实例类型售罄、该可用区CBS云盘售罄、该可用区配额不足、该子网IP不足等。
-	// 如果 Zones/SubnetIds 中可用区或者子网不存在，则无论 ZonesCheckPolicy 采用何种取值，都会校验报错。
+	// <p>可用区校验策略，取值包括 ALL 和 ANY，默认取值为ANY。在伸缩组实际变更资源相关字段时（启动配置、可用区、子网）发挥作用。</p><li> ALL，所有可用区（Zone）或子网（SubnetId）都可用则通过校验，否则校验报错。</li><li> ANY，存在任何一个可用区（Zone）或子网（SubnetId）可用则通过校验，否则校验报错。</li><p>可用区或子网不可用的常见原因包括该可用区CVM实例类型售罄、该可用区CBS云盘售罄、该可用区配额不足、该子网IP不足等。<br>如果 Zones/SubnetIds 中可用区或者子网不存在，则无论 ZonesCheckPolicy 采用何种取值，都会校验报错。</p>
 	ZonesCheckPolicy *string `json:"ZonesCheckPolicy,omitnil,omitempty" name:"ZonesCheckPolicy"`
 
-	// 服务设置，包括云监控不健康替换等服务设置。
+	// <p>服务设置，包括云监控不健康替换等服务设置。</p>
 	ServiceSettings *ServiceSettings `json:"ServiceSettings,omitnil,omitempty" name:"ServiceSettings"`
 
-	// 实例具有IPv6地址数量的配置，取值包括0、1。默认值为 0，表示实例不分配 IPv6 地址。需使用支持 IPv6 的私有网络，需在子网中开启 IPv6 CIDR，其他使用限制可参考 [IPv6使用限制](https://cloud.tencent.com/document/product/1142/38369)。
+	// <p>实例具有IPv6地址数量的配置，取值包括0、1。默认值为 0，表示实例不分配 IPv6 地址。需使用支持 IPv6 的私有网络，需在子网中开启 IPv6 CIDR，其他使用限制可参考 <a href="https://cloud.tencent.com/document/product/1142/38369">IPv6使用限制</a>。</p>
 	Ipv6AddressCount *int64 `json:"Ipv6AddressCount,omitnil,omitempty" name:"Ipv6AddressCount"`
 
-	// 多可用区/子网策略，取值包括 PRIORITY 和 EQUALITY，默认为 PRIORITY。
-	// <li> PRIORITY，按照可用区/子网列表的顺序，作为优先级来尝试创建实例，如果优先级最高的可用区/子网可以创建成功，则总在该可用区/子网创建。</li> 
-	// <li> EQUALITY：扩容出的实例会打散到多个可用区/子网，保证扩容后的各个可用区/子网实例数相对均衡。</li> 
-	// 
-	// 与本策略相关的注意点：
-	// <li> 当伸缩组为基础网络时，本策略适用于多可用区；当伸缩组为VPC网络时，本策略适用于多子网，此时不再考虑可用区因素，例如四个子网ABCD，其中ABC处于可用区1，D处于可用区2，此时考虑子网ABCD进行排序，而不考虑可用区1、2。</li> 
-	// <li> 本策略适用于多可用区/子网，不适用于启动配置的多机型。多机型按照优先级策略进行选择。</li> 
-	// <li> 按照 PRIORITY 策略创建实例时，先保证多机型的策略，后保证多可用区/子网的策略。例如多机型A、B，多子网1、2、3，会按照A1、A2、A3、B1、B2、B3 进行尝试，如果A1售罄，会尝试A2（而非B1）。</li> 
+	// <p>多可用区/子网策略，取值包括 PRIORITY 和 EQUALITY，默认为 PRIORITY。</p><li> PRIORITY，按照可用区/子网列表的顺序，作为优先级来尝试创建实例，如果优先级最高的可用区/子网可以创建成功，则总在该可用区/子网创建。</li> <li> EQUALITY：扩容出的实例会打散到多个可用区/子网，保证扩容后的各个可用区/子网实例数相对均衡。</li> <p>与本策略相关的注意点：</p><li> 当伸缩组为基础网络时，本策略适用于多可用区；当伸缩组为VPC网络时，本策略适用于多子网，此时不再考虑可用区因素，例如四个子网ABCD，其中ABC处于可用区1，D处于可用区2，此时考虑子网ABCD进行排序，而不考虑可用区1、2。</li> <li> 本策略适用于多可用区/子网，不适用于启动配置的多机型。多机型按照优先级策略进行选择。</li> <li> 按照 PRIORITY 策略创建实例时，先保证多机型的策略，后保证多可用区/子网的策略。例如多机型A、B，多子网1、2、3，会按照A1、A2、A3、B1、B2、B3 进行尝试，如果A1售罄，会尝试A2（而非B1）。</li>
 	MultiZoneSubnetPolicy *string `json:"MultiZoneSubnetPolicy,omitnil,omitempty" name:"MultiZoneSubnetPolicy"`
 
-	// 伸缩组实例健康检查类型，取值如下：
-	// <li>CVM：根据实例网络状态判断实例是否处于不健康状态，不健康的网络状态即发生实例 PING 不可达事件，详细判断标准可参考[实例健康检查](https://cloud.tencent.com/document/product/377/8553)</li>
-	// <li>CLB：根据 CLB 的健康检查状态判断实例是否处于不健康状态，CLB健康检查原理可参考[健康检查](https://cloud.tencent.com/document/product/214/6097)</li>
+	// <p>伸缩组实例健康检查类型，取值如下：</p><li>CVM：根据实例网络状态判断实例是否处于不健康状态，不健康的网络状态即发生实例 PING 不可达事件，详细判断标准可参考[实例健康检查](https://cloud.tencent.com/document/product/377/8553)</li><li>CLB：根据 CLB 的健康检查状态判断实例是否处于不健康状态，CLB健康检查原理可参考[健康检查](https://cloud.tencent.com/document/product/214/6097)</li>
 	HealthCheckType *string `json:"HealthCheckType,omitnil,omitempty" name:"HealthCheckType"`
 
-	// CLB健康检查宽限期。
+	// <p>CLB健康检查宽限期，单位为秒。</p><p>取值范围：[0, 7200]</p><p>默认值：0</p>
 	LoadBalancerHealthCheckGracePeriod *uint64 `json:"LoadBalancerHealthCheckGracePeriod,omitnil,omitempty" name:"LoadBalancerHealthCheckGracePeriod"`
 
-	// 实例分配策略，取值包括 LAUNCH_CONFIGURATION 和 SPOT_MIXED。
-	// <li> LAUNCH_CONFIGURATION，代表传统的按照启动配置模式。</li>
-	// <li> SPOT_MIXED，代表竞价混合模式。目前仅支持启动配置为按量计费模式时使用混合模式，混合模式下，伸缩组将根据设定扩容按量或竞价机型。使用混合模式时，关联的启动配置的计费类型不可被修改。</li>
+	// <p>实例分配策略，取值包括 LAUNCH_CONFIGURATION 和 SPOT_MIXED。</p><li> LAUNCH_CONFIGURATION，代表传统的按照启动配置模式。</li><li> SPOT_MIXED，代表竞价混合模式。目前仅支持启动配置为按量计费模式时使用混合模式，混合模式下，伸缩组将根据设定扩容按量或竞价机型。使用混合模式时，关联的启动配置的计费类型不可被修改。</li>
 	InstanceAllocationPolicy *string `json:"InstanceAllocationPolicy,omitnil,omitempty" name:"InstanceAllocationPolicy"`
 
-	// 竞价混合模式下，各计费类型实例的分配策略。
-	// 仅当 InstanceAllocationPolicy 取 SPOT_MIXED 时可用。
+	// <p>竞价混合模式下，各计费类型实例的分配策略。<br>仅当 InstanceAllocationPolicy 取 SPOT_MIXED 时可用。</p>
 	SpotMixedAllocationPolicy *SpotMixedAllocationPolicy `json:"SpotMixedAllocationPolicy,omitnil,omitempty" name:"SpotMixedAllocationPolicy"`
 
-	// 容量重平衡功能，仅对伸缩组内的竞价实例有效。取值范围：
-	// <li> TRUE，开启该功能，当伸缩组内的竞价实例即将被竞价实例服务自动回收前，AS 主动发起竞价实例销毁流程，如果有配置过缩容 hook，则销毁前 hook 会生效。销毁流程启动后，AS 会异步开启一个扩容活动，用于补齐期望实例数。</li> 
-	// <li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。</li> 
+	// <p>容量重平衡功能，仅对伸缩组内的竞价实例有效。取值范围：</p><li> TRUE，开启该功能，当伸缩组内的竞价实例即将被竞价实例服务自动回收前，AS 主动发起竞价实例销毁流程，如果有配置过缩容 hook，则销毁前 hook 会生效。销毁流程启动后，AS 会异步开启一个扩容活动，用于补齐期望实例数。</li> <li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。</li>
 	CapacityRebalance *bool `json:"CapacityRebalance,omitnil,omitempty" name:"CapacityRebalance"`
 
-	// 实例名称序号相关设置。开启后为伸缩组内自动创建的实例名称添加递增的数字序号。
+	// <p>实例名称序号相关设置。开启后为伸缩组内自动创建的实例名称添加递增的数字序号。</p>
 	InstanceNameIndexSettings *InstanceNameIndexSettings `json:"InstanceNameIndexSettings,omitnil,omitempty" name:"InstanceNameIndexSettings"`
 
-	// 实例主机名序号相关设置。开启后为伸缩组内自动创建的实例主机名添加递增的数字序号。
+	// <p>实例主机名序号相关设置。开启后为伸缩组内自动创建的实例主机名添加递增的数字序号。</p>
 	HostNameIndexSettings *HostNameIndexSettings `json:"HostNameIndexSettings,omitnil,omitempty" name:"HostNameIndexSettings"`
 
-	// 匹配期望数并发扩容功能，不能在InstanceAllocationPolicy为竞价混合模式时设置，也不能在ScalingMode为扩容优先开机模式时设置。目前仅支持两个匹配期望数扩容活动并发进行，不支持指定数量扩容、缩容等其他类型活动并发。设置为FALSE表示不开启。
+	// <p>匹配期望数并发扩容功能，不能在InstanceAllocationPolicy为竞价混合模式时设置，也不能在ScalingMode为扩容优先开机模式时设置。目前仅支持两个匹配期望数扩容活动并发进行，不支持指定数量扩容、缩容等其他类型活动并发。设置为FALSE表示不开启。</p>
 	ConcurrentScaleOutForDesiredCapacity *bool `json:"ConcurrentScaleOutForDesiredCapacity,omitnil,omitempty" name:"ConcurrentScaleOutForDesiredCapacity"`
 }
 
 type ModifyAutoScalingGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
-	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
-	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
+	// <p>伸缩组ID。可以通过如下方式获取可用的伸缩组ID:</p><li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li><li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 伸缩组名称，在您账号中必须唯一。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超55个字节。
+	// <p>伸缩组名称，在您账号中必须唯一。名称仅支持中文、英文、数字、下划线、分隔符&quot;-&quot;、小数点，最大长度不能超55个字节。</p>
 	AutoScalingGroupName *string `json:"AutoScalingGroupName,omitnil,omitempty" name:"AutoScalingGroupName"`
 
-	// 默认冷却时间，单位秒，取值范围 [0,3600]，默认值为300。
+	// <p>默认冷却时间，单位秒，取值范围 [0,3600]，默认值为300。</p>
 	DefaultCooldown *uint64 `json:"DefaultCooldown,omitnil,omitempty" name:"DefaultCooldown"`
 
-	// 期望实例数，取值范围 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// <p>期望实例数，取值范围 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。</p>
 	DesiredCapacity *uint64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
 
-	// 启动配置ID。可以通过如下方式获取可用的启动配置ID:
-	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 查询启动配置ID。</li>
-	// <li>通过调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。</li>
+	// <p>启动配置ID。可以通过如下方式获取可用的启动配置ID:</p><li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 查询启动配置ID。</li><li>通过调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。</li>
 	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitnil,omitempty" name:"LaunchConfigurationId"`
 
-	// 最大实例数，取值范围为 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// <p>最大实例数，取值范围为 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。</p>
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 最小实例数，取值范围为 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// <p>最小实例数，取值范围为 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。</p>
 	MinSize *uint64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
-	// 项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 ProjectId 字段来获取。默认值为 0，表示使用默认项目。
+	// <p>项目ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/651/78725">DescribeProject</a> 的返回值中的 ProjectId 字段来获取。默认值为 0，表示使用默认项目。</p>
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 子网ID列表。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet)查询；也可以调用接口 [DescribeSubnets](https://cloud.tencent.com/document/product/215/15784) ，从接口返回中的SubnetId字段获取。
+	// <p>子网ID列表。有效的私有网络子网ID可通过登录<a href="https://console.cloud.tencent.com/vpc/subnet">控制台</a>查询；也可以调用接口 <a href="https://cloud.tencent.com/document/product/215/15784">DescribeSubnets</a> ，从接口返回中的SubnetId字段获取。</p>
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
-	// 销毁策略，目前长度上限为1。取值包括 OLDEST_INSTANCE 和 NEWEST_INSTANCE。
-	// <li> OLDEST_INSTANCE 优先销毁伸缩组中最旧的实例。</li>
-	// <li> NEWEST_INSTANCE，优先销毁伸缩组中最新的实例。</li>
+	// <p>销毁策略，目前长度上限为1。取值包括 OLDEST_INSTANCE 和 NEWEST_INSTANCE。</p><li> OLDEST_INSTANCE 优先销毁伸缩组中最旧的实例。</li><li> NEWEST_INSTANCE，优先销毁伸缩组中最新的实例。</li>
 	TerminationPolicies []*string `json:"TerminationPolicies,omitnil,omitempty" name:"TerminationPolicies"`
 
-	// 私有网络ID。修改私有网络时，需将 SubnetIds 参数同步修改为该私有网络的子网。有效的 VpcId 可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc)查询；也可以调用接口 [DescribeVpc](https://cloud.tencent.com/document/api/215/15778) ，从接口返回中的 VpcId 字段获取。
+	// <p>私有网络ID。修改私有网络时，需将 SubnetIds 参数同步修改为该私有网络的子网。有效的 VpcId 可通过登录<a href="https://console.cloud.tencent.com/vpc/vpc">控制台</a>查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/15778">DescribeVpc</a> ，从接口返回中的 VpcId 字段获取。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 可用区列表
+	// <p>可用区列表</p>
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 
-	// 重试策略，取值包括 IMMEDIATE_RETRY、 INCREMENTAL_INTERVALS、NO_RETRY，默认取值为 IMMEDIATE_RETRY。部分成功的伸缩活动判定为一次失败活动。
-	// <li>IMMEDIATE_RETRY，立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。</li>
-	// <li>INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大，重试间隔从秒级到1天不等。</li>
-	// <li> NO_RETRY，不进行重试，直到再次收到用户调用或者告警信息后才会重试。</li>
+	// <p>重试策略，取值包括 IMMEDIATE_RETRY、 INCREMENTAL_INTERVALS、NO_RETRY，默认取值为 IMMEDIATE_RETRY。部分成功的伸缩活动判定为一次失败活动。</p><li>IMMEDIATE_RETRY，立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。</li><li>INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大，重试间隔从秒级到1天不等。</li><li> NO_RETRY，不进行重试，直到再次收到用户调用或者告警信息后才会重试。</li>
 	RetryPolicy *string `json:"RetryPolicy,omitnil,omitempty" name:"RetryPolicy"`
 
-	// 可用区校验策略，取值包括 ALL 和 ANY，默认取值为ANY。在伸缩组实际变更资源相关字段时（启动配置、可用区、子网）发挥作用。
-	// <li> ALL，所有可用区（Zone）或子网（SubnetId）都可用则通过校验，否则校验报错。</li>
-	// <li> ANY，存在任何一个可用区（Zone）或子网（SubnetId）可用则通过校验，否则校验报错。</li>
-	// 
-	// 可用区或子网不可用的常见原因包括该可用区CVM实例类型售罄、该可用区CBS云盘售罄、该可用区配额不足、该子网IP不足等。
-	// 如果 Zones/SubnetIds 中可用区或者子网不存在，则无论 ZonesCheckPolicy 采用何种取值，都会校验报错。
+	// <p>可用区校验策略，取值包括 ALL 和 ANY，默认取值为ANY。在伸缩组实际变更资源相关字段时（启动配置、可用区、子网）发挥作用。</p><li> ALL，所有可用区（Zone）或子网（SubnetId）都可用则通过校验，否则校验报错。</li><li> ANY，存在任何一个可用区（Zone）或子网（SubnetId）可用则通过校验，否则校验报错。</li><p>可用区或子网不可用的常见原因包括该可用区CVM实例类型售罄、该可用区CBS云盘售罄、该可用区配额不足、该子网IP不足等。<br>如果 Zones/SubnetIds 中可用区或者子网不存在，则无论 ZonesCheckPolicy 采用何种取值，都会校验报错。</p>
 	ZonesCheckPolicy *string `json:"ZonesCheckPolicy,omitnil,omitempty" name:"ZonesCheckPolicy"`
 
-	// 服务设置，包括云监控不健康替换等服务设置。
+	// <p>服务设置，包括云监控不健康替换等服务设置。</p>
 	ServiceSettings *ServiceSettings `json:"ServiceSettings,omitnil,omitempty" name:"ServiceSettings"`
 
-	// 实例具有IPv6地址数量的配置，取值包括0、1。默认值为 0，表示实例不分配 IPv6 地址。需使用支持 IPv6 的私有网络，需在子网中开启 IPv6 CIDR，其他使用限制可参考 [IPv6使用限制](https://cloud.tencent.com/document/product/1142/38369)。
+	// <p>实例具有IPv6地址数量的配置，取值包括0、1。默认值为 0，表示实例不分配 IPv6 地址。需使用支持 IPv6 的私有网络，需在子网中开启 IPv6 CIDR，其他使用限制可参考 <a href="https://cloud.tencent.com/document/product/1142/38369">IPv6使用限制</a>。</p>
 	Ipv6AddressCount *int64 `json:"Ipv6AddressCount,omitnil,omitempty" name:"Ipv6AddressCount"`
 
-	// 多可用区/子网策略，取值包括 PRIORITY 和 EQUALITY，默认为 PRIORITY。
-	// <li> PRIORITY，按照可用区/子网列表的顺序，作为优先级来尝试创建实例，如果优先级最高的可用区/子网可以创建成功，则总在该可用区/子网创建。</li> 
-	// <li> EQUALITY：扩容出的实例会打散到多个可用区/子网，保证扩容后的各个可用区/子网实例数相对均衡。</li> 
-	// 
-	// 与本策略相关的注意点：
-	// <li> 当伸缩组为基础网络时，本策略适用于多可用区；当伸缩组为VPC网络时，本策略适用于多子网，此时不再考虑可用区因素，例如四个子网ABCD，其中ABC处于可用区1，D处于可用区2，此时考虑子网ABCD进行排序，而不考虑可用区1、2。</li> 
-	// <li> 本策略适用于多可用区/子网，不适用于启动配置的多机型。多机型按照优先级策略进行选择。</li> 
-	// <li> 按照 PRIORITY 策略创建实例时，先保证多机型的策略，后保证多可用区/子网的策略。例如多机型A、B，多子网1、2、3，会按照A1、A2、A3、B1、B2、B3 进行尝试，如果A1售罄，会尝试A2（而非B1）。</li> 
+	// <p>多可用区/子网策略，取值包括 PRIORITY 和 EQUALITY，默认为 PRIORITY。</p><li> PRIORITY，按照可用区/子网列表的顺序，作为优先级来尝试创建实例，如果优先级最高的可用区/子网可以创建成功，则总在该可用区/子网创建。</li> <li> EQUALITY：扩容出的实例会打散到多个可用区/子网，保证扩容后的各个可用区/子网实例数相对均衡。</li> <p>与本策略相关的注意点：</p><li> 当伸缩组为基础网络时，本策略适用于多可用区；当伸缩组为VPC网络时，本策略适用于多子网，此时不再考虑可用区因素，例如四个子网ABCD，其中ABC处于可用区1，D处于可用区2，此时考虑子网ABCD进行排序，而不考虑可用区1、2。</li> <li> 本策略适用于多可用区/子网，不适用于启动配置的多机型。多机型按照优先级策略进行选择。</li> <li> 按照 PRIORITY 策略创建实例时，先保证多机型的策略，后保证多可用区/子网的策略。例如多机型A、B，多子网1、2、3，会按照A1、A2、A3、B1、B2、B3 进行尝试，如果A1售罄，会尝试A2（而非B1）。</li>
 	MultiZoneSubnetPolicy *string `json:"MultiZoneSubnetPolicy,omitnil,omitempty" name:"MultiZoneSubnetPolicy"`
 
-	// 伸缩组实例健康检查类型，取值如下：
-	// <li>CVM：根据实例网络状态判断实例是否处于不健康状态，不健康的网络状态即发生实例 PING 不可达事件，详细判断标准可参考[实例健康检查](https://cloud.tencent.com/document/product/377/8553)</li>
-	// <li>CLB：根据 CLB 的健康检查状态判断实例是否处于不健康状态，CLB健康检查原理可参考[健康检查](https://cloud.tencent.com/document/product/214/6097)</li>
+	// <p>伸缩组实例健康检查类型，取值如下：</p><li>CVM：根据实例网络状态判断实例是否处于不健康状态，不健康的网络状态即发生实例 PING 不可达事件，详细判断标准可参考[实例健康检查](https://cloud.tencent.com/document/product/377/8553)</li><li>CLB：根据 CLB 的健康检查状态判断实例是否处于不健康状态，CLB健康检查原理可参考[健康检查](https://cloud.tencent.com/document/product/214/6097)</li>
 	HealthCheckType *string `json:"HealthCheckType,omitnil,omitempty" name:"HealthCheckType"`
 
-	// CLB健康检查宽限期。
+	// <p>CLB健康检查宽限期，单位为秒。</p><p>取值范围：[0, 7200]</p><p>默认值：0</p>
 	LoadBalancerHealthCheckGracePeriod *uint64 `json:"LoadBalancerHealthCheckGracePeriod,omitnil,omitempty" name:"LoadBalancerHealthCheckGracePeriod"`
 
-	// 实例分配策略，取值包括 LAUNCH_CONFIGURATION 和 SPOT_MIXED。
-	// <li> LAUNCH_CONFIGURATION，代表传统的按照启动配置模式。</li>
-	// <li> SPOT_MIXED，代表竞价混合模式。目前仅支持启动配置为按量计费模式时使用混合模式，混合模式下，伸缩组将根据设定扩容按量或竞价机型。使用混合模式时，关联的启动配置的计费类型不可被修改。</li>
+	// <p>实例分配策略，取值包括 LAUNCH_CONFIGURATION 和 SPOT_MIXED。</p><li> LAUNCH_CONFIGURATION，代表传统的按照启动配置模式。</li><li> SPOT_MIXED，代表竞价混合模式。目前仅支持启动配置为按量计费模式时使用混合模式，混合模式下，伸缩组将根据设定扩容按量或竞价机型。使用混合模式时，关联的启动配置的计费类型不可被修改。</li>
 	InstanceAllocationPolicy *string `json:"InstanceAllocationPolicy,omitnil,omitempty" name:"InstanceAllocationPolicy"`
 
-	// 竞价混合模式下，各计费类型实例的分配策略。
-	// 仅当 InstanceAllocationPolicy 取 SPOT_MIXED 时可用。
+	// <p>竞价混合模式下，各计费类型实例的分配策略。<br>仅当 InstanceAllocationPolicy 取 SPOT_MIXED 时可用。</p>
 	SpotMixedAllocationPolicy *SpotMixedAllocationPolicy `json:"SpotMixedAllocationPolicy,omitnil,omitempty" name:"SpotMixedAllocationPolicy"`
 
-	// 容量重平衡功能，仅对伸缩组内的竞价实例有效。取值范围：
-	// <li> TRUE，开启该功能，当伸缩组内的竞价实例即将被竞价实例服务自动回收前，AS 主动发起竞价实例销毁流程，如果有配置过缩容 hook，则销毁前 hook 会生效。销毁流程启动后，AS 会异步开启一个扩容活动，用于补齐期望实例数。</li> 
-	// <li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。</li> 
+	// <p>容量重平衡功能，仅对伸缩组内的竞价实例有效。取值范围：</p><li> TRUE，开启该功能，当伸缩组内的竞价实例即将被竞价实例服务自动回收前，AS 主动发起竞价实例销毁流程，如果有配置过缩容 hook，则销毁前 hook 会生效。销毁流程启动后，AS 会异步开启一个扩容活动，用于补齐期望实例数。</li> <li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。</li>
 	CapacityRebalance *bool `json:"CapacityRebalance,omitnil,omitempty" name:"CapacityRebalance"`
 
-	// 实例名称序号相关设置。开启后为伸缩组内自动创建的实例名称添加递增的数字序号。
+	// <p>实例名称序号相关设置。开启后为伸缩组内自动创建的实例名称添加递增的数字序号。</p>
 	InstanceNameIndexSettings *InstanceNameIndexSettings `json:"InstanceNameIndexSettings,omitnil,omitempty" name:"InstanceNameIndexSettings"`
 
-	// 实例主机名序号相关设置。开启后为伸缩组内自动创建的实例主机名添加递增的数字序号。
+	// <p>实例主机名序号相关设置。开启后为伸缩组内自动创建的实例主机名添加递增的数字序号。</p>
 	HostNameIndexSettings *HostNameIndexSettings `json:"HostNameIndexSettings,omitnil,omitempty" name:"HostNameIndexSettings"`
 
-	// 匹配期望数并发扩容功能，不能在InstanceAllocationPolicy为竞价混合模式时设置，也不能在ScalingMode为扩容优先开机模式时设置。目前仅支持两个匹配期望数扩容活动并发进行，不支持指定数量扩容、缩容等其他类型活动并发。设置为FALSE表示不开启。
+	// <p>匹配期望数并发扩容功能，不能在InstanceAllocationPolicy为竞价混合模式时设置，也不能在ScalingMode为扩容优先开机模式时设置。目前仅支持两个匹配期望数扩容活动并发进行，不支持指定数量扩容、缩容等其他类型活动并发。设置为FALSE表示不开启。</p>
 	ConcurrentScaleOutForDesiredCapacity *bool `json:"ConcurrentScaleOutForDesiredCapacity,omitnil,omitempty" name:"ConcurrentScaleOutForDesiredCapacity"`
 }
 
