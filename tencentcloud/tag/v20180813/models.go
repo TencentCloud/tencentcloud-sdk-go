@@ -1385,38 +1385,38 @@ func (r *DescribeTagKeysResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTagValuesRequestParams struct {
-	// 标签键列表
+	// <p>标签键列表</p>
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
-	// 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+	// <p>创建者用户 Uin，不传或为空只将 Uin 作为条件查询</p>
 	CreateUin *uint64 `json:"CreateUin,omitnil,omitempty" name:"CreateUin"`
 
-	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+	// <p>数据偏移量，默认为 0, 必须为Limit参数的整数倍</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页大小，默认为 15
+	// <p>每页大小，默认为 15，最大1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	// <p>标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。</p>
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 }
 
 type DescribeTagValuesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 标签键列表
+	// <p>标签键列表</p>
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
-	// 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+	// <p>创建者用户 Uin，不传或为空只将 Uin 作为条件查询</p>
 	CreateUin *uint64 `json:"CreateUin,omitnil,omitempty" name:"CreateUin"`
 
-	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+	// <p>数据偏移量，默认为 0, 必须为Limit参数的整数倍</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页大小，默认为 15
+	// <p>每页大小，默认为 15，最大1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	// <p>标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。</p>
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 }
 
@@ -1445,16 +1445,16 @@ func (r *DescribeTagValuesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTagValuesResponseParams struct {
-	// 结果总数
+	// <p>结果总数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 数据位移偏量
+	// <p>数据位移偏量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页大小
+	// <p>每页大小</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1566,50 +1566,50 @@ func (r *DescribeTagValuesSeqResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTagsRequestParams struct {
-	// 标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签
+	// <p>标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签</p>
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// 标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签
+	// <p>标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签</p>
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 
-	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+	// <p>数据偏移量，默认为 0, 必须为Limit参数的整数倍</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页大小，默认为 15
+	// <p>每页大小，默认为 15，最大1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+	// <p>创建者用户 Uin，不传或为空只将 Uin 作为条件查询</p>
 	CreateUin *uint64 `json:"CreateUin,omitnil,omitempty" name:"CreateUin"`
 
-	// 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
+	// <p>标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值</p>
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
-	// 是否展现项目标签。1:展示  0:不展示
+	// <p>是否展现项目标签。1:展示  0:不展示</p>
 	ShowProject *uint64 `json:"ShowProject,omitnil,omitempty" name:"ShowProject"`
 }
 
 type DescribeTagsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签
+	// <p>标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签</p>
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// 标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签
+	// <p>标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签</p>
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 
-	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+	// <p>数据偏移量，默认为 0, 必须为Limit参数的整数倍</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页大小，默认为 15
+	// <p>每页大小，默认为 15，最大1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+	// <p>创建者用户 Uin，不传或为空只将 Uin 作为条件查询</p>
 	CreateUin *uint64 `json:"CreateUin,omitnil,omitempty" name:"CreateUin"`
 
-	// 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
+	// <p>标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值</p>
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
 
-	// 是否展现项目标签。1:展示  0:不展示
+	// <p>是否展现项目标签。1:展示  0:不展示</p>
 	ShowProject *uint64 `json:"ShowProject,omitnil,omitempty" name:"ShowProject"`
 }
 
@@ -1640,16 +1640,16 @@ func (r *DescribeTagsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTagsResponseParams struct {
-	// 结果总数
+	// <p>结果总数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 数据位移偏量
+	// <p>数据位移偏量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页大小
+	// <p>每页大小</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*TagWithDelete `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

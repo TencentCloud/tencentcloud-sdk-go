@@ -37690,7 +37690,7 @@ type VpnGateway struct {
 	// 网关付费类型：POSTPAID_BY_HOUR：按量计费，PREPAID：包年包月预付费。
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 网关出带宽。
+	// 网关出带宽，单位：Mbps。
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
 	// 创建时间。
@@ -37731,7 +37731,7 @@ type VpnGateway struct {
 }
 
 type VpnGatewayQuota struct {
-	// 带宽配额
+	// 带宽配额，单位：Mbps。
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
 	// 配额中文名称

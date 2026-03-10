@@ -1798,163 +1798,131 @@ func (r *CreateAlarmNoticeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAlarmRequestParams struct {
-	// 告警策略名称。最大支持255个字节。 不支持 '|'。
+	// <p>告警策略名称。最大支持255个字节。 不支持 &#39;|&#39;。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 监控对象列表。
+	// <p>监控对象列表。</p>
 	AlarmTargets []*AlarmTarget `json:"AlarmTargets,omitnil,omitempty" name:"AlarmTargets"`
 
-	// 监控任务运行时间点。
+	// <p>监控任务运行时间点。</p>
 	MonitorTime *MonitorTime `json:"MonitorTime,omitnil,omitempty" name:"MonitorTime"`
 
-	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。
+	// <p>持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。</p>
 	TriggerCount *int64 `json:"TriggerCount,omitnil,omitempty" name:"TriggerCount"`
 
-	// 告警重复的周期，单位是分钟。取值范围是0~1440。
+	// <p>告警重复的周期，单位是分钟。取值范围是0~1440。</p>
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
-	// 关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表，和MonitorNotice互斥
-	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
-
-	// 告警发送通知的触发条件
-	//  注意:  
-	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+	// <p>告警发送通知的触发条件<br> 注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
 	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 告警级别
-	// 0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
-	// 注意:  
-	// - 不填则默认为0。
-	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+	// <p>告警级别<br>0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。<br>注意:  </p><ul><li>不填则默认为0。</li><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
 	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 
-	// 多触发条件
-	//  注意:  
-	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
-	// 
-	// 
+	// <p>多触发条件<br> 注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
 	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil,omitempty" name:"MultiConditions"`
 
-	// 是否开启告警策略。
-	// 默认值为true
+	// <p>是否开启告警策略。<br>默认值为true</p>
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 请使用Status参数控制是否开启告警策略。
+	// <p>请使用Status参数控制是否开启告警策略。</p>
 	//
 	// Deprecated: Enable is deprecated.
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 用户自定义告警内容
+	// <p>用户自定义告警内容</p>
 	MessageTemplate *string `json:"MessageTemplate,omitnil,omitempty" name:"MessageTemplate"`
 
-	// 用户自定义回调
+	// <p>用户自定义回调</p>
 	CallBack *CallBackInfo `json:"CallBack,omitnil,omitempty" name:"CallBack"`
 
-	// 多维分析
+	// <p>多维分析</p>
 	Analysis []*AnalysisDimensional `json:"Analysis,omitnil,omitempty" name:"Analysis"`
 
-	// 分组触发状态。
-	// 默认值false
+	// <p>分组触发状态。<br>默认值false</p>
 	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil,omitempty" name:"GroupTriggerStatus"`
 
-	// 分组触发条件。
+	// <p>分组触发条件。</p>
 	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil,omitempty" name:"GroupTriggerCondition"`
 
-	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。
-	// 
-	// 最大支持10个标签键值对，并且不能有重复的键值对。
+	// <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。</p><p>最大支持10个标签键值对，并且不能有重复的键值对。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
-	// 不填则默认为0。
-	// 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
+	// <p>监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。<br>不填则默认为0。<br>当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。</p>
 	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil,omitempty" name:"MonitorObjectType"`
 
-	// 告警附加分类信息列表。
-	// Classifications元素个数不能超过20个。
-	// Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 `^[a-z]([a-z0-9_]{0,49})$`。
-	// Classifications元素的Value长度不能超过200个字符。
+	// <p>告警附加分类信息列表。<br>Classifications元素个数不能超过20个。<br>Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 <code>^[a-z]([a-z0-9_]{0,49})$</code>。<br>Classifications元素的Value长度不能超过200个字符。</p>
 	Classifications []*AlarmClassification `json:"Classifications,omitnil,omitempty" name:"Classifications"`
+
+	// <p>关联的日志服务告警通知渠道组列表。-通过<a href="https://cloud.tencent.com/document/product/614/56462">获取通知渠道组列表</a>获取关联的告警通知渠道组列表，和MonitorNotice互斥</p>
+	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
+
+	// <p>关联的可观测平台通知模板，与 AlarmNoticeIds 参数互斥，不能同时使用</p>
+	MonitorNotice *MonitorNotice `json:"MonitorNotice,omitnil,omitempty" name:"MonitorNotice"`
 }
 
 type CreateAlarmRequest struct {
 	*tchttp.BaseRequest
 	
-	// 告警策略名称。最大支持255个字节。 不支持 '|'。
+	// <p>告警策略名称。最大支持255个字节。 不支持 &#39;|&#39;。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 监控对象列表。
+	// <p>监控对象列表。</p>
 	AlarmTargets []*AlarmTarget `json:"AlarmTargets,omitnil,omitempty" name:"AlarmTargets"`
 
-	// 监控任务运行时间点。
+	// <p>监控任务运行时间点。</p>
 	MonitorTime *MonitorTime `json:"MonitorTime,omitnil,omitempty" name:"MonitorTime"`
 
-	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。
+	// <p>持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。</p>
 	TriggerCount *int64 `json:"TriggerCount,omitnil,omitempty" name:"TriggerCount"`
 
-	// 告警重复的周期，单位是分钟。取值范围是0~1440。
+	// <p>告警重复的周期，单位是分钟。取值范围是0~1440。</p>
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
-	// 关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表，和MonitorNotice互斥
-	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
-
-	// 告警发送通知的触发条件
-	//  注意:  
-	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+	// <p>告警发送通知的触发条件<br> 注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
 	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 告警级别
-	// 0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
-	// 注意:  
-	// - 不填则默认为0。
-	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+	// <p>告警级别<br>0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。<br>注意:  </p><ul><li>不填则默认为0。</li><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
 	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 
-	// 多触发条件
-	//  注意:  
-	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
-	// 
-	// 
+	// <p>多触发条件<br> 注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
 	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil,omitempty" name:"MultiConditions"`
 
-	// 是否开启告警策略。
-	// 默认值为true
+	// <p>是否开启告警策略。<br>默认值为true</p>
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 请使用Status参数控制是否开启告警策略。
+	// <p>请使用Status参数控制是否开启告警策略。</p>
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 用户自定义告警内容
+	// <p>用户自定义告警内容</p>
 	MessageTemplate *string `json:"MessageTemplate,omitnil,omitempty" name:"MessageTemplate"`
 
-	// 用户自定义回调
+	// <p>用户自定义回调</p>
 	CallBack *CallBackInfo `json:"CallBack,omitnil,omitempty" name:"CallBack"`
 
-	// 多维分析
+	// <p>多维分析</p>
 	Analysis []*AnalysisDimensional `json:"Analysis,omitnil,omitempty" name:"Analysis"`
 
-	// 分组触发状态。
-	// 默认值false
+	// <p>分组触发状态。<br>默认值false</p>
 	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil,omitempty" name:"GroupTriggerStatus"`
 
-	// 分组触发条件。
+	// <p>分组触发条件。</p>
 	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil,omitempty" name:"GroupTriggerCondition"`
 
-	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。
-	// 
-	// 最大支持10个标签键值对，并且不能有重复的键值对。
+	// <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。</p><p>最大支持10个标签键值对，并且不能有重复的键值对。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
-	// 不填则默认为0。
-	// 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
+	// <p>监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。<br>不填则默认为0。<br>当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。</p>
 	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil,omitempty" name:"MonitorObjectType"`
 
-	// 告警附加分类信息列表。
-	// Classifications元素个数不能超过20个。
-	// Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 `^[a-z]([a-z0-9_]{0,49})$`。
-	// Classifications元素的Value长度不能超过200个字符。
+	// <p>告警附加分类信息列表。<br>Classifications元素个数不能超过20个。<br>Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 <code>^[a-z]([a-z0-9_]{0,49})$</code>。<br>Classifications元素的Value长度不能超过200个字符。</p>
 	Classifications []*AlarmClassification `json:"Classifications,omitnil,omitempty" name:"Classifications"`
+
+	// <p>关联的日志服务告警通知渠道组列表。-通过<a href="https://cloud.tencent.com/document/product/614/56462">获取通知渠道组列表</a>获取关联的告警通知渠道组列表，和MonitorNotice互斥</p>
+	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
+
+	// <p>关联的可观测平台通知模板，与 AlarmNoticeIds 参数互斥，不能同时使用</p>
+	MonitorNotice *MonitorNotice `json:"MonitorNotice,omitnil,omitempty" name:"MonitorNotice"`
 }
 
 func (r *CreateAlarmRequest) ToJsonString() string {
@@ -1974,7 +1942,6 @@ func (r *CreateAlarmRequest) FromJsonString(s string) error {
 	delete(f, "MonitorTime")
 	delete(f, "TriggerCount")
 	delete(f, "AlarmPeriod")
-	delete(f, "AlarmNoticeIds")
 	delete(f, "Condition")
 	delete(f, "AlarmLevel")
 	delete(f, "MultiConditions")
@@ -1988,6 +1955,8 @@ func (r *CreateAlarmRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "MonitorObjectType")
 	delete(f, "Classifications")
+	delete(f, "AlarmNoticeIds")
+	delete(f, "MonitorNotice")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlarmRequest has unknown keys!", "")
 	}
@@ -1996,7 +1965,7 @@ func (r *CreateAlarmRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAlarmResponseParams struct {
-	// 告警策略ID。
+	// <p>告警策略ID。</p>
 	AlarmId *string `json:"AlarmId,omitnil,omitempty" name:"AlarmId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3246,7 +3215,7 @@ type CreateDataTransformRequestParams struct {
 	// 名称限制
 	// - 不能为空字符串
 	// - 不能包含字符'|'
-	// - 最长 255 个字符
+	// - 最长128 个字符
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 加工语句。 当FuncType为2时，EtlContent必须使用[log_auto_output](https://cloud.tencent.com/document/product/614/70733#b3c58797-4825-4807-bef4-68106e25024f) 
@@ -3326,7 +3295,7 @@ type CreateDataTransformRequest struct {
 	// 名称限制
 	// - 不能为空字符串
 	// - 不能包含字符'|'
-	// - 最长 255 个字符
+	// - 最长128 个字符
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 加工语句。 当FuncType为2时，EtlContent必须使用[log_auto_output](https://cloud.tencent.com/document/product/614/70733#b3c58797-4825-4807-bef4-68106e25024f) 
@@ -5928,13 +5897,26 @@ type DashboardTopicInfo struct {
 }
 
 type DataTransformResouceInfo struct {
-	// 日志主题ID
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// <p>日志主题ID</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 别名
-	// 限制：不能包含字符 |。
+	// <p>别名<br>限制：不能包含字符 |。</p>
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// <p>是否是跨账号主题，false不是跨账号主题，true是跨账号主题</p><p>默认值：false</p>
+	IsCrossAccount *bool `json:"IsCrossAccount,omitnil,omitempty" name:"IsCrossAccount"`
+
+	// <p>跨账号场景下，被投递账号给投递账号创建的角色ARN值，在被投递账号的角色里查找</p>
+	RoleARN *string `json:"RoleARN,omitnil,omitempty" name:"RoleARN"`
+
+	// <p>外部ID值，可以在被投递账号的角色-载体里找到该值</p>
+	ExternalId *string `json:"ExternalId,omitnil,omitempty" name:"ExternalId"`
+
+	// <p>topic名称</p>
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// <p>日志集的名称</p>
+	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 }
 
 type DataTransformSqlDataSource struct {
@@ -15039,161 +15021,137 @@ func (r *ModifyAlarmNoticeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAlarmRequestParams struct {
-	// 告警策略ID。-通过[获取告警策略列表](https://cloud.tencent.com/document/product/614/56461)获取告警策略ID
+	// <p>告警策略ID。-通过<a href="https://cloud.tencent.com/document/product/614/56461">获取告警策略列表</a>获取告警策略ID</p>
 	AlarmId *string `json:"AlarmId,omitnil,omitempty" name:"AlarmId"`
 
-	// 告警策略名称。最大支持255个字节，不支持 '|'。
+	// <p>告警策略名称。最大支持255个字节，不支持 &#39;|&#39;。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 监控任务运行时间点。
+	// <p>监控任务运行时间点。</p>
 	MonitorTime *MonitorTime `json:"MonitorTime,omitnil,omitempty" name:"MonitorTime"`
 
-	// 告警信息发送的触发条件。
-	// 
-	// 注意:  
-	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+	// <p>告警信息发送的触发条件。</p><p>注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
 	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 告警级别。
-	// 
-	// 0:警告(Warn);1:提醒(Info);2:紧急 (Critical)
-	// 
-	// 注意:  
-	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+	// <p>告警级别。</p><p>0:警告(Warn);1:提醒(Info);2:紧急 (Critical)</p><p>注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
 	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 
-	// 多触发条件。 
-	// 
-	// 注意:  
-	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+	// <p>多触发条件。 </p><p>注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
 	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil,omitempty" name:"MultiConditions"`
 
-	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。
+	// <p>持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。</p>
 	TriggerCount *int64 `json:"TriggerCount,omitnil,omitempty" name:"TriggerCount"`
 
-	// 告警重复的周期。单位是分钟。取值范围是0~1440。
+	// <p>告警重复的周期。单位是分钟。取值范围是0~1440。</p>
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
-	// 关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表，和MonitorNotice互斥
-	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
-
-	// 监控对象列表。
+	// <p>监控对象列表。</p>
 	AlarmTargets []*AlarmTarget `json:"AlarmTargets,omitnil,omitempty" name:"AlarmTargets"`
 
-	// 是否开启告警策略。
+	// <p>是否开启告警策略。</p>
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 该参数已废弃，请使用Status参数控制是否开启告警策略。
+	// <p>该参数已废弃，请使用Status参数控制是否开启告警策略。</p>
 	//
 	// Deprecated: Enable is deprecated.
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 用户自定义告警内容
+	// <p>用户自定义告警内容</p>
 	MessageTemplate *string `json:"MessageTemplate,omitnil,omitempty" name:"MessageTemplate"`
 
-	// 用户自定义回调
+	// <p>用户自定义回调</p>
 	CallBack *CallBackInfo `json:"CallBack,omitnil,omitempty" name:"CallBack"`
 
-	// 多维分析
+	// <p>多维分析</p>
 	Analysis []*AnalysisDimensional `json:"Analysis,omitnil,omitempty" name:"Analysis"`
 
-	// 分组触发状态。true：开启，false：关闭（默认）
+	// <p>分组触发状态。true：开启，false：关闭（默认）</p>
 	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil,omitempty" name:"GroupTriggerStatus"`
 
-	// 分组触发条件。
+	// <p>分组触发条件。</p>
 	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil,omitempty" name:"GroupTriggerCondition"`
 
-	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。最大支持10个标签键值对，并且不能有重复的键值对。
+	// <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。最大支持10个标签键值对，并且不能有重复的键值对。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
-	// 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
+	// <p>监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。<br>当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。</p>
 	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil,omitempty" name:"MonitorObjectType"`
 
-	// 告警附加分类信息列表。
-	// Classifications元素个数不能超过20个。
-	// Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 `^[a-z]([a-z0-9_]{0,49})$`。
-	// Classifications元素的Value长度不能超过200个字符。
+	// <p>告警附加分类信息列表。<br>Classifications元素个数不能超过20个。<br>Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 <code>^[a-z]([a-z0-9_]{0,49})$</code>。<br>Classifications元素的Value长度不能超过200个字符。</p>
 	Classifications []*AlarmClassification `json:"Classifications,omitnil,omitempty" name:"Classifications"`
+
+	// <p>关联的日志服务告警通知渠道组列表。-通过<a href="https://cloud.tencent.com/document/product/614/56462">获取通知渠道组列表</a>获取关联的告警通知渠道组列表，和MonitorNotice互斥</p>
+	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
+
+	// <p>关联的可观测平台通知模板，与 AlarmNoticeIds 参数互斥，不能同时使用</p>
+	MonitorNotice *MonitorNotice `json:"MonitorNotice,omitnil,omitempty" name:"MonitorNotice"`
 }
 
 type ModifyAlarmRequest struct {
 	*tchttp.BaseRequest
 	
-	// 告警策略ID。-通过[获取告警策略列表](https://cloud.tencent.com/document/product/614/56461)获取告警策略ID
+	// <p>告警策略ID。-通过<a href="https://cloud.tencent.com/document/product/614/56461">获取告警策略列表</a>获取告警策略ID</p>
 	AlarmId *string `json:"AlarmId,omitnil,omitempty" name:"AlarmId"`
 
-	// 告警策略名称。最大支持255个字节，不支持 '|'。
+	// <p>告警策略名称。最大支持255个字节，不支持 &#39;|&#39;。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 监控任务运行时间点。
+	// <p>监控任务运行时间点。</p>
 	MonitorTime *MonitorTime `json:"MonitorTime,omitnil,omitempty" name:"MonitorTime"`
 
-	// 告警信息发送的触发条件。
-	// 
-	// 注意:  
-	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+	// <p>告警信息发送的触发条件。</p><p>注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
 	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 告警级别。
-	// 
-	// 0:警告(Warn);1:提醒(Info);2:紧急 (Critical)
-	// 
-	// 注意:  
-	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+	// <p>告警级别。</p><p>0:警告(Warn);1:提醒(Info);2:紧急 (Critical)</p><p>注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
 	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 
-	// 多触发条件。 
-	// 
-	// 注意:  
-	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+	// <p>多触发条件。 </p><p>注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
 	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil,omitempty" name:"MultiConditions"`
 
-	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。
+	// <p>持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。</p>
 	TriggerCount *int64 `json:"TriggerCount,omitnil,omitempty" name:"TriggerCount"`
 
-	// 告警重复的周期。单位是分钟。取值范围是0~1440。
+	// <p>告警重复的周期。单位是分钟。取值范围是0~1440。</p>
 	AlarmPeriod *int64 `json:"AlarmPeriod,omitnil,omitempty" name:"AlarmPeriod"`
 
-	// 关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表，和MonitorNotice互斥
-	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
-
-	// 监控对象列表。
+	// <p>监控对象列表。</p>
 	AlarmTargets []*AlarmTarget `json:"AlarmTargets,omitnil,omitempty" name:"AlarmTargets"`
 
-	// 是否开启告警策略。
+	// <p>是否开启告警策略。</p>
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 该参数已废弃，请使用Status参数控制是否开启告警策略。
+	// <p>该参数已废弃，请使用Status参数控制是否开启告警策略。</p>
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 用户自定义告警内容
+	// <p>用户自定义告警内容</p>
 	MessageTemplate *string `json:"MessageTemplate,omitnil,omitempty" name:"MessageTemplate"`
 
-	// 用户自定义回调
+	// <p>用户自定义回调</p>
 	CallBack *CallBackInfo `json:"CallBack,omitnil,omitempty" name:"CallBack"`
 
-	// 多维分析
+	// <p>多维分析</p>
 	Analysis []*AnalysisDimensional `json:"Analysis,omitnil,omitempty" name:"Analysis"`
 
-	// 分组触发状态。true：开启，false：关闭（默认）
+	// <p>分组触发状态。true：开启，false：关闭（默认）</p>
 	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil,omitempty" name:"GroupTriggerStatus"`
 
-	// 分组触发条件。
+	// <p>分组触发条件。</p>
 	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil,omitempty" name:"GroupTriggerCondition"`
 
-	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。最大支持10个标签键值对，并且不能有重复的键值对。
+	// <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。最大支持10个标签键值对，并且不能有重复的键值对。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
-	// 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
+	// <p>监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。<br>当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。</p>
 	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil,omitempty" name:"MonitorObjectType"`
 
-	// 告警附加分类信息列表。
-	// Classifications元素个数不能超过20个。
-	// Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 `^[a-z]([a-z0-9_]{0,49})$`。
-	// Classifications元素的Value长度不能超过200个字符。
+	// <p>告警附加分类信息列表。<br>Classifications元素个数不能超过20个。<br>Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 <code>^[a-z]([a-z0-9_]{0,49})$</code>。<br>Classifications元素的Value长度不能超过200个字符。</p>
 	Classifications []*AlarmClassification `json:"Classifications,omitnil,omitempty" name:"Classifications"`
+
+	// <p>关联的日志服务告警通知渠道组列表。-通过<a href="https://cloud.tencent.com/document/product/614/56462">获取通知渠道组列表</a>获取关联的告警通知渠道组列表，和MonitorNotice互斥</p>
+	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitnil,omitempty" name:"AlarmNoticeIds"`
+
+	// <p>关联的可观测平台通知模板，与 AlarmNoticeIds 参数互斥，不能同时使用</p>
+	MonitorNotice *MonitorNotice `json:"MonitorNotice,omitnil,omitempty" name:"MonitorNotice"`
 }
 
 func (r *ModifyAlarmRequest) ToJsonString() string {
@@ -15216,7 +15174,6 @@ func (r *ModifyAlarmRequest) FromJsonString(s string) error {
 	delete(f, "MultiConditions")
 	delete(f, "TriggerCount")
 	delete(f, "AlarmPeriod")
-	delete(f, "AlarmNoticeIds")
 	delete(f, "AlarmTargets")
 	delete(f, "Status")
 	delete(f, "Enable")
@@ -15228,6 +15185,8 @@ func (r *ModifyAlarmRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "MonitorObjectType")
 	delete(f, "Classifications")
+	delete(f, "AlarmNoticeIds")
+	delete(f, "MonitorNotice")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAlarmRequest has unknown keys!", "")
 	}
@@ -18645,14 +18604,14 @@ type MonitorNotice struct {
 }
 
 type MonitorNoticeRule struct {
-	// 腾讯云可观测平台通知模板 ID
+	// <p>腾讯云可观测平台通知模板 ID</p>
 	NoticeId *string `json:"NoticeId,omitnil,omitempty" name:"NoticeId"`
 
-	// 腾讯云可观测平台内容模板ID，不传默认内容模板
+	// <p>腾讯云可观测平台内容模板ID，为空时使用默认内容模板</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContentTmplId *string `json:"ContentTmplId,omitnil,omitempty" name:"ContentTmplId"`
 
-	// 告警级别,0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)
+	// <p>告警级别,0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)</p>
 	AlarmLevels []*uint64 `json:"AlarmLevels,omitnil,omitempty" name:"AlarmLevels"`
 }
 

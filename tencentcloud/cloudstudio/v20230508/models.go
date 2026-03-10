@@ -351,14 +351,14 @@ func (r *DescribeImagesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeWorkspacesRequestParams struct {
-	// 工作空间名称过滤条件
+	// <p>工作空间名称过滤条件</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeWorkspacesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 工作空间名称过滤条件
+	// <p>工作空间名称过滤条件</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -383,7 +383,7 @@ func (r *DescribeWorkspacesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeWorkspacesResponseParams struct {
-	// 工作空间列表
+	// <p>工作空间列表</p>
 	Data []*WorkspaceStatusInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

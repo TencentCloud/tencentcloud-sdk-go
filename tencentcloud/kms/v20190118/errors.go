@@ -182,6 +182,9 @@ const (
 	// CMK类型错误，仅支持External CMK。
 	UNSUPPORTEDOPERATION_NOTEXTERNALCMK = "UnsupportedOperation.NotExternalCmk"
 
+	// 用户角色不支持的操作
+	UNSUPPORTEDOPERATION_NOTROLEOPERATION = "UnsupportedOperation.NotRoleOperation"
+
 	// 仅支持对用户自己创建的CMK做更新。
 	UNSUPPORTEDOPERATION_NOTUSERCREATEDCMK = "UnsupportedOperation.NotUserCreatedCmk"
 

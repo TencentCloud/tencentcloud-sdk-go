@@ -3376,6 +3376,9 @@ type DescribeTablesRequestParams struct {
 
 	// MongoConnector
 	MongoConnector *MongoConnector `json:"MongoConnector,omitnil,omitempty" name:"MongoConnector"`
+
+	// 指定表名过滤，为空时返回所有表
+	TableNames []*string `json:"TableNames,omitnil,omitempty" name:"TableNames"`
 }
 
 type DescribeTablesRequest struct {
@@ -3395,6 +3398,9 @@ type DescribeTablesRequest struct {
 
 	// MongoConnector
 	MongoConnector *MongoConnector `json:"MongoConnector,omitnil,omitempty" name:"MongoConnector"`
+
+	// 指定表名过滤，为空时返回所有表
+	TableNames []*string `json:"TableNames,omitnil,omitempty" name:"TableNames"`
 }
 
 func (r *DescribeTablesRequest) ToJsonString() string {
@@ -3414,6 +3420,7 @@ func (r *DescribeTablesRequest) FromJsonString(s string) error {
 	delete(f, "MgoOffset")
 	delete(f, "EnvId")
 	delete(f, "MongoConnector")
+	delete(f, "TableNames")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTablesRequest has unknown keys!", "")
 	}

@@ -290,6 +290,12 @@ type CreateDatasourceCloudRequestParams struct {
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 驱动
+	// 取值范围：
+	// MYSQL：MySQL数据库
+	// PRESTO：PRESTO数据库
+	// POSTGRE：PostgreSQL数据库
+	// DLC：DLC数据库
+	// MSSQL：微软SQL Server数据库
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
 	// 数据库编码
@@ -360,6 +366,12 @@ type CreateDatasourceCloudRequest struct {
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 驱动
+	// 取值范围：
+	// MYSQL：MySQL数据库
+	// PRESTO：PRESTO数据库
+	// POSTGRE：PostgreSQL数据库
+	// DLC：DLC数据库
+	// MSSQL：微软SQL Server数据库
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
 	// 数据库编码
@@ -513,6 +525,12 @@ type CreateDatasourceRequestParams struct {
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 驱动
+	// 取值范围：
+	// MYSQL：MySQL数据库
+	// PRESTO：PRESTO数据库
+	// POSTGRE：PostgreSQL数据库
+	// DLC：DLC数据库
+	// MSSQL：微软SQL Server数据库
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
 	// 数据库编码
@@ -589,6 +607,12 @@ type CreateDatasourceRequest struct {
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 驱动
+	// 取值范围：
+	// MYSQL：MySQL数据库
+	// PRESTO：PRESTO数据库
+	// POSTGRE：PostgreSQL数据库
+	// DLC：DLC数据库
+	// MSSQL：微软SQL Server数据库
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
 	// 数据库编码
@@ -971,10 +995,24 @@ type CreatePermissionRanksRequestParams struct {
 	// 页数
 	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
 
-	// 条数
+	// 模式。
+	// 取值范围：
+	// - ALL：全部
+	// - Specify：指定
+	// - TAG：标签
+	// 
+	// 默认值：ALL
+	// 示例值：ALL
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 角色类型
+	// 角色类型。
+	// 取值范围：
+	// 
+	// - ROLES：按角色
+	// - Others：其它
+	// 
+	// 默认值：Others
+	// 示例值：Others
 	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
 
 	// 所有页码
@@ -983,10 +1021,24 @@ type CreatePermissionRanksRequestParams struct {
 	// 规则信息
 	RulerInfo *string `json:"RulerInfo,omitnil,omitempty" name:"RulerInfo"`
 
-	// 类型
+	// 类型。
+	// 取值范围：
+	// 
+	// - ROW：行权限
+	// - COLUMN：列权限
+	// 
+	// 默认值：ROW
+	// 示例值：ROW
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 状态
+	// 开启状态。
+	// 取值范围：
+	// 
+	// - Open：开启
+	// - Close：关闭
+	// 
+	// 默认值：Close
+	// 示例值：Close
 	OpenStatus *string `json:"OpenStatus,omitnil,omitempty" name:"OpenStatus"`
 
 	// 项目id
@@ -1002,10 +1054,24 @@ type CreatePermissionRanksRequest struct {
 	// 页数
 	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
 
-	// 条数
+	// 模式。
+	// 取值范围：
+	// - ALL：全部
+	// - Specify：指定
+	// - TAG：标签
+	// 
+	// 默认值：ALL
+	// 示例值：ALL
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 角色类型
+	// 角色类型。
+	// 取值范围：
+	// 
+	// - ROLES：按角色
+	// - Others：其它
+	// 
+	// 默认值：Others
+	// 示例值：Others
 	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
 
 	// 所有页码
@@ -1014,10 +1080,24 @@ type CreatePermissionRanksRequest struct {
 	// 规则信息
 	RulerInfo *string `json:"RulerInfo,omitnil,omitempty" name:"RulerInfo"`
 
-	// 类型
+	// 类型。
+	// 取值范围：
+	// 
+	// - ROW：行权限
+	// - COLUMN：列权限
+	// 
+	// 默认值：ROW
+	// 示例值：ROW
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 状态
+	// 开启状态。
+	// 取值范围：
+	// 
+	// - Open：开启
+	// - Close：关闭
+	// 
+	// 默认值：Close
+	// 示例值：Close
 	OpenStatus *string `json:"OpenStatus,omitnil,omitempty" name:"OpenStatus"`
 
 	// 项目id
@@ -1110,6 +1190,9 @@ type CreateProjectRequestParams struct {
 	IsApply *bool `json:"IsApply,omitnil,omitempty" name:"IsApply"`
 
 	// 默认看板
+	// 取值范围：
+	// 1：项目看板 
+	// 2：我的看板
 	DefaultPanelType *int64 `json:"DefaultPanelType,omitnil,omitempty" name:"DefaultPanelType"`
 
 	// 管理平台
@@ -1135,6 +1218,9 @@ type CreateProjectRequest struct {
 	IsApply *bool `json:"IsApply,omitnil,omitempty" name:"IsApply"`
 
 	// 默认看板
+	// 取值范围：
+	// 1：项目看板 
+	// 2：我的看板
 	DefaultPanelType *int64 `json:"DefaultPanelType,omitnil,omitempty" name:"DefaultPanelType"`
 
 	// 管理平台
@@ -1656,6 +1742,9 @@ type DeleteProjectRequestParams struct {
 	Seed *string `json:"Seed,omitnil,omitempty" name:"Seed"`
 
 	// 默认看板
+	// 取值范围：
+	// 1：项目看板 
+	// 2：我的看板
 	DefaultPanelType *int64 `json:"DefaultPanelType,omitnil,omitempty" name:"DefaultPanelType"`
 }
 
@@ -1669,6 +1758,9 @@ type DeleteProjectRequest struct {
 	Seed *string `json:"Seed,omitnil,omitempty" name:"Seed"`
 
 	// 默认看板
+	// 取值范围：
+	// 1：项目看板 
+	// 2：我的看板
 	DefaultPanelType *int64 `json:"DefaultPanelType,omitnil,omitempty" name:"DefaultPanelType"`
 }
 
@@ -2069,16 +2161,38 @@ type DescribePermissionRanksInfoRequestParams struct {
 	// 页数
 	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
 
-	// 条数
+	// 模式。
+	// 取值范围：
+	// 
+	// - ALL：全部
+	// - Specify：指定
+	// - TAG：标签
+	// 
+	// 默认值：ALL
+	// 示例值：ALL
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 角色类型
+	// 角色类型。
+	// 取值范围：
+	// 
+	// - ROLES：按角色
+	// - Others：其它
+	// 
+	// 默认值：Others
+	// 示例值：Others
 	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
 
 	// 所有页码
 	RoleId *int64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
-	// 类型
+	// 类型。
+	// 取值范围：
+	// 
+	// - ROW：行权限
+	// - COLUMN：列权限
+	// 
+	// 默认值：ROW
+	// 示例值：ROW
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 项目id
@@ -2091,16 +2205,38 @@ type DescribePermissionRanksInfoRequest struct {
 	// 页数
 	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
 
-	// 条数
+	// 模式。
+	// 取值范围：
+	// 
+	// - ALL：全部
+	// - Specify：指定
+	// - TAG：标签
+	// 
+	// 默认值：ALL
+	// 示例值：ALL
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 角色类型
+	// 角色类型。
+	// 取值范围：
+	// 
+	// - ROLES：按角色
+	// - Others：其它
+	// 
+	// 默认值：Others
+	// 示例值：Others
 	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
 
 	// 所有页码
 	RoleId *int64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
-	// 类型
+	// 类型。
+	// 取值范围：
+	// 
+	// - ROW：行权限
+	// - COLUMN：列权限
+	// 
+	// 默认值：ROW
+	// 示例值：ROW
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 项目id
@@ -2265,7 +2401,14 @@ type DescribePermissionStatusInfoRequestParams struct {
 	// 页数
 	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
 
-	// 类型
+	// 类型。
+	// 取值范围：
+	// 
+	// - ROW：行权限
+	// - COLUMN：列权限
+	// 
+	// 默认值：ROW
+	// 示例值：ROW
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 1
@@ -2278,7 +2421,14 @@ type DescribePermissionStatusInfoRequest struct {
 	// 页数
 	TableId *int64 `json:"TableId,omitnil,omitempty" name:"TableId"`
 
-	// 类型
+	// 类型。
+	// 取值范围：
+	// 
+	// - ROW：行权限
+	// - COLUMN：列权限
+	// 
+	// 默认值：ROW
+	// 示例值：ROW
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 1
@@ -2350,6 +2500,9 @@ type DescribeProjectInfoRequestParams struct {
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 默认看板
+	// 取值范围：
+	// 1：项目看板 
+	// 2：我的看板
 	DefaultPanelType *int64 `json:"DefaultPanelType,omitnil,omitempty" name:"DefaultPanelType"`
 }
 
@@ -2360,6 +2513,9 @@ type DescribeProjectInfoRequest struct {
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 默认看板
+	// 取值范围：
+	// 1：项目看板 
+	// 2：我的看板
 	DefaultPanelType *int64 `json:"DefaultPanelType,omitnil,omitempty" name:"DefaultPanelType"`
 }
 
@@ -3112,6 +3268,10 @@ type IdDTO struct {
 	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
 
 	// 事务状态
+	// 取值范围：
+	// 1: 处理中
+	// 2: 处理成功
+	// 3: 处理失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranStatus *int64 `json:"TranStatus,omitnil,omitempty" name:"TranStatus"`
 }
@@ -3122,6 +3282,12 @@ type ModifyDatasourceCloudRequestParams struct {
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 驱动
+	// 取值范围：
+	// MYSQL：MySQL数据库
+	// PRESTO：PRESTO数据库
+	// POSTGRE：PostgreSQL数据库
+	// DLC：DLC数据库
+	// MSSQL：微软SQL Server数据库
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
 	// 数据库编码
@@ -3195,6 +3361,12 @@ type ModifyDatasourceCloudRequest struct {
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 驱动
+	// 取值范围：
+	// MYSQL：MySQL数据库
+	// PRESTO：PRESTO数据库
+	// POSTGRE：PostgreSQL数据库
+	// DLC：DLC数据库
+	// MSSQL：微软SQL Server数据库
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
 	// 数据库编码
@@ -3352,6 +3524,12 @@ type ModifyDatasourceRequestParams struct {
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 驱动
+	// 取值范围：
+	// MYSQL：MySQL数据库
+	// PRESTO：PRESTO数据库
+	// POSTGRE：PostgreSQL数据库
+	// DLC：DLC数据库
+	// MSSQL：微软SQL Server数据库
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
 	// 数据库编码
@@ -3428,6 +3606,12 @@ type ModifyDatasourceRequest struct {
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 驱动
+	// 取值范围：
+	// MYSQL：MySQL数据库
+	// PRESTO：PRESTO数据库
+	// POSTGRE：PostgreSQL数据库
+	// DLC：DLC数据库
+	// MSSQL：微软SQL Server数据库
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
 	// 数据库编码
@@ -3595,6 +3779,9 @@ type ModifyProjectRequestParams struct {
 	Seed *string `json:"Seed,omitnil,omitempty" name:"Seed"`
 
 	// 默认看板
+	// 取值范围：
+	// 1：项目看板 
+	// 2：我的看板
 	DefaultPanelType *int64 `json:"DefaultPanelType,omitnil,omitempty" name:"DefaultPanelType"`
 
 	// 2
@@ -3629,6 +3816,9 @@ type ModifyProjectRequest struct {
 	Seed *string `json:"Seed,omitnil,omitempty" name:"Seed"`
 
 	// 默认看板
+	// 取值范围：
+	// 1：项目看板 
+	// 2：我的看板
 	DefaultPanelType *int64 `json:"DefaultPanelType,omitnil,omitempty" name:"DefaultPanelType"`
 
 	// 2
@@ -3983,7 +4173,16 @@ type PermissionComponent struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModuleId *string `json:"ModuleId,omitnil,omitempty" name:"ModuleId"`
 
-	// 可见/可用
+	// 可用性。
+	// 取值范围：
+	// 
+	// - usable：可用
+	// - visible：可见
+	// - disabled：不可用
+	// - hidden：隐藏
+	// 
+	// 默认值：disabled
+	// 示例值：disabled
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncludeType *string `json:"IncludeType,omitnil,omitempty" name:"IncludeType"`
 
@@ -4138,7 +4337,16 @@ type ProjectConfigResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModuleId *string `json:"ModuleId,omitnil,omitempty" name:"ModuleId"`
 
-	// 配置方式
+	// 配置方式。
+	// 取值范围：
+	// 
+	// - usable：可用
+	// - visible：可见
+	// - disabled：不可用
+	// - hidden：隐藏
+	// 
+	// 默认值：disabled
+	// 示例值：disabled
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncludeType *string `json:"IncludeType,omitnil,omitempty" name:"IncludeType"`
 
@@ -4338,7 +4546,14 @@ type UserIdAndUserName struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastLogin *string `json:"LastLogin,omitnil,omitempty" name:"LastLogin"`
 
-	// 停启用状态
+	// 用户状态。
+	// 取值范围：
+	// 
+	// - 1：启用
+	// - 0：停用
+	// 
+	// 默认值：1
+	// 示例值：1
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 

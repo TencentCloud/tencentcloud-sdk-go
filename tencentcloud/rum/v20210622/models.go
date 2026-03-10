@@ -286,7 +286,7 @@ type CreateTawInstanceRequestParams struct {
 	// 实例购买渠道("cdn" 等)
 	BuyingChannel *string `json:"BuyingChannel,omitnil,omitempty" name:"BuyingChannel"`
 
-	// 预付费资源包类型(仅预付费需要)
+	// 资源包类型：1=5百万/30天，2=10百万/30天，3=50百万/180天，4=100百万/180天，5=300百万/180天，6=500百万/180天，7=1000百万/180天，8=2500百万/180天，9=10000百万/360天（单位：上报量=百万条，周期=天）
 	ResourcePackageType *uint64 `json:"ResourcePackageType,omitnil,omitempty" name:"ResourcePackageType"`
 
 	// 预付费资源包数量(仅预付费需要)
@@ -295,7 +295,7 @@ type CreateTawInstanceRequestParams struct {
 	// 实例类型 1:原web相关类型 2:app端类型
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 自动续费类型
+	// 自动续费类型：0=不自动续费，1=开启自动续费；开启时需填写 AutoRenewalThreshold（1~50%）；同一实例最多允许存在 1 个自动续费资源包。
 	AutoRenewalType *int64 `json:"AutoRenewalType,omitnil,omitempty" name:"AutoRenewalType"`
 
 	// 自动续费阈值
@@ -332,7 +332,7 @@ type CreateTawInstanceRequest struct {
 	// 实例购买渠道("cdn" 等)
 	BuyingChannel *string `json:"BuyingChannel,omitnil,omitempty" name:"BuyingChannel"`
 
-	// 预付费资源包类型(仅预付费需要)
+	// 资源包类型：1=5百万/30天，2=10百万/30天，3=50百万/180天，4=100百万/180天，5=300百万/180天，6=500百万/180天，7=1000百万/180天，8=2500百万/180天，9=10000百万/360天（单位：上报量=百万条，周期=天）
 	ResourcePackageType *uint64 `json:"ResourcePackageType,omitnil,omitempty" name:"ResourcePackageType"`
 
 	// 预付费资源包数量(仅预付费需要)
@@ -341,7 +341,7 @@ type CreateTawInstanceRequest struct {
 	// 实例类型 1:原web相关类型 2:app端类型
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 自动续费类型
+	// 自动续费类型：0=不自动续费，1=开启自动续费；开启时需填写 AutoRenewalThreshold（1~50%）；同一实例最多允许存在 1 个自动续费资源包。
 	AutoRenewalType *int64 `json:"AutoRenewalType,omitnil,omitempty" name:"AutoRenewalType"`
 
 	// 自动续费阈值
@@ -1252,6 +1252,294 @@ func (r *DescribeAppSingleCaseListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDataBridgeUrlV2RequestParams struct {
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// pagepv：性能视图，allcount：性能视图，falls：页面加载瀑布图，samp：首屏时间，day：14天数据，nettype：网络/平台视图，performance：页面性能TOP视图，version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：ISP视图/地区视图/浏览器视图等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 网络类型
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 是否海外
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 耗时计算方式
+	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
+
+	// 环境变量
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// url名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// http状态码
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// retcode
+	Ret *string `json:"Ret,omitnil,omitempty" name:"Ret"`
+
+	// 网络状态
+	NetStatus *string `json:"NetStatus,omitnil,omitempty" name:"NetStatus"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+type DescribeDataBridgeUrlV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// pagepv：性能视图，allcount：性能视图，falls：页面加载瀑布图，samp：首屏时间，day：14天数据，nettype：网络/平台视图，performance：页面性能TOP视图，version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：ISP视图/地区视图/浏览器视图等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 网络类型
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 是否海外
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 耗时计算方式
+	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
+
+	// 环境变量
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// url名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// http状态码
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// retcode
+	Ret *string `json:"Ret,omitnil,omitempty" name:"Ret"`
+
+	// 网络状态
+	NetStatus *string `json:"NetStatus,omitnil,omitempty" name:"NetStatus"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeDataBridgeUrlV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataBridgeUrlV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ID")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Type")
+	delete(f, "Level")
+	delete(f, "Isp")
+	delete(f, "Area")
+	delete(f, "NetType")
+	delete(f, "Platform")
+	delete(f, "Device")
+	delete(f, "VersionNum")
+	delete(f, "ExtFirst")
+	delete(f, "ExtSecond")
+	delete(f, "ExtThird")
+	delete(f, "IsAbroad")
+	delete(f, "Browser")
+	delete(f, "Os")
+	delete(f, "Engine")
+	delete(f, "Brand")
+	delete(f, "From")
+	delete(f, "CostType")
+	delete(f, "Env")
+	delete(f, "Name")
+	delete(f, "Status")
+	delete(f, "Ret")
+	delete(f, "NetStatus")
+	delete(f, "ExtFourth")
+	delete(f, "ExtFifth")
+	delete(f, "ExtSixth")
+	delete(f, "ExtSeventh")
+	delete(f, "ExtEighth")
+	delete(f, "ExtNinth")
+	delete(f, "ExtTenth")
+	delete(f, "Granularity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataBridgeUrlV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataBridgeUrlV2ResponseParams struct {
+	// 返回值
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataBridgeUrlV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataBridgeUrlV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataBridgeUrlV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataBridgeUrlV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDataCustomUrlRequestParams struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -1313,7 +1601,7 @@ type DescribeDataCustomUrlRequestParams struct {
 	// 浏览器
 	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
 
-	// 耗时计算方式
+	// 耗时口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（使用 percentile2 计算分位数）；"avg" 表示均值（使用 avg 计算）。
 	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
 
 	// 自定义测速的key的值
@@ -1386,7 +1674,7 @@ type DescribeDataCustomUrlRequest struct {
 	// 浏览器
 	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
 
-	// 耗时计算方式
+	// 耗时口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（使用 percentile2 计算分位数）；"avg" 表示均值（使用 avg 计算）。
 	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
 
 	// 自定义测速的key的值
@@ -1463,6 +1751,273 @@ func (r *DescribeDataCustomUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDataCustomUrlV2RequestParams struct {
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// top：资源top视图，allcount：性能视图，day：14天数据，condition：条件列表，pagepv：性能视图，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知。
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 耗时计算方式
+	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
+
+	// 自定义测速的key的值
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+type DescribeDataCustomUrlV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// top：资源top视图，allcount：性能视图，day：14天数据，condition：条件列表，pagepv：性能视图，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知。
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 耗时计算方式
+	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
+
+	// 自定义测速的key的值
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeDataCustomUrlV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataCustomUrlV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "Type")
+	delete(f, "EndTime")
+	delete(f, "ID")
+	delete(f, "ExtSecond")
+	delete(f, "Engine")
+	delete(f, "Isp")
+	delete(f, "From")
+	delete(f, "Level")
+	delete(f, "Brand")
+	delete(f, "Area")
+	delete(f, "VersionNum")
+	delete(f, "Platform")
+	delete(f, "ExtThird")
+	delete(f, "ExtFirst")
+	delete(f, "NetType")
+	delete(f, "Device")
+	delete(f, "IsAbroad")
+	delete(f, "Os")
+	delete(f, "Browser")
+	delete(f, "CostType")
+	delete(f, "Url")
+	delete(f, "Env")
+	delete(f, "ExtFourth")
+	delete(f, "ExtFifth")
+	delete(f, "ExtSixth")
+	delete(f, "ExtSeventh")
+	delete(f, "ExtEighth")
+	delete(f, "ExtNinth")
+	delete(f, "ExtTenth")
+	delete(f, "Granularity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataCustomUrlV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataCustomUrlV2ResponseParams struct {
+	// 返回值
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataCustomUrlV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataCustomUrlV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataCustomUrlV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataCustomUrlV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDataEventUrlRequestParams struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -1509,7 +2064,7 @@ type DescribeDataEventUrlRequestParams struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型
+	// netType | 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。也可通过 Type=condition（show tag values）查询当前数据集中的实际可选值。
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 机型
@@ -1579,7 +2134,7 @@ type DescribeDataEventUrlRequest struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型
+	// netType | 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。也可通过 Type=condition（show tag values）查询当前数据集中的实际可选值。
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 机型
@@ -1667,6 +2222,266 @@ func (r *DescribeDataEventUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDataEventUrlV2RequestParams struct {
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// allcount：性能视图，day：14天数据，condition：条件列表，ckuv：获取uv趋势，ckpv：获取pv趋势，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 网络类型
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 筛选条件
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+type DescribeDataEventUrlV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// allcount：性能视图，day：14天数据，condition：条件列表，ckuv：获取uv趋势，ckpv：获取pv趋势，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 网络类型
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 筛选条件
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeDataEventUrlV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataEventUrlV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "Type")
+	delete(f, "EndTime")
+	delete(f, "ID")
+	delete(f, "ExtSecond")
+	delete(f, "Engine")
+	delete(f, "Isp")
+	delete(f, "From")
+	delete(f, "Level")
+	delete(f, "Brand")
+	delete(f, "Area")
+	delete(f, "VersionNum")
+	delete(f, "Platform")
+	delete(f, "ExtThird")
+	delete(f, "ExtFirst")
+	delete(f, "NetType")
+	delete(f, "Device")
+	delete(f, "IsAbroad")
+	delete(f, "Os")
+	delete(f, "Browser")
+	delete(f, "Name")
+	delete(f, "Env")
+	delete(f, "ExtFourth")
+	delete(f, "ExtFifth")
+	delete(f, "ExtSixth")
+	delete(f, "ExtSeventh")
+	delete(f, "ExtEighth")
+	delete(f, "ExtNinth")
+	delete(f, "ExtTenth")
+	delete(f, "Granularity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataEventUrlV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataEventUrlV2ResponseParams struct {
+	// 返回值
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataEventUrlV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataEventUrlV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataEventUrlV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataEventUrlV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDataFetchProjectRequestParams struct {
 	// 开始时间，示例值：1625454840
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -1728,7 +2543,7 @@ type DescribeDataFetchProjectRequestParams struct {
 	// 浏览器
 	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
 
-	// 耗时计算方式
+	// 耗时口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。
 	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
 
 	// 来源
@@ -1737,7 +2552,7 @@ type DescribeDataFetchProjectRequestParams struct {
 	// 环境
 	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
 
-	// httpcode响应码
+	// HTTP 状态码（tag 值）：用于过滤字段 status；取值一般为 200/301/404/500 等，也可配合 4xx/5xx 统计逻辑使用
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// retcode
@@ -1807,7 +2622,7 @@ type DescribeDataFetchProjectRequest struct {
 	// 浏览器
 	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
 
-	// 耗时计算方式
+	// 耗时口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。
 	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
 
 	// 来源
@@ -1816,7 +2631,7 @@ type DescribeDataFetchProjectRequest struct {
 	// 环境
 	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
 
-	// httpcode响应码
+	// HTTP 状态码（tag 值）：用于过滤字段 status；取值一般为 200/301/404/500 等，也可配合 4xx/5xx 统计逻辑使用
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// retcode
@@ -1938,7 +2753,7 @@ type DescribeDataFetchUrlInfoRequestParams struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 机型
@@ -1953,7 +2768,7 @@ type DescribeDataFetchUrlInfoRequestParams struct {
 	// 浏览器
 	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
 
-	// 耗时计算方式
+	// 耗时口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。
 	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
 
 	// 来源
@@ -2011,7 +2826,7 @@ type DescribeDataFetchUrlInfoRequest struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 机型
@@ -2026,7 +2841,7 @@ type DescribeDataFetchUrlInfoRequest struct {
 	// 浏览器
 	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
 
-	// 耗时计算方式
+	// 耗时口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。
 	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
 
 	// 来源
@@ -2149,6 +2964,238 @@ type DescribeDataFetchUrlRequestParams struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 耗时口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。
+	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
+
+	// 来源
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// HTTP 状态码（tag 值）：用于过滤字段 status；支持 4xx（status =~ /4[0-9]{2}/）和 5xx（status =~ /5[0-9]{2}/）等错误码统计。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// retcode
+	Ret *string `json:"Ret,omitnil,omitempty" name:"Ret"`
+
+	// 网络状态
+	NetStatus *string `json:"NetStatus,omitnil,omitempty" name:"NetStatus"`
+}
+
+type DescribeDataFetchUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// allcount：性能视图，pagepv：pv视图，day：14天数据，count40x：40X视图，count50x：50X视图，count5xand4x：40∑50视图，top：资源top视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 耗时口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。
+	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
+
+	// 来源
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// HTTP 状态码（tag 值）：用于过滤字段 status；支持 4xx（status =~ /4[0-9]{2}/）和 5xx（status =~ /5[0-9]{2}/）等错误码统计。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// retcode
+	Ret *string `json:"Ret,omitnil,omitempty" name:"Ret"`
+
+	// 网络状态
+	NetStatus *string `json:"NetStatus,omitnil,omitempty" name:"NetStatus"`
+}
+
+func (r *DescribeDataFetchUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataFetchUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "Type")
+	delete(f, "EndTime")
+	delete(f, "ID")
+	delete(f, "ExtSecond")
+	delete(f, "Engine")
+	delete(f, "Isp")
+	delete(f, "From")
+	delete(f, "Level")
+	delete(f, "Brand")
+	delete(f, "Area")
+	delete(f, "VersionNum")
+	delete(f, "Platform")
+	delete(f, "ExtThird")
+	delete(f, "ExtFirst")
+	delete(f, "NetType")
+	delete(f, "Device")
+	delete(f, "IsAbroad")
+	delete(f, "Os")
+	delete(f, "Browser")
+	delete(f, "CostType")
+	delete(f, "Url")
+	delete(f, "Env")
+	delete(f, "Status")
+	delete(f, "Ret")
+	delete(f, "NetStatus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataFetchUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataFetchUrlResponseParams struct {
+	// 返回值
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataFetchUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataFetchUrlResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataFetchUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataFetchUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataFetchUrlV2RequestParams struct {
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// allcount：性能视图，pagepv：pv视图，day：14天数据，count40x：40X视图，count50x：50X视图，count5xand4x：40∑50视图，top：资源top视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
 	// 网络类型
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
@@ -2181,9 +3228,33 @@ type DescribeDataFetchUrlRequestParams struct {
 
 	// 网络状态
 	NetStatus *string `json:"NetStatus,omitnil,omitempty" name:"NetStatus"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
 }
 
-type DescribeDataFetchUrlRequest struct {
+type DescribeDataFetchUrlV2Request struct {
 	*tchttp.BaseRequest
 	
 	// 开始时间
@@ -2263,16 +3334,40 @@ type DescribeDataFetchUrlRequest struct {
 
 	// 网络状态
 	NetStatus *string `json:"NetStatus,omitnil,omitempty" name:"NetStatus"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
 }
 
-func (r *DescribeDataFetchUrlRequest) ToJsonString() string {
+func (r *DescribeDataFetchUrlV2Request) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *DescribeDataFetchUrlRequest) FromJsonString(s string) error {
+func (r *DescribeDataFetchUrlV2Request) FromJsonString(s string) error {
 	f := make(map[string]interface{})
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
@@ -2303,14 +3398,22 @@ func (r *DescribeDataFetchUrlRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "Ret")
 	delete(f, "NetStatus")
+	delete(f, "ExtFourth")
+	delete(f, "ExtFifth")
+	delete(f, "ExtSixth")
+	delete(f, "ExtSeventh")
+	delete(f, "ExtEighth")
+	delete(f, "ExtNinth")
+	delete(f, "ExtTenth")
+	delete(f, "Granularity")
 	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataFetchUrlRequest has unknown keys!", "")
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataFetchUrlV2Request has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
-type DescribeDataFetchUrlResponseParams struct {
+type DescribeDataFetchUrlV2ResponseParams struct {
 	// 返回值
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
@@ -2318,19 +3421,19 @@ type DescribeDataFetchUrlResponseParams struct {
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
-type DescribeDataFetchUrlResponse struct {
+type DescribeDataFetchUrlV2Response struct {
 	*tchttp.BaseResponse
-	Response *DescribeDataFetchUrlResponseParams `json:"Response"`
+	Response *DescribeDataFetchUrlV2ResponseParams `json:"Response"`
 }
 
-func (r *DescribeDataFetchUrlResponse) ToJsonString() string {
+func (r *DescribeDataFetchUrlV2Response) ToJsonString() string {
     b, _ := json.Marshal(r)
     return string(b)
 }
 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
-func (r *DescribeDataFetchUrlResponse) FromJsonString(s string) error {
+func (r *DescribeDataFetchUrlV2Response) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2452,7 +3555,7 @@ type DescribeDataLogUrlStatisticsRequestParams struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 机型
@@ -2522,7 +3625,7 @@ type DescribeDataLogUrlStatisticsRequest struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 机型
@@ -2610,6 +3713,266 @@ func (r *DescribeDataLogUrlStatisticsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDataLogUrlStatisticsV2RequestParams struct {
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// analysis：异常分析，compare：异常列表对比，allcount：性能视图，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 网络类型
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 环境区分
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// js异常信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+type DescribeDataLogUrlStatisticsV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// analysis：异常分析，compare：异常列表对比，allcount：性能视图，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 网络类型
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 环境区分
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// js异常信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeDataLogUrlStatisticsV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataLogUrlStatisticsV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "Type")
+	delete(f, "EndTime")
+	delete(f, "ID")
+	delete(f, "ExtSecond")
+	delete(f, "Engine")
+	delete(f, "Isp")
+	delete(f, "From")
+	delete(f, "Level")
+	delete(f, "Brand")
+	delete(f, "Area")
+	delete(f, "VersionNum")
+	delete(f, "Platform")
+	delete(f, "ExtThird")
+	delete(f, "ExtFirst")
+	delete(f, "NetType")
+	delete(f, "Device")
+	delete(f, "IsAbroad")
+	delete(f, "Os")
+	delete(f, "Browser")
+	delete(f, "Env")
+	delete(f, "ErrorMsg")
+	delete(f, "ExtFourth")
+	delete(f, "ExtFifth")
+	delete(f, "ExtSixth")
+	delete(f, "ExtSeventh")
+	delete(f, "ExtEighth")
+	delete(f, "ExtNinth")
+	delete(f, "ExtTenth")
+	delete(f, "Granularity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataLogUrlStatisticsV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataLogUrlStatisticsV2ResponseParams struct {
+	// 返回值
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataLogUrlStatisticsV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataLogUrlStatisticsV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataLogUrlStatisticsV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataLogUrlStatisticsV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDataPerformancePageRequestParams struct {
 	// 项目ID
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
@@ -2632,7 +3995,7 @@ type DescribeDataPerformancePageRequestParams struct {
 	// 地区
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
-	// 网络类型
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 平台
@@ -2671,13 +4034,13 @@ type DescribeDataPerformancePageRequestParams struct {
 	// 来源页面
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
-	// 耗时计算方式
+	// 耗时口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。
 	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
 
 	// 环境变量
 	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
 
-	// 网络状态
+	// 网络状态(tag 值):用于过滤/聚合字段 netStatus；枚举值：0(正常)、1(弱网)、2(断网)、3(其他)。 
 	NetStatus *string `json:"NetStatus,omitnil,omitempty" name:"NetStatus"`
 
 	// 是否返回webvitals数据
@@ -2708,7 +4071,7 @@ type DescribeDataPerformancePageRequest struct {
 	// 地区
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
-	// 网络类型
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 平台
@@ -2747,13 +4110,13 @@ type DescribeDataPerformancePageRequest struct {
 	// 来源页面
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
-	// 耗时计算方式
+	// 耗时口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。
 	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
 
 	// 环境变量
 	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
 
-	// 网络状态
+	// 网络状态(tag 值):用于过滤/聚合字段 netStatus；枚举值：0(正常)、1(弱网)、2(断网)、3(其他)。 
 	NetStatus *string `json:"NetStatus,omitnil,omitempty" name:"NetStatus"`
 
 	// 是否返回webvitals数据
@@ -2828,11 +4191,285 @@ func (r *DescribeDataPerformancePageResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDataPerformancePageV2RequestParams struct {
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// pagepv：pv视图，allcount：性能视图，falls：页面加载瀑布图，samp：首屏时间，day：14天数据，nettype：网络/平台视图，performance：页面性能TOP视图，version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：ISP视图/地区视图/浏览器视图等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 网络类型
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 耗时计算方式
+	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
+
+	// 环境变量
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 网络状态
+	NetStatus *string `json:"NetStatus,omitnil,omitempty" name:"NetStatus"`
+
+	// 是否返回webvitals数据
+	WebVitals *bool `json:"WebVitals,omitnil,omitempty" name:"WebVitals"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+type DescribeDataPerformancePageV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// pagepv：pv视图，allcount：性能视图，falls：页面加载瀑布图，samp：首屏时间，day：14天数据，nettype：网络/平台视图，performance：页面性能TOP视图，version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：ISP视图/地区视图/浏览器视图等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 网络类型
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 耗时计算方式
+	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
+
+	// 环境变量
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 网络状态
+	NetStatus *string `json:"NetStatus,omitnil,omitempty" name:"NetStatus"`
+
+	// 是否返回webvitals数据
+	WebVitals *bool `json:"WebVitals,omitnil,omitempty" name:"WebVitals"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeDataPerformancePageV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataPerformancePageV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ID")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Type")
+	delete(f, "Level")
+	delete(f, "Isp")
+	delete(f, "Area")
+	delete(f, "NetType")
+	delete(f, "Platform")
+	delete(f, "Device")
+	delete(f, "VersionNum")
+	delete(f, "ExtFirst")
+	delete(f, "ExtSecond")
+	delete(f, "ExtThird")
+	delete(f, "IsAbroad")
+	delete(f, "Browser")
+	delete(f, "Os")
+	delete(f, "Engine")
+	delete(f, "Brand")
+	delete(f, "From")
+	delete(f, "CostType")
+	delete(f, "Env")
+	delete(f, "NetStatus")
+	delete(f, "WebVitals")
+	delete(f, "ExtFourth")
+	delete(f, "ExtFifth")
+	delete(f, "ExtSixth")
+	delete(f, "ExtSeventh")
+	delete(f, "ExtEighth")
+	delete(f, "ExtNinth")
+	delete(f, "ExtTenth")
+	delete(f, "Granularity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataPerformancePageV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataPerformancePageV2ResponseParams struct {
+	// 返回值
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataPerformancePageV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataPerformancePageV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataPerformancePageV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataPerformancePageV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDataPvUrlInfoRequestParams struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 类型
+	// 查询类型（string）：当前后端实现固定按 from 聚合统计，未使用该字段（保留字段，传值不会影响结果）。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 结束时间
@@ -2874,7 +4511,7 @@ type DescribeDataPvUrlInfoRequestParams struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 机型
@@ -2899,7 +4536,7 @@ type DescribeDataPvUrlInfoRequest struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 类型
+	// 查询类型（string）：当前后端实现固定按 from 聚合统计，未使用该字段（保留字段，传值不会影响结果）。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 结束时间
@@ -2941,7 +4578,7 @@ type DescribeDataPvUrlInfoRequest struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 机型
@@ -3029,7 +4666,7 @@ type DescribeDataPvUrlStatisticsRequestParams struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+	// allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 结束时间
@@ -3071,7 +4708,7 @@ type DescribeDataPvUrlStatisticsRequestParams struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 机型
@@ -3104,7 +4741,7 @@ type DescribeDataPvUrlStatisticsRequest struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+	// allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 结束时间
@@ -3146,7 +4783,7 @@ type DescribeDataPvUrlStatisticsRequest struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 机型
@@ -3286,7 +4923,7 @@ type DescribeDataPvUrlStatisticsV2RequestParams struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型
+	// 网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 机型
@@ -3385,7 +5022,7 @@ type DescribeDataPvUrlStatisticsV2Request struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型
+	// 网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 机型
@@ -3791,7 +5428,7 @@ type DescribeDataSetUrlStatisticsRequestParams struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 机型
@@ -3806,13 +5443,13 @@ type DescribeDataSetUrlStatisticsRequestParams struct {
 	// 浏览器
 	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
 
-	// 耗时计算
+	// 耗时/数据量口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。
 	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
 
 	// 环境
 	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
 
-	// 获取package
+	// 小程序包类型（tag 值）：用于过滤字段 type（请求参数名为 PackageType）；取值由上报数据决定，可通过 Type=condition（show tag values）获取可选值集合。
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 }
 
@@ -3864,7 +5501,7 @@ type DescribeDataSetUrlStatisticsRequest struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 机型
@@ -3879,13 +5516,13 @@ type DescribeDataSetUrlStatisticsRequest struct {
 	// 浏览器
 	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
 
-	// 耗时计算
+	// 耗时/数据量口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。
 	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
 
 	// 环境
 	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
 
-	// 获取package
+	// 小程序包类型（tag 值）：用于过滤字段 type（请求参数名为 PackageType）；取值由上报数据决定，可通过 Type=condition（show tag values）获取可选值集合。
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 }
 
@@ -3956,6 +5593,273 @@ func (r *DescribeDataSetUrlStatisticsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDataSetUrlStatisticsV2RequestParams struct {
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// allcount：性能视图，data：小程序，component：小程序相关，day：14天数据，nettype：网络/平台视图，performance：页面性能TOP视图，version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：ISP视图/地区视图/浏览器视图等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 网络类型
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 耗时计算
+	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 获取package
+	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+type DescribeDataSetUrlStatisticsV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// allcount：性能视图，data：小程序，component：小程序相关，day：14天数据，nettype：网络/平台视图，performance：页面性能TOP视图，version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：ISP视图/地区视图/浏览器视图等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 网络类型
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 耗时计算
+	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 获取package
+	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeDataSetUrlStatisticsV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataSetUrlStatisticsV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "Type")
+	delete(f, "EndTime")
+	delete(f, "ID")
+	delete(f, "ExtSecond")
+	delete(f, "Engine")
+	delete(f, "Isp")
+	delete(f, "From")
+	delete(f, "Level")
+	delete(f, "Brand")
+	delete(f, "Area")
+	delete(f, "VersionNum")
+	delete(f, "Platform")
+	delete(f, "ExtThird")
+	delete(f, "ExtFirst")
+	delete(f, "NetType")
+	delete(f, "Device")
+	delete(f, "IsAbroad")
+	delete(f, "Os")
+	delete(f, "Browser")
+	delete(f, "CostType")
+	delete(f, "Env")
+	delete(f, "PackageType")
+	delete(f, "ExtFourth")
+	delete(f, "ExtFifth")
+	delete(f, "ExtSixth")
+	delete(f, "ExtSeventh")
+	delete(f, "ExtEighth")
+	delete(f, "ExtNinth")
+	delete(f, "ExtTenth")
+	delete(f, "Granularity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataSetUrlStatisticsV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataSetUrlStatisticsV2ResponseParams struct {
+	// 返回值
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataSetUrlStatisticsV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataSetUrlStatisticsV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataSetUrlStatisticsV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataSetUrlStatisticsV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDataStaticProjectRequestParams struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -4017,7 +5921,7 @@ type DescribeDataStaticProjectRequestParams struct {
 	// 浏览器
 	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
 
-	// 耗时计算
+	// 耗时口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。
 	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
 
 	// 来源
@@ -4090,7 +5994,7 @@ type DescribeDataStaticProjectRequest struct {
 	// 浏览器
 	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
 
-	// 耗时计算
+	// 耗时口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。
 	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
 
 	// 来源
@@ -4167,6 +6071,273 @@ func (r *DescribeDataStaticProjectResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDataStaticProjectV2RequestParams struct {
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// allcount：性能视图，day：14天数据，condition：条件列表，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级（1表示白名单日志，2表示一般日志，4表示错误日志，8表示Promise 错误，16表示Ajax 请求异常，32表示JS 加载异常，64表示图片加载异常，128表示css 加载异常，256表示console.error，512表示音视频资源异常，1024表示retcode 异常，2048表示aegis report，4096表示PV日志，8192表示自定义事件，16384表示小程序 页面不存在，32768表示websocket错误，65536表示js bridge错误）
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知。
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 耗时计算
+	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
+
+	// 来源
+	Url []*string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+type DescribeDataStaticProjectV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// allcount：性能视图，day：14天数据，condition：条件列表，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级（1表示白名单日志，2表示一般日志，4表示错误日志，8表示Promise 错误，16表示Ajax 请求异常，32表示JS 加载异常，64表示图片加载异常，128表示css 加载异常，256表示console.error，512表示音视频资源异常，1024表示retcode 异常，2048表示aegis report，4096表示PV日志，8192表示自定义事件，16384表示小程序 页面不存在，32768表示websocket错误，65536表示js bridge错误）
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 网络类型（1,2,3,4,5,100），1表示WIFI, 2表示2G, 3表示3G, 4表示4G, 5表示5G, 6表示6G, 100表示未知。
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 耗时计算
+	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
+
+	// 来源
+	Url []*string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeDataStaticProjectV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataStaticProjectV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "Type")
+	delete(f, "EndTime")
+	delete(f, "ID")
+	delete(f, "ExtSecond")
+	delete(f, "Engine")
+	delete(f, "Isp")
+	delete(f, "From")
+	delete(f, "Level")
+	delete(f, "Brand")
+	delete(f, "Area")
+	delete(f, "VersionNum")
+	delete(f, "Platform")
+	delete(f, "ExtThird")
+	delete(f, "ExtFirst")
+	delete(f, "NetType")
+	delete(f, "Device")
+	delete(f, "IsAbroad")
+	delete(f, "Os")
+	delete(f, "Browser")
+	delete(f, "CostType")
+	delete(f, "Url")
+	delete(f, "Env")
+	delete(f, "ExtFourth")
+	delete(f, "ExtFifth")
+	delete(f, "ExtSixth")
+	delete(f, "ExtSeventh")
+	delete(f, "ExtEighth")
+	delete(f, "ExtNinth")
+	delete(f, "ExtTenth")
+	delete(f, "Granularity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataStaticProjectV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataStaticProjectV2ResponseParams struct {
+	// 返回值
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataStaticProjectV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataStaticProjectV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataStaticProjectV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataStaticProjectV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDataStaticResourceRequestParams struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -4213,7 +6384,7 @@ type DescribeDataStaticResourceRequestParams struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 机型
@@ -4228,7 +6399,7 @@ type DescribeDataStaticResourceRequestParams struct {
 	// 浏览器
 	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
 
-	// 耗时计算方式
+	// 耗时口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。
 	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
 
 	// 来源
@@ -4286,7 +6457,7 @@ type DescribeDataStaticResourceRequest struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 机型
@@ -4301,7 +6472,7 @@ type DescribeDataStaticResourceRequest struct {
 	// 浏览器
 	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
 
-	// 耗时计算方式
+	// 耗时口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。
 	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
 
 	// 来源
@@ -4378,11 +6549,11 @@ func (r *DescribeDataStaticResourceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeDataStaticUrlRequestParams struct {
+type DescribeDataStaticResourceV2RequestParams struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// pagepv：性能视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图//ext1视图等等
+	// top：资源top视图，count40x：40X视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图//ext1视图等等
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 结束时间
@@ -4447,15 +6618,39 @@ type DescribeDataStaticUrlRequestParams struct {
 
 	// 环境
 	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
 }
 
-type DescribeDataStaticUrlRequest struct {
+type DescribeDataStaticResourceV2Request struct {
 	*tchttp.BaseRequest
 	
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// pagepv：性能视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图//ext1视图等等
+	// top：资源top视图，count40x：40X视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图//ext1视图等等
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 结束时间
@@ -4513,6 +6708,249 @@ type DescribeDataStaticUrlRequest struct {
 	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
 
 	// 耗时计算方式
+	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
+
+	// 来源
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeDataStaticResourceV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataStaticResourceV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "Type")
+	delete(f, "EndTime")
+	delete(f, "ID")
+	delete(f, "ExtSecond")
+	delete(f, "Engine")
+	delete(f, "Isp")
+	delete(f, "From")
+	delete(f, "Level")
+	delete(f, "Brand")
+	delete(f, "Area")
+	delete(f, "VersionNum")
+	delete(f, "Platform")
+	delete(f, "ExtThird")
+	delete(f, "ExtFirst")
+	delete(f, "NetType")
+	delete(f, "Device")
+	delete(f, "IsAbroad")
+	delete(f, "Os")
+	delete(f, "Browser")
+	delete(f, "CostType")
+	delete(f, "Url")
+	delete(f, "Env")
+	delete(f, "ExtFourth")
+	delete(f, "ExtFifth")
+	delete(f, "ExtSixth")
+	delete(f, "ExtSeventh")
+	delete(f, "ExtEighth")
+	delete(f, "ExtNinth")
+	delete(f, "ExtTenth")
+	delete(f, "Granularity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataStaticResourceV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataStaticResourceV2ResponseParams struct {
+	// 返回值
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataStaticResourceV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataStaticResourceV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataStaticResourceV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataStaticResourceV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataStaticUrlRequestParams struct {
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// pagepv：性能视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图//ext1视图等等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 耗时口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。
+	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
+
+	// 来源
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+}
+
+type DescribeDataStaticUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// pagepv：性能视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图//ext1视图等等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 耗时口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。
 	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
 
 	// 来源
@@ -4589,9 +7027,12 @@ func (r *DescribeDataStaticUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeDataWebVitalsPageRequestParams struct {
+type DescribeDataStaticUrlV2RequestParams struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// pagepv：性能视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图//ext1视图等等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 结束时间
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
@@ -4613,9 +7054,6 @@ type DescribeDataWebVitalsPageRequestParams struct {
 
 	// 日志等级
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
-
-	// 类型暂无
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 品牌
 	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
@@ -4650,7 +7088,274 @@ type DescribeDataWebVitalsPageRequestParams struct {
 	// 浏览器
 	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
 
-	// 耗时计算
+	// 耗时计算方式
+	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
+
+	// 来源
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+type DescribeDataStaticUrlV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// pagepv：性能视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图//ext1视图等等
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 网络类型
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 耗时计算方式
+	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
+
+	// 来源
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 自定义4
+	ExtFourth *string `json:"ExtFourth,omitnil,omitempty" name:"ExtFourth"`
+
+	// 自定义5
+	ExtFifth *string `json:"ExtFifth,omitnil,omitempty" name:"ExtFifth"`
+
+	// 自定义6
+	ExtSixth *string `json:"ExtSixth,omitnil,omitempty" name:"ExtSixth"`
+
+	// 自定义7
+	ExtSeventh *string `json:"ExtSeventh,omitnil,omitempty" name:"ExtSeventh"`
+
+	// 自定义8
+	ExtEighth *string `json:"ExtEighth,omitnil,omitempty" name:"ExtEighth"`
+
+	// 自定义9
+	ExtNinth *string `json:"ExtNinth,omitnil,omitempty" name:"ExtNinth"`
+
+	// 自定义10
+	ExtTenth *string `json:"ExtTenth,omitnil,omitempty" name:"ExtTenth"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeDataStaticUrlV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataStaticUrlV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "Type")
+	delete(f, "EndTime")
+	delete(f, "ID")
+	delete(f, "ExtSecond")
+	delete(f, "Engine")
+	delete(f, "Isp")
+	delete(f, "From")
+	delete(f, "Level")
+	delete(f, "Brand")
+	delete(f, "Area")
+	delete(f, "VersionNum")
+	delete(f, "Platform")
+	delete(f, "ExtThird")
+	delete(f, "ExtFirst")
+	delete(f, "NetType")
+	delete(f, "Device")
+	delete(f, "IsAbroad")
+	delete(f, "Os")
+	delete(f, "Browser")
+	delete(f, "CostType")
+	delete(f, "Url")
+	delete(f, "Env")
+	delete(f, "ExtFourth")
+	delete(f, "ExtFifth")
+	delete(f, "ExtSixth")
+	delete(f, "ExtSeventh")
+	delete(f, "ExtEighth")
+	delete(f, "ExtNinth")
+	delete(f, "ExtTenth")
+	delete(f, "Granularity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataStaticUrlV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataStaticUrlV2ResponseParams struct {
+	// 返回值
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataStaticUrlV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataStaticUrlV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataStaticUrlV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataStaticUrlV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataWebVitalsPageRequestParams struct {
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 查询维度：from=按页面来源(from)聚合输出；其他值/空值=输出整体汇总。
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 类型暂无
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。 
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// Web Vitals 口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。 
 	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
 
 	// 环境
@@ -4678,7 +7383,7 @@ type DescribeDataWebVitalsPageRequest struct {
 	// 运营商
 	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
 
-	// 来源页面
+	// 查询维度：from=按页面来源(from)聚合输出；其他值/空值=输出整体汇总。
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
 	// 日志等级
@@ -4705,7 +7410,7 @@ type DescribeDataWebVitalsPageRequest struct {
 	// 自定义1
 	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
 
-	// 网络类型
+	// 网络类型(tag 值):用于过滤/聚合字段 netType；枚举值：1(WiFi)、2(2G)、3(3G)、4(4G)、5(5G)、6(6G)、100(未知网络)。 
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 机型
@@ -4720,7 +7425,7 @@ type DescribeDataWebVitalsPageRequest struct {
 	// 浏览器
 	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
 
-	// 耗时计算
+	// Web Vitals 口径："50"/"75"/"90"/"95"/"99"/"99.5" 分别表示 TP50/TP75/TP90/TP95/TP99/TP99.5（percentile2）；"avg" 表示均值（avg）。 
 	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
 
 	// 环境
@@ -4789,6 +7494,217 @@ func (r *DescribeDataWebVitalsPageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDataWebVitalsPageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataWebVitalsPageV2RequestParams struct {
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 类型暂无
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 网络类型
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 耗时计算
+	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+type DescribeDataWebVitalsPageV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 自定义2
+	ExtSecond *string `json:"ExtSecond,omitnil,omitempty" name:"ExtSecond"`
+
+	// 浏览器引擎
+	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
+
+	// 运营商
+	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
+
+	// 来源页面
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 日志等级
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 类型暂无
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 地区
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 版本
+	VersionNum *string `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
+
+	// 平台
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 自定义3
+	ExtThird *string `json:"ExtThird,omitnil,omitempty" name:"ExtThird"`
+
+	// 自定义1
+	ExtFirst *string `json:"ExtFirst,omitnil,omitempty" name:"ExtFirst"`
+
+	// 网络类型
+	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
+
+	// 机型
+	Device *string `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 显示是否海外,1表示海外，0表示非海外；默认值为空，查询所有。
+	IsAbroad *string `json:"IsAbroad,omitnil,omitempty" name:"IsAbroad"`
+
+	// 操作系统
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 浏览器
+	Browser *string `json:"Browser,omitnil,omitempty" name:"Browser"`
+
+	// 耗时计算
+	CostType *string `json:"CostType,omitnil,omitempty" name:"CostType"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 时间段
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeDataWebVitalsPageV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataWebVitalsPageV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ID")
+	delete(f, "ExtSecond")
+	delete(f, "Engine")
+	delete(f, "Isp")
+	delete(f, "From")
+	delete(f, "Level")
+	delete(f, "Type")
+	delete(f, "Brand")
+	delete(f, "Area")
+	delete(f, "VersionNum")
+	delete(f, "Platform")
+	delete(f, "ExtThird")
+	delete(f, "ExtFirst")
+	delete(f, "NetType")
+	delete(f, "Device")
+	delete(f, "IsAbroad")
+	delete(f, "Os")
+	delete(f, "Browser")
+	delete(f, "CostType")
+	delete(f, "Env")
+	delete(f, "Granularity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataWebVitalsPageV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataWebVitalsPageV2ResponseParams struct {
+	// 返回值
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataWebVitalsPageV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataWebVitalsPageV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataWebVitalsPageV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataWebVitalsPageV2Response) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5778,6 +8694,91 @@ func (r *DescribeScoresResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeScoresResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScoresV2RequestParams struct {
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目 ID 列表
+	IDList []*int64 `json:"IDList,omitnil,omitempty" name:"IDList"`
+
+	// 查询粒度，hour 或 day
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+}
+
+type DescribeScoresV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 项目 ID 列表
+	IDList []*int64 `json:"IDList,omitnil,omitempty" name:"IDList"`
+
+	// 查询粒度，hour 或 day
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+}
+
+func (r *DescribeScoresV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScoresV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "IDList")
+	delete(f, "Type")
+	delete(f, "Env")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScoresV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScoresV2ResponseParams struct {
+	// 项目得分数组
+	ScoreSet []*ScoreInfoV2 `json:"ScoreSet,omitnil,omitempty" name:"ScoreSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeScoresV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeScoresV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeScoresV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScoresV2Response) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6838,6 +9839,77 @@ type ScoreInfo struct {
 
 	// 静态资源可用性评分
 	StaticAvaliableScore *string `json:"StaticAvaliableScore,omitnil,omitempty" name:"StaticAvaliableScore"`
+}
+
+type ScoreInfoV2 struct {
+	// 项目id
+	ProjectID *int64 `json:"ProjectID,omitnil,omitempty" name:"ProjectID"`
+
+	// 项目总分
+	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// API性能评分
+	ApiPerformanceScore *float64 `json:"ApiPerformanceScore,omitnil,omitempty" name:"ApiPerformanceScore"`
+
+	// API可用性评分
+	ApiAvailableScore *float64 `json:"ApiAvailableScore,omitnil,omitempty" name:"ApiAvailableScore"`
+
+	// API调用总数
+	ApiNum *int64 `json:"ApiNum,omitnil,omitempty" name:"ApiNum"`
+
+	// API失败次数
+	ApiFail *int64 `json:"ApiFail,omitnil,omitempty" name:"ApiFail"`
+
+	// API平均持续时间
+	ApiDuration *float64 `json:"ApiDuration,omitnil,omitempty" name:"ApiDuration"`
+
+	// 页面性能评分
+	PagePerformanceScore *float64 `json:"PagePerformanceScore,omitnil,omitempty" name:"PagePerformanceScore"`
+
+	// 页面浏览量
+	PagePv *int64 `json:"PagePv,omitnil,omitempty" name:"PagePv"`
+
+	// 独立访客数
+	PageUv *int64 `json:"PageUv,omitnil,omitempty" name:"PageUv"`
+
+	// 页面错误数
+	PageError *int64 `json:"PageError,omitnil,omitempty" name:"PageError"`
+
+	// 首屏时间
+	PageDuration *float64 `json:"PageDuration,omitnil,omitempty" name:"PageDuration"`
+
+	// 平均 LCP
+	PageLCP *float64 `json:"PageLCP,omitnil,omitempty" name:"PageLCP"`
+
+	// 平均 FID
+	PageFID *float64 `json:"PageFID,omitnil,omitempty" name:"PageFID"`
+
+	// 平均 CLS
+	PageCLS *float64 `json:"PageCLS,omitnil,omitempty" name:"PageCLS"`
+
+	// 平均 FCP
+	PageFCP *float64 `json:"PageFCP,omitnil,omitempty" name:"PageFCP"`
+
+	// 平均 INP
+	PageINP *float64 `json:"PageINP,omitnil,omitempty" name:"PageINP"`
+
+	// JavaScript错误评分
+	JsErrorScore *float64 `json:"JsErrorScore,omitnil,omitempty" name:"JsErrorScore"`
+
+	// 静态资源可用性评分
+	StaticAvailableScore *float64 `json:"StaticAvailableScore,omitnil,omitempty" name:"StaticAvailableScore"`
+
+	// 静态资源性能评分
+	StaticPerformanceScore *float64 `json:"StaticPerformanceScore,omitnil,omitempty" name:"StaticPerformanceScore"`
+
+	// 静态资源请求总数
+	StaticNum *int64 `json:"StaticNum,omitnil,omitempty" name:"StaticNum"`
+
+	// 静态资源加载失败数
+	StaticFail *int64 `json:"StaticFail,omitnil,omitempty" name:"StaticFail"`
+
+	// 静态资源加载时间
+	StaticDuration *float64 `json:"StaticDuration,omitnil,omitempty" name:"StaticDuration"`
 }
 
 // Predefined struct for user

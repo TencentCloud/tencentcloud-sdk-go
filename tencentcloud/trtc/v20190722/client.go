@@ -577,6 +577,98 @@ func (c *Client) CreateCloudSliceTaskWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateCloudTranscriptionRequest() (request *CreateCloudTranscriptionRequest) {
+    request = &CreateCloudTranscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "CreateCloudTranscription")
+    
+    
+    return
+}
+
+func NewCreateCloudTranscriptionResponse() (response *CreateCloudTranscriptionResponse) {
+    response = &CreateCloudTranscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCloudTranscription
+// 接口说明：
+//
+// 启动云端转录功能。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CTUNSUPPORTMETHOD = "FailedOperation.CTUnsupportMethod"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CTINTERNALERROR = "InternalError.CTInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_ASRLANG = "MissingParameter.ASRLang"
+//  MISSINGPARAMETER_ASRPARAM = "MissingParameter.AsrParam"
+//  MISSINGPARAMETER_REGION = "MissingParameter.Region"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TRANSCRIPTIONPARAM = "MissingParameter.TranscriptionParam"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  MISSINGPARAMETER_USERSIG = "MissingParameter.UserSig"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCloudTranscription(request *CreateCloudTranscriptionRequest) (response *CreateCloudTranscriptionResponse, err error) {
+    return c.CreateCloudTranscriptionWithContext(context.Background(), request)
+}
+
+// CreateCloudTranscription
+// 接口说明：
+//
+// 启动云端转录功能。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CTUNSUPPORTMETHOD = "FailedOperation.CTUnsupportMethod"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CTINTERNALERROR = "InternalError.CTInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_ASRLANG = "MissingParameter.ASRLang"
+//  MISSINGPARAMETER_ASRPARAM = "MissingParameter.AsrParam"
+//  MISSINGPARAMETER_REGION = "MissingParameter.Region"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TRANSCRIPTIONPARAM = "MissingParameter.TranscriptionParam"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  MISSINGPARAMETER_USERSIG = "MissingParameter.UserSig"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCloudTranscriptionWithContext(ctx context.Context, request *CreateCloudTranscriptionRequest) (response *CreateCloudTranscriptionResponse, err error) {
+    if request == nil {
+        request = NewCreateCloudTranscriptionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "CreateCloudTranscription")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCloudTranscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCloudTranscriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePictureRequest() (request *CreatePictureRequest) {
     request = &CreatePictureRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -935,6 +1027,84 @@ func (c *Client) DeleteCloudSliceTaskWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDeleteCloudSliceTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCloudTranscriptionRequest() (request *DeleteCloudTranscriptionRequest) {
+    request = &DeleteCloudTranscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DeleteCloudTranscription")
+    
+    
+    return
+}
+
+func NewDeleteCloudTranscriptionResponse() (response *DeleteCloudTranscriptionResponse) {
+    response = &DeleteCloudTranscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCloudTranscription
+// 成功开启转录后，可以使用此接口来停止转录任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION_CTUNSUPPORTMETHOD = "FailedOperation.CTUnsupportMethod"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CTINTERNALERROR = "InternalError.CTInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCloudTranscription(request *DeleteCloudTranscriptionRequest) (response *DeleteCloudTranscriptionResponse, err error) {
+    return c.DeleteCloudTranscriptionWithContext(context.Background(), request)
+}
+
+// DeleteCloudTranscription
+// 成功开启转录后，可以使用此接口来停止转录任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION_CTUNSUPPORTMETHOD = "FailedOperation.CTUnsupportMethod"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CTINTERNALERROR = "InternalError.CTInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCloudTranscriptionWithContext(ctx context.Context, request *DeleteCloudTranscriptionRequest) (response *DeleteCloudTranscriptionResponse, err error) {
+    if request == nil {
+        request = NewDeleteCloudTranscriptionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DeleteCloudTranscription")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCloudTranscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCloudTranscriptionResponse()
     err = c.Send(request, response)
     return
 }
@@ -1501,6 +1671,82 @@ func (c *Client) DescribeCloudSliceTaskWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeCloudSliceTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudTranscriptionRequest() (request *DescribeCloudTranscriptionRequest) {
+    request = &DescribeCloudTranscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeCloudTranscription")
+    
+    
+    return
+}
+
+func NewDescribeCloudTranscriptionResponse() (response *DescribeCloudTranscriptionResponse) {
+    response = &DescribeCloudTranscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudTranscription
+// 成功开启转录后，可以使用此接口来查询录制状态。仅在转录任务进行时有效，转录退出后查询将会返回错误。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CTUNSUPPORTMETHOD = "FailedOperation.CTUnsupportMethod"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CTINTERNALERROR = "InternalError.CTInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudTranscription(request *DescribeCloudTranscriptionRequest) (response *DescribeCloudTranscriptionResponse, err error) {
+    return c.DescribeCloudTranscriptionWithContext(context.Background(), request)
+}
+
+// DescribeCloudTranscription
+// 成功开启转录后，可以使用此接口来查询录制状态。仅在转录任务进行时有效，转录退出后查询将会返回错误。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CTUNSUPPORTMETHOD = "FailedOperation.CTUnsupportMethod"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CTINTERNALERROR = "InternalError.CTInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudTranscriptionWithContext(ctx context.Context, request *DescribeCloudTranscriptionRequest) (response *DescribeCloudTranscriptionResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudTranscriptionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeCloudTranscription")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudTranscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudTranscriptionResponse()
     err = c.Send(request, response)
     return
 }

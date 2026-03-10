@@ -125,6 +125,64 @@ type AmbientSound struct {
 	Volume *float64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 }
 
+type AsrParam struct {
+	// 转录服务使用的模型类型。示例值"16k_zh_en"。语音转文本不同套餐版本支持的语言如下：
+	// 
+	// 基础语言引擎：
+	// - "zh": 8k 采样率中文识别模型，主要用于电话音频。
+	// 
+	// 标准语言引擎：
+	// - "8k_zh_large": 8k 中文大模型引擎，针对电话音频支持较好。
+	// - "16k_zh_large": 16k 大模型引擎，同时支持中文、英文、多种中文方言口音等语言的识别。
+	// - "16k_zh_en": 最新 16k 中英大模型引擎，同时支持中文、英语、多种中文方言口音的识别，对中英混说场景识别更优。
+	// 
+	// 高级语言引擎：
+	// - "zh-yue": 中文粤语
+	// - "vi": 越南语
+	// - "ja": 日语
+	// - "ko": 韩语
+	// - "id": 印度尼西亚语
+	// - "th": 泰语
+	// - "pt": 葡萄牙语
+	// - "tr": 土耳其语
+	// - "ar": 阿拉伯语
+	// - "es": 西班牙语
+	// - "hi": 印地语
+	// - "fr": 法语
+	// - "ms": 马来语
+	// - "fil": 菲律宾语
+	// - "de": 德语
+	// - "it": 意大利语
+	// - "ru": 俄语
+	// - "sv": 瑞典语
+	// - "da": 丹麦语
+	// - "no": 挪威语
+	// 
+	// 注意：
+	// 如果缺少满足您需求的语言，请联系我们技术人员。
+	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
+
+	// 语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
+	// 示例值：1000
+	VadSilenceTime *uint64 `json:"VadSilenceTime,omitnil,omitempty" name:"VadSilenceTime"`
+
+	// 临时热词表：该参数用于提升识别准确率。
+	// - 单个热词限制："热词|权重"，单个热词不超过30个字符（最多10个汉字），权重[1-11]或者100，如："腾讯云|5" 或 "ASR|11"。
+	// - 临时热词表限制：多个热词用英文逗号分割，最多支持128个热词，如："腾讯云|10,语音识别|5,ASR|11"。
+	// 注意：
+	// 热词权重设置为11时，当前热词将升级为超级热词，建议仅将重要且必须生效的热词设置到11，设置过多权重为11的热词将影响整体字准率。
+	// 热词权重设置为100时，当前热词开启热词增强同音同调替换功能，举例：热词配置"蜜制|100"时，与"蜜制"同拼音（mizhi）的"秘制"的识别结果会被强制替换成"蜜制"。因此建议客户根据自己的实际情况开启该功能。建议仅将重要且必须生效的热词设置到100，设置过多权重为100的热词将影响整体字准率。
+	// 热词不能包含空格，如：ASR 腾讯云
+	// 示例值：语音助理|10
+	HotWordList *string `json:"HotWordList,omitnil,omitempty" name:"HotWordList"`
+
+	// 发起模糊识别为高级版能力,默认按照高级版收费,仅支持填写除"zh-dialect"和"zh-yue"以外的高级版语言。注意：最多只能填写4种语言。
+	AlternativeLanguage []*string `json:"AlternativeLanguage,omitnil,omitempty" name:"AlternativeLanguage"`
+
+	// vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 3]，默认为0。推荐设置为2，有较好的远场人声抑制能力。
+	VadLevel *uint64 `json:"VadLevel,omitnil,omitempty" name:"VadLevel"`
+}
+
 type AudioEncode struct {
 	// 输出流音频采样率。取值为[48000, 44100, 32000, 24000, 16000, 8000]，单位是Hz。
 	SampleRate *uint64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
@@ -843,6 +901,98 @@ func (r *CreateCloudSliceTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateCloudTranscriptionRequestParams struct {
+	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转录的房间所对应的SdkAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，转录的TRTC房间所对应的RoomId。注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 房间信息RoomType，必须和转录的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。
+	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
+
+	// 转录服务加入TRTC房间的参数。
+	TranscriptionParam *TranscriptionParam `json:"TranscriptionParam,omitnil,omitempty" name:"TranscriptionParam"`
+
+	// 转录服务ASR使用的参数。
+	AsrParam *AsrParam `json:"AsrParam,omitnil,omitempty" name:"AsrParam"`
+
+	// 转录服务翻译使用的参数。
+	TranslationParam *TranslationParam `json:"TranslationParam,omitnil,omitempty" name:"TranslationParam"`
+}
+
+type CreateCloudTranscriptionRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转录的房间所对应的SdkAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，转录的TRTC房间所对应的RoomId。注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 房间信息RoomType，必须和转录的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。
+	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
+
+	// 转录服务加入TRTC房间的参数。
+	TranscriptionParam *TranscriptionParam `json:"TranscriptionParam,omitnil,omitempty" name:"TranscriptionParam"`
+
+	// 转录服务ASR使用的参数。
+	AsrParam *AsrParam `json:"AsrParam,omitnil,omitempty" name:"AsrParam"`
+
+	// 转录服务翻译使用的参数。
+	TranslationParam *TranslationParam `json:"TranslationParam,omitnil,omitempty" name:"TranslationParam"`
+}
+
+func (r *CreateCloudTranscriptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudTranscriptionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	delete(f, "RoomIdType")
+	delete(f, "TranscriptionParam")
+	delete(f, "AsrParam")
+	delete(f, "TranslationParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudTranscriptionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCloudTranscriptionResponseParams struct {
+	// 用于唯一标识转录任务，由腾讯云服务端生成，后续查询和停止请求都需要携带TaskID参数。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCloudTranscriptionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCloudTranscriptionResponseParams `json:"Response"`
+}
+
+func (r *CreateCloudTranscriptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudTranscriptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePictureRequestParams struct {
 	// 应用id
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -1194,6 +1344,70 @@ func (r *DeleteCloudSliceTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCloudSliceTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudTranscriptionRequestParams struct {
+	// TRTC的SDKAppId，和转录的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 转录任务的唯一Id，在启动转录成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DeleteCloudTranscriptionRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的SDKAppId，和转录的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 转录任务的唯一Id，在启动转录成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteCloudTranscriptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudTranscriptionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudTranscriptionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudTranscriptionResponseParams struct {
+	// 转录服务分配的任务 ID。任务 ID 是对一次转录生命周期过程的唯一标识，结束转录时会失去意义。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCloudTranscriptionResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCloudTranscriptionResponseParams `json:"Response"`
+}
+
+func (r *DeleteCloudTranscriptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudTranscriptionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1858,6 +2072,76 @@ func (r *DescribeCloudSliceTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCloudSliceTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudTranscriptionRequestParams struct {
+	// TRTC的SDKAppId，和转录的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 转录任务的唯一Id，在启动转录成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeCloudTranscriptionRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的SDKAppId，和转录的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 转录任务的唯一Id，在启动转录成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeCloudTranscriptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudTranscriptionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudTranscriptionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudTranscriptionResponseParams struct {
+	// 任务开始时间。
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 转录任务状态。Idle：表示当前转录任务空闲中 InProgress：表示当前转录任务正在进行中。 Exited：表示当前转录任务正在退出的过程中。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 转录任务的唯一Id。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudTranscriptionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudTranscriptionResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudTranscriptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudTranscriptionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3794,6 +4078,9 @@ type InvokeLLM struct {
 
 	// 是否允许该文本打断机器人说话
 	Interrupt *bool `json:"Interrupt,omitnil,omitempty" name:"Interrupt"`
+
+	// 实验性参数,联系后台使用
+	ExperimentalParams *string `json:"ExperimentalParams,omitnil,omitempty" name:"ExperimentalParams"`
 }
 
 type LayoutParams struct {
@@ -7065,6 +7352,28 @@ type TimeValue struct {
 	Value *float64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type TranscriptionParam struct {
+	// 转录服务在TRTC房间使用的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个userId不能与其他TRTC或者转录服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 转录服务加入TRTC房间的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+	UserSig *string `json:"UserSig,omitnil,omitempty" name:"UserSig"`
+
+	// 转录用户白名单，开始服务时，为空或不填表示转录所有主播音频，填具体值表示转录指定主播音频。
+	// 使用黑白名单时，同一个用户同时在黑白名单时，以黑名单为主。
+	SubscribeList []*TranscriptionUserInfoParams `json:"SubscribeList,omitnil,omitempty" name:"SubscribeList"`
+
+	// 转录用户黑名单，为空或不填表示无黑名单，填具体值表示不转录指定主播音频。
+	// 同一个用户同时在黑白名单时，以黑名单为主。
+	UnSubscribeList []*TranscriptionUserInfoParams `json:"UnSubscribeList,omitnil,omitempty" name:"UnSubscribeList"`
+
+	// 所有参与转录的主播持续离开TRTC房间或切换成观众超过MaxIdleTime的时长，自动停止转录任务，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。
+	MaxIdleTime *uint64 `json:"MaxIdleTime,omitnil,omitempty" name:"MaxIdleTime"`
+
+	// 自定义通道：支持自定义信息，只可以填0-2， 0表示不开启自定义通道，1表示开启自定义数据，2表示开启自定义消息。不填默认不开启自定义通道。注意：填1自定义数据只对 SDK版本 >= 5.15.0生效。
+	SendCustomMode *uint64 `json:"SendCustomMode,omitnil,omitempty" name:"SendCustomMode"`
+}
+
 type TranscriptionParams struct {
 	// 转录机器人的UserId，用于进房发起转录任务。【注意】这个UserId不能与当前房间内的主播观众[UserId](https://cloud.tencent.com/document/product/647/46351#userid)重复。如果一个房间发起多个转录任务时，机器人的userid也不能相互重复，否则会中断前一个任务。需要保证转录机器人UserId在房间内唯一。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
@@ -7103,6 +7412,11 @@ type TranscriptionParams struct {
 	TurnDetection *TurnDetection `json:"TurnDetection,omitnil,omitempty" name:"TurnDetection"`
 }
 
+type TranscriptionUserInfoParams struct {
+	// 用户ID。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
 type TranslationConfig struct {
 	// 翻译的目标语言，目标语种列表（ISO 639-1）
 	TargetLanguages []*string `json:"TargetLanguages,omitnil,omitempty" name:"TargetLanguages"`
@@ -7115,6 +7429,11 @@ type TranslationConfig struct {
 
 	// 翻译术语集合
 	Terminology []*Terminology `json:"Terminology,omitnil,omitempty" name:"Terminology"`
+}
+
+type TranslationParam struct {
+	// 翻译的目标语言，示例值["en", "ja"]。目标语种列表[中文 "zh"，英语 "en"，越南语 "vi"，日语 "ja"，韩语 "ko"，印度尼西亚语 "id"，泰语 "th"，葡萄牙语 "pt"，阿拉伯语 "ar"，西班牙语 "es"，法语 "fr"，马来语 "ms"，德语 "de"，意大利语 "it"，俄语 "ru"]。
+	TargetLang []*string `json:"TargetLang,omitnil,omitempty" name:"TargetLang"`
 }
 
 type TrtcUsage struct {

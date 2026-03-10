@@ -15681,7 +15681,7 @@ type ExportContractReviewResultRequestParams struct {
 	// 合同审查任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 导出文件类型。1  = 带风险批注文件; 2 = 审查结果＆摘要（.xIsx）
+	// 导出文件类型。1  = 带风险批注文件; 2 = 审查结果＆摘要（.xIsx）; 3 = 不带批注文件
 	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
 
 	// 代理企业和员工的信息。
@@ -15699,7 +15699,7 @@ type ExportContractReviewResultRequest struct {
 	// 合同审查任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 导出文件类型。1  = 带风险批注文件; 2 = 审查结果＆摘要（.xIsx）
+	// 导出文件类型。1  = 带风险批注文件; 2 = 审查结果＆摘要（.xIsx）; 3 = 不带批注文件
 	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
 
 	// 代理企业和员工的信息。

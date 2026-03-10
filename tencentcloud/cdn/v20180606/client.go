@@ -4883,6 +4883,7 @@ func NewUpdateDomainConfigResponse() (response *UpdateDomainConfigResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
+//  FAILEDOPERATION_SSLCERTCANNOTGETORDER = "FailedOperation.SslCertCannotGetOrder"
 //  FAILEDOPERATION_SSLCERTNOTFOUND = "FailedOperation.SslCertNotFound"
 //  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
@@ -4910,8 +4911,12 @@ func NewUpdateDomainConfigResponse() (response *UpdateDomainConfigResponse) {
 //  INVALIDPARAMETER_PATHREGEXTOOMANYSUBPATTERN = "InvalidParameter.PathRegexTooManySubPattern"
 //  INVALIDPARAMETER_REMOTEAUTHINVALIDPLATFORM = "InvalidParameter.RemoteAuthInvalidPlatform"
 //  INVALIDPARAMETER_REMOTEAUTHINVALIDPROTOCOL = "InvalidParameter.RemoteAuthInvalidProtocol"
+//  INVALIDPARAMETER_SSLCERTCHAINERROR = "InvalidParameter.SslCertChainError"
+//  INVALIDPARAMETER_SSLCERTMATCHERROR = "InvalidParameter.SslCertMatchError"
+//  INVALIDPARAMETER_SSLCERTPARSEERROR = "InvalidParameter.SslCertParseError"
 //  LIMITEXCEEDED_CDNCONFIGTOOMANYCACHERULES = "LimitExceeded.CdnConfigTooManyCacheRules"
 //  LIMITEXCEEDED_CDNHOSTOPTOOOFTEN = "LimitExceeded.CdnHostOpTooOften"
+//  LIMITEXCEEDED_SSLCERTREQUESTLIMITEXCEEDED = "LimitExceeded.SslCertRequestLimitExceeded"
 //  OPERATIONDENIED_SHARECACHEAREADNSNOTMATCH = "OperationDenied.ShareCacheAreaDnsNotMatch"
 //  RESOURCEINUSE_CDNHOSTEXISTS = "ResourceInUse.CdnHostExists"
 //  RESOURCEINUSE_CDNOPINPROGRESS = "ResourceInUse.CdnOpInProgress"
@@ -4948,6 +4953,7 @@ func (c *Client) UpdateDomainConfig(request *UpdateDomainConfigRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
+//  FAILEDOPERATION_SSLCERTCANNOTGETORDER = "FailedOperation.SslCertCannotGetOrder"
 //  FAILEDOPERATION_SSLCERTNOTFOUND = "FailedOperation.SslCertNotFound"
 //  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
@@ -4975,8 +4981,12 @@ func (c *Client) UpdateDomainConfig(request *UpdateDomainConfigRequest) (respons
 //  INVALIDPARAMETER_PATHREGEXTOOMANYSUBPATTERN = "InvalidParameter.PathRegexTooManySubPattern"
 //  INVALIDPARAMETER_REMOTEAUTHINVALIDPLATFORM = "InvalidParameter.RemoteAuthInvalidPlatform"
 //  INVALIDPARAMETER_REMOTEAUTHINVALIDPROTOCOL = "InvalidParameter.RemoteAuthInvalidProtocol"
+//  INVALIDPARAMETER_SSLCERTCHAINERROR = "InvalidParameter.SslCertChainError"
+//  INVALIDPARAMETER_SSLCERTMATCHERROR = "InvalidParameter.SslCertMatchError"
+//  INVALIDPARAMETER_SSLCERTPARSEERROR = "InvalidParameter.SslCertParseError"
 //  LIMITEXCEEDED_CDNCONFIGTOOMANYCACHERULES = "LimitExceeded.CdnConfigTooManyCacheRules"
 //  LIMITEXCEEDED_CDNHOSTOPTOOOFTEN = "LimitExceeded.CdnHostOpTooOften"
+//  LIMITEXCEEDED_SSLCERTREQUESTLIMITEXCEEDED = "LimitExceeded.SslCertRequestLimitExceeded"
 //  OPERATIONDENIED_SHARECACHEAREADNSNOTMATCH = "OperationDenied.ShareCacheAreaDnsNotMatch"
 //  RESOURCEINUSE_CDNHOSTEXISTS = "ResourceInUse.CdnHostExists"
 //  RESOURCEINUSE_CDNOPINPROGRESS = "ResourceInUse.CdnOpInProgress"

@@ -38,6 +38,9 @@ const (
 	// 云端切片方法不支持。
 	FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
 
+	// 云端转录方法不支持。
+	FAILEDOPERATION_CTUNSUPPORTMETHOD = "FailedOperation.CTUnsupportMethod"
+
 	// Cos上传出现异常。
 	FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
 
@@ -106,6 +109,9 @@ const (
 
 	// 云端切片内部服务错误
 	INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+
+	// 云端转录内部服务错误。
+	INTERNALERROR_CTINTERNALERROR = "InternalError.CTInternalError"
 
 	// 数据库查询异常。
 	INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -305,11 +311,17 @@ const (
 	// 无效的APIKey
 	MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
 
+	// 缺少ASR模型参数Lang。
+	MISSINGPARAMETER_ASRLANG = "MissingParameter.ASRLang"
+
 	// 缺少AccessKey参数。
 	MISSINGPARAMETER_ACCESSKEY = "MissingParameter.AccessKey"
 
 	// 缺少AppId参数。
 	MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+
+	// 缺少AsrParam参数。
+	MISSINGPARAMETER_ASRPARAM = "MissingParameter.AsrParam"
 
 	// EncodeParams中缺少音频输出参数。
 	MISSINGPARAMETER_AUDIOENCODEPARAMS = "MissingParameter.AudioEncodeParams"
@@ -394,6 +406,9 @@ const (
 
 	// 缺少TaskId参数。
 	MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+
+	// 缺少转录参数TranscriptionParam。
+	MISSINGPARAMETER_TRANSCRIPTIONPARAM = "MissingParameter.TranscriptionParam"
 
 	// 缺少UserId参数。
 	MISSINGPARAMETER_USERID = "MissingParameter.UserId"

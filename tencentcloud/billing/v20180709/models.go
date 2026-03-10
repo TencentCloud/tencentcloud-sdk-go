@@ -5662,33 +5662,33 @@ func (r *DescribeAllocationUnitDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBillAdjustInfoRequestParams struct {
-	// 格式：yyyy-MM
-	// 账单月份，month和timeFrom&timeTo必传一个，如果有传timeFrom&timeTo则month字段无效
+	// <p>格式：yyyy-MM<br>账单月份，month和timeFrom&amp;timeTo必传一个，如果有传timeFrom&amp;timeTo则month字段无效</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 格式：yyyy-MM-dd
-	// 开始时间，month和timeFrom&timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据
+	// <p>格式：yyyy-MM-dd<br>开始时间，month和timeFrom&amp;timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据</p>
 	TimeFrom *string `json:"TimeFrom,omitnil,omitempty" name:"TimeFrom"`
 
-	// 格式：yyyy-MM-dd
-	// 截止时间，month和timeFrom&timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据
+	// <p>格式：yyyy-MM-dd<br>截止时间，month和timeFrom&amp;timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据</p>
 	TimeTo *string `json:"TimeTo,omitnil,omitempty" name:"TimeTo"`
+
+	// <p>支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN</p>
+	PayerUin *string `json:"PayerUin,omitnil,omitempty" name:"PayerUin"`
 }
 
 type DescribeBillAdjustInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 格式：yyyy-MM
-	// 账单月份，month和timeFrom&timeTo必传一个，如果有传timeFrom&timeTo则month字段无效
+	// <p>格式：yyyy-MM<br>账单月份，month和timeFrom&amp;timeTo必传一个，如果有传timeFrom&amp;timeTo则month字段无效</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 格式：yyyy-MM-dd
-	// 开始时间，month和timeFrom&timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据
+	// <p>格式：yyyy-MM-dd<br>开始时间，month和timeFrom&amp;timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据</p>
 	TimeFrom *string `json:"TimeFrom,omitnil,omitempty" name:"TimeFrom"`
 
-	// 格式：yyyy-MM-dd
-	// 截止时间，month和timeFrom&timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据
+	// <p>格式：yyyy-MM-dd<br>截止时间，month和timeFrom&amp;timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据</p>
 	TimeTo *string `json:"TimeTo,omitnil,omitempty" name:"TimeTo"`
+
+	// <p>支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN</p>
+	PayerUin *string `json:"PayerUin,omitnil,omitempty" name:"PayerUin"`
 }
 
 func (r *DescribeBillAdjustInfoRequest) ToJsonString() string {
@@ -5706,6 +5706,7 @@ func (r *DescribeBillAdjustInfoRequest) FromJsonString(s string) error {
 	delete(f, "Month")
 	delete(f, "TimeFrom")
 	delete(f, "TimeTo")
+	delete(f, "PayerUin")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillAdjustInfoRequest has unknown keys!", "")
 	}
@@ -5714,10 +5715,10 @@ func (r *DescribeBillAdjustInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBillAdjustInfoResponseParams struct {
-	// 数据总量
+	// <p>数据总量</p>
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 明细数据
+	// <p>明细数据</p>
 	Data []*AdjustInfoDetail `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7329,33 +7330,39 @@ func (r *DescribeBillSummaryForOrganizationResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeBillSummaryRequestParams struct {
-	// 账单月份，格式为2023-04
+	// <p>账单月份，格式为2023-04</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 账单维度类型，枚举值如下：business、project、region、payMode、tag
+	// <p>账单维度类型，枚举值如下：business、project、region、payMode、tag</p>
 	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
 
-	// 标签键，GroupType=tag获取标签维度账单时传
+	// <p>标签键，GroupType=tag获取标签维度账单时传</p>
 	TagKey []*string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// 操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+	// <p>操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）</p>
 	OperateUin *string `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
+
+	// <p>支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN</p>
+	PayerUin *string `json:"PayerUin,omitnil,omitempty" name:"PayerUin"`
 }
 
 type DescribeBillSummaryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 账单月份，格式为2023-04
+	// <p>账单月份，格式为2023-04</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 账单维度类型，枚举值如下：business、project、region、payMode、tag
+	// <p>账单维度类型，枚举值如下：business、project、region、payMode、tag</p>
 	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
 
-	// 标签键，GroupType=tag获取标签维度账单时传
+	// <p>标签键，GroupType=tag获取标签维度账单时传</p>
 	TagKey []*string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// 操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+	// <p>操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）</p>
 	OperateUin *string `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
+
+	// <p>支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN</p>
+	PayerUin *string `json:"PayerUin,omitnil,omitempty" name:"PayerUin"`
 }
 
 func (r *DescribeBillSummaryRequest) ToJsonString() string {
@@ -7374,6 +7381,7 @@ func (r *DescribeBillSummaryRequest) FromJsonString(s string) error {
 	delete(f, "GroupType")
 	delete(f, "TagKey")
 	delete(f, "OperateUin")
+	delete(f, "PayerUin")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillSummaryRequest has unknown keys!", "")
 	}
@@ -7382,10 +7390,10 @@ func (r *DescribeBillSummaryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBillSummaryResponseParams struct {
-	// 数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+	// <p>数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）</p>
 	Ready *uint64 `json:"Ready,omitnil,omitempty" name:"Ready"`
 
-	// 账单多维度汇总消费详情
+	// <p>账单多维度汇总消费详情</p>
 	SummaryDetail []*SummaryDetail `json:"SummaryDetail,omitnil,omitempty" name:"SummaryDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

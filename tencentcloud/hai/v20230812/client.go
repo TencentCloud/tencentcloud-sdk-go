@@ -553,6 +553,58 @@ func (c *Client) DescribeServiceLoginSettingsWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeServicesRequest() (request *DescribeServicesRequest) {
+    request = &DescribeServicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "DescribeServices")
+    
+    
+    return
+}
+
+func NewDescribeServicesResponse() (response *DescribeServicesResponse) {
+    response = &DescribeServicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeServices
+// 本接口 (DescribeServices) 用于查询一个或多个服务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
+//  INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"
+func (c *Client) DescribeServices(request *DescribeServicesRequest) (response *DescribeServicesResponse, err error) {
+    return c.DescribeServicesWithContext(context.Background(), request)
+}
+
+// DescribeServices
+// 本接口 (DescribeServices) 用于查询一个或多个服务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
+//  INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"
+func (c *Client) DescribeServicesWithContext(ctx context.Context, request *DescribeServicesRequest) (response *DescribeServicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeServicesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "DescribeServices")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeServicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquirePriceRunInstancesRequest() (request *InquirePriceRunInstancesRequest) {
     request = &InquirePriceRunInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

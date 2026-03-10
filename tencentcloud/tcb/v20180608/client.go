@@ -1077,6 +1077,10 @@ func NewDeleteTableResponse() (response *DeleteTableResponse) {
 // DeleteTable
 // 本接口(DeleteTable)用于删除表，删除表后表中数据将会被删除且无法恢复，请谨慎操作
 //
+// 
+//
+// 接口入参中的 Tag 为 flexdb 的实例 Id，可以通过 [DescribeEnvs](https://cloud.tencent.com/document/api/876/34820) 接口返回的 EnvList[0].Databases[0].InstanceId 获取
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_LISTTABLE = "FailedOperation.ListTable"
@@ -1098,6 +1102,10 @@ func (c *Client) DeleteTable(request *DeleteTableRequest) (response *DeleteTable
 
 // DeleteTable
 // 本接口(DeleteTable)用于删除表，删除表后表中数据将会被删除且无法恢复，请谨慎操作
+//
+// 
+//
+// 接口入参中的 Tag 为 flexdb 的实例 Id，可以通过 [DescribeEnvs](https://cloud.tencent.com/document/api/876/34820) 接口返回的 EnvList[0].Databases[0].InstanceId 获取
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2189,6 +2197,10 @@ func NewDescribeTableResponse() (response *DescribeTableResponse) {
 // DescribeTable
 // 查询表的相关信息，包括索引等信息
 //
+// 
+//
+// 接口入参中的 Tag 为 flexdb 的实例 Id，可以通过 [DescribeEnvs](https://cloud.tencent.com/document/api/876/34820) 接口返回的 EnvList[0].Databases[0].InstanceId 获取
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_LISTTABLE = "FailedOperation.ListTable"
@@ -2211,6 +2223,10 @@ func (c *Client) DescribeTable(request *DescribeTableRequest) (response *Describ
 
 // DescribeTable
 // 查询表的相关信息，包括索引等信息
+//
+// 
+//
+// 接口入参中的 Tag 为 flexdb 的实例 Id，可以通过 [DescribeEnvs](https://cloud.tencent.com/document/api/876/34820) 接口返回的 EnvList[0].Databases[0].InstanceId 获取
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2265,7 +2281,7 @@ func NewDescribeTablesResponse() (response *DescribeTablesResponse) {
 }
 
 // DescribeTables
-// 本接口(ListTables)用于查询所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等
+// 本接口(DescribeTables)用于查询所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2278,6 +2294,9 @@ func NewDescribeTablesResponse() (response *DescribeTablesResponse) {
 //  LIMITEXCEEDED_OUTOFREADREQUESTQUOTA = "LimitExceeded.OutOfReadRequestQuota"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_CONNECTOR = "ResourceNotFound.Connector"
+//  RESOURCENOTFOUND_TABLE = "ResourceNotFound.Table"
+//  RESOURCEUNAVAILABLE_MONGOISOLATED = "ResourceUnavailable.MongoIsolated"
 //  RESOURCEUNAVAILABLE_RESOURCEOVERDUE = "ResourceUnavailable.ResourceOverdue"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTables(request *DescribeTablesRequest) (response *DescribeTablesResponse, err error) {
@@ -2285,7 +2304,7 @@ func (c *Client) DescribeTables(request *DescribeTablesRequest) (response *Descr
 }
 
 // DescribeTables
-// 本接口(ListTables)用于查询所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等
+// 本接口(DescribeTables)用于查询所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2298,6 +2317,9 @@ func (c *Client) DescribeTables(request *DescribeTablesRequest) (response *Descr
 //  LIMITEXCEEDED_OUTOFREADREQUESTQUOTA = "LimitExceeded.OutOfReadRequestQuota"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_CONNECTOR = "ResourceNotFound.Connector"
+//  RESOURCENOTFOUND_TABLE = "ResourceNotFound.Table"
+//  RESOURCEUNAVAILABLE_MONGOISOLATED = "ResourceUnavailable.MongoIsolated"
 //  RESOURCEUNAVAILABLE_RESOURCEOVERDUE = "ResourceUnavailable.ResourceOverdue"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTablesWithContext(ctx context.Context, request *DescribeTablesRequest) (response *DescribeTablesResponse, err error) {

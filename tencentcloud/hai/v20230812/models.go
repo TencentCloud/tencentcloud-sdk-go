@@ -50,6 +50,51 @@ type ApplicationInfo struct {
 	ApplicationSize *int64 `json:"ApplicationSize,omitnil,omitempty" name:"ApplicationSize"`
 }
 
+type COSStorage struct {
+	// cos桶uri
+	URI *string `json:"URI,omitnil,omitempty" name:"URI"`
+}
+
+type ComputeDetail struct {
+	// 算力套餐ID
+	BundleType *string `json:"BundleType,omitnil,omitempty" name:"BundleType"`
+
+	// 节点数量
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 显卡数量
+	GPUCount *string `json:"GPUCount,omitnil,omitempty" name:"GPUCount"`
+
+	// 显存
+	GPUMemory *string `json:"GPUMemory,omitnil,omitempty" name:"GPUMemory"`
+
+	// 算力
+	GPUPerformance *string `json:"GPUPerformance,omitnil,omitempty" name:"GPUPerformance"`
+
+	// CPU核数
+	CPU *string `json:"CPU,omitnil,omitempty" name:"CPU"`
+
+	// 内存
+	Memory *string `json:"Memory,omitnil,omitempty" name:"Memory"`
+}
+
+type ContainerInfo struct {
+	// 镜像相关信息
+	Image *ImageInfo `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// 服务监听端口
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 启动命令
+	Scripts []*string `json:"Scripts,omitnil,omitempty" name:"Scripts"`
+
+	// 环境变量列表
+	Envs []*EnvParam `json:"Envs,omitnil,omitempty" name:"Envs"`
+
+	// 存储挂载配置
+	Storages []*StorageInfo `json:"Storages,omitnil,omitempty" name:"Storages"`
+}
+
 // Predefined struct for user
 type CreateApplicationRequestParams struct {
 	// 需要制作自定义应用的HAI实例ID
@@ -190,6 +235,14 @@ func (r *CreateMuskPromptResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateMuskPromptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeploymentConfig struct {
+	// 容器配置
+	Container *ContainerInfo `json:"Container,omitnil,omitempty" name:"Container"`
+
+	// 容器数量
+	ContainerCount *int64 `json:"ContainerCount,omitnil,omitempty" name:"ContainerCount"`
 }
 
 // Predefined struct for user
@@ -691,12 +744,109 @@ func (r *DescribeServiceLoginSettingsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeServicesRequestParams struct {
+	// 服务列表
+	ServiceIds []*string `json:"ServiceIds,omitnil,omitempty" name:"ServiceIds"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeServicesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务列表
+	ServiceIds []*string `json:"ServiceIds,omitnil,omitempty" name:"ServiceIds"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeServicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServicesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceIds")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServicesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServicesResponseParams struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 服务列表
+	ServiceInfoSet []*ServiceDetail `json:"ServiceInfoSet,omitnil,omitempty" name:"ServiceInfoSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeServicesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeServicesResponseParams `json:"Response"`
+}
+
+func (r *DescribeServicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServicesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EnvParam struct {
+	// 环境变量名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 环境变量值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type Filter struct {
 	// 需要过滤的字段。	
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 字段的过滤值。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type HiCacheInfo struct {
+	// HiCache缓存等级
+	HiCacheLevel *string `json:"HiCacheLevel,omitnil,omitempty" name:"HiCacheLevel"`
+}
+
+type HyperParam struct {
+	// HiCache缓存
+	HiCache *HiCacheInfo `json:"HiCache,omitnil,omitempty" name:"HiCache"`
+}
+
+type ImageInfo struct {
+	// tcr仓库地址
+	ImageRegistryUrl *string `json:"ImageRegistryUrl,omitnil,omitempty" name:"ImageRegistryUrl"`
 }
 
 // Predefined struct for user
@@ -1326,6 +1476,38 @@ type SceneInfo struct {
 	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
 }
 
+type ServiceDetail struct {
+	// 服务id
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 服务名称
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 服务状态
+	ServiceState *string `json:"ServiceState,omitnil,omitempty" name:"ServiceState"`
+
+	// 运行中的副本数
+	RunningReplicas *uint64 `json:"RunningReplicas,omitnil,omitempty" name:"RunningReplicas"`
+
+	// 期望的副本总数
+	TotalReplicas *uint64 `json:"TotalReplicas,omitnil,omitempty" name:"TotalReplicas"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 算力套餐详情
+	ComputeSet []*ComputeDetail `json:"ComputeSet,omitnil,omitempty" name:"ComputeSet"`
+
+	// 模型名称
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 服务部署信息
+	DeploymentConfigs []*DeploymentConfig `json:"DeploymentConfigs,omitnil,omitempty" name:"DeploymentConfigs"`
+
+	// 服务超参数配置
+	HyperParam *HyperParam `json:"HyperParam,omitnil,omitempty" name:"HyperParam"`
+}
+
 type ServicePriceDetail struct {
 	// 推理集群价格信息	
 	ServicePrice *ItemPrice `json:"ServicePrice,omitnil,omitempty" name:"ServicePrice"`
@@ -1468,6 +1650,14 @@ func (r *StopInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type StorageInfo struct {
+	// 挂载路径
+	MountPath *string `json:"MountPath,omitnil,omitempty" name:"MountPath"`
+
+	// cos挂载信息
+	COSStorage *COSStorage `json:"COSStorage,omitnil,omitempty" name:"COSStorage"`
 }
 
 type SystemDisk struct {
