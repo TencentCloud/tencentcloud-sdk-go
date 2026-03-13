@@ -179,7 +179,7 @@
 | ses | [邮件推送](https://cloud.tencent.com/document/product/1288) | [查看](https://cloud.tencent.com/document/product/1288/51063) | 2026-02-26 01:53:11 |
 | smh | [智能媒资托管](https://cloud.tencent.com/document/product/1339) | [查看](https://cloud.tencent.com/document/product/1339/69100) | 2025-08-20 02:32:57 |
 | smop | [腾讯安心用户运营平台](https://cloud.tencent.com/document/product/1310) | [查看](https://cloud.tencent.com/document/product/1310/89044) | 2025-04-10 01:23:52 |
-| sms | [短信](https://cloud.tencent.com/document/product/382) | [查看](https://cloud.tencent.com/document/product/382/52078) | 2025-11-19 02:32:05 |
+| sms | [短信](https://cloud.tencent.com/document/product/382) | [查看](https://cloud.tencent.com/document/product/382/52078) | 2026-03-13 12:06:11 |
 | soe | [智聆口语评测](https://cloud.tencent.com/document/product/884) | [查看](https://cloud.tencent.com/document/product/884/19316) | 2025-11-19 02:32:48 |
 | sqlserver | [云数据库 SQL Server](https://cloud.tencent.com/document/product/238) | [查看](https://cloud.tencent.com/document/product/238/19933) | 2025-12-08 02:59:09 |
 | ssa | [安全运营中心](https://cloud.tencent.com/document/product/664) | [查看](https://cloud.tencent.com/document/product/664/51416) | 2023-11-15 02:18:28 |
@@ -241,7 +241,7 @@
 | vtc | [视频转译](https://cloud.tencent.com/document/product/1769) | [查看](https://cloud.tencent.com/document/product/1769/106287) | 2025-11-19 03:30:03 |
 | waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | [查看](https://cloud.tencent.com/document/product/627/53619) | 2026-03-11 02:40:26 |
 | wav | [企业微信汽车行业版](https://cloud.tencent.com/document/product/1318) | [查看](https://cloud.tencent.com/document/product/1318/56801) | 2026-03-10 02:49:06 |
-| wedata | [数据开发治理平台 WeData](https://cloud.tencent.com/document/product/1267) | [查看](https://cloud.tencent.com/document/product/1267/123654) | 2026-03-11 02:43:23 |
+| wedata | [数据开发治理平台 WeData](https://cloud.tencent.com/document/product/1267) | [查看](https://cloud.tencent.com/document/product/1267/123654) | 2026-03-13 12:01:25 |
 | weilingwith | [微瓴同业开放平台](https://cloud.tencent.com/document/product/1693) | [查看](https://cloud.tencent.com/document/product/1693/97972) | 2025-12-19 14:32:42 |
 | wimgs | [联网图像搜索](https://cloud.tencent.com/document/product/1815) | [查看](https://cloud.tencent.com/document/product/1815/127098) | 2026-01-05 15:03:02 |
 | wsa | [联网搜索API](https://cloud.tencent.com/document/product/1806) | [查看](https://cloud.tencent.com/document/product/1806/121822) | 2026-01-16 04:01:17 |

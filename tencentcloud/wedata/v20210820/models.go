@@ -839,6 +839,20 @@ type AssetDim struct {
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 }
 
+type AssetDimSimpleVO struct {
+	// ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DimName *string `json:"DimName,omitnil,omitempty" name:"DimName"`
+
+	// 编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DimCode *string `json:"DimCode,omitnil,omitempty" name:"DimCode"`
+}
+
 type AssetDimTableColumn struct {
 	// 表字段名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2833,6 +2847,36 @@ type CandidateDsDTo struct {
 	// 取值描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValueDesc *string `json:"ValueDesc,omitnil,omitempty" name:"ValueDesc"`
+}
+
+type ChangeLog struct {
+	// 变更类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChangeType *string `json:"ChangeType,omitnil,omitempty" name:"ChangeType"`
+
+	// 修改前的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldValue *string `json:"OldValue,omitnil,omitempty" name:"OldValue"`
+
+	// 修改后的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewValue *string `json:"NewValue,omitnil,omitempty" name:"NewValue"`
+
+	// 修改人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifiedAccount *string `json:"ModifiedAccount,omitnil,omitempty" name:"ModifiedAccount"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+
+	// 修改原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChangeReason *string `json:"ChangeReason,omitnil,omitempty" name:"ChangeReason"`
+
+	// 修改人名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifiedAccountName *string `json:"ModifiedAccountName,omitnil,omitempty" name:"ModifiedAccountName"`
 }
 
 // Predefined struct for user
@@ -6784,6 +6828,40 @@ type DailyScoreInfo struct {
 	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
 }
 
+type DataAssetOption struct {
+	// 是否拥有权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasPermission *bool `json:"HasPermission,omitnil,omitempty" name:"HasPermission"`
+
+	// 是否已收藏
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasFavorite *bool `json:"HasFavorite,omitnil,omitempty" name:"HasFavorite"`
+
+	// 其他的操作类型:
+	// 取值：
+	// ProjectIdNull -当前表未设置归属项目；
+	// NotCluster - 非系统源不支持权限申请；
+	// ProjectDisabled - 当前项目已被禁用；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherOperate *string `json:"OtherOperate,omitnil,omitempty" name:"OtherOperate"`
+
+	// 被收藏数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FavoriteCount *int64 `json:"FavoriteCount,omitnil,omitempty" name:"FavoriteCount"`
+
+	// 是否有修改业务权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasBizPermission *bool `json:"HasBizPermission,omitnil,omitempty" name:"HasBizPermission"`
+
+	// 是否有修改归属项目权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasProjectPermission *bool `json:"HasProjectPermission,omitnil,omitempty" name:"HasProjectPermission"`
+
+	// 用户无映射账户，请先完成账户映射后再来申请。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorTips *string `json:"ErrorTips,omitnil,omitempty" name:"ErrorTips"`
+}
+
 type DataCheckStat struct {
 	// 表总数
 	TableTotal *uint64 `json:"TableTotal,omitnil,omitempty" name:"TableTotal"`
@@ -6868,6 +6946,10 @@ type DataServiceRequestParam struct {
 	// 参数描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 关联标准编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StdCode *string `json:"StdCode,omitnil,omitempty" name:"StdCode"`
 }
 
 type DataServiceResponseParam struct {
@@ -6890,6 +6972,278 @@ type DataServiceResponseParam struct {
 	// 参数描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type DataSetRecord struct {
+	// 资产 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
+
+	// 数据源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceName *string `json:"DatasourceName,omitnil,omitempty" name:"DatasourceName"`
+
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 数据资产名称展示名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableNameCn *string `json:"TableNameCn,omitnil,omitempty" name:"TableNameCn"`
+
+	// 数据资产名称展示名称EN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableNameEn *string `json:"TableNameEn,omitnil,omitempty" name:"TableNameEn"`
+
+	// 资产描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 资产热度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeatValue *float64 `json:"HeatValue,omitnil,omitempty" name:"HeatValue"`
+
+	// 标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelNames []*string `json:"LabelNames,omitnil,omitempty" name:"LabelNames"`
+
+	// 负责人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InCharge *string `json:"InCharge,omitnil,omitempty" name:"InCharge"`
+
+	// 元数据采集类型：Table View Index
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetaCrawlType *string `json:"MetaCrawlType,omitnil,omitempty" name:"MetaCrawlType"`
+
+	// 数据资产归属的项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 生命周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LifeTime *int64 `json:"LifeTime,omitnil,omitempty" name:"LifeTime"`
+
+	// 判断是否是分区表1 是 0否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsPartitionTable *int64 `json:"IsPartitionTable,omitnil,omitempty" name:"IsPartitionTable"`
+
+	// 表字段集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableRecordFieldSet []*SearchColumnDocVO `json:"TableRecordFieldSet,omitnil,omitempty" name:"TableRecordFieldSet"`
+
+	// 表属性评分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TablePropertyScore *TablePropertyScore `json:"TablePropertyScore,omitnil,omitempty" name:"TablePropertyScore"`
+
+	// 数据源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MsType *string `json:"MsType,omitnil,omitempty" name:"MsType"`
+
+	// 数据存储大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageSize *int64 `json:"StorageSize,omitnil,omitempty" name:"StorageSize"`
+
+	// 数据资产等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetLevel *int64 `json:"AssetLevel,omitnil,omitempty" name:"AssetLevel"`
+
+	// 数据资产状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetStatus *int64 `json:"AssetStatus,omitnil,omitempty" name:"AssetStatus"`
+
+	// 数据目录ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizCatalogIds []*string `json:"BizCatalogIds,omitnil,omitempty" name:"BizCatalogIds"`
+
+	// 数据目录名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizCatalogNames []*string `json:"BizCatalogNames,omitnil,omitempty" name:"BizCatalogNames"`
+
+	// 数据源 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *int64 `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 数据库 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseId *string `json:"DatabaseId,omitnil,omitempty" name:"DatabaseId"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 表 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 数据资产操作选项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateOption *DataAssetOption `json:"OperateOption,omitnil,omitempty" name:"OperateOption"`
+
+	// 数据库模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
+	// 环境，取值 prod或者 dev
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Environment *string `json:"Environment,omitnil,omitempty" name:"Environment"`
+
+	// 是否为视图
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsView *bool `json:"IsView,omitnil,omitempty" name:"IsView"`
+
+	// 数据来源技术类型
+	// 取值： HIVE/MYSQL/HBASE/KAFKA等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TechnologyType *string `json:"TechnologyType,omitnil,omitempty" name:"TechnologyType"`
+
+	// 项目名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
+
+	// 项目展示名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectDisplayName *string `json:"ProjectDisplayName,omitnil,omitempty" name:"ProjectDisplayName"`
+
+	// 集群 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 存储大小，已转为如9.31TB:
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageSizeWithUnit *string `json:"StorageSizeWithUnit,omitnil,omitempty" name:"StorageSizeWithUnit"`
+
+	// 多数据源信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CollectDatasourceList []*GovDatasourceInfo `json:"CollectDatasourceList,omitnil,omitempty" name:"CollectDatasourceList"`
+
+	// 集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 数据源Category: 系统源-CLUSTER, DB-自定义源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSourceCategory *string `json:"DataSourceCategory,omitnil,omitempty" name:"DataSourceCategory"`
+
+	// 采集任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CollectId *int64 `json:"CollectId,omitnil,omitempty" name:"CollectId"`
+
+	// 采集唯一性urn
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Urn *string `json:"Urn,omitnil,omitempty" name:"Urn"`
+
+	// 数据资产名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetName *string `json:"AssetName,omitnil,omitempty" name:"AssetName"`
+
+	// 资产运行状态： 任务运行状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetRunningStatus *string `json:"AssetRunningStatus,omitnil,omitempty" name:"AssetRunningStatus"`
+
+	// 任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskTypeId *int64 `json:"TaskTypeId,omitnil,omitempty" name:"TaskTypeId"`
+
+	// 资产运行时间， 任务最近执行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecuteTime *string `json:"ExecuteTime,omitnil,omitempty" name:"ExecuteTime"`
+
+	// 资产日志，任务资产取 自动转交日志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetLog *string `json:"AssetLog,omitnil,omitempty" name:"AssetLog"`
+
+	// 资产类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
+
+	// 任务 Job名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
+
+	// 资产失效时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 安全等级值范围1-10
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LevelRank *int64 `json:"LevelRank,omitnil,omitempty" name:"LevelRank"`
+
+	// 安全等级名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LevelName *string `json:"LevelName,omitnil,omitempty" name:"LevelName"`
+
+	// 资产编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetCode *string `json:"AssetCode,omitnil,omitempty" name:"AssetCode"`
+
+	// 责任人 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerAccount *int64 `json:"OwnerAccount,omitnil,omitempty" name:"OwnerAccount"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 最近访问时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastAccessTime *string `json:"LastAccessTime,omitnil,omitempty" name:"LastAccessTime"`
+
+	// 引擎侧创建人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerByEngine *string `json:"OwnerByEngine,omitnil,omitempty" name:"OwnerByEngine"`
+
+	// 数仓分层 UUID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataLayerUuid *string `json:"DataLayerUuid,omitnil,omitempty" name:"DataLayerUuid"`
+
+	// 数仓分层名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataLayerName *string `json:"DataLayerName,omitnil,omitempty" name:"DataLayerName"`
+
+	// 字段数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnCount *int64 `json:"ColumnCount,omitnil,omitempty" name:"ColumnCount"`
+
+	// 关键字搜索命中的表字段列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SearchHitColumns []*SearchColumnDocVO `json:"SearchHitColumns,omitnil,omitempty" name:"SearchHitColumns"`
+
+	// 标签对象集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelTagList []*LabelTag `json:"LabelTagList,omitnil,omitempty" name:"LabelTagList"`
+
+	// 模型别名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Aliases []*RegisteredModelAlias `json:"Aliases,omitnil,omitempty" name:"Aliases"`
+
+	// 是否已经部署服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDeployed *bool `json:"IsDeployed,omitnil,omitempty" name:"IsDeployed"`
+
+	// 模型标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*RegisteredModelTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 模型类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelType *string `json:"ModelType,omitnil,omitempty" name:"ModelType"`
+
+	// 资产全称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FullName *string `json:"FullName,omitnil,omitempty" name:"FullName"`
+
+	// Catalog名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// Catalog来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetaFrom *string `json:"MetaFrom,omitnil,omitempty" name:"MetaFrom"`
 }
 
 type DataSourceConnectStatus struct {
@@ -10376,6 +10730,144 @@ func (r *DescribeColumnsMetaResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeColumnsMetaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataAssetsRequestParams struct {
+	// 请求来源，WEB 前端；CLIENT 客户端
+	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
+
+	// 过滤字段名称
+	// Name 取值如下
+	//       keyword 搜索关键字
+	//       bizCatalogIds 表示目录分类取值
+	//       DataAssetType 数据资产类型枚举取值：ALL-全部类型、TABLE-数据表
+	//       DatasourceType 数据源类型
+	//       datasourceIds 数据源ID列表
+	//       DatabaseName 数据库名称
+	//       InCharge 负责人
+	//       ProjectId 项目ID
+	//       Label 标签
+	//       ProjectId 数据资产归属的项目ID
+	//       AssetLevel 等级 取值：ALL-全部，40-核心，30-重要，20-一般，10-临时
+	//       OwnerMe 我负责的
+	//       PermissionMe 我有权限的
+	//       MyFavorite 我收藏的
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段列表
+	// 取值：
+	//      Name： Table-按表名，LikeCount-按热度
+	//      Direction： ASC, DESC
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+
+	// 页码，配合pageSize使用
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页数目，配合pageNumber使用
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeDataAssetsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 请求来源，WEB 前端；CLIENT 客户端
+	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
+
+	// 过滤字段名称
+	// Name 取值如下
+	//       keyword 搜索关键字
+	//       bizCatalogIds 表示目录分类取值
+	//       DataAssetType 数据资产类型枚举取值：ALL-全部类型、TABLE-数据表
+	//       DatasourceType 数据源类型
+	//       datasourceIds 数据源ID列表
+	//       DatabaseName 数据库名称
+	//       InCharge 负责人
+	//       ProjectId 项目ID
+	//       Label 标签
+	//       ProjectId 数据资产归属的项目ID
+	//       AssetLevel 等级 取值：ALL-全部，40-核心，30-重要，20-一般，10-临时
+	//       OwnerMe 我负责的
+	//       PermissionMe 我有权限的
+	//       MyFavorite 我收藏的
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段列表
+	// 取值：
+	//      Name： Table-按表名，LikeCount-按热度
+	//      Direction： ASC, DESC
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+
+	// 页码，配合pageSize使用
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页数目，配合pageNumber使用
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeDataAssetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataAssetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RequestFromSource")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataAssetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataAssetsResponseParams struct {
+	// 数据资产记录列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSetRecords []*DataSetRecord `json:"DataSetRecords,omitnil,omitempty" name:"DataSetRecords"`
+
+	// 总数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 页码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 指标列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndicatorRecords []*IndicatorBaseInfo `json:"IndicatorRecords,omitnil,omitempty" name:"IndicatorRecords"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataAssetsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataAssetsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataAssetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataAssetsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -19889,7 +20381,7 @@ type DescribeTableMetaResponseParams struct {
 
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagVoteSumList *TagVoteSum `json:"TagVoteSumList,omitnil,omitempty" name:"TagVoteSumList"`
+	TagVoteSumList []*TagVoteSum `json:"TagVoteSumList,omitnil,omitempty" name:"TagVoteSumList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -26109,6 +26601,180 @@ type GovDatasourceInfo struct {
 	DatasourceEnv *string `json:"DatasourceEnv,omitnil,omitempty" name:"DatasourceEnv"`
 }
 
+type IndicatorBaseInfo struct {
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 指标编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndicatorCode *string `json:"IndicatorCode,omitnil,omitempty" name:"IndicatorCode"`
+
+	// 指标类型（1-原子指标 2-衍生指标 3-复合指标）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndicatorType *int64 `json:"IndicatorType,omitnil,omitempty" name:"IndicatorType"`
+
+	// 业务负责人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizOwner *string `json:"BizOwner,omitnil,omitempty" name:"BizOwner"`
+
+	// 技术负责人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TechOwner *string `json:"TechOwner,omitnil,omitempty" name:"TechOwner"`
+
+	// 业务口径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizCaliber *string `json:"BizCaliber,omitnil,omitempty" name:"BizCaliber"`
+
+	// 指标描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 等级：40-L4核心 30-L3重要 20-L2一般 10-L1临时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 计算逻辑
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalLogic *string `json:"CalLogic,omitnil,omitempty" name:"CalLogic"`
+
+	// 计算频次
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalFreq *string `json:"CalFreq,omitnil,omitempty" name:"CalFreq"`
+
+	// 度量单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MeasureUnit *int64 `json:"MeasureUnit,omitnil,omitempty" name:"MeasureUnit"`
+
+	// 精度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Accuracy *int64 `json:"Accuracy,omitnil,omitempty" name:"Accuracy"`
+
+	// 关联指标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceIndicatorIds []*IndicatorBaseSimpleInfo `json:"SourceIndicatorIds,omitnil,omitempty" name:"SourceIndicatorIds"`
+
+	// ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 维度列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DimensionIds []*AssetDimSimpleVO `json:"DimensionIds,omitnil,omitempty" name:"DimensionIds"`
+
+	// 文件夹ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FolderId *int64 `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 业务负责人名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizOwnerName *string `json:"BizOwnerName,omitnil,omitempty" name:"BizOwnerName"`
+
+	// 技术负责人名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TechOwnerName *string `json:"TechOwnerName,omitnil,omitempty" name:"TechOwnerName"`
+
+	// 发布时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublishTime *string `json:"PublishTime,omitnil,omitempty" name:"PublishTime"`
+
+	// 发布人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublishAccount *string `json:"PublishAccount,omitnil,omitempty" name:"PublishAccount"`
+
+	// 发布人名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublishAccountName *string `json:"PublishAccountName,omitnil,omitempty" name:"PublishAccountName"`
+
+	// 最后修订时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastModifyTime *string `json:"LastModifyTime,omitnil,omitempty" name:"LastModifyTime"`
+
+	// 最后修订人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastModifyAccount *string `json:"LastModifyAccount,omitnil,omitempty" name:"LastModifyAccount"`
+
+	// 最后修订人名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastModifyAccountName *string `json:"LastModifyAccountName,omitnil,omitempty" name:"LastModifyAccountName"`
+
+	// 变更日志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChangeLogList []*ChangeLog `json:"ChangeLogList,omitnil,omitempty" name:"ChangeLogList"`
+
+	// 字段列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableColumns []*AssetDimTableColumn `json:"TableColumns,omitnil,omitempty" name:"TableColumns"`
+
+	// 关联指标(包含多层级关联指标)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllSourceIndicatorIds []*IndicatorBaseInfo `json:"AllSourceIndicatorIds,omitnil,omitempty" name:"AllSourceIndicatorIds"`
+
+	// 资产guid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
+
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
+
+	// 资产编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetCode *string `json:"AssetCode,omitnil,omitempty" name:"AssetCode"`
+
+	// 被关联的指标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelatedIndicatorIds []*IndicatorBaseInfo `json:"RelatedIndicatorIds,omitnil,omitempty" name:"RelatedIndicatorIds"`
+
+	// 数据目录ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizCatalogIds []*int64 `json:"BizCatalogIds,omitnil,omitempty" name:"BizCatalogIds"`
+
+	// 数据目录名称列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizCatalogNames []*string `json:"BizCatalogNames,omitnil,omitempty" name:"BizCatalogNames"`
+
+	// 资产等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetLevel *int64 `json:"AssetLevel,omitnil,omitempty" name:"AssetLevel"`
+
+	// 资产发布状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetStatus *int64 `json:"AssetStatus,omitnil,omitempty" name:"AssetStatus"`
+
+	// 资产发布时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetPublishTime *string `json:"AssetPublishTime,omitnil,omitempty" name:"AssetPublishTime"`
+
+	// 资产发布人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetPublishAccount *string `json:"AssetPublishAccount,omitnil,omitempty" name:"AssetPublishAccount"`
+
+	// 资产发布人名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetPublishAccountName *string `json:"AssetPublishAccountName,omitnil,omitempty" name:"AssetPublishAccountName"`
+
+	// 指标权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndicatorPermission *PermissionStatus `json:"IndicatorPermission,omitnil,omitempty" name:"IndicatorPermission"`
+
+	// 资产权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateOption *DataAssetOption `json:"OperateOption,omitnil,omitempty" name:"OperateOption"`
+
+	// 项目 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 项目名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
+}
+
 type IndicatorBaseSimpleInfo struct {
 	// ID
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -27865,6 +28531,22 @@ type IntegrationTaskInfo struct {
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 任务子状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskSubType *int64 `json:"TaskSubType,omitnil,omitempty" name:"TaskSubType"`
+
+	// 是否存在SavePoint, 0-存在, 1-不存在, null 为未知
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotExistsCheckPoint *int64 `json:"NotExistsCheckPoint,omitnil,omitempty" name:"NotExistsCheckPoint"`
+
+	// savepiontPath
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SavePointId *string `json:"SavePointId,omitnil,omitempty" name:"SavePointId"`
+
+	// savepiontId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SavePointPath *string `json:"SavePointPath,omitnil,omitempty" name:"SavePointPath"`
 }
 
 type JobLogErrorTip struct {
@@ -33890,6 +34572,22 @@ func (r *RegisterEventResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RegisterEventResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RegisteredModelAlias struct {
+	// 别名的名称
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// 别名指向的模型版本号
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+}
+
+type RegisteredModelTag struct {
+	// tag key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// tag value
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type RelatedTask struct {
@@ -39995,6 +40693,18 @@ type TaskDataRegistryDTO struct {
 	// 表物理唯一id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TablePhysicalId *string `json:"TablePhysicalId,omitnil,omitempty" name:"TablePhysicalId"`
+
+	// Catalog名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 数据源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceName *string `json:"DatasourceName,omitnil,omitempty" name:"DatasourceName"`
+
+	// Catalog(如有).数据库(如有).表名名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualifiedName *string `json:"QualifiedName,omitnil,omitempty" name:"QualifiedName"`
 }
 
 type TaskDsDTO struct {
@@ -40430,6 +41140,26 @@ type TaskDsDTO struct {
 	// bundle信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
+
+	// 是否允许下游依赖 0 不允许 1 允许
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllowDownstreamDependency *int64 `json:"AllowDownstreamDependency,omitnil,omitempty" name:"AllowDownstreamDependency"`
+
+	// - 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
+	// - ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
+	// - ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
+	// - ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
+	// - ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
+	// - ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
+	// - ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
+	// - ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
+	// - ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
+	// - NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
+	// - ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
+	// - NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
+	// - ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DependencyTriggerPolicy *string `json:"DependencyTriggerPolicy,omitnil,omitempty" name:"DependencyTriggerPolicy"`
 }
 
 type TaskExtDsVO struct {
@@ -40548,6 +41278,10 @@ type TaskImportInfo struct {
 	// 重名任务处理策略, 0:跳过,不导入; 1: 重命名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskNameExistMode *uint64 `json:"TaskNameExistMode,omitnil,omitempty" name:"TaskNameExistMode"`
+
+	// 工作流所属目录路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkFlowFolderPath *string `json:"WorkFlowFolderPath,omitnil,omitempty" name:"WorkFlowFolderPath"`
 }
 
 type TaskInfoVo struct {

@@ -275,31 +275,31 @@ type AddTemplateStatus struct {
 }
 
 type CallbackStatusStatistics struct {
-	// 短信回执量统计。
+	// <p>短信回执量统计。</p><p>单位：数</p>
 	CallbackCount *uint64 `json:"CallbackCount,omitnil,omitempty" name:"CallbackCount"`
 
-	// 短信提交成功量统计。
+	// <p>短信提交成功量统计。</p><p>单位：数</p>
 	RequestSuccessCount *uint64 `json:"RequestSuccessCount,omitnil,omitempty" name:"RequestSuccessCount"`
 
-	// 短信回执失败量统计。
+	// <p>短信回执失败量统计。</p><p>单位：数</p>
 	CallbackFailCount *uint64 `json:"CallbackFailCount,omitnil,omitempty" name:"CallbackFailCount"`
 
-	// 短信回执成功量统计。
+	// <p>短信回执成功量统计。</p><p>单位：数</p>
 	CallbackSuccessCount *uint64 `json:"CallbackSuccessCount,omitnil,omitempty" name:"CallbackSuccessCount"`
 
-	// 运营商内部错误统计。
+	// <p>运营商内部错误统计。</p><p>单位：数</p>
 	InternalErrorCount *uint64 `json:"InternalErrorCount,omitnil,omitempty" name:"InternalErrorCount"`
 
-	// 号码无效或空号统计。
+	// <p>号码无效或空号统计。</p><p>单位：数</p>
 	InvalidNumberCount *uint64 `json:"InvalidNumberCount,omitnil,omitempty" name:"InvalidNumberCount"`
 
-	// 停机、关机等错误统计。
+	// <p>停机、关机等错误统计。</p><p>单位：数</p>
 	ShutdownErrorCount *uint64 `json:"ShutdownErrorCount,omitnil,omitempty" name:"ShutdownErrorCount"`
 
-	// 号码拉入黑名单统计。
+	// <p>号码拉入免打扰名单统计。</p><p>单位：数</p>
 	BlackListCount *uint64 `json:"BlackListCount,omitnil,omitempty" name:"BlackListCount"`
 
-	// 运营商频率限制统计。
+	// <p>运营商频率限制统计。</p><p>单位：数</p>
 	FrequencyLimitCount *uint64 `json:"FrequencyLimitCount,omitnil,omitempty" name:"FrequencyLimitCount"`
 }
 
@@ -395,10 +395,10 @@ func (r *CallbackStatusStatisticsResponse) FromJsonString(s string) error {
 }
 
 type DeleteSignStatus struct {
-	// 删除状态信息。
+	// <p>删除状态信息。</p>
 	DeleteStatus *string `json:"DeleteStatus,omitnil,omitempty" name:"DeleteStatus"`
 
-	// 删除时间，UNIX 时间戳（单位：秒）。
+	// <p>删除时间，UNIX 时间戳（单位：秒）。</p>
 	DeleteTime *uint64 `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
 }
 
@@ -1785,25 +1785,25 @@ func (r *SendStatusStatisticsResponse) FromJsonString(s string) error {
 }
 
 type SmsPackagesStatistics struct {
-	// 套餐包创建时间，UNIX 时间戳（单位：秒）。
+	// <p>套餐包创建时间，UNIX 时间戳。</p><p>单位：秒</p>
 	PackageCreateTime *uint64 `json:"PackageCreateTime,omitnil,omitempty" name:"PackageCreateTime"`
 
-	// 套餐包生效时间，UNIX 时间戳（单位：秒）。
+	// <p>套餐包生效时间，UNIX 时间戳。</p><p>单位：秒</p>
 	PackageEffectiveTime *uint64 `json:"PackageEffectiveTime,omitnil,omitempty" name:"PackageEffectiveTime"`
 
-	// 套餐包过期时间，UNIX 时间戳（单位：秒）。
+	// <p>套餐包过期时间，UNIX 时间戳。</p><p>单位：秒</p>
 	PackageExpiredTime *uint64 `json:"PackageExpiredTime,omitnil,omitempty" name:"PackageExpiredTime"`
 
-	// 套餐包条数。
+	// <p>套餐包条数。</p><p>单位：条</p>
 	PackageAmount *uint64 `json:"PackageAmount,omitnil,omitempty" name:"PackageAmount"`
 
-	// 套餐包类别，0表示赠送套餐包，1表示购买套餐包。
+	// <p>套餐包类别。</p><p>枚举值：</p><ul><li>0： 赠送套餐</li><li>1： 购买套餐包</li></ul>
 	PackageType *uint64 `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
-	// 套餐包 ID。
+	// <p>套餐包 ID。</p>
 	PackageId *uint64 `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
-	// 当前使用套餐包条数。
+	// <p>当前使用套餐包条数。</p><p>单位：条</p>
 	CurrentUsage *uint64 `json:"CurrentUsage,omitnil,omitempty" name:"CurrentUsage"`
 }
 

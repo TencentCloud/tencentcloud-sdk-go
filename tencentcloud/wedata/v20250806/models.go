@@ -3428,6 +3428,105 @@ type CreateTriggerWorkflowResult struct {
 }
 
 // Predefined struct for user
+type CreateTriggerWorkflowRunRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 自定义运行参数，如果为空或者null则使用工作流最新配置
+	AdvancedParams []*SchedulingParameter `json:"AdvancedParams,omitnil,omitempty" name:"AdvancedParams"`
+
+	// 本次需要运行指定的任务ID集合，如果为null或为空则运行全部
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 指定的调度资源组id，为空默认原资源组
+	SchedulingResourceGroupId *string `json:"SchedulingResourceGroupId,omitnil,omitempty" name:"SchedulingResourceGroupId"`
+
+	// 指定的集成资源组id，为空默认原资源组
+	IntegrationResourceGroupId *string `json:"IntegrationResourceGroupId,omitnil,omitempty" name:"IntegrationResourceGroupId"`
+}
+
+type CreateTriggerWorkflowRunRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 自定义运行参数，如果为空或者null则使用工作流最新配置
+	AdvancedParams []*SchedulingParameter `json:"AdvancedParams,omitnil,omitempty" name:"AdvancedParams"`
+
+	// 本次需要运行指定的任务ID集合，如果为null或为空则运行全部
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 指定的调度资源组id，为空默认原资源组
+	SchedulingResourceGroupId *string `json:"SchedulingResourceGroupId,omitnil,omitempty" name:"SchedulingResourceGroupId"`
+
+	// 指定的集成资源组id，为空默认原资源组
+	IntegrationResourceGroupId *string `json:"IntegrationResourceGroupId,omitnil,omitempty" name:"IntegrationResourceGroupId"`
+}
+
+func (r *CreateTriggerWorkflowRunRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTriggerWorkflowRunRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "WorkflowId")
+	delete(f, "AdvancedParams")
+	delete(f, "TaskIds")
+	delete(f, "SchedulingResourceGroupId")
+	delete(f, "IntegrationResourceGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTriggerWorkflowRunRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTriggerWorkflowRunResponseParams struct {
+	// 操作结果信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CreateTriggerWorkflowRunResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTriggerWorkflowRunResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTriggerWorkflowRunResponseParams `json:"Response"`
+}
+
+func (r *CreateTriggerWorkflowRunResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTriggerWorkflowRunResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTriggerWorkflowRunResult struct {
+	// 工作流执行id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowExecutionId *string `json:"WorkflowExecutionId,omitnil,omitempty" name:"WorkflowExecutionId"`
+}
+
+// Predefined struct for user
 type CreateWorkflowFolderRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`

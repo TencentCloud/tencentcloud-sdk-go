@@ -4449,6 +4449,58 @@ func (c *Client) DescribeColumnsMetaWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeDataAssetsRequest() (request *DescribeDataAssetsRequest) {
+    request = &DescribeDataAssetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDataAssets")
+    
+    
+    return
+}
+
+func NewDescribeDataAssetsResponse() (response *DescribeDataAssetsResponse) {
+    response = &DescribeDataAssetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDataAssets
+// 查询数据资产列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONNECTIONTIMEOUTERROR = "FailedOperation.ConnectionTimeOutError"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeDataAssets(request *DescribeDataAssetsRequest) (response *DescribeDataAssetsResponse, err error) {
+    return c.DescribeDataAssetsWithContext(context.Background(), request)
+}
+
+// DescribeDataAssets
+// 查询数据资产列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONNECTIONTIMEOUTERROR = "FailedOperation.ConnectionTimeOutError"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeDataAssetsWithContext(ctx context.Context, request *DescribeDataAssetsRequest) (response *DescribeDataAssetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataAssetsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "DescribeDataAssets")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataAssets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataAssetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDataCheckStatRequest() (request *DescribeDataCheckStatRequest) {
     request = &DescribeDataCheckStatRequest{
         BaseRequest: &tchttp.BaseRequest{},
