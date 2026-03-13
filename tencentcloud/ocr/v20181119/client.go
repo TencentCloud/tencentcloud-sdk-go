@@ -1019,7 +1019,7 @@ func NewDescribeQuestionMarkAgentJobResponse() (response *DescribeQuestionMarkAg
 //
 // 
 //
-// 默认接口请求并发限制：10题/分钟。
+// 默认接口请求并发限制：10张/分钟。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -1044,7 +1044,7 @@ func (c *Client) DescribeQuestionMarkAgentJob(request *DescribeQuestionMarkAgent
 //
 // 
 //
-// 默认接口请求并发限制：10题/分钟。
+// 默认接口请求并发限制：10张/分钟。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -8081,7 +8081,7 @@ func NewSubmitQuestionMarkAgentJobResponse() (response *SubmitQuestionMarkAgentJ
 //
 // 
 //
-// 默认接口请求并发限制：10题/分钟。
+// 默认接口请求并发限制：10张/分钟。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -8106,7 +8106,7 @@ func (c *Client) SubmitQuestionMarkAgentJob(request *SubmitQuestionMarkAgentJobR
 //
 // 
 //
-// 默认接口请求并发限制：10题/分钟。
+// 默认接口请求并发限制：10张/分钟。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -8985,6 +8985,72 @@ func (c *Client) VehicleRegCertOCRWithContext(ctx context.Context, request *Vehi
     request.SetContext(ctx)
     
     response = NewVehicleRegCertOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyBizLicenseEnterprise4Request() (request *VerifyBizLicenseEnterprise4Request) {
+    request = &VerifyBizLicenseEnterprise4Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "VerifyBizLicenseEnterprise4")
+    
+    
+    return
+}
+
+func NewVerifyBizLicenseEnterprise4Response() (response *VerifyBizLicenseEnterprise4Response) {
+    response = &VerifyBizLicenseEnterprise4Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// VerifyBizLicenseEnterprise4
+// 提供比对校验企业名称、统一社会信用代码、法人姓名、注册登记证件号码一致性的服务，助力快速核验企业资质。
+//
+// 注意：
+//
+// 存在个别特殊情况下核验结果不准确，请选用前知悉；
+//
+// 按周更新企业信息变更情况，如遇到未及时更新的情况，可联系在线客服转产品团队进行人工处理。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINERECOGNIZETIMEOUT = "FailedOperation.EngineRecognizeTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+func (c *Client) VerifyBizLicenseEnterprise4(request *VerifyBizLicenseEnterprise4Request) (response *VerifyBizLicenseEnterprise4Response, err error) {
+    return c.VerifyBizLicenseEnterprise4WithContext(context.Background(), request)
+}
+
+// VerifyBizLicenseEnterprise4
+// 提供比对校验企业名称、统一社会信用代码、法人姓名、注册登记证件号码一致性的服务，助力快速核验企业资质。
+//
+// 注意：
+//
+// 存在个别特殊情况下核验结果不准确，请选用前知悉；
+//
+// 按周更新企业信息变更情况，如遇到未及时更新的情况，可联系在线客服转产品团队进行人工处理。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINERECOGNIZETIMEOUT = "FailedOperation.EngineRecognizeTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+func (c *Client) VerifyBizLicenseEnterprise4WithContext(ctx context.Context, request *VerifyBizLicenseEnterprise4Request) (response *VerifyBizLicenseEnterprise4Response, err error) {
+    if request == nil {
+        request = NewVerifyBizLicenseEnterprise4Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "VerifyBizLicenseEnterprise4")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyBizLicenseEnterprise4 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVerifyBizLicenseEnterprise4Response()
     err = c.Send(request, response)
     return
 }

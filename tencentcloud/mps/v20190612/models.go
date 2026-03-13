@@ -4226,88 +4226,68 @@ func (r *CreateAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string
 
 // Predefined struct for user
 type CreateAigcImageTaskRequestParams struct {
-	// 模型名称。
-	// 当前支持的模型列表：
-	// Hunyuan,
-	// GEM，
-	// Qwen。
+	// <p>模型名称。<br>当前支持的模型列表：<br>Hunyuan,<br>GEM，<br>Qwen。</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。
-	// 
-	// 1. GEM， 可选[2.5,3.0]。
+	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>GEM， 可选[2.5,3.0]。</li></ol>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// 生成图片的描述。(注：最大支持1000字符)。当未传入参考图片时，此参数必填。
+	// <p>生成图片的描述。(注：最大支持1000字符)。当未传入参考图片时，此参数必填。</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// 用于描述您想要阻止模型生成的内容。 注意：部分模型支持。 例如： 顶部照明、明亮的色彩 人物、动物 多辆汽车、风。
+	// <p>用于描述您想要阻止模型生成的内容。 注意：部分模型支持。 例如： 顶部照明、明亮的色彩 人物、动物 多辆汽车、风。</p>
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
-	// 默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。
+	// <p>默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。</p>
 	EnhancePrompt *bool `json:"EnhancePrompt,omitnil,omitempty" name:"EnhancePrompt"`
 
-	// 用于传入参考的资源图片信息，默认支持传入一张图片。
-	// 
-	// 支持多图输入的模型：
-	// 1. GEM，可支持最多3张图片输入作为资源图。
-	// 
-	// 注意：
-	// 1. 推荐图片小于7M，各模型限制不同。
-	// 2. 图片格式支持：jpeg, png, webp。
+	// <p>用于传入参考的资源图片信息，默认支持传入一张图片。</p><p>支持多图输入的模型：</p><ol><li>GEM，可支持最多3张图片输入作为资源图。</li></ol><p>注意：</p><ol><li>推荐图片小于7M，各模型限制不同。</li><li>图片格式支持：jpeg, png, webp。</li></ol>
 	ImageInfos []*AigcImageInfo `json:"ImageInfos,omitnil,omitempty" name:"ImageInfos"`
 
-	// 用于传入模型要求的额外参数。
+	// <p>用于传入模型要求的额外参数。</p>
 	ExtraParameters *AigcImageExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
 
-	// 文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。
+	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。 示例： {"size":"2048x2048"}</p>
+	AdditionalParameters *string `json:"AdditionalParameters,omitnil,omitempty" name:"AdditionalParameters"`
+
+	// <p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
 	StoreCosParam *AigcStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
 
-	// 接口操作者名称。
+	// <p>接口操作者名称。</p>
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
 type CreateAigcImageTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模型名称。
-	// 当前支持的模型列表：
-	// Hunyuan,
-	// GEM，
-	// Qwen。
+	// <p>模型名称。<br>当前支持的模型列表：<br>Hunyuan,<br>GEM，<br>Qwen。</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。
-	// 
-	// 1. GEM， 可选[2.5,3.0]。
+	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>GEM， 可选[2.5,3.0]。</li></ol>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// 生成图片的描述。(注：最大支持1000字符)。当未传入参考图片时，此参数必填。
+	// <p>生成图片的描述。(注：最大支持1000字符)。当未传入参考图片时，此参数必填。</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// 用于描述您想要阻止模型生成的内容。 注意：部分模型支持。 例如： 顶部照明、明亮的色彩 人物、动物 多辆汽车、风。
+	// <p>用于描述您想要阻止模型生成的内容。 注意：部分模型支持。 例如： 顶部照明、明亮的色彩 人物、动物 多辆汽车、风。</p>
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
-	// 默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。
+	// <p>默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。</p>
 	EnhancePrompt *bool `json:"EnhancePrompt,omitnil,omitempty" name:"EnhancePrompt"`
 
-	// 用于传入参考的资源图片信息，默认支持传入一张图片。
-	// 
-	// 支持多图输入的模型：
-	// 1. GEM，可支持最多3张图片输入作为资源图。
-	// 
-	// 注意：
-	// 1. 推荐图片小于7M，各模型限制不同。
-	// 2. 图片格式支持：jpeg, png, webp。
+	// <p>用于传入参考的资源图片信息，默认支持传入一张图片。</p><p>支持多图输入的模型：</p><ol><li>GEM，可支持最多3张图片输入作为资源图。</li></ol><p>注意：</p><ol><li>推荐图片小于7M，各模型限制不同。</li><li>图片格式支持：jpeg, png, webp。</li></ol>
 	ImageInfos []*AigcImageInfo `json:"ImageInfos,omitnil,omitempty" name:"ImageInfos"`
 
-	// 用于传入模型要求的额外参数。
+	// <p>用于传入模型要求的额外参数。</p>
 	ExtraParameters *AigcImageExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
 
-	// 文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。
+	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。 示例： {"size":"2048x2048"}</p>
+	AdditionalParameters *string `json:"AdditionalParameters,omitnil,omitempty" name:"AdditionalParameters"`
+
+	// <p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
 	StoreCosParam *AigcStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
 
-	// 接口操作者名称。
+	// <p>接口操作者名称。</p>
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 }
 
@@ -4330,6 +4310,7 @@ func (r *CreateAigcImageTaskRequest) FromJsonString(s string) error {
 	delete(f, "EnhancePrompt")
 	delete(f, "ImageInfos")
 	delete(f, "ExtraParameters")
+	delete(f, "AdditionalParameters")
 	delete(f, "StoreCosParam")
 	delete(f, "Operator")
 	if len(f) > 0 {
@@ -4340,7 +4321,7 @@ func (r *CreateAigcImageTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAigcImageTaskResponseParams struct {
-	// 返回的任务ID。
+	// <p>返回的任务ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

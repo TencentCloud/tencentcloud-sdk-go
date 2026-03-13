@@ -4651,6 +4651,9 @@ type CreateFlowByFilesRequestParams struct {
 
 	// 是否开启动态签署合同：<ul><li> **true**：开启动态签署合同，可在发起时可以不传签署人，在签署过程中追加签署人（必须满足：1，发起方企业开启了模块化计费能力；2，发起方企业在企业应用管理中开启了动态签署人2.0能力）    。</li><li> **false**：不开启动态签署合同。</li></ul>
 	OpenDynamicSignFlow *bool `json:"OpenDynamicSignFlow,omitnil,omitempty" name:"OpenDynamicSignFlow"`
+
+	// 是否开启发起合同审批，默认：false（不开启），开启后，发起合同（StartFlow），会提交电子签内置的审批流
+	Workflow *bool `json:"Workflow,omitnil,omitempty" name:"Workflow"`
 }
 
 type CreateFlowByFilesRequest struct {
@@ -4790,6 +4793,9 @@ type CreateFlowByFilesRequest struct {
 
 	// 是否开启动态签署合同：<ul><li> **true**：开启动态签署合同，可在发起时可以不传签署人，在签署过程中追加签署人（必须满足：1，发起方企业开启了模块化计费能力；2，发起方企业在企业应用管理中开启了动态签署人2.0能力）    。</li><li> **false**：不开启动态签署合同。</li></ul>
 	OpenDynamicSignFlow *bool `json:"OpenDynamicSignFlow,omitnil,omitempty" name:"OpenDynamicSignFlow"`
+
+	// 是否开启发起合同审批，默认：false（不开启），开启后，发起合同（StartFlow），会提交电子签内置的审批流
+	Workflow *bool `json:"Workflow,omitnil,omitempty" name:"Workflow"`
 }
 
 func (r *CreateFlowByFilesRequest) ToJsonString() string {
@@ -4827,6 +4833,7 @@ func (r *CreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "NeedSignReview")
 	delete(f, "FlowDisplayType")
 	delete(f, "OpenDynamicSignFlow")
+	delete(f, "Workflow")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowByFilesRequest has unknown keys!", "")
 	}
@@ -4850,6 +4857,9 @@ type CreateFlowByFilesResponseParams struct {
 
 	// 签署方信息，如角色ID、角色名称等
 	Approvers []*ApproverItem `json:"Approvers,omitnil,omitempty" name:"Approvers"`
+
+	// 发起审批流id，仅在CreateFlowByFiles时指定了WorkFlow=true时返回
+	WorkflowInstanceId *string `json:"WorkflowInstanceId,omitnil,omitempty" name:"WorkflowInstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5184,6 +5194,9 @@ type CreateFlowGroupByFilesResponseParams struct {
 	// 合同组签署方信息。
 	Approvers []*FlowGroupApprovers `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
+	// 发起审批流id，仅在发起时指定FlowGroupOptions.FlowGroupNeedWorkflow=true时返回
+	WorkflowInstanceId *string `json:"WorkflowInstanceId,omitnil,omitempty" name:"WorkflowInstanceId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -5301,6 +5314,9 @@ type CreateFlowGroupByTemplatesResponseParams struct {
 
 	// 合同组签署人信息。
 	Approvers []*FlowGroupApprovers `json:"Approvers,omitnil,omitempty" name:"Approvers"`
+
+	// FlowGroupNeedWorkflow
+	WorkflowInstanceId *string `json:"WorkflowInstanceId,omitnil,omitempty" name:"WorkflowInstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5796,6 +5812,9 @@ type CreateFlowRequestParams struct {
 	// 效果如下:
 	// ![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
 	FlowDisplayType *int64 `json:"FlowDisplayType,omitnil,omitempty" name:"FlowDisplayType"`
+
+	// 是否开启发起合同审批，默认：false（不开启），开启后，发起合同（StartFlow），会提交电子签内置的审批流
+	Workflow *bool `json:"Workflow,omitnil,omitempty" name:"Workflow"`
 }
 
 type CreateFlowRequest struct {
@@ -5905,6 +5924,9 @@ type CreateFlowRequest struct {
 	// 效果如下:
 	// ![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
 	FlowDisplayType *int64 `json:"FlowDisplayType,omitnil,omitempty" name:"FlowDisplayType"`
+
+	// 是否开启发起合同审批，默认：false（不开启），开启后，发起合同（StartFlow），会提交电子签内置的审批流
+	Workflow *bool `json:"Workflow,omitnil,omitempty" name:"Workflow"`
 }
 
 func (r *CreateFlowRequest) ToJsonString() string {
@@ -5937,6 +5959,7 @@ func (r *CreateFlowRequest) FromJsonString(s string) error {
 	delete(f, "RelatedFlowId")
 	delete(f, "CallbackUrl")
 	delete(f, "FlowDisplayType")
+	delete(f, "Workflow")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowRequest has unknown keys!", "")
 	}
@@ -8569,6 +8592,9 @@ type CreatePrepareFlowGroupRequestParams struct {
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 合同组发起控制参数，当前仅支持FlowGroupNeedWorkflow，表示开启嵌入式合同组发起审批
+	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitnil,omitempty" name:"FlowGroupOptions"`
 }
 
 type CreatePrepareFlowGroupRequest struct {
@@ -8590,6 +8616,9 @@ type CreatePrepareFlowGroupRequest struct {
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 合同组发起控制参数，当前仅支持FlowGroupNeedWorkflow，表示开启嵌入式合同组发起审批
+	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitnil,omitempty" name:"FlowGroupOptions"`
 }
 
 func (r *CreatePrepareFlowGroupRequest) ToJsonString() string {
@@ -8609,6 +8638,7 @@ func (r *CreatePrepareFlowGroupRequest) FromJsonString(s string) error {
 	delete(f, "FlowGroupInfos")
 	delete(f, "ResourceType")
 	delete(f, "Agent")
+	delete(f, "FlowGroupOptions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrepareFlowGroupRequest has unknown keys!", "")
 	}
@@ -8759,6 +8789,9 @@ type CreatePrepareFlowRequestParams struct {
 	//
 	// Deprecated: SignComponentConfig is deprecated.
 	SignComponentConfig *SignComponentConfig `json:"SignComponentConfig,omitnil,omitempty" name:"SignComponentConfig"`
+
+	// 是否开启嵌入式合同发起时，提交发起审批流，默认：false（不开启），开启后，嵌入式合同发起后，会提交电子签内置审批流
+	Workflow *bool `json:"Workflow,omitnil,omitempty" name:"Workflow"`
 }
 
 type CreatePrepareFlowRequest struct {
@@ -8876,6 +8909,9 @@ type CreatePrepareFlowRequest struct {
 	// 
 	// - 签署控件 是否默认展示日期.
 	SignComponentConfig *SignComponentConfig `json:"SignComponentConfig,omitnil,omitempty" name:"SignComponentConfig"`
+
+	// 是否开启嵌入式合同发起时，提交发起审批流，默认：false（不开启），开启后，嵌入式合同发起后，会提交电子签内置审批流
+	Workflow *bool `json:"Workflow,omitnil,omitempty" name:"Workflow"`
 }
 
 func (r *CreatePrepareFlowRequest) ToJsonString() string {
@@ -8911,6 +8947,7 @@ func (r *CreatePrepareFlowRequest) FromJsonString(s string) error {
 	delete(f, "InitiatorComponents")
 	delete(f, "FlowDisplayType")
 	delete(f, "SignComponentConfig")
+	delete(f, "Workflow")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrepareFlowRequest has unknown keys!", "")
 	}
@@ -15794,7 +15831,7 @@ type ExtendScene struct {
 	// 印章来源类型包括下面几种：
 	// <ul>
 	// <li>CREATE-客户上传图片创建</li>
-	// <li>GENERATE-系统模版印章生成</li>
+	// <li>GENERATE-系统模板印章生成</li>
 	// <li>SIST_SEAL-深圳电子印章</li>
 	// </ul>
 	GenerateType *string `json:"GenerateType,omitnil,omitempty" name:"GenerateType"`
@@ -16629,6 +16666,9 @@ type FlowGroupOptions struct {
 	// 签署通知类型，支持以下类型
 	// <ul><li>sms : 短信 (默认值)</li><li>none : 不通知</li></ul>
 	OtherApproverNotifyType *string `json:"OtherApproverNotifyType,omitnil,omitempty" name:"OtherApproverNotifyType"`
+
+	// 是否开启发起合同组的发起审批，默认：false(不开启)，开启后，发起合同组会提交电子签内置审批流
+	FlowGroupNeedWorkflow *bool `json:"FlowGroupNeedWorkflow,omitnil,omitempty" name:"FlowGroupNeedWorkflow"`
 }
 
 type FlowGroupUrlInfo struct {
@@ -19148,6 +19188,9 @@ type StartFlowResponseParams struct {
 	// <li> **REVIEW** : 提交审核成功, 合同需要发起审核, 发起方企业通过接口审核通过后合同才进入签署环境  `白名单功能，使用前请联系对接的客户经理沟通。`</li>
 	// <li> **EXECUTING** : 已提交发起任务且PDF合同正在合成中, 等PDF合同合成成功后进入签署环节</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 发起审批流id，仅在CreateFlow时指定了WorkFlow=true时返回
+	WorkflowInstanceId *string `json:"WorkflowInstanceId,omitnil,omitempty" name:"WorkflowInstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

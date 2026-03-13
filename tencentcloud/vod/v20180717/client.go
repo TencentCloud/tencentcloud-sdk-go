@@ -655,6 +655,72 @@ func (c *Client) CreateAdaptiveDynamicStreamingTemplateWithContext(ctx context.C
     return
 }
 
+func NewCreateAigcAdvancedCustomElementRequest() (request *CreateAigcAdvancedCustomElementRequest) {
+    request = &CreateAigcAdvancedCustomElementRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateAigcAdvancedCustomElement")
+    
+    
+    return
+}
+
+func NewCreateAigcAdvancedCustomElementResponse() (response *CreateAigcAdvancedCustomElementResponse) {
+    response = &CreateAigcAdvancedCustomElementResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAigcAdvancedCustomElement
+// 该接口用于创建 AIGC 高级自定义主体。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAigcAdvancedCustomElement(request *CreateAigcAdvancedCustomElementRequest) (response *CreateAigcAdvancedCustomElementResponse, err error) {
+    return c.CreateAigcAdvancedCustomElementWithContext(context.Background(), request)
+}
+
+// CreateAigcAdvancedCustomElement
+// 该接口用于创建 AIGC 高级自定义主体。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAigcAdvancedCustomElementWithContext(ctx context.Context, request *CreateAigcAdvancedCustomElementRequest) (response *CreateAigcAdvancedCustomElementResponse, err error) {
+    if request == nil {
+        request = NewCreateAigcAdvancedCustomElementRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateAigcAdvancedCustomElement")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAigcAdvancedCustomElement require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAigcAdvancedCustomElementResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAigcApiTokenRequest() (request *CreateAigcApiTokenRequest) {
     request = &CreateAigcApiTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -763,6 +829,72 @@ func (c *Client) CreateAigcCustomElementWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewCreateAigcCustomElementResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAigcCustomVoiceRequest() (request *CreateAigcCustomVoiceRequest) {
+    request = &CreateAigcCustomVoiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateAigcCustomVoice")
+    
+    
+    return
+}
+
+func NewCreateAigcCustomVoiceResponse() (response *CreateAigcCustomVoiceResponse) {
+    response = &CreateAigcCustomVoiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAigcCustomVoice
+// 该接口用于创建 AIGC 自定义音色。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAigcCustomVoice(request *CreateAigcCustomVoiceRequest) (response *CreateAigcCustomVoiceResponse, err error) {
+    return c.CreateAigcCustomVoiceWithContext(context.Background(), request)
+}
+
+// CreateAigcCustomVoice
+// 该接口用于创建 AIGC 自定义音色。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAigcCustomVoiceWithContext(ctx context.Context, request *CreateAigcCustomVoiceRequest) (response *CreateAigcCustomVoiceResponse, err error) {
+    if request == nil {
+        request = NewCreateAigcCustomVoiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateAigcCustomVoice")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAigcCustomVoice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAigcCustomVoiceResponse()
     err = c.Send(request, response)
     return
 }
