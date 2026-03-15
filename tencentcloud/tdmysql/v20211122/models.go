@@ -376,57 +376,6 @@ func (r *DeleteDBSBackupSetsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeBillingEnableRequestParams struct {
-
-}
-
-type DescribeBillingEnableRequest struct {
-	*tchttp.BaseRequest
-	
-}
-
-func (r *DescribeBillingEnableRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeBillingEnableRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillingEnableRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeBillingEnableResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeBillingEnableResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeBillingEnableResponseParams `json:"Response"`
-}
-
-func (r *DescribeBillingEnableResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeBillingEnableResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeDBParametersRequestParams struct {
 	// 实例 ID，形如：tdsql3-ow728lmc。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -825,88 +774,6 @@ func (r *DescribeDatabaseObjectsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeDatabaseTableRequestParams struct {
-	// 实例 ID，形如：tdsql3-ow7t8lmc。
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 数据库名称，通过 DescribeDatabases 接口获取。
-	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
-
-	// 表名称，通过 DescribeDatabaseObjects 接口获取。
-	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
-}
-
-type DescribeDatabaseTableRequest struct {
-	*tchttp.BaseRequest
-	
-	// 实例 ID，形如：tdsql3-ow7t8lmc。
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 数据库名称，通过 DescribeDatabases 接口获取。
-	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
-
-	// 表名称，通过 DescribeDatabaseObjects 接口获取。
-	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
-}
-
-func (r *DescribeDatabaseTableRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeDatabaseTableRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "DbName")
-	delete(f, "Table")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabaseTableRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeDatabaseTableResponseParams struct {
-	// 实例名称。
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 数据库名称。
-	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
-
-	// 表名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
-
-	// 列信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Cols []*TableColumn `json:"Cols,omitnil,omitempty" name:"Cols"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeDatabaseTableResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeDatabaseTableResponseParams `json:"Response"`
-}
-
-func (r *DescribeDatabaseTableResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeDatabaseTableResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeFlowRequestParams struct {
 
 }
@@ -1079,20 +946,20 @@ func (r *IsolateDBInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAutoRenewFlagRequestParams struct {
-	// 需要修改的实例列表
+	// <p>需要修改的实例列表</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 1表示开启自动续费，0为关闭自动续费
+	// <p>1表示开启自动续费，0为关闭自动续费</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 }
 
 type ModifyAutoRenewFlagRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要修改的实例列表
+	// <p>需要修改的实例列表</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 1表示开启自动续费，0为关闭自动续费
+	// <p>1表示开启自动续费，0为关闭自动续费</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 }
 
@@ -1135,70 +1002,6 @@ func (r *ModifyAutoRenewFlagResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAutoRenewFlagResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ModifyBinlogStatusRequestParams struct {
-	// 实例id
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 1打开0关闭
-	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
-}
-
-type ModifyBinlogStatusRequest struct {
-	*tchttp.BaseRequest
-	
-	// 实例id
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 1打开0关闭
-	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
-}
-
-func (r *ModifyBinlogStatusRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyBinlogStatusRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "Status")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBinlogStatusRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ModifyBinlogStatusResponseParams struct {
-	// flow的流程id
-	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type ModifyBinlogStatusResponse struct {
-	*tchttp.BaseResponse
-	Response *ModifyBinlogStatusResponseParams `json:"Response"`
-}
-
-func (r *ModifyBinlogStatusResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyBinlogStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1610,12 +1413,4 @@ type SecurityGroupBound struct {
 
 	// 网络协议，支持 UDP、TCP 等
 	IpProtocol *string `json:"IpProtocol,omitnil,omitempty" name:"IpProtocol"`
-}
-
-type TableColumn struct {
-	// 列名称
-	Col *string `json:"Col,omitnil,omitempty" name:"Col"`
-
-	// 列类型
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }

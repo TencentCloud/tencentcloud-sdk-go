@@ -761,6 +761,9 @@ const (
 	// 配置项参数错误。
 	INVALIDPARAMETER_SETTINGINVALIDPARAM = "InvalidParameter.SettingInvalidParam"
 
+	// 当前域名不支持同时开启EdgeOne Shield和源站防护。
+	INVALIDPARAMETER_SHIELDNOTSUPPORTHOSTORIGINWHITELIST = "InvalidParameter.ShieldNotSupportHostOriginWhitelist"
+
 	// 一些绑定的源站组不存在。
 	INVALIDPARAMETER_SOMEORIGINGROUPNOTEXIST = "InvalidParameter.SomeOriginGroupNotExist"
 

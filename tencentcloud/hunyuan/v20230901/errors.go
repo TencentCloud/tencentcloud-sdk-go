@@ -74,11 +74,20 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 图片数量超限错误。
+	INVALIDPARAMETER_IMAGECOUNTLIMITEXCEEDEDERROR = "InvalidParameter.ImageCountLimitExceededError"
+
+	// 图片处理失败错误。
+	INVALIDPARAMETER_IMAGEPROCESSINGFAILUREERROR = "InvalidParameter.ImageProcessingFailureError"
+
 	// 参数不合法。
 	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
+	// 图片请求错误。
+	INVALIDPARAMETERVALUE_IMAGEREQUESTERROR = "InvalidParameterValue.ImageRequestError"
 
 	// 模型不存在。
 	INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"

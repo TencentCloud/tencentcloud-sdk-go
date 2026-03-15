@@ -4105,7 +4105,7 @@ func NewDescribeRegionResponse() (response *DescribeRegionResponse) {
 }
 
 // DescribeRegion
-// 枚举地域,只支持广州地域
+// 枚举地域信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4127,7 +4127,7 @@ func (c *Client) DescribeRegion(request *DescribeRegionRequest) (response *Descr
 }
 
 // DescribeRegion
-// 枚举地域,只支持广州地域
+// 枚举地域信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

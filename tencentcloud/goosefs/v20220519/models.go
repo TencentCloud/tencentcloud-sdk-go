@@ -364,6 +364,84 @@ func (r *BuildClientNodeMountCommandResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type BuildCustomerClusterRequestParams struct {
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// vpc网络ID
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网id
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+}
+
+type BuildCustomerClusterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// vpc网络ID
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网id
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+}
+
+func (r *BuildCustomerClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BuildCustomerClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "ClusterName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BuildCustomerClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BuildCustomerClusterResponseParams struct {
+	// 客户端集群Id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BuildCustomerClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *BuildCustomerClusterResponseParams `json:"Response"`
+}
+
+func (r *BuildCustomerClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BuildCustomerClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CancelLoadTaskRequestParams struct {
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -491,6 +569,15 @@ type ClientToken struct {
 	// token
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+}
+
+type ClusterMountAttr struct {
+	// 挂载的文件系统Id
+	StorageFileSystemId *string `json:"StorageFileSystemId,omitnil,omitempty" name:"StorageFileSystemId"`
+
+	// 客户端集群挂载点。入参是节点的自定义挂载点，出参是集群的默认挂载点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MountPoint *string `json:"MountPoint,omitnil,omitempty" name:"MountPoint"`
 }
 
 // Predefined struct for user
@@ -884,6 +971,35 @@ func (r *CreateLoadTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CustomerClusterAttr struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// vpc网络id
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网id
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 客户端数量
+	ClientNum *uint64 `json:"ClientNum,omitnil,omitempty" name:"ClientNum"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 集群类型：0: 默认集群（文件系统创建时构建，不可销毁）；1: 扩展集群（客户端数量为0时可销毁）
+	ClusterType *uint64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
+
+	// 管理节点信息
+	ManagerNodes []*ClientClusterManagerNodeInfo `json:"ManagerNodes,omitnil,omitempty" name:"ManagerNodes"`
+
+	// 集群状态：0:creating 创建中；1: created 创建完成; 2: deleting 删除中； 3: deleted 删除完成； 4:  failed 创建失败 
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 客户端集群挂载存储集合
+	ClusterMountSet []*ClusterMountAttr `json:"ClusterMountSet,omitnil,omitempty" name:"ClusterMountSet"`
+}
+
 // Predefined struct for user
 type DeleteCrossVpcSubnetSupportForClientNodeRequestParams struct {
 	// 文件系统ID
@@ -942,6 +1058,67 @@ func (r *DeleteCrossVpcSubnetSupportForClientNodeResponse) ToJsonString() string
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCrossVpcSubnetSupportForClientNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCustomerClusterRequestParams struct {
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 客户端集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+type DeleteCustomerClusterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 客户端集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+func (r *DeleteCustomerClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomerClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCustomerClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCustomerClusterResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCustomerClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCustomerClusterResponseParams `json:"Response"`
+}
+
+func (r *DeleteCustomerClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomerClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1235,6 +1412,63 @@ func (r *DescribeClusterRoleTokenResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClusterRoleTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCustomerClusterRequestParams struct {
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+type DescribeCustomerClusterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+func (r *DescribeCustomerClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomerClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomerClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCustomerClusterResponseParams struct {
+	// 客户端集群列表
+	ClusterSet []*CustomerClusterAttr `json:"ClusterSet,omitnil,omitempty" name:"ClusterSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCustomerClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCustomerClusterResponseParams `json:"Response"`
+}
+
+func (r *DescribeCustomerClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomerClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2173,6 +2407,145 @@ func (r *ModifyDataRepositoryBandwidthResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDataRepositoryBandwidthResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type MountMultipleStorageFileSystemRequestParams struct {
+	// 客户端集群所属的文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 客户端集群Id
+	CustomerClusterId *string `json:"CustomerClusterId,omitnil,omitempty" name:"CustomerClusterId"`
+
+	// 挂载的存储集群的id
+	StorageFileSystemId *string `json:"StorageFileSystemId,omitnil,omitempty" name:"StorageFileSystemId"`
+}
+
+type MountMultipleStorageFileSystemRequest struct {
+	*tchttp.BaseRequest
+	
+	// 客户端集群所属的文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 客户端集群Id
+	CustomerClusterId *string `json:"CustomerClusterId,omitnil,omitempty" name:"CustomerClusterId"`
+
+	// 挂载的存储集群的id
+	StorageFileSystemId *string `json:"StorageFileSystemId,omitnil,omitempty" name:"StorageFileSystemId"`
+}
+
+func (r *MountMultipleStorageFileSystemRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *MountMultipleStorageFileSystemRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "CustomerClusterId")
+	delete(f, "StorageFileSystemId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MountMultipleStorageFileSystemRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type MountMultipleStorageFileSystemResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type MountMultipleStorageFileSystemResponse struct {
+	*tchttp.BaseResponse
+	Response *MountMultipleStorageFileSystemResponseParams `json:"Response"`
+}
+
+func (r *MountMultipleStorageFileSystemResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *MountMultipleStorageFileSystemResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryClientNodeMountCommandRequestParams struct {
+	// 客户端集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群挂载信息
+	ClusterMountInfo []*ClusterMountAttr `json:"ClusterMountInfo,omitnil,omitempty" name:"ClusterMountInfo"`
+
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+type QueryClientNodeMountCommandRequest struct {
+	*tchttp.BaseRequest
+	
+	// 客户端集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群挂载信息
+	ClusterMountInfo []*ClusterMountAttr `json:"ClusterMountInfo,omitnil,omitempty" name:"ClusterMountInfo"`
+
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+func (r *QueryClientNodeMountCommandRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryClientNodeMountCommandRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ClusterMountInfo")
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryClientNodeMountCommandRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryClientNodeMountCommandResponseParams struct {
+	// 挂载命令
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryClientNodeMountCommandResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryClientNodeMountCommandResponseParams `json:"Response"`
+}
+
+func (r *QueryClientNodeMountCommandResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryClientNodeMountCommandResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -221,72 +221,6 @@ func (c *Client) DeleteDBSBackupSetsWithContext(ctx context.Context, request *De
     return
 }
 
-func NewDescribeBillingEnableRequest() (request *DescribeBillingEnableRequest) {
-    request = &DescribeBillingEnableRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tdmysql", APIVersion, "DescribeBillingEnable")
-    
-    
-    return
-}
-
-func NewDescribeBillingEnableResponse() (response *DescribeBillingEnableResponse) {
-    response = &DescribeBillingEnableResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeBillingEnable
-// 已无地方调用
-//
-// 
-//
-// 本接口（DescribeBillingEnable）用于查询计费是否开启
-//
-// 可能返回的错误码:
-//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
-//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
-//  OPERATIONDENIED = "OperationDenied"
-//  OPERATIONDENIED_DELETERUNNINGBACKUPTASKERR = "OperationDenied.DeleteRunningBackupTaskErr"
-//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
-func (c *Client) DescribeBillingEnable(request *DescribeBillingEnableRequest) (response *DescribeBillingEnableResponse, err error) {
-    return c.DescribeBillingEnableWithContext(context.Background(), request)
-}
-
-// DescribeBillingEnable
-// 已无地方调用
-//
-// 
-//
-// 本接口（DescribeBillingEnable）用于查询计费是否开启
-//
-// 可能返回的错误码:
-//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
-//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
-//  OPERATIONDENIED = "OperationDenied"
-//  OPERATIONDENIED_DELETERUNNINGBACKUPTASKERR = "OperationDenied.DeleteRunningBackupTaskErr"
-//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
-func (c *Client) DescribeBillingEnableWithContext(ctx context.Context, request *DescribeBillingEnableRequest) (response *DescribeBillingEnableResponse, err error) {
-    if request == nil {
-        request = NewDescribeBillingEnableRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DescribeBillingEnable")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeBillingEnable require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeBillingEnableResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeDBParametersRequest() (request *DescribeDBParametersRequest) {
     request = &DescribeDBParametersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -589,64 +523,6 @@ func (c *Client) DescribeDatabaseObjectsWithContext(ctx context.Context, request
     return
 }
 
-func NewDescribeDatabaseTableRequest() (request *DescribeDatabaseTableRequest) {
-    request = &DescribeDatabaseTableRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tdmysql", APIVersion, "DescribeDatabaseTable")
-    
-    
-    return
-}
-
-func NewDescribeDatabaseTableResponse() (response *DescribeDatabaseTableResponse) {
-    response = &DescribeDatabaseTableResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeDatabaseTable
-// 冗余接口，无人调用
-//
-// 
-//
-// 本接口（DescribeDatabaseTable）用于查询云数据库实例的表信息。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_QUERYDBERROR = "FailedOperation.QueryDBError"
-func (c *Client) DescribeDatabaseTable(request *DescribeDatabaseTableRequest) (response *DescribeDatabaseTableResponse, err error) {
-    return c.DescribeDatabaseTableWithContext(context.Background(), request)
-}
-
-// DescribeDatabaseTable
-// 冗余接口，无人调用
-//
-// 
-//
-// 本接口（DescribeDatabaseTable）用于查询云数据库实例的表信息。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_QUERYDBERROR = "FailedOperation.QueryDBError"
-func (c *Client) DescribeDatabaseTableWithContext(ctx context.Context, request *DescribeDatabaseTableRequest) (response *DescribeDatabaseTableResponse, err error) {
-    if request == nil {
-        request = NewDescribeDatabaseTableRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DescribeDatabaseTable")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeDatabaseTable require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeDatabaseTableResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeFlowRequest() (request *DescribeFlowRequest) {
     request = &DescribeFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -871,64 +747,6 @@ func (c *Client) ModifyAutoRenewFlagWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyAutoRenewFlagResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifyBinlogStatusRequest() (request *ModifyBinlogStatusRequest) {
-    request = &ModifyBinlogStatusRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tdmysql", APIVersion, "ModifyBinlogStatus")
-    
-    
-    return
-}
-
-func NewModifyBinlogStatusResponse() (response *ModifyBinlogStatusResponse) {
-    response = &ModifyBinlogStatusResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyBinlogStatus
-// 接口功能已被 ModifyInstanceCdc 完全覆盖
-//
-// 
-//
-// 修改binlog状态
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_CHECKSPECERROR = "InvalidParameterValue.CheckSpecError"
-func (c *Client) ModifyBinlogStatus(request *ModifyBinlogStatusRequest) (response *ModifyBinlogStatusResponse, err error) {
-    return c.ModifyBinlogStatusWithContext(context.Background(), request)
-}
-
-// ModifyBinlogStatus
-// 接口功能已被 ModifyInstanceCdc 完全覆盖
-//
-// 
-//
-// 修改binlog状态
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_CHECKSPECERROR = "InvalidParameterValue.CheckSpecError"
-func (c *Client) ModifyBinlogStatusWithContext(ctx context.Context, request *ModifyBinlogStatusRequest) (response *ModifyBinlogStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyBinlogStatusRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "ModifyBinlogStatus")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyBinlogStatus require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyBinlogStatusResponse()
     err = c.Send(request, response)
     return
 }

@@ -967,6 +967,72 @@ func (c *Client) CreateAigcImageTaskWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateAigcSubjectRequest() (request *CreateAigcSubjectRequest) {
+    request = &CreateAigcSubjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateAigcSubject")
+    
+    
+    return
+}
+
+func NewCreateAigcSubjectResponse() (response *CreateAigcSubjectResponse) {
+    response = &CreateAigcSubjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAigcSubject
+// 该接口用于创建 AIGC 自定义主体（Vidu）。注意，调用本接口会产生费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAigcSubject(request *CreateAigcSubjectRequest) (response *CreateAigcSubjectResponse, err error) {
+    return c.CreateAigcSubjectWithContext(context.Background(), request)
+}
+
+// CreateAigcSubject
+// 该接口用于创建 AIGC 自定义主体（Vidu）。注意，调用本接口会产生费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAigcSubjectWithContext(ctx context.Context, request *CreateAigcSubjectRequest) (response *CreateAigcSubjectResponse, err error) {
+    if request == nil {
+        request = NewCreateAigcSubjectRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateAigcSubject")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAigcSubject require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAigcSubjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAigcVideoTaskRequest() (request *CreateAigcVideoTaskRequest) {
     request = &CreateAigcVideoTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

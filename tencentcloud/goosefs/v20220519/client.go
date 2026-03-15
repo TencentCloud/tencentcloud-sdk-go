@@ -265,6 +265,50 @@ func (c *Client) BuildClientNodeMountCommandWithContext(ctx context.Context, req
     return
 }
 
+func NewBuildCustomerClusterRequest() (request *BuildCustomerClusterRequest) {
+    request = &BuildCustomerClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "BuildCustomerCluster")
+    
+    
+    return
+}
+
+func NewBuildCustomerClusterResponse() (response *BuildCustomerClusterResponse) {
+    response = &BuildCustomerClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BuildCustomerCluster
+// 构建客户端集群
+func (c *Client) BuildCustomerCluster(request *BuildCustomerClusterRequest) (response *BuildCustomerClusterResponse, err error) {
+    return c.BuildCustomerClusterWithContext(context.Background(), request)
+}
+
+// BuildCustomerCluster
+// 构建客户端集群
+func (c *Client) BuildCustomerClusterWithContext(ctx context.Context, request *BuildCustomerClusterRequest) (response *BuildCustomerClusterResponse, err error) {
+    if request == nil {
+        request = NewBuildCustomerClusterRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "BuildCustomerCluster")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BuildCustomerCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBuildCustomerClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelLoadTaskRequest() (request *CancelLoadTaskRequest) {
     request = &CancelLoadTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -669,6 +713,72 @@ func (c *Client) DeleteCrossVpcSubnetSupportForClientNodeWithContext(ctx context
     return
 }
 
+func NewDeleteCustomerClusterRequest() (request *DeleteCustomerClusterRequest) {
+    request = &DeleteCustomerClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "DeleteCustomerCluster")
+    
+    
+    return
+}
+
+func NewDeleteCustomerClusterResponse() (response *DeleteCustomerClusterResponse) {
+    response = &DeleteCustomerClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCustomerCluster
+// 删除客户端集群
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCustomerCluster(request *DeleteCustomerClusterRequest) (response *DeleteCustomerClusterResponse, err error) {
+    return c.DeleteCustomerClusterWithContext(context.Background(), request)
+}
+
+// DeleteCustomerCluster
+// 删除客户端集群
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCustomerClusterWithContext(ctx context.Context, request *DeleteCustomerClusterRequest) (response *DeleteCustomerClusterResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomerClusterRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DeleteCustomerCluster")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCustomerCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCustomerClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteFileSystemRequest() (request *DeleteFileSystemRequest) {
     request = &DeleteFileSystemRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -995,6 +1105,72 @@ func (c *Client) DescribeClusterRoleTokenWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeClusterRoleTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCustomerClusterRequest() (request *DescribeCustomerClusterRequest) {
+    request = &DescribeCustomerClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "DescribeCustomerCluster")
+    
+    
+    return
+}
+
+func NewDescribeCustomerClusterResponse() (response *DescribeCustomerClusterResponse) {
+    response = &DescribeCustomerClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCustomerCluster
+// 查询客户端集群
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCustomerCluster(request *DescribeCustomerClusterRequest) (response *DescribeCustomerClusterResponse, err error) {
+    return c.DescribeCustomerClusterWithContext(context.Background(), request)
+}
+
+// DescribeCustomerCluster
+// 查询客户端集群
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCustomerClusterWithContext(ctx context.Context, request *DescribeCustomerClusterRequest) (response *DescribeCustomerClusterResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomerClusterRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "DescribeCustomerCluster")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomerCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCustomerClusterResponse()
     err = c.Send(request, response)
     return
 }
@@ -1665,6 +1841,142 @@ func (c *Client) ModifyDataRepositoryBandwidthWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewModifyDataRepositoryBandwidthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewMountMultipleStorageFileSystemRequest() (request *MountMultipleStorageFileSystemRequest) {
+    request = &MountMultipleStorageFileSystemRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "MountMultipleStorageFileSystem")
+    
+    
+    return
+}
+
+func NewMountMultipleStorageFileSystemResponse() (response *MountMultipleStorageFileSystemResponse) {
+    response = &MountMultipleStorageFileSystemResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// MountMultipleStorageFileSystem
+// 客户端集群挂载存储集群
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) MountMultipleStorageFileSystem(request *MountMultipleStorageFileSystemRequest) (response *MountMultipleStorageFileSystemResponse, err error) {
+    return c.MountMultipleStorageFileSystemWithContext(context.Background(), request)
+}
+
+// MountMultipleStorageFileSystem
+// 客户端集群挂载存储集群
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) MountMultipleStorageFileSystemWithContext(ctx context.Context, request *MountMultipleStorageFileSystemRequest) (response *MountMultipleStorageFileSystemResponse, err error) {
+    if request == nil {
+        request = NewMountMultipleStorageFileSystemRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "MountMultipleStorageFileSystem")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MountMultipleStorageFileSystem require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewMountMultipleStorageFileSystemResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryClientNodeMountCommandRequest() (request *QueryClientNodeMountCommandRequest) {
+    request = &QueryClientNodeMountCommandRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "QueryClientNodeMountCommand")
+    
+    
+    return
+}
+
+func NewQueryClientNodeMountCommandResponse() (response *QueryClientNodeMountCommandResponse) {
+    response = &QueryClientNodeMountCommandResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryClientNodeMountCommand
+// 生成客户端的挂载命令
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) QueryClientNodeMountCommand(request *QueryClientNodeMountCommandRequest) (response *QueryClientNodeMountCommandResponse, err error) {
+    return c.QueryClientNodeMountCommandWithContext(context.Background(), request)
+}
+
+// QueryClientNodeMountCommand
+// 生成客户端的挂载命令
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) QueryClientNodeMountCommandWithContext(ctx context.Context, request *QueryClientNodeMountCommandRequest) (response *QueryClientNodeMountCommandResponse, err error) {
+    if request == nil {
+        request = NewQueryClientNodeMountCommandRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "goosefs", APIVersion, "QueryClientNodeMountCommand")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryClientNodeMountCommand require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryClientNodeMountCommandResponse()
     err = c.Send(request, response)
     return
 }

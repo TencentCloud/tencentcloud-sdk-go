@@ -146,7 +146,10 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INVALIDPARAMETER_IMAGECOUNTLIMITEXCEEDEDERROR = "InvalidParameter.ImageCountLimitExceededError"
+//  INVALIDPARAMETER_IMAGEPROCESSINGFAILUREERROR = "InvalidParameter.ImageProcessingFailureError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_IMAGEREQUESTERROR = "InvalidParameterValue.ImageRequestError"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *ChatCompletionsResponse, err error) {
     return c.ChatCompletionsWithContext(context.Background(), request)
@@ -178,7 +181,10 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //  FAILEDOPERATION_SERVICENOTACTIVATED = "FailedOperation.ServiceNotActivated"
 //  FAILEDOPERATION_SERVICESTOP = "FailedOperation.ServiceStop"
 //  FAILEDOPERATION_SERVICESTOPARREARS = "FailedOperation.ServiceStopArrears"
+//  INVALIDPARAMETER_IMAGECOUNTLIMITEXCEEDEDERROR = "InvalidParameter.ImageCountLimitExceededError"
+//  INVALIDPARAMETER_IMAGEPROCESSINGFAILUREERROR = "InvalidParameter.ImageProcessingFailureError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_IMAGEREQUESTERROR = "InvalidParameterValue.ImageRequestError"
 //  INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 func (c *Client) ChatCompletionsWithContext(ctx context.Context, request *ChatCompletionsRequest) (response *ChatCompletionsResponse, err error) {
     if request == nil {

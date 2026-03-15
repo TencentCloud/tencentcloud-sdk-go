@@ -858,8 +858,11 @@ type BackupConfigInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CrossRegions []*string `json:"CrossRegions,omitnil,omitempty" name:"CrossRegions"`
 
-	// 动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
+	// 自动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
 	BackupTriggerStrategy *string `json:"BackupTriggerStrategy,omitnil,omitempty" name:"BackupTriggerStrategy"`
+
+	// 备份投递关系
+	AutoCopyVaults []*CreateBackupVaultItem `json:"AutoCopyVaults,omitnil,omitempty" name:"AutoCopyVaults"`
 }
 
 type BackupFileInfo struct {
@@ -898,6 +901,18 @@ type BackupFileInfo struct {
 
 	// 备份文件备注
 	BackupName *string `json:"BackupName,omitnil,omitempty" name:"BackupName"`
+
+	// 投递状态
+	CopyStatus *string `json:"CopyStatus,omitnil,omitempty" name:"CopyStatus"`
+
+	// 秘钥id
+	EncryptKeyId *string `json:"EncryptKeyId,omitnil,omitempty" name:"EncryptKeyId"`
+
+	// 秘钥地域
+	EncryptRegion *string `json:"EncryptRegion,omitnil,omitempty" name:"EncryptRegion"`
+
+	// 保险箱信息
+	VaultInfos []*VaultInfo `json:"VaultInfos,omitnil,omitempty" name:"VaultInfos"`
 }
 
 type BackupLimitClusterRestriction struct {
@@ -1039,6 +1054,9 @@ type BinlogConfigInfo struct {
 	// binlog异地地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BinlogCrossRegions []*string `json:"BinlogCrossRegions,omitnil,omitempty" name:"BinlogCrossRegions"`
+
+	// 保险箱信息
+	AutoCopyVaults []*CreateBackupVaultItem `json:"AutoCopyVaults,omitnil,omitempty" name:"AutoCopyVaults"`
 }
 
 type BinlogItem struct {
@@ -1059,6 +1077,18 @@ type BinlogItem struct {
 
 	// binlog所跨地域
 	CrossRegions []*string `json:"CrossRegions,omitnil,omitempty" name:"CrossRegions"`
+
+	// 备份投递状态
+	CopyStatus *string `json:"CopyStatus,omitnil,omitempty" name:"CopyStatus"`
+
+	// 保险箱信息
+	VaultInfos []*VaultInfo `json:"VaultInfos,omitnil,omitempty" name:"VaultInfos"`
+
+	// 加密秘钥key
+	EncryptKeyId *string `json:"EncryptKeyId,omitnil,omitempty" name:"EncryptKeyId"`
+
+	// 加密秘钥地域
+	EncryptRegion *string `json:"EncryptRegion,omitnil,omitempty" name:"EncryptRegion"`
 }
 
 type BizTaskInfo struct {
@@ -1183,6 +1213,12 @@ type BizTaskInfo struct {
 
 	// 全球数据库网络任务
 	GdnTaskInfo *GdnTaskInfo `json:"GdnTaskInfo,omitnil,omitempty" name:"GdnTaskInfo"`
+
+	// 保险箱id
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 保险箱名称
+	VaultName *string `json:"VaultName,omitnil,omitempty" name:"VaultName"`
 }
 
 type BizTaskModifyInstanceParam struct {
@@ -2243,6 +2279,16 @@ func (r *CreateBackupResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateBackupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBackupVaultItem struct {
+	// 保险箱id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 保险箱地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VaultRegion *string `json:"VaultRegion,omitnil,omitempty" name:"VaultRegion"`
 }
 
 // Predefined struct for user
@@ -14088,6 +14134,9 @@ type LogicBackupConfigInfo struct {
 	// 逻辑备份所跨地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogicCrossRegions []*string `json:"LogicCrossRegions,omitnil,omitempty" name:"LogicCrossRegions"`
+
+	// 备份投递关系
+	AutoCopyVaults []*CreateBackupVaultItem `json:"AutoCopyVaults,omitnil,omitempty" name:"AutoCopyVaults"`
 }
 
 type ManualBackupData struct {
@@ -17310,6 +17359,9 @@ type ModifyServerlessStrategyRequestParams struct {
 
 	// 升级类型。 默认值：upgradeImmediate。 可选值： upgradeImmediate：立即完成修改 upgradeInMaintain：在维护时间窗口内完成修改
 	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
+
+	// 新增的只读实例需要绑定的安全组列表。仅仅针对于在这次调整策略过程中新产生的只读实例绑定安全组，存量的实例不绑定。
+	SecurityGroupIdsForNewRo []*string `json:"SecurityGroupIdsForNewRo,omitnil,omitempty" name:"SecurityGroupIdsForNewRo"`
 }
 
 type ModifyServerlessStrategyRequest struct {
@@ -17355,6 +17407,9 @@ type ModifyServerlessStrategyRequest struct {
 
 	// 升级类型。 默认值：upgradeImmediate。 可选值： upgradeImmediate：立即完成修改 upgradeInMaintain：在维护时间窗口内完成修改
 	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
+
+	// 新增的只读实例需要绑定的安全组列表。仅仅针对于在这次调整策略过程中新产生的只读实例绑定安全组，存量的实例不绑定。
+	SecurityGroupIdsForNewRo []*string `json:"SecurityGroupIdsForNewRo,omitnil,omitempty" name:"SecurityGroupIdsForNewRo"`
 }
 
 func (r *ModifyServerlessStrategyRequest) ToJsonString() string {
@@ -17382,6 +17437,7 @@ func (r *ModifyServerlessStrategyRequest) FromJsonString(s string) error {
 	delete(f, "MaxRoCount")
 	delete(f, "AutoArchive")
 	delete(f, "UpgradeType")
+	delete(f, "SecurityGroupIdsForNewRo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyServerlessStrategyRequest has unknown keys!", "")
 	}
@@ -19162,6 +19218,18 @@ type RedoLogItem struct {
 
 	// 完成时间
 	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// 保险箱信息
+	VaultInfos []*VaultInfo `json:"VaultInfos,omitnil,omitempty" name:"VaultInfos"`
+
+	// 备份投递状态
+	CopyStatus *string `json:"CopyStatus,omitnil,omitempty" name:"CopyStatus"`
+
+	// 加密秘钥key
+	EncryptKeyId *string `json:"EncryptKeyId,omitnil,omitempty" name:"EncryptKeyId"`
+
+	// 加密秘钥地域
+	EncryptRegion *string `json:"EncryptRegion,omitnil,omitempty" name:"EncryptRegion"`
 }
 
 // Predefined struct for user
@@ -21274,6 +21342,9 @@ type SnapshotBackupConfig struct {
 
 	// 自动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
 	BackupTriggerStrategy *string `json:"BackupTriggerStrategy,omitnil,omitempty" name:"BackupTriggerStrategy"`
+
+	// 保险箱信息
+	AutoCopyVaults []*CreateBackupVaultItem `json:"AutoCopyVaults,omitnil,omitempty" name:"AutoCopyVaults"`
 }
 
 // Predefined struct for user
@@ -22311,6 +22382,23 @@ type UserHostPrivilege struct {
 
 	// 用户权限
 	DbPrivilege *string `json:"DbPrivilege,omitnil,omitempty" name:"DbPrivilege"`
+}
+
+type VaultInfo struct {
+	// 保险箱id
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 保险箱name
+	VaultName *string `json:"VaultName,omitnil,omitempty" name:"VaultName"`
+
+	// 保险箱地域
+	VaultRegion *string `json:"VaultRegion,omitnil,omitempty" name:"VaultRegion"`
+
+	// 保险箱状态
+	VaultStatus *string `json:"VaultStatus,omitnil,omitempty" name:"VaultStatus"`
+
+	// 备份保留时间
+	BackupSaveSeconds *int64 `json:"BackupSaveSeconds,omitnil,omitempty" name:"BackupSaveSeconds"`
 }
 
 type ZoneStockInfo struct {
