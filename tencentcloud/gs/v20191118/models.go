@@ -892,6 +892,9 @@ func (r *CreateAndroidAppVersionResponse) FromJsonString(s string) error {
 type CreateAndroidInstanceADBRequestParams struct {
 	// 安卓实例 ID
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
+
+	// 过期时间。默认 1 小时，最长 30 天。格式为 2025-07-02T10:15:36Z
+	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 }
 
 type CreateAndroidInstanceADBRequest struct {
@@ -899,6 +902,9 @@ type CreateAndroidInstanceADBRequest struct {
 	
 	// 安卓实例 ID
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
+
+	// 过期时间。默认 1 小时，最长 30 天。格式为 2025-07-02T10:15:36Z
+	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 }
 
 func (r *CreateAndroidInstanceADBRequest) ToJsonString() string {
@@ -914,6 +920,7 @@ func (r *CreateAndroidInstanceADBRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "AndroidInstanceId")
+	delete(f, "ExpiredTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndroidInstanceADBRequest has unknown keys!", "")
 	}

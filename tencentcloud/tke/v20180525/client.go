@@ -2363,6 +2363,68 @@ func (c *Client) CreateEksLogConfigWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateExternalNodePoolRequest() (request *CreateExternalNodePoolRequest) {
+    request = &CreateExternalNodePoolRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "CreateExternalNodePool")
+    
+    
+    return
+}
+
+func NewCreateExternalNodePoolResponse() (response *CreateExternalNodePoolResponse) {
+    response = &CreateExternalNodePoolResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateExternalNodePool
+// 创建第三方节点池
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+//  UNSUPPORTEDOPERATION_NOTINWHITELIST = "UnsupportedOperation.NotInWhitelist"
+func (c *Client) CreateExternalNodePool(request *CreateExternalNodePoolRequest) (response *CreateExternalNodePoolResponse, err error) {
+    return c.CreateExternalNodePoolWithContext(context.Background(), request)
+}
+
+// CreateExternalNodePool
+// 创建第三方节点池
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+//  UNSUPPORTEDOPERATION_NOTINWHITELIST = "UnsupportedOperation.NotInWhitelist"
+func (c *Client) CreateExternalNodePoolWithContext(ctx context.Context, request *CreateExternalNodePoolRequest) (response *CreateExternalNodePoolResponse, err error) {
+    if request == nil {
+        request = NewCreateExternalNodePoolRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "CreateExternalNodePool")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateExternalNodePool require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateExternalNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateGlobalMaintenanceWindowAndExclusionsRequest() (request *CreateGlobalMaintenanceWindowAndExclusionsRequest) {
     request = &CreateGlobalMaintenanceWindowAndExclusionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2386,19 +2448,13 @@ func NewCreateGlobalMaintenanceWindowAndExclusionsResponse() (response *CreateGl
 // 创建全局维护时间窗口和排除项
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
-//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
-//  FAILEDOPERATION_CREATECLSTOPIC = "FailedOperation.CreateClsTopic"
-//  FAILEDOPERATION_GETCLSTOPIC = "FailedOperation.GetClsTopic"
-//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
-//  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
-//  FAILEDOPERATION_KUBERNETESGETOPERATIONERROR = "FailedOperation.KubernetesGetOperationError"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+//  UNSUPPORTEDOPERATION_NOTINWHITELIST = "UnsupportedOperation.NotInWhitelist"
 func (c *Client) CreateGlobalMaintenanceWindowAndExclusions(request *CreateGlobalMaintenanceWindowAndExclusionsRequest) (response *CreateGlobalMaintenanceWindowAndExclusionsResponse, err error) {
     return c.CreateGlobalMaintenanceWindowAndExclusionsWithContext(context.Background(), request)
 }
@@ -2407,19 +2463,13 @@ func (c *Client) CreateGlobalMaintenanceWindowAndExclusions(request *CreateGloba
 // 创建全局维护时间窗口和排除项
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
-//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
-//  FAILEDOPERATION_CREATECLSTOPIC = "FailedOperation.CreateClsTopic"
-//  FAILEDOPERATION_GETCLSTOPIC = "FailedOperation.GetClsTopic"
-//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
-//  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
-//  FAILEDOPERATION_KUBERNETESGETOPERATIONERROR = "FailedOperation.KubernetesGetOperationError"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+//  UNSUPPORTEDOPERATION_NOTINWHITELIST = "UnsupportedOperation.NotInWhitelist"
 func (c *Client) CreateGlobalMaintenanceWindowAndExclusionsWithContext(ctx context.Context, request *CreateGlobalMaintenanceWindowAndExclusionsRequest) (response *CreateGlobalMaintenanceWindowAndExclusionsResponse, err error) {
     if request == nil {
         request = NewCreateGlobalMaintenanceWindowAndExclusionsRequest()
@@ -4529,6 +4579,118 @@ func (c *Client) DeleteEdgeClusterInstancesWithContext(ctx context.Context, requ
     return
 }
 
+func NewDeleteExternalNodeRequest() (request *DeleteExternalNodeRequest) {
+    request = &DeleteExternalNodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteExternalNode")
+    
+    
+    return
+}
+
+func NewDeleteExternalNodeResponse() (response *DeleteExternalNodeResponse) {
+    response = &DeleteExternalNodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteExternalNode
+// 删除第三方节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEINUSE_EXISTRUNNINGPOD = "ResourceInUse.ExistRunningPod"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DeleteExternalNode(request *DeleteExternalNodeRequest) (response *DeleteExternalNodeResponse, err error) {
+    return c.DeleteExternalNodeWithContext(context.Background(), request)
+}
+
+// DeleteExternalNode
+// 删除第三方节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEINUSE_EXISTRUNNINGPOD = "ResourceInUse.ExistRunningPod"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DeleteExternalNodeWithContext(ctx context.Context, request *DeleteExternalNodeRequest) (response *DeleteExternalNodeResponse, err error) {
+    if request == nil {
+        request = NewDeleteExternalNodeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteExternalNode")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteExternalNode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteExternalNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteExternalNodePoolRequest() (request *DeleteExternalNodePoolRequest) {
+    request = &DeleteExternalNodePoolRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteExternalNodePool")
+    
+    
+    return
+}
+
+func NewDeleteExternalNodePoolResponse() (response *DeleteExternalNodePoolResponse) {
+    response = &DeleteExternalNodePoolResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteExternalNodePool
+// 删除第三方节点池
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DeleteExternalNodePool(request *DeleteExternalNodePoolRequest) (response *DeleteExternalNodePoolResponse, err error) {
+    return c.DeleteExternalNodePoolWithContext(context.Background(), request)
+}
+
+// DeleteExternalNodePool
+// 删除第三方节点池
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DeleteExternalNodePoolWithContext(ctx context.Context, request *DeleteExternalNodePoolRequest) (response *DeleteExternalNodePoolResponse, err error) {
+    if request == nil {
+        request = NewDeleteExternalNodePoolRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DeleteExternalNodePool")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteExternalNodePool require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteExternalNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteGlobalMaintenanceWindowAndExclusionRequest() (request *DeleteGlobalMaintenanceWindowAndExclusionRequest) {
     request = &DeleteGlobalMaintenanceWindowAndExclusionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4552,18 +4714,10 @@ func NewDeleteGlobalMaintenanceWindowAndExclusionResponse() (response *DeleteGlo
 // 删除全集维护时间窗口和排除项
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
 func (c *Client) DeleteGlobalMaintenanceWindowAndExclusion(request *DeleteGlobalMaintenanceWindowAndExclusionRequest) (response *DeleteGlobalMaintenanceWindowAndExclusionResponse, err error) {
     return c.DeleteGlobalMaintenanceWindowAndExclusionWithContext(context.Background(), request)
 }
@@ -4572,18 +4726,10 @@ func (c *Client) DeleteGlobalMaintenanceWindowAndExclusion(request *DeleteGlobal
 // 删除全集维护时间窗口和排除项
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
 func (c *Client) DeleteGlobalMaintenanceWindowAndExclusionWithContext(ctx context.Context, request *DeleteGlobalMaintenanceWindowAndExclusionRequest) (response *DeleteGlobalMaintenanceWindowAndExclusionResponse, err error) {
     if request == nil {
         request = NewDeleteGlobalMaintenanceWindowAndExclusionRequest()
@@ -7617,6 +7763,7 @@ func NewDescribeClusterSecurityResponse() (response *DescribeClusterSecurityResp
 //  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  FAILEDOPERATION_DB = "FailedOperation.Db"
 //  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
+//  FAILEDOPERATION_DEPRECATEDAPI = "FailedOperation.DeprecatedAPI"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  FAILEDOPERATION_LBCOMMON = "FailedOperation.LbCommon"
 //  INTERNALERROR = "InternalError"
@@ -7657,6 +7804,7 @@ func (c *Client) DescribeClusterSecurity(request *DescribeClusterSecurityRequest
 //  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  FAILEDOPERATION_DB = "FailedOperation.Db"
 //  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
+//  FAILEDOPERATION_DEPRECATEDAPI = "FailedOperation.DeprecatedAPI"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  FAILEDOPERATION_LBCOMMON = "FailedOperation.LbCommon"
 //  INTERNALERROR = "InternalError"
@@ -9097,6 +9245,178 @@ func (c *Client) DescribeExistedInstancesWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeExistedInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExternalNodeRequest() (request *DescribeExternalNodeRequest) {
+    request = &DescribeExternalNodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeExternalNode")
+    
+    
+    return
+}
+
+func NewDescribeExternalNodeResponse() (response *DescribeExternalNodeResponse) {
+    response = &DescribeExternalNodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeExternalNode
+// 查看第三方节点列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  INTERNALERROR_KUBERNETESLISTOPERATIONERROR = "InternalError.KubernetesListOperationError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DescribeExternalNode(request *DescribeExternalNodeRequest) (response *DescribeExternalNodeResponse, err error) {
+    return c.DescribeExternalNodeWithContext(context.Background(), request)
+}
+
+// DescribeExternalNode
+// 查看第三方节点列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  INTERNALERROR_KUBERNETESLISTOPERATIONERROR = "InternalError.KubernetesListOperationError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DescribeExternalNodeWithContext(ctx context.Context, request *DescribeExternalNodeRequest) (response *DescribeExternalNodeResponse, err error) {
+    if request == nil {
+        request = NewDescribeExternalNodeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeExternalNode")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExternalNode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExternalNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExternalNodePoolsRequest() (request *DescribeExternalNodePoolsRequest) {
+    request = &DescribeExternalNodePoolsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeExternalNodePools")
+    
+    
+    return
+}
+
+func NewDescribeExternalNodePoolsResponse() (response *DescribeExternalNodePoolsResponse) {
+    response = &DescribeExternalNodePoolsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeExternalNodePools
+// 查看第三方节点池列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DescribeExternalNodePools(request *DescribeExternalNodePoolsRequest) (response *DescribeExternalNodePoolsResponse, err error) {
+    return c.DescribeExternalNodePoolsWithContext(context.Background(), request)
+}
+
+// DescribeExternalNodePools
+// 查看第三方节点池列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DescribeExternalNodePoolsWithContext(ctx context.Context, request *DescribeExternalNodePoolsRequest) (response *DescribeExternalNodePoolsResponse, err error) {
+    if request == nil {
+        request = NewDescribeExternalNodePoolsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeExternalNodePools")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExternalNodePools require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExternalNodePoolsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExternalNodeScriptRequest() (request *DescribeExternalNodeScriptRequest) {
+    request = &DescribeExternalNodeScriptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeExternalNodeScript")
+    
+    
+    return
+}
+
+func NewDescribeExternalNodeScriptResponse() (response *DescribeExternalNodeScriptResponse) {
+    response = &DescribeExternalNodeScriptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeExternalNodeScript
+// 获取第三方节点添加脚本
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  LIMITEXCEEDED_QUOTAMAXNODLIMIT = "LimitExceeded.QuotaMaxNodLimit"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DescribeExternalNodeScript(request *DescribeExternalNodeScriptRequest) (response *DescribeExternalNodeScriptResponse, err error) {
+    return c.DescribeExternalNodeScriptWithContext(context.Background(), request)
+}
+
+// DescribeExternalNodeScript
+// 获取第三方节点添加脚本
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  LIMITEXCEEDED_QUOTAMAXNODLIMIT = "LimitExceeded.QuotaMaxNodLimit"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DescribeExternalNodeScriptWithContext(ctx context.Context, request *DescribeExternalNodeScriptRequest) (response *DescribeExternalNodeScriptResponse, err error) {
+    if request == nil {
+        request = NewDescribeExternalNodeScriptRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeExternalNodeScript")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExternalNodeScript require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExternalNodeScriptResponse()
     err = c.Send(request, response)
     return
 }
@@ -12829,6 +13149,58 @@ func (c *Client) DrainClusterVirtualNodeWithContext(ctx context.Context, request
     return
 }
 
+func NewDrainExternalNodeRequest() (request *DrainExternalNodeRequest) {
+    request = &DrainExternalNodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DrainExternalNode")
+    
+    
+    return
+}
+
+func NewDrainExternalNodeResponse() (response *DrainExternalNodeResponse) {
+    response = &DrainExternalNodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DrainExternalNode
+// 驱逐第三方节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DrainExternalNode(request *DrainExternalNodeRequest) (response *DrainExternalNodeResponse, err error) {
+    return c.DrainExternalNodeWithContext(context.Background(), request)
+}
+
+// DrainExternalNode
+// 驱逐第三方节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DrainExternalNodeWithContext(ctx context.Context, request *DrainExternalNodeRequest) (response *DrainExternalNodeResponse, err error) {
+    if request == nil {
+        request = NewDrainExternalNodeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DrainExternalNode")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DrainExternalNode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDrainExternalNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableClusterAuditRequest() (request *EnableClusterAuditRequest) {
     request = &EnableClusterAuditRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13259,6 +13631,74 @@ func (c *Client) EnableEventPersistenceWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewEnableEventPersistenceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableExternalNodeSupportRequest() (request *EnableExternalNodeSupportRequest) {
+    request = &EnableExternalNodeSupportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "EnableExternalNodeSupport")
+    
+    
+    return
+}
+
+func NewEnableExternalNodeSupportResponse() (response *EnableExternalNodeSupportResponse) {
+    response = &EnableExternalNodeSupportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableExternalNodeSupport
+// 开启第三方节点池支持
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_SUBNETINVALIDERROR = "InvalidParameter.SubnetInvalidError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+//  UNSUPPORTEDOPERATION_ALREADYENABLED = "UnsupportedOperation.AlreadyEnabled"
+//  UNSUPPORTEDOPERATION_NOTINWHITELIST = "UnsupportedOperation.NotInWhitelist"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDNETWORKTYPE = "UnsupportedOperation.UnsupportedNetworkType"
+func (c *Client) EnableExternalNodeSupport(request *EnableExternalNodeSupportRequest) (response *EnableExternalNodeSupportResponse, err error) {
+    return c.EnableExternalNodeSupportWithContext(context.Background(), request)
+}
+
+// EnableExternalNodeSupport
+// 开启第三方节点池支持
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_SUBNETINVALIDERROR = "InvalidParameter.SubnetInvalidError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+//  UNSUPPORTEDOPERATION_ALREADYENABLED = "UnsupportedOperation.AlreadyEnabled"
+//  UNSUPPORTEDOPERATION_NOTINWHITELIST = "UnsupportedOperation.NotInWhitelist"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDNETWORKTYPE = "UnsupportedOperation.UnsupportedNetworkType"
+func (c *Client) EnableExternalNodeSupportWithContext(ctx context.Context, request *EnableExternalNodeSupportRequest) (response *EnableExternalNodeSupportResponse, err error) {
+    if request == nil {
+        request = NewEnableExternalNodeSupportRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "EnableExternalNodeSupport")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableExternalNodeSupport require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableExternalNodeSupportResponse()
     err = c.Send(request, response)
     return
 }
@@ -14943,6 +15383,60 @@ func (c *Client) ModifyClusterVirtualNodePoolWithContext(ctx context.Context, re
     return
 }
 
+func NewModifyExternalNodePoolRequest() (request *ModifyExternalNodePoolRequest) {
+    request = &ModifyExternalNodePoolRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyExternalNodePool")
+    
+    
+    return
+}
+
+func NewModifyExternalNodePoolResponse() (response *ModifyExternalNodePoolResponse) {
+    response = &ModifyExternalNodePoolResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyExternalNodePool
+// 修改第三方节点池
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEUNAVAILABLE_NODEPOOLSTATENOTNORMAL = "ResourceUnavailable.NodePoolStateNotNormal"
+func (c *Client) ModifyExternalNodePool(request *ModifyExternalNodePoolRequest) (response *ModifyExternalNodePoolResponse, err error) {
+    return c.ModifyExternalNodePoolWithContext(context.Background(), request)
+}
+
+// ModifyExternalNodePool
+// 修改第三方节点池
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEUNAVAILABLE_NODEPOOLSTATENOTNORMAL = "ResourceUnavailable.NodePoolStateNotNormal"
+func (c *Client) ModifyExternalNodePoolWithContext(ctx context.Context, request *ModifyExternalNodePoolRequest) (response *ModifyExternalNodePoolResponse, err error) {
+    if request == nil {
+        request = NewModifyExternalNodePoolRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyExternalNodePool")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyExternalNodePool require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyExternalNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyGlobalMaintenanceWindowAndExclusionsRequest() (request *ModifyGlobalMaintenanceWindowAndExclusionsRequest) {
     request = &ModifyGlobalMaintenanceWindowAndExclusionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14966,10 +15460,8 @@ func NewModifyGlobalMaintenanceWindowAndExclusionsResponse() (response *ModifyGl
 // 更新全局维护时间窗口和排除项
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_NODEPOOLSTATENOTNORMAL = "ResourceUnavailable.NodePoolStateNotNormal"
 func (c *Client) ModifyGlobalMaintenanceWindowAndExclusions(request *ModifyGlobalMaintenanceWindowAndExclusionsRequest) (response *ModifyGlobalMaintenanceWindowAndExclusionsResponse, err error) {
     return c.ModifyGlobalMaintenanceWindowAndExclusionsWithContext(context.Background(), request)
@@ -14979,10 +15471,8 @@ func (c *Client) ModifyGlobalMaintenanceWindowAndExclusions(request *ModifyGloba
 // 更新全局维护时间窗口和排除项
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_NODEPOOLSTATENOTNORMAL = "ResourceUnavailable.NodePoolStateNotNormal"
 func (c *Client) ModifyGlobalMaintenanceWindowAndExclusionsWithContext(ctx context.Context, request *ModifyGlobalMaintenanceWindowAndExclusionsRequest) (response *ModifyGlobalMaintenanceWindowAndExclusionsResponse, err error) {
     if request == nil {

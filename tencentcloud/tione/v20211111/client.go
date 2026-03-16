@@ -119,6 +119,68 @@ func (c *Client) ChatCompletionWithContext(ctx context.Context, request *ChatCom
     return
 }
 
+func NewCreateDataSourceRequest() (request *CreateDataSourceRequest) {
+    request = &CreateDataSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "CreateDataSource")
+    
+    
+    return
+}
+
+func NewCreateDataSourceResponse() (response *CreateDataSourceResponse) {
+    response = &CreateDataSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDataSource
+// 创建数据源
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDAUTHTOKEN = "FailedOperation.InvalidAuthToken"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MODELISOFFLINE = "InvalidParameter.ModelIsOffline"
+//  INVALIDPARAMETER_TGWINVALIDINTERFACE = "InvalidParameter.TgwInvalidInterface"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateDataSource(request *CreateDataSourceRequest) (response *CreateDataSourceResponse, err error) {
+    return c.CreateDataSourceWithContext(context.Background(), request)
+}
+
+// CreateDataSource
+// 创建数据源
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDAUTHTOKEN = "FailedOperation.InvalidAuthToken"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MODELISOFFLINE = "InvalidParameter.ModelIsOffline"
+//  INVALIDPARAMETER_TGWINVALIDINTERFACE = "InvalidParameter.TgwInvalidInterface"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateDataSourceWithContext(ctx context.Context, request *CreateDataSourceRequest) (response *CreateDataSourceResponse, err error) {
+    if request == nil {
+        request = NewCreateDataSourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "CreateDataSource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDataSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDataSourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDatasetRequest() (request *CreateDatasetRequest) {
     request = &CreateDatasetRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -429,6 +491,66 @@ func (c *Client) CreateModelServiceAuthTokenWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewCreateModelServiceAuthTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateMountLimitRequest() (request *CreateMountLimitRequest) {
+    request = &CreateMountLimitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "CreateMountLimit")
+    
+    
+    return
+}
+
+func NewCreateMountLimitResponse() (response *CreateMountLimitResponse) {
+    response = &CreateMountLimitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMountLimit
+// 创建挂载限制
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateMountLimit(request *CreateMountLimitRequest) (response *CreateMountLimitResponse, err error) {
+    return c.CreateMountLimitWithContext(context.Background(), request)
+}
+
+// CreateMountLimit
+// 创建挂载限制
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateMountLimitWithContext(ctx context.Context, request *CreateMountLimitRequest) (response *CreateMountLimitResponse, err error) {
+    if request == nil {
+        request = NewCreateMountLimitRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "CreateMountLimit")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMountLimit require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMountLimitResponse()
     err = c.Send(request, response)
     return
 }
@@ -907,6 +1029,166 @@ func (c *Client) CreateTrainingTaskWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewDeleteDataSourceRequest() (request *DeleteDataSourceRequest) {
+    request = &DeleteDataSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DeleteDataSource")
+    
+    
+    return
+}
+
+func NewDeleteDataSourceResponse() (response *DeleteDataSourceResponse) {
+    response = &DeleteDataSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDataSource
+// 删除数据源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATENAMETASKISCREATING = "FailedOperation.DuplicateNameTaskIsCreating"
+//  FAILEDOPERATION_FREEZEBILLFAILED = "FailedOperation.FreezeBillFailed"
+//  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
+//  INTERNALERROR_CFSNOTFOUND = "InternalError.CFSNotFound"
+//  INTERNALERROR_CHECKFSPATHACCESSIBILITYFAILED = "InternalError.CheckFSPathAccessibilityFailed"
+//  INTERNALERROR_CREATETCRINSTANCETOKENFAILED = "InternalError.CreateTcrInstanceTokenFailed"
+//  INTERNALERROR_GETCFSFILESYSTEMSFAILED = "InternalError.GetCFSFileSystemsFailed"
+//  INTERNALERROR_GETCFSMOUNTINFOFAILED = "InternalError.GetCFSMountInfoFailed"
+//  INTERNALERROR_QUERYHDFSINFOFAILED = "InternalError.QueryHDFSInfoFailed"
+//  INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
+//  INTERNALERROR_QUERYRESOURCESPECFAILED = "InternalError.QueryResourceSpecFailed"
+//  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
+//  INTERNALERROR_QUERYVPCINFOFAILED = "InternalError.QueryVPCInfoFailed"
+//  INTERNALERROR_VALIDATECREATETASKFAILED = "InternalError.ValidateCreateTaskFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_AIMARKETOUTPUTCONFIGEMPTY = "InvalidParameterValue.AIMarketOutputConfigEmpty"
+//  INVALIDPARAMETERVALUE_AIMARKETPUBLICALGOVERSIONNOTEXIST = "InvalidParameterValue.AIMarketPublicAlgoVersionNotExist"
+//  INVALIDPARAMETERVALUE_BACKOFFLIMITILLEGAL = "InvalidParameterValue.BackOffLimitIllegal"
+//  INVALIDPARAMETERVALUE_BACKOFFLIMITNOTSUPPORT = "InvalidParameterValue.BackOffLimitNotSupport"
+//  INVALIDPARAMETERVALUE_COSPATHNOTEXIST = "InvalidParameterValue.CosPathNotExist"
+//  INVALIDPARAMETERVALUE_DATASETNUMLIMITEXCEEDED = "InvalidParameterValue.DatasetNumLimitExceeded"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  INVALIDPARAMETERVALUE_FSPATHINACCESSIBLE = "InvalidParameterValue.FSPathInaccessible"
+//  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+//  INVALIDPARAMETERVALUE_GETCFSMOUNTIPFAILED = "InvalidParameterValue.GetCFSMountIPFailed"
+//  INVALIDPARAMETERVALUE_GETGOOSEFSFAILED = "InvalidParameterValue.GetGooseFSFailed"
+//  INVALIDPARAMETERVALUE_GOOSEFSNOTEXIST = "InvalidParameterValue.GooseFSNotExist"
+//  INVALIDPARAMETERVALUE_IMAGEILLEGAL = "InvalidParameterValue.ImageIllegal"
+//  INVALIDPARAMETERVALUE_IMAGENOTFOUND = "InvalidParameterValue.ImageNotFound"
+//  INVALIDPARAMETERVALUE_NOTALLOW = "InvalidParameterValue.NotAllow"
+//  INVALIDPARAMETERVALUE_PARAMLENGTHEXCEEDLIMIT = "InvalidParameterValue.ParamLengthExceedLimit"
+//  INVALIDPARAMETERVALUE_PATHILLEGAL = "InvalidParameterValue.PathIllegal"
+//  INVALIDPARAMETERVALUE_QUERYVPCINFOFAILED = "InvalidParameterValue.QueryVPCInfoFailed"
+//  INVALIDPARAMETERVALUE_RDMACONFIGILLEGAL = "InvalidParameterValue.RDMAConfigIllegal"
+//  INVALIDPARAMETERVALUE_RESOURCECONFIGILLEGAL = "InvalidParameterValue.ResourceConfigIllegal"
+//  INVALIDPARAMETERVALUE_TAIJIRESOURCECONFIGILLEGAL = "InvalidParameterValue.TAIJIResourceConfigIllegal"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDDATACONFIG = "InvalidParameterValue.UnsupportedDataConfig"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_BILLINGEXCEPTION = "OperationDenied.BillingException"
+//  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
+//  OPERATIONDENIED_IPILLEGAL = "OperationDenied.IpIllegal"
+//  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
+//  OPERATIONDENIED_NETWORKCIDRILLEGAL = "OperationDenied.NetworkCidrIllegal"
+//  OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
+//  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
+//  OPERATIONDENIED_SUBNETILLEGAL = "OperationDenied.SubnetIllegal"
+//  OPERATIONDENIED_TAIJIAPPLICATIONGROUPINSUFFICIENT = "OperationDenied.TAIJIApplicationGroupInsufficient"
+//  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
+//  RESOURCENOTFOUND_CFSNOTFOUND = "ResourceNotFound.CfsNotFound"
+//  RESOURCENOTFOUND_VPCNOTFOUND = "ResourceNotFound.VPCNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteDataSource(request *DeleteDataSourceRequest) (response *DeleteDataSourceResponse, err error) {
+    return c.DeleteDataSourceWithContext(context.Background(), request)
+}
+
+// DeleteDataSource
+// 删除数据源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATENAMETASKISCREATING = "FailedOperation.DuplicateNameTaskIsCreating"
+//  FAILEDOPERATION_FREEZEBILLFAILED = "FailedOperation.FreezeBillFailed"
+//  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
+//  INTERNALERROR_CFSNOTFOUND = "InternalError.CFSNotFound"
+//  INTERNALERROR_CHECKFSPATHACCESSIBILITYFAILED = "InternalError.CheckFSPathAccessibilityFailed"
+//  INTERNALERROR_CREATETCRINSTANCETOKENFAILED = "InternalError.CreateTcrInstanceTokenFailed"
+//  INTERNALERROR_GETCFSFILESYSTEMSFAILED = "InternalError.GetCFSFileSystemsFailed"
+//  INTERNALERROR_GETCFSMOUNTINFOFAILED = "InternalError.GetCFSMountInfoFailed"
+//  INTERNALERROR_QUERYHDFSINFOFAILED = "InternalError.QueryHDFSInfoFailed"
+//  INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
+//  INTERNALERROR_QUERYRESOURCESPECFAILED = "InternalError.QueryResourceSpecFailed"
+//  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
+//  INTERNALERROR_QUERYVPCINFOFAILED = "InternalError.QueryVPCInfoFailed"
+//  INTERNALERROR_VALIDATECREATETASKFAILED = "InternalError.ValidateCreateTaskFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_AIMARKETOUTPUTCONFIGEMPTY = "InvalidParameterValue.AIMarketOutputConfigEmpty"
+//  INVALIDPARAMETERVALUE_AIMARKETPUBLICALGOVERSIONNOTEXIST = "InvalidParameterValue.AIMarketPublicAlgoVersionNotExist"
+//  INVALIDPARAMETERVALUE_BACKOFFLIMITILLEGAL = "InvalidParameterValue.BackOffLimitIllegal"
+//  INVALIDPARAMETERVALUE_BACKOFFLIMITNOTSUPPORT = "InvalidParameterValue.BackOffLimitNotSupport"
+//  INVALIDPARAMETERVALUE_COSPATHNOTEXIST = "InvalidParameterValue.CosPathNotExist"
+//  INVALIDPARAMETERVALUE_DATASETNUMLIMITEXCEEDED = "InvalidParameterValue.DatasetNumLimitExceeded"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  INVALIDPARAMETERVALUE_FSPATHINACCESSIBLE = "InvalidParameterValue.FSPathInaccessible"
+//  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+//  INVALIDPARAMETERVALUE_GETCFSMOUNTIPFAILED = "InvalidParameterValue.GetCFSMountIPFailed"
+//  INVALIDPARAMETERVALUE_GETGOOSEFSFAILED = "InvalidParameterValue.GetGooseFSFailed"
+//  INVALIDPARAMETERVALUE_GOOSEFSNOTEXIST = "InvalidParameterValue.GooseFSNotExist"
+//  INVALIDPARAMETERVALUE_IMAGEILLEGAL = "InvalidParameterValue.ImageIllegal"
+//  INVALIDPARAMETERVALUE_IMAGENOTFOUND = "InvalidParameterValue.ImageNotFound"
+//  INVALIDPARAMETERVALUE_NOTALLOW = "InvalidParameterValue.NotAllow"
+//  INVALIDPARAMETERVALUE_PARAMLENGTHEXCEEDLIMIT = "InvalidParameterValue.ParamLengthExceedLimit"
+//  INVALIDPARAMETERVALUE_PATHILLEGAL = "InvalidParameterValue.PathIllegal"
+//  INVALIDPARAMETERVALUE_QUERYVPCINFOFAILED = "InvalidParameterValue.QueryVPCInfoFailed"
+//  INVALIDPARAMETERVALUE_RDMACONFIGILLEGAL = "InvalidParameterValue.RDMAConfigIllegal"
+//  INVALIDPARAMETERVALUE_RESOURCECONFIGILLEGAL = "InvalidParameterValue.ResourceConfigIllegal"
+//  INVALIDPARAMETERVALUE_TAIJIRESOURCECONFIGILLEGAL = "InvalidParameterValue.TAIJIResourceConfigIllegal"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDDATACONFIG = "InvalidParameterValue.UnsupportedDataConfig"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_BILLINGEXCEPTION = "OperationDenied.BillingException"
+//  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
+//  OPERATIONDENIED_IPILLEGAL = "OperationDenied.IpIllegal"
+//  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
+//  OPERATIONDENIED_NETWORKCIDRILLEGAL = "OperationDenied.NetworkCidrIllegal"
+//  OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
+//  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
+//  OPERATIONDENIED_SUBNETILLEGAL = "OperationDenied.SubnetIllegal"
+//  OPERATIONDENIED_TAIJIAPPLICATIONGROUPINSUFFICIENT = "OperationDenied.TAIJIApplicationGroupInsufficient"
+//  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
+//  RESOURCENOTFOUND_CFSNOTFOUND = "ResourceNotFound.CfsNotFound"
+//  RESOURCENOTFOUND_VPCNOTFOUND = "ResourceNotFound.VPCNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteDataSourceWithContext(ctx context.Context, request *DeleteDataSourceRequest) (response *DeleteDataSourceResponse, err error) {
+    if request == nil {
+        request = NewDeleteDataSourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DeleteDataSource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDataSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDataSourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDatasetRequest() (request *DeleteDatasetRequest) {
     request = &DeleteDatasetRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1307,6 +1589,98 @@ func (c *Client) DeleteModelServiceGroupWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDeleteModelServiceGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteMountLimitRequest() (request *DeleteMountLimitRequest) {
+    request = &DeleteMountLimitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DeleteMountLimit")
+    
+    
+    return
+}
+
+func NewDeleteMountLimitResponse() (response *DeleteMountLimitResponse) {
+    response = &DeleteMountLimitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteMountLimit
+// 删除挂载限制。注意：删除挂载限制后，该存储对应的所有数据源也会被删除
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APIGATEWAYQUERYFAILED = "FailedOperation.ApiGatewayQueryFailed"
+//  FAILEDOPERATION_BILLINGQUERYFAILED = "FailedOperation.BillingQueryFailed"
+//  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_STSQUERYFAILED = "FailedOperation.StsQueryFailed"
+//  FAILEDOPERATION_UNKNOWNINSTANCETYPE = "FailedOperation.UnknownInstanceType"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteMountLimit(request *DeleteMountLimitRequest) (response *DeleteMountLimitResponse, err error) {
+    return c.DeleteMountLimitWithContext(context.Background(), request)
+}
+
+// DeleteMountLimit
+// 删除挂载限制。注意：删除挂载限制后，该存储对应的所有数据源也会被删除
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APIGATEWAYQUERYFAILED = "FailedOperation.ApiGatewayQueryFailed"
+//  FAILEDOPERATION_BILLINGQUERYFAILED = "FailedOperation.BillingQueryFailed"
+//  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_STSQUERYFAILED = "FailedOperation.StsQueryFailed"
+//  FAILEDOPERATION_UNKNOWNINSTANCETYPE = "FailedOperation.UnknownInstanceType"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteMountLimitWithContext(ctx context.Context, request *DeleteMountLimitRequest) (response *DeleteMountLimitResponse, err error) {
+    if request == nil {
+        request = NewDeleteMountLimitRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DeleteMountLimit")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMountLimit require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMountLimitResponse()
     err = c.Send(request, response)
     return
 }
@@ -1987,6 +2361,130 @@ func (c *Client) DescribeBuildInImagesWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeBuildInImagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDataSourceRequest() (request *DescribeDataSourceRequest) {
+    request = &DescribeDataSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeDataSource")
+    
+    
+    return
+}
+
+func NewDescribeDataSourceResponse() (response *DescribeDataSourceResponse) {
+    response = &DescribeDataSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDataSource
+// 获取数据源详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_QUERYBINDINGTAGSFAILED = "FailedOperation.QueryBindingTagsFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDataSource(request *DescribeDataSourceRequest) (response *DescribeDataSourceResponse, err error) {
+    return c.DescribeDataSourceWithContext(context.Background(), request)
+}
+
+// DescribeDataSource
+// 获取数据源详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_QUERYBINDINGTAGSFAILED = "FailedOperation.QueryBindingTagsFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDataSourceWithContext(ctx context.Context, request *DescribeDataSourceRequest) (response *DescribeDataSourceResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataSourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeDataSource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataSourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDataSourcesRequest() (request *DescribeDataSourcesRequest) {
+    request = &DescribeDataSourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeDataSources")
+    
+    
+    return
+}
+
+func NewDescribeDataSourcesResponse() (response *DescribeDataSourcesResponse) {
+    response = &DescribeDataSourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDataSources
+// 获取数据源列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_QUERYBINDINGTAGSFAILED = "FailedOperation.QueryBindingTagsFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDataSources(request *DescribeDataSourcesRequest) (response *DescribeDataSourcesResponse, err error) {
+    return c.DescribeDataSourcesWithContext(context.Background(), request)
+}
+
+// DescribeDataSources
+// 获取数据源列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_QUERYBINDINGTAGSFAILED = "FailedOperation.QueryBindingTagsFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDataSourcesWithContext(ctx context.Context, request *DescribeDataSourcesRequest) (response *DescribeDataSourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataSourcesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeDataSources")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataSources require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataSourcesResponse()
     err = c.Send(request, response)
     return
 }
@@ -2961,6 +3459,282 @@ func (c *Client) DescribeModelServiceHotUpdatedWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewDescribeModelServiceHotUpdatedResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMountInstanceRequest() (request *DescribeMountInstanceRequest) {
+    request = &DescribeMountInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeMountInstance")
+    
+    
+    return
+}
+
+func NewDescribeMountInstanceResponse() (response *DescribeMountInstanceResponse) {
+    response = &DescribeMountInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMountInstance
+// DescribeMountInstance
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APIGATEWAYQUERYFAILED = "FailedOperation.ApiGatewayQueryFailed"
+//  FAILEDOPERATION_BILLINGQUERYFAILED = "FailedOperation.BillingQueryFailed"
+//  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_INSUFFICIENTWHITELISTQUOTA = "FailedOperation.InsufficientWhitelistQuota"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_STSQUERYFAILED = "FailedOperation.StsQueryFailed"
+//  FAILEDOPERATION_UNKNOWNINSTANCETYPE = "FailedOperation.UnknownInstanceType"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMountInstance(request *DescribeMountInstanceRequest) (response *DescribeMountInstanceResponse, err error) {
+    return c.DescribeMountInstanceWithContext(context.Background(), request)
+}
+
+// DescribeMountInstance
+// DescribeMountInstance
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APIGATEWAYQUERYFAILED = "FailedOperation.ApiGatewayQueryFailed"
+//  FAILEDOPERATION_BILLINGQUERYFAILED = "FailedOperation.BillingQueryFailed"
+//  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_INSUFFICIENTWHITELISTQUOTA = "FailedOperation.InsufficientWhitelistQuota"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_STSQUERYFAILED = "FailedOperation.StsQueryFailed"
+//  FAILEDOPERATION_UNKNOWNINSTANCETYPE = "FailedOperation.UnknownInstanceType"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMountInstanceWithContext(ctx context.Context, request *DescribeMountInstanceRequest) (response *DescribeMountInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeMountInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeMountInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMountInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMountInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMountInstancesRequest() (request *DescribeMountInstancesRequest) {
+    request = &DescribeMountInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeMountInstances")
+    
+    
+    return
+}
+
+func NewDescribeMountInstancesResponse() (response *DescribeMountInstancesResponse) {
+    response = &DescribeMountInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMountInstances
+// 非数据源挂载时获取实例列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APIGATEWAYQUERYFAILED = "FailedOperation.ApiGatewayQueryFailed"
+//  FAILEDOPERATION_BILLINGQUERYFAILED = "FailedOperation.BillingQueryFailed"
+//  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_INSUFFICIENTWHITELISTQUOTA = "FailedOperation.InsufficientWhitelistQuota"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_STSQUERYFAILED = "FailedOperation.StsQueryFailed"
+//  FAILEDOPERATION_UNKNOWNINSTANCETYPE = "FailedOperation.UnknownInstanceType"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMountInstances(request *DescribeMountInstancesRequest) (response *DescribeMountInstancesResponse, err error) {
+    return c.DescribeMountInstancesWithContext(context.Background(), request)
+}
+
+// DescribeMountInstances
+// 非数据源挂载时获取实例列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APIGATEWAYQUERYFAILED = "FailedOperation.ApiGatewayQueryFailed"
+//  FAILEDOPERATION_BILLINGQUERYFAILED = "FailedOperation.BillingQueryFailed"
+//  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_INSUFFICIENTWHITELISTQUOTA = "FailedOperation.InsufficientWhitelistQuota"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_STSQUERYFAILED = "FailedOperation.StsQueryFailed"
+//  FAILEDOPERATION_UNKNOWNINSTANCETYPE = "FailedOperation.UnknownInstanceType"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMountInstancesWithContext(ctx context.Context, request *DescribeMountInstancesRequest) (response *DescribeMountInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeMountInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeMountInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMountInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMountInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMountLimitsRequest() (request *DescribeMountLimitsRequest) {
+    request = &DescribeMountLimitsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeMountLimits")
+    
+    
+    return
+}
+
+func NewDescribeMountLimitsResponse() (response *DescribeMountLimitsResponse) {
+    response = &DescribeMountLimitsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMountLimits
+// 获取挂载限制列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APIGATEWAYQUERYFAILED = "FailedOperation.ApiGatewayQueryFailed"
+//  FAILEDOPERATION_BILLINGQUERYFAILED = "FailedOperation.BillingQueryFailed"
+//  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_INSUFFICIENTWHITELISTQUOTA = "FailedOperation.InsufficientWhitelistQuota"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_STSQUERYFAILED = "FailedOperation.StsQueryFailed"
+//  FAILEDOPERATION_UNKNOWNINSTANCETYPE = "FailedOperation.UnknownInstanceType"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMountLimits(request *DescribeMountLimitsRequest) (response *DescribeMountLimitsResponse, err error) {
+    return c.DescribeMountLimitsWithContext(context.Background(), request)
+}
+
+// DescribeMountLimits
+// 获取挂载限制列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APIGATEWAYQUERYFAILED = "FailedOperation.ApiGatewayQueryFailed"
+//  FAILEDOPERATION_BILLINGQUERYFAILED = "FailedOperation.BillingQueryFailed"
+//  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_INSUFFICIENTWHITELISTQUOTA = "FailedOperation.InsufficientWhitelistQuota"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_STSQUERYFAILED = "FailedOperation.StsQueryFailed"
+//  FAILEDOPERATION_UNKNOWNINSTANCETYPE = "FailedOperation.UnknownInstanceType"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMountLimitsWithContext(ctx context.Context, request *DescribeMountLimitsRequest) (response *DescribeMountLimitsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMountLimitsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeMountLimits")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMountLimits require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMountLimitsResponse()
     err = c.Send(request, response)
     return
 }
@@ -4541,6 +5315,134 @@ func (c *Client) StopTrainingTaskWithContext(ctx context.Context, request *StopT
     request.SetContext(ctx)
     
     response = NewStopTrainingTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateDataSourceRequest() (request *UpdateDataSourceRequest) {
+    request = &UpdateDataSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "UpdateDataSource")
+    
+    
+    return
+}
+
+func NewUpdateDataSourceResponse() (response *UpdateDataSourceResponse) {
+    response = &UpdateDataSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateDataSource
+// 更新数据源
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOPERMISSION = "InternalError.NoPermission"
+//  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
+//  INTERNALERROR_STOPJOBINSTANCEFAILED = "InternalError.StopJobInstanceFailed"
+//  INTERNALERROR_UNSUBMITTEDSTATUSNOTALLOWSTOP = "InternalError.UnSubmittedStatusNotAllowStop"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) UpdateDataSource(request *UpdateDataSourceRequest) (response *UpdateDataSourceResponse, err error) {
+    return c.UpdateDataSourceWithContext(context.Background(), request)
+}
+
+// UpdateDataSource
+// 更新数据源
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOPERMISSION = "InternalError.NoPermission"
+//  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
+//  INTERNALERROR_STOPJOBINSTANCEFAILED = "InternalError.StopJobInstanceFailed"
+//  INTERNALERROR_UNSUBMITTEDSTATUSNOTALLOWSTOP = "InternalError.UnSubmittedStatusNotAllowStop"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) UpdateDataSourceWithContext(ctx context.Context, request *UpdateDataSourceRequest) (response *UpdateDataSourceResponse, err error) {
+    if request == nil {
+        request = NewUpdateDataSourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "UpdateDataSource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateDataSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateDataSourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateMountLimitRequest() (request *UpdateMountLimitRequest) {
+    request = &UpdateMountLimitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "UpdateMountLimit")
+    
+    
+    return
+}
+
+func NewUpdateMountLimitResponse() (response *UpdateMountLimitResponse) {
+    response = &UpdateMountLimitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateMountLimit
+// 创建挂载限制
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOPERMISSION = "InternalError.NoPermission"
+//  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
+//  INTERNALERROR_STOPJOBINSTANCEFAILED = "InternalError.StopJobInstanceFailed"
+//  INTERNALERROR_UNSUBMITTEDSTATUSNOTALLOWSTOP = "InternalError.UnSubmittedStatusNotAllowStop"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) UpdateMountLimit(request *UpdateMountLimitRequest) (response *UpdateMountLimitResponse, err error) {
+    return c.UpdateMountLimitWithContext(context.Background(), request)
+}
+
+// UpdateMountLimit
+// 创建挂载限制
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOPERMISSION = "InternalError.NoPermission"
+//  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
+//  INTERNALERROR_STOPJOBINSTANCEFAILED = "InternalError.StopJobInstanceFailed"
+//  INTERNALERROR_UNSUBMITTEDSTATUSNOTALLOWSTOP = "InternalError.UnSubmittedStatusNotAllowStop"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) UpdateMountLimitWithContext(ctx context.Context, request *UpdateMountLimitRequest) (response *UpdateMountLimitResponse, err error) {
+    if request == nil {
+        request = NewUpdateMountLimitRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "UpdateMountLimit")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateMountLimit require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateMountLimitResponse()
     err = c.Send(request, response)
     return
 }

@@ -276,6 +276,98 @@ type CosPathInfo struct {
 }
 
 // Predefined struct for user
+type CreateDataSourceRequestParams struct {
+	// 数据源名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数据源类型英文名
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 数据源权限，取值有RW RO
+	Permission *string `json:"Permission,omitnil,omitempty" name:"Permission"`
+
+	// 存储实例ID
+	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
+
+	// 数据源挂载配置
+	MountConfigure *MountConfigureInfo `json:"MountConfigure,omitnil,omitempty" name:"MountConfigure"`
+
+	// 标签配置
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type CreateDataSourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数据源类型英文名
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 数据源权限，取值有RW RO
+	Permission *string `json:"Permission,omitnil,omitempty" name:"Permission"`
+
+	// 存储实例ID
+	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
+
+	// 数据源挂载配置
+	MountConfigure *MountConfigureInfo `json:"MountConfigure,omitnil,omitempty" name:"MountConfigure"`
+
+	// 标签配置
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *CreateDataSourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDataSourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "Permission")
+	delete(f, "StorageId")
+	delete(f, "MountConfigure")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataSourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDataSourceResponseParams struct {
+	// 数据源ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDataSourceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDataSourceResponseParams `json:"Response"`
+}
+
+func (r *CreateDataSourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDataSourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDatasetRequestParams struct {
 	// 数据集名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
 	DatasetName *string `json:"DatasetName,omitnil,omitempty" name:"DatasetName"`
@@ -812,6 +904,9 @@ type CreateModelServiceRequestParams struct {
 
 	// 网关日志投递相关配置
 	GatewayLogConfig *LogConfig `json:"GatewayLogConfig,omitnil,omitempty" name:"GatewayLogConfig"`
+
+	// 网关相关配置
+	GatewayConfig *GatewayConfig `json:"GatewayConfig,omitnil,omitempty" name:"GatewayConfig"`
 }
 
 type CreateModelServiceRequest struct {
@@ -971,6 +1066,9 @@ type CreateModelServiceRequest struct {
 
 	// 网关日志投递相关配置
 	GatewayLogConfig *LogConfig `json:"GatewayLogConfig,omitnil,omitempty" name:"GatewayLogConfig"`
+
+	// 网关相关配置
+	GatewayConfig *GatewayConfig `json:"GatewayConfig,omitnil,omitempty" name:"GatewayConfig"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -1029,6 +1127,7 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "VolumeMounts")
 	delete(f, "SchedulingStrategy")
 	delete(f, "GatewayLogConfig")
+	delete(f, "GatewayConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -1057,6 +1156,74 @@ func (r *CreateModelServiceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateModelServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMountLimitRequestParams struct {
+	// 数据源类型英文名
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 存储实例ID
+	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
+
+	// 限制开关是否开启，只有开启时才有限制，默认关闭
+	LimitMount *bool `json:"LimitMount,omitnil,omitempty" name:"LimitMount"`
+}
+
+type CreateMountLimitRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源类型英文名
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 存储实例ID
+	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
+
+	// 限制开关是否开启，只有开启时才有限制，默认关闭
+	LimitMount *bool `json:"LimitMount,omitnil,omitempty" name:"LimitMount"`
+}
+
+func (r *CreateMountLimitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMountLimitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "StorageId")
+	delete(f, "LimitMount")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMountLimitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMountLimitResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMountLimitResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMountLimitResponseParams `json:"Response"`
+}
+
+func (r *CreateMountLimitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMountLimitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1931,6 +2098,51 @@ type DataSetConfig struct {
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
+type DataSourceInfo struct {
+	// 数据源ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 数据源名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 创建者uin
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// 创建者名称
+	CreatorName *string `json:"CreatorName,omitnil,omitempty" name:"CreatorName"`
+
+	// 数据源类型英文名
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 数据源权限，取值有RW RO
+	Permission *string `json:"Permission,omitnil,omitempty" name:"Permission"`
+
+	// 数据源所属存储实例ID
+	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
+
+	// 数据源所属存储实例名称
+	StorageName *string `json:"StorageName,omitnil,omitempty" name:"StorageName"`
+
+	// 数据源挂载配置
+	MountConfigure *MountConfigureInfo `json:"MountConfigure,omitnil,omitempty" name:"MountConfigure"`
+
+	// 创建时间, 格式为yyyy-mm-ddThh:mm:ssZ
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间, 格式为yyyy-mm-ddThh:mm:ssZ
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 限制开关是否开启，只有开启时才有限制
+	LimitMount *bool `json:"LimitMount,omitnil,omitempty" name:"LimitMount"`
+
+	// 标签配置
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 额外配置,对应存储实例的额外配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraConf *StorageExtraConf `json:"ExtraConf,omitnil,omitempty" name:"ExtraConf"`
+}
+
 type DatasetGroup struct {
 	// 数据集ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2217,6 +2429,60 @@ type DefaultNginxGatewayCallInfo struct {
 	// host
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+}
+
+// Predefined struct for user
+type DeleteDataSourceRequestParams struct {
+	// 数据源ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DeleteDataSourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DeleteDataSourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDataSourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDataSourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDataSourceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDataSourceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDataSourceResponseParams `json:"Response"`
+}
+
+func (r *DeleteDataSourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDataSourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -2512,6 +2778,67 @@ func (r *DeleteModelServiceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteModelServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMountLimitRequestParams struct {
+	// 数据源类型英文名
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 存储实例ID
+	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
+}
+
+type DeleteMountLimitRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源类型英文名
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 存储实例ID
+	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
+}
+
+func (r *DeleteMountLimitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMountLimitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "StorageId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMountLimitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMountLimitResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteMountLimitResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteMountLimitResponseParams `json:"Response"`
+}
+
+func (r *DeleteMountLimitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMountLimitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3215,6 +3542,158 @@ func (r *DescribeBuildInImagesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBuildInImagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataSourceRequestParams struct {
+	// 数据源id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DescribeDataSourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DescribeDataSourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataSourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataSourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataSourceResponseParams struct {
+	// 数据源信息
+	DataSourceInfo *DataSourceInfo `json:"DataSourceInfo,omitnil,omitempty" name:"DataSourceInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataSourceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataSourceResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataSourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataSourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataSourcesRequestParams struct {
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 标签过滤条件
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序的依据字段
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+type DescribeDataSourcesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 标签过滤条件
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序的依据字段
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+func (r *DescribeDataSourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataSourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "TagFilters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderField")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataSourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataSourcesResponseParams struct {
+	// 数据源列表
+	DataSourceInfos []*DataSourceInfo `json:"DataSourceInfos,omitnil,omitempty" name:"DataSourceInfos"`
+
+	// 总条数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataSourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataSourcesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataSourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataSourcesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4390,6 +4869,232 @@ func (r *DescribeModelServiceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMountInstanceRequestParams struct {
+	// 数据源类型英文名
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 存储实例ID
+	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
+}
+
+type DescribeMountInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源类型英文名
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 存储实例ID
+	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
+}
+
+func (r *DescribeMountInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMountInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "StorageId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMountInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMountInstanceResponseParams struct {
+	// 挂载的实例详情
+	MountInstance *MountInstanceInfo `json:"MountInstance,omitnil,omitempty" name:"MountInstance"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMountInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMountInstanceResponseParams `json:"Response"`
+}
+
+func (r *DescribeMountInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMountInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMountInstancesRequestParams struct {
+	// 数据源类型英文名
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeMountInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源类型英文名
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeMountInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMountInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMountInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMountInstancesResponseParams struct {
+	// 挂载的实例列表
+	MountInstances []*MountInstanceInfo `json:"MountInstances,omitnil,omitempty" name:"MountInstances"`
+
+	// 总条数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMountInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMountInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeMountInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMountInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMountLimitsRequestParams struct {
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序的依据字段
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+}
+
+type DescribeMountLimitsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序的依据字段
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+}
+
+func (r *DescribeMountLimitsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMountLimitsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "OrderField")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMountLimitsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMountLimitsResponseParams struct {
+	// 挂载限制列表
+	MountLimits []*MountLimitInfo `json:"MountLimits,omitnil,omitempty" name:"MountLimits"`
+
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMountLimitsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMountLimitsResponseParams `json:"Response"`
+}
+
+func (r *DescribeMountLimitsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMountLimitsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeNotebookRequestParams struct {
 	// notebook id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -5160,6 +5865,17 @@ type Filter struct {
 
 	// 是否开启模糊匹配
 	Fuzzy *bool `json:"Fuzzy,omitnil,omitempty" name:"Fuzzy"`
+}
+
+type GatewayConfig struct {
+	// 网关类型
+	GatewayType *string `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+
+	// 网关调度算法：轮询、一致性哈希等
+	SchedulingAlgorithm *string `json:"SchedulingAlgorithm,omitnil,omitempty" name:"SchedulingAlgorithm"`
+
+	// 一致性哈希使用的Header字段名
+	HashHeaderKey *string `json:"HashHeaderKey,omitnil,omitempty" name:"HashHeaderKey"`
 }
 
 type GooseFS struct {
@@ -6150,6 +6866,9 @@ type ModifyModelServiceRequestParams struct {
 
 	// 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
 	SchedulingStrategy *string `json:"SchedulingStrategy,omitnil,omitempty" name:"SchedulingStrategy"`
+
+	// 目标工作空间，不为0则进行迁移，源服务只允许在默认空间
+	TargetProjectId *int64 `json:"TargetProjectId,omitnil,omitempty" name:"TargetProjectId"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -6282,6 +7001,9 @@ type ModifyModelServiceRequest struct {
 
 	// 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
 	SchedulingStrategy *string `json:"SchedulingStrategy,omitnil,omitempty" name:"SchedulingStrategy"`
+
+	// 目标工作空间，不为0则进行迁移，源服务只允许在默认空间
+	TargetProjectId *int64 `json:"TargetProjectId,omitnil,omitempty" name:"TargetProjectId"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -6331,6 +7053,7 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "ResourceGroupId")
 	delete(f, "VolumeMounts")
 	delete(f, "SchedulingStrategy")
+	delete(f, "TargetProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}
@@ -6728,6 +7451,59 @@ func (r *ModifyServiceGroupWeightsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyServiceGroupWeightsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type MountConfigureInfo struct {
+	// 数据源的相对路径，支持<@subaccount>这样的占位符
+	WorkDir *string `json:"WorkDir,omitnil,omitempty" name:"WorkDir"`
+}
+
+type MountInstanceInfo struct {
+	// 类型英文名
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 存储实例ID
+	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
+
+	// 存储实例名称
+	StorageName *string `json:"StorageName,omitnil,omitempty" name:"StorageName"`
+
+	// 状态，0可挂载 1不可挂载(挂载限制)
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 额外配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraConf *StorageExtraConf `json:"ExtraConf,omitnil,omitempty" name:"ExtraConf"`
+}
+
+type MountLimitInfo struct {
+	// 数据源类型英文名
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 数据源所属存储实例ID
+	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
+
+	// 数据源所属存储实例名称
+	StorageName *string `json:"StorageName,omitnil,omitempty" name:"StorageName"`
+
+	// 限制开关是否开启，只有开启时才有限制
+	LimitMount *bool `json:"LimitMount,omitnil,omitempty" name:"LimitMount"`
+
+	// 创建者uin
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// 创建者名称
+	CreatorName *string `json:"CreatorName,omitnil,omitempty" name:"CreatorName"`
+
+	// 创建时间, 格式为yyyy-mm-ddThh:mm:ssZ
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间, 格式为yyyy-mm-ddThh:mm:ssZ
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 额外配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraConf *StorageExtraConf `json:"ExtraConf,omitnil,omitempty" name:"ExtraConf"`
 }
 
 type MultiModalContent struct {
@@ -7808,6 +8584,9 @@ type ServiceCallInfoV2 struct {
 
 	// 访问grpc时需携带的虚拟Host
 	GrpcHost *string `json:"GrpcHost,omitnil,omitempty" name:"GrpcHost"`
+
+	// 网关相关配置
+	GatewayConfig *GatewayConfig `json:"GatewayConfig,omitnil,omitempty" name:"GatewayConfig"`
 }
 
 type ServiceEIP struct {
@@ -7942,6 +8721,9 @@ type ServiceGroup struct {
 
 	// 网关日志投递相关配置
 	GatewayLogConfig *LogConfig `json:"GatewayLogConfig,omitnil,omitempty" name:"GatewayLogConfig"`
+
+	// 网关路由相关配置
+	GatewayConfig *GatewayConfig `json:"GatewayConfig,omitnil,omitempty" name:"GatewayConfig"`
 }
 
 type ServiceInfo struct {
@@ -8495,6 +9277,19 @@ func (r *StopTrainingTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type StorageExtraConf struct {
+	// cfs的存储类型
+	//   // HP:通用性能型
+	//   // SD:通用标准型
+	//   // TP:turbo性能型
+	//   // TB:turbo标准型
+	//   // THP:吞吐型
+	CFSStorageType *string `json:"CFSStorageType,omitnil,omitempty" name:"CFSStorageType"`
+
+	// cfs的协议
+	CFSProtocol *string `json:"CFSProtocol,omitnil,omitempty" name:"CFSProtocol"`
+}
+
 type SubAccountInfo struct {
 	// 腾讯云主账号UIN
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
@@ -8913,6 +9708,149 @@ type TrainingTaskSetItem struct {
 
 	// 任务AppId
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+}
+
+// Predefined struct for user
+type UpdateDataSourceRequestParams struct {
+	// 数据源ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 数据源名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数据源权限，取值有RW RO
+	Permission *string `json:"Permission,omitnil,omitempty" name:"Permission"`
+
+	// 数据源挂载配置
+	MountConfigure *MountConfigureInfo `json:"MountConfigure,omitnil,omitempty" name:"MountConfigure"`
+}
+
+type UpdateDataSourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 数据源名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数据源权限，取值有RW RO
+	Permission *string `json:"Permission,omitnil,omitempty" name:"Permission"`
+
+	// 数据源挂载配置
+	MountConfigure *MountConfigureInfo `json:"MountConfigure,omitnil,omitempty" name:"MountConfigure"`
+}
+
+func (r *UpdateDataSourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDataSourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "Permission")
+	delete(f, "MountConfigure")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDataSourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateDataSourceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateDataSourceResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateDataSourceResponseParams `json:"Response"`
+}
+
+func (r *UpdateDataSourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDataSourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateMountLimitRequestParams struct {
+	// 数据源类型英文名
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 存储实例ID
+	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
+
+	// 限制开关是否开启，只有开启时才有限制，默认关闭
+	LimitMount *bool `json:"LimitMount,omitnil,omitempty" name:"LimitMount"`
+}
+
+type UpdateMountLimitRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源类型英文名
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 存储实例ID
+	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
+
+	// 限制开关是否开启，只有开启时才有限制，默认关闭
+	LimitMount *bool `json:"LimitMount,omitnil,omitempty" name:"LimitMount"`
+}
+
+func (r *UpdateMountLimitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateMountLimitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "StorageId")
+	delete(f, "LimitMount")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateMountLimitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateMountLimitResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateMountLimitResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateMountLimitResponseParams `json:"Response"`
+}
+
+func (r *UpdateMountLimitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateMountLimitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

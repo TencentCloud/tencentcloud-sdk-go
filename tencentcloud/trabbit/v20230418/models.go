@@ -1058,56 +1058,56 @@ func (r *DeleteRabbitMQServerlessVirtualHostResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type DescribeRabbitMQServerlessBindingsRequestParams struct {
-	// 实例Id
+	// <p>实例Id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Vhost参数
+	// <p>Vhost参数</p>
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
-	// 分页offset
+	// <p>分页offset</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页limit
+	// <p>分页limit</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 搜索关键词，根据源exchange名称/目标资源名称/绑定key进行模糊搜索
+	// <p>搜索关键词，根据源exchange名称/目标资源名称进行模糊搜索</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 根据源Exchange精准搜索过滤
+	// <p>根据源Exchange精准搜索过滤</p>
 	SourceExchange *string `json:"SourceExchange,omitnil,omitempty" name:"SourceExchange"`
 
-	// 根据目标QueueName精准搜索过滤，和DestinationExchange过滤不可同时设置
+	// <p>根据目标QueueName精准搜索过滤，和DestinationExchange过滤不可同时设置</p>
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
-	// 根据目标Exchange精准搜索过滤，和QueueName过滤不可同时设置
+	// <p>根据目标Exchange精准搜索过滤，和QueueName过滤不可同时设置</p>
 	DestinationExchange *string `json:"DestinationExchange,omitnil,omitempty" name:"DestinationExchange"`
 }
 
 type DescribeRabbitMQServerlessBindingsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// <p>实例Id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Vhost参数
+	// <p>Vhost参数</p>
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
-	// 分页offset
+	// <p>分页offset</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页limit
+	// <p>分页limit</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 搜索关键词，根据源exchange名称/目标资源名称/绑定key进行模糊搜索
+	// <p>搜索关键词，根据源exchange名称/目标资源名称进行模糊搜索</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 根据源Exchange精准搜索过滤
+	// <p>根据源Exchange精准搜索过滤</p>
 	SourceExchange *string `json:"SourceExchange,omitnil,omitempty" name:"SourceExchange"`
 
-	// 根据目标QueueName精准搜索过滤，和DestinationExchange过滤不可同时设置
+	// <p>根据目标QueueName精准搜索过滤，和DestinationExchange过滤不可同时设置</p>
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
-	// 根据目标Exchange精准搜索过滤，和QueueName过滤不可同时设置
+	// <p>根据目标Exchange精准搜索过滤，和QueueName过滤不可同时设置</p>
 	DestinationExchange *string `json:"DestinationExchange,omitnil,omitempty" name:"DestinationExchange"`
 }
 
@@ -1139,10 +1139,10 @@ func (r *DescribeRabbitMQServerlessBindingsRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeRabbitMQServerlessBindingsResponseParams struct {
-	// 路由关系列表
+	// <p>路由关系列表</p>
 	BindingInfoList []*RabbitMQBindingListInfo `json:"BindingInfoList,omitnil,omitempty" name:"BindingInfoList"`
 
-	// 数量
+	// <p>数量</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2347,6 +2347,9 @@ type ModifyRabbitMQServerlessExchangeRequestParams struct {
 
 	// 备注信息
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 备用交换机
+	AlternateExchange *string `json:"AlternateExchange,omitnil,omitempty" name:"AlternateExchange"`
 }
 
 type ModifyRabbitMQServerlessExchangeRequest struct {
@@ -2363,6 +2366,9 @@ type ModifyRabbitMQServerlessExchangeRequest struct {
 
 	// 备注信息
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 备用交换机
+	AlternateExchange *string `json:"AlternateExchange,omitnil,omitempty" name:"AlternateExchange"`
 }
 
 func (r *ModifyRabbitMQServerlessExchangeRequest) ToJsonString() string {
@@ -2381,6 +2387,7 @@ func (r *ModifyRabbitMQServerlessExchangeRequest) FromJsonString(s string) error
 	delete(f, "VirtualHost")
 	delete(f, "ExchangeName")
 	delete(f, "Remark")
+	delete(f, "AlternateExchange")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRabbitMQServerlessExchangeRequest has unknown keys!", "")
 	}
@@ -2908,89 +2915,101 @@ type RabbitMQBindingListInfo struct {
 }
 
 type RabbitMQClusterInfo struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 地域信息
+	// <p>地域信息</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 创建时间，毫秒为单位
+	// <p>创建时间，毫秒为单位</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 集群说明信息
+	// <p>集群说明信息</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// VPC及网络信息
+	// <p>VPC及网络信息</p>
 	Vpcs []*VpcEndpointInfo `json:"Vpcs,omitnil,omitempty" name:"Vpcs"`
 
-	// 可用区信息
+	// <p>可用区信息</p>
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 虚拟主机数量
+	// <p>虚拟主机数量</p>
 	VirtualHostNumber *int64 `json:"VirtualHostNumber,omitnil,omitempty" name:"VirtualHostNumber"`
 
-	// 队列数量
+	// <p>队列数量</p>
 	QueueNumber *int64 `json:"QueueNumber,omitnil,omitempty" name:"QueueNumber"`
 
-	// 每秒生产消息数 单位：条/秒
+	// <p>每秒生产消息数 单位：条/秒</p>
 	MessagePublishRate *float64 `json:"MessagePublishRate,omitnil,omitempty" name:"MessagePublishRate"`
 
-	// 堆积消息数 单位：条
+	// <p>堆积消息数 单位：条</p>
 	MessageStackNumber *int64 `json:"MessageStackNumber,omitnil,omitempty" name:"MessageStackNumber"`
 
-	// 过期时间
+	// <p>过期时间</p>
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// Channel数量
+	// <p>Channel数量</p>
 	ChannelNumber *int64 `json:"ChannelNumber,omitnil,omitempty" name:"ChannelNumber"`
 
-	// Connection数量
+	// <p>Connection数量</p>
 	ConnectionNumber *int64 `json:"ConnectionNumber,omitnil,omitempty" name:"ConnectionNumber"`
 
-	// Consumer数量
+	// <p>Consumer数量</p>
 	ConsumerNumber *int64 `json:"ConsumerNumber,omitnil,omitempty" name:"ConsumerNumber"`
 
-	// Exchang数量
+	// <p>Exchang数量</p>
 	ExchangeNumber *int64 `json:"ExchangeNumber,omitnil,omitempty" name:"ExchangeNumber"`
 
-	// 集群异常信息
+	// <p>集群异常信息</p>
 	ExceptionInformation *string `json:"ExceptionInformation,omitnil,omitempty" name:"ExceptionInformation"`
 
-	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
+	// <p>实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败</p>
 	ClusterStatus *int64 `json:"ClusterStatus,omitnil,omitempty" name:"ClusterStatus"`
 
-	// 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+	// <p>自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 是否开启镜像队列策略。1表示开启，0表示没开启。
+	// <p>是否开启镜像队列策略。1表示开启，0表示没开启。</p>
 	MirrorQueuePolicyFlag *int64 `json:"MirrorQueuePolicyFlag,omitnil,omitempty" name:"MirrorQueuePolicyFlag"`
 
-	// 每秒消费消息数 单位：条/秒
+	// <p>每秒消费消息数 单位：条/秒</p>
 	MessageConsumeRate *float64 `json:"MessageConsumeRate,omitnil,omitempty" name:"MessageConsumeRate"`
 
-	// 集群版本信息
+	// <p>集群版本信息</p>
 	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
 
-	// 计费模式，0-后付费，1-预付费
+	// <p>计费模式，0-后付费，1-预付费</p>
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 集群类型
+	// <p>集群类型</p>
 	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 消息保留时间，单位小时
+	// <p>消息保留时间，单位小时</p>
 	MessageRetainTime *uint64 `json:"MessageRetainTime,omitnil,omitempty" name:"MessageRetainTime"`
 
-	// 发送消息流量比例
+	// <p>发送消息流量比例</p>
 	SendReceiveRatio *float64 `json:"SendReceiveRatio,omitnil,omitempty" name:"SendReceiveRatio"`
 
-	// 消息轨迹保留时间，单位小时
+	// <p>消息轨迹保留时间，单位小时</p>
 	TraceTime *uint64 `json:"TraceTime,omitnil,omitempty" name:"TraceTime"`
 
-	// 实例标签列表
+	// <p>实例标签列表</p>
 	Tags []*RabbitMQServerlessTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>是否开启弹性tps</p>
+	ElasticTpsFlag *bool `json:"ElasticTpsFlag,omitnil,omitempty" name:"ElasticTpsFlag"`
+
+	// <p>弹性tps倍数，默认弹1倍</p>
+	ElasticTpsRatio *float64 `json:"ElasticTpsRatio,omitnil,omitempty" name:"ElasticTpsRatio"`
+
+	// <p>最大重投次数</p>
+	MaxRedeliverCount *uint64 `json:"MaxRedeliverCount,omitnil,omitempty" name:"MaxRedeliverCount"`
+
+	// <p>消费超时时间，单位min</p>
+	ConsumerTimeout *uint64 `json:"ConsumerTimeout,omitnil,omitempty" name:"ConsumerTimeout"`
 }
 
 type RabbitMQClusterSpecInfo struct {

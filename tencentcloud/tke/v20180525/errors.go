@@ -101,6 +101,9 @@ const (
 	// 记录未找到。
 	FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
 
+	// 接口已被废弃，请使用其他接口
+	FAILEDOPERATION_DEPRECATEDAPI = "FailedOperation.DeprecatedAPI"
+
 	// 获得安全组配额失败。
 	FAILEDOPERATION_DFWGETUSGQUOTA = "FailedOperation.DfwGetUSGQuota"
 
@@ -572,6 +575,9 @@ const (
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
+	// 超过配额限制
+	LIMITEXCEEDED_QUOTAMAXNODLIMIT = "LimitExceeded.QuotaMaxNodLimit"
+
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
@@ -659,6 +665,9 @@ const (
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 
+	// 已第三方节点功能。
+	UNSUPPORTEDOPERATION_ALREADYENABLED = "UnsupportedOperation.AlreadyEnabled"
+
 	// AS伸缩关闭导致无法开启CA。
 	UNSUPPORTEDOPERATION_CAENABLEFAILED = "UnsupportedOperation.CaEnableFailed"
 
@@ -673,4 +682,7 @@ const (
 
 	// 不支持安装虚拟节点。
 	UNSUPPORTEDOPERATION_NOTSUPPORTINSTALLVIRTUALKUBELET = "UnsupportedOperation.NotSupportInstallVirtualKubelet"
+
+	// 网络类型不支持。
+	UNSUPPORTEDOPERATION_UNSUPPORTEDNETWORKTYPE = "UnsupportedOperation.UnsupportedNetworkType"
 )

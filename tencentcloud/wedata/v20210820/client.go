@@ -15029,7 +15029,7 @@ func NewReportTableResponse() (response *ReportTableResponse) {
 }
 
 // ReportTable
-// 上报table元数据
+// 上报table元数据,当前列数量限制在300
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -15038,7 +15038,7 @@ func (c *Client) ReportTable(request *ReportTableRequest) (response *ReportTable
 }
 
 // ReportTable
-// 上报table元数据
+// 上报table元数据,当前列数量限制在300
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"

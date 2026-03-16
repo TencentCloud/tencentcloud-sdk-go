@@ -99,6 +99,60 @@ func (c *Client) ActivateTWeCallLicenseWithContext(ctx context.Context, request 
     return
 }
 
+func NewActivateTWeTalkRequest() (request *ActivateTWeTalkRequest) {
+    request = &ActivateTWeTalkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ActivateTWeTalk")
+    
+    
+    return
+}
+
+func NewActivateTWeTalkResponse() (response *ActivateTWeTalkResponse) {
+    response = &ActivateTWeTalkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ActivateTWeTalk
+// TWeTalk设备激活接口。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ActivateTWeTalk(request *ActivateTWeTalkRequest) (response *ActivateTWeTalkResponse, err error) {
+    return c.ActivateTWeTalkWithContext(context.Background(), request)
+}
+
+// ActivateTWeTalk
+// TWeTalk设备激活接口。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ActivateTWeTalkWithContext(ctx context.Context, request *ActivateTWeTalkRequest) (response *ActivateTWeTalkResponse, err error) {
+    if request == nil {
+        request = NewActivateTWeTalkRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "ActivateTWeTalk")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ActivateTWeTalk require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewActivateTWeTalkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchCreateTWeSeeRecognitionTaskRequest() (request *BatchCreateTWeSeeRecognitionTaskRequest) {
     request = &BatchCreateTWeSeeRecognitionTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8731,6 +8785,114 @@ func (c *Client) GetTWeTalkAIBotListWithContext(ctx context.Context, request *Ge
     request.SetContext(ctx)
     
     response = NewGetTWeTalkAIBotListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTWeTalkActiveRecordListRequest() (request *GetTWeTalkActiveRecordListRequest) {
+    request = &GetTWeTalkActiveRecordListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetTWeTalkActiveRecordList")
+    
+    
+    return
+}
+
+func NewGetTWeTalkActiveRecordListResponse() (response *GetTWeTalkActiveRecordListResponse) {
+    response = &GetTWeTalkActiveRecordListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetTWeTalkActiveRecordList
+// TWeTalk消耗账单明细。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) GetTWeTalkActiveRecordList(request *GetTWeTalkActiveRecordListRequest) (response *GetTWeTalkActiveRecordListResponse, err error) {
+    return c.GetTWeTalkActiveRecordListWithContext(context.Background(), request)
+}
+
+// GetTWeTalkActiveRecordList
+// TWeTalk消耗账单明细。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) GetTWeTalkActiveRecordListWithContext(ctx context.Context, request *GetTWeTalkActiveRecordListRequest) (response *GetTWeTalkActiveRecordListResponse, err error) {
+    if request == nil {
+        request = NewGetTWeTalkActiveRecordListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "GetTWeTalkActiveRecordList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTWeTalkActiveRecordList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTWeTalkActiveRecordListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTWeTalkActiveStatusRequest() (request *GetTWeTalkActiveStatusRequest) {
+    request = &GetTWeTalkActiveStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetTWeTalkActiveStatus")
+    
+    
+    return
+}
+
+func NewGetTWeTalkActiveStatusResponse() (response *GetTWeTalkActiveStatusResponse) {
+    response = &GetTWeTalkActiveStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetTWeTalkActiveStatus
+// 查询TWeTalk设备激活状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetTWeTalkActiveStatus(request *GetTWeTalkActiveStatusRequest) (response *GetTWeTalkActiveStatusResponse, err error) {
+    return c.GetTWeTalkActiveStatusWithContext(context.Background(), request)
+}
+
+// GetTWeTalkActiveStatus
+// 查询TWeTalk设备激活状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetTWeTalkActiveStatusWithContext(ctx context.Context, request *GetTWeTalkActiveStatusRequest) (response *GetTWeTalkActiveStatusResponse, err error) {
+    if request == nil {
+        request = NewGetTWeTalkActiveStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "GetTWeTalkActiveStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTWeTalkActiveStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTWeTalkActiveStatusResponse()
     err = c.Send(request, response)
     return
 }

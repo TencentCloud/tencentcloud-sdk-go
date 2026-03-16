@@ -629,11 +629,11 @@ func NewCreateMySQLResponse() (response *CreateMySQLResponse) {
 }
 
 // CreateMySQL
-// 开通Mysql型数据库
+// 本接口（CreateMySQL）用于开通Mysql型数据库。
 //
 // 
 //
-// 开通后，可通过 [DescribeCreateMySQLResult ](https://cloud.tencent.com/document/api/876/128185) 查询开通结果，Mysql开通成功后，可通过接口设置数据库账号相关功能包括但不限于【创建账号、删除账号、查询可授权权限列表、查询账号已有权限、修改主机、修改配置、修改账号库表权限】、集群操作相关【查询集群参数、修改集群参数】，连接设置相关【关闭外网、开通外网、查询集群信息】，备份回档相关【创建手动回档、删除手动回档、修改自动备份配置信息、查询备份文件列表、集群回档、查询任务列表、获取table列表、获取集群数据库列表、查询备份下载地址】，相关功能接口文档：[TDSQL-C MySQL API文档](https://cloud.tencent.com/document/product/1003/48106)，可以通过 [RunSql](https://cloud.tencent.com/document/api/876/127880) 接口来执行 sql 命令，比如创建表格、插入数据、删除表格等 sql 命令
+// 开通后，可通过 [DescribeCreateMySQLResult ](https://cloud.tencent.com/document/api/876/128185) 查询开通结果，Mysql开通成功后，可通过接口设置数据库账号相关功能包括但不限于【创建账号、删除账号、查询可授权权限列表、查询账号已有权限、修改主机、修改配置、修改账号库表权限】、集群操作相关【查询集群参数、修改集群参数】，连接设置相关【关闭外网、开通外网、查询集群信息】，备份回档相关【创建手动回档、删除手动回档、修改自动备份配置信息、查询备份文件列表、集群回档、查询任务列表、获取table列表、获取集群数据库列表、查询备份下载地址】，相关功能接口文档：[TDSQL-C MySQL API文档](https://cloud.tencent.com/document/product/1003/48106)，可以通过 [RunSql](https://cloud.tencent.com/document/api/876/127880) 接口来执行 sql 命令，比如创建表格、插入数据、删除表格等 sql 命令。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
@@ -643,11 +643,11 @@ func (c *Client) CreateMySQL(request *CreateMySQLRequest) (response *CreateMySQL
 }
 
 // CreateMySQL
-// 开通Mysql型数据库
+// 本接口（CreateMySQL）用于开通Mysql型数据库。
 //
 // 
 //
-// 开通后，可通过 [DescribeCreateMySQLResult ](https://cloud.tencent.com/document/api/876/128185) 查询开通结果，Mysql开通成功后，可通过接口设置数据库账号相关功能包括但不限于【创建账号、删除账号、查询可授权权限列表、查询账号已有权限、修改主机、修改配置、修改账号库表权限】、集群操作相关【查询集群参数、修改集群参数】，连接设置相关【关闭外网、开通外网、查询集群信息】，备份回档相关【创建手动回档、删除手动回档、修改自动备份配置信息、查询备份文件列表、集群回档、查询任务列表、获取table列表、获取集群数据库列表、查询备份下载地址】，相关功能接口文档：[TDSQL-C MySQL API文档](https://cloud.tencent.com/document/product/1003/48106)，可以通过 [RunSql](https://cloud.tencent.com/document/api/876/127880) 接口来执行 sql 命令，比如创建表格、插入数据、删除表格等 sql 命令
+// 开通后，可通过 [DescribeCreateMySQLResult ](https://cloud.tencent.com/document/api/876/128185) 查询开通结果，Mysql开通成功后，可通过接口设置数据库账号相关功能包括但不限于【创建账号、删除账号、查询可授权权限列表、查询账号已有权限、修改主机、修改配置、修改账号库表权限】、集群操作相关【查询集群参数、修改集群参数】，连接设置相关【关闭外网、开通外网、查询集群信息】，备份回档相关【创建手动回档、删除手动回档、修改自动备份配置信息、查询备份文件列表、集群回档、查询任务列表、获取table列表、获取集群数据库列表、查询备份下载地址】，相关功能接口文档：[TDSQL-C MySQL API文档](https://cloud.tencent.com/document/product/1003/48106)，可以通过 [RunSql](https://cloud.tencent.com/document/api/876/127880) 接口来执行 sql 命令，比如创建表格、插入数据、删除表格等 sql 命令。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
@@ -743,7 +743,7 @@ func NewCreateTableResponse() (response *CreateTableResponse) {
 }
 
 // CreateTable
-// 本接口(CreateTable)用于创建文档型数据库表，支持创建capped类型集合，暂时不支持分片表
+// 本接口(CreateTable)用于创建文档型数据库表，支持创建capped类型集合，暂时不支持分片表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -767,7 +767,7 @@ func (c *Client) CreateTable(request *CreateTableRequest) (response *CreateTable
 }
 
 // CreateTable
-// 本接口(CreateTable)用于创建文档型数据库表，支持创建capped类型集合，暂时不支持分片表
+// 本接口(CreateTable)用于创建文档型数据库表，支持创建capped类型集合，暂时不支持分片表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1075,11 +1075,11 @@ func NewDeleteTableResponse() (response *DeleteTableResponse) {
 }
 
 // DeleteTable
-// 本接口(DeleteTable)用于删除文档型数据库表，删除表后表中数据将会被删除且无法恢复，请谨慎操作
+// 本接口(DeleteTable)用于删除文档型数据库表，删除表后表中数据将会被删除且无法恢复，请谨慎操作。
 //
 // 
 //
-// 接口入参中的 Tag 为文档型数据库的实例 Id，可以通过 [DescribeEnvs](https://cloud.tencent.com/document/api/876/34820) 接口返回的 EnvList[0].Databases[0].InstanceId 获取
+// 接口入参中的 Tag 为文档型数据库的实例 Id，可以通过 [DescribeEnvs](https://cloud.tencent.com/document/api/876/34820) 接口返回的 EnvList[0].Databases[0].InstanceId 获取。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1101,11 +1101,11 @@ func (c *Client) DeleteTable(request *DeleteTableRequest) (response *DeleteTable
 }
 
 // DeleteTable
-// 本接口(DeleteTable)用于删除文档型数据库表，删除表后表中数据将会被删除且无法恢复，请谨慎操作
+// 本接口(DeleteTable)用于删除文档型数据库表，删除表后表中数据将会被删除且无法恢复，请谨慎操作。
 //
 // 
 //
-// 接口入参中的 Tag 为文档型数据库的实例 Id，可以通过 [DescribeEnvs](https://cloud.tencent.com/document/api/876/34820) 接口返回的 EnvList[0].Databases[0].InstanceId 获取
+// 接口入参中的 Tag 为文档型数据库的实例 Id，可以通过 [DescribeEnvs](https://cloud.tencent.com/document/api/876/34820) 接口返回的 EnvList[0].Databases[0].InstanceId 获取。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1315,6 +1315,64 @@ func (c *Client) DescribeBaasPackageListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeBillingInfoRequest() (request *DescribeBillingInfoRequest) {
+    request = &DescribeBillingInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeBillingInfo")
+    
+    
+    return
+}
+
+func NewDescribeBillingInfoResponse() (response *DescribeBillingInfoResponse) {
+    response = &DescribeBillingInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBillingInfo
+// 获取计费相关信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeBillingInfo(request *DescribeBillingInfoRequest) (response *DescribeBillingInfoResponse, err error) {
+    return c.DescribeBillingInfoWithContext(context.Background(), request)
+}
+
+// DescribeBillingInfo
+// 获取计费相关信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeBillingInfoWithContext(ctx context.Context, request *DescribeBillingInfoRequest) (response *DescribeBillingInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillingInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeBillingInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBillingInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBillingInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudBaseBuildServiceRequest() (request *DescribeCloudBaseBuildServiceRequest) {
     request = &DescribeCloudBaseBuildServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1497,6 +1555,78 @@ func (c *Client) DescribeCloudBaseGWServiceWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeCloudBaseRunServerVersionRequest() (request *DescribeCloudBaseRunServerVersionRequest) {
+    request = &DescribeCloudBaseRunServerVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseRunServerVersion")
+    
+    
+    return
+}
+
+func NewDescribeCloudBaseRunServerVersionResponse() (response *DescribeCloudBaseRunServerVersionResponse) {
+    response = &DescribeCloudBaseRunServerVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudBaseRunServerVersion
+// 查询服务版本的详情，CPU和MEM  请使用CPUSize和MemSize
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
+//  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVERNOTFOUND = "ResourceNotFound.ServerNotFound"
+//  RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
+func (c *Client) DescribeCloudBaseRunServerVersion(request *DescribeCloudBaseRunServerVersionRequest) (response *DescribeCloudBaseRunServerVersionResponse, err error) {
+    return c.DescribeCloudBaseRunServerVersionWithContext(context.Background(), request)
+}
+
+// DescribeCloudBaseRunServerVersion
+// 查询服务版本的详情，CPU和MEM  请使用CPUSize和MemSize
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
+//  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVERNOTFOUND = "ResourceNotFound.ServerNotFound"
+//  RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
+func (c *Client) DescribeCloudBaseRunServerVersionWithContext(ctx context.Context, request *DescribeCloudBaseRunServerVersionRequest) (response *DescribeCloudBaseRunServerVersionResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudBaseRunServerVersionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseRunServerVersion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseRunServerVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudBaseRunServerVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCreateMySQLResultRequest() (request *DescribeCreateMySQLResultRequest) {
     request = &DescribeCreateMySQLResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1517,31 +1647,53 @@ func NewDescribeCreateMySQLResultResponse() (response *DescribeCreateMySQLResult
 }
 
 // DescribeCreateMySQLResult
-// 查询开通Mysql结果，`Response.Data.Status = "notexist"` 表示未开通，如果未开通，可以调用 [CreateMySQL](https://cloud.tencent.com/document/api/876/128186) 来开通
+// 本接口（DescribeCreateMySQLResult）用于查询开通Mysql结果。
 //
-//  `Response.Data. Status = "success"` 表示开通成功，Mysql开通成功后，可通过接口设置数据库账号相关功能包括但不限于【创建账号、删除账号、查询可授权权限列表、查询账号已有权限、修改主机、修改配置、修改账号库表权限】、集群操作相关【查询集群参数、修改集群参数】，连接设置相关【关闭外网、开通外网、查询集群信息】，备份回档相关【创建手动回档、删除手动回档、修改自动备份配置信息、查询备份文件列表、集群回档、查询任务列表、获取table列表、获取集群数据库列表、查询备份下载地址】，相关功能接口文档：[TDSQL-C MySQL API文档](https://cloud.tencent.com/document/product/1003/48106)，可以通过 [RunSql](https://cloud.tencent.com/document/api/876/127880) 接口来执行 sql 命令，比如创建表格、插入数据、删除表格等 sql 命令
+// 
+//
+// `Response.Data.Status = "notexist"` 表示未开通，如果未开通，可以调用 [CreateMySQL](https://cloud.tencent.com/document/api/876/128186) 来开通
+//
+//  `Response.Data. Status = "success"` 表示开通成功，Mysql开通成功后，可通过接口设置数据库账号相关功能包括但不限于【创建账号、删除账号、查询可授权权限列表、查询账号已有权限、修改主机、修改配置、修改账号库表权限】、集群操作相关【查询集群参数、修改集群参数】，连接设置相关【关闭外网、开通外网、查询集群信息】，备份回档相关【创建手动回档、删除手动回档、修改自动备份配置信息、查询备份文件列表、集群回档、查询任务列表、获取table列表、获取集群数据库列表、查询备份下载地址】，相关功能接口文档：[TDSQL-C MySQL API文档](https://cloud.tencent.com/document/product/1003/48106)，可以通过 [RunSql](https://cloud.tencent.com/document/api/876/127880) 接口来执行 sql 命令，比如创建表格、插入数据、删除表格等 MySql 命令。
 //
 // 可能返回的错误码:
-//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
-//  INVALIDPARAMETER_SERVICEICP = "InvalidParameter.ServiceICP"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
+//  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVERNOTFOUND = "ResourceNotFound.ServerNotFound"
+//  RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
 func (c *Client) DescribeCreateMySQLResult(request *DescribeCreateMySQLResultRequest) (response *DescribeCreateMySQLResultResponse, err error) {
     return c.DescribeCreateMySQLResultWithContext(context.Background(), request)
 }
 
 // DescribeCreateMySQLResult
-// 查询开通Mysql结果，`Response.Data.Status = "notexist"` 表示未开通，如果未开通，可以调用 [CreateMySQL](https://cloud.tencent.com/document/api/876/128186) 来开通
+// 本接口（DescribeCreateMySQLResult）用于查询开通Mysql结果。
 //
-//  `Response.Data. Status = "success"` 表示开通成功，Mysql开通成功后，可通过接口设置数据库账号相关功能包括但不限于【创建账号、删除账号、查询可授权权限列表、查询账号已有权限、修改主机、修改配置、修改账号库表权限】、集群操作相关【查询集群参数、修改集群参数】，连接设置相关【关闭外网、开通外网、查询集群信息】，备份回档相关【创建手动回档、删除手动回档、修改自动备份配置信息、查询备份文件列表、集群回档、查询任务列表、获取table列表、获取集群数据库列表、查询备份下载地址】，相关功能接口文档：[TDSQL-C MySQL API文档](https://cloud.tencent.com/document/product/1003/48106)，可以通过 [RunSql](https://cloud.tencent.com/document/api/876/127880) 接口来执行 sql 命令，比如创建表格、插入数据、删除表格等 sql 命令
+// 
+//
+// `Response.Data.Status = "notexist"` 表示未开通，如果未开通，可以调用 [CreateMySQL](https://cloud.tencent.com/document/api/876/128186) 来开通
+//
+//  `Response.Data. Status = "success"` 表示开通成功，Mysql开通成功后，可通过接口设置数据库账号相关功能包括但不限于【创建账号、删除账号、查询可授权权限列表、查询账号已有权限、修改主机、修改配置、修改账号库表权限】、集群操作相关【查询集群参数、修改集群参数】，连接设置相关【关闭外网、开通外网、查询集群信息】，备份回档相关【创建手动回档、删除手动回档、修改自动备份配置信息、查询备份文件列表、集群回档、查询任务列表、获取table列表、获取集群数据库列表、查询备份下载地址】，相关功能接口文档：[TDSQL-C MySQL API文档](https://cloud.tencent.com/document/product/1003/48106)，可以通过 [RunSql](https://cloud.tencent.com/document/api/876/127880) 接口来执行 sql 命令，比如创建表格、插入数据、删除表格等 MySql 命令。
 //
 // 可能返回的错误码:
-//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
-//  INVALIDPARAMETER_SERVICEICP = "InvalidParameter.ServiceICP"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
+//  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVERNOTFOUND = "ResourceNotFound.ServerNotFound"
+//  RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
 func (c *Client) DescribeCreateMySQLResultWithContext(ctx context.Context, request *DescribeCreateMySQLResultRequest) (response *DescribeCreateMySQLResultResponse, err error) {
     if request == nil {
         request = NewDescribeCreateMySQLResultRequest()
@@ -1579,7 +1731,7 @@ func NewDescribeDatabaseACLResponse() (response *DescribeDatabaseACLResponse) {
 }
 
 // DescribeDatabaseACL
-// 获取文档型数据库权限
+// 本接口（DescribeDatabaseACL）获取文档型数据库权限。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1591,7 +1743,7 @@ func (c *Client) DescribeDatabaseACL(request *DescribeDatabaseACLRequest) (respo
 }
 
 // DescribeDatabaseACL
-// 获取文档型数据库权限
+// 本接口（DescribeDatabaseACL）获取文档型数据库权限。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1913,11 +2065,11 @@ func NewDescribeMySQLClusterDetailResponse() (response *DescribeMySQLClusterDeta
 }
 
 // DescribeMySQLClusterDetail
-// 查询Mysql集群信息
+// 本接口（DescribeMySQLClusterDetail）查询Mysql集群信息。
 //
 // 
 //
-// 调用该接口前需要先查询Mysql是否开通，可通过 [DescribeCreateMySQLResult ](https://cloud.tencent.com/document/api/876/128185) 查询，只有已开通的才能查到集群信息，Mysql开通成功后，可通过接口设置数据库账号相关功能包括但不限于【创建账号、删除账号、查询可授权权限列表、查询账号已有权限、修改主机、修改配置、修改账号库表权限】、集群操作相关【查询集群参数、修改集群参数】，连接设置相关【关闭外网、开通外网、查询集群信息】，备份回档相关【创建手动回档、删除手动回档、修改自动备份配置信息、查询备份文件列表、集群回档、查询任务列表、获取table列表、获取集群数据库列表、查询备份下载地址】，相关功能接口文档：[TDSQL-C MySQL API文档](https://cloud.tencent.com/document/product/1003/48106)，可以通过 [RunSql](https://cloud.tencent.com/document/api/876/127880) 接口来执行 sql 命令，比如创建表格、插入数据、删除表格等 sql 命令
+// 调用该接口前需要先查询Mysql是否开通，可通过 [DescribeCreateMySQLResult ](https://cloud.tencent.com/document/api/876/128185) 查询，只有已开通的才能查到集群信息，Mysql开通成功后，可通过接口设置数据库账号相关功能包括但不限于【创建账号、删除账号、查询可授权权限列表、查询账号已有权限、修改主机、修改配置、修改账号库表权限】、集群操作相关【查询集群参数、修改集群参数】，连接设置相关【关闭外网、开通外网、查询集群信息】，备份回档相关【创建手动回档、删除手动回档、修改自动备份配置信息、查询备份文件列表、集群回档、查询任务列表、获取table列表、获取集群数据库列表、查询备份下载地址】，相关功能接口文档：[TDSQL-C MySQL API文档](https://cloud.tencent.com/document/product/1003/48106)，可以通过 [RunSql](https://cloud.tencent.com/document/api/876/127880) 接口来执行 MySql 命令，比如创建表格、插入数据、删除表格等 MySql 命令。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATASOURCENOTEXIST = "FailedOperation.DataSourceNotExist"
@@ -1926,11 +2078,11 @@ func (c *Client) DescribeMySQLClusterDetail(request *DescribeMySQLClusterDetailR
 }
 
 // DescribeMySQLClusterDetail
-// 查询Mysql集群信息
+// 本接口（DescribeMySQLClusterDetail）查询Mysql集群信息。
 //
 // 
 //
-// 调用该接口前需要先查询Mysql是否开通，可通过 [DescribeCreateMySQLResult ](https://cloud.tencent.com/document/api/876/128185) 查询，只有已开通的才能查到集群信息，Mysql开通成功后，可通过接口设置数据库账号相关功能包括但不限于【创建账号、删除账号、查询可授权权限列表、查询账号已有权限、修改主机、修改配置、修改账号库表权限】、集群操作相关【查询集群参数、修改集群参数】，连接设置相关【关闭外网、开通外网、查询集群信息】，备份回档相关【创建手动回档、删除手动回档、修改自动备份配置信息、查询备份文件列表、集群回档、查询任务列表、获取table列表、获取集群数据库列表、查询备份下载地址】，相关功能接口文档：[TDSQL-C MySQL API文档](https://cloud.tencent.com/document/product/1003/48106)，可以通过 [RunSql](https://cloud.tencent.com/document/api/876/127880) 接口来执行 sql 命令，比如创建表格、插入数据、删除表格等 sql 命令
+// 调用该接口前需要先查询Mysql是否开通，可通过 [DescribeCreateMySQLResult ](https://cloud.tencent.com/document/api/876/128185) 查询，只有已开通的才能查到集群信息，Mysql开通成功后，可通过接口设置数据库账号相关功能包括但不限于【创建账号、删除账号、查询可授权权限列表、查询账号已有权限、修改主机、修改配置、修改账号库表权限】、集群操作相关【查询集群参数、修改集群参数】，连接设置相关【关闭外网、开通外网、查询集群信息】，备份回档相关【创建手动回档、删除手动回档、修改自动备份配置信息、查询备份文件列表、集群回档、查询任务列表、获取table列表、获取集群数据库列表、查询备份下载地址】，相关功能接口文档：[TDSQL-C MySQL API文档](https://cloud.tencent.com/document/product/1003/48106)，可以通过 [RunSql](https://cloud.tencent.com/document/api/876/127880) 接口来执行 MySql 命令，比如创建表格、插入数据、删除表格等 MySql 命令。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATASOURCENOTEXIST = "FailedOperation.DataSourceNotExist"
@@ -1971,7 +2123,7 @@ func NewDescribeMySQLTaskStatusResponse() (response *DescribeMySQLTaskStatusResp
 }
 
 // DescribeMySQLTaskStatus
-// 查询Mysql任务状态
+// 本接口（DescribeMySQLTaskStatus）用于查询Mysql任务状态。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATASOURCENOTEXIST = "FailedOperation.DataSourceNotExist"
@@ -1980,7 +2132,7 @@ func (c *Client) DescribeMySQLTaskStatus(request *DescribeMySQLTaskStatusRequest
 }
 
 // DescribeMySQLTaskStatus
-// 查询Mysql任务状态
+// 本接口（DescribeMySQLTaskStatus）用于查询Mysql任务状态。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATASOURCENOTEXIST = "FailedOperation.DataSourceNotExist"
@@ -2195,11 +2347,11 @@ func NewDescribeTableResponse() (response *DescribeTableResponse) {
 }
 
 // DescribeTable
-// 查询文档型数据库表的相关信息，包括索引等信息
+// 本接口（DescribeTable）用于查询文档型数据库表的相关信息，包括索引等信息。
 //
 // 
 //
-// 接口入参中的 Tag 为文档型数据库的实例 Id，可以通过 [DescribeEnvs](https://cloud.tencent.com/document/api/876/34820) 接口返回的 EnvList[0].Databases[0].InstanceId 获取
+// 接口入参中的 Tag 为文档型数据库的实例 Id，可以通过 [DescribeEnvs](https://cloud.tencent.com/document/api/876/34820) 接口返回的 EnvList[0].Databases[0].InstanceId 获取。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2222,11 +2374,11 @@ func (c *Client) DescribeTable(request *DescribeTableRequest) (response *Describ
 }
 
 // DescribeTable
-// 查询文档型数据库表的相关信息，包括索引等信息
+// 本接口（DescribeTable）用于查询文档型数据库表的相关信息，包括索引等信息。
 //
 // 
 //
-// 接口入参中的 Tag 为文档型数据库的实例 Id，可以通过 [DescribeEnvs](https://cloud.tencent.com/document/api/876/34820) 接口返回的 EnvList[0].Databases[0].InstanceId 获取
+// 接口入参中的 Tag 为文档型数据库的实例 Id，可以通过 [DescribeEnvs](https://cloud.tencent.com/document/api/876/34820) 接口返回的 EnvList[0].Databases[0].InstanceId 获取。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2281,7 +2433,7 @@ func NewDescribeTablesResponse() (response *DescribeTablesResponse) {
 }
 
 // DescribeTables
-// 本接口(DescribeTables)用于查询文档型数据库所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等
+// 本接口(DescribeTables)用于查询文档型数据库所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2304,7 +2456,7 @@ func (c *Client) DescribeTables(request *DescribeTablesRequest) (response *Descr
 }
 
 // DescribeTables
-// 本接口(DescribeTables)用于查询文档型数据库所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等
+// 本接口(DescribeTables)用于查询文档型数据库所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2515,11 +2667,11 @@ func NewDestroyMySQLResponse() (response *DestroyMySQLResponse) {
 }
 
 // DestroyMySQL
-// 销毁Mysql
+// 本接口（DestroyMySQL）用于销毁Mysql。
 //
 // 
 //
-// 销毁后可以通过 [DescribeMySQLTaskStatus](https://cloud.tencent.com/document/api/876/128183) 接口查询销毁结果，如果 `Response.Data. Status = FAILED ` 表示销毁失败，可以重新调用销毁接口重试
+// 销毁后可以通过 [DescribeMySQLTaskStatus](https://cloud.tencent.com/document/api/876/128183) 接口查询销毁结果，如果 `Response.Data. Status = FAILED ` 表示销毁失败，可以重新调用销毁接口重试。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATASOURCENOTEXIST = "FailedOperation.DataSourceNotExist"
@@ -2528,11 +2680,11 @@ func (c *Client) DestroyMySQL(request *DestroyMySQLRequest) (response *DestroyMy
 }
 
 // DestroyMySQL
-// 销毁Mysql
+// 本接口（DestroyMySQL）用于销毁Mysql。
 //
 // 
 //
-// 销毁后可以通过 [DescribeMySQLTaskStatus](https://cloud.tencent.com/document/api/876/128183) 接口查询销毁结果，如果 `Response.Data. Status = FAILED ` 表示销毁失败，可以重新调用销毁接口重试
+// 销毁后可以通过 [DescribeMySQLTaskStatus](https://cloud.tencent.com/document/api/876/128183) 接口查询销毁结果，如果 `Response.Data. Status = FAILED ` 表示销毁失败，可以重新调用销毁接口重试。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATASOURCENOTEXIST = "FailedOperation.DataSourceNotExist"
@@ -2677,11 +2829,11 @@ func NewListTablesResponse() (response *ListTablesResponse) {
 }
 
 // ListTables
-// 本接口(ListTables)用于查询文档型数据库所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等
+// 本接口(ListTables)用于查询文档型数据库所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等。
 //
 // 
 //
-// 该接口跟 [DescribeTables](https://cloud.tencent.com/document/api/876/127962) 接口功能一致，后续该接口可能会下线，请使用 [DescribeTable](https://cloud.tencent.com/document/api/876/127962)接口
+// 该接口跟 [DescribeTables](https://cloud.tencent.com/document/api/876/127962) 接口功能一致，后续该接口可能会下线，请使用 [DescribeTable](https://cloud.tencent.com/document/api/876/127962)接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2701,11 +2853,11 @@ func (c *Client) ListTables(request *ListTablesRequest) (response *ListTablesRes
 }
 
 // ListTables
-// 本接口(ListTables)用于查询文档型数据库所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等
+// 本接口(ListTables)用于查询文档型数据库所有表信息，包括表名、表中数据条数、表中数据量、索引个数及索引的大小等。
 //
 // 
 //
-// 该接口跟 [DescribeTables](https://cloud.tencent.com/document/api/876/127962) 接口功能一致，后续该接口可能会下线，请使用 [DescribeTable](https://cloud.tencent.com/document/api/876/127962)接口
+// 该接口跟 [DescribeTables](https://cloud.tencent.com/document/api/876/127962) 接口功能一致，后续该接口可能会下线，请使用 [DescribeTable](https://cloud.tencent.com/document/api/876/127962)接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2887,7 +3039,7 @@ func NewModifyDatabaseACLResponse() (response *ModifyDatabaseACLResponse) {
 }
 
 // ModifyDatabaseACL
-// 修改文档型数据库权限
+// 本接口（ModifyDatabaseACL）用于修改文档型数据库权限。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2900,7 +3052,7 @@ func (c *Client) ModifyDatabaseACL(request *ModifyDatabaseACLRequest) (response 
 }
 
 // ModifyDatabaseACL
-// 修改文档型数据库权限
+// 本接口（ModifyDatabaseACL）用于修改文档型数据库权限。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3313,7 +3465,7 @@ func NewRunCommandsResponse() (response *RunCommandsResponse) {
 }
 
 // RunCommands
-// 本接口用于执行文档型数据库命令
+// 本接口（RunCommands）用于执行文档型数据库命令。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3333,7 +3485,7 @@ func (c *Client) RunCommands(request *RunCommandsRequest) (response *RunCommands
 }
 
 // RunCommands
-// 本接口用于执行文档型数据库命令
+// 本接口（RunCommands）用于执行文档型数据库命令。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3385,15 +3537,15 @@ func NewRunSqlResponse() (response *RunSqlResponse) {
 }
 
 // RunSql
-// 执行MySQL语句
+// 本接口（RunSql）用于执行MySQL语句。
 //
 // 
 //
-// 该接口用来执行 MySql 语句，比如创建表格、插入数据、修改数据、删除字段、添加索引等可以通过sql 语句实现的都可以使用该接口
+// 该接口用来执行 MySql 语句，比如创建表格、插入数据、修改数据、删除字段、添加索引等可以通过sql 语句实现的都可以使用该接口。
 //
 // 
 //
-// 调用该接口前需要先查询Mysql是否开通，可通过 [DescribeCreateMySQLResult ](https://cloud.tencent.com/document/api/876/128185) 查询，只有开通成功才能操作
+// 调用该接口前需要先查询Mysql是否开通，可通过 [DescribeCreateMySQLResult ](https://cloud.tencent.com/document/api/876/128185) 查询，只有开通成功才能操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASECONNECTERROR = "FailedOperation.DatabaseConnectError"
@@ -3411,15 +3563,15 @@ func (c *Client) RunSql(request *RunSqlRequest) (response *RunSqlResponse, err e
 }
 
 // RunSql
-// 执行MySQL语句
+// 本接口（RunSql）用于执行MySQL语句。
 //
 // 
 //
-// 该接口用来执行 MySql 语句，比如创建表格、插入数据、修改数据、删除字段、添加索引等可以通过sql 语句实现的都可以使用该接口
+// 该接口用来执行 MySql 语句，比如创建表格、插入数据、修改数据、删除字段、添加索引等可以通过sql 语句实现的都可以使用该接口。
 //
 // 
 //
-// 调用该接口前需要先查询Mysql是否开通，可通过 [DescribeCreateMySQLResult ](https://cloud.tencent.com/document/api/876/128185) 查询，只有开通成功才能操作
+// 调用该接口前需要先查询Mysql是否开通，可通过 [DescribeCreateMySQLResult ](https://cloud.tencent.com/document/api/876/128185) 查询，只有开通成功才能操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASECONNECTERROR = "FailedOperation.DatabaseConnectError"
@@ -3537,7 +3689,7 @@ func NewUpdateTableResponse() (response *UpdateTableResponse) {
 }
 
 // UpdateTable
-// 本接口(UpdateTable)用于修改文档型数据库表信息，当前可以支持创建和删除索引
+// 本接口(UpdateTable)用于修改文档型数据库表信息，当前可以支持创建和删除索引。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3564,7 +3716,7 @@ func (c *Client) UpdateTable(request *UpdateTableRequest) (response *UpdateTable
 }
 
 // UpdateTable
-// 本接口(UpdateTable)用于修改文档型数据库表信息，当前可以支持创建和删除索引
+// 本接口(UpdateTable)用于修改文档型数据库表信息，当前可以支持创建和删除索引。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

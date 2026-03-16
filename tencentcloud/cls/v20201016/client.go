@@ -12507,7 +12507,7 @@ func NewUploadLogResponse() (response *UploadLogResponse) {
 //
 // | -------- | -------- | ------------------------------------------------------------ |
 //
-// | time     | 是       | 日志时间（Unix 格式时间戳），支持秒、毫秒，建议采用毫秒      |
+// | time     | 是       | 日志时间（Unix 格式时间戳），支持秒、毫秒、微秒，建议采用毫秒      |
 //
 // | contents | 否       | key-value 格式的日志内容，表示一条日志里的多个 key-value 组合 |
 //
@@ -12821,7 +12821,7 @@ func (c *Client) UploadLog(request *UploadLogRequest, data []byte) (response *Up
 //
 // | -------- | -------- | ------------------------------------------------------------ |
 //
-// | time     | 是       | 日志时间（Unix 格式时间戳），支持秒、毫秒，建议采用毫秒      |
+// | time     | 是       | 日志时间（Unix 格式时间戳），支持秒、毫秒、微秒，建议采用毫秒      |
 //
 // | contents | 否       | key-value 格式的日志内容，表示一条日志里的多个 key-value 组合 |
 //

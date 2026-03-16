@@ -7575,6 +7575,102 @@ func (c *Client) CreateOrganizationInfoChangeUrlWithContext(ctx context.Context,
     return
 }
 
+func NewCreatePartnerAuthorizationLinkRequest() (request *CreatePartnerAuthorizationLinkRequest) {
+    request = &CreatePartnerAuthorizationLinkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreatePartnerAuthorizationLink")
+    
+    
+    return
+}
+
+func NewCreatePartnerAuthorizationLinkResponse() (response *CreatePartnerAuthorizationLinkResponse) {
+    response = &CreatePartnerAuthorizationLinkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePartnerAuthorizationLink
+// 获取他方企业第三方应用的创建及授权及企业用户初始化链接
+//
+// 此链接在 7 天内有效，若失效请重新生成。
+//
+// 若第一次初始化，打开此链接，会进行应用号的创建，子客的创建，打开此链接的人，必须是合作方企业的超管或者法人，否则无法认证成功。
+//
+// 若传递了应用号Id，若之前的初始化还未创建子客成功，则可以继续创建子客企业。
+//
+// 
+//
+// 注: 
+//
+// 1. BusinessId “集成方业务标记”唯一，不可变更， 此标记由电子签产品经理提供，请调用方保存。
+//
+// 2. 若“第三方应用id”不为空，需要其“集成方业务标记”与接口一致。
+//
+// 3. 不支持客户自己创建“已有第三方应用id”进行授权。（即“已有第三方应用id”的集成方业务标记为空，不能进行授权）。
+//
+// 4. 创建的子客企业与合作企业一致，其中包括超管姓名，企业名称。
+//
+// 5. 创建好的第三方应用号，不支持在页面进行修改编辑，只能通过接口的方式进行管理。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreatePartnerAuthorizationLink(request *CreatePartnerAuthorizationLinkRequest) (response *CreatePartnerAuthorizationLinkResponse, err error) {
+    return c.CreatePartnerAuthorizationLinkWithContext(context.Background(), request)
+}
+
+// CreatePartnerAuthorizationLink
+// 获取他方企业第三方应用的创建及授权及企业用户初始化链接
+//
+// 此链接在 7 天内有效，若失效请重新生成。
+//
+// 若第一次初始化，打开此链接，会进行应用号的创建，子客的创建，打开此链接的人，必须是合作方企业的超管或者法人，否则无法认证成功。
+//
+// 若传递了应用号Id，若之前的初始化还未创建子客成功，则可以继续创建子客企业。
+//
+// 
+//
+// 注: 
+//
+// 1. BusinessId “集成方业务标记”唯一，不可变更， 此标记由电子签产品经理提供，请调用方保存。
+//
+// 2. 若“第三方应用id”不为空，需要其“集成方业务标记”与接口一致。
+//
+// 3. 不支持客户自己创建“已有第三方应用id”进行授权。（即“已有第三方应用id”的集成方业务标记为空，不能进行授权）。
+//
+// 4. 创建的子客企业与合作企业一致，其中包括超管姓名，企业名称。
+//
+// 5. 创建好的第三方应用号，不支持在页面进行修改编辑，只能通过接口的方式进行管理。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreatePartnerAuthorizationLinkWithContext(ctx context.Context, request *CreatePartnerAuthorizationLinkRequest) (response *CreatePartnerAuthorizationLinkResponse, err error) {
+    if request == nil {
+        request = NewCreatePartnerAuthorizationLinkRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreatePartnerAuthorizationLink")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePartnerAuthorizationLink require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePartnerAuthorizationLinkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePartnerAutoSignAuthUrlRequest() (request *CreatePartnerAutoSignAuthUrlRequest) {
     request = &CreatePartnerAutoSignAuthUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14213,6 +14309,82 @@ func (c *Client) ModifyIntegrationRoleWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyIntegrationRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPartnerAuthorizationRequest() (request *ModifyPartnerAuthorizationRequest) {
+    request = &ModifyPartnerAuthorizationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "ModifyPartnerAuthorization")
+    
+    
+    return
+}
+
+func NewModifyPartnerAuthorizationResponse() (response *ModifyPartnerAuthorizationResponse) {
+    response = &ModifyPartnerAuthorizationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyPartnerAuthorization
+// 管理他方企业授权的第三方应用
+//
+// 
+//
+// 注: 
+//
+// 1. BusinessId “集成方业务标记”需要与“第三方应用id”一致
+//
+// 2. 不支持客户自己创建“已有第三方应用id”进行变更。（即“已有第三方应用id”的集成方业务标记为空，不能进行变更）。
+//
+// 3. 当前仅支持修改回调地址和加密key。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ModifyPartnerAuthorization(request *ModifyPartnerAuthorizationRequest) (response *ModifyPartnerAuthorizationResponse, err error) {
+    return c.ModifyPartnerAuthorizationWithContext(context.Background(), request)
+}
+
+// ModifyPartnerAuthorization
+// 管理他方企业授权的第三方应用
+//
+// 
+//
+// 注: 
+//
+// 1. BusinessId “集成方业务标记”需要与“第三方应用id”一致
+//
+// 2. 不支持客户自己创建“已有第三方应用id”进行变更。（即“已有第三方应用id”的集成方业务标记为空，不能进行变更）。
+//
+// 3. 当前仅支持修改回调地址和加密key。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ModifyPartnerAuthorizationWithContext(ctx context.Context, request *ModifyPartnerAuthorizationRequest) (response *ModifyPartnerAuthorizationResponse, err error) {
+    if request == nil {
+        request = NewModifyPartnerAuthorizationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "ModifyPartnerAuthorization")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPartnerAuthorization require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPartnerAuthorizationResponse()
     err = c.Send(request, response)
     return
 }

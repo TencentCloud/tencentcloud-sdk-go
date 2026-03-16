@@ -1241,6 +1241,21 @@ type ClusterCredential struct {
 	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
 }
 
+type ClusterExternalConfig struct {
+	// 集群网络插件类型，支持：Flannel、CiliumBGP、CiliumVXLan
+	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// Pod CIDR
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterCIDR *string `json:"ClusterCIDR,omitnil,omitempty" name:"ClusterCIDR"`
+
+	// 是否开启第三方节点池支持
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
 type ClusterExtraArgs struct {
 	// etcd自定义参数，只支持独立集群
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3549,6 +3564,119 @@ func (r *CreateEksLogConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateEksLogConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateExternalNodePoolRequestParams struct {
+	// 集群Id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 节点池名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 运行时
+	ContainerRuntime *string `json:"ContainerRuntime,omitnil,omitempty" name:"ContainerRuntime"`
+
+	// 运行时版本
+	RuntimeVersion *string `json:"RuntimeVersion,omitnil,omitempty" name:"RuntimeVersion"`
+
+	// 第三方节点label
+	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// 第三方节点taint
+	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
+
+	// 第三方节点高级设置
+	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitnil,omitempty" name:"InstanceAdvancedSettings"`
+
+	// 删除保护开关
+	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// 节点类型
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+}
+
+type CreateExternalNodePoolRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群Id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 节点池名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 运行时
+	ContainerRuntime *string `json:"ContainerRuntime,omitnil,omitempty" name:"ContainerRuntime"`
+
+	// 运行时版本
+	RuntimeVersion *string `json:"RuntimeVersion,omitnil,omitempty" name:"RuntimeVersion"`
+
+	// 第三方节点label
+	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// 第三方节点taint
+	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
+
+	// 第三方节点高级设置
+	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitnil,omitempty" name:"InstanceAdvancedSettings"`
+
+	// 删除保护开关
+	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// 节点类型
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+}
+
+func (r *CreateExternalNodePoolRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExternalNodePoolRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Name")
+	delete(f, "ContainerRuntime")
+	delete(f, "RuntimeVersion")
+	delete(f, "Labels")
+	delete(f, "Taints")
+	delete(f, "InstanceAdvancedSettings")
+	delete(f, "DeletionProtection")
+	delete(f, "NodeType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateExternalNodePoolRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateExternalNodePoolResponseParams struct {
+	// 节点池ID
+	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateExternalNodePoolResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateExternalNodePoolResponseParams `json:"Response"`
+}
+
+func (r *CreateExternalNodePoolResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExternalNodePoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5889,6 +6017,142 @@ func (r *DeleteEdgeClusterInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteEdgeClusterInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteExternalNodePoolRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 第三方节点池ID列表
+	NodePoolIds []*string `json:"NodePoolIds,omitnil,omitempty" name:"NodePoolIds"`
+
+	// 是否强制删除，在第三方节点上有pod的情况下，如果选择非强制删除，则删除会失败
+	Force *bool `json:"Force,omitnil,omitempty" name:"Force"`
+}
+
+type DeleteExternalNodePoolRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 第三方节点池ID列表
+	NodePoolIds []*string `json:"NodePoolIds,omitnil,omitempty" name:"NodePoolIds"`
+
+	// 是否强制删除，在第三方节点上有pod的情况下，如果选择非强制删除，则删除会失败
+	Force *bool `json:"Force,omitnil,omitempty" name:"Force"`
+}
+
+func (r *DeleteExternalNodePoolRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteExternalNodePoolRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NodePoolIds")
+	delete(f, "Force")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteExternalNodePoolRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteExternalNodePoolResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteExternalNodePoolResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteExternalNodePoolResponseParams `json:"Response"`
+}
+
+func (r *DeleteExternalNodePoolResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteExternalNodePoolResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteExternalNodeRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 第三方节点列表
+	Names []*string `json:"Names,omitnil,omitempty" name:"Names"`
+
+	// 是否强制删除：如果第三方节点上有运行中Pod，则非强制删除状态下不会进行删除
+	Force *bool `json:"Force,omitnil,omitempty" name:"Force"`
+}
+
+type DeleteExternalNodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 第三方节点列表
+	Names []*string `json:"Names,omitnil,omitempty" name:"Names"`
+
+	// 是否强制删除：如果第三方节点上有运行中Pod，则非强制删除状态下不会进行删除
+	Force *bool `json:"Force,omitnil,omitempty" name:"Force"`
+}
+
+func (r *DeleteExternalNodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteExternalNodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Names")
+	delete(f, "Force")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteExternalNodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteExternalNodeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteExternalNodeResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteExternalNodeResponseParams `json:"Response"`
+}
+
+func (r *DeleteExternalNodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteExternalNodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10749,6 +11013,235 @@ func (r *DescribeExistedInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeExternalNodePoolsRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+type DescribeExternalNodePoolsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeExternalNodePoolsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExternalNodePoolsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExternalNodePoolsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExternalNodePoolsResponseParams struct {
+	// 节点池总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 第三方节点池列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodePoolSet []*ExternalNodePool `json:"NodePoolSet,omitnil,omitempty" name:"NodePoolSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeExternalNodePoolsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeExternalNodePoolsResponseParams `json:"Response"`
+}
+
+func (r *DescribeExternalNodePoolsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExternalNodePoolsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExternalNodeRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 节点池ID
+	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
+
+	// 节点名称
+	Names []*string `json:"Names,omitnil,omitempty" name:"Names"`
+}
+
+type DescribeExternalNodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 节点池ID
+	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
+
+	// 节点名称
+	Names []*string `json:"Names,omitnil,omitempty" name:"Names"`
+}
+
+func (r *DescribeExternalNodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExternalNodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NodePoolId")
+	delete(f, "Names")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExternalNodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExternalNodeResponseParams struct {
+	// 节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nodes []*ExternalNode `json:"Nodes,omitnil,omitempty" name:"Nodes"`
+
+	// 节点总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeExternalNodeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeExternalNodeResponseParams `json:"Response"`
+}
+
+func (r *DescribeExternalNodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExternalNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExternalNodeScriptRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 节点池ID
+	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
+
+	// 网卡名
+	Interface *string `json:"Interface,omitnil,omitempty" name:"Interface"`
+
+	// 节点名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 是否内网获取节点初始化脚本
+	Internal *bool `json:"Internal,omitnil,omitempty" name:"Internal"`
+}
+
+type DescribeExternalNodeScriptRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 节点池ID
+	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
+
+	// 网卡名
+	Interface *string `json:"Interface,omitnil,omitempty" name:"Interface"`
+
+	// 节点名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 是否内网获取节点初始化脚本
+	Internal *bool `json:"Internal,omitnil,omitempty" name:"Internal"`
+}
+
+func (r *DescribeExternalNodeScriptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExternalNodeScriptRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NodePoolId")
+	delete(f, "Interface")
+	delete(f, "Name")
+	delete(f, "Internal")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExternalNodeScriptRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExternalNodeScriptResponseParams struct {
+	// 添加脚本cos下载链接
+	Link *string `json:"Link,omitnil,omitempty" name:"Link"`
+
+	// cos临时密钥
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// 添加脚本下载命令
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeExternalNodeScriptResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeExternalNodeScriptResponseParams `json:"Response"`
+}
+
+func (r *DescribeExternalNodeScriptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExternalNodeScriptResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeExternalNodeSupportConfigRequestParams struct {
 	// 集群Id
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -15191,6 +15684,67 @@ func (r *DrainClusterVirtualNodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DrainExternalNodeRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 节点名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type DrainExternalNodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 节点名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+func (r *DrainExternalNodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DrainExternalNodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DrainExternalNodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DrainExternalNodeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DrainExternalNodeResponse struct {
+	*tchttp.BaseResponse
+	Response *DrainExternalNodeResponseParams `json:"Response"`
+}
+
+func (r *DrainExternalNodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DrainExternalNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DriverVersion struct {
 	// GPU驱动或者CUDA的名字
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -15925,6 +16479,67 @@ func (r *EnableEventPersistenceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type EnableExternalNodeSupportRequestParams struct {
+	// 集群Id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 开启第三方节点池支持配置信息
+	ClusterExternalConfig *ClusterExternalConfig `json:"ClusterExternalConfig,omitnil,omitempty" name:"ClusterExternalConfig"`
+}
+
+type EnableExternalNodeSupportRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群Id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 开启第三方节点池支持配置信息
+	ClusterExternalConfig *ClusterExternalConfig `json:"ClusterExternalConfig,omitnil,omitempty" name:"ClusterExternalConfig"`
+}
+
+func (r *EnableExternalNodeSupportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableExternalNodeSupportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ClusterExternalConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableExternalNodeSupportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableExternalNodeSupportResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnableExternalNodeSupportResponse struct {
+	*tchttp.BaseResponse
+	Response *EnableExternalNodeSupportResponseParams `json:"Response"`
+}
+
+func (r *EnableExternalNodeSupportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableExternalNodeSupportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type EnableVpcCniNetworkTypeRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -16158,6 +16773,72 @@ type ExtensionAddon struct {
 
 	// 扩展组件信息(扩展组件资源对象的json字符串描述)
 	AddonParam *string `json:"AddonParam,omitnil,omitempty" name:"AddonParam"`
+}
+
+type ExternalNode struct {
+	// 第三方节点名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 第三方节点所属节点池
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
+
+	// 第三方IP地址
+	IP *string `json:"IP,omitnil,omitempty" name:"IP"`
+
+	// 第三方地域
+	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// 第三方节点状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 异常原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// 是否封锁。true表示已封锁，false表示未封锁
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unschedulable *bool `json:"Unschedulable,omitnil,omitempty" name:"Unschedulable"`
+}
+
+type ExternalNodePool struct {
+	// 第三方节点池ID
+	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
+
+	// 第三方节点池名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 节点池生命周期
+	LifeState *string `json:"LifeState,omitnil,omitempty" name:"LifeState"`
+
+	// 集群CIDR
+	ClusterCIDR *string `json:"ClusterCIDR,omitnil,omitempty" name:"ClusterCIDR"`
+
+	// 集群网络插件类型
+	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
+
+	// 第三方节点Runtime配置
+	RuntimeConfig *RuntimeConfig `json:"RuntimeConfig,omitnil,omitempty" name:"RuntimeConfig"`
+
+	// 第三方节点label
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// 第三方节点taint
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
+
+	// 第三方节点高级设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitnil,omitempty" name:"InstanceAdvancedSettings"`
+
+	// 删除保护开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
 }
 
 type FailedResource struct {
@@ -18729,6 +19410,102 @@ func (r *ModifyClusterVirtualNodePoolResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyClusterVirtualNodePoolResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyExternalNodePoolRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 节点池ID
+	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
+
+	// 节点池名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 第三方节点label
+	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// 第三方节点taint
+	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
+
+	// 删除保护开关
+	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看
+	UserScript *string `json:"UserScript,omitnil,omitempty" name:"UserScript"`
+}
+
+type ModifyExternalNodePoolRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 节点池ID
+	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
+
+	// 节点池名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 第三方节点label
+	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// 第三方节点taint
+	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
+
+	// 删除保护开关
+	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看
+	UserScript *string `json:"UserScript,omitnil,omitempty" name:"UserScript"`
+}
+
+func (r *ModifyExternalNodePoolRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyExternalNodePoolRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NodePoolId")
+	delete(f, "Name")
+	delete(f, "Labels")
+	delete(f, "Taints")
+	delete(f, "DeletionProtection")
+	delete(f, "UserScript")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyExternalNodePoolRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyExternalNodePoolResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyExternalNodePoolResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyExternalNodePoolResponseParams `json:"Response"`
+}
+
+func (r *ModifyExternalNodePoolResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyExternalNodePoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

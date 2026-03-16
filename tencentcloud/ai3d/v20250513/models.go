@@ -443,14 +443,14 @@ func (r *QueryHunyuan3DPartJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type QueryHunyuanTo3DProJobRequestParams struct {
-	// 任务ID。
+	// <p>任务ID。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
 type QueryHunyuanTo3DProJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID。
+	// <p>任务ID。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
@@ -475,17 +475,23 @@ func (r *QueryHunyuanTo3DProJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type QueryHunyuanTo3DProJobResponseParams struct {
-	// 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+	// <p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 错误码
+	// <p>错误码</p>
 	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
 
-	// 错误信息
+	// <p>错误信息</p>
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 
-	// 生成的3D文件数组。
+	// <p>生成的3D文件数组。</p>
 	ResultFile3Ds []*File3D `json:"ResultFile3Ds,omitnil,omitempty" name:"ResultFile3Ds"`
+
+	// <p>接口任务功能参数及积分详情，返回形式为字符串。Generate参数返回对应模式及消耗积分，如：Generate-Normal：20<br>附加参数返回参数名称及消耗积分，如：MultiViewImages：10</p>
+	ResultCreditDetails *string `json:"ResultCreditDetails,omitnil,omitempty" name:"ResultCreditDetails"`
+
+	// <p>任务总消耗积分。</p>
+	ResultCreditConsumed *float64 `json:"ResultCreditConsumed,omitnil,omitempty" name:"ResultCreditConsumed"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -660,7 +666,7 @@ type SubmitHunyuanTo3DProJobRequestParams struct {
 	// <p>生成3D模型的面数，默认值为500000。可支持生成面数范围，参考值：3000-1500000。GenerateType中选择LowPoly时，此参数不生效。</p><p>取值范围：[3000, 1500000]</p>
 	FaceCount *int64 `json:"FaceCount,omitnil,omitempty" name:"FaceCount"`
 
-	// <p>生成任务类型，默认Normal，参考值：<br>Normal：可生成带纹理的几何模型。<br>LowPoly：可生成智能拓扑后的模型，FaceCount参数不生效。<br>Geometry：可生成不带纹理的几何模型（白模），EnablePBR参数不生效。<br>Sketch：可输入草图或线稿图生成模型，此模式下prompt和ImageUrl/ImageBase64可一起输入。</p><p>枚举值：</p><ul><li>Normal： 可生成带纹理的几何模型</li><li>LowPoly： 可生成智能拓扑后的模型，FaceCount参数不生效。</li><li>Geometry： 可生成不带纹理的几何模型（白模），EnablePBR参数不生效。</li><li>Sketch： 可输入草图或线稿图生成模型，此模式下prompt和ImageUrl/ImageBase64可一起输入。</li></ul>
+	// <p>生成任务类型，默认Normal</p><p>枚举值：</p><ul><li>Normal： 可生成带纹理的几何模型</li><li>LowPoly： 可生成智能拓扑后的模型，FaceCount参数不生效。</li><li>Geometry： 可生成不带纹理的几何模型（白模），EnablePBR参数不生效。</li><li>Sketch： 可输入草图或线稿图生成模型，此模式下prompt和ImageUrl/ImageBase64可一起输入。</li></ul>
 	GenerateType *string `json:"GenerateType,omitnil,omitempty" name:"GenerateType"`
 
 	// <p>该参数仅在GenerateType中选择LowPoly模式可生效。</p><p>多边形类型，表示模型的表面由几边形网格构成，默认为triangle,参考值:<br>triangle: 三角形面。<br>quadrilateral: 四边形面与三角形面混合生成。</p>
@@ -694,7 +700,7 @@ type SubmitHunyuanTo3DProJobRequest struct {
 	// <p>生成3D模型的面数，默认值为500000。可支持生成面数范围，参考值：3000-1500000。GenerateType中选择LowPoly时，此参数不生效。</p><p>取值范围：[3000, 1500000]</p>
 	FaceCount *int64 `json:"FaceCount,omitnil,omitempty" name:"FaceCount"`
 
-	// <p>生成任务类型，默认Normal，参考值：<br>Normal：可生成带纹理的几何模型。<br>LowPoly：可生成智能拓扑后的模型，FaceCount参数不生效。<br>Geometry：可生成不带纹理的几何模型（白模），EnablePBR参数不生效。<br>Sketch：可输入草图或线稿图生成模型，此模式下prompt和ImageUrl/ImageBase64可一起输入。</p><p>枚举值：</p><ul><li>Normal： 可生成带纹理的几何模型</li><li>LowPoly： 可生成智能拓扑后的模型，FaceCount参数不生效。</li><li>Geometry： 可生成不带纹理的几何模型（白模），EnablePBR参数不生效。</li><li>Sketch： 可输入草图或线稿图生成模型，此模式下prompt和ImageUrl/ImageBase64可一起输入。</li></ul>
+	// <p>生成任务类型，默认Normal</p><p>枚举值：</p><ul><li>Normal： 可生成带纹理的几何模型</li><li>LowPoly： 可生成智能拓扑后的模型，FaceCount参数不生效。</li><li>Geometry： 可生成不带纹理的几何模型（白模），EnablePBR参数不生效。</li><li>Sketch： 可输入草图或线稿图生成模型，此模式下prompt和ImageUrl/ImageBase64可一起输入。</li></ul>
 	GenerateType *string `json:"GenerateType,omitnil,omitempty" name:"GenerateType"`
 
 	// <p>该参数仅在GenerateType中选择LowPoly模式可生效。</p><p>多边形类型，表示模型的表面由几边形网格构成，默认为triangle,参考值:<br>triangle: 三角形面。<br>quadrilateral: 四边形面与三角形面混合生成。</p>
@@ -1153,42 +1159,32 @@ func (r *SubmitReduceFaceJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitTextureTo3DJobRequestParams struct {
-	// 源3D模型文件。
-	// Type可选值：OBJ，GLB
+	// <p>源3D模型文件。<br>Type可选值：OBJ，GLB</p>
 	File3D *File3D `json:"File3D,omitnil,omitempty" name:"File3D"`
 
-	// 文生3D，3D内容的描述，中文正向提示词。
-	// 最多支持200个 utf-8 字符。
-	// 文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。
+	// <p>文生3D，3D内容的描述，中文正向提示词。<br>最多支持200个 utf-8 字符。<br>文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// 3D模型纹理参考图 Base64 数据和参考图图 Url。
-	// - Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
-	// - 图片限制：单边分辨率小于4096且大于128，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png。
+	// <p>3D模型纹理参考图 Base64 数据和参考图 Url。</p><ul><li>Base64 和 Url 必须提供一个，如果都提供以 Url 为准。</li><li>图片限制：单边分辨率小于4096且大于128，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png。</li></ul>
 	Image *Image `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 是否开启 PBR材质生成，默认 false。
+	// <p>是否开启 PBR材质生成，默认 false。</p>
 	EnablePBR *bool `json:"EnablePBR,omitnil,omitempty" name:"EnablePBR"`
 }
 
 type SubmitTextureTo3DJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 源3D模型文件。
-	// Type可选值：OBJ，GLB
+	// <p>源3D模型文件。<br>Type可选值：OBJ，GLB</p>
 	File3D *File3D `json:"File3D,omitnil,omitempty" name:"File3D"`
 
-	// 文生3D，3D内容的描述，中文正向提示词。
-	// 最多支持200个 utf-8 字符。
-	// 文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。
+	// <p>文生3D，3D内容的描述，中文正向提示词。<br>最多支持200个 utf-8 字符。<br>文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// 3D模型纹理参考图 Base64 数据和参考图图 Url。
-	// - Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
-	// - 图片限制：单边分辨率小于4096且大于128，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png。
+	// <p>3D模型纹理参考图 Base64 数据和参考图 Url。</p><ul><li>Base64 和 Url 必须提供一个，如果都提供以 Url 为准。</li><li>图片限制：单边分辨率小于4096且大于128，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png。</li></ul>
 	Image *Image `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 是否开启 PBR材质生成，默认 false。
+	// <p>是否开启 PBR材质生成，默认 false。</p>
 	EnablePBR *bool `json:"EnablePBR,omitnil,omitempty" name:"EnablePBR"`
 }
 
@@ -1216,7 +1212,7 @@ func (r *SubmitTextureTo3DJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitTextureTo3DJobResponseParams struct {
-	// 任务ID（有效期24小时）
+	// <p>任务ID（有效期24小时）</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

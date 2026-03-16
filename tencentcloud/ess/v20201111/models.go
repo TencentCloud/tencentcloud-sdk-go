@@ -8322,6 +8322,127 @@ func (r *CreateOrganizationInfoChangeUrlResponse) FromJsonString(s string) error
 }
 
 // Predefined struct for user
+type CreatePartnerAuthorizationLinkRequestParams struct {
+	// 执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 腾讯电子签平台给生态集成方分配的**生态集成业务标识**，
+	// <font color="red">**此生态集成业务标识需要提前联系产品经理配置**。</font>
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// 合作方企业在腾讯电子签注册企业后生成的企业id，需要合作方企业登录
+	// <a href="https://qian.tencent.com/console/company-settings/company-center" target="_blank">电子签控制台</a>获取
+	// 
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/20ce774cf8118b9f3742b8519ef935db.png)
+	PartnerOrganizationId *string `json:"PartnerOrganizationId,omitnil,omitempty" name:"PartnerOrganizationId"`
+
+	// 第三方应用的配置信息。
+	// 其中包括 回调地址，加密KEY等信息。
+	ApplicationInfo *CallbackInfo `json:"ApplicationInfo,omitnil,omitempty" name:"ApplicationInfo"`
+
+	// 第三方应用下企业用户信息。
+	// 其中包括企业的OrganizationOpenId和超管的UserOpenId。
+	// 具体含义请参考结构体解释
+	ProxyOrganizationInfo *ProxyOrganizationInfo `json:"ProxyOrganizationInfo,omitnil,omitempty" name:"ProxyOrganizationInfo"`
+
+	// 若未填写，则会创建一个生态集成应用。
+	// 若填写， 则必须是生态集成企业给合作方企业通过此接口**CreatePartnerAuthorizationLink**创建的应用号。
+	// 应用号可以从下图位置获取。
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/9bc4ee2bd5972035d12033608df157c9.png)
+	PartnerApplicationId *string `json:"PartnerApplicationId,omitnil,omitempty" name:"PartnerApplicationId"`
+}
+
+type CreatePartnerAuthorizationLinkRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 腾讯电子签平台给生态集成方分配的**生态集成业务标识**，
+	// <font color="red">**此生态集成业务标识需要提前联系产品经理配置**。</font>
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// 合作方企业在腾讯电子签注册企业后生成的企业id，需要合作方企业登录
+	// <a href="https://qian.tencent.com/console/company-settings/company-center" target="_blank">电子签控制台</a>获取
+	// 
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/20ce774cf8118b9f3742b8519ef935db.png)
+	PartnerOrganizationId *string `json:"PartnerOrganizationId,omitnil,omitempty" name:"PartnerOrganizationId"`
+
+	// 第三方应用的配置信息。
+	// 其中包括 回调地址，加密KEY等信息。
+	ApplicationInfo *CallbackInfo `json:"ApplicationInfo,omitnil,omitempty" name:"ApplicationInfo"`
+
+	// 第三方应用下企业用户信息。
+	// 其中包括企业的OrganizationOpenId和超管的UserOpenId。
+	// 具体含义请参考结构体解释
+	ProxyOrganizationInfo *ProxyOrganizationInfo `json:"ProxyOrganizationInfo,omitnil,omitempty" name:"ProxyOrganizationInfo"`
+
+	// 若未填写，则会创建一个生态集成应用。
+	// 若填写， 则必须是生态集成企业给合作方企业通过此接口**CreatePartnerAuthorizationLink**创建的应用号。
+	// 应用号可以从下图位置获取。
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/9bc4ee2bd5972035d12033608df157c9.png)
+	PartnerApplicationId *string `json:"PartnerApplicationId,omitnil,omitempty" name:"PartnerApplicationId"`
+}
+
+func (r *CreatePartnerAuthorizationLinkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePartnerAuthorizationLinkRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "BusinessId")
+	delete(f, "PartnerOrganizationId")
+	delete(f, "ApplicationInfo")
+	delete(f, "ProxyOrganizationInfo")
+	delete(f, "PartnerApplicationId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePartnerAuthorizationLinkRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePartnerAuthorizationLinkResponseParams struct {
+	// 授权链接，以短链形式返回。短链的有效期参考回参中的 ExpiredTime。
+	// 
+	// 注：
+	// 
+	// 1. 非小程序和APP集成使用
+	// 
+	// 2. 生成的链路后面不能再增加参数（会出现覆盖链接中已有参数导致错误）
+	Link *string `json:"Link,omitnil,omitempty" name:"Link"`
+
+	// 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePartnerAuthorizationLinkResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePartnerAuthorizationLinkResponseParams `json:"Response"`
+}
+
+func (r *CreatePartnerAuthorizationLinkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePartnerAuthorizationLinkResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePartnerAutoSignAuthUrlRequestParams struct {
 	// 代理企业和员工的信息。<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
@@ -17698,6 +17819,85 @@ func (r *ModifyIntegrationRoleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyPartnerAuthorizationRequestParams struct {
+	// 执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 腾讯电子签平台分配的生态集成业务的**业务标识**，**需要联系接入产品经理提供**。
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// 合作方企业通过集成方创建的应用id, 必须与业务标记（Business）保持对应。
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/9bc4ee2bd5972035d12033608df157c9.png)
+	PartnerApplicationId *string `json:"PartnerApplicationId,omitnil,omitempty" name:"PartnerApplicationId"`
+
+	// 第三方应用的配置信息。其中包括 回调地址，加密KEY等信息。
+	// 执行成功后会覆盖掉对应的第三方应用的回调相关配置。
+	ApplicationInfo *CallbackInfo `json:"ApplicationInfo,omitnil,omitempty" name:"ApplicationInfo"`
+}
+
+type ModifyPartnerAuthorizationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 腾讯电子签平台分配的生态集成业务的**业务标识**，**需要联系接入产品经理提供**。
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// 合作方企业通过集成方创建的应用id, 必须与业务标记（Business）保持对应。
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/9bc4ee2bd5972035d12033608df157c9.png)
+	PartnerApplicationId *string `json:"PartnerApplicationId,omitnil,omitempty" name:"PartnerApplicationId"`
+
+	// 第三方应用的配置信息。其中包括 回调地址，加密KEY等信息。
+	// 执行成功后会覆盖掉对应的第三方应用的回调相关配置。
+	ApplicationInfo *CallbackInfo `json:"ApplicationInfo,omitnil,omitempty" name:"ApplicationInfo"`
+}
+
+func (r *ModifyPartnerAuthorizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPartnerAuthorizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "BusinessId")
+	delete(f, "PartnerApplicationId")
+	delete(f, "ApplicationInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPartnerAuthorizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPartnerAuthorizationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyPartnerAuthorizationResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyPartnerAuthorizationResponseParams `json:"Response"`
+}
+
+func (r *ModifyPartnerAuthorizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPartnerAuthorizationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyPartnerAutoSignAuthUrlRequestParams struct {
 	// 代理企业和员工的信息。<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
@@ -18522,6 +18722,21 @@ type PresetApproverInfo struct {
 	// 证件类型，支持以下类型
 	// <ul><li><b>ID_CARD</b>: 居民身份证</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
+}
+
+type ProxyOrganizationInfo struct {
+	// 第三方应用平台自定义，对应第三方平台子客企业的唯一标识。一个第三方平台子客企业主体与子客企业ProxyOrganizationOpenId是一一对应的，不可更改，不可重复使用。（例如，可以使用企业名称的hash值，或者社会统一信用代码的hash值，或者随机hash值，需要第三方应用平台保存），最大64位字符串
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
+
+	// 第三方应用平台自定义，对应第三方平台子客企业超管的唯一标识。
+	// 
+	// 
+	// 注意:
+	// 1. OpenId在子客企业对应一个真实员工，**本应用唯一, 不可重复使用**，最大64位字符串
+	// 2. 可使用用户在贵方企业系统中的Userid或者hash值作为子客企业的员工OpenId
+	// 3. **员工加入企业后**, 可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录子客控制台后, 在**组织架构**模块查看员工们的OpenId, 样式如下图
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/bb67fb66c926759df3a0af5838fdafd5.png)
+	OperatorOpenId *string `json:"OperatorOpenId,omitnil,omitempty" name:"OperatorOpenId"`
 }
 
 type Recipient struct {

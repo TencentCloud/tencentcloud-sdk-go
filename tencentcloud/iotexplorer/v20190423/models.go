@@ -129,6 +129,73 @@ func (r *ActivateTWeCallLicenseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ActivateTWeTalkRequestParams struct {
+	// TWeTalk类型：1-基础版；2-高级版；3-多模态；
+	ServiceType *int64 `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 设备列表, 产品ID_设备名；
+	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
+}
+
+type ActivateTWeTalkRequest struct {
+	*tchttp.BaseRequest
+	
+	// TWeTalk类型：1-基础版；2-高级版；3-多模态；
+	ServiceType *int64 `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 设备列表, 产品ID_设备名；
+	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
+}
+
+func (r *ActivateTWeTalkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ActivateTWeTalkRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceType")
+	delete(f, "DeviceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ActivateTWeTalkRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ActivateTWeTalkResponseParams struct {
+	// 设备激活失败返回数据
+	FailureRecords []*TalkActivationInfo `json:"FailureRecords,omitnil,omitempty" name:"FailureRecords"`
+
+	// 设备激活成功返回数据
+	SuccessRecords []*TalkActivationInfo `json:"SuccessRecords,omitnil,omitempty" name:"SuccessRecords"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ActivateTWeTalkResponse struct {
+	*tchttp.BaseResponse
+	Response *ActivateTWeTalkResponseParams `json:"Response"`
+}
+
+func (r *ActivateTWeTalkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ActivateTWeTalkResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AppDeviceInfo struct {
 	// 产品ID/设备名
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
@@ -12019,6 +12086,169 @@ func (r *GetTWeTalkAIBotListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetTWeTalkActiveRecordListRequestParams struct {
+	// 最早的时间。
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询的最晚时间。
+	// 跟StartTime形成时间段，用于查询时间段中的记录。
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页的大小。
+	// 默认为10，最大不超过500。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// TWeTalk类型：1-基础版；2-高级版；3-多模态；
+	ServiceType []*int64 `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+}
+
+type GetTWeTalkActiveRecordListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 最早的时间。
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询的最晚时间。
+	// 跟StartTime形成时间段，用于查询时间段中的记录。
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页的大小。
+	// 默认为10，最大不超过500。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// TWeTalk类型：1-基础版；2-高级版；3-多模态；
+	ServiceType []*int64 `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+}
+
+func (r *GetTWeTalkActiveRecordListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTWeTalkActiveRecordListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "ServiceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTWeTalkActiveRecordListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTWeTalkActiveRecordListResponseParams struct {
+	// 设备激活记录列表。
+	ActiveRecords []*TalkActivateRecordLogInfo `json:"ActiveRecords,omitnil,omitempty" name:"ActiveRecords"`
+
+	// 数据总数量。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetTWeTalkActiveRecordListResponse struct {
+	*tchttp.BaseResponse
+	Response *GetTWeTalkActiveRecordListResponseParams `json:"Response"`
+}
+
+func (r *GetTWeTalkActiveRecordListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTWeTalkActiveRecordListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTWeTalkActiveStatusRequestParams struct {
+	// 设备列表， 产品ID_设备名称
+	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
+}
+
+type GetTWeTalkActiveStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备列表， 产品ID_设备名称
+	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
+}
+
+func (r *GetTWeTalkActiveStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTWeTalkActiveStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTWeTalkActiveStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTWeTalkActiveStatusResponseParams struct {
+	// 激活状态
+	TalkActivationRecords []*TalkActivationStatusInfo `json:"TalkActivationRecords,omitnil,omitempty" name:"TalkActivationRecords"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetTWeTalkActiveStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *GetTWeTalkActiveStatusResponseParams `json:"Response"`
+}
+
+func (r *GetTWeTalkActiveStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTWeTalkActiveStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetTWeTalkProductConfigListRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -17167,6 +17397,54 @@ type TalkAIBotInfo struct {
 
 	// 知识库相关配置(JSON字符串格式)
 	RAGConfig *string `json:"RAGConfig,omitnil,omitempty" name:"RAGConfig"`
+}
+
+type TalkActivateRecordLogInfo struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 激活时间，秒级时间戳
+	ActiveTime *int64 `json:"ActiveTime,omitnil,omitempty" name:"ActiveTime"`
+
+	// 过期时间，秒级时间戳
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// TWeTalk类型：1-基础版；2-高级版；3-多模态；
+	ServiceType *int64 `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 状态: 0-未激活, 1-已激活, 2-已过期, 3-已作废
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+}
+
+type TalkActivationInfo struct {
+	// 设备ID，产品ID_设备名称
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 设备激活状态，0：激活成功；60001：激活码类型不匹配；60002：激活码数量不足；60003：设备不存在；60004：产品不存在；60005：权限不足；60006：设备已激活；60007：无效的参数；60008：系统错误；60009：产品不是码音视频类型
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// 激活错误信息
+	ErrMessage *string `json:"ErrMessage,omitnil,omitempty" name:"ErrMessage"`
+
+	// 过期时间，秒级时间戳
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+}
+
+type TalkActivationStatusInfo struct {
+	// 设备ID，产品ID_设备名称
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 过期时间，秒级时间戳
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// TWeTalk类型：1-基础版；2-高级版；3-多模态；
+	ServiceType *int64 `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 }
 
 type TalkAgentConfigInfo struct {

@@ -40154,6 +40154,10 @@ type TableMeta struct {
 	// 引擎侧创建者
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineCreator *string `json:"EngineCreator,omitnil,omitempty" name:"EngineCreator"`
+
+	// 项目状态：0：禁用，1：启用，-3:禁用中，2：启用中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectStatus *int64 `json:"ProjectStatus,omitnil,omitempty" name:"ProjectStatus"`
 }
 
 type TableMetaProperty struct {

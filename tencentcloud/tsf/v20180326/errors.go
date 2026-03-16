@@ -1223,6 +1223,9 @@ const (
 	// 限流规则已存在，请检查规则名和规则配置。
 	RESOURCEINUSE_RATELIMITRULEEXISTERROR = "ResourceInUse.RatelimitRuleExistError"
 
+	// 集群下存在弹性伸缩资源池
+	RESOURCEINUSE_RESOURCEPOOLEXISTS = "ResourceInUse.ResourcePoolExists"
+
 	// 仓库空间达到上限。
 	RESOURCEINSUFFICIENT_PACKAGESPACEFULL = "ResourceInsufficient.PackageSpaceFull"
 

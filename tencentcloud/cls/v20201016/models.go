@@ -2082,101 +2082,75 @@ func (r *CreateAlarmShieldResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCloudProductLogCollectionRequestParams struct {
-	// 实例ID
-	// - 通过各个接入云产品官方文档获取
+	// <p>实例ID</p><ul><li>通过各个接入云产品官方文档获取</li></ul>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
+	// <p>云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS</p>
 	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
 
-	// 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
+	// <p>日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS</p>
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
-	// 云产品地域。 不同日志类型(LogType)地域入参格式存在差异， 请参考如下示例：
-	// - CDS所有日志类型：ap-guangzhou
-	// - CDB-AUDIT: gz
-	// - TDSQL-C-AUDIT:  gz
-	// - MongoDB-AUDIT:  gz
-	// - MongoDB-SlowLog：ap-guangzhou
-	// - MongoDB-ErrorLog：ap-guangzhou
-	// - TDMYSQL-SLOW：gz
-	// - DCDB所有日志类型：gz
-	// - MariaDB所有日志类型：gz
-	// - PostgreSQL所有日志类型：gz
-	// - BH所有日志类型：overseas-polaris(中国香港地区和其他)/fsi-polaris(金融区)/general-polaris(普通区)/intl-sg-prod(国际站)
-	// - APIS所有日志类型：gz
+	// <p>云产品地域。 不同日志类型(LogType)地域入参格式存在差异， 请参考如下示例：</p><ul><li>CDS所有日志类型：ap-guangzhou</li><li>CDB-AUDIT: gz</li><li>TDSQL-C-AUDIT:  gz</li><li>MongoDB-AUDIT:  gz</li><li>MongoDB-SlowLog：ap-guangzhou</li><li>MongoDB-ErrorLog：ap-guangzhou</li><li>TDMYSQL-SLOW：gz</li><li>DCDB所有日志类型：gz</li><li>MariaDB所有日志类型：gz</li><li>PostgreSQL所有日志类型：gz</li><li>BH所有日志类型：overseas-polaris(中国香港地区和其他)/fsi-polaris(金融区)/general-polaris(普通区)/intl-sg-prod(国际站)</li><li>APIS所有日志类型：gz</li></ul>
 	CloudProductRegion *string `json:"CloudProductRegion,omitnil,omitempty" name:"CloudProductRegion"`
 
-	// CLS目标地域
-	// - 支持地域参考  [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档   
+	// <p>CLS目标地域</p><ul><li>支持地域参考  <a href="https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">地域列表</a> 文档</li></ul>
 	ClsRegion *string `json:"ClsRegion,omitnil,omitempty" name:"ClsRegion"`
 
-	// 日志集名称，未填LogsetId时必填。若日志集不存在, 将自动创建
+	// <p>日志集名称，未填LogsetId时必填。若日志集不存在, 将自动创建</p>
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
-	// 日志主题名称，在未填TopicId时必填。 若日志主题不存在，将自动创建
+	// <p>日志主题名称，在未填TopicId时必填。 若日志主题不存在，将自动创建</p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 日志配置扩展信息， 一般用于存储额外的日志投递配置
+	// <p>日志配置扩展信息， 一般用于存储额外的日志投递配置</p>
 	Extend *string `json:"Extend,omitnil,omitempty" name:"Extend"`
 
-	// 日志集id
-	// - 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集Id。
+	// <p>日志集id</p><ul><li>通过<a href="https://cloud.tencent.com/document/api/614/58624">获取日志集列表</a>获取日志集Id。</li></ul>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 日志主题id
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// <p>日志主题id</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateCloudProductLogCollectionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
-	// - 通过各个接入云产品官方文档获取
+	// <p>实例ID</p><ul><li>通过各个接入云产品官方文档获取</li></ul>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
+	// <p>云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS</p>
 	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
 
-	// 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
+	// <p>日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS</p>
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
-	// 云产品地域。 不同日志类型(LogType)地域入参格式存在差异， 请参考如下示例：
-	// - CDS所有日志类型：ap-guangzhou
-	// - CDB-AUDIT: gz
-	// - TDSQL-C-AUDIT:  gz
-	// - MongoDB-AUDIT:  gz
-	// - MongoDB-SlowLog：ap-guangzhou
-	// - MongoDB-ErrorLog：ap-guangzhou
-	// - TDMYSQL-SLOW：gz
-	// - DCDB所有日志类型：gz
-	// - MariaDB所有日志类型：gz
-	// - PostgreSQL所有日志类型：gz
-	// - BH所有日志类型：overseas-polaris(中国香港地区和其他)/fsi-polaris(金融区)/general-polaris(普通区)/intl-sg-prod(国际站)
-	// - APIS所有日志类型：gz
+	// <p>云产品地域。 不同日志类型(LogType)地域入参格式存在差异， 请参考如下示例：</p><ul><li>CDS所有日志类型：ap-guangzhou</li><li>CDB-AUDIT: gz</li><li>TDSQL-C-AUDIT:  gz</li><li>MongoDB-AUDIT:  gz</li><li>MongoDB-SlowLog：ap-guangzhou</li><li>MongoDB-ErrorLog：ap-guangzhou</li><li>TDMYSQL-SLOW：gz</li><li>DCDB所有日志类型：gz</li><li>MariaDB所有日志类型：gz</li><li>PostgreSQL所有日志类型：gz</li><li>BH所有日志类型：overseas-polaris(中国香港地区和其他)/fsi-polaris(金融区)/general-polaris(普通区)/intl-sg-prod(国际站)</li><li>APIS所有日志类型：gz</li></ul>
 	CloudProductRegion *string `json:"CloudProductRegion,omitnil,omitempty" name:"CloudProductRegion"`
 
-	// CLS目标地域
-	// - 支持地域参考  [地域列表](https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8) 文档   
+	// <p>CLS目标地域</p><ul><li>支持地域参考  <a href="https://cloud.tencent.com/document/api/614/56474#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">地域列表</a> 文档</li></ul>
 	ClsRegion *string `json:"ClsRegion,omitnil,omitempty" name:"ClsRegion"`
 
-	// 日志集名称，未填LogsetId时必填。若日志集不存在, 将自动创建
+	// <p>日志集名称，未填LogsetId时必填。若日志集不存在, 将自动创建</p>
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
-	// 日志主题名称，在未填TopicId时必填。 若日志主题不存在，将自动创建
+	// <p>日志主题名称，在未填TopicId时必填。 若日志主题不存在，将自动创建</p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 日志配置扩展信息， 一般用于存储额外的日志投递配置
+	// <p>日志配置扩展信息， 一般用于存储额外的日志投递配置</p>
 	Extend *string `json:"Extend,omitnil,omitempty" name:"Extend"`
 
-	// 日志集id
-	// - 通过[获取日志集列表](https://cloud.tencent.com/document/api/614/58624)获取日志集Id。
+	// <p>日志集id</p><ul><li>通过<a href="https://cloud.tencent.com/document/api/614/58624">获取日志集列表</a>获取日志集Id。</li></ul>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 日志主题id
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// <p>日志主题id</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateCloudProductLogCollectionRequest) ToJsonString() string {
@@ -2201,6 +2175,7 @@ func (r *CreateCloudProductLogCollectionRequest) FromJsonString(s string) error 
 	delete(f, "Extend")
 	delete(f, "LogsetId")
 	delete(f, "TopicId")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudProductLogCollectionRequest has unknown keys!", "")
 	}
@@ -2209,19 +2184,19 @@ func (r *CreateCloudProductLogCollectionRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type CreateCloudProductLogCollectionResponseParams struct {
-	// 日志主题ID
+	// <p>日志主题ID</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 日志主题名称
+	// <p>日志主题名称</p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 日志集ID
+	// <p>日志集ID</p>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 日志集名称
+	// <p>日志集名称</p>
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
-	// -1 创建中，1创建完成 
+	// <p>-1 创建中，1创建完成</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5253,10 +5228,10 @@ func (r *CreateShipperResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSplunkDeliverRequestParams struct {
-	// <p>日志主题id- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
+	// <p>日志主题id</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// <p>splunk投递任务名称；name有如下限制：- 不能为空- 长度不大于64- 只能包含aA-zZ、下划线、-、0-9</p>
+	// <p>splunk投递任务名称；<br>name有如下限制：</p><ul><li>不能为空</li><li>长度不大于64</li><li>只能包含aA-zZ、下划线、-、0-9</li></ul>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>Splunk投递任务-目标配置-网络信息</p>
@@ -5268,7 +5243,7 @@ type CreateSplunkDeliverRequestParams struct {
 	// <p>是否开启服务日志 1:关闭；2:开启 ;默认开启</p>
 	HasServiceLog *int64 `json:"HasServiceLog,omitnil,omitempty" name:"HasServiceLog"`
 
-	// <p>高级配置-是否启用索引器；1-不启用；2-启用；默认：1</p>
+	// <p>高级配置-是否启用索引器；1-不启用；2-启用；<br>默认：1</p>
 	IndexAck *int64 `json:"IndexAck,omitnil,omitempty" name:"IndexAck"`
 
 	// <p>高级配置-数据来源；不超过64个字符</p>
@@ -5280,20 +5255,23 @@ type CreateSplunkDeliverRequestParams struct {
 	// <p>高级配置-Splunk写入的索引；不超过64个字符</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// <p>高级配置-通道需满足限制：如果启用索引器，那么Channel必填</p>
+	// <p>高级配置-通道<br>需满足限制：如果启用索引器，那么Channel必填</p>
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 
 	// <p>日志预过滤-数据写入 Splunk 的原始数据进行预过滤处理</p>
 	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
+
+	// <p>高级配置-跨账户投递用户角色授权信息</p><p>取值参考：<a href="https://console.cloud.tencent.com/cam/role/create?payloadType=account">新建自定义角色</a></p>
+	ExternalRole *ExternalRole `json:"ExternalRole,omitnil,omitempty" name:"ExternalRole"`
 }
 
 type CreateSplunkDeliverRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>日志主题id- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
+	// <p>日志主题id</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// <p>splunk投递任务名称；name有如下限制：- 不能为空- 长度不大于64- 只能包含aA-zZ、下划线、-、0-9</p>
+	// <p>splunk投递任务名称；<br>name有如下限制：</p><ul><li>不能为空</li><li>长度不大于64</li><li>只能包含aA-zZ、下划线、-、0-9</li></ul>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>Splunk投递任务-目标配置-网络信息</p>
@@ -5305,7 +5283,7 @@ type CreateSplunkDeliverRequest struct {
 	// <p>是否开启服务日志 1:关闭；2:开启 ;默认开启</p>
 	HasServiceLog *int64 `json:"HasServiceLog,omitnil,omitempty" name:"HasServiceLog"`
 
-	// <p>高级配置-是否启用索引器；1-不启用；2-启用；默认：1</p>
+	// <p>高级配置-是否启用索引器；1-不启用；2-启用；<br>默认：1</p>
 	IndexAck *int64 `json:"IndexAck,omitnil,omitempty" name:"IndexAck"`
 
 	// <p>高级配置-数据来源；不超过64个字符</p>
@@ -5317,11 +5295,14 @@ type CreateSplunkDeliverRequest struct {
 	// <p>高级配置-Splunk写入的索引；不超过64个字符</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// <p>高级配置-通道需满足限制：如果启用索引器，那么Channel必填</p>
+	// <p>高级配置-通道<br>需满足限制：如果启用索引器，那么Channel必填</p>
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 
 	// <p>日志预过滤-数据写入 Splunk 的原始数据进行预过滤处理</p>
 	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
+
+	// <p>高级配置-跨账户投递用户角色授权信息</p><p>取值参考：<a href="https://console.cloud.tencent.com/cam/role/create?payloadType=account">新建自定义角色</a></p>
+	ExternalRole *ExternalRole `json:"ExternalRole,omitnil,omitempty" name:"ExternalRole"`
 }
 
 func (r *CreateSplunkDeliverRequest) ToJsonString() string {
@@ -5347,6 +5328,7 @@ func (r *CreateSplunkDeliverRequest) FromJsonString(s string) error {
 	delete(f, "Index")
 	delete(f, "Channel")
 	delete(f, "DSLFilter")
+	delete(f, "ExternalRole")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSplunkDeliverRequest has unknown keys!", "")
 	}
@@ -6191,57 +6173,45 @@ func (r *DeleteAlarmShieldResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteCloudProductLogCollectionRequestParams struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
+	// <p>云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS</p>
 	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
 
-	// 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
+	// <p>日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS</p>
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
-	// 云产品地域。 不同日志类型(LogType)地域入参格式存在差异， 请参考如下示例：
-	// - CDS所有日志类型：ap-guangzhou
-	// - CDB-AUDIT: gz
-	// - TDSQL-C-AUDIT: gz
-	// - MongoDB-AUDIT: gz
-	// - MongoDB-SlowLog：ap-guangzhou
-	// - MongoDB-ErrorLog：ap-guangzhou
-	// - TDMYSQL-SLOW：gz
-	// - DCDB所有日志类型：gz
-	// - MariaDB所有日志类型：gz
-	// - PostgreSQL所有日志类型：gz
-	// - BH所有日志类型：overseas-polaris(中国香港地区和其他)/fsi-polaris(金融区)/general-polaris(普通区)/intl-sg-prod(国际站)
-	// - APIS所有日志类型：gz
+	// <p>云产品地域。 不同日志类型(LogType)地域入参格式存在差异， 请参考如下示例：</p><ul><li>CDS所有日志类型：ap-guangzhou</li><li>CDB-AUDIT: gz</li><li>TDSQL-C-AUDIT: gz</li><li>MongoDB-AUDIT: gz</li><li>MongoDB-SlowLog：ap-guangzhou</li><li>MongoDB-ErrorLog：ap-guangzhou</li><li>TDMYSQL-SLOW：gz</li><li>DCDB所有日志类型：gz</li><li>MariaDB所有日志类型：gz</li><li>PostgreSQL所有日志类型：gz</li><li>BH所有日志类型：overseas-polaris(中国香港地区和其他)/fsi-polaris(金融区)/general-polaris(普通区)/intl-sg-prod(国际站)</li><li>APIS所有日志类型：gz</li></ul>
 	CloudProductRegion *string `json:"CloudProductRegion,omitnil,omitempty" name:"CloudProductRegion"`
+
+	// <p>是否删除关联的topic</p>
+	IsDeleteTopic *bool `json:"IsDeleteTopic,omitnil,omitempty" name:"IsDeleteTopic"`
+
+	// <p>是否删除关联的logset。如果logset下还有topic的话，不会进行删除</p>
+	IsDeleteLogset *bool `json:"IsDeleteLogset,omitnil,omitempty" name:"IsDeleteLogset"`
 }
 
 type DeleteCloudProductLogCollectionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
+	// <p>云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS</p>
 	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
 
-	// 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
+	// <p>日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS</p>
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
-	// 云产品地域。 不同日志类型(LogType)地域入参格式存在差异， 请参考如下示例：
-	// - CDS所有日志类型：ap-guangzhou
-	// - CDB-AUDIT: gz
-	// - TDSQL-C-AUDIT: gz
-	// - MongoDB-AUDIT: gz
-	// - MongoDB-SlowLog：ap-guangzhou
-	// - MongoDB-ErrorLog：ap-guangzhou
-	// - TDMYSQL-SLOW：gz
-	// - DCDB所有日志类型：gz
-	// - MariaDB所有日志类型：gz
-	// - PostgreSQL所有日志类型：gz
-	// - BH所有日志类型：overseas-polaris(中国香港地区和其他)/fsi-polaris(金融区)/general-polaris(普通区)/intl-sg-prod(国际站)
-	// - APIS所有日志类型：gz
+	// <p>云产品地域。 不同日志类型(LogType)地域入参格式存在差异， 请参考如下示例：</p><ul><li>CDS所有日志类型：ap-guangzhou</li><li>CDB-AUDIT: gz</li><li>TDSQL-C-AUDIT: gz</li><li>MongoDB-AUDIT: gz</li><li>MongoDB-SlowLog：ap-guangzhou</li><li>MongoDB-ErrorLog：ap-guangzhou</li><li>TDMYSQL-SLOW：gz</li><li>DCDB所有日志类型：gz</li><li>MariaDB所有日志类型：gz</li><li>PostgreSQL所有日志类型：gz</li><li>BH所有日志类型：overseas-polaris(中国香港地区和其他)/fsi-polaris(金融区)/general-polaris(普通区)/intl-sg-prod(国际站)</li><li>APIS所有日志类型：gz</li></ul>
 	CloudProductRegion *string `json:"CloudProductRegion,omitnil,omitempty" name:"CloudProductRegion"`
+
+	// <p>是否删除关联的topic</p>
+	IsDeleteTopic *bool `json:"IsDeleteTopic,omitnil,omitempty" name:"IsDeleteTopic"`
+
+	// <p>是否删除关联的logset。如果logset下还有topic的话，不会进行删除</p>
+	IsDeleteLogset *bool `json:"IsDeleteLogset,omitnil,omitempty" name:"IsDeleteLogset"`
 }
 
 func (r *DeleteCloudProductLogCollectionRequest) ToJsonString() string {
@@ -6260,6 +6230,8 @@ func (r *DeleteCloudProductLogCollectionRequest) FromJsonString(s string) error 
 	delete(f, "AssumerName")
 	delete(f, "LogType")
 	delete(f, "CloudProductRegion")
+	delete(f, "IsDeleteTopic")
+	delete(f, "IsDeleteLogset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudProductLogCollectionRequest has unknown keys!", "")
 	}
@@ -6268,7 +6240,7 @@ func (r *DeleteCloudProductLogCollectionRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DeleteCloudProductLogCollectionResponseParams struct {
-	// 枚举值，0创建中 1创建完成 2删除中 3删除完成
+	// <p>枚举值，0创建中 1创建完成 2删除中 3删除完成</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8413,52 +8385,26 @@ func (r *DescribeAlertRecordHistoryResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCloudProductLogTasksRequestParams struct {
-	// 分页的偏移量，默认值为0。
+	// <p>分页的偏移量，默认值为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页单页限制数目，默认值为100，最大值100。
+	// <p>分页单页限制数目，默认值为20，最大值100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// - assumerName
-	//   - 按照【云产品标识】进行过滤。
-	//   - 类型：String
-	//   - 必选：否
-	//   - 枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
-	// - logType
-	//   - 按照【日志类型】进行过滤。
-	//   - 类型：String
-	//   - 必选：否
-	//   - 枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
-	// - instanceId
-	//   - 按照【实例ID】进行过滤。
-	//   - 类型：String
-	//   - 必选：否
+	// <ul><li>assumerName<ul><li>按照【云产品标识】进行过滤。</li><li>类型：String</li><li>必选：否</li><li>枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS</li></ul></li><li>logType<ul><li>按照【日志类型】进行过滤。</li><li>类型：String</li><li>必选：否</li><li>枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS</li></ul></li><li>instanceId<ul><li>按照【实例ID】进行过滤。</li><li>类型：String</li><li>必选：否</li></ul></li></ul>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeCloudProductLogTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分页的偏移量，默认值为0。
+	// <p>分页的偏移量，默认值为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页单页限制数目，默认值为100，最大值100。
+	// <p>分页单页限制数目，默认值为20，最大值100。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// - assumerName
-	//   - 按照【云产品标识】进行过滤。
-	//   - 类型：String
-	//   - 必选：否
-	//   - 枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
-	// - logType
-	//   - 按照【日志类型】进行过滤。
-	//   - 类型：String
-	//   - 必选：否
-	//   - 枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
-	// - instanceId
-	//   - 按照【实例ID】进行过滤。
-	//   - 类型：String
-	//   - 必选：否
+	// <ul><li>assumerName<ul><li>按照【云产品标识】进行过滤。</li><li>类型：String</li><li>必选：否</li><li>枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS</li></ul></li><li>logType<ul><li>按照【日志类型】进行过滤。</li><li>类型：String</li><li>必选：否</li><li>枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS</li></ul></li><li>instanceId<ul><li>按照【实例ID】进行过滤。</li><li>类型：String</li><li>必选：否</li></ul></li></ul>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -8485,10 +8431,10 @@ func (r *DescribeCloudProductLogTasksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCloudProductLogTasksResponseParams struct {
-	// 日志配置详情列表
+	// <p>日志配置详情列表</p>
 	Tasks []*CloudProductLogTaskInfo `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
-	// 日志配置总数
+	// <p>日志配置总数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12514,10 +12460,10 @@ func (r *DescribeShippersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSplunkDeliversRequestParams struct {
-	// <p>日志主题Id- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
+	// <p>日志主题Id</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// <ul><li>taskId 按照【任务id】进行过滤。 类型：String 必选：否  </li><li>name 按照【任务名称】进行过滤。 类型：String 必选：否  </li><li>statusFlag 按照【状态】进行过滤。 类型：String 必选：否<br /> 每次请求的Filters的上限为10，Filter.Values的上限为10。</li></ul>
+	// <ul><li>taskId 按照【任务id】进行过滤。 类型：String 必选：否  </li><li>name 按照【任务名称】进行过滤。 类型：String 必选：否  </li><li>statusFlag 按照【状态】进行过滤。 类型：String 必选：否<br>每次请求的Filters的上限为10，Filter.Values的上限为10。</li></ul>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// <p>分页的偏移量，默认值为0。</p>
@@ -12530,10 +12476,10 @@ type DescribeSplunkDeliversRequestParams struct {
 type DescribeSplunkDeliversRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>日志主题Id- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
+	// <p>日志主题Id</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// <ul><li>taskId 按照【任务id】进行过滤。 类型：String 必选：否  </li><li>name 按照【任务名称】进行过滤。 类型：String 必选：否  </li><li>statusFlag 按照【状态】进行过滤。 类型：String 必选：否<br /> 每次请求的Filters的上限为10，Filter.Values的上限为10。</li></ul>
+	// <ul><li>taskId 按照【任务id】进行过滤。 类型：String 必选：否  </li><li>name 按照【任务名称】进行过滤。 类型：String 必选：否  </li><li>statusFlag 按照【状态】进行过滤。 类型：String 必选：否<br>每次请求的Filters的上限为10，Filter.Values的上限为10。</li></ul>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// <p>分页的偏移量，默认值为0。</p>
@@ -13498,6 +13444,14 @@ type ExportInfo struct {
 
 	// <p>导出字段</p>
 	DerivedFields []*string `json:"DerivedFields,omitnil,omitempty" name:"DerivedFields"`
+}
+
+type ExternalRole struct {
+	// <p>跨账户投递-用户角色RoleArn</p>
+	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// <p>跨账户投递-用户角色名称</p>
+	ExternalId *string `json:"ExternalId,omitnil,omitempty" name:"ExternalId"`
 }
 
 type ExtractRuleInfo struct {
@@ -18165,10 +18119,10 @@ type ModifySplunkDeliverRequestParams struct {
 	// <p>任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// <p>日志主题id- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
+	// <p>日志主题id</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// <p>投递任务名称name有以下限制：- 不能为空- 长度不大于64- 只能包含aA-zZ、下划线、-、0-9</p>
+	// <p>投递任务名称<br>name有以下限制：</p><ul><li>不能为空</li><li>长度不大于64</li><li>只能包含aA-zZ、下划线、-、0-9</li></ul>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>投递任务启用状态；0:禁用；1:启用</p>
@@ -18183,7 +18137,7 @@ type ModifySplunkDeliverRequestParams struct {
 	// <p>是否启用服务日志；1:关闭；2:开启</p>
 	HasServiceLog *int64 `json:"HasServiceLog,omitnil,omitempty" name:"HasServiceLog"`
 
-	// <p>高级配置-是否启用索引器;1-不开启；2-开启；默认为：1</p>
+	// <p>高级配置-是否启用索引器;<br>1-不开启；2-开启；默认为：1</p>
 	IndexAck *int64 `json:"IndexAck,omitnil,omitempty" name:"IndexAck"`
 
 	// <p>高级配置-数据来源；不超过64个字符</p>
@@ -18195,11 +18149,14 @@ type ModifySplunkDeliverRequestParams struct {
 	// <p>高级配置-Splunk写入的索引；不超过64个字符</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// <p>高级配置-通道。需满足限制：如果启用索引器，该值不能为空</p>
+	// <p>高级配置-通道。<br>需满足限制：如果启用索引器，该值不能为空</p>
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 
 	// <p>预过滤处理-对写入 Splunk 原始数据进行预过滤处理</p>
 	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
+
+	// <p>高级配置-跨账户投递用户角色授权信息</p><p>取值参考：<a href="https://console.cloud.tencent.com/cam/role/create?payloadType=account">新建自定义角色</a></p>
+	ExternalRole *ExternalRole `json:"ExternalRole,omitnil,omitempty" name:"ExternalRole"`
 }
 
 type ModifySplunkDeliverRequest struct {
@@ -18208,10 +18165,10 @@ type ModifySplunkDeliverRequest struct {
 	// <p>任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// <p>日志主题id- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</p>
+	// <p>日志主题id</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// <p>投递任务名称name有以下限制：- 不能为空- 长度不大于64- 只能包含aA-zZ、下划线、-、0-9</p>
+	// <p>投递任务名称<br>name有以下限制：</p><ul><li>不能为空</li><li>长度不大于64</li><li>只能包含aA-zZ、下划线、-、0-9</li></ul>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>投递任务启用状态；0:禁用；1:启用</p>
@@ -18226,7 +18183,7 @@ type ModifySplunkDeliverRequest struct {
 	// <p>是否启用服务日志；1:关闭；2:开启</p>
 	HasServiceLog *int64 `json:"HasServiceLog,omitnil,omitempty" name:"HasServiceLog"`
 
-	// <p>高级配置-是否启用索引器;1-不开启；2-开启；默认为：1</p>
+	// <p>高级配置-是否启用索引器;<br>1-不开启；2-开启；默认为：1</p>
 	IndexAck *int64 `json:"IndexAck,omitnil,omitempty" name:"IndexAck"`
 
 	// <p>高级配置-数据来源；不超过64个字符</p>
@@ -18238,11 +18195,14 @@ type ModifySplunkDeliverRequest struct {
 	// <p>高级配置-Splunk写入的索引；不超过64个字符</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// <p>高级配置-通道。需满足限制：如果启用索引器，该值不能为空</p>
+	// <p>高级配置-通道。<br>需满足限制：如果启用索引器，该值不能为空</p>
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 
 	// <p>预过滤处理-对写入 Splunk 原始数据进行预过滤处理</p>
 	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
+
+	// <p>高级配置-跨账户投递用户角色授权信息</p><p>取值参考：<a href="https://console.cloud.tencent.com/cam/role/create?payloadType=account">新建自定义角色</a></p>
+	ExternalRole *ExternalRole `json:"ExternalRole,omitnil,omitempty" name:"ExternalRole"`
 }
 
 func (r *ModifySplunkDeliverRequest) ToJsonString() string {
@@ -18270,6 +18230,7 @@ func (r *ModifySplunkDeliverRequest) FromJsonString(s string) error {
 	delete(f, "Index")
 	delete(f, "Channel")
 	delete(f, "DSLFilter")
+	delete(f, "ExternalRole")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySplunkDeliverRequest has unknown keys!", "")
 	}
@@ -20221,91 +20182,73 @@ func (r *SendConsumerHeartbeatResponse) FromJsonString(s string) error {
 }
 
 type ShipperInfo struct {
-	// 投递规则ID
+	// <p>投递规则ID</p>
 	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
 
-	// 日志主题ID
+	// <p>日志主题ID</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 投递的bucket地址
+	// <p>投递的bucket地址</p>
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 投递的前缀目录
+	// <p>投递的前缀目录</p>
 	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
-	// 投递规则的名字
+	// <p>投递规则的名字</p>
 	ShipperName *string `json:"ShipperName,omitnil,omitempty" name:"ShipperName"`
 
-	// 投递的时间间隔，单位 秒
+	// <p>投递的时间间隔，单位 秒</p>
 	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 投递的文件的最大值，单位 MB
+	// <p>投递的文件的最大值，单位 MB</p>
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 是否生效
+	// <p>是否生效</p>
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 投递日志的过滤规则
+	// <p>投递日志的过滤规则</p>
 	FilterRules []*FilterRuleInfo `json:"FilterRules,omitnil,omitempty" name:"FilterRules"`
 
-	// 投递日志的分区规则，支持strftime的时间格式表示
+	// <p>投递日志的分区规则，支持strftime的时间格式表示</p>
 	Partition *string `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 投递日志的压缩配置
+	// <p>投递日志的压缩配置</p>
 	Compress *CompressInfo `json:"Compress,omitnil,omitempty" name:"Compress"`
 
-	// 投递日志的内容格式配置
+	// <p>投递日志的内容格式配置</p>
 	Content *ContentInfo `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 投递日志的创建时间。格式：YYYY-MM-DD HH:MM:SS
+	// <p>投递日志的创建时间。格式：YYYY-MM-DD HH:MM:SS</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
+	// <p>投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）</p>
 	FilenameMode *uint64 `json:"FilenameMode,omitnil,omitempty" name:"FilenameMode"`
 
-	// 投递数据范围的开始时间点
+	// <p>投递数据范围的开始时间点</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 投递数据范围的结束时间点
+	// <p>投递数据范围的结束时间点</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 历史数据投递的进度（仅当用户选择的数据内中历史数据时才有效）
+	// <p>历史数据投递的进度（仅当用户选择的数据内中历史数据时才有效）</p>
 	Progress *float64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
-	// 历史数据全部投递完成剩余的时间（仅当用户选择的数据中有历史数据时才有效）
+	// <p>历史数据全部投递完成剩余的时间（仅当用户选择的数据中有历史数据时才有效）</p><p>单位：秒</p>
 	RemainTime *int64 `json:"RemainTime,omitnil,omitempty" name:"RemainTime"`
 
-	// 历史任务状态：
-	// 0：实时任务
-	// 1：任务准备中
-	// 2：任务运行中
-	// 3：任务运行异常
-	// 4：任务运行结束
+	// <p>历史任务状态：<br>0：实时任务<br>1：任务准备中<br>2：任务运行中<br>3：任务运行异常<br>4：任务运行结束</p>
 	HistoryStatus *int64 `json:"HistoryStatus,omitnil,omitempty" name:"HistoryStatus"`
 
-	// 对象存储类型，默认值为 STANDARD。枚举值请参见[ 存储类型概述](https://cloud.tencent.com/document/product/436/33417) 文档。
-	// 参考值有：
-	// STANDARD：标准存储
-	// STANDARD_IA：低频存储
-	// ARCHIVE：归档存储
-	// DEEP_ARCHIVE：深度归档存储
-	// MAZ_STANDARD：标准存储（多 AZ）
-	// MAZ_STANDARD_IA：低频存储（多 AZ）
-	// INTELLIGENT_TIERING：智能分层存储
-	// MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
+	// <p>对象存储类型，默认值为 STANDARD。枚举值请参见<a href="https://cloud.tencent.com/document/product/436/33417"> 存储类型概述</a> 文档。<br>参考值有：<br>STANDARD：标准存储<br>STANDARD_IA：低频存储<br>ARCHIVE：归档存储<br>DEEP_ARCHIVE：深度归档存储<br>MAZ_STANDARD：标准存储（多 AZ）<br>MAZ_STANDARD_IA：低频存储（多 AZ）<br>INTELLIGENT_TIERING：智能分层存储<br>MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）</p>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+	// <p>角色访问描述名 <a href="https://cloud.tencent.com/document/product/598/19381">创建角色</a></p>
 	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
 
-	// 外部ID
+	// <p>外部ID</p>
 	ExternalId *string `json:"ExternalId,omitnil,omitempty" name:"ExternalId"`
 
-	// 任务运行状态。支持`0`,`1`,`2`
-	// 
-	// - `0`: 停止
-	// - `1`: 运行中
-	// - `2`: 异常
+	// <p>任务运行状态。支持<code>0</code>,<code>1</code>,<code>2</code></p><ul><li><code>0</code>: 停止</li><li><code>1</code>: 运行中</li><li><code>2</code>: 异常</li></ul>
 	TaskStatus *uint64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 }
 
@@ -20475,6 +20418,9 @@ type SplunkDeliverInfo struct {
 
 	// <p>预过滤处理-对写入 Splunk 原始数据进行预过滤处理语句</p>
 	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
+
+	// <p>高级配置-跨账户投递参数</p>
+	ExternalRole *ExternalRole `json:"ExternalRole,omitnil,omitempty" name:"ExternalRole"`
 }
 
 type Tag struct {

@@ -2088,6 +2088,63 @@ func (r *DescribeBaasPackageListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBillingInfoRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+type DescribeBillingInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+func (r *DescribeBillingInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillingInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillingInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillingInfoResponseParams struct {
+	// 环境计费信息列表
+	EnvBillingInfoList []*EnvBillingInfoItem `json:"EnvBillingInfoList,omitnil,omitempty" name:"EnvBillingInfoList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBillingInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBillingInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeBillingInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillingInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCloudBaseBuildServiceRequestParams struct {
 	// 环境id
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -2427,6 +2484,194 @@ func (r *DescribeCloudBaseGWServiceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCloudBaseGWServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudBaseRunServerVersionRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 服务名称
+	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
+
+	// 版本名称
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+}
+
+type DescribeCloudBaseRunServerVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 服务名称
+	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
+
+	// 版本名称
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+}
+
+func (r *DescribeCloudBaseRunServerVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudBaseRunServerVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServerName")
+	delete(f, "VersionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudBaseRunServerVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudBaseRunServerVersionResponseParams struct {
+	// 版本名称
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// Dockerfile的路径
+	DockerfilePath *string `json:"DockerfilePath,omitnil,omitempty" name:"DockerfilePath"`
+
+	// DockerBuild的目录
+	BuildDir *string `json:"BuildDir,omitnil,omitempty" name:"BuildDir"`
+
+	// 请使用CPUSize
+	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 请使用MemSize
+	Mem *float64 `json:"Mem,omitnil,omitempty" name:"Mem"`
+
+	// 副本最小值
+	MinNum *int64 `json:"MinNum,omitnil,omitempty" name:"MinNum"`
+
+	// 副本最大值
+	MaxNum *int64 `json:"MaxNum,omitnil,omitempty" name:"MaxNum"`
+
+	// 策略类型
+	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+
+	// 策略阈值
+	PolicyThreshold *float64 `json:"PolicyThreshold,omitnil,omitempty" name:"PolicyThreshold"`
+
+	// 环境变量
+	EnvParams *string `json:"EnvParams,omitnil,omitempty" name:"EnvParams"`
+
+	// 创建时间
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 更新时间
+	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
+
+	// 版本的IP
+	VersionIP *string `json:"VersionIP,omitnil,omitempty" name:"VersionIP"`
+
+	// 版本的端口号
+	VersionPort *int64 `json:"VersionPort,omitnil,omitempty" name:"VersionPort"`
+
+	// 版本状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 代码包的名字
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
+
+	// 代码版本的名字
+	PackageVersion *string `json:"PackageVersion,omitnil,omitempty" name:"PackageVersion"`
+
+	// 枚举（package/repository/image)
+	UploadType *string `json:"UploadType,omitnil,omitempty" name:"UploadType"`
+
+	// Repo的类型(gitlab/github/coding)
+	RepoType *string `json:"RepoType,omitnil,omitempty" name:"RepoType"`
+
+	// 地址
+	Repo *string `json:"Repo,omitnil,omitempty" name:"Repo"`
+
+	// 分支
+	Branch *string `json:"Branch,omitnil,omitempty" name:"Branch"`
+
+	// 服务名字
+	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
+
+	// 是否对于外网开放
+	IsPublic *bool `json:"IsPublic,omitnil,omitempty" name:"IsPublic"`
+
+	// vpc id
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
+
+	// 日志采集路径
+	CustomLogs *string `json:"CustomLogs,omitnil,omitempty" name:"CustomLogs"`
+
+	// 监听端口
+	ContainerPort *int64 `json:"ContainerPort,omitnil,omitempty" name:"ContainerPort"`
+
+	// 延迟多长时间开始健康检查（单位s）
+	InitialDelaySeconds *int64 `json:"InitialDelaySeconds,omitnil,omitempty" name:"InitialDelaySeconds"`
+
+	// 镜像地址
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// CPU 大小
+	CpuSize *float64 `json:"CpuSize,omitnil,omitempty" name:"CpuSize"`
+
+	// MEM 大小
+	MemSize *float64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
+
+	// 是否有Dockerfile：0-default has, 1-has, 2-has not
+	HasDockerfile *int64 `json:"HasDockerfile,omitnil,omitempty" name:"HasDockerfile"`
+
+	// 基础镜像
+	BaseImage *string `json:"BaseImage,omitnil,omitempty" name:"BaseImage"`
+
+	// 容器启动入口命令
+	EntryPoint *string `json:"EntryPoint,omitnil,omitempty" name:"EntryPoint"`
+
+	// 仓库语言
+	RepoLanguage *string `json:"RepoLanguage,omitnil,omitempty" name:"RepoLanguage"`
+
+	// 自动扩缩容策略组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyDetail []*HpaPolicy `json:"PolicyDetail,omitnil,omitempty" name:"PolicyDetail"`
+
+	// Tke集群信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TkeClusterInfo *TkeClusterInfo `json:"TkeClusterInfo,omitnil,omitempty" name:"TkeClusterInfo"`
+
+	// 版本工作负载类型；deployment/deamonset
+	TkeWorkloadType *string `json:"TkeWorkloadType,omitnil,omitempty" name:"TkeWorkloadType"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudBaseRunServerVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudBaseRunServerVersionResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudBaseRunServerVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudBaseRunServerVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3844,6 +4089,66 @@ func (r *EditAuthConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type EnvBillingInfoItem struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// tcb产品套餐ID，参考DescribePackages接口的返回值。
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
+	// 自动续费标记
+	IsAutoRenew *bool `json:"IsAutoRenew,omitnil,omitempty" name:"IsAutoRenew"`
+
+	// 状态。包含以下取值：
+	// <li> 空字符串：初始化中</li>
+	// <li> NORMAL：正常</li>
+	// <li> ISOLATE：隔离</li>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 支付方式。包含以下取值：
+	// <li> PREPAYMENT：预付费</li>
+	// <li> POSTPAID：后付费</li>
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 隔离时间，最近一次隔离的时间
+	IsolatedTime *string `json:"IsolatedTime,omitnil,omitempty" name:"IsolatedTime"`
+
+	// 过期时间，套餐即将到期的时间
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 创建时间，第一次接入计费方案的时间。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间，计费信息最近一次更新的时间。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// true表示从未升级过付费版。
+	IsAlwaysFree *bool `json:"IsAlwaysFree,omitnil,omitempty" name:"IsAlwaysFree"`
+
+	// 付费渠道。
+	// <li> miniapp：小程序</li>
+	// <li> qcloud：腾讯云</li>
+	PaymentChannel *string `json:"PaymentChannel,omitnil,omitempty" name:"PaymentChannel"`
+
+	// 最新的订单信息
+	OrderInfo *OrderInfo `json:"OrderInfo,omitnil,omitempty" name:"OrderInfo"`
+
+	// 免费配额信息。
+	FreeQuota *string `json:"FreeQuota,omitnil,omitempty" name:"FreeQuota"`
+
+	// 是否开启 `超过套餐额度部分转按量付费`
+	EnableOverrun *bool `json:"EnableOverrun,omitnil,omitempty" name:"EnableOverrun"`
+
+	// 环境套餐类型
+	ExtPackageType *string `json:"ExtPackageType,omitnil,omitempty" name:"ExtPackageType"`
+
+	// 是否付费期环境，可取值：yes/no。
+	EnvCharged *string `json:"EnvCharged,omitnil,omitempty" name:"EnvCharged"`
+
+	// 是否已激活，可取值：yes/no。
+	EnvActivated *string `json:"EnvActivated,omitnil,omitempty" name:"EnvActivated"`
+}
+
 type EnvInfo struct {
 	// 账户下该环境唯一标识
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -3934,6 +4239,14 @@ type FunctionInfo struct {
 	// 所属地域。
 	// 当前支持ap-shanghai
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+}
+
+type HpaPolicy struct {
+	// 策略类型
+	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+
+	// 策略阈值
+	PolicyThreshold *int64 `json:"PolicyThreshold,omitnil,omitempty" name:"PolicyThreshold"`
 }
 
 type IndexAccesses struct {
@@ -4793,6 +5106,56 @@ type MySQLTaskStatus struct {
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 }
 
+type OrderInfo struct {
+	// 订单号
+	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
+
+	// 订单要切换的套餐ID
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
+	// 订单类型
+	// <li>1 购买</li>
+	// <li>2 续费</li>
+	// <li>3 变配</li>
+	TranType *string `json:"TranType,omitnil,omitempty" name:"TranType"`
+
+	// 订单状态。
+	// <li>1未支付</li>
+	// <li>2 支付中</li>
+	// <li>3 发货中</li>
+	// <li>4 发货成功</li>
+	// <li>5 发货失败</li>
+	// <li>6 已退款</li>
+	// <li>7 已取消</li>
+	// <li>100 已删除</li>
+	TranStatus *string `json:"TranStatus,omitnil,omitempty" name:"TranStatus"`
+
+	// 订单更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 订单创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 付费模式.
+	// <li>prepayment 预付费</li>
+	// <li>postpaid 后付费</li>
+	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 订单绑定的扩展ID
+	ExtensionId *string `json:"ExtensionId,omitnil,omitempty" name:"ExtensionId"`
+
+	// 资源初始化结果(仅当ExtensionId不为空时有效): successful(初始化成功), failed(初始化失败), doing(初始化进行中), init(准备初始化)
+	ResourceReady *string `json:"ResourceReady,omitnil,omitempty" name:"ResourceReady"`
+
+	// 安装标记。建议使用方统一转大小写之后再判断。
+	// <li>QuickStart：快速启动来源</li>
+	// <li>Activity：活动来源</li>
+	Flag *string `json:"Flag,omitnil,omitempty" name:"Flag"`
+
+	// 下单时的参数
+	ReqBody *string `json:"ReqBody,omitnil,omitempty" name:"ReqBody"`
+}
+
 type Pager struct {
 	// 分页偏移量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5303,6 +5666,17 @@ type Tag struct {
 
 	// 标签值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type TkeClusterInfo struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群的vpcId
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 版本内网CLB所在子网Id
+	VersionClbSubnetId *string `json:"VersionClbSubnetId,omitnil,omitempty" name:"VersionClbSubnetId"`
 }
 
 // Predefined struct for user
