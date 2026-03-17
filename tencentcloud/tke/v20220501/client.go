@@ -537,6 +537,82 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeGPUInfoRequest() (request *DescribeGPUInfoRequest) {
+    request = &DescribeGPUInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeGPUInfo")
+    
+    
+    return
+}
+
+func NewDescribeGPUInfoResponse() (response *DescribeGPUInfoResponse) {
+    response = &DescribeGPUInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGPUInfo
+// 请求该接口，会返回所有适配该机型和操作系统组合的gpu驱动版本
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBAFFECTIVEDROWS = "InternalError.DbAffectivedRows"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_PUBLICCLUSTEROPNOTSUPPORT = "InternalError.PublicClusterOpNotSupport"
+//  INTERNALERROR_QUOTAMAXCLSLIMIT = "InternalError.QuotaMaxClsLimit"
+//  INTERNALERROR_QUOTAMAXNODLIMIT = "InternalError.QuotaMaxNodLimit"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DescribeGPUInfo(request *DescribeGPUInfoRequest) (response *DescribeGPUInfoResponse, err error) {
+    return c.DescribeGPUInfoWithContext(context.Background(), request)
+}
+
+// DescribeGPUInfo
+// 请求该接口，会返回所有适配该机型和操作系统组合的gpu驱动版本
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBAFFECTIVEDROWS = "InternalError.DbAffectivedRows"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_PUBLICCLUSTEROPNOTSUPPORT = "InternalError.PublicClusterOpNotSupport"
+//  INTERNALERROR_QUOTAMAXCLSLIMIT = "InternalError.QuotaMaxClsLimit"
+//  INTERNALERROR_QUOTAMAXNODLIMIT = "InternalError.QuotaMaxNodLimit"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DescribeGPUInfoWithContext(ctx context.Context, request *DescribeGPUInfoRequest) (response *DescribeGPUInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeGPUInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeGPUInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGPUInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGPUInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHealthCheckPoliciesRequest() (request *DescribeHealthCheckPoliciesRequest) {
     request = &DescribeHealthCheckPoliciesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -753,6 +829,60 @@ func (c *Client) DescribeNodePoolsWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeNodePoolsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeZoneInstanceConfigInfosRequest() (request *DescribeZoneInstanceConfigInfosRequest) {
+    request = &DescribeZoneInstanceConfigInfosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeZoneInstanceConfigInfos")
+    
+    
+    return
+}
+
+func NewDescribeZoneInstanceConfigInfosResponse() (response *DescribeZoneInstanceConfigInfosResponse) {
+    response = &DescribeZoneInstanceConfigInfosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeZoneInstanceConfigInfos
+// 查询原生节点机型配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeZoneInstanceConfigInfos(request *DescribeZoneInstanceConfigInfosRequest) (response *DescribeZoneInstanceConfigInfosResponse, err error) {
+    return c.DescribeZoneInstanceConfigInfosWithContext(context.Background(), request)
+}
+
+// DescribeZoneInstanceConfigInfos
+// 查询原生节点机型配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeZoneInstanceConfigInfosWithContext(ctx context.Context, request *DescribeZoneInstanceConfigInfosRequest) (response *DescribeZoneInstanceConfigInfosResponse, err error) {
+    if request == nil {
+        request = NewDescribeZoneInstanceConfigInfosRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeZoneInstanceConfigInfos")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeZoneInstanceConfigInfos require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeZoneInstanceConfigInfosResponse()
     err = c.Send(request, response)
     return
 }

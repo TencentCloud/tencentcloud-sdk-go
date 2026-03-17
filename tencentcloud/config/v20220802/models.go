@@ -432,68 +432,62 @@ type InputParameterForManage struct {
 
 // Predefined struct for user
 type ListAggregateConfigRulesRequestParams struct {
-	// 每页限制
+	// <p>每页限制</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 账号组ID
+	// <p>账号组ID</p>
 	AccountGroupId *string `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 
-	// 排序类型, 倒序：desc，顺序：asc
+	// <p>排序类型, 倒序：desc，顺序：asc</p>
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 风险等级
-	// 1：高风险。
-	// 2：中风险。
-	// 3：低风险。
+	// <p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
 	RiskLevel []*uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 规则状态
+	// <p>规则状态</p>
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 评估结果
+	// <p>评估结果</p>
 	ComplianceResult []*string `json:"ComplianceResult,omitnil,omitempty" name:"ComplianceResult"`
 
-	// 规则名
+	// <p>规则名</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 规则所属账号ID
+	// <p>规则所属账号ID</p>
 	RuleOwnerId *uint64 `json:"RuleOwnerId,omitnil,omitempty" name:"RuleOwnerId"`
 }
 
 type ListAggregateConfigRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 每页限制
+	// <p>每页限制</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 账号组ID
+	// <p>账号组ID</p>
 	AccountGroupId *string `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 
-	// 排序类型, 倒序：desc，顺序：asc
+	// <p>排序类型, 倒序：desc，顺序：asc</p>
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 风险等级
-	// 1：高风险。
-	// 2：中风险。
-	// 3：低风险。
+	// <p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
 	RiskLevel []*uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 规则状态
+	// <p>规则状态</p>
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 评估结果
+	// <p>评估结果</p>
 	ComplianceResult []*string `json:"ComplianceResult,omitnil,omitempty" name:"ComplianceResult"`
 
-	// 规则名
+	// <p>规则名</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 规则所属账号ID
+	// <p>规则所属账号ID</p>
 	RuleOwnerId *uint64 `json:"RuleOwnerId,omitnil,omitempty" name:"RuleOwnerId"`
 }
 
@@ -526,10 +520,10 @@ func (r *ListAggregateConfigRulesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListAggregateConfigRulesResponseParams struct {
-	// 总数
+	// <p>总数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 详情
+	// <p>详情</p>
 	Items []*ConfigRule `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

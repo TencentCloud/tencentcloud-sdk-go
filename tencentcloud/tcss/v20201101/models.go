@@ -16408,6 +16408,649 @@ func (r *DescribeImageComponentListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeImageDenyEventDetailRequestParams struct {
+	// 事件ID
+	EventID *int64 `json:"EventID,omitnil,omitempty" name:"EventID"`
+}
+
+type DescribeImageDenyEventDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 事件ID
+	EventID *int64 `json:"EventID,omitnil,omitempty" name:"EventID"`
+}
+
+func (r *DescribeImageDenyEventDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageDenyEventDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EventID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageDenyEventDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImageDenyEventDetailResponseParams struct {
+	// 事件ID
+	EventID *int64 `json:"EventID,omitnil,omitempty" name:"EventID"`
+
+	// 事件类型 EVENT_RISK:风险事件类型，EVENT_PRIVILEGE:特权
+	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 规则RuleID
+	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+
+	// 规则类型
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// 规则启用状态 0:开启，1:关闭
+	RuleStatus *int64 `json:"RuleStatus,omitnil,omitempty" name:"RuleStatus"`
+
+	// 规则策略状态 IN_THE_TEST ：观察中，IN_EFFECT：生效中
+	RuleEffectStatus *string `json:"RuleEffectStatus,omitnil,omitempty" name:"RuleEffectStatus"`
+
+	// 规则内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleInfo []*string `json:"RuleInfo,omitnil,omitempty" name:"RuleInfo"`
+
+	// 规则描述
+	RuleDescription *string `json:"RuleDescription,omitnil,omitempty" name:"RuleDescription"`
+
+	// 镜像ID
+	ImageID *string `json:"ImageID,omitnil,omitempty" name:"ImageID"`
+
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
+
+	// 节点名称
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// 内网IP
+	NodeIP *string `json:"NodeIP,omitnil,omitempty" name:"NodeIP"`
+
+	// 外网IP
+	PublicIP *string `json:"PublicIP,omitnil,omitempty" name:"PublicIP"`
+
+	// 主机Quuid
+	QUUID *string `json:"QUUID,omitnil,omitempty" name:"QUUID"`
+
+	// 首次生成时间
+	FoundTime *string `json:"FoundTime,omitnil,omitempty" name:"FoundTime"`
+
+	// 最近生成时间
+	LatestFoundTime *string `json:"LatestFoundTime,omitnil,omitempty" name:"LatestFoundTime"`
+
+	// 事件数量
+	EventCount *int64 `json:"EventCount,omitnil,omitempty" name:"EventCount"`
+
+	// 执行动作:
+	// BEHAVIOR_ALERT:告警，
+	// BEHAVIOR_HOLDUP_SUCCESSED:拦截
+	DealBehavior *string `json:"DealBehavior,omitnil,omitempty" name:"DealBehavior"`
+
+	// Pod名称
+	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// 规则开始拦截时间
+	RuleEffectTime *string `json:"RuleEffectTime,omitnil,omitempty" name:"RuleEffectTime"`
+
+	// 事件描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 镜像启动参数
+	StartParam *string `json:"StartParam,omitnil,omitempty" name:"StartParam"`
+
+	// 解决方案
+	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
+
+	// pod ip
+	PodIP *string `json:"PodIP,omitnil,omitempty" name:"PodIP"`
+
+	//  pod状态
+	PodStatus *string `json:"PodStatus,omitnil,omitempty" name:"PodStatus"`
+
+	// 集群id
+	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
+
+	// 节点类型
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 节点id
+	NodeID *string `json:"NodeID,omitnil,omitempty" name:"NodeID"`
+
+	// 节点唯一id
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil,omitempty" name:"NodeUniqueID"`
+
+	// 节点子网id
+	NodeSubNetID *string `json:"NodeSubNetID,omitnil,omitempty" name:"NodeSubNetID"`
+
+	// 节点子网名称
+	NodeSubNetName *string `json:"NodeSubNetName,omitnil,omitempty" name:"NodeSubNetName"`
+
+	// 节点子网cidr
+	NodeSubNetCIDR *string `json:"NodeSubNetCIDR,omitnil,omitempty" name:"NodeSubNetCIDR"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 镜像仓库信息
+	ImageRegistryInfo *ImageRegistryInfo `json:"ImageRegistryInfo,omitnil,omitempty" name:"ImageRegistryInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeImageDenyEventDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeImageDenyEventDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeImageDenyEventDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageDenyEventDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImageDenyEventListRequestParams struct {
+	// 过滤条件。
+	// <li>EventType- String - 是否必填：否 -事件类型 EVENT_RISK:风险事件类型，EVENT_PRIVILEGE:特权。</li>
+	// <li>DealBehavior- String - 是否必填：否 - 执行动作,BEHAVIOR_ALERT:告警，BEHAVIOR_HOLDUP_SUCCESSED:拦截。</li>
+	// <li>RuleName- string - 是否必填：否 - 规则名称。</li>
+	// <li>NodeName- string - 是否必填：否 - 节点名称。</li>
+	// <li>NodeIP- string - 是否必填：否 - 内外IP。</li>
+	// <li>PublicIP- string - 是否必填：否 - 外网IP。</li>
+	// <li>ImageName- string - 是否必填：否 - 镜像名称。</li>
+	// <li>ImageID- string - 是否必填：否 - 镜像ID。</li>
+	// <li>TimeRange- String -是否必填: 否 -  时间范围，第一个值表示开始时间，第二个值表示结束时间 </li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序方式：asc/desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段：告警数量：EventCount，最近生成时间：LatestFoundTime
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeImageDenyEventListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件。
+	// <li>EventType- String - 是否必填：否 -事件类型 EVENT_RISK:风险事件类型，EVENT_PRIVILEGE:特权。</li>
+	// <li>DealBehavior- String - 是否必填：否 - 执行动作,BEHAVIOR_ALERT:告警，BEHAVIOR_HOLDUP_SUCCESSED:拦截。</li>
+	// <li>RuleName- string - 是否必填：否 - 规则名称。</li>
+	// <li>NodeName- string - 是否必填：否 - 节点名称。</li>
+	// <li>NodeIP- string - 是否必填：否 - 内外IP。</li>
+	// <li>PublicIP- string - 是否必填：否 - 外网IP。</li>
+	// <li>ImageName- string - 是否必填：否 - 镜像名称。</li>
+	// <li>ImageID- string - 是否必填：否 - 镜像ID。</li>
+	// <li>TimeRange- String -是否必填: 否 -  时间范围，第一个值表示开始时间，第二个值表示结束时间 </li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序方式：asc/desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段：告警数量：EventCount，最近生成时间：LatestFoundTime
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeImageDenyEventListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageDenyEventListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageDenyEventListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImageDenyEventListResponseParams struct {
+	// 镜像拦截列表
+	List []*ImageDenyEvent `json:"List,omitnil,omitempty" name:"List"`
+
+	// 总数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeImageDenyEventListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeImageDenyEventListResponseParams `json:"Response"`
+}
+
+func (r *DescribeImageDenyEventListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageDenyEventListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImageDenyEventTendencyRequestParams struct {
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribeImageDenyEventTendencyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeImageDenyEventTendencyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageDenyEventTendencyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageDenyEventTendencyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImageDenyEventTendencyResponseParams struct {
+	// 镜像拦截成功事件趋势
+	DenyList []*ImageDenyEventTendency `json:"DenyList,omitnil,omitempty" name:"DenyList"`
+
+	// 镜像拦截告警事件趋势
+	AlarmList []*ImageDenyEventTendency `json:"AlarmList,omitnil,omitempty" name:"AlarmList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeImageDenyEventTendencyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeImageDenyEventTendencyResponseParams `json:"Response"`
+}
+
+func (r *DescribeImageDenyEventTendencyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageDenyEventTendencyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImageDenyRuleDetailRequestParams struct {
+	// 规则RuleID
+	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+}
+
+type DescribeImageDenyRuleDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则RuleID
+	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+}
+
+func (r *DescribeImageDenyRuleDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageDenyRuleDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageDenyRuleDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImageDenyRuleDetailResponseParams struct {
+	// 规则ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 规则类型 RULE_RISK：风险， RULE_PRIVILEGE：特权
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// 生效的镜像数量
+	EffectImageCount *int64 `json:"EffectImageCount,omitnil,omitempty" name:"EffectImageCount"`
+
+	// 是否对全部扫描镜像生效。0:全选镜像，1:自选镜像
+	IsEffectAllImage *int64 `json:"IsEffectAllImage,omitnil,omitempty" name:"IsEffectAllImage"`
+
+	// 规则开始生效时间
+	EffectTime *string `json:"EffectTime,omitnil,omitempty" name:"EffectTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 操作用户
+	OperationUin *string `json:"OperationUin,omitnil,omitempty" name:"OperationUin"`
+
+	// 生效状态 IN_THE_TEST ：观察中，IN_EFFECT：生效中
+	EffectStatus *string `json:"EffectStatus,omitnil,omitempty" name:"EffectStatus"`
+
+	// 规则描述
+	RuleDescription *string `json:"RuleDescription,omitnil,omitempty" name:"RuleDescription"`
+
+	// 启用状态 0:开启，1:关闭
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 漏洞，0:未选中，1:选中
+	Vul *int64 `json:"Vul,omitnil,omitempty" name:"Vul"`
+
+	// cve编号
+	CVEIDSet []*string `json:"CVEIDSet,omitnil,omitempty" name:"CVEIDSet"`
+
+	// 组件编号
+	ComponentSet []*string `json:"ComponentSet,omitnil,omitempty" name:"ComponentSet"`
+
+	// 漏洞分类
+	VulClassSet []*string `json:"VulClassSet,omitnil,omitempty" name:"VulClassSet"`
+
+	// 漏洞等级
+	VulLevelSet []*string `json:"VulLevelSet,omitnil,omitempty" name:"VulLevelSet"`
+
+	// 漏洞标签
+	VulLabelSet []*string `json:"VulLabelSet,omitnil,omitempty" name:"VulLabelSet"`
+
+	// 木马，0:未选中，1:选中
+	Virus *int64 `json:"Virus,omitnil,omitempty" name:"Virus"`
+
+	// 木马md5列表
+	VirusMD5Set []*string `json:"VirusMD5Set,omitnil,omitempty" name:"VirusMD5Set"`
+
+	// 木马等级
+	VirusLevelSet []*string `json:"VirusLevelSet,omitnil,omitempty" name:"VirusLevelSet"`
+
+	// 病毒名
+	VirusName []*string `json:"VirusName,omitnil,omitempty" name:"VirusName"`
+
+	// 敏感信息，0:未选中，1:选中
+	Risk *int64 `json:"Risk,omitnil,omitempty" name:"Risk"`
+
+	// 敏感等级
+	RiskLevelSet []*string `json:"RiskLevelSet,omitnil,omitempty" name:"RiskLevelSet"`
+
+	// 敏感信息分类
+	RiskType []*string `json:"RiskType,omitnil,omitempty" name:"RiskType"`
+
+	// 特权启动 0:不允许，1:允许
+	PrivilegeRun *int64 `json:"PrivilegeRun,omitnil,omitempty" name:"PrivilegeRun"`
+
+	// 特权类型,
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivilegeDetail []*string `json:"PrivilegeDetail,omitnil,omitempty" name:"PrivilegeDetail"`
+
+	// 镜像ID列表
+	EffectImageSet []*string `json:"EffectImageSet,omitnil,omitempty" name:"EffectImageSet"`
+
+	// 多少天后生效
+	EffectDay *uint64 `json:"EffectDay,omitnil,omitempty" name:"EffectDay"`
+
+	// 规则RuelD
+	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeImageDenyRuleDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeImageDenyRuleDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeImageDenyRuleDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageDenyRuleDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImageDenyRuleListRequestParams struct {
+	// 过滤条件。
+	// <li>RuleType- String - 是否必填：否 -规则类型 RULE_RISK：风险， RULE_PRIVILEGE：特权</li>
+	// <li>EffectStatus- String - 是否必填：否 - 生效状态 IN_THE_TEST ：观察中，IN_EFFECT：生效中。</li>
+	// <li>RuleName- string - 是否必填：否 - 规则名称。</li>
+	// <li>Status- string - 是否必填：否 - 开启状态 0：开启，1：关闭。</li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序方式：asc/desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段：生效时间：EffectTime，更新时间：UpdateTime
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 置顶已开启规则 true：是 ，否：false
+	TopTurnOn *bool `json:"TopTurnOn,omitnil,omitempty" name:"TopTurnOn"`
+}
+
+type DescribeImageDenyRuleListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件。
+	// <li>RuleType- String - 是否必填：否 -规则类型 RULE_RISK：风险， RULE_PRIVILEGE：特权</li>
+	// <li>EffectStatus- String - 是否必填：否 - 生效状态 IN_THE_TEST ：观察中，IN_EFFECT：生效中。</li>
+	// <li>RuleName- string - 是否必填：否 - 规则名称。</li>
+	// <li>Status- string - 是否必填：否 - 开启状态 0：开启，1：关闭。</li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序方式：asc/desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段：生效时间：EffectTime，更新时间：UpdateTime
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 置顶已开启规则 true：是 ，否：false
+	TopTurnOn *bool `json:"TopTurnOn,omitnil,omitempty" name:"TopTurnOn"`
+}
+
+func (r *DescribeImageDenyRuleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageDenyRuleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "TopTurnOn")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageDenyRuleListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImageDenyRuleListResponseParams struct {
+	// 规则列表
+	List []*ImageDenyRule `json:"List,omitnil,omitempty" name:"List"`
+
+	// 规则总数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeImageDenyRuleListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeImageDenyRuleListResponseParams `json:"Response"`
+}
+
+func (r *DescribeImageDenyRuleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageDenyRuleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImageDenyRuleSummaryRequestParams struct {
+
+}
+
+type DescribeImageDenyRuleSummaryRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeImageDenyRuleSummaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageDenyRuleSummaryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageDenyRuleSummaryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImageDenyRuleSummaryResponseParams struct {
+	// 镜像拦截规则总数(含关闭的和开启的)
+	RuleTotalCount *uint64 `json:"RuleTotalCount,omitnil,omitempty" name:"RuleTotalCount"`
+
+	// 开启的镜像拦截规则数
+	EnabledRuleCount *uint64 `json:"EnabledRuleCount,omitnil,omitempty" name:"EnabledRuleCount"`
+
+	// 观察期中的镜像拦截规则数
+	ObservedRuleCount *uint64 `json:"ObservedRuleCount,omitnil,omitempty" name:"ObservedRuleCount"`
+
+	// 已生效的镜像拦截规则数
+	EffectiveRuleCount *uint64 `json:"EffectiveRuleCount,omitnil,omitempty" name:"EffectiveRuleCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeImageDenyRuleSummaryResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeImageDenyRuleSummaryResponseParams `json:"Response"`
+}
+
+func (r *DescribeImageDenyRuleSummaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageDenyRuleSummaryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeImageRegistryNamespaceListRequestParams struct {
 	// 本次查询的起始偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -17488,6 +18131,194 @@ func (r *DescribeLogStorageStatisticResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLogStorageStatisticResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMaliciousConnectionBlackListRequestParams struct {
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>RequestType- string - 是否必填：否 - 请求类型，全部请求类型：ALL；域名：DOMAIN；IP: IP</li>
+	// <li>BlackDomain- string - 是否必填：否 - 自定义黑域名</li>
+	// <li>BlackIP- string - 是否必填：否 - 自定义黑IP</li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序方式
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeMaliciousConnectionBlackListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>RequestType- string - 是否必填：否 - 请求类型，全部请求类型：ALL；域名：DOMAIN；IP: IP</li>
+	// <li>BlackDomain- string - 是否必填：否 - 自定义黑域名</li>
+	// <li>BlackIP- string - 是否必填：否 - 自定义黑IP</li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序方式
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeMaliciousConnectionBlackListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMaliciousConnectionBlackListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMaliciousConnectionBlackListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMaliciousConnectionBlackListResponseParams struct {
+	// 恶意请求白名单总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 恶意请求白名单列表
+	List []*MaliciousConnectionRuleInfo `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMaliciousConnectionBlackListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMaliciousConnectionBlackListResponseParams `json:"Response"`
+}
+
+func (r *DescribeMaliciousConnectionBlackListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMaliciousConnectionBlackListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMaliciousConnectionWhiteListRequestParams struct {
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>RequestType- string - 是否必填：是 - 请求类型，全部请求类型：ALL；域名：DOMAIN；IP: IP</li>
+	// <li>WhiteDomain- string - 是否必填：否 - 自定义白域名</li>
+	// <li>WhiteIP- string - 是否必填：否 - 自定义白名单IP</li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序方式
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeMaliciousConnectionWhiteListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>RequestType- string - 是否必填：是 - 请求类型，全部请求类型：ALL；域名：DOMAIN；IP: IP</li>
+	// <li>WhiteDomain- string - 是否必填：否 - 自定义白域名</li>
+	// <li>WhiteIP- string - 是否必填：否 - 自定义白名单IP</li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序方式
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeMaliciousConnectionWhiteListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMaliciousConnectionWhiteListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMaliciousConnectionWhiteListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMaliciousConnectionWhiteListResponseParams struct {
+	// 恶意请求白名单总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 恶意请求白名单列表
+	List []*MaliciousConnectionRuleInfo `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMaliciousConnectionWhiteListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMaliciousConnectionWhiteListResponseParams `json:"Response"`
+}
+
+func (r *DescribeMaliciousConnectionWhiteListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMaliciousConnectionWhiteListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -19344,6 +20175,155 @@ func (r *DescribeReverseShellEventsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeReverseShellEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReverseShellRegexpWhiteListInfoRequestParams struct {
+	// 规则ID
+	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+}
+
+type DescribeReverseShellRegexpWhiteListInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则ID
+	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+}
+
+func (r *DescribeReverseShellRegexpWhiteListInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReverseShellRegexpWhiteListInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReverseShellRegexpWhiteListInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReverseShellRegexpWhiteListInfoResponseParams struct {
+	// 规则详情
+	RuleInfo *RegexpRuleInfo `json:"RuleInfo,omitnil,omitempty" name:"RuleInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeReverseShellRegexpWhiteListInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeReverseShellRegexpWhiteListInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeReverseShellRegexpWhiteListInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReverseShellRegexpWhiteListInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReverseShellRegexpWhiteListRequestParams struct {
+	// 过滤条件。
+	// 
+	// RuleName- String - 是否必填：否 - 规则名称
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 排序方式
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+type DescribeReverseShellRegexpWhiteListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件。
+	// 
+	// RuleName- String - 是否必填：否 - 规则名称
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 排序方式
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+func (r *DescribeReverseShellRegexpWhiteListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReverseShellRegexpWhiteListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "By")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReverseShellRegexpWhiteListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReverseShellRegexpWhiteListResponseParams struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 列表
+	List []*RegexpRuleListItem `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeReverseShellRegexpWhiteListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeReverseShellRegexpWhiteListResponseParams `json:"Response"`
+}
+
+func (r *DescribeReverseShellRegexpWhiteListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReverseShellRegexpWhiteListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -26156,6 +27136,134 @@ type ImageComponent struct {
 	ImageID *string `json:"ImageID,omitnil,omitempty" name:"ImageID"`
 }
 
+type ImageDenyEvent struct {
+	// 事件类型 EVENT_RISK:风险事件类型，EVENT_PRIVILEGE:特权
+	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 规则RuleID
+	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+
+	// 规则类型
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// 规则启用状态 0:开启，1:关闭
+	RuleStatus *int64 `json:"RuleStatus,omitnil,omitempty" name:"RuleStatus"`
+
+	// 规则策略状态 IN_THE_TEST ：观察中，IN_EFFECT：生效中
+	RuleEffectStatus *string `json:"RuleEffectStatus,omitnil,omitempty" name:"RuleEffectStatus"`
+
+	// 规则内容
+	RuleInfo []*string `json:"RuleInfo,omitnil,omitempty" name:"RuleInfo"`
+
+	// 规则描述
+	RuleDescription *string `json:"RuleDescription,omitnil,omitempty" name:"RuleDescription"`
+
+	// 镜像ID
+	ImageID *string `json:"ImageID,omitnil,omitempty" name:"ImageID"`
+
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
+
+	// 节点名称
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// 内网IP
+	NodeIP *string `json:"NodeIP,omitnil,omitempty" name:"NodeIP"`
+
+	// 主机Quuid
+	QUUID *string `json:"QUUID,omitnil,omitempty" name:"QUUID"`
+
+	// 首次生成时间
+	FoundTime *string `json:"FoundTime,omitnil,omitempty" name:"FoundTime"`
+
+	// 最近生成时间
+	LatestFoundTime *string `json:"LatestFoundTime,omitnil,omitempty" name:"LatestFoundTime"`
+
+	// 事件数量
+	EventCount *int64 `json:"EventCount,omitnil,omitempty" name:"EventCount"`
+
+	// 执行动作:
+	// BEHAVIOR_ALERT:告警，
+	// BEHAVIOR_HOLDUP_SUCCESSED:拦截
+	DealBehavior *string `json:"DealBehavior,omitnil,omitempty" name:"DealBehavior"`
+
+	// 事件ID
+	EventID *int64 `json:"EventID,omitnil,omitempty" name:"EventID"`
+
+	// 外网IP
+	PublicIP *string `json:"PublicIP,omitnil,omitempty" name:"PublicIP"`
+
+	// 节点ID
+	NodeID *string `json:"NodeID,omitnil,omitempty" name:"NodeID"`
+
+	// 集群ID
+	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
+
+	// 节点类型
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 超级节点唯一id
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil,omitempty" name:"NodeUniqueID"`
+
+	// pod ip
+	PodIP *string `json:"PodIP,omitnil,omitempty" name:"PodIP"`
+
+	// pod name
+	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 镜像仓库信息
+	ImageRegistryInfo *ImageRegistryInfo `json:"ImageRegistryInfo,omitnil,omitempty" name:"ImageRegistryInfo"`
+}
+
+type ImageDenyEventTendency struct {
+	// 日期
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// 事件数量
+	EventCount *int64 `json:"EventCount,omitnil,omitempty" name:"EventCount"`
+}
+
+type ImageDenyRule struct {
+	// 规则RuleID
+	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 规则类型 RULE_RISK：风险， RULE_PRIVILEGE：特权
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// 生效的镜像数量
+	EffectImageCount *int64 `json:"EffectImageCount,omitnil,omitempty" name:"EffectImageCount"`
+
+	// 是否对全部扫描镜像生效。0:全选镜像，1:自选镜像
+	IsEffectAllImage *int64 `json:"IsEffectAllImage,omitnil,omitempty" name:"IsEffectAllImage"`
+
+	// 规则开始生效时间
+	EffectTime *string `json:"EffectTime,omitnil,omitempty" name:"EffectTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 操作用户
+	OperationUin *string `json:"OperationUin,omitnil,omitempty" name:"OperationUin"`
+
+	// 启用状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 生效状态 IN_THE_TEST ：观察中，IN_EFFECT：生效中
+	EffectStatus *string `json:"EffectStatus,omitnil,omitempty" name:"EffectStatus"`
+
+	// 规则ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
 type ImageHost struct {
 	// 镜像id
 	ImageID *string `json:"ImageID,omitnil,omitempty" name:"ImageID"`
@@ -27152,6 +28260,28 @@ type K8sApiAbnormalTendencyItem struct {
 
 	// 特权容器事件数
 	PrivilegeContainerCount *uint64 `json:"PrivilegeContainerCount,omitnil,omitempty" name:"PrivilegeContainerCount"`
+}
+
+type MaliciousConnectionRuleInfo struct {
+	// 枚举：
+	// IP: 表示ipv4或者ipv6
+	// DOMAIN: 表示域名
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// 自定义黑白名单的域名/IP
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 创建时间
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 规则ID
+	RuleID *uint64 `json:"RuleID,omitnil,omitempty" name:"RuleID"`
 }
 
 // Predefined struct for user
@@ -30493,6 +31623,58 @@ type RaspRuleVul struct {
 
 	// 漏洞防御类型，从漏洞表富化， 1:支持组件漏洞防御，组件漏洞没有正则加白。2:支持正则防御
 	SupportDefense *uint64 `json:"SupportDefense,omitnil,omitempty" name:"SupportDefense"`
+}
+
+type RegexpRuleInfo struct {
+	// 规则名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 启用状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 正则表达式列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpressionList []*WhiteListRegexpExpressionInfo `json:"ExpressionList,omitnil,omitempty" name:"ExpressionList"`
+
+	// 规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+
+	// 最近更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 最近操作账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorUIN *string `json:"OperatorUIN,omitnil,omitempty" name:"OperatorUIN"`
+}
+
+type RegexpRuleListItem struct {
+	// 规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+
+	// 规则名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 生效表达式个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EffectiveExpression *uint64 `json:"EffectiveExpression,omitnil,omitempty" name:"EffectiveExpression"`
+
+	// 最新编辑时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 最近编辑账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorUin *string `json:"OperatorUin,omitnil,omitempty" name:"OperatorUin"`
+
+	// 启用状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type RegionInfo struct {
@@ -34176,4 +35358,18 @@ type WarningRule struct {
 	// 如：高危和中危打开告警，低危关闭告警，则二进制值为：110
 	// 告警类型不区分等级控制，则传1。
 	ControlBits *string `json:"ControlBits,omitnil,omitempty" name:"ControlBits"`
+}
+
+type WhiteListRegexpExpressionInfo struct {
+	// 逻辑符号
+	// 与 (AND)
+	// 或 (OR)
+	// 非 (NOT)
+	LogicSymbol *string `json:"LogicSymbol,omitnil,omitempty" name:"LogicSymbol"`
+
+	// 匹配字段
+	MatchField *string `json:"MatchField,omitnil,omitempty" name:"MatchField"`
+
+	// 匹配内容
+	MatchContent *string `json:"MatchContent,omitnil,omitempty" name:"MatchContent"`
 }

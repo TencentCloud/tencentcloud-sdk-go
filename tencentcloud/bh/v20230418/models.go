@@ -362,6 +362,9 @@ type Acl struct {
 
 	// 权限所属工单名称
 	TicketName *string `json:"TicketName,omitnil,omitempty" name:"TicketName"`
+
+	// 访问串有效期最大时长，秒数，允许使用访问串时需大于0且必须为86400整数倍
+	MaxAccessCredentialDuration *uint64 `json:"MaxAccessCredentialDuration,omitnil,omitempty" name:"MaxAccessCredentialDuration"`
 }
 
 // Predefined struct for user
@@ -1239,6 +1242,9 @@ type CreateAclRequestParams struct {
 
 	// 是否允许键盘记录
 	AllowKeyboardLogger *bool `json:"AllowKeyboardLogger,omitnil,omitempty" name:"AllowKeyboardLogger"`
+
+	// 访问串有效期最大时长，秒数，允许使用访问串时需大于0且必须为86400整数倍
+	MaxAccessCredentialDuration *uint64 `json:"MaxAccessCredentialDuration,omitnil,omitempty" name:"MaxAccessCredentialDuration"`
 }
 
 type CreateAclRequest struct {
@@ -1332,6 +1338,9 @@ type CreateAclRequest struct {
 
 	// 是否允许键盘记录
 	AllowKeyboardLogger *bool `json:"AllowKeyboardLogger,omitnil,omitempty" name:"AllowKeyboardLogger"`
+
+	// 访问串有效期最大时长，秒数，允许使用访问串时需大于0且必须为86400整数倍
+	MaxAccessCredentialDuration *uint64 `json:"MaxAccessCredentialDuration,omitnil,omitempty" name:"MaxAccessCredentialDuration"`
 }
 
 func (r *CreateAclRequest) ToJsonString() string {
@@ -1375,6 +1384,7 @@ func (r *CreateAclRequest) FromJsonString(s string) error {
 	delete(f, "DepartmentId")
 	delete(f, "AllowAccessCredential")
 	delete(f, "AllowKeyboardLogger")
+	delete(f, "MaxAccessCredentialDuration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAclRequest has unknown keys!", "")
 	}
@@ -4794,7 +4804,7 @@ type DescribeLoginEventRequestParams struct {
 	// 分页偏移位置，默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页每页记录数，默认20
+	// 分页每页记录数，默认20，最大200
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -4831,7 +4841,7 @@ type DescribeLoginEventRequest struct {
 	// 分页偏移位置，默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页每页记录数，默认20
+	// 分页每页记录数，默认20，最大200
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -4924,7 +4934,7 @@ type DescribeOperationEventRequestParams struct {
 	// 分页偏移位置，默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页每页记录数，默认20
+	// 分页每页记录数，默认20，最大200
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -4961,7 +4971,7 @@ type DescribeOperationEventRequest struct {
 	// 分页偏移位置，默认值为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页每页记录数，默认20
+	// 分页每页记录数，默认20，最大200
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -6686,6 +6696,9 @@ type ModifyAclRequestParams struct {
 
 	// 是否允许键盘记录
 	AllowKeyboardLogger *bool `json:"AllowKeyboardLogger,omitnil,omitempty" name:"AllowKeyboardLogger"`
+
+	// 访问串有效期最大时长，秒数，允许使用访问串时需大于0且必须为86400整数倍
+	MaxAccessCredentialDuration *uint64 `json:"MaxAccessCredentialDuration,omitnil,omitempty" name:"MaxAccessCredentialDuration"`
 }
 
 type ModifyAclRequest struct {
@@ -6782,6 +6795,9 @@ type ModifyAclRequest struct {
 
 	// 是否允许键盘记录
 	AllowKeyboardLogger *bool `json:"AllowKeyboardLogger,omitnil,omitempty" name:"AllowKeyboardLogger"`
+
+	// 访问串有效期最大时长，秒数，允许使用访问串时需大于0且必须为86400整数倍
+	MaxAccessCredentialDuration *uint64 `json:"MaxAccessCredentialDuration,omitnil,omitempty" name:"MaxAccessCredentialDuration"`
 }
 
 func (r *ModifyAclRequest) ToJsonString() string {
@@ -6826,6 +6842,7 @@ func (r *ModifyAclRequest) FromJsonString(s string) error {
 	delete(f, "DepartmentId")
 	delete(f, "AllowAccessCredential")
 	delete(f, "AllowKeyboardLogger")
+	delete(f, "MaxAccessCredentialDuration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAclRequest has unknown keys!", "")
 	}
@@ -8726,6 +8743,18 @@ type Resource struct {
 
 	// 堡垒机实例对应的零信任实例id
 	IOAResourceId *string `json:"IOAResourceId,omitnil,omitempty" name:"IOAResourceId"`
+
+	// 资源类型 免费版/标准版/专业版 /国密版 free/standard/pro/gm
+	ResourceEdition *string `json:"ResourceEdition,omitnil,omitempty" name:"ResourceEdition"`
+
+	// 计费周期 年：y，月：m，日：d，时：h，分：M，秒：s，一次性购买：p
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+
+	// 计费时长
+	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 计费模式 0后付费，1预付费
+	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 }
 
 type RunChangePwdTaskDetail struct {

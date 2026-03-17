@@ -5217,6 +5217,97 @@ func (r *ReportBatchCallbackStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ReportScanDetailRequestParams struct {
+	// <p>请求参数</p>
+	ScanDetails []*ScanDetailItem `json:"ScanDetails,omitnil,omitempty" name:"ScanDetails"`
+}
+
+type ReportScanDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>请求参数</p>
+	ScanDetails []*ScanDetailItem `json:"ScanDetails,omitnil,omitempty" name:"ScanDetails"`
+}
+
+func (r *ReportScanDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReportScanDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ScanDetails")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReportScanDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReportScanDetailResponseParams struct {
+	// <p>结果返回，成功数</p>
+	Data *ReportScanDetailResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ReportScanDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *ReportScanDetailResponseParams `json:"Response"`
+}
+
+func (r *ReportScanDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReportScanDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReportScanDetailResult struct {
+	// <p>成功数量</p>
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
+type ScanDetailItem struct {
+	// <p>用户ID，也可以为手机号</p>
+	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
+
+	// <p>时间</p><p>参数格式：YYYYMMDDHHMMSS</p>
+	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// <p>省</p>
+	ProvinceName *string `json:"ProvinceName,omitnil,omitempty" name:"ProvinceName"`
+
+	// <p>市</p>
+	CityName *string `json:"CityName,omitnil,omitempty" name:"CityName"`
+
+	// <p>区</p>
+	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
+
+	// <p>品牌</p>
+	BrandName *string `json:"BrandName,omitnil,omitempty" name:"BrandName"`
+
+	// <p>品规</p>
+	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
+
+	// <p>IP，可选，需符合IP格式</p>
+	IP *string `json:"IP,omitnil,omitempty" name:"IP"`
+
+	// <p>码</p>
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
+}
+
 type ScanLog struct {
 	// 行ID
 	LogId *int64 `json:"LogId,omitnil,omitempty" name:"LogId"`

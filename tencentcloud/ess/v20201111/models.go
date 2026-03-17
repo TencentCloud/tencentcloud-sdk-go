@@ -1850,9 +1850,9 @@ type CreateBatchContractReviewTaskRequestParams struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 合同审查的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。 
+	// 合同审查的PDF、WORD文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF、WORD文件资源编号。 
 	// 
-	// 注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下，文件必须是PDF格式`
+	// 注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下，文件必须是PDF、WORD格式`
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 合同审查的审查尺度。默认为`0`严格尺度
@@ -1865,12 +1865,17 @@ type CreateBatchContractReviewTaskRequestParams struct {
 	// </ul>
 	PolicyType *int64 `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
 
-	// 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。
+	// 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。(Depricated)
 	Role *RiskIdentificationRoleInfo `json:"Role,omitnil,omitempty" name:"Role"`
 
-	// 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。
-	// [点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。
+	// 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。
+	Roles []*RiskIdentificationRoleInfo `json:"Roles,omitnil,omitempty" name:"Roles"`
+
+	// 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。(Depricated)
 	ChecklistId *string `json:"ChecklistId,omitnil,omitempty" name:"ChecklistId"`
+
+	// 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。
+	ChecklistIds []*string `json:"ChecklistIds,omitnil,omitempty" name:"ChecklistIds"`
 
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -1899,9 +1904,9 @@ type CreateBatchContractReviewTaskRequest struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 合同审查的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。 
+	// 合同审查的PDF、WORD文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF、WORD文件资源编号。 
 	// 
-	// 注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下，文件必须是PDF格式`
+	// 注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下，文件必须是PDF、WORD格式`
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 合同审查的审查尺度。默认为`0`严格尺度
@@ -1914,12 +1919,17 @@ type CreateBatchContractReviewTaskRequest struct {
 	// </ul>
 	PolicyType *int64 `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
 
-	// 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。
+	// 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。(Depricated)
 	Role *RiskIdentificationRoleInfo `json:"Role,omitnil,omitempty" name:"Role"`
 
-	// 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。
-	// [点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。
+	// 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。
+	Roles []*RiskIdentificationRoleInfo `json:"Roles,omitnil,omitempty" name:"Roles"`
+
+	// 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。(Depricated)
 	ChecklistId *string `json:"ChecklistId,omitnil,omitempty" name:"ChecklistId"`
+
+	// 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。
+	ChecklistIds []*string `json:"ChecklistIds,omitnil,omitempty" name:"ChecklistIds"`
 
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -1957,7 +1967,9 @@ func (r *CreateBatchContractReviewTaskRequest) FromJsonString(s string) error {
 	delete(f, "ResourceIds")
 	delete(f, "PolicyType")
 	delete(f, "Role")
+	delete(f, "Roles")
 	delete(f, "ChecklistId")
+	delete(f, "ChecklistIds")
 	delete(f, "Agent")
 	delete(f, "Comment")
 	delete(f, "UserData")
@@ -4654,6 +4666,9 @@ type CreateFlowByFilesRequestParams struct {
 
 	// 是否开启发起合同审批，默认：false（不开启），开启后，发起合同（StartFlow），会提交电子签内置的审批流
 	Workflow *bool `json:"Workflow,omitnil,omitempty" name:"Workflow"`
+
+	// 发起合同流程时对合同流程的部分操作加以限制的配置。
+	FlowOperateLimit *FlowOperateLimit `json:"FlowOperateLimit,omitnil,omitempty" name:"FlowOperateLimit"`
 }
 
 type CreateFlowByFilesRequest struct {
@@ -4796,6 +4811,9 @@ type CreateFlowByFilesRequest struct {
 
 	// 是否开启发起合同审批，默认：false（不开启），开启后，发起合同（StartFlow），会提交电子签内置的审批流
 	Workflow *bool `json:"Workflow,omitnil,omitempty" name:"Workflow"`
+
+	// 发起合同流程时对合同流程的部分操作加以限制的配置。
+	FlowOperateLimit *FlowOperateLimit `json:"FlowOperateLimit,omitnil,omitempty" name:"FlowOperateLimit"`
 }
 
 func (r *CreateFlowByFilesRequest) ToJsonString() string {
@@ -4834,6 +4852,7 @@ func (r *CreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "FlowDisplayType")
 	delete(f, "OpenDynamicSignFlow")
 	delete(f, "Workflow")
+	delete(f, "FlowOperateLimit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowByFilesRequest has unknown keys!", "")
 	}
@@ -5815,6 +5834,9 @@ type CreateFlowRequestParams struct {
 
 	// 是否开启发起合同审批，默认：false（不开启），开启后，发起合同（StartFlow），会提交电子签内置的审批流
 	Workflow *bool `json:"Workflow,omitnil,omitempty" name:"Workflow"`
+
+	// 发起合同流程时对合同流程的部分操作加以限制的配置。
+	FlowOperateLimit *FlowOperateLimit `json:"FlowOperateLimit,omitnil,omitempty" name:"FlowOperateLimit"`
 }
 
 type CreateFlowRequest struct {
@@ -5927,6 +5949,9 @@ type CreateFlowRequest struct {
 
 	// 是否开启发起合同审批，默认：false（不开启），开启后，发起合同（StartFlow），会提交电子签内置的审批流
 	Workflow *bool `json:"Workflow,omitnil,omitempty" name:"Workflow"`
+
+	// 发起合同流程时对合同流程的部分操作加以限制的配置。
+	FlowOperateLimit *FlowOperateLimit `json:"FlowOperateLimit,omitnil,omitempty" name:"FlowOperateLimit"`
 }
 
 func (r *CreateFlowRequest) ToJsonString() string {
@@ -5960,6 +5985,7 @@ func (r *CreateFlowRequest) FromJsonString(s string) error {
 	delete(f, "CallbackUrl")
 	delete(f, "FlowDisplayType")
 	delete(f, "Workflow")
+	delete(f, "FlowOperateLimit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowRequest has unknown keys!", "")
 	}
@@ -12627,8 +12653,11 @@ func (r *DescribeContractReviewTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeContractReviewTaskResponseParams struct {
-	// 用于审查任务的审查清单ID。注意：如果用户没有配置清单时此值可能为空，需要等大模型根据合同内容推荐出可以使用的审查清单。
+	// 用于审查任务的审查清单ID（Depricated）。注意：如果用户没有配置清单时此值可能为空，需要等大模型根据合同内容推荐出可以使用的审查清单。
 	ChecklistId *string `json:"ChecklistId,omitnil,omitempty" name:"ChecklistId"`
+
+	// 用于审查任务的审查清单ID。注意：如果用户没有配置清单时此值可能为空，需要等大模型根据合同内容推荐出可以使用的审查清单。
+	ChecklistIds []*string `json:"ChecklistIds,omitnil,omitempty" name:"ChecklistIds"`
 
 	// 合同审查任务创建时间。
 	CreatedOn *int64 `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
@@ -12646,7 +12675,7 @@ type DescribeContractReviewTaskResponseParams struct {
 	// </ul>
 	PolicyType *int64 `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
 
-	// 合同审查的PDF文件资源ID。
+	// 合同审查的PDF、WORD文件资源ID。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 合同审查识别出的PDF文件风险信息，如果是空数组表示无风险。
@@ -12654,9 +12683,12 @@ type DescribeContractReviewTaskResponseParams struct {
 	// 注意：`审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。`
 	Risks []*OutputRisk `json:"Risks,omitnil,omitempty" name:"Risks"`
 
-	// 合同审查中的角色信息。注意： `如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。`
+	// 合同审查中的角色信息（Depricated）。注意： `如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Role *RiskIdentificationRoleInfo `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 合同审查中的角色信息。注意： `如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。`
+	Roles []*RiskIdentificationRoleInfo `json:"Roles,omitnil,omitempty" name:"Roles"`
 
 	// 合同审查任务状态。
 	// 状态如下：
@@ -16795,6 +16827,11 @@ type FlowGroupOptions struct {
 type FlowGroupUrlInfo struct {
 	// 合同组子合同和签署方的信息，用于补充动态签署人。
 	FlowGroupApproverInfos []*FlowGroupApproverInfo `json:"FlowGroupApproverInfos,omitnil,omitempty" name:"FlowGroupApproverInfos"`
+}
+
+type FlowOperateLimit struct {
+	// 发起合同流程时，对签署完成后是否能发起对应的解除合同加以限制：<ul><li><b>false（默认值）</b>: 合同流程完成签署后，支持发起对应的解除协议。</li><li><b>true </b>: 合同流程完成签署后，<b>不支持</b>发起对应的解除协议。</li></ul>
+	NoRelease *bool `json:"NoRelease,omitnil,omitempty" name:"NoRelease"`
 }
 
 type FormField struct {

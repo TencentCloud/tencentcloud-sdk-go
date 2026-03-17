@@ -2998,3 +2998,57 @@ func (c *Client) ReportBatchCallbackStatusWithContext(ctx context.Context, reque
     err = c.Send(request, response)
     return
 }
+
+func NewReportScanDetailRequest() (request *ReportScanDetailRequest) {
+    request = &ReportScanDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "ReportScanDetail")
+    
+    
+    return
+}
+
+func NewReportScanDetailResponse() (response *ReportScanDetailResponse) {
+    response = &ReportScanDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReportScanDetail
+// 扫码数据上报
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ReportScanDetail(request *ReportScanDetailRequest) (response *ReportScanDetailResponse, err error) {
+    return c.ReportScanDetailWithContext(context.Background(), request)
+}
+
+// ReportScanDetail
+// 扫码数据上报
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ReportScanDetailWithContext(ctx context.Context, request *ReportScanDetailRequest) (response *ReportScanDetailResponse, err error) {
+    if request == nil {
+        request = NewReportScanDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trp", APIVersion, "ReportScanDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReportScanDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReportScanDetailResponse()
+    err = c.Send(request, response)
+    return
+}

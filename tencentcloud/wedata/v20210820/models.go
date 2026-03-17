@@ -2825,6 +2825,24 @@ type BizCatalogsInfo struct {
 	NameEn *string `json:"NameEn,omitnil,omitempty" name:"NameEn"`
 }
 
+type BizParams struct {
+	// 字段中文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NameCn *string `json:"NameCn,omitnil,omitempty" name:"NameCn"`
+
+	// 字段英文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NameEn *string `json:"NameEn,omitnil,omitempty" name:"NameEn"`
+
+	// iceberg表是否启用高级配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasAdvancedConfig *string `json:"HasAdvancedConfig,omitnil,omitempty" name:"HasAdvancedConfig"`
+
+	// 标注编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizStandCode *string `json:"BizStandCode,omitnil,omitempty" name:"BizStandCode"`
+}
+
 type BytesSpeed struct {
 	// 节点类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7673,6 +7691,86 @@ type DatabaseMeta struct {
 	OperateOption *OperateOption `json:"OperateOption,omitnil,omitempty" name:"OperateOption"`
 }
 
+type DatabaseRealViewVO struct {
+	// CatalogName: 如dlc数据默认为DataLakeCatalog
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 数据源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSourceId *int64 `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
+
+	// 数据源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSourceName *string `json:"DataSourceName,omitnil,omitempty" name:"DataSourceName"`
+
+	// 数据源实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSourceInstance *string `json:"DataSourceInstance,omitnil,omitempty" name:"DataSourceInstance"`
+
+	// 数据源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
+
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 责任人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// 责任人账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerAccount *int64 `json:"OwnerAccount,omitnil,omitempty" name:"OwnerAccount"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifiedTime *int64 `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+
+	// 数据库地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// 业务额外属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizParams *BizParams `json:"BizParams,omitnil,omitempty" name:"BizParams"`
+
+	// 下一级元数据:CATALOG,DATABASE,SCHEMA,TABLE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextLevel *string `json:"NextLevel,omitnil,omitempty" name:"NextLevel"`
+}
+
+type DatabaseRealViewVOPageVO struct {
+	// 分页页码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 总个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 总分页页码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPageNumber *int64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+
+	// 记录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rows []*DatabaseRealViewVO `json:"Rows,omitnil,omitempty" name:"Rows"`
+}
+
 type DatabaseSchemaIInfo struct {
 	// schema名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -11380,6 +11478,85 @@ func (r *DescribeDataSourceListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDatabaseByNameRequestParams struct {
+	// 数据库名称
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 数据源id
+	DatasourceId *uint64 `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// schema名称
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+type DescribeDatabaseByNameRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据库名称
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 数据源id
+	DatasourceId *uint64 `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// schema名称
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeDatabaseByNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseByNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatabaseName")
+	delete(f, "DatasourceId")
+	delete(f, "SchemaName")
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabaseByNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabaseByNameResponseParams struct {
+	// 数据库信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseMeta *DatabaseMeta `json:"DatabaseMeta,omitnil,omitempty" name:"DatabaseMeta"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDatabaseByNameResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDatabaseByNameResponseParams `json:"Response"`
+}
+
+func (r *DescribeDatabaseByNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseByNameResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDatabaseInfoListRequestParams struct {
 	// 过滤参数
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -11441,6 +11618,64 @@ func (r *DescribeDatabaseInfoListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDatabaseInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabaseMetaRequestParams struct {
+	// 数据源唯一Id
+	DatabaseId *string `json:"DatabaseId,omitnil,omitempty" name:"DatabaseId"`
+}
+
+type DescribeDatabaseMetaRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源唯一Id
+	DatabaseId *string `json:"DatabaseId,omitnil,omitempty" name:"DatabaseId"`
+}
+
+func (r *DescribeDatabaseMetaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseMetaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatabaseId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabaseMetaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabaseMetaResponseParams struct {
+	// 数据库元数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseMeta *DatabaseMeta `json:"DatabaseMeta,omitnil,omitempty" name:"DatabaseMeta"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDatabaseMetaResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDatabaseMetaResponseParams `json:"Response"`
+}
+
+func (r *DescribeDatabaseMetaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseMetaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14967,6 +15202,76 @@ func (r *DescribeIntegrationVersionNodesInfoResponse) FromJsonString(s string) e
 }
 
 // Predefined struct for user
+type DescribeLineageColumnsRequestParams struct {
+	// 表id
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+}
+
+type DescribeLineageColumnsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 表id
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+}
+
+func (r *DescribeLineageColumnsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLineageColumnsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLineageColumnsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLineageColumnsResponseParams struct {
+	// 元数据类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetastoreType []*string `json:"MetastoreType,omitnil,omitempty" name:"MetastoreType"`
+
+	// 元数据类型名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetastoreTypeName *string `json:"MetastoreTypeName,omitnil,omitempty" name:"MetastoreTypeName"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 字段列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnSet []*ColumnLineageInfo `json:"ColumnSet,omitnil,omitempty" name:"ColumnSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLineageColumnsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLineageColumnsResponseParams `json:"Response"`
+}
+
+func (r *DescribeLineageColumnsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLineageColumnsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLineageInfoRequestParams struct {
 	// 实体原始唯一ID
 	ResourceOriId *string `json:"ResourceOriId,omitnil,omitempty" name:"ResourceOriId"`
@@ -17018,6 +17323,134 @@ func (r *DescribeRealTimeTaskSpeedResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRealTimeTaskSpeedResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRealViewDatabasePageRequestParams struct {
+	// 数据源ID
+	DatasourceId *int64 `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 排序字段类型：ASC/DESC
+	Asc *bool `json:"Asc,omitnil,omitempty" name:"Asc"`
+
+	// 指定数据源链接方式，如hive jdbc或者metastore client
+	ConnectionType *string `json:"ConnectionType,omitnil,omitempty" name:"ConnectionType"`
+
+	// Keyword过滤
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 【分页参数】页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 【分页参数】分页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 资源组ID
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// 资源组类型
+	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// Sort
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// catalog名称
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+}
+
+type DescribeRealViewDatabasePageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源ID
+	DatasourceId *int64 `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 排序字段类型：ASC/DESC
+	Asc *bool `json:"Asc,omitnil,omitempty" name:"Asc"`
+
+	// 指定数据源链接方式，如hive jdbc或者metastore client
+	ConnectionType *string `json:"ConnectionType,omitnil,omitempty" name:"ConnectionType"`
+
+	// Keyword过滤
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 【分页参数】页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 【分页参数】分页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 资源组ID
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// 资源组类型
+	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// Sort
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// catalog名称
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+}
+
+func (r *DescribeRealViewDatabasePageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRealViewDatabasePageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatasourceId")
+	delete(f, "ProjectId")
+	delete(f, "Asc")
+	delete(f, "ConnectionType")
+	delete(f, "Keyword")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "ResourceGroupId")
+	delete(f, "ResourceType")
+	delete(f, "Sort")
+	delete(f, "CatalogName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRealViewDatabasePageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRealViewDatabasePageResponseParams struct {
+	// 离线获取数据库列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DatabaseRealViewVOPageVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRealViewDatabasePageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRealViewDatabasePageResponseParams `json:"Response"`
+}
+
+func (r *DescribeRealViewDatabasePageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRealViewDatabasePageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -20037,6 +20470,196 @@ func (r *DescribeTableBasicInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTableContentPreviewRequestParams struct {
+	// 表ID
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 组件类型枚举值，支持的值有 HDFS/HBASE/HIVE/KAFKA
+	TechnologyType *string `json:"TechnologyType,omitnil,omitempty" name:"TechnologyType"`
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 资源类型枚举值，支持的值有TOPIC/PATH/TABLE/DATABASE
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 预览的行数，默认10行
+	RowNum *int64 `json:"RowNum,omitnil,omitempty" name:"RowNum"`
+
+	// 数据库名，kafka或其他无数据库概念的不填
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 异步查询预览结果时填写
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 分区信息
+	PartitionName *string `json:"PartitionName,omitnil,omitempty" name:"PartitionName"`
+}
+
+type DescribeTableContentPreviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 表ID
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 组件类型枚举值，支持的值有 HDFS/HBASE/HIVE/KAFKA
+	TechnologyType *string `json:"TechnologyType,omitnil,omitempty" name:"TechnologyType"`
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 资源类型枚举值，支持的值有TOPIC/PATH/TABLE/DATABASE
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 预览的行数，默认10行
+	RowNum *int64 `json:"RowNum,omitnil,omitempty" name:"RowNum"`
+
+	// 数据库名，kafka或其他无数据库概念的不填
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 异步查询预览结果时填写
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 分区信息
+	PartitionName *string `json:"PartitionName,omitnil,omitempty" name:"PartitionName"`
+}
+
+func (r *DescribeTableContentPreviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableContentPreviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableId")
+	delete(f, "TechnologyType")
+	delete(f, "ClusterId")
+	delete(f, "ResourceType")
+	delete(f, "TableName")
+	delete(f, "ProjectId")
+	delete(f, "RowNum")
+	delete(f, "DatabaseName")
+	delete(f, "TaskId")
+	delete(f, "PartitionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableContentPreviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTableContentPreviewResponseParams struct {
+	// 表的列名列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnNames []*string `json:"ColumnNames,omitnil,omitempty" name:"ColumnNames"`
+
+	// 表的行数据列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableRecordSet []*TableRecord `json:"TableRecordSet,omitnil,omitempty" name:"TableRecordSet"`
+
+	// 异步预览任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 异步预览结果状态: 0 初始化， 1 执行中， 2 执行成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncState *int64 `json:"AsyncState,omitnil,omitempty" name:"AsyncState"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTableContentPreviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTableContentPreviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeTableContentPreviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableContentPreviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTableDdlRequestParams struct {
+	// 表ID
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+}
+
+type DescribeTableDdlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 表ID
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+}
+
+func (r *DescribeTableDdlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableDdlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableDdlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTableDdlResponseParams struct {
+	// 表的DDL
+	Ddl *string `json:"Ddl,omitnil,omitempty" name:"Ddl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTableDdlResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTableDdlResponseParams `json:"Response"`
+}
+
+func (r *DescribeTableDdlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableDdlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTableInfoListRequestParams struct {
 	// 表名
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -21092,6 +21715,64 @@ func (r *DescribeTableScoreTrendResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTableScoreTrendResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTableSelectRequestParams struct {
+	// 表ID
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+}
+
+type DescribeTableSelectRequest struct {
+	*tchttp.BaseRequest
+	
+	// 表ID
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+}
+
+func (r *DescribeTableSelectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableSelectRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableSelectRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTableSelectResponseParams struct {
+	// 表的select语句
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Select *string `json:"Select,omitnil,omitempty" name:"Select"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTableSelectResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTableSelectResponseParams `json:"Response"`
+}
+
+func (r *DescribeTableSelectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableSelectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -40303,6 +40984,19 @@ type TableQualityDetailPage struct {
 	// 表质量列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*TableQualityDetail `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type TableRecord struct {
+	// 表一行数据，包含多个Field
+	TableRecordFieldSet []*TableRecordField `json:"TableRecordFieldSet,omitnil,omitempty" name:"TableRecordFieldSet"`
+}
+
+type TableRecordField struct {
+	// 字段名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 字段值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type TableScoreStatisticsInfo struct {

@@ -10437,6 +10437,410 @@ func (c *Client) DescribeImageComponentListWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeImageDenyEventDetailRequest() (request *DescribeImageDenyEventDetailRequest) {
+    request = &DescribeImageDenyEventDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeImageDenyEventDetail")
+    
+    
+    return
+}
+
+func NewDescribeImageDenyEventDetailResponse() (response *DescribeImageDenyEventDetailResponse) {
+    response = &DescribeImageDenyEventDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageDenyEventDetail
+// 查询镜像拦截事件详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageDenyEventDetail(request *DescribeImageDenyEventDetailRequest) (response *DescribeImageDenyEventDetailResponse, err error) {
+    return c.DescribeImageDenyEventDetailWithContext(context.Background(), request)
+}
+
+// DescribeImageDenyEventDetail
+// 查询镜像拦截事件详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageDenyEventDetailWithContext(ctx context.Context, request *DescribeImageDenyEventDetailRequest) (response *DescribeImageDenyEventDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageDenyEventDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeImageDenyEventDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageDenyEventDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageDenyEventDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageDenyEventListRequest() (request *DescribeImageDenyEventListRequest) {
+    request = &DescribeImageDenyEventListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeImageDenyEventList")
+    
+    
+    return
+}
+
+func NewDescribeImageDenyEventListResponse() (response *DescribeImageDenyEventListResponse) {
+    response = &DescribeImageDenyEventListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageDenyEventList
+// 查询镜像拦截事件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageDenyEventList(request *DescribeImageDenyEventListRequest) (response *DescribeImageDenyEventListResponse, err error) {
+    return c.DescribeImageDenyEventListWithContext(context.Background(), request)
+}
+
+// DescribeImageDenyEventList
+// 查询镜像拦截事件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageDenyEventListWithContext(ctx context.Context, request *DescribeImageDenyEventListRequest) (response *DescribeImageDenyEventListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageDenyEventListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeImageDenyEventList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageDenyEventList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageDenyEventListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageDenyEventTendencyRequest() (request *DescribeImageDenyEventTendencyRequest) {
+    request = &DescribeImageDenyEventTendencyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeImageDenyEventTendency")
+    
+    
+    return
+}
+
+func NewDescribeImageDenyEventTendencyResponse() (response *DescribeImageDenyEventTendencyResponse) {
+    response = &DescribeImageDenyEventTendencyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageDenyEventTendency
+// 查询镜像拦截事件趋势
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageDenyEventTendency(request *DescribeImageDenyEventTendencyRequest) (response *DescribeImageDenyEventTendencyResponse, err error) {
+    return c.DescribeImageDenyEventTendencyWithContext(context.Background(), request)
+}
+
+// DescribeImageDenyEventTendency
+// 查询镜像拦截事件趋势
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageDenyEventTendencyWithContext(ctx context.Context, request *DescribeImageDenyEventTendencyRequest) (response *DescribeImageDenyEventTendencyResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageDenyEventTendencyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeImageDenyEventTendency")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageDenyEventTendency require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageDenyEventTendencyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageDenyRuleDetailRequest() (request *DescribeImageDenyRuleDetailRequest) {
+    request = &DescribeImageDenyRuleDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeImageDenyRuleDetail")
+    
+    
+    return
+}
+
+func NewDescribeImageDenyRuleDetailResponse() (response *DescribeImageDenyRuleDetailResponse) {
+    response = &DescribeImageDenyRuleDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageDenyRuleDetail
+// 查询镜像拦截规则详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageDenyRuleDetail(request *DescribeImageDenyRuleDetailRequest) (response *DescribeImageDenyRuleDetailResponse, err error) {
+    return c.DescribeImageDenyRuleDetailWithContext(context.Background(), request)
+}
+
+// DescribeImageDenyRuleDetail
+// 查询镜像拦截规则详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageDenyRuleDetailWithContext(ctx context.Context, request *DescribeImageDenyRuleDetailRequest) (response *DescribeImageDenyRuleDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageDenyRuleDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeImageDenyRuleDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageDenyRuleDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageDenyRuleDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageDenyRuleListRequest() (request *DescribeImageDenyRuleListRequest) {
+    request = &DescribeImageDenyRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeImageDenyRuleList")
+    
+    
+    return
+}
+
+func NewDescribeImageDenyRuleListResponse() (response *DescribeImageDenyRuleListResponse) {
+    response = &DescribeImageDenyRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageDenyRuleList
+// 查询镜像拦截规则列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageDenyRuleList(request *DescribeImageDenyRuleListRequest) (response *DescribeImageDenyRuleListResponse, err error) {
+    return c.DescribeImageDenyRuleListWithContext(context.Background(), request)
+}
+
+// DescribeImageDenyRuleList
+// 查询镜像拦截规则列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageDenyRuleListWithContext(ctx context.Context, request *DescribeImageDenyRuleListRequest) (response *DescribeImageDenyRuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageDenyRuleListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeImageDenyRuleList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageDenyRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageDenyRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageDenyRuleSummaryRequest() (request *DescribeImageDenyRuleSummaryRequest) {
+    request = &DescribeImageDenyRuleSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeImageDenyRuleSummary")
+    
+    
+    return
+}
+
+func NewDescribeImageDenyRuleSummaryResponse() (response *DescribeImageDenyRuleSummaryResponse) {
+    response = &DescribeImageDenyRuleSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageDenyRuleSummary
+// 查询镜像拦截规则统计
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageDenyRuleSummary(request *DescribeImageDenyRuleSummaryRequest) (response *DescribeImageDenyRuleSummaryResponse, err error) {
+    return c.DescribeImageDenyRuleSummaryWithContext(context.Background(), request)
+}
+
+// DescribeImageDenyRuleSummary
+// 查询镜像拦截规则统计
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeImageDenyRuleSummaryWithContext(ctx context.Context, request *DescribeImageDenyRuleSummaryRequest) (response *DescribeImageDenyRuleSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageDenyRuleSummaryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeImageDenyRuleSummary")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageDenyRuleSummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageDenyRuleSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImageRegistryNamespaceListRequest() (request *DescribeImageRegistryNamespaceListRequest) {
     request = &DescribeImageRegistryNamespaceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10461,15 +10865,15 @@ func NewDescribeImageRegistryNamespaceListResponse() (response *DescribeImageReg
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeImageRegistryNamespaceList(request *DescribeImageRegistryNamespaceListRequest) (response *DescribeImageRegistryNamespaceListResponse, err error) {
     return c.DescribeImageRegistryNamespaceListWithContext(context.Background(), request)
 }
@@ -10479,15 +10883,15 @@ func (c *Client) DescribeImageRegistryNamespaceList(request *DescribeImageRegist
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeImageRegistryNamespaceListWithContext(ctx context.Context, request *DescribeImageRegistryNamespaceListRequest) (response *DescribeImageRegistryNamespaceListResponse, err error) {
     if request == nil {
         request = NewDescribeImageRegistryNamespaceListRequest()
@@ -11247,6 +11651,138 @@ func (c *Client) DescribeLogStorageStatisticWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeLogStorageStatisticResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMaliciousConnectionBlackListRequest() (request *DescribeMaliciousConnectionBlackListRequest) {
+    request = &DescribeMaliciousConnectionBlackListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeMaliciousConnectionBlackList")
+    
+    
+    return
+}
+
+func NewDescribeMaliciousConnectionBlackListResponse() (response *DescribeMaliciousConnectionBlackListResponse) {
+    response = &DescribeMaliciousConnectionBlackListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMaliciousConnectionBlackList
+// 查询恶意外连黑名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeMaliciousConnectionBlackList(request *DescribeMaliciousConnectionBlackListRequest) (response *DescribeMaliciousConnectionBlackListResponse, err error) {
+    return c.DescribeMaliciousConnectionBlackListWithContext(context.Background(), request)
+}
+
+// DescribeMaliciousConnectionBlackList
+// 查询恶意外连黑名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeMaliciousConnectionBlackListWithContext(ctx context.Context, request *DescribeMaliciousConnectionBlackListRequest) (response *DescribeMaliciousConnectionBlackListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMaliciousConnectionBlackListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeMaliciousConnectionBlackList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMaliciousConnectionBlackList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMaliciousConnectionBlackListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMaliciousConnectionWhiteListRequest() (request *DescribeMaliciousConnectionWhiteListRequest) {
+    request = &DescribeMaliciousConnectionWhiteListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeMaliciousConnectionWhiteList")
+    
+    
+    return
+}
+
+func NewDescribeMaliciousConnectionWhiteListResponse() (response *DescribeMaliciousConnectionWhiteListResponse) {
+    response = &DescribeMaliciousConnectionWhiteListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMaliciousConnectionWhiteList
+// 查询恶意外连白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeMaliciousConnectionWhiteList(request *DescribeMaliciousConnectionWhiteListRequest) (response *DescribeMaliciousConnectionWhiteListResponse, err error) {
+    return c.DescribeMaliciousConnectionWhiteListWithContext(context.Background(), request)
+}
+
+// DescribeMaliciousConnectionWhiteList
+// 查询恶意外连白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeMaliciousConnectionWhiteListWithContext(ctx context.Context, request *DescribeMaliciousConnectionWhiteListRequest) (response *DescribeMaliciousConnectionWhiteListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMaliciousConnectionWhiteListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeMaliciousConnectionWhiteList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMaliciousConnectionWhiteList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMaliciousConnectionWhiteListResponse()
     err = c.Send(request, response)
     return
 }
@@ -12719,6 +13255,110 @@ func (c *Client) DescribeReverseShellEventsExportWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewDescribeReverseShellEventsExportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReverseShellRegexpWhiteListRequest() (request *DescribeReverseShellRegexpWhiteListRequest) {
+    request = &DescribeReverseShellRegexpWhiteListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeReverseShellRegexpWhiteList")
+    
+    
+    return
+}
+
+func NewDescribeReverseShellRegexpWhiteListResponse() (response *DescribeReverseShellRegexpWhiteListResponse) {
+    response = &DescribeReverseShellRegexpWhiteListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeReverseShellRegexpWhiteList
+// 查询反弹shell正则白名单列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeReverseShellRegexpWhiteList(request *DescribeReverseShellRegexpWhiteListRequest) (response *DescribeReverseShellRegexpWhiteListResponse, err error) {
+    return c.DescribeReverseShellRegexpWhiteListWithContext(context.Background(), request)
+}
+
+// DescribeReverseShellRegexpWhiteList
+// 查询反弹shell正则白名单列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeReverseShellRegexpWhiteListWithContext(ctx context.Context, request *DescribeReverseShellRegexpWhiteListRequest) (response *DescribeReverseShellRegexpWhiteListResponse, err error) {
+    if request == nil {
+        request = NewDescribeReverseShellRegexpWhiteListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeReverseShellRegexpWhiteList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReverseShellRegexpWhiteList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReverseShellRegexpWhiteListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReverseShellRegexpWhiteListInfoRequest() (request *DescribeReverseShellRegexpWhiteListInfoRequest) {
+    request = &DescribeReverseShellRegexpWhiteListInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeReverseShellRegexpWhiteListInfo")
+    
+    
+    return
+}
+
+func NewDescribeReverseShellRegexpWhiteListInfoResponse() (response *DescribeReverseShellRegexpWhiteListInfoResponse) {
+    response = &DescribeReverseShellRegexpWhiteListInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeReverseShellRegexpWhiteListInfo
+// 查询反弹shell正则白名单详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeReverseShellRegexpWhiteListInfo(request *DescribeReverseShellRegexpWhiteListInfoRequest) (response *DescribeReverseShellRegexpWhiteListInfoResponse, err error) {
+    return c.DescribeReverseShellRegexpWhiteListInfoWithContext(context.Background(), request)
+}
+
+// DescribeReverseShellRegexpWhiteListInfo
+// 查询反弹shell正则白名单详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeReverseShellRegexpWhiteListInfoWithContext(ctx context.Context, request *DescribeReverseShellRegexpWhiteListInfoRequest) (response *DescribeReverseShellRegexpWhiteListInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeReverseShellRegexpWhiteListInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeReverseShellRegexpWhiteListInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReverseShellRegexpWhiteListInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReverseShellRegexpWhiteListInfoResponse()
     err = c.Send(request, response)
     return
 }

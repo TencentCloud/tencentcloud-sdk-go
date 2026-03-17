@@ -2212,6 +2212,9 @@ type CreateBackupRequestParams struct {
 
 	// 备注名
 	BackupName *string `json:"BackupName,omitnil,omitempty" name:"BackupName"`
+
+	// 	投递到保险箱的信息
+	Vaults []*CreateBackupVaultItem `json:"Vaults,omitnil,omitempty" name:"Vaults"`
 }
 
 type CreateBackupRequest struct {
@@ -2231,6 +2234,9 @@ type CreateBackupRequest struct {
 
 	// 备注名
 	BackupName *string `json:"BackupName,omitnil,omitempty" name:"BackupName"`
+
+	// 	投递到保险箱的信息
+	Vaults []*CreateBackupVaultItem `json:"Vaults,omitnil,omitempty" name:"Vaults"`
 }
 
 func (r *CreateBackupRequest) ToJsonString() string {
@@ -2250,6 +2256,7 @@ func (r *CreateBackupRequest) FromJsonString(s string) error {
 	delete(f, "BackupDatabases")
 	delete(f, "BackupTables")
 	delete(f, "BackupName")
+	delete(f, "Vaults")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBackupRequest has unknown keys!", "")
 	}
@@ -11249,6 +11256,12 @@ func (r *DescribeResourcesByDealNameResponse) FromJsonString(s string) error {
 type DescribeRollbackTimeRangeRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 保险箱id
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 保险箱地域
+	VaultRegion *string `json:"VaultRegion,omitnil,omitempty" name:"VaultRegion"`
 }
 
 type DescribeRollbackTimeRangeRequest struct {
@@ -11256,6 +11269,12 @@ type DescribeRollbackTimeRangeRequest struct {
 	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 保险箱id
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 保险箱地域
+	VaultRegion *string `json:"VaultRegion,omitnil,omitempty" name:"VaultRegion"`
 }
 
 func (r *DescribeRollbackTimeRangeRequest) ToJsonString() string {
@@ -11271,6 +11290,8 @@ func (r *DescribeRollbackTimeRangeRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ClusterId")
+	delete(f, "VaultId")
+	delete(f, "VaultRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRollbackTimeRangeRequest has unknown keys!", "")
 	}
@@ -20223,6 +20244,9 @@ type RollBackClusterRequestParams struct {
 
 	// 按时间点回档模式，full: 普通; db: 快速; table: 极速  （默认是普通）
 	RollbackMode *string `json:"RollbackMode,omitnil,omitempty" name:"RollbackMode"`
+
+	// 保险箱id
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
 }
 
 type RollBackClusterRequest struct {
@@ -20253,6 +20277,9 @@ type RollBackClusterRequest struct {
 
 	// 按时间点回档模式，full: 普通; db: 快速; table: 极速  （默认是普通）
 	RollbackMode *string `json:"RollbackMode,omitnil,omitempty" name:"RollbackMode"`
+
+	// 保险箱id
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
 }
 
 func (r *RollBackClusterRequest) ToJsonString() string {
@@ -20275,6 +20302,7 @@ func (r *RollBackClusterRequest) FromJsonString(s string) error {
 	delete(f, "RollbackDatabases")
 	delete(f, "RollbackTables")
 	delete(f, "RollbackMode")
+	delete(f, "VaultId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollBackClusterRequest has unknown keys!", "")
 	}

@@ -7391,6 +7391,78 @@ func (c *Client) DescribeAttackTrendsWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeAttackTypeRequest() (request *DescribeAttackTypeRequest) {
+    request = &DescribeAttackTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAttackType")
+    
+    
+    return
+}
+
+func NewDescribeAttackTypeResponse() (response *DescribeAttackTypeResponse) {
+    response = &DescribeAttackTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAttackType
+// 查询应用防护白名单攻击类型列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAttackType(request *DescribeAttackTypeRequest) (response *DescribeAttackTypeResponse, err error) {
+    return c.DescribeAttackTypeWithContext(context.Background(), request)
+}
+
+// DescribeAttackType
+// 查询应用防护白名单攻击类型列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAttackTypeWithContext(ctx context.Context, request *DescribeAttackTypeRequest) (response *DescribeAttackTypeResponse, err error) {
+    if request == nil {
+        request = NewDescribeAttackTypeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeAttackType")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAttackType require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAttackTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAttackVulTypeListRequest() (request *DescribeAttackVulTypeListRequest) {
     request = &DescribeAttackVulTypeListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11409,6 +11481,68 @@ func (c *Client) DescribeImportMachineInfoWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeInjectRiskyServiceSwitchRequest() (request *DescribeInjectRiskyServiceSwitchRequest) {
+    request = &DescribeInjectRiskyServiceSwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeInjectRiskyServiceSwitch")
+    
+    
+    return
+}
+
+func NewDescribeInjectRiskyServiceSwitchResponse() (response *DescribeInjectRiskyServiceSwitchResponse) {
+    response = &DescribeInjectRiskyServiceSwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInjectRiskyServiceSwitch
+// 查询java内存马和rasp的是否注入风险服务配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeInjectRiskyServiceSwitch(request *DescribeInjectRiskyServiceSwitchRequest) (response *DescribeInjectRiskyServiceSwitchResponse, err error) {
+    return c.DescribeInjectRiskyServiceSwitchWithContext(context.Background(), request)
+}
+
+// DescribeInjectRiskyServiceSwitch
+// 查询java内存马和rasp的是否注入风险服务配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeInjectRiskyServiceSwitchWithContext(ctx context.Context, request *DescribeInjectRiskyServiceSwitchRequest) (response *DescribeInjectRiskyServiceSwitchResponse, err error) {
+    if request == nil {
+        request = NewDescribeInjectRiskyServiceSwitchRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeInjectRiskyServiceSwitch")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInjectRiskyServiceSwitch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInjectRiskyServiceSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeJavaMemShellInfoRequest() (request *DescribeJavaMemShellInfoRequest) {
     request = &DescribeJavaMemShellInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12469,6 +12603,110 @@ func (c *Client) DescribeLogTypeWithContext(ctx context.Context, request *Descri
     request.SetContext(ctx)
     
     response = NewDescribeLogTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLoginTypeGlobalConfRequest() (request *DescribeLoginTypeGlobalConfRequest) {
+    request = &DescribeLoginTypeGlobalConfRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeLoginTypeGlobalConf")
+    
+    
+    return
+}
+
+func NewDescribeLoginTypeGlobalConfResponse() (response *DescribeLoginTypeGlobalConfResponse) {
+    response = &DescribeLoginTypeGlobalConfResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLoginTypeGlobalConf
+// 获取防卸载全局配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeLoginTypeGlobalConf(request *DescribeLoginTypeGlobalConfRequest) (response *DescribeLoginTypeGlobalConfResponse, err error) {
+    return c.DescribeLoginTypeGlobalConfWithContext(context.Background(), request)
+}
+
+// DescribeLoginTypeGlobalConf
+// 获取防卸载全局配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeLoginTypeGlobalConfWithContext(ctx context.Context, request *DescribeLoginTypeGlobalConfRequest) (response *DescribeLoginTypeGlobalConfResponse, err error) {
+    if request == nil {
+        request = NewDescribeLoginTypeGlobalConfRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeLoginTypeGlobalConf")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLoginTypeGlobalConf require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLoginTypeGlobalConfResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLoginTypeHostRequest() (request *DescribeLoginTypeHostRequest) {
+    request = &DescribeLoginTypeHostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeLoginTypeHost")
+    
+    
+    return
+}
+
+func NewDescribeLoginTypeHostResponse() (response *DescribeLoginTypeHostResponse) {
+    response = &DescribeLoginTypeHostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLoginTypeHost
+// 获取扫码登录主机列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeLoginTypeHost(request *DescribeLoginTypeHostRequest) (response *DescribeLoginTypeHostResponse, err error) {
+    return c.DescribeLoginTypeHostWithContext(context.Background(), request)
+}
+
+// DescribeLoginTypeHost
+// 获取扫码登录主机列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeLoginTypeHostWithContext(ctx context.Context, request *DescribeLoginTypeHostRequest) (response *DescribeLoginTypeHostResponse, err error) {
+    if request == nil {
+        request = NewDescribeLoginTypeHostRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeLoginTypeHost")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLoginTypeHost require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLoginTypeHostResponse()
     err = c.Send(request, response)
     return
 }
@@ -14015,6 +14253,78 @@ func (c *Client) DescribeMalwareWhiteListAffectListWithContext(ctx context.Conte
     return
 }
 
+func NewDescribeMemShellRulesRequest() (request *DescribeMemShellRulesRequest) {
+    request = &DescribeMemShellRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeMemShellRules")
+    
+    
+    return
+}
+
+func NewDescribeMemShellRulesResponse() (response *DescribeMemShellRulesResponse) {
+    response = &DescribeMemShellRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMemShellRules
+// 获取反弹Shell规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeMemShellRules(request *DescribeMemShellRulesRequest) (response *DescribeMemShellRulesResponse, err error) {
+    return c.DescribeMemShellRulesWithContext(context.Background(), request)
+}
+
+// DescribeMemShellRules
+// 获取反弹Shell规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeMemShellRulesWithContext(ctx context.Context, request *DescribeMemShellRulesRequest) (response *DescribeMemShellRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeMemShellRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeMemShellRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMemShellRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMemShellRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNetAttackSettingRequest() (request *DescribeNetAttackSettingRequest) {
     request = &DescribeNetAttackSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14040,10 +14350,14 @@ func NewDescribeNetAttackSettingResponse() (response *DescribeNetAttackSettingRe
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNetAttackSetting(request *DescribeNetAttackSettingRequest) (response *DescribeNetAttackSettingResponse, err error) {
@@ -14056,10 +14370,14 @@ func (c *Client) DescribeNetAttackSetting(request *DescribeNetAttackSettingReque
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNetAttackSettingWithContext(ctx context.Context, request *DescribeNetAttackSettingRequest) (response *DescribeNetAttackSettingResponse, err error) {
@@ -15571,6 +15889,266 @@ func (c *Client) DescribeRansomDefenseTrendWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeRaspEventCWPRequest() (request *DescribeRaspEventCWPRequest) {
+    request = &DescribeRaspEventCWPRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeRaspEventCWP")
+    
+    
+    return
+}
+
+func NewDescribeRaspEventCWPResponse() (response *DescribeRaspEventCWPResponse) {
+    response = &DescribeRaspEventCWPResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRaspEventCWP
+// 应用防护事件列表接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRaspEventCWP(request *DescribeRaspEventCWPRequest) (response *DescribeRaspEventCWPResponse, err error) {
+    return c.DescribeRaspEventCWPWithContext(context.Background(), request)
+}
+
+// DescribeRaspEventCWP
+// 应用防护事件列表接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRaspEventCWPWithContext(ctx context.Context, request *DescribeRaspEventCWPRequest) (response *DescribeRaspEventCWPResponse, err error) {
+    if request == nil {
+        request = NewDescribeRaspEventCWPRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeRaspEventCWP")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRaspEventCWP require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRaspEventCWPResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRaspEventDetailCWPRequest() (request *DescribeRaspEventDetailCWPRequest) {
+    request = &DescribeRaspEventDetailCWPRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeRaspEventDetailCWP")
+    
+    
+    return
+}
+
+func NewDescribeRaspEventDetailCWPResponse() (response *DescribeRaspEventDetailCWPResponse) {
+    response = &DescribeRaspEventDetailCWPResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRaspEventDetailCWP
+// 应用防御事件详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRaspEventDetailCWP(request *DescribeRaspEventDetailCWPRequest) (response *DescribeRaspEventDetailCWPResponse, err error) {
+    return c.DescribeRaspEventDetailCWPWithContext(context.Background(), request)
+}
+
+// DescribeRaspEventDetailCWP
+// 应用防御事件详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRaspEventDetailCWPWithContext(ctx context.Context, request *DescribeRaspEventDetailCWPRequest) (response *DescribeRaspEventDetailCWPResponse, err error) {
+    if request == nil {
+        request = NewDescribeRaspEventDetailCWPRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeRaspEventDetailCWP")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRaspEventDetailCWP require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRaspEventDetailCWPResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRaspEventDetailTCSSRequest() (request *DescribeRaspEventDetailTCSSRequest) {
+    request = &DescribeRaspEventDetailTCSSRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeRaspEventDetailTCSS")
+    
+    
+    return
+}
+
+func NewDescribeRaspEventDetailTCSSResponse() (response *DescribeRaspEventDetailTCSSResponse) {
+    response = &DescribeRaspEventDetailTCSSResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRaspEventDetailTCSS
+// 应用防御事件详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRaspEventDetailTCSS(request *DescribeRaspEventDetailTCSSRequest) (response *DescribeRaspEventDetailTCSSResponse, err error) {
+    return c.DescribeRaspEventDetailTCSSWithContext(context.Background(), request)
+}
+
+// DescribeRaspEventDetailTCSS
+// 应用防御事件详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRaspEventDetailTCSSWithContext(ctx context.Context, request *DescribeRaspEventDetailTCSSRequest) (response *DescribeRaspEventDetailTCSSResponse, err error) {
+    if request == nil {
+        request = NewDescribeRaspEventDetailTCSSRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeRaspEventDetailTCSS")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRaspEventDetailTCSS require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRaspEventDetailTCSSResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRaspEventTCSSRequest() (request *DescribeRaspEventTCSSRequest) {
+    request = &DescribeRaspEventTCSSRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeRaspEventTCSS")
+    
+    
+    return
+}
+
+func NewDescribeRaspEventTCSSResponse() (response *DescribeRaspEventTCSSResponse) {
+    response = &DescribeRaspEventTCSSResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRaspEventTCSS
+// 应用防护事件列表接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRaspEventTCSS(request *DescribeRaspEventTCSSRequest) (response *DescribeRaspEventTCSSResponse, err error) {
+    return c.DescribeRaspEventTCSSWithContext(context.Background(), request)
+}
+
+// DescribeRaspEventTCSS
+// 应用防护事件列表接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRaspEventTCSSWithContext(ctx context.Context, request *DescribeRaspEventTCSSRequest) (response *DescribeRaspEventTCSSResponse, err error) {
+    if request == nil {
+        request = NewDescribeRaspEventTCSSRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeRaspEventTCSS")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRaspEventTCSS require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRaspEventTCSSResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRaspLicenseListRequest() (request *DescribeRaspLicenseListRequest) {
+    request = &DescribeRaspLicenseListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeRaspLicenseList")
+    
+    
+    return
+}
+
+func NewDescribeRaspLicenseListResponse() (response *DescribeRaspLicenseListResponse) {
+    response = &DescribeRaspLicenseListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRaspLicenseList
+// 查询应用防护授权列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRaspLicenseList(request *DescribeRaspLicenseListRequest) (response *DescribeRaspLicenseListResponse, err error) {
+    return c.DescribeRaspLicenseListWithContext(context.Background(), request)
+}
+
+// DescribeRaspLicenseList
+// 查询应用防护授权列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRaspLicenseListWithContext(ctx context.Context, request *DescribeRaspLicenseListRequest) (response *DescribeRaspLicenseListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRaspLicenseListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeRaspLicenseList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRaspLicenseList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRaspLicenseListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRaspMaxCpuRequest() (request *DescribeRaspMaxCpuRequest) {
     request = &DescribeRaspMaxCpuRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15629,6 +16207,192 @@ func (c *Client) DescribeRaspMaxCpuWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeRaspMaxCpuResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRaspMemShellDetailTCSSRequest() (request *DescribeRaspMemShellDetailTCSSRequest) {
+    request = &DescribeRaspMemShellDetailTCSSRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeRaspMemShellDetailTCSS")
+    
+    
+    return
+}
+
+func NewDescribeRaspMemShellDetailTCSSResponse() (response *DescribeRaspMemShellDetailTCSSResponse) {
+    response = &DescribeRaspMemShellDetailTCSSResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRaspMemShellDetailTCSS
+// 获取容器视角应用防护内存马扫描事件详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRaspMemShellDetailTCSS(request *DescribeRaspMemShellDetailTCSSRequest) (response *DescribeRaspMemShellDetailTCSSResponse, err error) {
+    return c.DescribeRaspMemShellDetailTCSSWithContext(context.Background(), request)
+}
+
+// DescribeRaspMemShellDetailTCSS
+// 获取容器视角应用防护内存马扫描事件详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRaspMemShellDetailTCSSWithContext(ctx context.Context, request *DescribeRaspMemShellDetailTCSSRequest) (response *DescribeRaspMemShellDetailTCSSResponse, err error) {
+    if request == nil {
+        request = NewDescribeRaspMemShellDetailTCSSRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeRaspMemShellDetailTCSS")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRaspMemShellDetailTCSS require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRaspMemShellDetailTCSSResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRaspMemShellListTCSSRequest() (request *DescribeRaspMemShellListTCSSRequest) {
+    request = &DescribeRaspMemShellListTCSSRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeRaspMemShellListTCSS")
+    
+    
+    return
+}
+
+func NewDescribeRaspMemShellListTCSSResponse() (response *DescribeRaspMemShellListTCSSResponse) {
+    response = &DescribeRaspMemShellListTCSSResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRaspMemShellListTCSS
+// 获取容器视角内存马扫描事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRaspMemShellListTCSS(request *DescribeRaspMemShellListTCSSRequest) (response *DescribeRaspMemShellListTCSSResponse, err error) {
+    return c.DescribeRaspMemShellListTCSSWithContext(context.Background(), request)
+}
+
+// DescribeRaspMemShellListTCSS
+// 获取容器视角内存马扫描事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRaspMemShellListTCSSWithContext(ctx context.Context, request *DescribeRaspMemShellListTCSSRequest) (response *DescribeRaspMemShellListTCSSResponse, err error) {
+    if request == nil {
+        request = NewDescribeRaspMemShellListTCSSRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeRaspMemShellListTCSS")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRaspMemShellListTCSS require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRaspMemShellListTCSSResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRaspPluginListRequest() (request *DescribeRaspPluginListRequest) {
+    request = &DescribeRaspPluginListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeRaspPluginList")
+    
+    
+    return
+}
+
+func NewDescribeRaspPluginListResponse() (response *DescribeRaspPluginListResponse) {
+    response = &DescribeRaspPluginListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRaspPluginList
+// 重保防护授权插件详情列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRaspPluginList(request *DescribeRaspPluginListRequest) (response *DescribeRaspPluginListResponse, err error) {
+    return c.DescribeRaspPluginListWithContext(context.Background(), request)
+}
+
+// DescribeRaspPluginList
+// 重保防护授权插件详情列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRaspPluginListWithContext(ctx context.Context, request *DescribeRaspPluginListRequest) (response *DescribeRaspPluginListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRaspPluginListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeRaspPluginList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRaspPluginList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRaspPluginListResponse()
     err = c.Send(request, response)
     return
 }
@@ -16053,6 +16817,130 @@ func (c *Client) DescribeReverseShellRulesWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeReverseShellRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReverseShellRulesAggregationRequest() (request *DescribeReverseShellRulesAggregationRequest) {
+    request = &DescribeReverseShellRulesAggregationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeReverseShellRulesAggregation")
+    
+    
+    return
+}
+
+func NewDescribeReverseShellRulesAggregationResponse() (response *DescribeReverseShellRulesAggregationResponse) {
+    response = &DescribeReverseShellRulesAggregationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeReverseShellRulesAggregation
+// 获取反弹Shell规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeReverseShellRulesAggregation(request *DescribeReverseShellRulesAggregationRequest) (response *DescribeReverseShellRulesAggregationResponse, err error) {
+    return c.DescribeReverseShellRulesAggregationWithContext(context.Background(), request)
+}
+
+// DescribeReverseShellRulesAggregation
+// 获取反弹Shell规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeReverseShellRulesAggregationWithContext(ctx context.Context, request *DescribeReverseShellRulesAggregationRequest) (response *DescribeReverseShellRulesAggregationResponse, err error) {
+    if request == nil {
+        request = NewDescribeReverseShellRulesAggregationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeReverseShellRulesAggregation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReverseShellRulesAggregation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReverseShellRulesAggregationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReverseShellSystemPolicyConfigRequest() (request *DescribeReverseShellSystemPolicyConfigRequest) {
+    request = &DescribeReverseShellSystemPolicyConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeReverseShellSystemPolicyConfig")
+    
+    
+    return
+}
+
+func NewDescribeReverseShellSystemPolicyConfigResponse() (response *DescribeReverseShellSystemPolicyConfigResponse) {
+    response = &DescribeReverseShellSystemPolicyConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeReverseShellSystemPolicyConfig
+// 查询反弹shell系统策略配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeReverseShellSystemPolicyConfig(request *DescribeReverseShellSystemPolicyConfigRequest) (response *DescribeReverseShellSystemPolicyConfigResponse, err error) {
+    return c.DescribeReverseShellSystemPolicyConfigWithContext(context.Background(), request)
+}
+
+// DescribeReverseShellSystemPolicyConfig
+// 查询反弹shell系统策略配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeReverseShellSystemPolicyConfigWithContext(ctx context.Context, request *DescribeReverseShellSystemPolicyConfigRequest) (response *DescribeReverseShellSystemPolicyConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeReverseShellSystemPolicyConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeReverseShellSystemPolicyConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReverseShellSystemPolicyConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReverseShellSystemPolicyConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -18181,6 +19069,56 @@ func (c *Client) DescribeServersAndRiskAndFirstInfoWithContext(ctx context.Conte
     return
 }
 
+func NewDescribeShellPolicyListRequest() (request *DescribeShellPolicyListRequest) {
+    request = &DescribeShellPolicyListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeShellPolicyList")
+    
+    
+    return
+}
+
+func NewDescribeShellPolicyListResponse() (response *DescribeShellPolicyListResponse) {
+    response = &DescribeShellPolicyListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeShellPolicyList
+// 查询反弹shell策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeShellPolicyList(request *DescribeShellPolicyListRequest) (response *DescribeShellPolicyListResponse, err error) {
+    return c.DescribeShellPolicyListWithContext(context.Background(), request)
+}
+
+// DescribeShellPolicyList
+// 查询反弹shell策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeShellPolicyListWithContext(ctx context.Context, request *DescribeShellPolicyListRequest) (response *DescribeShellPolicyListResponse, err error) {
+    if request == nil {
+        request = NewDescribeShellPolicyListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeShellPolicyList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeShellPolicyList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeShellPolicyListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStrategyExistRequest() (request *DescribeStrategyExistRequest) {
     request = &DescribeStrategyExistRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -19153,6 +20091,70 @@ func (c *Client) DescribeVulDefenceOverviewWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeVulDefenceOverviewCountRequest() (request *DescribeVulDefenceOverviewCountRequest) {
+    request = &DescribeVulDefenceOverviewCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulDefenceOverviewCount")
+    
+    
+    return
+}
+
+func NewDescribeVulDefenceOverviewCountResponse() (response *DescribeVulDefenceOverviewCountResponse) {
+    response = &DescribeVulDefenceOverviewCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVulDefenceOverviewCount
+// 获取漏洞防御策略和事件统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVulDefenceOverviewCount(request *DescribeVulDefenceOverviewCountRequest) (response *DescribeVulDefenceOverviewCountResponse, err error) {
+    return c.DescribeVulDefenceOverviewCountWithContext(context.Background(), request)
+}
+
+// DescribeVulDefenceOverviewCount
+// 获取漏洞防御策略和事件统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVulDefenceOverviewCountWithContext(ctx context.Context, request *DescribeVulDefenceOverviewCountRequest) (response *DescribeVulDefenceOverviewCountResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulDefenceOverviewCountRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeVulDefenceOverviewCount")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulDefenceOverviewCount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulDefenceOverviewCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVulDefencePluginDetailRequest() (request *DescribeVulDefencePluginDetailRequest) {
     request = &DescribeVulDefencePluginDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -19397,6 +20399,68 @@ func (c *Client) DescribeVulDefenceSettingWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeVulDefenceSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulDefenceSettingListRequest() (request *DescribeVulDefenceSettingListRequest) {
+    request = &DescribeVulDefenceSettingListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulDefenceSettingList")
+    
+    
+    return
+}
+
+func NewDescribeVulDefenceSettingListResponse() (response *DescribeVulDefenceSettingListResponse) {
+    response = &DescribeVulDefenceSettingListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVulDefenceSettingList
+// 查询漏洞防御设置列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeVulDefenceSettingList(request *DescribeVulDefenceSettingListRequest) (response *DescribeVulDefenceSettingListResponse, err error) {
+    return c.DescribeVulDefenceSettingListWithContext(context.Background(), request)
+}
+
+// DescribeVulDefenceSettingList
+// 查询漏洞防御设置列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeVulDefenceSettingListWithContext(ctx context.Context, request *DescribeVulDefenceSettingListRequest) (response *DescribeVulDefenceSettingListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulDefenceSettingListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeVulDefenceSettingList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulDefenceSettingList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulDefenceSettingListResponse()
     err = c.Send(request, response)
     return
 }
@@ -20851,6 +21915,78 @@ func (c *Client) DescribeWindowsPatchListWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeWindowsPatchListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeYDRaspBlackWhiteRequest() (request *DescribeYDRaspBlackWhiteRequest) {
+    request = &DescribeYDRaspBlackWhiteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeYDRaspBlackWhite")
+    
+    
+    return
+}
+
+func NewDescribeYDRaspBlackWhiteResponse() (response *DescribeYDRaspBlackWhiteResponse) {
+    response = &DescribeYDRaspBlackWhiteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeYDRaspBlackWhite
+// 查询应用防护白名单规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeYDRaspBlackWhite(request *DescribeYDRaspBlackWhiteRequest) (response *DescribeYDRaspBlackWhiteResponse, err error) {
+    return c.DescribeYDRaspBlackWhiteWithContext(context.Background(), request)
+}
+
+// DescribeYDRaspBlackWhite
+// 查询应用防护白名单规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeYDRaspBlackWhiteWithContext(ctx context.Context, request *DescribeYDRaspBlackWhiteRequest) (response *DescribeYDRaspBlackWhiteResponse, err error) {
+    if request == nil {
+        request = NewDescribeYDRaspBlackWhiteRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeYDRaspBlackWhite")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeYDRaspBlackWhite require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeYDRaspBlackWhiteResponse()
     err = c.Send(request, response)
     return
 }
@@ -28671,6 +29807,70 @@ func (c *Client) RansomDefenseRollbackWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewRansomDefenseRollbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRaspEventOverviewRequest() (request *RaspEventOverviewRequest) {
+    request = &RaspEventOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "RaspEventOverview")
+    
+    
+    return
+}
+
+func NewRaspEventOverviewResponse() (response *RaspEventOverviewResponse) {
+    response = &RaspEventOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RaspEventOverview
+// 获取漏洞防御概览信息，包括事件趋势及插件开启情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RaspEventOverview(request *RaspEventOverviewRequest) (response *RaspEventOverviewResponse, err error) {
+    return c.RaspEventOverviewWithContext(context.Background(), request)
+}
+
+// RaspEventOverview
+// 获取漏洞防御概览信息，包括事件趋势及插件开启情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RaspEventOverviewWithContext(ctx context.Context, request *RaspEventOverviewRequest) (response *RaspEventOverviewResponse, err error) {
+    if request == nil {
+        request = NewRaspEventOverviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "RaspEventOverview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RaspEventOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRaspEventOverviewResponse()
     err = c.Send(request, response)
     return
 }
