@@ -67,6 +67,9 @@ type AggrCategorySoftDetailRow struct {
 
 	// 有新版本可升级的设备数量
 	UpgradableDeviceNum *int64 `json:"UpgradableDeviceNum,omitnil,omitempty" name:"UpgradableDeviceNum"`
+
+	// 有新版本可升级的设备数量
+	UpgradeDeviceNum *int64 `json:"UpgradeDeviceNum,omitnil,omitempty" name:"UpgradeDeviceNum"`
 }
 
 type AggrSoftDeviceRow struct {
@@ -3564,6 +3567,10 @@ type RulePayloadItem struct {
 	// RelateOption 关系操作符（and/or），用于根级别条件关系
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelateOption *string `json:"RelateOption,omitnil,omitempty" name:"RelateOption"`
+
+	// 值类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueType *string `json:"ValueType,omitnil,omitempty" name:"ValueType"`
 }
 
 type SimpleRule struct {

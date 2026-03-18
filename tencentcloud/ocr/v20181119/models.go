@@ -3958,57 +3958,69 @@ func (r *FormulaOCRResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GeneralAccurateOCRRequestParams struct {
-	// 图片/PDF的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片/PDF的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 是否返回单字信息，默认值为false，注：仅ConfigID配置为OCR时支持。
+	// <p>是否返回单字信息，默认值为false，注：仅ConfigID配置为OCR时支持。</p>
 	IsWords *bool `json:"IsWords,omitnil,omitempty" name:"IsWords"`
 
-	// 是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关，注：仅ConfigID配置为OCR时支持。
+	// <p>是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关，注：仅ConfigID配置为OCR时支持。</p>
 	EnableDetectSplit *bool `json:"EnableDetectSplit,omitnil,omitempty" name:"EnableDetectSplit"`
 
-	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+	// <p>是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。</p>
 	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
 
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	// <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。</p>
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 
-	// 文本检测开关，默认为true。设置为false可直接进行单行识别，适用于仅包含正向单行文本的图片场景。
+	// <p>文本检测开关，默认为true。设置为false可直接进行单行识别，适用于仅包含正向单行文本的图片场景。</p>
 	EnableDetectText *bool `json:"EnableDetectText,omitnil,omitempty" name:"EnableDetectText"`
 
-	// 配置ID支持： OCR -- 通用场景 MulOCR--多语种场景，默认值为OCR
+	// <p>配置ID支持： OCR -- 通用场景 MulOCR--多语种场景，默认值为OCR</p>
 	ConfigID *string `json:"ConfigID,omitnil,omitempty" name:"ConfigID"`
+
+	// <p>需要识别的文字类型，默认识别全部类型的文字。 0：自动识别全部类型文字 1：仅识别手写体文字 2：仅识别印刷体文字</p>
+	WordsType *string `json:"WordsType,omitnil,omitempty" name:"WordsType"`
+
+	// <p>支持输出单行文字的语种信息，开启后耗时会略有增加。</p>
+	LanguageInfo *bool `json:"LanguageInfo,omitnil,omitempty" name:"LanguageInfo"`
 }
 
 type GeneralAccurateOCRRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片/PDF的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片/PDF的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 是否返回单字信息，默认值为false，注：仅ConfigID配置为OCR时支持。
+	// <p>是否返回单字信息，默认值为false，注：仅ConfigID配置为OCR时支持。</p>
 	IsWords *bool `json:"IsWords,omitnil,omitempty" name:"IsWords"`
 
-	// 是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关，注：仅ConfigID配置为OCR时支持。
+	// <p>是否开启原图切图检测功能，开启后可提升“整图面积大，但单字符占比面积小”（例如：试卷）场景下的识别效果，默认关，注：仅ConfigID配置为OCR时支持。</p>
 	EnableDetectSplit *bool `json:"EnableDetectSplit,omitnil,omitempty" name:"EnableDetectSplit"`
 
-	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+	// <p>是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。</p>
 	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
 
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	// <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。</p>
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 
-	// 文本检测开关，默认为true。设置为false可直接进行单行识别，适用于仅包含正向单行文本的图片场景。
+	// <p>文本检测开关，默认为true。设置为false可直接进行单行识别，适用于仅包含正向单行文本的图片场景。</p>
 	EnableDetectText *bool `json:"EnableDetectText,omitnil,omitempty" name:"EnableDetectText"`
 
-	// 配置ID支持： OCR -- 通用场景 MulOCR--多语种场景，默认值为OCR
+	// <p>配置ID支持： OCR -- 通用场景 MulOCR--多语种场景，默认值为OCR</p>
 	ConfigID *string `json:"ConfigID,omitnil,omitempty" name:"ConfigID"`
+
+	// <p>需要识别的文字类型，默认识别全部类型的文字。 0：自动识别全部类型文字 1：仅识别手写体文字 2：仅识别印刷体文字</p>
+	WordsType *string `json:"WordsType,omitnil,omitempty" name:"WordsType"`
+
+	// <p>支持输出单行文字的语种信息，开启后耗时会略有增加。</p>
+	LanguageInfo *bool `json:"LanguageInfo,omitnil,omitempty" name:"LanguageInfo"`
 }
 
 func (r *GeneralAccurateOCRRequest) ToJsonString() string {
@@ -4031,6 +4043,8 @@ func (r *GeneralAccurateOCRRequest) FromJsonString(s string) error {
 	delete(f, "PdfPageNumber")
 	delete(f, "EnableDetectText")
 	delete(f, "ConfigID")
+	delete(f, "WordsType")
+	delete(f, "LanguageInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneralAccurateOCRRequest has unknown keys!", "")
 	}
@@ -4039,15 +4053,15 @@ func (r *GeneralAccurateOCRRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GeneralAccurateOCRResponseParams struct {
-	// 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
+	// <p>检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。</p>
 	TextDetections []*TextDetection `json:"TextDetections,omitnil,omitempty" name:"TextDetections"`
 
-	// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+	// <p>图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a></p>
 	//
 	// Deprecated: Angel is deprecated.
 	Angel *float64 `json:"Angel,omitnil,omitempty" name:"Angel"`
 
-	// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+	// <p>图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a></p>
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13435,10 +13449,10 @@ func (r *VehicleLicenseOCRResponse) FromJsonString(s string) error {
 }
 
 type VehicleRegCertInfo struct {
-	// <p>识别出的字段名称(关键字)，支持以下字段： 【注册登记信息栏/摘要信息栏、转移登记摘要信息栏】 车辆型号、车辆识别代号/车架号、发动机号、制造厂名称、轴距、轮胎数、总质量、外廓尺寸、轴数、车辆出厂日期、发证日期、使用性质、车辆获得方式、车辆类型、国产/进口、燃料种类、车身颜色、发动机型号、车辆品牌、编号、转向形式、 机动车所有人1、身份证明名称1、号码1、登记机关1、登记日期1 机动车所有人2、身份证明名称2、号码2、登记机关2、登记日期2 机动车所有人3、身份证明名称3、号码3、登记机关3、登记日期3 机动车所有人4、身份证明名称4、号码4、登记机关4、登记日期4 机动车所有人5、身份证明名称5、号码5、登记机关5、登记日期5 机动车所有人6、身份证明名称6、号码6、登记机关6、登记日期6 机动车所有人7、身份证明名称7、号码7、登记机关7、登记日期7 【登记栏】 机动车登记证书编号、标题（目前支持转让登记、抵押登记、解除抵押）  [标题：转让登记]  姓名/名称、身份证明名称/号码、获得方式、机动车登记编号、转让登记日期  [标题：抵押登记]  抵押权人姓名/名称、身份证明名称/号码、抵押登记日期  [标题：解除抵押]  解除抵押日期    示例值：标题</p>
+	// <p>识别出的字段名称(关键字)，支持以下字段：<br>【注册登记信息栏/摘要信息栏、转移登记摘要信息栏】<br>车辆型号、车辆识别代号/车架号、发动机号、制造厂名称、轴距、轮胎数、总质量、外廓尺寸、轴数、车辆出厂日期、发证日期、使用性质、车辆获得方式、车辆类型、国产/进口、燃料种类、车身颜色、发动机型号、车辆品牌、编号、转向形式、<br>机动车所有人1、身份证明名称1、号码1、登记机关1、登记日期1<br>机动车所有人2、身份证明名称2、号码2、登记机关2、登记日期2<br>机动车所有人3、身份证明名称3、号码3、登记机关3、登记日期3<br>机动车所有人4、身份证明名称4、号码4、登记机关4、登记日期4<br>机动车所有人5、身份证明名称5、号码5、登记机关5、登记日期5<br>机动车所有人6、身份证明名称6、号码6、登记机关6、登记日期6<br>机动车所有人7、身份证明名称7、号码7、登记机关7、登记日期7<br>【登记栏】<br>机动车登记证书编号、标题（目前支持转让登记、抵押登记、解除抵押）<br>[标题：转让登记]<br>姓名/名称、身份证明名称/号码、获得方式、机动车登记编号、转让登记日期<br>[标题：抵押登记]<br>抵押权人姓名/名称、身份证明名称/号码、抵押登记日期<br>[标题：解除抵押]<br>解除抵押日期</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>识别出的字段名称对应的值，也就是字段name对应的字符串结果。 示例值：解除抵押</p>
+	// <p>识别出的字段名称对应的值，也就是字段name对应的字符串结果。</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 

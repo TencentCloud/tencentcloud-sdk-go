@@ -3933,6 +3933,64 @@ func (c *Client) DescribePlatformImagesWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribePublicAlgoVersionListRequest() (request *DescribePublicAlgoVersionListRequest) {
+    request = &DescribePublicAlgoVersionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribePublicAlgoVersionList")
+    
+    
+    return
+}
+
+func NewDescribePublicAlgoVersionListResponse() (response *DescribePublicAlgoVersionListResponse) {
+    response = &DescribePublicAlgoVersionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePublicAlgoVersionList
+// 公共算法版本列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribePublicAlgoVersionList(request *DescribePublicAlgoVersionListRequest) (response *DescribePublicAlgoVersionListResponse, err error) {
+    return c.DescribePublicAlgoVersionListWithContext(context.Background(), request)
+}
+
+// DescribePublicAlgoVersionList
+// 公共算法版本列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribePublicAlgoVersionListWithContext(ctx context.Context, request *DescribePublicAlgoVersionListRequest) (response *DescribePublicAlgoVersionListResponse, err error) {
+    if request == nil {
+        request = NewDescribePublicAlgoVersionListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribePublicAlgoVersionList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePublicAlgoVersionList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePublicAlgoVersionListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSubAccountLinuxUserInfosRequest() (request *DescribeSubAccountLinuxUserInfosRequest) {
     request = &DescribeSubAccountLinuxUserInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},

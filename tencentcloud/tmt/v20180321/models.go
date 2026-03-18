@@ -21,16 +21,16 @@ import (
 )
 
 type BoundingBox struct {
-	// 左上顶点x坐标
+	// <p>左上顶点x坐标</p>
 	X *int64 `json:"X,omitnil,omitempty" name:"X"`
 
-	// 左上顶点y坐标
+	// <p>左上顶点y坐标</p>
 	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 
-	// 宽
+	// <p>宽</p><p>单位：px</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 高
+	// <p>高</p><p>单位：px</p>
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
@@ -327,24 +327,24 @@ func (r *TextTranslateResponse) FromJsonString(s string) error {
 }
 
 type TransDetail struct {
-	// 当前行的原文本
+	// <p>当前行的原文本</p>
 	SourceLineText *string `json:"SourceLineText,omitnil,omitempty" name:"SourceLineText"`
 
-	// 当前行的译文
+	// <p>当前行的译文</p>
 	TargetLineText *string `json:"TargetLineText,omitnil,omitempty" name:"TargetLineText"`
 
-	// 段落文本框位置
+	// <p>段落文本框位置</p>
 	BoundingBox *BoundingBox `json:"BoundingBox,omitnil,omitempty" name:"BoundingBox"`
 
-	// 行数
+	// <p>行数</p>
 	LinesCount *int64 `json:"LinesCount,omitnil,omitempty" name:"LinesCount"`
 
-	// 行高
+	// <p>行高</p><p>单位：px</p>
 	LineHeight *int64 `json:"LineHeight,omitnil,omitempty" name:"LineHeight"`
 
-	// 正常段落spam_code字段为0；如果存在spam_code字段且值大于0（1: 命中垃圾检查；2: 命中安全策略；3: 其他。），则命中安全检查被过滤。
+	// <p>正常段落spam_code字段为0；如果存在spam_code字段且值大于0（1: 命中垃圾检查；2: 命中安全策略；3: 其他。），则命中安全检查被过滤。</p>
 	SpamCode *int64 `json:"SpamCode,omitnil,omitempty" name:"SpamCode"`
 
-	// 段落文本旋转信息，只在valid为true时表示坐标有效
+	// <p>段落文本旋转信息，只在valid为true时表示坐标有效</p>
 	RotateParagraphRect *RotateParagraphRect `json:"RotateParagraphRect,omitnil,omitempty" name:"RotateParagraphRect"`
 }

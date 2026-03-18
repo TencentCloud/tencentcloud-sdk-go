@@ -14371,7 +14371,7 @@ type PrometheusAgent struct {
 }
 
 type PrometheusAgentInfo struct {
-	// 集群类型。可填入tke、eks、tkeedge、tdcc，分别代表标准集群、弹性集群、边缘集群、注册集群
+	// 集群类型。可填入tke、eks、tkeedge、tdcc、external，分别代表标准集群、弹性集群、边缘集群、注册集群、外部集群
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
 	// 集成容器服务中关联的集群ID
@@ -14650,7 +14650,7 @@ type PrometheusClusterScrapeStatistics struct {
 	// 集群ID
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
-	// 被采集的点数
+	// 被采集的点个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScrapedRate *float64 `json:"ScrapedRate,omitnil,omitempty" name:"ScrapedRate"`
 
@@ -14658,7 +14658,7 @@ type PrometheusClusterScrapeStatistics struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Jobs []*PrometheusJobScrapeStatistics `json:"Jobs,omitnil,omitempty" name:"Jobs"`
 
-	// 过滤前的指标采集速率
+	// 每秒过滤前的指标采集速率
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SamplesRate *float64 `json:"SamplesRate,omitnil,omitempty" name:"SamplesRate"`
 }
@@ -14703,7 +14703,7 @@ type PrometheusInstanceScrapeStatistics struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 被采集的点数
+	// 每秒被采集的点数
 	ScrapedRate *float64 `json:"ScrapedRate,omitnil,omitempty" name:"ScrapedRate"`
 
 	// 集群指标列表
@@ -14713,7 +14713,7 @@ type PrometheusInstanceScrapeStatistics struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Global []*PrometheusClusterScrapeStatistics `json:"Global,omitnil,omitempty" name:"Global"`
 
-	// 过滤前的指标采集速率
+	// 过滤前的每秒指标采集速率
 	SamplesRate *float64 `json:"SamplesRate,omitnil,omitempty" name:"SamplesRate"`
 }
 
@@ -14730,11 +14730,11 @@ type PrometheusInstanceTenantUsage struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *float64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 基础指标用量
+	// 基础指标用量个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Basic *float64 `json:"Basic,omitnil,omitempty" name:"Basic"`
 
-	// 付费指标用量
+	// 付费指标用量个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Fee *float64 `json:"Fee,omitnil,omitempty" name:"Fee"`
 }

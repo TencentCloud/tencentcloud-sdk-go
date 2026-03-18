@@ -538,25 +538,7 @@ func NewCreateAigcImageTaskResponse() (response *CreateAigcImageTaskResponse) {
 // 调用该接口用于创建AIGC生图片任务。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_BITRATE = "InvalidParameterValue.Bitrate"
-//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
-//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEOBITRATE = "InvalidParameterValue.DisableHigherVideoBitrate"
-//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEORESOLUTION = "InvalidParameterValue.DisableHigherVideoResolution"
-//  INVALIDPARAMETERVALUE_FILLTYPE = "InvalidParameterValue.FillType"
-//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
-//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
-//  INVALIDPARAMETERVALUE_GOP = "InvalidParameterValue.Gop"
-//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
-//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
-//  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
-//  INVALIDPARAMETERVALUE_REMOVEVIDEO = "InvalidParameterValue.RemoveVideo"
-//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
-//  INVALIDPARAMETERVALUE_SOUNDSYSTEM = "InvalidParameterValue.SoundSystem"
-//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
-//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  INVALIDPARAMETER_VIOLATIONCONTENT = "InvalidParameter.ViolationContent"
 func (c *Client) CreateAigcImageTask(request *CreateAigcImageTaskRequest) (response *CreateAigcImageTaskResponse, err error) {
     return c.CreateAigcImageTaskWithContext(context.Background(), request)
 }
@@ -565,25 +547,7 @@ func (c *Client) CreateAigcImageTask(request *CreateAigcImageTaskRequest) (respo
 // 调用该接口用于创建AIGC生图片任务。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_BITRATE = "InvalidParameterValue.Bitrate"
-//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
-//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEOBITRATE = "InvalidParameterValue.DisableHigherVideoBitrate"
-//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEORESOLUTION = "InvalidParameterValue.DisableHigherVideoResolution"
-//  INVALIDPARAMETERVALUE_FILLTYPE = "InvalidParameterValue.FillType"
-//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
-//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
-//  INVALIDPARAMETERVALUE_GOP = "InvalidParameterValue.Gop"
-//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
-//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
-//  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
-//  INVALIDPARAMETERVALUE_REMOVEVIDEO = "InvalidParameterValue.RemoveVideo"
-//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
-//  INVALIDPARAMETERVALUE_SOUNDSYSTEM = "InvalidParameterValue.SoundSystem"
-//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
-//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  INVALIDPARAMETER_VIOLATIONCONTENT = "InvalidParameter.ViolationContent"
 func (c *Client) CreateAigcImageTaskWithContext(ctx context.Context, request *CreateAigcImageTaskRequest) (response *CreateAigcImageTaskResponse, err error) {
     if request == nil {
         request = NewCreateAigcImageTaskRequest()
@@ -624,25 +588,7 @@ func NewCreateAigcVideoTaskResponse() (response *CreateAigcVideoTaskResponse) {
 // 调用该接口，用于创建AI生视频任务。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_BITRATE = "InvalidParameterValue.Bitrate"
-//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
-//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEOBITRATE = "InvalidParameterValue.DisableHigherVideoBitrate"
-//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEORESOLUTION = "InvalidParameterValue.DisableHigherVideoResolution"
-//  INVALIDPARAMETERVALUE_FILLTYPE = "InvalidParameterValue.FillType"
-//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
-//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
-//  INVALIDPARAMETERVALUE_GOP = "InvalidParameterValue.Gop"
-//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
-//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
-//  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
-//  INVALIDPARAMETERVALUE_REMOVEVIDEO = "InvalidParameterValue.RemoveVideo"
-//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
-//  INVALIDPARAMETERVALUE_SOUNDSYSTEM = "InvalidParameterValue.SoundSystem"
-//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
-//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  INVALIDPARAMETER_VIOLATIONCONTENT = "InvalidParameter.ViolationContent"
 func (c *Client) CreateAigcVideoTask(request *CreateAigcVideoTaskRequest) (response *CreateAigcVideoTaskResponse, err error) {
     return c.CreateAigcVideoTaskWithContext(context.Background(), request)
 }
@@ -651,25 +597,7 @@ func (c *Client) CreateAigcVideoTask(request *CreateAigcVideoTaskRequest) (respo
 // 调用该接口，用于创建AI生视频任务。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_BITRATE = "InvalidParameterValue.Bitrate"
-//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
-//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEOBITRATE = "InvalidParameterValue.DisableHigherVideoBitrate"
-//  INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEORESOLUTION = "InvalidParameterValue.DisableHigherVideoResolution"
-//  INVALIDPARAMETERVALUE_FILLTYPE = "InvalidParameterValue.FillType"
-//  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
-//  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
-//  INVALIDPARAMETERVALUE_GOP = "InvalidParameterValue.Gop"
-//  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
-//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
-//  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
-//  INVALIDPARAMETERVALUE_REMOVEVIDEO = "InvalidParameterValue.RemoveVideo"
-//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
-//  INVALIDPARAMETERVALUE_SOUNDSYSTEM = "InvalidParameterValue.SoundSystem"
-//  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
-//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  INVALIDPARAMETER_VIOLATIONCONTENT = "InvalidParameter.ViolationContent"
 func (c *Client) CreateAigcVideoTaskWithContext(ctx context.Context, request *CreateAigcVideoTaskRequest) (response *CreateAigcVideoTaskResponse, err error) {
     if request == nil {
         request = NewCreateAigcVideoTaskRequest()

@@ -1545,6 +1545,8 @@ func NewCreateCodeTemplateVersionResponse() (response *CreateCodeTemplateVersion
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateCodeTemplateVersion(request *CreateCodeTemplateVersionRequest) (response *CreateCodeTemplateVersionResponse, err error) {
     return c.CreateCodeTemplateVersionWithContext(context.Background(), request)
@@ -1559,6 +1561,8 @@ func (c *Client) CreateCodeTemplateVersion(request *CreateCodeTemplateVersionReq
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateCodeTemplateVersionWithContext(ctx context.Context, request *CreateCodeTemplateVersionRequest) (response *CreateCodeTemplateVersionResponse, err error) {
     if request == nil {

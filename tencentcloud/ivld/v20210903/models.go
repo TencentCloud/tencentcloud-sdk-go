@@ -1809,23 +1809,23 @@ type ImageLogo struct {
 }
 
 type ImageMetadata struct {
-	// 媒资图片文件大小，单位为Byte
+	// <p>媒资图片文件大小，单位为Byte</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
-	// 媒资图片文件MD5
+	// <p>媒资图片文件MD5</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MD5 *string `json:"MD5,omitnil,omitempty" name:"MD5"`
 
-	// 媒资图片文件宽度
+	// <p>媒资图片文件宽度</p><p>单位：像素（px）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 媒资图片文件高度
+	// <p>媒资图片文件高度</p><p>单位：像素（px）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 
-	// 媒资图片文件格式
+	// <p>媒资图片文件格式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 }
@@ -2283,19 +2283,19 @@ func (r *QueryCallbackResponse) FromJsonString(s string) error {
 }
 
 type Rectf struct {
-	// 矩形框左上角水平座标
+	// <p>矩形框左上角水平座标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	X *float64 `json:"X,omitnil,omitempty" name:"X"`
 
-	// 矩形框左上角竖直座标
+	// <p>矩形框左上角竖直座标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Y *float64 `json:"Y,omitnil,omitempty" name:"Y"`
 
-	// 矩形框宽度
+	// <p>矩形框宽度</p><p>单位：像素（px）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *float64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 矩形框长度
+	// <p>矩形框长度</p><p>单位：像素（px）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *float64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
@@ -2446,66 +2446,66 @@ type TaskFilter struct {
 }
 
 type TaskInfo struct {
-	// 任务ID
+	// <p>任务ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 描述任务名称，指定后可根据名称筛选
+	// <p>描述任务名称，指定后可根据名称筛选</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 媒资文件ID
+	// <p>媒资文件ID</p>
 	MediaId *string `json:"MediaId,omitnil,omitempty" name:"MediaId"`
 
-	// 任务执行状态
+	// <p>任务执行状态</p>
 	TaskStatus *int64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
-	// 任务进度，范围为[0，100]
+	// <p>任务进度，范围为[0，100]</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskProgress *float64 `json:"TaskProgress,omitnil,omitempty" name:"TaskProgress"`
 
-	// 任务执行时间
+	// <p>任务执行时间</p><p>单位：秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTimeCost *int64 `json:"TaskTimeCost,omitnil,omitempty" name:"TaskTimeCost"`
 
-	// 任务创建时间
+	// <p>任务创建时间</p>
 	TaskCreateTime *string `json:"TaskCreateTime,omitnil,omitempty" name:"TaskCreateTime"`
 
-	// 任务开始执行时间
+	// <p>任务开始执行时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskStartTime *string `json:"TaskStartTime,omitnil,omitempty" name:"TaskStartTime"`
 
-	// 任务失败原因
+	// <p>任务失败原因</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedReason *string `json:"FailedReason,omitnil,omitempty" name:"FailedReason"`
 
-	// 任务执行时指定的先验知识
+	// <p>任务执行时指定的先验知识</p>
 	MediaPreknownInfo *MediaPreknownInfo `json:"MediaPreknownInfo,omitnil,omitempty" name:"MediaPreknownInfo"`
 
-	// 媒资文件名称
+	// <p>媒资文件名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaName *string `json:"MediaName,omitnil,omitempty" name:"MediaName"`
 
-	// 媒资自定义标签
+	// <p>媒资自定义标签</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
-	// 任务分析完成后的后调地址
+	// <p>任务分析完成后的后调地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallbackURL *string `json:"CallbackURL,omitnil,omitempty" name:"CallbackURL"`
 
-	// 任务对应的媒资文件元信息，仅在MediaType为Audio时有效
+	// <p>任务对应的媒资文件元信息，仅在MediaType为Audio时有效</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioMetadata *AudioMetadata `json:"AudioMetadata,omitnil,omitempty" name:"AudioMetadata"`
 
-	// 任务对应的媒资文件元信息，仅在MediaType为Audio时有效
+	// <p>任务对应的媒资文件元信息，仅在MediaType为Audio时有效</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageMetadata *ImageMetadata `json:"ImageMetadata,omitnil,omitempty" name:"ImageMetadata"`
 
-	// 任务对应的媒资文件元信息，仅在MediaType为Text时有效
+	// <p>任务对应的媒资文件元信息，仅在MediaType为Text时有效</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextMetadata *TextMetadata `json:"TextMetadata,omitnil,omitempty" name:"TextMetadata"`
 
-	// 任务对应的媒资文件元信息，仅在MediaType为Video时有效
+	// <p>任务对应的媒资文件元信息，仅在MediaType为Video时有效</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Metadata *MediaMetadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
@@ -2554,23 +2554,23 @@ type TextInfo struct {
 }
 
 type TextMetadata struct {
-	// 媒资文本文件大小，单位为字节
+	// <p>媒资文本文件大小，单位为字节</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
-	// 媒资文本文件MD5
+	// <p>媒资文本文件MD5</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MD5 *string `json:"MD5,omitnil,omitempty" name:"MD5"`
 
-	// 媒资文本文件字符数
+	// <p>媒资文本文件字符数</p><p>单位：字符</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Length *int64 `json:"Length,omitnil,omitempty" name:"Length"`
 
-	// 媒资文本文件格式
+	// <p>媒资文本文件格式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
-	// 封装格式短后缀
+	// <p>封装格式短后缀</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShortFormat *string `json:"ShortFormat,omitnil,omitempty" name:"ShortFormat"`
 }

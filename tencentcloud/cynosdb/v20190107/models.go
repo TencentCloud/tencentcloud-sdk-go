@@ -812,6 +812,20 @@ type AuditRuleTemplateInfo struct {
 	AffectedInstances []*string `json:"AffectedInstances,omitnil,omitempty" name:"AffectedInstances"`
 }
 
+type AutoCopyConfig struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 保险箱ID
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 保险箱地域
+	VaultRegion *string `json:"VaultRegion,omitnil,omitempty" name:"VaultRegion"`
+
+	// 投递类型：binlog, redolog, snapshot, logic
+	CopyType *string `json:"CopyType,omitnil,omitempty" name:"CopyType"`
+}
+
 type AutoMapRule struct {
 	// 源端实例Id
 	SrcInstanceId *string `json:"SrcInstanceId,omitnil,omitempty" name:"SrcInstanceId"`
@@ -1270,6 +1284,113 @@ type CLSInfo struct {
 }
 
 // Predefined struct for user
+type CalculateBackupSaveSecExpiresRequestParams struct {
+	// 备份保险箱ID
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 备份保留时长（秒），必须大于0
+	BackupSaveSeconds *int64 `json:"BackupSaveSeconds,omitnil,omitempty" name:"BackupSaveSeconds"`
+
+	// 每页数量，范围(0,100]，默认10
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，范围[0,INF)，默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序字段，可选值：VaultId,VaultName,BackupSaveSeconds,LockedTime,CreateTime,UpdateTime，默认endTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序方式，可选值：desc,asc,DESC,ASC，默认desc
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+}
+
+type CalculateBackupSaveSecExpiresRequest struct {
+	*tchttp.BaseRequest
+	
+	// 备份保险箱ID
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 备份保留时长（秒），必须大于0
+	BackupSaveSeconds *int64 `json:"BackupSaveSeconds,omitnil,omitempty" name:"BackupSaveSeconds"`
+
+	// 每页数量，范围(0,100]，默认10
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，范围[0,INF)，默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序字段，可选值：VaultId,VaultName,BackupSaveSeconds,LockedTime,CreateTime,UpdateTime，默认endTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序方式，可选值：desc,asc,DESC,ASC，默认desc
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+}
+
+func (r *CalculateBackupSaveSecExpiresRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CalculateBackupSaveSecExpiresRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VaultId")
+	delete(f, "BackupSaveSeconds")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CalculateBackupSaveSecExpiresRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CalculateBackupSaveSecExpiresResponseParams struct {
+	// 将被删除的备份文件总数
+	WillDeleteBackupFileCount *int64 `json:"WillDeleteBackupFileCount,omitnil,omitempty" name:"WillDeleteBackupFileCount"`
+
+	// 将被删除的备份文件列表
+	WillDeleteBackupFiles []*WillDeleteItem `json:"WillDeleteBackupFiles,omitnil,omitempty" name:"WillDeleteBackupFiles"`
+
+	// 将被删除的Binlog文件总数
+	WillDeleteBinlogFileCount *int64 `json:"WillDeleteBinlogFileCount,omitnil,omitempty" name:"WillDeleteBinlogFileCount"`
+
+	// 将被删除的Binlog文件列表
+	WillDeleteBinlogFiles []*WillDeleteItem `json:"WillDeleteBinlogFiles,omitnil,omitempty" name:"WillDeleteBinlogFiles"`
+
+	// 将被删除的Redolog文件总数
+	WillDeleteRedoLogFileCount *int64 `json:"WillDeleteRedoLogFileCount,omitnil,omitempty" name:"WillDeleteRedoLogFileCount"`
+
+	// 将被删除的Redolog文件列表
+	WillDeleteRedoLogFiles []*WillDeleteItem `json:"WillDeleteRedoLogFiles,omitnil,omitempty" name:"WillDeleteRedoLogFiles"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CalculateBackupSaveSecExpiresResponse struct {
+	*tchttp.BaseResponse
+	Response *CalculateBackupSaveSecExpiresResponseParams `json:"Response"`
+}
+
+func (r *CalculateBackupSaveSecExpiresResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CalculateBackupSaveSecExpiresResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CheckCreateLibraDBInstanceRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -1354,6 +1475,80 @@ type CheckItem struct {
 	// 校验不通过的详细说明和修改建议
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpectedValue *string `json:"ExpectedValue,omitnil,omitempty" name:"ExpectedValue"`
+}
+
+// Predefined struct for user
+type CheckTransferClusterZoneRequestParams struct {
+	// 源集群Id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 目标可用区
+	DstZone *string `json:"DstZone,omitnil,omitempty" name:"DstZone"`
+
+	// proxy迁移的目标可用区信息
+	ProxyZones []*ProxyZone `json:"ProxyZones,omitnil,omitempty" name:"ProxyZones"`
+}
+
+type CheckTransferClusterZoneRequest struct {
+	*tchttp.BaseRequest
+	
+	// 源集群Id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 目标可用区
+	DstZone *string `json:"DstZone,omitnil,omitempty" name:"DstZone"`
+
+	// proxy迁移的目标可用区信息
+	ProxyZones []*ProxyZone `json:"ProxyZones,omitnil,omitempty" name:"ProxyZones"`
+}
+
+func (r *CheckTransferClusterZoneRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckTransferClusterZoneRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "DstZone")
+	delete(f, "ProxyZones")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckTransferClusterZoneRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckTransferClusterZoneResponseParams struct {
+	// 是否check成功
+	CheckStatus *bool `json:"CheckStatus,omitnil,omitempty" name:"CheckStatus"`
+
+	// check失败的原因
+	CheckMsg *string `json:"CheckMsg,omitnil,omitempty" name:"CheckMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CheckTransferClusterZoneResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckTransferClusterZoneResponseParams `json:"Response"`
+}
+
+func (r *CheckTransferClusterZoneResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckTransferClusterZoneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1870,6 +2065,70 @@ type ClusterTaskId struct {
 
 	// 任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+// Predefined struct for user
+type CopyBackupToVaultRequestParams struct {
+	// 目标保险箱ID，备份文件将复制到此保险箱
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 备份文件ID列表，支持批量复制多个备份文件
+	BackupIds []*int64 `json:"BackupIds,omitnil,omitempty" name:"BackupIds"`
+}
+
+type CopyBackupToVaultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 目标保险箱ID，备份文件将复制到此保险箱
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 备份文件ID列表，支持批量复制多个备份文件
+	BackupIds []*int64 `json:"BackupIds,omitnil,omitempty" name:"BackupIds"`
+}
+
+func (r *CopyBackupToVaultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CopyBackupToVaultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VaultId")
+	delete(f, "BackupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CopyBackupToVaultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CopyBackupToVaultResponseParams struct {
+	// 任务ID
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CopyBackupToVaultResponse struct {
+	*tchttp.BaseResponse
+	Response *CopyBackupToVaultResponseParams `json:"Response"`
+}
+
+func (r *CopyBackupToVaultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CopyBackupToVaultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -4032,6 +4291,105 @@ func (r *CreateResourcePackageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateVaultRequestParams struct {
+	// 保险箱名称，长度必须大于0
+	VaultName *string `json:"VaultName,omitnil,omitempty" name:"VaultName"`
+
+	// 备份保留时长（秒），必须大于0
+	BackupSaveSeconds *int64 `json:"BackupSaveSeconds,omitnil,omitempty" name:"BackupSaveSeconds"`
+
+	// 保险箱描述
+	VaultDescribe *string `json:"VaultDescribe,omitnil,omitempty" name:"VaultDescribe"`
+
+	// KMS密钥ID，长度0-36字符
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// 密钥类型，可选值：cloud（云托管密钥）、custom（自定义密钥）
+	KeyType *string `json:"KeyType,omitnil,omitempty" name:"KeyType"`
+
+	// 密钥所在地域，长度0-32字符
+	KeyRegion *string `json:"KeyRegion,omitnil,omitempty" name:"KeyRegion"`
+
+	// 锁定时间，格式：YYYY-MM-DD HH:mm:ss
+	LockedTime *string `json:"LockedTime,omitnil,omitempty" name:"LockedTime"`
+}
+
+type CreateVaultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 保险箱名称，长度必须大于0
+	VaultName *string `json:"VaultName,omitnil,omitempty" name:"VaultName"`
+
+	// 备份保留时长（秒），必须大于0
+	BackupSaveSeconds *int64 `json:"BackupSaveSeconds,omitnil,omitempty" name:"BackupSaveSeconds"`
+
+	// 保险箱描述
+	VaultDescribe *string `json:"VaultDescribe,omitnil,omitempty" name:"VaultDescribe"`
+
+	// KMS密钥ID，长度0-36字符
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// 密钥类型，可选值：cloud（云托管密钥）、custom（自定义密钥）
+	KeyType *string `json:"KeyType,omitnil,omitempty" name:"KeyType"`
+
+	// 密钥所在地域，长度0-32字符
+	KeyRegion *string `json:"KeyRegion,omitnil,omitempty" name:"KeyRegion"`
+
+	// 锁定时间，格式：YYYY-MM-DD HH:mm:ss
+	LockedTime *string `json:"LockedTime,omitnil,omitempty" name:"LockedTime"`
+}
+
+func (r *CreateVaultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVaultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VaultName")
+	delete(f, "BackupSaveSeconds")
+	delete(f, "VaultDescribe")
+	delete(f, "KeyId")
+	delete(f, "KeyType")
+	delete(f, "KeyRegion")
+	delete(f, "LockedTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVaultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVaultResponseParams struct {
+	// 任务ID，用于查询任务执行状态
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVaultResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVaultResponseParams `json:"Response"`
+}
+
+func (r *CreateVaultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVaultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CrossRegionBackupItem struct {
 	// 备份的目标地域
 	CrossRegion *string `json:"CrossRegion,omitnil,omitempty" name:"CrossRegion"`
@@ -5168,6 +5526,70 @@ func (r *DeleteBackupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteBackupVaultRequestParams struct {
+	// 备份保险箱ID，长度必须大于0
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 待删除的备份文件ID列表，不能为空
+	BackupIds []*int64 `json:"BackupIds,omitnil,omitempty" name:"BackupIds"`
+}
+
+type DeleteBackupVaultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 备份保险箱ID，长度必须大于0
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 待删除的备份文件ID列表，不能为空
+	BackupIds []*int64 `json:"BackupIds,omitnil,omitempty" name:"BackupIds"`
+}
+
+func (r *DeleteBackupVaultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBackupVaultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VaultId")
+	delete(f, "BackupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBackupVaultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBackupVaultResponseParams struct {
+	// 任务ID，用于查询任务执行状态
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteBackupVaultResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteBackupVaultResponseParams `json:"Response"`
+}
+
+func (r *DeleteBackupVaultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBackupVaultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteCLSDeliveryRequestParams struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5539,6 +5961,71 @@ func (r *DeleteParamTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteParamTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteVaultTask struct {
+	// 保险箱ID
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 任务ID
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+// Predefined struct for user
+type DeleteVaultsRequestParams struct {
+	// 待删除的备份保险箱ID列表，不能为空，保险箱内必须已清空所有文件
+	VaultIds []*string `json:"VaultIds,omitnil,omitempty" name:"VaultIds"`
+}
+
+type DeleteVaultsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待删除的备份保险箱ID列表，不能为空，保险箱内必须已清空所有文件
+	VaultIds []*string `json:"VaultIds,omitnil,omitempty" name:"VaultIds"`
+}
+
+func (r *DeleteVaultsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVaultsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VaultIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVaultsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVaultsResponseParams struct {
+	// 删除任务列表，每个保险箱对应一个任务
+	VaultTask []*DeleteVaultTask `json:"VaultTask,omitnil,omitempty" name:"VaultTask"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteVaultsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteVaultsResponseParams `json:"Response"`
+}
+
+func (r *DeleteVaultsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVaultsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6563,6 +7050,140 @@ func (r *DescribeBackupDownloadUserRestrictionResponse) FromJsonString(s string)
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBackupListByVaultItem struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群name
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 备份信息
+	BackupFileInfo *BackupFileInfo `json:"BackupFileInfo,omitnil,omitempty" name:"BackupFileInfo"`
+}
+
+// Predefined struct for user
+type DescribeBackupListByVaultRequestParams struct {
+	// 保险箱ID，长度必须大于0
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 备份文件ID列表，用于筛选特定备份
+	BackupIds []*int64 `json:"BackupIds,omitnil,omitempty" name:"BackupIds"`
+
+	// 集群ID，用于筛选特定集群的备份
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 备份名称列表，用于精确匹配筛选
+	BackupNames []*string `json:"BackupNames,omitnil,omitempty" name:"BackupNames"`
+
+	// 文件名称列表，用于精确匹配筛选
+	FileNames []*string `json:"FileNames,omitnil,omitempty" name:"FileNames"`
+
+	// 分页数量，取值范围：(0, 100]，默认100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量，取值范围：[0, INF)，默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序字段，可选值：VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime，默认createTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序方式，可选值：desc, asc, DESC, ASC，默认desc
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+
+	// 状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type DescribeBackupListByVaultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 保险箱ID，长度必须大于0
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 备份文件ID列表，用于筛选特定备份
+	BackupIds []*int64 `json:"BackupIds,omitnil,omitempty" name:"BackupIds"`
+
+	// 集群ID，用于筛选特定集群的备份
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 备份名称列表，用于精确匹配筛选
+	BackupNames []*string `json:"BackupNames,omitnil,omitempty" name:"BackupNames"`
+
+	// 文件名称列表，用于精确匹配筛选
+	FileNames []*string `json:"FileNames,omitnil,omitempty" name:"FileNames"`
+
+	// 分页数量，取值范围：(0, 100]，默认100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量，取值范围：[0, INF)，默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序字段，可选值：VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime，默认createTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序方式，可选值：desc, asc, DESC, ASC，默认desc
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+
+	// 状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *DescribeBackupListByVaultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupListByVaultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VaultId")
+	delete(f, "BackupIds")
+	delete(f, "ClusterId")
+	delete(f, "BackupNames")
+	delete(f, "FileNames")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupListByVaultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupListByVaultResponseParams struct {
+	// 符合条件的备份文件总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 备份文件列表
+	BackupList []*DescribeBackupListByVaultItem `json:"BackupList,omitnil,omitempty" name:"BackupList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBackupListByVaultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackupListByVaultResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackupListByVaultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupListByVaultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type DescribeBackupListRequestParams struct {
 	// 集群ID
@@ -6610,6 +7231,9 @@ type DescribeBackupListRequestParams struct {
 
 	// 是否跨地域备份
 	IsCrossRegionsBackup *string `json:"IsCrossRegionsBackup,omitnil,omitempty" name:"IsCrossRegionsBackup"`
+
+	// 需要查询的状态
+	BackupStatus []*string `json:"BackupStatus,omitnil,omitempty" name:"BackupStatus"`
 }
 
 type DescribeBackupListRequest struct {
@@ -6660,6 +7284,9 @@ type DescribeBackupListRequest struct {
 
 	// 是否跨地域备份
 	IsCrossRegionsBackup *string `json:"IsCrossRegionsBackup,omitnil,omitempty" name:"IsCrossRegionsBackup"`
+
+	// 需要查询的状态
+	BackupStatus []*string `json:"BackupStatus,omitnil,omitempty" name:"BackupStatus"`
 }
 
 func (r *DescribeBackupListRequest) ToJsonString() string {
@@ -6689,6 +7316,7 @@ func (r *DescribeBackupListRequest) FromJsonString(s string) error {
 	delete(f, "SnapshotIdList")
 	delete(f, "BackupRegion")
 	delete(f, "IsCrossRegionsBackup")
+	delete(f, "BackupStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupListRequest has unknown keys!", "")
 	}
@@ -6851,6 +7479,140 @@ func (r *DescribeBinlogDownloadUrlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBinlogDownloadUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBinlogListByVaultItem struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// Binlog文件信息
+	BinlogFileInfo *BinlogItem `json:"BinlogFileInfo,omitnil,omitempty" name:"BinlogFileInfo"`
+}
+
+// Predefined struct for user
+type DescribeBinlogListByVaultRequestParams struct {
+	// 保险箱ID
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 备份ID列表
+	BackupIds []*int64 `json:"BackupIds,omitnil,omitempty" name:"BackupIds"`
+
+	// 备份名称列表
+	BackupNames []*string `json:"BackupNames,omitnil,omitempty" name:"BackupNames"`
+
+	// 文件名列表
+	FileNames []*string `json:"FileNames,omitnil,omitempty" name:"FileNames"`
+
+	// 返回数量，范围: (0, 100]，默认100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，范围: [0, INF)，默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序字段，可选值: VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime，默认createTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序方式，可选值: desc, asc, DESC, ASC，默认desc
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+
+	// 状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type DescribeBinlogListByVaultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 保险箱ID
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 备份ID列表
+	BackupIds []*int64 `json:"BackupIds,omitnil,omitempty" name:"BackupIds"`
+
+	// 备份名称列表
+	BackupNames []*string `json:"BackupNames,omitnil,omitempty" name:"BackupNames"`
+
+	// 文件名列表
+	FileNames []*string `json:"FileNames,omitnil,omitempty" name:"FileNames"`
+
+	// 返回数量，范围: (0, 100]，默认100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，范围: [0, INF)，默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序字段，可选值: VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime，默认createTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序方式，可选值: desc, asc, DESC, ASC，默认desc
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+
+	// 状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *DescribeBinlogListByVaultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBinlogListByVaultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VaultId")
+	delete(f, "ClusterId")
+	delete(f, "BackupIds")
+	delete(f, "BackupNames")
+	delete(f, "FileNames")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBinlogListByVaultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBinlogListByVaultResponseParams struct {
+	// 总数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// Binlog文件列表
+	BinlogList []*DescribeBinlogListByVaultItem `json:"BinlogList,omitnil,omitempty" name:"BinlogList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBinlogListByVaultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBinlogListByVaultResponseParams `json:"Response"`
+}
+
+func (r *DescribeBinlogListByVaultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBinlogListByVaultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10757,6 +11519,140 @@ func (r *DescribeProxySpecsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRedoLogListByVaultItem struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// RedoLog文件信息
+	RedoFileInfo *RedoLogItem `json:"RedoFileInfo,omitnil,omitempty" name:"RedoFileInfo"`
+}
+
+// Predefined struct for user
+type DescribeRedoLogListByVaultRequestParams struct {
+	// 保险箱ID
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 备份ID列表
+	BackupIds []*int64 `json:"BackupIds,omitnil,omitempty" name:"BackupIds"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 备份名称列表
+	BackupNames []*string `json:"BackupNames,omitnil,omitempty" name:"BackupNames"`
+
+	// 文件名称列表
+	FileNames []*string `json:"FileNames,omitnil,omitempty" name:"FileNames"`
+
+	// 每页数量，范围(0,100]，默认100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，范围[0,INF)，默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序字段，可选值：VaultId,VaultName,BackupSaveSeconds,LockedTime,CreateTime,UpdateTime，默认createTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序方式，可选值：desc,asc,DESC,ASC，默认desc
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+
+	// 状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type DescribeRedoLogListByVaultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 保险箱ID
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 备份ID列表
+	BackupIds []*int64 `json:"BackupIds,omitnil,omitempty" name:"BackupIds"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 备份名称列表
+	BackupNames []*string `json:"BackupNames,omitnil,omitempty" name:"BackupNames"`
+
+	// 文件名称列表
+	FileNames []*string `json:"FileNames,omitnil,omitempty" name:"FileNames"`
+
+	// 每页数量，范围(0,100]，默认100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，范围[0,INF)，默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序字段，可选值：VaultId,VaultName,BackupSaveSeconds,LockedTime,CreateTime,UpdateTime，默认createTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序方式，可选值：desc,asc,DESC,ASC，默认desc
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+
+	// 状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *DescribeRedoLogListByVaultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedoLogListByVaultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VaultId")
+	delete(f, "BackupIds")
+	delete(f, "ClusterId")
+	delete(f, "BackupNames")
+	delete(f, "FileNames")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRedoLogListByVaultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedoLogListByVaultResponseParams struct {
+	// 符合条件的RedoLog文件总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// RedoLog文件列表
+	RedoLogList []*DescribeRedoLogListByVaultItem `json:"RedoLogList,omitnil,omitempty" name:"RedoLogList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRedoLogListByVaultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRedoLogListByVaultResponseParams `json:"Response"`
+}
+
+func (r *DescribeRedoLogListByVaultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedoLogListByVaultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type DescribeRedoLogsRequestParams struct {
 	// 集群id
@@ -11823,6 +12719,238 @@ func (r *DescribeTasksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVaultBackupClusterInfo struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 集群状态
+	ClusterStatus *string `json:"ClusterStatus,omitnil,omitempty" name:"ClusterStatus"`
+
+	// 集群所在地域
+	ClusterRegion *string `json:"ClusterRegion,omitnil,omitempty" name:"ClusterRegion"`
+
+	// 集群所在可用区
+	ClusterZone *string `json:"ClusterZone,omitnil,omitempty" name:"ClusterZone"`
+}
+
+// Predefined struct for user
+type DescribeVaultBackupClusterInfoRequestParams struct {
+	// 备份保险箱ID
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+}
+
+type DescribeVaultBackupClusterInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 备份保险箱ID
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+}
+
+func (r *DescribeVaultBackupClusterInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVaultBackupClusterInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VaultId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVaultBackupClusterInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVaultBackupClusterInfoResponseParams struct {
+	// 保险箱信息
+	ClusterInfos []*DescribeVaultBackupClusterInfo `json:"ClusterInfos,omitnil,omitempty" name:"ClusterInfos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVaultBackupClusterInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVaultBackupClusterInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeVaultBackupClusterInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVaultBackupClusterInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVaultsItem struct {
+	// 保险箱ID
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 保险箱名称
+	VaultName *string `json:"VaultName,omitnil,omitempty" name:"VaultName"`
+
+	// 保险箱描述
+	VaultDescribe *string `json:"VaultDescribe,omitnil,omitempty" name:"VaultDescribe"`
+
+	// 加密密钥ID
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// 密钥所在地域
+	KeyRegion *string `json:"KeyRegion,omitnil,omitempty" name:"KeyRegion"`
+
+	// 密钥类型
+	KeyType *string `json:"KeyType,omitnil,omitempty" name:"KeyType"`
+
+	// 备份文件数量
+	BackupFileCount *int64 `json:"BackupFileCount,omitnil,omitempty" name:"BackupFileCount"`
+
+	// 备份文件总大小（字节）
+	BackupFileSize *int64 `json:"BackupFileSize,omitnil,omitempty" name:"BackupFileSize"`
+
+	// Binlog文件数量
+	BinlogFileCount *int64 `json:"BinlogFileCount,omitnil,omitempty" name:"BinlogFileCount"`
+
+	// Binlog文件总大小（字节）
+	BinlogFileSize *int64 `json:"BinlogFileSize,omitnil,omitempty" name:"BinlogFileSize"`
+
+	// RedoLog文件数量
+	RedoLogFileCount *int64 `json:"RedoLogFileCount,omitnil,omitempty" name:"RedoLogFileCount"`
+
+	// RedoLog文件总大小（字节）
+	RedoLogFileSize *int64 `json:"RedoLogFileSize,omitnil,omitempty" name:"RedoLogFileSize"`
+
+	// 保险箱状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 备份保留时长（秒）
+	BackupSaveSeconds *int64 `json:"BackupSaveSeconds,omitnil,omitempty" name:"BackupSaveSeconds"`
+
+	// 锁定时间
+	LockedTime *string `json:"LockedTime,omitnil,omitempty" name:"LockedTime"`
+
+	// 关联任务列表
+	Tasks []*ObjectTask `json:"Tasks,omitnil,omitempty" name:"Tasks"`
+
+	// 保险箱所在地域
+	VaultRegion *string `json:"VaultRegion,omitnil,omitempty" name:"VaultRegion"`
+
+	// 自动投递关系
+	AutoCopyConfigs []*AutoCopyConfig `json:"AutoCopyConfigs,omitnil,omitempty" name:"AutoCopyConfigs"`
+}
+
+// Predefined struct for user
+type DescribeVaultsRequestParams struct {
+	// 保险箱ID列表，用于精确筛选
+	VaultIds []*string `json:"VaultIds,omitnil,omitempty" name:"VaultIds"`
+
+	// 保险箱名称，用于模糊筛选
+	VaultName *string `json:"VaultName,omitnil,omitempty" name:"VaultName"`
+
+	// 保险箱状态列表，用于筛选
+	Status []*string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 每页数量，范围(0,100]，默认100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，范围[0,+∞)，默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序字段，可选值：VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序方式，可选值：desc, asc, DESC, ASC
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+}
+
+type DescribeVaultsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 保险箱ID列表，用于精确筛选
+	VaultIds []*string `json:"VaultIds,omitnil,omitempty" name:"VaultIds"`
+
+	// 保险箱名称，用于模糊筛选
+	VaultName *string `json:"VaultName,omitnil,omitempty" name:"VaultName"`
+
+	// 保险箱状态列表，用于筛选
+	Status []*string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 每页数量，范围(0,100]，默认100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，范围[0,+∞)，默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序字段，可选值：VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序方式，可选值：desc, asc, DESC, ASC
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+}
+
+func (r *DescribeVaultsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVaultsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VaultIds")
+	delete(f, "VaultName")
+	delete(f, "Status")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVaultsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVaultsResponseParams struct {
+	// 保险箱列表
+	Vaults []*DescribeVaultsItem `json:"Vaults,omitnil,omitempty" name:"Vaults"`
+
+	// 总数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVaultsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVaultsResponseParams `json:"Response"`
+}
+
+func (r *DescribeVaultsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVaultsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -15158,6 +16286,70 @@ func (r *ModifyBinlogSaveDaysResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyClusterBinlogRedoLogAutoCopyVaultRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 自动拷贝保险箱配置列表
+	AutoCopyVaults []*CreateBackupVaultItem `json:"AutoCopyVaults,omitnil,omitempty" name:"AutoCopyVaults"`
+}
+
+type ModifyClusterBinlogRedoLogAutoCopyVaultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 自动拷贝保险箱配置列表
+	AutoCopyVaults []*CreateBackupVaultItem `json:"AutoCopyVaults,omitnil,omitempty" name:"AutoCopyVaults"`
+}
+
+func (r *ModifyClusterBinlogRedoLogAutoCopyVaultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterBinlogRedoLogAutoCopyVaultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "AutoCopyVaults")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterBinlogRedoLogAutoCopyVaultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClusterBinlogRedoLogAutoCopyVaultResponseParams struct {
+	// 任务ID
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyClusterBinlogRedoLogAutoCopyVaultResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyClusterBinlogRedoLogAutoCopyVaultResponseParams `json:"Response"`
+}
+
+func (r *ModifyClusterBinlogRedoLogAutoCopyVaultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterBinlogRedoLogAutoCopyVaultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyClusterDatabaseRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -17563,6 +18755,126 @@ func (r *ModifySnapBackupCrossRegionConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifySnapBackupCrossRegionConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyVaultRequestParams struct {
+	// 保险箱ID
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 保险箱名称，最大255字符
+	VaultName *string `json:"VaultName,omitnil,omitempty" name:"VaultName"`
+
+	// 保险箱描述，最大1024字符
+	VaultDescribe *string `json:"VaultDescribe,omitnil,omitempty" name:"VaultDescribe"`
+
+	// 备份保留时长（秒），范围: (0, 632448000]
+	BackupSaveSeconds *int64 `json:"BackupSaveSeconds,omitnil,omitempty" name:"BackupSaveSeconds"`
+
+	// 加密密钥ID，最大36字符
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// 密钥类型，可选值: cloud、custom
+	KeyType *string `json:"KeyType,omitnil,omitempty" name:"KeyType"`
+
+	// 密钥所在地域，最大32字符
+	KeyRegion *string `json:"KeyRegion,omitnil,omitempty" name:"KeyRegion"`
+
+	// 是否锁定保险箱
+	IsLock *bool `json:"IsLock,omitnil,omitempty" name:"IsLock"`
+
+	// 锁定到期时间，格式: 2006-01-02 15:04:05，锁定时间距当前最多15天
+	LockedTime *string `json:"LockedTime,omitnil,omitempty" name:"LockedTime"`
+
+	// 是否加密
+	IsEncryption *bool `json:"IsEncryption,omitnil,omitempty" name:"IsEncryption"`
+}
+
+type ModifyVaultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 保险箱ID
+	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
+
+	// 保险箱名称，最大255字符
+	VaultName *string `json:"VaultName,omitnil,omitempty" name:"VaultName"`
+
+	// 保险箱描述，最大1024字符
+	VaultDescribe *string `json:"VaultDescribe,omitnil,omitempty" name:"VaultDescribe"`
+
+	// 备份保留时长（秒），范围: (0, 632448000]
+	BackupSaveSeconds *int64 `json:"BackupSaveSeconds,omitnil,omitempty" name:"BackupSaveSeconds"`
+
+	// 加密密钥ID，最大36字符
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// 密钥类型，可选值: cloud、custom
+	KeyType *string `json:"KeyType,omitnil,omitempty" name:"KeyType"`
+
+	// 密钥所在地域，最大32字符
+	KeyRegion *string `json:"KeyRegion,omitnil,omitempty" name:"KeyRegion"`
+
+	// 是否锁定保险箱
+	IsLock *bool `json:"IsLock,omitnil,omitempty" name:"IsLock"`
+
+	// 锁定到期时间，格式: 2006-01-02 15:04:05，锁定时间距当前最多15天
+	LockedTime *string `json:"LockedTime,omitnil,omitempty" name:"LockedTime"`
+
+	// 是否加密
+	IsEncryption *bool `json:"IsEncryption,omitnil,omitempty" name:"IsEncryption"`
+}
+
+func (r *ModifyVaultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVaultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VaultId")
+	delete(f, "VaultName")
+	delete(f, "VaultDescribe")
+	delete(f, "BackupSaveSeconds")
+	delete(f, "KeyId")
+	delete(f, "KeyType")
+	delete(f, "KeyRegion")
+	delete(f, "IsLock")
+	delete(f, "LockedTime")
+	delete(f, "IsEncryption")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVaultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyVaultResponseParams struct {
+	// 任务ID
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyVaultResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyVaultResponseParams `json:"Response"`
+}
+
+func (r *ModifyVaultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVaultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -21912,6 +23224,98 @@ type TradePrice struct {
 }
 
 // Predefined struct for user
+type TransferClusterZoneRequestParams struct {
+	// 源集群Id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 目标可用区
+	DstZone *string `json:"DstZone,omitnil,omitempty" name:"DstZone"`
+
+	// 跨可用区迁移主从数据延迟校验阈值，单位毫秒(ms)
+	MaxLag *int64 `json:"MaxLag,omitnil,omitempty" name:"MaxLag"`
+
+	// Immediate:立即执行，InMaintain:时间窗口执行
+	TransferType *string `json:"TransferType,omitnil,omitempty" name:"TransferType"`
+
+	// 多可用区备区
+	DstSlaveZone *string `json:"DstSlaveZone,omitnil,omitempty" name:"DstSlaveZone"`
+
+	// proxy迁移的目标可用区信息
+	ProxyZones []*ProxyZone `json:"ProxyZones,omitnil,omitempty" name:"ProxyZones"`
+}
+
+type TransferClusterZoneRequest struct {
+	*tchttp.BaseRequest
+	
+	// 源集群Id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 目标可用区
+	DstZone *string `json:"DstZone,omitnil,omitempty" name:"DstZone"`
+
+	// 跨可用区迁移主从数据延迟校验阈值，单位毫秒(ms)
+	MaxLag *int64 `json:"MaxLag,omitnil,omitempty" name:"MaxLag"`
+
+	// Immediate:立即执行，InMaintain:时间窗口执行
+	TransferType *string `json:"TransferType,omitnil,omitempty" name:"TransferType"`
+
+	// 多可用区备区
+	DstSlaveZone *string `json:"DstSlaveZone,omitnil,omitempty" name:"DstSlaveZone"`
+
+	// proxy迁移的目标可用区信息
+	ProxyZones []*ProxyZone `json:"ProxyZones,omitnil,omitempty" name:"ProxyZones"`
+}
+
+func (r *TransferClusterZoneRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TransferClusterZoneRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "DstZone")
+	delete(f, "MaxLag")
+	delete(f, "TransferType")
+	delete(f, "DstSlaveZone")
+	delete(f, "ProxyZones")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TransferClusterZoneRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TransferClusterZoneResponseParams struct {
+	// 异步任务id
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TransferClusterZoneResponse struct {
+	*tchttp.BaseResponse
+	Response *TransferClusterZoneResponseParams `json:"Response"`
+}
+
+func (r *TransferClusterZoneResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TransferClusterZoneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UnbindClusterResourcePackagesRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -22427,6 +23831,14 @@ type VaultInfo struct {
 
 	// 备份保留时间
 	BackupSaveSeconds *int64 `json:"BackupSaveSeconds,omitnil,omitempty" name:"BackupSaveSeconds"`
+}
+
+type WillDeleteItem struct {
+	// 备份文件ID
+	BackupId *int64 `json:"BackupId,omitnil,omitempty" name:"BackupId"`
+
+	// 备份文件名称
+	BackupName *string `json:"BackupName,omitnil,omitempty" name:"BackupName"`
 }
 
 type ZoneStockInfo struct {

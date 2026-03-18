@@ -1141,6 +1141,7 @@ func NewDescribeDevicesResponse() (response *DescribeDevicesResponse) {
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
 //  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  REQUESTLIMITEXCEEDED_GATEWAY = "RequestLimitExceeded.Gateway"
 //  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *DescribeDevicesResponse, err error) {
@@ -1156,6 +1157,7 @@ func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *Des
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
 //  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  REQUESTLIMITEXCEEDED_GATEWAY = "RequestLimitExceeded.Gateway"
 //  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDevicesWithContext(ctx context.Context, request *DescribeDevicesRequest) (response *DescribeDevicesResponse, err error) {

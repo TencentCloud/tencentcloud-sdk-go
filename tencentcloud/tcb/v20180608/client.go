@@ -45,6 +45,76 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAddProviderRequest() (request *AddProviderRequest) {
+    request = &AddProviderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "AddProvider")
+    
+    
+    return
+}
+
+func NewAddProviderResponse() (response *AddProviderResponse) {
+    response = &AddProviderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddProvider
+// 添加身份认证源。在指定云开发环境下创建一个新的身份认证源，支持 OAuth 2.0、OIDC、SAML 2.0 等标准协议，以及自定义登录和邮箱登录等多种认证方式。
+//
+// 创建时需指定身份源协议类型（ProviderType）并配置对应的协议连接参数（Config）。若身份源 ID 已存在将返回错误。
+//
+// 限制：一个环境最大可允许加入20个认证源。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AddProvider(request *AddProviderRequest) (response *AddProviderResponse, err error) {
+    return c.AddProviderWithContext(context.Background(), request)
+}
+
+// AddProvider
+// 添加身份认证源。在指定云开发环境下创建一个新的身份认证源，支持 OAuth 2.0、OIDC、SAML 2.0 等标准协议，以及自定义登录和邮箱登录等多种认证方式。
+//
+// 创建时需指定身份源协议类型（ProviderType）并配置对应的协议连接参数（Config）。若身份源 ID 已存在将返回错误。
+//
+// 限制：一个环境最大可允许加入20个认证源。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AddProviderWithContext(ctx context.Context, request *AddProviderRequest) (response *AddProviderResponse, err error) {
+    if request == nil {
+        request = NewAddProviderRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "AddProvider")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddProvider require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddProviderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindCloudBaseAccessDomainRequest() (request *BindCloudBaseAccessDomainRequest) {
     request = &BindCloudBaseAccessDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -545,6 +615,108 @@ func (c *Client) CreateEnvWithContext(ctx context.Context, request *CreateEnvReq
     return
 }
 
+func NewCreateEnvResourceRequest() (request *CreateEnvResourceRequest) {
+    request = &CreateEnvResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateEnvResource")
+    
+    
+    return
+}
+
+func NewCreateEnvResourceResponse() (response *CreateEnvResourceResponse) {
+    response = &CreateEnvResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateEnvResource
+// **创建环境日志资源**
+//
+// 
+//
+// 环境开通后，若用户需要开启检索日志功能，需调用此接口进行日志资源的开通。
+//
+// 
+//
+// > **注意**：日志资源的开通为**异步操作**，接口调用成功后并不代表日志资源已立即可用。
+//
+// 
+//
+// **如何确认日志开通状态：**
+//
+// 
+//
+// 可通过 [DescribeEnvs](https://cloud.tencent.com/document/product/876/34820) 接口轮询查询日志开通结果，建议每 5 秒轮询一次，最长等待 5 分钟。在返回的数据结构 [EnvInfo](https://cloud.tencent.com/document/api/876/34822#EnvInfo) 中，检查 `LogServices` 字段下 `LogServiceInfo` 是否包含有效的日志主题（Topic）等相关信息，以此判断日志资源是否已成功开通：
+//
+// 
+//
+// - **已开通**：`LogServiceInfo` 中存在日志主题 ID 等有效信息
+//
+// - **未开通 / 开通中**：`LogServiceInfo` 为空或相关字段缺失
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEINUSE_LOGEXIST = "ResourceInUse.LogExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateEnvResource(request *CreateEnvResourceRequest) (response *CreateEnvResourceResponse, err error) {
+    return c.CreateEnvResourceWithContext(context.Background(), request)
+}
+
+// CreateEnvResource
+// **创建环境日志资源**
+//
+// 
+//
+// 环境开通后，若用户需要开启检索日志功能，需调用此接口进行日志资源的开通。
+//
+// 
+//
+// > **注意**：日志资源的开通为**异步操作**，接口调用成功后并不代表日志资源已立即可用。
+//
+// 
+//
+// **如何确认日志开通状态：**
+//
+// 
+//
+// 可通过 [DescribeEnvs](https://cloud.tencent.com/document/product/876/34820) 接口轮询查询日志开通结果，建议每 5 秒轮询一次，最长等待 5 分钟。在返回的数据结构 [EnvInfo](https://cloud.tencent.com/document/api/876/34822#EnvInfo) 中，检查 `LogServices` 字段下 `LogServiceInfo` 是否包含有效的日志主题（Topic）等相关信息，以此判断日志资源是否已成功开通：
+//
+// 
+//
+// - **已开通**：`LogServiceInfo` 中存在日志主题 ID 等有效信息
+//
+// - **未开通 / 开通中**：`LogServiceInfo` 为空或相关字段缺失
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEINUSE_LOGEXIST = "ResourceInUse.LogExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateEnvResourceWithContext(ctx context.Context, request *CreateEnvResourceRequest) (response *CreateEnvResourceResponse, err error) {
+    if request == nil {
+        request = NewCreateEnvResourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateEnvResource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEnvResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEnvResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateHostingDomainRequest() (request *CreateHostingDomainRequest) {
     request = &CreateHostingDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -887,7 +1059,7 @@ func NewDeleteAuthDomainResponse() (response *DeleteAuthDomainResponse) {
 //
 // 云开发会校验网页应用请求的来源域名，您需要将来源域名加入到WEB安全域名列表中。
 //
-// 可以通过接口 [DescribeAuthDomains](https://cloud.tencent.com/document/product/876/42151) 获取当前已绑定生效的安全域名。
+// 可以通过接口 [DescribeAuthDomains](https://cloud.tencent.com/document/product/876/42151) 获取当前已绑定生效的安全域名，将对应安全域名的id填入Domainlds中
 //
 // 
 //
@@ -910,7 +1082,7 @@ func (c *Client) DeleteAuthDomain(request *DeleteAuthDomainRequest) (response *D
 //
 // 云开发会校验网页应用请求的来源域名，您需要将来源域名加入到WEB安全域名列表中。
 //
-// 可以通过接口 [DescribeAuthDomains](https://cloud.tencent.com/document/product/876/42151) 获取当前已绑定生效的安全域名。
+// 可以通过接口 [DescribeAuthDomains](https://cloud.tencent.com/document/product/876/42151) 获取当前已绑定生效的安全域名，将对应安全域名的id填入Domainlds中
 //
 // 
 //
@@ -1051,6 +1223,62 @@ func (c *Client) DeleteCloudBaseGWDomainWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDeleteCloudBaseGWDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteProviderRequest() (request *DeleteProviderRequest) {
+    request = &DeleteProviderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DeleteProvider")
+    
+    
+    return
+}
+
+func NewDeleteProviderResponse() (response *DeleteProviderResponse) {
+    response = &DeleteProviderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteProvider
+// 删除认证源
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
+//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+func (c *Client) DeleteProvider(request *DeleteProviderRequest) (response *DeleteProviderResponse, err error) {
+    return c.DeleteProviderWithContext(context.Background(), request)
+}
+
+// DeleteProvider
+// 删除认证源
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
+//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+func (c *Client) DeleteProviderWithContext(ctx context.Context, request *DeleteProviderRequest) (response *DeleteProviderResponse, err error) {
+    if request == nil {
+        request = NewDeleteProviderRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteProvider")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteProvider require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteProviderResponse()
     err = c.Send(request, response)
     return
 }
@@ -1369,6 +1597,70 @@ func (c *Client) DescribeBillingInfoWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeBillingInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClientRequest() (request *DescribeClientRequest) {
+    request = &DescribeClientRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeClient")
+    
+    
+    return
+}
+
+func NewDescribeClientResponse() (response *DescribeClientResponse) {
+    response = &DescribeClientResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClient
+// 查询客户端详情。获取指定云开发环境下某个客户端的配置信息，包括客户端基本信息（名称、图标、描述）、OAuth 凭证（ClientId、ClientSecret）、安全域名、允许的 Scope 列表、Token 有效期、会话控制策略等。当客户端 ID 等于环境 ID 时，返回该环境的默认客户端配置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeClient(request *DescribeClientRequest) (response *DescribeClientResponse, err error) {
+    return c.DescribeClientWithContext(context.Background(), request)
+}
+
+// DescribeClient
+// 查询客户端详情。获取指定云开发环境下某个客户端的配置信息，包括客户端基本信息（名称、图标、描述）、OAuth 凭证（ClientId、ClientSecret）、安全域名、允许的 Scope 列表、Token 有效期、会话控制策略等。当客户端 ID 等于环境 ID 时，返回该环境的默认客户端配置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeClientWithContext(ctx context.Context, request *DescribeClientRequest) (response *DescribeClientResponse, err error) {
+    if request == nil {
+        request = NewDescribeClientRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeClient")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClient require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClientResponse()
     err = c.Send(request, response)
     return
 }
@@ -2107,6 +2399,64 @@ func (c *Client) DescribeHostingDomainTaskWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeLoginConfigRequest() (request *DescribeLoginConfigRequest) {
+    request = &DescribeLoginConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeLoginConfig")
+    
+    
+    return
+}
+
+func NewDescribeLoginConfigResponse() (response *DescribeLoginConfigResponse) {
+    response = &DescribeLoginConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLoginConfig
+// 查询指定云开发环境的登录策略配置。包括手机号短信登录、邮箱登录、用户名密码登录和匿名登录方式的开启状态，同时包含短信验证码发送通道、MFA 多因子认证和密码的更新策略。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeLoginConfig(request *DescribeLoginConfigRequest) (response *DescribeLoginConfigResponse, err error) {
+    return c.DescribeLoginConfigWithContext(context.Background(), request)
+}
+
+// DescribeLoginConfig
+// 查询指定云开发环境的登录策略配置。包括手机号短信登录、邮箱登录、用户名密码登录和匿名登录方式的开启状态，同时包含短信验证码发送通道、MFA 多因子认证和密码的更新策略。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeLoginConfigWithContext(ctx context.Context, request *DescribeLoginConfigRequest) (response *DescribeLoginConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeLoginConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeLoginConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLoginConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLoginConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMySQLClusterDetailRequest() (request *DescribeMySQLClusterDetailRequest) {
     request = &DescribeMySQLClusterDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2609,6 +2959,62 @@ func (c *Client) DescribeUserListWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeVmSpecRequest() (request *DescribeVmSpecRequest) {
+    request = &DescribeVmSpecRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeVmSpec")
+    
+    
+    return
+}
+
+func NewDescribeVmSpecResponse() (response *DescribeVmSpecResponse) {
+    response = &DescribeVmSpecResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVmSpec
+// 云服务器规格list
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVmSpec(request *DescribeVmSpecRequest) (response *DescribeVmSpecResponse, err error) {
+    return c.DescribeVmSpecWithContext(context.Background(), request)
+}
+
+// DescribeVmSpec
+// 云服务器规格list
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVmSpecWithContext(ctx context.Context, request *DescribeVmSpecRequest) (response *DescribeVmSpecResponse, err error) {
+    if request == nil {
+        request = NewDescribeVmSpecRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeVmSpec")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVmSpec require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVmSpecResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDestroyEnvRequest() (request *DestroyEnvRequest) {
     request = &DestroyEnvRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2871,6 +3277,68 @@ func (c *Client) EditAuthConfigWithContext(ctx context.Context, request *EditAut
     return
 }
 
+func NewGetProvidersRequest() (request *GetProvidersRequest) {
+    request = &GetProvidersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "GetProviders")
+    
+    
+    return
+}
+
+func NewGetProvidersResponse() (response *GetProvidersResponse) {
+    response = &GetProvidersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetProviders
+// 查询指定云开发环境下的身份认证源列表。返回该环境已配置的所有身份认证源信息，包括第三方登录（OAuth、OIDC、SAML）、微信小程序登录、自定义登录和邮箱登录等。返回结果包含认证源基本信息、关联应用、配置状态及启用情况。若自定义登录或邮箱登录的身份源尚未创建，接口会自动追加一个默认关闭状态的身份源记录。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) GetProviders(request *GetProvidersRequest) (response *GetProvidersResponse, err error) {
+    return c.GetProvidersWithContext(context.Background(), request)
+}
+
+// GetProviders
+// 查询指定云开发环境下的身份认证源列表。返回该环境已配置的所有身份认证源信息，包括第三方登录（OAuth、OIDC、SAML）、微信小程序登录、自定义登录和邮箱登录等。返回结果包含认证源基本信息、关联应用、配置状态及启用情况。若自定义登录或邮箱登录的身份源尚未创建，接口会自动追加一个默认关闭状态的身份源记录。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) GetProvidersWithContext(ctx context.Context, request *GetProvidersRequest) (response *GetProvidersResponse, err error) {
+    if request == nil {
+        request = NewGetProvidersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "GetProviders")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetProviders require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetProvidersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListTablesRequest() (request *ListTablesRequest) {
     request = &ListTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2947,6 +3415,84 @@ func (c *Client) ListTablesWithContext(ctx context.Context, request *ListTablesR
     request.SetContext(ctx)
     
     response = NewListTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClientRequest() (request *ModifyClientRequest) {
+    request = &ModifyClientRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyClient")
+    
+    
+    return
+}
+
+func NewModifyClientResponse() (response *ModifyClientResponse) {
+    response = &ModifyClientResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyClient
+// 修改客户端配置。采用增量更新策略，仅更新请求中传入的非空字段，未传入的字段保持原值不变。支持修改客户端基本信息（名称、图标、描述、主页地址）、安全域名、允许的 Scope 列表、Token 有效期、会话控制策略及启用状态等配置。
+//
+// Id、Secret、CreatedAt、Meta 等字段在该接口中不可修改，当客户端 ID 等于环境 ID 且客户端尚未创建时，将自动创建默认客户端配置。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyClient(request *ModifyClientRequest) (response *ModifyClientResponse, err error) {
+    return c.ModifyClientWithContext(context.Background(), request)
+}
+
+// ModifyClient
+// 修改客户端配置。采用增量更新策略，仅更新请求中传入的非空字段，未传入的字段保持原值不变。支持修改客户端基本信息（名称、图标、描述、主页地址）、安全域名、允许的 Scope 列表、Token 有效期、会话控制策略及启用状态等配置。
+//
+// Id、Secret、CreatedAt、Meta 等字段在该接口中不可修改，当客户端 ID 等于环境 ID 且客户端尚未创建时，将自动创建默认客户端配置。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyClientWithContext(ctx context.Context, request *ModifyClientRequest) (response *ModifyClientResponse, err error) {
+    if request == nil {
+        request = NewModifyClientRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyClient")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClient require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClientResponse()
     err = c.Send(request, response)
     return
 }
@@ -3253,6 +3799,142 @@ func (c *Client) ModifyEnvPlanWithContext(ctx context.Context, request *ModifyEn
     request.SetContext(ctx)
     
     response = NewModifyEnvPlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLoginConfigRequest() (request *ModifyLoginConfigRequest) {
+    request = &ModifyLoginConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyLoginConfig")
+    
+    
+    return
+}
+
+func NewModifyLoginConfigResponse() (response *ModifyLoginConfigResponse) {
+    response = &ModifyLoginConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLoginConfig
+// 修改指定云开发环境的登录策略配置。支持开启或关闭手机号短信登录、邮箱登录、用户名密码登录和匿名登录，同时可配置短信验证码发送通道、MFA 多因子认证和密码更新策略。
+//
+// 修改后立即生效，影响该环境下所有终端用户的登录行为。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyLoginConfig(request *ModifyLoginConfigRequest) (response *ModifyLoginConfigResponse, err error) {
+    return c.ModifyLoginConfigWithContext(context.Background(), request)
+}
+
+// ModifyLoginConfig
+// 修改指定云开发环境的登录策略配置。支持开启或关闭手机号短信登录、邮箱登录、用户名密码登录和匿名登录，同时可配置短信验证码发送通道、MFA 多因子认证和密码更新策略。
+//
+// 修改后立即生效，影响该环境下所有终端用户的登录行为。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyLoginConfigWithContext(ctx context.Context, request *ModifyLoginConfigRequest) (response *ModifyLoginConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyLoginConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyLoginConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLoginConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLoginConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyProviderRequest() (request *ModifyProviderRequest) {
+    request = &ModifyProviderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyProvider")
+    
+    
+    return
+}
+
+func NewModifyProviderResponse() (response *ModifyProviderResponse) {
+    response = &ModifyProviderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyProvider
+// 修改身份认证源。更新指定云开发环境下已有身份认证源的配置信息，支持修改基本信息（名称、图标、描述）、协议连接配置（ClientId、ClientSecret、端点地址等）、登录行为控制（透传模式、自动注册、邮箱/手机号自动关联）以及启用状态。
+//
+// 对于 OIDC 类型身份源，修改 Issuer 后将自动通过 OpenID Connect Discovery 重新获取端点配置。
+//
+// 若自定义登录（CUSTOM）或邮箱登录（EMAIL）身份源尚不存在，调用该接口时将自动创建。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyProvider(request *ModifyProviderRequest) (response *ModifyProviderResponse, err error) {
+    return c.ModifyProviderWithContext(context.Background(), request)
+}
+
+// ModifyProvider
+// 修改身份认证源。更新指定云开发环境下已有身份认证源的配置信息，支持修改基本信息（名称、图标、描述）、协议连接配置（ClientId、ClientSecret、端点地址等）、登录行为控制（透传模式、自动注册、邮箱/手机号自动关联）以及启用状态。
+//
+// 对于 OIDC 类型身份源，修改 Issuer 后将自动通过 OpenID Connect Discovery 重新获取端点配置。
+//
+// 若自定义登录（CUSTOM）或邮箱登录（EMAIL）身份源尚不存在，调用该接口时将自动创建。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyProviderWithContext(ctx context.Context, request *ModifyProviderRequest) (response *ModifyProviderResponse, err error) {
+    if request == nil {
+        request = NewModifyProviderRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyProvider")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProvider require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyProviderResponse()
     err = c.Send(request, response)
     return
 }

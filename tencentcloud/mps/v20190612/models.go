@@ -783,16 +783,16 @@ type AiAnalysisTaskDubbingInput struct {
 }
 
 type AiAnalysisTaskDubbingOutput struct {
-	// 译制视频路径。
+	// <p>译制视频路径。</p>
 	VideoPath *string `json:"VideoPath,omitnil,omitempty" name:"VideoPath"`
 
-	// 标记文件路径
+	// <p>标记文件路径</p>
 	SpeakerPath *string `json:"SpeakerPath,omitnil,omitempty" name:"SpeakerPath"`
 
-	// 音色id
+	// <p>音色id</p>
 	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
 
-	// 译制视频存储位置。
+	// <p>译制视频存储位置。</p>
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 }
 

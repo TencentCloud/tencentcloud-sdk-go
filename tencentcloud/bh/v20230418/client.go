@@ -3821,6 +3821,56 @@ func (c *Client) DescribeUsersWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDisableClientTcpAccessRequest() (request *DisableClientTcpAccessRequest) {
+    request = &DisableClientTcpAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "DisableClientTcpAccess")
+    
+    
+    return
+}
+
+func NewDisableClientTcpAccessResponse() (response *DisableClientTcpAccessResponse) {
+    response = &DisableClientTcpAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisableClientTcpAccess
+// 关闭客户端TCP访问堡垒机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DisableClientTcpAccess(request *DisableClientTcpAccessRequest) (response *DisableClientTcpAccessResponse, err error) {
+    return c.DisableClientTcpAccessWithContext(context.Background(), request)
+}
+
+// DisableClientTcpAccess
+// 关闭客户端TCP访问堡垒机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DisableClientTcpAccessWithContext(ctx context.Context, request *DisableClientTcpAccessRequest) (response *DisableClientTcpAccessResponse, err error) {
+    if request == nil {
+        request = NewDisableClientTcpAccessRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "DisableClientTcpAccess")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableClientTcpAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableClientTcpAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisableExternalAccessRequest() (request *DisableExternalAccessRequest) {
     request = &DisableExternalAccessRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3925,6 +3975,108 @@ func (c *Client) DisableIntranetAccessWithContext(ctx context.Context, request *
     return
 }
 
+func NewDisableWebAccessRequest() (request *DisableWebAccessRequest) {
+    request = &DisableWebAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "DisableWebAccess")
+    
+    
+    return
+}
+
+func NewDisableWebAccessResponse() (response *DisableWebAccessResponse) {
+    response = &DisableWebAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisableWebAccess
+// 关闭web访问堡垒机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DisableWebAccess(request *DisableWebAccessRequest) (response *DisableWebAccessResponse, err error) {
+    return c.DisableWebAccessWithContext(context.Background(), request)
+}
+
+// DisableWebAccess
+// 关闭web访问堡垒机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DisableWebAccessWithContext(ctx context.Context, request *DisableWebAccessRequest) (response *DisableWebAccessResponse, err error) {
+    if request == nil {
+        request = NewDisableWebAccessRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "DisableWebAccess")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableWebAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableWebAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableClientTcpAccessRequest() (request *EnableClientTcpAccessRequest) {
+    request = &EnableClientTcpAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "EnableClientTcpAccess")
+    
+    
+    return
+}
+
+func NewEnableClientTcpAccessResponse() (response *EnableClientTcpAccessResponse) {
+    response = &EnableClientTcpAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableClientTcpAccess
+// 开启客户端TCP访问堡垒机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) EnableClientTcpAccess(request *EnableClientTcpAccessRequest) (response *EnableClientTcpAccessResponse, err error) {
+    return c.EnableClientTcpAccessWithContext(context.Background(), request)
+}
+
+// EnableClientTcpAccess
+// 开启客户端TCP访问堡垒机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) EnableClientTcpAccessWithContext(ctx context.Context, request *EnableClientTcpAccessRequest) (response *EnableClientTcpAccessResponse, err error) {
+    if request == nil {
+        request = NewEnableClientTcpAccessRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "EnableClientTcpAccess")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableClientTcpAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableClientTcpAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableExternalAccessRequest() (request *EnableExternalAccessRequest) {
     request = &EnableExternalAccessRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4023,6 +4175,56 @@ func (c *Client) EnableIntranetAccessWithContext(ctx context.Context, request *E
     request.SetContext(ctx)
     
     response = NewEnableIntranetAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableWebAccessRequest() (request *EnableWebAccessRequest) {
+    request = &EnableWebAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "EnableWebAccess")
+    
+    
+    return
+}
+
+func NewEnableWebAccessResponse() (response *EnableWebAccessResponse) {
+    response = &EnableWebAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableWebAccess
+// 开启web访问堡垒机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) EnableWebAccess(request *EnableWebAccessRequest) (response *EnableWebAccessResponse, err error) {
+    return c.EnableWebAccessWithContext(context.Background(), request)
+}
+
+// EnableWebAccess
+// 开启web访问堡垒机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) EnableWebAccessWithContext(ctx context.Context, request *EnableWebAccessRequest) (response *EnableWebAccessResponse, err error) {
+    if request == nil {
+        request = NewEnableWebAccessRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "EnableWebAccess")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableWebAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableWebAccessResponse()
     err = c.Send(request, response)
     return
 }

@@ -81,16 +81,16 @@ type AICallExtractResultElement struct {
 }
 
 type AICallExtractResultInfo struct {
-	// 提取的类型是文本
+	// <p>提取的类型是文本</p>
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 提取的内型是选项
+	// <p>提取的类型是选项</p>
 	Chosen []*string `json:"Chosen,omitnil,omitempty" name:"Chosen"`
 
-	// 提取类型是布尔值
+	// <p>提取类型是布尔值</p>
 	Boolean *bool `json:"Boolean,omitnil,omitempty" name:"Boolean"`
 
-	// 提取类型是数字
+	// <p>提取类型是数字</p>
 	Number *float64 `json:"Number,omitnil,omitempty" name:"Number"`
 }
 
@@ -3195,20 +3195,20 @@ func (r *DeletePredictiveDialingCampaignResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DeleteStaffRequestParams struct {
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 待删除客服邮箱列表，一次最大支持200个。
+	// <p>待删除客服邮箱列表，一次最大支持200个。</p>
 	StaffList []*string `json:"StaffList,omitnil,omitempty" name:"StaffList"`
 }
 
 type DeleteStaffRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 待删除客服邮箱列表，一次最大支持200个。
+	// <p>待删除客服邮箱列表，一次最大支持200个。</p>
 	StaffList []*string `json:"StaffList,omitnil,omitempty" name:"StaffList"`
 }
 
@@ -3234,8 +3234,11 @@ func (r *DeleteStaffRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteStaffResponseParams struct {
-	// 无法删除的状态为在线的客服列表
+	// <p>无法删除的状态为在线的客服列表</p>
 	OnlineStaffList []*string `json:"OnlineStaffList,omitnil,omitempty" name:"OnlineStaffList"`
+
+	// <p>坐席删除详情</p>
+	DeleteStatusInfo *string `json:"DeleteStatusInfo,omitnil,omitempty" name:"DeleteStatusInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4922,26 +4925,26 @@ func (r *DescribeIvrAudioListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNumbersRequestParams struct {
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 页数，从0开始
+	// <p>页数，从0开始</p>
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 分页大小，默认20
+	// <p>分页大小，默认20</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 type DescribeNumbersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 页数，从0开始
+	// <p>页数，从0开始</p>
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 分页大小，默认20
+	// <p>分页大小，默认20</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
@@ -4968,10 +4971,10 @@ func (r *DescribeNumbersRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNumbersResponseParams struct {
-	// 总数量
+	// <p>总数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 号码列表
+	// <p>号码列表</p>
 	Numbers []*NumberInfo `json:"Numbers,omitnil,omitempty" name:"Numbers"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7147,14 +7150,17 @@ func (r *ModifyStaffResponse) FromJsonString(s string) error {
 }
 
 type NumberInfo struct {
-	// 号码
+	// <p>号码</p>
 	Number *string `json:"Number,omitnil,omitempty" name:"Number"`
 
-	// 绑定的外呼技能组
+	// <p>绑定的外呼技能组</p>
 	CallOutSkillGroupIds []*uint64 `json:"CallOutSkillGroupIds,omitnil,omitempty" name:"CallOutSkillGroupIds"`
 
-	// 号码状态，1-正常，2-欠费停用，4-管理员停用，5-违规停用
+	// <p>号码状态，1-正常，2-欠费停用，4-管理员停用，5-违规停用</p>
 	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// <p>是否自携号码</p><p>枚举值：</p><ul><li>0： 非自携</li><li>1： 自携</li></ul>
+	CostType *int64 `json:"CostType,omitnil,omitempty" name:"CostType"`
 }
 
 type OwnNumberApplyDetailItem struct {

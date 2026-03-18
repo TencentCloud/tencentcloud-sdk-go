@@ -394,6 +394,20 @@ type FeiShuRobotNoticeTmplMatcher struct {
 	Template *FeiShuRobotNoticeTmpl `json:"Template,omitnil,omitempty" name:"Template"`
 }
 
+type GoogleChatRobotNoticeTmpl struct {
+	// 内容模板
+	ContentTmpl *string `json:"ContentTmpl,omitnil,omitempty" name:"ContentTmpl"`
+}
+
+type GoogleChatRobotNoticeTmplMatcher struct {
+	// 匹配状态 Invalid;
+	// Trigger 告警触发; Recovery 告警恢复
+	MatchingStatus []*string `json:"MatchingStatus,omitnil,omitempty" name:"MatchingStatus"`
+
+	// 模板配置
+	Template *GoogleChatRobotNoticeTmpl `json:"Template,omitnil,omitempty" name:"Template"`
+}
+
 // Predefined struct for user
 type ModifyNoticeContentTmplRequestParams struct {
 	// 模板名称
@@ -534,6 +548,9 @@ type NoticeContentTmplItem struct {
 	// PagerDutyRobot机器人通知渠道配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PagerDutyRobot []*PagerDutyRobotNoticeTmplMatcher `json:"PagerDutyRobot,omitnil,omitempty" name:"PagerDutyRobot"`
+
+	// GoogleChat
+	GoogleChatRobot []*GoogleChatRobotNoticeTmplMatcher `json:"GoogleChatRobot,omitnil,omitempty" name:"GoogleChatRobot"`
 }
 
 type PageByNoParams struct {

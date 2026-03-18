@@ -20,6 +20,16 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AggregatePublicAlgoVersion struct {
+	// 用于聚合的系列名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 算法公共版本列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicAlgoVersions []*PublicAlgoVersion `json:"PublicAlgoVersions,omitnil,omitempty" name:"PublicAlgoVersions"`
+}
+
 type Attribute struct {
 	// 为‘List’时属性值取Values 否则取Value
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5343,6 +5353,93 @@ func (r *DescribePlatformImagesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePublicAlgoVersionListRequestParams struct {
+	// 过滤器
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认10
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 是否需要聚合
+	NeedsAggregate *bool `json:"NeedsAggregate,omitnil,omitempty" name:"NeedsAggregate"`
+}
+
+type DescribePublicAlgoVersionListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤器
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认10
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 是否需要聚合
+	NeedsAggregate *bool `json:"NeedsAggregate,omitnil,omitempty" name:"NeedsAggregate"`
+}
+
+func (r *DescribePublicAlgoVersionListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePublicAlgoVersionListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "NeedsAggregate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePublicAlgoVersionListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePublicAlgoVersionListResponseParams struct {
+	// 算法版本数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 公共算法版本列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicAlgoVersions []*PublicAlgoVersion `json:"PublicAlgoVersions,omitnil,omitempty" name:"PublicAlgoVersions"`
+
+	// 聚合后的公共算法版本列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AggregatePublicAlgoVersions []*AggregatePublicAlgoVersion `json:"AggregatePublicAlgoVersions,omitnil,omitempty" name:"AggregatePublicAlgoVersions"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePublicAlgoVersionListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePublicAlgoVersionListResponseParams `json:"Response"`
+}
+
+func (r *DescribePublicAlgoVersionListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePublicAlgoVersionListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSubAccountLinuxUserInfosRequestParams struct {
 
 }
@@ -5771,6 +5868,26 @@ func (r *DescribeTrainingTasksResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeTrainingTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeviceImageInfo struct {
+	// 设备类型, 支持GPU等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
+
+	// 镜像信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
+}
+
+type DeviceMaterialInfo struct {
+	// 设备信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
+
+	// 物料信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaterialInfo *MaterialInfo `json:"MaterialInfo,omitnil,omitempty" name:"MaterialInfo"`
 }
 
 type EncodedStartCmdInfo struct {
@@ -6269,6 +6386,28 @@ type LogIdentity struct {
 	// 日志的时间戳（RFC3339格式的时间字符串）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timestamp *string `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+}
+
+type MaterialInfo struct {
+	// 存储类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// Cos存储信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosPathInfo *CosPathInfo `json:"CosPathInfo,omitnil,omitempty" name:"CosPathInfo"`
+
+	// 物料名，支持Code、Model
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaterialName *string `json:"MaterialName,omitnil,omitempty" name:"MaterialName"`
+
+	// 物料类型，支持PreSet(预置)、 Custom(自定义)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaterialType *string `json:"MaterialType,omitnil,omitempty" name:"MaterialType"`
+
+	// 训练任务挂载路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MountPath *string `json:"MountPath,omitnil,omitempty" name:"MountPath"`
 }
 
 type Message struct {
@@ -8049,6 +8188,111 @@ type ProbeAction struct {
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 }
 
+type PublicAlgoVersion struct {
+	// 公共算法版本Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicAlgoVersionId *string `json:"PublicAlgoVersionId,omitnil,omitempty" name:"PublicAlgoVersionId"`
+
+	// 对应的公共算法组Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicAlgoGroupId *string `json:"PublicAlgoGroupId,omitnil,omitempty" name:"PublicAlgoGroupId"`
+
+	// 版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 模型简介
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Introduction *string `json:"Introduction,omitnil,omitempty" name:"Introduction"`
+
+	// 预览信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PreviewInfo *string `json:"PreviewInfo,omitnil,omitempty" name:"PreviewInfo"`
+
+	// 预置训练镜像信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PresetTrainImageInfo *ImageInfo `json:"PresetTrainImageInfo,omitnil,omitempty" name:"PresetTrainImageInfo"`
+
+	// 预置训练代码信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PresetTrainCodeInfo *MaterialInfo `json:"PresetTrainCodeInfo,omitnil,omitempty" name:"PresetTrainCodeInfo"`
+
+	// 预置模型信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PresetModelInfo *MaterialInfo `json:"PresetModelInfo,omitnil,omitempty" name:"PresetModelInfo"`
+
+	// 是否已经被导入到我的算法
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsImported *bool `json:"IsImported,omitnil,omitempty" name:"IsImported"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 默认训练资源规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultResourceSpec *ResourceSpec `json:"DefaultResourceSpec,omitnil,omitempty" name:"DefaultResourceSpec"`
+
+	// 默认推理资源规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultInferenceResourceSpec *ResourceSpec `json:"DefaultInferenceResourceSpec,omitnil,omitempty" name:"DefaultInferenceResourceSpec"`
+
+	// 是否支持直接部署推理服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportDeploy *bool `json:"SupportDeploy,omitnil,omitempty" name:"SupportDeploy"`
+
+	// 内置训练数据集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PresetTrainDataset *MaterialInfo `json:"PresetTrainDataset,omitnil,omitempty" name:"PresetTrainDataset"`
+
+	// 训练代码包下载路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrainCodeDownloadUrl *string `json:"TrainCodeDownloadUrl,omitnil,omitempty" name:"TrainCodeDownloadUrl"`
+
+	// 内置数据下载路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrainDataDownloadUrl *string `json:"TrainDataDownloadUrl,omitnil,omitempty" name:"TrainDataDownloadUrl"`
+
+	// 训练参数列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrainParams []*TrainParam `json:"TrainParams,omitnil,omitempty" name:"TrainParams"`
+
+	// 训练启动命令
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PresetTrainCodeStartCmd *string `json:"PresetTrainCodeStartCmd,omitnil,omitempty" name:"PresetTrainCodeStartCmd"`
+
+	// 是否非公开模型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsPrivateModel *bool `json:"IsPrivateModel,omitnil,omitempty" name:"IsPrivateModel"`
+
+	// 各种设备下的训练镜像
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PresetTrainImageInfoList []*DeviceImageInfo `json:"PresetTrainImageInfoList,omitnil,omitempty" name:"PresetTrainImageInfoList"`
+
+	// 各种设备下的推理镜像
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PresetInferenceImageInfoList []*DeviceImageInfo `json:"PresetInferenceImageInfoList,omitnil,omitempty" name:"PresetInferenceImageInfoList"`
+
+	// 各种设备下的训练代码信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PresetTrainCodeInfoList []*DeviceMaterialInfo `json:"PresetTrainCodeInfoList,omitnil,omitempty" name:"PresetTrainCodeInfoList"`
+
+	// 各种设备下的内置模型信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PresetModelInfoList []*DeviceMaterialInfo `json:"PresetModelInfoList,omitnil,omitempty" name:"PresetModelInfoList"`
+
+	// 模型类别，比如LLM/MultiModal
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelCategory *string `json:"ModelCategory,omitnil,omitempty" name:"ModelCategory"`
+
+	// 公共算法Id
+	PublicAlgoSeriesId *string `json:"PublicAlgoSeriesId,omitnil,omitempty" name:"PublicAlgoSeriesId"`
+}
+
 type PublicDataSourceFS struct {
 	// 数据源id
 	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
@@ -8312,6 +8556,20 @@ type ResourceInstanceRunningJobInfo struct {
 	// 任务自定义名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+}
+
+type ResourceSpec struct {
+	// 规格简称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecAlias *string `json:"SpecAlias,omitnil,omitempty" name:"SpecAlias"`
+
+	// 规格Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecId *string `json:"SpecId,omitnil,omitempty" name:"SpecId"`
+
+	// 规则名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
 }
 
 type RollingUpdate struct {
@@ -9345,6 +9603,36 @@ type TagFilter struct {
 
 	// 多个标签值
 	TagValues []*string `json:"TagValues,omitnil,omitempty" name:"TagValues"`
+}
+
+type TrainParam struct {
+	// 参数名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 默认参数值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
+
+	// 参数注释
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 参数类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 是否必选
+	Required *bool `json:"Required,omitnil,omitempty" name:"Required"`
+
+	// 参数值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 参数范围
+	Range []*string `json:"Range,omitnil,omitempty" name:"Range"`
+
+	// 参数选项
+	Enum []*string `json:"Enum,omitnil,omitempty" name:"Enum"`
 }
 
 type TrainingModelVersionDTO struct {

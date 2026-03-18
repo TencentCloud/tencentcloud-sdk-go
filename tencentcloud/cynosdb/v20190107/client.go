@@ -535,6 +535,72 @@ func (c *Client) BindClusterResourcePackagesWithContext(ctx context.Context, req
     return
 }
 
+func NewCalculateBackupSaveSecExpiresRequest() (request *CalculateBackupSaveSecExpiresRequest) {
+    request = &CalculateBackupSaveSecExpiresRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "CalculateBackupSaveSecExpires")
+    
+    
+    return
+}
+
+func NewCalculateBackupSaveSecExpiresResponse() (response *CalculateBackupSaveSecExpiresResponse) {
+    response = &CalculateBackupSaveSecExpiresResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CalculateBackupSaveSecExpires
+// 计算修改备份保留时长后将会过期删除的备份文件列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BINDSOURCEPACKAGEERROR = "FailedOperation.BindSourcePackageError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = "FailedOperation.QuerySourcePackageError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CalculateBackupSaveSecExpires(request *CalculateBackupSaveSecExpiresRequest) (response *CalculateBackupSaveSecExpiresResponse, err error) {
+    return c.CalculateBackupSaveSecExpiresWithContext(context.Background(), request)
+}
+
+// CalculateBackupSaveSecExpires
+// 计算修改备份保留时长后将会过期删除的备份文件列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BINDSOURCEPACKAGEERROR = "FailedOperation.BindSourcePackageError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = "FailedOperation.QuerySourcePackageError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CalculateBackupSaveSecExpiresWithContext(ctx context.Context, request *CalculateBackupSaveSecExpiresRequest) (response *CalculateBackupSaveSecExpiresResponse, err error) {
+    if request == nil {
+        request = NewCalculateBackupSaveSecExpiresRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CalculateBackupSaveSecExpires")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CalculateBackupSaveSecExpires require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCalculateBackupSaveSecExpiresResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckCreateLibraDBInstanceRequest() (request *CheckCreateLibraDBInstanceRequest) {
     request = &CheckCreateLibraDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -623,6 +689,98 @@ func (c *Client) CheckCreateLibraDBInstanceWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewCheckCreateLibraDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCheckTransferClusterZoneRequest() (request *CheckTransferClusterZoneRequest) {
+    request = &CheckTransferClusterZoneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "CheckTransferClusterZone")
+    
+    
+    return
+}
+
+func NewCheckTransferClusterZoneResponse() (response *CheckTransferClusterZoneResponse) {
+    response = &CheckTransferClusterZoneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckTransferClusterZone
+// 本接口（CheckTransferClusterZone）用于检查是否可以发起跨可用区迁移。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_TRADECREATEORDERERROR = "FailedOperation.TradeCreateOrderError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_DBTYPENOTFOUND = "InvalidParameterValue.DBTypeNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALPASSWORD = "InvalidParameterValue.IllegalPassword"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDSPEC = "InvalidParameterValue.InvalidSpec"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  INVALIDPARAMETERVALUE_REGIONZONEUNAVAILABLE = "InvalidParameterValue.RegionZoneUnavailable"
+//  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  INVALIDPARAMETERVALUE_VPCNOTFOUND = "InvalidParameterValue.VpcNotFound"
+//  LIMITEXCEEDED_USERINSTANCELIMIT = "LimitExceeded.UserInstanceLimit"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+//  OPERATIONDENIED_INSUFFICIENTBALANCEERROR = "OperationDenied.InsufficientBalanceError"
+//  OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = "OperationDenied.UserNotAuthenticatedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CheckTransferClusterZone(request *CheckTransferClusterZoneRequest) (response *CheckTransferClusterZoneResponse, err error) {
+    return c.CheckTransferClusterZoneWithContext(context.Background(), request)
+}
+
+// CheckTransferClusterZone
+// 本接口（CheckTransferClusterZone）用于检查是否可以发起跨可用区迁移。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_TRADECREATEORDERERROR = "FailedOperation.TradeCreateOrderError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_DBTYPENOTFOUND = "InvalidParameterValue.DBTypeNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALPASSWORD = "InvalidParameterValue.IllegalPassword"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDSPEC = "InvalidParameterValue.InvalidSpec"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  INVALIDPARAMETERVALUE_REGIONZONEUNAVAILABLE = "InvalidParameterValue.RegionZoneUnavailable"
+//  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  INVALIDPARAMETERVALUE_VPCNOTFOUND = "InvalidParameterValue.VpcNotFound"
+//  LIMITEXCEEDED_USERINSTANCELIMIT = "LimitExceeded.UserInstanceLimit"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+//  OPERATIONDENIED_INSUFFICIENTBALANCEERROR = "OperationDenied.InsufficientBalanceError"
+//  OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = "OperationDenied.UserNotAuthenticatedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CheckTransferClusterZoneWithContext(ctx context.Context, request *CheckTransferClusterZoneRequest) (response *CheckTransferClusterZoneResponse, err error) {
+    if request == nil {
+        request = NewCheckTransferClusterZoneRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CheckTransferClusterZone")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckTransferClusterZone require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckTransferClusterZoneResponse()
     err = c.Send(request, response)
     return
 }
@@ -1011,6 +1169,56 @@ func (c *Client) CloseWanWithContext(ctx context.Context, request *CloseWanReque
     request.SetContext(ctx)
     
     response = NewCloseWanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCopyBackupToVaultRequest() (request *CopyBackupToVaultRequest) {
+    request = &CopyBackupToVaultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "CopyBackupToVault")
+    
+    
+    return
+}
+
+func NewCopyBackupToVaultResponse() (response *CopyBackupToVaultResponse) {
+    response = &CopyBackupToVaultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CopyBackupToVault
+// 将备份文件复制到指定的备份保险箱
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_BACKUPVAULTTASKCONFLICTERROR = "OperationDenied.BackupVaultTaskConflictError"
+func (c *Client) CopyBackupToVault(request *CopyBackupToVaultRequest) (response *CopyBackupToVaultResponse, err error) {
+    return c.CopyBackupToVaultWithContext(context.Background(), request)
+}
+
+// CopyBackupToVault
+// 将备份文件复制到指定的备份保险箱
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_BACKUPVAULTTASKCONFLICTERROR = "OperationDenied.BackupVaultTaskConflictError"
+func (c *Client) CopyBackupToVaultWithContext(ctx context.Context, request *CopyBackupToVaultRequest) (response *CopyBackupToVaultResponse, err error) {
+    if request == nil {
+        request = NewCopyBackupToVaultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CopyBackupToVault")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CopyBackupToVault require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCopyBackupToVaultResponse()
     err = c.Send(request, response)
     return
 }
@@ -2177,6 +2385,66 @@ func (c *Client) CreateResourcePackageWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateVaultRequest() (request *CreateVaultRequest) {
+    request = &CreateVaultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "CreateVault")
+    
+    
+    return
+}
+
+func NewCreateVaultResponse() (response *CreateVaultResponse) {
+    response = &CreateVaultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVault
+// 创建备份保险箱
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATESOURCEPACKAGEERROR = "FailedOperation.CreateSourcePackageError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateVault(request *CreateVaultRequest) (response *CreateVaultResponse, err error) {
+    return c.CreateVaultWithContext(context.Background(), request)
+}
+
+// CreateVault
+// 创建备份保险箱
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATESOURCEPACKAGEERROR = "FailedOperation.CreateSourcePackageError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateVaultWithContext(ctx context.Context, request *CreateVaultRequest) (response *CreateVaultResponse, err error) {
+    if request == nil {
+        request = NewCreateVaultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "CreateVault")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVault require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVaultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccountsRequest() (request *DeleteAccountsRequest) {
     request = &DeleteAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2435,6 +2703,70 @@ func (c *Client) DeleteBackupWithContext(ctx context.Context, request *DeleteBac
     request.SetContext(ctx)
     
     response = NewDeleteBackupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteBackupVaultRequest() (request *DeleteBackupVaultRequest) {
+    request = &DeleteBackupVaultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DeleteBackupVault")
+    
+    
+    return
+}
+
+func NewDeleteBackupVaultResponse() (response *DeleteBackupVaultResponse) {
+    response = &DeleteBackupVaultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteBackupVault
+// 从备份保险箱中删除指定的备份文件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DeleteBackupVault(request *DeleteBackupVaultRequest) (response *DeleteBackupVaultResponse, err error) {
+    return c.DeleteBackupVaultWithContext(context.Background(), request)
+}
+
+// DeleteBackupVault
+// 从备份保险箱中删除指定的备份文件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DeleteBackupVaultWithContext(ctx context.Context, request *DeleteBackupVaultRequest) (response *DeleteBackupVaultResponse, err error) {
+    if request == nil {
+        request = NewDeleteBackupVaultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DeleteBackupVault")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBackupVault require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBackupVaultResponse()
     err = c.Send(request, response)
     return
 }
@@ -2801,6 +3133,58 @@ func (c *Client) DeleteParamTemplateWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDeleteParamTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteVaultsRequest() (request *DeleteVaultsRequest) {
+    request = &DeleteVaultsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DeleteVaults")
+    
+    
+    return
+}
+
+func NewDeleteVaultsResponse() (response *DeleteVaultsResponse) {
+    response = &DeleteVaultsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteVaults
+// 批量删除备份保险箱
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+func (c *Client) DeleteVaults(request *DeleteVaultsRequest) (response *DeleteVaultsResponse, err error) {
+    return c.DeleteVaultsWithContext(context.Background(), request)
+}
+
+// DeleteVaults
+// 批量删除备份保险箱
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+func (c *Client) DeleteVaultsWithContext(ctx context.Context, request *DeleteVaultsRequest) (response *DeleteVaultsResponse, err error) {
+    if request == nil {
+        request = NewDeleteVaultsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DeleteVaults")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVaults require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteVaultsResponse()
     err = c.Send(request, response)
     return
 }
@@ -3711,6 +4095,74 @@ func (c *Client) DescribeBackupListWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeBackupListByVaultRequest() (request *DescribeBackupListByVaultRequest) {
+    request = &DescribeBackupListByVaultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeBackupListByVault")
+    
+    
+    return
+}
+
+func NewDescribeBackupListByVaultResponse() (response *DescribeBackupListByVaultResponse) {
+    response = &DescribeBackupListByVaultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBackupListByVault
+// 根据保险箱ID查询备份文件列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GETBACKUPSTRATEGYERROR = "FailedOperation.GetBackupStrategyError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  INVALIDPARAMETERVALUE_STORAGEPOOLNOTFOUND = "InvalidParameterValue.StoragePoolNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBackupListByVault(request *DescribeBackupListByVaultRequest) (response *DescribeBackupListByVaultResponse, err error) {
+    return c.DescribeBackupListByVaultWithContext(context.Background(), request)
+}
+
+// DescribeBackupListByVault
+// 根据保险箱ID查询备份文件列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GETBACKUPSTRATEGYERROR = "FailedOperation.GetBackupStrategyError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  INVALIDPARAMETERVALUE_STORAGEPOOLNOTFOUND = "InvalidParameterValue.StoragePoolNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBackupListByVaultWithContext(ctx context.Context, request *DescribeBackupListByVaultRequest) (response *DescribeBackupListByVaultResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupListByVaultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeBackupListByVault")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupListByVault require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackupListByVaultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBinlogConfigRequest() (request *DescribeBinlogConfigRequest) {
     request = &DescribeBinlogConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3815,6 +4267,64 @@ func (c *Client) DescribeBinlogDownloadUrlWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeBinlogDownloadUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBinlogListByVaultRequest() (request *DescribeBinlogListByVaultRequest) {
+    request = &DescribeBinlogListByVaultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeBinlogListByVault")
+    
+    
+    return
+}
+
+func NewDescribeBinlogListByVaultResponse() (response *DescribeBinlogListByVaultResponse) {
+    response = &DescribeBinlogListByVaultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBinlogListByVault
+// 查询保险箱内binlog备份
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBinlogListByVault(request *DescribeBinlogListByVaultRequest) (response *DescribeBinlogListByVaultResponse, err error) {
+    return c.DescribeBinlogListByVaultWithContext(context.Background(), request)
+}
+
+// DescribeBinlogListByVault
+// 查询保险箱内binlog备份
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBinlogListByVaultWithContext(ctx context.Context, request *DescribeBinlogListByVaultRequest) (response *DescribeBinlogListByVaultResponse, err error) {
+    if request == nil {
+        request = NewDescribeBinlogListByVaultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeBinlogListByVault")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBinlogListByVault require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBinlogListByVaultResponse()
     err = c.Send(request, response)
     return
 }
@@ -7059,6 +7569,58 @@ func (c *Client) DescribeProxySpecsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeRedoLogListByVaultRequest() (request *DescribeRedoLogListByVaultRequest) {
+    request = &DescribeRedoLogListByVaultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeRedoLogListByVault")
+    
+    
+    return
+}
+
+func NewDescribeRedoLogListByVaultResponse() (response *DescribeRedoLogListByVaultResponse) {
+    response = &DescribeRedoLogListByVaultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRedoLogListByVault
+// 查询RedoLog备份
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+func (c *Client) DescribeRedoLogListByVault(request *DescribeRedoLogListByVaultRequest) (response *DescribeRedoLogListByVaultResponse, err error) {
+    return c.DescribeRedoLogListByVaultWithContext(context.Background(), request)
+}
+
+// DescribeRedoLogListByVault
+// 查询RedoLog备份
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+func (c *Client) DescribeRedoLogListByVaultWithContext(ctx context.Context, request *DescribeRedoLogListByVaultRequest) (response *DescribeRedoLogListByVaultResponse, err error) {
+    if request == nil {
+        request = NewDescribeRedoLogListByVaultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeRedoLogListByVault")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRedoLogListByVault require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRedoLogListByVaultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRedoLogsRequest() (request *DescribeRedoLogsRequest) {
     request = &DescribeRedoLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7875,6 +8437,122 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     request.SetContext(ctx)
     
     response = NewDescribeTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVaultBackupClusterInfoRequest() (request *DescribeVaultBackupClusterInfoRequest) {
+    request = &DescribeVaultBackupClusterInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeVaultBackupClusterInfo")
+    
+    
+    return
+}
+
+func NewDescribeVaultBackupClusterInfoResponse() (response *DescribeVaultBackupClusterInfoResponse) {
+    response = &DescribeVaultBackupClusterInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVaultBackupClusterInfo
+// 查询备份保险箱关联的集群信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeVaultBackupClusterInfo(request *DescribeVaultBackupClusterInfoRequest) (response *DescribeVaultBackupClusterInfoResponse, err error) {
+    return c.DescribeVaultBackupClusterInfoWithContext(context.Background(), request)
+}
+
+// DescribeVaultBackupClusterInfo
+// 查询备份保险箱关联的集群信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeVaultBackupClusterInfoWithContext(ctx context.Context, request *DescribeVaultBackupClusterInfoRequest) (response *DescribeVaultBackupClusterInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeVaultBackupClusterInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeVaultBackupClusterInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVaultBackupClusterInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVaultBackupClusterInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVaultsRequest() (request *DescribeVaultsRequest) {
+    request = &DescribeVaultsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeVaults")
+    
+    
+    return
+}
+
+func NewDescribeVaultsResponse() (response *DescribeVaultsResponse) {
+    response = &DescribeVaultsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVaults
+// 查询备份保险箱列表，支持分页、筛选和排序
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeVaults(request *DescribeVaultsRequest) (response *DescribeVaultsResponse, err error) {
+    return c.DescribeVaultsWithContext(context.Background(), request)
+}
+
+// DescribeVaults
+// 查询备份保险箱列表，支持分页、筛选和排序
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeVaultsWithContext(ctx context.Context, request *DescribeVaultsRequest) (response *DescribeVaultsResponse, err error) {
+    if request == nil {
+        request = NewDescribeVaultsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeVaults")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVaults require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVaultsResponse()
     err = c.Send(request, response)
     return
 }
@@ -9805,6 +10483,56 @@ func (c *Client) ModifyBinlogSaveDaysWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyClusterBinlogRedoLogAutoCopyVaultRequest() (request *ModifyClusterBinlogRedoLogAutoCopyVaultRequest) {
+    request = &ModifyClusterBinlogRedoLogAutoCopyVaultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyClusterBinlogRedoLogAutoCopyVault")
+    
+    
+    return
+}
+
+func NewModifyClusterBinlogRedoLogAutoCopyVaultResponse() (response *ModifyClusterBinlogRedoLogAutoCopyVaultResponse) {
+    response = &ModifyClusterBinlogRedoLogAutoCopyVaultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyClusterBinlogRedoLogAutoCopyVault
+// 修改集群Binlog和RedoLog自动拷贝到保险箱的配置
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_BACKUPVAULTTASKCONFLICTERROR = "OperationDenied.BackupVaultTaskConflictError"
+func (c *Client) ModifyClusterBinlogRedoLogAutoCopyVault(request *ModifyClusterBinlogRedoLogAutoCopyVaultRequest) (response *ModifyClusterBinlogRedoLogAutoCopyVaultResponse, err error) {
+    return c.ModifyClusterBinlogRedoLogAutoCopyVaultWithContext(context.Background(), request)
+}
+
+// ModifyClusterBinlogRedoLogAutoCopyVault
+// 修改集群Binlog和RedoLog自动拷贝到保险箱的配置
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_BACKUPVAULTTASKCONFLICTERROR = "OperationDenied.BackupVaultTaskConflictError"
+func (c *Client) ModifyClusterBinlogRedoLogAutoCopyVaultWithContext(ctx context.Context, request *ModifyClusterBinlogRedoLogAutoCopyVaultRequest) (response *ModifyClusterBinlogRedoLogAutoCopyVaultResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterBinlogRedoLogAutoCopyVaultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyClusterBinlogRedoLogAutoCopyVault")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterBinlogRedoLogAutoCopyVault require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterBinlogRedoLogAutoCopyVaultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyClusterDatabaseRequest() (request *ModifyClusterDatabaseRequest) {
     request = &ModifyClusterDatabaseRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11715,6 +12443,56 @@ func (c *Client) ModifySnapBackupCrossRegionConfigWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewModifySnapBackupCrossRegionConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyVaultRequest() (request *ModifyVaultRequest) {
+    request = &ModifyVaultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyVault")
+    
+    
+    return
+}
+
+func NewModifyVaultResponse() (response *ModifyVaultResponse) {
+    response = &ModifyVaultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyVault
+// 修改备份保险箱配置，包括名称、描述、保留时长、加密密钥、锁定时间等
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_BACKUPVAULTTASKCONFLICTERROR = "OperationDenied.BackupVaultTaskConflictError"
+func (c *Client) ModifyVault(request *ModifyVaultRequest) (response *ModifyVaultResponse, err error) {
+    return c.ModifyVaultWithContext(context.Background(), request)
+}
+
+// ModifyVault
+// 修改备份保险箱配置，包括名称、描述、保留时长、加密密钥、锁定时间等
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_BACKUPVAULTTASKCONFLICTERROR = "OperationDenied.BackupVaultTaskConflictError"
+func (c *Client) ModifyVaultWithContext(ctx context.Context, request *ModifyVaultRequest) (response *ModifyVaultResponse, err error) {
+    if request == nil {
+        request = NewModifyVaultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "ModifyVault")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVault require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyVaultResponse()
     err = c.Send(request, response)
     return
 }
@@ -14265,6 +15043,70 @@ func (c *Client) SwitchProxyVpcWithContext(ctx context.Context, request *SwitchP
     request.SetContext(ctx)
     
     response = NewSwitchProxyVpcResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTransferClusterZoneRequest() (request *TransferClusterZoneRequest) {
+    request = &TransferClusterZoneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "TransferClusterZone")
+    
+    
+    return
+}
+
+func NewTransferClusterZoneResponse() (response *TransferClusterZoneResponse) {
+    response = &TransferClusterZoneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TransferClusterZone
+// 本接口（TransferClusterZone）用于发起跨可用区迁移。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) TransferClusterZone(request *TransferClusterZoneRequest) (response *TransferClusterZoneResponse, err error) {
+    return c.TransferClusterZoneWithContext(context.Background(), request)
+}
+
+// TransferClusterZone
+// 本接口（TransferClusterZone）用于发起跨可用区迁移。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) TransferClusterZoneWithContext(ctx context.Context, request *TransferClusterZoneRequest) (response *TransferClusterZoneResponse, err error) {
+    if request == nil {
+        request = NewTransferClusterZoneRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "TransferClusterZone")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TransferClusterZone require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTransferClusterZoneResponse()
     err = c.Send(request, response)
     return
 }

@@ -177,6 +177,26 @@ type AiOpsEventListenerDTO struct {
 	// 事件广播类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventBroadcastType *string `json:"EventBroadcastType,omitnil,omitempty" name:"EventBroadcastType"`
+
+	// 事件生产者任务Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProducerTaskId *string `json:"ProducerTaskId,omitnil,omitempty" name:"ProducerTaskId"`
+
+	// 事件维度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
+
+	// 事件状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 事件触发时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventTriggerTs *string `json:"EventTriggerTs,omitnil,omitempty" name:"EventTriggerTs"`
+
+	// 事件ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CaseId *string `json:"CaseId,omitnil,omitempty" name:"CaseId"`
 }
 
 type AiopsDLCResourceConfigDto struct {
@@ -1285,6 +1305,9 @@ type BatchCreateTaskVersionAsyncRequestParams struct {
 
 	// 是否需要补录中间实例
 	EnableMakeUp *bool `json:"EnableMakeUp,omitnil,omitempty" name:"EnableMakeUp"`
+
+	// 指定审批人列表
+	AssignApprovalList []*string `json:"AssignApprovalList,omitnil,omitempty" name:"AssignApprovalList"`
 }
 
 type BatchCreateTaskVersionAsyncRequest struct {
@@ -1310,6 +1333,9 @@ type BatchCreateTaskVersionAsyncRequest struct {
 
 	// 是否需要补录中间实例
 	EnableMakeUp *bool `json:"EnableMakeUp,omitnil,omitempty" name:"EnableMakeUp"`
+
+	// 指定审批人列表
+	AssignApprovalList []*string `json:"AssignApprovalList,omitnil,omitempty" name:"AssignApprovalList"`
 }
 
 func (r *BatchCreateTaskVersionAsyncRequest) ToJsonString() string {
@@ -1331,6 +1357,7 @@ func (r *BatchCreateTaskVersionAsyncRequest) FromJsonString(s string) error {
 	delete(f, "AlarmRecipientTypes")
 	delete(f, "NeedCheckParentSubmitted")
 	delete(f, "EnableMakeUp")
+	delete(f, "AssignApprovalList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchCreateTaskVersionAsyncRequest has unknown keys!", "")
 	}
@@ -4362,6 +4389,9 @@ type CreateCodeTemplateVersionRequestParams struct {
 	// true表示：针对新建、已下线状态的任务仅生成开发态保存版本，您可在任务中自行提交到生产。针对调度中、已暂停、已失效的任务生成开发态保存版本并提交到生产（即本次代码模板的改动在调度中生效）； 
 	// false表示：针对所有状态的任务均仅生成开发态保存版本。
 	NeedSubmitScheduleForTemplate *bool `json:"NeedSubmitScheduleForTemplate,omitnil,omitempty" name:"NeedSubmitScheduleForTemplate"`
+
+	// 指定审批人列表
+	AssignApprovalList []*string `json:"AssignApprovalList,omitnil,omitempty" name:"AssignApprovalList"`
 }
 
 type CreateCodeTemplateVersionRequest struct {
@@ -4385,6 +4415,9 @@ type CreateCodeTemplateVersionRequest struct {
 	// true表示：针对新建、已下线状态的任务仅生成开发态保存版本，您可在任务中自行提交到生产。针对调度中、已暂停、已失效的任务生成开发态保存版本并提交到生产（即本次代码模板的改动在调度中生效）； 
 	// false表示：针对所有状态的任务均仅生成开发态保存版本。
 	NeedSubmitScheduleForTemplate *bool `json:"NeedSubmitScheduleForTemplate,omitnil,omitempty" name:"NeedSubmitScheduleForTemplate"`
+
+	// 指定审批人列表
+	AssignApprovalList []*string `json:"AssignApprovalList,omitnil,omitempty" name:"AssignApprovalList"`
 }
 
 func (r *CreateCodeTemplateVersionRequest) ToJsonString() string {
@@ -4405,6 +4438,7 @@ func (r *CreateCodeTemplateVersionRequest) FromJsonString(s string) error {
 	delete(f, "OriginalParams")
 	delete(f, "VersionRemark")
 	delete(f, "NeedSubmitScheduleForTemplate")
+	delete(f, "AssignApprovalList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCodeTemplateVersionRequest has unknown keys!", "")
 	}
@@ -6483,6 +6517,9 @@ type CreateTaskVersionDsRequestParams struct {
 
 	// 是否需要补录中间实例
 	EnableMakeUp *bool `json:"EnableMakeUp,omitnil,omitempty" name:"EnableMakeUp"`
+
+	// 指定审批人列表
+	AssignApprovalList []*string `json:"AssignApprovalList,omitnil,omitempty" name:"AssignApprovalList"`
 }
 
 type CreateTaskVersionDsRequest struct {
@@ -6514,6 +6551,9 @@ type CreateTaskVersionDsRequest struct {
 
 	// 是否需要补录中间实例
 	EnableMakeUp *bool `json:"EnableMakeUp,omitnil,omitempty" name:"EnableMakeUp"`
+
+	// 指定审批人列表
+	AssignApprovalList []*string `json:"AssignApprovalList,omitnil,omitempty" name:"AssignApprovalList"`
 }
 
 func (r *CreateTaskVersionDsRequest) ToJsonString() string {
@@ -6537,6 +6577,7 @@ func (r *CreateTaskVersionDsRequest) FromJsonString(s string) error {
 	delete(f, "AlarmRecipientTypes")
 	delete(f, "EnableCheckTaskCycleLink")
 	delete(f, "EnableMakeUp")
+	delete(f, "AssignApprovalList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskVersionDsRequest has unknown keys!", "")
 	}
@@ -24935,6 +24976,10 @@ type EventCaseAuditLogOptDto struct {
 	// 事件实例描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 消费次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsumeCount *int64 `json:"ConsumeCount,omitnil,omitempty" name:"ConsumeCount"`
 }
 
 type EventCaseAuditLogVOCollection struct {
@@ -28588,6 +28633,10 @@ type InstanceOpsDto struct {
 	// 扩展属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ext *StrToStrMap `json:"Ext,omitnil,omitempty" name:"Ext"`
+
+	// 事件列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelatedEventList []*EventCaseAuditLogOptDto `json:"RelatedEventList,omitnil,omitempty" name:"RelatedEventList"`
 }
 
 type InstanceOpsInfoPage struct {
@@ -30514,6 +30563,10 @@ type MakePlanOpsDto struct {
 	// 补录实例自定义参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MapParamList []*StrToStrMap `json:"MapParamList,omitnil,omitempty" name:"MapParamList"`
+
+	// 补录扩展属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MakeExtList []*StrToStrMap `json:"MakeExtList,omitnil,omitempty" name:"MakeExtList"`
 
 	// 创建人ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -41946,6 +41999,10 @@ type TaskFormParams struct {
 	// 保存版本ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestSavedVersionId *string `json:"LatestSavedVersionId,omitnil,omitempty" name:"LatestSavedVersionId"`
+
+	// 任务状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type TaskImportInfo struct {
@@ -42745,6 +42802,10 @@ type TaskOpsDto struct {
 	// 任务扩展信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskExtDTO *TaskExtOpsDto `json:"TaskExtDTO,omitnil,omitempty" name:"TaskExtDTO"`
+
+	// 任务时区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
 }
 
 type TaskScriptContent struct {

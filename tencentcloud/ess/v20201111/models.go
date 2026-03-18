@@ -499,6 +499,10 @@ type AuthRecord struct {
 	// <li> **4**：AI识别中</li>
 	// <li> **5**：客户确认AI信息</li></ul>
 	AuditStatus *int64 `json:"AuditStatus,omitnil,omitempty" name:"AuditStatus"`
+
+	// 审核失败原因，
+	// 当 AuditStatus 返回2时，则会返回具体的原因。
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 
 type AuthorizedUser struct {
@@ -597,6 +601,9 @@ type BatchOrganizationRegistrationTasksDetails struct {
 
 	// 如果任务失败,会返回错误信息
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 认证流 Id 是指在企业认证过程中，当前操作人的认证流程的唯一标识。每个企业在认证过程中只能有一条认证流认证成功。这意味着在同一认证过程内，一个企业只能有一个认证流程处于成功状态，以确保认证的唯一性和有效性。认证流 Id可以通过回调[授权书认证审核结果回调](https://qian.tencent.com/developers/company/callback_types_staffs/#%E5%8D%81%E5%85%AD-%E6%8E%88%E6%9D%83%E4%B9%A6%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)
+	AuthorizationInfoId *string `json:"AuthorizationInfoId,omitnil,omitempty" name:"AuthorizationInfoId"`
 }
 
 type BillUsageDetail struct {
@@ -1865,13 +1872,15 @@ type CreateBatchContractReviewTaskRequestParams struct {
 	// </ul>
 	PolicyType *int64 `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
 
-	// 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。(Depricated)
+	// 该字段已不再使用！
+	// 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。
 	Role *RiskIdentificationRoleInfo `json:"Role,omitnil,omitempty" name:"Role"`
 
 	// 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。
 	Roles []*RiskIdentificationRoleInfo `json:"Roles,omitnil,omitempty" name:"Roles"`
 
-	// 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。(Depricated)
+	// 该字段已不再使用！
+	// 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。
 	ChecklistId *string `json:"ChecklistId,omitnil,omitempty" name:"ChecklistId"`
 
 	// 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。
@@ -1919,13 +1928,15 @@ type CreateBatchContractReviewTaskRequest struct {
 	// </ul>
 	PolicyType *int64 `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
 
-	// 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。(Depricated)
+	// 该字段已不再使用！
+	// 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。
 	Role *RiskIdentificationRoleInfo `json:"Role,omitnil,omitempty" name:"Role"`
 
 	// 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。
 	Roles []*RiskIdentificationRoleInfo `json:"Roles,omitnil,omitempty" name:"Roles"`
 
-	// 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。(Depricated)
+	// 该字段已不再使用！
+	// 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。
 	ChecklistId *string `json:"ChecklistId,omitnil,omitempty" name:"ChecklistId"`
 
 	// 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。
@@ -9657,6 +9668,9 @@ type CreateSchemeUrlRequestParams struct {
 
 	// 在动态签署人场景预设了“企业名称”时，可通过该参数控制“已认证身份才可领取”，即在加入了预设的企业后才可领取。默认值：false，无须先加入企业。
 	PickUpAfterJoined *bool `json:"PickUpAfterJoined,omitnil,omitempty" name:"PickUpAfterJoined"`
+
+	// 是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul> 注：`1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 使用此功能时，FlowIds参数必传。3. 对于企业签署方，如果对印章/签名控件有限制要求，需要保证所有印章/签名签署控件限制要求(印章id或印章/签名类型限制)一致，否则无法使用此功能。`
+	CanSkipReadFlow *bool `json:"CanSkipReadFlow,omitnil,omitempty" name:"CanSkipReadFlow"`
 }
 
 type CreateSchemeUrlRequest struct {
@@ -9751,6 +9765,9 @@ type CreateSchemeUrlRequest struct {
 
 	// 在动态签署人场景预设了“企业名称”时，可通过该参数控制“已认证身份才可领取”，即在加入了预设的企业后才可领取。默认值：false，无须先加入企业。
 	PickUpAfterJoined *bool `json:"PickUpAfterJoined,omitnil,omitempty" name:"PickUpAfterJoined"`
+
+	// 是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul> 注：`1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 使用此功能时，FlowIds参数必传。3. 对于企业签署方，如果对印章/签名控件有限制要求，需要保证所有印章/签名签署控件限制要求(印章id或印章/签名类型限制)一致，否则无法使用此功能。`
+	CanSkipReadFlow *bool `json:"CanSkipReadFlow,omitnil,omitempty" name:"CanSkipReadFlow"`
 }
 
 func (r *CreateSchemeUrlRequest) ToJsonString() string {
@@ -9782,6 +9799,7 @@ func (r *CreateSchemeUrlRequest) FromJsonString(s string) error {
 	delete(f, "FlowGroupUrlInfo")
 	delete(f, "UrlUseEnv")
 	delete(f, "PickUpAfterJoined")
+	delete(f, "CanSkipReadFlow")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSchemeUrlRequest has unknown keys!", "")
 	}
@@ -12653,7 +12671,8 @@ func (r *DescribeContractReviewTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeContractReviewTaskResponseParams struct {
-	// 用于审查任务的审查清单ID（Depricated）。注意：如果用户没有配置清单时此值可能为空，需要等大模型根据合同内容推荐出可以使用的审查清单。
+	// 该字段已不再使用！
+	// 用于审查任务的审查清单ID。注意：如果用户没有配置清单时此值可能为空，需要等大模型根据合同内容推荐出可以使用的审查清单。
 	ChecklistId *string `json:"ChecklistId,omitnil,omitempty" name:"ChecklistId"`
 
 	// 用于审查任务的审查清单ID。注意：如果用户没有配置清单时此值可能为空，需要等大模型根据合同内容推荐出可以使用的审查清单。
@@ -12683,7 +12702,8 @@ type DescribeContractReviewTaskResponseParams struct {
 	// 注意：`审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。`
 	Risks []*OutputRisk `json:"Risks,omitnil,omitempty" name:"Risks"`
 
-	// 合同审查中的角色信息（Depricated）。注意： `如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。`
+	// 该字段已不再使用！
+	// 合同审查中的角色信息。注意： `如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Role *RiskIdentificationRoleInfo `json:"Role,omitnil,omitempty" name:"Role"`
 
@@ -14475,6 +14495,16 @@ type DescribeOrganizationAuthStatusRequestParams struct {
 
 	// 法人姓名
 	LegalName *string `json:"LegalName,omitnil,omitempty" name:"LegalName"`
+
+	// 认证流 Id 是指在企业认证过程中，当前操作人的认证流程的唯一标识。每个企业在认证过程中只能有一条认证流认证成功。这意味着在同一认证过程内，一个企业只能有一个认证流程处于成功状态，以确保认证的唯一性和有效性。
+	// 
+	// 
+	// 认证流 Id可以通过回调[授权书认证审核结果回调](https://qian.tencent.com/developers/company/callback_types_staffs/#%E5%8D%81%E5%85%AD-%E6%8E%88%E6%9D%83%E4%B9%A6%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)获取
+	// 
+	// 注意：
+	// 如果传递了认证流Id，则下面的参数 超管二要素不会生效
+	// 示例值：yDCHHUUckpbdaiqbUxJVsHWy99WG6kTY
+	AuthorizationInfoId *string `json:"AuthorizationInfoId,omitnil,omitempty" name:"AuthorizationInfoId"`
 }
 
 type DescribeOrganizationAuthStatusRequest struct {
@@ -14492,6 +14522,16 @@ type DescribeOrganizationAuthStatusRequest struct {
 
 	// 法人姓名
 	LegalName *string `json:"LegalName,omitnil,omitempty" name:"LegalName"`
+
+	// 认证流 Id 是指在企业认证过程中，当前操作人的认证流程的唯一标识。每个企业在认证过程中只能有一条认证流认证成功。这意味着在同一认证过程内，一个企业只能有一个认证流程处于成功状态，以确保认证的唯一性和有效性。
+	// 
+	// 
+	// 认证流 Id可以通过回调[授权书认证审核结果回调](https://qian.tencent.com/developers/company/callback_types_staffs/#%E5%8D%81%E5%85%AD-%E6%8E%88%E6%9D%83%E4%B9%A6%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)获取
+	// 
+	// 注意：
+	// 如果传递了认证流Id，则下面的参数 超管二要素不会生效
+	// 示例值：yDCHHUUckpbdaiqbUxJVsHWy99WG6kTY
+	AuthorizationInfoId *string `json:"AuthorizationInfoId,omitnil,omitempty" name:"AuthorizationInfoId"`
 }
 
 func (r *DescribeOrganizationAuthStatusRequest) ToJsonString() string {
@@ -14510,6 +14550,7 @@ func (r *DescribeOrganizationAuthStatusRequest) FromJsonString(s string) error {
 	delete(f, "OrganizationName")
 	delete(f, "UniformSocialCreditCode")
 	delete(f, "LegalName")
+	delete(f, "AuthorizationInfoId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationAuthStatusRequest has unknown keys!", "")
 	}

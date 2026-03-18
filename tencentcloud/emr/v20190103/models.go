@@ -2256,6 +2256,9 @@ type CreateSLInstanceRequestParams struct {
 
 	// 部署模式
 	DeploymentMode *string `json:"DeploymentMode,omitnil,omitempty" name:"DeploymentMode"`
+
+	// 服务用户名，对不需要用户名的服务不用传，8-16个字符，支持大写字母、小写字母、数字
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 }
 
 type CreateSLInstanceRequest struct {
@@ -2290,6 +2293,9 @@ type CreateSLInstanceRequest struct {
 
 	// 部署模式
 	DeploymentMode *string `json:"DeploymentMode,omitnil,omitempty" name:"DeploymentMode"`
+
+	// 服务用户名，对不需要用户名的服务不用传，8-16个字符，支持大写字母、小写字母、数字
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 }
 
 func (r *CreateSLInstanceRequest) ToJsonString() string {
@@ -2314,6 +2320,7 @@ func (r *CreateSLInstanceRequest) FromJsonString(s string) error {
 	delete(f, "PrePaySetting")
 	delete(f, "ClientToken")
 	delete(f, "DeploymentMode")
+	delete(f, "UserName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSLInstanceRequest has unknown keys!", "")
 	}
@@ -12227,8 +12234,14 @@ type SLInstanceInfo struct {
 	// 主可用区私有网络ID
 	VpcId *uint64 `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
+	// 主可用区私有网络名
+	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
+
 	// 主可用区子网ID
 	SubnetId *uint64 `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 主可用区子网名
+	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
 
 	// 状态码
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
@@ -12258,6 +12271,9 @@ type SLInstanceInfo struct {
 
 	// 主备部署角色
 	DeployRole *string `json:"DeployRole,omitnil,omitempty" name:"DeployRole"`
+
+	// webui地址
+	WebUIUrl *string `json:"WebUIUrl,omitnil,omitempty" name:"WebUIUrl"`
 }
 
 // Predefined struct for user
