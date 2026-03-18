@@ -102,6 +102,14 @@ type CLSConfig struct {
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
+type CbsStorageSource struct {
+	// CBS云硬盘类型，可选值：CLOUD_PREMIUM (高性能云硬盘), CLOUD_SSD (SSD云硬盘)
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// CBS云硬盘大小，单位GB，范围：10-16000
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+}
+
 type CfsStorageSource struct {
 	// CFS资源ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
@@ -1319,6 +1327,9 @@ type StorageSource struct {
 
 	// 文件存储配置
 	Cfs *CfsStorageSource `json:"Cfs,omitnil,omitempty" name:"Cfs"`
+
+	// 云硬盘存储配置
+	Cbs *CbsStorageSource `json:"Cbs,omitnil,omitempty" name:"Cbs"`
 }
 
 type Tag struct {
