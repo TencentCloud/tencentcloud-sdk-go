@@ -9500,6 +9500,12 @@ type DescribeTWeSeeConfigResponseParams struct {
 	// 配置参数
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 
+	// 摘要配置参数
+	SummaryConfig *VisionSummaryConfig `json:"SummaryConfig,omitnil,omitempty" name:"SummaryConfig"`
+
+	// 云存事件 ID 过滤规则配置项
+	EventIdFilterConfig *SeeEventIdFilterConfig `json:"EventIdFilterConfig,omitnil,omitempty" name:"EventIdFilterConfig"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -15304,6 +15310,9 @@ type ModifyTWeSeeConfigRequestParams struct {
 
 	// 视频摘要配置参数，不传则不修改
 	SummaryConfig *VisionSummaryConfig `json:"SummaryConfig,omitnil,omitempty" name:"SummaryConfig"`
+
+	// 云存事件 ID 过滤规则配置，不传则不修改
+	EventIdFilterConfig *SeeEventIdFilterConfig `json:"EventIdFilterConfig,omitnil,omitempty" name:"EventIdFilterConfig"`
 }
 
 type ModifyTWeSeeConfigRequest struct {
@@ -15332,6 +15341,9 @@ type ModifyTWeSeeConfigRequest struct {
 
 	// 视频摘要配置参数，不传则不修改
 	SummaryConfig *VisionSummaryConfig `json:"SummaryConfig,omitnil,omitempty" name:"SummaryConfig"`
+
+	// 云存事件 ID 过滤规则配置，不传则不修改
+	EventIdFilterConfig *SeeEventIdFilterConfig `json:"EventIdFilterConfig,omitnil,omitempty" name:"EventIdFilterConfig"`
 }
 
 func (r *ModifyTWeSeeConfigRequest) ToJsonString() string {
@@ -15354,6 +15366,7 @@ func (r *ModifyTWeSeeConfigRequest) FromJsonString(s string) error {
 	delete(f, "EnableSearch")
 	delete(f, "Config")
 	delete(f, "SummaryConfig")
+	delete(f, "EventIdFilterConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTWeSeeConfigRequest has unknown keys!", "")
 	}
@@ -17269,6 +17282,14 @@ func (r *SearchTopicRuleResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SearchTopicRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SeeEventIdFilterConfig struct {
+	// 包含的云存事件 ID 集合
+	IncludeOnly []*string `json:"IncludeOnly,omitnil,omitempty" name:"IncludeOnly"`
+
+	// 排除的云存事件 ID 集合
+	Exclude []*string `json:"Exclude,omitnil,omitempty" name:"Exclude"`
 }
 
 type SubscribedTopicItem struct {

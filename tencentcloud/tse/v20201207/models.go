@@ -1727,6 +1727,9 @@ type CreateCloudNativeAPIGatewayRouteRequestParams struct {
 
 	// 正则优先级
 	RegexPriority *int64 `json:"RegexPriority,omitnil,omitempty" name:"RegexPriority"`
+
+	// queryString参数
+	QueryStringParameters []*KVMapping `json:"QueryStringParameters,omitnil,omitempty" name:"QueryStringParameters"`
 }
 
 type CreateCloudNativeAPIGatewayRouteRequest struct {
@@ -1797,6 +1800,9 @@ type CreateCloudNativeAPIGatewayRouteRequest struct {
 
 	// 正则优先级
 	RegexPriority *int64 `json:"RegexPriority,omitnil,omitempty" name:"RegexPriority"`
+
+	// queryString参数
+	QueryStringParameters []*KVMapping `json:"QueryStringParameters,omitnil,omitempty" name:"QueryStringParameters"`
 }
 
 func (r *CreateCloudNativeAPIGatewayRouteRequest) ToJsonString() string {
@@ -1827,6 +1833,7 @@ func (r *CreateCloudNativeAPIGatewayRouteRequest) FromJsonString(s string) error
 	delete(f, "RequestBuffering")
 	delete(f, "ResponseBuffering")
 	delete(f, "RegexPriority")
+	delete(f, "QueryStringParameters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudNativeAPIGatewayRouteRequest has unknown keys!", "")
 	}
@@ -5869,6 +5876,12 @@ type DescribeCloudNativeAPIGatewayResult struct {
 	// 表示可以升级的版本号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AvailableVersions []*string `json:"AvailableVersions,omitnil,omitempty" name:"AvailableVersions"`
+
+	// 网关可以升级的版本号列表
+	AvailableUpgradeVersions []*string `json:"AvailableUpgradeVersions,omitnil,omitempty" name:"AvailableUpgradeVersions"`
+
+	// 是否提示可升级
+	AvailableUpgrade *bool `json:"AvailableUpgrade,omitnil,omitempty" name:"AvailableUpgrade"`
 }
 
 // Predefined struct for user
@@ -10079,6 +10092,9 @@ type KongRoutePreview struct {
 
 	// 正则优先级
 	RegexPriority *int64 `json:"RegexPriority,omitnil,omitempty" name:"RegexPriority"`
+
+	// querystring参数
+	QueryStringParameters []*KVMapping `json:"QueryStringParameters,omitnil,omitempty" name:"QueryStringParameters"`
 }
 
 type KongServiceDetail struct {
@@ -10935,6 +10951,9 @@ type ModifyCloudNativeAPIGatewayRouteRequestParams struct {
 
 	// 增加优先级
 	RegexPriority *int64 `json:"RegexPriority,omitnil,omitempty" name:"RegexPriority"`
+
+	// querysring参数
+	QueryStringParameters []*KVMapping `json:"QueryStringParameters,omitnil,omitempty" name:"QueryStringParameters"`
 }
 
 type ModifyCloudNativeAPIGatewayRouteRequest struct {
@@ -11008,6 +11027,9 @@ type ModifyCloudNativeAPIGatewayRouteRequest struct {
 
 	// 增加优先级
 	RegexPriority *int64 `json:"RegexPriority,omitnil,omitempty" name:"RegexPriority"`
+
+	// querysring参数
+	QueryStringParameters []*KVMapping `json:"QueryStringParameters,omitnil,omitempty" name:"QueryStringParameters"`
 }
 
 func (r *ModifyCloudNativeAPIGatewayRouteRequest) ToJsonString() string {
@@ -11039,6 +11061,7 @@ func (r *ModifyCloudNativeAPIGatewayRouteRequest) FromJsonString(s string) error
 	delete(f, "RequestBuffering")
 	delete(f, "ResponseBuffering")
 	delete(f, "RegexPriority")
+	delete(f, "QueryStringParameters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudNativeAPIGatewayRouteRequest has unknown keys!", "")
 	}

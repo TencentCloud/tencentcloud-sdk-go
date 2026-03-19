@@ -899,7 +899,8 @@ type AttrLabelDetail struct {
 }
 
 type AttrLabelRefer struct {
-	// 标签来源，1：标签
+	// 标签来源，1：标签。
+	// 使用标签引用信息时，Source、AttributeBizId和LabelBizIds都需填写。
 	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 标签ID
@@ -11966,6 +11967,10 @@ type ReleaseConfigs struct {
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 状态
+	// 2：待发布
+	// 3：发布中
+	// 4：已发布
+	// 5：发布失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Action *uint64 `json:"Action,omitnil,omitempty" name:"Action"`
 

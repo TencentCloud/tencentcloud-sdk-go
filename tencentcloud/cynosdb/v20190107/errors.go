@@ -305,6 +305,9 @@ const (
 	// 创建任务失败。{{1}}
 	OPERATIONDENIED_CREATETASKANDFLOWERROR = "OperationDenied.CreateTaskAndFlowError"
 
+	// 新存储架构多可用区部署功能暂未开放
+	OPERATIONDENIED_DISABLENEWSTORAGEMULTIZONEDEPLOYMENTERROR = "OperationDenied.DisableNewStorageMultiZoneDeploymentError"
+
 	// 功能{{1}}暂不支持
 	OPERATIONDENIED_FEATURENOTSUPPORTERROR = "OperationDenied.FeatureNotSupportError"
 
@@ -344,8 +347,14 @@ const (
 	// 缺少参数，{{1}}
 	OPERATIONDENIED_MISSINGPARAMETERERROR = "OperationDenied.MissingParameterError"
 
+	// 新存储架构2.0仅支持8.0
+	OPERATIONDENIED_NEWSTORAGEONLYSUPPORT80ERROR = "OperationDenied.NewStorageOnlySupport80Error"
+
 	// 没有可用资源。
 	OPERATIONDENIED_NOAVALIABLERESOUCEERROR = "OperationDenied.NoAvaliableResouceError"
+
+	// 仅新存储架构2.0支持存储压缩功能
+	OPERATIONDENIED_ONLYNEWSTORAGESUPPORTSTORAGECOMPRESSIONERROR = "OperationDenied.OnlyNewStorageSupportStorageCompressionError"
 
 	// 您没有权限操作该资源（进行该操作）。
 	OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"

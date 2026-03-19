@@ -105,6 +105,76 @@ func (c *Client) CreateApplicationWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateInferServiceByTemplateRequest() (request *CreateInferServiceByTemplateRequest) {
+    request = &CreateInferServiceByTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "CreateInferServiceByTemplate")
+    
+    
+    return
+}
+
+func NewCreateInferServiceByTemplateResponse() (response *CreateInferServiceByTemplateResponse) {
+    response = &CreateInferServiceByTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateInferServiceByTemplate
+// 本接口(CreateInferServiceByTemplate)用于根据模板创建服务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_COMPUTESETCANNOTBENONE = "InvalidParameterValue.ComputeSetCannotBeNone"
+//  INVALIDPARAMETERVALUE_INVALIDCHARGETYPE = "InvalidParameterValue.InvalidChargeType"
+//  INVALIDPARAMETERVALUE_INVALIDSUBNETIDISNONE = "InvalidParameterValue.InvalidSubnetIdIsNone"
+//  INVALIDPARAMETERVALUE_INVALIDSUBNETIDMALFORMED = "InvalidParameterValue.InvalidSubnetIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDVPCIDISNONE = "InvalidParameterValue.InvalidVpcIdIsNone"
+//  INVALIDPARAMETERVALUE_REGIONNOTSUPPORTPUBLICCALLINFO = "InvalidParameterValue.RegionNotSupportPublicCallInfo"
+//  INVALIDPARAMETERVALUE_SERVICENAMETOOLONG = "InvalidParameterValue.ServiceNameTooLong"
+//  INVALIDPARAMETERVALUE_TEMPLATEIDNOTFOUND = "InvalidParameterValue.TemplateIdNotFound"
+//  OPERATIONDENIED_SERVICENOTSUPPORTUPDATECALLINFO = "OperationDenied.ServiceNotSupportUpdateCallInfo"
+//  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
+//  UNAUTHORIZEDOPERATION_ALLOWCREATEONESERVICEOFTEMPLATE = "UnauthorizedOperation.AllowCreateOneServiceOfTemplate"
+func (c *Client) CreateInferServiceByTemplate(request *CreateInferServiceByTemplateRequest) (response *CreateInferServiceByTemplateResponse, err error) {
+    return c.CreateInferServiceByTemplateWithContext(context.Background(), request)
+}
+
+// CreateInferServiceByTemplate
+// 本接口(CreateInferServiceByTemplate)用于根据模板创建服务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_COMPUTESETCANNOTBENONE = "InvalidParameterValue.ComputeSetCannotBeNone"
+//  INVALIDPARAMETERVALUE_INVALIDCHARGETYPE = "InvalidParameterValue.InvalidChargeType"
+//  INVALIDPARAMETERVALUE_INVALIDSUBNETIDISNONE = "InvalidParameterValue.InvalidSubnetIdIsNone"
+//  INVALIDPARAMETERVALUE_INVALIDSUBNETIDMALFORMED = "InvalidParameterValue.InvalidSubnetIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDVPCIDISNONE = "InvalidParameterValue.InvalidVpcIdIsNone"
+//  INVALIDPARAMETERVALUE_REGIONNOTSUPPORTPUBLICCALLINFO = "InvalidParameterValue.RegionNotSupportPublicCallInfo"
+//  INVALIDPARAMETERVALUE_SERVICENAMETOOLONG = "InvalidParameterValue.ServiceNameTooLong"
+//  INVALIDPARAMETERVALUE_TEMPLATEIDNOTFOUND = "InvalidParameterValue.TemplateIdNotFound"
+//  OPERATIONDENIED_SERVICENOTSUPPORTUPDATECALLINFO = "OperationDenied.ServiceNotSupportUpdateCallInfo"
+//  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
+//  UNAUTHORIZEDOPERATION_ALLOWCREATEONESERVICEOFTEMPLATE = "UnauthorizedOperation.AllowCreateOneServiceOfTemplate"
+func (c *Client) CreateInferServiceByTemplateWithContext(ctx context.Context, request *CreateInferServiceByTemplateRequest) (response *CreateInferServiceByTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateInferServiceByTemplateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "CreateInferServiceByTemplate")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInferServiceByTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateInferServiceByTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMuskPromptRequest() (request *CreateMuskPromptRequest) {
     request = &CreateMuskPromptRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -159,6 +229,70 @@ func (c *Client) CreateMuskPromptWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewDeployInferServiceRequest() (request *DeployInferServiceRequest) {
+    request = &DeployInferServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "DeployInferService")
+    
+    
+    return
+}
+
+func NewDeployInferServiceResponse() (response *DeployInferServiceResponse) {
+    response = &DeployInferServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeployInferService
+// 本接口(DeployInferService)用于部署推理服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDCHARGETYPE = "InvalidParameterValue.InvalidChargeType"
+//  INVALIDPARAMETERVALUE_INVALIDSUBNETIDISNONE = "InvalidParameterValue.InvalidSubnetIdIsNone"
+//  INVALIDPARAMETERVALUE_INVALIDSUBNETIDMALFORMED = "InvalidParameterValue.InvalidSubnetIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDVPCIDISNONE = "InvalidParameterValue.InvalidVpcIdIsNone"
+//  INVALIDPARAMETERVALUE_REGIONNOTSUPPORTPUBLICCALLINFO = "InvalidParameterValue.RegionNotSupportPublicCallInfo"
+//  INVALIDPARAMETERVALUE_SERVICENAMETOOLONG = "InvalidParameterValue.ServiceNameTooLong"
+//  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
+func (c *Client) DeployInferService(request *DeployInferServiceRequest) (response *DeployInferServiceResponse, err error) {
+    return c.DeployInferServiceWithContext(context.Background(), request)
+}
+
+// DeployInferService
+// 本接口(DeployInferService)用于部署推理服务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDCHARGETYPE = "InvalidParameterValue.InvalidChargeType"
+//  INVALIDPARAMETERVALUE_INVALIDSUBNETIDISNONE = "InvalidParameterValue.InvalidSubnetIdIsNone"
+//  INVALIDPARAMETERVALUE_INVALIDSUBNETIDMALFORMED = "InvalidParameterValue.InvalidSubnetIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDVPCIDISNONE = "InvalidParameterValue.InvalidVpcIdIsNone"
+//  INVALIDPARAMETERVALUE_REGIONNOTSUPPORTPUBLICCALLINFO = "InvalidParameterValue.RegionNotSupportPublicCallInfo"
+//  INVALIDPARAMETERVALUE_SERVICENAMETOOLONG = "InvalidParameterValue.ServiceNameTooLong"
+//  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
+func (c *Client) DeployInferServiceWithContext(ctx context.Context, request *DeployInferServiceRequest) (response *DeployInferServiceResponse, err error) {
+    if request == nil {
+        request = NewDeployInferServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "DeployInferService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeployInferService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeployInferServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApplicationsRequest() (request *DescribeApplicationsRequest) {
     request = &DescribeApplicationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -184,6 +318,7 @@ func NewDescribeApplicationsResponse() (response *DescribeApplicationsResponse) 
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONIDMALFORMED = "InvalidParameterValue.InvalidApplicationIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONTYPE = "InvalidParameterValue.InvalidApplicationType"
@@ -200,6 +335,7 @@ func (c *Client) DescribeApplications(request *DescribeApplicationsRequest) (res
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONIDMALFORMED = "InvalidParameterValue.InvalidApplicationIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONTYPE = "InvalidParameterValue.InvalidApplicationType"
@@ -219,6 +355,56 @@ func (c *Client) DescribeApplicationsWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeApplicationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeployTemplatesRequest() (request *DescribeDeployTemplatesRequest) {
+    request = &DescribeDeployTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "DescribeDeployTemplates")
+    
+    
+    return
+}
+
+func NewDescribeDeployTemplatesResponse() (response *DescribeDeployTemplatesResponse) {
+    response = &DescribeDeployTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeployTemplates
+// 本接口(DescribeDeployTemplates)用于查询模型支持的部署模板
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDMODELIDMALFORMED = "InvalidParameterValue.InvalidModelIdMalformed"
+func (c *Client) DescribeDeployTemplates(request *DescribeDeployTemplatesRequest) (response *DescribeDeployTemplatesResponse, err error) {
+    return c.DescribeDeployTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeDeployTemplates
+// 本接口(DescribeDeployTemplates)用于查询模型支持的部署模板
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDMODELIDMALFORMED = "InvalidParameterValue.InvalidModelIdMalformed"
+func (c *Client) DescribeDeployTemplatesWithContext(ctx context.Context, request *DescribeDeployTemplatesRequest) (response *DescribeDeployTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeployTemplatesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "DescribeDeployTemplates")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeployTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeployTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -302,7 +488,6 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
 //  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
@@ -317,7 +502,6 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
 //  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
@@ -335,6 +519,60 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeModelsRequest() (request *DescribeModelsRequest) {
+    request = &DescribeModelsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "DescribeModels")
+    
+    
+    return
+}
+
+func NewDescribeModelsResponse() (response *DescribeModelsResponse) {
+    response = &DescribeModelsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeModels
+// 本接口(DescribeModels)用于查询模型
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INVALIDMODELIDMALFORMED = "InvalidParameterValue.InvalidModelIdMalformed"
+func (c *Client) DescribeModels(request *DescribeModelsRequest) (response *DescribeModelsResponse, err error) {
+    return c.DescribeModelsWithContext(context.Background(), request)
+}
+
+// DescribeModels
+// 本接口(DescribeModels)用于查询模型
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INVALIDMODELIDMALFORMED = "InvalidParameterValue.InvalidModelIdMalformed"
+func (c *Client) DescribeModelsWithContext(ctx context.Context, request *DescribeModelsRequest) (response *DescribeModelsResponse, err error) {
+    if request == nil {
+        request = NewDescribeModelsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "DescribeModels")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModels require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeModelsResponse()
     err = c.Send(request, response)
     return
 }
@@ -630,7 +868,6 @@ func NewInquirePriceRunInstancesResponse() (response *InquirePriceRunInstancesRe
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_APPLICATIONIDNOTFOUND = "InvalidParameterValue.ApplicationIdNotFound"
 //  INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = "InvalidParameterValue.BundleTypeNotFound"
 //  INVALIDPARAMETERVALUE_INSTANCENAMETOOLONG = "InvalidParameterValue.InstanceNameTooLong"
@@ -655,7 +892,6 @@ func (c *Client) InquirePriceRunInstances(request *InquirePriceRunInstancesReque
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_APPLICATIONIDNOTFOUND = "InvalidParameterValue.ApplicationIdNotFound"
 //  INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = "InvalidParameterValue.BundleTypeNotFound"
 //  INVALIDPARAMETERVALUE_INSTANCENAMETOOLONG = "InvalidParameterValue.InstanceNameTooLong"
@@ -893,6 +1129,7 @@ func NewRunInstancesResponse() (response *RunInstancesResponse) {
 //  FAILEDOPERATION_ARREARSACCOUNTCANNOTRUNINSTANCES = "FailedOperation.ArrearsAccountCannotRunInstances"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_APPLICATIONIDNOTFOUND = "InvalidParameterValue.ApplicationIdNotFound"
 //  INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = "InvalidParameterValue.BundleTypeNotFound"
 //  INVALIDPARAMETERVALUE_DISKSIZEMUSTLARGERTHANAPPLICATIONMINREQUIREDSIZE = "InvalidParameterValue.DiskSizeMustLargerThanApplicationMinRequiredSize"
@@ -923,6 +1160,7 @@ func (c *Client) RunInstances(request *RunInstancesRequest) (response *RunInstan
 //  FAILEDOPERATION_ARREARSACCOUNTCANNOTRUNINSTANCES = "FailedOperation.ArrearsAccountCannotRunInstances"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_APPLICATIONIDNOTFOUND = "InvalidParameterValue.ApplicationIdNotFound"
 //  INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = "InvalidParameterValue.BundleTypeNotFound"
 //  INVALIDPARAMETERVALUE_DISKSIZEMUSTLARGERTHANAPPLICATIONMINREQUIREDSIZE = "InvalidParameterValue.DiskSizeMustLargerThanApplicationMinRequiredSize"

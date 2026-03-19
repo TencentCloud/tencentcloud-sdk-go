@@ -542,6 +542,9 @@ const (
 	// 无效参数值。参数值太长。
 	INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 
+	// 传统公网IPv6地址已默认支持在网卡上显示，无需单独开启此功能
+	INVALIDPARAMETERVALUE_TRADITIONALIPV6VISIBLEONENINOTSUPPORTED = "InvalidParameterValue.TraditionalIPv6VisibleOnEniNotSupported"
+
 	// 流量包ID格式错误。
 	INVALIDPARAMETERVALUE_TRAFFICPACKAGEID = "InvalidParameterValue.TrafficPackageId"
 
@@ -769,6 +772,12 @@ const (
 
 	// 互斥的任务正在执行。
 	OPERATIONDENIED_MUTEXTASKRUNNING = "OperationDenied.MutexTaskRunning"
+
+	// 资源业务带宽超过防误操作检测阈值。
+	OPERATIONDENIED_TRAFFICEXCEEDTHRESHOLD = "OperationDenied.TrafficExceedThreshold"
+
+	// 资源在防误操作检测期间流量验证失败。
+	OPERATIONDENIED_TRAFFICVALIDATIONFAILED = "OperationDenied.TrafficValidationFailed"
 
 	// 请求的次数超过了频率限制。
 	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"

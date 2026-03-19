@@ -2375,6 +2375,10 @@ func NewDeletePolicyGroupResponse() (response *DeletePolicyGroupResponse) {
 }
 
 // DeletePolicyGroup
+// 告警 1.0 API，不能再使用否则会导致后端数据不一致
+//
+// 
+//
 // 删除告警策略组
 //
 // 可能返回的错误码:
@@ -2419,6 +2423,10 @@ func (c *Client) DeletePolicyGroup(request *DeletePolicyGroupRequest) (response 
 }
 
 // DeletePolicyGroup
+// 告警 1.0 API，不能再使用否则会导致后端数据不一致
+//
+// 
+//
 // 删除告警策略组
 //
 // 可能返回的错误码:

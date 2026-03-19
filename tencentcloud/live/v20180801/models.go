@@ -775,6 +775,179 @@ func (r *AuthenticateDomainOwnerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AvatarAnchorInfo struct {
+	// 主播昵称。同一个主播可以存在多个数字人ID。
+	AnchorName *string `json:"AnchorName,omitnil,omitempty" name:"AnchorName"`
+
+	// 主播 ID。用于标识主播形象。同一个主播ID可存在竖屏和横屏两种数字人。
+	AnchorId *string `json:"AnchorId,omitnil,omitempty" name:"AnchorId"`
+
+	// 主播性别。male-男性，femal-女性。
+	AnchorGender *string `json:"AnchorGender,omitnil,omitempty" name:"AnchorGender"`
+
+	// 形象图片。
+	PoseImage *string `json:"PoseImage,omitnil,omitempty" name:"PoseImage"`
+
+	// 主播形象图片的分辨率。
+	PoseImageResolution *string `json:"PoseImageResolution,omitnil,omitempty" name:"PoseImageResolution"`
+
+	// 形象预览视频段。
+	ReferenceVideoSegmentUrl *string `json:"ReferenceVideoSegmentUrl,omitnil,omitempty" name:"ReferenceVideoSegmentUrl"`
+
+	// 横屏数字人信息。
+	HorizontalAvatar *AvatarImageInfo `json:"HorizontalAvatar,omitnil,omitempty" name:"HorizontalAvatar"`
+
+	// 竖屏数字人信息。
+	VerticalAvatar *AvatarImageInfo `json:"VerticalAvatar,omitnil,omitempty" name:"VerticalAvatar"`
+
+	// 推荐音色。
+	SuggestTimbreKey *string `json:"SuggestTimbreKey,omitnil,omitempty" name:"SuggestTimbreKey"`
+}
+
+type AvatarBackgroundInfo struct {
+	// 背景 ID。
+	BackgroundId *string `json:"BackgroundId,omitnil,omitempty" name:"BackgroundId"`
+
+	// 背景场景。如：带货，娱乐等。
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// 竖屏背景图片 URL。
+	VerticalImageUrl *string `json:"VerticalImageUrl,omitnil,omitempty" name:"VerticalImageUrl"`
+
+	// 横屏背景图片 URL。
+	HorizontalImageUrl *string `json:"HorizontalImageUrl,omitnil,omitempty" name:"HorizontalImageUrl"`
+}
+
+type AvatarImageInfo struct {
+	// 数字人原始缩放系数。数字人展示大小=原始大小*缩放系数。
+	OriginZoom *float64 `json:"OriginZoom,omitnil,omitempty" name:"OriginZoom"`
+
+	// 数字人KEY。
+	AvatarKey *string `json:"AvatarKey,omitnil,omitempty" name:"AvatarKey"`
+
+	// 分辨率。
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+}
+
+type AvatarRoomInfo struct {
+	// 数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 数字人直播间名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数字人直播间状态，
+	// CLOSE - 未开播。
+	// OPEN - 直播中。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 数字人形象 KEY。
+	AvatarKey *string `json:"AvatarKey,omitnil,omitempty" name:"AvatarKey"`
+
+	// 音色 KEy。
+	TimbreKey *string `json:"TimbreKey,omitnil,omitempty" name:"TimbreKey"`
+
+	// 数字人形象图片 URL。
+	AvatarImageUrl *string `json:"AvatarImageUrl,omitnil,omitempty" name:"AvatarImageUrl"`
+
+	// 背景图片 URL。
+	BackgroundUrl *string `json:"BackgroundUrl,omitnil,omitempty" name:"BackgroundUrl"`
+
+	// 推流目标描述。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 目标推流地址。
+	ToUrl *string `json:"ToUrl,omitnil,omitempty" name:"ToUrl"`
+
+	// 主播大小，默认1.00。 取值范围(0, 15.00]。
+	AnchorScale *float64 `json:"AnchorScale,omitnil,omitempty" name:"AnchorScale"`
+
+	// 主播纵向位置。默认-1贴底部。
+	AnchorVerticalPos *int64 `json:"AnchorVerticalPos,omitnil,omitempty" name:"AnchorVerticalPos"`
+
+	// 主播横向位置。默认-1居中。
+	AnchorHorizontalPos *int64 `json:"AnchorHorizontalPos,omitnil,omitempty" name:"AnchorHorizontalPos"`
+
+	// 语速（1.0为正常语速，范围[0.5-1.5]，值为0.5时播报语速最慢，值为1.5时播报语速最快。
+	SpeechSpeed *float64 `json:"SpeechSpeed,omitnil,omitempty" name:"SpeechSpeed"`
+
+	// 音量大小，范围[0，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。
+	SpeechVolume *int64 `json:"SpeechVolume,omitnil,omitempty" name:"SpeechVolume"`
+
+	// 直播间创建时间，UTC时间。
+	// 注意：UTC时间和北京时间相差八小时。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 直播间最后更新时间，UTC时间。
+	// 注意：UTC时间和北京时间相差八小时。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type AvatarScriptInfo struct {
+	// 数字人直播间话术 ID。
+	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
+
+	// 话术标题。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 话术内容。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 话术状态。
+	// PENDING --未生成。
+	// PROCESSING --生成中。
+	// READY --已生成。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 时长。单位：毫秒。
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 话术位置。
+	Position *int64 `json:"Position,omitnil,omitempty" name:"Position"`
+
+	// 话术创建时间，UTC时间。
+	// 注意：UTC时间和北京时间相差八小时。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 话术最后更新时间，UTC时间。
+	// 注意：UTC时间和北京时间相差八小时。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type AvatarTemporaryScriptInfo struct {
+	// 话术内容。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 话术创建时间，UTC时间。
+	// 注意：UTC时间和北京时间相差八小时。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
+type AvatarTimbreInfo struct {
+	// 音色 Key。
+	TimbreKey *string `json:"TimbreKey,omitnil,omitempty" name:"TimbreKey"`
+
+	// 音色名称。
+	TimbreName *string `json:"TimbreName,omitnil,omitempty" name:"TimbreName"`
+
+	// 音色描述。
+	TimbreDesc *string `json:"TimbreDesc,omitnil,omitempty" name:"TimbreDesc"`
+
+	// 音色试听样例 URL。
+	TimbreSample *string `json:"TimbreSample,omitnil,omitempty" name:"TimbreSample"`
+
+	// 音色性别，male:男音，femal:女音。
+	TimbreGender *string `json:"TimbreGender,omitnil,omitempty" name:"TimbreGender"`
+}
+
+type AvatarTimbreList struct {
+	// 音色 类型。
+	TimbreType *string `json:"TimbreType,omitnil,omitempty" name:"TimbreType"`
+
+	// 音色信息列表。
+	TimbreInfoList []*AvatarTimbreInfo `json:"TimbreInfoList,omitnil,omitempty" name:"TimbreInfoList"`
+}
+
 type BackupStreamDetailData struct {
 	// 推流域名。
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
@@ -1780,6 +1953,84 @@ func (r *CopyCasterResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CopyLiveAvatarRoomRequestParams struct {
+	// 新直播间名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 源数字人直播间 ID。
+	SourceRoomId *string `json:"SourceRoomId,omitnil,omitempty" name:"SourceRoomId"`
+
+	// 是否复制话术列表。默认：true。
+	IsCopyScript *bool `json:"IsCopyScript,omitnil,omitempty" name:"IsCopyScript"`
+
+	// 操作者。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type CopyLiveAvatarRoomRequest struct {
+	*tchttp.BaseRequest
+	
+	// 新直播间名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 源数字人直播间 ID。
+	SourceRoomId *string `json:"SourceRoomId,omitnil,omitempty" name:"SourceRoomId"`
+
+	// 是否复制话术列表。默认：true。
+	IsCopyScript *bool `json:"IsCopyScript,omitnil,omitempty" name:"IsCopyScript"`
+
+	// 操作者。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+func (r *CopyLiveAvatarRoomRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CopyLiveAvatarRoomRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "SourceRoomId")
+	delete(f, "IsCopyScript")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CopyLiveAvatarRoomRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CopyLiveAvatarRoomResponseParams struct {
+	// 数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CopyLiveAvatarRoomResponse struct {
+	*tchttp.BaseResponse
+	Response *CopyLiveAvatarRoomResponseParams `json:"Response"`
+}
+
+func (r *CopyLiveAvatarRoomResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CopyLiveAvatarRoomResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateAuditKeywordLibRequestParams struct {
 	// <p>自定义词库名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -2474,6 +2725,159 @@ func (r *CreateCommonMixStreamResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateCommonMixStreamResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLiveAvatarRoomRequestParams struct {
+	// 直播间名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 操作者。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type CreateLiveAvatarRoomRequest struct {
+	*tchttp.BaseRequest
+	
+	// 直播间名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 操作者。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+func (r *CreateLiveAvatarRoomRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveAvatarRoomRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveAvatarRoomRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLiveAvatarRoomResponseParams struct {
+	// 数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateLiveAvatarRoomResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLiveAvatarRoomResponseParams `json:"Response"`
+}
+
+func (r *CreateLiveAvatarRoomResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveAvatarRoomResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLiveAvatarScriptRequestParams struct {
+	// 话术标题。限制500字节。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 话术内容。中文最大支持150个汉字（全角标点符号算一个汉字）；英文最大支持500个字母（半角标点符号算一个字母）。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 话术所属的数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 话术插入时，可根据已有话术位置，指定新话术插入位置。
+	// 如已有三条话术100，200，300。
+	// 新话术可选择150插入到第一条和第二条中间。
+	SpecifyPosition *int64 `json:"SpecifyPosition,omitnil,omitempty" name:"SpecifyPosition"`
+
+	// 操作者。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type CreateLiveAvatarScriptRequest struct {
+	*tchttp.BaseRequest
+	
+	// 话术标题。限制500字节。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 话术内容。中文最大支持150个汉字（全角标点符号算一个汉字）；英文最大支持500个字母（半角标点符号算一个字母）。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 话术所属的数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 话术插入时，可根据已有话术位置，指定新话术插入位置。
+	// 如已有三条话术100，200，300。
+	// 新话术可选择150插入到第一条和第二条中间。
+	SpecifyPosition *int64 `json:"SpecifyPosition,omitnil,omitempty" name:"SpecifyPosition"`
+
+	// 操作者。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+func (r *CreateLiveAvatarScriptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveAvatarScriptRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Title")
+	delete(f, "Content")
+	delete(f, "RoomId")
+	delete(f, "SpecifyPosition")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveAvatarScriptRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLiveAvatarScriptResponseParams struct {
+	// 话术 ID。
+	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateLiveAvatarScriptResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLiveAvatarScriptResponseParams `json:"Response"`
+}
+
+func (r *CreateLiveAvatarScriptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveAvatarScriptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5618,6 +6022,114 @@ func (r *DeleteCasterResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteLiveAvatarRoomRequestParams struct {
+	// 直播间ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+type DeleteLiveAvatarRoomRequest struct {
+	*tchttp.BaseRequest
+	
+	// 直播间ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+func (r *DeleteLiveAvatarRoomRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLiveAvatarRoomRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveAvatarRoomRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLiveAvatarRoomResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteLiveAvatarRoomResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLiveAvatarRoomResponseParams `json:"Response"`
+}
+
+func (r *DeleteLiveAvatarRoomResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLiveAvatarRoomResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLiveAvatarScriptRequestParams struct {
+	// 话术ID。
+	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
+}
+
+type DeleteLiveAvatarScriptRequest struct {
+	*tchttp.BaseRequest
+	
+	// 话术ID。
+	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
+}
+
+func (r *DeleteLiveAvatarScriptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLiveAvatarScriptRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ScriptId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveAvatarScriptRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLiveAvatarScriptResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteLiveAvatarScriptResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLiveAvatarScriptResponseParams `json:"Response"`
+}
+
+func (r *DeleteLiveAvatarScriptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLiveAvatarScriptResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteLiveCallbackRuleRequestParams struct {
 	// 推流域名。
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
@@ -8660,6 +9172,400 @@ func (r *DescribeHttpStatusInfoListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeHttpStatusInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveAvatarBackgroundListRequestParams struct {
+
+}
+
+type DescribeLiveAvatarBackgroundListRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeLiveAvatarBackgroundListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveAvatarBackgroundListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveAvatarBackgroundListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveAvatarBackgroundListResponseParams struct {
+	// 数字人背景图片信息列表。
+	InfoList []*AvatarBackgroundInfo `json:"InfoList,omitnil,omitempty" name:"InfoList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveAvatarBackgroundListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveAvatarBackgroundListResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveAvatarBackgroundListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveAvatarBackgroundListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveAvatarImageListRequestParams struct {
+
+}
+
+type DescribeLiveAvatarImageListRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeLiveAvatarImageListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveAvatarImageListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveAvatarImageListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveAvatarImageListResponseParams struct {
+	// 数字人形象信息列表。
+	ImageInfoList []*AvatarAnchorInfo `json:"ImageInfoList,omitnil,omitempty" name:"ImageInfoList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveAvatarImageListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveAvatarImageListResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveAvatarImageListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveAvatarImageListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveAvatarRoomsRequestParams struct {
+	// 数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 数字人直播间名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 分页查询的页数。
+	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
+
+	// 分页查询的每页个数。
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeLiveAvatarRoomsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 数字人直播间名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 分页查询的页数。
+	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
+
+	// 分页查询的每页个数。
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeLiveAvatarRoomsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveAvatarRoomsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	delete(f, "Name")
+	delete(f, "PageIndex")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveAvatarRoomsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveAvatarRoomsResponseParams struct {
+	// 数字人直播间信息列表。
+	InfoList []*AvatarRoomInfo `json:"InfoList,omitnil,omitempty" name:"InfoList"`
+
+	// 限制可创建的数字人直播间总数。
+	LimitCreateNum *int64 `json:"LimitCreateNum,omitnil,omitempty" name:"LimitCreateNum"`
+
+	// 当前数字人直播间总个数。
+	TotalNum *int64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveAvatarRoomsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveAvatarRoomsResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveAvatarRoomsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveAvatarRoomsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveAvatarScriptsRequestParams struct {
+	// 数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 数字人直播间话术 ID。
+	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
+
+	// 分页查询的页数。
+	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
+
+	// 分页查询的每页个数。
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeLiveAvatarScriptsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 数字人直播间话术 ID。
+	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
+
+	// 分页查询的页数。
+	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
+
+	// 分页查询的每页个数。
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeLiveAvatarScriptsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveAvatarScriptsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	delete(f, "ScriptId")
+	delete(f, "PageIndex")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveAvatarScriptsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveAvatarScriptsResponseParams struct {
+	// 数字人直播间话术信息列表。
+	InfoList []*AvatarScriptInfo `json:"InfoList,omitnil,omitempty" name:"InfoList"`
+
+	// 限制可创建的数字人直播间话术总条数。
+	LimitCreateNum *int64 `json:"LimitCreateNum,omitnil,omitempty" name:"LimitCreateNum"`
+
+	// 当前数字人直播间话术总条数。
+	TotalNum *int64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveAvatarScriptsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveAvatarScriptsResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveAvatarScriptsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveAvatarScriptsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveAvatarTemporaryScriptListRequestParams struct {
+	// 数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+type DescribeLiveAvatarTemporaryScriptListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+func (r *DescribeLiveAvatarTemporaryScriptListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveAvatarTemporaryScriptListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveAvatarTemporaryScriptListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveAvatarTemporaryScriptListResponseParams struct {
+	// 临时话术列表。
+	InfoList []*AvatarTemporaryScriptInfo `json:"InfoList,omitnil,omitempty" name:"InfoList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveAvatarTemporaryScriptListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveAvatarTemporaryScriptListResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveAvatarTemporaryScriptListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveAvatarTemporaryScriptListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveAvatarTimbreListRequestParams struct {
+	// 过滤音色性别。默认不过滤。
+	// male - 男性，
+	// female -女性。
+	TimbreGender *string `json:"TimbreGender,omitnil,omitempty" name:"TimbreGender"`
+}
+
+type DescribeLiveAvatarTimbreListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤音色性别。默认不过滤。
+	// male - 男性，
+	// female -女性。
+	TimbreGender *string `json:"TimbreGender,omitnil,omitempty" name:"TimbreGender"`
+}
+
+func (r *DescribeLiveAvatarTimbreListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveAvatarTimbreListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TimbreGender")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveAvatarTimbreListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveAvatarTimbreListResponseParams struct {
+	// 数字人声音信息列表。
+	TimbreList []*AvatarTimbreList `json:"TimbreList,omitnil,omitempty" name:"TimbreList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveAvatarTimbreListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveAvatarTimbreListResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveAvatarTimbreListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveAvatarTimbreListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -15135,6 +16041,91 @@ func (r *ForbidLiveStreamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GenerateLiveAvatarScriptBroadcastRequestParams struct {
+	// 数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 话术 ID。
+	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
+
+	// 音色 Key。如果不填，则默认使用数字人直播已经保存的音色。
+	TimbreKey *string `json:"TimbreKey,omitnil,omitempty" name:"TimbreKey"`
+
+	// 语速（1.0为正常语速，范围[0.6-2.5]，值为0.6时播报语速最慢，值为2.5时播报语速最快。不传默认使用数字人直播间已设置的语速。
+	SpeechSpeed *float64 `json:"SpeechSpeed,omitnil,omitempty" name:"SpeechSpeed"`
+
+	// 音量大小，范围[0，10]，对应音量大小。默认为5，代表正常音量，值越大音量越高。不传使用数字人直播已设置的音量。
+	SpeechVolume *int64 `json:"SpeechVolume,omitnil,omitempty" name:"SpeechVolume"`
+}
+
+type GenerateLiveAvatarScriptBroadcastRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 话术 ID。
+	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
+
+	// 音色 Key。如果不填，则默认使用数字人直播已经保存的音色。
+	TimbreKey *string `json:"TimbreKey,omitnil,omitempty" name:"TimbreKey"`
+
+	// 语速（1.0为正常语速，范围[0.6-2.5]，值为0.6时播报语速最慢，值为2.5时播报语速最快。不传默认使用数字人直播间已设置的语速。
+	SpeechSpeed *float64 `json:"SpeechSpeed,omitnil,omitempty" name:"SpeechSpeed"`
+
+	// 音量大小，范围[0，10]，对应音量大小。默认为5，代表正常音量，值越大音量越高。不传使用数字人直播已设置的音量。
+	SpeechVolume *int64 `json:"SpeechVolume,omitnil,omitempty" name:"SpeechVolume"`
+}
+
+func (r *GenerateLiveAvatarScriptBroadcastRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateLiveAvatarScriptBroadcastRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	delete(f, "ScriptId")
+	delete(f, "TimbreKey")
+	delete(f, "SpeechSpeed")
+	delete(f, "SpeechVolume")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateLiveAvatarScriptBroadcastRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenerateLiveAvatarScriptBroadcastResponseParams struct {
+	// 音频播报 URL。
+	PreviewAudioUrl *string `json:"PreviewAudioUrl,omitnil,omitempty" name:"PreviewAudioUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GenerateLiveAvatarScriptBroadcastResponse struct {
+	*tchttp.BaseResponse
+	Response *GenerateLiveAvatarScriptBroadcastResponseParams `json:"Response"`
+}
+
+func (r *GenerateLiveAvatarScriptBroadcastResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateLiveAvatarScriptBroadcastResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type GroupProIspDataInfo struct {
 	// 省份。
 	ProvinceName *string `json:"ProvinceName,omitnil,omitempty" name:"ProvinceName"`
@@ -16046,6 +17037,230 @@ func (r *ModifyCasterResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyCasterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLiveAvatarRoomRequestParams struct {
+	// 数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 直播间名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数字人形象KEY。
+	AvatarKey *string `json:"AvatarKey,omitnil,omitempty" name:"AvatarKey"`
+
+	// 音色KEY。
+	TimbreKey *string `json:"TimbreKey,omitnil,omitempty" name:"TimbreKey"`
+
+	// 背景图片URL。
+	BackgroundUrl *string `json:"BackgroundUrl,omitnil,omitempty" name:"BackgroundUrl"`
+
+	// 主播大小，默认1.00。
+	// 取值范围(0, 15.00]。
+	// 精度：使用小数点后两位。
+	AnchorScale *float64 `json:"AnchorScale,omitnil,omitempty" name:"AnchorScale"`
+
+	// 主播纵向位置。默认-1贴底部。
+	// 左上角为原点，形象顶部离屏幕顶部的距离，最大不能使形象底部超出屏幕。
+	// 即该纵向位置最大为：数字人分辨率的高 - 形象高。
+	AnchorVerticalPos *int64 `json:"AnchorVerticalPos,omitnil,omitempty" name:"AnchorVerticalPos"`
+
+	// 主播横向位置。默认-1居中。
+	// 左上角为原点，形象左侧离左侧屏幕的距离。最大值不可使形象右侧超出右侧屏幕。
+	// 即最大值为：数字人分辨率的宽 - 形象宽。
+	AnchorHorizontalPos *int64 `json:"AnchorHorizontalPos,omitnil,omitempty" name:"AnchorHorizontalPos"`
+
+	// 语速（1.0为正常语速，范围[0.6-2.5]，值为0.6时播报语速最慢，值为2.5时播报语速最快。
+	SpeechSpeed *float64 `json:"SpeechSpeed,omitnil,omitempty" name:"SpeechSpeed"`
+
+	// 音量大小，范围[0，10]，对应音量大小。默认为5，代表正常音量，值越大音量越高。
+	SpeechVolume *int64 `json:"SpeechVolume,omitnil,omitempty" name:"SpeechVolume"`
+
+	// 操作者。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type ModifyLiveAvatarRoomRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 直播间名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数字人形象KEY。
+	AvatarKey *string `json:"AvatarKey,omitnil,omitempty" name:"AvatarKey"`
+
+	// 音色KEY。
+	TimbreKey *string `json:"TimbreKey,omitnil,omitempty" name:"TimbreKey"`
+
+	// 背景图片URL。
+	BackgroundUrl *string `json:"BackgroundUrl,omitnil,omitempty" name:"BackgroundUrl"`
+
+	// 主播大小，默认1.00。
+	// 取值范围(0, 15.00]。
+	// 精度：使用小数点后两位。
+	AnchorScale *float64 `json:"AnchorScale,omitnil,omitempty" name:"AnchorScale"`
+
+	// 主播纵向位置。默认-1贴底部。
+	// 左上角为原点，形象顶部离屏幕顶部的距离，最大不能使形象底部超出屏幕。
+	// 即该纵向位置最大为：数字人分辨率的高 - 形象高。
+	AnchorVerticalPos *int64 `json:"AnchorVerticalPos,omitnil,omitempty" name:"AnchorVerticalPos"`
+
+	// 主播横向位置。默认-1居中。
+	// 左上角为原点，形象左侧离左侧屏幕的距离。最大值不可使形象右侧超出右侧屏幕。
+	// 即最大值为：数字人分辨率的宽 - 形象宽。
+	AnchorHorizontalPos *int64 `json:"AnchorHorizontalPos,omitnil,omitempty" name:"AnchorHorizontalPos"`
+
+	// 语速（1.0为正常语速，范围[0.6-2.5]，值为0.6时播报语速最慢，值为2.5时播报语速最快。
+	SpeechSpeed *float64 `json:"SpeechSpeed,omitnil,omitempty" name:"SpeechSpeed"`
+
+	// 音量大小，范围[0，10]，对应音量大小。默认为5，代表正常音量，值越大音量越高。
+	SpeechVolume *int64 `json:"SpeechVolume,omitnil,omitempty" name:"SpeechVolume"`
+
+	// 操作者。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+func (r *ModifyLiveAvatarRoomRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLiveAvatarRoomRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	delete(f, "Name")
+	delete(f, "AvatarKey")
+	delete(f, "TimbreKey")
+	delete(f, "BackgroundUrl")
+	delete(f, "AnchorScale")
+	delete(f, "AnchorVerticalPos")
+	delete(f, "AnchorHorizontalPos")
+	delete(f, "SpeechSpeed")
+	delete(f, "SpeechVolume")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveAvatarRoomRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLiveAvatarRoomResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLiveAvatarRoomResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLiveAvatarRoomResponseParams `json:"Response"`
+}
+
+func (r *ModifyLiveAvatarRoomResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLiveAvatarRoomResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLiveAvatarScriptRequestParams struct {
+	// 数字人直播间话术 ID。
+	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
+
+	// 话术标题，限制500字节。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 话术内容，限制1000字节。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 修改已有话术的位置。
+	// 比如已有话术三条，位置分别为100，200，300。
+	// 可将第三条话术改到第一条和第二条中间，则可指定第三条话术的位置为 150。
+	// 每次指定尽量取两条话术的中间位置，如50,150等，为后面顺序调整预留位置。
+	SpecifyPosition *int64 `json:"SpecifyPosition,omitnil,omitempty" name:"SpecifyPosition"`
+
+	// 操作者。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type ModifyLiveAvatarScriptRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数字人直播间话术 ID。
+	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
+
+	// 话术标题，限制500字节。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 话术内容，限制1000字节。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 修改已有话术的位置。
+	// 比如已有话术三条，位置分别为100，200，300。
+	// 可将第三条话术改到第一条和第二条中间，则可指定第三条话术的位置为 150。
+	// 每次指定尽量取两条话术的中间位置，如50,150等，为后面顺序调整预留位置。
+	SpecifyPosition *int64 `json:"SpecifyPosition,omitnil,omitempty" name:"SpecifyPosition"`
+
+	// 操作者。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+func (r *ModifyLiveAvatarScriptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLiveAvatarScriptRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ScriptId")
+	delete(f, "Title")
+	delete(f, "Content")
+	delete(f, "SpecifyPosition")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveAvatarScriptRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLiveAvatarScriptResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLiveAvatarScriptResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLiveAvatarScriptResponseParams `json:"Response"`
+}
+
+func (r *ModifyLiveAvatarScriptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLiveAvatarScriptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -19133,6 +20348,67 @@ func (r *SendLiveCloudEffectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SendTemporaryScriptToAvatarRoomRequestParams struct {
+	// 数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 临时话术，最长不超过500字。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+type SendTemporaryScriptToAvatarRoomRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 临时话术，最长不超过500字。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+func (r *SendTemporaryScriptToAvatarRoomRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendTemporaryScriptToAvatarRoomRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	delete(f, "Content")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendTemporaryScriptToAvatarRoomRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SendTemporaryScriptToAvatarRoomResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SendTemporaryScriptToAvatarRoomResponse struct {
+	*tchttp.BaseResponse
+	Response *SendTemporaryScriptToAvatarRoomResponseParams `json:"Response"`
+}
+
+func (r *SendTemporaryScriptToAvatarRoomResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendTemporaryScriptToAvatarRoomResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SnapshotTemplateInfo struct {
 	// 模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
@@ -19173,6 +20449,81 @@ type SnapshotTemplateInfo struct {
 	// Cos 文件名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosFileName *string `json:"CosFileName,omitnil,omitempty" name:"CosFileName"`
+}
+
+// Predefined struct for user
+type StartLiveAvatarRoomRequestParams struct {
+	// 数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 目标地址描述。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 推流目标地址。
+	ToUrl *string `json:"ToUrl,omitnil,omitempty" name:"ToUrl"`
+
+	// 操作者。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type StartLiveAvatarRoomRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 目标地址描述。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 推流目标地址。
+	ToUrl *string `json:"ToUrl,omitnil,omitempty" name:"ToUrl"`
+
+	// 操作者。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+func (r *StartLiveAvatarRoomRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartLiveAvatarRoomRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	delete(f, "Comment")
+	delete(f, "ToUrl")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartLiveAvatarRoomRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartLiveAvatarRoomResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StartLiveAvatarRoomResponse struct {
+	*tchttp.BaseResponse
+	Response *StartLiveAvatarRoomResponseParams `json:"Response"`
+}
+
+func (r *StartLiveAvatarRoomResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartLiveAvatarRoomResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -19420,6 +20771,67 @@ func (r *StopCasterPvwResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StopCasterPvwResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopLiveAvatarRoomRequestParams struct {
+	// 数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 操作者。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type StopLiveAvatarRoomRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数字人直播间 ID。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 操作者。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+func (r *StopLiveAvatarRoomRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopLiveAvatarRoomRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopLiveAvatarRoomRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopLiveAvatarRoomResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopLiveAvatarRoomResponse struct {
+	*tchttp.BaseResponse
+	Response *StopLiveAvatarRoomResponseParams `json:"Response"`
+}
+
+func (r *StopLiveAvatarRoomResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopLiveAvatarRoomResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

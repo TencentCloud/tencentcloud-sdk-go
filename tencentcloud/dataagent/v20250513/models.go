@@ -644,41 +644,44 @@ type ExampleQA struct {
 }
 
 type FileInfo struct {
-	// 文件名称
+	// <p>文件名称</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 文件大小，字节
+	// <p>文件大小，字节</p>
 	FileSize *float64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
-	// 文件类型,0=文本,1=表格，默认0
+	// <p>文件类型,0=文本,1=表格，默认0</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 文件ID
+	// <p>文件ID</p>
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
-	// 状态，0：数据处理中  1：可用 -1：错误
+	// <p>状态，0：数据处理中  1：可用 -1：错误</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 操作者
+	// <p>操作者</p>
 	CreateUser *string `json:"CreateUser,omitnil,omitempty" name:"CreateUser"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 分片策略
+	// <p>分片策略</p>
 	ChunkConfig *KnowledgeTaskConfig `json:"ChunkConfig,omitnil,omitempty" name:"ChunkConfig"`
 
-	// 文件来源0=unknow,1=user_cos,2=local
+	// <p>文件来源0=unknow,1=user_cos,2=local</p>
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 文件url
+	// <p>文件url</p>
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
-	// 是否官方示例，0=否，1=是
+	// <p>是否官方示例，0=否，1=是</p>
 	IsShowCase *int64 `json:"IsShowCase,omitnil,omitempty" name:"IsShowCase"`
 
-	// 文档摘要
+	// <p>文档摘要</p>
 	DocumentSummary *string `json:"DocumentSummary,omitnil,omitempty" name:"DocumentSummary"`
+
+	// <p>网页地址</p>
+	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
 }
 
 // Predefined struct for user

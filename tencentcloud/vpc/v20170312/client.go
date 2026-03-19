@@ -20176,6 +20176,9 @@ func NewDisassociateIPv6AddressResponse() (response *DisassociateIPv6AddressResp
 //  INVALIDPARAMETERVALUE_ADDRESSIDMALFORMED = "InvalidParameterValue.AddressIdMalformed"
 //  INVALIDPARAMETERVALUE_ADDRESSIPNOTFOUND = "InvalidParameterValue.AddressIpNotFound"
 //  OPERATIONDENIED_ADDRESSINARREARS = "OperationDenied.AddressInArrears"
+//  OPERATIONDENIED_TRAFFICEXCEEDTHRESHOLD = "OperationDenied.TrafficExceedThreshold"
+//  OPERATIONDENIED_TRAFFICVALIDATIONFAILED = "OperationDenied.TrafficValidationFailed"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
 func (c *Client) DisassociateIPv6Address(request *DisassociateIPv6AddressRequest) (response *DisassociateIPv6AddressResponse, err error) {
     return c.DisassociateIPv6AddressWithContext(context.Background(), request)
@@ -20195,6 +20198,9 @@ func (c *Client) DisassociateIPv6Address(request *DisassociateIPv6AddressRequest
 //  INVALIDPARAMETERVALUE_ADDRESSIDMALFORMED = "InvalidParameterValue.AddressIdMalformed"
 //  INVALIDPARAMETERVALUE_ADDRESSIPNOTFOUND = "InvalidParameterValue.AddressIpNotFound"
 //  OPERATIONDENIED_ADDRESSINARREARS = "OperationDenied.AddressInArrears"
+//  OPERATIONDENIED_TRAFFICEXCEEDTHRESHOLD = "OperationDenied.TrafficExceedThreshold"
+//  OPERATIONDENIED_TRAFFICVALIDATIONFAILED = "OperationDenied.TrafficValidationFailed"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
 func (c *Client) DisassociateIPv6AddressWithContext(ctx context.Context, request *DisassociateIPv6AddressRequest) (response *DisassociateIPv6AddressResponse, err error) {
     if request == nil {
@@ -22513,9 +22519,13 @@ func NewModifyBandwidthPackageAttributeResponse() (response *ModifyBandwidthPack
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = "InvalidParameterValue.BandwidthPackageIdMalformed"
 //  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGENOTFOUND = "InvalidParameterValue.BandwidthPackageNotFound"
+//  INVALIDPARAMETERVALUE_COMBINATION = "InvalidParameterValue.Combination"
+//  INVALIDPARAMETERVALUE_ILLEGAL = "InvalidParameterValue.Illegal"
 //  INVALIDPARAMETERVALUE_INVALIDBANDWIDTHPACKAGECHARGETYPE = "InvalidParameterValue.InvalidBandwidthPackageChargeType"
+//  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
 func (c *Client) ModifyBandwidthPackageAttribute(request *ModifyBandwidthPackageAttributeRequest) (response *ModifyBandwidthPackageAttributeResponse, err error) {
     return c.ModifyBandwidthPackageAttributeWithContext(context.Background(), request)
@@ -22526,9 +22536,13 @@ func (c *Client) ModifyBandwidthPackageAttribute(request *ModifyBandwidthPackage
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = "InvalidParameterValue.BandwidthPackageIdMalformed"
 //  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGENOTFOUND = "InvalidParameterValue.BandwidthPackageNotFound"
+//  INVALIDPARAMETERVALUE_COMBINATION = "InvalidParameterValue.Combination"
+//  INVALIDPARAMETERVALUE_ILLEGAL = "InvalidParameterValue.Illegal"
 //  INVALIDPARAMETERVALUE_INVALIDBANDWIDTHPACKAGECHARGETYPE = "InvalidParameterValue.InvalidBandwidthPackageChargeType"
+//  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
 func (c *Client) ModifyBandwidthPackageAttributeWithContext(ctx context.Context, request *ModifyBandwidthPackageAttributeRequest) (response *ModifyBandwidthPackageAttributeResponse, err error) {
     if request == nil {
@@ -22577,6 +22591,8 @@ func NewModifyBandwidthPackageBandwidthResponse() (response *ModifyBandwidthPack
 //  INVALIDPARAMETERVALUE_COMBINATION = "InvalidParameterValue.Combination"
 //  INVALIDPARAMETERVALUE_INVALIDOLDBANDWIDTH = "InvalidParameterValue.InvalidOldBandwidth"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  OPERATIONDENIED_TRAFFICEXCEEDTHRESHOLD = "OperationDenied.TrafficExceedThreshold"
+//  OPERATIONDENIED_TRAFFICVALIDATIONFAILED = "OperationDenied.TrafficValidationFailed"
 //  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) ModifyBandwidthPackageBandwidth(request *ModifyBandwidthPackageBandwidthRequest) (response *ModifyBandwidthPackageBandwidthResponse, err error) {
@@ -22594,6 +22610,8 @@ func (c *Client) ModifyBandwidthPackageBandwidth(request *ModifyBandwidthPackage
 //  INVALIDPARAMETERVALUE_COMBINATION = "InvalidParameterValue.Combination"
 //  INVALIDPARAMETERVALUE_INVALIDOLDBANDWIDTH = "InvalidParameterValue.InvalidOldBandwidth"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  OPERATIONDENIED_TRAFFICEXCEEDTHRESHOLD = "OperationDenied.TrafficExceedThreshold"
+//  OPERATIONDENIED_TRAFFICVALIDATIONFAILED = "OperationDenied.TrafficValidationFailed"
 //  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) ModifyBandwidthPackageBandwidthWithContext(ctx context.Context, request *ModifyBandwidthPackageBandwidthRequest) (response *ModifyBandwidthPackageBandwidthResponse, err error) {
@@ -23753,8 +23771,12 @@ func NewModifyIPv6AddressesAttributesResponse() (response *ModifyIPv6AddressesAt
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ADDRESSIDMALFORMED = "InvalidParameterValue.AddressIdMalformed"
 //  INVALIDPARAMETERVALUE_ADDRESSIPNOTFOUND = "InvalidParameterValue.AddressIpNotFound"
+//  INVALIDPARAMETERVALUE_INSTANCEDOESNOTSUPPORTEIPVISIBLEONENI = "InvalidParameterValue.InstanceDoesNotSupportEipVisibleOnEni"
+//  INVALIDPARAMETERVALUE_INSTANCEVPCDOESNOTSUPPORTEIPVISIBLEONENI = "InvalidParameterValue.InstanceVpcDoesNotSupportEipVisibleOnEni"
+//  INVALIDPARAMETERVALUE_TRADITIONALIPV6VISIBLEONENINOTSUPPORTED = "InvalidParameterValue.TraditionalIPv6VisibleOnEniNotSupported"
 //  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
 //  OPERATIONDENIED_ADDRESSINARREARS = "OperationDenied.AddressInArrears"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
 func (c *Client) ModifyIPv6AddressesAttributes(request *ModifyIPv6AddressesAttributesRequest) (response *ModifyIPv6AddressesAttributesResponse, err error) {
     return c.ModifyIPv6AddressesAttributesWithContext(context.Background(), request)
@@ -23771,8 +23793,12 @@ func (c *Client) ModifyIPv6AddressesAttributes(request *ModifyIPv6AddressesAttri
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ADDRESSIDMALFORMED = "InvalidParameterValue.AddressIdMalformed"
 //  INVALIDPARAMETERVALUE_ADDRESSIPNOTFOUND = "InvalidParameterValue.AddressIpNotFound"
+//  INVALIDPARAMETERVALUE_INSTANCEDOESNOTSUPPORTEIPVISIBLEONENI = "InvalidParameterValue.InstanceDoesNotSupportEipVisibleOnEni"
+//  INVALIDPARAMETERVALUE_INSTANCEVPCDOESNOTSUPPORTEIPVISIBLEONENI = "InvalidParameterValue.InstanceVpcDoesNotSupportEipVisibleOnEni"
+//  INVALIDPARAMETERVALUE_TRADITIONALIPV6VISIBLEONENINOTSUPPORTED = "InvalidParameterValue.TraditionalIPv6VisibleOnEniNotSupported"
 //  MISSINGPARAMETER_MULTIMISSINGPARAMETER = "MissingParameter.MultiMissingParameter"
 //  OPERATIONDENIED_ADDRESSINARREARS = "OperationDenied.AddressInArrears"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
 func (c *Client) ModifyIPv6AddressesAttributesWithContext(ctx context.Context, request *ModifyIPv6AddressesAttributesRequest) (response *ModifyIPv6AddressesAttributesResponse, err error) {
     if request == nil {
@@ -23817,6 +23843,9 @@ func NewModifyIPv6AddressesBandwidthResponse() (response *ModifyIPv6AddressesBan
 //  INVALIDPARAMETERVALUE_ADDRESSIDMALFORMED = "InvalidParameterValue.AddressIdMalformed"
 //  INVALIDPARAMETERVALUE_ADDRESSIPNOTFOUND = "InvalidParameterValue.AddressIpNotFound"
 //  OPERATIONDENIED_ADDRESSINARREARS = "OperationDenied.AddressInArrears"
+//  OPERATIONDENIED_TRAFFICEXCEEDTHRESHOLD = "OperationDenied.TrafficExceedThreshold"
+//  OPERATIONDENIED_TRAFFICVALIDATIONFAILED = "OperationDenied.TrafficValidationFailed"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
 func (c *Client) ModifyIPv6AddressesBandwidth(request *ModifyIPv6AddressesBandwidthRequest) (response *ModifyIPv6AddressesBandwidthResponse, err error) {
     return c.ModifyIPv6AddressesBandwidthWithContext(context.Background(), request)
@@ -23829,6 +23858,9 @@ func (c *Client) ModifyIPv6AddressesBandwidth(request *ModifyIPv6AddressesBandwi
 //  INVALIDPARAMETERVALUE_ADDRESSIDMALFORMED = "InvalidParameterValue.AddressIdMalformed"
 //  INVALIDPARAMETERVALUE_ADDRESSIPNOTFOUND = "InvalidParameterValue.AddressIpNotFound"
 //  OPERATIONDENIED_ADDRESSINARREARS = "OperationDenied.AddressInArrears"
+//  OPERATIONDENIED_TRAFFICEXCEEDTHRESHOLD = "OperationDenied.TrafficExceedThreshold"
+//  OPERATIONDENIED_TRAFFICVALIDATIONFAILED = "OperationDenied.TrafficValidationFailed"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
 func (c *Client) ModifyIPv6AddressesBandwidthWithContext(ctx context.Context, request *ModifyIPv6AddressesBandwidthRequest) (response *ModifyIPv6AddressesBandwidthResponse, err error) {
     if request == nil {
@@ -23889,6 +23921,9 @@ func NewModifyIp6AddressesBandwidthResponse() (response *ModifyIp6AddressesBandw
 //  INVALIDPARAMETERVALUE_INVALIDIPV6 = "InvalidParameterValue.InvalidIpv6"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  OPERATIONDENIED_MUTEXTASKRUNNING = "OperationDenied.MutexTaskRunning"
+//  OPERATIONDENIED_TRAFFICEXCEEDTHRESHOLD = "OperationDenied.TrafficExceedThreshold"
+//  OPERATIONDENIED_TRAFFICVALIDATIONFAILED = "OperationDenied.TrafficValidationFailed"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_ADDRESSIPINARREAR = "UnsupportedOperation.AddressIpInArrear"
 //  UNSUPPORTEDOPERATION_ADDRESSIPINTERNETCHARGETYPENOTPERMIT = "UnsupportedOperation.AddressIpInternetChargeTypeNotPermit"
 //  UNSUPPORTEDOPERATION_ADDRESSIPNOTSUPPORTINSTANCE = "UnsupportedOperation.AddressIpNotSupportInstance"
@@ -23920,6 +23955,9 @@ func (c *Client) ModifyIp6AddressesBandwidth(request *ModifyIp6AddressesBandwidt
 //  INVALIDPARAMETERVALUE_INVALIDIPV6 = "InvalidParameterValue.InvalidIpv6"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  OPERATIONDENIED_MUTEXTASKRUNNING = "OperationDenied.MutexTaskRunning"
+//  OPERATIONDENIED_TRAFFICEXCEEDTHRESHOLD = "OperationDenied.TrafficExceedThreshold"
+//  OPERATIONDENIED_TRAFFICVALIDATIONFAILED = "OperationDenied.TrafficValidationFailed"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_ADDRESSIPINARREAR = "UnsupportedOperation.AddressIpInArrear"
 //  UNSUPPORTEDOPERATION_ADDRESSIPINTERNETCHARGETYPENOTPERMIT = "UnsupportedOperation.AddressIpInternetChargeTypeNotPermit"
 //  UNSUPPORTEDOPERATION_ADDRESSIPNOTSUPPORTINSTANCE = "UnsupportedOperation.AddressIpNotSupportInstance"

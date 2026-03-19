@@ -78,6 +78,22 @@ type ComputeDetail struct {
 	Memory *string `json:"Memory,omitnil,omitempty" name:"Memory"`
 }
 
+type ComputeInfo struct {
+	// 资源类型及数量
+	ComputeResources []*ComputeResource `json:"ComputeResources,omitnil,omitempty" name:"ComputeResources"`
+
+	// 副本数
+	Replicas *int64 `json:"Replicas,omitnil,omitempty" name:"Replicas"`
+}
+
+type ComputeResource struct {
+	// 算力套餐的类型
+	BundleType *string `json:"BundleType,omitnil,omitempty" name:"BundleType"`
+
+	// 节点数量
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
 type ContainerInfo struct {
 	// 镜像相关信息
 	Image *ImageInfo `json:"Image,omitnil,omitempty" name:"Image"`
@@ -167,6 +183,98 @@ func (r *CreateApplicationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateInferServiceByTemplateRequestParams struct {
+	// 模版ID
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// 服务名称
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 副本数
+	Replicas *int64 `json:"Replicas,omitnil,omitempty" name:"Replicas"`
+
+	// 付费方式，POSTPAID_BY_HOUR按量后付费
+	ServiceChargeType *string `json:"ServiceChargeType,omitnil,omitempty" name:"ServiceChargeType"`
+
+	// 描述了服务的超参数配置
+	HyperParam *HyperParam `json:"HyperParam,omitnil,omitempty" name:"HyperParam"`
+
+	// 网络设置
+	NetworkSetting *NetworkSetting `json:"NetworkSetting,omitnil,omitempty" name:"NetworkSetting"`
+}
+
+type CreateInferServiceByTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模版ID
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// 服务名称
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 副本数
+	Replicas *int64 `json:"Replicas,omitnil,omitempty" name:"Replicas"`
+
+	// 付费方式，POSTPAID_BY_HOUR按量后付费
+	ServiceChargeType *string `json:"ServiceChargeType,omitnil,omitempty" name:"ServiceChargeType"`
+
+	// 描述了服务的超参数配置
+	HyperParam *HyperParam `json:"HyperParam,omitnil,omitempty" name:"HyperParam"`
+
+	// 网络设置
+	NetworkSetting *NetworkSetting `json:"NetworkSetting,omitnil,omitempty" name:"NetworkSetting"`
+}
+
+func (r *CreateInferServiceByTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInferServiceByTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	delete(f, "ServiceName")
+	delete(f, "Replicas")
+	delete(f, "ServiceChargeType")
+	delete(f, "HyperParam")
+	delete(f, "NetworkSetting")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInferServiceByTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateInferServiceByTemplateResponseParams struct {
+	// 服务ID
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateInferServiceByTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateInferServiceByTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateInferServiceByTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInferServiceByTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateMuskPromptRequestParams struct {
 	// workgroup id
 	WorkgroupId *string `json:"WorkgroupId,omitnil,omitempty" name:"WorkgroupId"`
@@ -234,6 +342,91 @@ func (r *CreateMuskPromptResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateMuskPromptResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeployInferServiceRequestParams struct {
+	// 服务元数据信息，如服务名
+	ServiceMetaData *ServiceMetaData `json:"ServiceMetaData,omitnil,omitempty" name:"ServiceMetaData"`
+
+	// 资源相关信息
+	ComputeInfo *ComputeInfo `json:"ComputeInfo,omitnil,omitempty" name:"ComputeInfo"`
+
+	// 服务部署信息
+	DeploymentConfigs []*DeploymentConfig `json:"DeploymentConfigs,omitnil,omitempty" name:"DeploymentConfigs"`
+
+	// 服务超参数配置
+	HyperParam *HyperParam `json:"HyperParam,omitnil,omitempty" name:"HyperParam"`
+
+	// 网络设置
+	NetworkSetting *NetworkSetting `json:"NetworkSetting,omitnil,omitempty" name:"NetworkSetting"`
+}
+
+type DeployInferServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务元数据信息，如服务名
+	ServiceMetaData *ServiceMetaData `json:"ServiceMetaData,omitnil,omitempty" name:"ServiceMetaData"`
+
+	// 资源相关信息
+	ComputeInfo *ComputeInfo `json:"ComputeInfo,omitnil,omitempty" name:"ComputeInfo"`
+
+	// 服务部署信息
+	DeploymentConfigs []*DeploymentConfig `json:"DeploymentConfigs,omitnil,omitempty" name:"DeploymentConfigs"`
+
+	// 服务超参数配置
+	HyperParam *HyperParam `json:"HyperParam,omitnil,omitempty" name:"HyperParam"`
+
+	// 网络设置
+	NetworkSetting *NetworkSetting `json:"NetworkSetting,omitnil,omitempty" name:"NetworkSetting"`
+}
+
+func (r *DeployInferServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployInferServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceMetaData")
+	delete(f, "ComputeInfo")
+	delete(f, "DeploymentConfigs")
+	delete(f, "HyperParam")
+	delete(f, "NetworkSetting")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployInferServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeployInferServiceResponseParams struct {
+	// 服务ID
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeployInferServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeployInferServiceResponseParams `json:"Response"`
+}
+
+func (r *DeployInferServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployInferServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -337,6 +530,66 @@ func (r *DescribeApplicationsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeApplicationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeployTemplatesRequestParams struct {
+	// 模型ID
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+}
+
+type DescribeDeployTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模型ID
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+}
+
+func (r *DescribeDeployTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeployTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeployTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeployTemplatesResponseParams struct {
+	// 模板列表
+	TemplateSet []*TemplateDetail `json:"TemplateSet,omitnil,omitempty" name:"TemplateSet"`
+
+	// 支持的推理引擎
+	EngineTypes []*string `json:"EngineTypes,omitnil,omitempty" name:"EngineTypes"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeployTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeployTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeployTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeployTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -478,6 +731,87 @@ func (r *DescribeInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelsRequestParams struct {
+	// 模型id
+	ModelIds []*string `json:"ModelIds,omitnil,omitempty" name:"ModelIds"`
+
+	// 过滤器。Name的可选值有scene-id
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量，不得小于0，默认为0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回量，不得大于100，默认为20
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeModelsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模型id
+	ModelIds []*string `json:"ModelIds,omitnil,omitempty" name:"ModelIds"`
+
+	// 过滤器。Name的可选值有scene-id
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量，不得小于0，默认为0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回量，不得大于100，默认为20
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeModelsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelIds")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelsResponseParams struct {
+	// 模型总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 分页返回的模型列表
+	ModelSet []*ModelDetail `json:"ModelSet,omitnil,omitempty" name:"ModelSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeModelsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelsResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1159,6 +1493,32 @@ type LoginSetting struct {
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
+type ModelDetail struct {
+	// 模型名称
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 模型ID
+	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
+
+	// 应用描述	
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 官方社区链接	
+	CommunityUrl *string `json:"CommunityUrl,omitnil,omitempty" name:"CommunityUrl"`
+
+	// 最佳实践链接
+	GuideUrl *string `json:"GuideUrl,omitnil,omitempty" name:"GuideUrl"`
+
+	// 模型状态
+	ModelState *string `json:"ModelState,omitnil,omitempty" name:"ModelState"`
+
+	// 应用对应的标签，如机器学习
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 配置环境
+	ConfigEnvironment *string `json:"ConfigEnvironment,omitnil,omitempty" name:"ConfigEnvironment"`
+}
+
 type MuskPromptInfo struct {
 	// workflow id
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
@@ -1189,6 +1549,20 @@ type MuskPromptInfo struct {
 
 	// 任务执行失败错误信息
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+}
+
+type NetworkSetting struct {
+	// 公网访问
+	PublicEndpointEnable *bool `json:"PublicEndpointEnable,omitnil,omitempty" name:"PublicEndpointEnable"`
+
+	// 内网访问
+	VpcEndpointEnable *bool `json:"VpcEndpointEnable,omitnil,omitempty" name:"VpcEndpointEnable"`
+
+	// vpc内网ID
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 }
 
 type NetworkStatus struct {
@@ -1508,6 +1882,14 @@ type ServiceDetail struct {
 	HyperParam *HyperParam `json:"HyperParam,omitnil,omitempty" name:"HyperParam"`
 }
 
+type ServiceMetaData struct {
+	// 服务名称
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 收费类型
+	ServiceChargeType *string `json:"ServiceChargeType,omitnil,omitempty" name:"ServiceChargeType"`
+}
+
 type ServicePriceDetail struct {
 	// 推理集群价格信息	
 	ServicePrice *ItemPrice `json:"ServicePrice,omitnil,omitempty" name:"ServicePrice"`
@@ -1669,6 +2051,23 @@ type SystemDisk struct {
 
 	// 系统盘分区盘符
 	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
+}
+
+type TemplateDetail struct {
+	// 模板id
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// 部署方式
+	DeployMode *string `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
+
+	// 推理引擎
+	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
+
+	// 算力详情
+	ComputeSet []*ComputeDetail `json:"ComputeSet,omitnil,omitempty" name:"ComputeSet"`
+
+	// 当前部署模板所支持的增强功能
+	SupportFunc []*string `json:"SupportFunc,omitnil,omitempty" name:"SupportFunc"`
 }
 
 // Predefined struct for user

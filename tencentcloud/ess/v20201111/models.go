@@ -3535,6 +3535,86 @@ func (r *CreateConvertTaskApiResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDigitalDataSignRequestParams struct {
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。支持填入集团子公司经办人 userId 代发合同。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 数据加签的原文
+	PlainText *string `json:"PlainText,omitnil,omitempty" name:"PlainText"`
+}
+
+type CreateDigitalDataSignRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。支持填入集团子公司经办人 userId 代发合同。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 数据加签的原文
+	PlainText *string `json:"PlainText,omitnil,omitempty" name:"PlainText"`
+}
+
+func (r *CreateDigitalDataSignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDigitalDataSignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Agent")
+	delete(f, "PlainText")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDigitalDataSignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDigitalDataSignResponseParams struct {
+	// 加签签名值
+	SignValue *string `json:"SignValue,omitnil,omitempty" name:"SignValue"`
+
+	// 加签时间戳
+	SignTimestamp *string `json:"SignTimestamp,omitnil,omitempty" name:"SignTimestamp"`
+
+	// 签署证书信息
+	Certificate *SignCertificate `json:"Certificate,omitnil,omitempty" name:"Certificate"`
+
+	// 签署算法
+	SignAlgorithm *string `json:"SignAlgorithm,omitnil,omitempty" name:"SignAlgorithm"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDigitalDataSignResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDigitalDataSignResponseParams `json:"Response"`
+}
+
+func (r *CreateDigitalDataSignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDigitalDataSignResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDocumentRequestParams struct {
 	// 本合同的发起人，<a href="https://qcloudimg.tencent-cloud.cn/raw/f850cfbe163a1cb38439a9f551c2505c.png" target="_blank">点击查看合同发起人展示的位置</a>
 	// 
@@ -19275,6 +19355,23 @@ type SealInfo struct {
 	SealName *string `json:"SealName,omitnil,omitempty" name:"SealName"`
 }
 
+type SignCertificate struct {
+	// 证书序列号
+	SerialNumber *string `json:"SerialNumber,omitnil,omitempty" name:"SerialNumber"`
+
+	// 证书持有者名称
+	CommonName *string `json:"CommonName,omitnil,omitempty" name:"CommonName"`
+
+	// 证书生效时间
+	NotBefore *int64 `json:"NotBefore,omitnil,omitempty" name:"NotBefore"`
+
+	// 证书失效时间
+	NotAfter *int64 `json:"NotAfter,omitnil,omitempty" name:"NotAfter"`
+
+	// 证书颁发者名称
+	IssuerCommonName *string `json:"IssuerCommonName,omitnil,omitempty" name:"IssuerCommonName"`
+}
+
 type SignComponentConfig struct {
 	// 签署控件默认属性配置，是否默认展示签署日期， 在页面中可以进行修改。
 	// 
@@ -20250,6 +20347,87 @@ type VerifyDigitFileResult struct {
 	// 
 	// 如果在其他平台签署的, 主体的名字参考其他平台的说明
 	SignerName *string `json:"SignerName,omitnil,omitempty" name:"SignerName"`
+}
+
+// Predefined struct for user
+type VerifyDigitalDataSignRequestParams struct {
+	// 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。支持填入集团子公司经办人 userId 代发合同。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 加签原文
+	PlainText *string `json:"PlainText,omitnil,omitempty" name:"PlainText"`
+
+	// 签名值
+	SignValue *string `json:"SignValue,omitnil,omitempty" name:"SignValue"`
+}
+
+type VerifyDigitalDataSignRequest struct {
+	*tchttp.BaseRequest
+	
+	// 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。支持填入集团子公司经办人 userId 代发合同。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 加签原文
+	PlainText *string `json:"PlainText,omitnil,omitempty" name:"PlainText"`
+
+	// 签名值
+	SignValue *string `json:"SignValue,omitnil,omitempty" name:"SignValue"`
+}
+
+func (r *VerifyDigitalDataSignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyDigitalDataSignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "Operator")
+	delete(f, "PlainText")
+	delete(f, "SignValue")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyDigitalDataSignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyDigitalDataSignResponseParams struct {
+	// 签名值验证结果；1-验证成功；2-验证失败
+	VerifyResult *int64 `json:"VerifyResult,omitnil,omitempty" name:"VerifyResult"`
+
+	// 签名证书信息
+	Certificate *SignCertificate `json:"Certificate,omitnil,omitempty" name:"Certificate"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type VerifyDigitalDataSignResponse struct {
+	*tchttp.BaseResponse
+	Response *VerifyDigitalDataSignResponseParams `json:"Response"`
+}
+
+func (r *VerifyDigitalDataSignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyDigitalDataSignResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

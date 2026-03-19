@@ -2753,6 +2753,82 @@ func (c *Client) DescribeGroupMemberListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeLiveRelayConfigRequest() (request *DescribeLiveRelayConfigRequest) {
+    request = &DescribeLiveRelayConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeLiveRelayConfig")
+    
+    
+    return
+}
+
+func NewDescribeLiveRelayConfigResponse() (response *DescribeLiveRelayConfigResponse) {
+    response = &DescribeLiveRelayConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLiveRelayConfig
+// 获取转推配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ROOMTYPEINVALID = "InvalidParameter.RoomTypeInvalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_VERSION = "UnsupportedOperation.Version"
+func (c *Client) DescribeLiveRelayConfig(request *DescribeLiveRelayConfigRequest) (response *DescribeLiveRelayConfigResponse, err error) {
+    return c.DescribeLiveRelayConfigWithContext(context.Background(), request)
+}
+
+// DescribeLiveRelayConfig
+// 获取转推配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ROOMTYPEINVALID = "InvalidParameter.RoomTypeInvalid"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_VERSION = "UnsupportedOperation.Version"
+func (c *Client) DescribeLiveRelayConfigWithContext(ctx context.Context, request *DescribeLiveRelayConfigRequest) (response *DescribeLiveRelayConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveRelayConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lcic", APIVersion, "DescribeLiveRelayConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveRelayConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveRelayConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMarqueeRequest() (request *DescribeMarqueeRequest) {
     request = &DescribeMarqueeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4615,6 +4691,78 @@ func (c *Client) ModifyGroupWithContext(ctx context.Context, request *ModifyGrou
     request.SetContext(ctx)
     
     response = NewModifyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLiveRelayConfigRequest() (request *ModifyLiveRelayConfigRequest) {
+    request = &ModifyLiveRelayConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "ModifyLiveRelayConfig")
+    
+    
+    return
+}
+
+func NewModifyLiveRelayConfigResponse() (response *ModifyLiveRelayConfigResponse) {
+    response = &ModifyLiveRelayConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLiveRelayConfig
+// 修改转推配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_VERSION = "UnsupportedOperation.Version"
+func (c *Client) ModifyLiveRelayConfig(request *ModifyLiveRelayConfigRequest) (response *ModifyLiveRelayConfigResponse, err error) {
+    return c.ModifyLiveRelayConfigWithContext(context.Background(), request)
+}
+
+// ModifyLiveRelayConfig
+// 修改转推配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_VERSION = "UnsupportedOperation.Version"
+func (c *Client) ModifyLiveRelayConfigWithContext(ctx context.Context, request *ModifyLiveRelayConfigRequest) (response *ModifyLiveRelayConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyLiveRelayConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "lcic", APIVersion, "ModifyLiveRelayConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLiveRelayConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLiveRelayConfigResponse()
     err = c.Send(request, response)
     return
 }

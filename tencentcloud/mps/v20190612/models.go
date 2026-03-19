@@ -706,27 +706,27 @@ type AiAnalysisTaskDelLogoInput struct {
 }
 
 type AiAnalysisTaskDelLogoOutput struct {
-	// 擦除后文件的路径。
+	// <p>擦除后文件的路径。</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 擦除后文件的存储位置。
+	// <p>擦除后文件的存储位置。</p>
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
-	// 基于画面提取的字幕文件路径。
+	// <p>基于画面提取的字幕文件路径。</p>
 	OriginSubtitlePath *string `json:"OriginSubtitlePath,omitnil,omitempty" name:"OriginSubtitlePath"`
 
-	// 基于画面提取的字幕翻译文件路径。
+	// <p>基于画面提取的字幕翻译文件路径。</p>
 	TranslateSubtitlePath *string `json:"TranslateSubtitlePath,omitnil,omitempty" name:"TranslateSubtitlePath"`
 
-	// 擦除的字幕位置。**注意**：仅对字幕提取且开启返回字幕位置时有效。
+	// <p>擦除的字幕位置。<strong>注意</strong>：仅对字幕提取且开启返回字幕位置时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubtitlePos *SubtitlePosition `json:"SubtitlePos,omitnil,omitempty" name:"SubtitlePos"`
 
-	// 音色克隆后的视频文件地址
+	// <p>音色克隆后的视频文件地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoiceClonedVideo *string `json:"VoiceClonedVideo,omitnil,omitempty" name:"VoiceClonedVideo"`
 
-	// 音色克隆的标注文件地址
+	// <p>音色克隆的标注文件地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoiceClonedMarkFile *string `json:"VoiceClonedMarkFile,omitnil,omitempty" name:"VoiceClonedMarkFile"`
 }
@@ -6052,50 +6052,44 @@ func (r *CreateScheduleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSmartEraseTemplateRequestParams struct {
-	// 智能擦除模板名称长度限制：64 个字符。
+	// <p>智能擦除模板名称长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 擦除类型
-	// - subtitle 去字幕
-	// - watermark 去水印
-	// - privacy 隐私保护
+	// <p>擦除类型</p><ul><li>subtitle 去字幕</li><li>watermark 去水印</li><li>privacy 隐私保护</li></ul>
 	EraseType *string `json:"EraseType,omitnil,omitempty" name:"EraseType"`
 
-	// 智能擦除模板描述信息长度限制：256 个字符。
+	// <p>智能擦除模板描述信息长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 字幕擦除配置，EraseType取subtitle时必填且仅此时生效。
+	// <p>字幕擦除配置，EraseType取subtitle时必填且仅此时生效。</p>
 	EraseSubtitleConfig *SmartEraseSubtitleConfig `json:"EraseSubtitleConfig,omitnil,omitempty" name:"EraseSubtitleConfig"`
 
-	// 水印擦除配置，EraseType取watermark时必填且仅此时生效。
+	// <p>水印擦除配置，EraseType取watermark时必填且仅此时生效。</p>
 	EraseWatermarkConfig *SmartEraseWatermarkConfig `json:"EraseWatermarkConfig,omitnil,omitempty" name:"EraseWatermarkConfig"`
 
-	// 隐私保护配置，EraseType取privacy时必填且仅此时生效。
+	// <p>隐私保护配置，EraseType取privacy时必填且仅此时生效。</p>
 	ErasePrivacyConfig *SmartErasePrivacyConfig `json:"ErasePrivacyConfig,omitnil,omitempty" name:"ErasePrivacyConfig"`
 }
 
 type CreateSmartEraseTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 智能擦除模板名称长度限制：64 个字符。
+	// <p>智能擦除模板名称长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 擦除类型
-	// - subtitle 去字幕
-	// - watermark 去水印
-	// - privacy 隐私保护
+	// <p>擦除类型</p><ul><li>subtitle 去字幕</li><li>watermark 去水印</li><li>privacy 隐私保护</li></ul>
 	EraseType *string `json:"EraseType,omitnil,omitempty" name:"EraseType"`
 
-	// 智能擦除模板描述信息长度限制：256 个字符。
+	// <p>智能擦除模板描述信息长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 字幕擦除配置，EraseType取subtitle时必填且仅此时生效。
+	// <p>字幕擦除配置，EraseType取subtitle时必填且仅此时生效。</p>
 	EraseSubtitleConfig *SmartEraseSubtitleConfig `json:"EraseSubtitleConfig,omitnil,omitempty" name:"EraseSubtitleConfig"`
 
-	// 水印擦除配置，EraseType取watermark时必填且仅此时生效。
+	// <p>水印擦除配置，EraseType取watermark时必填且仅此时生效。</p>
 	EraseWatermarkConfig *SmartEraseWatermarkConfig `json:"EraseWatermarkConfig,omitnil,omitempty" name:"EraseWatermarkConfig"`
 
-	// 隐私保护配置，EraseType取privacy时必填且仅此时生效。
+	// <p>隐私保护配置，EraseType取privacy时必填且仅此时生效。</p>
 	ErasePrivacyConfig *SmartErasePrivacyConfig `json:"ErasePrivacyConfig,omitnil,omitempty" name:"ErasePrivacyConfig"`
 }
 
@@ -6125,7 +6119,7 @@ func (r *CreateSmartEraseTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSmartEraseTemplateResponseParams struct {
-	// 智能擦除模板唯一标识
+	// <p>智能擦除模板唯一标识</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6150,849 +6144,75 @@ func (r *CreateSmartEraseTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSmartSubtitleTemplateRequestParams struct {
-	// 智能字幕模板名称
-	// 长度限制：64 个字符。
+	// <p>智能字幕模板名称<br>长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 智能字幕视频源语言
-	// OCR识别仅支持以下语言：
-	// `zh_en`：中英
-	// `multi`：其他
-	// ASR识别和纯字幕翻译当前支持以下语言：
-	// `auto`：自动识别（仅在纯字幕翻译中支持）
-	// `zh`：简体中文
-	// `en`：英语
-	// `ja`：日语
-	// `ko`：韩语
-	// `zh-PY`：中英粤
-	// `zh_medical`：中文医疗
-	// `vi`：越南语
-	// `ms`：马来语
-	// `id`：印度尼西亚语
-	// `fil`：菲律宾语
-	// `th`：泰语
-	// `pt`：葡萄牙语
-	// `tr`：土耳其语
-	// `ar`：阿拉伯语
-	// `es`：西班牙语
-	// `hi`：印地语
-	// `fr`：法语
-	// `de`：德语
-	// `it`：意大利语
-	// `zh_dialect`：中文方言
-	// `zh_en`：中英
-	// `yue`：粤语
-	// `ru`：俄语
-	// `prime_zh`：中英方言
-	// `af-ZA`：南非荷兰语（南非）
-	// `sq-AL`：阿尔巴尼亚语（阿尔巴尼亚）
-	// `am-ET`：阿姆哈拉语（埃塞俄比亚）
-	// `ar-DZ`：阿拉伯语（阿尔及利亚）
-	// `ar-BH`：阿拉伯语（巴林）
-	// `ar-EG`：阿拉伯语（埃及）
-	// `ar-IQ`：阿拉伯语（伊拉克）
-	// `ar-IL`：阿拉伯语（以色列）
-	// `ar-JO`：阿拉伯语（约旦）
-	// `ar-KW`：阿拉伯语（科威特）
-	// `ar-LB`：阿拉伯语（黎巴嫩）
-	// `ar-MR`：阿拉伯语（毛里塔尼亚）
-	// `ar-MA`：阿拉伯语（摩洛哥）
-	// `ar-OM`：阿拉伯语（阿曼）
-	// `ar-QA`：阿拉伯语（卡塔尔）
-	// `ar-SA`：阿拉伯语（沙特阿拉伯）
-	// `ar-PS`：阿拉伯语（巴勒斯坦国）
-	// `ar-SY`：阿拉伯语（叙利亚）
-	// `ar-TN`：阿拉伯语（突尼斯）
-	// `ar-AE`：阿拉伯语（阿拉伯联合酋长国）
-	// `ar-YE`：阿拉伯语（也门）
-	// `hy-AM`：亚美尼亚语（亚美尼亚）
-	// `az-AZ`：阿塞拜疆语（阿塞拜疆）
-	// `eu-ES`：巴斯克语（西班牙）
-	// `bn-BD`：孟加拉语（孟加拉）
-	// `bn-IN`：孟加拉语（印度）
-	// `bs-BA`：波斯尼亚语（波斯尼亚和黑塞哥维那）
-	// `bg-BG`：保加利亚语（保加利亚）
-	// `my-MM`：缅甸语（缅甸）
-	// `ca-ES`：加泰罗尼亚语（西班牙）
-	// `hr-HR`：克罗地亚语（克罗地亚）
-	// `cs-CZ`：捷克语（捷克共和国）
-	// `da-DK`：丹麦语（丹麦）
-	// `nl-BE`：荷兰语（比利时）
-	// `nl-NL`：荷兰语（荷兰）
-	// `en-AU`：英语（澳大利亚）
-	// `en-CA`：英语（加拿大）
-	// `en-GH`：英语（加纳）
-	// `en-HK`：英语（中国香港）
-	// `en-IN`：英语（印度）
-	// `en-IE`：英语（爱尔兰）
-	// `en-KE`：英语（肯尼亚）
-	// `en-NZ`：英语（新西兰）
-	// `en-NG`：英语（尼日利亚）
-	// `en-PK`：英语（巴基斯坦）
-	// `en-PH`：英语（菲律宾）
-	// `en-SG`：英语（新加坡）
-	// `en-ZA`：英语（南非）
-	// `en-TZ`：英语（坦桑尼亚）
-	// `en-GB`：英语（英国）
-	// `en-US`：英语（美国）
-	// `et-EE`：爱沙尼亚语（爱沙尼亚）
-	// `fil-PH`：菲律宾语（菲律宾）
-	// `fi-FI`：芬兰语（芬兰）
-	// `fr-BE`：法语（比利时）
-	// `fr-CA`：法语（加拿大）
-	// `fr-FR`：法语（法国）
-	// `fr-CH`：法语（瑞士）
-	// `gl-ES`：加利西亚语（西班牙）
-	// `ka-GE`：格鲁吉亚语（格鲁吉亚）
-	// `el-GR`：希腊语（希腊）
-	// `gu-IN`：古吉拉特语（印度）
-	// `iw-IL`：希伯来语（以色列）
-	// `hi-IN`：印地语（印度）
-	// `hu-HU`：匈牙利语（匈牙利）
-	// `is-IS`：冰岛语（冰岛）
-	// `id-ID`：印度尼西亚语（印度尼西亚）
-	// `it-IT`：意大利语（意大利）
-	// `it-CH`：意大利语（瑞士）
-	// `ja-JP`：日语（日本）
-	// `jv-ID`：爪哇语（印度尼西亚）
-	// `kn-IN`：卡纳达语（印度）
-	// `kk-KZ`：哈萨克语（哈萨克斯坦）
-	// `km-KH`：高棉语（柬埔寨）
-	// `rw-RW`：卢旺达语（卢旺达）
-	// `ko-KR`：韩语（韩国）
-	// `lo-LA`：老挝语（老挝）
-	// `lv-LV`：拉脱维亚语（拉脱维亚）
-	// `lt-LT`：立陶宛语（立陶宛）
-	// `mk-MK`：马其顿语（北马其顿）
-	// `ms-MY`：马来语（马来西亚）
-	// `ml-IN`：马拉雅拉姆语（印度）
-	// `mr-IN`：马拉地语（印度）
-	// `mn-MN`：蒙古语（蒙古）
-	// `ne-NP`：尼泊尔语（尼泊尔）
-	// `no-NO`：博克马尔挪威语（挪威）
-	// `fa-IR`：波斯语（伊朗）
-	// `pl-PL`：波兰语（波兰）
-	// `pt-BR`：葡萄牙语（巴西）
-	// `pt-PT`：葡萄牙语（葡萄牙）
-	// `ro-RO`：罗马尼亚语（罗马尼亚）
-	// `ru-RU`：俄语（俄罗斯）
-	// `sr-RS`：塞尔维亚语（塞尔维亚）
-	// `si-LK`：僧伽罗语（斯里兰卡）
-	// `sk-SK`：斯洛伐克语（斯洛伐克）
-	// `sl-SI`：斯洛文尼亚语（斯洛文尼亚）
-	// `st-ZA`：南索托语（南非）
-	// `es-AR`：西班牙语（阿根廷）
-	// `es-BO`：西班牙语（玻利维亚）
-	// `es-CL`：西班牙语（智利）
-	// `es-CO`：西班牙语（哥伦比亚）
-	// `es-CR`：西班牙语（哥斯达黎加）
-	// `es-DO`：西班牙语（多米尼加共和国）
-	// `es-EC`：西班牙语（厄瓜多尔）
-	// `es-SV`：西班牙语（萨尔瓦多）
-	// `es-GT`：西班牙语（危地马拉）
-	// `es-HN`：西班牙语（洪都拉斯）
-	// `es-MX`：西班牙语（墨西哥）
-	// `es-NI`：西班牙语（尼加拉瓜）
-	// `es-PA`：西班牙语（巴拿马）
-	// `es-PY`：西班牙语（巴拉圭）
-	// `es-PE`：西班牙语（秘鲁）
-	// `es-PR`：西班牙语（波多黎各）
-	// `es-ES`：西班牙语（西班牙）
-	// `es-US`：西班牙语（美国）
-	// `es-UY`：西班牙语（乌拉圭）
-	// `es-VE`：西班牙语（委内瑞拉）
-	// `su-ID`：巽他语（印度尼西亚）
-	// `sw-KE`：斯瓦希里语（肯尼亚）
-	// `sw-TZ`：斯瓦希里语（坦桑尼亚）
-	// `sv-SE`：瑞典语（瑞典）
-	// `ta-IN`：泰米尔语（印度）
-	// `ta-MY`：泰米尔语（马来西亚）
-	// `ta-SG`：泰米尔语（新加坡）
-	// `ta-LK`：泰米尔语（斯里兰卡）
-	// `te-IN`：泰卢固语（印度）
-	// `th-TH`：泰语（泰国）
-	// `ts-ZA`：聪加语（南非）
-	// `tr-TR`：土耳其语（土耳其）
-	// `uk-UA`：乌克兰语（乌克兰）
-	// `ur-IN`：乌尔都语（印度）
-	// `ur-PK`：乌尔都语（巴基斯坦）
-	// `uz-UZ`：乌兹别克语（乌兹别克斯坦）
-	// `ve-ZA`：文达语（南非）
-	// `vi-VN`：越南语（越南）
-	// `xh-ZA`：科萨语（南非）
-	// `zu-ZA`：祖鲁语（南非）
+	// <p>智能字幕视频源语言<br>OCR识别仅支持以下语言：<br><code>zh_en</code>：中英<br><code>multi</code>：其他<br>ASR识别和纯字幕翻译当前支持以下语言：<br><code>auto</code>：自动识别<br><code>zh</code>：简体中文<br><code>en</code>：英语<br><code>ja</code>：日语<br><code>ko</code>：韩语<br><code>zh-PY</code>：中英粤<br><code>zh_medical</code>：中文医疗<br><code>vi</code>：越南语<br><code>ms</code>：马来语<br><code>id</code>：印度尼西亚语<br><code>fil</code>：菲律宾语<br><code>th</code>：泰语<br><code>pt</code>：葡萄牙语<br><code>tr</code>：土耳其语<br><code>ar</code>：阿拉伯语<br><code>es</code>：西班牙语<br><code>hi</code>：印地语<br><code>fr</code>：法语<br><code>de</code>：德语<br><code>it</code>：意大利语<br><code>zh_dialect</code>：中文方言<br><code>zh_en</code>：中英<br><code>yue</code>：粤语<br><code>ru</code>：俄语<br><code>prime_zh</code>：中英方言<br><code>af-ZA</code>：南非荷兰语（南非）<br><code>sq-AL</code>：阿尔巴尼亚语（阿尔巴尼亚）<br><code>am-ET</code>：阿姆哈拉语（埃塞俄比亚）<br><code>ar-DZ</code>：阿拉伯语（阿尔及利亚）<br><code>ar-BH</code>：阿拉伯语（巴林）<br><code>ar-EG</code>：阿拉伯语（埃及）<br><code>ar-IQ</code>：阿拉伯语（伊拉克）<br><code>ar-IL</code>：阿拉伯语（以色列）<br><code>ar-JO</code>：阿拉伯语（约旦）<br><code>ar-KW</code>：阿拉伯语（科威特）<br><code>ar-LB</code>：阿拉伯语（黎巴嫩）<br><code>ar-MR</code>：阿拉伯语（毛里塔尼亚）<br><code>ar-MA</code>：阿拉伯语（摩洛哥）<br><code>ar-OM</code>：阿拉伯语（阿曼）<br><code>ar-QA</code>：阿拉伯语（卡塔尔）<br><code>ar-SA</code>：阿拉伯语（沙特阿拉伯）<br><code>ar-PS</code>：阿拉伯语（巴勒斯坦国）<br><code>ar-SY</code>：阿拉伯语（叙利亚）<br><code>ar-TN</code>：阿拉伯语（突尼斯）<br><code>ar-AE</code>：阿拉伯语（阿拉伯联合酋长国）<br><code>ar-YE</code>：阿拉伯语（也门）<br><code>hy-AM</code>：亚美尼亚语（亚美尼亚）<br><code>az-AZ</code>：阿塞拜疆语（阿塞拜疆）<br><code>eu-ES</code>：巴斯克语（西班牙）<br><code>bn-BD</code>：孟加拉语（孟加拉）<br><code>bn-IN</code>：孟加拉语（印度）<br><code>bs-BA</code>：波斯尼亚语（波斯尼亚和黑塞哥维那）<br><code>bg-BG</code>：保加利亚语（保加利亚）<br><code>my-MM</code>：缅甸语（缅甸）<br><code>ca-ES</code>：加泰罗尼亚语（西班牙）<br><code>hr-HR</code>：克罗地亚语（克罗地亚）<br><code>cs-CZ</code>：捷克语（捷克共和国）<br><code>da-DK</code>：丹麦语（丹麦）<br><code>nl-BE</code>：荷兰语（比利时）<br><code>nl-NL</code>：荷兰语（荷兰）<br><code>en-AU</code>：英语（澳大利亚）<br><code>en-CA</code>：英语（加拿大）<br><code>en-GH</code>：英语（加纳）<br><code>en-HK</code>：英语（中国香港）<br><code>en-IN</code>：英语（印度）<br><code>en-IE</code>：英语（爱尔兰）<br><code>en-KE</code>：英语（肯尼亚）<br><code>en-NZ</code>：英语（新西兰）<br><code>en-NG</code>：英语（尼日利亚）<br><code>en-PK</code>：英语（巴基斯坦）<br><code>en-PH</code>：英语（菲律宾）<br><code>en-SG</code>：英语（新加坡）<br><code>en-ZA</code>：英语（南非）<br><code>en-TZ</code>：英语（坦桑尼亚）<br><code>en-GB</code>：英语（英国）<br><code>en-US</code>：英语（美国）<br><code>et-EE</code>：爱沙尼亚语（爱沙尼亚）<br><code>fil-PH</code>：菲律宾语（菲律宾）<br><code>fi-FI</code>：芬兰语（芬兰）<br><code>fr-BE</code>：法语（比利时）<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fr-CH</code>：法语（瑞士）<br><code>gl-ES</code>：加利西亚语（西班牙）<br><code>ka-GE</code>：格鲁吉亚语（格鲁吉亚）<br><code>el-GR</code>：希腊语（希腊）<br><code>gu-IN</code>：古吉拉特语（印度）<br><code>iw-IL</code>：希伯来语（以色列）<br><code>hi-IN</code>：印地语（印度）<br><code>hu-HU</code>：匈牙利语（匈牙利）<br><code>is-IS</code>：冰岛语（冰岛）<br><code>id-ID</code>：印度尼西亚语（印度尼西亚）<br><code>it-IT</code>：意大利语（意大利）<br><code>it-CH</code>：意大利语（瑞士）<br><code>ja-JP</code>：日语（日本）<br><code>jv-ID</code>：爪哇语（印度尼西亚）<br><code>kn-IN</code>：卡纳达语（印度）<br><code>kk-KZ</code>：哈萨克语（哈萨克斯坦）<br><code>km-KH</code>：高棉语（柬埔寨）<br><code>rw-RW</code>：卢旺达语（卢旺达）<br><code>ko-KR</code>：韩语（韩国）<br><code>lo-LA</code>：老挝语（老挝）<br><code>lv-LV</code>：拉脱维亚语（拉脱维亚）<br><code>lt-LT</code>：立陶宛语（立陶宛）<br><code>mk-MK</code>：马其顿语（北马其顿）<br><code>ms-MY</code>：马来语（马来西亚）<br><code>ml-IN</code>：马拉雅拉姆语（印度）<br><code>mr-IN</code>：马拉地语（印度）<br><code>mn-MN</code>：蒙古语（蒙古）<br><code>ne-NP</code>：尼泊尔语（尼泊尔）<br><code>no-NO</code>：博克马尔挪威语（挪威）<br><code>fa-IR</code>：波斯语（伊朗）<br><code>pl-PL</code>：波兰语（波兰）<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>ro-RO</code>：罗马尼亚语（罗马尼亚）<br><code>ru-RU</code>：俄语（俄罗斯）<br><code>sr-RS</code>：塞尔维亚语（塞尔维亚）<br><code>si-LK</code>：僧伽罗语（斯里兰卡）<br><code>sk-SK</code>：斯洛伐克语（斯洛伐克）<br><code>sl-SI</code>：斯洛文尼亚语（斯洛文尼亚）<br><code>st-ZA</code>：南索托语（南非）<br><code>es-AR</code>：西班牙语（阿根廷）<br><code>es-BO</code>：西班牙语（玻利维亚）<br><code>es-CL</code>：西班牙语（智利）<br><code>es-CO</code>：西班牙语（哥伦比亚）<br><code>es-CR</code>：西班牙语（哥斯达黎加）<br><code>es-DO</code>：西班牙语（多米尼加共和国）<br><code>es-EC</code>：西班牙语（厄瓜多尔）<br><code>es-SV</code>：西班牙语（萨尔瓦多）<br><code>es-GT</code>：西班牙语（危地马拉）<br><code>es-HN</code>：西班牙语（洪都拉斯）<br><code>es-MX</code>：西班牙语（墨西哥）<br><code>es-NI</code>：西班牙语（尼加拉瓜）<br><code>es-PA</code>：西班牙语（巴拿马）<br><code>es-PY</code>：西班牙语（巴拉圭）<br><code>es-PE</code>：西班牙语（秘鲁）<br><code>es-PR</code>：西班牙语（波多黎各）<br><code>es-ES</code>：西班牙语（西班牙）<br><code>es-US</code>：西班牙语（美国）<br><code>es-UY</code>：西班牙语（乌拉圭）<br><code>es-VE</code>：西班牙语（委内瑞拉）<br><code>su-ID</code>：巽他语（印度尼西亚）<br><code>sw-KE</code>：斯瓦希里语（肯尼亚）<br><code>sw-TZ</code>：斯瓦希里语（坦桑尼亚）<br><code>sv-SE</code>：瑞典语（瑞典）<br><code>ta-IN</code>：泰米尔语（印度）<br><code>ta-MY</code>：泰米尔语（马来西亚）<br><code>ta-SG</code>：泰米尔语（新加坡）<br><code>ta-LK</code>：泰米尔语（斯里兰卡）<br><code>te-IN</code>：泰卢固语（印度）<br><code>th-TH</code>：泰语（泰国）<br><code>ts-ZA</code>：聪加语（南非）<br><code>tr-TR</code>：土耳其语（土耳其）<br><code>uk-UA</code>：乌克兰语（乌克兰）<br><code>ur-IN</code>：乌尔都语（印度）<br><code>ur-PK</code>：乌尔都语（巴基斯坦）<br><code>uz-UZ</code>：乌兹别克语（乌兹别克斯坦）<br><code>ve-ZA</code>：文达语（南非）<br><code>vi-VN</code>：越南语（越南）<br><code>xh-ZA</code>：科萨语（南非）<br><code>zu-ZA</code>：祖鲁语（南非）</p>
 	VideoSrcLanguage *string `json:"VideoSrcLanguage,omitnil,omitempty" name:"VideoSrcLanguage"`
 
-	// 智能字幕字幕语言类型
-	// 0: 源语言
-	// 1: 翻译语言
-	// 2: 源语言+翻译语言
-	// 当TranslateSwitch为OFF时仅支持取0
-	// 当TranslateSwitch为ON时仅支持取1或2
+	// <p>智能字幕字幕语言类型<br>0: 源语言<br>1: 翻译语言<br>2: 源语言+翻译语言<br>当TranslateSwitch为OFF时仅支持取0<br>当TranslateSwitch为ON时仅支持取1或2</p>
 	SubtitleType *int64 `json:"SubtitleType,omitnil,omitempty" name:"SubtitleType"`
 
-	// 智能字幕模板描述信息
-	// 长度限制：256 个字符。
+	// <p>智能字幕模板描述信息<br>长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 智能字幕文件格式:
-	// - ASR识别翻译处理类型下：
-	//      - vtt: WebVTT 格式字幕
-	//      - srt: SRT 格式字幕
-	//      - 不填或填空：不生成字幕文件
-	// - 纯字幕翻译处理类型下：
-	//     - original：与源文件一致
-	//     - vtt: WebVTT 格式字幕
-	//     - srt: SRT 格式字幕
-	// - OCR识别翻译处理类型下：
-	//      - vtt: WebVTT 格式字幕
-	//      - srt: SRT 格式字幕
-	// 
-	// **注意**：
-	// - ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
-	// - 纯字幕翻译和OCR识别翻译方式下，不允许传空或不传
+	// <p>智能字幕文件格式:</p><ul><li>ASR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li><li>不填或填空：不生成字幕文件</li></ul></li><li>纯字幕翻译处理类型下：<ul><li>original：与源文件一致</li><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li><li>OCR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li></ul><p><strong>注意</strong>：</p><ul><li>ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；</li><li>纯字幕翻译方式下，不允许传空或不传</li><li>OCR类型的任务，在开启压制时，允许不传或传空</li></ul>
 	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
 
-	// ASR热词库参数
+	// <p>ASR热词库参数</p>
 	AsrHotWordsConfigure *AsrHotWordsConfigure `json:"AsrHotWordsConfigure,omitnil,omitempty" name:"AsrHotWordsConfigure"`
 
-	// 字幕翻译开关
-	// `ON`: 开启翻译
-	// `OFF`: 关闭翻译
-	// 
-	// **注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
+	// <p>字幕翻译开关<br><code>ON</code>: 开启翻译<br><code>OFF</code>: 关闭翻译</p><p><strong>注意</strong>：纯字幕翻译方式下，不传默认是打开的，不允许传空或<code>OFF</code>；</p>
 	TranslateSwitch *string `json:"TranslateSwitch,omitnil,omitempty" name:"TranslateSwitch"`
 
-	// 字幕翻译目标语言
-	// 当TranslateSwitch为ON的时候生效，翻译语言列表：
-	// `ab`：阿布哈兹语
-	// `ace`：亚齐语
-	// `ach`：阿乔利语
-	// `af`：南非荷兰语
-	// `ak`：契维语（阿坎语）
-	// `am`：Amharic
-	// `ar`：阿拉伯语
-	// `as`：阿萨姆语
-	// `ay`：艾马拉语
-	// `az`：阿塞拜疆语
-	// `ba`：巴什基尔语
-	// `ban`：巴厘语
-	// `bbc`：巴塔克托巴语
-	// `bem`：Bemba
-	// `bew`：Betawi
-	// `bg`：保加利亚语
-	// `bho`：博杰普尔语
-	// `bik`：Bikol
-	// `bm`：班巴拉语
-	// `bn`：孟加拉语
-	// `br`：布列塔尼语
-	// `bs`：波斯尼亚语
-	// `btx`：巴塔克卡罗语
-	// `bts`：巴塔克西马隆贡语
-	// `bua`：布里亚特语
-	// `ca`：加泰罗尼亚语
-	// `ceb`：宿务语
-	// `cgg`：Kiga
-	// `chm`：草原马里语
-	// `ckb`：库尔德语（索拉尼语）
-	// `cnh`：哈卡钦语
-	// `co`：科西嘉语
-	// `crh`：克里米亚鞑靼语
-	// `crs`：塞舌尔克里奥尔语
-	// `cs`：捷克语
-	// `cv`：楚瓦什语
-	// `cy`：威尔士语
-	// `da`：丹麦语
-	// `de`：德语
-	// `din`：Dinka
-	// `doi`：多格来语
-	// `dov`：敦贝语
-	// `dv`：第维埃语
-	// `dz`：宗卡语
-	// `ee`：Ewe
-	// `el`：希腊语
-	// `en`：英语
-	// `eo`：世界语
-	// `es`：西班牙语
-	// `et`：爱沙尼亚语
-	// `eu`：巴斯克语
-	// `fa`：波斯语
-	// `ff`：富拉语
-	// `fi`：芬兰语
-	// `fil`：菲律宾语（塔加拉语）
-	// `fj`：斐济语
-	// `fr`：法语
-	// `fr-CA`：法语（加拿大）
-	// `fr-FR`：法语（法国）
-	// `fy`：弗里斯兰语
-	// `ga`：爱尔兰语
-	// `gaa`：加 (Ga) 语
-	// `gd`：苏格兰盖尔语
-	// `gl`：加利西亚语
-	// `gn`：瓜拉尼语
-	// `gom`：贡根语
-	// `gu`：古吉拉特语
-	// `gv`：马恩岛语
-	// `ha`：Hausa
-	// `haw`：夏威夷语
-	// `he`：希伯来语
-	// `hi`：印地语
-	// `hil`：希利盖农语
-	// `hmn`：苗语
-	// `hr`：克罗地亚语
-	// `hrx`：洪斯吕克语
-	// `ht`：海地克里奥尔语
-	// `hu`：匈牙利语
-	// `hy`：亚美尼亚语
-	// `id`：印度尼西亚语
-	// `ig`：Igbo
-	// `ilo`：伊洛果语
-	// `is`：冰岛语
-	// `it`：意大利语
-	// `iw`：希伯来语
-	// `ja`：日语
-	// `jv`：爪哇语
-	// `ka`：格鲁吉亚语
-	// `kk`：哈萨克语
-	// `km`：高棉语
-	// `kn`：卡纳达语
-	// `ko`：韩语
-	// `kri`：Krio
-	// `ku`：库尔德语（库尔曼吉语）
-	// `ktu`：吉土巴语
-	// `ky`：吉尔吉斯语
-	// `la`：拉丁语
-	// `lb`：卢森堡语
-	// `lg`：干达语（卢干达语）
-	// `li`：林堡语
-	// `lij`：利古里亚语
-	// `lmo`：伦巴第语
-	// `ln`：林加拉语
-	// `lo`：老挝语
-	// `lt`：立陶宛语
-	// `ltg`：拉特加莱语
-	// `luo`：Luo
-	// `lus`：米佐语
-	// `lv`：拉脱维亚语
-	// `mai`：迈蒂利语
-	// `mak`：马卡萨
-	// `mg`：马尔加什语
-	// `mi`：毛利语
-	// `min`：米南语
-	// `mk`：马其顿语
-	// `ml`：马拉雅拉姆语
-	// `mn`：蒙古语
-	// `mr`：马拉地语
-	// `ms`：马来语
-	// `mt`：马耳他语
-	// `my`：缅甸语
-	// `ne`：尼泊尔语
-	// `new`：尼瓦尔语
-	// `nl`：荷兰语
-	// `no`：挪威语
-	// `nr`：恩德贝莱语（南部）
-	// `nso`：北索托语（塞佩蒂语）
-	// `nus`：努尔语
-	// `ny`：齐切瓦语（尼扬贾语）
-	// `oc`：奥克斯坦语
-	// `om`：Oromo
-	// `or`：奥里亚语
-	// `pa`：旁遮普语
-	// `pag`：邦阿西楠语
-	// `pam`：邦板牙语
-	// `pap`：Papiamento
-	// `pl`：波兰语
-	// `ps`：Pashto
-	// `pt`：葡萄牙语
-	// `pt-BR`：葡萄牙语（巴西）
-	// `pt-PT`：葡萄牙语（葡萄牙）
-	// `qu`：克丘亚语
-	// `ro`：罗马尼亚语
-	// `rom`：罗姆语
-	// `rn`：Rundi
-	// `ru`：俄语
-	// `rw`：卢旺达语
-	// `sa`：梵语
-	// `scn`：西西里语
-	// `sd`：信德语
-	// `sg`：Sango
-	// `shn`：掸语
-	// `si`：僧伽罗语
-	// `sk`：斯洛伐克语
-	// `sl`：斯洛文尼亚语
-	// `sm`：萨摩亚语
-	// `sn`：修纳语
-	// `so`：索马里语
-	// `sq`：阿尔巴尼亚语
-	// `sr`：塞尔维亚语
-	// `ss`：斯瓦特语
-	// `st`：塞索托语
-	// `su`：巽他语
-	// `sv`：瑞典语
-	// `sw`：斯瓦希里语
-	// `szl`：西里西亚语
-	// `ta`：泰米尔语
-	// `te`：泰卢固语
-	// `tet`：德顿语
-	// `tg`：塔吉克语
-	// `th`：泰语
-	// `ti`：提格里尼亚语
-	// `tk`：土库曼语
-	// `tn`：茨瓦纳语
-	// `tr`：土耳其语
-	// `ts`：聪加语
-	// `tt`：鞑靼语
-	// `ug`：维吾尔语
-	// `uk`：乌克兰语
-	// `ur`：乌尔都语
-	// `uz`：乌兹别克语
-	// `vi`：越南语
-	// `xh`：科萨语
-	// `yi`：意第绪语
-	// `yo`：约鲁巴语
-	// `yua`：尤卡坦玛雅语
-	// `yue`：粤语
-	// `zh`：简体中文
-	// `zh-TW`：中文（繁体）
-	// `zu`：祖鲁语
-	// 
-	// **注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
+	// <p>字幕翻译目标语言<br>当TranslateSwitch为ON的时候生效，翻译语言列表：<br><code>ab</code>：阿布哈兹语<br><code>ace</code>：亚齐语<br><code>ach</code>：阿乔利语<br><code>af</code>：南非荷兰语<br><code>ak</code>：契维语（阿坎语）<br><code>am</code>：Amharic<br><code>ar</code>：阿拉伯语<br><code>as</code>：阿萨姆语<br><code>ay</code>：艾马拉语<br><code>az</code>：阿塞拜疆语<br><code>ba</code>：巴什基尔语<br><code>ban</code>：巴厘语<br><code>bbc</code>：巴塔克托巴语<br><code>bem</code>：Bemba<br><code>bew</code>：Betawi<br><code>bg</code>：保加利亚语<br><code>bho</code>：博杰普尔语<br><code>bik</code>：Bikol<br><code>bm</code>：班巴拉语<br><code>bn</code>：孟加拉语<br><code>br</code>：布列塔尼语<br><code>bs</code>：波斯尼亚语<br><code>btx</code>：巴塔克卡罗语<br><code>bts</code>：巴塔克西马隆贡语<br><code>bua</code>：布里亚特语<br><code>ca</code>：加泰罗尼亚语<br><code>ceb</code>：宿务语<br><code>cgg</code>：Kiga<br><code>chm</code>：草原马里语<br><code>ckb</code>：库尔德语（索拉尼语）<br><code>cnh</code>：哈卡钦语<br><code>co</code>：科西嘉语<br><code>crh</code>：克里米亚鞑靼语<br><code>crs</code>：塞舌尔克里奥尔语<br><code>cs</code>：捷克语<br><code>cv</code>：楚瓦什语<br><code>cy</code>：威尔士语<br><code>da</code>：丹麦语<br><code>de</code>：德语<br><code>din</code>：Dinka<br><code>doi</code>：多格来语<br><code>dov</code>：敦贝语<br><code>dv</code>：第维埃语<br><code>dz</code>：宗卡语<br><code>ee</code>：Ewe<br><code>el</code>：希腊语<br><code>en</code>：英语<br><code>eo</code>：世界语<br><code>es</code>：西班牙语<br><code>et</code>：爱沙尼亚语<br><code>eu</code>：巴斯克语<br><code>fa</code>：波斯语<br><code>ff</code>：富拉语<br><code>fi</code>：芬兰语<br><code>fil</code>：菲律宾语（塔加拉语）<br><code>fj</code>：斐济语<br><code>fr</code>：法语<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fy</code>：弗里斯兰语<br><code>ga</code>：爱尔兰语<br><code>gaa</code>：加 (Ga) 语<br><code>gd</code>：苏格兰盖尔语<br><code>gl</code>：加利西亚语<br><code>gn</code>：瓜拉尼语<br><code>gom</code>：贡根语<br><code>gu</code>：古吉拉特语<br><code>gv</code>：马恩岛语<br><code>ha</code>：Hausa<br><code>haw</code>：夏威夷语<br><code>he</code>：希伯来语<br><code>hi</code>：印地语<br><code>hil</code>：希利盖农语<br><code>hmn</code>：苗语<br><code>hr</code>：克罗地亚语<br><code>hrx</code>：洪斯吕克语<br><code>ht</code>：海地克里奥尔语<br><code>hu</code>：匈牙利语<br><code>hy</code>：亚美尼亚语<br><code>id</code>：印度尼西亚语<br><code>ig</code>：Igbo<br><code>ilo</code>：伊洛果语<br><code>is</code>：冰岛语<br><code>it</code>：意大利语<br><code>iw</code>：希伯来语<br><code>ja</code>：日语<br><code>jv</code>：爪哇语<br><code>ka</code>：格鲁吉亚语<br><code>kk</code>：哈萨克语<br><code>km</code>：高棉语<br><code>kn</code>：卡纳达语<br><code>ko</code>：韩语<br><code>kri</code>：Krio<br><code>ku</code>：库尔德语（库尔曼吉语）<br><code>ktu</code>：吉土巴语<br><code>ky</code>：吉尔吉斯语<br><code>la</code>：拉丁语<br><code>lb</code>：卢森堡语<br><code>lg</code>：干达语（卢干达语）<br><code>li</code>：林堡语<br><code>lij</code>：利古里亚语<br><code>lmo</code>：伦巴第语<br><code>ln</code>：林加拉语<br><code>lo</code>：老挝语<br><code>lt</code>：立陶宛语<br><code>ltg</code>：拉特加莱语<br><code>luo</code>：Luo<br><code>lus</code>：米佐语<br><code>lv</code>：拉脱维亚语<br><code>mai</code>：迈蒂利语<br><code>mak</code>：马卡萨<br><code>mg</code>：马尔加什语<br><code>mi</code>：毛利语<br><code>min</code>：米南语<br><code>mk</code>：马其顿语<br><code>ml</code>：马拉雅拉姆语<br><code>mn</code>：蒙古语<br><code>mr</code>：马拉地语<br><code>ms</code>：马来语<br><code>mt</code>：马耳他语<br><code>my</code>：缅甸语<br><code>ne</code>：尼泊尔语<br><code>new</code>：尼瓦尔语<br><code>nl</code>：荷兰语<br><code>no</code>：挪威语<br><code>nr</code>：恩德贝莱语（南部）<br><code>nso</code>：北索托语（塞佩蒂语）<br><code>nus</code>：努尔语<br><code>ny</code>：齐切瓦语（尼扬贾语）<br><code>oc</code>：奥克斯坦语<br><code>om</code>：Oromo<br><code>or</code>：奥里亚语<br><code>pa</code>：旁遮普语<br><code>pag</code>：邦阿西楠语<br><code>pam</code>：邦板牙语<br><code>pap</code>：Papiamento<br><code>pl</code>：波兰语<br><code>ps</code>：Pashto<br><code>pt</code>：葡萄牙语<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>qu</code>：克丘亚语<br><code>ro</code>：罗马尼亚语<br><code>rom</code>：罗姆语<br><code>rn</code>：Rundi<br><code>ru</code>：俄语<br><code>rw</code>：卢旺达语<br><code>sa</code>：梵语<br><code>scn</code>：西西里语<br><code>sd</code>：信德语<br><code>sg</code>：Sango<br><code>shn</code>：掸语<br><code>si</code>：僧伽罗语<br><code>sk</code>：斯洛伐克语<br><code>sl</code>：斯洛文尼亚语<br><code>sm</code>：萨摩亚语<br><code>sn</code>：修纳语<br><code>so</code>：索马里语<br><code>sq</code>：阿尔巴尼亚语<br><code>sr</code>：塞尔维亚语<br><code>ss</code>：斯瓦特语<br><code>st</code>：塞索托语<br><code>su</code>：巽他语<br><code>sv</code>：瑞典语<br><code>sw</code>：斯瓦希里语<br><code>szl</code>：西里西亚语<br><code>ta</code>：泰米尔语<br><code>te</code>：泰卢固语<br><code>tet</code>：德顿语<br><code>tg</code>：塔吉克语<br><code>th</code>：泰语<br><code>ti</code>：提格里尼亚语<br><code>tk</code>：土库曼语<br><code>tn</code>：茨瓦纳语<br><code>tr</code>：土耳其语<br><code>ts</code>：聪加语<br><code>tt</code>：鞑靼语<br><code>ug</code>：维吾尔语<br><code>uk</code>：乌克兰语<br><code>ur</code>：乌尔都语<br><code>uz</code>：乌兹别克语<br><code>vi</code>：越南语<br><code>xh</code>：科萨语<br><code>yi</code>：意第绪语<br><code>yo</code>：约鲁巴语<br><code>yua</code>：尤卡坦玛雅语<br><code>yue</code>：粤语<br><code>zh</code>：简体中文<br><code>zh-TW</code>：中文（繁体）<br><code>zu</code>：祖鲁语</p><p><strong>注意</strong>：多语言方式，则使用 <code>/</code> 分割，如：<code>en/ja</code>，表示英语和日语。</p>
 	TranslateDstLanguage *string `json:"TranslateDstLanguage,omitnil,omitempty" name:"TranslateDstLanguage"`
 
-	// 字幕处理类型：
-	// - 0：ASR识别字幕
-	// - 1：纯字幕翻译
-	// - 2：OCR识别字幕
-	// 
-	// **注意**：不传的情况下默认类型为 ASR识别字幕
+	// <p>字幕处理类型：</p><ul><li>0：ASR识别字幕</li><li>1：纯字幕翻译</li><li>2：OCR识别字幕</li></ul><p><strong>注意</strong>：不传的情况下默认类型为 ASR识别字幕</p>
 	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 
-	// 字幕OCR提取框选区域配置
+	// <p>字幕OCR提取框选区域配置</p>
 	SelectingSubtitleAreasConfig *SelectingSubtitleAreasConfig `json:"SelectingSubtitleAreasConfig,omitnil,omitempty" name:"SelectingSubtitleAreasConfig"`
+
+	// <p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写。开启多个翻译语言时，不允许填写。</p>
+	SubtitleEmbedId *int64 `json:"SubtitleEmbedId,omitnil,omitempty" name:"SubtitleEmbedId"`
 }
 
 type CreateSmartSubtitleTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 智能字幕模板名称
-	// 长度限制：64 个字符。
+	// <p>智能字幕模板名称<br>长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 智能字幕视频源语言
-	// OCR识别仅支持以下语言：
-	// `zh_en`：中英
-	// `multi`：其他
-	// ASR识别和纯字幕翻译当前支持以下语言：
-	// `auto`：自动识别（仅在纯字幕翻译中支持）
-	// `zh`：简体中文
-	// `en`：英语
-	// `ja`：日语
-	// `ko`：韩语
-	// `zh-PY`：中英粤
-	// `zh_medical`：中文医疗
-	// `vi`：越南语
-	// `ms`：马来语
-	// `id`：印度尼西亚语
-	// `fil`：菲律宾语
-	// `th`：泰语
-	// `pt`：葡萄牙语
-	// `tr`：土耳其语
-	// `ar`：阿拉伯语
-	// `es`：西班牙语
-	// `hi`：印地语
-	// `fr`：法语
-	// `de`：德语
-	// `it`：意大利语
-	// `zh_dialect`：中文方言
-	// `zh_en`：中英
-	// `yue`：粤语
-	// `ru`：俄语
-	// `prime_zh`：中英方言
-	// `af-ZA`：南非荷兰语（南非）
-	// `sq-AL`：阿尔巴尼亚语（阿尔巴尼亚）
-	// `am-ET`：阿姆哈拉语（埃塞俄比亚）
-	// `ar-DZ`：阿拉伯语（阿尔及利亚）
-	// `ar-BH`：阿拉伯语（巴林）
-	// `ar-EG`：阿拉伯语（埃及）
-	// `ar-IQ`：阿拉伯语（伊拉克）
-	// `ar-IL`：阿拉伯语（以色列）
-	// `ar-JO`：阿拉伯语（约旦）
-	// `ar-KW`：阿拉伯语（科威特）
-	// `ar-LB`：阿拉伯语（黎巴嫩）
-	// `ar-MR`：阿拉伯语（毛里塔尼亚）
-	// `ar-MA`：阿拉伯语（摩洛哥）
-	// `ar-OM`：阿拉伯语（阿曼）
-	// `ar-QA`：阿拉伯语（卡塔尔）
-	// `ar-SA`：阿拉伯语（沙特阿拉伯）
-	// `ar-PS`：阿拉伯语（巴勒斯坦国）
-	// `ar-SY`：阿拉伯语（叙利亚）
-	// `ar-TN`：阿拉伯语（突尼斯）
-	// `ar-AE`：阿拉伯语（阿拉伯联合酋长国）
-	// `ar-YE`：阿拉伯语（也门）
-	// `hy-AM`：亚美尼亚语（亚美尼亚）
-	// `az-AZ`：阿塞拜疆语（阿塞拜疆）
-	// `eu-ES`：巴斯克语（西班牙）
-	// `bn-BD`：孟加拉语（孟加拉）
-	// `bn-IN`：孟加拉语（印度）
-	// `bs-BA`：波斯尼亚语（波斯尼亚和黑塞哥维那）
-	// `bg-BG`：保加利亚语（保加利亚）
-	// `my-MM`：缅甸语（缅甸）
-	// `ca-ES`：加泰罗尼亚语（西班牙）
-	// `hr-HR`：克罗地亚语（克罗地亚）
-	// `cs-CZ`：捷克语（捷克共和国）
-	// `da-DK`：丹麦语（丹麦）
-	// `nl-BE`：荷兰语（比利时）
-	// `nl-NL`：荷兰语（荷兰）
-	// `en-AU`：英语（澳大利亚）
-	// `en-CA`：英语（加拿大）
-	// `en-GH`：英语（加纳）
-	// `en-HK`：英语（中国香港）
-	// `en-IN`：英语（印度）
-	// `en-IE`：英语（爱尔兰）
-	// `en-KE`：英语（肯尼亚）
-	// `en-NZ`：英语（新西兰）
-	// `en-NG`：英语（尼日利亚）
-	// `en-PK`：英语（巴基斯坦）
-	// `en-PH`：英语（菲律宾）
-	// `en-SG`：英语（新加坡）
-	// `en-ZA`：英语（南非）
-	// `en-TZ`：英语（坦桑尼亚）
-	// `en-GB`：英语（英国）
-	// `en-US`：英语（美国）
-	// `et-EE`：爱沙尼亚语（爱沙尼亚）
-	// `fil-PH`：菲律宾语（菲律宾）
-	// `fi-FI`：芬兰语（芬兰）
-	// `fr-BE`：法语（比利时）
-	// `fr-CA`：法语（加拿大）
-	// `fr-FR`：法语（法国）
-	// `fr-CH`：法语（瑞士）
-	// `gl-ES`：加利西亚语（西班牙）
-	// `ka-GE`：格鲁吉亚语（格鲁吉亚）
-	// `el-GR`：希腊语（希腊）
-	// `gu-IN`：古吉拉特语（印度）
-	// `iw-IL`：希伯来语（以色列）
-	// `hi-IN`：印地语（印度）
-	// `hu-HU`：匈牙利语（匈牙利）
-	// `is-IS`：冰岛语（冰岛）
-	// `id-ID`：印度尼西亚语（印度尼西亚）
-	// `it-IT`：意大利语（意大利）
-	// `it-CH`：意大利语（瑞士）
-	// `ja-JP`：日语（日本）
-	// `jv-ID`：爪哇语（印度尼西亚）
-	// `kn-IN`：卡纳达语（印度）
-	// `kk-KZ`：哈萨克语（哈萨克斯坦）
-	// `km-KH`：高棉语（柬埔寨）
-	// `rw-RW`：卢旺达语（卢旺达）
-	// `ko-KR`：韩语（韩国）
-	// `lo-LA`：老挝语（老挝）
-	// `lv-LV`：拉脱维亚语（拉脱维亚）
-	// `lt-LT`：立陶宛语（立陶宛）
-	// `mk-MK`：马其顿语（北马其顿）
-	// `ms-MY`：马来语（马来西亚）
-	// `ml-IN`：马拉雅拉姆语（印度）
-	// `mr-IN`：马拉地语（印度）
-	// `mn-MN`：蒙古语（蒙古）
-	// `ne-NP`：尼泊尔语（尼泊尔）
-	// `no-NO`：博克马尔挪威语（挪威）
-	// `fa-IR`：波斯语（伊朗）
-	// `pl-PL`：波兰语（波兰）
-	// `pt-BR`：葡萄牙语（巴西）
-	// `pt-PT`：葡萄牙语（葡萄牙）
-	// `ro-RO`：罗马尼亚语（罗马尼亚）
-	// `ru-RU`：俄语（俄罗斯）
-	// `sr-RS`：塞尔维亚语（塞尔维亚）
-	// `si-LK`：僧伽罗语（斯里兰卡）
-	// `sk-SK`：斯洛伐克语（斯洛伐克）
-	// `sl-SI`：斯洛文尼亚语（斯洛文尼亚）
-	// `st-ZA`：南索托语（南非）
-	// `es-AR`：西班牙语（阿根廷）
-	// `es-BO`：西班牙语（玻利维亚）
-	// `es-CL`：西班牙语（智利）
-	// `es-CO`：西班牙语（哥伦比亚）
-	// `es-CR`：西班牙语（哥斯达黎加）
-	// `es-DO`：西班牙语（多米尼加共和国）
-	// `es-EC`：西班牙语（厄瓜多尔）
-	// `es-SV`：西班牙语（萨尔瓦多）
-	// `es-GT`：西班牙语（危地马拉）
-	// `es-HN`：西班牙语（洪都拉斯）
-	// `es-MX`：西班牙语（墨西哥）
-	// `es-NI`：西班牙语（尼加拉瓜）
-	// `es-PA`：西班牙语（巴拿马）
-	// `es-PY`：西班牙语（巴拉圭）
-	// `es-PE`：西班牙语（秘鲁）
-	// `es-PR`：西班牙语（波多黎各）
-	// `es-ES`：西班牙语（西班牙）
-	// `es-US`：西班牙语（美国）
-	// `es-UY`：西班牙语（乌拉圭）
-	// `es-VE`：西班牙语（委内瑞拉）
-	// `su-ID`：巽他语（印度尼西亚）
-	// `sw-KE`：斯瓦希里语（肯尼亚）
-	// `sw-TZ`：斯瓦希里语（坦桑尼亚）
-	// `sv-SE`：瑞典语（瑞典）
-	// `ta-IN`：泰米尔语（印度）
-	// `ta-MY`：泰米尔语（马来西亚）
-	// `ta-SG`：泰米尔语（新加坡）
-	// `ta-LK`：泰米尔语（斯里兰卡）
-	// `te-IN`：泰卢固语（印度）
-	// `th-TH`：泰语（泰国）
-	// `ts-ZA`：聪加语（南非）
-	// `tr-TR`：土耳其语（土耳其）
-	// `uk-UA`：乌克兰语（乌克兰）
-	// `ur-IN`：乌尔都语（印度）
-	// `ur-PK`：乌尔都语（巴基斯坦）
-	// `uz-UZ`：乌兹别克语（乌兹别克斯坦）
-	// `ve-ZA`：文达语（南非）
-	// `vi-VN`：越南语（越南）
-	// `xh-ZA`：科萨语（南非）
-	// `zu-ZA`：祖鲁语（南非）
+	// <p>智能字幕视频源语言<br>OCR识别仅支持以下语言：<br><code>zh_en</code>：中英<br><code>multi</code>：其他<br>ASR识别和纯字幕翻译当前支持以下语言：<br><code>auto</code>：自动识别<br><code>zh</code>：简体中文<br><code>en</code>：英语<br><code>ja</code>：日语<br><code>ko</code>：韩语<br><code>zh-PY</code>：中英粤<br><code>zh_medical</code>：中文医疗<br><code>vi</code>：越南语<br><code>ms</code>：马来语<br><code>id</code>：印度尼西亚语<br><code>fil</code>：菲律宾语<br><code>th</code>：泰语<br><code>pt</code>：葡萄牙语<br><code>tr</code>：土耳其语<br><code>ar</code>：阿拉伯语<br><code>es</code>：西班牙语<br><code>hi</code>：印地语<br><code>fr</code>：法语<br><code>de</code>：德语<br><code>it</code>：意大利语<br><code>zh_dialect</code>：中文方言<br><code>zh_en</code>：中英<br><code>yue</code>：粤语<br><code>ru</code>：俄语<br><code>prime_zh</code>：中英方言<br><code>af-ZA</code>：南非荷兰语（南非）<br><code>sq-AL</code>：阿尔巴尼亚语（阿尔巴尼亚）<br><code>am-ET</code>：阿姆哈拉语（埃塞俄比亚）<br><code>ar-DZ</code>：阿拉伯语（阿尔及利亚）<br><code>ar-BH</code>：阿拉伯语（巴林）<br><code>ar-EG</code>：阿拉伯语（埃及）<br><code>ar-IQ</code>：阿拉伯语（伊拉克）<br><code>ar-IL</code>：阿拉伯语（以色列）<br><code>ar-JO</code>：阿拉伯语（约旦）<br><code>ar-KW</code>：阿拉伯语（科威特）<br><code>ar-LB</code>：阿拉伯语（黎巴嫩）<br><code>ar-MR</code>：阿拉伯语（毛里塔尼亚）<br><code>ar-MA</code>：阿拉伯语（摩洛哥）<br><code>ar-OM</code>：阿拉伯语（阿曼）<br><code>ar-QA</code>：阿拉伯语（卡塔尔）<br><code>ar-SA</code>：阿拉伯语（沙特阿拉伯）<br><code>ar-PS</code>：阿拉伯语（巴勒斯坦国）<br><code>ar-SY</code>：阿拉伯语（叙利亚）<br><code>ar-TN</code>：阿拉伯语（突尼斯）<br><code>ar-AE</code>：阿拉伯语（阿拉伯联合酋长国）<br><code>ar-YE</code>：阿拉伯语（也门）<br><code>hy-AM</code>：亚美尼亚语（亚美尼亚）<br><code>az-AZ</code>：阿塞拜疆语（阿塞拜疆）<br><code>eu-ES</code>：巴斯克语（西班牙）<br><code>bn-BD</code>：孟加拉语（孟加拉）<br><code>bn-IN</code>：孟加拉语（印度）<br><code>bs-BA</code>：波斯尼亚语（波斯尼亚和黑塞哥维那）<br><code>bg-BG</code>：保加利亚语（保加利亚）<br><code>my-MM</code>：缅甸语（缅甸）<br><code>ca-ES</code>：加泰罗尼亚语（西班牙）<br><code>hr-HR</code>：克罗地亚语（克罗地亚）<br><code>cs-CZ</code>：捷克语（捷克共和国）<br><code>da-DK</code>：丹麦语（丹麦）<br><code>nl-BE</code>：荷兰语（比利时）<br><code>nl-NL</code>：荷兰语（荷兰）<br><code>en-AU</code>：英语（澳大利亚）<br><code>en-CA</code>：英语（加拿大）<br><code>en-GH</code>：英语（加纳）<br><code>en-HK</code>：英语（中国香港）<br><code>en-IN</code>：英语（印度）<br><code>en-IE</code>：英语（爱尔兰）<br><code>en-KE</code>：英语（肯尼亚）<br><code>en-NZ</code>：英语（新西兰）<br><code>en-NG</code>：英语（尼日利亚）<br><code>en-PK</code>：英语（巴基斯坦）<br><code>en-PH</code>：英语（菲律宾）<br><code>en-SG</code>：英语（新加坡）<br><code>en-ZA</code>：英语（南非）<br><code>en-TZ</code>：英语（坦桑尼亚）<br><code>en-GB</code>：英语（英国）<br><code>en-US</code>：英语（美国）<br><code>et-EE</code>：爱沙尼亚语（爱沙尼亚）<br><code>fil-PH</code>：菲律宾语（菲律宾）<br><code>fi-FI</code>：芬兰语（芬兰）<br><code>fr-BE</code>：法语（比利时）<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fr-CH</code>：法语（瑞士）<br><code>gl-ES</code>：加利西亚语（西班牙）<br><code>ka-GE</code>：格鲁吉亚语（格鲁吉亚）<br><code>el-GR</code>：希腊语（希腊）<br><code>gu-IN</code>：古吉拉特语（印度）<br><code>iw-IL</code>：希伯来语（以色列）<br><code>hi-IN</code>：印地语（印度）<br><code>hu-HU</code>：匈牙利语（匈牙利）<br><code>is-IS</code>：冰岛语（冰岛）<br><code>id-ID</code>：印度尼西亚语（印度尼西亚）<br><code>it-IT</code>：意大利语（意大利）<br><code>it-CH</code>：意大利语（瑞士）<br><code>ja-JP</code>：日语（日本）<br><code>jv-ID</code>：爪哇语（印度尼西亚）<br><code>kn-IN</code>：卡纳达语（印度）<br><code>kk-KZ</code>：哈萨克语（哈萨克斯坦）<br><code>km-KH</code>：高棉语（柬埔寨）<br><code>rw-RW</code>：卢旺达语（卢旺达）<br><code>ko-KR</code>：韩语（韩国）<br><code>lo-LA</code>：老挝语（老挝）<br><code>lv-LV</code>：拉脱维亚语（拉脱维亚）<br><code>lt-LT</code>：立陶宛语（立陶宛）<br><code>mk-MK</code>：马其顿语（北马其顿）<br><code>ms-MY</code>：马来语（马来西亚）<br><code>ml-IN</code>：马拉雅拉姆语（印度）<br><code>mr-IN</code>：马拉地语（印度）<br><code>mn-MN</code>：蒙古语（蒙古）<br><code>ne-NP</code>：尼泊尔语（尼泊尔）<br><code>no-NO</code>：博克马尔挪威语（挪威）<br><code>fa-IR</code>：波斯语（伊朗）<br><code>pl-PL</code>：波兰语（波兰）<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>ro-RO</code>：罗马尼亚语（罗马尼亚）<br><code>ru-RU</code>：俄语（俄罗斯）<br><code>sr-RS</code>：塞尔维亚语（塞尔维亚）<br><code>si-LK</code>：僧伽罗语（斯里兰卡）<br><code>sk-SK</code>：斯洛伐克语（斯洛伐克）<br><code>sl-SI</code>：斯洛文尼亚语（斯洛文尼亚）<br><code>st-ZA</code>：南索托语（南非）<br><code>es-AR</code>：西班牙语（阿根廷）<br><code>es-BO</code>：西班牙语（玻利维亚）<br><code>es-CL</code>：西班牙语（智利）<br><code>es-CO</code>：西班牙语（哥伦比亚）<br><code>es-CR</code>：西班牙语（哥斯达黎加）<br><code>es-DO</code>：西班牙语（多米尼加共和国）<br><code>es-EC</code>：西班牙语（厄瓜多尔）<br><code>es-SV</code>：西班牙语（萨尔瓦多）<br><code>es-GT</code>：西班牙语（危地马拉）<br><code>es-HN</code>：西班牙语（洪都拉斯）<br><code>es-MX</code>：西班牙语（墨西哥）<br><code>es-NI</code>：西班牙语（尼加拉瓜）<br><code>es-PA</code>：西班牙语（巴拿马）<br><code>es-PY</code>：西班牙语（巴拉圭）<br><code>es-PE</code>：西班牙语（秘鲁）<br><code>es-PR</code>：西班牙语（波多黎各）<br><code>es-ES</code>：西班牙语（西班牙）<br><code>es-US</code>：西班牙语（美国）<br><code>es-UY</code>：西班牙语（乌拉圭）<br><code>es-VE</code>：西班牙语（委内瑞拉）<br><code>su-ID</code>：巽他语（印度尼西亚）<br><code>sw-KE</code>：斯瓦希里语（肯尼亚）<br><code>sw-TZ</code>：斯瓦希里语（坦桑尼亚）<br><code>sv-SE</code>：瑞典语（瑞典）<br><code>ta-IN</code>：泰米尔语（印度）<br><code>ta-MY</code>：泰米尔语（马来西亚）<br><code>ta-SG</code>：泰米尔语（新加坡）<br><code>ta-LK</code>：泰米尔语（斯里兰卡）<br><code>te-IN</code>：泰卢固语（印度）<br><code>th-TH</code>：泰语（泰国）<br><code>ts-ZA</code>：聪加语（南非）<br><code>tr-TR</code>：土耳其语（土耳其）<br><code>uk-UA</code>：乌克兰语（乌克兰）<br><code>ur-IN</code>：乌尔都语（印度）<br><code>ur-PK</code>：乌尔都语（巴基斯坦）<br><code>uz-UZ</code>：乌兹别克语（乌兹别克斯坦）<br><code>ve-ZA</code>：文达语（南非）<br><code>vi-VN</code>：越南语（越南）<br><code>xh-ZA</code>：科萨语（南非）<br><code>zu-ZA</code>：祖鲁语（南非）</p>
 	VideoSrcLanguage *string `json:"VideoSrcLanguage,omitnil,omitempty" name:"VideoSrcLanguage"`
 
-	// 智能字幕字幕语言类型
-	// 0: 源语言
-	// 1: 翻译语言
-	// 2: 源语言+翻译语言
-	// 当TranslateSwitch为OFF时仅支持取0
-	// 当TranslateSwitch为ON时仅支持取1或2
+	// <p>智能字幕字幕语言类型<br>0: 源语言<br>1: 翻译语言<br>2: 源语言+翻译语言<br>当TranslateSwitch为OFF时仅支持取0<br>当TranslateSwitch为ON时仅支持取1或2</p>
 	SubtitleType *int64 `json:"SubtitleType,omitnil,omitempty" name:"SubtitleType"`
 
-	// 智能字幕模板描述信息
-	// 长度限制：256 个字符。
+	// <p>智能字幕模板描述信息<br>长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 智能字幕文件格式:
-	// - ASR识别翻译处理类型下：
-	//      - vtt: WebVTT 格式字幕
-	//      - srt: SRT 格式字幕
-	//      - 不填或填空：不生成字幕文件
-	// - 纯字幕翻译处理类型下：
-	//     - original：与源文件一致
-	//     - vtt: WebVTT 格式字幕
-	//     - srt: SRT 格式字幕
-	// - OCR识别翻译处理类型下：
-	//      - vtt: WebVTT 格式字幕
-	//      - srt: SRT 格式字幕
-	// 
-	// **注意**：
-	// - ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
-	// - 纯字幕翻译和OCR识别翻译方式下，不允许传空或不传
+	// <p>智能字幕文件格式:</p><ul><li>ASR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li><li>不填或填空：不生成字幕文件</li></ul></li><li>纯字幕翻译处理类型下：<ul><li>original：与源文件一致</li><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li><li>OCR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li></ul><p><strong>注意</strong>：</p><ul><li>ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；</li><li>纯字幕翻译方式下，不允许传空或不传</li><li>OCR类型的任务，在开启压制时，允许不传或传空</li></ul>
 	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
 
-	// ASR热词库参数
+	// <p>ASR热词库参数</p>
 	AsrHotWordsConfigure *AsrHotWordsConfigure `json:"AsrHotWordsConfigure,omitnil,omitempty" name:"AsrHotWordsConfigure"`
 
-	// 字幕翻译开关
-	// `ON`: 开启翻译
-	// `OFF`: 关闭翻译
-	// 
-	// **注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
+	// <p>字幕翻译开关<br><code>ON</code>: 开启翻译<br><code>OFF</code>: 关闭翻译</p><p><strong>注意</strong>：纯字幕翻译方式下，不传默认是打开的，不允许传空或<code>OFF</code>；</p>
 	TranslateSwitch *string `json:"TranslateSwitch,omitnil,omitempty" name:"TranslateSwitch"`
 
-	// 字幕翻译目标语言
-	// 当TranslateSwitch为ON的时候生效，翻译语言列表：
-	// `ab`：阿布哈兹语
-	// `ace`：亚齐语
-	// `ach`：阿乔利语
-	// `af`：南非荷兰语
-	// `ak`：契维语（阿坎语）
-	// `am`：Amharic
-	// `ar`：阿拉伯语
-	// `as`：阿萨姆语
-	// `ay`：艾马拉语
-	// `az`：阿塞拜疆语
-	// `ba`：巴什基尔语
-	// `ban`：巴厘语
-	// `bbc`：巴塔克托巴语
-	// `bem`：Bemba
-	// `bew`：Betawi
-	// `bg`：保加利亚语
-	// `bho`：博杰普尔语
-	// `bik`：Bikol
-	// `bm`：班巴拉语
-	// `bn`：孟加拉语
-	// `br`：布列塔尼语
-	// `bs`：波斯尼亚语
-	// `btx`：巴塔克卡罗语
-	// `bts`：巴塔克西马隆贡语
-	// `bua`：布里亚特语
-	// `ca`：加泰罗尼亚语
-	// `ceb`：宿务语
-	// `cgg`：Kiga
-	// `chm`：草原马里语
-	// `ckb`：库尔德语（索拉尼语）
-	// `cnh`：哈卡钦语
-	// `co`：科西嘉语
-	// `crh`：克里米亚鞑靼语
-	// `crs`：塞舌尔克里奥尔语
-	// `cs`：捷克语
-	// `cv`：楚瓦什语
-	// `cy`：威尔士语
-	// `da`：丹麦语
-	// `de`：德语
-	// `din`：Dinka
-	// `doi`：多格来语
-	// `dov`：敦贝语
-	// `dv`：第维埃语
-	// `dz`：宗卡语
-	// `ee`：Ewe
-	// `el`：希腊语
-	// `en`：英语
-	// `eo`：世界语
-	// `es`：西班牙语
-	// `et`：爱沙尼亚语
-	// `eu`：巴斯克语
-	// `fa`：波斯语
-	// `ff`：富拉语
-	// `fi`：芬兰语
-	// `fil`：菲律宾语（塔加拉语）
-	// `fj`：斐济语
-	// `fr`：法语
-	// `fr-CA`：法语（加拿大）
-	// `fr-FR`：法语（法国）
-	// `fy`：弗里斯兰语
-	// `ga`：爱尔兰语
-	// `gaa`：加 (Ga) 语
-	// `gd`：苏格兰盖尔语
-	// `gl`：加利西亚语
-	// `gn`：瓜拉尼语
-	// `gom`：贡根语
-	// `gu`：古吉拉特语
-	// `gv`：马恩岛语
-	// `ha`：Hausa
-	// `haw`：夏威夷语
-	// `he`：希伯来语
-	// `hi`：印地语
-	// `hil`：希利盖农语
-	// `hmn`：苗语
-	// `hr`：克罗地亚语
-	// `hrx`：洪斯吕克语
-	// `ht`：海地克里奥尔语
-	// `hu`：匈牙利语
-	// `hy`：亚美尼亚语
-	// `id`：印度尼西亚语
-	// `ig`：Igbo
-	// `ilo`：伊洛果语
-	// `is`：冰岛语
-	// `it`：意大利语
-	// `iw`：希伯来语
-	// `ja`：日语
-	// `jv`：爪哇语
-	// `ka`：格鲁吉亚语
-	// `kk`：哈萨克语
-	// `km`：高棉语
-	// `kn`：卡纳达语
-	// `ko`：韩语
-	// `kri`：Krio
-	// `ku`：库尔德语（库尔曼吉语）
-	// `ktu`：吉土巴语
-	// `ky`：吉尔吉斯语
-	// `la`：拉丁语
-	// `lb`：卢森堡语
-	// `lg`：干达语（卢干达语）
-	// `li`：林堡语
-	// `lij`：利古里亚语
-	// `lmo`：伦巴第语
-	// `ln`：林加拉语
-	// `lo`：老挝语
-	// `lt`：立陶宛语
-	// `ltg`：拉特加莱语
-	// `luo`：Luo
-	// `lus`：米佐语
-	// `lv`：拉脱维亚语
-	// `mai`：迈蒂利语
-	// `mak`：马卡萨
-	// `mg`：马尔加什语
-	// `mi`：毛利语
-	// `min`：米南语
-	// `mk`：马其顿语
-	// `ml`：马拉雅拉姆语
-	// `mn`：蒙古语
-	// `mr`：马拉地语
-	// `ms`：马来语
-	// `mt`：马耳他语
-	// `my`：缅甸语
-	// `ne`：尼泊尔语
-	// `new`：尼瓦尔语
-	// `nl`：荷兰语
-	// `no`：挪威语
-	// `nr`：恩德贝莱语（南部）
-	// `nso`：北索托语（塞佩蒂语）
-	// `nus`：努尔语
-	// `ny`：齐切瓦语（尼扬贾语）
-	// `oc`：奥克斯坦语
-	// `om`：Oromo
-	// `or`：奥里亚语
-	// `pa`：旁遮普语
-	// `pag`：邦阿西楠语
-	// `pam`：邦板牙语
-	// `pap`：Papiamento
-	// `pl`：波兰语
-	// `ps`：Pashto
-	// `pt`：葡萄牙语
-	// `pt-BR`：葡萄牙语（巴西）
-	// `pt-PT`：葡萄牙语（葡萄牙）
-	// `qu`：克丘亚语
-	// `ro`：罗马尼亚语
-	// `rom`：罗姆语
-	// `rn`：Rundi
-	// `ru`：俄语
-	// `rw`：卢旺达语
-	// `sa`：梵语
-	// `scn`：西西里语
-	// `sd`：信德语
-	// `sg`：Sango
-	// `shn`：掸语
-	// `si`：僧伽罗语
-	// `sk`：斯洛伐克语
-	// `sl`：斯洛文尼亚语
-	// `sm`：萨摩亚语
-	// `sn`：修纳语
-	// `so`：索马里语
-	// `sq`：阿尔巴尼亚语
-	// `sr`：塞尔维亚语
-	// `ss`：斯瓦特语
-	// `st`：塞索托语
-	// `su`：巽他语
-	// `sv`：瑞典语
-	// `sw`：斯瓦希里语
-	// `szl`：西里西亚语
-	// `ta`：泰米尔语
-	// `te`：泰卢固语
-	// `tet`：德顿语
-	// `tg`：塔吉克语
-	// `th`：泰语
-	// `ti`：提格里尼亚语
-	// `tk`：土库曼语
-	// `tn`：茨瓦纳语
-	// `tr`：土耳其语
-	// `ts`：聪加语
-	// `tt`：鞑靼语
-	// `ug`：维吾尔语
-	// `uk`：乌克兰语
-	// `ur`：乌尔都语
-	// `uz`：乌兹别克语
-	// `vi`：越南语
-	// `xh`：科萨语
-	// `yi`：意第绪语
-	// `yo`：约鲁巴语
-	// `yua`：尤卡坦玛雅语
-	// `yue`：粤语
-	// `zh`：简体中文
-	// `zh-TW`：中文（繁体）
-	// `zu`：祖鲁语
-	// 
-	// **注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
+	// <p>字幕翻译目标语言<br>当TranslateSwitch为ON的时候生效，翻译语言列表：<br><code>ab</code>：阿布哈兹语<br><code>ace</code>：亚齐语<br><code>ach</code>：阿乔利语<br><code>af</code>：南非荷兰语<br><code>ak</code>：契维语（阿坎语）<br><code>am</code>：Amharic<br><code>ar</code>：阿拉伯语<br><code>as</code>：阿萨姆语<br><code>ay</code>：艾马拉语<br><code>az</code>：阿塞拜疆语<br><code>ba</code>：巴什基尔语<br><code>ban</code>：巴厘语<br><code>bbc</code>：巴塔克托巴语<br><code>bem</code>：Bemba<br><code>bew</code>：Betawi<br><code>bg</code>：保加利亚语<br><code>bho</code>：博杰普尔语<br><code>bik</code>：Bikol<br><code>bm</code>：班巴拉语<br><code>bn</code>：孟加拉语<br><code>br</code>：布列塔尼语<br><code>bs</code>：波斯尼亚语<br><code>btx</code>：巴塔克卡罗语<br><code>bts</code>：巴塔克西马隆贡语<br><code>bua</code>：布里亚特语<br><code>ca</code>：加泰罗尼亚语<br><code>ceb</code>：宿务语<br><code>cgg</code>：Kiga<br><code>chm</code>：草原马里语<br><code>ckb</code>：库尔德语（索拉尼语）<br><code>cnh</code>：哈卡钦语<br><code>co</code>：科西嘉语<br><code>crh</code>：克里米亚鞑靼语<br><code>crs</code>：塞舌尔克里奥尔语<br><code>cs</code>：捷克语<br><code>cv</code>：楚瓦什语<br><code>cy</code>：威尔士语<br><code>da</code>：丹麦语<br><code>de</code>：德语<br><code>din</code>：Dinka<br><code>doi</code>：多格来语<br><code>dov</code>：敦贝语<br><code>dv</code>：第维埃语<br><code>dz</code>：宗卡语<br><code>ee</code>：Ewe<br><code>el</code>：希腊语<br><code>en</code>：英语<br><code>eo</code>：世界语<br><code>es</code>：西班牙语<br><code>et</code>：爱沙尼亚语<br><code>eu</code>：巴斯克语<br><code>fa</code>：波斯语<br><code>ff</code>：富拉语<br><code>fi</code>：芬兰语<br><code>fil</code>：菲律宾语（塔加拉语）<br><code>fj</code>：斐济语<br><code>fr</code>：法语<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fy</code>：弗里斯兰语<br><code>ga</code>：爱尔兰语<br><code>gaa</code>：加 (Ga) 语<br><code>gd</code>：苏格兰盖尔语<br><code>gl</code>：加利西亚语<br><code>gn</code>：瓜拉尼语<br><code>gom</code>：贡根语<br><code>gu</code>：古吉拉特语<br><code>gv</code>：马恩岛语<br><code>ha</code>：Hausa<br><code>haw</code>：夏威夷语<br><code>he</code>：希伯来语<br><code>hi</code>：印地语<br><code>hil</code>：希利盖农语<br><code>hmn</code>：苗语<br><code>hr</code>：克罗地亚语<br><code>hrx</code>：洪斯吕克语<br><code>ht</code>：海地克里奥尔语<br><code>hu</code>：匈牙利语<br><code>hy</code>：亚美尼亚语<br><code>id</code>：印度尼西亚语<br><code>ig</code>：Igbo<br><code>ilo</code>：伊洛果语<br><code>is</code>：冰岛语<br><code>it</code>：意大利语<br><code>iw</code>：希伯来语<br><code>ja</code>：日语<br><code>jv</code>：爪哇语<br><code>ka</code>：格鲁吉亚语<br><code>kk</code>：哈萨克语<br><code>km</code>：高棉语<br><code>kn</code>：卡纳达语<br><code>ko</code>：韩语<br><code>kri</code>：Krio<br><code>ku</code>：库尔德语（库尔曼吉语）<br><code>ktu</code>：吉土巴语<br><code>ky</code>：吉尔吉斯语<br><code>la</code>：拉丁语<br><code>lb</code>：卢森堡语<br><code>lg</code>：干达语（卢干达语）<br><code>li</code>：林堡语<br><code>lij</code>：利古里亚语<br><code>lmo</code>：伦巴第语<br><code>ln</code>：林加拉语<br><code>lo</code>：老挝语<br><code>lt</code>：立陶宛语<br><code>ltg</code>：拉特加莱语<br><code>luo</code>：Luo<br><code>lus</code>：米佐语<br><code>lv</code>：拉脱维亚语<br><code>mai</code>：迈蒂利语<br><code>mak</code>：马卡萨<br><code>mg</code>：马尔加什语<br><code>mi</code>：毛利语<br><code>min</code>：米南语<br><code>mk</code>：马其顿语<br><code>ml</code>：马拉雅拉姆语<br><code>mn</code>：蒙古语<br><code>mr</code>：马拉地语<br><code>ms</code>：马来语<br><code>mt</code>：马耳他语<br><code>my</code>：缅甸语<br><code>ne</code>：尼泊尔语<br><code>new</code>：尼瓦尔语<br><code>nl</code>：荷兰语<br><code>no</code>：挪威语<br><code>nr</code>：恩德贝莱语（南部）<br><code>nso</code>：北索托语（塞佩蒂语）<br><code>nus</code>：努尔语<br><code>ny</code>：齐切瓦语（尼扬贾语）<br><code>oc</code>：奥克斯坦语<br><code>om</code>：Oromo<br><code>or</code>：奥里亚语<br><code>pa</code>：旁遮普语<br><code>pag</code>：邦阿西楠语<br><code>pam</code>：邦板牙语<br><code>pap</code>：Papiamento<br><code>pl</code>：波兰语<br><code>ps</code>：Pashto<br><code>pt</code>：葡萄牙语<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>qu</code>：克丘亚语<br><code>ro</code>：罗马尼亚语<br><code>rom</code>：罗姆语<br><code>rn</code>：Rundi<br><code>ru</code>：俄语<br><code>rw</code>：卢旺达语<br><code>sa</code>：梵语<br><code>scn</code>：西西里语<br><code>sd</code>：信德语<br><code>sg</code>：Sango<br><code>shn</code>：掸语<br><code>si</code>：僧伽罗语<br><code>sk</code>：斯洛伐克语<br><code>sl</code>：斯洛文尼亚语<br><code>sm</code>：萨摩亚语<br><code>sn</code>：修纳语<br><code>so</code>：索马里语<br><code>sq</code>：阿尔巴尼亚语<br><code>sr</code>：塞尔维亚语<br><code>ss</code>：斯瓦特语<br><code>st</code>：塞索托语<br><code>su</code>：巽他语<br><code>sv</code>：瑞典语<br><code>sw</code>：斯瓦希里语<br><code>szl</code>：西里西亚语<br><code>ta</code>：泰米尔语<br><code>te</code>：泰卢固语<br><code>tet</code>：德顿语<br><code>tg</code>：塔吉克语<br><code>th</code>：泰语<br><code>ti</code>：提格里尼亚语<br><code>tk</code>：土库曼语<br><code>tn</code>：茨瓦纳语<br><code>tr</code>：土耳其语<br><code>ts</code>：聪加语<br><code>tt</code>：鞑靼语<br><code>ug</code>：维吾尔语<br><code>uk</code>：乌克兰语<br><code>ur</code>：乌尔都语<br><code>uz</code>：乌兹别克语<br><code>vi</code>：越南语<br><code>xh</code>：科萨语<br><code>yi</code>：意第绪语<br><code>yo</code>：约鲁巴语<br><code>yua</code>：尤卡坦玛雅语<br><code>yue</code>：粤语<br><code>zh</code>：简体中文<br><code>zh-TW</code>：中文（繁体）<br><code>zu</code>：祖鲁语</p><p><strong>注意</strong>：多语言方式，则使用 <code>/</code> 分割，如：<code>en/ja</code>，表示英语和日语。</p>
 	TranslateDstLanguage *string `json:"TranslateDstLanguage,omitnil,omitempty" name:"TranslateDstLanguage"`
 
-	// 字幕处理类型：
-	// - 0：ASR识别字幕
-	// - 1：纯字幕翻译
-	// - 2：OCR识别字幕
-	// 
-	// **注意**：不传的情况下默认类型为 ASR识别字幕
+	// <p>字幕处理类型：</p><ul><li>0：ASR识别字幕</li><li>1：纯字幕翻译</li><li>2：OCR识别字幕</li></ul><p><strong>注意</strong>：不传的情况下默认类型为 ASR识别字幕</p>
 	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 
-	// 字幕OCR提取框选区域配置
+	// <p>字幕OCR提取框选区域配置</p>
 	SelectingSubtitleAreasConfig *SelectingSubtitleAreasConfig `json:"SelectingSubtitleAreasConfig,omitnil,omitempty" name:"SelectingSubtitleAreasConfig"`
+
+	// <p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写。开启多个翻译语言时，不允许填写。</p>
+	SubtitleEmbedId *int64 `json:"SubtitleEmbedId,omitnil,omitempty" name:"SubtitleEmbedId"`
 }
 
 func (r *CreateSmartSubtitleTemplateRequest) ToJsonString() string {
@@ -7017,6 +6237,7 @@ func (r *CreateSmartSubtitleTemplateRequest) FromJsonString(s string) error {
 	delete(f, "TranslateDstLanguage")
 	delete(f, "ProcessType")
 	delete(f, "SelectingSubtitleAreasConfig")
+	delete(f, "SubtitleEmbedId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSmartSubtitleTemplateRequest has unknown keys!", "")
 	}
@@ -7025,7 +6246,7 @@ func (r *CreateSmartSubtitleTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSmartSubtitleTemplateResponseParams struct {
-	// 智能字幕模板唯一标识。
+	// <p>智能字幕模板唯一标识。</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7521,6 +6742,77 @@ func (r *CreateStreamLinkSecurityGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateStreamLinkSecurityGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSubtitleEmbedTemplateRequestParams struct {
+	// <p>字幕压制模板名称<br>长度限制：64 个字符。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>字幕压制模板描述信息<br>长度限制：256 个字符。</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>字幕压制相关配置</p>
+	SubtitleEmbedConfig *SubtitleEmbedConfig `json:"SubtitleEmbedConfig,omitnil,omitempty" name:"SubtitleEmbedConfig"`
+}
+
+type CreateSubtitleEmbedTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>字幕压制模板名称<br>长度限制：64 个字符。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>字幕压制模板描述信息<br>长度限制：256 个字符。</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>字幕压制相关配置</p>
+	SubtitleEmbedConfig *SubtitleEmbedConfig `json:"SubtitleEmbedConfig,omitnil,omitempty" name:"SubtitleEmbedConfig"`
+}
+
+func (r *CreateSubtitleEmbedTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSubtitleEmbedTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "SubtitleEmbedConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSubtitleEmbedTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSubtitleEmbedTemplateResponseParams struct {
+	// <p>字幕压制模板唯一标识。</p>
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSubtitleEmbedTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSubtitleEmbedTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateSubtitleEmbedTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSubtitleEmbedTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9274,6 +8566,60 @@ func (r *DeleteStreamLinkSecurityGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteStreamLinkSecurityGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSubtitleEmbedTemplateRequestParams struct {
+	// <p>字幕压制模板唯一标识。</p>
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+type DeleteSubtitleEmbedTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>字幕压制模板唯一标识。</p>
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+}
+
+func (r *DeleteSubtitleEmbedTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSubtitleEmbedTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSubtitleEmbedTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSubtitleEmbedTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteSubtitleEmbedTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSubtitleEmbedTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteSubtitleEmbedTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSubtitleEmbedTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13189,6 +12535,94 @@ func (r *DescribeStreamLinkSecurityGroupsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeStreamLinkSecurityGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSubtitleEmbedTemplatesRequestParams struct {
+	// <p>智能字幕模板唯一标识过滤条件，数组长度限制：100。</p>
+	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
+
+	// <p>分页偏移量，默认值：0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回记录条数，默认值：10，最大值：100。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>模板类型过滤条件，不填则返回所有，可选值：</p><ul><li>Preset：系统预置模板；</li><li>Custom：用户自定义模板。</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>字幕压制模板标识过滤条件，长度限制：64 个字符。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type DescribeSubtitleEmbedTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>智能字幕模板唯一标识过滤条件，数组长度限制：100。</p>
+	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
+
+	// <p>分页偏移量，默认值：0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>返回记录条数，默认值：10，最大值：100。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>模板类型过滤条件，不填则返回所有，可选值：</p><ul><li>Preset：系统预置模板；</li><li>Custom：用户自定义模板。</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>字幕压制模板标识过滤条件，长度限制：64 个字符。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+func (r *DescribeSubtitleEmbedTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubtitleEmbedTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definitions")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Type")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubtitleEmbedTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSubtitleEmbedTemplatesResponseParams struct {
+	// <p>符合过滤条件的记录总数。</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>字幕压制模板详情列表。</p>
+	SubtitleEmbedTemplateSet []*SubtitleEmbedTemplateItem `json:"SubtitleEmbedTemplateSet,omitnil,omitempty" name:"SubtitleEmbedTemplateSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSubtitleEmbedTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSubtitleEmbedTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeSubtitleEmbedTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubtitleEmbedTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -19249,56 +18683,50 @@ func (r *ModifyScheduleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifySmartEraseTemplateRequestParams struct {
-	// 智能擦除模板唯一标识
+	// <p>智能擦除模板唯一标识</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 智能擦除模板名称长度限制：64 个字符。
+	// <p>智能擦除模板名称长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 智能擦除模板描述信息长度限制：256 个字符。
+	// <p>智能擦除模板描述信息长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 擦除类型
-	// - subtitle 去字幕
-	// - watermark 去水印
-	// - privacy 隐私保护
+	// <p>擦除类型</p><ul><li>subtitle 去字幕</li><li>watermark 去水印</li><li>privacy 隐私保护</li></ul>
 	EraseType *string `json:"EraseType,omitnil,omitempty" name:"EraseType"`
 
-	// 字幕擦除配置，EraseType取subtitle或者EraseType不填，对应模板原EraseType为subtitle时生效。
+	// <p>字幕擦除配置，EraseType取subtitle或者EraseType不填，对应模板原EraseType为subtitle时生效。</p>
 	EraseSubtitleConfig *SmartEraseSubtitleConfig `json:"EraseSubtitleConfig,omitnil,omitempty" name:"EraseSubtitleConfig"`
 
-	// 水印擦除配置，EraseType取watermark或者EraseType不填，对应模板原EraseType为watermark时生效。
+	// <p>水印擦除配置，EraseType取watermark或者EraseType不填，对应模板原EraseType为watermark时生效。</p>
 	EraseWatermarkConfig *SmartEraseWatermarkConfig `json:"EraseWatermarkConfig,omitnil,omitempty" name:"EraseWatermarkConfig"`
 
-	// 隐私保护配置，EraseType取privacy或者EraseType不填，对应模板原EraseType为privacy时生效。
+	// <p>隐私保护配置，EraseType取privacy或者EraseType不填，对应模板原EraseType为privacy时生效。</p>
 	ErasePrivacyConfig *SmartErasePrivacyConfig `json:"ErasePrivacyConfig,omitnil,omitempty" name:"ErasePrivacyConfig"`
 }
 
 type ModifySmartEraseTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 智能擦除模板唯一标识
+	// <p>智能擦除模板唯一标识</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 智能擦除模板名称长度限制：64 个字符。
+	// <p>智能擦除模板名称长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 智能擦除模板描述信息长度限制：256 个字符。
+	// <p>智能擦除模板描述信息长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 擦除类型
-	// - subtitle 去字幕
-	// - watermark 去水印
-	// - privacy 隐私保护
+	// <p>擦除类型</p><ul><li>subtitle 去字幕</li><li>watermark 去水印</li><li>privacy 隐私保护</li></ul>
 	EraseType *string `json:"EraseType,omitnil,omitempty" name:"EraseType"`
 
-	// 字幕擦除配置，EraseType取subtitle或者EraseType不填，对应模板原EraseType为subtitle时生效。
+	// <p>字幕擦除配置，EraseType取subtitle或者EraseType不填，对应模板原EraseType为subtitle时生效。</p>
 	EraseSubtitleConfig *SmartEraseSubtitleConfig `json:"EraseSubtitleConfig,omitnil,omitempty" name:"EraseSubtitleConfig"`
 
-	// 水印擦除配置，EraseType取watermark或者EraseType不填，对应模板原EraseType为watermark时生效。
+	// <p>水印擦除配置，EraseType取watermark或者EraseType不填，对应模板原EraseType为watermark时生效。</p>
 	EraseWatermarkConfig *SmartEraseWatermarkConfig `json:"EraseWatermarkConfig,omitnil,omitempty" name:"EraseWatermarkConfig"`
 
-	// 隐私保护配置，EraseType取privacy或者EraseType不填，对应模板原EraseType为privacy时生效。
+	// <p>隐私保护配置，EraseType取privacy或者EraseType不填，对应模板原EraseType为privacy时生效。</p>
 	ErasePrivacyConfig *SmartErasePrivacyConfig `json:"ErasePrivacyConfig,omitnil,omitempty" name:"ErasePrivacyConfig"`
 }
 
@@ -19351,855 +18779,81 @@ func (r *ModifySmartEraseTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifySmartSubtitleTemplateRequestParams struct {
-	// 智能字幕模板唯一标识
+	// <p>智能字幕模板唯一标识</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 字幕翻译开关
-	// `ON`: 开启翻译
-	// `OFF`: 关闭翻译
-	// 
-	// **注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
+	// <p>字幕翻译开关<br><code>ON</code>: 开启翻译<br><code>OFF</code>: 关闭翻译</p><p><strong>注意</strong>：纯字幕翻译方式下，不传默认是打开的，不允许传空或<code>OFF</code>；</p>
 	TranslateSwitch *string `json:"TranslateSwitch,omitnil,omitempty" name:"TranslateSwitch"`
 
-	// 智能字幕模板名称
-	// 长度限制：64 个字符。
+	// <p>智能字幕模板名称<br>长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 智能字幕模板描述信息
-	// 长度限制：256 个字符。
+	// <p>智能字幕模板描述信息<br>长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 智能字幕视频源语言
-	// OCR识别仅支持以下语言：
-	// `zh_en`：中英
-	// `multi`：其他
-	// ASR识别和纯字幕翻译当前支持以下语言：
-	// `auto`：自动识别（仅在纯字幕翻译中支持）
-	// `zh`：简体中文
-	// `en`：英语
-	// `ja`：日语
-	// `ko`：韩语
-	// `zh-PY`：中英粤
-	// `zh_medical`：中文医疗
-	// `vi`：越南语
-	// `ms`：马来语
-	// `id`：印度尼西亚语
-	// `fil`：菲律宾语
-	// `th`：泰语
-	// `pt`：葡萄牙语
-	// `tr`：土耳其语
-	// `ar`：阿拉伯语
-	// `es`：西班牙语
-	// `hi`：印地语
-	// `fr`：法语
-	// `de`：德语
-	// `it`：意大利语
-	// `zh_dialect`：中文方言
-	// `zh_en`：中英
-	// `yue`：粤语
-	// `ru`：俄语
-	// `prime_zh`：中英方言
-	// `af-ZA`：南非荷兰语（南非）
-	// `sq-AL`：阿尔巴尼亚语（阿尔巴尼亚）
-	// `am-ET`：阿姆哈拉语（埃塞俄比亚）
-	// `ar-DZ`：阿拉伯语（阿尔及利亚）
-	// `ar-BH`：阿拉伯语（巴林）
-	// `ar-EG`：阿拉伯语（埃及）
-	// `ar-IQ`：阿拉伯语（伊拉克）
-	// `ar-IL`：阿拉伯语（以色列）
-	// `ar-JO`：阿拉伯语（约旦）
-	// `ar-KW`：阿拉伯语（科威特）
-	// `ar-LB`：阿拉伯语（黎巴嫩）
-	// `ar-MR`：阿拉伯语（毛里塔尼亚）
-	// `ar-MA`：阿拉伯语（摩洛哥）
-	// `ar-OM`：阿拉伯语（阿曼）
-	// `ar-QA`：阿拉伯语（卡塔尔）
-	// `ar-SA`：阿拉伯语（沙特阿拉伯）
-	// `ar-PS`：阿拉伯语（巴勒斯坦国）
-	// `ar-SY`：阿拉伯语（叙利亚）
-	// `ar-TN`：阿拉伯语（突尼斯）
-	// `ar-AE`：阿拉伯语（阿拉伯联合酋长国）
-	// `ar-YE`：阿拉伯语（也门）
-	// `hy-AM`：亚美尼亚语（亚美尼亚）
-	// `az-AZ`：阿塞拜疆语（阿塞拜疆）
-	// `eu-ES`：巴斯克语（西班牙）
-	// `bn-BD`：孟加拉语（孟加拉）
-	// `bn-IN`：孟加拉语（印度）
-	// `bs-BA`：波斯尼亚语（波斯尼亚和黑塞哥维那）
-	// `bg-BG`：保加利亚语（保加利亚）
-	// `my-MM`：缅甸语（缅甸）
-	// `ca-ES`：加泰罗尼亚语（西班牙）
-	// `hr-HR`：克罗地亚语（克罗地亚）
-	// `cs-CZ`：捷克语（捷克共和国）
-	// `da-DK`：丹麦语（丹麦）
-	// `nl-BE`：荷兰语（比利时）
-	// `nl-NL`：荷兰语（荷兰）
-	// `en-AU`：英语（澳大利亚）
-	// `en-CA`：英语（加拿大）
-	// `en-GH`：英语（加纳）
-	// `en-HK`：英语（中国香港）
-	// `en-IN`：英语（印度）
-	// `en-IE`：英语（爱尔兰）
-	// `en-KE`：英语（肯尼亚）
-	// `en-NZ`：英语（新西兰）
-	// `en-NG`：英语（尼日利亚）
-	// `en-PK`：英语（巴基斯坦）
-	// `en-PH`：英语（菲律宾）
-	// `en-SG`：英语（新加坡）
-	// `en-ZA`：英语（南非）
-	// `en-TZ`：英语（坦桑尼亚）
-	// `en-GB`：英语（英国）
-	// `en-US`：英语（美国）
-	// `et-EE`：爱沙尼亚语（爱沙尼亚）
-	// `fil-PH`：菲律宾语（菲律宾）
-	// `fi-FI`：芬兰语（芬兰）
-	// `fr-BE`：法语（比利时）
-	// `fr-CA`：法语（加拿大）
-	// `fr-FR`：法语（法国）
-	// `fr-CH`：法语（瑞士）
-	// `gl-ES`：加利西亚语（西班牙）
-	// `ka-GE`：格鲁吉亚语（格鲁吉亚）
-	// `el-GR`：希腊语（希腊）
-	// `gu-IN`：古吉拉特语（印度）
-	// `iw-IL`：希伯来语（以色列）
-	// `hi-IN`：印地语（印度）
-	// `hu-HU`：匈牙利语（匈牙利）
-	// `is-IS`：冰岛语（冰岛）
-	// `id-ID`：印度尼西亚语（印度尼西亚）
-	// `it-IT`：意大利语（意大利）
-	// `it-CH`：意大利语（瑞士）
-	// `ja-JP`：日语（日本）
-	// `jv-ID`：爪哇语（印度尼西亚）
-	// `kn-IN`：卡纳达语（印度）
-	// `kk-KZ`：哈萨克语（哈萨克斯坦）
-	// `km-KH`：高棉语（柬埔寨）
-	// `rw-RW`：卢旺达语（卢旺达）
-	// `ko-KR`：韩语（韩国）
-	// `lo-LA`：老挝语（老挝）
-	// `lv-LV`：拉脱维亚语（拉脱维亚）
-	// `lt-LT`：立陶宛语（立陶宛）
-	// `mk-MK`：马其顿语（北马其顿）
-	// `ms-MY`：马来语（马来西亚）
-	// `ml-IN`：马拉雅拉姆语（印度）
-	// `mr-IN`：马拉地语（印度）
-	// `mn-MN`：蒙古语（蒙古）
-	// `ne-NP`：尼泊尔语（尼泊尔）
-	// `no-NO`：博克马尔挪威语（挪威）
-	// `fa-IR`：波斯语（伊朗）
-	// `pl-PL`：波兰语（波兰）
-	// `pt-BR`：葡萄牙语（巴西）
-	// `pt-PT`：葡萄牙语（葡萄牙）
-	// `ro-RO`：罗马尼亚语（罗马尼亚）
-	// `ru-RU`：俄语（俄罗斯）
-	// `sr-RS`：塞尔维亚语（塞尔维亚）
-	// `si-LK`：僧伽罗语（斯里兰卡）
-	// `sk-SK`：斯洛伐克语（斯洛伐克）
-	// `sl-SI`：斯洛文尼亚语（斯洛文尼亚）
-	// `st-ZA`：南索托语（南非）
-	// `es-AR`：西班牙语（阿根廷）
-	// `es-BO`：西班牙语（玻利维亚）
-	// `es-CL`：西班牙语（智利）
-	// `es-CO`：西班牙语（哥伦比亚）
-	// `es-CR`：西班牙语（哥斯达黎加）
-	// `es-DO`：西班牙语（多米尼加共和国）
-	// `es-EC`：西班牙语（厄瓜多尔）
-	// `es-SV`：西班牙语（萨尔瓦多）
-	// `es-GT`：西班牙语（危地马拉）
-	// `es-HN`：西班牙语（洪都拉斯）
-	// `es-MX`：西班牙语（墨西哥）
-	// `es-NI`：西班牙语（尼加拉瓜）
-	// `es-PA`：西班牙语（巴拿马）
-	// `es-PY`：西班牙语（巴拉圭）
-	// `es-PE`：西班牙语（秘鲁）
-	// `es-PR`：西班牙语（波多黎各）
-	// `es-ES`：西班牙语（西班牙）
-	// `es-US`：西班牙语（美国）
-	// `es-UY`：西班牙语（乌拉圭）
-	// `es-VE`：西班牙语（委内瑞拉）
-	// `su-ID`：巽他语（印度尼西亚）
-	// `sw-KE`：斯瓦希里语（肯尼亚）
-	// `sw-TZ`：斯瓦希里语（坦桑尼亚）
-	// `sv-SE`：瑞典语（瑞典）
-	// `ta-IN`：泰米尔语（印度）
-	// `ta-MY`：泰米尔语（马来西亚）
-	// `ta-SG`：泰米尔语（新加坡）
-	// `ta-LK`：泰米尔语（斯里兰卡）
-	// `te-IN`：泰卢固语（印度）
-	// `th-TH`：泰语（泰国）
-	// `ts-ZA`：聪加语（南非）
-	// `tr-TR`：土耳其语（土耳其）
-	// `uk-UA`：乌克兰语（乌克兰）
-	// `ur-IN`：乌尔都语（印度）
-	// `ur-PK`：乌尔都语（巴基斯坦）
-	// `uz-UZ`：乌兹别克语（乌兹别克斯坦）
-	// `ve-ZA`：文达语（南非）
-	// `vi-VN`：越南语（越南）
-	// `xh-ZA`：科萨语（南非）
-	// `zu-ZA`：祖鲁语（南非）
+	// <p>智能字幕视频源语言<br>OCR识别仅支持以下语言：<br><code>zh_en</code>：中英<br><code>multi</code>：其他<br>ASR识别和纯字幕翻译当前支持以下语言：<br><code>auto</code>：自动识别<br><code>zh</code>：简体中文<br><code>en</code>：英语<br><code>ja</code>：日语<br><code>ko</code>：韩语<br><code>zh-PY</code>：中英粤<br><code>zh_medical</code>：中文医疗<br><code>vi</code>：越南语<br><code>ms</code>：马来语<br><code>id</code>：印度尼西亚语<br><code>fil</code>：菲律宾语<br><code>th</code>：泰语<br><code>pt</code>：葡萄牙语<br><code>tr</code>：土耳其语<br><code>ar</code>：阿拉伯语<br><code>es</code>：西班牙语<br><code>hi</code>：印地语<br><code>fr</code>：法语<br><code>de</code>：德语<br><code>it</code>：意大利语<br><code>zh_dialect</code>：中文方言<br><code>zh_en</code>：中英<br><code>yue</code>：粤语<br><code>ru</code>：俄语<br><code>prime_zh</code>：中英方言<br><code>af-ZA</code>：南非荷兰语（南非）<br><code>sq-AL</code>：阿尔巴尼亚语（阿尔巴尼亚）<br><code>am-ET</code>：阿姆哈拉语（埃塞俄比亚）<br><code>ar-DZ</code>：阿拉伯语（阿尔及利亚）<br><code>ar-BH</code>：阿拉伯语（巴林）<br><code>ar-EG</code>：阿拉伯语（埃及）<br><code>ar-IQ</code>：阿拉伯语（伊拉克）<br><code>ar-IL</code>：阿拉伯语（以色列）<br><code>ar-JO</code>：阿拉伯语（约旦）<br><code>ar-KW</code>：阿拉伯语（科威特）<br><code>ar-LB</code>：阿拉伯语（黎巴嫩）<br><code>ar-MR</code>：阿拉伯语（毛里塔尼亚）<br><code>ar-MA</code>：阿拉伯语（摩洛哥）<br><code>ar-OM</code>：阿拉伯语（阿曼）<br><code>ar-QA</code>：阿拉伯语（卡塔尔）<br><code>ar-SA</code>：阿拉伯语（沙特阿拉伯）<br><code>ar-PS</code>：阿拉伯语（巴勒斯坦国）<br><code>ar-SY</code>：阿拉伯语（叙利亚）<br><code>ar-TN</code>：阿拉伯语（突尼斯）<br><code>ar-AE</code>：阿拉伯语（阿拉伯联合酋长国）<br><code>ar-YE</code>：阿拉伯语（也门）<br><code>hy-AM</code>：亚美尼亚语（亚美尼亚）<br><code>az-AZ</code>：阿塞拜疆语（阿塞拜疆）<br><code>eu-ES</code>：巴斯克语（西班牙）<br><code>bn-BD</code>：孟加拉语（孟加拉）<br><code>bn-IN</code>：孟加拉语（印度）<br><code>bs-BA</code>：波斯尼亚语（波斯尼亚和黑塞哥维那）<br><code>bg-BG</code>：保加利亚语（保加利亚）<br><code>my-MM</code>：缅甸语（缅甸）<br><code>ca-ES</code>：加泰罗尼亚语（西班牙）<br><code>hr-HR</code>：克罗地亚语（克罗地亚）<br><code>cs-CZ</code>：捷克语（捷克共和国）<br><code>da-DK</code>：丹麦语（丹麦）<br><code>nl-BE</code>：荷兰语（比利时）<br><code>nl-NL</code>：荷兰语（荷兰）<br><code>en-AU</code>：英语（澳大利亚）<br><code>en-CA</code>：英语（加拿大）<br><code>en-GH</code>：英语（加纳）<br><code>en-HK</code>：英语（中国香港）<br><code>en-IN</code>：英语（印度）<br><code>en-IE</code>：英语（爱尔兰）<br><code>en-KE</code>：英语（肯尼亚）<br><code>en-NZ</code>：英语（新西兰）<br><code>en-NG</code>：英语（尼日利亚）<br><code>en-PK</code>：英语（巴基斯坦）<br><code>en-PH</code>：英语（菲律宾）<br><code>en-SG</code>：英语（新加坡）<br><code>en-ZA</code>：英语（南非）<br><code>en-TZ</code>：英语（坦桑尼亚）<br><code>en-GB</code>：英语（英国）<br><code>en-US</code>：英语（美国）<br><code>et-EE</code>：爱沙尼亚语（爱沙尼亚）<br><code>fil-PH</code>：菲律宾语（菲律宾）<br><code>fi-FI</code>：芬兰语（芬兰）<br><code>fr-BE</code>：法语（比利时）<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fr-CH</code>：法语（瑞士）<br><code>gl-ES</code>：加利西亚语（西班牙）<br><code>ka-GE</code>：格鲁吉亚语（格鲁吉亚）<br><code>el-GR</code>：希腊语（希腊）<br><code>gu-IN</code>：古吉拉特语（印度）<br><code>iw-IL</code>：希伯来语（以色列）<br><code>hi-IN</code>：印地语（印度）<br><code>hu-HU</code>：匈牙利语（匈牙利）<br><code>is-IS</code>：冰岛语（冰岛）<br><code>id-ID</code>：印度尼西亚语（印度尼西亚）<br><code>it-IT</code>：意大利语（意大利）<br><code>it-CH</code>：意大利语（瑞士）<br><code>ja-JP</code>：日语（日本）<br><code>jv-ID</code>：爪哇语（印度尼西亚）<br><code>kn-IN</code>：卡纳达语（印度）<br><code>kk-KZ</code>：哈萨克语（哈萨克斯坦）<br><code>km-KH</code>：高棉语（柬埔寨）<br><code>rw-RW</code>：卢旺达语（卢旺达）<br><code>ko-KR</code>：韩语（韩国）<br><code>lo-LA</code>：老挝语（老挝）<br><code>lv-LV</code>：拉脱维亚语（拉脱维亚）<br><code>lt-LT</code>：立陶宛语（立陶宛）<br><code>mk-MK</code>：马其顿语（北马其顿）<br><code>ms-MY</code>：马来语（马来西亚）<br><code>ml-IN</code>：马拉雅拉姆语（印度）<br><code>mr-IN</code>：马拉地语（印度）<br><code>mn-MN</code>：蒙古语（蒙古）<br><code>ne-NP</code>：尼泊尔语（尼泊尔）<br><code>no-NO</code>：博克马尔挪威语（挪威）<br><code>fa-IR</code>：波斯语（伊朗）<br><code>pl-PL</code>：波兰语（波兰）<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>ro-RO</code>：罗马尼亚语（罗马尼亚）<br><code>ru-RU</code>：俄语（俄罗斯）<br><code>sr-RS</code>：塞尔维亚语（塞尔维亚）<br><code>si-LK</code>：僧伽罗语（斯里兰卡）<br><code>sk-SK</code>：斯洛伐克语（斯洛伐克）<br><code>sl-SI</code>：斯洛文尼亚语（斯洛文尼亚）<br><code>st-ZA</code>：南索托语（南非）<br><code>es-AR</code>：西班牙语（阿根廷）<br><code>es-BO</code>：西班牙语（玻利维亚）<br><code>es-CL</code>：西班牙语（智利）<br><code>es-CO</code>：西班牙语（哥伦比亚）<br><code>es-CR</code>：西班牙语（哥斯达黎加）<br><code>es-DO</code>：西班牙语（多米尼加共和国）<br><code>es-EC</code>：西班牙语（厄瓜多尔）<br><code>es-SV</code>：西班牙语（萨尔瓦多）<br><code>es-GT</code>：西班牙语（危地马拉）<br><code>es-HN</code>：西班牙语（洪都拉斯）<br><code>es-MX</code>：西班牙语（墨西哥）<br><code>es-NI</code>：西班牙语（尼加拉瓜）<br><code>es-PA</code>：西班牙语（巴拿马）<br><code>es-PY</code>：西班牙语（巴拉圭）<br><code>es-PE</code>：西班牙语（秘鲁）<br><code>es-PR</code>：西班牙语（波多黎各）<br><code>es-ES</code>：西班牙语（西班牙）<br><code>es-US</code>：西班牙语（美国）<br><code>es-UY</code>：西班牙语（乌拉圭）<br><code>es-VE</code>：西班牙语（委内瑞拉）<br><code>su-ID</code>：巽他语（印度尼西亚）<br><code>sw-KE</code>：斯瓦希里语（肯尼亚）<br><code>sw-TZ</code>：斯瓦希里语（坦桑尼亚）<br><code>sv-SE</code>：瑞典语（瑞典）<br><code>ta-IN</code>：泰米尔语（印度）<br><code>ta-MY</code>：泰米尔语（马来西亚）<br><code>ta-SG</code>：泰米尔语（新加坡）<br><code>ta-LK</code>：泰米尔语（斯里兰卡）<br><code>te-IN</code>：泰卢固语（印度）<br><code>th-TH</code>：泰语（泰国）<br><code>ts-ZA</code>：聪加语（南非）<br><code>tr-TR</code>：土耳其语（土耳其）<br><code>uk-UA</code>：乌克兰语（乌克兰）<br><code>ur-IN</code>：乌尔都语（印度）<br><code>ur-PK</code>：乌尔都语（巴基斯坦）<br><code>uz-UZ</code>：乌兹别克语（乌兹别克斯坦）<br><code>ve-ZA</code>：文达语（南非）<br><code>vi-VN</code>：越南语（越南）<br><code>xh-ZA</code>：科萨语（南非）<br><code>zu-ZA</code>：祖鲁语（南非）</p>
 	VideoSrcLanguage *string `json:"VideoSrcLanguage,omitnil,omitempty" name:"VideoSrcLanguage"`
 
-	// 智能字幕文件格式:
-	// - ASR识别翻译处理类型下：
-	//      - vtt: WebVTT 格式字幕
-	//      - srt: SRT 格式字幕
-	//      - 不填或填空：不生成字幕文件
-	// - 纯字幕翻译处理类型下：
-	//     - original：与源文件一致
-	//     - vtt: WebVTT 格式字幕
-	//     - srt: SRT 格式字幕
-	// - OCR识别翻译处理类型下：
-	//      - vtt: WebVTT 格式字幕
-	//      - srt: SRT 格式字幕
-	// 
-	// **注意**：
-	// - ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
-	// - 纯字幕翻译和OCR识别翻译方式下，不允许传空或不传
+	// <p>智能字幕文件格式:</p><ul><li>ASR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li><li>不填或填空：不生成字幕文件</li></ul></li><li>纯字幕翻译处理类型下：<ul><li>original：与源文件一致</li><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li><li>OCR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li></ul><p><strong>注意</strong>：</p><ul><li>ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；</li><li>纯字幕翻译方式下，不允许传空或不传</li><li>OCR类型的任务，在开启压制时，允许不传或传空</li></ul>
 	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
 
-	// 智能字幕字幕语言类型
-	// 0: 源语言
-	// 1: 翻译语言
-	// 2: 源语言+翻译语言
-	// 当TranslateSwitch为OFF时仅支持取0
-	// 当TranslateSwitch为ON时仅支持取1或2
+	// <p>智能字幕字幕语言类型<br>0: 源语言<br>1: 翻译语言<br>2: 源语言+翻译语言<br>当TranslateSwitch为OFF时仅支持取0<br>当TranslateSwitch为ON时仅支持取1或2</p>
 	SubtitleType *int64 `json:"SubtitleType,omitnil,omitempty" name:"SubtitleType"`
 
-	// ASR热词库参数
+	// <p>ASR热词库参数</p>
 	AsrHotWordsConfigure *AsrHotWordsConfigure `json:"AsrHotWordsConfigure,omitnil,omitempty" name:"AsrHotWordsConfigure"`
 
-	// 字幕翻译目标语言
-	// 当TranslateSwitch为ON的时候生效，翻译语言列表：
-	// `ab`：阿布哈兹语
-	// `ace`：亚齐语
-	// `ach`：阿乔利语
-	// `af`：南非荷兰语
-	// `ak`：契维语（阿坎语）
-	// `am`：Amharic
-	// `ar`：阿拉伯语
-	// `as`：阿萨姆语
-	// `ay`：艾马拉语
-	// `az`：阿塞拜疆语
-	// `ba`：巴什基尔语
-	// `ban`：巴厘语
-	// `bbc`：巴塔克托巴语
-	// `bem`：Bemba
-	// `bew`：Betawi
-	// `bg`：保加利亚语
-	// `bho`：博杰普尔语
-	// `bik`：Bikol
-	// `bm`：班巴拉语
-	// `bn`：孟加拉语
-	// `br`：布列塔尼语
-	// `bs`：波斯尼亚语
-	// `btx`：巴塔克卡罗语
-	// `bts`：巴塔克西马隆贡语
-	// `bua`：布里亚特语
-	// `ca`：加泰罗尼亚语
-	// `ceb`：宿务语
-	// `cgg`：Kiga
-	// `chm`：草原马里语
-	// `ckb`：库尔德语（索拉尼语）
-	// `cnh`：哈卡钦语
-	// `co`：科西嘉语
-	// `crh`：克里米亚鞑靼语
-	// `crs`：塞舌尔克里奥尔语
-	// `cs`：捷克语
-	// `cv`：楚瓦什语
-	// `cy`：威尔士语
-	// `da`：丹麦语
-	// `de`：德语
-	// `din`：Dinka
-	// `doi`：多格来语
-	// `dov`：敦贝语
-	// `dv`：第维埃语
-	// `dz`：宗卡语
-	// `ee`：Ewe
-	// `el`：希腊语
-	// `en`：英语
-	// `eo`：世界语
-	// `es`：西班牙语
-	// `et`：爱沙尼亚语
-	// `eu`：巴斯克语
-	// `fa`：波斯语
-	// `ff`：富拉语
-	// `fi`：芬兰语
-	// `fil`：菲律宾语（塔加拉语）
-	// `fj`：斐济语
-	// `fr`：法语
-	// `fr-CA`：法语（加拿大）
-	// `fr-FR`：法语（法国）
-	// `fy`：弗里斯兰语
-	// `ga`：爱尔兰语
-	// `gaa`：加 (Ga) 语
-	// `gd`：苏格兰盖尔语
-	// `gl`：加利西亚语
-	// `gn`：瓜拉尼语
-	// `gom`：贡根语
-	// `gu`：古吉拉特语
-	// `gv`：马恩岛语
-	// `ha`：Hausa
-	// `haw`：夏威夷语
-	// `he`：希伯来语
-	// `hi`：印地语
-	// `hil`：希利盖农语
-	// `hmn`：苗语
-	// `hr`：克罗地亚语
-	// `hrx`：洪斯吕克语
-	// `ht`：海地克里奥尔语
-	// `hu`：匈牙利语
-	// `hy`：亚美尼亚语
-	// `id`：印度尼西亚语
-	// `ig`：Igbo
-	// `ilo`：伊洛果语
-	// `is`：冰岛语
-	// `it`：意大利语
-	// `iw`：希伯来语
-	// `ja`：日语
-	// `jv`：爪哇语
-	// `ka`：格鲁吉亚语
-	// `kk`：哈萨克语
-	// `km`：高棉语
-	// `kn`：卡纳达语
-	// `ko`：韩语
-	// `kri`：Krio
-	// `ku`：库尔德语（库尔曼吉语）
-	// `ktu`：吉土巴语
-	// `ky`：吉尔吉斯语
-	// `la`：拉丁语
-	// `lb`：卢森堡语
-	// `lg`：干达语（卢干达语）
-	// `li`：林堡语
-	// `lij`：利古里亚语
-	// `lmo`：伦巴第语
-	// `ln`：林加拉语
-	// `lo`：老挝语
-	// `lt`：立陶宛语
-	// `ltg`：拉特加莱语
-	// `luo`：Luo
-	// `lus`：米佐语
-	// `lv`：拉脱维亚语
-	// `mai`：迈蒂利语
-	// `mak`：马卡萨
-	// `mg`：马尔加什语
-	// `mi`：毛利语
-	// `min`：米南语
-	// `mk`：马其顿语
-	// `ml`：马拉雅拉姆语
-	// `mn`：蒙古语
-	// `mr`：马拉地语
-	// `ms`：马来语
-	// `mt`：马耳他语
-	// `my`：缅甸语
-	// `ne`：尼泊尔语
-	// `new`：尼瓦尔语
-	// `nl`：荷兰语
-	// `no`：挪威语
-	// `nr`：恩德贝莱语（南部）
-	// `nso`：北索托语（塞佩蒂语）
-	// `nus`：努尔语
-	// `ny`：齐切瓦语（尼扬贾语）
-	// `oc`：奥克斯坦语
-	// `om`：Oromo
-	// `or`：奥里亚语
-	// `pa`：旁遮普语
-	// `pag`：邦阿西楠语
-	// `pam`：邦板牙语
-	// `pap`：Papiamento
-	// `pl`：波兰语
-	// `ps`：Pashto
-	// `pt`：葡萄牙语
-	// `pt-BR`：葡萄牙语（巴西）
-	// `pt-PT`：葡萄牙语（葡萄牙）
-	// `qu`：克丘亚语
-	// `ro`：罗马尼亚语
-	// `rom`：罗姆语
-	// `rn`：Rundi
-	// `ru`：俄语
-	// `rw`：卢旺达语
-	// `sa`：梵语
-	// `scn`：西西里语
-	// `sd`：信德语
-	// `sg`：Sango
-	// `shn`：掸语
-	// `si`：僧伽罗语
-	// `sk`：斯洛伐克语
-	// `sl`：斯洛文尼亚语
-	// `sm`：萨摩亚语
-	// `sn`：修纳语
-	// `so`：索马里语
-	// `sq`：阿尔巴尼亚语
-	// `sr`：塞尔维亚语
-	// `ss`：斯瓦特语
-	// `st`：塞索托语
-	// `su`：巽他语
-	// `sv`：瑞典语
-	// `sw`：斯瓦希里语
-	// `szl`：西里西亚语
-	// `ta`：泰米尔语
-	// `te`：泰卢固语
-	// `tet`：德顿语
-	// `tg`：塔吉克语
-	// `th`：泰语
-	// `ti`：提格里尼亚语
-	// `tk`：土库曼语
-	// `tn`：茨瓦纳语
-	// `tr`：土耳其语
-	// `ts`：聪加语
-	// `tt`：鞑靼语
-	// `ug`：维吾尔语
-	// `uk`：乌克兰语
-	// `ur`：乌尔都语
-	// `uz`：乌兹别克语
-	// `vi`：越南语
-	// `xh`：科萨语
-	// `yi`：意第绪语
-	// `yo`：约鲁巴语
-	// `yua`：尤卡坦玛雅语
-	// `yue`：粤语
-	// `zh`：简体中文
-	// `zh-TW`：中文（繁体）
-	// `zu`：祖鲁语
-	// 
-	// **注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
+	// <p>字幕翻译目标语言<br>当TranslateSwitch为ON的时候生效，翻译语言列表：<br><code>ab</code>：阿布哈兹语<br><code>ace</code>：亚齐语<br><code>ach</code>：阿乔利语<br><code>af</code>：南非荷兰语<br><code>ak</code>：契维语（阿坎语）<br><code>am</code>：Amharic<br><code>ar</code>：阿拉伯语<br><code>as</code>：阿萨姆语<br><code>ay</code>：艾马拉语<br><code>az</code>：阿塞拜疆语<br><code>ba</code>：巴什基尔语<br><code>ban</code>：巴厘语<br><code>bbc</code>：巴塔克托巴语<br><code>bem</code>：Bemba<br><code>bew</code>：Betawi<br><code>bg</code>：保加利亚语<br><code>bho</code>：博杰普尔语<br><code>bik</code>：Bikol<br><code>bm</code>：班巴拉语<br><code>bn</code>：孟加拉语<br><code>br</code>：布列塔尼语<br><code>bs</code>：波斯尼亚语<br><code>btx</code>：巴塔克卡罗语<br><code>bts</code>：巴塔克西马隆贡语<br><code>bua</code>：布里亚特语<br><code>ca</code>：加泰罗尼亚语<br><code>ceb</code>：宿务语<br><code>cgg</code>：Kiga<br><code>chm</code>：草原马里语<br><code>ckb</code>：库尔德语（索拉尼语）<br><code>cnh</code>：哈卡钦语<br><code>co</code>：科西嘉语<br><code>crh</code>：克里米亚鞑靼语<br><code>crs</code>：塞舌尔克里奥尔语<br><code>cs</code>：捷克语<br><code>cv</code>：楚瓦什语<br><code>cy</code>：威尔士语<br><code>da</code>：丹麦语<br><code>de</code>：德语<br><code>din</code>：Dinka<br><code>doi</code>：多格来语<br><code>dov</code>：敦贝语<br><code>dv</code>：第维埃语<br><code>dz</code>：宗卡语<br><code>ee</code>：Ewe<br><code>el</code>：希腊语<br><code>en</code>：英语<br><code>eo</code>：世界语<br><code>es</code>：西班牙语<br><code>et</code>：爱沙尼亚语<br><code>eu</code>：巴斯克语<br><code>fa</code>：波斯语<br><code>ff</code>：富拉语<br><code>fi</code>：芬兰语<br><code>fil</code>：菲律宾语（塔加拉语）<br><code>fj</code>：斐济语<br><code>fr</code>：法语<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fy</code>：弗里斯兰语<br><code>ga</code>：爱尔兰语<br><code>gaa</code>：加 (Ga) 语<br><code>gd</code>：苏格兰盖尔语<br><code>gl</code>：加利西亚语<br><code>gn</code>：瓜拉尼语<br><code>gom</code>：贡根语<br><code>gu</code>：古吉拉特语<br><code>gv</code>：马恩岛语<br><code>ha</code>：Hausa<br><code>haw</code>：夏威夷语<br><code>he</code>：希伯来语<br><code>hi</code>：印地语<br><code>hil</code>：希利盖农语<br><code>hmn</code>：苗语<br><code>hr</code>：克罗地亚语<br><code>hrx</code>：洪斯吕克语<br><code>ht</code>：海地克里奥尔语<br><code>hu</code>：匈牙利语<br><code>hy</code>：亚美尼亚语<br><code>id</code>：印度尼西亚语<br><code>ig</code>：Igbo<br><code>ilo</code>：伊洛果语<br><code>is</code>：冰岛语<br><code>it</code>：意大利语<br><code>iw</code>：希伯来语<br><code>ja</code>：日语<br><code>jv</code>：爪哇语<br><code>ka</code>：格鲁吉亚语<br><code>kk</code>：哈萨克语<br><code>km</code>：高棉语<br><code>kn</code>：卡纳达语<br><code>ko</code>：韩语<br><code>kri</code>：Krio<br><code>ku</code>：库尔德语（库尔曼吉语）<br><code>ktu</code>：吉土巴语<br><code>ky</code>：吉尔吉斯语<br><code>la</code>：拉丁语<br><code>lb</code>：卢森堡语<br><code>lg</code>：干达语（卢干达语）<br><code>li</code>：林堡语<br><code>lij</code>：利古里亚语<br><code>lmo</code>：伦巴第语<br><code>ln</code>：林加拉语<br><code>lo</code>：老挝语<br><code>lt</code>：立陶宛语<br><code>ltg</code>：拉特加莱语<br><code>luo</code>：Luo<br><code>lus</code>：米佐语<br><code>lv</code>：拉脱维亚语<br><code>mai</code>：迈蒂利语<br><code>mak</code>：马卡萨<br><code>mg</code>：马尔加什语<br><code>mi</code>：毛利语<br><code>min</code>：米南语<br><code>mk</code>：马其顿语<br><code>ml</code>：马拉雅拉姆语<br><code>mn</code>：蒙古语<br><code>mr</code>：马拉地语<br><code>ms</code>：马来语<br><code>mt</code>：马耳他语<br><code>my</code>：缅甸语<br><code>ne</code>：尼泊尔语<br><code>new</code>：尼瓦尔语<br><code>nl</code>：荷兰语<br><code>no</code>：挪威语<br><code>nr</code>：恩德贝莱语（南部）<br><code>nso</code>：北索托语（塞佩蒂语）<br><code>nus</code>：努尔语<br><code>ny</code>：齐切瓦语（尼扬贾语）<br><code>oc</code>：奥克斯坦语<br><code>om</code>：Oromo<br><code>or</code>：奥里亚语<br><code>pa</code>：旁遮普语<br><code>pag</code>：邦阿西楠语<br><code>pam</code>：邦板牙语<br><code>pap</code>：Papiamento<br><code>pl</code>：波兰语<br><code>ps</code>：Pashto<br><code>pt</code>：葡萄牙语<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>qu</code>：克丘亚语<br><code>ro</code>：罗马尼亚语<br><code>rom</code>：罗姆语<br><code>rn</code>：Rundi<br><code>ru</code>：俄语<br><code>rw</code>：卢旺达语<br><code>sa</code>：梵语<br><code>scn</code>：西西里语<br><code>sd</code>：信德语<br><code>sg</code>：Sango<br><code>shn</code>：掸语<br><code>si</code>：僧伽罗语<br><code>sk</code>：斯洛伐克语<br><code>sl</code>：斯洛文尼亚语<br><code>sm</code>：萨摩亚语<br><code>sn</code>：修纳语<br><code>so</code>：索马里语<br><code>sq</code>：阿尔巴尼亚语<br><code>sr</code>：塞尔维亚语<br><code>ss</code>：斯瓦特语<br><code>st</code>：塞索托语<br><code>su</code>：巽他语<br><code>sv</code>：瑞典语<br><code>sw</code>：斯瓦希里语<br><code>szl</code>：西里西亚语<br><code>ta</code>：泰米尔语<br><code>te</code>：泰卢固语<br><code>tet</code>：德顿语<br><code>tg</code>：塔吉克语<br><code>th</code>：泰语<br><code>ti</code>：提格里尼亚语<br><code>tk</code>：土库曼语<br><code>tn</code>：茨瓦纳语<br><code>tr</code>：土耳其语<br><code>ts</code>：聪加语<br><code>tt</code>：鞑靼语<br><code>ug</code>：维吾尔语<br><code>uk</code>：乌克兰语<br><code>ur</code>：乌尔都语<br><code>uz</code>：乌兹别克语<br><code>vi</code>：越南语<br><code>xh</code>：科萨语<br><code>yi</code>：意第绪语<br><code>yo</code>：约鲁巴语<br><code>yua</code>：尤卡坦玛雅语<br><code>yue</code>：粤语<br><code>zh</code>：简体中文<br><code>zh-TW</code>：中文（繁体）<br><code>zu</code>：祖鲁语</p><p><strong>注意</strong>：多语言方式，则使用 <code>/</code> 分割，如：<code>en/ja</code>，表示英语和日语。</p>
 	TranslateDstLanguage *string `json:"TranslateDstLanguage,omitnil,omitempty" name:"TranslateDstLanguage"`
 
-	// 字幕处理类型：
-	// - 0：ASR识别字幕
-	// - 1：纯字幕翻译
-	// - 2：OCR识别字幕
-	// 
-	// **注意**：不传的情况下，默认是ASR方式
+	// <p>字幕处理类型：</p><ul><li>0：ASR识别字幕</li><li>1：纯字幕翻译</li><li>2：OCR识别字幕</li></ul><p><strong>注意</strong>：不传的情况下，默认是ASR方式</p>
 	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 
-	// 字幕OCR提取框选区域配置
+	// <p>字幕OCR提取框选区域配置</p>
 	SelectingSubtitleAreasConfig *SelectingSubtitleAreasConfig `json:"SelectingSubtitleAreasConfig,omitnil,omitempty" name:"SelectingSubtitleAreasConfig"`
+
+	// <p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写。开启多个翻译语言时，不允许填写。</p>
+	SubtitleEmbedId *int64 `json:"SubtitleEmbedId,omitnil,omitempty" name:"SubtitleEmbedId"`
 }
 
 type ModifySmartSubtitleTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 智能字幕模板唯一标识
+	// <p>智能字幕模板唯一标识</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 字幕翻译开关
-	// `ON`: 开启翻译
-	// `OFF`: 关闭翻译
-	// 
-	// **注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
+	// <p>字幕翻译开关<br><code>ON</code>: 开启翻译<br><code>OFF</code>: 关闭翻译</p><p><strong>注意</strong>：纯字幕翻译方式下，不传默认是打开的，不允许传空或<code>OFF</code>；</p>
 	TranslateSwitch *string `json:"TranslateSwitch,omitnil,omitempty" name:"TranslateSwitch"`
 
-	// 智能字幕模板名称
-	// 长度限制：64 个字符。
+	// <p>智能字幕模板名称<br>长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 智能字幕模板描述信息
-	// 长度限制：256 个字符。
+	// <p>智能字幕模板描述信息<br>长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 智能字幕视频源语言
-	// OCR识别仅支持以下语言：
-	// `zh_en`：中英
-	// `multi`：其他
-	// ASR识别和纯字幕翻译当前支持以下语言：
-	// `auto`：自动识别（仅在纯字幕翻译中支持）
-	// `zh`：简体中文
-	// `en`：英语
-	// `ja`：日语
-	// `ko`：韩语
-	// `zh-PY`：中英粤
-	// `zh_medical`：中文医疗
-	// `vi`：越南语
-	// `ms`：马来语
-	// `id`：印度尼西亚语
-	// `fil`：菲律宾语
-	// `th`：泰语
-	// `pt`：葡萄牙语
-	// `tr`：土耳其语
-	// `ar`：阿拉伯语
-	// `es`：西班牙语
-	// `hi`：印地语
-	// `fr`：法语
-	// `de`：德语
-	// `it`：意大利语
-	// `zh_dialect`：中文方言
-	// `zh_en`：中英
-	// `yue`：粤语
-	// `ru`：俄语
-	// `prime_zh`：中英方言
-	// `af-ZA`：南非荷兰语（南非）
-	// `sq-AL`：阿尔巴尼亚语（阿尔巴尼亚）
-	// `am-ET`：阿姆哈拉语（埃塞俄比亚）
-	// `ar-DZ`：阿拉伯语（阿尔及利亚）
-	// `ar-BH`：阿拉伯语（巴林）
-	// `ar-EG`：阿拉伯语（埃及）
-	// `ar-IQ`：阿拉伯语（伊拉克）
-	// `ar-IL`：阿拉伯语（以色列）
-	// `ar-JO`：阿拉伯语（约旦）
-	// `ar-KW`：阿拉伯语（科威特）
-	// `ar-LB`：阿拉伯语（黎巴嫩）
-	// `ar-MR`：阿拉伯语（毛里塔尼亚）
-	// `ar-MA`：阿拉伯语（摩洛哥）
-	// `ar-OM`：阿拉伯语（阿曼）
-	// `ar-QA`：阿拉伯语（卡塔尔）
-	// `ar-SA`：阿拉伯语（沙特阿拉伯）
-	// `ar-PS`：阿拉伯语（巴勒斯坦国）
-	// `ar-SY`：阿拉伯语（叙利亚）
-	// `ar-TN`：阿拉伯语（突尼斯）
-	// `ar-AE`：阿拉伯语（阿拉伯联合酋长国）
-	// `ar-YE`：阿拉伯语（也门）
-	// `hy-AM`：亚美尼亚语（亚美尼亚）
-	// `az-AZ`：阿塞拜疆语（阿塞拜疆）
-	// `eu-ES`：巴斯克语（西班牙）
-	// `bn-BD`：孟加拉语（孟加拉）
-	// `bn-IN`：孟加拉语（印度）
-	// `bs-BA`：波斯尼亚语（波斯尼亚和黑塞哥维那）
-	// `bg-BG`：保加利亚语（保加利亚）
-	// `my-MM`：缅甸语（缅甸）
-	// `ca-ES`：加泰罗尼亚语（西班牙）
-	// `hr-HR`：克罗地亚语（克罗地亚）
-	// `cs-CZ`：捷克语（捷克共和国）
-	// `da-DK`：丹麦语（丹麦）
-	// `nl-BE`：荷兰语（比利时）
-	// `nl-NL`：荷兰语（荷兰）
-	// `en-AU`：英语（澳大利亚）
-	// `en-CA`：英语（加拿大）
-	// `en-GH`：英语（加纳）
-	// `en-HK`：英语（中国香港）
-	// `en-IN`：英语（印度）
-	// `en-IE`：英语（爱尔兰）
-	// `en-KE`：英语（肯尼亚）
-	// `en-NZ`：英语（新西兰）
-	// `en-NG`：英语（尼日利亚）
-	// `en-PK`：英语（巴基斯坦）
-	// `en-PH`：英语（菲律宾）
-	// `en-SG`：英语（新加坡）
-	// `en-ZA`：英语（南非）
-	// `en-TZ`：英语（坦桑尼亚）
-	// `en-GB`：英语（英国）
-	// `en-US`：英语（美国）
-	// `et-EE`：爱沙尼亚语（爱沙尼亚）
-	// `fil-PH`：菲律宾语（菲律宾）
-	// `fi-FI`：芬兰语（芬兰）
-	// `fr-BE`：法语（比利时）
-	// `fr-CA`：法语（加拿大）
-	// `fr-FR`：法语（法国）
-	// `fr-CH`：法语（瑞士）
-	// `gl-ES`：加利西亚语（西班牙）
-	// `ka-GE`：格鲁吉亚语（格鲁吉亚）
-	// `el-GR`：希腊语（希腊）
-	// `gu-IN`：古吉拉特语（印度）
-	// `iw-IL`：希伯来语（以色列）
-	// `hi-IN`：印地语（印度）
-	// `hu-HU`：匈牙利语（匈牙利）
-	// `is-IS`：冰岛语（冰岛）
-	// `id-ID`：印度尼西亚语（印度尼西亚）
-	// `it-IT`：意大利语（意大利）
-	// `it-CH`：意大利语（瑞士）
-	// `ja-JP`：日语（日本）
-	// `jv-ID`：爪哇语（印度尼西亚）
-	// `kn-IN`：卡纳达语（印度）
-	// `kk-KZ`：哈萨克语（哈萨克斯坦）
-	// `km-KH`：高棉语（柬埔寨）
-	// `rw-RW`：卢旺达语（卢旺达）
-	// `ko-KR`：韩语（韩国）
-	// `lo-LA`：老挝语（老挝）
-	// `lv-LV`：拉脱维亚语（拉脱维亚）
-	// `lt-LT`：立陶宛语（立陶宛）
-	// `mk-MK`：马其顿语（北马其顿）
-	// `ms-MY`：马来语（马来西亚）
-	// `ml-IN`：马拉雅拉姆语（印度）
-	// `mr-IN`：马拉地语（印度）
-	// `mn-MN`：蒙古语（蒙古）
-	// `ne-NP`：尼泊尔语（尼泊尔）
-	// `no-NO`：博克马尔挪威语（挪威）
-	// `fa-IR`：波斯语（伊朗）
-	// `pl-PL`：波兰语（波兰）
-	// `pt-BR`：葡萄牙语（巴西）
-	// `pt-PT`：葡萄牙语（葡萄牙）
-	// `ro-RO`：罗马尼亚语（罗马尼亚）
-	// `ru-RU`：俄语（俄罗斯）
-	// `sr-RS`：塞尔维亚语（塞尔维亚）
-	// `si-LK`：僧伽罗语（斯里兰卡）
-	// `sk-SK`：斯洛伐克语（斯洛伐克）
-	// `sl-SI`：斯洛文尼亚语（斯洛文尼亚）
-	// `st-ZA`：南索托语（南非）
-	// `es-AR`：西班牙语（阿根廷）
-	// `es-BO`：西班牙语（玻利维亚）
-	// `es-CL`：西班牙语（智利）
-	// `es-CO`：西班牙语（哥伦比亚）
-	// `es-CR`：西班牙语（哥斯达黎加）
-	// `es-DO`：西班牙语（多米尼加共和国）
-	// `es-EC`：西班牙语（厄瓜多尔）
-	// `es-SV`：西班牙语（萨尔瓦多）
-	// `es-GT`：西班牙语（危地马拉）
-	// `es-HN`：西班牙语（洪都拉斯）
-	// `es-MX`：西班牙语（墨西哥）
-	// `es-NI`：西班牙语（尼加拉瓜）
-	// `es-PA`：西班牙语（巴拿马）
-	// `es-PY`：西班牙语（巴拉圭）
-	// `es-PE`：西班牙语（秘鲁）
-	// `es-PR`：西班牙语（波多黎各）
-	// `es-ES`：西班牙语（西班牙）
-	// `es-US`：西班牙语（美国）
-	// `es-UY`：西班牙语（乌拉圭）
-	// `es-VE`：西班牙语（委内瑞拉）
-	// `su-ID`：巽他语（印度尼西亚）
-	// `sw-KE`：斯瓦希里语（肯尼亚）
-	// `sw-TZ`：斯瓦希里语（坦桑尼亚）
-	// `sv-SE`：瑞典语（瑞典）
-	// `ta-IN`：泰米尔语（印度）
-	// `ta-MY`：泰米尔语（马来西亚）
-	// `ta-SG`：泰米尔语（新加坡）
-	// `ta-LK`：泰米尔语（斯里兰卡）
-	// `te-IN`：泰卢固语（印度）
-	// `th-TH`：泰语（泰国）
-	// `ts-ZA`：聪加语（南非）
-	// `tr-TR`：土耳其语（土耳其）
-	// `uk-UA`：乌克兰语（乌克兰）
-	// `ur-IN`：乌尔都语（印度）
-	// `ur-PK`：乌尔都语（巴基斯坦）
-	// `uz-UZ`：乌兹别克语（乌兹别克斯坦）
-	// `ve-ZA`：文达语（南非）
-	// `vi-VN`：越南语（越南）
-	// `xh-ZA`：科萨语（南非）
-	// `zu-ZA`：祖鲁语（南非）
+	// <p>智能字幕视频源语言<br>OCR识别仅支持以下语言：<br><code>zh_en</code>：中英<br><code>multi</code>：其他<br>ASR识别和纯字幕翻译当前支持以下语言：<br><code>auto</code>：自动识别<br><code>zh</code>：简体中文<br><code>en</code>：英语<br><code>ja</code>：日语<br><code>ko</code>：韩语<br><code>zh-PY</code>：中英粤<br><code>zh_medical</code>：中文医疗<br><code>vi</code>：越南语<br><code>ms</code>：马来语<br><code>id</code>：印度尼西亚语<br><code>fil</code>：菲律宾语<br><code>th</code>：泰语<br><code>pt</code>：葡萄牙语<br><code>tr</code>：土耳其语<br><code>ar</code>：阿拉伯语<br><code>es</code>：西班牙语<br><code>hi</code>：印地语<br><code>fr</code>：法语<br><code>de</code>：德语<br><code>it</code>：意大利语<br><code>zh_dialect</code>：中文方言<br><code>zh_en</code>：中英<br><code>yue</code>：粤语<br><code>ru</code>：俄语<br><code>prime_zh</code>：中英方言<br><code>af-ZA</code>：南非荷兰语（南非）<br><code>sq-AL</code>：阿尔巴尼亚语（阿尔巴尼亚）<br><code>am-ET</code>：阿姆哈拉语（埃塞俄比亚）<br><code>ar-DZ</code>：阿拉伯语（阿尔及利亚）<br><code>ar-BH</code>：阿拉伯语（巴林）<br><code>ar-EG</code>：阿拉伯语（埃及）<br><code>ar-IQ</code>：阿拉伯语（伊拉克）<br><code>ar-IL</code>：阿拉伯语（以色列）<br><code>ar-JO</code>：阿拉伯语（约旦）<br><code>ar-KW</code>：阿拉伯语（科威特）<br><code>ar-LB</code>：阿拉伯语（黎巴嫩）<br><code>ar-MR</code>：阿拉伯语（毛里塔尼亚）<br><code>ar-MA</code>：阿拉伯语（摩洛哥）<br><code>ar-OM</code>：阿拉伯语（阿曼）<br><code>ar-QA</code>：阿拉伯语（卡塔尔）<br><code>ar-SA</code>：阿拉伯语（沙特阿拉伯）<br><code>ar-PS</code>：阿拉伯语（巴勒斯坦国）<br><code>ar-SY</code>：阿拉伯语（叙利亚）<br><code>ar-TN</code>：阿拉伯语（突尼斯）<br><code>ar-AE</code>：阿拉伯语（阿拉伯联合酋长国）<br><code>ar-YE</code>：阿拉伯语（也门）<br><code>hy-AM</code>：亚美尼亚语（亚美尼亚）<br><code>az-AZ</code>：阿塞拜疆语（阿塞拜疆）<br><code>eu-ES</code>：巴斯克语（西班牙）<br><code>bn-BD</code>：孟加拉语（孟加拉）<br><code>bn-IN</code>：孟加拉语（印度）<br><code>bs-BA</code>：波斯尼亚语（波斯尼亚和黑塞哥维那）<br><code>bg-BG</code>：保加利亚语（保加利亚）<br><code>my-MM</code>：缅甸语（缅甸）<br><code>ca-ES</code>：加泰罗尼亚语（西班牙）<br><code>hr-HR</code>：克罗地亚语（克罗地亚）<br><code>cs-CZ</code>：捷克语（捷克共和国）<br><code>da-DK</code>：丹麦语（丹麦）<br><code>nl-BE</code>：荷兰语（比利时）<br><code>nl-NL</code>：荷兰语（荷兰）<br><code>en-AU</code>：英语（澳大利亚）<br><code>en-CA</code>：英语（加拿大）<br><code>en-GH</code>：英语（加纳）<br><code>en-HK</code>：英语（中国香港）<br><code>en-IN</code>：英语（印度）<br><code>en-IE</code>：英语（爱尔兰）<br><code>en-KE</code>：英语（肯尼亚）<br><code>en-NZ</code>：英语（新西兰）<br><code>en-NG</code>：英语（尼日利亚）<br><code>en-PK</code>：英语（巴基斯坦）<br><code>en-PH</code>：英语（菲律宾）<br><code>en-SG</code>：英语（新加坡）<br><code>en-ZA</code>：英语（南非）<br><code>en-TZ</code>：英语（坦桑尼亚）<br><code>en-GB</code>：英语（英国）<br><code>en-US</code>：英语（美国）<br><code>et-EE</code>：爱沙尼亚语（爱沙尼亚）<br><code>fil-PH</code>：菲律宾语（菲律宾）<br><code>fi-FI</code>：芬兰语（芬兰）<br><code>fr-BE</code>：法语（比利时）<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fr-CH</code>：法语（瑞士）<br><code>gl-ES</code>：加利西亚语（西班牙）<br><code>ka-GE</code>：格鲁吉亚语（格鲁吉亚）<br><code>el-GR</code>：希腊语（希腊）<br><code>gu-IN</code>：古吉拉特语（印度）<br><code>iw-IL</code>：希伯来语（以色列）<br><code>hi-IN</code>：印地语（印度）<br><code>hu-HU</code>：匈牙利语（匈牙利）<br><code>is-IS</code>：冰岛语（冰岛）<br><code>id-ID</code>：印度尼西亚语（印度尼西亚）<br><code>it-IT</code>：意大利语（意大利）<br><code>it-CH</code>：意大利语（瑞士）<br><code>ja-JP</code>：日语（日本）<br><code>jv-ID</code>：爪哇语（印度尼西亚）<br><code>kn-IN</code>：卡纳达语（印度）<br><code>kk-KZ</code>：哈萨克语（哈萨克斯坦）<br><code>km-KH</code>：高棉语（柬埔寨）<br><code>rw-RW</code>：卢旺达语（卢旺达）<br><code>ko-KR</code>：韩语（韩国）<br><code>lo-LA</code>：老挝语（老挝）<br><code>lv-LV</code>：拉脱维亚语（拉脱维亚）<br><code>lt-LT</code>：立陶宛语（立陶宛）<br><code>mk-MK</code>：马其顿语（北马其顿）<br><code>ms-MY</code>：马来语（马来西亚）<br><code>ml-IN</code>：马拉雅拉姆语（印度）<br><code>mr-IN</code>：马拉地语（印度）<br><code>mn-MN</code>：蒙古语（蒙古）<br><code>ne-NP</code>：尼泊尔语（尼泊尔）<br><code>no-NO</code>：博克马尔挪威语（挪威）<br><code>fa-IR</code>：波斯语（伊朗）<br><code>pl-PL</code>：波兰语（波兰）<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>ro-RO</code>：罗马尼亚语（罗马尼亚）<br><code>ru-RU</code>：俄语（俄罗斯）<br><code>sr-RS</code>：塞尔维亚语（塞尔维亚）<br><code>si-LK</code>：僧伽罗语（斯里兰卡）<br><code>sk-SK</code>：斯洛伐克语（斯洛伐克）<br><code>sl-SI</code>：斯洛文尼亚语（斯洛文尼亚）<br><code>st-ZA</code>：南索托语（南非）<br><code>es-AR</code>：西班牙语（阿根廷）<br><code>es-BO</code>：西班牙语（玻利维亚）<br><code>es-CL</code>：西班牙语（智利）<br><code>es-CO</code>：西班牙语（哥伦比亚）<br><code>es-CR</code>：西班牙语（哥斯达黎加）<br><code>es-DO</code>：西班牙语（多米尼加共和国）<br><code>es-EC</code>：西班牙语（厄瓜多尔）<br><code>es-SV</code>：西班牙语（萨尔瓦多）<br><code>es-GT</code>：西班牙语（危地马拉）<br><code>es-HN</code>：西班牙语（洪都拉斯）<br><code>es-MX</code>：西班牙语（墨西哥）<br><code>es-NI</code>：西班牙语（尼加拉瓜）<br><code>es-PA</code>：西班牙语（巴拿马）<br><code>es-PY</code>：西班牙语（巴拉圭）<br><code>es-PE</code>：西班牙语（秘鲁）<br><code>es-PR</code>：西班牙语（波多黎各）<br><code>es-ES</code>：西班牙语（西班牙）<br><code>es-US</code>：西班牙语（美国）<br><code>es-UY</code>：西班牙语（乌拉圭）<br><code>es-VE</code>：西班牙语（委内瑞拉）<br><code>su-ID</code>：巽他语（印度尼西亚）<br><code>sw-KE</code>：斯瓦希里语（肯尼亚）<br><code>sw-TZ</code>：斯瓦希里语（坦桑尼亚）<br><code>sv-SE</code>：瑞典语（瑞典）<br><code>ta-IN</code>：泰米尔语（印度）<br><code>ta-MY</code>：泰米尔语（马来西亚）<br><code>ta-SG</code>：泰米尔语（新加坡）<br><code>ta-LK</code>：泰米尔语（斯里兰卡）<br><code>te-IN</code>：泰卢固语（印度）<br><code>th-TH</code>：泰语（泰国）<br><code>ts-ZA</code>：聪加语（南非）<br><code>tr-TR</code>：土耳其语（土耳其）<br><code>uk-UA</code>：乌克兰语（乌克兰）<br><code>ur-IN</code>：乌尔都语（印度）<br><code>ur-PK</code>：乌尔都语（巴基斯坦）<br><code>uz-UZ</code>：乌兹别克语（乌兹别克斯坦）<br><code>ve-ZA</code>：文达语（南非）<br><code>vi-VN</code>：越南语（越南）<br><code>xh-ZA</code>：科萨语（南非）<br><code>zu-ZA</code>：祖鲁语（南非）</p>
 	VideoSrcLanguage *string `json:"VideoSrcLanguage,omitnil,omitempty" name:"VideoSrcLanguage"`
 
-	// 智能字幕文件格式:
-	// - ASR识别翻译处理类型下：
-	//      - vtt: WebVTT 格式字幕
-	//      - srt: SRT 格式字幕
-	//      - 不填或填空：不生成字幕文件
-	// - 纯字幕翻译处理类型下：
-	//     - original：与源文件一致
-	//     - vtt: WebVTT 格式字幕
-	//     - srt: SRT 格式字幕
-	// - OCR识别翻译处理类型下：
-	//      - vtt: WebVTT 格式字幕
-	//      - srt: SRT 格式字幕
-	// 
-	// **注意**：
-	// - ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
-	// - 纯字幕翻译和OCR识别翻译方式下，不允许传空或不传
+	// <p>智能字幕文件格式:</p><ul><li>ASR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li><li>不填或填空：不生成字幕文件</li></ul></li><li>纯字幕翻译处理类型下：<ul><li>original：与源文件一致</li><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li><li>OCR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li></ul><p><strong>注意</strong>：</p><ul><li>ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；</li><li>纯字幕翻译方式下，不允许传空或不传</li><li>OCR类型的任务，在开启压制时，允许不传或传空</li></ul>
 	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
 
-	// 智能字幕字幕语言类型
-	// 0: 源语言
-	// 1: 翻译语言
-	// 2: 源语言+翻译语言
-	// 当TranslateSwitch为OFF时仅支持取0
-	// 当TranslateSwitch为ON时仅支持取1或2
+	// <p>智能字幕字幕语言类型<br>0: 源语言<br>1: 翻译语言<br>2: 源语言+翻译语言<br>当TranslateSwitch为OFF时仅支持取0<br>当TranslateSwitch为ON时仅支持取1或2</p>
 	SubtitleType *int64 `json:"SubtitleType,omitnil,omitempty" name:"SubtitleType"`
 
-	// ASR热词库参数
+	// <p>ASR热词库参数</p>
 	AsrHotWordsConfigure *AsrHotWordsConfigure `json:"AsrHotWordsConfigure,omitnil,omitempty" name:"AsrHotWordsConfigure"`
 
-	// 字幕翻译目标语言
-	// 当TranslateSwitch为ON的时候生效，翻译语言列表：
-	// `ab`：阿布哈兹语
-	// `ace`：亚齐语
-	// `ach`：阿乔利语
-	// `af`：南非荷兰语
-	// `ak`：契维语（阿坎语）
-	// `am`：Amharic
-	// `ar`：阿拉伯语
-	// `as`：阿萨姆语
-	// `ay`：艾马拉语
-	// `az`：阿塞拜疆语
-	// `ba`：巴什基尔语
-	// `ban`：巴厘语
-	// `bbc`：巴塔克托巴语
-	// `bem`：Bemba
-	// `bew`：Betawi
-	// `bg`：保加利亚语
-	// `bho`：博杰普尔语
-	// `bik`：Bikol
-	// `bm`：班巴拉语
-	// `bn`：孟加拉语
-	// `br`：布列塔尼语
-	// `bs`：波斯尼亚语
-	// `btx`：巴塔克卡罗语
-	// `bts`：巴塔克西马隆贡语
-	// `bua`：布里亚特语
-	// `ca`：加泰罗尼亚语
-	// `ceb`：宿务语
-	// `cgg`：Kiga
-	// `chm`：草原马里语
-	// `ckb`：库尔德语（索拉尼语）
-	// `cnh`：哈卡钦语
-	// `co`：科西嘉语
-	// `crh`：克里米亚鞑靼语
-	// `crs`：塞舌尔克里奥尔语
-	// `cs`：捷克语
-	// `cv`：楚瓦什语
-	// `cy`：威尔士语
-	// `da`：丹麦语
-	// `de`：德语
-	// `din`：Dinka
-	// `doi`：多格来语
-	// `dov`：敦贝语
-	// `dv`：第维埃语
-	// `dz`：宗卡语
-	// `ee`：Ewe
-	// `el`：希腊语
-	// `en`：英语
-	// `eo`：世界语
-	// `es`：西班牙语
-	// `et`：爱沙尼亚语
-	// `eu`：巴斯克语
-	// `fa`：波斯语
-	// `ff`：富拉语
-	// `fi`：芬兰语
-	// `fil`：菲律宾语（塔加拉语）
-	// `fj`：斐济语
-	// `fr`：法语
-	// `fr-CA`：法语（加拿大）
-	// `fr-FR`：法语（法国）
-	// `fy`：弗里斯兰语
-	// `ga`：爱尔兰语
-	// `gaa`：加 (Ga) 语
-	// `gd`：苏格兰盖尔语
-	// `gl`：加利西亚语
-	// `gn`：瓜拉尼语
-	// `gom`：贡根语
-	// `gu`：古吉拉特语
-	// `gv`：马恩岛语
-	// `ha`：Hausa
-	// `haw`：夏威夷语
-	// `he`：希伯来语
-	// `hi`：印地语
-	// `hil`：希利盖农语
-	// `hmn`：苗语
-	// `hr`：克罗地亚语
-	// `hrx`：洪斯吕克语
-	// `ht`：海地克里奥尔语
-	// `hu`：匈牙利语
-	// `hy`：亚美尼亚语
-	// `id`：印度尼西亚语
-	// `ig`：Igbo
-	// `ilo`：伊洛果语
-	// `is`：冰岛语
-	// `it`：意大利语
-	// `iw`：希伯来语
-	// `ja`：日语
-	// `jv`：爪哇语
-	// `ka`：格鲁吉亚语
-	// `kk`：哈萨克语
-	// `km`：高棉语
-	// `kn`：卡纳达语
-	// `ko`：韩语
-	// `kri`：Krio
-	// `ku`：库尔德语（库尔曼吉语）
-	// `ktu`：吉土巴语
-	// `ky`：吉尔吉斯语
-	// `la`：拉丁语
-	// `lb`：卢森堡语
-	// `lg`：干达语（卢干达语）
-	// `li`：林堡语
-	// `lij`：利古里亚语
-	// `lmo`：伦巴第语
-	// `ln`：林加拉语
-	// `lo`：老挝语
-	// `lt`：立陶宛语
-	// `ltg`：拉特加莱语
-	// `luo`：Luo
-	// `lus`：米佐语
-	// `lv`：拉脱维亚语
-	// `mai`：迈蒂利语
-	// `mak`：马卡萨
-	// `mg`：马尔加什语
-	// `mi`：毛利语
-	// `min`：米南语
-	// `mk`：马其顿语
-	// `ml`：马拉雅拉姆语
-	// `mn`：蒙古语
-	// `mr`：马拉地语
-	// `ms`：马来语
-	// `mt`：马耳他语
-	// `my`：缅甸语
-	// `ne`：尼泊尔语
-	// `new`：尼瓦尔语
-	// `nl`：荷兰语
-	// `no`：挪威语
-	// `nr`：恩德贝莱语（南部）
-	// `nso`：北索托语（塞佩蒂语）
-	// `nus`：努尔语
-	// `ny`：齐切瓦语（尼扬贾语）
-	// `oc`：奥克斯坦语
-	// `om`：Oromo
-	// `or`：奥里亚语
-	// `pa`：旁遮普语
-	// `pag`：邦阿西楠语
-	// `pam`：邦板牙语
-	// `pap`：Papiamento
-	// `pl`：波兰语
-	// `ps`：Pashto
-	// `pt`：葡萄牙语
-	// `pt-BR`：葡萄牙语（巴西）
-	// `pt-PT`：葡萄牙语（葡萄牙）
-	// `qu`：克丘亚语
-	// `ro`：罗马尼亚语
-	// `rom`：罗姆语
-	// `rn`：Rundi
-	// `ru`：俄语
-	// `rw`：卢旺达语
-	// `sa`：梵语
-	// `scn`：西西里语
-	// `sd`：信德语
-	// `sg`：Sango
-	// `shn`：掸语
-	// `si`：僧伽罗语
-	// `sk`：斯洛伐克语
-	// `sl`：斯洛文尼亚语
-	// `sm`：萨摩亚语
-	// `sn`：修纳语
-	// `so`：索马里语
-	// `sq`：阿尔巴尼亚语
-	// `sr`：塞尔维亚语
-	// `ss`：斯瓦特语
-	// `st`：塞索托语
-	// `su`：巽他语
-	// `sv`：瑞典语
-	// `sw`：斯瓦希里语
-	// `szl`：西里西亚语
-	// `ta`：泰米尔语
-	// `te`：泰卢固语
-	// `tet`：德顿语
-	// `tg`：塔吉克语
-	// `th`：泰语
-	// `ti`：提格里尼亚语
-	// `tk`：土库曼语
-	// `tn`：茨瓦纳语
-	// `tr`：土耳其语
-	// `ts`：聪加语
-	// `tt`：鞑靼语
-	// `ug`：维吾尔语
-	// `uk`：乌克兰语
-	// `ur`：乌尔都语
-	// `uz`：乌兹别克语
-	// `vi`：越南语
-	// `xh`：科萨语
-	// `yi`：意第绪语
-	// `yo`：约鲁巴语
-	// `yua`：尤卡坦玛雅语
-	// `yue`：粤语
-	// `zh`：简体中文
-	// `zh-TW`：中文（繁体）
-	// `zu`：祖鲁语
-	// 
-	// **注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
+	// <p>字幕翻译目标语言<br>当TranslateSwitch为ON的时候生效，翻译语言列表：<br><code>ab</code>：阿布哈兹语<br><code>ace</code>：亚齐语<br><code>ach</code>：阿乔利语<br><code>af</code>：南非荷兰语<br><code>ak</code>：契维语（阿坎语）<br><code>am</code>：Amharic<br><code>ar</code>：阿拉伯语<br><code>as</code>：阿萨姆语<br><code>ay</code>：艾马拉语<br><code>az</code>：阿塞拜疆语<br><code>ba</code>：巴什基尔语<br><code>ban</code>：巴厘语<br><code>bbc</code>：巴塔克托巴语<br><code>bem</code>：Bemba<br><code>bew</code>：Betawi<br><code>bg</code>：保加利亚语<br><code>bho</code>：博杰普尔语<br><code>bik</code>：Bikol<br><code>bm</code>：班巴拉语<br><code>bn</code>：孟加拉语<br><code>br</code>：布列塔尼语<br><code>bs</code>：波斯尼亚语<br><code>btx</code>：巴塔克卡罗语<br><code>bts</code>：巴塔克西马隆贡语<br><code>bua</code>：布里亚特语<br><code>ca</code>：加泰罗尼亚语<br><code>ceb</code>：宿务语<br><code>cgg</code>：Kiga<br><code>chm</code>：草原马里语<br><code>ckb</code>：库尔德语（索拉尼语）<br><code>cnh</code>：哈卡钦语<br><code>co</code>：科西嘉语<br><code>crh</code>：克里米亚鞑靼语<br><code>crs</code>：塞舌尔克里奥尔语<br><code>cs</code>：捷克语<br><code>cv</code>：楚瓦什语<br><code>cy</code>：威尔士语<br><code>da</code>：丹麦语<br><code>de</code>：德语<br><code>din</code>：Dinka<br><code>doi</code>：多格来语<br><code>dov</code>：敦贝语<br><code>dv</code>：第维埃语<br><code>dz</code>：宗卡语<br><code>ee</code>：Ewe<br><code>el</code>：希腊语<br><code>en</code>：英语<br><code>eo</code>：世界语<br><code>es</code>：西班牙语<br><code>et</code>：爱沙尼亚语<br><code>eu</code>：巴斯克语<br><code>fa</code>：波斯语<br><code>ff</code>：富拉语<br><code>fi</code>：芬兰语<br><code>fil</code>：菲律宾语（塔加拉语）<br><code>fj</code>：斐济语<br><code>fr</code>：法语<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fy</code>：弗里斯兰语<br><code>ga</code>：爱尔兰语<br><code>gaa</code>：加 (Ga) 语<br><code>gd</code>：苏格兰盖尔语<br><code>gl</code>：加利西亚语<br><code>gn</code>：瓜拉尼语<br><code>gom</code>：贡根语<br><code>gu</code>：古吉拉特语<br><code>gv</code>：马恩岛语<br><code>ha</code>：Hausa<br><code>haw</code>：夏威夷语<br><code>he</code>：希伯来语<br><code>hi</code>：印地语<br><code>hil</code>：希利盖农语<br><code>hmn</code>：苗语<br><code>hr</code>：克罗地亚语<br><code>hrx</code>：洪斯吕克语<br><code>ht</code>：海地克里奥尔语<br><code>hu</code>：匈牙利语<br><code>hy</code>：亚美尼亚语<br><code>id</code>：印度尼西亚语<br><code>ig</code>：Igbo<br><code>ilo</code>：伊洛果语<br><code>is</code>：冰岛语<br><code>it</code>：意大利语<br><code>iw</code>：希伯来语<br><code>ja</code>：日语<br><code>jv</code>：爪哇语<br><code>ka</code>：格鲁吉亚语<br><code>kk</code>：哈萨克语<br><code>km</code>：高棉语<br><code>kn</code>：卡纳达语<br><code>ko</code>：韩语<br><code>kri</code>：Krio<br><code>ku</code>：库尔德语（库尔曼吉语）<br><code>ktu</code>：吉土巴语<br><code>ky</code>：吉尔吉斯语<br><code>la</code>：拉丁语<br><code>lb</code>：卢森堡语<br><code>lg</code>：干达语（卢干达语）<br><code>li</code>：林堡语<br><code>lij</code>：利古里亚语<br><code>lmo</code>：伦巴第语<br><code>ln</code>：林加拉语<br><code>lo</code>：老挝语<br><code>lt</code>：立陶宛语<br><code>ltg</code>：拉特加莱语<br><code>luo</code>：Luo<br><code>lus</code>：米佐语<br><code>lv</code>：拉脱维亚语<br><code>mai</code>：迈蒂利语<br><code>mak</code>：马卡萨<br><code>mg</code>：马尔加什语<br><code>mi</code>：毛利语<br><code>min</code>：米南语<br><code>mk</code>：马其顿语<br><code>ml</code>：马拉雅拉姆语<br><code>mn</code>：蒙古语<br><code>mr</code>：马拉地语<br><code>ms</code>：马来语<br><code>mt</code>：马耳他语<br><code>my</code>：缅甸语<br><code>ne</code>：尼泊尔语<br><code>new</code>：尼瓦尔语<br><code>nl</code>：荷兰语<br><code>no</code>：挪威语<br><code>nr</code>：恩德贝莱语（南部）<br><code>nso</code>：北索托语（塞佩蒂语）<br><code>nus</code>：努尔语<br><code>ny</code>：齐切瓦语（尼扬贾语）<br><code>oc</code>：奥克斯坦语<br><code>om</code>：Oromo<br><code>or</code>：奥里亚语<br><code>pa</code>：旁遮普语<br><code>pag</code>：邦阿西楠语<br><code>pam</code>：邦板牙语<br><code>pap</code>：Papiamento<br><code>pl</code>：波兰语<br><code>ps</code>：Pashto<br><code>pt</code>：葡萄牙语<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>qu</code>：克丘亚语<br><code>ro</code>：罗马尼亚语<br><code>rom</code>：罗姆语<br><code>rn</code>：Rundi<br><code>ru</code>：俄语<br><code>rw</code>：卢旺达语<br><code>sa</code>：梵语<br><code>scn</code>：西西里语<br><code>sd</code>：信德语<br><code>sg</code>：Sango<br><code>shn</code>：掸语<br><code>si</code>：僧伽罗语<br><code>sk</code>：斯洛伐克语<br><code>sl</code>：斯洛文尼亚语<br><code>sm</code>：萨摩亚语<br><code>sn</code>：修纳语<br><code>so</code>：索马里语<br><code>sq</code>：阿尔巴尼亚语<br><code>sr</code>：塞尔维亚语<br><code>ss</code>：斯瓦特语<br><code>st</code>：塞索托语<br><code>su</code>：巽他语<br><code>sv</code>：瑞典语<br><code>sw</code>：斯瓦希里语<br><code>szl</code>：西里西亚语<br><code>ta</code>：泰米尔语<br><code>te</code>：泰卢固语<br><code>tet</code>：德顿语<br><code>tg</code>：塔吉克语<br><code>th</code>：泰语<br><code>ti</code>：提格里尼亚语<br><code>tk</code>：土库曼语<br><code>tn</code>：茨瓦纳语<br><code>tr</code>：土耳其语<br><code>ts</code>：聪加语<br><code>tt</code>：鞑靼语<br><code>ug</code>：维吾尔语<br><code>uk</code>：乌克兰语<br><code>ur</code>：乌尔都语<br><code>uz</code>：乌兹别克语<br><code>vi</code>：越南语<br><code>xh</code>：科萨语<br><code>yi</code>：意第绪语<br><code>yo</code>：约鲁巴语<br><code>yua</code>：尤卡坦玛雅语<br><code>yue</code>：粤语<br><code>zh</code>：简体中文<br><code>zh-TW</code>：中文（繁体）<br><code>zu</code>：祖鲁语</p><p><strong>注意</strong>：多语言方式，则使用 <code>/</code> 分割，如：<code>en/ja</code>，表示英语和日语。</p>
 	TranslateDstLanguage *string `json:"TranslateDstLanguage,omitnil,omitempty" name:"TranslateDstLanguage"`
 
-	// 字幕处理类型：
-	// - 0：ASR识别字幕
-	// - 1：纯字幕翻译
-	// - 2：OCR识别字幕
-	// 
-	// **注意**：不传的情况下，默认是ASR方式
+	// <p>字幕处理类型：</p><ul><li>0：ASR识别字幕</li><li>1：纯字幕翻译</li><li>2：OCR识别字幕</li></ul><p><strong>注意</strong>：不传的情况下，默认是ASR方式</p>
 	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 
-	// 字幕OCR提取框选区域配置
+	// <p>字幕OCR提取框选区域配置</p>
 	SelectingSubtitleAreasConfig *SelectingSubtitleAreasConfig `json:"SelectingSubtitleAreasConfig,omitnil,omitempty" name:"SelectingSubtitleAreasConfig"`
+
+	// <p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写。开启多个翻译语言时，不允许填写。</p>
+	SubtitleEmbedId *int64 `json:"SubtitleEmbedId,omitnil,omitempty" name:"SubtitleEmbedId"`
 }
 
 func (r *ModifySmartSubtitleTemplateRequest) ToJsonString() string {
@@ -20225,6 +18879,7 @@ func (r *ModifySmartSubtitleTemplateRequest) FromJsonString(s string) error {
 	delete(f, "TranslateDstLanguage")
 	delete(f, "ProcessType")
 	delete(f, "SelectingSubtitleAreasConfig")
+	delete(f, "SubtitleEmbedId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySmartSubtitleTemplateRequest has unknown keys!", "")
 	}
@@ -20718,6 +19373,81 @@ func (r *ModifyStreamLinkSecurityGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifySubtitleEmbedTemplateRequestParams struct {
+	// <p>字幕压制模板唯一标识</p>
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>字幕压制名称<br>长度限制：64 个字符。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>字幕压制模板描述信息<br>长度限制：256 个字符。</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>字幕压制相关配置</p>
+	SubtitleEmbedConfig *SubtitleEmbedConfig `json:"SubtitleEmbedConfig,omitnil,omitempty" name:"SubtitleEmbedConfig"`
+}
+
+type ModifySubtitleEmbedTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>字幕压制模板唯一标识</p>
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>字幕压制名称<br>长度限制：64 个字符。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>字幕压制模板描述信息<br>长度限制：256 个字符。</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>字幕压制相关配置</p>
+	SubtitleEmbedConfig *SubtitleEmbedConfig `json:"SubtitleEmbedConfig,omitnil,omitempty" name:"SubtitleEmbedConfig"`
+}
+
+func (r *ModifySubtitleEmbedTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySubtitleEmbedTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "SubtitleEmbedConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySubtitleEmbedTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySubtitleEmbedTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifySubtitleEmbedTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySubtitleEmbedTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifySubtitleEmbedTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySubtitleEmbedTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyTranscodeTemplateRequestParams struct {
 	// 转码模板唯一标识。
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -21174,23 +19904,20 @@ type OutputSRTSourceAddressResp struct {
 }
 
 type OverrideEraseParameter struct {
-	// 擦除类型
-	// - subtitle 去字幕
-	// - watermark 去水印
-	// - privacy 隐私保护
+	// <p>擦除类型</p><ul><li>subtitle 去字幕</li><li>watermark 去水印</li><li>privacy 隐私保护</li></ul>
 	EraseType *string `json:"EraseType,omitnil,omitempty" name:"EraseType"`
 
-	// 字幕擦除配置；
-	// 当EraseType值为：subtitle，此字段为必填参数
+	// <p>字幕擦除配置；<br>当EraseType值为：subtitle，此字段为必填参数</p>
 	EraseSubtitleConfig *UpdateSmartEraseSubtitleConfig `json:"EraseSubtitleConfig,omitnil,omitempty" name:"EraseSubtitleConfig"`
 
-	// 水印擦除配置；
-	// 当EraseType值为：watermark，此字段为必填参数
+	// <p>水印擦除配置；<br>当EraseType值为：watermark，此字段为必填参数</p>
 	EraseWatermarkConfig *UpdateSmartEraseWatermarkConfig `json:"EraseWatermarkConfig,omitnil,omitempty" name:"EraseWatermarkConfig"`
 
-	// 隐私保护配置；
-	// 当EraseType值为：privacy，此字段为必填参数
+	// <p>隐私保护配置；<br>当EraseType值为：privacy，此字段为必填参数</p>
 	ErasePrivacyConfig *UpdateSmartErasePrivacyConfig `json:"ErasePrivacyConfig,omitnil,omitempty" name:"ErasePrivacyConfig"`
+
+	// <p>擦除压制字幕模板id。</p>
+	SubtitleEmbedId *int64 `json:"SubtitleEmbedId,omitnil,omitempty" name:"SubtitleEmbedId"`
 }
 
 type OverrideTranscodeParameter struct {
@@ -21845,7 +20572,7 @@ type ProcessImageTemplate struct {
 
 // Predefined struct for user
 type ProcessLiveStreamRequestParams struct {
-	// <p>直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。<br>trtc地址如下：<br> trtc: //trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=&lt;<code>usersig&gt;</code><br><code>&lt;roomid&gt;</code> 为trtc的房间号id, 为数字<br><code>&lt;sdkappid&gt;</code> 为trtc的sdk app id<br><code>&lt;userid&gt;</code> 为服务进入房间的用户id,可以区分谁是机器人<br>&lt;<code>usersig&gt;</code> 为trtc 用户的签名</p><p>webrtc 支持<a href="https://cloud.tencent.com/product/leb">LEB</a>的直播流，地址获取请<a href="https://cloud.tencent.com/document/product/267/32720">参考</a></p><p>srt支持地址请<a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">参考</a></p>
+	// <p>直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。<br>trtc地址如下：<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> 为trtc的房间号id, 为数字<br><code>&lt;sdkappid&gt;</code> 为trtc的sdk app id<br><code>&lt;userid&gt;</code> 为服务进入房间的用户id,可以区分谁是机器人<br><code>&lt;usersig&gt;</code> 为trtc 用户的签名</p><p>webrtc 支持<a href="https://cloud.tencent.com/product/leb">LEB</a>的直播流，地址获取请<a href="https://cloud.tencent.com/document/product/267/32720">参考</a></p><p>srt支持地址请<a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">参考</a></p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// <p>任务的事件通知信息，用于指定直播流处理的结果。</p>
@@ -21888,7 +20615,7 @@ type ProcessLiveStreamRequestParams struct {
 type ProcessLiveStreamRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。<br>trtc地址如下：<br> trtc: //trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=&lt;<code>usersig&gt;</code><br><code>&lt;roomid&gt;</code> 为trtc的房间号id, 为数字<br><code>&lt;sdkappid&gt;</code> 为trtc的sdk app id<br><code>&lt;userid&gt;</code> 为服务进入房间的用户id,可以区分谁是机器人<br>&lt;<code>usersig&gt;</code> 为trtc 用户的签名</p><p>webrtc 支持<a href="https://cloud.tencent.com/product/leb">LEB</a>的直播流，地址获取请<a href="https://cloud.tencent.com/document/product/267/32720">参考</a></p><p>srt支持地址请<a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">参考</a></p>
+	// <p>直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。<br>trtc地址如下：<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> 为trtc的房间号id, 为数字<br><code>&lt;sdkappid&gt;</code> 为trtc的sdk app id<br><code>&lt;userid&gt;</code> 为服务进入房间的用户id,可以区分谁是机器人<br><code>&lt;usersig&gt;</code> 为trtc 用户的签名</p><p>webrtc 支持<a href="https://cloud.tencent.com/product/leb">LEB</a>的直播流，地址获取请<a href="https://cloud.tencent.com/document/product/267/32720">参考</a></p><p>srt支持地址请<a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">参考</a></p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// <p>任务的事件通知信息，用于指定直播流处理的结果。</p>
@@ -22545,448 +21272,66 @@ type RawImageWatermarkInput struct {
 }
 
 type RawSmartEraseParameter struct {
-	// 擦除类型
-	// - subtitle 去字幕
-	// - watermark 去水印
-	// - privacy 隐私保护
+	// <p>擦除类型</p><ul><li>subtitle 去字幕</li><li>watermark 去水印</li><li>privacy 隐私保护</li></ul>
 	EraseType *string `json:"EraseType,omitnil,omitempty" name:"EraseType"`
 
-	// 字幕擦除配置；
-	// 当EraseType值为：subtitle，此字段为必填参数
+	// <p>字幕擦除配置；<br>当EraseType值为：subtitle，此字段为必填参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EraseSubtitleConfig *SmartEraseSubtitleConfig `json:"EraseSubtitleConfig,omitnil,omitempty" name:"EraseSubtitleConfig"`
 
-	// 水印擦除配置；
-	// 当EraseType值为：watermark，此字段为必填参数
+	// <p>水印擦除配置；<br>当EraseType值为：watermark，此字段为必填参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EraseWatermarkConfig *SmartEraseWatermarkConfig `json:"EraseWatermarkConfig,omitnil,omitempty" name:"EraseWatermarkConfig"`
 
-	// 隐私保护配置；
-	// 当EraseType值为：privacy，此字段为必填参数
+	// <p>隐私保护配置；<br>当EraseType值为：privacy，此字段为必填参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErasePrivacyConfig *SmartErasePrivacyConfig `json:"ErasePrivacyConfig,omitnil,omitempty" name:"ErasePrivacyConfig"`
+
+	// <p>擦除字幕压制模板id。</p>
+	SubtitleEmbedId *int64 `json:"SubtitleEmbedId,omitnil,omitempty" name:"SubtitleEmbedId"`
+
+	// <p>压制配置，默认开启1, 把字幕压制回原字幕位置。</p>
+	UseOriginalPos *int64 `json:"UseOriginalPos,omitnil,omitempty" name:"UseOriginalPos"`
+
+	// <p>压制配置，默认开启1, 开启后使用原字幕字号。</p>
+	UseOriginalSize *int64 `json:"UseOriginalSize,omitnil,omitempty" name:"UseOriginalSize"`
 }
 
 type RawSmartSubtitleParameter struct {
-	// 智能字幕字幕语言类型
-	// 0: 源语言
-	// 1: 翻译语言
-	// 2: 源语言+翻译语言
-	// 当TranslateSwitch为OFF时仅支持取0
-	// 当TranslateSwitch为ON时仅支持取1或2
+	// <p>智能字幕字幕语言类型<br>0: 源语言<br>1: 翻译语言<br>2: 源语言+翻译语言<br>当TranslateSwitch为OFF时仅支持取0<br>当TranslateSwitch为ON时仅支持取1或2</p>
 	SubtitleType *int64 `json:"SubtitleType,omitnil,omitempty" name:"SubtitleType"`
 
-	// 智能字幕视频源语言
-	// OCR识别仅支持以下语言：
-	// `zh_en`：中英
-	// `multi`：其他
-	// ASR识别和纯字幕翻译当前支持以下语言：
-	// `auto`：自动识别（仅在纯字幕翻译中支持）
-	// `zh`：简体中文
-	// `en`：英语
-	// `ja`：日语
-	// `ko`：韩语
-	// `zh-PY`：中英粤
-	// `zh_medical`：中文医疗
-	// `vi`：越南语
-	// `ms`：马来语
-	// `id`：印度尼西亚语
-	// `fil`：菲律宾语
-	// `th`：泰语
-	// `pt`：葡萄牙语
-	// `tr`：土耳其语
-	// `ar`：阿拉伯语
-	// `es`：西班牙语
-	// `hi`：印地语
-	// `fr`：法语
-	// `de`：德语
-	// `it`：意大利语
-	// `zh_dialect`：中文方言
-	// `zh_en`：中英
-	// `yue`：粤语
-	// `ru`：俄语
-	// `prime_zh`：中英方言
-	// `af-ZA`：南非荷兰语（南非）
-	// `sq-AL`：阿尔巴尼亚语（阿尔巴尼亚）
-	// `am-ET`：阿姆哈拉语（埃塞俄比亚）
-	// `ar-DZ`：阿拉伯语（阿尔及利亚）
-	// `ar-BH`：阿拉伯语（巴林）
-	// `ar-EG`：阿拉伯语（埃及）
-	// `ar-IQ`：阿拉伯语（伊拉克）
-	// `ar-IL`：阿拉伯语（以色列）
-	// `ar-JO`：阿拉伯语（约旦）
-	// `ar-KW`：阿拉伯语（科威特）
-	// `ar-LB`：阿拉伯语（黎巴嫩）
-	// `ar-MR`：阿拉伯语（毛里塔尼亚）
-	// `ar-MA`：阿拉伯语（摩洛哥）
-	// `ar-OM`：阿拉伯语（阿曼）
-	// `ar-QA`：阿拉伯语（卡塔尔）
-	// `ar-SA`：阿拉伯语（沙特阿拉伯）
-	// `ar-PS`：阿拉伯语（巴勒斯坦国）
-	// `ar-SY`：阿拉伯语（叙利亚）
-	// `ar-TN`：阿拉伯语（突尼斯）
-	// `ar-AE`：阿拉伯语（阿拉伯联合酋长国）
-	// `ar-YE`：阿拉伯语（也门）
-	// `hy-AM`：亚美尼亚语（亚美尼亚）
-	// `az-AZ`：阿塞拜疆语（阿塞拜疆）
-	// `eu-ES`：巴斯克语（西班牙）
-	// `bn-BD`：孟加拉语（孟加拉）
-	// `bn-IN`：孟加拉语（印度）
-	// `bs-BA`：波斯尼亚语（波斯尼亚和黑塞哥维那）
-	// `bg-BG`：保加利亚语（保加利亚）
-	// `my-MM`：缅甸语（缅甸）
-	// `ca-ES`：加泰罗尼亚语（西班牙）
-	// `hr-HR`：克罗地亚语（克罗地亚）
-	// `cs-CZ`：捷克语（捷克共和国）
-	// `da-DK`：丹麦语（丹麦）
-	// `nl-BE`：荷兰语（比利时）
-	// `nl-NL`：荷兰语（荷兰）
-	// `en-AU`：英语（澳大利亚）
-	// `en-CA`：英语（加拿大）
-	// `en-GH`：英语（加纳）
-	// `en-HK`：英语（中国香港）
-	// `en-IN`：英语（印度）
-	// `en-IE`：英语（爱尔兰）
-	// `en-KE`：英语（肯尼亚）
-	// `en-NZ`：英语（新西兰）
-	// `en-NG`：英语（尼日利亚）
-	// `en-PK`：英语（巴基斯坦）
-	// `en-PH`：英语（菲律宾）
-	// `en-SG`：英语（新加坡）
-	// `en-ZA`：英语（南非）
-	// `en-TZ`：英语（坦桑尼亚）
-	// `en-GB`：英语（英国）
-	// `en-US`：英语（美国）
-	// `et-EE`：爱沙尼亚语（爱沙尼亚）
-	// `fil-PH`：菲律宾语（菲律宾）
-	// `fi-FI`：芬兰语（芬兰）
-	// `fr-BE`：法语（比利时）
-	// `fr-CA`：法语（加拿大）
-	// `fr-FR`：法语（法国）
-	// `fr-CH`：法语（瑞士）
-	// `gl-ES`：加利西亚语（西班牙）
-	// `ka-GE`：格鲁吉亚语（格鲁吉亚）
-	// `el-GR`：希腊语（希腊）
-	// `gu-IN`：古吉拉特语（印度）
-	// `iw-IL`：希伯来语（以色列）
-	// `hi-IN`：印地语（印度）
-	// `hu-HU`：匈牙利语（匈牙利）
-	// `is-IS`：冰岛语（冰岛）
-	// `id-ID`：印度尼西亚语（印度尼西亚）
-	// `it-IT`：意大利语（意大利）
-	// `it-CH`：意大利语（瑞士）
-	// `ja-JP`：日语（日本）
-	// `jv-ID`：爪哇语（印度尼西亚）
-	// `kn-IN`：卡纳达语（印度）
-	// `kk-KZ`：哈萨克语（哈萨克斯坦）
-	// `km-KH`：高棉语（柬埔寨）
-	// `rw-RW`：卢旺达语（卢旺达）
-	// `ko-KR`：韩语（韩国）
-	// `lo-LA`：老挝语（老挝）
-	// `lv-LV`：拉脱维亚语（拉脱维亚）
-	// `lt-LT`：立陶宛语（立陶宛）
-	// `mk-MK`：马其顿语（北马其顿）
-	// `ms-MY`：马来语（马来西亚）
-	// `ml-IN`：马拉雅拉姆语（印度）
-	// `mr-IN`：马拉地语（印度）
-	// `mn-MN`：蒙古语（蒙古）
-	// `ne-NP`：尼泊尔语（尼泊尔）
-	// `no-NO`：博克马尔挪威语（挪威）
-	// `fa-IR`：波斯语（伊朗）
-	// `pl-PL`：波兰语（波兰）
-	// `pt-BR`：葡萄牙语（巴西）
-	// `pt-PT`：葡萄牙语（葡萄牙）
-	// `ro-RO`：罗马尼亚语（罗马尼亚）
-	// `ru-RU`：俄语（俄罗斯）
-	// `sr-RS`：塞尔维亚语（塞尔维亚）
-	// `si-LK`：僧伽罗语（斯里兰卡）
-	// `sk-SK`：斯洛伐克语（斯洛伐克）
-	// `sl-SI`：斯洛文尼亚语（斯洛文尼亚）
-	// `st-ZA`：南索托语（南非）
-	// `es-AR`：西班牙语（阿根廷）
-	// `es-BO`：西班牙语（玻利维亚）
-	// `es-CL`：西班牙语（智利）
-	// `es-CO`：西班牙语（哥伦比亚）
-	// `es-CR`：西班牙语（哥斯达黎加）
-	// `es-DO`：西班牙语（多米尼加共和国）
-	// `es-EC`：西班牙语（厄瓜多尔）
-	// `es-SV`：西班牙语（萨尔瓦多）
-	// `es-GT`：西班牙语（危地马拉）
-	// `es-HN`：西班牙语（洪都拉斯）
-	// `es-MX`：西班牙语（墨西哥）
-	// `es-NI`：西班牙语（尼加拉瓜）
-	// `es-PA`：西班牙语（巴拿马）
-	// `es-PY`：西班牙语（巴拉圭）
-	// `es-PE`：西班牙语（秘鲁）
-	// `es-PR`：西班牙语（波多黎各）
-	// `es-ES`：西班牙语（西班牙）
-	// `es-US`：西班牙语（美国）
-	// `es-UY`：西班牙语（乌拉圭）
-	// `es-VE`：西班牙语（委内瑞拉）
-	// `su-ID`：巽他语（印度尼西亚）
-	// `sw-KE`：斯瓦希里语（肯尼亚）
-	// `sw-TZ`：斯瓦希里语（坦桑尼亚）
-	// `sv-SE`：瑞典语（瑞典）
-	// `ta-IN`：泰米尔语（印度）
-	// `ta-MY`：泰米尔语（马来西亚）
-	// `ta-SG`：泰米尔语（新加坡）
-	// `ta-LK`：泰米尔语（斯里兰卡）
-	// `te-IN`：泰卢固语（印度）
-	// `th-TH`：泰语（泰国）
-	// `ts-ZA`：聪加语（南非）
-	// `tr-TR`：土耳其语（土耳其）
-	// `uk-UA`：乌克兰语（乌克兰）
-	// `ur-IN`：乌尔都语（印度）
-	// `ur-PK`：乌尔都语（巴基斯坦）
-	// `uz-UZ`：乌兹别克语（乌兹别克斯坦）
-	// `ve-ZA`：文达语（南非）
-	// `vi-VN`：越南语（越南）
-	// `xh-ZA`：科萨语（南非）
-	// `zu-ZA`：祖鲁语（南非）
+	// <p>智能字幕视频源语言<br>OCR识别仅支持以下语言：<br><code>zh_en</code>：中英<br><code>multi</code>：其他<br>ASR识别和纯字幕翻译当前支持以下语言：<br><code>auto</code>：自动识别<br><code>zh</code>：简体中文<br><code>en</code>：英语<br><code>ja</code>：日语<br><code>ko</code>：韩语<br><code>zh-PY</code>：中英粤<br><code>zh_medical</code>：中文医疗<br><code>vi</code>：越南语<br><code>ms</code>：马来语<br><code>id</code>：印度尼西亚语<br><code>fil</code>：菲律宾语<br><code>th</code>：泰语<br><code>pt</code>：葡萄牙语<br><code>tr</code>：土耳其语<br><code>ar</code>：阿拉伯语<br><code>es</code>：西班牙语<br><code>hi</code>：印地语<br><code>fr</code>：法语<br><code>de</code>：德语<br><code>it</code>：意大利语<br><code>zh_dialect</code>：中文方言<br><code>zh_en</code>：中英<br><code>yue</code>：粤语<br><code>ru</code>：俄语<br><code>prime_zh</code>：中英方言<br><code>af-ZA</code>：南非荷兰语（南非）<br><code>sq-AL</code>：阿尔巴尼亚语（阿尔巴尼亚）<br><code>am-ET</code>：阿姆哈拉语（埃塞俄比亚）<br><code>ar-DZ</code>：阿拉伯语（阿尔及利亚）<br><code>ar-BH</code>：阿拉伯语（巴林）<br><code>ar-EG</code>：阿拉伯语（埃及）<br><code>ar-IQ</code>：阿拉伯语（伊拉克）<br><code>ar-IL</code>：阿拉伯语（以色列）<br><code>ar-JO</code>：阿拉伯语（约旦）<br><code>ar-KW</code>：阿拉伯语（科威特）<br><code>ar-LB</code>：阿拉伯语（黎巴嫩）<br><code>ar-MR</code>：阿拉伯语（毛里塔尼亚）<br><code>ar-MA</code>：阿拉伯语（摩洛哥）<br><code>ar-OM</code>：阿拉伯语（阿曼）<br><code>ar-QA</code>：阿拉伯语（卡塔尔）<br><code>ar-SA</code>：阿拉伯语（沙特阿拉伯）<br><code>ar-PS</code>：阿拉伯语（巴勒斯坦国）<br><code>ar-SY</code>：阿拉伯语（叙利亚）<br><code>ar-TN</code>：阿拉伯语（突尼斯）<br><code>ar-AE</code>：阿拉伯语（阿拉伯联合酋长国）<br><code>ar-YE</code>：阿拉伯语（也门）<br><code>hy-AM</code>：亚美尼亚语（亚美尼亚）<br><code>az-AZ</code>：阿塞拜疆语（阿塞拜疆）<br><code>eu-ES</code>：巴斯克语（西班牙）<br><code>bn-BD</code>：孟加拉语（孟加拉）<br><code>bn-IN</code>：孟加拉语（印度）<br><code>bs-BA</code>：波斯尼亚语（波斯尼亚和黑塞哥维那）<br><code>bg-BG</code>：保加利亚语（保加利亚）<br><code>my-MM</code>：缅甸语（缅甸）<br><code>ca-ES</code>：加泰罗尼亚语（西班牙）<br><code>hr-HR</code>：克罗地亚语（克罗地亚）<br><code>cs-CZ</code>：捷克语（捷克共和国）<br><code>da-DK</code>：丹麦语（丹麦）<br><code>nl-BE</code>：荷兰语（比利时）<br><code>nl-NL</code>：荷兰语（荷兰）<br><code>en-AU</code>：英语（澳大利亚）<br><code>en-CA</code>：英语（加拿大）<br><code>en-GH</code>：英语（加纳）<br><code>en-HK</code>：英语（中国香港）<br><code>en-IN</code>：英语（印度）<br><code>en-IE</code>：英语（爱尔兰）<br><code>en-KE</code>：英语（肯尼亚）<br><code>en-NZ</code>：英语（新西兰）<br><code>en-NG</code>：英语（尼日利亚）<br><code>en-PK</code>：英语（巴基斯坦）<br><code>en-PH</code>：英语（菲律宾）<br><code>en-SG</code>：英语（新加坡）<br><code>en-ZA</code>：英语（南非）<br><code>en-TZ</code>：英语（坦桑尼亚）<br><code>en-GB</code>：英语（英国）<br><code>en-US</code>：英语（美国）<br><code>et-EE</code>：爱沙尼亚语（爱沙尼亚）<br><code>fil-PH</code>：菲律宾语（菲律宾）<br><code>fi-FI</code>：芬兰语（芬兰）<br><code>fr-BE</code>：法语（比利时）<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fr-CH</code>：法语（瑞士）<br><code>gl-ES</code>：加利西亚语（西班牙）<br><code>ka-GE</code>：格鲁吉亚语（格鲁吉亚）<br><code>el-GR</code>：希腊语（希腊）<br><code>gu-IN</code>：古吉拉特语（印度）<br><code>iw-IL</code>：希伯来语（以色列）<br><code>hi-IN</code>：印地语（印度）<br><code>hu-HU</code>：匈牙利语（匈牙利）<br><code>is-IS</code>：冰岛语（冰岛）<br><code>id-ID</code>：印度尼西亚语（印度尼西亚）<br><code>it-IT</code>：意大利语（意大利）<br><code>it-CH</code>：意大利语（瑞士）<br><code>ja-JP</code>：日语（日本）<br><code>jv-ID</code>：爪哇语（印度尼西亚）<br><code>kn-IN</code>：卡纳达语（印度）<br><code>kk-KZ</code>：哈萨克语（哈萨克斯坦）<br><code>km-KH</code>：高棉语（柬埔寨）<br><code>rw-RW</code>：卢旺达语（卢旺达）<br><code>ko-KR</code>：韩语（韩国）<br><code>lo-LA</code>：老挝语（老挝）<br><code>lv-LV</code>：拉脱维亚语（拉脱维亚）<br><code>lt-LT</code>：立陶宛语（立陶宛）<br><code>mk-MK</code>：马其顿语（北马其顿）<br><code>ms-MY</code>：马来语（马来西亚）<br><code>ml-IN</code>：马拉雅拉姆语（印度）<br><code>mr-IN</code>：马拉地语（印度）<br><code>mn-MN</code>：蒙古语（蒙古）<br><code>ne-NP</code>：尼泊尔语（尼泊尔）<br><code>no-NO</code>：博克马尔挪威语（挪威）<br><code>fa-IR</code>：波斯语（伊朗）<br><code>pl-PL</code>：波兰语（波兰）<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>ro-RO</code>：罗马尼亚语（罗马尼亚）<br><code>ru-RU</code>：俄语（俄罗斯）<br><code>sr-RS</code>：塞尔维亚语（塞尔维亚）<br><code>si-LK</code>：僧伽罗语（斯里兰卡）<br><code>sk-SK</code>：斯洛伐克语（斯洛伐克）<br><code>sl-SI</code>：斯洛文尼亚语（斯洛文尼亚）<br><code>st-ZA</code>：南索托语（南非）<br><code>es-AR</code>：西班牙语（阿根廷）<br><code>es-BO</code>：西班牙语（玻利维亚）<br><code>es-CL</code>：西班牙语（智利）<br><code>es-CO</code>：西班牙语（哥伦比亚）<br><code>es-CR</code>：西班牙语（哥斯达黎加）<br><code>es-DO</code>：西班牙语（多米尼加共和国）<br><code>es-EC</code>：西班牙语（厄瓜多尔）<br><code>es-SV</code>：西班牙语（萨尔瓦多）<br><code>es-GT</code>：西班牙语（危地马拉）<br><code>es-HN</code>：西班牙语（洪都拉斯）<br><code>es-MX</code>：西班牙语（墨西哥）<br><code>es-NI</code>：西班牙语（尼加拉瓜）<br><code>es-PA</code>：西班牙语（巴拿马）<br><code>es-PY</code>：西班牙语（巴拉圭）<br><code>es-PE</code>：西班牙语（秘鲁）<br><code>es-PR</code>：西班牙语（波多黎各）<br><code>es-ES</code>：西班牙语（西班牙）<br><code>es-US</code>：西班牙语（美国）<br><code>es-UY</code>：西班牙语（乌拉圭）<br><code>es-VE</code>：西班牙语（委内瑞拉）<br><code>su-ID</code>：巽他语（印度尼西亚）<br><code>sw-KE</code>：斯瓦希里语（肯尼亚）<br><code>sw-TZ</code>：斯瓦希里语（坦桑尼亚）<br><code>sv-SE</code>：瑞典语（瑞典）<br><code>ta-IN</code>：泰米尔语（印度）<br><code>ta-MY</code>：泰米尔语（马来西亚）<br><code>ta-SG</code>：泰米尔语（新加坡）<br><code>ta-LK</code>：泰米尔语（斯里兰卡）<br><code>te-IN</code>：泰卢固语（印度）<br><code>th-TH</code>：泰语（泰国）<br><code>ts-ZA</code>：聪加语（南非）<br><code>tr-TR</code>：土耳其语（土耳其）<br><code>uk-UA</code>：乌克兰语（乌克兰）<br><code>ur-IN</code>：乌尔都语（印度）<br><code>ur-PK</code>：乌尔都语（巴基斯坦）<br><code>uz-UZ</code>：乌兹别克语（乌兹别克斯坦）<br><code>ve-ZA</code>：文达语（南非）<br><code>vi-VN</code>：越南语（越南）<br><code>xh-ZA</code>：科萨语（南非）<br><code>zu-ZA</code>：祖鲁语（南非）</p>
 	VideoSrcLanguage *string `json:"VideoSrcLanguage,omitnil,omitempty" name:"VideoSrcLanguage"`
 
-	// 智能字幕文件格式:
-	// - ASR识别翻译处理类型下：
-	//      - vtt: WebVTT 格式字幕
-	//      - srt: SRT 格式字幕
-	//      - 不填或填空：不生成字幕文件
-	// - 纯字幕翻译处理类型下：
-	//     - original：与源文件一致
-	//     - vtt: WebVTT 格式字幕
-	//     - srt: SRT 格式字幕
-	// - OCR识别翻译处理类型下：
-	//      - vtt: WebVTT 格式字幕
-	//      - srt: SRT 格式字幕
-	// 
-	// **注意**：
-	// - ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
-	// - 纯字幕翻译和OCR识别翻译方式下，不允许传空或不传
+	// <p>智能字幕文件格式:</p><ul><li>ASR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li><li>不填或填空：不生成字幕文件</li></ul></li><li>纯字幕翻译处理类型下：<ul><li>original：与源文件一致</li><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li><li>OCR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li></ul><p><strong>注意</strong>：</p><ul><li>ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；</li><li>纯字幕翻译和OCR识别翻译方式下，不允许传空或不传</li><li>OCR类型的任务，在开启压制时，允许不传或传空</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
 
-	// 字幕翻译开关
-	// `ON`: 开启翻译
-	// `OFF`: 关闭翻译
-	// 
-	// **注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
+	// <p>字幕翻译开关<br><code>ON</code>: 开启翻译<br><code>OFF</code>: 关闭翻译</p><p><strong>注意</strong>：纯字幕翻译方式下，不传默认是打开的，不允许传空或<code>OFF</code>；</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranslateSwitch *string `json:"TranslateSwitch,omitnil,omitempty" name:"TranslateSwitch"`
 
-	// 字幕翻译目标语言
-	// 当TranslateSwitch为ON的时候生效，翻译语言列表：
-	// `ab`：阿布哈兹语
-	// `ace`：亚齐语
-	// `ach`：阿乔利语
-	// `af`：南非荷兰语
-	// `ak`：契维语（阿坎语）
-	// `am`：Amharic
-	// `ar`：阿拉伯语
-	// `as`：阿萨姆语
-	// `ay`：艾马拉语
-	// `az`：阿塞拜疆语
-	// `ba`：巴什基尔语
-	// `ban`：巴厘语
-	// `bbc`：巴塔克托巴语
-	// `bem`：Bemba
-	// `bew`：Betawi
-	// `bg`：保加利亚语
-	// `bho`：博杰普尔语
-	// `bik`：Bikol
-	// `bm`：班巴拉语
-	// `bn`：孟加拉语
-	// `br`：布列塔尼语
-	// `bs`：波斯尼亚语
-	// `btx`：巴塔克卡罗语
-	// `bts`：巴塔克西马隆贡语
-	// `bua`：布里亚特语
-	// `ca`：加泰罗尼亚语
-	// `ceb`：宿务语
-	// `cgg`：Kiga
-	// `chm`：草原马里语
-	// `ckb`：库尔德语（索拉尼语）
-	// `cnh`：哈卡钦语
-	// `co`：科西嘉语
-	// `crh`：克里米亚鞑靼语
-	// `crs`：塞舌尔克里奥尔语
-	// `cs`：捷克语
-	// `cv`：楚瓦什语
-	// `cy`：威尔士语
-	// `da`：丹麦语
-	// `de`：德语
-	// `din`：Dinka
-	// `doi`：多格来语
-	// `dov`：敦贝语
-	// `dv`：第维埃语
-	// `dz`：宗卡语
-	// `ee`：Ewe
-	// `el`：希腊语
-	// `en`：英语
-	// `eo`：世界语
-	// `es`：西班牙语
-	// `et`：爱沙尼亚语
-	// `eu`：巴斯克语
-	// `fa`：波斯语
-	// `ff`：富拉语
-	// `fi`：芬兰语
-	// `fil`：菲律宾语（塔加拉语）
-	// `fj`：斐济语
-	// `fr`：法语
-	// `fr-CA`：法语（加拿大）
-	// `fr-FR`：法语（法国）
-	// `fy`：弗里斯兰语
-	// `ga`：爱尔兰语
-	// `gaa`：加 (Ga) 语
-	// `gd`：苏格兰盖尔语
-	// `gl`：加利西亚语
-	// `gn`：瓜拉尼语
-	// `gom`：贡根语
-	// `gu`：古吉拉特语
-	// `gv`：马恩岛语
-	// `ha`：Hausa
-	// `haw`：夏威夷语
-	// `he`：希伯来语
-	// `hi`：印地语
-	// `hil`：希利盖农语
-	// `hmn`：苗语
-	// `hr`：克罗地亚语
-	// `hrx`：洪斯吕克语
-	// `ht`：海地克里奥尔语
-	// `hu`：匈牙利语
-	// `hy`：亚美尼亚语
-	// `id`：印度尼西亚语
-	// `ig`：Igbo
-	// `ilo`：伊洛果语
-	// `is`：冰岛语
-	// `it`：意大利语
-	// `iw`：希伯来语
-	// `ja`：日语
-	// `jv`：爪哇语
-	// `ka`：格鲁吉亚语
-	// `kk`：哈萨克语
-	// `km`：高棉语
-	// `kn`：卡纳达语
-	// `ko`：韩语
-	// `kri`：Krio
-	// `ku`：库尔德语（库尔曼吉语）
-	// `ktu`：吉土巴语
-	// `ky`：吉尔吉斯语
-	// `la`：拉丁语
-	// `lb`：卢森堡语
-	// `lg`：干达语（卢干达语）
-	// `li`：林堡语
-	// `lij`：利古里亚语
-	// `lmo`：伦巴第语
-	// `ln`：林加拉语
-	// `lo`：老挝语
-	// `lt`：立陶宛语
-	// `ltg`：拉特加莱语
-	// `luo`：Luo
-	// `lus`：米佐语
-	// `lv`：拉脱维亚语
-	// `mai`：迈蒂利语
-	// `mak`：马卡萨
-	// `mg`：马尔加什语
-	// `mi`：毛利语
-	// `min`：米南语
-	// `mk`：马其顿语
-	// `ml`：马拉雅拉姆语
-	// `mn`：蒙古语
-	// `mr`：马拉地语
-	// `ms`：马来语
-	// `mt`：马耳他语
-	// `my`：缅甸语
-	// `ne`：尼泊尔语
-	// `new`：尼瓦尔语
-	// `nl`：荷兰语
-	// `no`：挪威语
-	// `nr`：恩德贝莱语（南部）
-	// `nso`：北索托语（塞佩蒂语）
-	// `nus`：努尔语
-	// `ny`：齐切瓦语（尼扬贾语）
-	// `oc`：奥克斯坦语
-	// `om`：Oromo
-	// `or`：奥里亚语
-	// `pa`：旁遮普语
-	// `pag`：邦阿西楠语
-	// `pam`：邦板牙语
-	// `pap`：Papiamento
-	// `pl`：波兰语
-	// `ps`：Pashto
-	// `pt`：葡萄牙语
-	// `pt-BR`：葡萄牙语（巴西）
-	// `pt-PT`：葡萄牙语（葡萄牙）
-	// `qu`：克丘亚语
-	// `ro`：罗马尼亚语
-	// `rom`：罗姆语
-	// `rn`：Rundi
-	// `ru`：俄语
-	// `rw`：卢旺达语
-	// `sa`：梵语
-	// `scn`：西西里语
-	// `sd`：信德语
-	// `sg`：Sango
-	// `shn`：掸语
-	// `si`：僧伽罗语
-	// `sk`：斯洛伐克语
-	// `sl`：斯洛文尼亚语
-	// `sm`：萨摩亚语
-	// `sn`：修纳语
-	// `so`：索马里语
-	// `sq`：阿尔巴尼亚语
-	// `sr`：塞尔维亚语
-	// `ss`：斯瓦特语
-	// `st`：塞索托语
-	// `su`：巽他语
-	// `sv`：瑞典语
-	// `sw`：斯瓦希里语
-	// `szl`：西里西亚语
-	// `ta`：泰米尔语
-	// `te`：泰卢固语
-	// `tet`：德顿语
-	// `tg`：塔吉克语
-	// `th`：泰语
-	// `ti`：提格里尼亚语
-	// `tk`：土库曼语
-	// `tn`：茨瓦纳语
-	// `tr`：土耳其语
-	// `ts`：聪加语
-	// `tt`：鞑靼语
-	// `ug`：维吾尔语
-	// `uk`：乌克兰语
-	// `ur`：乌尔都语
-	// `uz`：乌兹别克语
-	// `vi`：越南语
-	// `xh`：科萨语
-	// `yi`：意第绪语
-	// `yo`：约鲁巴语
-	// `yua`：尤卡坦玛雅语
-	// `yue`：粤语
-	// `zh`：简体中文
-	// `zh-TW`：中文（繁体）
-	// `zu`：祖鲁语
-	// 
-	// **注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
+	// <p>字幕翻译目标语言<br>当TranslateSwitch为ON的时候生效，翻译语言列表：<br><code>ab</code>：阿布哈兹语<br><code>ace</code>：亚齐语<br><code>ach</code>：阿乔利语<br><code>af</code>：南非荷兰语<br><code>ak</code>：契维语（阿坎语）<br><code>am</code>：Amharic<br><code>ar</code>：阿拉伯语<br><code>as</code>：阿萨姆语<br><code>ay</code>：艾马拉语<br><code>az</code>：阿塞拜疆语<br><code>ba</code>：巴什基尔语<br><code>ban</code>：巴厘语<br><code>bbc</code>：巴塔克托巴语<br><code>bem</code>：Bemba<br><code>bew</code>：Betawi<br><code>bg</code>：保加利亚语<br><code>bho</code>：博杰普尔语<br><code>bik</code>：Bikol<br><code>bm</code>：班巴拉语<br><code>bn</code>：孟加拉语<br><code>br</code>：布列塔尼语<br><code>bs</code>：波斯尼亚语<br><code>btx</code>：巴塔克卡罗语<br><code>bts</code>：巴塔克西马隆贡语<br><code>bua</code>：布里亚特语<br><code>ca</code>：加泰罗尼亚语<br><code>ceb</code>：宿务语<br><code>cgg</code>：Kiga<br><code>chm</code>：草原马里语<br><code>ckb</code>：库尔德语（索拉尼语）<br><code>cnh</code>：哈卡钦语<br><code>co</code>：科西嘉语<br><code>crh</code>：克里米亚鞑靼语<br><code>crs</code>：塞舌尔克里奥尔语<br><code>cs</code>：捷克语<br><code>cv</code>：楚瓦什语<br><code>cy</code>：威尔士语<br><code>da</code>：丹麦语<br><code>de</code>：德语<br><code>din</code>：Dinka<br><code>doi</code>：多格来语<br><code>dov</code>：敦贝语<br><code>dv</code>：第维埃语<br><code>dz</code>：宗卡语<br><code>ee</code>：Ewe<br><code>el</code>：希腊语<br><code>en</code>：英语<br><code>eo</code>：世界语<br><code>es</code>：西班牙语<br><code>et</code>：爱沙尼亚语<br><code>eu</code>：巴斯克语<br><code>fa</code>：波斯语<br><code>ff</code>：富拉语<br><code>fi</code>：芬兰语<br><code>fil</code>：菲律宾语（塔加拉语）<br><code>fj</code>：斐济语<br><code>fr</code>：法语<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fy</code>：弗里斯兰语<br><code>ga</code>：爱尔兰语<br><code>gaa</code>：加 (Ga) 语<br><code>gd</code>：苏格兰盖尔语<br><code>gl</code>：加利西亚语<br><code>gn</code>：瓜拉尼语<br><code>gom</code>：贡根语<br><code>gu</code>：古吉拉特语<br><code>gv</code>：马恩岛语<br><code>ha</code>：Hausa<br><code>haw</code>：夏威夷语<br><code>he</code>：希伯来语<br><code>hi</code>：印地语<br><code>hil</code>：希利盖农语<br><code>hmn</code>：苗语<br><code>hr</code>：克罗地亚语<br><code>hrx</code>：洪斯吕克语<br><code>ht</code>：海地克里奥尔语<br><code>hu</code>：匈牙利语<br><code>hy</code>：亚美尼亚语<br><code>id</code>：印度尼西亚语<br><code>ig</code>：Igbo<br><code>ilo</code>：伊洛果语<br><code>is</code>：冰岛语<br><code>it</code>：意大利语<br><code>iw</code>：希伯来语<br><code>ja</code>：日语<br><code>jv</code>：爪哇语<br><code>ka</code>：格鲁吉亚语<br><code>kk</code>：哈萨克语<br><code>km</code>：高棉语<br><code>kn</code>：卡纳达语<br><code>ko</code>：韩语<br><code>kri</code>：Krio<br><code>ku</code>：库尔德语（库尔曼吉语）<br><code>ktu</code>：吉土巴语<br><code>ky</code>：吉尔吉斯语<br><code>la</code>：拉丁语<br><code>lb</code>：卢森堡语<br><code>lg</code>：干达语（卢干达语）<br><code>li</code>：林堡语<br><code>lij</code>：利古里亚语<br><code>lmo</code>：伦巴第语<br><code>ln</code>：林加拉语<br><code>lo</code>：老挝语<br><code>lt</code>：立陶宛语<br><code>ltg</code>：拉特加莱语<br><code>luo</code>：Luo<br><code>lus</code>：米佐语<br><code>lv</code>：拉脱维亚语<br><code>mai</code>：迈蒂利语<br><code>mak</code>：马卡萨<br><code>mg</code>：马尔加什语<br><code>mi</code>：毛利语<br><code>min</code>：米南语<br><code>mk</code>：马其顿语<br><code>ml</code>：马拉雅拉姆语<br><code>mn</code>：蒙古语<br><code>mr</code>：马拉地语<br><code>ms</code>：马来语<br><code>mt</code>：马耳他语<br><code>my</code>：缅甸语<br><code>ne</code>：尼泊尔语<br><code>new</code>：尼瓦尔语<br><code>nl</code>：荷兰语<br><code>no</code>：挪威语<br><code>nr</code>：恩德贝莱语（南部）<br><code>nso</code>：北索托语（塞佩蒂语）<br><code>nus</code>：努尔语<br><code>ny</code>：齐切瓦语（尼扬贾语）<br><code>oc</code>：奥克斯坦语<br><code>om</code>：Oromo<br><code>or</code>：奥里亚语<br><code>pa</code>：旁遮普语<br><code>pag</code>：邦阿西楠语<br><code>pam</code>：邦板牙语<br><code>pap</code>：Papiamento<br><code>pl</code>：波兰语<br><code>ps</code>：Pashto<br><code>pt</code>：葡萄牙语<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>qu</code>：克丘亚语<br><code>ro</code>：罗马尼亚语<br><code>rom</code>：罗姆语<br><code>rn</code>：Rundi<br><code>ru</code>：俄语<br><code>rw</code>：卢旺达语<br><code>sa</code>：梵语<br><code>scn</code>：西西里语<br><code>sd</code>：信德语<br><code>sg</code>：Sango<br><code>shn</code>：掸语<br><code>si</code>：僧伽罗语<br><code>sk</code>：斯洛伐克语<br><code>sl</code>：斯洛文尼亚语<br><code>sm</code>：萨摩亚语<br><code>sn</code>：修纳语<br><code>so</code>：索马里语<br><code>sq</code>：阿尔巴尼亚语<br><code>sr</code>：塞尔维亚语<br><code>ss</code>：斯瓦特语<br><code>st</code>：塞索托语<br><code>su</code>：巽他语<br><code>sv</code>：瑞典语<br><code>sw</code>：斯瓦希里语<br><code>szl</code>：西里西亚语<br><code>ta</code>：泰米尔语<br><code>te</code>：泰卢固语<br><code>tet</code>：德顿语<br><code>tg</code>：塔吉克语<br><code>th</code>：泰语<br><code>ti</code>：提格里尼亚语<br><code>tk</code>：土库曼语<br><code>tn</code>：茨瓦纳语<br><code>tr</code>：土耳其语<br><code>ts</code>：聪加语<br><code>tt</code>：鞑靼语<br><code>ug</code>：维吾尔语<br><code>uk</code>：乌克兰语<br><code>ur</code>：乌尔都语<br><code>uz</code>：乌兹别克语<br><code>vi</code>：越南语<br><code>xh</code>：科萨语<br><code>yi</code>：意第绪语<br><code>yo</code>：约鲁巴语<br><code>yua</code>：尤卡坦玛雅语<br><code>yue</code>：粤语<br><code>zh</code>：简体中文<br><code>zh-TW</code>：中文（繁体）<br><code>zu</code>：祖鲁语</p><p><strong>注意</strong>：多语言方式，则使用 <code>/</code> 分割，如：<code>en/ja</code>，表示英语和日语。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranslateDstLanguage *string `json:"TranslateDstLanguage,omitnil,omitempty" name:"TranslateDstLanguage"`
 
-	// ASR热词库参数
+	// <p>ASR热词库参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrHotWordsConfigure *AsrHotWordsConfigure `json:"AsrHotWordsConfigure,omitnil,omitempty" name:"AsrHotWordsConfigure"`
 
-	// 自定义参数
+	// <p>自定义参数</p>
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 
-	// 字幕处理类型：
-	// - 0：ASR识别字幕
-	// - 1：纯字幕翻译
-	// - 2：OCR识别字幕
-	// 
-	// **注意**：不传的情况下默认类型为 ASR识别字幕
+	// <p>字幕处理类型：</p><ul><li>0：ASR识别字幕</li><li>1：纯字幕翻译</li><li>2：OCR识别字幕</li></ul><p><strong>注意</strong>：不传的情况下默认类型为 ASR识别字幕</p>
 	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 
-	// 字幕OCR提取框选区域配置
+	// <p>字幕OCR提取框选区域配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelectingSubtitleAreasConfig *SelectingSubtitleAreasConfig `json:"SelectingSubtitleAreasConfig,omitnil,omitempty" name:"SelectingSubtitleAreasConfig"`
+
+	// <p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写</p>
+	SubtitleEmbedId *int64 `json:"SubtitleEmbedId,omitnil,omitempty" name:"SubtitleEmbedId"`
 }
 
 type RawTranscodeParameter struct {
@@ -24166,76 +22511,41 @@ type SmartErasePrivacyConfig struct {
 }
 
 type SmartEraseSubtitleConfig struct {
-	// 字幕擦除方式。
-	// **自动擦除：**通过AI模型自动识别视频中的字幕文本内容，进行无痕化擦除，生成新的视频。但画面干扰、特殊字幕样式可能会带来一定漏擦误擦问题，可以通过指定区域擦除处理。
-	// 当使用自动擦除时，若您不指定AutoAreas，将对默认区域（画面中下部）进行自动擦除；若指定AutoAreas，将改为对您指定的区域进行自动擦除。
-	// **指定区域擦除：**若您的字幕位置较固定，建议您直接指定擦除区域，最大程度减少漏擦的情况。
-	// 当您选择指定区域擦除时，请在CustomAreas中至少传入一个指定区域。
-	// - auto 自动擦除
-	// - custom 指定区域擦除
+	// <p>字幕擦除方式。<br><strong>自动擦除：</strong>通过AI模型自动识别视频中的字幕文本内容，进行无痕化擦除，生成新的视频。但画面干扰、特殊字幕样式可能会带来一定漏擦误擦问题，可以通过指定区域擦除处理。<br>当使用自动擦除时，若您不指定AutoAreas，将对默认区域（画面中下部）进行自动擦除；若指定AutoAreas，将改为对您指定的区域进行自动擦除。<br><strong>指定区域擦除：</strong>若您的字幕位置较固定，建议您直接指定擦除区域，最大程度减少漏擦的情况。<br>当您选择指定区域擦除时，请在CustomAreas中至少传入一个指定区域。</p><ul><li>auto 自动擦除</li><li>custom 指定区域擦除</li></ul>
 	SubtitleEraseMethod *string `json:"SubtitleEraseMethod,omitnil,omitempty" name:"SubtitleEraseMethod"`
 
-	// 字幕擦除模型。
-	// **标准版（推荐）：**若您的字幕样式标准，通常建议选择该版本，细节无痕化效果更好。
-	// **区域版：**若您的字幕存在花体、阴影、动效等特殊样式，建议选择区域版，擦除面积更大，但细节效果不如标准版。
-	// - standard 标准模型
-	// - area 区域模型
+	// <p>字幕擦除模型。<br><strong>标准版（推荐）：</strong>若您的字幕样式标准，通常建议选择该版本，细节无痕化效果更好。<br><strong>区域版：</strong>若您的字幕存在花体、阴影、动效等特殊样式，建议选择区域版，擦除面积更大，但细节效果不如标准版。</p><ul><li>standard 标准模型</li><li>area 区域模型</li></ul>
 	SubtitleModel *string `json:"SubtitleModel,omitnil,omitempty" name:"SubtitleModel"`
 
-	// 是否开启OCR字幕提取，默认取OFF。
-	// 当且仅当SubtitleEraseMethod取auto时支持开启OCR字幕提取，开启后将识别自动擦除区域内出现时间最长且最稳定的文字区域为字幕区域，对字幕区域中的文字进行提取和擦除。
-	// - ON 开启
-	// - OFF 关闭
+	// <p>是否开启OCR字幕提取，默认取OFF。<br>当且仅当SubtitleEraseMethod取auto时支持开启OCR字幕提取，开启后将识别自动擦除区域内出现时间最长且最稳定的文字区域为字幕区域，对字幕区域中的文字进行提取和擦除。</p><ul><li>ON 开启</li><li>OFF 关闭</li></ul>
 	OcrSwitch *string `json:"OcrSwitch,omitnil,omitempty" name:"OcrSwitch"`
 
-	// 字幕语言，用于指导OCR识别，默认取zh_en；仅当OcrSwitch取"ON"时生效。
-	// - zh_en 中英文
-	// - multi 其他
-	// 其他具体支持识别如下语言：
-	// 中文、英文、日文、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语、印地语、阿拉伯语、印度-孟加拉语、印度-古吉拉特语、印度-卡纳达语 、印度-马拉亚拉姆语 、印度-泰米尔语、印度-泰卢固语、斯洛文尼亚语、波兰语、加泰罗尼亚语、波斯尼亚语、捷克语、爱沙尼亚语、克罗地亚语、旁遮普语、马拉地语、阿塞拜疆语、印尼语、卢森堡语 、立陶宛语、拉脱维亚语、马耳他语、斯洛伐克语、土耳其语、哈萨克语、希腊语、爱尔兰语、白俄罗斯语、高棉语、他加禄语、普什图语、波斯语、塔吉克斯坦语
-	// 
+	// <p>字幕语言，用于指导OCR识别，默认取zh_en；仅当OcrSwitch取&quot;ON&quot;时生效。</p><ul><li>zh_en 中英文</li><li>multi 其他<br>其他具体支持识别如下语言：<br>中文、英文、日文、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语、印地语、阿拉伯语、印度-孟加拉语、印度-古吉拉特语、印度-卡纳达语 、印度-马拉亚拉姆语 、印度-泰米尔语、印度-泰卢固语、斯洛文尼亚语、波兰语、加泰罗尼亚语、波斯尼亚语、捷克语、爱沙尼亚语、克罗地亚语、旁遮普语、马拉地语、阿塞拜疆语、印尼语、卢森堡语 、立陶宛语、拉脱维亚语、马耳他语、斯洛伐克语、土耳其语、哈萨克语、希腊语、爱尔兰语、白俄罗斯语、高棉语、他加禄语、普什图语、波斯语、塔吉克斯坦语</li></ul>
 	SubtitleLang *string `json:"SubtitleLang,omitnil,omitempty" name:"SubtitleLang"`
 
-	// 字幕文件格式，默认取vtt；仅当OcrSwitch取"ON"时生效。
-	// - srt srt格式
-	// - vtt WebVTT格式
+	// <p>字幕文件格式，默认取vtt；仅当OcrSwitch取&quot;ON&quot;时生效。</p><ul><li>srt srt格式</li><li>vtt WebVTT格式</li><li>当填写SubtitleEmbedId时可以取值空字符串，表示不输出字幕文件</li></ul>
 	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
 
-	// 是否开启字幕翻译，默认取OFF；仅当OcrSwitch取"ON"时生效。
-	// - ON 开启
-	// - OFF 关闭
+	// <p>是否开启字幕翻译，默认取OFF；仅当OcrSwitch取&quot;ON&quot;时生效。</p><ul><li>ON 开启</li><li>OFF 关闭</li></ul>
 	TransSwitch *string `json:"TransSwitch,omitnil,omitempty" name:"TransSwitch"`
 
-	// 字幕翻译目标语言，默认取en；仅当TransSwitch取"ON"时生效。
-	// 当前支持以下语言：
-	// zh：简体中文
-	// en：英语
-	// ja：日语
-	// ko：韩语
-	// fr：法语
-	// es：西班牙语
-	// it：意大利语
-	// de：德语
-	// tr：土耳其语
-	// ru：俄语
-	// pt：葡萄牙语
-	// vi：越南语
-	// id：印度尼西亚语
-	// ms：马来语
-	// th：泰语
-	// ar：阿拉伯语
-	// hi：印地语
+	// <p>字幕翻译目标语言，默认取en；仅当TransSwitch取&quot;ON&quot;时生效。<br>当前支持以下语言：<br>zh：简体中文<br>en：英语<br>ja：日语<br>ko：韩语<br>fr：法语<br>es：西班牙语<br>it：意大利语<br>de：德语<br>tr：土耳其语<br>ru：俄语<br>pt：葡萄牙语<br>vi：越南语<br>id：印度尼西亚语<br>ms：马来语<br>th：泰语<br>ar：阿拉伯语<br>hi：印地语</p>
 	TransDstLang *string `json:"TransDstLang,omitnil,omitempty" name:"TransDstLang"`
 
-	// 自动擦除自定义区域。
-	// 对选定区域，利用AI模型自动检测其中存在的擦除目标并擦除。
-	// 注意：当擦除方式选择custom时，此参数将不会生效；修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。
+	// <p>自动擦除自定义区域。<br>对选定区域，利用AI模型自动检测其中存在的擦除目标并擦除。<br>注意：当擦除方式选择custom时，此参数将不会生效；修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。</p>
 	AutoAreas []*EraseArea `json:"AutoAreas,omitnil,omitempty" name:"AutoAreas"`
 
-	// 指定擦除自定义区域。
-	// 对选定区域，在选定时间段内不进行检测识别直接进行擦除。
-	// 注意：修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。
+	// <p>指定擦除自定义区域。<br>对选定区域，在选定时间段内不进行检测识别直接进行擦除。<br>注意：修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。</p>
 	CustomAreas []*EraseTimeArea `json:"CustomAreas,omitnil,omitempty" name:"CustomAreas"`
+
+	// <p>字幕压制模板id，只有开启OCR翻译时可以填写</p>
+	SubtitleEmbedId *uint64 `json:"SubtitleEmbedId,omitnil,omitempty" name:"SubtitleEmbedId"`
+
+	// <p>压制配置，默认开启1, 把字幕压制回原字幕位置。只有开启OCR翻译时可以填写，取0时表示不开启压回原位</p>
+	UseOriginalPos *int64 `json:"UseOriginalPos,omitnil,omitempty" name:"UseOriginalPos"`
+
+	// <p>压制配置，默认开启1, 开启后使用原字幕字号。只有开启OCR翻译时可以填写，取0时表示不使用原字号</p>
+	UseOriginalSize *int64 `json:"UseOriginalSize,omitnil,omitempty" name:"UseOriginalSize"`
 }
 
 type SmartEraseTaskInput struct {
@@ -24392,17 +22702,20 @@ type SmartSubtitleTaskAsrFullTextResult struct {
 }
 
 type SmartSubtitleTaskAsrFullTextResultOutput struct {
-	// 语音全文识别片段列表。
+	// <p>语音全文识别片段列表。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentSet []*SmartSubtitleTaskAsrFullTextSegmentItem `json:"SegmentSet,omitnil,omitempty" name:"SegmentSet"`
 
-	// 字幕文件路径
+	// <p>字幕文件路径</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 字幕文件地址。
+	// <p>字幕文件地址。</p>
 	SubtitlePath *string `json:"SubtitlePath,omitnil,omitempty" name:"SubtitlePath"`
 
-	// 字幕文件存储位置。
+	// <p>识别字幕结果信息。</p>
+	SubtitleInfo *SubtitleResult `json:"SubtitleInfo,omitnil,omitempty" name:"SubtitleInfo"`
+
+	// <p>字幕文件存储位置。</p>
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 }
 
@@ -24486,15 +22799,15 @@ type SmartSubtitleTaskResultInput struct {
 }
 
 type SmartSubtitleTaskTextResultOutput struct {
-	// 识别字幕结果
+	// <p>识别字幕结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecognizeSubtitleResult []*SubtitleResult `json:"RecognizeSubtitleResult,omitnil,omitempty" name:"RecognizeSubtitleResult"`
 
-	// 翻译字幕结果
+	// <p>翻译字幕结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransSubtitleResult []*SubtitleResult `json:"TransSubtitleResult,omitnil,omitempty" name:"TransSubtitleResult"`
 
-	// 字幕文件存储位置
+	// <p>字幕文件存储位置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 }
@@ -24526,42 +22839,45 @@ type SmartSubtitleTaskTransTextResult struct {
 }
 
 type SmartSubtitleTaskTransTextResultOutput struct {
-	// 翻译片段列表。
+	// <p>翻译片段列表。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentSet []*SmartSubtitleTaskTransTextSegmentItem `json:"SegmentSet,omitnil,omitempty" name:"SegmentSet"`
 
-	// 字幕文件地址。
+	// <p>字幕文件地址。</p>
 	SubtitlePath *string `json:"SubtitlePath,omitnil,omitempty" name:"SubtitlePath"`
 
-	// 字幕文件存储位置。
+	// <p>智能字幕结果存储信息。</p>
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
-	// 字幕文件地址
+	// <p>字幕文件路径。</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 多语言翻译时返回翻译结果。	
+	// <p>多语言翻译时返回翻译结果。</p>
 	SubtitleResults []*SubtitleTransResultItem `json:"SubtitleResults,omitnil,omitempty" name:"SubtitleResults"`
 }
 
 type SmartSubtitleTaskTransTextSegmentItem struct {
-	// 识别片段置信度。取值：0~100。
+	// <p>识别片段置信度。取值：0~100。</p>
 	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
 
-	// 识别片段起始的偏移时间，单位：秒。
+	// <p>识别片段起始的偏移时间，单位：秒。</p>
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
 
-	// 识别片段终止的偏移时间，单位：秒。
+	// <p>识别片段终止的偏移时间，单位：秒。</p>
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
 
-	// 识别文本。
+	// <p>识别文本。</p>
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 翻译文本。
+	// <p>翻译文本。</p>
 	Trans *string `json:"Trans,omitnil,omitempty" name:"Trans"`
 
-	// 字词时间戳信息。
+	// <p>字词时间戳信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Wordlist []*WordResult `json:"Wordlist,omitnil,omitempty" name:"Wordlist"`
+
+	// <p>说话人ID（如启用说话人识别）</p>
+	SpeakerId *string `json:"SpeakerId,omitnil,omitempty" name:"SpeakerId"`
 }
 
 type SmartSubtitleTemplateItem struct {
@@ -25015,20 +23331,220 @@ type StreamUrlDetail struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
+type SubtitleBoardConfig struct {
+	// 字幕压制模块背景配置开关，0关闭，1开启，默认0
+	SubtitleBoardConfigSwitch *int64 `json:"SubtitleBoardConfigSwitch,omitnil,omitempty" name:"SubtitleBoardConfigSwitch"`
+
+	// 字幕背景底板的x轴坐标位置；支持像素和百分比格式：
+	// 
+	// - 像素：Npx，N范围：[-4096,4096]。
+	// - 百分百：N%，N范围：[-100,100]；例如10%表示字幕背景底板x坐标=10%*源视频宽度。
+	// 
+	// 默认值：0px。
+	// 注意：坐标轴原点位于源视频的中轴线底部，字幕底板的基准点在其中轴线底部，参考下图：
+	// ![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+	BoardX *int64 `json:"BoardX,omitnil,omitempty" name:"BoardX"`
+
+	// BoardX单位, 0 像素，1百分比，默认为0，像素
+	BoardXUnit *int64 `json:"BoardXUnit,omitnil,omitempty" name:"BoardXUnit"`
+
+	// 字幕背景底板的y轴坐标位置；支持像素和百分比格式：
+	// 
+	// - 像素：Npx，N范围：[0,4096]。
+	// - 百分百：N%，N范围：[0,100]；例如10%表示字幕背景底板y坐标=10%*源视频高度。
+	// 
+	// 不传表示不开启字幕背景底板。
+	// 注意：坐标轴原点位于源视频的中轴线底部，字幕背景底板的基准点在其中轴线底部，参考下图：
+	// ![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+	BoardY *int64 `json:"BoardY,omitnil,omitempty" name:"BoardY"`
+
+	// BoardY单位, 0 像素，1百分比，默认为0，像素
+	BoardYUnit *int64 `json:"BoardYUnit,omitnil,omitempty" name:"BoardYUnit"`
+
+	// 底板的宽度，正整数。
+	// - 代表像素时，取值范围：[0,4096]。
+	// - 代表百分数时，[0, 100]。
+	// 开启底板且不填此值时，默认源视频宽像素的90%。
+	BoardWidth *int64 `json:"BoardWidth,omitnil,omitempty" name:"BoardWidth"`
+
+	// 底板的宽度单位，0 像素，1百分比，默认为0，像素
+	BoardWidthUnit *int64 `json:"BoardWidthUnit,omitnil,omitempty" name:"BoardWidthUnit"`
+
+	// 底板的高度，正整数。
+	// - 代表像素时，取值范围：[0,4096]。
+	// - 代表百分数时，[0, 100]。
+	// 开启底板且不填此值时，默认为源视频高像素的15%。
+	BoardHeight *int64 `json:"BoardHeight,omitnil,omitempty" name:"BoardHeight"`
+
+	// 底板的高度单位，0 像素，1百分比，默认为0，像素
+	BoardHeightUnit *int64 `json:"BoardHeightUnit,omitnil,omitempty" name:"BoardHeightUnit"`
+
+	// 底板颜色。格式：0xRRGGBB，
+	// 默认值：0x000000（黑色）。
+	BoardColor *string `json:"BoardColor,omitnil,omitempty" name:"BoardColor"`
+
+	// 字幕背景板透明度，取值范围：[0, 1]
+	// <li>0：完全透明</li>
+	// <li>1：完全不透明</li>
+	// 默认值：0.8。
+	BoardAlpha *float64 `json:"BoardAlpha,omitnil,omitempty" name:"BoardAlpha"`
+}
+
+type SubtitleEmbedConfig struct {
+	// <p>字体类型，支持：</p><li>hei.ttf：黑体</li><li>song.ttf：宋体</li><li>kai.ttf（推荐）或 simkai.ttf：楷体</li><li>msyh.ttf：微软雅黑</li><li>msyhbd.ttf：微软雅黑加粗</li><li>hkjgt.ttf：华康金刚体</li><li>dhttx.ttf：典黑体特细</li><li>xqgdzt.ttf：喜鹊古字典体</li><li>qpcyt.ttf：巧拼超圆体</li><li>arial.ttf：仅支持英文</li><li>dinalternate.ttf：DIN Alternate Bold</li><li>helveticalt.ttf：Helvetica</li><li>helveticains.ttf：Helvetica Inserat</li><li>trajanpro.ttf：TrajanPro-Bold</li><li>korean.ttf：韩语</li><li>japanese.ttf：日语</li><li>thai.ttf：泰语</li><li>roboto.ttf：Roboto</li><li>notosans.ttf：NotoSans</li><li>notosansthai.ttf：泰语NotoSansThai</li><li>sarabun.ttf：泰语Sarabun</li><li>kanit.ttf：泰语Kanit</li><li>charmonman.ttf：泰语Charmonman</li><li>notonaskharabic.ttf：阿拉伯语NotoNaskhArabic</li><li>notosansdevanagari.ttf：印度语NotoSansDevanagari</li><li>notosanstc.ttf：粤语思源黑体NotoSansTC</li><li>notosanskr.ttf：韩语NotoSansKR</li><li>gothica1.ttf：韩语GothicA1</li><li>nanummyeongjo.ttf：韩语NanumMyeongjo</li><li>notosansjp.ttf：日语NotoSansJP</li><li>notoserifjp.ttf：日语NotoSerifJP</li><li>shipporimincho.ttf：日语ShipporiMincho</li>默认：hei.ttf 黑体。<br>注意：<li>楷体推荐使用kai.ttf</li><li>填了FontPath时FontPath优先</li>
+	FontType *string `json:"FontType,omitnil,omitempty" name:"FontType"`
+
+	// <p>自定义字体文件url地址，和CosInputInfo二选一</p>
+	FontPath *string `json:"FontPath,omitnil,omitempty" name:"FontPath"`
+
+	// <p>自定义字体文件cos地址</p>
+	CosInputInfo *CosInputInfo `json:"CosInputInfo,omitnil,omitempty" name:"CosInputInfo"`
+
+	// <p>字体大小，不指定则以字幕文件中为准。支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：(0,4096]。</li><li>百分百：N%，N范围：(0,100]；例如10%表示字幕字体大小=10%*源视频高度。</li></ul><p>不填且字幕文件无设置时，默认源视频高度的5%。</p>
+	FontSize *int64 `json:"FontSize,omitnil,omitempty" name:"FontSize"`
+
+	// <p>FontSize单位, 0 像素，1百分比，默认为0，像素</p>
+	FontSizeUnit *int64 `json:"FontSizeUnit,omitnil,omitempty" name:"FontSizeUnit"`
+
+	// <p>字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）。</p>
+	FontColor *string `json:"FontColor,omitnil,omitempty" name:"FontColor"`
+
+	// <p>文字透明度，取值范围：(0, 1]</p><li>0：完全透明</li><li>1：完全不透明</li>默认值：1。
+	FontAlpha *float64 `json:"FontAlpha,omitnil,omitempty" name:"FontAlpha"`
+
+	// <p>字幕x轴坐标位置，指定此参数会忽略字幕文件自带坐标；支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：[-4096,4096]。</li><li>百分百：N%，N范围：[-100,100]；例如10%表示字幕x坐标=10%*源视频宽度。</li></ul><p>默认值：0px。<br>注意：坐标轴原点在源视频中轴线底部，字幕基准点在字幕中轴线底部，参考下图：<br><img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></p>
+	PosX *int64 `json:"PosX,omitnil,omitempty" name:"PosX"`
+
+	// <p>PosX单位, 0 像素，1百分比，默认为0，像素</p>
+	PosXUnit *int64 `json:"PosXUnit,omitnil,omitempty" name:"PosXUnit"`
+
+	// <p>字幕y轴坐标位置，指定此参数会忽略字幕文件自带坐标；支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：[0,4096]。</li><li>百分百：N%，N范围：[0,100]；例如10%表示字幕y坐标=10%*源视频高度。</li></ul><p>默认值：源视频高度*4%。<br>注意：坐标轴原点在源视频中轴线底部，字幕基准点在字幕中轴线底部，参考下图：<br><img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></p>
+	PosY *int64 `json:"PosY,omitnil,omitempty" name:"PosY"`
+
+	// <p>PosY单位, 0 像素，1百分比，默认为0，像素</p>
+	PosYUnit *int64 `json:"PosYUnit,omitnil,omitempty" name:"PosYUnit"`
+
+	// <p>背景配置</p>
+	SubtitleBoardConfig *SubtitleBoardConfig `json:"SubtitleBoardConfig,omitnil,omitempty" name:"SubtitleBoardConfig"`
+
+	// <p>排列配置</p>
+	SubtitleLayoutConfig *SubtitleLayoutConfig `json:"SubtitleLayoutConfig,omitnil,omitempty" name:"SubtitleLayoutConfig"`
+
+	// <p>文字描边配置</p>
+	SubtitleOutlineConfig *SubtitleOutlineConfig `json:"SubtitleOutlineConfig,omitnil,omitempty" name:"SubtitleOutlineConfig"`
+
+	// <p>文字阴影配置</p>
+	SubtitleShadowConfig *SubtitleShadowConfig `json:"SubtitleShadowConfig,omitnil,omitempty" name:"SubtitleShadowConfig"`
+
+	// <p>源视频尺寸的宽，单位像素值</p>
+	SampleWidth *int64 `json:"SampleWidth,omitnil,omitempty" name:"SampleWidth"`
+
+	// <p>源视频尺寸的高，单位像素值</p>
+	SampleHeight *int64 `json:"SampleHeight,omitnil,omitempty" name:"SampleHeight"`
+}
+
+type SubtitleEmbedTemplateItem struct {
+	// 字幕压制模板唯一标识
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// 字幕压制模板名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 字幕压制模板描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 模板类型，取值范围：
+	// * Preset：系统预置模板；
+	// * Custom：用户自定义模板。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 删除标记，0 未删除 1 删除
+	DeleteTag *int64 `json:"DeleteTag,omitnil,omitempty" name:"DeleteTag"`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 字幕压制模块配置
+	SubtitleEmbedConfig *SubtitleEmbedConfig `json:"SubtitleEmbedConfig,omitnil,omitempty" name:"SubtitleEmbedConfig"`
+
+	// 字幕压制模板英文名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
+}
+
+type SubtitleLayoutConfig struct {
+	// 字幕排列配置开关，0关闭，1开启，默认0
+	SubtitleLayoutConfigSwitch *int64 `json:"SubtitleLayoutConfigSwitch,omitnil,omitempty" name:"SubtitleLayoutConfigSwitch"`
+
+	// 行间距。正整数。
+	// - 代表像素值时， [0, 1000]。
+	// - 代表百分数时，[0, 100]。不填默认0。
+	LineSpacing *int64 `json:"LineSpacing,omitnil,omitempty" name:"LineSpacing"`
+
+	// LineSpacing单位，0 像素，1百分比，默认为0，像素
+	LineSpacingUnit *int64 `json:"LineSpacingUnit,omitnil,omitempty" name:"LineSpacingUnit"`
+
+	// 对齐方式，取值：top: 顶部对齐，字幕顶部按位置固定，底部随行数变化。bottom: 底部对齐，字幕底部按位置固定，顶部随行数变化。不填默认底部对齐。
+	Alignment *string `json:"Alignment,omitnil,omitempty" name:"Alignment"`
+}
+
+type SubtitleOutlineConfig struct {
+	// <p>文字描边配置开关，0关闭，1开启，默认0</p>
+	SubtitleOutlineConfigSwitch *int64 `json:"SubtitleOutlineConfigSwitch,omitnil,omitempty" name:"SubtitleOutlineConfigSwitch"`
+
+	// <p>描边宽度，默认单位像素，底层默认值为源视频高度的0.3%</p>
+	OutlineWidth *float64 `json:"OutlineWidth,omitnil,omitempty" name:"OutlineWidth"`
+
+	// <p>描边宽度单位，0 像素，1百分比，默认为0，像素</p>
+	OutlineWidthUnit *int64 `json:"OutlineWidthUnit,omitnil,omitempty" name:"OutlineWidthUnit"`
+
+	// <p>描边颜色。6位16进制RGB。不填默认黑色。</p>
+	OutlineColor *string `json:"OutlineColor,omitnil,omitempty" name:"OutlineColor"`
+
+	// <p>描边透明度。(0，1] 正浮点数。不填默认1，完全不透明</p>
+	OutlineAlpha *float64 `json:"OutlineAlpha,omitnil,omitempty" name:"OutlineAlpha"`
+}
+
 type SubtitlePosition struct {
 	// 居中位置时Y的坐标值
 	CenterY *int64 `json:"CenterY,omitnil,omitempty" name:"CenterY"`
 }
 
 type SubtitleResult struct {
-	// 字幕文件语言
+	// <p>字幕文件语言</p>
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 
-	// 处理是否成功
+	// <p>处理是否成功</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 字幕文件地址
+	// <p>字幕文件路径。</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// <p>字幕压制视频路径。</p>
+	SubtitleEmbedPath *string `json:"SubtitleEmbedPath,omitnil,omitempty" name:"SubtitleEmbedPath"`
+}
+
+type SubtitleShadowConfig struct {
+	// 文字阴影配置开关，0关闭，1开启，默认0
+	SubtitleShadowConfigSwitch *int64 `json:"SubtitleShadowConfigSwitch,omitnil,omitempty" name:"SubtitleShadowConfigSwitch"`
+
+	// 阴影宽度，默认单位像素，底层默认值为0，无阴影
+	ShadowWidth *float64 `json:"ShadowWidth,omitnil,omitempty" name:"ShadowWidth"`
+
+	// 阴影宽度单位， 0 像素，1百分比，默认为0，像素
+	ShadowWidthUnit *int64 `json:"ShadowWidthUnit,omitnil,omitempty" name:"ShadowWidthUnit"`
+
+	// 阴影颜色。6位16进制RGB。不填默认黑色（有设置阴影的情况下）
+	ShadowColor *string `json:"ShadowColor,omitnil,omitempty" name:"ShadowColor"`
+
+	// 阴影透明度。(0，1] 正浮点数。不填默认1，完全不透明（有设置阴影的情况下）
+	ShadowAlpha *float64 `json:"ShadowAlpha,omitnil,omitempty" name:"ShadowAlpha"`
 }
 
 type SubtitleTemplate struct {
@@ -25069,6 +23585,21 @@ type SubtitleTemplate struct {
 	// <li>korean.ttf：韩语</li>
 	// <li>japanese.ttf：日语</li>
 	// <li>thai.ttf：泰语</li>
+	// <li>roboto.ttf：Roboto</li>
+	// <li>notosans.ttf：NotoSans</li>
+	// <li>notosansthai.ttf：泰语NotoSansThai</li>
+	// <li>sarabun.ttf：泰语Sarabun</li>
+	// <li>kanit.ttf：泰语Kanit</li>
+	// <li>charmonman.ttf：泰语Charmonman</li>
+	// <li>notonaskharabic.ttf：阿拉伯语NotoNaskhArabic</li>
+	// <li>notosansdevanagari.ttf：印度语NotoSansDevanagari</li>
+	// <li>notosanstc.ttf：粤语思源黑体NotoSansTC</li>
+	// <li>notosanskr.ttf：韩语NotoSansKR</li>
+	// <li>gothica1.ttf：韩语GothicA1</li>
+	// <li>nanummyeongjo.ttf：韩语NanumMyeongjo</li>
+	// <li>notosansjp.ttf：日语NotoSansJP</li>
+	// <li>notoserifjp.ttf：日语NotoSerifJP</li>
+	// <li>shipporimincho.ttf：日语ShipporiMincho</li>
 	// 默认：hei.ttf 黑体。
 	// <br>注意：
 	// <li>楷体推荐使用kai.ttf</li>
@@ -25199,19 +23730,20 @@ type SubtitleTemplate struct {
 }
 
 type SubtitleTransResultItem struct {
-	// 翻译标识：
-	// - Success
-	// - Error
+	// <p>翻译标识：</p><ul><li>Success</li><li>Error</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 源语言（如"en"）
+	// <p>源语言（如&quot;en&quot;）</p>
 	TransSrc *string `json:"TransSrc,omitnil,omitempty" name:"TransSrc"`
 
-	// 目标语言（如"zh"）
+	// <p>目标语言（如&quot;zh&quot;）</p>
 	TransDst *string `json:"TransDst,omitnil,omitempty" name:"TransDst"`
 
-	// 字幕文件地址
+	// <p>字幕文件地址</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// <p>翻译字幕压制视频路径。</p>
+	SubtitleEmbedPath *string `json:"SubtitleEmbedPath,omitnil,omitempty" name:"SubtitleEmbedPath"`
 }
 
 type SuperResolutionConfig struct {

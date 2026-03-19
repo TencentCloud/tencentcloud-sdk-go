@@ -2035,6 +2035,58 @@ func (c *Client) CreateConvertTaskApiWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateDigitalDataSignRequest() (request *CreateDigitalDataSignRequest) {
+    request = &CreateDigitalDataSignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateDigitalDataSign")
+    
+    
+    return
+}
+
+func NewCreateDigitalDataSignResponse() (response *CreateDigitalDataSignResponse) {
+    response = &CreateDigitalDataSignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDigitalDataSign
+// 创建数据加签请求
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateDigitalDataSign(request *CreateDigitalDataSignRequest) (response *CreateDigitalDataSignResponse, err error) {
+    return c.CreateDigitalDataSignWithContext(context.Background(), request)
+}
+
+// CreateDigitalDataSign
+// 创建数据加签请求
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateDigitalDataSignWithContext(ctx context.Context, request *CreateDigitalDataSignRequest) (response *CreateDigitalDataSignResponse, err error) {
+    if request == nil {
+        request = NewCreateDigitalDataSignRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateDigitalDataSign")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDigitalDataSign require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDigitalDataSignResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDocumentRequest() (request *CreateDocumentRequest) {
     request = &CreateDocumentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15481,6 +15533,58 @@ func (c *Client) VerifyDigitFileWithContext(ctx context.Context, request *Verify
     request.SetContext(ctx)
     
     response = NewVerifyDigitFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyDigitalDataSignRequest() (request *VerifyDigitalDataSignRequest) {
+    request = &VerifyDigitalDataSignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "VerifyDigitalDataSign")
+    
+    
+    return
+}
+
+func NewVerifyDigitalDataSignResponse() (response *VerifyDigitalDataSignResponse) {
+    response = &VerifyDigitalDataSignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// VerifyDigitalDataSign
+// 数据加签验签接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) VerifyDigitalDataSign(request *VerifyDigitalDataSignRequest) (response *VerifyDigitalDataSignResponse, err error) {
+    return c.VerifyDigitalDataSignWithContext(context.Background(), request)
+}
+
+// VerifyDigitalDataSign
+// 数据加签验签接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) VerifyDigitalDataSignWithContext(ctx context.Context, request *VerifyDigitalDataSignRequest) (response *VerifyDigitalDataSignResponse, err error) {
+    if request == nil {
+        request = NewVerifyDigitalDataSignRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "VerifyDigitalDataSign")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyDigitalDataSign require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVerifyDigitalDataSignResponse()
     err = c.Send(request, response)
     return
 }

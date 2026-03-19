@@ -3115,6 +3115,76 @@ func (r *DescribeGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLiveRelayConfigRequestParams struct {
+	// <p>低代码互动课堂的SdkAppId</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>房间ID</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+type DescribeLiveRelayConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>低代码互动课堂的SdkAppId</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>房间ID</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+func (r *DescribeLiveRelayConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveRelayConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveRelayConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveRelayConfigResponseParams struct {
+	// <p>转推类型</p><p>枚举值：</p><ul><li>0： 单流</li><li>1： 混流</li></ul>
+	RelayType *uint64 `json:"RelayType,omitnil,omitempty" name:"RelayType"`
+
+	// <p>转推URL</p>
+	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
+
+	// <p>是否是腾讯云CDN。</p><p>枚举值：</p><ul><li>0： 转推非腾讯云CDN</li><li>1： 转推腾讯CDN</li></ul>
+	IsTencentCdn *uint64 `json:"IsTencentCdn,omitnil,omitempty" name:"IsTencentCdn"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveRelayConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveRelayConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveRelayConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveRelayConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeMarqueeRequestParams struct {
 	// 学校ID
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -5794,6 +5864,88 @@ func (r *ModifyGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyLiveRelayConfigRequestParams struct {
+	// <p>低代码互动课堂的SdkAppId</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>房间ID</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>转推类型</p><p>枚举值：</p><ul><li>0： 单流</li><li>1： 混流</li></ul>
+	RelayType *uint64 `json:"RelayType,omitnil,omitempty" name:"RelayType"`
+
+	// <p>转推URL</p>
+	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
+
+	// <p>是否是腾讯云CDN（默认为0）</p><p>枚举值：</p><ul><li>0： 转推非腾讯CDN</li><li>1： 转推腾讯CDN</li></ul>
+	IsTencentCdn *uint64 `json:"IsTencentCdn,omitnil,omitempty" name:"IsTencentCdn"`
+}
+
+type ModifyLiveRelayConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>低代码互动课堂的SdkAppId</p>
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// <p>房间ID</p>
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// <p>转推类型</p><p>枚举值：</p><ul><li>0： 单流</li><li>1： 混流</li></ul>
+	RelayType *uint64 `json:"RelayType,omitnil,omitempty" name:"RelayType"`
+
+	// <p>转推URL</p>
+	Urls []*string `json:"Urls,omitnil,omitempty" name:"Urls"`
+
+	// <p>是否是腾讯云CDN（默认为0）</p><p>枚举值：</p><ul><li>0： 转推非腾讯CDN</li><li>1： 转推腾讯CDN</li></ul>
+	IsTencentCdn *uint64 `json:"IsTencentCdn,omitnil,omitempty" name:"IsTencentCdn"`
+}
+
+func (r *ModifyLiveRelayConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLiveRelayConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	delete(f, "RelayType")
+	delete(f, "Urls")
+	delete(f, "IsTencentCdn")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveRelayConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLiveRelayConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLiveRelayConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLiveRelayConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyLiveRelayConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLiveRelayConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyRoomRequestParams struct {
 	// <p>房间ID。</p>
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
@@ -6188,6 +6340,9 @@ type PlaybackItem struct {
 
 	// <p>录制开始时间</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>文件大小。</p><p>单位：MB</p>
+	FileSize *float64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 }
 
 type QuestionInfo struct {

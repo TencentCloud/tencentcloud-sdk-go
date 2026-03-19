@@ -901,6 +901,78 @@ func (c *Client) CopyCasterWithContext(ctx context.Context, request *CopyCasterR
     return
 }
 
+func NewCopyLiveAvatarRoomRequest() (request *CopyLiveAvatarRoomRequest) {
+    request = &CopyLiveAvatarRoomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CopyLiveAvatarRoom")
+    
+    
+    return
+}
+
+func NewCopyLiveAvatarRoomResponse() (response *CopyLiveAvatarRoomResponse) {
+    response = &CopyLiveAvatarRoomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CopyLiveAvatarRoom
+// 调用该接口，用于复制数字人直播间。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CopyLiveAvatarRoom(request *CopyLiveAvatarRoomRequest) (response *CopyLiveAvatarRoomResponse, err error) {
+    return c.CopyLiveAvatarRoomWithContext(context.Background(), request)
+}
+
+// CopyLiveAvatarRoom
+// 调用该接口，用于复制数字人直播间。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CopyLiveAvatarRoomWithContext(ctx context.Context, request *CopyLiveAvatarRoomRequest) (response *CopyLiveAvatarRoomResponse, err error) {
+    if request == nil {
+        request = NewCopyLiveAvatarRoomRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "CopyLiveAvatarRoom")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CopyLiveAvatarRoom require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCopyLiveAvatarRoomResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAuditKeywordLibRequest() (request *CreateAuditKeywordLibRequest) {
     request = &CreateAuditKeywordLibRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1475,6 +1547,214 @@ func (c *Client) CreateCommonMixStreamWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewCreateCommonMixStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateLiveAvatarRoomRequest() (request *CreateLiveAvatarRoomRequest) {
+    request = &CreateLiveAvatarRoomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateLiveAvatarRoom")
+    
+    
+    return
+}
+
+func NewCreateLiveAvatarRoomResponse() (response *CreateLiveAvatarRoomResponse) {
+    response = &CreateLiveAvatarRoomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateLiveAvatarRoom
+// 调用该接口，用于创建数字人直播间。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRERROR = "FailedOperation.CallOtherSvrError"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  FAILEDOPERATION_CANCELSESSIONNOTEXIST = "FailedOperation.CancelSessionNotExist"
+//  FAILEDOPERATION_GETPICTUREURLERROR = "FailedOperation.GetPictureUrlError"
+//  FAILEDOPERATION_GETSTREAMRESOLUTIONERROR = "FailedOperation.GetStreamResolutionError"
+//  FAILEDOPERATION_PROCESSMIXERROR = "FailedOperation.ProcessMixError"
+//  FAILEDOPERATION_STREAMNOTEXIST = "FailedOperation.StreamNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_JIFEIOTHERERROR = "InternalError.JiFeiOtherError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CANCELSESSIONNOTEXIST = "InvalidParameter.CancelSessionNotExist"
+//  INVALIDPARAMETER_INPUTNUMLIMITEXCEEDED = "InvalidParameter.InputNumLimitExceeded"
+//  INVALIDPARAMETER_INVALIDBACKGROUDRESOLUTION = "InvalidParameter.InvalidBackgroudResolution"
+//  INVALIDPARAMETER_INVALIDBITRATE = "InvalidParameter.InvalidBitrate"
+//  INVALIDPARAMETER_INVALIDCROPPARAM = "InvalidParameter.InvalidCropParam"
+//  INVALIDPARAMETER_INVALIDLAYERPARAM = "InvalidParameter.InvalidLayerParam"
+//  INVALIDPARAMETER_INVALIDOUTPUTSTREAMID = "InvalidParameter.InvalidOutputStreamID"
+//  INVALIDPARAMETER_INVALIDOUTPUTTYPE = "InvalidParameter.InvalidOutputType"
+//  INVALIDPARAMETER_INVALIDPICTUREID = "InvalidParameter.InvalidPictureID"
+//  INVALIDPARAMETER_INVALIDROUNDRECTRADIUS = "InvalidParameter.InvalidRoundRectRadius"
+//  INVALIDPARAMETER_OTHERERROR = "InvalidParameter.OtherError"
+//  INVALIDPARAMETER_SESSIONOUTPUTSTREAMCHANGED = "InvalidParameter.SessionOutputStreamChanged"
+//  INVALIDPARAMETER_TEMPLATENOTMATCHINPUTNUM = "InvalidParameter.TemplateNotMatchInputNum"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) CreateLiveAvatarRoom(request *CreateLiveAvatarRoomRequest) (response *CreateLiveAvatarRoomResponse, err error) {
+    return c.CreateLiveAvatarRoomWithContext(context.Background(), request)
+}
+
+// CreateLiveAvatarRoom
+// 调用该接口，用于创建数字人直播间。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRERROR = "FailedOperation.CallOtherSvrError"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  FAILEDOPERATION_CANCELSESSIONNOTEXIST = "FailedOperation.CancelSessionNotExist"
+//  FAILEDOPERATION_GETPICTUREURLERROR = "FailedOperation.GetPictureUrlError"
+//  FAILEDOPERATION_GETSTREAMRESOLUTIONERROR = "FailedOperation.GetStreamResolutionError"
+//  FAILEDOPERATION_PROCESSMIXERROR = "FailedOperation.ProcessMixError"
+//  FAILEDOPERATION_STREAMNOTEXIST = "FailedOperation.StreamNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_JIFEIOTHERERROR = "InternalError.JiFeiOtherError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CANCELSESSIONNOTEXIST = "InvalidParameter.CancelSessionNotExist"
+//  INVALIDPARAMETER_INPUTNUMLIMITEXCEEDED = "InvalidParameter.InputNumLimitExceeded"
+//  INVALIDPARAMETER_INVALIDBACKGROUDRESOLUTION = "InvalidParameter.InvalidBackgroudResolution"
+//  INVALIDPARAMETER_INVALIDBITRATE = "InvalidParameter.InvalidBitrate"
+//  INVALIDPARAMETER_INVALIDCROPPARAM = "InvalidParameter.InvalidCropParam"
+//  INVALIDPARAMETER_INVALIDLAYERPARAM = "InvalidParameter.InvalidLayerParam"
+//  INVALIDPARAMETER_INVALIDOUTPUTSTREAMID = "InvalidParameter.InvalidOutputStreamID"
+//  INVALIDPARAMETER_INVALIDOUTPUTTYPE = "InvalidParameter.InvalidOutputType"
+//  INVALIDPARAMETER_INVALIDPICTUREID = "InvalidParameter.InvalidPictureID"
+//  INVALIDPARAMETER_INVALIDROUNDRECTRADIUS = "InvalidParameter.InvalidRoundRectRadius"
+//  INVALIDPARAMETER_OTHERERROR = "InvalidParameter.OtherError"
+//  INVALIDPARAMETER_SESSIONOUTPUTSTREAMCHANGED = "InvalidParameter.SessionOutputStreamChanged"
+//  INVALIDPARAMETER_TEMPLATENOTMATCHINPUTNUM = "InvalidParameter.TemplateNotMatchInputNum"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) CreateLiveAvatarRoomWithContext(ctx context.Context, request *CreateLiveAvatarRoomRequest) (response *CreateLiveAvatarRoomResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveAvatarRoomRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "CreateLiveAvatarRoom")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveAvatarRoom require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLiveAvatarRoomResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateLiveAvatarScriptRequest() (request *CreateLiveAvatarScriptRequest) {
+    request = &CreateLiveAvatarScriptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateLiveAvatarScript")
+    
+    
+    return
+}
+
+func NewCreateLiveAvatarScriptResponse() (response *CreateLiveAvatarScriptResponse) {
+    response = &CreateLiveAvatarScriptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateLiveAvatarScript
+// 调用该接口，用于创建数字人直播间话术。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRERROR = "FailedOperation.CallOtherSvrError"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  FAILEDOPERATION_CANCELSESSIONNOTEXIST = "FailedOperation.CancelSessionNotExist"
+//  FAILEDOPERATION_GETPICTUREURLERROR = "FailedOperation.GetPictureUrlError"
+//  FAILEDOPERATION_GETSTREAMRESOLUTIONERROR = "FailedOperation.GetStreamResolutionError"
+//  FAILEDOPERATION_PROCESSMIXERROR = "FailedOperation.ProcessMixError"
+//  FAILEDOPERATION_STREAMNOTEXIST = "FailedOperation.StreamNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_JIFEIOTHERERROR = "InternalError.JiFeiOtherError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CANCELSESSIONNOTEXIST = "InvalidParameter.CancelSessionNotExist"
+//  INVALIDPARAMETER_INPUTNUMLIMITEXCEEDED = "InvalidParameter.InputNumLimitExceeded"
+//  INVALIDPARAMETER_INVALIDBACKGROUDRESOLUTION = "InvalidParameter.InvalidBackgroudResolution"
+//  INVALIDPARAMETER_INVALIDBITRATE = "InvalidParameter.InvalidBitrate"
+//  INVALIDPARAMETER_INVALIDCROPPARAM = "InvalidParameter.InvalidCropParam"
+//  INVALIDPARAMETER_INVALIDLAYERPARAM = "InvalidParameter.InvalidLayerParam"
+//  INVALIDPARAMETER_INVALIDOUTPUTSTREAMID = "InvalidParameter.InvalidOutputStreamID"
+//  INVALIDPARAMETER_INVALIDOUTPUTTYPE = "InvalidParameter.InvalidOutputType"
+//  INVALIDPARAMETER_INVALIDPICTUREID = "InvalidParameter.InvalidPictureID"
+//  INVALIDPARAMETER_INVALIDROUNDRECTRADIUS = "InvalidParameter.InvalidRoundRectRadius"
+//  INVALIDPARAMETER_OTHERERROR = "InvalidParameter.OtherError"
+//  INVALIDPARAMETER_SESSIONOUTPUTSTREAMCHANGED = "InvalidParameter.SessionOutputStreamChanged"
+//  INVALIDPARAMETER_TEMPLATENOTMATCHINPUTNUM = "InvalidParameter.TemplateNotMatchInputNum"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) CreateLiveAvatarScript(request *CreateLiveAvatarScriptRequest) (response *CreateLiveAvatarScriptResponse, err error) {
+    return c.CreateLiveAvatarScriptWithContext(context.Background(), request)
+}
+
+// CreateLiveAvatarScript
+// 调用该接口，用于创建数字人直播间话术。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRERROR = "FailedOperation.CallOtherSvrError"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  FAILEDOPERATION_CANCELSESSIONNOTEXIST = "FailedOperation.CancelSessionNotExist"
+//  FAILEDOPERATION_GETPICTUREURLERROR = "FailedOperation.GetPictureUrlError"
+//  FAILEDOPERATION_GETSTREAMRESOLUTIONERROR = "FailedOperation.GetStreamResolutionError"
+//  FAILEDOPERATION_PROCESSMIXERROR = "FailedOperation.ProcessMixError"
+//  FAILEDOPERATION_STREAMNOTEXIST = "FailedOperation.StreamNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_JIFEIOTHERERROR = "InternalError.JiFeiOtherError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CANCELSESSIONNOTEXIST = "InvalidParameter.CancelSessionNotExist"
+//  INVALIDPARAMETER_INPUTNUMLIMITEXCEEDED = "InvalidParameter.InputNumLimitExceeded"
+//  INVALIDPARAMETER_INVALIDBACKGROUDRESOLUTION = "InvalidParameter.InvalidBackgroudResolution"
+//  INVALIDPARAMETER_INVALIDBITRATE = "InvalidParameter.InvalidBitrate"
+//  INVALIDPARAMETER_INVALIDCROPPARAM = "InvalidParameter.InvalidCropParam"
+//  INVALIDPARAMETER_INVALIDLAYERPARAM = "InvalidParameter.InvalidLayerParam"
+//  INVALIDPARAMETER_INVALIDOUTPUTSTREAMID = "InvalidParameter.InvalidOutputStreamID"
+//  INVALIDPARAMETER_INVALIDOUTPUTTYPE = "InvalidParameter.InvalidOutputType"
+//  INVALIDPARAMETER_INVALIDPICTUREID = "InvalidParameter.InvalidPictureID"
+//  INVALIDPARAMETER_INVALIDROUNDRECTRADIUS = "InvalidParameter.InvalidRoundRectRadius"
+//  INVALIDPARAMETER_OTHERERROR = "InvalidParameter.OtherError"
+//  INVALIDPARAMETER_SESSIONOUTPUTSTREAMCHANGED = "InvalidParameter.SessionOutputStreamChanged"
+//  INVALIDPARAMETER_TEMPLATENOTMATCHINPUTNUM = "InvalidParameter.TemplateNotMatchInputNum"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) CreateLiveAvatarScriptWithContext(ctx context.Context, request *CreateLiveAvatarScriptRequest) (response *CreateLiveAvatarScriptResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveAvatarScriptRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "CreateLiveAvatarScript")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveAvatarScript require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLiveAvatarScriptResponse()
     err = c.Send(request, response)
     return
 }
@@ -3865,6 +4145,146 @@ func (c *Client) DeleteCasterOutputInfoWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDeleteCasterOutputInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLiveAvatarRoomRequest() (request *DeleteLiveAvatarRoomRequest) {
+    request = &DeleteLiveAvatarRoomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DeleteLiveAvatarRoom")
+    
+    
+    return
+}
+
+func NewDeleteLiveAvatarRoomResponse() (response *DeleteLiveAvatarRoomResponse) {
+    response = &DeleteLiveAvatarRoomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteLiveAvatarRoom
+// 调用该接口，用于删除已有的数字人直播间。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteLiveAvatarRoom(request *DeleteLiveAvatarRoomRequest) (response *DeleteLiveAvatarRoomResponse, err error) {
+    return c.DeleteLiveAvatarRoomWithContext(context.Background(), request)
+}
+
+// DeleteLiveAvatarRoom
+// 调用该接口，用于删除已有的数字人直播间。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteLiveAvatarRoomWithContext(ctx context.Context, request *DeleteLiveAvatarRoomRequest) (response *DeleteLiveAvatarRoomResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveAvatarRoomRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DeleteLiveAvatarRoom")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveAvatarRoom require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLiveAvatarRoomResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLiveAvatarScriptRequest() (request *DeleteLiveAvatarScriptRequest) {
+    request = &DeleteLiveAvatarScriptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DeleteLiveAvatarScript")
+    
+    
+    return
+}
+
+func NewDeleteLiveAvatarScriptResponse() (response *DeleteLiveAvatarScriptResponse) {
+    response = &DeleteLiveAvatarScriptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteLiveAvatarScript
+// 调用该接口，用于删除已有的数字人直播间里面的话术。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteLiveAvatarScript(request *DeleteLiveAvatarScriptRequest) (response *DeleteLiveAvatarScriptResponse, err error) {
+    return c.DeleteLiveAvatarScriptWithContext(context.Background(), request)
+}
+
+// DeleteLiveAvatarScript
+// 调用该接口，用于删除已有的数字人直播间里面的话术。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteLiveAvatarScriptWithContext(ctx context.Context, request *DeleteLiveAvatarScriptRequest) (response *DeleteLiveAvatarScriptResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveAvatarScriptRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DeleteLiveAvatarScript")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveAvatarScript require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLiveAvatarScriptResponse()
     err = c.Send(request, response)
     return
 }
@@ -7133,6 +7553,378 @@ func (c *Client) DescribeHttpStatusInfoListWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeHttpStatusInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLiveAvatarBackgroundListRequest() (request *DescribeLiveAvatarBackgroundListRequest) {
+    request = &DescribeLiveAvatarBackgroundListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveAvatarBackgroundList")
+    
+    
+    return
+}
+
+func NewDescribeLiveAvatarBackgroundListResponse() (response *DescribeLiveAvatarBackgroundListResponse) {
+    response = &DescribeLiveAvatarBackgroundListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLiveAvatarBackgroundList
+// 调用该接口，获取可用的数字人背景列表信息列表。根据入参，可返回官方预设背景，以及用户上传背景。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveAvatarBackgroundList(request *DescribeLiveAvatarBackgroundListRequest) (response *DescribeLiveAvatarBackgroundListResponse, err error) {
+    return c.DescribeLiveAvatarBackgroundListWithContext(context.Background(), request)
+}
+
+// DescribeLiveAvatarBackgroundList
+// 调用该接口，获取可用的数字人背景列表信息列表。根据入参，可返回官方预设背景，以及用户上传背景。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveAvatarBackgroundListWithContext(ctx context.Context, request *DescribeLiveAvatarBackgroundListRequest) (response *DescribeLiveAvatarBackgroundListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveAvatarBackgroundListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeLiveAvatarBackgroundList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveAvatarBackgroundList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveAvatarBackgroundListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLiveAvatarImageListRequest() (request *DescribeLiveAvatarImageListRequest) {
+    request = &DescribeLiveAvatarImageListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveAvatarImageList")
+    
+    
+    return
+}
+
+func NewDescribeLiveAvatarImageListResponse() (response *DescribeLiveAvatarImageListResponse) {
+    response = &DescribeLiveAvatarImageListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLiveAvatarImageList
+// 调用该接口，获取可用的数字人形象信息列表。包括官方预制形象，以及个人定制形象。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveAvatarImageList(request *DescribeLiveAvatarImageListRequest) (response *DescribeLiveAvatarImageListResponse, err error) {
+    return c.DescribeLiveAvatarImageListWithContext(context.Background(), request)
+}
+
+// DescribeLiveAvatarImageList
+// 调用该接口，获取可用的数字人形象信息列表。包括官方预制形象，以及个人定制形象。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveAvatarImageListWithContext(ctx context.Context, request *DescribeLiveAvatarImageListRequest) (response *DescribeLiveAvatarImageListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveAvatarImageListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeLiveAvatarImageList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveAvatarImageList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveAvatarImageListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLiveAvatarRoomsRequest() (request *DescribeLiveAvatarRoomsRequest) {
+    request = &DescribeLiveAvatarRoomsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveAvatarRooms")
+    
+    
+    return
+}
+
+func NewDescribeLiveAvatarRoomsResponse() (response *DescribeLiveAvatarRoomsResponse) {
+    response = &DescribeLiveAvatarRoomsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLiveAvatarRooms
+// 调用该接口，查询数字人直播间信息列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveAvatarRooms(request *DescribeLiveAvatarRoomsRequest) (response *DescribeLiveAvatarRoomsResponse, err error) {
+    return c.DescribeLiveAvatarRoomsWithContext(context.Background(), request)
+}
+
+// DescribeLiveAvatarRooms
+// 调用该接口，查询数字人直播间信息列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveAvatarRoomsWithContext(ctx context.Context, request *DescribeLiveAvatarRoomsRequest) (response *DescribeLiveAvatarRoomsResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveAvatarRoomsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeLiveAvatarRooms")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveAvatarRooms require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveAvatarRoomsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLiveAvatarScriptsRequest() (request *DescribeLiveAvatarScriptsRequest) {
+    request = &DescribeLiveAvatarScriptsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveAvatarScripts")
+    
+    
+    return
+}
+
+func NewDescribeLiveAvatarScriptsResponse() (response *DescribeLiveAvatarScriptsResponse) {
+    response = &DescribeLiveAvatarScriptsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLiveAvatarScripts
+// 调用该接口，查询数字人直播间话术信息列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveAvatarScripts(request *DescribeLiveAvatarScriptsRequest) (response *DescribeLiveAvatarScriptsResponse, err error) {
+    return c.DescribeLiveAvatarScriptsWithContext(context.Background(), request)
+}
+
+// DescribeLiveAvatarScripts
+// 调用该接口，查询数字人直播间话术信息列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveAvatarScriptsWithContext(ctx context.Context, request *DescribeLiveAvatarScriptsRequest) (response *DescribeLiveAvatarScriptsResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveAvatarScriptsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeLiveAvatarScripts")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveAvatarScripts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveAvatarScriptsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLiveAvatarTemporaryScriptListRequest() (request *DescribeLiveAvatarTemporaryScriptListRequest) {
+    request = &DescribeLiveAvatarTemporaryScriptListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveAvatarTemporaryScriptList")
+    
+    
+    return
+}
+
+func NewDescribeLiveAvatarTemporaryScriptListResponse() (response *DescribeLiveAvatarTemporaryScriptListResponse) {
+    response = &DescribeLiveAvatarTemporaryScriptListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLiveAvatarTemporaryScriptList
+// 调用该接口，用于查询临时驱动数字人播报话术列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveAvatarTemporaryScriptList(request *DescribeLiveAvatarTemporaryScriptListRequest) (response *DescribeLiveAvatarTemporaryScriptListResponse, err error) {
+    return c.DescribeLiveAvatarTemporaryScriptListWithContext(context.Background(), request)
+}
+
+// DescribeLiveAvatarTemporaryScriptList
+// 调用该接口，用于查询临时驱动数字人播报话术列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveAvatarTemporaryScriptListWithContext(ctx context.Context, request *DescribeLiveAvatarTemporaryScriptListRequest) (response *DescribeLiveAvatarTemporaryScriptListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveAvatarTemporaryScriptListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeLiveAvatarTemporaryScriptList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveAvatarTemporaryScriptList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveAvatarTemporaryScriptListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLiveAvatarTimbreListRequest() (request *DescribeLiveAvatarTimbreListRequest) {
+    request = &DescribeLiveAvatarTimbreListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveAvatarTimbreList")
+    
+    
+    return
+}
+
+func NewDescribeLiveAvatarTimbreListResponse() (response *DescribeLiveAvatarTimbreListResponse) {
+    response = &DescribeLiveAvatarTimbreListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLiveAvatarTimbreList
+// 调用该接口，获取可用的数字人声音信息列表。包括官方预制音色，以及个人复刻音色。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveAvatarTimbreList(request *DescribeLiveAvatarTimbreListRequest) (response *DescribeLiveAvatarTimbreListResponse, err error) {
+    return c.DescribeLiveAvatarTimbreListWithContext(context.Background(), request)
+}
+
+// DescribeLiveAvatarTimbreList
+// 调用该接口，获取可用的数字人声音信息列表。包括官方预制音色，以及个人复刻音色。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveAvatarTimbreListWithContext(ctx context.Context, request *DescribeLiveAvatarTimbreListRequest) (response *DescribeLiveAvatarTimbreListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveAvatarTimbreListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeLiveAvatarTimbreList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveAvatarTimbreList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveAvatarTimbreListResponse()
     err = c.Send(request, response)
     return
 }
@@ -12873,6 +13665,92 @@ func (c *Client) ForbidLiveStreamWithContext(ctx context.Context, request *Forbi
     return
 }
 
+func NewGenerateLiveAvatarScriptBroadcastRequest() (request *GenerateLiveAvatarScriptBroadcastRequest) {
+    request = &GenerateLiveAvatarScriptBroadcastRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "GenerateLiveAvatarScriptBroadcast")
+    
+    
+    return
+}
+
+func NewGenerateLiveAvatarScriptBroadcastResponse() (response *GenerateLiveAvatarScriptBroadcastResponse) {
+    response = &GenerateLiveAvatarScriptBroadcastResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GenerateLiveAvatarScriptBroadcast
+// 调用该接口，用于触发话术播报生成，并返回音频播报URL。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) GenerateLiveAvatarScriptBroadcast(request *GenerateLiveAvatarScriptBroadcastRequest) (response *GenerateLiveAvatarScriptBroadcastResponse, err error) {
+    return c.GenerateLiveAvatarScriptBroadcastWithContext(context.Background(), request)
+}
+
+// GenerateLiveAvatarScriptBroadcast
+// 调用该接口，用于触发话术播报生成，并返回音频播报URL。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) GenerateLiveAvatarScriptBroadcastWithContext(ctx context.Context, request *GenerateLiveAvatarScriptBroadcastRequest) (response *GenerateLiveAvatarScriptBroadcastResponse, err error) {
+    if request == nil {
+        request = NewGenerateLiveAvatarScriptBroadcastRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "GenerateLiveAvatarScriptBroadcast")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenerateLiveAvatarScriptBroadcast require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGenerateLiveAvatarScriptBroadcastResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInsertTaskTemporaryFilesRequest() (request *InsertTaskTemporaryFilesRequest) {
     request = &InsertTaskTemporaryFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13407,6 +14285,154 @@ func (c *Client) ModifyCasterOutputInfoWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewModifyCasterOutputInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLiveAvatarRoomRequest() (request *ModifyLiveAvatarRoomRequest) {
+    request = &ModifyLiveAvatarRoomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "ModifyLiveAvatarRoom")
+    
+    
+    return
+}
+
+func NewModifyLiveAvatarRoomResponse() (response *ModifyLiveAvatarRoomResponse) {
+    response = &ModifyLiveAvatarRoomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLiveAvatarRoom
+// 调用该接口，用于修改数字人直播间。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_OUTPUTISNOTEXIST = "FailedOperation.OutputIsNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyLiveAvatarRoom(request *ModifyLiveAvatarRoomRequest) (response *ModifyLiveAvatarRoomResponse, err error) {
+    return c.ModifyLiveAvatarRoomWithContext(context.Background(), request)
+}
+
+// ModifyLiveAvatarRoom
+// 调用该接口，用于修改数字人直播间。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_OUTPUTISNOTEXIST = "FailedOperation.OutputIsNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyLiveAvatarRoomWithContext(ctx context.Context, request *ModifyLiveAvatarRoomRequest) (response *ModifyLiveAvatarRoomResponse, err error) {
+    if request == nil {
+        request = NewModifyLiveAvatarRoomRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "ModifyLiveAvatarRoom")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLiveAvatarRoom require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLiveAvatarRoomResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLiveAvatarScriptRequest() (request *ModifyLiveAvatarScriptRequest) {
+    request = &ModifyLiveAvatarScriptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "ModifyLiveAvatarScript")
+    
+    
+    return
+}
+
+func NewModifyLiveAvatarScriptResponse() (response *ModifyLiveAvatarScriptResponse) {
+    response = &ModifyLiveAvatarScriptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLiveAvatarScript
+// 调用该接口，用于修改数字人直播间话术。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_OUTPUTISNOTEXIST = "FailedOperation.OutputIsNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyLiveAvatarScript(request *ModifyLiveAvatarScriptRequest) (response *ModifyLiveAvatarScriptResponse, err error) {
+    return c.ModifyLiveAvatarScriptWithContext(context.Background(), request)
+}
+
+// ModifyLiveAvatarScript
+// 调用该接口，用于修改数字人直播间话术。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_OUTPUTISNOTEXIST = "FailedOperation.OutputIsNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyLiveAvatarScriptWithContext(ctx context.Context, request *ModifyLiveAvatarScriptRequest) (response *ModifyLiveAvatarScriptResponse, err error) {
+    if request == nil {
+        request = NewModifyLiveAvatarScriptRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "ModifyLiveAvatarScript")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLiveAvatarScript require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLiveAvatarScriptResponse()
     err = c.Send(request, response)
     return
 }
@@ -15121,6 +16147,178 @@ func (c *Client) SendLiveCloudEffectWithContext(ctx context.Context, request *Se
     return
 }
 
+func NewSendTemporaryScriptToAvatarRoomRequest() (request *SendTemporaryScriptToAvatarRoomRequest) {
+    request = &SendTemporaryScriptToAvatarRoomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "SendTemporaryScriptToAvatarRoom")
+    
+    
+    return
+}
+
+func NewSendTemporaryScriptToAvatarRoomResponse() (response *SendTemporaryScriptToAvatarRoomResponse) {
+    response = &SendTemporaryScriptToAvatarRoomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SendTemporaryScriptToAvatarRoom
+// 调用该接口，用于临时驱动数字人播报。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) SendTemporaryScriptToAvatarRoom(request *SendTemporaryScriptToAvatarRoomRequest) (response *SendTemporaryScriptToAvatarRoomResponse, err error) {
+    return c.SendTemporaryScriptToAvatarRoomWithContext(context.Background(), request)
+}
+
+// SendTemporaryScriptToAvatarRoom
+// 调用该接口，用于临时驱动数字人播报。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) SendTemporaryScriptToAvatarRoomWithContext(ctx context.Context, request *SendTemporaryScriptToAvatarRoomRequest) (response *SendTemporaryScriptToAvatarRoomResponse, err error) {
+    if request == nil {
+        request = NewSendTemporaryScriptToAvatarRoomRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "SendTemporaryScriptToAvatarRoom")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendTemporaryScriptToAvatarRoom require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSendTemporaryScriptToAvatarRoomResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStartLiveAvatarRoomRequest() (request *StartLiveAvatarRoomRequest) {
+    request = &StartLiveAvatarRoomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "StartLiveAvatarRoom")
+    
+    
+    return
+}
+
+func NewStartLiveAvatarRoomResponse() (response *StartLiveAvatarRoomResponse) {
+    response = &StartLiveAvatarRoomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartLiveAvatarRoom
+// 调用该接口，用于启动数字人直播间。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) StartLiveAvatarRoom(request *StartLiveAvatarRoomRequest) (response *StartLiveAvatarRoomResponse, err error) {
+    return c.StartLiveAvatarRoomWithContext(context.Background(), request)
+}
+
+// StartLiveAvatarRoom
+// 调用该接口，用于启动数字人直播间。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLOTHERSVRERROR = "InternalError.CallOtherSvrError"
+//  INTERNALERROR_CONFIGNOTEXIST = "InternalError.ConfigNotExist"
+//  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
+//  INTERNALERROR_GETSTREAMINFOERROR = "InternalError.GetStreamInfoError"
+//  INTERNALERROR_GETUPSTREAMINFOERROR = "InternalError.GetUpstreamInfoError"
+//  INTERNALERROR_NOTPERMMITOPERAT = "InternalError.NotPermmitOperat"
+//  INTERNALERROR_STREAMSTATUSERROR = "InternalError.StreamStatusError"
+//  INTERNALERROR_UPDATEDATAERROR = "InternalError.UpdateDataError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) StartLiveAvatarRoomWithContext(ctx context.Context, request *StartLiveAvatarRoomRequest) (response *StartLiveAvatarRoomResponse, err error) {
+    if request == nil {
+        request = NewStartLiveAvatarRoomRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "StartLiveAvatarRoom")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartLiveAvatarRoom require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartLiveAvatarRoomResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartLivePadStreamRequest() (request *StartLivePadStreamRequest) {
     request = &StartLivePadStreamRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15427,6 +16625,76 @@ func (c *Client) StopCasterPvwWithContext(ctx context.Context, request *StopCast
     request.SetContext(ctx)
     
     response = NewStopCasterPvwResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopLiveAvatarRoomRequest() (request *StopLiveAvatarRoomRequest) {
+    request = &StopLiveAvatarRoomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "StopLiveAvatarRoom")
+    
+    
+    return
+}
+
+func NewStopLiveAvatarRoomResponse() (response *StopLiveAvatarRoomResponse) {
+    response = &StopLiveAvatarRoomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopLiveAvatarRoom
+// 调用该接口，用于停止数字人直播间。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_STOPCASTERTASKFAILED = "FailedOperation.StopCasterTaskFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) StopLiveAvatarRoom(request *StopLiveAvatarRoomRequest) (response *StopLiveAvatarRoomResponse, err error) {
+    return c.StopLiveAvatarRoomWithContext(context.Background(), request)
+}
+
+// StopLiveAvatarRoom
+// 调用该接口，用于停止数字人直播间。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CASTERNOTFOUND = "FailedOperation.CasterNotFound"
+//  FAILEDOPERATION_STOPCASTERTASKFAILED = "FailedOperation.StopCasterTaskFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) StopLiveAvatarRoomWithContext(ctx context.Context, request *StopLiveAvatarRoomRequest) (response *StopLiveAvatarRoomResponse, err error) {
+    if request == nil {
+        request = NewStopLiveAvatarRoomRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "StopLiveAvatarRoom")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopLiveAvatarRoom require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopLiveAvatarRoomResponse()
     err = c.Send(request, response)
     return
 }

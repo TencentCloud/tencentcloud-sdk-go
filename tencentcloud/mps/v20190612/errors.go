@@ -389,6 +389,9 @@ const (
 	// 源文件错误。
 	INVALIDPARAMETERVALUE_SRCFILE = "InvalidParameterValue.SrcFile"
 
+	// 字幕压制id无效
+	INVALIDPARAMETERVALUE_SUBTITLEEMBEDID = "InvalidParameterValue.SubtitleEmbedId"
+
 	// 擦除模板字幕擦除方式错误
 	INVALIDPARAMETERVALUE_SUBTITLEERASEMETHOD = "InvalidParameterValue.SubtitleEraseMethod"
 
@@ -451,6 +454,12 @@ const (
 
 	// 未知的检测类别。
 	INVALIDPARAMETERVALUE_UNKNOWNCATEGORY = "InvalidParameterValue.UnknownCategory"
+
+	// UseOriginalPos无效
+	INVALIDPARAMETERVALUE_USEORIGINALPOS = "InvalidParameterValue.UseOriginalPos"
+
+	// UseOriginalSize无效
+	INVALIDPARAMETERVALUE_USEORIGINALSIZE = "InvalidParameterValue.UseOriginalSize"
 
 	// 参数值错误：人脸用户自定义库过滤标签非法。
 	INVALIDPARAMETERVALUE_USERDEFINELIBRARYLABELSET = "InvalidParameterValue.UserDefineLibraryLabelSet"

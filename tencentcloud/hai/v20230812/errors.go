@@ -50,6 +50,9 @@ const (
 	// 算力套餐类型不存在
 	INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = "InvalidParameterValue.BundleTypeNotFound"
 
+	// ComputeSet不能为空
+	INVALIDPARAMETERVALUE_COMPUTESETCANNOTBENONE = "InvalidParameterValue.ComputeSetCannotBeNone"
+
 	// 云盘大小设置必须大于实例当前的云盘大小
 	INVALIDPARAMETERVALUE_DISKSIZEMUSTLARGETHANCURRENTDISKSIZE = "InvalidParameterValue.DiskSizeMustLargeThanCurrentDiskSize"
 
@@ -89,6 +92,9 @@ const (
 	// 实例ID格式非法
 	INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
 
+	// 指定的模型ID格式错误。请确保在请求中提供完整的模型ID，格式为mdl-xxxxxxxx。字母`x`代表小写字母或数字。
+	INVALIDPARAMETERVALUE_INVALIDMODELIDMALFORMED = "InvalidParameterValue.InvalidModelIdMalformed"
+
 	// 无效的排练顺序
 	INVALIDPARAMETERVALUE_INVALIDORDER = "InvalidParameterValue.InvalidOrder"
 
@@ -104,14 +110,29 @@ const (
 	// 服务ID格式错误
 	INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
 
+	// 子网ID不能为空
+	INVALIDPARAMETERVALUE_INVALIDSUBNETIDISNONE = "InvalidParameterValue.InvalidSubnetIdIsNone"
+
+	// 子网ID格式错误
+	INVALIDPARAMETERVALUE_INVALIDSUBNETIDMALFORMED = "InvalidParameterValue.InvalidSubnetIdMalformed"
+
+	// VpcId不能为空
+	INVALIDPARAMETERVALUE_INVALIDVPCIDISNONE = "InvalidParameterValue.InvalidVpcIdIsNone"
+
 	// 地域非法
 	INVALIDPARAMETERVALUE_REGIONINVALID = "InvalidParameterValue.RegionInvalid"
+
+	// 该地域不支持公网访问
+	INVALIDPARAMETERVALUE_REGIONNOTSUPPORTPUBLICCALLINFO = "InvalidParameterValue.RegionNotSupportPublicCallInfo"
 
 	// 无法找到指定的安全组
 	INVALIDPARAMETERVALUE_SECURITYGROUPNOTFOUND = "InvalidParameterValue.SecurityGroupNotFound"
 
 	// 服务ID不存在
 	INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"
+
+	// 服务名称过长
+	INVALIDPARAMETERVALUE_SERVICENAMETOOLONG = "InvalidParameterValue.ServiceNameTooLong"
 
 	// 入参中若存在子网ID，则必须同时存在VPC ID。
 	INVALIDPARAMETERVALUE_SUBNETMUSTCOEXISTWITHVPC = "InvalidParameterValue.SubnetMustCoexistWithVpc"
@@ -121,6 +142,9 @@ const (
 
 	// 目标副本数不能与运行中副本数相同
 	INVALIDPARAMETERVALUE_TARGETREPLICASMUSTDIFFERFROMRUNNINGREPLICAS = "InvalidParameterValue.TargetReplicasMustDifferFromRunningReplicas"
+
+	// 模板ID不存在
+	INVALIDPARAMETERVALUE_TEMPLATEIDNOTFOUND = "InvalidParameterValue.TemplateIdNotFound"
 
 	// 无法找到指定的VPC
 	INVALIDPARAMETERVALUE_VPCNOTFOUND = "InvalidParameterValue.VpcNotFound"
@@ -134,11 +158,17 @@ const (
 	// 指定实例有正在执行的操作，不能执行新的操作
 	OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
 
+	// 该服务不支持更新访问方式
+	OPERATIONDENIED_SERVICENOTSUPPORTUPDATECALLINFO = "OperationDenied.ServiceNotSupportUpdateCallInfo"
+
 	// 指定服务有正在执行的操作，不能执行新的操作
 	OPERATIONDENIED_SERVICEOPERATIONINPROGRESS = "OperationDenied.ServiceOperationInProgress"
 
 	// 指定的算力套餐库存不足
 	RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
+
+	// 此模板仅允许创建一个服务
+	UNAUTHORIZEDOPERATION_ALLOWCREATEONESERVICEOFTEMPLATE = "UnauthorizedOperation.AllowCreateOneServiceOfTemplate"
 
 	// 高性能应用服务相关角色获取失败，无法完成操作
 	UNAUTHORIZEDOPERATION_GETROLEERROR = "UnauthorizedOperation.GetRoleError"
