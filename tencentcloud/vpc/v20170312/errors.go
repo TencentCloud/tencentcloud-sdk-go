@@ -1055,6 +1055,9 @@ const (
 	// 终端节点服务负载均衡类型不为内网负载均衡。
 	UNSUPPORTEDOPERATION_ENDPOINTSERVICELOADBALANCERINVALIDTYPE = "UnsupportedOperation.EndPointServiceLoadBalancerInvalidType"
 
+	// 网卡类型不支持删除保护。
+	UNSUPPORTEDOPERATION_ENINOTSUPPORTTERMINATIONPROTECTION = "UnsupportedOperation.EniNotSupportTerminationProtection"
+
 	// 存在云联网自定义路由表不允许删除该云联网
 	UNSUPPORTEDOPERATION_EXISTCCNCUSTOMROUTETABLESNOTSUPPORTDELETECCN = "UnsupportedOperation.ExistCcnCustomRouteTablesNotSupportDeleteCcn"
 

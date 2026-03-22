@@ -11673,6 +11673,92 @@ func (c *Client) ModifyWebCallbackWithContext(ctx context.Context, request *Modi
     return
 }
 
+func NewOpenClawServiceRequest() (request *OpenClawServiceRequest) {
+    request = &OpenClawServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "OpenClawService")
+    
+    
+    return
+}
+
+func NewOpenClawServiceResponse() (response *OpenClawServiceResponse) {
+    response = &OpenClawServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OpenClawService
+// 本接口用于创建OpenClaw依赖的资源与索引
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDINDEXRULEFORSEARCHLOW = "FailedOperation.InValidIndexRuleForSearchLow"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDINDEXRULEFORSEARCHLOW = "InvalidParameter.InValidIndexRuleForSearchLow"
+//  INVALIDPARAMETER_INDEXCONFLICT = "InvalidParameter.IndexConflict"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_INDEXKEYOVERLIMIT = "LimitExceeded.IndexKeyOverLimit"
+//  LIMITEXCEEDED_INDEXOPERATING = "LimitExceeded.IndexOperating"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_INDEXNOTEXIST = "ResourceNotFound.IndexNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) OpenClawService(request *OpenClawServiceRequest) (response *OpenClawServiceResponse, err error) {
+    return c.OpenClawServiceWithContext(context.Background(), request)
+}
+
+// OpenClawService
+// 本接口用于创建OpenClaw依赖的资源与索引
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDINDEXRULEFORSEARCHLOW = "FailedOperation.InValidIndexRuleForSearchLow"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDINDEXRULEFORSEARCHLOW = "InvalidParameter.InValidIndexRuleForSearchLow"
+//  INVALIDPARAMETER_INDEXCONFLICT = "InvalidParameter.IndexConflict"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_INDEXKEYOVERLIMIT = "LimitExceeded.IndexKeyOverLimit"
+//  LIMITEXCEEDED_INDEXOPERATING = "LimitExceeded.IndexOperating"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_INDEXNOTEXIST = "ResourceNotFound.IndexNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) OpenClawServiceWithContext(ctx context.Context, request *OpenClawServiceRequest) (response *OpenClawServiceResponse, err error) {
+    if request == nil {
+        request = NewOpenClawServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "OpenClawService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OpenClawService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOpenClawServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOpenKafkaConsumerRequest() (request *OpenKafkaConsumerRequest) {
     request = &OpenKafkaConsumerRequest{
         BaseRequest: &tchttp.BaseRequest{},

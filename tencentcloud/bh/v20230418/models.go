@@ -4173,6 +4173,148 @@ func (r *DescribeDeviceAccountsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDeviceCountRequestParams struct {
+	// 地域码
+	ApCode *string `json:"ApCode,omitnil,omitempty" name:"ApCode"`
+
+	// 用户VPC实例ID
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 堡垒机服务ID
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资产类型,1-Linux, 2-Windows,3-MySQL,4-SqlServer 不传-全部
+	Kind *uint64 `json:"Kind,omitnil,omitempty" name:"Kind"`
+
+	// 是否绑定服务,1-已绑定, 2-未绑定， 不传-全部
+	BindResource *uint64 `json:"BindResource,omitnil,omitempty" name:"BindResource"`
+}
+
+type DescribeDeviceCountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 地域码
+	ApCode *string `json:"ApCode,omitnil,omitempty" name:"ApCode"`
+
+	// 用户VPC实例ID
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 堡垒机服务ID
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资产类型,1-Linux, 2-Windows,3-MySQL,4-SqlServer 不传-全部
+	Kind *uint64 `json:"Kind,omitnil,omitempty" name:"Kind"`
+
+	// 是否绑定服务,1-已绑定, 2-未绑定， 不传-全部
+	BindResource *uint64 `json:"BindResource,omitnil,omitempty" name:"BindResource"`
+}
+
+func (r *DescribeDeviceCountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceCountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApCode")
+	delete(f, "VpcId")
+	delete(f, "ResourceId")
+	delete(f, "Kind")
+	delete(f, "BindResource")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceCountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceCountResponseParams struct {
+	// 主机总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeviceCountResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeviceCountResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeviceCountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceCountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceCountSummaryRequestParams struct {
+
+}
+
+type DescribeDeviceCountSummaryRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeDeviceCountSummaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceCountSummaryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceCountSummaryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceCountSummaryResponseParams struct {
+	// 各种类型的资产总数
+	DeviceCountSet []*DeviceCount `json:"DeviceCountSet,omitnil,omitempty" name:"DeviceCountSet"`
+
+	// 各种类型应用资产总数
+	AppAssetCountSet []*DeviceCount `json:"AppAssetCountSet,omitnil,omitempty" name:"AppAssetCountSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeviceCountSummaryResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeviceCountSummaryResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeviceCountSummaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceCountSummaryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDeviceGroupMembersRequestParams struct {
 	// true - 查询已在该资产组的资产，false - 查询未在该资产组的资产
 	Bound *bool `json:"Bound,omitnil,omitempty" name:"Bound"`
@@ -5894,6 +6036,14 @@ type DeviceAccount struct {
 
 	// 是否为k8s资产管理账号	
 	IsK8SManageAccount *bool `json:"IsK8SManageAccount,omitnil,omitempty" name:"IsK8SManageAccount"`
+}
+
+type DeviceCount struct {
+	// 资产类型
+	Kind *int64 `json:"Kind,omitnil,omitempty" name:"Kind"`
+
+	// 资产数目
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 
 // Predefined struct for user

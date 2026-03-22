@@ -890,20 +890,14 @@ func (r *DescribeVideoVoiceJobResponse) FromJsonString(s string) error {
 }
 
 type ExtraParam struct {
-	// 预签名的上传url，支持把视频直接传到客户指定的地址。
+	// <p>预签名的上传url，支持把视频直接传到客户指定的地址。</p>
 	UserDesignatedUrl *string `json:"UserDesignatedUrl,omitnil,omitempty" name:"UserDesignatedUrl"`
 
-	// 回调地址
-	// 需要您在创建任务时主动设置 CallbackUrl，请求方法为 POST，当视频生成结束时，我们将向此地址发送生成结果。
-	// 数据格式如下：
-	// {
-	//     "JobId": "1397428070633955328",
-	//     "Status": "DONE",
-	//     "ErrorCode": "",
-	//     "ErrorMessage": "",
-	//     "ResultVideoUrl": "https://vcg.cos.tencentcos.cn/template_to_video/fa80b846-b933-4981-afad-8a39b46ef2ca.mp4"
-	// }
+	// <p>回调地址<br>需要您在创建任务时主动设置 CallbackUrl，请求方法为 POST，当视频生成结束时，我们将向此地址发送生成结果。<br>数据格式如下：<br>{<br>    &quot;JobId&quot;: &quot;1397428070633955328&quot;,<br>    &quot;Status&quot;: &quot;DONE&quot;,<br>    &quot;ErrorCode&quot;: &quot;&quot;,<br>    &quot;ErrorMessage&quot;: &quot;&quot;,<br>    &quot;ResultVideoUrl&quot;: &quot;https://vcg.cos.tencentcos.cn/template_to_video/fa80b846-b933-4981-afad-8a39b46ef2ca.mp4&quot;<br>}</p>
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
+
+	// <p>BGM音频文本。</p>
+	BGMText *string `json:"BGMText,omitnil,omitempty" name:"BGMText"`
 }
 
 type FaceMergeInfo struct {
@@ -1693,66 +1687,50 @@ func (r *SubmitPortraitSingJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitTemplateToVideoJobRequestParams struct {
-	// 特效模板名称。请在 [视频特效模板列表](https://cloud.tencent.com/document/product/1616/119194)  中选择想要生成的特效对应的 template 名称。
+	// <p>特效模板名称。请在 <a href="https://cloud.tencent.com/document/product/1616/119194">视频特效模板列表</a>  中选择想要生成的特效对应的 template 名称。</p>
 	Template *string `json:"Template,omitnil,omitempty" name:"Template"`
 
-	// 参考图像，不同特效输入图片的数量详见： [视频特效模板-图片要求说明](https://cloud.tencent.com/document/product/1616/119194)
-	// - 支持传入图片Base64编码或图片URL（确保可访问）
-	// - 图片格式：支持png、jpg、jpeg、webp、bmp、tiff
-	// - 图片文件：大小不能超过10MB（base64后），图片分辨率不小于300*300px，不大于4096*4096，图片宽高比应在1:4 ~ 4:1之间
+	// <p>参考图像，不同特效输入图片的数量详见： <a href="https://cloud.tencent.com/document/product/1616/119194">视频特效模板-图片要求说明</a></p><ul><li>支持传入图片Base64编码或图片URL（确保可访问）</li><li>图片格式：支持png、jpg、jpeg、webp、bmp、tiff</li><li>图片文件：大小不能超过10MB（base64后），图片分辨率不小于300×300px，不大于4096×4096，图片宽高比应在1:4 ~ 4:1之间</li></ul>
 	Images []*Image `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 为生成视频添加标识的开关，默认为1。传0 需前往  [控制台](https://console.cloud.tencent.com/vtc/setting) 申请开启显式标识自主完成后方可生效。
-	// 1：添加标识；
-	// 0：不添加标识；
-	// 其他数值：默认按1处理。
-	// 建议您使用显著标识来提示，该视频是 AI 生成的视频。
+	// <p>为生成视频添加标识的开关，默认为1。传0 需前往  <a href="https://console.cloud.tencent.com/vtc/setting">控制台</a> 申请开启显式标识自主完成后方可生效。<br>1：添加标识；<br>0：不添加标识；<br>其他数值：默认按1处理。<br>建议您使用显著标识来提示，该视频是 AI 生成的视频。</p>
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 
-	// 标识内容设置。
-	// 默认在生成视频的右下角添加“ AI 生成”或“视频由 AI 生成”字样，如需替换为其他的标识图片，需前往  [控制台](https://console.cloud.tencent.com/vtc/setting) 申请开启显式标识自主完成。
+	// <p>标识内容设置。<br>默认在生成视频的右下角添加“ AI 生成”或“视频由 AI 生成”字样，如需替换为其他的标识图片，需前往  <a href="https://console.cloud.tencent.com/vtc/setting">控制台</a> 申请开启显式标识自主完成。</p>
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 
-	// 视频输出分辨率，默认值：360p 。不同特效支持的清晰度及消耗积分数详见：[视频特效模板-单次调用消耗积分数列](https://cloud.tencent.com/document/product/1616/119194 )
+	// <p>视频输出分辨率，默认值：360p 。不同特效支持的清晰度及消耗积分数详见：<a href="https://cloud.tencent.com/document/product/1616/119194">视频特效模板-单次调用消耗积分数列</a></p>
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 是否为生成的视频添加背景音乐。默认：false，  传 true 时系统将从预设 BGM 库中自动挑选合适的音乐并添加；不传或为 false 则不添加 BGM。
+	// <p>是否为生成的视频添加背景音乐。默认：false，  传 true 时系统将从预设 BGM 库中自动挑选合适的音乐并添加；不传或为 false 则不添加 BGM。</p>
 	BGM *bool `json:"BGM,omitnil,omitempty" name:"BGM"`
 
-	// 扩展字段。
+	// <p>扩展字段。</p>
 	ExtraParam *ExtraParam `json:"ExtraParam,omitnil,omitempty" name:"ExtraParam"`
 }
 
 type SubmitTemplateToVideoJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 特效模板名称。请在 [视频特效模板列表](https://cloud.tencent.com/document/product/1616/119194)  中选择想要生成的特效对应的 template 名称。
+	// <p>特效模板名称。请在 <a href="https://cloud.tencent.com/document/product/1616/119194">视频特效模板列表</a>  中选择想要生成的特效对应的 template 名称。</p>
 	Template *string `json:"Template,omitnil,omitempty" name:"Template"`
 
-	// 参考图像，不同特效输入图片的数量详见： [视频特效模板-图片要求说明](https://cloud.tencent.com/document/product/1616/119194)
-	// - 支持传入图片Base64编码或图片URL（确保可访问）
-	// - 图片格式：支持png、jpg、jpeg、webp、bmp、tiff
-	// - 图片文件：大小不能超过10MB（base64后），图片分辨率不小于300*300px，不大于4096*4096，图片宽高比应在1:4 ~ 4:1之间
+	// <p>参考图像，不同特效输入图片的数量详见： <a href="https://cloud.tencent.com/document/product/1616/119194">视频特效模板-图片要求说明</a></p><ul><li>支持传入图片Base64编码或图片URL（确保可访问）</li><li>图片格式：支持png、jpg、jpeg、webp、bmp、tiff</li><li>图片文件：大小不能超过10MB（base64后），图片分辨率不小于300×300px，不大于4096×4096，图片宽高比应在1:4 ~ 4:1之间</li></ul>
 	Images []*Image `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 为生成视频添加标识的开关，默认为1。传0 需前往  [控制台](https://console.cloud.tencent.com/vtc/setting) 申请开启显式标识自主完成后方可生效。
-	// 1：添加标识；
-	// 0：不添加标识；
-	// 其他数值：默认按1处理。
-	// 建议您使用显著标识来提示，该视频是 AI 生成的视频。
+	// <p>为生成视频添加标识的开关，默认为1。传0 需前往  <a href="https://console.cloud.tencent.com/vtc/setting">控制台</a> 申请开启显式标识自主完成后方可生效。<br>1：添加标识；<br>0：不添加标识；<br>其他数值：默认按1处理。<br>建议您使用显著标识来提示，该视频是 AI 生成的视频。</p>
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 
-	// 标识内容设置。
-	// 默认在生成视频的右下角添加“ AI 生成”或“视频由 AI 生成”字样，如需替换为其他的标识图片，需前往  [控制台](https://console.cloud.tencent.com/vtc/setting) 申请开启显式标识自主完成。
+	// <p>标识内容设置。<br>默认在生成视频的右下角添加“ AI 生成”或“视频由 AI 生成”字样，如需替换为其他的标识图片，需前往  <a href="https://console.cloud.tencent.com/vtc/setting">控制台</a> 申请开启显式标识自主完成。</p>
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 
-	// 视频输出分辨率，默认值：360p 。不同特效支持的清晰度及消耗积分数详见：[视频特效模板-单次调用消耗积分数列](https://cloud.tencent.com/document/product/1616/119194 )
+	// <p>视频输出分辨率，默认值：360p 。不同特效支持的清晰度及消耗积分数详见：<a href="https://cloud.tencent.com/document/product/1616/119194">视频特效模板-单次调用消耗积分数列</a></p>
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 是否为生成的视频添加背景音乐。默认：false，  传 true 时系统将从预设 BGM 库中自动挑选合适的音乐并添加；不传或为 false 则不添加 BGM。
+	// <p>是否为生成的视频添加背景音乐。默认：false，  传 true 时系统将从预设 BGM 库中自动挑选合适的音乐并添加；不传或为 false 则不添加 BGM。</p>
 	BGM *bool `json:"BGM,omitnil,omitempty" name:"BGM"`
 
-	// 扩展字段。
+	// <p>扩展字段。</p>
 	ExtraParam *ExtraParam `json:"ExtraParam,omitnil,omitempty" name:"ExtraParam"`
 }
 
@@ -1783,7 +1761,7 @@ func (r *SubmitTemplateToVideoJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitTemplateToVideoJobResponseParams struct {
-	// 任务ID。
+	// <p>任务ID。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

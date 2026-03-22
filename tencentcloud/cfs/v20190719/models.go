@@ -177,14 +177,17 @@ type AvailableRegion struct {
 }
 
 type AvailableType struct {
-	// 协议与售卖详情
+	// <p>协议与售卖详情</p>
 	Protocols []*AvailableProtoStatus `json:"Protocols,omitnil,omitempty" name:"Protocols"`
 
-	// 存储类型。返回值中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。
+	// <p>存储类型。返回值中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 是否支持预付费。返回值中 true 为支持、false 为不支持
+	// <p>是否支持预付费。返回值中 true 为支持、false 为不支持</p>
 	Prepayment *bool `json:"Prepayment,omitnil,omitempty" name:"Prepayment"`
+
+	// <p>文件系统版本</p><p>枚举值：</p><ul><li>v1.5： 通用系列</li><li>v3.1： 通用系列（增强型）</li><li>v4.0： Turbo系列</li></ul>
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
 
 type AvailableZone struct {
@@ -2178,7 +2181,7 @@ func (r *DescribeAvailableZoneInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAvailableZoneInfoResponseParams struct {
-	// 各可用区的资源售卖情况以及支持的存储类型、存储协议等信息
+	// <p>各可用区的资源售卖情况以及支持的存储类型、存储协议等信息</p>
 	RegionZones []*AvailableRegion `json:"RegionZones,omitnil,omitempty" name:"RegionZones"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

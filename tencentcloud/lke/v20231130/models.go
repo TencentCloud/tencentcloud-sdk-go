@@ -2765,7 +2765,8 @@ type DeleteDocRequestParams struct {
 	// 文档业务ID列表
 	DocBizIds []*string `json:"DocBizIds,omitnil,omitempty" name:"DocBizIds"`
 
-	// 应用ID
+	// 应用ID。
+	// 删除知识库文档时，该参数填入知识库ID。
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 }
 
@@ -2775,7 +2776,8 @@ type DeleteDocRequest struct {
 	// 文档业务ID列表
 	DocBizIds []*string `json:"DocBizIds,omitnil,omitempty" name:"DocBizIds"`
 
-	// 应用ID
+	// 应用ID。
+	// 删除知识库文档时，该参数填入知识库ID。
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 }
 
@@ -8257,7 +8259,8 @@ type ListDocItem struct {
 
 // Predefined struct for user
 type ListDocRequestParams struct {
-	// 应用ID, 获取方式参看 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+	// 应用ID, 获取方式参看 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
+	// 查询知识库下文档时，该参数填入知识库ID。
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码(必须大于0)
@@ -8297,7 +8300,8 @@ type ListDocRequestParams struct {
 type ListDocRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID, 获取方式参看 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+	// 应用ID, 获取方式参看 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
+	// 查询知识库下文档时，该参数填入知识库ID。
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码(必须大于0)
@@ -10567,6 +10571,7 @@ func (r *ModifyDocCateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDocRequestParams struct {
 	// 应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+	// 修改知识库文档时，该参数填入知识库ID。
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -10624,6 +10629,7 @@ type ModifyDocRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+	// 修改知识库文档时，该参数填入知识库ID。
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文档ID
@@ -12384,7 +12390,8 @@ type SandboxContent struct {
 
 // Predefined struct for user
 type SaveDocRequestParams struct {
-	// 应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+	// 应用ID。应用ID 获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+	// 导入知识库文档时，该参数填入知识库 ID。
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文件名，需要包含文件扩展名
@@ -12549,7 +12556,8 @@ type SaveDocRequestParams struct {
 type SaveDocRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+	// 应用ID。应用ID 获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+	// 导入知识库文档时，该参数填入知识库 ID。
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文件名，需要包含文件扩展名

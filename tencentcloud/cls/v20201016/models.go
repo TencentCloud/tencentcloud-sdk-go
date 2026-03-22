@@ -18870,6 +18870,96 @@ type NoticeRule struct {
 }
 
 // Predefined struct for user
+type OpenClawServiceRequestParams struct {
+	// <p>标签类型</p><p>枚举值：</p><ul><li>OpenClaw： OpenClaw类型</li><li>ClawPro： ClawPro类型</li></ul>
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+}
+
+type OpenClawServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>标签类型</p><p>枚举值：</p><ul><li>OpenClaw： OpenClaw类型</li><li>ClawPro： ClawPro类型</li></ul>
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+}
+
+func (r *OpenClawServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenClawServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Tag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenClawServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenClawServiceResponseParams struct {
+	// <p>日志集id</p><p><a href="https://cloud.tencent.com/document/product/614/41034">日志集文档</a></p>
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// <p>日志集名称</p>
+	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
+
+	// <p>日志主题id</p><p><a href="https://cloud.tencent.com/document/product/614/41035">日志主题文档</a></p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>日志主题名称</p>
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// <p>指标主题id</p><p><a href="https://cloud.tencent.com/document/product/614/90328">指标主题文档</a></p>
+	MetricTopicId *string `json:"MetricTopicId,omitnil,omitempty" name:"MetricTopicId"`
+
+	// <p>指标主题名称</p>
+	MetricTopicName *string `json:"MetricTopicName,omitnil,omitempty" name:"MetricTopicName"`
+
+	// <p>机器组id</p><p><a href="https://cloud.tencent.com/document/product/614/17412">机器组文档</a></p>
+	MachineGroupId *string `json:"MachineGroupId,omitnil,omitempty" name:"MachineGroupId"`
+
+	// <p>机器组名称</p>
+	MachineGroupName *string `json:"MachineGroupName,omitnil,omitempty" name:"MachineGroupName"`
+
+	// <p>采集配置id。应用日志</p><p><a href="https://cloud.tencent.com/document/product/614/33494">采集概述文档</a> - <a href="https://cloud.tencent.com/document/product/614/57497">LogListener 采集配置导入</a></p>
+	AppLogConfigId *string `json:"AppLogConfigId,omitnil,omitempty" name:"AppLogConfigId"`
+
+	// <p>采集配置名称。应用日志</p>
+	AppLogConfigName *string `json:"AppLogConfigName,omitnil,omitempty" name:"AppLogConfigName"`
+
+	// <p>采集配置id。会话日志</p><p><a href="https://cloud.tencent.com/document/product/614/33494">采集概述文档</a> - <a href="https://cloud.tencent.com/document/product/614/57497">LogListener 采集配置导入</a></p>
+	SessionLogConfigId *string `json:"SessionLogConfigId,omitnil,omitempty" name:"SessionLogConfigId"`
+
+	// <p>采集配置名称。会话日志</p>
+	SessionLogConfigName *string `json:"SessionLogConfigName,omitnil,omitempty" name:"SessionLogConfigName"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type OpenClawServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *OpenClawServiceResponseParams `json:"Response"`
+}
+
+func (r *OpenClawServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenClawServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type OpenKafkaConsumerRequestParams struct {
 	// 日志主题Id。
 	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。

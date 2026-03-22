@@ -2867,6 +2867,118 @@ func (c *Client) DescribeDeviceAccountsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeDeviceCountRequest() (request *DescribeDeviceCountRequest) {
+    request = &DescribeDeviceCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "DescribeDeviceCount")
+    
+    
+    return
+}
+
+func NewDescribeDeviceCountResponse() (response *DescribeDeviceCountResponse) {
+    response = &DescribeDeviceCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeviceCount
+// 查询用户导入的主机数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDeviceCount(request *DescribeDeviceCountRequest) (response *DescribeDeviceCountResponse, err error) {
+    return c.DescribeDeviceCountWithContext(context.Background(), request)
+}
+
+// DescribeDeviceCount
+// 查询用户导入的主机数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDeviceCountWithContext(ctx context.Context, request *DescribeDeviceCountRequest) (response *DescribeDeviceCountResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceCountRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "DescribeDeviceCount")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceCount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeviceCountSummaryRequest() (request *DescribeDeviceCountSummaryRequest) {
+    request = &DescribeDeviceCountSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "DescribeDeviceCountSummary")
+    
+    
+    return
+}
+
+func NewDescribeDeviceCountSummaryResponse() (response *DescribeDeviceCountSummaryResponse) {
+    response = &DescribeDeviceCountSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeviceCountSummary
+// 查询用户导入的主机数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDeviceCountSummary(request *DescribeDeviceCountSummaryRequest) (response *DescribeDeviceCountSummaryResponse, err error) {
+    return c.DescribeDeviceCountSummaryWithContext(context.Background(), request)
+}
+
+// DescribeDeviceCountSummary
+// 查询用户导入的主机数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDeviceCountSummaryWithContext(ctx context.Context, request *DescribeDeviceCountSummaryRequest) (response *DescribeDeviceCountSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceCountSummaryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "DescribeDeviceCountSummary")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceCountSummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceCountSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceGroupMembersRequest() (request *DescribeDeviceGroupMembersRequest) {
     request = &DescribeDeviceGroupMembersRequest{
         BaseRequest: &tchttp.BaseRequest{},

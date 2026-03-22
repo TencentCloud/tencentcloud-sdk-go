@@ -24688,6 +24688,7 @@ func NewModifyNetworkInterfaceAttributeResponse() (response *ModifyNetworkInterf
 //  LIMITEXCEEDED_ACTIONLIMITED = "LimitExceeded.ActionLimited"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ENINOTSUPPORTTERMINATIONPROTECTION = "UnsupportedOperation.EniNotSupportTerminationProtection"
 //  UNSUPPORTEDOPERATION_SUBENINOTSUPPORTTRUNKING = "UnsupportedOperation.SubEniNotSupportTrunking"
 func (c *Client) ModifyNetworkInterfaceAttribute(request *ModifyNetworkInterfaceAttributeRequest) (response *ModifyNetworkInterfaceAttributeResponse, err error) {
     return c.ModifyNetworkInterfaceAttributeWithContext(context.Background(), request)
@@ -24703,6 +24704,7 @@ func (c *Client) ModifyNetworkInterfaceAttribute(request *ModifyNetworkInterface
 //  LIMITEXCEEDED_ACTIONLIMITED = "LimitExceeded.ActionLimited"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ENINOTSUPPORTTERMINATIONPROTECTION = "UnsupportedOperation.EniNotSupportTerminationProtection"
 //  UNSUPPORTEDOPERATION_SUBENINOTSUPPORTTRUNKING = "UnsupportedOperation.SubEniNotSupportTrunking"
 func (c *Client) ModifyNetworkInterfaceAttributeWithContext(ctx context.Context, request *ModifyNetworkInterfaceAttributeRequest) (response *ModifyNetworkInterfaceAttributeResponse, err error) {
     if request == nil {

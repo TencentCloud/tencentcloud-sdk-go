@@ -1520,6 +1520,9 @@ type BatchDeleteOpsTasksRequestParams struct {
 
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 删除任务时是否删除脚本文件
+	DeleteScript *bool `json:"DeleteScript,omitnil,omitempty" name:"DeleteScript"`
 }
 
 type BatchDeleteOpsTasksRequest struct {
@@ -1538,6 +1541,9 @@ type BatchDeleteOpsTasksRequest struct {
 
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 删除任务时是否删除脚本文件
+	DeleteScript *bool `json:"DeleteScript,omitnil,omitempty" name:"DeleteScript"`
 }
 
 func (r *BatchDeleteOpsTasksRequest) ToJsonString() string {
@@ -1556,6 +1562,7 @@ func (r *BatchDeleteOpsTasksRequest) FromJsonString(s string) error {
 	delete(f, "DeleteMode")
 	delete(f, "EnableNotify")
 	delete(f, "ProjectId")
+	delete(f, "DeleteScript")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDeleteOpsTasksRequest has unknown keys!", "")
 	}
