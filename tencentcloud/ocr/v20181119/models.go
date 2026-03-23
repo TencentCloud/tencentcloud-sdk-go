@@ -11730,26 +11730,29 @@ type TextVehicleFront struct {
 }
 
 type TextWaybill struct {
-	// 收件人姓名
+	// <p>收件人姓名</p>
 	RecName *WaybillObj `json:"RecName,omitnil,omitempty" name:"RecName"`
 
-	// 收件人手机号
+	// <p>收件人手机号</p>
 	RecNum *WaybillObj `json:"RecNum,omitnil,omitempty" name:"RecNum"`
 
-	// 收件人地址
+	// <p>收件人地址</p>
 	RecAddr *WaybillObj `json:"RecAddr,omitnil,omitempty" name:"RecAddr"`
 
-	// 寄件人姓名
+	// <p>寄件人姓名</p>
 	SenderName *WaybillObj `json:"SenderName,omitnil,omitempty" name:"SenderName"`
 
-	// 寄件人手机号
+	// <p>寄件人手机号</p>
 	SenderNum *WaybillObj `json:"SenderNum,omitnil,omitempty" name:"SenderNum"`
 
-	// 寄件人地址
+	// <p>寄件人地址</p>
 	SenderAddr *WaybillObj `json:"SenderAddr,omitnil,omitempty" name:"SenderAddr"`
 
-	// 运单号
+	// <p>运单号, 当同时存在 母 / 子 运单号时， 该字段为子运单号</p>
 	WaybillNum *WaybillObj `json:"WaybillNum,omitnil,omitempty" name:"WaybillNum"`
+
+	// <p>母运单号， 当不存在母运单号时， 该字段为不存在</p>
+	MainWaybillNum *WaybillObj `json:"MainWaybillNum,omitnil,omitempty" name:"MainWaybillNum"`
 }
 
 type TollInvoice struct {

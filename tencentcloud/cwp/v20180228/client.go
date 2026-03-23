@@ -19119,6 +19119,70 @@ func (c *Client) DescribeShellPolicyListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeSkillInfoRequest() (request *DescribeSkillInfoRequest) {
+    request = &DescribeSkillInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeSkillInfo")
+    
+    
+    return
+}
+
+func NewDescribeSkillInfoResponse() (response *DescribeSkillInfoResponse) {
+    response = &DescribeSkillInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSkillInfo
+// 补丁详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeSkillInfo(request *DescribeSkillInfoRequest) (response *DescribeSkillInfoResponse, err error) {
+    return c.DescribeSkillInfoWithContext(context.Background(), request)
+}
+
+// DescribeSkillInfo
+// 补丁详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeSkillInfoWithContext(ctx context.Context, request *DescribeSkillInfoRequest) (response *DescribeSkillInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeSkillInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cwp", APIVersion, "DescribeSkillInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSkillInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSkillInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStrategyExistRequest() (request *DescribeStrategyExistRequest) {
     request = &DescribeStrategyExistRequest{
         BaseRequest: &tchttp.BaseRequest{},

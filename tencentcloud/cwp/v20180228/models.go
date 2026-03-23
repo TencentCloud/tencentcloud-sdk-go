@@ -27839,6 +27839,63 @@ func (r *DescribeShellPolicyListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSkillInfoRequestParams struct {
+	// 事件id
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+type DescribeSkillInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 事件id
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+func (r *DescribeSkillInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSkillInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSkillInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSkillInfoResponseParams struct {
+	// skill信息列表
+	SkillInfoList []*SkillInfo `json:"SkillInfoList,omitnil,omitempty" name:"SkillInfoList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSkillInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSkillInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeSkillInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSkillInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeStrategyExistRequestParams struct {
 	// 策略名
 	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
@@ -47920,6 +47977,29 @@ type ShellPolicyList struct {
 	// 主机范围:[0: 一组quuid 1: 所有专业版 2: 旗舰版 3: 所有主机]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostScope *uint64 `json:"HostScope,omitnil,omitempty" name:"HostScope"`
+}
+
+type SkillInfo struct {
+	// Skill名称
+	SkillName *string `json:"SkillName,omitnil,omitempty" name:"SkillName"`
+
+	// Skill 描述
+	SkillDesc *string `json:"SkillDesc,omitnil,omitempty" name:"SkillDesc"`
+
+	// Skill来源
+	SkillSource *string `json:"SkillSource,omitnil,omitempty" name:"SkillSource"`
+
+	// Skill风险标签
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// skill风险描述
+	RiskDesc *string `json:"RiskDesc,omitnil,omitempty" name:"RiskDesc"`
+
+	// 证据链
+	Evidence *string `json:"Evidence,omitnil,omitempty" name:"Evidence"`
+
+	// 事件ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type StandardModeConfig struct {

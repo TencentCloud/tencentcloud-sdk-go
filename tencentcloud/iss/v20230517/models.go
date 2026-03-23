@@ -2956,98 +2956,101 @@ func (r *DescribeDeviceChannelResponse) FromJsonString(s string) error {
 }
 
 type DescribeDeviceData struct {
-	// 设备ID
+	// <p>设备ID</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
+	// <p>设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）</p>
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 设备名称
+	// <p>设备名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 设备接入协议，1:RTMP,2:GB,3:GW 
+	// <p>设备接入协议，1:RTMP,2:GB,3:GW</p>
 	AccessProtocol *int64 `json:"AccessProtocol,omitnil,omitempty" name:"AccessProtocol"`
 
-	// 设备类型，1:IPC,2:NVR
+	// <p>设备类型，1:IPC,2:NVR</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 设备接入服务节点id
+	// <p>设备接入服务节点id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 设备接入服务节点名称
+	// <p>设备接入服务节点名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 设备流传输协议，1:UDP,2:TCP 
+	// <p>设备流传输协议，1:UDP,2:TCP</p>
 	TransportProtocol *int64 `json:"TransportProtocol,omitnil,omitempty" name:"TransportProtocol"`
 
-	// 设备密码
+	// <p>设备密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 设备描述
+	// <p>设备描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// sip服务ID
+	// <p>sip服务ID</p>
 	SipId *string `json:"SipId,omitnil,omitempty" name:"SipId"`
 
-	// sip服务域
+	// <p>sip服务域</p>
 	SipDomain *string `json:"SipDomain,omitnil,omitempty" name:"SipDomain"`
 
-	// sip服务IP地址
+	// <p>sip服务IP地址</p>
 	SipIp *string `json:"SipIp,omitnil,omitempty" name:"SipIp"`
 
-	// sip服务端口
+	// <p>sip服务端口</p>
 	SipPort *int64 `json:"SipPort,omitnil,omitempty" name:"SipPort"`
 
-	// Rtmp设备推流地址(仅rtmp设备有效)
+	// <p>Rtmp设备推流地址(仅rtmp设备有效)</p>
 	PushStreamUrl *string `json:"PushStreamUrl,omitnil,omitempty" name:"PushStreamUrl"`
 
-	// 设备状态，0:未注册,1:在线,2:离线,3:禁用
+	// <p>设备状态，0:未注册,1:在线,2:离线,3:禁用</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 设备所属组织ID
+	// <p>设备所属组织ID</p>
 	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
-	// 设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
+	// <p>设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）</p>
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
-	// 设备所属网关名称
+	// <p>设备所属网关名称</p>
 	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
 
-	// 设备网关协议名称
+	// <p>设备网关协议名称</p>
 	ProtocolTypeName *string `json:"ProtocolTypeName,omitnil,omitempty" name:"ProtocolTypeName"`
 
-	// 网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
+	// <p>网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）</p>
 	ProtocolType *int64 `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
 
-	// 设备接入IP
+	// <p>设备接入IP</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 设备Port
+	// <p>设备Port</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 设备用户名
+	// <p>设备用户名</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 设备地域
+	// <p>设备地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 设备厂商
+	// <p>设备厂商</p>
 	Manufacturer *string `json:"Manufacturer,omitnil,omitempty" name:"Manufacturer"`
 
-	// 音频关开（0：关闭；1：开启）关闭时丢弃音频	
+	// <p>音频关开（0：关闭；1：开启）关闭时丢弃音频</p>
 	AudioSwitch *int64 `json:"AudioSwitch,omitnil,omitempty" name:"AudioSwitch"`
 
-	// 订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效	
+	// <p>订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效</p>
 	SubscribeSwitch *int64 `json:"SubscribeSwitch,omitnil,omitempty" name:"SubscribeSwitch"`
 
-	// RTMP推流地址自定义appName
+	// <p>RTMP推流地址自定义appName</p>
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// RTMP推流地址自定义streamName
+	// <p>RTMP推流地址自定义streamName</p>
 	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
 
-	// 是否开启静音帧（0：关闭；1 开启）
+	// <p>是否开启静音帧（0：关闭；1 开启）</p>
 	SilentFrameSwitch *int64 `json:"SilentFrameSwitch,omitnil,omitempty" name:"SilentFrameSwitch"`
+
+	// <p>Rtmp设备安全认证推流地址(仅rtmp设备有效)</p>
+	PushStreamSecureUrl *string `json:"PushStreamSecureUrl,omitnil,omitempty" name:"PushStreamSecureUrl"`
 }
 
 type DescribeDeviceListData struct {

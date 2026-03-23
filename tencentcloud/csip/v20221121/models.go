@@ -20,6 +20,39 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AIAgentAsset struct {
+	// ID 标识
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// agent 名称
+	AgentName *string `json:"AgentName,omitnil,omitempty" name:"AgentName"`
+
+	// agent 使用模型名称
+	AgentModel []*string `json:"AgentModel,omitnil,omitempty" name:"AgentModel"`
+
+	// 实例 ID
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// metadata 风险列表。有如下枚举值: 1. AK_TMP  2. USER_DATA
+	MetadataRiskList []*string `json:"MetadataRiskList,omitnil,omitempty" name:"MetadataRiskList"`
+
+	// 首次检出时间
+	IdentityTimeFirst *string `json:"IdentityTimeFirst,omitnil,omitempty" name:"IdentityTimeFirst"`
+
+	// 最近检出时间
+	IdentityTimeLast *string `json:"IdentityTimeLast,omitnil,omitempty" name:"IdentityTimeLast"`
+
+	// 检出方式。有如下枚举值 1. FINGER 资产指纹方式检出 2. NETWORK 网络访问方式检出
+	IdentityMethod *string `json:"IdentityMethod,omitnil,omitempty" name:"IdentityMethod"`
+
+	// 暴露状态。有如下枚举值。1. EXPOSED；2.UNEXPOSED；
+	// 3. UNKNOWN;
+	ExposureStatus *string `json:"ExposureStatus,omitnil,omitempty" name:"ExposureStatus"`
+
+	// metadata 有风险时对应路径
+	MetadataRiskURL *string `json:"MetadataRiskURL,omitnil,omitempty" name:"MetadataRiskURL"`
+}
+
 type AKInfo struct {
 	// ak对应id
 	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
@@ -2838,6 +2871,73 @@ func (r *DeleteRiskScanTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteRiskScanTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIAgentAssetListRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 筛选
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type DescribeAIAgentAssetListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 筛选
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+func (r *DescribeAIAgentAssetListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIAgentAssetListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIAgentAssetListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIAgentAssetListResponseParams struct {
+	// 资产列表
+	AssetList []*AIAgentAsset `json:"AssetList,omitnil,omitempty" name:"AssetList"`
+
+	// 资产总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAIAgentAssetListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAIAgentAssetListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAIAgentAssetListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIAgentAssetListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

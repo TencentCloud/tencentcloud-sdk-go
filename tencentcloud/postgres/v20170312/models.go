@@ -1222,6 +1222,9 @@ type CreateInstancesRequestParams struct {
 
 	// <p>实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// <p>实例存储类型，可选值：PHYSICAL_LOCAL_SSD：物理机本地ssd硬盘 CLOUD_PREMIUM：高性能云硬盘 CLOUD_SSD：ssd云硬盘 CLOUD_HSSD：增强型ssd云硬盘</p>
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
 type CreateInstancesRequest struct {
@@ -1322,6 +1325,9 @@ type CreateInstancesRequest struct {
 
 	// <p>实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// <p>实例存储类型，可选值：PHYSICAL_LOCAL_SSD：物理机本地ssd硬盘 CLOUD_PREMIUM：高性能云硬盘 CLOUD_SSD：ssd云硬盘 CLOUD_HSSD：增强型ssd云硬盘</p>
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
 func (r *CreateInstancesRequest) ToJsonString() string {
@@ -1368,6 +1374,7 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	delete(f, "SyncMode")
 	delete(f, "NeedSupportIpv6")
 	delete(f, "DeletionProtection")
+	delete(f, "StorageType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancesRequest has unknown keys!", "")
 	}
@@ -2082,6 +2089,9 @@ type DBInstance struct {
 
 	// <p>实例是否开启删除保护，取值如下：</p><ul><li>true：开启删除保护</li><li>false：关闭删除保护</li></ul>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// <p>实例存储类型，可选值：PHYSICAL_LOCAL_SSD：物理机本地ssd硬盘 CLOUD_PREMIUM：高性能云硬盘 CLOUD_SSD：ssd云硬盘 CLOUD_HSSD：增强型ssd云硬盘</p>
+	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitnil,omitempty" name:"DBInstanceStorageType"`
 }
 
 type DBInstanceNetInfo struct {
@@ -3453,6 +3463,9 @@ type DescribeClassesRequestParams struct {
 
 	// <p>数据库主版本号。例如12，13，可以通过接口<a href="https://cloud.tencent.com/document/product/409/89018">DescribeDBVersions</a>获取。</p>
 	DBMajorVersion *string `json:"DBMajorVersion,omitnil,omitempty" name:"DBMajorVersion"`
+
+	// <p>实例存储类型，根据存储类型返回支持的规格。</p><p>枚举值：</p><ul><li>PHYSICAL_LOCAL_SSD： 物理机本地ssd硬盘</li><li>CLOUD_PREMIUM： 高性能云硬盘</li><li>CLOUD_SSD： ssd云硬盘</li><li>CLOUD_HSSD： 增强型ssd云硬盘</li></ul><p>默认值：PHYSICAL_LOCAL_SSD</p>
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
 type DescribeClassesRequest struct {
@@ -3466,6 +3479,9 @@ type DescribeClassesRequest struct {
 
 	// <p>数据库主版本号。例如12，13，可以通过接口<a href="https://cloud.tencent.com/document/product/409/89018">DescribeDBVersions</a>获取。</p>
 	DBMajorVersion *string `json:"DBMajorVersion,omitnil,omitempty" name:"DBMajorVersion"`
+
+	// <p>实例存储类型，根据存储类型返回支持的规格。</p><p>枚举值：</p><ul><li>PHYSICAL_LOCAL_SSD： 物理机本地ssd硬盘</li><li>CLOUD_PREMIUM： 高性能云硬盘</li><li>CLOUD_SSD： ssd云硬盘</li><li>CLOUD_HSSD： 增强型ssd云硬盘</li></ul><p>默认值：PHYSICAL_LOCAL_SSD</p>
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
 func (r *DescribeClassesRequest) ToJsonString() string {
@@ -3483,6 +3499,7 @@ func (r *DescribeClassesRequest) FromJsonString(s string) error {
 	delete(f, "Zone")
 	delete(f, "DBEngine")
 	delete(f, "DBMajorVersion")
+	delete(f, "StorageType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClassesRequest has unknown keys!", "")
 	}
@@ -4225,12 +4242,15 @@ func (r *DescribeDBInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBVersionsRequestParams struct {
-
+	// <p>实例存储类型，根据磁盘类型返回支持的版本</p><p>枚举值：</p><ul><li>PHYSICAL_LOCAL_SSD： 物理机本地ssd硬盘</li><li>CLOUD_PREMIUM： 高性能云硬盘</li><li>CLOUD_SSD： ssd云硬盘</li><li>CLOUD_HSSD： 增强型ssd云硬盘</li></ul><p>默认值：PHYSICAL_LOCAL_SSD</p>
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
 type DescribeDBVersionsRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>实例存储类型，根据磁盘类型返回支持的版本</p><p>枚举值：</p><ul><li>PHYSICAL_LOCAL_SSD： 物理机本地ssd硬盘</li><li>CLOUD_PREMIUM： 高性能云硬盘</li><li>CLOUD_SSD： ssd云硬盘</li><li>CLOUD_HSSD： 增强型ssd云硬盘</li></ul><p>默认值：PHYSICAL_LOCAL_SSD</p>
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
 func (r *DescribeDBVersionsRequest) ToJsonString() string {
@@ -4245,7 +4265,7 @@ func (r *DescribeDBVersionsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "StorageType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBVersionsRequest has unknown keys!", "")
 	}
@@ -5205,6 +5225,9 @@ type DescribeProductConfigRequestParams struct {
 
 	// <p>数据库引擎，支持：<br>1、postgresql（云数据库PostgreSQL）；<br>2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；<br>如不指定默认使用postgresql。</p>
 	DBEngine *string `json:"DBEngine,omitnil,omitempty" name:"DBEngine"`
+
+	// <p>实例存储类型，根据存储类型返回支持的版本和规格</p><p>枚举值：</p><ul><li>PHYSICAL_LOCAL_SSD： 物理机本地ssd硬盘</li><li>CLOUD_PREMIUM： 高性能云硬盘</li><li>CLOUD_SSD： ssd云硬盘</li><li>CLOUD_HSSD： 增强型ssd云硬盘</li></ul><p>默认值：PHYSICAL_LOCAL_SSD</p>
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
 type DescribeProductConfigRequest struct {
@@ -5215,6 +5238,9 @@ type DescribeProductConfigRequest struct {
 
 	// <p>数据库引擎，支持：<br>1、postgresql（云数据库PostgreSQL）；<br>2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；<br>如不指定默认使用postgresql。</p>
 	DBEngine *string `json:"DBEngine,omitnil,omitempty" name:"DBEngine"`
+
+	// <p>实例存储类型，根据存储类型返回支持的版本和规格</p><p>枚举值：</p><ul><li>PHYSICAL_LOCAL_SSD： 物理机本地ssd硬盘</li><li>CLOUD_PREMIUM： 高性能云硬盘</li><li>CLOUD_SSD： ssd云硬盘</li><li>CLOUD_HSSD： 增强型ssd云硬盘</li></ul><p>默认值：PHYSICAL_LOCAL_SSD</p>
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
 func (r *DescribeProductConfigRequest) ToJsonString() string {
@@ -5231,6 +5257,7 @@ func (r *DescribeProductConfigRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Zone")
 	delete(f, "DBEngine")
+	delete(f, "StorageType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProductConfigRequest has unknown keys!", "")
 	}
@@ -6065,6 +6092,9 @@ type InquiryPriceCreateDBInstancesRequestParams struct {
 
 	// <p>DB引擎，默认postgresql，支持如下：<br>postgresql（云数据库PostgreSQL）<br>mssql_compatible（MSSQL兼容-云数据库PostgreSQL）</p>
 	DBEngine *string `json:"DBEngine,omitnil,omitempty" name:"DBEngine"`
+
+	// <p>实例存储类型，可选值：PHYSICAL_LOCAL_SSD：物理机本地ssd硬盘 CLOUD_PREMIUM：高性能云硬盘 CLOUD_SSD：ssd云硬盘 CLOUD_HSSD：增强型ssd云硬盘</p>
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
 type InquiryPriceCreateDBInstancesRequest struct {
@@ -6096,6 +6126,9 @@ type InquiryPriceCreateDBInstancesRequest struct {
 
 	// <p>DB引擎，默认postgresql，支持如下：<br>postgresql（云数据库PostgreSQL）<br>mssql_compatible（MSSQL兼容-云数据库PostgreSQL）</p>
 	DBEngine *string `json:"DBEngine,omitnil,omitempty" name:"DBEngine"`
+
+	// <p>实例存储类型，可选值：PHYSICAL_LOCAL_SSD：物理机本地ssd硬盘 CLOUD_PREMIUM：高性能云硬盘 CLOUD_SSD：ssd云硬盘 CLOUD_HSSD：增强型ssd云硬盘</p>
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
 func (r *InquiryPriceCreateDBInstancesRequest) ToJsonString() string {
@@ -6119,6 +6152,7 @@ func (r *InquiryPriceCreateDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "InstanceChargeType")
 	delete(f, "InstanceType")
 	delete(f, "DBEngine")
+	delete(f, "StorageType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateDBInstancesRequest has unknown keys!", "")
 	}

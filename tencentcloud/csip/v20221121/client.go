@@ -479,6 +479,90 @@ func (c *Client) DeleteRiskScanTaskWithContext(ctx context.Context, request *Del
     return
 }
 
+func NewDescribeAIAgentAssetListRequest() (request *DescribeAIAgentAssetListRequest) {
+    request = &DescribeAIAgentAssetListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeAIAgentAssetList")
+    
+    
+    return
+}
+
+func NewDescribeAIAgentAssetListResponse() (response *DescribeAIAgentAssetListResponse) {
+    response = &DescribeAIAgentAssetListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAIAgentAssetList
+// 获取 AI agent 资产列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAIAgentAssetList(request *DescribeAIAgentAssetListRequest) (response *DescribeAIAgentAssetListResponse, err error) {
+    return c.DescribeAIAgentAssetListWithContext(context.Background(), request)
+}
+
+// DescribeAIAgentAssetList
+// 获取 AI agent 资产列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAIAgentAssetListWithContext(ctx context.Context, request *DescribeAIAgentAssetListRequest) (response *DescribeAIAgentAssetListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIAgentAssetListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeAIAgentAssetList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAIAgentAssetList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAIAgentAssetListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAbnormalCallRecordRequest() (request *DescribeAbnormalCallRecordRequest) {
     request = &DescribeAbnormalCallRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},

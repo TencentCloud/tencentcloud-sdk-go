@@ -20,6 +20,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ape v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/api v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/apigateway v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/apis v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/apm v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/as v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/asr v0.0.0
@@ -75,7 +76,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.62
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.63
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/controlcenter v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
@@ -275,6 +276,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ape => ../tencentcloud/ape
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/api => ../tencentcloud/api
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/apigateway => ../tencentcloud/apigateway
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/apis => ../tencentcloud/apis
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/apm => ../tencentcloud/apm
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/as => ../tencentcloud/as
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/asr => ../tencentcloud/asr

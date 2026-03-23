@@ -37,6 +37,7 @@ import (
 	apev20200513 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ape/v20200513"
 	apiv20201106 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/api/v20201106"
 	apigatewayv20180808 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/apigateway/v20180808"
+	apisv20240801 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/apis/v20240801"
 	apmv20210622 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/apm/v20210622"
 	asv20180419 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/as/v20180419"
 	asrv20190614 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/asr/v20190614"
@@ -526,6 +527,19 @@ func TestApigatewayv20180808Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init apigateway_v20180808 client: %v", err)
+    }
+}
+
+func TestApisv20240801Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := apisv20240801.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init apis_v20240801 client: %v", err)
     }
 }
 
