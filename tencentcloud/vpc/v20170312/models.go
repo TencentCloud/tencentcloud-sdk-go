@@ -36248,7 +36248,7 @@ type SslClientConfig struct {
 	// 客户端配置
 	SslVpnClientConfiguration *string `json:"SslVpnClientConfiguration,omitnil,omitempty" name:"SslVpnClientConfiguration"`
 
-	// 更证书
+	// 根证书
 	SslVpnRootCert *string `json:"SslVpnRootCert,omitnil,omitempty" name:"SslVpnRootCert"`
 
 	// 客户端密钥
