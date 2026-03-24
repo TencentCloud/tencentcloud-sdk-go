@@ -320,6 +320,122 @@ func (r *CheckSnapshotRollbackResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateAndPayDealRequestParams struct {
+	// <p>询价类型，1 新购，2 续费，3 套餐升级（增值服务暂时只支持新购）</p>
+	DealType *uint64 `json:"DealType,omitnil,omitempty" name:"DealType"`
+
+	// <p>商品类型，1 域名套餐 2 增值服务</p>
+	GoodsType *uint64 `json:"GoodsType,omitnil,omitempty" name:"GoodsType"`
+
+	// <p>套餐类型：<br>DP_PLUS：专业版<br>DP_EXPERT：企业版<br>DP_ULTRA：尊享版</p><p>增值服务类型<br>LB：负载均衡<br>URL：URL转发<br>DMONITOR_TASKS：D监控任务数<br>DMONITOR_IP：D监控备用 IP 数<br>CUSTOMLINE：自定义线路数</p>
+	GoodsChildType *string `json:"GoodsChildType,omitnil,omitempty" name:"GoodsChildType"`
+
+	// <p>增值服务购买数量，如果是域名套餐固定为1，如果是增值服务则按以下规则：<br>负载均衡、D监控任务数、D监控备用 IP 数、自定义线路数、URL 转发（必须是5的正整数倍，如 5、10、15 等）</p>
+	GoodsNum *uint64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
+
+	// <p>是否开启自动续费，1 开启，2 不开启（增值服务暂不支持自动续费），默认值为 2 不开启</p>
+	AutoRenew *uint64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
+
+	// <p>需要绑定套餐的域名，如 dnspod.cn，如果是续费或升级，domain 参数必须要传，新购可不传。</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>套餐时长：</p><ol><li>套餐以月为单位（按月只能是 3、6 还有 12 的倍数），套餐例如购买一年则传12，最大120 。（续费最低一年）</li><li>升级套餐时不需要传。</li><li>增值服务的时长单位为年，买一年传1（增值服务新购按年只能是 1，增值服务续费最大为 10）</li></ol>
+	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// <p>套餐类型，需要升级到的套餐类型，只有升级时需要。</p>
+	NewPackageType *string `json:"NewPackageType,omitnil,omitempty" name:"NewPackageType"`
+
+	// <p>可重入ID，避免接口重试场景生成额外订单和实例</p><p>入参限制：长度不超过70个字符</p>
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+}
+
+type CreateAndPayDealRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>询价类型，1 新购，2 续费，3 套餐升级（增值服务暂时只支持新购）</p>
+	DealType *uint64 `json:"DealType,omitnil,omitempty" name:"DealType"`
+
+	// <p>商品类型，1 域名套餐 2 增值服务</p>
+	GoodsType *uint64 `json:"GoodsType,omitnil,omitempty" name:"GoodsType"`
+
+	// <p>套餐类型：<br>DP_PLUS：专业版<br>DP_EXPERT：企业版<br>DP_ULTRA：尊享版</p><p>增值服务类型<br>LB：负载均衡<br>URL：URL转发<br>DMONITOR_TASKS：D监控任务数<br>DMONITOR_IP：D监控备用 IP 数<br>CUSTOMLINE：自定义线路数</p>
+	GoodsChildType *string `json:"GoodsChildType,omitnil,omitempty" name:"GoodsChildType"`
+
+	// <p>增值服务购买数量，如果是域名套餐固定为1，如果是增值服务则按以下规则：<br>负载均衡、D监控任务数、D监控备用 IP 数、自定义线路数、URL 转发（必须是5的正整数倍，如 5、10、15 等）</p>
+	GoodsNum *uint64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
+
+	// <p>是否开启自动续费，1 开启，2 不开启（增值服务暂不支持自动续费），默认值为 2 不开启</p>
+	AutoRenew *uint64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
+
+	// <p>需要绑定套餐的域名，如 dnspod.cn，如果是续费或升级，domain 参数必须要传，新购可不传。</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>套餐时长：</p><ol><li>套餐以月为单位（按月只能是 3、6 还有 12 的倍数），套餐例如购买一年则传12，最大120 。（续费最低一年）</li><li>升级套餐时不需要传。</li><li>增值服务的时长单位为年，买一年传1（增值服务新购按年只能是 1，增值服务续费最大为 10）</li></ol>
+	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// <p>套餐类型，需要升级到的套餐类型，只有升级时需要。</p>
+	NewPackageType *string `json:"NewPackageType,omitnil,omitempty" name:"NewPackageType"`
+
+	// <p>可重入ID，避免接口重试场景生成额外订单和实例</p><p>入参限制：长度不超过70个字符</p>
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+}
+
+func (r *CreateAndPayDealRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAndPayDealRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DealType")
+	delete(f, "GoodsType")
+	delete(f, "GoodsChildType")
+	delete(f, "GoodsNum")
+	delete(f, "AutoRenew")
+	delete(f, "Domain")
+	delete(f, "TimeSpan")
+	delete(f, "NewPackageType")
+	delete(f, "ClientToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndPayDealRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAndPayDealResponseParams struct {
+	// <p>大订单号，一个大订单号下可以有多个子订单，说明是同一次下单</p>
+	BigDealId *string `json:"BigDealId,omitnil,omitempty" name:"BigDealId"`
+
+	// <p>子订单列表</p>
+	DealList []*Deals `json:"DealList,omitnil,omitempty" name:"DealList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAndPayDealResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAndPayDealResponseParams `json:"Response"`
+}
+
+func (r *CreateAndPayDealResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAndPayDealResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDealRequestParams struct {
 	// 询价类型，1 新购，2 续费，3 套餐升级（增值服务暂时只支持新购）
 	DealType *uint64 `json:"DealType,omitnil,omitempty" name:"DealType"`

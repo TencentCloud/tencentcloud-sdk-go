@@ -5871,6 +5871,18 @@ type DatabaseResponseInfo struct {
 
 	// 数据库ID（无效字段）
 	DatabaseId *string `json:"DatabaseId,omitnil,omitempty" name:"DatabaseId"`
+
+	// 所属catalog名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 所属catalog 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogType *string `json:"CatalogType,omitnil,omitempty" name:"CatalogType"`
+
+	// 是否InformationSchema
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsInformationSchema *bool `json:"IsInformationSchema,omitnil,omitempty" name:"IsInformationSchema"`
 }
 
 type DatasourceConnectionConfig struct {

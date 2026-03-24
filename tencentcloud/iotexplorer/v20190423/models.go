@@ -9170,6 +9170,69 @@ func (r *DescribeProductCloudStorageAIServiceResponse) FromJsonString(s string) 
 }
 
 // Predefined struct for user
+type DescribeProductDynamicRegisterRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+}
+
+type DescribeProductDynamicRegisterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+}
+
+func (r *DescribeProductDynamicRegisterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProductDynamicRegisterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProductDynamicRegisterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProductDynamicRegisterResponseParams struct {
+	// 动态注册类型，0-关闭 1-预创建设备 2-自动创建设备
+	RegisterType *uint64 `json:"RegisterType,omitnil,omitempty" name:"RegisterType"`
+
+	// 动态注册产品密钥
+	ProductSecret *string `json:"ProductSecret,omitnil,omitempty" name:"ProductSecret"`
+
+	// 动态注册设备上限
+	RegisterLimit *uint64 `json:"RegisterLimit,omitnil,omitempty" name:"RegisterLimit"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeProductDynamicRegisterResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeProductDynamicRegisterResponseParams `json:"Response"`
+}
+
+func (r *DescribeProductDynamicRegisterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProductDynamicRegisterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeProjectRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -15051,6 +15114,83 @@ func (r *ModifyProductCloudStorageAIServiceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyProductCloudStorageAIServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyProductDynamicRegisterRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 动态注册类型，0-关闭 1-预创建设备 2-自动创建设备
+	RegisterType *uint64 `json:"RegisterType,omitnil,omitempty" name:"RegisterType"`
+
+	// 动态注册设备上限
+	RegisterLimit *uint64 `json:"RegisterLimit,omitnil,omitempty" name:"RegisterLimit"`
+}
+
+type ModifyProductDynamicRegisterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 动态注册类型，0-关闭 1-预创建设备 2-自动创建设备
+	RegisterType *uint64 `json:"RegisterType,omitnil,omitempty" name:"RegisterType"`
+
+	// 动态注册设备上限
+	RegisterLimit *uint64 `json:"RegisterLimit,omitnil,omitempty" name:"RegisterLimit"`
+}
+
+func (r *ModifyProductDynamicRegisterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyProductDynamicRegisterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "RegisterType")
+	delete(f, "RegisterLimit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyProductDynamicRegisterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyProductDynamicRegisterResponseParams struct {
+	// 动态注册类型，0-关闭 1-预创建设备 2-自动创建设备
+	RegisterType *uint64 `json:"RegisterType,omitnil,omitempty" name:"RegisterType"`
+
+	// 动态注册产品密钥
+	ProductSecret *string `json:"ProductSecret,omitnil,omitempty" name:"ProductSecret"`
+
+	// 动态注册设备上限
+	RegisterLimit *uint64 `json:"RegisterLimit,omitnil,omitempty" name:"RegisterLimit"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyProductDynamicRegisterResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyProductDynamicRegisterResponseParams `json:"Response"`
+}
+
+func (r *ModifyProductDynamicRegisterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyProductDynamicRegisterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

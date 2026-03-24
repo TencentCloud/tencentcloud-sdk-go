@@ -2201,6 +2201,67 @@ func (r *DeleteUsersResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteVmInstanceRequestParams struct {
+	// 服务器实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+type DeleteVmInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务器实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+func (r *DeleteVmInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVmInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "EnvId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVmInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVmInstanceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteVmInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteVmInstanceResponseParams `json:"Response"`
+}
+
+func (r *DeleteVmInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVmInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAuthDomainsRequestParams struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -4543,6 +4604,70 @@ func (r *DescribeUserListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeVmInstancesRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 服务器类型： LightHouse = 轻量云服务器 CVM = 云服务器
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type DescribeVmInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 服务器类型： LightHouse = 轻量云服务器 CVM = 云服务器
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *DescribeVmInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVmInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVmInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVmInstancesResponseParams struct {
+	// 主机实例列表
+	InstanceList []*VmInstance `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVmInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVmInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeVmInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVmInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeVmSpecRequestParams struct {
 	// 类型：
 	// LightHouse = 轻量云服务器
@@ -5171,6 +5296,98 @@ type Indexkey struct {
 
 	// 方向：specify 1 for ascending or -1 for descending
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+}
+
+// Predefined struct for user
+type InquireVmPriceRequestParams struct {
+	// 服务器类型：
+	// LightHouse = 轻量云服务器
+	// CVM = 云服务器
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 轻量云服务器套餐ID。
+	// 当Type=LightHouse时必传
+	LightHouseBundleId *string `json:"LightHouseBundleId,omitnil,omitempty" name:"LightHouseBundleId"`
+
+	// 轻量云服务器镜像ID。当Type=LightHouse时必传
+	LightHouseBlueprintId *string `json:"LightHouseBlueprintId,omitnil,omitempty" name:"LightHouseBlueprintId"`
+}
+
+type InquireVmPriceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务器类型：
+	// LightHouse = 轻量云服务器
+	// CVM = 云服务器
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 轻量云服务器套餐ID。
+	// 当Type=LightHouse时必传
+	LightHouseBundleId *string `json:"LightHouseBundleId,omitnil,omitempty" name:"LightHouseBundleId"`
+
+	// 轻量云服务器镜像ID。当Type=LightHouse时必传
+	LightHouseBlueprintId *string `json:"LightHouseBlueprintId,omitnil,omitempty" name:"LightHouseBlueprintId"`
+}
+
+func (r *InquireVmPriceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquireVmPriceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "LightHouseBundleId")
+	delete(f, "LightHouseBlueprintId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquireVmPriceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquireVmPriceResponseParams struct {
+	// 价格货币单位。取值范围CNY:人民币。USD:美元。
+	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
+
+	// 原价（主机原始每月价格）
+	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
+
+	// 折扣率
+	Discount *float64 `json:"Discount,omitnil,omitempty" name:"Discount"`
+
+	// 折扣后每月价格
+	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
+
+	// 折扣前每天资源点
+	OriginalCredits *float64 `json:"OriginalCredits,omitnil,omitempty" name:"OriginalCredits"`
+
+	// 折扣后每天资源点
+	DiscountCredits *float64 `json:"DiscountCredits,omitnil,omitempty" name:"DiscountCredits"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InquireVmPriceResponse struct {
+	*tchttp.BaseResponse
+	Response *InquireVmPriceResponseParams `json:"Response"`
+}
+
+func (r *InquireVmPriceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquireVmPriceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type KVPair struct {
@@ -7356,4 +7573,15 @@ type VerificationConfig struct {
 	// 单个手机号每日短信发送上限。默认值为 30，传 -1 表示不限制，如果设置为不限制，需要注意恶意攻击，导致短信套餐用量计费问题。仅支持正整数或 -1。不传则不修改当前配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SmsDayLimit *int64 `json:"SmsDayLimit,omitnil,omitempty" name:"SmsDayLimit"`
+}
+
+type VmInstance struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 实例地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }

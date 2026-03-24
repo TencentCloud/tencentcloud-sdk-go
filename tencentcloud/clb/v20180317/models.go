@@ -450,20 +450,20 @@ func (r *BatchModifyTargetTagResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BatchModifyTargetWeightRequestParams struct {
-	// 负载均衡实例 ID。
+	// <p>负载均衡实例 ID。</p>
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 要批量修改权重的列表。
+	// <p>要批量修改权重的列表。ModifyList数组最多100个元素，ModifyList[i].Targets最多50个，全部Targets累加不超过500。</p>
 	ModifyList []*RsWeightRule `json:"ModifyList,omitnil,omitempty" name:"ModifyList"`
 }
 
 type BatchModifyTargetWeightRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡实例 ID。
+	// <p>负载均衡实例 ID。</p>
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 要批量修改权重的列表。
+	// <p>要批量修改权重的列表。ModifyList数组最多100个元素，ModifyList[i].Targets最多50个，全部Targets累加不超过500。</p>
 	ModifyList []*RsWeightRule `json:"ModifyList,omitnil,omitempty" name:"ModifyList"`
 }
 
@@ -5340,26 +5340,26 @@ func (r *DescribeTargetGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTargetHealthRequestParams struct {
-	// 要查询的负载均衡实例ID列表。
+	// <p>要查询的负载均衡实例ID列表。数组大小最大支持30。</p>
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
-	// 要查询的监听器ID列表。
+	// <p>要查询的监听器ID列表。</p>
 	ListenerIds []*string `json:"ListenerIds,omitnil,omitempty" name:"ListenerIds"`
 
-	// 要查询的转发规则ID列表。
+	// <p>要查询的转发规则ID列表。</p>
 	LocationIds []*string `json:"LocationIds,omitnil,omitempty" name:"LocationIds"`
 }
 
 type DescribeTargetHealthRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要查询的负载均衡实例ID列表。
+	// <p>要查询的负载均衡实例ID列表。数组大小最大支持30。</p>
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
-	// 要查询的监听器ID列表。
+	// <p>要查询的监听器ID列表。</p>
 	ListenerIds []*string `json:"ListenerIds,omitnil,omitempty" name:"ListenerIds"`
 
-	// 要查询的转发规则ID列表。
+	// <p>要查询的转发规则ID列表。</p>
 	LocationIds []*string `json:"LocationIds,omitnil,omitempty" name:"LocationIds"`
 }
 
@@ -5386,7 +5386,7 @@ func (r *DescribeTargetHealthRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTargetHealthResponseParams struct {
-	// 负载均衡实例列表。
+	// <p>负载均衡实例列表。</p>
 	LoadBalancers []*LoadBalancerHealth `json:"LoadBalancers,omitnil,omitempty" name:"LoadBalancers"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

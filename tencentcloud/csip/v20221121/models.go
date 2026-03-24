@@ -51,6 +51,9 @@ type AIAgentAsset struct {
 
 	// metadata 有风险时对应路径
 	MetadataRiskURL *string `json:"MetadataRiskURL,omitnil,omitempty" name:"MetadataRiskURL"`
+
+	// 无
+	SkillState *SkillState `json:"SkillState,omitnil,omitempty" name:"SkillState"`
 }
 
 type AKInfo struct {
@@ -10276,6 +10279,25 @@ type ServiceSupport struct {
 
 	// 是否支持该产品1支持；0不支持
 	IsSupport *bool `json:"IsSupport,omitnil,omitempty" name:"IsSupport"`
+}
+
+type SkillState struct {
+	// SKILL安装状态
+	// 枚举值：
+	// 0：未安装
+	// 1：安装中
+	// 2：已安装
+	// 3：安装失败
+	// 4：卸载中
+	// 5：卸载失败
+	SkillInstallStatus *int64 `json:"SkillInstallStatus,omitnil,omitempty" name:"SkillInstallStatus"`
+
+	// SKILL安装/卸载操作时间
+	// 参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+	SkillInstallTime *string `json:"SkillInstallTime,omitnil,omitempty" name:"SkillInstallTime"`
+
+	// SKILL安装/卸载结果描述信息
+	SkillInstallResult *string `json:"SkillInstallResult,omitnil,omitempty" name:"SkillInstallResult"`
 }
 
 type SourceIPAsset struct {

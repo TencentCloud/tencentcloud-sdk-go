@@ -1,10 +1,59 @@
-# Release v1.3.63
+# Release v1.3.64
 
-## AI Agent 安全网关(apis) 版本：2024-08-01
+## 应用性能监控(apm) 版本：2021-06-22
 
-### 第 2 次发布
+### 第 58 次发布
 
-发布时间：2026-03-24 01:11:04
+发布时间：2026-03-25 01:11:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyApmApplicationConfig](https://cloud.tencent.com/document/api/1463/125072)
+
+	* 新增入参：UseDefaultFuseConfig
+
+
+修改数据结构：
+
+* [ApmAppConfig](https://cloud.tencent.com/document/api/1463/64927#ApmAppConfig)
+
+	* 新增成员：UseDefaultFuseConfig
+
+* [ApmApplicationConfigView](https://cloud.tencent.com/document/api/1463/64927#ApmApplicationConfigView)
+
+	* 新增成员：UseDefaultFuseConfig
+
+
+
+
+## 费用中心(billing) 版本：2018-07-09
+
+### 第 86 次发布
+
+发布时间：2026-03-25 01:14:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeVoucherInfo](https://cloud.tencent.com/document/api/555/70813)
+
+	* 新增入参：Lang
+
+
+
+
+## 配置审计(config) 版本：2022-08-02
+
+### 第 6 次发布
+
+发布时间：2026-03-25 01:30:44
 
 本次发布包含了以下内容：
 
@@ -12,123 +61,127 @@
 
 新增接口：
 
-* [CreateAgentCredential](https://cloud.tencent.com/document/api/1627/129675)
-* [DeleteAgentCredential](https://cloud.tencent.com/document/api/1627/129674)
-* [DescribeAgentCredential](https://cloud.tencent.com/document/api/1627/129673)
-* [DescribeAgentCredentials](https://cloud.tencent.com/document/api/1627/129672)
-* [ModifyAgentCredential](https://cloud.tencent.com/document/api/1627/129671)
-
-### 第 1 次发布
-
-发布时间：2026-03-23 17:43:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateAgentApp](https://cloud.tencent.com/document/api/1627/129628)
-* [CreateAgentAppMcpServers](https://cloud.tencent.com/document/api/1627/129627)
-* [CreateAgentAppModelServices](https://cloud.tencent.com/document/api/1627/129626)
-* [CreateMcpServer](https://cloud.tencent.com/document/api/1627/129634)
-* [CreateModel](https://cloud.tencent.com/document/api/1627/129609)
-* [CreateModelService](https://cloud.tencent.com/document/api/1627/129615)
-* [DeleteAgentApp](https://cloud.tencent.com/document/api/1627/129625)
-* [DeleteAgentAppMcpServers](https://cloud.tencent.com/document/api/1627/129624)
-* [DeleteAgentAppModelServices](https://cloud.tencent.com/document/api/1627/129623)
-* [DeleteMcpServer](https://cloud.tencent.com/document/api/1627/129633)
-* [DeleteModel](https://cloud.tencent.com/document/api/1627/129608)
-* [DeleteModelService](https://cloud.tencent.com/document/api/1627/129614)
-* [DescribeAgentApp](https://cloud.tencent.com/document/api/1627/129622)
-* [DescribeAgentAppMcpServers](https://cloud.tencent.com/document/api/1627/129621)
-* [DescribeAgentAppModelServices](https://cloud.tencent.com/document/api/1627/129620)
-* [DescribeAgentApps](https://cloud.tencent.com/document/api/1627/129619)
-* [DescribeMcpServer](https://cloud.tencent.com/document/api/1627/129632)
-* [DescribeMcpServers](https://cloud.tencent.com/document/api/1627/129631)
-* [DescribeModel](https://cloud.tencent.com/document/api/1627/129607)
-* [DescribeModelService](https://cloud.tencent.com/document/api/1627/129613)
-* [DescribeModelServices](https://cloud.tencent.com/document/api/1627/129612)
-* [DescribeModels](https://cloud.tencent.com/document/api/1627/129606)
-* [ModifyAgentApp](https://cloud.tencent.com/document/api/1627/129618)
-* [ModifyAgentAppModelServices](https://cloud.tencent.com/document/api/1627/129617)
-* [ModifyMcpServer](https://cloud.tencent.com/document/api/1627/129630)
-* [ModifyModel](https://cloud.tencent.com/document/api/1627/129605)
-* [ModifyModelService](https://cloud.tencent.com/document/api/1627/129611)
+* [AddAggregateCompliancePack](https://cloud.tencent.com/document/api/1579/129751)
+* [AddAggregateConfigRule](https://cloud.tencent.com/document/api/1579/129727)
+* [AddCompliancePack](https://cloud.tencent.com/document/api/1579/129750)
+* [AddConfigRule](https://cloud.tencent.com/document/api/1579/129726)
+* [CloseAggregateConfigRule](https://cloud.tencent.com/document/api/1579/129725)
+* [CloseConfigRecorder](https://cloud.tencent.com/document/api/1579/129701)
+* [CloseConfigRule](https://cloud.tencent.com/document/api/1579/129724)
+* [CreateAggregator](https://cloud.tencent.com/document/api/1579/129705)
+* [CreateRemediation](https://cloud.tencent.com/document/api/1579/129723)
+* [DeleteAggregateCompliancePack](https://cloud.tencent.com/document/api/1579/129749)
+* [DeleteAggregateConfigRule](https://cloud.tencent.com/document/api/1579/129722)
+* [DeleteCompliancePack](https://cloud.tencent.com/document/api/1579/129748)
+* [DeleteConfigRule](https://cloud.tencent.com/document/api/1579/129721)
+* [DeleteRemediations](https://cloud.tencent.com/document/api/1579/129720)
+* [DescribeAggregateCompliancePack](https://cloud.tencent.com/document/api/1579/129747)
+* [DescribeAggregateConfigDeliver](https://cloud.tencent.com/document/api/1579/129734)
+* [DescribeAggregateConfigRule](https://cloud.tencent.com/document/api/1579/129719)
+* [DescribeAggregator](https://cloud.tencent.com/document/api/1579/129704)
+* [DescribeCompliancePack](https://cloud.tencent.com/document/api/1579/129746)
+* [DescribeConfigDeliver](https://cloud.tencent.com/document/api/1579/129733)
+* [DescribeConfigRecorder](https://cloud.tencent.com/document/api/1579/129700)
+* [DescribeConfigRule](https://cloud.tencent.com/document/api/1579/129718)
+* [DescribeSystemCompliancePack](https://cloud.tencent.com/document/api/1579/129745)
+* [DescribeSystemRule](https://cloud.tencent.com/document/api/1579/129729)
+* [DetachAggregateConfigRuleToCompliancePack](https://cloud.tencent.com/document/api/1579/129744)
+* [DetachConfigRuleToCompliancePack](https://cloud.tencent.com/document/api/1579/129743)
+* [ListAggregateCompliancePacks](https://cloud.tencent.com/document/api/1579/129742)
+* [ListAggregateConfigRuleEvaluationResults](https://cloud.tencent.com/document/api/1579/129717)
+* [ListAggregators](https://cloud.tencent.com/document/api/1579/129703)
+* [ListCompliancePacks](https://cloud.tencent.com/document/api/1579/129741)
+* [ListConfigRuleEvaluationResults](https://cloud.tencent.com/document/api/1579/129716)
+* [ListRemediationExecutions](https://cloud.tencent.com/document/api/1579/129699)
+* [ListRemediations](https://cloud.tencent.com/document/api/1579/129715)
+* [ListResourceTypes](https://cloud.tencent.com/document/api/1579/129698)
+* [ListSystemCompliancePacks](https://cloud.tencent.com/document/api/1579/129740)
+* [ListSystemRules](https://cloud.tencent.com/document/api/1579/129714)
+* [OpenAggregateConfigRule](https://cloud.tencent.com/document/api/1579/129713)
+* [OpenConfigRecorder](https://cloud.tencent.com/document/api/1579/129753)
+* [OpenConfigRule](https://cloud.tencent.com/document/api/1579/129712)
+* [StartAggregateConfigRuleEvaluation](https://cloud.tencent.com/document/api/1579/129711)
+* [StartConfigRuleEvaluation](https://cloud.tencent.com/document/api/1579/129710)
+* [StartRemediation](https://cloud.tencent.com/document/api/1579/129709)
+* [UpdateAggregateCompliancePack](https://cloud.tencent.com/document/api/1579/129739)
+* [UpdateAggregateCompliancePackStatus](https://cloud.tencent.com/document/api/1579/129738)
+* [UpdateAggregateConfigDeliver](https://cloud.tencent.com/document/api/1579/129732)
+* [UpdateAggregateConfigRule](https://cloud.tencent.com/document/api/1579/129708)
+* [UpdateCompliancePack](https://cloud.tencent.com/document/api/1579/129737)
+* [UpdateCompliancePackStatus](https://cloud.tencent.com/document/api/1579/129736)
+* [UpdateConfigDeliver](https://cloud.tencent.com/document/api/1579/129731)
+* [UpdateConfigRecorder](https://cloud.tencent.com/document/api/1579/129697)
+* [UpdateConfigRule](https://cloud.tencent.com/document/api/1579/129707)
+* [UpdateRemediation](https://cloud.tencent.com/document/api/1579/129706)
 
 新增数据结构：
 
-* [AgentAppMcpServerDTO](https://cloud.tencent.com/document/api/1627/129635#AgentAppMcpServerDTO)
-* [AgentAppMcpServerVO](https://cloud.tencent.com/document/api/1627/129635#AgentAppMcpServerVO)
-* [AgentAppModelServiceDTO](https://cloud.tencent.com/document/api/1627/129635#AgentAppModelServiceDTO)
-* [AgentAppSecretKeyVO](https://cloud.tencent.com/document/api/1627/129635#AgentAppSecretKeyVO)
-* [AgentCredentialContentDTO](https://cloud.tencent.com/document/api/1627/129635#AgentCredentialContentDTO)
-* [AgentCredentialContentHeaderDTO](https://cloud.tencent.com/document/api/1627/129635#AgentCredentialContentHeaderDTO)
-* [BindMcpSecurityRuleDTO](https://cloud.tencent.com/document/api/1627/129635#BindMcpSecurityRuleDTO)
-* [BindMcpSecurityRuleVO](https://cloud.tencent.com/document/api/1627/129635#BindMcpSecurityRuleVO)
-* [CreateAgentAppResp](https://cloud.tencent.com/document/api/1627/129635#CreateAgentAppResp)
-* [DescribeAgentAppMcpServersResp](https://cloud.tencent.com/document/api/1627/129635#DescribeAgentAppMcpServersResp)
-* [DescribeAgentAppResp](https://cloud.tencent.com/document/api/1627/129635#DescribeAgentAppResp)
-* [DescribeAgentAppsResp](https://cloud.tencent.com/document/api/1627/129635#DescribeAgentAppsResp)
-* [DescribeAgentAppsSortDTO](https://cloud.tencent.com/document/api/1627/129635#DescribeAgentAppsSortDTO)
-* [DescribeAgentCredentialResp](https://cloud.tencent.com/document/api/1627/129635#DescribeAgentCredentialResp)
-* [DescribeMcpServerResponseVO](https://cloud.tencent.com/document/api/1627/129635#DescribeMcpServerResponseVO)
-* [DescribeMcpServersResponseVO](https://cloud.tencent.com/document/api/1627/129635#DescribeMcpServersResponseVO)
-* [DescribeModelResponseVO](https://cloud.tencent.com/document/api/1627/129635#DescribeModelResponseVO)
-* [DescribeModelServiceResponseVO](https://cloud.tencent.com/document/api/1627/129635#DescribeModelServiceResponseVO)
-* [DescribeModelServicesResponseVO](https://cloud.tencent.com/document/api/1627/129635#DescribeModelServicesResponseVO)
-* [DescribeModelServicesSort](https://cloud.tencent.com/document/api/1627/129635#DescribeModelServicesSort)
-* [DescribeModelsResponseVO](https://cloud.tencent.com/document/api/1627/129635#DescribeModelsResponseVO)
-* [DescribeModelsSort](https://cloud.tencent.com/document/api/1627/129635#DescribeModelsSort)
-* [IDNameVO](https://cloud.tencent.com/document/api/1627/129635#IDNameVO)
-* [InvokeLimitConfigDTO](https://cloud.tencent.com/document/api/1627/129635#InvokeLimitConfigDTO)
-* [IpConfig](https://cloud.tencent.com/document/api/1627/129635#IpConfig)
-* [LimitWindowsDTO](https://cloud.tencent.com/document/api/1627/129635#LimitWindowsDTO)
-* [McpInputOutSchema](https://cloud.tencent.com/document/api/1627/129635#McpInputOutSchema)
-* [McpSecurityRule](https://cloud.tencent.com/document/api/1627/129635#McpSecurityRule)
-* [McpSecurityRulesVO](https://cloud.tencent.com/document/api/1627/129635#McpSecurityRulesVO)
-* [McpTool](https://cloud.tencent.com/document/api/1627/129635#McpTool)
-* [McpToolAnnotation](https://cloud.tencent.com/document/api/1627/129635#McpToolAnnotation)
-* [McpUrlObj](https://cloud.tencent.com/document/api/1627/129635#McpUrlObj)
-* [PluginConfigDTO](https://cloud.tencent.com/document/api/1627/129635#PluginConfigDTO)
-* [PluginFormValueDTO](https://cloud.tencent.com/document/api/1627/129635#PluginFormValueDTO)
-* [ResultIDVO](https://cloud.tencent.com/document/api/1627/129635#ResultIDVO)
-* [ResultIDsVO](https://cloud.tencent.com/document/api/1627/129635#ResultIDsVO)
-* [StartEndTime](https://cloud.tencent.com/document/api/1627/129635#StartEndTime)
-* [TargetHostDTO](https://cloud.tencent.com/document/api/1627/129635#TargetHostDTO)
-* [TargetModelDTO](https://cloud.tencent.com/document/api/1627/129635#TargetModelDTO)
-* [TmsConfigDTO](https://cloud.tencent.com/document/api/1627/129635#TmsConfigDTO)
-* [TokenLimitConfigDTO](https://cloud.tencent.com/document/api/1627/129635#TokenLimitConfigDTO)
-* [ToolConfigDTO](https://cloud.tencent.com/document/api/1627/129635#ToolConfigDTO)
-* [ToolConfigVO](https://cloud.tencent.com/document/api/1627/129635#ToolConfigVO)
+* [AggregateEvaluationResult](https://cloud.tencent.com/document/api/1579/101783#AggregateEvaluationResult)
+* [Aggregator](https://cloud.tencent.com/document/api/1579/101783#Aggregator)
+* [AggregatorAccount](https://cloud.tencent.com/document/api/1579/101783#AggregatorAccount)
+* [ComplianceConfigRule](https://cloud.tencent.com/document/api/1579/101783#ComplianceConfigRule)
+* [CompliancePackRule](https://cloud.tencent.com/document/api/1579/101783#CompliancePackRule)
+* [CompliancePackRuleForManage](https://cloud.tencent.com/document/api/1579/101783#CompliancePackRuleForManage)
+* [CompliancePackRules](https://cloud.tencent.com/document/api/1579/101783#CompliancePackRules)
+* [ConfigCompliancePack](https://cloud.tencent.com/document/api/1579/101783#ConfigCompliancePack)
+* [ConfigResource](https://cloud.tencent.com/document/api/1579/101783#ConfigResource)
+* [Control](https://cloud.tencent.com/document/api/1579/101783#Control)
+* [EvaluationResult](https://cloud.tencent.com/document/api/1579/101783#EvaluationResult)
+* [Remediation](https://cloud.tencent.com/document/api/1579/101783#Remediation)
+* [RemediationExecutions](https://cloud.tencent.com/document/api/1579/101783#RemediationExecutions)
+* [SystemCompliancePack](https://cloud.tencent.com/document/api/1579/101783#SystemCompliancePack)
+* [SystemConfigRule](https://cloud.tencent.com/document/api/1579/101783#SystemConfigRule)
+* [UserConfigResource](https://cloud.tencent.com/document/api/1579/101783#UserConfigResource)
 
 
 
 ## 云安全一体化平台(csip) 版本：2022-11-21
 
-### 第 69 次发布
+### 第 70 次发布
 
-发布时间：2026-03-24 01:31:42
+发布时间：2026-03-25 01:31:38
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
-
-* [DescribeAIAgentAssetList](https://cloud.tencent.com/document/api/664/129677)
-
 新增数据结构：
+
+* [SkillState](https://cloud.tencent.com/document/api/664/90825#SkillState)
+
+修改数据结构：
 
 * [AIAgentAsset](https://cloud.tencent.com/document/api/664/90825#AIAgentAsset)
 
+	* 新增成员：SkillState
 
 
-## 主机安全(cwp) 版本：2018-02-28
 
-### 第 160 次发布
 
-发布时间：2026-03-24 01:34:33
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 153 次发布
+
+发布时间：2026-03-25 01:44:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DatabaseResponseInfo](https://cloud.tencent.com/document/api/1342/53778#DatabaseResponseInfo)
+
+	* 新增成员：CatalogName, CatalogType, IsInformationSchema
+
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 51 次发布
+
+发布时间：2026-03-25 01:46:09
 
 本次发布包含了以下内容：
 
@@ -136,38 +189,92 @@
 
 新增接口：
 
-* [DescribeSkillInfo](https://cloud.tencent.com/document/api/296/129678)
-
-新增数据结构：
-
-* [SkillInfo](https://cloud.tencent.com/document/api/296/19867#SkillInfo)
+* [CreateAndPayDeal](https://cloud.tencent.com/document/api/1427/129754)
 
 
 
-## 智能视图计算平台(iss) 版本：2023-05-17
+## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 30 次发布
+### 第 283 次发布
 
-发布时间：2026-03-24 02:23:34
+发布时间：2026-03-25 01:52:30
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [DescribeDeviceData](https://cloud.tencent.com/document/api/1344/95952#DescribeDeviceData)
-
-	* 新增成员：PushStreamSecureUrl
-
+* [DescribeContractReviewMarkedRiskExportTask](https://cloud.tencent.com/document/api/1323/129756)
+* [ExportContractReviewMarkedRisk](https://cloud.tencent.com/document/api/1323/129755)
 
 
 
-## 媒体处理(mps) 版本：2019-06-12
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-### 第 187 次发布
+### 第 135 次发布
 
-发布时间：2026-03-24 02:46:23
+发布时间：2026-03-24 17:53:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeProductDynamicRegister](https://cloud.tencent.com/document/api/1081/129696)
+* [ModifyProductDynamicRegister](https://cloud.tencent.com/document/api/1081/129695)
+
+
+
+## 云直播CSS(live) 版本：2018-08-01
+
+### 第 167 次发布
+
+发布时间：2026-03-25 02:10:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateVideoRedrawTask](https://cloud.tencent.com/document/api/267/129758)
+
+新增数据结构：
+
+* [VideoRedrawCosInfo](https://cloud.tencent.com/document/api/267/20474#VideoRedrawCosInfo)
+* [VideoRedrawInput](https://cloud.tencent.com/document/api/267/20474#VideoRedrawInput)
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 130 次发布
+
+发布时间：2026-03-25 02:56:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteVmInstance](https://cloud.tencent.com/document/api/876/129761)
+* [DescribeVmInstances](https://cloud.tencent.com/document/api/876/129760)
+* [InquireVmPrice](https://cloud.tencent.com/document/api/876/129759)
+
+新增数据结构：
+
+* [VmInstance](https://cloud.tencent.com/document/api/876/34822#VmInstance)
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 76 次发布
+
+发布时间：2026-03-25 02:58:40
 
 本次发布包含了以下内容：
 
@@ -175,24 +282,22 @@
 
 修改接口：
 
-* [SyncDubbing](https://cloud.tencent.com/document/api/862/128038)
+* [ModifyNamespace](https://cloud.tencent.com/document/api/1141/42727)
 
-	* 新增入参：Output
-
-	* 新增出参：AudioUrl, ExtInfo
-
-
-新增数据结构：
-
-* [SyncDubbingOutputOption](https://cloud.tencent.com/document/api/862/37615#SyncDubbingOutputOption)
+	* 新增入参：TagSpecification
 
 
 
-## 文字识别(ocr) 版本：2018-11-19
 
-### 第 240 次发布
+## 数据开发治理平台 WeData(wedata) 版本：2025-08-06
 
-发布时间：2026-03-24 02:53:37
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 184 次发布
+
+发布时间：2026-03-25 03:54:25
 
 本次发布包含了以下内容：
 
@@ -200,74 +305,13 @@
 
 修改数据结构：
 
-* [TextWaybill](https://cloud.tencent.com/document/api/866/33527#TextWaybill)
+* [ProdSchedulerTask](https://cloud.tencent.com/document/api/1267/76336#ProdSchedulerTask)
 
-	* 新增成员：MainWaybillNum
+	* 新增成员：TaskStatus
 
+* [RuleGroupPage](https://cloud.tencent.com/document/api/1267/76336#RuleGroupPage)
 
-
-
-## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
-
-### 第 63 次发布
-
-发布时间：2026-03-24 02:59:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateInstances](https://cloud.tencent.com/document/api/409/56107)
-
-	* 新增入参：StorageType
-
-* [DescribeClasses](https://cloud.tencent.com/document/api/409/89019)
-
-	* 新增入参：StorageType
-
-* [DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)
-
-	* 新增入参：StorageType
-
-* [DescribeProductConfig](https://cloud.tencent.com/document/api/409/16776)
-
-	* 新增入参：StorageType
-
-* [InquiryPriceCreateDBInstances](https://cloud.tencent.com/document/api/409/16777)
-
-	* 新增入参：StorageType
-
-
-修改数据结构：
-
-* [DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)
-
-	* 新增成员：DBInstanceStorageType
-
-
-
-
-## 云点播(vod) 版本：2024-07-18
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 239 次发布
-
-发布时间：2026-03-24 04:01:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [AigcVideoOutputConfig](https://cloud.tencent.com/document/api/266/31773#AigcVideoOutputConfig)
-
-	* 新增成员：OffPeak
+	* 新增成员：MonitorEnabledCount
 
 
 

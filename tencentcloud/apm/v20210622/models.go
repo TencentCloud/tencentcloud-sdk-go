@@ -276,6 +276,9 @@ type ApmAppConfig struct {
 
 	// <p>响应时间预警阈值（ms），用于判断应用健康状态为&quot;黄色&quot;</p>
 	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
+
+	// <p>是否默认使用探针自带熔断阈值</p>
+	UseDefaultFuseConfig *bool `json:"UseDefaultFuseConfig,omitnil,omitempty" name:"UseDefaultFuseConfig"`
 }
 
 type ApmApplicationConfigView struct {
@@ -428,6 +431,9 @@ type ApmApplicationConfigView struct {
 
 	// <p>响应时间预警阈值</p><p>单位：ms</p>
 	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
+
+	// <p>是否使用探针默认熔断阈值</p>
+	UseDefaultFuseConfig *bool `json:"UseDefaultFuseConfig,omitnil,omitempty" name:"UseDefaultFuseConfig"`
 }
 
 type ApmAssociation struct {
@@ -3523,6 +3529,9 @@ type ModifyApmApplicationConfigRequestParams struct {
 
 	// <p>响应时间预警阈值（ms），用于判断应用健康状态为&quot;黄色&quot;</p>
 	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
+
+	// <p>是否使用探针默认熔断阈值</p>
+	UseDefaultFuseConfig *bool `json:"UseDefaultFuseConfig,omitnil,omitempty" name:"UseDefaultFuseConfig"`
 }
 
 type ModifyApmApplicationConfigRequest struct {
@@ -3701,6 +3710,9 @@ type ModifyApmApplicationConfigRequest struct {
 
 	// <p>响应时间预警阈值（ms），用于判断应用健康状态为&quot;黄色&quot;</p>
 	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
+
+	// <p>是否使用探针默认熔断阈值</p>
+	UseDefaultFuseConfig *bool `json:"UseDefaultFuseConfig,omitnil,omitempty" name:"UseDefaultFuseConfig"`
 }
 
 func (r *ModifyApmApplicationConfigRequest) ToJsonString() string {
@@ -3773,6 +3785,7 @@ func (r *ModifyApmApplicationConfigRequest) FromJsonString(s string) error {
 	delete(f, "EnableThresholdConfig")
 	delete(f, "ErrRateThreshold")
 	delete(f, "ResponseDurationWarningThreshold")
+	delete(f, "UseDefaultFuseConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmApplicationConfigRequest has unknown keys!", "")
 	}

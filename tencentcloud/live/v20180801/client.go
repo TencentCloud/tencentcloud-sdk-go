@@ -3639,6 +3639,62 @@ func (c *Client) CreateScreenshotTaskWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateVideoRedrawTaskRequest() (request *CreateVideoRedrawTaskRequest) {
+    request = &CreateVideoRedrawTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateVideoRedrawTask")
+    
+    
+    return
+}
+
+func NewCreateVideoRedrawTaskResponse() (response *CreateVideoRedrawTaskResponse) {
+    response = &CreateVideoRedrawTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVideoRedrawTask
+// 创建AI转绘任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEAIGCTASKFAILED = "FailedOperation.CreateAIGCTaskFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+func (c *Client) CreateVideoRedrawTask(request *CreateVideoRedrawTaskRequest) (response *CreateVideoRedrawTaskResponse, err error) {
+    return c.CreateVideoRedrawTaskWithContext(context.Background(), request)
+}
+
+// CreateVideoRedrawTask
+// 创建AI转绘任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEAIGCTASKFAILED = "FailedOperation.CreateAIGCTaskFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+func (c *Client) CreateVideoRedrawTaskWithContext(ctx context.Context, request *CreateVideoRedrawTaskRequest) (response *CreateVideoRedrawTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateVideoRedrawTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "CreateVideoRedrawTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVideoRedrawTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVideoRedrawTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAuditKeywordsRequest() (request *DeleteAuditKeywordsRequest) {
     request = &DeleteAuditKeywordsRequest{
         BaseRequest: &tchttp.BaseRequest{},

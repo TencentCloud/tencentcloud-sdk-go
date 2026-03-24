@@ -5539,6 +5539,70 @@ func (r *CreateScreenshotTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateVideoRedrawTaskRequestParams struct {
+	// <p>输入待转绘视频url信息</p>
+	Input *VideoRedrawInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// <p>用户自定义cos信息</p>
+	CosInfo *VideoRedrawCosInfo `json:"CosInfo,omitnil,omitempty" name:"CosInfo"`
+}
+
+type CreateVideoRedrawTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>输入待转绘视频url信息</p>
+	Input *VideoRedrawInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// <p>用户自定义cos信息</p>
+	CosInfo *VideoRedrawCosInfo `json:"CosInfo,omitnil,omitempty" name:"CosInfo"`
+}
+
+func (r *CreateVideoRedrawTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoRedrawTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Input")
+	delete(f, "CosInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVideoRedrawTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVideoRedrawTaskResponseParams struct {
+	// <p>任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVideoRedrawTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVideoRedrawTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateVideoRedrawTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoRedrawTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DayStreamPlayInfo struct {
 	// 数据时间点，接口返回支持两种时间格式：
 	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见ISO日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
@@ -14728,62 +14792,44 @@ func (r *DescribeStreamDayPlayInfoListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeStreamPlayInfoListRequestParams struct {
-	// 起始时间点，接口查询支持两种时间格式：
-	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
-	// 2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
-	// 开始时间和结束时间的格式需要保持一致。
+	// <p>起始时间点，接口查询支持两种时间格式：<br>1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I<br>2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。<br>开始时间和结束时间的格式需要保持一致。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间点，接口查询支持两种时间格式：
-	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
-	// 2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
-	// 开始时间和结束时间的格式需要保持一致。结束时间和开始时间跨度不支持超过24小时，支持距当前时间一个月内的数据查询。
+	// <p>结束时间点，接口查询支持两种时间格式：<br>1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I<br>2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。<br>开始时间和结束时间的格式需要保持一致。结束时间和开始时间跨度不支持超过24小时，支持距当前时间一个月内的数据查询。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 播放域名，
-	// 若不填，则为查询所有播放域名的在线流数据。
+	// <p>播放域名，<br>若不填，则为查询所有播放域名的在线流数据。</p>
 	PlayDomain *string `json:"PlayDomain,omitnil,omitempty" name:"PlayDomain"`
 
-	// 流名称，精确匹配。
-	// 若不填，则为查询总体播放数据。
+	// <p>流名称，精确匹配。<br>若不填，则为查询总体播放数据。</p>
 	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
 
-	// 推流路径，与播放地址中的AppName保持一致，会精确匹配，在同时传递了StreamName时生效。
-	// 若不填，则为查询总体播放数据。
+	// <p>该参数暂不可用。</p>
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// 服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。
+	// <p>服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 }
 
 type DescribeStreamPlayInfoListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 起始时间点，接口查询支持两种时间格式：
-	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
-	// 2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
-	// 开始时间和结束时间的格式需要保持一致。
+	// <p>起始时间点，接口查询支持两种时间格式：<br>1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I<br>2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。<br>开始时间和结束时间的格式需要保持一致。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间点，接口查询支持两种时间格式：
-	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
-	// 2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
-	// 开始时间和结束时间的格式需要保持一致。结束时间和开始时间跨度不支持超过24小时，支持距当前时间一个月内的数据查询。
+	// <p>结束时间点，接口查询支持两种时间格式：<br>1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I<br>2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。<br>开始时间和结束时间的格式需要保持一致。结束时间和开始时间跨度不支持超过24小时，支持距当前时间一个月内的数据查询。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 播放域名，
-	// 若不填，则为查询所有播放域名的在线流数据。
+	// <p>播放域名，<br>若不填，则为查询所有播放域名的在线流数据。</p>
 	PlayDomain *string `json:"PlayDomain,omitnil,omitempty" name:"PlayDomain"`
 
-	// 流名称，精确匹配。
-	// 若不填，则为查询总体播放数据。
+	// <p>流名称，精确匹配。<br>若不填，则为查询总体播放数据。</p>
 	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
 
-	// 推流路径，与播放地址中的AppName保持一致，会精确匹配，在同时传递了StreamName时生效。
-	// 若不填，则为查询总体播放数据。
+	// <p>该参数暂不可用。</p>
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// 服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。
+	// <p>服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 }
 
@@ -14813,7 +14859,7 @@ func (r *DescribeStreamPlayInfoListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeStreamPlayInfoListResponseParams struct {
-	// 统计信息列表，时间粒度是1分钟。
+	// <p>统计信息列表，时间粒度是1分钟。</p>
 	DataInfoList []*DayStreamPlayInfo `json:"DataInfoList,omitnil,omitempty" name:"DataInfoList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21917,6 +21963,31 @@ func (r *UpdateLiveWatermarkResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpdateLiveWatermarkResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type VideoRedrawCosInfo struct {
+	// <p>cos所在地域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>cos桶信息</p>
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// <p>任务存放cos的目录</p>
+	Dir *string `json:"Dir,omitnil,omitempty" name:"Dir"`
+
+	// <p>临时Cos SecretId</p>
+	TmpSecretId *string `json:"TmpSecretId,omitnil,omitempty" name:"TmpSecretId"`
+
+	// <p>临时Cos SecretKey</p>
+	TmpSecretKey *string `json:"TmpSecretKey,omitnil,omitempty" name:"TmpSecretKey"`
+
+	// <p>临时token</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+}
+
+type VideoRedrawInput struct {
+	// <p>输入待转绘的视频URL</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 type WatermarkInfo struct {

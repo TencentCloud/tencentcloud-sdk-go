@@ -74,6 +74,9 @@ const (
 	// 参数格式错误。
 	INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 
+	// IP格式错误
+	INVALIDPARAMETER_IPNOVALID = "InvalidParameter.IpNoValid"
+
 	// 缺少必须参数。
 	INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 

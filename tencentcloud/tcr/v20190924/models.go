@@ -7715,51 +7715,57 @@ func (r *ModifyInstanceTokenResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNamespaceRequestParams struct {
-	// 实例Id
+	// <p>实例Id</p>
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
-	// 命名空间名称
+	// <p>命名空间名称</p>
 	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
 
-	// 访问级别，True为公开，False为私有
+	// <p>访问级别，True为公开，False为私有</p>
 	IsPublic *bool `json:"IsPublic,omitnil,omitempty" name:"IsPublic"`
 
-	// 扫描级别，True为自动，False为手动
+	// <p>扫描级别，True为自动，False为手动</p>
 	IsAutoScan *bool `json:"IsAutoScan,omitnil,omitempty" name:"IsAutoScan"`
 
-	// 阻断开关，True为开放，False为关闭
+	// <p>阻断开关，True为开放，False为关闭</p>
 	IsPreventVUL *bool `json:"IsPreventVUL,omitnil,omitempty" name:"IsPreventVUL"`
 
-	// 阻断漏洞等级，目前仅支持 low、medium、high
+	// <p>阻断漏洞等级，目前仅支持 low、medium、high</p>
 	Severity *string `json:"Severity,omitnil,omitempty" name:"Severity"`
 
-	// 漏洞白名单列表
+	// <p>漏洞白名单列表</p>
 	CVEWhitelistItems []*CVEWhitelistItem `json:"CVEWhitelistItems,omitnil,omitempty" name:"CVEWhitelistItems"`
+
+	// <p>tag列表</p>
+	TagSpecification *TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 }
 
 type ModifyNamespaceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// <p>实例Id</p>
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
-	// 命名空间名称
+	// <p>命名空间名称</p>
 	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
 
-	// 访问级别，True为公开，False为私有
+	// <p>访问级别，True为公开，False为私有</p>
 	IsPublic *bool `json:"IsPublic,omitnil,omitempty" name:"IsPublic"`
 
-	// 扫描级别，True为自动，False为手动
+	// <p>扫描级别，True为自动，False为手动</p>
 	IsAutoScan *bool `json:"IsAutoScan,omitnil,omitempty" name:"IsAutoScan"`
 
-	// 阻断开关，True为开放，False为关闭
+	// <p>阻断开关，True为开放，False为关闭</p>
 	IsPreventVUL *bool `json:"IsPreventVUL,omitnil,omitempty" name:"IsPreventVUL"`
 
-	// 阻断漏洞等级，目前仅支持 low、medium、high
+	// <p>阻断漏洞等级，目前仅支持 low、medium、high</p>
 	Severity *string `json:"Severity,omitnil,omitempty" name:"Severity"`
 
-	// 漏洞白名单列表
+	// <p>漏洞白名单列表</p>
 	CVEWhitelistItems []*CVEWhitelistItem `json:"CVEWhitelistItems,omitnil,omitempty" name:"CVEWhitelistItems"`
+
+	// <p>tag列表</p>
+	TagSpecification *TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 }
 
 func (r *ModifyNamespaceRequest) ToJsonString() string {
@@ -7781,6 +7787,7 @@ func (r *ModifyNamespaceRequest) FromJsonString(s string) error {
 	delete(f, "IsPreventVUL")
 	delete(f, "Severity")
 	delete(f, "CVEWhitelistItems")
+	delete(f, "TagSpecification")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNamespaceRequest has unknown keys!", "")
 	}

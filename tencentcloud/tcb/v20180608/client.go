@@ -1423,6 +1423,56 @@ func (c *Client) DeleteUsersWithContext(ctx context.Context, request *DeleteUser
     return
 }
 
+func NewDeleteVmInstanceRequest() (request *DeleteVmInstanceRequest) {
+    request = &DeleteVmInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DeleteVmInstance")
+    
+    
+    return
+}
+
+func NewDeleteVmInstanceResponse() (response *DeleteVmInstanceResponse) {
+    response = &DeleteVmInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteVmInstance
+// 销毁云服务器实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteVmInstance(request *DeleteVmInstanceRequest) (response *DeleteVmInstanceResponse, err error) {
+    return c.DeleteVmInstanceWithContext(context.Background(), request)
+}
+
+// DeleteVmInstance
+// 销毁云服务器实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteVmInstanceWithContext(ctx context.Context, request *DeleteVmInstanceRequest) (response *DeleteVmInstanceResponse, err error) {
+    if request == nil {
+        request = NewDeleteVmInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteVmInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVmInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteVmInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAuthDomainsRequest() (request *DescribeAuthDomainsRequest) {
     request = &DescribeAuthDomainsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2959,6 +3009,62 @@ func (c *Client) DescribeUserListWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeVmInstancesRequest() (request *DescribeVmInstancesRequest) {
+    request = &DescribeVmInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeVmInstances")
+    
+    
+    return
+}
+
+func NewDescribeVmInstancesResponse() (response *DescribeVmInstancesResponse) {
+    response = &DescribeVmInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVmInstances
+// 查询环境下的云服务器列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVmInstances(request *DescribeVmInstancesRequest) (response *DescribeVmInstancesResponse, err error) {
+    return c.DescribeVmInstancesWithContext(context.Background(), request)
+}
+
+// DescribeVmInstances
+// 查询环境下的云服务器列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVmInstancesWithContext(ctx context.Context, request *DescribeVmInstancesRequest) (response *DescribeVmInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeVmInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeVmInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVmInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVmInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVmSpecRequest() (request *DescribeVmSpecRequest) {
     request = &DescribeVmSpecRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3335,6 +3441,56 @@ func (c *Client) GetProvidersWithContext(ctx context.Context, request *GetProvid
     request.SetContext(ctx)
     
     response = NewGetProvidersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquireVmPriceRequest() (request *InquireVmPriceRequest) {
+    request = &InquireVmPriceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "InquireVmPrice")
+    
+    
+    return
+}
+
+func NewInquireVmPriceResponse() (response *InquireVmPriceResponse) {
+    response = &InquireVmPriceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InquireVmPrice
+// 查询服务器价格
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) InquireVmPrice(request *InquireVmPriceRequest) (response *InquireVmPriceResponse, err error) {
+    return c.InquireVmPriceWithContext(context.Background(), request)
+}
+
+// InquireVmPrice
+// 查询服务器价格
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) InquireVmPriceWithContext(ctx context.Context, request *InquireVmPriceRequest) (response *InquireVmPriceResponse, err error) {
+    if request == nil {
+        request = NewInquireVmPriceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "InquireVmPrice")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquireVmPrice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquireVmPriceResponse()
     err = c.Send(request, response)
     return
 }

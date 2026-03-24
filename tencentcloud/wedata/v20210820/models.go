@@ -34570,6 +34570,15 @@ type ProdSchedulerTask struct {
 	// 负责人name
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InChargeNameList []*string `json:"InChargeNameList,omitnil,omitempty" name:"InChargeNameList"`
+
+	// 生产调度任务状态，参考调度任务侧状态信息，“DELETED”状态为质量侧单独加的，查不到任务时认为任务“DELETED”
+	// 'Y': '调度中',
+	// 'F': '已下线',
+	// 'O': '已暂停',
+	// 'INVALID': '已失效',
+	// 'DELETED': '已删除' 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 }
 
 type Project struct {
@@ -37739,13 +37748,17 @@ type RuleGroupExecStrategy struct {
 }
 
 type RuleGroupPage struct {
-	// 记录数
+	// 查询结果总数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 规则组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*RuleGroup `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 已开启监控任务数量（在查询结果总量中）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorEnabledCount *uint64 `json:"MonitorEnabledCount,omitnil,omitempty" name:"MonitorEnabledCount"`
 }
 
 type RuleGroupSchedulerInfo struct {

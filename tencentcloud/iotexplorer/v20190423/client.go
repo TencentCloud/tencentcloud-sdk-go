@@ -6685,6 +6685,70 @@ func (c *Client) DescribeProductCloudStorageAIServiceWithContext(ctx context.Con
     return
 }
 
+func NewDescribeProductDynamicRegisterRequest() (request *DescribeProductDynamicRegisterRequest) {
+    request = &DescribeProductDynamicRegisterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeProductDynamicRegister")
+    
+    
+    return
+}
+
+func NewDescribeProductDynamicRegisterResponse() (response *DescribeProductDynamicRegisterResponse) {
+    response = &DescribeProductDynamicRegisterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeProductDynamicRegister
+// 获取产品动态注册详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DescribeProductDynamicRegister(request *DescribeProductDynamicRegisterRequest) (response *DescribeProductDynamicRegisterResponse, err error) {
+    return c.DescribeProductDynamicRegisterWithContext(context.Background(), request)
+}
+
+// DescribeProductDynamicRegister
+// 获取产品动态注册详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DescribeProductDynamicRegisterWithContext(ctx context.Context, request *DescribeProductDynamicRegisterRequest) (response *DescribeProductDynamicRegisterResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductDynamicRegisterRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeProductDynamicRegister")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProductDynamicRegister require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProductDynamicRegisterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProjectRequest() (request *DescribeProjectRequest) {
     request = &DescribeProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10599,6 +10663,72 @@ func (c *Client) ModifyProductCloudStorageAIServiceWithContext(ctx context.Conte
     request.SetContext(ctx)
     
     response = NewModifyProductCloudStorageAIServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyProductDynamicRegisterRequest() (request *ModifyProductDynamicRegisterRequest) {
+    request = &ModifyProductDynamicRegisterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyProductDynamicRegister")
+    
+    
+    return
+}
+
+func NewModifyProductDynamicRegisterResponse() (response *ModifyProductDynamicRegisterResponse) {
+    response = &ModifyProductDynamicRegisterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyProductDynamicRegister
+// 修改产品动态注册
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONTORELEASEDPRODUCT = "UnsupportedOperation.NoPermissionToReleasedProduct"
+func (c *Client) ModifyProductDynamicRegister(request *ModifyProductDynamicRegisterRequest) (response *ModifyProductDynamicRegisterResponse, err error) {
+    return c.ModifyProductDynamicRegisterWithContext(context.Background(), request)
+}
+
+// ModifyProductDynamicRegister
+// 修改产品动态注册
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONTORELEASEDPRODUCT = "UnsupportedOperation.NoPermissionToReleasedProduct"
+func (c *Client) ModifyProductDynamicRegisterWithContext(ctx context.Context, request *ModifyProductDynamicRegisterRequest) (response *ModifyProductDynamicRegisterResponse, err error) {
+    if request == nil {
+        request = NewModifyProductDynamicRegisterRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "ModifyProductDynamicRegister")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProductDynamicRegister require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyProductDynamicRegisterResponse()
     err = c.Send(request, response)
     return
 }

@@ -604,7 +604,7 @@ func (r *GetMultiModalEmbeddingResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTextEmbeddingRequestParams struct {
-	// 模型名称，可选模型列表：bge-base-zh-v1.5,Conan-embedding-v1,bge-m3,KaLM-embedding-multilingual-mini-v1,Qwen3-Embedding-0.6B。
+	// 模型名称，可选模型列表：bge-base-zh-v1.5,bge-large-zh-v1.5,Conan-embedding-v1,bge-m3,KaLM-embedding-multilingual-mini-v1,Qwen3-Embedding-0.6B。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// 需进行向量化的文本集。
@@ -614,7 +614,7 @@ type GetTextEmbeddingRequestParams struct {
 type GetTextEmbeddingRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模型名称，可选模型列表：bge-base-zh-v1.5,Conan-embedding-v1,bge-m3,KaLM-embedding-multilingual-mini-v1,Qwen3-Embedding-0.6B。
+	// 模型名称，可选模型列表：bge-base-zh-v1.5,bge-large-zh-v1.5,Conan-embedding-v1,bge-m3,KaLM-embedding-multilingual-mini-v1,Qwen3-Embedding-0.6B。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// 需进行向量化的文本集。

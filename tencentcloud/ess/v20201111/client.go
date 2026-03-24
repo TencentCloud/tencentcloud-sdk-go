@@ -10887,6 +10887,70 @@ func (c *Client) DescribeContractReviewChecklistsWebUrlWithContext(ctx context.C
     return
 }
 
+func NewDescribeContractReviewMarkedRiskExportTaskRequest() (request *DescribeContractReviewMarkedRiskExportTaskRequest) {
+    request = &DescribeContractReviewMarkedRiskExportTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeContractReviewMarkedRiskExportTask")
+    
+    
+    return
+}
+
+func NewDescribeContractReviewMarkedRiskExportTaskResponse() (response *DescribeContractReviewMarkedRiskExportTaskResponse) {
+    response = &DescribeContractReviewMarkedRiskExportTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeContractReviewMarkedRiskExportTask
+// 本接口（DescribeContractReviewMarkedRiskExportTask）用于查询由 ExportContractReviewMarkedRisk 接口创建的导出任务状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+func (c *Client) DescribeContractReviewMarkedRiskExportTask(request *DescribeContractReviewMarkedRiskExportTaskRequest) (response *DescribeContractReviewMarkedRiskExportTaskResponse, err error) {
+    return c.DescribeContractReviewMarkedRiskExportTaskWithContext(context.Background(), request)
+}
+
+// DescribeContractReviewMarkedRiskExportTask
+// 本接口（DescribeContractReviewMarkedRiskExportTask）用于查询由 ExportContractReviewMarkedRisk 接口创建的导出任务状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+func (c *Client) DescribeContractReviewMarkedRiskExportTaskWithContext(ctx context.Context, request *DescribeContractReviewMarkedRiskExportTaskRequest) (response *DescribeContractReviewMarkedRiskExportTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeContractReviewMarkedRiskExportTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeContractReviewMarkedRiskExportTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeContractReviewMarkedRiskExportTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeContractReviewMarkedRiskExportTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeContractReviewTaskRequest() (request *DescribeContractReviewTaskRequest) {
     request = &DescribeContractReviewTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13729,6 +13793,70 @@ func (c *Client) ExportContractComparisonTaskWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewExportContractComparisonTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportContractReviewMarkedRiskRequest() (request *ExportContractReviewMarkedRiskRequest) {
+    request = &ExportContractReviewMarkedRiskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "ExportContractReviewMarkedRisk")
+    
+    
+    return
+}
+
+func NewExportContractReviewMarkedRiskResponse() (response *ExportContractReviewMarkedRiskResponse) {
+    response = &ExportContractReviewMarkedRiskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExportContractReviewMarkedRisk
+// 本接口（ExportContractReviewMarkedRisk）用于创建导出任务，可以导出合同审查标注风险项,包括忽略的、标记错误的、人工标注的风险等
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+func (c *Client) ExportContractReviewMarkedRisk(request *ExportContractReviewMarkedRiskRequest) (response *ExportContractReviewMarkedRiskResponse, err error) {
+    return c.ExportContractReviewMarkedRiskWithContext(context.Background(), request)
+}
+
+// ExportContractReviewMarkedRisk
+// 本接口（ExportContractReviewMarkedRisk）用于创建导出任务，可以导出合同审查标注风险项,包括忽略的、标记错误的、人工标注的风险等
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+func (c *Client) ExportContractReviewMarkedRiskWithContext(ctx context.Context, request *ExportContractReviewMarkedRiskRequest) (response *ExportContractReviewMarkedRiskResponse, err error) {
+    if request == nil {
+        request = NewExportContractReviewMarkedRiskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "ExportContractReviewMarkedRisk")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportContractReviewMarkedRisk require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportContractReviewMarkedRiskResponse()
     err = c.Send(request, response)
     return
 }

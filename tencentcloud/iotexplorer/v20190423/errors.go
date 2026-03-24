@@ -593,6 +593,9 @@ const (
 	// Lora设备没有激活。
 	UNSUPPORTEDOPERATION_LORANOTACTIVATE = "UnsupportedOperation.LoRaNotActivate"
 
+	// 动态注册不支持修改已发布的产品。
+	UNSUPPORTEDOPERATION_NOPERMISSIONTORELEASEDPRODUCT = "UnsupportedOperation.NoPermissionToReleasedProduct"
+
 	// VPN下还存在未删除的设备。
 	UNSUPPORTEDOPERATION_NODESEXISTUNDERVPN = "UnsupportedOperation.NodesExistUnderVPN"
 
