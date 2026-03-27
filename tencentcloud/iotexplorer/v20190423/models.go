@@ -10156,6 +10156,9 @@ type DeviceActiveResult struct {
 	// 设备激活状态，0：激活成功；50011：系统错误；50012：产品不存在；50013：设备不存在；50014：产品无权限；50015：不是音视频产品；50016：SN格式错误；50017：激活码类型错误；50018：激活次数限频；50019：激活码不足；50020：SN已暂停；
 	ErrCode *uint64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
+	// 错误信息
+	ErrMessage *string `json:"ErrMessage,omitnil,omitempty" name:"ErrMessage"`
+
 	// 过期时间
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 }

@@ -85,86 +85,80 @@ type Attachment struct {
 
 // Predefined struct for user
 type BatchSendEmailRequestParams struct {
-	// 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照
-	// 发信人 &lt;邮件地址&gt; 的方式填写，例如：
-	// 腾讯云团队 &lt;noreply@mail.qcloud.com&gt;
+	// <p>发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照<br>发信人 &lt;邮件地址&gt; 的方式填写，例如：<br>腾讯云团队 &lt;noreply@mail.qcloud.com&gt;</p>
 	FromEmailAddress *string `json:"FromEmailAddress,omitnil,omitempty" name:"FromEmailAddress"`
 
-	// 收件人列表ID
+	// <p>收件人列表ID</p>
 	ReceiverId *uint64 `json:"ReceiverId,omitnil,omitempty" name:"ReceiverId"`
 
-	// 邮件主题
+	// <p>邮件主题</p>
 	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
 
-	// 任务类型 1: 立即发送 2: 定时发送 3: 周期（频率）发送
+	// <p>任务类型 1: 立即发送 2: 定时发送 3: 周期（频率）发送</p>
 	TaskType *uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
+	// <p>邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。</p>
 	ReplyToAddresses *string `json:"ReplyToAddresses,omitnil,omitempty" name:"ReplyToAddresses"`
 
-	// 使用模板发送时，填写的模板相关参数
-	// <dx-alert infotype="notice" title="注意"> 如您未申请过特殊配置，则该字段为必填 </dx-alert>
+	// <p>使用模板发送时，填写的模板相关参数</p><blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">注意</div>        <div class="rno-document-tip-desc"><p>如您未申请过特殊配置，则该字段为必填</p></div>    </div></blockquote>
 	Template *Template `json:"Template,omitnil,omitempty" name:"Template"`
 
-	// 已废弃<dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
+	// <p>已废弃<blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">说明</div>        <div class="rno-document-tip-desc"><p>仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</p></div>    </div></blockquote></p>
 	Simple *Simple `json:"Simple,omitnil,omitempty" name:"Simple"`
 
-	// 需要发送附件时，填写附件相关参数（暂未支持）
+	// <p>需要发送附件时，填写附件相关参数（暂未支持）</p>
 	Attachments []*Attachment `json:"Attachments,omitnil,omitempty" name:"Attachments"`
 
-	// 周期发送任务的必要参数
+	// <p>周期发送任务的必要参数</p>
 	CycleParam *CycleEmailParam `json:"CycleParam,omitnil,omitempty" name:"CycleParam"`
 
-	// 定时发送任务的必要参数
+	// <p>定时发送任务的必要参数</p>
 	TimedParam *TimedEmailParam `json:"TimedParam,omitnil,omitempty" name:"TimedParam"`
 
-	// 退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+	// <p>退订链接选项</p><p>枚举值：</p><ul><li>0： 不加入退订链接</li><li>1： 简体中文</li><li>2： 英文</li><li>3： 繁体中文</li><li>4： 西班牙语</li><li>5： 法语</li><li>6： 德语</li><li>7： 日语</li><li>8： 韩语</li><li>9： 阿拉伯语</li><li>10： 泰语</li><li>11： 印尼语</li></ul>
 	Unsubscribe *string `json:"Unsubscribe,omitnil,omitempty" name:"Unsubscribe"`
 
-	// 是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面
+	// <p>是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面</p>
 	ADLocation *uint64 `json:"ADLocation,omitnil,omitempty" name:"ADLocation"`
 }
 
 type BatchSendEmailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照
-	// 发信人 &lt;邮件地址&gt; 的方式填写，例如：
-	// 腾讯云团队 &lt;noreply@mail.qcloud.com&gt;
+	// <p>发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照<br>发信人 &lt;邮件地址&gt; 的方式填写，例如：<br>腾讯云团队 &lt;noreply@mail.qcloud.com&gt;</p>
 	FromEmailAddress *string `json:"FromEmailAddress,omitnil,omitempty" name:"FromEmailAddress"`
 
-	// 收件人列表ID
+	// <p>收件人列表ID</p>
 	ReceiverId *uint64 `json:"ReceiverId,omitnil,omitempty" name:"ReceiverId"`
 
-	// 邮件主题
+	// <p>邮件主题</p>
 	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
 
-	// 任务类型 1: 立即发送 2: 定时发送 3: 周期（频率）发送
+	// <p>任务类型 1: 立即发送 2: 定时发送 3: 周期（频率）发送</p>
 	TaskType *uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
+	// <p>邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。</p>
 	ReplyToAddresses *string `json:"ReplyToAddresses,omitnil,omitempty" name:"ReplyToAddresses"`
 
-	// 使用模板发送时，填写的模板相关参数
-	// <dx-alert infotype="notice" title="注意"> 如您未申请过特殊配置，则该字段为必填 </dx-alert>
+	// <p>使用模板发送时，填写的模板相关参数</p><blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">注意</div>        <div class="rno-document-tip-desc"><p>如您未申请过特殊配置，则该字段为必填</p></div>    </div></blockquote>
 	Template *Template `json:"Template,omitnil,omitempty" name:"Template"`
 
-	// 已废弃<dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
+	// <p>已废弃<blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">说明</div>        <div class="rno-document-tip-desc"><p>仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</p></div>    </div></blockquote></p>
 	Simple *Simple `json:"Simple,omitnil,omitempty" name:"Simple"`
 
-	// 需要发送附件时，填写附件相关参数（暂未支持）
+	// <p>需要发送附件时，填写附件相关参数（暂未支持）</p>
 	Attachments []*Attachment `json:"Attachments,omitnil,omitempty" name:"Attachments"`
 
-	// 周期发送任务的必要参数
+	// <p>周期发送任务的必要参数</p>
 	CycleParam *CycleEmailParam `json:"CycleParam,omitnil,omitempty" name:"CycleParam"`
 
-	// 定时发送任务的必要参数
+	// <p>定时发送任务的必要参数</p>
 	TimedParam *TimedEmailParam `json:"TimedParam,omitnil,omitempty" name:"TimedParam"`
 
-	// 退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+	// <p>退订链接选项</p><p>枚举值：</p><ul><li>0： 不加入退订链接</li><li>1： 简体中文</li><li>2： 英文</li><li>3： 繁体中文</li><li>4： 西班牙语</li><li>5： 法语</li><li>6： 德语</li><li>7： 日语</li><li>8： 韩语</li><li>9： 阿拉伯语</li><li>10： 泰语</li><li>11： 印尼语</li></ul>
 	Unsubscribe *string `json:"Unsubscribe,omitnil,omitempty" name:"Unsubscribe"`
 
-	// 是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面
+	// <p>是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面</p>
 	ADLocation *uint64 `json:"ADLocation,omitnil,omitempty" name:"ADLocation"`
 }
 
@@ -200,7 +194,7 @@ func (r *BatchSendEmailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BatchSendEmailResponseParams struct {
-	// 发送任务ID
+	// <p>发送任务ID</p>
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

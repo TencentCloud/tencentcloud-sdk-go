@@ -19217,7 +19217,7 @@ type RegisterInfo struct {
 
 type RegisterInfoOption struct {
 	// 是否允许编辑企业注册时的法人姓名。
-	// <br/>true：允许编辑<br/>false：不允许编辑（默认值）<br/>
+	// <br/>true：不允许编辑<br/>false：允许编辑（默认值）<br/>
 	// 
 	// 注意：
 	// RegisterInfo 中的LegalName值不为空的时候，才可设置为不可编辑。
@@ -19231,6 +19231,8 @@ type RegisterInfoOption struct {
 	// 
 	// 注意：
 	// RegisterInfo 中的UnifiedSocialCreditCode值不为空的时候，才可设置为不可编辑。
+	//
+	// Deprecated: UnifiedSocialCreditCodeCNameSame is deprecated.
 	UnifiedSocialCreditCodeCNameSame *bool `json:"UnifiedSocialCreditCodeCNameSame,omitnil,omitempty" name:"UnifiedSocialCreditCodeCNameSame"`
 
 	// 是否允许编辑企业注册时的证照类型
@@ -19241,6 +19243,16 @@ type RegisterInfoOption struct {
 	// 注意：
 	// RegisterInfo 中的OrganizationIdCardType值不为空的时候，才可设置为不可编辑。
 	OrganizationIdCardTypeSame *bool `json:"OrganizationIdCardTypeSame,omitnil,omitempty" name:"OrganizationIdCardTypeSame"`
+
+	// 是否允许编辑企业注册时统一社会信用代码。
+	// <br/>true:不允许编辑。
+	// <br/>false:允许编辑（默认值）。
+	// <br/>
+	// 
+	// 
+	// 注意：
+	// RegisterInfo 中的UnifiedSocialCreditCode值不为空的时候，才可设置为不可编辑。
+	UnifiedSocialCreditCodeSame *bool `json:"UnifiedSocialCreditCodeSame,omitnil,omitempty" name:"UnifiedSocialCreditCodeSame"`
 }
 
 type RegistrationOrganizationInfo struct {

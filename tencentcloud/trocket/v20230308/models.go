@@ -153,6 +153,9 @@ type ConsumeGroupItem struct {
 
 	// 绑定的标签列表
 	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
+
+	// 重试策略
+	RetryPolicy *RetryPolicy `json:"RetryPolicy,omitnil,omitempty" name:"RetryPolicy"`
 }
 
 type ConsumerClient struct {
@@ -204,6 +207,9 @@ type CreateConsumerGroupRequestParams struct {
 
 	// 标签列表
 	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
+
+	// 重试策略
+	RetryPolicy *RetryPolicy `json:"RetryPolicy,omitnil,omitempty" name:"RetryPolicy"`
 }
 
 type CreateConsumerGroupRequest struct {
@@ -230,6 +236,9 @@ type CreateConsumerGroupRequest struct {
 
 	// 标签列表
 	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
+
+	// 重试策略
+	RetryPolicy *RetryPolicy `json:"RetryPolicy,omitnil,omitempty" name:"RetryPolicy"`
 }
 
 func (r *CreateConsumerGroupRequest) ToJsonString() string {
@@ -251,6 +260,7 @@ func (r *CreateConsumerGroupRequest) FromJsonString(s string) error {
 	delete(f, "ConsumerGroup")
 	delete(f, "Remark")
 	delete(f, "TagList")
+	delete(f, "RetryPolicy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsumerGroupRequest has unknown keys!", "")
 	}
@@ -499,6 +509,15 @@ type CreateRoleRequestParams struct {
 
 	// Topic&Group维度权限配置，权限类型为 TopicAndGroup 时必填
 	DetailedPerms []*DetailedRolePerm `json:"DetailedPerms,omitnil,omitempty" name:"DetailedPerms"`
+
+	// AK、SK的生成方式，AUTO：后端自动生成，MANUAL：用户手动输入
+	RoleGenerateMode *string `json:"RoleGenerateMode,omitnil,omitempty" name:"RoleGenerateMode"`
+
+	// 选择MANUAL模式下，需要手动输入AK值
+	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
+
+	// 选择MANUAL模式下，需要手动输入SK值
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 }
 
 type CreateRoleRequest struct {
@@ -524,6 +543,15 @@ type CreateRoleRequest struct {
 
 	// Topic&Group维度权限配置，权限类型为 TopicAndGroup 时必填
 	DetailedPerms []*DetailedRolePerm `json:"DetailedPerms,omitnil,omitempty" name:"DetailedPerms"`
+
+	// AK、SK的生成方式，AUTO：后端自动生成，MANUAL：用户手动输入
+	RoleGenerateMode *string `json:"RoleGenerateMode,omitnil,omitempty" name:"RoleGenerateMode"`
+
+	// 选择MANUAL模式下，需要手动输入AK值
+	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
+
+	// 选择MANUAL模式下，需要手动输入SK值
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 }
 
 func (r *CreateRoleRequest) ToJsonString() string {
@@ -545,6 +573,9 @@ func (r *CreateRoleRequest) FromJsonString(s string) error {
 	delete(f, "Remark")
 	delete(f, "PermType")
 	delete(f, "DetailedPerms")
+	delete(f, "RoleGenerateMode")
+	delete(f, "AccessKey")
+	delete(f, "SecretKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoleRequest has unknown keys!", "")
 	}
@@ -1358,6 +1389,9 @@ type DescribeConsumerGroupResponseParams struct {
 	// BROADCASTING 广播模式
 	// CLUSTERING 集群模式
 	MessageModel *string `json:"MessageModel,omitnil,omitempty" name:"MessageModel"`
+
+	// 重试策略
+	RetryPolicy *RetryPolicy `json:"RetryPolicy,omitnil,omitempty" name:"RetryPolicy"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3834,6 +3868,9 @@ type ModifyConsumerGroupRequestParams struct {
 
 	// 备注信息，最多 128 个字符
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 重试策略
+	RetryPolicy *RetryPolicy `json:"RetryPolicy,omitnil,omitempty" name:"RetryPolicy"`
 }
 
 type ModifyConsumerGroupRequest struct {
@@ -3857,6 +3894,9 @@ type ModifyConsumerGroupRequest struct {
 
 	// 备注信息，最多 128 个字符
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 重试策略
+	RetryPolicy *RetryPolicy `json:"RetryPolicy,omitnil,omitempty" name:"RetryPolicy"`
 }
 
 func (r *ModifyConsumerGroupRequest) ToJsonString() string {
@@ -3877,6 +3917,7 @@ func (r *ModifyConsumerGroupRequest) FromJsonString(s string) error {
 	delete(f, "ConsumerGroup")
 	delete(f, "MaxRetryTimes")
 	delete(f, "Remark")
+	delete(f, "RetryPolicy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConsumerGroupRequest has unknown keys!", "")
 	}
@@ -4030,6 +4071,9 @@ type ModifyInstanceRequestParams struct {
 
 	// 是否开启删除保护
 	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
+
+	// 部署可用区列表
+	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 }
 
 type ModifyInstanceRequest struct {
@@ -4074,6 +4118,9 @@ type ModifyInstanceRequest struct {
 
 	// 是否开启删除保护
 	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
+
+	// 部署可用区列表
+	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 }
 
 func (r *ModifyInstanceRequest) ToJsonString() string {
@@ -4099,6 +4146,7 @@ func (r *ModifyInstanceRequest) FromJsonString(s string) error {
 	delete(f, "MaxTopicNum")
 	delete(f, "ExtraTopicNum")
 	delete(f, "EnableDeletionProtection")
+	delete(f, "ZoneIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceRequest has unknown keys!", "")
 	}
@@ -4616,6 +4664,17 @@ func (r *ResetConsumerGroupOffsetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RetryPolicy struct {
+	// 重试策略类型，枚举值如下：
+	// 
+	// - EXPONENTIAL：固定间隔
+	// - CUSTOMIZED：阶梯退避
+	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
+
+	// 固定重试间隔，仅在重试策略为固定间隔时生效
+	RetryInterval *int64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
+}
+
 type RoleItem struct {
 	// 角色名称
 	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
@@ -5123,11 +5182,11 @@ type VerifyMessageConsumptionRequestParams struct {
 	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 客户端ID
-	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
-
 	// 消息ID
 	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
+
+	// 客户端 ID，不指定该参数时消息将被发送到对应消费组内任意客户端
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
 	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
@@ -5142,11 +5201,11 @@ type VerifyMessageConsumptionRequest struct {
 	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 客户端ID
-	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
-
 	// 消息ID
 	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
+
+	// 客户端 ID，不指定该参数时消息将被发送到对应消费组内任意客户端
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
 	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
@@ -5166,8 +5225,8 @@ func (r *VerifyMessageConsumptionRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "Topic")
-	delete(f, "ClientId")
 	delete(f, "MsgId")
+	delete(f, "ClientId")
 	delete(f, "ConsumerGroup")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyMessageConsumptionRequest has unknown keys!", "")

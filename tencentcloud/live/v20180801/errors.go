@@ -251,6 +251,9 @@ const (
 	// 启动混流失败。
 	FAILEDOPERATION_PROCESSMIXERROR = "FailedOperation.ProcessMixError"
 
+	// 查询AIGC任务失败
+	FAILEDOPERATION_QUERYAIGCTASKFAILED = "FailedOperation.QueryAIGCTaskFailed"
+
 	// 查询 upload 信息失败。
 	FAILEDOPERATION_QUERYUPLOADINFOFAILED = "FailedOperation.QueryUploadInfoFailed"
 

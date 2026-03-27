@@ -2434,33 +2434,51 @@ func (r *CreateRocketMQNamespaceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRocketMQRoleRequestParams struct {
-	// 角色名称，不支持中字以及除了短线和下划线外的特殊字符且长度必须大于0且小等于32。
+	// <p>角色名称，不支持中字以及除了短线和下划线外的特殊字符且长度必须大于0且小等于32。</p>
 	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
 
-	// 必填字段，集群Id
+	// <p>必填字段，集群Id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 备注说明，长度必须大等于0且小等于128。
+	// <p>备注说明，长度必须大等于0且小等于128。</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 角色授权类型（集群：Cluster; 主题或消费组：TopicAndGroup）
+	// <p>角色授权类型（集群：Cluster; 主题或消费组：TopicAndGroup）</p>
 	PermType *string `json:"PermType,omitnil,omitempty" name:"PermType"`
+
+	// <p>AK、SK的生成方式，AUTO：后端自动生成，MANUAL：用户手动输入</p>
+	RoleGenerateMode *string `json:"RoleGenerateMode,omitnil,omitempty" name:"RoleGenerateMode"`
+
+	// <p>选择MANUAL模式下，需要手动输入AK值</p>
+	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
+
+	// <p>选择MANUAL模式下，需要手动输入SK值</p>
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 }
 
 type CreateRocketMQRoleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 角色名称，不支持中字以及除了短线和下划线外的特殊字符且长度必须大于0且小等于32。
+	// <p>角色名称，不支持中字以及除了短线和下划线外的特殊字符且长度必须大于0且小等于32。</p>
 	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
 
-	// 必填字段，集群Id
+	// <p>必填字段，集群Id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 备注说明，长度必须大等于0且小等于128。
+	// <p>备注说明，长度必须大等于0且小等于128。</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 角色授权类型（集群：Cluster; 主题或消费组：TopicAndGroup）
+	// <p>角色授权类型（集群：Cluster; 主题或消费组：TopicAndGroup）</p>
 	PermType *string `json:"PermType,omitnil,omitempty" name:"PermType"`
+
+	// <p>AK、SK的生成方式，AUTO：后端自动生成，MANUAL：用户手动输入</p>
+	RoleGenerateMode *string `json:"RoleGenerateMode,omitnil,omitempty" name:"RoleGenerateMode"`
+
+	// <p>选择MANUAL模式下，需要手动输入AK值</p>
+	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
+
+	// <p>选择MANUAL模式下，需要手动输入SK值</p>
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 }
 
 func (r *CreateRocketMQRoleRequest) ToJsonString() string {
@@ -2479,6 +2497,9 @@ func (r *CreateRocketMQRoleRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "Remark")
 	delete(f, "PermType")
+	delete(f, "RoleGenerateMode")
+	delete(f, "AccessKey")
+	delete(f, "SecretKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRocketMQRoleRequest has unknown keys!", "")
 	}
@@ -2487,13 +2508,13 @@ func (r *CreateRocketMQRoleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRocketMQRoleResponseParams struct {
-	// 角色名称
+	// <p>角色名称</p>
 	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
 
-	// 角色token
+	// <p>角色token</p>
 	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
 
-	// 备注说明
+	// <p>备注说明</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
@@ -12716,41 +12737,39 @@ func (r *ModifyRocketMQInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRocketMQInstanceSpecRequestParams struct {
-	// 专享实例ID
+	// <p>专享实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例规格，
-	// rocket-vip-basic-1 基础型
-	// rocket-vip-basic-2 标准型
-	// rocket-vip-basic-3 高阶Ⅰ型
-	// rocket-vip-basic-4 高阶Ⅱ型
+	// <p>实例规格，<br>rocket-vip-basic-1 基础型<br>rocket-vip-basic-2 标准型<br>rocket-vip-basic-3 高阶Ⅰ型<br>rocket-vip-basic-4 高阶Ⅱ型</p>
 	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
 
-	// 节点数量
+	// <p>节点数量</p>
 	NodeCount *uint64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
 
-	// 存储空间，GB为单位
+	// <p>存储空间，GB为单位</p>
 	StorageSize *uint64 `json:"StorageSize,omitnil,omitempty" name:"StorageSize"`
+
+	// <p>部署可用区列表</p>
+	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 }
 
 type ModifyRocketMQInstanceSpecRequest struct {
 	*tchttp.BaseRequest
 	
-	// 专享实例ID
+	// <p>专享实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例规格，
-	// rocket-vip-basic-1 基础型
-	// rocket-vip-basic-2 标准型
-	// rocket-vip-basic-3 高阶Ⅰ型
-	// rocket-vip-basic-4 高阶Ⅱ型
+	// <p>实例规格，<br>rocket-vip-basic-1 基础型<br>rocket-vip-basic-2 标准型<br>rocket-vip-basic-3 高阶Ⅰ型<br>rocket-vip-basic-4 高阶Ⅱ型</p>
 	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
 
-	// 节点数量
+	// <p>节点数量</p>
 	NodeCount *uint64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
 
-	// 存储空间，GB为单位
+	// <p>存储空间，GB为单位</p>
 	StorageSize *uint64 `json:"StorageSize,omitnil,omitempty" name:"StorageSize"`
+
+	// <p>部署可用区列表</p>
+	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 }
 
 func (r *ModifyRocketMQInstanceSpecRequest) ToJsonString() string {
@@ -12769,6 +12788,7 @@ func (r *ModifyRocketMQInstanceSpecRequest) FromJsonString(s string) error {
 	delete(f, "Specification")
 	delete(f, "NodeCount")
 	delete(f, "StorageSize")
+	delete(f, "ZoneIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRocketMQInstanceSpecRequest has unknown keys!", "")
 	}
@@ -12777,7 +12797,7 @@ func (r *ModifyRocketMQInstanceSpecRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRocketMQInstanceSpecResponseParams struct {
-	// 订单号
+	// <p>订单号</p>
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16498,11 +16518,11 @@ type VerifyRocketMQConsumeRequestParams struct {
 	// 消息id
 	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
 
-	// 客户端ID
-	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
-
 	// 主题名称
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 客户端 ID，不指定该参数时消息将被发送到对应消费组内任意客户端
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 }
 
 type VerifyRocketMQConsumeRequest struct {
@@ -16520,11 +16540,11 @@ type VerifyRocketMQConsumeRequest struct {
 	// 消息id
 	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
 
-	// 客户端ID
-	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
-
 	// 主题名称
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 客户端 ID，不指定该参数时消息将被发送到对应消费组内任意客户端
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 }
 
 func (r *VerifyRocketMQConsumeRequest) ToJsonString() string {
@@ -16543,8 +16563,8 @@ func (r *VerifyRocketMQConsumeRequest) FromJsonString(s string) error {
 	delete(f, "NamespaceId")
 	delete(f, "GroupId")
 	delete(f, "MsgId")
-	delete(f, "ClientId")
 	delete(f, "TopicName")
+	delete(f, "ClientId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyRocketMQConsumeRequest has unknown keys!", "")
 	}

@@ -55,6 +55,20 @@ type COSStorage struct {
 	URI *string `json:"URI,omitnil,omitempty" name:"URI"`
 }
 
+type CallInfo struct {
+	// 服务ID
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 服务调用地址
+	PublicEndpoint *string `json:"PublicEndpoint,omitnil,omitempty" name:"PublicEndpoint"`
+
+	// 服务调用的API_KEY
+	ApiKey *string `json:"ApiKey,omitnil,omitempty" name:"ApiKey"`
+
+	// 内网调用地址
+	VpcEndpoint *string `json:"VpcEndpoint,omitnil,omitempty" name:"VpcEndpoint"`
+}
+
 type ComputeDetail struct {
 	// 算力套餐ID
 	BundleType *string `json:"BundleType,omitnil,omitempty" name:"BundleType"`
@@ -342,6 +356,60 @@ func (r *CreateMuskPromptResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateMuskPromptResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteServiceRequestParams struct {
+	// 服务ID
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+}
+
+type DeleteServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务ID
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+}
+
+func (r *DeleteServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteServiceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteServiceResponseParams `json:"Response"`
+}
+
+func (r *DeleteServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1075,6 +1143,77 @@ func (r *DescribeServiceLoginSettingsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeServiceLoginSettingsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServicesCallInfoRequestParams struct {
+	// 推理服务ID列表
+	ServiceIds []*string `json:"ServiceIds,omitnil,omitempty" name:"ServiceIds"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeServicesCallInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 推理服务ID列表
+	ServiceIds []*string `json:"ServiceIds,omitnil,omitempty" name:"ServiceIds"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeServicesCallInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServicesCallInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceIds")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServicesCallInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServicesCallInfoResponseParams struct {
+	// 调用信息
+	CallInfoSet []*CallInfo `json:"CallInfoSet,omitnil,omitempty" name:"CallInfoSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeServicesCallInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeServicesCallInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeServicesCallInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServicesCallInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

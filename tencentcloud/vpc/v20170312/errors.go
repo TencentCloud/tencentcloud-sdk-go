@@ -1190,6 +1190,9 @@ const (
 	// NAT网关存在路由和最近流量“出/入带宽”峰值取大超过检测带宽阈值。
 	UNSUPPORTEDOPERATION_NATGATEWAYHAVEROUTEANDHIGHTRAFFIC = "UnsupportedOperation.NatGatewayHaveRouteAndHighTraffic"
 
+	// NAT实例正在使用流量镜像
+	UNSUPPORTEDOPERATION_NATGATEWAYHAVETRAFFICMIRROR = "UnsupportedOperation.NatGatewayHaveTrafficMirror"
+
 	// NAT实例当前负载较高，请稍后重试
 	UNSUPPORTEDOPERATION_NATGATEWAYISBUSY = "UnsupportedOperation.NatGatewayIsBusy"
 
@@ -1465,6 +1468,9 @@ const (
 
 	// 流量调度策略分配带宽和地域间带宽不一致，不支持关闭流量调度策略功能。
 	UNSUPPORTEDOPERATION_TRAFFICQOSPOLICYBANDWIDTH = "UnsupportedOperation.TrafficQosPolicyBandwidth"
+
+	// 资源业务带宽超过防误操作检测阈值。
+	UNSUPPORTEDOPERATION_TRAFFICVALIDATIONFAILED = "UnsupportedOperation.TrafficValidationFailed"
 
 	// 账号ID不存在。
 	UNSUPPORTEDOPERATION_UINNOTFOUND = "UnsupportedOperation.UinNotFound"

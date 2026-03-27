@@ -607,6 +607,9 @@ type BatchGetPlaybackTokenRequestParams struct {
 
 	// <p>token过期时间，单位秒。如果传0则表示不过期</p>
 	ExpireSeconds *uint64 `json:"ExpireSeconds,omitnil,omitempty" name:"ExpireSeconds"`
+
+	// <p>用户ID</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
 type BatchGetPlaybackTokenRequest struct {
@@ -620,6 +623,9 @@ type BatchGetPlaybackTokenRequest struct {
 
 	// <p>token过期时间，单位秒。如果传0则表示不过期</p>
 	ExpireSeconds *uint64 `json:"ExpireSeconds,omitnil,omitempty" name:"ExpireSeconds"`
+
+	// <p>用户ID</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
 func (r *BatchGetPlaybackTokenRequest) ToJsonString() string {
@@ -637,6 +643,7 @@ func (r *BatchGetPlaybackTokenRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "RoomIds")
 	delete(f, "ExpireSeconds")
+	delete(f, "UserId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchGetPlaybackTokenRequest has unknown keys!", "")
 	}
@@ -650,6 +657,9 @@ type BatchGetPlaybackTokenResponseParams struct {
 
 	// <p>房间ID。</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>用户ID</p>
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

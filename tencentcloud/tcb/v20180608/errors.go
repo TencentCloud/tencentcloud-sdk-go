@@ -80,62 +80,26 @@ const (
 	// 系统内部异常。
 	INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
 
-	// 系统失败。
-	INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
-
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
-
-	// API已经创建。
-	INVALIDPARAMETER_APICREATED = "InvalidParameter.APICreated"
-
-	// API不存在。
-	INVALIDPARAMETER_APINOEXIST = "InvalidParameter.APINoExist"
-
-	// API不存在。
-	INVALIDPARAMETER_APINOTEXIST = "InvalidParameter.APINotExist"
-
-	// API超过阈值。
-	INVALIDPARAMETER_APITHRESHOLD = "InvalidParameter.APIThreshold"
-
-	// API类型不支持。
-	INVALIDPARAMETER_APITYPENOTSUPPORT = "InvalidParameter.APITypeNotSupport"
 
 	// 接口名非法。
 	INVALIDPARAMETER_ACTION = "InvalidParameter.Action"
 
-	// 域名cname不正确。
-	INVALIDPARAMETER_CNAMENOTMATCH = "InvalidParameter.CNAMENotMatch"
-
-	// 域名已经绑定。
-	INVALIDPARAMETER_DOMAINEXIST = "InvalidParameter.DomainExist"
-
-	// 域名不存在。
-	INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
+	// 证书验证失败
+	INVALIDPARAMETER_CERTVERIFYFAILED = "InvalidParameter.CertVerifyFailed"
 
 	// 环境ID非法。
 	INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
 
-	// 独占证书。
-	INVALIDPARAMETER_EXCLUSIVECERT = "InvalidParameter.ExclusiveCert"
+	// HTTP访问服务没有ICP备案
+	INVALIDPARAMETER_HTTPSERVICEDOMAINNOTICP = "InvalidParameter.HTTPServiceDomainNotICP"
 
 	// 请求参数错误。
 	INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
 
-	// 路径已存在。
-	INVALIDPARAMETER_PATHEXIST = "InvalidParameter.PathExist"
-
-	// 没有操作权限。
-	INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
-
-	// 域名没有备案。
-	INVALIDPARAMETER_SERVICEICP = "InvalidParameter.ServiceICP"
-
 	// 服务不存在。
 	INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
-
-	// Domain超上限了。
-	INVALIDPARAMETER_SERVICETHRESHOLD = "InvalidParameter.ServiceThreshold"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -154,6 +118,12 @@ const (
 
 	// 镜像容器超过配额。
 	LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+
+	// HTTP访问服务域名超过限制
+	LIMITEXCEEDED_HTTPSERVICEDOMAIN = "LimitExceeded.HTTPServiceDomain"
+
+	// HTTP访问服务路由超过上限
+	LIMITEXCEEDED_HTTPSERVICEROUTE = "LimitExceeded.HTTPServiceRoute"
 
 	// LimitExceeded.NoValidConnection
 	LIMITEXCEEDED_NOVALIDCONNECTION = "LimitExceeded.NoValidConnection"
@@ -185,6 +155,12 @@ const (
 	// 免费套餐拒绝此操作
 	OPERATIONDENIED_FREEPACKAGEDENIED = "OperationDenied.FreePackageDenied"
 
+	// 域名在黑名单中，无法创建
+	OPERATIONDENIED_HTTPSERVICEDOMAININBLACKLIST = "OperationDenied.HTTPServiceDomainInBlacklist"
+
+	// 非内部账号禁止操作
+	OPERATIONDENIED_NONINTERNALACCOUNT = "OperationDenied.NonInternalAccount"
+
 	// 操作失败：资源被冻结。
 	OPERATIONDENIED_RESOURCEFROZEN = "OperationDenied.ResourceFrozen"
 
@@ -193,6 +169,12 @@ const (
 
 	// 云存储目前后后台任务正在执行，请稍后再重试。
 	RESOURCEINUSE_FSACLJOBUNDONE = "ResourceInUse.FsACLJobUnDone"
+
+	// HTTP访问服务域名已经存在
+	RESOURCEINUSE_HTTPSERVICEDOMAIN = "ResourceInUse.HTTPServiceDomain"
+
+	// HTTP访问服务路由已存在
+	RESOURCEINUSE_HTTPSERVICEROUTE = "ResourceInUse.HTTPServiceRoute"
 
 	// ResourceInUse.IndexCreating
 	RESOURCEINUSE_INDEXCREATING = "ResourceInUse.IndexCreating"
@@ -208,6 +190,9 @@ const (
 
 	// 连接器未找到,请创建连接器或检查连接器参数是否正确
 	RESOURCENOTFOUND_CONNECTOR = "ResourceNotFound.Connector"
+
+	// HTTP访问服务域名不存在
+	RESOURCENOTFOUND_HTTPSERVICEDOMAIN = "ResourceNotFound.HTTPServiceDomain"
 
 	// 数据库实例不存在。
 	RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
@@ -235,9 +220,6 @@ const (
 
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
-
-	// 资源不可用，CDN冻结。
-	RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
 
 	// 索引对应的字段已经存在
 	RESOURCEUNAVAILABLE_INDEXOPTIONSCONFLICT = "ResourceUnavailable.IndexOptionsConflict"

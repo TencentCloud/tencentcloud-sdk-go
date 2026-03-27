@@ -571,22 +571,22 @@ type Connectors struct {
 }
 
 type CopyJobItem struct {
-	// 需要复制的作业serial id
+	// <p>需要复制的作业serial id</p>
 	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
 
-	// 目标集群的cluster serial id
+	// <p>目标集群的cluster serial id</p>
 	TargetClusterId *string `json:"TargetClusterId,omitnil,omitempty" name:"TargetClusterId"`
 
-	// 需要复制的作业名称
+	// <p>需要复制的作业名称</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// 新作业的名称
+	// <p>新作业的名称</p>
 	TargetName *string `json:"TargetName,omitnil,omitempty" name:"TargetName"`
 
-	// 新作业的目录id
+	// <p>新作业的目录id</p>
 	TargetFolderId *string `json:"TargetFolderId,omitnil,omitempty" name:"TargetFolderId"`
 
-	// 源作业类型
+	// <p>作业类型</p><p>枚举值：</p><ul><li>1： sql作业</li><li>2： jar作业</li><li>4： python作业</li></ul>
 	JobType *int64 `json:"JobType,omitnil,omitempty" name:"JobType"`
 }
 
@@ -870,237 +870,243 @@ func (r *CreateFolderResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateJobConfigRequestParams struct {
-	// 作业Id
+	// <p>作业Id</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 主类
+	// <p>主类</p>
 	EntrypointClass *string `json:"EntrypointClass,omitnil,omitempty" name:"EntrypointClass"`
 
-	// 主类入参，需要区分下Sql作业配置，Jar作业配置，Python作业配置，具体参考下面的示例值
+	// <p>主类入参，需要区分下Sql作业配置，Jar作业配置，Python作业配置，具体参考下面的示例值</p>
 	ProgramArgs *string `json:"ProgramArgs,omitnil,omitempty" name:"ProgramArgs"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 资源引用数组
+	// <p>资源引用数组</p>
 	ResourceRefs []*ResourceRef `json:"ResourceRefs,omitnil,omitempty" name:"ResourceRefs"`
 
-	// 作业默认并行度
+	// <p>作业默认并行度</p>
 	DefaultParallelism *uint64 `json:"DefaultParallelism,omitnil,omitempty" name:"DefaultParallelism"`
 
-	// 系统参数
+	// <p>系统参数</p>
 	Properties []*Property `json:"Properties,omitnil,omitempty" name:"Properties"`
 
-	// 1: 作业配置达到上限之后，自动删除可删除的最早版本
+	// <p>1: 作业配置达到上限之后，自动删除可删除的最早版本</p>
 	AutoDelete *int64 `json:"AutoDelete,omitnil,omitempty" name:"AutoDelete"`
 
-	// 作业使用的 COS 存储桶名
+	// <p>作业使用的 COS 存储桶名</p>
 	COSBucket *string `json:"COSBucket,omitnil,omitempty" name:"COSBucket"`
 
-	// 是否采集作业日志
+	// <p>是否采集作业日志</p>
 	LogCollect *bool `json:"LogCollect,omitnil,omitempty" name:"LogCollect"`
 
-	// JobManager规格
+	// <p>JobManager规格</p>
 	JobManagerSpec *float64 `json:"JobManagerSpec,omitnil,omitempty" name:"JobManagerSpec"`
 
-	// TaskManager规格
+	// <p>TaskManager规格</p>
 	TaskManagerSpec *float64 `json:"TaskManagerSpec,omitnil,omitempty" name:"TaskManagerSpec"`
 
-	// CLS日志集ID
+	// <p>CLS日志集ID</p>
 	ClsLogsetId *string `json:"ClsLogsetId,omitnil,omitempty" name:"ClsLogsetId"`
 
-	// CLS日志主题ID
+	// <p>CLS日志主题ID</p>
 	ClsTopicId *string `json:"ClsTopicId,omitnil,omitempty" name:"ClsTopicId"`
 
-	// 日志采集类型 2：CLS；3：COS
+	// <p>日志采集类型 2：CLS；3：COS</p>
 	LogCollectType *int64 `json:"LogCollectType,omitnil,omitempty" name:"LogCollectType"`
 
-	// pyflink作业运行时使用的python版本
+	// <p>pyflink作业运行时使用的python版本</p>
 	PythonVersion *string `json:"PythonVersion,omitnil,omitempty" name:"PythonVersion"`
 
-	// 工作空间 SerialId
+	// <p>工作空间 SerialId</p>
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
 
-	// 日志级别
+	// <p>日志级别</p>
 	LogLevel *string `json:"LogLevel,omitnil,omitempty" name:"LogLevel"`
 
-	// Oceanus 平台恢复作业开关 1:开启 -1: 关闭
+	// <p>Oceanus 平台恢复作业开关 1:开启 -1: 关闭</p>
 	AutoRecover *int64 `json:"AutoRecover,omitnil,omitempty" name:"AutoRecover"`
 
-	// 类日志级别
+	// <p>类日志级别</p>
 	ClazzLevels []*ClazzLevel `json:"ClazzLevels,omitnil,omitempty" name:"ClazzLevels"`
 
-	// 是否打开专家模式
+	// <p>是否打开专家模式</p>
 	ExpertModeOn *bool `json:"ExpertModeOn,omitnil,omitempty" name:"ExpertModeOn"`
 
-	// 专家模式的配置
+	// <p>专家模式的配置</p>
 	ExpertModeConfiguration *ExpertModeConfiguration `json:"ExpertModeConfiguration,omitnil,omitempty" name:"ExpertModeConfiguration"`
 
-	// trace链路
+	// <p>trace链路</p>
 	TraceModeOn *bool `json:"TraceModeOn,omitnil,omitempty" name:"TraceModeOn"`
 
-	// trace链路配置
+	// <p>trace链路配置</p>
 	TraceModeConfiguration *TraceModeConfiguration `json:"TraceModeConfiguration,omitnil,omitempty" name:"TraceModeConfiguration"`
 
-	// checkpoint保留个数
+	// <p>checkpoint保留个数</p>
 	CheckpointRetainedNum *int64 `json:"CheckpointRetainedNum,omitnil,omitempty" name:"CheckpointRetainedNum"`
 
-	// 算子拓扑图
+	// <p>算子拓扑图</p>
 	JobGraph *JobGraph `json:"JobGraph,omitnil,omitempty" name:"JobGraph"`
 
-	// es索引名称
+	// <p>es索引名称</p>
 	EsServerlessIndex *string `json:"EsServerlessIndex,omitnil,omitempty" name:"EsServerlessIndex"`
 
-	// es索引空间
+	// <p>es索引空间</p>
 	EsServerlessSpace *string `json:"EsServerlessSpace,omitnil,omitempty" name:"EsServerlessSpace"`
 
-	// flink版本
+	// <p>flink版本</p>
 	FlinkVersion *string `json:"FlinkVersion,omitnil,omitempty" name:"FlinkVersion"`
 
-	// JobManager cpu
+	// <p>JobManager cpu</p>
 	JobManagerCpu *float64 `json:"JobManagerCpu,omitnil,omitempty" name:"JobManagerCpu"`
 
-	// JobManager 内存
+	// <p>JobManager 内存</p>
 	JobManagerMem *float64 `json:"JobManagerMem,omitnil,omitempty" name:"JobManagerMem"`
 
-	// jdk版本
+	// <p>jdk版本</p>
 	JdkVersion *string `json:"JdkVersion,omitnil,omitempty" name:"JdkVersion"`
 
-	// TaskManager cpu
+	// <p>TaskManager cpu</p>
 	TaskManagerCpu *float64 `json:"TaskManagerCpu,omitnil,omitempty" name:"TaskManagerCpu"`
 
-	// TaskManager 内存
+	// <p>TaskManager 内存</p>
 	TaskManagerMem *float64 `json:"TaskManagerMem,omitnil,omitempty" name:"TaskManagerMem"`
 
-	// 0=默认使用老的 1=使用新的
+	// <p>0=默认使用老的 1=使用新的</p>
 	UseOldSystemConnector *int64 `json:"UseOldSystemConnector,omitnil,omitempty" name:"UseOldSystemConnector"`
 
-	// 压缩参数
+	// <p>压缩参数</p>
 	ProgramArgsAfterGzip *string `json:"ProgramArgsAfterGzip,omitnil,omitempty" name:"ProgramArgsAfterGzip"`
 
-	// checkpoint 超时时间
+	// <p>checkpoint 超时时间</p>
 	CheckpointTimeoutSecond *int64 `json:"CheckpointTimeoutSecond,omitnil,omitempty" name:"CheckpointTimeoutSecond"`
 
-	// checkpoint 间隔时间
+	// <p>checkpoint 间隔时间</p>
 	CheckpointIntervalSecond *int64 `json:"CheckpointIntervalSecond,omitnil,omitempty" name:"CheckpointIntervalSecond"`
+
+	// <p>变量替换模式</p><p>枚举值：</p><ul><li>0： 表变量替换</li><li>1： SQL全局变量替换</li></ul><p>默认值：1</p>
+	VariableReplaceMode *int64 `json:"VariableReplaceMode,omitnil,omitempty" name:"VariableReplaceMode"`
 }
 
 type CreateJobConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 作业Id
+	// <p>作业Id</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 主类
+	// <p>主类</p>
 	EntrypointClass *string `json:"EntrypointClass,omitnil,omitempty" name:"EntrypointClass"`
 
-	// 主类入参，需要区分下Sql作业配置，Jar作业配置，Python作业配置，具体参考下面的示例值
+	// <p>主类入参，需要区分下Sql作业配置，Jar作业配置，Python作业配置，具体参考下面的示例值</p>
 	ProgramArgs *string `json:"ProgramArgs,omitnil,omitempty" name:"ProgramArgs"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 资源引用数组
+	// <p>资源引用数组</p>
 	ResourceRefs []*ResourceRef `json:"ResourceRefs,omitnil,omitempty" name:"ResourceRefs"`
 
-	// 作业默认并行度
+	// <p>作业默认并行度</p>
 	DefaultParallelism *uint64 `json:"DefaultParallelism,omitnil,omitempty" name:"DefaultParallelism"`
 
-	// 系统参数
+	// <p>系统参数</p>
 	Properties []*Property `json:"Properties,omitnil,omitempty" name:"Properties"`
 
-	// 1: 作业配置达到上限之后，自动删除可删除的最早版本
+	// <p>1: 作业配置达到上限之后，自动删除可删除的最早版本</p>
 	AutoDelete *int64 `json:"AutoDelete,omitnil,omitempty" name:"AutoDelete"`
 
-	// 作业使用的 COS 存储桶名
+	// <p>作业使用的 COS 存储桶名</p>
 	COSBucket *string `json:"COSBucket,omitnil,omitempty" name:"COSBucket"`
 
-	// 是否采集作业日志
+	// <p>是否采集作业日志</p>
 	LogCollect *bool `json:"LogCollect,omitnil,omitempty" name:"LogCollect"`
 
-	// JobManager规格
+	// <p>JobManager规格</p>
 	JobManagerSpec *float64 `json:"JobManagerSpec,omitnil,omitempty" name:"JobManagerSpec"`
 
-	// TaskManager规格
+	// <p>TaskManager规格</p>
 	TaskManagerSpec *float64 `json:"TaskManagerSpec,omitnil,omitempty" name:"TaskManagerSpec"`
 
-	// CLS日志集ID
+	// <p>CLS日志集ID</p>
 	ClsLogsetId *string `json:"ClsLogsetId,omitnil,omitempty" name:"ClsLogsetId"`
 
-	// CLS日志主题ID
+	// <p>CLS日志主题ID</p>
 	ClsTopicId *string `json:"ClsTopicId,omitnil,omitempty" name:"ClsTopicId"`
 
-	// 日志采集类型 2：CLS；3：COS
+	// <p>日志采集类型 2：CLS；3：COS</p>
 	LogCollectType *int64 `json:"LogCollectType,omitnil,omitempty" name:"LogCollectType"`
 
-	// pyflink作业运行时使用的python版本
+	// <p>pyflink作业运行时使用的python版本</p>
 	PythonVersion *string `json:"PythonVersion,omitnil,omitempty" name:"PythonVersion"`
 
-	// 工作空间 SerialId
+	// <p>工作空间 SerialId</p>
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
 
-	// 日志级别
+	// <p>日志级别</p>
 	LogLevel *string `json:"LogLevel,omitnil,omitempty" name:"LogLevel"`
 
-	// Oceanus 平台恢复作业开关 1:开启 -1: 关闭
+	// <p>Oceanus 平台恢复作业开关 1:开启 -1: 关闭</p>
 	AutoRecover *int64 `json:"AutoRecover,omitnil,omitempty" name:"AutoRecover"`
 
-	// 类日志级别
+	// <p>类日志级别</p>
 	ClazzLevels []*ClazzLevel `json:"ClazzLevels,omitnil,omitempty" name:"ClazzLevels"`
 
-	// 是否打开专家模式
+	// <p>是否打开专家模式</p>
 	ExpertModeOn *bool `json:"ExpertModeOn,omitnil,omitempty" name:"ExpertModeOn"`
 
-	// 专家模式的配置
+	// <p>专家模式的配置</p>
 	ExpertModeConfiguration *ExpertModeConfiguration `json:"ExpertModeConfiguration,omitnil,omitempty" name:"ExpertModeConfiguration"`
 
-	// trace链路
+	// <p>trace链路</p>
 	TraceModeOn *bool `json:"TraceModeOn,omitnil,omitempty" name:"TraceModeOn"`
 
-	// trace链路配置
+	// <p>trace链路配置</p>
 	TraceModeConfiguration *TraceModeConfiguration `json:"TraceModeConfiguration,omitnil,omitempty" name:"TraceModeConfiguration"`
 
-	// checkpoint保留个数
+	// <p>checkpoint保留个数</p>
 	CheckpointRetainedNum *int64 `json:"CheckpointRetainedNum,omitnil,omitempty" name:"CheckpointRetainedNum"`
 
-	// 算子拓扑图
+	// <p>算子拓扑图</p>
 	JobGraph *JobGraph `json:"JobGraph,omitnil,omitempty" name:"JobGraph"`
 
-	// es索引名称
+	// <p>es索引名称</p>
 	EsServerlessIndex *string `json:"EsServerlessIndex,omitnil,omitempty" name:"EsServerlessIndex"`
 
-	// es索引空间
+	// <p>es索引空间</p>
 	EsServerlessSpace *string `json:"EsServerlessSpace,omitnil,omitempty" name:"EsServerlessSpace"`
 
-	// flink版本
+	// <p>flink版本</p>
 	FlinkVersion *string `json:"FlinkVersion,omitnil,omitempty" name:"FlinkVersion"`
 
-	// JobManager cpu
+	// <p>JobManager cpu</p>
 	JobManagerCpu *float64 `json:"JobManagerCpu,omitnil,omitempty" name:"JobManagerCpu"`
 
-	// JobManager 内存
+	// <p>JobManager 内存</p>
 	JobManagerMem *float64 `json:"JobManagerMem,omitnil,omitempty" name:"JobManagerMem"`
 
-	// jdk版本
+	// <p>jdk版本</p>
 	JdkVersion *string `json:"JdkVersion,omitnil,omitempty" name:"JdkVersion"`
 
-	// TaskManager cpu
+	// <p>TaskManager cpu</p>
 	TaskManagerCpu *float64 `json:"TaskManagerCpu,omitnil,omitempty" name:"TaskManagerCpu"`
 
-	// TaskManager 内存
+	// <p>TaskManager 内存</p>
 	TaskManagerMem *float64 `json:"TaskManagerMem,omitnil,omitempty" name:"TaskManagerMem"`
 
-	// 0=默认使用老的 1=使用新的
+	// <p>0=默认使用老的 1=使用新的</p>
 	UseOldSystemConnector *int64 `json:"UseOldSystemConnector,omitnil,omitempty" name:"UseOldSystemConnector"`
 
-	// 压缩参数
+	// <p>压缩参数</p>
 	ProgramArgsAfterGzip *string `json:"ProgramArgsAfterGzip,omitnil,omitempty" name:"ProgramArgsAfterGzip"`
 
-	// checkpoint 超时时间
+	// <p>checkpoint 超时时间</p>
 	CheckpointTimeoutSecond *int64 `json:"CheckpointTimeoutSecond,omitnil,omitempty" name:"CheckpointTimeoutSecond"`
 
-	// checkpoint 间隔时间
+	// <p>checkpoint 间隔时间</p>
 	CheckpointIntervalSecond *int64 `json:"CheckpointIntervalSecond,omitnil,omitempty" name:"CheckpointIntervalSecond"`
+
+	// <p>变量替换模式</p><p>枚举值：</p><ul><li>0： 表变量替换</li><li>1： SQL全局变量替换</li></ul><p>默认值：1</p>
+	VariableReplaceMode *int64 `json:"VariableReplaceMode,omitnil,omitempty" name:"VariableReplaceMode"`
 }
 
 func (r *CreateJobConfigRequest) ToJsonString() string {
@@ -1153,6 +1159,7 @@ func (r *CreateJobConfigRequest) FromJsonString(s string) error {
 	delete(f, "ProgramArgsAfterGzip")
 	delete(f, "CheckpointTimeoutSecond")
 	delete(f, "CheckpointIntervalSecond")
+	delete(f, "VariableReplaceMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobConfigRequest has unknown keys!", "")
 	}
@@ -1161,7 +1168,7 @@ func (r *CreateJobConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateJobConfigResponseParams struct {
-	// 作业配置版本号
+	// <p>作业配置版本号</p>
 	Version *uint64 `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3603,6 +3610,9 @@ func (r *DescribeVariablesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVariablesResponseParams struct {
+	// ["x","y"]
+	VariableSet []*VariableItem `json:"VariableSet,omitnil,omitempty" name:"VariableSet"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3948,191 +3958,194 @@ func (r *GetMetaTableResponse) FromJsonString(s string) error {
 }
 
 type HadoopYarnItem struct {
-	// ClusterGroupSerialId
+	// <p>ClusterGroupSerialId</p>
 	ClusterGroupSerialId *string `json:"ClusterGroupSerialId,omitnil,omitempty" name:"ClusterGroupSerialId"`
 
-	// 状态
+	// <p>状态</p><p>枚举值：</p><ul><li>1： 停止</li><li>2： 开启中</li><li>3： 启动</li><li>4： 开启失败</li><li>5： 停止中</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// cpu
+	// <p>cpu</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// mem
+	// <p>mem</p>
 	Mem *float64 `json:"Mem,omitnil,omitempty" name:"Mem"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 配置文件内容
+	// <p>配置文件内容</p>
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 
-	// CreatorUin
+	// <p>CreatorUin</p>
 	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
 }
 
 type JobConfig struct {
-	// 作业Id
+	// <p>作业Id</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 主类
+	// <p>主类</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EntrypointClass *string `json:"EntrypointClass,omitnil,omitempty" name:"EntrypointClass"`
 
-	// 主类入参
+	// <p>主类入参</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProgramArgs *string `json:"ProgramArgs,omitnil,omitempty" name:"ProgramArgs"`
 
-	// 备注
+	// <p>备注</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 作业配置创建时间
+	// <p>作业配置创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 作业配置的版本号
+	// <p>作业配置的版本号</p>
 	Version *int64 `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 作业默认并行度
+	// <p>作业默认并行度</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultParallelism *uint64 `json:"DefaultParallelism,omitnil,omitempty" name:"DefaultParallelism"`
 
-	// 系统参数
+	// <p>系统参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Properties []*Property `json:"Properties,omitnil,omitempty" name:"Properties"`
 
-	// 引用资源
+	// <p>引用资源</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRefDetails []*ResourceRefDetail `json:"ResourceRefDetails,omitnil,omitempty" name:"ResourceRefDetails"`
 
-	// 创建者uin
+	// <p>创建者uin</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
 
-	// 作业配置上次启动时间
+	// <p>作业配置上次启动时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 作业绑定的存储桶
+	// <p>作业绑定的存储桶</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	COSBucket *string `json:"COSBucket,omitnil,omitempty" name:"COSBucket"`
 
-	// 是否启用日志收集，0-未启用，1-采集到cls，4-采集到cos，5-采集到es
+	// <p>是否启用日志收集，0-未启用，1-采集到cls，4-采集到cos，5-采集到es</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogCollect *int64 `json:"LogCollect,omitnil,omitempty" name:"LogCollect"`
 
-	// 作业的最大并行度
+	// <p>作业的最大并行度</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxParallelism *uint64 `json:"MaxParallelism,omitnil,omitempty" name:"MaxParallelism"`
 
-	// JobManager规格
+	// <p>JobManager规格</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobManagerSpec *float64 `json:"JobManagerSpec,omitnil,omitempty" name:"JobManagerSpec"`
 
-	// TaskManager规格
+	// <p>TaskManager规格</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskManagerSpec *float64 `json:"TaskManagerSpec,omitnil,omitempty" name:"TaskManagerSpec"`
 
-	// CLS日志集ID
+	// <p>CLS日志集ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClsLogsetId *string `json:"ClsLogsetId,omitnil,omitempty" name:"ClsLogsetId"`
 
-	// CLS日志主题ID
+	// <p>CLS日志主题ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClsTopicId *string `json:"ClsTopicId,omitnil,omitempty" name:"ClsTopicId"`
 
-	// pyflink作业运行的python版本
+	// <p>pyflink作业运行的python版本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PythonVersion *string `json:"PythonVersion,omitnil,omitempty" name:"PythonVersion"`
 
-	// Oceanus 平台恢复作业开关 1:开启 -1: 关闭
+	// <p>Oceanus 平台恢复作业开关 1:开启 -1: 关闭</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRecover *int64 `json:"AutoRecover,omitnil,omitempty" name:"AutoRecover"`
 
-	// 日志级别
+	// <p>日志级别</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogLevel *string `json:"LogLevel,omitnil,omitempty" name:"LogLevel"`
 
-	// 类日志级别
+	// <p>类日志级别</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClazzLevels []*ClazzLevel `json:"ClazzLevels,omitnil,omitempty" name:"ClazzLevels"`
 
-	// 是否开启专家模式
+	// <p>是否开启专家模式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpertModeOn *bool `json:"ExpertModeOn,omitnil,omitempty" name:"ExpertModeOn"`
 
-	// 专家模式的配置
+	// <p>专家模式的配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpertModeConfiguration *ExpertModeConfiguration `json:"ExpertModeConfiguration,omitnil,omitempty" name:"ExpertModeConfiguration"`
 
-	// trace链路
+	// <p>trace链路</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TraceModeOn *bool `json:"TraceModeOn,omitnil,omitempty" name:"TraceModeOn"`
 
-	// trace链路配置
+	// <p>trace链路配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TraceModeConfiguration *TraceModeConfiguration `json:"TraceModeConfiguration,omitnil,omitempty" name:"TraceModeConfiguration"`
 
-	// checkpoint保留个数
+	// <p>checkpoint保留个数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckpointRetainedNum *int64 `json:"CheckpointRetainedNum,omitnil,omitempty" name:"CheckpointRetainedNum"`
 
-	// 算子拓扑图
+	// <p>算子拓扑图</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobGraph *JobGraph `json:"JobGraph,omitnil,omitempty" name:"JobGraph"`
 
-	// es索引
+	// <p>es索引</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EsServerlessIndex *string `json:"EsServerlessIndex,omitnil,omitempty" name:"EsServerlessIndex"`
 
-	// es空间
+	// <p>es空间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EsServerlessSpace *string `json:"EsServerlessSpace,omitnil,omitempty" name:"EsServerlessSpace"`
 
-	// es索引中文
+	// <p>es索引中文</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
 
-	// es空间中文
+	// <p>es空间中文</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkspaceName *string `json:"WorkspaceName,omitnil,omitempty" name:"WorkspaceName"`
 
-	// flink 版本
+	// <p>flink 版本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlinkVersion *string `json:"FlinkVersion,omitnil,omitempty" name:"FlinkVersion"`
 
-	// jdk版本
+	// <p>jdk版本</p>
 	JdkVersion *string `json:"JdkVersion,omitnil,omitempty" name:"JdkVersion"`
 
-	// jm使用cpu数目
+	// <p>jm使用cpu数目</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobManagerCpu *float64 `json:"JobManagerCpu,omitnil,omitempty" name:"JobManagerCpu"`
 
-	// jm使用内存数目
+	// <p>jm使用内存数目</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobManagerMem *float64 `json:"JobManagerMem,omitnil,omitempty" name:"JobManagerMem"`
 
-	// tm使用cpu数
+	// <p>tm使用cpu数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskManagerCpu *float64 `json:"TaskManagerCpu,omitnil,omitempty" name:"TaskManagerCpu"`
 
-	// tm使用mem数
+	// <p>tm使用mem数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskManagerMem *float64 `json:"TaskManagerMem,omitnil,omitempty" name:"TaskManagerMem"`
 
-	// 运行中配置
+	// <p>运行中配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobConfigItem *JobConfig `json:"JobConfigItem,omitnil,omitempty" name:"JobConfigItem"`
 
-	// checkpoint 超时时间
+	// <p>checkpoint 超时时间</p>
 	CheckpointTimeoutSecond *int64 `json:"CheckpointTimeoutSecond,omitnil,omitempty" name:"CheckpointTimeoutSecond"`
 
-	// checkpoint 间隔时间
+	// <p>checkpoint 间隔时间</p>
 	CheckpointIntervalSecond *int64 `json:"CheckpointIntervalSecond,omitnil,omitempty" name:"CheckpointIntervalSecond"`
+
+	// <p>变量替换模式</p><p>枚举值：</p><ul><li>0： 表变量替换</li><li>1： 全局SQL变量替换</li></ul><p>默认值：0</p>
+	VariableReplaceMode *int64 `json:"VariableReplaceMode,omitnil,omitempty" name:"VariableReplaceMode"`
 }
 
 type JobEvent struct {
@@ -5100,27 +5113,27 @@ type ResourceRefJobInfo struct {
 }
 
 type ResourceRefLatest struct {
-	// 资源id
+	// <p>资源id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 版本号
+	// <p>版本号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *int64 `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 资源类型
+	// <p>资源类型</p><p>枚举值：</p><ul><li>1： Main资源</li><li>2： 依赖资源</li><li>3： python文件</li><li>4： 数据文件</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 状态
+	// <p>状态</p><p>枚举值：</p><ul><li>1： 活跃</li><li>-2： 删除</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 空间id
+	// <p>空间id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
-	// 资源名称
+	// <p>资源名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
@@ -5948,8 +5961,38 @@ func (r *TriggerJobSavepointResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type VariableItem struct {
+	// 变量id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerialId *string `json:"SerialId,omitnil,omitempty" name:"SerialId"`
+
+	// 变量名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 变量值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 变量值是否隐藏
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 变量描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 变量创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 变量创建人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
+}
+
 type Warehouse struct {
-	// <p>状态</p>
+	// <p>状态</p><p>枚举值：</p><ul><li>0： 未开启</li><li>1： 开启中</li><li>2： 已开启</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
@@ -5957,7 +6000,7 @@ type Warehouse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
 
-	// <p>catalogtype</p>
+	// <p>catalog类型</p><p>枚举值：</p><ul><li>hadoop： hadoop catalog</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CatalogType *string `json:"CatalogType,omitnil,omitempty" name:"CatalogType"`
 

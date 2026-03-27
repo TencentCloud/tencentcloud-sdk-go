@@ -320,6 +320,9 @@ const (
 	// 不支持开通审计。
 	OPERATIONDENIED_UNSUPPORTOPENAUDITERROR = "OperationDenied.UnsupportOpenAuditError"
 
+	// 资源不足。
+	RESOURCEINSUFFICIENT = "ResourceInsufficient"
+
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 

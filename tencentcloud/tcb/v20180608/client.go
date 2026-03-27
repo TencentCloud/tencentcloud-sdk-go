@@ -115,134 +115,6 @@ func (c *Client) AddProviderWithContext(ctx context.Context, request *AddProvide
     return
 }
 
-func NewBindCloudBaseAccessDomainRequest() (request *BindCloudBaseAccessDomainRequest) {
-    request = &BindCloudBaseAccessDomainRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "BindCloudBaseAccessDomain")
-    
-    
-    return
-}
-
-func NewBindCloudBaseAccessDomainResponse() (response *BindCloudBaseAccessDomainResponse) {
-    response = &BindCloudBaseAccessDomainResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// BindCloudBaseAccessDomain
-// 绑定云开发自定义域名，用于云接入和静态托管
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETER_CNAMENOTMATCH = "InvalidParameter.CNAMENotMatch"
-//  INVALIDPARAMETER_DOMAINEXIST = "InvalidParameter.DomainExist"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
-//  INVALIDPARAMETER_SERVICEICP = "InvalidParameter.ServiceICP"
-//  INVALIDPARAMETER_SERVICETHRESHOLD = "InvalidParameter.ServiceThreshold"
-//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
-func (c *Client) BindCloudBaseAccessDomain(request *BindCloudBaseAccessDomainRequest) (response *BindCloudBaseAccessDomainResponse, err error) {
-    return c.BindCloudBaseAccessDomainWithContext(context.Background(), request)
-}
-
-// BindCloudBaseAccessDomain
-// 绑定云开发自定义域名，用于云接入和静态托管
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETER_CNAMENOTMATCH = "InvalidParameter.CNAMENotMatch"
-//  INVALIDPARAMETER_DOMAINEXIST = "InvalidParameter.DomainExist"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
-//  INVALIDPARAMETER_SERVICEICP = "InvalidParameter.ServiceICP"
-//  INVALIDPARAMETER_SERVICETHRESHOLD = "InvalidParameter.ServiceThreshold"
-//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
-func (c *Client) BindCloudBaseAccessDomainWithContext(ctx context.Context, request *BindCloudBaseAccessDomainRequest) (response *BindCloudBaseAccessDomainResponse, err error) {
-    if request == nil {
-        request = NewBindCloudBaseAccessDomainRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "BindCloudBaseAccessDomain")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("BindCloudBaseAccessDomain require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewBindCloudBaseAccessDomainResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewBindCloudBaseGWDomainRequest() (request *BindCloudBaseGWDomainRequest) {
-    request = &BindCloudBaseGWDomainRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "BindCloudBaseGWDomain")
-    
-    
-    return
-}
-
-func NewBindCloudBaseGWDomainResponse() (response *BindCloudBaseGWDomainResponse) {
-    response = &BindCloudBaseGWDomainResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// BindCloudBaseGWDomain
-// 绑定自定义域名
-//
-// 可能返回的错误码:
-//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_APINOEXIST = "InvalidParameter.APINoExist"
-//  INVALIDPARAMETER_CNAMENOTMATCH = "InvalidParameter.CNAMENotMatch"
-//  INVALIDPARAMETER_DOMAINEXIST = "InvalidParameter.DomainExist"
-//  INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
-//  INVALIDPARAMETER_EXCLUSIVECERT = "InvalidParameter.ExclusiveCert"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
-//  INVALIDPARAMETER_SERVICEICP = "InvalidParameter.ServiceICP"
-//  INVALIDPARAMETER_SERVICETHRESHOLD = "InvalidParameter.ServiceThreshold"
-func (c *Client) BindCloudBaseGWDomain(request *BindCloudBaseGWDomainRequest) (response *BindCloudBaseGWDomainResponse, err error) {
-    return c.BindCloudBaseGWDomainWithContext(context.Background(), request)
-}
-
-// BindCloudBaseGWDomain
-// 绑定自定义域名
-//
-// 可能返回的错误码:
-//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_APINOEXIST = "InvalidParameter.APINoExist"
-//  INVALIDPARAMETER_CNAMENOTMATCH = "InvalidParameter.CNAMENotMatch"
-//  INVALIDPARAMETER_DOMAINEXIST = "InvalidParameter.DomainExist"
-//  INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
-//  INVALIDPARAMETER_EXCLUSIVECERT = "InvalidParameter.ExclusiveCert"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
-//  INVALIDPARAMETER_SERVICEICP = "InvalidParameter.ServiceICP"
-//  INVALIDPARAMETER_SERVICETHRESHOLD = "InvalidParameter.ServiceThreshold"
-func (c *Client) BindCloudBaseGWDomainWithContext(ctx context.Context, request *BindCloudBaseGWDomainRequest) (response *BindCloudBaseGWDomainResponse, err error) {
-    if request == nil {
-        request = NewBindCloudBaseGWDomainRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "BindCloudBaseGWDomain")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("BindCloudBaseGWDomain require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewBindCloudBaseGWDomainResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCheckTcbServiceRequest() (request *CheckTcbServiceRequest) {
     request = &CheckTcbServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -295,6 +167,74 @@ func (c *Client) CheckTcbServiceWithContext(ctx context.Context, request *CheckT
     request.SetContext(ctx)
     
     response = NewCheckTcbServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateApiKeyRequest() (request *CreateApiKeyRequest) {
+    request = &CreateApiKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateApiKey")
+    
+    
+    return
+}
+
+func NewCreateApiKeyResponse() (response *CreateApiKeyResponse) {
+    response = &CreateApiKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateApiKey
+// 创建云开发平台的API Key。在指定云开发环境下创建一个 API Key 访问凭证。支持两种类型：api_key（服务端管理员访问凭证，以管理员身份签发，可设置有效期，不设置有效期则永不过期，单个环境最多创建 5 个）和 publish_key（前端匿名访问凭证，固定有效期，每个环境仅保留一个）。创建成功后将返回 API Key 明文 Token，该值仅在创建时返回一次，请妥善保存。需要管理员权限。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateApiKey(request *CreateApiKeyRequest) (response *CreateApiKeyResponse, err error) {
+    return c.CreateApiKeyWithContext(context.Background(), request)
+}
+
+// CreateApiKey
+// 创建云开发平台的API Key。在指定云开发环境下创建一个 API Key 访问凭证。支持两种类型：api_key（服务端管理员访问凭证，以管理员身份签发，可设置有效期，不设置有效期则永不过期，单个环境最多创建 5 个）和 publish_key（前端匿名访问凭证，固定有效期，每个环境仅保留一个）。创建成功后将返回 API Key 明文 Token，该值仅在创建时返回一次，请妥善保存。需要管理员权限。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateApiKeyWithContext(ctx context.Context, request *CreateApiKeyRequest) (response *CreateApiKeyResponse, err error) {
+    if request == nil {
+        request = NewCreateApiKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateApiKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateApiKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateApiKeyResponse()
     err = c.Send(request, response)
     return
 }
@@ -475,70 +415,6 @@ func (c *Client) CreateBillDealWithContext(ctx context.Context, request *CreateB
     return
 }
 
-func NewCreateCloudBaseGWAPIRequest() (request *CreateCloudBaseGWAPIRequest) {
-    request = &CreateCloudBaseGWAPIRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "CreateCloudBaseGWAPI")
-    
-    
-    return
-}
-
-func NewCreateCloudBaseGWAPIResponse() (response *CreateCloudBaseGWAPIResponse) {
-    response = &CreateCloudBaseGWAPIResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateCloudBaseGWAPI
-// 创建云开发网关API
-//
-// 可能返回的错误码:
-//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
-//  INVALIDPARAMETER_APICREATED = "InvalidParameter.APICreated"
-//  INVALIDPARAMETER_APINOTEXIST = "InvalidParameter.APINotExist"
-//  INVALIDPARAMETER_APITHRESHOLD = "InvalidParameter.APIThreshold"
-//  INVALIDPARAMETER_APITYPENOTSUPPORT = "InvalidParameter.APITypeNotSupport"
-//  INVALIDPARAMETER_PATHEXIST = "InvalidParameter.PathExist"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
-//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
-func (c *Client) CreateCloudBaseGWAPI(request *CreateCloudBaseGWAPIRequest) (response *CreateCloudBaseGWAPIResponse, err error) {
-    return c.CreateCloudBaseGWAPIWithContext(context.Background(), request)
-}
-
-// CreateCloudBaseGWAPI
-// 创建云开发网关API
-//
-// 可能返回的错误码:
-//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
-//  INVALIDPARAMETER_APICREATED = "InvalidParameter.APICreated"
-//  INVALIDPARAMETER_APINOTEXIST = "InvalidParameter.APINotExist"
-//  INVALIDPARAMETER_APITHRESHOLD = "InvalidParameter.APIThreshold"
-//  INVALIDPARAMETER_APITYPENOTSUPPORT = "InvalidParameter.APITypeNotSupport"
-//  INVALIDPARAMETER_PATHEXIST = "InvalidParameter.PathExist"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
-//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
-func (c *Client) CreateCloudBaseGWAPIWithContext(ctx context.Context, request *CreateCloudBaseGWAPIRequest) (response *CreateCloudBaseGWAPIResponse, err error) {
-    if request == nil {
-        request = NewCreateCloudBaseGWAPIRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateCloudBaseGWAPI")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateCloudBaseGWAPI require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateCloudBaseGWAPIResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateEnvRequest() (request *CreateEnvRequest) {
     request = &CreateEnvRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -713,6 +589,76 @@ func (c *Client) CreateEnvResourceWithContext(ctx context.Context, request *Crea
     request.SetContext(ctx)
     
     response = NewCreateEnvResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateHTTPServiceRouteRequest() (request *CreateHTTPServiceRouteRequest) {
+    request = &CreateHTTPServiceRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateHTTPServiceRoute")
+    
+    
+    return
+}
+
+func NewCreateHTTPServiceRouteResponse() (response *CreateHTTPServiceRouteResponse) {
+    response = &CreateHTTPServiceRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateHTTPServiceRoute
+// 本接口CreateHTTPServiceRoute用于创建HTTP访问服务路由。如果不传Domain.Routes，仅创建域名信息。首次创建域名后需要调用DescribeHTTPServiceRoute查询域名状态，如果状态是PROCESSING，需要轮询查询域名状态直到SUCCESS或者FAIL。如果状态是FAIL，可以删除后重新创建。创建成功后域名可能无法访问，原因是异步下发的路由，可通过http或者https探测路由是否下发，如果http访问返回404或者https访问握手失败，可等待一会再试，直到访问正常。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTVERIFYFAILED = "InvalidParameter.CertVerifyFailed"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  INVALIDPARAMETER_HTTPSERVICEDOMAINNOTICP = "InvalidParameter.HTTPServiceDomainNotICP"
+//  LIMITEXCEEDED_HTTPSERVICEDOMAIN = "LimitExceeded.HTTPServiceDomain"
+//  LIMITEXCEEDED_HTTPSERVICEROUTE = "LimitExceeded.HTTPServiceRoute"
+//  OPERATIONDENIED_HTTPSERVICEDOMAININBLACKLIST = "OperationDenied.HTTPServiceDomainInBlacklist"
+//  OPERATIONDENIED_NONINTERNALACCOUNT = "OperationDenied.NonInternalAccount"
+//  RESOURCEINUSE_HTTPSERVICEDOMAIN = "ResourceInUse.HTTPServiceDomain"
+//  RESOURCEINUSE_HTTPSERVICEROUTE = "ResourceInUse.HTTPServiceRoute"
+//  RESOURCENOTFOUND_HTTPSERVICEDOMAIN = "ResourceNotFound.HTTPServiceDomain"
+func (c *Client) CreateHTTPServiceRoute(request *CreateHTTPServiceRouteRequest) (response *CreateHTTPServiceRouteResponse, err error) {
+    return c.CreateHTTPServiceRouteWithContext(context.Background(), request)
+}
+
+// CreateHTTPServiceRoute
+// 本接口CreateHTTPServiceRoute用于创建HTTP访问服务路由。如果不传Domain.Routes，仅创建域名信息。首次创建域名后需要调用DescribeHTTPServiceRoute查询域名状态，如果状态是PROCESSING，需要轮询查询域名状态直到SUCCESS或者FAIL。如果状态是FAIL，可以删除后重新创建。创建成功后域名可能无法访问，原因是异步下发的路由，可通过http或者https探测路由是否下发，如果http访问返回404或者https访问握手失败，可等待一会再试，直到访问正常。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTVERIFYFAILED = "InvalidParameter.CertVerifyFailed"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  INVALIDPARAMETER_HTTPSERVICEDOMAINNOTICP = "InvalidParameter.HTTPServiceDomainNotICP"
+//  LIMITEXCEEDED_HTTPSERVICEDOMAIN = "LimitExceeded.HTTPServiceDomain"
+//  LIMITEXCEEDED_HTTPSERVICEROUTE = "LimitExceeded.HTTPServiceRoute"
+//  OPERATIONDENIED_HTTPSERVICEDOMAININBLACKLIST = "OperationDenied.HTTPServiceDomainInBlacklist"
+//  OPERATIONDENIED_NONINTERNALACCOUNT = "OperationDenied.NonInternalAccount"
+//  RESOURCEINUSE_HTTPSERVICEDOMAIN = "ResourceInUse.HTTPServiceDomain"
+//  RESOURCEINUSE_HTTPSERVICEROUTE = "ResourceInUse.HTTPServiceRoute"
+//  RESOURCENOTFOUND_HTTPSERVICEDOMAIN = "ResourceNotFound.HTTPServiceDomain"
+func (c *Client) CreateHTTPServiceRouteWithContext(ctx context.Context, request *CreateHTTPServiceRouteRequest) (response *CreateHTTPServiceRouteResponse, err error) {
+    if request == nil {
+        request = NewCreateHTTPServiceRouteRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateHTTPServiceRoute")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateHTTPServiceRoute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateHTTPServiceRouteResponse()
     err = c.Send(request, response)
     return
 }
@@ -1035,6 +981,136 @@ func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserR
     return
 }
 
+func NewCreateVmInstanceRequest() (request *CreateVmInstanceRequest) {
+    request = &CreateVmInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateVmInstance")
+    
+    
+    return
+}
+
+func NewCreateVmInstanceResponse() (response *CreateVmInstanceResponse) {
+    response = &CreateVmInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVmInstance
+// 创建虚拟服务器
+//
+// 创建流程为先调用[DescribeVmSpec](https://cloud.tencent.com/document/product/876/129360)获取可购买的规格，同时调用[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)拉取镜像列表，选中一个规格和一个镜像后，调用[InquireVmPrice](https://cloud.tencent.com/document/product/876/129759)询价，如果价格可接受，调用此接口创建实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateVmInstance(request *CreateVmInstanceRequest) (response *CreateVmInstanceResponse, err error) {
+    return c.CreateVmInstanceWithContext(context.Background(), request)
+}
+
+// CreateVmInstance
+// 创建虚拟服务器
+//
+// 创建流程为先调用[DescribeVmSpec](https://cloud.tencent.com/document/product/876/129360)获取可购买的规格，同时调用[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)拉取镜像列表，选中一个规格和一个镜像后，调用[InquireVmPrice](https://cloud.tencent.com/document/product/876/129759)询价，如果价格可接受，调用此接口创建实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateVmInstanceWithContext(ctx context.Context, request *CreateVmInstanceRequest) (response *CreateVmInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateVmInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateVmInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVmInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVmInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteApiKeyRequest() (request *DeleteApiKeyRequest) {
+    request = &DeleteApiKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DeleteApiKey")
+    
+    
+    return
+}
+
+func NewDeleteApiKeyResponse() (response *DeleteApiKeyResponse) {
+    response = &DeleteApiKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteApiKey
+// 删除指定云开发环境下的某个 API Key 服务端访问凭证。删除后，该 API Key 对应的 Token 将被吊销，已使用该 Key 发起的请求将失败。该操作具有幂等性，若指定的 API Key 不存在则直接返回成功。需要管理员权限。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteApiKey(request *DeleteApiKeyRequest) (response *DeleteApiKeyResponse, err error) {
+    return c.DeleteApiKeyWithContext(context.Background(), request)
+}
+
+// DeleteApiKey
+// 删除指定云开发环境下的某个 API Key 服务端访问凭证。删除后，该 API Key 对应的 Token 将被吊销，已使用该 Key 发起的请求将失败。该操作具有幂等性，若指定的 API Key 不存在则直接返回成功。需要管理员权限。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteApiKeyWithContext(ctx context.Context, request *DeleteApiKeyRequest) (response *DeleteApiKeyResponse, err error) {
+    if request == nil {
+        request = NewDeleteApiKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteApiKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteApiKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteApiKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAuthDomainRequest() (request *DeleteAuthDomainRequest) {
     request = &DeleteAuthDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1113,116 +1189,54 @@ func (c *Client) DeleteAuthDomainWithContext(ctx context.Context, request *Delet
     return
 }
 
-func NewDeleteCloudBaseGWAPIRequest() (request *DeleteCloudBaseGWAPIRequest) {
-    request = &DeleteCloudBaseGWAPIRequest{
+func NewDeleteHTTPServiceRouteRequest() (request *DeleteHTTPServiceRouteRequest) {
+    request = &DeleteHTTPServiceRouteRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("tcb", APIVersion, "DeleteCloudBaseGWAPI")
+    request.Init().WithApiInfo("tcb", APIVersion, "DeleteHTTPServiceRoute")
     
     
     return
 }
 
-func NewDeleteCloudBaseGWAPIResponse() (response *DeleteCloudBaseGWAPIResponse) {
-    response = &DeleteCloudBaseGWAPIResponse{
+func NewDeleteHTTPServiceRouteResponse() (response *DeleteHTTPServiceRouteResponse) {
+    response = &DeleteHTTPServiceRouteResponse{
         BaseResponse: &tchttp.BaseResponse{},
     } 
     return
 
 }
 
-// DeleteCloudBaseGWAPI
-// 删除网关API
+// DeleteHTTPServiceRoute
+// 本接口DeleteHTTPServiceRoute用于删除HTTP访问服务域名或者路由。可批量删除多条path路由、删除域名及所有path路由，如果Paths字段为空则删除域名及所有path路由，如果Paths不为空则仅删除path路由。
 //
 // 可能返回的错误码:
-//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_APITYPENOTSUPPORT = "InvalidParameter.APITypeNotSupport"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
-//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
-func (c *Client) DeleteCloudBaseGWAPI(request *DeleteCloudBaseGWAPIRequest) (response *DeleteCloudBaseGWAPIResponse, err error) {
-    return c.DeleteCloudBaseGWAPIWithContext(context.Background(), request)
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+func (c *Client) DeleteHTTPServiceRoute(request *DeleteHTTPServiceRouteRequest) (response *DeleteHTTPServiceRouteResponse, err error) {
+    return c.DeleteHTTPServiceRouteWithContext(context.Background(), request)
 }
 
-// DeleteCloudBaseGWAPI
-// 删除网关API
+// DeleteHTTPServiceRoute
+// 本接口DeleteHTTPServiceRoute用于删除HTTP访问服务域名或者路由。可批量删除多条path路由、删除域名及所有path路由，如果Paths字段为空则删除域名及所有path路由，如果Paths不为空则仅删除path路由。
 //
 // 可能返回的错误码:
-//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_APITYPENOTSUPPORT = "InvalidParameter.APITypeNotSupport"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
-//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
-func (c *Client) DeleteCloudBaseGWAPIWithContext(ctx context.Context, request *DeleteCloudBaseGWAPIRequest) (response *DeleteCloudBaseGWAPIResponse, err error) {
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+func (c *Client) DeleteHTTPServiceRouteWithContext(ctx context.Context, request *DeleteHTTPServiceRouteRequest) (response *DeleteHTTPServiceRouteResponse, err error) {
     if request == nil {
-        request = NewDeleteCloudBaseGWAPIRequest()
+        request = NewDeleteHTTPServiceRouteRequest()
     }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteCloudBaseGWAPI")
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteHTTPServiceRoute")
     
     if c.GetCredential() == nil {
-        return nil, errors.New("DeleteCloudBaseGWAPI require credential")
+        return nil, errors.New("DeleteHTTPServiceRoute require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewDeleteCloudBaseGWAPIResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDeleteCloudBaseGWDomainRequest() (request *DeleteCloudBaseGWDomainRequest) {
-    request = &DeleteCloudBaseGWDomainRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "DeleteCloudBaseGWDomain")
-    
-    
-    return
-}
-
-func NewDeleteCloudBaseGWDomainResponse() (response *DeleteCloudBaseGWDomainResponse) {
-    response = &DeleteCloudBaseGWDomainResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DeleteCloudBaseGWDomain
-// 删除网关域名
-//
-// 可能返回的错误码:
-//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
-func (c *Client) DeleteCloudBaseGWDomain(request *DeleteCloudBaseGWDomainRequest) (response *DeleteCloudBaseGWDomainResponse, err error) {
-    return c.DeleteCloudBaseGWDomainWithContext(context.Background(), request)
-}
-
-// DeleteCloudBaseGWDomain
-// 删除网关域名
-//
-// 可能返回的错误码:
-//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
-func (c *Client) DeleteCloudBaseGWDomainWithContext(ctx context.Context, request *DeleteCloudBaseGWDomainRequest) (response *DeleteCloudBaseGWDomainResponse, err error) {
-    if request == nil {
-        request = NewDeleteCloudBaseGWDomainRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DeleteCloudBaseGWDomain")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DeleteCloudBaseGWDomain require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDeleteCloudBaseGWDomainResponse()
+    response = NewDeleteHTTPServiceRouteResponse()
     err = c.Send(request, response)
     return
 }
@@ -1250,10 +1264,8 @@ func NewDeleteProviderResponse() (response *DeleteProviderResponse) {
 // 删除认证源
 //
 // 可能返回的错误码:
-//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
 func (c *Client) DeleteProvider(request *DeleteProviderRequest) (response *DeleteProviderResponse, err error) {
     return c.DeleteProviderWithContext(context.Background(), request)
 }
@@ -1262,10 +1274,8 @@ func (c *Client) DeleteProvider(request *DeleteProviderRequest) (response *Delet
 // 删除认证源
 //
 // 可能返回的错误码:
-//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
 func (c *Client) DeleteProviderWithContext(ctx context.Context, request *DeleteProviderRequest) (response *DeleteProviderResponse, err error) {
     if request == nil {
         request = NewDeleteProviderRequest()
@@ -1469,6 +1479,66 @@ func (c *Client) DeleteVmInstanceWithContext(ctx context.Context, request *Delet
     request.SetContext(ctx)
     
     response = NewDeleteVmInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApiKeyListRequest() (request *DescribeApiKeyListRequest) {
+    request = &DescribeApiKeyListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeApiKeyList")
+    
+    
+    return
+}
+
+func NewDescribeApiKeyListResponse() (response *DescribeApiKeyListResponse) {
+    response = &DescribeApiKeyListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApiKeyList
+// 查询 API Key 列表。分页查询指定云开发环境下的 API Key 访问凭证列表。支持按类型过滤（api_key 或 publish_key）。未指定类型时，默认仅返回 api_key 类型的记录。列表查询中 api_key 类型的令牌值将进行脱敏处理（仅保留前后各 6 位字符）；publish_key 类型始终返回完整明文。接口需要管理员权限。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeApiKeyList(request *DescribeApiKeyListRequest) (response *DescribeApiKeyListResponse, err error) {
+    return c.DescribeApiKeyListWithContext(context.Background(), request)
+}
+
+// DescribeApiKeyList
+// 查询 API Key 列表。分页查询指定云开发环境下的 API Key 访问凭证列表。支持按类型过滤（api_key 或 publish_key）。未指定类型时，默认仅返回 api_key 类型的记录。列表查询中 api_key 类型的令牌值将进行脱敏处理（仅保留前后各 6 位字符）；publish_key 类型始终返回完整明文。接口需要管理员权限。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeApiKeyListWithContext(ctx context.Context, request *DescribeApiKeyListRequest) (response *DescribeApiKeyListResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiKeyListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeApiKeyList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApiKeyList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApiKeyListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1775,124 +1845,6 @@ func (c *Client) DescribeCloudBaseBuildServiceWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeCloudBaseBuildServiceResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeCloudBaseGWAPIRequest() (request *DescribeCloudBaseGWAPIRequest) {
-    request = &DescribeCloudBaseGWAPIRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseGWAPI")
-    
-    
-    return
-}
-
-func NewDescribeCloudBaseGWAPIResponse() (response *DescribeCloudBaseGWAPIResponse) {
-    response = &DescribeCloudBaseGWAPIResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeCloudBaseGWAPI
-// 获取网关API列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_APINOEXIST = "InvalidParameter.APINoExist"
-//  INVALIDPARAMETER_APITYPENOTSUPPORT = "InvalidParameter.APITypeNotSupport"
-//  INVALIDPARAMETER_EXCLUSIVECERT = "InvalidParameter.ExclusiveCert"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
-func (c *Client) DescribeCloudBaseGWAPI(request *DescribeCloudBaseGWAPIRequest) (response *DescribeCloudBaseGWAPIResponse, err error) {
-    return c.DescribeCloudBaseGWAPIWithContext(context.Background(), request)
-}
-
-// DescribeCloudBaseGWAPI
-// 获取网关API列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_APINOEXIST = "InvalidParameter.APINoExist"
-//  INVALIDPARAMETER_APITYPENOTSUPPORT = "InvalidParameter.APITypeNotSupport"
-//  INVALIDPARAMETER_EXCLUSIVECERT = "InvalidParameter.ExclusiveCert"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
-func (c *Client) DescribeCloudBaseGWAPIWithContext(ctx context.Context, request *DescribeCloudBaseGWAPIRequest) (response *DescribeCloudBaseGWAPIResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudBaseGWAPIRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseGWAPI")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeCloudBaseGWAPI require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeCloudBaseGWAPIResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeCloudBaseGWServiceRequest() (request *DescribeCloudBaseGWServiceRequest) {
-    request = &DescribeCloudBaseGWServiceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudBaseGWService")
-    
-    
-    return
-}
-
-func NewDescribeCloudBaseGWServiceResponse() (response *DescribeCloudBaseGWServiceResponse) {
-    response = &DescribeCloudBaseGWServiceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeCloudBaseGWService
-// 获取网关服务
-//
-// 可能返回的错误码:
-//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
-//  INVALIDPARAMETER_SERVICEICP = "InvalidParameter.ServiceICP"
-func (c *Client) DescribeCloudBaseGWService(request *DescribeCloudBaseGWServiceRequest) (response *DescribeCloudBaseGWServiceResponse, err error) {
-    return c.DescribeCloudBaseGWServiceWithContext(context.Background(), request)
-}
-
-// DescribeCloudBaseGWService
-// 获取网关服务
-//
-// 可能返回的错误码:
-//  INTERNALERROR_SYSTEMFAIL = "InternalError.SystemFail"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DOMAINNOTEXIST = "InvalidParameter.DomainNotExist"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
-//  INVALIDPARAMETER_SERVICEICP = "InvalidParameter.ServiceICP"
-func (c *Client) DescribeCloudBaseGWServiceWithContext(ctx context.Context, request *DescribeCloudBaseGWServiceRequest) (response *DescribeCloudBaseGWServiceResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudBaseGWServiceRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudBaseGWService")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeCloudBaseGWService require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeCloudBaseGWServiceResponse()
     err = c.Send(request, response)
     return
 }
@@ -2381,6 +2333,120 @@ func (c *Client) DescribeEnvsWithContext(ctx context.Context, request *DescribeE
     request.SetContext(ctx)
     
     response = NewDescribeEnvsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGatewayVersionsRequest() (request *DescribeGatewayVersionsRequest) {
+    request = &DescribeGatewayVersionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeGatewayVersions")
+    
+    
+    return
+}
+
+func NewDescribeGatewayVersionsResponse() (response *DescribeGatewayVersionsResponse) {
+    response = &DescribeGatewayVersionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGatewayVersions
+// 查询网关版本信息
+//
+// 暂不鉴权
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeGatewayVersions(request *DescribeGatewayVersionsRequest) (response *DescribeGatewayVersionsResponse, err error) {
+    return c.DescribeGatewayVersionsWithContext(context.Background(), request)
+}
+
+// DescribeGatewayVersions
+// 查询网关版本信息
+//
+// 暂不鉴权
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeGatewayVersionsWithContext(ctx context.Context, request *DescribeGatewayVersionsRequest) (response *DescribeGatewayVersionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeGatewayVersionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeGatewayVersions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGatewayVersions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGatewayVersionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHTTPServiceRouteRequest() (request *DescribeHTTPServiceRouteRequest) {
+    request = &DescribeHTTPServiceRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeHTTPServiceRoute")
+    
+    
+    return
+}
+
+func NewDescribeHTTPServiceRouteResponse() (response *DescribeHTTPServiceRouteResponse) {
+    response = &DescribeHTTPServiceRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHTTPServiceRoute
+// 本接口DescribeHTTPServiceRoute用于查询环境下HTTP访问服务路由信息。可通过Filters过滤。如果不存在不会返回错误。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+func (c *Client) DescribeHTTPServiceRoute(request *DescribeHTTPServiceRouteRequest) (response *DescribeHTTPServiceRouteResponse, err error) {
+    return c.DescribeHTTPServiceRouteWithContext(context.Background(), request)
+}
+
+// DescribeHTTPServiceRoute
+// 本接口DescribeHTTPServiceRoute用于查询环境下HTTP访问服务路由信息。可通过Filters过滤。如果不存在不会返回错误。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+func (c *Client) DescribeHTTPServiceRouteWithContext(ctx context.Context, request *DescribeHTTPServiceRouteRequest) (response *DescribeHTTPServiceRouteResponse, err error) {
+    if request == nil {
+        request = NewDescribeHTTPServiceRouteRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeHTTPServiceRoute")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHTTPServiceRoute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHTTPServiceRouteResponse()
     err = c.Send(request, response)
     return
 }
@@ -3653,70 +3719,6 @@ func (c *Client) ModifyClientWithContext(ctx context.Context, request *ModifyCli
     return
 }
 
-func NewModifyCloudBaseGWAPIRequest() (request *ModifyCloudBaseGWAPIRequest) {
-    request = &ModifyCloudBaseGWAPIRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "ModifyCloudBaseGWAPI")
-    
-    
-    return
-}
-
-func NewModifyCloudBaseGWAPIResponse() (response *ModifyCloudBaseGWAPIResponse) {
-    response = &ModifyCloudBaseGWAPIResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyCloudBaseGWAPI
-// 修改云开发网关API
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) ModifyCloudBaseGWAPI(request *ModifyCloudBaseGWAPIRequest) (response *ModifyCloudBaseGWAPIResponse, err error) {
-    return c.ModifyCloudBaseGWAPIWithContext(context.Background(), request)
-}
-
-// ModifyCloudBaseGWAPI
-// 修改云开发网关API
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) ModifyCloudBaseGWAPIWithContext(ctx context.Context, request *ModifyCloudBaseGWAPIRequest) (response *ModifyCloudBaseGWAPIResponse, err error) {
-    if request == nil {
-        request = NewModifyCloudBaseGWAPIRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyCloudBaseGWAPI")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyCloudBaseGWAPI require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyCloudBaseGWAPIResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyClsTopicRequest() (request *ModifyClsTopicRequest) {
     request = &ModifyClsTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3955,6 +3957,62 @@ func (c *Client) ModifyEnvPlanWithContext(ctx context.Context, request *ModifyEn
     request.SetContext(ctx)
     
     response = NewModifyEnvPlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyHTTPServiceRouteRequest() (request *ModifyHTTPServiceRouteRequest) {
+    request = &ModifyHTTPServiceRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyHTTPServiceRoute")
+    
+    
+    return
+}
+
+func NewModifyHTTPServiceRouteResponse() (response *ModifyHTTPServiceRouteResponse) {
+    response = &ModifyHTTPServiceRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyHTTPServiceRoute
+// 本接口ModifyHTTPServiceRoute用于修改HTTP访问服务路由。支持增量修改，对应字段不传参数表示不需要修改
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTVERIFYFAILED = "InvalidParameter.CertVerifyFailed"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  LIMITEXCEEDED_HTTPSERVICEROUTE = "LimitExceeded.HTTPServiceRoute"
+func (c *Client) ModifyHTTPServiceRoute(request *ModifyHTTPServiceRouteRequest) (response *ModifyHTTPServiceRouteResponse, err error) {
+    return c.ModifyHTTPServiceRouteWithContext(context.Background(), request)
+}
+
+// ModifyHTTPServiceRoute
+// 本接口ModifyHTTPServiceRoute用于修改HTTP访问服务路由。支持增量修改，对应字段不传参数表示不需要修改
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTVERIFYFAILED = "InvalidParameter.CertVerifyFailed"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  LIMITEXCEEDED_HTTPSERVICEROUTE = "LimitExceeded.HTTPServiceRoute"
+func (c *Client) ModifyHTTPServiceRouteWithContext(ctx context.Context, request *ModifyHTTPServiceRouteRequest) (response *ModifyHTTPServiceRouteResponse, err error) {
+    if request == nil {
+        request = NewModifyHTTPServiceRouteRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyHTTPServiceRoute")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyHTTPServiceRoute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyHTTPServiceRouteResponse()
     err = c.Send(request, response)
     return
 }

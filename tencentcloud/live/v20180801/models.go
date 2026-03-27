@@ -7499,6 +7499,85 @@ func (r *DeleteScreenshotTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAIGCTaskStatusRequestParams struct {
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeAIGCTaskStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeAIGCTaskStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIGCTaskStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIGCTaskStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIGCTaskStatusResponseParams struct {
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>状态</p><p>枚举值：</p><ul><li>FINISHED： 1</li></ul>
+	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
+
+	// <p>输出url</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputUrl *string `json:"OutputUrl,omitnil,omitempty" name:"OutputUrl"`
+
+	// <p>任务创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>任务调度时间</p>
+	ScheduledTime *string `json:"ScheduledTime,omitnil,omitempty" name:"ScheduledTime"`
+
+	// <p>任务完成时间</p>
+	FinishedTime *string `json:"FinishedTime,omitnil,omitempty" name:"FinishedTime"`
+
+	// <p>任务错误码</p>
+	TaskResultCode *int64 `json:"TaskResultCode,omitnil,omitempty" name:"TaskResultCode"`
+
+	// <p>任务返回错误信息</p>
+	TaskResultMsg *string `json:"TaskResultMsg,omitnil,omitempty" name:"TaskResultMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAIGCTaskStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAIGCTaskStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeAIGCTaskStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIGCTaskStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAllStreamPlayInfoListRequestParams struct {
 	// 查询时间点，精确到分钟粒度，接口查询支持两种时间格式：
 	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F,-ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。

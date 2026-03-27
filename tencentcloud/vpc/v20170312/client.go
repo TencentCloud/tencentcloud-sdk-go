@@ -9421,6 +9421,8 @@ func NewDeleteNatGatewayResponse() (response *DeleteNatGatewayResponse) {
 //  UNSUPPORTEDOPERATION_NATGATEWAYHAVEHIGHTRAFFIC = "UnsupportedOperation.NatGatewayHaveHighTraffic"
 //  UNSUPPORTEDOPERATION_NATGATEWAYHAVEROUTE = "UnsupportedOperation.NatGatewayHaveRoute"
 //  UNSUPPORTEDOPERATION_NATGATEWAYHAVEROUTEANDHIGHTRAFFIC = "UnsupportedOperation.NatGatewayHaveRouteAndHighTraffic"
+//  UNSUPPORTEDOPERATION_NATGATEWAYHAVETRAFFICMIRROR = "UnsupportedOperation.NatGatewayHaveTrafficMirror"
+//  UNSUPPORTEDOPERATION_TRAFFICVALIDATIONFAILED = "UnsupportedOperation.TrafficValidationFailed"
 func (c *Client) DeleteNatGateway(request *DeleteNatGatewayRequest) (response *DeleteNatGatewayResponse, err error) {
     return c.DeleteNatGatewayWithContext(context.Background(), request)
 }
@@ -9440,6 +9442,8 @@ func (c *Client) DeleteNatGateway(request *DeleteNatGatewayRequest) (response *D
 //  UNSUPPORTEDOPERATION_NATGATEWAYHAVEHIGHTRAFFIC = "UnsupportedOperation.NatGatewayHaveHighTraffic"
 //  UNSUPPORTEDOPERATION_NATGATEWAYHAVEROUTE = "UnsupportedOperation.NatGatewayHaveRoute"
 //  UNSUPPORTEDOPERATION_NATGATEWAYHAVEROUTEANDHIGHTRAFFIC = "UnsupportedOperation.NatGatewayHaveRouteAndHighTraffic"
+//  UNSUPPORTEDOPERATION_NATGATEWAYHAVETRAFFICMIRROR = "UnsupportedOperation.NatGatewayHaveTrafficMirror"
+//  UNSUPPORTEDOPERATION_TRAFFICVALIDATIONFAILED = "UnsupportedOperation.TrafficValidationFailed"
 func (c *Client) DeleteNatGatewayWithContext(ctx context.Context, request *DeleteNatGatewayRequest) (response *DeleteNatGatewayResponse, err error) {
     if request == nil {
         request = NewDeleteNatGatewayRequest()

@@ -471,6 +471,8 @@ func NewCreateJobConfigResponse() (response *CreateJobConfigResponse) {
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
 //  RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
 //  UNSUPPORTEDOPERATION_INVALIDCHECKPOINTINTERVALERROR = "UnsupportedOperation.InvalidCheckpointIntervalError"
+//  UNSUPPORTEDOPERATION_MULTIEXTERNALCATALOGUNSUPPORTED = "UnsupportedOperation.MultiExternalCatalogUnsupported"
+//  UNSUPPORTEDOPERATION_MULTIEXTERNALEMRORHIVECATALOGUNSUPPORTED = "UnsupportedOperation.MultiExternalEmrOrHiveCatalogUnsupported"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) CreateJobConfig(request *CreateJobConfigRequest) (response *CreateJobConfigResponse, err error) {
     return c.CreateJobConfigWithContext(context.Background(), request)
@@ -505,6 +507,8 @@ func (c *Client) CreateJobConfig(request *CreateJobConfigRequest) (response *Cre
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
 //  RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
 //  UNSUPPORTEDOPERATION_INVALIDCHECKPOINTINTERVALERROR = "UnsupportedOperation.InvalidCheckpointIntervalError"
+//  UNSUPPORTEDOPERATION_MULTIEXTERNALCATALOGUNSUPPORTED = "UnsupportedOperation.MultiExternalCatalogUnsupported"
+//  UNSUPPORTEDOPERATION_MULTIEXTERNALEMRORHIVECATALOGUNSUPPORTED = "UnsupportedOperation.MultiExternalEmrOrHiveCatalogUnsupported"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) CreateJobConfigWithContext(ctx context.Context, request *CreateJobConfigRequest) (response *CreateJobConfigResponse, err error) {
     if request == nil {

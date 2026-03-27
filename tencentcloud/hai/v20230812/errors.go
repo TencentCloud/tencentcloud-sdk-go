@@ -86,6 +86,9 @@ const (
 	// 付费方式与时间单位不匹配
 	INVALIDPARAMETERVALUE_INVALIDCHARGETYPEANDTIMEUNIT = "InvalidParameterValue.InvalidChargeTypeAndTimeUnit"
 
+	// 集群ID格式不正确
+	INVALIDPARAMETERVALUE_INVALIDCLUSTERIDMALFORMED = "InvalidParameterValue.InvalidClusterIdMalformed"
+
 	// 每次购买的实例数目不在合理范围内
 	INVALIDPARAMETERVALUE_INVALIDINSTANCECOUNT = "InvalidParameterValue.InvalidInstanceCount"
 
@@ -115,6 +118,9 @@ const (
 
 	// 子网ID格式错误
 	INVALIDPARAMETERVALUE_INVALIDSUBNETIDMALFORMED = "InvalidParameterValue.InvalidSubnetIdMalformed"
+
+	// 模版ID格式不正确
+	INVALIDPARAMETERVALUE_INVALIDTEMPLATEIDMALFORMED = "InvalidParameterValue.InvalidTemplateIdMalformed"
 
 	// VpcId不能为空
 	INVALIDPARAMETERVALUE_INVALIDVPCIDISNONE = "InvalidParameterValue.InvalidVpcIdIsNone"
@@ -184,6 +190,12 @@ const (
 
 	// 客户未授权使用本产品
 	UNAUTHORIZEDOPERATION_UNAUTHORIZEDUSER = "UnauthorizedOperation.UnauthorizedUser"
+
+	// 用户未绑定具身智能帐号
+	UNAUTHORIZEDOPERATION_USERNOTBOUNDEMBODIEDINTELLIGENCEACCOUNT = "UnauthorizedOperation.UserNotBoundEmbodiedIntelligenceAccount"
+
+	// 操作不支持。
+	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 
 	// 不允许同时操作预付费过期实例和未过期实例
 	UNSUPPORTEDOPERATION_CANNOTTERMINATEEXPIREDANDNOTEXPIREDINSTANCES = "UnsupportedOperation.CannotTerminateExpiredAndNotExpiredInstances"

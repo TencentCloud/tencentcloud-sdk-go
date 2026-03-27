@@ -8573,64 +8573,57 @@ type Region struct {
 }
 
 type Registry struct {
-	// 实例ID
+	// <p>实例ID</p>
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	RegistryName *string `json:"RegistryName,omitnil,omitempty" name:"RegistryName"`
 
-	// 实例规格
+	// <p>实例规格</p>
 	RegistryType *string `json:"RegistryType,omitnil,omitempty" name:"RegistryType"`
 
-	// 实例状态。有以下状态：
-	// Pending, 初始化中
-	// Deploying, 创建中
-	// Running, 运行中
-	// Unhealthy, 状态异常
-	// FailedCreated, 创建失败
-	// FailedUpdated, 更新失败
-	// Bucket-Error, 存储桶异常
-	// Isolate, 待回收
-	// Deleting, 删除中
-	// DeleteBucketFailed, 实例删除存储桶失败
-	// DeleteFailed, 实例删除失败
+	// <p>实例状态。有以下状态：<br>Pending, 初始化中<br>Deploying, 创建中<br>Running, 运行中<br>Unhealthy, 状态异常<br>FailedCreated, 创建失败<br>FailedUpdated, 更新失败<br>Bucket-Error, 存储桶异常<br>Isolate, 待回收<br>Deleting, 删除中<br>DeleteBucketFailed, 实例删除存储桶失败<br>DeleteFailed, 实例删除失败</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 实例的公共访问地址
+	// <p>实例的公共访问地址</p>
 	PublicDomain *string `json:"PublicDomain,omitnil,omitempty" name:"PublicDomain"`
 
-	// 实例创建时间
+	// <p>实例创建时间</p>
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
-	// 地域名称
+	// <p>地域名称</p>
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
-	// 地域Id
+	// <p>地域Id</p>
 	RegionId *uint64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 是否支持匿名
+	// <p>是否支持匿名</p>
 	EnableAnonymous *bool `json:"EnableAnonymous,omitnil,omitempty" name:"EnableAnonymous"`
 
-	// Token有效时间
+	// <p>Token有效时间</p>
 	TokenValidTime *uint64 `json:"TokenValidTime,omitnil,omitempty" name:"TokenValidTime"`
 
-	// 实例内部访问地址
+	// <p>实例内部访问地址</p>
 	InternalEndpoint *string `json:"InternalEndpoint,omitnil,omitempty" name:"InternalEndpoint"`
 
-	// 实例云标签
+	// <p>实例云标签</p>
 	TagSpecification *TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 
-	// 实例过期时间（预付费）
+	// <p>实例过期时间（预付费）</p>
 	ExpiredAt *string `json:"ExpiredAt,omitnil,omitempty" name:"ExpiredAt"`
 
-	// 实例付费类型，0表示后付费，1表示预付费
+	// <p>实例付费类型，0表示后付费，1表示预付费</p>
 	PayMod *int64 `json:"PayMod,omitnil,omitempty" name:"PayMod"`
 
-	// 预付费续费标识，0表示手动续费，1表示自动续费，2不续费并且不通知
+	// <p>预付费续费标识，0表示手动续费，1表示自动续费，2不续费并且不通知</p>
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 是否开启实例删除保护，false表示不开启
+	// <p>是否开启实例删除保护，false表示不开启</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// <p>是否支持AI特性</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AIFeature *bool `json:"AIFeature,omitnil,omitempty" name:"AIFeature"`
 }
 
 type RegistryChargePrepaid struct {

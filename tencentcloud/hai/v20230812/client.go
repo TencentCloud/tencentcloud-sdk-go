@@ -229,6 +229,66 @@ func (c *Client) CreateMuskPromptWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewDeleteServiceRequest() (request *DeleteServiceRequest) {
+    request = &DeleteServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "DeleteService")
+    
+    
+    return
+}
+
+func NewDeleteServiceResponse() (response *DeleteServiceResponse) {
+    response = &DeleteServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteService
+// 本接口 (DeleteService) 用于删除一个指定配置的实例。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDCLUSTERIDMALFORMED = "InvalidParameterValue.InvalidClusterIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDTEMPLATEIDMALFORMED = "InvalidParameterValue.InvalidTemplateIdMalformed"
+//  INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"
+//  INVALIDPARAMETERVALUE_TEMPLATEIDNOTFOUND = "InvalidParameterValue.TemplateIdNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteService(request *DeleteServiceRequest) (response *DeleteServiceResponse, err error) {
+    return c.DeleteServiceWithContext(context.Background(), request)
+}
+
+// DeleteService
+// 本接口 (DeleteService) 用于删除一个指定配置的实例。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDCLUSTERIDMALFORMED = "InvalidParameterValue.InvalidClusterIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDTEMPLATEIDMALFORMED = "InvalidParameterValue.InvalidTemplateIdMalformed"
+//  INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"
+//  INVALIDPARAMETERVALUE_TEMPLATEIDNOTFOUND = "InvalidParameterValue.TemplateIdNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteServiceWithContext(ctx context.Context, request *DeleteServiceRequest) (response *DeleteServiceResponse, err error) {
+    if request == nil {
+        request = NewDeleteServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "DeleteService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeployInferServiceRequest() (request *DeployInferServiceRequest) {
     request = &DeployInferServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -839,6 +899,60 @@ func (c *Client) DescribeServicesWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeServicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeServicesCallInfoRequest() (request *DescribeServicesCallInfoRequest) {
+    request = &DescribeServicesCallInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "DescribeServicesCallInfo")
+    
+    
+    return
+}
+
+func NewDescribeServicesCallInfoResponse() (response *DescribeServicesCallInfoResponse) {
+    response = &DescribeServicesCallInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeServicesCallInfo
+// 本接口 (DescribeServciesCallInfo) 用于查询服务调用信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
+//  INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"
+//  UNAUTHORIZEDOPERATION_USERNOTBOUNDEMBODIEDINTELLIGENCEACCOUNT = "UnauthorizedOperation.UserNotBoundEmbodiedIntelligenceAccount"
+func (c *Client) DescribeServicesCallInfo(request *DescribeServicesCallInfoRequest) (response *DescribeServicesCallInfoResponse, err error) {
+    return c.DescribeServicesCallInfoWithContext(context.Background(), request)
+}
+
+// DescribeServicesCallInfo
+// 本接口 (DescribeServciesCallInfo) 用于查询服务调用信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDSERVICEIDMALFORMED = "InvalidParameterValue.InvalidServiceIdMalformed"
+//  INVALIDPARAMETERVALUE_SERVICEIDNOTFOUND = "InvalidParameterValue.ServiceIdNotFound"
+//  UNAUTHORIZEDOPERATION_USERNOTBOUNDEMBODIEDINTELLIGENCEACCOUNT = "UnauthorizedOperation.UserNotBoundEmbodiedIntelligenceAccount"
+func (c *Client) DescribeServicesCallInfoWithContext(ctx context.Context, request *DescribeServicesCallInfoRequest) (response *DescribeServicesCallInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeServicesCallInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "hai", APIVersion, "DescribeServicesCallInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServicesCallInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeServicesCallInfoResponse()
     err = c.Send(request, response)
     return
 }

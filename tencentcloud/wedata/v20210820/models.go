@@ -7310,6 +7310,10 @@ type DataSetRecord struct {
 	// Catalog来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaFrom *string `json:"MetaFrom,omitnil,omitempty" name:"MetaFrom"`
+
+	// 引擎侧责任人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineOwner *string `json:"EngineOwner,omitnil,omitempty" name:"EngineOwner"`
 }
 
 type DataSourceConnectStatus struct {
@@ -43693,14 +43697,13 @@ type TriggerManualTasksRequestParams struct {
 	// 运行数据时间列表
 	DataTimeList []*string `json:"DataTimeList,omitnil,omitempty" name:"DataTimeList"`
 
-	// 工作流ID
+	// 手动工作流ID
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 需要运行的任务列表
-	// TriggerScope=ENTIRE_WORKFLOW 时无需传此参数，TriggerScope=SPECIFIED_TASK此参数必传
+	// 需要运行的手动工作流任务列表TriggerScope=ENTIRE_WORKFLOW 时无需传此参数，TriggerScope=SPECIFIED_TASK此参数必传
 	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
 
 	// 用户提交运行时指定的调度资源组，未指定时使用任务配置的调度资源组
@@ -43740,14 +43743,13 @@ type TriggerManualTasksRequest struct {
 	// 运行数据时间列表
 	DataTimeList []*string `json:"DataTimeList,omitnil,omitempty" name:"DataTimeList"`
 
-	// 工作流ID
+	// 手动工作流ID
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 需要运行的任务列表
-	// TriggerScope=ENTIRE_WORKFLOW 时无需传此参数，TriggerScope=SPECIFIED_TASK此参数必传
+	// 需要运行的手动工作流任务列表TriggerScope=ENTIRE_WORKFLOW 时无需传此参数，TriggerScope=SPECIFIED_TASK此参数必传
 	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
 
 	// 用户提交运行时指定的调度资源组，未指定时使用任务配置的调度资源组

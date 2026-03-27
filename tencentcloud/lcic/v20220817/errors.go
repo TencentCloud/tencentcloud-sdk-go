@@ -59,6 +59,12 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 无效ClassID
+	INVALIDPARAMETER_CLASSID = "InvalidParameter.ClassID"
+
+	// ClassIDs超过最大值
+	INVALIDPARAMETER_CLASSIDS = "InvalidParameter.ClassIDs"
+
 	// 文案涉及敏感词，请调整后重新输入。
 	INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
 
@@ -98,11 +104,17 @@ const (
 	// room类型错误
 	INVALIDPARAMETER_ROOMTYPEINVALID = "InvalidParameter.RoomTypeInvalid"
 
+	// SchoolID参数错误
+	INVALIDPARAMETER_SCHOOLID = "InvalidParameter.SchoolID"
+
 	// SdkAppId参数错误。
 	INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 
 	// 开始时间不能早于当前时间。
 	INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
+
+	// UserID和SchoolID不匹配
+	INVALIDPARAMETER_USERSCHOOLMISMATCH = "InvalidParameter.UserSchoolMismatch"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"

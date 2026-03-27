@@ -853,44 +853,44 @@ func (r *DescribeDeviceSessionDetailsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDeviceSessionListRequestParams struct {
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 页码，从1开始
+	// <p>页码，从1开始</p>
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页个数
+	// <p>每页个数</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 设备ID
+	// <p>设备ID</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type DescribeDeviceSessionListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 页码，从1开始
+	// <p>页码，从1开始</p>
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页个数
+	// <p>每页个数</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 设备ID
+	// <p>设备ID</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -920,13 +920,13 @@ func (r *DescribeDeviceSessionListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDeviceSessionListResponseParams struct {
-	// 总个数
+	// <p>总个数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 会话列表
+	// <p>会话列表</p>
 	DeviceSessionList []*SessionInfo `json:"DeviceSessionList,omitnil,omitempty" name:"DeviceSessionList"`
 
-	// 本页数量
+	// <p>本页数量</p>
 	Num *uint64 `json:"Num,omitnil,omitempty" name:"Num"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1191,44 +1191,44 @@ func (r *DescribeProjectListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRecentSessionListRequestParams struct {
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 页码，从1开始
+	// <p>页码，从1开始</p>
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页个数
+	// <p>每页个数</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 设备ID，支持过滤远端设备或现场设备
+	// <p>设备ID，支持过滤远端设备或现场设备</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 时间范围的起始时间。时间范围最大为最近两小时，若不传或超出范围，则起始时间按两小时前计算
+	// <p>时间范围的起始时间。时间范围最大为最近两小时，若不传或超出范围，则起始时间按两小时前计算</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 时间范围的结束时间。时间范围最大为最近两小时，若不传或超出范围，则结束时间按当前时间计算
+	// <p>时间范围的结束时间。时间范围最大为最近两小时，若不传或超出范围，则结束时间按当前时间计算</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type DescribeRecentSessionListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 页码，从1开始
+	// <p>页码，从1开始</p>
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页个数
+	// <p>每页个数</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 设备ID，支持过滤远端设备或现场设备
+	// <p>设备ID，支持过滤远端设备或现场设备</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 时间范围的起始时间。时间范围最大为最近两小时，若不传或超出范围，则起始时间按两小时前计算
+	// <p>时间范围的起始时间。时间范围最大为最近两小时，若不传或超出范围，则起始时间按两小时前计算</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 时间范围的结束时间。时间范围最大为最近两小时，若不传或超出范围，则结束时间按当前时间计算
+	// <p>时间范围的结束时间。时间范围最大为最近两小时，若不传或超出范围，则结束时间按当前时间计算</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -1258,13 +1258,13 @@ func (r *DescribeRecentSessionListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRecentSessionListResponseParams struct {
-	// 总个数
+	// <p>总个数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 会话列表
+	// <p>会话列表</p>
 	RecentSessionList []*RecentSessionInfo `json:"RecentSessionList,omitnil,omitempty" name:"RecentSessionList"`
 
-	// 本页数量
+	// <p>本页数量</p>
 	Num *uint64 `json:"Num,omitnil,omitempty" name:"Num"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1289,38 +1289,38 @@ func (r *DescribeRecentSessionListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSessionStatisticsByIntervalRequestParams struct {
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 统计时间间隔：hour|day|month
+	// <p>统计时间间隔：hour|day|month</p>
 	StatisticInterval *string `json:"StatisticInterval,omitnil,omitempty" name:"StatisticInterval"`
 
-	// 设备ID
+	// <p>设备ID</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 起始时间，单位：秒
+	// <p>起始时间，单位：秒</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间，单位：秒
+	// <p>结束时间，单位：秒</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type DescribeSessionStatisticsByIntervalRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 统计时间间隔：hour|day|month
+	// <p>统计时间间隔：hour|day|month</p>
 	StatisticInterval *string `json:"StatisticInterval,omitnil,omitempty" name:"StatisticInterval"`
 
-	// 设备ID
+	// <p>设备ID</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 起始时间，单位：秒
+	// <p>起始时间，单位：秒</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间，单位：秒
+	// <p>结束时间，单位：秒</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -1349,7 +1349,7 @@ func (r *DescribeSessionStatisticsByIntervalRequest) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeSessionStatisticsByIntervalResponseParams struct {
-	// 各时间段的会话统计数据
+	// <p>各时间段的会话统计数据</p>
 	SessionStatistics []*SessionIntervalStatistic `json:"SessionStatistics,omitnil,omitempty" name:"SessionStatistics"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1374,32 +1374,32 @@ func (r *DescribeSessionStatisticsByIntervalResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type DescribeSessionStatisticsRequestParams struct {
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 设备ID
+	// <p>设备ID</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 起始时间，单位：秒
+	// <p>起始时间，单位：秒</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间，单位：秒
+	// <p>结束时间，单位：秒</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type DescribeSessionStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 设备ID
+	// <p>设备ID</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 起始时间，单位：秒
+	// <p>起始时间，单位：秒</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间，单位：秒
+	// <p>结束时间，单位：秒</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -1427,19 +1427,19 @@ func (r *DescribeSessionStatisticsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSessionStatisticsResponseParams struct {
-	// 会话数量
+	// <p>会话数量</p>
 	SessionNum *uint64 `json:"SessionNum,omitnil,omitempty" name:"SessionNum"`
 
-	// 通话时长，单位：分钟
+	// <p>通话时长，单位：分钟</p>
 	TotalDuration *uint64 `json:"TotalDuration,omitnil,omitempty" name:"TotalDuration"`
 
-	// 活跃现场设备数
+	// <p>活跃现场设备数</p>
 	ActiveFieldDeviceNum *uint64 `json:"ActiveFieldDeviceNum,omitnil,omitempty" name:"ActiveFieldDeviceNum"`
 
-	// 活跃远端设备数
+	// <p>活跃远端设备数</p>
 	ActiveRemoteDeviceNum *uint64 `json:"ActiveRemoteDeviceNum,omitnil,omitempty" name:"ActiveRemoteDeviceNum"`
 
-	// 优良会话占比，单位：%
+	// <p>优良会话占比，单位：%</p>
 	NotBadSessionRatio *uint64 `json:"NotBadSessionRatio,omitnil,omitempty" name:"NotBadSessionRatio"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

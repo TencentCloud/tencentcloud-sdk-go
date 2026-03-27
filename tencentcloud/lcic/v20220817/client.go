@@ -626,6 +626,10 @@ func NewBatchGetPlaybackTokenResponse() (response *BatchGetPlaybackTokenResponse
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLASSID = "InvalidParameter.ClassID"
+//  INVALIDPARAMETER_CLASSIDS = "InvalidParameter.ClassIDs"
+//  INVALIDPARAMETER_SCHOOLID = "InvalidParameter.SchoolID"
+//  INVALIDPARAMETER_USERSCHOOLMISMATCH = "InvalidParameter.UserSchoolMismatch"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -644,6 +648,10 @@ func (c *Client) BatchGetPlaybackToken(request *BatchGetPlaybackTokenRequest) (r
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLASSID = "InvalidParameter.ClassID"
+//  INVALIDPARAMETER_CLASSIDS = "InvalidParameter.ClassIDs"
+//  INVALIDPARAMETER_SCHOOLID = "InvalidParameter.SchoolID"
+//  INVALIDPARAMETER_USERSCHOOLMISMATCH = "InvalidParameter.UserSchoolMismatch"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"

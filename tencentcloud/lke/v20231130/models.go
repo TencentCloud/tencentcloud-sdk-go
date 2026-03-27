@@ -2393,6 +2393,9 @@ type CreateWorkflowRunRequestParams struct {
 
 	// API参数配置
 	CustomVariables []*CustomVariable `json:"CustomVariables,omitnil,omitempty" name:"CustomVariables"`
+
+	// 用户ID
+	VisitorId *string `json:"VisitorId,omitnil,omitempty" name:"VisitorId"`
 }
 
 type CreateWorkflowRunRequest struct {
@@ -2409,6 +2412,9 @@ type CreateWorkflowRunRequest struct {
 
 	// API参数配置
 	CustomVariables []*CustomVariable `json:"CustomVariables,omitnil,omitempty" name:"CustomVariables"`
+
+	// 用户ID
+	VisitorId *string `json:"VisitorId,omitnil,omitempty" name:"VisitorId"`
 }
 
 func (r *CreateWorkflowRunRequest) ToJsonString() string {
@@ -2427,6 +2433,7 @@ func (r *CreateWorkflowRunRequest) FromJsonString(s string) error {
 	delete(f, "RunEnv")
 	delete(f, "Query")
 	delete(f, "CustomVariables")
+	delete(f, "VisitorId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWorkflowRunRequest has unknown keys!", "")
 	}

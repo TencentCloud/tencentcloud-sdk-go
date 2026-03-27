@@ -3737,6 +3737,66 @@ func (c *Client) ModifyDBInstanceSpecWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyInstanceAzRequest() (request *ModifyInstanceAzRequest) {
+    request = &ModifyInstanceAzRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "ModifyInstanceAz")
+    
+    
+    return
+}
+
+func NewModifyInstanceAzResponse() (response *ModifyInstanceAzResponse) {
+    response = &ModifyInstanceAzResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInstanceAz
+// 本接口(ModifyInstanceAz)用于调整 MongoDB 云数据库的节点可用区分布，可通过指定主可用区和全部可用区分布信息完成云数据库的节点分布调整。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CHECKAPPIDFAILED = "InvalidParameterValue.CheckAppIdFailed"
+//  INVALIDPARAMETERVALUE_ILLEGALINSTANCESTATUS = "InvalidParameterValue.IllegalInstanceStatus"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+func (c *Client) ModifyInstanceAz(request *ModifyInstanceAzRequest) (response *ModifyInstanceAzResponse, err error) {
+    return c.ModifyInstanceAzWithContext(context.Background(), request)
+}
+
+// ModifyInstanceAz
+// 本接口(ModifyInstanceAz)用于调整 MongoDB 云数据库的节点可用区分布，可通过指定主可用区和全部可用区分布信息完成云数据库的节点分布调整。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CHECKAPPIDFAILED = "InvalidParameterValue.CheckAppIdFailed"
+//  INVALIDPARAMETERVALUE_ILLEGALINSTANCESTATUS = "InvalidParameterValue.IllegalInstanceStatus"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+func (c *Client) ModifyInstanceAzWithContext(ctx context.Context, request *ModifyInstanceAzRequest) (response *ModifyInstanceAzResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceAzRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "ModifyInstanceAz")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceAz require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceAzResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyInstanceParamsRequest() (request *ModifyInstanceParamsRequest) {
     request = &ModifyInstanceParamsRequest{
         BaseRequest: &tchttp.BaseRequest{},

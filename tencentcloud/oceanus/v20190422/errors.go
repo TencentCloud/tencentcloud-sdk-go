@@ -347,6 +347,12 @@ const (
 	// Checkpoint 时间间隔，错误。
 	UNSUPPORTEDOPERATION_INVALIDCHECKPOINTINTERVALERROR = "UnsupportedOperation.InvalidCheckpointIntervalError"
 
+	// 引用了多个外部数据源，目前SQL作业只允许引用一个外部数据源。
+	UNSUPPORTEDOPERATION_MULTIEXTERNALCATALOGUNSUPPORTED = "UnsupportedOperation.MultiExternalCatalogUnsupported"
+
+	// 不支持多EmrOrHive Catalog
+	UNSUPPORTEDOPERATION_MULTIEXTERNALEMRORHIVECATALOGUNSUPPORTED = "UnsupportedOperation.MultiExternalEmrOrHiveCatalogUnsupported"
+
 	// 权限拦截,没有进入权限。
 	UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 

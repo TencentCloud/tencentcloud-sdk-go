@@ -6021,6 +6021,60 @@ func (c *Client) DeleteScreenshotTaskWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeAIGCTaskStatusRequest() (request *DescribeAIGCTaskStatusRequest) {
+    request = &DescribeAIGCTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeAIGCTaskStatus")
+    
+    
+    return
+}
+
+func NewDescribeAIGCTaskStatusResponse() (response *DescribeAIGCTaskStatusResponse) {
+    response = &DescribeAIGCTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAIGCTaskStatus
+// 查询视频转绘任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYAIGCTASKFAILED = "FailedOperation.QueryAIGCTaskFailed"
+//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+func (c *Client) DescribeAIGCTaskStatus(request *DescribeAIGCTaskStatusRequest) (response *DescribeAIGCTaskStatusResponse, err error) {
+    return c.DescribeAIGCTaskStatusWithContext(context.Background(), request)
+}
+
+// DescribeAIGCTaskStatus
+// 查询视频转绘任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYAIGCTASKFAILED = "FailedOperation.QueryAIGCTaskFailed"
+//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidUrl"
+func (c *Client) DescribeAIGCTaskStatusWithContext(ctx context.Context, request *DescribeAIGCTaskStatusRequest) (response *DescribeAIGCTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIGCTaskStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeAIGCTaskStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAIGCTaskStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAIGCTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAllStreamPlayInfoListRequest() (request *DescribeAllStreamPlayInfoListRequest) {
     request = &DescribeAllStreamPlayInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},

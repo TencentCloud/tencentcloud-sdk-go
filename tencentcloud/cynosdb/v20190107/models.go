@@ -62,6 +62,9 @@ type Account struct {
 	// 数据库账号名
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
+	// 主机
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
 	// 数据库账号描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
@@ -71,11 +74,11 @@ type Account struct {
 	// 更新时间
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 主机
-	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
-
 	// 用户最大连接数
 	MaxUserConnections *int64 `json:"MaxUserConnections,omitnil,omitempty" name:"MaxUserConnections"`
+
+	// 是否开启密码轮转(0:关闭;1:开启)
+	PasswordRotation *int64 `json:"PasswordRotation,omitnil,omitempty" name:"PasswordRotation"`
 }
 
 type AccountParam struct {
@@ -11280,7 +11283,8 @@ type DescribeProxiesRequestParams struct {
 	// <li> DESC：降序排序 </li>
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 
-	// 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+	// 搜索条件，若存在多个 Filter 时，Filter 间的关系为逻辑与（AND）关系。
+	// 说明：此参数当前仅支持 Status 和 ProxyGroupId 两种过滤条件。
 	Filters []*QueryParamFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -11306,7 +11310,8 @@ type DescribeProxiesRequest struct {
 	// <li> DESC：降序排序 </li>
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 
-	// 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+	// 搜索条件，若存在多个 Filter 时，Filter 间的关系为逻辑与（AND）关系。
+	// 说明：此参数当前仅支持 Status 和 ProxyGroupId 两种过滤条件。
 	Filters []*QueryParamFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -19028,11 +19033,14 @@ type NewAccount struct {
 	// 账户名，包含字母数字_,以字母开头，字母或数字结尾，长度1-30
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
+	// 主机(%或ipv4地址)
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
 	// 密码，密码长度范围为8到64个字符
 	AccountPassword *string `json:"AccountPassword,omitnil,omitempty" name:"AccountPassword"`
 
-	// 主机(%或ipv4地址)
-	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+	// 是否开启密码轮转(0:关闭;1:开启)
+	PasswordRotation *int64 `json:"PasswordRotation,omitnil,omitempty" name:"PasswordRotation"`
 
 	// 描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -23462,6 +23470,8 @@ type UpgradeInstanceRequestParams struct {
 	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
 
 	// 实例机器类型
+	// 1. common，通用型。
+	// 2. exclusive，独享型。
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
 	// 该参数已废弃
@@ -23499,6 +23509,8 @@ type UpgradeInstanceRequest struct {
 	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
 
 	// 实例机器类型
+	// 1. common，通用型。
+	// 2. exclusive，独享型。
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
 	// 该参数已废弃
