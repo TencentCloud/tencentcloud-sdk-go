@@ -1,4 +1,4 @@
-# Release v1.3.66
+# Release v1.3.67
 
 ## Agent 沙箱服务(ags) 版本：2025-09-20
 
