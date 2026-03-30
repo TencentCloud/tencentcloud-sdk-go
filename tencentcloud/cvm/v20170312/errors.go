@@ -272,6 +272,9 @@ const (
 	// 当前接口不支持实例镜像。
 	INVALIDPARAMETER_INSTANCEIMAGENOTSUPPORT = "InvalidParameter.InstanceImageNotSupport"
 
+	// 指定机型不支持。
+	INVALIDPARAMETER_INSTANCETYPENOTSUPPORT = "InvalidParameter.InstanceTypeNotSupport"
+
 	// 不存在支持指定子机规格的CDH母机
 	INVALIDPARAMETER_INSTANCETYPESUPPORTEDHOSTNOTFOUND = "InvalidParameter.InstanceTypeSupportedHostNotFound"
 
@@ -388,6 +391,9 @@ const (
 
 	// 指定的专有资源包ID不存在
 	INVALIDPARAMETERVALUE_DEDICATEDRESOURCEPACKIDSNOTFOUND = "InvalidParameterValue.DedicatedResourcePackIdsNotFound"
+
+	// 专有资源包名称无效。名称长度必须为1-60个字符，只能包含中文、英文字母、数字、连字符(-)和下划线(_)
+	INVALIDPARAMETERVALUE_DEDICATEDRESOURCEPACKNAME = "InvalidParameterValue.DedicatedResourcePackName"
 
 	// 未找到有效的专有资源包
 	INVALIDPARAMETERVALUE_DEDICATEDRESOURCEPACKNOTVALID = "InvalidParameterValue.DedicatedResourcePackNotValid"
@@ -625,6 +631,15 @@ const (
 
 	// 请求需要区域镜像。
 	INVALIDPARAMETERVALUE_REQUIREDLOCATIONIMAGE = "InvalidParameterValue.RequiredLocationImage"
+
+	// 指定的资源池ID格式错误。请确保在请求中提供完整的资源池ID，格式为`rpp-xxxxxxxx`
+	INVALIDPARAMETERVALUE_RESOURCEPOOLPACKIDMALFORMED = "InvalidParameterValue.ResourcePoolPackIdMalformed"
+
+	// 指定的资源池状态不符合预期
+	INVALIDPARAMETERVALUE_RESOURCEPOOLPACKSTATUS = "InvalidParameterValue.ResourcePoolPackStatus"
+
+	// 指定的资源池类型无效
+	INVALIDPARAMETERVALUE_RESOURCEPOOLPACKTYPENOTSUPPORTED = "InvalidParameterValue.ResourcePoolPackTypeNotSupported"
 
 	// 快照ID不合要求，请提供规范的快照ID，类似snap-xxxxxxxx，字母x代表小写字符或者数字
 	INVALIDPARAMETERVALUE_SNAPSHOTIDMALFORMED = "InvalidParameterValue.SnapshotIdMalformed"
@@ -875,6 +890,9 @@ const (
 	// 无可用的缺省类型的CBS资源。
 	RESOURCENOTFOUND_NODEFAULTCBSWITHREASON = "ResourceNotFound.NoDefaultCbsWithReason"
 
+	// 指定的资源池ID不存在
+	RESOURCENOTFOUND_RESOURCEPOOLPACKIDNOTFOUND = "ResourceNotFound.ResourcePoolPackIdNotFound"
+
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
@@ -940,6 +958,9 @@ const (
 
 	// 所选择的边缘可用区不支持云盘操作。
 	UNSUPPORTEDOPERATION_EDGEZONENOTSUPPORTCLOUDDISK = "UnsupportedOperation.EdgeZoneNotSupportCloudDisk"
+
+	// 边缘可用区不支持预扣资源包。
+	UNSUPPORTEDOPERATION_EDGEZONENOTSUPPORTPURCHASERESERVED = "UnsupportedOperation.EdgeZoneNotSupportPurchaseReserved"
 
 	// 云服务器绑定了弹性网卡，请解绑弹性网卡后再切换私有网络。
 	UNSUPPORTEDOPERATION_ELASTICNETWORKINTERFACE = "UnsupportedOperation.ElasticNetworkInterface"
@@ -1177,6 +1198,9 @@ const (
 
 	// 不支持该地域
 	UNSUPPORTEDOPERATION_REGION = "UnsupportedOperation.Region"
+
+	// 该资源池对用户不可见
+	UNSUPPORTEDOPERATION_RESOURCEPOOLPACKAGEINVISIBLEFORUSER = "UnsupportedOperation.ResourcePoolPackageInvisibleForUser"
 
 	// 共享镜像不支持导出。
 	UNSUPPORTEDOPERATION_SHAREDIMAGEEXPORTUNSUPPORTED = "UnsupportedOperation.SharedImageExportUnsupported"

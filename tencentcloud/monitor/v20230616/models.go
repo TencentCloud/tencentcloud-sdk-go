@@ -96,6 +96,82 @@ type AIWorkbenchSREDigitalTwinWorkLogList struct {
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 }
 
+type AlarmLable struct {
+	// label name
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// label value
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type AlarmNotifyHistory struct {
+	// 通知的唯一ID
+	NotifyId *string `json:"NotifyId,omitnil,omitempty" name:"NotifyId"`
+
+	// 告警策略ID
+	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 告警周期iD
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 通知时间 unix秒级时间戳
+	NotifyTime *int64 `json:"NotifyTime,omitnil,omitempty" name:"NotifyTime"`
+
+	// 触发时间 unix秒级时间戳
+	TriggerTime *int64 `json:"TriggerTime,omitnil,omitempty" name:"TriggerTime"`
+
+	// 告警级别 None 非分级告警级别; Note 提示级别; Warn 严重级别; Serious 紧急级别
+	TriggerLevel *string `json:"TriggerLevel,omitnil,omitempty" name:"TriggerLevel"`
+
+	// 告警内容
+	AlarmContent *string `json:"AlarmContent,omitnil,omitempty" name:"AlarmContent"`
+
+	// 告警对象
+	AlarmObject *string `json:"AlarmObject,omitnil,omitempty" name:"AlarmObject"`
+
+	// 本次告警通知涉及到的渠道合集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelSet []*string `json:"ChannelSet,omitnil,omitempty" name:"ChannelSet"`
+
+	// 渠道的接收人信息
+	ChannelsReceivers []*ChannelsReceivers `json:"ChannelsReceivers,omitnil,omitempty" name:"ChannelsReceivers"`
+
+	// 告警策略名称
+	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
+
+	// Prometheus实例ID, 仅当 MT_PROME 时有效
+	PromeInstanceID *string `json:"PromeInstanceID,omitnil,omitempty" name:"PromeInstanceID"`
+
+	// Prometheus实例所在的地域, 仅当 MT_PROME 时有效
+	PromeInstanceRegion *string `json:"PromeInstanceRegion,omitnil,omitempty" name:"PromeInstanceRegion"`
+
+	// 通知模板相关的配置信息
+	Notices []*NotifyRelatedNotice `json:"Notices,omitnil,omitempty" name:"Notices"`
+
+	// 告警触发状态  Trigger 告警状态触发; Recovery 告警状态恢复
+	TriggerStatus *string `json:"TriggerStatus,omitnil,omitempty" name:"TriggerStatus"`
+
+	// 与当前Prometheus通知历史相关控制台页面地址，仅当 MR_PROME 时有效
+	PromeConsoleURL *string `json:"PromeConsoleURL,omitnil,omitempty" name:"PromeConsoleURL"`
+
+	// 告警的lable
+	Labels []*AlarmLable `json:"Labels,omitnil,omitempty" name:"Labels"`
+}
+
+type ChannelsReceivers struct {
+	// 通知渠道名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
+
+	// 接收者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Receivers []*string `json:"Receivers,omitnil,omitempty" name:"Receivers"`
+
+	// 发送结果,0-无效,1-成功,2-失败,3-无需发送
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SendStatus *string `json:"SendStatus,omitnil,omitempty" name:"SendStatus"`
+}
+
 // Predefined struct for user
 type CreateNoticeContentTmplRequestParams struct {
 	// 模板名称
@@ -512,6 +588,12 @@ func (r *DescribeAlarmNotifyHistoriesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAlarmNotifyHistoriesResponseParams struct {
+	// 告警历史
+	AlarmNotifyHistoryList []*AlarmNotifyHistory `json:"AlarmNotifyHistoryList,omitnil,omitempty" name:"AlarmNotifyHistoryList"`
+
+	// 分页情况
+	PageResult *PageByNoResult `json:"PageResult,omitnil,omitempty" name:"PageResult"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -837,6 +919,14 @@ type NoticeContentTmplItem struct {
 	GoogleChatRobot []*GoogleChatRobotNoticeTmplMatcher `json:"GoogleChatRobot,omitnil,omitempty" name:"GoogleChatRobot"`
 }
 
+type NotifyRelatedNotice struct {
+	// 通知模板ID
+	NoticeId *string `json:"NoticeId,omitnil,omitempty" name:"NoticeId"`
+
+	// 通知模板的名称
+	NoticeName *string `json:"NoticeName,omitnil,omitempty" name:"NoticeName"`
+}
+
 type PageByNoParams struct {
 	// 每个分页的数量是多少
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -845,6 +935,29 @@ type PageByNoParams struct {
 	// 第几个分页，从1开始
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PageNo *string `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+}
+
+type PageByNoResult struct {
+	// 总共有多少数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 总共有多少个分页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPage *int64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
+
+	// 当前的分页号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentPageNo *int64 `json:"CurrentPageNo,omitnil,omitempty" name:"CurrentPageNo"`
+
+	// 【已弃用】是否遍历到末尾
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: IsEnd is deprecated.
+	IsEnd *bool `json:"IsEnd,omitnil,omitempty" name:"IsEnd"`
+
+	// 是否遍历到末尾
+	End *bool `json:"End,omitnil,omitempty" name:"End"`
 }
 
 type PagerDutyRobotNoticeTmpl struct {

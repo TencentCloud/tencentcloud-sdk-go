@@ -4166,6 +4166,227 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeResourcePoolPackInstancesRequestParams struct {
+	// 实例资源池ID列表。形如：rpp-39kj2fsb。每次请求的实例的上限为100。
+	DedicatedResourcePackIds []*string `json:"DedicatedResourcePackIds,omitnil,omitempty" name:"DedicatedResourcePackIds"`
+}
+
+type DescribeResourcePoolPackInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例资源池ID列表。形如：rpp-39kj2fsb。每次请求的实例的上限为100。
+	DedicatedResourcePackIds []*string `json:"DedicatedResourcePackIds,omitnil,omitempty" name:"DedicatedResourcePackIds"`
+}
+
+func (r *DescribeResourcePoolPackInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourcePoolPackInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DedicatedResourcePackIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourcePoolPackInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourcePoolPackInstancesResponseParams struct {
+	// 实例资源池内已创建的实例详情列表。
+	DedicatedResourcePackInstanceSet []*ResourcePoolPackInstance `json:"DedicatedResourcePackInstanceSet,omitnil,omitempty" name:"DedicatedResourcePackInstanceSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeResourcePoolPackInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeResourcePoolPackInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeResourcePoolPackInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourcePoolPackInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourcePoolPackTypeConfigsRequestParams struct {
+	// <li><strong>zone</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤。形如：ap-guangzhou-6。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：是</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
+	// <li><strong>instance-family</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>实例族</strong>】进行过滤。形如：SA9。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>instance-type</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>实例规格</strong>】进行过滤。形如：SA9.96XLARGE1152。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// 每次请求的`Filters`的上限为10。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeResourcePoolPackTypeConfigsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <li><strong>zone</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤。形如：ap-guangzhou-6。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：是</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
+	// <li><strong>instance-family</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>实例族</strong>】进行过滤。形如：SA9。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>instance-type</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>实例规格</strong>】进行过滤。形如：SA9.96XLARGE1152。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// 每次请求的`Filters`的上限为10。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeResourcePoolPackTypeConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourcePoolPackTypeConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourcePoolPackTypeConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourcePoolPackTypeConfigsResponseParams struct {
+	// 支持实例资源池的机型规格列表。
+	InstanceTypeConfigSet []*InstanceTypeConfig `json:"InstanceTypeConfigSet,omitnil,omitempty" name:"InstanceTypeConfigSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeResourcePoolPackTypeConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeResourcePoolPackTypeConfigsResponseParams `json:"Response"`
+}
+
+func (r *DescribeResourcePoolPackTypeConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourcePoolPackTypeConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourcePoolPacksRequestParams struct {
+	// 返回数量，默认值为10，最小值为10，最大值为100。
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// 分页标记，用于获取下一页数据。
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// <li><strong>dedicated-resource-pack-id</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>实例资源池ID</strong>】进行过滤。形如：rpp-rn99mzt2。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>zone</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤。形如：ap-guangzhou-6。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
+	// <li><strong>instance-family</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>实例类型</strong>】进行过滤。形如：SA9。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>instance-type</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>实例规格</strong>】进行过滤。形如：SA9.96XLARGE1152。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>status</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>实例资源池状态</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：CREATING (创建中) | ACTIVE (运行中) | RETIRED (已过期)</p>
+	// 每次请求的`Filters`的上限为10。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeResourcePoolPacksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 返回数量，默认值为10，最小值为10，最大值为100。
+	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// 分页标记，用于获取下一页数据。
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// <li><strong>dedicated-resource-pack-id</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>实例资源池ID</strong>】进行过滤。形如：rpp-rn99mzt2。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>zone</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤。形如：ap-guangzhou-6。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
+	// <li><strong>instance-family</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>实例类型</strong>】进行过滤。形如：SA9。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>instance-type</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>实例规格</strong>】进行过滤。形如：SA9.96XLARGE1152。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>status</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>实例资源池状态</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：CREATING (创建中) | ACTIVE (运行中) | RETIRED (已过期)</p>
+	// 每次请求的`Filters`的上限为10。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeResourcePoolPacksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourcePoolPacksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MaxResults")
+	delete(f, "NextToken")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourcePoolPacksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourcePoolPacksResponseParams struct {
+	// 符合条件的实例资源池列表。
+	DedicatedResourcePackSet []*ResourcePoolPack `json:"DedicatedResourcePackSet,omitnil,omitempty" name:"DedicatedResourcePackSet"`
+
+	// 下一页数据的标记，用于分页查询。值为空时表示已到最后一页。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeResourcePoolPacksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeResourcePoolPacksResponseParams `json:"Response"`
+}
+
+func (r *DescribeResourcePoolPacksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourcePoolPacksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTaskInfoRequestParams struct {
 	// 返回数量，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -5525,6 +5746,84 @@ func (r *ImportKeyPairResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ImportKeyPairResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquirePricePurchaseResourcePoolPacksRequestParams struct {
+	// 实例资源池预扣包所在可用区。形如：ap-guangzhou-6。可通过[DescribeZones](https://cloud.tencent.com/document/product/213/15707)接口获取可用区列表。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 实例资源池的规格，仅支持整机/半整机规格。形如：SA9.96XLARGE1152。
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 实例资源池的数量。1个数量代表1个半整机/整机资源池。
+	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
+
+	// 实例资源池的时长，单位：月。取值范围：1-60。
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+}
+
+type InquirePricePurchaseResourcePoolPacksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例资源池预扣包所在可用区。形如：ap-guangzhou-6。可通过[DescribeZones](https://cloud.tencent.com/document/product/213/15707)接口获取可用区列表。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 实例资源池的规格，仅支持整机/半整机规格。形如：SA9.96XLARGE1152。
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 实例资源池的数量。1个数量代表1个半整机/整机资源池。
+	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
+
+	// 实例资源池的时长，单位：月。取值范围：1-60。
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+}
+
+func (r *InquirePricePurchaseResourcePoolPacksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePricePurchaseResourcePoolPacksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zone")
+	delete(f, "InstanceType")
+	delete(f, "InstanceCount")
+	delete(f, "Period")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePricePurchaseResourcePoolPacksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquirePricePurchaseResourcePoolPacksResponseParams struct {
+	// 实例资源池价格信息。
+	Price *ItemPrice `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InquirePricePurchaseResourcePoolPacksResponse struct {
+	*tchttp.BaseResponse
+	Response *InquirePricePurchaseResourcePoolPacksResponseParams `json:"Response"`
+}
+
+func (r *InquirePricePurchaseResourcePoolPacksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePricePurchaseResourcePoolPacksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8130,6 +8429,9 @@ type Placement struct {
 
 	// 实例所属的专用宿主机ID，仅用于出参。
 	HostId *string `json:"HostId,omitnil,omitempty" name:"HostId"`
+
+	// 实例所属的实例资源池机架ID，仅用于出参。
+	RackId *string `json:"RackId,omitnil,omitempty" name:"RackId"`
 }
 
 type PostPaidQuota struct {
@@ -8243,6 +8545,139 @@ func (r *ProgramFpgaImageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ProgramFpgaImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PurchaseResourcePoolPacksRequestParams struct {
+	// 实例资源池预扣包所在可用区。形如：ap-guangzhou-6。可通过[DescribeZones](https://cloud.tencent.com/document/product/213/15707)接口获取可用区列表。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 实例资源池预扣包的规格，仅支持半整机/整机规格。形如：SA9.96XLARGE1152（SA9半整机）。
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 实例资源池预扣包的数量。1个数量代表1个半整机/整机资源池。取值范围：1-100。
+	InstanceCount *uint64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
+
+	// 实例资源池预扣包的时长，单位：月。取值范围：1-60。
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 实例资源池类型。取值范围：
+	// <li>EXCLUSIVE：独享（默认值）</li>
+	// <li>SHARED：共享</li>
+	// 注意：第一期仅支持EXCLUSIVE类型。
+	ResourcePoolPackType *string `json:"ResourcePoolPackType,omitnil,omitempty" name:"ResourcePoolPackType"`
+
+	// 自动放置开关，默认开启（true）。
+	// <li>开启：在不指定实例资源池创建实例时，系统会在开启了该能力的实例资源池里寻找合适的池子创建实例。</li>
+	// <li>关闭：在不指定实例资源池创建实例时，系统不会在该池子里创建实例，只有在指定实例资源池创建实例时，指定了该池子的ID，才允许在池子内创建实例。</li>
+	AutoPlacement *bool `json:"AutoPlacement,omitnil,omitempty" name:"AutoPlacement"`
+
+	// 实例资源池的名称。长度限制：1-60个字符，支持中文、英文、数字、连接线"-"、下划线"_"。
+	DedicatedResourcePoolPackName *string `json:"DedicatedResourcePoolPackName,omitnil,omitempty" name:"DedicatedResourcePoolPackName"`
+
+	// 自动续费标识。取值范围：
+	// <li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+	// <li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费（默认值）</li>
+	// <li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 试运行，用于校验请求参数是否正确。默认为false。
+	// <li>true：发送检查请求，不会创建实例资源池。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId。</li>
+	// <li>false（默认值）：发送正常请求，通过检查后直接创建实例资源池。</li>
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+}
+
+type PurchaseResourcePoolPacksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例资源池预扣包所在可用区。形如：ap-guangzhou-6。可通过[DescribeZones](https://cloud.tencent.com/document/product/213/15707)接口获取可用区列表。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 实例资源池预扣包的规格，仅支持半整机/整机规格。形如：SA9.96XLARGE1152（SA9半整机）。
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 实例资源池预扣包的数量。1个数量代表1个半整机/整机资源池。取值范围：1-100。
+	InstanceCount *uint64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
+
+	// 实例资源池预扣包的时长，单位：月。取值范围：1-60。
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 实例资源池类型。取值范围：
+	// <li>EXCLUSIVE：独享（默认值）</li>
+	// <li>SHARED：共享</li>
+	// 注意：第一期仅支持EXCLUSIVE类型。
+	ResourcePoolPackType *string `json:"ResourcePoolPackType,omitnil,omitempty" name:"ResourcePoolPackType"`
+
+	// 自动放置开关，默认开启（true）。
+	// <li>开启：在不指定实例资源池创建实例时，系统会在开启了该能力的实例资源池里寻找合适的池子创建实例。</li>
+	// <li>关闭：在不指定实例资源池创建实例时，系统不会在该池子里创建实例，只有在指定实例资源池创建实例时，指定了该池子的ID，才允许在池子内创建实例。</li>
+	AutoPlacement *bool `json:"AutoPlacement,omitnil,omitempty" name:"AutoPlacement"`
+
+	// 实例资源池的名称。长度限制：1-60个字符，支持中文、英文、数字、连接线"-"、下划线"_"。
+	DedicatedResourcePoolPackName *string `json:"DedicatedResourcePoolPackName,omitnil,omitempty" name:"DedicatedResourcePoolPackName"`
+
+	// 自动续费标识。取值范围：
+	// <li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+	// <li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费（默认值）</li>
+	// <li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 试运行，用于校验请求参数是否正确。默认为false。
+	// <li>true：发送检查请求，不会创建实例资源池。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId。</li>
+	// <li>false（默认值）：发送正常请求，通过检查后直接创建实例资源池。</li>
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+}
+
+func (r *PurchaseResourcePoolPacksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PurchaseResourcePoolPacksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zone")
+	delete(f, "InstanceType")
+	delete(f, "InstanceCount")
+	delete(f, "Period")
+	delete(f, "ResourcePoolPackType")
+	delete(f, "AutoPlacement")
+	delete(f, "DedicatedResourcePoolPackName")
+	delete(f, "RenewFlag")
+	delete(f, "DryRun")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PurchaseResourcePoolPacksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PurchaseResourcePoolPacksResponseParams struct {
+	// 创建的实例资源池ID列表。形如：rpp-39kj2fsb。
+	DedicatedResourcePackIdSet []*string `json:"DedicatedResourcePackIdSet,omitnil,omitempty" name:"DedicatedResourcePackIdSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PurchaseResourcePoolPacksResponse struct {
+	*tchttp.BaseResponse
+	Response *PurchaseResourcePoolPacksResponseParams `json:"Response"`
+}
+
+func (r *PurchaseResourcePoolPacksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PurchaseResourcePoolPacksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9217,6 +9652,95 @@ func (r *ResizeInstanceDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ResourceCount struct {
+	// vCPU核数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 内存大小，单位：GB。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// GPU数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Gpu *uint64 `json:"Gpu,omitnil,omitempty" name:"Gpu"`
+
+	// 本地盘大小，单位：GB。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Disk *uint64 `json:"Disk,omitnil,omitempty" name:"Disk"`
+}
+
+type ResourcePoolPack struct {
+	// 实例资源池ID。形如：rpp-rn99mzt2。
+	DedicatedResourcePackId *string `json:"DedicatedResourcePackId,omitnil,omitempty" name:"DedicatedResourcePackId"`
+
+	// 实例资源池的名称。
+	DedicatedResourcePackName *string `json:"DedicatedResourcePackName,omitnil,omitempty" name:"DedicatedResourcePackName"`
+
+	// 实例资源池预扣包所在可用区。形如：ap-guangzhou-6。
+	// 返回项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 实例资源池预扣包的规格，仅支持半整机/整机规格。形如：SA9.96XLARGE1152（SA9半整机）。
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 实例资源池预扣包的实例类型。形如：SA9。
+	InstanceFamily *string `json:"InstanceFamily,omitnil,omitempty" name:"InstanceFamily"`
+
+	// 实例资源池类型。
+	// 返回项：EXCLUSIVE (独享) | SHARED (共享)。
+	ResourcePoolPackType *string `json:"ResourcePoolPackType,omitnil,omitempty" name:"ResourcePoolPackType"`
+
+	// 实例资源池状态。
+	// 返回项：CREATING (创建中) | ACTIVE (运行中) | FAILED (创建失败) | RETIRED (已过期)。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 实例资源池总容量。
+	TotalCapacity *ResourceCount `json:"TotalCapacity,omitnil,omitempty" name:"TotalCapacity"`
+
+	// 实例资源池剩余容量。
+	AvailableCapacity *ResourceCount `json:"AvailableCapacity,omitnil,omitempty" name:"AvailableCapacity"`
+
+	// 底层物理机IP（已加密）。
+	HostIp *string `json:"HostIp,omitnil,omitempty" name:"HostIp"`
+
+	// 机架ID（已加密）。
+	RackId *string `json:"RackId,omitnil,omitempty" name:"RackId"`
+
+	// 交换机ID（已加密）。
+	SwitchId *string `json:"SwitchId,omitnil,omitempty" name:"SwitchId"`
+
+	// 自动放置开关状态。开启则在不指定实例资源池创建实例时，系统会在开启了该能力的实例资源池里寻找合适的池子创建实例。关闭则在不指定实例资源池创建实例时，系统不会在该池子里创建实例，只有在指定实例资源池创建实例时，指定了该池子的ID，才允许在池子内创建实例。
+	AutoPlacement *bool `json:"AutoPlacement,omitnil,omitempty" name:"AutoPlacement"`
+
+	// 自动续费标识。
+	// 返回项：NOTIFY_AND_AUTO_RENEW (通知且自动续费) | NOTIFY_AND_MANUAL_RENEW (通知不自动续费) | DISABLE_NOTIFY_AND_MANUAL_RENEW (不通知不自动续费)。
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 实例资源池预扣包创建时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 实例资源池到期时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type ResourcePoolPackInstance struct {
+	// 实例资源池ID。形如：rpp-fb7bzcyt。
+	DedicatedResourcePackId *string `json:"DedicatedResourcePackId,omitnil,omitempty" name:"DedicatedResourcePackId"`
+
+	// 实例资源池内的实例ID列表。形如：["ins-5u8lxsum"]。
+	InstanceIdSet []*string `json:"InstanceIdSet,omitnil,omitempty" name:"InstanceIdSet"`
+
+	// 实例族。形如：SA9。
+	InstanceFamily *string `json:"InstanceFamily,omitnil,omitempty" name:"InstanceFamily"`
+
+	// 实例规格。形如：SA9.96XLARGE1152。
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 可用区。形如：ap-guangzhou-6。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+}
+
 type RunAutomationServiceEnabled struct {
 	// 是否开启云自动化助手。取值范围：<br><li>true：表示开启云自动化助手服务<br><li>false：表示不开启云自动化助手服务<br><br>默认取值：false。
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
@@ -9986,6 +10510,60 @@ func (r *TerminateInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TerminateInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TerminateResourcePoolPacksRequestParams struct {
+	// 实例资源池ID列表，支持批量销毁。形如：rpp-6rk3550n。每次请求的实例的上限为100。
+	DedicatedResourcePackIds []*string `json:"DedicatedResourcePackIds,omitnil,omitempty" name:"DedicatedResourcePackIds"`
+}
+
+type TerminateResourcePoolPacksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例资源池ID列表，支持批量销毁。形如：rpp-6rk3550n。每次请求的实例的上限为100。
+	DedicatedResourcePackIds []*string `json:"DedicatedResourcePackIds,omitnil,omitempty" name:"DedicatedResourcePackIds"`
+}
+
+func (r *TerminateResourcePoolPacksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateResourcePoolPacksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DedicatedResourcePackIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateResourcePoolPacksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TerminateResourcePoolPacksResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TerminateResourcePoolPacksResponse struct {
+	*tchttp.BaseResponse
+	Response *TerminateResourcePoolPacksResponseParams `json:"Response"`
+}
+
+func (r *TerminateResourcePoolPacksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateResourcePoolPacksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

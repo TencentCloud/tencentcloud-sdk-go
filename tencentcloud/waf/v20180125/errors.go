@@ -143,6 +143,30 @@ const (
 	// 证书内容非法。
 	INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
 
+	// Content为空
+	INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+
+	// 内部服务错误
+	INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+
+	// Type非法
+	INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+
+	// 大模型调用过程中，serviceid没有配置规则
+	INVALIDPARAMETER_LLMNORULES = "InvalidParameter.LLMNoRules"
+
+	// 请求body解析失败
+	INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+
+	// RequestId为空
+	INVALIDPARAMETER_LLMREQUESTIDEMPTY = "InvalidParameter.LLMRequestIdEmpty"
+
+	// ServiceId为空
+	INVALIDPARAMETER_LLMSERVICEIDEMPTY = "InvalidParameter.LLMServiceIdEmpty"
+
+	// 大模型服务未开启开关
+	INVALIDPARAMETER_LLMSWITCHOFF = "InvalidParameter.LLMSwitchOff"
+
 	// 逻辑错误：SQL检索语句中的逻辑错误也可能导致错误。例如，使用错误的运算符、使用错误的条件等
 	INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
 

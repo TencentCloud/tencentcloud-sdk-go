@@ -382,58 +382,75 @@ func (r *CreateSandboxToolResponse) FromJsonString(s string) error {
 }
 
 type CustomConfiguration struct {
-	// 镜像地址
+	// <p>镜像地址</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 镜像仓库类型：`enterprise`、`personal`。
+	// <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>。</p>
 	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
 
-	// 启动命令
+	// <p>启动命令</p>
 	Command []*string `json:"Command,omitnil,omitempty" name:"Command"`
 
-	// 启动参数
+	// <p>启动参数</p>
 	Args []*string `json:"Args,omitnil,omitempty" name:"Args"`
 
-	// 环境变量
+	// <p>环境变量</p>
 	Env []*EnvVar `json:"Env,omitnil,omitempty" name:"Env"`
 
-	// 端口配置
+	// <p>端口配置</p>
 	Ports []*PortConfiguration `json:"Ports,omitnil,omitempty" name:"Ports"`
 
-	// 资源配置
+	// <p>资源配置</p>
 	Resources *ResourceConfiguration `json:"Resources,omitnil,omitempty" name:"Resources"`
 
-	// 探针配置
+	// <p>探针配置</p>
 	Probe *ProbeConfiguration `json:"Probe,omitnil,omitempty" name:"Probe"`
+
+	// <p>沙箱 DNS 配置</p>
+	DNSConfig *DNSConfig `json:"DNSConfig,omitnil,omitempty" name:"DNSConfig"`
 }
 
 type CustomConfigurationDetail struct {
-	// 镜像地址
+	// <p>镜像地址</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 镜像仓库类型：`TCR`、`CCR`。
+	// <p>镜像仓库类型：<code>TCR</code>、<code>CCR</code>。</p>
 	ImageRegistryType *string `json:"ImageRegistryType,omitnil,omitempty" name:"ImageRegistryType"`
 
-	// 镜像 Digest
+	// <p>镜像 Digest</p>
 	ImageDigest *string `json:"ImageDigest,omitnil,omitempty" name:"ImageDigest"`
 
-	// 启动命令
+	// <p>启动命令</p>
 	Command []*string `json:"Command,omitnil,omitempty" name:"Command"`
 
-	// 启动参数
+	// <p>启动参数</p>
 	Args []*string `json:"Args,omitnil,omitempty" name:"Args"`
 
-	// 环境变量
+	// <p>环境变量</p>
 	Env []*EnvVar `json:"Env,omitnil,omitempty" name:"Env"`
 
-	// 端口配置
+	// <p>端口配置</p>
 	Ports []*PortConfiguration `json:"Ports,omitnil,omitempty" name:"Ports"`
 
-	// 资源配置
+	// <p>资源配置</p>
 	Resources *ResourceConfiguration `json:"Resources,omitnil,omitempty" name:"Resources"`
 
-	// 探针配置
+	// <p>探针配置</p>
 	Probe *ProbeConfiguration `json:"Probe,omitnil,omitempty" name:"Probe"`
+
+	// <p>沙箱 DNS 配置</p>
+	DNSConfig *DNSConfig `json:"DNSConfig,omitnil,omitempty" name:"DNSConfig"`
+}
+
+type DNSConfig struct {
+	// <p>DNS 服务器地址</p><p>参数格式：需要有效 IP 地址</p><p>默认值：10.0.0.1</p>
+	Servers []*string `json:"Servers,omitnil,omitempty" name:"Servers"`
+
+	// <p>搜索域(对应 resolv.conf 的 search 指令)</p>
+	Searches []*string `json:"Searches,omitnil,omitempty" name:"Searches"`
+
+	// <p>配置项(对应  resolv.conf 选项)</p>
+	Options []*string `json:"Options,omitnil,omitempty" name:"Options"`
 }
 
 // Predefined struct for user

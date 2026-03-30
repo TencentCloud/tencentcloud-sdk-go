@@ -1021,6 +1021,8 @@ type AddSpartaProtectionRequestParams struct {
 	UpstreamScheme *string `json:"UpstreamScheme,omitnil,omitempty" name:"UpstreamScheme"`
 
 	// HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
+	//
+	// Deprecated: HttpsUpstreamPort is deprecated.
 	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitnil,omitempty" name:"HttpsUpstreamPort"`
 
 	// 是否开启灰度，0表示不开启灰度。
@@ -1487,6 +1489,11 @@ type ApiDetailSampleHistory struct {
 
 	// 完整请求样例
 	FullReqLog *string `json:"FullReqLog,omitnil,omitempty" name:"FullReqLog"`
+}
+
+type ApiGuardContent struct {
+	// prompt
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 }
 
 type ApiNameMethod struct {
@@ -2659,6 +2666,20 @@ type CdcRegion struct {
 
 	// 该地域对应的集群信息
 	Clusters []*CdcCluster `json:"Clusters,omitnil,omitempty" name:"Clusters"`
+}
+
+type ClawRiskItem struct {
+	// 风险类别
+	RiskType *string `json:"RiskType,omitnil,omitempty" name:"RiskType"`
+
+	// 规则id
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 分数
+	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
 }
 
 type ClbDomainsInfo struct {
@@ -5004,7 +5025,7 @@ func (r *DeleteHostResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteIpAccessControlRequestParams struct {
-	// 域名
+	// 域名，当操作对象为全局规则时，Domain参数应填写为"global"
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 删除的ip数组
@@ -5016,7 +5037,7 @@ type DeleteIpAccessControlRequestParams struct {
 	// 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定ip名单
 	DeleteAll *bool `json:"DeleteAll,omitnil,omitempty" name:"DeleteAll"`
 
-	// 是否为多域名黑白名单
+	// 用于按数据来源删除黑白名单记录，非必填，默认为custom。 custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
 	// IP黑白名单类型，40为IP白名单，42为IP黑名单
@@ -5026,7 +5047,7 @@ type DeleteIpAccessControlRequestParams struct {
 type DeleteIpAccessControlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名
+	// 域名，当操作对象为全局规则时，Domain参数应填写为"global"
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 删除的ip数组
@@ -5038,7 +5059,7 @@ type DeleteIpAccessControlRequest struct {
 	// 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定ip名单
 	DeleteAll *bool `json:"DeleteAll,omitnil,omitempty" name:"DeleteAll"`
 
-	// 是否为多域名黑白名单
+	// 用于按数据来源删除黑白名单记录，非必填，默认为custom。 custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
 	// IP黑白名单类型，40为IP白名单，42为IP黑名单
@@ -5099,7 +5120,7 @@ func (r *DeleteIpAccessControlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteIpAccessControlV2RequestParams struct {
-	// 域名
+	// 域名，当操作对象为全局规则时，Domain参数应填写为"global"
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 规则ID列表，支持批量删除，在DeleteAll参数为true的时候可以不传
@@ -5108,7 +5129,7 @@ type DeleteIpAccessControlV2RequestParams struct {
 	// 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定IP名单，批量防护不支持
 	DeleteAll *bool `json:"DeleteAll,omitnil,omitempty" name:"DeleteAll"`
 
-	// batch表示为批量防护的IP黑白名单
+	// 用于按数据来源删除黑白名单记录，非必填，默认为custom。 custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
 	// IP黑白名单类型，40为IP白名单，42为IP黑名单，在DeleteAll为true的时候必传此参数
@@ -5118,7 +5139,7 @@ type DeleteIpAccessControlV2RequestParams struct {
 type DeleteIpAccessControlV2Request struct {
 	*tchttp.BaseRequest
 	
-	// 域名
+	// 域名，当操作对象为全局规则时，Domain参数应填写为"global"
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 规则ID列表，支持批量删除，在DeleteAll参数为true的时候可以不传
@@ -5127,7 +5148,7 @@ type DeleteIpAccessControlV2Request struct {
 	// 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定IP名单，批量防护不支持
 	DeleteAll *bool `json:"DeleteAll,omitnil,omitempty" name:"DeleteAll"`
 
-	// batch表示为批量防护的IP黑白名单
+	// 用于按数据来源删除黑白名单记录，非必填，默认为custom。 custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
 	// IP黑白名单类型，40为IP白名单，42为IP黑名单，在DeleteAll为true的时候必传此参数
@@ -9533,7 +9554,7 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIpAccessControlRequestParams struct {
-	// 域名
+	// 域名，当操作对象为全局规则时，Domain参数应填写为"global"
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 计数标识
@@ -9564,7 +9585,7 @@ type DescribeIpAccessControlRequestParams struct {
 	// 每页返回的数量，默认为20
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 来源
+	// 用于按数据来源过滤黑白名单记录，非必填（默认为空字符串，表示不过滤/查询全部）。 "" (空字符串)	，不按来源过滤，返回所有记录（默认值） custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则 batch-group（防护对象组），防护对象组维度添加的黑白名单规则
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 排序参数
@@ -9592,7 +9613,7 @@ type DescribeIpAccessControlRequestParams struct {
 type DescribeIpAccessControlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名
+	// 域名，当操作对象为全局规则时，Domain参数应填写为"global"
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 计数标识
@@ -9619,7 +9640,7 @@ type DescribeIpAccessControlRequest struct {
 	// 每页返回的数量，默认为20
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 来源
+	// 用于按数据来源过滤黑白名单记录，非必填（默认为空字符串，表示不过滤/查询全部）。 "" (空字符串)	，不按来源过滤，返回所有记录（默认值） custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则 batch-group（防护对象组），防护对象组维度添加的黑白名单规则
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 排序参数
@@ -9856,6 +9877,105 @@ func (r *DescribeIpHitItemsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIpHitItemsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLLMContentSecCheckRequestParams struct {
+	//  服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 要审核的内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 流量类型，是入向流量还是出向流量，入向：1，出向：2；入向和出向必填
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 实例id，必传
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 对话的id
+	ChatId *string `json:"ChatId,omitnil,omitempty" name:"ChatId"`
+
+	// 标识用户的id，限速使用，不填，则限速会不生效
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// token使用量，不填，会采用默认的token计算方法，计算的是模型的消耗，因为该值时在出向方向上添加，即Type=2
+	TokenUsage *uint64 `json:"TokenUsage,omitnil,omitempty" name:"TokenUsage"`
+}
+
+type DescribeLLMContentSecCheckRequest struct {
+	*tchttp.BaseRequest
+	
+	//  服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 要审核的内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 流量类型，是入向流量还是出向流量，入向：1，出向：2；入向和出向必填
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 实例id，必传
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 对话的id
+	ChatId *string `json:"ChatId,omitnil,omitempty" name:"ChatId"`
+
+	// 标识用户的id，限速使用，不填，则限速会不生效
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// token使用量，不填，会采用默认的token计算方法，计算的是模型的消耗，因为该值时在出向方向上添加，即Type=2
+	TokenUsage *uint64 `json:"TokenUsage,omitnil,omitempty" name:"TokenUsage"`
+}
+
+func (r *DescribeLLMContentSecCheckRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLLMContentSecCheckRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "Content")
+	delete(f, "Type")
+	delete(f, "InstanceId")
+	delete(f, "ChatId")
+	delete(f, "UserId")
+	delete(f, "TokenUsage")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLLMContentSecCheckRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLLMContentSecCheckResponseParams struct {
+	// 检测结果
+	Data *LLMDetectResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLLMContentSecCheckResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLLMContentSecCheckResponseParams `json:"Response"`
+}
+
+func (r *DescribeLLMContentSecCheckResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLLMContentSecCheckResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10934,6 +11054,84 @@ func (r *DescribeProtectionModesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeProtectionModesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeQClawContentSecCheckRequestParams struct {
+	//  服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 要审核的内容
+	Content *ApiGuardContent `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 标识用户的id，限速使用，不填，则限速会不生效
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 会话id
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+type DescribeQClawContentSecCheckRequest struct {
+	*tchttp.BaseRequest
+	
+	//  服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 要审核的内容
+	Content *ApiGuardContent `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 标识用户的id，限速使用，不填，则限速会不生效
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 会话id
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+func (r *DescribeQClawContentSecCheckRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQClawContentSecCheckRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "Content")
+	delete(f, "UserId")
+	delete(f, "SessionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQClawContentSecCheckRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeQClawContentSecCheckResponseParams struct {
+	// 检测结果
+	Data *LLMRisks `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeQClawContentSecCheckResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeQClawContentSecCheckResponseParams `json:"Response"`
+}
+
+func (r *DescribeQClawContentSecCheckResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQClawContentSecCheckResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14159,7 +14357,7 @@ type ImportIpAccessControlRequestParams struct {
 	// 全局域名为：global
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 是否为批量防护IP黑白名单，当为批量防护IP黑白名单时，取值为batch，否则为空
+	// 用于按数据来源导入黑白名单记录，必填。 custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
 	// 实例Id
@@ -14176,7 +14374,7 @@ type ImportIpAccessControlRequest struct {
 	// 全局域名为：global
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 是否为批量防护IP黑白名单，当为批量防护IP黑白名单时，取值为batch，否则为空
+	// 用于按数据来源导入黑白名单记录，必填。 custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
 	// 实例Id
@@ -14659,6 +14857,40 @@ type KVInt struct {
 	Value *uint64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type KeyWordInfo struct {
+	// 命中的词库id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 命中的词库名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type LLMDetectResult struct {
+	//  仅输出侧：涉敏信息
+	SensitiveResult []*LLMSensitiveValueLevel `json:"SensitiveResult,omitnil,omitempty" name:"SensitiveResult"`
+
+	//  输入输出均检测：关键词库命中信息
+	KeyWordsResult []*KeyWordInfo `json:"KeyWordsResult,omitnil,omitempty" name:"KeyWordsResult"`
+
+	// 输入输出均检测：数据分类分级结果
+	DataCategoryResult []*string `json:"DataCategoryResult,omitnil,omitempty" name:"DataCategoryResult"`
+
+	//  仅输入侧检出：prompt检测的结果
+	PromptInjectionResult *PromptDetectResult `json:"PromptInjectionResult,omitnil,omitempty" name:"PromptInjectionResult"`
+
+	// 命中的规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 命中的规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 规则动作
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// 攻击payload
+	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
+}
+
 type LLMMonPkg struct {
 	// 资源id
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
@@ -14707,6 +14939,19 @@ type LLMPkg struct {
 
 	// 计费项
 	InquireKey *string `json:"InquireKey,omitnil,omitempty" name:"InquireKey"`
+}
+
+type LLMRisks struct {
+	// 分数
+	Risks []*ClawRiskItem `json:"Risks,omitnil,omitempty" name:"Risks"`
+}
+
+type LLMSensitiveValueLevel struct {
+	// 敏感数据标签，如政治、色情
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 敏感数据等级，250,300，400分别代表超严格、严格、标准等级
+	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
 }
 
 type LimitHeader struct {
@@ -20401,6 +20646,14 @@ type ProductInfo struct {
 
 	// 版本
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type PromptDetectResult struct {
+	// 检测结果
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 置信度
+	Confidence *uint64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
 }
 
 type QPSPackageNew struct {

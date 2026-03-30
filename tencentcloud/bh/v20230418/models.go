@@ -821,8 +821,11 @@ type ChangePwdTaskDetail struct {
 	// 资产账号
 	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 
-	// 上次改密结果。0-未改密  1-改密成功 2-改密失败
+	// 上次改密结果。0-未改密  1-改密成功 2-改密失败,3-改密中，4-改密超时
 	LastChangeStatus *uint64 `json:"LastChangeStatus,omitnil,omitempty" name:"LastChangeStatus"`
+
+	// 改密任务状态，0-待执行，1-执行完成，2-执行失败，3-执行中，4-执行超时
+	TaskStatus *uint64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 }
 
 type ChangePwdTaskInfo struct {
@@ -891,6 +894,9 @@ type ChangePwdTaskInfo struct {
 
 	// 上次执行时间
 	LastTime *string `json:"LastTime,omitnil,omitempty" name:"LastTime"`
+
+	// 改密任务状态，0-待执行，1-执行完成，2-执行失败，3-执行中，4-执行超时
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 // Predefined struct for user
@@ -9121,6 +9127,12 @@ type Resource struct {
 
 	// 计费模式 0后付费，1预付费
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 计费侧地域
+	BillingRegion *string `json:"BillingRegion,omitnil,omitempty" name:"BillingRegion"`
+
+	// 计费侧可用区
+	BillingZone *string `json:"BillingZone,omitnil,omitempty" name:"BillingZone"`
 }
 
 type RunChangePwdTaskDetail struct {

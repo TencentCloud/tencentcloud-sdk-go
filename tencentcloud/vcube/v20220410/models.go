@@ -1104,6 +1104,18 @@ func (r *DescribeLicenseListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLicenseListResponseParams struct {
+	// 临期license数量
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 正式license总览统计数据
+	Overview *Overview `json:"Overview,omitnil,omitempty" name:"Overview"`
+
+	// 临期license列表
+	LicenseList []*OverviewLicense `json:"LicenseList,omitnil,omitempty" name:"LicenseList"`
+
+	// 测试license总览统计数据
+	TrialOverview *Overview `json:"TrialOverview,omitnil,omitempty" name:"TrialOverview"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2649,6 +2661,86 @@ func (r *ModifyXMagicResponse) FromJsonString(s string) error {
 type NewsInfo struct {
 	// 新闻Id
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type Overview struct {
+	// 过期license数量
+	Expired *uint64 `json:"Expired,omitnil,omitempty" name:"Expired"`
+
+	// 有效license数量
+	Valid *uint64 `json:"Valid,omitnil,omitempty" name:"Valid"`
+
+	// 临期license数量
+	Near *uint64 `json:"Near,omitnil,omitempty" name:"Near"`
+}
+
+type OverviewAppInfo struct {
+	// 应用Id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 应用名称
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// Ios 包名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
+
+	// Andorid 包名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
+
+	// Mac 进程名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MacBundleId *string `json:"MacBundleId,omitnil,omitempty" name:"MacBundleId"`
+
+	// windows 进程名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WinProcessName *string `json:"WinProcessName,omitnil,omitempty" name:"WinProcessName"`
+
+	// 域名列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
+}
+
+type OverviewLicense struct {
+	// 所属应用
+	Application *OverviewAppInfo `json:"Application,omitnil,omitempty" name:"Application"`
+
+	// license生效时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// license失效时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// license对应的功能Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FeatureId *uint64 `json:"FeatureId,omitnil,omitempty" name:"FeatureId"`
+
+	// license是测试：test还是正式：formal
+	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
+
+	// license索引
+	LicenseId *uint64 `json:"LicenseId,omitnil,omitempty" name:"LicenseId"`
+
+	// license名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 返回还有多少秒过期，过期返回负值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RestTime *uint64 `json:"RestTime,omitnil,omitempty" name:"RestTime"`
+
+	// 创建时间
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// 更新时间
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
+
+	// 优图套餐名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Plan *string `json:"Plan,omitnil,omitempty" name:"Plan"`
+
+	// licenseType
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type Package struct {

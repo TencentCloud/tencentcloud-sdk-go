@@ -1201,6 +1201,10 @@ type BaseUser struct {
 	// 邮箱
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// 0: 普通用户 1: entraId用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserTag *uint64 `json:"UserTag,omitnil,omitempty" name:"UserTag"`
 }
 
 // Predefined struct for user
@@ -34750,6 +34754,10 @@ type ProjectUserRole struct {
 	// 用户状态 0:历史 1:正常 2:已删除
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 0: 普通用户 1: entraId用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserTag *uint64 `json:"UserTag,omitnil,omitempty" name:"UserTag"`
 }
 
 type ProjectUsersPage struct {

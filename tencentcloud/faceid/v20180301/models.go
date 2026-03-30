@@ -892,76 +892,32 @@ func (r *CheckPhoneAndNameResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetectAIFakeFacesRequestParams struct {
-	// 传入需要检测的人脸图片或人脸视频（当前仅支持单人脸检测），使用base64编码的形式，如您的场景视频和图片都有，我们更建议您使用视频进行检测，为了提供更好的检测效果，请您注意以下输入数据的限制与建议：
-	// 
-	// - 图片的Base64值：
-	// 建议整体图像480x640的分辨率，脸部大小在 100X100 以上，由手机前置摄像头拍摄。
-	// Base64编码后的图片数据大小建议不超过3M、最大不可超过10M，仅支持jpg、png格式。
-	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
-	// 
-	// - 视频的Base64值：
-	// Base64编码后的大小建议在8M以内、最大不可超过10M，支持mp4、avi、flv格式，由手机前置摄像头拍摄。
-	// 视频建议时长为2～5s，最大不可超过20s。
-	// 视频分辨率建议为480x640（最大支持720p），帧率在25fps~30fps之间。
-	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
-	// 
-	// 若您未使用Encryption进行加密传输，则本字段为必填参数。
+	// <p>传入需要检测的人脸图片或人脸视频（当前仅支持单人脸检测），使用base64编码的形式，如您的场景视频和图片都有，我们更建议您使用视频进行检测，为了提供更好的检测效果，请您注意以下输入数据的限制与建议：</p><ul><li><p>图片的Base64值：<br>建议整体图像480x640的分辨率，脸部大小在 100X100 以上，由手机前置摄像头拍摄。<br>Base64编码后的图片数据大小建议不超过3M、最大不可超过10M，仅支持jpg、png格式。<br>请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。</p></li><li><p>视频的Base64值：<br>Base64编码后的大小建议在8M以内、最大不可超过10M，支持mp4、avi、flv格式，由手机前置摄像头拍摄。<br>视频建议时长为2～5s，最大不可超过20s。<br>视频分辨率建议为480x640（最大支持720p），帧率在25fps~30fps之间。<br>请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。</p></li></ul><p>若您未使用Encryption进行加密传输，则本字段为必填参数。</p>
 	FaceInput *string `json:"FaceInput,omitnil,omitempty" name:"FaceInput"`
 
-	// 传入的类型。
-	// - 取值范围：
-	// 1：传入的是图片类型。
-	// 2：传入的是视频类型。
-	// 其他：返回错误码InvalidParameter。
-	// 
-	// 若您未使用Encryption进行加密传输，则本字段为必填参数。
+	// <p>传入的类型。</p><ul><li>取值范围：<br>1：传入的是图片类型。<br>2：传入的是视频类型。<br>其他：返回错误码InvalidParameter。</li></ul><p>若您未使用Encryption进行加密传输，则本字段为必填参数。</p>
 	FaceInputType *int64 `json:"FaceInputType,omitnil,omitempty" name:"FaceInputType"`
 
-	// 是否需要对请求信息进行全包体加密。
-	// - 支持的加密算法:AES-256-CBC、SM4-GCM。
-	// - 有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// <p>是否需要对请求信息进行全包体加密。</p><ul><li>支持的加密算法:AES-256-CBC、SM4-GCM。</li><li>有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
-	// 加密后的密文。
-	// - 加密前的数据格式如下:{"FaceInput":"AAAAA","FaceInputType":1}。
+	// <p>加密后的密文。</p><ul><li>加密前的数据格式如下:{&quot;FaceInput&quot;:&quot;AAAAA&quot;,&quot;FaceInputType&quot;:1}。</li></ul>
 	EncryptedBody *string `json:"EncryptedBody,omitnil,omitempty" name:"EncryptedBody"`
 }
 
 type DetectAIFakeFacesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 传入需要检测的人脸图片或人脸视频（当前仅支持单人脸检测），使用base64编码的形式，如您的场景视频和图片都有，我们更建议您使用视频进行检测，为了提供更好的检测效果，请您注意以下输入数据的限制与建议：
-	// 
-	// - 图片的Base64值：
-	// 建议整体图像480x640的分辨率，脸部大小在 100X100 以上，由手机前置摄像头拍摄。
-	// Base64编码后的图片数据大小建议不超过3M、最大不可超过10M，仅支持jpg、png格式。
-	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
-	// 
-	// - 视频的Base64值：
-	// Base64编码后的大小建议在8M以内、最大不可超过10M，支持mp4、avi、flv格式，由手机前置摄像头拍摄。
-	// 视频建议时长为2～5s，最大不可超过20s。
-	// 视频分辨率建议为480x640（最大支持720p），帧率在25fps~30fps之间。
-	// 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
-	// 
-	// 若您未使用Encryption进行加密传输，则本字段为必填参数。
+	// <p>传入需要检测的人脸图片或人脸视频（当前仅支持单人脸检测），使用base64编码的形式，如您的场景视频和图片都有，我们更建议您使用视频进行检测，为了提供更好的检测效果，请您注意以下输入数据的限制与建议：</p><ul><li><p>图片的Base64值：<br>建议整体图像480x640的分辨率，脸部大小在 100X100 以上，由手机前置摄像头拍摄。<br>Base64编码后的图片数据大小建议不超过3M、最大不可超过10M，仅支持jpg、png格式。<br>请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。</p></li><li><p>视频的Base64值：<br>Base64编码后的大小建议在8M以内、最大不可超过10M，支持mp4、avi、flv格式，由手机前置摄像头拍摄。<br>视频建议时长为2～5s，最大不可超过20s。<br>视频分辨率建议为480x640（最大支持720p），帧率在25fps~30fps之间。<br>请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。</p></li></ul><p>若您未使用Encryption进行加密传输，则本字段为必填参数。</p>
 	FaceInput *string `json:"FaceInput,omitnil,omitempty" name:"FaceInput"`
 
-	// 传入的类型。
-	// - 取值范围：
-	// 1：传入的是图片类型。
-	// 2：传入的是视频类型。
-	// 其他：返回错误码InvalidParameter。
-	// 
-	// 若您未使用Encryption进行加密传输，则本字段为必填参数。
+	// <p>传入的类型。</p><ul><li>取值范围：<br>1：传入的是图片类型。<br>2：传入的是视频类型。<br>其他：返回错误码InvalidParameter。</li></ul><p>若您未使用Encryption进行加密传输，则本字段为必填参数。</p>
 	FaceInputType *int64 `json:"FaceInputType,omitnil,omitempty" name:"FaceInputType"`
 
-	// 是否需要对请求信息进行全包体加密。
-	// - 支持的加密算法:AES-256-CBC、SM4-GCM。
-	// - 有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// <p>是否需要对请求信息进行全包体加密。</p><ul><li>支持的加密算法:AES-256-CBC、SM4-GCM。</li><li>有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
-	// 加密后的密文。
-	// - 加密前的数据格式如下:{"FaceInput":"AAAAA","FaceInputType":1}。
+	// <p>加密后的密文。</p><ul><li>加密前的数据格式如下:{&quot;FaceInput&quot;:&quot;AAAAA&quot;,&quot;FaceInputType&quot;:1}。</li></ul>
 	EncryptedBody *string `json:"EncryptedBody,omitnil,omitempty" name:"EncryptedBody"`
 }
 
@@ -989,20 +945,13 @@ func (r *DetectAIFakeFacesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetectAIFakeFacesResponseParams struct {
-	// 对于输入图片/视频的检测结果，检测是否存在人脸攻击。
-	// - Low：低攻击风险。
-	// - Mid：中度疑似攻击。
-	// - High：高度疑似攻击。
-	// 
-	// 建议返回值为High时判断为拦截，Mid和Low判断为通过，以更好平衡安全性和通过率。
+	// <p>对于输入图片/视频的检测结果，检测是否存在人脸攻击。</p><ul><li>Low：低攻击风险。</li><li>Mid：中度疑似攻击。</li><li>High：高度疑似攻击。</li></ul><p>建议返回值为High时判断为拦截，Mid和Low判断为通过，以更好平衡安全性和通过率。</p>
 	AttackRiskLevel *string `json:"AttackRiskLevel,omitnil,omitempty" name:"AttackRiskLevel"`
 
-	// 检测到的疑似攻击痕迹列表，仅当AttackRiskLevel为High或Mid时返回。
-	// - 说明：未检测到攻击痕迹时，返回空数组。
-	// - 此出参仅作为结果判断的参考，实际应用仍建议使用AttackRiskLevel的结果。
+	// <p>检测到的疑似攻击痕迹列表，仅当AttackRiskLevel为High或Mid时返回。</p><ul><li>说明：未检测到攻击痕迹时，返回空数组。</li><li>此出参仅作为结果判断的参考，实际应用仍建议使用AttackRiskLevel的结果。</li></ul>
 	AttackRiskDetailList []*AttackRiskDetail `json:"AttackRiskDetailList,omitnil,omitempty" name:"AttackRiskDetailList"`
 
-	// 额外信息。
+	// <p>返回额外信息（包括命中模版的详细信息）。</p>
 	ExtraInfo *ExtraInfo `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4652,15 +4601,15 @@ func (r *PhoneVerificationResponse) FromJsonString(s string) error {
 }
 
 type RetrievalLivenessExtraInfo struct {
-	// 命中的模版类型，其中Common-公共库；Auto-自动聚类库；Owner-自建模版库
+	// <p>命中的模版类型，其中Common-公共库；Auto-自动聚类库；Owner-自建模版库</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HitGroup *string `json:"HitGroup,omitnil,omitempty" name:"HitGroup"`
 
-	// 命中的相似度
+	// <p>请求图像与命中攻击模板的相似度，相似度取值范围[0,2]，取值越小表示命中攻击模板的概率越高。默认阈值为0.6，当SimilarityScore≥0.6时判断为正常，SimilarityScore&lt;0.6是判断为攻击。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SimilarityScore *float64 `json:"SimilarityScore,omitnil,omitempty" name:"SimilarityScore"`
 
-	// 命中的模板id
+	// <p>命中的模板id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HitTemplate *string `json:"HitTemplate,omitnil,omitempty" name:"HitTemplate"`
 }

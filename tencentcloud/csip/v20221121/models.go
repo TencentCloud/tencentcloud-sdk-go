@@ -70,6 +70,15 @@ type AKInfo struct {
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
+type AccessCredentialOutput struct {
+	// 凭据键名（原文），如SecretId、SecretKey、Token等
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 凭据键值（打码后）
+	// 补充说明：保留前3后4位，中间用***替代；长度不足7位时全部替换为***
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type AccessKeyAlarm struct {
 	// 告警名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -2529,6 +2538,18 @@ func (r *CreateRiskCenterScanTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateRiskCenterScanTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CredentialEffectScope struct {
+	// 是否排除模式
+	// 枚举值：
+	// 0：包含模式（仅Instances中的机器生效），此时Instances必填
+	// 1：排除模式（Instances中的机器不生效，其余机器生效），此时Instances可选（空列表表示全部机器生效）
+	Exclude *int64 `json:"Exclude,omitnil,omitempty" name:"Exclude"`
+
+	// 机器实例ID列表。Exclude为0时必填，表示仅这些机器可访问凭证；Exclude为1时可选，表示这些机器不可访问凭证（空列表表示全部机器生效）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Instances []*string `json:"Instances,omitnil,omitempty" name:"Instances"`
 }
 
 type CsipRiskCenterStatistics struct {
@@ -5450,6 +5471,171 @@ func (r *DescribeHighBaseLineRiskListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeHighBaseLineRiskListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKeySandboxCredentialListRequestParams struct {
+	// 过滤条件列表，支持的过滤条件如下：
+	// CredentialName - 凭证名称（模糊匹配）
+	// CredentialType - 凭证类型（精确匹配），取值：access、sts
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeKeySandboxCredentialListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件列表，支持的过滤条件如下：
+	// CredentialName - 凭证名称（模糊匹配）
+	// CredentialType - 凭证类型（精确匹配），取值：access、sts
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeKeySandboxCredentialListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKeySandboxCredentialListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filter")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKeySandboxCredentialListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKeySandboxCredentialListResponseParams struct {
+	// 凭证数据列表
+	Data []*KeySandboxCredential `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 总数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeKeySandboxCredentialListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKeySandboxCredentialListResponseParams `json:"Response"`
+}
+
+func (r *DescribeKeySandboxCredentialListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKeySandboxCredentialListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKeySandboxCredentialRequestParams struct {
+	// 凭证ID
+	CredentialId *string `json:"CredentialId,omitnil,omitempty" name:"CredentialId"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeKeySandboxCredentialRequest struct {
+	*tchttp.BaseRequest
+	
+	// 凭证ID
+	CredentialId *string `json:"CredentialId,omitnil,omitempty" name:"CredentialId"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeKeySandboxCredentialRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKeySandboxCredentialRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CredentialId")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKeySandboxCredentialRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKeySandboxCredentialResponseParams struct {
+	// 凭证ID
+	CredentialId *string `json:"CredentialId,omitnil,omitempty" name:"CredentialId"`
+
+	// 凭证名称
+	CredentialName *string `json:"CredentialName,omitnil,omitempty" name:"CredentialName"`
+
+	// 凭证类型
+	// 枚举值：
+	// access：常规密钥
+	// sts：STS临时密钥
+	CredentialType *string `json:"CredentialType,omitnil,omitempty" name:"CredentialType"`
+
+	// 生效机器范围
+	CredentialEffectScope *CredentialEffectScope `json:"CredentialEffectScope,omitnil,omitempty" name:"CredentialEffectScope"`
+
+	// 常规密钥凭据数据（打码后），CredentialType为access时返回
+	// 补充说明：Key为原文，Value为打码后的值（保留前3后4位，中间用***替代）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Access []*AccessCredentialOutput `json:"Access,omitnil,omitempty" name:"Access"`
+
+	// STS凭据数据（打码后），CredentialType为sts时返回
+	// 补充说明：System为原文，SecretID和SecretKey为打码后的值（保留前3后4位，中间用***替代）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	STS *STSCredentialOutput `json:"STS,omitnil,omitempty" name:"STS"`
+
+	// 创建时间
+	// 参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeKeySandboxCredentialResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKeySandboxCredentialResponseParams `json:"Response"`
+}
+
+func (r *DescribeKeySandboxCredentialResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKeySandboxCredentialResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9098,6 +9284,31 @@ type IpAssetListVO struct {
 	VerifyStatus *int64 `json:"VerifyStatus,omitnil,omitempty" name:"VerifyStatus"`
 }
 
+type KeySandboxCredential struct {
+	// 凭证ID
+	CredentialId *string `json:"CredentialId,omitnil,omitempty" name:"CredentialId"`
+
+	// 凭证名称
+	CredentialName *string `json:"CredentialName,omitnil,omitempty" name:"CredentialName"`
+
+	// 凭证类型
+	// 枚举值：
+	// access：常规密钥（Key/Value键值对）
+	// sts：STS临时密钥凭据
+	CredentialType *string `json:"CredentialType,omitnil,omitempty" name:"CredentialType"`
+
+	// 生效机器范围
+	CredentialEffectScope *CredentialEffectScope `json:"CredentialEffectScope,omitnil,omitempty" name:"CredentialEffectScope"`
+
+	// 创建时间
+	// 参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
 type KeyValue struct {
 	// 字段
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -10092,6 +10303,19 @@ type RoleInfo struct {
 
 	// 容器ID
 	ContainerID *string `json:"ContainerID,omitnil,omitempty" name:"ContainerID"`
+}
+
+type STSCredentialOutput struct {
+	// 凭据提供商标识（原文），如tencentCam、aws、aliyun等
+	System *string `json:"System,omitnil,omitempty" name:"System"`
+
+	// SecretID（打码后）
+	// 补充说明：保留前3后4位，中间用***替代；长度不足7位时全部替换为***
+	SecretID *string `json:"SecretID,omitnil,omitempty" name:"SecretID"`
+
+	// SecretKey（打码后）
+	// 补充说明：保留前3后4位，中间用***替代；长度不足7位时全部替换为***
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 }
 
 type ScanTaskInfo struct {

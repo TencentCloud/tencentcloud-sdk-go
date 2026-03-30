@@ -525,6 +525,67 @@ func (r *CloseInterCommunicationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CloseLogRequestParams struct {
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>日志类型</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+}
+
+type CloseLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>日志类型</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+}
+
+func (r *CloseLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "LogType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloseLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CloseLogResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CloseLogResponse struct {
+	*tchttp.BaseResponse
+	Response *CloseLogResponseParams `json:"Response"`
+}
+
+func (r *CloseLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CompleteExpansionRequestParams struct {
 	// 实例ID，形如mssql-j8kv137v
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -2073,6 +2134,95 @@ func (r *CreateDBResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateExportTaskRequestParams struct {
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>日志类型：auditLog,slowLog,errLog</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>要检索日志的起始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>要检索日志的结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>过滤条件[type, Compare, Value]</p>
+	LogFilter []*LogFilter `json:"LogFilter,omitnil,omitempty" name:"LogFilter"`
+
+	// <p>过滤列</p>
+	ColumnFilter []*string `json:"ColumnFilter,omitnil,omitempty" name:"ColumnFilter"`
+}
+
+type CreateExportTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>日志类型：auditLog,slowLog,errLog</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>要检索日志的起始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>要检索日志的结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>过滤条件[type, Compare, Value]</p>
+	LogFilter []*LogFilter `json:"LogFilter,omitnil,omitempty" name:"LogFilter"`
+
+	// <p>过滤列</p>
+	ColumnFilter []*string `json:"ColumnFilter,omitnil,omitempty" name:"ColumnFilter"`
+}
+
+func (r *CreateExportTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExportTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "LogType")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "LogFilter")
+	delete(f, "ColumnFilter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateExportTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateExportTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateExportTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateExportTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateExportTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExportTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateIncrementalMigrationRequestParams struct {
 	// 导入目标实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -3347,6 +3497,74 @@ func (r *DeleteDBResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteExportTaskRequestParams struct {
+	// <p>日志类型：auditLog,slowLog,errLog</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>文件名称</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DeleteExportTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>日志类型：auditLog,slowLog,errLog</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>文件名称</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DeleteExportTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteExportTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LogType")
+	delete(f, "FileName")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteExportTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteExportTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteExportTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteExportTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteExportTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteExportTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteIncrementalMigrationRequestParams struct {
 	// 目标实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -3588,6 +3806,28 @@ func (r *DeleteRestoreTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DeleteRestoreTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeliverSummary struct {
+	// 投递类型，store（存储类），mq（消息通道）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeliverType *string `json:"DeliverType,omitnil,omitempty" name:"DeliverType"`
+
+	// 投递子类型：cls，ckafka。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeliverSubType *string `json:"DeliverSubType,omitnil,omitempty" name:"DeliverSubType"`
+
+	// 投递订阅者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeliverConsumer *string `json:"DeliverConsumer,omitnil,omitempty" name:"DeliverConsumer"`
+
+	// 投递订阅者名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeliverConsumerName *string `json:"DeliverConsumerName,omitnil,omitempty" name:"DeliverConsumerName"`
+
+	// 投递
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeliverError *string `json:"DeliverError,omitnil,omitempty" name:"DeliverError"`
 }
 
 // Predefined struct for user
@@ -6199,6 +6439,87 @@ func (r *DescribeDatabasesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeExportTasksRequestParams struct {
+	// <p>日志类型：auditLog,slowLog,errLog</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>单页条数限制，取值1-100，默认100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量，大于0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeExportTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>日志类型：auditLog,slowLog,errLog</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>单页条数限制，取值1-100，默认100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量，大于0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeExportTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExportTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LogType")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExportTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExportTasksResponseParams struct {
+	// <p>总数目</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>导出文件</p>
+	Items []*ExportFile `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeExportTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeExportTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeExportTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExportTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeFlowStatusRequestParams struct {
 	// 流程ID
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
@@ -7082,6 +7403,211 @@ func (r *DescribeInstanceTradeParameterResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstanceTradeParameterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogInstanceListRequestParams struct {
+	// <p>日志类型：auditLog,slowLog,errorLog</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>单页条数限制，取值[0, 100)</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量，大于0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>业务侧实例过滤参数</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>日志开关,不传查询所有日志实例： on-开启，off-未开启。</p>
+	LogSwitch *string `json:"LogSwitch,omitnil,omitempty" name:"LogSwitch"`
+}
+
+type DescribeLogInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>日志类型：auditLog,slowLog,errorLog</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>单页条数限制，取值[0, 100)</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量，大于0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>业务侧实例过滤参数</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>日志开关,不传查询所有日志实例： on-开启，off-未开启。</p>
+	LogSwitch *string `json:"LogSwitch,omitnil,omitempty" name:"LogSwitch"`
+}
+
+func (r *DescribeLogInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LogType")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "LogSwitch")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogInstanceListResponseParams struct {
+	// <p>实例数量</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>日志平台实例信息</p>
+	Items []*LogInstance `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLogInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLogInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeLogInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogsRequestParams struct {
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>要检索日志的起始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>要检索日志的结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>日志类型</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>过滤条件[type, Compare, Value]</p>
+	LogFilter []*LogFilter `json:"LogFilter,omitnil,omitempty" name:"LogFilter"`
+
+	// <p>单页条数限制，取值1-100，默认100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量，大于0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序，可选：ASC，DESC</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序条件，根据业务字段不同，可选排序字段不一样</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+}
+
+type DescribeLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>要检索日志的起始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>要检索日志的结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>日志类型</p>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>过滤条件[type, Compare, Value]</p>
+	LogFilter []*LogFilter `json:"LogFilter,omitnil,omitempty" name:"LogFilter"`
+
+	// <p>单页条数限制，取值1-100，默认100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量，大于0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序，可选：ASC，DESC</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序条件，根据业务字段不同，可选排序字段不一样</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+}
+
+func (r *DescribeLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "LogType")
+	delete(f, "LogFilter")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "OrderBy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogsResponseParams struct {
+	// <p>日志总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>日志详情，根据产品的不同返回的字段有差异</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*LogResult `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9333,12 +9859,76 @@ type Events struct {
 	ExternalAddr *string `json:"ExternalAddr,omitnil,omitempty" name:"ExternalAddr"`
 }
 
+type ExportFile struct {
+	// <p>文件名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>状态</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>文件大小</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+
+	// <p>创建时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>下载地址</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
+
+	// <p>错误信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
+
+	// <p>进度</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// <p>完成时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// <p>req</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
+}
+
 type FileAction struct {
 	// 支持的所有操作，值包括：view(查看列表) remark(修改备注)，deploy(部署)，delete(删除文件)
 	AllAction []*string `json:"AllAction,omitnil,omitempty" name:"AllAction"`
 
 	// 当前状态允许的操作，AllAction的子集,为空表示禁止所有操作
 	AllowedAction []*string `json:"AllowedAction,omitnil,omitempty" name:"AllowedAction"`
+}
+
+type Filter struct {
+	// 1. 项目 ProjectId
+	//     - true = 精确查找
+	//     - false = 模糊匹配
+	// 2. 标签键 TagKey
+	//     - true = 精确查找
+	//     - false = 模糊匹配
+	// 3. 标签 Tag
+	//     - true = 精确查找
+	//     - false = 模糊匹配
+	// 4. 实例名称 InstanceName
+	//     - true = 精确查找
+	//     - false = 模糊匹配
+	// 5. 实例ID InstanceId
+	//     - true = 精确查找
+	//     - false = 模糊匹配
+	// 
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 值
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+
+	// 开关
+	ExactMatch *bool `json:"ExactMatch,omitnil,omitempty" name:"ExactMatch"`
 }
 
 // Predefined struct for user
@@ -9642,6 +10232,91 @@ type InstanceDBDetail struct {
 	DBDetails []*DBDetail `json:"DBDetails,omitnil,omitempty" name:"DBDetails"`
 }
 
+type InstanceInfo struct {
+	// <p>实例名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>项目ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>实例标签</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagList []*TagList `json:"TagList,omitnil,omitempty" name:"TagList"`
+
+	// <p>实例状态</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>test</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+
+	// <p>test</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
+
+	// <p>test</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Architecture *string `json:"Architecture,omitnil,omitempty" name:"Architecture"`
+
+	// <p>test</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ROFlag *string `json:"ROFlag,omitnil,omitempty" name:"ROFlag"`
+
+	// <p>test</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HAFlag *string `json:"HAFlag,omitnil,omitempty" name:"HAFlag"`
+
+	// <p>test</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>test</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>审计日志状态 ON, OFF, ERROR</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuditLogStatus *string `json:"AuditLogStatus,omitnil,omitempty" name:"AuditLogStatus"`
+
+	// <p>审计日志上报地址</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuditLogHosts []*string `json:"AuditLogHosts,omitnil,omitempty" name:"AuditLogHosts"`
+
+	// <p>审计日志状态信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuditLogStatusMessage *string `json:"AuditLogStatusMessage,omitnil,omitempty" name:"AuditLogStatusMessage"`
+
+	// <p>版本号</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>版本名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+
+	// <p>地域id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// <p>区id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// <p>地域</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>区</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+}
+
 type InstanceRenewInfo struct {
 	// 实例ID，形如mssql-j8kv137v
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -9717,6 +10392,224 @@ type InterInstanceFlow struct {
 
 	// 实例开通或者关闭互通组的流程ID，FlowId小于0-开通或者关闭失败，反之则成功。
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+}
+
+type LogFilter struct {
+	// 过滤条件名称。
+	// 
+	// 如：sql - SQL命令详情
+	// 
+	// host – 客户端 IP；
+	// user – 数据库账户；
+	// dbName – 数据库名称；
+	// sqlType - SQL类型；
+	// errCode - 错误码
+	// 
+	// execTime - 执行时间
+	// lockWaitTime - 锁等待时间
+	// ioWaitTime - IO等待时间
+	// trxLivingTime - 事务执行时间
+	// cpuTime- Cpu时间
+	// 
+	// threadId - 线程ID
+	// trxId - 事务ID
+	// checkRows - 扫描行数
+	// affectRows - 影响行数
+	// sentRows - 返回行数
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 过滤条件匹配类型。支持：
+	// INC – 包含；     （多个值之前是||的关系）
+	// EXC – 不包含； （多个值之前是&&的关系）
+	// EQS – 等于；     （多个值之前是||的关系）
+	// NEQ – 不等于；（多个值之前是&&的关系）
+	// 
+	// RA – 范围；
+	Compare *string `json:"Compare,omitnil,omitempty" name:"Compare"`
+
+	// 过滤条件匹配值。当Compare=RG时，例：["1-100","200-300"]
+	Value []*string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type LogInstance struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 日志状态，create：创建中；normal：开启；close：关闭中。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 	
+	// 是否可以切换日志查询-取值：yes-可以，no-不可以。该参数主要为控制存量日志迁移到日志平台做查询使用，只有为yes状态才可以调用查询日志接口。
+	EnableQuery *string `json:"EnableQuery,omitnil,omitempty" name:"EnableQuery"`
+
+	// 开启时间
+	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
+
+	// 高频存储天数
+	HighLogExpireDay *int64 `json:"HighLogExpireDay,omitnil,omitempty" name:"HighLogExpireDay"`
+
+	// 低频存储天数
+	LowLogExpireDay *int64 `json:"LowLogExpireDay,omitnil,omitempty" name:"LowLogExpireDay"`
+
+	// 总存储时长
+	LogExpireDay *int64 `json:"LogExpireDay,omitnil,omitempty" name:"LogExpireDay"`
+
+	// 高频存储量，单位：MB
+	HighStorage *float64 `json:"HighStorage,omitnil,omitempty" name:"HighStorage"`
+
+	// 低频存储量，单位：MB
+	LowStorage *float64 `json:"LowStorage,omitnil,omitempty" name:"LowStorage"`
+
+	// 总存储量
+	LogStorage *float64 `json:"LogStorage,omitnil,omitempty" name:"LogStorage"`
+
+	// 是否开启投递：ON，OFF
+	Deliver *string `json:"Deliver,omitnil,omitempty" name:"Deliver"`
+
+	// 日志投递信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeliverSummary []*DeliverSummary `json:"DeliverSummary,omitnil,omitempty" name:"DeliverSummary"`
+
+	// 业务侧实例相关信息，根据业务不同，返回相关信息不同。
+	InstanceInfo *InstanceInfo `json:"InstanceInfo,omitnil,omitempty" name:"InstanceInfo"`
+}
+
+type LogResult struct {
+	// 时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 错误类别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// 客户端应用程序名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientAppName *string `json:"ClientAppName,omitnil,omitempty" name:"ClientAppName"`
+
+	// 客户端主机名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientHostName *string `json:"ClientHostName,omitnil,omitempty" name:"ClientHostName"`
+
+	// CPU 时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuTime *int64 `json:"CpuTime,omitnil,omitempty" name:"CpuTime"`
+
+	// 数据库 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseId *int64 `json:"DatabaseId,omitnil,omitempty" name:"DatabaseId"`
+
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 执行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 错误编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorNumber *int64 `json:"ErrorNumber,omitnil,omitempty" name:"ErrorNumber"`
+
+	// 是否被拦截
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsIntercepted *string `json:"IsIntercepted,omitnil,omitempty" name:"IsIntercepted"`
+
+	// 最后行计数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastRowCount *int64 `json:"LastRowCount,omitnil,omitempty" name:"LastRowCount"`
+
+	// 逻辑读取
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogicalReads *int64 `json:"LogicalReads,omitnil,omitempty" name:"LogicalReads"`
+
+	// 消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 对象 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectId *int64 `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
+
+	// 对象名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectName *string `json:"ObjectName,omitnil,omitempty" name:"ObjectName"`
+
+	// 对象类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
+
+	// 输出参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputParameters *string `json:"OutputParameters,omitnil,omitempty" name:"OutputParameters"`
+
+	// 参数化计划句柄
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParameterizedPlanHandle *string `json:"ParameterizedPlanHandle,omitnil,omitempty" name:"ParameterizedPlanHandle"`
+
+	// 物理读取
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhysicalReads *int64 `json:"PhysicalReads,omitnil,omitempty" name:"PhysicalReads"`
+
+	// 结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 行计数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RowCount *int64 `json:"RowCount,omitnil,omitempty" name:"RowCount"`
+
+	// 服务器主体名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServerPrincipalName *string `json:"ServerPrincipalName,omitnil,omitempty" name:"ServerPrincipalName"`
+
+	// 会话服务器主体名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionServerPrincipalName *string `json:"SessionServerPrincipalName,omitnil,omitempty" name:"SessionServerPrincipalName"`
+
+	// 严重性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Severity *int64 `json:"Severity,omitnil,omitempty" name:"Severity"`
+
+	// 源数据库 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceDatabaseId *int64 `json:"SourceDatabaseId,omitnil,omitempty" name:"SourceDatabaseId"`
+
+	// SQL 文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlText *string `json:"SqlText,omitnil,omitempty" name:"SqlText"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// 语句
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Statement *string `json:"Statement,omitnil,omitempty" name:"Statement"`
+
+	// 系统线程 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SystemThreadId *int64 `json:"SystemThreadId,omitnil,omitempty" name:"SystemThreadId"`
+
+	// 事务 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransactionId *int64 `json:"TransactionId,omitnil,omitempty" name:"TransactionId"`
+
+	// 用户定义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserDefined *string `json:"UserDefined,omitnil,omitempty" name:"UserDefined"`
+
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 写入
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Writes *int64 `json:"Writes,omitnil,omitempty" name:"Writes"`
+
+	// 目标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Destination *string `json:"Destination,omitnil,omitempty" name:"Destination"`
 }
 
 type MigrateDB struct {
@@ -11878,6 +12771,81 @@ func (r *ModifyInstanceParamResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyLogRequestParams struct {
+	// <p>实例ID，例如：mssql-xjhsdj****。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>日志类型。</p><p>枚举值：</p><ul><li>auditLog： 审计日志。</li></ul>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>日志有效期, 单位：天。</p><p>枚举值：</p><ul><li>7： 7天</li><li>30： 30天</li><li>90： 90天</li><li>180： 180天</li><li>365： 365天</li><li>1095： 1095天</li><li>1825： 1825天</li></ul>
+	LogExpireDay *int64 `json:"LogExpireDay,omitnil,omitempty" name:"LogExpireDay"`
+
+	// <p>高频日志有效期, 单位：天。</p><p>枚举值：</p><ul><li>7： 7天</li></ul>
+	HighLogExpireDay *int64 `json:"HighLogExpireDay,omitnil,omitempty" name:"HighLogExpireDay"`
+}
+
+type ModifyLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID，例如：mssql-xjhsdj****。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>日志类型。</p><p>枚举值：</p><ul><li>auditLog： 审计日志。</li></ul>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>日志有效期, 单位：天。</p><p>枚举值：</p><ul><li>7： 7天</li><li>30： 30天</li><li>90： 90天</li><li>180： 180天</li><li>365： 365天</li><li>1095： 1095天</li><li>1825： 1825天</li></ul>
+	LogExpireDay *int64 `json:"LogExpireDay,omitnil,omitempty" name:"LogExpireDay"`
+
+	// <p>高频日志有效期, 单位：天。</p><p>枚举值：</p><ul><li>7： 7天</li></ul>
+	HighLogExpireDay *int64 `json:"HighLogExpireDay,omitnil,omitempty" name:"HighLogExpireDay"`
+}
+
+func (r *ModifyLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "LogType")
+	delete(f, "LogExpireDay")
+	delete(f, "HighLogExpireDay")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLogResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLogResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLogResponseParams `json:"Response"`
+}
+
+func (r *ModifyLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyMaintenanceSpanRequestParams struct {
 	// 实例ID，形如mssql-k8voqdlz
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -12422,6 +13390,81 @@ func (r *OpenInterCommunicationResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *OpenInterCommunicationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenLogRequestParams struct {
+	// <p>实例ID，例如：mssql-xjhsdj****。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>日志类型。</p><p>枚举值：</p><ul><li>auditLog： 审计日志</li></ul>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>日志有效期, 单位：天。</p><p>枚举值：</p><ul><li>7：  7 天</li><li>30： 30 天</li></ul><p>默认值：7</p>
+	LogExpireDay *int64 `json:"LogExpireDay,omitnil,omitempty" name:"LogExpireDay"`
+
+	// <p>高频日志有效期, 单位：天。</p><p>枚举值：</p><ul><li>7： 7天</li></ul><p>默认值：7</p>
+	HighLogExpireDay *int64 `json:"HighLogExpireDay,omitnil,omitempty" name:"HighLogExpireDay"`
+}
+
+type OpenLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID，例如：mssql-xjhsdj****。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>日志类型。</p><p>枚举值：</p><ul><li>auditLog： 审计日志</li></ul>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// <p>日志有效期, 单位：天。</p><p>枚举值：</p><ul><li>7：  7 天</li><li>30： 30 天</li></ul><p>默认值：7</p>
+	LogExpireDay *int64 `json:"LogExpireDay,omitnil,omitempty" name:"LogExpireDay"`
+
+	// <p>高频日志有效期, 单位：天。</p><p>枚举值：</p><ul><li>7： 7天</li></ul><p>默认值：7</p>
+	HighLogExpireDay *int64 `json:"HighLogExpireDay,omitnil,omitempty" name:"HighLogExpireDay"`
+}
+
+func (r *OpenLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "LogType")
+	delete(f, "LogExpireDay")
+	delete(f, "HighLogExpireDay")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenLogResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type OpenLogResponse struct {
+	*tchttp.BaseResponse
+	Response *OpenLogResponseParams `json:"Response"`
+}
+
+func (r *OpenLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14229,6 +15272,14 @@ type TDEConfigAttribute struct {
 
 	// CMK所属的地域，不同地域的CMK不互通
 	CMKRegion *string `json:"CMKRegion,omitnil,omitempty" name:"CMKRegion"`
+}
+
+type TagList struct {
+	// key
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// value
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 // Predefined struct for user

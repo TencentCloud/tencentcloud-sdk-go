@@ -13443,6 +13443,9 @@ type StopParams struct {
 
 	// 线程数
 	ThreadCount *int64 `json:"ThreadCount,omitnil,omitempty" name:"ThreadCount"`
+
+	// 安全停止超时时间，单位秒
+	GraceDownTime *int64 `json:"GraceDownTime,omitnil,omitempty" name:"GraceDownTime"`
 }
 
 type StorageSummaryDistribution struct {

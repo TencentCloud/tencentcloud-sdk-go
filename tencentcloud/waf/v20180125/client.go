@@ -5931,6 +5931,70 @@ func (c *Client) DescribeIpHitItemsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeLLMContentSecCheckRequest() (request *DescribeLLMContentSecCheckRequest) {
+    request = &DescribeLLMContentSecCheckRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeLLMContentSecCheck")
+    
+    
+    return
+}
+
+func NewDescribeLLMContentSecCheckResponse() (response *DescribeLLMContentSecCheckResponse) {
+    response = &DescribeLLMContentSecCheckResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLLMContentSecCheck
+// 大模型请求内容和响应内容审核接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMNORULES = "InvalidParameter.LLMNoRules"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+//  INVALIDPARAMETER_LLMREQUESTIDEMPTY = "InvalidParameter.LLMRequestIdEmpty"
+//  INVALIDPARAMETER_LLMSERVICEIDEMPTY = "InvalidParameter.LLMServiceIdEmpty"
+//  INVALIDPARAMETER_LLMSWITCHOFF = "InvalidParameter.LLMSwitchOff"
+func (c *Client) DescribeLLMContentSecCheck(request *DescribeLLMContentSecCheckRequest) (response *DescribeLLMContentSecCheckResponse, err error) {
+    return c.DescribeLLMContentSecCheckWithContext(context.Background(), request)
+}
+
+// DescribeLLMContentSecCheck
+// 大模型请求内容和响应内容审核接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMNORULES = "InvalidParameter.LLMNoRules"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+//  INVALIDPARAMETER_LLMREQUESTIDEMPTY = "InvalidParameter.LLMRequestIdEmpty"
+//  INVALIDPARAMETER_LLMSERVICEIDEMPTY = "InvalidParameter.LLMServiceIdEmpty"
+//  INVALIDPARAMETER_LLMSWITCHOFF = "InvalidParameter.LLMSwitchOff"
+func (c *Client) DescribeLLMContentSecCheckWithContext(ctx context.Context, request *DescribeLLMContentSecCheckRequest) (response *DescribeLLMContentSecCheckResponse, err error) {
+    if request == nil {
+        request = NewDescribeLLMContentSecCheckRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeLLMContentSecCheck")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLLMContentSecCheck require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLLMContentSecCheckResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLogHistogramRequest() (request *DescribeLogHistogramRequest) {
     request = &DescribeLogHistogramRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6891,6 +6955,62 @@ func (c *Client) DescribeProtectionModesWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeQClawContentSecCheckRequest() (request *DescribeQClawContentSecCheckRequest) {
+    request = &DescribeQClawContentSecCheckRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeQClawContentSecCheck")
+    
+    
+    return
+}
+
+func NewDescribeQClawContentSecCheckResponse() (response *DescribeQClawContentSecCheckResponse) {
+    response = &DescribeQClawContentSecCheckResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeQClawContentSecCheck
+// 大模型请求内容和响应内容审核接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+func (c *Client) DescribeQClawContentSecCheck(request *DescribeQClawContentSecCheckRequest) (response *DescribeQClawContentSecCheckResponse, err error) {
+    return c.DescribeQClawContentSecCheckWithContext(context.Background(), request)
+}
+
+// DescribeQClawContentSecCheck
+// 大模型请求内容和响应内容审核接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+func (c *Client) DescribeQClawContentSecCheckWithContext(ctx context.Context, request *DescribeQClawContentSecCheckRequest) (response *DescribeQClawContentSecCheckResponse, err error) {
+    if request == nil {
+        request = NewDescribeQClawContentSecCheckRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeQClawContentSecCheck")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQClawContentSecCheck require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeQClawContentSecCheckResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRateLimitsV2Request() (request *DescribeRateLimitsV2Request) {
     request = &DescribeRateLimitsV2Request{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6914,24 +7034,10 @@ func NewDescribeRateLimitsV2Response() (response *DescribeRateLimitsV2Response) 
 // 查询限流规则列表接口
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
-//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
 func (c *Client) DescribeRateLimitsV2(request *DescribeRateLimitsV2Request) (response *DescribeRateLimitsV2Response, err error) {
     return c.DescribeRateLimitsV2WithContext(context.Background(), request)
 }
@@ -6940,24 +7046,10 @@ func (c *Client) DescribeRateLimitsV2(request *DescribeRateLimitsV2Request) (res
 // 查询限流规则列表接口
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
-//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
 func (c *Client) DescribeRateLimitsV2WithContext(ctx context.Context, request *DescribeRateLimitsV2Request) (response *DescribeRateLimitsV2Response, err error) {
     if request == nil {
         request = NewDescribeRateLimitsV2Request()

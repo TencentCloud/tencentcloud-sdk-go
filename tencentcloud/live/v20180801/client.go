@@ -11895,6 +11895,8 @@ func NewDescribeLogDownloadListResponse() (response *DescribeLogDownloadListResp
 // DescribeLogDownloadList
 // 批量获取日志URL。
 //
+// 日志数据打包存在一定延迟，24小时候数据包趋于完整。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVOKECDNAPIFAIL = "FailedOperation.InvokeCdnApiFail"
@@ -11915,6 +11917,8 @@ func (c *Client) DescribeLogDownloadList(request *DescribeLogDownloadListRequest
 
 // DescribeLogDownloadList
 // 批量获取日志URL。
+//
+// 日志数据打包存在一定延迟，24小时候数据包趋于完整。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

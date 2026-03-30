@@ -2813,6 +2813,9 @@ type Placement struct {
 
 	// 实例所属的专用宿主机ID，仅用于出参。
 	HostId *string `json:"HostId,omitnil,omitempty" name:"HostId"`
+
+	// 实例所属的实例资源池机架ID，仅用于出参。
+	RackId *string `json:"RackId,omitnil,omitempty" name:"RackId"`
 }
 
 type RedirectInfo struct {

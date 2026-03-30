@@ -3083,6 +3083,174 @@ func (c *Client) DescribeHighBaseLineRiskListWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeKeySandboxCredentialRequest() (request *DescribeKeySandboxCredentialRequest) {
+    request = &DescribeKeySandboxCredentialRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeKeySandboxCredential")
+    
+    
+    return
+}
+
+func NewDescribeKeySandboxCredentialResponse() (response *DescribeKeySandboxCredentialResponse) {
+    response = &DescribeKeySandboxCredentialResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeKeySandboxCredential
+// 查询凭证详情，返回凭证元数据和打码后的凭据数据。access类型返回Access数组（Key原文、Value打码），sts类型返回STS对象（System原文、SecretID和SecretKey打码）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKeySandboxCredential(request *DescribeKeySandboxCredentialRequest) (response *DescribeKeySandboxCredentialResponse, err error) {
+    return c.DescribeKeySandboxCredentialWithContext(context.Background(), request)
+}
+
+// DescribeKeySandboxCredential
+// 查询凭证详情，返回凭证元数据和打码后的凭据数据。access类型返回Access数组（Key原文、Value打码），sts类型返回STS对象（System原文、SecretID和SecretKey打码）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKeySandboxCredentialWithContext(ctx context.Context, request *DescribeKeySandboxCredentialRequest) (response *DescribeKeySandboxCredentialResponse, err error) {
+    if request == nil {
+        request = NewDescribeKeySandboxCredentialRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeKeySandboxCredential")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKeySandboxCredential require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKeySandboxCredentialResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeKeySandboxCredentialListRequest() (request *DescribeKeySandboxCredentialListRequest) {
+    request = &DescribeKeySandboxCredentialListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeKeySandboxCredentialList")
+    
+    
+    return
+}
+
+func NewDescribeKeySandboxCredentialListResponse() (response *DescribeKeySandboxCredentialListResponse) {
+    response = &DescribeKeySandboxCredentialListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeKeySandboxCredentialList
+// 查询凭证列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKeySandboxCredentialList(request *DescribeKeySandboxCredentialListRequest) (response *DescribeKeySandboxCredentialListResponse, err error) {
+    return c.DescribeKeySandboxCredentialListWithContext(context.Background(), request)
+}
+
+// DescribeKeySandboxCredentialList
+// 查询凭证列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKeySandboxCredentialListWithContext(ctx context.Context, request *DescribeKeySandboxCredentialListRequest) (response *DescribeKeySandboxCredentialListResponse, err error) {
+    if request == nil {
+        request = NewDescribeKeySandboxCredentialListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeKeySandboxCredentialList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKeySandboxCredentialList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKeySandboxCredentialListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeListenerListRequest() (request *DescribeListenerListRequest) {
     request = &DescribeListenerListRequest{
         BaseRequest: &tchttp.BaseRequest{},

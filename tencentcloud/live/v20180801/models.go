@@ -5321,60 +5321,56 @@ func (r *CreatePullStreamConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRecordTaskRequestParams struct {
-	// 流名称。
+	// <p>流名称。</p>
 	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
 
-	// 推流域名。
+	// <p>推流域名。</p>
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
-	// 推流路径。
+	// <p>推流路径。</p>
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// 录制任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且小于当前时间+7天。
+	// <p>录制任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且小于当前时间+7天。</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。EndTime - StartTime不能超过24小时。
+	// <p>录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。EndTime - StartTime不能超过24小时。</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 推流类型，默认0。取值：
-	// 0-直播推流。
-	// 1-合成流，即 A+B=C 类型混流。
+	// <p>推流类型，默认0。取值：<br>0-直播推流。<br>1-合成流，即 A+B=C 类型混流。</p>
 	StreamType *uint64 `json:"StreamType,omitnil,omitempty" name:"StreamType"`
 
-	// 录制模板ID，CreateLiveRecordTemplate 返回值。如果不填或者传入错误ID，则默认录制HLS格式、永久存储。
+	// <p>录制模板ID，CreateLiveRecordTemplate 返回值。如果不填或者传入错误ID，则默认录制 HLS 格式、永久存储至 VOD 主应用下。<br>示例值：0。</p>
 	TemplateId *uint64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 扩展字段，暂无定义。默认为空。
+	// <p>扩展字段，暂无定义。默认为空。</p>
 	Extension *string `json:"Extension,omitnil,omitempty" name:"Extension"`
 }
 
 type CreateRecordTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 流名称。
+	// <p>流名称。</p>
 	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
 
-	// 推流域名。
+	// <p>推流域名。</p>
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
-	// 推流路径。
+	// <p>推流路径。</p>
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// 录制任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且小于当前时间+7天。
+	// <p>录制任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且小于当前时间+7天。</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。EndTime - StartTime不能超过24小时。
+	// <p>录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。EndTime - StartTime不能超过24小时。</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 推流类型，默认0。取值：
-	// 0-直播推流。
-	// 1-合成流，即 A+B=C 类型混流。
+	// <p>推流类型，默认0。取值：<br>0-直播推流。<br>1-合成流，即 A+B=C 类型混流。</p>
 	StreamType *uint64 `json:"StreamType,omitnil,omitempty" name:"StreamType"`
 
-	// 录制模板ID，CreateLiveRecordTemplate 返回值。如果不填或者传入错误ID，则默认录制HLS格式、永久存储。
+	// <p>录制模板ID，CreateLiveRecordTemplate 返回值。如果不填或者传入错误ID，则默认录制 HLS 格式、永久存储至 VOD 主应用下。<br>示例值：0。</p>
 	TemplateId *uint64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 扩展字段，暂无定义。默认为空。
+	// <p>扩展字段，暂无定义。默认为空。</p>
 	Extension *string `json:"Extension,omitnil,omitempty" name:"Extension"`
 }
 
@@ -5406,7 +5402,7 @@ func (r *CreateRecordTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRecordTaskResponseParams struct {
-	// 任务ID，全局唯一标识录制任务。返回TaskId字段说明录制任务创建成功。
+	// <p>任务ID，全局唯一标识录制任务。返回TaskId字段说明录制任务创建成功。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

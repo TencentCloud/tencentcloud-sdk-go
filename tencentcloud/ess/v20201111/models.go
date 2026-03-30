@@ -14490,6 +14490,7 @@ type DescribeIntegrationEmployeesRequestParams struct {
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 指定分页每页返回的数据条数，单页最大支持 20。
+	// 如果没有传递， 则为默认值20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 代理企业和员工的信息。
@@ -14520,6 +14521,7 @@ type DescribeIntegrationEmployeesRequest struct {
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 指定分页每页返回的数据条数，单页最大支持 20。
+	// 如果没有传递， 则为默认值20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 代理企业和员工的信息。

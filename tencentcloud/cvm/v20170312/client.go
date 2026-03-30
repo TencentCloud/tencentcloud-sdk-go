@@ -3771,6 +3771,202 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeResourcePoolPackInstancesRequest() (request *DescribeResourcePoolPackInstancesRequest) {
+    request = &DescribeResourcePoolPackInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeResourcePoolPackInstances")
+    
+    
+    return
+}
+
+func NewDescribeResourcePoolPackInstancesResponse() (response *DescribeResourcePoolPackInstancesResponse) {
+    response = &DescribeResourcePoolPackInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeResourcePoolPackInstances
+// 本接口(DescribeResourcePoolPackInstances)用于查询指定实例资源池内已创建的实例列表及其物理拓扑信息。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RESOURCEPOOLPACKIDMALFORMED = "InvalidParameterValue.ResourcePoolPackIdMalformed"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_RESOURCEPOOLPACKAGEINVISIBLEFORUSER = "UnsupportedOperation.ResourcePoolPackageInvisibleForUser"
+func (c *Client) DescribeResourcePoolPackInstances(request *DescribeResourcePoolPackInstancesRequest) (response *DescribeResourcePoolPackInstancesResponse, err error) {
+    return c.DescribeResourcePoolPackInstancesWithContext(context.Background(), request)
+}
+
+// DescribeResourcePoolPackInstances
+// 本接口(DescribeResourcePoolPackInstances)用于查询指定实例资源池内已创建的实例列表及其物理拓扑信息。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RESOURCEPOOLPACKIDMALFORMED = "InvalidParameterValue.ResourcePoolPackIdMalformed"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_RESOURCEPOOLPACKAGEINVISIBLEFORUSER = "UnsupportedOperation.ResourcePoolPackageInvisibleForUser"
+func (c *Client) DescribeResourcePoolPackInstancesWithContext(ctx context.Context, request *DescribeResourcePoolPackInstancesRequest) (response *DescribeResourcePoolPackInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourcePoolPackInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cvm", APIVersion, "DescribeResourcePoolPackInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourcePoolPackInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourcePoolPackInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourcePoolPackTypeConfigsRequest() (request *DescribeResourcePoolPackTypeConfigsRequest) {
+    request = &DescribeResourcePoolPackTypeConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeResourcePoolPackTypeConfigs")
+    
+    
+    return
+}
+
+func NewDescribeResourcePoolPackTypeConfigsResponse() (response *DescribeResourcePoolPackTypeConfigsResponse) {
+    response = &DescribeResourcePoolPackTypeConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeResourcePoolPackTypeConfigs
+// 本接口(DescribeResourcePoolPackTypeConfigs)用于查询当前地域/可用区支持创建实例资源池的整机/半整机规格列表。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDFILTERVALUE_LIMITEXCEEDED = "InvalidFilterValue.LimitExceeded"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_RESOURCEPOOLPACKAGEINVISIBLEFORUSER = "UnsupportedOperation.ResourcePoolPackageInvisibleForUser"
+func (c *Client) DescribeResourcePoolPackTypeConfigs(request *DescribeResourcePoolPackTypeConfigsRequest) (response *DescribeResourcePoolPackTypeConfigsResponse, err error) {
+    return c.DescribeResourcePoolPackTypeConfigsWithContext(context.Background(), request)
+}
+
+// DescribeResourcePoolPackTypeConfigs
+// 本接口(DescribeResourcePoolPackTypeConfigs)用于查询当前地域/可用区支持创建实例资源池的整机/半整机规格列表。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDFILTERVALUE_LIMITEXCEEDED = "InvalidFilterValue.LimitExceeded"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_RESOURCEPOOLPACKAGEINVISIBLEFORUSER = "UnsupportedOperation.ResourcePoolPackageInvisibleForUser"
+func (c *Client) DescribeResourcePoolPackTypeConfigsWithContext(ctx context.Context, request *DescribeResourcePoolPackTypeConfigsRequest) (response *DescribeResourcePoolPackTypeConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourcePoolPackTypeConfigsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cvm", APIVersion, "DescribeResourcePoolPackTypeConfigs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourcePoolPackTypeConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourcePoolPackTypeConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourcePoolPacksRequest() (request *DescribeResourcePoolPacksRequest) {
+    request = &DescribeResourcePoolPacksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeResourcePoolPacks")
+    
+    
+    return
+}
+
+func NewDescribeResourcePoolPacksResponse() (response *DescribeResourcePoolPacksResponse) {
+    response = &DescribeResourcePoolPacksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeResourcePoolPacks
+// 本接口(DescribeResourcePoolPacks)用于查询用户已创建的实例资源池列表，包括资源池基本信息、剩余容量、底层物理拓扑信息等。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDFILTERVALUE_LIMITEXCEEDED = "InvalidFilterValue.LimitExceeded"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_RESOURCEPOOLPACKIDMALFORMED = "InvalidParameterValue.ResourcePoolPackIdMalformed"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_RESOURCEPOOLPACKAGEINVISIBLEFORUSER = "UnsupportedOperation.ResourcePoolPackageInvisibleForUser"
+func (c *Client) DescribeResourcePoolPacks(request *DescribeResourcePoolPacksRequest) (response *DescribeResourcePoolPacksResponse, err error) {
+    return c.DescribeResourcePoolPacksWithContext(context.Background(), request)
+}
+
+// DescribeResourcePoolPacks
+// 本接口(DescribeResourcePoolPacks)用于查询用户已创建的实例资源池列表，包括资源池基本信息、剩余容量、底层物理拓扑信息等。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDFILTERVALUE_LIMITEXCEEDED = "InvalidFilterValue.LimitExceeded"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_RESOURCEPOOLPACKIDMALFORMED = "InvalidParameterValue.ResourcePoolPackIdMalformed"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_RESOURCEPOOLPACKAGEINVISIBLEFORUSER = "UnsupportedOperation.ResourcePoolPackageInvisibleForUser"
+func (c *Client) DescribeResourcePoolPacksWithContext(ctx context.Context, request *DescribeResourcePoolPacksRequest) (response *DescribeResourcePoolPacksResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourcePoolPacksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cvm", APIVersion, "DescribeResourcePoolPacks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourcePoolPacks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourcePoolPacksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskInfoRequest() (request *DescribeTaskInfoRequest) {
     request = &DescribeTaskInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4659,6 +4855,76 @@ func (c *Client) ImportKeyPairWithContext(ctx context.Context, request *ImportKe
     request.SetContext(ctx)
     
     response = NewImportKeyPairResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquirePricePurchaseResourcePoolPacksRequest() (request *InquirePricePurchaseResourcePoolPacksRequest) {
+    request = &InquirePricePurchaseResourcePoolPacksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "InquirePricePurchaseResourcePoolPacks")
+    
+    
+    return
+}
+
+func NewInquirePricePurchaseResourcePoolPacksResponse() (response *InquirePricePurchaseResourcePoolPacksResponse) {
+    response = &InquirePricePurchaseResourcePoolPacksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InquirePricePurchaseResourcePoolPacks
+// 本接口(InquirePricePurchaseResourcePoolPacks)用于查询创建实例资源池的价格。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDINSTANCETYPE_MALFORMED = "InvalidInstanceType.Malformed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCETYPENOTSUPPORT = "InvalidParameter.InstanceTypeNotSupport"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPERIOD = "InvalidPeriod"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_RESOURCEPOOLPACKAGEINVISIBLEFORUSER = "UnsupportedOperation.ResourcePoolPackageInvisibleForUser"
+func (c *Client) InquirePricePurchaseResourcePoolPacks(request *InquirePricePurchaseResourcePoolPacksRequest) (response *InquirePricePurchaseResourcePoolPacksResponse, err error) {
+    return c.InquirePricePurchaseResourcePoolPacksWithContext(context.Background(), request)
+}
+
+// InquirePricePurchaseResourcePoolPacks
+// 本接口(InquirePricePurchaseResourcePoolPacks)用于查询创建实例资源池的价格。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDINSTANCETYPE_MALFORMED = "InvalidInstanceType.Malformed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCETYPENOTSUPPORT = "InvalidParameter.InstanceTypeNotSupport"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPERIOD = "InvalidPeriod"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_RESOURCEPOOLPACKAGEINVISIBLEFORUSER = "UnsupportedOperation.ResourcePoolPackageInvisibleForUser"
+func (c *Client) InquirePricePurchaseResourcePoolPacksWithContext(ctx context.Context, request *InquirePricePurchaseResourcePoolPacksRequest) (response *InquirePricePurchaseResourcePoolPacksResponse, err error) {
+    if request == nil {
+        request = NewInquirePricePurchaseResourcePoolPacksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cvm", APIVersion, "InquirePricePurchaseResourcePoolPacks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquirePricePurchaseResourcePoolPacks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquirePricePurchaseResourcePoolPacksResponse()
     err = c.Send(request, response)
     return
 }
@@ -7205,6 +7471,100 @@ func (c *Client) ProgramFpgaImageWithContext(ctx context.Context, request *Progr
     return
 }
 
+func NewPurchaseResourcePoolPacksRequest() (request *PurchaseResourcePoolPacksRequest) {
+    request = &PurchaseResourcePoolPacksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "PurchaseResourcePoolPacks")
+    
+    
+    return
+}
+
+func NewPurchaseResourcePoolPacksResponse() (response *PurchaseResourcePoolPacksResponse) {
+    response = &PurchaseResourcePoolPacksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PurchaseResourcePoolPacks
+// 本接口(PurchaseResourcePoolPacks)用于创建一个或多个实例资源池，每个资源池绑定一个整机或半整机规格的物理资源容量。
+//
+// 
+//
+// * 实例资源池为剩余容量按量付费模式，购买前请确保账户余额充足。
+//
+// * 本接口为异步接口，创建请求发送成功后会返回DedicatedResourcePackIds，此时创建任务并未完成。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDINSTANCETYPE_MALFORMED = "InvalidInstanceType.Malformed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCETYPENOTSUPPORT = "InvalidParameter.InstanceTypeNotSupport"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEDICATEDRESOURCEPACKNAME = "InvalidParameterValue.DedicatedResourcePackName"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_RESOURCEPOOLPACKTYPENOTSUPPORTED = "InvalidParameterValue.ResourcePoolPackTypeNotSupported"
+//  INVALIDPERIOD = "InvalidPeriod"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT_SPECIFIEDINSTANCETYPE = "ResourceInsufficient.SpecifiedInstanceType"
+//  RESOURCENOTFOUND_INVALIDZONEINSTANCETYPE = "ResourceNotFound.InvalidZoneInstanceType"
+//  RESOURCESSOLDOUT_AVAILABLEZONE = "ResourcesSoldOut.AvailableZone"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_EDGEZONENOTSUPPORTPURCHASERESERVED = "UnsupportedOperation.EdgeZoneNotSupportPurchaseReserved"
+//  UNSUPPORTEDOPERATION_RESOURCEPOOLPACKAGEINVISIBLEFORUSER = "UnsupportedOperation.ResourcePoolPackageInvisibleForUser"
+func (c *Client) PurchaseResourcePoolPacks(request *PurchaseResourcePoolPacksRequest) (response *PurchaseResourcePoolPacksResponse, err error) {
+    return c.PurchaseResourcePoolPacksWithContext(context.Background(), request)
+}
+
+// PurchaseResourcePoolPacks
+// 本接口(PurchaseResourcePoolPacks)用于创建一个或多个实例资源池，每个资源池绑定一个整机或半整机规格的物理资源容量。
+//
+// 
+//
+// * 实例资源池为剩余容量按量付费模式，购买前请确保账户余额充足。
+//
+// * 本接口为异步接口，创建请求发送成功后会返回DedicatedResourcePackIds，此时创建任务并未完成。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDINSTANCETYPE_MALFORMED = "InvalidInstanceType.Malformed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCETYPENOTSUPPORT = "InvalidParameter.InstanceTypeNotSupport"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEDICATEDRESOURCEPACKNAME = "InvalidParameterValue.DedicatedResourcePackName"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_RESOURCEPOOLPACKTYPENOTSUPPORTED = "InvalidParameterValue.ResourcePoolPackTypeNotSupported"
+//  INVALIDPERIOD = "InvalidPeriod"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT_SPECIFIEDINSTANCETYPE = "ResourceInsufficient.SpecifiedInstanceType"
+//  RESOURCENOTFOUND_INVALIDZONEINSTANCETYPE = "ResourceNotFound.InvalidZoneInstanceType"
+//  RESOURCESSOLDOUT_AVAILABLEZONE = "ResourcesSoldOut.AvailableZone"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_EDGEZONENOTSUPPORTPURCHASERESERVED = "UnsupportedOperation.EdgeZoneNotSupportPurchaseReserved"
+//  UNSUPPORTEDOPERATION_RESOURCEPOOLPACKAGEINVISIBLEFORUSER = "UnsupportedOperation.ResourcePoolPackageInvisibleForUser"
+func (c *Client) PurchaseResourcePoolPacksWithContext(ctx context.Context, request *PurchaseResourcePoolPacksRequest) (response *PurchaseResourcePoolPacksResponse, err error) {
+    if request == nil {
+        request = NewPurchaseResourcePoolPacksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cvm", APIVersion, "PurchaseResourcePoolPacks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PurchaseResourcePoolPacks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPurchaseResourcePoolPacksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRebootInstancesRequest() (request *RebootInstancesRequest) {
     request = &RebootInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9531,6 +9891,90 @@ func (c *Client) TerminateInstancesWithContext(ctx context.Context, request *Ter
     request.SetContext(ctx)
     
     response = NewTerminateInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateResourcePoolPacksRequest() (request *TerminateResourcePoolPacksRequest) {
+    request = &TerminateResourcePoolPacksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "TerminateResourcePoolPacks")
+    
+    
+    return
+}
+
+func NewTerminateResourcePoolPacksResponse() (response *TerminateResourcePoolPacksResponse) {
+    response = &TerminateResourcePoolPacksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TerminateResourcePoolPacks
+// 本接口(TerminateResourcePoolPacks)用于销毁指定的实例资源池。
+//
+// 
+//
+// * 销毁资源池不会销毁池内已创建的实例。
+//
+// * 池内实例会从专属资源池解绑，转移至公共资源池，继续按原生命周期运行。
+//
+// * 转移后无法再查询底层物理拓扑信息。
+//
+// * 释放底层物理资源并删除资源池记录。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RESOURCEPOOLPACKIDMALFORMED = "InvalidParameterValue.ResourcePoolPackIdMalformed"
+//  INVALIDPARAMETERVALUE_RESOURCEPOOLPACKSTATUS = "InvalidParameterValue.ResourcePoolPackStatus"
+//  RESOURCENOTFOUND_RESOURCEPOOLPACKIDNOTFOUND = "ResourceNotFound.ResourcePoolPackIdNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_RESOURCEPOOLPACKAGEINVISIBLEFORUSER = "UnsupportedOperation.ResourcePoolPackageInvisibleForUser"
+func (c *Client) TerminateResourcePoolPacks(request *TerminateResourcePoolPacksRequest) (response *TerminateResourcePoolPacksResponse, err error) {
+    return c.TerminateResourcePoolPacksWithContext(context.Background(), request)
+}
+
+// TerminateResourcePoolPacks
+// 本接口(TerminateResourcePoolPacks)用于销毁指定的实例资源池。
+//
+// 
+//
+// * 销毁资源池不会销毁池内已创建的实例。
+//
+// * 池内实例会从专属资源池解绑，转移至公共资源池，继续按原生命周期运行。
+//
+// * 转移后无法再查询底层物理拓扑信息。
+//
+// * 释放底层物理资源并删除资源池记录。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RESOURCEPOOLPACKIDMALFORMED = "InvalidParameterValue.ResourcePoolPackIdMalformed"
+//  INVALIDPARAMETERVALUE_RESOURCEPOOLPACKSTATUS = "InvalidParameterValue.ResourcePoolPackStatus"
+//  RESOURCENOTFOUND_RESOURCEPOOLPACKIDNOTFOUND = "ResourceNotFound.ResourcePoolPackIdNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_RESOURCEPOOLPACKAGEINVISIBLEFORUSER = "UnsupportedOperation.ResourcePoolPackageInvisibleForUser"
+func (c *Client) TerminateResourcePoolPacksWithContext(ctx context.Context, request *TerminateResourcePoolPacksRequest) (response *TerminateResourcePoolPacksResponse, err error) {
+    if request == nil {
+        request = NewTerminateResourcePoolPacksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cvm", APIVersion, "TerminateResourcePoolPacks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateResourcePoolPacks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTerminateResourcePoolPacksResponse()
     err = c.Send(request, response)
     return
 }

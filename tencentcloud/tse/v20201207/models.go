@@ -3138,6 +3138,130 @@ func (r *CreateNativeGatewayServiceSourceResponse) FromJsonString(s string) erro
 }
 
 // Predefined struct for user
+type CreateOrModifyCloudNativeAPIGatewayCORSRequestParams struct {
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 跨域插件绑定的资源类型：route|service
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 路由或服务的id
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// 是否启用插件
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 跨域 Access-Control-Allow-Origin
+	Origins []*string `json:"Origins,omitnil,omitempty" name:"Origins"`
+
+	// 跨域 Access-Control-Allow-Headers header
+	Headers []*string `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// 跨域 Access-Control-Allow-Methods
+	Methods []*string `json:"Methods,omitnil,omitempty" name:"Methods"`
+
+	// 跨域 Access-Control-Expose-Headers
+	ExposedHeaders []*string `json:"ExposedHeaders,omitnil,omitempty" name:"ExposedHeaders"`
+
+	// preflight 请求缓存时间
+	MaxAge *int64 `json:"MaxAge,omitnil,omitempty" name:"MaxAge"`
+
+	// 跨域 Access-Control-Allow-Credentials
+	Credentials *bool `json:"Credentials,omitnil,omitempty" name:"Credentials"`
+
+	// 是否把OPTIONS请求透传后端
+	PreFlightContinue *bool `json:"PreFlightContinue,omitnil,omitempty" name:"PreFlightContinue"`
+}
+
+type CreateOrModifyCloudNativeAPIGatewayCORSRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 跨域插件绑定的资源类型：route|service
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 路由或服务的id
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// 是否启用插件
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 跨域 Access-Control-Allow-Origin
+	Origins []*string `json:"Origins,omitnil,omitempty" name:"Origins"`
+
+	// 跨域 Access-Control-Allow-Headers header
+	Headers []*string `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// 跨域 Access-Control-Allow-Methods
+	Methods []*string `json:"Methods,omitnil,omitempty" name:"Methods"`
+
+	// 跨域 Access-Control-Expose-Headers
+	ExposedHeaders []*string `json:"ExposedHeaders,omitnil,omitempty" name:"ExposedHeaders"`
+
+	// preflight 请求缓存时间
+	MaxAge *int64 `json:"MaxAge,omitnil,omitempty" name:"MaxAge"`
+
+	// 跨域 Access-Control-Allow-Credentials
+	Credentials *bool `json:"Credentials,omitnil,omitempty" name:"Credentials"`
+
+	// 是否把OPTIONS请求透传后端
+	PreFlightContinue *bool `json:"PreFlightContinue,omitnil,omitempty" name:"PreFlightContinue"`
+}
+
+func (r *CreateOrModifyCloudNativeAPIGatewayCORSRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrModifyCloudNativeAPIGatewayCORSRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "SourceType")
+	delete(f, "SourceId")
+	delete(f, "Enabled")
+	delete(f, "Origins")
+	delete(f, "Headers")
+	delete(f, "Methods")
+	delete(f, "ExposedHeaders")
+	delete(f, "MaxAge")
+	delete(f, "Credentials")
+	delete(f, "PreFlightContinue")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrModifyCloudNativeAPIGatewayCORSRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOrModifyCloudNativeAPIGatewayCORSResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateOrModifyCloudNativeAPIGatewayCORSResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOrModifyCloudNativeAPIGatewayCORSResponseParams `json:"Response"`
+}
+
+func (r *CreateOrModifyCloudNativeAPIGatewayCORSResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrModifyCloudNativeAPIGatewayCORSResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateOrModifyCloudNativeAPIGatewayIPRestrictionRequestParams struct {
 	// 网关ID
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
@@ -3436,6 +3560,74 @@ func (r *DeleteAutoScalerResourceStrategyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAutoScalerResourceStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudNativeAPIGatewayCORSRequestParams struct {
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 跨域插件绑定的资源类型：route|service
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 路由或服务的id
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+}
+
+type DeleteCloudNativeAPIGatewayCORSRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 跨域插件绑定的资源类型：route|service
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 路由或服务的id
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+}
+
+func (r *DeleteCloudNativeAPIGatewayCORSRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudNativeAPIGatewayCORSRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "SourceType")
+	delete(f, "SourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudNativeAPIGatewayCORSRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudNativeAPIGatewayCORSResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCloudNativeAPIGatewayCORSResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCloudNativeAPIGatewayCORSResponseParams `json:"Response"`
+}
+
+func (r *DeleteCloudNativeAPIGatewayCORSResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudNativeAPIGatewayCORSResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5155,6 +5347,78 @@ func (r *DescribeAutoScalerResourceStrategyBindingGroupsResponse) FromJsonString
 }
 
 // Predefined struct for user
+type DescribeCloudNativeAPIGatewayCORSRequestParams struct {
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 跨域插件绑定的资源类型：route|service
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 路由或服务的id
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+}
+
+type DescribeCloudNativeAPIGatewayCORSRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 跨域插件绑定的资源类型：route|service
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 路由或服务的id
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayCORSRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayCORSRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "SourceType")
+	delete(f, "SourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudNativeAPIGatewayCORSRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudNativeAPIGatewayCORSResponseParams struct {
+	// 出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *DescribeKongCORSResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudNativeAPIGatewayCORSResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudNativeAPIGatewayCORSResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayCORSResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayCORSResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCloudNativeAPIGatewayCanaryRulesRequestParams struct {
 	// 网关ID
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
@@ -5882,6 +6146,9 @@ type DescribeCloudNativeAPIGatewayResult struct {
 
 	// 是否提示可升级
 	AvailableUpgrade *bool `json:"AvailableUpgrade,omitnil,omitempty" name:"AvailableUpgrade"`
+
+	// 可回退的版本
+	AvailableRollbackVersion *string `json:"AvailableRollbackVersion,omitnil,omitempty" name:"AvailableRollbackVersion"`
 }
 
 // Predefined struct for user
@@ -8054,6 +8321,38 @@ func (r *DescribeInstanceTagInfosResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeInstanceTagInfosResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKongCORSResult struct {
+	// 资源类型
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 资源id
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// 是否启用
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 跨域 Origins
+	Origins []*string `json:"Origins,omitnil,omitempty" name:"Origins"`
+
+	// 跨域 Headers
+	Headers []*string `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// 跨域 Methods
+	Methods []*string `json:"Methods,omitnil,omitempty" name:"Methods"`
+
+	// 跨域 ExposedHeaders
+	ExposedHeaders []*string `json:"ExposedHeaders,omitnil,omitempty" name:"ExposedHeaders"`
+
+	// 跨域OPTIONS请求缓存时间
+	MaxAge *int64 `json:"MaxAge,omitnil,omitempty" name:"MaxAge"`
+
+	// 跨域请求是否允许携带身份信息
+	Credentials *bool `json:"Credentials,omitnil,omitempty" name:"Credentials"`
+
+	// 跨域请求是否透传后端
+	PreFlightContinue *bool `json:"PreFlightContinue,omitnil,omitempty" name:"PreFlightContinue"`
 }
 
 type DescribeKongIpRestrictionResult struct {

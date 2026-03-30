@@ -7170,53 +7170,50 @@ func (r *PassportOCRResponse) FromJsonString(s string) error {
 }
 
 type PassportRecognizeInfos struct {
-	// 证件类型（护照信息页识别结果）
+	// <p>证件类型（护照信息页识别结果）</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 发行国家（护照信息页识别结果）
+	// <p>发行国家（护照信息页识别结果）</p>
 	IssuingCountry *string `json:"IssuingCountry,omitnil,omitempty" name:"IssuingCountry"`
 
-	// 护照号码（护照信息页识别结果）
+	// <p>护照号码（护照信息页识别结果）</p>
 	PassportID *string `json:"PassportID,omitnil,omitempty" name:"PassportID"`
 
-	// 姓（护照信息页识别结果）
+	// <p>姓（护照信息页识别结果）</p>
 	Surname *string `json:"Surname,omitnil,omitempty" name:"Surname"`
 
-	// 名（护照信息页识别结果）
+	// <p>名（护照信息页识别结果）</p>
 	GivenName *string `json:"GivenName,omitnil,omitempty" name:"GivenName"`
 
-	// 姓名（护照信息页识别结果）
+	// <p>姓名（护照信息页识别结果）</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 国籍信息（护照信息页识别结果）
+	// <p>国籍信息（护照信息页识别结果）</p>
 	Nationality *string `json:"Nationality,omitnil,omitempty" name:"Nationality"`
 
-	// 出生日期（护照信息页识别结果）
+	// <p>出生日期（护照信息页识别结果）</p>
 	DateOfBirth *string `json:"DateOfBirth,omitnil,omitempty" name:"DateOfBirth"`
 
-	// 性别（护照信息页识别结果）
+	// <p>性别（护照信息页识别结果）</p>
 	Sex *string `json:"Sex,omitnil,omitempty" name:"Sex"`
 
-	// 发行日期（护照信息页识别结果）
+	// <p>发行日期（护照信息页识别结果）</p>
 	DateOfIssuance *string `json:"DateOfIssuance,omitnil,omitempty" name:"DateOfIssuance"`
 
-	// 截止日期（护照信息页识别结果）
+	// <p>截止日期（护照信息页识别结果）</p>
 	DateOfExpiration *string `json:"DateOfExpiration,omitnil,omitempty" name:"DateOfExpiration"`
 
-	// 持证人签名（护照信息页识别结果）
-	// 
-	// 仅中国大陆护照支持返回此字段，港澳台及境外护照不支持
+	// <p>持证人签名（护照信息页识别结果）</p><p>仅中国大陆护照支持返回此字段，港澳台及境外护照不支持</p>
 	Signature *string `json:"Signature,omitnil,omitempty" name:"Signature"`
 
-	// 签发地点（护照信息页识别结果）
-	// 
-	// 仅中国大陆护照支持返回此字段，港澳台及境外护照不支持
+	// <p>签发地点（护照信息页识别结果）</p><p>仅中国大陆护照支持返回此字段，港澳台及境外护照不支持</p>
 	IssuePlace *string `json:"IssuePlace,omitnil,omitempty" name:"IssuePlace"`
 
-	// 签发机关（护照信息页识别结果）
-	// 
-	// 仅中国大陆护照支持返回此字段，港澳台及境外护照不支持
+	// <p>签发机关（护照信息页识别结果）</p><p>仅中国大陆护照支持返回此字段，港澳台及境外护照不支持</p>
 	IssuingAuthority *string `json:"IssuingAuthority,omitnil,omitempty" name:"IssuingAuthority"`
+
+	// <p>出生地（护照信息页识别结果）</p>
+	BirthPlace *string `json:"BirthPlace,omitnil,omitempty" name:"BirthPlace"`
 }
 
 type PermanentResidencePermitInfo struct {
@@ -11441,28 +11438,30 @@ func (r *TextDetectResponse) FromJsonString(s string) error {
 }
 
 type TextDetection struct {
-	// 识别出的文本行内容
+	// <p>识别出的文本行内容</p>
 	DetectedText *string `json:"DetectedText,omitnil,omitempty" name:"DetectedText"`
 
-	// 置信度 0 ~100
+	// <p>置信度 0 ~100</p>
 	Confidence *int64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
 
-	// 文本行坐标，以四个顶点坐标表示
+	// <p>文本行坐标，以四个顶点坐标表示</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Polygon []*Coord `json:"Polygon,omitnil,omitempty" name:"Polygon"`
 
-	// 此字段为扩展字段。
-	// GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
+	// <p>此字段为扩展字段。<br>GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。</p>
 	AdvancedInfo *string `json:"AdvancedInfo,omitnil,omitempty" name:"AdvancedInfo"`
 
-	// 文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
+	// <p>文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）</p>
 	ItemPolygon *ItemCoord `json:"ItemPolygon,omitnil,omitempty" name:"ItemPolygon"`
 
-	// 识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR
+	// <p>识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR</p>
 	Words []*DetectedWords `json:"Words,omitnil,omitempty" name:"Words"`
 
-	// 单字在原图中的四点坐标， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR
+	// <p>单字在原图中的四点坐标， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR</p>
 	WordCoordPoint []*DetectedWordCoordPoint `json:"WordCoordPoint,omitnil,omitempty" name:"WordCoordPoint"`
+
+	// <p>语种信息。zh:中文; en:英文; th:泰语; id:印尼语; ja:日语; ko:韩语; es:西班牙语; fr:法语; de:德语; pt:葡萄牙语; vi:越南语; ms:马来语; ru:俄语; it:意大利语; nl:荷兰语; sv:瑞典语; fi:芬兰语; no:挪威语; hu:匈牙利语; ar:阿拉伯语; hi:印地语</p>
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 
 type TextDetectionEn struct {
@@ -13596,10 +13595,10 @@ type VerifyBizLicenseEnterprise4ResponseParams struct {
 	// <p>注册登记证件号码是否一致<br>仅StatusCode为0时返回，企业名称与统一社会信用代码均未查得时，固定返回false</p>
 	IsIdNumConsistent *bool `json:"IsIdNumConsistent,omitnil,omitempty" name:"IsIdNumConsistent"`
 
-	// <p>经营状态</p><p>枚举值：</p><ul><li>1： 开业（在营）</li><li>2： 迁出</li><li>3： 注销</li><li>4： 吊销</li><li>5： 撤销</li><li>6： 停业</li><li>0： 其他</li><li>-10002： 企业信息不正确，无法查询</li></ul>
+	// <p>经营状态</p><p>枚举值：</p><ul><li>1： 开业（在营）</li><li>2： 迁出</li><li>3： 注销</li><li>4： 吊销</li><li>5： 撤销</li><li>6： 停业</li><li>7： 撤销登记</li><li>0： 其他</li><li>/： 无法查询</li></ul>
 	OperatingStatus *string `json:"OperatingStatus,omitnil,omitempty" name:"OperatingStatus"`
 
-	// <p>营业期限：一般包括营业开始时间和结束时间</p><p>参数格式：yyyy-MM-dd/yyyy-MM-dd</p><p>无固定期限的格式为：yyyy-MM-dd/<br>部分企业历史数据可能为空，将返回：/<br>企业信息不正确，无法查询，将返回：-10002</p>
+	// <p>营业期限：一般包括营业开始时间和结束时间</p><p>参数格式：yyyy-MM-dd/yyyy-MM-dd</p><p>无固定期限的格式为：yyyy-MM-dd/<br>部分企业历史数据可能为空，将返回：/<br>无法查询，将返回：/</p>
 	OperatingPeriod *string `json:"OperatingPeriod,omitnil,omitempty" name:"OperatingPeriod"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

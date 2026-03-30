@@ -214,14 +214,14 @@ func (r *DescribeFinanceFraudUltimateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFraudBaseRequestParams struct {
-	// 客户端通过SDK获取的设备Token
+	// <p>客户端通过SDK获取的设备Token</p>
 	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 }
 
 type DescribeFraudBaseRequest struct {
 	*tchttp.BaseRequest
 	
-	// 客户端通过SDK获取的设备Token
+	// <p>客户端通过SDK获取的设备Token</p>
 	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 }
 
@@ -246,38 +246,44 @@ func (r *DescribeFraudBaseRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFraudBaseResponseParams struct {
-	// App版本信息
+	// <p>App版本信息</p>
 	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
 
-	// 品牌
+	// <p>品牌</p>
 	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
 
-	// 客户端IP
+	// <p>客户端IP</p>
 	ClientIp *string `json:"ClientIp,omitnil,omitempty" name:"ClientIp"`
 
-	// 机型
+	// <p>机型</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 网络类型
+	// <p>网络类型</p>
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
-	// 应用包名
+	// <p>应用包名</p>
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
-	// 平台（2-Android，3-iOS，4-H5，5-微信小程序）
+	// <p>平台（2-Android，3-iOS，4-H5，5-微信小程序）</p>
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
-	// 系统版本
+	// <p>系统版本</p>
 	SystemVersion *string `json:"SystemVersion,omitnil,omitempty" name:"SystemVersion"`
 
-	// SDK版本号
+	// <p>SDK版本号</p>
 	SdkBuildNo *string `json:"SdkBuildNo,omitnil,omitempty" name:"SdkBuildNo"`
 
-	// 实时风险信息
+	// <p>实时风险信息</p>
 	RiskInfos []*RiskInfo `json:"RiskInfos,omitnil,omitempty" name:"RiskInfos"`
 
-	// 离线风险信息
+	// <p>离线风险信息</p>
 	HistRiskInfos []*RiskInfo `json:"HistRiskInfos,omitnil,omitempty" name:"HistRiskInfos"`
+
+	// <p>检测时间戳（毫秒）</p>
+	RiskCheckTimestamp *string `json:"RiskCheckTimestamp,omitnil,omitempty" name:"RiskCheckTimestamp"`
+
+	// <p>额外信息</p>
+	ExtraInfos []*ExtraInfo `json:"ExtraInfos,omitnil,omitempty" name:"ExtraInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -633,6 +639,14 @@ func (r *DescribeTrustedIDResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeTrustedIDResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ExtraInfo struct {
+	// <p>附加信息名字</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>附加信息内容</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type RiskInfo struct {

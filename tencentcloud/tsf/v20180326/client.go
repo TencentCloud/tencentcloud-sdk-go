@@ -2264,6 +2264,7 @@ func NewCreateProgramResponse() (response *CreateProgramResponse) {
 // 创建数据集
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PROGRAMNAMEREQUIRED = "FailedOperation.ProgramNameRequired"
 //  INVALIDPARAMETERVALUE_DUPLICATEPROGRAMNAME = "InvalidParameterValue.DuplicateProgramName"
 //  INVALIDPARAMETERVALUE_INVALIDPROGRAMNAME = "InvalidParameterValue.InvalidProgramName"
 //  INVALIDPARAMETERVALUE_RESOURCENOTEXISTS = "InvalidParameterValue.ResourceNotExists"
@@ -2275,6 +2276,7 @@ func (c *Client) CreateProgram(request *CreateProgramRequest) (response *CreateP
 // 创建数据集
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PROGRAMNAMEREQUIRED = "FailedOperation.ProgramNameRequired"
 //  INVALIDPARAMETERVALUE_DUPLICATEPROGRAMNAME = "InvalidParameterValue.DuplicateProgramName"
 //  INVALIDPARAMETERVALUE_INVALIDPROGRAMNAME = "InvalidParameterValue.InvalidProgramName"
 //  INVALIDPARAMETERVALUE_RESOURCENOTEXISTS = "InvalidParameterValue.ResourceNotExists"

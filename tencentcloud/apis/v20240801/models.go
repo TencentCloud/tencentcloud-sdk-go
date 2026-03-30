@@ -829,6 +829,12 @@ type CreateModelServiceRequestParams struct {
 
 	// 超时配置，秒
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// 是否开启提示词安全检测
+	PromptModerateStatus *bool `json:"PromptModerateStatus,omitnil,omitempty" name:"PromptModerateStatus"`
+
+	// 提示词安全检测配置
+	PromptModerateConfig *PromptModerateConfigDTO `json:"PromptModerateConfig,omitnil,omitempty" name:"PromptModerateConfig"`
 }
 
 type CreateModelServiceRequest struct {
@@ -884,6 +890,12 @@ type CreateModelServiceRequest struct {
 
 	// 超时配置，秒
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// 是否开启提示词安全检测
+	PromptModerateStatus *bool `json:"PromptModerateStatus,omitnil,omitempty" name:"PromptModerateStatus"`
+
+	// 提示词安全检测配置
+	PromptModerateConfig *PromptModerateConfigDTO `json:"PromptModerateConfig,omitnil,omitempty" name:"PromptModerateConfig"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -915,6 +927,8 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "IpBlackList")
 	delete(f, "PluginConfigs")
 	delete(f, "Timeout")
+	delete(f, "PromptModerateStatus")
+	delete(f, "PromptModerateConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -2564,6 +2578,14 @@ type DescribeModelServiceResponseVO struct {
 
 	// 请求路径
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 是否开启提示词安全检测
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PromptModerateStatus *bool `json:"PromptModerateStatus,omitnil,omitempty" name:"PromptModerateStatus"`
+
+	// 提示词安全检测配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PromptModerateConfig *PromptModerateConfigDTO `json:"PromptModerateConfig,omitnil,omitempty" name:"PromptModerateConfig"`
 }
 
 // Predefined struct for user
@@ -3627,6 +3649,12 @@ type ModifyModelServiceRequestParams struct {
 
 	// 超时配置，秒
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// 是否开启提示词安全检测配置
+	PromptModerateStatus *bool `json:"PromptModerateStatus,omitnil,omitempty" name:"PromptModerateStatus"`
+
+	// 提示词安全检测配置
+	PromptModerateConfig *PromptModerateConfigDTO `json:"PromptModerateConfig,omitnil,omitempty" name:"PromptModerateConfig"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -3682,6 +3710,12 @@ type ModifyModelServiceRequest struct {
 
 	// 超时配置，秒
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// 是否开启提示词安全检测配置
+	PromptModerateStatus *bool `json:"PromptModerateStatus,omitnil,omitempty" name:"PromptModerateStatus"`
+
+	// 提示词安全检测配置
+	PromptModerateConfig *PromptModerateConfigDTO `json:"PromptModerateConfig,omitnil,omitempty" name:"PromptModerateConfig"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -3713,6 +3747,8 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "IpBlackList")
 	delete(f, "PluginConfigs")
 	delete(f, "Timeout")
+	delete(f, "PromptModerateStatus")
+	delete(f, "PromptModerateConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}
@@ -3778,6 +3814,16 @@ type PluginFormValueDTO struct {
 	// 值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type PromptModerateConfigDTO struct {
+	// 执行动作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// 响应拦截内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InterceptMessage *string `json:"InterceptMessage,omitnil,omitempty" name:"InterceptMessage"`
 }
 
 type ResultIDVO struct {

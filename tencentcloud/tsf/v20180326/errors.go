@@ -215,6 +215,9 @@ const (
 	// 命名空间查询失败。
 	FAILEDOPERATION_NAMESPACEQUERYFAILED = "FailedOperation.NamespaceQueryFailed"
 
+	// 数据集名称未填写
+	FAILEDOPERATION_PROGRAMNAMEREQUIRED = "FailedOperation.ProgramNameRequired"
+
 	// 访问配置中心失败。
 	FAILEDOPERATION_RATELIMITCONSULERROR = "FailedOperation.RatelimitConsulError"
 

@@ -556,7 +556,7 @@ type CreatePrivilegeCodeRequestParams struct {
 	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
 	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
 
-	// 系统类型（0: win，1：linux，2: mac，4：android，5：ios ）；默认值0
+	// 系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 }
 
@@ -569,7 +569,7 @@ type CreatePrivilegeCodeRequest struct {
 	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
 	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
 
-	// 系统类型（0: win，1：linux，2: mac，4：android，5：ios ）；默认值0
+	// 系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 }
 
@@ -1487,7 +1487,7 @@ type DescribeDeviceChildGroupsRequestParams struct {
 	// 父分组id，默认0：表示获取全网终端分组
 	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
-	// 操作系统类型（0：win，1：linux，2：mac，4：android，5：ios；默认0：系统win）
+	// 系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 }
 
@@ -1511,7 +1511,7 @@ type DescribeDeviceChildGroupsRequest struct {
 	// 父分组id，默认0：表示获取全网终端分组
 	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
-	// 操作系统类型（0：win，1：linux，2：mac，4：android，5：ios；默认0：系统win）
+	// 系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 }
 

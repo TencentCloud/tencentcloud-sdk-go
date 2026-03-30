@@ -2490,19 +2490,19 @@ func (r *TerminateRunGroupResponse) FromJsonString(s string) error {
 }
 
 type VPCOption struct {
-	// 私有网络ID（VPCId和VPCCIDRBlock必选其一。若使用VPCId，则使用现用私有网络；若使用VPCCIDRBlock，则创建新的私有网络）
+	// <p>私有网络ID（VPCId和VPCCIDRBlock必选其一。若使用VPCId，则使用现用私有网络；若使用VPCCIDRBlock，则创建新的私有网络）</p>
 	VPCId *string `json:"VPCId,omitnil,omitempty" name:"VPCId"`
 
-	// 子网ID（SubnetId和SubnetZone&SubnetCIDRBlock必选其一。若使用SubnetId，则使用现用子网；若使用SubnetZone&SubnetCIDRBlock，则创建新的子网）
+	// <p>子网ID（SubnetId和SubnetZone&amp;SubnetCIDRBlock必选其一。若使用SubnetId，则使用现用子网；若使用SubnetZone&amp;SubnetCIDRBlock，则创建新的子网）</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 子网可用区。
+	// <p>子网可用区。</p>
 	SubnetZone *string `json:"SubnetZone,omitnil,omitempty" name:"SubnetZone"`
 
-	// 私有网络CIDR。
+	// <p>私有网络CIDR。</p>
 	VPCCIDRBlock *string `json:"VPCCIDRBlock,omitnil,omitempty" name:"VPCCIDRBlock"`
 
-	// 子网CIDR。
+	// <p>子网CIDR。</p>
 	SubnetCIDRBlock *string `json:"SubnetCIDRBlock,omitnil,omitempty" name:"SubnetCIDRBlock"`
 }
 
