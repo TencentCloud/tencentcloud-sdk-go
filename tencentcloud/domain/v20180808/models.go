@@ -4387,6 +4387,85 @@ func (r *ModifyDomainOwnerBatchResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDomainOwnerRequestParams struct {
+	// 域名ID
+	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 新用户UIN
+	NewOwnerUin *string `json:"NewOwnerUin,omitnil,omitempty" name:"NewOwnerUin"`
+
+	// 新用户APPID
+	NewOwnerAppId *string `json:"NewOwnerAppId,omitnil,omitempty" name:"NewOwnerAppId"`
+
+	// 是否同时转移对应的 DNS 解析域名，默认false
+	TransferDns *bool `json:"TransferDns,omitnil,omitempty" name:"TransferDns"`
+}
+
+type ModifyDomainOwnerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名ID
+	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 新用户UIN
+	NewOwnerUin *string `json:"NewOwnerUin,omitnil,omitempty" name:"NewOwnerUin"`
+
+	// 新用户APPID
+	NewOwnerAppId *string `json:"NewOwnerAppId,omitnil,omitempty" name:"NewOwnerAppId"`
+
+	// 是否同时转移对应的 DNS 解析域名，默认false
+	TransferDns *bool `json:"TransferDns,omitnil,omitempty" name:"TransferDns"`
+}
+
+func (r *ModifyDomainOwnerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDomainOwnerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainId")
+	delete(f, "NewOwnerUin")
+	delete(f, "NewOwnerAppId")
+	delete(f, "TransferDns")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDomainOwnerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDomainOwnerResponseParams struct {
+	// null: 未转移对应的 DNS 解析域名，false: 转移对应的 DNS 解析域名失败，true: 转移对应的 DNS 解析域名成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransferDnsResult *bool `json:"TransferDnsResult,omitnil,omitempty" name:"TransferDnsResult"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDomainOwnerResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDomainOwnerResponseParams `json:"Response"`
+}
+
+func (r *ModifyDomainOwnerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDomainOwnerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyIntlCustomDnsHostRequestParams struct {
 	// 域名ID
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`

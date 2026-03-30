@@ -899,6 +899,14 @@ type LogConfiguration struct {
 	CLSConfig *CLSConfig `json:"CLSConfig,omitnil,omitempty" name:"CLSConfig"`
 }
 
+type MetadataVar struct {
+	// <p>沙箱元数据名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>沙箱元数据值</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type MountOption struct {
 	// 指定沙箱工具中的存储配置名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -923,14 +931,14 @@ type NetworkConfiguration struct {
 
 // Predefined struct for user
 type PauseSandboxInstanceRequestParams struct {
-	// 沙箱实例ID
+	// <p>沙箱实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type PauseSandboxInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 沙箱实例ID
+	// <p>沙箱实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -1101,6 +1109,12 @@ type SandboxInstance struct {
 
 	// <p>沙箱实例自定义配置</p>
 	CustomConfiguration *CustomConfigurationDetail `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
+
+	// <p>网络模式</p><p>枚举值：</p><ul><li>PUBLIC： 公网访问</li><li>SANDBOX： 无网络</li><li>INTERNAL_SERVICE： 腾讯云内部公共服务</li></ul><p>可以覆盖工具级别的网络配置。但如果一个工具本身就不支持 VPC 网络，那么即便在实例设置里选了 VPC 模式，也是无效的</p>
+	NetworkMode *string `json:"NetworkMode,omitnil,omitempty" name:"NetworkMode"`
+
+	// <p>沙箱实例元数据</p>
+	Metadata []*MetadataVar `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 type SandboxTool struct {
@@ -1152,45 +1166,57 @@ type SandboxTool struct {
 
 // Predefined struct for user
 type StartSandboxInstanceRequestParams struct {
-	// 沙箱工具 ID，与 ToolName 至少有一个要填
+	// <p>沙箱工具 ID，与 ToolName 至少有一个要填</p>
 	ToolId *string `json:"ToolId,omitnil,omitempty" name:"ToolId"`
 
-	// 沙箱工具名称，与 ToolId 至少有一个要填
+	// <p>沙箱工具名称，与 ToolId 至少有一个要填</p>
 	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
 
-	// 超时时间，超过这个时间就自动回收实例。支持格式：5m、300s、1h 等，默认 5m。最小 30s，最大 24h
+	// <p>超时时间，超过这个时间就自动回收实例。支持格式：5m、300s、1h 等，默认 5m。最小 30s，最大 24h</p>
 	Timeout *string `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 幂等性 Token，长度不超过 64 字符
+	// <p>幂等性 Token，长度不超过 64 字符</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
-	// 沙箱实例存储挂载配置
+	// <p>沙箱实例存储挂载配置</p>
 	MountOptions []*MountOption `json:"MountOptions,omitnil,omitempty" name:"MountOptions"`
 
-	// 沙箱实例自定义配置
+	// <p>沙箱实例自定义配置</p>
 	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
+
+	// <p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 跟随系统策略</li><li>TOKEN： Token认证</li><li>NONE： 免认证 </li></ul><p>默认值：DEFAULT</p>
+	AuthMode *string `json:"AuthMode,omitnil,omitempty" name:"AuthMode"`
+
+	// <p>沙箱元数据</p>
+	Metadata []*MetadataVar `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 type StartSandboxInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 沙箱工具 ID，与 ToolName 至少有一个要填
+	// <p>沙箱工具 ID，与 ToolName 至少有一个要填</p>
 	ToolId *string `json:"ToolId,omitnil,omitempty" name:"ToolId"`
 
-	// 沙箱工具名称，与 ToolId 至少有一个要填
+	// <p>沙箱工具名称，与 ToolId 至少有一个要填</p>
 	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
 
-	// 超时时间，超过这个时间就自动回收实例。支持格式：5m、300s、1h 等，默认 5m。最小 30s，最大 24h
+	// <p>超时时间，超过这个时间就自动回收实例。支持格式：5m、300s、1h 等，默认 5m。最小 30s，最大 24h</p>
 	Timeout *string `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 幂等性 Token，长度不超过 64 字符
+	// <p>幂等性 Token，长度不超过 64 字符</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
-	// 沙箱实例存储挂载配置
+	// <p>沙箱实例存储挂载配置</p>
 	MountOptions []*MountOption `json:"MountOptions,omitnil,omitempty" name:"MountOptions"`
 
-	// 沙箱实例自定义配置
+	// <p>沙箱实例自定义配置</p>
 	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
+
+	// <p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 跟随系统策略</li><li>TOKEN： Token认证</li><li>NONE： 免认证 </li></ul><p>默认值：DEFAULT</p>
+	AuthMode *string `json:"AuthMode,omitnil,omitempty" name:"AuthMode"`
+
+	// <p>沙箱元数据</p>
+	Metadata []*MetadataVar `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 func (r *StartSandboxInstanceRequest) ToJsonString() string {
@@ -1211,6 +1237,8 @@ func (r *StartSandboxInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ClientToken")
 	delete(f, "MountOptions")
 	delete(f, "CustomConfiguration")
+	delete(f, "AuthMode")
+	delete(f, "Metadata")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartSandboxInstanceRequest has unknown keys!", "")
 	}
@@ -1219,7 +1247,7 @@ func (r *StartSandboxInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StartSandboxInstanceResponseParams struct {
-	// 创建的沙箱实例完整信息
+	// <p>创建的沙箱实例完整信息</p>
 	Instance *SandboxInstance `json:"Instance,omitnil,omitempty" name:"Instance"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1331,21 +1359,27 @@ type Tag struct {
 
 // Predefined struct for user
 type UpdateSandboxInstanceRequestParams struct {
-	// 沙箱实例ID
+	// <p>沙箱实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 新的超时时间（从设置时开始重新计算超时），支持格式：5m、300s、1h等。最小30s，最大24h。如果不指定则保持原有超时设置
+	// <p>新的超时时间（从设置时开始重新计算超时），支持格式：5m、300s、1h等。最小30s，最大24h。如果不指定则保持原有超时设置</p>
 	Timeout *string `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>沙箱实例元数据</p>
+	Metadata []*MetadataVar `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 type UpdateSandboxInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 沙箱实例ID
+	// <p>沙箱实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 新的超时时间（从设置时开始重新计算超时），支持格式：5m、300s、1h等。最小30s，最大24h。如果不指定则保持原有超时设置
+	// <p>新的超时时间（从设置时开始重新计算超时），支持格式：5m、300s、1h等。最小30s，最大24h。如果不指定则保持原有超时设置</p>
 	Timeout *string `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>沙箱实例元数据</p>
+	Metadata []*MetadataVar `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 func (r *UpdateSandboxInstanceRequest) ToJsonString() string {
@@ -1362,6 +1396,7 @@ func (r *UpdateSandboxInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "Timeout")
+	delete(f, "Metadata")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateSandboxInstanceRequest has unknown keys!", "")
 	}

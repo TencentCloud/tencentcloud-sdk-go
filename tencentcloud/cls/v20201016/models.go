@@ -20,6 +20,12 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AccessControlRule struct {
+	// 访问方式：public - 公网，internal - 内网
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
+}
+
 // Predefined struct for user
 type AddMachineGroupInfoRequestParams struct {
 	// 机器组Id
@@ -524,6 +530,16 @@ type AnonymousInfo struct {
 	Conditions []*ConditionInfo `json:"Conditions,omitnil,omitempty" name:"Conditions"`
 }
 
+type AnonymousLoginInfo struct {
+	// <p>匿名登录账号secretId</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
+
+	// <p>匿名登录账号secretKey</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+}
+
 // Predefined struct for user
 type ApplyConfigToMachineGroupRequestParams struct {
 	// 采集配置ID
@@ -604,6 +620,18 @@ type AppointLabel struct {
 	// - key不能重复
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keys []*string `json:"Keys,omitnil,omitempty" name:"Keys"`
+}
+
+type AuthRoleInfo struct {
+	// <p>Auth角色名称</p>
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// <p>Auth角色对应权限SecretId</p>
+	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
+
+	// <p>Auth角色对应权限SecretKey</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 }
 
 type BaseMetricCollectConfig struct {
@@ -1273,6 +1301,90 @@ type ConfigInfo struct {
 	// - windows_event：windows事件采集
 	// - syslog：系统日志采集
 	InputType *string `json:"InputType,omitnil,omitempty" name:"InputType"`
+}
+
+type Console struct {
+	// <p>DataSight控制台Id</p>
+	ConsoleId *string `json:"ConsoleId,omitnil,omitempty" name:"ConsoleId"`
+
+	// <p>访问方式：public-公网，internal-内网</p>
+	AccessMode []*string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
+
+	// <p>登录方式：0-账号密码鉴权，1-匿名登录，2-第三方认证登录</p>
+	LoginMode *uint64 `json:"LoginMode,omitnil,omitempty" name:"LoginMode"`
+
+	// <p>自定义域名前缀</p>
+	DomainPrefix *string `json:"DomainPrefix,omitnil,omitempty" name:"DomainPrefix"`
+
+	// <p>用户账号信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Accounts []*ConsoleAccount `json:"Accounts,omitnil,omitempty" name:"Accounts"`
+
+	// <p>内网类型，默认为0</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntranetType *uint64 `json:"IntranetType,omitnil,omitempty" name:"IntranetType"`
+
+	// <p>内网地域</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntranetRegion *string `json:"IntranetRegion,omitnil,omitempty" name:"IntranetRegion"`
+
+	// <p>内网私有网络VpcId</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>内网子网SubnetId</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>匿名登录账号信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnonymousLogin *AnonymousLoginInfo `json:"AnonymousLogin,omitnil,omitempty" name:"AnonymousLogin"`
+
+	// <p>auth用户角色信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthRoles []*AuthRoleInfo `json:"AuthRoles,omitnil,omitempty" name:"AuthRoles"`
+
+	// <p>绑定的标签信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>自定义隐藏参数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HideParams []*string `json:"HideParams,omitnil,omitempty" name:"HideParams"`
+
+	// <p>访问控制规则</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessControlRules []*AccessControlRule `json:"AccessControlRules,omitnil,omitempty" name:"AccessControlRules"`
+
+	// <p>备注</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remarks *string `json:"Remarks,omitnil,omitempty" name:"Remarks"`
+
+	// <p>自定义显示菜单</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Menus []*string `json:"Menus,omitnil,omitempty" name:"Menus"`
+}
+
+type ConsoleAccount struct {
+	// <p>用户名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>用户密码</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// <p>腾讯云账号SecretId</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
+
+	// <p>腾讯云账号SecretKey</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// <p>电子邮箱，用于发送验证码</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 }
 
 type ConsoleSharingConfig struct {
@@ -2614,6 +2726,161 @@ func (r *CreateConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateConsoleRequestParams struct {
+	// <p>访问方式：public - 公网，internal - 内网</p>
+	AccessMode []*string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
+
+	// <p>登录方式：0 - 账号密码鉴权，1 - 匿名登陆，2 - 第三方认证登录</p>
+	LoginMode *uint64 `json:"LoginMode,omitnil,omitempty" name:"LoginMode"`
+
+	// <p>自定义域名前缀</p>
+	DomainPrefix *string `json:"DomainPrefix,omitnil,omitempty" name:"DomainPrefix"`
+
+	// <p>用户账号信息</p><p>“账号密码鉴权“登录方式必传</p>
+	Accounts []*ConsoleAccount `json:"Accounts,omitnil,omitempty" name:"Accounts"`
+
+	// <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传</p>
+	AnonymousLogin *AnonymousLoginInfo `json:"AnonymousLogin,omitnil,omitempty" name:"AnonymousLogin"`
+
+	// <p>内网类型，默认为0</p>
+	IntranetType *uint64 `json:"IntranetType,omitnil,omitempty" name:"IntranetType"`
+
+	// <p>内网地域</p>
+	IntranetRegion *string `json:"IntranetRegion,omitnil,omitempty" name:"IntranetRegion"`
+
+	// <p>内网私有网络VpcId</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>内网子网SubnetId</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>Auth角色信息</p><p>“第三方认证登录”登录方式必传</p>
+	AuthRoles []*AuthRoleInfo `json:"AuthRoles,omitnil,omitempty" name:"AuthRoles"`
+
+	// <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>自定义隐藏参数</p>
+	HideParams []*string `json:"HideParams,omitnil,omitempty" name:"HideParams"`
+
+	// <p>访问控制规则</p><p>“第三方认证登录”登录方式必传 AccessMode: internal &amp;&amp; Action: ACCEPT 规则</p>
+	AccessControlRules []*AccessControlRule `json:"AccessControlRules,omitnil,omitempty" name:"AccessControlRules"`
+
+	// <p>备注</p>
+	Remarks *string `json:"Remarks,omitnil,omitempty" name:"Remarks"`
+
+	// <p>自定义显示菜单</p>
+	Menus []*string `json:"Menus,omitnil,omitempty" name:"Menus"`
+}
+
+type CreateConsoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>访问方式：public - 公网，internal - 内网</p>
+	AccessMode []*string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
+
+	// <p>登录方式：0 - 账号密码鉴权，1 - 匿名登陆，2 - 第三方认证登录</p>
+	LoginMode *uint64 `json:"LoginMode,omitnil,omitempty" name:"LoginMode"`
+
+	// <p>自定义域名前缀</p>
+	DomainPrefix *string `json:"DomainPrefix,omitnil,omitempty" name:"DomainPrefix"`
+
+	// <p>用户账号信息</p><p>“账号密码鉴权“登录方式必传</p>
+	Accounts []*ConsoleAccount `json:"Accounts,omitnil,omitempty" name:"Accounts"`
+
+	// <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传</p>
+	AnonymousLogin *AnonymousLoginInfo `json:"AnonymousLogin,omitnil,omitempty" name:"AnonymousLogin"`
+
+	// <p>内网类型，默认为0</p>
+	IntranetType *uint64 `json:"IntranetType,omitnil,omitempty" name:"IntranetType"`
+
+	// <p>内网地域</p>
+	IntranetRegion *string `json:"IntranetRegion,omitnil,omitempty" name:"IntranetRegion"`
+
+	// <p>内网私有网络VpcId</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>内网子网SubnetId</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>Auth角色信息</p><p>“第三方认证登录”登录方式必传</p>
+	AuthRoles []*AuthRoleInfo `json:"AuthRoles,omitnil,omitempty" name:"AuthRoles"`
+
+	// <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>自定义隐藏参数</p>
+	HideParams []*string `json:"HideParams,omitnil,omitempty" name:"HideParams"`
+
+	// <p>访问控制规则</p><p>“第三方认证登录”登录方式必传 AccessMode: internal &amp;&amp; Action: ACCEPT 规则</p>
+	AccessControlRules []*AccessControlRule `json:"AccessControlRules,omitnil,omitempty" name:"AccessControlRules"`
+
+	// <p>备注</p>
+	Remarks *string `json:"Remarks,omitnil,omitempty" name:"Remarks"`
+
+	// <p>自定义显示菜单</p>
+	Menus []*string `json:"Menus,omitnil,omitempty" name:"Menus"`
+}
+
+func (r *CreateConsoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConsoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AccessMode")
+	delete(f, "LoginMode")
+	delete(f, "DomainPrefix")
+	delete(f, "Accounts")
+	delete(f, "AnonymousLogin")
+	delete(f, "IntranetType")
+	delete(f, "IntranetRegion")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "AuthRoles")
+	delete(f, "Tags")
+	delete(f, "HideParams")
+	delete(f, "AccessControlRules")
+	delete(f, "Remarks")
+	delete(f, "Menus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateConsoleResponseParams struct {
+	// <p>DataSight控制台Id</p>
+	ConsoleId *string `json:"ConsoleId,omitnil,omitempty" name:"ConsoleId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateConsoleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateConsoleResponseParams `json:"Response"`
+}
+
+func (r *CreateConsoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConsoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6441,6 +6708,60 @@ func (r *DeleteConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteConsoleRequestParams struct {
+	// <p>DataSight控制台Id</p>
+	ConsoleId *string `json:"ConsoleId,omitnil,omitempty" name:"ConsoleId"`
+}
+
+type DeleteConsoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>DataSight控制台Id</p>
+	ConsoleId *string `json:"ConsoleId,omitnil,omitempty" name:"ConsoleId"`
+}
+
+func (r *DeleteConsoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteConsoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConsoleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteConsoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteConsoleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteConsoleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteConsoleResponseParams `json:"Response"`
+}
+
+func (r *DeleteConsoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteConsoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteConsoleSharingRequestParams struct {
 	// 免密分享Id。
 	// - 通过 [获取免密分享列表](https://cloud.tencent.com/document/product/614/109798) 获取免密分享Id。 
@@ -8971,6 +9292,80 @@ func (r *DescribeConsoleSharingListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeConsoleSharingListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsolesRequestParams struct {
+	// <p>分页的偏移量，默认值为0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页单页限制数目，默认值为100，最大值100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <li> DomainPrefix按照【域名前缀】进行过滤。类型：String必选：否</li><li> ConsoleId按照【DataSight实例ID】进行过滤。类型：String必选：否</li><li> tagKey按照【标签键】进行过滤。类型：String必选：否</li><li> tag:tagKey按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，例如tag:exampleKey。类型：String必选：否</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeConsolesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>分页的偏移量，默认值为0。</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页单页限制数目，默认值为100，最大值100。</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <li> DomainPrefix按照【域名前缀】进行过滤。类型：String必选：否</li><li> ConsoleId按照【DataSight实例ID】进行过滤。类型：String必选：否</li><li> tagKey按照【标签键】进行过滤。类型：String必选：否</li><li> tag:tagKey按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，例如tag:exampleKey。类型：String必选：否</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeConsolesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsolesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConsolesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConsolesResponseParams struct {
+	// <p>DataSight控制台实例列表</p>
+	Consoles []*Console `json:"Consoles,omitnil,omitempty" name:"Consoles"`
+
+	// <p>实例总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeConsolesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConsolesResponseParams `json:"Response"`
+}
+
+func (r *DescribeConsolesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConsolesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -15763,6 +16158,161 @@ func (r *ModifyConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyConsoleRequestParams struct {
+	// <p>DataSight控制台ConsoleId</p>
+	ConsoleId *string `json:"ConsoleId,omitnil,omitempty" name:"ConsoleId"`
+
+	// <p>访问方式：public - 公网，internal - 内网</p>
+	AccessMode []*string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
+
+	// <p>登录方式：0 - 账号密码鉴权，1 - 匿名登陆，2 - 第三方认证登录</p>
+	LoginMode *uint64 `json:"LoginMode,omitnil,omitempty" name:"LoginMode"`
+
+	// <p>自定义域名前缀</p>
+	DomainPrefix *string `json:"DomainPrefix,omitnil,omitempty" name:"DomainPrefix"`
+
+	// <p>用户账号信息</p><p>“账号密码鉴权“登录方式必传</p>
+	Accounts []*ConsoleAccount `json:"Accounts,omitnil,omitempty" name:"Accounts"`
+
+	// <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传</p>
+	AnonymousLogin *AnonymousLoginInfo `json:"AnonymousLogin,omitnil,omitempty" name:"AnonymousLogin"`
+
+	// <p>内网类型，默认为0</p>
+	IntranetType *uint64 `json:"IntranetType,omitnil,omitempty" name:"IntranetType"`
+
+	// <p>内网地域</p>
+	IntranetRegion *string `json:"IntranetRegion,omitnil,omitempty" name:"IntranetRegion"`
+
+	// <p>内网私有网络VpcId</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>内网子网SubnetId</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>Auth用户角色信息</p><p>“第三方认证登录”登录方式必传</p>
+	AuthRoles []*AuthRoleInfo `json:"AuthRoles,omitnil,omitempty" name:"AuthRoles"`
+
+	// <p>自定义隐藏参数</p>
+	HideParams []*string `json:"HideParams,omitnil,omitempty" name:"HideParams"`
+
+	// <p>访问控制规则</p><p>“第三方认证登录”登录方式必传 AccessMode: internal &amp;&amp; Action: ACCEPT 规则</p>
+	AccessControlRules []*AccessControlRule `json:"AccessControlRules,omitnil,omitempty" name:"AccessControlRules"`
+
+	// <p>备注</p>
+	Remarks *string `json:"Remarks,omitnil,omitempty" name:"Remarks"`
+
+	// <p>自定义显示菜单</p>
+	Menus []*string `json:"Menus,omitnil,omitempty" name:"Menus"`
+}
+
+type ModifyConsoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>DataSight控制台ConsoleId</p>
+	ConsoleId *string `json:"ConsoleId,omitnil,omitempty" name:"ConsoleId"`
+
+	// <p>访问方式：public - 公网，internal - 内网</p>
+	AccessMode []*string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
+
+	// <p>登录方式：0 - 账号密码鉴权，1 - 匿名登陆，2 - 第三方认证登录</p>
+	LoginMode *uint64 `json:"LoginMode,omitnil,omitempty" name:"LoginMode"`
+
+	// <p>自定义域名前缀</p>
+	DomainPrefix *string `json:"DomainPrefix,omitnil,omitempty" name:"DomainPrefix"`
+
+	// <p>用户账号信息</p><p>“账号密码鉴权“登录方式必传</p>
+	Accounts []*ConsoleAccount `json:"Accounts,omitnil,omitempty" name:"Accounts"`
+
+	// <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传</p>
+	AnonymousLogin *AnonymousLoginInfo `json:"AnonymousLogin,omitnil,omitempty" name:"AnonymousLogin"`
+
+	// <p>内网类型，默认为0</p>
+	IntranetType *uint64 `json:"IntranetType,omitnil,omitempty" name:"IntranetType"`
+
+	// <p>内网地域</p>
+	IntranetRegion *string `json:"IntranetRegion,omitnil,omitempty" name:"IntranetRegion"`
+
+	// <p>内网私有网络VpcId</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>内网子网SubnetId</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>Auth用户角色信息</p><p>“第三方认证登录”登录方式必传</p>
+	AuthRoles []*AuthRoleInfo `json:"AuthRoles,omitnil,omitempty" name:"AuthRoles"`
+
+	// <p>自定义隐藏参数</p>
+	HideParams []*string `json:"HideParams,omitnil,omitempty" name:"HideParams"`
+
+	// <p>访问控制规则</p><p>“第三方认证登录”登录方式必传 AccessMode: internal &amp;&amp; Action: ACCEPT 规则</p>
+	AccessControlRules []*AccessControlRule `json:"AccessControlRules,omitnil,omitempty" name:"AccessControlRules"`
+
+	// <p>备注</p>
+	Remarks *string `json:"Remarks,omitnil,omitempty" name:"Remarks"`
+
+	// <p>自定义显示菜单</p>
+	Menus []*string `json:"Menus,omitnil,omitempty" name:"Menus"`
+}
+
+func (r *ModifyConsoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConsoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConsoleId")
+	delete(f, "AccessMode")
+	delete(f, "LoginMode")
+	delete(f, "DomainPrefix")
+	delete(f, "Accounts")
+	delete(f, "AnonymousLogin")
+	delete(f, "IntranetType")
+	delete(f, "IntranetRegion")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "AuthRoles")
+	delete(f, "HideParams")
+	delete(f, "AccessControlRules")
+	delete(f, "Remarks")
+	delete(f, "Menus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConsoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyConsoleResponseParams struct {
+	// <p>DataSight控制台Id</p>
+	ConsoleId *string `json:"ConsoleId,omitnil,omitempty" name:"ConsoleId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyConsoleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyConsoleResponseParams `json:"Response"`
+}
+
+func (r *ModifyConsoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConsoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

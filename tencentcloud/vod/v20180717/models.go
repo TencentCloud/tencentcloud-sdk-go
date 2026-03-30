@@ -253,29 +253,28 @@ type AdaptiveDynamicStreamingTemplate struct {
 }
 
 type AdaptiveStreamTemplate struct {
-	// 视频参数信息。
+	// <p>视频参数信息。</p>
 	Video *VideoTemplateInfo `json:"Video,omitnil,omitempty" name:"Video"`
 
-	// 音频参数信息。
+	// <p>音频参数信息。</p>
 	Audio *AudioTemplateInfo `json:"Audio,omitnil,omitempty" name:"Audio"`
 
-	// 是否移除音频流，取值范围：
-	// <li>0：否，</li>
-	// <li>1：是。</li>
+	// <p>是否移除音频流，取值范围：</p><li>0：否，</li><li>1：是。</li>
 	RemoveAudio *uint64 `json:"RemoveAudio,omitnil,omitempty" name:"RemoveAudio"`
 
-	// 是否移除视频流，取值范围：
-	// <li>0：否，</li>
-	// <li>1：是。</li>
+	// <p>是否移除视频流，取值范围：</p><li>0：否，</li><li>1：是。</li>
 	RemoveVideo *uint64 `json:"RemoveVideo,omitnil,omitempty" name:"RemoveVideo"`
 
-	// 极速高清转码参数。
+	// <p>极速高清转码参数。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitnil,omitempty" name:"TEHDConfig"`
 
-	// 音视频增强配置。
+	// <p>音视频增强配置。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
+
+	// <p>扩展参数。</p>
+	StdExtInfo *string `json:"StdExtInfo,omitnil,omitempty" name:"StdExtInfo"`
 }
 
 type AdvancedElementInfo struct {
@@ -1976,7 +1975,7 @@ type AigcFaceInputFileInfo struct {
 }
 
 type AigcImageOutputConfig struct {
-	// <p>存储模式。取值有： <li>Permanent：永久存储，生成的图片文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的图片文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li><br>默认值：Temporary</p>
+	// <p>存储模式</p><p>枚举值：</p><ul><li>Temporary： 临时存储，生成的视频文件不会存储到云点播，可在事件通知中获取到临时访问的 URL，有效期 7 天</li><li>Permanent： 永久存储，生成的视频文件将存储到云点播，可在事件通知中获取到 FileId</li></ul><p>默认值：Temporary</p>
 	StorageMode *string `json:"StorageMode,omitnil,omitempty" name:"StorageMode"`
 
 	// <p>输出文件名，最长 64 个字符。缺省由系统指定生成文件名。</p>
@@ -2136,7 +2135,7 @@ type AigcUsageDataItem struct {
 }
 
 type AigcVideoOutputConfig struct {
-	// <p>存储模式。取值有： <li>Permanent：永久存储，生成的视频文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的视频文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li><br>默认值：Temporary</p>
+	// <p>存储模式</p><p>枚举值：</p><ul><li>Temporary： 临时存储，生成的视频文件不会存储到云点播，可在事件通知中获取到临时访问的 URL，有效期 7 天</li><li>Permanent： 永久存储，生成的视频文件将存储到云点播，可在事件通知中获取到 FileId</li></ul><p>默认值：Temporary</p>
 	StorageMode *string `json:"StorageMode,omitnil,omitempty" name:"StorageMode"`
 
 	// <p>输出媒体文件名，最长 64 个字符。缺省由系统指定生成文件名。</p>
@@ -8494,93 +8493,81 @@ func (r *CreateSuperPlayerConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTranscodeTemplateRequestParams struct {
-	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。
+	// <p>封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。</p>
 	Container *string `json:"Container,omitnil,omitempty" name:"Container"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 转码模板名称，长度限制：64 个字符。
+	// <p>转码模板名称，长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 模板描述信息，长度限制：256 个字符。
+	// <p>模板描述信息，长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 是否去除视频数据，可选值：
-	// <li>0：保留</li>
-	// <li>1：去除</li>
-	// 默认值：0。
+	// <p>是否去除视频数据，可选值：</p><li>0：保留</li><li>1：去除</li>默认值：0。
 	RemoveVideo *int64 `json:"RemoveVideo,omitnil,omitempty" name:"RemoveVideo"`
 
-	// 是否去除音频数据，可选值：
-	// <li>0：保留</li>
-	// <li>1：去除</li>
-	// 默认值：0。
+	// <p>是否去除音频数据，可选值：</p><li>0：保留</li><li>1：去除</li>默认值：0。
 	RemoveAudio *int64 `json:"RemoveAudio,omitnil,omitempty" name:"RemoveAudio"`
 
-	// 视频流配置参数，当 RemoveVideo 为 0，该字段必填。
+	// <p>视频流配置参数，当 RemoveVideo 为 0，该字段必填。</p>
 	VideoTemplate *VideoTemplateInfo `json:"VideoTemplate,omitnil,omitempty" name:"VideoTemplate"`
 
-	// 音频流配置参数，当 RemoveAudio 为 0，该字段必填。
+	// <p>音频流配置参数，当 RemoveAudio 为 0，该字段必填。</p>
 	AudioTemplate *AudioTemplateInfo `json:"AudioTemplate,omitnil,omitempty" name:"AudioTemplate"`
 
-	// 极速高清转码参数。
+	// <p>极速高清转码参数。</p>
 	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitnil,omitempty" name:"TEHDConfig"`
 
-	// 音视频增强配置。
+	// <p>音视频增强配置。</p>
 	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
 
-	// 切片类型，当 Container 为 hls 时有效，可选值：
-	// <li>ts：ts 切片；</li>
-	// <li>fmp4：fmp4 切片。</li>
-	// 默认值：ts。
+	// <p>切片类型，当 Container 为 hls 时有效，可选值：</p><li>ts：ts 切片；</li><li>fmp4：fmp4 切片。</li>默认值：ts。
 	SegmentType *string `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
+
+	// <p>扩展参数。</p>
+	StdExtInfo *string `json:"StdExtInfo,omitnil,omitempty" name:"StdExtInfo"`
 }
 
 type CreateTranscodeTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。
+	// <p>封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。</p>
 	Container *string `json:"Container,omitnil,omitempty" name:"Container"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 转码模板名称，长度限制：64 个字符。
+	// <p>转码模板名称，长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 模板描述信息，长度限制：256 个字符。
+	// <p>模板描述信息，长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 是否去除视频数据，可选值：
-	// <li>0：保留</li>
-	// <li>1：去除</li>
-	// 默认值：0。
+	// <p>是否去除视频数据，可选值：</p><li>0：保留</li><li>1：去除</li>默认值：0。
 	RemoveVideo *int64 `json:"RemoveVideo,omitnil,omitempty" name:"RemoveVideo"`
 
-	// 是否去除音频数据，可选值：
-	// <li>0：保留</li>
-	// <li>1：去除</li>
-	// 默认值：0。
+	// <p>是否去除音频数据，可选值：</p><li>0：保留</li><li>1：去除</li>默认值：0。
 	RemoveAudio *int64 `json:"RemoveAudio,omitnil,omitempty" name:"RemoveAudio"`
 
-	// 视频流配置参数，当 RemoveVideo 为 0，该字段必填。
+	// <p>视频流配置参数，当 RemoveVideo 为 0，该字段必填。</p>
 	VideoTemplate *VideoTemplateInfo `json:"VideoTemplate,omitnil,omitempty" name:"VideoTemplate"`
 
-	// 音频流配置参数，当 RemoveAudio 为 0，该字段必填。
+	// <p>音频流配置参数，当 RemoveAudio 为 0，该字段必填。</p>
 	AudioTemplate *AudioTemplateInfo `json:"AudioTemplate,omitnil,omitempty" name:"AudioTemplate"`
 
-	// 极速高清转码参数。
+	// <p>极速高清转码参数。</p>
 	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitnil,omitempty" name:"TEHDConfig"`
 
-	// 音视频增强配置。
+	// <p>音视频增强配置。</p>
 	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
 
-	// 切片类型，当 Container 为 hls 时有效，可选值：
-	// <li>ts：ts 切片；</li>
-	// <li>fmp4：fmp4 切片。</li>
-	// 默认值：ts。
+	// <p>切片类型，当 Container 为 hls 时有效，可选值：</p><li>ts：ts 切片；</li><li>fmp4：fmp4 切片。</li>默认值：ts。
 	SegmentType *string `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
+
+	// <p>扩展参数。</p>
+	StdExtInfo *string `json:"StdExtInfo,omitnil,omitempty" name:"StdExtInfo"`
 }
 
 func (r *CreateTranscodeTemplateRequest) ToJsonString() string {
@@ -8606,6 +8593,7 @@ func (r *CreateTranscodeTemplateRequest) FromJsonString(s string) error {
 	delete(f, "TEHDConfig")
 	delete(f, "EnhanceConfig")
 	delete(f, "SegmentType")
+	delete(f, "StdExtInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTranscodeTemplateRequest has unknown keys!", "")
 	}
@@ -8614,7 +8602,7 @@ func (r *CreateTranscodeTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTranscodeTemplateResponseParams struct {
-	// 转码模板唯一标识。
+	// <p>转码模板唯一标识。</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -24003,93 +23991,87 @@ func (r *ModifySuperPlayerConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTranscodeTemplateRequestParams struct {
-	// 转码模板唯一标识。
+	// <p>转码模板唯一标识。</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。
+	// <p>封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。</p>
 	Container *string `json:"Container,omitnil,omitempty" name:"Container"`
 
-	// 转码模板名称，长度限制：64 个字符。
+	// <p>转码模板名称，长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 模板描述信息，长度限制：256 个字符。
+	// <p>模板描述信息，长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 是否去除视频数据，可选值：
-	// <li>0：保留</li>
-	// <li>1：去除</li>
+	// <p>是否去除视频数据，可选值：</p><li>0：保留</li><li>1：去除</li>
 	RemoveVideo *int64 `json:"RemoveVideo,omitnil,omitempty" name:"RemoveVideo"`
 
-	// 是否去除音频数据，可选值：
-	// <li>0：保留</li>
-	// <li>1：去除</li>
+	// <p>是否去除音频数据，可选值：</p><li>0：保留</li><li>1：去除</li>
 	RemoveAudio *int64 `json:"RemoveAudio,omitnil,omitempty" name:"RemoveAudio"`
 
-	// 视频流配置参数。
+	// <p>视频流配置参数。</p>
 	VideoTemplate *VideoTemplateInfoForUpdate `json:"VideoTemplate,omitnil,omitempty" name:"VideoTemplate"`
 
-	// 音频流配置参数。
+	// <p>音频流配置参数。</p>
 	AudioTemplate *AudioTemplateInfoForUpdate `json:"AudioTemplate,omitnil,omitempty" name:"AudioTemplate"`
 
-	// 极速高清转码参数。
+	// <p>极速高清转码参数。</p>
 	TEHDConfig *TEHDConfigForUpdate `json:"TEHDConfig,omitnil,omitempty" name:"TEHDConfig"`
 
-	// 音视频增强配置。
+	// <p>音视频增强配置。</p>
 	EnhanceConfig *EnhanceConfigForUpdate `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
 
-	// 切片类型，当 Container 为 hls 时有效，可选值：
-	// <li>ts：ts 切片；</li>
-	// <li>fmp4：fmp4 切片。</li>
+	// <p>切片类型，当 Container 为 hls 时有效，可选值：</p><li>ts：ts 切片；</li><li>fmp4：fmp4 切片。</li>
 	SegmentType *string `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
+
+	// <p>扩展参数。</p>
+	StdExtInfo *string `json:"StdExtInfo,omitnil,omitempty" name:"StdExtInfo"`
 }
 
 type ModifyTranscodeTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 转码模板唯一标识。
+	// <p>转码模板唯一标识。</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。
+	// <p>封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。</p>
 	Container *string `json:"Container,omitnil,omitempty" name:"Container"`
 
-	// 转码模板名称，长度限制：64 个字符。
+	// <p>转码模板名称，长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 模板描述信息，长度限制：256 个字符。
+	// <p>模板描述信息，长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 是否去除视频数据，可选值：
-	// <li>0：保留</li>
-	// <li>1：去除</li>
+	// <p>是否去除视频数据，可选值：</p><li>0：保留</li><li>1：去除</li>
 	RemoveVideo *int64 `json:"RemoveVideo,omitnil,omitempty" name:"RemoveVideo"`
 
-	// 是否去除音频数据，可选值：
-	// <li>0：保留</li>
-	// <li>1：去除</li>
+	// <p>是否去除音频数据，可选值：</p><li>0：保留</li><li>1：去除</li>
 	RemoveAudio *int64 `json:"RemoveAudio,omitnil,omitempty" name:"RemoveAudio"`
 
-	// 视频流配置参数。
+	// <p>视频流配置参数。</p>
 	VideoTemplate *VideoTemplateInfoForUpdate `json:"VideoTemplate,omitnil,omitempty" name:"VideoTemplate"`
 
-	// 音频流配置参数。
+	// <p>音频流配置参数。</p>
 	AudioTemplate *AudioTemplateInfoForUpdate `json:"AudioTemplate,omitnil,omitempty" name:"AudioTemplate"`
 
-	// 极速高清转码参数。
+	// <p>极速高清转码参数。</p>
 	TEHDConfig *TEHDConfigForUpdate `json:"TEHDConfig,omitnil,omitempty" name:"TEHDConfig"`
 
-	// 音视频增强配置。
+	// <p>音视频增强配置。</p>
 	EnhanceConfig *EnhanceConfigForUpdate `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
 
-	// 切片类型，当 Container 为 hls 时有效，可选值：
-	// <li>ts：ts 切片；</li>
-	// <li>fmp4：fmp4 切片。</li>
+	// <p>切片类型，当 Container 为 hls 时有效，可选值：</p><li>ts：ts 切片；</li><li>fmp4：fmp4 切片。</li>
 	SegmentType *string `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
+
+	// <p>扩展参数。</p>
+	StdExtInfo *string `json:"StdExtInfo,omitnil,omitempty" name:"StdExtInfo"`
 }
 
 func (r *ModifyTranscodeTemplateRequest) ToJsonString() string {
@@ -24116,6 +24098,7 @@ func (r *ModifyTranscodeTemplateRequest) FromJsonString(s string) error {
 	delete(f, "TEHDConfig")
 	delete(f, "EnhanceConfig")
 	delete(f, "SegmentType")
+	delete(f, "StdExtInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTranscodeTemplateRequest has unknown keys!", "")
 	}
@@ -28810,7 +28793,7 @@ type SampleSnapshotTemplate struct {
 }
 
 type SceneAigcImageOutputConfig struct {
-	// <p>存储模式。取值有： <li>Permanent：永久存储，生成的图片文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的图片文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li><br>默认值：Temporary</p>
+	// <p>存储模式</p><p>枚举值：</p><ul><li>Temporary： 临时存储，生成的视频文件不会存储到云点播，可在事件通知中获取到临时访问的 URL，有效期 7 天</li><li>Permanent： 永久存储，生成的视频文件将存储到云点播，可在事件通知中获取到 FileId</li></ul><p>默认值：Temporary</p>
 	StorageMode *string `json:"StorageMode,omitnil,omitempty" name:"StorageMode"`
 
 	// <p>输出文件名，最长 64 个字符。缺省由系统指定生成文件名。</p>
@@ -30812,60 +30795,55 @@ type TranscodeTaskInput struct {
 }
 
 type TranscodeTemplate struct {
-	// 转码模板唯一标识。
+	// <p>转码模板唯一标识。</p>
 	Definition *string `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 封装格式，取值：mp4、flv、hls、mp3、flac、ogg。
+	// <p>封装格式，取值：mp4、flv、hls、mp3、flac、ogg。</p>
 	Container *string `json:"Container,omitnil,omitempty" name:"Container"`
 
-	// 转码模板名称。
+	// <p>转码模板名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 模板描述信息。
+	// <p>模板描述信息。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 模板类型，取值：
-	// <li>Preset：系统预置模板；</li>
-	// <li>Custom：用户自定义模板。</li>
+	// <p>模板类型，取值：</p><li>Preset：系统预置模板；</li><li>Custom：用户自定义模板。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 是否去除视频数据，取值：
-	// <li>0：保留；</li>
-	// <li>1：去除。</li>
+	// <p>是否去除视频数据，取值：</p><li>0：保留；</li><li>1：去除。</li>
 	RemoveVideo *int64 `json:"RemoveVideo,omitnil,omitempty" name:"RemoveVideo"`
 
-	// 是否去除音频数据，取值：
-	// <li>0：保留；</li>
-	// <li>1：去除。</li>
+	// <p>是否去除音频数据，取值：</p><li>0：保留；</li><li>1：去除。</li>
 	RemoveAudio *int64 `json:"RemoveAudio,omitnil,omitempty" name:"RemoveAudio"`
 
-	// 视频流配置参数，仅当 RemoveVideo 为 0，该字段有效。
+	// <p>视频流配置参数，仅当 RemoveVideo 为 0，该字段有效。</p>
 	VideoTemplate *VideoTemplateInfo `json:"VideoTemplate,omitnil,omitempty" name:"VideoTemplate"`
 
-	// 音频流配置参数，仅当 RemoveAudio 为 0，该字段有效 。
+	// <p>音频流配置参数，仅当 RemoveAudio 为 0，该字段有效 。</p>
 	AudioTemplate *AudioTemplateInfo `json:"AudioTemplate,omitnil,omitempty" name:"AudioTemplate"`
 
-	// 极速高清转码参数。
+	// <p>极速高清转码参数。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitnil,omitempty" name:"TEHDConfig"`
 
-	// 音视频增强配置。
+	// <p>音视频增强配置。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
 
-	// 封装格式过滤条件，可选值：
-	// <li>Video：视频格式，可以同时包含视频流和音频流的封装格式；</li>
-	// <li>PureAudio：纯音频格式，只能包含音频流的封装格式板。</li>
+	// <p>封装格式过滤条件，可选值：</p><li>Video：视频格式，可以同时包含视频流和音频流的封装格式；</li><li>PureAudio：纯音频格式，只能包含音频流的封装格式板。</li>
 	ContainerType *string `json:"ContainerType,omitnil,omitempty" name:"ContainerType"`
 
-	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	// <p>模板创建时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	// <p>模板最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 切片类型，仅当 Container 为 hls 时有效。
+	// <p>切片类型，仅当 Container 为 hls 时有效。</p>
 	SegmentType *string `json:"SegmentType,omitnil,omitempty" name:"SegmentType"`
+
+	// <p>扩展参数。</p>
+	StdExtInfo *string `json:"StdExtInfo,omitnil,omitempty" name:"StdExtInfo"`
 }
 
 type TransitionOperation struct {
@@ -31338,77 +31316,50 @@ type VideoFrameInterpolationInfo struct {
 }
 
 type VideoTemplateInfo struct {
-	// 视频流的编码格式，可选值：
-	// <li>libx264：H.264 编码；</li>
-	// <li>libx265：H.265 编码；</li>
-	// <li>av1：AOMedia Video 1 编码；</li>
-	// <li>H.266：H.266 编码。</li>
-	// <font color=red>注意：</font>
-	// <li> av1，H.266 编码容器目前只支持 mp4 ；</li>
-	// <li> H.266 目前只支持恒定 CRF 码率控制方式。 </li>
+	// <p>视频流的编码格式，可选值：</p><li>libx264：H.264 编码；</li><li>libx265：H.265 编码；</li><li>av1：AOMedia Video 1 编码；</li><li>H.266：H.266 编码。</li><font color="red">注意：</font><li> av1，H.266 编码容器目前只支持 mp4 ；</li><li> H.266 目前只支持恒定 CRF 码率控制方式。 </li>
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
-	// 视频帧率，取值范围：[0, 100]，单位：Hz。
-	// 当取值为 0，表示帧率和原始视频保持一致。
+	// <p>视频帧率，取值范围：[0, 100]，单位：Hz。<br>当取值为 0，表示帧率和原始视频保持一致。</p>
 	Fps *uint64 `json:"Fps,omitnil,omitempty" name:"Fps"`
 
-	// 视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
-	// 当取值为 0，表示由云点播自动设置码率。
+	// <p>视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。<br>当取值为 0，表示由云点播自动设置码率。</p>
 	Bitrate *uint64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
-	// 分辨率自适应，可选值：
-	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
-	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-	// 默认值：open。
+	// <p>分辨率自适应，可选值：</p><li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li><li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>默认值：open。
 	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitnil,omitempty" name:"ResolutionAdaptive"`
 
-	// 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 8192]，单位：px。
-	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
-	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-	// 默认值：0。
+	// <p>视频流宽度（或长边）的最大值，取值范围：0 和 [128, 8192]，单位：px。</p><li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 视频流高度（或短边）的最大值，取值范围：0 和 [128, 8192]，单位：px。
-	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
-	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-	// 默认值：0。
+	// <p>视频流高度（或短边）的最大值，取值范围：0 和 [128, 8192]，单位：px。</p><li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
-	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
-	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-	// <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
-	// <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>
-	// 默认值：black 。
+	// <p>填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：</p><li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li><li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li><li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li><li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>默认值：black 。
 	FillType *string `json:"FillType,omitnil,omitempty" name:"FillType"`
 
-	// 视频恒定码率控制因子，取值范围为[1, 51]。
-	// 
-	// <font color=red>注意：</font>
-	// <li>如果指定该参数，将使用 CRF 的码率控制方式做转码（视频码率将不再生效）；</li>
-	// <li>当指定视频流编码格式为 H.266 时，该字段必填，推荐值为 28；</li>
-	// <li>如果没有特殊需求，不建议指定该参数。</li>
+	// <p>视频恒定码率控制因子，取值范围为[1, 51]。</p><p><font color="red">注意：</font></p><li>如果指定该参数，将使用 CRF 的码率控制方式做转码（视频码率将不再生效）；</li><li>当指定视频流编码格式为 H.266 时，该字段必填，推荐值为 28；</li><li>如果没有特殊需求，不建议指定该参数。</li>
 	Vcrf *uint64 `json:"Vcrf,omitnil,omitempty" name:"Vcrf"`
 
-	// 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。
-	// 当填 0 或不填时，系统将自动设置 gop 长度。
+	// <p>关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。<br>当填 0 或不填时，系统将自动设置 gop 长度。</p>
 	Gop *uint64 `json:"Gop,omitnil,omitempty" name:"Gop"`
 
-	// 当原始视频为 HDR（High Dynamic Range）时，转码输出是否依然保持 HDR。取值范围：
-	// <li>ON: 如果原始文件是 HDR，则转码输出保持 HDR；否则转码输出为 SDR （Standard Dynamic Range）。</li>
-	// <li>OFF: 无论原始文件是 HDR 还是 SDR，转码输出均为 SDR。</li>
-	// 默认值：OFF。
+	// <p>Gop数值单位。</p><p>枚举值：</p><ul><li>frame： 表示帧数。</li><li>second： 表示秒数。</li></ul><p>默认值：frame</p>
+	GopUnit *string `json:"GopUnit,omitnil,omitempty" name:"GopUnit"`
+
+	// <p>当原始视频为 HDR（High Dynamic Range）时，转码输出是否依然保持 HDR。取值范围：</p><li>ON: 如果原始文件是 HDR，则转码输出保持 HDR；否则转码输出为 SDR （Standard Dynamic Range）。</li><li>OFF: 无论原始文件是 HDR 还是 SDR，转码输出均为 SDR。</li>默认值：OFF。
 	PreserveHDRSwitch *string `json:"PreserveHDRSwitch,omitnil,omitempty" name:"PreserveHDRSwitch"`
 
-	// 编码标签，仅当视频流的编码格式为 H.265 编码时有效，可选值：
-	// <li>hvc1 表示 hvc1 标签；</li>
-	// <li>hev1 表示 hev1 标签。 </li>
-	// 默认值：hvc1。
+	// <p>编码标签，仅当视频流的编码格式为 H.265 编码时有效，可选值：</p><li>hvc1 表示 hvc1 标签；</li><li>hev1 表示 hev1 标签。 </li>默认值：hvc1。
 	CodecTag *string `json:"CodecTag,omitnil,omitempty" name:"CodecTag"`
+
+	// <p>码率控制模式。</p><p>枚举值：</p><ul><li>VBR： Variable Bit Rate，动态比特率，根据视频画面的复杂度动态调整输出的码率，使得画面质量更高，适用于存储场景和对画面质量要求较高的应用。</li><li>ABR： Average Bit Rate，平均比特率，尽量保持输出视频的平均码率稳定，但允许短期内的码率波动，适用于需要在保持一定画质的情况下尽量减少整体码率的场景。</li><li>CBR： Constant Bit Rate，恒定比特率，指视频编码时输出的码率保持恒定不变，不考虑画面复杂度的变化，适用于对网络带宽要求较为严格的场景，如直播等。</li><li>VCRF： 恒定质量因子，通过设定一个质量因子来控制视频质量，实现视频的恒定质量编码，码率会根据内容的复杂度自动调整，适用于希望保持一定画质的场景。</li></ul><p>默认值：VBR</p>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// <p>参考帧之间的B帧数，默认为自动。</p><p>取值范围：[0, 16]</p>
+	Bframes *int64 `json:"Bframes,omitnil,omitempty" name:"Bframes"`
+
+	// <p>分片平均时长。0或不填表示自动，将根据视频的 GOP 等特征自动选择合适的分片时长。</p><p>取值范围：[0, 10]</p><p>单位：秒</p><p>只支持转码模板，暂不支持自适应码流模板。</p>
+	HlsTime *int64 `json:"HlsTime,omitnil,omitempty" name:"HlsTime"`
 }
 
 type VideoTemplateInfoForUpdate struct {
@@ -31444,6 +31395,18 @@ type VideoTemplateInfoForUpdate struct {
 
 	// <p>编码标签，仅当视频流的编码格式为 H.265 编码时有效，可选值：</p><li>hvc1 表示 hvc1 标签；</li><li>hev1 表示 hev1 标签。 </li>默认值：hvc1。
 	CodecTag *string `json:"CodecTag,omitnil,omitempty" name:"CodecTag"`
+
+	// <p>Gop数值单位。</p><p>枚举值：</p><ul><li>frame： 表示帧数。</li><li>second： 表示秒数。</li></ul><p>默认值：frame</p>
+	GopUnit *string `json:"GopUnit,omitnil,omitempty" name:"GopUnit"`
+
+	// <p>码率控制模式。</p><p>枚举值：</p><ul><li>VBR： Variable Bit Rate，动态比特率，根据视频画面的复杂度动态调整输出的码率，使得画面质量更高，适用于存储场景和对画面质量要求较高的应用。</li><li>ABR： Average Bit Rate，平均比特率，尽量保持输出视频的平均码率稳定，但允许短期内的码率波动，适用于需要在保持一定画质的情况下尽量减少整体码率的场景。</li><li>CBR： Constant Bit Rate，恒定比特率，指视频编码时输出的码率保持恒定不变，不考虑画面复杂度的变化，适用于对网络带宽要求较为严格的场景，如直播等。</li><li>VCRF： Constant Rate Factor，恒定质量因子，通过设定一个质量因子来控制视频质量，实现视频的恒定质量编码，码率会根据内容的复杂度自动调整，适用于希望保持一定画质的场景。</li></ul><p>默认值：VBR</p>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// <p>最大连续B帧数，默认为自动， -1 表示修改为自动值。</p><p>取值范围：[-1, 16]</p>
+	Bframes *int64 `json:"Bframes,omitnil,omitempty" name:"Bframes"`
+
+	// <p>分片平均时长。0或不填表示自动，将根据视频的 GOP 等特征自动选择合适的分片时长。</p><p>取值范围：[0, 10]</p><p>单位：秒</p><p>只支持转码模板，暂不支持自适应码流模板。</p>
+	HlsTime *int64 `json:"HlsTime,omitnil,omitempty" name:"HlsTime"`
 }
 
 type VideoTrackItem struct {

@@ -2397,6 +2397,60 @@ func (c *Client) CreateDocumentWithContext(ctx context.Context, request *CreateD
     return
 }
 
+func NewCreateDraftContractByPromptsTaskRequest() (request *CreateDraftContractByPromptsTaskRequest) {
+    request = &CreateDraftContractByPromptsTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateDraftContractByPromptsTask")
+    
+    
+    return
+}
+
+func NewCreateDraftContractByPromptsTaskResponse() (response *CreateDraftContractByPromptsTaskResponse) {
+    response = &CreateDraftContractByPromptsTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDraftContractByPromptsTask
+// 此接口（CreateDraftContractByPromptsTask）用于创建智能合同起草任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateDraftContractByPromptsTask(request *CreateDraftContractByPromptsTaskRequest) (response *CreateDraftContractByPromptsTaskResponse, err error) {
+    return c.CreateDraftContractByPromptsTaskWithContext(context.Background(), request)
+}
+
+// CreateDraftContractByPromptsTask
+// 此接口（CreateDraftContractByPromptsTask）用于创建智能合同起草任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateDraftContractByPromptsTaskWithContext(ctx context.Context, request *CreateDraftContractByPromptsTaskRequest) (response *CreateDraftContractByPromptsTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateDraftContractByPromptsTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateDraftContractByPromptsTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDraftContractByPromptsTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDraftContractByPromptsTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDynamicFlowApproverRequest() (request *CreateDynamicFlowApproverRequest) {
     request = &CreateDynamicFlowApproverRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11167,6 +11221,58 @@ func (c *Client) DescribeContractReviewWebUrlWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeContractReviewWebUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDraftContractByPromptsTaskRequest() (request *DescribeDraftContractByPromptsTaskRequest) {
+    request = &DescribeDraftContractByPromptsTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeDraftContractByPromptsTask")
+    
+    
+    return
+}
+
+func NewDescribeDraftContractByPromptsTaskResponse() (response *DescribeDraftContractByPromptsTaskResponse) {
+    response = &DescribeDraftContractByPromptsTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDraftContractByPromptsTask
+// 此接口（DescribeDraftContractByPromptsTask）用于查询智能合同起草任务状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_NOTEXISTRESOURCE = "ResourceNotFound.NotExistResource"
+func (c *Client) DescribeDraftContractByPromptsTask(request *DescribeDraftContractByPromptsTaskRequest) (response *DescribeDraftContractByPromptsTaskResponse, err error) {
+    return c.DescribeDraftContractByPromptsTaskWithContext(context.Background(), request)
+}
+
+// DescribeDraftContractByPromptsTask
+// 此接口（DescribeDraftContractByPromptsTask）用于查询智能合同起草任务状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_NOTEXISTRESOURCE = "ResourceNotFound.NotExistResource"
+func (c *Client) DescribeDraftContractByPromptsTaskWithContext(ctx context.Context, request *DescribeDraftContractByPromptsTaskRequest) (response *DescribeDraftContractByPromptsTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeDraftContractByPromptsTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeDraftContractByPromptsTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDraftContractByPromptsTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDraftContractByPromptsTaskResponse()
     err = c.Send(request, response)
     return
 }

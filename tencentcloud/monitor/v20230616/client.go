@@ -133,6 +133,180 @@ func (c *Client) DeleteNoticeContentTmplsWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeAIWorkbenchSREDigitalTwinTaskListRequest() (request *DescribeAIWorkbenchSREDigitalTwinTaskListRequest) {
+    request = &DescribeAIWorkbenchSREDigitalTwinTaskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeAIWorkbenchSREDigitalTwinTaskList")
+    
+    
+    return
+}
+
+func NewDescribeAIWorkbenchSREDigitalTwinTaskListResponse() (response *DescribeAIWorkbenchSREDigitalTwinTaskListResponse) {
+    response = &DescribeAIWorkbenchSREDigitalTwinTaskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAIWorkbenchSREDigitalTwinTaskList
+// 查询AI工作台SRE数字分身任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAIWorkbenchSREDigitalTwinTaskList(request *DescribeAIWorkbenchSREDigitalTwinTaskListRequest) (response *DescribeAIWorkbenchSREDigitalTwinTaskListResponse, err error) {
+    return c.DescribeAIWorkbenchSREDigitalTwinTaskListWithContext(context.Background(), request)
+}
+
+// DescribeAIWorkbenchSREDigitalTwinTaskList
+// 查询AI工作台SRE数字分身任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAIWorkbenchSREDigitalTwinTaskListWithContext(ctx context.Context, request *DescribeAIWorkbenchSREDigitalTwinTaskListRequest) (response *DescribeAIWorkbenchSREDigitalTwinTaskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIWorkbenchSREDigitalTwinTaskListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribeAIWorkbenchSREDigitalTwinTaskList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAIWorkbenchSREDigitalTwinTaskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAIWorkbenchSREDigitalTwinTaskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAIWorkbenchSREDigitalTwinWorkLogDetailRequest() (request *DescribeAIWorkbenchSREDigitalTwinWorkLogDetailRequest) {
+    request = &DescribeAIWorkbenchSREDigitalTwinWorkLogDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeAIWorkbenchSREDigitalTwinWorkLogDetail")
+    
+    
+    return
+}
+
+func NewDescribeAIWorkbenchSREDigitalTwinWorkLogDetailResponse() (response *DescribeAIWorkbenchSREDigitalTwinWorkLogDetailResponse) {
+    response = &DescribeAIWorkbenchSREDigitalTwinWorkLogDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAIWorkbenchSREDigitalTwinWorkLogDetail
+// 查询AI工作台SRE数字分身工作日志详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAIWorkbenchSREDigitalTwinWorkLogDetail(request *DescribeAIWorkbenchSREDigitalTwinWorkLogDetailRequest) (response *DescribeAIWorkbenchSREDigitalTwinWorkLogDetailResponse, err error) {
+    return c.DescribeAIWorkbenchSREDigitalTwinWorkLogDetailWithContext(context.Background(), request)
+}
+
+// DescribeAIWorkbenchSREDigitalTwinWorkLogDetail
+// 查询AI工作台SRE数字分身工作日志详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAIWorkbenchSREDigitalTwinWorkLogDetailWithContext(ctx context.Context, request *DescribeAIWorkbenchSREDigitalTwinWorkLogDetailRequest) (response *DescribeAIWorkbenchSREDigitalTwinWorkLogDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIWorkbenchSREDigitalTwinWorkLogDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribeAIWorkbenchSREDigitalTwinWorkLogDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAIWorkbenchSREDigitalTwinWorkLogDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAIWorkbenchSREDigitalTwinWorkLogDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAIWorkbenchSREDigitalTwinWorkLogListRequest() (request *DescribeAIWorkbenchSREDigitalTwinWorkLogListRequest) {
+    request = &DescribeAIWorkbenchSREDigitalTwinWorkLogListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeAIWorkbenchSREDigitalTwinWorkLogList")
+    
+    
+    return
+}
+
+func NewDescribeAIWorkbenchSREDigitalTwinWorkLogListResponse() (response *DescribeAIWorkbenchSREDigitalTwinWorkLogListResponse) {
+    response = &DescribeAIWorkbenchSREDigitalTwinWorkLogListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAIWorkbenchSREDigitalTwinWorkLogList
+// 查询AI工作台SRE数字分身任务工作日志列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAIWorkbenchSREDigitalTwinWorkLogList(request *DescribeAIWorkbenchSREDigitalTwinWorkLogListRequest) (response *DescribeAIWorkbenchSREDigitalTwinWorkLogListResponse, err error) {
+    return c.DescribeAIWorkbenchSREDigitalTwinWorkLogListWithContext(context.Background(), request)
+}
+
+// DescribeAIWorkbenchSREDigitalTwinWorkLogList
+// 查询AI工作台SRE数字分身任务工作日志列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAIWorkbenchSREDigitalTwinWorkLogListWithContext(ctx context.Context, request *DescribeAIWorkbenchSREDigitalTwinWorkLogListRequest) (response *DescribeAIWorkbenchSREDigitalTwinWorkLogListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAIWorkbenchSREDigitalTwinWorkLogListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "DescribeAIWorkbenchSREDigitalTwinWorkLogList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAIWorkbenchSREDigitalTwinWorkLogList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAIWorkbenchSREDigitalTwinWorkLogListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAlarmNotifyHistoriesRequest() (request *DescribeAlarmNotifyHistoriesRequest) {
     request = &DescribeAlarmNotifyHistoriesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -285,6 +459,62 @@ func (c *Client) ModifyNoticeContentTmplWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyNoticeContentTmplResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTriggerAIWorkbenchSREDigitalTwinTaskRequest() (request *TriggerAIWorkbenchSREDigitalTwinTaskRequest) {
+    request = &TriggerAIWorkbenchSREDigitalTwinTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "TriggerAIWorkbenchSREDigitalTwinTask")
+    
+    
+    return
+}
+
+func NewTriggerAIWorkbenchSREDigitalTwinTaskResponse() (response *TriggerAIWorkbenchSREDigitalTwinTaskResponse) {
+    response = &TriggerAIWorkbenchSREDigitalTwinTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TriggerAIWorkbenchSREDigitalTwinTask
+// 触发数字分身任务请求
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) TriggerAIWorkbenchSREDigitalTwinTask(request *TriggerAIWorkbenchSREDigitalTwinTaskRequest) (response *TriggerAIWorkbenchSREDigitalTwinTaskResponse, err error) {
+    return c.TriggerAIWorkbenchSREDigitalTwinTaskWithContext(context.Background(), request)
+}
+
+// TriggerAIWorkbenchSREDigitalTwinTask
+// 触发数字分身任务请求
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) TriggerAIWorkbenchSREDigitalTwinTaskWithContext(ctx context.Context, request *TriggerAIWorkbenchSREDigitalTwinTaskRequest) (response *TriggerAIWorkbenchSREDigitalTwinTaskResponse, err error) {
+    if request == nil {
+        request = NewTriggerAIWorkbenchSREDigitalTwinTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "TriggerAIWorkbenchSREDigitalTwinTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TriggerAIWorkbenchSREDigitalTwinTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTriggerAIWorkbenchSREDigitalTwinTaskResponse()
     err = c.Send(request, response)
     return
 }

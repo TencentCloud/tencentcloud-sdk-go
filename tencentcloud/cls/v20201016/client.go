@@ -947,6 +947,74 @@ func (c *Client) CreateConfigExtraWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateConsoleRequest() (request *CreateConsoleRequest) {
+    request = &CreateConsoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateConsole")
+    
+    
+    return
+}
+
+func NewCreateConsoleResponse() (response *CreateConsoleResponse) {
+    response = &CreateConsoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateConsole
+// 本接口用于创建DataSight控制台
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) CreateConsole(request *CreateConsoleRequest) (response *CreateConsoleResponse, err error) {
+    return c.CreateConsoleWithContext(context.Background(), request)
+}
+
+// CreateConsole
+// 本接口用于创建DataSight控制台
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) CreateConsoleWithContext(ctx context.Context, request *CreateConsoleRequest) (response *CreateConsoleResponse, err error) {
+    if request == nil {
+        request = NewCreateConsoleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateConsole")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateConsole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateConsoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateConsoleSharingRequest() (request *CreateConsoleSharingRequest) {
     request = &CreateConsoleSharingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3357,6 +3425,76 @@ func (c *Client) DeleteConfigFromMachineGroupWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDeleteConfigFromMachineGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteConsoleRequest() (request *DeleteConsoleRequest) {
+    request = &DeleteConsoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteConsole")
+    
+    
+    return
+}
+
+func NewDeleteConsoleResponse() (response *DeleteConsoleResponse) {
+    response = &DeleteConsoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteConsole
+// 本接口用于删除DataSight控制台
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteConsole(request *DeleteConsoleRequest) (response *DeleteConsoleResponse, err error) {
+    return c.DeleteConsoleWithContext(context.Background(), request)
+}
+
+// DeleteConsole
+// 本接口用于删除DataSight控制台
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteConsoleWithContext(ctx context.Context, request *DeleteConsoleRequest) (response *DeleteConsoleResponse, err error) {
+    if request == nil {
+        request = NewDeleteConsoleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteConsole")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteConsole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteConsoleResponse()
     err = c.Send(request, response)
     return
 }
@@ -5885,6 +6023,56 @@ func (c *Client) DescribeConsoleSharingListWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeConsoleSharingListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConsolesRequest() (request *DescribeConsolesRequest) {
+    request = &DescribeConsolesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeConsoles")
+    
+    
+    return
+}
+
+func NewDescribeConsolesResponse() (response *DescribeConsolesResponse) {
+    response = &DescribeConsolesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConsoles
+// 查询DataSight控制台实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeConsoles(request *DescribeConsolesRequest) (response *DescribeConsolesResponse, err error) {
+    return c.DescribeConsolesWithContext(context.Background(), request)
+}
+
+// DescribeConsoles
+// 查询DataSight控制台实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeConsolesWithContext(ctx context.Context, request *DescribeConsolesRequest) (response *DescribeConsolesResponse, err error) {
+    if request == nil {
+        request = NewDescribeConsolesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeConsoles")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConsoles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConsolesResponse()
     err = c.Send(request, response)
     return
 }
@@ -9797,6 +9985,76 @@ func (c *Client) ModifyConfigExtraWithContext(ctx context.Context, request *Modi
     request.SetContext(ctx)
     
     response = NewModifyConfigExtraResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyConsoleRequest() (request *ModifyConsoleRequest) {
+    request = &ModifyConsoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyConsole")
+    
+    
+    return
+}
+
+func NewModifyConsoleResponse() (response *ModifyConsoleResponse) {
+    response = &ModifyConsoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyConsole
+// 本接口用于编辑DataSight控制台
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyConsole(request *ModifyConsoleRequest) (response *ModifyConsoleResponse, err error) {
+    return c.ModifyConsoleWithContext(context.Background(), request)
+}
+
+// ModifyConsole
+// 本接口用于编辑DataSight控制台
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyConsoleWithContext(ctx context.Context, request *ModifyConsoleRequest) (response *ModifyConsoleResponse, err error) {
+    if request == nil {
+        request = NewModifyConsoleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyConsole")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyConsole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyConsoleResponse()
     err = c.Send(request, response)
     return
 }

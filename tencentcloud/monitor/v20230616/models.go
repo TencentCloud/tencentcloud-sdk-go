@@ -20,6 +20,82 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AIWorkbenchSREDigitalTwinTask struct {
+	// 任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 任务类型
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 任务配置
+	TaskConfig *string `json:"TaskConfig,omitnil,omitempty" name:"TaskConfig"`
+
+	// 唯一标识
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 创建时间
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// 所属数字分身ID
+	TwinID *uint64 `json:"TwinID,omitnil,omitempty" name:"TwinID"`
+}
+
+type AIWorkbenchSREDigitalTwinTaskList struct {
+	// 任务列表
+	Tasks []*AIWorkbenchSREDigitalTwinTask `json:"Tasks,omitnil,omitempty" name:"Tasks"`
+
+	// 任务总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+}
+
+type AIWorkbenchSREDigitalTwinWorkLog struct {
+	// 唯一标识符
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 创建时间
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// 所属数字分身ID
+	TwinID *uint64 `json:"TwinID,omitnil,omitempty" name:"TwinID"`
+
+	// 所属数字分身任务ID
+	TaskID *uint64 `json:"TaskID,omitnil,omitempty" name:"TaskID"`
+
+	// 分析时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 分析状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 分析结果摘要
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 所属任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 所属任务类型
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+}
+
+type AIWorkbenchSREDigitalTwinWorkLogDetail struct {
+	// 工作日志详细内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 工作日志任务类型
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 工作日志相关对话ID
+	DialogID *int64 `json:"DialogID,omitnil,omitempty" name:"DialogID"`
+}
+
+type AIWorkbenchSREDigitalTwinWorkLogList struct {
+	// 工作日志列表
+	WorkLogs []*AIWorkbenchSREDigitalTwinWorkLog `json:"WorkLogs,omitnil,omitempty" name:"WorkLogs"`
+
+	// 总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+}
+
 // Predefined struct for user
 type CreateNoticeContentTmplRequestParams struct {
 	// 模板名称
@@ -149,6 +225,214 @@ func (r *DeleteNoticeContentTmplsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteNoticeContentTmplsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIWorkbenchSREDigitalTwinTaskListRequestParams struct {
+	// 数字分身ID
+	TwinID *uint64 `json:"TwinID,omitnil,omitempty" name:"TwinID"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 数量限制
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeAIWorkbenchSREDigitalTwinTaskListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数字分身ID
+	TwinID *uint64 `json:"TwinID,omitnil,omitempty" name:"TwinID"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 数量限制
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAIWorkbenchSREDigitalTwinTaskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIWorkbenchSREDigitalTwinTaskListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TwinID")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIWorkbenchSREDigitalTwinTaskListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIWorkbenchSREDigitalTwinTaskListResponseParams struct {
+	// Json序列化路径
+	JSONStrPaths []*string `json:"JSONStrPaths,omitnil,omitempty" name:"JSONStrPaths"`
+
+	// 数字分身任务列表
+	Data *AIWorkbenchSREDigitalTwinTaskList `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAIWorkbenchSREDigitalTwinTaskListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAIWorkbenchSREDigitalTwinTaskListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAIWorkbenchSREDigitalTwinTaskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIWorkbenchSREDigitalTwinTaskListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIWorkbenchSREDigitalTwinWorkLogDetailRequestParams struct {
+	// 工作日志ID
+	WorkLogID *int64 `json:"WorkLogID,omitnil,omitempty" name:"WorkLogID"`
+}
+
+type DescribeAIWorkbenchSREDigitalTwinWorkLogDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作日志ID
+	WorkLogID *int64 `json:"WorkLogID,omitnil,omitempty" name:"WorkLogID"`
+}
+
+func (r *DescribeAIWorkbenchSREDigitalTwinWorkLogDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIWorkbenchSREDigitalTwinWorkLogDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkLogID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIWorkbenchSREDigitalTwinWorkLogDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIWorkbenchSREDigitalTwinWorkLogDetailResponseParams struct {
+	// Json序列化路径
+	JSONStrPaths []*string `json:"JSONStrPaths,omitnil,omitempty" name:"JSONStrPaths"`
+
+	// 数字分身详细信息
+	Data *AIWorkbenchSREDigitalTwinWorkLogDetail `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAIWorkbenchSREDigitalTwinWorkLogDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAIWorkbenchSREDigitalTwinWorkLogDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeAIWorkbenchSREDigitalTwinWorkLogDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIWorkbenchSREDigitalTwinWorkLogDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIWorkbenchSREDigitalTwinWorkLogListRequestParams struct {
+	// 数字分身ID
+	TwinID *uint64 `json:"TwinID,omitnil,omitempty" name:"TwinID"`
+
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页限制条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeAIWorkbenchSREDigitalTwinWorkLogListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数字分身ID
+	TwinID *uint64 `json:"TwinID,omitnil,omitempty" name:"TwinID"`
+
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页限制条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAIWorkbenchSREDigitalTwinWorkLogListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIWorkbenchSREDigitalTwinWorkLogListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TwinID")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIWorkbenchSREDigitalTwinWorkLogListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIWorkbenchSREDigitalTwinWorkLogListResponseParams struct {
+	// Json序列化路径
+	JSONStrPaths []*string `json:"JSONStrPaths,omitnil,omitempty" name:"JSONStrPaths"`
+
+	// 数字分身工作日志列表
+	Data *AIWorkbenchSREDigitalTwinWorkLogList `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAIWorkbenchSREDigitalTwinWorkLogListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAIWorkbenchSREDigitalTwinWorkLogListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAIWorkbenchSREDigitalTwinWorkLogListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIWorkbenchSREDigitalTwinWorkLogListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -657,6 +941,71 @@ type TeamsRobotNoticeTmplMatcher struct {
 
 	// 模板配置
 	Template *TeamsRobotNoticeTmpl `json:"Template,omitnil,omitempty" name:"Template"`
+}
+
+// Predefined struct for user
+type TriggerAIWorkbenchSREDigitalTwinTaskRequestParams struct {
+	// 数字分身任务ID
+	TaskID *int64 `json:"TaskID,omitnil,omitempty" name:"TaskID"`
+}
+
+type TriggerAIWorkbenchSREDigitalTwinTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数字分身任务ID
+	TaskID *int64 `json:"TaskID,omitnil,omitempty" name:"TaskID"`
+}
+
+func (r *TriggerAIWorkbenchSREDigitalTwinTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TriggerAIWorkbenchSREDigitalTwinTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TriggerAIWorkbenchSREDigitalTwinTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TriggerAIWorkbenchSREDigitalTwinTaskResponseParams struct {
+	// Json序列化路径
+	JSONStrPaths []*string `json:"JSONStrPaths,omitnil,omitempty" name:"JSONStrPaths"`
+
+	// 数字分身任务信息
+	Data *TriggerDigitalTwinTaskResp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TriggerAIWorkbenchSREDigitalTwinTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *TriggerAIWorkbenchSREDigitalTwinTaskResponseParams `json:"Response"`
+}
+
+func (r *TriggerAIWorkbenchSREDigitalTwinTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TriggerAIWorkbenchSREDigitalTwinTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TriggerDigitalTwinTaskResp struct {
+	// 数字分身任务ID
+	TaskID *int64 `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 }
 
 type WeWorkRobotNoticeTmpl struct {

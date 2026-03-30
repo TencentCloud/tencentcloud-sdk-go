@@ -2945,6 +2945,85 @@ func (r *DescribeAIAgentAssetListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAKAnalysisDetailRequestParams struct {
+	// 告警记录ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeAKAnalysisDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 告警记录ID
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeAKAnalysisDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAKAnalysisDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ID")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAKAnalysisDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAKAnalysisDetailResponseParams struct {
+	// 告警AI分析状态 -1 分析失败 0 未分析 1 分析中 2 分析成功，真实告警 3 分析成功，可疑告警
+	AIStatus *int64 `json:"AIStatus,omitnil,omitempty" name:"AIStatus"`
+
+	// AI分析任务ID
+	AITaskID *string `json:"AITaskID,omitnil,omitempty" name:"AITaskID"`
+
+	// 告警AI分析结果，base64格式，避免数据被拦截
+	AIResult *string `json:"AIResult,omitnil,omitempty" name:"AIResult"`
+
+	// 反馈建议
+	Feedback *string `json:"Feedback,omitnil,omitempty" name:"Feedback"`
+
+	// 反馈状态  0表示没有反馈，1表示认可，2表示不认可
+	FeedbackResult *int64 `json:"FeedbackResult,omitnil,omitempty" name:"FeedbackResult"`
+
+	// 失败原因
+	FailedReason *string `json:"FailedReason,omitnil,omitempty" name:"FailedReason"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAKAnalysisDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAKAnalysisDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeAKAnalysisDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAKAnalysisDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAbnormalCallRecordRequestParams struct {
 	// 告警规则ID
 	AlarmRuleID *int64 `json:"AlarmRuleID,omitnil,omitempty" name:"AlarmRuleID"`

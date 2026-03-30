@@ -3764,6 +3764,92 @@ func (r *CreateDocumentResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDraftContractByPromptsTaskRequestParams struct {
+	// 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 起草要求
+	Requirement *string `json:"Requirement,omitnil,omitempty" name:"Requirement"`
+
+	// 参考模板文件资源id（PDF/Word格式）
+	ReferenceTemplateId *string `json:"ReferenceTemplateId,omitnil,omitempty" name:"ReferenceTemplateId"`
+
+	// 相关规定文件资源id列表（PDF/Word格式）
+	RequirementFileIds []*string `json:"RequirementFileIds,omitnil,omitempty" name:"RequirementFileIds"`
+
+	// 起草合同的语言要求（zh，en）默认zh
+	ContractLanguage *string `json:"ContractLanguage,omitnil,omitempty" name:"ContractLanguage"`
+}
+
+type CreateDraftContractByPromptsTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 起草要求
+	Requirement *string `json:"Requirement,omitnil,omitempty" name:"Requirement"`
+
+	// 参考模板文件资源id（PDF/Word格式）
+	ReferenceTemplateId *string `json:"ReferenceTemplateId,omitnil,omitempty" name:"ReferenceTemplateId"`
+
+	// 相关规定文件资源id列表（PDF/Word格式）
+	RequirementFileIds []*string `json:"RequirementFileIds,omitnil,omitempty" name:"RequirementFileIds"`
+
+	// 起草合同的语言要求（zh，en）默认zh
+	ContractLanguage *string `json:"ContractLanguage,omitnil,omitempty" name:"ContractLanguage"`
+}
+
+func (r *CreateDraftContractByPromptsTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDraftContractByPromptsTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Requirement")
+	delete(f, "ReferenceTemplateId")
+	delete(f, "RequirementFileIds")
+	delete(f, "ContractLanguage")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDraftContractByPromptsTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDraftContractByPromptsTaskResponseParams struct {
+	// 起草任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDraftContractByPromptsTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDraftContractByPromptsTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateDraftContractByPromptsTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDraftContractByPromptsTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDynamicFlowApproverRequestParams struct {
 	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。支持填入集团子公司经办人 userId 代发合同。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
@@ -13000,6 +13086,79 @@ func (r *DescribeContractReviewWebUrlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeContractReviewWebUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDraftContractByPromptsTaskRequestParams struct {
+	// 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeDraftContractByPromptsTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeDraftContractByPromptsTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDraftContractByPromptsTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDraftContractByPromptsTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDraftContractByPromptsTaskResponseParams struct {
+	// 任务状态，枚举，0 已创建，1 执行中，2 成功，3 失败
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务错误信息，仅在失败时返回
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 生成的合同名称
+	ContractName *string `json:"ContractName,omitnil,omitempty" name:"ContractName"`
+
+	// 生成的合同文件资源id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDraftContractByPromptsTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDraftContractByPromptsTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeDraftContractByPromptsTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDraftContractByPromptsTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

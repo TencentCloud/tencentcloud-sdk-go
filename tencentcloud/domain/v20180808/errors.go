@@ -89,6 +89,12 @@ const (
 	// 当前域名正在注册中无法进行账号间转移,请等待注册完成后再操作
 	FAILEDOPERATION_MODIFYDOMAINOWNERREGISTERDOING = "FailedOperation.ModifyDomainOwnerRegisterDoing"
 
+	// 该域名已在 Push 中，不可操作账号间转移。
+	FAILEDOPERATION_MODIFYOWNERDOMAINHASBEENPUSHED = "FailedOperation.ModifyOwnerDomainHasBeenPushed"
+
+	// 对方账号开启了禁止账号间转移，不可操作账号间转移。(对方账号开启了禁止账号间转移，不可操作账号间转移)
+	FAILEDOPERATION_MODIFYOWNERDOMAINWITHLOCK = "FailedOperation.ModifyOwnerDomainWithLock"
+
 	// 权限不足。
 	FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
 
@@ -124,6 +130,9 @@ const (
 
 	// 上传图片操作失败。
 	FAILEDOPERATION_UPLOADIMAGEFAILED = "FailedOperation.UploadImageFailed"
+
+	// 提交实名认证资质信息失败。
+	FAILEDOPERATION_UPLOADVERIFICATIONFAILED = "FailedOperation.UploadVerificationFailed"
 
 	// 当前用户未在官网进行实名操作。
 	FAILEDOPERATION_VERIFYUINISREALNAME = "FailedOperation.VerifyUinIsRealname"
@@ -341,6 +350,9 @@ const (
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
 
+	// 域名信息审核过程中，不可进行转移。
+	RESOURCEINUSE_MODIFYDOMAININFOOWNERFAILED = "ResourceInUse.ModifyDomainInfoOwnerFailed"
+
 	// 资源配额不足
 	RESOURCEINSUFFICIENT_INSUFFICIENTQUOTA = "ResourceInsufficient.InsufficientQuota"
 
@@ -379,6 +391,9 @@ const (
 
 	// 当前域名未完成实名认证，无法完成该操作。
 	UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
+
+	// 域名已开启【禁止更新锁】保护域名信息安全，不能修改信息。
+	UNSUPPORTEDOPERATION_DOMAINUPDATEPROHIBITIONLOCKSTARTON = "UnsupportedOperation.DomainUpdateProhibitionLockStartOn"
 
 	// 当前域名存在安全锁,禁止修改
 	UNSUPPORTEDOPERATION_DOMAINUPDATESECURITYLOCKPROHIBIT = "UnsupportedOperation.DomainUpdateSecurityLockProhibit"

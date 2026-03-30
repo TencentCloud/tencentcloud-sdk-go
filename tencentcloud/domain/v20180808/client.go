@@ -2737,6 +2737,92 @@ func (c *Client) ModifyDomainDNSBatchWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyDomainOwnerRequest() (request *ModifyDomainOwnerRequest) {
+    request = &ModifyDomainOwnerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "ModifyDomainOwner")
+    
+    
+    return
+}
+
+func NewModifyDomainOwnerResponse() (response *ModifyDomainOwnerResponse) {
+    response = &ModifyDomainOwnerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDomainOwner
+// 本接口 (ModifyDomainOwner) 用于域名过户。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DESCRIBEDOMAINFAILED = "FailedOperation.DescribeDomainFailed"
+//  FAILEDOPERATION_MODIFYDOMAINOWNERFAILED = "FailedOperation.ModifyDomainOwnerFailed"
+//  FAILEDOPERATION_MODIFYDOMAINOWNERREGISTERDOING = "FailedOperation.ModifyDomainOwnerRegisterDoing"
+//  FAILEDOPERATION_MODIFYOWNERDOMAINHASBEENPUSHED = "FailedOperation.ModifyOwnerDomainHasBeenPushed"
+//  FAILEDOPERATION_MODIFYOWNERDOMAINWITHLOCK = "FailedOperation.ModifyOwnerDomainWithLock"
+//  FAILEDOPERATION_UPLOADVERIFICATIONFAILED = "FailedOperation.UploadVerificationFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
+//  RESOURCEINUSE_MODIFYDOMAININFOOWNERFAILED = "ResourceInUse.ModifyDomainInfoOwnerFailed"
+//  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
+//  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
+//  UNSUPPORTEDOPERATION_DOMAINUPDATEPROHIBITIONLOCKSTARTON = "UnsupportedOperation.DomainUpdateProhibitionLockStartOn"
+//  UNSUPPORTEDOPERATION_DOMAINUPDATESECURITYLOCKPROHIBIT = "UnsupportedOperation.DomainUpdateSecurityLockProhibit"
+func (c *Client) ModifyDomainOwner(request *ModifyDomainOwnerRequest) (response *ModifyDomainOwnerResponse, err error) {
+    return c.ModifyDomainOwnerWithContext(context.Background(), request)
+}
+
+// ModifyDomainOwner
+// 本接口 (ModifyDomainOwner) 用于域名过户。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DESCRIBEDOMAINFAILED = "FailedOperation.DescribeDomainFailed"
+//  FAILEDOPERATION_MODIFYDOMAINOWNERFAILED = "FailedOperation.ModifyDomainOwnerFailed"
+//  FAILEDOPERATION_MODIFYDOMAINOWNERREGISTERDOING = "FailedOperation.ModifyDomainOwnerRegisterDoing"
+//  FAILEDOPERATION_MODIFYOWNERDOMAINHASBEENPUSHED = "FailedOperation.ModifyOwnerDomainHasBeenPushed"
+//  FAILEDOPERATION_MODIFYOWNERDOMAINWITHLOCK = "FailedOperation.ModifyOwnerDomainWithLock"
+//  FAILEDOPERATION_UPLOADVERIFICATIONFAILED = "FailedOperation.UploadVerificationFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
+//  RESOURCEINUSE_MODIFYDOMAININFOOWNERFAILED = "ResourceInUse.ModifyDomainInfoOwnerFailed"
+//  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
+//  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
+//  UNSUPPORTEDOPERATION_DOMAINUPDATEPROHIBITIONLOCKSTARTON = "UnsupportedOperation.DomainUpdateProhibitionLockStartOn"
+//  UNSUPPORTEDOPERATION_DOMAINUPDATESECURITYLOCKPROHIBIT = "UnsupportedOperation.DomainUpdateSecurityLockProhibit"
+func (c *Client) ModifyDomainOwnerWithContext(ctx context.Context, request *ModifyDomainOwnerRequest) (response *ModifyDomainOwnerResponse, err error) {
+    if request == nil {
+        request = NewModifyDomainOwnerRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "domain", APIVersion, "ModifyDomainOwner")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDomainOwner require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDomainOwnerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDomainOwnerBatchRequest() (request *ModifyDomainOwnerBatchRequest) {
     request = &ModifyDomainOwnerBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},

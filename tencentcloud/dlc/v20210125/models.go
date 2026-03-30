@@ -15637,6 +15637,9 @@ type NotebookSessionInfo struct {
 
 	// pod数量
 	PodNumbers *int64 `json:"PodNumbers,omitnil,omitempty" name:"PodNumbers"`
+
+	// spark app名称
+	SparkAppName *string `json:"SparkAppName,omitnil,omitempty" name:"SparkAppName"`
 }
 
 type NotebookSessionStatementBatchInformation struct {
@@ -15730,6 +15733,12 @@ type NotebookSessions struct {
 
 	// 资源组名字
 	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
+
+	// Kernel id
+	KernelId *string `json:"KernelId,omitnil,omitempty" name:"KernelId"`
+
+	// spark app名称
+	SparkAppName *string `json:"SparkAppName,omitnil,omitempty" name:"SparkAppName"`
 }
 
 type OpendThirdAccessUserInfo struct {
