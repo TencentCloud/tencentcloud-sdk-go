@@ -1259,6 +1259,9 @@ const (
 	// 当前云联网为非后付费类型，无法进行此操作。
 	UNSUPPORTEDOPERATION_NOTPOSTPAIDCCNOPERATION = "UnsupportedOperation.NotPostpaidCcnOperation"
 
+	// 该VPC没有投放Snat子网地址池
+	UNSUPPORTEDOPERATION_NOTPUTVPCSNATIPADDRESS = "UnsupportedOperation.NotPutVpcSnatIpAddress"
+
 	// 当前云联网不支持同时关联EDGE实例和跨境实例
 	UNSUPPORTEDOPERATION_NOTSUPPORTATTACHEDGEANDCROSSBORDERINSTANCE = "UnsupportedOperation.NotSupportAttachEdgeAndCrossBorderInstance"
 
@@ -1465,6 +1468,9 @@ const (
 
 	// 流量镜像源、目的不可同端。
 	UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTSAMESRCTARGET = "UnsupportedOperation.TrafficMirrorNotSupportSameSrcTarget"
+
+	// 流量保护不支持IPv6。
+	UNSUPPORTEDOPERATION_TRAFFICPROTECTIONNOTSUPPORTIPV6 = "UnsupportedOperation.TrafficProtectionNotSupportIPv6"
 
 	// 流量调度策略分配带宽和地域间带宽不一致，不支持关闭流量调度策略功能。
 	UNSUPPORTEDOPERATION_TRAFFICQOSPOLICYBANDWIDTH = "UnsupportedOperation.TrafficQosPolicyBandwidth"

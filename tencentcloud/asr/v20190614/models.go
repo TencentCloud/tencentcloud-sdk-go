@@ -164,40 +164,32 @@ func (r *CreateAsrKeyWordLibResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAsrVocabRequestParams struct {
-	// 热词表名称，长度在1-255之间
+	// <p>热词表名称，长度在1-255之间, 注意: 仅允许中英文、数字、下划线、中英文标点、空格、横线</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 热词表描述，长度在0-1000之间
+	// <p>热词表描述，长度在0-1000之间</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 词权重数组，包含全部的热词和对应的权重。每个热词的长度不大于10个汉字或30个英文字符，权重为[1,11]之间整数或者100，数组长度不大于1000
-	// 注意: 
-	// - 热词权重设置为11时，当前热词将升级为超级热词，建议仅将重要且必须生效的热词设置到11，设置过多权重为11的热词将影响整体字准率。
-	// - 热词权重设置为100时，当前热词开启热词增强同音替换功能（仅支持8k_zh,16k_zh），举例：热词配置“蜜制|100”时，与“蜜制”同拼音（mizhi）的“秘制”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。建议仅将重要且必须生效的热词设置到100，设置过多权重为100的热词将影响整体字准率。
+	// <p>词权重数组，包含全部的热词和对应的权重。每个热词的长度不大于10个汉字或30个英文字符，权重为[1,11]之间整数或者100，数组长度不大于1000<br>注意: </p><ul><li>热词权重设置为11时，当前热词将升级为超级热词，建议仅将重要且必须生效的热词设置到11，设置过多权重为11的热词将影响整体字准率。</li><li>热词权重设置为100时，当前热词开启热词增强同音替换功能（仅支持8k_zh,16k_zh），举例：热词配置“蜜制|100”时，与“蜜制”同拼音（mizhi）的“秘制”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。建议仅将重要且必须生效的热词设置到100，设置过多权重为100的热词将影响整体字准率。</li></ul>
 	WordWeights []*HotWord `json:"WordWeights,omitnil,omitempty" name:"WordWeights"`
 
-	// 词权重文件（纯文本文件）的二进制base64编码，以行分隔，每行的格式为word|weight，即以英文符号|为分割，左边为词，右边为权重，如：你好|5。
-	// 当用户传此参数（参数长度大于0），即以此参数解析词权重，WordWeights会被忽略
+	// <p>词权重文件（纯文本文件）的二进制base64编码，以行分隔，每行的格式为word|weight，即以英文符号|为分割，左边为词，右边为权重，如：你好|5。<br>当用户传此参数（参数长度大于0），即以此参数解析词权重，WordWeights会被忽略</p>
 	WordWeightStr *string `json:"WordWeightStr,omitnil,omitempty" name:"WordWeightStr"`
 }
 
 type CreateAsrVocabRequest struct {
 	*tchttp.BaseRequest
 	
-	// 热词表名称，长度在1-255之间
+	// <p>热词表名称，长度在1-255之间, 注意: 仅允许中英文、数字、下划线、中英文标点、空格、横线</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 热词表描述，长度在0-1000之间
+	// <p>热词表描述，长度在0-1000之间</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 词权重数组，包含全部的热词和对应的权重。每个热词的长度不大于10个汉字或30个英文字符，权重为[1,11]之间整数或者100，数组长度不大于1000
-	// 注意: 
-	// - 热词权重设置为11时，当前热词将升级为超级热词，建议仅将重要且必须生效的热词设置到11，设置过多权重为11的热词将影响整体字准率。
-	// - 热词权重设置为100时，当前热词开启热词增强同音替换功能（仅支持8k_zh,16k_zh），举例：热词配置“蜜制|100”时，与“蜜制”同拼音（mizhi）的“秘制”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。建议仅将重要且必须生效的热词设置到100，设置过多权重为100的热词将影响整体字准率。
+	// <p>词权重数组，包含全部的热词和对应的权重。每个热词的长度不大于10个汉字或30个英文字符，权重为[1,11]之间整数或者100，数组长度不大于1000<br>注意: </p><ul><li>热词权重设置为11时，当前热词将升级为超级热词，建议仅将重要且必须生效的热词设置到11，设置过多权重为11的热词将影响整体字准率。</li><li>热词权重设置为100时，当前热词开启热词增强同音替换功能（仅支持8k_zh,16k_zh），举例：热词配置“蜜制|100”时，与“蜜制”同拼音（mizhi）的“秘制”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。建议仅将重要且必须生效的热词设置到100，设置过多权重为100的热词将影响整体字准率。</li></ul>
 	WordWeights []*HotWord `json:"WordWeights,omitnil,omitempty" name:"WordWeights"`
 
-	// 词权重文件（纯文本文件）的二进制base64编码，以行分隔，每行的格式为word|weight，即以英文符号|为分割，左边为词，右边为权重，如：你好|5。
-	// 当用户传此参数（参数长度大于0），即以此参数解析词权重，WordWeights会被忽略
+	// <p>词权重文件（纯文本文件）的二进制base64编码，以行分隔，每行的格式为word|weight，即以英文符号|为分割，左边为词，右边为权重，如：你好|5。<br>当用户传此参数（参数长度大于0），即以此参数解析词权重，WordWeights会被忽略</p>
 	WordWeightStr *string `json:"WordWeightStr,omitnil,omitempty" name:"WordWeightStr"`
 }
 
@@ -225,7 +217,7 @@ func (r *CreateAsrVocabRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAsrVocabResponseParams struct {
-	// 词表ID，可用于获取词表信息
+	// <p>词表ID，可用于获取词表信息</p>
 	VocabId *string `json:"VocabId,omitnil,omitempty" name:"VocabId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

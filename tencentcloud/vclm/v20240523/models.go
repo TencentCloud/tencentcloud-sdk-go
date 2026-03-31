@@ -1786,92 +1786,52 @@ func (r *SubmitTemplateToVideoJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitVideoEditJobRequestParams struct {
-	// 参考视频URL。默认为待编辑视频。
-	// - 视频格式：支持MP4
-	// - 视频时长：输入视频时长≤5秒
-	// - 视频大小：不超过200M
-	// - 视频文件：输入的视频帧率及分辨率不做限制（建议输入16：9或9：16的视频；分辨率建议在2160px内，帧率建议在60fps内）；输出视频是帧率会≥16fps，分辨率为720p
+	// <p>参考视频URL。默认为待编辑视频。</p><ul><li>视频格式：支持MP4</li><li>视频时长：输入视频时长≤10秒</li><li>视频大小：不超过200M</li><li>视频文件：输入的视频帧率及分辨率不做限制（建议输入16：9或9：16的视频；分辨率建议在2160px内，帧率建议在60fps内）；输出视频是帧率会≥16fps，分辨率为720p</li></ul>
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
-	// 视频内容的描述，中文正向提示词。支持视频内容增加、删除、修改等能力
-	// - 最多支持200个 utf-8 字符（首尾空格不计入字符数）
-	// - 不传prompt的时候，Images.N参考图列表必须要传图，且传的图片是经过图片编辑之后的结果图
+	// <p>视频内容的描述，中文正向提示词。支持视频内容增加、删除、修改等能力</p><ul><li>最多支持200个 utf-8 字符（首尾空格不计入字符数）</li><li>不传prompt的时候，Images.N参考图列表必须要传图，且传的图片是经过图片编辑之后的结果图</li></ul>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// 参考图列表。用于对视频内容做风格迁移、内容替换、内容删减、内容增加做参考。
-	// - 支持传入图片Base64编码或图片URL
-	// - 图片格式：支持jpg，png，jpeg，webp，bmp，tiff 格式
-	// - 图片文件：大小不能超过10MB（base64后）。单边分辨率不超过5000px，不小于50px，图片长宽限制1:4 ~ 4:1。
-	// 示例值：[{ "Url": "https://console.cloud.tencent.com/cos/image.png"}]
+	// <p>参考图列表。用于对视频内容做风格迁移、内容替换、内容删减、内容增加做参考。</p><ul><li>支持传入图片Base64编码或图片URL</li><li>图片格式：支持jpg，png，jpeg，webp，bmp，tiff 格式</li><li>图片文件：大小不能超过10MB（base64后）。单边分辨率不超过5000px，不小于50px，图片长宽限制1:4 ~ 4:1。<br>示例值：[{ &quot;Url&quot;: &quot;https://console.cloud.tencent.com/cos/image.png&quot;}]</li></ul>
 	Images []*Image `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 图片base64或者图片url
-	// 
-	// - Base64 和 Url 必须提供一个，如果都提供以Url为准。
-	// - 上传图url大小不超过 8M
-	// - 支持jpg，png，jpeg，webp，bmp，tiff 格式
-	// - 单边分辨率不超过5000，不小于50，长宽限制1:4 ~ 4:1
+	// <p>图片base64或者图片url</p><ul><li>Base64 和 Url 必须提供一个，如果都提供以Url为准。</li><li>上传图url大小不超过 8M</li><li>支持jpg，png，jpeg，webp，bmp，tiff 格式</li><li>单边分辨率不超过5000，不小于50，长宽限制1:4 ~ 4:1</li></ul>
 	//
 	// Deprecated: Image is deprecated.
 	Image *Image `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 扩展字段。
+	// <p>扩展字段。</p>
 	VideoEditParam *VideoEditParam `json:"VideoEditParam,omitnil,omitempty" name:"VideoEditParam"`
 
-	// 为生成视频添加标识的开关，默认为1。传0 需前往  [控制台](https://console.cloud.tencent.com/vtc/setting)  申请开启显式标识自主完成后方可生效。
-	// 1：添加标识；
-	// 0：不添加标识；
-	// 其他数值：默认按1处理。
-	// 建议您使用显著标识来提示，该视频是 AI 生成的视频。
+	// <p>为生成视频添加标识的开关，默认为1。传0 需前往  <a href="https://console.cloud.tencent.com/vtc/setting">控制台</a>  申请开启显式标识自主完成后方可生效。<br>1：添加标识；<br>0：不添加标识；<br>其他数值：默认按1处理。<br>建议您使用显著标识来提示，该视频是 AI 生成的视频。</p>
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 
-	// 标识内容设置。
-	// 默认在生成视频的右下角添加“ AI 生成”或“视频由 AI 生成”字样，如需替换为其他的标识图片，需前往   [控制台](https://console.cloud.tencent.com/vtc/setting)  申请开启显式标识自主完成。
+	// <p>标识内容设置。<br>默认在生成视频的右下角添加“ AI 生成”或“视频由 AI 生成”字样，如需替换为其他的标识图片，需前往   <a href="https://console.cloud.tencent.com/vtc/setting">控制台</a>  申请开启显式标识自主完成。</p>
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 }
 
 type SubmitVideoEditJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 参考视频URL。默认为待编辑视频。
-	// - 视频格式：支持MP4
-	// - 视频时长：输入视频时长≤5秒
-	// - 视频大小：不超过200M
-	// - 视频文件：输入的视频帧率及分辨率不做限制（建议输入16：9或9：16的视频；分辨率建议在2160px内，帧率建议在60fps内）；输出视频是帧率会≥16fps，分辨率为720p
+	// <p>参考视频URL。默认为待编辑视频。</p><ul><li>视频格式：支持MP4</li><li>视频时长：输入视频时长≤10秒</li><li>视频大小：不超过200M</li><li>视频文件：输入的视频帧率及分辨率不做限制（建议输入16：9或9：16的视频；分辨率建议在2160px内，帧率建议在60fps内）；输出视频是帧率会≥16fps，分辨率为720p</li></ul>
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
-	// 视频内容的描述，中文正向提示词。支持视频内容增加、删除、修改等能力
-	// - 最多支持200个 utf-8 字符（首尾空格不计入字符数）
-	// - 不传prompt的时候，Images.N参考图列表必须要传图，且传的图片是经过图片编辑之后的结果图
+	// <p>视频内容的描述，中文正向提示词。支持视频内容增加、删除、修改等能力</p><ul><li>最多支持200个 utf-8 字符（首尾空格不计入字符数）</li><li>不传prompt的时候，Images.N参考图列表必须要传图，且传的图片是经过图片编辑之后的结果图</li></ul>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// 参考图列表。用于对视频内容做风格迁移、内容替换、内容删减、内容增加做参考。
-	// - 支持传入图片Base64编码或图片URL
-	// - 图片格式：支持jpg，png，jpeg，webp，bmp，tiff 格式
-	// - 图片文件：大小不能超过10MB（base64后）。单边分辨率不超过5000px，不小于50px，图片长宽限制1:4 ~ 4:1。
-	// 示例值：[{ "Url": "https://console.cloud.tencent.com/cos/image.png"}]
+	// <p>参考图列表。用于对视频内容做风格迁移、内容替换、内容删减、内容增加做参考。</p><ul><li>支持传入图片Base64编码或图片URL</li><li>图片格式：支持jpg，png，jpeg，webp，bmp，tiff 格式</li><li>图片文件：大小不能超过10MB（base64后）。单边分辨率不超过5000px，不小于50px，图片长宽限制1:4 ~ 4:1。<br>示例值：[{ &quot;Url&quot;: &quot;https://console.cloud.tencent.com/cos/image.png&quot;}]</li></ul>
 	Images []*Image `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 图片base64或者图片url
-	// 
-	// - Base64 和 Url 必须提供一个，如果都提供以Url为准。
-	// - 上传图url大小不超过 8M
-	// - 支持jpg，png，jpeg，webp，bmp，tiff 格式
-	// - 单边分辨率不超过5000，不小于50，长宽限制1:4 ~ 4:1
+	// <p>图片base64或者图片url</p><ul><li>Base64 和 Url 必须提供一个，如果都提供以Url为准。</li><li>上传图url大小不超过 8M</li><li>支持jpg，png，jpeg，webp，bmp，tiff 格式</li><li>单边分辨率不超过5000，不小于50，长宽限制1:4 ~ 4:1</li></ul>
 	Image *Image `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 扩展字段。
+	// <p>扩展字段。</p>
 	VideoEditParam *VideoEditParam `json:"VideoEditParam,omitnil,omitempty" name:"VideoEditParam"`
 
-	// 为生成视频添加标识的开关，默认为1。传0 需前往  [控制台](https://console.cloud.tencent.com/vtc/setting)  申请开启显式标识自主完成后方可生效。
-	// 1：添加标识；
-	// 0：不添加标识；
-	// 其他数值：默认按1处理。
-	// 建议您使用显著标识来提示，该视频是 AI 生成的视频。
+	// <p>为生成视频添加标识的开关，默认为1。传0 需前往  <a href="https://console.cloud.tencent.com/vtc/setting">控制台</a>  申请开启显式标识自主完成后方可生效。<br>1：添加标识；<br>0：不添加标识；<br>其他数值：默认按1处理。<br>建议您使用显著标识来提示，该视频是 AI 生成的视频。</p>
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 
-	// 标识内容设置。
-	// 默认在生成视频的右下角添加“ AI 生成”或“视频由 AI 生成”字样，如需替换为其他的标识图片，需前往   [控制台](https://console.cloud.tencent.com/vtc/setting)  申请开启显式标识自主完成。
+	// <p>标识内容设置。<br>默认在生成视频的右下角添加“ AI 生成”或“视频由 AI 生成”字样，如需替换为其他的标识图片，需前往   <a href="https://console.cloud.tencent.com/vtc/setting">控制台</a>  申请开启显式标识自主完成。</p>
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
 }
 
@@ -1902,7 +1862,7 @@ func (r *SubmitVideoEditJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitVideoEditJobResponseParams struct {
-	// 任务ID。
+	// <p>任务ID。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

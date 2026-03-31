@@ -17078,6 +17078,9 @@ func (r *GetClusterLevelPriceResponse) FromJsonString(s string) error {
 type GetMostSuitableImageCacheRequestParams struct {
 	// 容器镜像列表
 	Images []*string `json:"Images,omitnil,omitempty" name:"Images"`
+
+	// 容器镜像制作snapshotter
+	Snapshotter *string `json:"Snapshotter,omitnil,omitempty" name:"Snapshotter"`
 }
 
 type GetMostSuitableImageCacheRequest struct {
@@ -17085,6 +17088,9 @@ type GetMostSuitableImageCacheRequest struct {
 	
 	// 容器镜像列表
 	Images []*string `json:"Images,omitnil,omitempty" name:"Images"`
+
+	// 容器镜像制作snapshotter
+	Snapshotter *string `json:"Snapshotter,omitnil,omitempty" name:"Snapshotter"`
 }
 
 func (r *GetMostSuitableImageCacheRequest) ToJsonString() string {
@@ -17100,6 +17106,7 @@ func (r *GetMostSuitableImageCacheRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Images")
+	delete(f, "Snapshotter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetMostSuitableImageCacheRequest has unknown keys!", "")
 	}
@@ -17448,6 +17455,12 @@ type ImageCache struct {
 
 	// 腾讯云标签
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 镜像缓存类型
+	ImageCacheType *string `json:"ImageCacheType,omitnil,omitempty" name:"ImageCacheType"`
+
+	// 镜像缓存所属snapshotter类型
+	Snapshotter *string `json:"Snapshotter,omitnil,omitempty" name:"Snapshotter"`
 }
 
 type ImageCacheEvent struct {

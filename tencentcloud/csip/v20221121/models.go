@@ -9023,15 +9023,12 @@ type FilterDataObject struct {
 
 type Filters struct {
 	// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 实例ID内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 
 	// 模糊匹配
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExactMatch *string `json:"ExactMatch,omitnil,omitempty" name:"ExactMatch"`
 }
 

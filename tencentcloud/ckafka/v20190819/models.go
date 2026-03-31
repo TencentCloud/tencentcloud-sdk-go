@@ -2100,13 +2100,13 @@ type CreatePostPaidInstanceRequestParams struct {
 	// <p>创建实例时可以选择集群Id, 该入参表示集群Id。不指定实例所在集群则不传入该参数</p>
 	ClusterId *int64 `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// <p>实例版本。目前支持当前支持"2.4.1", "2.4.2","2.8.1", "3.2.3"，默认取值"2.4.1"。"2.4.1" 与 "2.4.2" 属于同一个版本，传任意一个均可。</p>
+	// <p>实例版本。目前支持当前支持&quot;2.4.1&quot;, &quot;2.4.2&quot;,&quot;2.8.1&quot;, &quot;3.2.3&quot;，默认取值&quot;2.4.1&quot;。&quot;2.4.1&quot; 与 &quot;2.4.2&quot; 属于同一个版本，传任意一个均可。</p>
 	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
 
-	// <p>实例类型。"standard"：标准版，"profession"：专业版。  (标准版仅国际站支持，国内站目前支持专业版)</p>
+	// <p>实例类型。&quot;standard&quot;：标准版，&quot;profession&quot;：专业版。  (标准版仅国际站支持，国内站目前支持专业版)</p>
 	SpecificationsType *string `json:"SpecificationsType,omitnil,omitempty" name:"SpecificationsType"`
 
-	// <p>专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认值为 "CLOUD_BASIC"</p>
+	// <p>专业版实例磁盘类型，标准版实例不需要填写。&quot;CLOUD_SSD&quot;：SSD云硬盘；&quot;CLOUD_BASIC&quot;：高性能云硬盘。不传默认值为 &quot;CLOUD_BASIC&quot;</p>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// <p>实例内网峰值带宽，默认值为40。单位 MB/s。标准版需传入当前实例规格所对应的峰值带宽。注意如果创建的实例为专业版实例，峰值带宽，分区数等参数配置需要满足专业版的计费规格，可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/11745</p>
@@ -2133,7 +2133,7 @@ type CreatePostPaidInstanceRequestParams struct {
 	// <p>购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例</p>
 	InstanceNum *int64 `json:"InstanceNum,omitnil,omitempty" name:"InstanceNum"`
 
-	// <p>公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍</p>
+	// <p>公网带宽大小，单位 Mbps。</p><p>单位：Mbps</p>
 	PublicNetworkMonthly *int64 `json:"PublicNetworkMonthly,omitnil,omitempty" name:"PublicNetworkMonthly"`
 
 	// <p>标签</p>
@@ -2167,13 +2167,13 @@ type CreatePostPaidInstanceRequest struct {
 	// <p>创建实例时可以选择集群Id, 该入参表示集群Id。不指定实例所在集群则不传入该参数</p>
 	ClusterId *int64 `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// <p>实例版本。目前支持当前支持"2.4.1", "2.4.2","2.8.1", "3.2.3"，默认取值"2.4.1"。"2.4.1" 与 "2.4.2" 属于同一个版本，传任意一个均可。</p>
+	// <p>实例版本。目前支持当前支持&quot;2.4.1&quot;, &quot;2.4.2&quot;,&quot;2.8.1&quot;, &quot;3.2.3&quot;，默认取值&quot;2.4.1&quot;。&quot;2.4.1&quot; 与 &quot;2.4.2&quot; 属于同一个版本，传任意一个均可。</p>
 	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
 
-	// <p>实例类型。"standard"：标准版，"profession"：专业版。  (标准版仅国际站支持，国内站目前支持专业版)</p>
+	// <p>实例类型。&quot;standard&quot;：标准版，&quot;profession&quot;：专业版。  (标准版仅国际站支持，国内站目前支持专业版)</p>
 	SpecificationsType *string `json:"SpecificationsType,omitnil,omitempty" name:"SpecificationsType"`
 
-	// <p>专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认值为 "CLOUD_BASIC"</p>
+	// <p>专业版实例磁盘类型，标准版实例不需要填写。&quot;CLOUD_SSD&quot;：SSD云硬盘；&quot;CLOUD_BASIC&quot;：高性能云硬盘。不传默认值为 &quot;CLOUD_BASIC&quot;</p>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// <p>实例内网峰值带宽，默认值为40。单位 MB/s。标准版需传入当前实例规格所对应的峰值带宽。注意如果创建的实例为专业版实例，峰值带宽，分区数等参数配置需要满足专业版的计费规格，可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/11745</p>
@@ -2200,7 +2200,7 @@ type CreatePostPaidInstanceRequest struct {
 	// <p>购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例</p>
 	InstanceNum *int64 `json:"InstanceNum,omitnil,omitempty" name:"InstanceNum"`
 
-	// <p>公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍</p>
+	// <p>公网带宽大小，单位 Mbps。</p><p>单位：Mbps</p>
 	PublicNetworkMonthly *int64 `json:"PublicNetworkMonthly,omitnil,omitempty" name:"PublicNetworkMonthly"`
 
 	// <p>标签</p>
@@ -2362,7 +2362,7 @@ type CreateRouteRequestParams struct {
 	// <p>vpc子网id,当vipType为3时必填</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// <p>访问类型：0-plaintext；1-sasl_plaintext；3-sasl_ssl; 4-sasl_scram_sha_256; 5-sasl_scram_sha_512  默认为0vipType=3,支持 0,1,3,4,5vipType=7,支持0,1,3vipType=1,支持1,3</p>
+	// <p>访问类型：0-plaintext；1-sasl_plaintext；3-sasl_ssl; 4-sasl_scram_sha_256; 5-sasl_scram_sha_512  默认为0<br>vipType=3,支持 0,1,3,4,5<br>vipType=7,支持0,1,3<br>vipType=1,支持1,3</p>
 	AccessType *int64 `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// <p>是否需要权限管理,该字段已废弃</p>
@@ -2382,6 +2382,9 @@ type CreateRouteRequestParams struct {
 
 	// <p>关联安全组有序列表</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// <p>公网路由IP白名单预设配置</p><p>入参限制：vipType=1</p>
+	IpWhitelist []*IpWhitelistDTO `json:"IpWhitelist,omitnil,omitempty" name:"IpWhitelist"`
 }
 
 type CreateRouteRequest struct {
@@ -2399,7 +2402,7 @@ type CreateRouteRequest struct {
 	// <p>vpc子网id,当vipType为3时必填</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// <p>访问类型：0-plaintext；1-sasl_plaintext；3-sasl_ssl; 4-sasl_scram_sha_256; 5-sasl_scram_sha_512  默认为0vipType=3,支持 0,1,3,4,5vipType=7,支持0,1,3vipType=1,支持1,3</p>
+	// <p>访问类型：0-plaintext；1-sasl_plaintext；3-sasl_ssl; 4-sasl_scram_sha_256; 5-sasl_scram_sha_512  默认为0<br>vipType=3,支持 0,1,3,4,5<br>vipType=7,支持0,1,3<br>vipType=1,支持1,3</p>
 	AccessType *int64 `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// <p>是否需要权限管理,该字段已废弃</p>
@@ -2419,6 +2422,9 @@ type CreateRouteRequest struct {
 
 	// <p>关联安全组有序列表</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// <p>公网路由IP白名单预设配置</p><p>入参限制：vipType=1</p>
+	IpWhitelist []*IpWhitelistDTO `json:"IpWhitelist,omitnil,omitempty" name:"IpWhitelist"`
 }
 
 func (r *CreateRouteRequest) ToJsonString() string {
@@ -2444,6 +2450,7 @@ func (r *CreateRouteRequest) FromJsonString(s string) error {
 	delete(f, "Ip")
 	delete(f, "Note")
 	delete(f, "SecurityGroupIds")
+	delete(f, "IpWhitelist")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRouteRequest has unknown keys!", "")
 	}
@@ -8209,7 +8216,7 @@ type InstanceAttributesResponse struct {
 	// <p>虚拟端口</p>
 	Vport *string `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// <p>实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败 </p>
+	// <p>实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// <p>实例带宽，单位：Mbps</p>
@@ -8272,7 +8279,7 @@ type InstanceAttributesResponse struct {
 	// <p>售卖类型,0:标准版,1:专业版</p>
 	Cvm *int64 `json:"Cvm,omitnil,omitempty" name:"Cvm"`
 
-	// <p>实例类型  枚举列表: profession  :专业版  <br />standards2  :标准版premium   :高级版serverless  :serverless版</p>
+	// <p>实例类型  枚举列表:<br>profession  :专业版<br>standards2  :标准版<br>premium   :高级版<br>serverless  :serverless版</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// <p>表示该实例支持的特性。FEATURE_SUBNET_ACL:表示acl策略支持设置子网。</p>
@@ -8308,13 +8315,13 @@ type InstanceAttributesResponse struct {
 	// <p>实例计费类型  POSTPAID_BY_HOUR 按小时付费; PREPAID 包年包月</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// <p>是否开启弹性带宽白名单 <br />1:已开启弹性带宽白名单;0:未开启弹性带宽白名单;</p>
+	// <p>是否开启弹性带宽白名单<br>1:已开启弹性带宽白名单;<br>0:未开启弹性带宽白名单;</p>
 	ElasticBandwidthSwitch *int64 `json:"ElasticBandwidthSwitch,omitnil,omitempty" name:"ElasticBandwidthSwitch"`
 
-	// <p>弹性带宽开通状态1:未开启弹性带宽;16: 开启弹性带宽中;32:开启弹性带宽成功;33:关闭弹性带宽中;34:关闭弹性带宽成功;64:开启弹性带宽失败;65:关闭弹性带宽失败;</p>
+	// <p>弹性带宽开通状态<br>1:未开启弹性带宽;<br>16: 开启弹性带宽中;<br>32:开启弹性带宽成功;<br>33:关闭弹性带宽中;<br>34:关闭弹性带宽成功;<br>64:开启弹性带宽失败;<br>65:关闭弹性带宽失败;</p>
 	ElasticBandwidthOpenStatus *int64 `json:"ElasticBandwidthOpenStatus,omitnil,omitempty" name:"ElasticBandwidthOpenStatus"`
 
-	// <p>集群类型<br />CLOUD_IDC IDC集群CLOUD_CVM_SHARE CVM共享集群CLOUD_CVM_YUNTI 云梯CVM集群CLOUD_CVM    CVM集群CLOUD_CDC CDC集群CLOUD_EKS_TSE EKS集群</p>
+	// <p>集群类型<br>CLOUD_IDC IDC集群<br>CLOUD_CVM_SHARE CVM共享集群<br>CLOUD_CVM_YUNTI 云梯CVM集群<br>CLOUD_CVM    CVM集群<br>CLOUD_CDC CDC集群<br>CLOUD_EKS_TSE EKS集群</p>
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
 	// <p>免费分区数量</p>
@@ -8332,10 +8339,10 @@ type InstanceAttributesResponse struct {
 	// <p>实例删除保护开关: 1 开启 0 关闭</p>
 	DeleteProtectionEnable *int64 `json:"DeleteProtectionEnable,omitnil,omitempty" name:"DeleteProtectionEnable"`
 
-	// <p>实例级别消息保留大小</p>单位：bytes<br>默认值：-1
+	// <p>实例级别消息保留大小</p><p>单位：bytes</p><p>默认值：-1</p>
 	RetentionBytes *int64 `json:"RetentionBytes,omitnil,omitempty" name:"RetentionBytes"`
 
-	// <p>事务ID最大空闲时间，超时未提交的事务将被标记为过期</p>单位：ms
+	// <p>事务ID最大空闲时间，超时未提交的事务将被标记为过期</p><p>单位：ms</p>
 	TransactionalIdExpirationMs *int64 `json:"TransactionalIdExpirationMs,omitnil,omitempty" name:"TransactionalIdExpirationMs"`
 }
 
@@ -8379,7 +8386,7 @@ type InstanceDetail struct {
 	// <p>虚拟IP列表</p>
 	VipList []*VipEntity `json:"VipList,omitnil,omitempty" name:"VipList"`
 
-	// <p>实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败 </p>
+	// <p>实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// <p>实例带宽，单位Mbps</p>
@@ -8460,7 +8467,7 @@ type InstanceDetail struct {
 	// <p>实例功能列表</p>
 	Features []*string `json:"Features,omitnil,omitempty" name:"Features"`
 
-	// <p>实例级别消息保留大小</p>单位：byte<br>默认值：-1<br><p>实例级别消息保留大小</p>
+	// <p>实例级别消息保留大小</p><p>单位：byte</p><p>默认值：-1</p><p>实例级别消息保留大小</p>
 	RetentionBytes *int64 `json:"RetentionBytes,omitnil,omitempty" name:"RetentionBytes"`
 }
 
@@ -8616,14 +8623,22 @@ type InstanceVersion struct {
 	AllowModifyTxnIdExpiration *bool `json:"AllowModifyTxnIdExpiration,omitnil,omitempty" name:"AllowModifyTxnIdExpiration"`
 }
 
+type IpWhitelistDTO struct {
+	// <p>放通IP或网段</p>
+	CidrBlock *string `json:"CidrBlock,omitnil,omitempty" name:"CidrBlock"`
+
+	// <p>描述</p>
+	PolicyDescription *string `json:"PolicyDescription,omitnil,omitempty" name:"PolicyDescription"`
+}
+
 type JgwOperateResponse struct {
-	// 返回的code，0为正常，非0为错误
+	// <p>返回的code，0为正常，非0为错误</p>
 	ReturnCode *string `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
 
-	// 成功消息
+	// <p>成功消息</p>
 	ReturnMessage *string `json:"ReturnMessage,omitnil,omitempty" name:"ReturnMessage"`
 
-	// 操作型返回的Data数据,可能有flowId等
+	// <p>操作型返回的Data数据,可能有flowId等</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *OperateResponseData `json:"Data,omitnil,omitempty" name:"Data"`
 }

@@ -123,7 +123,7 @@ func NewCreateDBSBackupResponse() (response *CreateDBSBackupResponse) {
 }
 
 // CreateDBSBackup
-// 创建实例备份集
+// 创建实例手工备份  CreateDBSBackup
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
@@ -137,7 +137,7 @@ func (c *Client) CreateDBSBackup(request *CreateDBSBackupRequest) (response *Cre
 }
 
 // CreateDBSBackup
-// 创建实例备份集
+// 创建实例手工备份  CreateDBSBackup
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
@@ -183,7 +183,7 @@ func NewDeleteDBSBackupSetsResponse() (response *DeleteDBSBackupSetsResponse) {
 }
 
 // DeleteDBSBackupSets
-// 删除实例备份集
+// 删除实例手工备份 DeleteDBSBackupSets
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
@@ -196,7 +196,7 @@ func (c *Client) DeleteDBSBackupSets(request *DeleteDBSBackupSetsRequest) (respo
 }
 
 // DeleteDBSBackupSets
-// 删除实例备份集
+// 删除实例手工备份 DeleteDBSBackupSets
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
@@ -301,7 +301,7 @@ func NewDescribeDBSAvailableRecoveryTimeResponse() (response *DescribeDBSAvailab
 }
 
 // DescribeDBSAvailableRecoveryTime
-// 可恢复时间查询
+// 获取可恢复时间 DescribeDBSAvailableRecoveryTime
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
@@ -311,7 +311,7 @@ func (c *Client) DescribeDBSAvailableRecoveryTime(request *DescribeDBSAvailableR
 }
 
 // DescribeDBSAvailableRecoveryTime
-// 可恢复时间查询
+// 获取可恢复时间 DescribeDBSAvailableRecoveryTime
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
@@ -353,7 +353,7 @@ func NewDescribeDBSCloneInstancesResponse() (response *DescribeDBSCloneInstances
 }
 
 // DescribeDBSCloneInstances
-// 查询实例克隆列表
+// 查询实例克隆列表 DescribeDBSCloneInstances
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
@@ -364,7 +364,7 @@ func (c *Client) DescribeDBSCloneInstances(request *DescribeDBSCloneInstancesReq
 }
 
 // DescribeDBSCloneInstances
-// 查询实例克隆列表
+// 查询实例克隆列表 DescribeDBSCloneInstances
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
@@ -929,7 +929,7 @@ func NewModifyDBSBackupPolicyResponse() (response *ModifyDBSBackupPolicyResponse
 }
 
 // ModifyDBSBackupPolicy
-// 修改实例备份策略
+// 修改实例备份策略 ModifyDBSBackupPolicy
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_MODIFYBACKUPPOLICYERR = "FailedOperation.ModifyBackupPolicyErr"
@@ -950,7 +950,7 @@ func (c *Client) ModifyDBSBackupPolicy(request *ModifyDBSBackupPolicyRequest) (r
 }
 
 // ModifyDBSBackupPolicy
-// 修改实例备份策略
+// 修改实例备份策略 ModifyDBSBackupPolicy
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_MODIFYBACKUPPOLICYERR = "FailedOperation.ModifyBackupPolicyErr"
@@ -1003,7 +1003,7 @@ func NewModifyDBSBackupSetCommentResponse() (response *ModifyDBSBackupSetComment
 }
 
 // ModifyDBSBackupSetComment
-// 修改备份集备注
+// 修改实例备份备注 ModifyDBSBackupSetComment
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
@@ -1013,7 +1013,7 @@ func (c *Client) ModifyDBSBackupSetComment(request *ModifyDBSBackupSetCommentReq
 }
 
 // ModifyDBSBackupSetComment
-// 修改备份集备注
+// 修改实例备份备注 ModifyDBSBackupSetComment
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"

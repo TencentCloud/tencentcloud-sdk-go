@@ -4259,7 +4259,9 @@ func NewCreateHaVipResponse() (response *CreateHaVipResponse) {
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_NOTPUTVPCSNATIPADDRESS = "UnsupportedOperation.NotPutVpcSnatIpAddress"
 //  UNSUPPORTEDOPERATION_SUBNETNOTEXISTS = "UnsupportedOperation.SubnetNotExists"
+//  UNSUPPORTEDOPERATION_TRAFFICPROTECTIONNOTSUPPORTIPV6 = "UnsupportedOperation.TrafficProtectionNotSupportIPv6"
 func (c *Client) CreateHaVip(request *CreateHaVipRequest) (response *CreateHaVipResponse, err error) {
     return c.CreateHaVipWithContext(context.Background(), request)
 }
@@ -4281,7 +4283,9 @@ func (c *Client) CreateHaVip(request *CreateHaVipRequest) (response *CreateHaVip
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_NOTPUTVPCSNATIPADDRESS = "UnsupportedOperation.NotPutVpcSnatIpAddress"
 //  UNSUPPORTEDOPERATION_SUBNETNOTEXISTS = "UnsupportedOperation.SubnetNotExists"
+//  UNSUPPORTEDOPERATION_TRAFFICPROTECTIONNOTSUPPORTIPV6 = "UnsupportedOperation.TrafficProtectionNotSupportIPv6"
 func (c *Client) CreateHaVipWithContext(ctx context.Context, request *CreateHaVipRequest) (response *CreateHaVipResponse, err error) {
     if request == nil {
         request = NewCreateHaVipRequest()

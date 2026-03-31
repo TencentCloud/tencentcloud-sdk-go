@@ -198,7 +198,7 @@ type ConstraintRange struct {
 
 // Predefined struct for user
 type CreateDBSBackupRequestParams struct {
-	// <p>备份方式：physical、snapshot 这个值和DescribeDBSBackupPolicy接口返回的backupMethod保持一致</p>枚举值：<ul><li> physical： 物理备份</li><li> snapshot： 快照备份</li></ul>
+	// <p>备份方式：physical、snapshot 这个值和DescribeDBSBackupPolicy接口返回的backupMethod保持一致</p><p>枚举值：</p><ul><li>physical： 物理备份</li><li>snapshot： 快照备份</li></ul>
 	BackupMethod *string `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
 	// <p>备份类型：暂时只支持full</p>
@@ -214,7 +214,7 @@ type CreateDBSBackupRequestParams struct {
 type CreateDBSBackupRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>备份方式：physical、snapshot 这个值和DescribeDBSBackupPolicy接口返回的backupMethod保持一致</p>枚举值：<ul><li> physical： 物理备份</li><li> snapshot： 快照备份</li></ul>
+	// <p>备份方式：physical、snapshot 这个值和DescribeDBSBackupPolicy接口返回的backupMethod保持一致</p><p>枚举值：</p><ul><li>physical： 物理备份</li><li>snapshot： 快照备份</li></ul>
 	BackupMethod *string `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
 	// <p>备份类型：暂时只支持full</p>
@@ -437,7 +437,7 @@ func (r *DescribeDBParametersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBSAvailableRecoveryTimeRequestParams struct {
-	// <p>db实例ID</p>
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// <p>备份集ID,值来自 DescribeDBSBackupSets 接口返回</p>
@@ -447,7 +447,7 @@ type DescribeDBSAvailableRecoveryTimeRequestParams struct {
 type DescribeDBSAvailableRecoveryTimeRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>db实例ID</p>
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// <p>备份集ID,值来自 DescribeDBSBackupSets 接口返回</p>
@@ -1132,20 +1132,20 @@ func (r *ModifyDBParametersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBSBackupPolicyRequestParams struct {
-	// 备份策略
+	// <p>备份策略</p>
 	BackupPolicy *BackupPolicyModelInput `json:"BackupPolicy,omitnil,omitempty" name:"BackupPolicy"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type ModifyDBSBackupPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 备份策略
+	// <p>备份策略</p>
 	BackupPolicy *BackupPolicyModelInput `json:"BackupPolicy,omitnil,omitempty" name:"BackupPolicy"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -1171,10 +1171,10 @@ func (r *ModifyDBSBackupPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBSBackupPolicyResponseParams struct {
-	// 是否成功
+	// <p>是否成功</p>
 	IsSuccess *bool `json:"IsSuccess,omitnil,omitempty" name:"IsSuccess"`
 
-	// 消息
+	// <p>消息</p>
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

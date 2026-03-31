@@ -104,16 +104,16 @@ func (r *DescribeMaterialListResponse) FromJsonString(s string) error {
 }
 
 type FaceInfo struct {
-	// 人脸框的横坐标
+	// <p>人脸框的横坐标</p>
 	X *int64 `json:"X,omitnil,omitempty" name:"X"`
 
-	// 人脸框的纵坐标
+	// <p>人脸框的纵坐标</p>
 	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 
-	// 人脸框的宽度
+	// <p>人脸框的宽度。<br>单位：px</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 人脸框的高度
+	// <p>人脸框的高度。<br>单位：px</p>
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 

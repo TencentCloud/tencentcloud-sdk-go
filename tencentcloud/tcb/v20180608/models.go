@@ -6437,7 +6437,7 @@ type ModifyUserRequestParams struct {
 	// 用户名，用户名规则：1. 长度1-64字符 2. 只能包含大小写英文字母、数字和符号 . _ - 3. 只能以字母或数字开头 4. 不能重复，不传该字段或传空字符不修改
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 用户类型：0-内部用户、1-外部用户，默认0（内部用户），不传该字段或传空字符串不修改
+	// 用户类型：internalUser-内部用户、externalUser-外部用户，不传该字段或传空字符串不修改。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 密码，传入Uid时密码可不传。密码规则：1. 长度8-32字符（推荐12位以上） 2. 不能以特殊字符开头 3. 至少包含以下四项中的三项：小写字母a-z、大写字母A-Z、数字0-9、特殊字符()!@#$%^&*\|?><_-，不传该字段或传空字符串不修改
@@ -6474,7 +6474,7 @@ type ModifyUserRequest struct {
 	// 用户名，用户名规则：1. 长度1-64字符 2. 只能包含大小写英文字母、数字和符号 . _ - 3. 只能以字母或数字开头 4. 不能重复，不传该字段或传空字符不修改
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 用户类型：0-内部用户、1-外部用户，默认0（内部用户），不传该字段或传空字符串不修改
+	// 用户类型：internalUser-内部用户、externalUser-外部用户，不传该字段或传空字符串不修改。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 密码，传入Uid时密码可不传。密码规则：1. 长度8-32字符（推荐12位以上） 2. 不能以特殊字符开头 3. 至少包含以下四项中的三项：小写字母a-z、大写字母A-Z、数字0-9、特殊字符()!@#$%^&*\|?><_-，不传该字段或传空字符串不修改

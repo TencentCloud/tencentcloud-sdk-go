@@ -5299,139 +5299,117 @@ func (r *CreateScheduledSqlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateShipperRequestParams struct {
-	// 创建的投递规则所属的日志主题Id。
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// <p>创建的投递规则所属的日志主题Id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
-	// 
-	// - 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
+	// <p>COS存储桶，详见产品支持的<a href="https://cloud.tencent.com/document/product/436/13312">存储桶命名规范</a>。    </p><ul><li>通过<a href="https://cloud.tencent.com/document/product/436/8291">GET Service（List Buckets）</a>获取COS存储桶。</li></ul>
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 投递规则投递的新的目录前缀。
-	// - 仅支持0-9A-Za-z-_/
-	// - 最大支持256个字符
+	// <p>投递规则投递的新的目录前缀。</p><ul><li>仅支持0-9A-Za-z-_/</li><li>最大支持256个字符</li></ul>
 	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
-	// 投递规则的名字。最大支持255个字符
+	// <p>投递规则的名字。最大支持255个字符</p>
 	ShipperName *string `json:"ShipperName,omitnil,omitempty" name:"ShipperName"`
 
-	// 投递的时间间隔，单位 秒，默认300，范围 300-900
+	// <p>投递的时间间隔，单位 秒，默认300，范围 300-900</p>
 	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 投递的文件的最大值，单位 MB，默认256，范围 5-256
+	// <p>投递的文件的最大值，单位 MB，默认256，范围 5-256</p>
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递
+	// <p>投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递</p>
 	FilterRules []*FilterRuleInfo `json:"FilterRules,omitnil,omitempty" name:"FilterRules"`
 
-	// 投递日志的分区规则，支持strftime的时间格式表示
+	// <p>投递日志的分区规则，支持strftime的时间格式表示</p>
 	Partition *string `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 投递日志的压缩配置
+	// <p>投递日志的压缩配置</p>
 	Compress *CompressInfo `json:"Compress,omitnil,omitempty" name:"Compress"`
 
-	// 投递日志的内容格式配置
+	// <p>投递日志的内容格式配置</p>
 	Content *ContentInfo `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
+	// <p>投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）</p>
 	FilenameMode *uint64 `json:"FilenameMode,omitnil,omitempty" name:"FilenameMode"`
 
-	// 投递数据范围的开始时间点（秒级时间戳），不能超出日志主题的生命周期起点。
-	// 如果用户不填写，默认为用户新建投递任务的时间。
+	// <p>投递数据范围的开始时间点（秒级时间戳），不能超出日志主题的生命周期起点。<br>如果用户不填写，默认为用户新建投递任务的时间。</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 投递数据范围的结束时间点（秒级时间戳），不能填写未来时间。
-	// 如果用户不填写，默认为持续投递，即无限。
+	// <p>投递数据范围的结束时间点（秒级时间戳），不能填写未来时间。<br>如果用户不填写，默认为持续投递，即无限。</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 对象存储类型，默认值为 STANDARD。枚举值请参见[ 存储类型概述](https://cloud.tencent.com/document/product/436/33417) 文档。
-	// 参考值有：
-	// 
-	// - STANDARD：标准存储
-	// - STANDARD_IA：低频存储
-	// - ARCHIVE：归档存储
-	// - DEEP_ARCHIVE：深度归档存储
-	// - MAZ_STANDARD：标准存储（多 AZ）
-	// - MAZ_STANDARD_IA：低频存储（多 AZ）
-	// - INTELLIGENT_TIERING：智能分层存储
-	// - MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
+	// <p>对象存储类型，默认值为 STANDARD。枚举值请参见<a href="https://cloud.tencent.com/document/product/436/33417"> 存储类型概述</a> 文档。<br>参考值有：</p><ul><li>STANDARD：标准存储</li><li>STANDARD_IA：低频存储</li><li>ARCHIVE：归档存储</li><li>DEEP_ARCHIVE：深度归档存储</li><li>MAZ_STANDARD：标准存储（多 AZ）</li><li>MAZ_STANDARD_IA：低频存储（多 AZ）</li><li>INTELLIGENT_TIERING：智能分层存储</li><li>MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）</li></ul>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+	// <p>角色访问描述名 <a href="https://cloud.tencent.com/document/product/598/19381">创建角色</a></p>
 	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
 
-	// 外部ID
+	// <p>外部ID</p>
 	ExternalId *string `json:"ExternalId,omitnil,omitempty" name:"ExternalId"`
+
+	// <p>用于生成投递到COS 的文件路径中的时间变量</p><p>入参限制：支持下面时区列表</p><ul><li>GMT-12:00</li><li>GMT-11:00</li><li>GMT-10:00</li><li>GMT-09:30</li><li>GMT-09:00</li><li>GMT-08:00</li><li>GMT-07:00</li><li>GMT-06:00</li><li>GMT-05:00</li><li>GMT-04:00</li><li>GMT-03:30</li><li>GMT-03:00</li><li>GMT-02:00</li><li>GMT-01:00</li><li>GMT+00:00</li><li>GMT+01:00</li><li>GMT+02:00</li><li>GMT+03:30</li><li>GMT+04:00</li><li>GMT+04:30</li><li>GMT+05:00</li><li>GMT+05:30</li><li>GMT+05:45</li><li>GMT+06:00</li><li>GMT+06:30</li><li>GMT+07:00</li><li>GMT+08:00</li><li>GMT+09:00</li><li>GMT+09:30</li><li>GMT+10:00</li><li>GMT+10:30</li><li>GMT+11:00</li><li>GMT+11:30</li><li>GMT+12:00</li><li>GMT+12:45</li><li>GMT+13:00</li><li>GMT+14:00</li><li>UTC-11:00</li><li>UTC-10:00</li><li>UTC-09:00</li><li>UTC-08:00</li><li>UTC-12:00</li><li>UTC-07:00</li><li>UTC-06:00</li><li>UTC-05:00</li><li>UTC-04:30</li><li>UTC-04:00</li><li>UTC-03:30</li><li>UTC-03:00</li><li>UTC-02:00</li><li>UTC-01:00</li><li>UTC+00:00</li><li>UTC+01:00</li><li>UTC+02:00</li><li>UTC+03:00</li><li>UTC+03:30</li><li>UTC+04:00</li><li>UTC+04:30</li><li>UTC+05:00</li><li>UTC+05:45</li><li>UTC+06:00</li><li>UTC+06:30</li><li>UTC+07:00</li><li>UTC+08:00</li><li>UTC+09:00</li><li>UTC+09:30</li><li>UTC+10:00</li><li>UTC+11:00</li><li>UTC+12:00</li><li>UTC+13:00</li></ul>
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// <p>预过滤处理-对写入COS原始数据进行预过滤处理</p>
+	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
 }
 
 type CreateShipperRequest struct {
 	*tchttp.BaseRequest
 	
-	// 创建的投递规则所属的日志主题Id。
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+	// <p>创建的投递规则所属的日志主题Id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
-	// 
-	// - 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
+	// <p>COS存储桶，详见产品支持的<a href="https://cloud.tencent.com/document/product/436/13312">存储桶命名规范</a>。    </p><ul><li>通过<a href="https://cloud.tencent.com/document/product/436/8291">GET Service（List Buckets）</a>获取COS存储桶。</li></ul>
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 投递规则投递的新的目录前缀。
-	// - 仅支持0-9A-Za-z-_/
-	// - 最大支持256个字符
+	// <p>投递规则投递的新的目录前缀。</p><ul><li>仅支持0-9A-Za-z-_/</li><li>最大支持256个字符</li></ul>
 	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
-	// 投递规则的名字。最大支持255个字符
+	// <p>投递规则的名字。最大支持255个字符</p>
 	ShipperName *string `json:"ShipperName,omitnil,omitempty" name:"ShipperName"`
 
-	// 投递的时间间隔，单位 秒，默认300，范围 300-900
+	// <p>投递的时间间隔，单位 秒，默认300，范围 300-900</p>
 	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 投递的文件的最大值，单位 MB，默认256，范围 5-256
+	// <p>投递的文件的最大值，单位 MB，默认256，范围 5-256</p>
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递
+	// <p>投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递</p>
 	FilterRules []*FilterRuleInfo `json:"FilterRules,omitnil,omitempty" name:"FilterRules"`
 
-	// 投递日志的分区规则，支持strftime的时间格式表示
+	// <p>投递日志的分区规则，支持strftime的时间格式表示</p>
 	Partition *string `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 投递日志的压缩配置
+	// <p>投递日志的压缩配置</p>
 	Compress *CompressInfo `json:"Compress,omitnil,omitempty" name:"Compress"`
 
-	// 投递日志的内容格式配置
+	// <p>投递日志的内容格式配置</p>
 	Content *ContentInfo `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
+	// <p>投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）</p>
 	FilenameMode *uint64 `json:"FilenameMode,omitnil,omitempty" name:"FilenameMode"`
 
-	// 投递数据范围的开始时间点（秒级时间戳），不能超出日志主题的生命周期起点。
-	// 如果用户不填写，默认为用户新建投递任务的时间。
+	// <p>投递数据范围的开始时间点（秒级时间戳），不能超出日志主题的生命周期起点。<br>如果用户不填写，默认为用户新建投递任务的时间。</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 投递数据范围的结束时间点（秒级时间戳），不能填写未来时间。
-	// 如果用户不填写，默认为持续投递，即无限。
+	// <p>投递数据范围的结束时间点（秒级时间戳），不能填写未来时间。<br>如果用户不填写，默认为持续投递，即无限。</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 对象存储类型，默认值为 STANDARD。枚举值请参见[ 存储类型概述](https://cloud.tencent.com/document/product/436/33417) 文档。
-	// 参考值有：
-	// 
-	// - STANDARD：标准存储
-	// - STANDARD_IA：低频存储
-	// - ARCHIVE：归档存储
-	// - DEEP_ARCHIVE：深度归档存储
-	// - MAZ_STANDARD：标准存储（多 AZ）
-	// - MAZ_STANDARD_IA：低频存储（多 AZ）
-	// - INTELLIGENT_TIERING：智能分层存储
-	// - MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
+	// <p>对象存储类型，默认值为 STANDARD。枚举值请参见<a href="https://cloud.tencent.com/document/product/436/33417"> 存储类型概述</a> 文档。<br>参考值有：</p><ul><li>STANDARD：标准存储</li><li>STANDARD_IA：低频存储</li><li>ARCHIVE：归档存储</li><li>DEEP_ARCHIVE：深度归档存储</li><li>MAZ_STANDARD：标准存储（多 AZ）</li><li>MAZ_STANDARD_IA：低频存储（多 AZ）</li><li>INTELLIGENT_TIERING：智能分层存储</li><li>MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）</li></ul>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+	// <p>角色访问描述名 <a href="https://cloud.tencent.com/document/product/598/19381">创建角色</a></p>
 	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
 
-	// 外部ID
+	// <p>外部ID</p>
 	ExternalId *string `json:"ExternalId,omitnil,omitempty" name:"ExternalId"`
+
+	// <p>用于生成投递到COS 的文件路径中的时间变量</p><p>入参限制：支持下面时区列表</p><ul><li>GMT-12:00</li><li>GMT-11:00</li><li>GMT-10:00</li><li>GMT-09:30</li><li>GMT-09:00</li><li>GMT-08:00</li><li>GMT-07:00</li><li>GMT-06:00</li><li>GMT-05:00</li><li>GMT-04:00</li><li>GMT-03:30</li><li>GMT-03:00</li><li>GMT-02:00</li><li>GMT-01:00</li><li>GMT+00:00</li><li>GMT+01:00</li><li>GMT+02:00</li><li>GMT+03:30</li><li>GMT+04:00</li><li>GMT+04:30</li><li>GMT+05:00</li><li>GMT+05:30</li><li>GMT+05:45</li><li>GMT+06:00</li><li>GMT+06:30</li><li>GMT+07:00</li><li>GMT+08:00</li><li>GMT+09:00</li><li>GMT+09:30</li><li>GMT+10:00</li><li>GMT+10:30</li><li>GMT+11:00</li><li>GMT+11:30</li><li>GMT+12:00</li><li>GMT+12:45</li><li>GMT+13:00</li><li>GMT+14:00</li><li>UTC-11:00</li><li>UTC-10:00</li><li>UTC-09:00</li><li>UTC-08:00</li><li>UTC-12:00</li><li>UTC-07:00</li><li>UTC-06:00</li><li>UTC-05:00</li><li>UTC-04:30</li><li>UTC-04:00</li><li>UTC-03:30</li><li>UTC-03:00</li><li>UTC-02:00</li><li>UTC-01:00</li><li>UTC+00:00</li><li>UTC+01:00</li><li>UTC+02:00</li><li>UTC+03:00</li><li>UTC+03:30</li><li>UTC+04:00</li><li>UTC+04:30</li><li>UTC+05:00</li><li>UTC+05:45</li><li>UTC+06:00</li><li>UTC+06:30</li><li>UTC+07:00</li><li>UTC+08:00</li><li>UTC+09:00</li><li>UTC+09:30</li><li>UTC+10:00</li><li>UTC+11:00</li><li>UTC+12:00</li><li>UTC+13:00</li></ul>
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// <p>预过滤处理-对写入COS原始数据进行预过滤处理</p>
+	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
 }
 
 func (r *CreateShipperRequest) ToJsonString() string {
@@ -5462,6 +5440,8 @@ func (r *CreateShipperRequest) FromJsonString(s string) error {
 	delete(f, "StorageType")
 	delete(f, "RoleArn")
 	delete(f, "ExternalId")
+	delete(f, "TimeZone")
+	delete(f, "DSLFilter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateShipperRequest has unknown keys!", "")
 	}
@@ -5470,7 +5450,7 @@ func (r *CreateShipperRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateShipperResponseParams struct {
-	// 投递任务ID
+	// <p>投递任务ID</p>
 	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13850,108 +13830,74 @@ type ExternalRole struct {
 }
 
 type ExtractRuleInfo struct {
-	// 时间字段的key名字，TimeKey和TimeFormat必须成对出现
+	// <p>时间字段的key名字，TimeKey和TimeFormat必须成对出现</p>
 	TimeKey *string `json:"TimeKey,omitnil,omitempty" name:"TimeKey"`
 
-	// 时间字段的格式，参考c语言的strftime函数对于时间的格式说明输出参数
-	// - 参考 [配置时间格式](https://cloud.tencent.com/document/product/614/38614) 文档 
+	// <p>时间字段的格式，参考c语言的strftime函数对于时间的格式说明输出参数</p><ul><li>参考 <a href="https://cloud.tencent.com/document/product/614/38614">配置时间格式</a> 文档</li></ul>
 	TimeFormat *string `json:"TimeFormat,omitnil,omitempty" name:"TimeFormat"`
 
-	// 分隔符类型日志的分隔符，只有LogType为delimiter_log时有效
+	// <p>分隔符类型日志的分隔符，只有LogType为delimiter_log时有效</p>
 	Delimiter *string `json:"Delimiter,omitnil,omitempty" name:"Delimiter"`
 
-	// 整条日志匹配规则，只有LogType为fullregex_log时有效
+	// <p>整条日志匹配规则，只有LogType为fullregex_log时有效</p>
 	LogRegex *string `json:"LogRegex,omitnil,omitempty" name:"LogRegex"`
 
-	// 行首匹配规则，只有LogType为multiline_log或fullregex_log时有效
+	// <p>行首匹配规则，只有LogType为multiline_log或fullregex_log时有效</p>
 	BeginRegex *string `json:"BeginRegex,omitnil,omitempty" name:"BeginRegex"`
 
-	// 取的每个字段的key名字，为空的key代表丢弃这个字段，只有LogType为delimiter_log时有效，json_log的日志使用json本身的key。限制100个。
+	// <p>取的每个字段的key名字，为空的key代表丢弃这个字段，只有LogType为delimiter_log时有效，json_log的日志使用json本身的key。限制100个。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keys []*string `json:"Keys,omitnil,omitempty" name:"Keys"`
 
-	// 日志过滤规则列表（旧版），需要过滤日志的key，及其对应的regex。
-	//  注意：2.9.3及以上版本LogListener ，建议使用AdvanceFilterRules配置日志过滤规则。
+	// <p>日志过滤规则列表（旧版），需要过滤日志的key，及其对应的regex。<br> 注意：2.9.3及以上版本LogListener ，建议使用AdvanceFilterRules配置日志过滤规则。</p>
 	FilterKeyRegex []*KeyRegexInfo `json:"FilterKeyRegex,omitnil,omitempty" name:"FilterKeyRegex"`
 
-	// 解析失败日志是否上传，true表示上传，false表示不上传
+	// <p>解析失败日志是否上传，true表示上传，false表示不上传</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnMatchUpLoadSwitch *bool `json:"UnMatchUpLoadSwitch,omitnil,omitempty" name:"UnMatchUpLoadSwitch"`
 
-	// 失败日志的key，当UnMatchUpLoadSwitch为true时必填
+	// <p>失败日志的key，当UnMatchUpLoadSwitch为true时必填</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnMatchLogKey *string `json:"UnMatchLogKey,omitnil,omitempty" name:"UnMatchLogKey"`
 
-	// 增量采集模式下的回溯数据量，默认：-1（全量采集）；其他非负数表示增量采集（从最新的位置，往前采集${Backtracking}字节（Byte）的日志）最大支持1073741824（1G）。
-	// 注意：
-	// - COS导入不支持此字段。
+	// <p>增量采集模式下的回溯数据量，默认：-1（全量采集）；其他非负数表示增量采集（从最新的位置，往前采集${Backtracking}字节（Byte）的日志）最大支持1073741824（1G）。<br>注意：</p><ul><li>COS导入不支持此字段。</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Backtracking *int64 `json:"Backtracking,omitnil,omitempty" name:"Backtracking"`
 
-	// 是否为Gbk编码。 0：否；1：是。
-	// 注意
-	// - 目前取0值时，表示UTF-8编码
-	// - COS导入不支持此字段。
+	// <p>是否为Gbk编码。 0：否；1：是。<br>注意</p><ul><li>目前取0值时，表示UTF-8编码</li><li>COS导入不支持此字段。</li></ul>
 	IsGBK *int64 `json:"IsGBK,omitnil,omitempty" name:"IsGBK"`
 
-	// 是否为标准json。  0：否； 1：是。
-	// - 标准json指采集器使用业界标准开源解析器进行json解析，非标json指采集器使用CLS自研json解析器进行解析，两种解析器没有本质区别，建议客户使用标准json进行解析。
+	// <p>是否为标准json。  0：否； 1：是。</p><ul><li>标准json指采集器使用业界标准开源解析器进行json解析，非标json指采集器使用CLS自研json解析器进行解析，两种解析器没有本质区别，建议客户使用标准json进行解析。</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JsonStandard *int64 `json:"JsonStandard,omitnil,omitempty" name:"JsonStandard"`
 
-	// syslog传输协议，取值为tcp或者udp，只有在LogType为service_syslog时生效，其余类型无需填写。
-	// 注意：
-	// - 该字段适用于：创建采集规则配置、修改采集规则配置。
-	// - COS导入不支持此字段。
+	// <p>syslog传输协议，取值为tcp或者udp，只有在LogType为service_syslog时生效，其余类型无需填写。<br>注意：</p><ul><li>该字段适用于：创建采集规则配置、修改采集规则配置。</li><li>COS导入不支持此字段。</li></ul>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// syslog系统日志采集指定采集器监听的地址和端口 ，形式：[ip]:[port]，只有在LogType为service_syslog时生效，其余类型无需填写。
-	// 注意：
-	// - 该字段适用于：创建采集规则配置、修改采集规则配置。
-	// - COS导入不支持此字段。
+	// <p>syslog系统日志采集指定采集器监听的地址和端口 ，形式：[ip]:[port]，只有在LogType为service_syslog时生效，其余类型无需填写。<br>注意：</p><ul><li>该字段适用于：创建采集规则配置、修改采集规则配置。</li><li>COS导入不支持此字段。</li></ul>
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
-	// rfc3164：指定系统日志采集使用RFC3164协议解析日志。
-	// rfc5424：指定系统日志采集使用RFC5424协议解析日志。
-	// auto：自动匹配rfc3164或者rfc5424其中一种协议。
-	// 只有在LogType为service_syslog时生效，其余类型无需填写。
-	// 注意：
-	// - 该字段适用于：创建采集规则配置、修改采集规则配置
-	// - COS导入不支持此字段。
+	// <p>rfc3164：指定系统日志采集使用RFC3164协议解析日志。<br>rfc5424：指定系统日志采集使用RFC5424协议解析日志。<br>auto：自动匹配rfc3164或者rfc5424其中一种协议。<br>只有在LogType为service_syslog时生效，其余类型无需填写。<br>注意：</p><ul><li>该字段适用于：创建采集规则配置、修改采集规则配置</li><li>COS导入不支持此字段。</li></ul>
 	ParseProtocol *string `json:"ParseProtocol,omitnil,omitempty" name:"ParseProtocol"`
 
-	// 元数据类型。0: 不使用元数据信息；1:使用机器组元数据；2:使用用户自定义元数据；3:使用采集配置路径。
-	// 注意：
-	// - COS导入不支持此字段。
+	// <p>元数据类型。0: 不使用元数据信息；1:使用机器组元数据；2:使用用户自定义元数据；3:使用采集配置路径。<br>注意：</p><ul><li>COS导入不支持此字段。</li></ul>
 	MetadataType *int64 `json:"MetadataType,omitnil,omitempty" name:"MetadataType"`
 
-	// 采集配置路径正则表达式。
-	// 
-	// ```
-	// 请用"()"标识路径中目标字段对应的正则表达式，解析时将"()"视为捕获组，并以__TAG__.{i}:{目标字段}的形式与日志一起上报，其中i为捕获组的序号。
-	// 若不希望以序号为键名，可以通过命名捕获组"(?<{键名}>{正则})"自定义键名，并以__TAG__.{键名}:{目标字段}的形式与日志一起上报。最多支持5个捕获组
-	// ```
-	// 
-	// 注意：
-	// - MetadataType为3时必填。
-	// - COS导入不支持此字段。
+	// <p>采集配置路径正则表达式。</p><p><pre><code>请用&quot;()&quot;标识路径中目标字段对应的正则表达式，解析时将&quot;()&quot;视为捕获组，并以__TAG__.{i}:{目标字段}的形式与日志一起上报，其中i为捕获组的序号。若不希望以序号为键名，可以通过命名捕获组&quot;(?&lt;{键名}&gt;{正则})&quot;自定义键名，并以__TAG__.{键名}:{目标字段}的形式与日志一起上报。最多支持5个捕获组</code></pre></p><p>注意：</p><ul><li>MetadataType为3时必填。</li><li>COS导入不支持此字段。</li></ul>
 	PathRegex *string `json:"PathRegex,omitnil,omitempty" name:"PathRegex"`
 
-	// 用户自定义元数据信息。
-	// 注意：
-	// - MetadataType为2时必填。
-	// - COS导入不支持此字段。
+	// <p>用户自定义元数据信息。<br>注意：</p><ul><li>MetadataType为2时必填。</li><li>COS导入不支持此字段。</li></ul>
 	MetaTags []*MetaTagInfo `json:"MetaTags,omitnil,omitempty" name:"MetaTags"`
 
-	// Windows事件日志采集规则，只有在LogType为windows_event_log时生效，其余类型无需填写。
+	// <p>Windows事件日志采集规则，只有在LogType为windows_event_log时生效，其余类型无需填写。</p>
 	EventLogRules []*EventLog `json:"EventLogRules,omitnil,omitempty" name:"EventLogRules"`
 
-	// 日志过滤规则列表（新版）。
-	// 注意：
-	// - 2.9.3以下版本LogListener不支持， 请使用FilterKeyRegex配置日志过滤规则。
-	// - 自建k8s采集配置（CreateConfigExtra、ModifyConfigExtra）不支持此字段。
+	// <p>日志过滤规则列表（新版）。<br>注意：</p><ul><li>2.9.3以下版本LogListener不支持， 请使用FilterKeyRegex配置日志过滤规则。</li><li>自建k8s采集配置（CreateConfigExtra、ModifyConfigExtra）不支持此字段。</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvanceFilterRules []*AdvanceFilterRuleInfo `json:"AdvanceFilterRules,omitnil,omitempty" name:"AdvanceFilterRules"`
+
+	// <p>原始日志的键名称(Key)；所有原始日志， 均以您指定的键名称（Key），原始日志内容作为值（Value）进行上传，为空时表示不开启原始日志上传。</p><ul><li>COS导入不支持此字段。</li></ul>
+	RawLogKey *string `json:"RawLogKey,omitnil,omitempty" name:"RawLogKey"`
 }
 
 type FilePathInfo struct {
@@ -18482,131 +18428,111 @@ func (r *ModifyScheduledSqlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyShipperRequestParams struct {
-	// 投递规则Id。
-	// 
-	// - 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745)获取ShipperId。
+	// <p>投递规则Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/58745">获取投递任务列表</a>获取ShipperId。</li></ul>
 	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
 
-	// COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
-	// 
-	// - 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
+	// <p>COS存储桶，详见产品支持的<a href="https://cloud.tencent.com/document/product/436/13312">存储桶命名规范</a>。    </p><ul><li>通过<a href="https://cloud.tencent.com/document/product/436/8291">GET Service（List Buckets）</a>获取COS存储桶。</li></ul>
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 投递规则投递的新的目录前缀。
-	// - 仅支持0-9A-Za-z-_/
-	// - 最大支持256个字符
+	// <p>投递规则投递的新的目录前缀。</p><ul><li>仅支持0-9A-Za-z-_/</li><li>最大支持256个字符</li></ul>
 	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
-	// 投递规则的开关状态。true：开启投递任务；false：关闭投递任务。
+	// <p>投递规则的开关状态。true：开启投递任务；false：关闭投递任务。</p>
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 投递规则的名字
+	// <p>投递规则的名字</p>
 	ShipperName *string `json:"ShipperName,omitnil,omitempty" name:"ShipperName"`
 
-	// 投递的时间间隔，单位 秒，默认300，范围 300-900
+	// <p>投递的时间间隔，单位 秒，默认300，范围 300-900</p>
 	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 投递的文件的最大值，单位 MB，默认256，范围 5-256
+	// <p>投递的文件的最大值，单位 MB，默认256，范围 5-256</p>
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递
+	// <p>投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递</p>
 	FilterRules []*FilterRuleInfo `json:"FilterRules,omitnil,omitempty" name:"FilterRules"`
 
-	// 投递日志的分区规则，支持strftime的时间格式表示
+	// <p>投递日志的分区规则，支持strftime的时间格式表示</p>
 	Partition *string `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 投递日志的压缩配置
+	// <p>投递日志的压缩配置</p>
 	Compress *CompressInfo `json:"Compress,omitnil,omitempty" name:"Compress"`
 
-	// 投递日志的内容格式配置
+	// <p>投递日志的内容格式配置</p>
 	Content *ContentInfo `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 投递文件命名配置，0：随机数命名，1：投递时间命名。
+	// <p>投递文件命名配置，0：随机数命名，1：投递时间命名。</p>
 	FilenameMode *uint64 `json:"FilenameMode,omitnil,omitempty" name:"FilenameMode"`
 
-	// 对象存储类型，默认值为 STANDARD。枚举值请参见[ 存储类型概述](https://cloud.tencent.com/document/product/436/33417) 文档。
-	// 参考值有：
-	// 
-	// - STANDARD：标准存储
-	// - STANDARD_IA：低频存储
-	// - ARCHIVE：归档存储
-	// - DEEP_ARCHIVE：深度归档存储
-	// - MAZ_STANDARD：标准存储（多 AZ）
-	// - MAZ_STANDARD_IA：低频存储（多 AZ）
-	// - INTELLIGENT_TIERING：智能分层存储
-	// - MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
+	// <p>对象存储类型，默认值为 STANDARD。枚举值请参见<a href="https://cloud.tencent.com/document/product/436/33417"> 存储类型概述</a> 文档。<br>参考值有：</p><ul><li>STANDARD：标准存储</li><li>STANDARD_IA：低频存储</li><li>ARCHIVE：归档存储</li><li>DEEP_ARCHIVE：深度归档存储</li><li>MAZ_STANDARD：标准存储（多 AZ）</li><li>MAZ_STANDARD_IA：低频存储（多 AZ）</li><li>INTELLIGENT_TIERING：智能分层存储</li><li>MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）</li></ul>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+	// <p>角色访问描述名 <a href="https://cloud.tencent.com/document/product/598/19381">创建角色</a></p>
 	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
 
-	// 外部ID
+	// <p>外部ID</p>
 	ExternalId *string `json:"ExternalId,omitnil,omitempty" name:"ExternalId"`
+
+	// <p>用于生成投递到COS 的文件路径中的时间变量</p><p>入参限制：支持下面时区列表</p><ul><li>GMT-12:00</li><li>GMT-11:00</li><li>GMT-10:00</li><li>GMT-09:30</li><li>GMT-09:00</li><li>GMT-08:00</li><li>GMT-07:00</li><li>GMT-06:00</li><li>GMT-05:00</li><li>GMT-04:00</li><li>GMT-03:30</li><li>GMT-03:00</li><li>GMT-02:00</li><li>GMT-01:00</li><li>GMT+00:00</li><li>GMT+01:00</li><li>GMT+02:00</li><li>GMT+03:30</li><li>GMT+04:00</li><li>GMT+04:30</li><li>GMT+05:00</li><li>GMT+05:30</li><li>GMT+05:45</li><li>GMT+06:00</li><li>GMT+06:30</li><li>GMT+07:00</li><li>GMT+08:00</li><li>GMT+09:00</li><li>GMT+09:30</li><li>GMT+10:00</li><li>GMT+10:30</li><li>GMT+11:00</li><li>GMT+11:30</li><li>GMT+12:00</li><li>GMT+12:45</li><li>GMT+13:00</li><li>GMT+14:00</li><li>UTC-11:00</li><li>UTC-10:00</li><li>UTC-09:00</li><li>UTC-08:00</li><li>UTC-12:00</li><li>UTC-07:00</li><li>UTC-06:00</li><li>UTC-05:00</li><li>UTC-04:30</li><li>UTC-04:00</li><li>UTC-03:30</li><li>UTC-03:00</li><li>UTC-02:00</li><li>UTC-01:00</li><li>UTC+00:00</li><li>UTC+01:00</li><li>UTC+02:00</li><li>UTC+03:00</li><li>UTC+03:30</li><li>UTC+04:00</li><li>UTC+04:30</li><li>UTC+05:00</li><li>UTC+05:45</li><li>UTC+06:00</li><li>UTC+06:30</li><li>UTC+07:00</li><li>UTC+08:00</li><li>UTC+09:00</li><li>UTC+09:30</li><li>UTC+10:00</li><li>UTC+11:00</li><li>UTC+12:00</li><li>UTC+13:00</li></ul>
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// <p>预过滤处理-对写入COS原始数据进行预过滤处理</p>
+	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
 }
 
 type ModifyShipperRequest struct {
 	*tchttp.BaseRequest
 	
-	// 投递规则Id。
-	// 
-	// - 通过 [获取投递任务列表](https://cloud.tencent.com/document/product/614/58745)获取ShipperId。
+	// <p>投递规则Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/58745">获取投递任务列表</a>获取ShipperId。</li></ul>
 	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
 
-	// COS存储桶，详见产品支持的[存储桶命名规范](https://cloud.tencent.com/document/product/436/13312)。	
-	// 
-	// - 通过[GET Service（List Buckets）](https://cloud.tencent.com/document/product/436/8291)获取COS存储桶。
+	// <p>COS存储桶，详见产品支持的<a href="https://cloud.tencent.com/document/product/436/13312">存储桶命名规范</a>。    </p><ul><li>通过<a href="https://cloud.tencent.com/document/product/436/8291">GET Service（List Buckets）</a>获取COS存储桶。</li></ul>
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 投递规则投递的新的目录前缀。
-	// - 仅支持0-9A-Za-z-_/
-	// - 最大支持256个字符
+	// <p>投递规则投递的新的目录前缀。</p><ul><li>仅支持0-9A-Za-z-_/</li><li>最大支持256个字符</li></ul>
 	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
 
-	// 投递规则的开关状态。true：开启投递任务；false：关闭投递任务。
+	// <p>投递规则的开关状态。true：开启投递任务；false：关闭投递任务。</p>
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 投递规则的名字
+	// <p>投递规则的名字</p>
 	ShipperName *string `json:"ShipperName,omitnil,omitempty" name:"ShipperName"`
 
-	// 投递的时间间隔，单位 秒，默认300，范围 300-900
+	// <p>投递的时间间隔，单位 秒，默认300，范围 300-900</p>
 	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 投递的文件的最大值，单位 MB，默认256，范围 5-256
+	// <p>投递的文件的最大值，单位 MB，默认256，范围 5-256</p>
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递
+	// <p>投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递</p>
 	FilterRules []*FilterRuleInfo `json:"FilterRules,omitnil,omitempty" name:"FilterRules"`
 
-	// 投递日志的分区规则，支持strftime的时间格式表示
+	// <p>投递日志的分区规则，支持strftime的时间格式表示</p>
 	Partition *string `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 投递日志的压缩配置
+	// <p>投递日志的压缩配置</p>
 	Compress *CompressInfo `json:"Compress,omitnil,omitempty" name:"Compress"`
 
-	// 投递日志的内容格式配置
+	// <p>投递日志的内容格式配置</p>
 	Content *ContentInfo `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 投递文件命名配置，0：随机数命名，1：投递时间命名。
+	// <p>投递文件命名配置，0：随机数命名，1：投递时间命名。</p>
 	FilenameMode *uint64 `json:"FilenameMode,omitnil,omitempty" name:"FilenameMode"`
 
-	// 对象存储类型，默认值为 STANDARD。枚举值请参见[ 存储类型概述](https://cloud.tencent.com/document/product/436/33417) 文档。
-	// 参考值有：
-	// 
-	// - STANDARD：标准存储
-	// - STANDARD_IA：低频存储
-	// - ARCHIVE：归档存储
-	// - DEEP_ARCHIVE：深度归档存储
-	// - MAZ_STANDARD：标准存储（多 AZ）
-	// - MAZ_STANDARD_IA：低频存储（多 AZ）
-	// - INTELLIGENT_TIERING：智能分层存储
-	// - MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）
+	// <p>对象存储类型，默认值为 STANDARD。枚举值请参见<a href="https://cloud.tencent.com/document/product/436/33417"> 存储类型概述</a> 文档。<br>参考值有：</p><ul><li>STANDARD：标准存储</li><li>STANDARD_IA：低频存储</li><li>ARCHIVE：归档存储</li><li>DEEP_ARCHIVE：深度归档存储</li><li>MAZ_STANDARD：标准存储（多 AZ）</li><li>MAZ_STANDARD_IA：低频存储（多 AZ）</li><li>INTELLIGENT_TIERING：智能分层存储</li><li>MAZ_INTELLIGENT_TIERING：智能分层存储（多 AZ）</li></ul>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+	// <p>角色访问描述名 <a href="https://cloud.tencent.com/document/product/598/19381">创建角色</a></p>
 	RoleArn *string `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
 
-	// 外部ID
+	// <p>外部ID</p>
 	ExternalId *string `json:"ExternalId,omitnil,omitempty" name:"ExternalId"`
+
+	// <p>用于生成投递到COS 的文件路径中的时间变量</p><p>入参限制：支持下面时区列表</p><ul><li>GMT-12:00</li><li>GMT-11:00</li><li>GMT-10:00</li><li>GMT-09:30</li><li>GMT-09:00</li><li>GMT-08:00</li><li>GMT-07:00</li><li>GMT-06:00</li><li>GMT-05:00</li><li>GMT-04:00</li><li>GMT-03:30</li><li>GMT-03:00</li><li>GMT-02:00</li><li>GMT-01:00</li><li>GMT+00:00</li><li>GMT+01:00</li><li>GMT+02:00</li><li>GMT+03:30</li><li>GMT+04:00</li><li>GMT+04:30</li><li>GMT+05:00</li><li>GMT+05:30</li><li>GMT+05:45</li><li>GMT+06:00</li><li>GMT+06:30</li><li>GMT+07:00</li><li>GMT+08:00</li><li>GMT+09:00</li><li>GMT+09:30</li><li>GMT+10:00</li><li>GMT+10:30</li><li>GMT+11:00</li><li>GMT+11:30</li><li>GMT+12:00</li><li>GMT+12:45</li><li>GMT+13:00</li><li>GMT+14:00</li><li>UTC-11:00</li><li>UTC-10:00</li><li>UTC-09:00</li><li>UTC-08:00</li><li>UTC-12:00</li><li>UTC-07:00</li><li>UTC-06:00</li><li>UTC-05:00</li><li>UTC-04:30</li><li>UTC-04:00</li><li>UTC-03:30</li><li>UTC-03:00</li><li>UTC-02:00</li><li>UTC-01:00</li><li>UTC+00:00</li><li>UTC+01:00</li><li>UTC+02:00</li><li>UTC+03:00</li><li>UTC+03:30</li><li>UTC+04:00</li><li>UTC+04:30</li><li>UTC+05:00</li><li>UTC+05:45</li><li>UTC+06:00</li><li>UTC+06:30</li><li>UTC+07:00</li><li>UTC+08:00</li><li>UTC+09:00</li><li>UTC+09:30</li><li>UTC+10:00</li><li>UTC+11:00</li><li>UTC+12:00</li><li>UTC+13:00</li></ul>
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// <p>预过滤处理-对写入COS原始数据进行预过滤处理</p>
+	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
 }
 
 func (r *ModifyShipperRequest) ToJsonString() string {
@@ -18636,6 +18562,8 @@ func (r *ModifyShipperRequest) FromJsonString(s string) error {
 	delete(f, "StorageType")
 	delete(f, "RoleArn")
 	delete(f, "ExternalId")
+	delete(f, "TimeZone")
+	delete(f, "DSLFilter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyShipperRequest has unknown keys!", "")
 	}
@@ -20479,159 +20407,103 @@ type SearchLogInfos struct {
 
 // Predefined struct for user
 type SearchLogRequestParams struct {
-	// 要检索分析的日志的起始时间，**Unix时间戳（毫秒）**
+	// <p>要检索分析的日志的起始时间，<strong>Unix时间戳（毫秒）</strong></p>
 	From *int64 `json:"From,omitnil,omitempty" name:"From"`
 
-	// 要检索分析的日志的结束时间，**Unix时间戳（毫秒）**
+	// <p>要检索分析的日志的结束时间，<strong>Unix时间戳（毫秒）</strong></p>
 	To *int64 `json:"To,omitnil,omitempty" name:"To"`
 
-	// 检索分析语句，最大长度为12KB
-	// 语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
-	// 使用*或空字符串可查询所有日志
-	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+	// <p>检索分析语句，最大长度为12KB<br>语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句<br>使用*或空字符串可查询所有日志</p><p>默认值：空字符串</p>
+	QueryString *string `json:"QueryString,omitnil,omitempty" name:"QueryString"`
 
-	// 检索语法规则，默认值为0，推荐使用1 。
-	// - 0：Lucene语法
-	// - 1：CQL语法（CLS Query Language，日志服务专用检索语法）
-	// 
-	//  ⚠️⚠️ **注意**
-	//  **该参数值建议设置为 1，使用 CQL 语法规则，控制台日志检索及仪表盘默认均使用该语法规则。**
-	//  该参数值未指定或者为 0 时，将使用 Lucene 语法，语法容易报错且查询结果与控制台默认语法规则不一致。详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>。
-	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
+	// <p>检索语法规则，默认值为1，推荐使用1 。</p><ul><li>0：Lucene语法</li><li>1：CQL语法（CLS Query Language，日志服务专用检索语法）</li></ul><p>详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>。</p><p>默认值：1</p>
+	QuerySyntax *uint64 `json:"QuerySyntax,omitnil,omitempty" name:"QuerySyntax"`
 
-	// - 要检索分析的日志主题ID，仅能指定一个日志主题。
-	// - 如需同时检索多个日志主题，请使用Topics参数。
-	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+	// <ul><li>要检索分析的日志主题ID，仅能指定一个日志主题。</li><li>如需同时检索多个日志主题，请使用Topics参数。</li><li>TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// - 要检索分析的日志主题列表，最大支持50个日志主题。
-	// - 检索单个日志主题时请使用TopicId。
-	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+	// <ul><li>要检索分析的日志主题列表，最大支持50个日志主题。</li><li>检索单个日志主题时请使用TopicId。</li><li>TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。</li></ul>
 	Topics []*MultiTopicSearchInformation `json:"Topics,omitnil,omitempty" name:"Topics"`
 
-	// 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
-	// 注意：
-	// * 仅当检索分析语句(Query)不包含SQL时有效
-	// * SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
+	// <p>原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a></li></ul>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 表示单次查询返回的原始日志条数，默认为100，最大值为1000。
-	// 注意：
-	// * 仅当检索分析语句(Query)不包含SQL时有效
-	// * SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
-	// 
-	// 可通过两种方式获取后续更多日志：
-	// * Context:透传上次接口返回的Context值，获取后续更多日志，总计最多可获取1万条原始日志
-	// * Offset:偏移量，表示从第几行开始返回原始日志，无日志条数限制
+	// <p>表示单次查询返回的原始日志条数，默认为100，最大值为1000。<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a></li></ul><p>可通过两种方式获取后续更多日志：</p><ul><li>Context:透传上次接口返回的Context值，获取后续更多日志，总计最多可获取1万条原始日志</li><li>Offset:偏移量，表示从第几行开始返回原始日志，无日志条数限制</li></ul>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 查询原始日志的偏移量，表示从第几行开始返回原始日志，默认为0。 
-	// 注意：
-	// * 仅当检索分析语句(Query)不包含SQL时有效
-	// * 不能与Context参数同时使用
-	// * 仅适用于单日志主题检索
+	// <p>查询原始日志的偏移量，表示从第几行开始返回原始日志，默认为0。<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>不能与Context参数同时使用</li><li>仅适用于单日志主题检索</li></ul>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
-	// 注意：
-	// * 透传该参数时，请勿修改除该参数外的其它参数
-	// * 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
-	// * 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+	// <p>透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。<br>注意：</p><ul><li>透传该参数时，请勿修改除该参数外的其它参数</li><li>仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context</li><li>仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a></li></ul>
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
-	// 执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。
-	// 0：自动采样;
-	// 0～1：按指定采样率采样，例如0.02;
-	// 1：不采样，即精确分析
-	// 默认值为1
+	// <p>执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。<br>0：自动采样;<br>0～1：按指定采样率采样，例如0.02;<br>1：不采样，即精确分析<br>默认值为1</p>
 	SamplingRate *float64 `json:"SamplingRate,omitnil,omitempty" name:"SamplingRate"`
 
-	// 为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效
-	// 为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
-	// 两种返回方式在编码格式上有少量区别，建议使用true
+	// <p>为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效<br>为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效<br>两种返回方式在编码格式上有少量区别，建议使用true</p>
 	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
 
-	// 是否高亮符合检索条件的关键词，一般用于高亮显示。仅支持键值检索，不支持全文检索
+	// <p>是否高亮符合检索条件的关键词，一般用于高亮显示。仅支持键值检索，不支持全文检索</p>
 	HighLight *bool `json:"HighLight,omitnil,omitempty" name:"HighLight"`
+
+	// <p><strong>Query字段已废弃，请使用QueryString字段</strong><br>字段差异：未指定语法规则时，Query默认使用Lucene语法，QueryString默认使用CQL语法，语法差异详见 <a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules">语法规则</a></p>
+	//
+	// Deprecated: Query is deprecated.
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// <p><strong>SyntaxRule字段已废弃，请使用QuerySyntax字段</strong></p><p>字段差异：</p><ul><li>SyntaxRule与Query字段搭配使用，默认使用Lucene语法</li><li>QuerySyntax与QueryString字段搭配使用，默认使用CQL语法</li></ul><p>SyntaxRule参数说明：</p><ul><li>0：Lucene语法</li><li>1：CQL语法（CLS Query Language，日志服务专用检索语法）</li></ul>
+	//
+	// Deprecated: SyntaxRule is deprecated.
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 }
 
 type SearchLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要检索分析的日志的起始时间，**Unix时间戳（毫秒）**
+	// <p>要检索分析的日志的起始时间，<strong>Unix时间戳（毫秒）</strong></p>
 	From *int64 `json:"From,omitnil,omitempty" name:"From"`
 
-	// 要检索分析的日志的结束时间，**Unix时间戳（毫秒）**
+	// <p>要检索分析的日志的结束时间，<strong>Unix时间戳（毫秒）</strong></p>
 	To *int64 `json:"To,omitnil,omitempty" name:"To"`
 
-	// 检索分析语句，最大长度为12KB
-	// 语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
-	// 使用*或空字符串可查询所有日志
-	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+	// <p>检索分析语句，最大长度为12KB<br>语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句<br>使用*或空字符串可查询所有日志</p><p>默认值：空字符串</p>
+	QueryString *string `json:"QueryString,omitnil,omitempty" name:"QueryString"`
 
-	// 检索语法规则，默认值为0，推荐使用1 。
-	// - 0：Lucene语法
-	// - 1：CQL语法（CLS Query Language，日志服务专用检索语法）
-	// 
-	//  ⚠️⚠️ **注意**
-	//  **该参数值建议设置为 1，使用 CQL 语法规则，控制台日志检索及仪表盘默认均使用该语法规则。**
-	//  该参数值未指定或者为 0 时，将使用 Lucene 语法，语法容易报错且查询结果与控制台默认语法规则不一致。详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>。
-	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
+	// <p>检索语法规则，默认值为1，推荐使用1 。</p><ul><li>0：Lucene语法</li><li>1：CQL语法（CLS Query Language，日志服务专用检索语法）</li></ul><p>详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>。</p><p>默认值：1</p>
+	QuerySyntax *uint64 `json:"QuerySyntax,omitnil,omitempty" name:"QuerySyntax"`
 
-	// - 要检索分析的日志主题ID，仅能指定一个日志主题。
-	// - 如需同时检索多个日志主题，请使用Topics参数。
-	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+	// <ul><li>要检索分析的日志主题ID，仅能指定一个日志主题。</li><li>如需同时检索多个日志主题，请使用Topics参数。</li><li>TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// - 要检索分析的日志主题列表，最大支持50个日志主题。
-	// - 检索单个日志主题时请使用TopicId。
-	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+	// <ul><li>要检索分析的日志主题列表，最大支持50个日志主题。</li><li>检索单个日志主题时请使用TopicId。</li><li>TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。</li></ul>
 	Topics []*MultiTopicSearchInformation `json:"Topics,omitnil,omitempty" name:"Topics"`
 
-	// 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
-	// 注意：
-	// * 仅当检索分析语句(Query)不包含SQL时有效
-	// * SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
+	// <p>原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a></li></ul>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 表示单次查询返回的原始日志条数，默认为100，最大值为1000。
-	// 注意：
-	// * 仅当检索分析语句(Query)不包含SQL时有效
-	// * SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
-	// 
-	// 可通过两种方式获取后续更多日志：
-	// * Context:透传上次接口返回的Context值，获取后续更多日志，总计最多可获取1万条原始日志
-	// * Offset:偏移量，表示从第几行开始返回原始日志，无日志条数限制
+	// <p>表示单次查询返回的原始日志条数，默认为100，最大值为1000。<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a></li></ul><p>可通过两种方式获取后续更多日志：</p><ul><li>Context:透传上次接口返回的Context值，获取后续更多日志，总计最多可获取1万条原始日志</li><li>Offset:偏移量，表示从第几行开始返回原始日志，无日志条数限制</li></ul>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 查询原始日志的偏移量，表示从第几行开始返回原始日志，默认为0。 
-	// 注意：
-	// * 仅当检索分析语句(Query)不包含SQL时有效
-	// * 不能与Context参数同时使用
-	// * 仅适用于单日志主题检索
+	// <p>查询原始日志的偏移量，表示从第几行开始返回原始日志，默认为0。<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>不能与Context参数同时使用</li><li>仅适用于单日志主题检索</li></ul>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
-	// 注意：
-	// * 透传该参数时，请勿修改除该参数外的其它参数
-	// * 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
-	// * 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+	// <p>透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。<br>注意：</p><ul><li>透传该参数时，请勿修改除该参数外的其它参数</li><li>仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context</li><li>仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a></li></ul>
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
-	// 执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。
-	// 0：自动采样;
-	// 0～1：按指定采样率采样，例如0.02;
-	// 1：不采样，即精确分析
-	// 默认值为1
+	// <p>执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。<br>0：自动采样;<br>0～1：按指定采样率采样，例如0.02;<br>1：不采样，即精确分析<br>默认值为1</p>
 	SamplingRate *float64 `json:"SamplingRate,omitnil,omitempty" name:"SamplingRate"`
 
-	// 为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效
-	// 为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
-	// 两种返回方式在编码格式上有少量区别，建议使用true
+	// <p>为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效<br>为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效<br>两种返回方式在编码格式上有少量区别，建议使用true</p>
 	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
 
-	// 是否高亮符合检索条件的关键词，一般用于高亮显示。仅支持键值检索，不支持全文检索
+	// <p>是否高亮符合检索条件的关键词，一般用于高亮显示。仅支持键值检索，不支持全文检索</p>
 	HighLight *bool `json:"HighLight,omitnil,omitempty" name:"HighLight"`
+
+	// <p><strong>Query字段已废弃，请使用QueryString字段</strong><br>字段差异：未指定语法规则时，Query默认使用Lucene语法，QueryString默认使用CQL语法，语法差异详见 <a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules">语法规则</a></p>
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// <p><strong>SyntaxRule字段已废弃，请使用QuerySyntax字段</strong></p><p>字段差异：</p><ul><li>SyntaxRule与Query字段搭配使用，默认使用Lucene语法</li><li>QuerySyntax与QueryString字段搭配使用，默认使用CQL语法</li></ul><p>SyntaxRule参数说明：</p><ul><li>0：Lucene语法</li><li>1：CQL语法（CLS Query Language，日志服务专用检索语法）</li></ul>
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 }
 
 func (r *SearchLogRequest) ToJsonString() string {
@@ -20648,8 +20520,8 @@ func (r *SearchLogRequest) FromJsonString(s string) error {
 	}
 	delete(f, "From")
 	delete(f, "To")
-	delete(f, "Query")
-	delete(f, "SyntaxRule")
+	delete(f, "QueryString")
+	delete(f, "QuerySyntax")
 	delete(f, "TopicId")
 	delete(f, "Topics")
 	delete(f, "Sort")
@@ -20659,6 +20531,8 @@ func (r *SearchLogRequest) FromJsonString(s string) error {
 	delete(f, "SamplingRate")
 	delete(f, "UseNewAnalysis")
 	delete(f, "HighLight")
+	delete(f, "Query")
+	delete(f, "SyntaxRule")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchLogRequest has unknown keys!", "")
 	}
@@ -20667,46 +20541,39 @@ func (r *SearchLogRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SearchLogResponseParams struct {
-	// 透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时。
-	// 注意：
-	// * 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
+	// <p>透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时。<br>注意：</p><ul><li>仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context</li></ul>
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
-	// 符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志
-	// 注意：仅当检索分析语句(Query)不包含SQL时有效
+	// <p>符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志<br>注意：仅当检索分析语句(Query)不包含SQL时有效</p>
 	ListOver *bool `json:"ListOver,omitnil,omitempty" name:"ListOver"`
 
-	// 返回的是否为统计分析（即SQL）结果
+	// <p>返回的是否为统计分析（即SQL）结果</p>
 	Analysis *bool `json:"Analysis,omitnil,omitempty" name:"Analysis"`
 
-	// 匹配检索条件的原始日志
+	// <p>匹配检索条件的原始日志</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*LogInfo `json:"Results,omitnil,omitempty" name:"Results"`
 
-	// 日志统计分析结果的列名
-	// 当UseNewAnalysis为false时生效
+	// <p>日志统计分析结果的列名<br>当UseNewAnalysis为false时生效</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColNames []*string `json:"ColNames,omitnil,omitempty" name:"ColNames"`
 
-	// 日志统计分析结果
-	// 当UseNewAnalysis为false时生效
+	// <p>日志统计分析结果<br>当UseNewAnalysis为false时生效</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnalysisResults []*LogItems `json:"AnalysisResults,omitnil,omitempty" name:"AnalysisResults"`
 
-	// 日志统计分析结果
-	// 当UseNewAnalysis为true时生效
+	// <p>日志统计分析结果<br>当UseNewAnalysis为true时生效</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnalysisRecords []*string `json:"AnalysisRecords,omitnil,omitempty" name:"AnalysisRecords"`
 
-	// 日志统计分析结果的列属性
-	// 当UseNewAnalysis为true时生效
+	// <p>日志统计分析结果的列属性<br>当UseNewAnalysis为true时生效</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Columns []*Column `json:"Columns,omitnil,omitempty" name:"Columns"`
 
-	// 本次统计分析使用的采样率
+	// <p>本次统计分析使用的采样率</p>
 	SamplingRate *float64 `json:"SamplingRate,omitnil,omitempty" name:"SamplingRate"`
 
-	// 使用多日志主题检索时，各个日志主题的基本信息，例如报错信息。
+	// <p>使用多日志主题检索时，各个日志主题的基本信息，例如报错信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Topics *SearchLogTopics `json:"Topics,omitnil,omitempty" name:"Topics"`
 
@@ -20890,6 +20757,12 @@ type ShipperInfo struct {
 
 	// <p>任务运行状态。支持<code>0</code>,<code>1</code>,<code>2</code></p><ul><li><code>0</code>: 停止</li><li><code>1</code>: 运行中</li><li><code>2</code>: 异常</li></ul>
 	TaskStatus *uint64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
+
+	// <p>用于生成投递到COS 的文件路径中的时间变量</p>
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// <p>预过滤处理-对写入COS原始数据进行预过滤处理</p>
+	DSLFilter *string `json:"DSLFilter,omitnil,omitempty" name:"DSLFilter"`
 }
 
 type ShipperTaskInfo struct {

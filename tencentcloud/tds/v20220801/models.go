@@ -52,68 +52,68 @@ type DataAuthorizationInfo struct {
 
 // Predefined struct for user
 type DescribeFinanceFraudUltimateRequestParams struct {
-	// 客户端通过SDK获取的设备Token
+	// <p>客户端通过SDK获取的设备Token</p>
 	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 
-	// 使用场景。目前仅支持login-登录场景、register-注册场景
+	// <p>使用场景。目前仅支持login-登录场景、register-注册场景</p>
 	SceneCode *string `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
 
-	// 用户唯一标识
+	// <p>用户唯一标识</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 事件时间戳（毫秒）
+	// <p>事件时间戳（毫秒）</p>
 	EventTime *uint64 `json:"EventTime,omitnil,omitempty" name:"EventTime"`
 
-	// 事件耗时（毫秒），例如进入登录界面到点击登录按钮耗时
+	// <p>事件耗时（毫秒），例如进入登录界面到点击登录按钮耗时</p>
 	ElapsedTime *uint64 `json:"ElapsedTime,omitnil,omitempty" name:"ElapsedTime"`
 
-	// 微信的OpenId
+	// <p>微信的OpenId</p>
 	WeChatOpenId *string `json:"WeChatOpenId,omitnil,omitempty" name:"WeChatOpenId"`
 
-	// 手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5
+	// <p>手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5</p>
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
-	// 业务客户端IP
+	// <p>业务客户端IP</p>
 	BizClientIp *string `json:"BizClientIp,omitnil,omitempty" name:"BizClientIp"`
 
-	// QQ的OpenId
+	// <p>QQ的OpenId</p>
 	QQOpenId *string `json:"QQOpenId,omitnil,omitempty" name:"QQOpenId"`
 
-	// 数据授权信息
+	// <p>数据授权信息</p>
 	DataAuthorization *DataAuthorizationInfo `json:"DataAuthorization,omitnil,omitempty" name:"DataAuthorization"`
 }
 
 type DescribeFinanceFraudUltimateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 客户端通过SDK获取的设备Token
+	// <p>客户端通过SDK获取的设备Token</p>
 	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 
-	// 使用场景。目前仅支持login-登录场景、register-注册场景
+	// <p>使用场景。目前仅支持login-登录场景、register-注册场景</p>
 	SceneCode *string `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
 
-	// 用户唯一标识
+	// <p>用户唯一标识</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 事件时间戳（毫秒）
+	// <p>事件时间戳（毫秒）</p>
 	EventTime *uint64 `json:"EventTime,omitnil,omitempty" name:"EventTime"`
 
-	// 事件耗时（毫秒），例如进入登录界面到点击登录按钮耗时
+	// <p>事件耗时（毫秒），例如进入登录界面到点击登录按钮耗时</p>
 	ElapsedTime *uint64 `json:"ElapsedTime,omitnil,omitempty" name:"ElapsedTime"`
 
-	// 微信的OpenId
+	// <p>微信的OpenId</p>
 	WeChatOpenId *string `json:"WeChatOpenId,omitnil,omitempty" name:"WeChatOpenId"`
 
-	// 手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5
+	// <p>手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5</p>
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
-	// 业务客户端IP
+	// <p>业务客户端IP</p>
 	BizClientIp *string `json:"BizClientIp,omitnil,omitempty" name:"BizClientIp"`
 
-	// QQ的OpenId
+	// <p>QQ的OpenId</p>
 	QQOpenId *string `json:"QQOpenId,omitnil,omitempty" name:"QQOpenId"`
 
-	// 数据授权信息
+	// <p>数据授权信息</p>
 	DataAuthorization *DataAuthorizationInfo `json:"DataAuthorization,omitnil,omitempty" name:"DataAuthorization"`
 }
 
@@ -147,50 +147,56 @@ func (r *DescribeFinanceFraudUltimateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFinanceFraudUltimateResponseParams struct {
-	// App版本信息
+	// <p>App版本信息</p>
 	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
 
-	// 品牌
+	// <p>品牌</p>
 	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
 
-	// 客户端IP
+	// <p>客户端IP</p>
 	ClientIp *string `json:"ClientIp,omitnil,omitempty" name:"ClientIp"`
 
-	// 机型
+	// <p>机型</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 网络类型
+	// <p>网络类型</p>
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
-	// 应用包名
+	// <p>应用包名</p>
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
-	// 平台（2-Android，3-iOS，4-H5，5-微信小程序）
+	// <p>平台（2-Android，3-iOS，4-H5，5-微信小程序）</p>
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
-	// 系统版本
+	// <p>系统版本</p>
 	SystemVersion *string `json:"SystemVersion,omitnil,omitempty" name:"SystemVersion"`
 
-	// SDK版本号
+	// <p>SDK版本号</p>
 	SdkBuildNo *string `json:"SdkBuildNo,omitnil,omitempty" name:"SdkBuildNo"`
 
-	// 实时风险信息
+	// <p>实时风险信息</p>
 	RiskInfos []*RiskInfo `json:"RiskInfos,omitnil,omitempty" name:"RiskInfos"`
 
-	// 离线风险信息
+	// <p>离线风险信息</p>
 	HistRiskInfos []*RiskInfo `json:"HistRiskInfos,omitnil,omitempty" name:"HistRiskInfos"`
 
-	// 设备匿名标识
+	// <p>设备匿名标识</p>
 	Openid *string `json:"Openid,omitnil,omitempty" name:"Openid"`
 
-	// 场景风险信息
+	// <p>场景风险信息</p>
 	SceneRiskInfos []*RiskInfo `json:"SceneRiskInfos,omitnil,omitempty" name:"SceneRiskInfos"`
 
-	// 建议等级。1-极差，2-较差，3-中等，4-良好，5-优秀
+	// <p>建议等级。1-极差，2-较差，3-中等，4-良好，5-优秀</p>
 	SuggestionLevel *uint64 `json:"SuggestionLevel,omitnil,omitempty" name:"SuggestionLevel"`
 
-	// 图灵盾统一ID
+	// <p>图灵盾统一ID</p>
 	Unionid *string `json:"Unionid,omitnil,omitempty" name:"Unionid"`
+
+	// <p>检测时间戳（毫秒）</p>
+	RiskCheckTimestamp *string `json:"RiskCheckTimestamp,omitnil,omitempty" name:"RiskCheckTimestamp"`
+
+	// <p>额外信息</p>
+	ExtraInfos []*ExtraInfo `json:"ExtraInfos,omitnil,omitempty" name:"ExtraInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -397,68 +403,68 @@ func (r *DescribeFraudPremiumResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFraudUltimateRequestParams struct {
-	// 客户端通过SDK获取的设备Token
+	// <p>客户端通过SDK获取的设备Token</p>
 	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 
-	// 使用场景。目前仅支持login-登录场景、register-注册场景
+	// <p>使用场景。目前仅支持login-登录场景、register-注册场景</p>
 	SceneCode *string `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
 
-	// 用户唯一标识
+	// <p>用户唯一标识</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 事件时间戳（毫秒）
+	// <p>事件时间戳（毫秒）</p>
 	EventTime *uint64 `json:"EventTime,omitnil,omitempty" name:"EventTime"`
 
-	// 事件耗时（毫秒），例如进入登录界面到点击登录按钮耗时
+	// <p>事件耗时（毫秒），例如进入登录界面到点击登录按钮耗时</p>
 	ElapsedTime *uint64 `json:"ElapsedTime,omitnil,omitempty" name:"ElapsedTime"`
 
-	// 微信的OpenId
+	// <p>微信的OpenId</p>
 	WeChatOpenId *string `json:"WeChatOpenId,omitnil,omitempty" name:"WeChatOpenId"`
 
-	// 手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5
+	// <p>手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5</p>
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
-	// 客户端IP
+	// <p>客户端IP</p>
 	ClientIP *string `json:"ClientIP,omitnil,omitempty" name:"ClientIP"`
 
-	// QQ的OpenId
+	// <p>QQ的OpenId</p>
 	QQOpenId *string `json:"QQOpenId,omitnil,omitempty" name:"QQOpenId"`
 
-	// 数据授权信息
+	// <p>数据授权信息</p>
 	DataAuthorization *DataAuthorizationInfo `json:"DataAuthorization,omitnil,omitempty" name:"DataAuthorization"`
 }
 
 type DescribeFraudUltimateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 客户端通过SDK获取的设备Token
+	// <p>客户端通过SDK获取的设备Token</p>
 	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 
-	// 使用场景。目前仅支持login-登录场景、register-注册场景
+	// <p>使用场景。目前仅支持login-登录场景、register-注册场景</p>
 	SceneCode *string `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
 
-	// 用户唯一标识
+	// <p>用户唯一标识</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 事件时间戳（毫秒）
+	// <p>事件时间戳（毫秒）</p>
 	EventTime *uint64 `json:"EventTime,omitnil,omitempty" name:"EventTime"`
 
-	// 事件耗时（毫秒），例如进入登录界面到点击登录按钮耗时
+	// <p>事件耗时（毫秒），例如进入登录界面到点击登录按钮耗时</p>
 	ElapsedTime *uint64 `json:"ElapsedTime,omitnil,omitempty" name:"ElapsedTime"`
 
-	// 微信的OpenId
+	// <p>微信的OpenId</p>
 	WeChatOpenId *string `json:"WeChatOpenId,omitnil,omitempty" name:"WeChatOpenId"`
 
-	// 手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5
+	// <p>手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5</p>
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
-	// 客户端IP
+	// <p>客户端IP</p>
 	ClientIP *string `json:"ClientIP,omitnil,omitempty" name:"ClientIP"`
 
-	// QQ的OpenId
+	// <p>QQ的OpenId</p>
 	QQOpenId *string `json:"QQOpenId,omitnil,omitempty" name:"QQOpenId"`
 
-	// 数据授权信息
+	// <p>数据授权信息</p>
 	DataAuthorization *DataAuthorizationInfo `json:"DataAuthorization,omitnil,omitempty" name:"DataAuthorization"`
 }
 
@@ -492,50 +498,56 @@ func (r *DescribeFraudUltimateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFraudUltimateResponseParams struct {
-	// App版本信息
+	// <p>App版本信息</p>
 	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
 
-	// 品牌
+	// <p>品牌</p>
 	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
 
-	// 客户端IP
+	// <p>客户端IP</p>
 	ClientIp *string `json:"ClientIp,omitnil,omitempty" name:"ClientIp"`
 
-	// 机型
+	// <p>机型</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 网络类型
+	// <p>网络类型</p>
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
-	// 应用包名
+	// <p>应用包名</p>
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
-	// 平台（2-Android，3-iOS，4-H5，5-微信小程序）
+	// <p>平台（2-Android，3-iOS，4-H5，5-微信小程序）</p>
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
-	// 系统版本
+	// <p>系统版本</p>
 	SystemVersion *string `json:"SystemVersion,omitnil,omitempty" name:"SystemVersion"`
 
-	// SDK版本号
+	// <p>SDK版本号</p>
 	SdkBuildNo *string `json:"SdkBuildNo,omitnil,omitempty" name:"SdkBuildNo"`
 
-	// 实时风险信息
+	// <p>实时风险信息</p>
 	RiskInfos []*RiskInfo `json:"RiskInfos,omitnil,omitempty" name:"RiskInfos"`
 
-	// 离线风险信息
+	// <p>离线风险信息</p>
 	HistRiskInfos []*RiskInfo `json:"HistRiskInfos,omitnil,omitempty" name:"HistRiskInfos"`
 
-	// 设备匿名标识
+	// <p>设备匿名标识</p>
 	Openid *string `json:"Openid,omitnil,omitempty" name:"Openid"`
 
-	// 场景风险信息
+	// <p>场景风险信息</p>
 	SceneRiskInfos []*RiskInfo `json:"SceneRiskInfos,omitnil,omitempty" name:"SceneRiskInfos"`
 
-	// 建议等级。1-极差，2-较差，3-中等，4-良好，5-优秀
+	// <p>建议等级。1-极差，2-较差，3-中等，4-良好，5-优秀</p>
 	SuggestionLevel *uint64 `json:"SuggestionLevel,omitnil,omitempty" name:"SuggestionLevel"`
 
-	// 图灵盾统一ID
+	// <p>图灵盾统一ID</p>
 	Unionid *string `json:"Unionid,omitnil,omitempty" name:"Unionid"`
+
+	// <p>检测时间戳（毫秒）</p>
+	RiskCheckTimestamp *string `json:"RiskCheckTimestamp,omitnil,omitempty" name:"RiskCheckTimestamp"`
+
+	// <p>额外信息</p>
+	ExtraInfos []*ExtraInfo `json:"ExtraInfos,omitnil,omitempty" name:"ExtraInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

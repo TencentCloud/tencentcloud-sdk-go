@@ -3934,22 +3934,20 @@ func (r *MobileNetworkTimeVerificationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type MobileStatusRequestParams struct {
-	// 手机号码。
+	// <p>手机号码。</p>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 敏感数据加密信息。
-	// - 对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// <p>敏感数据加密信息。</p><ul><li>对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
 type MobileStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 手机号码。
+	// <p>手机号码。</p>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 敏感数据加密信息。
-	// - 对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	// <p>敏感数据加密信息。</p><ul><li>对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
 	Encryption *Encryption `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 }
 
@@ -3975,27 +3973,13 @@ func (r *MobileStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type MobileStatusResponseParams struct {
-	// 认证结果码，收费情况如下。
-	// - 收费结果码：
-	// 0：成功。
-	// 
-	// - 不收费结果码：
-	// -1：未查询到结果。
-	// -2：手机号格式不正确。
-	// -3：验证中心服务繁忙。
-	// -4：认证次数超过当日限制，请次日重试。
+	// <p>认证结果码，收费情况如下。</p><ul><li><p>收费结果码：<br>0：成功。</p></li><li><p>不收费结果码：<br>-1：未查询到结果。<br>-2：手机号格式不正确。<br>-3：验证中心服务繁忙。<br>-4：认证次数超过当日限制，请次日重试。</p></li></ul>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 业务结果描述。
+	// <p>业务结果描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 状态码。
-	// - 取值范围：
-	// 0：正常。
-	// 1：停机。
-	// 2：销号。
-	// 4：不在网。
-	// 99：未知状态。
+	// <p>状态码。- 取值范围：0：正常。1：停机。2：销号。4：不在网。5：在网但不可用 。99：未知状态。</p>
 	StatusCode *int64 `json:"StatusCode,omitnil,omitempty" name:"StatusCode"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

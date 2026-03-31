@@ -5945,6 +5945,10 @@ type LogstashInstanceInfo struct {
 
 	// 多可用区部署时可用区的详细信息
 	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitnil,omitempty" name:"MultiZoneInfo"`
+
+	// 客户自定义dns配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserDnsIp *string `json:"UserDnsIp,omitnil,omitempty" name:"UserDnsIp"`
 }
 
 type LogstashNodeInfo struct {
@@ -8632,6 +8636,9 @@ type UpdateLogstashInstanceRequestParams struct {
 	// 实例YML配置
 	YMLConfig *string `json:"YMLConfig,omitnil,omitempty" name:"YMLConfig"`
 
+	// 客户自定义dns配置
+	UserDnsIp *string `json:"UserDnsIp,omitnil,omitempty" name:"UserDnsIp"`
+
 	// 实例绑定的ES集群信息
 	BindedES *LogstashBindedES `json:"BindedES,omitnil,omitempty" name:"BindedES"`
 
@@ -8665,6 +8672,9 @@ type UpdateLogstashInstanceRequest struct {
 
 	// 实例YML配置
 	YMLConfig *string `json:"YMLConfig,omitnil,omitempty" name:"YMLConfig"`
+
+	// 客户自定义dns配置
+	UserDnsIp *string `json:"UserDnsIp,omitnil,omitempty" name:"UserDnsIp"`
 
 	// 实例绑定的ES集群信息
 	BindedES *LogstashBindedES `json:"BindedES,omitnil,omitempty" name:"BindedES"`
@@ -8703,6 +8713,7 @@ func (r *UpdateLogstashInstanceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "NodeNum")
 	delete(f, "YMLConfig")
+	delete(f, "UserDnsIp")
 	delete(f, "BindedES")
 	delete(f, "InstanceName")
 	delete(f, "ExtendedFiles")

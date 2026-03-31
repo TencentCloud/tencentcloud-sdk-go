@@ -3768,13 +3768,13 @@ type CreateDraftContractByPromptsTaskRequestParams struct {
 	// 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 起草要求
+	// 起草要求，范围要求 5-1000 字
 	Requirement *string `json:"Requirement,omitnil,omitempty" name:"Requirement"`
 
-	// 参考模板文件资源id（PDF/Word格式）
+	// 参考模板文件资源id（PDF/Word格式），大小不超过1M，通过[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口来获取。
 	ReferenceTemplateId *string `json:"ReferenceTemplateId,omitnil,omitempty" name:"ReferenceTemplateId"`
 
-	// 相关规定文件资源id列表（PDF/Word格式）
+	// 相关规定文件资源id列表（PDF/Word格式），最多3个文件，每个大小不超过1M，通过[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口来获取。
 	RequirementFileIds []*string `json:"RequirementFileIds,omitnil,omitempty" name:"RequirementFileIds"`
 
 	// 起草合同的语言要求（zh，en）默认zh
@@ -3787,13 +3787,13 @@ type CreateDraftContractByPromptsTaskRequest struct {
 	// 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 起草要求
+	// 起草要求，范围要求 5-1000 字
 	Requirement *string `json:"Requirement,omitnil,omitempty" name:"Requirement"`
 
-	// 参考模板文件资源id（PDF/Word格式）
+	// 参考模板文件资源id（PDF/Word格式），大小不超过1M，通过[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口来获取。
 	ReferenceTemplateId *string `json:"ReferenceTemplateId,omitnil,omitempty" name:"ReferenceTemplateId"`
 
-	// 相关规定文件资源id列表（PDF/Word格式）
+	// 相关规定文件资源id列表（PDF/Word格式），最多3个文件，每个大小不超过1M，通过[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口来获取。
 	RequirementFileIds []*string `json:"RequirementFileIds,omitnil,omitempty" name:"RequirementFileIds"`
 
 	// 起草合同的语言要求（zh，en）默认zh
@@ -13141,6 +13141,9 @@ type DescribeDraftContractByPromptsTaskResponseParams struct {
 
 	// 生成的合同文件资源id
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 生成的合同文件下载链接，有效期2小时
+	ContractUrl *string `json:"ContractUrl,omitnil,omitempty" name:"ContractUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
