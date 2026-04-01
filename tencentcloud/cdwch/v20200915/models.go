@@ -1598,20 +1598,20 @@ func (r *DescribeInstanceNodesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceRequestParams struct {
-	// 集群实例ID
+	// <p>集群实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 是否是open api查询
+	// <p>是否是open api查询</p>
 	IsOpenApi *bool `json:"IsOpenApi,omitnil,omitempty" name:"IsOpenApi"`
 }
 
 type DescribeInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群实例ID
+	// <p>集群实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 是否是open api查询
+	// <p>是否是open api查询</p>
 	IsOpenApi *bool `json:"IsOpenApi,omitnil,omitempty" name:"IsOpenApi"`
 }
 
@@ -1637,7 +1637,7 @@ func (r *DescribeInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceResponseParams struct {
-	// 实例描述信息
+	// <p>实例描述信息</p>
 	InstanceInfo *InstanceInfo `json:"InstanceInfo,omitnil,omitempty" name:"InstanceInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2123,46 +2123,61 @@ type GroupInfo struct {
 }
 
 type InstanceConfigInfo struct {
-	// 配置项名称
+	// <p>配置项名称</p>
 	ConfKey *string `json:"ConfKey,omitnil,omitempty" name:"ConfKey"`
 
-	// 配置项内容
+	// <p>配置项内容</p>
 	ConfValue *string `json:"ConfValue,omitnil,omitempty" name:"ConfValue"`
 
-	// 默认值
+	// <p>默认值</p>
 	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
 
-	// 是否需要重启
+	// <p>是否需要重启</p>
 	NeedRestart *bool `json:"NeedRestart,omitnil,omitempty" name:"NeedRestart"`
 
-	// 是否可编辑
+	// <p>是否可编辑</p>
 	Editable *bool `json:"Editable,omitnil,omitempty" name:"Editable"`
 
-	// 配置项解释
+	// <p>配置项解释</p>
 	ConfDesc *string `json:"ConfDesc,omitnil,omitempty" name:"ConfDesc"`
 
-	// 文件名称
+	// <p>文件名称</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 规则名称类型
+	// <p>规则名称类型</p>
 	ModifyRuleType *string `json:"ModifyRuleType,omitnil,omitempty" name:"ModifyRuleType"`
 
-	// 规则名称内容
+	// <p>规则名称内容</p>
 	ModifyRuleValue *string `json:"ModifyRuleValue,omitnil,omitempty" name:"ModifyRuleValue"`
 
-	// 修改人的uin
+	// <p>修改人的uin</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 修改时间
+	// <p>修改时间</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// <p>取值范围</p>
+	ValueRange *string `json:"ValueRange,omitnil,omitempty" name:"ValueRange"`
+
+	// <p>标记异常</p>
+	AbnormalParam *string `json:"AbnormalParam,omitnil,omitempty" name:"AbnormalParam"`
 }
 
 type InstanceConfigItem struct {
-	// key
+	// <p>key</p>
 	ConfKey *string `json:"ConfKey,omitnil,omitempty" name:"ConfKey"`
 
-	// value
+	// <p>value</p>
 	ConfValue *string `json:"ConfValue,omitnil,omitempty" name:"ConfValue"`
+
+	// <p>add/delete/update</p>
+	ModifyType *string `json:"ModifyType,omitnil,omitempty" name:"ModifyType"`
+
+	// <p>是否需要重启</p>
+	NeedRestart *bool `json:"NeedRestart,omitnil,omitempty" name:"NeedRestart"`
+
+	// <p>修改前的值</p>
+	OriginalConfValue *string `json:"OriginalConfValue,omitnil,omitempty" name:"OriginalConfValue"`
 }
 
 type InstanceDetail struct {
@@ -2171,176 +2186,176 @@ type InstanceDetail struct {
 }
 
 type InstanceInfo struct {
-	// 集群实例ID, "cdw-xxxx" 字符串类型
+	// <p>集群实例ID, &quot;cdw-xxxx&quot; 字符串类型</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 集群实例名称
+	// <p>集群实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 状态,
-	// Init 创建中; Serving 运行中； 
-	// Deleted已销毁；Deleting 销毁中；
-	// Modify 集群变更中；
+	// <p>状态,<br>Init 创建中; Serving 运行中；<br>Deleted已销毁；Deleting 销毁中；<br>Modify 集群变更中；</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 版本
+	// <p>版本</p>
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 地域, ap-guangzhou
+	// <p>地域, ap-guangzhou</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 可用区， ap-guangzhou-3
+	// <p>可用区， ap-guangzhou-3</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 私有网络名称
+	// <p>私有网络名称</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网名称
+	// <p>子网名称</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 付费类型，"hour", "prepay"
+	// <p>付费类型，&quot;hour&quot;, &quot;prepay&quot;</p>
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 过期时间
+	// <p>过期时间</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 数据节点描述信息
+	// <p>数据节点描述信息</p>
 	MasterSummary *NodesSummary `json:"MasterSummary,omitnil,omitempty" name:"MasterSummary"`
 
-	// zookeeper节点描述信息
+	// <p>zookeeper节点描述信息</p>
 	CommonSummary *NodesSummary `json:"CommonSummary,omitnil,omitempty" name:"CommonSummary"`
 
-	// 高可用,"true" "false"
+	// <p>高可用,&quot;true&quot; &quot;false&quot;</p>
 	HA *string `json:"HA,omitnil,omitempty" name:"HA"`
 
-	// 访问地址，例如 "10.0.0.1:9000"
+	// <p>访问地址，例如 &quot;10.0.0.1:9000&quot;</p>
 	AccessInfo *string `json:"AccessInfo,omitnil,omitempty" name:"AccessInfo"`
 
-	// 记录ID，数值型
+	// <p>记录ID，数值型</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// regionId, 表示地域
+	// <p>regionId, 表示地域</p>
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 可用区说明，例如 "广州二区"
+	// <p>可用区说明，例如 &quot;广州二区&quot;</p>
 	ZoneDesc *string `json:"ZoneDesc,omitnil,omitempty" name:"ZoneDesc"`
 
-	// 错误流程说明信息
+	// <p>错误流程说明信息</p>
 	FlowMsg *string `json:"FlowMsg,omitnil,omitempty" name:"FlowMsg"`
 
-	// 状态描述，例如“运行中”等
+	// <p>状态描述，例如“运行中”等</p>
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
-	// 自动续费标记
+	// <p>自动续费标记</p>
 	RenewFlag *bool `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 监控信息
+	// <p>监控信息</p>
 	Monitor *string `json:"Monitor,omitnil,omitempty" name:"Monitor"`
 
-	// 是否开通日志
+	// <p>是否开通日志</p>
 	HasClsTopic *bool `json:"HasClsTopic,omitnil,omitempty" name:"HasClsTopic"`
 
-	// 日志主题ID
+	// <p>日志主题ID</p>
 	ClsTopicId *string `json:"ClsTopicId,omitnil,omitempty" name:"ClsTopicId"`
 
-	// 日志集ID
+	// <p>日志集ID</p>
 	ClsLogSetId *string `json:"ClsLogSetId,omitnil,omitempty" name:"ClsLogSetId"`
 
-	// 是否支持xml配置管理
+	// <p>是否支持xml配置管理</p>
 	EnableXMLConfig *int64 `json:"EnableXMLConfig,omitnil,omitempty" name:"EnableXMLConfig"`
 
-	// 区域
+	// <p>区域</p>
 	RegionDesc *string `json:"RegionDesc,omitnil,omitempty" name:"RegionDesc"`
 
-	// 弹性网卡地址
+	// <p>弹性网卡地址</p>
 	Eip *string `json:"Eip,omitnil,omitempty" name:"Eip"`
 
-	// 冷热分层系数
+	// <p>冷热分层系数</p>
 	CosMoveFactor *int64 `json:"CosMoveFactor,omitnil,omitempty" name:"CosMoveFactor"`
 
-	// external/local/yunti
+	// <p>external/local/yunti</p>
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 
-	// 是否弹性ck
+	// <p>是否弹性ck</p>
 	IsElastic *bool `json:"IsElastic,omitnil,omitempty" name:"IsElastic"`
 
-	// 集群详细状态
+	// <p>集群详细状态</p>
 	InstanceStateInfo *InstanceStateInfo `json:"InstanceStateInfo,omitnil,omitempty" name:"InstanceStateInfo"`
 
-	// ZK高可用
+	// <p>ZK高可用</p>
 	HAZk *bool `json:"HAZk,omitnil,omitempty" name:"HAZk"`
 
-	// 挂载盘,默认0:没有类型；1:裸盘;2:lvm
+	// <p>挂载盘,默认0:没有类型；1:裸盘;2:lvm</p>
 	MountDiskType *int64 `json:"MountDiskType,omitnil,omitempty" name:"MountDiskType"`
 
-	// chproxy连接ip
+	// <p>chproxy连接ip</p>
 	CHProxyVip *string `json:"CHProxyVip,omitnil,omitempty" name:"CHProxyVip"`
 
-	// cos buket的名字
+	// <p>cos buket的名字</p>
 	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
 
-	// 是否可以挂载云盘
+	// <p>是否可以挂载云盘</p>
 	CanAttachCbs *bool `json:"CanAttachCbs,omitnil,omitempty" name:"CanAttachCbs"`
 
-	// 是否可以挂载云盘阵列
+	// <p>是否可以挂载云盘阵列</p>
 	CanAttachCbsLvm *bool `json:"CanAttachCbsLvm,omitnil,omitempty" name:"CanAttachCbsLvm"`
 
-	// 是否可以挂载cos
+	// <p>是否可以挂载cos</p>
 	CanAttachCos *bool `json:"CanAttachCos,omitnil,omitempty" name:"CanAttachCos"`
 
-	// 服务信息
+	// <p>服务信息</p>
 	Components []*ServiceInfo `json:"Components,omitnil,omitempty" name:"Components"`
 
-	// 可升级的内核版本
+	// <p>可升级的内核版本</p>
 	UpgradeVersions *string `json:"UpgradeVersions,omitnil,omitempty" name:"UpgradeVersions"`
 
-	// ex-index
+	// <p>ex-index</p>
 	EsIndexId *string `json:"EsIndexId,omitnil,omitempty" name:"EsIndexId"`
 
-	// username
+	// <p>username</p>
 	EsIndexUsername *string `json:"EsIndexUsername,omitnil,omitempty" name:"EsIndexUsername"`
 
-	// password
+	// <p>password</p>
 	EsIndexPassword *string `json:"EsIndexPassword,omitnil,omitempty" name:"EsIndexPassword"`
 
-	// true
+	// <p>true</p>
 	HasEsIndex *bool `json:"HasEsIndex,omitnil,omitempty" name:"HasEsIndex"`
 
-	// true
+	// <p>true</p>
 	IsSecondaryZone *bool `json:"IsSecondaryZone,omitnil,omitempty" name:"IsSecondaryZone"`
 
-	// desc
+	// <p>desc</p>
 	SecondaryZoneInfo *string `json:"SecondaryZoneInfo,omitnil,omitempty" name:"SecondaryZoneInfo"`
 
-	// 是否clickhouse-keeper
+	// <p>是否clickhouse-keeper</p>
 	ClickHouseKeeper *bool `json:"ClickHouseKeeper,omitnil,omitempty" name:"ClickHouseKeeper"`
 
-	// 实例扩展信息
+	// <p>实例扩展信息</p>
 	Details *InstanceDetail `json:"Details,omitnil,omitempty" name:"Details"`
 
-	// 安全组白名单
+	// <p>安全组白名单</p>
 	IsWhiteSGs *bool `json:"IsWhiteSGs,omitnil,omitempty" name:"IsWhiteSGs"`
 
-	// 绑定的安全组
+	// <p>绑定的安全组</p>
 	BindSGs []*string `json:"BindSGs,omitnil,omitempty" name:"BindSGs"`
 
-	// 是否开启公网clb
+	// <p>是否开启公网clb</p>
 	HasPublicCloudClb *bool `json:"HasPublicCloudClb,omitnil,omitempty" name:"HasPublicCloudClb"`
 
-	// 可升级的zk版本
+	// <p>可升级的zk版本</p>
 	UpgradeZkVersions *string `json:"UpgradeZkVersions,omitnil,omitempty" name:"UpgradeZkVersions"`
 
-	// 是否显示rip
+	// <p>是否显示rip</p>
 	ShowRip *string `json:"ShowRip,omitnil,omitempty" name:"ShowRip"`
 
-	// 实例类型：标准型 standard，无keeper节点类型noKeeper；
+	// <p>实例类型：标准型 standard，无keeper节点类型noKeeper；</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>keyvalue视图</p>
+	EnableConfigKeyValue *string `json:"EnableConfigKeyValue,omitnil,omitempty" name:"EnableConfigKeyValue"`
 }
 
 type InstanceNode struct {
@@ -2394,32 +2409,37 @@ type InstanceNode struct {
 }
 
 type InstanceStateInfo struct {
-	// 集群状态，例如：Serving
+	// <p>集群状态，例如：Serving</p>
 	InstanceState *string `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
 
-	// 集群操作创建时间
+	// <p>集群操作创建时间</p>
 	FlowCreateTime *string `json:"FlowCreateTime,omitnil,omitempty" name:"FlowCreateTime"`
 
-	// 集群操作名称
+	// <p>集群操作名称</p>
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
-	// 集群操作进度
+	// <p>集群操作进度</p>
 	FlowProgress *int64 `json:"FlowProgress,omitnil,omitempty" name:"FlowProgress"`
 
-	// 集群状态描述，例如：运行中
+	// <p>集群状态描述，例如：运行中</p>
 	InstanceStateDesc *string `json:"InstanceStateDesc,omitnil,omitempty" name:"InstanceStateDesc"`
 
-	// 集群流程错误信息，例如：“创建失败，资源不足”
+	// <p>集群流程错误信息，例如：“创建失败，资源不足”</p>
 	FlowMsg *string `json:"FlowMsg,omitnil,omitempty" name:"FlowMsg"`
 
-	// 当前步骤的名称，例如：”购买资源中“
+	// <p>当前步骤的名称，例如：”购买资源中“</p>
 	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
-	// 请求id
+	// <p>请求id</p>
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 
-	// 流程的二级名称
+	// <p>流程的二级名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessSubName *string `json:"ProcessSubName,omitnil,omitempty" name:"ProcessSubName"`
+
+	// <p>请求ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestID *string `json:"RequestID,omitnil,omitempty" name:"RequestID"`
 }
 
 type MapConfigItem struct {

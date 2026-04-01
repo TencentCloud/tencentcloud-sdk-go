@@ -4072,6 +4072,8 @@ type DescribeACLRequestParams struct {
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 关键字匹配
+	//
+	// Deprecated: SearchWord is deprecated.
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 }
 

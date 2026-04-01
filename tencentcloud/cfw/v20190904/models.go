@@ -2881,6 +2881,12 @@ type DescAcItem struct {
 
 	// 规则最近更新时间
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 目的值的类型，与TargetType或DestType所代表的目的类型含义有所不同，如目的类型是template,但template分ip模板和域名模板，故需通过DestValueType进一步区分
+	DestValueType *string `json:"DestValueType,omitnil,omitempty" name:"DestValueType"`
+
+	// 规则分区，1最前分区，2中间分区，3最后分区
+	RulePartition *int64 `json:"RulePartition,omitnil,omitempty" name:"RulePartition"`
 }
 
 type DescNatDnatRule struct {
@@ -12638,6 +12644,12 @@ type VpcRuleItem struct {
 
 	// 规则最近更新时间
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 目的值的类型，与TargetType或DestType所代表的目的类型含义有所不同，如目的类型是template,但template分ip模板和域名模板，故需通过DestValueType进一步区分
+	DestValueType *string `json:"DestValueType,omitnil,omitempty" name:"DestValueType"`
+
+	// 规则分区，1最前分区，2中间分区，3最后分区，增删改查规则时无需传入此参数
+	RulePartition *int64 `json:"RulePartition,omitnil,omitempty" name:"RulePartition"`
 }
 
 type VpcZoneData struct {

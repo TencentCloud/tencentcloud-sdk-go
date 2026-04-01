@@ -145,12 +145,6 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 //     -  支持128K上下文长度，最大输入长度96k，最大输出16k（默认4k），最大思维链输出长度32k。
 //
-// - DeepSeek-V3.1（model 参数值为 deepseek-v3.1）
-//
-//     - DeepSeek-V3.1 为685B 参数 MoE 模型，支持混合推理架构，有更高的思考效率和更强的 Agent 能力。
-//
-//     -  支持128K上下文长度，最大输入长度96k，最大输出32k（默认4k），最大思维链输出长度32k。
-//
 // - DeepSeek-V3.1-Terminus（model 参数值为 deepseek-v3.1-terminus）
 //
 //     - DeepSeek-V3.1-Terminus 为685B 参数 MoE 模型，在保持模型原有能力的基础上，优化了语言一致性，Agent 能力等问题，输出效果相比前一版本更加稳定。
@@ -178,10 +172,6 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 // 
 //
 //     - DeepSeek-V3-0324 模型 | 输入：0.002元/千token | 输出：0.008元/千token
-//
-// 
-//
-//     - DeepSeek-V3.1 模型 | 输入：0.004元/千token | 输出：0.012元/千token
 //
 // 
 //
@@ -386,12 +376,6 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 //     -  支持128K上下文长度，最大输入长度96k，最大输出16k（默认4k），最大思维链输出长度32k。
 //
-// - DeepSeek-V3.1（model 参数值为 deepseek-v3.1）
-//
-//     - DeepSeek-V3.1 为685B 参数 MoE 模型，支持混合推理架构，有更高的思考效率和更强的 Agent 能力。
-//
-//     -  支持128K上下文长度，最大输入长度96k，最大输出32k（默认4k），最大思维链输出长度32k。
-//
 // - DeepSeek-V3.1-Terminus（model 参数值为 deepseek-v3.1-terminus）
 //
 //     - DeepSeek-V3.1-Terminus 为685B 参数 MoE 模型，在保持模型原有能力的基础上，优化了语言一致性，Agent 能力等问题，输出效果相比前一版本更加稳定。
@@ -419,10 +403,6 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 // 
 //
 //     - DeepSeek-V3-0324 模型 | 输入：0.002元/千token | 输出：0.008元/千token
-//
-// 
-//
-//     - DeepSeek-V3.1 模型 | 输入：0.004元/千token | 输出：0.012元/千token
 //
 // 
 //

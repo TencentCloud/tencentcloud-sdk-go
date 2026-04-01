@@ -6989,28 +6989,28 @@ type ModifyAclRequestParams struct {
 	// 访问权限ID
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 是否开启剪贴板文件上行
+	// 是否开启剪贴板文件上行，不传时默认为false
 	AllowClipFileUp *bool `json:"AllowClipFileUp,omitnil,omitempty" name:"AllowClipFileUp"`
 
-	// 是否开启剪贴板文件下行
+	// 是否开启剪贴板文件下行，不传时默认为false
 	AllowClipFileDown *bool `json:"AllowClipFileDown,omitnil,omitempty" name:"AllowClipFileDown"`
 
-	// 是否开启剪贴板文本（含图片）上行
+	// 是否开启剪贴板文本（含图片）上行，不传时默认为false
 	AllowClipTextUp *bool `json:"AllowClipTextUp,omitnil,omitempty" name:"AllowClipTextUp"`
 
-	// 是否开启剪贴板文本（含图片）下行
+	// 是否开启剪贴板文本（含图片）下行，不传时默认为false
 	AllowClipTextDown *bool `json:"AllowClipTextDown,omitnil,omitempty" name:"AllowClipTextDown"`
 
-	// 是否开启文件传输上传
+	// 是否开启文件传输上传，不传时默认为false
 	AllowFileUp *bool `json:"AllowFileUp,omitnil,omitempty" name:"AllowFileUp"`
 
-	// 文件传输上传大小限制（预留参数，目前暂未使用）
+	// 文件传输上传大小限制（预留参数，目前暂未使用），不传时默认为0
 	MaxFileUpSize *uint64 `json:"MaxFileUpSize,omitnil,omitempty" name:"MaxFileUpSize"`
 
-	// 是否开启文件传输下载
+	// 是否开启文件传输下载，不传时默认为false
 	AllowFileDown *bool `json:"AllowFileDown,omitnil,omitempty" name:"AllowFileDown"`
 
-	// 文件传输下载大小限制（预留参数，目前暂未使用）
+	// 文件传输下载大小限制（预留参数，目前暂未使用），不传时默认为0
 	MaxFileDownSize *uint64 `json:"MaxFileDownSize,omitnil,omitempty" name:"MaxFileDownSize"`
 
 	// 关联的用户ID
@@ -7022,34 +7022,34 @@ type ModifyAclRequestParams struct {
 	// 关联的资产ID
 	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitnil,omitempty" name:"DeviceIdSet"`
 
-	// 关联的应用资产ID集合
+	// 关联的应用资产ID集合，不传时表示不选择任何应用资产
 	AppAssetIdSet []*uint64 `json:"AppAssetIdSet,omitnil,omitempty" name:"AppAssetIdSet"`
 
-	// 关联的资产组ID
+	// 关联的资产组ID，不传时表示不选择任何资产组
 	DeviceGroupIdSet []*uint64 `json:"DeviceGroupIdSet,omitnil,omitempty" name:"DeviceGroupIdSet"`
 
-	// 关联的账号
+	// 关联的资产账号，不传时表示不选择任何资产账号
 	AccountSet []*string `json:"AccountSet,omitnil,omitempty" name:"AccountSet"`
 
-	// 关联的高危命令模板ID
+	// 关联的高危命令模板ID，不传时表示不选择任何模板
 	CmdTemplateIdSet []*uint64 `json:"CmdTemplateIdSet,omitnil,omitempty" name:"CmdTemplateIdSet"`
 
-	// 关联高危DB模板ID
+	// 关联高危DB模板ID，不传时表示不选择任何模板
 	ACTemplateIdSet []*string `json:"ACTemplateIdSet,omitnil,omitempty" name:"ACTemplateIdSet"`
 
-	// 是否开启 RDP 磁盘映射文件上传
+	// 是否开启 RDP 磁盘映射文件上传，不传时默认为false
 	AllowDiskFileUp *bool `json:"AllowDiskFileUp,omitnil,omitempty" name:"AllowDiskFileUp"`
 
-	// 是否开启 RDP 磁盘映射文件下载
+	// 是否开启 RDP 磁盘映射文件下载，不传时默认为false
 	AllowDiskFileDown *bool `json:"AllowDiskFileDown,omitnil,omitempty" name:"AllowDiskFileDown"`
 
-	// 是否开启rz sz文件上传
+	// 是否开启rz sz文件上传，不传时默认为false
 	AllowShellFileUp *bool `json:"AllowShellFileUp,omitnil,omitempty" name:"AllowShellFileUp"`
 
-	// 是否开启rz sz文件下载
+	// 是否开启rz sz文件下载，不传时默认为false
 	AllowShellFileDown *bool `json:"AllowShellFileDown,omitnil,omitempty" name:"AllowShellFileDown"`
 
-	// 是否开启 SFTP 文件删除
+	// 是否开启 SFTP 文件删除，不传时默认为false
 	AllowFileDel *bool `json:"AllowFileDel,omitnil,omitempty" name:"AllowFileDel"`
 
 	// 访问权限生效时间，如:"2021-09-22T00:00:00+00:00"
@@ -7063,13 +7063,13 @@ type ModifyAclRequestParams struct {
 	// 权限所属部门的ID，如：1.2.3
 	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
 
-	// 是否允许使用访问串
+	// 是否允许使用访问串，不传时默认为true
 	AllowAccessCredential *bool `json:"AllowAccessCredential,omitnil,omitempty" name:"AllowAccessCredential"`
 
-	// 是否允许键盘记录
+	// 是否允许键盘记录，不传时默认为false
 	AllowKeyboardLogger *bool `json:"AllowKeyboardLogger,omitnil,omitempty" name:"AllowKeyboardLogger"`
 
-	// 访问串有效期最大时长，秒数，允许使用访问串时需大于0且必须为86400整数倍
+	// 访问串有效期最大时长，秒数，允许使用访问串时需大于0且必须为86400整数倍，不传时默认为9999天对应的秒数
 	MaxAccessCredentialDuration *uint64 `json:"MaxAccessCredentialDuration,omitnil,omitempty" name:"MaxAccessCredentialDuration"`
 }
 
@@ -7088,28 +7088,28 @@ type ModifyAclRequest struct {
 	// 访问权限ID
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 是否开启剪贴板文件上行
+	// 是否开启剪贴板文件上行，不传时默认为false
 	AllowClipFileUp *bool `json:"AllowClipFileUp,omitnil,omitempty" name:"AllowClipFileUp"`
 
-	// 是否开启剪贴板文件下行
+	// 是否开启剪贴板文件下行，不传时默认为false
 	AllowClipFileDown *bool `json:"AllowClipFileDown,omitnil,omitempty" name:"AllowClipFileDown"`
 
-	// 是否开启剪贴板文本（含图片）上行
+	// 是否开启剪贴板文本（含图片）上行，不传时默认为false
 	AllowClipTextUp *bool `json:"AllowClipTextUp,omitnil,omitempty" name:"AllowClipTextUp"`
 
-	// 是否开启剪贴板文本（含图片）下行
+	// 是否开启剪贴板文本（含图片）下行，不传时默认为false
 	AllowClipTextDown *bool `json:"AllowClipTextDown,omitnil,omitempty" name:"AllowClipTextDown"`
 
-	// 是否开启文件传输上传
+	// 是否开启文件传输上传，不传时默认为false
 	AllowFileUp *bool `json:"AllowFileUp,omitnil,omitempty" name:"AllowFileUp"`
 
-	// 文件传输上传大小限制（预留参数，目前暂未使用）
+	// 文件传输上传大小限制（预留参数，目前暂未使用），不传时默认为0
 	MaxFileUpSize *uint64 `json:"MaxFileUpSize,omitnil,omitempty" name:"MaxFileUpSize"`
 
-	// 是否开启文件传输下载
+	// 是否开启文件传输下载，不传时默认为false
 	AllowFileDown *bool `json:"AllowFileDown,omitnil,omitempty" name:"AllowFileDown"`
 
-	// 文件传输下载大小限制（预留参数，目前暂未使用）
+	// 文件传输下载大小限制（预留参数，目前暂未使用），不传时默认为0
 	MaxFileDownSize *uint64 `json:"MaxFileDownSize,omitnil,omitempty" name:"MaxFileDownSize"`
 
 	// 关联的用户ID
@@ -7121,34 +7121,34 @@ type ModifyAclRequest struct {
 	// 关联的资产ID
 	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitnil,omitempty" name:"DeviceIdSet"`
 
-	// 关联的应用资产ID集合
+	// 关联的应用资产ID集合，不传时表示不选择任何应用资产
 	AppAssetIdSet []*uint64 `json:"AppAssetIdSet,omitnil,omitempty" name:"AppAssetIdSet"`
 
-	// 关联的资产组ID
+	// 关联的资产组ID，不传时表示不选择任何资产组
 	DeviceGroupIdSet []*uint64 `json:"DeviceGroupIdSet,omitnil,omitempty" name:"DeviceGroupIdSet"`
 
-	// 关联的账号
+	// 关联的资产账号，不传时表示不选择任何资产账号
 	AccountSet []*string `json:"AccountSet,omitnil,omitempty" name:"AccountSet"`
 
-	// 关联的高危命令模板ID
+	// 关联的高危命令模板ID，不传时表示不选择任何模板
 	CmdTemplateIdSet []*uint64 `json:"CmdTemplateIdSet,omitnil,omitempty" name:"CmdTemplateIdSet"`
 
-	// 关联高危DB模板ID
+	// 关联高危DB模板ID，不传时表示不选择任何模板
 	ACTemplateIdSet []*string `json:"ACTemplateIdSet,omitnil,omitempty" name:"ACTemplateIdSet"`
 
-	// 是否开启 RDP 磁盘映射文件上传
+	// 是否开启 RDP 磁盘映射文件上传，不传时默认为false
 	AllowDiskFileUp *bool `json:"AllowDiskFileUp,omitnil,omitempty" name:"AllowDiskFileUp"`
 
-	// 是否开启 RDP 磁盘映射文件下载
+	// 是否开启 RDP 磁盘映射文件下载，不传时默认为false
 	AllowDiskFileDown *bool `json:"AllowDiskFileDown,omitnil,omitempty" name:"AllowDiskFileDown"`
 
-	// 是否开启rz sz文件上传
+	// 是否开启rz sz文件上传，不传时默认为false
 	AllowShellFileUp *bool `json:"AllowShellFileUp,omitnil,omitempty" name:"AllowShellFileUp"`
 
-	// 是否开启rz sz文件下载
+	// 是否开启rz sz文件下载，不传时默认为false
 	AllowShellFileDown *bool `json:"AllowShellFileDown,omitnil,omitempty" name:"AllowShellFileDown"`
 
-	// 是否开启 SFTP 文件删除
+	// 是否开启 SFTP 文件删除，不传时默认为false
 	AllowFileDel *bool `json:"AllowFileDel,omitnil,omitempty" name:"AllowFileDel"`
 
 	// 访问权限生效时间，如:"2021-09-22T00:00:00+00:00"
@@ -7162,13 +7162,13 @@ type ModifyAclRequest struct {
 	// 权限所属部门的ID，如：1.2.3
 	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
 
-	// 是否允许使用访问串
+	// 是否允许使用访问串，不传时默认为true
 	AllowAccessCredential *bool `json:"AllowAccessCredential,omitnil,omitempty" name:"AllowAccessCredential"`
 
-	// 是否允许键盘记录
+	// 是否允许键盘记录，不传时默认为false
 	AllowKeyboardLogger *bool `json:"AllowKeyboardLogger,omitnil,omitempty" name:"AllowKeyboardLogger"`
 
-	// 访问串有效期最大时长，秒数，允许使用访问串时需大于0且必须为86400整数倍
+	// 访问串有效期最大时长，秒数，允许使用访问串时需大于0且必须为86400整数倍，不传时默认为9999天对应的秒数
 	MaxAccessCredentialDuration *uint64 `json:"MaxAccessCredentialDuration,omitnil,omitempty" name:"MaxAccessCredentialDuration"`
 }
 

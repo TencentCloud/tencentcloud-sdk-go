@@ -7883,7 +7883,7 @@ type CreateTrafficMirrorRequestParams struct {
 	// 流量镜像采集方向，支持EGRESS/INGRESS/ALL（vpc），ALL（公网IP）。
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 
-	// 流量镜像的采集对象。
+	// 流量镜像的采集对象 (最多支持20个采集对象)。
 	CollectorSrcs []*string `json:"CollectorSrcs,omitnil,omitempty" name:"CollectorSrcs"`
 
 	// 流量镜像过滤的natgw实例。
@@ -7903,6 +7903,12 @@ type CreateTrafficMirrorRequestParams struct {
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 流量镜像入站过滤规则。
+	IngressFilterRules []*TrafficMirrorFilter `json:"IngressFilterRules,omitnil,omitempty" name:"IngressFilterRules"`
+
+	// 流量镜像出站过滤规则。
+	EgressFilterRules []*TrafficMirrorFilter `json:"EgressFilterRules,omitnil,omitempty" name:"EgressFilterRules"`
 }
 
 type CreateTrafficMirrorRequest struct {
@@ -7923,7 +7929,7 @@ type CreateTrafficMirrorRequest struct {
 	// 流量镜像采集方向，支持EGRESS/INGRESS/ALL（vpc），ALL（公网IP）。
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 
-	// 流量镜像的采集对象。
+	// 流量镜像的采集对象 (最多支持20个采集对象)。
 	CollectorSrcs []*string `json:"CollectorSrcs,omitnil,omitempty" name:"CollectorSrcs"`
 
 	// 流量镜像过滤的natgw实例。
@@ -7943,6 +7949,12 @@ type CreateTrafficMirrorRequest struct {
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 流量镜像入站过滤规则。
+	IngressFilterRules []*TrafficMirrorFilter `json:"IngressFilterRules,omitnil,omitempty" name:"IngressFilterRules"`
+
+	// 流量镜像出站过滤规则。
+	EgressFilterRules []*TrafficMirrorFilter `json:"EgressFilterRules,omitnil,omitempty" name:"EgressFilterRules"`
 }
 
 func (r *CreateTrafficMirrorRequest) ToJsonString() string {
@@ -7969,6 +7981,8 @@ func (r *CreateTrafficMirrorRequest) FromJsonString(s string) error {
 	delete(f, "SubnetId")
 	delete(f, "Type")
 	delete(f, "Tags")
+	delete(f, "IngressFilterRules")
+	delete(f, "EgressFilterRules")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrafficMirrorRequest has unknown keys!", "")
 	}
@@ -21430,6 +21444,9 @@ type DescribeTrafficMirrorsResponseParams struct {
 	// 流量镜像实例信息
 	TrafficMirrorSet []*TrafficMirror `json:"TrafficMirrorSet,omitnil,omitempty" name:"TrafficMirrorSet"`
 
+	// 符合条件的对象数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -33459,7 +33476,7 @@ func (r *ReleaseIp6AddressesBandwidthResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RemoveBandwidthPackageResourcesRequestParams struct {
-	// 资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'。EIP资源列表可通过[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取，LB资源列表可通过[DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685)接口获取。
+	// 资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'。<li>EIP资源列表：可通过[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取。高防EIP、Anycast EIP、精品BGP EIP默认不支持从共享带宽包中移除，其中高防EIP和精品BGP IP可以迁移到其他同线路类型的共享带宽包中。</li><li>LB资源列表：可通过[DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685)接口获取。</li>
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 带宽包唯一标识ID，形如'bwp-xxxx'，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
@@ -33480,7 +33497,7 @@ type RemoveBandwidthPackageResourcesRequestParams struct {
 type RemoveBandwidthPackageResourcesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'。EIP资源列表可通过[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取，LB资源列表可通过[DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685)接口获取。
+	// 资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'。<li>EIP资源列表：可通过[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取。高防EIP、Anycast EIP、精品BGP EIP默认不支持从共享带宽包中移除，其中高防EIP和精品BGP IP可以迁移到其他同线路类型的共享带宽包中。</li><li>LB资源列表：可通过[DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685)接口获取。</li>
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 带宽包唯一标识ID，形如'bwp-xxxx'，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
@@ -34966,6 +34983,12 @@ type ResetTrafficMirrorFilterRequestParams struct {
 
 	// 流量镜像需要过滤的五元组规则
 	CollectorNormalFilters []*TrafficMirrorFilter `json:"CollectorNormalFilters,omitnil,omitempty" name:"CollectorNormalFilters"`
+
+	// 流量镜像入站过滤规则。
+	IngressFilterRules []*TrafficMirrorFilter `json:"IngressFilterRules,omitnil,omitempty" name:"IngressFilterRules"`
+
+	// 流量镜像出站过滤规则。
+	EgressFilterRules []*TrafficMirrorFilter `json:"EgressFilterRules,omitnil,omitempty" name:"EgressFilterRules"`
 }
 
 type ResetTrafficMirrorFilterRequest struct {
@@ -34979,6 +35002,12 @@ type ResetTrafficMirrorFilterRequest struct {
 
 	// 流量镜像需要过滤的五元组规则
 	CollectorNormalFilters []*TrafficMirrorFilter `json:"CollectorNormalFilters,omitnil,omitempty" name:"CollectorNormalFilters"`
+
+	// 流量镜像入站过滤规则。
+	IngressFilterRules []*TrafficMirrorFilter `json:"IngressFilterRules,omitnil,omitempty" name:"IngressFilterRules"`
+
+	// 流量镜像出站过滤规则。
+	EgressFilterRules []*TrafficMirrorFilter `json:"EgressFilterRules,omitnil,omitempty" name:"EgressFilterRules"`
 }
 
 func (r *ResetTrafficMirrorFilterRequest) ToJsonString() string {
@@ -34996,6 +35025,8 @@ func (r *ResetTrafficMirrorFilterRequest) FromJsonString(s string) error {
 	delete(f, "TrafficMirrorId")
 	delete(f, "NatId")
 	delete(f, "CollectorNormalFilters")
+	delete(f, "IngressFilterRules")
+	delete(f, "EgressFilterRules")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetTrafficMirrorFilterRequest has unknown keys!", "")
 	}
@@ -37266,6 +37297,12 @@ type UpdateTrafficMirrorAllFilterRequestParams struct {
 
 	// 流量镜像需要过滤的五元组规则
 	CollectorNormalFilters []*TrafficMirrorFilter `json:"CollectorNormalFilters,omitnil,omitempty" name:"CollectorNormalFilters"`
+
+	// 流量镜像入站过滤规则。
+	IngressFilterRules []*TrafficMirrorFilter `json:"IngressFilterRules,omitnil,omitempty" name:"IngressFilterRules"`
+
+	// 流量镜像出站过滤规则。
+	EgressFilterRules []*TrafficMirrorFilter `json:"EgressFilterRules,omitnil,omitempty" name:"EgressFilterRules"`
 }
 
 type UpdateTrafficMirrorAllFilterRequest struct {
@@ -37285,6 +37322,12 @@ type UpdateTrafficMirrorAllFilterRequest struct {
 
 	// 流量镜像需要过滤的五元组规则
 	CollectorNormalFilters []*TrafficMirrorFilter `json:"CollectorNormalFilters,omitnil,omitempty" name:"CollectorNormalFilters"`
+
+	// 流量镜像入站过滤规则。
+	IngressFilterRules []*TrafficMirrorFilter `json:"IngressFilterRules,omitnil,omitempty" name:"IngressFilterRules"`
+
+	// 流量镜像出站过滤规则。
+	EgressFilterRules []*TrafficMirrorFilter `json:"EgressFilterRules,omitnil,omitempty" name:"EgressFilterRules"`
 }
 
 func (r *UpdateTrafficMirrorAllFilterRequest) ToJsonString() string {
@@ -37304,6 +37347,8 @@ func (r *UpdateTrafficMirrorAllFilterRequest) FromJsonString(s string) error {
 	delete(f, "CollectorSrcs")
 	delete(f, "NatId")
 	delete(f, "CollectorNormalFilters")
+	delete(f, "IngressFilterRules")
+	delete(f, "EgressFilterRules")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateTrafficMirrorAllFilterRequest has unknown keys!", "")
 	}
@@ -37337,7 +37382,15 @@ type UpdateTrafficMirrorDirectionRequestParams struct {
 	// 流量镜像实例ID
 	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
 
-	// 流量镜像采集方向
+	// 流量镜像采集方向。取值范围：
+	// 
+	// - EGRESS - 出方向采集
+	// 
+	// - INGRESS - 入方向采集
+	// 
+	// - ALL - 出入双向采集
+	// 
+	// - NO-DIRECTION - 不区分采集方向（新模式）。切换为该模式后将不再支持按方向采集，需通过 CreateTrafficMirrorFilterRules 接口创建带方向的过滤规则，过滤规则支持设置优先级和单独编辑。
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 }
 
@@ -37347,7 +37400,15 @@ type UpdateTrafficMirrorDirectionRequest struct {
 	// 流量镜像实例ID
 	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
 
-	// 流量镜像采集方向
+	// 流量镜像采集方向。取值范围：
+	// 
+	// - EGRESS - 出方向采集
+	// 
+	// - INGRESS - 入方向采集
+	// 
+	// - ALL - 出入双向采集
+	// 
+	// - NO-DIRECTION - 不区分采集方向（新模式）。切换为该模式后将不再支持按方向采集，需通过 CreateTrafficMirrorFilterRules 接口创建带方向的过滤规则，过滤规则支持设置优先级和单独编辑。
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 }
 

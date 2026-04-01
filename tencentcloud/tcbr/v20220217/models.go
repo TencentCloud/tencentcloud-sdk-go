@@ -2049,34 +2049,34 @@ type ServerBaseConfig struct {
 }
 
 type ServerBaseInfo struct {
-	// 服务名
+	// <p>服务名</p>
 	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
 
-	// 默认服务域名
+	// <p>默认服务域名</p>
 	DefaultDomainName *string `json:"DefaultDomainName,omitnil,omitempty" name:"DefaultDomainName"`
 
-	// 自定义域名
+	// <p>自定义域名</p>
 	CustomDomainName *string `json:"CustomDomainName,omitnil,omitempty" name:"CustomDomainName"`
 
-	// 服务状态：running/deploying/deploy_failed
+	// <p>服务状态：creating/create_failed/freezing/freeze_fail/froze/unfreezing/unfreeze_fail/normal/deleting/delete_failed/abnormal</p><p>枚举值：</p><ul><li>creating： 创建中</li><li>create_failed： 创建失败</li><li>freezing： 冻结中</li><li>freeze_fail： 冻结失败</li><li>froze： 已冻结</li><li>unfreezing： 解冻中</li><li>unfreeze_fail： 解冻失败</li><li>normal： 正常</li><li>deleting： 删除中</li><li>delete_failed： 删除失败</li><li>abnormal： 服务异常</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 公网访问类型
+	// <p>公网访问类型</p>
 	AccessTypes []*string `json:"AccessTypes,omitnil,omitempty" name:"AccessTypes"`
 
-	// 展示自定义域名
+	// <p>展示自定义域名</p>
 	CustomDomainNames []*string `json:"CustomDomainNames,omitnil,omitempty" name:"CustomDomainNames"`
 
-	// 服务类型: function 云函数2.0；container 容器服务
+	// <p>服务类型: function 云函数2.0；container 容器服务</p>
 	ServerType *string `json:"ServerType,omitnil,omitempty" name:"ServerType"`
 
-	// 流量类型，目前只有 FLOW
+	// <p>流量类型，目前只有 FLOW</p>
 	TrafficType *string `json:"TrafficType,omitnil,omitempty" name:"TrafficType"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 

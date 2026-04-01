@@ -1107,6 +1107,62 @@ func (c *Client) RebootMachinesWithContext(ctx context.Context, request *RebootM
     return
 }
 
+func NewScaleNodePoolRequest() (request *ScaleNodePoolRequest) {
+    request = &ScaleNodePoolRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ScaleNodePool")
+    
+    
+    return
+}
+
+func NewScaleNodePoolResponse() (response *ScaleNodePoolResponse) {
+    response = &ScaleNodePoolResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ScaleNodePool
+// 设置 TKE 节点池期望节点数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ScaleNodePool(request *ScaleNodePoolRequest) (response *ScaleNodePoolResponse, err error) {
+    return c.ScaleNodePoolWithContext(context.Background(), request)
+}
+
+// ScaleNodePool
+// 设置 TKE 节点池期望节点数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ScaleNodePoolWithContext(ctx context.Context, request *ScaleNodePoolRequest) (response *ScaleNodePoolResponse, err error) {
+    if request == nil {
+        request = NewScaleNodePoolRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ScaleNodePool")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScaleNodePool require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewScaleNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetMachineLoginRequest() (request *SetMachineLoginRequest) {
     request = &SetMachineLoginRequest{
         BaseRequest: &tchttp.BaseRequest{},

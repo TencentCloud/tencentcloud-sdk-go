@@ -7379,21 +7379,27 @@ func (r *ModifyChcAttributeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDisasterRecoverGroupAttributeRequestParams struct {
-	// 分散置放群组ID，可使用[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取。
+	// <p>分散置放群组ID，可使用<a href="https://cloud.tencent.com/document/api/213/17810">DescribeDisasterRecoverGroups</a>接口获取。</p>
 	DisasterRecoverGroupId *string `json:"DisasterRecoverGroupId,omitnil,omitempty" name:"DisasterRecoverGroupId"`
 
-	// 分散置放群组名称，长度1-60个字符，支持中、英文。
+	// <p>分散置放群组名称，长度1-60个字符，支持中、英文。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>分散置放群组的亲和度，在置放群组的实例会按该亲和度分布，亲和度的取值范围是：1-10。</p><p>取值范围：[1, 10]</p><p>调整只能从小调到大，不能从大调到小</p>
+	Affinity *int64 `json:"Affinity,omitnil,omitempty" name:"Affinity"`
 }
 
 type ModifyDisasterRecoverGroupAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分散置放群组ID，可使用[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取。
+	// <p>分散置放群组ID，可使用<a href="https://cloud.tencent.com/document/api/213/17810">DescribeDisasterRecoverGroups</a>接口获取。</p>
 	DisasterRecoverGroupId *string `json:"DisasterRecoverGroupId,omitnil,omitempty" name:"DisasterRecoverGroupId"`
 
-	// 分散置放群组名称，长度1-60个字符，支持中、英文。
+	// <p>分散置放群组名称，长度1-60个字符，支持中、英文。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>分散置放群组的亲和度，在置放群组的实例会按该亲和度分布，亲和度的取值范围是：1-10。</p><p>取值范围：[1, 10]</p><p>调整只能从小调到大，不能从大调到小</p>
+	Affinity *int64 `json:"Affinity,omitnil,omitempty" name:"Affinity"`
 }
 
 func (r *ModifyDisasterRecoverGroupAttributeRequest) ToJsonString() string {
@@ -7410,6 +7416,7 @@ func (r *ModifyDisasterRecoverGroupAttributeRequest) FromJsonString(s string) er
 	}
 	delete(f, "DisasterRecoverGroupId")
 	delete(f, "Name")
+	delete(f, "Affinity")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDisasterRecoverGroupAttributeRequest has unknown keys!", "")
 	}

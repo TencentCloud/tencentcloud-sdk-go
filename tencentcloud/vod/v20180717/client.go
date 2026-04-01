@@ -4213,7 +4213,7 @@ func NewDeleteLLMComprehendTemplateResponse() (response *DeleteLLMComprehendTemp
 }
 
 // DeleteLLMComprehendTemplate
-// 删除用户自定义图像异步处理模板。
+// 删除用户自定义大模型解析模板。
 //
 // 
 //
@@ -4231,7 +4231,7 @@ func (c *Client) DeleteLLMComprehendTemplate(request *DeleteLLMComprehendTemplat
 }
 
 // DeleteLLMComprehendTemplate
-// 删除用户自定义图像异步处理模板。
+// 删除用户自定义大模型解析模板。
 //
 // 
 //
