@@ -235,6 +235,64 @@ func (c *Client) CancelRebuildIndexTaskWithContext(ctx context.Context, request 
     return
 }
 
+func NewChatCompletionsRequest() (request *ChatCompletionsRequest) {
+    request = &ChatCompletionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ChatCompletions")
+    
+    
+    return
+}
+
+func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
+    response = &ChatCompletionsResponse{} 
+    return
+
+}
+
+// ChatCompletions
+// 调用接口，发起一次对话请求。
+//
+// 本接口支持智能生成检索分析语句等日志服务AI功能。
+//
+// ⚠️注意：通过SSE流式调用此接口时，请务必设置请求域名（Endpoint）为 cls.ai.tencentcloudapi.com。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *ChatCompletionsResponse, err error) {
+    return c.ChatCompletionsWithContext(context.Background(), request)
+}
+
+// ChatCompletions
+// 调用接口，发起一次对话请求。
+//
+// 本接口支持智能生成检索分析语句等日志服务AI功能。
+//
+// ⚠️注意：通过SSE流式调用此接口时，请务必设置请求域名（Endpoint）为 cls.ai.tencentcloudapi.com。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) ChatCompletionsWithContext(ctx context.Context, request *ChatCompletionsRequest) (response *ChatCompletionsResponse, err error) {
+    if request == nil {
+        request = NewChatCompletionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ChatCompletions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChatCompletions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChatCompletionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckFunctionRequest() (request *CheckFunctionRequest) {
     request = &CheckFunctionRequest{
         BaseRequest: &tchttp.BaseRequest{},

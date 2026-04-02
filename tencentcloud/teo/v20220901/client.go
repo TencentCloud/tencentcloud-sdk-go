@@ -8963,6 +8963,56 @@ func (c *Client) DescribeSecurityTemplateBindingsWithContext(ctx context.Context
     return
 }
 
+func NewDescribeSharedCNAMERequest() (request *DescribeSharedCNAMERequest) {
+    request = &DescribeSharedCNAMERequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeSharedCNAME")
+    
+    
+    return
+}
+
+func NewDescribeSharedCNAMEResponse() (response *DescribeSharedCNAMEResponse) {
+    response = &DescribeSharedCNAMEResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSharedCNAME
+// 查询共享CNAME列表，支持模糊搜索、分页、排序等。
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) DescribeSharedCNAME(request *DescribeSharedCNAMERequest) (response *DescribeSharedCNAMEResponse, err error) {
+    return c.DescribeSharedCNAMEWithContext(context.Background(), request)
+}
+
+// DescribeSharedCNAME
+// 查询共享CNAME列表，支持模糊搜索、分页、排序等。
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) DescribeSharedCNAMEWithContext(ctx context.Context, request *DescribeSharedCNAMERequest) (response *DescribeSharedCNAMEResponse, err error) {
+    if request == nil {
+        request = NewDescribeSharedCNAMERequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "DescribeSharedCNAME")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSharedCNAME require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSharedCNAMEResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTimingL4DataRequest() (request *DescribeTimingL4DataRequest) {
     request = &DescribeTimingL4DataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14167,6 +14217,64 @@ func (c *Client) ModifySecurityPolicyWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifySecurityPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySharedCNAMERequest() (request *ModifySharedCNAMERequest) {
+    request = &ModifySharedCNAMERequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifySharedCNAME")
+    
+    
+    return
+}
+
+func NewModifySharedCNAMEResponse() (response *ModifySharedCNAMEResponse) {
+    response = &ModifySharedCNAMEResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySharedCNAME
+// 用于修改共享 CNAME。当前仅支持修改共享 CNAME 的描述和设置 IP SSL类型的共享CNAME关联IP SSL 域名，共享 CNAME 本身创建后不支持修改。该功能白名单内测中。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED_DOMAINMUSTINIPSSLSHAREDCNAMEZONEANDINSHAREDCNAME = "OperationDenied.DomainMustInIPSSLSharedCNAMEZoneAndInSharedCNAME"
+//  OPERATIONDENIED_IPSSLALREADYBOUNDANOTHERDOMAIN = "OperationDenied.IPSSLAlreadyBoundAnotherDomain"
+//  OPERATIONDENIED_LASTIPSSLOPERATIONNOTCOMPLETE = "OperationDenied.LastIPSSLOperationNotComplete"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifySharedCNAME(request *ModifySharedCNAMERequest) (response *ModifySharedCNAMEResponse, err error) {
+    return c.ModifySharedCNAMEWithContext(context.Background(), request)
+}
+
+// ModifySharedCNAME
+// 用于修改共享 CNAME。当前仅支持修改共享 CNAME 的描述和设置 IP SSL类型的共享CNAME关联IP SSL 域名，共享 CNAME 本身创建后不支持修改。该功能白名单内测中。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED_DOMAINMUSTINIPSSLSHAREDCNAMEZONEANDINSHAREDCNAME = "OperationDenied.DomainMustInIPSSLSharedCNAMEZoneAndInSharedCNAME"
+//  OPERATIONDENIED_IPSSLALREADYBOUNDANOTHERDOMAIN = "OperationDenied.IPSSLAlreadyBoundAnotherDomain"
+//  OPERATIONDENIED_LASTIPSSLOPERATIONNOTCOMPLETE = "OperationDenied.LastIPSSLOperationNotComplete"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifySharedCNAMEWithContext(ctx context.Context, request *ModifySharedCNAMERequest) (response *ModifySharedCNAMEResponse, err error) {
+    if request == nil {
+        request = NewModifySharedCNAMERequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "teo", APIVersion, "ModifySharedCNAME")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySharedCNAME require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySharedCNAMEResponse()
     err = c.Send(request, response)
     return
 }

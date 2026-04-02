@@ -45,6 +45,78 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateGlobalAcceleratorRequest() (request *CreateGlobalAcceleratorRequest) {
+    request = &CreateGlobalAcceleratorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "CreateGlobalAccelerator")
+    
+    
+    return
+}
+
+func NewCreateGlobalAcceleratorResponse() (response *CreateGlobalAcceleratorResponse) {
+    response = &CreateGlobalAcceleratorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateGlobalAccelerator
+// 创建全球加速实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEGLOBALACCELERATORFAILED = "FailedOperation.CreateGlobalAcceleratorFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_ACCOUNTFROZEN = "UnsupportedOperation.AccountFrozen"
+//  UNSUPPORTEDOPERATION_BILLINGFAILED = "UnsupportedOperation.BillingFailed"
+//  UNSUPPORTEDOPERATION_CROSSBORDERPROMISENOTSIGNED = "UnsupportedOperation.CrossBorderPromiseNotSigned"
+//  UNSUPPORTEDOPERATION_CURRENTACCOUNTNOTALLOWED = "UnsupportedOperation.CurrentAccountNotAllowed"
+//  UNSUPPORTEDOPERATION_ENABLECROSSBORDER = "UnsupportedOperation.EnableCrossBorder"
+//  UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = "UnsupportedOperation.InsufficientFunds"
+//  UNSUPPORTEDOPERATION_UNABLECROSSBORDER = "UnsupportedOperation.UnableCrossBorder"
+func (c *Client) CreateGlobalAccelerator(request *CreateGlobalAcceleratorRequest) (response *CreateGlobalAcceleratorResponse, err error) {
+    return c.CreateGlobalAcceleratorWithContext(context.Background(), request)
+}
+
+// CreateGlobalAccelerator
+// 创建全球加速实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEGLOBALACCELERATORFAILED = "FailedOperation.CreateGlobalAcceleratorFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_ACCOUNTFROZEN = "UnsupportedOperation.AccountFrozen"
+//  UNSUPPORTEDOPERATION_BILLINGFAILED = "UnsupportedOperation.BillingFailed"
+//  UNSUPPORTEDOPERATION_CROSSBORDERPROMISENOTSIGNED = "UnsupportedOperation.CrossBorderPromiseNotSigned"
+//  UNSUPPORTEDOPERATION_CURRENTACCOUNTNOTALLOWED = "UnsupportedOperation.CurrentAccountNotAllowed"
+//  UNSUPPORTEDOPERATION_ENABLECROSSBORDER = "UnsupportedOperation.EnableCrossBorder"
+//  UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = "UnsupportedOperation.InsufficientFunds"
+//  UNSUPPORTEDOPERATION_UNABLECROSSBORDER = "UnsupportedOperation.UnableCrossBorder"
+func (c *Client) CreateGlobalAcceleratorWithContext(ctx context.Context, request *CreateGlobalAcceleratorRequest) (response *CreateGlobalAcceleratorResponse, err error) {
+    if request == nil {
+        request = NewCreateGlobalAcceleratorRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "CreateGlobalAccelerator")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGlobalAccelerator require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGlobalAcceleratorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCrossBorderSettlementRequest() (request *DescribeCrossBorderSettlementRequest) {
     request = &DescribeCrossBorderSettlementRequest{
         BaseRequest: &tchttp.BaseRequest{},

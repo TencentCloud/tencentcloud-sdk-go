@@ -415,6 +415,86 @@ func (c *Client) CreateBillDealWithContext(ctx context.Context, request *CreateB
     return
 }
 
+func NewCreateCustomLoginKeyRequest() (request *CreateCustomLoginKeyRequest) {
+    request = &CreateCustomLoginKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "CreateCustomLoginKey")
+    
+    
+    return
+}
+
+func NewCreateCustomLoginKeyResponse() (response *CreateCustomLoginKeyResponse) {
+    response = &CreateCustomLoginKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCustomLoginKey
+// 创建自定义登录密钥。在指定云开发环境下生成一对 RSA 1024 位非对称密钥对，系统仅存储公钥，私钥仅在创建时返回一次且不可恢复，请妥善保存。创建新密钥后，该环境下原有未设置过期时间的旧密钥将被自动标记为 2 小时后过期，请确保客户端及时更新密钥配置。
+//
+// 返回的 KeyID 和 PrivateKey 需与环境 ID 一起组装为 JSON 配置文件，供客户端 Admin SDK 初始化时使用，文件格式如下：
+//
+// {
+//
+//   "private_key_id": "<返回的 KeyID>",
+//
+//   "private_key": "<返回的 PrivateKey>",
+//
+//   "env_id": "<请求时传入的 EnvId>"
+//
+// }
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateCustomLoginKey(request *CreateCustomLoginKeyRequest) (response *CreateCustomLoginKeyResponse, err error) {
+    return c.CreateCustomLoginKeyWithContext(context.Background(), request)
+}
+
+// CreateCustomLoginKey
+// 创建自定义登录密钥。在指定云开发环境下生成一对 RSA 1024 位非对称密钥对，系统仅存储公钥，私钥仅在创建时返回一次且不可恢复，请妥善保存。创建新密钥后，该环境下原有未设置过期时间的旧密钥将被自动标记为 2 小时后过期，请确保客户端及时更新密钥配置。
+//
+// 返回的 KeyID 和 PrivateKey 需与环境 ID 一起组装为 JSON 配置文件，供客户端 Admin SDK 初始化时使用，文件格式如下：
+//
+// {
+//
+//   "private_key_id": "<返回的 KeyID>",
+//
+//   "private_key": "<返回的 PrivateKey>",
+//
+//   "env_id": "<请求时传入的 EnvId>"
+//
+// }
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASE = "InternalError.Database"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateCustomLoginKeyWithContext(ctx context.Context, request *CreateCustomLoginKeyRequest) (response *CreateCustomLoginKeyResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomLoginKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "CreateCustomLoginKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCustomLoginKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCustomLoginKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateEnvRequest() (request *CreateEnvRequest) {
     request = &CreateEnvRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -613,7 +693,7 @@ func NewCreateHTTPServiceRouteResponse() (response *CreateHTTPServiceRouteRespon
 }
 
 // CreateHTTPServiceRoute
-// 本接口CreateHTTPServiceRoute用于创建HTTP访问服务路由。如果不传Domain.Routes，仅创建域名信息。首次创建域名后需要调用DescribeHTTPServiceRoute查询域名状态，如果状态是PROCESSING，需要轮询查询域名状态直到SUCCESS或者FAIL。如果状态是FAIL，可以删除后重新创建。创建成功后域名可能无法访问，原因是异步下发的路由，可通过http或者https探测路由是否下发，如果http访问返回404或者https访问握手失败，可等待一会再试，直到访问正常。
+// 本接口CreateHTTPServiceRoute用于创建HTTP访问服务路由。如果不传Domain.Routes，仅创建域名信息。首次创建域名后需要调用DescribeHTTPServiceRoute查询域名状态，如果状态是PROCESSING，需要轮询查询域名状态直到SUCCESS或者FAIL。如果状态是FAIL，可以删除后重新创建。创建成功后域名可能无法访问，原因是异步下发的路由，可通过http或者https探测路由是否下发，如果http访问返回404或者https访问握手失败，可等待一会再试，直到访问正常。此外HTTP访问服务提供了默认域名，通过DescribeHTTPServiceRoute接口可直接获取默认域名。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -632,7 +712,7 @@ func (c *Client) CreateHTTPServiceRoute(request *CreateHTTPServiceRouteRequest) 
 }
 
 // CreateHTTPServiceRoute
-// 本接口CreateHTTPServiceRoute用于创建HTTP访问服务路由。如果不传Domain.Routes，仅创建域名信息。首次创建域名后需要调用DescribeHTTPServiceRoute查询域名状态，如果状态是PROCESSING，需要轮询查询域名状态直到SUCCESS或者FAIL。如果状态是FAIL，可以删除后重新创建。创建成功后域名可能无法访问，原因是异步下发的路由，可通过http或者https探测路由是否下发，如果http访问返回404或者https访问握手失败，可等待一会再试，直到访问正常。
+// 本接口CreateHTTPServiceRoute用于创建HTTP访问服务路由。如果不传Domain.Routes，仅创建域名信息。首次创建域名后需要调用DescribeHTTPServiceRoute查询域名状态，如果状态是PROCESSING，需要轮询查询域名状态直到SUCCESS或者FAIL。如果状态是FAIL，可以删除后重新创建。创建成功后域名可能无法访问，原因是异步下发的路由，可通过http或者https探测路由是否下发，如果http访问返回404或者https访问握手失败，可等待一会再试，直到访问正常。此外HTTP访问服务提供了默认域名，通过DescribeHTTPServiceRoute接口可直接获取默认域名。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2419,7 +2499,7 @@ func NewDescribeHTTPServiceRouteResponse() (response *DescribeHTTPServiceRouteRe
 }
 
 // DescribeHTTPServiceRoute
-// 本接口DescribeHTTPServiceRoute用于查询环境下HTTP访问服务路由信息。可通过Filters过滤。如果不存在不会返回错误。
+// 本接口DescribeHTTPServiceRoute用于查询环境下HTTP访问服务路由信息。可通过Filters过滤。如果不存在不会返回错误。HTTP访问服务提供了默认域名，通过本接口可直接获取默认域名。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2429,7 +2509,7 @@ func (c *Client) DescribeHTTPServiceRoute(request *DescribeHTTPServiceRouteReque
 }
 
 // DescribeHTTPServiceRoute
-// 本接口DescribeHTTPServiceRoute用于查询环境下HTTP访问服务路由信息。可通过Filters过滤。如果不存在不会返回错误。
+// 本接口DescribeHTTPServiceRoute用于查询环境下HTTP访问服务路由信息。可通过Filters过滤。如果不存在不会返回错误。HTTP访问服务提供了默认域名，通过本接口可直接获取默认域名。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -3981,7 +4061,7 @@ func NewModifyHTTPServiceRouteResponse() (response *ModifyHTTPServiceRouteRespon
 }
 
 // ModifyHTTPServiceRoute
-// 本接口ModifyHTTPServiceRoute用于修改HTTP访问服务路由。支持增量修改，对应字段不传参数表示不需要修改
+// 本接口ModifyHTTPServiceRoute用于修改HTTP访问服务路由。支持增量修改，对应字段不传参数则不修改
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -3993,7 +4073,7 @@ func (c *Client) ModifyHTTPServiceRoute(request *ModifyHTTPServiceRouteRequest) 
 }
 
 // ModifyHTTPServiceRoute
-// 本接口ModifyHTTPServiceRoute用于修改HTTP访问服务路由。支持增量修改，对应字段不传参数表示不需要修改
+// 本接口ModifyHTTPServiceRoute用于修改HTTP访问服务路由。支持增量修改，对应字段不传参数则不修改
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"

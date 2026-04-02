@@ -730,6 +730,107 @@ func (r *CancelRebuildIndexTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ChatCompletionsRequestParams struct {
+	// <p>功能名称</p><p>枚举值：</p><ul><li>text2sql： 智能生成检索分析语句</li><li>text2sql-reasoning： 智能生成检索分析语句-深度思考</li></ul>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>聊天上下文信息。<br>说明：</p><ol><li>长度最多为 11 (5轮历史会话 + user新提问) ，按对话时间从旧到新在数组中排列。超出此长度会丢弃旧会话数据。</li><li>Message.Role 可选值：user、assistant。<br>user 和 assistant 需交替出现，以 user 提问开始，user 提问结束，Content 不能为空。Role 的顺序示例：[user assistant user assistant user ...]。</li></ol>
+	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
+
+	// <p>流式调用开关。<br>说明：</p><ol><li>未传值时默认为非流式调用（false）。</li><li>流式调用时以 SSE 协议增量返回结果（返回值取 Choices[n].Delta 中的值，需要拼接增量数据才能获得完整结果）。</li><li>非流式调用时：<br>调用方式与普通 HTTP 请求无异。<br>接口响应耗时较长，如需更低时延建议设置为 true。<br>只返回一次最终结果（返回值取 Choices[n].Message 中的值）。</li></ol><p>注意：</p><ol><li>通过 SDK 调用时，流式和非流式调用需用不同的方式获取返回值，具体参考 SDK 中的注释或示例（在各语言 SDK 代码仓库的 examples/hunyuan/v20230901/ 目录中）。</li><li>可能会出现部分内容已输出，但中间某一段响应中的 FinishReason 值为 sensitive，此时说明安全审核未通过。如果业务场景有实时文字上屏的需求，需要自行撤回已上屏的内容，并建议自定义替换为一条提示语，如 “这个问题我不方便回答，不如我们换个话题试试”，以保障终端体验。</li></ol>
+	Stream *bool `json:"Stream,omitnil,omitempty" name:"Stream"`
+
+	// <p>额外元数据信息。例如：[{&quot;Key&quot;:&quot;topic_id&quot;,&quot;Value&quot;:&quot;xxxxxxxx-xxxx&quot;},{&quot;Key&quot;:&quot;topic_region&quot;,&quot;Value&quot;:&quot;ap-guangzhou&quot;}]</p>
+	Metadata []*MetadataItem `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+}
+
+type ChatCompletionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>功能名称</p><p>枚举值：</p><ul><li>text2sql： 智能生成检索分析语句</li><li>text2sql-reasoning： 智能生成检索分析语句-深度思考</li></ul>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>聊天上下文信息。<br>说明：</p><ol><li>长度最多为 11 (5轮历史会话 + user新提问) ，按对话时间从旧到新在数组中排列。超出此长度会丢弃旧会话数据。</li><li>Message.Role 可选值：user、assistant。<br>user 和 assistant 需交替出现，以 user 提问开始，user 提问结束，Content 不能为空。Role 的顺序示例：[user assistant user assistant user ...]。</li></ol>
+	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
+
+	// <p>流式调用开关。<br>说明：</p><ol><li>未传值时默认为非流式调用（false）。</li><li>流式调用时以 SSE 协议增量返回结果（返回值取 Choices[n].Delta 中的值，需要拼接增量数据才能获得完整结果）。</li><li>非流式调用时：<br>调用方式与普通 HTTP 请求无异。<br>接口响应耗时较长，如需更低时延建议设置为 true。<br>只返回一次最终结果（返回值取 Choices[n].Message 中的值）。</li></ol><p>注意：</p><ol><li>通过 SDK 调用时，流式和非流式调用需用不同的方式获取返回值，具体参考 SDK 中的注释或示例（在各语言 SDK 代码仓库的 examples/hunyuan/v20230901/ 目录中）。</li><li>可能会出现部分内容已输出，但中间某一段响应中的 FinishReason 值为 sensitive，此时说明安全审核未通过。如果业务场景有实时文字上屏的需求，需要自行撤回已上屏的内容，并建议自定义替换为一条提示语，如 “这个问题我不方便回答，不如我们换个话题试试”，以保障终端体验。</li></ol>
+	Stream *bool `json:"Stream,omitnil,omitempty" name:"Stream"`
+
+	// <p>额外元数据信息。例如：[{&quot;Key&quot;:&quot;topic_id&quot;,&quot;Value&quot;:&quot;xxxxxxxx-xxxx&quot;},{&quot;Key&quot;:&quot;topic_region&quot;,&quot;Value&quot;:&quot;ap-guangzhou&quot;}]</p>
+	Metadata []*MetadataItem `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+}
+
+func (r *ChatCompletionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChatCompletionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Model")
+	delete(f, "Messages")
+	delete(f, "Stream")
+	delete(f, "Metadata")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatCompletionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChatCompletionsResponseParams struct {
+	// <p>Unix 时间戳，单位为秒。</p>
+	Created *uint64 `json:"Created,omitnil,omitempty" name:"Created"`
+
+	// <p>Token 统计信息。</p>
+	Usage *ChatUsage `json:"Usage,omitnil,omitempty" name:"Usage"`
+
+	// <p>本次请求的 Id。</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>回复内容。</p>
+	Choices []*Choice `json:"Choices,omitnil,omitempty" name:"Choices"`
+
+	// <p>功能名称</p><p>枚举值：</p><ul><li>text2sql： 智能生成检索分析语句</li><li>text2sql-reasoning： 智能生成检索分析语句-深度思考</li></ul>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ChatCompletionsResponse struct {
+	tchttp.BaseSSEResponse `json:"-"`
+	Response *ChatCompletionsResponseParams `json:"Response"`
+}
+
+func (r *ChatCompletionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChatCompletionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ChatUsage struct {
+	// 输入token数
+	PromptTokens *int64 `json:"PromptTokens,omitnil,omitempty" name:"PromptTokens"`
+
+	// 输出token数
+	CompletionTokens *int64 `json:"CompletionTokens,omitnil,omitempty" name:"CompletionTokens"`
+
+	// 总token数
+	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
+}
+
+// Predefined struct for user
 type CheckFunctionRequestParams struct {
 	// 加工语句。 当FuncType为2时，EtlContent必须使用[log_auto_output](https://cloud.tencent.com/document/product/614/70733#b3c58797-4825-4807-bef4-68106e25024f) 
 	// 
@@ -926,6 +1027,20 @@ func (r *CheckRechargeKafkaServerResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CheckRechargeKafkaServerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Choice struct {
+	// <p>结束标志位，可能为 stop、 sensitive或者tool_calls。<br>stop 表示输出正常结束。<br>sensitive 表示安全审核未通过。<br>tool_calls 标识函数调用。</p><p>注意：<br>可能会出现部分内容已输出，但中间某一段响应中的 FinishReason 值为 sensitive，此时说明安全审核未通过。如果业务场景有实时文字上屏的需求，需要自行撤回已上屏的内容，并建议自定义替换为一条提示语，如 “这个问题我不方便回答，不如我们换个话题试试”，以保障终端体验。</p>
+	FinishReason *string `json:"FinishReason,omitnil,omitempty" name:"FinishReason"`
+
+	// <p>增量返回值，流式调用时使用该字段。</p>
+	Delta *Delta `json:"Delta,omitnil,omitempty" name:"Delta"`
+
+	// <p>返回值，非流式调用时使用该字段。</p>
+	Message *Message `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>索引值，流式调用时使用该字段。</p>
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
 }
 
 type Ckafka struct {
@@ -8238,6 +8353,20 @@ type DeliverConfig struct {
 	Scope *uint64 `json:"Scope,omitnil,omitempty" name:"Scope"`
 }
 
+type Delta struct {
+	// <p>角色</p><p>枚举值：</p><ul><li>user： 用户</li><li>assistant： AI助手</li></ul>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// <p>内容详情</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>思维链内容。<br>用于展示模型思考过程，仅深度思考模式可用。仅作为输出参数返回，在进行多轮对话时，无需传入输入参数中。</p>
+	ReasoningContent *string `json:"ReasoningContent,omitnil,omitempty" name:"ReasoningContent"`
+
+	// <p>模型生成的工具调用。仅支持输出参数返回。<br>对于每一次的输出值应该以Id为标识对Type、Name、Arguments字段进行合并。</p>
+	ToolCalls []*ToolCall `json:"ToolCalls,omitnil,omitempty" name:"ToolCalls"`
+}
+
 // Predefined struct for user
 type DescribeAlarmNoticesRequestParams struct {
 	// name
@@ -14901,6 +15030,20 @@ func (r *MergePartitionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Message struct {
+	// <p>角色</p><p>枚举值：</p><ul><li>user： 用户</li><li>assistant： AI助手</li></ul>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// <p>文本内容</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>思维链内容。<br>用于展示模型思考过程，仅深度思考模式可用。仅作为输出参数返回，在进行多轮对话时，无需传入输入参数中。</p>
+	ReasoningContent *string `json:"ReasoningContent,omitnil,omitempty" name:"ReasoningContent"`
+
+	// <p>模型生成的工具调用。仅支持输出参数返回。</p>
+	ToolCalls []*ToolCall `json:"ToolCalls,omitnil,omitempty" name:"ToolCalls"`
+}
+
 type MetaTagInfo struct {
 	// 元数据key
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -14922,6 +15065,14 @@ type MetadataInfo struct {
 
 	// JSON是否平铺，投递__TAG__字段时必填
 	TagJsonTiled *bool `json:"TagJsonTiled,omitnil,omitempty" name:"TagJsonTiled"`
+}
+
+type MetadataItem struct {
+	// <p>元数据标签键</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>元数据标签值</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type MetricCollectConfig struct {
@@ -20942,6 +21093,28 @@ type Tag struct {
 
 	// 标签值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type ToolCall struct {
+	// <p>工具调用id</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>工具调用类型，当前只支持function</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>具体的function调用</p>
+	Function *ToolCallFunction `json:"Function,omitnil,omitempty" name:"Function"`
+
+	// <p>索引值</p>
+	Index *uint64 `json:"Index,omitnil,omitempty" name:"Index"`
+}
+
+type ToolCallFunction struct {
+	// <p>Function名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>Function参数，一般为json字符串</p>
+	Arguments *string `json:"Arguments,omitnil,omitempty" name:"Arguments"`
 }
 
 type TopicExtendInfo struct {

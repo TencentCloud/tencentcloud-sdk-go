@@ -11059,33 +11059,45 @@ func (r *DescribeProtectionModesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeQClawContentSecCheckRequestParams struct {
-	//  服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则
+	// <p>服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// 要审核的内容
+	// <p>要审核的内容</p>
 	Content *ApiGuardContent `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 标识用户的id，限速使用，不填，则限速会不生效
+	// <p>标识用户的id，限速使用，不填，则限速会不生效</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 会话id
+	// <p>会话id</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>工具名称</p>
+	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
+
+	// <p>工具执行的参数</p>
+	ToolArgs *string `json:"ToolArgs,omitnil,omitempty" name:"ToolArgs"`
 }
 
 type DescribeQClawContentSecCheckRequest struct {
 	*tchttp.BaseRequest
 	
-	//  服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则
+	// <p>服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// 要审核的内容
+	// <p>要审核的内容</p>
 	Content *ApiGuardContent `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 标识用户的id，限速使用，不填，则限速会不生效
+	// <p>标识用户的id，限速使用，不填，则限速会不生效</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 会话id
+	// <p>会话id</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>工具名称</p>
+	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
+
+	// <p>工具执行的参数</p>
+	ToolArgs *string `json:"ToolArgs,omitnil,omitempty" name:"ToolArgs"`
 }
 
 func (r *DescribeQClawContentSecCheckRequest) ToJsonString() string {
@@ -11104,6 +11116,8 @@ func (r *DescribeQClawContentSecCheckRequest) FromJsonString(s string) error {
 	delete(f, "Content")
 	delete(f, "UserId")
 	delete(f, "SessionId")
+	delete(f, "ToolName")
+	delete(f, "ToolArgs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQClawContentSecCheckRequest has unknown keys!", "")
 	}
@@ -11112,7 +11126,7 @@ func (r *DescribeQClawContentSecCheckRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeQClawContentSecCheckResponseParams struct {
-	// 检测结果
+	// <p>检测结果</p>
 	Data *LLMRisks `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14866,28 +14880,28 @@ type KeyWordInfo struct {
 }
 
 type LLMDetectResult struct {
-	//  仅输出侧：涉敏信息
+	// <p>仅输出侧：涉敏信息</p>
 	SensitiveResult []*LLMSensitiveValueLevel `json:"SensitiveResult,omitnil,omitempty" name:"SensitiveResult"`
 
-	//  输入输出均检测：关键词库命中信息
+	// <p>输入输出均检测：关键词库命中信息</p>
 	KeyWordsResult []*KeyWordInfo `json:"KeyWordsResult,omitnil,omitempty" name:"KeyWordsResult"`
 
-	// 输入输出均检测：数据分类分级结果
+	// <p>输入输出均检测：数据分类分级结果</p>
 	DataCategoryResult []*string `json:"DataCategoryResult,omitnil,omitempty" name:"DataCategoryResult"`
 
-	//  仅输入侧检出：prompt检测的结果
+	// <p>仅输入侧检出：prompt检测的结果</p>
 	PromptInjectionResult *PromptDetectResult `json:"PromptInjectionResult,omitnil,omitempty" name:"PromptInjectionResult"`
 
-	// 命中的规则ID
+	// <p>命中的规则ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 命中的规则名称
+	// <p>命中的规则名称</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 规则动作
+	// <p>规则动作</p>
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
-	// 攻击payload
+	// <p>攻击payload</p>
 	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
 }
 

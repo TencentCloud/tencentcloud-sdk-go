@@ -735,6 +735,66 @@ func (r *CreateBillDealResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateCustomLoginKeyRequestParams struct {
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+type CreateCustomLoginKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+func (r *CreateCustomLoginKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomLoginKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomLoginKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCustomLoginKeyResponseParams struct {
+	// 自定义登录的 RSA 私钥（1024 位），PEM 编码格式（PKCS#1）。调用方需使用该私钥对包含用户身份信息的 JSON 数据进行 JWS 签名，生成 JWT Token 后传入自定义登录接口完成身份认证。出于安全考虑，系统仅存储公钥，私钥仅在创建时返回一次且无法恢复，请妥善保存。创建新密钥后，该环境下原有未设置过期时间的旧密钥将被自动标记为 2 小时后过期
+	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
+
+	// 密钥对的唯一标识符（UUID 格式），由系统自动生成。在自定义登录时，需将该 KeyID 拼接到 ProviderToken 参数中（格式：{KeyID}/{algorithm}/{signedJWT}），服务端通过 KeyID 查找对应的公钥以验证签名
+	KeyID *string `json:"KeyID,omitnil,omitempty" name:"KeyID"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCustomLoginKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCustomLoginKeyResponseParams `json:"Response"`
+}
+
+func (r *CreateCustomLoginKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomLoginKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateEnvRequestParams struct {
 	// 环境别名。
 	// 
@@ -4812,11 +4872,15 @@ func (r *EditAuthConfigResponse) FromJsonString(s string) error {
 }
 
 type EmailProviderConfig struct {
-	// smtp配置
+	// <p>smtp配置</p>
 	SmtpConfig *EmailSmtpConfig `json:"SmtpConfig,omitnil,omitempty" name:"SmtpConfig"`
 
-	// 可选：TRUE，FALSE，如果On为TRUE，则表示采用默认代发。
+	// <p>可选：TRUE，FALSE，如果On为TRUE，则表示采用默认代发。</p>
 	On *string `json:"On,omitnil,omitempty" name:"On"`
+
+	// <p>邮件模板配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateConfig *EmailTemplateConfig `json:"TemplateConfig,omitnil,omitempty" name:"TemplateConfig"`
 }
 
 type EmailSmtpConfig struct {
@@ -4837,6 +4901,16 @@ type EmailSmtpConfig struct {
 
 	// SMTP 连接的加密模式，用于保障邮件传输安全。可选值：AUTO（自动选择，优先使用安全连接）、SSL（全程 SSL/TLS 加密，通常配合端口 465 使用）、STARTSSL（通过 STARTTLS 命令升级为加密连接，通常配合端口 587 使用）、NO_SSL（不使用加密，仅建议在内网或测试环境中使用）。推荐使用 AUTO 或 SSL 以确保传输安全。
 	SecurityMode *string `json:"SecurityMode,omitnil,omitempty" name:"SecurityMode"`
+}
+
+type EmailTemplateConfig struct {
+	// <p>注册登录模板</p><p>入参限制：模板中必须包含{{.VerificationCode}}变量，用于邮件中验证码的展示，可选变量有{{.Usage}}、{{.ExpireMinutes}}、{{.Email}}。邮件模板中禁止包含 script、javascript、onclick、onload、iframe、link 标签及 CSS expression、CSS url() 等</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegisterSignIn *LocalizedTemplate `json:"RegisterSignIn,omitnil,omitempty" name:"RegisterSignIn"`
+
+	// <p>默认模板</p><p>入参限制：模板中必须包含{{.VerificationCode}}变量，用于邮件中验证码的展示，可选变量有{{.Usage}}、{{.ExpireMinutes}}、{{.Email}}。邮件模板中禁止包含 script、javascript、onclick、onload、iframe、link 标签及 CSS expression、CSS url() 等</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultTpl *LocalizedTemplate `json:"DefaultTpl,omitnil,omitempty" name:"DefaultTpl"`
 }
 
 type EnvBillingInfoItem struct {
@@ -5146,6 +5220,9 @@ type HTTPServiceDomain struct {
 	// HTTP访问服务路由信息
 	Routes []*HTTPServiceRoute `json:"Routes,omitnil,omitempty" name:"Routes"`
 
+	// 扩展字段，内部包含headers处理等
+	Extension *HTTPServiceExtension `json:"Extension,omitnil,omitempty" name:"Extension"`
+
 	// 域名创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
@@ -5154,26 +5231,59 @@ type HTTPServiceDomain struct {
 }
 
 type HTTPServiceDomainParam struct {
-	// 域名。全局唯一。如果域名在其他环境下占用或者腾讯云CDN占用，可能会导致创建失败
+	// <p>域名。全局唯一。如果域名在其他环境下占用或者腾讯云CDN占用，可能会导致创建失败</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）
+	// <p>绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）</p>
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
-	// 证书ID。当前账户下SSL平台的证书ID
+	// <p>证书ID。当前账户下SSL平台的证书ID</p>
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
-	// 协议类型。默认HTTP_AND_HTTPS。HTTP_AND_HTTPS: 同时开启http和https，HTTP_TO_HTTPS: http重定向成https，HTTPS_TO_HTTP: https重定向成http。如果未配置证书无法访问https或者进行重定向
+	// <p>协议类型。默认HTTP_AND_HTTPS。HTTP_AND_HTTPS: 同时开启http和https，HTTP_TO_HTTPS: http重定向成https，HTTPS_TO_HTTP: https重定向成http。如果未配置证书无法访问https或者进行重定向</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 自定义CNAME。对应AccessType: Custom
+	// <p>自定义CNAME。对应AccessType: Custom</p>
 	CustomCname *string `json:"CustomCname,omitnil,omitempty" name:"CustomCname"`
 
-	// 域名开启状态，不传默认开启
+	// <p>域名开启状态，不传默认开启</p>
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 创建/修改的HTTP访问服务路由列表。如果不传，仅创建或修改域名信息。列表最大支持传入20个
+	// <p>创建/修改的HTTP访问服务路由列表。如果不传，仅创建或修改域名信息。列表最大支持传入20个</p>
 	Routes []*HTTPServiceRouteParam `json:"Routes,omitnil,omitempty" name:"Routes"`
+
+	// <p>扩展字段，内部包含headers处理等</p>
+	Extension *HTTPServiceExtension `json:"Extension,omitnil,omitempty" name:"Extension"`
+}
+
+type HTTPServiceExtension struct {
+	// 添加请求头列表
+	HeadersHandler *HTTPServiceHeadersHandler `json:"HeadersHandler,omitnil,omitempty" name:"HeadersHandler"`
+}
+
+type HTTPServiceHeaderToAdd struct {
+	// 添加头部的key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 添加头部的值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 添加头部的处理行为。默认：OVERWRITE_IF_EXISTS_OR_ADD。APPEND_IF_EXISTS_OR_ADD: 已存在时追加值，不存在时添加，ADD_IF_ABSENT:  仅在 header 不存在时添加，已存在时不做任何操作，OVERWRITE_IF_EXISTS_OR_ADD: 已存在时覆盖值，不存在时添加（默认值），OVERWRITE_IF_EXISTS: 仅在 header 已存在时覆盖值，不存在时不做任何操作
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+}
+
+type HTTPServiceHeadersHandler struct {
+	// 添加请求头列表
+	RequestHeadersToAdd []*HTTPServiceHeaderToAdd `json:"RequestHeadersToAdd,omitnil,omitempty" name:"RequestHeadersToAdd"`
+
+	// 删除请求头列表
+	RequestHeadersToRemove []*string `json:"RequestHeadersToRemove,omitnil,omitempty" name:"RequestHeadersToRemove"`
+
+	// 添加返回头列表
+	ResponseHeadersToAdd []*HTTPServiceHeaderToAdd `json:"ResponseHeadersToAdd,omitnil,omitempty" name:"ResponseHeadersToAdd"`
+
+	// 删除返回头列表
+	ResponseHeadersToRemove []*string `json:"ResponseHeadersToRemove,omitnil,omitempty" name:"ResponseHeadersToRemove"`
 }
 
 type HTTPServicePathRewrite struct {
@@ -5217,6 +5327,9 @@ type HTTPServiceRoute struct {
 	// 是否开启路由
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
+	// 扩展字段，内部包含headers处理等
+	Extension *HTTPServiceExtension `json:"Extension,omitnil,omitempty" name:"Extension"`
+
 	// 路由创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
@@ -5251,6 +5364,9 @@ type HTTPServiceRouteParam struct {
 
 	// 是否开启路由
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// 扩展字段，内部包含headers处理等
+	Extension *HTTPServiceExtension `json:"Extension,omitnil,omitempty" name:"Extension"`
 }
 
 type HTTPServiceRouteQPSPolicy struct {
@@ -5526,6 +5642,16 @@ type LocalizedMessage struct {
 
 	// 针对每种语言展示的文字
 	Localized []*MessageLocalized `json:"Localized,omitnil,omitempty" name:"Localized"`
+}
+
+type LocalizedTemplate struct {
+	// <p>中文</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZhCN *string `json:"ZhCN,omitnil,omitempty" name:"ZhCN"`
+
+	// <p>英文</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnUS *string `json:"EnUS,omitnil,omitempty" name:"EnUS"`
 }
 
 type LogObject struct {

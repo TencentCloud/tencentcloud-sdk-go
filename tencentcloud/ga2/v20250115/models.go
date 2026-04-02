@@ -21,6 +21,101 @@ import (
 )
 
 // Predefined struct for user
+type CreateGlobalAcceleratorRequestParams struct {
+	// <p>名称，最大长度不能超过60个字节。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>计费模式，PREPAID：表示预付费，即包年包月，POSTPAID：表示后付费，即按量计费。默认：POSTPAID。当前仅支持后付费。</p>
+	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
+
+	// <p>描述信息，最大长度不能超过100个字节。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>跨境类型；HighQuality：精品BGP-IP跨境；Unicom：联通专线跨境。</p>
+	CrossBorderType *string `json:"CrossBorderType,omitnil,omitempty" name:"CrossBorderType"`
+
+	// <p>此Flag代表签署跨境服务承诺书。当使用跨境服务时候，此字段必传。True：代表签署。</p>
+	CrossBorderPromiseFlag *bool `json:"CrossBorderPromiseFlag,omitnil,omitempty" name:"CrossBorderPromiseFlag"`
+
+	// <p>标签信息</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type CreateGlobalAcceleratorRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>名称，最大长度不能超过60个字节。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>计费模式，PREPAID：表示预付费，即包年包月，POSTPAID：表示后付费，即按量计费。默认：POSTPAID。当前仅支持后付费。</p>
+	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
+
+	// <p>描述信息，最大长度不能超过100个字节。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>跨境类型；HighQuality：精品BGP-IP跨境；Unicom：联通专线跨境。</p>
+	CrossBorderType *string `json:"CrossBorderType,omitnil,omitempty" name:"CrossBorderType"`
+
+	// <p>此Flag代表签署跨境服务承诺书。当使用跨境服务时候，此字段必传。True：代表签署。</p>
+	CrossBorderPromiseFlag *bool `json:"CrossBorderPromiseFlag,omitnil,omitempty" name:"CrossBorderPromiseFlag"`
+
+	// <p>标签信息</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *CreateGlobalAcceleratorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGlobalAcceleratorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "InstanceChargeType")
+	delete(f, "Description")
+	delete(f, "CrossBorderType")
+	delete(f, "CrossBorderPromiseFlag")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGlobalAcceleratorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGlobalAcceleratorResponseParams struct {
+	// <p>任务ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>全球加速实例ID。</p>
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateGlobalAcceleratorResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateGlobalAcceleratorResponseParams `json:"Response"`
+}
+
+func (r *CreateGlobalAcceleratorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGlobalAcceleratorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCrossBorderSettlementRequestParams struct {
 	// 全球加速实例ID。
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
@@ -96,4 +191,12 @@ func (r *DescribeCrossBorderSettlementResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeCrossBorderSettlementResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Tag struct {
+	// 标签键
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 标签值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }

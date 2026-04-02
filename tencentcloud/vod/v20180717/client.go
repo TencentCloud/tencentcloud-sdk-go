@@ -2075,6 +2075,8 @@ func NewCreateMPSTemplateResponse() (response *CreateMPSTemplateResponse) {
 //
 // 1. [音视频增强](https://cloud.tencent.com/document/product/862/118703)。
 //
+// 2. [媒体AI](https://cloud.tencent.com/document/product/862/113756)
+//
 // 
 //
 // > 以该种方式创建的任务模板：
@@ -2099,6 +2101,8 @@ func (c *Client) CreateMPSTemplate(request *CreateMPSTemplateRequest) (response 
 // 当前支持创建自定义模板的 MPS 功能：
 //
 // 1. [音视频增强](https://cloud.tencent.com/document/product/862/118703)。
+//
+// 2. [媒体AI](https://cloud.tencent.com/document/product/862/113756)
 //
 // 
 //
@@ -13037,6 +13041,12 @@ func NewProcessMediaByMPSResponse() (response *ProcessMediaByMPSResponse) {
 //
 // 2. [音视频增强](https://cloud.tencent.com/document/product/862/118703)：该功能支持分布式实时画质增强，包含视频去毛刺、降噪、色彩增强、细节增强、人脸增强、SDR2HDR、大模型增强等功能，可大幅提升音视频质量，广泛应用于 OTT、电商、赛事等场景，有效实现 QoE 与 QoS 双维度提升，创造显著业务价值。
 //
+// 3. [智能字幕](https://cloud.tencent.com/document/product/862/89091)：该功能支持处理离线音频文件、视频文件及直播流，可通过 ASR 语音识别或 OCR 文本识别提取视频源语言字幕，并实现多语言翻译。
+//
+// 4. [智能分析](https://cloud.tencent.com/document/product/862/113756)：该功能支持智能封面、智能高光、智能摘要、视频理解等功能。
+//
+// 
+//
 // 
 //
 // > 以该种方式发起的视频处理任务：
@@ -13070,6 +13080,12 @@ func (c *Client) ProcessMediaByMPS(request *ProcessMediaByMPSRequest) (response 
 // 1. [智能擦除](https://cloud.tencent.com/document/product/862/101530)：能够对视频画面中的 Logo、字幕、人脸和车牌等元素进行模糊、马赛克或无痕化处理，从而便于内容的传播和分享。该任务产生的新视频将生成新的 FileId 存储在点播平台的子应用中。
 //
 // 2. [音视频增强](https://cloud.tencent.com/document/product/862/118703)：该功能支持分布式实时画质增强，包含视频去毛刺、降噪、色彩增强、细节增强、人脸增强、SDR2HDR、大模型增强等功能，可大幅提升音视频质量，广泛应用于 OTT、电商、赛事等场景，有效实现 QoE 与 QoS 双维度提升，创造显著业务价值。
+//
+// 3. [智能字幕](https://cloud.tencent.com/document/product/862/89091)：该功能支持处理离线音频文件、视频文件及直播流，可通过 ASR 语音识别或 OCR 文本识别提取视频源语言字幕，并实现多语言翻译。
+//
+// 4. [智能分析](https://cloud.tencent.com/document/product/862/113756)：该功能支持智能封面、智能高光、智能摘要、视频理解等功能。
+//
+// 
 //
 // 
 //

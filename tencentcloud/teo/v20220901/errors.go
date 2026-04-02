@@ -1091,6 +1091,9 @@ const (
 	// 域名被封禁，暂时无法操作。
 	OPERATIONDENIED_DOMAINISBLOCKED = "OperationDenied.DomainIsBlocked"
 
+	// 域名必须在IP SSL共享CNAME所属站点中且必须在IP SSL共享CNAME中
+	OPERATIONDENIED_DOMAINMUSTINIPSSLSHAREDCNAMEZONEANDINSHAREDCNAME = "OperationDenied.DomainMustInIPSSLSharedCNAMEZoneAndInSharedCNAME"
+
 	// 域名尚未备案。
 	OPERATIONDENIED_DOMAINNOICP = "OperationDenied.DomainNoICP"
 
@@ -1126,6 +1129,9 @@ const (
 
 	// 待变更域名源站证书校验配置不一致，请确认变更域名配置一致后重试。
 	OPERATIONDENIED_HOSTSUPSTREAMCERTIFICATEVERIFYINCONSISTENCY = "OperationDenied.HostsUpstreamCertificateVerifyInconsistency"
+
+	// IP SSL已绑定到其他域名，不允许操作。
+	OPERATIONDENIED_IPSSLALREADYBOUNDANOTHERDOMAIN = "OperationDenied.IPSSLAlreadyBoundAnotherDomain"
 
 	// 开启高防时必须保证安全是开启状态。
 	OPERATIONDENIED_INVALIDADVANCEDDEFENSESECURITYTYPE = "OperationDenied.InvalidAdvancedDefenseSecurityType"
@@ -1171,6 +1177,9 @@ const (
 
 	// 存在加速域名处于部署中状态，暂不支持停用站点。
 	OPERATIONDENIED_L7HOSTINPROCESSSTATUS = "OperationDenied.L7HostInProcessStatus"
+
+	// 上一次 IP SSL 操作关联的域名尚未上线完成，请等待上线完成后再进行操作。
+	OPERATIONDENIED_LASTIPSSLOPERATIONNOTCOMPLETE = "OperationDenied.LastIPSSLOperationNotComplete"
 
 	// 回源白名单已经是最新版本，无需更新。
 	OPERATIONDENIED_LATESTVERSIONNOW = "OperationDenied.LatestVersionNow"

@@ -74,6 +74,9 @@ const (
 	// 资源不存在。
 	RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 
+	// license无效
+	RESOURCEUNAVAILABLE_LICENSEINVALID = "ResourceUnavailable.LicenseInvalid"
+
 	// 没有业务资源权限。
 	UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
 

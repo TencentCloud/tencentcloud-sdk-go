@@ -35,6 +35,9 @@ const (
 	// 内部请求错误，请稍后重试。
 	FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
 
+	// 内部请求错误，请稍后重试。
+	FAILEDOPERATION_REQUESTHUNYUANERR = "FailedOperation.RequestHunYuanErr"
+
 	// 账号因为欠费停止服务，请在腾讯云账户充值。
 	FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
 

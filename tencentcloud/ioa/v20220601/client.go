@@ -1143,6 +1143,7 @@ func NewDescribeDevicesResponse() (response *DescribeDevicesResponse) {
 //  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
 //  REQUESTLIMITEXCEEDED_GATEWAY = "RequestLimitExceeded.Gateway"
 //  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCEUNAVAILABLE_LICENSEINVALID = "ResourceUnavailable.LicenseInvalid"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *DescribeDevicesResponse, err error) {
     return c.DescribeDevicesWithContext(context.Background(), request)
@@ -1159,6 +1160,7 @@ func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *Des
 //  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
 //  REQUESTLIMITEXCEEDED_GATEWAY = "RequestLimitExceeded.Gateway"
 //  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCEUNAVAILABLE_LICENSEINVALID = "ResourceUnavailable.LicenseInvalid"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDevicesWithContext(ctx context.Context, request *DescribeDevicesRequest) (response *DescribeDevicesResponse, err error) {
     if request == nil {

@@ -17522,7 +17522,7 @@ type InstallAddonRequestParams struct {
 	// addon版本（不传默认安装最新版本）
 	AddonVersion *string `json:"AddonVersion,omitnil,omitempty" name:"AddonVersion"`
 
-	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取）
+	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取）。不同的addon组件支持的RawValues参数参考文档：https://cloud.tencent.com/document/product/457/39048。
 	RawValues *string `json:"RawValues,omitnil,omitempty" name:"RawValues"`
 
 	// 是否仅做安装检查，设置为true时仅做检查，不会安装组件。默认值为 false。
@@ -17541,7 +17541,7 @@ type InstallAddonRequest struct {
 	// addon版本（不传默认安装最新版本）
 	AddonVersion *string `json:"AddonVersion,omitnil,omitempty" name:"AddonVersion"`
 
-	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取）
+	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取）。不同的addon组件支持的RawValues参数参考文档：https://cloud.tencent.com/document/product/457/39048。
 	RawValues *string `json:"RawValues,omitnil,omitempty" name:"RawValues"`
 
 	// 是否仅做安装检查，设置为true时仅做检查，不会安装组件。默认值为 false。
@@ -23483,7 +23483,7 @@ type UpdateAddonRequestParams struct {
 	// addon版本（不传默认不更新，不传AddonVersion时RawValues必传）
 	AddonVersion *string `json:"AddonVersion,omitnil,omitempty" name:"AddonVersion"`
 
-	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取，不传RawValues时AddonVersion必传）。
+	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取，不传RawValues时AddonVersion必传）。不同的addon组件支持的RawValues参数参考文档：https://cloud.tencent.com/document/product/457/39048。
 	RawValues *string `json:"RawValues,omitnil,omitempty" name:"RawValues"`
 
 	// addon参数的更新策略，支持replace和merge两种策略，默认值为merge，兼容旧版本API。replace：使用新RawValues全量替换addon原RawValues，merge：根据新RawValues新增或更新addon原RawValues中对应参数。
@@ -23505,7 +23505,7 @@ type UpdateAddonRequest struct {
 	// addon版本（不传默认不更新，不传AddonVersion时RawValues必传）
 	AddonVersion *string `json:"AddonVersion,omitnil,omitempty" name:"AddonVersion"`
 
-	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取，不传RawValues时AddonVersion必传）。
+	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取，不传RawValues时AddonVersion必传）。不同的addon组件支持的RawValues参数参考文档：https://cloud.tencent.com/document/product/457/39048。
 	RawValues *string `json:"RawValues,omitnil,omitempty" name:"RawValues"`
 
 	// addon参数的更新策略，支持replace和merge两种策略，默认值为merge，兼容旧版本API。replace：使用新RawValues全量替换addon原RawValues，merge：根据新RawValues新增或更新addon原RawValues中对应参数。

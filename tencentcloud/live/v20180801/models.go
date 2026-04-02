@@ -19899,69 +19899,42 @@ type RecentPullInfo struct {
 }
 
 type RecordParam struct {
-	// 录制间隔。
-	// 单位秒，默认：1800。
-	// FLV、MP4取值范围： 60-43200， AAC取值范围： 60-7200 。
-	// 此参数对 HLS 无效，当录制 HLS 时从推流到断流生成一个文件。
+	// <p>录制间隔。<br>单位秒，默认：1800。<br>FLV、MP4取值范围： 60-43200， AAC取值范围： 60-7200 。<br>此参数对 HLS 无效，当录制 HLS 时从推流到断流生成一个文件。</p>
 	RecordInterval *int64 `json:"RecordInterval,omitnil,omitempty" name:"RecordInterval"`
 
-	// 录制存储时长。
-	// 单位秒，取值范围： 0 - 1500天。
-	// 0：表示永久存储。
-	// 注：此参数只对录制到VOD有效。
+	// <p>录制存储时长。<br>单位秒，取值范围： 0 - 1500天。<br>0：表示永久存储。<br>注：此参数只对录制到VOD有效。</p>
 	StorageTime *int64 `json:"StorageTime,omitnil,omitempty" name:"StorageTime"`
 
-	// 是否开启当前格式录制，默认值为0，0：否， 1：是。
+	// <p>是否开启当前格式录制，默认值为0，0：否， 1：是。</p>
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 点播子应用 ID。
+	// <p>点播子应用 ID。</p>
 	VodSubAppId *int64 `json:"VodSubAppId,omitnil,omitempty" name:"VodSubAppId"`
 
-	// 录制文件名。
-	// 支持的特殊占位符有：
-	// {StreamID}: 流ID
-	// {StartYear}: 开始时间-年
-	// {StartMonth}: 开始时间-月
-	// {StartDay}: 开始时间-日
-	// {StartHour}: 开始时间-小时
-	// {StartMinute}: 开始时间-分钟
-	// {StartSecond}: 开始时间-秒
-	// {StartMillisecond}: 开始时间-毫秒
-	// {EndYear}: 结束时间-年
-	// {EndMonth}: 结束时间-月
-	// {EndDay}: 结束时间-日
-	// {EndHour}: 结束时间-小时
-	// {EndMinute}: 结束时间-分钟
-	// {EndSecond}: 结束时间-秒
-	// {EndMillisecond}: 结束时间-毫秒
-	// 
-	// 若未设置默认录制文件名为{StreamID}_{StartYear}-{StartMonth}-{StartDay}-{StartHour}-{StartMinute}-{StartSecond}_{EndYear}-{EndMonth}-{EndDay}-{EndHour}-{EndMinute}-{EndSecond}
+	// <p>录制文件名。<br>支持的特殊占位符有：<br>{StreamID}: 流ID<br>{StartYear}: 开始时间-年<br>{StartMonth}: 开始时间-月<br>{StartDay}: 开始时间-日<br>{StartHour}: 开始时间-小时<br>{StartMinute}: 开始时间-分钟<br>{StartSecond}: 开始时间-秒<br>{StartMillisecond}: 开始时间-毫秒<br>{EndYear}: 结束时间-年<br>{EndMonth}: 结束时间-月<br>{EndDay}: 结束时间-日<br>{EndHour}: 结束时间-小时<br>{EndMinute}: 结束时间-分钟<br>{EndSecond}: 结束时间-秒<br>{EndMillisecond}: 结束时间-毫秒</p><p>若未设置默认录制文件名为{StreamID}_{StartYear}-{StartMonth}-{StartDay}-{StartHour}-{StartMinute}-{StartSecond}_{EndYear}-{EndMonth}-{EndDay}-{EndHour}-{EndMinute}-{EndSecond}</p>
 	VodFileName *string `json:"VodFileName,omitnil,omitempty" name:"VodFileName"`
 
-	// 任务流
+	// <p>任务流</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Procedure *string `json:"Procedure,omitnil,omitempty" name:"Procedure"`
 
-	// 视频存储策略。
-	// normal：标准存储。
-	// cold：低频存储。
+	// <p>视频存储策略。<br>normal：标准存储。<br>cold：低频存储。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageMode *string `json:"StorageMode,omitnil,omitempty" name:"StorageMode"`
 
-	// 点播应用分类
+	// <p>点播应用分类</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClassId *int64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
 
-	// 存储至 cos 的 bucket 桶名称。
-	// 注：CosBucketName参数值不能包含-[appid] 部分。
+	// <p>存储至 cos 的 bucket 桶名称。<br>注：CosBucketName参数值不能包含-[appid] 部分。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
 
-	// 存储至 cos 的 bucket 区域。
+	// <p>存储至 cos 的 bucket 区域。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosBucketRegion *string `json:"CosBucketRegion,omitnil,omitempty" name:"CosBucketRegion"`
 
-	// 存储至 cos 的 bucket 路径。
+	// <p>存储至 cos 的 bucket 路径。<br>注意：若为输入参数，则该参数必填，且必须以斜杠（/）开头，建议至少包含 {StartYear}、{StartMonth}、{StartDay}、{StartHour}、{StartMinute}、{StartSecond} 或 {RandomID} 任意一种，否则可能出现录制文件名重复造成文件相互覆盖；若为返回参数，则此字段可能返回 null，表示取不到有效值。<br>示例值：/{RecordSource}/{Domain}/{AppName}/{StreamID}/{RecordId}-{RandomID}/{StartYear}-{StartMonth}-{StartDay}-{StartHour}-{StartMinute}-{StartSecond}</p><p>支持的特殊占位符有：<br>{RecordSource}：区分录制内容，若录制原始流、水印流则为“origin”，录制转码流时，代表转码模板ID<br>{StreamID}: 流ID<br>{RecordId}：录制任务ID，断流前后该值可能重复；<br>{RandomID}：随机数，断流前后该值不同；<br>{StartYear}: 开始时间-年<br>{StartMonth}: 开始时间-月<br>{StartDay}: 开始时间-日<br>{StartHour}: 开始时间-小时<br>{StartMinute}: 开始时间-分钟<br>{StartSecond}: 开始时间-秒<br>{StartMillisecond}: 开始时间-毫秒<br>{EndYear}: 结束时间-年<br>{EndMonth}: 结束时间-月<br>{EndDay}: 结束时间-日<br>{EndHour}: 结束时间-小时<br>{EndMinute}: 结束时间-分钟<br>{EndSecond}: 结束时间-秒<br>{EndMillisecond}: 结束时间-毫秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosBucketPath *string `json:"CosBucketPath,omitnil,omitempty" name:"CosBucketPath"`
 }

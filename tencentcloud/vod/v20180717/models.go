@@ -1988,16 +1988,13 @@ type AigcImageOutputConfig struct {
 }
 
 type AigcImageSceneInfo struct {
-	// AI生图场景类型，可选值：
-	// - change_clothes：AI换衣。
-	// - product_image：AI生商品图。
-	// - outpainting: AI扩图。
+	// <p>AI生图场景类型，可选值：</p><ul><li>change_clothes：常规场景换衣。</li><li>change_clothes_under：特殊场景换衣。</li><li>change_clothes_top_wear：上半身换衣。</li><li>change_clothes_bottom_wear：下半身换衣。</li><li>change_clothes_full_wear：全身换衣。</li><li>product_image：AI生商品图。</li><li>outpainting: AI扩图。</li></ul>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 当 Type 为 change_clothes 时有效，则该项为必填，表示AI 换衣生图配置参数。
+	// <p>当 Type 下列类型时，则该项为必填，表示AI 换衣生图配置参数：</p><ul><li>change_clothes</li><li>change_clothes_under</li><li>change_clothes_full_wear</li><li>change_clothes_top_wear</li><li>change_clothes_bottom_wear</li></ul>
 	ChangeClothesConfig *ChangeClothesConfig `json:"ChangeClothesConfig,omitnil,omitempty" name:"ChangeClothesConfig"`
 
-	// 当 Type 为 product_image 时有效，表示AI 生商品图配置参数。
+	// <p>当 Type 为 product_image 时有效，表示AI 生商品图配置参数。</p>
 	ProductImageConfig *ProductImageConfig `json:"ProductImageConfig,omitnil,omitempty" name:"ProductImageConfig"`
 }
 
@@ -3300,10 +3297,10 @@ type CdnLogInfo struct {
 }
 
 type ChangeClothesConfig struct {
-	// 输入需要更换的**衣物**图片列表。目前最大支持4张图片。
+	// <p>输入需要更换的<strong>衣物</strong>图片列表。各类型最大支持衣物数量：</p><ul><li>change_clothes：4 张图片；</li><li>change_clothes_under：1 张图片；</li><li>change_clothes_full_wear：1 张图片；</li><li>change_clothes_top_wear：1 张图片；</li><li>change_clothes_bottom_wear：1 张图片；</li></ul>
 	ClothesFileInfos []*SceneAigcImageTaskInputFileInfo `json:"ClothesFileInfos,omitnil,omitempty" name:"ClothesFileInfos"`
 
-	// AI换衣的提示词。
+	// <p>AI换衣的提示词。<strong>仅Type为change_clothes有效。</strong></p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 }
 
@@ -6713,11 +6710,17 @@ type CreateMPSTemplateRequestParams struct {
 
 	// 需要创建的 MPS 模板的类型。取值：
 	// <li>Transcode: 创建转码模板，目前仅支持创建增强模板。</li>
+	// <li>AIAnalysis: 创建智能分析模板。</li>
+	// <li>SmartSubtitle: 创建智能字幕模板。</li>
+	// <li>SmartErase: 创建智能擦除模板。</li>
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
 	// MPS 创建模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧创建用户自定义的 MPS 任务模板。
 	// 目前仅支持通过此方式创建以下任务类型的模板：
 	// 1. 音视频增强：仅支持填写“[创建转码模板](https://cloud.tencent.com/document/product/862/37605)”接口中的 Container 、Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数。其中 EnhanceConfig 此处必填，且 Container 目前暂不支持 hls。
+	// 2. 智能分析：仅支持填写“[创建内容分析模板](https://cloud.tencent.com/document/api/862/40249)”接口中的Name、Comment、ClassificationConfigure、TagConfigure、CoverConfigure、FrameTagConfigure几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+	// 3. 智能字幕：仅支持填写“[创建智能字幕模板](https://cloud.tencent.com/document/api/862/117004)”接口中的Name、Comment、TranslateSwitch、VideoSrcLanguage、SubtitleFormat、SubtitleType、AsrHotWordsConfigure、TranslateDstLanguage、ProcessType几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+	// 4. 智能擦除：仅支持填写“[创建智能擦除模板](https://cloud.tencent.com/document/api/862/123735)”接口中的Name、Comment、EraseType、EraseSubtitleConfig、EraseWatermarkConfig、ErasePrivacyConfig几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
 	// 
 	// 目前模板中仅支持配置以上参数，其他参数无需填写。若包含其它参数，系统将自动忽略。以上透传参数以JSON形式表示。
 	MPSCreateTemplateParams *string `json:"MPSCreateTemplateParams,omitnil,omitempty" name:"MPSCreateTemplateParams"`
@@ -6731,11 +6734,17 @@ type CreateMPSTemplateRequest struct {
 
 	// 需要创建的 MPS 模板的类型。取值：
 	// <li>Transcode: 创建转码模板，目前仅支持创建增强模板。</li>
+	// <li>AIAnalysis: 创建智能分析模板。</li>
+	// <li>SmartSubtitle: 创建智能字幕模板。</li>
+	// <li>SmartErase: 创建智能擦除模板。</li>
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
 	// MPS 创建模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧创建用户自定义的 MPS 任务模板。
 	// 目前仅支持通过此方式创建以下任务类型的模板：
 	// 1. 音视频增强：仅支持填写“[创建转码模板](https://cloud.tencent.com/document/product/862/37605)”接口中的 Container 、Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数。其中 EnhanceConfig 此处必填，且 Container 目前暂不支持 hls。
+	// 2. 智能分析：仅支持填写“[创建内容分析模板](https://cloud.tencent.com/document/api/862/40249)”接口中的Name、Comment、ClassificationConfigure、TagConfigure、CoverConfigure、FrameTagConfigure几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+	// 3. 智能字幕：仅支持填写“[创建智能字幕模板](https://cloud.tencent.com/document/api/862/117004)”接口中的Name、Comment、TranslateSwitch、VideoSrcLanguage、SubtitleFormat、SubtitleType、AsrHotWordsConfigure、TranslateDstLanguage、ProcessType几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+	// 4. 智能擦除：仅支持填写“[创建智能擦除模板](https://cloud.tencent.com/document/api/862/123735)”接口中的Name、Comment、EraseType、EraseSubtitleConfig、EraseWatermarkConfig、ErasePrivacyConfig几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
 	// 
 	// 目前模板中仅支持配置以上参数，其他参数无需填写。若包含其它参数，系统将自动忽略。以上透传参数以JSON形式表示。
 	MPSCreateTemplateParams *string `json:"MPSCreateTemplateParams,omitnil,omitempty" name:"MPSCreateTemplateParams"`
@@ -9851,6 +9860,9 @@ type DeleteMPSTemplateRequestParams struct {
 
 	// 需要删除的 MPS 模板的类型。取值：
 	// <li>Transcode: 删除转码模板。</li>
+	// <li>AIAnalysis: 创建智能分析模板。</li>
+	// <li>SmartSubtitle: 创建智能字幕模板。</li>
+	// <li>SmartErase: 创建智能擦除模板。</li>
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
 	// MPS 任务模板唯一标识。
@@ -9865,6 +9877,9 @@ type DeleteMPSTemplateRequest struct {
 
 	// 需要删除的 MPS 模板的类型。取值：
 	// <li>Transcode: 删除转码模板。</li>
+	// <li>AIAnalysis: 创建智能分析模板。</li>
+	// <li>SmartSubtitle: 创建智能字幕模板。</li>
+	// <li>SmartErase: 创建智能擦除模板。</li>
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
 	// MPS 任务模板唯一标识。
@@ -13011,14 +13026,14 @@ func (r *DescribeEventConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEventsStateRequestParams struct {
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 }
 
 type DescribeEventsStateRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 }
 
@@ -13043,7 +13058,7 @@ func (r *DescribeEventsStateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEventsStateResponseParams struct {
-	// 待进行拉取的事件通知数，为近似值，约5秒延迟。
+	// <p>待进行拉取的事件通知数，为近似值，约有3分钟延迟。</p><p><strong>注意：不建议使用此字段作为是否拉取事件通知的依据。</strong></p>
 	CountOfEventsToPull *uint64 `json:"CountOfEventsToPull,omitnil,omitempty" name:"CountOfEventsToPull"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13798,10 +13813,16 @@ type DescribeMPSTemplatesRequestParams struct {
 
 	// MPS 模板类型。根据需要查询的 MPS 模板的类型对结果进行过滤。取值：
 	// <li>Transcode: 查询转码模板列表。</li>
+	// <li>AIAnalysis: 创建智能分析模板。</li>
+	// <li>SmartSubtitle: 创建智能字幕模板。</li>
+	// <li>SmartErase: 创建智能擦除模板。</li>
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
 	// MPS 查询模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧查询 MPS 任务模板列表。目前仅支持通过此方式查询以下任务类型的模板：
-	// 1. 音视频增强：仅支持填写“[获取转码模板列表](https://cloud.tencent.com/document/product/862/37593)”接口中的 Definitions、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+	// 1. 音视频增强：仅支持填写“[获取转码模板列表](https://cloud.tencent.com/document/product/862/37593)”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+	// 2. 智能分析：仅支持填写“[获取智能分析模板列表](https://cloud.tencent.com/document/product/862/40247)”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+	// 3. 智能字幕：仅支持填写“[获取智能字幕模板列表](https://cloud.tencent.com/document/product/862/117002)”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+	// 4. 智能擦除：仅支持填写“[获取智能擦除模板列表](https://cloud.tencent.com/document/product/862/123733)”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
 	MPSDescribeTemplateParams *string `json:"MPSDescribeTemplateParams,omitnil,omitempty" name:"MPSDescribeTemplateParams"`
 }
 
@@ -13813,10 +13834,16 @@ type DescribeMPSTemplatesRequest struct {
 
 	// MPS 模板类型。根据需要查询的 MPS 模板的类型对结果进行过滤。取值：
 	// <li>Transcode: 查询转码模板列表。</li>
+	// <li>AIAnalysis: 创建智能分析模板。</li>
+	// <li>SmartSubtitle: 创建智能字幕模板。</li>
+	// <li>SmartErase: 创建智能擦除模板。</li>
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
 	// MPS 查询模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧查询 MPS 任务模板列表。目前仅支持通过此方式查询以下任务类型的模板：
-	// 1. 音视频增强：仅支持填写“[获取转码模板列表](https://cloud.tencent.com/document/product/862/37593)”接口中的 Definitions、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+	// 1. 音视频增强：仅支持填写“[获取转码模板列表](https://cloud.tencent.com/document/product/862/37593)”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+	// 2. 智能分析：仅支持填写“[获取智能分析模板列表](https://cloud.tencent.com/document/product/862/40247)”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+	// 3. 智能字幕：仅支持填写“[获取智能字幕模板列表](https://cloud.tencent.com/document/product/862/117002)”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+	// 4. 智能擦除：仅支持填写“[获取智能擦除模板列表](https://cloud.tencent.com/document/product/862/123733)”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
 	MPSDescribeTemplateParams *string `json:"MPSDescribeTemplateParams,omitnil,omitempty" name:"MPSDescribeTemplateParams"`
 }
 
@@ -13871,50 +13898,26 @@ func (r *DescribeMPSTemplatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMediaInfosRequestParams struct {
-	// 媒体文件 ID 列表，N 从 0 开始取值，最大 19。
+	// <p>媒体文件 ID 列表，N 从 0 开始取值，最大 19。</p>
 	FileIds []*string `json:"FileIds,omitnil,omitempty" name:"FileIds"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：
-	// <li>basicInfo（视频基础信息）。</li>
-	// <li>metaData（视频元信息）。</li>
-	// <li>transcodeInfo（视频转码结果信息）。</li>
-	// <li>animatedGraphicsInfo（视频转动图结果信息）。</li>
-	// <li>imageSpriteInfo（视频雪碧图信息）。</li>
-	// <li>snapshotByTimeOffsetInfo（视频指定时间点截图信息）。</li>
-	// <li>sampleSnapshotInfo（采样截图信息）。</li>
-	// <li>keyFrameDescInfo（打点信息）。</li>
-	// <li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
-	// <li>miniProgramReviewInfo（小程序审核信息）。</li>
-	// <li>subtitleInfo（字幕信息）。</li>
-	// <li>reviewInfo（审核信息）。</li>
+	// <p>指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：</p><li>basicInfo（视频基础信息）。</li><li>metaData（视频元信息）。</li><li>transcodeInfo（视频转码结果信息）。</li><li>animatedGraphicsInfo（视频转动图结果信息）。</li><li>imageSpriteInfo（视频雪碧图信息）。</li><li>snapshotByTimeOffsetInfo（视频指定时间点截图信息）。</li><li>sampleSnapshotInfo（采样截图信息）。</li><li>keyFrameDescInfo（打点信息）。</li><li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li><li>miniProgramReviewInfo（小程序审核信息）。</li><li>subtitleInfo（字幕信息）。</li><li>reviewInfo（审核信息）。</li><li>mpsAiMediaInfo（mps智能媒资信息）。</li>
 	Filters []*string `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeMediaInfosRequest struct {
 	*tchttp.BaseRequest
 	
-	// 媒体文件 ID 列表，N 从 0 开始取值，最大 19。
+	// <p>媒体文件 ID 列表，N 从 0 开始取值，最大 19。</p>
 	FileIds []*string `json:"FileIds,omitnil,omitempty" name:"FileIds"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：
-	// <li>basicInfo（视频基础信息）。</li>
-	// <li>metaData（视频元信息）。</li>
-	// <li>transcodeInfo（视频转码结果信息）。</li>
-	// <li>animatedGraphicsInfo（视频转动图结果信息）。</li>
-	// <li>imageSpriteInfo（视频雪碧图信息）。</li>
-	// <li>snapshotByTimeOffsetInfo（视频指定时间点截图信息）。</li>
-	// <li>sampleSnapshotInfo（采样截图信息）。</li>
-	// <li>keyFrameDescInfo（打点信息）。</li>
-	// <li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
-	// <li>miniProgramReviewInfo（小程序审核信息）。</li>
-	// <li>subtitleInfo（字幕信息）。</li>
-	// <li>reviewInfo（审核信息）。</li>
+	// <p>指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：</p><li>basicInfo（视频基础信息）。</li><li>metaData（视频元信息）。</li><li>transcodeInfo（视频转码结果信息）。</li><li>animatedGraphicsInfo（视频转动图结果信息）。</li><li>imageSpriteInfo（视频雪碧图信息）。</li><li>snapshotByTimeOffsetInfo（视频指定时间点截图信息）。</li><li>sampleSnapshotInfo（采样截图信息）。</li><li>keyFrameDescInfo（打点信息）。</li><li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li><li>miniProgramReviewInfo（小程序审核信息）。</li><li>subtitleInfo（字幕信息）。</li><li>reviewInfo（审核信息）。</li><li>mpsAiMediaInfo（mps智能媒资信息）。</li>
 	Filters []*string `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -13941,10 +13944,10 @@ func (r *DescribeMediaInfosRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMediaInfosResponseParams struct {
-	// 媒体文件信息列表。
+	// <p>媒体文件信息列表。</p>
 	MediaInfoSet []*MediaInfo `json:"MediaInfoSet,omitnil,omitempty" name:"MediaInfoSet"`
 
-	// 不存在的文件 ID 列表。
+	// <p>不存在的文件 ID 列表。</p>
 	NotExistFileIdSet []*string `json:"NotExistFileIdSet,omitnil,omitempty" name:"NotExistFileIdSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -17831,6 +17834,27 @@ type FaceEnhanceInfo struct {
 	Intensity *float64 `json:"Intensity,omitnil,omitempty" name:"Intensity"`
 }
 
+type FaceRecognitionInfo struct {
+	// <p>人脸识别任务列表</p>
+	FaceRecognitionTasks []*FaceRecognitionTask `json:"FaceRecognitionTasks,omitnil,omitempty" name:"FaceRecognitionTasks"`
+}
+
+type FaceRecognitionOutputFileInfo struct {
+	// <p>人脸识别输出文件类型</p><p>枚举值：</p><ul><li>Output： 任务生成的结果输出，文件对应人脸识别任务返回中的结果，以 JSON 格式生成文件。</li></ul>
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// <p>人脸识别输出文件的URL</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+type FaceRecognitionTask struct {
+	// <p>人脸识别模板编号</p>
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>输出文件信息</p>
+	OutputFile []*FaceRecognitionOutputFileInfo `json:"OutputFile,omitnil,omitempty" name:"OutputFile"`
+}
+
 type FastEditMediaFileInfo struct {
 	// 媒体的 ID。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
@@ -18916,6 +18940,11 @@ type JustInTimeTranscodeTemplate struct {
 	WatermarkConfigure *WatermarkConfigureData `json:"WatermarkConfigure,omitnil,omitempty" name:"WatermarkConfigure"`
 }
 
+type KnowledgeBasesInfo struct {
+	// <p>当前媒资当导入的知识库列表</p>
+	Bases []*string `json:"Bases,omitnil,omitempty" name:"Bases"`
+}
+
 type LLMComprehendAsr struct {
 	// 文本转录任务开关，可选值：
 	// - ON：开启文本转录任务；
@@ -19700,13 +19729,13 @@ type MediaAnimatedGraphicsItem struct {
 }
 
 type MediaAudioStreamItem struct {
-	// 音频流的码率，单位：bps。
+	// <p>音频流的码率，单位：bps。</p>
 	Bitrate *int64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
-	// 音频流的采样率，单位：hz。
+	// <p>音频流的采样率，单位：hz。</p>
 	SamplingRate *int64 `json:"SamplingRate,omitnil,omitempty" name:"SamplingRate"`
 
-	// 音频流的编码格式，例如 aac。
+	// <p>音频流的编码格式，例如 aac。</p>
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 }
 
@@ -19994,63 +20023,69 @@ type MediaImageSpriteItem struct {
 }
 
 type MediaInfo struct {
-	// 基础信息。包括视频名称、分类、播放地址、封面图片等。
+	// <p>基础信息。包括视频名称、分类、播放地址、封面图片等。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BasicInfo *MediaBasicInfo `json:"BasicInfo,omitnil,omitempty" name:"BasicInfo"`
 
-	// 元信息。包括大小、时长、视频流信息、音频流信息等。
+	// <p>元信息。包括大小、时长、视频流信息、音频流信息等。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaData *MediaMetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
 
-	// 转码结果信息。包括该视频转码生成的各种码率的视频的地址、规格、码率、分辨率等。
+	// <p>转码结果信息。包括该视频转码生成的各种码率的视频的地址、规格、码率、分辨率等。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeInfo *MediaTranscodeInfo `json:"TranscodeInfo,omitnil,omitempty" name:"TranscodeInfo"`
 
-	// 转动图结果信息。对视频转动图（如 gif）后，动图相关信息。
+	// <p>转动图结果信息。对视频转动图（如 gif）后，动图相关信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnimatedGraphicsInfo *MediaAnimatedGraphicsInfo `json:"AnimatedGraphicsInfo,omitnil,omitempty" name:"AnimatedGraphicsInfo"`
 
-	// 采样截图信息。对视频采样截图后，相关截图信息。
+	// <p>采样截图信息。对视频采样截图后，相关截图信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SampleSnapshotInfo *MediaSampleSnapshotInfo `json:"SampleSnapshotInfo,omitnil,omitempty" name:"SampleSnapshotInfo"`
 
-	// 雪碧图信息。对视频截取雪碧图之后，雪碧的相关信息。
+	// <p>雪碧图信息。对视频截取雪碧图之后，雪碧的相关信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageSpriteInfo *MediaImageSpriteInfo `json:"ImageSpriteInfo,omitnil,omitempty" name:"ImageSpriteInfo"`
 
-	// 指定时间点截图信息。对视频依照指定时间点截图后，各个截图的信息。
+	// <p>指定时间点截图信息。对视频依照指定时间点截图后，各个截图的信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotByTimeOffsetInfo *MediaSnapshotByTimeOffsetInfo `json:"SnapshotByTimeOffsetInfo,omitnil,omitempty" name:"SnapshotByTimeOffsetInfo"`
 
-	// 视频打点信息。对视频设置的各个打点信息。
+	// <p>视频打点信息。对视频设置的各个打点信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyFrameDescInfo *MediaKeyFrameDescInfo `json:"KeyFrameDescInfo,omitnil,omitempty" name:"KeyFrameDescInfo"`
 
-	// 转自适应码流信息。包括规格、加密类型、打包格式等相关信息。
+	// <p>转自适应码流信息。包括规格、加密类型、打包格式等相关信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdaptiveDynamicStreamingInfo *MediaAdaptiveDynamicStreamingInfo `json:"AdaptiveDynamicStreamingInfo,omitnil,omitempty" name:"AdaptiveDynamicStreamingInfo"`
 
-	// 小程序审核信息。
+	// <p>小程序审核信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MiniProgramReviewInfo *MediaMiniProgramReviewInfo `json:"MiniProgramReviewInfo,omitnil,omitempty" name:"MiniProgramReviewInfo"`
 
-	// 字幕信息。
+	// <p>字幕信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubtitleInfo *MediaSubtitleInfo `json:"SubtitleInfo,omitnil,omitempty" name:"SubtitleInfo"`
 
-	// 媒体文件唯一标识 ID。
+	// <p>媒体文件唯一标识 ID。</p>
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
-	// 审核信息。
+	// <p>审核信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReviewInfo *FileReviewInfo `json:"ReviewInfo,omitnil,omitempty" name:"ReviewInfo"`
 
-	// MPS智能媒资信息
+	// <p>MPS智能媒资信息</p>
 	MPSAiMediaInfo *MPSAiMediaInfo `json:"MPSAiMediaInfo,omitnil,omitempty" name:"MPSAiMediaInfo"`
 
-	// 图片理解信息。
+	// <p>图片理解信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageUnderstandingInfo *ImageUnderstandingInfo `json:"ImageUnderstandingInfo,omitnil,omitempty" name:"ImageUnderstandingInfo"`
+
+	// <p>智能知识库信息。</p>
+	KnowledgeBasesInfo *KnowledgeBasesInfo `json:"KnowledgeBasesInfo,omitnil,omitempty" name:"KnowledgeBasesInfo"`
+
+	// <p>人脸识别信息。</p>
+	FaceRecognitionInfo *FaceRecognitionInfo `json:"FaceRecognitionInfo,omitnil,omitempty" name:"FaceRecognitionInfo"`
 }
 
 type MediaInputInfo struct {
@@ -22353,32 +22388,26 @@ func (r *ModifyLLMComprehendTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyMPSTemplateRequestParams struct {
-	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 需要修改的 MPS 模板的类型。取值：
-	// <li>Transcode: 创建转码模板，目前仅支持修改增强参数。</li>
+	// <p>需要修改的 MPS 模板的类型。</p><p>枚举值：</p><ul><li>Transcode： 转码模板，目前仅支持修改增强参数</li><li>AIAnalysis： 智能分析模板</li><li>SmartSubtitle： 智能字幕模板</li><li>SmartErase： 智能擦除模板</li></ul>
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
-	// MPS 修改模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧修改用户自定义的 MPS 任务模板。
-	//  目前仅支持通过此方式修改以下任务类型的模板：
-	// 1. 音视频增强：仅支持填写“[修改转码模板](https://cloud.tencent.com/document/api/862/37578)”接口中的 Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+	// <p>MPS 修改模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧修改用户自定义的 MPS 任务模板。<br> 目前仅支持通过此方式修改以下任务类型的模板：</p><ol><li>音视频增强：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/37578">修改转码模板</a>”接口中的 Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能分析：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/40246">修改内容分析模板</a>”接口中的Name、Comment、ClassificationConfigure、TagConfigure、CoverConfigure、FrameTagConfigure几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能字幕：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/117001">修改智能字幕模板</a>”接口中的Name、Comment、TranslateSwitch、VideoSrcLanguage、SubtitleFormat、SubtitleType、AsrHotWordsConfigure、TranslateDstLanguage、ProcessType几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能擦除：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/123732">修改智能擦除模板</a>”接口中的Name、Comment、EraseType、EraseSubtitleConfig、EraseWatermarkConfig、ErasePrivacyConfig几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li></ol>
 	MPSModifyTemplateParams *string `json:"MPSModifyTemplateParams,omitnil,omitempty" name:"MPSModifyTemplateParams"`
 }
 
 type ModifyMPSTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 需要修改的 MPS 模板的类型。取值：
-	// <li>Transcode: 创建转码模板，目前仅支持修改增强参数。</li>
+	// <p>需要修改的 MPS 模板的类型。</p><p>枚举值：</p><ul><li>Transcode： 转码模板，目前仅支持修改增强参数</li><li>AIAnalysis： 智能分析模板</li><li>SmartSubtitle： 智能字幕模板</li><li>SmartErase： 智能擦除模板</li></ul>
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
-	// MPS 修改模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧修改用户自定义的 MPS 任务模板。
-	//  目前仅支持通过此方式修改以下任务类型的模板：
-	// 1. 音视频增强：仅支持填写“[修改转码模板](https://cloud.tencent.com/document/api/862/37578)”接口中的 Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+	// <p>MPS 修改模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧修改用户自定义的 MPS 任务模板。<br> 目前仅支持通过此方式修改以下任务类型的模板：</p><ol><li>音视频增强：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/37578">修改转码模板</a>”接口中的 Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能分析：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/40246">修改内容分析模板</a>”接口中的Name、Comment、ClassificationConfigure、TagConfigure、CoverConfigure、FrameTagConfigure几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能字幕：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/117001">修改智能字幕模板</a>”接口中的Name、Comment、TranslateSwitch、VideoSrcLanguage、SubtitleFormat、SubtitleType、AsrHotWordsConfigure、TranslateDstLanguage、ProcessType几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能擦除：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/123732">修改智能擦除模板</a>”接口中的Name、Comment、EraseType、EraseSubtitleConfig、EraseWatermarkConfig、ErasePrivacyConfig几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li></ol>
 	MPSModifyTemplateParams *string `json:"MPSModifyTemplateParams,omitnil,omitempty" name:"MPSModifyTemplateParams"`
 }
 
@@ -25574,42 +25603,32 @@ type ProcessMediaByMPS struct {
 
 // Predefined struct for user
 type ProcessMediaByMPSRequestParams struct {
-	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+	// <p>媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。</p>
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 该参数用于透传至媒体处理服务（MPS），以便从云点播侧发起 MPS 视频处理任务。
-	// 视频处理参数详情请参考：[MPS 发起媒体处理](https://cloud.tencent.com/document/api/862/37578)。
-	// 填写说明：
-	// 1. 目前仅需要配置 MPS “发起媒体处理”接口中任务配置相关的参数，如 AiAnalysisTask 与 MediaProcessTask，其他参数无需填写。若包含其它参数，系统将自动忽略；
-	// 2. 当前仅支持通过此方式发起智能擦除及音视频增强任务。若配置了其他任务类型的相关参数，系统将自动忽略这些参数；
-	// 3. 音视频增强任务目前不支持使用预置模板发起，可通过 [CreateMPSTemplate](https://cloud.tencent.com/document/product/266/122580) 接口创建自定义模板。
+	// <p>该参数用于透传至媒体处理服务（MPS），以便从云点播侧发起 MPS 视频处理任务。<br>视频处理参数详情请参考：<a href="https://cloud.tencent.com/document/api/862/37578">MPS 发起媒体处理</a>。<br>填写说明：</p><ol><li>目前仅需要配置 MPS “发起媒体处理”接口中任务配置相关的参数，如 AiAnalysisTask 与 MediaProcessTask，其他参数无需填写。若包含其它参数，系统将自动忽略；</li><li>当前仅支持通过此方式发起智能擦除及音视频增强任务。若配置了其他任务类型的相关参数，系统将自动忽略这些参数；</li><li>音视频增强任务目前不支持使用预置模板发起，可通过 <a href="https://cloud.tencent.com/document/product/266/122580">CreateMPSTemplate</a> 接口创建自定义模板。</li></ol>
 	MPSProcessMediaParams *string `json:"MPSProcessMediaParams,omitnil,omitempty" name:"MPSProcessMediaParams"`
 
-	// 保留字段，特殊用途时使用。
+	// <p>保留字段，特殊用途时使用。</p>
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
 type ProcessMediaByMPSRequest struct {
 	*tchttp.BaseRequest
 	
-	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+	// <p>媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。</p>
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 该参数用于透传至媒体处理服务（MPS），以便从云点播侧发起 MPS 视频处理任务。
-	// 视频处理参数详情请参考：[MPS 发起媒体处理](https://cloud.tencent.com/document/api/862/37578)。
-	// 填写说明：
-	// 1. 目前仅需要配置 MPS “发起媒体处理”接口中任务配置相关的参数，如 AiAnalysisTask 与 MediaProcessTask，其他参数无需填写。若包含其它参数，系统将自动忽略；
-	// 2. 当前仅支持通过此方式发起智能擦除及音视频增强任务。若配置了其他任务类型的相关参数，系统将自动忽略这些参数；
-	// 3. 音视频增强任务目前不支持使用预置模板发起，可通过 [CreateMPSTemplate](https://cloud.tencent.com/document/product/266/122580) 接口创建自定义模板。
+	// <p>该参数用于透传至媒体处理服务（MPS），以便从云点播侧发起 MPS 视频处理任务。<br>视频处理参数详情请参考：<a href="https://cloud.tencent.com/document/api/862/37578">MPS 发起媒体处理</a>。<br>填写说明：</p><ol><li>目前仅需要配置 MPS “发起媒体处理”接口中任务配置相关的参数，如 AiAnalysisTask 与 MediaProcessTask，其他参数无需填写。若包含其它参数，系统将自动忽略；</li><li>当前仅支持通过此方式发起智能擦除及音视频增强任务。若配置了其他任务类型的相关参数，系统将自动忽略这些参数；</li><li>音视频增强任务目前不支持使用预置模板发起，可通过 <a href="https://cloud.tencent.com/document/product/266/122580">CreateMPSTemplate</a> 接口创建自定义模板。</li></ol>
 	MPSProcessMediaParams *string `json:"MPSProcessMediaParams,omitnil,omitempty" name:"MPSProcessMediaParams"`
 
-	// 保留字段，特殊用途时使用。
+	// <p>保留字段，特殊用途时使用。</p>
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
@@ -25637,7 +25656,7 @@ func (r *ProcessMediaByMPSRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ProcessMediaByMPSResponseParams struct {
-	// 任务 ID。
+	// <p>任务 ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

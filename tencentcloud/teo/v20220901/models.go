@@ -12214,6 +12214,126 @@ func (r *DescribeSecurityTemplateBindingsResponse) FromJsonString(s string) erro
 }
 
 // Predefined struct for user
+type DescribeSharedCNAMERequestParams struct {
+	// 共享CNAME所属站点ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
+	// <li>shared-cname<br>   按照【<strong>共享CNAME</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+	// <li>type<br>   按照【<strong>共享canme类型</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+	// <li>description<br>   按照【<strong>描述</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 列表排序方式，取值有：
+	// <li>asc：升序排列；</li>
+	// <li>desc：降序排列。</li>默认值为asc。
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+
+	// 匹配方式，取值有：
+	// <li>all：返回匹配所有查询条件的共享CNAME；</li>
+	// <li>any：返回匹配任意一个查询条件的共享CNAME。</li>默认值为all。
+	Match *string `json:"Match,omitnil,omitempty" name:"Match"`
+
+	// 排序依据，取值有：
+	// <li>create-time：创建时间；</li>
+	// <li>shared-cname：共享CNAME；</li>默认根据shared-cname属性排序。
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 分页查询偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询限制数目，默认值：20，上限：200。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeSharedCNAMERequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享CNAME所属站点ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
+	// <li>shared-cname<br>   按照【<strong>共享CNAME</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+	// <li>type<br>   按照【<strong>共享canme类型</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+	// <li>description<br>   按照【<strong>描述</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+	Filters []*AdvancedFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 列表排序方式，取值有：
+	// <li>asc：升序排列；</li>
+	// <li>desc：降序排列。</li>默认值为asc。
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+
+	// 匹配方式，取值有：
+	// <li>all：返回匹配所有查询条件的共享CNAME；</li>
+	// <li>any：返回匹配任意一个查询条件的共享CNAME。</li>默认值为all。
+	Match *string `json:"Match,omitnil,omitempty" name:"Match"`
+
+	// 排序依据，取值有：
+	// <li>create-time：创建时间；</li>
+	// <li>shared-cname：共享CNAME；</li>默认根据shared-cname属性排序。
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 分页查询偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询限制数目，默认值：20，上限：200。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeSharedCNAMERequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSharedCNAMERequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Filters")
+	delete(f, "Direction")
+	delete(f, "Match")
+	delete(f, "Order")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSharedCNAMERequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSharedCNAMEResponseParams struct {
+	// 符合过滤条件的共享CNAME总数。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 共享CNAME列表明细。
+	SharedCNAMEInfo []*SharedCNAMEInfo `json:"SharedCNAMEInfo,omitnil,omitempty" name:"SharedCNAMEInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSharedCNAMEResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSharedCNAMEResponseParams `json:"Response"`
+}
+
+func (r *DescribeSharedCNAMEResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSharedCNAMEResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTimingL4DataRequestParams struct {
 	// 开始时间。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -14939,6 +15059,27 @@ type IPReputationGroup struct {
 
 	// IP 情报库（原客户端画像分析）的具体配置，用于覆盖 BaseAction 中的默认配置。其中 BotManagementActionOverrides 的 Ids 中可以填写：<li>IPREP_WEB_AND_DDOS_ATTACKERS_LOW：网络攻击 - 一般置信度；</li><li>IPREP_WEB_AND_DDOS_ATTACKERS_MID：网络攻击 - 中等置信度；</li><li>IPREP_WEB_AND_DDOS_ATTACKERS_HIGH：网络攻击 - 高置信度；</li><li>IPREP_PROXIES_AND_ANONYMIZERS_LOW：网络代理 - 一般置信度；</li><li>IPREP_PROXIES_AND_ANONYMIZERS_MID：网络代理 - 中等置信度；</li><li>IPREP_PROXIES_AND_ANONYMIZERS_HIGH：网络代理 - 高置信度；</li><li>IPREP_SCANNING_TOOLS_LOW：扫描器 - 一般置信度；</li><li>IPREP_SCANNING_TOOLS_MID：扫描器 - 中等置信度；</li><li>IPREP_SCANNING_TOOLS_HIGH：扫描器 - 高置信度；</li><li>IPREP_ATO_ATTACKERS_LOW：账号接管攻击 - 一般置信度；</li><li>IPREP_ATO_ATTACKERS_MID：账号接管攻击 - 中等置信度；</li><li>IPREP_ATO_ATTACKERS_HIGH：账号接管攻击 - 高置信度；</li><li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_LOW：恶意 BOT - 一般置信度；</li><li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_MID：恶意 BOT - 中等置信度；</li><li>IPREP_WEB_SCRAPERS_AND_TRAFFIC_BOTS_HIGH：恶意 BOT - 高置信度。</li>
 	BotManagementActionOverrides []*BotManagementActionOverrides `json:"BotManagementActionOverrides,omitnil,omitempty" name:"BotManagementActionOverrides"`
+}
+
+type IPSSLConfig struct {
+	// IP SSL关联的域名。如果Status值为 unbound 时，该字段为空值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssociatedDomain *string `json:"AssociatedDomain,omitnil,omitempty" name:"AssociatedDomain"`
+
+	// 关联状态， 取值如下：
+	// <li>bound：IP SSL配置已绑定</li>
+	// <li>binding：IP SSL配置绑定中</li>
+	// <li>unbinding：IP SSL配置解绑中</li>
+	// <li>unbound：IP SSL配置未绑定</li>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type IPSSLSetting struct {
+	// 操作类型， 取值如下： <li>bind：绑定</li> <li>unbind：解绑</li>
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// 要绑定的IP SSL的所属域名。
+	AssociatedDomain *string `json:"AssociatedDomain,omitnil,omitempty" name:"AssociatedDomain"`
 }
 
 type IPWhitelist struct {
@@ -19162,6 +19303,81 @@ func (r *ModifySecurityPolicyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifySharedCNAMERequestParams struct {
+	// 共享 CNAME 所属站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 共享 CNAME。
+	SharedCNAME *string `json:"SharedCNAME,omitnil,omitempty" name:"SharedCNAME"`
+
+	// 请输入调整后的描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 设置IP SSL 类型的共享CNAME 的 IP SSL 信息。
+	IPSSLSetting *IPSSLSetting `json:"IPSSLSetting,omitnil,omitempty" name:"IPSSLSetting"`
+}
+
+type ModifySharedCNAMERequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享 CNAME 所属站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 共享 CNAME。
+	SharedCNAME *string `json:"SharedCNAME,omitnil,omitempty" name:"SharedCNAME"`
+
+	// 请输入调整后的描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 设置IP SSL 类型的共享CNAME 的 IP SSL 信息。
+	IPSSLSetting *IPSSLSetting `json:"IPSSLSetting,omitnil,omitempty" name:"IPSSLSetting"`
+}
+
+func (r *ModifySharedCNAMERequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySharedCNAMERequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "SharedCNAME")
+	delete(f, "Description")
+	delete(f, "IPSSLSetting")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySharedCNAMERequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySharedCNAMEResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifySharedCNAMEResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySharedCNAMEResponseParams `json:"Response"`
+}
+
+func (r *ModifySharedCNAMEResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySharedCNAMEResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyWebSecurityTemplateRequestParams struct {
 	// 站点 ID。需要传入目标策略模板在访问权限上归属的站点，可使用 DescribeWebSecurityTemplates 接口查询策略模板归属的站点。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -20866,6 +21082,18 @@ type RedirectActionParameters struct {
 	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
 }
 
+type ReferenceHolder struct {
+	// 站点ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 实例类型，取值如下：
+	// <li>acceleration-domain：加速域名；</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 被引用/引用的实例信息。
+	Instance *string `json:"Instance,omitnil,omitempty" name:"Instance"`
+}
+
 // Predefined struct for user
 type RefreshMultiPathGatewaySecretKeyRequestParams struct {
 	// 站点 ID。
@@ -21822,6 +22050,28 @@ type SessionRateControl struct {
 type SetContentIdentifierParameters struct {
 	// 内容标识id
 	ContentIdentifier *string `json:"ContentIdentifier,omitnil,omitempty" name:"ContentIdentifier"`
+}
+
+type SharedCNAMEInfo struct {
+	// 共享CNAME类型：取值范围如下：
+	// <li>custom：由用户创建的自定义共享CNAME</li>
+	// <li>ip-ssl：IP SSL类型的共享CNAME</li>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 共享CNAME名称。
+	SharedCNAME *string `json:"SharedCNAME,omitnil,omitempty" name:"SharedCNAME"`
+
+	// 描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 当type为ip-ssl时，展示该共享CNAME关联的 IP SSL 配置信息。
+	IPSSLConfig *IPSSLConfig `json:"IPSSLConfig,omitnil,omitempty" name:"IPSSLConfig"`
+
+	// 共享CNAME绑定的加速域名数量。
+	BindDomainCount *int64 `json:"BindDomainCount,omitnil,omitempty" name:"BindDomainCount"`
+
+	// 加入该共享CNAME的加速域名列表。当加入的域名数量超过100个时，只返回前100个加速域名。
+	AccelerationDomains []*ReferenceHolder `json:"AccelerationDomains,omitnil,omitempty" name:"AccelerationDomains"`
 }
 
 type SkipCondition struct {
