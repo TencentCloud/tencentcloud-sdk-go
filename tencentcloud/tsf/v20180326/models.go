@@ -20336,28 +20336,28 @@ type Program struct {
 }
 
 type ProgramItem struct {
-	// 数据项ID，调用[DescribePrograms](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program)接口查询已创建的数据集或登陆控制台进行查看；也可以通过调用[CreateProgram](https://cloud.tencent.com/document/api/649/108544)创建新的数据集。
+	// <p>数据项ID，调用<a href="https://console.cloud.tencent.com/tsf/privilege?rid=1&amp;tab=program">DescribePrograms</a>接口查询已创建的数据集或登录控制台进行查看；也可以通过调用<a href="https://cloud.tencent.com/document/api/649/108544">CreateProgram</a>创建新的数据集。</p>
 	ProgramItemId *string `json:"ProgramItemId,omitnil,omitempty" name:"ProgramItemId"`
 
-	// 资源
+	// <p>资源</p>
 	Resource *Resource `json:"Resource,omitnil,omitempty" name:"Resource"`
 
-	// 数据值列表
+	// <p>数据值列表</p>
 	ValueList []*string `json:"ValueList,omitnil,omitempty" name:"ValueList"`
 
-	// 全选标识，true: 全选；false: 非全选
+	// <p>全选标识，true: 全选；false: 非全选</p>
 	IsAll *bool `json:"IsAll,omitnil,omitempty" name:"IsAll"`
 
-	// 创建时间，时间戳格式【Long】
+	// <p>创建时间，时间戳格式【Long】</p>
 	CreationTime *int64 `json:"CreationTime,omitnil,omitempty" name:"CreationTime"`
 
-	// 最后更新时间，时间戳格式【Long】，单位毫秒
+	// <p>最后更新时间，时间戳格式【Long】，单位毫秒</p>
 	LastUpdateTime *int64 `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
 
-	// 删除标识，true: 可删除；false: 不可删除
+	// <p>删除标识，true: 可删除；false: 不可删除</p>
 	DeleteFlag *bool `json:"DeleteFlag,omitnil,omitempty" name:"DeleteFlag"`
 
-	// 数据集ID，调用[DescribePrograms](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program)查询接口获取
+	// <p>数据集ID，调用<a href="https://console.cloud.tencent.com/tsf/privilege?rid=1&amp;tab=program">DescribePrograms</a>查询接口获取</p>
 	ProgramId *string `json:"ProgramId,omitnil,omitempty" name:"ProgramId"`
 }
 

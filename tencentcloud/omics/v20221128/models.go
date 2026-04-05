@@ -578,6 +578,197 @@ func (r *DescribeEnvironmentsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeHPCClustersRequestParams struct {
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤器，支持过滤字段：
+	// - ClusterId：集群ID
+	// - Name：名称
+	// - Status：状态
+	// - ConfirmDeadlineLt: 交付确认截止日期小于给定值的集群，如2026-01-13T16:00:00+08:00
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeHPCClustersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤器，支持过滤字段：
+	// - ClusterId：集群ID
+	// - Name：名称
+	// - Status：状态
+	// - ConfirmDeadlineLt: 交付确认截止日期小于给定值的集群，如2026-01-13T16:00:00+08:00
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeHPCClustersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHPCClustersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHPCClustersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHPCClustersResponseParams struct {
+	// HPC集群。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Clusters []*HPCCluster `json:"Clusters,omitnil,omitempty" name:"Clusters"`
+
+	// 符合条件的数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHPCClustersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHPCClustersResponseParams `json:"Response"`
+}
+
+func (r *DescribeHPCClustersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHPCClustersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHPCNodesRequestParams struct {
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤器，支持过滤字段：
+	// - ClusterId：集群ID
+	// - QueueId：队列ID
+	// - NodeId：节点ID
+	// - Name：名称
+	// - Role：角色
+	// - Type：类型
+	// - Zone：可用区
+	// - InstanceState：实例状态
+	// - InstanceType：实例机型
+	// - InstanceFamily：实例机型族
+	// - InstanceChargeType：实例计费类型
+	// - Tag：标签，Value格式为tagKey:tagValue
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeHPCNodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 过滤器，支持过滤字段：
+	// - ClusterId：集群ID
+	// - QueueId：队列ID
+	// - NodeId：节点ID
+	// - Name：名称
+	// - Role：角色
+	// - Type：类型
+	// - Zone：可用区
+	// - InstanceState：实例状态
+	// - InstanceType：实例机型
+	// - InstanceFamily：实例机型族
+	// - InstanceChargeType：实例计费类型
+	// - Tag：标签，Value格式为tagKey:tagValue
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeHPCNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHPCNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHPCNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHPCNodesResponseParams struct {
+	// HPC节点。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nodes []*HPCNode `json:"Nodes,omitnil,omitempty" name:"Nodes"`
+
+	// 符合条件的数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHPCNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHPCNodesResponseParams `json:"Response"`
+}
+
+func (r *DescribeHPCNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHPCNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRunGroupsRequestParams struct {
 	// 项目ID。
 	// （不填使用指定地域下的默认项目）
@@ -1399,6 +1590,165 @@ type GitInfo struct {
 	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 }
 
+type HPCCluster struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 调度器
+	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
+
+	// VPC ID
+	VPCId *string `json:"VPCId,omitnil,omitempty" name:"VPCId"`
+
+	// 节点数量
+	NodeCount *uint64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 集群类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 系统名称
+	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
+
+	// 调度器版本
+	SchedulerVersion *string `json:"SchedulerVersion,omitnil,omitempty" name:"SchedulerVersion"`
+
+	// 集群VPC CIDR
+	VPCCIDRBlock *string `json:"VPCCIDRBlock,omitnil,omitempty" name:"VPCCIDRBlock"`
+
+	// 集群确认交付截止日期
+	ConfirmDeadline *string `json:"ConfirmDeadline,omitnil,omitempty" name:"ConfirmDeadline"`
+}
+
+type HPCDisk struct {
+	// 硬盘ID。仅作为出参。
+	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
+
+	// 硬盘大小
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type HPCGPUInfo struct {
+	// GPU类型
+	GPUType *string `json:"GPUType,omitnil,omitempty" name:"GPUType"`
+
+	// GPU数量
+	GPUCount *float64 `json:"GPUCount,omitnil,omitempty" name:"GPUCount"`
+}
+
+type HPCInstance struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// CPU数量
+	CPU *int64 `json:"CPU,omitnil,omitempty" name:"CPU"`
+
+	// 内存
+	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 状态
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 计费类型
+	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// 系统名称
+	OSName *string `json:"OSName,omitnil,omitempty" name:"OSName"`
+
+	// 系统盘
+	SystemDisk *HPCDisk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
+
+	// GPU
+	GPUInfo *HPCGPUInfo `json:"GPUInfo,omitnil,omitempty" name:"GPUInfo"`
+
+	// 内网IP地址
+	PrivateIPAddresses []*string `json:"PrivateIPAddresses,omitnil,omitempty" name:"PrivateIPAddresses"`
+
+	// 公网IP地址
+	PublicIPAddresses []*string `json:"PublicIPAddresses,omitnil,omitempty" name:"PublicIPAddresses"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 到期时间
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// Uuid
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
+
+	// 节点网络信息
+	InternetInfo *HPCInternetInfo `json:"InternetInfo,omitnil,omitempty" name:"InternetInfo"`
+}
+
+type HPCInternetInfo struct {
+	// <p>网络出口带宽，单位Mbps</p>
+	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
+
+	// <p>网络收费类型</p><p>枚举值：</p><ul><li>BANDWIDTH_PREPAID： 预付费按带宽结算</li><li>TRAFFIC_POSTPAID_BY_HOUR： 流量按小时后付费</li><li>BANDWIDTH_POSTPAID_BY_HOUR： 带宽按小时后付费</li></ul>
+	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
+}
+
+type HPCNode struct {
+	// <p>节点ID</p>
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// <p>队列ID</p>
+	QueueId *string `json:"QueueId,omitnil,omitempty" name:"QueueId"`
+
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>角色</p>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// <p>类型</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>可用区</p>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// <p>镜像ID</p>
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// <p>实例信息</p>
+	Instance *HPCInstance `json:"Instance,omitnil,omitempty" name:"Instance"`
+
+	// <p>标签</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>节点名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>队列名称</p>
+	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
+
+	// <p>节点状态。取值范围：<br>IDLE 空闲<br>DOWN 节点下线<br>MIXED 节点部分使用<br>ALLOC  节点完全分配<br>DRAIN 排空，不接受新任务</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 // Predefined struct for user
 type ImportTableFileRequestParams struct {
 	// 表格关联的项目ID。
@@ -1596,6 +1946,74 @@ type NotificationType struct {
 
 	// 当前用户邮箱。
 	CurrentUserEmail *bool `json:"CurrentUserEmail,omitnil,omitempty" name:"CurrentUserEmail"`
+}
+
+// Predefined struct for user
+type RebootHPCNodesRequestParams struct {
+	// <p>集群Id</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>节点Id，例如ins-d1fc42ss</p>
+	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
+
+	// <p>重启的关机类型。</p><p>枚举值：</p><ul><li>SOFT： 软关机</li><li>HARD： 硬关机</li><li>SOFT_FIRST： 优先软关机，失败再执行硬关机</li></ul><p>默认值：SOFT</p>
+	StopType *string `json:"StopType,omitnil,omitempty" name:"StopType"`
+}
+
+type RebootHPCNodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群Id</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>节点Id，例如ins-d1fc42ss</p>
+	NodeIds []*string `json:"NodeIds,omitnil,omitempty" name:"NodeIds"`
+
+	// <p>重启的关机类型。</p><p>枚举值：</p><ul><li>SOFT： 软关机</li><li>HARD： 硬关机</li><li>SOFT_FIRST： 优先软关机，失败再执行硬关机</li></ul><p>默认值：SOFT</p>
+	StopType *string `json:"StopType,omitnil,omitempty" name:"StopType"`
+}
+
+func (r *RebootHPCNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RebootHPCNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NodeIds")
+	delete(f, "StopType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RebootHPCNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RebootHPCNodesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RebootHPCNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *RebootHPCNodesResponseParams `json:"Response"`
+}
+
+func (r *RebootHPCNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RebootHPCNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ResourceIds struct {
@@ -2424,6 +2842,14 @@ type TableRow struct {
 
 	// 表格行内容。
 	Content []*string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+type Tag struct {
+	// 标签键
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 标签值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 // Predefined struct for user

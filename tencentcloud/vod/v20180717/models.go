@@ -2137,7 +2137,7 @@ type AigcVideoOutputConfig struct {
 	// <p>指定所生成视频的宽高比。</p><li>当 ModelName 是 Kling，当文生视频时，则可选值为 16:9、9:16、 1:1，默认为16:9；</li><li>当 ModelName 是 Vidu，当文生视频时和使用参考图片生成时，则可选值为 16:9、9:16、4:3、3:4、1:1，其中仅版本q2支持4:3、3:4</li><li>当 ModelName 是 GV，则可选值为 16:9、9:16，默认为 16:9；</li><li>当 ModelName 是 OS，当文生视频时，则可选值为 16:9、9:16，默认为 16:9；</li><li>当 ModelName 是 Hailuo，则暂不支持。</li>
 	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
 
-	// <p>是否生成音频。支持的模型包括 GV、OS、Vidu。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li><br>默认值：Disabled</p>
+	// <p>是否生成音频。支持的模型包括 GV、OS、Vidu、Jimeng、Kling。</p><p>枚举值：</p><ul><li>Enabled： 开启</li><li>Disabled： 关闭</li></ul><p>默认值：Disabled</p>
 	AudioGeneration *string `json:"AudioGeneration,omitnil,omitempty" name:"AudioGeneration"`
 
 	// <p>是否允许人物或人脸生成。取值有： <li>AllowAdult：允许生成成人；</li> <li>Disallowed：禁止在图片中包含人物或人脸；</li></p>
@@ -2277,8 +2277,17 @@ type AigcVideoTaskInputSubjectInfo struct {
 	// <p>固定主体Id。</p><ul><li>Kling主体<strong>必选</strong>；</li><li>Vidu主体可选。</li></ul>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// <p>固定名称。</p><ul><li>Vidu主体<strong>必选</strong>；</li><li>Kling主体可选。</li></ul>
+	// <p>固定名称。</p><ul><li>Vidu主体<strong>必选</strong>，可在 prompt 中加入 [@name] 使用。如 name 为小明时，prompt 中描述为 [@小明] 。</li><li>Kling主体可选。</li></ul>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p><strong>仅Vidu有效。</strong>音色ID用来决定视频中的声音音色，为空时系统会自动推荐。</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p><strong>仅Vidu有效。</strong>临时主体图片，最多3张图片<br>注1：支持传入图片URL（确保可访问）；<br>注2：图片支持 png、jpeg、jpg、webp格式；<br>注3：图片像素不能小于 128*128，且比例需要小于1:4或者4:1。</p>
+	ImageUrls []*string `json:"ImageUrls,omitnil,omitempty" name:"ImageUrls"`
+
+	// <p><strong>仅Vidu有效。</strong>临时主体视频，最多1个5秒视频注1：仅参考生viduq2-pro模型支持使用视频主体；注2：最多支持上传 1个5秒 的视频；注3：视频支持 mp4、avi、mov格式；注4：视频像素不能小于 128*128，且比例需要小于1:4或者4:1；</p>
+	VideoUrls []*string `json:"VideoUrls,omitnil,omitempty" name:"VideoUrls"`
 }
 
 type AigcVideoTaskOutput struct {
@@ -4840,7 +4849,7 @@ type CreateAigcImageTaskRequestParams struct {
 	// <p>模型版本。取值：</p><li>当 ModelName 是 GG，可选值为 2.5、3.0、3.1；</li><li>当 ModelName 是 Jimeng，可选值为 4.0；</li><li>当 ModelName 是 SI，可选值为 4.0、4.5、5.0-lite；</li><li>当 ModelName 是 Qwen，可选值为 0925、2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1、3.0、3.0-Omni；</li>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// <p>AIGC 生图任务的输入图片的文件信息。各模型支持最大参考图数量：</p><ul><li>GG 2.5： 3张；</li><li>GG 3.0：14张；</li><li>GG 3.1：14张；</li><li>Kling 2.1：4张；</li><li>Kling 3.0：1张；</li><li>Kling 3.0-Omni：1张；</li><li>SI 4.0：14张；</li><li>SI 4.5：14张；</li><li>SI 5.0-lite：14张；</li><li>Vidu q2：7张；</li><li>Hunyuan 3.0：3张；</li><li>Qwen 0925：1张；</li><li>Qwen 2.0：3张；</li><li>MJ v7：3张。</li></ul>
+	// <p>AIGC 生图任务的输入图片的文件信息。各模型支持最大参考图数量：</p><ul><li>GG 2.5： 3张；</li><li>GG 3.0：14张；</li><li>GG 3.1：14张；</li><li>Kling 2.1：4张；</li><li>Kling 3.0：1张；</li><li>Kling 3.0-Omni：10张；</li><li>SI 4.0：14张；</li><li>SI 4.5：14张；</li><li>SI 5.0-lite：14张；</li><li>Vidu q2：7张；</li><li>Hunyuan 3.0：3张；</li><li>Qwen 0925：1张；</li><li>Qwen 2.0：3张；</li><li>MJ v7：3张。</li></ul>
 	FileInfos []*AigcImageTaskInputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
 	// <p>生成图片的提示词。当 FileInfos 为空时，此参数必填。</p>
@@ -4883,7 +4892,7 @@ type CreateAigcImageTaskRequest struct {
 	// <p>模型版本。取值：</p><li>当 ModelName 是 GG，可选值为 2.5、3.0、3.1；</li><li>当 ModelName 是 Jimeng，可选值为 4.0；</li><li>当 ModelName 是 SI，可选值为 4.0、4.5、5.0-lite；</li><li>当 ModelName 是 Qwen，可选值为 0925、2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1、3.0、3.0-Omni；</li>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// <p>AIGC 生图任务的输入图片的文件信息。各模型支持最大参考图数量：</p><ul><li>GG 2.5： 3张；</li><li>GG 3.0：14张；</li><li>GG 3.1：14张；</li><li>Kling 2.1：4张；</li><li>Kling 3.0：1张；</li><li>Kling 3.0-Omni：1张；</li><li>SI 4.0：14张；</li><li>SI 4.5：14张；</li><li>SI 5.0-lite：14张；</li><li>Vidu q2：7张；</li><li>Hunyuan 3.0：3张；</li><li>Qwen 0925：1张；</li><li>Qwen 2.0：3张；</li><li>MJ v7：3张。</li></ul>
+	// <p>AIGC 生图任务的输入图片的文件信息。各模型支持最大参考图数量：</p><ul><li>GG 2.5： 3张；</li><li>GG 3.0：14张；</li><li>GG 3.1：14张；</li><li>Kling 2.1：4张；</li><li>Kling 3.0：1张；</li><li>Kling 3.0-Omni：10张；</li><li>SI 4.0：14张；</li><li>SI 4.5：14张；</li><li>SI 5.0-lite：14张；</li><li>Vidu q2：7张；</li><li>Hunyuan 3.0：3张；</li><li>Qwen 0925：1张；</li><li>Qwen 2.0：3张；</li><li>MJ v7：3张。</li></ul>
 	FileInfos []*AigcImageTaskInputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
 	// <p>生成图片的提示词。当 FileInfos 为空时，此参数必填。</p>

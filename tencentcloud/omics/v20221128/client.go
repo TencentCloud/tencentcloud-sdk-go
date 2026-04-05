@@ -433,6 +433,134 @@ func (c *Client) DescribeEnvironmentsWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeHPCClustersRequest() (request *DescribeHPCClustersRequest) {
+    request = &DescribeHPCClustersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "DescribeHPCClusters")
+    
+    
+    return
+}
+
+func NewDescribeHPCClustersResponse() (response *DescribeHPCClustersResponse) {
+    response = &DescribeHPCClustersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHPCClusters
+// 查询HPC集群列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeHPCClusters(request *DescribeHPCClustersRequest) (response *DescribeHPCClustersResponse, err error) {
+    return c.DescribeHPCClustersWithContext(context.Background(), request)
+}
+
+// DescribeHPCClusters
+// 查询HPC集群列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeHPCClustersWithContext(ctx context.Context, request *DescribeHPCClustersRequest) (response *DescribeHPCClustersResponse, err error) {
+    if request == nil {
+        request = NewDescribeHPCClustersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "DescribeHPCClusters")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHPCClusters require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHPCClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHPCNodesRequest() (request *DescribeHPCNodesRequest) {
+    request = &DescribeHPCNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "DescribeHPCNodes")
+    
+    
+    return
+}
+
+func NewDescribeHPCNodesResponse() (response *DescribeHPCNodesResponse) {
+    response = &DescribeHPCNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHPCNodes
+// 查询HPC节点列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeHPCNodes(request *DescribeHPCNodesRequest) (response *DescribeHPCNodesResponse, err error) {
+    return c.DescribeHPCNodesWithContext(context.Background(), request)
+}
+
+// DescribeHPCNodes
+// 查询HPC节点列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeHPCNodesWithContext(ctx context.Context, request *DescribeHPCNodesRequest) (response *DescribeHPCNodesResponse, err error) {
+    if request == nil {
+        request = NewDescribeHPCNodesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "DescribeHPCNodes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHPCNodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHPCNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRunGroupsRequest() (request *DescribeRunGroupsRequest) {
     request = &DescribeRunGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1097,6 +1225,64 @@ func (c *Client) ModifyVolumeWithContext(ctx context.Context, request *ModifyVol
     request.SetContext(ctx)
     
     response = NewModifyVolumeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRebootHPCNodesRequest() (request *RebootHPCNodesRequest) {
+    request = &RebootHPCNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "RebootHPCNodes")
+    
+    
+    return
+}
+
+func NewRebootHPCNodesResponse() (response *RebootHPCNodesResponse) {
+    response = &RebootHPCNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RebootHPCNodes
+// 重启HPC节点
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) RebootHPCNodes(request *RebootHPCNodesRequest) (response *RebootHPCNodesResponse, err error) {
+    return c.RebootHPCNodesWithContext(context.Background(), request)
+}
+
+// RebootHPCNodes
+// 重启HPC节点
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) RebootHPCNodesWithContext(ctx context.Context, request *RebootHPCNodesRequest) (response *RebootHPCNodesResponse, err error) {
+    if request == nil {
+        request = NewRebootHPCNodesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "RebootHPCNodes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RebootHPCNodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRebootHPCNodesResponse()
     err = c.Send(request, response)
     return
 }

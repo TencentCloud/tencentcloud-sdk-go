@@ -6477,6 +6477,58 @@ func (c *Client) DescribeVideoSearchTaskDetailWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeVoicesRequest() (request *DescribeVoicesRequest) {
+    request = &DescribeVoicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeVoices")
+    
+    
+    return
+}
+
+func NewDescribeVoicesResponse() (response *DescribeVoicesResponse) {
+    response = &DescribeVoicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVoices
+// 同步接口。查询可用音色，支持通过类型、标签、语言等条件检索音色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTFOUND = "FailedOperation.TaskNotFound"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVoices(request *DescribeVoicesRequest) (response *DescribeVoicesResponse, err error) {
+    return c.DescribeVoicesWithContext(context.Background(), request)
+}
+
+// DescribeVoices
+// 同步接口。查询可用音色，支持通过类型、标签、语言等条件检索音色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTFOUND = "FailedOperation.TaskNotFound"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeVoicesWithContext(ctx context.Context, request *DescribeVoicesRequest) (response *DescribeVoicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeVoicesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeVoices")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVoices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVoicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWatermarkTemplatesRequest() (request *DescribeWatermarkTemplatesRequest) {
     request = &DescribeWatermarkTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},

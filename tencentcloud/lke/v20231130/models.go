@@ -11294,54 +11294,39 @@ type NL2SQLModelConfig struct {
 }
 
 type NodeRunBase struct {
-	// 节点运行的ID
+	// <p>节点运行的ID</p>
 	NodeRunId *string `json:"NodeRunId,omitnil,omitempty" name:"NodeRunId"`
 
-	// 节点ID
+	// <p>节点ID</p>
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
-	// 工作流运行实例的ID
+	// <p>工作流运行实例的ID</p>
 	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
 
-	// 节点名称
+	// <p>节点名称</p>
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// 节点类型。
-	// 1： 开始节点
-	// 2：参数提取节点
-	// 3：大模型节点
-	// 4：知识问答节点
-	// 5：知识检索节点
-	// 6：标签提取节点
-	// 7：代码执行节点
-	// 8：工具节点
-	// 9：逻辑判断节点
-	// 10：回复节点
-	// 11：选项卡节点
-	// 12：循环节点
-	// 13：意图识别节点
-	// 14：工作流节点
-	// 15：插件节点
-	// 16：结束节点
-	// 17: 变量聚合节点数据
-	// 18: 批处理节点
-	// 19: 消息队列节点
+	// <p>节点类型。<br>1： 开始节点<br>2：参数提取节点<br>3：大模型节点<br>4：知识问答节点<br>5：知识检索节点<br>6：标签提取节点<br>7：代码执行节点<br>8：工具节点<br>9：逻辑判断节点<br>10：回复节点<br>11：选项卡节点<br>12：循环节点<br>13：意图识别节点<br>14：工作流节点<br>15：插件节点<br>16：结束节点<br>17: 变量聚合节点数据<br>18: 批处理节点<br>19: 消息队列节点</p>
 	NodeType *uint64 `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 
-	// 运行状态。0: 初始状态；1: 运行中；2: 运行成功； 3: 运行失败； 4: 已取消
+	// <p>运行状态。0: 初始状态；1: 运行中；2: 运行成功； 3: 运行失败； 4: 已取消</p>
 	State *uint64 `json:"State,omitnil,omitempty" name:"State"`
 
-	// 错误码
+	// <p>错误码</p>
 	FailCode *string `json:"FailCode,omitnil,omitempty" name:"FailCode"`
 
-	// 错误信息
+	// <p>错误信息</p>
 	FailMessage *string `json:"FailMessage,omitnil,omitempty" name:"FailMessage"`
 
-	// 消耗时间（毫秒）
+	// <p>消耗时间（毫秒）</p>
 	CostMilliseconds *uint64 `json:"CostMilliseconds,omitnil,omitempty" name:"CostMilliseconds"`
 
-	// 消耗的token总数
+	// <p>消耗的token总数</p>
 	TotalTokens *uint64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
+
+	// <p>分支下标列表</p><p>单位：无</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BranchIndexList []*int64 `json:"BranchIndexList,omitnil,omitempty" name:"BranchIndexList"`
 }
 
 type NodeRunDetail struct {
@@ -13953,47 +13938,47 @@ type WorkflowRunDetail struct {
 }
 
 type WorkflowRunNodeInfo struct {
-	// 节点ID
+	// <p>节点ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
-	// 节点类型
+	// <p>节点类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeType *uint64 `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 
-	// 节点名称
+	// <p>节点名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// 状态
+	// <p>状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 输入
+	// <p>输入</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Input *string `json:"Input,omitnil,omitempty" name:"Input"`
 
-	// 输出
+	// <p>输出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
 
-	// 任务输出
+	// <p>任务输出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskOutput *string `json:"TaskOutput,omitnil,omitempty" name:"TaskOutput"`
 
-	// 错误信息
+	// <p>错误信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailMessage *string `json:"FailMessage,omitnil,omitempty" name:"FailMessage"`
 
-	// 花费时长
+	// <p>花费时长，单位为毫秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CostMilliSeconds *uint64 `json:"CostMilliSeconds,omitnil,omitempty" name:"CostMilliSeconds"`
 
-	// 大模型输出信息
+	// <p>大模型输出信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatisticInfos []*StatisticInfo `json:"StatisticInfos,omitnil,omitempty" name:"StatisticInfos"`
 
-	// 错误代码
+	// <p>错误代码</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailCode *string `json:"FailCode,omitnil,omitempty" name:"FailCode"`
 }

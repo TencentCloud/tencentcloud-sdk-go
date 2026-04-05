@@ -6093,14 +6093,14 @@ func (r *DeleteCHDFSBindingProductResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDataEngineRequestParams struct {
-	// 删除虚拟集群的名称数组
+	// <p>删除虚拟集群的名称数组</p>
 	DataEngineNames []*string `json:"DataEngineNames,omitnil,omitempty" name:"DataEngineNames"`
 }
 
 type DeleteDataEngineRequest struct {
 	*tchttp.BaseRequest
 	
-	// 删除虚拟集群的名称数组
+	// <p>删除虚拟集群的名称数组</p>
 	DataEngineNames []*string `json:"DataEngineNames,omitnil,omitempty" name:"DataEngineNames"`
 }
 

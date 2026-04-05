@@ -1619,6 +1619,64 @@ func (c *Client) DeleteInstancesActionTimerWithContext(ctx context.Context, requ
     return
 }
 
+func NewDeleteInstancesDisasterRecoverGroupsRequest() (request *DeleteInstancesDisasterRecoverGroupsRequest) {
+    request = &DeleteInstancesDisasterRecoverGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "DeleteInstancesDisasterRecoverGroups")
+    
+    
+    return
+}
+
+func NewDeleteInstancesDisasterRecoverGroupsResponse() (response *DeleteInstancesDisasterRecoverGroupsResponse) {
+    response = &DeleteInstancesDisasterRecoverGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteInstancesDisasterRecoverGroups
+// 本接口 (DeleteInstancesDisasterRecoverGroups) 用于将云服务器实例从指定的置放群组中批量移除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DISASTERRECOVERGROUPNOTFOUND = "FailedOperation.DisasterRecoverGroupNotFound"
+//  FAILEDOPERATION_DISASTERRECOVERGROUPNOTMATCH = "FailedOperation.DisasterRecoverGroupNotMatch"
+//  INVALIDPARAMETERVALUE_DISASTERRECOVERGROUPIDMALFORMED = "InvalidParameterValue.DisasterRecoverGroupIdMalformed"
+//  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
+//  RESOURCENOTFOUND_INVALIDINSTANCEIDNOTFOUND = "ResourceNotFound.InvalidInstanceIdNotFound"
+func (c *Client) DeleteInstancesDisasterRecoverGroups(request *DeleteInstancesDisasterRecoverGroupsRequest) (response *DeleteInstancesDisasterRecoverGroupsResponse, err error) {
+    return c.DeleteInstancesDisasterRecoverGroupsWithContext(context.Background(), request)
+}
+
+// DeleteInstancesDisasterRecoverGroups
+// 本接口 (DeleteInstancesDisasterRecoverGroups) 用于将云服务器实例从指定的置放群组中批量移除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DISASTERRECOVERGROUPNOTFOUND = "FailedOperation.DisasterRecoverGroupNotFound"
+//  FAILEDOPERATION_DISASTERRECOVERGROUPNOTMATCH = "FailedOperation.DisasterRecoverGroupNotMatch"
+//  INVALIDPARAMETERVALUE_DISASTERRECOVERGROUPIDMALFORMED = "InvalidParameterValue.DisasterRecoverGroupIdMalformed"
+//  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
+//  RESOURCENOTFOUND_INVALIDINSTANCEIDNOTFOUND = "ResourceNotFound.InvalidInstanceIdNotFound"
+func (c *Client) DeleteInstancesDisasterRecoverGroupsWithContext(ctx context.Context, request *DeleteInstancesDisasterRecoverGroupsRequest) (response *DeleteInstancesDisasterRecoverGroupsResponse, err error) {
+    if request == nil {
+        request = NewDeleteInstancesDisasterRecoverGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cvm", APIVersion, "DeleteInstancesDisasterRecoverGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteInstancesDisasterRecoverGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteInstancesDisasterRecoverGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteKeyPairsRequest() (request *DeleteKeyPairsRequest) {
     request = &DeleteKeyPairsRequest{
         BaseRequest: &tchttp.BaseRequest{},

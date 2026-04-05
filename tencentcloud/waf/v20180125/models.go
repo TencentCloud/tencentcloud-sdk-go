@@ -1491,11 +1491,6 @@ type ApiDetailSampleHistory struct {
 	FullReqLog *string `json:"FullReqLog,omitnil,omitempty" name:"FullReqLog"`
 }
 
-type ApiGuardContent struct {
-	// prompt
-	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
-}
-
 type ApiNameMethod struct {
 	// api名称
 	ApiName *string `json:"ApiName,omitnil,omitempty" name:"ApiName"`
@@ -2666,20 +2661,6 @@ type CdcRegion struct {
 
 	// 该地域对应的集群信息
 	Clusters []*CdcCluster `json:"Clusters,omitnil,omitempty" name:"Clusters"`
-}
-
-type ClawRiskItem struct {
-	// 风险类别
-	RiskType *string `json:"RiskType,omitnil,omitempty" name:"RiskType"`
-
-	// 规则id
-	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
-
-	// 规则名称
-	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
-
-	// 分数
-	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
 }
 
 type ClbDomainsInfo struct {
@@ -11058,98 +11039,6 @@ func (r *DescribeProtectionModesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeQClawContentSecCheckRequestParams struct {
-	// <p>服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
-	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
-
-	// <p>要审核的内容</p>
-	Content *ApiGuardContent `json:"Content,omitnil,omitempty" name:"Content"`
-
-	// <p>标识用户的id，限速使用，不填，则限速会不生效</p>
-	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
-
-	// <p>会话id</p>
-	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
-
-	// <p>工具名称</p>
-	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
-
-	// <p>工具执行的参数</p>
-	ToolArgs *string `json:"ToolArgs,omitnil,omitempty" name:"ToolArgs"`
-}
-
-type DescribeQClawContentSecCheckRequest struct {
-	*tchttp.BaseRequest
-	
-	// <p>服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
-	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
-
-	// <p>要审核的内容</p>
-	Content *ApiGuardContent `json:"Content,omitnil,omitempty" name:"Content"`
-
-	// <p>标识用户的id，限速使用，不填，则限速会不生效</p>
-	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
-
-	// <p>会话id</p>
-	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
-
-	// <p>工具名称</p>
-	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
-
-	// <p>工具执行的参数</p>
-	ToolArgs *string `json:"ToolArgs,omitnil,omitempty" name:"ToolArgs"`
-}
-
-func (r *DescribeQClawContentSecCheckRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeQClawContentSecCheckRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ServiceId")
-	delete(f, "Content")
-	delete(f, "UserId")
-	delete(f, "SessionId")
-	delete(f, "ToolName")
-	delete(f, "ToolArgs")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQClawContentSecCheckRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeQClawContentSecCheckResponseParams struct {
-	// <p>检测结果</p>
-	Data *LLMRisks `json:"Data,omitnil,omitempty" name:"Data"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeQClawContentSecCheckResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeQClawContentSecCheckResponseParams `json:"Response"`
-}
-
-func (r *DescribeQClawContentSecCheckResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeQClawContentSecCheckResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeRateLimitsV2RequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -14953,11 +14842,6 @@ type LLMPkg struct {
 
 	// 计费项
 	InquireKey *string `json:"InquireKey,omitnil,omitempty" name:"InquireKey"`
-}
-
-type LLMRisks struct {
-	// 分数
-	Risks []*ClawRiskItem `json:"Risks,omitnil,omitempty" name:"Risks"`
 }
 
 type LLMSensitiveValueLevel struct {

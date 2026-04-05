@@ -1,10 +1,10 @@
-# Release v1.3.71
+# Release v1.3.72
 
-## 日志服务(cls) 版本：2020-10-16
+## 云服务器(cvm) 版本：2017-03-12
 
-### 第 155 次发布
+### 第 161 次发布
 
-发布时间：2026-04-03 01:15:57
+发布时间：2026-04-06 01:17:01
 
 本次发布包含了以下内容：
 
@@ -12,85 +12,15 @@
 
 新增接口：
 
-* [ChatCompletions](https://cloud.tencent.com/document/api/614/130043)
-
-新增数据结构：
-
-* [ChatUsage](https://cloud.tencent.com/document/api/614/56471#ChatUsage)
-* [Choice](https://cloud.tencent.com/document/api/614/56471#Choice)
-* [Delta](https://cloud.tencent.com/document/api/614/56471#Delta)
-* [Message](https://cloud.tencent.com/document/api/614/56471#Message)
-* [MetadataItem](https://cloud.tencent.com/document/api/614/56471#MetadataItem)
-* [ToolCall](https://cloud.tencent.com/document/api/614/56471#ToolCall)
-* [ToolCallFunction](https://cloud.tencent.com/document/api/614/56471#ToolCallFunction)
-
-
-
-## 数据湖计算 DLC(dlc) 版本：2021-01-25
-
-### 第 155 次发布
-
-发布时间：2026-04-03 01:22:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Filter](https://cloud.tencent.com/document/api/1342/53778#Filter)
-
-	* 新增成员：Operator
-
-	* <font color="#dd0000">**修改成员**：</font>Name, Values
-
+* [DeleteInstancesDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/130154)
 
 
 
 ## 全球加速(ga2) 版本：2025-01-15
 
-### 第 2 次发布
+### 第 3 次发布
 
-发布时间：2026-04-03 01:27:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateGlobalAccelerator](https://cloud.tencent.com/document/api/1817/130044)
-
-新增数据结构：
-
-* [Tag](https://cloud.tencent.com/document/api/1817/130045#Tag)
-
-
-
-## 凭据管理系统(ssm) 版本：2019-09-23
-
-### 第 14 次发布
-
-发布时间：2026-04-03 02:03:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateProductSecret](https://cloud.tencent.com/document/api/1140/58266)
-
-	* 新增入参：AccountType
-
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 133 次发布
-
-发布时间：2026-04-03 02:06:14
+发布时间：2026-04-06 01:24:52
 
 本次发布包含了以下内容：
 
@@ -98,46 +28,154 @@
 
 新增接口：
 
-* [CreateCustomLoginKey](https://cloud.tencent.com/document/api/876/130046)
+* [CreateAccelerateAreas](https://cloud.tencent.com/document/api/1817/130174)
+* [CreateEndpointGroup](https://cloud.tencent.com/document/api/1817/130173)
+* [CreateForwardingRule](https://cloud.tencent.com/document/api/1817/130172)
+* [CreateListener](https://cloud.tencent.com/document/api/1817/130171)
+* [DeleteAccelerateAreas](https://cloud.tencent.com/document/api/1817/130170)
+* [DeleteEndpointGroups](https://cloud.tencent.com/document/api/1817/130169)
+* [DeleteForwardingRule](https://cloud.tencent.com/document/api/1817/130168)
+* [DeleteGlobalAccelerator](https://cloud.tencent.com/document/api/1817/130167)
+* [DeleteListener](https://cloud.tencent.com/document/api/1817/130166)
+* [DescribeAccelerateAreas](https://cloud.tencent.com/document/api/1817/130165)
+* [DescribeAccelerateRegions](https://cloud.tencent.com/document/api/1817/130164)
+* [DescribeEndpointGroups](https://cloud.tencent.com/document/api/1817/130163)
+* [DescribeForwardingRule](https://cloud.tencent.com/document/api/1817/130162)
+* [DescribeGlobalAccelerators](https://cloud.tencent.com/document/api/1817/130161)
+* [DescribeListeners](https://cloud.tencent.com/document/api/1817/130160)
+* [ModifyAccelerateAreas](https://cloud.tencent.com/document/api/1817/130159)
+* [ModifyEndpointGroup](https://cloud.tencent.com/document/api/1817/130158)
+* [ModifyForwardingRule](https://cloud.tencent.com/document/api/1817/130157)
+* [ModifyGlobalAccelerator](https://cloud.tencent.com/document/api/1817/130156)
+* [ModifyListener](https://cloud.tencent.com/document/api/1817/130155)
 
 新增数据结构：
 
-* [EmailTemplateConfig](https://cloud.tencent.com/document/api/876/34822#EmailTemplateConfig)
-* [HTTPServiceExtension](https://cloud.tencent.com/document/api/876/34822#HTTPServiceExtension)
-* [HTTPServiceHeaderToAdd](https://cloud.tencent.com/document/api/876/34822#HTTPServiceHeaderToAdd)
-* [HTTPServiceHeadersHandler](https://cloud.tencent.com/document/api/876/34822#HTTPServiceHeadersHandler)
-* [LocalizedTemplate](https://cloud.tencent.com/document/api/876/34822#LocalizedTemplate)
+* [AcceleratorAreas](https://cloud.tencent.com/document/api/1817/130045#AcceleratorAreas)
+* [AcceleratorRegionSet](https://cloud.tencent.com/document/api/1817/130045#AcceleratorRegionSet)
+* [EndpointConfigurations](https://cloud.tencent.com/document/api/1817/130045#EndpointConfigurations)
+* [EndpointGroupConfiguration](https://cloud.tencent.com/document/api/1817/130045#EndpointGroupConfiguration)
+* [EndpointGroupConfigurationSet](https://cloud.tencent.com/document/api/1817/130045#EndpointGroupConfigurationSet)
+* [Filter](https://cloud.tencent.com/document/api/1817/130045#Filter)
+* [ForwardingRuleSet](https://cloud.tencent.com/document/api/1817/130045#ForwardingRuleSet)
+* [GlobalAcceleratorSet](https://cloud.tencent.com/document/api/1817/130045#GlobalAcceleratorSet)
+* [IpAddressInfoSet](https://cloud.tencent.com/document/api/1817/130045#IpAddressInfoSet)
+* [ListenerSet](https://cloud.tencent.com/document/api/1817/130045#ListenerSet)
+* [OriginHeader](https://cloud.tencent.com/document/api/1817/130045#OriginHeader)
+* [PortOverride](https://cloud.tencent.com/document/api/1817/130045#PortOverride)
+* [PortRanges](https://cloud.tencent.com/document/api/1817/130045#PortRanges)
+* [RuleAction](https://cloud.tencent.com/document/api/1817/130045#RuleAction)
+* [RuleCondition](https://cloud.tencent.com/document/api/1817/130045#RuleCondition)
+
+
+
+## 腾讯云智能体开发平台(lke) 版本：2023-11-30
+
+### 第 83 次发布
+
+发布时间：2026-04-06 01:30:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [EmailProviderConfig](https://cloud.tencent.com/document/api/876/34822#EmailProviderConfig)
+* [NodeRunBase](https://cloud.tencent.com/document/api/1759/105104#NodeRunBase)
 
-	* 新增成员：TemplateConfig
+	* 新增成员：BranchIndexList
 
-* [HTTPServiceDomain](https://cloud.tencent.com/document/api/876/34822#HTTPServiceDomain)
 
-	* 新增成员：Extension
 
-* [HTTPServiceDomainParam](https://cloud.tencent.com/document/api/876/34822#HTTPServiceDomainParam)
 
-	* 新增成员：Extension
+## 媒体处理(mps) 版本：2019-06-12
 
-* [HTTPServiceRoute](https://cloud.tencent.com/document/api/876/34822#HTTPServiceRoute)
+### 第 188 次发布
 
-	* 新增成员：Extension
+发布时间：2026-04-03 14:58:26
 
-* [HTTPServiceRouteParam](https://cloud.tencent.com/document/api/876/34822#HTTPServiceRouteParam)
+本次发布包含了以下内容：
 
-	* 新增成员：Extension
+改善已有的文档。
 
+新增接口：
+
+* [DescribeVoices](https://cloud.tencent.com/document/api/862/130123)
+
+新增数据结构：
+
+* [VoiceInfo](https://cloud.tencent.com/document/api/862/37615#VoiceInfo)
+
+
+
+## 腾讯健康组学平台(omics) 版本：2022-11-28
+
+### 第 26 次发布
+
+发布时间：2026-04-06 01:45:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeHPCClusters](https://cloud.tencent.com/document/api/1643/130178)
+* [DescribeHPCNodes](https://cloud.tencent.com/document/api/1643/130177)
+* [RebootHPCNodes](https://cloud.tencent.com/document/api/1643/130176)
+
+新增数据结构：
+
+* [HPCCluster](https://cloud.tencent.com/document/api/1643/89100#HPCCluster)
+* [HPCDisk](https://cloud.tencent.com/document/api/1643/89100#HPCDisk)
+* [HPCGPUInfo](https://cloud.tencent.com/document/api/1643/89100#HPCGPUInfo)
+* [HPCInstance](https://cloud.tencent.com/document/api/1643/89100#HPCInstance)
+* [HPCInternetInfo](https://cloud.tencent.com/document/api/1643/89100#HPCInternetInfo)
+* [HPCNode](https://cloud.tencent.com/document/api/1643/89100#HPCNode)
+* [Tag](https://cloud.tencent.com/document/api/1643/89100#Tag)
+
+
+
+## 智能媒资托管(smh) 版本：2021-07-12
+
+### 第 9 次发布
+
+发布时间：2026-04-03 11:18:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateUser
+* CreateUserLifecycle
+* DeleteUser
+* DescribeUserLifecycle
+* ModifyUser
+
+修改接口：
+
+* [CreateLibrary](https://cloud.tencent.com/document/api/1339/69089)
+
+	* 新增出参：AccessDomain
+
+* [DescribeLibraries](https://cloud.tencent.com/document/api/1339/69087)
+
+	* 新增入参：Offset, Limit
+
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* UserFilter
 
 
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
-### 第 140 次发布
+### 第 141 次发布
 
-发布时间：2026-04-03 02:17:52
+发布时间：2026-04-06 02:14:12
 
 本次发布包含了以下内容：
 
@@ -145,15 +183,32 @@
 
 新增接口：
 
-* [DescribeSharedCNAME](https://cloud.tencent.com/document/api/1552/130048)
-* [ModifySharedCNAME](https://cloud.tencent.com/document/api/1552/130047)
+* [CreateEdgeKVNamespace](https://cloud.tencent.com/document/api/1552/130189)
+* [DeleteEdgeKVNamespace](https://cloud.tencent.com/document/api/1552/130188)
+* [DescribeEdgeKVNamespaces](https://cloud.tencent.com/document/api/1552/130187)
+* [DescribeFunctionComponentBindings](https://cloud.tencent.com/document/api/1552/130180)
+* [EdgeKVDelete](https://cloud.tencent.com/document/api/1552/130186)
+* [EdgeKVGet](https://cloud.tencent.com/document/api/1552/130185)
+* [EdgeKVList](https://cloud.tencent.com/document/api/1552/130184)
+* [EdgeKVPut](https://cloud.tencent.com/document/api/1552/130183)
+* [ModifyEdgeKVNamespace](https://cloud.tencent.com/document/api/1552/130182)
+* [ModifyFunctionComponentBindings](https://cloud.tencent.com/document/api/1552/130179)
 
 新增数据结构：
 
-* [IPSSLConfig](https://cloud.tencent.com/document/api/1552/80721#IPSSLConfig)
-* [IPSSLSetting](https://cloud.tencent.com/document/api/1552/80721#IPSSLSetting)
-* [ReferenceHolder](https://cloud.tencent.com/document/api/1552/80721#ReferenceHolder)
-* [SharedCNAMEInfo](https://cloud.tencent.com/document/api/1552/80721#SharedCNAMEInfo)
+* [ComponentReference](https://cloud.tencent.com/document/api/1552/80721#ComponentReference)
+* [DefaultDenySecurityActionParameters](https://cloud.tencent.com/document/api/1552/80721#DefaultDenySecurityActionParameters)
+* [FunctionComponentBinding](https://cloud.tencent.com/document/api/1552/80721#FunctionComponentBinding)
+* [KVNamespace](https://cloud.tencent.com/document/api/1552/80721#KVNamespace)
+* [KVNamespaceParameters](https://cloud.tencent.com/document/api/1552/80721#KVNamespaceParameters)
+* [KeyValuePair](https://cloud.tencent.com/document/api/1552/80721#KeyValuePair)
+
+修改数据结构：
+
+* [SecurityPolicy](https://cloud.tencent.com/document/api/1552/80721#SecurityPolicy)
+
+	* 新增成员：DefaultDenySecurityActionParameters
+
 
 
 
@@ -167,48 +222,42 @@
 
 ## 云点播(vod) 版本：2018-07-17
 
-### 第 244 次发布
+### 第 245 次发布
 
-发布时间：2026-04-03 02:37:33
+发布时间：2026-04-06 02:33:39
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增数据结构：
-
-* [FaceRecognitionInfo](https://cloud.tencent.com/document/api/266/31773#FaceRecognitionInfo)
-* [FaceRecognitionOutputFileInfo](https://cloud.tencent.com/document/api/266/31773#FaceRecognitionOutputFileInfo)
-* [FaceRecognitionTask](https://cloud.tencent.com/document/api/266/31773#FaceRecognitionTask)
-* [KnowledgeBasesInfo](https://cloud.tencent.com/document/api/266/31773#KnowledgeBasesInfo)
-
 修改数据结构：
 
-* [MediaInfo](https://cloud.tencent.com/document/api/266/31773#MediaInfo)
+* [AigcVideoTaskInputSubjectInfo](https://cloud.tencent.com/document/api/266/31773#AigcVideoTaskInputSubjectInfo)
 
-	* 新增成员：KnowledgeBasesInfo, FaceRecognitionInfo
+	* 新增成员：VoiceId, ImageUrls, VideoUrls
 
 
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
 
-### 第 145 次发布
+### 第 146 次发布
 
-发布时间：2026-04-03 02:46:50
+发布时间：2026-04-06 02:42:33
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+<font color="#dd0000">**删除接口**：</font>
 
-* [DescribeQClawContentSecCheck](https://cloud.tencent.com/document/api/627/129967)
+* DescribeQClawContentSecCheck
 
-	* 新增入参：ToolName, ToolArgs
+<font color="#dd0000">**删除数据结构**：</font>
 
-	* <font color="#dd0000">**修改入参**：</font>Content
-
+* ApiGuardContent
+* ClawRiskItem
+* LLMRisks
 
 
 

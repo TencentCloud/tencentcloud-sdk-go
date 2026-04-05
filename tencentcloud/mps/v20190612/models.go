@@ -13276,6 +13276,77 @@ func (r *DescribeVideoSearchTaskDetailResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeVoicesRequestParams struct {
+	// <p>音色类别</p><p>枚举值：</p><ul><li>system： 系统音色</li></ul>
+	VoiceType *string `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
+
+	// <p>扩展参数，json字符串</p><p>其他筛选条件voiceName String 音色名，模糊匹配labels Array of String 标签，匹配包含这些标签的音色</p>
+	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
+}
+
+type DescribeVoicesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>音色类别</p><p>枚举值：</p><ul><li>system： 系统音色</li></ul>
+	VoiceType *string `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
+
+	// <p>扩展参数，json字符串</p><p>其他筛选条件voiceName String 音色名，模糊匹配labels Array of String 标签，匹配包含这些标签的音色</p>
+	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
+}
+
+func (r *DescribeVoicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVoicesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VoiceType")
+	delete(f, "ExtParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVoicesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVoicesResponseParams struct {
+	// <p>错误码，成功时返回0</p>
+	ErrorCode *int64 `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>错误信息，成功时返回success</p>
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>可用音色列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Voices []*VoiceInfo `json:"Voices,omitnil,omitempty" name:"Voices"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVoicesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVoicesResponseParams `json:"Response"`
+}
+
+func (r *DescribeVoicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVoicesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeWatermarkTemplatesRequestParams struct {
 	// 水印模板唯一标识过滤条件，数组长度限制：100。
 	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
@@ -26108,6 +26179,35 @@ type VideoTemplateInfoForUpdate struct {
 	// 注意：要使用此值ScenarioBased的值必须为1，否则此值不生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompressType *string `json:"CompressType,omitnil,omitempty" name:"CompressType"`
+}
+
+type VoiceInfo struct {
+	// <p>音色ID</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>音色名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>音色描述信息</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>音色类别</p><p>枚举值：</p><ul><li>system： 系统音色</li></ul>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>性别</p><p>枚举值：</p><ul><li>male： 男</li><li>famale： 女</li></ul>
+	Gender *string `json:"Gender,omitnil,omitempty" name:"Gender"`
+
+	// <p>支持语种列表</p><p>如：en</p>
+	Languages []*string `json:"Languages,omitnil,omitempty" name:"Languages"`
+
+	// <p>试听音频URL</p>
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
+	// <p>标签列表</p><p>如：温柔</p>
+	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// <p>推荐场景</p><p>如：教育</p>
+	Scenes []*string `json:"Scenes,omitnil,omitempty" name:"Scenes"`
 }
 
 type VolumeBalanceConfig struct {
