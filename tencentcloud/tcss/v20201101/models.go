@@ -17602,58 +17602,38 @@ func (r *DescribeK8sApiAbnormalEventInfoResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeK8sApiAbnormalEventListRequestParams struct {
-	// 过滤条件。
-	// <li>TimeRange - string -是否必填: 否 - 时间范围筛选 ["2022-03-31 16:55:00", "2022-03-31 17:00:00"]</li>
-	// <li>MatchRules - string  - 是否必填: 否 -命中规则筛选</li>
-	// <li>RiskLevel - string  - 是否必填: 否 -威胁等级筛选</li>
-	// <li>Status - string  - 是否必填: 否 -事件状态筛选</li>
-	// <li>MatchRuleType - string  - 是否必填: 否 -命中规则类型筛选</li>
-	// <li>ClusterRunningStatus - string  - 是否必填: 否 -集群运行状态</li>
-	// <li>ClusterName - string  - 是否必填: 否 -集群名称</li>
-	// <li>ClusterID - string  - 是否必填: 否 -集群ID</li>
+	// <p>过滤条件。</p><li>TimeRange - string -是否必填: 否 - 时间范围筛选 ["2022-03-31 16:55:00", "2022-03-31 17:00:00"]</li><li>MatchRules - string  - 是否必填: 否 -命中规则筛选</li><li>RiskLevel - string  - 是否必填: 否 -威胁等级筛选</li><li>Status - string  - 是否必填: 否 -事件状态筛选</li><li>MatchRuleType - string  - 是否必填: 否 -命中规则类型筛选</li><li>ClusterRunningStatus - string  - 是否必填: 否 -集群运行状态</li><li>ClusterName - string  - 是否必填: 否 -集群名称</li><li>ClusterID - string  - 是否必填: 否 -集群ID</li>
 	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 需要返回的数量，默认为10，最大值为100
+	// <p>需要返回的数量，默认为10，最大值为100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序方式
+	// <p>排序方式</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
-	// LatestFoundTime: 最近生成时间
-	// AlarmCount: 告警数量
+	// <p>排序字段<br>LatestFoundTime: 最近生成时间<br>AlarmCount: 告警数量</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 type DescribeK8sApiAbnormalEventListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件。
-	// <li>TimeRange - string -是否必填: 否 - 时间范围筛选 ["2022-03-31 16:55:00", "2022-03-31 17:00:00"]</li>
-	// <li>MatchRules - string  - 是否必填: 否 -命中规则筛选</li>
-	// <li>RiskLevel - string  - 是否必填: 否 -威胁等级筛选</li>
-	// <li>Status - string  - 是否必填: 否 -事件状态筛选</li>
-	// <li>MatchRuleType - string  - 是否必填: 否 -命中规则类型筛选</li>
-	// <li>ClusterRunningStatus - string  - 是否必填: 否 -集群运行状态</li>
-	// <li>ClusterName - string  - 是否必填: 否 -集群名称</li>
-	// <li>ClusterID - string  - 是否必填: 否 -集群ID</li>
+	// <p>过滤条件。</p><li>TimeRange - string -是否必填: 否 - 时间范围筛选 ["2022-03-31 16:55:00", "2022-03-31 17:00:00"]</li><li>MatchRules - string  - 是否必填: 否 -命中规则筛选</li><li>RiskLevel - string  - 是否必填: 否 -威胁等级筛选</li><li>Status - string  - 是否必填: 否 -事件状态筛选</li><li>MatchRuleType - string  - 是否必填: 否 -命中规则类型筛选</li><li>ClusterRunningStatus - string  - 是否必填: 否 -集群运行状态</li><li>ClusterName - string  - 是否必填: 否 -集群名称</li><li>ClusterID - string  - 是否必填: 否 -集群ID</li>
 	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 需要返回的数量，默认为10，最大值为100
+	// <p>需要返回的数量，默认为10，最大值为100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序方式
+	// <p>排序方式</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
-	// LatestFoundTime: 最近生成时间
-	// AlarmCount: 告警数量
+	// <p>排序字段<br>LatestFoundTime: 最近生成时间<br>AlarmCount: 告警数量</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -17682,11 +17662,14 @@ func (r *DescribeK8sApiAbnormalEventListRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeK8sApiAbnormalEventListResponseParams struct {
-	// 事件列表
+	// <p>事件列表</p>
 	List []*K8sApiAbnormalEventListItem `json:"List,omitnil,omitempty" name:"List"`
 
-	// 总数量
+	// <p>总数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>k8s告警类型和对应中文翻译</p>
+	RuleTypeZhSet []*K8SAPIRuleTypeZhItem `json:"RuleTypeZhSet,omitnil,omitempty" name:"RuleTypeZhSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -18014,14 +17997,14 @@ func (r *DescribeK8sApiAbnormalSummaryResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeK8sApiAbnormalTendencyRequestParams struct {
-	// 趋势周期(默认为7天)
+	// <p>趋势周期(默认为7天)</p>
 	TendencyPeriod *uint64 `json:"TendencyPeriod,omitnil,omitempty" name:"TendencyPeriod"`
 }
 
 type DescribeK8sApiAbnormalTendencyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 趋势周期(默认为7天)
+	// <p>趋势周期(默认为7天)</p>
 	TendencyPeriod *uint64 `json:"TendencyPeriod,omitnil,omitempty" name:"TendencyPeriod"`
 }
 
@@ -18046,8 +18029,11 @@ func (r *DescribeK8sApiAbnormalTendencyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeK8sApiAbnormalTendencyResponseParams struct {
-	// 趋势列表
+	// <p>趋势列表</p>
 	List []*K8sApiAbnormalTendencyItem `json:"List,omitnil,omitempty" name:"List"`
+
+	// <p>规则类型对应中文</p>
+	RuleTypeZhSet []*K8SAPIRuleTypeZhItem `json:"RuleTypeZhSet,omitnil,omitempty" name:"RuleTypeZhSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -28026,68 +28012,85 @@ func (r *InitializeUserComplianceEnvironmentResponse) FromJsonString(s string) e
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type K8SAPIRuleTypeCountItem struct {
+	// <p>规则类型</p><p>枚举值：</p><ul><li>ABNORMAL_CREATE_POD： 可疑容器创建</li></ul>
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// <p>规则对应告警数量</p>
+	EventCount *uint64 `json:"EventCount,omitnil,omitempty" name:"EventCount"`
+}
+
+type K8SAPIRuleTypeZhItem struct {
+	// <p>规则类型</p><p>枚举值：</p><ul><li>&quot;rule_type&quot;: &quot;ABNORMAL_CREATE_POD&quot;,： 可疑容器创建</li></ul>
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// <p>规则类型对应中文</p>
+	RuleTypeZh *string `json:"RuleTypeZh,omitnil,omitempty" name:"RuleTypeZh"`
+}
+
 type K8sApiAbnormalEventInfo struct {
-	// 命中规则名称
+	// <p>命中规则名称</p>
 	MatchRuleName *string `json:"MatchRuleName,omitnil,omitempty" name:"MatchRuleName"`
 
-	// 命中规则类型
+	// <p>命中规则类型</p>
 	MatchRuleType *string `json:"MatchRuleType,omitnil,omitempty" name:"MatchRuleType"`
 
-	// 告警等级
+	// <p>告警等级</p>
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 集群运行状态，CSR_RUNNING-运行中，CSR_EXCEPTION-异常，CSR_CREATING-创建中
+	// <p>集群运行状态，CSR_RUNNING-运行中，CSR_EXCEPTION-异常，CSR_CREATING-创建中</p>
 	ClusterRunningStatus *string `json:"ClusterRunningStatus,omitnil,omitempty" name:"ClusterRunningStatus"`
 
-	// 初次生成时间
+	// <p>初次生成时间</p>
 	FirstCreateTime *string `json:"FirstCreateTime,omitnil,omitempty" name:"FirstCreateTime"`
 
-	// 最近一次生成时间
+	// <p>最近一次生成时间</p>
 	LastCreateTime *string `json:"LastCreateTime,omitnil,omitempty" name:"LastCreateTime"`
 
-	// 告警数量
+	// <p>告警数量</p>
 	AlarmCount *uint64 `json:"AlarmCount,omitnil,omitempty" name:"AlarmCount"`
 
-	// 状态
-	// "EVENT_UNDEAL":未处理
-	// "EVENT_DEALED": 已处理
-	// "EVENT_IGNORE": 忽略
-	// "EVENT_DEL": 删除
-	// "EVENT_ADD_WHITE": 加白
+	// <p>状态<br>&quot;EVENT_UNDEAL&quot;:未处理<br>&quot;EVENT_DEALED&quot;: 已处理<br>&quot;EVENT_IGNORE&quot;: 忽略<br>&quot;EVENT_DEL&quot;: 删除<br>&quot;EVENT_ADD_WHITE&quot;: 加白</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 集群masterIP
+	// <p>集群masterIP</p>
 	ClusterMasterIP *string `json:"ClusterMasterIP,omitnil,omitempty" name:"ClusterMasterIP"`
 
-	// k8s版本
+	// <p>k8s版本</p>
 	K8sVersion *string `json:"K8sVersion,omitnil,omitempty" name:"K8sVersion"`
 
-	// 运行时组件
+	// <p>运行时组件</p>
 	RunningComponent []*string `json:"RunningComponent,omitnil,omitempty" name:"RunningComponent"`
 
-	// 描述
+	// <p>描述</p>
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
-	// 建议
+	// <p>建议</p>
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
-	// 请求信息
+	// <p>请求信息</p>
 	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
 
-	// 规则ID
+	// <p>规则ID</p>
 	MatchRuleID *string `json:"MatchRuleID,omitnil,omitempty" name:"MatchRuleID"`
 
-	// 高亮字段数组
+	// <p>高亮字段数组</p>
 	HighLightFields []*string `json:"HighLightFields,omitnil,omitempty" name:"HighLightFields"`
 
-	// 命中规则
+	// <p>命中规则</p>
 	MatchRule *K8sApiAbnormalRuleScopeInfo `json:"MatchRule,omitnil,omitempty" name:"MatchRule"`
+
+	// <p>高亮字段对应的命中规则内容(JSON字符串, 如: {&quot;field1&quot;:&quot;value1&quot;,&quot;field2&quot;:&quot;value2&quot;})</p><p>参数格式：{&quot;field1&quot;:&quot;value1&quot;,&quot;field2&quot;:&quot;value2&quot;}</p>
+	HighLightFieldsVal *string `json:"HighLightFieldsVal,omitnil,omitempty" name:"HighLightFieldsVal"`
+
+	// <p>规则中文</p>
+	RuleTypeZH *string `json:"RuleTypeZH,omitnil,omitempty" name:"RuleTypeZH"`
 }
 
 type K8sApiAbnormalEventListItem struct {
@@ -28188,70 +28191,64 @@ type K8sApiAbnormalRuleListItem struct {
 }
 
 type K8sApiAbnormalRuleScopeInfo struct {
-	// 范围
-	// 系统事件:
-	// ANONYMOUS_ACCESS: 匿名访问
-	// ABNORMAL_UA_REQ: 异常UA请求
-	// ANONYMOUS_ABNORMAL_PERMISSION: 匿名用户权限异动
-	// GET_CREDENTIALS: 凭据信息获取
-	// MOUNT_SENSITIVE_PATH: 敏感路径挂载
-	// COMMAND_RUN: 命令执行
-	// PRIVILEGE_CONTAINER: 特权容器
-	// EXCEPTION_CRONTAB_TASK: 异常定时任务
-	// STATICS_POD: 静态pod创建
-	// ABNORMAL_CREATE_POD: 异常pod创建
-	// USER_DEFINED: 用户自定义
+	// <p>范围<br>系统事件:<br>ANONYMOUS_ACCESS: 匿名访问<br>ABNORMAL_UA_REQ: 异常UA请求<br>ANONYMOUS_ABNORMAL_PERMISSION: 匿名用户权限异动<br>GET_CREDENTIALS: 凭据信息获取<br>MOUNT_SENSITIVE_PATH: 敏感路径挂载<br>COMMAND_RUN: 命令执行<br>PRIVILEGE_CONTAINER: 特权容器<br>EXCEPTION_CRONTAB_TASK: 异常定时任务<br>STATICS_POD: 静态pod创建<br>ABNORMAL_CREATE_POD: 异常pod创建<br>USER_DEFINED: 用户自定义</p>
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 
-	// 动作(RULE_MODE_ALERT: 告警 RULE_MODE_RELEASE:放行)
+	// <p>动作(RULE_MODE_ALERT: 告警 RULE_MODE_RELEASE:放行)</p>
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
-	// 威胁等级 HIGH:高级 MIDDLE: 中级 LOW:低级 NOTICE:提示
+	// <p>威胁等级 HIGH:高级 MIDDLE: 中级 LOW:低级 NOTICE:提示</p>
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 开关状态(true:开 false:关) 适用于系统规则
+	// <p>开关状态(true:开 false:关) 适用于系统规则</p>
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 是否被删除 适用于自定义规则入参
+	// <p>是否被删除 适用于自定义规则入参</p>
 	IsDelete *bool `json:"IsDelete,omitnil,omitempty" name:"IsDelete"`
+
+	// <p>规则类型对应中文</p>
+	RuleTypeZH *string `json:"RuleTypeZH,omitnil,omitempty" name:"RuleTypeZH"`
 }
 
 type K8sApiAbnormalTendencyItem struct {
-	// 日期
+	// <p>日期</p>
 	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 
-	// 异常UA请求事件数
+	// <p>异常UA请求事件数</p>
 	ExceptionUARequestCount *uint64 `json:"ExceptionUARequestCount,omitnil,omitempty" name:"ExceptionUARequestCount"`
 
-	// 匿名用户权限事件数
+	// <p>匿名用户权限事件数</p>
 	AnonymousUserRightCount *uint64 `json:"AnonymousUserRightCount,omitnil,omitempty" name:"AnonymousUserRightCount"`
 
-	// 凭据信息获取事件数
+	// <p>凭据信息获取事件数</p>
 	CredentialInformationObtainCount *uint64 `json:"CredentialInformationObtainCount,omitnil,omitempty" name:"CredentialInformationObtainCount"`
 
-	// 敏感数据挂载事件数
+	// <p>敏感数据挂载事件数</p>
 	SensitiveDataMountCount *uint64 `json:"SensitiveDataMountCount,omitnil,omitempty" name:"SensitiveDataMountCount"`
 
-	// 命令执行事件数
+	// <p>命令执行事件数</p>
 	CmdExecCount *uint64 `json:"CmdExecCount,omitnil,omitempty" name:"CmdExecCount"`
 
-	// 异常定时任务事件数
+	// <p>异常定时任务事件数</p>
 	AbnormalScheduledTaskCount *uint64 `json:"AbnormalScheduledTaskCount,omitnil,omitempty" name:"AbnormalScheduledTaskCount"`
 
-	// 静态Pod创建数
+	// <p>静态Pod创建数</p>
 	StaticsPodCreateCount *uint64 `json:"StaticsPodCreateCount,omitnil,omitempty" name:"StaticsPodCreateCount"`
 
-	// 可疑容器创建数
+	// <p>可疑容器创建数</p>
 	DoubtfulContainerCreateCount *uint64 `json:"DoubtfulContainerCreateCount,omitnil,omitempty" name:"DoubtfulContainerCreateCount"`
 
-	// 自定义规则事件数
+	// <p>自定义规则事件数</p>
 	UserDefinedRuleCount *uint64 `json:"UserDefinedRuleCount,omitnil,omitempty" name:"UserDefinedRuleCount"`
 
-	// 匿名访问事件数
+	// <p>匿名访问事件数</p>
 	AnonymousAccessCount *uint64 `json:"AnonymousAccessCount,omitnil,omitempty" name:"AnonymousAccessCount"`
 
-	// 特权容器事件数
+	// <p>特权容器事件数</p>
 	PrivilegeContainerCount *uint64 `json:"PrivilegeContainerCount,omitnil,omitempty" name:"PrivilegeContainerCount"`
+
+	// <p>规则类型对应告警数量</p>
+	RuleTypeCountSet []*K8SAPIRuleTypeCountItem `json:"RuleTypeCountSet,omitnil,omitempty" name:"RuleTypeCountSet"`
 }
 
 type MaliciousConnectionRuleInfo struct {

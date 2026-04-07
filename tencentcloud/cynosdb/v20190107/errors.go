@@ -305,6 +305,9 @@ const (
 	// 创建任务失败。{{1}}
 	OPERATIONDENIED_CREATETASKANDFLOWERROR = "OperationDenied.CreateTaskAndFlowError"
 
+	// 实例内核版本不支持{{1}}
+	OPERATIONDENIED_CYNOSDBVERSIONNOTSUPPORTERROR = "OperationDenied.CynosdbVersionNotSupportError"
+
 	// 新存储架构多可用区部署功能暂未开放
 	OPERATIONDENIED_DISABLENEWSTORAGEMULTIZONEDEPLOYMENTERROR = "OperationDenied.DisableNewStorageMultiZoneDeploymentError"
 

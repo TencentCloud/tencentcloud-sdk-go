@@ -3477,58 +3477,6 @@ func (c *Client) DestroyStaticStoreWithContext(ctx context.Context, request *Des
     return
 }
 
-func NewEditAuthConfigRequest() (request *EditAuthConfigRequest) {
-    request = &EditAuthConfigRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "EditAuthConfig")
-    
-    
-    return
-}
-
-func NewEditAuthConfigResponse() (response *EditAuthConfigResponse) {
-    response = &EditAuthConfigResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// EditAuthConfig
-// 修改登录配置
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) EditAuthConfig(request *EditAuthConfigRequest) (response *EditAuthConfigResponse, err error) {
-    return c.EditAuthConfigWithContext(context.Background(), request)
-}
-
-// EditAuthConfig
-// 修改登录配置
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) EditAuthConfigWithContext(ctx context.Context, request *EditAuthConfigRequest) (response *EditAuthConfigResponse, err error) {
-    if request == nil {
-        request = NewEditAuthConfigRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "EditAuthConfig")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("EditAuthConfig require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewEditAuthConfigResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewGetProvidersRequest() (request *GetProvidersRequest) {
     request = &GetProvidersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4359,66 +4307,6 @@ func (c *Client) ModifyUserWithContext(ctx context.Context, request *ModifyUserR
     request.SetContext(ctx)
     
     response = NewModifyUserResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewReinstateEnvRequest() (request *ReinstateEnvRequest) {
-    request = &ReinstateEnvRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "ReinstateEnv")
-    
-    
-    return
-}
-
-func NewReinstateEnvResponse() (response *ReinstateEnvResponse) {
-    response = &ReinstateEnvResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ReinstateEnv
-// 针对已隔离的免费环境，可以通过本接口将其恢复访问。
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) ReinstateEnv(request *ReinstateEnvRequest) (response *ReinstateEnvResponse, err error) {
-    return c.ReinstateEnvWithContext(context.Background(), request)
-}
-
-// ReinstateEnv
-// 针对已隔离的免费环境，可以通过本接口将其恢复访问。
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) ReinstateEnvWithContext(ctx context.Context, request *ReinstateEnvRequest) (response *ReinstateEnvResponse, err error) {
-    if request == nil {
-        request = NewReinstateEnvRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ReinstateEnv")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ReinstateEnv require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewReinstateEnvResponse()
     err = c.Send(request, response)
     return
 }

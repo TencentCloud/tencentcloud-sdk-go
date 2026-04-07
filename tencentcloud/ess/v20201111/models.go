@@ -16309,36 +16309,32 @@ func (r *ExportContractReviewMarkedRiskResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type ExportContractReviewResultRequestParams struct {
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 合同审查任务ID
+	// <p>合同审查任务ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 导出文件类型。1  = 带风险批注文件; 2 = 审查结果＆摘要（.xIsx）; 3 = 不带批注文件
+	// <p>导出文件类型</p><p>枚举值：</p><ul><li>1： WORD、PDF当前带风险批注文件</li><li>2： 审查结果＆摘要（.xIsx）</li><li>3： WORD、PDF审查合同内容时的文件（最原始文件）</li><li>4： WORD、PDF当前无风险批注文件</li></ul>
 	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 }
 
 type ExportContractReviewResultRequest struct {
 	*tchttp.BaseRequest
 	
-	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 合同审查任务ID
+	// <p>合同审查任务ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 导出文件类型。1  = 带风险批注文件; 2 = 审查结果＆摘要（.xIsx）; 3 = 不带批注文件
+	// <p>导出文件类型</p><p>枚举值：</p><ul><li>1： WORD、PDF当前带风险批注文件</li><li>2： 审查结果＆摘要（.xIsx）</li><li>3： WORD、PDF审查合同内容时的文件（最原始文件）</li><li>4： WORD、PDF当前无风险批注文件</li></ul>
 	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 }
 
@@ -16366,7 +16362,7 @@ func (r *ExportContractReviewResultRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportContractReviewResultResponseParams struct {
-	// 文件下载链接
+	// <p>文件下载链接</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

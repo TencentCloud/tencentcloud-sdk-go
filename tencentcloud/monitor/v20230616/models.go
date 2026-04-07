@@ -887,36 +887,39 @@ type NoticeContentTmplBindPolicyCount struct {
 }
 
 type NoticeContentTmplItem struct {
-	// 官网通知渠道配置
+	// <p>官网通知渠道配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QCloudYehe []*QCloudYeheNoticeTmplMatcher `json:"QCloudYehe,omitnil,omitempty" name:"QCloudYehe"`
 
-	// 企业微信机器人通知渠道配置
+	// <p>企业微信机器人通知渠道配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WeWorkRobot []*WeWorkRobotNoticeTmplMatcher `json:"WeWorkRobot,omitnil,omitempty" name:"WeWorkRobot"`
 
-	// 钉钉机器人通知渠道配置
+	// <p>钉钉机器人通知渠道配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DingDingRobot []*DingDingRobotNoticeTmplMatcher `json:"DingDingRobot,omitnil,omitempty" name:"DingDingRobot"`
 
-	// 飞书机器人通知渠道配置
+	// <p>飞书机器人通知渠道配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeiShuRobot []*FeiShuRobotNoticeTmplMatcher `json:"FeiShuRobot,omitnil,omitempty" name:"FeiShuRobot"`
 
-	// 自定义Webhook通知渠道配置
+	// <p>自定义Webhook通知渠道配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Webhook []*WebhookNoticeTmplMatcher `json:"Webhook,omitnil,omitempty" name:"Webhook"`
 
-	// Teams机器人通知渠道配置
+	// <p>Teams机器人通知渠道配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TeamsRobot []*TeamsRobotNoticeTmplMatcher `json:"TeamsRobot,omitnil,omitempty" name:"TeamsRobot"`
 
-	// PagerDutyRobot机器人通知渠道配置
+	// <p>PagerDutyRobot机器人通知渠道配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PagerDutyRobot []*PagerDutyRobotNoticeTmplMatcher `json:"PagerDutyRobot,omitnil,omitempty" name:"PagerDutyRobot"`
 
-	// GoogleChat
+	// <p>GoogleChat</p>
 	GoogleChatRobot []*GoogleChatRobotNoticeTmplMatcher `json:"GoogleChatRobot,omitnil,omitempty" name:"GoogleChatRobot"`
+
+	// <p>Slack</p>
+	SlackRobot []*SlackRobotNoticeTmplMatcher `json:"SlackRobot,omitnil,omitempty" name:"SlackRobot"`
 }
 
 type NotifyRelatedNotice struct {
@@ -1040,6 +1043,19 @@ type QCloudYeheWeChatNoticeTmplItem struct {
 
 	// 告警时间模板
 	AlarmTimeTmpl *string `json:"AlarmTimeTmpl,omitnil,omitempty" name:"AlarmTimeTmpl"`
+}
+
+type SlackRobotNoticeTmpl struct {
+	// <p>内容模板</p>
+	ContentTmpl *string `json:"ContentTmpl,omitnil,omitempty" name:"ContentTmpl"`
+}
+
+type SlackRobotNoticeTmplMatcher struct {
+	// <p>匹配状态 Invalid;<br>Trigger 告警触发; Recovery 告警恢复</p>
+	MatchingStatus []*string `json:"MatchingStatus,omitnil,omitempty" name:"MatchingStatus"`
+
+	// <p>模板配置</p>
+	Template *SlackRobotNoticeTmpl `json:"Template,omitnil,omitempty" name:"Template"`
 }
 
 type TeamsRobotNoticeTmpl struct {

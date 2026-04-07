@@ -17,6 +17,9 @@ package v20190612
 const (
 	// 此产品的特有错误码
 
+	// CAM签名/鉴权错误。
+	AUTHFAILURE = "AuthFailure"
+
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
@@ -56,6 +59,12 @@ const (
 	// 内部错误：生成模板 ID 失败。
 	INTERNALERROR_GENDEFINITION = "InternalError.GenDefinition"
 
+	// InternalError.GetSSAIChannelsFailed
+	INTERNALERROR_GETSSAICHANNELSFAILED = "InternalError.GetSSAIChannelsFailed"
+
+	// InternalError.GetSSAIUsagePartialFailed
+	INTERNALERROR_GETSSAIUSAGEPARTIALFAILED = "InternalError.GetSSAIUsagePartialFailed"
+
 	// 识别出错
 	INTERNALERROR_RECOGNITIONERROR = "InternalError.RecognitionError"
 
@@ -67,6 +76,15 @@ const (
 
 	// InvalidParameter.AlreadyAssociatedInput
 	INVALIDPARAMETER_ALREADYASSOCIATEDINPUT = "InvalidParameter.AlreadyAssociatedInput"
+
+	// InvalidParameter.AppId
+	INVALIDPARAMETER_APPID = "InvalidParameter.AppId"
+
+	// InvalidParameter.AuthInfo
+	INVALIDPARAMETER_AUTHINFO = "InvalidParameter.AuthInfo"
+
+	// InvalidParameter.CacheInfo
+	INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
 
 	// InvalidParameter.EndTime
 	INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
@@ -82,6 +100,9 @@ const (
 
 	// InvalidParameter.InputOutputId
 	INVALIDPARAMETER_INPUTOUTPUTID = "InvalidParameter.InputOutputId"
+
+	// InvalidParameter.InvalidParameterChannelId
+	INVALIDPARAMETER_INVALIDPARAMETERCHANNELID = "InvalidParameter.InvalidParameterChannelId"
 
 	// InvalidParameter.MaxBandwidth
 	INVALIDPARAMETER_MAXBANDWIDTH = "InvalidParameter.MaxBandwidth"
@@ -113,8 +134,14 @@ const (
 	// InvalidParameter.Pipeline
 	INVALIDPARAMETER_PIPELINE = "InvalidParameter.Pipeline"
 
+	// InvalidParameter.Points
+	INVALIDPARAMETER_POINTS = "InvalidParameter.Points"
+
 	// InvalidParameter.Protocol
 	INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+
+	// InvalidParameter.SSAIInfo
+	INVALIDPARAMETER_SSAIINFO = "InvalidParameter.SSAIInfo"
 
 	// InvalidParameter.SortType
 	INVALIDPARAMETER_SORTTYPE = "InvalidParameter.SortType"
@@ -127,6 +154,9 @@ const (
 
 	// InvalidParameter.Type
 	INVALIDPARAMETER_TYPE = "InvalidParameter.Type"
+
+	// InvalidParameter.Url
+	INVALIDPARAMETER_URL = "InvalidParameter.Url"
 
 	// 输入审核拦截。
 	INVALIDPARAMETER_VIOLATIONCONTENT = "InvalidParameter.ViolationContent"
@@ -497,6 +527,9 @@ const (
 	// 超过限制值：模板数超限。
 	LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
 
+	// 资源不足。
+	RESOURCEINSUFFICIENT = "ResourceInsufficient"
+
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
@@ -520,6 +553,9 @@ const (
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+
+	// 操作不支持。
+	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 
 	// 单次请求text超过长度限制
 	UNSUPPORTEDOPERATION_TEXTTOOLONG = "UnsupportedOperation.TextTooLong"

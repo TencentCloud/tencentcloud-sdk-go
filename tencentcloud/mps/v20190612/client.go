@@ -45,6 +45,102 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewActivateSSAIRequest() (request *ActivateSSAIRequest) {
+    request = &ActivateSSAIRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "ActivateSSAI")
+    
+    
+    return
+}
+
+func NewActivateSSAIResponse() (response *ActivateSSAIResponse) {
+    response = &ActivateSSAIResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ActivateSSAI
+// 开通SSAI
+func (c *Client) ActivateSSAI(request *ActivateSSAIRequest) (response *ActivateSSAIResponse, err error) {
+    return c.ActivateSSAIWithContext(context.Background(), request)
+}
+
+// ActivateSSAI
+// 开通SSAI
+func (c *Client) ActivateSSAIWithContext(ctx context.Context, request *ActivateSSAIRequest) (response *ActivateSSAIResponse, err error) {
+    if request == nil {
+        request = NewActivateSSAIRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ActivateSSAI")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ActivateSSAI require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewActivateSSAIResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewActivateStreamPackageRequest() (request *ActivateStreamPackageRequest) {
+    request = &ActivateStreamPackageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "ActivateStreamPackage")
+    
+    
+    return
+}
+
+func NewActivateStreamPackageResponse() (response *ActivateStreamPackageResponse) {
+    response = &ActivateStreamPackageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ActivateStreamPackage
+// 创建媒体封装用户。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_APPID = "InvalidParameter.AppId"
+func (c *Client) ActivateStreamPackage(request *ActivateStreamPackageRequest) (response *ActivateStreamPackageResponse, err error) {
+    return c.ActivateStreamPackageWithContext(context.Background(), request)
+}
+
+// ActivateStreamPackage
+// 创建媒体封装用户。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_APPID = "InvalidParameter.AppId"
+func (c *Client) ActivateStreamPackageWithContext(ctx context.Context, request *ActivateStreamPackageRequest) (response *ActivateStreamPackageResponse, err error) {
+    if request == nil {
+        request = NewActivateStreamPackageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ActivateStreamPackage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ActivateStreamPackage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewActivateStreamPackageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchDeleteStreamLinkFlowRequest() (request *BatchDeleteStreamLinkFlowRequest) {
     request = &BatchDeleteStreamLinkFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1981,6 +2077,300 @@ func (c *Client) CreateStreamLinkSecurityGroupWithContext(ctx context.Context, r
     return
 }
 
+func NewCreateStreamPackageLinearAssemblyChannelRequest() (request *CreateStreamPackageLinearAssemblyChannelRequest) {
+    request = &CreateStreamPackageLinearAssemblyChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateStreamPackageLinearAssemblyChannel")
+    
+    
+    return
+}
+
+func NewCreateStreamPackageLinearAssemblyChannelResponse() (response *CreateStreamPackageLinearAssemblyChannelResponse) {
+    response = &CreateStreamPackageLinearAssemblyChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateStreamPackageLinearAssemblyChannel
+// 创建媒体包装频道。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) CreateStreamPackageLinearAssemblyChannel(request *CreateStreamPackageLinearAssemblyChannelRequest) (response *CreateStreamPackageLinearAssemblyChannelResponse, err error) {
+    return c.CreateStreamPackageLinearAssemblyChannelWithContext(context.Background(), request)
+}
+
+// CreateStreamPackageLinearAssemblyChannel
+// 创建媒体包装频道。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) CreateStreamPackageLinearAssemblyChannelWithContext(ctx context.Context, request *CreateStreamPackageLinearAssemblyChannelRequest) (response *CreateStreamPackageLinearAssemblyChannelResponse, err error) {
+    if request == nil {
+        request = NewCreateStreamPackageLinearAssemblyChannelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateStreamPackageLinearAssemblyChannel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStreamPackageLinearAssemblyChannel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateStreamPackageLinearAssemblyChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateStreamPackageLinearAssemblyProgramRequest() (request *CreateStreamPackageLinearAssemblyProgramRequest) {
+    request = &CreateStreamPackageLinearAssemblyProgramRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateStreamPackageLinearAssemblyProgram")
+    
+    
+    return
+}
+
+func NewCreateStreamPackageLinearAssemblyProgramResponse() (response *CreateStreamPackageLinearAssemblyProgramResponse) {
+    response = &CreateStreamPackageLinearAssemblyProgramResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateStreamPackageLinearAssemblyProgram
+// 创建线性组装Program。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) CreateStreamPackageLinearAssemblyProgram(request *CreateStreamPackageLinearAssemblyProgramRequest) (response *CreateStreamPackageLinearAssemblyProgramResponse, err error) {
+    return c.CreateStreamPackageLinearAssemblyProgramWithContext(context.Background(), request)
+}
+
+// CreateStreamPackageLinearAssemblyProgram
+// 创建线性组装Program。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) CreateStreamPackageLinearAssemblyProgramWithContext(ctx context.Context, request *CreateStreamPackageLinearAssemblyProgramRequest) (response *CreateStreamPackageLinearAssemblyProgramResponse, err error) {
+    if request == nil {
+        request = NewCreateStreamPackageLinearAssemblyProgramRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateStreamPackageLinearAssemblyProgram")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStreamPackageLinearAssemblyProgram require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateStreamPackageLinearAssemblyProgramResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateStreamPackageSSAIChannelRequest() (request *CreateStreamPackageSSAIChannelRequest) {
+    request = &CreateStreamPackageSSAIChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateStreamPackageSSAIChannel")
+    
+    
+    return
+}
+
+func NewCreateStreamPackageSSAIChannelResponse() (response *CreateStreamPackageSSAIChannelResponse) {
+    response = &CreateStreamPackageSSAIChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateStreamPackageSSAIChannel
+// 创建SSAI广告插入配置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_AUTHINFO = "InvalidParameter.AuthInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_SSAIINFO = "InvalidParameter.SSAIInfo"
+func (c *Client) CreateStreamPackageSSAIChannel(request *CreateStreamPackageSSAIChannelRequest) (response *CreateStreamPackageSSAIChannelResponse, err error) {
+    return c.CreateStreamPackageSSAIChannelWithContext(context.Background(), request)
+}
+
+// CreateStreamPackageSSAIChannel
+// 创建SSAI广告插入配置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_AUTHINFO = "InvalidParameter.AuthInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_SSAIINFO = "InvalidParameter.SSAIInfo"
+func (c *Client) CreateStreamPackageSSAIChannelWithContext(ctx context.Context, request *CreateStreamPackageSSAIChannelRequest) (response *CreateStreamPackageSSAIChannelResponse, err error) {
+    if request == nil {
+        request = NewCreateStreamPackageSSAIChannelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateStreamPackageSSAIChannel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStreamPackageSSAIChannel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateStreamPackageSSAIChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateStreamPackageSourceRequest() (request *CreateStreamPackageSourceRequest) {
+    request = &CreateStreamPackageSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateStreamPackageSource")
+    
+    
+    return
+}
+
+func NewCreateStreamPackageSourceResponse() (response *CreateStreamPackageSourceResponse) {
+    response = &CreateStreamPackageSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateStreamPackageSource
+// 创建媒体包装频道。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) CreateStreamPackageSource(request *CreateStreamPackageSourceRequest) (response *CreateStreamPackageSourceResponse, err error) {
+    return c.CreateStreamPackageSourceWithContext(context.Background(), request)
+}
+
+// CreateStreamPackageSource
+// 创建媒体包装频道。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) CreateStreamPackageSourceWithContext(ctx context.Context, request *CreateStreamPackageSourceRequest) (response *CreateStreamPackageSourceResponse, err error) {
+    if request == nil {
+        request = NewCreateStreamPackageSourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateStreamPackageSource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStreamPackageSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateStreamPackageSourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateStreamPackageSourceLocationRequest() (request *CreateStreamPackageSourceLocationRequest) {
+    request = &CreateStreamPackageSourceLocationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateStreamPackageSourceLocation")
+    
+    
+    return
+}
+
+func NewCreateStreamPackageSourceLocationResponse() (response *CreateStreamPackageSourceLocationResponse) {
+    response = &CreateStreamPackageSourceLocationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateStreamPackageSourceLocation
+// 创建媒体包装频道。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) CreateStreamPackageSourceLocation(request *CreateStreamPackageSourceLocationRequest) (response *CreateStreamPackageSourceLocationResponse, err error) {
+    return c.CreateStreamPackageSourceLocationWithContext(context.Background(), request)
+}
+
+// CreateStreamPackageSourceLocation
+// 创建媒体包装频道。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) CreateStreamPackageSourceLocationWithContext(ctx context.Context, request *CreateStreamPackageSourceLocationRequest) (response *CreateStreamPackageSourceLocationResponse, err error) {
+    if request == nil {
+        request = NewCreateStreamPackageSourceLocationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateStreamPackageSourceLocation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStreamPackageSourceLocation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateStreamPackageSourceLocationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSubtitleEmbedTemplateRequest() (request *CreateSubtitleEmbedTemplateRequest) {
     request = &CreateSubtitleEmbedTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3651,6 +4041,460 @@ func (c *Client) DeleteStreamLinkSecurityGroupWithContext(ctx context.Context, r
     return
 }
 
+func NewDeleteStreamPackageLinearAssemblyChannelRequest() (request *DeleteStreamPackageLinearAssemblyChannelRequest) {
+    request = &DeleteStreamPackageLinearAssemblyChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteStreamPackageLinearAssemblyChannel")
+    
+    
+    return
+}
+
+func NewDeleteStreamPackageLinearAssemblyChannelResponse() (response *DeleteStreamPackageLinearAssemblyChannelResponse) {
+    response = &DeleteStreamPackageLinearAssemblyChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteStreamPackageLinearAssemblyChannel
+// 删除媒体包装Channel。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_URL = "InvalidParameter.Url"
+func (c *Client) DeleteStreamPackageLinearAssemblyChannel(request *DeleteStreamPackageLinearAssemblyChannelRequest) (response *DeleteStreamPackageLinearAssemblyChannelResponse, err error) {
+    return c.DeleteStreamPackageLinearAssemblyChannelWithContext(context.Background(), request)
+}
+
+// DeleteStreamPackageLinearAssemblyChannel
+// 删除媒体包装Channel。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_URL = "InvalidParameter.Url"
+func (c *Client) DeleteStreamPackageLinearAssemblyChannelWithContext(ctx context.Context, request *DeleteStreamPackageLinearAssemblyChannelRequest) (response *DeleteStreamPackageLinearAssemblyChannelResponse, err error) {
+    if request == nil {
+        request = NewDeleteStreamPackageLinearAssemblyChannelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteStreamPackageLinearAssemblyChannel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteStreamPackageLinearAssemblyChannel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteStreamPackageLinearAssemblyChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteStreamPackageLinearAssemblyChannelsRequest() (request *DeleteStreamPackageLinearAssemblyChannelsRequest) {
+    request = &DeleteStreamPackageLinearAssemblyChannelsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteStreamPackageLinearAssemblyChannels")
+    
+    
+    return
+}
+
+func NewDeleteStreamPackageLinearAssemblyChannelsResponse() (response *DeleteStreamPackageLinearAssemblyChannelsResponse) {
+    response = &DeleteStreamPackageLinearAssemblyChannelsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteStreamPackageLinearAssemblyChannels
+// 批量删除媒体包装Channel。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_URL = "InvalidParameter.Url"
+func (c *Client) DeleteStreamPackageLinearAssemblyChannels(request *DeleteStreamPackageLinearAssemblyChannelsRequest) (response *DeleteStreamPackageLinearAssemblyChannelsResponse, err error) {
+    return c.DeleteStreamPackageLinearAssemblyChannelsWithContext(context.Background(), request)
+}
+
+// DeleteStreamPackageLinearAssemblyChannels
+// 批量删除媒体包装Channel。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_URL = "InvalidParameter.Url"
+func (c *Client) DeleteStreamPackageLinearAssemblyChannelsWithContext(ctx context.Context, request *DeleteStreamPackageLinearAssemblyChannelsRequest) (response *DeleteStreamPackageLinearAssemblyChannelsResponse, err error) {
+    if request == nil {
+        request = NewDeleteStreamPackageLinearAssemblyChannelsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteStreamPackageLinearAssemblyChannels")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteStreamPackageLinearAssemblyChannels require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteStreamPackageLinearAssemblyChannelsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteStreamPackageLinearAssemblyProgramRequest() (request *DeleteStreamPackageLinearAssemblyProgramRequest) {
+    request = &DeleteStreamPackageLinearAssemblyProgramRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteStreamPackageLinearAssemblyProgram")
+    
+    
+    return
+}
+
+func NewDeleteStreamPackageLinearAssemblyProgramResponse() (response *DeleteStreamPackageLinearAssemblyProgramResponse) {
+    response = &DeleteStreamPackageLinearAssemblyProgramResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteStreamPackageLinearAssemblyProgram
+// 删除线性组装Program。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_URL = "InvalidParameter.Url"
+func (c *Client) DeleteStreamPackageLinearAssemblyProgram(request *DeleteStreamPackageLinearAssemblyProgramRequest) (response *DeleteStreamPackageLinearAssemblyProgramResponse, err error) {
+    return c.DeleteStreamPackageLinearAssemblyProgramWithContext(context.Background(), request)
+}
+
+// DeleteStreamPackageLinearAssemblyProgram
+// 删除线性组装Program。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_URL = "InvalidParameter.Url"
+func (c *Client) DeleteStreamPackageLinearAssemblyProgramWithContext(ctx context.Context, request *DeleteStreamPackageLinearAssemblyProgramRequest) (response *DeleteStreamPackageLinearAssemblyProgramResponse, err error) {
+    if request == nil {
+        request = NewDeleteStreamPackageLinearAssemblyProgramRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteStreamPackageLinearAssemblyProgram")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteStreamPackageLinearAssemblyProgram require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteStreamPackageLinearAssemblyProgramResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteStreamPackageLinearAssemblyProgramsRequest() (request *DeleteStreamPackageLinearAssemblyProgramsRequest) {
+    request = &DeleteStreamPackageLinearAssemblyProgramsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteStreamPackageLinearAssemblyPrograms")
+    
+    
+    return
+}
+
+func NewDeleteStreamPackageLinearAssemblyProgramsResponse() (response *DeleteStreamPackageLinearAssemblyProgramsResponse) {
+    response = &DeleteStreamPackageLinearAssemblyProgramsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteStreamPackageLinearAssemblyPrograms
+// 批量删除线性组装Program。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_URL = "InvalidParameter.Url"
+func (c *Client) DeleteStreamPackageLinearAssemblyPrograms(request *DeleteStreamPackageLinearAssemblyProgramsRequest) (response *DeleteStreamPackageLinearAssemblyProgramsResponse, err error) {
+    return c.DeleteStreamPackageLinearAssemblyProgramsWithContext(context.Background(), request)
+}
+
+// DeleteStreamPackageLinearAssemblyPrograms
+// 批量删除线性组装Program。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_URL = "InvalidParameter.Url"
+func (c *Client) DeleteStreamPackageLinearAssemblyProgramsWithContext(ctx context.Context, request *DeleteStreamPackageLinearAssemblyProgramsRequest) (response *DeleteStreamPackageLinearAssemblyProgramsResponse, err error) {
+    if request == nil {
+        request = NewDeleteStreamPackageLinearAssemblyProgramsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteStreamPackageLinearAssemblyPrograms")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteStreamPackageLinearAssemblyPrograms require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteStreamPackageLinearAssemblyProgramsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteStreamPackageLinearAssemblyProgramsByChannelRequest() (request *DeleteStreamPackageLinearAssemblyProgramsByChannelRequest) {
+    request = &DeleteStreamPackageLinearAssemblyProgramsByChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteStreamPackageLinearAssemblyProgramsByChannel")
+    
+    
+    return
+}
+
+func NewDeleteStreamPackageLinearAssemblyProgramsByChannelResponse() (response *DeleteStreamPackageLinearAssemblyProgramsByChannelResponse) {
+    response = &DeleteStreamPackageLinearAssemblyProgramsByChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteStreamPackageLinearAssemblyProgramsByChannel
+// 批量删除同一Channel下的ID
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_URL = "InvalidParameter.Url"
+func (c *Client) DeleteStreamPackageLinearAssemblyProgramsByChannel(request *DeleteStreamPackageLinearAssemblyProgramsByChannelRequest) (response *DeleteStreamPackageLinearAssemblyProgramsByChannelResponse, err error) {
+    return c.DeleteStreamPackageLinearAssemblyProgramsByChannelWithContext(context.Background(), request)
+}
+
+// DeleteStreamPackageLinearAssemblyProgramsByChannel
+// 批量删除同一Channel下的ID
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_URL = "InvalidParameter.Url"
+func (c *Client) DeleteStreamPackageLinearAssemblyProgramsByChannelWithContext(ctx context.Context, request *DeleteStreamPackageLinearAssemblyProgramsByChannelRequest) (response *DeleteStreamPackageLinearAssemblyProgramsByChannelResponse, err error) {
+    if request == nil {
+        request = NewDeleteStreamPackageLinearAssemblyProgramsByChannelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteStreamPackageLinearAssemblyProgramsByChannel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteStreamPackageLinearAssemblyProgramsByChannel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteStreamPackageLinearAssemblyProgramsByChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteStreamPackageSSAIChannelRequest() (request *DeleteStreamPackageSSAIChannelRequest) {
+    request = &DeleteStreamPackageSSAIChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteStreamPackageSSAIChannel")
+    
+    
+    return
+}
+
+func NewDeleteStreamPackageSSAIChannelResponse() (response *DeleteStreamPackageSSAIChannelResponse) {
+    response = &DeleteStreamPackageSSAIChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteStreamPackageSSAIChannel
+// 删除广告插入配置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_AUTHINFO = "InvalidParameter.AuthInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_SSAIINFO = "InvalidParameter.SSAIInfo"
+func (c *Client) DeleteStreamPackageSSAIChannel(request *DeleteStreamPackageSSAIChannelRequest) (response *DeleteStreamPackageSSAIChannelResponse, err error) {
+    return c.DeleteStreamPackageSSAIChannelWithContext(context.Background(), request)
+}
+
+// DeleteStreamPackageSSAIChannel
+// 删除广告插入配置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_AUTHINFO = "InvalidParameter.AuthInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_SSAIINFO = "InvalidParameter.SSAIInfo"
+func (c *Client) DeleteStreamPackageSSAIChannelWithContext(ctx context.Context, request *DeleteStreamPackageSSAIChannelRequest) (response *DeleteStreamPackageSSAIChannelResponse, err error) {
+    if request == nil {
+        request = NewDeleteStreamPackageSSAIChannelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteStreamPackageSSAIChannel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteStreamPackageSSAIChannel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteStreamPackageSSAIChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteStreamPackageSourceRequest() (request *DeleteStreamPackageSourceRequest) {
+    request = &DeleteStreamPackageSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteStreamPackageSource")
+    
+    
+    return
+}
+
+func NewDeleteStreamPackageSourceResponse() (response *DeleteStreamPackageSourceResponse) {
+    response = &DeleteStreamPackageSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteStreamPackageSource
+// 批量删除媒体包装Source。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_URL = "InvalidParameter.Url"
+func (c *Client) DeleteStreamPackageSource(request *DeleteStreamPackageSourceRequest) (response *DeleteStreamPackageSourceResponse, err error) {
+    return c.DeleteStreamPackageSourceWithContext(context.Background(), request)
+}
+
+// DeleteStreamPackageSource
+// 批量删除媒体包装Source。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_URL = "InvalidParameter.Url"
+func (c *Client) DeleteStreamPackageSourceWithContext(ctx context.Context, request *DeleteStreamPackageSourceRequest) (response *DeleteStreamPackageSourceResponse, err error) {
+    if request == nil {
+        request = NewDeleteStreamPackageSourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteStreamPackageSource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteStreamPackageSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteStreamPackageSourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteStreamPackageSourceLocationRequest() (request *DeleteStreamPackageSourceLocationRequest) {
+    request = &DeleteStreamPackageSourceLocationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteStreamPackageSourceLocation")
+    
+    
+    return
+}
+
+func NewDeleteStreamPackageSourceLocationResponse() (response *DeleteStreamPackageSourceLocationResponse) {
+    response = &DeleteStreamPackageSourceLocationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteStreamPackageSourceLocation
+// 删除媒体包装SourceLocation。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_URL = "InvalidParameter.Url"
+func (c *Client) DeleteStreamPackageSourceLocation(request *DeleteStreamPackageSourceLocationRequest) (response *DeleteStreamPackageSourceLocationResponse, err error) {
+    return c.DeleteStreamPackageSourceLocationWithContext(context.Background(), request)
+}
+
+// DeleteStreamPackageSourceLocation
+// 删除媒体包装SourceLocation。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_URL = "InvalidParameter.Url"
+func (c *Client) DeleteStreamPackageSourceLocationWithContext(ctx context.Context, request *DeleteStreamPackageSourceLocationRequest) (response *DeleteStreamPackageSourceLocationResponse, err error) {
+    if request == nil {
+        request = NewDeleteStreamPackageSourceLocationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteStreamPackageSourceLocation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteStreamPackageSourceLocation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteStreamPackageSourceLocationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSubtitleEmbedTemplateRequest() (request *DeleteSubtitleEmbedTemplateRequest) {
     request = &DeleteSubtitleEmbedTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4791,6 +5635,72 @@ func (c *Client) DescribeLiveRecordTemplatesWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeMDPMPSUserInfoRequest() (request *DescribeMDPMPSUserInfoRequest) {
+    request = &DescribeMDPMPSUserInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeMDPMPSUserInfo")
+    
+    
+    return
+}
+
+func NewDescribeMDPMPSUserInfoResponse() (response *DescribeMDPMPSUserInfoResponse) {
+    response = &DescribeMDPMPSUserInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMDPMPSUserInfo
+// 查询用户开通mps信息，是否开通/授权。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPID = "InvalidParameter.AppId"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMDPMPSUserInfo(request *DescribeMDPMPSUserInfoRequest) (response *DescribeMDPMPSUserInfoResponse, err error) {
+    return c.DescribeMDPMPSUserInfoWithContext(context.Background(), request)
+}
+
+// DescribeMDPMPSUserInfo
+// 查询用户开通mps信息，是否开通/授权。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPID = "InvalidParameter.AppId"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMDPMPSUserInfoWithContext(ctx context.Context, request *DescribeMDPMPSUserInfoRequest) (response *DescribeMDPMPSUserInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeMDPMPSUserInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeMDPMPSUserInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMDPMPSUserInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMDPMPSUserInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMediaMetaDataRequest() (request *DescribeMediaMetaDataRequest) {
     request = &DescribeMediaMetaDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5013,6 +5923,64 @@ func (c *Client) DescribeQualityControlTemplatesWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewDescribeQualityControlTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSSAIActivateStateRequest() (request *DescribeSSAIActivateStateRequest) {
+    request = &DescribeSSAIActivateStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeSSAIActivateState")
+    
+    
+    return
+}
+
+func NewDescribeSSAIActivateStateResponse() (response *DescribeSSAIActivateStateResponse) {
+    response = &DescribeSSAIActivateStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSSAIActivateState
+// 查询SSAI开通状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DescribeSSAIActivateState(request *DescribeSSAIActivateStateRequest) (response *DescribeSSAIActivateStateResponse, err error) {
+    return c.DescribeSSAIActivateStateWithContext(context.Background(), request)
+}
+
+// DescribeSSAIActivateState
+// 查询SSAI开通状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DescribeSSAIActivateStateWithContext(ctx context.Context, request *DescribeSSAIActivateStateRequest) (response *DescribeSSAIActivateStateResponse, err error) {
+    if request == nil {
+        request = NewDescribeSSAIActivateStateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeSSAIActivateState")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSSAIActivateState require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSSAIActivateStateResponse()
     err = c.Send(request, response)
     return
 }
@@ -6053,6 +7021,926 @@ func (c *Client) DescribeStreamLinkSecurityGroupsWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewDescribeStreamLinkSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamPackageActivateStateRequest() (request *DescribeStreamPackageActivateStateRequest) {
+    request = &DescribeStreamPackageActivateStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamPackageActivateState")
+    
+    
+    return
+}
+
+func NewDescribeStreamPackageActivateStateResponse() (response *DescribeStreamPackageActivateStateResponse) {
+    response = &DescribeStreamPackageActivateStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamPackageActivateState
+// 查询媒体封装用户开通情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeStreamPackageActivateState(request *DescribeStreamPackageActivateStateRequest) (response *DescribeStreamPackageActivateStateResponse, err error) {
+    return c.DescribeStreamPackageActivateStateWithContext(context.Background(), request)
+}
+
+// DescribeStreamPackageActivateState
+// 查询媒体封装用户开通情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeStreamPackageActivateStateWithContext(ctx context.Context, request *DescribeStreamPackageActivateStateRequest) (response *DescribeStreamPackageActivateStateResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPackageActivateStateRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamPackageActivateState")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPackageActivateState require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPackageActivateStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamPackageLinearAssemblyChannelRequest() (request *DescribeStreamPackageLinearAssemblyChannelRequest) {
+    request = &DescribeStreamPackageLinearAssemblyChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamPackageLinearAssemblyChannel")
+    
+    
+    return
+}
+
+func NewDescribeStreamPackageLinearAssemblyChannelResponse() (response *DescribeStreamPackageLinearAssemblyChannelResponse) {
+    response = &DescribeStreamPackageLinearAssemblyChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamPackageLinearAssemblyChannel
+// 查询媒体包装线性组装频道信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+func (c *Client) DescribeStreamPackageLinearAssemblyChannel(request *DescribeStreamPackageLinearAssemblyChannelRequest) (response *DescribeStreamPackageLinearAssemblyChannelResponse, err error) {
+    return c.DescribeStreamPackageLinearAssemblyChannelWithContext(context.Background(), request)
+}
+
+// DescribeStreamPackageLinearAssemblyChannel
+// 查询媒体包装线性组装频道信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+func (c *Client) DescribeStreamPackageLinearAssemblyChannelWithContext(ctx context.Context, request *DescribeStreamPackageLinearAssemblyChannelRequest) (response *DescribeStreamPackageLinearAssemblyChannelResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPackageLinearAssemblyChannelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamPackageLinearAssemblyChannel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPackageLinearAssemblyChannel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPackageLinearAssemblyChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamPackageLinearAssemblyChannelAlertsRequest() (request *DescribeStreamPackageLinearAssemblyChannelAlertsRequest) {
+    request = &DescribeStreamPackageLinearAssemblyChannelAlertsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamPackageLinearAssemblyChannelAlerts")
+    
+    
+    return
+}
+
+func NewDescribeStreamPackageLinearAssemblyChannelAlertsResponse() (response *DescribeStreamPackageLinearAssemblyChannelAlertsResponse) {
+    response = &DescribeStreamPackageLinearAssemblyChannelAlertsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamPackageLinearAssemblyChannelAlerts
+// 查询线性组装频道告警信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_URL = "InvalidParameter.Url"
+func (c *Client) DescribeStreamPackageLinearAssemblyChannelAlerts(request *DescribeStreamPackageLinearAssemblyChannelAlertsRequest) (response *DescribeStreamPackageLinearAssemblyChannelAlertsResponse, err error) {
+    return c.DescribeStreamPackageLinearAssemblyChannelAlertsWithContext(context.Background(), request)
+}
+
+// DescribeStreamPackageLinearAssemblyChannelAlerts
+// 查询线性组装频道告警信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_URL = "InvalidParameter.Url"
+func (c *Client) DescribeStreamPackageLinearAssemblyChannelAlertsWithContext(ctx context.Context, request *DescribeStreamPackageLinearAssemblyChannelAlertsRequest) (response *DescribeStreamPackageLinearAssemblyChannelAlertsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPackageLinearAssemblyChannelAlertsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamPackageLinearAssemblyChannelAlerts")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPackageLinearAssemblyChannelAlerts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPackageLinearAssemblyChannelAlertsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamPackageLinearAssemblyChannelsRequest() (request *DescribeStreamPackageLinearAssemblyChannelsRequest) {
+    request = &DescribeStreamPackageLinearAssemblyChannelsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamPackageLinearAssemblyChannels")
+    
+    
+    return
+}
+
+func NewDescribeStreamPackageLinearAssemblyChannelsResponse() (response *DescribeStreamPackageLinearAssemblyChannelsResponse) {
+    response = &DescribeStreamPackageLinearAssemblyChannelsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamPackageLinearAssemblyChannels
+// 查询线性组装频道信息列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PAGENUM = "InvalidParameter.PageNum"
+//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+//  INVALIDPARAMETER_POINTS = "InvalidParameter.Points"
+func (c *Client) DescribeStreamPackageLinearAssemblyChannels(request *DescribeStreamPackageLinearAssemblyChannelsRequest) (response *DescribeStreamPackageLinearAssemblyChannelsResponse, err error) {
+    return c.DescribeStreamPackageLinearAssemblyChannelsWithContext(context.Background(), request)
+}
+
+// DescribeStreamPackageLinearAssemblyChannels
+// 查询线性组装频道信息列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PAGENUM = "InvalidParameter.PageNum"
+//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+//  INVALIDPARAMETER_POINTS = "InvalidParameter.Points"
+func (c *Client) DescribeStreamPackageLinearAssemblyChannelsWithContext(ctx context.Context, request *DescribeStreamPackageLinearAssemblyChannelsRequest) (response *DescribeStreamPackageLinearAssemblyChannelsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPackageLinearAssemblyChannelsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamPackageLinearAssemblyChannels")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPackageLinearAssemblyChannels require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPackageLinearAssemblyChannelsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamPackageLinearAssemblyProgramRequest() (request *DescribeStreamPackageLinearAssemblyProgramRequest) {
+    request = &DescribeStreamPackageLinearAssemblyProgramRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamPackageLinearAssemblyProgram")
+    
+    
+    return
+}
+
+func NewDescribeStreamPackageLinearAssemblyProgramResponse() (response *DescribeStreamPackageLinearAssemblyProgramResponse) {
+    response = &DescribeStreamPackageLinearAssemblyProgramResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamPackageLinearAssemblyProgram
+// 查询媒体包装Program信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+func (c *Client) DescribeStreamPackageLinearAssemblyProgram(request *DescribeStreamPackageLinearAssemblyProgramRequest) (response *DescribeStreamPackageLinearAssemblyProgramResponse, err error) {
+    return c.DescribeStreamPackageLinearAssemblyProgramWithContext(context.Background(), request)
+}
+
+// DescribeStreamPackageLinearAssemblyProgram
+// 查询媒体包装Program信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+func (c *Client) DescribeStreamPackageLinearAssemblyProgramWithContext(ctx context.Context, request *DescribeStreamPackageLinearAssemblyProgramRequest) (response *DescribeStreamPackageLinearAssemblyProgramResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPackageLinearAssemblyProgramRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamPackageLinearAssemblyProgram")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPackageLinearAssemblyProgram require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPackageLinearAssemblyProgramResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamPackageLinearAssemblyProgramSchedulesRequest() (request *DescribeStreamPackageLinearAssemblyProgramSchedulesRequest) {
+    request = &DescribeStreamPackageLinearAssemblyProgramSchedulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamPackageLinearAssemblyProgramSchedules")
+    
+    
+    return
+}
+
+func NewDescribeStreamPackageLinearAssemblyProgramSchedulesResponse() (response *DescribeStreamPackageLinearAssemblyProgramSchedulesResponse) {
+    response = &DescribeStreamPackageLinearAssemblyProgramSchedulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamPackageLinearAssemblyProgramSchedules
+// 查询Programe信息列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PAGENUM = "InvalidParameter.PageNum"
+//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+//  INVALIDPARAMETER_POINTS = "InvalidParameter.Points"
+func (c *Client) DescribeStreamPackageLinearAssemblyProgramSchedules(request *DescribeStreamPackageLinearAssemblyProgramSchedulesRequest) (response *DescribeStreamPackageLinearAssemblyProgramSchedulesResponse, err error) {
+    return c.DescribeStreamPackageLinearAssemblyProgramSchedulesWithContext(context.Background(), request)
+}
+
+// DescribeStreamPackageLinearAssemblyProgramSchedules
+// 查询Programe信息列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PAGENUM = "InvalidParameter.PageNum"
+//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+//  INVALIDPARAMETER_POINTS = "InvalidParameter.Points"
+func (c *Client) DescribeStreamPackageLinearAssemblyProgramSchedulesWithContext(ctx context.Context, request *DescribeStreamPackageLinearAssemblyProgramSchedulesRequest) (response *DescribeStreamPackageLinearAssemblyProgramSchedulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPackageLinearAssemblyProgramSchedulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamPackageLinearAssemblyProgramSchedules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPackageLinearAssemblyProgramSchedules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPackageLinearAssemblyProgramSchedulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamPackageLinearAssemblyProgramsRequest() (request *DescribeStreamPackageLinearAssemblyProgramsRequest) {
+    request = &DescribeStreamPackageLinearAssemblyProgramsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamPackageLinearAssemblyPrograms")
+    
+    
+    return
+}
+
+func NewDescribeStreamPackageLinearAssemblyProgramsResponse() (response *DescribeStreamPackageLinearAssemblyProgramsResponse) {
+    response = &DescribeStreamPackageLinearAssemblyProgramsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamPackageLinearAssemblyPrograms
+// 查询Programe信息列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PAGENUM = "InvalidParameter.PageNum"
+//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+//  INVALIDPARAMETER_POINTS = "InvalidParameter.Points"
+func (c *Client) DescribeStreamPackageLinearAssemblyPrograms(request *DescribeStreamPackageLinearAssemblyProgramsRequest) (response *DescribeStreamPackageLinearAssemblyProgramsResponse, err error) {
+    return c.DescribeStreamPackageLinearAssemblyProgramsWithContext(context.Background(), request)
+}
+
+// DescribeStreamPackageLinearAssemblyPrograms
+// 查询Programe信息列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PAGENUM = "InvalidParameter.PageNum"
+//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+//  INVALIDPARAMETER_POINTS = "InvalidParameter.Points"
+func (c *Client) DescribeStreamPackageLinearAssemblyProgramsWithContext(ctx context.Context, request *DescribeStreamPackageLinearAssemblyProgramsRequest) (response *DescribeStreamPackageLinearAssemblyProgramsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPackageLinearAssemblyProgramsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamPackageLinearAssemblyPrograms")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPackageLinearAssemblyPrograms require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPackageLinearAssemblyProgramsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamPackageLinearAssemblyUsageRequest() (request *DescribeStreamPackageLinearAssemblyUsageRequest) {
+    request = &DescribeStreamPackageLinearAssemblyUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamPackageLinearAssemblyUsage")
+    
+    
+    return
+}
+
+func NewDescribeStreamPackageLinearAssemblyUsageResponse() (response *DescribeStreamPackageLinearAssemblyUsageResponse) {
+    response = &DescribeStreamPackageLinearAssemblyUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamPackageLinearAssemblyUsage
+// 频道线性组装用量查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PAGENUM = "InvalidParameter.PageNum"
+//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+//  INVALIDPARAMETER_POINTS = "InvalidParameter.Points"
+func (c *Client) DescribeStreamPackageLinearAssemblyUsage(request *DescribeStreamPackageLinearAssemblyUsageRequest) (response *DescribeStreamPackageLinearAssemblyUsageResponse, err error) {
+    return c.DescribeStreamPackageLinearAssemblyUsageWithContext(context.Background(), request)
+}
+
+// DescribeStreamPackageLinearAssemblyUsage
+// 频道线性组装用量查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PAGENUM = "InvalidParameter.PageNum"
+//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+//  INVALIDPARAMETER_POINTS = "InvalidParameter.Points"
+func (c *Client) DescribeStreamPackageLinearAssemblyUsageWithContext(ctx context.Context, request *DescribeStreamPackageLinearAssemblyUsageRequest) (response *DescribeStreamPackageLinearAssemblyUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPackageLinearAssemblyUsageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamPackageLinearAssemblyUsage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPackageLinearAssemblyUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPackageLinearAssemblyUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamPackageSSAIChannelRequest() (request *DescribeStreamPackageSSAIChannelRequest) {
+    request = &DescribeStreamPackageSSAIChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamPackageSSAIChannel")
+    
+    
+    return
+}
+
+func NewDescribeStreamPackageSSAIChannelResponse() (response *DescribeStreamPackageSSAIChannelResponse) {
+    response = &DescribeStreamPackageSSAIChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamPackageSSAIChannel
+// 查询广告插入配置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_AUTHINFO = "InvalidParameter.AuthInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_SSAIINFO = "InvalidParameter.SSAIInfo"
+func (c *Client) DescribeStreamPackageSSAIChannel(request *DescribeStreamPackageSSAIChannelRequest) (response *DescribeStreamPackageSSAIChannelResponse, err error) {
+    return c.DescribeStreamPackageSSAIChannelWithContext(context.Background(), request)
+}
+
+// DescribeStreamPackageSSAIChannel
+// 查询广告插入配置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_AUTHINFO = "InvalidParameter.AuthInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_SSAIINFO = "InvalidParameter.SSAIInfo"
+func (c *Client) DescribeStreamPackageSSAIChannelWithContext(ctx context.Context, request *DescribeStreamPackageSSAIChannelRequest) (response *DescribeStreamPackageSSAIChannelResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPackageSSAIChannelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamPackageSSAIChannel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPackageSSAIChannel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPackageSSAIChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamPackageSSAIChannelsRequest() (request *DescribeStreamPackageSSAIChannelsRequest) {
+    request = &DescribeStreamPackageSSAIChannelsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamPackageSSAIChannels")
+    
+    
+    return
+}
+
+func NewDescribeStreamPackageSSAIChannelsResponse() (response *DescribeStreamPackageSSAIChannelsResponse) {
+    response = &DescribeStreamPackageSSAIChannelsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamPackageSSAIChannels
+// 批量查询广告插入配置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_AUTHINFO = "InvalidParameter.AuthInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_SSAIINFO = "InvalidParameter.SSAIInfo"
+func (c *Client) DescribeStreamPackageSSAIChannels(request *DescribeStreamPackageSSAIChannelsRequest) (response *DescribeStreamPackageSSAIChannelsResponse, err error) {
+    return c.DescribeStreamPackageSSAIChannelsWithContext(context.Background(), request)
+}
+
+// DescribeStreamPackageSSAIChannels
+// 批量查询广告插入配置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_AUTHINFO = "InvalidParameter.AuthInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_SSAIINFO = "InvalidParameter.SSAIInfo"
+func (c *Client) DescribeStreamPackageSSAIChannelsWithContext(ctx context.Context, request *DescribeStreamPackageSSAIChannelsRequest) (response *DescribeStreamPackageSSAIChannelsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPackageSSAIChannelsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamPackageSSAIChannels")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPackageSSAIChannels require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPackageSSAIChannelsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamPackageSSAIUsageRequest() (request *DescribeStreamPackageSSAIUsageRequest) {
+    request = &DescribeStreamPackageSSAIUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamPackageSSAIUsage")
+    
+    
+    return
+}
+
+func NewDescribeStreamPackageSSAIUsageResponse() (response *DescribeStreamPackageSSAIUsageResponse) {
+    response = &DescribeStreamPackageSSAIUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamPackageSSAIUsage
+// SSAI广告替换用量查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETSSAICHANNELSFAILED = "InternalError.GetSSAIChannelsFailed"
+//  INTERNALERROR_GETSSAIUSAGEPARTIALFAILED = "InternalError.GetSSAIUsagePartialFailed"
+//  INVALIDPARAMETER_INVALIDPARAMETERCHANNELID = "InvalidParameter.InvalidParameterChannelId"
+//  INVALIDPARAMETER_TYPE = "InvalidParameter.Type"
+func (c *Client) DescribeStreamPackageSSAIUsage(request *DescribeStreamPackageSSAIUsageRequest) (response *DescribeStreamPackageSSAIUsageResponse, err error) {
+    return c.DescribeStreamPackageSSAIUsageWithContext(context.Background(), request)
+}
+
+// DescribeStreamPackageSSAIUsage
+// SSAI广告替换用量查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETSSAICHANNELSFAILED = "InternalError.GetSSAIChannelsFailed"
+//  INTERNALERROR_GETSSAIUSAGEPARTIALFAILED = "InternalError.GetSSAIUsagePartialFailed"
+//  INVALIDPARAMETER_INVALIDPARAMETERCHANNELID = "InvalidParameter.InvalidParameterChannelId"
+//  INVALIDPARAMETER_TYPE = "InvalidParameter.Type"
+func (c *Client) DescribeStreamPackageSSAIUsageWithContext(ctx context.Context, request *DescribeStreamPackageSSAIUsageRequest) (response *DescribeStreamPackageSSAIUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPackageSSAIUsageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamPackageSSAIUsage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPackageSSAIUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPackageSSAIUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamPackageSourceRequest() (request *DescribeStreamPackageSourceRequest) {
+    request = &DescribeStreamPackageSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamPackageSource")
+    
+    
+    return
+}
+
+func NewDescribeStreamPackageSourceResponse() (response *DescribeStreamPackageSourceResponse) {
+    response = &DescribeStreamPackageSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamPackageSource
+// 查询媒体包装Source信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+func (c *Client) DescribeStreamPackageSource(request *DescribeStreamPackageSourceRequest) (response *DescribeStreamPackageSourceResponse, err error) {
+    return c.DescribeStreamPackageSourceWithContext(context.Background(), request)
+}
+
+// DescribeStreamPackageSource
+// 查询媒体包装Source信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+func (c *Client) DescribeStreamPackageSourceWithContext(ctx context.Context, request *DescribeStreamPackageSourceRequest) (response *DescribeStreamPackageSourceResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPackageSourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamPackageSource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPackageSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPackageSourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamPackageSourceAlertsRequest() (request *DescribeStreamPackageSourceAlertsRequest) {
+    request = &DescribeStreamPackageSourceAlertsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamPackageSourceAlerts")
+    
+    
+    return
+}
+
+func NewDescribeStreamPackageSourceAlertsResponse() (response *DescribeStreamPackageSourceAlertsResponse) {
+    response = &DescribeStreamPackageSourceAlertsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamPackageSourceAlerts
+// 查询线性组装Source告警信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_URL = "InvalidParameter.Url"
+func (c *Client) DescribeStreamPackageSourceAlerts(request *DescribeStreamPackageSourceAlertsRequest) (response *DescribeStreamPackageSourceAlertsResponse, err error) {
+    return c.DescribeStreamPackageSourceAlertsWithContext(context.Background(), request)
+}
+
+// DescribeStreamPackageSourceAlerts
+// 查询线性组装Source告警信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_URL = "InvalidParameter.Url"
+func (c *Client) DescribeStreamPackageSourceAlertsWithContext(ctx context.Context, request *DescribeStreamPackageSourceAlertsRequest) (response *DescribeStreamPackageSourceAlertsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPackageSourceAlertsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamPackageSourceAlerts")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPackageSourceAlerts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPackageSourceAlertsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamPackageSourceLocationRequest() (request *DescribeStreamPackageSourceLocationRequest) {
+    request = &DescribeStreamPackageSourceLocationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamPackageSourceLocation")
+    
+    
+    return
+}
+
+func NewDescribeStreamPackageSourceLocationResponse() (response *DescribeStreamPackageSourceLocationResponse) {
+    response = &DescribeStreamPackageSourceLocationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamPackageSourceLocation
+// 查询媒体包装SourceLocation信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+func (c *Client) DescribeStreamPackageSourceLocation(request *DescribeStreamPackageSourceLocationRequest) (response *DescribeStreamPackageSourceLocationResponse, err error) {
+    return c.DescribeStreamPackageSourceLocationWithContext(context.Background(), request)
+}
+
+// DescribeStreamPackageSourceLocation
+// 查询媒体包装SourceLocation信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+func (c *Client) DescribeStreamPackageSourceLocationWithContext(ctx context.Context, request *DescribeStreamPackageSourceLocationRequest) (response *DescribeStreamPackageSourceLocationResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPackageSourceLocationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamPackageSourceLocation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPackageSourceLocation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPackageSourceLocationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamPackageSourceLocationsRequest() (request *DescribeStreamPackageSourceLocationsRequest) {
+    request = &DescribeStreamPackageSourceLocationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamPackageSourceLocations")
+    
+    
+    return
+}
+
+func NewDescribeStreamPackageSourceLocationsResponse() (response *DescribeStreamPackageSourceLocationsResponse) {
+    response = &DescribeStreamPackageSourceLocationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamPackageSourceLocations
+// 查询SourceLocation信息列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PAGENUM = "InvalidParameter.PageNum"
+//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+//  INVALIDPARAMETER_POINTS = "InvalidParameter.Points"
+func (c *Client) DescribeStreamPackageSourceLocations(request *DescribeStreamPackageSourceLocationsRequest) (response *DescribeStreamPackageSourceLocationsResponse, err error) {
+    return c.DescribeStreamPackageSourceLocationsWithContext(context.Background(), request)
+}
+
+// DescribeStreamPackageSourceLocations
+// 查询SourceLocation信息列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PAGENUM = "InvalidParameter.PageNum"
+//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+//  INVALIDPARAMETER_POINTS = "InvalidParameter.Points"
+func (c *Client) DescribeStreamPackageSourceLocationsWithContext(ctx context.Context, request *DescribeStreamPackageSourceLocationsRequest) (response *DescribeStreamPackageSourceLocationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPackageSourceLocationsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamPackageSourceLocations")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPackageSourceLocations require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPackageSourceLocationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamPackageSourcesRequest() (request *DescribeStreamPackageSourcesRequest) {
+    request = &DescribeStreamPackageSourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamPackageSources")
+    
+    
+    return
+}
+
+func NewDescribeStreamPackageSourcesResponse() (response *DescribeStreamPackageSourcesResponse) {
+    response = &DescribeStreamPackageSourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamPackageSources
+// 查询Source信息列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PAGENUM = "InvalidParameter.PageNum"
+//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+//  INVALIDPARAMETER_POINTS = "InvalidParameter.Points"
+func (c *Client) DescribeStreamPackageSources(request *DescribeStreamPackageSourcesRequest) (response *DescribeStreamPackageSourcesResponse, err error) {
+    return c.DescribeStreamPackageSourcesWithContext(context.Background(), request)
+}
+
+// DescribeStreamPackageSources
+// 查询Source信息列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PAGENUM = "InvalidParameter.PageNum"
+//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+//  INVALIDPARAMETER_POINTS = "InvalidParameter.Points"
+func (c *Client) DescribeStreamPackageSourcesWithContext(ctx context.Context, request *DescribeStreamPackageSourcesRequest) (response *DescribeStreamPackageSourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamPackageSourcesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeStreamPackageSources")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPackageSources require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamPackageSourcesResponse()
     err = c.Send(request, response)
     return
 }
@@ -8793,6 +10681,300 @@ func (c *Client) ModifyStreamLinkSecurityGroupWithContext(ctx context.Context, r
     return
 }
 
+func NewModifyStreamPackageLinearAssemblyChannelRequest() (request *ModifyStreamPackageLinearAssemblyChannelRequest) {
+    request = &ModifyStreamPackageLinearAssemblyChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "ModifyStreamPackageLinearAssemblyChannel")
+    
+    
+    return
+}
+
+func NewModifyStreamPackageLinearAssemblyChannelResponse() (response *ModifyStreamPackageLinearAssemblyChannelResponse) {
+    response = &ModifyStreamPackageLinearAssemblyChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyStreamPackageLinearAssemblyChannel
+// 修改媒体包装Source信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) ModifyStreamPackageLinearAssemblyChannel(request *ModifyStreamPackageLinearAssemblyChannelRequest) (response *ModifyStreamPackageLinearAssemblyChannelResponse, err error) {
+    return c.ModifyStreamPackageLinearAssemblyChannelWithContext(context.Background(), request)
+}
+
+// ModifyStreamPackageLinearAssemblyChannel
+// 修改媒体包装Source信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) ModifyStreamPackageLinearAssemblyChannelWithContext(ctx context.Context, request *ModifyStreamPackageLinearAssemblyChannelRequest) (response *ModifyStreamPackageLinearAssemblyChannelResponse, err error) {
+    if request == nil {
+        request = NewModifyStreamPackageLinearAssemblyChannelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyStreamPackageLinearAssemblyChannel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyStreamPackageLinearAssemblyChannel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyStreamPackageLinearAssemblyChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyStreamPackageLinearAssemblyProgramRequest() (request *ModifyStreamPackageLinearAssemblyProgramRequest) {
+    request = &ModifyStreamPackageLinearAssemblyProgramRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "ModifyStreamPackageLinearAssemblyProgram")
+    
+    
+    return
+}
+
+func NewModifyStreamPackageLinearAssemblyProgramResponse() (response *ModifyStreamPackageLinearAssemblyProgramResponse) {
+    response = &ModifyStreamPackageLinearAssemblyProgramResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyStreamPackageLinearAssemblyProgram
+// 修改媒体包装Program信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) ModifyStreamPackageLinearAssemblyProgram(request *ModifyStreamPackageLinearAssemblyProgramRequest) (response *ModifyStreamPackageLinearAssemblyProgramResponse, err error) {
+    return c.ModifyStreamPackageLinearAssemblyProgramWithContext(context.Background(), request)
+}
+
+// ModifyStreamPackageLinearAssemblyProgram
+// 修改媒体包装Program信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) ModifyStreamPackageLinearAssemblyProgramWithContext(ctx context.Context, request *ModifyStreamPackageLinearAssemblyProgramRequest) (response *ModifyStreamPackageLinearAssemblyProgramResponse, err error) {
+    if request == nil {
+        request = NewModifyStreamPackageLinearAssemblyProgramRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyStreamPackageLinearAssemblyProgram")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyStreamPackageLinearAssemblyProgram require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyStreamPackageLinearAssemblyProgramResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyStreamPackageSSAIChannelRequest() (request *ModifyStreamPackageSSAIChannelRequest) {
+    request = &ModifyStreamPackageSSAIChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "ModifyStreamPackageSSAIChannel")
+    
+    
+    return
+}
+
+func NewModifyStreamPackageSSAIChannelResponse() (response *ModifyStreamPackageSSAIChannelResponse) {
+    response = &ModifyStreamPackageSSAIChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyStreamPackageSSAIChannel
+// 修改广告插入配置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_AUTHINFO = "InvalidParameter.AuthInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_SSAIINFO = "InvalidParameter.SSAIInfo"
+func (c *Client) ModifyStreamPackageSSAIChannel(request *ModifyStreamPackageSSAIChannelRequest) (response *ModifyStreamPackageSSAIChannelResponse, err error) {
+    return c.ModifyStreamPackageSSAIChannelWithContext(context.Background(), request)
+}
+
+// ModifyStreamPackageSSAIChannel
+// 修改广告插入配置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_AUTHINFO = "InvalidParameter.AuthInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_SSAIINFO = "InvalidParameter.SSAIInfo"
+func (c *Client) ModifyStreamPackageSSAIChannelWithContext(ctx context.Context, request *ModifyStreamPackageSSAIChannelRequest) (response *ModifyStreamPackageSSAIChannelResponse, err error) {
+    if request == nil {
+        request = NewModifyStreamPackageSSAIChannelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyStreamPackageSSAIChannel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyStreamPackageSSAIChannel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyStreamPackageSSAIChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyStreamPackageSourceRequest() (request *ModifyStreamPackageSourceRequest) {
+    request = &ModifyStreamPackageSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "ModifyStreamPackageSource")
+    
+    
+    return
+}
+
+func NewModifyStreamPackageSourceResponse() (response *ModifyStreamPackageSourceResponse) {
+    response = &ModifyStreamPackageSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyStreamPackageSource
+// 修改媒体包装Source信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) ModifyStreamPackageSource(request *ModifyStreamPackageSourceRequest) (response *ModifyStreamPackageSourceResponse, err error) {
+    return c.ModifyStreamPackageSourceWithContext(context.Background(), request)
+}
+
+// ModifyStreamPackageSource
+// 修改媒体包装Source信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) ModifyStreamPackageSourceWithContext(ctx context.Context, request *ModifyStreamPackageSourceRequest) (response *ModifyStreamPackageSourceResponse, err error) {
+    if request == nil {
+        request = NewModifyStreamPackageSourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyStreamPackageSource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyStreamPackageSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyStreamPackageSourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyStreamPackageSourceLocationRequest() (request *ModifyStreamPackageSourceLocationRequest) {
+    request = &ModifyStreamPackageSourceLocationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "ModifyStreamPackageSourceLocation")
+    
+    
+    return
+}
+
+func NewModifyStreamPackageSourceLocationResponse() (response *ModifyStreamPackageSourceLocationResponse) {
+    response = &ModifyStreamPackageSourceLocationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyStreamPackageSourceLocation
+// 修改媒体包装SourceLocation信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) ModifyStreamPackageSourceLocation(request *ModifyStreamPackageSourceLocationRequest) (response *ModifyStreamPackageSourceLocationResponse, err error) {
+    return c.ModifyStreamPackageSourceLocationWithContext(context.Background(), request)
+}
+
+// ModifyStreamPackageSourceLocation
+// 修改媒体包装SourceLocation信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) ModifyStreamPackageSourceLocationWithContext(ctx context.Context, request *ModifyStreamPackageSourceLocationRequest) (response *ModifyStreamPackageSourceLocationResponse, err error) {
+    if request == nil {
+        request = NewModifyStreamPackageSourceLocationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "ModifyStreamPackageSourceLocation")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyStreamPackageSourceLocation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyStreamPackageSourceLocationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySubtitleEmbedTemplateRequest() (request *ModifySubtitleEmbedTemplateRequest) {
     request = &ModifySubtitleEmbedTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9703,6 +11885,64 @@ func (c *Client) StartStreamLinkFlowWithContext(ctx context.Context, request *St
     return
 }
 
+func NewStartStreamPackageLinearAssemblyChannelRequest() (request *StartStreamPackageLinearAssemblyChannelRequest) {
+    request = &StartStreamPackageLinearAssemblyChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "StartStreamPackageLinearAssemblyChannel")
+    
+    
+    return
+}
+
+func NewStartStreamPackageLinearAssemblyChannelResponse() (response *StartStreamPackageLinearAssemblyChannelResponse) {
+    response = &StartStreamPackageLinearAssemblyChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartStreamPackageLinearAssemblyChannel
+// 启动媒体包装频道。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) StartStreamPackageLinearAssemblyChannel(request *StartStreamPackageLinearAssemblyChannelRequest) (response *StartStreamPackageLinearAssemblyChannelResponse, err error) {
+    return c.StartStreamPackageLinearAssemblyChannelWithContext(context.Background(), request)
+}
+
+// StartStreamPackageLinearAssemblyChannel
+// 启动媒体包装频道。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) StartStreamPackageLinearAssemblyChannelWithContext(ctx context.Context, request *StartStreamPackageLinearAssemblyChannelRequest) (response *StartStreamPackageLinearAssemblyChannelResponse, err error) {
+    if request == nil {
+        request = NewStartStreamPackageLinearAssemblyChannelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "StartStreamPackageLinearAssemblyChannel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartStreamPackageLinearAssemblyChannel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartStreamPackageLinearAssemblyChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopStreamLinkFlowRequest() (request *StopStreamLinkFlowRequest) {
     request = &StopStreamLinkFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9757,6 +11997,64 @@ func (c *Client) StopStreamLinkFlowWithContext(ctx context.Context, request *Sto
     return
 }
 
+func NewStopStreamPackageLinearAssemblyChannelRequest() (request *StopStreamPackageLinearAssemblyChannelRequest) {
+    request = &StopStreamPackageLinearAssemblyChannelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "StopStreamPackageLinearAssemblyChannel")
+    
+    
+    return
+}
+
+func NewStopStreamPackageLinearAssemblyChannelResponse() (response *StopStreamPackageLinearAssemblyChannelResponse) {
+    response = &StopStreamPackageLinearAssemblyChannelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopStreamPackageLinearAssemblyChannel
+// 停止线性组装频道。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) StopStreamPackageLinearAssemblyChannel(request *StopStreamPackageLinearAssemblyChannelRequest) (response *StopStreamPackageLinearAssemblyChannelResponse, err error) {
+    return c.StopStreamPackageLinearAssemblyChannelWithContext(context.Background(), request)
+}
+
+// StopStreamPackageLinearAssemblyChannel
+// 停止线性组装频道。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) StopStreamPackageLinearAssemblyChannelWithContext(ctx context.Context, request *StopStreamPackageLinearAssemblyChannelRequest) (response *StopStreamPackageLinearAssemblyChannelResponse, err error) {
+    if request == nil {
+        request = NewStopStreamPackageLinearAssemblyChannelRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "StopStreamPackageLinearAssemblyChannel")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopStreamPackageLinearAssemblyChannel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopStreamPackageLinearAssemblyChannelResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSyncDubbingRequest() (request *SyncDubbingRequest) {
     request = &SyncDubbingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9781,8 +12079,10 @@ func NewSyncDubbingResponse() (response *SyncDubbingResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
-//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
 func (c *Client) SyncDubbing(request *SyncDubbingRequest) (response *SyncDubbingResponse, err error) {
     return c.SyncDubbingWithContext(context.Background(), request)
 }
@@ -9792,8 +12092,10 @@ func (c *Client) SyncDubbing(request *SyncDubbingRequest) (response *SyncDubbing
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
-//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
 func (c *Client) SyncDubbingWithContext(ctx context.Context, request *SyncDubbingRequest) (response *SyncDubbingResponse, err error) {
     if request == nil {
         request = NewSyncDubbingRequest()

@@ -7735,6 +7735,64 @@ func (c *Client) DescribeClusterRoutesWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeClusterSchedulerPolicyRequest() (request *DescribeClusterSchedulerPolicyRequest) {
+    request = &DescribeClusterSchedulerPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterSchedulerPolicy")
+    
+    
+    return
+}
+
+func NewDescribeClusterSchedulerPolicyResponse() (response *DescribeClusterSchedulerPolicyResponse) {
+    response = &DescribeClusterSchedulerPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClusterSchedulerPolicy
+// 查询集群调度策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERVERSIONNOTSUPPORT = "FailedOperation.ClusterVersionNotSupport"
+//  FAILEDOPERATION_KUBERNETESRESOURCENOTFOUND = "FailedOperation.KubernetesResourceNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DescribeClusterSchedulerPolicy(request *DescribeClusterSchedulerPolicyRequest) (response *DescribeClusterSchedulerPolicyResponse, err error) {
+    return c.DescribeClusterSchedulerPolicyWithContext(context.Background(), request)
+}
+
+// DescribeClusterSchedulerPolicy
+// 查询集群调度策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERVERSIONNOTSUPPORT = "FailedOperation.ClusterVersionNotSupport"
+//  FAILEDOPERATION_KUBERNETESRESOURCENOTFOUND = "FailedOperation.KubernetesResourceNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DescribeClusterSchedulerPolicyWithContext(ctx context.Context, request *DescribeClusterSchedulerPolicyRequest) (response *DescribeClusterSchedulerPolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterSchedulerPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "DescribeClusterSchedulerPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterSchedulerPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterSchedulerPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterSecurityRequest() (request *DescribeClusterSecurityRequest) {
     request = &DescribeClusterSecurityRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15261,6 +15319,58 @@ func (c *Client) ModifyClusterRuntimeConfigWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewModifyClusterRuntimeConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClusterSchedulerPolicyRequest() (request *ModifyClusterSchedulerPolicyRequest) {
+    request = &ModifyClusterSchedulerPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterSchedulerPolicy")
+    
+    
+    return
+}
+
+func NewModifyClusterSchedulerPolicyResponse() (response *ModifyClusterSchedulerPolicyResponse) {
+    response = &ModifyClusterSchedulerPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyClusterSchedulerPolicy
+// 修改集群调度策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKLIFESTATEERROR = "FailedOperation.TaskLifeStateError"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) ModifyClusterSchedulerPolicy(request *ModifyClusterSchedulerPolicyRequest) (response *ModifyClusterSchedulerPolicyResponse, err error) {
+    return c.ModifyClusterSchedulerPolicyWithContext(context.Background(), request)
+}
+
+// ModifyClusterSchedulerPolicy
+// 修改集群调度策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKLIFESTATEERROR = "FailedOperation.TaskLifeStateError"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) ModifyClusterSchedulerPolicyWithContext(ctx context.Context, request *ModifyClusterSchedulerPolicyRequest) (response *ModifyClusterSchedulerPolicyResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterSchedulerPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyClusterSchedulerPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterSchedulerPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterSchedulerPolicyResponse()
     err = c.Send(request, response)
     return
 }

@@ -2535,6 +2535,15 @@ type CreateOwnNumberApplyRequestParams struct {
 
 	// 同市固话去掉区号
 	LocalNumberTrimAC *bool `json:"LocalNumberTrimAC,omitnil,omitempty" name:"LocalNumberTrimAC"`
+
+	// 被叫格式透传 （完成透传用户输入，不做处理）
+	CalleeFormatPassthrough *bool `json:"CalleeFormatPassthrough,omitnil,omitempty" name:"CalleeFormatPassthrough"`
+
+	// 主叫格式透传 （完成透传用户输入，不做处理）
+	CallerFormatPassthrough *bool `json:"CallerFormatPassthrough,omitnil,omitempty" name:"CallerFormatPassthrough"`
+
+	// 国际长途前缀码
+	InternationalNumberPrefix *string `json:"InternationalNumberPrefix,omitnil,omitempty" name:"InternationalNumberPrefix"`
 }
 
 type CreateOwnNumberApplyRequest struct {
@@ -2557,6 +2566,15 @@ type CreateOwnNumberApplyRequest struct {
 
 	// 同市固话去掉区号
 	LocalNumberTrimAC *bool `json:"LocalNumberTrimAC,omitnil,omitempty" name:"LocalNumberTrimAC"`
+
+	// 被叫格式透传 （完成透传用户输入，不做处理）
+	CalleeFormatPassthrough *bool `json:"CalleeFormatPassthrough,omitnil,omitempty" name:"CalleeFormatPassthrough"`
+
+	// 主叫格式透传 （完成透传用户输入，不做处理）
+	CallerFormatPassthrough *bool `json:"CallerFormatPassthrough,omitnil,omitempty" name:"CallerFormatPassthrough"`
+
+	// 国际长途前缀码
+	InternationalNumberPrefix *string `json:"InternationalNumberPrefix,omitnil,omitempty" name:"InternationalNumberPrefix"`
 }
 
 func (r *CreateOwnNumberApplyRequest) ToJsonString() string {
@@ -2577,6 +2595,9 @@ func (r *CreateOwnNumberApplyRequest) FromJsonString(s string) error {
 	delete(f, "Prefix")
 	delete(f, "MobileNddPrefix")
 	delete(f, "LocalNumberTrimAC")
+	delete(f, "CalleeFormatPassthrough")
+	delete(f, "CallerFormatPassthrough")
+	delete(f, "InternationalNumberPrefix")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOwnNumberApplyRequest has unknown keys!", "")
 	}
@@ -6887,6 +6908,15 @@ type ModifyOwnNumberApplyRequestParams struct {
 
 	// 同市固话去掉区号
 	LocalNumberTrimAC *bool `json:"LocalNumberTrimAC,omitnil,omitempty" name:"LocalNumberTrimAC"`
+
+	// 被叫格式透传 （完成透传用户输入，不做处理）
+	CalleeFormatPassthrough *bool `json:"CalleeFormatPassthrough,omitnil,omitempty" name:"CalleeFormatPassthrough"`
+
+	// 主叫格式透传 （完成透传用户输入，不做处理）
+	CallerFormatPassthrough *bool `json:"CallerFormatPassthrough,omitnil,omitempty" name:"CallerFormatPassthrough"`
+
+	// 国际长途前缀码
+	InternationalNumberPrefix *string `json:"InternationalNumberPrefix,omitnil,omitempty" name:"InternationalNumberPrefix"`
 }
 
 type ModifyOwnNumberApplyRequest struct {
@@ -6909,6 +6939,15 @@ type ModifyOwnNumberApplyRequest struct {
 
 	// 同市固话去掉区号
 	LocalNumberTrimAC *bool `json:"LocalNumberTrimAC,omitnil,omitempty" name:"LocalNumberTrimAC"`
+
+	// 被叫格式透传 （完成透传用户输入，不做处理）
+	CalleeFormatPassthrough *bool `json:"CalleeFormatPassthrough,omitnil,omitempty" name:"CalleeFormatPassthrough"`
+
+	// 主叫格式透传 （完成透传用户输入，不做处理）
+	CallerFormatPassthrough *bool `json:"CallerFormatPassthrough,omitnil,omitempty" name:"CallerFormatPassthrough"`
+
+	// 国际长途前缀码
+	InternationalNumberPrefix *string `json:"InternationalNumberPrefix,omitnil,omitempty" name:"InternationalNumberPrefix"`
 }
 
 func (r *ModifyOwnNumberApplyRequest) ToJsonString() string {
@@ -6929,6 +6968,9 @@ func (r *ModifyOwnNumberApplyRequest) FromJsonString(s string) error {
 	delete(f, "Prefix")
 	delete(f, "MobileNddPrefix")
 	delete(f, "LocalNumberTrimAC")
+	delete(f, "CalleeFormatPassthrough")
+	delete(f, "CallerFormatPassthrough")
+	delete(f, "InternationalNumberPrefix")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyOwnNumberApplyRequest has unknown keys!", "")
 	}

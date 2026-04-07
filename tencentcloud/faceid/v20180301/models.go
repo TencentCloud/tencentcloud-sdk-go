@@ -633,7 +633,7 @@ func (r *CheckIdCardInformationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckIdCardInformationResponseParams struct {
-	// <p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为万分之一）。</p>
+	// <p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人（采用固定阈值70，误通过率为万分之一，不支持调整阈值）。</p>
 	Sim *float64 `json:"Sim,omitnil,omitempty" name:"Sim"`
 
 	// <p>业务错误码。- 成功情况返回Success。- 错误情况请参考下方错误码 列表中FailedOperation部分</p>
@@ -3307,7 +3307,7 @@ func (r *ImageRecognitionV2Request) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ImageRecognitionV2ResponseParams struct {
-	// <p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为万分之一）</p>
+	// <p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人（采用固定阈值70，误通过率为万分之一，不支持调整阈值）</p>
 	Sim *float64 `json:"Sim,omitnil,omitempty" name:"Sim"`
 
 	// <p>业务错误码。</p><ul><li>成功情况返回Success。</li><li>错误情况请参考下方错误码 列表中FailedOperation部分</li></ul>
@@ -3576,7 +3576,7 @@ type LivenessCompareResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BestFrameBase64 *string `json:"BestFrameBase64,omitnil,omitempty" name:"BestFrameBase64"`
 
-	// <p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为万分之一）。</p>
+	// <p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人（采用固定阈值70，误通过率为万分之一，不支持调整阈值）。</p>
 	Sim *float64 `json:"Sim,omitnil,omitempty" name:"Sim"`
 
 	// <p>业务错误码。</p><ul><li>成功情况返回Success。</li><li>错误情况请参考下方错误码，列表中FailedOperation部分。</li></ul>
@@ -3696,7 +3696,7 @@ type LivenessRecognitionResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BestFrameBase64 *string `json:"BestFrameBase64,omitnil,omitempty" name:"BestFrameBase64"`
 
-	// <p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为万分之一）</p>
+	// <p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人，（采用固定阈值70，误通过率为万分之一，不支持调整阈值）</p>
 	Sim *float64 `json:"Sim,omitnil,omitempty" name:"Sim"`
 
 	// <p>业务错误码。</p><ul><li>成功情况返回Success。</li><li>错误情况请参考下方错误码 列表中FailedOperation部分</li></ul>

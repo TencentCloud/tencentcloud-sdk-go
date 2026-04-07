@@ -884,33 +884,31 @@ type AvatarRoomInfo struct {
 }
 
 type AvatarScriptInfo struct {
-	// 数字人直播间话术 ID。
+	// <p>数字人直播间话术 ID。</p>
 	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
 
-	// 话术标题。
+	// <p>数字人直播间产品 ID。</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// <p>话术标题。</p>
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 
-	// 话术内容。
+	// <p>话术内容。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 话术状态。
-	// PENDING --未生成。
-	// PROCESSING --生成中。
-	// READY --已生成。
+	// <p>话术状态。PENDING --未生成。PROCESSING --生成中。READY --已生成。FAILED-失败</p><p>枚举值：</p><ul><li>FAILED： 失败</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 时长。单位：毫秒。
+	// <p>时长。单位：毫秒。</p>
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 话术位置。
+	// <p>话术位置。</p>
 	Position *int64 `json:"Position,omitnil,omitempty" name:"Position"`
 
-	// 话术创建时间，UTC时间。
-	// 注意：UTC时间和北京时间相差八小时。
+	// <p>话术创建时间，UTC时间。<br>注意：UTC时间和北京时间相差八小时。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 话术最后更新时间，UTC时间。
-	// 注意：UTC时间和北京时间相差八小时。
+	// <p>话术最后更新时间，UTC时间。<br>注意：UTC时间和北京时间相差八小时。</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 

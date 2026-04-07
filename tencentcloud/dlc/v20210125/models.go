@@ -1726,40 +1726,43 @@ func (r *CheckLockMetaDataResponse) FromJsonString(s string) error {
 }
 
 type Column struct {
-	// 列名称，不区分大小写，最大支持25个字符。
+	// <p>列名称，不区分大小写，最大支持25个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|binary|array|map|struct|uniontype
+	// <p>string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|binary|array|map|struct|uniontype</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 对该类的注释。
+	// <p>对该类的注释。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 表示整个 numeric 的长度
+	// <p>表示整个 numeric 的长度</p>
 	Precision *int64 `json:"Precision,omitnil,omitempty" name:"Precision"`
 
-	// 表示小数部分的长度
+	// <p>表示小数部分的长度</p>
 	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
 
-	// 是否为null
+	// <p>是否为null</p>
 	Nullable *string `json:"Nullable,omitnil,omitempty" name:"Nullable"`
 
-	// 字段位置，小的在前
+	// <p>字段位置，小的在前</p>
 	Position *int64 `json:"Position,omitnil,omitempty" name:"Position"`
 
-	// 字段创建时间
+	// <p>字段创建时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 字段修改时间
+	// <p>字段修改时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
 	ModifiedTime *string `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
 
-	// 是否为分区字段
+	// <p>是否为分区字段</p>
 	IsPartition *bool `json:"IsPartition,omitnil,omitempty" name:"IsPartition"`
 
-	// 数据脱敏策略信息
+	// <p>数据脱敏策略信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataMaskStrategyInfo *DataMaskStrategyInfo `json:"DataMaskStrategyInfo,omitnil,omitempty" name:"DataMaskStrategyInfo"`
+
+	// <p>数据字段说明</p>
+	TypeText *string `json:"TypeText,omitnil,omitempty" name:"TypeText"`
 }
 
 type CommonMetrics struct {

@@ -1747,6 +1747,7 @@ func NewCreateClustersResponse() (response *CreateClustersResponse) {
 //  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
 //  INVALIDPARAMETERVALUE_VPCNOTFOUND = "InvalidParameterValue.VpcNotFound"
 //  LIMITEXCEEDED_USERINSTANCELIMIT = "LimitExceeded.UserInstanceLimit"
+//  OPERATIONDENIED_CYNOSDBVERSIONNOTSUPPORTERROR = "OperationDenied.CynosdbVersionNotSupportError"
 //  OPERATIONDENIED_DISABLENEWSTORAGEMULTIZONEDEPLOYMENTERROR = "OperationDenied.DisableNewStorageMultiZoneDeploymentError"
 //  OPERATIONDENIED_INSUFFICIENTBALANCEERROR = "OperationDenied.InsufficientBalanceError"
 //  OPERATIONDENIED_NEWSTORAGEONLYSUPPORT80ERROR = "OperationDenied.NewStorageOnlySupport80Error"
@@ -1783,6 +1784,7 @@ func (c *Client) CreateClusters(request *CreateClustersRequest) (response *Creat
 //  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
 //  INVALIDPARAMETERVALUE_VPCNOTFOUND = "InvalidParameterValue.VpcNotFound"
 //  LIMITEXCEEDED_USERINSTANCELIMIT = "LimitExceeded.UserInstanceLimit"
+//  OPERATIONDENIED_CYNOSDBVERSIONNOTSUPPORTERROR = "OperationDenied.CynosdbVersionNotSupportError"
 //  OPERATIONDENIED_DISABLENEWSTORAGEMULTIZONEDEPLOYMENTERROR = "OperationDenied.DisableNewStorageMultiZoneDeploymentError"
 //  OPERATIONDENIED_INSUFFICIENTBALANCEERROR = "OperationDenied.InsufficientBalanceError"
 //  OPERATIONDENIED_NEWSTORAGEONLYSUPPORT80ERROR = "OperationDenied.NewStorageOnlySupport80Error"
@@ -5915,6 +5917,64 @@ func (c *Client) DescribeInstanceSpecsWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeInstanceSpecsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceSpecsByOperationTypeRequest() (request *DescribeInstanceSpecsByOperationTypeRequest) {
+    request = &DescribeInstanceSpecsByOperationTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeInstanceSpecsByOperationType")
+    
+    
+    return
+}
+
+func NewDescribeInstanceSpecsByOperationTypeResponse() (response *DescribeInstanceSpecsByOperationTypeResponse) {
+    response = &DescribeInstanceSpecsByOperationTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceSpecsByOperationType
+// 根据操作类型查询实例规格
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+func (c *Client) DescribeInstanceSpecsByOperationType(request *DescribeInstanceSpecsByOperationTypeRequest) (response *DescribeInstanceSpecsByOperationTypeResponse, err error) {
+    return c.DescribeInstanceSpecsByOperationTypeWithContext(context.Background(), request)
+}
+
+// DescribeInstanceSpecsByOperationType
+// 根据操作类型查询实例规格
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+func (c *Client) DescribeInstanceSpecsByOperationTypeWithContext(ctx context.Context, request *DescribeInstanceSpecsByOperationTypeRequest) (response *DescribeInstanceSpecsByOperationTypeResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceSpecsByOperationTypeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeInstanceSpecsByOperationType")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceSpecsByOperationType require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceSpecsByOperationTypeResponse()
     err = c.Send(request, response)
     return
 }

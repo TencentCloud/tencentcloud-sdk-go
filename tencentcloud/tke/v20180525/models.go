@@ -908,6 +908,14 @@ func (r *CheckInstancesUpgradeAbleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ClientConnection struct {
+	// 客户端与服务器连接时每秒允许的最大查询数
+	QPS *float64 `json:"QPS,omitnil,omitempty" name:"QPS"`
+
+	// 客户端在短时间内超过QPS限制的突发请求数量
+	Burst *uint64 `json:"Burst,omitnil,omitempty" name:"Burst"`
+}
+
 type Cluster struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -9398,6 +9406,76 @@ func (r *DescribeClusterRoutesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeClusterSchedulerPolicyRequestParams struct {
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+type DescribeClusterSchedulerPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeClusterSchedulerPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterSchedulerPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterSchedulerPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterSchedulerPolicyResponseParams struct {
+	// <p>调度策略json字符串</p>
+	Policy *string `json:"Policy,omitnil,omitempty" name:"Policy"`
+
+	// <p>SchedulerPolicy配置信息</p>
+	SchedulerPolicyConfig []*SchedulerPolicyConfig `json:"SchedulerPolicyConfig,omitnil,omitempty" name:"SchedulerPolicyConfig"`
+
+	// <p>客户端连接</p>
+	ClientConnection *ClientConnection `json:"ClientConnection,omitnil,omitempty" name:"ClientConnection"`
+
+	// <p>扩展调度器</p>
+	Extenders []*Extenders `json:"Extenders,omitnil,omitempty" name:"Extenders"`
+
+	// <p>高性能模式</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HighPerformance *bool `json:"HighPerformance,omitnil,omitempty" name:"HighPerformance"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterSchedulerPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterSchedulerPolicyResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterSchedulerPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterSchedulerPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeClusterSecurityRequestParams struct {
 	// 集群 ID，请填写 查询集群列表 接口中返回的 clusterId 字段
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -16788,6 +16866,33 @@ type ExistedInstancesPara struct {
 	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 }
 
+type ExtenderClientConfig struct {
+	// 访问extender服务url设置
+	Service *ServiceReference `json:"Service,omitnil,omitempty" name:"Service"`
+}
+
+type ExtenderManagedResource struct {
+	// 自定义资源的名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type Extenders struct {
+	// 过滤阶段接口
+	FilterVerb *string `json:"FilterVerb,omitnil,omitempty" name:"FilterVerb"`
+
+	// 打分阶段扩展接口
+	PrioritizeVerb *string `json:"PrioritizeVerb,omitnil,omitempty" name:"PrioritizeVerb"`
+
+	// 打分阶段节点分数的权重,取值范围限定(0,2】
+	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 扩展调度器(Extender)管理的扩展资源
+	ManagedResources []*ExtenderManagedResource `json:"ManagedResources,omitnil,omitempty" name:"ManagedResources"`
+
+	// extender客户端配置
+	ExtenderClientConfig *ExtenderClientConfig `json:"ExtenderClientConfig,omitnil,omitempty" name:"ExtenderClientConfig"`
+}
+
 type ExtensionAddon struct {
 	// 扩展组件名称
 	AddonName *string `json:"AddonName,omitnil,omitempty" name:"AddonName"`
@@ -19278,6 +19383,88 @@ func (r *ModifyClusterRuntimeConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyClusterSchedulerPolicyRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// SchedulerPolicy配置信息
+	SchedulerPolicyConfig []*SchedulerPolicyConfig `json:"SchedulerPolicyConfig,omitnil,omitempty" name:"SchedulerPolicyConfig"`
+
+	// 客户端连接
+	ClientConnection *ClientConnection `json:"ClientConnection,omitnil,omitempty" name:"ClientConnection"`
+
+	// 扩展调度器
+	Extenders []*Extenders `json:"Extenders,omitnil,omitempty" name:"Extenders"`
+
+	// 高性能模式
+	HighPerformance *bool `json:"HighPerformance,omitnil,omitempty" name:"HighPerformance"`
+}
+
+type ModifyClusterSchedulerPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// SchedulerPolicy配置信息
+	SchedulerPolicyConfig []*SchedulerPolicyConfig `json:"SchedulerPolicyConfig,omitnil,omitempty" name:"SchedulerPolicyConfig"`
+
+	// 客户端连接
+	ClientConnection *ClientConnection `json:"ClientConnection,omitnil,omitempty" name:"ClientConnection"`
+
+	// 扩展调度器
+	Extenders []*Extenders `json:"Extenders,omitnil,omitempty" name:"Extenders"`
+
+	// 高性能模式
+	HighPerformance *bool `json:"HighPerformance,omitnil,omitempty" name:"HighPerformance"`
+}
+
+func (r *ModifyClusterSchedulerPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterSchedulerPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "SchedulerPolicyConfig")
+	delete(f, "ClientConnection")
+	delete(f, "Extenders")
+	delete(f, "HighPerformance")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterSchedulerPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClusterSchedulerPolicyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyClusterSchedulerPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyClusterSchedulerPolicyResponseParams `json:"Response"`
+}
+
+func (r *ModifyClusterSchedulerPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterSchedulerPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyClusterTagsRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -20989,6 +21176,14 @@ type PermissionItem struct {
 	// 命名空间。当 RoleType 为 namespace 时必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+}
+
+type PluginSet struct {
+	// 指定需要额外启用的插件列表
+	Enabled []*SchedulerPolicyPriority `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 指定需要禁用的默认插件列表
+	Disabled []*SchedulerPolicyPriority `json:"Disabled,omitnil,omitempty" name:"Disabled"`
 }
 
 type PodChargeInfo struct {
@@ -22754,6 +22949,37 @@ func (r *ScaleOutClusterMasterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SchedulerPluginConfigs struct {
+	// 配置的插件的名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 初始化时传递给插件的参数，对{"apiVersion":"kubescheduler.config.k8s.io/v1beta3","kind":"NodeResourcesFitArgs","scoringStrategy":{"type":"LeastAllocated"}}base64后的结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Args *string `json:"Args,omitnil,omitempty" name:"Args"`
+}
+
+type SchedulerPolicyConfig struct {
+	// 调度器名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchedulerName *string `json:"SchedulerName,omitnil,omitempty" name:"SchedulerName"`
+
+	// 调度器plugin配置参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PluginConfigs []*SchedulerPluginConfigs `json:"PluginConfigs,omitnil,omitempty" name:"PluginConfigs"`
+
+	// 插件配置
+	PluginSet *PluginSet `json:"PluginSet,omitnil,omitempty" name:"PluginSet"`
+}
+
+type SchedulerPolicyPriority struct {
+	// 打分函数名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 权重
+	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+}
+
 type SecurityContext struct {
 	// 安全能力清单
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -22792,6 +23018,23 @@ type ServiceAccountAuthenticationOptions struct {
 	// 如果为true，则会自动创建允许匿名用户访问'/.well-known/openid-configuration'和/openid/v1/jwks的rbac规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoCreateDiscoveryAnonymousAuth *bool `json:"AutoCreateDiscoveryAnonymousAuth,omitnil,omitempty" name:"AutoCreateDiscoveryAnonymousAuth"`
+}
+
+type ServiceReference struct {
+	// 命名空间
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 服务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 服务端口
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 服务路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 服务协议
+	Scheme *string `json:"Scheme,omitnil,omitempty" name:"Scheme"`
 }
 
 // Predefined struct for user

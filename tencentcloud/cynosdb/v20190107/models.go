@@ -355,124 +355,118 @@ func (r *AddClusterSlaveZoneResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddInstancesRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// Cpu核数
+	// <p>Cpu核数</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存，单位为GB
+	// <p>内存，单位为GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 新增只读实例数，取值范围为(0,15]
+	// <p>新增只读实例数，取值范围为(0,15]</p>
 	ReadOnlyCount *int64 `json:"ReadOnlyCount,omitnil,omitempty" name:"ReadOnlyCount"`
 
-	// 实例机器类型，支持值如下：
-	// - common：表示通用型
-	// - exclusive：表示独享型
+	// <p>实例机器类型，支持值如下：</p><ul><li>common：表示通用型</li><li>exclusive：表示独享型</li></ul>
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。
+	// <p>实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。</p>
 	//
 	// Deprecated: InstanceGrpId is deprecated.
 	InstanceGrpId *string `json:"InstanceGrpId,omitnil,omitempty" name:"InstanceGrpId"`
 
-	// 所属VPC网络ID。
+	// <p>所属VPC网络ID。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 所属子网ID，如果设置了VpcId，则SubnetId必填。
+	// <p>所属子网ID，如果设置了VpcId，则SubnetId必填。</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 新增RO组时使用的Port，取值范围为[0,65535)
+	// <p>新增RO组时使用的Port，取值范围为[0,65535)</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 实例名称，字符串长度范围为[0,64)，取值范围为大小写字母，0-9数字，'_','-','.'
+	// <p>实例名称，字符串长度范围为[0,64)，取值范围为大小写字母，0-9数字，&#39;_&#39;,&#39;-&#39;,&#39;.&#39;</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 是否自动选择代金券 1是 0否 默认为0
+	// <p>是否自动选择代金券 1是 0否 默认为0</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 数据库类型，取值范围: 
-	// <li> MYSQL </li>
+	// <p>数据库类型，取值范围: </p><li> MYSQL </li>
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
-	// 订单来源，字符串长度范围为[0,64)
+	// <p>订单来源，字符串长度范围为[0,64)</p>
 	OrderSource *string `json:"OrderSource,omitnil,omitempty" name:"OrderSource"`
 
-	// 交易模式 0-下单并支付 1-下单
+	// <p>交易模式 0-下单并支付 1-下单</p>
 	DealMode *int64 `json:"DealMode,omitnil,omitempty" name:"DealMode"`
 
-	// 参数模板ID
+	// <p>参数模板ID</p>
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 
-	// 参数列表，ParamTemplateId 传入时InstanceParams才有效
+	// <p>参数列表，ParamTemplateId 传入时InstanceParams才有效</p>
 	InstanceParams []*ModifyParamItem `json:"InstanceParams,omitnil,omitempty" name:"InstanceParams"`
 
-	// 安全组ID，新建只读实例时可以指定安全组。
+	// <p>安全组ID，新建只读实例时可以指定安全组。</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// proxy同步升级
+	// <p>proxy同步升级</p>
 	UpgradeProxy *UpgradeProxy `json:"UpgradeProxy,omitnil,omitempty" name:"UpgradeProxy"`
 }
 
 type AddInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// Cpu核数
+	// <p>Cpu核数</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存，单位为GB
+	// <p>内存，单位为GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 新增只读实例数，取值范围为(0,15]
+	// <p>新增只读实例数，取值范围为(0,15]</p>
 	ReadOnlyCount *int64 `json:"ReadOnlyCount,omitnil,omitempty" name:"ReadOnlyCount"`
 
-	// 实例机器类型，支持值如下：
-	// - common：表示通用型
-	// - exclusive：表示独享型
+	// <p>实例机器类型，支持值如下：</p><ul><li>common：表示通用型</li><li>exclusive：表示独享型</li></ul>
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。
+	// <p>实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。</p>
 	InstanceGrpId *string `json:"InstanceGrpId,omitnil,omitempty" name:"InstanceGrpId"`
 
-	// 所属VPC网络ID。
+	// <p>所属VPC网络ID。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 所属子网ID，如果设置了VpcId，则SubnetId必填。
+	// <p>所属子网ID，如果设置了VpcId，则SubnetId必填。</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 新增RO组时使用的Port，取值范围为[0,65535)
+	// <p>新增RO组时使用的Port，取值范围为[0,65535)</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 实例名称，字符串长度范围为[0,64)，取值范围为大小写字母，0-9数字，'_','-','.'
+	// <p>实例名称，字符串长度范围为[0,64)，取值范围为大小写字母，0-9数字，&#39;_&#39;,&#39;-&#39;,&#39;.&#39;</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 是否自动选择代金券 1是 0否 默认为0
+	// <p>是否自动选择代金券 1是 0否 默认为0</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 数据库类型，取值范围: 
-	// <li> MYSQL </li>
+	// <p>数据库类型，取值范围: </p><li> MYSQL </li>
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
-	// 订单来源，字符串长度范围为[0,64)
+	// <p>订单来源，字符串长度范围为[0,64)</p>
 	OrderSource *string `json:"OrderSource,omitnil,omitempty" name:"OrderSource"`
 
-	// 交易模式 0-下单并支付 1-下单
+	// <p>交易模式 0-下单并支付 1-下单</p>
 	DealMode *int64 `json:"DealMode,omitnil,omitempty" name:"DealMode"`
 
-	// 参数模板ID
+	// <p>参数模板ID</p>
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 
-	// 参数列表，ParamTemplateId 传入时InstanceParams才有效
+	// <p>参数列表，ParamTemplateId 传入时InstanceParams才有效</p>
 	InstanceParams []*ModifyParamItem `json:"InstanceParams,omitnil,omitempty" name:"InstanceParams"`
 
-	// 安全组ID，新建只读实例时可以指定安全组。
+	// <p>安全组ID，新建只读实例时可以指定安全组。</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// proxy同步升级
+	// <p>proxy同步升级</p>
 	UpgradeProxy *UpgradeProxy `json:"UpgradeProxy,omitnil,omitempty" name:"UpgradeProxy"`
 }
 
@@ -514,16 +508,18 @@ func (r *AddInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddInstancesResponseParams struct {
-	// 冻结流水，一次开通一个冻结流水。
+	// <p>冻结流水，一次开通一个冻结流水。</p>
 	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
 
-	// 后付费订单号。
+	// <p>付费的订单号。说明：建议您使用 <a href="https://cloud.tencent.com/document/product/1003/52131">DescribeResourcesByDealName</a> 接口查询订单关联实例。</p>
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
-	// 发货资源id列表。
+	// <p>发货资源id列表。</p>
+	//
+	// Deprecated: ResourceIds is deprecated.
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 大订单号
+	// <p>大订单号</p>
 	BigDealIds []*string `json:"BigDealIds,omitnil,omitempty" name:"BigDealIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9316,6 +9312,88 @@ func (r *DescribeInstanceSlowQueriesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstanceSpecsByOperationTypeRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 操作类型
+	// addROInstance：新增RO实例
+	// modifyInstance：变配
+	OperationType *string `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+
+	// 实例ID，查询变配规格时必传
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例机器类型
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
+}
+
+type DescribeInstanceSpecsByOperationTypeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 操作类型
+	// addROInstance：新增RO实例
+	// modifyInstance：变配
+	OperationType *string `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+
+	// 实例ID，查询变配规格时必传
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例机器类型
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
+}
+
+func (r *DescribeInstanceSpecsByOperationTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceSpecsByOperationTypeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "OperationType")
+	delete(f, "InstanceId")
+	delete(f, "DeviceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceSpecsByOperationTypeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceSpecsByOperationTypeResponseParams struct {
+	// 实例规格信息
+	InstanceSpecSet []*InstanceSpec `json:"InstanceSpecSet,omitnil,omitempty" name:"InstanceSpecSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceSpecsByOperationTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceSpecsByOperationTypeResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceSpecsByOperationTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceSpecsByOperationTypeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceSpecsRequestParams struct {
 	// 数据库类型，取值范围: 
 	// <li> MYSQL </li>
@@ -12512,6 +12590,9 @@ type DescribeSlaveZonesRequestParams struct {
 
 	// 云架集群ID
 	OssClusterId *int64 `json:"OssClusterId,omitnil,omitempty" name:"OssClusterId"`
+
+	// 存储架构类型。枚举值：1.0/2.0  默认值：1.0
+	StorageVersion *string `json:"StorageVersion,omitnil,omitempty" name:"StorageVersion"`
 }
 
 type DescribeSlaveZonesRequest struct {
@@ -12522,6 +12603,9 @@ type DescribeSlaveZonesRequest struct {
 
 	// 云架集群ID
 	OssClusterId *int64 `json:"OssClusterId,omitnil,omitempty" name:"OssClusterId"`
+
+	// 存储架构类型。枚举值：1.0/2.0  默认值：1.0
+	StorageVersion *string `json:"StorageVersion,omitnil,omitempty" name:"StorageVersion"`
 }
 
 func (r *DescribeSlaveZonesRequest) ToJsonString() string {
@@ -12538,6 +12622,7 @@ func (r *DescribeSlaveZonesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Zone")
 	delete(f, "OssClusterId")
+	delete(f, "StorageVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlaveZonesRequest has unknown keys!", "")
 	}

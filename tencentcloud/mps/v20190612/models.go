@@ -108,6 +108,108 @@ type ActionConfigInfo struct {
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 }
 
+// Predefined struct for user
+type ActivateSSAIRequestParams struct {
+
+}
+
+type ActivateSSAIRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *ActivateSSAIRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ActivateSSAIRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ActivateSSAIRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ActivateSSAIResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ActivateSSAIResponse struct {
+	*tchttp.BaseResponse
+	Response *ActivateSSAIResponseParams `json:"Response"`
+}
+
+func (r *ActivateSSAIResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ActivateSSAIResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ActivateStreamPackageRequestParams struct {
+
+}
+
+type ActivateStreamPackageRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *ActivateStreamPackageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ActivateStreamPackageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ActivateStreamPackageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ActivateStreamPackageResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ActivateStreamPackageResponse struct {
+	*tchttp.BaseResponse
+	Response *ActivateStreamPackageResponseParams `json:"Response"`
+}
+
+func (r *ActivateStreamPackageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ActivateStreamPackageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Activity struct {
 	// 原子任务类型：
 	// <li>input: 起始节点</li>
@@ -263,6 +365,32 @@ type ActivityResult struct {
 
 	// 原子任务输出。
 	ActivityResItem *ActivityResItem `json:"ActivityResItem,omitnil,omitempty" name:"ActivityResItem"`
+}
+
+type AdBreakInfo struct {
+	// SourceLocationId。
+	SourceLocationId *string `json:"SourceLocationId,omitnil,omitempty" name:"SourceLocationId"`
+
+	// VodSourceName。
+	VodSourceName *string `json:"VodSourceName,omitnil,omitempty" name:"VodSourceName"`
+
+	// Offset。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// MessageType，分SpliceInsert和TimeSignal。
+	MessageType *string `json:"MessageType,omitnil,omitempty" name:"MessageType"`
+
+	// TimeSignalConf。
+	TimeSignalConf *TimeSignalInfo `json:"TimeSignalConf,omitnil,omitempty" name:"TimeSignalConf"`
+
+	// SpliceInsertConf。
+	SpliceInsertConf *SpliceInsertInfo `json:"SpliceInsertConf,omitnil,omitempty" name:"SpliceInsertConf"`
+
+	// Metadatas。
+	Metadatas []*Metadata `json:"Metadatas,omitnil,omitempty" name:"Metadatas"`
+
+	// SourceLocationName。
+	SourceLocationName *string `json:"SourceLocationName,omitnil,omitempty" name:"SourceLocationName"`
 }
 
 type AdaptiveDynamicStreamingInfoItem struct {
@@ -2345,6 +2473,14 @@ type AigcVideoReferenceVideoInfo struct {
 	KeepOriginalSound *string `json:"KeepOriginalSound,omitnil,omitempty" name:"KeepOriginalSound"`
 }
 
+type AliasValueConf struct {
+	// Alias。
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// Value。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type AnimatedGraphicTaskInput struct {
 	// 视频转动图模板 ID。
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -2547,6 +2683,40 @@ type AsrWordsConfigureInfoForUpdate struct {
 	// 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
 	LabelSet []*string `json:"LabelSet,omitnil,omitempty" name:"LabelSet"`
+}
+
+type AssemblyUsageDetail struct {
+	// <p>频道id</p>
+	ChannelID *string `json:"ChannelID,omitnil,omitempty" name:"ChannelID"`
+
+	// <p>日期</p>
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// <p>查询开始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>持续时间</p>
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// <p>频道类型</p>
+	ChannelTier *string `json:"ChannelTier,omitnil,omitempty" name:"ChannelTier"`
+
+	// <p>频道名称</p>
+	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
+}
+
+type AssemblyUsageInfo struct {
+	// 频道线性组装用量明细
+	AssemblyUsageDetails []*AssemblyUsageDetail `json:"AssemblyUsageDetails,omitnil,omitempty" name:"AssemblyUsageDetails"`
+
+	// Basic频道类型总时长
+	SumBasicChannelDuration *int64 `json:"SumBasicChannelDuration,omitnil,omitempty" name:"SumBasicChannelDuration"`
+
+	// Standard频道类型总时长
+	SumStandardChannelDuration *int64 `json:"SumStandardChannelDuration,omitnil,omitempty" name:"SumStandardChannelDuration"`
 }
 
 type AudioBeautifyConfig struct {
@@ -3223,6 +3393,14 @@ type BlindWatermarkTemplate struct {
 	Strength *string `json:"Strength,omitnil,omitempty" name:"Strength"`
 }
 
+type ChannelAlertResp struct {
+	// Program告警聚合信息。
+	ProgramAlertCounts []*ProgramAlertCounts `json:"ProgramAlertCounts,omitnil,omitempty" name:"ProgramAlertCounts"`
+
+	// Program告警明细信息。
+	ProgramAlertInfos []*ProgramAlertInfos `json:"ProgramAlertInfos,omitnil,omitempty" name:"ProgramAlertInfos"`
+}
+
 type ClassificationConfigureInfo struct {
 	// 智能分类任务开关，可选值：
 	// <li>ON：开启智能分类任务；</li>
@@ -3235,6 +3413,20 @@ type ClassificationConfigureInfoForUpdate struct {
 	// <li>ON：开启智能分类任务；</li>
 	// <li>OFF：关闭智能分类任务。</li>
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+}
+
+type ClipRangeInfo struct {
+	// vod类型有效，内容有效起始时间，可选Entire和SpecifyTimeRange。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 偏移量,Type为SpecifyTimeRange时有效。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 开始偏移量,Type为SpecifyTimeRange时有效。
+	StartOffset *uint64 `json:"StartOffset,omitnil,omitempty" name:"StartOffset"`
+
+	// 结束偏移量,Type为SpecifyTimeRange时有效。
+	EndOffset *uint64 `json:"EndOffset,omitnil,omitempty" name:"EndOffset"`
 }
 
 type ColorEnhanceConfig struct {
@@ -3690,6 +3882,14 @@ type ComposeVideoStream struct {
 	// 如果设置，编码时会尽量按该码率进行编码。
 	// 如果不设置，服务将通过画面复杂度自动采用合适的码率。
 	Bitrate *int64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
+}
+
+type ConfigAliasesInfo struct {
+	// 参数名。
+	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
+
+	// alias-value配置。
+	AliasValueList []*AliasValueConf `json:"AliasValueList,omitnil,omitempty" name:"AliasValueList"`
 }
 
 type ContainerDiagnoseResultItem struct {
@@ -6746,6 +6946,445 @@ func (r *CreateStreamLinkSecurityGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateStreamPackageLinearAssemblyChannelRequestParams struct {
+	// Channel名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 定义channel的特性，Standard支持直播和点播源，Basic只支持点播源编排，可选值：Standard、Basic。
+	Tier *string `json:"Tier,omitnil,omitempty" name:"Tier"`
+
+	// 频道中的source切换的模式，分Linear线性和Loop循环，Basic只支持Linear，Standard两种都支持。
+	PlaybackMode *string `json:"PlaybackMode,omitnil,omitempty" name:"PlaybackMode"`
+
+	// 时移开启开关，只有Tier为Standard时有效。
+	TimeShiftEnable *bool `json:"TimeShiftEnable,omitnil,omitempty" name:"TimeShiftEnable"`
+
+	// 时移配置，时移开关开启时有效。
+	TimeShiftConf *TimeShiftInfo `json:"TimeShiftConf,omitnil,omitempty" name:"TimeShiftConf"`
+
+	// 垫片配置，只有PlaybackMode为Linear时有效。
+	SlateConf *SlateInfo `json:"SlateConf,omitnil,omitempty" name:"SlateConf"`
+
+	// 输出配置。
+	Outputs []*OutputReq `json:"Outputs,omitnil,omitempty" name:"Outputs"`
+}
+
+type CreateStreamPackageLinearAssemblyChannelRequest struct {
+	*tchttp.BaseRequest
+	
+	// Channel名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 定义channel的特性，Standard支持直播和点播源，Basic只支持点播源编排，可选值：Standard、Basic。
+	Tier *string `json:"Tier,omitnil,omitempty" name:"Tier"`
+
+	// 频道中的source切换的模式，分Linear线性和Loop循环，Basic只支持Linear，Standard两种都支持。
+	PlaybackMode *string `json:"PlaybackMode,omitnil,omitempty" name:"PlaybackMode"`
+
+	// 时移开启开关，只有Tier为Standard时有效。
+	TimeShiftEnable *bool `json:"TimeShiftEnable,omitnil,omitempty" name:"TimeShiftEnable"`
+
+	// 时移配置，时移开关开启时有效。
+	TimeShiftConf *TimeShiftInfo `json:"TimeShiftConf,omitnil,omitempty" name:"TimeShiftConf"`
+
+	// 垫片配置，只有PlaybackMode为Linear时有效。
+	SlateConf *SlateInfo `json:"SlateConf,omitnil,omitempty" name:"SlateConf"`
+
+	// 输出配置。
+	Outputs []*OutputReq `json:"Outputs,omitnil,omitempty" name:"Outputs"`
+}
+
+func (r *CreateStreamPackageLinearAssemblyChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamPackageLinearAssemblyChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Tier")
+	delete(f, "PlaybackMode")
+	delete(f, "TimeShiftEnable")
+	delete(f, "TimeShiftConf")
+	delete(f, "SlateConf")
+	delete(f, "Outputs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStreamPackageLinearAssemblyChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateStreamPackageLinearAssemblyChannelResponseParams struct {
+	// channel信息。
+	Info *LinearAssemblyChannelInfo `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateStreamPackageLinearAssemblyChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateStreamPackageLinearAssemblyChannelResponseParams `json:"Response"`
+}
+
+func (r *CreateStreamPackageLinearAssemblyChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamPackageLinearAssemblyChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateStreamPackageLinearAssemblyProgramRequestParams struct {
+	// Program名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 绑定的channel。
+	AttachedChannel *string `json:"AttachedChannel,omitnil,omitempty" name:"AttachedChannel"`
+
+	// 编排的目标source的类型，分直播Live和点播VOD。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 关联的source location。
+	SourceLocationId *string `json:"SourceLocationId,omitnil,omitempty" name:"SourceLocationId"`
+
+	// 关联的直播or点播，source名称，location下全局唯一。
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// PlaybackConf。
+	PlaybackConf *PlaybackInfoReq `json:"PlaybackConf,omitnil,omitempty" name:"PlaybackConf"`
+
+	// AdBreaks，只有source类型为Vod时有效。
+	AdBreaks []*AdBreakInfo `json:"AdBreaks,omitnil,omitempty" name:"AdBreaks"`
+}
+
+type CreateStreamPackageLinearAssemblyProgramRequest struct {
+	*tchttp.BaseRequest
+	
+	// Program名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 绑定的channel。
+	AttachedChannel *string `json:"AttachedChannel,omitnil,omitempty" name:"AttachedChannel"`
+
+	// 编排的目标source的类型，分直播Live和点播VOD。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 关联的source location。
+	SourceLocationId *string `json:"SourceLocationId,omitnil,omitempty" name:"SourceLocationId"`
+
+	// 关联的直播or点播，source名称，location下全局唯一。
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// PlaybackConf。
+	PlaybackConf *PlaybackInfoReq `json:"PlaybackConf,omitnil,omitempty" name:"PlaybackConf"`
+
+	// AdBreaks，只有source类型为Vod时有效。
+	AdBreaks []*AdBreakInfo `json:"AdBreaks,omitnil,omitempty" name:"AdBreaks"`
+}
+
+func (r *CreateStreamPackageLinearAssemblyProgramRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamPackageLinearAssemblyProgramRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "AttachedChannel")
+	delete(f, "SourceType")
+	delete(f, "SourceLocationId")
+	delete(f, "SourceName")
+	delete(f, "PlaybackConf")
+	delete(f, "AdBreaks")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStreamPackageLinearAssemblyProgramRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateStreamPackageLinearAssemblyProgramResponseParams struct {
+	// channel信息。
+	Info *LinearAssemblyProgramInfo `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateStreamPackageLinearAssemblyProgramResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateStreamPackageLinearAssemblyProgramResponseParams `json:"Response"`
+}
+
+func (r *CreateStreamPackageLinearAssemblyProgramResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamPackageLinearAssemblyProgramResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateStreamPackageSSAIChannelRequestParams struct {
+	// 广告插入配置名称，全局唯一，不能与其他频道重复。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 源流地址前缀
+	ContentSource *string `json:"ContentSource,omitnil,omitempty" name:"ContentSource"`
+
+	// 广告插入配置
+	SSAIInfo *SSAIConf `json:"SSAIInfo,omitnil,omitempty" name:"SSAIInfo"`
+}
+
+type CreateStreamPackageSSAIChannelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 广告插入配置名称，全局唯一，不能与其他频道重复。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 源流地址前缀
+	ContentSource *string `json:"ContentSource,omitnil,omitempty" name:"ContentSource"`
+
+	// 广告插入配置
+	SSAIInfo *SSAIConf `json:"SSAIInfo,omitnil,omitempty" name:"SSAIInfo"`
+}
+
+func (r *CreateStreamPackageSSAIChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamPackageSSAIChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "ContentSource")
+	delete(f, "SSAIInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStreamPackageSSAIChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateStreamPackageSSAIChannelResponseParams struct {
+	// 创建的广告插入配置信息。
+	Info *SSAIChannelInfo `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateStreamPackageSSAIChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateStreamPackageSSAIChannelResponseParams `json:"Response"`
+}
+
+func (r *CreateStreamPackageSSAIChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamPackageSSAIChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateStreamPackageSourceLocationRequestParams struct {
+	// SourceLocation名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 基准URL。
+	BaseUrl *string `json:"BaseUrl,omitnil,omitempty" name:"BaseUrl"`
+
+	// 是否开启补片。
+	SegmentDeliverEnable *bool `json:"SegmentDeliverEnable,omitnil,omitempty" name:"SegmentDeliverEnable"`
+
+	// 补片配置。
+	SegmentDeliverConf *SegmentDeliverInfo `json:"SegmentDeliverConf,omitnil,omitempty" name:"SegmentDeliverConf"`
+
+	// 是否开启package分发分片，默认开启。
+	SegmentDeliverUsePackageEnable *bool `json:"SegmentDeliverUsePackageEnable,omitnil,omitempty" name:"SegmentDeliverUsePackageEnable"`
+}
+
+type CreateStreamPackageSourceLocationRequest struct {
+	*tchttp.BaseRequest
+	
+	// SourceLocation名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 基准URL。
+	BaseUrl *string `json:"BaseUrl,omitnil,omitempty" name:"BaseUrl"`
+
+	// 是否开启补片。
+	SegmentDeliverEnable *bool `json:"SegmentDeliverEnable,omitnil,omitempty" name:"SegmentDeliverEnable"`
+
+	// 补片配置。
+	SegmentDeliverConf *SegmentDeliverInfo `json:"SegmentDeliverConf,omitnil,omitempty" name:"SegmentDeliverConf"`
+
+	// 是否开启package分发分片，默认开启。
+	SegmentDeliverUsePackageEnable *bool `json:"SegmentDeliverUsePackageEnable,omitnil,omitempty" name:"SegmentDeliverUsePackageEnable"`
+}
+
+func (r *CreateStreamPackageSourceLocationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamPackageSourceLocationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "BaseUrl")
+	delete(f, "SegmentDeliverEnable")
+	delete(f, "SegmentDeliverConf")
+	delete(f, "SegmentDeliverUsePackageEnable")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStreamPackageSourceLocationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateStreamPackageSourceLocationResponseParams struct {
+	// SourceLocation信息。
+	Info *SourceLocationInfo `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateStreamPackageSourceLocationResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateStreamPackageSourceLocationResponseParams `json:"Response"`
+}
+
+func (r *CreateStreamPackageSourceLocationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamPackageSourceLocationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateStreamPackageSourceRequestParams struct {
+	// 该source所属的location id，必填且唯一绑定一个location。
+	AttachedLocation *string `json:"AttachedLocation,omitnil,omitempty" name:"AttachedLocation"`
+
+	// Source名称，在location下面全局唯一。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 区分直播Live和点播VOD source类型，可选值：Live、VOD。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// source具体配置。
+	PackageConfs []*SourcePackageConf `json:"PackageConfs,omitnil,omitempty" name:"PackageConfs"`
+
+	// sourcetag标签，ADS可以根据Source Tag信息，返回更精准的广告
+	SourceTags []*SourceTag `json:"SourceTags,omitnil,omitempty" name:"SourceTags"`
+}
+
+type CreateStreamPackageSourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 该source所属的location id，必填且唯一绑定一个location。
+	AttachedLocation *string `json:"AttachedLocation,omitnil,omitempty" name:"AttachedLocation"`
+
+	// Source名称，在location下面全局唯一。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 区分直播Live和点播VOD source类型，可选值：Live、VOD。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// source具体配置。
+	PackageConfs []*SourcePackageConf `json:"PackageConfs,omitnil,omitempty" name:"PackageConfs"`
+
+	// sourcetag标签，ADS可以根据Source Tag信息，返回更精准的广告
+	SourceTags []*SourceTag `json:"SourceTags,omitnil,omitempty" name:"SourceTags"`
+}
+
+func (r *CreateStreamPackageSourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamPackageSourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AttachedLocation")
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "PackageConfs")
+	delete(f, "SourceTags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStreamPackageSourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateStreamPackageSourceResponseParams struct {
+	// Source信息。
+	Info *SourceInfo `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateStreamPackageSourceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateStreamPackageSourceResponseParams `json:"Response"`
+}
+
+func (r *CreateStreamPackageSourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamPackageSourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSubtitleEmbedTemplateRequestParams struct {
 	// <p>字幕压制模板名称<br>长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -7426,6 +8065,20 @@ func (r *CreateWorkflowResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateWorkflowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DashManifestInfo struct {
+	// 每个清单的总持续时间（以秒为单位）。[30, 3600]，类型：整数，默认值60。
+	Windows *int64 `json:"Windows,omitnil,omitempty" name:"Windows"`
+
+	// 播放器在缓冲区中保持的最小缓存时间（以秒为单位）。[2, 60]，类型：整数，默认值30。
+	MinBufferTime *int64 `json:"MinBufferTime,omitnil,omitempty" name:"MinBufferTime"`
+
+	// 播放器在请求更新清单之前应等待的最短时间（以秒为单位）。[2, 60]，类型：整数，默认值2。
+	MinUpdatePeriod *int64 `json:"MinUpdatePeriod,omitnil,omitempty" name:"MinUpdatePeriod"`
+
+	// 播放器启播时距离最新直播时间点的时间，是一个回退量（以秒为单位）。[2, 60]，类型：整数，默认值10。
+	SuggestedPresentationDelay *int64 `json:"SuggestedPresentationDelay,omitnil,omitempty" name:"SuggestedPresentationDelay"`
 }
 
 // Predefined struct for user
@@ -8566,6 +9219,445 @@ func (r *DeleteStreamLinkSecurityGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteStreamLinkSecurityGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamPackageLinearAssemblyChannelRequestParams struct {
+	// 频道id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DeleteStreamPackageLinearAssemblyChannelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 频道id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DeleteStreamPackageLinearAssemblyChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamPackageLinearAssemblyChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteStreamPackageLinearAssemblyChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamPackageLinearAssemblyChannelResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteStreamPackageLinearAssemblyChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteStreamPackageLinearAssemblyChannelResponseParams `json:"Response"`
+}
+
+func (r *DeleteStreamPackageLinearAssemblyChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamPackageLinearAssemblyChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamPackageLinearAssemblyChannelsRequestParams struct {
+	// 频道id列表。
+	Ids []*string `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+type DeleteStreamPackageLinearAssemblyChannelsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 频道id列表。
+	Ids []*string `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+func (r *DeleteStreamPackageLinearAssemblyChannelsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamPackageLinearAssemblyChannelsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteStreamPackageLinearAssemblyChannelsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamPackageLinearAssemblyChannelsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteStreamPackageLinearAssemblyChannelsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteStreamPackageLinearAssemblyChannelsResponseParams `json:"Response"`
+}
+
+func (r *DeleteStreamPackageLinearAssemblyChannelsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamPackageLinearAssemblyChannelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamPackageLinearAssemblyProgramRequestParams struct {
+	// Program id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DeleteStreamPackageLinearAssemblyProgramRequest struct {
+	*tchttp.BaseRequest
+	
+	// Program id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DeleteStreamPackageLinearAssemblyProgramRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamPackageLinearAssemblyProgramRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteStreamPackageLinearAssemblyProgramRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamPackageLinearAssemblyProgramResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteStreamPackageLinearAssemblyProgramResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteStreamPackageLinearAssemblyProgramResponseParams `json:"Response"`
+}
+
+func (r *DeleteStreamPackageLinearAssemblyProgramResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamPackageLinearAssemblyProgramResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamPackageLinearAssemblyProgramsByChannelRequestParams struct {
+	// <p>频道的ID</p>
+	ChannelID *string `json:"ChannelID,omitnil,omitempty" name:"ChannelID"`
+
+	// <p>需要删除的Id数组</p>
+	IDs []*string `json:"IDs,omitnil,omitempty" name:"IDs"`
+}
+
+type DeleteStreamPackageLinearAssemblyProgramsByChannelRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>频道的ID</p>
+	ChannelID *string `json:"ChannelID,omitnil,omitempty" name:"ChannelID"`
+
+	// <p>需要删除的Id数组</p>
+	IDs []*string `json:"IDs,omitnil,omitempty" name:"IDs"`
+}
+
+func (r *DeleteStreamPackageLinearAssemblyProgramsByChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamPackageLinearAssemblyProgramsByChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelID")
+	delete(f, "IDs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteStreamPackageLinearAssemblyProgramsByChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamPackageLinearAssemblyProgramsByChannelResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteStreamPackageLinearAssemblyProgramsByChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteStreamPackageLinearAssemblyProgramsByChannelResponseParams `json:"Response"`
+}
+
+func (r *DeleteStreamPackageLinearAssemblyProgramsByChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamPackageLinearAssemblyProgramsByChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamPackageLinearAssemblyProgramsRequestParams struct {
+	// Program id列表。
+	Ids []*string `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+type DeleteStreamPackageLinearAssemblyProgramsRequest struct {
+	*tchttp.BaseRequest
+	
+	// Program id列表。
+	Ids []*string `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+func (r *DeleteStreamPackageLinearAssemblyProgramsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamPackageLinearAssemblyProgramsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteStreamPackageLinearAssemblyProgramsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamPackageLinearAssemblyProgramsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteStreamPackageLinearAssemblyProgramsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteStreamPackageLinearAssemblyProgramsResponseParams `json:"Response"`
+}
+
+func (r *DeleteStreamPackageLinearAssemblyProgramsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamPackageLinearAssemblyProgramsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamPackageSSAIChannelRequestParams struct {
+	// 需要删除的广告插入配置ID。
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+type DeleteStreamPackageSSAIChannelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要删除的广告插入配置ID。
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+func (r *DeleteStreamPackageSSAIChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamPackageSSAIChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteStreamPackageSSAIChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamPackageSSAIChannelResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteStreamPackageSSAIChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteStreamPackageSSAIChannelResponseParams `json:"Response"`
+}
+
+func (r *DeleteStreamPackageSSAIChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamPackageSSAIChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamPackageSourceLocationRequestParams struct {
+	// SourceLocation Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DeleteStreamPackageSourceLocationRequest struct {
+	*tchttp.BaseRequest
+	
+	// SourceLocation Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DeleteStreamPackageSourceLocationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamPackageSourceLocationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteStreamPackageSourceLocationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamPackageSourceLocationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteStreamPackageSourceLocationResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteStreamPackageSourceLocationResponseParams `json:"Response"`
+}
+
+func (r *DeleteStreamPackageSourceLocationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamPackageSourceLocationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamPackageSourceRequestParams struct {
+	// Source Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DeleteStreamPackageSourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// Source Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DeleteStreamPackageSourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamPackageSourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteStreamPackageSourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamPackageSourceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteStreamPackageSourceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteStreamPackageSourceResponseParams `json:"Response"`
+}
+
+func (r *DeleteStreamPackageSourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamPackageSourceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10437,6 +11529,64 @@ func (r *DescribeLiveRecordTemplatesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMDPMPSUserInfoRequestParams struct {
+
+}
+
+type DescribeMDPMPSUserInfoRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeMDPMPSUserInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMDPMPSUserInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMDPMPSUserInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMDPMPSUserInfoResponseParams struct {
+	// 用户状态，取值为：
+	// <li> InvalidMpsUser：未开通mps；</li>
+	// <li>Normal：正常 ；</li>
+	// <li> Closed：下线；</li>
+	// <li> Arrearage：欠费停服</li>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMDPMPSUserInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMDPMPSUserInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeMDPMPSUserInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMDPMPSUserInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeMediaMetaDataRequestParams struct {
 	// 需要获取元信息的文件输入信息。
 	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
@@ -11016,6 +12166,60 @@ type DescribeRTSPPullSourceAddress struct {
 	// RTSP源站的Url地址。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+// Predefined struct for user
+type DescribeSSAIActivateStateRequestParams struct {
+
+}
+
+type DescribeSSAIActivateStateRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeSSAIActivateStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSSAIActivateStateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSSAIActivateStateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSSAIActivateStateResponseParams struct {
+	// SSAI开通状态，0表示正常开通，-1表示未开通
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSSAIActivateStateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSSAIActivateStateResponseParams `json:"Response"`
+}
+
+func (r *DescribeSSAIActivateStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSSAIActivateStateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -12535,6 +13739,1157 @@ func (r *DescribeStreamLinkSecurityGroupsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeStreamLinkSecurityGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageActivateStateRequestParams struct {
+
+}
+
+type DescribeStreamPackageActivateStateRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeStreamPackageActivateStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageActivateStateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPackageActivateStateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageActivateStateResponseParams struct {
+	// 用户已激活为0，否则为非0。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamPackageActivateStateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamPackageActivateStateResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamPackageActivateStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageActivateStateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageLinearAssemblyChannelAlertsRequestParams struct {
+	// 频道ID。
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 查询开始时间，Unix时间戳，支持最近七天的查询。
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间，Unix时间戳，支持最近七天的查询。
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribeStreamPackageLinearAssemblyChannelAlertsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 频道ID。
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 查询开始时间，Unix时间戳，支持最近七天的查询。
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间，Unix时间戳，支持最近七天的查询。
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeStreamPackageLinearAssemblyChannelAlertsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageLinearAssemblyChannelAlertsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPackageLinearAssemblyChannelAlertsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageLinearAssemblyChannelAlertsResponseParams struct {
+	// 频道告警信息。
+	Infos *ChannelAlertResp `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamPackageLinearAssemblyChannelAlertsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamPackageLinearAssemblyChannelAlertsResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamPackageLinearAssemblyChannelAlertsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageLinearAssemblyChannelAlertsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageLinearAssemblyChannelRequestParams struct {
+	// 频道id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DescribeStreamPackageLinearAssemblyChannelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 频道id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DescribeStreamPackageLinearAssemblyChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageLinearAssemblyChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPackageLinearAssemblyChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageLinearAssemblyChannelResponseParams struct {
+	// Channel信息。
+	Info *LinearAssemblyChannelInfo `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamPackageLinearAssemblyChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamPackageLinearAssemblyChannelResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamPackageLinearAssemblyChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageLinearAssemblyChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageLinearAssemblyChannelsRequestParams struct {
+	// 页数，取值范围为[1, 1000]。
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页大小，取值范围为[1, 1000]。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeStreamPackageLinearAssemblyChannelsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页数，取值范围为[1, 1000]。
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页大小，取值范围为[1, 1000]。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeStreamPackageLinearAssemblyChannelsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageLinearAssemblyChannelsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPackageLinearAssemblyChannelsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageLinearAssemblyChannelsResponseParams struct {
+	// Channel列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Infos []*LinearAssemblyChannelInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// 页数。
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页大小。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 总数量。
+	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
+
+	// 总页数。
+	TotalPage *uint64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamPackageLinearAssemblyChannelsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamPackageLinearAssemblyChannelsResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamPackageLinearAssemblyChannelsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageLinearAssemblyChannelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageLinearAssemblyProgramRequestParams struct {
+	// program id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DescribeStreamPackageLinearAssemblyProgramRequest struct {
+	*tchttp.BaseRequest
+	
+	// program id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DescribeStreamPackageLinearAssemblyProgramRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageLinearAssemblyProgramRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPackageLinearAssemblyProgramRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageLinearAssemblyProgramResponseParams struct {
+	// Program信息。
+	Info *LinearAssemblyProgramInfo `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamPackageLinearAssemblyProgramResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamPackageLinearAssemblyProgramResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamPackageLinearAssemblyProgramResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageLinearAssemblyProgramResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageLinearAssemblyProgramSchedulesRequestParams struct {
+	// 查询某个Channel下面的所有Program。
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 窗口时长信息，单位秒。最大7776000s
+	TimeWindow *uint64 `json:"TimeWindow,omitnil,omitempty" name:"TimeWindow"`
+
+	// 页数，取值范围为[1, 10000]。
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页大小，取值范围为[1, 1000]。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeStreamPackageLinearAssemblyProgramSchedulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询某个Channel下面的所有Program。
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 窗口时长信息，单位秒。最大7776000s
+	TimeWindow *uint64 `json:"TimeWindow,omitnil,omitempty" name:"TimeWindow"`
+
+	// 页数，取值范围为[1, 10000]。
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页大小，取值范围为[1, 1000]。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeStreamPackageLinearAssemblyProgramSchedulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageLinearAssemblyProgramSchedulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelId")
+	delete(f, "TimeWindow")
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPackageLinearAssemblyProgramSchedulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageLinearAssemblyProgramSchedulesResponseParams struct {
+	// Program的调度列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Infos []*LinearAssemblyProgramInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// 页数。
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页大小。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 总数量。
+	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
+
+	// 总页数。
+	TotalPage *uint64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamPackageLinearAssemblyProgramSchedulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamPackageLinearAssemblyProgramSchedulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamPackageLinearAssemblyProgramSchedulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageLinearAssemblyProgramSchedulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageLinearAssemblyProgramsRequestParams struct {
+	// 页数，取值范围为[1, 1000]。
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页大小，取值范围为[1, 10000]。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 查询某个Channel下面的所有Program。
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 按Name过滤，模糊匹配
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type DescribeStreamPackageLinearAssemblyProgramsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页数，取值范围为[1, 1000]。
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页大小，取值范围为[1, 10000]。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 查询某个Channel下面的所有Program。
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 按Name过滤，模糊匹配
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+func (r *DescribeStreamPackageLinearAssemblyProgramsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageLinearAssemblyProgramsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	delete(f, "ChannelId")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPackageLinearAssemblyProgramsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageLinearAssemblyProgramsResponseParams struct {
+	// Program列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Infos []*LinearAssemblyProgramInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// 页数。
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页大小。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 总数量。
+	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
+
+	// 总页数。
+	TotalPage *uint64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamPackageLinearAssemblyProgramsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamPackageLinearAssemblyProgramsResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamPackageLinearAssemblyProgramsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageLinearAssemblyProgramsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageLinearAssemblyUsageRequestParams struct {
+	// 查询开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 维度，可选值：summary对应false；detail 对应true
+	Dimension *bool `json:"Dimension,omitnil,omitempty" name:"Dimension"`
+
+	// 要查询的频道ID列表
+	ChannelIds []*string `json:"ChannelIds,omitnil,omitempty" name:"ChannelIds"`
+
+	// 要查询的频道类型，可选Basic/Standard；若为空，默认查询所有类型
+	ChannelTiers []*string `json:"ChannelTiers,omitnil,omitempty" name:"ChannelTiers"`
+}
+
+type DescribeStreamPackageLinearAssemblyUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 维度，可选值：summary对应false；detail 对应true
+	Dimension *bool `json:"Dimension,omitnil,omitempty" name:"Dimension"`
+
+	// 要查询的频道ID列表
+	ChannelIds []*string `json:"ChannelIds,omitnil,omitempty" name:"ChannelIds"`
+
+	// 要查询的频道类型，可选Basic/Standard；若为空，默认查询所有类型
+	ChannelTiers []*string `json:"ChannelTiers,omitnil,omitempty" name:"ChannelTiers"`
+}
+
+func (r *DescribeStreamPackageLinearAssemblyUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageLinearAssemblyUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Dimension")
+	delete(f, "ChannelIds")
+	delete(f, "ChannelTiers")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPackageLinearAssemblyUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageLinearAssemblyUsageResponseParams struct {
+	// 线性组装用量详情
+	Info *AssemblyUsageInfo `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamPackageLinearAssemblyUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamPackageLinearAssemblyUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamPackageLinearAssemblyUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageLinearAssemblyUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageSSAIChannelRequestParams struct {
+	// 广告插入配置ID。
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+type DescribeStreamPackageSSAIChannelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 广告插入配置ID。
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+func (r *DescribeStreamPackageSSAIChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageSSAIChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPackageSSAIChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageSSAIChannelResponseParams struct {
+	// 广告插入配置信息。
+	Info *SSAIChannelInfo `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamPackageSSAIChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamPackageSSAIChannelResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamPackageSSAIChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageSSAIChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageSSAIChannelsRequestParams struct {
+	// 页码，默认1。
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页大小，默认10。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeStreamPackageSSAIChannelsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码，默认1。
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页大小，默认10。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeStreamPackageSSAIChannelsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageSSAIChannelsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPackageSSAIChannelsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageSSAIChannelsResponseParams struct {
+	// 广告插入配置信息。
+	Infos []*SSAIChannelInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// 页码。
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页大小。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 总条目数。
+	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamPackageSSAIChannelsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamPackageSSAIChannelsResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamPackageSSAIChannelsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageSSAIChannelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageSSAIUsageRequestParams struct {
+	// 起始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 需要查询的channel_id
+	ChannelIds []*string `json:"ChannelIds,omitnil,omitempty" name:"ChannelIds"`
+
+	// 需要查询的广告类型。可选Pre-roll/Mid-roll/VOD；若为空，默认查询所有类型
+	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
+
+	// 维度，可选值：summary对应false；detail 对应true
+	Dimension *bool `json:"Dimension,omitnil,omitempty" name:"Dimension"`
+}
+
+type DescribeStreamPackageSSAIUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 起始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 需要查询的channel_id
+	ChannelIds []*string `json:"ChannelIds,omitnil,omitempty" name:"ChannelIds"`
+
+	// 需要查询的广告类型。可选Pre-roll/Mid-roll/VOD；若为空，默认查询所有类型
+	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
+
+	// 维度，可选值：summary对应false；detail 对应true
+	Dimension *bool `json:"Dimension,omitnil,omitempty" name:"Dimension"`
+}
+
+func (r *DescribeStreamPackageSSAIUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageSSAIUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ChannelIds")
+	delete(f, "Types")
+	delete(f, "Dimension")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPackageSSAIUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageSSAIUsageResponseParams struct {
+	// SSAI用量信息
+	Info *SSAIUsageInfo `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamPackageSSAIUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamPackageSSAIUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamPackageSSAIUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageSSAIUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageSourceAlertsRequestParams struct {
+	// Source ID。
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// 查询开始时间，Unix时间戳，支持最近七天的查询。
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间，Unix时间戳，支持最近七天的查询。
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribeStreamPackageSourceAlertsRequest struct {
+	*tchttp.BaseRequest
+	
+	// Source ID。
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// 查询开始时间，Unix时间戳，支持最近七天的查询。
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间，Unix时间戳，支持最近七天的查询。
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeStreamPackageSourceAlertsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageSourceAlertsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SourceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPackageSourceAlertsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageSourceAlertsResponseParams struct {
+	// Source告警信息。
+	Infos []*SourceAlert `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamPackageSourceAlertsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamPackageSourceAlertsResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamPackageSourceAlertsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageSourceAlertsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageSourceLocationRequestParams struct {
+	// SourceLocation Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DescribeStreamPackageSourceLocationRequest struct {
+	*tchttp.BaseRequest
+	
+	// SourceLocation Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DescribeStreamPackageSourceLocationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageSourceLocationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPackageSourceLocationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageSourceLocationResponseParams struct {
+	// SourceLocation信息。
+	Info *SourceLocationInfo `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamPackageSourceLocationResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamPackageSourceLocationResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamPackageSourceLocationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageSourceLocationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageSourceLocationsRequestParams struct {
+	// 页数，取值范围为[1, 1000]。
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页大小，取值范围为[1, 1000]。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeStreamPackageSourceLocationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页数，取值范围为[1, 1000]。
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页大小，取值范围为[1, 1000]。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeStreamPackageSourceLocationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageSourceLocationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPackageSourceLocationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageSourceLocationsResponseParams struct {
+	// SourceLocation列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Infos []*SourceLocationInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// 页数。
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页大小。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 总数量。
+	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
+
+	// 总页数。
+	TotalPage *uint64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamPackageSourceLocationsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamPackageSourceLocationsResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamPackageSourceLocationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageSourceLocationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageSourceRequestParams struct {
+	// Source Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DescribeStreamPackageSourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// Source Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DescribeStreamPackageSourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageSourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPackageSourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageSourceResponseParams struct {
+	// Source信息。
+	Info *SourceInfo `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamPackageSourceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamPackageSourceResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamPackageSourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageSourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageSourcesRequestParams struct {
+	// 页数，取值范围为[1, 1000]。
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页大小，取值范围为[1, 1000]。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// Location Id，查询该location下面所有source。
+	LocationId *string `json:"LocationId,omitnil,omitempty" name:"LocationId"`
+
+	// Source的类型，分直播Live和点播VOD。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type DescribeStreamPackageSourcesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页数，取值范围为[1, 1000]。
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页大小，取值范围为[1, 1000]。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// Location Id，查询该location下面所有source。
+	LocationId *string `json:"LocationId,omitnil,omitempty" name:"LocationId"`
+
+	// Source的类型，分直播Live和点播VOD。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *DescribeStreamPackageSourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageSourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	delete(f, "LocationId")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamPackageSourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamPackageSourcesResponseParams struct {
+	// Source列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Infos []*SourceInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// 页数。
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页大小。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 总数量。
+	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
+
+	// 总页数。
+	TotalPage *uint64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamPackageSourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamPackageSourcesResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamPackageSourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamPackageSourcesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -15479,6 +17834,82 @@ type InputAddress struct {
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
+type LinearAssemblyChannelInfo struct {
+	// <p>线性组装频道名称。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>定义channel的特性，Standard支持直播和点播源，Basic只支持点播源编排。</p>
+	Tier *string `json:"Tier,omitnil,omitempty" name:"Tier"`
+
+	// <p>频道中的source切换的模式，分Linear线性和Loop循环，直播只支持Linear。</p>
+	PlaybackMode *string `json:"PlaybackMode,omitnil,omitempty" name:"PlaybackMode"`
+
+	// <p>时移配置，vod有效。</p>
+	TimeShiftConf *TimeShiftInfo `json:"TimeShiftConf,omitnil,omitempty" name:"TimeShiftConf"`
+
+	// <p>垫片配置。</p>
+	SlateConf *SlateInfo `json:"SlateConf,omitnil,omitempty" name:"SlateConf"`
+
+	// <p>output信息。</p>
+	Outputs []*OutputInfo `json:"Outputs,omitnil,omitempty" name:"Outputs"`
+
+	// <p>该channel绑定的program列表。</p>
+	AttachedPrograms []*string `json:"AttachedPrograms,omitnil,omitempty" name:"AttachedPrograms"`
+
+	// <p>program信息。</p>
+	ProgramSchedules []*ProgramScheduleInfo `json:"ProgramSchedules,omitnil,omitempty" name:"ProgramSchedules"`
+
+	// <p>Id。</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>Region。</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>State。</p>
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// <p>时移开启开关。</p>
+	TimeShiftEnable *bool `json:"TimeShiftEnable,omitnil,omitempty" name:"TimeShiftEnable"`
+
+	// <p>channel创建时间，unix秒时间戳。</p>
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
+type LinearAssemblyProgramInfo struct {
+	// program名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 编排的目标source的类型，分直播和点播。
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 关联的source location id。
+	SourceLocationId *string `json:"SourceLocationId,omitnil,omitempty" name:"SourceLocationId"`
+
+	// SourceId，唯一标识一个source。
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// 关联的直播or点播，source名称，location下全局唯一。
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// 绑定的channel。
+	AttachedChannel *string `json:"AttachedChannel,omitnil,omitempty" name:"AttachedChannel"`
+
+	// 播放配置。
+	PlaybackConf *PlaybackInfo `json:"PlaybackConf,omitnil,omitempty" name:"PlaybackConf"`
+
+	// AdBreaks。
+	AdBreaks []*AdBreakInfo `json:"AdBreaks,omitnil,omitempty" name:"AdBreaks"`
+
+	// Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// Region。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// SourceLocation名称。
+	SourceLocationName *string `json:"SourceLocationName,omitnil,omitempty" name:"SourceLocationName"`
+}
+
 type LiveActivityResItem struct {
 	// 直播录制任务输出
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -16280,6 +18711,14 @@ func (r *ManageTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ManifestInfo struct {
+	// 单位秒。
+	Windows *uint64 `json:"Windows,omitnil,omitempty" name:"Windows"`
+
+	// 打到output广告标签的格式，可选Date Range和Enhanced SCTE-35。
+	AdMarkupType *string `json:"AdMarkupType,omitnil,omitempty" name:"AdMarkupType"`
+}
+
 type MediaAiAnalysisClassificationItem struct {
 	// 智能分类的类别名称。
 	Classification *string `json:"Classification,omitnil,omitempty" name:"Classification"`
@@ -17020,6 +19459,14 @@ type MediaVideoStreamItem struct {
 	// 帧率分母部分
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FpsDenominator *int64 `json:"FpsDenominator,omitnil,omitempty" name:"FpsDenominator"`
+}
+
+type Metadata struct {
+	// Key。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// Value。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 // Predefined struct for user
@@ -19384,6 +21831,451 @@ func (r *ModifyStreamLinkSecurityGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyStreamPackageLinearAssemblyChannelRequestParams struct {
+	// Channel Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 修改后的名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 定义channel的特性，Standard支持直播和点播源，Basic只支持点播源编排。
+	Tier *string `json:"Tier,omitnil,omitempty" name:"Tier"`
+
+	// 频道中的source切换的模式，分Linear线性和Loop循环，直播只支持Linear。
+	PlaybackMode *string `json:"PlaybackMode,omitnil,omitempty" name:"PlaybackMode"`
+
+	// 时移开启开关。
+	TimeShiftEnable *bool `json:"TimeShiftEnable,omitnil,omitempty" name:"TimeShiftEnable"`
+
+	// 时移配置。	
+	TimeShiftConf *TimeShiftInfo `json:"TimeShiftConf,omitnil,omitempty" name:"TimeShiftConf"`
+
+	// 垫片配置。	
+	SlateConf *SlateInfo `json:"SlateConf,omitnil,omitempty" name:"SlateConf"`
+
+	// 输出配置。	
+	Outputs []*OutputInfo `json:"Outputs,omitnil,omitempty" name:"Outputs"`
+}
+
+type ModifyStreamPackageLinearAssemblyChannelRequest struct {
+	*tchttp.BaseRequest
+	
+	// Channel Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 修改后的名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 定义channel的特性，Standard支持直播和点播源，Basic只支持点播源编排。
+	Tier *string `json:"Tier,omitnil,omitempty" name:"Tier"`
+
+	// 频道中的source切换的模式，分Linear线性和Loop循环，直播只支持Linear。
+	PlaybackMode *string `json:"PlaybackMode,omitnil,omitempty" name:"PlaybackMode"`
+
+	// 时移开启开关。
+	TimeShiftEnable *bool `json:"TimeShiftEnable,omitnil,omitempty" name:"TimeShiftEnable"`
+
+	// 时移配置。	
+	TimeShiftConf *TimeShiftInfo `json:"TimeShiftConf,omitnil,omitempty" name:"TimeShiftConf"`
+
+	// 垫片配置。	
+	SlateConf *SlateInfo `json:"SlateConf,omitnil,omitempty" name:"SlateConf"`
+
+	// 输出配置。	
+	Outputs []*OutputInfo `json:"Outputs,omitnil,omitempty" name:"Outputs"`
+}
+
+func (r *ModifyStreamPackageLinearAssemblyChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamPackageLinearAssemblyChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "Tier")
+	delete(f, "PlaybackMode")
+	delete(f, "TimeShiftEnable")
+	delete(f, "TimeShiftConf")
+	delete(f, "SlateConf")
+	delete(f, "Outputs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStreamPackageLinearAssemblyChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStreamPackageLinearAssemblyChannelResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyStreamPackageLinearAssemblyChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyStreamPackageLinearAssemblyChannelResponseParams `json:"Response"`
+}
+
+func (r *ModifyStreamPackageLinearAssemblyChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamPackageLinearAssemblyChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStreamPackageLinearAssemblyProgramRequestParams struct {
+	// Program Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 修改后的名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 编排的目标source的类型，分直播和点播。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 关联的source location。	
+	SourceLocationId *string `json:"SourceLocationId,omitnil,omitempty" name:"SourceLocationId"`
+
+	// 关联的直播or点播，source名称，location下全局唯一。
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// PlaybackConf。
+	PlaybackConf *PlaybackInfoReq `json:"PlaybackConf,omitnil,omitempty" name:"PlaybackConf"`
+
+	// AdBreaks。
+	AdBreaks []*AdBreakInfo `json:"AdBreaks,omitnil,omitempty" name:"AdBreaks"`
+}
+
+type ModifyStreamPackageLinearAssemblyProgramRequest struct {
+	*tchttp.BaseRequest
+	
+	// Program Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 修改后的名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 编排的目标source的类型，分直播和点播。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 关联的source location。	
+	SourceLocationId *string `json:"SourceLocationId,omitnil,omitempty" name:"SourceLocationId"`
+
+	// 关联的直播or点播，source名称，location下全局唯一。
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// PlaybackConf。
+	PlaybackConf *PlaybackInfoReq `json:"PlaybackConf,omitnil,omitempty" name:"PlaybackConf"`
+
+	// AdBreaks。
+	AdBreaks []*AdBreakInfo `json:"AdBreaks,omitnil,omitempty" name:"AdBreaks"`
+}
+
+func (r *ModifyStreamPackageLinearAssemblyProgramRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamPackageLinearAssemblyProgramRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "SourceType")
+	delete(f, "SourceLocationId")
+	delete(f, "SourceName")
+	delete(f, "PlaybackConf")
+	delete(f, "AdBreaks")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStreamPackageLinearAssemblyProgramRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStreamPackageLinearAssemblyProgramResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyStreamPackageLinearAssemblyProgramResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyStreamPackageLinearAssemblyProgramResponseParams `json:"Response"`
+}
+
+func (r *ModifyStreamPackageLinearAssemblyProgramResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamPackageLinearAssemblyProgramResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStreamPackageSSAIChannelRequestParams struct {
+	// 广告插入配置名称，全局唯一，不能与其他频道重复。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 通配广告源地址。
+	ContentSource *string `json:"ContentSource,omitnil,omitempty" name:"ContentSource"`
+
+	// 广告插入配置信息。
+	SSAIInfo *SSAIConf `json:"SSAIInfo,omitnil,omitempty" name:"SSAIInfo"`
+
+	// 广告插入配置ID。
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+type ModifyStreamPackageSSAIChannelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 广告插入配置名称，全局唯一，不能与其他频道重复。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 通配广告源地址。
+	ContentSource *string `json:"ContentSource,omitnil,omitempty" name:"ContentSource"`
+
+	// 广告插入配置信息。
+	SSAIInfo *SSAIConf `json:"SSAIInfo,omitnil,omitempty" name:"SSAIInfo"`
+
+	// 广告插入配置ID。
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+func (r *ModifyStreamPackageSSAIChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamPackageSSAIChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "ContentSource")
+	delete(f, "SSAIInfo")
+	delete(f, "ID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStreamPackageSSAIChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStreamPackageSSAIChannelResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyStreamPackageSSAIChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyStreamPackageSSAIChannelResponseParams `json:"Response"`
+}
+
+func (r *ModifyStreamPackageSSAIChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamPackageSSAIChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStreamPackageSourceLocationRequestParams struct {
+	// SourceLocation Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 修改后的名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 基准URL。	
+	BaseUrl *string `json:"BaseUrl,omitnil,omitempty" name:"BaseUrl"`
+
+	// 是否开启补片。
+	SegmentDeliverEnable *bool `json:"SegmentDeliverEnable,omitnil,omitempty" name:"SegmentDeliverEnable"`
+
+	// 补片配置。	
+	SegmentDeliverConf *SegmentDeliverInfo `json:"SegmentDeliverConf,omitnil,omitempty" name:"SegmentDeliverConf"`
+
+	// 是否开启package分发分片，默认开启。	
+	SegmentDeliverUsePackageEnable *bool `json:"SegmentDeliverUsePackageEnable,omitnil,omitempty" name:"SegmentDeliverUsePackageEnable"`
+}
+
+type ModifyStreamPackageSourceLocationRequest struct {
+	*tchttp.BaseRequest
+	
+	// SourceLocation Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 修改后的名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 基准URL。	
+	BaseUrl *string `json:"BaseUrl,omitnil,omitempty" name:"BaseUrl"`
+
+	// 是否开启补片。
+	SegmentDeliverEnable *bool `json:"SegmentDeliverEnable,omitnil,omitempty" name:"SegmentDeliverEnable"`
+
+	// 补片配置。	
+	SegmentDeliverConf *SegmentDeliverInfo `json:"SegmentDeliverConf,omitnil,omitempty" name:"SegmentDeliverConf"`
+
+	// 是否开启package分发分片，默认开启。	
+	SegmentDeliverUsePackageEnable *bool `json:"SegmentDeliverUsePackageEnable,omitnil,omitempty" name:"SegmentDeliverUsePackageEnable"`
+}
+
+func (r *ModifyStreamPackageSourceLocationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamPackageSourceLocationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "BaseUrl")
+	delete(f, "SegmentDeliverEnable")
+	delete(f, "SegmentDeliverConf")
+	delete(f, "SegmentDeliverUsePackageEnable")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStreamPackageSourceLocationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStreamPackageSourceLocationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyStreamPackageSourceLocationResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyStreamPackageSourceLocationResponseParams `json:"Response"`
+}
+
+func (r *ModifyStreamPackageSourceLocationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamPackageSourceLocationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStreamPackageSourceRequestParams struct {
+	// Source Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 修改后的名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 区分直播Live和点播VOD source类型。	
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// source配置。	
+	PackageConfs []*SourcePackageConf `json:"PackageConfs,omitnil,omitempty" name:"PackageConfs"`
+
+	// ADS可以根据Source Tag信息，返回更精准的广告。
+	SourceTags []*SourceTag `json:"SourceTags,omitnil,omitempty" name:"SourceTags"`
+}
+
+type ModifyStreamPackageSourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// Source Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 修改后的名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 区分直播Live和点播VOD source类型。	
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// source配置。	
+	PackageConfs []*SourcePackageConf `json:"PackageConfs,omitnil,omitempty" name:"PackageConfs"`
+
+	// ADS可以根据Source Tag信息，返回更精准的广告。
+	SourceTags []*SourceTag `json:"SourceTags,omitnil,omitempty" name:"SourceTags"`
+}
+
+func (r *ModifyStreamPackageSourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamPackageSourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "PackageConfs")
+	delete(f, "SourceTags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStreamPackageSourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStreamPackageSourceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyStreamPackageSourceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyStreamPackageSourceResponseParams `json:"Response"`
+}
+
+func (r *ModifyStreamPackageSourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamPackageSourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifySubtitleEmbedTemplateRequestParams struct {
 	// <p>字幕压制模板唯一标识</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -19839,6 +22731,14 @@ type MosaicInput struct {
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
 }
 
+type NameServer struct {
+	// 名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 地址。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
 type NumberFormat struct {
 	// `{number}`变量的起始值，默认为0。
 	InitialValue *uint64 `json:"InitialValue,omitnil,omitempty" name:"InitialValue"`
@@ -19894,6 +22794,26 @@ type OutputAddress struct {
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 }
 
+type OutputInfo struct {
+	// HLS DASH。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// output group名称，可以和source的group名称对应关联起来。
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// channel program调度后输出的文件名。
+	ManifestName *string `json:"ManifestName,omitnil,omitempty" name:"ManifestName"`
+
+	// Type为HLS时manifest配置使用的字段。
+	ManifestConf *ManifestInfo `json:"ManifestConf,omitnil,omitempty" name:"ManifestConf"`
+
+	// 播放地址。
+	PlaybackURL *string `json:"PlaybackURL,omitnil,omitempty" name:"PlaybackURL"`
+
+	// Type为DASH时manifest配置使用的字段。
+	DashManifestConf *DashManifestInfo `json:"DashManifestConf,omitnil,omitempty" name:"DashManifestConf"`
+}
+
 type OutputRISTSourceAddressResp struct {
 	// 监听IP。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -19902,6 +22822,23 @@ type OutputRISTSourceAddressResp struct {
 	// 监听端口。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+}
+
+type OutputReq struct {
+	// 输出类型，区分HLS DASH。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// output group名称，可以和source的group名称对应关联起来。
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// channel program调度后输出的文件名。
+	ManifestName *string `json:"ManifestName,omitnil,omitempty" name:"ManifestName"`
+
+	// Type为HLS时manifest配置使用的字段。
+	ManifestConf *ManifestInfo `json:"ManifestConf,omitnil,omitempty" name:"ManifestConf"`
+
+	// Type为DASH时manifest配置使用的字段。
+	DashManifestConf *DashManifestInfo `json:"DashManifestConf,omitnil,omitempty" name:"DashManifestConf"`
 }
 
 type OutputSRTSourceAddressResp struct {
@@ -20176,6 +23113,49 @@ type PidSelector struct {
 	// 对于含有多个视频轨的流，可以通过输入PID来指定需要使用的视频轨，PID可以输入1到8191之间的正整数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoPID []*int64 `json:"VideoPID,omitnil,omitempty" name:"VideoPID"`
+}
+
+type PlaybackInfo struct {
+	// <p>program持续时间，单位毫秒，直播有效。</p>
+	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// <p>program启动方式，直播只支持Absolute，点播还支持Relative。</p>
+	TransitionType *string `json:"TransitionType,omitnil,omitempty" name:"TransitionType"`
+
+	// <p>unix时间戳，Absolute场景下program的开始执行时间。</p>
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>和所选program的插入顺序关系，分After和Before。</p>
+	RelativePosition *string `json:"RelativePosition,omitnil,omitempty" name:"RelativePosition"`
+
+	// <p>所选的插入参考program id。</p>
+	RelativeProgramId *string `json:"RelativeProgramId,omitnil,omitempty" name:"RelativeProgramId"`
+
+	// <p>垫片配置。</p>
+	ClipRangeConf *ClipRangeInfo `json:"ClipRangeConf,omitnil,omitempty" name:"ClipRangeConf"`
+
+	// <p>RelativeProgramName。</p>
+	RelativeProgramName *string `json:"RelativeProgramName,omitnil,omitempty" name:"RelativeProgramName"`
+}
+
+type PlaybackInfoReq struct {
+	// program启动方式，直播只支持Absolute，点播还支持Relative。PlaybackMode类型为Linear的VOD支持Absolute和Relative。PlaybackMode类型为Loop的VOD只支持Relative
+	TransitionType *string `json:"TransitionType,omitnil,omitempty" name:"TransitionType"`
+
+	// unix时间戳，absolute场景下program的开始执行时间。最多大于当前90天（7776000）。
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// program持续时间，单位毫秒，直播有效。支持600000-86400000。默认600000。
+	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 和所选program的插入顺序关系，分After和Before。
+	RelativePosition *string `json:"RelativePosition,omitnil,omitempty" name:"RelativePosition"`
+
+	// 所选的插入参考program id。
+	RelativeProgramId *string `json:"RelativeProgramId,omitnil,omitempty" name:"RelativeProgramId"`
+
+	// 垫片配置。
+	ClipRangeConf *ClipRangeInfo `json:"ClipRangeConf,omitnil,omitempty" name:"ClipRangeConf"`
 }
 
 type PoliticalAsrReviewTemplateInfo struct {
@@ -20924,6 +23904,72 @@ func (r *ProcessMediaResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ProcessMediaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ProgramAlertCounts struct {
+	// <p>Program ID。</p>
+	ProgramId *string `json:"ProgramId,omitnil,omitempty" name:"ProgramId"`
+
+	// <p>Program名称。</p>
+	ProgramName *string `json:"ProgramName,omitnil,omitempty" name:"ProgramName"`
+
+	// <p>告警分类。</p>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>出现次数</p>
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// <p>更新时间。</p>
+	LastModifiedTime *uint64 `json:"LastModifiedTime,omitnil,omitempty" name:"LastModifiedTime"`
+}
+
+type ProgramAlertInfos struct {
+	// <p>频道ID。</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>频道名称。</p>
+	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
+
+	// <p>ProgramName。</p>
+	ProgramId *string `json:"ProgramId,omitnil,omitempty" name:"ProgramId"`
+
+	// <p>ProgramName。</p>
+	ProgramName *string `json:"ProgramName,omitnil,omitempty" name:"ProgramName"`
+
+	// <p>告警事件码。</p>
+	Code *uint64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// <p>告警分类。</p>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>告警消息。</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>更新时间。</p>
+	LastModifiedTime *uint64 `json:"LastModifiedTime,omitnil,omitempty" name:"LastModifiedTime"`
+}
+
+type ProgramScheduleInfo struct {
+	// <p>program名称。</p>
+	ProgramName *string `json:"ProgramName,omitnil,omitempty" name:"ProgramName"`
+
+	// <p>program id。</p>
+	ProgramId *string `json:"ProgramId,omitnil,omitempty" name:"ProgramId"`
+
+	// <p>source类型。</p>
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// <p>source id。</p>
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// <p>source location的id。</p>
+	SourceLocationId *string `json:"SourceLocationId,omitnil,omitempty" name:"SourceLocationId"`
+
+	// <p>开始时间戳。</p>
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>持续时长。</p>
+	Duration *string `json:"Duration,omitnil,omitempty" name:"Duration"`
 }
 
 type ProhibitedAsrReviewTemplateInfo struct {
@@ -22034,6 +25080,110 @@ type SRTSourceAddressResp struct {
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
+type SSAIChannelInfo struct {
+	// 频道ID，全局唯一标识。
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 频道名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 广告源信息。
+	ContentSource *string `json:"ContentSource,omitnil,omitempty" name:"ContentSource"`
+
+	// 播放地址。
+	PlaybackPrefix *string `json:"PlaybackPrefix,omitnil,omitempty" name:"PlaybackPrefix"`
+
+	// 广告插入SSAI配置信息。
+	SSAIInfo *SSAIConf `json:"SSAIInfo,omitnil,omitempty" name:"SSAIInfo"`
+
+	// 地域信息。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 用于clickthrough地址
+	SessionInitPrefix *string `json:"SessionInitPrefix,omitnil,omitempty" name:"SessionInitPrefix"`
+}
+
+type SSAIConf struct {
+	// <p>广告决策服务器URL(ADS)。</p>
+	AdsUrl *string `json:"AdsUrl,omitnil,omitempty" name:"AdsUrl"`
+
+	// <p>参数配置。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigAliases []*ConfigAliasesInfo `json:"ConfigAliases,omitnil,omitempty" name:"ConfigAliases"`
+
+	// <p>是否开启广告标记透传。</p>
+	AdMarkerPassthrough *bool `json:"AdMarkerPassthrough,omitnil,omitempty" name:"AdMarkerPassthrough"`
+
+	// <p>如何处理广告中的标记,可选值[1-2]：<br>1:所有SCTE-35类型标记全部处理-all（默认）<br>2:SCTE-35enhanced，解析部分类型。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SCTE35AdType *uint64 `json:"SCTE35AdType,omitnil,omitempty" name:"SCTE35AdType"`
+
+	// <p>默认广告url。</p>
+	SlateAd *string `json:"SlateAd,omitnil,omitempty" name:"SlateAd"`
+
+	// <p>未填充的最大时长，单位：秒。</p>
+	Threshold *uint64 `json:"Threshold,omitnil,omitempty" name:"Threshold"`
+
+	// <p>是否开启mpd location, true对应enable， false对应disable。</p>
+	DashMPDLocation *bool `json:"DashMPDLocation,omitnil,omitempty" name:"DashMPDLocation"`
+
+	// <p>被视作广告的标记类型，可选值[1-8]：</p><ol><li>Splice insert<br>2.Provider advertisement</li><li>Distributor advertisement</li><li>Provider placement opportunity</li><li>Distributor placement opportunity</li><li>Break</li><li>Provider overlay placement opportunity</li><li>Distributor overlay placement opportunity。</li></ol>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdTriggers []*uint64 `json:"AdTriggers,omitnil,omitempty" name:"AdTriggers"`
+
+	// <p>被视作广告的分发限制类型，可选值[1-4]：<br>1:None<br>2:Restricted（默认） 3:Unrestricted<br>4.Both</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeliveryRestrictions *uint64 `json:"DeliveryRestrictions,omitnil,omitempty" name:"DeliveryRestrictions"`
+
+	// <p>源流CDN前缀，需要以http://或者https://开头。</p>
+	SourceCDNPrefix *string `json:"SourceCDNPrefix,omitnil,omitempty" name:"SourceCDNPrefix"`
+
+	// <p>广告CDN前缀，需要以http://或者https://开头。</p>
+	AdCDNPrefix *string `json:"AdCDNPrefix,omitnil,omitempty" name:"AdCDNPrefix"`
+
+	// <p>预加载广告决策服务地址。</p>
+	PreRollAdsUrl *string `json:"PreRollAdsUrl,omitnil,omitempty" name:"PreRollAdsUrl"`
+
+	// <p>预加载广告最大允许时长，0-3600。</p>
+	PreRollMaxAllowedDuration *int64 `json:"PreRollMaxAllowedDuration,omitnil,omitempty" name:"PreRollMaxAllowedDuration"`
+
+	// <p>是否开启多次请求ADS,开启后将优先请求ADS，请求失败后再请求兜底广告</p>
+	MultiRequest *bool `json:"MultiRequest,omitnil,omitempty" name:"MultiRequest"`
+}
+
+type SSAIUsageInfo struct {
+	// 广告请求成功次数
+	AdRequestSuccess *uint64 `json:"AdRequestSuccess,omitnil,omitempty" name:"AdRequestSuccess"`
+
+	// 广告请求失败次数
+	AdRequestFail *uint64 `json:"AdRequestFail,omitnil,omitempty" name:"AdRequestFail"`
+
+	// 曝光次数
+	Impression *uint64 `json:"Impression,omitnil,omitempty" name:"Impression"`
+
+	// 中贴个性化广告填充率
+	MidFillRate *float64 `json:"MidFillRate,omitnil,omitempty" name:"MidFillRate"`
+
+	// 中贴广告标记时间
+	AdMarkerTime *float64 `json:"AdMarkerTime,omitnil,omitempty" name:"AdMarkerTime"`
+
+	// 中贴个性化替换时间
+	ReplacedTime *float64 `json:"ReplacedTime,omitnil,omitempty" name:"ReplacedTime"`
+
+	// 前贴广告替换率
+	PreReplaceRate *float64 `json:"PreReplaceRate,omitnil,omitempty" name:"PreReplaceRate"`
+
+	// 前贴广告请求数
+	PreReqNum *uint64 `json:"PreReqNum,omitnil,omitempty" name:"PreReqNum"`
+
+	// 前贴广告替换数
+	PreReplacedNum *uint64 `json:"PreReplacedNum,omitnil,omitempty" name:"PreReplacedNum"`
+
+	// 各广告配置用量详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsageDetails []*UsageDetail `json:"UsageDetails,omitnil,omitempty" name:"UsageDetails"`
+}
+
 type SampleSnapshotTaskInput struct {
 	// 采样截图模板 ID。
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -22406,6 +25556,14 @@ type SecurityGroupInfo struct {
 	OccupiedOutputs []*string `json:"OccupiedOutputs,omitnil,omitempty" name:"OccupiedOutputs"`
 }
 
+type SegmentDeliverInfo struct {
+	// 默认内容源地址。
+	DefaultSegmentUrl *string `json:"DefaultSegmentUrl,omitnil,omitempty" name:"DefaultSegmentUrl"`
+
+	// 自定义服务器地址。
+	NameServers []*NameServer `json:"NameServers,omitnil,omitempty" name:"NameServers"`
+}
+
 type SegmentRecognitionItem struct {
 	// 置信度。
 	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
@@ -22507,6 +25665,14 @@ type SimpleAesDrm struct {
 	// 加密初始化向量(十六进制32字节字符串)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vector *string `json:"Vector,omitnil,omitempty" name:"Vector"`
+}
+
+type SlateInfo struct {
+	// source location的ID。
+	SourceLocationId *string `json:"SourceLocationId,omitnil,omitempty" name:"SourceLocationId"`
+
+	// 对应的vod垫片内容源名称。
+	VodSourceName *string `json:"VodSourceName,omitnil,omitempty" name:"VodSourceName"`
 }
 
 type SmartErasePrivacyConfig struct {
@@ -23167,6 +26333,106 @@ type SnapshotByTimeOffsetTemplate struct {
 	FillType *string `json:"FillType,omitnil,omitempty" name:"FillType"`
 }
 
+type SourceAlert struct {
+	// Source ID。
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// Source名称。
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// 告警事件码。
+	Code *uint64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 告警分类。
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// 告警消息。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 更新时间。
+	LastModifiedTime *uint64 `json:"LastModifiedTime,omitnil,omitempty" name:"LastModifiedTime"`
+}
+
+type SourceInfo struct {
+	// 名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// source类型，区分直播Live和点播Vod。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 源配置。
+	PackageConf []*SourcePackageConf `json:"PackageConf,omitnil,omitempty" name:"PackageConf"`
+
+	// ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 创建时间戳。
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间戳。
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// Region。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 源标签
+	SourceTags []*SourceTag `json:"SourceTags,omitnil,omitempty" name:"SourceTags"`
+}
+
+type SourceLocationInfo struct {
+	// <p>ID，唯一标识。</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>SourceLocation名称。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>地域。</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>BaseUrl信息。</p>
+	BaseUrl *string `json:"BaseUrl,omitnil,omitempty" name:"BaseUrl"`
+
+	// <p>是否开启补片。</p>
+	SegmentDeliverEnable *bool `json:"SegmentDeliverEnable,omitnil,omitempty" name:"SegmentDeliverEnable"`
+
+	// <p>补片配置。</p>
+	SegmentDeliverConf *SegmentDeliverInfo `json:"SegmentDeliverConf,omitnil,omitempty" name:"SegmentDeliverConf"`
+
+	// <p>绑定的直播source id列表。</p>
+	AttachedLiveSources []*string `json:"AttachedLiveSources,omitnil,omitempty" name:"AttachedLiveSources"`
+
+	// <p>绑定的点播source id列表。</p>
+	AttachedVodSources []*string `json:"AttachedVodSources,omitnil,omitempty" name:"AttachedVodSources"`
+
+	// <p>source location创建时间，Unix时间戳。</p>
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>source location最近一次修改时间，Unix时间戳。</p>
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>是否开启package分发分片，默认开启。</p>
+	SegmentDeliverUsePackageEnable *bool `json:"SegmentDeliverUsePackageEnable,omitnil,omitempty" name:"SegmentDeliverUsePackageEnable"`
+}
+
+type SourcePackageConf struct {
+	// group名称，当channel为Linear模式并且选择了vod source的时候，该group 名称和channel output的输出组名称对应。
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 类型，区分HLS和DASH，可选值：HLS、DASH。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 访问路径。
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+}
+
+type SourceTag struct {
+	// sourcetag的key，支持1-50位的大写字母、数字、下划线、中划线
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// sourcetag的value，支持1-200位的字母、数字下划线、中划线、英文句号、百分号（%）
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type SpecificationDataItem struct {
 	// 任务规格。
 	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
@@ -23205,6 +26471,20 @@ type SpekeDrm struct {
 	// preset0：全部子流使用同一个key加密；
 	// preset1：每个子流使用不同的key加密；
 	EncryptionPreset *string `json:"EncryptionPreset,omitnil,omitempty" name:"EncryptionPreset"`
+}
+
+type SpliceInsertInfo struct {
+	// EventID。
+	EventID *string `json:"EventID,omitnil,omitempty" name:"EventID"`
+
+	// AvailNum。
+	AvailNum *string `json:"AvailNum,omitnil,omitempty" name:"AvailNum"`
+
+	// AvailExpected。
+	AvailExpected *string `json:"AvailExpected,omitnil,omitempty" name:"AvailExpected"`
+
+	// ProgramID。
+	ProgramID *string `json:"ProgramID,omitnil,omitempty" name:"ProgramID"`
 }
 
 // Predefined struct for user
@@ -23262,6 +26542,60 @@ func (r *StartStreamLinkFlowResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type StartStreamPackageLinearAssemblyChannelRequestParams struct {
+	// Channel ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type StartStreamPackageLinearAssemblyChannelRequest struct {
+	*tchttp.BaseRequest
+	
+	// Channel ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *StartStreamPackageLinearAssemblyChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartStreamPackageLinearAssemblyChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartStreamPackageLinearAssemblyChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartStreamPackageLinearAssemblyChannelResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StartStreamPackageLinearAssemblyChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *StartStreamPackageLinearAssemblyChannelResponseParams `json:"Response"`
+}
+
+func (r *StartStreamPackageLinearAssemblyChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartStreamPackageLinearAssemblyChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type StopStreamLinkFlowRequestParams struct {
 	// 流Id。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
@@ -23312,6 +26646,60 @@ func (r *StopStreamLinkFlowResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StopStreamLinkFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopStreamPackageLinearAssemblyChannelRequestParams struct {
+	// Channel ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type StopStreamPackageLinearAssemblyChannelRequest struct {
+	*tchttp.BaseRequest
+	
+	// Channel ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *StopStreamPackageLinearAssemblyChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopStreamPackageLinearAssemblyChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopStreamPackageLinearAssemblyChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopStreamPackageLinearAssemblyChannelResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopStreamPackageLinearAssemblyChannelResponse struct {
+	*tchttp.BaseResponse
+	Response *StopStreamPackageLinearAssemblyChannelResponseParams `json:"Response"`
+}
+
+func (r *StopStreamPackageLinearAssemblyChannelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopStreamPackageLinearAssemblyChannelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -25170,6 +28558,37 @@ type TextWatermarkTemplateInputForUpdate struct {
 	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
 }
 
+type TimeShiftInfo struct {
+	// 回看窗口，单位秒。
+	TimeWindows *uint64 `json:"TimeWindows,omitnil,omitempty" name:"TimeWindows"`
+}
+
+type TimeSignalInfo struct {
+	// EventID。
+	EventID *string `json:"EventID,omitnil,omitempty" name:"EventID"`
+
+	// UPIDType。
+	UPIDType *string `json:"UPIDType,omitnil,omitempty" name:"UPIDType"`
+
+	// UPID。
+	UPID *string `json:"UPID,omitnil,omitempty" name:"UPID"`
+
+	// TypeID。
+	TypeID *string `json:"TypeID,omitnil,omitempty" name:"TypeID"`
+
+	// Num。
+	Num *string `json:"Num,omitnil,omitempty" name:"Num"`
+
+	// Expected。
+	Expected *string `json:"Expected,omitnil,omitempty" name:"Expected"`
+
+	// SubsegmentNum。
+	SubsegmentNum *string `json:"SubsegmentNum,omitnil,omitempty" name:"SubsegmentNum"`
+
+	// SubsegmentsExpected。
+	SubsegmentsExpected *string `json:"SubsegmentsExpected,omitnil,omitempty" name:"SubsegmentsExpected"`
+}
+
 type TimeSpotCheck struct {
 	// 每次循环检测的时长。取值范围（单位s）：
 	// 
@@ -25511,6 +28930,95 @@ type UpdateSmartEraseWatermarkConfig struct {
 type UrlInputInfo struct {
 	// 视频的 URL。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+type UsageDetail struct {
+	// <p>广告配置uniq_id</p>
+	UniqId *string `json:"UniqId,omitnil,omitempty" name:"UniqId"`
+
+	// <p>广告配置id</p>
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// <p>广告配置名称</p>
+	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
+
+	// <p>广告类型</p>
+	AdType *string `json:"AdType,omitnil,omitempty" name:"AdType"`
+
+	// <p>广告请求成功数</p>
+	AdRequestSuccess *uint64 `json:"AdRequestSuccess,omitnil,omitempty" name:"AdRequestSuccess"`
+
+	// <p>广告请求失败数</p>
+	AdRequestFail *uint64 `json:"AdRequestFail,omitnil,omitempty" name:"AdRequestFail"`
+
+	// <p>广告曝光数</p>
+	Impression *uint64 `json:"Impression,omitnil,omitempty" name:"Impression"`
+
+	// <p>广告开始播放数</p>
+	Start *uint64 `json:"Start,omitnil,omitempty" name:"Start"`
+
+	// <p>广告播放到1/4处数</p>
+	FirstQuarter *uint64 `json:"FirstQuarter,omitnil,omitempty" name:"FirstQuarter"`
+
+	// <p>广告播放到1/2处数</p>
+	Midpoint *uint64 `json:"Midpoint,omitnil,omitempty" name:"Midpoint"`
+
+	// <p>广告播放到3/4处数</p>
+	ThirdQuarter *uint64 `json:"ThirdQuarter,omitnil,omitempty" name:"ThirdQuarter"`
+
+	// <p>广告播放完成数</p>
+	Complete *uint64 `json:"Complete,omitnil,omitempty" name:"Complete"`
+
+	// <p>中贴广告标记时间</p>
+	AdMarkerTime *float64 `json:"AdMarkerTime,omitnil,omitempty" name:"AdMarkerTime"`
+
+	// <p>中贴个性化替换时间</p>
+	ReplacedTime *float64 `json:"ReplacedTime,omitnil,omitempty" name:"ReplacedTime"`
+
+	// <p>中贴个性化广告填充率</p>
+	MidFillRate *float64 `json:"MidFillRate,omitnil,omitempty" name:"MidFillRate"`
+
+	// <p>前贴广告请求数</p>
+	PreReqNum *uint64 `json:"PreReqNum,omitnil,omitempty" name:"PreReqNum"`
+
+	// <p>前贴广告替换数</p>
+	PreReplacedNum *uint64 `json:"PreReplacedNum,omitnil,omitempty" name:"PreReplacedNum"`
+
+	// <p>前贴广告替换率</p>
+	PreReplaceRate *float64 `json:"PreReplaceRate,omitnil,omitempty" name:"PreReplaceRate"`
+
+	// <p>在清单中发现了广告标记次数</p>
+	ADMarkerFound *uint64 `json:"ADMarkerFound,omitnil,omitempty" name:"ADMarkerFound"`
+
+	// <p>向ADS请求广告次数</p>
+	MakeAdsRequest *uint64 `json:"MakeAdsRequest,omitnil,omitempty" name:"MakeAdsRequest"`
+
+	// <p>从ADS收到VAST返回次数</p>
+	VASTResponse *uint64 `json:"VASTResponse,omitnil,omitempty" name:"VASTResponse"`
+
+	// <p>成功填充了广告次数</p>
+	FilledAvail *uint64 `json:"FilledAvail,omitnil,omitempty" name:"FilledAvail"`
+
+	// <p>执行广告替换时遇到问题次数</p>
+	WarningNoAd *uint64 `json:"WarningNoAd,omitnil,omitempty" name:"WarningNoAd"`
+
+	// <p>ADS返回超时次数</p>
+	ErrorAdsTimeout *uint64 `json:"ErrorAdsTimeout,omitnil,omitempty" name:"ErrorAdsTimeout"`
+
+	// <p>ADS 返回了一个空的 VAST 响应次数</p>
+	EmptyVASTResponse *uint64 `json:"EmptyVASTResponse,omitnil,omitempty" name:"EmptyVASTResponse"`
+
+	// <p>ADS 返回了一个空的VMAP 响应次数</p>
+	EmptyVMAPResponse *uint64 `json:"EmptyVMAPResponse,omitnil,omitempty" name:"EmptyVMAPResponse"`
+
+	// <p>日期</p>
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// <p>开始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type UserDefineAsrTextReviewTemplateInfo struct {
