@@ -317,31 +317,31 @@ type AgentPluginHeader struct {
 }
 
 type AgentPluginInfo struct {
-	// 插件id
+	// <p>插件id</p>
 	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
 
-	// 应用配置的插件header信息
+	// <p>应用配置的插件header信息</p>
 	Headers []*AgentPluginHeader `json:"Headers,omitnil,omitempty" name:"Headers"`
 
-	// 插件调用LLM时使用的模型配置，一般用于指定知识库问答插件的生成模型
+	// <p>插件调用LLM时使用的模型配置，一般用于指定知识库问答插件的生成模型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Model *AgentModelInfo `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 插件信息类型; 0: 未指定类型; 1: 知识库问答插件
+	// <p>插件信息类型; 0: 未指定类型; 1: 知识库问答插件</p>
 	PluginInfoType *uint64 `json:"PluginInfoType,omitnil,omitempty" name:"PluginInfoType"`
 
-	// 知识库问答插件配置
+	// <p>知识库问答插件配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KnowledgeQa *AgentKnowledgeQAPlugin `json:"KnowledgeQa,omitnil,omitempty" name:"KnowledgeQa"`
 
-	// 是否使用一键授权
+	// <p>是否使用一键授权</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableRoleAuth *bool `json:"EnableRoleAuth,omitnil,omitempty" name:"EnableRoleAuth"`
 
-	// 应用配置的插件query信息
+	// <p>应用配置的插件query信息</p>
 	Query []*AgentPluginQuery `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// MCP类型
+	// <p>MCP类型</p><p>枚举值：</p><ul><li>0： SSE 模式</li><li>1： Streamable Http 模式</li></ul>
 	McpType *uint64 `json:"McpType,omitnil,omitempty" name:"McpType"`
 }
 
@@ -502,6 +502,17 @@ type AgentReference struct {
 	// 知识库标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
+}
+
+type AgentTask struct {
+	// <p>任务序号</p>
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// <p>任务内容</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>任务状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type AgentThought struct {
@@ -1442,71 +1453,71 @@ type ClassifyLabel struct {
 }
 
 type Content struct {
-	// 消息内容类型
-	// text：文本
-	// image：图片
-	// file：文件
-	// option_cards：选项卡
-	// custom_params：用户自定义业务参数
-	// sandbox：云桌面
-	// custom_variables：自定义输入参数
-	// web_search: 网页搜索内容
-	// file_collection：文件收集信息
-	// widget：widget信息
-	// widget_action：用户端widget动作信息
+	// <p>消息内容类型<br>text：文本<br>image：图片<br>file：文件<br>option_cards：选项卡<br>custom_params：用户自定义业务参数<br>sandbox：云桌面<br>custom_variables：自定义输入参数<br>web_search: 网页搜索内容<br>file_collection：文件收集信息<br>widget：widget信息<br>widget_action：用户端widget动作信息</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 文本内容
+	// <p>文本内容</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 引用信息
+	// <p>引用信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuoteInfos []*QuoteInfo `json:"QuoteInfos,omitnil,omitempty" name:"QuoteInfos"`
 
-	// 参考文献信息
+	// <p>参考文献信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	References []*ContentReference `json:"References,omitnil,omitempty" name:"References"`
 
-	// 图片信息
+	// <p>图片信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Image *ImageInfoContent `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 文件信息
+	// <p>文件信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	File *FileInfoContent `json:"File,omitnil,omitempty" name:"File"`
 
-	// 选项卡信息
+	// <p>选项卡信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OptionCards []*string `json:"OptionCards,omitnil,omitempty" name:"OptionCards"`
 
-	// 用户自定义业务参数信息
+	// <p>用户自定义业务参数信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomParams []*string `json:"CustomParams,omitnil,omitempty" name:"CustomParams"`
 
-	// 自定义变量
+	// <p>自定义变量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomVariables []*string `json:"CustomVariables,omitnil,omitempty" name:"CustomVariables"`
 
-	// 沙盒信息
+	// <p>沙盒信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sandbox *SandboxContent `json:"Sandbox,omitnil,omitempty" name:"Sandbox"`
 
-	// 网页搜索内容
+	// <p>网页搜索内容</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebSearch *WebSearchContent `json:"WebSearch,omitnil,omitempty" name:"WebSearch"`
 
-	// 文件收集信息
+	// <p>文件收集信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileCollection *FileCollection `json:"FileCollection,omitnil,omitempty" name:"FileCollection"`
 
-	// Widget信息
+	// <p>Widget信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Widget *Widget `json:"Widget,omitnil,omitempty" name:"Widget"`
 
-	// Widget动作信息
+	// <p>Widget动作信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WidgetAction *WidgetAction `json:"WidgetAction,omitnil,omitempty" name:"WidgetAction"`
+
+	// <p>任务列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tasks []*AgentTask `json:"Tasks,omitnil,omitempty" name:"Tasks"`
+
+	// <p>问卷信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Questionnaire *Questionnaire `json:"Questionnaire,omitnil,omitempty" name:"Questionnaire"`
+
+	// <p>选项卡模式</p>
+	OptionMode *int64 `json:"OptionMode,omitnil,omitempty" name:"OptionMode"`
 }
 
 type ContentReference struct {
@@ -5860,35 +5871,35 @@ type FileInfo struct {
 }
 
 type FileInfoContent struct {
-	// 实时文档解析接口返回的 DocBizId
+	// <p>实时文档解析接口返回的 DocBizId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: DocBizId is deprecated.
-	DocBizId *uint64 `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
+	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
 
-	// 文件名称
+	// <p>文件名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 文件类型
+	// <p>文件类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 文件大小
+	// <p>文件大小，单位为Byte</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileSize *uint64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+	FileSize *string `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
-	// 文件 URL
+	// <p>文件 URL</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
-	// 实时文档解析接口返回的 doc_id。
+	// <p>实时文档解析接口返回的 doc_id。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DocId *uint64 `json:"DocId,omitnil,omitempty" name:"DocId"`
+	DocId *string `json:"DocId,omitnil,omitempty" name:"DocId"`
 
-	// 文件创建时间
+	// <p>文件创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type Filters struct {
@@ -11681,6 +11692,50 @@ type QaReference struct {
 	// 问答所在知识库名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KnowledgeName *string `json:"KnowledgeName,omitnil,omitempty" name:"KnowledgeName"`
+}
+
+type QuestionOption struct {
+	// <p>选项的标签</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// <p>选项的描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type Questionnaire struct {
+	// <p>问卷的标题</p>
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// <p>问卷的问题列表</p>
+	Questions []*QuestionnaireQuestion `json:"Questions,omitnil,omitempty" name:"Questions"`
+
+	// <p>问卷的答案列表</p>
+	Answers []*QuestionnaireQuestionAnswer `json:"Answers,omitnil,omitempty" name:"Answers"`
+}
+
+type QuestionnaireQuestion struct {
+	// <p>问题的序号</p>
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// <p>问题的内容</p>
+	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
+
+	// <p>问题类型</p>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>是否必选</p>
+	Required *bool `json:"Required,omitnil,omitempty" name:"Required"`
+
+	// <p>问题的选项</p>
+	Options []*QuestionOption `json:"Options,omitnil,omitempty" name:"Options"`
+}
+
+type QuestionnaireQuestionAnswer struct {
+	// <p>问题</p>
+	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
+
+	// <p>选中的答案标签</p>
+	SelectedLabels []*string `json:"SelectedLabels,omitnil,omitempty" name:"SelectedLabels"`
 }
 
 type QuoteInfo struct {

@@ -7050,13 +7050,13 @@ func (r *DescribeBackupDownloadUserRestrictionResponse) FromJsonString(s string)
 }
 
 type DescribeBackupListByVaultItem struct {
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群name
+	// <p>集群name</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 备份信息
+	// <p>备份信息</p>
 	BackupFileInfo *BackupFileInfo `json:"BackupFileInfo,omitnil,omitempty" name:"BackupFileInfo"`
 }
 
@@ -7482,13 +7482,13 @@ func (r *DescribeBinlogDownloadUrlResponse) FromJsonString(s string) error {
 }
 
 type DescribeBinlogListByVaultItem struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// Binlog文件信息
+	// <p>Binlog文件信息</p>
 	BinlogFileInfo *BinlogItem `json:"BinlogFileInfo,omitnil,omitempty" name:"BinlogFileInfo"`
 }
 
@@ -11603,13 +11603,13 @@ func (r *DescribeProxySpecsResponse) FromJsonString(s string) error {
 }
 
 type DescribeRedoLogListByVaultItem struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// RedoLog文件信息
+	// <p>RedoLog文件信息</p>
 	RedoFileInfo *RedoLogItem `json:"RedoFileInfo,omitnil,omitempty" name:"RedoFileInfo"`
 }
 

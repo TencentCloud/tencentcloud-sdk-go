@@ -2792,43 +2792,45 @@ func (r *CreateLiveAvatarRoomResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLiveAvatarScriptRequestParams struct {
-	// 话术标题。限制500字节。
+	// <p>话术标题。限制500字节。</p>
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 
-	// 话术内容。中文最大支持150个汉字（全角标点符号算一个汉字）；英文最大支持500个字母（半角标点符号算一个字母）。
+	// <p>话术内容。中文最大支持150个汉字（全角标点符号算一个汉字）；英文最大支持500个字母（半角标点符号算一个字母）。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 话术所属的数字人直播间 ID。
+	// <p>话术所属的数字人直播间 ID。</p>
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 话术插入时，可根据已有话术位置，指定新话术插入位置。
-	// 如已有三条话术100，200，300。
-	// 新话术可选择150插入到第一条和第二条中间。
+	// <p>话术插入时，可根据已有话术位置，指定新话术插入位置。<br>如已有三条话术100，200，300。<br>新话术可选择150插入到第一条和第二条中间。</p>
 	SpecifyPosition *int64 `json:"SpecifyPosition,omitnil,omitempty" name:"SpecifyPosition"`
 
-	// 操作者。
+	// <p>操作者。</p>
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>话术所属的数字人产品 ID。</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 }
 
 type CreateLiveAvatarScriptRequest struct {
 	*tchttp.BaseRequest
 	
-	// 话术标题。限制500字节。
+	// <p>话术标题。限制500字节。</p>
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 
-	// 话术内容。中文最大支持150个汉字（全角标点符号算一个汉字）；英文最大支持500个字母（半角标点符号算一个字母）。
+	// <p>话术内容。中文最大支持150个汉字（全角标点符号算一个汉字）；英文最大支持500个字母（半角标点符号算一个字母）。</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 话术所属的数字人直播间 ID。
+	// <p>话术所属的数字人直播间 ID。</p>
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 话术插入时，可根据已有话术位置，指定新话术插入位置。
-	// 如已有三条话术100，200，300。
-	// 新话术可选择150插入到第一条和第二条中间。
+	// <p>话术插入时，可根据已有话术位置，指定新话术插入位置。<br>如已有三条话术100，200，300。<br>新话术可选择150插入到第一条和第二条中间。</p>
 	SpecifyPosition *int64 `json:"SpecifyPosition,omitnil,omitempty" name:"SpecifyPosition"`
 
-	// 操作者。
+	// <p>操作者。</p>
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>话术所属的数字人产品 ID。</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 }
 
 func (r *CreateLiveAvatarScriptRequest) ToJsonString() string {
@@ -2848,6 +2850,7 @@ func (r *CreateLiveAvatarScriptRequest) FromJsonString(s string) error {
 	delete(f, "RoomId")
 	delete(f, "SpecifyPosition")
 	delete(f, "Operator")
+	delete(f, "ProductId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveAvatarScriptRequest has unknown keys!", "")
 	}
@@ -2856,7 +2859,7 @@ func (r *CreateLiveAvatarScriptRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLiveAvatarScriptResponseParams struct {
-	// 话术 ID。
+	// <p>话术 ID。</p>
 	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9506,33 +9509,39 @@ func (r *DescribeLiveAvatarRoomsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLiveAvatarScriptsRequestParams struct {
-	// 数字人直播间 ID。
+	// <p>数字人直播间 ID。</p>
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 数字人直播间话术 ID。
+	// <p>数字人直播间话术 ID。</p>
 	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
 
-	// 分页查询的页数。
+	// <p>分页查询的页数。</p>
 	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
 
-	// 分页查询的每页个数。
+	// <p>分页查询的每页个数。</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>数字人该话术所属的产品 ID。</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 }
 
 type DescribeLiveAvatarScriptsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数字人直播间 ID。
+	// <p>数字人直播间 ID。</p>
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 数字人直播间话术 ID。
+	// <p>数字人直播间话术 ID。</p>
 	ScriptId *string `json:"ScriptId,omitnil,omitempty" name:"ScriptId"`
 
-	// 分页查询的页数。
+	// <p>分页查询的页数。</p>
 	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
 
-	// 分页查询的每页个数。
+	// <p>分页查询的每页个数。</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>数字人该话术所属的产品 ID。</p>
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 }
 
 func (r *DescribeLiveAvatarScriptsRequest) ToJsonString() string {
@@ -9551,6 +9560,7 @@ func (r *DescribeLiveAvatarScriptsRequest) FromJsonString(s string) error {
 	delete(f, "ScriptId")
 	delete(f, "PageIndex")
 	delete(f, "PageSize")
+	delete(f, "ProductId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveAvatarScriptsRequest has unknown keys!", "")
 	}
@@ -9559,13 +9569,13 @@ func (r *DescribeLiveAvatarScriptsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLiveAvatarScriptsResponseParams struct {
-	// 数字人直播间话术信息列表。
+	// <p>数字人直播间话术信息列表。</p>
 	InfoList []*AvatarScriptInfo `json:"InfoList,omitnil,omitempty" name:"InfoList"`
 
-	// 限制可创建的数字人直播间话术总条数。
+	// <p>限制可创建的数字人直播间话术总条数。</p>
 	LimitCreateNum *int64 `json:"LimitCreateNum,omitnil,omitempty" name:"LimitCreateNum"`
 
-	// 当前数字人直播间话术总条数。
+	// <p>当前数字人直播间话术总条数。</p>
 	TotalNum *int64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -17161,87 +17171,81 @@ func (r *ModifyCasterResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLiveAvatarRoomRequestParams struct {
-	// 数字人直播间 ID。
+	// <p>数字人直播间 ID。</p>
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 直播间名称。
+	// <p>直播间名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 数字人形象KEY。
+	// <p>数字人形象KEY。</p>
 	AvatarKey *string `json:"AvatarKey,omitnil,omitempty" name:"AvatarKey"`
 
-	// 音色KEY。
+	// <p>音色KEY。</p>
 	TimbreKey *string `json:"TimbreKey,omitnil,omitempty" name:"TimbreKey"`
 
-	// 背景图片URL。
+	// <p>背景图片URL。</p>
 	BackgroundUrl *string `json:"BackgroundUrl,omitnil,omitempty" name:"BackgroundUrl"`
 
-	// 主播大小，默认1.00。
-	// 取值范围(0, 15.00]。
-	// 精度：使用小数点后两位。
+	// <p>主播大小，默认1.00。<br>取值范围(0, 15.00]。<br>精度：使用小数点后两位。</p>
 	AnchorScale *float64 `json:"AnchorScale,omitnil,omitempty" name:"AnchorScale"`
 
-	// 主播纵向位置。默认-1贴底部。
-	// 左上角为原点，形象顶部离屏幕顶部的距离，最大不能使形象底部超出屏幕。
-	// 即该纵向位置最大为：数字人分辨率的高 - 形象高。
+	// <p>主播纵向位置。默认-1贴底部。<br>左上角为原点，形象顶部离屏幕顶部的距离，最大不能使形象底部超出屏幕。<br>即该纵向位置最大为：数字人分辨率的高 - 形象高。</p>
 	AnchorVerticalPos *int64 `json:"AnchorVerticalPos,omitnil,omitempty" name:"AnchorVerticalPos"`
 
-	// 主播横向位置。默认-1居中。
-	// 左上角为原点，形象左侧离左侧屏幕的距离。最大值不可使形象右侧超出右侧屏幕。
-	// 即最大值为：数字人分辨率的宽 - 形象宽。
+	// <p>主播横向位置。默认-1居中。<br>左上角为原点，形象左侧离左侧屏幕的距离。最大值不可使形象右侧超出右侧屏幕。<br>即最大值为：数字人分辨率的宽 - 形象宽。</p>
 	AnchorHorizontalPos *int64 `json:"AnchorHorizontalPos,omitnil,omitempty" name:"AnchorHorizontalPos"`
 
-	// 语速（1.0为正常语速，范围[0.6-2.5]，值为0.6时播报语速最慢，值为2.5时播报语速最快。
+	// <p>语速（1.0为正常语速，范围[0.6-2.5]，值为0.6时播报语速最慢，值为2.5时播报语速最快。</p>
 	SpeechSpeed *float64 `json:"SpeechSpeed,omitnil,omitempty" name:"SpeechSpeed"`
 
-	// 音量大小，范围[0，10]，对应音量大小。默认为5，代表正常音量，值越大音量越高。
+	// <p>音量大小，范围[0，10]，对应音量大小。默认为5，代表正常音量，值越大音量越高。</p>
 	SpeechVolume *int64 `json:"SpeechVolume,omitnil,omitempty" name:"SpeechVolume"`
 
-	// 操作者。
+	// <p>操作者。</p>
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>房间类型。AIGC：AIGC形象房间；PRESET：预设形象房间</p><p>枚举值：</p><ul><li>AIGC： AIGC形象房间</li><li>PRESET： 预设形象房间</li></ul>
+	RoomType *string `json:"RoomType,omitnil,omitempty" name:"RoomType"`
 }
 
 type ModifyLiveAvatarRoomRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数字人直播间 ID。
+	// <p>数字人直播间 ID。</p>
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 直播间名称。
+	// <p>直播间名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 数字人形象KEY。
+	// <p>数字人形象KEY。</p>
 	AvatarKey *string `json:"AvatarKey,omitnil,omitempty" name:"AvatarKey"`
 
-	// 音色KEY。
+	// <p>音色KEY。</p>
 	TimbreKey *string `json:"TimbreKey,omitnil,omitempty" name:"TimbreKey"`
 
-	// 背景图片URL。
+	// <p>背景图片URL。</p>
 	BackgroundUrl *string `json:"BackgroundUrl,omitnil,omitempty" name:"BackgroundUrl"`
 
-	// 主播大小，默认1.00。
-	// 取值范围(0, 15.00]。
-	// 精度：使用小数点后两位。
+	// <p>主播大小，默认1.00。<br>取值范围(0, 15.00]。<br>精度：使用小数点后两位。</p>
 	AnchorScale *float64 `json:"AnchorScale,omitnil,omitempty" name:"AnchorScale"`
 
-	// 主播纵向位置。默认-1贴底部。
-	// 左上角为原点，形象顶部离屏幕顶部的距离，最大不能使形象底部超出屏幕。
-	// 即该纵向位置最大为：数字人分辨率的高 - 形象高。
+	// <p>主播纵向位置。默认-1贴底部。<br>左上角为原点，形象顶部离屏幕顶部的距离，最大不能使形象底部超出屏幕。<br>即该纵向位置最大为：数字人分辨率的高 - 形象高。</p>
 	AnchorVerticalPos *int64 `json:"AnchorVerticalPos,omitnil,omitempty" name:"AnchorVerticalPos"`
 
-	// 主播横向位置。默认-1居中。
-	// 左上角为原点，形象左侧离左侧屏幕的距离。最大值不可使形象右侧超出右侧屏幕。
-	// 即最大值为：数字人分辨率的宽 - 形象宽。
+	// <p>主播横向位置。默认-1居中。<br>左上角为原点，形象左侧离左侧屏幕的距离。最大值不可使形象右侧超出右侧屏幕。<br>即最大值为：数字人分辨率的宽 - 形象宽。</p>
 	AnchorHorizontalPos *int64 `json:"AnchorHorizontalPos,omitnil,omitempty" name:"AnchorHorizontalPos"`
 
-	// 语速（1.0为正常语速，范围[0.6-2.5]，值为0.6时播报语速最慢，值为2.5时播报语速最快。
+	// <p>语速（1.0为正常语速，范围[0.6-2.5]，值为0.6时播报语速最慢，值为2.5时播报语速最快。</p>
 	SpeechSpeed *float64 `json:"SpeechSpeed,omitnil,omitempty" name:"SpeechSpeed"`
 
-	// 音量大小，范围[0，10]，对应音量大小。默认为5，代表正常音量，值越大音量越高。
+	// <p>音量大小，范围[0，10]，对应音量大小。默认为5，代表正常音量，值越大音量越高。</p>
 	SpeechVolume *int64 `json:"SpeechVolume,omitnil,omitempty" name:"SpeechVolume"`
 
-	// 操作者。
+	// <p>操作者。</p>
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>房间类型。AIGC：AIGC形象房间；PRESET：预设形象房间</p><p>枚举值：</p><ul><li>AIGC： AIGC形象房间</li><li>PRESET： 预设形象房间</li></ul>
+	RoomType *string `json:"RoomType,omitnil,omitempty" name:"RoomType"`
 }
 
 func (r *ModifyLiveAvatarRoomRequest) ToJsonString() string {
@@ -17267,6 +17271,7 @@ func (r *ModifyLiveAvatarRoomRequest) FromJsonString(s string) error {
 	delete(f, "SpeechSpeed")
 	delete(f, "SpeechVolume")
 	delete(f, "Operator")
+	delete(f, "RoomType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveAvatarRoomRequest has unknown keys!", "")
 	}
@@ -20545,33 +20550,39 @@ type SnapshotTemplateInfo struct {
 
 // Predefined struct for user
 type StartLiveAvatarRoomRequestParams struct {
-	// 数字人直播间 ID。
+	// <p>数字人直播间 ID。</p>
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 目标地址描述。
+	// <p>目标地址描述。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 推流目标地址。
+	// <p>推流目标地址。</p>
 	ToUrl *string `json:"ToUrl,omitnil,omitempty" name:"ToUrl"`
 
-	// 操作者。
+	// <p>操作者。</p>
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>房间类型。AIGC：AIGC形象房间；PRESET：预设形象房间</p><p>枚举值：</p><ul><li>AIGC： AIGC形象房间</li><li>PRESET： 预设形象房间</li></ul>
+	RoomType *string `json:"RoomType,omitnil,omitempty" name:"RoomType"`
 }
 
 type StartLiveAvatarRoomRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数字人直播间 ID。
+	// <p>数字人直播间 ID。</p>
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 目标地址描述。
+	// <p>目标地址描述。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 推流目标地址。
+	// <p>推流目标地址。</p>
 	ToUrl *string `json:"ToUrl,omitnil,omitempty" name:"ToUrl"`
 
-	// 操作者。
+	// <p>操作者。</p>
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>房间类型。AIGC：AIGC形象房间；PRESET：预设形象房间</p><p>枚举值：</p><ul><li>AIGC： AIGC形象房间</li><li>PRESET： 预设形象房间</li></ul>
+	RoomType *string `json:"RoomType,omitnil,omitempty" name:"RoomType"`
 }
 
 func (r *StartLiveAvatarRoomRequest) ToJsonString() string {
@@ -20590,6 +20601,7 @@ func (r *StartLiveAvatarRoomRequest) FromJsonString(s string) error {
 	delete(f, "Comment")
 	delete(f, "ToUrl")
 	delete(f, "Operator")
+	delete(f, "RoomType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartLiveAvatarRoomRequest has unknown keys!", "")
 	}

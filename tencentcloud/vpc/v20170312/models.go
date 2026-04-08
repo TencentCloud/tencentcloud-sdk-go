@@ -7867,6 +7867,83 @@ func (r *CreateSubnetsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateTrafficMirrorFilterRulesRequestParams struct {
+	// 流量镜像实例唯一ID。
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像入站过滤规则。
+	IngressFilterRules []*TrafficMirrorFilter `json:"IngressFilterRules,omitnil,omitempty" name:"IngressFilterRules"`
+
+	// 流量镜像出站过滤规则。
+	EgressFilterRules []*TrafficMirrorFilter `json:"EgressFilterRules,omitnil,omitempty" name:"EgressFilterRules"`
+}
+
+type CreateTrafficMirrorFilterRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流量镜像实例唯一ID。
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像入站过滤规则。
+	IngressFilterRules []*TrafficMirrorFilter `json:"IngressFilterRules,omitnil,omitempty" name:"IngressFilterRules"`
+
+	// 流量镜像出站过滤规则。
+	EgressFilterRules []*TrafficMirrorFilter `json:"EgressFilterRules,omitnil,omitempty" name:"EgressFilterRules"`
+}
+
+func (r *CreateTrafficMirrorFilterRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTrafficMirrorFilterRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "IngressFilterRules")
+	delete(f, "EgressFilterRules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrafficMirrorFilterRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTrafficMirrorFilterRulesResponseParams struct {
+	// 流量镜像实例唯一ID。
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像入站过滤规则。
+	IngressFilterRules []*TrafficMirrorFilter `json:"IngressFilterRules,omitnil,omitempty" name:"IngressFilterRules"`
+
+	// 流量镜像出站过滤规则。
+	EgressFilterRules []*TrafficMirrorFilter `json:"EgressFilterRules,omitnil,omitempty" name:"EgressFilterRules"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTrafficMirrorFilterRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTrafficMirrorFilterRulesResponseParams `json:"Response"`
+}
+
+func (r *CreateTrafficMirrorFilterRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTrafficMirrorFilterRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTrafficMirrorRequestParams struct {
 	// VPC实例ID。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
@@ -12106,6 +12183,74 @@ func (r *DeleteTemplateMemberResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTemplateMemberResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTrafficMirrorFilterRulesRequestParams struct {
+	// 流量镜像实例唯一ID。
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像入站过滤唯一ID列表。
+	IngressFilterRuleIds []*string `json:"IngressFilterRuleIds,omitnil,omitempty" name:"IngressFilterRuleIds"`
+
+	// 流量镜像出站过滤唯一ID列表。
+	EgressFilterRuleIds []*string `json:"EgressFilterRuleIds,omitnil,omitempty" name:"EgressFilterRuleIds"`
+}
+
+type DeleteTrafficMirrorFilterRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流量镜像实例唯一ID。
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像入站过滤唯一ID列表。
+	IngressFilterRuleIds []*string `json:"IngressFilterRuleIds,omitnil,omitempty" name:"IngressFilterRuleIds"`
+
+	// 流量镜像出站过滤唯一ID列表。
+	EgressFilterRuleIds []*string `json:"EgressFilterRuleIds,omitnil,omitempty" name:"EgressFilterRuleIds"`
+}
+
+func (r *DeleteTrafficMirrorFilterRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTrafficMirrorFilterRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "IngressFilterRuleIds")
+	delete(f, "EgressFilterRuleIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTrafficMirrorFilterRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTrafficMirrorFilterRulesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteTrafficMirrorFilterRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteTrafficMirrorFilterRulesResponseParams `json:"Response"`
+}
+
+func (r *DeleteTrafficMirrorFilterRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTrafficMirrorFilterRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -21379,6 +21524,106 @@ func (r *DescribeTenantCcnsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTrafficMirrorFilterRulesRequestParams struct {
+	// 流量镜像唯一ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像出站、入站过滤唯一ID列表。
+	TrafficMirrorFilterRuleIds []*string `json:"TrafficMirrorFilterRuleIds,omitnil,omitempty" name:"TrafficMirrorFilterRuleIds"`
+
+	// <li>traffic-mirror-filter-rule-id - String - （过滤条件） 流量镜像过滤规则，形如：tmfi-qfhrb7yj。 </li>
+	// <li>action - String - （过滤条件）策略， 支持类型： ACCEPT， DROP。 </li>
+	// <li>description - String - （过滤条件）描述。 </li>
+	// <li>direction - String - （过滤条件）方向, 支持类型：INGRESS， EGRESS。</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 请求对象个数。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeTrafficMirrorFilterRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流量镜像唯一ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像出站、入站过滤唯一ID列表。
+	TrafficMirrorFilterRuleIds []*string `json:"TrafficMirrorFilterRuleIds,omitnil,omitempty" name:"TrafficMirrorFilterRuleIds"`
+
+	// <li>traffic-mirror-filter-rule-id - String - （过滤条件） 流量镜像过滤规则，形如：tmfi-qfhrb7yj。 </li>
+	// <li>action - String - （过滤条件）策略， 支持类型： ACCEPT， DROP。 </li>
+	// <li>description - String - （过滤条件）描述。 </li>
+	// <li>direction - String - （过滤条件）方向, 支持类型：INGRESS， EGRESS。</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 请求对象个数。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeTrafficMirrorFilterRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTrafficMirrorFilterRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "TrafficMirrorFilterRuleIds")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrafficMirrorFilterRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTrafficMirrorFilterRulesResponseParams struct {
+	// 流量镜像实例唯一ID。
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像入站过滤规则。
+	IngressFilterRules []*TrafficMirrorFilter `json:"IngressFilterRules,omitnil,omitempty" name:"IngressFilterRules"`
+
+	// 流量镜像出站过滤规则。
+	EgressFilterRules []*TrafficMirrorFilter `json:"EgressFilterRules,omitnil,omitempty" name:"EgressFilterRules"`
+
+	// 符合条件的实例数量。分页查询的时候，如果IngressFilterRules的长度加上IngressFilterRules的长度，小于limit的时候表示已经查询完毕。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTrafficMirrorFilterRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTrafficMirrorFilterRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeTrafficMirrorFilterRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTrafficMirrorFilterRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTrafficMirrorsRequestParams struct {
 	// 流量镜像实例ID集合
 	TrafficMirrorIds []*string `json:"TrafficMirrorIds,omitnil,omitempty" name:"TrafficMirrorIds"`
@@ -27364,18 +27609,18 @@ func (r *ModifyAddressTemplateGroupAttributeResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type ModifyAddressesBandwidthRequestParams struct {
-	// EIP唯一标识ID列表，形如'eip-xxxx'，可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
+	// <p>EIP唯一标识ID列表，形如&#39;eip-xxxx&#39;，可以使用<a href="https://cloud.tencent.com/document/product/215/16702">DescribeAddresses</a>接口获取AddressId。</p>
 	AddressIds []*string `json:"AddressIds,omitnil,omitempty" name:"AddressIds"`
 
-	// 调整带宽目标值，可调整的带宽上限值参考产品文档[带宽上限](https://cloud.tencent.com/document/product/1199/48333)。
+	// <p>调整带宽目标值，可调整的带宽上限值参考产品文档<a href="https://cloud.tencent.com/document/product/1199/48333">带宽上限</a>。</p>
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// 包月带宽起始时间(已废弃，输入无效)
+	// <p>包月带宽起始时间(已废弃，输入无效)</p>
 	//
 	// Deprecated: StartTime is deprecated.
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 包月带宽结束时间(已废弃，输入无效)
+	// <p>包月带宽结束时间(已废弃，输入无效)</p>
 	//
 	// Deprecated: EndTime is deprecated.
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
@@ -27384,16 +27629,16 @@ type ModifyAddressesBandwidthRequestParams struct {
 type ModifyAddressesBandwidthRequest struct {
 	*tchttp.BaseRequest
 	
-	// EIP唯一标识ID列表，形如'eip-xxxx'，可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
+	// <p>EIP唯一标识ID列表，形如&#39;eip-xxxx&#39;，可以使用<a href="https://cloud.tencent.com/document/product/215/16702">DescribeAddresses</a>接口获取AddressId。</p>
 	AddressIds []*string `json:"AddressIds,omitnil,omitempty" name:"AddressIds"`
 
-	// 调整带宽目标值，可调整的带宽上限值参考产品文档[带宽上限](https://cloud.tencent.com/document/product/1199/48333)。
+	// <p>调整带宽目标值，可调整的带宽上限值参考产品文档<a href="https://cloud.tencent.com/document/product/1199/48333">带宽上限</a>。</p>
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// 包月带宽起始时间(已废弃，输入无效)
+	// <p>包月带宽起始时间(已废弃，输入无效)</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 包月带宽结束时间(已废弃，输入无效)
+	// <p>包月带宽结束时间(已废弃，输入无效)</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -27421,7 +27666,7 @@ func (r *ModifyAddressesBandwidthRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAddressesBandwidthResponseParams struct {
-	// 异步任务TaskId。可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
+	// <p>异步任务TaskId。可以使用<a href="https://cloud.tencent.com/document/api/215/36271">DescribeTaskResult</a>接口查询任务状态。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -31334,6 +31579,74 @@ func (r *ModifyTrafficMirrorAttributeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyTrafficMirrorAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTrafficMirrorFilterRulesRequestParams struct {
+	// 流量镜像实例唯一ID。
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像入站过滤规则。
+	IngressFilterRules []*TrafficMirrorFilter `json:"IngressFilterRules,omitnil,omitempty" name:"IngressFilterRules"`
+
+	// 流量镜像出站过滤规则。
+	EgressFilterRules []*TrafficMirrorFilter `json:"EgressFilterRules,omitnil,omitempty" name:"EgressFilterRules"`
+}
+
+type ModifyTrafficMirrorFilterRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流量镜像实例唯一ID。
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像入站过滤规则。
+	IngressFilterRules []*TrafficMirrorFilter `json:"IngressFilterRules,omitnil,omitempty" name:"IngressFilterRules"`
+
+	// 流量镜像出站过滤规则。
+	EgressFilterRules []*TrafficMirrorFilter `json:"EgressFilterRules,omitnil,omitempty" name:"EgressFilterRules"`
+}
+
+func (r *ModifyTrafficMirrorFilterRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTrafficMirrorFilterRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "IngressFilterRules")
+	delete(f, "EgressFilterRules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTrafficMirrorFilterRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTrafficMirrorFilterRulesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyTrafficMirrorFilterRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyTrafficMirrorFilterRulesResponseParams `json:"Response"`
+}
+
+func (r *ModifyTrafficMirrorFilterRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTrafficMirrorFilterRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

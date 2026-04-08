@@ -1860,7 +1860,8 @@ type ClientAttester struct {
 
 	// 认证方法。取值有：
 	// <li>TC-RCE: 使用风险识别 RCE 进行认证；</li>
-	// <li>TC-CAPTCHA: 使用天御验证码进行认证。</li>
+	// <li>TC-CAPTCHA: 使用天御验证码进行认证；</li>
+	// <li>TC-EO-CAPTCHA: 使用 EdgeOne 人机校验进行认证。</li>
 	AttesterSource *string `json:"AttesterSource,omitnil,omitempty" name:"AttesterSource"`
 
 	// 认证有效时间。默认为 60s，支持的单位有：
@@ -1876,6 +1877,10 @@ type ClientAttester struct {
 	// TC-CAPTCHA 认证的配置信息。
 	// <li>当 AttesterSource 参数值为 TC-CAPTCHA 时，此字段必填。</li>
 	TCCaptchaOption *TCCaptchaOption `json:"TCCaptchaOption,omitnil,omitempty" name:"TCCaptchaOption"`
+
+	// TC-EO-CAPTCHA 认证的配置信息。
+	// <li>当 AttesterSource 参数值为 TC-EO-CAPTCHA 时，此字段必填。</li>
+	TCEOCaptchaOption *TCEOCaptchaOption `json:"TCEOCaptchaOption,omitnil,omitempty" name:"TCEOCaptchaOption"`
 }
 
 type ClientBehaviorDetection struct {
@@ -23167,6 +23172,11 @@ type TCCaptchaOption struct {
 
 	// AppSecretKey 信息。
 	AppSecretKey *string `json:"AppSecretKey,omitnil,omitempty" name:"AppSecretKey"`
+}
+
+type TCEOCaptchaOption struct {
+	// EdgeOne 人机校验模式，取值有：<li> Invisible：无感验证；</li><li>Adaptive：自适应交互验证。</li>
+	CaptchaMode *string `json:"CaptchaMode,omitnil,omitempty" name:"CaptchaMode"`
 }
 
 type TCRCEOption struct {

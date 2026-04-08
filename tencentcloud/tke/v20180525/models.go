@@ -16872,25 +16872,34 @@ type ExtenderClientConfig struct {
 }
 
 type ExtenderManagedResource struct {
-	// 自定义资源的名称
+	// <p>自定义资源的名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>调度器是否忽略该资源的默认处理</p>
+	IgnoredByScheduler *bool `json:"IgnoredByScheduler,omitnil,omitempty" name:"IgnoredByScheduler"`
 }
 
 type Extenders struct {
-	// 过滤阶段接口
+	// <p>过滤阶段接口</p>
 	FilterVerb *string `json:"FilterVerb,omitnil,omitempty" name:"FilterVerb"`
 
-	// 打分阶段扩展接口
+	// <p>打分阶段扩展接口</p>
 	PrioritizeVerb *string `json:"PrioritizeVerb,omitnil,omitempty" name:"PrioritizeVerb"`
 
-	// 打分阶段节点分数的权重,取值范围限定(0,2】
+	// <p>打分阶段节点分数的权重,取值范围限定(0,2】</p>
 	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// 扩展调度器(Extender)管理的扩展资源
+	// <p>扩展调度器(Extender)管理的扩展资源</p>
 	ManagedResources []*ExtenderManagedResource `json:"ManagedResources,omitnil,omitempty" name:"ManagedResources"`
 
-	// extender客户端配置
+	// <p>extender客户端配置</p>
 	ExtenderClientConfig *ExtenderClientConfig `json:"ExtenderClientConfig,omitnil,omitempty" name:"ExtenderClientConfig"`
+
+	// <p>抢占接口</p>
+	PreemptVerb *string `json:"PreemptVerb,omitnil,omitempty" name:"PreemptVerb"`
+
+	// <p>节点缓存能力</p>
+	NodeCacheCapable *bool `json:"NodeCacheCapable,omitnil,omitempty" name:"NodeCacheCapable"`
 }
 
 type ExtensionAddon struct {

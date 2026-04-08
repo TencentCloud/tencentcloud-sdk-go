@@ -7129,6 +7129,70 @@ func (c *Client) CreateTrafficMirrorWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateTrafficMirrorFilterRulesRequest() (request *CreateTrafficMirrorFilterRulesRequest) {
+    request = &CreateTrafficMirrorFilterRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateTrafficMirrorFilterRules")
+    
+    
+    return
+}
+
+func NewCreateTrafficMirrorFilterRulesResponse() (response *CreateTrafficMirrorFilterRulesResponse) {
+    response = &CreateTrafficMirrorFilterRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTrafficMirrorFilterRules
+// 创建流量镜像五元组过滤规则。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_ACTIONLIMITED = "LimitExceeded.ActionLimited"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTrafficMirrorFilterRules(request *CreateTrafficMirrorFilterRulesRequest) (response *CreateTrafficMirrorFilterRulesResponse, err error) {
+    return c.CreateTrafficMirrorFilterRulesWithContext(context.Background(), request)
+}
+
+// CreateTrafficMirrorFilterRules
+// 创建流量镜像五元组过滤规则。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_ACTIONLIMITED = "LimitExceeded.ActionLimited"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTrafficMirrorFilterRulesWithContext(ctx context.Context, request *CreateTrafficMirrorFilterRulesRequest) (response *CreateTrafficMirrorFilterRulesResponse, err error) {
+    if request == nil {
+        request = NewCreateTrafficMirrorFilterRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "CreateTrafficMirrorFilterRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTrafficMirrorFilterRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTrafficMirrorFilterRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTrafficPackagesRequest() (request *CreateTrafficPackagesRequest) {
     request = &CreateTrafficPackagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11031,6 +11095,70 @@ func (c *Client) DeleteTrafficMirrorWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDeleteTrafficMirrorResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTrafficMirrorFilterRulesRequest() (request *DeleteTrafficMirrorFilterRulesRequest) {
+    request = &DeleteTrafficMirrorFilterRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteTrafficMirrorFilterRules")
+    
+    
+    return
+}
+
+func NewDeleteTrafficMirrorFilterRulesResponse() (response *DeleteTrafficMirrorFilterRulesResponse) {
+    response = &DeleteTrafficMirrorFilterRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTrafficMirrorFilterRules
+// 删除流量镜像五元组过滤规则。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_ACTIONLIMITED = "LimitExceeded.ActionLimited"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteTrafficMirrorFilterRules(request *DeleteTrafficMirrorFilterRulesRequest) (response *DeleteTrafficMirrorFilterRulesResponse, err error) {
+    return c.DeleteTrafficMirrorFilterRulesWithContext(context.Background(), request)
+}
+
+// DeleteTrafficMirrorFilterRules
+// 删除流量镜像五元组过滤规则。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_ACTIONLIMITED = "LimitExceeded.ActionLimited"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteTrafficMirrorFilterRulesWithContext(ctx context.Context, request *DeleteTrafficMirrorFilterRulesRequest) (response *DeleteTrafficMirrorFilterRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteTrafficMirrorFilterRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "DeleteTrafficMirrorFilterRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTrafficMirrorFilterRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTrafficMirrorFilterRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -17843,6 +17971,70 @@ func (c *Client) DescribeTenantCcnsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeTrafficMirrorFilterRulesRequest() (request *DescribeTrafficMirrorFilterRulesRequest) {
+    request = &DescribeTrafficMirrorFilterRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeTrafficMirrorFilterRules")
+    
+    
+    return
+}
+
+func NewDescribeTrafficMirrorFilterRulesResponse() (response *DescribeTrafficMirrorFilterRulesResponse) {
+    response = &DescribeTrafficMirrorFilterRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTrafficMirrorFilterRules
+// 查询流量镜像五元组过滤规则。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_ACTIONLIMITED = "LimitExceeded.ActionLimited"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTrafficMirrorFilterRules(request *DescribeTrafficMirrorFilterRulesRequest) (response *DescribeTrafficMirrorFilterRulesResponse, err error) {
+    return c.DescribeTrafficMirrorFilterRulesWithContext(context.Background(), request)
+}
+
+// DescribeTrafficMirrorFilterRules
+// 查询流量镜像五元组过滤规则。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_ACTIONLIMITED = "LimitExceeded.ActionLimited"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTrafficMirrorFilterRulesWithContext(ctx context.Context, request *DescribeTrafficMirrorFilterRulesRequest) (response *DescribeTrafficMirrorFilterRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTrafficMirrorFilterRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "DescribeTrafficMirrorFilterRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrafficMirrorFilterRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTrafficMirrorFilterRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTrafficMirrorsRequest() (request *DescribeTrafficMirrorsRequest) {
     request = &DescribeTrafficMirrorsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -22321,6 +22513,7 @@ func NewModifyAddressesBandwidthResponse() (response *ModifyAddressesBandwidthRe
 //  INVALIDPARAMETERVALUE_RESOURCENOTSUPPORT = "InvalidParameterValue.ResourceNotSupport"
 //  OPERATIONDENIED_ADDRESSINARREARS = "OperationDenied.AddressInArrears"
 //  OPERATIONDENIED_MUTEXTASKRUNNING = "OperationDenied.MutexTaskRunning"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTSUPPORTED = "UnsupportedOperation.InstanceStateNotSupported"
@@ -22352,6 +22545,7 @@ func (c *Client) ModifyAddressesBandwidth(request *ModifyAddressesBandwidthReque
 //  INVALIDPARAMETERVALUE_RESOURCENOTSUPPORT = "InvalidParameterValue.ResourceNotSupport"
 //  OPERATIONDENIED_ADDRESSINARREARS = "OperationDenied.AddressInArrears"
 //  OPERATIONDENIED_MUTEXTASKRUNNING = "OperationDenied.MutexTaskRunning"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTSUPPORTED = "UnsupportedOperation.InstanceStateNotSupported"
@@ -25931,6 +26125,70 @@ func (c *Client) ModifyTrafficMirrorAttributeWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewModifyTrafficMirrorAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTrafficMirrorFilterRulesRequest() (request *ModifyTrafficMirrorFilterRulesRequest) {
+    request = &ModifyTrafficMirrorFilterRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyTrafficMirrorFilterRules")
+    
+    
+    return
+}
+
+func NewModifyTrafficMirrorFilterRulesResponse() (response *ModifyTrafficMirrorFilterRulesResponse) {
+    response = &ModifyTrafficMirrorFilterRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTrafficMirrorFilterRules
+// 修改流量镜像五元组过滤规则。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_ACTIONLIMITED = "LimitExceeded.ActionLimited"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyTrafficMirrorFilterRules(request *ModifyTrafficMirrorFilterRulesRequest) (response *ModifyTrafficMirrorFilterRulesResponse, err error) {
+    return c.ModifyTrafficMirrorFilterRulesWithContext(context.Background(), request)
+}
+
+// ModifyTrafficMirrorFilterRules
+// 修改流量镜像五元组过滤规则。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_ACTIONLIMITED = "LimitExceeded.ActionLimited"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyTrafficMirrorFilterRulesWithContext(ctx context.Context, request *ModifyTrafficMirrorFilterRulesRequest) (response *ModifyTrafficMirrorFilterRulesResponse, err error) {
+    if request == nil {
+        request = NewModifyTrafficMirrorFilterRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "ModifyTrafficMirrorFilterRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTrafficMirrorFilterRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTrafficMirrorFilterRulesResponse()
     err = c.Send(request, response)
     return
 }

@@ -841,6 +841,66 @@ func (c *Client) ClassifyStoreNameWithContext(ctx context.Context, request *Clas
     return
 }
 
+func NewCropEnhanceImageOCRRequest() (request *CropEnhanceImageOCRRequest) {
+    request = &CropEnhanceImageOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "CropEnhanceImageOCR")
+    
+    
+    return
+}
+
+func NewCropEnhanceImageOCRResponse() (response *CropEnhanceImageOCRResponse) {
+    response = &CropEnhanceImageOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CropEnhanceImageOCR
+// 图像切边矫正增强是面向文档类图片提供的图像增强处理能力，包括切边增强、图像矫正、阴影去除、摩尔纹去除等；可以有效优化文档类的图片质量，提升文字的清晰度，可以作为所有识别场景的图像预处理原子能力，从而提升识别效果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_ENGINERECOGNIZETIMEOUT = "FailedOperation.EngineRecognizeTimeout"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+func (c *Client) CropEnhanceImageOCR(request *CropEnhanceImageOCRRequest) (response *CropEnhanceImageOCRResponse, err error) {
+    return c.CropEnhanceImageOCRWithContext(context.Background(), request)
+}
+
+// CropEnhanceImageOCR
+// 图像切边矫正增强是面向文档类图片提供的图像增强处理能力，包括切边增强、图像矫正、阴影去除、摩尔纹去除等；可以有效优化文档类的图片质量，提升文字的清晰度，可以作为所有识别场景的图像预处理原子能力，从而提升识别效果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_ENGINERECOGNIZETIMEOUT = "FailedOperation.EngineRecognizeTimeout"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+func (c *Client) CropEnhanceImageOCRWithContext(ctx context.Context, request *CropEnhanceImageOCRRequest) (response *CropEnhanceImageOCRResponse, err error) {
+    if request == nil {
+        request = NewCropEnhanceImageOCRRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "CropEnhanceImageOCR")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CropEnhanceImageOCR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCropEnhanceImageOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeExtractDocAgentJobRequest() (request *DescribeExtractDocAgentJobRequest) {
     request = &DescribeExtractDocAgentJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1513,6 +1573,66 @@ func (c *Client) EnterpriseLicenseOCRWithContext(ctx context.Context, request *E
     request.SetContext(ctx)
     
     response = NewEnterpriseLicenseOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEraseHandwrittenImageOCRRequest() (request *EraseHandwrittenImageOCRRequest) {
+    request = &EraseHandwrittenImageOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "EraseHandwrittenImageOCR")
+    
+    
+    return
+}
+
+func NewEraseHandwrittenImageOCRResponse() (response *EraseHandwrittenImageOCRResponse) {
+    response = &EraseHandwrittenImageOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EraseHandwrittenImageOCR
+// 本功能可自动清除试卷图片中的手写与批改痕迹，并输出洁净的空白试卷。也可以配合集成图像切边矫正技术，能自动定位、拉平试卷区域，从而在最优预处理基础上实现更佳的擦除效果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_ENGINERECOGNIZETIMEOUT = "FailedOperation.EngineRecognizeTimeout"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+func (c *Client) EraseHandwrittenImageOCR(request *EraseHandwrittenImageOCRRequest) (response *EraseHandwrittenImageOCRResponse, err error) {
+    return c.EraseHandwrittenImageOCRWithContext(context.Background(), request)
+}
+
+// EraseHandwrittenImageOCR
+// 本功能可自动清除试卷图片中的手写与批改痕迹，并输出洁净的空白试卷。也可以配合集成图像切边矫正技术，能自动定位、拉平试卷区域，从而在最优预处理基础上实现更佳的擦除效果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_ENGINERECOGNIZETIMEOUT = "FailedOperation.EngineRecognizeTimeout"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+func (c *Client) EraseHandwrittenImageOCRWithContext(ctx context.Context, request *EraseHandwrittenImageOCRRequest) (response *EraseHandwrittenImageOCRResponse, err error) {
+    if request == nil {
+        request = NewEraseHandwrittenImageOCRRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "EraseHandwrittenImageOCR")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EraseHandwrittenImageOCR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEraseHandwrittenImageOCRResponse()
     err = c.Send(request, response)
     return
 }

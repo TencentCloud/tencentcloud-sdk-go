@@ -7845,6 +7845,62 @@ func (c *Client) ModifyRecordBatchWithContext(ctx context.Context, request *Modi
     return
 }
 
+func NewModifyRecordBatchV3Request() (request *ModifyRecordBatchV3Request) {
+    request = &ModifyRecordBatchV3Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "ModifyRecordBatchV3")
+    
+    
+    return
+}
+
+func NewModifyRecordBatchV3Response() (response *ModifyRecordBatchV3Response) {
+    response = &ModifyRecordBatchV3Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRecordBatchV3
+// 批量修改记录
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_BATCHTASKCOUNTLIMIT = "InvalidParameter.BatchTaskCountLimit"
+//  INVALIDPARAMETER_JOBGREATERTHANLIMIT = "InvalidParameter.JobGreaterThanLimit"
+//  INVALIDPARAMETER_PARAMSILLEGAL = "InvalidParameter.ParamsIllegal"
+//  REQUESTLIMITEXCEEDED_BATCHTASKLIMIT = "RequestLimitExceeded.BatchTaskLimit"
+func (c *Client) ModifyRecordBatchV3(request *ModifyRecordBatchV3Request) (response *ModifyRecordBatchV3Response, err error) {
+    return c.ModifyRecordBatchV3WithContext(context.Background(), request)
+}
+
+// ModifyRecordBatchV3
+// 批量修改记录
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_BATCHTASKCOUNTLIMIT = "InvalidParameter.BatchTaskCountLimit"
+//  INVALIDPARAMETER_JOBGREATERTHANLIMIT = "InvalidParameter.JobGreaterThanLimit"
+//  INVALIDPARAMETER_PARAMSILLEGAL = "InvalidParameter.ParamsIllegal"
+//  REQUESTLIMITEXCEEDED_BATCHTASKLIMIT = "RequestLimitExceeded.BatchTaskLimit"
+func (c *Client) ModifyRecordBatchV3WithContext(ctx context.Context, request *ModifyRecordBatchV3Request) (response *ModifyRecordBatchV3Response, err error) {
+    if request == nil {
+        request = NewModifyRecordBatchV3Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dnspod", APIVersion, "ModifyRecordBatchV3")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRecordBatchV3 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRecordBatchV3Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRecordFieldsRequest() (request *ModifyRecordFieldsRequest) {
     request = &ModifyRecordFieldsRequest{
         BaseRequest: &tchttp.BaseRequest{},

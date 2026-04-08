@@ -2731,56 +2731,65 @@ type CostComponentSet struct {
 }
 
 type CostDetail struct {
-	// 支付者uin
+	// <p>支付者uin</p>
 	PayerUin *string `json:"PayerUin,omitnil,omitempty" name:"PayerUin"`
 
-	// 产品名称
+	// <p>产品名称</p>
 	BusinessCodeName *string `json:"BusinessCodeName,omitnil,omitempty" name:"BusinessCodeName"`
 
-	// 子产品名称
+	// <p>子产品名称</p>
 	ProductCodeName *string `json:"ProductCodeName,omitnil,omitempty" name:"ProductCodeName"`
 
-	// 计费模式名称
+	// <p>计费模式名称</p>
 	PayModeName *string `json:"PayModeName,omitnil,omitempty" name:"PayModeName"`
 
-	// 项目名称
+	// <p>项目名称</p>
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
-	// 区域名称
+	// <p>区域名称</p>
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
-	// 地区名称
+	// <p>地区名称</p>
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 
-	// 资源id
+	// <p>资源id</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 资源名称
+	// <p>资源名称</p>
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
-	// 类型名称
+	// <p>类型名称</p>
 	ActionTypeName *string `json:"ActionTypeName,omitnil,omitempty" name:"ActionTypeName"`
 
-	// 订单id
+	// <p>订单id</p>
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
-	// 交易id
+	// <p>交易id</p>
 	BillId *string `json:"BillId,omitnil,omitempty" name:"BillId"`
 
-	// 费用开始时间
+	// <p>费用开始时间</p>
 	FeeBeginTime *string `json:"FeeBeginTime,omitnil,omitempty" name:"FeeBeginTime"`
 
-	// 费用结束时间
+	// <p>费用结束时间</p>
 	FeeEndTime *string `json:"FeeEndTime,omitnil,omitempty" name:"FeeEndTime"`
 
-	// 组件明细
+	// <p>组件明细</p>
 	ComponentSet []*CostComponentSet `json:"ComponentSet,omitnil,omitempty" name:"ComponentSet"`
 
-	// 子产品名称代码
+	// <p>子产品名称代码</p>
 	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
 
-	// 标签信息	
+	// <p>标签信息</p>
 	Tags []*BillTagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）</p>
+	OperateUin *string `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
+
+	// <p>使用者UIN：实际使用资源的账号 ID</p>
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// <p>扣费时间：结算扣费时间</p>
+	PayTime *string `json:"PayTime,omitnil,omitempty" name:"PayTime"`
 }
 
 // Predefined struct for user

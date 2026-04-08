@@ -7428,6 +7428,63 @@ func (r *ModifyRecordBatchResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyRecordBatchV3RequestParams struct {
+	// 需要修改的记录列表
+	ModifyRecordList []*ModifyRecordItem `json:"ModifyRecordList,omitnil,omitempty" name:"ModifyRecordList"`
+}
+
+type ModifyRecordBatchV3Request struct {
+	*tchttp.BaseRequest
+	
+	// 需要修改的记录列表
+	ModifyRecordList []*ModifyRecordItem `json:"ModifyRecordList,omitnil,omitempty" name:"ModifyRecordList"`
+}
+
+func (r *ModifyRecordBatchV3Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRecordBatchV3Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModifyRecordList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRecordBatchV3Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRecordBatchV3ResponseParams struct {
+	// 批量任务ID
+	JobId *uint64 `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyRecordBatchV3Response struct {
+	*tchttp.BaseResponse
+	Response *ModifyRecordBatchV3ResponseParams `json:"Response"`
+}
+
+func (r *ModifyRecordBatchV3Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRecordBatchV3Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyRecordFieldsRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -7581,6 +7638,38 @@ func (r *ModifyRecordGroupResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyRecordGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyRecordItem struct {
+	// 记录 ID
+	RecordId *uint64 `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// 主机记录
+	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
+
+	// 记录类型
+	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
+
+	// 记录线路
+	RecordLine *string `json:"RecordLine,omitnil,omitempty" name:"RecordLine"`
+
+	// 记录值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 解析记录状态 1：开启 0：暂停
+	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 备注信息
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 权重
+	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// MX优先级
+	MX *uint64 `json:"MX,omitnil,omitempty" name:"MX"`
+
+	// TTL缓存时间
+	TTL *uint64 `json:"TTL,omitnil,omitempty" name:"TTL"`
 }
 
 // Predefined struct for user
