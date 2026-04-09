@@ -724,8 +724,11 @@ type AiAnalysisResult struct {
 }
 
 type AiAnalysisTaskClassificationInput struct {
-	// 视频智能分类模板 ID。
+	// <p>视频智能分类模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>扩展参数。</p>
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
 }
 
 type AiAnalysisTaskClassificationOutput struct {
@@ -755,8 +758,11 @@ type AiAnalysisTaskClassificationResult struct {
 }
 
 type AiAnalysisTaskCoverInput struct {
-	// 视频智能封面模板 ID。
+	// <p>视频智能封面模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>扩展参数。</p>
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
 }
 
 type AiAnalysisTaskCoverOutput struct {
@@ -789,8 +795,11 @@ type AiAnalysisTaskCoverResult struct {
 }
 
 type AiAnalysisTaskCutoutInput struct {
-	// 视频智能抠图模板 ID。
+	// <p>视频智能抠图模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>扩展参数。</p>
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
 }
 
 type AiAnalysisTaskCutoutOutput struct {
@@ -829,8 +838,11 @@ type AiAnalysisTaskCutoutResult struct {
 }
 
 type AiAnalysisTaskDelLogoInput struct {
-	// 视频智能擦除模板 ID。
+	// <p>视频智能擦除模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>扩展参数。</p>
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
 }
 
 type AiAnalysisTaskDelLogoOutput struct {
@@ -878,8 +890,11 @@ type AiAnalysisTaskDelLogoResult struct {
 }
 
 type AiAnalysisTaskDescriptionInput struct {
-	// 视频智能描述模板 ID。
+	// <p>视频智能描述模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>扩展参数。</p>
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
 }
 
 type AiAnalysisTaskDescriptionOutput struct {
@@ -906,8 +921,11 @@ type AiAnalysisTaskDescriptionResult struct {
 }
 
 type AiAnalysisTaskDubbingInput struct {
-	// 视频译制模板 ID。
+	// <p>视频译制模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>扩展参数。</p>
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
 }
 
 type AiAnalysisTaskDubbingOutput struct {
@@ -943,8 +961,11 @@ type AiAnalysisTaskDubbingResult struct {
 }
 
 type AiAnalysisTaskFrameTagInput struct {
-	// 视频智能按帧标签模板 ID。
+	// <p>视频智能按帧标签模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>扩展参数。</p>
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
 }
 
 type AiAnalysisTaskFrameTagOutput struct {
@@ -974,8 +995,11 @@ type AiAnalysisTaskFrameTagResult struct {
 }
 
 type AiAnalysisTaskHeadTailInput struct {
-	// 片头片尾识别模板 ID。
+	// <p>片头片尾识别模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>扩展参数。</p>
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
 }
 
 type AiAnalysisTaskHeadTailOutput struct {
@@ -1007,8 +1031,11 @@ type AiAnalysisTaskHeadTailResult struct {
 }
 
 type AiAnalysisTaskHighlightInput struct {
-	// 视频智能精彩片段模板 ID。
+	// <p>视频智能精彩片段模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>扩展参数。</p>
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
 }
 
 type AiAnalysisTaskHighlightOutput struct {
@@ -1039,9 +1066,12 @@ type AiAnalysisTaskHighlightResult struct {
 }
 
 type AiAnalysisTaskHorizontalToVerticalInput struct {
-	// 视频智能横转竖模板 ID
+	// <p>视频智能横转竖模板 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>扩展参数。</p>
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
 }
 
 type AiAnalysisTaskHorizontalToVerticalOutput struct {
@@ -1095,8 +1125,11 @@ type AiAnalysisTaskInput struct {
 }
 
 type AiAnalysisTaskReelInput struct {
-	// 智能成片模板 ID。
+	// <p>智能成片模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>扩展参数。</p>
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
 }
 
 type AiAnalysisTaskReelOutput struct {
@@ -1152,8 +1185,11 @@ type AiAnalysisTaskReelResult struct {
 }
 
 type AiAnalysisTaskSegmentInput struct {
-	// 拆条任务模板 ID。
+	// <p>拆条任务模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>扩展参数。</p>
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
 }
 
 type AiAnalysisTaskSegmentOutput struct {
@@ -1184,8 +1220,11 @@ type AiAnalysisTaskSegmentResult struct {
 }
 
 type AiAnalysisTaskTagInput struct {
-	// 视频智能标签模板 ID。
+	// <p>视频智能标签模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>扩展参数。</p>
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
 }
 
 type AiAnalysisTaskTagOutput struct {
@@ -1215,8 +1254,11 @@ type AiAnalysisTaskTagResult struct {
 }
 
 type AiAnalysisTaskVideoComprehensionInput struct {
-	// 视频（音频）理解模板ID
+	// <p>视频（音频）理解模板ID</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>扩展参数。</p>
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
 }
 
 type AiAnalysisTaskVideoComprehensionOutput struct {
@@ -1261,8 +1303,11 @@ type AiAnalysisTaskVideoComprehensionResult struct {
 }
 
 type AiAnalysisTaskVideoRemakeInput struct {
-	// 视频智能去重模板 ID
+	// <p>视频智能去重模板 ID</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>扩展参数。</p>
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
 }
 
 type AiAnalysisTaskVideoRemakeOutput struct {
@@ -24079,22 +24124,25 @@ type PureSubtitleTransResultOutput struct {
 }
 
 type QualityControlData struct {
-	// 为true时表示视频无音频轨。
+	// <p>为true时表示视频无音频轨。</p>
 	NoAudio *bool `json:"NoAudio,omitnil,omitempty" name:"NoAudio"`
 
-	// 为true时表示视频无视频轨。
+	// <p>为true时表示视频无视频轨。</p>
 	NoVideo *bool `json:"NoVideo,omitnil,omitempty" name:"NoVideo"`
 
-	// 视频无参考质量评分，百分制。
+	// <p>视频无参考质量评分，百分制。</p>
 	QualityEvaluationScore *int64 `json:"QualityEvaluationScore,omitnil,omitempty" name:"QualityEvaluationScore"`
 
-	// 视频无参考质量评分，MOS分数。
+	// <p>视频无参考质量评分，MOS分数。</p>
 	QualityEvaluationMeanOpinionScore *float64 `json:"QualityEvaluationMeanOpinionScore,omitnil,omitempty" name:"QualityEvaluationMeanOpinionScore"`
 
-	// 内容质检检出异常项。
+	// <p>视频美学评分，范围：[0,100]。</p>
+	AestheticEvaluationScore *int64 `json:"AestheticEvaluationScore,omitnil,omitempty" name:"AestheticEvaluationScore"`
+
+	// <p>内容质检检出异常项。</p>
 	QualityControlResultSet []*QualityControlResult `json:"QualityControlResultSet,omitnil,omitempty" name:"QualityControlResultSet"`
 
-	// 格式诊断检出异常项。
+	// <p>格式诊断检出异常项。</p>
 	ContainerDiagnoseResultSet []*ContainerDiagnoseResultItem `json:"ContainerDiagnoseResultSet,omitnil,omitempty" name:"ContainerDiagnoseResultSet"`
 }
 

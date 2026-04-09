@@ -173,23 +173,26 @@ type AdaptiveDynamicStreamingInfoItem struct {
 }
 
 type AdaptiveDynamicStreamingTaskInput struct {
-	// 转自适应码流模板 ID。
+	// <p>转自适应码流模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+	// <p>水印列表，支持多张图片或文字水印，最大可支持 10 张。</p>
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitnil,omitempty" name:"WatermarkSet"`
 
-	// 溯源水印。
+	// <p>溯源水印。</p>
 	TraceWatermark *TraceWatermarkInput `json:"TraceWatermark,omitnil,omitempty" name:"TraceWatermark"`
 
-	// 版权水印。
+	// <p>版权水印。</p>
 	CopyRightWatermark *CopyRightWatermarkInput `json:"CopyRightWatermark,omitnil,omitempty" name:"CopyRightWatermark"`
 
-	// 数字水印。
+	// <p>数字水印。</p>
 	BlindWatermark *BlindWatermarkInput `json:"BlindWatermark,omitnil,omitempty" name:"BlindWatermark"`
 
-	// 字幕列表，元素为字幕 ID，支持多个字幕，最大可支持16个。
+	// <p>外挂字幕列表，元素为字幕 ID，支持多个字幕，最大可支持16个。</p>
 	SubtitleSet []*string `json:"SubtitleSet,omitnil,omitempty" name:"SubtitleSet"`
+
+	// <p>字幕压制信息列表。最大可支持 2 个。</p>
+	SubtitleInfoSet []*SubtitleInfoInput `json:"SubtitleInfoSet,omitnil,omitempty" name:"SubtitleInfoSet"`
 }
 
 type AdaptiveDynamicStreamingTemplate struct {
@@ -30253,6 +30256,65 @@ type SubtitleFormatsOperation struct {
 	Formats []*string `json:"Formats,omitnil,omitempty" name:"Formats"`
 }
 
+type SubtitleInfoInput struct {
+	// <p>字幕 ID。</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>字体类型。</p><p>枚举值：</p><ul><li>hei.ttf： 黑体</li><li>song.ttf： 宋体</li><li>kai.ttf（推荐）或 simkai.ttf： 楷体</li><li>msyh.ttf： 微软雅黑</li><li>msyhbd.ttf： 微软雅黑加粗</li><li>hkjgt.ttf： 华康金刚体</li><li>dhttx.ttf： 典黑体特细</li><li>xqgdzt.ttf： 喜鹊古字典体</li><li>qpcyt.ttf： 巧拼超圆体</li><li>arial.ttf： 仅支持英文</li><li>dinalternate.ttf： DIN Alternate Bold</li><li>helveticalt.ttf： Helvetica</li><li>helveticains.ttf： Helvetica Inserat</li><li>trajanpro.ttf： TrajanPro-Bold</li><li>korean.ttf： 韩语</li><li>japanese.ttf： 日语</li><li>thai.ttf： 泰语</li><li>roboto.ttf： Roboto</li><li>notosans.ttf： NotoSans</li><li>notosansthai.ttf： 泰语NotoSansThai</li><li>sarabun.ttf： 泰语Sarabun</li><li>kanit.ttf： 泰语Kanit</li><li>charmonman.ttf： 泰语Charmonman</li><li>notonaskharabic.ttf： 阿拉伯语NotoNaskhArabic</li><li>notosansdevanagari.ttf： 印度语NotoSansDevanagari</li><li>notosanstc.ttf： 粤语思源黑体NotoSansTC</li><li>notosanskr.ttf： 韩语NotoSansKR</li><li>gothica1.ttf： 韩语GothicA1</li><li>nanummyeongjo.ttf： 韩语NanumMyeongjo</li><li>notosansjp.ttf： 日语NotoSansJP</li><li>notoserifjp.ttf： 日语NotoSerifJP</li><li>shipporimincho.ttf： 日语ShipporiMincho</li></ul><p>默认值：hei.ttf 黑体</p>
+	FontType *string `json:"FontType,omitnil,omitempty" name:"FontType"`
+
+	// <p>字体大小，不指定则以字幕文件中为准。支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：(0,4096]。</li><li>百分比：N%，N范围：(0,100]；例如，10%表示字幕字体大小=10%*源视频高度。不填且字幕文件中无设置时，默认源视频高度的5%。</li></ul>
+	FontSize *string `json:"FontSize,omitnil,omitempty" name:"FontSize"`
+
+	// <p>字体颜色，格式：0xRRGGBB。</p><p>默认值：0xFFFFFF（白色）。</p>
+	FontColor *string `json:"FontColor,omitnil,omitempty" name:"FontColor"`
+
+	// <p>文字透明度。取值范围：(0, 1]。</p><ul><li>0：完全透明；</li><li>1：完全不透明</li></ul><p>默认值：1</p>
+	FontAlpha *float64 `json:"FontAlpha,omitnil,omitempty" name:"FontAlpha"`
+
+	// <p>字幕y轴坐标位置，指定此参数会忽略字幕文件自带坐标；支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：[0,4096]。</li><li>百分比：N%，N范围：[0,100]；例如10%表示字幕y坐标=10%<em>源视频高度。默认值：源视频高度</em>4%。<br>注意：坐标轴原点在源视频中轴线底部，字幕基准点在字幕中轴线底部，参考下图：<img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></li></ul>
+	YPos *string `json:"YPos,omitnil,omitempty" name:"YPos"`
+
+	// <p>字幕背景底板的y轴坐标位置；支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：[0,4096]。</li><li>百分比：N%，N范围：[0,100]；例如10%表示字幕背景底板y坐标=10%*源视频高度。不传表示不开启字幕背景底板。<br>注意：坐标轴原点位于源视频的中轴线底部，字幕背景底板的基准点在其中轴线底部，参考下图：<img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></li></ul>
+	BoardY *string `json:"BoardY,omitnil,omitempty" name:"BoardY"`
+
+	// <p>底板的宽度，正整数。</p><ul><li>像素：Npx，N 取值范围：[0,4096]。</li><li>百分比：N%，N 取值范围：[0, 100]。开启底板且不填此值时，默认源视频宽像素的90%。</li></ul>
+	BoardWidth *string `json:"BoardWidth,omitnil,omitempty" name:"BoardWidth"`
+
+	// <p>底板的高度，正整数。</p><ul><li>像素：Npx，N 取值范围：[0,4096]。</li><li>百分比：N%，N 取值范围：[0, 100]。开启底板且不填此值时，默认为源视频高像素的15%。</li></ul>
+	BoardHeight *string `json:"BoardHeight,omitnil,omitempty" name:"BoardHeight"`
+
+	// <p>底板颜色。格式：0xRRGGBB。</p><p>默认值：0x000000（黑色）。</p>
+	BoardColor *string `json:"BoardColor,omitnil,omitempty" name:"BoardColor"`
+
+	// <p>字幕背景板透明度，取值范围：[0, 1]。</p><ul><li>0：完全透明；</li><li>1：完全不透明。</li></ul><p>默认值：0.8。</p>
+	BoardAlpha *float64 `json:"BoardAlpha,omitnil,omitempty" name:"BoardAlpha"`
+
+	// <p>对齐方式。</p><p>枚举值：</p><ul><li>top： 顶部对齐，字幕顶部按位置固定，底部随行数变化。 </li><li>bottom： 底部对齐，字幕底部按位置固定，顶部随行数变化。 </li></ul><p>默认值：bottom</p>
+	Alignment *string `json:"Alignment,omitnil,omitempty" name:"Alignment"`
+
+	// <p>描边宽度。浮点数。</p><ul><li>像素：Npx，N 取值范围： [0, 1000]。</li><li>百分比：N%，N 取值范围：[0, 100]。</li></ul><p>不填默认源视频高度的0.3%。</p>
+	OutlineWidth *string `json:"OutlineWidth,omitnil,omitempty" name:"OutlineWidth"`
+
+	// <p>描边颜色。格式：0xRRGGBB。</p><p>默认值：0x000000（黑色）。</p>
+	OutlineColor *string `json:"OutlineColor,omitnil,omitempty" name:"OutlineColor"`
+
+	// <p>描边透明度。(0，1] 正浮点数。</p><ul><li>0：完全透明；</li><li>1：完全不透明。</li></ul><p>默认值：1</p>
+	OutlineAlpha *float64 `json:"OutlineAlpha,omitnil,omitempty" name:"OutlineAlpha"`
+
+	// <p>阴影宽度。浮点数。</p><ul><li>像素：Npx，N 取值范围： [0, 1000]。</li><li>百分比：N%，N 取值范围：[0, 100]。不填默认无阴影。</li></ul>
+	ShadowWidth *string `json:"ShadowWidth,omitnil,omitempty" name:"ShadowWidth"`
+
+	// <p>阴影颜色。格式：0xRRGGBB。</p><p>默认值：0x000000（黑色），有设置阴影的情况下。</p>
+	ShadowColor *string `json:"ShadowColor,omitnil,omitempty" name:"ShadowColor"`
+
+	// <p>阴影透明度。(0，1] 正浮点数。</p><ul><li>0：完全透明；</li><li>1：完全不透明。</li></ul><p>默认值：1，完全不透明，有设置阴影的情况下。</p>
+	ShadowAlpha *float64 `json:"ShadowAlpha,omitnil,omitempty" name:"ShadowAlpha"`
+
+	// <p>行间距。正整数。</p><ul><li>像素：Npx，N 取值范围： [0, 1000]。</li><li>百分比：N%，N 取值范围：[0, 100]。</li></ul><p>默认值：0</p>
+	LineSpacing *string `json:"LineSpacing,omitnil,omitempty" name:"LineSpacing"`
+}
+
 type SuperResolutionInfo struct {
 	// 画面超分控制开关，可选值：
 	// <li>ON：开启画面超分；</li>
@@ -30742,38 +30804,35 @@ type TranscodeTask2017 struct {
 }
 
 type TranscodeTaskInput struct {
-	// 视频转码模板 ID。
+	// <p>视频转码模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+	// <p>水印列表，支持多张图片或文字水印，最大可支持 10 张。</p>
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitnil,omitempty" name:"WatermarkSet"`
 
-	// 溯源水印。
+	// <p>溯源水印。</p>
 	TraceWatermark *TraceWatermarkInput `json:"TraceWatermark,omitnil,omitempty" name:"TraceWatermark"`
 
-	// 版权水印。
+	// <p>版权水印。</p>
 	CopyRightWatermark *CopyRightWatermarkInput `json:"CopyRightWatermark,omitnil,omitempty" name:"CopyRightWatermark"`
 
-	// 数字水印。
+	// <p>数字水印。</p>
 	BlindWatermark *BlindWatermarkInput `json:"BlindWatermark,omitnil,omitempty" name:"BlindWatermark"`
 
-	// 马赛克列表，最大可支持 10 张。
+	// <p>马赛克列表，最大可支持 10 张。</p>
 	MosaicSet []*MosaicInput `json:"MosaicSet,omitnil,omitempty" name:"MosaicSet"`
 
-	// 片头片尾列表，支持多片头片尾，最大可支持 10 个。
+	// <p>片头片尾列表，支持多片头片尾，最大可支持 10 个。</p>
 	HeadTailSet []*HeadTailTaskInput `json:"HeadTailSet,omitnil,omitempty" name:"HeadTailSet"`
 
-	// 转码后的视频的起始时间偏移，单位：秒。
-	// <li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li>
-	// <li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li>
-	// <li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>
+	// <p>转码后的视频的起始时间偏移，单位：秒。</p><li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li><li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li><li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
 
-	// 转码后视频的终止时间偏移，单位：秒。
-	// <li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li>
-	// <li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li>
-	// <li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
+	// <p>转码后视频的终止时间偏移，单位：秒。</p><li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li><li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li><li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
+
+	// <p>字幕压制信息列表。最大可支持 2 个。</p>
+	SubtitleInfoSet []*SubtitleInfoInput `json:"SubtitleInfoSet,omitnil,omitempty" name:"SubtitleInfoSet"`
 }
 
 type TranscodeTemplate struct {

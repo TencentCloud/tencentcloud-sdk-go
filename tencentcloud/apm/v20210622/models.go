@@ -437,16 +437,19 @@ type ApmApplicationConfigView struct {
 }
 
 type ApmAssociation struct {
-	// 关联产品的实例ID
+	// <p>关联产品的实例ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PeerId *string `json:"PeerId,omitnil,omitempty" name:"PeerId"`
 
-	// 关联关系状态：1（启用）、2（不启用）、3（已失效）
+	// <p>关联关系状态：1（启用）、2（不启用）、3（已失效）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// CKafka消息主题
+	// <p>CKafka消息主题</p>
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// <p>Ckafka消费主题</p><p>用于Kafka指标投递</p>
+	MetricTopic *string `json:"MetricTopic,omitnil,omitempty" name:"MetricTopic"`
 }
 
 type ApmField struct {
@@ -3816,39 +3819,45 @@ func (r *ModifyApmApplicationConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyApmAssociationRequestParams struct {
-	// 关联的产品名，当前只支持Prometheus、CKafka
+	// <p>关联的产品名，当前只支持Prometheus、CKafka</p>
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
-	// 关联关系的状态：// 关联关系状态：1（启用）、2（不启用）
+	// <p>关联关系的状态：// 关联关系状态：1（启用）、2（不启用）</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 业务系统ID
+	// <p>业务系统ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 关联的产品实例ID
+	// <p>关联的产品实例ID</p>
 	PeerId *string `json:"PeerId,omitnil,omitempty" name:"PeerId"`
 
-	// CKafka消息主题
+	// <p>CKafka消息主题</p>
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// <p>Ckafka消息主题</p>
+	MetricTopic *string `json:"MetricTopic,omitnil,omitempty" name:"MetricTopic"`
 }
 
 type ModifyApmAssociationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 关联的产品名，当前只支持Prometheus、CKafka
+	// <p>关联的产品名，当前只支持Prometheus、CKafka</p>
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
-	// 关联关系的状态：// 关联关系状态：1（启用）、2（不启用）
+	// <p>关联关系的状态：// 关联关系状态：1（启用）、2（不启用）</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 业务系统ID
+	// <p>业务系统ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 关联的产品实例ID
+	// <p>关联的产品实例ID</p>
 	PeerId *string `json:"PeerId,omitnil,omitempty" name:"PeerId"`
 
-	// CKafka消息主题
+	// <p>CKafka消息主题</p>
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// <p>Ckafka消息主题</p>
+	MetricTopic *string `json:"MetricTopic,omitnil,omitempty" name:"MetricTopic"`
 }
 
 func (r *ModifyApmAssociationRequest) ToJsonString() string {
@@ -3868,6 +3877,7 @@ func (r *ModifyApmAssociationRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "PeerId")
 	delete(f, "Topic")
+	delete(f, "MetricTopic")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmAssociationRequest has unknown keys!", "")
 	}

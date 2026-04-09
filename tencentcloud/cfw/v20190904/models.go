@@ -1585,6 +1585,74 @@ func (r *CreateDatabaseWhiteListRulesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateNatFwDnatRuleRequestParams struct {
+	// 0：cfw新增模式，1：cfw接入模式。
+	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 防火墙实例id，该字段必须传递。
+	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
+
+	// 添加或删除操作的Dnat规则列表。
+	DnatRules []*CfwNatDnatRule `json:"DnatRules,omitnil,omitempty" name:"DnatRules"`
+}
+
+type CreateNatFwDnatRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 0：cfw新增模式，1：cfw接入模式。
+	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 防火墙实例id，该字段必须传递。
+	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
+
+	// 添加或删除操作的Dnat规则列表。
+	DnatRules []*CfwNatDnatRule `json:"DnatRules,omitnil,omitempty" name:"DnatRules"`
+}
+
+func (r *CreateNatFwDnatRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNatFwDnatRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Mode")
+	delete(f, "CfwInstance")
+	delete(f, "DnatRules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNatFwDnatRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateNatFwDnatRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateNatFwDnatRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateNatFwDnatRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateNatFwDnatRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNatFwDnatRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateNatFwInstanceRequestParams struct {
 	// 防火墙实例名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -2448,6 +2516,74 @@ func (r *DeleteBlockIgnoreRuleNewResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteBlockIgnoreRuleNewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteNatFwDnatRuleRequestParams struct {
+	// 0：cfw新增模式，1：cfw接入模式。
+	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 防火墙实例id，该字段必须传递。
+	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
+
+	// 添加或删除操作的Dnat规则列表。
+	DnatRules []*CfwNatDnatRule `json:"DnatRules,omitnil,omitempty" name:"DnatRules"`
+}
+
+type DeleteNatFwDnatRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 0：cfw新增模式，1：cfw接入模式。
+	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 防火墙实例id，该字段必须传递。
+	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
+
+	// 添加或删除操作的Dnat规则列表。
+	DnatRules []*CfwNatDnatRule `json:"DnatRules,omitnil,omitempty" name:"DnatRules"`
+}
+
+func (r *DeleteNatFwDnatRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNatFwDnatRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Mode")
+	delete(f, "CfwInstance")
+	delete(f, "DnatRules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNatFwDnatRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteNatFwDnatRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteNatFwDnatRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteNatFwDnatRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteNatFwDnatRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNatFwDnatRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

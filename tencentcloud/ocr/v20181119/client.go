@@ -863,6 +863,10 @@ func NewCropEnhanceImageOCRResponse() (response *CropEnhanceImageOCRResponse) {
 // CropEnhanceImageOCR
 // 图像切边矫正增强是面向文档类图片提供的图像增强处理能力，包括切边增强、图像矫正、阴影去除、摩尔纹去除等；可以有效优化文档类的图片质量，提升文字的清晰度，可以作为所有识别场景的图像预处理原子能力，从而提升识别效果。
 //
+// 
+//
+// 默认接口请求频率限制：5次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_ENGINERECOGNIZETIMEOUT = "FailedOperation.EngineRecognizeTimeout"
@@ -876,6 +880,10 @@ func (c *Client) CropEnhanceImageOCR(request *CropEnhanceImageOCRRequest) (respo
 
 // CropEnhanceImageOCR
 // 图像切边矫正增强是面向文档类图片提供的图像增强处理能力，包括切边增强、图像矫正、阴影去除、摩尔纹去除等；可以有效优化文档类的图片质量，提升文字的清晰度，可以作为所有识别场景的图像预处理原子能力，从而提升识别效果。
+//
+// 
+//
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -1599,6 +1607,10 @@ func NewEraseHandwrittenImageOCRResponse() (response *EraseHandwrittenImageOCRRe
 // EraseHandwrittenImageOCR
 // 本功能可自动清除试卷图片中的手写与批改痕迹，并输出洁净的空白试卷。也可以配合集成图像切边矫正技术，能自动定位、拉平试卷区域，从而在最优预处理基础上实现更佳的擦除效果。
 //
+// 
+//
+// 默认接口请求频率限制：5次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_ENGINERECOGNIZETIMEOUT = "FailedOperation.EngineRecognizeTimeout"
@@ -1612,6 +1624,10 @@ func (c *Client) EraseHandwrittenImageOCR(request *EraseHandwrittenImageOCRReque
 
 // EraseHandwrittenImageOCR
 // 本功能可自动清除试卷图片中的手写与批改痕迹，并输出洁净的空白试卷。也可以配合集成图像切边矫正技术，能自动定位、拉平试卷区域，从而在最优预处理基础上实现更佳的擦除效果。
+//
+// 
+//
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -1735,6 +1751,10 @@ func NewExtractDocAgentResponse() (response *ExtractDocAgentResponse) {
 // ExtractDocAgent
 // 模型参数更小，速度更快。推荐场景：实时性要求高（30s以内）并且样本输入输出token2000以内，建议用实时模型。【备注：1.固定价格不限抽取字段数，2.自适应价格抽取字段大于10记两次费用，小于等于10记一次费用】
 //
+// 
+//
+// 默认接口请求频率限制：5次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
@@ -1756,6 +1776,10 @@ func (c *Client) ExtractDocAgent(request *ExtractDocAgentRequest) (response *Ext
 
 // ExtractDocAgent
 // 模型参数更小，速度更快。推荐场景：实时性要求高（30s以内）并且样本输入输出token2000以内，建议用实时模型。【备注：1.固定价格不限抽取字段数，2.自适应价格抽取字段大于10记两次费用，小于等于10记一次费用】
+//
+// 
+//
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"

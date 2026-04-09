@@ -759,16 +759,16 @@ func (r *DescribeObjectTypeListResponse) FromJsonString(s string) error {
 }
 
 type DescribePolicy struct {
-	// 保护策略ID列表
+	// <p>保护策略ID列表</p>
 	TaskPolicyIdList []*string `json:"TaskPolicyIdList,omitnil,omitempty" name:"TaskPolicyIdList"`
 
-	// 保护策略状态
+	// <p>保护策略状态</p><p>枚举值：</p><ul><li>已触发： 表示已触发护栏策略</li><li>未触发： 表示未触发护栏策略</li><li>已恢复： 表示护栏策略已恢复</li></ul>
 	TaskPolicyStatus *string `json:"TaskPolicyStatus,omitnil,omitempty" name:"TaskPolicyStatus"`
 
-	// 策略规则
+	// <p>策略规则</p>
 	TaskPolicyRule *string `json:"TaskPolicyRule,omitnil,omitempty" name:"TaskPolicyRule"`
 
-	// 护栏策略生效处理策略 1:顺序执行，2:暂停
+	// <p>护栏策略生效处理策略 1:顺序执行，2:暂停</p>
 	TaskPolicyDealType *int64 `json:"TaskPolicyDealType,omitnil,omitempty" name:"TaskPolicyDealType"`
 }
 
@@ -1475,6 +1475,9 @@ type ModifyTaskRunStatusRequestParams struct {
 
 	// 演练记录
 	Record *string `json:"Record,omitnil,omitempty" name:"Record"`
+
+
+	IncludeRecordInReport *int64 `json:"IncludeRecordInReport,omitnil,omitempty" name:"IncludeRecordInReport"`
 }
 
 type ModifyTaskRunStatusRequest struct {
@@ -1497,6 +1500,8 @@ type ModifyTaskRunStatusRequest struct {
 
 	// 演练记录
 	Record *string `json:"Record,omitnil,omitempty" name:"Record"`
+
+	IncludeRecordInReport *int64 `json:"IncludeRecordInReport,omitnil,omitempty" name:"IncludeRecordInReport"`
 }
 
 func (r *ModifyTaskRunStatusRequest) ToJsonString() string {
@@ -1517,6 +1522,7 @@ func (r *ModifyTaskRunStatusRequest) FromJsonString(s string) error {
 	delete(f, "Summary")
 	delete(f, "Issue")
 	delete(f, "Record")
+	delete(f, "IncludeRecordInReport")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTaskRunStatusRequest has unknown keys!", "")
 	}
@@ -1852,67 +1858,67 @@ type TaskGroup struct {
 }
 
 type TaskGroupAction struct {
-	// 任务分组动作ID
+	// <p>任务分组动作ID</p>
 	TaskGroupActionId *int64 `json:"TaskGroupActionId,omitnil,omitempty" name:"TaskGroupActionId"`
 
-	// 任务分组动作实例列表
+	// <p>任务分组动作实例列表</p>
 	TaskGroupInstances []*TaskGroupInstance `json:"TaskGroupInstances,omitnil,omitempty" name:"TaskGroupInstances"`
 
-	// 动作ID
+	// <p>动作ID</p>
 	ActionId *int64 `json:"ActionId,omitnil,omitempty" name:"ActionId"`
 
-	// 分组动作顺序
+	// <p>分组动作顺序</p>
 	TaskGroupActionOrder *int64 `json:"TaskGroupActionOrder,omitnil,omitempty" name:"TaskGroupActionOrder"`
 
-	// 分组动作通用配置
+	// <p>分组动作通用配置</p>
 	TaskGroupActionGeneralConfiguration *string `json:"TaskGroupActionGeneralConfiguration,omitnil,omitempty" name:"TaskGroupActionGeneralConfiguration"`
 
-	// 分组动作自定义配置
+	// <p>分组动作自定义配置</p>
 	TaskGroupActionCustomConfiguration *string `json:"TaskGroupActionCustomConfiguration,omitnil,omitempty" name:"TaskGroupActionCustomConfiguration"`
 
-	// 分组动作状态
+	// <p>分组动作状态</p><p>枚举值：</p><ul><li>2001： 未开始</li><li>2002： 待执行</li><li>2003： 执行中</li><li>2004： 执行结束</li></ul>
 	TaskGroupActionStatus *int64 `json:"TaskGroupActionStatus,omitnil,omitempty" name:"TaskGroupActionStatus"`
 
-	// 动作分组创建时间
+	// <p>动作分组创建时间</p>
 	TaskGroupActionCreateTime *string `json:"TaskGroupActionCreateTime,omitnil,omitempty" name:"TaskGroupActionCreateTime"`
 
-	// 动作分组更新时间
+	// <p>动作分组更新时间</p>
 	TaskGroupActionUpdateTime *string `json:"TaskGroupActionUpdateTime,omitnil,omitempty" name:"TaskGroupActionUpdateTime"`
 
-	// 动作名称
+	// <p>动作名称</p>
 	ActionTitle *string `json:"ActionTitle,omitnil,omitempty" name:"ActionTitle"`
 
-	// 状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过
+	// <p>状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过</p>
 	TaskGroupActionStatusType *int64 `json:"TaskGroupActionStatusType,omitnil,omitempty" name:"TaskGroupActionStatusType"`
 
-	// RandomId
+	// <p>RandomId</p>
 	TaskGroupActionRandomId *int64 `json:"TaskGroupActionRandomId,omitnil,omitempty" name:"TaskGroupActionRandomId"`
 
-	// RecoverId
+	// <p>RecoverId</p>
 	TaskGroupActionRecoverId *int64 `json:"TaskGroupActionRecoverId,omitnil,omitempty" name:"TaskGroupActionRecoverId"`
 
-	// ExecuteId
+	// <p>ExecuteId</p>
 	TaskGroupActionExecuteId *int64 `json:"TaskGroupActionExecuteId,omitnil,omitempty" name:"TaskGroupActionExecuteId"`
 
-	// 调用api类型，0:tat, 1:云api
+	// <p>调用api类型，0:tat, 1:云api</p>
 	ActionApiType *int64 `json:"ActionApiType,omitnil,omitempty" name:"ActionApiType"`
 
-	// 1:故障，2:恢复
+	// <p>1:故障，2:恢复</p>
 	ActionAttribute *int64 `json:"ActionAttribute,omitnil,omitempty" name:"ActionAttribute"`
 
-	// 动作类型：平台、自定义
+	// <p>动作类型：平台、自定义</p>
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
-	// 是否可重试
+	// <p>是否可重试</p>
 	IsExecuteRedo *bool `json:"IsExecuteRedo,omitnil,omitempty" name:"IsExecuteRedo"`
 
-	// 动作风险级别
+	// <p>动作风险级别</p>
 	ActionRisk *string `json:"ActionRisk,omitnil,omitempty" name:"ActionRisk"`
 
-	// 动作运行时间
+	// <p>动作运行时间</p><p>单位：秒</p>
 	TaskGroupActionExecuteTime *int64 `json:"TaskGroupActionExecuteTime,omitnil,omitempty" name:"TaskGroupActionExecuteTime"`
 
-	// 动作开始执行时间
+	// <p>动作开始执行时间</p>
 	TaskGroupActionStartTime *string `json:"TaskGroupActionStartTime,omitnil,omitempty" name:"TaskGroupActionStartTime"`
 }
 
@@ -1975,51 +1981,51 @@ type TaskGroupForAction struct {
 }
 
 type TaskGroupInstance struct {
-	// 实例ID
+	// <p>实例ID</p>
 	TaskGroupInstanceId *int64 `json:"TaskGroupInstanceId,omitnil,omitempty" name:"TaskGroupInstanceId"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	TaskGroupInstanceObjectId *string `json:"TaskGroupInstanceObjectId,omitnil,omitempty" name:"TaskGroupInstanceObjectId"`
 
-	// 实例动作执行状态
+	// <p>实例动作执行状态</p><p>枚举值：</p><ul><li>3001： 未开始</li><li>3002： 执行中</li><li>3003： 执行结束</li><li>3004： 准备中</li></ul>
 	TaskGroupInstanceStatus *int64 `json:"TaskGroupInstanceStatus,omitnil,omitempty" name:"TaskGroupInstanceStatus"`
 
-	// 实例创建时间
+	// <p>实例创建时间</p>
 	TaskGroupInstanceCreateTime *string `json:"TaskGroupInstanceCreateTime,omitnil,omitempty" name:"TaskGroupInstanceCreateTime"`
 
-	// 实例更新时间
+	// <p>实例更新时间</p>
 	TaskGroupInstanceUpdateTime *string `json:"TaskGroupInstanceUpdateTime,omitnil,omitempty" name:"TaskGroupInstanceUpdateTime"`
 
-	// 状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过
+	// <p>状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过</p>
 	TaskGroupInstanceStatusType *int64 `json:"TaskGroupInstanceStatusType,omitnil,omitempty" name:"TaskGroupInstanceStatusType"`
 
-	// 执行开始时间
+	// <p>执行开始时间</p>
 	TaskGroupInstanceStartTime *string `json:"TaskGroupInstanceStartTime,omitnil,omitempty" name:"TaskGroupInstanceStartTime"`
 
-	// 执行结束时间
+	// <p>执行结束时间</p>
 	TaskGroupInstanceEndTime *string `json:"TaskGroupInstanceEndTime,omitnil,omitempty" name:"TaskGroupInstanceEndTime"`
 
-	// 实例动作执行日志
+	// <p>实例动作执行日志</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: TaskGroupInstanceExecuteLog is deprecated.
 	TaskGroupInstanceExecuteLog *string `json:"TaskGroupInstanceExecuteLog,omitnil,omitempty" name:"TaskGroupInstanceExecuteLog"`
 
-	// 实例是否可重试
+	// <p>实例是否可重试</p>
 	TaskGroupInstanceIsRedo *bool `json:"TaskGroupInstanceIsRedo,omitnil,omitempty" name:"TaskGroupInstanceIsRedo"`
 
-	// 动作实例执行时间
+	// <p>动作实例执行时间</p><p>单位：秒</p>
 	TaskGroupInstanceExecuteTime *int64 `json:"TaskGroupInstanceExecuteTime,omitnil,omitempty" name:"TaskGroupInstanceExecuteTime"`
 }
 
 type TaskGroupInstancesExecuteRules struct {
-	// 实例选取模式
+	// <p>实例选取模式</p><p>枚举值：</p><ul><li>1： 全部注入</li><li>2： 随机选取指定比例注入</li><li>3： 随机选取指定数量注入</li></ul>
 	TaskGroupInstancesExecuteMode *int64 `json:"TaskGroupInstancesExecuteMode,omitnil,omitempty" name:"TaskGroupInstancesExecuteMode"`
 
-	// 按比例选取模式下选取比例
+	// <p>按比例选取模式下选取比例</p>
 	TaskGroupInstancesExecutePercent *int64 `json:"TaskGroupInstancesExecutePercent,omitnil,omitempty" name:"TaskGroupInstancesExecutePercent"`
 
-	// 按数量选取模式下选取数量
+	// <p>按数量选取模式下选取数量</p>
 	TaskGroupInstancesExecuteNum *int64 `json:"TaskGroupInstancesExecuteNum,omitnil,omitempty" name:"TaskGroupInstancesExecuteNum"`
 }
 
@@ -2138,20 +2144,19 @@ type TaskReportInfo struct {
 }
 
 type TaskTarget struct {
-	// 目标标签ID
+	// <p>目标标签ID</p>
 	TargetId *int64 `json:"TargetId,omitnil,omitempty" name:"TargetId"`
 
-	// 目标描述
+	// <p>目标描述</p>
 	TargetDesc *string `json:"TargetDesc,omitnil,omitempty" name:"TargetDesc"`
 
-	// 1:演练场景
-	// 2:演练目标
+	// <p>1:演练场景<br>2:演练目标</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 1:平台 2:用户个人
+	// <p>1:平台 2:用户个人</p>
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 目标标签是否已被删除
+	// <p>目标标签是否已被删除</p><p>枚举值：</p><ul><li>0： 未删除</li><li>1： 已删除</li></ul>
 	TargetStatus *int64 `json:"TargetStatus,omitnil,omitempty" name:"TargetStatus"`
 }
 

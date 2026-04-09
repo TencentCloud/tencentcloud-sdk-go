@@ -859,6 +859,90 @@ func (c *Client) CreateDatabaseWhiteListRulesWithContext(ctx context.Context, re
     return
 }
 
+func NewCreateNatFwDnatRuleRequest() (request *CreateNatFwDnatRuleRequest) {
+    request = &CreateNatFwDnatRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "CreateNatFwDnatRule")
+    
+    
+    return
+}
+
+func NewCreateNatFwDnatRuleResponse() (response *CreateNatFwDnatRuleResponse) {
+    response = &CreateNatFwDnatRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateNatFwDnatRule
+// 创建Nat防火墙Dnat规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateNatFwDnatRule(request *CreateNatFwDnatRuleRequest) (response *CreateNatFwDnatRuleResponse, err error) {
+    return c.CreateNatFwDnatRuleWithContext(context.Background(), request)
+}
+
+// CreateNatFwDnatRule
+// 创建Nat防火墙Dnat规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateNatFwDnatRuleWithContext(ctx context.Context, request *CreateNatFwDnatRuleRequest) (response *CreateNatFwDnatRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateNatFwDnatRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "CreateNatFwDnatRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNatFwDnatRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateNatFwDnatRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNatFwInstanceRequest() (request *CreateNatFwInstanceRequest) {
     request = &CreateNatFwInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1391,6 +1475,90 @@ func (c *Client) DeleteBlockIgnoreRuleNewWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDeleteBlockIgnoreRuleNewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteNatFwDnatRuleRequest() (request *DeleteNatFwDnatRuleRequest) {
+    request = &DeleteNatFwDnatRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DeleteNatFwDnatRule")
+    
+    
+    return
+}
+
+func NewDeleteNatFwDnatRuleResponse() (response *DeleteNatFwDnatRuleResponse) {
+    response = &DeleteNatFwDnatRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteNatFwDnatRule
+// 删除Nat防火墙Dnat规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteNatFwDnatRule(request *DeleteNatFwDnatRuleRequest) (response *DeleteNatFwDnatRuleResponse, err error) {
+    return c.DeleteNatFwDnatRuleWithContext(context.Background(), request)
+}
+
+// DeleteNatFwDnatRule
+// 删除Nat防火墙Dnat规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteNatFwDnatRuleWithContext(ctx context.Context, request *DeleteNatFwDnatRuleRequest) (response *DeleteNatFwDnatRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteNatFwDnatRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DeleteNatFwDnatRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNatFwDnatRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteNatFwDnatRuleResponse()
     err = c.Send(request, response)
     return
 }

@@ -11865,12 +11865,45 @@ type EventCondition struct {
 
 // Predefined struct for user
 type ExportPrometheusReadOnlyDynamicAPIRequestParams struct {
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// HTTP 方法名 GET/POST/PUT/DELETE 等
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// HTTP 路径（包括 query string）
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// HTTP 请求体，任何数据
+	RequestBody *string `json:"RequestBody,omitnil,omitempty" name:"RequestBody"`
+
+	// HTTP 请求头
+	Headers []*PrometheusStringKeyValuePair `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// 是否请求自监控数据。自监控仅支持 /api/v1/query 与 /api/v1/query_range 接口。
+	SelfMonitor *bool `json:"SelfMonitor,omitnil,omitempty" name:"SelfMonitor"`
 }
 
 type ExportPrometheusReadOnlyDynamicAPIRequest struct {
 	*tchttp.BaseRequest
 	
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// HTTP 方法名 GET/POST/PUT/DELETE 等
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// HTTP 路径（包括 query string）
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// HTTP 请求体，任何数据
+	RequestBody *string `json:"RequestBody,omitnil,omitempty" name:"RequestBody"`
+
+	// HTTP 请求头
+	Headers []*PrometheusStringKeyValuePair `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// 是否请求自监控数据。自监控仅支持 /api/v1/query 与 /api/v1/query_range 接口。
+	SelfMonitor *bool `json:"SelfMonitor,omitnil,omitempty" name:"SelfMonitor"`
 }
 
 func (r *ExportPrometheusReadOnlyDynamicAPIRequest) ToJsonString() string {
@@ -11885,7 +11918,12 @@ func (r *ExportPrometheusReadOnlyDynamicAPIRequest) FromJsonString(s string) err
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "Method")
+	delete(f, "Path")
+	delete(f, "RequestBody")
+	delete(f, "Headers")
+	delete(f, "SelfMonitor")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportPrometheusReadOnlyDynamicAPIRequest has unknown keys!", "")
 	}
@@ -11894,6 +11932,9 @@ func (r *ExportPrometheusReadOnlyDynamicAPIRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type ExportPrometheusReadOnlyDynamicAPIResponseParams struct {
+	// HTTP 响应数据
+	HTTP *PrometheusDynamicAPIResponseHTTP `json:"HTTP,omitnil,omitempty" name:"HTTP"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -14679,6 +14720,14 @@ type PrometheusConfigItem struct {
 	Targets *Targets `json:"Targets,omitnil,omitempty" name:"Targets"`
 }
 
+type PrometheusDynamicAPIResponseHTTP struct {
+	// HTTP 状态码
+	StatusCode *int64 `json:"StatusCode,omitnil,omitempty" name:"StatusCode"`
+
+	// HTTP 响应体
+	ResponseBody *string `json:"ResponseBody,omitnil,omitempty" name:"ResponseBody"`
+}
+
 type PrometheusInstanceGrantInfo struct {
 	// 是否有计费操作权限(1=有，2=无)
 	HasChargeOperation *int64 `json:"HasChargeOperation,omitnil,omitempty" name:"HasChargeOperation"`
@@ -15188,6 +15237,14 @@ type PrometheusScrapeJob struct {
 	// 配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+}
+
+type PrometheusStringKeyValuePair struct {
+	// 键
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type PrometheusTag struct {

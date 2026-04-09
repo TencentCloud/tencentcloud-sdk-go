@@ -2657,65 +2657,63 @@ type InputParameterForManage struct {
 
 // Predefined struct for user
 type ListAggregateCompliancePacksRequestParams struct {
-	// 数量
+	// <p>数量</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 账号组ID
+	// <p>账号组ID</p>
 	AccountGroupId *string `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 
-	// 合规包名称
+	// <p>合规包名称</p>
 	CompliancePackName *string `json:"CompliancePackName,omitnil,omitempty" name:"CompliancePackName"`
 
-	// 风险等级
-	// 1：高风险。
-	// 2：中风险。
-	// 3：低风险。
+	// <p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
 	RiskLevel []*uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 合规包状态 ACTIVE、NO_ACTIVE
+	// <p>合规包状态 ACTIVE、NO_ACTIVE</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 评估状态合规： 'COMPLIANT'
-	// 不合规： 'NON_COMPLIANT'
+	// <p>评估状态合规： &#39;COMPLIANT&#39;<br>不合规： &#39;NON_COMPLIANT&#39;</p>
 	ComplianceResult []*string `json:"ComplianceResult,omitnil,omitempty" name:"ComplianceResult"`
 
-	// 排序类型, 倒序：desc，顺序：asc
+	// <p>排序类型, 倒序：desc，顺序：asc</p>
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// <p>包含合规包结果定义</p><p>枚举值：</p><ul><li>NO： 不包含</li></ul><p>默认值：空</p><p>此字段为新增，因此不传或者传了YES都会默认返回包含合规结果数据，其他枚举值后面视情况丰富</p>
+	IncludeCompliancePackRuleResult *string `json:"IncludeCompliancePackRuleResult,omitnil,omitempty" name:"IncludeCompliancePackRuleResult"`
 }
 
 type ListAggregateCompliancePacksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数量
+	// <p>数量</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 账号组ID
+	// <p>账号组ID</p>
 	AccountGroupId *string `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 
-	// 合规包名称
+	// <p>合规包名称</p>
 	CompliancePackName *string `json:"CompliancePackName,omitnil,omitempty" name:"CompliancePackName"`
 
-	// 风险等级
-	// 1：高风险。
-	// 2：中风险。
-	// 3：低风险。
+	// <p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
 	RiskLevel []*uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 合规包状态 ACTIVE、NO_ACTIVE
+	// <p>合规包状态 ACTIVE、NO_ACTIVE</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 评估状态合规： 'COMPLIANT'
-	// 不合规： 'NON_COMPLIANT'
+	// <p>评估状态合规： &#39;COMPLIANT&#39;<br>不合规： &#39;NON_COMPLIANT&#39;</p>
 	ComplianceResult []*string `json:"ComplianceResult,omitnil,omitempty" name:"ComplianceResult"`
 
-	// 排序类型, 倒序：desc，顺序：asc
+	// <p>排序类型, 倒序：desc，顺序：asc</p>
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// <p>包含合规包结果定义</p><p>枚举值：</p><ul><li>NO： 不包含</li></ul><p>默认值：空</p><p>此字段为新增，因此不传或者传了YES都会默认返回包含合规结果数据，其他枚举值后面视情况丰富</p>
+	IncludeCompliancePackRuleResult *string `json:"IncludeCompliancePackRuleResult,omitnil,omitempty" name:"IncludeCompliancePackRuleResult"`
 }
 
 func (r *ListAggregateCompliancePacksRequest) ToJsonString() string {
@@ -2738,6 +2736,7 @@ func (r *ListAggregateCompliancePacksRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "ComplianceResult")
 	delete(f, "OrderType")
+	delete(f, "IncludeCompliancePackRuleResult")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAggregateCompliancePacksRequest has unknown keys!", "")
 	}
@@ -2746,10 +2745,10 @@ func (r *ListAggregateCompliancePacksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListAggregateCompliancePacksResponseParams struct {
-	// 总数
+	// <p>总数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 详情
+	// <p>详情</p>
 	Items []*ConfigCompliancePack `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

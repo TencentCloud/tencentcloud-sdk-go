@@ -29,6 +29,9 @@ const (
 	// 数据库连接失败，请检查参数是否填写正确。
 	FAILEDOPERATION_DATASOURCECONNECTIONFAILED = "FailedOperation.DataSourceConnectionFailed"
 
+	// 默认命名空间不支持操作
+	FAILEDOPERATION_DEFAULTSPACECANNOTOPERATE = "FailedOperation.DefaultSpaceCanNotOperate"
+
 	// 不能删除wedata项目关联的空间
 	FAILEDOPERATION_DELETEWEDATAITEMSPACE = "FailedOperation.DeleteWedataItemspace"
 

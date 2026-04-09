@@ -21,38 +21,40 @@ import (
 )
 
 type AIAgentAsset struct {
-	// ID 标识
+	// <p>ID 标识</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// agent 名称
+	// <p>agent 名称</p>
 	AgentName *string `json:"AgentName,omitnil,omitempty" name:"AgentName"`
 
-	// agent 使用模型名称
+	// <p>agent 使用模型名称</p>
 	AgentModel []*string `json:"AgentModel,omitnil,omitempty" name:"AgentModel"`
 
-	// 实例 ID
+	// <p>实例 ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// metadata 风险列表。有如下枚举值: 1. AK_TMP  2. USER_DATA
+	// <p>实例名称</p>
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// <p>metadata 风险列表。有如下枚举值: 1. AK_TMP  2. USER_DATA</p>
 	MetadataRiskList []*string `json:"MetadataRiskList,omitnil,omitempty" name:"MetadataRiskList"`
 
-	// 首次检出时间
+	// <p>首次检出时间</p>
 	IdentityTimeFirst *string `json:"IdentityTimeFirst,omitnil,omitempty" name:"IdentityTimeFirst"`
 
-	// 最近检出时间
+	// <p>最近检出时间</p>
 	IdentityTimeLast *string `json:"IdentityTimeLast,omitnil,omitempty" name:"IdentityTimeLast"`
 
-	// 检出方式。有如下枚举值 1. FINGER 资产指纹方式检出 2. NETWORK 网络访问方式检出
+	// <p>检出方式。有如下枚举值 1. FINGER 资产指纹方式检出 2. NETWORK 网络访问方式检出</p>
 	IdentityMethod *string `json:"IdentityMethod,omitnil,omitempty" name:"IdentityMethod"`
 
-	// 暴露状态。有如下枚举值。1. EXPOSED；2.UNEXPOSED；
-	// 3. UNKNOWN;
+	// <p>暴露状态。有如下枚举值。1. EXPOSED；2.UNEXPOSED；</p><ol start="3"><li>UNKNOWN;</li></ol>
 	ExposureStatus *string `json:"ExposureStatus,omitnil,omitempty" name:"ExposureStatus"`
 
-	// metadata 有风险时对应路径
+	// <p>metadata 有风险时对应路径</p>
 	MetadataRiskURL *string `json:"MetadataRiskURL,omitnil,omitempty" name:"MetadataRiskURL"`
 
-	// 无
+	// <p>无</p>
 	SkillState *SkillState `json:"SkillState,omitnil,omitempty" name:"SkillState"`
 }
 

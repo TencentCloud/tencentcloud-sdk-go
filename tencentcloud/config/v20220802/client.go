@@ -290,6 +290,7 @@ func NewCloseAggregateConfigRuleResponse() (response *CloseAggregateConfigRuleRe
 // 账号组关闭规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGERULE = "FailedOperation.NotAllowOperateControlCenterGovernancePackageRule"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_ACCOUNTGROUPISNOTEXIST = "ResourceNotFound.AccountGroupIsNotExist"
@@ -303,6 +304,7 @@ func (c *Client) CloseAggregateConfigRule(request *CloseAggregateConfigRuleReque
 // 账号组关闭规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGERULE = "FailedOperation.NotAllowOperateControlCenterGovernancePackageRule"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_ACCOUNTGROUPISNOTEXIST = "ResourceNotFound.AccountGroupIsNotExist"
@@ -562,6 +564,7 @@ func NewDeleteAggregateCompliancePackResponse() (response *DeleteAggregateCompli
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTEXIST = "FailedOperation.CompliancePackIsNotExist"
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTSTOP = "FailedOperation.CompliancePackIsNotStop"
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGE = "FailedOperation.NotAllowOperateControlCenterGovernancePackage"
 //  FAILEDOPERATION_RULEISNOTSTOP = "FailedOperation.RuleIsNotStop"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_COMPLIANCEPACKISNOTEXIST = "ResourceNotFound.CompliancePackIsNotExist"
@@ -575,6 +578,7 @@ func (c *Client) DeleteAggregateCompliancePack(request *DeleteAggregateComplianc
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTEXIST = "FailedOperation.CompliancePackIsNotExist"
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTSTOP = "FailedOperation.CompliancePackIsNotStop"
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGE = "FailedOperation.NotAllowOperateControlCenterGovernancePackage"
 //  FAILEDOPERATION_RULEISNOTSTOP = "FailedOperation.RuleIsNotStop"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_COMPLIANCEPACKISNOTEXIST = "ResourceNotFound.CompliancePackIsNotExist"
@@ -618,6 +622,7 @@ func NewDeleteAggregateConfigRuleResponse() (response *DeleteAggregateConfigRule
 // 账号组删除规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGERULE = "FailedOperation.NotAllowOperateControlCenterGovernancePackageRule"
 //  FAILEDOPERATION_RULEISNOTSTOP = "FailedOperation.RuleIsNotStop"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -632,6 +637,7 @@ func (c *Client) DeleteAggregateConfigRule(request *DeleteAggregateConfigRuleReq
 // 账号组删除规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGERULE = "FailedOperation.NotAllowOperateControlCenterGovernancePackageRule"
 //  FAILEDOPERATION_RULEISNOTSTOP = "FailedOperation.RuleIsNotStop"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1479,6 +1485,7 @@ func NewDetachAggregateConfigRuleToCompliancePackResponse() (response *DetachAgg
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTEXIST = "FailedOperation.CompliancePackIsNotExist"
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGE = "FailedOperation.NotAllowOperateControlCenterGovernancePackage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_COMPLIANCEPACKISNOTEXIST = "ResourceNotFound.CompliancePackIsNotExist"
 //  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
@@ -1491,6 +1498,7 @@ func (c *Client) DetachAggregateConfigRuleToCompliancePack(request *DetachAggreg
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTEXIST = "FailedOperation.CompliancePackIsNotExist"
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGE = "FailedOperation.NotAllowOperateControlCenterGovernancePackage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_COMPLIANCEPACKISNOTEXIST = "ResourceNotFound.CompliancePackIsNotExist"
 //  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
@@ -2312,6 +2320,7 @@ func NewOpenAggregateConfigRuleResponse() (response *OpenAggregateConfigRuleResp
 // 账号组开启规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGERULE = "FailedOperation.NotAllowOperateControlCenterGovernancePackageRule"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
@@ -2324,6 +2333,7 @@ func (c *Client) OpenAggregateConfigRule(request *OpenAggregateConfigRuleRequest
 // 账号组开启规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGERULE = "FailedOperation.NotAllowOperateControlCenterGovernancePackageRule"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
@@ -2689,6 +2699,7 @@ func NewUpdateAggregateCompliancePackResponse() (response *UpdateAggregateCompli
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTEXIST = "FailedOperation.CompliancePackIsNotExist"
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGE = "FailedOperation.NotAllowOperateControlCenterGovernancePackage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_COMPLIANCEPACKISNOTEXIST = "ResourceNotFound.CompliancePackIsNotExist"
 //  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
@@ -2701,6 +2712,7 @@ func (c *Client) UpdateAggregateCompliancePack(request *UpdateAggregateComplianc
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTEXIST = "FailedOperation.CompliancePackIsNotExist"
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGE = "FailedOperation.NotAllowOperateControlCenterGovernancePackage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_COMPLIANCEPACKISNOTEXIST = "ResourceNotFound.CompliancePackIsNotExist"
 //  RESOURCENOTFOUND_RULEISNOTEXIST = "ResourceNotFound.RuleIsNotExist"
@@ -2745,6 +2757,7 @@ func NewUpdateAggregateCompliancePackStatusResponse() (response *UpdateAggregate
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTEXIST = "FailedOperation.CompliancePackIsNotExist"
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGE = "FailedOperation.NotAllowOperateControlCenterGovernancePackage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_COMPLIANCEPACKISNOTEXIST = "ResourceNotFound.CompliancePackIsNotExist"
 func (c *Client) UpdateAggregateCompliancePackStatus(request *UpdateAggregateCompliancePackStatusRequest) (response *UpdateAggregateCompliancePackStatusResponse, err error) {
@@ -2756,6 +2769,7 @@ func (c *Client) UpdateAggregateCompliancePackStatus(request *UpdateAggregateCom
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPLIANCEPACKISNOTEXIST = "FailedOperation.CompliancePackIsNotExist"
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGE = "FailedOperation.NotAllowOperateControlCenterGovernancePackage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_COMPLIANCEPACKISNOTEXIST = "ResourceNotFound.CompliancePackIsNotExist"
 func (c *Client) UpdateAggregateCompliancePackStatusWithContext(ctx context.Context, request *UpdateAggregateCompliancePackStatusRequest) (response *UpdateAggregateCompliancePackStatusResponse, err error) {
@@ -2854,6 +2868,7 @@ func NewUpdateAggregateConfigRuleResponse() (response *UpdateAggregateConfigRule
 // 账号组编辑规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGERULE = "FailedOperation.NotAllowOperateControlCenterGovernancePackageRule"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_ACCOUNTGROUPISNOTEXIST = "ResourceNotFound.AccountGroupIsNotExist"
@@ -2867,6 +2882,7 @@ func (c *Client) UpdateAggregateConfigRule(request *UpdateAggregateConfigRuleReq
 // 账号组编辑规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGERULE = "FailedOperation.NotAllowOperateControlCenterGovernancePackageRule"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_ACCOUNTGROUPISNOTEXIST = "ResourceNotFound.AccountGroupIsNotExist"

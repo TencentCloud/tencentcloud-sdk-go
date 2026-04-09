@@ -1585,74 +1585,74 @@ func (r *CreateOrganizationMemberPolicyResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type CreateOrganizationMemberRequestParams struct {
-	// 成员名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
+	// <p>成员名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&amp;._[]-:,</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 关系策略。取值：Financial
+	// <p>关系策略。取值：Financial</p>
 	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
 
-	// 成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨（若需要开启资金划拨权限，请联系您的商务经理内部开通。）、4-合并出账、5-开票、6-优惠继承、7-代付费、8-成本分析、9-预算管理、10-信用额度设置（若需要开启信用额度设置权限，请联系您的商务经理内部开通。），1、2 默认必须
+	// <p>成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨（若需要开启资金划拨权限，请联系您的商务经理内部开通。）、4-合并出账、5-开票、6-优惠继承、7-代付费、8-成本分析、9-预算管理、10-信用额度设置（若需要开启信用额度设置权限，请联系您的商务经理内部开通。），1、2 默认必须</p>
 	PermissionIds []*uint64 `json:"PermissionIds,omitnil,omitempty" name:"PermissionIds"`
 
-	// 成员所属部门的节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
+	// <p>成员所属部门的节点ID。可以通过<a href="https://cloud.tencent.com/document/product/850/82926">DescribeOrganizationNodes</a>获取</p>
 	NodeId *int64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
-	// 账号名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
+	// <p>账号名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&amp;._[]-:,</p>
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
-	// 备注。
+	// <p>备注。</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 成员创建记录ID。创建异常重试时需要
+	// <p>成员创建记录ID。创建异常重试时需要</p>
 	RecordId *int64 `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
-	// 代付者Uin。成员代付费时需要
+	// <p>代付者Uin。成员代付费时需要</p>
 	PayUin *string `json:"PayUin,omitnil,omitempty" name:"PayUin"`
 
-	// 成员访问身份ID列表。可以调用ListOrganizationIdentity获取，1默认支持
+	// <p>成员访问身份ID列表。可以调用ListOrganizationIdentity获取，1默认支持</p>
 	IdentityRoleID []*uint64 `json:"IdentityRoleID,omitnil,omitempty" name:"IdentityRoleID"`
 
-	// 认证主体关系ID。给不同主体创建成员时需要，可以调用DescribeOrganizationAuthNode获取
+	// <p>认证主体关系ID。给不同主体创建成员时需要，可以调用DescribeOrganizationAuthNode获取</p>
 	AuthRelationId *int64 `json:"AuthRelationId,omitnil,omitempty" name:"AuthRelationId"`
 
-	// 成员标签列表。最大10个
+	// <p>成员标签列表。最大10个</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateOrganizationMemberRequest struct {
 	*tchttp.BaseRequest
 	
-	// 成员名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
+	// <p>成员名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&amp;._[]-:,</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 关系策略。取值：Financial
+	// <p>关系策略。取值：Financial</p>
 	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
 
-	// 成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨（若需要开启资金划拨权限，请联系您的商务经理内部开通。）、4-合并出账、5-开票、6-优惠继承、7-代付费、8-成本分析、9-预算管理、10-信用额度设置（若需要开启信用额度设置权限，请联系您的商务经理内部开通。），1、2 默认必须
+	// <p>成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨（若需要开启资金划拨权限，请联系您的商务经理内部开通。）、4-合并出账、5-开票、6-优惠继承、7-代付费、8-成本分析、9-预算管理、10-信用额度设置（若需要开启信用额度设置权限，请联系您的商务经理内部开通。），1、2 默认必须</p>
 	PermissionIds []*uint64 `json:"PermissionIds,omitnil,omitempty" name:"PermissionIds"`
 
-	// 成员所属部门的节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
+	// <p>成员所属部门的节点ID。可以通过<a href="https://cloud.tencent.com/document/product/850/82926">DescribeOrganizationNodes</a>获取</p>
 	NodeId *int64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
-	// 账号名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
+	// <p>账号名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&amp;._[]-:,</p>
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
-	// 备注。
+	// <p>备注。</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 成员创建记录ID。创建异常重试时需要
+	// <p>成员创建记录ID。创建异常重试时需要</p>
 	RecordId *int64 `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
-	// 代付者Uin。成员代付费时需要
+	// <p>代付者Uin。成员代付费时需要</p>
 	PayUin *string `json:"PayUin,omitnil,omitempty" name:"PayUin"`
 
-	// 成员访问身份ID列表。可以调用ListOrganizationIdentity获取，1默认支持
+	// <p>成员访问身份ID列表。可以调用ListOrganizationIdentity获取，1默认支持</p>
 	IdentityRoleID []*uint64 `json:"IdentityRoleID,omitnil,omitempty" name:"IdentityRoleID"`
 
-	// 认证主体关系ID。给不同主体创建成员时需要，可以调用DescribeOrganizationAuthNode获取
+	// <p>认证主体关系ID。给不同主体创建成员时需要，可以调用DescribeOrganizationAuthNode获取</p>
 	AuthRelationId *int64 `json:"AuthRelationId,omitnil,omitempty" name:"AuthRelationId"`
 
-	// 成员标签列表。最大10个
+	// <p>成员标签列表。最大10个</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -1687,7 +1687,7 @@ func (r *CreateOrganizationMemberRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateOrganizationMemberResponseParams struct {
-	// 成员Uin。
+	// <p>成员Uin。</p>
 	Uin *int64 `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

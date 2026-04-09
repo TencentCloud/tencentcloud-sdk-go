@@ -109,20 +109,23 @@ type ComputeResource struct {
 }
 
 type ContainerInfo struct {
-	// 镜像相关信息
+	// <p>镜像相关信息</p>
 	Image *ImageInfo `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 服务监听端口
+	// <p>服务监听端口</p>
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 启动命令
+	// <p>启动命令</p>
 	Scripts []*string `json:"Scripts,omitnil,omitempty" name:"Scripts"`
 
-	// 环境变量列表
+	// <p>环境变量列表</p>
 	Envs []*EnvParam `json:"Envs,omitnil,omitempty" name:"Envs"`
 
-	// 存储挂载配置
+	// <p>存储挂载配置</p>
 	Storages []*StorageInfo `json:"Storages,omitnil,omitempty" name:"Storages"`
+
+	// <p>探针信息</p>
+	Probe *ProbeInfo `json:"Probe,omitnil,omitempty" name:"Probe"`
 }
 
 // Predefined struct for user
@@ -198,44 +201,44 @@ func (r *CreateApplicationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateInferServiceByTemplateRequestParams struct {
-	// 模版ID
+	// <p>模版ID</p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 服务名称
+	// <p>服务名称</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 副本数
+	// <p>副本数</p>
 	Replicas *int64 `json:"Replicas,omitnil,omitempty" name:"Replicas"`
 
-	// 付费方式，POSTPAID_BY_HOUR按量后付费
+	// <p>付费方式，POSTPAID_BY_HOUR按量后付费</p>
 	ServiceChargeType *string `json:"ServiceChargeType,omitnil,omitempty" name:"ServiceChargeType"`
 
-	// 描述了服务的超参数配置
+	// <p>描述了服务的超参数配置</p>
 	HyperParam *HyperParam `json:"HyperParam,omitnil,omitempty" name:"HyperParam"`
 
-	// 网络设置
+	// <p>网络设置</p>
 	NetworkSetting *NetworkSetting `json:"NetworkSetting,omitnil,omitempty" name:"NetworkSetting"`
 }
 
 type CreateInferServiceByTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模版ID
+	// <p>模版ID</p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 服务名称
+	// <p>服务名称</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 副本数
+	// <p>副本数</p>
 	Replicas *int64 `json:"Replicas,omitnil,omitempty" name:"Replicas"`
 
-	// 付费方式，POSTPAID_BY_HOUR按量后付费
+	// <p>付费方式，POSTPAID_BY_HOUR按量后付费</p>
 	ServiceChargeType *string `json:"ServiceChargeType,omitnil,omitempty" name:"ServiceChargeType"`
 
-	// 描述了服务的超参数配置
+	// <p>描述了服务的超参数配置</p>
 	HyperParam *HyperParam `json:"HyperParam,omitnil,omitempty" name:"HyperParam"`
 
-	// 网络设置
+	// <p>网络设置</p>
 	NetworkSetting *NetworkSetting `json:"NetworkSetting,omitnil,omitempty" name:"NetworkSetting"`
 }
 
@@ -265,7 +268,7 @@ func (r *CreateInferServiceByTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateInferServiceByTemplateResponseParams struct {
-	// 服务ID
+	// <p>服务ID</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1312,6 +1315,14 @@ type HiCacheInfo struct {
 	HiCacheLevel *string `json:"HiCacheLevel,omitnil,omitempty" name:"HiCacheLevel"`
 }
 
+type HttpConfig struct {
+	// <p>指定健康检查的URL路径</p>
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// <p>指定健康检查的端口</p>
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+}
+
 type HyperParam struct {
 	// HiCache缓存
 	HiCache *HiCacheInfo `json:"HiCache,omitnil,omitempty" name:"HiCache"`
@@ -1732,6 +1743,37 @@ type Price struct {
 
 	// 分实例价格
 	PriceDetailSet []*ItemPriceDetail `json:"PriceDetailSet,omitnil,omitempty" name:"PriceDetailSet"`
+}
+
+type ProbeConfig struct {
+	// <p>HTTP GET请求进行健康检查</p>
+	HttpGet *HttpConfig `json:"HttpGet,omitnil,omitempty" name:"HttpGet"`
+
+	// <p>容器启动后，等待多少秒开始第一次探测</p>
+	InitialDelaySeconds *int64 `json:"InitialDelaySeconds,omitnil,omitempty" name:"InitialDelaySeconds"`
+
+	// <p>每次执行探测的间隔时间（秒）</p>
+	PeriodSeconds *int64 `json:"PeriodSeconds,omitnil,omitempty" name:"PeriodSeconds"`
+
+	// <p>每次探测等待响应的超时时间（秒）</p>
+	TimeoutSeconds *int64 `json:"TimeoutSeconds,omitnil,omitempty" name:"TimeoutSeconds"`
+
+	// <p>探测失败后，最小连续成功次数才被认为成功</p>
+	SuccessThreshold *int64 `json:"SuccessThreshold,omitnil,omitempty" name:"SuccessThreshold"`
+
+	// <p>探测失败后，Kubernetes的重试次数</p>
+	FailureThreshold *int64 `json:"FailureThreshold,omitnil,omitempty" name:"FailureThreshold"`
+}
+
+type ProbeInfo struct {
+	// <p>存活探针</p>
+	LivenessProbe *ProbeConfig `json:"LivenessProbe,omitnil,omitempty" name:"LivenessProbe"`
+
+	// <p>就绪探针</p>
+	ReadinessProbe *ProbeConfig `json:"ReadinessProbe,omitnil,omitempty" name:"ReadinessProbe"`
+
+	// <p>启动探针</p>
+	StartupProbe *ProbeConfig `json:"StartupProbe,omitnil,omitempty" name:"StartupProbe"`
 }
 
 type RegionInfo struct {

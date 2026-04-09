@@ -29,6 +29,12 @@ const (
 	// 投递的成员账号不是委派管理员或者管理员
 	FAILEDOPERATION_MEMBERNOTASSIGNMANAGER = "FailedOperation.MemberNotAssignManager"
 
+	// 不允许操作控制中心合规包
+	FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGE = "FailedOperation.NotAllowOperateControlCenterGovernancePackage"
+
+	// 不允许操作控制中心合规包规则
+	FAILEDOPERATION_NOTALLOWOPERATECONTROLCENTERGOVERNANCEPACKAGERULE = "FailedOperation.NotAllowOperateControlCenterGovernancePackageRule"
+
 	// 监控已关闭。
 	FAILEDOPERATION_RECORDERISCLOSE = "FailedOperation.RecorderIsClose"
 

@@ -1175,6 +1175,9 @@ const (
 	// 资源互斥操作任务正在执行。
 	UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 
+	// 传统型NAT网关暂不支持同时创建DNAT规则和开通流日志功能。
+	UNSUPPORTEDOPERATION_NATGATEWAYDNATANDFLOWLOGCONFLICT = "UnsupportedOperation.NatGatewayDnatAndFlowLogConflict"
+
 	// NAT网关的公网IP不存在。
 	UNSUPPORTEDOPERATION_NATGATEWAYEIPNOTEXISTS = "UnsupportedOperation.NatGatewayEipNotExists"
 
