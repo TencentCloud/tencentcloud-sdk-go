@@ -20,6 +20,56 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type Application struct {
+	// <p>应用ID</p>
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
+	// <p>项目ID</p>
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>类型</p><p>枚举值：</p><ul><li>WDL： WDL</li><li>NEXTFLOW： NEXTFLOW</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>代码入口</p>
+	Entrypoint *string `json:"Entrypoint,omitnil,omitempty" name:"Entrypoint"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>创建人</p>
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// <p>创建人ID</p>
+	CreatorId *string `json:"CreatorId,omitnil,omitempty" name:"CreatorId"`
+
+	// <p>版本数量</p>
+	VersionCount *int64 `json:"VersionCount,omitnil,omitempty" name:"VersionCount"`
+
+	// <p>版本列表</p>
+	Versions []*ApplicationVersion `json:"Versions,omitnil,omitempty" name:"Versions"`
+
+	// <p>GIT信息</p>
+	GitSource *GitInfo `json:"GitSource,omitnil,omitempty" name:"GitSource"`
+
+	// <p>运行限制</p>
+	RunConstraints *RunConstraints `json:"RunConstraints,omitnil,omitempty" name:"RunConstraints"`
+
+	// <p>应用COS文件信息</p>
+	CosSource *CosFileInfo `json:"CosSource,omitnil,omitempty" name:"CosSource"`
+
+	// <p>排序顺序</p>
+	SortOrder *int64 `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+}
+
 type ApplicationVersion struct {
 	// 版本类型。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -498,6 +548,175 @@ func (r *DeleteVolumeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeApplicationVersionsRequestParams struct {
+	// <p>项目ID</p>
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>运行应用ID</p>
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
+	// <p>翻页入参</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>翻页入参</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeApplicationVersionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>项目ID</p>
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>运行应用ID</p>
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
+	// <p>翻页入参</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>翻页入参</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeApplicationVersionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationVersionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "ApplicationId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApplicationVersionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApplicationVersionsResponseParams struct {
+	// <p>应用运行版本列表</p>
+	ApplicationVersions []*ApplicationVersion `json:"ApplicationVersions,omitnil,omitempty" name:"ApplicationVersions"`
+
+	// <p>应用运行版本列表总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApplicationVersionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApplicationVersionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeApplicationVersionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationVersionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApplicationsRequestParams struct {
+	// <p>项目ID</p>
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>翻页入参</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>翻页入参</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>过滤器，支持过滤字段：</p><ul><li>Name：应用名称</li><li>ApplicationId：应用ID</li><li>HasRun</li><li>CreatorId：创建人ID</li><li>Type：应用类型</li></ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+}
+
+type DescribeApplicationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>项目ID</p>
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>翻页入参</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>翻页入参</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>过滤器，支持过滤字段：</p><ul><li>Name：应用名称</li><li>ApplicationId：应用ID</li><li>HasRun</li><li>CreatorId：创建人ID</li><li>Type：应用类型</li></ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>排序</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+}
+
+func (r *DescribeApplicationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "OrderBy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApplicationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApplicationsResponseParams struct {
+	// <p>应用列表总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>应用列表</p>
+	Applications []*Application `json:"Applications,omitnil,omitempty" name:"Applications"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApplicationsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApplicationsResponseParams `json:"Response"`
+}
+
+func (r *DescribeApplicationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeEnvironmentsRequestParams struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -765,6 +984,177 @@ func (r *DescribeHPCNodesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeHPCNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInputTemplatesRequestParams struct {
+	// <p>项目ID</p>
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>翻页入参</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>翻页入参</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>过滤器，支持过滤字段：</p><ul><li>Name：模板名称</li><li>InputTemplateId：模板ID</li></ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>运行应用版本ID</p>
+	ApplicationVersionId *string `json:"ApplicationVersionId,omitnil,omitempty" name:"ApplicationVersionId"`
+
+	// <p>运行应用ID</p>
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+}
+
+type DescribeInputTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>项目ID</p>
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>翻页入参</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>翻页入参</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>过滤器，支持过滤字段：</p><ul><li>Name：模板名称</li><li>InputTemplateId：模板ID</li></ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>运行应用版本ID</p>
+	ApplicationVersionId *string `json:"ApplicationVersionId,omitnil,omitempty" name:"ApplicationVersionId"`
+
+	// <p>运行应用ID</p>
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+}
+
+func (r *DescribeInputTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInputTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "ApplicationVersionId")
+	delete(f, "ApplicationId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInputTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInputTemplatesResponseParams struct {
+	// <p>运行应用参数模板列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputTemplates []*InputTemplate `json:"InputTemplates,omitnil,omitempty" name:"InputTemplates"`
+
+	// <p>运行参数模板列表总数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInputTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInputTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeInputTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInputTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProjectsRequestParams struct {
+	// <p>翻页入参</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>翻页入参</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>过滤器，支持过滤字段：</p><ul><li>Name：项目名称</li><li>ProjectId：项目ID</li><li>Region：地域</li></ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeProjectsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>翻页入参</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>翻页入参</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>过滤器，支持过滤字段：</p><ul><li>Name：项目名称</li><li>ProjectId：项目ID</li><li>Region：地域</li></ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeProjectsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProjectsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProjectsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProjectsResponseParams struct {
+	// <p>项目列表总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>项目列表</p>
+	Projects []*Project `json:"Projects,omitnil,omitempty" name:"Projects"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeProjectsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeProjectsResponseParams `json:"Response"`
+}
+
+func (r *DescribeProjectsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProjectsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1316,6 +1706,89 @@ type Filter struct {
 }
 
 // Predefined struct for user
+type GetInputTemplateFileRequestParams struct {
+	// <p>运行参数模板ID</p>
+	InputTemplateId *string `json:"InputTemplateId,omitnil,omitempty" name:"InputTemplateId"`
+
+	// <p>项目ID</p>
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>运行应用版本ID</p>
+	ApplicationVersionId *string `json:"ApplicationVersionId,omitnil,omitempty" name:"ApplicationVersionId"`
+
+	// <p>运行应用ID</p>
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+}
+
+type GetInputTemplateFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>运行参数模板ID</p>
+	InputTemplateId *string `json:"InputTemplateId,omitnil,omitempty" name:"InputTemplateId"`
+
+	// <p>项目ID</p>
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>运行应用版本ID</p>
+	ApplicationVersionId *string `json:"ApplicationVersionId,omitnil,omitempty" name:"ApplicationVersionId"`
+
+	// <p>运行应用ID</p>
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+}
+
+func (r *GetInputTemplateFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetInputTemplateFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InputTemplateId")
+	delete(f, "ProjectId")
+	delete(f, "ApplicationVersionId")
+	delete(f, "ApplicationId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetInputTemplateFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetInputTemplateFileResponseParams struct {
+	// <p>COS签名url</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosSignedUrl *string `json:"CosSignedUrl,omitnil,omitempty" name:"CosSignedUrl"`
+
+	// <p>模板内容</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetInputTemplateFileResponse struct {
+	*tchttp.BaseResponse
+	Response *GetInputTemplateFileResponseParams `json:"Response"`
+}
+
+func (r *GetInputTemplateFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetInputTemplateFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetRunCallsRequestParams struct {
 	// 任务Uuid。
 	RunUuid *string `json:"RunUuid,omitnil,omitempty" name:"RunUuid"`
@@ -1750,6 +2223,99 @@ type HPCNode struct {
 }
 
 // Predefined struct for user
+type ImportCommonApplicationRequestParams struct {
+	// <p>公共应用ID</p>
+	CommonAppUuid *string `json:"CommonAppUuid,omitnil,omitempty" name:"CommonAppUuid"`
+
+	// <p>公共应用重命名</p>
+	CommonAppNewName *string `json:"CommonAppNewName,omitnil,omitempty" name:"CommonAppNewName"`
+
+	// <p>项目ID</p>
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>公共应用类型</p><p>枚举值：</p><ul><li>WDL： WDL</li><li>NEXTFLOW： NEXTFLOW</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>NEXTFLOW版本</p>
+	NextflowVersion *string `json:"NextflowVersion,omitnil,omitempty" name:"NextflowVersion"`
+
+	// <p>是否内部应用</p>
+	Internal *bool `json:"Internal,omitnil,omitempty" name:"Internal"`
+}
+
+type ImportCommonApplicationRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>公共应用ID</p>
+	CommonAppUuid *string `json:"CommonAppUuid,omitnil,omitempty" name:"CommonAppUuid"`
+
+	// <p>公共应用重命名</p>
+	CommonAppNewName *string `json:"CommonAppNewName,omitnil,omitempty" name:"CommonAppNewName"`
+
+	// <p>项目ID</p>
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>公共应用类型</p><p>枚举值：</p><ul><li>WDL： WDL</li><li>NEXTFLOW： NEXTFLOW</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>NEXTFLOW版本</p>
+	NextflowVersion *string `json:"NextflowVersion,omitnil,omitempty" name:"NextflowVersion"`
+
+	// <p>是否内部应用</p>
+	Internal *bool `json:"Internal,omitnil,omitempty" name:"Internal"`
+}
+
+func (r *ImportCommonApplicationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportCommonApplicationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CommonAppUuid")
+	delete(f, "CommonAppNewName")
+	delete(f, "ProjectId")
+	delete(f, "Type")
+	delete(f, "NextflowVersion")
+	delete(f, "Internal")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportCommonApplicationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImportCommonApplicationResponseParams struct {
+	// <p>应用ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ImportCommonApplicationResponse struct {
+	*tchttp.BaseResponse
+	Response *ImportCommonApplicationResponseParams `json:"Response"`
+}
+
+func (r *ImportCommonApplicationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportCommonApplicationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ImportTableFileRequestParams struct {
 	// 表格关联的项目ID。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -1832,6 +2398,35 @@ func (r *ImportTableFileResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ImportTableFileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type InputTemplate struct {
+	// <p>唯一ID</p>
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
+
+	// <p>应用输入模板ID</p>
+	InputTemplateId *string `json:"InputTemplateId,omitnil,omitempty" name:"InputTemplateId"`
+
+	// <p>关联项目ID</p>
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>关联应用ID</p>
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
+	// <p>关联应用版本</p>
+	ApplicationVersionId *string `json:"ApplicationVersionId,omitnil,omitempty" name:"ApplicationVersionId"`
+
+	// <p>名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>创建人</p>
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// <p>创建人ID</p>
+	CreatorId *string `json:"CreatorId,omitnil,omitempty" name:"CreatorId"`
 }
 
 type LimitRange struct {
@@ -1946,6 +2541,32 @@ type NotificationType struct {
 
 	// 当前用户邮箱。
 	CurrentUserEmail *bool `json:"CurrentUserEmail,omitnil,omitempty" name:"CurrentUserEmail"`
+}
+
+type Project struct {
+	// <p>项目ID</p>
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// <p>名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>地域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>创建人</p>
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// <p>是否默认项目</p>
+	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 }
 
 // Predefined struct for user
@@ -2392,6 +3013,11 @@ func (r *RunApplicationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RunApplicationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RunConstraints struct {
+	// <p>运行时可选的Nextflow版本</p>
+	NextflowVersion []*string `json:"NextflowVersion,omitnil,omitempty" name:"NextflowVersion"`
 }
 
 type RunGroup struct {

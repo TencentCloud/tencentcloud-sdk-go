@@ -375,6 +375,132 @@ func (c *Client) DeleteVolumeDataWithContext(ctx context.Context, request *Delet
     return
 }
 
+func NewDescribeApplicationVersionsRequest() (request *DescribeApplicationVersionsRequest) {
+    request = &DescribeApplicationVersionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "DescribeApplicationVersions")
+    
+    
+    return
+}
+
+func NewDescribeApplicationVersionsResponse() (response *DescribeApplicationVersionsResponse) {
+    response = &DescribeApplicationVersionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApplicationVersions
+// 查询应用版本列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeApplicationVersions(request *DescribeApplicationVersionsRequest) (response *DescribeApplicationVersionsResponse, err error) {
+    return c.DescribeApplicationVersionsWithContext(context.Background(), request)
+}
+
+// DescribeApplicationVersions
+// 查询应用版本列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeApplicationVersionsWithContext(ctx context.Context, request *DescribeApplicationVersionsRequest) (response *DescribeApplicationVersionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationVersionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "DescribeApplicationVersions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplicationVersions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApplicationVersionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApplicationsRequest() (request *DescribeApplicationsRequest) {
+    request = &DescribeApplicationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "DescribeApplications")
+    
+    
+    return
+}
+
+func NewDescribeApplicationsResponse() (response *DescribeApplicationsResponse) {
+    response = &DescribeApplicationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApplications
+// 查询项目应用列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
+func (c *Client) DescribeApplications(request *DescribeApplicationsRequest) (response *DescribeApplicationsResponse, err error) {
+    return c.DescribeApplicationsWithContext(context.Background(), request)
+}
+
+// DescribeApplications
+// 查询项目应用列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
+func (c *Client) DescribeApplicationsWithContext(ctx context.Context, request *DescribeApplicationsRequest) (response *DescribeApplicationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "DescribeApplications")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplications require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApplicationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEnvironmentsRequest() (request *DescribeEnvironmentsRequest) {
     request = &DescribeEnvironmentsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -557,6 +683,132 @@ func (c *Client) DescribeHPCNodesWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeHPCNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInputTemplatesRequest() (request *DescribeInputTemplatesRequest) {
+    request = &DescribeInputTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "DescribeInputTemplates")
+    
+    
+    return
+}
+
+func NewDescribeInputTemplatesResponse() (response *DescribeInputTemplatesResponse) {
+    response = &DescribeInputTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInputTemplates
+// 查询运行参数模板列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeInputTemplates(request *DescribeInputTemplatesRequest) (response *DescribeInputTemplatesResponse, err error) {
+    return c.DescribeInputTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeInputTemplates
+// 查询运行参数模板列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeInputTemplatesWithContext(ctx context.Context, request *DescribeInputTemplatesRequest) (response *DescribeInputTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeInputTemplatesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "DescribeInputTemplates")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInputTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInputTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProjectsRequest() (request *DescribeProjectsRequest) {
+    request = &DescribeProjectsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "DescribeProjects")
+    
+    
+    return
+}
+
+func NewDescribeProjectsResponse() (response *DescribeProjectsResponse) {
+    response = &DescribeProjectsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeProjects
+// 查询项目列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
+func (c *Client) DescribeProjects(request *DescribeProjectsRequest) (response *DescribeProjectsResponse, err error) {
+    return c.DescribeProjectsWithContext(context.Background(), request)
+}
+
+// DescribeProjects
+// 查询项目列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
+func (c *Client) DescribeProjectsWithContext(ctx context.Context, request *DescribeProjectsRequest) (response *DescribeProjectsResponse, err error) {
+    if request == nil {
+        request = NewDescribeProjectsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "DescribeProjects")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProjects require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProjectsResponse()
     err = c.Send(request, response)
     return
 }
@@ -875,6 +1127,70 @@ func (c *Client) DescribeVolumesWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewGetInputTemplateFileRequest() (request *GetInputTemplateFileRequest) {
+    request = &GetInputTemplateFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "GetInputTemplateFile")
+    
+    
+    return
+}
+
+func NewGetInputTemplateFileResponse() (response *GetInputTemplateFileResponse) {
+    response = &GetInputTemplateFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetInputTemplateFile
+// 查询运行参数模板内容
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GetInputTemplateFile(request *GetInputTemplateFileRequest) (response *GetInputTemplateFileResponse, err error) {
+    return c.GetInputTemplateFileWithContext(context.Background(), request)
+}
+
+// GetInputTemplateFile
+// 查询运行参数模板内容
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GetInputTemplateFileWithContext(ctx context.Context, request *GetInputTemplateFileRequest) (response *GetInputTemplateFileResponse, err error) {
+    if request == nil {
+        request = NewGetInputTemplateFileRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "GetInputTemplateFile")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetInputTemplateFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetInputTemplateFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetRunCallsRequest() (request *GetRunCallsRequest) {
     request = &GetRunCallsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1067,6 +1383,70 @@ func (c *Client) GetRunStatusWithContext(ctx context.Context, request *GetRunSta
     request.SetContext(ctx)
     
     response = NewGetRunStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewImportCommonApplicationRequest() (request *ImportCommonApplicationRequest) {
+    request = &ImportCommonApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "ImportCommonApplication")
+    
+    
+    return
+}
+
+func NewImportCommonApplicationResponse() (response *ImportCommonApplicationResponse) {
+    response = &ImportCommonApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImportCommonApplication
+// 导入公共应用到项目
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ImportCommonApplication(request *ImportCommonApplicationRequest) (response *ImportCommonApplicationResponse, err error) {
+    return c.ImportCommonApplicationWithContext(context.Background(), request)
+}
+
+// ImportCommonApplication
+// 导入公共应用到项目
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ImportCommonApplicationWithContext(ctx context.Context, request *ImportCommonApplicationRequest) (response *ImportCommonApplicationResponse, err error) {
+    if request == nil {
+        request = NewImportCommonApplicationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "ImportCommonApplication")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportCommonApplication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImportCommonApplicationResponse()
     err = c.Send(request, response)
     return
 }
