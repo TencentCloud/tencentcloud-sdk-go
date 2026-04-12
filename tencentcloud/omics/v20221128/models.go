@@ -1159,6 +1159,75 @@ func (r *DescribeProjectsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePublicApplicationsRequestParams struct {
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribePublicApplicationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribePublicApplicationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePublicApplicationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePublicApplicationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePublicApplicationsResponseParams struct {
+	// 公共应用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Applications []*PublicApplication `json:"Applications,omitnil,omitempty" name:"Applications"`
+
+	// 符合条件的数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePublicApplicationsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePublicApplicationsResponseParams `json:"Response"`
+}
+
+func (r *DescribePublicApplicationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePublicApplicationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRunGroupsRequestParams struct {
 	// 项目ID。
 	// （不填使用指定地域下的默认项目）
@@ -2569,6 +2638,29 @@ type Project struct {
 	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 }
 
+type PublicApplication struct {
+	// <p>应用ID。</p>
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
+	// <p>名称。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>类型。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>应用标记</p><p>枚举值：</p><ul><li>SUB_APP： 子应用</li><li>APP_COLLECTION： 合集</li><li>STANDALONE_APP： 独立应用</li></ul>
+	AppGroupType *string `json:"AppGroupType,omitnil,omitempty" name:"AppGroupType"`
+
+	// <p>Nextflow版本</p>
+	NextflowVersion []*string `json:"NextflowVersion,omitnil,omitempty" name:"NextflowVersion"`
+
+	// <p>应用分类</p>
+	AppTags []*ToolRepoTag `json:"AppTags,omitnil,omitempty" name:"AppTags"`
+
+	// <p>应用标识</p>
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+}
+
 // Predefined struct for user
 type RebootHPCNodesRequestParams struct {
 	// <p>集群Id</p>
@@ -3539,6 +3631,14 @@ func (r *TerminateRunGroupResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *TerminateRunGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ToolRepoTag struct {
+	// <p>应用分类标签ID</p>
+	TagId *string `json:"TagId,omitnil,omitempty" name:"TagId"`
+
+	// <p>应用分类标签名称</p>
+	TagName *string `json:"TagName,omitnil,omitempty" name:"TagName"`
 }
 
 type VPCOption struct {

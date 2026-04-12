@@ -909,6 +909,114 @@ func (c *Client) DescribeAppSingleCaseListWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeApplicationExitReportDetailRequest() (request *DescribeApplicationExitReportDetailRequest) {
+    request = &DescribeApplicationExitReportDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeApplicationExitReportDetail")
+    
+    
+    return
+}
+
+func NewDescribeApplicationExitReportDetailResponse() (response *DescribeApplicationExitReportDetailResponse) {
+    response = &DescribeApplicationExitReportDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApplicationExitReportDetail
+// 获取应用退出个例上报详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeApplicationExitReportDetail(request *DescribeApplicationExitReportDetailRequest) (response *DescribeApplicationExitReportDetailResponse, err error) {
+    return c.DescribeApplicationExitReportDetailWithContext(context.Background(), request)
+}
+
+// DescribeApplicationExitReportDetail
+// 获取应用退出个例上报详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeApplicationExitReportDetailWithContext(ctx context.Context, request *DescribeApplicationExitReportDetailRequest) (response *DescribeApplicationExitReportDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationExitReportDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeApplicationExitReportDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplicationExitReportDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApplicationExitReportDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApplicationExitReportListRequest() (request *DescribeApplicationExitReportListRequest) {
+    request = &DescribeApplicationExitReportListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeApplicationExitReportList")
+    
+    
+    return
+}
+
+func NewDescribeApplicationExitReportListResponse() (response *DescribeApplicationExitReportListResponse) {
+    response = &DescribeApplicationExitReportListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApplicationExitReportList
+// 获取应用退出个例上报列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeApplicationExitReportList(request *DescribeApplicationExitReportListRequest) (response *DescribeApplicationExitReportListResponse, err error) {
+    return c.DescribeApplicationExitReportListWithContext(context.Background(), request)
+}
+
+// DescribeApplicationExitReportList
+// 获取应用退出个例上报列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeApplicationExitReportListWithContext(ctx context.Context, request *DescribeApplicationExitReportListRequest) (response *DescribeApplicationExitReportListResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationExitReportListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeApplicationExitReportList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplicationExitReportList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApplicationExitReportListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDataRequest() (request *DescribeDataRequest) {
     request = &DescribeDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3761,6 +3869,762 @@ func (c *Client) DescribeErrorWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDescribeExceptionDetailRequest() (request *DescribeExceptionDetailRequest) {
+    request = &DescribeExceptionDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeExceptionDetail")
+    
+    
+    return
+}
+
+func NewDescribeExceptionDetailResponse() (response *DescribeExceptionDetailResponse) {
+    response = &DescribeExceptionDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeExceptionDetail
+// 获取异常问题详情数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeExceptionDetail(request *DescribeExceptionDetailRequest) (response *DescribeExceptionDetailResponse, err error) {
+    return c.DescribeExceptionDetailWithContext(context.Background(), request)
+}
+
+// DescribeExceptionDetail
+// 获取异常问题详情数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeExceptionDetailWithContext(ctx context.Context, request *DescribeExceptionDetailRequest) (response *DescribeExceptionDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeExceptionDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeExceptionDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExceptionDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExceptionDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExceptionReportListRequest() (request *DescribeExceptionReportListRequest) {
+    request = &DescribeExceptionReportListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeExceptionReportList")
+    
+    
+    return
+}
+
+func NewDescribeExceptionReportListResponse() (response *DescribeExceptionReportListResponse) {
+    response = &DescribeExceptionReportListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeExceptionReportList
+// 获取异常个例列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeExceptionReportList(request *DescribeExceptionReportListRequest) (response *DescribeExceptionReportListResponse, err error) {
+    return c.DescribeExceptionReportListWithContext(context.Background(), request)
+}
+
+// DescribeExceptionReportList
+// 获取异常个例列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeExceptionReportListWithContext(ctx context.Context, request *DescribeExceptionReportListRequest) (response *DescribeExceptionReportListResponse, err error) {
+    if request == nil {
+        request = NewDescribeExceptionReportListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeExceptionReportList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExceptionReportList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExceptionReportListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFOOMMallocProblemDetailRequest() (request *DescribeFOOMMallocProblemDetailRequest) {
+    request = &DescribeFOOMMallocProblemDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeFOOMMallocProblemDetail")
+    
+    
+    return
+}
+
+func NewDescribeFOOMMallocProblemDetailResponse() (response *DescribeFOOMMallocProblemDetailResponse) {
+    response = &DescribeFOOMMallocProblemDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFOOMMallocProblemDetail
+// 获取FOOM内存分配问题详情数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFOOMMallocProblemDetail(request *DescribeFOOMMallocProblemDetailRequest) (response *DescribeFOOMMallocProblemDetailResponse, err error) {
+    return c.DescribeFOOMMallocProblemDetailWithContext(context.Background(), request)
+}
+
+// DescribeFOOMMallocProblemDetail
+// 获取FOOM内存分配问题详情数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFOOMMallocProblemDetailWithContext(ctx context.Context, request *DescribeFOOMMallocProblemDetailRequest) (response *DescribeFOOMMallocProblemDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeFOOMMallocProblemDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeFOOMMallocProblemDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFOOMMallocProblemDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFOOMMallocProblemDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFOOMMallocProblemListRequest() (request *DescribeFOOMMallocProblemListRequest) {
+    request = &DescribeFOOMMallocProblemListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeFOOMMallocProblemList")
+    
+    
+    return
+}
+
+func NewDescribeFOOMMallocProblemListResponse() (response *DescribeFOOMMallocProblemListResponse) {
+    response = &DescribeFOOMMallocProblemListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFOOMMallocProblemList
+// 获取FOOM内存分配问题列表数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFOOMMallocProblemList(request *DescribeFOOMMallocProblemListRequest) (response *DescribeFOOMMallocProblemListResponse, err error) {
+    return c.DescribeFOOMMallocProblemListWithContext(context.Background(), request)
+}
+
+// DescribeFOOMMallocProblemList
+// 获取FOOM内存分配问题列表数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFOOMMallocProblemListWithContext(ctx context.Context, request *DescribeFOOMMallocProblemListRequest) (response *DescribeFOOMMallocProblemListResponse, err error) {
+    if request == nil {
+        request = NewDescribeFOOMMallocProblemListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeFOOMMallocProblemList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFOOMMallocProblemList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFOOMMallocProblemListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFOOMMallocReportListRequest() (request *DescribeFOOMMallocReportListRequest) {
+    request = &DescribeFOOMMallocReportListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeFOOMMallocReportList")
+    
+    
+    return
+}
+
+func NewDescribeFOOMMallocReportListResponse() (response *DescribeFOOMMallocReportListResponse) {
+    response = &DescribeFOOMMallocReportListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFOOMMallocReportList
+// 获取FOOM内存分配问题上报列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFOOMMallocReportList(request *DescribeFOOMMallocReportListRequest) (response *DescribeFOOMMallocReportListResponse, err error) {
+    return c.DescribeFOOMMallocReportListWithContext(context.Background(), request)
+}
+
+// DescribeFOOMMallocReportList
+// 获取FOOM内存分配问题上报列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFOOMMallocReportListWithContext(ctx context.Context, request *DescribeFOOMMallocReportListRequest) (response *DescribeFOOMMallocReportListResponse, err error) {
+    if request == nil {
+        request = NewDescribeFOOMMallocReportListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeFOOMMallocReportList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFOOMMallocReportList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFOOMMallocReportListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFOOMProblemDetailRequest() (request *DescribeFOOMProblemDetailRequest) {
+    request = &DescribeFOOMProblemDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeFOOMProblemDetail")
+    
+    
+    return
+}
+
+func NewDescribeFOOMProblemDetailResponse() (response *DescribeFOOMProblemDetailResponse) {
+    response = &DescribeFOOMProblemDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFOOMProblemDetail
+// 获取FOOM问题详情数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFOOMProblemDetail(request *DescribeFOOMProblemDetailRequest) (response *DescribeFOOMProblemDetailResponse, err error) {
+    return c.DescribeFOOMProblemDetailWithContext(context.Background(), request)
+}
+
+// DescribeFOOMProblemDetail
+// 获取FOOM问题详情数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFOOMProblemDetailWithContext(ctx context.Context, request *DescribeFOOMProblemDetailRequest) (response *DescribeFOOMProblemDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeFOOMProblemDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeFOOMProblemDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFOOMProblemDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFOOMProblemDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFOOMProblemListRequest() (request *DescribeFOOMProblemListRequest) {
+    request = &DescribeFOOMProblemListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeFOOMProblemList")
+    
+    
+    return
+}
+
+func NewDescribeFOOMProblemListResponse() (response *DescribeFOOMProblemListResponse) {
+    response = &DescribeFOOMProblemListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFOOMProblemList
+// 获取FOOM问题列表数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFOOMProblemList(request *DescribeFOOMProblemListRequest) (response *DescribeFOOMProblemListResponse, err error) {
+    return c.DescribeFOOMProblemListWithContext(context.Background(), request)
+}
+
+// DescribeFOOMProblemList
+// 获取FOOM问题列表数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFOOMProblemListWithContext(ctx context.Context, request *DescribeFOOMProblemListRequest) (response *DescribeFOOMProblemListResponse, err error) {
+    if request == nil {
+        request = NewDescribeFOOMProblemListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeFOOMProblemList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFOOMProblemList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFOOMProblemListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFOOMReportListRequest() (request *DescribeFOOMReportListRequest) {
+    request = &DescribeFOOMReportListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeFOOMReportList")
+    
+    
+    return
+}
+
+func NewDescribeFOOMReportListResponse() (response *DescribeFOOMReportListResponse) {
+    response = &DescribeFOOMReportListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFOOMReportList
+// 获取FOOM问题上报列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFOOMReportList(request *DescribeFOOMReportListRequest) (response *DescribeFOOMReportListResponse, err error) {
+    return c.DescribeFOOMReportListWithContext(context.Background(), request)
+}
+
+// DescribeFOOMReportList
+// 获取FOOM问题上报列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFOOMReportListWithContext(ctx context.Context, request *DescribeFOOMReportListRequest) (response *DescribeFOOMReportListResponse, err error) {
+    if request == nil {
+        request = NewDescribeFOOMReportListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeFOOMReportList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFOOMReportList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFOOMReportListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIssuesDistributionRequest() (request *DescribeIssuesDistributionRequest) {
+    request = &DescribeIssuesDistributionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeIssuesDistribution")
+    
+    
+    return
+}
+
+func NewDescribeIssuesDistributionResponse() (response *DescribeIssuesDistributionResponse) {
+    response = &DescribeIssuesDistributionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIssuesDistribution
+// 获取问题分布数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeIssuesDistribution(request *DescribeIssuesDistributionRequest) (response *DescribeIssuesDistributionResponse, err error) {
+    return c.DescribeIssuesDistributionWithContext(context.Background(), request)
+}
+
+// DescribeIssuesDistribution
+// 获取问题分布数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeIssuesDistributionWithContext(ctx context.Context, request *DescribeIssuesDistributionRequest) (response *DescribeIssuesDistributionResponse, err error) {
+    if request == nil {
+        request = NewDescribeIssuesDistributionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeIssuesDistribution")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIssuesDistribution require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIssuesDistributionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIssuesListRequest() (request *DescribeIssuesListRequest) {
+    request = &DescribeIssuesListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeIssuesList")
+    
+    
+    return
+}
+
+func NewDescribeIssuesListResponse() (response *DescribeIssuesListResponse) {
+    response = &DescribeIssuesListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIssuesList
+// 获取问题列表数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeIssuesList(request *DescribeIssuesListRequest) (response *DescribeIssuesListResponse, err error) {
+    return c.DescribeIssuesListWithContext(context.Background(), request)
+}
+
+// DescribeIssuesList
+// 获取问题列表数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeIssuesListWithContext(ctx context.Context, request *DescribeIssuesListRequest) (response *DescribeIssuesListResponse, err error) {
+    if request == nil {
+        request = NewDescribeIssuesListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeIssuesList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIssuesList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIssuesListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIssuesStatisticsTrendRequest() (request *DescribeIssuesStatisticsTrendRequest) {
+    request = &DescribeIssuesStatisticsTrendRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeIssuesStatisticsTrend")
+    
+    
+    return
+}
+
+func NewDescribeIssuesStatisticsTrendResponse() (response *DescribeIssuesStatisticsTrendResponse) {
+    response = &DescribeIssuesStatisticsTrendResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIssuesStatisticsTrend
+// 获取问题趋势数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeIssuesStatisticsTrend(request *DescribeIssuesStatisticsTrendRequest) (response *DescribeIssuesStatisticsTrendResponse, err error) {
+    return c.DescribeIssuesStatisticsTrendWithContext(context.Background(), request)
+}
+
+// DescribeIssuesStatisticsTrend
+// 获取问题趋势数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeIssuesStatisticsTrendWithContext(ctx context.Context, request *DescribeIssuesStatisticsTrendRequest) (response *DescribeIssuesStatisticsTrendResponse, err error) {
+    if request == nil {
+        request = NewDescribeIssuesStatisticsTrendRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeIssuesStatisticsTrend")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIssuesStatisticsTrend require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIssuesStatisticsTrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLagANRProblemAccountDetailRequest() (request *DescribeLagANRProblemAccountDetailRequest) {
+    request = &DescribeLagANRProblemAccountDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeLagANRProblemAccountDetail")
+    
+    
+    return
+}
+
+func NewDescribeLagANRProblemAccountDetailResponse() (response *DescribeLagANRProblemAccountDetailResponse) {
+    response = &DescribeLagANRProblemAccountDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLagANRProblemAccountDetail
+// 获取卡顿ANR问题用户详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLagANRProblemAccountDetail(request *DescribeLagANRProblemAccountDetailRequest) (response *DescribeLagANRProblemAccountDetailResponse, err error) {
+    return c.DescribeLagANRProblemAccountDetailWithContext(context.Background(), request)
+}
+
+// DescribeLagANRProblemAccountDetail
+// 获取卡顿ANR问题用户详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLagANRProblemAccountDetailWithContext(ctx context.Context, request *DescribeLagANRProblemAccountDetailRequest) (response *DescribeLagANRProblemAccountDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeLagANRProblemAccountDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeLagANRProblemAccountDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLagANRProblemAccountDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLagANRProblemAccountDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLagANRProblemFeatureAccountsRequest() (request *DescribeLagANRProblemFeatureAccountsRequest) {
+    request = &DescribeLagANRProblemFeatureAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeLagANRProblemFeatureAccounts")
+    
+    
+    return
+}
+
+func NewDescribeLagANRProblemFeatureAccountsResponse() (response *DescribeLagANRProblemFeatureAccountsResponse) {
+    response = &DescribeLagANRProblemFeatureAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLagANRProblemFeatureAccounts
+// 获取卡顿ANR问题用户列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLagANRProblemFeatureAccounts(request *DescribeLagANRProblemFeatureAccountsRequest) (response *DescribeLagANRProblemFeatureAccountsResponse, err error) {
+    return c.DescribeLagANRProblemFeatureAccountsWithContext(context.Background(), request)
+}
+
+// DescribeLagANRProblemFeatureAccounts
+// 获取卡顿ANR问题用户列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLagANRProblemFeatureAccountsWithContext(ctx context.Context, request *DescribeLagANRProblemFeatureAccountsRequest) (response *DescribeLagANRProblemFeatureAccountsResponse, err error) {
+    if request == nil {
+        request = NewDescribeLagANRProblemFeatureAccountsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeLagANRProblemFeatureAccounts")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLagANRProblemFeatureAccounts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLagANRProblemFeatureAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLagANRProblemListRequest() (request *DescribeLagANRProblemListRequest) {
+    request = &DescribeLagANRProblemListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeLagANRProblemList")
+    
+    
+    return
+}
+
+func NewDescribeLagANRProblemListResponse() (response *DescribeLagANRProblemListResponse) {
+    response = &DescribeLagANRProblemListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLagANRProblemList
+// 获取卡顿ANR问题列表数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLagANRProblemList(request *DescribeLagANRProblemListRequest) (response *DescribeLagANRProblemListResponse, err error) {
+    return c.DescribeLagANRProblemListWithContext(context.Background(), request)
+}
+
+// DescribeLagANRProblemList
+// 获取卡顿ANR问题列表数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLagANRProblemListWithContext(ctx context.Context, request *DescribeLagANRProblemListRequest) (response *DescribeLagANRProblemListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLagANRProblemListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeLagANRProblemList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLagANRProblemList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLagANRProblemListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProjectLimitsRequest() (request *DescribeProjectLimitsRequest) {
     request = &DescribeProjectLimitsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4915,6 +5779,114 @@ func (c *Client) DescribeTawInstancesWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeTawInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTokenRequest() (request *DescribeTokenRequest) {
+    request = &DescribeTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeToken")
+    
+    
+    return
+}
+
+func NewDescribeTokenResponse() (response *DescribeTokenResponse) {
+    response = &DescribeTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeToken
+// 查询令牌
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeToken(request *DescribeTokenRequest) (response *DescribeTokenResponse, err error) {
+    return c.DescribeTokenWithContext(context.Background(), request)
+}
+
+// DescribeToken
+// 查询令牌
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeTokenWithContext(ctx context.Context, request *DescribeTokenRequest) (response *DescribeTokenResponse, err error) {
+    if request == nil {
+        request = NewDescribeTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTopIssuesRequest() (request *DescribeTopIssuesRequest) {
+    request = &DescribeTopIssuesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeTopIssues")
+    
+    
+    return
+}
+
+func NewDescribeTopIssuesResponse() (response *DescribeTopIssuesResponse) {
+    response = &DescribeTopIssuesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTopIssues
+// 查询top问题列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeTopIssues(request *DescribeTopIssuesRequest) (response *DescribeTopIssuesResponse, err error) {
+    return c.DescribeTopIssuesWithContext(context.Background(), request)
+}
+
+// DescribeTopIssues
+// 查询top问题列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeTopIssuesWithContext(ctx context.Context, request *DescribeTopIssuesRequest) (response *DescribeTopIssuesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopIssuesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "rum", APIVersion, "DescribeTopIssues")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopIssues require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopIssuesResponse()
     err = c.Send(request, response)
     return
 }

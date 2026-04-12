@@ -1075,12 +1075,27 @@ func (r *DescribeFeatureListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLicenseListRequestParams struct {
+	// <p>页码，从0开始</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
+	// <p>每页数据量</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>pc端还是mobile端</p>
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 }
 
 type DescribeLicenseListRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>页码，从0开始</p>
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>每页数据量</p>
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>pc端还是mobile端</p>
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 }
 
 func (r *DescribeLicenseListRequest) ToJsonString() string {
@@ -1095,7 +1110,9 @@ func (r *DescribeLicenseListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Platform")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLicenseListRequest has unknown keys!", "")
 	}
@@ -1104,16 +1121,16 @@ func (r *DescribeLicenseListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLicenseListResponseParams struct {
-	// 临期license数量
+	// <p>临期license数量</p>
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 正式license总览统计数据
+	// <p>正式license总览统计数据</p>
 	Overview *Overview `json:"Overview,omitnil,omitempty" name:"Overview"`
 
-	// 临期license列表
+	// <p>临期license列表</p>
 	LicenseList []*OverviewLicense `json:"LicenseList,omitnil,omitempty" name:"LicenseList"`
 
-	// 测试license总览统计数据
+	// <p>测试license总览统计数据</p>
 	TrialOverview *Overview `json:"TrialOverview,omitnil,omitempty" name:"TrialOverview"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

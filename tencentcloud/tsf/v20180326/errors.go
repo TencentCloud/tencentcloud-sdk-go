@@ -1319,6 +1319,12 @@ const (
 	// 用户无权限访问该接口。
 	UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 
+	// 网关部署组不存在[部署组ID]
+	UNSUPPORTEDOPERATION_GATEWAYGROUPNOTEXISTS = "UnsupportedOperation.GatewayGroupNotExists"
+
+	// 路径重写配置不存在
+	UNSUPPORTEDOPERATION_GATEWAYPATHREWRITENOTEXISTS = "UnsupportedOperation.GatewayPathRewriteNotExists"
+
 	// 批量操作数量超过限制[长度]。
 	UNSUPPORTEDOPERATION_GATEWAYTOOMANYREQUESTPARAMETER = "UnsupportedOperation.GatewayTooManyRequestParameter"
 

@@ -2159,6 +2159,7 @@ func NewCreatePathRewritesResponse() (response *CreatePathRewritesResponse) {
 //  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 //  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+//  UNSUPPORTEDOPERATION_GATEWAYGROUPNOTEXISTS = "UnsupportedOperation.GatewayGroupNotExists"
 func (c *Client) CreatePathRewrites(request *CreatePathRewritesRequest) (response *CreatePathRewritesResponse, err error) {
     return c.CreatePathRewritesWithContext(context.Background(), request)
 }
@@ -2170,6 +2171,7 @@ func (c *Client) CreatePathRewrites(request *CreatePathRewritesRequest) (respons
 //  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 //  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+//  UNSUPPORTEDOPERATION_GATEWAYGROUPNOTEXISTS = "UnsupportedOperation.GatewayGroupNotExists"
 func (c *Client) CreatePathRewritesWithContext(ctx context.Context, request *CreatePathRewritesRequest) (response *CreatePathRewritesResponse, err error) {
     if request == nil {
         request = NewCreatePathRewritesRequest()
@@ -2213,6 +2215,7 @@ func NewCreatePathRewritesWithDetailRespResponse() (response *CreatePathRewrites
 //  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 //  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+//  UNSUPPORTEDOPERATION_GATEWAYGROUPNOTEXISTS = "UnsupportedOperation.GatewayGroupNotExists"
 func (c *Client) CreatePathRewritesWithDetailResp(request *CreatePathRewritesWithDetailRespRequest) (response *CreatePathRewritesWithDetailRespResponse, err error) {
     return c.CreatePathRewritesWithDetailRespWithContext(context.Background(), request)
 }
@@ -2224,6 +2227,7 @@ func (c *Client) CreatePathRewritesWithDetailResp(request *CreatePathRewritesWit
 //  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 //  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+//  UNSUPPORTEDOPERATION_GATEWAYGROUPNOTEXISTS = "UnsupportedOperation.GatewayGroupNotExists"
 func (c *Client) CreatePathRewritesWithDetailRespWithContext(ctx context.Context, request *CreatePathRewritesWithDetailRespRequest) (response *CreatePathRewritesWithDetailRespResponse, err error) {
     if request == nil {
         request = NewCreatePathRewritesWithDetailRespRequest()
@@ -3990,6 +3994,7 @@ func NewDeletePathRewritesResponse() (response *DeletePathRewritesResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 //  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+//  UNSUPPORTEDOPERATION_GATEWAYPATHREWRITENOTEXISTS = "UnsupportedOperation.GatewayPathRewriteNotExists"
 func (c *Client) DeletePathRewrites(request *DeletePathRewritesRequest) (response *DeletePathRewritesResponse, err error) {
     return c.DeletePathRewritesWithContext(context.Background(), request)
 }
@@ -4000,6 +4005,7 @@ func (c *Client) DeletePathRewrites(request *DeletePathRewritesRequest) (respons
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 //  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+//  UNSUPPORTEDOPERATION_GATEWAYPATHREWRITENOTEXISTS = "UnsupportedOperation.GatewayPathRewriteNotExists"
 func (c *Client) DeletePathRewritesWithContext(ctx context.Context, request *DeletePathRewritesRequest) (response *DeletePathRewritesResponse, err error) {
     if request == nil {
         request = NewDeletePathRewritesRequest()

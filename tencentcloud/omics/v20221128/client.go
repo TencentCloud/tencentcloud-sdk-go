@@ -813,6 +813,70 @@ func (c *Client) DescribeProjectsWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribePublicApplicationsRequest() (request *DescribePublicApplicationsRequest) {
+    request = &DescribePublicApplicationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "DescribePublicApplications")
+    
+    
+    return
+}
+
+func NewDescribePublicApplicationsResponse() (response *DescribePublicApplicationsResponse) {
+    response = &DescribePublicApplicationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePublicApplications
+// 查询公共应用列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribePublicApplications(request *DescribePublicApplicationsRequest) (response *DescribePublicApplicationsResponse, err error) {
+    return c.DescribePublicApplicationsWithContext(context.Background(), request)
+}
+
+// DescribePublicApplications
+// 查询公共应用列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribePublicApplicationsWithContext(ctx context.Context, request *DescribePublicApplicationsRequest) (response *DescribePublicApplicationsResponse, err error) {
+    if request == nil {
+        request = NewDescribePublicApplicationsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "omics", APIVersion, "DescribePublicApplications")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePublicApplications require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePublicApplicationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRunGroupsRequest() (request *DescribeRunGroupsRequest) {
     request = &DescribeRunGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

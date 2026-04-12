@@ -1782,161 +1782,165 @@ func (r *CreateTrainingModelResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTrainingTaskRequestParams struct {
-	// 训练任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+	// <p>训练任务名称，不超过60个字符，仅支持中英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以中英文、数字开头</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 计费模式，eg：PREPAID 包年包月（资源组）;
-	// POSTPAID_BY_HOUR 按量计费
+	// <p>计费模式，eg：PREPAID 包年包月（资源组）;<br>POSTPAID_BY_HOUR 按量计费</p>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// 资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{"Role":"WORKER", "InstanceType": "TI.S.MEDIUM.POST", "InstanceNum": 1}]
+	// <p>资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{&quot;Role&quot;:&quot;WORKER&quot;, &quot;InstanceType&quot;: &quot;TI.S.MEDIUM.POST&quot;, &quot;InstanceNum&quot;: 1}]</p>
 	ResourceConfigInfos []*ResourceConfigInfo `json:"ResourceConfigInfos,omitnil,omitempty" name:"ResourceConfigInfos"`
 
-	// 训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH
+	// <p>训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH</p>
 	FrameworkName *string `json:"FrameworkName,omitnil,omitempty" name:"FrameworkName"`
 
-	// 训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15、1.9
+	// <p>训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15、1.9</p>
 	FrameworkVersion *string `json:"FrameworkVersion,omitnil,omitempty" name:"FrameworkVersion"`
 
-	// 训练框架环境，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu
+	// <p>训练框架环境，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu</p>
 	FrameworkEnvironment *string `json:"FrameworkEnvironment,omitnil,omitempty" name:"FrameworkEnvironment"`
 
-	// 预付费专用资源组ID，通过DescribeBillingResourceGroups接口查询
+	// <p>预付费专用资源组ID，通过DescribeBillingResourceGroups接口查询</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// 标签配置
+	// <p>标签配置</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 自定义镜像信息
+	// <p>自定义镜像信息</p>
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// COS代码包路径
+	// <p>COS代码包路径</p>
 	CodePackagePath *CosPathInfo `json:"CodePackagePath,omitnil,omitempty" name:"CodePackagePath"`
 
-	// 任务的启动命令，按任务训练模式输入，如遇特殊字符导致配置失败，可使用EncodedStartCmdInfo参数
+	// <p>任务的启动命令，按任务训练模式输入，如遇特殊字符导致配置失败，可使用EncodedStartCmdInfo参数</p>
 	StartCmdInfo *StartCmdInfo `json:"StartCmdInfo,omitnil,omitempty" name:"StartCmdInfo"`
 
-	// 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
+	// <p>训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD</p>
 	TrainingMode *string `json:"TrainingMode,omitnil,omitempty" name:"TrainingMode"`
 
-	// 数据配置，依赖DataSource字段，数量不超过10个
+	// <p>数据配置，依赖DataSource字段，数量不超过10个</p>
 	DataConfigs []*DataConfig `json:"DataConfigs,omitnil,omitempty" name:"DataConfigs"`
 
-	// VPC Id
+	// <p>VPC Id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网Id
+	// <p>子网Id</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// COS训练输出路径
+	// <p>COS训练输出路径</p>
 	Output *CosPathInfo `json:"Output,omitnil,omitempty" name:"Output"`
 
-	// CLS日志配置
+	// <p>CLS日志配置</p>
 	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 
-	// 调优参数，不超过2048个字符
+	// <p>调优参数，不超过2048个字符</p>
 	TuningParameters *string `json:"TuningParameters,omitnil,omitempty" name:"TuningParameters"`
 
-	// 是否上报日志
+	// <p>是否上报日志</p>
 	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
 
-	// 备注，不超过1024个字符
+	// <p>备注，不超过1024个字符</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 数据来源，eg：DATASET、COS、CFS、CFSTurbo、HDFS、GooseFSx
+	// <p>数据来源，eg：DATASET、COS、CFS、CFSTurbo、HDFS、GooseFSx</p>
 	DataSource *string `json:"DataSource,omitnil,omitempty" name:"DataSource"`
 
-	// 回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&内容详见：[[TI-ONE接口回调说明]](https://cloud.tencent.com/document/product/851/84292)
+	// <p>回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&amp;内容详见：<a href="https://cloud.tencent.com/document/product/851/84292">[TI-ONE接口回调说明]</a></p>
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
-	// 编码后的任务启动命令，与StartCmdInfo同时配置时，仅当前参数生效
+	// <p>编码后的任务启动命令，与StartCmdInfo同时配置时，仅当前参数生效</p>
 	EncodedStartCmdInfo *EncodedStartCmdInfo `json:"EncodedStartCmdInfo,omitnil,omitempty" name:"EncodedStartCmdInfo"`
 
-	// 代码仓库配置
+	// <p>代码仓库配置</p>
 	CodeRepos []*CodeRepoConfig `json:"CodeRepos,omitnil,omitempty" name:"CodeRepos"`
 
-	// 网络暴露配置
+	// <p>网络暴露配置</p>
 	ExposeNetworkConfig *ExposeNetworkConfig `json:"ExposeNetworkConfig,omitnil,omitempty" name:"ExposeNetworkConfig"`
+
+	// <p>环境变量</p>
+	Envs []*EnvVar `json:"Envs,omitnil,omitempty" name:"Envs"`
 }
 
 type CreateTrainingTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 训练任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+	// <p>训练任务名称，不超过60个字符，仅支持中英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以中英文、数字开头</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 计费模式，eg：PREPAID 包年包月（资源组）;
-	// POSTPAID_BY_HOUR 按量计费
+	// <p>计费模式，eg：PREPAID 包年包月（资源组）;<br>POSTPAID_BY_HOUR 按量计费</p>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// 资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{"Role":"WORKER", "InstanceType": "TI.S.MEDIUM.POST", "InstanceNum": 1}]
+	// <p>资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{&quot;Role&quot;:&quot;WORKER&quot;, &quot;InstanceType&quot;: &quot;TI.S.MEDIUM.POST&quot;, &quot;InstanceNum&quot;: 1}]</p>
 	ResourceConfigInfos []*ResourceConfigInfo `json:"ResourceConfigInfos,omitnil,omitempty" name:"ResourceConfigInfos"`
 
-	// 训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH
+	// <p>训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH</p>
 	FrameworkName *string `json:"FrameworkName,omitnil,omitempty" name:"FrameworkName"`
 
-	// 训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15、1.9
+	// <p>训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15、1.9</p>
 	FrameworkVersion *string `json:"FrameworkVersion,omitnil,omitempty" name:"FrameworkVersion"`
 
-	// 训练框架环境，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu
+	// <p>训练框架环境，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu</p>
 	FrameworkEnvironment *string `json:"FrameworkEnvironment,omitnil,omitempty" name:"FrameworkEnvironment"`
 
-	// 预付费专用资源组ID，通过DescribeBillingResourceGroups接口查询
+	// <p>预付费专用资源组ID，通过DescribeBillingResourceGroups接口查询</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// 标签配置
+	// <p>标签配置</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 自定义镜像信息
+	// <p>自定义镜像信息</p>
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// COS代码包路径
+	// <p>COS代码包路径</p>
 	CodePackagePath *CosPathInfo `json:"CodePackagePath,omitnil,omitempty" name:"CodePackagePath"`
 
-	// 任务的启动命令，按任务训练模式输入，如遇特殊字符导致配置失败，可使用EncodedStartCmdInfo参数
+	// <p>任务的启动命令，按任务训练模式输入，如遇特殊字符导致配置失败，可使用EncodedStartCmdInfo参数</p>
 	StartCmdInfo *StartCmdInfo `json:"StartCmdInfo,omitnil,omitempty" name:"StartCmdInfo"`
 
-	// 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
+	// <p>训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD</p>
 	TrainingMode *string `json:"TrainingMode,omitnil,omitempty" name:"TrainingMode"`
 
-	// 数据配置，依赖DataSource字段，数量不超过10个
+	// <p>数据配置，依赖DataSource字段，数量不超过10个</p>
 	DataConfigs []*DataConfig `json:"DataConfigs,omitnil,omitempty" name:"DataConfigs"`
 
-	// VPC Id
+	// <p>VPC Id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网Id
+	// <p>子网Id</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// COS训练输出路径
+	// <p>COS训练输出路径</p>
 	Output *CosPathInfo `json:"Output,omitnil,omitempty" name:"Output"`
 
-	// CLS日志配置
+	// <p>CLS日志配置</p>
 	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 
-	// 调优参数，不超过2048个字符
+	// <p>调优参数，不超过2048个字符</p>
 	TuningParameters *string `json:"TuningParameters,omitnil,omitempty" name:"TuningParameters"`
 
-	// 是否上报日志
+	// <p>是否上报日志</p>
 	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
 
-	// 备注，不超过1024个字符
+	// <p>备注，不超过1024个字符</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 数据来源，eg：DATASET、COS、CFS、CFSTurbo、HDFS、GooseFSx
+	// <p>数据来源，eg：DATASET、COS、CFS、CFSTurbo、HDFS、GooseFSx</p>
 	DataSource *string `json:"DataSource,omitnil,omitempty" name:"DataSource"`
 
-	// 回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&内容详见：[[TI-ONE接口回调说明]](https://cloud.tencent.com/document/product/851/84292)
+	// <p>回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&amp;内容详见：<a href="https://cloud.tencent.com/document/product/851/84292">[TI-ONE接口回调说明]</a></p>
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
-	// 编码后的任务启动命令，与StartCmdInfo同时配置时，仅当前参数生效
+	// <p>编码后的任务启动命令，与StartCmdInfo同时配置时，仅当前参数生效</p>
 	EncodedStartCmdInfo *EncodedStartCmdInfo `json:"EncodedStartCmdInfo,omitnil,omitempty" name:"EncodedStartCmdInfo"`
 
-	// 代码仓库配置
+	// <p>代码仓库配置</p>
 	CodeRepos []*CodeRepoConfig `json:"CodeRepos,omitnil,omitempty" name:"CodeRepos"`
 
-	// 网络暴露配置
+	// <p>网络暴露配置</p>
 	ExposeNetworkConfig *ExposeNetworkConfig `json:"ExposeNetworkConfig,omitnil,omitempty" name:"ExposeNetworkConfig"`
+
+	// <p>环境变量</p>
+	Envs []*EnvVar `json:"Envs,omitnil,omitempty" name:"Envs"`
 }
 
 func (r *CreateTrainingTaskRequest) ToJsonString() string {
@@ -1976,6 +1980,7 @@ func (r *CreateTrainingTaskRequest) FromJsonString(s string) error {
 	delete(f, "EncodedStartCmdInfo")
 	delete(f, "CodeRepos")
 	delete(f, "ExposeNetworkConfig")
+	delete(f, "Envs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrainingTaskRequest has unknown keys!", "")
 	}
@@ -1984,7 +1989,7 @@ func (r *CreateTrainingTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTrainingTaskResponseParams struct {
-	// 训练任务ID
+	// <p>训练任务ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2109,46 +2114,46 @@ type DataSetConfig struct {
 }
 
 type DataSourceInfo struct {
-	// 数据源ID
+	// <p>数据源ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 数据源名称
+	// <p>数据源名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 创建者uin
+	// <p>创建者uin</p>
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
-	// 创建者名称
+	// <p>创建者名称</p>
 	CreatorName *string `json:"CreatorName,omitnil,omitempty" name:"CreatorName"`
 
-	// 数据源类型英文名
+	// <p>数据源类型英文名</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 数据源权限，取值有RW RO
+	// <p>数据源权限，取值有RW RO</p>
 	Permission *string `json:"Permission,omitnil,omitempty" name:"Permission"`
 
-	// 数据源所属存储实例ID
+	// <p>数据源所属存储实例ID</p>
 	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
 
-	// 数据源所属存储实例名称
+	// <p>数据源所属存储实例名称</p>
 	StorageName *string `json:"StorageName,omitnil,omitempty" name:"StorageName"`
 
-	// 数据源挂载配置
+	// <p>数据源挂载配置</p>
 	MountConfigure *MountConfigureInfo `json:"MountConfigure,omitnil,omitempty" name:"MountConfigure"`
 
-	// 创建时间, 格式为yyyy-mm-ddThh:mm:ssZ
+	// <p>创建时间, 格式为yyyy-mm-ddThh:mm:ssZ</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间, 格式为yyyy-mm-ddThh:mm:ssZ
+	// <p>更新时间, 格式为yyyy-mm-ddThh:mm:ssZ</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 限制开关是否开启，只有开启时才有限制
+	// <p>限制开关是否开启，只有开启时才有限制</p>
 	LimitMount *bool `json:"LimitMount,omitnil,omitempty" name:"LimitMount"`
 
-	// 标签配置
+	// <p>标签配置</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 额外配置,对应存储实例的额外配置
+	// <p>额外配置,对应存储实例的额外配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraConf *StorageExtraConf `json:"ExtraConf,omitnil,omitempty" name:"ExtraConf"`
 }
@@ -7618,49 +7623,49 @@ type MountConfigureInfo struct {
 }
 
 type MountInstanceInfo struct {
-	// 类型英文名
+	// <p>类型英文名</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 存储实例ID
+	// <p>存储实例ID</p>
 	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
 
-	// 存储实例名称
+	// <p>存储实例名称</p>
 	StorageName *string `json:"StorageName,omitnil,omitempty" name:"StorageName"`
 
-	// 状态，0可挂载 1不可挂载(挂载限制)
+	// <p>状态</p><p>枚举值：</p><ul><li>0： 可挂载（正常）</li><li>1： 不可挂载（挂载限制）</li><li>2： 不可挂载（存储配置关闭）</li></ul>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 额外配置
+	// <p>额外配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraConf *StorageExtraConf `json:"ExtraConf,omitnil,omitempty" name:"ExtraConf"`
 }
 
 type MountLimitInfo struct {
-	// 数据源类型英文名
+	// <p>数据源类型英文名</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 数据源所属存储实例ID
+	// <p>数据源所属存储实例ID</p>
 	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
 
-	// 数据源所属存储实例名称
+	// <p>数据源所属存储实例名称</p>
 	StorageName *string `json:"StorageName,omitnil,omitempty" name:"StorageName"`
 
-	// 限制开关是否开启，只有开启时才有限制
+	// <p>限制开关是否开启，只有开启时才有限制</p>
 	LimitMount *bool `json:"LimitMount,omitnil,omitempty" name:"LimitMount"`
 
-	// 创建者uin
+	// <p>创建者uin</p>
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
-	// 创建者名称
+	// <p>创建者名称</p>
 	CreatorName *string `json:"CreatorName,omitnil,omitempty" name:"CreatorName"`
 
-	// 创建时间, 格式为yyyy-mm-ddThh:mm:ssZ
+	// <p>创建时间, 格式为yyyy-mm-ddThh:mm:ssZ</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间, 格式为yyyy-mm-ddThh:mm:ssZ
+	// <p>更新时间, 格式为yyyy-mm-ddThh:mm:ssZ</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 额外配置
+	// <p>额外配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraConf *StorageExtraConf `json:"ExtraConf,omitnil,omitempty" name:"ExtraConf"`
 }
@@ -9926,102 +9931,104 @@ type TrainingTaskDetail struct {
 }
 
 type TrainingTaskSetItem struct {
-	// 训练任务ID
+	// <p>训练任务ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 训练任务名称
+	// <p>训练任务名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 框架名称
+	// <p>框架名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameworkName *string `json:"FrameworkName,omitnil,omitempty" name:"FrameworkName"`
 
-	// 训练框架版本
+	// <p>训练框架版本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameworkVersion *string `json:"FrameworkVersion,omitnil,omitempty" name:"FrameworkVersion"`
 
-	// 框架运行环境
+	// <p>框架运行环境</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameworkEnvironment *string `json:"FrameworkEnvironment,omitnil,omitempty" name:"FrameworkEnvironment"`
 
-	// 计费模式
+	// <p>计费模式</p>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// 计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
+	// <p>计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中</p>
 	ChargeStatus *string `json:"ChargeStatus,omitnil,omitempty" name:"ChargeStatus"`
 
-	// 预付费专用资源组
+	// <p>预付费专用资源组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// 资源配置
+	// <p>资源配置</p>
 	ResourceConfigInfos []*ResourceConfigInfo `json:"ResourceConfigInfos,omitnil,omitempty" name:"ResourceConfigInfos"`
 
-	// 训练模式eg：PS_WORKER、DDP、MPI、HOROVOD
+	// <p>训练模式eg：PS_WORKER、DDP、MPI、HOROVOD</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrainingMode *string `json:"TrainingMode,omitnil,omitempty" name:"TrainingMode"`
 
-	// 任务状态，eg：SUBMITTING提交中、PENDING排队中、
-	// STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成
+	// <p>任务状态，eg：SUBMITTING提交中、PENDING排队中、<br>STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 运行时长
+	// <p>运行时长</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuntimeInSeconds *uint64 `json:"RuntimeInSeconds,omitnil,omitempty" name:"RuntimeInSeconds"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 训练开始时间
+	// <p>训练开始时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 训练结束时间
+	// <p>训练结束时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 训练输出
+	// <p>训练输出</p>
 	Output *CosPathInfo `json:"Output,omitnil,omitempty" name:"Output"`
 
-	// 失败原因
+	// <p>失败原因</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailureReason *string `json:"FailureReason,omitnil,omitempty" name:"FailureReason"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 计费金额信息，eg：2.00元/小时 (按量计费)
+	// <p>计费金额信息，eg：2.00元/小时 (按量计费)</p>
 	BillingInfo *string `json:"BillingInfo,omitnil,omitempty" name:"BillingInfo"`
 
-	// 预付费专用资源组名称
+	// <p>预付费专用资源组名称</p>
 	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 
-	// 自定义镜像信息
+	// <p>自定义镜像信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// 任务信息
+	// <p>任务信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 标签配置
+	// <p>标签配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 回调地址
+	// <p>回调地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
-	// 任务subUin信息
+	// <p>任务subUin信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
 
-	// 任务创建者名称
+	// <p>任务创建者名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
 
-	// 任务AppId
+	// <p>任务AppId</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>环境变量</p>
+	Envs []*EnvVar `json:"Envs,omitnil,omitempty" name:"Envs"`
 }
 
 // Predefined struct for user

@@ -315,109 +315,115 @@ type ApiDefinitionDescr struct {
 }
 
 type ApiDetailInfo struct {
-	// API ID
+	// <p>API ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiId *string `json:"ApiId,omitnil,omitempty" name:"ApiId"`
 
-	// 命名空间ID
+	// <p>命名空间ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 命名空间名称
+	// <p>命名空间名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
 
-	// 服务ID
+	// <p>服务ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
 
-	// 服务名称
+	// <p>服务名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MicroserviceName *string `json:"MicroserviceName,omitnil,omitempty" name:"MicroserviceName"`
 
-	// API 请求路径
+	// <p>API 请求路径</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// Api 映射路径
+	// <p>Api 映射路径</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PathMapping *string `json:"PathMapping,omitnil,omitempty" name:"PathMapping"`
 
-	// 请求方法
+	// <p>请求方法</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
-	// 所属分组ID
+	// <p>所属分组ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 是否禁用
+	// <p>是否禁用</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsableStatus *string `json:"UsableStatus,omitnil,omitempty" name:"UsableStatus"`
 
-	// 发布状态
+	// <p>发布状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReleaseStatus *string `json:"ReleaseStatus,omitnil,omitempty" name:"ReleaseStatus"`
 
-	// 开启限流
+	// <p>开启限流</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RateLimitStatus *string `json:"RateLimitStatus,omitnil,omitempty" name:"RateLimitStatus"`
 
-	// 是否开启mock
+	// <p>是否开启mock</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MockStatus *string `json:"MockStatus,omitnil,omitempty" name:"MockStatus"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 
-	// 发布时间
+	// <p>发布时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReleasedTime *string `json:"ReleasedTime,omitnil,omitempty" name:"ReleasedTime"`
 
-	// 所属分组名称
+	// <p>所属分组名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// API 超时，单位毫秒
+	// <p>API 超时，单位毫秒</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// Api所在服务host
+	// <p>Api所在服务host</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// API类型。 ms ： 微服务API； external :外部服务Api
+	// <p>API类型。 ms ： 微服务API； external :外部服务Api</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiType *string `json:"ApiType,omitnil,omitempty" name:"ApiType"`
 
-	// Api描述信息
+	// <p>Api描述信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// API路径匹配类型。normal：普通API；wildcard：通配API。
+	// <p>API路径匹配类型。normal：普通API；wildcard：通配API。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiMatchType *string `json:"ApiMatchType,omitnil,omitempty" name:"ApiMatchType"`
 
-	// RPC 额外信息
+	// <p>RPC 额外信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RpcExt *string `json:"RpcExt,omitnil,omitempty" name:"RpcExt"`
 
-	// 部署组id
+	// <p>部署组id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayDeployGroupId *string `json:"GatewayDeployGroupId,omitnil,omitempty" name:"GatewayDeployGroupId"`
 
-	// md5
+	// <p>md5</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Md5 *string `json:"Md5,omitnil,omitempty" name:"Md5"`
 
-	// RPC 类型
+	// <p>RPC 类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RpcType *string `json:"RpcType,omitnil,omitempty" name:"RpcType"`
+
+	// <p>是否禁用短路径访问开关</p>
+	PathMappingUnsupported *bool `json:"PathMappingUnsupported,omitnil,omitempty" name:"PathMappingUnsupported"`
+
+	// <p>禁用短路径访问开关原因</p>
+	PathMappingUnsupportedMsg *string `json:"PathMappingUnsupportedMsg,omitnil,omitempty" name:"PathMappingUnsupportedMsg"`
 }
 
 type ApiDetailResponse struct {
@@ -548,57 +554,60 @@ type ApiInfo struct {
 }
 
 type ApiRateLimitRule struct {
-	// rule Id
+	// <p>rule Id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// API ID
+	// <p>API ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiId *string `json:"ApiId,omitnil,omitempty" name:"ApiId"`
 
-	// 限流名称
+	// <p>限流名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 最大限流qps
+	// <p>最大限流qps</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxQps *uint64 `json:"MaxQps,omitnil,omitempty" name:"MaxQps"`
 
-	// 生效/禁用, enabled/disabled
+	// <p>生效/禁用, enabled/disabled</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsableStatus *string `json:"UsableStatus,omitnil,omitempty" name:"UsableStatus"`
 
-	// 规则内容
+	// <p>规则内容</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleContent *string `json:"RuleContent,omitnil,omitempty" name:"RuleContent"`
 
-	// Tsf Rule ID
+	// <p>Tsf Rule ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TsfRuleId *string `json:"TsfRuleId,omitnil,omitempty" name:"TsfRuleId"`
 
-	// 描述
+	// <p>描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 
-	// 分页参数limit
+	// <p>分页参数limit</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页参数offset
+	// <p>分页参数offset</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// AppId
+	// <p>AppId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>旧格式 method 与 path 分开，新格式 path-Method,如 /checkToken-GET，默认为新格式</p>
+	UsePathAndMethodFormat *bool `json:"UsePathAndMethodFormat,omitnil,omitempty" name:"UsePathAndMethodFormat"`
 }
 
 type ApiRequestDescr struct {
@@ -18565,37 +18574,45 @@ type MetricDimensionValue struct {
 }
 
 type Microservice struct {
-	// 微服务ID
+	// <p>微服务ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MicroserviceId *string `json:"MicroserviceId,omitnil,omitempty" name:"MicroserviceId"`
 
-	// 微服务名称
+	// <p>微服务名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MicroserviceName *string `json:"MicroserviceName,omitnil,omitempty" name:"MicroserviceName"`
 
-	// 微服务描述
+	// <p>微服务描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MicroserviceDesc *string `json:"MicroserviceDesc,omitnil,omitempty" name:"MicroserviceDesc"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 命名空间ID
+	// <p>命名空间ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 微服务的运行实例数目
+	// <p>微服务的运行实例数目</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunInstanceCount *int64 `json:"RunInstanceCount,omitnil,omitempty" name:"RunInstanceCount"`
 
-	// 微服务的离线实例数目
+	// <p>微服务的离线实例数目</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CriticalInstanceCount *int64 `json:"CriticalInstanceCount,omitnil,omitempty" name:"CriticalInstanceCount"`
+
+	// <p>是否禁用删除按钮，true：是；false：否。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteDisabled *bool `json:"DeleteDisabled,omitnil,omitempty" name:"DeleteDisabled"`
+
+	// <p>禁用删除原因。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteDisabledReason *string `json:"DeleteDisabledReason,omitnil,omitempty" name:"DeleteDisabledReason"`
 }
 
 // Predefined struct for user
@@ -19182,55 +19199,51 @@ func (r *ModifyLaneResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLaneRuleRequestParams struct {
-	// 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
+	// <p>灰度发布规则ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/product/649/44505">DescribeLaneRules</a> 的返回值中的 RuleId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&amp;subTab=lanerule">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/44507">CreateLaneRule</a>创建新的灰度发布规则。</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 灰度发布规则名称，最多支持60个字符，支持中英文字符。
+	// <p>灰度发布规则名称，最多支持60个字符，支持中英文字符。</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 灰度发布规则备注，最多支持200个字符。
+	// <p>灰度发布规则备注，最多支持200个字符。</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 灰度发布规则标签列表。
+	// <p>灰度发布规则标签列表。</p>
 	RuleTagList []*LaneRuleTag `json:"RuleTagList,omitnil,omitempty" name:"RuleTagList"`
 
-	// 灰度发布规则标签关系。- RELEATION_AND：与- RELEATION_OR：或
-	RuleTagRelationship *string `json:"RuleTagRelationship,omitnil,omitempty" name:"RuleTagRelationship"`
-
-	// 泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
+	// <p>泳道配置ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/product/649/44504">DescribeLanes</a> 的返回值中的 LaneId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&amp;subTab=lane">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/44508">CreateLane</a>创建新的泳道配置。</p>
 	LaneId *string `json:"LaneId,omitnil,omitempty" name:"LaneId"`
 
-	// 开启状态。
-	// - true：开启
-	// - false：关闭
+	// <p>开启状态。</p><ul><li>true：开启</li><li>false：关闭</li></ul>
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// <p>灰度发布规则标签关系。- RELEATION_AND：与- RELEATION_OR：或</p>
+	RuleTagRelationship *string `json:"RuleTagRelationship,omitnil,omitempty" name:"RuleTagRelationship"`
 }
 
 type ModifyLaneRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
+	// <p>灰度发布规则ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/product/649/44505">DescribeLaneRules</a> 的返回值中的 RuleId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&amp;subTab=lanerule">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/44507">CreateLaneRule</a>创建新的灰度发布规则。</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 灰度发布规则名称，最多支持60个字符，支持中英文字符。
+	// <p>灰度发布规则名称，最多支持60个字符，支持中英文字符。</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 灰度发布规则备注，最多支持200个字符。
+	// <p>灰度发布规则备注，最多支持200个字符。</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 灰度发布规则标签列表。
+	// <p>灰度发布规则标签列表。</p>
 	RuleTagList []*LaneRuleTag `json:"RuleTagList,omitnil,omitempty" name:"RuleTagList"`
 
-	// 灰度发布规则标签关系。- RELEATION_AND：与- RELEATION_OR：或
-	RuleTagRelationship *string `json:"RuleTagRelationship,omitnil,omitempty" name:"RuleTagRelationship"`
-
-	// 泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
+	// <p>泳道配置ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/product/649/44504">DescribeLanes</a> 的返回值中的 LaneId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&amp;subTab=lane">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/44508">CreateLane</a>创建新的泳道配置。</p>
 	LaneId *string `json:"LaneId,omitnil,omitempty" name:"LaneId"`
 
-	// 开启状态。
-	// - true：开启
-	// - false：关闭
+	// <p>开启状态。</p><ul><li>true：开启</li><li>false：关闭</li></ul>
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// <p>灰度发布规则标签关系。- RELEATION_AND：与- RELEATION_OR：或</p>
+	RuleTagRelationship *string `json:"RuleTagRelationship,omitnil,omitempty" name:"RuleTagRelationship"`
 }
 
 func (r *ModifyLaneRuleRequest) ToJsonString() string {
@@ -19249,9 +19262,9 @@ func (r *ModifyLaneRuleRequest) FromJsonString(s string) error {
 	delete(f, "RuleName")
 	delete(f, "Remark")
 	delete(f, "RuleTagList")
-	delete(f, "RuleTagRelationship")
 	delete(f, "LaneId")
 	delete(f, "Enable")
+	delete(f, "RuleTagRelationship")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLaneRuleRequest has unknown keys!", "")
 	}
@@ -19260,9 +19273,7 @@ func (r *ModifyLaneRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLaneRuleResponseParams struct {
-	// 修改结果。
-	// - true：成功
-	// - false：失败
+	// <p>修改结果。</p><ul><li>true：成功</li><li>false：失败</li></ul>
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21873,71 +21884,74 @@ type ServiceGovernanceConfig struct {
 }
 
 type ServiceSetting struct {
-	// 0:公网, 1:集群内访问, 2：NodePort, 3: VPC 内网访问
+	// <p>0:公网, 1:集群内访问, 2：NodePort, 3: VPC 内网访问</p>
 	AccessType *int64 `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
-	// 容器端口映射
+	// <p>容器端口映射</p>
 	ProtocolPorts []*ProtocolPort `json:"ProtocolPorts,omitnil,omitempty" name:"ProtocolPorts"`
 
-	// 子网ID
+	// <p>子网ID</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 是否创建 k8s service，默认为 false
+	// <p>是否创建 k8s service，默认为 false</p>
 	DisableService *bool `json:"DisableService,omitnil,omitempty" name:"DisableService"`
 
-	// service 是否为 headless 类型
+	// <p>service 是否为 headless 类型</p>
 	HeadlessService *bool `json:"HeadlessService,omitnil,omitempty" name:"HeadlessService"`
 
-	// 当为 true 且 DisableService 也为 true 时，会删除之前创建的 service，请小心使用
+	// <p>当为 true 且 DisableService 也为 true 时，会删除之前创建的 service，请小心使用</p>
 	AllowDeleteService *bool `json:"AllowDeleteService,omitnil,omitempty" name:"AllowDeleteService"`
 
-	// 开启SessionAffinity，true为开启，false为不开启，默认为false
+	// <p>开启SessionAffinity，true为开启，false为不开启，默认为false</p>
 	OpenSessionAffinity *bool `json:"OpenSessionAffinity,omitnil,omitempty" name:"OpenSessionAffinity"`
 
-	// SessionAffinity会话时间，默认10800
+	// <p>SessionAffinity会话时间，默认10800</p>
 	SessionAffinityTimeoutSeconds *int64 `json:"SessionAffinityTimeoutSeconds,omitnil,omitempty" name:"SessionAffinityTimeoutSeconds"`
 
-	// 服务名称
+	// <p>服务名称</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 外部流量策略
+	// <p>外部流量策略</p>
 	ExternalTrafficStrategy *string `json:"ExternalTrafficStrategy,omitnil,omitempty" name:"ExternalTrafficStrategy"`
 
-	// 外部流量策略
+	// <p>外部流量策略</p>
 	ExternalTrafficPolicy *string `json:"ExternalTrafficPolicy,omitnil,omitempty" name:"ExternalTrafficPolicy"`
 
-	// 负载均衡提供者
+	// <p>负载均衡提供者</p>
 	LoadBalancerProvisioner *string `json:"LoadBalancerProvisioner,omitnil,omitempty" name:"LoadBalancerProvisioner"`
 
-	// 负载均衡类型，Intranet表示内网，Internet表示外网
+	// <p>负载均衡类型，Intranet表示内网，Internet表示外网</p>
 	LoadBalancingType *string `json:"LoadBalancingType,omitnil,omitempty" name:"LoadBalancingType"`
 
-	// k8s负载均衡内网vip
+	// <p>k8s负载均衡内网vip</p>
 	ClusterIp *string `json:"ClusterIp,omitnil,omitempty" name:"ClusterIp"`
 
-	// 禁用服务Int记录
+	// <p>禁用服务Int记录</p>
 	DisableServiceInt *uint64 `json:"DisableServiceInt,omitnil,omitempty" name:"DisableServiceInt"`
 
-	// 开启SessionAffinity Int记录
+	// <p>开启SessionAffinity Int记录</p>
 	OpenSessionAffinityInt *uint64 `json:"OpenSessionAffinityInt,omitnil,omitempty" name:"OpenSessionAffinityInt"`
 
-	// 开启HeadlessService int记录
+	// <p>开启HeadlessService int记录</p>
 	HeadlessServiceInt *uint64 `json:"HeadlessServiceInt,omitnil,omitempty" name:"HeadlessServiceInt"`
 
-	// 服务名称
+	// <p>服务名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// VPC网络ID
+	// <p>VPC网络ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 负载均衡VIP
+	// <p>负载均衡VIP</p>
 	LoadBalancingIp *string `json:"LoadBalancingIp,omitnil,omitempty" name:"LoadBalancingIp"`
 
-	// 负载均衡id
+	// <p>负载均衡id</p>
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 已存在的负载均衡id
+	// <p>已存在的负载均衡id</p>
 	ExistingLoadBalancerId *string `json:"ExistingLoadBalancerId,omitnil,omitempty" name:"ExistingLoadBalancerId"`
+
+	// <p>是否为全局服务（仅TCS环境使用）</p>
+	EnableGlobalService *bool `json:"EnableGlobalService,omitnil,omitempty" name:"EnableGlobalService"`
 }
 
 type ServiceStatisticsResult struct {
@@ -22253,6 +22267,12 @@ type SimpleGroup struct {
 
 	// k8s 命名空间名称
 	K8sNamespaceName *string `json:"K8sNamespaceName,omitnil,omitempty" name:"K8sNamespaceName"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 }
 
 type SimpleKafkaDeliveryConfig struct {
@@ -23570,6 +23590,9 @@ type UpdateApiRateLimitRulesRequestParams struct {
 
 	// QPS值。开启限流规则时，必填
 	MaxQps *int64 `json:"MaxQps,omitnil,omitempty" name:"MaxQps"`
+
+	// 旧格式 method 与 path 分开，新格式 path-<Method>,如 /checkToken-GET，默认为新格式
+	UsePathAndMethodFormat *bool `json:"UsePathAndMethodFormat,omitnil,omitempty" name:"UsePathAndMethodFormat"`
 }
 
 type UpdateApiRateLimitRulesRequest struct {
@@ -23583,6 +23606,9 @@ type UpdateApiRateLimitRulesRequest struct {
 
 	// QPS值。开启限流规则时，必填
 	MaxQps *int64 `json:"MaxQps,omitnil,omitempty" name:"MaxQps"`
+
+	// 旧格式 method 与 path 分开，新格式 path-<Method>,如 /checkToken-GET，默认为新格式
+	UsePathAndMethodFormat *bool `json:"UsePathAndMethodFormat,omitnil,omitempty" name:"UsePathAndMethodFormat"`
 }
 
 func (r *UpdateApiRateLimitRulesRequest) ToJsonString() string {
@@ -23600,6 +23626,7 @@ func (r *UpdateApiRateLimitRulesRequest) FromJsonString(s string) error {
 	delete(f, "ApiIds")
 	delete(f, "UsableStatus")
 	delete(f, "MaxQps")
+	delete(f, "UsePathAndMethodFormat")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateApiRateLimitRulesRequest has unknown keys!", "")
 	}

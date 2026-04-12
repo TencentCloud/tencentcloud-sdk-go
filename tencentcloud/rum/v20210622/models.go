@@ -20,6 +20,20 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type CompareCondition struct {
+	// App版本
+	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
+
+	// 筛选条件
+	Filters *Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
 // Predefined struct for user
 type CreateReleaseFileRequestParams struct {
 	// 项目 id
@@ -988,6 +1002,230 @@ func (r *DescribeAppSingleCaseListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAppSingleCaseListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApplicationExitReportDetailRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 问题Id
+	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
+
+	// 开始时间
+	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
+
+	// 结束时间
+	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+type DescribeApplicationExitReportDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 问题Id
+	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
+
+	// 开始时间
+	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
+
+	// 结束时间
+	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+func (r *DescribeApplicationExitReportDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationExitReportDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "ParamToken")
+	delete(f, "ClientIdentify")
+	delete(f, "StartEventTime")
+	delete(f, "EndEventTime")
+	delete(f, "ExtraData")
+	delete(f, "RequestHeader")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApplicationExitReportDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApplicationExitReportDetailResponseParams struct {
+	// 返回值
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 消息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApplicationExitReportDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApplicationExitReportDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeApplicationExitReportDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationExitReportDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApplicationExitReportListRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 当前页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页展示最大数量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序类型
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+type DescribeApplicationExitReportListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 当前页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页展示最大数量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序类型
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+func (r *DescribeApplicationExitReportListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationExitReportListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "ParamToken")
+	delete(f, "FormListString")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "SortField")
+	delete(f, "SortType")
+	delete(f, "ExtraData")
+	delete(f, "RequestHeader")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApplicationExitReportListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApplicationExitReportListResponseParams struct {
+	// 返回值
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 消息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApplicationExitReportListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApplicationExitReportListResponseParams `json:"Response"`
+}
+
+func (r *DescribeApplicationExitReportListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationExitReportListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7519,6 +7757,1784 @@ func (r *DescribeErrorResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeExceptionDetailRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 消息唯一标识
+	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
+
+	// 集群堆栈类型
+	ClusterStackType *int64 `json:"ClusterStackType,omitnil,omitempty" name:"ClusterStackType"`
+
+	// 特征
+	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
+
+	// 问题类型
+	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
+
+	// 事件开始时间
+	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
+
+	// 事件结束时间
+	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+type DescribeExceptionDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 消息唯一标识
+	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
+
+	// 集群堆栈类型
+	ClusterStackType *int64 `json:"ClusterStackType,omitnil,omitempty" name:"ClusterStackType"`
+
+	// 特征
+	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
+
+	// 问题类型
+	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
+
+	// 事件开始时间
+	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
+
+	// 事件结束时间
+	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+func (r *DescribeExceptionDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExceptionDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "ClientIdentify")
+	delete(f, "ClusterStackType")
+	delete(f, "Feature")
+	delete(f, "IssueType")
+	delete(f, "StartEventTime")
+	delete(f, "EndEventTime")
+	delete(f, "ExtraData")
+	delete(f, "RequestHeader")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExceptionDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExceptionDetailResponseParams struct {
+	// 返回值
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 消息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeExceptionDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeExceptionDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeExceptionDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExceptionDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExceptionReportListRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 问题类型
+	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序方式
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 特征
+	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
+
+	// 每页数目
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 拓展字段
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+type DescribeExceptionReportListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 问题类型
+	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序方式
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 特征
+	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
+
+	// 每页数目
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 拓展字段
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+func (r *DescribeExceptionReportListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExceptionReportListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "FormListString")
+	delete(f, "ParamToken")
+	delete(f, "IssueType")
+	delete(f, "SortField")
+	delete(f, "SortType")
+	delete(f, "Feature")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	delete(f, "ExtraData")
+	delete(f, "RequestHeader")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExceptionReportListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExceptionReportListResponseParams struct {
+	// 返回值
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 消息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeExceptionReportListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeExceptionReportListResponseParams `json:"Response"`
+}
+
+func (r *DescribeExceptionReportListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExceptionReportListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFOOMMallocProblemDetailRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 消息唯一标识
+	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
+
+	// 特征
+	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
+
+	// 事件开始时间
+	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
+
+	// 事件结束时间
+	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+type DescribeFOOMMallocProblemDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 消息唯一标识
+	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
+
+	// 特征
+	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
+
+	// 事件开始时间
+	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
+
+	// 事件结束时间
+	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+func (r *DescribeFOOMMallocProblemDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFOOMMallocProblemDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "ClientIdentify")
+	delete(f, "Feature")
+	delete(f, "StartEventTime")
+	delete(f, "EndEventTime")
+	delete(f, "ExtraData")
+	delete(f, "RequestHeader")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFOOMMallocProblemDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFOOMMallocProblemDetailResponseParams struct {
+	// 返回值
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 消息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFOOMMallocProblemDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFOOMMallocProblemDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeFOOMMallocProblemDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFOOMMallocProblemDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFOOMMallocProblemListRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 当前页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页展示最大数量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序类型
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+type DescribeFOOMMallocProblemListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 当前页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页展示最大数量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序类型
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+func (r *DescribeFOOMMallocProblemListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFOOMMallocProblemListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "ParamToken")
+	delete(f, "FormListString")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "SortField")
+	delete(f, "SortType")
+	delete(f, "ExtraData")
+	delete(f, "RequestHeader")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFOOMMallocProblemListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFOOMMallocProblemListResponseParams struct {
+	// 返回值
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 消息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFOOMMallocProblemListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFOOMMallocProblemListResponseParams `json:"Response"`
+}
+
+func (r *DescribeFOOMMallocProblemListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFOOMMallocProblemListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFOOMMallocReportListRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 特征
+	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
+
+	// 当前页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页展示最大数量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序类型
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+type DescribeFOOMMallocReportListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 特征
+	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
+
+	// 当前页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页展示最大数量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序类型
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+func (r *DescribeFOOMMallocReportListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFOOMMallocReportListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "FormListString")
+	delete(f, "ParamToken")
+	delete(f, "Feature")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "SortField")
+	delete(f, "SortType")
+	delete(f, "ExtraData")
+	delete(f, "RequestHeader")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFOOMMallocReportListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFOOMMallocReportListResponseParams struct {
+	// 返回值
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 消息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFOOMMallocReportListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFOOMMallocReportListResponseParams `json:"Response"`
+}
+
+func (r *DescribeFOOMMallocReportListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFOOMMallocReportListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFOOMProblemDetailRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 消息唯一标识
+	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
+
+	// 特征
+	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
+
+	// 事件开始时间
+	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
+
+	// 事件结束时间
+	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+type DescribeFOOMProblemDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 消息唯一标识
+	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
+
+	// 特征
+	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
+
+	// 事件开始时间
+	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
+
+	// 事件结束时间
+	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+func (r *DescribeFOOMProblemDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFOOMProblemDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "ClientIdentify")
+	delete(f, "Feature")
+	delete(f, "StartEventTime")
+	delete(f, "EndEventTime")
+	delete(f, "ExtraData")
+	delete(f, "RequestHeader")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFOOMProblemDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFOOMProblemDetailResponseParams struct {
+	// 返回值
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 消息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFOOMProblemDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFOOMProblemDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeFOOMProblemDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFOOMProblemDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFOOMProblemListRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 当前页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页展示最大数量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序类型
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+type DescribeFOOMProblemListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 当前页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页展示最大数量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序类型
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+func (r *DescribeFOOMProblemListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFOOMProblemListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "ParamToken")
+	delete(f, "FormListString")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "SortField")
+	delete(f, "SortType")
+	delete(f, "ExtraData")
+	delete(f, "RequestHeader")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFOOMProblemListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFOOMProblemListResponseParams struct {
+	// 返回值
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 消息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFOOMProblemListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFOOMProblemListResponseParams `json:"Response"`
+}
+
+func (r *DescribeFOOMProblemListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFOOMProblemListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFOOMReportListRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 特征
+	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
+
+	// 当前页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页展示最大数量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序类型
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+type DescribeFOOMReportListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 特征
+	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
+
+	// 当前页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页展示最大数量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序类型
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+func (r *DescribeFOOMReportListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFOOMReportListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "FormListString")
+	delete(f, "ParamToken")
+	delete(f, "Feature")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "SortField")
+	delete(f, "SortType")
+	delete(f, "ExtraData")
+	delete(f, "RequestHeader")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFOOMReportListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFOOMReportListResponseParams struct {
+	// 返回值
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 消息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFOOMReportListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFOOMReportListResponseParams `json:"Response"`
+}
+
+func (r *DescribeFOOMReportListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFOOMReportListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIssuesDistributionRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 分布维度是自定义维度时，填‘user_custom’
+	DimType *string `json:"DimType,omitnil,omitempty" name:"DimType"`
+
+	// 维度，e.g. os_version, app_version, model等
+	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
+
+	// 数字类型字段的区间范围
+	Intervals []*int64 `json:"Intervals,omitnil,omitempty" name:"Intervals"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 问题Id
+	IssueId *string `json:"IssueId,omitnil,omitempty" name:"IssueId"`
+
+	// 问题类型
+	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
+
+	// 限制返回的个数，默认返回所有值
+	ParamLimit *int64 `json:"ParamLimit,omitnil,omitempty" name:"ParamLimit"`
+
+	// 键
+	MapKey *string `json:"MapKey,omitnil,omitempty" name:"MapKey"`
+
+	// 名称
+	MapName *string `json:"MapName,omitnil,omitempty" name:"MapName"`
+
+	// 指标类型
+	MetricType *int64 `json:"MetricType,omitnil,omitempty" name:"MetricType"`
+
+	// 每页数目
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 用户自定义维度key
+	UserCustomKey *string `json:"UserCustomKey,omitnil,omitempty" name:"UserCustomKey"`
+
+	// 拓展字段
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+type DescribeIssuesDistributionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 分布维度是自定义维度时，填‘user_custom’
+	DimType *string `json:"DimType,omitnil,omitempty" name:"DimType"`
+
+	// 维度，e.g. os_version, app_version, model等
+	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
+
+	// 数字类型字段的区间范围
+	Intervals []*int64 `json:"Intervals,omitnil,omitempty" name:"Intervals"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 问题Id
+	IssueId *string `json:"IssueId,omitnil,omitempty" name:"IssueId"`
+
+	// 问题类型
+	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
+
+	// 限制返回的个数，默认返回所有值
+	ParamLimit *int64 `json:"ParamLimit,omitnil,omitempty" name:"ParamLimit"`
+
+	// 键
+	MapKey *string `json:"MapKey,omitnil,omitempty" name:"MapKey"`
+
+	// 名称
+	MapName *string `json:"MapName,omitnil,omitempty" name:"MapName"`
+
+	// 指标类型
+	MetricType *int64 `json:"MetricType,omitnil,omitempty" name:"MetricType"`
+
+	// 每页数目
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 用户自定义维度key
+	UserCustomKey *string `json:"UserCustomKey,omitnil,omitempty" name:"UserCustomKey"`
+
+	// 拓展字段
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+func (r *DescribeIssuesDistributionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIssuesDistributionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "FormListString")
+	delete(f, "DimType")
+	delete(f, "Dimension")
+	delete(f, "Intervals")
+	delete(f, "ParamToken")
+	delete(f, "IssueId")
+	delete(f, "IssueType")
+	delete(f, "ParamLimit")
+	delete(f, "MapKey")
+	delete(f, "MapName")
+	delete(f, "MetricType")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	delete(f, "UserCustomKey")
+	delete(f, "ExtraData")
+	delete(f, "RequestHeader")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIssuesDistributionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIssuesDistributionResponseParams struct {
+	// 返回值
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 消息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeIssuesDistributionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIssuesDistributionResponseParams `json:"Response"`
+}
+
+func (r *DescribeIssuesDistributionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIssuesDistributionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIssuesListRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormList *string `json:"FormList,omitnil,omitempty" name:"FormList"`
+
+	// 接口调试专用，对比模式下条件A，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListA *string `json:"FormListA,omitnil,omitempty" name:"FormListA"`
+
+	// 接口调试专用，对比模式下条件B，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListB *string `json:"FormListB,omitnil,omitempty" name:"FormListB"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 问题类型
+	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序方式
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 每页数目
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 问题对比列表模式下，用于标识是按照sort_field字段的A值排序还是B值还是ratio值
+	SortABRatio *string `json:"SortABRatio,omitnil,omitempty" name:"SortABRatio"`
+
+	// 模式：false:问题列表模式，true:对比列表模式
+	Compare *bool `json:"Compare,omitnil,omitempty" name:"Compare"`
+
+	// 对比状态 0:所有 1:新增 2：遗留 3:已解决
+	CompareStatus *int64 `json:"CompareStatus,omitnil,omitempty" name:"CompareStatus"`
+
+	// 拓展字段
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+type DescribeIssuesListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormList *string `json:"FormList,omitnil,omitempty" name:"FormList"`
+
+	// 接口调试专用，对比模式下条件A，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListA *string `json:"FormListA,omitnil,omitempty" name:"FormListA"`
+
+	// 接口调试专用，对比模式下条件B，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListB *string `json:"FormListB,omitnil,omitempty" name:"FormListB"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 问题类型
+	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序方式
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 每页数目
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 问题对比列表模式下，用于标识是按照sort_field字段的A值排序还是B值还是ratio值
+	SortABRatio *string `json:"SortABRatio,omitnil,omitempty" name:"SortABRatio"`
+
+	// 模式：false:问题列表模式，true:对比列表模式
+	Compare *bool `json:"Compare,omitnil,omitempty" name:"Compare"`
+
+	// 对比状态 0:所有 1:新增 2：遗留 3:已解决
+	CompareStatus *int64 `json:"CompareStatus,omitnil,omitempty" name:"CompareStatus"`
+
+	// 拓展字段
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+func (r *DescribeIssuesListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIssuesListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "FormList")
+	delete(f, "FormListA")
+	delete(f, "FormListB")
+	delete(f, "ParamToken")
+	delete(f, "IssueType")
+	delete(f, "SortField")
+	delete(f, "SortType")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	delete(f, "SortABRatio")
+	delete(f, "Compare")
+	delete(f, "CompareStatus")
+	delete(f, "ExtraData")
+	delete(f, "RequestHeader")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIssuesListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIssuesListResponseParams struct {
+	// 返回值
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 消息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeIssuesListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIssuesListResponseParams `json:"Response"`
+}
+
+func (r *DescribeIssuesListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIssuesListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIssuesStatisticsTrendRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormList *string `json:"FormList,omitnil,omitempty" name:"FormList"`
+
+	// 问题Id
+	IssueId *string `json:"IssueId,omitnil,omitempty" name:"IssueId"`
+
+	// 问题类型
+	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
+
+	// 时间窗口
+	TimeWindow *int64 `json:"TimeWindow,omitnil,omitempty" name:"TimeWindow"`
+
+	// 累计值
+	TotalSize *bool `json:"TotalSize,omitnil,omitempty" name:"TotalSize"`
+
+	// 无
+	Stat *int64 `json:"Stat,omitnil,omitempty" name:"Stat"`
+
+	// 指标类型
+	MetricType *int64 `json:"MetricType,omitnil,omitempty" name:"MetricType"`
+
+	// 拓展字段
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+
+	// 无
+	TrendStat *int64 `json:"TrendStat,omitnil,omitempty" name:"TrendStat"`
+}
+
+type DescribeIssuesStatisticsTrendRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormList *string `json:"FormList,omitnil,omitempty" name:"FormList"`
+
+	// 问题Id
+	IssueId *string `json:"IssueId,omitnil,omitempty" name:"IssueId"`
+
+	// 问题类型
+	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
+
+	// 时间窗口
+	TimeWindow *int64 `json:"TimeWindow,omitnil,omitempty" name:"TimeWindow"`
+
+	// 累计值
+	TotalSize *bool `json:"TotalSize,omitnil,omitempty" name:"TotalSize"`
+
+	// 无
+	Stat *int64 `json:"Stat,omitnil,omitempty" name:"Stat"`
+
+	// 指标类型
+	MetricType *int64 `json:"MetricType,omitnil,omitempty" name:"MetricType"`
+
+	// 拓展字段
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+
+	// 无
+	TrendStat *int64 `json:"TrendStat,omitnil,omitempty" name:"TrendStat"`
+}
+
+func (r *DescribeIssuesStatisticsTrendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIssuesStatisticsTrendRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "ParamToken")
+	delete(f, "FormList")
+	delete(f, "IssueId")
+	delete(f, "IssueType")
+	delete(f, "TimeWindow")
+	delete(f, "TotalSize")
+	delete(f, "Stat")
+	delete(f, "MetricType")
+	delete(f, "ExtraData")
+	delete(f, "RequestHeader")
+	delete(f, "TrendStat")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIssuesStatisticsTrendRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIssuesStatisticsTrendResponseParams struct {
+	// 返回值
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 消息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeIssuesStatisticsTrendResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIssuesStatisticsTrendResponseParams `json:"Response"`
+}
+
+func (r *DescribeIssuesStatisticsTrendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIssuesStatisticsTrendResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLagANRProblemAccountDetailRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 消息唯一标识
+	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
+
+	// 特征
+	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
+
+	// 事件开始时间
+	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
+
+	// 事件结束时间
+	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+type DescribeLagANRProblemAccountDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 消息唯一标识
+	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
+
+	// 特征
+	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
+
+	// 事件开始时间
+	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
+
+	// 事件结束时间
+	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+func (r *DescribeLagANRProblemAccountDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLagANRProblemAccountDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "ClientIdentify")
+	delete(f, "Feature")
+	delete(f, "StartEventTime")
+	delete(f, "EndEventTime")
+	delete(f, "ExtraData")
+	delete(f, "RequestHeader")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLagANRProblemAccountDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLagANRProblemAccountDetailResponseParams struct {
+	// 返回值
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 消息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLagANRProblemAccountDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLagANRProblemAccountDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeLagANRProblemAccountDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLagANRProblemAccountDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLagANRProblemFeatureAccountsRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 问题特征
+	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序类型
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 当前页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页展示最大数量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+type DescribeLagANRProblemFeatureAccountsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 问题特征
+	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序类型
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 当前页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页展示最大数量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+func (r *DescribeLagANRProblemFeatureAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLagANRProblemFeatureAccountsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "FormListString")
+	delete(f, "ParamToken")
+	delete(f, "Feature")
+	delete(f, "SortField")
+	delete(f, "SortType")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "ExtraData")
+	delete(f, "RequestHeader")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLagANRProblemFeatureAccountsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLagANRProblemFeatureAccountsResponseParams struct {
+	// 返回值
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 消息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLagANRProblemFeatureAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLagANRProblemFeatureAccountsResponseParams `json:"Response"`
+}
+
+func (r *DescribeLagANRProblemFeatureAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLagANRProblemFeatureAccountsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLagANRProblemListRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 当前页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页展示最大数量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序类型
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+type DescribeLagANRProblemListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
+
+	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 当前页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页展示最大数量
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序类型
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// 拓展数据
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+func (r *DescribeLagANRProblemListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLagANRProblemListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "ParamToken")
+	delete(f, "FormListString")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "SortField")
+	delete(f, "SortType")
+	delete(f, "ExtraData")
+	delete(f, "RequestHeader")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLagANRProblemListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLagANRProblemListResponseParams struct {
+	// 返回值
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 消息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLagANRProblemListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLagANRProblemListResponseParams `json:"Response"`
+}
+
+func (r *DescribeLagANRProblemListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLagANRProblemListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeProjectLimitsRequestParams struct {
 	// 项目ID
 	ProjectID *int64 `json:"ProjectID,omitnil,omitempty" name:"ProjectID"`
@@ -8733,6 +10749,216 @@ func (r *DescribeTawInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTokenRequestParams struct {
+	// 筛选条件
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 仅对比模式下填写，筛选条件A
+	FormListAString *string `json:"FormListAString,omitnil,omitempty" name:"FormListAString"`
+
+	// 仅对比模式下填写，筛选条件B
+	FormListBString *string `json:"FormListBString,omitnil,omitempty" name:"FormListBString"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+
+	// 拓展字段
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+}
+
+type DescribeTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// 筛选条件
+	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
+
+	// 仅对比模式下填写，筛选条件A
+	FormListAString *string `json:"FormListAString,omitnil,omitempty" name:"FormListAString"`
+
+	// 仅对比模式下填写，筛选条件B
+	FormListBString *string `json:"FormListBString,omitnil,omitempty" name:"FormListBString"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+
+	// 拓展字段
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+}
+
+func (r *DescribeTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FormListString")
+	delete(f, "FormListAString")
+	delete(f, "FormListBString")
+	delete(f, "RequestHeader")
+	delete(f, "ExtraData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTokenResponseParams struct {
+	// 返回值
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 消息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTokenResponseParams `json:"Response"`
+}
+
+func (r *DescribeTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTopIssuesRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 需要对比的查询条件，没有则不填
+	Compare *CompareCondition `json:"Compare,omitnil,omitempty" name:"Compare"`
+
+	// 查询条件
+	Condition *CompareCondition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 问题类型
+	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序方式
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// topN
+	TopNum *int64 `json:"TopNum,omitnil,omitempty" name:"TopNum"`
+
+	// 拓展字段
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+type DescribeTopIssuesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品Id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 需要对比的查询条件，没有则不填
+	Compare *CompareCondition `json:"Compare,omitnil,omitempty" name:"Compare"`
+
+	// 查询条件
+	Condition *CompareCondition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 问题类型
+	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序方式
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// topN
+	TopNum *int64 `json:"TopNum,omitnil,omitempty" name:"TopNum"`
+
+	// 拓展字段
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+
+	// 请求头
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+}
+
+func (r *DescribeTopIssuesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopIssuesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "Compare")
+	delete(f, "Condition")
+	delete(f, "IssueType")
+	delete(f, "SortField")
+	delete(f, "SortType")
+	delete(f, "TopNum")
+	delete(f, "ExtraData")
+	delete(f, "RequestHeader")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopIssuesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTopIssuesResponseParams struct {
+	// 返回值
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 状态码
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 消息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTopIssuesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTopIssuesResponseParams `json:"Response"`
+}
+
+func (r *DescribeTopIssuesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopIssuesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUvListRequestParams struct {
 	// ID
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -8873,6 +11099,26 @@ type Filter struct {
 
 	// 过滤键的名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type Filters struct {
+	// 是否反转
+	IsReversed *bool `json:"IsReversed,omitnil,omitempty" name:"IsReversed"`
+
+	// 键
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 运算符
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 类型
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 值
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type Kafka struct {
