@@ -912,7 +912,7 @@ type ImageStorageSource struct {
 }
 
 type LogConfiguration struct {
-	// 日志推送CLS的配置。
+	// <p>日志推送CLS的配置。</p>
 	CLSConfig *CLSConfig `json:"CLSConfig,omitnil,omitempty" name:"CLSConfig"`
 }
 

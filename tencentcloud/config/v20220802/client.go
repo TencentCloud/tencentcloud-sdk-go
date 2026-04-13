@@ -159,6 +159,60 @@ func (c *Client) AddAggregateConfigRuleWithContext(ctx context.Context, request 
     return
 }
 
+func NewAddAlarmPolicyRequest() (request *AddAlarmPolicyRequest) {
+    request = &AddAlarmPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("config", APIVersion, "AddAlarmPolicy")
+    
+    
+    return
+}
+
+func NewAddAlarmPolicyResponse() (response *AddAlarmPolicyResponse) {
+    response = &AddAlarmPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddAlarmPolicy
+// 新增告警监控规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_ALERTPOLICYLIMIT = "LimitExceeded.AlertPolicyLimit"
+//  RESOURCENOTFOUND_RESOURCETYPENOTEXIST = "ResourceNotFound.ResourceTypeNotExist"
+func (c *Client) AddAlarmPolicy(request *AddAlarmPolicyRequest) (response *AddAlarmPolicyResponse, err error) {
+    return c.AddAlarmPolicyWithContext(context.Background(), request)
+}
+
+// AddAlarmPolicy
+// 新增告警监控规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_ALERTPOLICYLIMIT = "LimitExceeded.AlertPolicyLimit"
+//  RESOURCENOTFOUND_RESOURCETYPENOTEXIST = "ResourceNotFound.ResourceTypeNotExist"
+func (c *Client) AddAlarmPolicyWithContext(ctx context.Context, request *AddAlarmPolicyRequest) (response *AddAlarmPolicyResponse, err error) {
+    if request == nil {
+        request = NewAddAlarmPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "config", APIVersion, "AddAlarmPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddAlarmPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddAlarmPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddCompliancePackRequest() (request *AddCompliancePackRequest) {
     request = &AddCompliancePackRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -657,6 +711,58 @@ func (c *Client) DeleteAggregateConfigRuleWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDeleteAggregateConfigRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAlarmPolicyRequest() (request *DeleteAlarmPolicyRequest) {
+    request = &DeleteAlarmPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("config", APIVersion, "DeleteAlarmPolicy")
+    
+    
+    return
+}
+
+func NewDeleteAlarmPolicyResponse() (response *DeleteAlarmPolicyResponse) {
+    response = &DeleteAlarmPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAlarmPolicy
+// 删除告警规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteAlarmPolicy(request *DeleteAlarmPolicyRequest) (response *DeleteAlarmPolicyResponse, err error) {
+    return c.DeleteAlarmPolicyWithContext(context.Background(), request)
+}
+
+// DeleteAlarmPolicy
+// 删除告警规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteAlarmPolicyWithContext(ctx context.Context, request *DeleteAlarmPolicyRequest) (response *DeleteAlarmPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteAlarmPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "config", APIVersion, "DeleteAlarmPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAlarmPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAlarmPolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -1843,6 +1949,58 @@ func (c *Client) ListAggregatorsWithContext(ctx context.Context, request *ListAg
     return
 }
 
+func NewListAlarmPolicyRequest() (request *ListAlarmPolicyRequest) {
+    request = &ListAlarmPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("config", APIVersion, "ListAlarmPolicy")
+    
+    
+    return
+}
+
+func NewListAlarmPolicyResponse() (response *ListAlarmPolicyResponse) {
+    response = &ListAlarmPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListAlarmPolicy
+// 告警规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ListAlarmPolicy(request *ListAlarmPolicyRequest) (response *ListAlarmPolicyResponse, err error) {
+    return c.ListAlarmPolicyWithContext(context.Background(), request)
+}
+
+// ListAlarmPolicy
+// 告警规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ListAlarmPolicyWithContext(ctx context.Context, request *ListAlarmPolicyRequest) (response *ListAlarmPolicyResponse, err error) {
+    if request == nil {
+        request = NewListAlarmPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "config", APIVersion, "ListAlarmPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListAlarmPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListAlarmPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListCompliancePacksRequest() (request *ListCompliancePacksRequest) {
     request = &ListCompliancePacksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2901,6 +3059,58 @@ func (c *Client) UpdateAggregateConfigRuleWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewUpdateAggregateConfigRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateAlarmPolicyRequest() (request *UpdateAlarmPolicyRequest) {
+    request = &UpdateAlarmPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("config", APIVersion, "UpdateAlarmPolicy")
+    
+    
+    return
+}
+
+func NewUpdateAlarmPolicyResponse() (response *UpdateAlarmPolicyResponse) {
+    response = &UpdateAlarmPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateAlarmPolicy
+// 更新告警规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) UpdateAlarmPolicy(request *UpdateAlarmPolicyRequest) (response *UpdateAlarmPolicyResponse, err error) {
+    return c.UpdateAlarmPolicyWithContext(context.Background(), request)
+}
+
+// UpdateAlarmPolicy
+// 更新告警规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) UpdateAlarmPolicyWithContext(ctx context.Context, request *UpdateAlarmPolicyRequest) (response *UpdateAlarmPolicyResponse, err error) {
+    if request == nil {
+        request = NewUpdateAlarmPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "config", APIVersion, "UpdateAlarmPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateAlarmPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateAlarmPolicyResponse()
     err = c.Send(request, response)
     return
 }

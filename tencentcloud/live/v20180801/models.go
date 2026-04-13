@@ -19373,36 +19373,35 @@ type PadStreamInfo struct {
 }
 
 type PadTemplate struct {
-	// 模板id。
+	// <p>模板id。</p>
 	TemplateId *uint64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 模板名称。
+	// <p>模板名称。</p>
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
-	// 垫片内容。
+	// <p>垫片内容。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 模板创建时间。
+	// <p>模板创建时间。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 模板修改时间。
+	// <p>模板修改时间。</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 模板描述。
+	// <p>模板描述。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 断流等待时间。
-	// 取值范围：0-30000。
-	// 单位：ms。
+	// <p>断流等待时间。<br>取值范围：0-30000。<br>单位：ms。</p>
 	WaitDuration *uint64 `json:"WaitDuration,omitnil,omitempty" name:"WaitDuration"`
 
-	// 最大垫片时长。
-	// 取值范围：0 - 正无穷。
-	// 单位：ms。
+	// <p>最大垫片时长。<br>取值范围：0 - 正无穷。<br>单位：ms。</p>
 	MaxDuration *uint64 `json:"MaxDuration,omitnil,omitempty" name:"MaxDuration"`
 
-	// 垫片内容类型： 1：图片，2：视频。 默认值：1。
+	// <p>垫片内容类型： 1：图片，2：视频。 默认值：1。</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>断流垫片触发条件</p><p>枚举值：</p><ul><li>0： 主动及异常断流</li><li>1： 异常断流</li></ul><p>默认值：0</p>
+	TriggerCondition *uint64 `json:"TriggerCondition,omitnil,omitempty" name:"TriggerCondition"`
 }
 
 type PlayAuthKeyInfo struct {

@@ -50,6 +50,9 @@ const (
 	// FailedOperation.FlexdbResourceOverdue
 	FAILEDOPERATION_FLEXDBRESOURCEOVERDUE = "FailedOperation.FlexdbResourceOverdue"
 
+	// Instance status does not match the required status for this operation.
+	FAILEDOPERATION_INSTANCESTATUSCONFLICT = "FailedOperation.InstanceStatusConflict"
+
 	// 无效上下文
 	FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
 
@@ -58,6 +61,12 @@ const (
 
 	// 网络异常
 	FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+
+	// Failed to connect to PostgreSQL instance.
+	FAILEDOPERATION_PGCONNECTERROR = "FailedOperation.PGConnectError"
+
+	// Execute SQL error.
+	FAILEDOPERATION_PGEXECUTESQLERROR = "FailedOperation.PGExecuteSqlError"
 
 	// 查询异常
 	FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
@@ -199,6 +208,9 @@ const (
 
 	// 数据库实例不存在。
 	RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+
+	// Database role not found.
+	RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
 
 	// 请求的云托管服务未找到
 	RESOURCENOTFOUND_SERVERNOTFOUND = "ResourceNotFound.ServerNotFound"

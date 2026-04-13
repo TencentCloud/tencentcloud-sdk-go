@@ -4981,6 +4981,88 @@ type EnvInfo struct {
 	Recycle *string `json:"Recycle,omitnil,omitempty" name:"Recycle"`
 }
 
+// Predefined struct for user
+type ExecutePGSqlRequestParams struct {
+	// <p>云开发环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>要执行的SQL语句</p>
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// <p>指定 role 执行 SQL</p>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+}
+
+type ExecutePGSqlRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>云开发环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>要执行的SQL语句</p>
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// <p>指定 role 执行 SQL</p>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+}
+
+func (r *ExecutePGSqlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExecutePGSqlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "Sql")
+	delete(f, "Role")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExecutePGSqlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExecutePGSqlResponseParams struct {
+	// <p>影响行数</p>
+	AffectedRows *int64 `json:"AffectedRows,omitnil,omitempty" name:"AffectedRows"`
+
+	// <p>字段名列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Columns []*string `json:"Columns,omitnil,omitempty" name:"Columns"`
+
+	// <p>数据行。每一行数据都是一个JSON串，将JSON进行反序列化将得到了每列的值。值可能是 null 或者 字符串，如果是 null 说明该列的值为 &lt;null&gt;，如果是字符串则为该列的值的字符串表示形式。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rows []*string `json:"Rows,omitnil,omitempty" name:"Rows"`
+
+	// <p>SQL执行耗时</p><p>单位：毫秒</p>
+	ExecutionTimeMs *int64 `json:"ExecutionTimeMs,omitnil,omitempty" name:"ExecutionTimeMs"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ExecutePGSqlResponse struct {
+	*tchttp.BaseResponse
+	Response *ExecutePGSqlResponseParams `json:"Response"`
+}
+
+func (r *ExecutePGSqlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExecutePGSqlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ExternalStorage struct {
 	// 桶名。
 	// 当 Provider=cos 时，表示腾讯云对象存储桶。

@@ -243,6 +243,113 @@ func (r *AddAggregateConfigRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type AddAlarmPolicyRequestParams struct {
+	// 告警策略名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 事件范围  1：当前账号  2：多账号
+	EventScope []*int64 `json:"EventScope,omitnil,omitempty" name:"EventScope"`
+
+	// 风险等级 1：高风险  2：中风险 3：低风险
+	RiskLevel []*int64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
+	// 通知时间段
+	NoticeTime *string `json:"NoticeTime,omitnil,omitempty" name:"NoticeTime"`
+
+	// 通知机制
+	NotificationMechanism *string `json:"NotificationMechanism,omitnil,omitempty" name:"NotificationMechanism"`
+
+	// 状态 1：启用 2：停用
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 通知周期
+	NoticePeriod []*int64 `json:"NoticePeriod,omitnil,omitempty" name:"NoticePeriod"`
+
+	// 策略描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type AddAlarmPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 告警策略名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 事件范围  1：当前账号  2：多账号
+	EventScope []*int64 `json:"EventScope,omitnil,omitempty" name:"EventScope"`
+
+	// 风险等级 1：高风险  2：中风险 3：低风险
+	RiskLevel []*int64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
+	// 通知时间段
+	NoticeTime *string `json:"NoticeTime,omitnil,omitempty" name:"NoticeTime"`
+
+	// 通知机制
+	NotificationMechanism *string `json:"NotificationMechanism,omitnil,omitempty" name:"NotificationMechanism"`
+
+	// 状态 1：启用 2：停用
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 通知周期
+	NoticePeriod []*int64 `json:"NoticePeriod,omitnil,omitempty" name:"NoticePeriod"`
+
+	// 策略描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *AddAlarmPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddAlarmPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "EventScope")
+	delete(f, "RiskLevel")
+	delete(f, "NoticeTime")
+	delete(f, "NotificationMechanism")
+	delete(f, "Status")
+	delete(f, "NoticePeriod")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddAlarmPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddAlarmPolicyResponseParams struct {
+	// 告警策略唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmPolicyId *uint64 `json:"AlarmPolicyId,omitnil,omitempty" name:"AlarmPolicyId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddAlarmPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *AddAlarmPolicyResponseParams `json:"Response"`
+}
+
+func (r *AddAlarmPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddAlarmPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AddCompliancePackRequestParams struct {
 	// <p>合规包规则</p>
 	ConfigRules []*CompliancePackRule `json:"ConfigRules,omitnil,omitempty" name:"ConfigRules"`
@@ -322,82 +429,74 @@ func (r *AddCompliancePackResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddConfigRuleRequestParams struct {
-	// 规则模板标识，预设规则模板为Identifier, 自定义规则为云函数arn（region:functionName）
+	// <p>规则模板标识，预设规则模板为Identifier, 自定义规则为云函数arn（region:functionName）</p>
 	Identifier *string `json:"Identifier,omitnil,omitempty" name:"Identifier"`
 
-	// 规则模板类型，SYSTEM, CUSTOMIZE
+	// <p>规则模板类型，SYSTEM, CUSTOMIZE</p>
 	IdentifierType *string `json:"IdentifierType,omitnil,omitempty" name:"IdentifierType"`
 
-	// 规则名称
+	// <p>规则名称</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 规则支持的资源
+	// <p>规则支持的资源</p>
 	ResourceType []*string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 触发类型，最多支持两种
+	// <p>触发类型，最多支持两种</p>
 	TriggerType []*TriggerType `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
 
-	// 风险等级
-	// 1：高风险。
-	// 2：中风险。
-	// 3：低风险。
+	// <p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
 	RiskLevel *uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 入参
+	// <p>入参</p>
 	InputParameter []*InputParameter `json:"InputParameter,omitnil,omitempty" name:"InputParameter"`
 
-	// 规则描述。长度范围0~1024字符
+	// <p>规则描述。长度范围0~1024字符</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 规则评估地域范围，规则仅对指定地域中的资源生效。
-	// 支持的地域范围config:ListResourceRegions返回的地域
+	// <p>规则评估地域范围，规则仅对指定地域中的资源生效。<br>支持的地域范围config:ListResourceRegions返回的地域</p>
 	RegionsScope []*string `json:"RegionsScope,omitnil,omitempty" name:"RegionsScope"`
 
-	// 规则评估标签范围，规则仅对绑定指定标签的资源生效。
+	// <p>规则评估标签范围，规则仅对绑定指定标签的资源生效。</p>
 	TagsScope []*Tag `json:"TagsScope,omitnil,omitempty" name:"TagsScope"`
 
-	// 规则对指定资源ID无效，即不对该资源执行评估。
+	// <p>规则对指定资源ID无效，即不对该资源执行评估。</p>
 	ExcludeResourceIdsScope []*string `json:"ExcludeResourceIdsScope,omitnil,omitempty" name:"ExcludeResourceIdsScope"`
 }
 
 type AddConfigRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则模板标识，预设规则模板为Identifier, 自定义规则为云函数arn（region:functionName）
+	// <p>规则模板标识，预设规则模板为Identifier, 自定义规则为云函数arn（region:functionName）</p>
 	Identifier *string `json:"Identifier,omitnil,omitempty" name:"Identifier"`
 
-	// 规则模板类型，SYSTEM, CUSTOMIZE
+	// <p>规则模板类型，SYSTEM, CUSTOMIZE</p>
 	IdentifierType *string `json:"IdentifierType,omitnil,omitempty" name:"IdentifierType"`
 
-	// 规则名称
+	// <p>规则名称</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 规则支持的资源
+	// <p>规则支持的资源</p>
 	ResourceType []*string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 触发类型，最多支持两种
+	// <p>触发类型，最多支持两种</p>
 	TriggerType []*TriggerType `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
 
-	// 风险等级
-	// 1：高风险。
-	// 2：中风险。
-	// 3：低风险。
+	// <p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
 	RiskLevel *uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 入参
+	// <p>入参</p>
 	InputParameter []*InputParameter `json:"InputParameter,omitnil,omitempty" name:"InputParameter"`
 
-	// 规则描述。长度范围0~1024字符
+	// <p>规则描述。长度范围0~1024字符</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 规则评估地域范围，规则仅对指定地域中的资源生效。
-	// 支持的地域范围config:ListResourceRegions返回的地域
+	// <p>规则评估地域范围，规则仅对指定地域中的资源生效。<br>支持的地域范围config:ListResourceRegions返回的地域</p>
 	RegionsScope []*string `json:"RegionsScope,omitnil,omitempty" name:"RegionsScope"`
 
-	// 规则评估标签范围，规则仅对绑定指定标签的资源生效。
+	// <p>规则评估标签范围，规则仅对绑定指定标签的资源生效。</p>
 	TagsScope []*Tag `json:"TagsScope,omitnil,omitempty" name:"TagsScope"`
 
-	// 规则对指定资源ID无效，即不对该资源执行评估。
+	// <p>规则对指定资源ID无效，即不对该资源执行评估。</p>
 	ExcludeResourceIdsScope []*string `json:"ExcludeResourceIdsScope,omitnil,omitempty" name:"ExcludeResourceIdsScope"`
 }
 
@@ -432,6 +531,9 @@ func (r *AddConfigRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddConfigRuleResponseParams struct {
+	// <p>规则ID</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -579,6 +681,39 @@ type AggregatorAccount struct {
 	// 成员名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemberName *string `json:"MemberName,omitnil,omitempty" name:"MemberName"`
+}
+
+type AlarmPolicyRsp struct {
+	// 告警策略唯一标识id
+	AlarmPolicyId *uint64 `json:"AlarmPolicyId,omitnil,omitempty" name:"AlarmPolicyId"`
+
+	// 策略名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 事件类型
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 1：当前账号  2：多账号
+	EventScope []*int64 `json:"EventScope,omitnil,omitempty" name:"EventScope"`
+
+	// 1：高风险  2：中风险 3：低风险
+	RiskLevel []*int64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
+	// 通知周期，1-7数字分别代表周一至周日
+	NoticePeriod []*int64 `json:"NoticePeriod,omitnil,omitempty" name:"NoticePeriod"`
+
+	// 通知时间段
+	NoticeTime *string `json:"NoticeTime,omitnil,omitempty" name:"NoticeTime"`
+
+	// 通知机制
+	NotificationMechanism *string `json:"NotificationMechanism,omitnil,omitempty" name:"NotificationMechanism"`
+
+	// 策略状态 1：启动  2：停止
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 策略描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type Annotation struct {
@@ -1325,6 +1460,60 @@ func (r *DeleteAggregateConfigRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAggregateConfigRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAlarmPolicyRequestParams struct {
+	// 告警策略id
+	AlarmPolicyId *uint64 `json:"AlarmPolicyId,omitnil,omitempty" name:"AlarmPolicyId"`
+}
+
+type DeleteAlarmPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 告警策略id
+	AlarmPolicyId *uint64 `json:"AlarmPolicyId,omitnil,omitempty" name:"AlarmPolicyId"`
+}
+
+func (r *DeleteAlarmPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAlarmPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AlarmPolicyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAlarmPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAlarmPolicyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAlarmPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAlarmPolicyResponseParams `json:"Response"`
+}
+
+func (r *DeleteAlarmPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAlarmPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3160,6 +3349,66 @@ func (r *ListAggregatorsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ListAlarmPolicyRequestParams struct {
+	// 页码
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type ListAlarmPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *ListAlarmPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAlarmPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAlarmPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAlarmPolicyResponseParams struct {
+	// 返回记录的数量
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 告警策略返回值
+	AlarmPolicyList []*AlarmPolicyRsp `json:"AlarmPolicyList,omitnil,omitempty" name:"AlarmPolicyList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListAlarmPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *ListAlarmPolicyResponseParams `json:"Response"`
+}
+
+func (r *ListAlarmPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAlarmPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ListCompliancePacksRequestParams struct {
 	// 数量
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -4914,6 +5163,116 @@ func (r *UpdateAggregateConfigRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateAggregateConfigRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateAlarmPolicyRequestParams struct {
+	// 告警策略id
+	AlarmPolicyId *uint64 `json:"AlarmPolicyId,omitnil,omitempty" name:"AlarmPolicyId"`
+
+	// 告警策略名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 事件范围  1：当前账号  2：多账号
+	EventScope []*int64 `json:"EventScope,omitnil,omitempty" name:"EventScope"`
+
+	// 风险等级 1：高风险  2：中风险 3：低风险
+	RiskLevel []*int64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
+	// 通知时间段
+	NoticeTime *string `json:"NoticeTime,omitnil,omitempty" name:"NoticeTime"`
+
+	// 通知机制
+	NotificationMechanism *string `json:"NotificationMechanism,omitnil,omitempty" name:"NotificationMechanism"`
+
+	// 状态 1：启用 2：停用
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 通知周期,1-7数字分别代表周一到周日
+	NoticePeriod []*int64 `json:"NoticePeriod,omitnil,omitempty" name:"NoticePeriod"`
+
+	// 策略描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type UpdateAlarmPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 告警策略id
+	AlarmPolicyId *uint64 `json:"AlarmPolicyId,omitnil,omitempty" name:"AlarmPolicyId"`
+
+	// 告警策略名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 事件范围  1：当前账号  2：多账号
+	EventScope []*int64 `json:"EventScope,omitnil,omitempty" name:"EventScope"`
+
+	// 风险等级 1：高风险  2：中风险 3：低风险
+	RiskLevel []*int64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
+	// 通知时间段
+	NoticeTime *string `json:"NoticeTime,omitnil,omitempty" name:"NoticeTime"`
+
+	// 通知机制
+	NotificationMechanism *string `json:"NotificationMechanism,omitnil,omitempty" name:"NotificationMechanism"`
+
+	// 状态 1：启用 2：停用
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 通知周期,1-7数字分别代表周一到周日
+	NoticePeriod []*int64 `json:"NoticePeriod,omitnil,omitempty" name:"NoticePeriod"`
+
+	// 策略描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *UpdateAlarmPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAlarmPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AlarmPolicyId")
+	delete(f, "Name")
+	delete(f, "EventScope")
+	delete(f, "RiskLevel")
+	delete(f, "NoticeTime")
+	delete(f, "NotificationMechanism")
+	delete(f, "Status")
+	delete(f, "NoticePeriod")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAlarmPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateAlarmPolicyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateAlarmPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateAlarmPolicyResponseParams `json:"Response"`
+}
+
+func (r *UpdateAlarmPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAlarmPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

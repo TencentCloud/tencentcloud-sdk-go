@@ -1414,92 +1414,92 @@ func (r *CreateRecordGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRecordRequestParams struct {
-	// 域名
+	// <p>域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。
+	// <p>记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。</p>
 	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
 
-	// 记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，中文，比如：默认。
+	// <p>记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，中文，比如：默认。</p>
 	RecordLine *string `json:"RecordLine,omitnil,omitempty" name:"RecordLine"`
 
-	// 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
+	// <p>记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// <p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。</p>
 	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
-	// 主机记录，如 www，如果不传，默认为 @。
+	// <p>主机记录，如 www，如果不传，默认为 @。</p>
 	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
 
-	// 线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+	// <p>线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。</p>
 	RecordLineId *string `json:"RecordLineId,omitnil,omitempty" name:"RecordLineId"`
 
-	// MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围1-65535。
+	// <p>MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围0-65535。</p><p>取值范围：[0, 65535]</p>
 	MX *uint64 `json:"MX,omitnil,omitempty" name:"MX"`
 
-	// TTL，范围1-604800，不同套餐域名最小值不同。
+	// <p>TTL，范围1-604800，不同套餐域名最小值不同。</p>
 	TTL *uint64 `json:"TTL,omitnil,omitempty" name:"TTL"`
 
-	// 权重信息，0到100的整数。0 表示关闭，不传该参数，表示不设置权重信息。
+	// <p>权重信息，0到100的整数。0 表示关闭，不传该参数，表示不设置权重信息。</p>
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
+	// <p>记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 开启DNSSEC时，强制添加CNAME/URL记录
+	// <p>开启DNSSEC时，强制添加CNAME/URL记录</p>
 	DnssecConflictMode *string `json:"DnssecConflictMode,omitnil,omitempty" name:"DnssecConflictMode"`
 
-	// 记录分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。
+	// <p>记录分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1427/83225">DescribeRecordGroupList</a></p>
 	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type CreateRecordRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名
+	// <p>域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。
+	// <p>记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。</p>
 	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
 
-	// 记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，中文，比如：默认。
+	// <p>记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，中文，比如：默认。</p>
 	RecordLine *string `json:"RecordLine,omitnil,omitempty" name:"RecordLine"`
 
-	// 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
+	// <p>记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// <p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。</p>
 	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
-	// 主机记录，如 www，如果不传，默认为 @。
+	// <p>主机记录，如 www，如果不传，默认为 @。</p>
 	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
 
-	// 线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+	// <p>线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。</p>
 	RecordLineId *string `json:"RecordLineId,omitnil,omitempty" name:"RecordLineId"`
 
-	// MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围1-65535。
+	// <p>MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围0-65535。</p><p>取值范围：[0, 65535]</p>
 	MX *uint64 `json:"MX,omitnil,omitempty" name:"MX"`
 
-	// TTL，范围1-604800，不同套餐域名最小值不同。
+	// <p>TTL，范围1-604800，不同套餐域名最小值不同。</p>
 	TTL *uint64 `json:"TTL,omitnil,omitempty" name:"TTL"`
 
-	// 权重信息，0到100的整数。0 表示关闭，不传该参数，表示不设置权重信息。
+	// <p>权重信息，0到100的整数。0 表示关闭，不传该参数，表示不设置权重信息。</p>
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
+	// <p>记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 开启DNSSEC时，强制添加CNAME/URL记录
+	// <p>开启DNSSEC时，强制添加CNAME/URL记录</p>
 	DnssecConflictMode *string `json:"DnssecConflictMode,omitnil,omitempty" name:"DnssecConflictMode"`
 
-	// 记录分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。
+	// <p>记录分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1427/83225">DescribeRecordGroupList</a></p>
 	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
@@ -1537,7 +1537,7 @@ func (r *CreateRecordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRecordResponseParams struct {
-	// 记录ID
+	// <p>记录ID</p>
 	RecordId *uint64 `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7341,38 +7341,38 @@ type ModifyRecordBatchDetail struct {
 
 // Predefined struct for user
 type ModifyRecordBatchRequestParams struct {
-	// 记录ID数组。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId。单次最多修改5000条记录。
+	// <p>记录ID数组。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId。单次最多修改5000条记录。</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1427/56166">DescribeRecordList</a></p>
 	RecordIdList []*uint64 `json:"RecordIdList,omitnil,omitempty" name:"RecordIdList"`
 
-	// 要修改的字段，可选值为 [“sub_domain”、”record_type”、”area”、”value”、”mx”、”ttl”、”status”] 中的某一个。
+	// <p>要修改的字段，可选值为 [“sub_domain”、”record_type”、”area”、”value”、”mx”、”ttl”、”status”] 中的某一个。</p>
 	Change *string `json:"Change,omitnil,omitempty" name:"Change"`
 
-	// 修改为，具体依赖 change 字段，必填参数。
+	// <p>修改为，具体依赖 change 字段，必填参数。</p>
 	ChangeTo *string `json:"ChangeTo,omitnil,omitempty" name:"ChangeTo"`
 
-	// 要修改到的记录值，仅当 change 字段为 “record_type” 时为必填参数。
+	// <p>要修改到的记录值，仅当 change 字段为 “record_type” 时为必填参数。</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
-	// MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围1-65535。
+	// <p>MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围0-65535。</p>
 	MX *string `json:"MX,omitnil,omitempty" name:"MX"`
 }
 
 type ModifyRecordBatchRequest struct {
 	*tchttp.BaseRequest
 	
-	// 记录ID数组。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId。单次最多修改5000条记录。
+	// <p>记录ID数组。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId。单次最多修改5000条记录。</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1427/56166">DescribeRecordList</a></p>
 	RecordIdList []*uint64 `json:"RecordIdList,omitnil,omitempty" name:"RecordIdList"`
 
-	// 要修改的字段，可选值为 [“sub_domain”、”record_type”、”area”、”value”、”mx”、”ttl”、”status”] 中的某一个。
+	// <p>要修改的字段，可选值为 [“sub_domain”、”record_type”、”area”、”value”、”mx”、”ttl”、”status”] 中的某一个。</p>
 	Change *string `json:"Change,omitnil,omitempty" name:"Change"`
 
-	// 修改为，具体依赖 change 字段，必填参数。
+	// <p>修改为，具体依赖 change 字段，必填参数。</p>
 	ChangeTo *string `json:"ChangeTo,omitnil,omitempty" name:"ChangeTo"`
 
-	// 要修改到的记录值，仅当 change 字段为 “record_type” 时为必填参数。
+	// <p>要修改到的记录值，仅当 change 字段为 “record_type” 时为必填参数。</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
-	// MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围1-65535。
+	// <p>MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围0-65535。</p>
 	MX *string `json:"MX,omitnil,omitempty" name:"MX"`
 }
 
@@ -7401,10 +7401,10 @@ func (r *ModifyRecordBatchRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRecordBatchResponseParams struct {
-	// 批量任务ID
+	// <p>批量任务ID</p>
 	JobId *uint64 `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 见ModifyRecordBatchDetail
+	// <p>见ModifyRecordBatchDetail</p>
 	DetailList []*ModifyRecordBatchDetail `json:"DetailList,omitnil,omitempty" name:"DetailList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7749,92 +7749,92 @@ func (r *ModifyRecordRemarkResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRecordRequestParams struct {
-	// 域名
+	// <p>域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。
+	// <p>记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。</p>
 	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
 
-	// 记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息。比如：默认。
+	// <p>记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息。比如：默认。</p>
 	RecordLine *string `json:"RecordLine,omitnil,omitempty" name:"RecordLine"`
 
-	// 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
+	// <p>记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
-	// 记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
+	// <p>记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId</p>
 	RecordId *uint64 `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+	// <p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId</p>
 	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
-	// 主机记录，如 www，如果不传，默认为 @。
+	// <p>主机记录，如 www，如果不传，默认为 @。</p>
 	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
 
-	// 线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+	// <p>线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。</p>
 	RecordLineId *string `json:"RecordLineId,omitnil,omitempty" name:"RecordLineId"`
 
-	// MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围1-65535。
+	// <p>MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围0-65535。</p><p>取值范围：[0, 65535]</p>
 	MX *uint64 `json:"MX,omitnil,omitempty" name:"MX"`
 
-	// TTL，范围1-604800，不同等级域名最小值不同。
+	// <p>TTL，范围1-604800，不同等级域名最小值不同。</p>
 	TTL *uint64 `json:"TTL,omitnil,omitempty" name:"TTL"`
 
-	// 权重信息，0到100的整数。0 表示关闭，不传该参数，表示不设置权重信息。
+	// <p>权重信息，0到100的整数。0 表示关闭，不传该参数，表示不设置权重信息。</p>
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
+	// <p>记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 记录的备注信息。传空删除备注。
+	// <p>记录的备注信息。传空删除备注。</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 开启DNSSEC时，强制将其它记录修改为CNAME/URL记录
+	// <p>开启DNSSEC时，强制将其它记录修改为CNAME/URL记录</p>
 	DnssecConflictMode *string `json:"DnssecConflictMode,omitnil,omitempty" name:"DnssecConflictMode"`
 }
 
 type ModifyRecordRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名
+	// <p>域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。
+	// <p>记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。</p>
 	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
 
-	// 记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息。比如：默认。
+	// <p>记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息。比如：默认。</p>
 	RecordLine *string `json:"RecordLine,omitnil,omitempty" name:"RecordLine"`
 
-	// 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
+	// <p>记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
-	// 记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
+	// <p>记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId</p>
 	RecordId *uint64 `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+	// <p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId</p>
 	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
-	// 主机记录，如 www，如果不传，默认为 @。
+	// <p>主机记录，如 www，如果不传，默认为 @。</p>
 	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
 
-	// 线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+	// <p>线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。</p>
 	RecordLineId *string `json:"RecordLineId,omitnil,omitempty" name:"RecordLineId"`
 
-	// MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围1-65535。
+	// <p>MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围0-65535。</p><p>取值范围：[0, 65535]</p>
 	MX *uint64 `json:"MX,omitnil,omitempty" name:"MX"`
 
-	// TTL，范围1-604800，不同等级域名最小值不同。
+	// <p>TTL，范围1-604800，不同等级域名最小值不同。</p>
 	TTL *uint64 `json:"TTL,omitnil,omitempty" name:"TTL"`
 
-	// 权重信息，0到100的整数。0 表示关闭，不传该参数，表示不设置权重信息。
+	// <p>权重信息，0到100的整数。0 表示关闭，不传该参数，表示不设置权重信息。</p>
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
+	// <p>记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 记录的备注信息。传空删除备注。
+	// <p>记录的备注信息。传空删除备注。</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 开启DNSSEC时，强制将其它记录修改为CNAME/URL记录
+	// <p>开启DNSSEC时，强制将其它记录修改为CNAME/URL记录</p>
 	DnssecConflictMode *string `json:"DnssecConflictMode,omitnil,omitempty" name:"DnssecConflictMode"`
 }
 
@@ -7872,7 +7872,7 @@ func (r *ModifyRecordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRecordResponseParams struct {
-	// 记录ID
+	// <p>记录ID</p>
 	RecordId *uint64 `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -488,6 +488,90 @@ func (r *CreateInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateMigrationTaskRequestParams struct {
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 0 - 未指定（存量）
+	// 1 - 元数据导入
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 待导入的消费组列表
+	Topics []*TopicItem `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// 待导入的消费组列表
+	Groups []*ConsumeGroupItem `json:"Groups,omitnil,omitempty" name:"Groups"`
+
+	// 待导入的角色列表
+	Roles []*RoleItem `json:"Roles,omitnil,omitempty" name:"Roles"`
+}
+
+type CreateMigrationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 0 - 未指定（存量）
+	// 1 - 元数据导入
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 待导入的消费组列表
+	Topics []*TopicItem `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// 待导入的消费组列表
+	Groups []*ConsumeGroupItem `json:"Groups,omitnil,omitempty" name:"Groups"`
+
+	// 待导入的角色列表
+	Roles []*RoleItem `json:"Roles,omitnil,omitempty" name:"Roles"`
+}
+
+func (r *CreateMigrationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMigrationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Type")
+	delete(f, "Topics")
+	delete(f, "Groups")
+	delete(f, "Roles")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMigrationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMigrationTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMigrationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMigrationTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateMigrationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMigrationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateRoleRequestParams struct {
 	// 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

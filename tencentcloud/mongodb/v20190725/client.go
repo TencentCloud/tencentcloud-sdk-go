@@ -4303,6 +4303,58 @@ func (c *Client) RestartNodesWithContext(ctx context.Context, request *RestartNo
     return
 }
 
+func NewRestoreDBInstanceRequest() (request *RestoreDBInstanceRequest) {
+    request = &RestoreDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "RestoreDBInstance")
+    
+    
+    return
+}
+
+func NewRestoreDBInstanceResponse() (response *RestoreDBInstanceResponse) {
+    response = &RestoreDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RestoreDBInstance
+// 本接口(RestoreDBInstance)用于回档数据库实例到指定时间点。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) RestoreDBInstance(request *RestoreDBInstanceRequest) (response *RestoreDBInstanceResponse, err error) {
+    return c.RestoreDBInstanceWithContext(context.Background(), request)
+}
+
+// RestoreDBInstance
+// 本接口(RestoreDBInstance)用于回档数据库实例到指定时间点。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) RestoreDBInstanceWithContext(ctx context.Context, request *RestoreDBInstanceRequest) (response *RestoreDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewRestoreDBInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "RestoreDBInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestoreDBInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRestoreDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetAccountUserPrivilegeRequest() (request *SetAccountUserPrivilegeRequest) {
     request = &SetAccountUserPrivilegeRequest{
         BaseRequest: &tchttp.BaseRequest{},

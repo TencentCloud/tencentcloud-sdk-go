@@ -705,6 +705,9 @@ type AuditLog struct {
 
 	// 事务ID
 	TrxId *int64 `json:"TrxId,omitnil,omitempty" name:"TrxId"`
+
+	// 客户端端口
+	ClientPort *int64 `json:"ClientPort,omitnil,omitempty" name:"ClientPort"`
 }
 
 type AuditLogFile struct {

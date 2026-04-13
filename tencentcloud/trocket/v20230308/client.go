@@ -209,6 +209,56 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
     return
 }
 
+func NewCreateMigrationTaskRequest() (request *CreateMigrationTaskRequest) {
+    request = &CreateMigrationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "CreateMigrationTask")
+    
+    
+    return
+}
+
+func NewCreateMigrationTaskResponse() (response *CreateMigrationTaskResponse) {
+    response = &CreateMigrationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMigrationTask
+// 创建元数据迁移上云任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateMigrationTask(request *CreateMigrationTaskRequest) (response *CreateMigrationTaskResponse, err error) {
+    return c.CreateMigrationTaskWithContext(context.Background(), request)
+}
+
+// CreateMigrationTask
+// 创建元数据迁移上云任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateMigrationTaskWithContext(ctx context.Context, request *CreateMigrationTaskRequest) (response *CreateMigrationTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateMigrationTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trocket", APIVersion, "CreateMigrationTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMigrationTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMigrationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRoleRequest() (request *CreateRoleRequest) {
     request = &CreateRoleRequest{
         BaseRequest: &tchttp.BaseRequest{},

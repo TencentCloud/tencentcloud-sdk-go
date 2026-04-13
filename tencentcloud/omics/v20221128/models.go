@@ -1160,21 +1160,33 @@ func (r *DescribeProjectsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePublicApplicationsRequestParams struct {
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>父应用ID</p>
+	ParentAppId *string `json:"ParentAppId,omitnil,omitempty" name:"ParentAppId"`
+
+	// <p>应用类型</p><p>枚举值：</p><ul><li>WDL： WDL</li><li>NEXTFLOW： NEXTFLOW</li></ul>
+	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 }
 
 type DescribePublicApplicationsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>父应用ID</p>
+	ParentAppId *string `json:"ParentAppId,omitnil,omitempty" name:"ParentAppId"`
+
+	// <p>应用类型</p><p>枚举值：</p><ul><li>WDL： WDL</li><li>NEXTFLOW： NEXTFLOW</li></ul>
+	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 }
 
 func (r *DescribePublicApplicationsRequest) ToJsonString() string {
@@ -1191,6 +1203,8 @@ func (r *DescribePublicApplicationsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "ParentAppId")
+	delete(f, "AppType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePublicApplicationsRequest has unknown keys!", "")
 	}
@@ -1199,11 +1213,11 @@ func (r *DescribePublicApplicationsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePublicApplicationsResponseParams struct {
-	// 公共应用。
+	// <p>公共应用。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Applications []*PublicApplication `json:"Applications,omitnil,omitempty" name:"Applications"`
 
-	// 符合条件的数量。
+	// <p>符合条件的数量。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 

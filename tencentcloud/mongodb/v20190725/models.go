@@ -7389,6 +7389,93 @@ func (r *RestartNodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RestoreCollection struct {
+	// 待回档的原collection
+	OldCollection *string `json:"OldCollection,omitnil,omitempty" name:"OldCollection"`
+
+	// 回档后的collection
+	NewCollection *string `json:"NewCollection,omitnil,omitempty" name:"NewCollection"`
+}
+
+// Predefined struct for user
+type RestoreDBInstanceRequestParams struct {
+	// <p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb/instance">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>指定回档的目标时间点。该时间必须处于实例的备份保留期内。</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+	RestoreTime *string `json:"RestoreTime,omitnil,omitempty" name:"RestoreTime"`
+
+	// <p>回档的库表信息。</p>
+	Databases []*RestoreDatabases `json:"Databases,omitnil,omitempty" name:"Databases"`
+}
+
+type RestoreDBInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb/instance">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>指定回档的目标时间点。该时间必须处于实例的备份保留期内。</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+	RestoreTime *string `json:"RestoreTime,omitnil,omitempty" name:"RestoreTime"`
+
+	// <p>回档的库表信息。</p>
+	Databases []*RestoreDatabases `json:"Databases,omitnil,omitempty" name:"Databases"`
+}
+
+func (r *RestoreDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestoreDBInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RestoreTime")
+	delete(f, "Databases")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestoreDBInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestoreDBInstanceResponseParams struct {
+	// <p>回档任务流程 ID。</p>
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RestoreDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *RestoreDBInstanceResponseParams `json:"Response"`
+}
+
+func (r *RestoreDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestoreDBInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RestoreDatabases struct {
+	// DB名称。
+	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
+
+	// 待回档的集合信息。
+	Collections []*RestoreCollection `json:"Collections,omitnil,omitempty" name:"Collections"`
+}
+
 type SecurityGroup struct {
 	// 所属项目 ID。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`

@@ -760,324 +760,278 @@ func (r *CreateModelServiceAuthTokenResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateModelServiceRequestParams struct {
-	// 新增版本时需要填写
+	// <p>新增版本时需要填写</p>
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// 不超过60个字，仅支持英文、数字、下划线"_"、短横"-"，只能以英文、数字开头
+	// <p>不超过60个字，仅支持英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以英文、数字开头</p>
 	ServiceGroupName *string `json:"ServiceGroupName,omitnil,omitempty" name:"ServiceGroupName"`
 
-	// 模型服务的描述
+	// <p>模型服务的描述</p>
 	ServiceDescription *string `json:"ServiceDescription,omitnil,omitempty" name:"ServiceDescription"`
 
-	// 付费模式,有 PREPAID （包年包月）和 POSTPAID_BY_HOUR（按量付费）
+	// <p>付费模式,有 PREPAID （包年包月）和 POSTPAID_BY_HOUR（按量付费）</p>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// 预付费模式下所属的资源组id，同服务组下唯一
+	// <p>预付费模式下所属的资源组id，同服务组下唯一</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// 模型信息，需要挂载模型时填写
+	// <p>模型信息，需要挂载模型时填写</p>
 	ModelInfo *ModelInfo `json:"ModelInfo,omitnil,omitempty" name:"ModelInfo"`
 
-	// 镜像信息，配置服务运行所需的镜像地址等信息
+	// <p>镜像信息，配置服务运行所需的镜像地址等信息</p>
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// 环境变量，可选参数，用于配置容器中的环境变量
+	// <p>环境变量，可选参数，用于配置容器中的环境变量</p>
 	Env []*EnvVar `json:"Env,omitnil,omitempty" name:"Env"`
 
-	// 资源描述，指定包年包月模式下的cpu,mem,gpu等信息，后付费无需填写
+	// <p>资源描述，指定包年包月模式下的cpu,mem,gpu等信息，后付费无需填写</p>
 	Resources *ResourceInfo `json:"Resources,omitnil,omitempty" name:"Resources"`
 
-	// 使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:
-	// TI.S.MEDIUM.POST	2C4G
-	// TI.S.LARGE.POST	4C8G
-	// TI.S.2XLARGE16.POST	8C16G
-	// TI.S.2XLARGE32.POST	8C32G
-	// TI.S.4XLARGE32.POST	16C32G
-	// TI.S.4XLARGE64.POST	16C64G
-	// TI.S.6XLARGE48.POST	24C48G
-	// TI.S.6XLARGE96.POST	24C96G
-	// TI.S.8XLARGE64.POST	32C64G
-	// TI.S.8XLARGE128.POST 32C128G
-	// TI.GN7.LARGE20.POST	4C20G T4*1/4
-	// TI.GN7.2XLARGE40.POST	10C40G T4*1/2
-	// TI.GN7.2XLARGE32.POST	8C32G T4*1
-	// TI.GN7.5XLARGE80.POST	20C80G T4*1
-	// TI.GN7.8XLARGE128.POST	32C128G T4*1
-	// TI.GN7.10XLARGE160.POST	40C160G T4*2
-	// TI.GN7.20XLARGE320.POST	80C320G T4*4
+	// <p>使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:<br>TI.S.MEDIUM.POST    2C4G<br>TI.S.LARGE.POST    4C8G<br>TI.S.2XLARGE16.POST    8C16G<br>TI.S.2XLARGE32.POST    8C32G<br>TI.S.4XLARGE32.POST    16C32G<br>TI.S.4XLARGE64.POST    16C64G<br>TI.S.6XLARGE48.POST    24C48G<br>TI.S.6XLARGE96.POST    24C96G<br>TI.S.8XLARGE64.POST    32C64G<br>TI.S.8XLARGE128.POST 32C128G<br>TI.GN7.LARGE20.POST    4C20G T4<em>1/4<br>TI.GN7.2XLARGE40.POST    10C40G T4</em>1/2<br>TI.GN7.2XLARGE32.POST    8C32G T4<em>1<br>TI.GN7.5XLARGE80.POST    20C80G T4</em>1<br>TI.GN7.8XLARGE128.POST    32C128G T4<em>1<br>TI.GN7.10XLARGE160.POST    40C160G T4</em>2<br>TI.GN7.20XLARGE320.POST    80C320G T4*4</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 扩缩容类型 支持：自动 - "AUTO", 手动 - "MANUAL",默认为MANUAL
+	// <p>扩缩容类型 支持：自动 - &quot;AUTO&quot;, 手动 - &quot;MANUAL&quot;,默认为MANUAL</p>
 	ScaleMode *string `json:"ScaleMode,omitnil,omitempty" name:"ScaleMode"`
 
-	// 实例数量, 不同计费模式和调节模式下对应关系如下
-	// PREPAID 和 POSTPAID_BY_HOUR:
-	// 手动调节模式下对应 实例数量
-	// 自动调节模式下对应 基于时间的默认策略的实例数量
-	// HYBRID_PAID:
-	// 后付费实例手动调节模式下对应 实例数量
-	// 后付费实例自动调节模式下对应 时间策略的默认策略的实例数量
+	// <p>实例数量, 不同计费模式和调节模式下对应关系如下<br>PREPAID 和 POSTPAID_BY_HOUR:<br>手动调节模式下对应 实例数量<br>自动调节模式下对应 基于时间的默认策略的实例数量<br>HYBRID_PAID:<br>后付费实例手动调节模式下对应 实例数量<br>后付费实例自动调节模式下对应 时间策略的默认策略的实例数量</p>
 	Replicas *int64 `json:"Replicas,omitnil,omitempty" name:"Replicas"`
 
-	// 自动伸缩信息
+	// <p>自动伸缩信息</p>
 	HorizontalPodAutoscaler *HorizontalPodAutoscaler `json:"HorizontalPodAutoscaler,omitnil,omitempty" name:"HorizontalPodAutoscaler"`
 
-	// 是否开启日志投递，开启后需填写配置投递到指定cls
+	// <p>是否开启日志投递，开启后需填写配置投递到指定cls</p>
 	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
 
-	// 日志配置，需要投递服务日志到指定cls时填写
+	// <p>日志配置，需要投递服务日志到指定cls时填写</p>
 	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 
-	// 是否开启接口鉴权，开启后自动生成token信息，访问需要token鉴权
+	// <p>是否开启接口鉴权，开启后自动生成token信息，访问需要token鉴权</p>
 	AuthorizationEnable *bool `json:"AuthorizationEnable,omitnil,omitempty" name:"AuthorizationEnable"`
 
-	// 腾讯云标签
+	// <p>腾讯云标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否新增版本
+	// <p>是否新增版本</p>
 	NewVersion *bool `json:"NewVersion,omitnil,omitempty" name:"NewVersion"`
 
-	// 定时任务配置，使用定时策略时填写
+	// <p>定时任务配置，使用定时策略时填写</p>
 	CronScaleJobs []*CronScaleJob `json:"CronScaleJobs,omitnil,omitempty" name:"CronScaleJobs"`
 
-	// 自动伸缩策略配置 HPA : 通过HPA进行弹性伸缩 CRON 通过定时任务进行伸缩
+	// <p>自动伸缩策略配置 HPA : 通过HPA进行弹性伸缩 CRON 通过定时任务进行伸缩</p>
 	ScaleStrategy *string `json:"ScaleStrategy,omitnil,omitempty" name:"ScaleStrategy"`
 
-	// 计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数
+	// <p>计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数</p>
 	HybridBillingPrepaidReplicas *int64 `json:"HybridBillingPrepaidReplicas,omitnil,omitempty" name:"HybridBillingPrepaidReplicas"`
 
-	// [AUTO_ML 自动学习，自动学习正式发布 AUTO_ML_FORMAL, DEFAULT 默认]
+	// <p>[AUTO_ML 自动学习，自动学习正式发布 AUTO_ML_FORMAL, DEFAULT 默认]</p>
 	CreateSource *string `json:"CreateSource,omitnil,omitempty" name:"CreateSource"`
 
-	// 是否开启模型的热更新。默认不开启
+	// <p>是否开启模型的热更新。默认不开启</p>
 	ModelHotUpdateEnable *bool `json:"ModelHotUpdateEnable,omitnil,omitempty" name:"ModelHotUpdateEnable"`
 
-	// 定时停止配置
+	// <p>定时停止配置</p>
 	ScheduledAction *ScheduledAction `json:"ScheduledAction,omitnil,omitempty" name:"ScheduledAction"`
 
-	// 挂载配置，目前只支持CFS
+	// <p>挂载配置，目前只支持CFS</p>
 	VolumeMount *VolumeMount `json:"VolumeMount,omitnil,omitempty" name:"VolumeMount"`
 
-	// 服务限速限流相关配置
+	// <p>服务限速限流相关配置</p>
 	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitnil,omitempty" name:"ServiceLimit"`
 
-	// 回调地址，用于回调创建服务状态信息，回调格式&内容详情见：[TI-ONE 接口回调说明](https://cloud.tencent.com/document/product/851/84292)
+	// <p>回调地址，用于回调创建服务状态信息，回调格式&amp;内容详情见：<a href="https://cloud.tencent.com/document/product/851/84292">TI-ONE 接口回调说明</a></p>
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
-	// 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
+	// <p>是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。</p>
 	ModelTurboEnable *bool `json:"ModelTurboEnable,omitnil,omitempty" name:"ModelTurboEnable"`
 
-	// 服务分类
+	// <p>服务分类</p>
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 
-	// 服务的启动命令，如遇特殊字符导致配置失败，可使用CommandBase64参数
+	// <p>服务的启动命令，如遇特殊字符导致配置失败，可使用CommandBase64参数</p>
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
-	// 是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
+	// <p>是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。</p>
 	ServiceEIP *ServiceEIP `json:"ServiceEIP,omitnil,omitempty" name:"ServiceEIP"`
 
-	// 服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效
+	// <p>服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效</p>
 	CommandBase64 *string `json:"CommandBase64,omitnil,omitempty" name:"CommandBase64"`
 
-	// 服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
+	// <p>服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092</p>
 	ServicePort *int64 `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
 
-	// 服务的部署类型 [STANDARD 标准部署，DIST 分布式多机部署] 默认STANDARD
+	// <p>服务的部署类型 [标准部署，分布式多机部署，] 默认STANDARD</p><p>枚举值：</p><ul><li>STANDARD： 标准部署</li><li>DIST： 多机分布式部署</li><li>ROLE_SET： 多角色部署</li></ul>
 	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
 
-	// 单副本下的实例数，仅在部署类型为DIST时生效，默认1
+	// <p>单副本下的实例数，仅在部署类型为DIST时生效，默认1</p>
 	InstancePerReplicas *int64 `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
 
-	// 服务的优雅退出时限。单位为秒，默认值为30，最小为1
+	// <p>服务的优雅退出时限。单位为秒，默认值为30，最小为1</p>
 	TerminationGracePeriodSeconds *int64 `json:"TerminationGracePeriodSeconds,omitnil,omitempty" name:"TerminationGracePeriodSeconds"`
 
-	// 服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
+	// <p>服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束</p>
 	PreStopCommand []*string `json:"PreStopCommand,omitnil,omitempty" name:"PreStopCommand"`
 
-	// 是否启用 grpc 端口
+	// <p>是否启用 grpc 端口</p>
 	GrpcEnable *bool `json:"GrpcEnable,omitnil,omitempty" name:"GrpcEnable"`
 
-	// 健康探针
+	// <p>健康探针</p>
 	HealthProbe *HealthProbe `json:"HealthProbe,omitnil,omitempty" name:"HealthProbe"`
 
-	// 滚动更新策略
+	// <p>滚动更新策略</p>
 	RollingUpdate *RollingUpdate `json:"RollingUpdate,omitnil,omitempty" name:"RollingUpdate"`
 
-	// sidecar配置
+	// <p>sidecar配置</p>
 	Sidecar *SidecarSpec `json:"Sidecar,omitnil,omitempty" name:"Sidecar"`
 
-	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
+	// <p>数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。</p>
 	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
 
-	// 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+	// <p>调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用</p>
 	SchedulingStrategy *string `json:"SchedulingStrategy,omitnil,omitempty" name:"SchedulingStrategy"`
 
-	// 网关日志投递相关配置
+	// <p>网关日志投递相关配置</p>
 	GatewayLogConfig *LogConfig `json:"GatewayLogConfig,omitnil,omitempty" name:"GatewayLogConfig"`
 
-	// 网关相关配置
+	// <p>网关相关配置</p>
 	GatewayConfig *GatewayConfig `json:"GatewayConfig,omitnil,omitempty" name:"GatewayConfig"`
 }
 
 type CreateModelServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 新增版本时需要填写
+	// <p>新增版本时需要填写</p>
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// 不超过60个字，仅支持英文、数字、下划线"_"、短横"-"，只能以英文、数字开头
+	// <p>不超过60个字，仅支持英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以英文、数字开头</p>
 	ServiceGroupName *string `json:"ServiceGroupName,omitnil,omitempty" name:"ServiceGroupName"`
 
-	// 模型服务的描述
+	// <p>模型服务的描述</p>
 	ServiceDescription *string `json:"ServiceDescription,omitnil,omitempty" name:"ServiceDescription"`
 
-	// 付费模式,有 PREPAID （包年包月）和 POSTPAID_BY_HOUR（按量付费）
+	// <p>付费模式,有 PREPAID （包年包月）和 POSTPAID_BY_HOUR（按量付费）</p>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// 预付费模式下所属的资源组id，同服务组下唯一
+	// <p>预付费模式下所属的资源组id，同服务组下唯一</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// 模型信息，需要挂载模型时填写
+	// <p>模型信息，需要挂载模型时填写</p>
 	ModelInfo *ModelInfo `json:"ModelInfo,omitnil,omitempty" name:"ModelInfo"`
 
-	// 镜像信息，配置服务运行所需的镜像地址等信息
+	// <p>镜像信息，配置服务运行所需的镜像地址等信息</p>
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// 环境变量，可选参数，用于配置容器中的环境变量
+	// <p>环境变量，可选参数，用于配置容器中的环境变量</p>
 	Env []*EnvVar `json:"Env,omitnil,omitempty" name:"Env"`
 
-	// 资源描述，指定包年包月模式下的cpu,mem,gpu等信息，后付费无需填写
+	// <p>资源描述，指定包年包月模式下的cpu,mem,gpu等信息，后付费无需填写</p>
 	Resources *ResourceInfo `json:"Resources,omitnil,omitempty" name:"Resources"`
 
-	// 使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:
-	// TI.S.MEDIUM.POST	2C4G
-	// TI.S.LARGE.POST	4C8G
-	// TI.S.2XLARGE16.POST	8C16G
-	// TI.S.2XLARGE32.POST	8C32G
-	// TI.S.4XLARGE32.POST	16C32G
-	// TI.S.4XLARGE64.POST	16C64G
-	// TI.S.6XLARGE48.POST	24C48G
-	// TI.S.6XLARGE96.POST	24C96G
-	// TI.S.8XLARGE64.POST	32C64G
-	// TI.S.8XLARGE128.POST 32C128G
-	// TI.GN7.LARGE20.POST	4C20G T4*1/4
-	// TI.GN7.2XLARGE40.POST	10C40G T4*1/2
-	// TI.GN7.2XLARGE32.POST	8C32G T4*1
-	// TI.GN7.5XLARGE80.POST	20C80G T4*1
-	// TI.GN7.8XLARGE128.POST	32C128G T4*1
-	// TI.GN7.10XLARGE160.POST	40C160G T4*2
-	// TI.GN7.20XLARGE320.POST	80C320G T4*4
+	// <p>使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:<br>TI.S.MEDIUM.POST    2C4G<br>TI.S.LARGE.POST    4C8G<br>TI.S.2XLARGE16.POST    8C16G<br>TI.S.2XLARGE32.POST    8C32G<br>TI.S.4XLARGE32.POST    16C32G<br>TI.S.4XLARGE64.POST    16C64G<br>TI.S.6XLARGE48.POST    24C48G<br>TI.S.6XLARGE96.POST    24C96G<br>TI.S.8XLARGE64.POST    32C64G<br>TI.S.8XLARGE128.POST 32C128G<br>TI.GN7.LARGE20.POST    4C20G T4<em>1/4<br>TI.GN7.2XLARGE40.POST    10C40G T4</em>1/2<br>TI.GN7.2XLARGE32.POST    8C32G T4<em>1<br>TI.GN7.5XLARGE80.POST    20C80G T4</em>1<br>TI.GN7.8XLARGE128.POST    32C128G T4<em>1<br>TI.GN7.10XLARGE160.POST    40C160G T4</em>2<br>TI.GN7.20XLARGE320.POST    80C320G T4*4</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 扩缩容类型 支持：自动 - "AUTO", 手动 - "MANUAL",默认为MANUAL
+	// <p>扩缩容类型 支持：自动 - &quot;AUTO&quot;, 手动 - &quot;MANUAL&quot;,默认为MANUAL</p>
 	ScaleMode *string `json:"ScaleMode,omitnil,omitempty" name:"ScaleMode"`
 
-	// 实例数量, 不同计费模式和调节模式下对应关系如下
-	// PREPAID 和 POSTPAID_BY_HOUR:
-	// 手动调节模式下对应 实例数量
-	// 自动调节模式下对应 基于时间的默认策略的实例数量
-	// HYBRID_PAID:
-	// 后付费实例手动调节模式下对应 实例数量
-	// 后付费实例自动调节模式下对应 时间策略的默认策略的实例数量
+	// <p>实例数量, 不同计费模式和调节模式下对应关系如下<br>PREPAID 和 POSTPAID_BY_HOUR:<br>手动调节模式下对应 实例数量<br>自动调节模式下对应 基于时间的默认策略的实例数量<br>HYBRID_PAID:<br>后付费实例手动调节模式下对应 实例数量<br>后付费实例自动调节模式下对应 时间策略的默认策略的实例数量</p>
 	Replicas *int64 `json:"Replicas,omitnil,omitempty" name:"Replicas"`
 
-	// 自动伸缩信息
+	// <p>自动伸缩信息</p>
 	HorizontalPodAutoscaler *HorizontalPodAutoscaler `json:"HorizontalPodAutoscaler,omitnil,omitempty" name:"HorizontalPodAutoscaler"`
 
-	// 是否开启日志投递，开启后需填写配置投递到指定cls
+	// <p>是否开启日志投递，开启后需填写配置投递到指定cls</p>
 	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
 
-	// 日志配置，需要投递服务日志到指定cls时填写
+	// <p>日志配置，需要投递服务日志到指定cls时填写</p>
 	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 
-	// 是否开启接口鉴权，开启后自动生成token信息，访问需要token鉴权
+	// <p>是否开启接口鉴权，开启后自动生成token信息，访问需要token鉴权</p>
 	AuthorizationEnable *bool `json:"AuthorizationEnable,omitnil,omitempty" name:"AuthorizationEnable"`
 
-	// 腾讯云标签
+	// <p>腾讯云标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否新增版本
+	// <p>是否新增版本</p>
 	NewVersion *bool `json:"NewVersion,omitnil,omitempty" name:"NewVersion"`
 
-	// 定时任务配置，使用定时策略时填写
+	// <p>定时任务配置，使用定时策略时填写</p>
 	CronScaleJobs []*CronScaleJob `json:"CronScaleJobs,omitnil,omitempty" name:"CronScaleJobs"`
 
-	// 自动伸缩策略配置 HPA : 通过HPA进行弹性伸缩 CRON 通过定时任务进行伸缩
+	// <p>自动伸缩策略配置 HPA : 通过HPA进行弹性伸缩 CRON 通过定时任务进行伸缩</p>
 	ScaleStrategy *string `json:"ScaleStrategy,omitnil,omitempty" name:"ScaleStrategy"`
 
-	// 计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数
+	// <p>计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数</p>
 	HybridBillingPrepaidReplicas *int64 `json:"HybridBillingPrepaidReplicas,omitnil,omitempty" name:"HybridBillingPrepaidReplicas"`
 
-	// [AUTO_ML 自动学习，自动学习正式发布 AUTO_ML_FORMAL, DEFAULT 默认]
+	// <p>[AUTO_ML 自动学习，自动学习正式发布 AUTO_ML_FORMAL, DEFAULT 默认]</p>
 	CreateSource *string `json:"CreateSource,omitnil,omitempty" name:"CreateSource"`
 
-	// 是否开启模型的热更新。默认不开启
+	// <p>是否开启模型的热更新。默认不开启</p>
 	ModelHotUpdateEnable *bool `json:"ModelHotUpdateEnable,omitnil,omitempty" name:"ModelHotUpdateEnable"`
 
-	// 定时停止配置
+	// <p>定时停止配置</p>
 	ScheduledAction *ScheduledAction `json:"ScheduledAction,omitnil,omitempty" name:"ScheduledAction"`
 
-	// 挂载配置，目前只支持CFS
+	// <p>挂载配置，目前只支持CFS</p>
 	VolumeMount *VolumeMount `json:"VolumeMount,omitnil,omitempty" name:"VolumeMount"`
 
-	// 服务限速限流相关配置
+	// <p>服务限速限流相关配置</p>
 	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitnil,omitempty" name:"ServiceLimit"`
 
-	// 回调地址，用于回调创建服务状态信息，回调格式&内容详情见：[TI-ONE 接口回调说明](https://cloud.tencent.com/document/product/851/84292)
+	// <p>回调地址，用于回调创建服务状态信息，回调格式&amp;内容详情见：<a href="https://cloud.tencent.com/document/product/851/84292">TI-ONE 接口回调说明</a></p>
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
-	// 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
+	// <p>是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。</p>
 	ModelTurboEnable *bool `json:"ModelTurboEnable,omitnil,omitempty" name:"ModelTurboEnable"`
 
-	// 服务分类
+	// <p>服务分类</p>
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 
-	// 服务的启动命令，如遇特殊字符导致配置失败，可使用CommandBase64参数
+	// <p>服务的启动命令，如遇特殊字符导致配置失败，可使用CommandBase64参数</p>
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
-	// 是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
+	// <p>是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。</p>
 	ServiceEIP *ServiceEIP `json:"ServiceEIP,omitnil,omitempty" name:"ServiceEIP"`
 
-	// 服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效
+	// <p>服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效</p>
 	CommandBase64 *string `json:"CommandBase64,omitnil,omitempty" name:"CommandBase64"`
 
-	// 服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
+	// <p>服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092</p>
 	ServicePort *int64 `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
 
-	// 服务的部署类型 [STANDARD 标准部署，DIST 分布式多机部署] 默认STANDARD
+	// <p>服务的部署类型 [标准部署，分布式多机部署，] 默认STANDARD</p><p>枚举值：</p><ul><li>STANDARD： 标准部署</li><li>DIST： 多机分布式部署</li><li>ROLE_SET： 多角色部署</li></ul>
 	DeployType *string `json:"DeployType,omitnil,omitempty" name:"DeployType"`
 
-	// 单副本下的实例数，仅在部署类型为DIST时生效，默认1
+	// <p>单副本下的实例数，仅在部署类型为DIST时生效，默认1</p>
 	InstancePerReplicas *int64 `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
 
-	// 服务的优雅退出时限。单位为秒，默认值为30，最小为1
+	// <p>服务的优雅退出时限。单位为秒，默认值为30，最小为1</p>
 	TerminationGracePeriodSeconds *int64 `json:"TerminationGracePeriodSeconds,omitnil,omitempty" name:"TerminationGracePeriodSeconds"`
 
-	// 服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
+	// <p>服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束</p>
 	PreStopCommand []*string `json:"PreStopCommand,omitnil,omitempty" name:"PreStopCommand"`
 
-	// 是否启用 grpc 端口
+	// <p>是否启用 grpc 端口</p>
 	GrpcEnable *bool `json:"GrpcEnable,omitnil,omitempty" name:"GrpcEnable"`
 
-	// 健康探针
+	// <p>健康探针</p>
 	HealthProbe *HealthProbe `json:"HealthProbe,omitnil,omitempty" name:"HealthProbe"`
 
-	// 滚动更新策略
+	// <p>滚动更新策略</p>
 	RollingUpdate *RollingUpdate `json:"RollingUpdate,omitnil,omitempty" name:"RollingUpdate"`
 
-	// sidecar配置
+	// <p>sidecar配置</p>
 	Sidecar *SidecarSpec `json:"Sidecar,omitnil,omitempty" name:"Sidecar"`
 
-	// 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
+	// <p>数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。</p>
 	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
 
-	// 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+	// <p>调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用</p>
 	SchedulingStrategy *string `json:"SchedulingStrategy,omitnil,omitempty" name:"SchedulingStrategy"`
 
-	// 网关日志投递相关配置
+	// <p>网关日志投递相关配置</p>
 	GatewayLogConfig *LogConfig `json:"GatewayLogConfig,omitnil,omitempty" name:"GatewayLogConfig"`
 
-	// 网关相关配置
+	// <p>网关相关配置</p>
 	GatewayConfig *GatewayConfig `json:"GatewayConfig,omitnil,omitempty" name:"GatewayConfig"`
 }
 
@@ -1146,7 +1100,7 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateModelServiceResponseParams struct {
-	// 生成的模型服务
+	// <p>生成的模型服务</p>
 	Service *Service `json:"Service,omitnil,omitempty" name:"Service"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4128,126 +4082,74 @@ func (r *DescribeInferTemplatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLogsRequestParams struct {
-	// 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
-	// 枚举值：
-	// - TRAIN
-	// - NOTEBOOK
-	// - INFER
-	// - BATCH
+	// <p>服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测<br>枚举值：</p><ul><li>TRAIN</li><li>NOTEBOOK</li><li>INFER</li><li>BATCH</li></ul>
 	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
 
-	// 日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时
+	// <p>日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 日志查询结束时间（RFC3339格式的时间字符串），默认值为当前时间
+	// <p>日志查询结束时间（RFC3339格式的时间字符串），默认值为当前时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 日志查询条数，默认值100，最大值1000
+	// <p>日志查询条数，默认值100，最大值1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
-	// - Service类型为TRAIN：
-	//   调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
-	// - Service类型为NOTEBOOK：
-	//   调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
-	// - Service类型为INFER：
-	//   调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
-	// - Service类型为BATCH：
-	//   调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+	// <p>服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：</p><ul><li>Service类型为TRAIN：<br>调用<a href="/document/product/851/75089">DescribeTrainingTask接口</a>查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId</li><li>Service类型为NOTEBOOK：<br>调用<a href="/document/product/851/95662">DescribeNotebook接口</a>查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName</li><li>Service类型为INFER：<br>调用<a href="/document/product/851/82285">DescribeModelServiceGroup接口</a>查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId</li><li>Service类型为BATCH：<br>调用<a href="/document/product/851/80180">DescribeBatchTask接口</a>查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId</li></ul>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// Pod的名称，即需要查询服务对应的Pod，和Service参数对应，不同Service的PodName获取方式不同，具体如下：
-	// - Service类型为TRAIN：
-	//   调用[DescribeTrainingTaskPods接口](/document/product/851/75088)查询训练任务pod列表，PodName为接口返回值中Response.PodNames
-	// - Service类型为NOTEBOOK：
-	//   调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，PodName为接口返回值中Response.NotebookDetail.PodName
-	// - Service类型为INFER：
-	//   调用[DescribeModelService接口](/document/product/851/82287)查询单个服务详情，PodName为接口返回值中Response.Service.ServiceInfo.PodInfos
-	// - Service类型为BATCH：
-	//   调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，PodName为接口返回值中Response.BatchTaskDetail. PodList
-	// 注：支持结尾通配符*
+	// <p>Pod的名称，即需要查询服务对应的Pod，和Service参数对应，不同Service的PodName获取方式不同，具体如下：</p><ul><li>Service类型为TRAIN：<br>调用<a href="/document/product/851/75088">DescribeTrainingTaskPods接口</a>查询训练任务pod列表，PodName为接口返回值中Response.PodNames</li><li>Service类型为NOTEBOOK：<br>调用<a href="/document/product/851/95662">DescribeNotebook接口</a>查询Notebook详情，PodName为接口返回值中Response.NotebookDetail.PodName</li><li>Service类型为INFER：<br>调用<a href="/document/product/851/82287">DescribeModelService接口</a>查询单个服务详情，PodName为接口返回值中Response.Service.ServiceInfo.PodInfos</li><li>Service类型为BATCH：<br>调用<a href="/document/product/851/80180">DescribeBatchTask接口</a>查询跑批任务详情，PodName为接口返回值中Response.BatchTaskDetail. PodList<br>注：支持结尾通配符*</li></ul>
 	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
 
-	// 排序方向（可选值为ASC, DESC ），默认为DESC
+	// <p>排序方向（可选值为ASC, DESC ），默认为DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 按哪个字段排序（可选值为Timestamp），默认值为Timestamp
+	// <p>按哪个字段排序（可选值为Timestamp），默认值为Timestamp</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 日志查询上下文，查询下一页的时候需要回传这个字段，该字段来自本接口的返回
+	// <p>日志查询上下文，查询下一页的时候需要回传这个字段，该字段来自本接口的返回</p>
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
-	// 过滤条件
-	// 注意: 
-	// 1. Filter.Name：目前只支持Key（也就是按关键字过滤日志）
-	// 2. Filter.Values：表示过滤日志的关键字；Values为多个的时候表示同时满足
-	// 3. Filter. Negative和Filter. Fuzzy没有使用
+	// <p>过滤条件<br>注意: </p><ol><li>Filter.Name：目前只支持Key（也就是按关键字过滤日志）</li><li>Filter.Values：表示过滤日志的关键字；Values为多个的时候表示同时满足</li><li>Filter. Negative和Filter. Fuzzy没有使用</li></ol>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 使用OFFSET分页查询时，指定返回的数据偏移量，默认为0
+	// <p>使用OFFSET分页查询时，指定返回的数据偏移量，默认为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeLogsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
-	// 枚举值：
-	// - TRAIN
-	// - NOTEBOOK
-	// - INFER
-	// - BATCH
+	// <p>服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测<br>枚举值：</p><ul><li>TRAIN</li><li>NOTEBOOK</li><li>INFER</li><li>BATCH</li></ul>
 	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
 
-	// 日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时
+	// <p>日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 日志查询结束时间（RFC3339格式的时间字符串），默认值为当前时间
+	// <p>日志查询结束时间（RFC3339格式的时间字符串），默认值为当前时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 日志查询条数，默认值100，最大值1000
+	// <p>日志查询条数，默认值100，最大值1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
-	// - Service类型为TRAIN：
-	//   调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
-	// - Service类型为NOTEBOOK：
-	//   调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
-	// - Service类型为INFER：
-	//   调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
-	// - Service类型为BATCH：
-	//   调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+	// <p>服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：</p><ul><li>Service类型为TRAIN：<br>调用<a href="/document/product/851/75089">DescribeTrainingTask接口</a>查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId</li><li>Service类型为NOTEBOOK：<br>调用<a href="/document/product/851/95662">DescribeNotebook接口</a>查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName</li><li>Service类型为INFER：<br>调用<a href="/document/product/851/82285">DescribeModelServiceGroup接口</a>查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId</li><li>Service类型为BATCH：<br>调用<a href="/document/product/851/80180">DescribeBatchTask接口</a>查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId</li></ul>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// Pod的名称，即需要查询服务对应的Pod，和Service参数对应，不同Service的PodName获取方式不同，具体如下：
-	// - Service类型为TRAIN：
-	//   调用[DescribeTrainingTaskPods接口](/document/product/851/75088)查询训练任务pod列表，PodName为接口返回值中Response.PodNames
-	// - Service类型为NOTEBOOK：
-	//   调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，PodName为接口返回值中Response.NotebookDetail.PodName
-	// - Service类型为INFER：
-	//   调用[DescribeModelService接口](/document/product/851/82287)查询单个服务详情，PodName为接口返回值中Response.Service.ServiceInfo.PodInfos
-	// - Service类型为BATCH：
-	//   调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，PodName为接口返回值中Response.BatchTaskDetail. PodList
-	// 注：支持结尾通配符*
+	// <p>Pod的名称，即需要查询服务对应的Pod，和Service参数对应，不同Service的PodName获取方式不同，具体如下：</p><ul><li>Service类型为TRAIN：<br>调用<a href="/document/product/851/75088">DescribeTrainingTaskPods接口</a>查询训练任务pod列表，PodName为接口返回值中Response.PodNames</li><li>Service类型为NOTEBOOK：<br>调用<a href="/document/product/851/95662">DescribeNotebook接口</a>查询Notebook详情，PodName为接口返回值中Response.NotebookDetail.PodName</li><li>Service类型为INFER：<br>调用<a href="/document/product/851/82287">DescribeModelService接口</a>查询单个服务详情，PodName为接口返回值中Response.Service.ServiceInfo.PodInfos</li><li>Service类型为BATCH：<br>调用<a href="/document/product/851/80180">DescribeBatchTask接口</a>查询跑批任务详情，PodName为接口返回值中Response.BatchTaskDetail. PodList<br>注：支持结尾通配符*</li></ul>
 	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
 
-	// 排序方向（可选值为ASC, DESC ），默认为DESC
+	// <p>排序方向（可选值为ASC, DESC ），默认为DESC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 按哪个字段排序（可选值为Timestamp），默认值为Timestamp
+	// <p>按哪个字段排序（可选值为Timestamp），默认值为Timestamp</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 日志查询上下文，查询下一页的时候需要回传这个字段，该字段来自本接口的返回
+	// <p>日志查询上下文，查询下一页的时候需要回传这个字段，该字段来自本接口的返回</p>
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
-	// 过滤条件
-	// 注意: 
-	// 1. Filter.Name：目前只支持Key（也就是按关键字过滤日志）
-	// 2. Filter.Values：表示过滤日志的关键字；Values为多个的时候表示同时满足
-	// 3. Filter. Negative和Filter. Fuzzy没有使用
+	// <p>过滤条件<br>注意: </p><ol><li>Filter.Name：目前只支持Key（也就是按关键字过滤日志）</li><li>Filter.Values：表示过滤日志的关键字；Values为多个的时候表示同时满足</li><li>Filter. Negative和Filter. Fuzzy没有使用</li></ol>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 使用OFFSET分页查询时，指定返回的数据偏移量，默认为0
+	// <p>使用OFFSET分页查询时，指定返回的数据偏移量，默认为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -4282,11 +4184,11 @@ func (r *DescribeLogsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLogsResponseParams struct {
-	// 分页的游标
+	// <p>分页的游标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
-	// 日志数组
+	// <p>日志数组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*LogIdentity `json:"Content,omitnil,omitempty" name:"Content"`
 
@@ -6668,49 +6570,48 @@ type ModelAccelerateVersion struct {
 }
 
 type ModelInfo struct {
-	// 模型版本id, DescribeTrainingModelVersion查询模型接口时的id
-	// 自动学习类型的模型填写自动学习的任务id
+	// <p>模型版本id, DescribeTrainingModelVersion查询模型接口时的id<br>自动学习类型的模型填写自动学习的任务id</p>
 	ModelVersionId *string `json:"ModelVersionId,omitnil,omitempty" name:"ModelVersionId"`
 
-	// 模型id
+	// <p>模型id</p>
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
-	// 模型名
+	// <p>模型名</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 模型版本
+	// <p>模型版本</p>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// 模型来源
+	// <p>模型来源</p>
 	ModelSource *string `json:"ModelSource,omitnil,omitempty" name:"ModelSource"`
 
-	// cos路径信息
+	// <p>cos路径信息</p>
 	CosPathInfo *CosPathInfo `json:"CosPathInfo,omitnil,omitempty" name:"CosPathInfo"`
 
-	// GooseFSx的配置，ModelSource为GooseFSx时有效
+	// <p>GooseFSx的配置，ModelSource为GooseFSx时有效</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GooseFSx *GooseFSx `json:"GooseFSx,omitnil,omitempty" name:"GooseFSx"`
 
-	// 模型对应的算法框架，预留
+	// <p>模型对应的算法框架，预留</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlgorithmFramework *string `json:"AlgorithmFramework,omitnil,omitempty" name:"AlgorithmFramework"`
 
-	// 默认为 NORMAL, 已加速模型: ACCELERATE, 自动学习模型 AUTO_ML
+	// <p>默认为 NORMAL, 已加速模型: ACCELERATE, 自动学习模型 AUTO_ML</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelType *string `json:"ModelType,omitnil,omitempty" name:"ModelType"`
 
-	// 模型格式
+	// <p>模型格式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelFormat *string `json:"ModelFormat,omitnil,omitempty" name:"ModelFormat"`
 
-	// 是否为私有化大模型
+	// <p>是否为私有化大模型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPrivateModel *bool `json:"IsPrivateModel,omitnil,omitempty" name:"IsPrivateModel"`
 
-	// 模型的类别 多模态MultiModal, 文本大模型 LLM
+	// <p>模型的类别 多模态MultiModal, 文本大模型 LLM</p>
 	ModelCategory *string `json:"ModelCategory,omitnil,omitempty" name:"ModelCategory"`
 
-	// 数据源的配置
+	// <p>数据源的配置</p>
 	PublicDataSource *PublicDataSourceFS `json:"PublicDataSource,omitnil,omitempty" name:"PublicDataSource"`
 }
 
@@ -8727,6 +8628,16 @@ type Service struct {
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 服务的业务状态
+	// CREATING 创建中
+	// CREATE_FAILED 创建失败
+	// CREATE_SUCCEED 创建成功
+	// ARREARS_STOP 因欠费停止
+	// WHITELIST_STOP 白名单额度不足
+	// RELEASE_FAILED 资源释放失败
+	// WHITELIST_RELEASE_FAILED 白名单资源释放失败
+	// TIMEOUT_EXCEPTION 创建超时异常
+	// BILLING 计费中
+	// WHITELIST_USING 白名单试用中
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessStatus *string `json:"BusinessStatus,omitnil,omitempty" name:"BusinessStatus"`
 
@@ -8747,8 +8658,9 @@ type Service struct {
 	// 服务状态
 	// CREATING 创建中
 	// CREATE_FAILED 创建失败
-	// Normal	正常运行中
-	// Stopped  已停止
+	// TIMEOUT_EXCEPTION 创建超时异常
+	// Normal 正常运行中
+	// Stopped 已停止
 	// Stopping 停止中
 	// Abnormal 异常
 	// Pending 启动中
@@ -8901,273 +8813,248 @@ type ServiceEIPInfo struct {
 }
 
 type ServiceGroup struct {
-	// 服务组id
+	// <p>服务组id</p>
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
-	// 服务组名
+	// <p>服务组名</p>
 	ServiceGroupName *string `json:"ServiceGroupName,omitnil,omitempty" name:"ServiceGroupName"`
 
-	// 创建者
+	// <p>创建者</p>
 	CreatedBy *string `json:"CreatedBy,omitnil,omitempty" name:"CreatedBy"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 主账号
+	// <p>主账号</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 服务组下服务总数
+	// <p>服务组下服务总数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceCount *uint64 `json:"ServiceCount,omitnil,omitempty" name:"ServiceCount"`
 
-	// 服务组下在运行的服务数量
+	// <p>服务组下在运行的服务数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunningServiceCount *uint64 `json:"RunningServiceCount,omitnil,omitempty" name:"RunningServiceCount"`
 
-	// 服务描述
+	// <p>服务描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Services []*Service `json:"Services,omitnil,omitempty" name:"Services"`
 
-	// 服务组状态，与服务一致
-	//  CREATING 创建中
-	//      CREATE_FAILED 创建失败
-	//      Normal	正常运行中
-	//      Stopped  已停止
-	//      Stopping 停止中
-	//      Abnormal 异常
-	//      Pending 启动中
-	//      Waiting 就绪中
+	// <p>服务组状态，与服务一致<br> CREATING 创建中<br>     CREATE_FAILED 创建失败<br>     Normal    正常运行中<br>     Stopped  已停止<br>     Stopping 停止中<br>     Abnormal 异常<br>     Pending 启动中<br>     Waiting 就绪中</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 服务组标签
+	// <p>服务组标签</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 服务组下最高版本
+	// <p>服务组下最高版本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestVersion *string `json:"LatestVersion,omitnil,omitempty" name:"LatestVersion"`
 
-	// 服务的业务状态
-	// CREATING 创建中
-	//      CREATE_FAILED 创建失败
-	//      ARREARS_STOP 因欠费被强制停止
-	//      BILLING 计费中
-	//      WHITELIST_USING 白名单试用中
-	//      WHITELIST_STOP 白名单额度不足
+	// <p>服务的业务状态<br>CREATING 创建中<br>     CREATE_FAILED 创建失败<br>     ARREARS_STOP 因欠费被强制停止<br>     BILLING 计费中<br>     WHITELIST_USING 白名单试用中<br>     WHITELIST_STOP 白名单额度不足</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessStatus *string `json:"BusinessStatus,omitnil,omitempty" name:"BusinessStatus"`
 
-	// 服务的计费信息
+	// <p>服务的计费信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingInfo *string `json:"BillingInfo,omitnil,omitempty" name:"BillingInfo"`
 
-	// 服务的创建来源
+	// <p>服务的创建来源</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateSource *string `json:"CreateSource,omitnil,omitempty" name:"CreateSource"`
 
-	// 服务组的权重更新状态 
-	// UPDATING 更新中
-	//      UPDATED 更新成功
-	//      UPDATE_FAILED 更新失败
+	// <p>服务组的权重更新状态<br>UPDATING 更新中<br>     UPDATED 更新成功<br>     UPDATE_FAILED 更新失败</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WeightUpdateStatus *string `json:"WeightUpdateStatus,omitnil,omitempty" name:"WeightUpdateStatus"`
 
-	// 服务组下运行的pod数量
+	// <p>服务组下运行的pod数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplicasCount *uint64 `json:"ReplicasCount,omitnil,omitempty" name:"ReplicasCount"`
 
-	// 服务组下期望的pod数
+	// <p>服务组下期望的pod数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AvailableReplicasCount *uint64 `json:"AvailableReplicasCount,omitnil,omitempty" name:"AvailableReplicasCount"`
 
-	// 服务组的subuin
+	// <p>服务组的subuin</p>
 	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
 
-	// 服务组的app_id
+	// <p>服务组的app_id</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 是否开启鉴权
+	// <p>是否开启鉴权</p>
 	AuthorizationEnable *bool `json:"AuthorizationEnable,omitnil,omitempty" name:"AuthorizationEnable"`
 
-	// 限流鉴权 token 列表
+	// <p>限流鉴权 token 列表</p>
 	AuthTokens []*AuthToken `json:"AuthTokens,omitnil,omitempty" name:"AuthTokens"`
 
-	// 用于监控的创建来源字段
+	// <p>用于监控的创建来源字段</p>
 	MonitorSource *string `json:"MonitorSource,omitnil,omitempty" name:"MonitorSource"`
 
-	// 子用户的 nickname
+	// <p>子用户的 nickname</p>
 	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
 
-	// 网关日志投递相关配置
+	// <p>网关日志投递相关配置</p>
 	GatewayLogConfig *LogConfig `json:"GatewayLogConfig,omitnil,omitempty" name:"GatewayLogConfig"`
 
-	// 网关路由相关配置
+	// <p>网关路由相关配置</p>
 	GatewayConfig *GatewayConfig `json:"GatewayConfig,omitnil,omitempty" name:"GatewayConfig"`
 }
 
 type ServiceInfo struct {
-	// 期望运行的Pod数量，停止状态是0
-	// 不同计费模式和调节模式下对应关系如下
-	// PREPAID 和 POSTPAID_BY_HOUR:
-	// 手动调节模式下对应 实例数量
-	// 自动调节模式下对应 基于时间的默认策略的实例数量
-	// HYBRID_PAID:
-	// 后付费实例手动调节模式下对应 实例数量
-	// 后付费实例自动调节模式下对应 时间策略的默认策略的实例数量
+	// <p>期望运行的Pod数量，停止状态是0<br>不同计费模式和调节模式下对应关系如下<br>PREPAID 和 POSTPAID_BY_HOUR:<br>手动调节模式下对应 实例数量<br>自动调节模式下对应 基于时间的默认策略的实例数量<br>HYBRID_PAID:<br>后付费实例手动调节模式下对应 实例数量<br>后付费实例自动调节模式下对应 时间策略的默认策略的实例数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Replicas *int64 `json:"Replicas,omitnil,omitempty" name:"Replicas"`
 
-	// 镜像信息
+	// <p>镜像信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// 环境变量
+	// <p>环境变量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Env []*EnvVar `json:"Env,omitnil,omitempty" name:"Env"`
 
-	// 资源信息
+	// <p>资源信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resources *ResourceInfo `json:"Resources,omitnil,omitempty" name:"Resources"`
 
-	// 后付费实例对应的机型规格
+	// <p>后付费实例对应的机型规格</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 模型信息
+	// <p>模型信息</p>
 	ModelInfo *ModelInfo `json:"ModelInfo,omitnil,omitempty" name:"ModelInfo"`
 
-	// 是否启用日志
+	// <p>是否启用日志</p>
 	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
 
-	// 日志配置
+	// <p>日志配置</p>
 	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 
-	// 是否开启鉴权
+	// <p>是否开启鉴权</p>
 	AuthorizationEnable *bool `json:"AuthorizationEnable,omitnil,omitempty" name:"AuthorizationEnable"`
 
-	// hpa配置
+	// <p>hpa配置</p>
 	HorizontalPodAutoscaler *HorizontalPodAutoscaler `json:"HorizontalPodAutoscaler,omitnil,omitempty" name:"HorizontalPodAutoscaler"`
 
-	// 服务的状态描述
+	// <p>服务的状态描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *WorkloadStatus `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 权重
+	// <p>权重</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// 资源总量
+	// <p>资源总量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceTotal *ResourceInfo `json:"ResourceTotal,omitnil,omitempty" name:"ResourceTotal"`
 
-	// 历史实例数
+	// <p>历史实例数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OldReplicas *int64 `json:"OldReplicas,omitnil,omitempty" name:"OldReplicas"`
 
-	// 计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数, 若不填则默认为1
+	// <p>计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数, 若不填则默认为1</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HybridBillingPrepaidReplicas *int64 `json:"HybridBillingPrepaidReplicas,omitnil,omitempty" name:"HybridBillingPrepaidReplicas"`
 
-	// 历史 HYBRID_PAID 时的实例数，用户恢复服务
+	// <p>历史 HYBRID_PAID 时的实例数，用户恢复服务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OldHybridBillingPrepaidReplicas *int64 `json:"OldHybridBillingPrepaidReplicas,omitnil,omitempty" name:"OldHybridBillingPrepaidReplicas"`
 
-	// 是否开启模型的热更新。默认不开启
+	// <p>是否开启模型的热更新。默认不开启</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelHotUpdateEnable *bool `json:"ModelHotUpdateEnable,omitnil,omitempty" name:"ModelHotUpdateEnable"`
 
-	// 服务的规格别名
+	// <p>服务的规格别名</p>
 	InstanceAlias *string `json:"InstanceAlias,omitnil,omitempty" name:"InstanceAlias"`
 
-	// 实例数量调节方式,默认为手动
-	// 支持：自动 - "AUTO", 手动 - "MANUAL"
+	// <p>实例数量调节方式,默认为手动<br>支持：自动 - &quot;AUTO&quot;, 手动 - &quot;MANUAL&quot;</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScaleMode *string `json:"ScaleMode,omitnil,omitempty" name:"ScaleMode"`
 
-	// 定时伸缩任务
+	// <p>定时伸缩任务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CronScaleJobs []*CronScaleJob `json:"CronScaleJobs,omitnil,omitempty" name:"CronScaleJobs"`
 
-	// 定时伸缩策略
+	// <p>定时伸缩策略</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScaleStrategy *string `json:"ScaleStrategy,omitnil,omitempty" name:"ScaleStrategy"`
 
-	// 定时停止的配置
+	// <p>定时停止的配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduledAction *ScheduledAction `json:"ScheduledAction,omitnil,omitempty" name:"ScheduledAction"`
 
-	// 实例列表
+	// <p>实例列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: PodList is deprecated.
 	PodList []*string `json:"PodList,omitnil,omitempty" name:"PodList"`
 
-	// Pod列表信息
+	// <p>Pod列表信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: Pods is deprecated.
 	Pods *Pod `json:"Pods,omitnil,omitempty" name:"Pods"`
 
-	// Pod列表信息
+	// <p>Pod列表信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodInfos []*Pod `json:"PodInfos,omitnil,omitempty" name:"PodInfos"`
 
-	// 服务限速限流相关配置
+	// <p>服务限速限流相关配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitnil,omitempty" name:"ServiceLimit"`
 
-	// 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
+	// <p>是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelTurboEnable *bool `json:"ModelTurboEnable,omitnil,omitempty" name:"ModelTurboEnable"`
 
-	// 挂载
+	// <p>挂载</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeMount *VolumeMount `json:"VolumeMount,omitnil,omitempty" name:"VolumeMount"`
 
-	// 推理代码信息
+	// <p>推理代码信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InferCodeInfo *InferCodeInfo `json:"InferCodeInfo,omitnil,omitempty" name:"InferCodeInfo"`
 
-	// 服务的启动命令
+	// <p>服务的启动命令</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
-	// 开启TIONE内网访问外部设置
+	// <p>开启TIONE内网访问外部设置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceEIP *ServiceEIP `json:"ServiceEIP,omitnil,omitempty" name:"ServiceEIP"`
 
-	// 服务端口，默认为8501
+	// <p>服务端口，默认为8501</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServicePort *int64 `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
 
-	// 服务的优雅退出时限。单位为秒，默认值为30，最小为1
+	// <p>服务的优雅退出时限。单位为秒，默认值为30，最小为1</p>
 	TerminationGracePeriodSeconds *int64 `json:"TerminationGracePeriodSeconds,omitnil,omitempty" name:"TerminationGracePeriodSeconds"`
 
-	// 服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
+	// <p>服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束</p>
 	PreStopCommand []*string `json:"PreStopCommand,omitnil,omitempty" name:"PreStopCommand"`
 
-	// 是否启用grpc端口
+	// <p>是否启用grpc端口</p>
 	GrpcEnable *bool `json:"GrpcEnable,omitnil,omitempty" name:"GrpcEnable"`
 
-	// 健康探针
+	// <p>健康探针</p>
 	HealthProbe *HealthProbe `json:"HealthProbe,omitnil,omitempty" name:"HealthProbe"`
 
-	// 滚动更新配置
+	// <p>滚动更新配置</p>
 	RollingUpdate *RollingUpdate `json:"RollingUpdate,omitnil,omitempty" name:"RollingUpdate"`
 
-	// 单副本下的实例数，仅在部署类型为DIST、ROLE时生效，默认1
+	// <p>单副本下的实例数，仅在部署类型为DIST、ROLE时生效，默认1</p>
 	InstancePerReplicas *int64 `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
 
-	// 批量数据盘挂载配置
+	// <p>批量数据盘挂载配置</p>
 	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
 
-	// 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+	// <p>调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用</p>
 	SchedulingStrategy *string `json:"SchedulingStrategy,omitnil,omitempty" name:"SchedulingStrategy"`
 
-	// 服务实际运行的节点数
+	// <p>服务实际运行的节点数</p>
 	NodeCount *int64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
 }
 
@@ -10240,17 +10127,17 @@ type Usage struct {
 }
 
 type VolumeMount struct {
-	// cfs的配置信息
+	// <p>cfs的配置信息</p>
 	CFSConfig *CFSConfig `json:"CFSConfig,omitnil,omitempty" name:"CFSConfig"`
 
-	// 挂载源类型，CFS、COS、PUBLIC_DATA_SOURCE，默认为CFS
+	// <p>挂载源类型，CFS、COS、PUBLIC_DATA_SOURCE，默认为CFS</p>
 	VolumeSourceType *string `json:"VolumeSourceType,omitnil,omitempty" name:"VolumeSourceType"`
 
-	// 自定义容器内挂载路径
+	// <p>自定义容器内挂载路径</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MountPath *string `json:"MountPath,omitnil,omitempty" name:"MountPath"`
 
-	// 挂载数据源时的配置信息
+	// <p>挂载数据源时的配置信息</p>
 	PublicDataSource *PublicDataSourceFS `json:"PublicDataSource,omitnil,omitempty" name:"PublicDataSource"`
 }
 

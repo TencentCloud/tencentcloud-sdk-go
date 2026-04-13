@@ -3477,6 +3477,66 @@ func (c *Client) DestroyStaticStoreWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewExecutePGSqlRequest() (request *ExecutePGSqlRequest) {
+    request = &ExecutePGSqlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ExecutePGSql")
+    
+    
+    return
+}
+
+func NewExecutePGSqlResponse() (response *ExecutePGSqlResponse) {
+    response = &ExecutePGSqlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExecutePGSql
+// 在Postgres数据库上执行SQL
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCESTATUSCONFLICT = "FailedOperation.InstanceStatusConflict"
+//  FAILEDOPERATION_PGCONNECTERROR = "FailedOperation.PGConnectError"
+//  FAILEDOPERATION_PGEXECUTESQLERROR = "FailedOperation.PGExecuteSqlError"
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+func (c *Client) ExecutePGSql(request *ExecutePGSqlRequest) (response *ExecutePGSqlResponse, err error) {
+    return c.ExecutePGSqlWithContext(context.Background(), request)
+}
+
+// ExecutePGSql
+// 在Postgres数据库上执行SQL
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCESTATUSCONFLICT = "FailedOperation.InstanceStatusConflict"
+//  FAILEDOPERATION_PGCONNECTERROR = "FailedOperation.PGConnectError"
+//  FAILEDOPERATION_PGEXECUTESQLERROR = "FailedOperation.PGExecuteSqlError"
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+func (c *Client) ExecutePGSqlWithContext(ctx context.Context, request *ExecutePGSqlRequest) (response *ExecutePGSqlResponse, err error) {
+    if request == nil {
+        request = NewExecutePGSqlRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ExecutePGSql")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExecutePGSql require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExecutePGSqlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetProvidersRequest() (request *GetProvidersRequest) {
     request = &GetProvidersRequest{
         BaseRequest: &tchttp.BaseRequest{},
