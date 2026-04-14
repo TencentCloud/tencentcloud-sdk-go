@@ -2314,21 +2314,27 @@ func (r *TerminateInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateServiceConfigsRequestParams struct {
-	// 服务ID
+	// <p>服务ID</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// 期望副本数
+	// <p>期望副本数</p>
 	TargetReplicas *int64 `json:"TargetReplicas,omitnil,omitempty" name:"TargetReplicas"`
+
+	// <p>启动参数、环境变量等参数</p>
+	DeploymentConfigs []*DeploymentConfig `json:"DeploymentConfigs,omitnil,omitempty" name:"DeploymentConfigs"`
 }
 
 type UpdateServiceConfigsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务ID
+	// <p>服务ID</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// 期望副本数
+	// <p>期望副本数</p>
 	TargetReplicas *int64 `json:"TargetReplicas,omitnil,omitempty" name:"TargetReplicas"`
+
+	// <p>启动参数、环境变量等参数</p>
+	DeploymentConfigs []*DeploymentConfig `json:"DeploymentConfigs,omitnil,omitempty" name:"DeploymentConfigs"`
 }
 
 func (r *UpdateServiceConfigsRequest) ToJsonString() string {
@@ -2345,6 +2351,7 @@ func (r *UpdateServiceConfigsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ServiceId")
 	delete(f, "TargetReplicas")
+	delete(f, "DeploymentConfigs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateServiceConfigsRequest has unknown keys!", "")
 	}

@@ -607,6 +607,9 @@ type DescribeClusterInstancesRequestParams struct {
 
 	// 排序信息
 	SortBy *SortBy `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// 是否返回节点云标签
+	NeedTags *bool `json:"NeedTags,omitnil,omitempty" name:"NeedTags"`
 }
 
 type DescribeClusterInstancesRequest struct {
@@ -627,6 +630,9 @@ type DescribeClusterInstancesRequest struct {
 
 	// 排序信息
 	SortBy *SortBy `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// 是否返回节点云标签
+	NeedTags *bool `json:"NeedTags,omitnil,omitempty" name:"NeedTags"`
 }
 
 func (r *DescribeClusterInstancesRequest) ToJsonString() string {
@@ -646,6 +652,7 @@ func (r *DescribeClusterInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Filters")
 	delete(f, "SortBy")
+	delete(f, "NeedTags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterInstancesRequest has unknown keys!", "")
 	}
@@ -2223,6 +2230,10 @@ type NativeNodeInfo struct {
 	// - eks-f8mvyaep 表示这个实例是一个 CXM 的实例
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 原生节点云标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type NativeNodePoolInfo struct {
@@ -2452,6 +2463,10 @@ type RegularNodeInfo struct {
 	// 自动伸缩组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoscalingGroupId *string `json:"AutoscalingGroupId,omitnil,omitempty" name:"AutoscalingGroupId"`
+
+	// 普通节点云标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type RegularNodePoolInfo struct {
@@ -2838,6 +2853,15 @@ type SuperNodeInfo struct {
 	// 实例属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceAttribute *string `json:"InstanceAttribute,omitnil,omitempty" name:"InstanceAttribute"`
+
+	// 节点名称
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// 包销时长
+	Duration *string `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 预付费资源ID
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 type SuperNodePoolInfo struct {

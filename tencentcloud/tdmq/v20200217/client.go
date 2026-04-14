@@ -1153,6 +1153,56 @@ func (c *Client) CreateRocketMQGroupV2WithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateRocketMQMigrationTaskRequest() (request *CreateRocketMQMigrationTaskRequest) {
+    request = &CreateRocketMQMigrationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateRocketMQMigrationTask")
+    
+    
+    return
+}
+
+func NewCreateRocketMQMigrationTaskResponse() (response *CreateRocketMQMigrationTaskResponse) {
+    response = &CreateRocketMQMigrationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRocketMQMigrationTask
+// 创建RocketMQ元数据迁移任务，用于批量创建主题和消费组数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateRocketMQMigrationTask(request *CreateRocketMQMigrationTaskRequest) (response *CreateRocketMQMigrationTaskResponse, err error) {
+    return c.CreateRocketMQMigrationTaskWithContext(context.Background(), request)
+}
+
+// CreateRocketMQMigrationTask
+// 创建RocketMQ元数据迁移任务，用于批量创建主题和消费组数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateRocketMQMigrationTaskWithContext(ctx context.Context, request *CreateRocketMQMigrationTaskRequest) (response *CreateRocketMQMigrationTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateRocketMQMigrationTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateRocketMQMigrationTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRocketMQMigrationTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRocketMQMigrationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRocketMQNamespaceRequest() (request *CreateRocketMQNamespaceRequest) {
     request = &CreateRocketMQNamespaceRequest{
         BaseRequest: &tchttp.BaseRequest{},

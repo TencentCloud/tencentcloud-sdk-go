@@ -4854,7 +4854,7 @@ type DescribeLogInstanceListRequestParams struct {
 	// <p>日志子类型。</p><p>枚举值：</p><ul><li>write： 写日志。</li><li>read： 读日志。</li><li>all： 读写日志。</li></ul>
 	LogSubType *string `json:"LogSubType,omitnil,omitempty" name:"LogSubType"`
 
-	// <p>日志开关。不传查询所有日志实例。</p><ul><li>on：开启。</li><li>off：关闭。</li></ul>
+	// <p>日志开关。</p><p>枚举值：</p><ul><li>on： 开启</li><li>off： 关闭</li></ul><p>默认值：off</p>
 	LogSwitch *string `json:"LogSwitch,omitnil,omitempty" name:"LogSwitch"`
 }
 
@@ -4876,7 +4876,7 @@ type DescribeLogInstanceListRequest struct {
 	// <p>日志子类型。</p><p>枚举值：</p><ul><li>write： 写日志。</li><li>read： 读日志。</li><li>all： 读写日志。</li></ul>
 	LogSubType *string `json:"LogSubType,omitnil,omitempty" name:"LogSubType"`
 
-	// <p>日志开关。不传查询所有日志实例。</p><ul><li>on：开启。</li><li>off：关闭。</li></ul>
+	// <p>日志开关。</p><p>枚举值：</p><ul><li>on： 开启</li><li>off： 关闭</li></ul><p>默认值：off</p>
 	LogSwitch *string `json:"LogSwitch,omitnil,omitempty" name:"LogSwitch"`
 }
 

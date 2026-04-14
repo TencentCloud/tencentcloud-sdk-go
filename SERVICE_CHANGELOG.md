@@ -1,78 +1,97 @@
-# Release v1.3.78
+# Release v1.3.79
 
-## 配置审计(config) 版本：2022-08-02
+## Agent 沙箱服务(ags) 版本：2025-09-20
 
-### 第 8 次发布
+### 第 11 次发布
 
-发布时间：2026-04-14 01:31:29
+发布时间：2026-04-15 01:07:54
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [AddAlarmPolicy](https://cloud.tencent.com/document/api/1579/130467)
-* [DeleteAlarmPolicy](https://cloud.tencent.com/document/api/1579/130463)
-* [ListAlarmPolicy](https://cloud.tencent.com/document/api/1579/130466)
-* [UpdateAlarmPolicy](https://cloud.tencent.com/document/api/1579/130465)
 
 修改接口：
 
-* [AddConfigRule](https://cloud.tencent.com/document/api/1579/129726)
+* [CreateSandboxTool](https://cloud.tencent.com/document/api/1814/124812)
 
-	* 新增出参：RuleId
-
-
-新增数据结构：
-
-* [AlarmPolicyRsp](https://cloud.tencent.com/document/api/1579/101783#AlarmPolicyRsp)
+	* 新增入参：Persistent
 
 
+修改数据结构：
 
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+* [SandboxInstance](https://cloud.tencent.com/document/api/1814/124823#SandboxInstance)
 
-### 第 161 次发布
+	* 新增成员：Persistent
 
-发布时间：2026-04-14 01:39:50
+* [SandboxTool](https://cloud.tencent.com/document/api/1814/124823#SandboxTool)
+
+	* 新增成员：Persistent
+
+
+
+
+## 配置审计(config) 版本：2022-08-02
+
+### 第 9 次发布
+
+发布时间：2026-04-15 01:31:20
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [AuditLog](https://cloud.tencent.com/document/api/1003/48097#AuditLog)
+* [AddAlarmPolicy](https://cloud.tencent.com/document/api/1579/130467)
 
-	* 新增成员：ClientPort
+	* 新增入参：Type
+
+
+
+
+## 高性能应用服务(hai) 版本：2023-08-12
+
+### 第 21 次发布
+
+发布时间：2026-04-15 01:59:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdateServiceConfigs](https://cloud.tencent.com/document/api/1721/127878)
+
+	* 新增入参：DeploymentConfigs
 
 
 
 
 ## 云直播CSS(live) 版本：2018-08-01
 
-### 第 171 次发布
+### 第 172 次发布
 
-发布时间：2026-04-14 02:12:04
+发布时间：2026-04-15 02:11:41
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [PadTemplate](https://cloud.tencent.com/document/api/267/20474#PadTemplate)
+* [CreateAuditKeywordLib](https://cloud.tencent.com/document/api/267/127523)
 
-	* 新增成员：TriggerCondition
-
-
+	* 新增出参：LibId
 
 
-## 云数据库 MongoDB(mongodb) 版本：2019-07-25
 
-### 第 67 次发布
 
-发布时间：2026-04-14 02:20:56
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 192 次发布
+
+发布时间：2026-04-15 02:25:12
 
 本次发布包含了以下内容：
 
@@ -80,24 +99,64 @@
 
 新增接口：
 
-* [RestoreDBInstance](https://cloud.tencent.com/document/api/240/130468)
+* [CreateProject](https://cloud.tencent.com/document/api/862/130524)
+* [DeleteProject](https://cloud.tencent.com/document/api/862/130523)
+* [QueryProject](https://cloud.tencent.com/document/api/862/130522)
+* [UpdateProject](https://cloud.tencent.com/document/api/862/130521)
 
 新增数据结构：
 
-* [RestoreCollection](https://cloud.tencent.com/document/api/240/38576#RestoreCollection)
-* [RestoreDatabases](https://cloud.tencent.com/document/api/240/38576#RestoreDatabases)
+* [Project](https://cloud.tencent.com/document/api/862/37615#Project)
+* [Speakers](https://cloud.tencent.com/document/api/862/37615#Speakers)
+* [TermBase](https://cloud.tencent.com/document/api/862/37615#TermBase)
 
 
 
-## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+## 集团账号管理(organization) 版本：2021-03-31
+
+### 第 56 次发布
+
+发布时间：2026-04-15 02:36:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UpdateIPWhitelist](https://cloud.tencent.com/document/api/850/130525)
 
 
 
-## 消息队列 MQTT 版(mqtt) 版本：2024-05-16
+## 集团账号管理(organization) 版本：2018-12-25
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 169 次发布
+
+发布时间：2026-04-15 03:11:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateRocketMQMigrationTask](https://cloud.tencent.com/document/api/1179/130527)
+
+新增数据结构：
+
+* [RocketMQRoleConfig](https://cloud.tencent.com/document/api/1179/46089#RocketMQRoleConfig)
+
+
+
+## 容器服务(tke) 版本：2022-05-01
 
 ### 第 26 次发布
 
-发布时间：2026-04-14 02:29:58
+发布时间：2026-04-15 03:28:26
 
 本次发布包含了以下内容：
 
@@ -105,18 +164,33 @@
 
 修改接口：
 
-* [DescribeInstance](https://cloud.tencent.com/document/api/1778/111030)
+* [DescribeClusterInstances](https://cloud.tencent.com/document/api/457/103203)
 
-	* 新增出参：BlockRuleLimit
-
-
+	* 新增入参：NeedTags
 
 
-## 腾讯健康组学平台(omics) 版本：2022-11-28
+修改数据结构：
 
-### 第 29 次发布
+* [NativeNodeInfo](https://cloud.tencent.com/document/api/457/103206#NativeNodeInfo)
 
-发布时间：2026-04-14 02:36:20
+	* 新增成员：Tags
+
+* [RegularNodeInfo](https://cloud.tencent.com/document/api/457/103206#RegularNodeInfo)
+
+	* 新增成员：Tags
+
+* [SuperNodeInfo](https://cloud.tencent.com/document/api/457/103206#SuperNodeInfo)
+
+	* 新增成员：NodeName, Duration, ResourceId
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 226 次发布
+
+发布时间：2026-04-15 03:23:53
 
 本次发布包含了以下内容：
 
@@ -124,18 +198,51 @@
 
 修改接口：
 
-* [DescribePublicApplications](https://cloud.tencent.com/document/api/1643/130431)
+* [AddExistedInstances](https://cloud.tencent.com/document/api/457/31865)
 
-	* 新增入参：ParentAppId, AppType
+	* 新增入参：Tags, RenewFlag
+
+* [ModifyClusterAttribute](https://cloud.tencent.com/document/api/457/42938)
+
+	* 新增入参：SecurityModeConfig
+
+	* 新增出参：SecurityModeConfig
+
+* [UpgradeClusterInstances](https://cloud.tencent.com/document/api/457/50365)
+
+	* 新增入参：Concurrent
+
+
+新增数据结构：
+
+* [SecurityModeConfig](https://cloud.tencent.com/document/api/457/31866#SecurityModeConfig)
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/457/31866#Cluster)
+
+	* 新增成员：SecurityModeConfig
+
+* [ClusterAdvancedSettings](https://cloud.tencent.com/document/api/457/31866#ClusterAdvancedSettings)
+
+	* 新增成员：SecurityModeConfig
+
+* [ExternalNodePool](https://cloud.tencent.com/document/api/457/31866#ExternalNodePool)
+
+	* 新增成员：NodeType
+
+* [Step](https://cloud.tencent.com/document/api/457/31866#Step)
+
+	* 新增成员：Detail
 
 
 
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
+## 腾讯混元生视频(vclm) 版本：2024-05-23
 
-### 第 135 次发布
+### 第 32 次发布
 
-发布时间：2026-04-14 03:00:23
+发布时间：2026-04-15 03:39:52
 
 本次发布包含了以下内容：
 
@@ -143,84 +250,7 @@
 
 新增接口：
 
-* [ExecutePGSql](https://cloud.tencent.com/document/api/876/130469)
-
-
-
-## 消息队列 RocketMQ 版(trocket) 版本：2023-03-08
-
-### 第 52 次发布
-
-发布时间：2026-04-14 03:31:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateMigrationTask](https://cloud.tencent.com/document/api/1493/130470)
-
-
-
-## 云点播(vod) 版本：2024-07-18
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 247 次发布
-
-发布时间：2026-04-14 03:43:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateAigcImageTask](https://cloud.tencent.com/document/api/266/126240)
-
-	* 新增入参：Seed
-
-* [CreateAigcVideoTask](https://cloud.tencent.com/document/api/266/126239)
-
-	* 新增入参：Seed
-
-
-修改数据结构：
-
-* [AigcImageTaskInput](https://cloud.tencent.com/document/api/266/31773#AigcImageTaskInput)
-
-	* 新增成员：Seed
-
-* [AigcVideoTaskInput](https://cloud.tencent.com/document/api/266/31773#AigcVideoTaskInput)
-
-	* 新增成员：Seed
-
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2025-08-06
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
-
-### 第 187 次发布
-
-发布时间：2026-04-14 04:00:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [EventListenerTaskInfo](https://cloud.tencent.com/document/api/1267/76336#EventListenerTaskInfo)
-
-	* 新增成员：EventName
-
+* [SubmitImageToVideoViduJob](https://cloud.tencent.com/document/api/1616/130530)
 
 
 

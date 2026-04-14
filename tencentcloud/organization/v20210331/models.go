@@ -10074,6 +10074,70 @@ func (r *UpdateGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type UpdateIPWhitelistRequestParams struct {
+	// 空间ID
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// ip白名单（上限100个）
+	IpWhitelist []*string `json:"IpWhitelist,omitnil,omitempty" name:"IpWhitelist"`
+}
+
+type UpdateIPWhitelistRequest struct {
+	*tchttp.BaseRequest
+	
+	// 空间ID
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// ip白名单（上限100个）
+	IpWhitelist []*string `json:"IpWhitelist,omitnil,omitempty" name:"IpWhitelist"`
+}
+
+func (r *UpdateIPWhitelistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateIPWhitelistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "IpWhitelist")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateIPWhitelistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateIPWhitelistResponseParams struct {
+	// 成功返回
+	Success *bool `json:"Success,omitnil,omitempty" name:"Success"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateIPWhitelistResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateIPWhitelistResponseParams `json:"Response"`
+}
+
+func (r *UpdateIPWhitelistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateIPWhitelistResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpdateOrganizationIdentityRequestParams struct {
 	// 身份ID。可以通过[ListOrganizationIdentity](https://cloud.tencent.com/document/product/850/82934)获取
 	IdentityId *uint64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`

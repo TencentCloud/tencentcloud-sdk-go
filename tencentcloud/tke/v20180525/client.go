@@ -2383,7 +2383,7 @@ func NewCreateExternalNodePoolResponse() (response *CreateExternalNodePoolRespon
 }
 
 // CreateExternalNodePool
-// 创建第三方节点池
+// 创建注册节点池
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
@@ -2398,7 +2398,7 @@ func (c *Client) CreateExternalNodePool(request *CreateExternalNodePoolRequest) 
 }
 
 // CreateExternalNodePool
-// 创建第三方节点池
+// 创建注册节点池
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
@@ -4599,7 +4599,7 @@ func NewDeleteExternalNodeResponse() (response *DeleteExternalNodeResponse) {
 }
 
 // DeleteExternalNode
-// 删除第三方节点
+// 删除注册节点
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -4611,7 +4611,7 @@ func (c *Client) DeleteExternalNode(request *DeleteExternalNodeRequest) (respons
 }
 
 // DeleteExternalNode
-// 删除第三方节点
+// 删除注册节点
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -4655,7 +4655,7 @@ func NewDeleteExternalNodePoolResponse() (response *DeleteExternalNodePoolRespon
 }
 
 // DeleteExternalNodePool
-// 删除第三方节点池
+// 删除注册节点池
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
@@ -4667,7 +4667,7 @@ func (c *Client) DeleteExternalNodePool(request *DeleteExternalNodePoolRequest) 
 }
 
 // DeleteExternalNodePool
-// 删除第三方节点池
+// 删除注册节点池
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
@@ -9327,7 +9327,7 @@ func NewDescribeExternalNodeResponse() (response *DescribeExternalNodeResponse) 
 }
 
 // DescribeExternalNode
-// 查看第三方节点列表
+// 查看注册节点列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
@@ -9340,7 +9340,7 @@ func (c *Client) DescribeExternalNode(request *DescribeExternalNodeRequest) (res
 }
 
 // DescribeExternalNode
-// 查看第三方节点列表
+// 查看注册节点列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
@@ -9385,7 +9385,7 @@ func NewDescribeExternalNodePoolsResponse() (response *DescribeExternalNodePools
 }
 
 // DescribeExternalNodePools
-// 查看第三方节点池列表
+// 查看注册节点池列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -9397,7 +9397,7 @@ func (c *Client) DescribeExternalNodePools(request *DescribeExternalNodePoolsReq
 }
 
 // DescribeExternalNodePools
-// 查看第三方节点池列表
+// 查看注册节点池列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -9441,7 +9441,7 @@ func NewDescribeExternalNodeScriptResponse() (response *DescribeExternalNodeScri
 }
 
 // DescribeExternalNodeScript
-// 获取第三方节点添加脚本
+// 获取注册节点初始化脚本
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -9454,7 +9454,7 @@ func (c *Client) DescribeExternalNodeScript(request *DescribeExternalNodeScriptR
 }
 
 // DescribeExternalNodeScript
-// 获取第三方节点添加脚本
+// 获取注册节点初始化脚本
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -9499,7 +9499,7 @@ func NewDescribeExternalNodeSupportConfigResponse() (response *DescribeExternalN
 }
 
 // DescribeExternalNodeSupportConfig
-// 查看开启第三方节点池配置信息
+// 查看开启注册节点池配置信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
@@ -9514,7 +9514,7 @@ func (c *Client) DescribeExternalNodeSupportConfig(request *DescribeExternalNode
 }
 
 // DescribeExternalNodeSupportConfig
-// 查看开启第三方节点池配置信息
+// 查看开启注册节点池配置信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
@@ -13227,7 +13227,7 @@ func NewDrainExternalNodeResponse() (response *DrainExternalNodeResponse) {
 }
 
 // DrainExternalNode
-// 驱逐第三方节点
+// 驱逐注册节点
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -13237,7 +13237,7 @@ func (c *Client) DrainExternalNode(request *DrainExternalNodeRequest) (response 
 }
 
 // DrainExternalNode
-// 驱逐第三方节点
+// 驱逐注册节点
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -13713,7 +13713,7 @@ func NewEnableExternalNodeSupportResponse() (response *EnableExternalNodeSupport
 }
 
 // EnableExternalNodeSupport
-// 开启第三方节点池支持
+// 开启注册节点池支持
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
@@ -13731,7 +13731,7 @@ func (c *Client) EnableExternalNodeSupport(request *EnableExternalNodeSupportReq
 }
 
 // EnableExternalNodeSupport
-// 开启第三方节点池支持
+// 开启注册节点池支持
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
@@ -15513,7 +15513,7 @@ func NewModifyExternalNodePoolResponse() (response *ModifyExternalNodePoolRespon
 }
 
 // ModifyExternalNodePool
-// 修改第三方节点池
+// 修改注册节点池
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -15524,7 +15524,7 @@ func (c *Client) ModifyExternalNodePool(request *ModifyExternalNodePoolRequest) 
 }
 
 // ModifyExternalNodePool
-// 修改第三方节点池
+// 修改注册节点池
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"

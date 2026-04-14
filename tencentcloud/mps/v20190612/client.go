@@ -1289,6 +1289,62 @@ func (c *Client) CreateProcessImageTemplateWithContext(ctx context.Context, requ
     return
 }
 
+func NewCreateProjectRequest() (request *CreateProjectRequest) {
+    request = &CreateProjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateProject")
+    
+    
+    return
+}
+
+func NewCreateProjectResponse() (response *CreateProjectResponse) {
+    response = &CreateProjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateProject
+// 剧集项目创建
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_PROJECTLIMITEXCEEDED = "InvalidParameterValue.ProjectLimitExceeded"
+//  INVALIDPARAMETERVALUE_PROJECTNAMEDUPLICATE = "InvalidParameterValue.ProjectNameDuplicate"
+//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
+//  INVALIDPARAMETERVALUE_USERUNREGISTER = "InvalidParameterValue.UserUnRegister"
+func (c *Client) CreateProject(request *CreateProjectRequest) (response *CreateProjectResponse, err error) {
+    return c.CreateProjectWithContext(context.Background(), request)
+}
+
+// CreateProject
+// 剧集项目创建
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_PROJECTLIMITEXCEEDED = "InvalidParameterValue.ProjectLimitExceeded"
+//  INVALIDPARAMETERVALUE_PROJECTNAMEDUPLICATE = "InvalidParameterValue.ProjectNameDuplicate"
+//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
+//  INVALIDPARAMETERVALUE_USERUNREGISTER = "InvalidParameterValue.UserUnRegister"
+func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreateProjectRequest) (response *CreateProjectResponse, err error) {
+    if request == nil {
+        request = NewCreateProjectRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateProject")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProject require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateQualityControlTemplateRequest() (request *CreateQualityControlTemplateRequest) {
     request = &CreateQualityControlTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3483,6 +3539,56 @@ func (c *Client) DeleteProcessImageTemplateWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDeleteProcessImageTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteProjectRequest() (request *DeleteProjectRequest) {
+    request = &DeleteProjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteProject")
+    
+    
+    return
+}
+
+func NewDeleteProjectResponse() (response *DeleteProjectResponse) {
+    response = &DeleteProjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteProject
+// 剧集项目删除接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
+func (c *Client) DeleteProject(request *DeleteProjectRequest) (response *DeleteProjectResponse, err error) {
+    return c.DeleteProjectWithContext(context.Background(), request)
+}
+
+// DeleteProject
+// 剧集项目删除接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
+func (c *Client) DeleteProjectWithContext(ctx context.Context, request *DeleteProjectRequest) (response *DeleteProjectResponse, err error) {
+    if request == nil {
+        request = NewDeleteProjectRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteProject")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteProject require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteProjectResponse()
     err = c.Send(request, response)
     return
 }
@@ -11657,6 +11763,68 @@ func (c *Client) ProcessMediaWithContext(ctx context.Context, request *ProcessMe
     return
 }
 
+func NewQueryProjectRequest() (request *QueryProjectRequest) {
+    request = &QueryProjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "QueryProject")
+    
+    
+    return
+}
+
+func NewQueryProjectResponse() (response *QueryProjectResponse) {
+    response = &QueryProjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryProject
+// 剧集项目查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+func (c *Client) QueryProject(request *QueryProjectRequest) (response *QueryProjectResponse, err error) {
+    return c.QueryProjectWithContext(context.Background(), request)
+}
+
+// QueryProject
+// 剧集项目查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+func (c *Client) QueryProjectWithContext(ctx context.Context, request *QueryProjectRequest) (response *QueryProjectResponse, err error) {
+    if request == nil {
+        request = NewQueryProjectRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "QueryProject")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryProject require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecognizeAudioRequest() (request *RecognizeAudioRequest) {
     request = &RecognizeAudioRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12169,6 +12337,60 @@ func (c *Client) TextTranslationWithContext(ctx context.Context, request *TextTr
     request.SetContext(ctx)
     
     response = NewTextTranslationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateProjectRequest() (request *UpdateProjectRequest) {
+    request = &UpdateProjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "UpdateProject")
+    
+    
+    return
+}
+
+func NewUpdateProjectResponse() (response *UpdateProjectResponse) {
+    response = &UpdateProjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateProject
+// 剧集项目更新
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_PROJECTNAMEDUPLICATE = "InvalidParameterValue.ProjectNameDuplicate"
+//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
+//  INVALIDPARAMETERVALUE_USERUNREGISTER = "InvalidParameterValue.UserUnRegister"
+func (c *Client) UpdateProject(request *UpdateProjectRequest) (response *UpdateProjectResponse, err error) {
+    return c.UpdateProjectWithContext(context.Background(), request)
+}
+
+// UpdateProject
+// 剧集项目更新
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_PROJECTNAMEDUPLICATE = "InvalidParameterValue.ProjectNameDuplicate"
+//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
+//  INVALIDPARAMETERVALUE_USERUNREGISTER = "InvalidParameterValue.UserUnRegister"
+func (c *Client) UpdateProjectWithContext(ctx context.Context, request *UpdateProjectRequest) (response *UpdateProjectResponse, err error) {
+    if request == nil {
+        request = NewUpdateProjectRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "UpdateProject")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateProject require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateProjectResponse()
     err = c.Send(request, response)
     return
 }

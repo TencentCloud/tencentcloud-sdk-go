@@ -244,56 +244,62 @@ func (r *AddAggregateConfigRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddAlarmPolicyRequestParams struct {
-	// 告警策略名
+	// <p>告警策略名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 事件范围  1：当前账号  2：多账号
+	// <p>事件类型 1：资源不合规事件</p>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>事件范围  1：当前账号  2：多账号</p>
 	EventScope []*int64 `json:"EventScope,omitnil,omitempty" name:"EventScope"`
 
-	// 风险等级 1：高风险  2：中风险 3：低风险
+	// <p>风险等级 1：高风险  2：中风险 3：低风险</p>
 	RiskLevel []*int64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 通知时间段
+	// <p>通知时间段</p>
 	NoticeTime *string `json:"NoticeTime,omitnil,omitempty" name:"NoticeTime"`
 
-	// 通知机制
+	// <p>通知机制</p>
 	NotificationMechanism *string `json:"NotificationMechanism,omitnil,omitempty" name:"NotificationMechanism"`
 
-	// 状态 1：启用 2：停用
+	// <p>状态 1：启用 2：停用</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 通知周期
+	// <p>通知周期</p>
 	NoticePeriod []*int64 `json:"NoticePeriod,omitnil,omitempty" name:"NoticePeriod"`
 
-	// 策略描述
+	// <p>策略描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type AddAlarmPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 告警策略名
+	// <p>告警策略名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 事件范围  1：当前账号  2：多账号
+	// <p>事件类型 1：资源不合规事件</p>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>事件范围  1：当前账号  2：多账号</p>
 	EventScope []*int64 `json:"EventScope,omitnil,omitempty" name:"EventScope"`
 
-	// 风险等级 1：高风险  2：中风险 3：低风险
+	// <p>风险等级 1：高风险  2：中风险 3：低风险</p>
 	RiskLevel []*int64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 通知时间段
+	// <p>通知时间段</p>
 	NoticeTime *string `json:"NoticeTime,omitnil,omitempty" name:"NoticeTime"`
 
-	// 通知机制
+	// <p>通知机制</p>
 	NotificationMechanism *string `json:"NotificationMechanism,omitnil,omitempty" name:"NotificationMechanism"`
 
-	// 状态 1：启用 2：停用
+	// <p>状态 1：启用 2：停用</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 通知周期
+	// <p>通知周期</p>
 	NoticePeriod []*int64 `json:"NoticePeriod,omitnil,omitempty" name:"NoticePeriod"`
 
-	// 策略描述
+	// <p>策略描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -310,6 +316,7 @@ func (r *AddAlarmPolicyRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Name")
+	delete(f, "Type")
 	delete(f, "EventScope")
 	delete(f, "RiskLevel")
 	delete(f, "NoticeTime")
@@ -325,7 +332,7 @@ func (r *AddAlarmPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddAlarmPolicyResponseParams struct {
-	// 告警策略唯一id
+	// <p>告警策略唯一id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmPolicyId *uint64 `json:"AlarmPolicyId,omitnil,omitempty" name:"AlarmPolicyId"`
 

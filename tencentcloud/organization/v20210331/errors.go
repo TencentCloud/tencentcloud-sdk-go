@@ -287,6 +287,9 @@ const (
 	// 代付者不合法。
 	FAILEDOPERATION_PAYUINILLEGAL = "FailedOperation.PayUinIllegal"
 
+	// 操作权限被拒绝，OwnerUin不一致
+	FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+
 	// 存在成员账号已经开启标签策略，不支持开启集团标签策略
 	FAILEDOPERATION_POLICYENABLEINVALID = "FailedOperation.PolicyEnableInvalid"
 

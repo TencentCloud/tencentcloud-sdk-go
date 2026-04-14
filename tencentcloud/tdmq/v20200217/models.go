@@ -2351,6 +2351,95 @@ func (r *CreateRocketMQGroupV2Response) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateRocketMQMigrationTaskRequestParams struct {
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>任务类型：<br>0，集群迁移<br>1，导入到指定命名空间</p>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>待导入的主题列表</p>
+	Topics []*RocketMQTopicConfig `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// <p>待导入的消费组列表</p>
+	Groups []*RocketMQGroupConfig `json:"Groups,omitnil,omitempty" name:"Groups"`
+
+	// <p>待导入的角色列表</p>
+	Roles []*RocketMQRoleConfig `json:"Roles,omitnil,omitempty" name:"Roles"`
+
+	// <p>指定导入的命名空间</p>
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+}
+
+type CreateRocketMQMigrationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>任务类型：<br>0，集群迁移<br>1，导入到指定命名空间</p>
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>待导入的主题列表</p>
+	Topics []*RocketMQTopicConfig `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// <p>待导入的消费组列表</p>
+	Groups []*RocketMQGroupConfig `json:"Groups,omitnil,omitempty" name:"Groups"`
+
+	// <p>待导入的角色列表</p>
+	Roles []*RocketMQRoleConfig `json:"Roles,omitnil,omitempty" name:"Roles"`
+
+	// <p>指定导入的命名空间</p>
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+}
+
+func (r *CreateRocketMQMigrationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRocketMQMigrationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Type")
+	delete(f, "Topics")
+	delete(f, "Groups")
+	delete(f, "Roles")
+	delete(f, "Namespace")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRocketMQMigrationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRocketMQMigrationTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateRocketMQMigrationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRocketMQMigrationTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateRocketMQMigrationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRocketMQMigrationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateRocketMQNamespaceRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -15347,6 +15436,29 @@ type RocketMQNamespace struct {
 	// 内部接入点地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternalEndpoint *string `json:"InternalEndpoint,omitnil,omitempty" name:"InternalEndpoint"`
+}
+
+type RocketMQRoleConfig struct {
+	// 角色名，对应SecretKey
+	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
+
+	// accessKey
+	RoleToken *string `json:"RoleToken,omitnil,omitempty" name:"RoleToken"`
+
+	// 命名空间
+	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// 角色权限
+	Permissions []*string `json:"Permissions,omitnil,omitempty" name:"Permissions"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
+	PermType *string `json:"PermType,omitnil,omitempty" name:"PermType"`
+
+	// Topic和Group维度权限配置
+	DetailedRolePerms []*DetailedRolePerm `json:"DetailedRolePerms,omitnil,omitempty" name:"DetailedRolePerms"`
 }
 
 type RocketMQSubscription struct {

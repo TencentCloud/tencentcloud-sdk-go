@@ -204,15 +204,15 @@ type Item struct {
 }
 
 type ItemCoord struct {
-	// 算式高度
+	// <p>算式高度（单位：px）</p>
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 
-	// 算式宽度
+	// <p>算式宽度（单位：px）</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 算式图的左上角横坐标
+	// <p>算式图的左上角横坐标</p>
 	X *int64 `json:"X,omitnil,omitempty" name:"X"`
 
-	// 算式图的左上角纵坐标
+	// <p>算式图的左上角纵坐标</p>
 	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 }

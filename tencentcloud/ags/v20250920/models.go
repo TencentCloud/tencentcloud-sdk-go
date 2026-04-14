@@ -288,6 +288,9 @@ type CreateSandboxToolRequestParams struct {
 
 	// <p>沙箱工具日志推送相关配置</p>
 	LogConfiguration *LogConfiguration `json:"LogConfiguration,omitnil,omitempty" name:"LogConfiguration"`
+
+	// <p>常驻沙箱标识</p>
+	Persistent *bool `json:"Persistent,omitnil,omitempty" name:"Persistent"`
 }
 
 type CreateSandboxToolRequest struct {
@@ -325,6 +328,9 @@ type CreateSandboxToolRequest struct {
 
 	// <p>沙箱工具日志推送相关配置</p>
 	LogConfiguration *LogConfiguration `json:"LogConfiguration,omitnil,omitempty" name:"LogConfiguration"`
+
+	// <p>常驻沙箱标识</p>
+	Persistent *bool `json:"Persistent,omitnil,omitempty" name:"Persistent"`
 }
 
 func (r *CreateSandboxToolRequest) ToJsonString() string {
@@ -350,6 +356,7 @@ func (r *CreateSandboxToolRequest) FromJsonString(s string) error {
 	delete(f, "StorageMounts")
 	delete(f, "CustomConfiguration")
 	delete(f, "LogConfiguration")
+	delete(f, "Persistent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSandboxToolRequest has unknown keys!", "")
 	}
@@ -1106,6 +1113,9 @@ type SandboxInstance struct {
 	// <p>实例状态：STARTING（启动中）、RUNNING（运行中）、STOPPING（停止中）、STOPPED（已停止）、STOP_FAILED（停止失败）、FAILED（失败状态）</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
+	// <p>是否常驻实例</p>
+	Persistent *bool `json:"Persistent,omitnil,omitempty" name:"Persistent"`
+
 	// <p>超时时间（秒），null 表示无超时设置</p>
 	TimeoutSeconds *uint64 `json:"TimeoutSeconds,omitnil,omitempty" name:"TimeoutSeconds"`
 
@@ -1149,6 +1159,9 @@ type SandboxTool struct {
 
 	// <p>沙箱工具描述信息，最大长度 200 字符</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>是否常驻沙箱</p>
+	Persistent *bool `json:"Persistent,omitnil,omitempty" name:"Persistent"`
 
 	// <p>默认超时时间，支持格式：5m、300s、1h 等，不指定则使用系统默认值（5 分钟）。最大 24 小时</p>
 	DefaultTimeoutSeconds *uint64 `json:"DefaultTimeoutSeconds,omitnil,omitempty" name:"DefaultTimeoutSeconds"`
