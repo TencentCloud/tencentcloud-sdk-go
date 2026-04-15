@@ -618,6 +618,7 @@ func NewCreateProClusterResponse() (response *CreateProClusterResponse) {
 //  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_PRODUCTNOTEXIST = "FailedOperation.ProductNotExist"
 //  FAILEDOPERATION_STORAGESIZEERROR = "FailedOperation.StorageSizeError"
+//  INVALIDPARAMETER_INSTANCEVERSION = "InvalidParameter.InstanceVersion"
 //  INVALIDPARAMETER_VPC = "InvalidParameter.Vpc"
 //  MISSINGPARAMETER_TAG = "MissingParameter.Tag"
 func (c *Client) CreateProCluster(request *CreateProClusterRequest) (response *CreateProClusterResponse, err error) {
@@ -634,6 +635,7 @@ func (c *Client) CreateProCluster(request *CreateProClusterRequest) (response *C
 //  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_PRODUCTNOTEXIST = "FailedOperation.ProductNotExist"
 //  FAILEDOPERATION_STORAGESIZEERROR = "FailedOperation.StorageSizeError"
+//  INVALIDPARAMETER_INSTANCEVERSION = "InvalidParameter.InstanceVersion"
 //  INVALIDPARAMETER_VPC = "InvalidParameter.Vpc"
 //  MISSINGPARAMETER_TAG = "MissingParameter.Tag"
 func (c *Client) CreateProClusterWithContext(ctx context.Context, request *CreateProClusterRequest) (response *CreateProClusterResponse, err error) {

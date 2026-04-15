@@ -10176,6 +10176,9 @@ type RiskDetailItem struct {
 
 	// 风险验证状态
 	CheckStatus *string `json:"CheckStatus,omitnil,omitempty" name:"CheckStatus"`
+
+
+	AppID *uint64 `json:"AppID,omitnil,omitempty" name:"AppID"`
 }
 
 type RiskRuleInfo struct {

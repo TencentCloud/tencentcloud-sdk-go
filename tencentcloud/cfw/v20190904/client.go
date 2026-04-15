@@ -3769,6 +3769,58 @@ func (c *Client) DescribeLogsWithContext(ctx context.Context, request *DescribeL
     return
 }
 
+func NewDescribeNDRAssetIdentificationListRequest() (request *DescribeNDRAssetIdentificationListRequest) {
+    request = &DescribeNDRAssetIdentificationListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeNDRAssetIdentificationList")
+    
+    
+    return
+}
+
+func NewDescribeNDRAssetIdentificationListResponse() (response *DescribeNDRAssetIdentificationListResponse) {
+    response = &DescribeNDRAssetIdentificationListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNDRAssetIdentificationList
+// DescribeNDRAssetIdentificationList - 获取NDR资产识别结果列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNDRAssetIdentificationList(request *DescribeNDRAssetIdentificationListRequest) (response *DescribeNDRAssetIdentificationListResponse, err error) {
+    return c.DescribeNDRAssetIdentificationListWithContext(context.Background(), request)
+}
+
+// DescribeNDRAssetIdentificationList
+// DescribeNDRAssetIdentificationList - 获取NDR资产识别结果列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNDRAssetIdentificationListWithContext(ctx context.Context, request *DescribeNDRAssetIdentificationListRequest) (response *DescribeNDRAssetIdentificationListResponse, err error) {
+    if request == nil {
+        request = NewDescribeNDRAssetIdentificationListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeNDRAssetIdentificationList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNDRAssetIdentificationList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNDRAssetIdentificationListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNatAcRuleRequest() (request *DescribeNatAcRuleRequest) {
     request = &DescribeNatAcRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},

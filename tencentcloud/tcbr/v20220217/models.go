@@ -2141,6 +2141,77 @@ type SimpleVersion struct {
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 }
 
+// Predefined struct for user
+type StartVersionInstanceRequestParams struct {
+	// 环境Id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
+
+	// 版本名
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+}
+
+type StartVersionInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境Id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
+
+	// 版本名
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+}
+
+func (r *StartVersionInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartVersionInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServerName")
+	delete(f, "VersionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartVersionInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartVersionInstanceResponseParams struct {
+	// pod名
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StartVersionInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *StartVersionInstanceResponseParams `json:"Response"`
+}
+
+func (r *StartVersionInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartVersionInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type StaticStorageInfo struct {
 	// 静态CDN域名
 	StaticDomain *string `json:"StaticDomain,omitnil,omitempty" name:"StaticDomain"`
@@ -2156,6 +2227,74 @@ type StaticStorageInfo struct {
 
 	// bucket信息
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+}
+
+// Predefined struct for user
+type StopVersionInstanceRequestParams struct {
+	// 环境Id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
+
+	// 实例名
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+}
+
+type StopVersionInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境Id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
+
+	// 实例名
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+}
+
+func (r *StopVersionInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopVersionInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServerName")
+	delete(f, "InstanceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopVersionInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopVersionInstanceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopVersionInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *StopVersionInstanceResponseParams `json:"Response"`
+}
+
+func (r *StopVersionInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopVersionInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type StorageInfo struct {

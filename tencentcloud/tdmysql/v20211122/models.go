@@ -38,6 +38,48 @@ type ArchiveLogInterval struct {
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 }
 
+type ArchiveLogModel struct {
+	// 归档日志ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ArchiveLogId *int64 `json:"ArchiveLogId,omitnil,omitempty" name:"ArchiveLogId"`
+
+	// 备份耗时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupDuration *int64 `json:"BackupDuration,omitnil,omitempty" name:"BackupDuration"`
+
+	// 备份集状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupStatus *string `json:"BackupStatus,omitnil,omitempty" name:"BackupStatus"`
+
+	// 备份结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
+
+	// 备份文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 备份集文件大小，单位Byte
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 备份开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+}
+
 type BackupPolicyModelInput struct {
 	// <p>备份结束时间</p>
 	BackupEndTime *string `json:"BackupEndTime,omitnil,omitempty" name:"BackupEndTime"`
@@ -432,6 +474,123 @@ func (r *DescribeDBParametersResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDBParametersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBSArchiveLogsRequestParams struct {
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>日志记录ID</p>
+	ArchiveLogId *int64 `json:"ArchiveLogId,omitnil,omitempty" name:"ArchiveLogId"`
+
+	// <p>结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>备份状态：pending,running,success,failed</p>
+	FilterStatus *string `json:"FilterStatus,omitnil,omitempty" name:"FilterStatus"`
+
+	// <p>条数限制</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序字段，枚举：StartTime,EndTime,ExpiredTime,FileSize,BackupDuration</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// <p>排序方式：ASC：顺序, DESC：倒序</p>
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// <p>开始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+}
+
+type DescribeDBSArchiveLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>日志记录ID</p>
+	ArchiveLogId *int64 `json:"ArchiveLogId,omitnil,omitempty" name:"ArchiveLogId"`
+
+	// <p>结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>备份状态：pending,running,success,failed</p>
+	FilterStatus *string `json:"FilterStatus,omitnil,omitempty" name:"FilterStatus"`
+
+	// <p>条数限制</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序字段，枚举：StartTime,EndTime,ExpiredTime,FileSize,BackupDuration</p>
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// <p>排序方式：ASC：顺序, DESC：倒序</p>
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// <p>开始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+}
+
+func (r *DescribeDBSArchiveLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBSArchiveLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ArchiveLogId")
+	delete(f, "EndTime")
+	delete(f, "FilterStatus")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "OrderBy")
+	delete(f, "OrderType")
+	delete(f, "StartTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBSArchiveLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBSArchiveLogsResponseParams struct {
+	// <p>归档日志列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*ArchiveLogModel `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// <p>总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDBSArchiveLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBSArchiveLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBSArchiveLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBSArchiveLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

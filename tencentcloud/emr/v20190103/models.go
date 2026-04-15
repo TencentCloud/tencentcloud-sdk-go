@@ -2888,6 +2888,89 @@ func (r *DescribeAutoScaleStrategiesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBootScriptRequestParams struct {
+	// EMR实例序列号
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 引导脚本类型，resourceAfter,clusterAfter,clusterBefore不填时表示全部时机
+	BootType *string `json:"BootType,omitnil,omitempty" name:"BootType"`
+}
+
+type DescribeBootScriptRequest struct {
+	*tchttp.BaseRequest
+	
+	// EMR实例序列号
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 引导脚本类型，resourceAfter,clusterAfter,clusterBefore不填时表示全部时机
+	BootType *string `json:"BootType,omitnil,omitempty" name:"BootType"`
+}
+
+func (r *DescribeBootScriptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBootScriptRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "BootType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBootScriptRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBootScriptResponseParams struct {
+	// 引导脚本详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Detail *DescribeBootScriptRsp `json:"Detail,omitnil,omitempty" name:"Detail"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBootScriptResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBootScriptResponseParams `json:"Response"`
+}
+
+func (r *DescribeBootScriptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBootScriptResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBootScriptRsp struct {
+	// 资源初始化结束自定义脚本文件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceAfter []*PreExecuteFileSetting `json:"ResourceAfter,omitnil,omitempty" name:"ResourceAfter"`
+
+	// 集群启动前自定义脚本文件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterBefore []*PreExecuteFileSetting `json:"ClusterBefore,omitnil,omitempty" name:"ClusterBefore"`
+
+	// 集群启动后自定义脚本文件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterAfter []*PreExecuteFileSetting `json:"ClusterAfter,omitnil,omitempty" name:"ClusterAfter"`
+
+	// 服务下线前自定义脚本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceBefore []*PreExecuteFileSetting `json:"ServiceBefore,omitnil,omitempty" name:"ServiceBefore"`
+}
+
+// Predefined struct for user
 type DescribeClusterFlowStatusDetailRequestParams struct {
 	// EMR实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -8913,6 +8996,74 @@ func (r *ModifyAutoScaleStrategyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyBootScriptRequestParams struct {
+	// EMR实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 引导脚本类型,resourceAfter,clusterAfter,clusterBefore
+	BootType *string `json:"BootType,omitnil,omitempty" name:"BootType"`
+
+	// 引导脚本的具体变更，如为空表示WhenRun时机无引导脚本
+	PreExecutedFileSettings []*PreExecuteFileSetting `json:"PreExecutedFileSettings,omitnil,omitempty" name:"PreExecutedFileSettings"`
+}
+
+type ModifyBootScriptRequest struct {
+	*tchttp.BaseRequest
+	
+	// EMR实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 引导脚本类型,resourceAfter,clusterAfter,clusterBefore
+	BootType *string `json:"BootType,omitnil,omitempty" name:"BootType"`
+
+	// 引导脚本的具体变更，如为空表示WhenRun时机无引导脚本
+	PreExecutedFileSettings []*PreExecuteFileSetting `json:"PreExecutedFileSettings,omitnil,omitempty" name:"PreExecutedFileSettings"`
+}
+
+func (r *ModifyBootScriptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBootScriptRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "BootType")
+	delete(f, "PreExecutedFileSettings")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBootScriptRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBootScriptResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBootScriptResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBootScriptResponseParams `json:"Response"`
+}
+
+func (r *ModifyBootScriptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBootScriptResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyGlobalConfigRequestParams struct {
 	// emr集群的英文id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -11325,6 +11476,47 @@ type PodVolume struct {
 	// 当VolumeType为"hostpath"时，该字段生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostVolume *HostVolumeContext `json:"HostVolume,omitnil,omitempty" name:"HostVolume"`
+}
+
+type PreExecuteFileSetting struct {
+	// 脚本在COS上路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 执行脚本参数
+	Args *string `json:"Args,omitnil,omitempty" name:"Args"`
+
+	// COS的Bucket名称
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// COS的Region名称
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// COS的Domain数据
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 执行顺序
+	RunOrder *int64 `json:"RunOrder,omitnil,omitempty" name:"RunOrder"`
+
+	// resourceAfter 或 clusterAfter
+	WhenRun *string `json:"WhenRun,omitnil,omitempty" name:"WhenRun"`
+
+	// 脚本文件名
+	CosFileName *string `json:"CosFileName,omitnil,omitempty" name:"CosFileName"`
+
+	// 脚本的cos地址
+	CosFileURI *string `json:"CosFileURI,omitnil,omitempty" name:"CosFileURI"`
+
+	// cos的SecretId
+	CosSecretId *string `json:"CosSecretId,omitnil,omitempty" name:"CosSecretId"`
+
+	// Cos的SecretKey
+	CosSecretKey *string `json:"CosSecretKey,omitnil,omitempty" name:"CosSecretKey"`
+
+	// cos的appid
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type PreExecuteFileSettings struct {

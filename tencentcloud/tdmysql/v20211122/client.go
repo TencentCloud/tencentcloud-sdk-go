@@ -281,6 +281,62 @@ func (c *Client) DescribeDBParametersWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeDBSArchiveLogsRequest() (request *DescribeDBSArchiveLogsRequest) {
+    request = &DescribeDBSArchiveLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "DescribeDBSArchiveLogs")
+    
+    
+    return
+}
+
+func NewDescribeDBSArchiveLogsResponse() (response *DescribeDBSArchiveLogsResponse) {
+    response = &DescribeDBSArchiveLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBSArchiveLogs
+// 查询实例归档日志列表 DescribeDBSArchiveLogs
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_DESCRIBEDBOBJECTSERROR = "InternalError.DescribeDBObjectsError"
+//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+func (c *Client) DescribeDBSArchiveLogs(request *DescribeDBSArchiveLogsRequest) (response *DescribeDBSArchiveLogsResponse, err error) {
+    return c.DescribeDBSArchiveLogsWithContext(context.Background(), request)
+}
+
+// DescribeDBSArchiveLogs
+// 查询实例归档日志列表 DescribeDBSArchiveLogs
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_DESCRIBEDBOBJECTSERROR = "InternalError.DescribeDBObjectsError"
+//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+func (c *Client) DescribeDBSArchiveLogsWithContext(ctx context.Context, request *DescribeDBSArchiveLogsRequest) (response *DescribeDBSArchiveLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBSArchiveLogsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DescribeDBSArchiveLogs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBSArchiveLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBSArchiveLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBSAvailableRecoveryTimeRequest() (request *DescribeDBSAvailableRecoveryTimeRequest) {
     request = &DescribeDBSAvailableRecoveryTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},

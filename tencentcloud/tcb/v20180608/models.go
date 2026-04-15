@@ -4899,85 +4899,79 @@ type EnvBillingInfoItem struct {
 }
 
 type EnvInfo struct {
-	// 账户下该环境唯一标识
+	// <p>账户下该环境唯一标识</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 环境来源。包含以下取值：
-	// <li>miniapp：微信小程序</li>
-	// <li>qcloud ：腾讯云</li>
+	// <p>环境来源。包含以下取值：</p><li>miniapp：微信小程序</li><li>qcloud ：腾讯云</li>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 环境别名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符
+	// <p>环境别名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符</p>
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 最后修改时间
+	// <p>最后修改时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 环境状态。包含以下取值：
-	// <li>NORMAL：正常可用</li>
-	// <li>UNAVAILABLE：服务不可用，可能是尚未初始化或者初始化过程中</li>
+	// <p>环境状态。包含以下取值：</p><li>NORMAL：正常可用</li><li>UNAVAILABLE：服务不可用，可能是尚未初始化或者初始化过程中</li>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 数据库列表
+	// <p>数据库列表</p>
 	Databases []*DatabasesInfo `json:"Databases,omitnil,omitempty" name:"Databases"`
 
-	// 存储列表
+	// <p>存储列表</p>
 	Storages []*StorageInfo `json:"Storages,omitnil,omitempty" name:"Storages"`
 
-	// 函数列表
+	// <p>函数列表</p>
 	Functions []*FunctionInfo `json:"Functions,omitnil,omitempty" name:"Functions"`
 
-	// tcb产品套餐ID，参考DescribePackages接口的返回值。
+	// <p>tcb产品套餐ID，参考DescribePackages接口的返回值。</p>
 	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
-	// 套餐中文名称，参考DescribePackages接口的返回值。
+	// <p>套餐中文名称，参考DescribePackages接口的返回值。</p>
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
-	// 云日志服务列表
+	// <p>云日志服务列表</p>
 	LogServices []*LogServiceInfo `json:"LogServices,omitnil,omitempty" name:"LogServices"`
 
-	// 静态资源信息
+	// <p>静态资源信息</p>
 	StaticStorages []*StaticStorageInfo `json:"StaticStorages,omitnil,omitempty" name:"StaticStorages"`
 
-	// 是否到期自动降为免费版
+	// <p>是否到期自动降为免费版</p>
 	IsAutoDegrade *bool `json:"IsAutoDegrade,omitnil,omitempty" name:"IsAutoDegrade"`
 
-	// 环境渠道
+	// <p>环境渠道</p>
 	EnvChannel *string `json:"EnvChannel,omitnil,omitempty" name:"EnvChannel"`
 
-	// 支付方式。包含以下取值：
-	// <li> prepayment：预付费</li>
-	// <li> postpaid：后付费</li>
+	// <p>支付方式。包含以下取值：</p><li> prepayment：预付费</li><li> postpaid：后付费</li>
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 是否为默认环境
+	// <p>是否为默认环境</p>
 	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 
-	// 环境所属地域
+	// <p>环境所属地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 环境标签列表
+	// <p>环境标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 自定义日志服务
+	// <p>自定义日志服务</p>
 	CustomLogServices []*ClsInfo `json:"CustomLogServices,omitnil,omitempty" name:"CustomLogServices"`
 
-	// 环境类型：baas, run, hoting, weda
+	// <p>环境类型：baas, run, hoting, weda</p>
 	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
 
-	// 是否是dau新套餐
+	// <p>是否是dau新套餐</p>
 	IsDauPackage *bool `json:"IsDauPackage,omitnil,omitempty" name:"IsDauPackage"`
 
-	// 套餐类型:空\baas\tcbr
+	// <p>套餐类型:空\baas\tcbr</p>
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
-	// 架构类型
+	// <p>架构类型</p>
 	ArchitectureType *string `json:"ArchitectureType,omitnil,omitempty" name:"ArchitectureType"`
 
-	// 回收标志，默认为空
+	// <p>回收标志，默认为空</p>
 	Recycle *string `json:"Recycle,omitnil,omitempty" name:"Recycle"`
 }
 
@@ -7378,20 +7372,26 @@ func (r *SearchClsLogResponse) FromJsonString(s string) error {
 }
 
 type StaticStorageInfo struct {
-	// 静态CDN域名
+	// <p>静态CDN域名</p>
 	StaticDomain *string `json:"StaticDomain,omitnil,omitempty" name:"StaticDomain"`
 
-	// 静态CDN默认文件夹，当前为根目录
+	// <p>静态CDN默认文件夹，当前为根目录</p>
 	DefaultDirName *string `json:"DefaultDirName,omitnil,omitempty" name:"DefaultDirName"`
 
-	// 资源状态(process/online/offline/init)
+	// <p>资源状态(process/online/offline/init)</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// cos所属区域
+	// <p>cos所属区域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// bucket信息
+	// <p>bucket信息</p>
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// <p>到期时间（秒级时间戳）</p>
+	AccessExpire *int64 `json:"AccessExpire,omitnil,omitempty" name:"AccessExpire"`
+
+	// <p>外部存储。</p>
+	ExternalStorage *ExternalStorage `json:"ExternalStorage,omitnil,omitempty" name:"ExternalStorage"`
 }
 
 type StaticStoreInfo struct {
@@ -7423,18 +7423,20 @@ type StaticStoreInfo struct {
 }
 
 type StorageInfo struct {
-	// 资源所属地域。
-	// 当前支持ap-shanghai
+	// <p>资源所属地域。<br>当前支持ap-shanghai</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 桶名，存储资源的唯一标识
+	// <p>桶名，存储资源的唯一标识</p>
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// cdn 域名
+	// <p>cdn 域名</p>
 	CdnDomain *string `json:"CdnDomain,omitnil,omitempty" name:"CdnDomain"`
 
-	// 资源所属用户的腾讯云appId
+	// <p>资源所属用户的腾讯云appId</p>
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>外部存储介质相关信息。</p>
+	ExternalStorage *ExternalStorage `json:"ExternalStorage,omitnil,omitempty" name:"ExternalStorage"`
 }
 
 type TableInfo struct {

@@ -1563,6 +1563,66 @@ func (c *Client) DescribeAutoScaleStrategiesWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeBootScriptRequest() (request *DescribeBootScriptRequest) {
+    request = &DescribeBootScriptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeBootScript")
+    
+    
+    return
+}
+
+func NewDescribeBootScriptResponse() (response *DescribeBootScriptResponse) {
+    response = &DescribeBootScriptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBootScript
+// 获取引导脚本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INVALIDPARAMETER_INVALIDCOSFILEURI = "InvalidParameter.InvalidCosFileURI"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+//  UNSUPPORTEDOPERATION_SERVICENOTSUPPORT = "UnsupportedOperation.ServiceNotSupport"
+func (c *Client) DescribeBootScript(request *DescribeBootScriptRequest) (response *DescribeBootScriptResponse, err error) {
+    return c.DescribeBootScriptWithContext(context.Background(), request)
+}
+
+// DescribeBootScript
+// 获取引导脚本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INVALIDPARAMETER_INVALIDCOSFILEURI = "InvalidParameter.InvalidCosFileURI"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+//  UNSUPPORTEDOPERATION_SERVICENOTSUPPORT = "UnsupportedOperation.ServiceNotSupport"
+func (c *Client) DescribeBootScriptWithContext(ctx context.Context, request *DescribeBootScriptRequest) (response *DescribeBootScriptResponse, err error) {
+    if request == nil {
+        request = NewDescribeBootScriptRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeBootScript")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBootScript require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBootScriptResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterFlowStatusDetailRequest() (request *DescribeClusterFlowStatusDetailRequest) {
     request = &DescribeClusterFlowStatusDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5091,6 +5151,70 @@ func (c *Client) ModifyAutoScaleStrategyWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyAutoScaleStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBootScriptRequest() (request *ModifyBootScriptRequest) {
+    request = &ModifyBootScriptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "ModifyBootScript")
+    
+    
+    return
+}
+
+func NewModifyBootScriptResponse() (response *ModifyBootScriptResponse) {
+    response = &ModifyBootScriptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyBootScript
+// 修改引导脚本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_CAMERROR = "InternalError.CamError"
+//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) ModifyBootScript(request *ModifyBootScriptRequest) (response *ModifyBootScriptResponse, err error) {
+    return c.ModifyBootScriptWithContext(context.Background(), request)
+}
+
+// ModifyBootScript
+// 修改引导脚本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_CAMERROR = "InternalError.CamError"
+//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) ModifyBootScriptWithContext(ctx context.Context, request *ModifyBootScriptRequest) (response *ModifyBootScriptResponse, err error) {
+    if request == nil {
+        request = NewModifyBootScriptRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifyBootScript")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBootScript require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBootScriptResponse()
     err = c.Send(request, response)
     return
 }

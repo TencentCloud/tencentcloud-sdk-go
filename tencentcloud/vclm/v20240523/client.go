@@ -513,6 +513,252 @@ func (c *Client) DescribeImageToVideoGeneralJobWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeImageToVideoJobRequest() (request *DescribeImageToVideoJobRequest) {
+    request = &DescribeImageToVideoJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "DescribeImageToVideoJob")
+    
+    
+    return
+}
+
+func NewDescribeImageToVideoJobResponse() (response *DescribeImageToVideoJobResponse) {
+    response = &DescribeImageToVideoJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageToVideoJob
+// 用于查询视频特效任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_IMAGEBODYSMALL = "FailedOperation.ImageBodySmall"
+//  FAILEDOPERATION_IMAGECHECKNOBODY = "FailedOperation.ImageCheckNoBody"
+//  FAILEDOPERATION_IMAGEDETECTFACEFAILED = "FailedOperation.ImageDetectFaceFailed"
+//  FAILEDOPERATION_IMAGEMANYPEOPLE = "FailedOperation.ImageManyPeople"
+//  FAILEDOPERATION_IMAGERADIOEXCCEED = "FailedOperation.ImageRadioExcceed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  FAILEDOPERATION_KEYPOINTUNDETECTED = "FailedOperation.KeyPointUndetected"
+//  FAILEDOPERATION_TEMPLATEFIRSTFRAMENOTDETECTFACE = "FailedOperation.TemplateFirstFrameNotDetectFace"
+//  FAILEDOPERATION_TEMPLATENOTDETECTBODY = "FailedOperation.TemplateNotDetectBody"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeImageToVideoJob(request *DescribeImageToVideoJobRequest) (response *DescribeImageToVideoJobResponse, err error) {
+    return c.DescribeImageToVideoJobWithContext(context.Background(), request)
+}
+
+// DescribeImageToVideoJob
+// 用于查询视频特效任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_IMAGEBODYSMALL = "FailedOperation.ImageBodySmall"
+//  FAILEDOPERATION_IMAGECHECKNOBODY = "FailedOperation.ImageCheckNoBody"
+//  FAILEDOPERATION_IMAGEDETECTFACEFAILED = "FailedOperation.ImageDetectFaceFailed"
+//  FAILEDOPERATION_IMAGEMANYPEOPLE = "FailedOperation.ImageManyPeople"
+//  FAILEDOPERATION_IMAGERADIOEXCCEED = "FailedOperation.ImageRadioExcceed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  FAILEDOPERATION_KEYPOINTUNDETECTED = "FailedOperation.KeyPointUndetected"
+//  FAILEDOPERATION_TEMPLATEFIRSTFRAMENOTDETECTFACE = "FailedOperation.TemplateFirstFrameNotDetectFace"
+//  FAILEDOPERATION_TEMPLATENOTDETECTBODY = "FailedOperation.TemplateNotDetectBody"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeImageToVideoJobWithContext(ctx context.Context, request *DescribeImageToVideoJobRequest) (response *DescribeImageToVideoJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageToVideoJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "DescribeImageToVideoJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageToVideoJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageToVideoJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageToVideoViduJobRequest() (request *DescribeImageToVideoViduJobRequest) {
+    request = &DescribeImageToVideoViduJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "DescribeImageToVideoViduJob")
+    
+    
+    return
+}
+
+func NewDescribeImageToVideoViduJobResponse() (response *DescribeImageToVideoViduJobResponse) {
+    response = &DescribeImageToVideoViduJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageToVideoViduJob
+// 查询Vidu图生视频任务接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_IMAGEBODYSMALL = "FailedOperation.ImageBodySmall"
+//  FAILEDOPERATION_IMAGECHECKNOBODY = "FailedOperation.ImageCheckNoBody"
+//  FAILEDOPERATION_IMAGEDETECTFACEFAILED = "FailedOperation.ImageDetectFaceFailed"
+//  FAILEDOPERATION_IMAGEMANYPEOPLE = "FailedOperation.ImageManyPeople"
+//  FAILEDOPERATION_IMAGERADIOEXCCEED = "FailedOperation.ImageRadioExcceed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  FAILEDOPERATION_KEYPOINTUNDETECTED = "FailedOperation.KeyPointUndetected"
+//  FAILEDOPERATION_TEMPLATEFIRSTFRAMENOTDETECTFACE = "FailedOperation.TemplateFirstFrameNotDetectFace"
+//  FAILEDOPERATION_TEMPLATENOTDETECTBODY = "FailedOperation.TemplateNotDetectBody"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeImageToVideoViduJob(request *DescribeImageToVideoViduJobRequest) (response *DescribeImageToVideoViduJobResponse, err error) {
+    return c.DescribeImageToVideoViduJobWithContext(context.Background(), request)
+}
+
+// DescribeImageToVideoViduJob
+// 查询Vidu图生视频任务接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_IMAGEBODYSMALL = "FailedOperation.ImageBodySmall"
+//  FAILEDOPERATION_IMAGECHECKNOBODY = "FailedOperation.ImageCheckNoBody"
+//  FAILEDOPERATION_IMAGEDETECTFACEFAILED = "FailedOperation.ImageDetectFaceFailed"
+//  FAILEDOPERATION_IMAGEMANYPEOPLE = "FailedOperation.ImageManyPeople"
+//  FAILEDOPERATION_IMAGERADIOEXCCEED = "FailedOperation.ImageRadioExcceed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  FAILEDOPERATION_KEYPOINTUNDETECTED = "FailedOperation.KeyPointUndetected"
+//  FAILEDOPERATION_TEMPLATEFIRSTFRAMENOTDETECTFACE = "FailedOperation.TemplateFirstFrameNotDetectFace"
+//  FAILEDOPERATION_TEMPLATENOTDETECTBODY = "FailedOperation.TemplateNotDetectBody"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeImageToVideoViduJobWithContext(ctx context.Context, request *DescribeImageToVideoViduJobRequest) (response *DescribeImageToVideoViduJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageToVideoViduJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "DescribeImageToVideoViduJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageToVideoViduJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageToVideoViduJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMotionControlKlingJobRequest() (request *DescribeMotionControlKlingJobRequest) {
+    request = &DescribeMotionControlKlingJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "DescribeMotionControlKlingJob")
+    
+    
+    return
+}
+
+func NewDescribeMotionControlKlingJobResponse() (response *DescribeMotionControlKlingJobResponse) {
+    response = &DescribeMotionControlKlingJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMotionControlKlingJob
+// 查询Kling动作控制任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_IMAGEBODYSMALL = "FailedOperation.ImageBodySmall"
+//  FAILEDOPERATION_IMAGECHECKNOBODY = "FailedOperation.ImageCheckNoBody"
+//  FAILEDOPERATION_IMAGEDETECTFACEFAILED = "FailedOperation.ImageDetectFaceFailed"
+//  FAILEDOPERATION_IMAGEMANYPEOPLE = "FailedOperation.ImageManyPeople"
+//  FAILEDOPERATION_IMAGERADIOEXCCEED = "FailedOperation.ImageRadioExcceed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  FAILEDOPERATION_KEYPOINTUNDETECTED = "FailedOperation.KeyPointUndetected"
+//  FAILEDOPERATION_TEMPLATEFIRSTFRAMENOTDETECTFACE = "FailedOperation.TemplateFirstFrameNotDetectFace"
+//  FAILEDOPERATION_TEMPLATENOTDETECTBODY = "FailedOperation.TemplateNotDetectBody"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeMotionControlKlingJob(request *DescribeMotionControlKlingJobRequest) (response *DescribeMotionControlKlingJobResponse, err error) {
+    return c.DescribeMotionControlKlingJobWithContext(context.Background(), request)
+}
+
+// DescribeMotionControlKlingJob
+// 查询Kling动作控制任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_IMAGEBODYSMALL = "FailedOperation.ImageBodySmall"
+//  FAILEDOPERATION_IMAGECHECKNOBODY = "FailedOperation.ImageCheckNoBody"
+//  FAILEDOPERATION_IMAGEDETECTFACEFAILED = "FailedOperation.ImageDetectFaceFailed"
+//  FAILEDOPERATION_IMAGEMANYPEOPLE = "FailedOperation.ImageManyPeople"
+//  FAILEDOPERATION_IMAGERADIOEXCCEED = "FailedOperation.ImageRadioExcceed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  FAILEDOPERATION_KEYPOINTUNDETECTED = "FailedOperation.KeyPointUndetected"
+//  FAILEDOPERATION_TEMPLATEFIRSTFRAMENOTDETECTFACE = "FailedOperation.TemplateFirstFrameNotDetectFace"
+//  FAILEDOPERATION_TEMPLATENOTDETECTBODY = "FailedOperation.TemplateNotDetectBody"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeMotionControlKlingJobWithContext(ctx context.Context, request *DescribeMotionControlKlingJobRequest) (response *DescribeMotionControlKlingJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeMotionControlKlingJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "DescribeMotionControlKlingJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMotionControlKlingJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMotionControlKlingJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePortraitSingJobRequest() (request *DescribePortraitSingJobRequest) {
     request = &DescribePortraitSingJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -571,6 +817,64 @@ func (c *Client) DescribePortraitSingJobWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribePortraitSingJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReferenceToVideoViduJobRequest() (request *DescribeReferenceToVideoViduJobRequest) {
+    request = &DescribeReferenceToVideoViduJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "DescribeReferenceToVideoViduJob")
+    
+    
+    return
+}
+
+func NewDescribeReferenceToVideoViduJobResponse() (response *DescribeReferenceToVideoViduJobResponse) {
+    response = &DescribeReferenceToVideoViduJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeReferenceToVideoViduJob
+// 查询Vidu参考生视频任务接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MODERATIONAUDIOFAILED = "FailedOperation.ModerationAudioFailed"
+//  INVALIDPARAMETERVALUE_INVALIDAUDIODURATION = "InvalidParameterValue.InvalidAudioDuration"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEASPECTRATIO = "InvalidParameterValue.InvalidImageAspectRatio"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEFORMAT = "InvalidParameterValue.InvalidImageFormat"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGERESOLUTION = "InvalidParameterValue.InvalidImageResolution"
+func (c *Client) DescribeReferenceToVideoViduJob(request *DescribeReferenceToVideoViduJobRequest) (response *DescribeReferenceToVideoViduJobResponse, err error) {
+    return c.DescribeReferenceToVideoViduJobWithContext(context.Background(), request)
+}
+
+// DescribeReferenceToVideoViduJob
+// 查询Vidu参考生视频任务接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MODERATIONAUDIOFAILED = "FailedOperation.ModerationAudioFailed"
+//  INVALIDPARAMETERVALUE_INVALIDAUDIODURATION = "InvalidParameterValue.InvalidAudioDuration"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEASPECTRATIO = "InvalidParameterValue.InvalidImageAspectRatio"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEFORMAT = "InvalidParameterValue.InvalidImageFormat"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGERESOLUTION = "InvalidParameterValue.InvalidImageResolution"
+func (c *Client) DescribeReferenceToVideoViduJobWithContext(ctx context.Context, request *DescribeReferenceToVideoViduJobRequest) (response *DescribeReferenceToVideoViduJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeReferenceToVideoViduJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "DescribeReferenceToVideoViduJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReferenceToVideoViduJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReferenceToVideoViduJobResponse()
     err = c.Send(request, response)
     return
 }
@@ -637,6 +941,170 @@ func (c *Client) DescribeTemplateToVideoJobWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeTextToVideoJobRequest() (request *DescribeTextToVideoJobRequest) {
+    request = &DescribeTextToVideoJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "DescribeTextToVideoJob")
+    
+    
+    return
+}
+
+func NewDescribeTextToVideoJobResponse() (response *DescribeTextToVideoJobResponse) {
+    response = &DescribeTextToVideoJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTextToVideoJob
+// 用于查询文生视频任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_IMAGEBODYSMALL = "FailedOperation.ImageBodySmall"
+//  FAILEDOPERATION_IMAGECHECKNOBODY = "FailedOperation.ImageCheckNoBody"
+//  FAILEDOPERATION_IMAGEDETECTFACEFAILED = "FailedOperation.ImageDetectFaceFailed"
+//  FAILEDOPERATION_IMAGEMANYPEOPLE = "FailedOperation.ImageManyPeople"
+//  FAILEDOPERATION_IMAGERADIOEXCCEED = "FailedOperation.ImageRadioExcceed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  FAILEDOPERATION_KEYPOINTUNDETECTED = "FailedOperation.KeyPointUndetected"
+//  FAILEDOPERATION_TEMPLATEFIRSTFRAMENOTDETECTFACE = "FailedOperation.TemplateFirstFrameNotDetectFace"
+//  FAILEDOPERATION_TEMPLATENOTDETECTBODY = "FailedOperation.TemplateNotDetectBody"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeTextToVideoJob(request *DescribeTextToVideoJobRequest) (response *DescribeTextToVideoJobResponse, err error) {
+    return c.DescribeTextToVideoJobWithContext(context.Background(), request)
+}
+
+// DescribeTextToVideoJob
+// 用于查询文生视频任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_IMAGEBODYSMALL = "FailedOperation.ImageBodySmall"
+//  FAILEDOPERATION_IMAGECHECKNOBODY = "FailedOperation.ImageCheckNoBody"
+//  FAILEDOPERATION_IMAGEDETECTFACEFAILED = "FailedOperation.ImageDetectFaceFailed"
+//  FAILEDOPERATION_IMAGEMANYPEOPLE = "FailedOperation.ImageManyPeople"
+//  FAILEDOPERATION_IMAGERADIOEXCCEED = "FailedOperation.ImageRadioExcceed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  FAILEDOPERATION_KEYPOINTUNDETECTED = "FailedOperation.KeyPointUndetected"
+//  FAILEDOPERATION_TEMPLATEFIRSTFRAMENOTDETECTFACE = "FailedOperation.TemplateFirstFrameNotDetectFace"
+//  FAILEDOPERATION_TEMPLATENOTDETECTBODY = "FailedOperation.TemplateNotDetectBody"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeTextToVideoJobWithContext(ctx context.Context, request *DescribeTextToVideoJobRequest) (response *DescribeTextToVideoJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeTextToVideoJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "DescribeTextToVideoJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTextToVideoJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTextToVideoJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTextToVideoViduJobRequest() (request *DescribeTextToVideoViduJobRequest) {
+    request = &DescribeTextToVideoViduJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "DescribeTextToVideoViduJob")
+    
+    
+    return
+}
+
+func NewDescribeTextToVideoViduJobResponse() (response *DescribeTextToVideoViduJobResponse) {
+    response = &DescribeTextToVideoViduJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTextToVideoViduJob
+// 查询Vidu文生视频任务接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_IMAGEBODYSMALL = "FailedOperation.ImageBodySmall"
+//  FAILEDOPERATION_IMAGECHECKNOBODY = "FailedOperation.ImageCheckNoBody"
+//  FAILEDOPERATION_IMAGEDETECTFACEFAILED = "FailedOperation.ImageDetectFaceFailed"
+//  FAILEDOPERATION_IMAGEMANYPEOPLE = "FailedOperation.ImageManyPeople"
+//  FAILEDOPERATION_IMAGERADIOEXCCEED = "FailedOperation.ImageRadioExcceed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  FAILEDOPERATION_KEYPOINTUNDETECTED = "FailedOperation.KeyPointUndetected"
+//  FAILEDOPERATION_TEMPLATEFIRSTFRAMENOTDETECTFACE = "FailedOperation.TemplateFirstFrameNotDetectFace"
+//  FAILEDOPERATION_TEMPLATENOTDETECTBODY = "FailedOperation.TemplateNotDetectBody"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeTextToVideoViduJob(request *DescribeTextToVideoViduJobRequest) (response *DescribeTextToVideoViduJobResponse, err error) {
+    return c.DescribeTextToVideoViduJobWithContext(context.Background(), request)
+}
+
+// DescribeTextToVideoViduJob
+// 查询Vidu文生视频任务接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_IMAGEBODYSMALL = "FailedOperation.ImageBodySmall"
+//  FAILEDOPERATION_IMAGECHECKNOBODY = "FailedOperation.ImageCheckNoBody"
+//  FAILEDOPERATION_IMAGEDETECTFACEFAILED = "FailedOperation.ImageDetectFaceFailed"
+//  FAILEDOPERATION_IMAGEMANYPEOPLE = "FailedOperation.ImageManyPeople"
+//  FAILEDOPERATION_IMAGERADIOEXCCEED = "FailedOperation.ImageRadioExcceed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  FAILEDOPERATION_KEYPOINTUNDETECTED = "FailedOperation.KeyPointUndetected"
+//  FAILEDOPERATION_TEMPLATEFIRSTFRAMENOTDETECTFACE = "FailedOperation.TemplateFirstFrameNotDetectFace"
+//  FAILEDOPERATION_TEMPLATENOTDETECTBODY = "FailedOperation.TemplateNotDetectBody"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeTextToVideoViduJobWithContext(ctx context.Context, request *DescribeTextToVideoViduJobRequest) (response *DescribeTextToVideoViduJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeTextToVideoViduJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "DescribeTextToVideoViduJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTextToVideoViduJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTextToVideoViduJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVideoEditJobRequest() (request *DescribeVideoEditJobRequest) {
     request = &DescribeVideoEditJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -693,6 +1161,126 @@ func (c *Client) DescribeVideoEditJobWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeVideoEditJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVideoEditKlingJobRequest() (request *DescribeVideoEditKlingJobRequest) {
+    request = &DescribeVideoEditKlingJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "DescribeVideoEditKlingJob")
+    
+    
+    return
+}
+
+func NewDescribeVideoEditKlingJobResponse() (response *DescribeVideoEditKlingJobResponse) {
+    response = &DescribeVideoEditKlingJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVideoEditKlingJob
+// 查询Kling多模态编辑任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VIDEOURLINVALID = "InvalidParameter.VideoUrlInvalid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+func (c *Client) DescribeVideoEditKlingJob(request *DescribeVideoEditKlingJobRequest) (response *DescribeVideoEditKlingJobResponse, err error) {
+    return c.DescribeVideoEditKlingJobWithContext(context.Background(), request)
+}
+
+// DescribeVideoEditKlingJob
+// 查询Kling多模态编辑任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VIDEOURLINVALID = "InvalidParameter.VideoUrlInvalid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+func (c *Client) DescribeVideoEditKlingJobWithContext(ctx context.Context, request *DescribeVideoEditKlingJobRequest) (response *DescribeVideoEditKlingJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeVideoEditKlingJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "DescribeVideoEditKlingJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVideoEditKlingJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVideoEditKlingJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVideoExtendKlingJobRequest() (request *DescribeVideoExtendKlingJobRequest) {
+    request = &DescribeVideoExtendKlingJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "DescribeVideoExtendKlingJob")
+    
+    
+    return
+}
+
+func NewDescribeVideoExtendKlingJobResponse() (response *DescribeVideoExtendKlingJobResponse) {
+    response = &DescribeVideoExtendKlingJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVideoExtendKlingJob
+// 查询视频延长任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VIDEOURLINVALID = "InvalidParameter.VideoUrlInvalid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+func (c *Client) DescribeVideoExtendKlingJob(request *DescribeVideoExtendKlingJobRequest) (response *DescribeVideoExtendKlingJobResponse, err error) {
+    return c.DescribeVideoExtendKlingJobWithContext(context.Background(), request)
+}
+
+// DescribeVideoExtendKlingJob
+// 查询视频延长任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DRIVERFAILED = "FailedOperation.DriverFailed"
+//  FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_VIDEOURLINVALID = "InvalidParameter.VideoUrlInvalid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+func (c *Client) DescribeVideoExtendKlingJobWithContext(ctx context.Context, request *DescribeVideoExtendKlingJobRequest) (response *DescribeVideoExtendKlingJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeVideoExtendKlingJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "DescribeVideoExtendKlingJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVideoExtendKlingJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVideoExtendKlingJobResponse()
     err = c.Send(request, response)
     return
 }
@@ -1267,6 +1855,104 @@ func (c *Client) SubmitImageToVideoGeneralJobWithContext(ctx context.Context, re
     return
 }
 
+func NewSubmitImageToVideoJobRequest() (request *SubmitImageToVideoJobRequest) {
+    request = &SubmitImageToVideoJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "SubmitImageToVideoJob")
+    
+    
+    return
+}
+
+func NewSubmitImageToVideoJobResponse() (response *SubmitImageToVideoJobResponse) {
+    response = &SubmitImageToVideoJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitImageToVideoJob
+// 提交视频特效任务接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BODYJOINTSFAIL = "FailedOperation.BodyJointsFail"
+//  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
+//  FAILEDOPERATION_IMAGEBODYJOINSUNDETECTED = "FailedOperation.ImageBodyJoinsUndetected"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFaceDetectFailed"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGERATIOEXCCEED = "FailedOperation.ImageRatioExcceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_JOBQUEUEFULL = "FailedOperation.JobQueueFull"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_TEMPLATENOTEXISTED = "InvalidParameter.TemplateNotExisted"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEORESOLUTION = "InvalidParameterValue.InvalidVideoResolution"
+//  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SubmitImageToVideoJob(request *SubmitImageToVideoJobRequest) (response *SubmitImageToVideoJobResponse, err error) {
+    return c.SubmitImageToVideoJobWithContext(context.Background(), request)
+}
+
+// SubmitImageToVideoJob
+// 提交视频特效任务接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BODYJOINTSFAIL = "FailedOperation.BodyJointsFail"
+//  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
+//  FAILEDOPERATION_IMAGEBODYJOINSUNDETECTED = "FailedOperation.ImageBodyJoinsUndetected"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFaceDetectFailed"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGERATIOEXCCEED = "FailedOperation.ImageRatioExcceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_JOBQUEUEFULL = "FailedOperation.JobQueueFull"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_TEMPLATENOTEXISTED = "InvalidParameter.TemplateNotExisted"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEORESOLUTION = "InvalidParameterValue.InvalidVideoResolution"
+//  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SubmitImageToVideoJobWithContext(ctx context.Context, request *SubmitImageToVideoJobRequest) (response *SubmitImageToVideoJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitImageToVideoJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "SubmitImageToVideoJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitImageToVideoJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitImageToVideoJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitImageToVideoViduJobRequest() (request *SubmitImageToVideoViduJobRequest) {
     request = &SubmitImageToVideoViduJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1365,6 +2051,104 @@ func (c *Client) SubmitImageToVideoViduJobWithContext(ctx context.Context, reque
     return
 }
 
+func NewSubmitMotionControlKlingJobRequest() (request *SubmitMotionControlKlingJobRequest) {
+    request = &SubmitMotionControlKlingJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "SubmitMotionControlKlingJob")
+    
+    
+    return
+}
+
+func NewSubmitMotionControlKlingJobResponse() (response *SubmitMotionControlKlingJobResponse) {
+    response = &SubmitMotionControlKlingJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitMotionControlKlingJob
+// 提交动作控制(Kling)任务并发
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BODYJOINTSFAIL = "FailedOperation.BodyJointsFail"
+//  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
+//  FAILEDOPERATION_IMAGEBODYJOINSUNDETECTED = "FailedOperation.ImageBodyJoinsUndetected"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFaceDetectFailed"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGERATIOEXCCEED = "FailedOperation.ImageRatioExcceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_JOBQUEUEFULL = "FailedOperation.JobQueueFull"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_TEMPLATENOTEXISTED = "InvalidParameter.TemplateNotExisted"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEORESOLUTION = "InvalidParameterValue.InvalidVideoResolution"
+//  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SubmitMotionControlKlingJob(request *SubmitMotionControlKlingJobRequest) (response *SubmitMotionControlKlingJobResponse, err error) {
+    return c.SubmitMotionControlKlingJobWithContext(context.Background(), request)
+}
+
+// SubmitMotionControlKlingJob
+// 提交动作控制(Kling)任务并发
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BODYJOINTSFAIL = "FailedOperation.BodyJointsFail"
+//  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
+//  FAILEDOPERATION_IMAGEBODYJOINSUNDETECTED = "FailedOperation.ImageBodyJoinsUndetected"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFaceDetectFailed"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGERATIOEXCCEED = "FailedOperation.ImageRatioExcceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_JOBQUEUEFULL = "FailedOperation.JobQueueFull"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_TEMPLATENOTEXISTED = "InvalidParameter.TemplateNotExisted"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEORESOLUTION = "InvalidParameterValue.InvalidVideoResolution"
+//  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SubmitMotionControlKlingJobWithContext(ctx context.Context, request *SubmitMotionControlKlingJobRequest) (response *SubmitMotionControlKlingJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitMotionControlKlingJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "SubmitMotionControlKlingJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitMotionControlKlingJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitMotionControlKlingJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitPortraitSingJobRequest() (request *SubmitPortraitSingJobRequest) {
     request = &SubmitPortraitSingJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1453,6 +2237,90 @@ func (c *Client) SubmitPortraitSingJobWithContext(ctx context.Context, request *
     return
 }
 
+func NewSubmitReferenceToVideoViduJobRequest() (request *SubmitReferenceToVideoViduJobRequest) {
+    request = &SubmitReferenceToVideoViduJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "SubmitReferenceToVideoViduJob")
+    
+    
+    return
+}
+
+func NewSubmitReferenceToVideoViduJobResponse() (response *SubmitReferenceToVideoViduJobResponse) {
+    response = &SubmitReferenceToVideoViduJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitReferenceToVideoViduJob
+// 提交Vidu参考生视频任务接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUDIODECODEFAILED = "FailedOperation.AudioDecodeFailed"
+//  FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFaceDetectFailed"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_MODERATIONAUDIOFAILED = "FailedOperation.ModerationAudioFailed"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  FAILEDOPERATION_SUBMITASSPFAILED = "FailedOperation.SubmitAsspFailed"
+//  INVALIDPARAMETERVALUE_INVALIDAUDIODURATION = "InvalidParameterValue.InvalidAudioDuration"
+//  INVALIDPARAMETERVALUE_INVALIDAUDIOFORMAT = "InvalidParameterValue.InvalidAudioFormat"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEASPECTRATIO = "InvalidParameterValue.InvalidImageAspectRatio"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEFORMAT = "InvalidParameterValue.InvalidImageFormat"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGERESOLUTION = "InvalidParameterValue.InvalidImageResolution"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGESIZE = "InvalidParameterValue.InvalidImageSize"
+//  INVALIDPARAMETERVALUE_INVALIDMODEL = "InvalidParameterValue.InvalidModel"
+//  INVALIDPARAMETERVALUE_TOOLARGEFACEANGLE = "InvalidParameterValue.TooLargeFaceAngle"
+//  INVALIDPARAMETERVALUE_TOOLOWFACEQUALITY = "InvalidParameterValue.TooLowFaceQuality"
+//  INVALIDPARAMETERVALUE_TOOMANYFACES = "InvalidParameterValue.TooManyFaces"
+//  INVALIDPARAMETERVALUE_TOOMUCHFACEOCCLUSION = "InvalidParameterValue.TooMuchFaceOcclusion"
+//  INVALIDPARAMETERVALUE_TOOSMALLFACESIZE = "InvalidParameterValue.TooSmallFaceSize"
+func (c *Client) SubmitReferenceToVideoViduJob(request *SubmitReferenceToVideoViduJobRequest) (response *SubmitReferenceToVideoViduJobResponse, err error) {
+    return c.SubmitReferenceToVideoViduJobWithContext(context.Background(), request)
+}
+
+// SubmitReferenceToVideoViduJob
+// 提交Vidu参考生视频任务接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUDIODECODEFAILED = "FailedOperation.AudioDecodeFailed"
+//  FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFaceDetectFailed"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_MODERATIONAUDIOFAILED = "FailedOperation.ModerationAudioFailed"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  FAILEDOPERATION_SUBMITASSPFAILED = "FailedOperation.SubmitAsspFailed"
+//  INVALIDPARAMETERVALUE_INVALIDAUDIODURATION = "InvalidParameterValue.InvalidAudioDuration"
+//  INVALIDPARAMETERVALUE_INVALIDAUDIOFORMAT = "InvalidParameterValue.InvalidAudioFormat"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEASPECTRATIO = "InvalidParameterValue.InvalidImageAspectRatio"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGEFORMAT = "InvalidParameterValue.InvalidImageFormat"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGERESOLUTION = "InvalidParameterValue.InvalidImageResolution"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGESIZE = "InvalidParameterValue.InvalidImageSize"
+//  INVALIDPARAMETERVALUE_INVALIDMODEL = "InvalidParameterValue.InvalidModel"
+//  INVALIDPARAMETERVALUE_TOOLARGEFACEANGLE = "InvalidParameterValue.TooLargeFaceAngle"
+//  INVALIDPARAMETERVALUE_TOOLOWFACEQUALITY = "InvalidParameterValue.TooLowFaceQuality"
+//  INVALIDPARAMETERVALUE_TOOMANYFACES = "InvalidParameterValue.TooManyFaces"
+//  INVALIDPARAMETERVALUE_TOOMUCHFACEOCCLUSION = "InvalidParameterValue.TooMuchFaceOcclusion"
+//  INVALIDPARAMETERVALUE_TOOSMALLFACESIZE = "InvalidParameterValue.TooSmallFaceSize"
+func (c *Client) SubmitReferenceToVideoViduJobWithContext(ctx context.Context, request *SubmitReferenceToVideoViduJobRequest) (response *SubmitReferenceToVideoViduJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitReferenceToVideoViduJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "SubmitReferenceToVideoViduJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitReferenceToVideoViduJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitReferenceToVideoViduJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitTemplateToVideoJobRequest() (request *SubmitTemplateToVideoJobRequest) {
     request = &SubmitTemplateToVideoJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1525,6 +2393,150 @@ func (c *Client) SubmitTemplateToVideoJobWithContext(ctx context.Context, reques
     return
 }
 
+func NewSubmitTextToVideoJobRequest() (request *SubmitTextToVideoJobRequest) {
+    request = &SubmitTextToVideoJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "SubmitTextToVideoJob")
+    
+    
+    return
+}
+
+func NewSubmitTextToVideoJobResponse() (response *SubmitTextToVideoJobResponse) {
+    response = &SubmitTextToVideoJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitTextToVideoJob
+// 通过提交对视频内容的描述文本生成一个短视频。文生视频为异步处理任务，成功提交任务后返回任务的JobId。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  FAILEDOPERATION_MODERATIONRESPONSEERROR = "FailedOperation.ModerationResponseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitTextToVideoJob(request *SubmitTextToVideoJobRequest) (response *SubmitTextToVideoJobResponse, err error) {
+    return c.SubmitTextToVideoJobWithContext(context.Background(), request)
+}
+
+// SubmitTextToVideoJob
+// 通过提交对视频内容的描述文本生成一个短视频。文生视频为异步处理任务，成功提交任务后返回任务的JobId。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  FAILEDOPERATION_MODERATIONRESPONSEERROR = "FailedOperation.ModerationResponseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitTextToVideoJobWithContext(ctx context.Context, request *SubmitTextToVideoJobRequest) (response *SubmitTextToVideoJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitTextToVideoJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "SubmitTextToVideoJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitTextToVideoJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitTextToVideoJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitTextToVideoViduJobRequest() (request *SubmitTextToVideoViduJobRequest) {
+    request = &SubmitTextToVideoViduJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "SubmitTextToVideoViduJob")
+    
+    
+    return
+}
+
+func NewSubmitTextToVideoViduJobResponse() (response *SubmitTextToVideoViduJobResponse) {
+    response = &SubmitTextToVideoViduJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitTextToVideoViduJob
+// 提交Vidu文生视频任务接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  FAILEDOPERATION_MODERATIONRESPONSEERROR = "FailedOperation.ModerationResponseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitTextToVideoViduJob(request *SubmitTextToVideoViduJobRequest) (response *SubmitTextToVideoViduJobResponse, err error) {
+    return c.SubmitTextToVideoViduJobWithContext(context.Background(), request)
+}
+
+// SubmitTextToVideoViduJob
+// 提交Vidu文生视频任务接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  FAILEDOPERATION_MODERATIONRESPONSEERROR = "FailedOperation.ModerationResponseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitTextToVideoViduJobWithContext(ctx context.Context, request *SubmitTextToVideoViduJobRequest) (response *SubmitTextToVideoViduJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitTextToVideoViduJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "SubmitTextToVideoViduJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitTextToVideoViduJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitTextToVideoViduJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitVideoEditJobRequest() (request *SubmitVideoEditJobRequest) {
     request = &SubmitVideoEditJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1593,6 +2605,150 @@ func (c *Client) SubmitVideoEditJobWithContext(ctx context.Context, request *Sub
     request.SetContext(ctx)
     
     response = NewSubmitVideoEditJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitVideoEditKlingJobRequest() (request *SubmitVideoEditKlingJobRequest) {
+    request = &SubmitVideoEditKlingJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "SubmitVideoEditKlingJob")
+    
+    
+    return
+}
+
+func NewSubmitVideoEditKlingJobResponse() (response *SubmitVideoEditKlingJobResponse) {
+    response = &SubmitVideoEditKlingJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitVideoEditKlingJob
+// 提交Kling多模态编辑任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  FAILEDOPERATION_MODERATIONRESPONSEERROR = "FailedOperation.ModerationResponseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitVideoEditKlingJob(request *SubmitVideoEditKlingJobRequest) (response *SubmitVideoEditKlingJobResponse, err error) {
+    return c.SubmitVideoEditKlingJobWithContext(context.Background(), request)
+}
+
+// SubmitVideoEditKlingJob
+// 提交Kling多模态编辑任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  FAILEDOPERATION_MODERATIONRESPONSEERROR = "FailedOperation.ModerationResponseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitVideoEditKlingJobWithContext(ctx context.Context, request *SubmitVideoEditKlingJobRequest) (response *SubmitVideoEditKlingJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitVideoEditKlingJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "SubmitVideoEditKlingJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitVideoEditKlingJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitVideoEditKlingJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitVideoExtendKlingJobRequest() (request *SubmitVideoExtendKlingJobRequest) {
+    request = &SubmitVideoExtendKlingJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "SubmitVideoExtendKlingJob")
+    
+    
+    return
+}
+
+func NewSubmitVideoExtendKlingJobResponse() (response *SubmitVideoExtendKlingJobResponse) {
+    response = &SubmitVideoExtendKlingJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitVideoExtendKlingJob
+// 用于提交视频延长任务接口。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  FAILEDOPERATION_MODERATIONRESPONSEERROR = "FailedOperation.ModerationResponseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitVideoExtendKlingJob(request *SubmitVideoExtendKlingJobRequest) (response *SubmitVideoExtendKlingJobResponse, err error) {
+    return c.SubmitVideoExtendKlingJobWithContext(context.Background(), request)
+}
+
+// SubmitVideoExtendKlingJob
+// 用于提交视频延长任务接口。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  FAILEDOPERATION_MODERATIONRESPONSEERROR = "FailedOperation.ModerationResponseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitVideoExtendKlingJobWithContext(ctx context.Context, request *SubmitVideoExtendKlingJobRequest) (response *SubmitVideoExtendKlingJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitVideoExtendKlingJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "SubmitVideoExtendKlingJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitVideoExtendKlingJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitVideoExtendKlingJobResponse()
     err = c.Send(request, response)
     return
 }

@@ -477,57 +477,66 @@ func (r *AddRecordBackupPlanResponse) FromJsonString(s string) error {
 }
 
 type AddRecordBackupTemplateData struct {
-	// 模板ID
+	// <p>模板ID</p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 模板名称
+	// <p>模板名称</p>
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
-	// 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// <p>上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
 	TimeSections []*RecordTemplateTimeSections `json:"TimeSections,omitnil,omitempty" name:"TimeSections"`
 
-	// 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// <p>录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
 	DevTimeSections []*RecordTemplateTimeSections `json:"DevTimeSections,omitnil,omitempty" name:"DevTimeSections"`
 
-	// 上云倍速（支持1，2，4倍速）
+	// <p>上云倍速（支持1，2，4倍速）</p>
 	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateAt *string `json:"UpdateAt,omitnil,omitempty" name:"UpdateAt"`
+
+	// <p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示取去今天的设备录像，3表示拉取前天的设备录像</p><p>默认值：1</p>
+	DayOffset *int64 `json:"DayOffset,omitnil,omitempty" name:"DayOffset"`
 }
 
 // Predefined struct for user
 type AddRecordBackupTemplateRequestParams struct {
-	// 模板名称（仅支持中文、英文、数字、_、-，长度不超过32个字符，模板名称全局唯一，不能为空，不能重复）
+	// <p>模板名称（仅支持中文、英文、数字、_、-，长度不超过32个字符，模板名称全局唯一，不能为空，不能重复）</p>
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
-	// 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// <p>上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
 	TimeSections []*RecordTemplateTimeSections `json:"TimeSections,omitnil,omitempty" name:"TimeSections"`
 
-	// 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// <p>录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
 	DevTimeSections []*RecordTemplateTimeSections `json:"DevTimeSections,omitnil,omitempty" name:"DevTimeSections"`
 
-	// 上云倍速（支持1，2，4倍速）
+	// <p>上云倍速（支持1，2，4倍速）</p>
 	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
+
+	// <p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示取去今天的设备录像，3表示拉取前天的设备录像</p><p>取值范围：[0, 90]</p><p>默认值：1</p>
+	DayOffset *int64 `json:"DayOffset,omitnil,omitempty" name:"DayOffset"`
 }
 
 type AddRecordBackupTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模板名称（仅支持中文、英文、数字、_、-，长度不超过32个字符，模板名称全局唯一，不能为空，不能重复）
+	// <p>模板名称（仅支持中文、英文、数字、_、-，长度不超过32个字符，模板名称全局唯一，不能为空，不能重复）</p>
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
-	// 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// <p>上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
 	TimeSections []*RecordTemplateTimeSections `json:"TimeSections,omitnil,omitempty" name:"TimeSections"`
 
-	// 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// <p>录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
 	DevTimeSections []*RecordTemplateTimeSections `json:"DevTimeSections,omitnil,omitempty" name:"DevTimeSections"`
 
-	// 上云倍速（支持1，2，4倍速）
+	// <p>上云倍速（支持1，2，4倍速）</p>
 	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
+
+	// <p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示取去今天的设备录像，3表示拉取前天的设备录像</p><p>取值范围：[0, 90]</p><p>默认值：1</p>
+	DayOffset *int64 `json:"DayOffset,omitnil,omitempty" name:"DayOffset"`
 }
 
 func (r *AddRecordBackupTemplateRequest) ToJsonString() string {
@@ -546,6 +555,7 @@ func (r *AddRecordBackupTemplateRequest) FromJsonString(s string) error {
 	delete(f, "TimeSections")
 	delete(f, "DevTimeSections")
 	delete(f, "Scale")
+	delete(f, "DayOffset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddRecordBackupTemplateRequest has unknown keys!", "")
 	}
@@ -554,7 +564,7 @@ func (r *AddRecordBackupTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddRecordBackupTemplateResponseParams struct {
-	// 返回数据
+	// <p>返回数据</p>
 	Data *AddRecordBackupTemplateData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3886,26 +3896,29 @@ func (r *DescribeRecordBackupPlanResponse) FromJsonString(s string) error {
 }
 
 type DescribeRecordBackupTemplateData struct {
-	// 模板ID
+	// <p>模板ID</p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 模板名称
+	// <p>模板名称</p>
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
-	// 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// <p>上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
 	TimeSections []*RecordTemplateTimeSections `json:"TimeSections,omitnil,omitempty" name:"TimeSections"`
 
-	// 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// <p>录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
 	DevTimeSections []*RecordTemplateTimeSections `json:"DevTimeSections,omitnil,omitempty" name:"DevTimeSections"`
 
-	// 上云倍速（支持1，2，4倍速）
+	// <p>上云倍速（支持1，2，4倍速）</p>
 	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateAt *string `json:"UpdateAt,omitnil,omitempty" name:"UpdateAt"`
+
+	// <p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示取去今天的设备录像，3表示拉取前天的设备录像</p>
+	DayOffset *int64 `json:"DayOffset,omitnil,omitempty" name:"DayOffset"`
 }
 
 // Predefined struct for user
@@ -5888,26 +5901,29 @@ func (r *ListRecordBackupPlansResponse) FromJsonString(s string) error {
 }
 
 type ListRecordBackupTemplatesData struct {
-	// 模板ID
+	// <p>模板ID</p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 模板名称
+	// <p>模板名称</p>
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
-	// 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// <p>上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
 	TimeSections []*RecordTemplateTimeSections `json:"TimeSections,omitnil,omitempty" name:"TimeSections"`
 
-	// 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// <p>录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
 	DevTimeSections []*RecordTemplateTimeSections `json:"DevTimeSections,omitnil,omitempty" name:"DevTimeSections"`
 
-	// 上云倍速（支持1，2，4倍速）
+	// <p>上云倍速（支持1，2，4倍速）</p>
 	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateAt *string `json:"UpdateAt,omitnil,omitempty" name:"UpdateAt"`
+
+	// <p>周期偏移量，默认1，表示拉去昨天的，0表示拉去今天的，3表示拉去前天的</p>
+	DayOffset *int64 `json:"DayOffset,omitnil,omitempty" name:"DayOffset"`
 }
 
 // Predefined struct for user
@@ -7949,26 +7965,29 @@ func (r *UpdateRecordBackupPlanResponse) FromJsonString(s string) error {
 }
 
 type UpdateRecordBackupTemplateData struct {
-	// 模板ID
+	// <p>模板ID</p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 模板名称
+	// <p>模板名称</p>
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
-	// 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// <p>上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
 	TimeSections []*RecordTemplateTimeSections `json:"TimeSections,omitnil,omitempty" name:"TimeSections"`
 
-	// 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// <p>录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
 	DevTimeSections []*RecordTemplateTimeSections `json:"DevTimeSections,omitnil,omitempty" name:"DevTimeSections"`
 
-	// 上云倍速（支持1，2，4倍速）
+	// <p>上云倍速（支持1，2，4倍速）</p>
 	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateAt *string `json:"UpdateAt,omitnil,omitempty" name:"UpdateAt"`
+
+	// <p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示取去今天的设备录像，3表示拉取前天的设备录像</p>
+	DayOffset *int64 `json:"DayOffset,omitnil,omitempty" name:"DayOffset"`
 }
 
 type UpdateRecordBackupTemplateModify struct {

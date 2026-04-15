@@ -324,53 +324,43 @@ type BackupDownloadTaskStatus struct {
 }
 
 type BackupInfo struct {
-	// 实例ID。
+	// <p>实例ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 备份方式。
-	// - 0：自动备份。
-	// - 1：手动备份。
+	// <p>备份方式。</p><ul><li>0：自动备份。</li><li>1：手动备份。</li></ul>
 	BackupType *uint64 `json:"BackupType,omitnil,omitempty" name:"BackupType"`
 
-	// 备份文件名称。
+	// <p>备份文件名称。</p>
 	BackupName *string `json:"BackupName,omitnil,omitempty" name:"BackupName"`
 
-	// 备份任务备注信息。
+	// <p>备份任务备注信息。</p>
 	BackupDesc *string `json:"BackupDesc,omitnil,omitempty" name:"BackupDesc"`
 
-	// 备份文件大小，单位：KB。
+	// <p>备份文件大小，单位：KB。</p>
 	BackupSize *uint64 `json:"BackupSize,omitnil,omitempty" name:"BackupSize"`
 
-	// 备份开始时间。
+	// <p>备份开始时间。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 备份结束时间。
+	// <p>备份结束时间。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 备份状态。
-	// - 1：备份中。
-	// - 2：备份成功。
+	// <p>备份状态。</p><ul><li>1：备份中。</li><li>2：备份成功。</li></ul>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 备份方式。
-	// - 0：逻辑备份。
-	// - 1：物理备份。
-	// - 3：快照备份。
-	// **说明:**
-	// - 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
-	// - 实例开通存储加密，则备份方式不能为物理备份。
+	// <p>备份方式。</p><ul><li>0：逻辑备份。</li><li>1：物理备份。</li><li>3：快照备份。<br><strong>说明:</strong></li><li>通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。</li><li>实例开通存储加密，则备份方式不能为物理备份。</li></ul>
 	BackupMethod *uint64 `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
-	// 备份记录 ID。
+	// <p>备份记录 ID。</p>
 	BackId *int64 `json:"BackId,omitnil,omitempty" name:"BackId"`
 
-	// 备份删除时间。
+	// <p>备份删除时间。</p>
 	DeleteTime *string `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
 
-	// 异地备份地域。
+	// <p>异地备份地域。</p>
 	BackupRegion *string `json:"BackupRegion,omitnil,omitempty" name:"BackupRegion"`
 
-	// 备份支持的回档时间。
+	// <p>备份支持的回档时间。</p>
 	RestoreTime *string `json:"RestoreTime,omitnil,omitempty" name:"RestoreTime"`
 }
 
@@ -7600,142 +7590,98 @@ func (r *SetAccountUserPrivilegeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SetBackupRulesRequestParams struct {
-	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// <p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 备份方式。
-	// - 0：逻辑备份。
-	// - 1：物理备份。
-	// - 3：快照备份。
-	// **说明**:
-	// 1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
-	// 2. 实例开通存储加密，则备份方式不能为物理备份。
+	// <p>备份方式。</p><ul><li>0：逻辑备份。</li><li>1：物理备份。</li><li>3：快照备份。<br><strong>说明</strong>:</li><li>通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。</li><li>实例开通存储加密，则备份方式不能为物理备份。</li></ul>
 	BackupMethod *uint64 `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
-	// 设置自动备份开始时间。取值范围为：[0,23]，例如：该参数设置为2，表示02:00开始备份。
+	// <p>设置自动备份开始时间。取值范围为：[0,23]，例如：该参数设置为2，表示02:00开始备份。</p>
 	BackupTime *uint64 `json:"BackupTime,omitnil,omitempty" name:"BackupTime"`
 
-	// 指定每日自动备份频率。
-	// - 12: 每日备份2次，间隔约12小时。
-	// - 24: 每日备份1次（默认），间隔约24小时。
+	// <p>指定每日自动备份频率。</p><ul><li>12: 每日备份2次，间隔约12小时。</li><li>24: 每日备份1次（默认），间隔约24小时。</li></ul>
 	BackupFrequency *uint64 `json:"BackupFrequency,omitnil,omitempty" name:"BackupFrequency"`
 
-	// 设置自动备份发生错误时，是否发送失败告警。
-	// - true：发送。
-	// - false：不发送。
+	// <p>设置自动备份发生错误时，是否发送失败告警。</p><ul><li>true：发送。</li><li>false：不发送。</li></ul>
 	Notify *bool `json:"Notify,omitnil,omitempty" name:"Notify"`
 
-	// 指定备份数据保留时长。
-	// - 单位：天，默认为 7 天。
-	// - 取值范围：[7,365]。
+	// <p>指定备份数据保留时长。</p><ul><li>单位：天，默认为 7 天。</li><li>取值范围：[7,365]。</li></ul>
 	BackupRetentionPeriod *uint64 `json:"BackupRetentionPeriod,omitnil,omitempty" name:"BackupRetentionPeriod"`
 
-	// 指定每周内执行自动备份的具体日期。
-	// - 格式：请输入 0-6 之间的数字代表周日至周六（例如：1 代表周一），多个日期请用英文逗号 , 分隔。
-	// - 示例：输入 1,3,5 表示系统将在每周的周一、周三、周五执行备份。
-	// - 默认值：不设置，则默认为全周期 (0,1,2,3,4,5,6)，即每日执行备份。
+	// <p>指定每周内执行自动备份的具体日期。</p><ul><li>格式：请输入 0-6 之间的数字代表周日至周六（例如：1 代表周一），多个日期请用英文逗号 , 分隔。</li><li>示例：输入 1,3,5 表示系统将在每周的周一、周三、周五执行备份。</li><li>默认值：不设置，则默认为全周期 (0,1,2,3,4,5,6)，即每日执行备份。</li></ul>
 	ActiveWeekdays *string `json:"ActiveWeekdays,omitnil,omitempty" name:"ActiveWeekdays"`
 
-	// 长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。待废弃，使用LongTermInterval
+	// <p>长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。待废弃，使用LongTermInterval</p>
 	LongTermUnit *string `json:"LongTermUnit,omitnil,omitempty" name:"LongTermUnit"`
 
-	// 指定用于长期保留的具体备份日期。此设置仅在 **LongTermUnit** 被设为**weekly** 或 **monthly** 时生效。
-	// - 按周（weekly）保留：请输入 0-6 之间的数字来代表周日至周六。多个日期请用英文逗号分隔。
-	// - 按月（monthly）保留：请输入 1-31 之间的数字来代表月份中的具体日期。多个日期请用英文逗号分隔。
+	// <p>指定用于长期保留的具体备份日期。此设置仅在 <strong>LongTermUnit</strong> 被设为<strong>weekly</strong> 或 <strong>monthly</strong> 时生效。</p><ul><li>按周（weekly）保留：请输入 0-6 之间的数字来代表周日至周六。多个日期请用英文逗号分隔。</li><li>按月（monthly）保留：请输入 1-31 之间的数字来代表月份中的具体日期。多个日期请用英文逗号分隔。</li></ul>
 	LongTermActiveDays *string `json:"LongTermActiveDays,omitnil,omitempty" name:"LongTermActiveDays"`
 
-	// 长期备份保留时长。取值范围[30,1075]。
+	// <p>长期备份保留时长。取值范围[30,1075]。</p>
 	LongTermExpiredDays *int64 `json:"LongTermExpiredDays,omitnil,omitempty" name:"LongTermExpiredDays"`
 
-	// 增量备份保留时长。
-	// - 单位：天。
-	// - 默认值：7天。
-	// - 取值范围：[7,365]。
+	// <p>增量备份保留时长。</p><ul><li>单位：天。</li><li>默认值：7天。</li><li>取值范围：[7,365]。</li></ul>
 	OplogExpiredDays *int64 `json:"OplogExpiredDays,omitnil,omitempty" name:"OplogExpiredDays"`
 
-	// 指定备份版本。
-	// - 旧版本备份：0。
-	// - 开启高级备份：1。
+	// <p>指定备份版本。</p><ul><li>旧版本备份：0。</li><li>开启高级备份：1。</li></ul>
 	BackupVersion *int64 `json:"BackupVersion,omitnil,omitempty" name:"BackupVersion"`
 
-	// 设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。待废弃,使用AlertThreshold
+	// <p>设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。待废弃,使用AlertThreshold</p>
 	AlarmWaterLevel *int64 `json:"AlarmWaterLevel,omitnil,omitempty" name:"AlarmWaterLevel"`
 
-	// 长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。
+	// <p>长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。</p>
 	LongTermInterval *string `json:"LongTermInterval,omitnil,omitempty" name:"LongTermInterval"`
 
-	// 设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。
+	// <p>设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。</p>
 	AlertThreshold *int64 `json:"AlertThreshold,omitnil,omitempty" name:"AlertThreshold"`
 }
 
 type SetBackupRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// <p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 备份方式。
-	// - 0：逻辑备份。
-	// - 1：物理备份。
-	// - 3：快照备份。
-	// **说明**:
-	// 1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
-	// 2. 实例开通存储加密，则备份方式不能为物理备份。
+	// <p>备份方式。</p><ul><li>0：逻辑备份。</li><li>1：物理备份。</li><li>3：快照备份。<br><strong>说明</strong>:</li><li>通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。</li><li>实例开通存储加密，则备份方式不能为物理备份。</li></ul>
 	BackupMethod *uint64 `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
-	// 设置自动备份开始时间。取值范围为：[0,23]，例如：该参数设置为2，表示02:00开始备份。
+	// <p>设置自动备份开始时间。取值范围为：[0,23]，例如：该参数设置为2，表示02:00开始备份。</p>
 	BackupTime *uint64 `json:"BackupTime,omitnil,omitempty" name:"BackupTime"`
 
-	// 指定每日自动备份频率。
-	// - 12: 每日备份2次，间隔约12小时。
-	// - 24: 每日备份1次（默认），间隔约24小时。
+	// <p>指定每日自动备份频率。</p><ul><li>12: 每日备份2次，间隔约12小时。</li><li>24: 每日备份1次（默认），间隔约24小时。</li></ul>
 	BackupFrequency *uint64 `json:"BackupFrequency,omitnil,omitempty" name:"BackupFrequency"`
 
-	// 设置自动备份发生错误时，是否发送失败告警。
-	// - true：发送。
-	// - false：不发送。
+	// <p>设置自动备份发生错误时，是否发送失败告警。</p><ul><li>true：发送。</li><li>false：不发送。</li></ul>
 	Notify *bool `json:"Notify,omitnil,omitempty" name:"Notify"`
 
-	// 指定备份数据保留时长。
-	// - 单位：天，默认为 7 天。
-	// - 取值范围：[7,365]。
+	// <p>指定备份数据保留时长。</p><ul><li>单位：天，默认为 7 天。</li><li>取值范围：[7,365]。</li></ul>
 	BackupRetentionPeriod *uint64 `json:"BackupRetentionPeriod,omitnil,omitempty" name:"BackupRetentionPeriod"`
 
-	// 指定每周内执行自动备份的具体日期。
-	// - 格式：请输入 0-6 之间的数字代表周日至周六（例如：1 代表周一），多个日期请用英文逗号 , 分隔。
-	// - 示例：输入 1,3,5 表示系统将在每周的周一、周三、周五执行备份。
-	// - 默认值：不设置，则默认为全周期 (0,1,2,3,4,5,6)，即每日执行备份。
+	// <p>指定每周内执行自动备份的具体日期。</p><ul><li>格式：请输入 0-6 之间的数字代表周日至周六（例如：1 代表周一），多个日期请用英文逗号 , 分隔。</li><li>示例：输入 1,3,5 表示系统将在每周的周一、周三、周五执行备份。</li><li>默认值：不设置，则默认为全周期 (0,1,2,3,4,5,6)，即每日执行备份。</li></ul>
 	ActiveWeekdays *string `json:"ActiveWeekdays,omitnil,omitempty" name:"ActiveWeekdays"`
 
-	// 长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。待废弃，使用LongTermInterval
+	// <p>长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。待废弃，使用LongTermInterval</p>
 	LongTermUnit *string `json:"LongTermUnit,omitnil,omitempty" name:"LongTermUnit"`
 
-	// 指定用于长期保留的具体备份日期。此设置仅在 **LongTermUnit** 被设为**weekly** 或 **monthly** 时生效。
-	// - 按周（weekly）保留：请输入 0-6 之间的数字来代表周日至周六。多个日期请用英文逗号分隔。
-	// - 按月（monthly）保留：请输入 1-31 之间的数字来代表月份中的具体日期。多个日期请用英文逗号分隔。
+	// <p>指定用于长期保留的具体备份日期。此设置仅在 <strong>LongTermUnit</strong> 被设为<strong>weekly</strong> 或 <strong>monthly</strong> 时生效。</p><ul><li>按周（weekly）保留：请输入 0-6 之间的数字来代表周日至周六。多个日期请用英文逗号分隔。</li><li>按月（monthly）保留：请输入 1-31 之间的数字来代表月份中的具体日期。多个日期请用英文逗号分隔。</li></ul>
 	LongTermActiveDays *string `json:"LongTermActiveDays,omitnil,omitempty" name:"LongTermActiveDays"`
 
-	// 长期备份保留时长。取值范围[30,1075]。
+	// <p>长期备份保留时长。取值范围[30,1075]。</p>
 	LongTermExpiredDays *int64 `json:"LongTermExpiredDays,omitnil,omitempty" name:"LongTermExpiredDays"`
 
-	// 增量备份保留时长。
-	// - 单位：天。
-	// - 默认值：7天。
-	// - 取值范围：[7,365]。
+	// <p>增量备份保留时长。</p><ul><li>单位：天。</li><li>默认值：7天。</li><li>取值范围：[7,365]。</li></ul>
 	OplogExpiredDays *int64 `json:"OplogExpiredDays,omitnil,omitempty" name:"OplogExpiredDays"`
 
-	// 指定备份版本。
-	// - 旧版本备份：0。
-	// - 开启高级备份：1。
+	// <p>指定备份版本。</p><ul><li>旧版本备份：0。</li><li>开启高级备份：1。</li></ul>
 	BackupVersion *int64 `json:"BackupVersion,omitnil,omitempty" name:"BackupVersion"`
 
-	// 设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。待废弃,使用AlertThreshold
+	// <p>设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。待废弃,使用AlertThreshold</p>
 	AlarmWaterLevel *int64 `json:"AlarmWaterLevel,omitnil,omitempty" name:"AlarmWaterLevel"`
 
-	// 长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。
+	// <p>长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。</p>
 	LongTermInterval *string `json:"LongTermInterval,omitnil,omitempty" name:"LongTermInterval"`
 
-	// 设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。
+	// <p>设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。</p>
 	AlertThreshold *int64 `json:"AlertThreshold,omitnil,omitempty" name:"AlertThreshold"`
 }
 

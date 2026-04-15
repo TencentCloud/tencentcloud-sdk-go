@@ -29734,6 +29734,81 @@ func (r *ModifyLocalGatewayResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyNatGatewayAdvancedAttributeRequestParams struct {
+	// NAT网关的ID，形如：`nat-df45454`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// UDP映射空闲时间，单位：秒。含义为UDP流空闲多少秒以后从NAT映射中释放。取值范围为：3-7200，默认为180。
+	UDPMappingTimeout *uint64 `json:"UDPMappingTimeout,omitnil,omitempty" name:"UDPMappingTimeout"`
+
+	// TCP已建立的连接空闲超时时间，单位：秒。含义为TCP已建立的连接空闲多少秒以后从NAT映射中释放。取值范围为：40-10800，默认为10800。
+	TCPEstablishedConnectionTimeout *uint64 `json:"TCPEstablishedConnectionTimeout,omitnil,omitempty" name:"TCPEstablishedConnectionTimeout"`
+
+	// TCP TIME_WAIT超时时间，单位：秒。含义为完全关闭的TCP连接在到期后保留在NAT映射中的秒数。取值范围为：10-600，默认为120。
+	TCPTimeWaitTimeout *uint64 `json:"TCPTimeWaitTimeout,omitnil,omitempty" name:"TCPTimeWaitTimeout"`
+}
+
+type ModifyNatGatewayAdvancedAttributeRequest struct {
+	*tchttp.BaseRequest
+	
+	// NAT网关的ID，形如：`nat-df45454`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// UDP映射空闲时间，单位：秒。含义为UDP流空闲多少秒以后从NAT映射中释放。取值范围为：3-7200，默认为180。
+	UDPMappingTimeout *uint64 `json:"UDPMappingTimeout,omitnil,omitempty" name:"UDPMappingTimeout"`
+
+	// TCP已建立的连接空闲超时时间，单位：秒。含义为TCP已建立的连接空闲多少秒以后从NAT映射中释放。取值范围为：40-10800，默认为10800。
+	TCPEstablishedConnectionTimeout *uint64 `json:"TCPEstablishedConnectionTimeout,omitnil,omitempty" name:"TCPEstablishedConnectionTimeout"`
+
+	// TCP TIME_WAIT超时时间，单位：秒。含义为完全关闭的TCP连接在到期后保留在NAT映射中的秒数。取值范围为：10-600，默认为120。
+	TCPTimeWaitTimeout *uint64 `json:"TCPTimeWaitTimeout,omitnil,omitempty" name:"TCPTimeWaitTimeout"`
+}
+
+func (r *ModifyNatGatewayAdvancedAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNatGatewayAdvancedAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NatGatewayId")
+	delete(f, "UDPMappingTimeout")
+	delete(f, "TCPEstablishedConnectionTimeout")
+	delete(f, "TCPTimeWaitTimeout")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNatGatewayAdvancedAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNatGatewayAdvancedAttributeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyNatGatewayAdvancedAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyNatGatewayAdvancedAttributeResponseParams `json:"Response"`
+}
+
+func (r *ModifyNatGatewayAdvancedAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNatGatewayAdvancedAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyNatGatewayAttributeRequestParams struct {
 	// NAT网关的ID，形如：`nat-df45454`。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`

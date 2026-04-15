@@ -675,7 +675,7 @@ func NewChannelCreateBatchQuickSignUrlResponse() (response *ChannelCreateBatchQu
 //
 // 1. 该接口可生成签署人的批量、合同组签署/查看链接 。
 //
-// 2. 该签署链接**有效期为30分钟**，过期后将失效，如需签署可重新创建批量签署链接 。
+// 2. 该签署链接**默认有效期为30分钟**，过期后将失效，如需签署可重新创建批量签署链接 。
 //
 // 4. 该接口返回的签署链接适用于APP集成的场景，支持APP打开或浏览器直接打开，**不支持微信小程序嵌入**。
 //
@@ -702,7 +702,7 @@ func (c *Client) ChannelCreateBatchQuickSignUrl(request *ChannelCreateBatchQuick
 //
 // 1. 该接口可生成签署人的批量、合同组签署/查看链接 。
 //
-// 2. 该签署链接**有效期为30分钟**，过期后将失效，如需签署可重新创建批量签署链接 。
+// 2. 该签署链接**默认有效期为30分钟**，过期后将失效，如需签署可重新创建批量签署链接 。
 //
 // 4. 该接口返回的签署链接适用于APP集成的场景，支持APP打开或浏览器直接打开，**不支持微信小程序嵌入**。
 //
@@ -2807,7 +2807,7 @@ func NewChannelCreateFlowSignUrlResponse() (response *ChannelCreateFlowSignUrlRe
 //
 // ⚠️ **注意**
 //
-// 1. 该签署**链接有效期为30分钟**，过期后将失效，如需签署可重新创建签署链接 。
+// 1. 该签署链接**默认有效期为30分钟**，过期后将失效，如需签署可重新创建签署链接 。
 //
 // 2. 该接口返回的签署链接适用于APP集成的场景，支持在支付宝、APP打开、浏览器直接打开，**不支持微信小程序嵌入**。配置方式请参考：<a href="https://qian.tencent.com/developers/company/openqianh5/">跳转电子签H5</a>。
 //
@@ -2839,7 +2839,7 @@ func (c *Client) ChannelCreateFlowSignUrl(request *ChannelCreateFlowSignUrlReque
 //
 // ⚠️ **注意**
 //
-// 1. 该签署**链接有效期为30分钟**，过期后将失效，如需签署可重新创建签署链接 。
+// 1. 该签署链接**默认有效期为30分钟**，过期后将失效，如需签署可重新创建签署链接 。
 //
 // 2. 该接口返回的签署链接适用于APP集成的场景，支持在支付宝、APP打开、浏览器直接打开，**不支持微信小程序嵌入**。配置方式请参考：<a href="https://qian.tencent.com/developers/company/openqianh5/">跳转电子签H5</a>。
 //

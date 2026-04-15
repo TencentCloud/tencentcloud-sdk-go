@@ -24417,6 +24417,66 @@ func (c *Client) ModifyLocalGatewayWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyNatGatewayAdvancedAttributeRequest() (request *ModifyNatGatewayAdvancedAttributeRequest) {
+    request = &ModifyNatGatewayAdvancedAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyNatGatewayAdvancedAttribute")
+    
+    
+    return
+}
+
+func NewModifyNatGatewayAdvancedAttributeResponse() (response *ModifyNatGatewayAdvancedAttributeResponse) {
+    response = &ModifyNatGatewayAdvancedAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyNatGatewayAdvancedAttribute
+// 本接口（ModifyNatGatewayAdvancedAttribute）用于修改NAT网关的高级属性。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyNatGatewayAdvancedAttribute(request *ModifyNatGatewayAdvancedAttributeRequest) (response *ModifyNatGatewayAdvancedAttributeResponse, err error) {
+    return c.ModifyNatGatewayAdvancedAttributeWithContext(context.Background(), request)
+}
+
+// ModifyNatGatewayAdvancedAttribute
+// 本接口（ModifyNatGatewayAdvancedAttribute）用于修改NAT网关的高级属性。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyNatGatewayAdvancedAttributeWithContext(ctx context.Context, request *ModifyNatGatewayAdvancedAttributeRequest) (response *ModifyNatGatewayAdvancedAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyNatGatewayAdvancedAttributeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vpc", APIVersion, "ModifyNatGatewayAdvancedAttribute")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNatGatewayAdvancedAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNatGatewayAdvancedAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyNatGatewayAttributeRequest() (request *ModifyNatGatewayAttributeRequest) {
     request = &ModifyNatGatewayAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},

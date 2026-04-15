@@ -3723,15 +3723,15 @@ type DescribeBlockIgnoreListRequestParams struct {
 	// 排序列：EndTime结束时间，StartTime开始时间，MatchTimes命中次数
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
+	// blocklist 封禁列表
+	// whitelist 白名单列表
+	ShowType *string `json:"ShowType,omitnil,omitempty" name:"ShowType"`
+
 	// 搜索参数，json格式字符串，空则传"{}"，域名：domain，危险等级：level，放通原因：ignore_reason，安全事件来源：rule_source，地理位置：address，模糊搜索：common
 	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
 
 	// 规则类型：1封禁，2放通
 	RuleType *uint64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
-
-	// blocklist 封禁列表
-	// whitelist 白名单列表
-	ShowType *string `json:"ShowType,omitnil,omitempty" name:"ShowType"`
 }
 
 type DescribeBlockIgnoreListRequest struct {
@@ -3752,15 +3752,15 @@ type DescribeBlockIgnoreListRequest struct {
 	// 排序列：EndTime结束时间，StartTime开始时间，MatchTimes命中次数
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
+	// blocklist 封禁列表
+	// whitelist 白名单列表
+	ShowType *string `json:"ShowType,omitnil,omitempty" name:"ShowType"`
+
 	// 搜索参数，json格式字符串，空则传"{}"，域名：domain，危险等级：level，放通原因：ignore_reason，安全事件来源：rule_source，地理位置：address，模糊搜索：common
 	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
 
 	// 规则类型：1封禁，2放通
 	RuleType *uint64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
-
-	// blocklist 封禁列表
-	// whitelist 白名单列表
-	ShowType *string `json:"ShowType,omitnil,omitempty" name:"ShowType"`
 }
 
 func (r *DescribeBlockIgnoreListRequest) ToJsonString() string {
@@ -3780,9 +3780,9 @@ func (r *DescribeBlockIgnoreListRequest) FromJsonString(s string) error {
 	delete(f, "Direction")
 	delete(f, "Order")
 	delete(f, "By")
+	delete(f, "ShowType")
 	delete(f, "SearchValue")
 	delete(f, "RuleType")
-	delete(f, "ShowType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBlockIgnoreListRequest has unknown keys!", "")
 	}
@@ -5489,6 +5489,118 @@ func (r *DescribeLogsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNDRAssetIdentificationListRequestParams struct {
+	// 每页条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序方式，asc正序 desc倒序
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 查询过滤条件，多个条件之间为AND的关系
+	Filters []*OperatorFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeNDRAssetIdentificationListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每页条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序方式，asc正序 desc倒序
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 查询过滤条件，多个条件之间为AND的关系
+	Filters []*OperatorFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeNDRAssetIdentificationListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNDRAssetIdentificationListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNDRAssetIdentificationListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNDRAssetIdentificationListResponseParams struct {
+	// 符合查询条件的总条数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 查询结果列表
+	Data []*NDRAssetServiceInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 服务类型统计结果
+	AssetCategoryStats []*NDRAssetCategoryStats `json:"AssetCategoryStats,omitnil,omitempty" name:"AssetCategoryStats"`
+
+	// 地域可选项
+	RegionOptions []*FieldOption `json:"RegionOptions,omitnil,omitempty" name:"RegionOptions"`
+
+	// IP版本可选项
+	IpVersionOptions []*FieldOption `json:"IpVersionOptions,omitnil,omitempty" name:"IpVersionOptions"`
+
+	// IP类型可选项
+	IpTypeOptions []*FieldOption `json:"IpTypeOptions,omitnil,omitempty" name:"IpTypeOptions"`
+
+	// 服务类型可选项
+	AssetCategoryOptions []*FieldOption `json:"AssetCategoryOptions,omitnil,omitempty" name:"AssetCategoryOptions"`
+
+	// 识别来源可选项
+	IdentificationSourceOptions []*FieldOption `json:"IdentificationSourceOptions,omitnil,omitempty" name:"IdentificationSourceOptions"`
+
+	// 协议可选项
+	ProtocolOptions []*FieldOption `json:"ProtocolOptions,omitnil,omitempty" name:"ProtocolOptions"`
+
+	// 实例类型可选项
+	InstanceTypeOptions []*FieldOption `json:"InstanceTypeOptions,omitnil,omitempty" name:"InstanceTypeOptions"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNDRAssetIdentificationListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNDRAssetIdentificationListResponseParams `json:"Response"`
+}
+
+func (r *DescribeNDRAssetIdentificationListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNDRAssetIdentificationListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7721,6 +7833,14 @@ func (r *ExpandCfwVerticalResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ExpandCfwVerticalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type FieldOption struct {
+	// 字段展示值
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 字段存储值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type FwCidrInfo struct {
@@ -10555,6 +10675,88 @@ type MultiTopicSearchInformation struct {
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 }
 
+type NDRAssetCategoryStats struct {
+	// 服务类型
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 服务统计结果
+	Services []*NDRAssetServiceStats `json:"Services,omitnil,omitempty" name:"Services"`
+}
+
+type NDRAssetServiceInfo struct {
+	// 资产ID
+	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 实例类型
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 私有网络ID
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 私有网络名称
+	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
+
+	// 服务IP
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 服务端口
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// IP版本 
+	// "0": IPv4
+	// "1": IPv6
+	IpVersion *string `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
+
+	// IP类型
+	// "0": 公网IP
+	// "1": EIP
+	// "-1": 内网IP
+	IpType *string `json:"IpType,omitnil,omitempty" name:"IpType"`
+
+	// 服务名称
+	AssetService *string `json:"AssetService,omitnil,omitempty" name:"AssetService"`
+
+	// 服务版本
+	AssetVersion *string `json:"AssetVersion,omitnil,omitempty" name:"AssetVersion"`
+
+	// 服务类型
+	AssetCategory *string `json:"AssetCategory,omitnil,omitempty" name:"AssetCategory"`
+
+	// 协议
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 识别来源
+	// "0": 流量识别
+	// "1": 云资产实例
+	IdentificationSource *string `json:"IdentificationSource,omitnil,omitempty" name:"IdentificationSource"`
+
+	// 首次识别时间
+	FirstIdentificationTime *string `json:"FirstIdentificationTime,omitnil,omitempty" name:"FirstIdentificationTime"`
+
+	// 最近识别时间
+	LatestIdentificationTime *string `json:"LatestIdentificationTime,omitnil,omitempty" name:"LatestIdentificationTime"`
+
+	// 服务地址
+	ServerAddr *string `json:"ServerAddr,omitnil,omitempty" name:"ServerAddr"`
+}
+
+type NDRAssetServiceStats struct {
+	// 服务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 服务计数
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
 type NatFwEipsInfo struct {
 	// 弹性公网ip
 	Eip *string `json:"Eip,omitnil,omitempty" name:"Eip"`
@@ -10791,6 +10993,29 @@ type NewModeItems struct {
 
 	// 新增模式下新增绑定的出口弹性公网ip个数，其中Eips和AddCount至少传递一个。
 	AddCount *int64 `json:"AddCount,omitnil,omitempty" name:"AddCount"`
+}
+
+type OperatorFilter struct {
+	// 过滤字段
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 匹配的值
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+
+	// 操作类型：
+	// 1：等于 field = value
+	// 2：大于 field > value
+	// 3：小于 field < value
+	// 4：大于等于 field >= value
+	// 5：小于等于 field <= value
+	// 6：不等于 field <> value
+	// 7：IN field IN (value1, value2...)
+	// 8：NOT IN field NOT IN (value1, value2...)
+	// 9：模糊匹配 field LIKE value
+	// 13：非模糊匹配 field NOT LIKE value
+	// 14：按位与 field & value = value
+	// 15：between and field between value1 and value2
+	OperatorType *uint64 `json:"OperatorType,omitnil,omitempty" name:"OperatorType"`
 }
 
 type RegionCidrConfig struct {

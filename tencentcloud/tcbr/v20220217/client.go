@@ -1007,6 +1007,114 @@ func (c *Client) SearchClsLogWithContext(ctx context.Context, request *SearchCls
     return
 }
 
+func NewStartVersionInstanceRequest() (request *StartVersionInstanceRequest) {
+    request = &StartVersionInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcbr", APIVersion, "StartVersionInstance")
+    
+    
+    return
+}
+
+func NewStartVersionInstanceResponse() (response *StartVersionInstanceResponse) {
+    response = &StartVersionInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartVersionInstance
+// 启动版本实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) StartVersionInstance(request *StartVersionInstanceRequest) (response *StartVersionInstanceResponse, err error) {
+    return c.StartVersionInstanceWithContext(context.Background(), request)
+}
+
+// StartVersionInstance
+// 启动版本实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) StartVersionInstanceWithContext(ctx context.Context, request *StartVersionInstanceRequest) (response *StartVersionInstanceResponse, err error) {
+    if request == nil {
+        request = NewStartVersionInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "StartVersionInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartVersionInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartVersionInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopVersionInstanceRequest() (request *StopVersionInstanceRequest) {
+    request = &StopVersionInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcbr", APIVersion, "StopVersionInstance")
+    
+    
+    return
+}
+
+func NewStopVersionInstanceResponse() (response *StopVersionInstanceResponse) {
+    response = &StopVersionInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopVersionInstance
+// 停止版本实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) StopVersionInstance(request *StopVersionInstanceRequest) (response *StopVersionInstanceResponse, err error) {
+    return c.StopVersionInstanceWithContext(context.Background(), request)
+}
+
+// StopVersionInstance
+// 停止版本实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) StopVersionInstanceWithContext(ctx context.Context, request *StopVersionInstanceRequest) (response *StopVersionInstanceResponse, err error) {
+    if request == nil {
+        request = NewStopVersionInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcbr", APIVersion, "StopVersionInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopVersionInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopVersionInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitServerRollbackRequest() (request *SubmitServerRollbackRequest) {
     request = &SubmitServerRollbackRequest{
         BaseRequest: &tchttp.BaseRequest{},

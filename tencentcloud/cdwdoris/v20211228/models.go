@@ -206,6 +206,9 @@ type BackUpJobDisplay struct {
 
 	// 是否开通加密存储：0-未开通，1-已开通
 	EncryptionEnabled *bool `json:"EncryptionEnabled,omitnil,omitempty" name:"EncryptionEnabled"`
+
+	// 任务调度id
+	ScheduleId *int64 `json:"ScheduleId,omitnil,omitempty" name:"ScheduleId"`
 }
 
 type BackupCosInfo struct {
@@ -1406,6 +1409,9 @@ type DescribeAreaRegionResponseParams struct {
 	// 返回可用的白名单名称
 	AvailableWhiteListNames []*string `json:"AvailableWhiteListNames,omitnil,omitempty" name:"AvailableWhiteListNames"`
 
+	// 隔离天数
+	IsolationDays *int64 `json:"IsolationDays,omitnil,omitempty" name:"IsolationDays"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1630,6 +1636,9 @@ type DescribeBackUpSchedulesRequestParams struct {
 
 	// 0-未加密；1-已加密
 	EncryptionFilters []*int64 `json:"EncryptionFilters,omitnil,omitempty" name:"EncryptionFilters"`
+
+	// 调度任务id过滤
+	ScheduleId *int64 `json:"ScheduleId,omitnil,omitempty" name:"ScheduleId"`
 }
 
 type DescribeBackUpSchedulesRequest struct {
@@ -1643,6 +1652,9 @@ type DescribeBackUpSchedulesRequest struct {
 
 	// 0-未加密；1-已加密
 	EncryptionFilters []*int64 `json:"EncryptionFilters,omitnil,omitempty" name:"EncryptionFilters"`
+
+	// 调度任务id过滤
+	ScheduleId *int64 `json:"ScheduleId,omitnil,omitempty" name:"ScheduleId"`
 }
 
 func (r *DescribeBackUpSchedulesRequest) ToJsonString() string {
@@ -1659,6 +1671,7 @@ func (r *DescribeBackUpSchedulesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ApplicationType")
 	delete(f, "EncryptionFilters")
+	delete(f, "ScheduleId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackUpSchedulesRequest has unknown keys!", "")
 	}
@@ -2034,6 +2047,9 @@ type DescribeClusterConfigsResponseParams struct {
 
 	// 实例已经存在的jar包列表
 	ExistingJarConfList []*ClusterConfigsInfoFromEMR `json:"ExistingJarConfList,omitnil,omitempty" name:"ExistingJarConfList"`
+
+	// ipdb的文件大小 byte
+	IPDBFileSizeLimit *string `json:"IPDBFileSizeLimit,omitnil,omitempty" name:"IPDBFileSizeLimit"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4044,14 +4060,14 @@ func (r *DescribeUserBindWorkloadGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeWorkloadGroupRequestParams struct {
-	// 集群id
+	// <p>集群id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeWorkloadGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群id
+	// <p>集群id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -4076,14 +4092,17 @@ func (r *DescribeWorkloadGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeWorkloadGroupResponseParams struct {
-	// 资源组信息
+	// <p>资源组信息</p>
 	WorkloadGroups []*WorkloadGroupConfig `json:"WorkloadGroups,omitnil,omitempty" name:"WorkloadGroups"`
 
-	// 是否开启资源组：开启-open、关闭-close
+	// <p>是否开启资源组：开启-open、关闭-close</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 错误信息
+	// <p>错误信息</p>
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// <p>是否开启监控，0：未开启，1：开启</p>
+	MonitorStatus *int64 `json:"MonitorStatus,omitnil,omitempty" name:"MonitorStatus"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4417,6 +4436,12 @@ type InstanceInfo struct {
 
 	// ccr服务部署节点ip
 	SyncerIp *string `json:"SyncerIp,omitnil,omitempty" name:"SyncerIp"`
+
+	// 是否支持sql convertor
+	EnableSqlConv *int64 `json:"EnableSqlConv,omitnil,omitempty" name:"EnableSqlConv"`
+
+	// 集群时区，默认+08:00
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 }
 
 type InstanceNode struct {
@@ -6529,6 +6554,12 @@ type SnapshotRemainPolicy struct {
 
 	// 保留最新快照的数量
 	RemainLatestNum *int64 `json:"RemainLatestNum,omitnil,omitempty" name:"RemainLatestNum"`
+
+	// 天数单位
+	// 0：天
+	// 1：季度
+	// 2：年
+	RemainDaysUnit *int64 `json:"RemainDaysUnit,omitnil,omitempty" name:"RemainDaysUnit"`
 }
 
 type Tag struct {

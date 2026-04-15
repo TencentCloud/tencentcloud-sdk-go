@@ -187,214 +187,221 @@ type ClazzLevel struct {
 }
 
 type Cluster struct {
-	// 集群 ID
+	// <p>集群 ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 地域
+	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 用户 AppID
+	// <p>用户 AppID</p>
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 主账号 UIN
+	// <p>主账号 UIN</p>
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 创建者 UIN
+	// <p>创建者 UIN</p>
 	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
 
-	// 集群状态, 1 未初始化,3 初始化中，2 运行中
+	// <p>集群状态, 1 未初始化,3 初始化中，2 运行中</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 描述
+	// <p>描述</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 集群创建时间
+	// <p>集群创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 最后一次操作集群的时间
+	// <p>最后一次操作集群的时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// CU 数量
+	// <p>CU 数量</p>
 	CuNum *uint64 `json:"CuNum,omitnil,omitempty" name:"CuNum"`
 
-	// CU 内存规格
+	// <p>CU 内存规格</p>
 	CuMem *uint64 `json:"CuMem,omitnil,omitempty" name:"CuMem"`
 
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 状态描述
+	// <p>状态描述</p>
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
-	// 网络
+	// <p>网络</p>
 	CCNs []*CCN `json:"CCNs,omitnil,omitempty" name:"CCNs"`
 
-	// 网络
+	// <p>网络</p>
 	NetEnvironmentType *uint64 `json:"NetEnvironmentType,omitnil,omitempty" name:"NetEnvironmentType"`
 
-	// 空闲 CU
+	// <p>空闲 CU</p>
 	FreeCuNum *int64 `json:"FreeCuNum,omitnil,omitempty" name:"FreeCuNum"`
 
-	// 集群绑定的标签
+	// <p>集群绑定的标签</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 集群隔离时间; 没隔离时间，则为 -
+	// <p>集群隔离时间; 没隔离时间，则为 -</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolatedTime *string `json:"IsolatedTime,omitnil,omitempty" name:"IsolatedTime"`
 
-	// 集群过期时间; 没过期概念，则为 -
+	// <p>集群过期时间; 没过期概念，则为 -</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 距离过期还有多少秒; 没过期概念，则为 -
+	// <p>距离过期还有多少秒; 没过期概念，则为 -</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecondsUntilExpiry *string `json:"SecondsUntilExpiry,omitnil,omitempty" name:"SecondsUntilExpiry"`
 
-	// 自动续费标记，0 表示默认状态 (用户未设置，即初始状态，用户开通了预付费不停服特权会进行自动续费)， 1 表示自动续费，2表示明确不自动续费(用户设置)
+	// <p>自动续费标记，0 表示默认状态 (用户未设置，即初始状态，用户开通了预付费不停服特权会进行自动续费)， 1 表示自动续费，2表示明确不自动续费(用户设置)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 集群的默认 COS 存储桶
+	// <p>集群的默认 COS 存储桶</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultCOSBucket *string `json:"DefaultCOSBucket,omitnil,omitempty" name:"DefaultCOSBucket"`
 
-	// 集群的CLS 日志集 LogSet
+	// <p>集群的CLS 日志集 LogSet</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CLSLogSet *string `json:"CLSLogSet,omitnil,omitempty" name:"CLSLogSet"`
 
-	// 集群的CLS 日志主题 TopicId
+	// <p>集群的CLS 日志主题 TopicId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CLSTopicId *string `json:"CLSTopicId,omitnil,omitempty" name:"CLSTopicId"`
 
-	// 集群的CLS 日志集  名字
+	// <p>集群的CLS 日志集  名字</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CLSLogName *string `json:"CLSLogName,omitnil,omitempty" name:"CLSLogName"`
 
-	// 集群的CLS 日志主题  名字
+	// <p>集群的CLS 日志主题  名字</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CLSTopicName *string `json:"CLSTopicName,omitnil,omitempty" name:"CLSTopicName"`
 
-	// 集群的版本信息
+	// <p>集群的版本信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *ClusterVersion `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 细粒度资源下的空闲CU
+	// <p>细粒度资源下的空闲CU</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FreeCu *float64 `json:"FreeCu,omitnil,omitempty" name:"FreeCu"`
 
-	// 集群的默认日志采集配置
+	// <p>集群的默认日志采集配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultLogCollectConf *string `json:"DefaultLogCollectConf,omitnil,omitempty" name:"DefaultLogCollectConf"`
 
-	// 取值：0-没有设置，1-已设置，2-不允许设置
+	// <p>取值：0-没有设置，1-已设置，2-不允许设置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomizedDNSEnabled *int64 `json:"CustomizedDNSEnabled,omitnil,omitempty" name:"CustomizedDNSEnabled"`
 
-	// 空间信息
+	// <p>空间信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Correlations []*WorkSpaceClusterItem `json:"Correlations,omitnil,omitempty" name:"Correlations"`
 
-	// 运行CU
+	// <p>运行CU</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunningCu *float64 `json:"RunningCu,omitnil,omitempty" name:"RunningCu"`
 
-	// 0 后付费,1 预付费
+	// <p>0 后付费,1 预付费</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 前端区分 集群是否需要2CU逻辑 因为历史集群 变配不需要, default 1  新集群都需要
+	// <p>前端区分 集群是否需要2CU逻辑 因为历史集群 变配不需要, default 1  新集群都需要</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsNeedManageNode *int64 `json:"IsNeedManageNode,omitnil,omitempty" name:"IsNeedManageNode"`
 
-	// session集群信息
+	// <p>session集群信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterSessions []*ClusterSession `json:"ClusterSessions,omitnil,omitempty" name:"ClusterSessions"`
 
-	// V3版本 = 2
+	// <p>V3版本 = 2</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ArchGeneration *uint64 `json:"ArchGeneration,omitnil,omitempty" name:"ArchGeneration"`
 
-	// 0:TKE, 1:EKS
+	// <p>0:TKE, 1:EKS</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterType *uint64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 订单信息
+	// <p>订单信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Orders []*Order `json:"Orders,omitnil,omitempty" name:"Orders"`
 
-	// Gateway信息
+	// <p>Gateway信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SqlGateways []*SqlGatewayItem `json:"SqlGateways,omitnil,omitempty" name:"SqlGateways"`
 
-	// 0 公网访问 // 1 内网访问	
+	// <p>0 公网访问 // 1 内网访问</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebUIType *int64 `json:"WebUIType,omitnil,omitempty" name:"WebUIType"`
 
-	// 2 独享集群
+	// <p>2 独享集群</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 子eks集群
+	// <p>子eks集群</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubEks *SubEks `json:"SubEks,omitnil,omitempty" name:"SubEks"`
 
-	// 上级集群
+	// <p>上级集群</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AgentSerialId *string `json:"AgentSerialId,omitnil,omitempty" name:"AgentSerialId"`
 
-	// 资源类型
+	// <p>资源类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 集群类型
+	// <p>集群类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingResourceMode *string `json:"BillingResourceMode,omitnil,omitempty" name:"BillingResourceMode"`
 
-	// Cu比例
+	// <p>Cu比例</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemRatio *int64 `json:"MemRatio,omitnil,omitempty" name:"MemRatio"`
 
-	// 是否开启跨租户弹性网卡
+	// <p>是否开启跨租户弹性网卡</p>
 	CrossTenantEniMode *int64 `json:"CrossTenantEniMode,omitnil,omitempty" name:"CrossTenantEniMode"`
 
-	// 总的CPU
+	// <p>总的CPU</p>
 	TotalCpu *float64 `json:"TotalCpu,omitnil,omitempty" name:"TotalCpu"`
 
-	// 总的内存
+	// <p>总的内存</p>
 	TotalMem *float64 `json:"TotalMem,omitnil,omitempty" name:"TotalMem"`
 
-	// 运行的CPU
+	// <p>运行的CPU</p>
 	RunningCpu *float64 `json:"RunningCpu,omitnil,omitempty" name:"RunningCpu"`
 
-	// 运行的内存
+	// <p>运行的内存</p>
 	RunningMem *float64 `json:"RunningMem,omitnil,omitempty" name:"RunningMem"`
 
-	// setats集群
+	// <p>setats集群</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Setats *Setats `json:"Setats,omitnil,omitempty" name:"Setats"`
 
-	// []
+	// <p>[]</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Yarns []*HadoopYarnItem `json:"Yarns,omitnil,omitempty" name:"Yarns"`
 
-	// 0 单可用区 1多可用区
+	// <p>0 单可用区 1多可用区</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeploymentMode *int64 `json:"DeploymentMode,omitnil,omitempty" name:"DeploymentMode"`
 
-	// 备可用区
+	// <p>备可用区</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlaveZones []*SlaveZone `json:"SlaveZones,omitnil,omitempty" name:"SlaveZones"`
 
-	// 集群的日志cos存储
+	// <p>集群的日志cos存储</p>
 	LogCOSBucket *string `json:"LogCOSBucket,omitnil,omitempty" name:"LogCOSBucket"`
 
-	// Cdc集群Id
+	// <p>Cdc集群Id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
+
+	// <p>集群进度</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterProcessMsg *string `json:"ClusterProcessMsg,omitnil,omitempty" name:"ClusterProcessMsg"`
+
+	// <p>单作业最大可配置 CU 数</p>
+	MaxCuPerJob *int64 `json:"MaxCuPerJob,omitnil,omitempty" name:"MaxCuPerJob"`
 }
 
 type ClusterGroupSetItem struct {
@@ -3341,20 +3348,20 @@ func (r *DescribeSystemResourcesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTreeJobsRequestParams struct {
-	// 筛选条件字段，使用了筛选字段后不支持分页，最多返回2000条记录
+	// <p>筛选条件字段，使用了筛选字段后不支持分页，最多返回2000条记录</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 工作空间 Serialid
+	// <p>工作空间 Serialid</p>
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
 }
 
 type DescribeTreeJobsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 筛选条件字段，使用了筛选字段后不支持分页，最多返回2000条记录
+	// <p>筛选条件字段，使用了筛选字段后不支持分页，最多返回2000条记录</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 工作空间 Serialid
+	// <p>工作空间 Serialid</p>
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
 }
 
@@ -3380,23 +3387,23 @@ func (r *DescribeTreeJobsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTreeJobsResponseParams struct {
-	// 父节点ID
+	// <p>父节点ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentId *string `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
-	// 当前文件夹ID
+	// <p>当前文件夹ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 当前文件夹名
+	// <p>当前文件夹名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 当前文件夹下的作业列表
+	// <p>当前文件夹下的作业列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobSet []*TreeJobSets `json:"JobSet,omitnil,omitempty" name:"JobSet"`
 
-	// 迭代子目录
+	// <p>迭代子目录</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Children []*DescribeTreeJobsRsp `json:"Children,omitnil,omitempty" name:"Children"`
 
@@ -5509,6 +5516,9 @@ type Setats struct {
 
 	// <p>setats镜像版本</p>
 	ImageVersion *string `json:"ImageVersion,omitnil,omitempty" name:"ImageVersion"`
+
+	// <p>类型：0 公网，1 内网</p><p>枚举值：</p><ul><li>0： 公网</li><li>1： 内网</li></ul><p>默认值：0</p>
+	WebUIType *int64 `json:"WebUIType,omitnil,omitempty" name:"WebUIType"`
 }
 
 type SetatsCvmInfo struct {

@@ -2408,50 +2408,55 @@ type Indicator struct {
 }
 
 type IndicatorItem struct {
-	// 英文缩写
+	// <p>英文缩写</p>
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 标准缩写
+	// <p>标准缩写</p>
 	Scode *string `json:"Scode,omitnil,omitempty" name:"Scode"`
 
-	// 项目名称
+	// <p>项目名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 标准名
+	// <p>标准名</p>
 	Sname *string `json:"Sname,omitnil,omitempty" name:"Sname"`
 
-	// 结果
+	// <p>结果</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 单位
+	// <p>单位</p>
 	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
 
-	// 参考范围
+	// <p>参考范围</p>
 	Range *string `json:"Range,omitnil,omitempty" name:"Range"`
 
-	// 上下箭头
+	// <p>上下箭头</p>
 	Arrow *string `json:"Arrow,omitnil,omitempty" name:"Arrow"`
 
-	// 是否正常
+	// <p>是否正常</p>
 	Normal *bool `json:"Normal,omitnil,omitempty" name:"Normal"`
 
-	// 项目原文
+	// <p>项目原文</p>
 	ItemString *string `json:"ItemString,omitnil,omitempty" name:"ItemString"`
 
-	// 指标项ID
+	// <p>指标项ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 指标项坐标位置
+	// <p>指标项坐标位置</p>
+	//
+	// Deprecated: Coords is deprecated.
 	Coords *Coordinate `json:"Coords,omitnil,omitempty" name:"Coords"`
 
-	// 推测结果是否异常
+	// <p>推测结果是否异常</p>
 	InferNormal *string `json:"InferNormal,omitnil,omitempty" name:"InferNormal"`
 
-	// 标本
+	// <p>标本</p>
 	Sample *string `json:"Sample,omitnil,omitempty" name:"Sample"`
 
-	// 检测方法
+	// <p>检测方法</p>
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// <p>检验指标项坐标信息</p>
+	ItemCoords *ItemCoordinate `json:"ItemCoords,omitnil,omitempty" name:"ItemCoords"`
 }
 
 type IndicatorItemV2 struct {
@@ -2736,6 +2741,17 @@ type IssueInfo struct {
 
 	// 签发日期
 	IssuedDate *string `json:"IssuedDate,omitnil,omitempty" name:"IssuedDate"`
+}
+
+type ItemCoordinate struct {
+	// <p>指标项名称坐标</p>
+	Name *Coordinate `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>指标结果称坐标</p>
+	Result *Coordinate `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// <p>指标项范围坐标</p>
+	Range *Coordinate `json:"Range,omitnil,omitempty" name:"Range"`
 }
 
 type KeyValueItem struct {

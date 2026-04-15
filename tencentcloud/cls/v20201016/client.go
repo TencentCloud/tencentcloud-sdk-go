@@ -257,7 +257,7 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 // 本接口支持智能生成检索分析语句等日志服务AI功能。
 //
-// ⚠️注意：通过SSE流式调用此接口时，请务必设置请求域名（Endpoint）为 cls.ai.tencentcloudapi.com。
+// ⚠️注意：通过SSE流式调用此接口时，请务必设置请求域名（Endpoint）为 cls.ai.tencentcloudapi.com (VPC内网环境可配置 cls.ai.internal.tencentcloudapi.com）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
@@ -271,7 +271,7 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 // 本接口支持智能生成检索分析语句等日志服务AI功能。
 //
-// ⚠️注意：通过SSE流式调用此接口时，请务必设置请求域名（Endpoint）为 cls.ai.tencentcloudapi.com。
+// ⚠️注意：通过SSE流式调用此接口时，请务必设置请求域名（Endpoint）为 cls.ai.tencentcloudapi.com (VPC内网环境可配置 cls.ai.internal.tencentcloudapi.com）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"

@@ -1378,75 +1378,69 @@ func (r *CreateEnvironmentRoleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateProClusterRequestParams struct {
-	// 多可用区部署选择三个可用区，示例[200002,200003,200004]
-	// 
-	// 单可用区部署选择一个可用区，示例[200002]
+	// <p>多可用区部署选择三个可用区，示例[200002,200003,200004]<br>单可用区部署选择一个可用区，示例[200002]</p><p>当选择PULSAR.P2.MINI1 时只支持两个可用区，其他支持三个可用区</p>
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 集群规格代号
-	// 参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
+	// <p>集群规格代号<br>参考 <a href="https://cloud.tencent.com/document/product/1179/83705">专业集群规格</a></p>
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
-	// 1: true，开启自动按月续费
-	// 
-	// 0: false，关闭自动按月续费
+	// <p>1: true，开启自动按月续费</p><p>0: false，关闭自动按月续费</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 购买时长，取值范围：1～50
+	// <p>购买时长，取值范围：1～50</p>
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。
+	// <p>集群名称不能为空，支持数字、字母、中文以及符号 “-_=:.”，长度不超过64个字符</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 是否自动选择代金券 1是 0否 默认为0
+	// <p>是否自动选择代金券 1是 0否 默认为0</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 存储规格
-	// 参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
+	// <p>存储规格<br>参考 <a href="https://cloud.tencent.com/document/product/1179/83705">专业集群规格</a></p>
 	StorageSize *int64 `json:"StorageSize,omitnil,omitempty" name:"StorageSize"`
 
-	// vpc网络标签
+	// <p>vpc网络标签</p>
 	Vpc *VpcInfo `json:"Vpc,omitnil,omitempty" name:"Vpc"`
 
-	// 集群的标签列表(已废弃)
+	// <p>集群的标签列表(已废弃)</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>集群版本信息</p>
+	InstanceVersion *string `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
 }
 
 type CreateProClusterRequest struct {
 	*tchttp.BaseRequest
 	
-	// 多可用区部署选择三个可用区，示例[200002,200003,200004]
-	// 
-	// 单可用区部署选择一个可用区，示例[200002]
+	// <p>多可用区部署选择三个可用区，示例[200002,200003,200004]<br>单可用区部署选择一个可用区，示例[200002]</p><p>当选择PULSAR.P2.MINI1 时只支持两个可用区，其他支持三个可用区</p>
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 集群规格代号
-	// 参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
+	// <p>集群规格代号<br>参考 <a href="https://cloud.tencent.com/document/product/1179/83705">专业集群规格</a></p>
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
-	// 1: true，开启自动按月续费
-	// 
-	// 0: false，关闭自动按月续费
+	// <p>1: true，开启自动按月续费</p><p>0: false，关闭自动按月续费</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 购买时长，取值范围：1～50
+	// <p>购买时长，取值范围：1～50</p>
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。
+	// <p>集群名称不能为空，支持数字、字母、中文以及符号 “-_=:.”，长度不超过64个字符</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 是否自动选择代金券 1是 0否 默认为0
+	// <p>是否自动选择代金券 1是 0否 默认为0</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 存储规格
-	// 参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
+	// <p>存储规格<br>参考 <a href="https://cloud.tencent.com/document/product/1179/83705">专业集群规格</a></p>
 	StorageSize *int64 `json:"StorageSize,omitnil,omitempty" name:"StorageSize"`
 
-	// vpc网络标签
+	// <p>vpc网络标签</p>
 	Vpc *VpcInfo `json:"Vpc,omitnil,omitempty" name:"Vpc"`
 
-	// 集群的标签列表(已废弃)
+	// <p>集群的标签列表(已废弃)</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>集群版本信息</p>
+	InstanceVersion *string `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
 }
 
 func (r *CreateProClusterRequest) ToJsonString() string {
@@ -1470,6 +1464,7 @@ func (r *CreateProClusterRequest) FromJsonString(s string) error {
 	delete(f, "StorageSize")
 	delete(f, "Vpc")
 	delete(f, "Tags")
+	delete(f, "InstanceVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProClusterRequest has unknown keys!", "")
 	}
@@ -1478,16 +1473,16 @@ func (r *CreateProClusterRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateProClusterResponseParams struct {
-	// 子订单号
+	// <p>子订单号</p>
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
-	// 订单号
+	// <p>订单号</p>
 	BigDealId *string `json:"BigDealId,omitnil,omitempty" name:"BigDealId"`
 
-	// 集群Id
+	// <p>集群Id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15674,23 +15669,32 @@ type RocketMQVipInstance struct {
 }
 
 type Role struct {
-	// 角色名称。
+	// <p>角色名称。</p>
 	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
 
-	// 角色token值。
+	// <p>角色token值。</p>
 	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
 
-	// 备注说明。
+	// <p>备注说明。</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 创建时间。
+	// <p>创建时间。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间。
+	// <p>更新时间。</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 授权类型（Cluster：集群；TopicAndGroup：主题或消费组）
+	// <p>授权类型（Cluster：集群；TopicAndGroup：主题或消费组）</p>
 	PermType *string `json:"PermType,omitnil,omitempty" name:"PermType"`
+
+	// <p>角色类型</p><p>枚举值：</p><ul><li>Temporary： 轮转密钥</li><li>Permanent： 永久密钥</li></ul>
+	TokenType *string `json:"TokenType,omitnil,omitempty" name:"TokenType"`
+
+	// <p>SSM 唯一 ID</p>
+	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
+
+	// <p>轮转周期</p><p>单位：天</p>
+	RotateFreq *uint64 `json:"RotateFreq,omitnil,omitempty" name:"RotateFreq"`
 }
 
 type SecurityPolicy struct {

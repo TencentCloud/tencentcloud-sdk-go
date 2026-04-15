@@ -3357,15 +3357,21 @@ func (r *ListAggregatorsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListAlarmPolicyRequestParams struct {
-	// 页码
+	// <p>页码</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页展示数量</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type ListAlarmPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 页码
+	// <p>页码</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页展示数量</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *ListAlarmPolicyRequest) ToJsonString() string {
@@ -3381,6 +3387,7 @@ func (r *ListAlarmPolicyRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAlarmPolicyRequest has unknown keys!", "")
 	}
@@ -3389,10 +3396,10 @@ func (r *ListAlarmPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListAlarmPolicyResponseParams struct {
-	// 返回记录的数量
+	// <p>返回记录的数量</p>
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 告警策略返回值
+	// <p>告警策略返回值</p>
 	AlarmPolicyList []*AlarmPolicyRsp `json:"AlarmPolicyList,omitnil,omitempty" name:"AlarmPolicyList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

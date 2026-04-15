@@ -12301,7 +12301,7 @@ func NewTextTranslationResponse() (response *TextTranslationResponse) {
 }
 
 // TextTranslation
-// 文本翻译
+// 文本翻译，使用 翻译字幕（附加语种）计费项，按1100字符（按照 Unicode 码点数 统计，hello 算5个字符，你好 算2个字符）/分钟折算到时长计费
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_SOURCELANGUAGE = "InvalidParameterValue.SourceLanguage"
@@ -12315,7 +12315,7 @@ func (c *Client) TextTranslation(request *TextTranslationRequest) (response *Tex
 }
 
 // TextTranslation
-// 文本翻译
+// 文本翻译，使用 翻译字幕（附加语种）计费项，按1100字符（按照 Unicode 码点数 统计，hello 算5个字符，你好 算2个字符）/分钟折算到时长计费
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_SOURCELANGUAGE = "InvalidParameterValue.SourceLanguage"

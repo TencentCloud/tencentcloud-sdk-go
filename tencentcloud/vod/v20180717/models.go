@@ -1988,6 +1988,9 @@ type AigcImageOutputConfig struct {
 
 	// <p>是否开启输出内容的合规性检查。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
 	OutputComplianceCheck *string `json:"OutputComplianceCheck,omitnil,omitempty" name:"OutputComplianceCheck"`
+
+	// <p>生成图片张数。*<em>仅ModelName为Kling时有效，可选值 1-9 *</em>。</p>
+	OutputImageCount *uint64 `json:"OutputImageCount,omitnil,omitempty" name:"OutputImageCount"`
 }
 
 type AigcImageSceneInfo struct {
@@ -2166,6 +2169,9 @@ type AigcVideoOutputConfig struct {
 
 	// <p>是否开启图标水印。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li><br>目前支持的模型有 Vidu，其他模型暂不支持。</p>
 	LogoAdd *string `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// <p>是否为生成的视频添加背景音乐。</p><p>枚举值：</p><ul><li>Enabled： 系统将从预设 BGM 库中自动挑选合适的音乐并添加。</li><li>Disabled： 不添加BGM。</li></ul><p>默认值：Disabled</p>
+	EnableBGM *string `json:"EnableBGM,omitnil,omitempty" name:"EnableBGM"`
 }
 
 type AigcVideoSceneInfo struct {

@@ -215,7 +215,7 @@ const (
 	// 下发短信命中了频率限制策略，可自行到控制台调整短信频率限制策略，如有其他需求请联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)。
 	LIMITEXCEEDED_DELIVERYFREQUENCYLIMIT = "LimitExceeded.DeliveryFrequencyLimit"
 
-	// 调用接口单次提交的手机号个数超过200个，请遵守 API 接口输入参数 PhoneNumberSet 描述。
+	// 调用接口单次提交的手机号个数超过200个，请遵守 API 接口输入参数描述。
 	LIMITEXCEEDED_PHONENUMBERCOUNTLIMIT = "LimitExceeded.PhoneNumberCountLimit"
 
 	// 单个手机号日下发短信条数超过设定的上限，可自行到控制台调整短信频率限制策略。
