@@ -587,6 +587,9 @@ const (
 	// 水印参数有误。
 	INVALIDPARAMETER_INVALIDWATERMARK = "InvalidParameter.InvalidWatermark"
 
+	// 匹配规则仅支持音视频格式后缀。
+	INVALIDPARAMETER_MATCHRULEONLYSUPPORTNORMALSUFFIX = "InvalidParameter.MatchRuleOnlySupportNormalSuffix"
+
 	// 当月不允许添加已删除的小程序域名。
 	INVALIDPARAMETER_MPHOSTDELETE = "InvalidParameter.MpHostDelete"
 

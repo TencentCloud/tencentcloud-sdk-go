@@ -775,19 +775,19 @@ type LogoParam struct {
 }
 
 type LogoRect struct {
-	// 左上角X坐标
+	// <p>左上角X坐标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	X *int64 `json:"X,omitnil,omitempty" name:"X"`
 
-	// 左上角Y坐标
+	// <p>左上角Y坐标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 
-	// 方框宽度
+	// <p>方框宽度<br>单位为 px</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 方框高度
+	// <p>方框高度<br>单位为 px</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }

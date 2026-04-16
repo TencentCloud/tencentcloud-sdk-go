@@ -137,6 +137,282 @@ func (c *Client) CheckAnimateImageJobWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateAigcElementRequest() (request *CreateAigcElementRequest) {
+    request = &CreateAigcElementRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "CreateAigcElement")
+    
+    
+    return
+}
+
+func NewCreateAigcElementResponse() (response *CreateAigcElementResponse) {
+    response = &CreateAigcElementResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAigcElement
+// 提交视频特效任务接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BODYJOINTSFAIL = "FailedOperation.BodyJointsFail"
+//  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
+//  FAILEDOPERATION_IMAGEBODYJOINSUNDETECTED = "FailedOperation.ImageBodyJoinsUndetected"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFaceDetectFailed"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGERATIOEXCCEED = "FailedOperation.ImageRatioExcceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_TEMPLATENOTEXISTED = "InvalidParameter.TemplateNotExisted"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEORESOLUTION = "InvalidParameterValue.InvalidVideoResolution"
+//  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateAigcElement(request *CreateAigcElementRequest) (response *CreateAigcElementResponse, err error) {
+    return c.CreateAigcElementWithContext(context.Background(), request)
+}
+
+// CreateAigcElement
+// 提交视频特效任务接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BODYJOINTSFAIL = "FailedOperation.BodyJointsFail"
+//  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
+//  FAILEDOPERATION_IMAGEBODYJOINSUNDETECTED = "FailedOperation.ImageBodyJoinsUndetected"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFaceDetectFailed"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGERATIOEXCCEED = "FailedOperation.ImageRatioExcceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_TEMPLATENOTEXISTED = "InvalidParameter.TemplateNotExisted"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEORESOLUTION = "InvalidParameterValue.InvalidVideoResolution"
+//  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateAigcElementWithContext(ctx context.Context, request *CreateAigcElementRequest) (response *CreateAigcElementResponse, err error) {
+    if request == nil {
+        request = NewCreateAigcElementRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "CreateAigcElement")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAigcElement require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAigcElementResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAigcElementRequest() (request *DeleteAigcElementRequest) {
+    request = &DeleteAigcElementRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "DeleteAigcElement")
+    
+    
+    return
+}
+
+func NewDeleteAigcElementResponse() (response *DeleteAigcElementResponse) {
+    response = &DeleteAigcElementResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAigcElement
+// 删除主体库
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BODYJOINTSFAIL = "FailedOperation.BodyJointsFail"
+//  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
+//  FAILEDOPERATION_IMAGEBODYJOINSUNDETECTED = "FailedOperation.ImageBodyJoinsUndetected"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFaceDetectFailed"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGERATIOEXCCEED = "FailedOperation.ImageRatioExcceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_TEMPLATENOTEXISTED = "InvalidParameter.TemplateNotExisted"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEORESOLUTION = "InvalidParameterValue.InvalidVideoResolution"
+//  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAigcElement(request *DeleteAigcElementRequest) (response *DeleteAigcElementResponse, err error) {
+    return c.DeleteAigcElementWithContext(context.Background(), request)
+}
+
+// DeleteAigcElement
+// 删除主体库
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BODYJOINTSFAIL = "FailedOperation.BodyJointsFail"
+//  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
+//  FAILEDOPERATION_IMAGEBODYJOINSUNDETECTED = "FailedOperation.ImageBodyJoinsUndetected"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFaceDetectFailed"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGERATIOEXCCEED = "FailedOperation.ImageRatioExcceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_TEMPLATENOTEXISTED = "InvalidParameter.TemplateNotExisted"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEORESOLUTION = "InvalidParameterValue.InvalidVideoResolution"
+//  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAigcElementWithContext(ctx context.Context, request *DeleteAigcElementRequest) (response *DeleteAigcElementResponse, err error) {
+    if request == nil {
+        request = NewDeleteAigcElementRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "DeleteAigcElement")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAigcElement require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAigcElementResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAigcElementRequest() (request *DescribeAigcElementRequest) {
+    request = &DescribeAigcElementRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vclm", APIVersion, "DescribeAigcElement")
+    
+    
+    return
+}
+
+func NewDescribeAigcElementResponse() (response *DescribeAigcElementResponse) {
+    response = &DescribeAigcElementResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAigcElement
+// 提交视频特效任务接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BODYJOINTSFAIL = "FailedOperation.BodyJointsFail"
+//  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
+//  FAILEDOPERATION_IMAGEBODYJOINSUNDETECTED = "FailedOperation.ImageBodyJoinsUndetected"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFaceDetectFailed"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGERATIOEXCCEED = "FailedOperation.ImageRatioExcceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_TEMPLATENOTEXISTED = "InvalidParameter.TemplateNotExisted"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEORESOLUTION = "InvalidParameterValue.InvalidVideoResolution"
+//  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAigcElement(request *DescribeAigcElementRequest) (response *DescribeAigcElementResponse, err error) {
+    return c.DescribeAigcElementWithContext(context.Background(), request)
+}
+
+// DescribeAigcElement
+// 提交视频特效任务接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BODYJOINTSFAIL = "FailedOperation.BodyJointsFail"
+//  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
+//  FAILEDOPERATION_IMAGEBODYJOINSUNDETECTED = "FailedOperation.ImageBodyJoinsUndetected"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFaceDetectFailed"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGERATIOEXCCEED = "FailedOperation.ImageRatioExcceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_TEMPLATENOTEXISTED = "InvalidParameter.TemplateNotExisted"
+//  INVALIDPARAMETERVALUE_INVALIDVIDEORESOLUTION = "InvalidParameterValue.InvalidVideoResolution"
+//  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAigcElementWithContext(ctx context.Context, request *DescribeAigcElementRequest) (response *DescribeAigcElementResponse, err error) {
+    if request == nil {
+        request = NewDescribeAigcElementRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vclm", APIVersion, "DescribeAigcElement")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAigcElement require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAigcElementResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAigcVideoJobRequest() (request *DescribeAigcVideoJobRequest) {
     request = &DescribeAigcVideoJobRequest{
         BaseRequest: &tchttp.BaseRequest{},

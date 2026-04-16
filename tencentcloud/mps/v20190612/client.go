@@ -5521,6 +5521,66 @@ func (c *Client) DescribeContentReviewTemplatesWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeDesignTaskRequest() (request *DescribeDesignTaskRequest) {
+    request = &DescribeDesignTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeDesignTask")
+    
+    
+    return
+}
+
+func NewDescribeDesignTaskResponse() (response *DescribeDesignTaskResponse) {
+    response = &DescribeDesignTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDesignTask
+// 查询配音相关任务（异步）结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DescribeDesignTask(request *DescribeDesignTaskRequest) (response *DescribeDesignTaskResponse, err error) {
+    return c.DescribeDesignTaskWithContext(context.Background(), request)
+}
+
+// DescribeDesignTask
+// 查询配音相关任务（异步）结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DescribeDesignTaskWithContext(ctx context.Context, request *DescribeDesignTaskRequest) (response *DescribeDesignTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeDesignTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeDesignTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDesignTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDesignTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGroupAttachFlowsByIdRequest() (request *DescribeGroupAttachFlowsByIdRequest) {
     request = &DescribeGroupAttachFlowsByIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8687,6 +8747,60 @@ func (c *Client) DescribeWorkflowsWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeWorkflowsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDesignVoiceAsyncRequest() (request *DesignVoiceAsyncRequest) {
+    request = &DesignVoiceAsyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DesignVoiceAsync")
+    
+    
+    return
+}
+
+func NewDesignVoiceAsyncResponse() (response *DesignVoiceAsyncResponse) {
+    response = &DesignVoiceAsyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DesignVoiceAsync
+// 音色设计，根据prompt生成音色ID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DesignVoiceAsync(request *DesignVoiceAsyncRequest) (response *DesignVoiceAsyncResponse, err error) {
+    return c.DesignVoiceAsyncWithContext(context.Background(), request)
+}
+
+// DesignVoiceAsync
+// 音色设计，根据prompt生成音色ID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DesignVoiceAsyncWithContext(ctx context.Context, request *DesignVoiceAsyncRequest) (response *DesignVoiceAsyncResponse, err error) {
+    if request == nil {
+        request = NewDesignVoiceAsyncRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DesignVoiceAsync")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DesignVoiceAsync require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDesignVoiceAsyncResponse()
     err = c.Send(request, response)
     return
 }

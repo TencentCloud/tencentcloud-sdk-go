@@ -829,6 +829,70 @@ func (c *Client) CancelCommonMixStreamWithContext(ctx context.Context, request *
     return
 }
 
+func NewCloseSourceStreamRequest() (request *CloseSourceStreamRequest) {
+    request = &CloseSourceStreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CloseSourceStream")
+    
+    
+    return
+}
+
+func NewCloseSourceStreamResponse() (response *CloseSourceStreamResponse) {
+    response = &CloseSourceStreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CloseSourceStream
+// 用于关闭回源客户源站功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) CloseSourceStream(request *CloseSourceStreamRequest) (response *CloseSourceStreamResponse, err error) {
+    return c.CloseSourceStreamWithContext(context.Background(), request)
+}
+
+// CloseSourceStream
+// 用于关闭回源客户源站功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) CloseSourceStreamWithContext(ctx context.Context, request *CloseSourceStreamRequest) (response *CloseSourceStreamResponse, err error) {
+    if request == nil {
+        request = NewCloseSourceStreamRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "CloseSourceStream")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloseSourceStream require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCloseSourceStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCopyCasterRequest() (request *CopyCasterRequest) {
     request = &CopyCasterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12021,6 +12085,72 @@ func (c *Client) DescribeMonitorReportWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeOriginStreamInfoRequest() (request *DescribeOriginStreamInfoRequest) {
+    request = &DescribeOriginStreamInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeOriginStreamInfo")
+    
+    
+    return
+}
+
+func NewDescribeOriginStreamInfoResponse() (response *DescribeOriginStreamInfoResponse) {
+    response = &DescribeOriginStreamInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeOriginStreamInfo
+// 获取直播源站配置信息，支持直播原站格式。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeOriginStreamInfo(request *DescribeOriginStreamInfoRequest) (response *DescribeOriginStreamInfoResponse, err error) {
+    return c.DescribeOriginStreamInfoWithContext(context.Background(), request)
+}
+
+// DescribeOriginStreamInfo
+// 获取直播源站配置信息，支持直播原站格式。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeOriginStreamInfoWithContext(ctx context.Context, request *DescribeOriginStreamInfoRequest) (response *DescribeOriginStreamInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeOriginStreamInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeOriginStreamInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOriginStreamInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOriginStreamInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePlayErrorCodeDetailInfoListRequest() (request *DescribePlayErrorCodeDetailInfoListRequest) {
     request = &DescribePlayErrorCodeDetailInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15679,6 +15809,72 @@ func (c *Client) ModifyLiveTranscodeTemplateWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewModifyLiveTranscodeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyOriginStreamInfoRequest() (request *ModifyOriginStreamInfoRequest) {
+    request = &ModifyOriginStreamInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "ModifyOriginStreamInfo")
+    
+    
+    return
+}
+
+func NewModifyOriginStreamInfoResponse() (response *ModifyOriginStreamInfoResponse) {
+    response = &ModifyOriginStreamInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyOriginStreamInfo
+// 变更直播源站配置，支持直播原站格式。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MATCHRULEONLYSUPPORTNORMALSUFFIX = "InvalidParameter.MatchRuleOnlySupportNormalSuffix"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) ModifyOriginStreamInfo(request *ModifyOriginStreamInfoRequest) (response *ModifyOriginStreamInfoResponse, err error) {
+    return c.ModifyOriginStreamInfoWithContext(context.Background(), request)
+}
+
+// ModifyOriginStreamInfo
+// 变更直播源站配置，支持直播原站格式。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MATCHRULEONLYSUPPORTNORMALSUFFIX = "InvalidParameter.MatchRuleOnlySupportNormalSuffix"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) ModifyOriginStreamInfoWithContext(ctx context.Context, request *ModifyOriginStreamInfoRequest) (response *ModifyOriginStreamInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyOriginStreamInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "ModifyOriginStreamInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyOriginStreamInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyOriginStreamInfoResponse()
     err = c.Send(request, response)
     return
 }

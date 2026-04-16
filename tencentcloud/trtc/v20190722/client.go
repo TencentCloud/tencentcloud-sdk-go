@@ -45,6 +45,58 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAsyncTextToSpeechRequest() (request *AsyncTextToSpeechRequest) {
+    request = &AsyncTextToSpeechRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "AsyncTextToSpeech")
+    
+    
+    return
+}
+
+func NewAsyncTextToSpeechResponse() (response *AsyncTextToSpeechResponse) {
+    response = &AsyncTextToSpeechResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AsyncTextToSpeech
+// 异步语音合成
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
+//  UNSUPPORTEDOPERATION_TASKLIMIT = "UnsupportedOperation.TaskLimit"
+func (c *Client) AsyncTextToSpeech(request *AsyncTextToSpeechRequest) (response *AsyncTextToSpeechResponse, err error) {
+    return c.AsyncTextToSpeechWithContext(context.Background(), request)
+}
+
+// AsyncTextToSpeech
+// 异步语音合成
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
+//  UNSUPPORTEDOPERATION_TASKLIMIT = "UnsupportedOperation.TaskLimit"
+func (c *Client) AsyncTextToSpeechWithContext(ctx context.Context, request *AsyncTextToSpeechRequest) (response *AsyncTextToSpeechResponse, err error) {
+    if request == nil {
+        request = NewAsyncTextToSpeechRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "AsyncTextToSpeech")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AsyncTextToSpeech require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAsyncTextToSpeechResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewControlAIConversationRequest() (request *ControlAIConversationRequest) {
     request = &ControlAIConversationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1323,6 +1375,58 @@ func (c *Client) DescribeAITranscriptionWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeAITranscriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAsyncTextToSpeechRequest() (request *DescribeAsyncTextToSpeechRequest) {
+    request = &DescribeAsyncTextToSpeechRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeAsyncTextToSpeech")
+    
+    
+    return
+}
+
+func NewDescribeAsyncTextToSpeechResponse() (response *DescribeAsyncTextToSpeechResponse) {
+    response = &DescribeAsyncTextToSpeechResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAsyncTextToSpeech
+// 查询异步语音合成状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) DescribeAsyncTextToSpeech(request *DescribeAsyncTextToSpeechRequest) (response *DescribeAsyncTextToSpeechResponse, err error) {
+    return c.DescribeAsyncTextToSpeechWithContext(context.Background(), request)
+}
+
+// DescribeAsyncTextToSpeech
+// 查询异步语音合成状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+//  INVALIDPARAMETER_TASKID = "InvalidParameter.TaskId"
+func (c *Client) DescribeAsyncTextToSpeechWithContext(ctx context.Context, request *DescribeAsyncTextToSpeechRequest) (response *DescribeAsyncTextToSpeechResponse, err error) {
+    if request == nil {
+        request = NewDescribeAsyncTextToSpeechRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "trtc", APIVersion, "DescribeAsyncTextToSpeech")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAsyncTextToSpeech require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAsyncTextToSpeechResponse()
     err = c.Send(request, response)
     return
 }
@@ -5265,6 +5369,7 @@ func NewTextToSpeechResponse() (response *TextToSpeechResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PITCH = "InvalidParameter.Pitch"
+//  INVALIDPARAMETER_PRONUNCIATIONDICT = "InvalidParameter.PronunciationDict"
 //  INVALIDPARAMETER_SAMPLERATE = "InvalidParameter.SampleRate"
 //  INVALIDPARAMETER_SPEED = "InvalidParameter.Speed"
 //  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
@@ -5282,6 +5387,7 @@ func (c *Client) TextToSpeech(request *TextToSpeechRequest) (response *TextToSpe
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PITCH = "InvalidParameter.Pitch"
+//  INVALIDPARAMETER_PRONUNCIATIONDICT = "InvalidParameter.PronunciationDict"
 //  INVALIDPARAMETER_SAMPLERATE = "InvalidParameter.SampleRate"
 //  INVALIDPARAMETER_SPEED = "InvalidParameter.Speed"
 //  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
@@ -5329,6 +5435,7 @@ func NewTextToSpeechSSEResponse() (response *TextToSpeechSSEResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PITCH = "InvalidParameter.Pitch"
+//  INVALIDPARAMETER_PRONUNCIATIONDICT = "InvalidParameter.PronunciationDict"
 //  INVALIDPARAMETER_SAMPLERATE = "InvalidParameter.SampleRate"
 //  INVALIDPARAMETER_SPEED = "InvalidParameter.Speed"
 //  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"
@@ -5346,6 +5453,7 @@ func (c *Client) TextToSpeechSSE(request *TextToSpeechSSERequest) (response *Tex
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PITCH = "InvalidParameter.Pitch"
+//  INVALIDPARAMETER_PRONUNCIATIONDICT = "InvalidParameter.PronunciationDict"
 //  INVALIDPARAMETER_SAMPLERATE = "InvalidParameter.SampleRate"
 //  INVALIDPARAMETER_SPEED = "InvalidParameter.Speed"
 //  INVALIDPARAMETER_TEXTLENGTH = "InvalidParameter.TextLength"

@@ -1700,6 +1700,60 @@ type ClientIpPlaySumInfo struct {
 	CountryArea *string `json:"CountryArea,omitnil,omitempty" name:"CountryArea"`
 }
 
+// Predefined struct for user
+type CloseSourceStreamRequestParams struct {
+	// 播放域名。
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+}
+
+type CloseSourceStreamRequest struct {
+	*tchttp.BaseRequest
+	
+	// 播放域名。
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+}
+
+func (r *CloseSourceStreamRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseSourceStreamRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloseSourceStreamRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CloseSourceStreamResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CloseSourceStreamResponse struct {
+	*tchttp.BaseResponse
+	Response *CloseSourceStreamResponseParams `json:"Response"`
+}
+
+func (r *CloseSourceStreamResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseSourceStreamResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CloudEffectInfo struct {
 	// 云端特效 ID。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -13535,6 +13589,63 @@ func (r *DescribeMonitorReportResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeOriginStreamInfoRequestParams struct {
+
+}
+
+type DescribeOriginStreamInfoRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeOriginStreamInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOriginStreamInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOriginStreamInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOriginStreamInfoResponseParams struct {
+	// 缓存格式规则。 
+	// 0：默认格式。
+	// 1：云直播源站格式。
+	// 当 OriginStreamPlayType 为 customization 时候生效。
+	CacheFormatRule *int64 `json:"CacheFormatRule,omitnil,omitempty" name:"CacheFormatRule"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOriginStreamInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOriginStreamInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeOriginStreamInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOriginStreamInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePlayErrorCodeDetailInfoListRequestParams struct {
 	// 起始时间，
 	// 使用UTC格式时间，
@@ -19173,6 +19284,57 @@ func (r *ModifyLiveTranscodeTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyLiveTranscodeTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyOriginStreamInfoRequestParams struct {
+
+}
+
+type ModifyOriginStreamInfoRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *ModifyOriginStreamInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOriginStreamInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyOriginStreamInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyOriginStreamInfoResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyOriginStreamInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyOriginStreamInfoResponseParams `json:"Response"`
+}
+
+func (r *ModifyOriginStreamInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOriginStreamInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

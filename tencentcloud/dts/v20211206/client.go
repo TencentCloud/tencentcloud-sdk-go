@@ -1605,6 +1605,60 @@ func (c *Client) DescribeCheckSyncJobResultWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeCompareDiffItemsRequest() (request *DescribeCompareDiffItemsRequest) {
+    request = &DescribeCompareDiffItemsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dts", APIVersion, "DescribeCompareDiffItems")
+    
+    
+    return
+}
+
+func NewDescribeCompareDiffItemsResponse() (response *DescribeCompareDiffItemsResponse) {
+    response = &DescribeCompareDiffItemsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCompareDiffItems
+// 本接口用于查询一致性校验任务中，不一致数据块的详情信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
+func (c *Client) DescribeCompareDiffItems(request *DescribeCompareDiffItemsRequest) (response *DescribeCompareDiffItemsResponse, err error) {
+    return c.DescribeCompareDiffItemsWithContext(context.Background(), request)
+}
+
+// DescribeCompareDiffItems
+// 本接口用于查询一致性校验任务中，不一致数据块的详情信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
+func (c *Client) DescribeCompareDiffItemsWithContext(ctx context.Context, request *DescribeCompareDiffItemsRequest) (response *DescribeCompareDiffItemsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCompareDiffItemsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeCompareDiffItems")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCompareDiffItems require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCompareDiffItemsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCompareReportRequest() (request *DescribeCompareReportRequest) {
     request = &DescribeCompareReportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2711,6 +2765,60 @@ func (c *Client) DescribeSubscribeReturnableWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeSubscribeReturnableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSyncCompareDiffItemsRequest() (request *DescribeSyncCompareDiffItemsRequest) {
+    request = &DescribeSyncCompareDiffItemsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dts", APIVersion, "DescribeSyncCompareDiffItems")
+    
+    
+    return
+}
+
+func NewDescribeSyncCompareDiffItemsResponse() (response *DescribeSyncCompareDiffItemsResponse) {
+    response = &DescribeSyncCompareDiffItemsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSyncCompareDiffItems
+// 本接口用于查询一致性校验任务中，不一致数据块的详情信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
+func (c *Client) DescribeSyncCompareDiffItems(request *DescribeSyncCompareDiffItemsRequest) (response *DescribeSyncCompareDiffItemsResponse, err error) {
+    return c.DescribeSyncCompareDiffItemsWithContext(context.Background(), request)
+}
+
+// DescribeSyncCompareDiffItems
+// 本接口用于查询一致性校验任务中，不一致数据块的详情信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
+func (c *Client) DescribeSyncCompareDiffItemsWithContext(ctx context.Context, request *DescribeSyncCompareDiffItemsRequest) (response *DescribeSyncCompareDiffItemsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSyncCompareDiffItemsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dts", APIVersion, "DescribeSyncCompareDiffItems")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSyncCompareDiffItems require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSyncCompareDiffItemsResponse()
     err = c.Send(request, response)
     return
 }

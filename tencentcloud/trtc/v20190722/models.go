@@ -117,6 +117,20 @@ type AgentParams struct {
 	MaxIdleTime *uint64 `json:"MaxIdleTime,omitnil,omitempty" name:"MaxIdleTime"`
 }
 
+type AlignmentItem struct {
+	// 字幕对应的时间起点
+	TimeBeginMs *uint64 `json:"TimeBeginMs,omitnil,omitempty" name:"TimeBeginMs"`
+
+	// 字幕对应的时间尾点
+	TimeEndMs *uint64 `json:"TimeEndMs,omitnil,omitempty" name:"TimeEndMs"`
+
+	// 字幕对应的文本索引起点
+	TextBegin *uint64 `json:"TextBegin,omitnil,omitempty" name:"TextBegin"`
+
+	// 字幕对应的文本索引尾点
+	TextEnd *uint64 `json:"TextEnd,omitnil,omitempty" name:"TextEnd"`
+}
+
 type AmbientSound struct {
 	// 环境场景选择
 	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
@@ -183,6 +197,112 @@ type AsrParam struct {
 	VadLevel *uint64 `json:"VadLevel,omitnil,omitempty" name:"VadLevel"`
 }
 
+// Predefined struct for user
+type AsyncTextToSpeechRequestParams struct {
+	// 需要转语音的文字内容，最大允许50000字符，注意 1汉字=2字符
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 文本转语音的声音配置
+	Voice *Voice `json:"Voice,omitnil,omitempty" name:"Voice"`
+
+	// TRTC的SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 文本转语音的输出音频的格式
+	AudioFormat *AudioFormat `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+
+	// TTS的模型，当前固定为：flow_01_turbo
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+	PronunciationDict []*PronunciationDict `json:"PronunciationDict,omitnil,omitempty" name:"PronunciationDict"`
+
+	// 默认为0，0表示不生成字幕，1表示生成字幕
+	AlignmentMode *uint64 `json:"AlignmentMode,omitnil,omitempty" name:"AlignmentMode"`
+
+	// 需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：  zh（中文） en（英文） yue（粤语） ja（日语） ko（韩语） ar（阿拉伯语） id（印尼语） th（泰语）
+	LanguageCode *string `json:"LanguageCode,omitnil,omitempty" name:"LanguageCode"`
+}
+
+type AsyncTextToSpeechRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要转语音的文字内容，最大允许50000字符，注意 1汉字=2字符
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 文本转语音的声音配置
+	Voice *Voice `json:"Voice,omitnil,omitempty" name:"Voice"`
+
+	// TRTC的SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 文本转语音的输出音频的格式
+	AudioFormat *AudioFormat `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+
+	// TTS的模型，当前固定为：flow_01_turbo
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+	PronunciationDict []*PronunciationDict `json:"PronunciationDict,omitnil,omitempty" name:"PronunciationDict"`
+
+	// 默认为0，0表示不生成字幕，1表示生成字幕
+	AlignmentMode *uint64 `json:"AlignmentMode,omitnil,omitempty" name:"AlignmentMode"`
+
+	// 需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：  zh（中文） en（英文） yue（粤语） ja（日语） ko（韩语） ar（阿拉伯语） id（印尼语） th（泰语）
+	LanguageCode *string `json:"LanguageCode,omitnil,omitempty" name:"LanguageCode"`
+}
+
+func (r *AsyncTextToSpeechRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AsyncTextToSpeechRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "Voice")
+	delete(f, "SdkAppId")
+	delete(f, "AudioFormat")
+	delete(f, "Model")
+	delete(f, "PronunciationDict")
+	delete(f, "AlignmentMode")
+	delete(f, "LanguageCode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AsyncTextToSpeechRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AsyncTextToSpeechResponseParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AsyncTextToSpeechResponse struct {
+	*tchttp.BaseResponse
+	Response *AsyncTextToSpeechResponseParams `json:"Response"`
+}
+
+func (r *AsyncTextToSpeechResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AsyncTextToSpeechResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AudioEncode struct {
 	// 输出流音频采样率。取值为[48000, 44100, 32000, 24000, 16000, 8000]，单位是Hz。
 	SampleRate *uint64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
@@ -221,6 +341,9 @@ type AudioFormat struct {
 	// - TextToSpeech 非流式接口
 	// 
 	//  支持 pcm,wav,mp3,  默认: pcm
+	// 
+	// - AsyncTextToSpeech
+	// 支持pcm,mp3, 默认：mp3
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
 	// 生成的音频采样率，默认24000
@@ -1694,6 +1817,73 @@ func (r *DescribeAITranscriptionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAITranscriptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAsyncTextToSpeechRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeAsyncTextToSpeechRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeAsyncTextToSpeechRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAsyncTextToSpeechRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAsyncTextToSpeechRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAsyncTextToSpeechResponseParams struct {
+	// 任务状态
+	// - Processing，处理中
+	// - Success，任务成功
+	// - Failed，任务失败
+	// - Expired，任务过期
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 音频下载url
+	AudioDownloadUrl *string `json:"AudioDownloadUrl,omitnil,omitempty" name:"AudioDownloadUrl"`
+
+	// 字幕下载url
+	SubtitleDownloadUrl *string `json:"SubtitleDownloadUrl,omitnil,omitempty" name:"SubtitleDownloadUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAsyncTextToSpeechResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAsyncTextToSpeechResponseParams `json:"Response"`
+}
+
+func (r *DescribeAsyncTextToSpeechResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAsyncTextToSpeechResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5051,6 +5241,14 @@ type PresetLayoutConfig struct {
 	PlaceImageId *uint64 `json:"PlaceImageId,omitnil,omitempty" name:"PlaceImageId"`
 }
 
+type PronunciationDict struct {
+	// 需要纠正发音的词语，前后空格自动去除。同一请求中若有重复词语，以最后一条为准。
+	Word *string `json:"Word,omitnil,omitempty" name:"Word"`
+
+	// 目标发音，支持以下格式：<br>① 带声调数字的拼音（1=阴平，2=阳平，3=上声，4=去声，5=轻声），如 yin2 hang2；<br>② 拼音连写（无空格），如 yin2hang2；<br>③ 文字+拼音混写，如 银hang2；<br>④ 直接文本替换，会将原始文本替换为目标文本
+	Pronunciation *string `json:"Pronunciation,omitnil,omitempty" name:"Pronunciation"`
+}
+
 type PublishCdnParams struct {
 	// 腾讯云直播BizId。
 	BizId *uint64 `json:"BizId,omitnil,omitempty" name:"BizId"`
@@ -7152,6 +7350,12 @@ type TextToSpeechRequestParams struct {
 	// - id（印尼语）
 	// - th（泰语）
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
+
+	// 多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+	PronunciationDict []*PronunciationDict `json:"PronunciationDict,omitnil,omitempty" name:"PronunciationDict"`
+
+	// 默认为0，0表示不生成字幕，1表示生成字幕
+	AlignmentMode *uint64 `json:"AlignmentMode,omitnil,omitempty" name:"AlignmentMode"`
 }
 
 type TextToSpeechRequest struct {
@@ -7185,6 +7389,12 @@ type TextToSpeechRequest struct {
 	// - id（印尼语）
 	// - th（泰语）
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
+
+	// 多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+	PronunciationDict []*PronunciationDict `json:"PronunciationDict,omitnil,omitempty" name:"PronunciationDict"`
+
+	// 默认为0，0表示不生成字幕，1表示生成字幕
+	AlignmentMode *uint64 `json:"AlignmentMode,omitnil,omitempty" name:"AlignmentMode"`
 }
 
 func (r *TextToSpeechRequest) ToJsonString() string {
@@ -7206,6 +7416,8 @@ func (r *TextToSpeechRequest) FromJsonString(s string) error {
 	delete(f, "APIKey")
 	delete(f, "Model")
 	delete(f, "Language")
+	delete(f, "PronunciationDict")
+	delete(f, "AlignmentMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToSpeechRequest has unknown keys!", "")
 	}
@@ -7216,6 +7428,9 @@ func (r *TextToSpeechRequest) FromJsonString(s string) error {
 type TextToSpeechResponseParams struct {
 	// Base64编码的音频数据
 	Audio *string `json:"Audio,omitnil,omitempty" name:"Audio"`
+
+	// 字幕对齐数据
+	Alignments []*AlignmentItem `json:"Alignments,omitnil,omitempty" name:"Alignments"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7269,6 +7484,12 @@ type TextToSpeechSSERequestParams struct {
 	// - id（印尼语）
 	// - th（泰语）
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
+
+	// 多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+	PronunciationDict []*PronunciationDict `json:"PronunciationDict,omitnil,omitempty" name:"PronunciationDict"`
+
+	// 默认为0，0表示不生成字幕，1表示生成字幕
+	AlignmentMode *uint64 `json:"AlignmentMode,omitnil,omitempty" name:"AlignmentMode"`
 }
 
 type TextToSpeechSSERequest struct {
@@ -7302,6 +7523,12 @@ type TextToSpeechSSERequest struct {
 	// - id（印尼语）
 	// - th（泰语）
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
+
+	// 多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+	PronunciationDict []*PronunciationDict `json:"PronunciationDict,omitnil,omitempty" name:"PronunciationDict"`
+
+	// 默认为0，0表示不生成字幕，1表示生成字幕
+	AlignmentMode *uint64 `json:"AlignmentMode,omitnil,omitempty" name:"AlignmentMode"`
 }
 
 func (r *TextToSpeechSSERequest) ToJsonString() string {
@@ -7323,6 +7550,8 @@ func (r *TextToSpeechSSERequest) FromJsonString(s string) error {
 	delete(f, "APIKey")
 	delete(f, "Model")
 	delete(f, "Language")
+	delete(f, "PronunciationDict")
+	delete(f, "AlignmentMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToSpeechSSERequest has unknown keys!", "")
 	}

@@ -179,6 +179,258 @@ func (r *CheckAnimateImageJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateAigcElementRequestParams struct {
+
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+
+	ReferenceType *string `json:"ReferenceType,omitnil,omitempty" name:"ReferenceType"`
+
+
+	ElementImageList *ElementImageList `json:"ElementImageList,omitnil,omitempty" name:"ElementImageList"`
+
+
+	VideoList []*string `json:"VideoList,omitnil,omitempty" name:"VideoList"`
+
+
+	Provider []*string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+
+	TagList []*TagList `json:"TagList,omitnil,omitempty" name:"TagList"`
+}
+
+type CreateAigcElementRequest struct {
+	*tchttp.BaseRequest
+	
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	ReferenceType *string `json:"ReferenceType,omitnil,omitempty" name:"ReferenceType"`
+
+	ElementImageList *ElementImageList `json:"ElementImageList,omitnil,omitempty" name:"ElementImageList"`
+
+	VideoList []*string `json:"VideoList,omitnil,omitempty" name:"VideoList"`
+
+	Provider []*string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	TagList []*TagList `json:"TagList,omitnil,omitempty" name:"TagList"`
+}
+
+func (r *CreateAigcElementRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAigcElementRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "ReferenceType")
+	delete(f, "ElementImageList")
+	delete(f, "VideoList")
+	delete(f, "Provider")
+	delete(f, "TagList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAigcElementRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAigcElementResponseParams struct {
+	// <p>任务ID。</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+
+	ElementId *string `json:"ElementId,omitnil,omitempty" name:"ElementId"`
+
+
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+
+	Provider []*string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAigcElementResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAigcElementResponseParams `json:"Response"`
+}
+
+func (r *CreateAigcElementResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAigcElementResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAigcElementRequestParams struct {
+
+	ElementId *string `json:"ElementId,omitnil,omitempty" name:"ElementId"`
+}
+
+type DeleteAigcElementRequest struct {
+	*tchttp.BaseRequest
+	
+	ElementId *string `json:"ElementId,omitnil,omitempty" name:"ElementId"`
+}
+
+func (r *DeleteAigcElementRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAigcElementRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ElementId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAigcElementRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAigcElementResponseParams struct {
+
+	ElementId *string `json:"ElementId,omitnil,omitempty" name:"ElementId"`
+
+
+	Deleted *bool `json:"Deleted,omitnil,omitempty" name:"Deleted"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAigcElementResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAigcElementResponseParams `json:"Response"`
+}
+
+func (r *DeleteAigcElementResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAigcElementResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcElementRequestParams struct {
+
+	ElementId *string `json:"ElementId,omitnil,omitempty" name:"ElementId"`
+}
+
+type DescribeAigcElementRequest struct {
+	*tchttp.BaseRequest
+	
+	ElementId *string `json:"ElementId,omitnil,omitempty" name:"ElementId"`
+}
+
+func (r *DescribeAigcElementRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcElementRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ElementId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAigcElementRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcElementResponseParams struct {
+	// <p>主体名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>主体id</p>
+	ElementId *string `json:"ElementId,omitnil,omitempty" name:"ElementId"`
+
+	// <p>主体描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>主体参考方式</p><p>枚举值：</p><ul><li>video_refer： 视频角色主体</li><li>image_refer： 多图主体</li></ul>
+	ReferenceType *string `json:"ReferenceType,omitnil,omitempty" name:"ReferenceType"`
+
+	// <p>任务状态</p><p>枚举值：</p><ul><li>pending： 执行中</li><li>failed： 任务失败</li><li>succeed： 任务成功</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>厂商列表</p>
+	Provider []*string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// <p>主体参考图，可通过多张图片设定主体及其细节</p>
+	ElementImageList *ElementImageList `json:"ElementImageList,omitnil,omitempty" name:"ElementImageList"`
+
+	// <p>主体参考视频，可通过视频设定主体及其细节</p>
+	VideoList []*string `json:"VideoList,omitnil,omitempty" name:"VideoList"`
+
+	// <p>为主体配置标签，一个主体可以配置多个标签</p>
+	TagList []*TagList `json:"TagList,omitnil,omitempty" name:"TagList"`
+
+	// <p>厂商聚合字段</p>
+	ProviderDetails []*ProviderDetail `json:"ProviderDetails,omitnil,omitempty" name:"ProviderDetails"`
+
+	// <p>创建时间</p>
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// <p>更新时间</p>
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAigcElementResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAigcElementResponseParams `json:"Response"`
+}
+
+func (r *DescribeAigcElementResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcElementResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAigcVideoJobRequestParams struct {
 	// 任务ID。
 	// 
@@ -1540,6 +1792,14 @@ type Element struct {
 	ElementId *string `json:"ElementId,omitnil,omitempty" name:"ElementId"`
 }
 
+type ElementImageList struct {
+	// <p>主体参考图</p>
+	ReferImages []*ReferImageItem `json:"ReferImages,omitnil,omitempty" name:"ReferImages"`
+
+	// <p>主体主图</p>
+	FrontalImage *string `json:"FrontalImage,omitnil,omitempty" name:"FrontalImage"`
+}
+
 type ExtraParam struct {
 	// <p>预签名的上传url，支持把视频直接传到客户指定的地址。</p>
 	UserDesignatedUrl *string `json:"UserDesignatedUrl,omitnil,omitempty" name:"UserDesignatedUrl"`
@@ -1640,6 +1900,22 @@ type MultiPrompt struct {
 
 	// <p>时长</p>
 	Duration *string `json:"Duration,omitnil,omitempty" name:"Duration"`
+}
+
+type ProviderDetail struct {
+	// <p>供应商详情</p>
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// <p>状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>错误信息</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+}
+
+type ReferImageItem struct {
+	// <p>图片地址</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
 
 type ReferVideoInfo struct {
@@ -4123,6 +4399,11 @@ func (r *SubmitVideoVoiceJobResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SubmitVideoVoiceJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TagList struct {
+	// <p>tag标签</p>
+	TagId *string `json:"TagId,omitnil,omitempty" name:"TagId"`
 }
 
 type Trajectory struct {

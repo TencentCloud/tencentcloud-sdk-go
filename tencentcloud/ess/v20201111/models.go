@@ -7685,7 +7685,7 @@ type CreateOrganizationAuthUrlRequestParams struct {
 	// <p>对方打开链接认证时，认证人居民身份证件号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul></p><p>p.s. 仅在认证人身份证号不为空时有效</p>
 	AdminIdCardNumberSame *bool `json:"AdminIdCardNumberSame,omitnil,omitempty" name:"AdminIdCardNumberSame"`
 
-	// <p>对方打开链接认证时，认证人手机号是否要与接口传递上来的保持一致。<ul></p><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul><p>p.s. 仅在认证人手机号不为空时有效</p>
+	// <p>对方打开链接认证时，认证人手机号是否要与接口传递上来的保持一致。</p><ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul><p>p.s. 仅在认证人手机号不为空时有效</p>
 	AdminMobileSame *bool `json:"AdminMobileSame,omitnil,omitempty" name:"AdminMobileSame"`
 
 	// <p>对方打开链接认证时，企业名称是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul></p><p>p.s. 仅在企业名称不为空时有效</p>
@@ -7773,7 +7773,7 @@ type CreateOrganizationAuthUrlRequest struct {
 	// <p>对方打开链接认证时，认证人居民身份证件号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul></p><p>p.s. 仅在认证人身份证号不为空时有效</p>
 	AdminIdCardNumberSame *bool `json:"AdminIdCardNumberSame,omitnil,omitempty" name:"AdminIdCardNumberSame"`
 
-	// <p>对方打开链接认证时，认证人手机号是否要与接口传递上来的保持一致。<ul></p><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul><p>p.s. 仅在认证人手机号不为空时有效</p>
+	// <p>对方打开链接认证时，认证人手机号是否要与接口传递上来的保持一致。</p><ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul><p>p.s. 仅在认证人手机号不为空时有效</p>
 	AdminMobileSame *bool `json:"AdminMobileSame,omitnil,omitempty" name:"AdminMobileSame"`
 
 	// <p>对方打开链接认证时，企业名称是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul></p><p>p.s. 仅在企业名称不为空时有效</p>

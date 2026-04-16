@@ -11157,6 +11157,77 @@ func (r *DescribeContentReviewTemplatesResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDesignTaskRequestParams struct {
+	// <p>任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeDesignTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeDesignTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDesignTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDesignTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDesignTaskResponseParams struct {
+	// <p>错误码，成功时返回0</p>
+	ErrorCode *int64 `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>错误信息，成功时返回success</p>
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>任务状态</p><p>枚举值：</p><ul><li>success： 成功</li><li>fail： 失败</li><li>processing： 处理中</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>音色id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>扩展信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDesignTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDesignTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeDesignTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDesignTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeEvent struct {
 	// Event的名称。
 	EventName *string `json:"EventName,omitnil,omitempty" name:"EventName"`
@@ -16165,6 +16236,76 @@ func (r *DescribeWorkflowsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeWorkflowsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DesignVoiceAsyncRequestParams struct {
+	// <p>音色描述</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>扩展参数，json字符串</p>
+	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
+}
+
+type DesignVoiceAsyncRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>音色描述</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>扩展参数，json字符串</p>
+	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
+}
+
+func (r *DesignVoiceAsyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DesignVoiceAsyncRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Prompt")
+	delete(f, "ExtParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DesignVoiceAsyncRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DesignVoiceAsyncResponseParams struct {
+	// <p>错误码，成功时返回0</p>
+	ErrorCode *int64 `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>错误信息，成功时返回success</p>
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>任务id，查询任务时使用</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DesignVoiceAsyncResponse struct {
+	*tchttp.BaseResponse
+	Response *DesignVoiceAsyncResponseParams `json:"Response"`
+}
+
+func (r *DesignVoiceAsyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DesignVoiceAsyncResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

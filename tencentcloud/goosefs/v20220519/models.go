@@ -909,20 +909,20 @@ func (r *CreateFilesetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLoadTaskRequestParams struct {
-	// 集群 ID
+	// <p>集群 ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 创建预热任务参数
+	// <p>创建预热任务参数</p>
 	LoadTaskCreationAttrs *LoadTaskCreationAttrs `json:"LoadTaskCreationAttrs,omitnil,omitempty" name:"LoadTaskCreationAttrs"`
 }
 
 type CreateLoadTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群 ID
+	// <p>集群 ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 创建预热任务参数
+	// <p>创建预热任务参数</p>
 	LoadTaskCreationAttrs *LoadTaskCreationAttrs `json:"LoadTaskCreationAttrs,omitnil,omitempty" name:"LoadTaskCreationAttrs"`
 }
 
@@ -948,7 +948,7 @@ func (r *CreateLoadTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLoadTaskResponseParams struct {
-	// 预热任务 ID
+	// <p>预热任务 ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
