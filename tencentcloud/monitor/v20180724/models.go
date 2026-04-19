@@ -2915,51 +2915,57 @@ func (r *CreatePrometheusGlobalNotificationResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type CreatePrometheusMultiTenantInstancePostPayModeRequestParams struct {
-	// 实例名
+	// <p>实例名</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// VPC ID(可通过 vpc:DescribeVpcs 接口获取，与实例同地域)
+	// <p>VPC ID(可通过 vpc:DescribeVpcs 接口获取，与实例同地域)</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网 ID(可通过 vpc:DescribeSubnets 接口获取)
+	// <p>子网 ID(可通过 vpc:DescribeSubnets 接口获取)</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一
+	// <p>数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一</p>
 	DataRetentionTime *int64 `json:"DataRetentionTime,omitnil,omitempty" name:"DataRetentionTime"`
 
-	// 可用区(与子网同可用区)
+	// <p>可用区(与子网同可用区)</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例的标签
+	// <p>实例的标签</p>
 	TagSpecification []*PrometheusTag `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 
-	// 需要关联的 Grafana 实例
+	// <p>需要关联的 Grafana 实例</p>
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitnil,omitempty" name:"GrafanaInstanceId"`
+
+	// <p>标识prom实例特殊属性</p><p>归档存储时长(天):<br>key: LongTermStorageRetentionTime<br>value: 60-730</p>
+	InstanceAttributes []*PrometheusRuleKV `json:"InstanceAttributes,omitnil,omitempty" name:"InstanceAttributes"`
 }
 
 type CreatePrometheusMultiTenantInstancePostPayModeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名
+	// <p>实例名</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// VPC ID(可通过 vpc:DescribeVpcs 接口获取，与实例同地域)
+	// <p>VPC ID(可通过 vpc:DescribeVpcs 接口获取，与实例同地域)</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网 ID(可通过 vpc:DescribeSubnets 接口获取)
+	// <p>子网 ID(可通过 vpc:DescribeSubnets 接口获取)</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一
+	// <p>数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一</p>
 	DataRetentionTime *int64 `json:"DataRetentionTime,omitnil,omitempty" name:"DataRetentionTime"`
 
-	// 可用区(与子网同可用区)
+	// <p>可用区(与子网同可用区)</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例的标签
+	// <p>实例的标签</p>
 	TagSpecification []*PrometheusTag `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 
-	// 需要关联的 Grafana 实例
+	// <p>需要关联的 Grafana 实例</p>
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitnil,omitempty" name:"GrafanaInstanceId"`
+
+	// <p>标识prom实例特殊属性</p><p>归档存储时长(天):<br>key: LongTermStorageRetentionTime<br>value: 60-730</p>
+	InstanceAttributes []*PrometheusRuleKV `json:"InstanceAttributes,omitnil,omitempty" name:"InstanceAttributes"`
 }
 
 func (r *CreatePrometheusMultiTenantInstancePostPayModeRequest) ToJsonString() string {
@@ -2981,6 +2987,7 @@ func (r *CreatePrometheusMultiTenantInstancePostPayModeRequest) FromJsonString(s
 	delete(f, "Zone")
 	delete(f, "TagSpecification")
 	delete(f, "GrafanaInstanceId")
+	delete(f, "InstanceAttributes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrometheusMultiTenantInstancePostPayModeRequest has unknown keys!", "")
 	}
@@ -2989,7 +2996,7 @@ func (r *CreatePrometheusMultiTenantInstancePostPayModeRequest) FromJsonString(s
 
 // Predefined struct for user
 type CreatePrometheusMultiTenantInstancePostPayModeResponseParams struct {
-	// 实例 ID
+	// <p>实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13922,27 +13929,33 @@ func (r *ModifyPrometheusGlobalNotificationResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type ModifyPrometheusInstanceAttributesRequestParams struct {
-	// 实例 ID
+	// <p>实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一
+	// <p>数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一</p>
 	DataRetentionTime *int64 `json:"DataRetentionTime,omitnil,omitempty" name:"DataRetentionTime"`
+
+	// <p>标识prom实例特殊属性</p><p>归档存储时长(天):<br>key: LongTermStorageRetentionTime<br>value: 60-730</p>
+	InstanceAttributes []*PrometheusRuleKV `json:"InstanceAttributes,omitnil,omitempty" name:"InstanceAttributes"`
 }
 
 type ModifyPrometheusInstanceAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// <p>实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一
+	// <p>数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一</p>
 	DataRetentionTime *int64 `json:"DataRetentionTime,omitnil,omitempty" name:"DataRetentionTime"`
+
+	// <p>标识prom实例特殊属性</p><p>归档存储时长(天):<br>key: LongTermStorageRetentionTime<br>value: 60-730</p>
+	InstanceAttributes []*PrometheusRuleKV `json:"InstanceAttributes,omitnil,omitempty" name:"InstanceAttributes"`
 }
 
 func (r *ModifyPrometheusInstanceAttributesRequest) ToJsonString() string {
@@ -13960,6 +13973,7 @@ func (r *ModifyPrometheusInstanceAttributesRequest) FromJsonString(s string) err
 	delete(f, "InstanceId")
 	delete(f, "InstanceName")
 	delete(f, "DataRetentionTime")
+	delete(f, "InstanceAttributes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPrometheusInstanceAttributesRequest has unknown keys!", "")
 	}
@@ -14789,157 +14803,119 @@ type PrometheusInstanceTenantUsage struct {
 }
 
 type PrometheusInstancesItem struct {
-	// 实例ID。
+	// <p>实例ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称。
+	// <p>实例名称。</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例计费模式。取值范围：
-	// <ul>
-	// <li>2：包年包月</li>
-	// <li>3：按量</li>
-	// </ul>
+	// <p>实例计费模式。取值范围：</p><ul><li>2：包年包月</li><li>3：按量</li></ul>
 	InstanceChargeType *int64 `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 地域 ID
+	// <p>地域 ID</p>
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// VPC ID
+	// <p>VPC ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网 ID
+	// <p>子网 ID</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 存储周期
+	// <p>存储周期</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataRetentionTime *int64 `json:"DataRetentionTime,omitnil,omitempty" name:"DataRetentionTime"`
 
-	// 实例业务状态。取值范围：
-	// <ul>
-	// <li>1：正在创建</li>
-	// <li>2：运行中</li>
-	// <li>3：异常</li>
-	// <li>4：重建中</li>
-	// <li>5：销毁中</li>
-	// <li>6：已停服</li>
-	// <li>8：欠费停服中</li>
-	// <li>9：欠费已停服</li>
-	// </ul>
+	// <p>实例业务状态。取值范围：</p><ul><li>1：正在创建</li><li>2：运行中</li><li>3：异常</li><li>4：重建中</li><li>5：销毁中</li><li>6：已停服</li><li>8：欠费停服中</li><li>9：欠费已停服</li></ul>
 	InstanceStatus *int64 `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
-	// Grafana 面板 URL
+	// <p>Grafana 面板 URL</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GrafanaURL *string `json:"GrafanaURL,omitnil,omitempty" name:"GrafanaURL"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
-	// 是否开启 Grafana
-	// <li>0：不开启</li>
-	// <li>1：开启</li>
+	// <p>是否开启 Grafana</p><li>0：不开启</li><li>1：开启</li>
 	EnableGrafana *int64 `json:"EnableGrafana,omitnil,omitempty" name:"EnableGrafana"`
 
-	// 实例IPV4地址
+	// <p>实例IPV4地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPv4Address *string `json:"IPv4Address,omitnil,omitempty" name:"IPv4Address"`
 
-	// 实例关联的标签列表。
+	// <p>实例关联的标签列表。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSpecification []*PrometheusTag `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 
-	// 购买的实例过期时间
+	// <p>购买的实例过期时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 计费状态
-	// <ul>
-	// <li>1：正常</li>
-	// <li>2：过期</li>
-	// <li>3：销毁</li>
-	// <li>4：分配中</li>
-	// <li>5：分配失败</li>
-	// </ul>
+	// <p>计费状态</p><ul><li>1：正常</li><li>2：过期</li><li>3：销毁</li><li>4：分配中</li><li>5：分配失败</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeStatus *int64 `json:"ChargeStatus,omitnil,omitempty" name:"ChargeStatus"`
 
-	// 规格名称
+	// <p>规格名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
 
-	// 自动续费标记
-	// <ul>
-	// <li>0：不自动续费</li>
-	// <li>1：开启自动续费</li>
-	// <li>2：禁止自动续费</li>
-	// <li>-1：无效</li>
-	// </ul>
+	// <p>自动续费标记</p><ul><li>0：不自动续费</li><li>1：开启自动续费</li><li>2：禁止自动续费</li><li>-1：无效</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 是否快过期
-	// <ul>
-	// <li>0：否</li>
-	// <li>1：快过期</li>
-	// </ul>
+	// <p>是否快过期</p><ul><li>0：否</li><li>1：快过期</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsNearExpire *int64 `json:"IsNearExpire,omitnil,omitempty" name:"IsNearExpire"`
 
-	// 数据写入需要的 Token
+	// <p>数据写入需要的 Token</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthToken *string `json:"AuthToken,omitnil,omitempty" name:"AuthToken"`
 
-	// Prometheus Remote Write 的地址
+	// <p>Prometheus Remote Write 的地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoteWrite *string `json:"RemoteWrite,omitnil,omitempty" name:"RemoteWrite"`
 
-	// Prometheus HTTP Api 根地址
+	// <p>Prometheus HTTP Api 根地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiRootPath *string `json:"ApiRootPath,omitnil,omitempty" name:"ApiRootPath"`
 
-	// Proxy 的地址
+	// <p>Proxy 的地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyAddress *string `json:"ProxyAddress,omitnil,omitempty" name:"ProxyAddress"`
 
-	// Grafana 运行状态
-	// <ul>
-	// <li>1：正在创建</li>
-	// <li>2：运行中</li>
-	// <li>3：异常</li>
-	// <li>4：重启中</li>
-	// <li>5：销毁中</li>
-	// <li>6：已停机</li>
-	// <li>7：已删除</li>
-	// </ul>
+	// <p>Grafana 运行状态</p><ul><li>1：正在创建</li><li>2：运行中</li><li>3：异常</li><li>4：重启中</li><li>5：销毁中</li><li>6：已停机</li><li>7：已删除</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GrafanaStatus *int64 `json:"GrafanaStatus,omitnil,omitempty" name:"GrafanaStatus"`
 
-	// Grafana IP 白名单列表，使用英文分号分隔
+	// <p>Grafana IP 白名单列表，使用英文分号分隔</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GrafanaIpWhiteList *string `json:"GrafanaIpWhiteList,omitnil,omitempty" name:"GrafanaIpWhiteList"`
 
-	// 实例的授权信息
+	// <p>实例的授权信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Grant *PrometheusInstanceGrantInfo `json:"Grant,omitnil,omitempty" name:"Grant"`
 
-	// 绑定的 Grafana 实例 ID
+	// <p>绑定的 Grafana 实例 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitnil,omitempty" name:"GrafanaInstanceId"`
 
-	// 告警规则限制
+	// <p>告警规则限制</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlertRuleLimit *int64 `json:"AlertRuleLimit,omitnil,omitempty" name:"AlertRuleLimit"`
 
-	// 预聚合规则限制
+	// <p>预聚合规则限制</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordingRuleLimit *int64 `json:"RecordingRuleLimit,omitnil,omitempty" name:"RecordingRuleLimit"`
 
-	// 迁移状态，0-不在迁移中，1-迁移中、原实例，2-迁移中、目标实例
+	// <p>迁移状态，0-不在迁移中，1-迁移中、原实例，2-迁移中、目标实例</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MigrationType *int64 `json:"MigrationType,omitnil,omitempty" name:"MigrationType"`
+
+	// <p>标识prom实例特殊属性</p><p>归档存储时长(天):<br>key: LongTermStorageRetentionTime<br>value: 60-730</p><p>实例创建方式：<br>key: CreatedFrom<br>value: 0 - 来自prom控制台<br>1 - 来自tke集群详情页<br>2 - 来自新建集群页</p><p>免费试用到期时间:<br>key: FreeTrialExpireAt<br>value: RFC3339 格式时间字符串</p><p>关联的资源包ID:<br>key: ResourcePackageID<br>value: prompkg-xxxxx</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceAttributes []*PrometheusRuleKV `json:"InstanceAttributes,omitnil,omitempty" name:"InstanceAttributes"`
 }
 
 type PrometheusInstancesOverview struct {

@@ -10138,46 +10138,46 @@ type RiskCenterStatusKey struct {
 }
 
 type RiskDetailItem struct {
-	// 首次发现时间
+	// <p>首次发现时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 风险状态
+	// <p>风险状态</p>
 	RiskStatus *int64 `json:"RiskStatus,omitnil,omitempty" name:"RiskStatus"`
 
-	// 风险内容
+	// <p>风险内容</p>
 	RiskContent *string `json:"RiskContent,omitnil,omitempty" name:"RiskContent"`
 
-	// 云厂商
+	// <p>云厂商</p>
 	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
 
-	// 云厂商名称
+	// <p>云厂商名称</p>
 	ProviderName *string `json:"ProviderName,omitnil,omitempty" name:"ProviderName"`
 
-	// 云账号
+	// <p>云账号</p>
 	CloudAccountId *string `json:"CloudAccountId,omitnil,omitempty" name:"CloudAccountId"`
 
-	// 云账号名称
+	// <p>云账号名称</p>
 	CloudAccountName *string `json:"CloudAccountName,omitnil,omitempty" name:"CloudAccountName"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 风险ID
+	// <p>风险ID</p>
 	RiskId *uint64 `json:"RiskId,omitnil,omitempty" name:"RiskId"`
 
-	// 风险规则ID
+	// <p>风险规则ID</p>
 	RiskRuleId *string `json:"RiskRuleId,omitnil,omitempty" name:"RiskRuleId"`
 
-	// 风险验证状态
+	// <p>风险验证状态</p>
 	CheckStatus *string `json:"CheckStatus,omitnil,omitempty" name:"CheckStatus"`
 
-
+	// <p>用户AppID</p>
 	AppID *uint64 `json:"AppID,omitnil,omitempty" name:"AppID"`
 }
 

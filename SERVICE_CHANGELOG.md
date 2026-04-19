@@ -1,76 +1,198 @@
-# Release v1.3.81
+# Release v1.3.82
 
-## Agent 沙箱服务(ags) 版本：2025-09-20
+## 音频内容安全(ams) 版本：2020-12-29
 
-### 第 12 次发布
+### 第 18 次发布
 
-发布时间：2026-04-17 01:07:57
+发布时间：2026-04-20 01:07:59
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增数据结构：
-
-* [LogSources](https://cloud.tencent.com/document/api/1814/124823#LogSources)
 
 修改数据结构：
 
-* [LogConfiguration](https://cloud.tencent.com/document/api/1814/124823#LogConfiguration)
+* [InputInfo](https://cloud.tencent.com/document/api/1219/53259#InputInfo)
 
-	* 新增成员：LogSources
-
-
-
-
-## 数据传输服务(dts) 版本：2021-12-06
-
-### 第 52 次发布
-
-发布时间：2026-04-17 01:22:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeCompareDiffItems](https://cloud.tencent.com/document/api/571/130618)
-* [DescribeSyncCompareDiffItems](https://cloud.tencent.com/document/api/571/130619)
-
-新增数据结构：
-
-* [DiffChunkItem](https://cloud.tencent.com/document/api/571/82108#DiffChunkItem)
+	* 新增成员：ImageUrlList, TextContent
 
 
 
-## 数据传输服务(dts) 版本：2018-03-30
+
+## 音频内容安全(ams) 版本：2020-06-08
 
 
 
-## 云直播CSS(live) 版本：2018-08-01
+## 多媒体创作引擎(cme) 版本：2019-10-29
 
-### 第 173 次发布
+### 第 63 次发布
 
-发布时间：2026-04-17 01:32:12
+发布时间：2026-04-20 01:15:43
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [CloseSourceStream](https://cloud.tencent.com/document/api/267/130623)
-* [DescribeOriginStreamInfo](https://cloud.tencent.com/document/api/267/130621)
-* [ModifyOriginStreamInfo](https://cloud.tencent.com/document/api/267/130620)
+* [AccountInfo](https://cloud.tencent.com/document/api/1156/40360#AccountInfo)
+
+	* 新增成员：CreateTime
+
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 137 次发布
+
+发布时间：2026-04-20 01:23:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCluster](https://cloud.tencent.com/document/api/589/83953)
+
+	* 新增入参：WebUiVersion
+
+* [CreateInstance](https://cloud.tencent.com/document/api/589/34261)
+
+	* 新增入参：WebUiVersion
+
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2023-06-16
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 152 次发布
+
+发布时间：2026-04-20 01:37:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreatePrometheusMultiTenantInstancePostPayMode](https://cloud.tencent.com/document/api/248/76097)
+
+	* 新增入参：InstanceAttributes
+
+* [ModifyPrometheusInstanceAttributes](https://cloud.tencent.com/document/api/248/76009)
+
+	* 新增入参：InstanceAttributes
+
+
+修改数据结构：
+
+* [PrometheusInstancesItem](https://cloud.tencent.com/document/api/248/30354#PrometheusInstancesItem)
+
+	* 新增成员：InstanceAttributes
+
 
 
 
 ## 媒体处理(mps) 版本：2019-06-12
 
-### 第 194 次发布
+### 第 195 次发布
 
-发布时间：2026-04-17 01:41:32
+发布时间：2026-04-20 01:40:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SSAIConf](https://cloud.tencent.com/document/api/862/37615#SSAIConf)
+
+	* 新增成员：AdsUrls, PreRollAdsUrls
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 91 次发布
+
+发布时间：2026-04-20 02:09:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ComplianceAffectedAsset](https://cloud.tencent.com/document/api/1285/65614#ComplianceAffectedAsset)
+
+	* 新增成员：AssetUniqueID
+
+* [ComplianceAssetInfo](https://cloud.tencent.com/document/api/1285/65614#ComplianceAssetInfo)
+
+	* 新增成员：AssetUniqueID
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 143 次发布
+
+发布时间：2026-04-20 02:17:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AdaptiveFrequencyControl](https://cloud.tencent.com/document/api/1552/80721#AdaptiveFrequencyControl)
+
+	* 新增成员：Id
+
+* [BandwidthAbuseDefense](https://cloud.tencent.com/document/api/1552/80721#BandwidthAbuseDefense)
+
+	* 新增成员：Id
+
+* [BotIntelligence](https://cloud.tencent.com/document/api/1552/80721#BotIntelligence)
+
+	* 新增成员：Id
+
+* [ClientFiltering](https://cloud.tencent.com/document/api/1552/80721#ClientFiltering)
+
+	* 新增成员：Id
+
+* [FrequentScanningProtection](https://cloud.tencent.com/document/api/1552/80721#FrequentScanningProtection)
+
+	* 新增成员：Id
+
+* [SlowAttackDefense](https://cloud.tencent.com/document/api/1552/80721#SlowAttackDefense)
+
+	* 新增成员：Id
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 容器服务(tke) 版本：2022-05-01
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 227 次发布
+
+发布时间：2026-04-20 02:23:57
 
 本次发布包含了以下内容：
 
@@ -78,34 +200,15 @@
 
 新增接口：
 
-* [DescribeDesignTask](https://cloud.tencent.com/document/api/862/130625)
-* [DesignVoiceAsync](https://cloud.tencent.com/document/api/862/130624)
+* [ModifyLogConfig](https://cloud.tencent.com/document/api/457/130677)
 
 
 
-## NLP 技术(nlp) 版本：2019-04-08
+## 数据开发治理平台 WeData(wedata) 版本：2025-08-06
 
-### 第 27 次发布
+### 第 16 次发布
 
-发布时间：2026-04-17 01:46:16
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**预下线接口**：</font>
-
-* AnalyzeSentiment
-* ParseWords
-* SentenceCorrection
-
-
-
-## 实时音视频(trtc) 版本：2019-07-22
-
-### 第 140 次发布
-
-发布时间：2026-04-16 10:08:02
+发布时间：2026-04-17 18:37:44
 
 本次发布包含了以下内容：
 
@@ -113,51 +216,35 @@
 
 新增接口：
 
-* [AsyncTextToSpeech](https://cloud.tencent.com/document/api/647/130582)
-* [DescribeAsyncTextToSpeech](https://cloud.tencent.com/document/api/647/130581)
-
-修改接口：
-
-* [TextToSpeech](https://cloud.tencent.com/document/api/647/122475)
-
-	* 新增入参：PronunciationDict, AlignmentMode
-
-	* 新增出参：Alignments
-
-* [TextToSpeechSSE](https://cloud.tencent.com/document/api/647/122474)
-
-	* 新增入参：PronunciationDict, AlignmentMode
-
+* [ListTriggerTaskRuns](https://cloud.tencent.com/document/api/1267/130655)
 
 新增数据结构：
 
-* [AlignmentItem](https://cloud.tencent.com/document/api/647/44055#AlignmentItem)
-* [PronunciationDict](https://cloud.tencent.com/document/api/647/44055#PronunciationDict)
+* [ListTriggerTaskRunBrief](https://cloud.tencent.com/document/api/1267/123643#ListTriggerTaskRunBrief)
+* [ListTriggerTaskRunResult](https://cloud.tencent.com/document/api/1267/123643#ListTriggerTaskRunResult)
+
+修改数据结构：
+
+* [CreateTaskSchedulerConfiguration](https://cloud.tencent.com/document/api/1267/123643#CreateTaskSchedulerConfiguration)
+
+	* 新增成员：AllowDownstreamDependency
+
+* [CreateTriggerTaskSchedulerConfiguration](https://cloud.tencent.com/document/api/1267/123643#CreateTriggerTaskSchedulerConfiguration)
+
+	* 新增成员：AllowDownstreamDependency
+
+* [TaskSchedulerConfiguration](https://cloud.tencent.com/document/api/1267/123643#TaskSchedulerConfiguration)
+
+	* 新增成员：AllowDownstreamDependency
+
+* [TriggerTaskSchedulerConfiguration](https://cloud.tencent.com/document/api/1267/123643#TriggerTaskSchedulerConfiguration)
+
+	* 新增成员：AllowDownstreamDependency
 
 
 
-## 腾讯混元生视频(vclm) 版本：2024-05-23
 
-### 第 34 次发布
-
-发布时间：2026-04-17 02:37:15
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateAigcElement](https://cloud.tencent.com/document/api/1616/130628)
-* [DeleteAigcElement](https://cloud.tencent.com/document/api/1616/130627)
-* [DescribeAigcElement](https://cloud.tencent.com/document/api/1616/130626)
-
-新增数据结构：
-
-* [ElementImageList](https://cloud.tencent.com/document/api/1616/107808#ElementImageList)
-* [ProviderDetail](https://cloud.tencent.com/document/api/1616/107808#ProviderDetail)
-* [ReferImageItem](https://cloud.tencent.com/document/api/1616/107808#ReferImageItem)
-* [TagList](https://cloud.tencent.com/document/api/1616/107808#TagList)
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
 
 
 

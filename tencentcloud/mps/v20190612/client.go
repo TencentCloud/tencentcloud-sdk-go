@@ -5541,7 +5541,7 @@ func NewDescribeDesignTaskResponse() (response *DescribeDesignTaskResponse) {
 }
 
 // DescribeDesignTask
-// 查询配音相关任务（异步）结果
+// 查询音色设计任务（异步）结果
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
@@ -5555,7 +5555,7 @@ func (c *Client) DescribeDesignTask(request *DescribeDesignTaskRequest) (respons
 }
 
 // DescribeDesignTask
-// 查询配音相关任务（异步）结果
+// 查询音色设计任务（异步）结果
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"

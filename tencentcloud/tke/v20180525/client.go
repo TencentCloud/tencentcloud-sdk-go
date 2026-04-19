@@ -15601,6 +15601,112 @@ func (c *Client) ModifyGlobalMaintenanceWindowAndExclusionsWithContext(ctx conte
     return
 }
 
+func NewModifyLogConfigRequest() (request *ModifyLogConfigRequest) {
+    request = &ModifyLogConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyLogConfig")
+    
+    
+    return
+}
+
+func NewModifyLogConfigResponse() (response *ModifyLogConfigResponse) {
+    response = &ModifyLogConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLogConfig
+// 修改日志采集配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_CREATECLSCLIENT = "FailedOperation.CreateClsClient"
+//  FAILEDOPERATION_CREATECLSCONFIG = "FailedOperation.CreateClsConfig"
+//  FAILEDOPERATION_CREATECLSINDEX = "FailedOperation.CreateClsIndex"
+//  FAILEDOPERATION_CREATECLSLOGSET = "FailedOperation.CreateClsLogSet"
+//  FAILEDOPERATION_CREATECLSMACHINEGROUP = "FailedOperation.CreateClsMachineGroup"
+//  FAILEDOPERATION_CREATECLSTOPIC = "FailedOperation.CreateClsTopic"
+//  FAILEDOPERATION_GETCLSCONFIG = "FailedOperation.GetClsConfig"
+//  FAILEDOPERATION_GETCLSCONFIGMACHINEGROUPS = "FailedOperation.GetClsConfigMachineGroups"
+//  FAILEDOPERATION_GETCLSINDEX = "FailedOperation.GetClsIndex"
+//  FAILEDOPERATION_GETCLSLOGSET = "FailedOperation.GetClsLogSet"
+//  FAILEDOPERATION_GETCLSMACHINEGROUP = "FailedOperation.GetClsMachineGroup"
+//  FAILEDOPERATION_GETCLSMACHINEGROUPCONFIGS = "FailedOperation.GetClsMachineGroupConfigs"
+//  FAILEDOPERATION_GETCLSTOPIC = "FailedOperation.GetClsTopic"
+//  FAILEDOPERATION_K8SCLIENTBUILDERROR = "FailedOperation.K8sClientBuildError"
+//  FAILEDOPERATION_KUBECLIENTCONNECTION = "FailedOperation.KubeClientConnection"
+//  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
+//  FAILEDOPERATION_KUBERNETESGETOPERATIONERROR = "FailedOperation.KubernetesGetOperationError"
+//  FAILEDOPERATION_KUBERNETESINTERNAL = "FailedOperation.KubernetesInternal"
+//  FAILEDOPERATION_KUBERNETESPATCHOPERATIONERROR = "FailedOperation.KubernetesPatchOperationError"
+//  FAILEDOPERATION_MODIFYCLSCONFIG = "FailedOperation.ModifyClsConfig"
+//  FAILEDOPERATION_MODIFYCLSINDEX = "FailedOperation.ModifyClsIndex"
+//  FAILEDOPERATION_MODIFYCLSTOPIC = "FailedOperation.ModifyClsTopic"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) ModifyLogConfig(request *ModifyLogConfigRequest) (response *ModifyLogConfigResponse, err error) {
+    return c.ModifyLogConfigWithContext(context.Background(), request)
+}
+
+// ModifyLogConfig
+// 修改日志采集配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_CREATECLSCLIENT = "FailedOperation.CreateClsClient"
+//  FAILEDOPERATION_CREATECLSCONFIG = "FailedOperation.CreateClsConfig"
+//  FAILEDOPERATION_CREATECLSINDEX = "FailedOperation.CreateClsIndex"
+//  FAILEDOPERATION_CREATECLSLOGSET = "FailedOperation.CreateClsLogSet"
+//  FAILEDOPERATION_CREATECLSMACHINEGROUP = "FailedOperation.CreateClsMachineGroup"
+//  FAILEDOPERATION_CREATECLSTOPIC = "FailedOperation.CreateClsTopic"
+//  FAILEDOPERATION_GETCLSCONFIG = "FailedOperation.GetClsConfig"
+//  FAILEDOPERATION_GETCLSCONFIGMACHINEGROUPS = "FailedOperation.GetClsConfigMachineGroups"
+//  FAILEDOPERATION_GETCLSINDEX = "FailedOperation.GetClsIndex"
+//  FAILEDOPERATION_GETCLSLOGSET = "FailedOperation.GetClsLogSet"
+//  FAILEDOPERATION_GETCLSMACHINEGROUP = "FailedOperation.GetClsMachineGroup"
+//  FAILEDOPERATION_GETCLSMACHINEGROUPCONFIGS = "FailedOperation.GetClsMachineGroupConfigs"
+//  FAILEDOPERATION_GETCLSTOPIC = "FailedOperation.GetClsTopic"
+//  FAILEDOPERATION_K8SCLIENTBUILDERROR = "FailedOperation.K8sClientBuildError"
+//  FAILEDOPERATION_KUBECLIENTCONNECTION = "FailedOperation.KubeClientConnection"
+//  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
+//  FAILEDOPERATION_KUBERNETESGETOPERATIONERROR = "FailedOperation.KubernetesGetOperationError"
+//  FAILEDOPERATION_KUBERNETESINTERNAL = "FailedOperation.KubernetesInternal"
+//  FAILEDOPERATION_KUBERNETESPATCHOPERATIONERROR = "FailedOperation.KubernetesPatchOperationError"
+//  FAILEDOPERATION_MODIFYCLSCONFIG = "FailedOperation.ModifyClsConfig"
+//  FAILEDOPERATION_MODIFYCLSINDEX = "FailedOperation.ModifyClsIndex"
+//  FAILEDOPERATION_MODIFYCLSTOPIC = "FailedOperation.ModifyClsTopic"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) ModifyLogConfigWithContext(ctx context.Context, request *ModifyLogConfigRequest) (response *ModifyLogConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyLogConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tke", APIVersion, "ModifyLogConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLogConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLogConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyMasterComponentRequest() (request *ModifyMasterComponentRequest) {
     request = &ModifyMasterComponentRequest{
         BaseRequest: &tchttp.BaseRequest{},

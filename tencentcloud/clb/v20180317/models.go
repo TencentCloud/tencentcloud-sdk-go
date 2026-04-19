@@ -5712,10 +5712,10 @@ type ExtraInfo struct {
 }
 
 type Filter struct {
-	// 过滤器的名称
+	// <p>过滤器的名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 过滤器的值数组
+	// <p>过滤器的值数组</p>
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 

@@ -363,6 +363,9 @@ type AdaptiveFrequencyControl struct {
 	// 自适应频控是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
 	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
+	// 自适应频控的规则 ID，仅作为出参返回。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
 	// 自适应频控的限制等级，当 Enabled 为 on 时，此字段必填。取值有：<li>Loose：宽松；</li><li>Moderate：适中；</li><li>Strict：严格。</li>
 	Sensitivity *string `json:"Sensitivity,omitnil,omitempty" name:"Sensitivity"`
 
@@ -804,6 +807,9 @@ type BandwidthAbuseDefense struct {
 	// 流量防盗刷（仅适用中国大陆地区）是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
 	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
+	// 流量防盗刷的规则 ID，仅作为出参返回。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
 	// 流量防盗刷（仅适用中国大陆地区）的处置方式，当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Monitor：观察；</li><li>Deny：拦截；</li><li>Challenge：挑战，其中ChallengeActionParameters.Name仅支持JSChallenge。</li>
 	Action *SecurityAction `json:"Action,omitnil,omitempty" name:"Action"`
 }
@@ -1150,14 +1156,17 @@ type BotExtendAction struct {
 }
 
 type BotIntelligence struct {
-	// 基于客户端和请求特征，将请求来源分为人类来源请求、合法 Bot 请求、疑似 Bot 请求和高风险 Bot 请求，并提供请求处置选项。
-	BotRatings *BotRatings `json:"BotRatings,omitnil,omitempty" name:"BotRatings"`
-
 	// Bot 智能分析的具体配置开关。取值有：
 	// 
 	// on：开启；
 	// off：关闭。
 	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// Bot 智能分析的规则 ID，仅作为出参返回。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 基于客户端和请求特征，将请求来源分为人类来源请求、合法 Bot 请求、疑似 Bot 请求和高风险 Bot 请求，并提供请求处置选项。
+	BotRatings *BotRatings `json:"BotRatings,omitnil,omitempty" name:"BotRatings"`
 }
 
 type BotManagedRule struct {
@@ -1909,6 +1918,9 @@ type ClientBehaviorDetection struct {
 type ClientFiltering struct {
 	// 智能客户端过滤是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
 	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 智能客户端过滤的规则 ID，仅作为出参返回。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 智能客户端过滤的处置方式，当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Monitor：观察；</li><li>Deny：拦截；</li><li>Challenge：挑战，其中ChallengeActionParameters.Name仅支持JSChallenge。</li>
 	Action *SecurityAction `json:"Action,omitnil,omitempty" name:"Action"`
@@ -15258,6 +15270,9 @@ type FrequentScanningProtection struct {
 	// 高频扫描防护规则是否开启。取值有：<li>on：开启，高频扫描防护规则生效；</li><li>off：关闭，高频扫描防护规则不生效。</li>	
 	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
+	// 高频扫描防护的规则 ID，仅作为出参返回。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
 	// 高频扫描防护的处置动作。 当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Deny：拦截，响应拦截页面；</li><li>Monitor：观察，不处理请求记录安全事件到日志中；</li><li>JSChallenge：JavaScript 挑战，响应 JavaScript 挑战页面。</li>
 	Action *SecurityAction `json:"Action,omitnil,omitempty" name:"Action"`
 
@@ -23006,6 +23021,9 @@ type SkipCondition struct {
 type SlowAttackDefense struct {
 	// 慢速攻击防护是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
 	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 慢速攻击防护的规则 ID，仅作为出参返回。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 慢速攻击防护的处置方式，当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Monitor：观察；</li><li>Deny：拦截；</li>
 	Action *SecurityAction `json:"Action,omitnil,omitempty" name:"Action"`

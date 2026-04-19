@@ -7309,6 +7309,68 @@ func (c *Client) ListTenantRolesWithContext(ctx context.Context, request *ListTe
     return
 }
 
+func NewListTriggerTaskRunsRequest() (request *ListTriggerTaskRunsRequest) {
+    request = &ListTriggerTaskRunsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ListTriggerTaskRuns")
+    
+    
+    return
+}
+
+func NewListTriggerTaskRunsResponse() (response *ListTriggerTaskRunsResponse) {
+    response = &ListTriggerTaskRunsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListTriggerTaskRuns
+// 查询工作流运行
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ListTriggerTaskRuns(request *ListTriggerTaskRunsRequest) (response *ListTriggerTaskRunsResponse, err error) {
+    return c.ListTriggerTaskRunsWithContext(context.Background(), request)
+}
+
+// ListTriggerTaskRuns
+// 查询工作流运行
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ListTriggerTaskRunsWithContext(ctx context.Context, request *ListTriggerTaskRunsRequest) (response *ListTriggerTaskRunsResponse, err error) {
+    if request == nil {
+        request = NewListTriggerTaskRunsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "wedata", APIVersion, "ListTriggerTaskRuns")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListTriggerTaskRuns require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListTriggerTaskRunsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListTriggerTaskVersionsRequest() (request *ListTriggerTaskVersionsRequest) {
     request = &ListTriggerTaskVersionsRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1535,6 +1535,9 @@ type CreateClusterRequestParams struct {
 
 	// <p>分区置放群组分区</p>
 	PartitionNumber *int64 `json:"PartitionNumber,omitnil,omitempty" name:"PartitionNumber"`
+
+	// <p>服务ui地址</p><p>枚举值：</p><ul><li>0： 服务ui地址，只返回1条服务ui地址</li><li>1： 服务ui地址，如果服务含有多个ui地址将全部返回，例如impala的Impalad、StateStore、Catalogd</li></ul><p>默认值：0</p>
+	WebUiVersion *int64 `json:"WebUiVersion,omitnil,omitempty" name:"WebUiVersion"`
 }
 
 type CreateClusterRequest struct {
@@ -1620,6 +1623,9 @@ type CreateClusterRequest struct {
 
 	// <p>分区置放群组分区</p>
 	PartitionNumber *int64 `json:"PartitionNumber,omitnil,omitempty" name:"PartitionNumber"`
+
+	// <p>服务ui地址</p><p>枚举值：</p><ul><li>0： 服务ui地址，只返回1条服务ui地址</li><li>1： 服务ui地址，如果服务含有多个ui地址将全部返回，例如impala的Impalad、StateStore、Catalogd</li></ul><p>默认值：0</p>
+	WebUiVersion *int64 `json:"WebUiVersion,omitnil,omitempty" name:"WebUiVersion"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -1661,6 +1667,7 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "NeedCdbAudit")
 	delete(f, "SgIP")
 	delete(f, "PartitionNumber")
+	delete(f, "WebUiVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}
@@ -1874,6 +1881,9 @@ type CreateInstanceRequestParams struct {
 
 	// <p>分区置放群组分区</p>
 	PartitionNumber *int64 `json:"PartitionNumber,omitnil,omitempty" name:"PartitionNumber"`
+
+	// <p>服务ui地址</p><p>枚举值：</p><ul><li>0： 服务ui地址，只返回1条服务ui地址</li><li>1： 服务ui地址，如果服务含有多个ui地址将全部返回，例如impala的Impalad、StateStore、Catalogd</li></ul><p>默认值：0</p>
+	WebUiVersion *int64 `json:"WebUiVersion,omitnil,omitempty" name:"WebUiVersion"`
 }
 
 type CreateInstanceRequest struct {
@@ -1995,6 +2005,9 @@ type CreateInstanceRequest struct {
 
 	// <p>分区置放群组分区</p>
 	PartitionNumber *int64 `json:"PartitionNumber,omitnil,omitempty" name:"PartitionNumber"`
+
+	// <p>服务ui地址</p><p>枚举值：</p><ul><li>0： 服务ui地址，只返回1条服务ui地址</li><li>1： 服务ui地址，如果服务含有多个ui地址将全部返回，例如impala的Impalad、StateStore、Catalogd</li></ul><p>默认值：0</p>
+	WebUiVersion *int64 `json:"WebUiVersion,omitnil,omitempty" name:"WebUiVersion"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -2048,6 +2061,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "NeedCdbAudit")
 	delete(f, "SgIP")
 	delete(f, "PartitionNumber")
+	delete(f, "WebUiVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}

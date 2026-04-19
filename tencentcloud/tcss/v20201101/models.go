@@ -2512,61 +2512,50 @@ type ClusterRiskItem struct {
 }
 
 type ComplianceAffectedAsset struct {
-	// 为客户分配的唯一的资产项的ID。
+	// <p>为客户分配的唯一的资产项的ID。</p>
 	CustomerAssetId *uint64 `json:"CustomerAssetId,omitnil,omitempty" name:"CustomerAssetId"`
 
-	// 资产项的名称。
+	// <p>资产项的名称。</p>
 	AssetName *string `json:"AssetName,omitnil,omitempty" name:"AssetName"`
 
-	// 资产项的类型
+	// <p>资产项的类型</p>
 	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 
-	// 检测状态
-	// 
-	// CHECK_INIT, 待检测
-	// 
-	// CHECK_RUNNING, 检测中
-	// 
-	// CHECK_FINISHED, 检测完成
-	// 
-	// CHECK_FAILED, 检测失败
+	// <p>检测状态</p><p>CHECK_INIT, 待检测</p><p>CHECK_RUNNING, 检测中</p><p>CHECK_FINISHED, 检测完成</p><p>CHECK_FAILED, 检测失败</p>
 	CheckStatus *string `json:"CheckStatus,omitnil,omitempty" name:"CheckStatus"`
 
-	// 节点名称。
+	// <p>节点名称。</p>
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// 上次检测的时间，格式为”YYYY-MM-DD HH:m::SS“。
-	// 
-	// 如果没有检测过，此处为”0000-00-00 00:00:00“。
+	// <p>上次检测的时间，格式为”YYYY-MM-DD HH:m::SS“。</p><p>如果没有检测过，此处为”0000-00-00 00:00:00“。</p>
 	LastCheckTime *string `json:"LastCheckTime,omitnil,omitempty" name:"LastCheckTime"`
 
-	// 检测结果。取值为：
-	// 
-	// RESULT_FAILED: 未通过
-	// 
-	// RESULT_PASSED: 通过
+	// <p>检测结果。取值为：</p><p>RESULT_FAILED: 未通过</p><p>RESULT_PASSED: 通过</p>
 	CheckResult *string `json:"CheckResult,omitnil,omitempty" name:"CheckResult"`
 
-	// 主机IP
+	// <p>主机IP</p>
 	HostIP *string `json:"HostIP,omitnil,omitempty" name:"HostIP"`
 
-	// 镜像的tag
+	// <p>镜像的tag</p>
 	ImageTag *string `json:"ImageTag,omitnil,omitempty" name:"ImageTag"`
 
-	// 检查项验证信息
+	// <p>检查项验证信息</p>
 	VerifyInfo *string `json:"VerifyInfo,omitnil,omitempty" name:"VerifyInfo"`
 
-	// 主机实例id
+	// <p>主机实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 镜像仓库信息
+	// <p>镜像仓库信息</p>
 	ImageRegistryInfo *ImageRegistryInfo `json:"ImageRegistryInfo,omitnil,omitempty" name:"ImageRegistryInfo"`
 
-	// 集群id
+	// <p>集群id</p>
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// <p>资产唯一ID</p><p>默认值：-</p>
+	AssetUniqueID *string `json:"AssetUniqueID,omitnil,omitempty" name:"AssetUniqueID"`
 }
 
 type ComplianceAssetDetailInfo struct {
@@ -2621,60 +2610,53 @@ type ComplianceAssetDetailInfo struct {
 }
 
 type ComplianceAssetInfo struct {
-	// 客户资产的ID。
+	// <p>客户资产的ID。</p>
 	CustomerAssetId *uint64 `json:"CustomerAssetId,omitnil,omitempty" name:"CustomerAssetId"`
 
-	// 资产类别。
+	// <p>资产类别。</p>
 	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 
-	// 资产的名称。
+	// <p>资产的名称。</p>
 	AssetName *string `json:"AssetName,omitnil,omitempty" name:"AssetName"`
 
-	// 当资产为镜像时，这个字段为镜像Tag。
+	// <p>当资产为镜像时，这个字段为镜像Tag。</p>
 	ImageTag *string `json:"ImageTag,omitnil,omitempty" name:"ImageTag"`
 
-	// 资产所在的主机IP。
+	// <p>资产所在的主机IP。</p>
 	HostIP *string `json:"HostIP,omitnil,omitempty" name:"HostIP"`
 
-	// 资产所属的节点的名称
+	// <p>资产所属的节点的名称</p>
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// 检测状态
-	// 
-	// CHECK_INIT, 待检测
-	// 
-	// CHECK_RUNNING, 检测中
-	// 
-	// CHECK_FINISHED, 检测完成
-	// 
-	// CHECK_FAILED, 检测失败
+	// <p>检测状态</p><p>CHECK_INIT, 待检测</p><p>CHECK_RUNNING, 检测中</p><p>CHECK_FINISHED, 检测完成</p><p>CHECK_FAILED, 检测失败</p>
 	CheckStatus *string `json:"CheckStatus,omitnil,omitempty" name:"CheckStatus"`
 
-	// 此类资产通过的检测项的数目。
+	// <p>此类资产通过的检测项的数目。</p>
 	PassedPolicyItemCount *uint64 `json:"PassedPolicyItemCount,omitnil,omitempty" name:"PassedPolicyItemCount"`
 
-	// 此类资产未通过的检测的数目。
+	// <p>此类资产未通过的检测的数目。</p>
 	FailedPolicyItemCount *uint64 `json:"FailedPolicyItemCount,omitnil,omitempty" name:"FailedPolicyItemCount"`
 
-	// 上次检测的时间。
+	// <p>上次检测的时间。</p>
 	LastCheckTime *string `json:"LastCheckTime,omitnil,omitempty" name:"LastCheckTime"`
 
-	// 检测结果：
-	// RESULT_FAILED: 未通过。
-	// RESULT_PASSED: 通过。
+	// <p>检测结果：<br>RESULT_FAILED: 未通过。<br>RESULT_PASSED: 通过。</p>
 	CheckResult *string `json:"CheckResult,omitnil,omitempty" name:"CheckResult"`
 
-	// 主机节点的实例id
+	// <p>主机节点的实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 镜像仓库信息
+	// <p>镜像仓库信息</p>
 	ImageRegistryInfo *ImageRegistryInfo `json:"ImageRegistryInfo,omitnil,omitempty" name:"ImageRegistryInfo"`
 
-	// 集群id
+	// <p>集群id</p>
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// <p>资产唯一ID</p><p>默认值：-</p>
+	AssetUniqueID *string `json:"AssetUniqueID,omitnil,omitempty" name:"AssetUniqueID"`
 }
 
 type ComplianceAssetPolicyItem struct {

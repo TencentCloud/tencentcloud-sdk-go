@@ -719,15 +719,21 @@ type HitInfo struct {
 }
 
 type InputInfo struct {
-	// 该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)。
+	// <p>该字段表示文件访问类型，取值为<strong>URL</strong>（资源链接）和<strong>COS</strong> (腾讯云对象存储)。</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 该字段表示文件访问的链接地址，格式为标准URL格式。<br> 备注：当Type为URL时此字段不为空。
+	// <p>该字段表示文件访问的链接地址，格式为标准URL格式。<br> 备注：当Type为URL时此字段不为空。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 该字段表示文件访问的腾讯云存储桶信息。<br> 备注：当Type为COS时此字段不为空。
+	// <p>该字段表示文件访问的腾讯云存储桶信息。<br> 备注：当Type为COS时此字段不为空。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BucketInfo *BucketInfo `json:"BucketInfo,omitnil,omitempty" name:"BucketInfo"`
+
+	// <p>大模型审核可选输入图片列表</p>
+	ImageUrlList []*string `json:"ImageUrlList,omitnil,omitempty" name:"ImageUrlList"`
+
+	// <p>大模型审核场景下，base64编码的审核要求内容</p>
+	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
 }
 
 type LabelResults struct {

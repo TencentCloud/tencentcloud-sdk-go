@@ -1317,66 +1317,7 @@ type CreateDataSourceRequestParams struct {
 	// 数据源名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 数据源类型:枚举值
-	// 
-	// - MYSQL
-	// - TENCENT_MYSQL
-	// - POSTGRE
-	// - ORACLE
-	// - SQLSERVER
-	// - FTP
-	// - HIVE
-	// - HUDI
-	// - HDFS
-	// - ICEBERG
-	// - KAFKA
-	// - DTS_KAFKA
-	// - HBASE
-	// - SPARK
-	// - TBASE
-	// - DB2
-	// - DM
-	// - GAUSSDB
-	// - GBASE
-	// - IMPALA
-	// - ES
-	// - TENCENT_ES
-	// - GREENPLUM
-	// - SAP_HANA
-	// - SFTP
-	// - OCEANBASE
-	// - CLICKHOUSE
-	// - KUDU
-	// - VERTICA
-	// - REDIS
-	// - COS
-	// - DLC
-	// - DORIS
-	// - CKAFKA
-	// - S3_DATAINSIGHT
-	// - TDSQL
-	// - TDSQL_MYSQL
-	// - MONGODB
-	// - TENCENT_MONGODB
-	// - REST_API
-	// - TiDB
-	// - StarRocks
-	// - Trino
-	// - Kyuubi
-	// - TCHOUSE_X
-	// - TCHOUSE_P
-	// - TCHOUSE_C
-	// - TCHOUSE_D
-	// - INFLUXDB
-	// - BIG_QUERY
-	// - SSH
-	// - BLOB
-	// - TDSQL_POSTGRE
-	// - GDB
-	// - TDENGINE
-	// - TDSQLC
-	// - FileSystem
-	// - TCLake
+	// 数据源类型:枚举值- MYSQL- TENCENT_MYSQL- POSTGRE- ORACLE- SQLSERVER- FTP- HIVE- HUDI- HDFS- ICEBERG- KAFKA- DTS_KAFKA- HBASE- SPARK- TBASE- DB2- DM- GAUSSDB- GBASE- IMPALA- ES- TENCENT_ES- GREENPLUM- SAP_HANA- SFTP- OCEANBASE- CLICKHOUSE- KUDU- VERTICA- REDIS- COS- DLC- DORIS- CKAFKA- S3_DATAINSIGHT- TDSQL- TDSQL_MYSQL- MONGODB- TENCENT_MONGODB- REST_API- TiDB- StarRocks- Trino- Kyuubi- TCHOUSE_X- TCHOUSE_P- TCHOUSE_C- TCHOUSE_D- INFLUXDB- BIG_QUERY- SSH- BLOB- TDSQL_POSTGRE- GDB- TDENGINE- TDSQLC- FileSystem- TCLake- TDSQL_BOUNDLESS
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同
@@ -1520,66 +1461,7 @@ type CreateDataSourceRequest struct {
 	// 数据源名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 数据源类型:枚举值
-	// 
-	// - MYSQL
-	// - TENCENT_MYSQL
-	// - POSTGRE
-	// - ORACLE
-	// - SQLSERVER
-	// - FTP
-	// - HIVE
-	// - HUDI
-	// - HDFS
-	// - ICEBERG
-	// - KAFKA
-	// - DTS_KAFKA
-	// - HBASE
-	// - SPARK
-	// - TBASE
-	// - DB2
-	// - DM
-	// - GAUSSDB
-	// - GBASE
-	// - IMPALA
-	// - ES
-	// - TENCENT_ES
-	// - GREENPLUM
-	// - SAP_HANA
-	// - SFTP
-	// - OCEANBASE
-	// - CLICKHOUSE
-	// - KUDU
-	// - VERTICA
-	// - REDIS
-	// - COS
-	// - DLC
-	// - DORIS
-	// - CKAFKA
-	// - S3_DATAINSIGHT
-	// - TDSQL
-	// - TDSQL_MYSQL
-	// - MONGODB
-	// - TENCENT_MONGODB
-	// - REST_API
-	// - TiDB
-	// - StarRocks
-	// - Trino
-	// - Kyuubi
-	// - TCHOUSE_X
-	// - TCHOUSE_P
-	// - TCHOUSE_C
-	// - TCHOUSE_D
-	// - INFLUXDB
-	// - BIG_QUERY
-	// - SSH
-	// - BLOB
-	// - TDSQL_POSTGRE
-	// - GDB
-	// - TDENGINE
-	// - TDSQLC
-	// - FileSystem
-	// - TCLake
+	// 数据源类型:枚举值- MYSQL- TENCENT_MYSQL- POSTGRE- ORACLE- SQLSERVER- FTP- HIVE- HUDI- HDFS- ICEBERG- KAFKA- DTS_KAFKA- HBASE- SPARK- TBASE- DB2- DM- GAUSSDB- GBASE- IMPALA- ES- TENCENT_ES- GREENPLUM- SAP_HANA- SFTP- OCEANBASE- CLICKHOUSE- KUDU- VERTICA- REDIS- COS- DLC- DORIS- CKAFKA- S3_DATAINSIGHT- TDSQL- TDSQL_MYSQL- MONGODB- TENCENT_MONGODB- REST_API- TiDB- StarRocks- Trino- Kyuubi- TCHOUSE_X- TCHOUSE_P- TCHOUSE_C- TCHOUSE_D- INFLUXDB- BIG_QUERY- SSH- BLOB- TDSQL_POSTGRE- GDB- TDENGINE- TDSQLC- FileSystem- TCLake- TDSQL_BOUNDLESS
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同
@@ -2973,132 +2855,112 @@ type CreateTaskResult struct {
 }
 
 type CreateTaskSchedulerConfiguration struct {
-	// 周期类型：默认为 DAY_CYCLE
-	// 
-	// 支持的类型为 
-	// 
-	// * ONEOFF_CYCLE: 一次性
-	// * YEAR_CYCLE: 年
-	// * MONTH_CYCLE: 月
-	// * WEEK_CYCLE: 周
-	// * DAY_CYCLE: 天
-	// * HOUR_CYCLE: 小时
-	// * MINUTE_CYCLE: 分钟
-	// * CRONTAB_CYCLE: crontab表达式类型
+	// <p>周期类型：默认为 DAY_CYCLE</p><p>支持的类型为 </p><ul><li>ONEOFF_CYCLE: 一次性</li><li>YEAR_CYCLE: 年</li><li>MONTH_CYCLE: 月</li><li>WEEK_CYCLE: 周</li><li>DAY_CYCLE: 天</li><li>HOUR_CYCLE: 小时</li><li>MINUTE_CYCLE: 分钟</li><li>CRONTAB_CYCLE: crontab表达式类型</li></ul>
 	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
 
-	// 时区，默认为 UTC+8
+	// <p>时区，默认为 UTC+8</p>
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
 
-	// Cron表达式，默认为 0 0 0 * * ? * 
+	// <p>Cron表达式，默认为 0 0 0 * * ? *</p>
 	CrontabExpression *string `json:"CrontabExpression,omitnil,omitempty" name:"CrontabExpression"`
 
-	// 生效日期，默认为当前日期的 00:00:00
+	// <p>生效日期，默认为当前日期的 00:00:00</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束日期，默认为 2099-12-31 23:59:59
+	// <p>结束日期，默认为 2099-12-31 23:59:59</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 执行时间 左闭区间，默认 00:00
+	// <p>执行时间 左闭区间，默认 00:00</p>
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitnil,omitempty" name:"ExecutionStartTime"`
 
-	// 执行时间 右闭区间，默认 23:59
+	// <p>执行时间 右闭区间，默认 23:59</p>
 	ExecutionEndTime *string `json:"ExecutionEndTime,omitnil,omitempty" name:"ExecutionEndTime"`
 
-	// 日历调度 取值为 0 和 1， 1为打开，0为关闭，默认为0
+	// <p>日历调度 取值为 0 和 1， 1为打开，0为关闭，默认为0</p>
 	CalendarOpen *string `json:"CalendarOpen,omitnil,omitempty" name:"CalendarOpen"`
 
-	// 日历调度 日历 ID
+	// <p>日历调度 日历 ID</p>
 	CalendarId *string `json:"CalendarId,omitnil,omitempty" name:"CalendarId"`
 
-	// 自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)
+	// <p>自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)</p>
 	SelfDepend *string `json:"SelfDepend,omitnil,omitempty" name:"SelfDepend"`
 
-	// 上游依赖数组
+	// <p>上游依赖数组</p>
 	UpstreamDependencyConfigList []*DependencyTaskBrief `json:"UpstreamDependencyConfigList,omitnil,omitempty" name:"UpstreamDependencyConfigList"`
 
-	// 事件数组
+	// <p>事件数组</p>
 	EventListenerList []*EventListener `json:"EventListenerList,omitnil,omitempty" name:"EventListenerList"`
 
-	// 重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
+	// <p>重跑&amp;补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;</p>
 	AllowRedoType *string `json:"AllowRedoType,omitnil,omitempty" name:"AllowRedoType"`
 
-	// 输出参数数组
+	// <p>输出参数数组</p>
 	ParamTaskOutList []*OutTaskParameter `json:"ParamTaskOutList,omitnil,omitempty" name:"ParamTaskOutList"`
 
-	// 输入参数数组
+	// <p>输入参数数组</p>
 	ParamTaskInList []*InTaskParameter `json:"ParamTaskInList,omitnil,omitempty" name:"ParamTaskInList"`
 
-	// 产出登记
+	// <p>产出登记</p>
 	TaskOutputRegistryList []*TaskDataRegistry `json:"TaskOutputRegistryList,omitnil,omitempty" name:"TaskOutputRegistryList"`
 
-	// **实例生成策略**
-	// * T_PLUS_0: T+0生成,默认策略
-	// * T_PLUS_1: T+1生成
+	// <p><strong>实例生成策略</strong></p><ul><li>T_PLUS_0: T+0生成,默认策略</li><li>T_PLUS_1: T+1生成</li></ul>
 	InitStrategy *string `json:"InitStrategy,omitnil,omitempty" name:"InitStrategy"`
 
-	// 调度类型: 0 正常调度 1 空跑调度，默认为 0
+	// <p>调度类型: 0 正常调度 1 空跑调度，默认为 0</p>
 	//
 	// Deprecated: ScheduleRunType is deprecated.
 	ScheduleRunType *string `json:"ScheduleRunType,omitnil,omitempty" name:"ScheduleRunType"`
 
-	// 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+	// <p>任务调度优先级 运行优先级 4高 5中 6低 , 默认:6</p>
 	//
 	// Deprecated: RunPriority is deprecated.
 	RunPriority *string `json:"RunPriority,omitnil,omitempty" name:"RunPriority"`
 
-	// 重试策略 重试等待时间,单位分钟: 默认: 5
+	// <p>重试策略 重试等待时间,单位分钟: 默认: 5</p>
 	//
 	// Deprecated: RetryWait is deprecated.
 	RetryWait *string `json:"RetryWait,omitnil,omitempty" name:"RetryWait"`
 
-	// 重试策略 最大尝试次数, 默认: 4
+	// <p>重试策略 最大尝试次数, 默认: 4</p>
 	//
 	// Deprecated: MaxRetryAttempts is deprecated.
 	MaxRetryAttempts *string `json:"MaxRetryAttempts,omitnil,omitempty" name:"MaxRetryAttempts"`
 
-	// 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+	// <p>超时处理策略 运行耗时超时（单位：分钟）默认为 -1</p>
 	//
 	// Deprecated: ExecutionTTL is deprecated.
 	ExecutionTTL *string `json:"ExecutionTTL,omitnil,omitempty" name:"ExecutionTTL"`
 
-	// 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+	// <p>超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1</p>
 	//
 	// Deprecated: WaitExecutionTotalTTL is deprecated.
 	WaitExecutionTotalTTL *string `json:"WaitExecutionTotalTTL,omitnil,omitempty" name:"WaitExecutionTotalTTL"`
 
-	// 调度类型: 0 正常调度 1 空跑调度，默认为 0
+	// <p>调度类型: 0 正常调度 1 空跑调度，默认为 0</p>
 	ScheduleType *int64 `json:"ScheduleType,omitnil,omitempty" name:"ScheduleType"`
 
-	// 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+	// <p>任务调度优先级 运行优先级 4高 5中 6低 , 默认:6</p>
 	RunPriorityType *int64 `json:"RunPriorityType,omitnil,omitempty" name:"RunPriorityType"`
 
-	// 重试策略 重试等待时间,单位分钟: 默认: 5
+	// <p>重试策略 重试等待时间,单位分钟: 默认: 5</p>
 	RetryWaitMinute *int64 `json:"RetryWaitMinute,omitnil,omitempty" name:"RetryWaitMinute"`
 
-	// 重试策略 最大尝试次数, 默认: 4
+	// <p>重试策略 最大尝试次数, 默认: 4</p>
 	MaxRetryNumber *int64 `json:"MaxRetryNumber,omitnil,omitempty" name:"MaxRetryNumber"`
 
-	// 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+	// <p>超时处理策略 运行耗时超时（单位：分钟）默认为 -1</p>
 	ExecutionTTLMinute *int64 `json:"ExecutionTTLMinute,omitnil,omitempty" name:"ExecutionTTLMinute"`
 
-	// 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+	// <p>超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1</p>
 	WaitExecutionTotalTTLMinute *int64 `json:"WaitExecutionTotalTTLMinute,omitnil,omitempty" name:"WaitExecutionTotalTTLMinute"`
 
-	// - 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
-	// - ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
-	// - ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
-	// - ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
-	// - ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
-	// - ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
-	// - ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
-	// - ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
-	// - ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
-	// - NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
-	// - ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
-	// - NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
-	// - ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+	// <ul><li>任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置</li><li>ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败</li><li>ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行</li><li>ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行</li><li>ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行</li><li>ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li></ul>
 	DependencyTriggerPolicy *string `json:"DependencyTriggerPolicy,omitnil,omitempty" name:"DependencyTriggerPolicy"`
+
+	// <p>是否允许下游依赖 1允许 0不允许</p><p>取值范围：[0, 1]</p><p>默认值：1</p>
+	//
+	// Deprecated: AllowDownstreamDependency is deprecated.
+	AllowDownstreamDependency *int64 `json:"AllowDownstreamDependency,omitnil,omitempty" name:"AllowDownstreamDependency"`
 }
 
 type CreateTriggerTaskBaseAttribute struct {
@@ -3254,50 +3116,41 @@ func (r *CreateTriggerTaskResponse) FromJsonString(s string) error {
 }
 
 type CreateTriggerTaskSchedulerConfiguration struct {
-	// 上游依赖的任务数组
+	// <p>上游依赖的任务数组</p>
 	UpstreamDependencyConfigList []*DependencyTriggerTaskBrief `json:"UpstreamDependencyConfigList,omitnil,omitempty" name:"UpstreamDependencyConfigList"`
 
-	// 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+	// <p>任务调度优先级 运行优先级 4高 5中 6低 , 默认:6</p>
 	RunPriorityType *int64 `json:"RunPriorityType,omitnil,omitempty" name:"RunPriorityType"`
 
-	// 重试策略 重试等待时间,单位分钟: 默认: 5
+	// <p>重试策略 重试等待时间,单位分钟: 默认: 5</p>
 	RetryWaitMinute *int64 `json:"RetryWaitMinute,omitnil,omitempty" name:"RetryWaitMinute"`
 
-	// 重试策略 最大尝试次数, 默认: 4
+	// <p>重试策略 最大尝试次数, 默认: 4</p>
 	MaxRetryNumber *int64 `json:"MaxRetryNumber,omitnil,omitempty" name:"MaxRetryNumber"`
 
-	// 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+	// <p>超时处理策略 运行耗时超时（单位：分钟）默认为 -1</p>
 	ExecutionTTLMinute *int64 `json:"ExecutionTTLMinute,omitnil,omitempty" name:"ExecutionTTLMinute"`
 
-	// 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+	// <p>超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1</p>
 	WaitExecutionTotalTTLMinute *int64 `json:"WaitExecutionTotalTTLMinute,omitnil,omitempty" name:"WaitExecutionTotalTTLMinute"`
 
-	// 重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
+	// <p>重跑&amp;补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;</p>
 	AllowRedoType *string `json:"AllowRedoType,omitnil,omitempty" name:"AllowRedoType"`
 
-	// 输出参数数组
+	// <p>输出参数数组</p>
 	ParamTaskOutList []*OutTaskParameter `json:"ParamTaskOutList,omitnil,omitempty" name:"ParamTaskOutList"`
 
-	// 输入参数数组
+	// <p>输入参数数组</p>
 	ParamTaskInList []*InTaskParameter `json:"ParamTaskInList,omitnil,omitempty" name:"ParamTaskInList"`
 
-	// 产出登记
+	// <p>产出登记</p>
 	TaskOutputRegistryList []*TaskDataRegistry `json:"TaskOutputRegistryList,omitnil,omitempty" name:"TaskOutputRegistryList"`
 
-	// - 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
-	// - ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
-	// - ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
-	// - ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
-	// - ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
-	// - ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
-	// - ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
-	// - ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
-	// - ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
-	// - NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
-	// - ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
-	// - NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
-	// - ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+	// <ul><li>任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置</li><li>ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败</li><li>ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行</li><li>ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行</li><li>ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行</li><li>ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li></ul>
 	DependencyTriggerPolicy *string `json:"DependencyTriggerPolicy,omitnil,omitempty" name:"DependencyTriggerPolicy"`
+
+	// <p>是否允许下游依赖 1允许 0不允许</p><p>取值范围：[0, 1]</p><p>默认值：1</p>
+	AllowDownstreamDependency *int64 `json:"AllowDownstreamDependency,omitnil,omitempty" name:"AllowDownstreamDependency"`
 }
 
 // Predefined struct for user
@@ -14577,6 +14430,187 @@ type ListTriggerTaskInfo struct {
 	TotalPageNumber *uint64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
 }
 
+type ListTriggerTaskRunBrief struct {
+	// 任务运行ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionId *string `json:"ExecutionId,omitnil,omitempty" name:"ExecutionId"`
+
+	// 工作流ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流运行ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowExecutionId *string `json:"WorkflowExecutionId,omitnil,omitempty" name:"WorkflowExecutionId"`
+
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 触发类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
+
+	// 等待时长，单位秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WaitTime *string `json:"WaitTime,omitnil,omitempty" name:"WaitTime"`
+
+	// 运行账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecuteUserUin *string `json:"ExecuteUserUin,omitnil,omitempty" name:"ExecuteUserUin"`
+
+	// 计划调度时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleTime *string `json:"ScheduleTime,omitnil,omitempty" name:"ScheduleTime"`
+
+	// 运行开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionStartTime *string `json:"ExecutionStartTime,omitnil,omitempty" name:"ExecutionStartTime"`
+
+	// 运行结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionEndTime *string `json:"ExecutionEndTime,omitnil,omitempty" name:"ExecutionEndTime"`
+
+	// 运行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionTime *string `json:"ExecutionTime,omitnil,omitempty" name:"ExecutionTime"`
+
+	// 系统自动重试次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetryTimes *int64 `json:"RetryTimes,omitnil,omitempty" name:"RetryTimes"`
+
+	// 错误码描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorCodeStr *string `json:"ErrorCodeStr,omitnil,omitempty" name:"ErrorCodeStr"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 工作流名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 用户手动重跑次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RerunTimes *int64 `json:"RerunTimes,omitnil,omitempty" name:"RerunTimes"`
+
+	// 任务运行状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskExecutionState *string `json:"TaskExecutionState,omitnil,omitempty" name:"TaskExecutionState"`
+
+	// 是否是最新一次运行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsLatestExecution *bool `json:"IsLatestExecution,omitnil,omitempty" name:"IsLatestExecution"`
+}
+
+type ListTriggerTaskRunResult struct {
+	// 总记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPageNumber *uint64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+
+	// 页码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 页大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 任务运行信息集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*ListTriggerTaskRunBrief `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+// Predefined struct for user
+type ListTriggerTaskRunsRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 过滤参数，任务名称或ID查询: Keyword，工作流ID查询: WorkflowId，文件夹查询: FolderId，负责人查询: InChargeUin，工作流执行ID: WorkflowExecutionId，任务执行ID: ExecutionId，任务ID: TaskId，计划调度时间区间: ScheduleTimeGreaterEqual / ScheduleTimeLessEqual
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段，排序字段名称	如下开始时间：CreateTime，结束时间：EndTime，计划调度时间：ScheduleTime
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type ListTriggerTaskRunsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 过滤参数，任务名称或ID查询: Keyword，工作流ID查询: WorkflowId，文件夹查询: FolderId，负责人查询: InChargeUin，工作流执行ID: WorkflowExecutionId，任务执行ID: ExecutionId，任务ID: TaskId，计划调度时间区间: ScheduleTimeGreaterEqual / ScheduleTimeLessEqual
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段，排序字段名称	如下开始时间：CreateTime，结束时间：EndTime，计划调度时间：ScheduleTime
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *ListTriggerTaskRunsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTriggerTaskRunsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTriggerTaskRunsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListTriggerTaskRunsResponseParams struct {
+	// 任务运行查询结果
+	Data *ListTriggerTaskRunResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListTriggerTaskRunsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListTriggerTaskRunsResponseParams `json:"Response"`
+}
+
+func (r *ListTriggerTaskRunsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTriggerTaskRunsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ListTriggerTaskVersions struct {
 	// 记录列表	
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -18897,11 +18931,13 @@ type RevokeDataSourceAuthorizationRequestParams struct {
 	// 数据源id
 	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
 
-	// 回收的项目id，与UserUin参数只能填一个
+	// 回收的项目id，与RevokeUser参数只能选填一个，或者都不传当RevokeProjectId与RevokeUser都不传时，表示回收当前数据源所有权限（数据源为项目共享时，不回收当前数据源创建项目下所有用户对该数据源的权限，当数据源为个人和项目管理员共享时，不回收当前数据源创建项目下数据源创建用户和管理员的权限）
 	RevokeProjectId *string `json:"RevokeProjectId,omitnil,omitempty" name:"RevokeProjectId"`
 
 	// 回收项目下用户列表，格式为：项目id_用户id
-	// 与RevokeProjectId参数只能填一个
+	// 与RevokeProjectId参数只能选填一个，或者都不传
+	// 当RevokeProjectId与RevokeUser都不传时，表示回收当前数据源所有权限（
+	// 数据源为项目共享时，不回收当前数据源创建项目下所有用户对该数据源的权限，当数据源为个人和项目管理员共享时，不回收当前数据源创建项目下数据源创建用户和管理员的权限）
 	// 
 	RevokeUser *string `json:"RevokeUser,omitnil,omitempty" name:"RevokeUser"`
 }
@@ -18912,11 +18948,13 @@ type RevokeDataSourceAuthorizationRequest struct {
 	// 数据源id
 	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
 
-	// 回收的项目id，与UserUin参数只能填一个
+	// 回收的项目id，与RevokeUser参数只能选填一个，或者都不传当RevokeProjectId与RevokeUser都不传时，表示回收当前数据源所有权限（数据源为项目共享时，不回收当前数据源创建项目下所有用户对该数据源的权限，当数据源为个人和项目管理员共享时，不回收当前数据源创建项目下数据源创建用户和管理员的权限）
 	RevokeProjectId *string `json:"RevokeProjectId,omitnil,omitempty" name:"RevokeProjectId"`
 
 	// 回收项目下用户列表，格式为：项目id_用户id
-	// 与RevokeProjectId参数只能填一个
+	// 与RevokeProjectId参数只能选填一个，或者都不传
+	// 当RevokeProjectId与RevokeUser都不传时，表示回收当前数据源所有权限（
+	// 数据源为项目共享时，不回收当前数据源创建项目下所有用户对该数据源的权限，当数据源为个人和项目管理员共享时，不回收当前数据源创建项目下数据源创建用户和管理员的权限）
 	// 
 	RevokeUser *string `json:"RevokeUser,omitnil,omitempty" name:"RevokeUser"`
 }
@@ -20739,174 +20777,155 @@ type TaskOpsInfo struct {
 }
 
 type TaskSchedulerConfiguration struct {
-	// 周期类型：支持的类型为
-	// 
-	// ONEOFF_CYCLE: 一次性
-	// YEAR_CYCLE: 年
-	// MONTH_CYCLE: 月
-	// WEEK_CYCLE: 周
-	// DAY_CYCLE: 天
-	// HOUR_CYCLE: 小时
-	// MINUTE_CYCLE: 分钟
-	// CRONTAB_CYCLE: crontab表达式类型
+	// <p>周期类型：支持的类型为</p><p>ONEOFF_CYCLE: 一次性<br>YEAR_CYCLE: 年<br>MONTH_CYCLE: 月<br>WEEK_CYCLE: 周<br>DAY_CYCLE: 天<br>HOUR_CYCLE: 小时<br>MINUTE_CYCLE: 分钟<br>CRONTAB_CYCLE: crontab表达式类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
 
-	// 时区
+	// <p>时区</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
 
-	// 0 2 3 1,L,2 * ?	
+	// <p>0 2 3 1,L,2 * ?</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CrontabExpression *string `json:"CrontabExpression,omitnil,omitempty" name:"CrontabExpression"`
 
-	// 生效日期
+	// <p>生效日期</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束日期
+	// <p>结束日期</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 执行时间 左闭区间
+	// <p>执行时间 左闭区间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitnil,omitempty" name:"ExecutionStartTime"`
 
-	// 执行时间 右闭区间
+	// <p>执行时间 右闭区间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionEndTime *string `json:"ExecutionEndTime,omitnil,omitempty" name:"ExecutionEndTime"`
 
-	// 日历调度 取值为 0 和 1， 1为打开，0为关闭，默认为0
+	// <p>日历调度 取值为 0 和 1， 1为打开，0为关闭，默认为0</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CalendarOpen *string `json:"CalendarOpen,omitnil,omitempty" name:"CalendarOpen"`
 
-	// 日历调度 日历 ID
+	// <p>日历调度 日历 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CalendarId *string `json:"CalendarId,omitnil,omitempty" name:"CalendarId"`
 
-	// 日历调度 日历名称, 需要从 DescribeScheduleCalendarPageList 中获取
+	// <p>日历调度 日历名称, 需要从 DescribeScheduleCalendarPageList 中获取</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CalendarName *string `json:"CalendarName,omitnil,omitempty" name:"CalendarName"`
 
-	// 自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)
+	// <p>自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelfDepend *string `json:"SelfDepend,omitnil,omitempty" name:"SelfDepend"`
 
-	// 上游依赖数组
+	// <p>上游依赖数组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamDependencyConfigList []*DependencyTaskBrief `json:"UpstreamDependencyConfigList,omitnil,omitempty" name:"UpstreamDependencyConfigList"`
 
-	// 下游依赖数组
+	// <p>下游依赖数组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownstreamDependencyConfigList []*DependencyTaskBrief `json:"DownstreamDependencyConfigList,omitnil,omitempty" name:"DownstreamDependencyConfigList"`
 
-	// 事件数组
+	// <p>事件数组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventListenerList []*EventListener `json:"EventListenerList,omitnil,omitempty" name:"EventListenerList"`
 
-	// 重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
+	// <p>重跑&amp;补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowRedoType *string `json:"AllowRedoType,omitnil,omitempty" name:"AllowRedoType"`
 
-	// 输出参数数组
+	// <p>输出参数数组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamTaskOutList []*OutTaskParameter `json:"ParamTaskOutList,omitnil,omitempty" name:"ParamTaskOutList"`
 
-	// 输入参数数组
+	// <p>输入参数数组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamTaskInList []*InTaskParameter `json:"ParamTaskInList,omitnil,omitempty" name:"ParamTaskInList"`
 
-	// 产出登记
+	// <p>产出登记</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskOutputRegistryList []*TaskDataRegistry `json:"TaskOutputRegistryList,omitnil,omitempty" name:"TaskOutputRegistryList"`
 
-	// **实例生成策略**
-	// * T_PLUS_0: T+0生成,默认策略
-	// * T_PLUS_1: T+1生成
+	// <p><strong>实例生成策略</strong></p><ul><li>T_PLUS_0: T+0生成,默认策略</li><li>T_PLUS_1: T+1生成</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InitStrategy *string `json:"InitStrategy,omitnil,omitempty" name:"InitStrategy"`
 
-	// 调度类型: 0 正常调度 1 空跑调度，默认为 0
+	// <p>调度类型: 0 正常调度 1 空跑调度，默认为 0</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: ScheduleRunType is deprecated.
 	ScheduleRunType *int64 `json:"ScheduleRunType,omitnil,omitempty" name:"ScheduleRunType"`
 
-	// （废弃，建议使用 DownstreamDependencyConfigList）下游依赖数组
+	// <p>（废弃，建议使用 DownstreamDependencyConfigList）下游依赖数组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: DownStreamDependencyConfigList is deprecated.
 	DownStreamDependencyConfigList []*DependencyTaskBrief `json:"DownStreamDependencyConfigList,omitnil,omitempty" name:"DownStreamDependencyConfigList"`
 
-	// 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+	// <p>任务调度优先级 运行优先级 4高 5中 6低 , 默认:6</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: RunPriority is deprecated.
 	RunPriority *uint64 `json:"RunPriority,omitnil,omitempty" name:"RunPriority"`
 
-	// 重试策略 重试等待时间,单位分钟: 默认: 5
+	// <p>重试策略 重试等待时间,单位分钟: 默认: 5</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: RetryWait is deprecated.
 	RetryWait *int64 `json:"RetryWait,omitnil,omitempty" name:"RetryWait"`
 
-	// 重试策略 最大尝试次数, 默认: 4
+	// <p>重试策略 最大尝试次数, 默认: 4</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: MaxRetryAttempts is deprecated.
 	MaxRetryAttempts *int64 `json:"MaxRetryAttempts,omitnil,omitempty" name:"MaxRetryAttempts"`
 
-	// 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+	// <p>超时处理策略 运行耗时超时（单位：分钟）默认为 -1</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: ExecutionTTL is deprecated.
 	ExecutionTTL *int64 `json:"ExecutionTTL,omitnil,omitempty" name:"ExecutionTTL"`
 
-	// 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+	// <p>超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: WaitExecutionTotalTTL is deprecated.
 	WaitExecutionTotalTTL *string `json:"WaitExecutionTotalTTL,omitnil,omitempty" name:"WaitExecutionTotalTTL"`
 
-	// 调度类型: 0 正常调度 1 空跑调度，默认为 0
+	// <p>调度类型: 0 正常调度 1 空跑调度，默认为 0</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleType *int64 `json:"ScheduleType,omitnil,omitempty" name:"ScheduleType"`
 
-	// 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+	// <p>任务调度优先级 运行优先级 4高 5中 6低 , 默认:6</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunPriorityType *int64 `json:"RunPriorityType,omitnil,omitempty" name:"RunPriorityType"`
 
-	// 重试策略 重试等待时间,单位分钟: 默认: 5
+	// <p>重试策略 重试等待时间,单位分钟: 默认: 5</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetryWaitMinute *int64 `json:"RetryWaitMinute,omitnil,omitempty" name:"RetryWaitMinute"`
 
-	// 重试策略 最大尝试次数, 默认: 4
+	// <p>重试策略 最大尝试次数, 默认: 4</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxRetryNumber *int64 `json:"MaxRetryNumber,omitnil,omitempty" name:"MaxRetryNumber"`
 
-	// 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+	// <p>超时处理策略 运行耗时超时（单位：分钟）默认为 -1</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionTTLMinute *int64 `json:"ExecutionTTLMinute,omitnil,omitempty" name:"ExecutionTTLMinute"`
 
-	// 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+	// <p>超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WaitExecutionTotalTTLMinute *int64 `json:"WaitExecutionTotalTTLMinute,omitnil,omitempty" name:"WaitExecutionTotalTTLMinute"`
 
-	// - 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
-	// - ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
-	// - ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
-	// - ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
-	// - ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
-	// - ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
-	// - ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
-	// - ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
-	// - ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
-	// - NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
-	// - ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
-	// - NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
-	// - ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+	// <ul><li>任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置</li><li>ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败</li><li>ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行</li><li>ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行</li><li>ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行</li><li>ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependencyTriggerPolicy *string `json:"DependencyTriggerPolicy,omitnil,omitempty" name:"DependencyTriggerPolicy"`
+
+	// <p>是否允许下游依赖 1允许 0不允许</p><p>取值范围：[0, 1]</p><p>默认值：1</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllowDownstreamDependency *int64 `json:"AllowDownstreamDependency,omitnil,omitempty" name:"AllowDownstreamDependency"`
 }
 
 type TaskSchedulingParameter struct {
@@ -21654,61 +21673,53 @@ type TriggerTaskRunBrief struct {
 }
 
 type TriggerTaskSchedulerConfiguration struct {
-	// 上游依赖数组
+	// <p>上游依赖数组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamDependencyConfigList []*DependencyTriggerTaskBrief `json:"UpstreamDependencyConfigList,omitnil,omitempty" name:"UpstreamDependencyConfigList"`
 
-	// 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+	// <p>任务调度优先级 运行优先级 4高 5中 6低 , 默认:6</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunPriorityType *int64 `json:"RunPriorityType,omitnil,omitempty" name:"RunPriorityType"`
 
-	// 重试策略 重试等待时间,单位分钟: 默认: 5
+	// <p>重试策略 重试等待时间,单位分钟: 默认: 5</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetryWaitMinute *int64 `json:"RetryWaitMinute,omitnil,omitempty" name:"RetryWaitMinute"`
 
-	// 重试策略 最大尝试次数, 默认: 4
+	// <p>重试策略 最大尝试次数, 默认: 4</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxRetryNumber *int64 `json:"MaxRetryNumber,omitnil,omitempty" name:"MaxRetryNumber"`
 
-	// 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+	// <p>超时处理策略 运行耗时超时（单位：分钟）默认为 -1</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionTTLMinute *int64 `json:"ExecutionTTLMinute,omitnil,omitempty" name:"ExecutionTTLMinute"`
 
-	// 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+	// <p>超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WaitExecutionTotalTTLMinute *int64 `json:"WaitExecutionTotalTTLMinute,omitnil,omitempty" name:"WaitExecutionTotalTTLMinute"`
 
-	// 重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
+	// <p>重跑&amp;补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowRedoType *string `json:"AllowRedoType,omitnil,omitempty" name:"AllowRedoType"`
 
-	// 输出参数数组
+	// <p>输出参数数组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamTaskOutList []*OutTaskParameter `json:"ParamTaskOutList,omitnil,omitempty" name:"ParamTaskOutList"`
 
-	// 输入参数数组
+	// <p>输入参数数组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamTaskInList []*InTaskParameter `json:"ParamTaskInList,omitnil,omitempty" name:"ParamTaskInList"`
 
-	// 产出登记
+	// <p>产出登记</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskOutputRegistryList []*TaskDataRegistry `json:"TaskOutputRegistryList,omitnil,omitempty" name:"TaskOutputRegistryList"`
 
-	// - 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
-	// - ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
-	// - ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
-	// - ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
-	// - ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
-	// - ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
-	// - ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
-	// - ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
-	// - ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
-	// - NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
-	// - ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
-	// - NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
-	// - ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+	// <ul><li>任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置</li><li>ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败</li><li>ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行</li><li>ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行</li><li>ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行</li><li>ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependencyTriggerPolicy *string `json:"DependencyTriggerPolicy,omitnil,omitempty" name:"DependencyTriggerPolicy"`
+
+	// <p>是否允许下游依赖 1允许 0不允许</p><p>取值范围：[0, 1]</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllowDownstreamDependency *int64 `json:"AllowDownstreamDependency,omitnil,omitempty" name:"AllowDownstreamDependency"`
 }
 
 type TriggerTaskVersion struct {
