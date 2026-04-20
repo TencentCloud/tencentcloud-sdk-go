@@ -779,123 +779,135 @@ func (r *CreateModelResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateModelServiceRequestParams struct {
-	// 实例
+	// <p>实例</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 模型服务名称
+	// <p>模型服务名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 访问路径
+	// <p>访问路径</p>
 	PubPath *string `json:"PubPath,omitnil,omitempty" name:"PubPath"`
 
-	// 模型ID列表
+	// <p>模型ID列表</p>
 	TargetModels []*TargetModelDTO `json:"TargetModels,omitnil,omitempty" name:"TargetModels"`
 
-	// 路径匹配类型: prefix 前缀匹配(不送默认); absolute 绝对匹配; regex正则匹配;
+	// <p>路径匹配类型: prefix 前缀匹配(不送默认); absolute 绝对匹配; regex正则匹配;</p>
 	PathMatchType *string `json:"PathMatchType,omitnil,omitempty" name:"PathMatchType"`
 
-	// 是否开启限流
+	// <p>是否开启限流</p>
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
-	// 限流配置
+	// <p>限流配置</p>
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
-	// 是否开启token控制
+	// <p>是否开启token控制</p>
 	TokenLimitStatus *bool `json:"TokenLimitStatus,omitnil,omitempty" name:"TokenLimitStatus"`
 
-	// token控制
+	// <p>token控制</p>
 	TokenLimitConfig *TokenLimitConfigDTO `json:"TokenLimitConfig,omitnil,omitempty" name:"TokenLimitConfig"`
 
-	// 是否开启内容安全
+	// <p>是否开启内容安全</p>
 	TmsStatus *bool `json:"TmsStatus,omitnil,omitempty" name:"TmsStatus"`
 
-	// 内容安全配置
+	// <p>内容安全配置</p>
 	TmsConfig *TmsConfigDTO `json:"TmsConfig,omitnil,omitempty" name:"TmsConfig"`
 
-	// 是否开启IP白名单
+	// <p>是否开启IP白名单</p>
 	IpWhiteStatus *bool `json:"IpWhiteStatus,omitnil,omitempty" name:"IpWhiteStatus"`
 
-	// IP白名单
+	// <p>IP白名单</p>
 	IpWhiteList []*string `json:"IpWhiteList,omitnil,omitempty" name:"IpWhiteList"`
 
-	// IP黑名单
+	// <p>IP黑名单</p>
 	IpBlackList []*string `json:"IpBlackList,omitnil,omitempty" name:"IpBlackList"`
 
-	// 插件配置
+	// <p>插件配置</p>
 	PluginConfigs []*PluginConfigDTO `json:"PluginConfigs,omitnil,omitempty" name:"PluginConfigs"`
 
-	// 超时配置，秒
+	// <p>超时配置，秒</p>
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 是否开启提示词安全检测
+	// <p>是否开启提示词安全检测</p>
 	PromptModerateStatus *bool `json:"PromptModerateStatus,omitnil,omitempty" name:"PromptModerateStatus"`
 
-	// 提示词安全检测配置
+	// <p>提示词安全检测配置</p>
 	PromptModerateConfig *PromptModerateConfigDTO `json:"PromptModerateConfig,omitnil,omitempty" name:"PromptModerateConfig"`
+
+	// <p>是否开启敏感数据检测</p>
+	SensitiveDataCheckStatus *bool `json:"SensitiveDataCheckStatus,omitnil,omitempty" name:"SensitiveDataCheckStatus"`
+
+	// <p>敏感数据检测配置</p>
+	SensitiveDataCheckConfig *SensitiveDataCheckConfigDTO `json:"SensitiveDataCheckConfig,omitnil,omitempty" name:"SensitiveDataCheckConfig"`
 }
 
 type CreateModelServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例
+	// <p>实例</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 模型服务名称
+	// <p>模型服务名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 访问路径
+	// <p>访问路径</p>
 	PubPath *string `json:"PubPath,omitnil,omitempty" name:"PubPath"`
 
-	// 模型ID列表
+	// <p>模型ID列表</p>
 	TargetModels []*TargetModelDTO `json:"TargetModels,omitnil,omitempty" name:"TargetModels"`
 
-	// 路径匹配类型: prefix 前缀匹配(不送默认); absolute 绝对匹配; regex正则匹配;
+	// <p>路径匹配类型: prefix 前缀匹配(不送默认); absolute 绝对匹配; regex正则匹配;</p>
 	PathMatchType *string `json:"PathMatchType,omitnil,omitempty" name:"PathMatchType"`
 
-	// 是否开启限流
+	// <p>是否开启限流</p>
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
-	// 限流配置
+	// <p>限流配置</p>
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
-	// 是否开启token控制
+	// <p>是否开启token控制</p>
 	TokenLimitStatus *bool `json:"TokenLimitStatus,omitnil,omitempty" name:"TokenLimitStatus"`
 
-	// token控制
+	// <p>token控制</p>
 	TokenLimitConfig *TokenLimitConfigDTO `json:"TokenLimitConfig,omitnil,omitempty" name:"TokenLimitConfig"`
 
-	// 是否开启内容安全
+	// <p>是否开启内容安全</p>
 	TmsStatus *bool `json:"TmsStatus,omitnil,omitempty" name:"TmsStatus"`
 
-	// 内容安全配置
+	// <p>内容安全配置</p>
 	TmsConfig *TmsConfigDTO `json:"TmsConfig,omitnil,omitempty" name:"TmsConfig"`
 
-	// 是否开启IP白名单
+	// <p>是否开启IP白名单</p>
 	IpWhiteStatus *bool `json:"IpWhiteStatus,omitnil,omitempty" name:"IpWhiteStatus"`
 
-	// IP白名单
+	// <p>IP白名单</p>
 	IpWhiteList []*string `json:"IpWhiteList,omitnil,omitempty" name:"IpWhiteList"`
 
-	// IP黑名单
+	// <p>IP黑名单</p>
 	IpBlackList []*string `json:"IpBlackList,omitnil,omitempty" name:"IpBlackList"`
 
-	// 插件配置
+	// <p>插件配置</p>
 	PluginConfigs []*PluginConfigDTO `json:"PluginConfigs,omitnil,omitempty" name:"PluginConfigs"`
 
-	// 超时配置，秒
+	// <p>超时配置，秒</p>
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 是否开启提示词安全检测
+	// <p>是否开启提示词安全检测</p>
 	PromptModerateStatus *bool `json:"PromptModerateStatus,omitnil,omitempty" name:"PromptModerateStatus"`
 
-	// 提示词安全检测配置
+	// <p>提示词安全检测配置</p>
 	PromptModerateConfig *PromptModerateConfigDTO `json:"PromptModerateConfig,omitnil,omitempty" name:"PromptModerateConfig"`
+
+	// <p>是否开启敏感数据检测</p>
+	SensitiveDataCheckStatus *bool `json:"SensitiveDataCheckStatus,omitnil,omitempty" name:"SensitiveDataCheckStatus"`
+
+	// <p>敏感数据检测配置</p>
+	SensitiveDataCheckConfig *SensitiveDataCheckConfigDTO `json:"SensitiveDataCheckConfig,omitnil,omitempty" name:"SensitiveDataCheckConfig"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -929,6 +941,8 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "Timeout")
 	delete(f, "PromptModerateStatus")
 	delete(f, "PromptModerateConfig")
+	delete(f, "SensitiveDataCheckStatus")
+	delete(f, "SensitiveDataCheckConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -937,7 +951,7 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateModelServiceResponseParams struct {
-	// 结果集
+	// <p>结果集</p>
 	Data *ResultIDVO `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2493,99 +2507,107 @@ func (r *DescribeModelServiceResponse) FromJsonString(s string) error {
 }
 
 type DescribeModelServiceResponseVO struct {
-	// 腾讯云AppID
+	// <p>腾讯云AppID</p>
 	AppID *int64 `json:"AppID,omitnil,omitempty" name:"AppID"`
 
-	// 腾讯云Uin
+	// <p>腾讯云Uin</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 模型ID
+	// <p>模型ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 模型名称
+	// <p>模型名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 访问路径
+	// <p>访问路径</p>
 	PubPath *string `json:"PubPath,omitnil,omitempty" name:"PubPath"`
 
-	// 路径匹配方式：absolute，prefix，regex
+	// <p>路径匹配方式：absolute，prefix，regex</p>
 	PathMatchType *string `json:"PathMatchType,omitnil,omitempty" name:"PathMatchType"`
 
-	// 目标模型列表
+	// <p>目标模型列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetModels []*TargetModelDTO `json:"TargetModels,omitnil,omitempty" name:"TargetModels"`
 
-	// 模板模型的名称列表
+	// <p>模板模型的名称列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelNames []*string `json:"ModelNames,omitnil,omitempty" name:"ModelNames"`
 
-	// 是否开启限流
+	// <p>是否开启限流</p>
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
-	// 限流配置
+	// <p>限流配置</p>
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 最后修改时间
+	// <p>最后修改时间</p>
 	LastUpdateTime *string `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
 
-	// 是否开启token控制
+	// <p>是否开启token控制</p>
 	TokenLimitStatus *bool `json:"TokenLimitStatus,omitnil,omitempty" name:"TokenLimitStatus"`
 
-	// token控制
+	// <p>token控制</p>
 	TokenLimitConfig *TokenLimitConfigDTO `json:"TokenLimitConfig,omitnil,omitempty" name:"TokenLimitConfig"`
 
-	// 是否开启tms配置
+	// <p>是否开启tms配置</p>
 	TmsStatus *bool `json:"TmsStatus,omitnil,omitempty" name:"TmsStatus"`
 
-	// tms配置
+	// <p>tms配置</p>
 	TmsConfig *TmsConfigDTO `json:"TmsConfig,omitnil,omitempty" name:"TmsConfig"`
 
-	// 是否开启IP白名单
+	// <p>是否开启IP白名单</p>
 	IpWhiteStatus *bool `json:"IpWhiteStatus,omitnil,omitempty" name:"IpWhiteStatus"`
 
-	// IP白名单列表
+	// <p>IP白名单列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpWhiteList []*string `json:"IpWhiteList,omitnil,omitempty" name:"IpWhiteList"`
 
-	// 是否开启IP黑名单
+	// <p>是否开启IP黑名单</p>
 	IpBlackStatus *bool `json:"IpBlackStatus,omitnil,omitempty" name:"IpBlackStatus"`
 
-	// IP黑名单列表
+	// <p>IP黑名单列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpBlackList []*string `json:"IpBlackList,omitnil,omitempty" name:"IpBlackList"`
 
-	// 插件配置
+	// <p>插件配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PluginConfigs []*PluginConfigDTO `json:"PluginConfigs,omitnil,omitempty" name:"PluginConfigs"`
 
-	// 超时配置，单位秒
+	// <p>超时配置，单位秒</p>
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 状态：normal，disabled
+	// <p>状态：normal，disabled</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 关联应用数
+	// <p>关联应用数</p>
 	RelateAgentAppNum *int64 `json:"RelateAgentAppNum,omitnil,omitempty" name:"RelateAgentAppNum"`
 
-	// 请求路径
+	// <p>请求路径</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 是否开启提示词安全检测
+	// <p>是否开启提示词安全检测</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PromptModerateStatus *bool `json:"PromptModerateStatus,omitnil,omitempty" name:"PromptModerateStatus"`
 
-	// 提示词安全检测配置
+	// <p>提示词安全检测配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PromptModerateConfig *PromptModerateConfigDTO `json:"PromptModerateConfig,omitnil,omitempty" name:"PromptModerateConfig"`
+
+	// <p>是否开启敏感数据检测</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SensitiveDataCheckStatus *bool `json:"SensitiveDataCheckStatus,omitnil,omitempty" name:"SensitiveDataCheckStatus"`
+
+	// <p>敏感数据检测配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SensitiveDataCheckConfig *SensitiveDataCheckConfigDTO `json:"SensitiveDataCheckConfig,omitnil,omitempty" name:"SensitiveDataCheckConfig"`
 }
 
 // Predefined struct for user
@@ -3599,123 +3621,135 @@ func (r *ModifyModelResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyModelServiceRequestParams struct {
-	// 实例
+	// <p>实例</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 模型服务ID
+	// <p>模型服务ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 模型服务名称
+	// <p>模型服务名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 模板模型列表
+	// <p>模板模型列表</p>
 	TargetModels []*TargetModelDTO `json:"TargetModels,omitnil,omitempty" name:"TargetModels"`
 
-	// 是否开启限流
+	// <p>是否开启限流</p>
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
-	// 限流配置
+	// <p>限流配置</p>
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
-	// 是否开启token控制
+	// <p>是否开启token控制</p>
 	TokenLimitStatus *bool `json:"TokenLimitStatus,omitnil,omitempty" name:"TokenLimitStatus"`
 
-	// token控制
+	// <p>token控制</p>
 	TokenLimitConfig *TokenLimitConfigDTO `json:"TokenLimitConfig,omitnil,omitempty" name:"TokenLimitConfig"`
 
-	// 是否开启内容安全
+	// <p>是否开启内容安全</p>
 	TmsStatus *bool `json:"TmsStatus,omitnil,omitempty" name:"TmsStatus"`
 
-	// 内容安全配置
+	// <p>内容安全配置</p>
 	TmsConfig *TmsConfigDTO `json:"TmsConfig,omitnil,omitempty" name:"TmsConfig"`
 
-	// 是否开启IP白名单
+	// <p>是否开启IP白名单</p>
 	IpWhiteStatus *bool `json:"IpWhiteStatus,omitnil,omitempty" name:"IpWhiteStatus"`
 
-	// IP白名单
+	// <p>IP白名单</p>
 	IpWhiteList []*string `json:"IpWhiteList,omitnil,omitempty" name:"IpWhiteList"`
 
-	// 是否开启IP黑名单
+	// <p>是否开启IP黑名单</p>
 	IpBlackStatus *bool `json:"IpBlackStatus,omitnil,omitempty" name:"IpBlackStatus"`
 
-	// IP黑名单
+	// <p>IP黑名单</p>
 	IpBlackList []*string `json:"IpBlackList,omitnil,omitempty" name:"IpBlackList"`
 
-	// 插件配置
+	// <p>插件配置</p>
 	PluginConfigs []*PluginConfigDTO `json:"PluginConfigs,omitnil,omitempty" name:"PluginConfigs"`
 
-	// 超时配置，秒
+	// <p>超时配置，秒</p>
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 是否开启提示词安全检测配置
+	// <p>是否开启提示词安全检测配置</p>
 	PromptModerateStatus *bool `json:"PromptModerateStatus,omitnil,omitempty" name:"PromptModerateStatus"`
 
-	// 提示词安全检测配置
+	// <p>提示词安全检测配置</p>
 	PromptModerateConfig *PromptModerateConfigDTO `json:"PromptModerateConfig,omitnil,omitempty" name:"PromptModerateConfig"`
+
+	// <p>是否开启敏感数据检测</p>
+	SensitiveDataCheckStatus *bool `json:"SensitiveDataCheckStatus,omitnil,omitempty" name:"SensitiveDataCheckStatus"`
+
+	// <p>敏感数据检测配置</p>
+	SensitiveDataCheckConfig *SensitiveDataCheckConfigDTO `json:"SensitiveDataCheckConfig,omitnil,omitempty" name:"SensitiveDataCheckConfig"`
 }
 
 type ModifyModelServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例
+	// <p>实例</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 模型服务ID
+	// <p>模型服务ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 模型服务名称
+	// <p>模型服务名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 模板模型列表
+	// <p>模板模型列表</p>
 	TargetModels []*TargetModelDTO `json:"TargetModels,omitnil,omitempty" name:"TargetModels"`
 
-	// 是否开启限流
+	// <p>是否开启限流</p>
 	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
 
-	// 限流配置
+	// <p>限流配置</p>
 	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
 
-	// 是否开启token控制
+	// <p>是否开启token控制</p>
 	TokenLimitStatus *bool `json:"TokenLimitStatus,omitnil,omitempty" name:"TokenLimitStatus"`
 
-	// token控制
+	// <p>token控制</p>
 	TokenLimitConfig *TokenLimitConfigDTO `json:"TokenLimitConfig,omitnil,omitempty" name:"TokenLimitConfig"`
 
-	// 是否开启内容安全
+	// <p>是否开启内容安全</p>
 	TmsStatus *bool `json:"TmsStatus,omitnil,omitempty" name:"TmsStatus"`
 
-	// 内容安全配置
+	// <p>内容安全配置</p>
 	TmsConfig *TmsConfigDTO `json:"TmsConfig,omitnil,omitempty" name:"TmsConfig"`
 
-	// 是否开启IP白名单
+	// <p>是否开启IP白名单</p>
 	IpWhiteStatus *bool `json:"IpWhiteStatus,omitnil,omitempty" name:"IpWhiteStatus"`
 
-	// IP白名单
+	// <p>IP白名单</p>
 	IpWhiteList []*string `json:"IpWhiteList,omitnil,omitempty" name:"IpWhiteList"`
 
-	// 是否开启IP黑名单
+	// <p>是否开启IP黑名单</p>
 	IpBlackStatus *bool `json:"IpBlackStatus,omitnil,omitempty" name:"IpBlackStatus"`
 
-	// IP黑名单
+	// <p>IP黑名单</p>
 	IpBlackList []*string `json:"IpBlackList,omitnil,omitempty" name:"IpBlackList"`
 
-	// 插件配置
+	// <p>插件配置</p>
 	PluginConfigs []*PluginConfigDTO `json:"PluginConfigs,omitnil,omitempty" name:"PluginConfigs"`
 
-	// 超时配置，秒
+	// <p>超时配置，秒</p>
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 是否开启提示词安全检测配置
+	// <p>是否开启提示词安全检测配置</p>
 	PromptModerateStatus *bool `json:"PromptModerateStatus,omitnil,omitempty" name:"PromptModerateStatus"`
 
-	// 提示词安全检测配置
+	// <p>提示词安全检测配置</p>
 	PromptModerateConfig *PromptModerateConfigDTO `json:"PromptModerateConfig,omitnil,omitempty" name:"PromptModerateConfig"`
+
+	// <p>是否开启敏感数据检测</p>
+	SensitiveDataCheckStatus *bool `json:"SensitiveDataCheckStatus,omitnil,omitempty" name:"SensitiveDataCheckStatus"`
+
+	// <p>敏感数据检测配置</p>
+	SensitiveDataCheckConfig *SensitiveDataCheckConfigDTO `json:"SensitiveDataCheckConfig,omitnil,omitempty" name:"SensitiveDataCheckConfig"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -3749,6 +3783,8 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "Timeout")
 	delete(f, "PromptModerateStatus")
 	delete(f, "PromptModerateConfig")
+	delete(f, "SensitiveDataCheckStatus")
+	delete(f, "SensitiveDataCheckConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}
@@ -3757,7 +3793,7 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyModelServiceResponseParams struct {
-	// 结果集
+	// <p>结果集</p>
 	Data *ResultIDVO `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3836,6 +3872,20 @@ type ResultIDsVO struct {
 	// 结果ID数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IDs []*string `json:"IDs,omitnil,omitempty" name:"IDs"`
+}
+
+type SensitiveDataCheckConfigDTO struct {
+	// <p>执行动作</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// <p>响应拦截内容</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InterceptMessage *string `json:"InterceptMessage,omitnil,omitempty" name:"InterceptMessage"`
+
+	// <p>检测项</p><p>枚举值：</p><ul><li>birthday： 生日</li><li>email： 邮箱</li><li>identity_number： 身份证</li><li>phone_number： 电话号码</li><li>secret： 秘钥</li><li>password： 密码</li><li>private_key： 私钥</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckItems []*string `json:"CheckItems,omitnil,omitempty" name:"CheckItems"`
 }
 
 type StartEndTime struct {

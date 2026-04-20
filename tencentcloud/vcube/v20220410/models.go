@@ -206,80 +206,86 @@ func (r *CreateActivityLicenseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateApplicationAndBindLicenseRequestParams struct {
-	// 应用名
+	// <p>应用名</p>
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// 应用ID
+	// <p>应用ID</p>
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
-	// 包名
+	// <p>包名</p>
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
-	// 资源包ID
+	// <p>鸿蒙包包名</p>
+	BundleName *string `json:"BundleName,omitnil,omitempty" name:"BundleName"`
+
+	// <p>资源包ID</p>
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 营业执照
+	// <p>营业执照</p>
 	CompanyPermit *string `json:"CompanyPermit,omitnil,omitempty" name:"CompanyPermit"`
 
-	// 公司类型
+	// <p>公司类型</p>
 	CompanyType *string `json:"CompanyType,omitnil,omitempty" name:"CompanyType"`
 
-	// 公司名称
+	// <p>公司名称</p>
 	CompanyName *string `json:"CompanyName,omitnil,omitempty" name:"CompanyName"`
 
-	// 优图资源id列表
+	// <p>优图资源id列表</p>
 	XMagicResourceIds []*string `json:"XMagicResourceIds,omitnil,omitempty" name:"XMagicResourceIds"`
 
-	// Mac 进程名
+	// <p>Mac 进程名</p>
 	MacBundleId *string `json:"MacBundleId,omitnil,omitempty" name:"MacBundleId"`
 
-	// Windows 进程名
+	// <p>Windows 进程名</p>
 	WinProcessName *string `json:"WinProcessName,omitnil,omitempty" name:"WinProcessName"`
 
-	// 要开通的域名列表
+	// <p>要开通的域名列表</p>
 	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 
-	// 要开通的端，web/mobile/pc
+	// <p>要开通的端，web/mobile/pc</p>
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 }
 
 type CreateApplicationAndBindLicenseRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用名
+	// <p>应用名</p>
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// 应用ID
+	// <p>应用ID</p>
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
-	// 包名
+	// <p>包名</p>
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
-	// 资源包ID
+	// <p>鸿蒙包包名</p>
+	BundleName *string `json:"BundleName,omitnil,omitempty" name:"BundleName"`
+
+	// <p>资源包ID</p>
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 营业执照
+	// <p>营业执照</p>
 	CompanyPermit *string `json:"CompanyPermit,omitnil,omitempty" name:"CompanyPermit"`
 
-	// 公司类型
+	// <p>公司类型</p>
 	CompanyType *string `json:"CompanyType,omitnil,omitempty" name:"CompanyType"`
 
-	// 公司名称
+	// <p>公司名称</p>
 	CompanyName *string `json:"CompanyName,omitnil,omitempty" name:"CompanyName"`
 
-	// 优图资源id列表
+	// <p>优图资源id列表</p>
 	XMagicResourceIds []*string `json:"XMagicResourceIds,omitnil,omitempty" name:"XMagicResourceIds"`
 
-	// Mac 进程名
+	// <p>Mac 进程名</p>
 	MacBundleId *string `json:"MacBundleId,omitnil,omitempty" name:"MacBundleId"`
 
-	// Windows 进程名
+	// <p>Windows 进程名</p>
 	WinProcessName *string `json:"WinProcessName,omitnil,omitempty" name:"WinProcessName"`
 
-	// 要开通的域名列表
+	// <p>要开通的域名列表</p>
 	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 
-	// 要开通的端，web/mobile/pc
+	// <p>要开通的端，web/mobile/pc</p>
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 }
 
@@ -298,6 +304,7 @@ func (r *CreateApplicationAndBindLicenseRequest) FromJsonString(s string) error 
 	delete(f, "AppName")
 	delete(f, "BundleId")
 	delete(f, "PackageName")
+	delete(f, "BundleName")
 	delete(f, "ResourceIds")
 	delete(f, "CompanyPermit")
 	delete(f, "CompanyType")
@@ -622,86 +629,92 @@ func (r *CreateTestXMagicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTrialApplicationAndLicenseRequestParams struct {
-	// 应用名
+	// <p>应用名</p>
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// 应用ID
+	// <p>应用ID</p>
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
-	// 包名
+	// <p>包名</p>
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
-	// 功能 id 数组
+	// <p>鸿蒙包包名</p>
+	BundleName *string `json:"BundleName,omitnil,omitempty" name:"BundleName"`
+
+	// <p>功能 id 数组</p>
 	FeatureIds []*int64 `json:"FeatureIds,omitnil,omitempty" name:"FeatureIds"`
 
-	// 是否要开通优图功能
+	// <p>是否要开通优图功能</p>
 	XMagic *bool `json:"XMagic,omitnil,omitempty" name:"XMagic"`
 
-	// 营业执照
+	// <p>营业执照</p>
 	CompanyPermit *string `json:"CompanyPermit,omitnil,omitempty" name:"CompanyPermit"`
 
-	// 公司类型
+	// <p>公司类型</p>
 	CompanyType *string `json:"CompanyType,omitnil,omitempty" name:"CompanyType"`
 
-	// 公司名称
+	// <p>公司名称</p>
 	CompanyName *string `json:"CompanyName,omitnil,omitempty" name:"CompanyName"`
 
-	// 要开通的测试功能名称，基础套餐只能有一个
+	// <p>要开通的测试功能名称，基础套餐只能有一个</p>
 	PlanList []*string `json:"PlanList,omitnil,omitempty" name:"PlanList"`
 
-	// Mac 进程名
+	// <p>Mac 进程名</p>
 	MacBundleId *string `json:"MacBundleId,omitnil,omitempty" name:"MacBundleId"`
 
-	// Windows 进程名
+	// <p>Windows 进程名</p>
 	WinProcessName *string `json:"WinProcessName,omitnil,omitempty" name:"WinProcessName"`
 
-	// 要创建到哪个平台，web、mobile、pc，默认mobile
+	// <p>要创建到哪个平台，web、mobile、pc，默认mobile</p>
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
-	// 授权域名列表
+	// <p>授权域名列表</p>
 	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 }
 
 type CreateTrialApplicationAndLicenseRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用名
+	// <p>应用名</p>
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
-	// 应用ID
+	// <p>应用ID</p>
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
-	// 包名
+	// <p>包名</p>
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
-	// 功能 id 数组
+	// <p>鸿蒙包包名</p>
+	BundleName *string `json:"BundleName,omitnil,omitempty" name:"BundleName"`
+
+	// <p>功能 id 数组</p>
 	FeatureIds []*int64 `json:"FeatureIds,omitnil,omitempty" name:"FeatureIds"`
 
-	// 是否要开通优图功能
+	// <p>是否要开通优图功能</p>
 	XMagic *bool `json:"XMagic,omitnil,omitempty" name:"XMagic"`
 
-	// 营业执照
+	// <p>营业执照</p>
 	CompanyPermit *string `json:"CompanyPermit,omitnil,omitempty" name:"CompanyPermit"`
 
-	// 公司类型
+	// <p>公司类型</p>
 	CompanyType *string `json:"CompanyType,omitnil,omitempty" name:"CompanyType"`
 
-	// 公司名称
+	// <p>公司名称</p>
 	CompanyName *string `json:"CompanyName,omitnil,omitempty" name:"CompanyName"`
 
-	// 要开通的测试功能名称，基础套餐只能有一个
+	// <p>要开通的测试功能名称，基础套餐只能有一个</p>
 	PlanList []*string `json:"PlanList,omitnil,omitempty" name:"PlanList"`
 
-	// Mac 进程名
+	// <p>Mac 进程名</p>
 	MacBundleId *string `json:"MacBundleId,omitnil,omitempty" name:"MacBundleId"`
 
-	// Windows 进程名
+	// <p>Windows 进程名</p>
 	WinProcessName *string `json:"WinProcessName,omitnil,omitempty" name:"WinProcessName"`
 
-	// 要创建到哪个平台，web、mobile、pc，默认mobile
+	// <p>要创建到哪个平台，web、mobile、pc，默认mobile</p>
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
-	// 授权域名列表
+	// <p>授权域名列表</p>
 	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 }
 
@@ -720,6 +733,7 @@ func (r *CreateTrialApplicationAndLicenseRequest) FromJsonString(s string) error
 	delete(f, "AppName")
 	delete(f, "BundleId")
 	delete(f, "PackageName")
+	delete(f, "BundleName")
 	delete(f, "FeatureIds")
 	delete(f, "XMagic")
 	delete(f, "CompanyPermit")

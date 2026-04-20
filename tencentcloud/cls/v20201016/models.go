@@ -11179,18 +11179,14 @@ func (r *DescribeKafkaConsumerPreviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeKafkaConsumerRequestParams struct {
-	// 日志主题Id。
-	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	// <p>日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
 	FromTopicId *string `json:"FromTopicId,omitnil,omitempty" name:"FromTopicId"`
 }
 
 type DescribeKafkaConsumerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志主题Id。
-	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	// <p>日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
 	FromTopicId *string `json:"FromTopicId,omitnil,omitempty" name:"FromTopicId"`
 }
 
@@ -11215,17 +11211,23 @@ func (r *DescribeKafkaConsumerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeKafkaConsumerResponseParams struct {
-	// Kafka协议消费是否打开
+	// <p>Kafka协议消费是否打开</p>
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// KafkaConsumer 消费时使用的Topic参数
+	// <p>KafkaConsumer 消费时使用的Topic参数</p>
 	TopicID *string `json:"TopicID,omitnil,omitempty" name:"TopicID"`
 
-	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+	// <p>压缩方式[0:NONE；2:SNAPPY；3:LZ4]</p>
 	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
 
-	// kafka协议消费数据格式
+	// <p>kafka协议消费数据格式</p>
 	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitnil,omitempty" name:"ConsumerContent"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// <p>消费范围类型，0:最新，1:历史+最新</p>
+	ScopeType *uint64 `json:"ScopeType,omitnil,omitempty" name:"ScopeType"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -17630,31 +17632,39 @@ func (r *ModifyKafkaConsumerGroupOffsetResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type ModifyKafkaConsumerRequestParams struct {
-	// 日志主题Id。
-	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	// <p>日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
 	FromTopicId *string `json:"FromTopicId,omitnil,omitempty" name:"FromTopicId"`
 
-	// 压缩方式。0：不压缩；2：使用Snappy压缩；3：使用LZ4压缩
+	// <p>压缩方式。0：不压缩；2：使用Snappy压缩；3：使用LZ4压缩</p>
 	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
 
-	// kafka协议消费数据格式
+	// <p>kafka协议消费数据格式</p>
 	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitnil,omitempty" name:"ConsumerContent"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// <p>消费范围类型，0:最新，1:历史+最新</p>
+	ScopeType *uint64 `json:"ScopeType,omitnil,omitempty" name:"ScopeType"`
 }
 
 type ModifyKafkaConsumerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志主题Id。
-	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	// <p>日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
 	FromTopicId *string `json:"FromTopicId,omitnil,omitempty" name:"FromTopicId"`
 
-	// 压缩方式。0：不压缩；2：使用Snappy压缩；3：使用LZ4压缩
+	// <p>压缩方式。0：不压缩；2：使用Snappy压缩；3：使用LZ4压缩</p>
 	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
 
-	// kafka协议消费数据格式
+	// <p>kafka协议消费数据格式</p>
 	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitnil,omitempty" name:"ConsumerContent"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// <p>消费范围类型，0:最新，1:历史+最新</p>
+	ScopeType *uint64 `json:"ScopeType,omitnil,omitempty" name:"ScopeType"`
 }
 
 func (r *ModifyKafkaConsumerRequest) ToJsonString() string {
@@ -17672,6 +17682,8 @@ func (r *ModifyKafkaConsumerRequest) FromJsonString(s string) error {
 	delete(f, "FromTopicId")
 	delete(f, "Compression")
 	delete(f, "ConsumerContent")
+	delete(f, "HasServicesLog")
+	delete(f, "ScopeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyKafkaConsumerRequest has unknown keys!", "")
 	}
@@ -19590,31 +19602,39 @@ func (r *OpenClawServiceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type OpenKafkaConsumerRequestParams struct {
-	// 日志主题Id。
-	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	// <p>日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
 	FromTopicId *string `json:"FromTopicId,omitnil,omitempty" name:"FromTopicId"`
 
-	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]，默认：0
+	// <p>压缩方式[0:NONE；2:SNAPPY；3:LZ4]，默认：0</p>
 	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
 
-	// kafka协议消费数据格式
+	// <p>kafka协议消费数据格式</p>
 	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitnil,omitempty" name:"ConsumerContent"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。 默认值：2</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// <p>消费范围类型，0:最新；1:历史+最新；默认值:0</p>
+	ScopeType *uint64 `json:"ScopeType,omitnil,omitempty" name:"ScopeType"`
 }
 
 type OpenKafkaConsumerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志主题Id。
-	// - 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-	// - 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+	// <p>日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
 	FromTopicId *string `json:"FromTopicId,omitnil,omitempty" name:"FromTopicId"`
 
-	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]，默认：0
+	// <p>压缩方式[0:NONE；2:SNAPPY；3:LZ4]，默认：0</p>
 	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
 
-	// kafka协议消费数据格式
+	// <p>kafka协议消费数据格式</p>
 	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitnil,omitempty" name:"ConsumerContent"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。 默认值：2</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// <p>消费范围类型，0:最新；1:历史+最新；默认值:0</p>
+	ScopeType *uint64 `json:"ScopeType,omitnil,omitempty" name:"ScopeType"`
 }
 
 func (r *OpenKafkaConsumerRequest) ToJsonString() string {
@@ -19632,6 +19652,8 @@ func (r *OpenKafkaConsumerRequest) FromJsonString(s string) error {
 	delete(f, "FromTopicId")
 	delete(f, "Compression")
 	delete(f, "ConsumerContent")
+	delete(f, "HasServicesLog")
+	delete(f, "ScopeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenKafkaConsumerRequest has unknown keys!", "")
 	}
@@ -19640,7 +19662,7 @@ func (r *OpenKafkaConsumerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type OpenKafkaConsumerResponseParams struct {
-	// KafkaConsumer 消费时使用的Topic参数
+	// <p>KafkaConsumer 消费时使用的Topic参数</p>
 	TopicID *string `json:"TopicID,omitnil,omitempty" name:"TopicID"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

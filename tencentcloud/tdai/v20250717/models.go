@@ -82,41 +82,62 @@ type AgentDutyTask struct {
 }
 
 type AgentInstance struct {
-	// 智能体实例ID
+	// <p>智能体实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 智能体实例名称
+	// <p>智能体实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 智能体ID
+	// <p>智能体ID</p>
 	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
 
-	// 智能体名称
+	// <p>智能体名称</p>
 	AgentName *string `json:"AgentName,omitnil,omitempty" name:"AgentName"`
 
-	// 智能体类型
+	// <p>智能体类型</p>
 	AgentInternalName *string `json:"AgentInternalName,omitnil,omitempty" name:"AgentInternalName"`
 
-	// 智能体服务模式
+	// <p>智能体服务模式</p>
 	AgentType *string `json:"AgentType,omitnil,omitempty" name:"AgentType"`
 
-	// 智能体版本
+	// <p>智能体版本</p>
 	AgentVersion *string `json:"AgentVersion,omitnil,omitempty" name:"AgentVersion"`
 
-	// 智能体实例状态
+	// <p>智能体实例状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 智能体实例参数列表
+	// <p>智能体实例参数列表</p>
 	Parameters []*Parameter `json:"Parameters,omitnil,omitempty" name:"Parameters"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 修改时间
+	// <p>修改时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 资源绑定Tag列表
+	// <p>资源绑定Tag列表</p>
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>部署位置,intranet-共享版，userVpc-专享版</p>
+	DeployPlace *string `json:"DeployPlace,omitnil,omitempty" name:"DeployPlace"`
+
+	// <p>关联的告警策略ID。</p>
+	PolicyIds []*string `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
+
+	// <p>无</p>
+	ClawConfig *ClawConfigInfo `json:"ClawConfig,omitnil,omitempty" name:"ClawConfig"`
+
+	// <p>无</p>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>无</p>
+	AllowedActions []*string `json:"AllowedActions,omitnil,omitempty" name:"AllowedActions"`
+
+	// <p>无</p>
+	LastActiveTime *string `json:"LastActiveTime,omitnil,omitempty" name:"LastActiveTime"`
+
+	// <p>无</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type ChatBrief struct {
@@ -161,6 +182,28 @@ type ChatDetail struct {
 	// 助手消息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssistantMessage []*CreateChatCompletionRes `json:"AssistantMessage,omitnil,omitempty" name:"AssistantMessage"`
+}
+
+type ClawConfigInfo struct {
+	// <p>无</p>
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>无</p>
+	DbTypes []*string `json:"DbTypes,omitnil,omitempty" name:"DbTypes"`
+
+	// <p>无</p>
+	Deploy *ClawDeployInfo `json:"Deploy,omitnil,omitempty" name:"Deploy"`
+}
+
+type ClawDeployInfo struct {
+	// <p>无</p>
+	UserVpcId *string `json:"UserVpcId,omitnil,omitempty" name:"UserVpcId"`
+
+	// <p>无</p>
+	UserSubnetId *string `json:"UserSubnetId,omitnil,omitempty" name:"UserSubnetId"`
+
+	// <p>无</p>
+	UserVpcRegion *string `json:"UserVpcRegion,omitnil,omitempty" name:"UserVpcRegion"`
 }
 
 type CodeRepo struct {
@@ -257,6 +300,21 @@ type CreateAgentInstanceRequestParams struct {
 
 	// <p>资源的标签信息</p>
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>无</p>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>无</p>
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>无</p>
+	Skills []*string `json:"Skills,omitnil,omitempty" name:"Skills"`
+
+	// <p>无</p>
+	SoulId *int64 `json:"SoulId,omitnil,omitempty" name:"SoulId"`
+
+	// <p>无</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type CreateAgentInstanceRequest struct {
@@ -276,6 +334,21 @@ type CreateAgentInstanceRequest struct {
 
 	// <p>资源的标签信息</p>
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>无</p>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <p>无</p>
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>无</p>
+	Skills []*string `json:"Skills,omitnil,omitempty" name:"Skills"`
+
+	// <p>无</p>
+	SoulId *int64 `json:"SoulId,omitnil,omitempty" name:"SoulId"`
+
+	// <p>无</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *CreateAgentInstanceRequest) ToJsonString() string {
@@ -295,6 +368,11 @@ func (r *CreateAgentInstanceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceName")
 	delete(f, "Parameters")
 	delete(f, "Tags")
+	delete(f, "InstanceType")
+	delete(f, "TemplateId")
+	delete(f, "Skills")
+	delete(f, "SoulId")
+	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAgentInstanceRequest has unknown keys!", "")
 	}
@@ -656,26 +734,29 @@ type DescribeAgentInstancesRequestParams struct {
 	// 列表查询数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 实例ID，为空时查询所有，如果填写则会根据InstanceId筛选
+	// <p>实例ID，为空时查询所有，如果填写则会根据InstanceId筛选</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名，为空时查询所有，如果填写则会根据InstanceName筛选
+	// <p>实例名，为空时查询所有，如果填写则会根据InstanceName筛选</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 智能体ID，为空时查询所有，如果填写则会根据AgentId筛选
+	// <p>智能体ID，为空时查询所有，如果填写则会根据AgentId筛选</p>
 	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
 
-	// 智能体名称，为空时查询所有，如果填写则会根据AgentName筛选
+	// <p>智能体名称，为空时查询所有，如果填写则会根据AgentName筛选</p>
 	AgentName *string `json:"AgentName,omitnil,omitempty" name:"AgentName"`
 
-	// 智能体类型，为空时查询所有，如果填写则会根据AgentName筛选
+	// <p>智能体类型，为空时查询所有，如果填写则会根据AgentName筛选</p>
 	AgentInternalName *string `json:"AgentInternalName,omitnil,omitempty" name:"AgentInternalName"`
 
-	// 智能体实例状态，为空时查询所有，如果填写则会根据Status筛选
+	// <p>智能体实例状态，为空时查询所有，如果填写则会根据Status筛选</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 标签过滤信息
+	// <p>标签过滤信息</p>
 	TagFilter []*TagFilter `json:"TagFilter,omitnil,omitempty" name:"TagFilter"`
+
+	// <p>实例类型</p>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
 type DescribeAgentInstancesRequest struct {
@@ -687,26 +768,29 @@ type DescribeAgentInstancesRequest struct {
 	// 列表查询数量
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 实例ID，为空时查询所有，如果填写则会根据InstanceId筛选
+	// <p>实例ID，为空时查询所有，如果填写则会根据InstanceId筛选</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名，为空时查询所有，如果填写则会根据InstanceName筛选
+	// <p>实例名，为空时查询所有，如果填写则会根据InstanceName筛选</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 智能体ID，为空时查询所有，如果填写则会根据AgentId筛选
+	// <p>智能体ID，为空时查询所有，如果填写则会根据AgentId筛选</p>
 	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
 
-	// 智能体名称，为空时查询所有，如果填写则会根据AgentName筛选
+	// <p>智能体名称，为空时查询所有，如果填写则会根据AgentName筛选</p>
 	AgentName *string `json:"AgentName,omitnil,omitempty" name:"AgentName"`
 
-	// 智能体类型，为空时查询所有，如果填写则会根据AgentName筛选
+	// <p>智能体类型，为空时查询所有，如果填写则会根据AgentName筛选</p>
 	AgentInternalName *string `json:"AgentInternalName,omitnil,omitempty" name:"AgentInternalName"`
 
-	// 智能体实例状态，为空时查询所有，如果填写则会根据Status筛选
+	// <p>智能体实例状态，为空时查询所有，如果填写则会根据Status筛选</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 标签过滤信息
+	// <p>标签过滤信息</p>
 	TagFilter []*TagFilter `json:"TagFilter,omitnil,omitempty" name:"TagFilter"`
+
+	// <p>实例类型</p>
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
 func (r *DescribeAgentInstancesRequest) ToJsonString() string {
@@ -730,6 +814,7 @@ func (r *DescribeAgentInstancesRequest) FromJsonString(s string) error {
 	delete(f, "AgentInternalName")
 	delete(f, "Status")
 	delete(f, "TagFilter")
+	delete(f, "InstanceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentInstancesRequest has unknown keys!", "")
 	}
@@ -741,8 +826,11 @@ type DescribeAgentInstancesResponseParams struct {
 	// 查询结果总数量
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 智能体实例列表
+	// <p>智能体实例列表</p>
 	Items []*AgentInstance `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// <p>无</p>
+	StatusCounts []*StatusItem `json:"StatusCounts,omitnil,omitempty" name:"StatusCounts"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1585,6 +1673,14 @@ func (r *StartAgentTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StartAgentTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type StatusItem struct {
+	// <p>无</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>无</p>
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 
 type TagFilter struct {

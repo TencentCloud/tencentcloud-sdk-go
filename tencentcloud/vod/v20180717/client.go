@@ -1033,6 +1033,72 @@ func (c *Client) CreateAigcSubjectWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateAigcVideoRedrawTaskRequest() (request *CreateAigcVideoRedrawTaskRequest) {
+    request = &CreateAigcVideoRedrawTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateAigcVideoRedrawTask")
+    
+    
+    return
+}
+
+func NewCreateAigcVideoRedrawTaskResponse() (response *CreateAigcVideoRedrawTaskResponse) {
+    response = &CreateAigcVideoRedrawTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAigcVideoRedrawTask
+// 该接口用于[生成 AIGC 视频](https://cloud.tencent.com/document/product/266/124474)。<b>接口处于内测阶段，如需使用请[联系我们](https://cloud.tencent.com/online-service?from=sales_sales&source=PRESALE)，接口调用会产生实际费用</b>，请参考点播 [AIGC 生视频计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。该功能结算模式为[后付费](https://cloud.tencent.com/document/product/266/2838)，日结客户当天使用将在第二天出账，月结客户将在次月1日统一出上月使用费用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAigcVideoRedrawTask(request *CreateAigcVideoRedrawTaskRequest) (response *CreateAigcVideoRedrawTaskResponse, err error) {
+    return c.CreateAigcVideoRedrawTaskWithContext(context.Background(), request)
+}
+
+// CreateAigcVideoRedrawTask
+// 该接口用于[生成 AIGC 视频](https://cloud.tencent.com/document/product/266/124474)。<b>接口处于内测阶段，如需使用请[联系我们](https://cloud.tencent.com/online-service?from=sales_sales&source=PRESALE)，接口调用会产生实际费用</b>，请参考点播 [AIGC 生视频计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。该功能结算模式为[后付费](https://cloud.tencent.com/document/product/266/2838)，日结客户当天使用将在第二天出账，月结客户将在次月1日统一出上月使用费用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAigcVideoRedrawTaskWithContext(ctx context.Context, request *CreateAigcVideoRedrawTaskRequest) (response *CreateAigcVideoRedrawTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAigcVideoRedrawTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateAigcVideoRedrawTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAigcVideoRedrawTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAigcVideoRedrawTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAigcVideoTaskRequest() (request *CreateAigcVideoTaskRequest) {
     request = &CreateAigcVideoTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

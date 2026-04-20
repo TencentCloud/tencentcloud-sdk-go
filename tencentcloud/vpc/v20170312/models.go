@@ -38143,68 +38143,71 @@ type VpnConnection struct {
 }
 
 type VpnGateway struct {
-	// 网关实例ID。
+	// <p>网关实例ID。</p>
 	VpnGatewayId *string `json:"VpnGatewayId,omitnil,omitempty" name:"VpnGatewayId"`
 
-	// VPC实例ID。
+	// <p>VPC实例ID。</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 网关实例名称。
+	// <p>网关实例名称。</p>
 	VpnGatewayName *string `json:"VpnGatewayName,omitnil,omitempty" name:"VpnGatewayName"`
 
-	// 网关实例类型：'IPSEC', 'SSL','CCN','SSL_CCN'。
+	// <p>网关实例类型</p><p>枚举值：</p><ul><li>IPSEC： IPSEC VPC类型VPN</li><li>SSL： SSL VPC类型VPN</li><li>CCN： IPSEC CCN类型VPN</li><li>SSL_CCN： SSL CCN类型VPN</li></ul><p>默认值：IPSEC</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 网关实例状态， 'PENDING'：生产中，'PENDING_ERROR'：生产失败，'DELETING'：删除中，'DELETING_ERROR'：删除失败，'AVAILABLE'：运行中。
+	// <p>网关实例状态。</p><p>枚举值：</p><ul><li>PENDING： 生产中</li><li>PENDING_ERROR： 生产失败</li><li>DELETING： 删除中</li><li>DELETING_ERROR： 生产失败</li><li>AVAILABLE： 运行中</li></ul>
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 网关公网IP。
+	// <p>网关公网IP。</p>
 	PublicIpAddress *string `json:"PublicIpAddress,omitnil,omitempty" name:"PublicIpAddress"`
 
-	// 网关续费类型：'NOTIFY_AND_MANUAL_RENEW'：手动续费，'NOTIFY_AND_AUTO_RENEW'：自动续费，'NOT_NOTIFY_AND_NOT_RENEW'：到期不续费。
+	// <p>网关续费类型：&#39;NOTIFY_AND_MANUAL_RENEW&#39;：手动续费，&#39;NOTIFY_AND_AUTO_RENEW&#39;：自动续费，&#39;NOT_NOTIFY_AND_NOT_RENEW&#39;：到期不续费。</p>
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 网关付费类型：POSTPAID_BY_HOUR：按量计费，PREPAID：包年包月预付费。
+	// <p>网关付费类型：POSTPAID_BY_HOUR：按量计费，PREPAID：包年包月预付费。</p>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
-	// 网关出带宽，单位：Mbps。
+	// <p>网关出带宽</p><p>单位：Mbps</p>
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
-	// 创建时间。
+	// <p>创建时间。</p>
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 预付费网关过期时间。
+	// <p>预付费网关过期时间。</p>
 	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
-	// 公网IP是否被封堵。
+	// <p>公网IP是否被封堵。</p>
 	IsAddressBlocked *bool `json:"IsAddressBlocked,omitnil,omitempty" name:"IsAddressBlocked"`
 
-	// 计费模式变更，PREPAID_TO_POSTPAID：包年包月预付费到期转按小时后付费。
+	// <p>计费模式变更，PREPAID_TO_POSTPAID：包年包月预付费到期转按小时后付费。</p>
 	NewPurchasePlan *string `json:"NewPurchasePlan,omitnil,omitempty" name:"NewPurchasePlan"`
 
-	// 网关计费状态，PROTECTIVELY_ISOLATED：被安全隔离的实例，NORMAL：正常。
+	// <p>网关计费状态，PROTECTIVELY_ISOLATED：被安全隔离的实例，NORMAL：正常。</p>
 	RestrictState *string `json:"RestrictState,omitnil,omitempty" name:"RestrictState"`
 
-	// 可用区，如：ap-guangzhou-2。
+	// <p>可用区，如：ap-guangzhou-2。</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 网关带宽配额信息。
+	// <p>网关带宽配额信息。</p>
 	VpnGatewayQuotaSet []*VpnGatewayQuota `json:"VpnGatewayQuotaSet,omitnil,omitempty" name:"VpnGatewayQuotaSet"`
 
-	// 网关实例版本信息。
+	// <p>网关实例版本信息。</p>
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// Type值为CCN时，该值表示云联网实例ID。
+	// <p>Type值为CCN/SSL_CCN时，该值表示云联网实例ID。</p>
 	NetworkInstanceId *string `json:"NetworkInstanceId,omitnil,omitempty" name:"NetworkInstanceId"`
 
-	// CDC 实例ID。
+	// <p>CDC 实例ID。</p>
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 
-	// SSL-VPN 客户端连接数。
+	// <p>SSL-VPN 客户端连接数。</p>
 	MaxConnection *uint64 `json:"MaxConnection,omitnil,omitempty" name:"MaxConnection"`
 
-	// Bgp ASN
+	// <p>Bgp ASN</p>
 	BgpAsn *uint64 `json:"BgpAsn,omitnil,omitempty" name:"BgpAsn"`
+
+	// <p>标签列表</p>
+	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
 type VpnGatewayQuota struct {

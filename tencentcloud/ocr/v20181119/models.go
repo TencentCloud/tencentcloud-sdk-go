@@ -5158,36 +5158,32 @@ func (r *HandwritingEssayOCRResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type HmtResidentPermitOCRRequestParams struct {
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// FRONT：有照片的一面（人像面），
-	// BACK：无照片的一面（国徽面），
-	// 该参数如果不填或填错，将为您自动判断正反面。
+	// <p>FRONT：有照片的一面（人像面），<br>BACK：无照片的一面（国徽面），<br>该参数如果不填或填错，将为您自动判断正反面。</p>
 	CardSide *string `json:"CardSide,omitnil,omitempty" name:"CardSide"`
 
-	// 是否返回头像和位置坐标
+	// <p>是否返回头像和位置坐标</p>
 	CropPortrait *bool `json:"CropPortrait,omitnil,omitempty" name:"CropPortrait"`
 }
 
 type HmtResidentPermitOCRRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// FRONT：有照片的一面（人像面），
-	// BACK：无照片的一面（国徽面），
-	// 该参数如果不填或填错，将为您自动判断正反面。
+	// <p>FRONT：有照片的一面（人像面），<br>BACK：无照片的一面（国徽面），<br>该参数如果不填或填错，将为您自动判断正反面。</p>
 	CardSide *string `json:"CardSide,omitnil,omitempty" name:"CardSide"`
 
-	// 是否返回头像和位置坐标
+	// <p>是否返回头像和位置坐标</p>
 	CropPortrait *bool `json:"CropPortrait,omitnil,omitempty" name:"CropPortrait"`
 }
 
@@ -5215,38 +5211,37 @@ func (r *HmtResidentPermitOCRRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type HmtResidentPermitOCRResponseParams struct {
-	// 证件姓名
+	// <p>证件姓名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 性别
+	// <p>性别</p>
 	Sex *string `json:"Sex,omitnil,omitempty" name:"Sex"`
 
-	// 出生日期
+	// <p>出生日期</p>
 	Birth *string `json:"Birth,omitnil,omitempty" name:"Birth"`
 
-	// 地址
+	// <p>地址</p>
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
-	// 身份证号
+	// <p>身份证号</p>
 	IdCardNo *string `json:"IdCardNo,omitnil,omitempty" name:"IdCardNo"`
 
-	// 0-正面
-	// 1-反面
+	// <p>0-正面<br>1-反面</p>
 	CardType *int64 `json:"CardType,omitnil,omitempty" name:"CardType"`
 
-	// 证件有效期限
+	// <p>证件有效期限</p>
 	ValidDate *string `json:"ValidDate,omitnil,omitempty" name:"ValidDate"`
 
-	// 签发机关
+	// <p>签发机关</p>
 	Authority *string `json:"Authority,omitnil,omitempty" name:"Authority"`
 
-	// 签发次数
+	// <p>签发次数</p>
 	VisaNum *string `json:"VisaNum,omitnil,omitempty" name:"VisaNum"`
 
-	// 通行证号码
+	// <p>通行证号码</p>
 	PassNo *string `json:"PassNo,omitnil,omitempty" name:"PassNo"`
 
-	// 头像和坐标信息
+	// <p>头像和坐标信息</p>
 	PortraitImageInfo *PortraitImageInfo `json:"PortraitImageInfo,omitnil,omitempty" name:"PortraitImageInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6485,38 +6480,32 @@ type MachinePrintedInvoice struct {
 
 // Predefined struct for user
 type MainlandPermitOCRRequestParams struct {
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 是否返回头像。默认不返回。
+	// <p>是否返回头像。默认不返回。</p>
 	RetProfile *bool `json:"RetProfile,omitnil,omitempty" name:"RetProfile"`
 
-	// 图片正反面
-	// FRONT：正面
-	// BACK：反面 （仅支持来往内地通行证反面识别，不支持港澳台通行证反面识别）
-	// 默认为FRONT
+	// <p>图片正反面<br>FRONT：正面<br>BACK：反面 （仅支持来往内地通行证反面识别，不支持港澳台通行证反面识别）<br>默认为FRONT</p>
 	CardSide *string `json:"CardSide,omitnil,omitempty" name:"CardSide"`
 }
 
 type MainlandPermitOCRRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 是否返回头像。默认不返回。
+	// <p>是否返回头像。默认不返回。</p>
 	RetProfile *bool `json:"RetProfile,omitnil,omitempty" name:"RetProfile"`
 
-	// 图片正反面
-	// FRONT：正面
-	// BACK：反面 （仅支持来往内地通行证反面识别，不支持港澳台通行证反面识别）
-	// 默认为FRONT
+	// <p>图片正反面<br>FRONT：正面<br>BACK：反面 （仅支持来往内地通行证反面识别，不支持港澳台通行证反面识别）<br>默认为FRONT</p>
 	CardSide *string `json:"CardSide,omitnil,omitempty" name:"CardSide"`
 }
 
@@ -6544,43 +6533,43 @@ func (r *MainlandPermitOCRRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type MainlandPermitOCRResponseParams struct {
-	// 中文姓名
+	// <p>中文姓名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 英文姓名
+	// <p>英文姓名</p>
 	EnglishName *string `json:"EnglishName,omitnil,omitempty" name:"EnglishName"`
 
-	// 性别
+	// <p>性别</p>
 	Sex *string `json:"Sex,omitnil,omitempty" name:"Sex"`
 
-	// 出生日期
+	// <p>出生日期</p>
 	Birthday *string `json:"Birthday,omitnil,omitempty" name:"Birthday"`
 
-	// 签发机关
+	// <p>签发机关</p>
 	IssueAuthority *string `json:"IssueAuthority,omitnil,omitempty" name:"IssueAuthority"`
 
-	// 有效期限
+	// <p>有效期限</p>
 	ValidDate *string `json:"ValidDate,omitnil,omitempty" name:"ValidDate"`
 
-	// 证件号
+	// <p>证件号</p>
 	Number *string `json:"Number,omitnil,omitempty" name:"Number"`
 
-	// 签发地点
+	// <p>签发地点</p>
 	IssueAddress *string `json:"IssueAddress,omitnil,omitempty" name:"IssueAddress"`
 
-	// 签发次数
+	// <p>签发次数</p>
 	IssueNumber *string `json:"IssueNumber,omitnil,omitempty" name:"IssueNumber"`
 
-	// 证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证、往来港澳通行证。
+	// <p>证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证、往来港澳通行证。</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// RetProfile为True时返回头像字段， Base64编码
+	// <p>RetProfile为True时返回头像字段， Base64编码</p>
 	Profile *string `json:"Profile,omitnil,omitempty" name:"Profile"`
 
-	// 国籍
+	// <p>国籍</p>
 	Nationality *string `json:"Nationality,omitnil,omitempty" name:"Nationality"`
 
-	// 背面字段信息
+	// <p>背面字段信息</p>
 	MainlandTravelPermitBackInfos *MainlandTravelPermitBackInfos `json:"MainlandTravelPermitBackInfos,omitnil,omitempty" name:"MainlandTravelPermitBackInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

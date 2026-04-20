@@ -543,6 +543,62 @@ func (c *Client) CreateVideoEncodingPresetWithContext(ctx context.Context, reque
     return
 }
 
+func NewDeleteAccountRequest() (request *DeleteAccountRequest) {
+    request = &DeleteAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cme", APIVersion, "DeleteAccount")
+    
+    
+    return
+}
+
+func NewDeleteAccountResponse() (response *DeleteAccountResponse) {
+    response = &DeleteAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAccount
+// 删除平台归属的账户。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteAccount(request *DeleteAccountRequest) (response *DeleteAccountResponse, err error) {
+    return c.DeleteAccountWithContext(context.Background(), request)
+}
+
+// DeleteAccount
+// 删除平台归属的账户。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteAccountWithContext(ctx context.Context, request *DeleteAccountRequest) (response *DeleteAccountResponse, err error) {
+    if request == nil {
+        request = NewDeleteAccountRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "DeleteAccount")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteClassRequest() (request *DeleteClassRequest) {
     request = &DeleteClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2255,6 +2311,62 @@ func (c *Client) FlattenListMediaWithContext(ctx context.Context, request *Flatt
     request.SetContext(ctx)
     
     response = NewFlattenListMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewForbidAccountRequest() (request *ForbidAccountRequest) {
+    request = &ForbidAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cme", APIVersion, "ForbidAccount")
+    
+    
+    return
+}
+
+func NewForbidAccountResponse() (response *ForbidAccountResponse) {
+    response = &ForbidAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ForbidAccount
+// 禁用账号。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ForbidAccount(request *ForbidAccountRequest) (response *ForbidAccountResponse, err error) {
+    return c.ForbidAccountWithContext(context.Background(), request)
+}
+
+// ForbidAccount
+// 禁用账号。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ForbidAccountWithContext(ctx context.Context, request *ForbidAccountRequest) (response *ForbidAccountResponse, err error) {
+    if request == nil {
+        request = NewForbidAccountRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cme", APIVersion, "ForbidAccount")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ForbidAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewForbidAccountResponse()
     err = c.Send(request, response)
     return
 }

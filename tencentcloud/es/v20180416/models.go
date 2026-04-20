@@ -51,25 +51,28 @@ type AutoScaleDiskInfo struct {
 }
 
 type BackingIndexMetaField struct {
-	// 后备索引名
+	// <p>后备索引名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
 
-	// 后备索引状态
+	// <p>后备索引状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexStatus *string `json:"IndexStatus,omitnil,omitempty" name:"IndexStatus"`
 
-	// 后备索引存储大小
+	// <p>后备索引存储大小</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexStorage *int64 `json:"IndexStorage,omitnil,omitempty" name:"IndexStorage"`
 
-	// 后备索引当前生命周期
+	// <p>后备索引当前生命周期</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexPhrase *string `json:"IndexPhrase,omitnil,omitempty" name:"IndexPhrase"`
 
-	// 后备索引创建时间
+	// <p>后备索引创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexCreateTime *string `json:"IndexCreateTime,omitnil,omitempty" name:"IndexCreateTime"`
+
+	// <p>索引Uuid</p>
+	IndexUuid *string `json:"IndexUuid,omitnil,omitempty" name:"IndexUuid"`
 }
 
 // Predefined struct for user
@@ -5035,33 +5038,42 @@ type IndexMetaField struct {
 }
 
 type IndexOptionsField struct {
-	// 过期时间
+	// <p>过期时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireMaxAge *string `json:"ExpireMaxAge,omitnil,omitempty" name:"ExpireMaxAge"`
 
-	// 过期大小
+	// <p>过期大小</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireMaxSize *string `json:"ExpireMaxSize,omitnil,omitempty" name:"ExpireMaxSize"`
 
-	// 滚动周期
+	// <p>滚动周期</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RolloverMaxAge *string `json:"RolloverMaxAge,omitnil,omitempty" name:"RolloverMaxAge"`
 
-	// 是否开启动态滚动
+	// <p>是否开启动态滚动</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RolloverDynamic *string `json:"RolloverDynamic,omitnil,omitempty" name:"RolloverDynamic"`
 
-	// 是否开启动态分片
+	// <p>是否开启动态分片</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShardNumDynamic *string `json:"ShardNumDynamic,omitnil,omitempty" name:"ShardNumDynamic"`
 
-	// 时间分区字段
+	// <p>时间分区字段</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimestampField *string `json:"TimestampField,omitnil,omitempty" name:"TimestampField"`
 
-	// 写入模式
+	// <p>写入模式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WriteMode *string `json:"WriteMode,omitnil,omitempty" name:"WriteMode"`
+
+	// <p>是否开启完全卸载</p><p>枚举值：</p><ul><li>true： 开启完全卸载</li><li>false： 关闭完全卸载</li></ul>
+	FullOffloadedEnable *string `json:"FullOffloadedEnable,omitnil,omitempty" name:"FullOffloadedEnable"`
+
+	// <p>完全卸载生命周期</p>
+	FullOffloadedMaxAge *string `json:"FullOffloadedMaxAge,omitnil,omitempty" name:"FullOffloadedMaxAge"`
+
+	// <p>完全卸载后备索引取回后生命周期</p>
+	FullOffloadedRetrieveMaxAge *string `json:"FullOffloadedRetrieveMaxAge,omitnil,omitempty" name:"FullOffloadedRetrieveMaxAge"`
 }
 
 type IndexPolicyField struct {
@@ -7954,51 +7966,69 @@ func (r *UpdateDictionariesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateIndexRequestParams struct {
-	// ES集群ID
+	// <p>ES集群ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 更新的索引类型。auto：自治索引；normal：普通索引
+	// <p>更新的索引类型。auto：自治索引；normal：普通索引</p>
 	IndexType *string `json:"IndexType,omitnil,omitempty" name:"IndexType"`
 
-	// 更新的索引名
+	// <p>更新的索引名</p>
 	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
 
-	// 更新的索引元数据JSON，如mappings、settings
+	// <p>更新的索引元数据JSON，如mappings、settings</p>
 	UpdateMetaJson *string `json:"UpdateMetaJson,omitnil,omitempty" name:"UpdateMetaJson"`
 
-	// 集群访问用户名
+	// <p>集群访问用户名</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 集群访问密码
+	// <p>集群访问密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 是否滚动后备索引
+	// <p>是否滚动后备索引</p>
 	RolloverBackingIndex *bool `json:"RolloverBackingIndex,omitnil,omitempty" name:"RolloverBackingIndex"`
+
+	// <p>是否为取回完全卸载索引</p>
+	MountIndex *bool `json:"MountIndex,omitnil,omitempty" name:"MountIndex"`
+
+	// <p>索引Uuid</p>
+	IndexUuid *string `json:"IndexUuid,omitnil,omitempty" name:"IndexUuid"`
+
+	// <p>后备索引名</p>
+	BackingIndexName *string `json:"BackingIndexName,omitnil,omitempty" name:"BackingIndexName"`
 }
 
 type UpdateIndexRequest struct {
 	*tchttp.BaseRequest
 	
-	// ES集群ID
+	// <p>ES集群ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 更新的索引类型。auto：自治索引；normal：普通索引
+	// <p>更新的索引类型。auto：自治索引；normal：普通索引</p>
 	IndexType *string `json:"IndexType,omitnil,omitempty" name:"IndexType"`
 
-	// 更新的索引名
+	// <p>更新的索引名</p>
 	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
 
-	// 更新的索引元数据JSON，如mappings、settings
+	// <p>更新的索引元数据JSON，如mappings、settings</p>
 	UpdateMetaJson *string `json:"UpdateMetaJson,omitnil,omitempty" name:"UpdateMetaJson"`
 
-	// 集群访问用户名
+	// <p>集群访问用户名</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 集群访问密码
+	// <p>集群访问密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 是否滚动后备索引
+	// <p>是否滚动后备索引</p>
 	RolloverBackingIndex *bool `json:"RolloverBackingIndex,omitnil,omitempty" name:"RolloverBackingIndex"`
+
+	// <p>是否为取回完全卸载索引</p>
+	MountIndex *bool `json:"MountIndex,omitnil,omitempty" name:"MountIndex"`
+
+	// <p>索引Uuid</p>
+	IndexUuid *string `json:"IndexUuid,omitnil,omitempty" name:"IndexUuid"`
+
+	// <p>后备索引名</p>
+	BackingIndexName *string `json:"BackingIndexName,omitnil,omitempty" name:"BackingIndexName"`
 }
 
 func (r *UpdateIndexRequest) ToJsonString() string {
@@ -8020,6 +8050,9 @@ func (r *UpdateIndexRequest) FromJsonString(s string) error {
 	delete(f, "Username")
 	delete(f, "Password")
 	delete(f, "RolloverBackingIndex")
+	delete(f, "MountIndex")
+	delete(f, "IndexUuid")
+	delete(f, "BackingIndexName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateIndexRequest has unknown keys!", "")
 	}

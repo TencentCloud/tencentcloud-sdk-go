@@ -3795,6 +3795,66 @@ func (r *DescribeProductSKUListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSharedSubscriptionGroupsRequestParams struct {
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeSharedSubscriptionGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeSharedSubscriptionGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSharedSubscriptionGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSharedSubscriptionGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSharedSubscriptionGroupsResponseParams struct {
+	// 集群下共享订阅组列表
+	Data []*SharedGroup `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 	查询总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSharedSubscriptionGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSharedSubscriptionGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeSharedSubscriptionGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSharedSubscriptionGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSharedSubscriptionLagRequestParams struct {
 	// 集群id	
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -6163,6 +6223,31 @@ func (r *RevokedDeviceCertificateResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RevokedDeviceCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SharedGroup struct {
+	// 腾讯云MQTT实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 共享订阅组名
+	SharedName *string `json:"SharedName,omitnil,omitempty" name:"SharedName"`
+
+	// 共享组消费负载均衡策略 1.RANDOM 2.HASH_PARTITION
+	LbStrategy *int64 `json:"LbStrategy,omitnil,omitempty" name:"LbStrategy"`
+
+	// HASH_PARTITION 策略下生效，表示Client掉线或新Client上线加入共享订阅组消费的延迟时间。
+	// 范围：0～600秒
+	ExpiryInterval *int64 `json:"ExpiryInterval,omitnil,omitempty" name:"ExpiryInterval"`
+
+	// 备注，长度不超过128个字符。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 创建时间，毫秒级时间戳 。
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 上次更新时间，毫秒级时间戳 。
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type SubscriptionUserProperty struct {

@@ -40104,40 +40104,48 @@ func (r *SuspendIntegrationTaskResponse) FromJsonString(s string) error {
 }
 
 type SystemRole struct {
-	// 角色id
+	// <p>角色id</p>
 	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
-	// 角色名称
+	// <p>角色名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 角色昵称
+	// <p>角色昵称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NameCn *string `json:"NameCn,omitnil,omitempty" name:"NameCn"`
 
-	// 描述
+	// <p>描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 角色权限
+	// <p>角色权限</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Privileges []*RolePrivilege `json:"Privileges,omitnil,omitempty" name:"Privileges"`
 
-	// 方法路径
+	// <p>方法路径</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MethodPaths []*string `json:"MethodPaths,omitnil,omitempty" name:"MethodPaths"`
 
-	// 角色类型, 分为System,Tenant,Project,Commercial
+	// <p>角色类型, 分为System,Tenant,Project,Commercial</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleType *string `json:"RoleType,omitnil,omitempty" name:"RoleType"`
 
-	// 是否系统默认
+	// <p>是否系统默认</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SystemInit *bool `json:"SystemInit,omitnil,omitempty" name:"SystemInit"`
 
-	// 自定义参数
+	// <p>自定义参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Params *string `json:"Params,omitnil,omitempty" name:"Params"`
+
+	// <p>创建时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTimeStr *string `json:"CreateTimeStr,omitnil,omitempty" name:"CreateTimeStr"`
+
+	// <p>创建人</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 }
 
 type Table struct {

@@ -7166,51 +7166,57 @@ func (r *CreateStreamPackageLinearAssemblyChannelResponse) FromJsonString(s stri
 
 // Predefined struct for user
 type CreateStreamPackageLinearAssemblyProgramRequestParams struct {
-	// Program名称。
+	// <p>Program名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 绑定的channel。
+	// <p>绑定的channel。</p>
 	AttachedChannel *string `json:"AttachedChannel,omitnil,omitempty" name:"AttachedChannel"`
 
-	// 编排的目标source的类型，分直播Live和点播VOD。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD
+	// <p>编排的目标source的类型，分直播Live和点播VOD。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD</p>
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// 关联的source location。
+	// <p>关联的source location。</p>
 	SourceLocationId *string `json:"SourceLocationId,omitnil,omitempty" name:"SourceLocationId"`
 
-	// 关联的直播or点播，source名称，location下全局唯一。
+	// <p>关联的直播or点播，source名称，location下全局唯一。</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// PlaybackConf。
+	// <p>PlaybackConf。</p>
 	PlaybackConf *PlaybackInfoReq `json:"PlaybackConf,omitnil,omitempty" name:"PlaybackConf"`
 
-	// AdBreaks，只有source类型为Vod时有效。
+	// <p>AdBreaks，只有source类型为Vod时有效。</p>
 	AdBreaks []*AdBreakInfo `json:"AdBreaks,omitnil,omitempty" name:"AdBreaks"`
+
+	// <p>VOD获取方式，支持PreCaching和DynamicUpdating，默认PreCaching，仅Linear频道支持</p>
+	VodAcquisitionMethod *string `json:"VodAcquisitionMethod,omitnil,omitempty" name:"VodAcquisitionMethod"`
 }
 
 type CreateStreamPackageLinearAssemblyProgramRequest struct {
 	*tchttp.BaseRequest
 	
-	// Program名称。
+	// <p>Program名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 绑定的channel。
+	// <p>绑定的channel。</p>
 	AttachedChannel *string `json:"AttachedChannel,omitnil,omitempty" name:"AttachedChannel"`
 
-	// 编排的目标source的类型，分直播Live和点播VOD。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD
+	// <p>编排的目标source的类型，分直播Live和点播VOD。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD</p>
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// 关联的source location。
+	// <p>关联的source location。</p>
 	SourceLocationId *string `json:"SourceLocationId,omitnil,omitempty" name:"SourceLocationId"`
 
-	// 关联的直播or点播，source名称，location下全局唯一。
+	// <p>关联的直播or点播，source名称，location下全局唯一。</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// PlaybackConf。
+	// <p>PlaybackConf。</p>
 	PlaybackConf *PlaybackInfoReq `json:"PlaybackConf,omitnil,omitempty" name:"PlaybackConf"`
 
-	// AdBreaks，只有source类型为Vod时有效。
+	// <p>AdBreaks，只有source类型为Vod时有效。</p>
 	AdBreaks []*AdBreakInfo `json:"AdBreaks,omitnil,omitempty" name:"AdBreaks"`
+
+	// <p>VOD获取方式，支持PreCaching和DynamicUpdating，默认PreCaching，仅Linear频道支持</p>
+	VodAcquisitionMethod *string `json:"VodAcquisitionMethod,omitnil,omitempty" name:"VodAcquisitionMethod"`
 }
 
 func (r *CreateStreamPackageLinearAssemblyProgramRequest) ToJsonString() string {
@@ -7232,6 +7238,7 @@ func (r *CreateStreamPackageLinearAssemblyProgramRequest) FromJsonString(s strin
 	delete(f, "SourceName")
 	delete(f, "PlaybackConf")
 	delete(f, "AdBreaks")
+	delete(f, "VodAcquisitionMethod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStreamPackageLinearAssemblyProgramRequest has unknown keys!", "")
 	}
@@ -7240,7 +7247,7 @@ func (r *CreateStreamPackageLinearAssemblyProgramRequest) FromJsonString(s strin
 
 // Predefined struct for user
 type CreateStreamPackageLinearAssemblyProgramResponseParams struct {
-	// channel信息。
+	// <p>channel信息。</p>
 	Info *LinearAssemblyProgramInfo `json:"Info,omitnil,omitempty" name:"Info"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18196,38 +18203,41 @@ type LinearAssemblyChannelInfo struct {
 }
 
 type LinearAssemblyProgramInfo struct {
-	// program名称。
+	// <p>program名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 编排的目标source的类型，分直播和点播。
+	// <p>编排的目标source的类型，分直播和点播。</p>
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// 关联的source location id。
+	// <p>关联的source location id。</p>
 	SourceLocationId *string `json:"SourceLocationId,omitnil,omitempty" name:"SourceLocationId"`
 
-	// SourceId，唯一标识一个source。
+	// <p>SourceId，唯一标识一个source。</p>
 	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
 
-	// 关联的直播or点播，source名称，location下全局唯一。
+	// <p>关联的直播or点播，source名称，location下全局唯一。</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// 绑定的channel。
+	// <p>绑定的channel。</p>
 	AttachedChannel *string `json:"AttachedChannel,omitnil,omitempty" name:"AttachedChannel"`
 
-	// 播放配置。
+	// <p>播放配置。</p>
 	PlaybackConf *PlaybackInfo `json:"PlaybackConf,omitnil,omitempty" name:"PlaybackConf"`
 
-	// AdBreaks。
+	// <p>AdBreaks。</p>
 	AdBreaks []*AdBreakInfo `json:"AdBreaks,omitnil,omitempty" name:"AdBreaks"`
 
-	// Id。
+	// <p>Id。</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// Region。
+	// <p>Region。</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// SourceLocation名称。
+	// <p>SourceLocation名称。</p>
 	SourceLocationName *string `json:"SourceLocationName,omitnil,omitempty" name:"SourceLocationName"`
+
+	// <p>VOD获取方式，支持PreCaching和DynamicUpdating，默认PreCaching，仅Linear频道支持</p>
+	VodAcquisitionMethod *string `json:"VodAcquisitionMethod,omitnil,omitempty" name:"VodAcquisitionMethod"`
 }
 
 type LiveActivityResItem struct {
@@ -22255,51 +22265,57 @@ func (r *ModifyStreamPackageLinearAssemblyChannelResponse) FromJsonString(s stri
 
 // Predefined struct for user
 type ModifyStreamPackageLinearAssemblyProgramRequestParams struct {
-	// Program Id。
+	// <p>Program Id。</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 修改后的名称。
+	// <p>修改后的名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 编排的目标source的类型，分直播和点播。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD
+	// <p>编排的目标source的类型，分直播和点播。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD</p>
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// 关联的source location。	
+	// <p>关联的source location。</p>
 	SourceLocationId *string `json:"SourceLocationId,omitnil,omitempty" name:"SourceLocationId"`
 
-	// 关联的直播or点播，source名称，location下全局唯一。
+	// <p>关联的直播or点播，source名称，location下全局唯一。</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// PlaybackConf。
+	// <p>PlaybackConf。</p>
 	PlaybackConf *PlaybackInfoReq `json:"PlaybackConf,omitnil,omitempty" name:"PlaybackConf"`
 
-	// AdBreaks。
+	// <p>AdBreaks。</p>
 	AdBreaks []*AdBreakInfo `json:"AdBreaks,omitnil,omitempty" name:"AdBreaks"`
+
+	// <p>VOD获取方式，支持PreCaching和DynamicUpdating，默认PreCaching，仅Linear频道支持</p>
+	VodAcquisitionMethod *string `json:"VodAcquisitionMethod,omitnil,omitempty" name:"VodAcquisitionMethod"`
 }
 
 type ModifyStreamPackageLinearAssemblyProgramRequest struct {
 	*tchttp.BaseRequest
 	
-	// Program Id。
+	// <p>Program Id。</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 修改后的名称。
+	// <p>修改后的名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 编排的目标source的类型，分直播和点播。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD
+	// <p>编排的目标source的类型，分直播和点播。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD</p>
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// 关联的source location。	
+	// <p>关联的source location。</p>
 	SourceLocationId *string `json:"SourceLocationId,omitnil,omitempty" name:"SourceLocationId"`
 
-	// 关联的直播or点播，source名称，location下全局唯一。
+	// <p>关联的直播or点播，source名称，location下全局唯一。</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// PlaybackConf。
+	// <p>PlaybackConf。</p>
 	PlaybackConf *PlaybackInfoReq `json:"PlaybackConf,omitnil,omitempty" name:"PlaybackConf"`
 
-	// AdBreaks。
+	// <p>AdBreaks。</p>
 	AdBreaks []*AdBreakInfo `json:"AdBreaks,omitnil,omitempty" name:"AdBreaks"`
+
+	// <p>VOD获取方式，支持PreCaching和DynamicUpdating，默认PreCaching，仅Linear频道支持</p>
+	VodAcquisitionMethod *string `json:"VodAcquisitionMethod,omitnil,omitempty" name:"VodAcquisitionMethod"`
 }
 
 func (r *ModifyStreamPackageLinearAssemblyProgramRequest) ToJsonString() string {
@@ -22321,6 +22337,7 @@ func (r *ModifyStreamPackageLinearAssemblyProgramRequest) FromJsonString(s strin
 	delete(f, "SourceName")
 	delete(f, "PlaybackConf")
 	delete(f, "AdBreaks")
+	delete(f, "VodAcquisitionMethod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStreamPackageLinearAssemblyProgramRequest has unknown keys!", "")
 	}

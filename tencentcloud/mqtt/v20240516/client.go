@@ -2445,6 +2445,60 @@ func (c *Client) DescribeProductSKUListWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeSharedSubscriptionGroupsRequest() (request *DescribeSharedSubscriptionGroupsRequest) {
+    request = &DescribeSharedSubscriptionGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeSharedSubscriptionGroups")
+    
+    
+    return
+}
+
+func NewDescribeSharedSubscriptionGroupsResponse() (response *DescribeSharedSubscriptionGroupsResponse) {
+    response = &DescribeSharedSubscriptionGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSharedSubscriptionGroups
+// 查询集群下共享订阅组列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeSharedSubscriptionGroups(request *DescribeSharedSubscriptionGroupsRequest) (response *DescribeSharedSubscriptionGroupsResponse, err error) {
+    return c.DescribeSharedSubscriptionGroupsWithContext(context.Background(), request)
+}
+
+// DescribeSharedSubscriptionGroups
+// 查询集群下共享订阅组列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeSharedSubscriptionGroupsWithContext(ctx context.Context, request *DescribeSharedSubscriptionGroupsRequest) (response *DescribeSharedSubscriptionGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSharedSubscriptionGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mqtt", APIVersion, "DescribeSharedSubscriptionGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSharedSubscriptionGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSharedSubscriptionGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSharedSubscriptionLagRequest() (request *DescribeSharedSubscriptionLagRequest) {
     request = &DescribeSharedSubscriptionLagRequest{
         BaseRequest: &tchttp.BaseRequest{},

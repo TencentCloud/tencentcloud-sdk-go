@@ -19373,8 +19373,8 @@ type ModifyOriginParameters struct {
 	// <li>当 OriginType = IPDomain 时，该参数请填写 IPV4、IPV6 地址或域名；</li>
 	// <li>当 OriginType = COS 时，该参数请填写 COS 桶的访问域名；</li>
 	// <li>当 OriginType = AWSS3，该参数请填写 S3 桶的访问域名；</li>
-	// <li>当 OriginType = OriginGroup 时，该参数请填写源站组 ID；</li>
-	// <li>当 OriginType = LoadBalance 时，该参数请填写负载均衡实例 ID，该功能当前仅白名单开放。</li>
+	// <li>当 OriginType = OriginGroup 时，该参数请填写源站组 ID；当为出参的时候，如果引用了其它站点的源站组，格式为{源站组 ID}@{ZoneID}。例如：og-testorigin@zone-38moq1z10wwwy；</li>
+	// <li>当 OriginType = LoadBalance 时，该参数请填写负载均衡实例 ID，该功能当前仅白名单开放；当为出参的时候，如果引用了其它站点的负载均衡，格式为{负载均衡 ID}@{ZoneID}。例如：lb-2rxpamcyqfzg@zone-38moq1z10wwwy。</li>
 	Origin *string `json:"Origin,omitnil,omitempty" name:"Origin"`
 
 	// 回源协议配置。当 OriginType 取值为 IPDomain、OriginGroup、LoadBalance 时该参数必填。取值有：
@@ -22401,6 +22401,7 @@ type RuleEngineAction struct {
 	// <li>ClientIPCountry：回源时携带客户端 IP 所属地域信息；</li>
 	// <li>UpstreamFollowRedirect：回源跟随重定向参数配置；</li>
 	// <li>UpstreamRequest：回源请求参数；</li>
+	// <li>Shield：源站卸载配置；</li>
 	// <li>TLSConfig：SSL/TLS 安全；</li>
 	// <li>ModifyOrigin：修改源站；</li>
 	// <li>HTTPUpstreamTimeout：七层回源超时配置；</li>
@@ -22518,6 +22519,10 @@ type RuleEngineAction struct {
 	// 回源请求参数配置参数，当 Name 取值为 UpstreamRequest 时，该参数必填。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamRequestParameters *UpstreamRequestParameters `json:"UpstreamRequestParameters,omitnil,omitempty" name:"UpstreamRequestParameters"`
+
+	// 源站卸载配置参数，当 Name 取值为 Shield 时，该参数必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShieldParameters *ShieldParameters `json:"ShieldParameters,omitnil,omitempty" name:"ShieldParameters"`
 
 	// SSL/TLS 安全配置参数，当 Name 取值为 TLSConfig 时，该参数必填。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -22979,6 +22984,11 @@ type SharedCNAMEInfo struct {
 
 	// 加入该共享CNAME的加速域名列表。当加入的域名数量超过100个时，只返回前100个加速域名。
 	AccelerationDomains []*ReferenceHolder `json:"AccelerationDomains,omitnil,omitempty" name:"AccelerationDomains"`
+}
+
+type ShieldParameters struct {
+	// 源站卸载空间 ID。
+	ShieldSpaceId *string `json:"ShieldSpaceId,omitnil,omitempty" name:"ShieldSpaceId"`
 }
 
 type SkipCondition struct {

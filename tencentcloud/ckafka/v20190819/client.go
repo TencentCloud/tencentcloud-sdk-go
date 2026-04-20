@@ -641,7 +641,7 @@ func NewCreateConnectResourceResponse() (response *CreateConnectResourceResponse
 }
 
 // CreateConnectResource
-// 创建Datahub连接源
+// 创建连接器连接
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -657,7 +657,7 @@ func (c *Client) CreateConnectResource(request *CreateConnectResourceRequest) (r
 }
 
 // CreateConnectResource
-// 创建Datahub连接源
+// 创建连接器连接
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -767,7 +767,7 @@ func NewCreateDatahubTaskResponse() (response *CreateDatahubTaskResponse) {
 }
 
 // CreateDatahubTask
-// 创建DIP转储任务
+// 创建连接器任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -784,7 +784,7 @@ func (c *Client) CreateDatahubTask(request *CreateDatahubTaskRequest) (response 
 }
 
 // CreateDatahubTask
-// 创建DIP转储任务
+// 创建连接器任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1745,7 +1745,7 @@ func NewDeleteConnectResourceResponse() (response *DeleteConnectResourceResponse
 }
 
 // DeleteConnectResource
-// 删除Datahub连接源
+// 删除连接器连接
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1761,7 +1761,7 @@ func (c *Client) DeleteConnectResource(request *DeleteConnectResourceRequest) (r
 }
 
 // DeleteConnectResource
-// 删除Datahub连接源
+// 删除连接器连接
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1809,7 +1809,7 @@ func NewDeleteDatahubTaskResponse() (response *DeleteDatahubTaskResponse) {
 }
 
 // DeleteDatahubTask
-// 删除Dip任务
+// 删除连接器任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1823,7 +1823,7 @@ func (c *Client) DeleteDatahubTask(request *DeleteDatahubTaskRequest) (response 
 }
 
 // DeleteDatahubTask
-// 删除Dip任务
+// 删除连接器任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2631,6 +2631,90 @@ func (c *Client) DescribeACLWithContext(ctx context.Context, request *DescribeAC
     return
 }
 
+func NewDescribeAccessPolicyRequest() (request *DescribeAccessPolicyRequest) {
+    request = &DescribeAccessPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "DescribeAccessPolicy")
+    
+    
+    return
+}
+
+func NewDescribeAccessPolicyResponse() (response *DescribeAccessPolicyResponse) {
+    response = &DescribeAccessPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAccessPolicy
+// 查询实例公网IP白名单列表接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAccessPolicy(request *DescribeAccessPolicyRequest) (response *DescribeAccessPolicyResponse, err error) {
+    return c.DescribeAccessPolicyWithContext(context.Background(), request)
+}
+
+// DescribeAccessPolicy
+// 查询实例公网IP白名单列表接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAccessPolicyWithContext(ctx context.Context, request *DescribeAccessPolicyRequest) (response *DescribeAccessPolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "DescribeAccessPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccessPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAclRuleRequest() (request *DescribeAclRuleRequest) {
     request = &DescribeAclRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2855,7 +2939,7 @@ func NewDescribeConnectResourceResponse() (response *DescribeConnectResourceResp
 }
 
 // DescribeConnectResource
-// 查询Datahub连接源
+// 查询连接器连接详情
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2871,7 +2955,7 @@ func (c *Client) DescribeConnectResource(request *DescribeConnectResourceRequest
 }
 
 // DescribeConnectResource
-// 查询Datahub连接源
+// 查询连接器连接详情
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2919,7 +3003,7 @@ func NewDescribeConnectResourcesResponse() (response *DescribeConnectResourcesRe
 }
 
 // DescribeConnectResources
-// 查询Datahub连接源列表
+// 查询连接器连接列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2935,7 +3019,7 @@ func (c *Client) DescribeConnectResources(request *DescribeConnectResourcesReque
 }
 
 // DescribeConnectResources
-// 查询Datahub连接源列表
+// 查询连接器连接列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3197,7 +3281,7 @@ func NewDescribeDatahubTaskResponse() (response *DescribeDatahubTaskResponse) {
 }
 
 // DescribeDatahubTask
-// 查询Datahub任务信息
+// 查询连接器任务详情
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3210,7 +3294,7 @@ func (c *Client) DescribeDatahubTask(request *DescribeDatahubTaskRequest) (respo
 }
 
 // DescribeDatahubTask
-// 查询Datahub任务信息
+// 查询连接器任务详情
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3255,7 +3339,7 @@ func NewDescribeDatahubTasksResponse() (response *DescribeDatahubTasksResponse) 
 }
 
 // DescribeDatahubTasks
-// 查询Datahub任务列表
+// 查询连接器任务列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3270,7 +3354,7 @@ func (c *Client) DescribeDatahubTasks(request *DescribeDatahubTasksRequest) (res
 }
 
 // DescribeDatahubTasks
-// 查询Datahub任务列表
+// 查询连接器任务列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5395,6 +5479,88 @@ func (c *Client) InstanceScalingDownWithContext(ctx context.Context, request *In
     return
 }
 
+func NewModifyAccessPolicyRequest() (request *ModifyAccessPolicyRequest) {
+    request = &ModifyAccessPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "ModifyAccessPolicy")
+    
+    
+    return
+}
+
+func NewModifyAccessPolicyResponse() (response *ModifyAccessPolicyResponse) {
+    response = &ModifyAccessPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAccessPolicy
+// 修改实例公网IP白名单列表接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAccessPolicy(request *ModifyAccessPolicyRequest) (response *ModifyAccessPolicyResponse, err error) {
+    return c.ModifyAccessPolicyWithContext(context.Background(), request)
+}
+
+// ModifyAccessPolicy
+// 修改实例公网IP白名单列表接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAccessPolicyWithContext(ctx context.Context, request *ModifyAccessPolicyRequest) (response *ModifyAccessPolicyResponse, err error) {
+    if request == nil {
+        request = NewModifyAccessPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "ModifyAccessPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAccessPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAccessPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAclRuleRequest() (request *ModifyAclRuleRequest) {
     request = &ModifyAclRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5473,7 +5639,7 @@ func NewModifyConnectResourceResponse() (response *ModifyConnectResourceResponse
 }
 
 // ModifyConnectResource
-// 编辑Datahub连接源
+// 编辑连接器连接
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5489,7 +5655,7 @@ func (c *Client) ModifyConnectResource(request *ModifyConnectResourceRequest) (r
 }
 
 // ModifyConnectResource
-// 编辑Datahub连接源
+// 编辑连接器连接
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5537,7 +5703,7 @@ func NewModifyDatahubTaskResponse() (response *ModifyDatahubTaskResponse) {
 }
 
 // ModifyDatahubTask
-// 修改Datahub任务
+// 修改连接器任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5552,7 +5718,7 @@ func (c *Client) ModifyDatahubTask(request *ModifyDatahubTaskRequest) (response 
 }
 
 // ModifyDatahubTask
-// 修改Datahub任务
+// 修改连接器任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6131,7 +6297,7 @@ func NewPauseDatahubTaskResponse() (response *PauseDatahubTaskResponse) {
 }
 
 // PauseDatahubTask
-// 暂停Dip任务
+// 暂停连接器任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6145,7 +6311,7 @@ func (c *Client) PauseDatahubTask(request *PauseDatahubTaskRequest) (response *P
 }
 
 // PauseDatahubTask
-// 暂停Dip任务
+// 暂停连接器任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6249,7 +6415,7 @@ func NewRestartDatahubTaskResponse() (response *RestartDatahubTaskResponse) {
 }
 
 // RestartDatahubTask
-// Datahub任务异常时，重启Datahub任务
+// 连接器任务异常时，重启连接器任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6263,7 +6429,7 @@ func (c *Client) RestartDatahubTask(request *RestartDatahubTaskRequest) (respons
 }
 
 // RestartDatahubTask
-// Datahub任务异常时，重启Datahub任务
+// 连接器任务异常时，重启连接器任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6309,7 +6475,7 @@ func NewResumeDatahubTaskResponse() (response *ResumeDatahubTaskResponse) {
 }
 
 // ResumeDatahubTask
-// 恢复Dip任务
+// 恢复连接器任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6322,7 +6488,7 @@ func (c *Client) ResumeDatahubTask(request *ResumeDatahubTaskRequest) (response 
 }
 
 // ResumeDatahubTask
-// 恢复Dip任务
+// 恢复连接器任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
