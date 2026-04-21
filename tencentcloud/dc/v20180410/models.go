@@ -322,32 +322,35 @@ type Coordinate struct {
 }
 
 type CreateCasInput struct {
-	// 敏捷上云名称
+	// <p>敏捷上云名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 需要接入敏捷上云的IDC的地址
+	// <p>需要接入敏捷上云的IDC的地址</p>
 	IdcAddress *string `json:"IdcAddress,omitnil,omitempty" name:"IdcAddress"`
 
-	// 需要接入敏捷上云的IDC的互联网服务提供商类型
+	// <p>需要接入敏捷上云的IDC的互联网服务提供商类型</p>
 	IdcType *string `json:"IdcType,omitnil,omitempty" name:"IdcType"`
 
-	// 敏捷上云的带宽，单位为MB
+	// <p>敏捷上云的带宽，单位为MB</p>
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
-	// 联系电话
+	// <p>联系电话</p>
 	Telephone *string `json:"Telephone,omitnil,omitempty" name:"Telephone"`
 
-	// 备注信息
+	// <p>备注信息</p>
 	Remarks *string `json:"Remarks,omitnil,omitempty" name:"Remarks"`
 
-	// 接入地域
+	// <p>接入地域</p>
 	ArRegion *string `json:"ArRegion,omitnil,omitempty" name:"ArRegion"`
 
-	// IDC侧类型，默认为OTHER。枚举值：CLOUD-云，ISP-运营商，OTHER-第三方
+	// <p>IDC侧类型，默认为OTHER。枚举值：CLOUD-云，ISP-运营商，OTHER-第三方</p>
 	IdcPointType *string `json:"IdcPointType,omitnil,omitempty" name:"IdcPointType"`
 
-	// 运营商链路是否有保护
+	// <p>运营商链路是否有保护</p>
 	BIapLinkProtected *bool `json:"BIapLinkProtected,omitnil,omitempty" name:"BIapLinkProtected"`
+
+	// <p>服务类型，SHARE-共享型，EXCLUSIVE-独占型</p>
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 }
 
 // Predefined struct for user

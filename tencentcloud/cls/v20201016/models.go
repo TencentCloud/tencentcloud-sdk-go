@@ -19514,6 +19514,9 @@ type NoticeRule struct {
 type OpenClawServiceRequestParams struct {
 	// <p>标签类型</p><p>枚举值：</p><ul><li>OpenClaw： OpenClaw类型</li><li>ClawPro： ClawPro类型</li></ul>
 	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// <p>是否创建 trace 主题，默认为 false</p><p>枚举值：</p><ul><li>true： 创建trace 主题</li><li>false： 不创建trace 主题</li></ul>
+	EnableTrace *bool `json:"EnableTrace,omitnil,omitempty" name:"EnableTrace"`
 }
 
 type OpenClawServiceRequest struct {
@@ -19521,6 +19524,9 @@ type OpenClawServiceRequest struct {
 	
 	// <p>标签类型</p><p>枚举值：</p><ul><li>OpenClaw： OpenClaw类型</li><li>ClawPro： ClawPro类型</li></ul>
 	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// <p>是否创建 trace 主题，默认为 false</p><p>枚举值：</p><ul><li>true： 创建trace 主题</li><li>false： 不创建trace 主题</li></ul>
+	EnableTrace *bool `json:"EnableTrace,omitnil,omitempty" name:"EnableTrace"`
 }
 
 func (r *OpenClawServiceRequest) ToJsonString() string {
@@ -19536,6 +19542,7 @@ func (r *OpenClawServiceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Tag")
+	delete(f, "EnableTrace")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenClawServiceRequest has unknown keys!", "")
 	}
@@ -19579,6 +19586,12 @@ type OpenClawServiceResponseParams struct {
 
 	// <p>采集配置名称。会话日志</p>
 	SessionLogConfigName *string `json:"SessionLogConfigName,omitnil,omitempty" name:"SessionLogConfigName"`
+
+	// <p>trace 主题 ID</p>
+	TraceTopicId *string `json:"TraceTopicId,omitnil,omitempty" name:"TraceTopicId"`
+
+	// <p>trace 主题名称</p>
+	TraceTopicName *string `json:"TraceTopicName,omitnil,omitempty" name:"TraceTopicName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

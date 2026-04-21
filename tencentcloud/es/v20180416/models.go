@@ -1888,45 +1888,51 @@ func (r *DeleteClusterSnapshotResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteIndexRequestParams struct {
-	// ES集群ID
+	// <p>ES集群ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 删除的索引类型。auto：自治索引；normal：普通索引
+	// <p>删除的索引类型。auto：自治索引；normal：普通索引</p>
 	IndexType *string `json:"IndexType,omitnil,omitempty" name:"IndexType"`
 
-	// 删除的索引名
+	// <p>删除的索引名</p>
 	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
 
-	// 集群访问用户名
+	// <p>集群访问用户名</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 集群访问密码
+	// <p>集群访问密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 后备索引名
+	// <p>后备索引名</p>
 	BackingIndexName *string `json:"BackingIndexName,omitnil,omitempty" name:"BackingIndexName"`
+
+	// <p>索引生命阶段</p>
+	IndexPhrase *string `json:"IndexPhrase,omitnil,omitempty" name:"IndexPhrase"`
 }
 
 type DeleteIndexRequest struct {
 	*tchttp.BaseRequest
 	
-	// ES集群ID
+	// <p>ES集群ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 删除的索引类型。auto：自治索引；normal：普通索引
+	// <p>删除的索引类型。auto：自治索引；normal：普通索引</p>
 	IndexType *string `json:"IndexType,omitnil,omitempty" name:"IndexType"`
 
-	// 删除的索引名
+	// <p>删除的索引名</p>
 	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
 
-	// 集群访问用户名
+	// <p>集群访问用户名</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 集群访问密码
+	// <p>集群访问密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 后备索引名
+	// <p>后备索引名</p>
 	BackingIndexName *string `json:"BackingIndexName,omitnil,omitempty" name:"BackingIndexName"`
+
+	// <p>索引生命阶段</p>
+	IndexPhrase *string `json:"IndexPhrase,omitnil,omitempty" name:"IndexPhrase"`
 }
 
 func (r *DeleteIndexRequest) ToJsonString() string {
@@ -1947,6 +1953,7 @@ func (r *DeleteIndexRequest) FromJsonString(s string) error {
 	delete(f, "Username")
 	delete(f, "Password")
 	delete(f, "BackingIndexName")
+	delete(f, "IndexPhrase")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteIndexRequest has unknown keys!", "")
 	}
@@ -6721,6 +6728,108 @@ func (r *QueryIpTraceLogResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryIpTraceLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RequestInstancesByGetRequestParams struct {
+
+}
+
+type RequestInstancesByGetRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *RequestInstancesByGetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RequestInstancesByGetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RequestInstancesByGetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RequestInstancesByGetResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RequestInstancesByGetResponse struct {
+	*tchttp.BaseResponse
+	Response *RequestInstancesByGetResponseParams `json:"Response"`
+}
+
+func (r *RequestInstancesByGetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RequestInstancesByGetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RequestInstancesRequestParams struct {
+
+}
+
+type RequestInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *RequestInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RequestInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RequestInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RequestInstancesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RequestInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *RequestInstancesResponseParams `json:"Response"`
+}
+
+func (r *RequestInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RequestInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

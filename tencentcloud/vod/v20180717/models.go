@@ -8279,20 +8279,20 @@ func (r *CreateSnapshotByTimeOffsetTemplateResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type CreateStorageRegionRequestParams struct {
-	// 待开通的存储地域，必须是系统支持的地域。
+	// <p>待开通的存储地域，必须是系统支持的地域。</p><p>取值参考：<a href="https://cloud.tencent.com/document/product/266/9760">已支持地域列表</a></p>
 	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 }
 
 type CreateStorageRegionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待开通的存储地域，必须是系统支持的地域。
+	// <p>待开通的存储地域，必须是系统支持的地域。</p><p>取值参考：<a href="https://cloud.tencent.com/document/product/266/9760">已支持地域列表</a></p>
 	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 }
 
@@ -8340,50 +8340,44 @@ func (r *CreateStorageRegionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSubAppIdRequestParams struct {
-	// 应用名称，长度限制：40个字符。
+	// <p>应用名称，长度限制：40个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 应用简介，长度限制： 300个字符。不填则应用简介默认为空。
+	// <p>应用简介，长度限制： 300个字符。不填则应用简介默认为空。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 应用类型， 取值有：<li>AllInOne：一体化；</li><li>Professional：专业版。</li>默认值为 AllInOne。
+	// <p>应用类型， 取值有：<li>AllInOne：一体化；</li><li>Professional：专业版。</li>默认值为 AllInOne。</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 此应用的模式，可选值为：
-	// - fileid：仅FileID模式
-	// - fileid+path：FileID & Path模式
-	// 留空时默认选择仅FileID模式
+	// <p>此应用的模式，可选值为：</p><ul><li>fileid：仅FileID模式</li><li>fileid+path：FileID &amp; Path模式<br>留空时默认选择仅FileID模式</li></ul>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 存储地域
+	// <p>Mode是仅fileid时，用于设置默认存储地域，可选。<br>Mode是fileid+path时，用于指定存储地域，必填。</p><p>取值参考：<a href="https://cloud.tencent.com/document/product/266/9760">已支持地域列表</a></p>
 	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
 
-	// 此应用需要绑定的tag
+	// <p>此应用需要绑定的tag</p>
 	Tags []*ResourceTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateSubAppIdRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用名称，长度限制：40个字符。
+	// <p>应用名称，长度限制：40个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 应用简介，长度限制： 300个字符。不填则应用简介默认为空。
+	// <p>应用简介，长度限制： 300个字符。不填则应用简介默认为空。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 应用类型， 取值有：<li>AllInOne：一体化；</li><li>Professional：专业版。</li>默认值为 AllInOne。
+	// <p>应用类型， 取值有：<li>AllInOne：一体化；</li><li>Professional：专业版。</li>默认值为 AllInOne。</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 此应用的模式，可选值为：
-	// - fileid：仅FileID模式
-	// - fileid+path：FileID & Path模式
-	// 留空时默认选择仅FileID模式
+	// <p>此应用的模式，可选值为：</p><ul><li>fileid：仅FileID模式</li><li>fileid+path：FileID &amp; Path模式<br>留空时默认选择仅FileID模式</li></ul>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 存储地域
+	// <p>Mode是仅fileid时，用于设置默认存储地域，可选。<br>Mode是fileid+path时，用于指定存储地域，必填。</p><p>取值参考：<a href="https://cloud.tencent.com/document/product/266/9760">已支持地域列表</a></p>
 	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
 
-	// 此应用需要绑定的tag
+	// <p>此应用需要绑定的tag</p>
 	Tags []*ResourceTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -8413,7 +8407,7 @@ func (r *CreateSubAppIdRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSubAppIdResponseParams struct {
-	// 新创建的应用 ID。
+	// <p>新创建的应用 ID。</p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

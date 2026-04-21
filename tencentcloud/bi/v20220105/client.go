@@ -577,6 +577,158 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreatePr
     return
 }
 
+func NewCreateUserGroupRequest() (request *CreateUserGroupRequest) {
+    request = &CreateUserGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "CreateUserGroup")
+    
+    
+    return
+}
+
+func NewCreateUserGroupResponse() (response *CreateUserGroupResponse) {
+    response = &CreateUserGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUserGroup
+// CreateUserGroup
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMBED = "InvalidParameter.Embed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) CreateUserGroup(request *CreateUserGroupRequest) (response *CreateUserGroupResponse, err error) {
+    return c.CreateUserGroupWithContext(context.Background(), request)
+}
+
+// CreateUserGroup
+// CreateUserGroup
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMBED = "InvalidParameter.Embed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) CreateUserGroupWithContext(ctx context.Context, request *CreateUserGroupRequest) (response *CreateUserGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateUserGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "CreateUserGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateUserGroupMemberRequest() (request *CreateUserGroupMemberRequest) {
+    request = &CreateUserGroupMemberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "CreateUserGroupMember")
+    
+    
+    return
+}
+
+func NewCreateUserGroupMemberResponse() (response *CreateUserGroupMemberResponse) {
+    response = &CreateUserGroupMemberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUserGroupMember
+// CreateUserGroupMember
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMBED = "InvalidParameter.Embed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) CreateUserGroupMember(request *CreateUserGroupMemberRequest) (response *CreateUserGroupMemberResponse, err error) {
+    return c.CreateUserGroupMemberWithContext(context.Background(), request)
+}
+
+// CreateUserGroupMember
+// CreateUserGroupMember
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMBED = "InvalidParameter.Embed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) CreateUserGroupMemberWithContext(ctx context.Context, request *CreateUserGroupMemberRequest) (response *CreateUserGroupMemberResponse, err error) {
+    if request == nil {
+        request = NewCreateUserGroupMemberRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "CreateUserGroupMember")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserGroupMember require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserGroupMemberResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUserRoleRequest() (request *CreateUserRoleRequest) {
     request = &CreateUserRoleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -815,6 +967,158 @@ func (c *Client) DeleteProjectWithContext(ctx context.Context, request *DeletePr
     request.SetContext(ctx)
     
     response = NewDeleteProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteUserGroupRequest() (request *DeleteUserGroupRequest) {
+    request = &DeleteUserGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "DeleteUserGroup")
+    
+    
+    return
+}
+
+func NewDeleteUserGroupResponse() (response *DeleteUserGroupResponse) {
+    response = &DeleteUserGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteUserGroup
+// DeleteUserGroup
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMBED = "InvalidParameter.Embed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DeleteUserGroup(request *DeleteUserGroupRequest) (response *DeleteUserGroupResponse, err error) {
+    return c.DeleteUserGroupWithContext(context.Background(), request)
+}
+
+// DeleteUserGroup
+// DeleteUserGroup
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMBED = "InvalidParameter.Embed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DeleteUserGroupWithContext(ctx context.Context, request *DeleteUserGroupRequest) (response *DeleteUserGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteUserGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DeleteUserGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUserGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteUserGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteUserGroupMemberRequest() (request *DeleteUserGroupMemberRequest) {
+    request = &DeleteUserGroupMemberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "DeleteUserGroupMember")
+    
+    
+    return
+}
+
+func NewDeleteUserGroupMemberResponse() (response *DeleteUserGroupMemberResponse) {
+    response = &DeleteUserGroupMemberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteUserGroupMember
+// DeleteUserGroupMember
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMBED = "InvalidParameter.Embed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DeleteUserGroupMember(request *DeleteUserGroupMemberRequest) (response *DeleteUserGroupMemberResponse, err error) {
+    return c.DeleteUserGroupMemberWithContext(context.Background(), request)
+}
+
+// DeleteUserGroupMember
+// DeleteUserGroupMember
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMBED = "InvalidParameter.Embed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DeleteUserGroupMemberWithContext(ctx context.Context, request *DeleteUserGroupMemberRequest) (response *DeleteUserGroupMemberResponse, err error) {
+    if request == nil {
+        request = NewDeleteUserGroupMemberRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DeleteUserGroupMember")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUserGroupMember require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteUserGroupMemberResponse()
     err = c.Send(request, response)
     return
 }
@@ -1381,6 +1685,266 @@ func (c *Client) DescribeProjectListWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeResourceUserGroupPageListRequest() (request *DescribeResourceUserGroupPageListRequest) {
+    request = &DescribeResourceUserGroupPageListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "DescribeResourceUserGroupPageList")
+    
+    
+    return
+}
+
+func NewDescribeResourceUserGroupPageListResponse() (response *DescribeResourceUserGroupPageListResponse) {
+    response = &DescribeResourceUserGroupPageListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeResourceUserGroupPageList
+// 用户组资源权限查询接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+func (c *Client) DescribeResourceUserGroupPageList(request *DescribeResourceUserGroupPageListRequest) (response *DescribeResourceUserGroupPageListResponse, err error) {
+    return c.DescribeResourceUserGroupPageListWithContext(context.Background(), request)
+}
+
+// DescribeResourceUserGroupPageList
+// 用户组资源权限查询接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+func (c *Client) DescribeResourceUserGroupPageListWithContext(ctx context.Context, request *DescribeResourceUserGroupPageListRequest) (response *DescribeResourceUserGroupPageListResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceUserGroupPageListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DescribeResourceUserGroupPageList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceUserGroupPageList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceUserGroupPageListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserGroupInfoRequest() (request *DescribeUserGroupInfoRequest) {
+    request = &DescribeUserGroupInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "DescribeUserGroupInfo")
+    
+    
+    return
+}
+
+func NewDescribeUserGroupInfoResponse() (response *DescribeUserGroupInfoResponse) {
+    response = &DescribeUserGroupInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserGroupInfo
+// DescribeUserGroupInfo
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMBED = "InvalidParameter.Embed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DescribeUserGroupInfo(request *DescribeUserGroupInfoRequest) (response *DescribeUserGroupInfoResponse, err error) {
+    return c.DescribeUserGroupInfoWithContext(context.Background(), request)
+}
+
+// DescribeUserGroupInfo
+// DescribeUserGroupInfo
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMBED = "InvalidParameter.Embed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DescribeUserGroupInfoWithContext(ctx context.Context, request *DescribeUserGroupInfoRequest) (response *DescribeUserGroupInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserGroupInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DescribeUserGroupInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserGroupInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserGroupInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserGroupMemberListRequest() (request *DescribeUserGroupMemberListRequest) {
+    request = &DescribeUserGroupMemberListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "DescribeUserGroupMemberList")
+    
+    
+    return
+}
+
+func NewDescribeUserGroupMemberListResponse() (response *DescribeUserGroupMemberListResponse) {
+    response = &DescribeUserGroupMemberListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserGroupMemberList
+// DescribeUserGroupMemberList
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMBED = "InvalidParameter.Embed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DescribeUserGroupMemberList(request *DescribeUserGroupMemberListRequest) (response *DescribeUserGroupMemberListResponse, err error) {
+    return c.DescribeUserGroupMemberListWithContext(context.Background(), request)
+}
+
+// DescribeUserGroupMemberList
+// DescribeUserGroupMemberList
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMBED = "InvalidParameter.Embed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DescribeUserGroupMemberListWithContext(ctx context.Context, request *DescribeUserGroupMemberListRequest) (response *DescribeUserGroupMemberListResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserGroupMemberListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DescribeUserGroupMemberList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserGroupMemberList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserGroupMemberListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserGroupTreeListRequest() (request *DescribeUserGroupTreeListRequest) {
+    request = &DescribeUserGroupTreeListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "DescribeUserGroupTreeList")
+    
+    
+    return
+}
+
+func NewDescribeUserGroupTreeListResponse() (response *DescribeUserGroupTreeListResponse) {
+    response = &DescribeUserGroupTreeListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserGroupTreeList
+// 用户组数查询接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+func (c *Client) DescribeUserGroupTreeList(request *DescribeUserGroupTreeListRequest) (response *DescribeUserGroupTreeListResponse, err error) {
+    return c.DescribeUserGroupTreeListWithContext(context.Background(), request)
+}
+
+// DescribeUserGroupTreeList
+// 用户组数查询接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+func (c *Client) DescribeUserGroupTreeListWithContext(ctx context.Context, request *DescribeUserGroupTreeListRequest) (response *DescribeUserGroupTreeListResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserGroupTreeListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DescribeUserGroupTreeList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserGroupTreeList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserGroupTreeListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserProjectListRequest() (request *DescribeUserProjectListRequest) {
     request = &DescribeUserProjectListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1829,6 +2393,244 @@ func (c *Client) ModifyProjectWithContext(ctx context.Context, request *ModifyPr
     return
 }
 
+func NewModifyResourceUserGroupRequest() (request *ModifyResourceUserGroupRequest) {
+    request = &ModifyResourceUserGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "ModifyResourceUserGroup")
+    
+    
+    return
+}
+
+func NewModifyResourceUserGroupResponse() (response *ModifyResourceUserGroupResponse) {
+    response = &ModifyResourceUserGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyResourceUserGroup
+// 更新用户组权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+func (c *Client) ModifyResourceUserGroup(request *ModifyResourceUserGroupRequest) (response *ModifyResourceUserGroupResponse, err error) {
+    return c.ModifyResourceUserGroupWithContext(context.Background(), request)
+}
+
+// ModifyResourceUserGroup
+// 更新用户组权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+func (c *Client) ModifyResourceUserGroupWithContext(ctx context.Context, request *ModifyResourceUserGroupRequest) (response *ModifyResourceUserGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyResourceUserGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "ModifyResourceUserGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyResourceUserGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyResourceUserGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyResourceUserGroupResourceRequest() (request *ModifyResourceUserGroupResourceRequest) {
+    request = &ModifyResourceUserGroupResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "ModifyResourceUserGroupResource")
+    
+    
+    return
+}
+
+func NewModifyResourceUserGroupResourceResponse() (response *ModifyResourceUserGroupResourceResponse) {
+    response = &ModifyResourceUserGroupResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyResourceUserGroupResource
+// 按资源 - 更新用户组权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+func (c *Client) ModifyResourceUserGroupResource(request *ModifyResourceUserGroupResourceRequest) (response *ModifyResourceUserGroupResourceResponse, err error) {
+    return c.ModifyResourceUserGroupResourceWithContext(context.Background(), request)
+}
+
+// ModifyResourceUserGroupResource
+// 按资源 - 更新用户组权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+func (c *Client) ModifyResourceUserGroupResourceWithContext(ctx context.Context, request *ModifyResourceUserGroupResourceRequest) (response *ModifyResourceUserGroupResourceResponse, err error) {
+    if request == nil {
+        request = NewModifyResourceUserGroupResourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "ModifyResourceUserGroupResource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyResourceUserGroupResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyResourceUserGroupResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyUserDetailInfoRequest() (request *ModifyUserDetailInfoRequest) {
+    request = &ModifyUserDetailInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "ModifyUserDetailInfo")
+    
+    
+    return
+}
+
+func NewModifyUserDetailInfoResponse() (response *ModifyUserDetailInfoResponse) {
+    response = &ModifyUserDetailInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyUserDetailInfo
+// 修改用户角色信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+func (c *Client) ModifyUserDetailInfo(request *ModifyUserDetailInfoRequest) (response *ModifyUserDetailInfoResponse, err error) {
+    return c.ModifyUserDetailInfoWithContext(context.Background(), request)
+}
+
+// ModifyUserDetailInfo
+// 修改用户角色信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+func (c *Client) ModifyUserDetailInfoWithContext(ctx context.Context, request *ModifyUserDetailInfoRequest) (response *ModifyUserDetailInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyUserDetailInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "ModifyUserDetailInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserDetailInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserDetailInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyUserGroupRequest() (request *ModifyUserGroupRequest) {
+    request = &ModifyUserGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "ModifyUserGroup")
+    
+    
+    return
+}
+
+func NewModifyUserGroupResponse() (response *ModifyUserGroupResponse) {
+    response = &ModifyUserGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyUserGroup
+// ModifyUserGroup
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMBED = "InvalidParameter.Embed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) ModifyUserGroup(request *ModifyUserGroupRequest) (response *ModifyUserGroupResponse, err error) {
+    return c.ModifyUserGroupWithContext(context.Background(), request)
+}
+
+// ModifyUserGroup
+// ModifyUserGroup
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMBED = "InvalidParameter.Embed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) ModifyUserGroupWithContext(ctx context.Context, request *ModifyUserGroupRequest) (response *ModifyUserGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyUserGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "ModifyUserGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyUserRoleRequest() (request *ModifyUserRoleRequest) {
     request = &ModifyUserRoleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1933,6 +2735,82 @@ func (c *Client) ModifyUserRoleProjectWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyUserRoleProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryUserGroupMemberRequest() (request *QueryUserGroupMemberRequest) {
+    request = &QueryUserGroupMemberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "QueryUserGroupMember")
+    
+    
+    return
+}
+
+func NewQueryUserGroupMemberResponse() (response *QueryUserGroupMemberResponse) {
+    response = &QueryUserGroupMemberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryUserGroupMember
+// QueryUserGroupMember
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMBED = "InvalidParameter.Embed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) QueryUserGroupMember(request *QueryUserGroupMemberRequest) (response *QueryUserGroupMemberResponse, err error) {
+    return c.QueryUserGroupMemberWithContext(context.Background(), request)
+}
+
+// QueryUserGroupMember
+// QueryUserGroupMember
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EMBED = "InvalidParameter.Embed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) QueryUserGroupMemberWithContext(ctx context.Context, request *QueryUserGroupMemberRequest) (response *QueryUserGroupMemberResponse, err error) {
+    if request == nil {
+        request = NewQueryUserGroupMemberRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "QueryUserGroupMember")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryUserGroupMember require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryUserGroupMemberResponse()
     err = c.Send(request, response)
     return
 }

@@ -180,44 +180,57 @@ func (r *CheckAnimateImageJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAigcElementRequestParams struct {
-
+	// <p>主体名称<br>不能超过20个字符</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-
+	// <p>主体描述</p><p>不能超过100个字符</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-
+	// <p>主体参考方式</p><p>枚举值：<br>video_refer<br>image_refer<br>video_refer: 视频角色主体，此时将参考element_video_list定义主体外表<br>image_refer: 多图主体，此时将参考element_image_list定义主体外表</p>
 	ReferenceType *string `json:"ReferenceType,omitnil,omitempty" name:"ReferenceType"`
 
-
+	// <p>主体参考图，可通过多张图片设定主体及其细节</p><p>包括正面参考图和其他角度或特写参考图，其中：至少包括1张正面参考图，由frontal_image参数定义；需包括1～3张其他参考图，需与正面参考图有差异，由image_url参数定义<br>支持传入图片Base64编码或图片URL（确保可访问）</p><p>图片格式支持.jpg / .jpeg / .png。图片文件大小不能超过10MB，图片宽高尺寸不小于300px，图片宽高比要在1:2.5 ~ 2.5:1之间</p><p>reference_type参数值为 image_refer 时，当前参数必填</p>
 	ElementImageList *ElementImageList `json:"ElementImageList,omitnil,omitempty" name:"ElementImageList"`
 
-
+	// <p>主体参考视频，可通过视频设定主体及其细节</p><p>可上传有声视频，有声视频包含人声则触发音色定制（定制+入音色库+与主体绑定）</p><p>暂时仅支持通过视频定制写实风格的人形形象</p><p>参考视频时当前参数必填，参考图片时当前参数无效</p><p>用key:value承载。视频格式仅支持MP4/MOV。仅支持时长介于3s～8s之间、宽高比例需为16:9或9:16的1080P视频。至多仅支持上传1段视频，视频大小不超过200MB。video_url参数值不得为空</p>
 	VideoList []*string `json:"VideoList,omitnil,omitempty" name:"VideoList"`
 
-
+	// <p>厂商</p>
 	Provider []*string `json:"Provider,omitnil,omitempty" name:"Provider"`
 
-
+	// <p>为主体配置标签，一个主体可以配置多个标签</p><p>用key:value承载。tag的ID与名称：o_101 热梗, o_102 人物, o_103 动物, o_104 道具, o_105 服饰, o_106 场景, o_107 特效, o_108 其他</p>
 	TagList []*TagList `json:"TagList,omitnil,omitempty" name:"TagList"`
+
+	// <p>主体音色ID，可绑定音色库中已有音色</p><p>当前参数为空时，当前主体不绑定音色<br>为多图主体绑定音色时，仅支持人物形象主体或类人形象主体</p>
+	ElementVoiceId *string `json:"ElementVoiceId,omitnil,omitempty" name:"ElementVoiceId"`
 }
 
 type CreateAigcElementRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>主体名称<br>不能超过20个字符</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
+	// <p>主体描述</p><p>不能超过100个字符</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
+	// <p>主体参考方式</p><p>枚举值：<br>video_refer<br>image_refer<br>video_refer: 视频角色主体，此时将参考element_video_list定义主体外表<br>image_refer: 多图主体，此时将参考element_image_list定义主体外表</p>
 	ReferenceType *string `json:"ReferenceType,omitnil,omitempty" name:"ReferenceType"`
 
+	// <p>主体参考图，可通过多张图片设定主体及其细节</p><p>包括正面参考图和其他角度或特写参考图，其中：至少包括1张正面参考图，由frontal_image参数定义；需包括1～3张其他参考图，需与正面参考图有差异，由image_url参数定义<br>支持传入图片Base64编码或图片URL（确保可访问）</p><p>图片格式支持.jpg / .jpeg / .png。图片文件大小不能超过10MB，图片宽高尺寸不小于300px，图片宽高比要在1:2.5 ~ 2.5:1之间</p><p>reference_type参数值为 image_refer 时，当前参数必填</p>
 	ElementImageList *ElementImageList `json:"ElementImageList,omitnil,omitempty" name:"ElementImageList"`
 
+	// <p>主体参考视频，可通过视频设定主体及其细节</p><p>可上传有声视频，有声视频包含人声则触发音色定制（定制+入音色库+与主体绑定）</p><p>暂时仅支持通过视频定制写实风格的人形形象</p><p>参考视频时当前参数必填，参考图片时当前参数无效</p><p>用key:value承载。视频格式仅支持MP4/MOV。仅支持时长介于3s～8s之间、宽高比例需为16:9或9:16的1080P视频。至多仅支持上传1段视频，视频大小不超过200MB。video_url参数值不得为空</p>
 	VideoList []*string `json:"VideoList,omitnil,omitempty" name:"VideoList"`
 
+	// <p>厂商</p>
 	Provider []*string `json:"Provider,omitnil,omitempty" name:"Provider"`
 
+	// <p>为主体配置标签，一个主体可以配置多个标签</p><p>用key:value承载。tag的ID与名称：o_101 热梗, o_102 人物, o_103 动物, o_104 道具, o_105 服饰, o_106 场景, o_107 特效, o_108 其他</p>
 	TagList []*TagList `json:"TagList,omitnil,omitempty" name:"TagList"`
+
+	// <p>主体音色ID，可绑定音色库中已有音色</p><p>当前参数为空时，当前主体不绑定音色<br>为多图主体绑定音色时，仅支持人物形象主体或类人形象主体</p>
+	ElementVoiceId *string `json:"ElementVoiceId,omitnil,omitempty" name:"ElementVoiceId"`
 }
 
 func (r *CreateAigcElementRequest) ToJsonString() string {
@@ -239,6 +252,7 @@ func (r *CreateAigcElementRequest) FromJsonString(s string) error {
 	delete(f, "VideoList")
 	delete(f, "Provider")
 	delete(f, "TagList")
+	delete(f, "ElementVoiceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAigcElementRequest has unknown keys!", "")
 	}
@@ -250,16 +264,16 @@ type CreateAigcElementResponseParams struct {
 	// <p>任务ID。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-
+	// <p>主体Id</p>
 	ElementId *string `json:"ElementId,omitnil,omitempty" name:"ElementId"`
 
-
+	// <p>任务状态</p><p>默认值：任务状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-
+	// <p>厂商</p>
 	Provider []*string `json:"Provider,omitnil,omitempty" name:"Provider"`
 
-
+	// <p>任务创建时间</p>
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -343,13 +357,14 @@ func (r *DeleteAigcElementResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAigcElementRequestParams struct {
-
+	// <p>主体Id</p>
 	ElementId *string `json:"ElementId,omitnil,omitempty" name:"ElementId"`
 }
 
 type DescribeAigcElementRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>主体Id</p>
 	ElementId *string `json:"ElementId,omitnil,omitempty" name:"ElementId"`
 }
 
@@ -409,6 +424,9 @@ type DescribeAigcElementResponseParams struct {
 
 	// <p>更新时间</p>
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
+
+	// <p>音色Id</p>
+	ElementVoiceId *string `json:"ElementVoiceId,omitnil,omitempty" name:"ElementVoiceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -776,6 +794,9 @@ func (r *DescribeImageToVideoGeneralJobResponse) FromJsonString(s string) error 
 type DescribeImageToVideoJobRequestParams struct {
 	// <p>任务ID。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 }
 
 type DescribeImageToVideoJobRequest struct {
@@ -783,6 +804,8 @@ type DescribeImageToVideoJobRequest struct {
 	
 	// <p>任务ID。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 }
 
 func (r *DescribeImageToVideoJobRequest) ToJsonString() string {
@@ -798,6 +821,7 @@ func (r *DescribeImageToVideoJobRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "JobId")
+	delete(f, "ExternalTaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageToVideoJobRequest has unknown keys!", "")
 	}
@@ -826,6 +850,9 @@ type DescribeImageToVideoJobResponseParams struct {
 
 	// <p>任务最终扣减积分数值</p>
 	FinalUnitDeduction *string `json:"FinalUnitDeduction,omitnil,omitempty" name:"FinalUnitDeduction"`
+
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -923,6 +950,9 @@ func (r *DescribeImageToVideoViduJobResponse) FromJsonString(s string) error {
 type DescribeMotionControlKlingJobRequestParams struct {
 	// <p>任务ID</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 }
 
 type DescribeMotionControlKlingJobRequest struct {
@@ -930,6 +960,8 @@ type DescribeMotionControlKlingJobRequest struct {
 	
 	// <p>任务ID</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 }
 
 func (r *DescribeMotionControlKlingJobRequest) ToJsonString() string {
@@ -945,6 +977,7 @@ func (r *DescribeMotionControlKlingJobRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "JobId")
+	delete(f, "ExternalTaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMotionControlKlingJobRequest has unknown keys!", "")
 	}
@@ -1212,6 +1245,9 @@ func (r *DescribeTemplateToVideoJobResponse) FromJsonString(s string) error {
 type DescribeTextToVideoJobRequestParams struct {
 	// <p>任务ID。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 }
 
 type DescribeTextToVideoJobRequest struct {
@@ -1219,6 +1255,8 @@ type DescribeTextToVideoJobRequest struct {
 	
 	// <p>任务ID。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 }
 
 func (r *DescribeTextToVideoJobRequest) ToJsonString() string {
@@ -1234,6 +1272,7 @@ func (r *DescribeTextToVideoJobRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "JobId")
+	delete(f, "ExternalTaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTextToVideoJobRequest has unknown keys!", "")
 	}
@@ -1262,6 +1301,9 @@ type DescribeTextToVideoJobResponseParams struct {
 
 	// <p>任务最终扣减积分数值</p>
 	FinalUnitDeduction *string `json:"FinalUnitDeduction,omitnil,omitempty" name:"FinalUnitDeduction"`
+
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1425,6 +1467,9 @@ func (r *DescribeVideoEditJobResponse) FromJsonString(s string) error {
 type DescribeVideoEditKlingJobRequestParams struct {
 	// <p>任务ID</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 }
 
 type DescribeVideoEditKlingJobRequest struct {
@@ -1432,6 +1477,8 @@ type DescribeVideoEditKlingJobRequest struct {
 	
 	// <p>任务ID</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 }
 
 func (r *DescribeVideoEditKlingJobRequest) ToJsonString() string {
@@ -1447,6 +1494,7 @@ func (r *DescribeVideoEditKlingJobRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "JobId")
+	delete(f, "ExternalTaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoEditKlingJobRequest has unknown keys!", "")
 	}
@@ -1500,6 +1548,9 @@ func (r *DescribeVideoEditKlingJobResponse) FromJsonString(s string) error {
 type DescribeVideoExtendKlingJobRequestParams struct {
 	// <p>任务ID。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 }
 
 type DescribeVideoExtendKlingJobRequest struct {
@@ -1507,6 +1558,8 @@ type DescribeVideoExtendKlingJobRequest struct {
 	
 	// <p>任务ID。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 }
 
 func (r *DescribeVideoExtendKlingJobRequest) ToJsonString() string {
@@ -1522,6 +1575,7 @@ func (r *DescribeVideoExtendKlingJobRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "JobId")
+	delete(f, "ExternalTaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoExtendKlingJobRequest has unknown keys!", "")
 	}
@@ -2590,6 +2644,9 @@ type SubmitImageToVideoJobRequestParams struct {
 
 	// <p>生成视频时所引用的音色的列表</p><p>一次视频生成任务至多引用2个音色<br>当VoiceList参数不为空且Prompt参数中引用音色ID时，视频生成任务按“有指定音色”计量计费<br>VoiceId参数值通过音色定制接口返回，也可使用系统预置音色，详见音色定制相关API；非对口型API的VoiceId<br>ElementList参数与VoiceList参数互斥，不能共存<br>v3模型不支持指定音色<br>用key:value承载，如下：<br>&quot;VoiceList&quot;:[<br>  {&quot;VoiceId&quot;:&quot;VoiceId_1&quot;},<br>  {&quot;VoiceId&quot;:&quot;VoiceId_2&quot;}<br>]</p>
 	VoiceList []*Voice `json:"VoiceList,omitnil,omitempty" name:"VoiceList"`
+
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 }
 
 type SubmitImageToVideoJobRequest struct {
@@ -2654,6 +2711,8 @@ type SubmitImageToVideoJobRequest struct {
 
 	// <p>生成视频时所引用的音色的列表</p><p>一次视频生成任务至多引用2个音色<br>当VoiceList参数不为空且Prompt参数中引用音色ID时，视频生成任务按“有指定音色”计量计费<br>VoiceId参数值通过音色定制接口返回，也可使用系统预置音色，详见音色定制相关API；非对口型API的VoiceId<br>ElementList参数与VoiceList参数互斥，不能共存<br>v3模型不支持指定音色<br>用key:value承载，如下：<br>&quot;VoiceList&quot;:[<br>  {&quot;VoiceId&quot;:&quot;VoiceId_1&quot;},<br>  {&quot;VoiceId&quot;:&quot;VoiceId_2&quot;}<br>]</p>
 	VoiceList []*Voice `json:"VoiceList,omitnil,omitempty" name:"VoiceList"`
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 }
 
 func (r *SubmitImageToVideoJobRequest) ToJsonString() string {
@@ -2688,6 +2747,7 @@ func (r *SubmitImageToVideoJobRequest) FromJsonString(s string) error {
 	delete(f, "CameraControl")
 	delete(f, "CallbackUrl")
 	delete(f, "VoiceList")
+	delete(f, "ExternalTaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitImageToVideoJobRequest has unknown keys!", "")
 	}
@@ -2698,6 +2758,9 @@ func (r *SubmitImageToVideoJobRequest) FromJsonString(s string) error {
 type SubmitImageToVideoJobResponseParams struct {
 	// <p>任务ID。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -2896,6 +2959,9 @@ type SubmitMotionControlKlingJobRequestParams struct {
 	// <p>文本提示词，可包含正向描述和负向描述</p><p>可将提示词模板化来满足不同的视频生成需求</p><p>不能超过2500个字</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
+
 	// <p>参考图像，生成视频中的人物、背景等元素均以参考图为准  视频内容需满足以下要求：  人物比例尽量与参考动作比例一致，尽量避免全身动作驱动半身人物进行生成  人物需要露出清晰的上半身或全身的肢体及头部，避免遮挡  画面中人物避免存在极端朝向，比如倒立、平卧等。人物占画面比例不得太低  支持真实/风格化的角色（包括人物/类人动物/部分纯动物/部分类人肢体比例的角色）通过  包含支持传入图片Base64编码或图片URL（确保可访问）。</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
@@ -2932,6 +2998,8 @@ type SubmitMotionControlKlingJobRequest struct {
 
 	// <p>文本提示词，可包含正向描述和负向描述</p><p>可将提示词模板化来满足不同的视频生成需求</p><p>不能超过2500个字</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 
 	// <p>参考图像，生成视频中的人物、背景等元素均以参考图为准  视频内容需满足以下要求：  人物比例尽量与参考动作比例一致，尽量避免全身动作驱动半身人物进行生成  人物需要露出清晰的上半身或全身的肢体及头部，避免遮挡  画面中人物避免存在极端朝向，比如倒立、平卧等。人物占画面比例不得太低  支持真实/风格化的角色（包括人物/类人动物/部分纯动物/部分类人肢体比例的角色）通过  包含支持传入图片Base64编码或图片URL（确保可访问）。</p>
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
@@ -2975,6 +3043,7 @@ func (r *SubmitMotionControlKlingJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Model")
 	delete(f, "Prompt")
+	delete(f, "ExternalTaskId")
 	delete(f, "Image")
 	delete(f, "Video")
 	delete(f, "Mode")
@@ -2994,6 +3063,9 @@ func (r *SubmitMotionControlKlingJobRequest) FromJsonString(s string) error {
 type SubmitMotionControlKlingJobResponseParams struct {
 	// <p>任务ID</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3430,16 +3502,16 @@ type SubmitTextToVideoJobRequestParams struct {
 	// <p>正向文本提示词。不能超过2500个字符</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// <p>模型名称。<br>v1.6：Kling-V1-6<br>v2.0：Kling-V2-Master<br>v2.5：Kling-V2-5-Turbo<br>v2.6：Kling-V2-6<br>v3.0：kling-v3</p>
+	// <p>模型名称。<br>v1.0：Kling-V1<br>v1.5：Kling-V1-5<br>v1.6：Kling-V1-6<br>v2.0：Kling-V2-Master<br>v2.1m：Kling-V2-1-master<br>v2.5：Kling-V2-5-Turbo<br>v2.6：Kling-V2-6<br>v3.0：kling-v3</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
 	// <p>负向文本提示词。不能超过2500个字符</p>
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
-	// <p>生成视频时长，单位s。默认值为5。<br>枚举值：3，4，5，6，7，8，9，10，11，12，13，14，15</p><p>不同模型支持时长不同</p><ul><li>模型v1.6、v2.0、v2.5、v2.6：支持5、10</li><li>模型v3.0：支持3～15s</li></ul>
+	// <p>生成视频时长，单位s。默认值为5。<br>枚举值：3，4，5，6，7，8，9，10，11，12，13，14，15不同模型支持时长不同<br>●模型v1.0、v1.6、v2.0、v2.1m、v2.5、v2.6：支持5、10<br>●模型v3.0：支持3～15s</p>
 	Duration *string `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// <p>生成视频的模式；</p><p>枚举值：std，pro</p><ul><li>其中std：标准模式（标准），基础模式，性价比高</li><li>其中pro：专家模式（高品质），高表现模式，生成视频质量更佳</li></ul><p>不同模型版本、视频模式支持范围不同</p><ul><li>v1.6：std、pro。</li><li>v2.0、v3.0：模型无需配置。</li><li>v2.5：首尾帧情况下支持pro。</li><li>v2.6：仅支持pro，选择v2.6模型时，默认自动生成高品质pro视频。</li></ul>
+	// <p>生成视频的模式；<br>枚举值：std，pro<br>●其中std：标准模式（标准），基础模式，性价比高<br>●其中pro：专家模式（高品质），高表现模式，生成视频质量更佳<br>不同模型版本、视频模式支持范围不同</p><p>●v1.6：std、pro。<br>●v1.0、v1.5：pro<br>●v2.0、v2.1m、v3.0：模型无需配置。<br>●v2.5：首尾帧情况下支持pro。<br>●v2.6：仅支持pro，选择v2.6模型时，默认自动生成高品质pro视频。</p>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
 	// <p>生成视频的自由度；值越大，模型自由度越小，与用户输入的提示词相关性越强。<br>取值范围：[0, 1]<br>v2.0、v2.5、v2.6 模型不支持当前参数<br>默认值：0.5。</p>
@@ -3471,6 +3543,9 @@ type SubmitTextToVideoJobRequestParams struct {
 
 	// <p>本次任务结果回调通知地址，如果配置，服务端会在任务状态发生变更时主动通知</p>
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
+
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 }
 
 type SubmitTextToVideoJobRequest struct {
@@ -3479,16 +3554,16 @@ type SubmitTextToVideoJobRequest struct {
 	// <p>正向文本提示词。不能超过2500个字符</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// <p>模型名称。<br>v1.6：Kling-V1-6<br>v2.0：Kling-V2-Master<br>v2.5：Kling-V2-5-Turbo<br>v2.6：Kling-V2-6<br>v3.0：kling-v3</p>
+	// <p>模型名称。<br>v1.0：Kling-V1<br>v1.5：Kling-V1-5<br>v1.6：Kling-V1-6<br>v2.0：Kling-V2-Master<br>v2.1m：Kling-V2-1-master<br>v2.5：Kling-V2-5-Turbo<br>v2.6：Kling-V2-6<br>v3.0：kling-v3</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
 	// <p>负向文本提示词。不能超过2500个字符</p>
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
-	// <p>生成视频时长，单位s。默认值为5。<br>枚举值：3，4，5，6，7，8，9，10，11，12，13，14，15</p><p>不同模型支持时长不同</p><ul><li>模型v1.6、v2.0、v2.5、v2.6：支持5、10</li><li>模型v3.0：支持3～15s</li></ul>
+	// <p>生成视频时长，单位s。默认值为5。<br>枚举值：3，4，5，6，7，8，9，10，11，12，13，14，15不同模型支持时长不同<br>●模型v1.0、v1.6、v2.0、v2.1m、v2.5、v2.6：支持5、10<br>●模型v3.0：支持3～15s</p>
 	Duration *string `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// <p>生成视频的模式；</p><p>枚举值：std，pro</p><ul><li>其中std：标准模式（标准），基础模式，性价比高</li><li>其中pro：专家模式（高品质），高表现模式，生成视频质量更佳</li></ul><p>不同模型版本、视频模式支持范围不同</p><ul><li>v1.6：std、pro。</li><li>v2.0、v3.0：模型无需配置。</li><li>v2.5：首尾帧情况下支持pro。</li><li>v2.6：仅支持pro，选择v2.6模型时，默认自动生成高品质pro视频。</li></ul>
+	// <p>生成视频的模式；<br>枚举值：std，pro<br>●其中std：标准模式（标准），基础模式，性价比高<br>●其中pro：专家模式（高品质），高表现模式，生成视频质量更佳<br>不同模型版本、视频模式支持范围不同</p><p>●v1.6：std、pro。<br>●v1.0、v1.5：pro<br>●v2.0、v2.1m、v3.0：模型无需配置。<br>●v2.5：首尾帧情况下支持pro。<br>●v2.6：仅支持pro，选择v2.6模型时，默认自动生成高品质pro视频。</p>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
 	// <p>生成视频的自由度；值越大，模型自由度越小，与用户输入的提示词相关性越强。<br>取值范围：[0, 1]<br>v2.0、v2.5、v2.6 模型不支持当前参数<br>默认值：0.5。</p>
@@ -3520,6 +3595,8 @@ type SubmitTextToVideoJobRequest struct {
 
 	// <p>本次任务结果回调通知地址，如果配置，服务端会在任务状态发生变更时主动通知</p>
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 }
 
 func (r *SubmitTextToVideoJobRequest) ToJsonString() string {
@@ -3549,6 +3626,7 @@ func (r *SubmitTextToVideoJobRequest) FromJsonString(s string) error {
 	delete(f, "MultiPrompt")
 	delete(f, "CameraControl")
 	delete(f, "CallbackUrl")
+	delete(f, "ExternalTaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitTextToVideoJobRequest has unknown keys!", "")
 	}
@@ -3559,6 +3637,9 @@ func (r *SubmitTextToVideoJobRequest) FromJsonString(s string) error {
 type SubmitTextToVideoJobResponseParams struct {
 	// <p>任务ID。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3844,6 +3925,9 @@ type SubmitVideoEditKlingJobRequestParams struct {
 	// <p>模型名称，支持kling-video-o1，kling-v3-omni。默认kling-video-o1。</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
+
 	// <p>参考图列表</p><p>包括主体、场景、风格等参考图片，也可作为首帧或尾帧生成视频；当作为首帧或尾帧生成视频时：</p><p>通过type参数来定义图片是否为首尾帧：first_frame为首帧，end_frame为尾帧</p><p>暂时不支持仅尾帧，即有尾帧图时必须有首帧图</p><p>首帧或首尾帧生视频时，不能使用视频编辑功能</p><p>用key:value承载，如下：</p><p>&quot;ImageInfo&quot;:[<br>    {<br>      &quot;ImageUrl&quot;:&quot;https://cos.ap-guangzhou.myqcloud.com/test.png&quot;,<br>    &quot;Type&quot;:&quot;first_frame&quot;<br>  },<br>  {<br>      &quot;ImageUrl&quot;:&quot;https://cos.ap-guangzhou.myqcloud.com/test.png&quot;,<br>    &quot;Type&quot;:&quot;end_frame&quot;<br>  }<br>]<br>支持传入图片URL（确保可访问）</p><p>图片格式支持.jpg / .jpeg / .png</p><p>图片文件大小不能超过10MB，图片宽高尺寸不小于300px，不大于8000px，图片宽高比要在1:2.5 ~ 2.5:1之间</p><p>有参考视频时，参考图片数量不得超过4；无参考视频时，参考图片数量不得超过7</p><p>数组中超过2张图片时，不支持设置尾帧</p>
 	ImageList []*ImageInfo `json:"ImageList,omitnil,omitempty" name:"ImageList"`
 
@@ -3892,6 +3976,8 @@ type SubmitVideoEditKlingJobRequest struct {
 
 	// <p>模型名称，支持kling-video-o1，kling-v3-omni。默认kling-video-o1。</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 
 	// <p>参考图列表</p><p>包括主体、场景、风格等参考图片，也可作为首帧或尾帧生成视频；当作为首帧或尾帧生成视频时：</p><p>通过type参数来定义图片是否为首尾帧：first_frame为首帧，end_frame为尾帧</p><p>暂时不支持仅尾帧，即有尾帧图时必须有首帧图</p><p>首帧或首尾帧生视频时，不能使用视频编辑功能</p><p>用key:value承载，如下：</p><p>&quot;ImageInfo&quot;:[<br>    {<br>      &quot;ImageUrl&quot;:&quot;https://cos.ap-guangzhou.myqcloud.com/test.png&quot;,<br>    &quot;Type&quot;:&quot;first_frame&quot;<br>  },<br>  {<br>      &quot;ImageUrl&quot;:&quot;https://cos.ap-guangzhou.myqcloud.com/test.png&quot;,<br>    &quot;Type&quot;:&quot;end_frame&quot;<br>  }<br>]<br>支持传入图片URL（确保可访问）</p><p>图片格式支持.jpg / .jpeg / .png</p><p>图片文件大小不能超过10MB，图片宽高尺寸不小于300px，不大于8000px，图片宽高比要在1:2.5 ~ 2.5:1之间</p><p>有参考视频时，参考图片数量不得超过4；无参考视频时，参考图片数量不得超过7</p><p>数组中超过2张图片时，不支持设置尾帧</p>
 	ImageList []*ImageInfo `json:"ImageList,omitnil,omitempty" name:"ImageList"`
@@ -3947,6 +4033,7 @@ func (r *SubmitVideoEditKlingJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Prompt")
 	delete(f, "Model")
+	delete(f, "ExternalTaskId")
 	delete(f, "ImageList")
 	delete(f, "AspectRatio")
 	delete(f, "Duration")
@@ -3970,6 +4057,9 @@ func (r *SubmitVideoEditKlingJobRequest) FromJsonString(s string) error {
 type SubmitVideoEditKlingJobResponseParams struct {
 	// <p>任务ID</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4002,6 +4092,9 @@ type SubmitVideoExtendKlingJobRequestParams struct {
 	// <p>负向文本提示词  不能超过2500个字符</p>
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
+
 	// <p>提示词参考强度  取值范围：[0,1]，数值越大参考强度越大</p>
 	CfgScale *float64 `json:"CfgScale,omitnil,omitempty" name:"CfgScale"`
 
@@ -4026,6 +4119,8 @@ type SubmitVideoExtendKlingJobRequest struct {
 
 	// <p>负向文本提示词  不能超过2500个字符</p>
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 
 	// <p>提示词参考强度  取值范围：[0,1]，数值越大参考强度越大</p>
 	CfgScale *float64 `json:"CfgScale,omitnil,omitempty" name:"CfgScale"`
@@ -4055,6 +4150,7 @@ func (r *SubmitVideoExtendKlingJobRequest) FromJsonString(s string) error {
 	delete(f, "VideoId")
 	delete(f, "Prompt")
 	delete(f, "NegativePrompt")
+	delete(f, "ExternalTaskId")
 	delete(f, "CfgScale")
 	delete(f, "CallbackUrl")
 	delete(f, "LogoAdd")
@@ -4069,6 +4165,9 @@ func (r *SubmitVideoExtendKlingJobRequest) FromJsonString(s string) error {
 type SubmitVideoExtendKlingJobResponseParams struct {
 	// <p>任务ID。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+
+	ExternalTaskId *string `json:"ExternalTaskId,omitnil,omitempty" name:"ExternalTaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

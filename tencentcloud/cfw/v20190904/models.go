@@ -657,66 +657,67 @@ type CfwNatDnatRule struct {
 }
 
 type ClusterSwitchDetail struct {
-	// 实例对象可以是ccnid类型:ccn-ad21xuds形式;nat网关类型:nat-da12daxd形式;ip类型:1.1.1.1形式等
+	// <p>实例对象可以是ccnid类型:ccn-ad21xuds形式;nat网关类型:nat-da12daxd形式;ip类型:1.1.1.1形式等</p>
 	InsObj *string `json:"InsObj,omitnil,omitempty" name:"InsObj"`
 
-	// 实例对象名称
+	// <p>实例对象名称</p>
 	ObjName *string `json:"ObjName,omitnil,omitempty" name:"ObjName"`
 
-	// 防火墙类型，ew：vpc间防火墙；nat：nat防火墙；border：互联网边界防火墙
+	// <p>防火墙类型，ew：vpc间防火墙；nat：nat防火墙；border：互联网边界防火墙</p>
 	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 
-	// 资产类型，ccn：ccn实例类型；nat：nat网关类型
+	// <p>资产类型，ccn：ccn实例类型；nat：nat网关类型</p>
 	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 
-	// 地域
+	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 开关状态
-	// 0 : 关闭
-	// 1 : 开启
-	// 2 : 开启中
-	// 3 : 关闭中
-	// 4 : 异常
+	// <p>开关状态<br>0 : 关闭<br>1 : 开启<br>2 : 开启中<br>3 : 关闭中<br>4 : 异常</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 开关接入模式，1：自动接入；2，手动接入，0：未选择
+	// <p>开关接入模式，1：自动接入；2，手动接入，0：未选择</p>
 	SwitchMode *uint64 `json:"SwitchMode,omitnil,omitempty" name:"SwitchMode"`
 
-	// 实例对象是否处于非集群接入场景（主备模式）
+	// <p>实例对象是否处于非集群接入场景（主备模式）</p>
 	NonCluster *int64 `json:"NonCluster,omitnil,omitempty" name:"NonCluster"`
 
-	// ip版本，0：ipv4；1：ipv6
+	// <p>ip版本，0：ipv4；1：ipv6</p>
 	IpVersion *int64 `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
 
-	// 关联实例
+	// <p>关联实例</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttachIns []*AttachInsInfo `json:"AttachIns,omitnil,omitempty" name:"AttachIns"`
 
-	// 引流私有网络端点信息
+	// <p>引流私有网络端点信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Endpoints []*EndpointInfo `json:"Endpoints,omitnil,omitempty" name:"Endpoints"`
 
-	// 入侵防护模式,0:观察;1:拦截;2:严格;3:关闭
+	// <p>入侵防护模式,0:观察;1:拦截;2:严格;3:关闭</p>
 	Idpsaction *uint64 `json:"Idpsaction,omitnil,omitempty" name:"Idpsaction"`
 
-	// //透明模式开关,0:未开启,1:已开启
+	// <p>//透明模式开关,0:未开启,1:已开启</p>
 	TransEnable *uint64 `json:"TransEnable,omitnil,omitempty" name:"TransEnable"`
 
-	// 开关状态 0关闭 1开启
+	// <p>开关状态 0关闭 1开启</p>
 	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 路由模式：0：多路由表，1：策略路由
+	// <p>路由模式：0：多路由表，1：策略路由</p>
 	RoutingMode *int64 `json:"RoutingMode,omitnil,omitempty" name:"RoutingMode"`
 
-	// 是否跨租户开关 1是 0不是
+	// <p>是否跨租户开关 1是 0不是</p>
 	IsPeer *int64 `json:"IsPeer,omitnil,omitempty" name:"IsPeer"`
 
-	// 跨租户appid
+	// <p>跨租户appid</p>
 	PeerAppid *string `json:"PeerAppid,omitnil,omitempty" name:"PeerAppid"`
 
-	// 跨租户操作状态 1不允许操作 0可以
+	// <p>跨租户操作状态 1不允许操作 0可以</p>
 	PeerStatus *int64 `json:"PeerStatus,omitnil,omitempty" name:"PeerStatus"`
+
+	// <p>Bypass状态</p>
+	Bypass *int64 `json:"Bypass,omitnil,omitempty" name:"Bypass"`
+
+	// <p>防火墙开关操作时的进度状态：</p><p>// 开启 — 自动模式（3步）<br>&quot;AUTO_OPEN_ORCHESTRATING&quot; // 步骤1: 预编排策略路由<br>&quot;AUTO_OPEN_CREATING_RESOURCES&quot; // 步骤2: 创建引流网络和资源<br>&quot;AUTO_OPEN_PUSHING_ROUTES&quot; // 步骤3: 创建策略路由</p><p>// 开启 — 手动模式（1步）<br>&quot;MANUAL_OPEN_CREATING_RESOURCES&quot; // 步骤1: 创建引流网络和资源</p><p>// 关闭 — 自动模式（2步）<br>&quot;AUTO_CLOSE_DELETING_ROUTES&quot; // 步骤1: 删除策略路由<br>&quot;AUTO_CLOSE_DELETING_RESOURCES&quot; // 步骤2: 删除引流网络和资源<br>// 关闭 — 手动模式（1步）<br>&quot;MANUAL_CLOSE_DELETING_RESOURCES&quot; // 步骤1: 删除引流网络和资源</p><p>// 修改 — 自动模式（3步）<br>&quot;AUTO_MODIFY_ORCHESTRATING&quot; // 步骤1: 预编排策略路由<br>&quot;AUTO_MODIFY_DELETING_ROUTES&quot; // 步骤2: 删除旧策略路由<br>&quot;AUTO_MODIFY_PUSHING_ROUTES&quot; // 步骤3: 创建新策略路由</p><p>// 修改 — 手动模式（1步，仅 VPC 防火墙存在手动模式修改）<br>&quot;MANUAL_MODIFY_UPDATING_RESOURCES&quot; // 步骤1: 更新引流网络和资源</p>
+	Progress *string `json:"Progress,omitnil,omitempty" name:"Progress"`
 }
 
 type Column struct {
@@ -4388,6 +4389,9 @@ type DescribeClusterVpcFwSwitchsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*ClusterSwitchDetail `json:"Data,omitnil,omitempty" name:"Data"`
 
+	// 开关开启失败列表
+	FailData []*SwitchFailInfo `json:"FailData,omitnil,omitempty" name:"FailData"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -5919,8 +5923,11 @@ func (r *DescribeNatFwInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNatFwInstanceResponseParams struct {
-	// 实例数组
+	// <p>实例数组</p>
 	NatinsLst []*NatFwInstance `json:"NatinsLst,omitnil,omitempty" name:"NatinsLst"`
+
+	// <p>nat ccn集群防火墙列表</p>
+	NatClusterLst []*NatClusterInfo `json:"NatClusterLst,omitnil,omitempty" name:"NatClusterLst"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -10757,6 +10764,14 @@ type NDRAssetServiceStats struct {
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 
+type NatClusterInfo struct {
+	// <p>nat网关ID</p>
+	NatInsId *string `json:"NatInsId,omitnil,omitempty" name:"NatInsId"`
+
+	// <p>nat网关名称</p>
+	NatInsName *string `json:"NatInsName,omitnil,omitempty" name:"NatInsName"`
+}
+
 type NatFwEipsInfo struct {
 	// 弹性公网ip
 	Eip *string `json:"Eip,omitnil,omitempty" name:"Eip"`
@@ -12362,6 +12377,17 @@ type SwitchError struct {
 	// 错误时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
+}
+
+type SwitchFailInfo struct {
+	// 自增唯一ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 开关名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 防火墙开关变动状态，小于0
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type SwitchListsData struct {

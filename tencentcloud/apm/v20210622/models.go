@@ -2408,76 +2408,56 @@ func (r *DescribeGeneralMetricDataResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGeneralOTSpanListRequestParams struct {
-	// 业务系统 ID
+	// <p>业务系统 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Span 查询开始时间戳（单位：秒）
+	// <p>Span 查询开始时间戳（单位：秒）</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// Span 查询结束时间戳（单位：秒）
+	// <p>Span 查询结束时间戳（单位：秒）</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 通用过滤参数
+	// <p>通用过滤参数 支持的过滤key如service.name</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序
-	// 现支持的 Key 有：
-	// 
-	// - startTime(开始时间)
-	// - endTime(结束时间)
-	// - duration(响应时间)
-	// 
-	// 现支持的 Value 有：
-	// 
-	// - desc(降序排序)
-	// - asc(升序排序)
+	// <p>排序<br>现支持的 Key 有：</p><ul><li>startTime(开始时间)</li><li>endTime(结束时间)</li><li>duration(响应时间)</li></ul><p>现支持的 Value 有：</p><ul><li>desc(降序排序)</li><li>asc(升序排序)</li></ul>
 	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 业务自身服务名，控制台用户请填写taw
+	// <p>业务自身服务名，控制台用户请填写taw</p>
 	BusinessName *string `json:"BusinessName,omitnil,omitempty" name:"BusinessName"`
 
-	// 单页项目个数，默认为10000，合法取值范围为0～10000
+	// <p>单页项目个数，默认为10000，合法取值范围为0～10000</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页
+	// <p>分页</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeGeneralOTSpanListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务系统 ID
+	// <p>业务系统 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Span 查询开始时间戳（单位：秒）
+	// <p>Span 查询开始时间戳（单位：秒）</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// Span 查询结束时间戳（单位：秒）
+	// <p>Span 查询结束时间戳（单位：秒）</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 通用过滤参数
+	// <p>通用过滤参数 支持的过滤key如service.name</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序
-	// 现支持的 Key 有：
-	// 
-	// - startTime(开始时间)
-	// - endTime(结束时间)
-	// - duration(响应时间)
-	// 
-	// 现支持的 Value 有：
-	// 
-	// - desc(降序排序)
-	// - asc(升序排序)
+	// <p>排序<br>现支持的 Key 有：</p><ul><li>startTime(开始时间)</li><li>endTime(结束时间)</li><li>duration(响应时间)</li></ul><p>现支持的 Value 有：</p><ul><li>desc(降序排序)</li><li>asc(升序排序)</li></ul>
 	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 业务自身服务名，控制台用户请填写taw
+	// <p>业务自身服务名，控制台用户请填写taw</p>
 	BusinessName *string `json:"BusinessName,omitnil,omitempty" name:"BusinessName"`
 
-	// 单页项目个数，默认为10000，合法取值范围为0～10000
+	// <p>单页项目个数，默认为10000，合法取值范围为0～10000</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页
+	// <p>分页</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -2509,13 +2489,10 @@ func (r *DescribeGeneralOTSpanListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGeneralOTSpanListResponseParams struct {
-	// 总数量
+	// <p>总数量</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// Spans字段中包含了链路数据的全部内容，由于数据经过了压缩，需要对结果进行如下三步转换，以还原始的文本。
-	// 1. 将Spans字段中的文本进行 Base64 解码，得到经过压缩后字节数组。
-	// 2. 使用 gzip 对压缩后的字节数组进行解压，得到压缩前的字节数组。
-	// 3. 使用 UTF-8 字符集，将压缩前的字节数组转换为文本。
+	// <p>Spans字段中包含了链路数据的全部内容，由于数据经过了压缩，需要对结果进行如下三步转换，以还原始的文本。</p><ol><li>将Spans字段中的文本进行 Base64 解码，得到经过压缩后字节数组。</li><li>使用 gzip 对压缩后的字节数组进行解压，得到压缩前的字节数组。</li><li>使用 UTF-8 字符集，将压缩前的字节数组转换为文本。</li></ol>
 	Spans *string `json:"Spans,omitnil,omitempty" name:"Spans"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2540,76 +2517,56 @@ func (r *DescribeGeneralOTSpanListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGeneralSpanListRequestParams struct {
-	// 业务系统 ID
+	// <p>业务系统 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Span 查询开始时间戳（单位：秒）
+	// <p>Span 查询开始时间戳（单位：秒）</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// Span 查询结束时间戳（单位：秒）
+	// <p>Span 查询结束时间戳（单位：秒）</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 通用过滤参数
+	// <p>通用过滤参数 支持的过滤key如service.name</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序
-	// 现支持的 Key 有：
-	// 
-	// - startTime(开始时间)
-	// - endTime(结束时间)
-	// - duration(响应时间)
-	// 
-	// 现支持的 Value 有：
-	// 
-	// - desc(降序排序)
-	// - asc(升序排序)
+	// <p>排序<br>现支持的 Key 有：</p><ul><li>startTime(开始时间)</li><li>endTime(结束时间)</li><li>duration(响应时间)</li></ul><p>现支持的 Value 有：</p><ul><li>desc(降序排序)</li><li>asc(升序排序)</li></ul>
 	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 业务自身服务名，控制台用户请填写taw
+	// <p>业务自身服务名，控制台用户请填写taw</p>
 	BusinessName *string `json:"BusinessName,omitnil,omitempty" name:"BusinessName"`
 
-	// 单页项目个数，默认为1000，合法取值范围为1～1000
+	// <p>单页项目个数，默认为1000，合法取值范围为1～1000</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页
+	// <p>分页</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeGeneralSpanListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务系统 ID
+	// <p>业务系统 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Span 查询开始时间戳（单位：秒）
+	// <p>Span 查询开始时间戳（单位：秒）</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// Span 查询结束时间戳（单位：秒）
+	// <p>Span 查询结束时间戳（单位：秒）</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 通用过滤参数
+	// <p>通用过滤参数 支持的过滤key如service.name</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序
-	// 现支持的 Key 有：
-	// 
-	// - startTime(开始时间)
-	// - endTime(结束时间)
-	// - duration(响应时间)
-	// 
-	// 现支持的 Value 有：
-	// 
-	// - desc(降序排序)
-	// - asc(升序排序)
+	// <p>排序<br>现支持的 Key 有：</p><ul><li>startTime(开始时间)</li><li>endTime(结束时间)</li><li>duration(响应时间)</li></ul><p>现支持的 Value 有：</p><ul><li>desc(降序排序)</li><li>asc(升序排序)</li></ul>
 	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 业务自身服务名，控制台用户请填写taw
+	// <p>业务自身服务名，控制台用户请填写taw</p>
 	BusinessName *string `json:"BusinessName,omitnil,omitempty" name:"BusinessName"`
 
-	// 单页项目个数，默认为1000，合法取值范围为1～1000
+	// <p>单页项目个数，默认为1000，合法取值范围为1～1000</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页
+	// <p>分页</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -2641,10 +2598,10 @@ func (r *DescribeGeneralSpanListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGeneralSpanListResponseParams struct {
-	// 总数量
+	// <p>总数量</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// Span 分页列表
+	// <p>Span 分页列表</p>
 	Spans []*Span `json:"Spans,omitnil,omitempty" name:"Spans"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3311,13 +3268,13 @@ func (r *DescribeTopologyNewResponse) FromJsonString(s string) error {
 }
 
 type Filter struct {
-	// 过滤方式（=, !=, in）
+	// <p>过滤方式（=, !=, in）</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 过滤维度名
+	// <p>过滤维度名</p><p>详情参考实际接口字段描述</p>
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 过滤值，in过滤方式用逗号分割多个值
+	// <p>过滤值，in过滤方式用逗号分割多个值</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 

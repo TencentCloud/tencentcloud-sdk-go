@@ -1329,8 +1329,14 @@ type HyperParam struct {
 }
 
 type ImageInfo struct {
-	// tcr仓库地址
+	// <p>tcr仓库地址</p>
 	ImageRegistryUrl *string `json:"ImageRegistryUrl,omitnil,omitempty" name:"ImageRegistryUrl"`
+
+	// <p>仓库用户名</p>
+	ImageRegistryUsername *string `json:"ImageRegistryUsername,omitnil,omitempty" name:"ImageRegistryUsername"`
+
+	// <p>仓库密码</p>
+	ImageRegistryPassword *string `json:"ImageRegistryPassword,omitnil,omitempty" name:"ImageRegistryPassword"`
 }
 
 // Predefined struct for user

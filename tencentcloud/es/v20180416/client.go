@@ -3497,6 +3497,106 @@ func (c *Client) QueryIpTraceLogWithContext(ctx context.Context, request *QueryI
     return
 }
 
+func NewRequestInstancesRequest() (request *RequestInstancesRequest) {
+    request = &RequestInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "RequestInstances")
+    
+    
+    return
+}
+
+func NewRequestInstancesResponse() (response *RequestInstancesResponse) {
+    response = &RequestInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RequestInstances
+// 请求集群实例
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) RequestInstances(request *RequestInstancesRequest) (response *RequestInstancesResponse, err error) {
+    return c.RequestInstancesWithContext(context.Background(), request)
+}
+
+// RequestInstances
+// 请求集群实例
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) RequestInstancesWithContext(ctx context.Context, request *RequestInstancesRequest) (response *RequestInstancesResponse, err error) {
+    if request == nil {
+        request = NewRequestInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "RequestInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RequestInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRequestInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRequestInstancesByGetRequest() (request *RequestInstancesByGetRequest) {
+    request = &RequestInstancesByGetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "RequestInstancesByGet")
+    
+    
+    return
+}
+
+func NewRequestInstancesByGetResponse() (response *RequestInstancesByGetResponse) {
+    response = &RequestInstancesByGetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RequestInstancesByGet
+// GET请求集群实例
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) RequestInstancesByGet(request *RequestInstancesByGetRequest) (response *RequestInstancesByGetResponse, err error) {
+    return c.RequestInstancesByGetWithContext(context.Background(), request)
+}
+
+// RequestInstancesByGet
+// GET请求集群实例
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) RequestInstancesByGetWithContext(ctx context.Context, request *RequestInstancesByGetRequest) (response *RequestInstancesByGetResponse, err error) {
+    if request == nil {
+        request = NewRequestInstancesByGetRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "es", APIVersion, "RequestInstancesByGet")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RequestInstancesByGet require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRequestInstancesByGetResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRestartInstanceRequest() (request *RestartInstanceRequest) {
     request = &RestartInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

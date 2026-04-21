@@ -1082,10 +1082,10 @@ type AllocationUnit struct {
 }
 
 type AnalyseActionTypeDetail struct {
-	// 交易类型code
+	// <p>交易类型code</p><p>枚举值：</p><ul><li>prepay_purchase： 包年包月新购</li><li>prepay_renew： 包年包月续费</li><li>prepay_modify： 包年包月配置变更</li><li>prepay_return： 包年包月退款</li><li>postpay_deduct_h： 按量计费小时结</li><li>postpay_deduct_d： 按量计费日结</li><li>postpay_deduct_m： 按量计费月结</li><li>offline_deduct： 线下项目扣费</li><li>online_deduct： 线下产品扣费</li><li>recon_deduct： 调账扣费</li><li>recon_increase： 调账补偿</li><li>postpay_deduct_s： 竞价实例小时结</li><li>recon_increase_f： 线下项目调账补偿</li><li>pre_to_post： 包年包月转按量</li><li>svp_hour_pay： 节省计划小时费用</li><li>recon_guarantee： 保底扣款</li><li>billVirtualId： 月度计费精度差异</li></ul>
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
-	// 交易类型Name
+	// <p>交易类型Name</p>
 	ActionTypeName *string `json:"ActionTypeName,omitnil,omitempty" name:"ActionTypeName"`
 }
 
@@ -1210,10 +1210,10 @@ type AnalyseOwnerUinDetail struct {
 }
 
 type AnalysePayModeDetail struct {
-	// 计费模式code
+	// <p>计费模式code</p><p>枚举值：</p><ul><li>prePay： 包年包月</li><li>postPay： 按量计费</li></ul>
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 计费模式Name
+	// <p>计费模式Name</p>
 	PayModeName *string `json:"PayModeName,omitnil,omitempty" name:"PayModeName"`
 }
 
@@ -1903,55 +1903,55 @@ type BillZoneId struct {
 }
 
 type BudgetConditionsForm struct {
-	// 产品
+	// <p>产品</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Business []*string `json:"Business,omitnil,omitempty" name:"Business"`
 
-	// 计费模式
+	// <p>计费模式</p><p>枚举值：</p><ul><li>prePay： 包年包月</li><li>postPay： 按量计费</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode []*string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 子产品
+	// <p>子产品</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductCodes []*string `json:"ProductCodes,omitnil,omitempty" name:"ProductCodes"`
 
-	// 组件编码
+	// <p>组件编码</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentCodes []*string `json:"ComponentCodes,omitnil,omitempty" name:"ComponentCodes"`
 
-	// 地域
+	// <p>地域</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 可用区
+	// <p>可用区</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionIds []*string `json:"RegionIds,omitnil,omitempty" name:"RegionIds"`
 
-	// 项目
+	// <p>项目</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 
-	// 交易类型
+	// <p>交易类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionTypes []*string `json:"ActionTypes,omitnil,omitempty" name:"ActionTypes"`
 
-	// 消耗类型
+	// <p>消耗类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumptionTypes []*string `json:"ConsumptionTypes,omitnil,omitempty" name:"ConsumptionTypes"`
 
-	// 标签
+	// <p>标签</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagsForm `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	//  末级分账单元
+	// <p>末级分账单元</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayerUins []*string `json:"PayerUins,omitnil,omitempty" name:"PayerUins"`
 
-	// 主用户Uin
+	// <p>主用户Uin</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUins []*string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
-	//  末级分账单元唯一键
+	// <p>末级分账单元唯一键</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TreeNodeUniqKeys []*string `json:"TreeNodeUniqKeys,omitnil,omitempty" name:"TreeNodeUniqKeys"`
 }
@@ -2375,61 +2375,61 @@ type ConditionRegion struct {
 }
 
 type Conditions struct {
-	// 只支持6和12两个值
+	// <p>只支持6个月和12个月两个值</p>
 	TimeRange *uint64 `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
 
-	// 产品名称代码
+	// <p>产品名称代码</p>
 	BusinessCode *string `json:"BusinessCode,omitnil,omitempty" name:"BusinessCode"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 地域ID
+	// <p>地域ID</p>
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 付费模式，可选prePay和postPay
+	// <p>付费模式，可选prePay和postPay</p>
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 资源关键字
+	// <p>资源关键字</p>
 	ResourceKeyword *string `json:"ResourceKeyword,omitnil,omitempty" name:"ResourceKeyword"`
 
-	// 产品名称代码
+	// <p>产品名称代码</p>
 	BusinessCodes []*string `json:"BusinessCodes,omitnil,omitempty" name:"BusinessCodes"`
 
-	// 子产品名称代码
+	// <p>子产品名称代码</p>
 	ProductCodes []*string `json:"ProductCodes,omitnil,omitempty" name:"ProductCodes"`
 
-	// 地域ID
+	// <p>地域ID</p>
 	RegionIds []*int64 `json:"RegionIds,omitnil,omitempty" name:"RegionIds"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectIds []*int64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 
-	// 付费模式，可选prePay和postPay
+	// <p>付费模式，可选prePay和postPay</p>
 	PayModes []*string `json:"PayModes,omitnil,omitempty" name:"PayModes"`
 
-	// 交易类型
+	// <p>交易类型</p>
 	ActionTypes []*string `json:"ActionTypes,omitnil,omitempty" name:"ActionTypes"`
 
-	// 是否隐藏0元流水
+	// <p>是否隐藏0元流水</p>
 	HideFreeCost *int64 `json:"HideFreeCost,omitnil,omitempty" name:"HideFreeCost"`
 
-	// 排序规则，可选desc和asc
+	// <p>排序规则，可选desc和asc</p>
 	OrderByCost *string `json:"OrderByCost,omitnil,omitempty" name:"OrderByCost"`
 
-	// 交易ID
+	// <p>交易ID</p>
 	BillIds []*string `json:"BillIds,omitnil,omitempty" name:"BillIds"`
 
-	// 组件编码
+	// <p>组件编码</p>
 	ComponentCodes []*string `json:"ComponentCodes,omitnil,omitempty" name:"ComponentCodes"`
 
-	// 文件ID
+	// <p>文件ID</p>
 	FileIds []*string `json:"FileIds,omitnil,omitempty" name:"FileIds"`
 
-	// 文件类型
+	// <p>文件类型</p>
 	FileTypes []*string `json:"FileTypes,omitnil,omitempty" name:"FileTypes"`
 
-	// 状态
+	// <p>状态</p>
 	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -2794,20 +2794,20 @@ type CostDetail struct {
 
 // Predefined struct for user
 type CreateAllocationRuleRequestParams struct {
-	// 公摊规则列表
+	// <p>公摊规则列表</p>
 	RuleList *AllocationRulesSummary `json:"RuleList,omitnil,omitempty" name:"RuleList"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
 type CreateAllocationRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 公摊规则列表
+	// <p>公摊规则列表</p>
 	RuleList *AllocationRulesSummary `json:"RuleList,omitnil,omitempty" name:"RuleList"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
@@ -2833,7 +2833,7 @@ func (r *CreateAllocationRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAllocationRuleResponseParams struct {
-	// 新增公摊规则ID
+	// <p>新增公摊规则ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2912,26 +2912,26 @@ func (r *CreateAllocationTagResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAllocationUnitRequestParams struct {
-	// 新增分账单元父节点ID
+	// <p>新增分账单元父节点ID</p>
 	ParentId *uint64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
-	// 新增分账单元名称
+	// <p>新增分账单元名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
 type CreateAllocationUnitRequest struct {
 	*tchttp.BaseRequest
 	
-	// 新增分账单元父节点ID
+	// <p>新增分账单元父节点ID</p>
 	ParentId *uint64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
-	// 新增分账单元名称
+	// <p>新增分账单元名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
@@ -2958,10 +2958,10 @@ func (r *CreateAllocationUnitRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAllocationUnitResponseParams struct {
-	// 新增分账单元ID
+	// <p>新增分账单元ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 分账单元唯一标识
+	// <p>分账单元唯一标识</p>
 	TreeNodeUniqKey *string `json:"TreeNodeUniqKey,omitnil,omitempty" name:"TreeNodeUniqKey"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3130,26 +3130,26 @@ func (r *CreateBudgetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateGatherRuleRequestParams struct {
-	// 规则所属分账单元ID
+	// <p>规则所属分账单元ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 归集规则详情
+	// <p>归集规则详情</p>
 	RuleList *GatherRuleSummary `json:"RuleList,omitnil,omitempty" name:"RuleList"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
 type CreateGatherRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则所属分账单元ID
+	// <p>规则所属分账单元ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 归集规则详情
+	// <p>归集规则详情</p>
 	RuleList *GatherRuleSummary `json:"RuleList,omitnil,omitempty" name:"RuleList"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
@@ -3176,7 +3176,7 @@ func (r *CreateGatherRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateGatherRuleResponseParams struct {
-	// 归集规则ID
+	// <p>归集规则ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3471,20 +3471,20 @@ type Deal struct {
 
 // Predefined struct for user
 type DeleteAllocationRuleRequestParams struct {
-	// 所删除公摊规则ID
+	// <p>所删除公摊规则ID</p>
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
 type DeleteAllocationRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 所删除公摊规则ID
+	// <p>所删除公摊规则ID</p>
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
@@ -3586,20 +3586,20 @@ func (r *DeleteAllocationTagResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAllocationUnitRequestParams struct {
-	// 所删除分账单元ID
+	// <p>所删除分账单元ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
 type DeleteAllocationUnitRequest struct {
 	*tchttp.BaseRequest
 	
-	// 所删除分账单元ID
+	// <p>所删除分账单元ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
@@ -3710,20 +3710,20 @@ func (r *DeleteBudgetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteGatherRuleRequestParams struct {
-	// 所删除归集规则ID
+	// <p>所删除归集规则ID</p>
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
 type DeleteGatherRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 所删除归集规则ID
+	// <p>所删除归集规则ID</p>
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
@@ -3874,14 +3874,14 @@ func (r *DescribeAccountBalanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAllocateConditionsRequestParams struct {
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
 type DescribeAllocateConditionsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
@@ -3906,37 +3906,37 @@ func (r *DescribeAllocateConditionsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAllocateConditionsResponseParams struct {
-	// 产品筛选列表
+	// <p>产品筛选列表</p>
 	Business []*BillBusinessLink `json:"Business,omitnil,omitempty" name:"Business"`
 
-	// 子产品筛选列表
+	// <p>子产品筛选列表</p>
 	Product []*BillProduct `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 组件名称筛选列表
+	// <p>组件名称筛选列表</p>
 	Item []*BillItem `json:"Item,omitnil,omitempty" name:"Item"`
 
-	// 地域筛选列表
+	// <p>地域筛选列表</p>
 	Region []*BillRegion `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 实例类型筛选列表
+	// <p>实例类型筛选列表</p>
 	InstanceType []*BillInstanceType `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 计费模式筛选列表
+	// <p>计费模式筛选列表</p>
 	PayMode []*BillPayMode `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 项目筛选列表
+	// <p>项目筛选列表</p>
 	Project []*BillProject `json:"Project,omitnil,omitempty" name:"Project"`
 
-	// 标签筛选列表
+	// <p>标签筛选列表</p>
 	Tag []*BillTag `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 使用者 UIN 筛选列表
+	// <p>使用者 UIN 筛选列表</p>
 	OwnerUin []*BillOwnerUin `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 操作者 UIN 筛选列表
+	// <p>操作者 UIN 筛选列表</p>
 	OperateUin []*BillOperateUin `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
 
-	// 交易类型筛选列表
+	// <p>交易类型筛选列表</p>
 	ActionType []*BillActionType `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3961,116 +3961,116 @@ func (r *DescribeAllocateConditionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAllocationBillConditionsRequestParams struct {
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 分账单元唯一标识，用作筛选
+	// <p>分账单元唯一标识，用作筛选</p>
 	TreeNodeUniqKeys []*string `json:"TreeNodeUniqKeys,omitnil,omitempty" name:"TreeNodeUniqKeys"`
 
-	// 日期
+	// <p>日期</p>
 	BillDates []*string `json:"BillDates,omitnil,omitempty" name:"BillDates"`
 
-	// 产品编码
+	// <p>产品编码</p>
 	BusinessCodes []*string `json:"BusinessCodes,omitnil,omitempty" name:"BusinessCodes"`
 
-	// 使用者UIN
+	// <p>使用者UIN</p>
 	OwnerUins []*string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
-	// 操作者UIN
+	// <p>操作者UIN</p>
 	OperateUins []*string `json:"OperateUins,omitnil,omitempty" name:"OperateUins"`
 
-	// 计费模式编码
+	// <p>计费模式编码</p>
 	PayModes []*string `json:"PayModes,omitnil,omitempty" name:"PayModes"`
 
-	// 交易类型编码
+	// <p>交易类型编码</p>
 	ActionTypes []*string `json:"ActionTypes,omitnil,omitempty" name:"ActionTypes"`
 
-	// 子产品编码
+	// <p>子产品编码</p>
 	ProductCodes []*string `json:"ProductCodes,omitnil,omitempty" name:"ProductCodes"`
 
-	// 地域ID
+	// <p>地域ID</p>
 	RegionIds []*string `json:"RegionIds,omitnil,omitempty" name:"RegionIds"`
 
-	// 可用区ID
+	// <p>可用区ID</p>
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 实例类型编码
+	// <p>实例类型编码</p>
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 
-	// 标签
+	// <p>标签</p>
 	Tag []*string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 组件类型编码
+	// <p>组件类型编码</p>
 	ComponentCodes []*string `json:"ComponentCodes,omitnil,omitempty" name:"ComponentCodes"`
 
-	// 组件名称编码
+	// <p>组件名称编码</p>
 	ItemCodes []*string `json:"ItemCodes,omitnil,omitempty" name:"ItemCodes"`
 
-	// 模糊搜索条件
+	// <p>模糊搜索条件</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectIds []*uint64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 
-	// 费用归集类型
+	// <p>费用归集类型</p><p>枚举值：</p><ul><li>0： 分摊</li><li>1： 归集</li><li>-1： 未分配</li></ul>
 	AllocationType []*int64 `json:"AllocationType,omitnil,omitempty" name:"AllocationType"`
 }
 
 type DescribeAllocationBillConditionsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 分账单元唯一标识，用作筛选
+	// <p>分账单元唯一标识，用作筛选</p>
 	TreeNodeUniqKeys []*string `json:"TreeNodeUniqKeys,omitnil,omitempty" name:"TreeNodeUniqKeys"`
 
-	// 日期
+	// <p>日期</p>
 	BillDates []*string `json:"BillDates,omitnil,omitempty" name:"BillDates"`
 
-	// 产品编码
+	// <p>产品编码</p>
 	BusinessCodes []*string `json:"BusinessCodes,omitnil,omitempty" name:"BusinessCodes"`
 
-	// 使用者UIN
+	// <p>使用者UIN</p>
 	OwnerUins []*string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
-	// 操作者UIN
+	// <p>操作者UIN</p>
 	OperateUins []*string `json:"OperateUins,omitnil,omitempty" name:"OperateUins"`
 
-	// 计费模式编码
+	// <p>计费模式编码</p>
 	PayModes []*string `json:"PayModes,omitnil,omitempty" name:"PayModes"`
 
-	// 交易类型编码
+	// <p>交易类型编码</p>
 	ActionTypes []*string `json:"ActionTypes,omitnil,omitempty" name:"ActionTypes"`
 
-	// 子产品编码
+	// <p>子产品编码</p>
 	ProductCodes []*string `json:"ProductCodes,omitnil,omitempty" name:"ProductCodes"`
 
-	// 地域ID
+	// <p>地域ID</p>
 	RegionIds []*string `json:"RegionIds,omitnil,omitempty" name:"RegionIds"`
 
-	// 可用区ID
+	// <p>可用区ID</p>
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 实例类型编码
+	// <p>实例类型编码</p>
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 
-	// 标签
+	// <p>标签</p>
 	Tag []*string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 组件类型编码
+	// <p>组件类型编码</p>
 	ComponentCodes []*string `json:"ComponentCodes,omitnil,omitempty" name:"ComponentCodes"`
 
-	// 组件名称编码
+	// <p>组件名称编码</p>
 	ItemCodes []*string `json:"ItemCodes,omitnil,omitempty" name:"ItemCodes"`
 
-	// 模糊搜索条件
+	// <p>模糊搜索条件</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectIds []*uint64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 
-	// 费用归集类型
+	// <p>费用归集类型</p><p>枚举值：</p><ul><li>0： 分摊</li><li>1： 归集</li><li>-1： 未分配</li></ul>
 	AllocationType []*int64 `json:"AllocationType,omitnil,omitempty" name:"AllocationType"`
 }
 
@@ -4112,52 +4112,52 @@ func (r *DescribeAllocationBillConditionsRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeAllocationBillConditionsResponseParams struct {
-	// 产品筛选列表
+	// <p>产品筛选列表</p>
 	Business []*BillBusiness `json:"Business,omitnil,omitempty" name:"Business"`
 
-	// 子产品筛选列表
+	// <p>子产品筛选列表</p>
 	Product []*BillProduct `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 组件名称筛选列表
+	// <p>组件名称筛选列表</p>
 	Item []*BillItem `json:"Item,omitnil,omitempty" name:"Item"`
 
-	// 地域筛选列表
+	// <p>地域筛选列表</p>
 	Region []*BillRegion `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 实例类型筛选列表
+	// <p>实例类型筛选列表</p>
 	InstanceType []*BillInstanceType `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 计费模式筛选列表
+	// <p>计费模式筛选列表</p>
 	PayMode []*BillPayMode `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 项目筛选列表
+	// <p>项目筛选列表</p>
 	Project []*BillProject `json:"Project,omitnil,omitempty" name:"Project"`
 
-	// 标签筛选列表
+	// <p>标签筛选列表</p>
 	Tag []*BillTag `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 使用者 UIN 筛选列表
+	// <p>使用者 UIN 筛选列表</p>
 	OwnerUin []*BillOwnerUin `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 操作者 UIN 筛选列表
+	// <p>操作者 UIN 筛选列表</p>
 	OperateUin []*BillOperateUin `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
 
-	// 日期筛选列表
+	// <p>日期筛选列表</p>
 	BillDay []*BillDays `json:"BillDay,omitnil,omitempty" name:"BillDay"`
 
-	// 交易类型筛选列表
+	// <p>交易类型筛选列表</p>
 	ActionType []*BillActionType `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
-	// 组件类型筛选列表
+	// <p>组件类型筛选列表</p>
 	Component []*BillComponent `json:"Component,omitnil,omitempty" name:"Component"`
 
-	// 可用区筛选列表
+	// <p>可用区筛选列表</p>
 	Zone []*BillZoneId `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 分账单元筛选列表
+	// <p>分账单元筛选列表</p>
 	AllocationTreeNode []*AllocationTreeNode `json:"AllocationTreeNode,omitnil,omitempty" name:"AllocationTreeNode"`
 
-	// 分账标签键
+	// <p>分账标签键</p>
 	TagKey []*string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4182,148 +4182,128 @@ func (r *DescribeAllocationBillConditionsResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeAllocationBillDetailRequestParams struct {
-	// 数量，最大值为1000
+	// <p>数量，最大值为1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+	// <p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 分账单元唯一标识，用作筛选
+	// <p>分账单元唯一标识，用作筛选</p>
 	TreeNodeUniqKeys []*string `json:"TreeNodeUniqKeys,omitnil,omitempty" name:"TreeNodeUniqKeys"`
 
-	// 排序字段，枚举值如下：
-	// RiTimeSpan - 预留实例抵扣时长
-	// ExtendPayAmount1 - 预留实例抵扣组件原价
-	// RealCost - 折后总价
-	// CashPayAmount - 现金金额
-	// VoucherPayAmount - 代金券金额
-	// IncentivePayAmount - 赠送金金额
-	// TransferPayAmount -分成金金额
-	// Cost - 组件原价
+	// <p>排序字段，枚举值如下：<br>RiTimeSpan - 预留实例抵扣时长<br>ExtendPayAmount1 - 预留实例抵扣组件原价<br>RealCost - 折后总价<br>CashPayAmount - 现金金额<br>VoucherPayAmount - 代金券金额<br>IncentivePayAmount - 赠送金金额<br>TransferPayAmount -分成金金额<br>Cost - 组件原价</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 排序类型，枚举值如下：
-	// asc - 升序
-	// desc - 降序
+	// <p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 产品编码，用作筛选
+	// <p>产品编码，用作筛选</p>
 	BusinessCodes []*string `json:"BusinessCodes,omitnil,omitempty" name:"BusinessCodes"`
 
-	// 使用者UIN，用作筛选
+	// <p>使用者UIN，用作筛选</p>
 	OwnerUins []*string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
-	// 操作者UIN，用作筛选
+	// <p>操作者UIN，用作筛选</p>
 	OperateUins []*string `json:"OperateUins,omitnil,omitempty" name:"OperateUins"`
 
-	// 计费模式编码，用作筛选
+	// <p>计费模式编码，用作筛选</p>
 	PayModes []*string `json:"PayModes,omitnil,omitempty" name:"PayModes"`
 
-	// 交易类型编码，用作筛选
+	// <p>交易类型编码，用作筛选</p>
 	ActionTypes []*string `json:"ActionTypes,omitnil,omitempty" name:"ActionTypes"`
 
-	// 子产品编码，用作筛选
+	// <p>子产品编码，用作筛选</p>
 	ProductCodes []*string `json:"ProductCodes,omitnil,omitempty" name:"ProductCodes"`
 
-	// 地域ID，用作筛选
+	// <p>地域ID，用作筛选</p>
 	RegionIds []*string `json:"RegionIds,omitnil,omitempty" name:"RegionIds"`
 
-	// 可用区ID，用作筛选
+	// <p>可用区ID，用作筛选</p>
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 实例类型编码，用作筛选
+	// <p>实例类型编码，用作筛选</p>
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 
-	// 标签，用作筛选
+	// <p>标签，用作筛选</p>
 	Tag []*string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 组件类型编码，用作筛选
+	// <p>组件类型编码，用作筛选</p>
 	ComponentCodes []*string `json:"ComponentCodes,omitnil,omitempty" name:"ComponentCodes"`
 
-	// 组件名称编码，用作筛选
+	// <p>组件名称编码，用作筛选</p>
 	ItemCodes []*string `json:"ItemCodes,omitnil,omitempty" name:"ItemCodes"`
 
-	// 模糊搜索：支持标签、资源id、资源别名
+	// <p>模糊搜索：支持标签、资源id、资源别名</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 项目ID，用作筛选
+	// <p>项目ID，用作筛选</p>
 	ProjectIds []*uint64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 }
 
 type DescribeAllocationBillDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数量，最大值为1000
+	// <p>数量，最大值为1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+	// <p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 分账单元唯一标识，用作筛选
+	// <p>分账单元唯一标识，用作筛选</p>
 	TreeNodeUniqKeys []*string `json:"TreeNodeUniqKeys,omitnil,omitempty" name:"TreeNodeUniqKeys"`
 
-	// 排序字段，枚举值如下：
-	// RiTimeSpan - 预留实例抵扣时长
-	// ExtendPayAmount1 - 预留实例抵扣组件原价
-	// RealCost - 折后总价
-	// CashPayAmount - 现金金额
-	// VoucherPayAmount - 代金券金额
-	// IncentivePayAmount - 赠送金金额
-	// TransferPayAmount -分成金金额
-	// Cost - 组件原价
+	// <p>排序字段，枚举值如下：<br>RiTimeSpan - 预留实例抵扣时长<br>ExtendPayAmount1 - 预留实例抵扣组件原价<br>RealCost - 折后总价<br>CashPayAmount - 现金金额<br>VoucherPayAmount - 代金券金额<br>IncentivePayAmount - 赠送金金额<br>TransferPayAmount -分成金金额<br>Cost - 组件原价</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 排序类型，枚举值如下：
-	// asc - 升序
-	// desc - 降序
+	// <p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 产品编码，用作筛选
+	// <p>产品编码，用作筛选</p>
 	BusinessCodes []*string `json:"BusinessCodes,omitnil,omitempty" name:"BusinessCodes"`
 
-	// 使用者UIN，用作筛选
+	// <p>使用者UIN，用作筛选</p>
 	OwnerUins []*string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
-	// 操作者UIN，用作筛选
+	// <p>操作者UIN，用作筛选</p>
 	OperateUins []*string `json:"OperateUins,omitnil,omitempty" name:"OperateUins"`
 
-	// 计费模式编码，用作筛选
+	// <p>计费模式编码，用作筛选</p>
 	PayModes []*string `json:"PayModes,omitnil,omitempty" name:"PayModes"`
 
-	// 交易类型编码，用作筛选
+	// <p>交易类型编码，用作筛选</p>
 	ActionTypes []*string `json:"ActionTypes,omitnil,omitempty" name:"ActionTypes"`
 
-	// 子产品编码，用作筛选
+	// <p>子产品编码，用作筛选</p>
 	ProductCodes []*string `json:"ProductCodes,omitnil,omitempty" name:"ProductCodes"`
 
-	// 地域ID，用作筛选
+	// <p>地域ID，用作筛选</p>
 	RegionIds []*string `json:"RegionIds,omitnil,omitempty" name:"RegionIds"`
 
-	// 可用区ID，用作筛选
+	// <p>可用区ID，用作筛选</p>
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 实例类型编码，用作筛选
+	// <p>实例类型编码，用作筛选</p>
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 
-	// 标签，用作筛选
+	// <p>标签，用作筛选</p>
 	Tag []*string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 组件类型编码，用作筛选
+	// <p>组件类型编码，用作筛选</p>
 	ComponentCodes []*string `json:"ComponentCodes,omitnil,omitempty" name:"ComponentCodes"`
 
-	// 组件名称编码，用作筛选
+	// <p>组件名称编码，用作筛选</p>
 	ItemCodes []*string `json:"ItemCodes,omitnil,omitempty" name:"ItemCodes"`
 
-	// 模糊搜索：支持标签、资源id、资源别名
+	// <p>模糊搜索：支持标签、资源id、资源别名</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 项目ID，用作筛选
+	// <p>项目ID，用作筛选</p>
 	ProjectIds []*uint64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 }
 
@@ -4367,13 +4347,13 @@ func (r *DescribeAllocationBillDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAllocationBillDetailResponseParams struct {
-	// 总条数
+	// <p>总条数</p>
 	RecordNum *uint64 `json:"RecordNum,omitnil,omitempty" name:"RecordNum"`
 
-	// 分账账单概览金额汇总
+	// <p>分账账单概览金额汇总</p>
 	Total *AllocationOverviewTotal `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 分账账单明细
+	// <p>分账账单明细</p>
 	Detail []*AllocationDetail `json:"Detail,omitnil,omitempty" name:"Detail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4398,14 +4378,14 @@ func (r *DescribeAllocationBillDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAllocationMonthOverviewRequestParams struct {
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
 type DescribeAllocationMonthOverviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
@@ -4430,10 +4410,10 @@ func (r *DescribeAllocationMonthOverviewRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeAllocationMonthOverviewResponseParams struct {
-	// 分账账单月概览详情
+	// <p>分账账单月概览详情</p>
 	Detail []*AllocationOverviewNode `json:"Detail,omitnil,omitempty" name:"Detail"`
 
-	// 分账账单概览金额汇总
+	// <p>分账账单概览金额汇总</p>
 	Total *AllocationOverviewTotal `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4458,96 +4438,56 @@ func (r *DescribeAllocationMonthOverviewResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeAllocationOverviewRequestParams struct {
-	// 数量，最大值为1000
+	// <p>数量，最大值为1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+	// <p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 统计周期，枚举值如下
-	// month - 月
-	// day - 日
+	// <p>统计周期，枚举值如下<br>month - 月<br>day - 日</p>
 	PeriodType *string `json:"PeriodType,omitnil,omitempty" name:"PeriodType"`
 
-	// 分账单元唯一标识，用作筛选
+	// <p>分账单元唯一标识，用作筛选</p>
 	TreeNodeUniqKeys []*string `json:"TreeNodeUniqKeys,omitnil,omitempty" name:"TreeNodeUniqKeys"`
 
-	// 排序字段，枚举值如下： 
-	// GatherCashPayAmount - 归集费用(现金)
-	// GatherVoucherPayAmount- 归集费用(优惠券)
-	// GatherIncentivePayAmount -  归集费用(赠送金)
-	// GatherTransferPayAmount - 归集费用(分成金)
-	// AllocateCashPayAmount - 分摊费用(现金)
-	// AllocateVoucherPayAmount - 分摊费用(优惠券)
-	// AllocateIncentivePayAmount - 分摊费用(赠送金)
-	// AllocateTransferPayAmount - 分摊费用(分成金)
-	// TotalCashPayAmount - 合计费用(现金)
-	// TotalVoucherPayAmount - 合计费用(优惠券)
-	// TotalIncentivePayAmount - 合计费用(赠送金)
-	// TotalTransferPayAmount - 合计费用(分成金)
-	// GatherRealCost - 归集费用(折后总额)
-	// AllocateRealCost - 分摊费用(折后总额)
-	// RealTotalCost - 合计费用(折后总额)
-	// Ratio  - 占比(折后总额)
+	// <p>排序字段，枚举值如下：<br>GatherCashPayAmount - 归集费用(现金)<br>GatherVoucherPayAmount- 归集费用(优惠券)<br>GatherIncentivePayAmount -  归集费用(赠送金)<br>GatherTransferPayAmount - 归集费用(分成金)<br>AllocateCashPayAmount - 分摊费用(现金)<br>AllocateVoucherPayAmount - 分摊费用(优惠券)<br>AllocateIncentivePayAmount - 分摊费用(赠送金)<br>AllocateTransferPayAmount - 分摊费用(分成金)<br>TotalCashPayAmount - 合计费用(现金)<br>TotalVoucherPayAmount - 合计费用(优惠券)<br>TotalIncentivePayAmount - 合计费用(赠送金)<br>TotalTransferPayAmount - 合计费用(分成金)<br>GatherRealCost - 归集费用(折后总额)<br>AllocateRealCost - 分摊费用(折后总额)<br>RealTotalCost - 合计费用(折后总额)<br>Ratio  - 占比(折后总额)</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 排序类型，枚举值如下：
-	// asc - 升序
-	// desc - 降序
+	// <p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 日期，用作筛选
+	// <p>日期，用作筛选</p>
 	BillDates []*string `json:"BillDates,omitnil,omitempty" name:"BillDates"`
 }
 
 type DescribeAllocationOverviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数量，最大值为1000
+	// <p>数量，最大值为1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+	// <p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 统计周期，枚举值如下
-	// month - 月
-	// day - 日
+	// <p>统计周期，枚举值如下<br>month - 月<br>day - 日</p>
 	PeriodType *string `json:"PeriodType,omitnil,omitempty" name:"PeriodType"`
 
-	// 分账单元唯一标识，用作筛选
+	// <p>分账单元唯一标识，用作筛选</p>
 	TreeNodeUniqKeys []*string `json:"TreeNodeUniqKeys,omitnil,omitempty" name:"TreeNodeUniqKeys"`
 
-	// 排序字段，枚举值如下： 
-	// GatherCashPayAmount - 归集费用(现金)
-	// GatherVoucherPayAmount- 归集费用(优惠券)
-	// GatherIncentivePayAmount -  归集费用(赠送金)
-	// GatherTransferPayAmount - 归集费用(分成金)
-	// AllocateCashPayAmount - 分摊费用(现金)
-	// AllocateVoucherPayAmount - 分摊费用(优惠券)
-	// AllocateIncentivePayAmount - 分摊费用(赠送金)
-	// AllocateTransferPayAmount - 分摊费用(分成金)
-	// TotalCashPayAmount - 合计费用(现金)
-	// TotalVoucherPayAmount - 合计费用(优惠券)
-	// TotalIncentivePayAmount - 合计费用(赠送金)
-	// TotalTransferPayAmount - 合计费用(分成金)
-	// GatherRealCost - 归集费用(折后总额)
-	// AllocateRealCost - 分摊费用(折后总额)
-	// RealTotalCost - 合计费用(折后总额)
-	// Ratio  - 占比(折后总额)
+	// <p>排序字段，枚举值如下：<br>GatherCashPayAmount - 归集费用(现金)<br>GatherVoucherPayAmount- 归集费用(优惠券)<br>GatherIncentivePayAmount -  归集费用(赠送金)<br>GatherTransferPayAmount - 归集费用(分成金)<br>AllocateCashPayAmount - 分摊费用(现金)<br>AllocateVoucherPayAmount - 分摊费用(优惠券)<br>AllocateIncentivePayAmount - 分摊费用(赠送金)<br>AllocateTransferPayAmount - 分摊费用(分成金)<br>TotalCashPayAmount - 合计费用(现金)<br>TotalVoucherPayAmount - 合计费用(优惠券)<br>TotalIncentivePayAmount - 合计费用(赠送金)<br>TotalTransferPayAmount - 合计费用(分成金)<br>GatherRealCost - 归集费用(折后总额)<br>AllocateRealCost - 分摊费用(折后总额)<br>RealTotalCost - 合计费用(折后总额)<br>Ratio  - 占比(折后总额)</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 排序类型，枚举值如下：
-	// asc - 升序
-	// desc - 降序
+	// <p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 日期，用作筛选
+	// <p>日期，用作筛选</p>
 	BillDates []*string `json:"BillDates,omitnil,omitempty" name:"BillDates"`
 }
 
@@ -4579,13 +4519,13 @@ func (r *DescribeAllocationOverviewRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAllocationOverviewResponseParams struct {
-	// 总条数
+	// <p>总条数</p>
 	RecordNum *uint64 `json:"RecordNum,omitnil,omitempty" name:"RecordNum"`
 
-	// 分账账单概览金额汇总
+	// <p>分账账单概览金额汇总</p>
 	Total *AllocationOverviewTotal `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 分账概览明细
+	// <p>分账概览明细</p>
 	Detail []*AllocationOverviewDetail `json:"Detail,omitnil,omitempty" name:"Detail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4610,20 +4550,20 @@ func (r *DescribeAllocationOverviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAllocationRuleDetailRequestParams struct {
-	// 所查询公摊规则ID
+	// <p>所查询公摊规则ID</p>
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
 type DescribeAllocationRuleDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 所查询公摊规则ID
+	// <p>所查询公摊规则ID</p>
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
@@ -4649,25 +4589,22 @@ func (r *DescribeAllocationRuleDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAllocationRuleDetailResponseParams struct {
-	// 公摊规则ID
+	// <p>公摊规则ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 公摊规则所属UIN
+	// <p>公摊规则所属UIN</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 公摊规则名称
+	// <p>公摊规则名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 公摊策略类型，枚举值如下：
-	// 1 - 自定义分摊占比 
-	// 2 - 等比分摊 
-	// 3 - 按占比分摊
+	// <p>公摊策略类型，枚举值如下：<br>1 - 自定义分摊占比<br>2 - 等比分摊<br>3 - 按占比分摊</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 公摊规则表达式
+	// <p>公摊规则表达式</p>
 	RuleDetail *AllocationRuleExpression `json:"RuleDetail,omitnil,omitempty" name:"RuleDetail"`
 
-	// 公摊比例表达式，Type为1和2时返回
+	// <p>公摊比例表达式，Type为1和2时返回</p>
 	RatioDetail []*AllocationRationExpression `json:"RatioDetail,omitnil,omitempty" name:"RatioDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4692,46 +4629,38 @@ func (r *DescribeAllocationRuleDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAllocationRuleSummaryRequestParams struct {
-	// 每次获取数据量，最大值1000
+	// <p>每次获取数据量，最大值1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量
+	// <p>分页偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 公摊策略类型，用于筛选。
-	// 枚举值如下： 
-	// 1 - 自定义分摊占比 
-	// 2 - 等比分摊 
-	// 3 - 按占比分摊
+	// <p>公摊策略类型，用于筛选。<br>枚举值如下：<br>1 - 自定义分摊占比<br>2 - 等比分摊<br>3 - 按占比分摊</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 公摊规则名称或分账单元名称，用于模糊筛选。
+	// <p>公摊规则名称或分账单元名称，用于模糊筛选。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeAllocationRuleSummaryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 每次获取数据量，最大值1000
+	// <p>每次获取数据量，最大值1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量
+	// <p>分页偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 公摊策略类型，用于筛选。
-	// 枚举值如下： 
-	// 1 - 自定义分摊占比 
-	// 2 - 等比分摊 
-	// 3 - 按占比分摊
+	// <p>公摊策略类型，用于筛选。<br>枚举值如下：<br>1 - 自定义分摊占比<br>2 - 等比分摊<br>3 - 按占比分摊</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 公摊规则名称或分账单元名称，用于模糊筛选。
+	// <p>公摊规则名称或分账单元名称，用于模糊筛选。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -4760,10 +4689,10 @@ func (r *DescribeAllocationRuleSummaryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAllocationRuleSummaryResponseParams struct {
-	// 公摊规则表达式
+	// <p>公摊规则表达式</p>
 	RuleList []*AllocationRuleOverview `json:"RuleList,omitnil,omitempty" name:"RuleList"`
 
-	// 规则总数
+	// <p>规则总数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4788,56 +4717,34 @@ func (r *DescribeAllocationRuleSummaryResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAllocationSummaryByBusinessRequestParams struct {
-	// 数量，最大值为1000
+	// <p>数量，最大值为1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+	// <p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 统计周期，枚举值如下
-	// month - 月
-	// day - 日
+	// <p>统计周期，枚举值如下<br>month - 月<br>day - 日</p>
 	PeriodType *string `json:"PeriodType,omitnil,omitempty" name:"PeriodType"`
 
-	// 分账单元唯一标识，用作筛选
+	// <p>分账单元唯一标识，用作筛选</p>
 	TreeNodeUniqKeys []*string `json:"TreeNodeUniqKeys,omitnil,omitempty" name:"TreeNodeUniqKeys"`
 
-	// 排序类型，枚举值如下：
-	// asc - 升序
-	// desc - 降序
+	// <p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 排序字段，枚举值如下：
-	// GatherCashPayAmount - 归集费用(现金)
-	// GatherVoucherPayAmount- 归集费用(优惠券)
-	// GatherIncentivePayAmount - 归集费用(赠送金)
-	// GatherTransferPayAmount - 归集费用(分成金)
-	// AllocateCashPayAmount - 分摊费用(现金)
-	// AllocateVoucherPayAmount - 分摊费用(优惠券)
-	// AllocateIncentivePayAmount - 分摊费用(赠送金)
-	// AllocateTransferPayAmount - 分摊费用(分成金)
-	// TotalCashPayAmount - 合计费用(现金)
-	// TotalVoucherPayAmount - 合计费用(优惠券)
-	// TotalIncentivePayAmount - 合计费用(赠送金)
-	// TotalTransferPayAmount - 合计费用(分成金)
-	// GatherRealCost - 归集费用(折后总额)
-	// AllocateRealCost - 分摊费用(折后总额)
-	// RealTotalCost - 合计费用(折后总额)
-	// BusinessCode - 产品代码
-	// Ratio - 占比(折后总额)
-	// Trend - 环比(折后总额)
+	// <p>排序字段，枚举值如下：<br>GatherCashPayAmount - 归集费用(现金)<br>GatherVoucherPayAmount- 归集费用(优惠券)<br>GatherIncentivePayAmount - 归集费用(赠送金)<br>GatherTransferPayAmount - 归集费用(分成金)<br>AllocateCashPayAmount - 分摊费用(现金)<br>AllocateVoucherPayAmount - 分摊费用(优惠券)<br>AllocateIncentivePayAmount - 分摊费用(赠送金)<br>AllocateTransferPayAmount - 分摊费用(分成金)<br>TotalCashPayAmount - 合计费用(现金)<br>TotalVoucherPayAmount - 合计费用(优惠券)<br>TotalIncentivePayAmount - 合计费用(赠送金)<br>TotalTransferPayAmount - 合计费用(分成金)<br>GatherRealCost - 归集费用(折后总额)<br>AllocateRealCost - 分摊费用(折后总额)<br>RealTotalCost - 合计费用(折后总额)<br>BusinessCode - 产品代码<br>Ratio - 占比(折后总额)<br>Trend - 环比(折后总额)</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 日期，用作筛选，PeriodType=day时可传
+	// <p>日期，用作筛选，PeriodType=day时可传</p>
 	BillDates []*string `json:"BillDates,omitnil,omitempty" name:"BillDates"`
 
-	// 产品编码，用作筛选
+	// <p>产品编码，用作筛选</p>
 	BusinessCodes []*string `json:"BusinessCodes,omitnil,omitempty" name:"BusinessCodes"`
 
-	// 模糊搜索条件
+	// <p>模糊搜索条件</p>
 	//
 	// Deprecated: SearchKey is deprecated.
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
@@ -4846,56 +4753,34 @@ type DescribeAllocationSummaryByBusinessRequestParams struct {
 type DescribeAllocationSummaryByBusinessRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数量，最大值为1000
+	// <p>数量，最大值为1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+	// <p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 统计周期，枚举值如下
-	// month - 月
-	// day - 日
+	// <p>统计周期，枚举值如下<br>month - 月<br>day - 日</p>
 	PeriodType *string `json:"PeriodType,omitnil,omitempty" name:"PeriodType"`
 
-	// 分账单元唯一标识，用作筛选
+	// <p>分账单元唯一标识，用作筛选</p>
 	TreeNodeUniqKeys []*string `json:"TreeNodeUniqKeys,omitnil,omitempty" name:"TreeNodeUniqKeys"`
 
-	// 排序类型，枚举值如下：
-	// asc - 升序
-	// desc - 降序
+	// <p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 排序字段，枚举值如下：
-	// GatherCashPayAmount - 归集费用(现金)
-	// GatherVoucherPayAmount- 归集费用(优惠券)
-	// GatherIncentivePayAmount - 归集费用(赠送金)
-	// GatherTransferPayAmount - 归集费用(分成金)
-	// AllocateCashPayAmount - 分摊费用(现金)
-	// AllocateVoucherPayAmount - 分摊费用(优惠券)
-	// AllocateIncentivePayAmount - 分摊费用(赠送金)
-	// AllocateTransferPayAmount - 分摊费用(分成金)
-	// TotalCashPayAmount - 合计费用(现金)
-	// TotalVoucherPayAmount - 合计费用(优惠券)
-	// TotalIncentivePayAmount - 合计费用(赠送金)
-	// TotalTransferPayAmount - 合计费用(分成金)
-	// GatherRealCost - 归集费用(折后总额)
-	// AllocateRealCost - 分摊费用(折后总额)
-	// RealTotalCost - 合计费用(折后总额)
-	// BusinessCode - 产品代码
-	// Ratio - 占比(折后总额)
-	// Trend - 环比(折后总额)
+	// <p>排序字段，枚举值如下：<br>GatherCashPayAmount - 归集费用(现金)<br>GatherVoucherPayAmount- 归集费用(优惠券)<br>GatherIncentivePayAmount - 归集费用(赠送金)<br>GatherTransferPayAmount - 归集费用(分成金)<br>AllocateCashPayAmount - 分摊费用(现金)<br>AllocateVoucherPayAmount - 分摊费用(优惠券)<br>AllocateIncentivePayAmount - 分摊费用(赠送金)<br>AllocateTransferPayAmount - 分摊费用(分成金)<br>TotalCashPayAmount - 合计费用(现金)<br>TotalVoucherPayAmount - 合计费用(优惠券)<br>TotalIncentivePayAmount - 合计费用(赠送金)<br>TotalTransferPayAmount - 合计费用(分成金)<br>GatherRealCost - 归集费用(折后总额)<br>AllocateRealCost - 分摊费用(折后总额)<br>RealTotalCost - 合计费用(折后总额)<br>BusinessCode - 产品代码<br>Ratio - 占比(折后总额)<br>Trend - 环比(折后总额)</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 日期，用作筛选，PeriodType=day时可传
+	// <p>日期，用作筛选，PeriodType=day时可传</p>
 	BillDates []*string `json:"BillDates,omitnil,omitempty" name:"BillDates"`
 
-	// 产品编码，用作筛选
+	// <p>产品编码，用作筛选</p>
 	BusinessCodes []*string `json:"BusinessCodes,omitnil,omitempty" name:"BusinessCodes"`
 
-	// 模糊搜索条件
+	// <p>模糊搜索条件</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 }
 
@@ -4929,13 +4814,13 @@ func (r *DescribeAllocationSummaryByBusinessRequest) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeAllocationSummaryByBusinessResponseParams struct {
-	// 总条数
+	// <p>总条数</p>
 	RecordNum *uint64 `json:"RecordNum,omitnil,omitempty" name:"RecordNum"`
 
-	// 分账账单概览金额汇总
+	// <p>分账账单概览金额汇总</p>
 	Total *AllocationOverviewTotal `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 分账账单按产品汇总明细
+	// <p>分账账单按产品汇总明细</p>
 	Detail []*AllocationSummaryByBusiness `json:"Detail,omitnil,omitempty" name:"Detail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4960,176 +4845,146 @@ func (r *DescribeAllocationSummaryByBusinessResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type DescribeAllocationSummaryByItemRequestParams struct {
-	// 数量，最大值为1000
+	// <p>数量，最大值为1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+	// <p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 统计周期，枚举值如下
-	// month - 月
-	// day - 日
+	// <p>统计周期，枚举值如下<br>month - 月<br>day - 日</p>
 	PeriodType *string `json:"PeriodType,omitnil,omitempty" name:"PeriodType"`
 
-	// 分账单元唯一标识，用作筛选
+	// <p>分账单元唯一标识，用作筛选</p>
 	TreeNodeUniqKeys []*string `json:"TreeNodeUniqKeys,omitnil,omitempty" name:"TreeNodeUniqKeys"`
 
-	// 排序字段，枚举值如下：
-	// RiTimeSpan - 预留实例抵扣时长
-	// ExtendPayAmount1 - 预留实例抵扣组件原价
-	// RealCost - 折后总价
-	// CashPayAmount - 现金金额
-	// VoucherPayAmount - 代金券金额
-	// IncentivePayAmount - 赠送金金额
-	// TransferPayAmount -分成金金额
-	// Cost - 组件原价
+	// <p>排序字段，枚举值如下：<br>RiTimeSpan - 预留实例抵扣时长<br>ExtendPayAmount1 - 预留实例抵扣组件原价<br>RealCost - 折后总价<br>CashPayAmount - 现金金额<br>VoucherPayAmount - 代金券金额<br>IncentivePayAmount - 赠送金金额<br>TransferPayAmount -分成金金额<br>Cost - 组件原价</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 排序类型，枚举值如下：
-	// asc - 升序
-	// desc - 降序
+	// <p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 日期，用作筛选
+	// <p>日期，用作筛选</p>
 	BillDates []*string `json:"BillDates,omitnil,omitempty" name:"BillDates"`
 
-	// 产品编码，用作筛选
+	// <p>产品编码，用作筛选</p>
 	BusinessCodes []*string `json:"BusinessCodes,omitnil,omitempty" name:"BusinessCodes"`
 
-	// 使用者UIN，用作筛选
+	// <p>使用者UIN，用作筛选</p>
 	OwnerUins []*string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
-	// 操作者UIN，用作筛选
+	// <p>操作者UIN，用作筛选</p>
 	OperateUins []*string `json:"OperateUins,omitnil,omitempty" name:"OperateUins"`
 
-	// 计费模式编码，用作筛选
+	// <p>计费模式编码，用作筛选</p>
 	PayModes []*string `json:"PayModes,omitnil,omitempty" name:"PayModes"`
 
-	// 交易类型编码，用作筛选
+	// <p>交易类型编码，用作筛选</p>
 	ActionTypes []*string `json:"ActionTypes,omitnil,omitempty" name:"ActionTypes"`
 
-	// 子产品编码，用作筛选
+	// <p>子产品编码，用作筛选</p>
 	ProductCodes []*string `json:"ProductCodes,omitnil,omitempty" name:"ProductCodes"`
 
-	// 地域ID，用作筛选
+	// <p>地域ID，用作筛选</p>
 	RegionIds []*string `json:"RegionIds,omitnil,omitempty" name:"RegionIds"`
 
-	// 可用区ID，用作筛选
+	// <p>可用区ID，用作筛选</p>
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 实例类型编码，用作筛选
+	// <p>实例类型编码，用作筛选</p>
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 
-	// 标签，用作筛选
+	// <p>标签，用作筛选</p>
 	Tag []*string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 组件类型编码，用作筛选
+	// <p>组件类型编码，用作筛选</p>
 	ComponentCodes []*string `json:"ComponentCodes,omitnil,omitempty" name:"ComponentCodes"`
 
-	// 组件名称编码，用作筛选
+	// <p>组件名称编码，用作筛选</p>
 	ItemCodes []*string `json:"ItemCodes,omitnil,omitempty" name:"ItemCodes"`
 
-	// 模糊搜索：支持标签、资源id、资源别名
+	// <p>模糊搜索：支持标签、资源id、资源别名</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 项目ID，用作筛选
+	// <p>项目ID，用作筛选</p>
 	ProjectIds []*uint64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 
-	// 费用归集类型，枚举值如下：
-	// 0 - 分摊
-	// 1 - 归集
-	// -1 - 未分配
+	// <p>费用归集类型，枚举值如下：<br>0 - 分摊<br>1 - 归集<br>-1 - 未分配</p>
 	AllocationType []*int64 `json:"AllocationType,omitnil,omitempty" name:"AllocationType"`
 }
 
 type DescribeAllocationSummaryByItemRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数量，最大值为1000
+	// <p>数量，最大值为1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+	// <p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 统计周期，枚举值如下
-	// month - 月
-	// day - 日
+	// <p>统计周期，枚举值如下<br>month - 月<br>day - 日</p>
 	PeriodType *string `json:"PeriodType,omitnil,omitempty" name:"PeriodType"`
 
-	// 分账单元唯一标识，用作筛选
+	// <p>分账单元唯一标识，用作筛选</p>
 	TreeNodeUniqKeys []*string `json:"TreeNodeUniqKeys,omitnil,omitempty" name:"TreeNodeUniqKeys"`
 
-	// 排序字段，枚举值如下：
-	// RiTimeSpan - 预留实例抵扣时长
-	// ExtendPayAmount1 - 预留实例抵扣组件原价
-	// RealCost - 折后总价
-	// CashPayAmount - 现金金额
-	// VoucherPayAmount - 代金券金额
-	// IncentivePayAmount - 赠送金金额
-	// TransferPayAmount -分成金金额
-	// Cost - 组件原价
+	// <p>排序字段，枚举值如下：<br>RiTimeSpan - 预留实例抵扣时长<br>ExtendPayAmount1 - 预留实例抵扣组件原价<br>RealCost - 折后总价<br>CashPayAmount - 现金金额<br>VoucherPayAmount - 代金券金额<br>IncentivePayAmount - 赠送金金额<br>TransferPayAmount -分成金金额<br>Cost - 组件原价</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 排序类型，枚举值如下：
-	// asc - 升序
-	// desc - 降序
+	// <p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 日期，用作筛选
+	// <p>日期，用作筛选</p>
 	BillDates []*string `json:"BillDates,omitnil,omitempty" name:"BillDates"`
 
-	// 产品编码，用作筛选
+	// <p>产品编码，用作筛选</p>
 	BusinessCodes []*string `json:"BusinessCodes,omitnil,omitempty" name:"BusinessCodes"`
 
-	// 使用者UIN，用作筛选
+	// <p>使用者UIN，用作筛选</p>
 	OwnerUins []*string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
-	// 操作者UIN，用作筛选
+	// <p>操作者UIN，用作筛选</p>
 	OperateUins []*string `json:"OperateUins,omitnil,omitempty" name:"OperateUins"`
 
-	// 计费模式编码，用作筛选
+	// <p>计费模式编码，用作筛选</p>
 	PayModes []*string `json:"PayModes,omitnil,omitempty" name:"PayModes"`
 
-	// 交易类型编码，用作筛选
+	// <p>交易类型编码，用作筛选</p>
 	ActionTypes []*string `json:"ActionTypes,omitnil,omitempty" name:"ActionTypes"`
 
-	// 子产品编码，用作筛选
+	// <p>子产品编码，用作筛选</p>
 	ProductCodes []*string `json:"ProductCodes,omitnil,omitempty" name:"ProductCodes"`
 
-	// 地域ID，用作筛选
+	// <p>地域ID，用作筛选</p>
 	RegionIds []*string `json:"RegionIds,omitnil,omitempty" name:"RegionIds"`
 
-	// 可用区ID，用作筛选
+	// <p>可用区ID，用作筛选</p>
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 实例类型编码，用作筛选
+	// <p>实例类型编码，用作筛选</p>
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 
-	// 标签，用作筛选
+	// <p>标签，用作筛选</p>
 	Tag []*string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 组件类型编码，用作筛选
+	// <p>组件类型编码，用作筛选</p>
 	ComponentCodes []*string `json:"ComponentCodes,omitnil,omitempty" name:"ComponentCodes"`
 
-	// 组件名称编码，用作筛选
+	// <p>组件名称编码，用作筛选</p>
 	ItemCodes []*string `json:"ItemCodes,omitnil,omitempty" name:"ItemCodes"`
 
-	// 模糊搜索：支持标签、资源id、资源别名
+	// <p>模糊搜索：支持标签、资源id、资源别名</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 项目ID，用作筛选
+	// <p>项目ID，用作筛选</p>
 	ProjectIds []*uint64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 
-	// 费用归集类型，枚举值如下：
-	// 0 - 分摊
-	// 1 - 归集
-	// -1 - 未分配
+	// <p>费用归集类型，枚举值如下：<br>0 - 分摊<br>1 - 归集<br>-1 - 未分配</p>
 	AllocationType []*int64 `json:"AllocationType,omitnil,omitempty" name:"AllocationType"`
 }
 
@@ -5176,13 +5031,13 @@ func (r *DescribeAllocationSummaryByItemRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeAllocationSummaryByItemResponseParams struct {
-	// 总条数
+	// <p>总条数</p>
 	RecordNum *uint64 `json:"RecordNum,omitnil,omitempty" name:"RecordNum"`
 
-	// 分账账单概览金额汇总
+	// <p>分账账单概览金额汇总</p>
 	Total *AllocationOverviewTotal `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 分账账单按组件汇总明细
+	// <p>分账账单按组件汇总明细</p>
 	Detail []*AllocationSummaryByItem `json:"Detail,omitnil,omitempty" name:"Detail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5207,164 +5062,134 @@ func (r *DescribeAllocationSummaryByItemResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeAllocationSummaryByResourceRequestParams struct {
-	// 数量，最大值为1000
+	// <p>数量，最大值为1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+	// <p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 统计周期，枚举值如下
-	// month - 月
-	// day - 日
+	// <p>统计周期，枚举值如下<br>month - 月<br>day - 日</p>
 	PeriodType *string `json:"PeriodType,omitnil,omitempty" name:"PeriodType"`
 
-	// 分账单元唯一标识，用作筛选
+	// <p>分账单元唯一标识，用作筛选</p>
 	TreeNodeUniqKeys []*string `json:"TreeNodeUniqKeys,omitnil,omitempty" name:"TreeNodeUniqKeys"`
 
-	// 排序字段，枚举值如下：
-	// RiTimeSpan - 预留实例抵扣时长
-	// ExtendPayAmount1 - 预留实例抵扣组件原价
-	// RealCost - 折后总价
-	// CashPayAmount - 现金金额
-	// VoucherPayAmount - 代金券金额
-	// IncentivePayAmount - 赠送金金额
-	// TransferPayAmount -分成金金额
-	// Cost - 组件原价
+	// <p>排序字段，枚举值如下：<br>RiTimeSpan - 预留实例抵扣时长<br>ExtendPayAmount1 - 预留实例抵扣组件原价<br>RealCost - 折后总价<br>CashPayAmount - 现金金额<br>VoucherPayAmount - 代金券金额<br>IncentivePayAmount - 赠送金金额<br>TransferPayAmount -分成金金额<br>Cost - 组件原价</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 排序类型，枚举值如下：
-	// asc - 升序
-	// desc - 降序
+	// <p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 日期，用作筛选
+	// <p>日期，用作筛选</p>
 	BillDates []*string `json:"BillDates,omitnil,omitempty" name:"BillDates"`
 
-	// 产品编码，用作筛选
+	// <p>产品编码，用作筛选</p>
 	BusinessCodes []*string `json:"BusinessCodes,omitnil,omitempty" name:"BusinessCodes"`
 
-	// 使用者UIN，用作筛选
+	// <p>使用者UIN，用作筛选</p>
 	OwnerUins []*string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
-	// 操作者UIN，用作筛选
+	// <p>操作者UIN，用作筛选</p>
 	OperateUins []*string `json:"OperateUins,omitnil,omitempty" name:"OperateUins"`
 
-	// 计费模式编码，用作筛选
+	// <p>计费模式编码，用作筛选</p>
 	PayModes []*string `json:"PayModes,omitnil,omitempty" name:"PayModes"`
 
-	// 交易类型编码，用作筛选
+	// <p>交易类型编码，用作筛选</p>
 	ActionTypes []*string `json:"ActionTypes,omitnil,omitempty" name:"ActionTypes"`
 
-	// 子产品编码，用作筛选
+	// <p>子产品编码，用作筛选</p>
 	ProductCodes []*string `json:"ProductCodes,omitnil,omitempty" name:"ProductCodes"`
 
-	// 地域ID，用作筛选
+	// <p>地域ID，用作筛选</p>
 	RegionIds []*string `json:"RegionIds,omitnil,omitempty" name:"RegionIds"`
 
-	// 可用区ID，用作筛选
+	// <p>可用区ID，用作筛选</p>
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 实例类型编码，用作筛选
+	// <p>实例类型编码，用作筛选</p>
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 
-	// 标签，用作筛选
+	// <p>标签，用作筛选</p>
 	Tag []*string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 模糊搜索：支持标签、资源id、资源别名
+	// <p>模糊搜索：支持标签、资源id、资源别名</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 项目ID，用作筛选
+	// <p>项目ID，用作筛选</p>
 	ProjectIds []*uint64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 
-	// 费用归集类型，枚举值如下：
-	// 0 - 分摊 
-	// 1 - 归集 
-	// -1 -  未分配
+	// <p>费用归集类型，枚举值如下：<br>0 - 分摊<br>1 - 归集<br>-1 -  未分配</p>
 	AllocationType []*int64 `json:"AllocationType,omitnil,omitempty" name:"AllocationType"`
 }
 
 type DescribeAllocationSummaryByResourceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数量，最大值为1000
+	// <p>数量，最大值为1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+	// <p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 统计周期，枚举值如下
-	// month - 月
-	// day - 日
+	// <p>统计周期，枚举值如下<br>month - 月<br>day - 日</p>
 	PeriodType *string `json:"PeriodType,omitnil,omitempty" name:"PeriodType"`
 
-	// 分账单元唯一标识，用作筛选
+	// <p>分账单元唯一标识，用作筛选</p>
 	TreeNodeUniqKeys []*string `json:"TreeNodeUniqKeys,omitnil,omitempty" name:"TreeNodeUniqKeys"`
 
-	// 排序字段，枚举值如下：
-	// RiTimeSpan - 预留实例抵扣时长
-	// ExtendPayAmount1 - 预留实例抵扣组件原价
-	// RealCost - 折后总价
-	// CashPayAmount - 现金金额
-	// VoucherPayAmount - 代金券金额
-	// IncentivePayAmount - 赠送金金额
-	// TransferPayAmount -分成金金额
-	// Cost - 组件原价
+	// <p>排序字段，枚举值如下：<br>RiTimeSpan - 预留实例抵扣时长<br>ExtendPayAmount1 - 预留实例抵扣组件原价<br>RealCost - 折后总价<br>CashPayAmount - 现金金额<br>VoucherPayAmount - 代金券金额<br>IncentivePayAmount - 赠送金金额<br>TransferPayAmount -分成金金额<br>Cost - 组件原价</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 排序类型，枚举值如下：
-	// asc - 升序
-	// desc - 降序
+	// <p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 日期，用作筛选
+	// <p>日期，用作筛选</p>
 	BillDates []*string `json:"BillDates,omitnil,omitempty" name:"BillDates"`
 
-	// 产品编码，用作筛选
+	// <p>产品编码，用作筛选</p>
 	BusinessCodes []*string `json:"BusinessCodes,omitnil,omitempty" name:"BusinessCodes"`
 
-	// 使用者UIN，用作筛选
+	// <p>使用者UIN，用作筛选</p>
 	OwnerUins []*string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
-	// 操作者UIN，用作筛选
+	// <p>操作者UIN，用作筛选</p>
 	OperateUins []*string `json:"OperateUins,omitnil,omitempty" name:"OperateUins"`
 
-	// 计费模式编码，用作筛选
+	// <p>计费模式编码，用作筛选</p>
 	PayModes []*string `json:"PayModes,omitnil,omitempty" name:"PayModes"`
 
-	// 交易类型编码，用作筛选
+	// <p>交易类型编码，用作筛选</p>
 	ActionTypes []*string `json:"ActionTypes,omitnil,omitempty" name:"ActionTypes"`
 
-	// 子产品编码，用作筛选
+	// <p>子产品编码，用作筛选</p>
 	ProductCodes []*string `json:"ProductCodes,omitnil,omitempty" name:"ProductCodes"`
 
-	// 地域ID，用作筛选
+	// <p>地域ID，用作筛选</p>
 	RegionIds []*string `json:"RegionIds,omitnil,omitempty" name:"RegionIds"`
 
-	// 可用区ID，用作筛选
+	// <p>可用区ID，用作筛选</p>
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 实例类型编码，用作筛选
+	// <p>实例类型编码，用作筛选</p>
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 
-	// 标签，用作筛选
+	// <p>标签，用作筛选</p>
 	Tag []*string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 模糊搜索：支持标签、资源id、资源别名
+	// <p>模糊搜索：支持标签、资源id、资源别名</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 项目ID，用作筛选
+	// <p>项目ID，用作筛选</p>
 	ProjectIds []*uint64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 
-	// 费用归集类型，枚举值如下：
-	// 0 - 分摊 
-	// 1 - 归集 
-	// -1 -  未分配
+	// <p>费用归集类型，枚举值如下：<br>0 - 分摊<br>1 - 归集<br>-1 -  未分配</p>
 	AllocationType []*int64 `json:"AllocationType,omitnil,omitempty" name:"AllocationType"`
 }
 
@@ -5409,13 +5234,13 @@ func (r *DescribeAllocationSummaryByResourceRequest) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeAllocationSummaryByResourceResponseParams struct {
-	// 总条数
+	// <p>总条数</p>
 	RecordNum *uint64 `json:"RecordNum,omitnil,omitempty" name:"RecordNum"`
 
-	// 分账账单概览金额汇总
+	// <p>分账账单概览金额汇总</p>
 	Total *AllocationOverviewTotal `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 分账账单按资源汇总明细
+	// <p>分账账单按资源汇总明细</p>
 	Detail []*AllocationSummaryByResource `json:"Detail,omitnil,omitempty" name:"Detail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5440,14 +5265,14 @@ func (r *DescribeAllocationSummaryByResourceResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type DescribeAllocationTreeRequestParams struct {
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
 type DescribeAllocationTreeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
@@ -5472,16 +5297,16 @@ func (r *DescribeAllocationTreeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAllocationTreeResponseParams struct {
-	// 分账单元ID
+	// <p>分账单元ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 分账单元名称
+	// <p>分账单元名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 分账单元唯一标识
+	// <p>分账单元唯一标识</p>
 	TreeNodeUniqKey *string `json:"TreeNodeUniqKey,omitnil,omitempty" name:"TreeNodeUniqKey"`
 
-	// 子树
+	// <p>子树</p>
 	Children []*AllocationTree `json:"Children,omitnil,omitempty" name:"Children"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5506,26 +5331,26 @@ func (r *DescribeAllocationTreeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAllocationTrendByMonthRequestParams struct {
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 分账单元唯一标识
+	// <p>分账单元唯一标识</p>
 	TreeNodeUniqKey *string `json:"TreeNodeUniqKey,omitnil,omitempty" name:"TreeNodeUniqKey"`
 
-	// 产品编码，用作筛选
+	// <p>产品编码，用作筛选</p>
 	BusinessCode *string `json:"BusinessCode,omitnil,omitempty" name:"BusinessCode"`
 }
 
 type DescribeAllocationTrendByMonthRequest struct {
 	*tchttp.BaseRequest
 	
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 分账单元唯一标识
+	// <p>分账单元唯一标识</p>
 	TreeNodeUniqKey *string `json:"TreeNodeUniqKey,omitnil,omitempty" name:"TreeNodeUniqKey"`
 
-	// 产品编码，用作筛选
+	// <p>产品编码，用作筛选</p>
 	BusinessCode *string `json:"BusinessCode,omitnil,omitempty" name:"BusinessCode"`
 }
 
@@ -5552,13 +5377,13 @@ func (r *DescribeAllocationTrendByMonthRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAllocationTrendByMonthResponseParams struct {
-	// 当月费用信息
+	// <p>当月费用信息</p>
 	Current *AllocationBillTrendDetail `json:"Current,omitnil,omitempty" name:"Current"`
 
-	// 之前月份费用信息
+	// <p>之前月份费用信息</p>
 	Previous []*AllocationBillTrendDetail `json:"Previous,omitnil,omitempty" name:"Previous"`
 
-	// 费用统计信息
+	// <p>费用统计信息</p>
 	Stat *AllocationStat `json:"Stat,omitnil,omitempty" name:"Stat"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5583,20 +5408,20 @@ func (r *DescribeAllocationTrendByMonthResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeAllocationUnitDetailRequestParams struct {
-	// 所查询分账单元Id
+	// <p>所查询分账单元Id</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
 type DescribeAllocationUnitDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 所查询分账单元Id
+	// <p>所查询分账单元Id</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
@@ -5622,31 +5447,31 @@ func (r *DescribeAllocationUnitDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAllocationUnitDetailResponseParams struct {
-	// 分账单元ID
+	// <p>分账单元ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 分账单元所属UIN
+	// <p>分账单元所属UIN</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 分账单元名称
+	// <p>分账单元名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 分账单元父节点ID
+	// <p>分账单元父节点ID</p>
 	ParentId *uint64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
-	// 源组织名称
+	// <p>源组织名称</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// 源组织ID
+	// <p>源组织ID</p>
 	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
 
-	// 备注说明
+	// <p>备注说明</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 分账单元标识
+	// <p>分账单元标识</p>
 	TreeNodeUniqKey *string `json:"TreeNodeUniqKey,omitnil,omitempty" name:"TreeNodeUniqKey"`
 
-	// 若分账单元设置归集规则，返回归集规则ID，若无分账规则，则不返回
+	// <p>若分账单元设置归集规则，返回归集规则ID，若无分账规则，则不返回</p>
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8997,140 +8822,122 @@ func (r *DescribeDosageDetailListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGatherResourceRequestParams struct {
-	// 数量，最大值为1000
+	// <p>数量，最大值为1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+	// <p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 分账单元唯一标识，用作筛选
+	// <p>分账单元唯一标识，用作筛选</p>
 	TreeNodeUniqKey *string `json:"TreeNodeUniqKey,omitnil,omitempty" name:"TreeNodeUniqKey"`
 
-	// 资源目录类别，枚举值如下：
-	// all - 全部 
-	// none - 未归集
+	// <p>资源目录类别，枚举值如下：<br>all - 全部<br>none - 未归集</p>
 	GatherType *string `json:"GatherType,omitnil,omitempty" name:"GatherType"`
 
-	// 排序字段，枚举值如下：
-	// realCost  - 折后总价
-	// cashPayAmount - 现金金额
-	// voucherPayAmount - 代金券金额
-	// incentivePayAmount  - 赠送金金额
-	// transferPayAmount -分成金金额
+	// <p>排序字段，枚举值如下：<br>realCost  - 折后总价<br>cashPayAmount - 现金金额<br>voucherPayAmount - 代金券金额<br>incentivePayAmount  - 赠送金金额<br>transferPayAmount -分成金金额</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 排序类型，枚举值如下：
-	// asc - 升序
-	// desc - 降序
+	// <p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 产品编码，用作筛选
+	// <p>产品编码，用作筛选</p>
 	BusinessCodes []*string `json:"BusinessCodes,omitnil,omitempty" name:"BusinessCodes"`
 
-	// 子产品编码，用作筛选
+	// <p>子产品编码，用作筛选</p>
 	ProductCodes []*string `json:"ProductCodes,omitnil,omitempty" name:"ProductCodes"`
 
-	// 组件名称编码，用作筛选
+	// <p>组件名称编码，用作筛选</p>
 	ItemCodes []*string `json:"ItemCodes,omitnil,omitempty" name:"ItemCodes"`
 
-	// 地域ID，用作筛选
+	// <p>地域ID，用作筛选</p>
 	RegionIds []*uint64 `json:"RegionIds,omitnil,omitempty" name:"RegionIds"`
 
-	// 实例类型编码，用作筛选
+	// <p>实例类型编码，用作筛选</p>
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 
-	// 计费模式编码，用作筛选
+	// <p>计费模式编码，用作筛选</p>
 	PayModes []*string `json:"PayModes,omitnil,omitempty" name:"PayModes"`
 
-	// 操作者UIN，用作筛选
+	// <p>操作者UIN，用作筛选</p>
 	OperateUins []*string `json:"OperateUins,omitnil,omitempty" name:"OperateUins"`
 
-	// 使用者UIN，用作筛选
+	// <p>使用者UIN，用作筛选</p>
 	OwnerUins []*string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
-	// 模糊搜索：支持标签、资源id、资源别名
+	// <p>模糊搜索：支持标签、资源id、资源别名</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 标签，用作筛选
+	// <p>标签，用作筛选</p>
 	Tag []*string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 项目ID，用作筛选
+	// <p>项目ID，用作筛选</p>
 	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 
-	// 交易类型编码，用作筛选
+	// <p>交易类型编码，用作筛选</p>
 	ActionTypes []*string `json:"ActionTypes,omitnil,omitempty" name:"ActionTypes"`
 }
 
 type DescribeGatherResourceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数量，最大值为1000
+	// <p>数量，最大值为1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+	// <p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 账单月份，格式为2024-02，不传默认当前月
+	// <p>账单月份，格式为2024-02，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
-	// 分账单元唯一标识，用作筛选
+	// <p>分账单元唯一标识，用作筛选</p>
 	TreeNodeUniqKey *string `json:"TreeNodeUniqKey,omitnil,omitempty" name:"TreeNodeUniqKey"`
 
-	// 资源目录类别，枚举值如下：
-	// all - 全部 
-	// none - 未归集
+	// <p>资源目录类别，枚举值如下：<br>all - 全部<br>none - 未归集</p>
 	GatherType *string `json:"GatherType,omitnil,omitempty" name:"GatherType"`
 
-	// 排序字段，枚举值如下：
-	// realCost  - 折后总价
-	// cashPayAmount - 现金金额
-	// voucherPayAmount - 代金券金额
-	// incentivePayAmount  - 赠送金金额
-	// transferPayAmount -分成金金额
+	// <p>排序字段，枚举值如下：<br>realCost  - 折后总价<br>cashPayAmount - 现金金额<br>voucherPayAmount - 代金券金额<br>incentivePayAmount  - 赠送金金额<br>transferPayAmount -分成金金额</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// 排序类型，枚举值如下：
-	// asc - 升序
-	// desc - 降序
+	// <p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 产品编码，用作筛选
+	// <p>产品编码，用作筛选</p>
 	BusinessCodes []*string `json:"BusinessCodes,omitnil,omitempty" name:"BusinessCodes"`
 
-	// 子产品编码，用作筛选
+	// <p>子产品编码，用作筛选</p>
 	ProductCodes []*string `json:"ProductCodes,omitnil,omitempty" name:"ProductCodes"`
 
-	// 组件名称编码，用作筛选
+	// <p>组件名称编码，用作筛选</p>
 	ItemCodes []*string `json:"ItemCodes,omitnil,omitempty" name:"ItemCodes"`
 
-	// 地域ID，用作筛选
+	// <p>地域ID，用作筛选</p>
 	RegionIds []*uint64 `json:"RegionIds,omitnil,omitempty" name:"RegionIds"`
 
-	// 实例类型编码，用作筛选
+	// <p>实例类型编码，用作筛选</p>
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 
-	// 计费模式编码，用作筛选
+	// <p>计费模式编码，用作筛选</p>
 	PayModes []*string `json:"PayModes,omitnil,omitempty" name:"PayModes"`
 
-	// 操作者UIN，用作筛选
+	// <p>操作者UIN，用作筛选</p>
 	OperateUins []*string `json:"OperateUins,omitnil,omitempty" name:"OperateUins"`
 
-	// 使用者UIN，用作筛选
+	// <p>使用者UIN，用作筛选</p>
 	OwnerUins []*string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
-	// 模糊搜索：支持标签、资源id、资源别名
+	// <p>模糊搜索：支持标签、资源id、资源别名</p>
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 标签，用作筛选
+	// <p>标签，用作筛选</p>
 	Tag []*string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 项目ID，用作筛选
+	// <p>项目ID，用作筛选</p>
 	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 
-	// 交易类型编码，用作筛选
+	// <p>交易类型编码，用作筛选</p>
 	ActionTypes []*string `json:"ActionTypes,omitnil,omitempty" name:"ActionTypes"`
 }
 
@@ -9173,14 +8980,14 @@ func (r *DescribeGatherResourceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGatherResourceResponseParams struct {
-	// 总条数
+	// <p>总条数</p>
 	RecordNum *int64 `json:"RecordNum,omitnil,omitempty" name:"RecordNum"`
 
-	// 资源归集汇总
+	// <p>资源归集汇总</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatherResourceSummary []*GatherResourceSummary `json:"GatherResourceSummary,omitnil,omitempty" name:"GatherResourceSummary"`
 
-	// 数据更新时间
+	// <p>数据更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastUpdateTime *string `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
 
@@ -9206,20 +9013,20 @@ func (r *DescribeGatherResourceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGatherRuleDetailRequestParams struct {
-	// 所查询归集规则ID
+	// <p>所查询归集规则ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
 type DescribeGatherRuleDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 所查询归集规则ID
+	// <p>所查询归集规则ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
@@ -9245,16 +9052,16 @@ func (r *DescribeGatherRuleDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGatherRuleDetailResponseParams struct {
-	// 归集规则ID
+	// <p>归集规则ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 归集规则所属UIN
+	// <p>归集规则所属UIN</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 归集规则最后更新时间
+	// <p>归集规则最后更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 归集规则详情
+	// <p>归集规则详情</p>
 	RuleDetail *AllocationRuleExpression `json:"RuleDetail,omitnil,omitempty" name:"RuleDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10123,44 +9930,44 @@ type JsonObject struct {
 
 // Predefined struct for user
 type ModifyAllocationRuleRequestParams struct {
-	// 所编辑公摊规则ID
+	// <p>所编辑公摊规则ID</p>
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 编辑后公摊规则名称
+	// <p>编辑后公摊规则名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 公摊策略类型，枚举值如下： 1 - 自定义分摊占比 2 - 等比分摊 3 - 按占比分摊
+	// <p>公摊策略类型，枚举值如下： 1 - 自定义分摊占比 2 - 等比分摊 3 - 按占比分摊</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 编辑后公摊规则表达式
+	// <p>编辑后公摊规则表达式</p>
 	RuleDetail *AllocationRuleExpression `json:"RuleDetail,omitnil,omitempty" name:"RuleDetail"`
 
-	// 编辑后公摊比例表达式
+	// <p>编辑后公摊比例表达式</p>
 	RatioDetail []*AllocationRationExpression `json:"RatioDetail,omitnil,omitempty" name:"RatioDetail"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
 type ModifyAllocationRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 所编辑公摊规则ID
+	// <p>所编辑公摊规则ID</p>
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 编辑后公摊规则名称
+	// <p>编辑后公摊规则名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 公摊策略类型，枚举值如下： 1 - 自定义分摊占比 2 - 等比分摊 3 - 按占比分摊
+	// <p>公摊策略类型，枚举值如下： 1 - 自定义分摊占比 2 - 等比分摊 3 - 按占比分摊</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 编辑后公摊规则表达式
+	// <p>编辑后公摊规则表达式</p>
 	RuleDetail *AllocationRuleExpression `json:"RuleDetail,omitnil,omitempty" name:"RuleDetail"`
 
-	// 编辑后公摊比例表达式
+	// <p>编辑后公摊比例表达式</p>
 	RatioDetail []*AllocationRationExpression `json:"RatioDetail,omitnil,omitempty" name:"RatioDetail"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
@@ -10212,44 +10019,44 @@ func (r *ModifyAllocationRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAllocationUnitRequestParams struct {
-	// 所修改分账单元ID
+	// <p>所修改分账单元ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 修改后分账单元名称
+	// <p>修改后分账单元名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 修改后分账单元源组织名称
+	// <p>修改后分账单元源组织名称</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// 修改后分账单元源组织ID
+	// <p>修改后分账单元源组织ID</p>
 	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
 
-	// 分账单元备注说明
+	// <p>分账单元备注说明</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
 type ModifyAllocationUnitRequest struct {
 	*tchttp.BaseRequest
 	
-	// 所修改分账单元ID
+	// <p>所修改分账单元ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 修改后分账单元名称
+	// <p>修改后分账单元名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 修改后分账单元源组织名称
+	// <p>修改后分账单元源组织名称</p>
 	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
 
-	// 修改后分账单元源组织ID
+	// <p>修改后分账单元源组织ID</p>
 	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
 
-	// 分账单元备注说明
+	// <p>分账单元备注说明</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
@@ -10453,26 +10260,26 @@ func (r *ModifyBudgetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyGatherRuleRequestParams struct {
-	// 所编辑归集规则ID
+	// <p>所编辑归集规则ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 所编辑分账规则详情
+	// <p>所编辑分账规则详情</p>
 	RuleDetail *AllocationRuleExpression `json:"RuleDetail,omitnil,omitempty" name:"RuleDetail"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
 type ModifyGatherRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 所编辑归集规则ID
+	// <p>所编辑归集规则ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 所编辑分账规则详情
+	// <p>所编辑分账规则详情</p>
 	RuleDetail *AllocationRuleExpression `json:"RuleDetail,omitnil,omitempty" name:"RuleDetail"`
 
-	// 月份，不传默认当前月
+	// <p>月份，不传默认当前月</p>
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 }
 
