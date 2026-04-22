@@ -3702,51 +3702,57 @@ func (r *DescribeDBBackupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBErrlogsRequestParams struct {
-	// 实例ID。	可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	// <p>实例ID。    可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。	
+	// <p>查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 查询结束时间，形如2018-01-01 00:00:00。	
+	// <p>查询结束时间，形如2018-01-01 00:00:00。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 数据库名字。
+	// <p>数据库名字。</p>
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
-	// 搜索关键字。
+	// <p>搜索关键字。</p>
 	SearchKeys []*string `json:"SearchKeys,omitnil,omitempty" name:"SearchKeys"`
 
-	// 每页显示数量，取值范围为1-100。默认值为50。	
+	// <p>每页显示数量，取值范围为1-100。默认值为50。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 数据偏移量，从0开始。默认值为0。	
+	// <p>数据偏移量，从0开始。默认值为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>日志过滤条件。格式为  [{Type: &quot;ApplicationName&quot;, Compare: &quot;INC&quot;, Value: [&quot;123&quot;]}]。</p>
+	LogFilters []*LogFilter `json:"LogFilters,omitnil,omitempty" name:"LogFilters"`
 }
 
 type DescribeDBErrlogsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。	可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	// <p>实例ID。    可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。	
+	// <p>查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 查询结束时间，形如2018-01-01 00:00:00。	
+	// <p>查询结束时间，形如2018-01-01 00:00:00。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 数据库名字。
+	// <p>数据库名字。</p>
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
-	// 搜索关键字。
+	// <p>搜索关键字。</p>
 	SearchKeys []*string `json:"SearchKeys,omitnil,omitempty" name:"SearchKeys"`
 
-	// 每页显示数量，取值范围为1-100。默认值为50。	
+	// <p>每页显示数量，取值范围为1-100。默认值为50。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 数据偏移量，从0开始。默认值为0。	
+	// <p>数据偏移量，从0开始。默认值为0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>日志过滤条件。格式为  [{Type: &quot;ApplicationName&quot;, Compare: &quot;INC&quot;, Value: [&quot;123&quot;]}]。</p>
+	LogFilters []*LogFilter `json:"LogFilters,omitnil,omitempty" name:"LogFilters"`
 }
 
 func (r *DescribeDBErrlogsRequest) ToJsonString() string {
@@ -3768,6 +3774,7 @@ func (r *DescribeDBErrlogsRequest) FromJsonString(s string) error {
 	delete(f, "SearchKeys")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "LogFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBErrlogsRequest has unknown keys!", "")
 	}
@@ -3776,10 +3783,10 @@ func (r *DescribeDBErrlogsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBErrlogsResponseParams struct {
-	// 查询到的日志数量，最大值为10000条。
+	// <p>查询到的日志数量，最大值为10000条。</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 错误日志详细信息集合。
+	// <p>错误日志详细信息集合。</p>
 	Details []*ErrLogDetail `json:"Details,omitnil,omitempty" name:"Details"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6006,17 +6013,45 @@ type EncryptionKey struct {
 }
 
 type ErrLogDetail struct {
-	// 用户名
+	// <p>用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 数据库名字
+	// <p>数据库名字</p>
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 
-	// 错误发生时间
+	// <p>错误发生时间</p>
 	ErrTime *string `json:"ErrTime,omitnil,omitempty" name:"ErrTime"`
 
-	// 错误消息
+	// <p>错误消息</p>
 	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
+
+	// <p>进程ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessId *int64 `json:"ProcessId,omitnil,omitempty" name:"ProcessId"`
+
+	// <p>客户端地址</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientAddr *string `json:"ClientAddr,omitnil,omitempty" name:"ClientAddr"`
+
+	// <p>会话ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>会话开始时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionStartTime *string `json:"SessionStartTime,omitnil,omitempty" name:"SessionStartTime"`
+
+	// <p>虚拟事务ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VirtualTransactionId *string `json:"VirtualTransactionId,omitnil,omitempty" name:"VirtualTransactionId"`
+
+	// <p>SQLSTATE错误码</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlStateCode *string `json:"SqlStateCode,omitnil,omitempty" name:"SqlStateCode"`
+
+	// <p>客户端应用名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *string `json:"ApplicationName,omitnil,omitempty" name:"ApplicationName"`
 }
 
 type EventInfo struct {
@@ -6502,6 +6537,17 @@ type LogBackup struct {
 
 	// 备份的过期时间。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+}
+
+type LogFilter struct {
+	// <p>过滤条件名称。</p><p>如：sql - SQL命令详情</p><p>host – 客户端 IP；<br>user – 数据库账户。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>过滤条件匹配类型。支持：<br>INC – 包含；     （多个值之间是||的关系）<br>EXC – 不包含； （多个值之间是&amp;&amp;的关系）<br>EQS – 等于；     （多个值之间是||的关系）<br>NEQ – 不等于；（多个值之间是&amp;&amp;的关系）<br>RG – 范围；</p>
+	Compare *string `json:"Compare,omitnil,omitempty" name:"Compare"`
+
+	// <p>过滤条件匹配值。当Compare=RG时，例：[&quot;1-100&quot;,&quot;200-300&quot;]</p>
+	Value []*string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 // Predefined struct for user
@@ -8617,23 +8663,43 @@ type PolicyRule struct {
 }
 
 type RawSlowQuery struct {
-	// 慢SQL 语句
+	// <p>慢SQL 语句</p>
 	RawQuery *string `json:"RawQuery,omitnil,omitempty" name:"RawQuery"`
 
-	// 慢SQL 查询的数据库
+	// <p>慢SQL 查询的数据库</p>
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
-	// 慢SQL执行 耗时
+	// <p>慢SQL执行 耗时</p>
 	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 执行慢SQL的客户端
+	// <p>执行慢SQL的客户端</p>
 	ClientAddr *string `json:"ClientAddr,omitnil,omitempty" name:"ClientAddr"`
 
-	// 执行慢SQL的用户名
+	// <p>执行慢SQL的用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 慢SQL执行的开始时间
+	// <p>慢SQL执行的开始时间</p>
 	SessionStartTime *string `json:"SessionStartTime,omitnil,omitempty" name:"SessionStartTime"`
+
+	// <p>执行慢SQL的进程ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessId *int64 `json:"ProcessId,omitnil,omitempty" name:"ProcessId"`
+
+	// <p>执行慢SQL的会话ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>执行慢SQL的事务ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VirtualTransactionId *string `json:"VirtualTransactionId,omitnil,omitempty" name:"VirtualTransactionId"`
+
+	// <p>执行慢SQL的状态码</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlStateCode *string `json:"SqlStateCode,omitnil,omitempty" name:"SqlStateCode"`
+
+	// <p>执行慢SQL的客户端名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *string `json:"ApplicationName,omitnil,omitempty" name:"ApplicationName"`
 }
 
 type ReadOnlyGroup struct {

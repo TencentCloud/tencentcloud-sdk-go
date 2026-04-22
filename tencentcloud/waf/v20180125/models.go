@@ -504,6 +504,274 @@ func (r *AddAttackWhiteRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type AddBatchCustomRuleRequestParams struct {
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 优先级
+	SortId *int64 `json:"SortId,omitnil,omitempty" name:"SortId"`
+
+	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向
+	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// 重定向地址
+	Redirect *string `json:"Redirect,omitnil,omitempty" name:"Redirect"`
+
+	// 加白模块
+	Bypass *string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 事件Id
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 域名列表
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 策略详情列表
+	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
+
+	// 页面ID
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 动作灰度比例
+	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
+}
+
+type AddBatchCustomRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 优先级
+	SortId *int64 `json:"SortId,omitnil,omitempty" name:"SortId"`
+
+	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向
+	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// 重定向地址
+	Redirect *string `json:"Redirect,omitnil,omitempty" name:"Redirect"`
+
+	// 加白模块
+	Bypass *string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 事件Id
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 域名列表
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 策略详情列表
+	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
+
+	// 页面ID
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 动作灰度比例
+	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
+}
+
+func (r *AddBatchCustomRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddBatchCustomRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "ExpireTime")
+	delete(f, "SortId")
+	delete(f, "ActionType")
+	delete(f, "Redirect")
+	delete(f, "Bypass")
+	delete(f, "Remark")
+	delete(f, "EventId")
+	delete(f, "Domains")
+	delete(f, "Strategies")
+	delete(f, "JobType")
+	delete(f, "JobDateTime")
+	delete(f, "LogicalOp")
+	delete(f, "PageId")
+	delete(f, "ActionRatio")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddBatchCustomRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddBatchCustomRuleResponseParams struct {
+	// 操作成功
+	Res *string `json:"Res,omitnil,omitempty" name:"Res"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddBatchCustomRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *AddBatchCustomRuleResponseParams `json:"Response"`
+}
+
+func (r *AddBatchCustomRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddBatchCustomRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddBatchCustomWhiteRuleRequestParams struct {
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 优先级
+	SortId *int64 `json:"SortId,omitnil,omitempty" name:"SortId"`
+
+	// 策略详情
+	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
+
+	// 加白的模块，owasp：Web防护-规则引擎、ai：Web防护-AI引擎、ip_auto_deny：IP封禁、geoip：访问控制-地域封禁、acl：访问控制-自定义规则、cc：CC防护、antileakage：信息防泄漏防护、bwip：IP黑白名单、botrpc：BOT防护、api：API安全、applet：小程序防护
+	Bypass []*string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 域名列表，如果绑定的是批量域名，和GroupIds参数二选一
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 防护对象组ID列表，如果绑定的是防护对象组，和Domains参数二选一
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
+}
+
+type AddBatchCustomWhiteRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 优先级
+	SortId *int64 `json:"SortId,omitnil,omitempty" name:"SortId"`
+
+	// 策略详情
+	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
+
+	// 加白的模块，owasp：Web防护-规则引擎、ai：Web防护-AI引擎、ip_auto_deny：IP封禁、geoip：访问控制-地域封禁、acl：访问控制-自定义规则、cc：CC防护、antileakage：信息防泄漏防护、bwip：IP黑白名单、botrpc：BOT防护、api：API安全、applet：小程序防护
+	Bypass []*string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 域名列表，如果绑定的是批量域名，和GroupIds参数二选一
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 防护对象组ID列表，如果绑定的是防护对象组，和Domains参数二选一
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
+}
+
+func (r *AddBatchCustomWhiteRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddBatchCustomWhiteRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "SortId")
+	delete(f, "Strategies")
+	delete(f, "Bypass")
+	delete(f, "JobType")
+	delete(f, "JobDateTime")
+	delete(f, "Domains")
+	delete(f, "GroupIds")
+	delete(f, "LogicalOp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddBatchCustomWhiteRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddBatchCustomWhiteRuleResponseParams struct {
+	// 添加成功的规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddBatchCustomWhiteRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *AddBatchCustomWhiteRuleResponseParams `json:"Response"`
+}
+
+func (r *AddBatchCustomWhiteRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddBatchCustomWhiteRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AddBypassAllRuleRequestParams struct {
 
 }
@@ -1827,6 +2095,129 @@ type AutoDenyDetail struct {
 
 	// 最后更新时间
 	LastUpdateTime *string `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
+}
+
+type BatchCustomRuleListData struct {
+	// 规则列表
+	List []*BatchCustomRuleListItem `json:"List,omitnil,omitempty" name:"List"`
+
+	// 列表总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+}
+
+type BatchCustomRuleListItem struct {
+	// 规则Id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
+	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// 加白模块
+	Bypass *string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
+
+	// 有效期
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 重定向地址
+	Redirect *string `json:"Redirect,omitnil,omitempty" name:"Redirect"`
+
+	// 优先级
+	SortId *int64 `json:"SortId,omitnil,omitempty" name:"SortId"`
+
+	// 开关状态
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 域名列表
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 策略列表
+	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
+
+	// 事件Id
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 生效状态
+	ValidStatus *uint64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 周期任务粒度
+	CronType *string `json:"CronType,omitnil,omitempty" name:"CronType"`
+
+	// 标签
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 页面ID
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
+
+	// 动作灰度的比例
+	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
+}
+
+type BatchCustomWhiteRule struct {
+	// 规则ID
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 规则名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 优先级
+	SortId *int64 `json:"SortId,omitnil,omitempty" name:"SortId"`
+
+	// 策略详情
+	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
+
+	// 加白的模块，owasp：Web防护-规则引擎、ai：Web防护-AI引擎、ip_auto_deny：IP封禁、geoip：访问控制-地域封禁、acl：访问控制-自定义规则、cc：CC防护、antileakage：信息防泄漏防护、bwip：IP黑白名单、botrpc：BOT防护、api：API安全、applet：小程序防护
+	Bypass []*string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 周期任务的类型
+	CronType *string `json:"CronType,omitnil,omitempty" name:"CronType"`
+
+	// 域名列表，如果绑定的是批量域名
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 防护对象组ID列表，如果绑定的是防护对象组
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// 生效状态，1：生效中、0：未生效
+	ValidStatus *uint64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
+
+	// 规则创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 规则更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 规则开关状态，1：开启、0：关闭
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 }
 
 type BatchDomainResult struct {
@@ -3920,6 +4311,77 @@ func (r *CreatePostCLSFlowResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateProtectGroupRequestParams struct {
+	// 防护对象组名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 防护对象组的应用范围
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 防护对象组备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type CreateProtectGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 防护对象组名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 防护对象组的应用范围
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 防护对象组备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+func (r *CreateProtectGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProtectGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Domains")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProtectGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateProtectGroupResponseParams struct {
+	// 防护对象组的ID
+	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateProtectGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateProtectGroupResponseParams `json:"Response"`
+}
+
+func (r *CreateProtectGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProtectGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateRateLimitV2RequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -4478,6 +4940,140 @@ func (r *DeleteAttackWhiteRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAttackWhiteRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBatchCustomRuleRequestParams struct {
+	// 数据类型 
+	// "custom-rule"-自定义规则、"custom-white-rule"-精准白名单
+	DataType *string `json:"DataType,omitnil,omitempty" name:"DataType"`
+
+	// 0-指定Id删除、1-删除全部（除部分排除的Id）
+	IsDeleteAll *int64 `json:"IsDeleteAll,omitnil,omitempty" name:"IsDeleteAll"`
+
+	// 具体Ids 由IsDeleteAll而定
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 筛选条件
+	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DeleteBatchCustomRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据类型 
+	// "custom-rule"-自定义规则、"custom-white-rule"-精准白名单
+	DataType *string `json:"DataType,omitnil,omitempty" name:"DataType"`
+
+	// 0-指定Id删除、1-删除全部（除部分排除的Id）
+	IsDeleteAll *int64 `json:"IsDeleteAll,omitnil,omitempty" name:"IsDeleteAll"`
+
+	// 具体Ids 由IsDeleteAll而定
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 筛选条件
+	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DeleteBatchCustomRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBatchCustomRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataType")
+	delete(f, "IsDeleteAll")
+	delete(f, "Ids")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBatchCustomRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBatchCustomRuleResponseParams struct {
+	// 操作成功
+	Res *string `json:"Res,omitnil,omitempty" name:"Res"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteBatchCustomRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteBatchCustomRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteBatchCustomRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBatchCustomRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBatchCustomWhiteRuleRequestParams struct {
+	// 要删除的规则ID列表
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+type DeleteBatchCustomWhiteRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要删除的规则ID列表
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+}
+
+func (r *DeleteBatchCustomWhiteRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBatchCustomWhiteRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBatchCustomWhiteRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBatchCustomWhiteRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteBatchCustomWhiteRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteBatchCustomWhiteRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteBatchCustomWhiteRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBatchCustomWhiteRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5303,6 +5899,121 @@ func (r *DeleteOwaspWhiteRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteOwaspWhiteRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteProtectGroupDomainRequestParams struct {
+	// 防护对象组ID
+	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 解除绑定的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type DeleteProtectGroupDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// 防护对象组ID
+	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 解除绑定的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+func (r *DeleteProtectGroupDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteProtectGroupDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteProtectGroupDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteProtectGroupDomainResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteProtectGroupDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteProtectGroupDomainResponseParams `json:"Response"`
+}
+
+func (r *DeleteProtectGroupDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteProtectGroupDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteProtectGroupRequestParams struct {
+	// 防护对象组ID列表，支持批量删除
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+}
+
+type DeleteProtectGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 防护对象组ID列表，支持批量删除
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+}
+
+func (r *DeleteProtectGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteProtectGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteProtectGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteProtectGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteProtectGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteProtectGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteProtectGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteProtectGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7153,6 +7864,190 @@ func (r *DescribeAutoDenyIPResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAutoDenyIPResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBatchCustomRuleListRequestParams struct {
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 页尺寸
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序字段
+	// "update_time"-更新时间、"expire_time"-过期时间、"sort_id"-优先级、"id"-规则Id、"create_time"-创建时间
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 排序类型
+	// desc-降序、asc-升序
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 数据类型 "custom-rule"-自定义规则、"custom-white-rule"-精准白名单
+	DataType *string `json:"DataType,omitnil,omitempty" name:"DataType"`
+
+	// 筛选列表
+	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeBatchCustomRuleListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 页尺寸
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序字段
+	// "update_time"-更新时间、"expire_time"-过期时间、"sort_id"-优先级、"id"-规则Id、"create_time"-创建时间
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 排序类型
+	// desc-降序、asc-升序
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 数据类型 "custom-rule"-自定义规则、"custom-white-rule"-精准白名单
+	DataType *string `json:"DataType,omitnil,omitempty" name:"DataType"`
+
+	// 筛选列表
+	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeBatchCustomRuleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchCustomRuleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "By")
+	delete(f, "Order")
+	delete(f, "DataType")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBatchCustomRuleListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBatchCustomRuleListResponseParams struct {
+	// 操作成功
+	Data *BatchCustomRuleListData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBatchCustomRuleListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBatchCustomRuleListResponseParams `json:"Response"`
+}
+
+func (r *DescribeBatchCustomRuleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchCustomRuleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBatchCustomWhiteRulesRequestParams struct {
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 页尺寸，默认为10
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序字段"modify_time"-更新时间、"sort_id"-优先级、"id"-规则Id、"create_time"-创建时间，默认为update_time
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 排序类型desc-降序、asc-升序，默认为desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 筛选列表，支持按照 ID：规则RuleId、Domain：生效的域名、Name：规则名称来筛选、ValidStatus：生效状态、Status：开关状态、TimerType：生效方式
+	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeBatchCustomWhiteRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 页尺寸，默认为10
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序字段"modify_time"-更新时间、"sort_id"-优先级、"id"-规则Id、"create_time"-创建时间，默认为update_time
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 排序类型desc-降序、asc-升序，默认为desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 筛选列表，支持按照 ID：规则RuleId、Domain：生效的域名、Name：规则名称来筛选、ValidStatus：生效状态、Status：开关状态、TimerType：生效方式
+	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeBatchCustomWhiteRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchCustomWhiteRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "By")
+	delete(f, "Order")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBatchCustomWhiteRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBatchCustomWhiteRulesResponseParams struct {
+	// 批量规则列表  
+	Data []*BatchCustomWhiteRule `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBatchCustomWhiteRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBatchCustomWhiteRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeBatchCustomWhiteRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchCustomWhiteRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10975,6 +11870,94 @@ func (r *DescribePostCLSFlowsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeProtectGroupRequestParams struct {
+	// 查询防护对象的查询条件，如果为空则获取所有的防护对象组，支持按照 Name：对象组名称、Domain：绑定的域名、InstanceID：实例ID、ID：对象组ID、InstanceName：实例名称
+	Filter []*FiltersItemNew `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 偏移量，默认为0
+	OffSet *uint64 `json:"OffSet,omitnil,omitempty" name:"OffSet"`
+
+	// 页尺寸，默认为10
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序字段，支持按照 "update_time"-更新时间、"create_time"-创建时间
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 排序类型desc-降序、asc-升序
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+type DescribeProtectGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询防护对象的查询条件，如果为空则获取所有的防护对象组，支持按照 Name：对象组名称、Domain：绑定的域名、InstanceID：实例ID、ID：对象组ID、InstanceName：实例名称
+	Filter []*FiltersItemNew `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 偏移量，默认为0
+	OffSet *uint64 `json:"OffSet,omitnil,omitempty" name:"OffSet"`
+
+	// 页尺寸，默认为10
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序字段，支持按照 "update_time"-更新时间、"create_time"-创建时间
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 排序类型desc-降序、asc-升序
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+func (r *DescribeProtectGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProtectGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filter")
+	delete(f, "OffSet")
+	delete(f, "Limit")
+	delete(f, "By")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProtectGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProtectGroupResponseParams struct {
+	// 防护对象组的详情
+	Data []*ProtectGroupInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 对象组的总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeProtectGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeProtectGroupResponseParams `json:"Response"`
+}
+
+func (r *DescribeProtectGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProtectGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeProtectionModesRequestParams struct {
 	// sparta-waf或clb
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
@@ -14449,6 +15432,14 @@ type InOutputUCBRuleEntry struct {
 	ParamCompareList []*ParamCompareList `json:"ParamCompareList,omitnil,omitempty" name:"ParamCompareList"`
 }
 
+type InstanceBriefInfo struct {
+	// 实例ID
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 实例名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
 type InstanceInfo struct {
 	// 实例唯一ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -16265,6 +17256,419 @@ func (r *ModifyAttackWhiteRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAttackWhiteRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBatchCustomRuleRequestParams struct {
+	// 批量规则Id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 优先级
+	SortId *int64 `json:"SortId,omitnil,omitempty" name:"SortId"`
+
+	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
+	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// 重定向地址
+	Redirect *string `json:"Redirect,omitnil,omitempty" name:"Redirect"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 事件Id
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 策略详情列表
+	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
+
+	// 加白模块
+	//
+	// Deprecated: Bypass is deprecated.
+	Bypass *string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
+
+	// 域名列表
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 防护对象组ID列表
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
+
+	// 页面ID
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 动作灰度的比例，1-100，默认是100
+	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
+}
+
+type ModifyBatchCustomRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 批量规则Id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 优先级
+	SortId *int64 `json:"SortId,omitnil,omitempty" name:"SortId"`
+
+	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
+	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// 重定向地址
+	Redirect *string `json:"Redirect,omitnil,omitempty" name:"Redirect"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 事件Id
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 策略详情列表
+	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
+
+	// 加白模块
+	Bypass *string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
+
+	// 域名列表
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 防护对象组ID列表
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
+
+	// 页面ID
+	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 动作灰度的比例，1-100，默认是100
+	ActionRatio *uint64 `json:"ActionRatio,omitnil,omitempty" name:"ActionRatio"`
+}
+
+func (r *ModifyBatchCustomRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBatchCustomRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "ExpireTime")
+	delete(f, "SortId")
+	delete(f, "ActionType")
+	delete(f, "Redirect")
+	delete(f, "Remark")
+	delete(f, "EventId")
+	delete(f, "Strategies")
+	delete(f, "Bypass")
+	delete(f, "Domains")
+	delete(f, "JobType")
+	delete(f, "JobDateTime")
+	delete(f, "GroupIds")
+	delete(f, "LogicalOp")
+	delete(f, "PageId")
+	delete(f, "ActionRatio")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBatchCustomRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBatchCustomRuleResponseParams struct {
+	// 操作成功
+	Res *string `json:"Res,omitnil,omitempty" name:"Res"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBatchCustomRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBatchCustomRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyBatchCustomRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBatchCustomRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBatchCustomRuleStatusRequestParams struct {
+	// 批量Id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 开关状态 0-关、1-开
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ModifyBatchCustomRuleStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 批量Id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 开关状态 0-关、1-开
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *ModifyBatchCustomRuleStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBatchCustomRuleStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBatchCustomRuleStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBatchCustomRuleStatusResponseParams struct {
+	// 操作成功
+	Res *string `json:"Res,omitnil,omitempty" name:"Res"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBatchCustomRuleStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBatchCustomRuleStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyBatchCustomRuleStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBatchCustomRuleStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBatchCustomWhiteRuleRequestParams struct {
+	// 规则ID
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 优先级
+	SortId *int64 `json:"SortId,omitnil,omitempty" name:"SortId"`
+
+	// 策略详情
+	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
+
+	// 加白的模块，owasp：Web防护-规则引擎、ai：Web防护-AI引擎、ip_auto_deny：IP封禁、geoip：访问控制-地域封禁、acl：访问控制-自定义规则、cc：CC防护、antileakage：信息防泄漏防护、bwip：IP黑白名单、botrpc：BOT防护、api：API安全、applet：小程序防护
+	Bypass []*string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 域名列表，如果绑定的是批量域名
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 防护对象组ID列表，如果绑定的是防护对象组
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
+}
+
+type ModifyBatchCustomWhiteRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则ID
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 优先级
+	SortId *int64 `json:"SortId,omitnil,omitempty" name:"SortId"`
+
+	// 策略详情
+	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
+
+	// 加白的模块，owasp：Web防护-规则引擎、ai：Web防护-AI引擎、ip_auto_deny：IP封禁、geoip：访问控制-地域封禁、acl：访问控制-自定义规则、cc：CC防护、antileakage：信息防泄漏防护、bwip：IP黑白名单、botrpc：BOT防护、api：API安全、applet：小程序防护
+	Bypass []*string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
+
+	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 域名列表，如果绑定的是批量域名
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 防护对象组ID列表，如果绑定的是防护对象组
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
+}
+
+func (r *ModifyBatchCustomWhiteRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBatchCustomWhiteRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ID")
+	delete(f, "Name")
+	delete(f, "SortId")
+	delete(f, "Strategies")
+	delete(f, "Bypass")
+	delete(f, "JobType")
+	delete(f, "JobDateTime")
+	delete(f, "Domains")
+	delete(f, "GroupIds")
+	delete(f, "LogicalOp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBatchCustomWhiteRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBatchCustomWhiteRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBatchCustomWhiteRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBatchCustomWhiteRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyBatchCustomWhiteRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBatchCustomWhiteRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBatchCustomWhiteRuleStatusRequestParams struct {
+	// 要更新的规则ID列表
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 开关，1：开启、0：关闭
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ModifyBatchCustomWhiteRuleStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要更新的规则ID列表
+	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
+
+	// 开关，1：开启、0：关闭
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *ModifyBatchCustomWhiteRuleStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBatchCustomWhiteRuleStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBatchCustomWhiteRuleStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBatchCustomWhiteRuleStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBatchCustomWhiteRuleStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBatchCustomWhiteRuleStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyBatchCustomWhiteRuleStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBatchCustomWhiteRuleStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -18994,6 +20398,84 @@ func (r *ModifyOwaspWhiteRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyProtectGroupRequestParams struct {
+	// 防护对象组名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 防护对象组ID
+	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 防护对象组备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 防护对象组的应用范围
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+}
+
+type ModifyProtectGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 防护对象组名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 防护对象组ID
+	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 防护对象组备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 防护对象组的应用范围
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+}
+
+func (r *ModifyProtectGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyProtectGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "GroupId")
+	delete(f, "Remark")
+	delete(f, "Domains")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyProtectGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyProtectGroupResponseParams struct {
+	// 防护对象组的ID
+	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyProtectGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyProtectGroupResponseParams `json:"Response"`
+}
+
+func (r *ModifyProtectGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyProtectGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyProtectionLevelRequestParams struct {
 	// 客户域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -20552,6 +22034,37 @@ type PromptDetectResult struct {
 
 	// 置信度
 	Confidence *uint64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+}
+
+type ProtectGroupDomainInfo struct {
+	// 防护对象组中绑定的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 防护对象组中绑定的域名对应所属的实例信息，一个域名可能存在多个实例中
+	Instances []*InstanceBriefInfo `json:"Instances,omitnil,omitempty" name:"Instances"`
+}
+
+type ProtectGroupInfo struct {
+	// 防护对象组ID
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 防护对象组名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 防护对象组备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 防护对象组中绑定的域名详情
+	Domains []*ProtectGroupDomainInfo `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 关联的批量规则数
+	RuleNum *uint64 `json:"RuleNum,omitnil,omitempty" name:"RuleNum"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type QPSPackageNew struct {

@@ -1303,7 +1303,7 @@ type DescribeDLPFileDetectResultRequestParams struct {
 	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
 	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
 
-	// 查询ID，即提交送检任务接口（CreateDLPFileDetectionTask）返回的任务ID（DLPFileDetectionTaskID）
+	// <p>查询ID，即提交送检任务接口（CreateDLPFileDetectionTask）返回的任务ID（DLPFileDetectionTaskID）</p>
 	QueryID *string `json:"QueryID,omitnil,omitempty" name:"QueryID"`
 }
 
@@ -1313,7 +1313,7 @@ type DescribeDLPFileDetectResultRequest struct {
 	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
 	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
 
-	// 查询ID，即提交送检任务接口（CreateDLPFileDetectionTask）返回的任务ID（DLPFileDetectionTaskID）
+	// <p>查询ID，即提交送检任务接口（CreateDLPFileDetectionTask）返回的任务ID（DLPFileDetectionTaskID）</p>
 	QueryID *string `json:"QueryID,omitnil,omitempty" name:"QueryID"`
 }
 
@@ -1339,7 +1339,7 @@ func (r *DescribeDLPFileDetectResultRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDLPFileDetectResultResponseParams struct {
-	// 文件鉴定任务结果数据。详情查看具体数据结构
+	// <p>文件鉴定任务结果数据。详情查看具体数据结构</p>
 	Data *DescribeDLPFileDetectResultData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

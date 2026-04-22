@@ -1007,50 +1007,50 @@ func (r *DescribeAppSingleCaseListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApplicationExitReportDetailRequestParams struct {
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 formlist 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 问题Id
+	// <p>问题Id</p>
 	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
 type DescribeApplicationExitReportDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 formlist 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 问题Id
+	// <p>问题Id</p>
 	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
@@ -1081,13 +1081,13 @@ func (r *DescribeApplicationExitReportDetailRequest) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeApplicationExitReportDetailResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 消息
+	// <p>消息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1112,62 +1112,62 @@ func (r *DescribeApplicationExitReportDetailResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type DescribeApplicationExitReportListRequestParams struct {
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 formlist 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 当前页码
+	// <p>当前页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页展示最大数量
+	// <p>每页展示最大数量</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序类型
+	// <p>排序类型</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
 type DescribeApplicationExitReportListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 formlist 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 当前页码
+	// <p>当前页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页展示最大数量
+	// <p>每页展示最大数量</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序类型
+	// <p>排序类型</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
@@ -1200,13 +1200,13 @@ func (r *DescribeApplicationExitReportListRequest) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeApplicationExitReportListResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 消息
+	// <p>消息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7758,62 +7758,62 @@ func (r *DescribeErrorResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeExceptionDetailRequestParams struct {
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 消息唯一标识
+	// <p>消息唯一标识</p>
 	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
 
-	// 集群堆栈类型
+	// <p>集群堆栈类型</p>
 	ClusterStackType *int64 `json:"ClusterStackType,omitnil,omitempty" name:"ClusterStackType"`
 
-	// 特征
+	// <p>特征</p>
 	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
 
-	// 问题类型
+	// <p>问题类型</p>
 	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
 
-	// 事件开始时间
+	// <p>事件开始时间</p>
 	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
 
-	// 事件结束时间
+	// <p>事件结束时间</p>
 	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
 type DescribeExceptionDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 消息唯一标识
+	// <p>消息唯一标识</p>
 	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
 
-	// 集群堆栈类型
+	// <p>集群堆栈类型</p>
 	ClusterStackType *int64 `json:"ClusterStackType,omitnil,omitempty" name:"ClusterStackType"`
 
-	// 特征
+	// <p>特征</p>
 	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
 
-	// 问题类型
+	// <p>问题类型</p>
 	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
 
-	// 事件开始时间
+	// <p>事件开始时间</p>
 	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
 
-	// 事件结束时间
+	// <p>事件结束时间</p>
 	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
@@ -7846,13 +7846,13 @@ func (r *DescribeExceptionDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeExceptionDetailResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 消息
+	// <p>消息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7877,74 +7877,74 @@ func (r *DescribeExceptionDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeExceptionReportListRequestParams struct {
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 form_list 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 问题类型
+	// <p>问题类型</p>
 	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序方式
+	// <p>排序方式</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 特征
+	// <p>特征</p>
 	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
 
-	// 每页数目
+	// <p>每页数目</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 页码
+	// <p>页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 拓展字段
+	// <p>拓展字段</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
 type DescribeExceptionReportListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 form_list 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 问题类型
+	// <p>问题类型</p>
 	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序方式
+	// <p>排序方式</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 特征
+	// <p>特征</p>
 	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
 
-	// 每页数目
+	// <p>每页数目</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 页码
+	// <p>页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 拓展字段
+	// <p>拓展字段</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
@@ -7979,13 +7979,13 @@ func (r *DescribeExceptionReportListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeExceptionReportListResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 消息
+	// <p>消息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8010,50 +8010,50 @@ func (r *DescribeExceptionReportListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFOOMMallocProblemDetailRequestParams struct {
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 消息唯一标识
+	// <p>消息唯一标识</p>
 	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
 
-	// 特征
+	// <p>特征</p>
 	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
 
-	// 事件开始时间
+	// <p>事件开始时间</p>
 	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
 
-	// 事件结束时间
+	// <p>事件结束时间</p>
 	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
 type DescribeFOOMMallocProblemDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 消息唯一标识
+	// <p>消息唯一标识</p>
 	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
 
-	// 特征
+	// <p>特征</p>
 	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
 
-	// 事件开始时间
+	// <p>事件开始时间</p>
 	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
 
-	// 事件结束时间
+	// <p>事件结束时间</p>
 	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
@@ -8084,13 +8084,13 @@ func (r *DescribeFOOMMallocProblemDetailRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeFOOMMallocProblemDetailResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 消息
+	// <p>消息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8115,62 +8115,62 @@ func (r *DescribeFOOMMallocProblemDetailResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeFOOMMallocProblemListRequestParams struct {
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 formlist 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 当前页码
+	// <p>当前页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页展示最大数量
+	// <p>每页展示最大数量</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序类型
+	// <p>排序类型</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
 type DescribeFOOMMallocProblemListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 formlist 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 当前页码
+	// <p>当前页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页展示最大数量
+	// <p>每页展示最大数量</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序类型
+	// <p>排序类型</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
@@ -8203,13 +8203,13 @@ func (r *DescribeFOOMMallocProblemListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFOOMMallocProblemListResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 消息
+	// <p>消息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8234,68 +8234,68 @@ func (r *DescribeFOOMMallocProblemListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFOOMMallocReportListRequestParams struct {
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 formlist 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 特征
+	// <p>特征</p>
 	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
 
-	// 当前页码
+	// <p>当前页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页展示最大数量
+	// <p>每页展示最大数量</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序类型
+	// <p>排序类型</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
 type DescribeFOOMMallocReportListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 formlist 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 特征
+	// <p>特征</p>
 	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
 
-	// 当前页码
+	// <p>当前页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页展示最大数量
+	// <p>每页展示最大数量</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序类型
+	// <p>排序类型</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
@@ -8329,13 +8329,13 @@ func (r *DescribeFOOMMallocReportListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFOOMMallocReportListResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 消息
+	// <p>消息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8360,50 +8360,50 @@ func (r *DescribeFOOMMallocReportListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFOOMProblemDetailRequestParams struct {
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 消息唯一标识
+	// <p>消息唯一标识</p>
 	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
 
-	// 特征
+	// <p>特征</p>
 	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
 
-	// 事件开始时间
+	// <p>事件开始时间</p>
 	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
 
-	// 事件结束时间
+	// <p>事件结束时间</p>
 	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
 type DescribeFOOMProblemDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 消息唯一标识
+	// <p>消息唯一标识</p>
 	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
 
-	// 特征
+	// <p>特征</p>
 	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
 
-	// 事件开始时间
+	// <p>事件开始时间</p>
 	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
 
-	// 事件结束时间
+	// <p>事件结束时间</p>
 	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
@@ -8434,13 +8434,13 @@ func (r *DescribeFOOMProblemDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFOOMProblemDetailResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 消息
+	// <p>消息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8465,62 +8465,62 @@ func (r *DescribeFOOMProblemDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFOOMProblemListRequestParams struct {
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 formlist 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 当前页码
+	// <p>当前页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页展示最大数量
+	// <p>每页展示最大数量</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序类型
+	// <p>排序类型</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
 type DescribeFOOMProblemListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 formlist 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 当前页码
+	// <p>当前页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页展示最大数量
+	// <p>每页展示最大数量</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序类型
+	// <p>排序类型</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
@@ -8553,13 +8553,13 @@ func (r *DescribeFOOMProblemListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFOOMProblemListResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 消息
+	// <p>消息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8584,68 +8584,68 @@ func (r *DescribeFOOMProblemListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFOOMReportListRequestParams struct {
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 formlist 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 特征
+	// <p>特征</p>
 	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
 
-	// 当前页码
+	// <p>当前页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页展示最大数量
+	// <p>每页展示最大数量</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序类型
+	// <p>排序类型</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
 type DescribeFOOMReportListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 formlist 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 特征
+	// <p>特征</p>
 	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
 
-	// 当前页码
+	// <p>当前页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页展示最大数量
+	// <p>每页展示最大数量</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序类型
+	// <p>排序类型</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
@@ -8679,13 +8679,13 @@ func (r *DescribeFOOMReportListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFOOMReportListResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 消息
+	// <p>消息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8710,110 +8710,110 @@ func (r *DescribeFOOMReportListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIssuesDistributionRequestParams struct {
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 分布维度是自定义维度时，填‘user_custom’
+	// <p>分布维度是自定义维度时，填‘user_custom’</p>
 	DimType *string `json:"DimType,omitnil,omitempty" name:"DimType"`
 
-	// 维度，e.g. os_version, app_version, model等
+	// <p>维度，e.g. os_version, app_version, model等</p>
 	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
 
-	// 数字类型字段的区间范围
+	// <p>数字类型字段的区间范围</p>
 	Intervals []*int64 `json:"Intervals,omitnil,omitempty" name:"Intervals"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 form_list 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 问题Id
+	// <p>问题Id</p>
 	IssueId *string `json:"IssueId,omitnil,omitempty" name:"IssueId"`
 
-	// 问题类型
+	// <p>问题类型</p>
 	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
 
-	// 限制返回的个数，默认返回所有值
+	// <p>限制返回的个数，默认返回所有值</p>
 	ParamLimit *int64 `json:"ParamLimit,omitnil,omitempty" name:"ParamLimit"`
 
-	// 键
+	// <p>键</p>
 	MapKey *string `json:"MapKey,omitnil,omitempty" name:"MapKey"`
 
-	// 名称
+	// <p>名称</p>
 	MapName *string `json:"MapName,omitnil,omitempty" name:"MapName"`
 
-	// 指标类型
+	// <p>指标类型</p>
 	MetricType *int64 `json:"MetricType,omitnil,omitempty" name:"MetricType"`
 
-	// 每页数目
+	// <p>每页数目</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 页码
+	// <p>页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 用户自定义维度key
+	// <p>用户自定义维度key</p>
 	UserCustomKey *string `json:"UserCustomKey,omitnil,omitempty" name:"UserCustomKey"`
 
-	// 拓展字段
+	// <p>拓展字段</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
 type DescribeIssuesDistributionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 分布维度是自定义维度时，填‘user_custom’
+	// <p>分布维度是自定义维度时，填‘user_custom’</p>
 	DimType *string `json:"DimType,omitnil,omitempty" name:"DimType"`
 
-	// 维度，e.g. os_version, app_version, model等
+	// <p>维度，e.g. os_version, app_version, model等</p>
 	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
 
-	// 数字类型字段的区间范围
+	// <p>数字类型字段的区间范围</p>
 	Intervals []*int64 `json:"Intervals,omitnil,omitempty" name:"Intervals"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 form_list 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 问题Id
+	// <p>问题Id</p>
 	IssueId *string `json:"IssueId,omitnil,omitempty" name:"IssueId"`
 
-	// 问题类型
+	// <p>问题类型</p>
 	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
 
-	// 限制返回的个数，默认返回所有值
+	// <p>限制返回的个数，默认返回所有值</p>
 	ParamLimit *int64 `json:"ParamLimit,omitnil,omitempty" name:"ParamLimit"`
 
-	// 键
+	// <p>键</p>
 	MapKey *string `json:"MapKey,omitnil,omitempty" name:"MapKey"`
 
-	// 名称
+	// <p>名称</p>
 	MapName *string `json:"MapName,omitnil,omitempty" name:"MapName"`
 
-	// 指标类型
+	// <p>指标类型</p>
 	MetricType *int64 `json:"MetricType,omitnil,omitempty" name:"MetricType"`
 
-	// 每页数目
+	// <p>每页数目</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 页码
+	// <p>页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 用户自定义维度key
+	// <p>用户自定义维度key</p>
 	UserCustomKey *string `json:"UserCustomKey,omitnil,omitempty" name:"UserCustomKey"`
 
-	// 拓展字段
+	// <p>拓展字段</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
@@ -8854,13 +8854,13 @@ func (r *DescribeIssuesDistributionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIssuesDistributionResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 消息
+	// <p>消息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8885,98 +8885,98 @@ func (r *DescribeIssuesDistributionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIssuesListRequestParams struct {
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormList *string `json:"FormList,omitnil,omitempty" name:"FormList"`
 
-	// 接口调试专用，对比模式下条件A，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，对比模式下条件A，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListA *string `json:"FormListA,omitnil,omitempty" name:"FormListA"`
 
-	// 接口调试专用，对比模式下条件B，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，对比模式下条件B，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListB *string `json:"FormListB,omitnil,omitempty" name:"FormListB"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 form_list 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 问题类型
+	// <p>问题类型</p>
 	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序方式
+	// <p>排序方式</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 每页数目
+	// <p>每页数目</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 页码
+	// <p>页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 问题对比列表模式下，用于标识是按照sort_field字段的A值排序还是B值还是ratio值
+	// <p>问题对比列表模式下，用于标识是按照sort_field字段的A值排序还是B值还是ratio值</p>
 	SortABRatio *string `json:"SortABRatio,omitnil,omitempty" name:"SortABRatio"`
 
-	// 模式：false:问题列表模式，true:对比列表模式
+	// <p>模式：false:问题列表模式，true:对比列表模式</p>
 	Compare *bool `json:"Compare,omitnil,omitempty" name:"Compare"`
 
-	// 对比状态 0:所有 1:新增 2：遗留 3:已解决
+	// <p>对比状态 0:所有 1:新增 2：遗留 3:已解决</p>
 	CompareStatus *int64 `json:"CompareStatus,omitnil,omitempty" name:"CompareStatus"`
 
-	// 拓展字段
+	// <p>拓展字段</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
 type DescribeIssuesListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormList *string `json:"FormList,omitnil,omitempty" name:"FormList"`
 
-	// 接口调试专用，对比模式下条件A，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，对比模式下条件A，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListA *string `json:"FormListA,omitnil,omitempty" name:"FormListA"`
 
-	// 接口调试专用，对比模式下条件B，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，对比模式下条件B，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListB *string `json:"FormListB,omitnil,omitempty" name:"FormListB"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 form_list 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 问题类型
+	// <p>问题类型</p>
 	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序方式
+	// <p>排序方式</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 每页数目
+	// <p>每页数目</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 页码
+	// <p>页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 问题对比列表模式下，用于标识是按照sort_field字段的A值排序还是B值还是ratio值
+	// <p>问题对比列表模式下，用于标识是按照sort_field字段的A值排序还是B值还是ratio值</p>
 	SortABRatio *string `json:"SortABRatio,omitnil,omitempty" name:"SortABRatio"`
 
-	// 模式：false:问题列表模式，true:对比列表模式
+	// <p>模式：false:问题列表模式，true:对比列表模式</p>
 	Compare *bool `json:"Compare,omitnil,omitempty" name:"Compare"`
 
-	// 对比状态 0:所有 1:新增 2：遗留 3:已解决
+	// <p>对比状态 0:所有 1:新增 2：遗留 3:已解决</p>
 	CompareStatus *int64 `json:"CompareStatus,omitnil,omitempty" name:"CompareStatus"`
 
-	// 拓展字段
+	// <p>拓展字段</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
@@ -9015,13 +9015,13 @@ func (r *DescribeIssuesListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIssuesListResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 消息
+	// <p>消息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9186,50 +9186,50 @@ func (r *DescribeIssuesStatisticsTrendResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLagANRProblemAccountDetailRequestParams struct {
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 消息唯一标识
+	// <p>消息唯一标识</p>
 	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
 
-	// 特征
+	// <p>特征</p>
 	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
 
-	// 事件开始时间
+	// <p>事件开始时间</p>
 	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
 
-	// 事件结束时间
+	// <p>事件结束时间</p>
 	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
 type DescribeLagANRProblemAccountDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 消息唯一标识
+	// <p>消息唯一标识</p>
 	ClientIdentify *string `json:"ClientIdentify,omitnil,omitempty" name:"ClientIdentify"`
 
-	// 特征
+	// <p>特征</p>
 	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
 
-	// 事件开始时间
+	// <p>事件开始时间</p>
 	StartEventTime *int64 `json:"StartEventTime,omitnil,omitempty" name:"StartEventTime"`
 
-	// 事件结束时间
+	// <p>事件结束时间</p>
 	EndEventTime *int64 `json:"EndEventTime,omitnil,omitempty" name:"EndEventTime"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
@@ -9260,13 +9260,13 @@ func (r *DescribeLagANRProblemAccountDetailRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeLagANRProblemAccountDetailResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 消息
+	// <p>消息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9291,68 +9291,68 @@ func (r *DescribeLagANRProblemAccountDetailResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeLagANRProblemFeatureAccountsRequestParams struct {
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 formlist 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 问题特征
+	// <p>问题特征</p>
 	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序类型
+	// <p>排序类型</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 当前页码
+	// <p>当前页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页展示最大数量
+	// <p>每页展示最大数量</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
 type DescribeLagANRProblemFeatureAccountsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 formlist 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 问题特征
+	// <p>问题特征</p>
 	Feature *string `json:"Feature,omitnil,omitempty" name:"Feature"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序类型
+	// <p>排序类型</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 当前页码
+	// <p>当前页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页展示最大数量
+	// <p>每页展示最大数量</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
@@ -9386,13 +9386,13 @@ func (r *DescribeLagANRProblemFeatureAccountsRequest) FromJsonString(s string) e
 
 // Predefined struct for user
 type DescribeLagANRProblemFeatureAccountsResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 消息
+	// <p>消息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9417,62 +9417,62 @@ func (r *DescribeLagANRProblemFeatureAccountsResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type DescribeLagANRProblemListRequestParams struct {
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 formlist 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 当前页码
+	// <p>当前页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页展示最大数量
+	// <p>每页展示最大数量</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序类型
+	// <p>排序类型</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
 type DescribeLagANRProblemListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+	// <p>提供给前端使用，当填写本字段时，会覆盖 formlist 的值</p>
 	ParamToken *string `json:"ParamToken,omitnil,omitempty" name:"ParamToken"`
 
-	// 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+	// <p>接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 当前页码
+	// <p>当前页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页展示最大数量
+	// <p>每页展示最大数量</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序类型
+	// <p>排序类型</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 拓展数据
+	// <p>拓展数据</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
@@ -9505,13 +9505,13 @@ func (r *DescribeLagANRProblemListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLagANRProblemListResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 消息
+	// <p>消息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10750,38 +10750,38 @@ func (r *DescribeTawInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTokenRequestParams struct {
-	// 筛选条件
+	// <p>筛选条件</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 仅对比模式下填写，筛选条件A
+	// <p>仅对比模式下填写，筛选条件A</p>
 	FormListAString *string `json:"FormListAString,omitnil,omitempty" name:"FormListAString"`
 
-	// 仅对比模式下填写，筛选条件B
+	// <p>仅对比模式下填写，筛选条件B</p>
 	FormListBString *string `json:"FormListBString,omitnil,omitempty" name:"FormListBString"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 
-	// 拓展字段
+	// <p>拓展字段</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 }
 
 type DescribeTokenRequest struct {
 	*tchttp.BaseRequest
 	
-	// 筛选条件
+	// <p>筛选条件</p>
 	FormListString *string `json:"FormListString,omitnil,omitempty" name:"FormListString"`
 
-	// 仅对比模式下填写，筛选条件A
+	// <p>仅对比模式下填写，筛选条件A</p>
 	FormListAString *string `json:"FormListAString,omitnil,omitempty" name:"FormListAString"`
 
-	// 仅对比模式下填写，筛选条件B
+	// <p>仅对比模式下填写，筛选条件B</p>
 	FormListBString *string `json:"FormListBString,omitnil,omitempty" name:"FormListBString"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 
-	// 拓展字段
+	// <p>拓展字段</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 }
 
@@ -10810,13 +10810,13 @@ func (r *DescribeTokenRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTokenResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 消息
+	// <p>消息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10841,62 +10841,62 @@ func (r *DescribeTokenResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopIssuesRequestParams struct {
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 需要对比的查询条件，没有则不填
+	// <p>需要对比的查询条件，没有则不填</p>
 	Compare *CompareCondition `json:"Compare,omitnil,omitempty" name:"Compare"`
 
-	// 查询条件
+	// <p>查询条件</p>
 	Condition *CompareCondition `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 问题类型
+	// <p>问题类型</p>
 	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序方式
+	// <p>排序方式</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// topN
+	// <p>topN</p>
 	TopNum *int64 `json:"TopNum,omitnil,omitempty" name:"TopNum"`
 
-	// 拓展字段
+	// <p>拓展字段</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
 type DescribeTopIssuesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品Id
+	// <p>产品Id</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 需要对比的查询条件，没有则不填
+	// <p>需要对比的查询条件，没有则不填</p>
 	Compare *CompareCondition `json:"Compare,omitnil,omitempty" name:"Compare"`
 
-	// 查询条件
+	// <p>查询条件</p>
 	Condition *CompareCondition `json:"Condition,omitnil,omitempty" name:"Condition"`
 
-	// 问题类型
+	// <p>问题类型</p>
 	IssueType *int64 `json:"IssueType,omitnil,omitempty" name:"IssueType"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序方式
+	// <p>排序方式</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// topN
+	// <p>topN</p>
 	TopNum *int64 `json:"TopNum,omitnil,omitempty" name:"TopNum"`
 
-	// 拓展字段
+	// <p>拓展字段</p>
 	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
 
-	// 请求头
+	// <p>请求头</p>
 	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
 }
 
@@ -10929,13 +10929,13 @@ func (r *DescribeTopIssuesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopIssuesResponseParams struct {
-	// 返回值
+	// <p>返回值</p>
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 消息
+	// <p>消息</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

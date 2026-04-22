@@ -282,16 +282,20 @@ type FaceMorphOutput struct {
 }
 
 type FaceRect struct {
-	// 人脸框左上角纵坐标。
+	// <p>人脸框左上角纵坐标。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 
-	// 人脸框左上角横坐标。
+	// <p>人脸框左上角横坐标。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	X *int64 `json:"X,omitnil,omitempty" name:"X"`
 
-	// 人脸框宽度。
+	// <p>人脸框宽度。<br>单位：px</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 人脸框高度。
+	// <p>人脸框高度。<br>单位：px</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 

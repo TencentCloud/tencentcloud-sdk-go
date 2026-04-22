@@ -217,60 +217,63 @@ type AlarmHistoryMetric struct {
 }
 
 type AlarmNotice struct {
-	// 告警通知模板 ID
+	// <p>告警通知模板 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 告警通知模板名称
+	// <p>告警通知模板名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 上次修改时间
+	// <p>上次修改时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
-	// 上次修改人
+	// <p>上次修改人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedBy *string `json:"UpdatedBy,omitnil,omitempty" name:"UpdatedBy"`
 
-	// 告警通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=全部通知
+	// <p>告警通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=全部通知</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoticeType *string `json:"NoticeType,omitnil,omitempty" name:"NoticeType"`
 
-	// 用户通知列表
+	// <p>用户通知列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserNotices []*UserNotice `json:"UserNotices,omitnil,omitempty" name:"UserNotices"`
 
-	// 回调通知列表
+	// <p>回调通知列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	URLNotices []*URLNotice `json:"URLNotices,omitnil,omitempty" name:"URLNotices"`
 
-	// 是否是系统预设通知模板 0=否 1=是
+	// <p>是否是系统预设通知模板 0=否 1=是</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPreset *int64 `json:"IsPreset,omitnil,omitempty" name:"IsPreset"`
 
-	// 通知语言 zh-CN=中文 en-US=英文
+	// <p>通知语言 zh-CN=中文 en-US=英文</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoticeLanguage *string `json:"NoticeLanguage,omitnil,omitempty" name:"NoticeLanguage"`
 
-	// 告警通知模板绑定的告警策略ID列表
+	// <p>告警通知模板绑定的告警策略ID列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyIds []*string `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
 
-	// 后台 amp consumer id
+	// <p>后台 amp consumer id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AMPConsumerId *string `json:"AMPConsumerId,omitnil,omitempty" name:"AMPConsumerId"`
 
-	// 推送cls渠道
+	// <p>推送cls渠道</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CLSNotices []*CLSNotice `json:"CLSNotices,omitnil,omitempty" name:"CLSNotices"`
 
-	// 通知模板绑定的标签
+	// <p>通知模板绑定的标签</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否免登录，0-否，1-是
+	// <p>是否免登录，0-否，1-是</p>
 	IsLoginFree *int64 `json:"IsLoginFree,omitnil,omitempty" name:"IsLoginFree"`
+
+	// <p>IANA 时区名</p>
+	TimeZoneName *string `json:"TimeZoneName,omitnil,omitempty" name:"TimeZoneName"`
 }
 
 type AlarmPolicy struct {
@@ -1099,63 +1102,69 @@ type ConditionsTemp struct {
 
 // Predefined struct for user
 type CreateAlarmNoticeRequestParams struct {
-	// 模块名，这里填“monitor”
+	// <p>模块名，这里填“monitor”</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 通知模板名称 60字符以内
+	// <p>通知模板名称 60字符以内</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知
+	// <p>通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知</p>
 	NoticeType *string `json:"NoticeType,omitnil,omitempty" name:"NoticeType"`
 
-	// 通知语言 zh-CN=中文 en-US=英文
+	// <p>通知语言 zh-CN=中文 en-US=英文</p>
 	NoticeLanguage *string `json:"NoticeLanguage,omitnil,omitempty" name:"NoticeLanguage"`
 
-	// 用户通知 最多5个
+	// <p>用户通知 最多5个</p>
 	UserNotices []*UserNotice `json:"UserNotices,omitnil,omitempty" name:"UserNotices"`
 
-	// 回调通知 最多6个
+	// <p>回调通知 最多6个</p>
 	URLNotices []*URLNotice `json:"URLNotices,omitnil,omitempty" name:"URLNotices"`
 
-	// 推送CLS日志服务的操作 最多1个
+	// <p>推送CLS日志服务的操作 最多1个</p>
 	CLSNotices []*CLSNotice `json:"CLSNotices,omitnil,omitempty" name:"CLSNotices"`
 
-	// 模板绑定的标签
+	// <p>模板绑定的标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否免登录，0-否，1-是
+	// <p>是否免登录，0-否，1-是</p>
 	IsLoginFree *int64 `json:"IsLoginFree,omitnil,omitempty" name:"IsLoginFree"`
+
+	// <p>IANA 时区名</p>
+	TimeZoneName *string `json:"TimeZoneName,omitnil,omitempty" name:"TimeZoneName"`
 }
 
 type CreateAlarmNoticeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模块名，这里填“monitor”
+	// <p>模块名，这里填“monitor”</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 通知模板名称 60字符以内
+	// <p>通知模板名称 60字符以内</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知
+	// <p>通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知</p>
 	NoticeType *string `json:"NoticeType,omitnil,omitempty" name:"NoticeType"`
 
-	// 通知语言 zh-CN=中文 en-US=英文
+	// <p>通知语言 zh-CN=中文 en-US=英文</p>
 	NoticeLanguage *string `json:"NoticeLanguage,omitnil,omitempty" name:"NoticeLanguage"`
 
-	// 用户通知 最多5个
+	// <p>用户通知 最多5个</p>
 	UserNotices []*UserNotice `json:"UserNotices,omitnil,omitempty" name:"UserNotices"`
 
-	// 回调通知 最多6个
+	// <p>回调通知 最多6个</p>
 	URLNotices []*URLNotice `json:"URLNotices,omitnil,omitempty" name:"URLNotices"`
 
-	// 推送CLS日志服务的操作 最多1个
+	// <p>推送CLS日志服务的操作 最多1个</p>
 	CLSNotices []*CLSNotice `json:"CLSNotices,omitnil,omitempty" name:"CLSNotices"`
 
-	// 模板绑定的标签
+	// <p>模板绑定的标签</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否免登录，0-否，1-是
+	// <p>是否免登录，0-否，1-是</p>
 	IsLoginFree *int64 `json:"IsLoginFree,omitnil,omitempty" name:"IsLoginFree"`
+
+	// <p>IANA 时区名</p>
+	TimeZoneName *string `json:"TimeZoneName,omitnil,omitempty" name:"TimeZoneName"`
 }
 
 func (r *CreateAlarmNoticeRequest) ToJsonString() string {
@@ -1179,6 +1188,7 @@ func (r *CreateAlarmNoticeRequest) FromJsonString(s string) error {
 	delete(f, "CLSNotices")
 	delete(f, "Tags")
 	delete(f, "IsLoginFree")
+	delete(f, "TimeZoneName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlarmNoticeRequest has unknown keys!", "")
 	}
@@ -1187,7 +1197,7 @@ func (r *CreateAlarmNoticeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAlarmNoticeResponseParams struct {
-	// 告警通知模板ID
+	// <p>告警通知模板ID</p>
 	NoticeId *string `json:"NoticeId,omitnil,omitempty" name:"NoticeId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12764,69 +12774,75 @@ type MidQueryCondition struct {
 
 // Predefined struct for user
 type ModifyAlarmNoticeRequestParams struct {
-	// 模块名，这里填“monitor”
+	// <p>模块名，这里填“monitor”</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 告警通知规则名称 60字符以内
+	// <p>告警通知规则名称 60字符以内</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知
+	// <p>通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知</p>
 	NoticeType *string `json:"NoticeType,omitnil,omitempty" name:"NoticeType"`
 
-	// 通知语言 zh-CN=中文 en-US=英文
+	// <p>通知语言 zh-CN=中文 en-US=英文</p>
 	NoticeLanguage *string `json:"NoticeLanguage,omitnil,omitempty" name:"NoticeLanguage"`
 
-	// 告警通知模板 ID
+	// <p>告警通知模板 ID</p>
 	NoticeId *string `json:"NoticeId,omitnil,omitempty" name:"NoticeId"`
 
-	// 用户通知 最多5个
+	// <p>用户通知 最多5个</p>
 	UserNotices []*UserNotice `json:"UserNotices,omitnil,omitempty" name:"UserNotices"`
 
-	// 回调通知 最多6个
+	// <p>回调通知 最多6个</p>
 	URLNotices []*URLNotice `json:"URLNotices,omitnil,omitempty" name:"URLNotices"`
 
-	// 告警通知推送到CLS服务 最多1个
+	// <p>告警通知推送到CLS服务 最多1个</p>
 	CLSNotices []*CLSNotice `json:"CLSNotices,omitnil,omitempty" name:"CLSNotices"`
 
-	// 告警通知模板绑定的告警策略ID列表
+	// <p>告警通知模板绑定的告警策略ID列表</p>
 	PolicyIds []*string `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
 
-	// 是否免登录，0-否，1-是
+	// <p>是否免登录，0-否，1-是</p>
 	IsLoginFree *int64 `json:"IsLoginFree,omitnil,omitempty" name:"IsLoginFree"`
+
+	// <p>IANA 时区名</p>
+	TimeZoneName *string `json:"TimeZoneName,omitnil,omitempty" name:"TimeZoneName"`
 }
 
 type ModifyAlarmNoticeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模块名，这里填“monitor”
+	// <p>模块名，这里填“monitor”</p>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
-	// 告警通知规则名称 60字符以内
+	// <p>告警通知规则名称 60字符以内</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知
+	// <p>通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知</p>
 	NoticeType *string `json:"NoticeType,omitnil,omitempty" name:"NoticeType"`
 
-	// 通知语言 zh-CN=中文 en-US=英文
+	// <p>通知语言 zh-CN=中文 en-US=英文</p>
 	NoticeLanguage *string `json:"NoticeLanguage,omitnil,omitempty" name:"NoticeLanguage"`
 
-	// 告警通知模板 ID
+	// <p>告警通知模板 ID</p>
 	NoticeId *string `json:"NoticeId,omitnil,omitempty" name:"NoticeId"`
 
-	// 用户通知 最多5个
+	// <p>用户通知 最多5个</p>
 	UserNotices []*UserNotice `json:"UserNotices,omitnil,omitempty" name:"UserNotices"`
 
-	// 回调通知 最多6个
+	// <p>回调通知 最多6个</p>
 	URLNotices []*URLNotice `json:"URLNotices,omitnil,omitempty" name:"URLNotices"`
 
-	// 告警通知推送到CLS服务 最多1个
+	// <p>告警通知推送到CLS服务 最多1个</p>
 	CLSNotices []*CLSNotice `json:"CLSNotices,omitnil,omitempty" name:"CLSNotices"`
 
-	// 告警通知模板绑定的告警策略ID列表
+	// <p>告警通知模板绑定的告警策略ID列表</p>
 	PolicyIds []*string `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
 
-	// 是否免登录，0-否，1-是
+	// <p>是否免登录，0-否，1-是</p>
 	IsLoginFree *int64 `json:"IsLoginFree,omitnil,omitempty" name:"IsLoginFree"`
+
+	// <p>IANA 时区名</p>
+	TimeZoneName *string `json:"TimeZoneName,omitnil,omitempty" name:"TimeZoneName"`
 }
 
 func (r *ModifyAlarmNoticeRequest) ToJsonString() string {
@@ -12851,6 +12867,7 @@ func (r *ModifyAlarmNoticeRequest) FromJsonString(s string) error {
 	delete(f, "CLSNotices")
 	delete(f, "PolicyIds")
 	delete(f, "IsLoginFree")
+	delete(f, "TimeZoneName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAlarmNoticeRequest has unknown keys!", "")
 	}

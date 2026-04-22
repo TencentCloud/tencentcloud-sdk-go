@@ -14857,6 +14857,144 @@ func (c *Client) ModifySingleSignOnEmployeesWithContext(ctx context.Context, req
     return
 }
 
+func NewOperateFlowRemarksRequest() (request *OperateFlowRemarksRequest) {
+    request = &OperateFlowRemarksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "OperateFlowRemarks")
+    
+    
+    return
+}
+
+func NewOperateFlowRemarksResponse() (response *OperateFlowRemarksResponse) {
+    response = &OperateFlowRemarksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OperateFlowRemarks
+// 此接口（OperateFlowRemarks）用于对企业合同备注进行管理操作，支持新增，创建和删除。
+//
+// 
+//
+// 
+//
+// 用户可以通过接口对合同备注进行管理，支持对创建后的备注进行搜索关联的合同流程。
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/cac8af24804ab4f7455be2d5b39a43e5.png)
+//
+// 
+//
+// 注：
+//
+// 
+//
+// 对合同备注进行操作前，操作人需要获取对应权限：合同操作 - 设置合同类型及备注。
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/ce4f0ca867ab5020f4fdfecc39050f0f.png)
+//
+// 
+//
+// 
+//
+// 没有对应权限的用户，并且不属于超管、法人，该合同的参与方（包含签署方与发起方），将无法对对应合同的备注进行编辑，如果备注内容包含敏感信息，将会对其进行打码显示。
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/e5ef298c41f999b656f6b620c8b3d888.png)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+func (c *Client) OperateFlowRemarks(request *OperateFlowRemarksRequest) (response *OperateFlowRemarksResponse, err error) {
+    return c.OperateFlowRemarksWithContext(context.Background(), request)
+}
+
+// OperateFlowRemarks
+// 此接口（OperateFlowRemarks）用于对企业合同备注进行管理操作，支持新增，创建和删除。
+//
+// 
+//
+// 
+//
+// 用户可以通过接口对合同备注进行管理，支持对创建后的备注进行搜索关联的合同流程。
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/cac8af24804ab4f7455be2d5b39a43e5.png)
+//
+// 
+//
+// 注：
+//
+// 
+//
+// 对合同备注进行操作前，操作人需要获取对应权限：合同操作 - 设置合同类型及备注。
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/ce4f0ca867ab5020f4fdfecc39050f0f.png)
+//
+// 
+//
+// 
+//
+// 没有对应权限的用户，并且不属于超管、法人，该合同的参与方（包含签署方与发起方），将无法对对应合同的备注进行编辑，如果备注内容包含敏感信息，将会对其进行打码显示。
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/e5ef298c41f999b656f6b620c8b3d888.png)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+func (c *Client) OperateFlowRemarksWithContext(ctx context.Context, request *OperateFlowRemarksRequest) (response *OperateFlowRemarksResponse, err error) {
+    if request == nil {
+        request = NewOperateFlowRemarksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "OperateFlowRemarks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OperateFlowRemarks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOperateFlowRemarksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOperateSealsRequest() (request *OperateSealsRequest) {
     request = &OperateSealsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14880,27 +15018,19 @@ func NewOperateSealsResponse() (response *OperateSealsResponse) {
 // 修改印章状态（停用、启用）
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_EMAIL = "InvalidParameter.Email"
-//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
-//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
-//  INVALIDPARAMETER_INVALIDOPENID = "InvalidParameter.InvalidOpenId"
-//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
-//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
-//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
-//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
-//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
-//  INVALIDPARAMETER_ROLEID = "InvalidParameter.RoleId"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
-//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 func (c *Client) OperateSeals(request *OperateSealsRequest) (response *OperateSealsResponse, err error) {
     return c.OperateSealsWithContext(context.Background(), request)
 }
@@ -14909,27 +15039,19 @@ func (c *Client) OperateSeals(request *OperateSealsRequest) (response *OperateSe
 // 修改印章状态（停用、启用）
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_EMAIL = "InvalidParameter.Email"
-//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
-//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
-//  INVALIDPARAMETER_INVALIDOPENID = "InvalidParameter.InvalidOpenId"
-//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
-//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
-//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
-//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
-//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
-//  INVALIDPARAMETER_ROLEID = "InvalidParameter.RoleId"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
-//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 func (c *Client) OperateSealsWithContext(ctx context.Context, request *OperateSealsRequest) (response *OperateSealsResponse, err error) {
     if request == nil {
         request = NewOperateSealsRequest()

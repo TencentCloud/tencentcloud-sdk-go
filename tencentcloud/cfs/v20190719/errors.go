@@ -461,6 +461,9 @@ const (
 	// 快照ID 不存在。
 	RESOURCENOTFOUND_SNAPSHOTNOTFOUND = "ResourceNotFound.SnapshotNotFound"
 
+	// 资源售罄。
+	RESOURCESSOLDOUT = "ResourcesSoldOut"
+
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 

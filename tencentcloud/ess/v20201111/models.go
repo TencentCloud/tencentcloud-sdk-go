@@ -13538,44 +13538,32 @@ func (r *DescribeFlowEvidenceReportResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFlowInfoRequestParams struct {
-	// 执行本接口操作的员工信息。 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`	
+	// <p>执行本接口操作的员工信息。 注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 需要查询的流程ID列表，最多可传入100个ID。
-	// 如果要查询合同组的信息，则不需要传入此参数，只需传入 FlowGroupId 参数即可。
-	// 
-	// 
-	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
-	// 
-	// [点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
+	// <p>需要查询的流程ID列表，最多可传入100个ID。<br>如果要查询合同组的信息，则不需要传入此参数，只需传入 FlowGroupId 参数即可。</p><p>可登录腾讯电子签控制台，在 &quot;合同&quot;-&gt;&quot;合同中心&quot; 中查看某个合同的FlowId(在页面中展示为合同ID)。</p><p><a href="https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png">点击查看FlowId在控制台中的位置</a></p>
 	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
-	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。	
+	// <p>代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 需要查询的流程组ID，如果传入此参数，则会忽略 FlowIds 参数。该合同组由<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByFiles" target="_blank">通过多文件创建合同组签署流程</a>等接口创建。
+	// <p>需要查询的流程组ID，如果传入此参数，则会忽略 FlowIds 参数。该合同组由<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByFiles" target="_blank">通过多文件创建合同组签署流程</a>等接口创建。</p>
 	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 }
 
 type DescribeFlowInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 执行本接口操作的员工信息。 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`	
+	// <p>执行本接口操作的员工信息。 注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 需要查询的流程ID列表，最多可传入100个ID。
-	// 如果要查询合同组的信息，则不需要传入此参数，只需传入 FlowGroupId 参数即可。
-	// 
-	// 
-	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
-	// 
-	// [点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
+	// <p>需要查询的流程ID列表，最多可传入100个ID。<br>如果要查询合同组的信息，则不需要传入此参数，只需传入 FlowGroupId 参数即可。</p><p>可登录腾讯电子签控制台，在 &quot;合同&quot;-&gt;&quot;合同中心&quot; 中查看某个合同的FlowId(在页面中展示为合同ID)。</p><p><a href="https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png">点击查看FlowId在控制台中的位置</a></p>
 	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
-	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。	
+	// <p>代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 需要查询的流程组ID，如果传入此参数，则会忽略 FlowIds 参数。该合同组由<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByFiles" target="_blank">通过多文件创建合同组签署流程</a>等接口创建。
+	// <p>需要查询的流程组ID，如果传入此参数，则会忽略 FlowIds 参数。该合同组由<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByFiles" target="_blank">通过多文件创建合同组签署流程</a>等接口创建。</p>
 	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 }
 
@@ -13603,15 +13591,17 @@ func (r *DescribeFlowInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFlowInfoResponseParams struct {
-	// 合同流程的详细信息。
-	// 如果查询的是合同组信息，则返回的是组内所有子合同流程的详细信息。
+	// <p>合同流程的详细信息。<br>如果查询的是合同组信息，则返回的是组内所有子合同流程的详细信息。</p>
 	FlowDetailInfos []*FlowDetailInfo `json:"FlowDetailInfos,omitnil,omitempty" name:"FlowDetailInfos"`
 
-	// 合同组ID，只有在查询合同组信息时才会返回。
+	// <p>合同组ID，只有在查询合同组信息时才会返回。</p>
 	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
-	// 合同组名称，只有在查询合同组信息时才会返回。
+	// <p>合同组名称，只有在查询合同组信息时才会返回。</p>
 	FlowGroupName *string `json:"FlowGroupName,omitnil,omitempty" name:"FlowGroupName"`
+
+	// <p>合同组合同备注列表</p>
+	FlowGroupRemarks []*string `json:"FlowGroupRemarks,omitnil,omitempty" name:"FlowGroupRemarks"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -16540,59 +16530,44 @@ type FlowCreateApprover struct {
 }
 
 type FlowDetailInfo struct {
-	// 合同流程ID，为32位字符串。
+	// <p>合同流程ID，为32位字符串。</p>
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+	// <p>合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。</p>
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
-	// 合同流程的类别分类（如销售合同/入职合同等）。
-	// 该字段将被废弃，不建议使用。	
+	// <p>合同流程的类别分类（如销售合同/入职合同等）。<br>该字段将被废弃，不建议使用。</p>
 	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
 
-	// 合同流程当前的签署状态, 会存在下列的状态值 
-	// <ul>
-	// <li> **0** : 未开启流程(合同中不存在填写环节)</li> 
-	// <li> **1** : 待签署</li>
-	//  <li> **2** : 部分签署</li>
-	//  <li> **3** : 已拒签</li>
-	//  <li> **4** : 已签署</li> 
-	// <li> **5** : 已过期</li>
-	//  <li> **6** : 已撤销</li> 
-	// <li> **7** : 未开启流程(合同中存在填写环节)</li>
-	//  <li> **8** : 等待填写</li>
-	//  <li> **9** : 部分填写</li>
-	//  <li> **10** : 已拒填</li> 
-	// <li> **16** : 已失效（可能因为参与方修改姓名等原因）</li>
-	//  <li> **21** : 已解除</li></ul>	
+	// <p>合同流程当前的签署状态, 会存在下列的状态值 </p><ul><li> **0** : 未开启流程(合同中不存在填写环节)</li> <li> **1** : 待签署</li> <li> **2** : 部分签署</li> <li> **3** : 已拒签</li> <li> **4** : 已签署</li> <li> **5** : 已过期</li> <li> **6** : 已撤销</li> <li> **7** : 未开启流程(合同中存在填写环节)</li> <li> **8** : 等待填写</li> <li> **9** : 部分填写</li> <li> **10** : 已拒填</li> <li> **16** : 已失效（可能因为参与方修改姓名等原因）</li> <li> **21** : 已解除</li></ul>
 	FlowStatus *int64 `json:"FlowStatus,omitnil,omitempty" name:"FlowStatus"`
 
-	// 当合同流程状态为已拒签（即 FlowStatus=3）或已撤销（即 FlowStatus=6）时，此字段 FlowMessage 为拒签或撤销原因。	
+	// <p>当合同流程状态为已拒签（即 FlowStatus=3）或已撤销（即 FlowStatus=6）时，此字段 FlowMessage 为拒签或撤销原因。</p>
 	FlowMessage *string `json:"FlowMessage,omitnil,omitempty" name:"FlowMessage"`
 
-	// 合同流程描述信息。	
+	// <p>合同流程描述信息。</p>
 	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
 
-	// 合同流程的创建时间戳，格式为Unix标准时间戳（秒）。	
+	// <p>合同流程的创建时间戳，格式为Unix标准时间戳（秒）。</p>
 	CreatedOn *int64 `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
 
-	// 合同流程的签署方数组
+	// <p>合同流程的签署方数组</p>
 	FlowApproverInfos []*FlowApproverDetail `json:"FlowApproverInfos,omitnil,omitempty" name:"FlowApproverInfos"`
 
-	// 合同流程的关注方信息数组
+	// <p>合同流程的关注方信息数组</p>
 	CcInfos []*FlowApproverDetail `json:"CcInfos,omitnil,omitempty" name:"CcInfos"`
 
-	// 合同流程发起方的员工编号, 即员工在腾讯电子签平台的唯一身份标识。	
+	// <p>合同流程发起方的员工编号, 即员工在腾讯电子签平台的唯一身份标识。</p>
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
-	// 用户合同的自定义分类。
-	// 
-	// 自定义合同类型的位置，在下图所示地方:
-	// ![image](https://qcloudimg.tencent-cloud.cn/raw/00d72934c31bd49115a566e4e1a4530d.png)
+	// <p>用户合同的自定义分类。</p><p>自定义合同类型的位置，在下图所示地方:<br><img src="https://qcloudimg.tencent-cloud.cn/raw/00d72934c31bd49115a566e4e1a4530d.png" alt="image"></p>
 	UserFlowType *UserFlowType `json:"UserFlowType,omitnil,omitempty" name:"UserFlowType"`
 
-	// 发起模板时,使用的模板Id
+	// <p>发起模板时,使用的模板Id</p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>合同备注列表</p>
+	FlowRemarks []*string `json:"FlowRemarks,omitnil,omitempty" name:"FlowRemarks"`
 }
 
 type FlowForwardInfo struct {
@@ -16726,6 +16701,14 @@ type FlowGroupUrlInfo struct {
 type FlowOperateLimit struct {
 	// 发起合同流程时，对签署完成后是否能发起对应的解除合同加以限制：<ul><li><b>false（默认值）</b>: 合同流程完成签署后，支持发起对应的解除协议。</li><li><b>true </b>: 合同流程完成签署后，<b>不支持</b>发起对应的解除协议。</li></ul>
 	NoRelease *bool `json:"NoRelease,omitnil,omitempty" name:"NoRelease"`
+}
+
+type FlowRemarkItem struct {
+	// <p>合同备注下标，对应最多5个备注位</p><p>取值范围：[0, 4]</p>
+	RemarkId *int64 `json:"RemarkId,omitnil,omitempty" name:"RemarkId"`
+
+	// <p>合同备注内容，不超过 50 个字符，DELETE 时无需传入</p>
+	RemarkValue *string `json:"RemarkValue,omitnil,omitempty" name:"RemarkValue"`
 }
 
 type FormField struct {
@@ -18093,6 +18076,102 @@ type OccupiedSeal struct {
 
 	// 印章描述
 	SealDescription *string `json:"SealDescription,omitnil,omitempty" name:"SealDescription"`
+}
+
+// Predefined struct for user
+type OperateFlowRemarksRequestParams struct {
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>操作类型，可取值如下:</p><ul><li>DELETE:  删除</li><li>ENABLE: 启用</li><li>DISABLE: 停用</li><li>COPY: 复制新建</li></ul>
+	OperateType *string `json:"OperateType,omitnil,omitempty" name:"OperateType"`
+
+	// <p>对应的合同流程id</p><p>目标合同为合同组时此参数不填</p>
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// <p>对应合同组id</p><p>目标合同为单份合同时此参数不填</p>
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
+
+	// <p>合同备注信息。</p><p>入参限制：当OperateType为UPDATE和DELETE时，通过该结构体进行对应备注操作，合同备注数量范围为 1 - 5个。</p>
+	FlowItem *FlowRemarkItem `json:"FlowItem,omitnil,omitempty" name:"FlowItem"`
+
+	// <p>合同备注列表。</p><p>入参限制：当OperateType为CREATE时，通过该参数进行全量的合同备注创建。</p>
+	FlowItems []*string `json:"FlowItems,omitnil,omitempty" name:"FlowItems"`
+}
+
+type OperateFlowRemarksRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>操作类型，可取值如下:</p><ul><li>DELETE:  删除</li><li>ENABLE: 启用</li><li>DISABLE: 停用</li><li>COPY: 复制新建</li></ul>
+	OperateType *string `json:"OperateType,omitnil,omitempty" name:"OperateType"`
+
+	// <p>对应的合同流程id</p><p>目标合同为合同组时此参数不填</p>
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// <p>对应合同组id</p><p>目标合同为单份合同时此参数不填</p>
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
+
+	// <p>合同备注信息。</p><p>入参限制：当OperateType为UPDATE和DELETE时，通过该结构体进行对应备注操作，合同备注数量范围为 1 - 5个。</p>
+	FlowItem *FlowRemarkItem `json:"FlowItem,omitnil,omitempty" name:"FlowItem"`
+
+	// <p>合同备注列表。</p><p>入参限制：当OperateType为CREATE时，通过该参数进行全量的合同备注创建。</p>
+	FlowItems []*string `json:"FlowItems,omitnil,omitempty" name:"FlowItems"`
+}
+
+func (r *OperateFlowRemarksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OperateFlowRemarksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "OperateType")
+	delete(f, "FlowId")
+	delete(f, "Agent")
+	delete(f, "FlowGroupId")
+	delete(f, "FlowItem")
+	delete(f, "FlowItems")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OperateFlowRemarksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OperateFlowRemarksResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type OperateFlowRemarksResponse struct {
+	*tchttp.BaseResponse
+	Response *OperateFlowRemarksResponseParams `json:"Response"`
+}
+
+func (r *OperateFlowRemarksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OperateFlowRemarksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

@@ -516,7 +516,7 @@ type AddRecordBackupTemplateRequestParams struct {
 	// <p>上云倍速（支持1，2，4倍速）</p>
 	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
 
-	// <p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示取去今天的设备录像，3表示拉取前天的设备录像</p><p>取值范围：[0, 90]</p><p>默认值：1</p>
+	// <p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示拉取今天的设备录像，3表示拉取前天的设备录像</p><p>取值范围：[0, 90]</p><p>默认值：1</p>
 	DayOffset *int64 `json:"DayOffset,omitnil,omitempty" name:"DayOffset"`
 }
 
@@ -535,7 +535,7 @@ type AddRecordBackupTemplateRequest struct {
 	// <p>上云倍速（支持1，2，4倍速）</p>
 	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
 
-	// <p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示取去今天的设备录像，3表示拉取前天的设备录像</p><p>取值范围：[0, 90]</p><p>默认值：1</p>
+	// <p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示拉取今天的设备录像，3表示拉取前天的设备录像</p><p>取值范围：[0, 90]</p><p>默认值：1</p>
 	DayOffset *int64 `json:"DayOffset,omitnil,omitempty" name:"DayOffset"`
 }
 

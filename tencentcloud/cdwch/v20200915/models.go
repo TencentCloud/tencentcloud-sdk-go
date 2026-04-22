@@ -2161,6 +2161,9 @@ type InstanceConfigInfo struct {
 
 	// <p>标记异常</p>
 	AbnormalParam *string `json:"AbnormalParam,omitnil,omitempty" name:"AbnormalParam"`
+
+	// <p>是否生效</p>
+	ConfigEffective *string `json:"ConfigEffective,omitnil,omitempty" name:"ConfigEffective"`
 }
 
 type InstanceConfigItem struct {

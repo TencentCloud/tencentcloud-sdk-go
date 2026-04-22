@@ -51,6 +51,12 @@ type CreateImageModerationAsyncTaskRequestParams struct {
 
 	// <p>服务类型，可为空，默认为 IMAGE。</p><p>枚举值：</p><ul><li>IMAGE： 一般图片异步检测</li><li>IMAGE_LLM： 大模型图片异步检测</li></ul>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>该字段表示待审核的图片资源链接，最多支持传入4张图片</p>
+	FileUrlList []*string `json:"FileUrlList,omitnil,omitempty" name:"FileUrlList"`
+
+	// <p>待审核的文本内容，需为UTF-8编码并以Base64格式传入，字数限制5000字内。</p>
+	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
 }
 
 type CreateImageModerationAsyncTaskRequest struct {
@@ -85,6 +91,12 @@ type CreateImageModerationAsyncTaskRequest struct {
 
 	// <p>服务类型，可为空，默认为 IMAGE。</p><p>枚举值：</p><ul><li>IMAGE： 一般图片异步检测</li><li>IMAGE_LLM： 大模型图片异步检测</li></ul>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>该字段表示待审核的图片资源链接，最多支持传入4张图片</p>
+	FileUrlList []*string `json:"FileUrlList,omitnil,omitempty" name:"FileUrlList"`
+
+	// <p>待审核的文本内容，需为UTF-8编码并以Base64格式传入，字数限制5000字内。</p>
+	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
 }
 
 func (r *CreateImageModerationAsyncTaskRequest) ToJsonString() string {
@@ -109,6 +121,8 @@ func (r *CreateImageModerationAsyncTaskRequest) FromJsonString(s string) error {
 	delete(f, "User")
 	delete(f, "Device")
 	delete(f, "Type")
+	delete(f, "FileUrlList")
+	delete(f, "TextContent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateImageModerationAsyncTaskRequest has unknown keys!", "")
 	}
