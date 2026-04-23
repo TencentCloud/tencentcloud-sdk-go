@@ -107,6 +107,9 @@ const (
 	// HTTP访问服务没有ICP备案
 	INVALIDPARAMETER_HTTPSERVICEDOMAINNOTICP = "InvalidParameter.HTTPServiceDomainNotICP"
 
+	// 域名所有权校验失败
+	INVALIDPARAMETER_HTTPSERVICEDOMAINVERIFYFAILED = "InvalidParameter.HTTPServiceDomainVerifyFailed"
+
 	// 请求参数错误。
 	INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
 
@@ -169,6 +172,9 @@ const (
 
 	// 域名在黑名单中，无法创建
 	OPERATIONDENIED_HTTPSERVICEDOMAININBLACKLIST = "OperationDenied.HTTPServiceDomainInBlacklist"
+
+	// 操作失败，http访问服务域名处理中，稍后再试。
+	OPERATIONDENIED_HTTPSERVICEDOMAINPROCESSING = "OperationDenied.HTTPServiceDomainProcessing"
 
 	// 非内部账号禁止操作
 	OPERATIONDENIED_NONINTERNALACCOUNT = "OperationDenied.NonInternalAccount"

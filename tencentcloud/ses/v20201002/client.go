@@ -931,6 +931,8 @@ func NewDeleteEmailIdentityResponse() (response *DeleteEmailIdentityResponse) {
 }
 
 // DeleteEmailIdentity
+// **发信域名删除接口仅限于企业用户使用**
+//
 // 删除发信域名，删除后，将不可再使用该域名进行发信
 //
 // 可能返回的错误码:
@@ -949,6 +951,8 @@ func (c *Client) DeleteEmailIdentity(request *DeleteEmailIdentityRequest) (respo
 }
 
 // DeleteEmailIdentity
+// **发信域名删除接口仅限于企业用户使用**
+//
 // 删除发信域名，删除后，将不可再使用该域名进行发信
 //
 // 可能返回的错误码:

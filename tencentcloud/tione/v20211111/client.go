@@ -2043,6 +2043,90 @@ func (c *Client) DescribeBillingResourceGroupWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeBillingResourceGroupAttachedWorkspacesRequest() (request *DescribeBillingResourceGroupAttachedWorkspacesRequest) {
+    request = &DescribeBillingResourceGroupAttachedWorkspacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeBillingResourceGroupAttachedWorkspaces")
+    
+    
+    return
+}
+
+func NewDescribeBillingResourceGroupAttachedWorkspacesResponse() (response *DescribeBillingResourceGroupAttachedWorkspacesResponse) {
+    response = &DescribeBillingResourceGroupAttachedWorkspacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBillingResourceGroupAttachedWorkspaces
+// 查询资源组关联的工作空间列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_NOPERMISSION = "AuthFailure.NoPermission"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLCLUSTERFAIL = "FailedOperation.CallClusterFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+//  FAILEDOPERATION_SERVERROOMQUERYFAILED = "FailedOperation.ServerRoomQueryFailed"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_RESOURCEGROUPNOTFOUND = "ResourceNotFound.ResourceGroupNotFound"
+func (c *Client) DescribeBillingResourceGroupAttachedWorkspaces(request *DescribeBillingResourceGroupAttachedWorkspacesRequest) (response *DescribeBillingResourceGroupAttachedWorkspacesResponse, err error) {
+    return c.DescribeBillingResourceGroupAttachedWorkspacesWithContext(context.Background(), request)
+}
+
+// DescribeBillingResourceGroupAttachedWorkspaces
+// 查询资源组关联的工作空间列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_NOPERMISSION = "AuthFailure.NoPermission"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLCLUSTERFAIL = "FailedOperation.CallClusterFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+//  FAILEDOPERATION_SERVERROOMQUERYFAILED = "FailedOperation.ServerRoomQueryFailed"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_RESOURCEGROUPNOTFOUND = "ResourceNotFound.ResourceGroupNotFound"
+func (c *Client) DescribeBillingResourceGroupAttachedWorkspacesWithContext(ctx context.Context, request *DescribeBillingResourceGroupAttachedWorkspacesRequest) (response *DescribeBillingResourceGroupAttachedWorkspacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillingResourceGroupAttachedWorkspacesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeBillingResourceGroupAttachedWorkspaces")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBillingResourceGroupAttachedWorkspaces require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBillingResourceGroupAttachedWorkspacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBillingResourceGroupsRequest() (request *DescribeBillingResourceGroupsRequest) {
     request = &DescribeBillingResourceGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

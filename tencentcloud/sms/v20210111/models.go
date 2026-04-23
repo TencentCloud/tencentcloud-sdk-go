@@ -988,6 +988,23 @@ type ModifyTemplateStatus struct {
 	TemplateId *uint64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
+type MultiSmsInfo struct {
+	// <p>下发手机号码，采用 E.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为国际/港澳台手机号。 例如：+60198890000， 其中前面有一个+号 ，60为国家码，198890000为手机号。</p>
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
+
+	// <p>模板 ID，必须填写已审核通过的模板 ID。模板 ID 可前往 <a href="https://console.cloud.tencent.com/smsv2/isms-template">国际/港澳台短信</a> 的正文模板管理查看，仅支持使用国际/港澳台短信模板。</p>
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// <p>模板参数，若无模板参数，则设置为空。<blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">注意</div>        <div class="rno-document-tip-desc"><p>模板参数的个数需要与 TemplateId 对应模板的变量个数保持一致。</p></div>    </div></blockquote></p>
+	TemplateParamSet []*string `json:"TemplateParamSet,omitnil,omitempty" name:"TemplateParamSet"`
+
+	// <p>国际/港澳台短信 Sender ID。可参考 <a href="https://cloud.tencent.com/document/product/382/102831">Sender ID 说明</a>。注：国际/港澳台短信已申请独立 SenderId 需要填写该字段，默认使用公共 SenderId，无需填写该字段。</p>
+	SenderId *string `json:"SenderId,omitnil,omitempty" name:"SenderId"`
+
+	// <p>用户的 session 内容，可以携带用户侧 ID 等上下文信息，server 会原样返回。注意长度需小于512字节。</p>
+	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+}
+
 type PhoneNumberInfo struct {
 	// 号码信息查询错误码，查询成功返回 "Ok"。
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
@@ -1458,6 +1475,93 @@ type ReportConversionStatus struct {
 
 	// 错误码描述。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+}
+
+// Predefined struct for user
+type SendMultiGlobalSmsRequestParams struct {
+	// <p>短信 SdkAppId，在 <a href="https://console.cloud.tencent.com/smsv2/app-manage">短信控制台</a>  添加应用后生成的实际 SdkAppId。</p>
+	SmsSdkAppId *string `json:"SmsSdkAppId,omitnil,omitempty" name:"SmsSdkAppId"`
+
+	// <p>批量发送信息列表，单次请求最多支持200个号码且要求全为国际/港澳台号码。每个元素包含一个手机号码及其对应的模板、模板参数等信息。</p>
+	MultiSmsInfoSet []*MultiSmsInfo `json:"MultiSmsInfoSet,omitnil,omitempty" name:"MultiSmsInfoSet"`
+}
+
+type SendMultiGlobalSmsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>短信 SdkAppId，在 <a href="https://console.cloud.tencent.com/smsv2/app-manage">短信控制台</a>  添加应用后生成的实际 SdkAppId。</p>
+	SmsSdkAppId *string `json:"SmsSdkAppId,omitnil,omitempty" name:"SmsSdkAppId"`
+
+	// <p>批量发送信息列表，单次请求最多支持200个号码且要求全为国际/港澳台号码。每个元素包含一个手机号码及其对应的模板、模板参数等信息。</p>
+	MultiSmsInfoSet []*MultiSmsInfo `json:"MultiSmsInfoSet,omitnil,omitempty" name:"MultiSmsInfoSet"`
+}
+
+func (r *SendMultiGlobalSmsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendMultiGlobalSmsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SmsSdkAppId")
+	delete(f, "MultiSmsInfoSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendMultiGlobalSmsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SendMultiGlobalSmsResponseParams struct {
+	// <p>短信批量发送状态。</p>
+	SendMultiStatusSet []*SendMultiStatus `json:"SendMultiStatusSet,omitnil,omitempty" name:"SendMultiStatusSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SendMultiGlobalSmsResponse struct {
+	*tchttp.BaseResponse
+	Response *SendMultiGlobalSmsResponseParams `json:"Response"`
+}
+
+func (r *SendMultiGlobalSmsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendMultiGlobalSmsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SendMultiStatus struct {
+	// <p>发送流水号。</p>
+	SerialNo *string `json:"SerialNo,omitnil,omitempty" name:"SerialNo"`
+
+	// <p>手机号码，E.164标准，+[国家或地区码][手机号] ，示例如：+60198890000， 其中前面有一个+号 ，60为国家码，198890000为手机号。</p>
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
+
+	// <p>计费条数，计费规则请查询 <a href="https://cloud.tencent.com/document/product/382/36135">计费策略</a>。</p>
+	Fee *uint64 `json:"Fee,omitnil,omitempty" name:"Fee"`
+
+	// <p>用户 session 内容。</p>
+	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+
+	// <p>短信请求错误码，具体含义请参考 <a href="https://cloud.tencent.com/document/product/382/59177#.E7.9F.AD.E4.BF.A1-API-3.0-.E5.8F.91.E9.80.81.E9.94.99.E8.AF.AF.E7.A0.81">错误码</a>，发送成功返回 &quot;Ok&quot;。</p>
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// <p>短信请求错误码描述。</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>国家码或地区码，例如 US、MY 等，对于未识别出国家码或者地区码，默认返回 DEF，具体支持列表请参考 <a href="https://cloud.tencent.com/document/product/382/18051">国际/港澳台短信价格总览</a>。</p>
+	IsoCode *string `json:"IsoCode,omitnil,omitempty" name:"IsoCode"`
 }
 
 // Predefined struct for user

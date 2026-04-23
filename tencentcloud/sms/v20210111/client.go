@@ -1435,6 +1435,154 @@ func (c *Client) ReportConversionWithContext(ctx context.Context, request *Repor
     return
 }
 
+func NewSendMultiGlobalSmsRequest() (request *SendMultiGlobalSmsRequest) {
+    request = &SendMultiGlobalSmsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sms", APIVersion, "SendMultiGlobalSms")
+    
+    
+    return
+}
+
+func NewSendMultiGlobalSmsResponse() (response *SendMultiGlobalSmsResponse) {
+    response = &SendMultiGlobalSmsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SendMultiGlobalSms
+// 本接口 (SendMultiGlobalSms) 用于批量发送国际/港澳台短信，相比 SendSms 接口，支持在单次请求中向多个手机号发送不同内容的短信，并支持指定不同的SenderId。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONTAINSENSITIVEWORD = "FailedOperation.ContainSensitiveWord"
+//  FAILEDOPERATION_FAILRESOLVEPACKET = "FailedOperation.FailResolvePacket"
+//  FAILEDOPERATION_INSUFFICIENTBALANCEINSMSPACKAGE = "FailedOperation.InsufficientBalanceInSmsPackage"
+//  FAILEDOPERATION_MARKETINGSENDTIMECONSTRAINT = "FailedOperation.MarketingSendTimeConstraint"
+//  FAILEDOPERATION_PHONENUMBERINBLACKLIST = "FailedOperation.PhoneNumberInBlacklist"
+//  FAILEDOPERATION_SIGNATUREINCORRECTORUNAPPROVED = "FailedOperation.SignatureIncorrectOrUnapproved"
+//  FAILEDOPERATION_TEMPLATEINCORRECTORUNAPPROVED = "FailedOperation.TemplateIncorrectOrUnapproved"
+//  FAILEDOPERATION_TEMPLATEPARAMSETNOTMATCHAPPROVEDTEMPLATE = "FailedOperation.TemplateParamSetNotMatchApprovedTemplate"
+//  FAILEDOPERATION_TEMPLATEUNAPPROVEDORNOTEXIST = "FailedOperation.TemplateUnapprovedOrNotExist"
+//  INTERNALERROR_JSONPARSEFAIL = "InternalError.JsonParseFail"
+//  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
+//  INTERNALERROR_REQUESTTIMEEXCEPTION = "InternalError.RequestTimeException"
+//  INTERNALERROR_RESTAPIINTERFACENOTEXIST = "InternalError.RestApiInterfaceNotExist"
+//  INTERNALERROR_SENDANDRECVFAIL = "InternalError.SendAndRecvFail"
+//  INTERNALERROR_SIGFIELDMISSING = "InternalError.SigFieldMissing"
+//  INTERNALERROR_SIGVERIFICATIONFAIL = "InternalError.SigVerificationFail"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_CONTENTLENGTHLIMIT = "InvalidParameterValue.ContentLengthLimit"
+//  INVALIDPARAMETERVALUE_INCORRECTPHONENUMBER = "InvalidParameterValue.IncorrectPhoneNumber"
+//  INVALIDPARAMETERVALUE_MULTISMSINFOSETEMPTY = "InvalidParameterValue.MultiSmsInfoSetEmpty"
+//  INVALIDPARAMETERVALUE_PROHIBITEDUSEURLINTEMPLATEPARAMETER = "InvalidParameterValue.ProhibitedUseUrlInTemplateParameter"
+//  INVALIDPARAMETERVALUE_SDKAPPIDNOTEXIST = "InvalidParameterValue.SdkAppIdNotExist"
+//  INVALIDPARAMETERVALUE_TEMPLATEPARAMETERFORMATERROR = "InvalidParameterValue.TemplateParameterFormatError"
+//  INVALIDPARAMETERVALUE_TEMPLATEPARAMETERLENGTHLIMIT = "InvalidParameterValue.TemplateParameterLengthLimit"
+//  LIMITEXCEEDED_APPCOUNTRYORREGIONDAILYLIMIT = "LimitExceeded.AppCountryOrRegionDailyLimit"
+//  LIMITEXCEEDED_APPCOUNTRYORREGIONINBLACKLIST = "LimitExceeded.AppCountryOrRegionInBlacklist"
+//  LIMITEXCEEDED_APPDAILYLIMIT = "LimitExceeded.AppDailyLimit"
+//  LIMITEXCEEDED_APPGLOBALDAILYLIMIT = "LimitExceeded.AppGlobalDailyLimit"
+//  LIMITEXCEEDED_APPMAINLANDCHINADAILYLIMIT = "LimitExceeded.AppMainlandChinaDailyLimit"
+//  LIMITEXCEEDED_DAILYLIMIT = "LimitExceeded.DailyLimit"
+//  LIMITEXCEEDED_DELIVERYFREQUENCYLIMIT = "LimitExceeded.DeliveryFrequencyLimit"
+//  LIMITEXCEEDED_PHONENUMBERCOUNTLIMIT = "LimitExceeded.PhoneNumberCountLimit"
+//  LIMITEXCEEDED_PHONENUMBERDAILYLIMIT = "LimitExceeded.PhoneNumberDailyLimit"
+//  LIMITEXCEEDED_PHONENUMBERONEHOURLIMIT = "LimitExceeded.PhoneNumberOneHourLimit"
+//  LIMITEXCEEDED_PHONENUMBERSAMECONTENTDAILYLIMIT = "LimitExceeded.PhoneNumberSameContentDailyLimit"
+//  LIMITEXCEEDED_PHONENUMBERTHIRTYSECONDLIMIT = "LimitExceeded.PhoneNumberThirtySecondLimit"
+//  MISSINGPARAMETER_EMPTYPHONENUMBERSET = "MissingParameter.EmptyPhoneNumberSet"
+//  UNAUTHORIZEDOPERATION_INDIVIDUALUSERMARKETINGSMSPERMISSIONDENY = "UnauthorizedOperation.IndividualUserMarketingSmsPermissionDeny"
+//  UNAUTHORIZEDOPERATION_REQUESTIPNOTINWHITELIST = "UnauthorizedOperation.RequestIpNotInWhitelist"
+//  UNAUTHORIZEDOPERATION_REQUESTPERMISSIONDENY = "UnauthorizedOperation.RequestPermissionDeny"
+//  UNAUTHORIZEDOPERATION_SDKAPPIDISDISABLED = "UnauthorizedOperation.SdkAppIdIsDisabled"
+//  UNAUTHORIZEDOPERATION_SERVICESUSPENDDUETOARREARS = "UnauthorizedOperation.ServiceSuspendDueToArrears"
+//  UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = "UnauthorizedOperation.SmsSdkAppIdVerifyFail"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CHINESEMAINLANDTEMPLATETOGLOBALPHONE = "UnsupportedOperation.ChineseMainlandTemplateToGlobalPhone"
+//  UNSUPPORTEDOPERATION_CONTAINDOMESTICANDINTERNATIONALPHONENUMBER = "UnsupportedOperation.ContainDomesticAndInternationalPhoneNumber"
+//  UNSUPPORTEDOPERATION_CONTAINDOMESTICPHONENUMBER = "UnsupportedOperation.ContainDomesticPhoneNumber"
+//  UNSUPPORTEDOPERATION_GLOBALTEMPLATETOCHINESEMAINLANDPHONE = "UnsupportedOperation.GlobalTemplateToChineseMainlandPhone"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDREGION = "UnsupportedOperation.UnsupportedRegion"
+func (c *Client) SendMultiGlobalSms(request *SendMultiGlobalSmsRequest) (response *SendMultiGlobalSmsResponse, err error) {
+    return c.SendMultiGlobalSmsWithContext(context.Background(), request)
+}
+
+// SendMultiGlobalSms
+// 本接口 (SendMultiGlobalSms) 用于批量发送国际/港澳台短信，相比 SendSms 接口，支持在单次请求中向多个手机号发送不同内容的短信，并支持指定不同的SenderId。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONTAINSENSITIVEWORD = "FailedOperation.ContainSensitiveWord"
+//  FAILEDOPERATION_FAILRESOLVEPACKET = "FailedOperation.FailResolvePacket"
+//  FAILEDOPERATION_INSUFFICIENTBALANCEINSMSPACKAGE = "FailedOperation.InsufficientBalanceInSmsPackage"
+//  FAILEDOPERATION_MARKETINGSENDTIMECONSTRAINT = "FailedOperation.MarketingSendTimeConstraint"
+//  FAILEDOPERATION_PHONENUMBERINBLACKLIST = "FailedOperation.PhoneNumberInBlacklist"
+//  FAILEDOPERATION_SIGNATUREINCORRECTORUNAPPROVED = "FailedOperation.SignatureIncorrectOrUnapproved"
+//  FAILEDOPERATION_TEMPLATEINCORRECTORUNAPPROVED = "FailedOperation.TemplateIncorrectOrUnapproved"
+//  FAILEDOPERATION_TEMPLATEPARAMSETNOTMATCHAPPROVEDTEMPLATE = "FailedOperation.TemplateParamSetNotMatchApprovedTemplate"
+//  FAILEDOPERATION_TEMPLATEUNAPPROVEDORNOTEXIST = "FailedOperation.TemplateUnapprovedOrNotExist"
+//  INTERNALERROR_JSONPARSEFAIL = "InternalError.JsonParseFail"
+//  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
+//  INTERNALERROR_REQUESTTIMEEXCEPTION = "InternalError.RequestTimeException"
+//  INTERNALERROR_RESTAPIINTERFACENOTEXIST = "InternalError.RestApiInterfaceNotExist"
+//  INTERNALERROR_SENDANDRECVFAIL = "InternalError.SendAndRecvFail"
+//  INTERNALERROR_SIGFIELDMISSING = "InternalError.SigFieldMissing"
+//  INTERNALERROR_SIGVERIFICATIONFAIL = "InternalError.SigVerificationFail"
+//  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_CONTENTLENGTHLIMIT = "InvalidParameterValue.ContentLengthLimit"
+//  INVALIDPARAMETERVALUE_INCORRECTPHONENUMBER = "InvalidParameterValue.IncorrectPhoneNumber"
+//  INVALIDPARAMETERVALUE_MULTISMSINFOSETEMPTY = "InvalidParameterValue.MultiSmsInfoSetEmpty"
+//  INVALIDPARAMETERVALUE_PROHIBITEDUSEURLINTEMPLATEPARAMETER = "InvalidParameterValue.ProhibitedUseUrlInTemplateParameter"
+//  INVALIDPARAMETERVALUE_SDKAPPIDNOTEXIST = "InvalidParameterValue.SdkAppIdNotExist"
+//  INVALIDPARAMETERVALUE_TEMPLATEPARAMETERFORMATERROR = "InvalidParameterValue.TemplateParameterFormatError"
+//  INVALIDPARAMETERVALUE_TEMPLATEPARAMETERLENGTHLIMIT = "InvalidParameterValue.TemplateParameterLengthLimit"
+//  LIMITEXCEEDED_APPCOUNTRYORREGIONDAILYLIMIT = "LimitExceeded.AppCountryOrRegionDailyLimit"
+//  LIMITEXCEEDED_APPCOUNTRYORREGIONINBLACKLIST = "LimitExceeded.AppCountryOrRegionInBlacklist"
+//  LIMITEXCEEDED_APPDAILYLIMIT = "LimitExceeded.AppDailyLimit"
+//  LIMITEXCEEDED_APPGLOBALDAILYLIMIT = "LimitExceeded.AppGlobalDailyLimit"
+//  LIMITEXCEEDED_APPMAINLANDCHINADAILYLIMIT = "LimitExceeded.AppMainlandChinaDailyLimit"
+//  LIMITEXCEEDED_DAILYLIMIT = "LimitExceeded.DailyLimit"
+//  LIMITEXCEEDED_DELIVERYFREQUENCYLIMIT = "LimitExceeded.DeliveryFrequencyLimit"
+//  LIMITEXCEEDED_PHONENUMBERCOUNTLIMIT = "LimitExceeded.PhoneNumberCountLimit"
+//  LIMITEXCEEDED_PHONENUMBERDAILYLIMIT = "LimitExceeded.PhoneNumberDailyLimit"
+//  LIMITEXCEEDED_PHONENUMBERONEHOURLIMIT = "LimitExceeded.PhoneNumberOneHourLimit"
+//  LIMITEXCEEDED_PHONENUMBERSAMECONTENTDAILYLIMIT = "LimitExceeded.PhoneNumberSameContentDailyLimit"
+//  LIMITEXCEEDED_PHONENUMBERTHIRTYSECONDLIMIT = "LimitExceeded.PhoneNumberThirtySecondLimit"
+//  MISSINGPARAMETER_EMPTYPHONENUMBERSET = "MissingParameter.EmptyPhoneNumberSet"
+//  UNAUTHORIZEDOPERATION_INDIVIDUALUSERMARKETINGSMSPERMISSIONDENY = "UnauthorizedOperation.IndividualUserMarketingSmsPermissionDeny"
+//  UNAUTHORIZEDOPERATION_REQUESTIPNOTINWHITELIST = "UnauthorizedOperation.RequestIpNotInWhitelist"
+//  UNAUTHORIZEDOPERATION_REQUESTPERMISSIONDENY = "UnauthorizedOperation.RequestPermissionDeny"
+//  UNAUTHORIZEDOPERATION_SDKAPPIDISDISABLED = "UnauthorizedOperation.SdkAppIdIsDisabled"
+//  UNAUTHORIZEDOPERATION_SERVICESUSPENDDUETOARREARS = "UnauthorizedOperation.ServiceSuspendDueToArrears"
+//  UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = "UnauthorizedOperation.SmsSdkAppIdVerifyFail"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CHINESEMAINLANDTEMPLATETOGLOBALPHONE = "UnsupportedOperation.ChineseMainlandTemplateToGlobalPhone"
+//  UNSUPPORTEDOPERATION_CONTAINDOMESTICANDINTERNATIONALPHONENUMBER = "UnsupportedOperation.ContainDomesticAndInternationalPhoneNumber"
+//  UNSUPPORTEDOPERATION_CONTAINDOMESTICPHONENUMBER = "UnsupportedOperation.ContainDomesticPhoneNumber"
+//  UNSUPPORTEDOPERATION_GLOBALTEMPLATETOCHINESEMAINLANDPHONE = "UnsupportedOperation.GlobalTemplateToChineseMainlandPhone"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDREGION = "UnsupportedOperation.UnsupportedRegion"
+func (c *Client) SendMultiGlobalSmsWithContext(ctx context.Context, request *SendMultiGlobalSmsRequest) (response *SendMultiGlobalSmsResponse, err error) {
+    if request == nil {
+        request = NewSendMultiGlobalSmsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "sms", APIVersion, "SendMultiGlobalSms")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendMultiGlobalSms require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSendMultiGlobalSmsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSendSmsRequest() (request *SendSmsRequest) {
     request = &SendSmsRequest{
         BaseRequest: &tchttp.BaseRequest{},

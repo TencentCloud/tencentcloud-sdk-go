@@ -50,6 +50,9 @@ const (
 	// 当前合同状态无法进行签署审批。
 	FAILEDOPERATION_NOTAVAILABLESIGNREVIEW = "FailedOperation.NotAvailableSignReview"
 
+	// 企业经营状态与工商局信息不符
+	FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
+
 	// 发起签署存在填写控件。
 	FAILEDOPERATION_QRCODECREATORSIGNCOMPONENTS = "FailedOperation.QrCodeCreatorSignComponents"
 

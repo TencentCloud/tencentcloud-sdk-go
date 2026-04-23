@@ -2435,19 +2435,14 @@ type AiSampleWordInfo struct {
 }
 
 type AigcImageExtraParam struct {
-	// 指定所生成视频的宽高比。
-	// 
-	// 不同模型支持的宽高比:
-	// 1. GEM支持：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9 和 21:9。
-	// 
-	// 注：具体模型的宽高比参数，可查看相应模型官网获取更完整描述。
+	// <p>指定所生成视频的宽高比。</p><p>不同模型支持的宽高比:</p><ol><li>GEM支持：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9 和 21:9。</li></ol><p>注：具体模型的宽高比参数，可查看相应模型官网获取更完整描述。</p>
 	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
 
-	// 指定图片输出分辨率。
-	// 
-	// 支持该参数的模型：
-	// 支持选择: 720P, 1080P, 2K, 4K。
+	// <p>指定图片输出分辨率。</p><p>支持该参数的模型：<br>支持选择: 720P, 1080P, 2K, 4K。</p>
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// <p>是否添加图标水印。默认不加。1-添加，0-不添加。</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
 }
 
 type AigcImageInfo struct {
@@ -4588,10 +4583,10 @@ func (r *CreateAigcImageTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAigcVideoTaskRequestParams struct {
-	// <p>模型名称。<br>当前支持的模型列表:<br>Hunyuan,<br>Hailuo，<br>Kling，<br>Vidu，<br>OS，<br>GV。</p>
+	// <p>模型名称。<br>当前支持的模型列表:<br>Hunyuan,<br>Hailuo，<br>Kling，<br>Vidu，<br>OS，<br>GV，<br>PixVerse。</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hailuo， 可选[02、2.3]。</li><li>Kling，可选[2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu,可选[q2、q2-pro、q2-turbo、q3-pro、q3-turbo]。</li><li>GV, 可选[3.1]。</li><li>OS，可选[2.0]。</li></ol>
+	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hailuo， 可选[02、2.3、2.3-fast]。</li><li>Kling，可选[1.6、2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu,可选[q2、q2-pro、q2-turbo、q3-pro、q3-turbo、q3、q3-mix]。</li><li>GV, 可选[3.1、3.1-fast]。</li><li>OS，可选[2.0]。</li><li>PixVerse，可选[v5.6、v6、c1]</li></ol>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
 	// <p>指定场景生视频。<br>注意：仅部分模型支持指定场景。</p><ol><li>Kling支持动作控制，motion_control。</li><li>Mingmou支持横转竖，land2port。</li><li>Vidu支持特效模板，template_effect。</li></ol>
@@ -4637,10 +4632,10 @@ type CreateAigcVideoTaskRequestParams struct {
 type CreateAigcVideoTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>模型名称。<br>当前支持的模型列表:<br>Hunyuan,<br>Hailuo，<br>Kling，<br>Vidu，<br>OS，<br>GV。</p>
+	// <p>模型名称。<br>当前支持的模型列表:<br>Hunyuan,<br>Hailuo，<br>Kling，<br>Vidu，<br>OS，<br>GV，<br>PixVerse。</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hailuo， 可选[02、2.3]。</li><li>Kling，可选[2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu,可选[q2、q2-pro、q2-turbo、q3-pro、q3-turbo]。</li><li>GV, 可选[3.1]。</li><li>OS，可选[2.0]。</li></ol>
+	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hailuo， 可选[02、2.3、2.3-fast]。</li><li>Kling，可选[1.6、2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu,可选[q2、q2-pro、q2-turbo、q3-pro、q3-turbo、q3、q3-mix]。</li><li>GV, 可选[3.1、3.1-fast]。</li><li>OS，可选[2.0]。</li><li>PixVerse，可选[v5.6、v6、c1]</li></ol>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
 	// <p>指定场景生视频。<br>注意：仅部分模型支持指定场景。</p><ol><li>Kling支持动作控制，motion_control。</li><li>Mingmou支持横转竖，land2port。</li><li>Vidu支持特效模板，template_effect。</li></ol>
@@ -15458,6 +15453,78 @@ func (r *DescribeTasksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTextToSpeechAsyncTaskRequestParams struct {
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeTextToSpeechAsyncTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeTextToSpeechAsyncTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTextToSpeechAsyncTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTextToSpeechAsyncTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTextToSpeechAsyncTaskResponseParams struct {
+	// <p>错误码，成功时返回0</p>
+	ErrorCode *int64 `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>错误信息，成功时返回success</p>
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>任务状态</p><p>枚举值：</p><ul><li>success： 成功</li><li>fail： 失败</li><li>processing： 处理中</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>合成音频url</p>
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
+	// <p>使用的音色ID</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>扩展信息</p>
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTextToSpeechAsyncTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTextToSpeechAsyncTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeTextToSpeechAsyncTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTextToSpeechAsyncTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTranscodeTemplatesRequestParams struct {
 	// 转码模板唯一标识过滤条件，数组长度限制：100。
 	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
@@ -25525,25 +25592,31 @@ type SRTSourceAddressResp struct {
 }
 
 type SSAIChannelInfo struct {
-	// 频道ID，全局唯一标识。
+	// <p>频道ID，全局唯一标识。</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 频道名称。
+	// <p>频道名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 广告源信息。
+	// <p>广告源信息。</p>
 	ContentSource *string `json:"ContentSource,omitnil,omitempty" name:"ContentSource"`
 
-	// 播放地址。
+	// <p>播放地址。兼容旧版本参数，推荐使用HlsPlaybackPrefix或DashPlaybackPrefix</p>
 	PlaybackPrefix *string `json:"PlaybackPrefix,omitnil,omitempty" name:"PlaybackPrefix"`
 
-	// 广告插入SSAI配置信息。
+	// <p>hls播放地址</p>
+	HlsPlaybackPrefix *string `json:"HlsPlaybackPrefix,omitnil,omitempty" name:"HlsPlaybackPrefix"`
+
+	// <p>dash播放地址</p>
+	DashPlaybackPrefix *string `json:"DashPlaybackPrefix,omitnil,omitempty" name:"DashPlaybackPrefix"`
+
+	// <p>广告插入SSAI配置信息。</p>
 	SSAIInfo *SSAIConf `json:"SSAIInfo,omitnil,omitempty" name:"SSAIInfo"`
 
-	// 地域信息。
+	// <p>地域信息。</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 用于clickthrough地址
+	// <p>用于clickthrough地址</p>
 	SessionInitPrefix *string `json:"SessionInitPrefix,omitnil,omitempty" name:"SessionInitPrefix"`
 }
 
@@ -25599,6 +25672,18 @@ type SSAIConf struct {
 
 	// <p>是否开启多次请求ADS,开启后将优先请求ADS，请求失败后再请求兜底广告</p>
 	MultiRequest *bool `json:"MultiRequest,omitnil,omitempty" name:"MultiRequest"`
+
+	// <p>dash周期类型：SinglePeriod 或 MultiPeriod，默认 MultiPeriod</p>
+	DashOriginManifestType *string `json:"DashOriginManifestType,omitnil,omitempty" name:"DashOriginManifestType"`
+
+	// <p>Empty VAST时是否播放Slate，默认开启(true)</p>
+	SlateOnEmptyVast *bool `json:"SlateOnEmptyVast,omitnil,omitempty" name:"SlateOnEmptyVast"`
+
+	// <p>SCTE marker duration，默认180，范围0-3600</p>
+	SCTEMarkerDuration *int64 `json:"SCTEMarkerDuration,omitnil,omitempty" name:"SCTEMarkerDuration"`
+
+	// <p>安全组Id</p>
+	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 }
 
 type SSAIUsageInfo struct {
@@ -28142,6 +28227,90 @@ type TerrorismOcrReviewTemplateInfoForUpdate struct {
 
 	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitnil,omitempty" name:"ReviewConfidence"`
+}
+
+// Predefined struct for user
+type TextToSpeechAsyncRequestParams struct {
+	// <p>语音合成文本</p>
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// <p>音色ID</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>文本语言，默认中文</p>
+	TextLang *string `json:"TextLang,omitnil,omitempty" name:"TextLang"`
+
+	// <p>扩展参数，json字符串</p><p>synExt Object 语音合成扩展参数<br>  duration Float 合成音频时长，单位秒，示例：5.2<br>  sampleRate Integer 合成音频采样率，默认16000，支持[8000,16000,22050,32000,44100]<br>  pitch Integer 音调，默认0原音色输出，取值[-12, 12]</p><p>transExt Object 翻译扩展参数<br>  transInfo Object<br>   transDst String 目标语言，如en<br>  transRequirement String 翻译要求</p>
+	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
+}
+
+type TextToSpeechAsyncRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>语音合成文本</p>
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// <p>音色ID</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>文本语言，默认中文</p>
+	TextLang *string `json:"TextLang,omitnil,omitempty" name:"TextLang"`
+
+	// <p>扩展参数，json字符串</p><p>synExt Object 语音合成扩展参数<br>  duration Float 合成音频时长，单位秒，示例：5.2<br>  sampleRate Integer 合成音频采样率，默认16000，支持[8000,16000,22050,32000,44100]<br>  pitch Integer 音调，默认0原音色输出，取值[-12, 12]</p><p>transExt Object 翻译扩展参数<br>  transInfo Object<br>   transDst String 目标语言，如en<br>  transRequirement String 翻译要求</p>
+	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
+}
+
+func (r *TextToSpeechAsyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextToSpeechAsyncRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "VoiceId")
+	delete(f, "TextLang")
+	delete(f, "ExtParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToSpeechAsyncRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TextToSpeechAsyncResponseParams struct {
+	// <p>错误码，成功时返回0</p>
+	ErrorCode *int64 `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>错误信息，成功时返回success</p>
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>任务ID，使用该ID查询结果</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TextToSpeechAsyncResponse struct {
+	*tchttp.BaseResponse
+	Response *TextToSpeechAsyncResponseParams `json:"Response"`
+}
+
+func (r *TextToSpeechAsyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextToSpeechAsyncResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

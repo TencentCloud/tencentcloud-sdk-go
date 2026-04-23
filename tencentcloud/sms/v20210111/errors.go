@@ -182,6 +182,9 @@ const (
 	// 营销短信必须包含退订方式，请在短信模板尾部添加“拒收请回复R”后提交。可参考 [关于营销短信退订标识修改的公告](https://cloud.tencent.com/document/product/382/100568)。
 	INVALIDPARAMETERVALUE_MARKETINGTEMPLATEWITHOUTUNSUBSCRIBE = "InvalidParameterValue.MarketingTemplateWithoutUnsubscribe"
 
+	// 传入的 MultiSmsInfoSet 列表为空，请确认您的参数中是否传入 MultiSmsInfoSet。
+	INVALIDPARAMETERVALUE_MULTISMSINFOSETEMPTY = "InvalidParameterValue.MultiSmsInfoSetEmpty"
+
 	// 参数 Offset 校验失败。
 	INVALIDPARAMETERVALUE_OFFSETVERIFYFAIL = "InvalidParameterValue.OffsetVerifyFail"
 
@@ -283,6 +286,9 @@ const (
 
 	// 群发请求里既有国内手机号也有国际手机号。请排查是否存在（1）使用国内签名或模板却发送短信到国际手机号；（2）使用国际签名或模板却发送短信到国内手机号。
 	UNSUPPORTEDOPERATION_CONTAINDOMESTICANDINTERNATIONALPHONENUMBER = "UnsupportedOperation.ContainDomesticAndInternationalPhoneNumber"
+
+	// 包含中国大陆号码，该接口仅支持国际/港澳台号码。
+	UNSUPPORTEDOPERATION_CONTAINDOMESTICPHONENUMBER = "UnsupportedOperation.ContainDomesticPhoneNumber"
 
 	// 国际/港澳台短信模板不支持发送国内手机号。发送国内手机号请使用国内短信正文模板。
 	UNSUPPORTEDOPERATION_GLOBALTEMPLATETOCHINESEMAINLANDPHONE = "UnsupportedOperation.GlobalTemplateToChineseMainlandPhone"

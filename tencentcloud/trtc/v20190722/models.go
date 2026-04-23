@@ -195,6 +195,18 @@ type AsrParam struct {
 
 	// vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 3]，默认为0。推荐设置为2，有较好的远场人声抑制能力。
 	VadLevel *uint64 `json:"VadLevel,omitnil,omitempty" name:"VadLevel"`
+
+	// 是否过滤脏词（目前仅支持填写基础语言引擎和标准语言引擎），范围为[0, 2]，默认值为 0。
+	// 0：不过滤脏词；1：过滤脏词；2：将脏词替换为 " * "。
+	FilterDirty *uint64 `json:"FilterDirty,omitnil,omitempty" name:"FilterDirty"`
+
+	// 是否过滤语气词（目前仅支持填写基础语言引擎和标准语言引擎），范围为[0, 2]，默认值为 0。
+	// 0：不过滤语气词；1：部分过滤；2：严格过滤。
+	FilterModal *uint64 `json:"FilterModal,omitnil,omitempty" name:"FilterModal"`
+
+	// 是否过滤句末的句号（目前仅支持填写基础语言引擎和标准语言引擎），范围为[0, 1]，默认值为 0。
+	// 0：不过滤句末的句号；1：过滤句末的句号。
+	FilterPunc *uint64 `json:"FilterPunc,omitnil,omitempty" name:"FilterPunc"`
 }
 
 // Predefined struct for user

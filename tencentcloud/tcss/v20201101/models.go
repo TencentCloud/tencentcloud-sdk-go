@@ -1775,6 +1775,181 @@ func (r *AddNetworkFirewallPolicyYamlDetailResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddOrModifyMaliciousConnectionWhiteListRequestParams struct {
+	// 枚举
+	// IP: IP
+	// 域名：DOMAIN
+	RequestType *string `json:"RequestType,omitnil,omitempty" name:"RequestType"`
+
+	// 白名单域名
+	WhiteDomainList []*string `json:"WhiteDomainList,omitnil,omitempty" name:"WhiteDomainList"`
+
+	// 白名单IP
+	WhiteIPList []*string `json:"WhiteIPList,omitnil,omitempty" name:"WhiteIPList"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 白名单记录id，只有修改时需要
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+type AddOrModifyMaliciousConnectionWhiteListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 枚举
+	// IP: IP
+	// 域名：DOMAIN
+	RequestType *string `json:"RequestType,omitnil,omitempty" name:"RequestType"`
+
+	// 白名单域名
+	WhiteDomainList []*string `json:"WhiteDomainList,omitnil,omitempty" name:"WhiteDomainList"`
+
+	// 白名单IP
+	WhiteIPList []*string `json:"WhiteIPList,omitnil,omitempty" name:"WhiteIPList"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 白名单记录id，只有修改时需要
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+func (r *AddOrModifyMaliciousConnectionWhiteListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddOrModifyMaliciousConnectionWhiteListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RequestType")
+	delete(f, "WhiteDomainList")
+	delete(f, "WhiteIPList")
+	delete(f, "Remark")
+	delete(f, "ID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddOrModifyMaliciousConnectionWhiteListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddOrModifyMaliciousConnectionWhiteListResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddOrModifyMaliciousConnectionWhiteListResponse struct {
+	*tchttp.BaseResponse
+	Response *AddOrModifyMaliciousConnectionWhiteListResponseParams `json:"Response"`
+}
+
+func (r *AddOrModifyMaliciousConnectionWhiteListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddOrModifyMaliciousConnectionWhiteListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddOrModifyVirusWhiteListRuleRequestParams struct {
+	// <p>MD5列表</p>
+	Md5List []*string `json:"Md5List,omitnil,omitempty" name:"Md5List"`
+
+	// <p>生效范围：1=全部镜像，0=自选镜像</p>
+	Scope *uint64 `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// <p>规则ID，有值为修改，无值为新增</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>镜像ID列表，最大1000个。Scope为0（自选镜像）时必填</p>
+	ImageIds []*string `json:"ImageIds,omitnil,omitempty" name:"ImageIds"`
+
+	// <p>规则备注，最大256字符</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>事件id</p>
+	EventId *uint64 `json:"EventId,omitnil,omitempty" name:"EventId"`
+}
+
+type AddOrModifyVirusWhiteListRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>MD5列表</p>
+	Md5List []*string `json:"Md5List,omitnil,omitempty" name:"Md5List"`
+
+	// <p>生效范围：1=全部镜像，0=自选镜像</p>
+	Scope *uint64 `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// <p>规则ID，有值为修改，无值为新增</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>镜像ID列表，最大1000个。Scope为0（自选镜像）时必填</p>
+	ImageIds []*string `json:"ImageIds,omitnil,omitempty" name:"ImageIds"`
+
+	// <p>规则备注，最大256字符</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>事件id</p>
+	EventId *uint64 `json:"EventId,omitnil,omitempty" name:"EventId"`
+}
+
+func (r *AddOrModifyVirusWhiteListRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddOrModifyVirusWhiteListRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Md5List")
+	delete(f, "Scope")
+	delete(f, "Id")
+	delete(f, "ImageIds")
+	delete(f, "Remark")
+	delete(f, "EventId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddOrModifyVirusWhiteListRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddOrModifyVirusWhiteListRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddOrModifyVirusWhiteListRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *AddOrModifyVirusWhiteListRuleResponseParams `json:"Response"`
+}
+
+func (r *AddOrModifyVirusWhiteListRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddOrModifyVirusWhiteListRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AffectedNodeItem struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -7879,6 +8054,60 @@ func (r *DeleteSearchTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteSearchTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVirusWhiteListRuleRequestParams struct {
+	// 规则ID列表
+	RuleIdSet []*uint64 `json:"RuleIdSet,omitnil,omitempty" name:"RuleIdSet"`
+}
+
+type DeleteVirusWhiteListRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则ID列表
+	RuleIdSet []*uint64 `json:"RuleIdSet,omitnil,omitempty" name:"RuleIdSet"`
+}
+
+func (r *DeleteVirusWhiteListRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVirusWhiteListRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleIdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVirusWhiteListRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVirusWhiteListRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteVirusWhiteListRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteVirusWhiteListRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteVirusWhiteListRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVirusWhiteListRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -24033,6 +24262,73 @@ func (r *DescribeVirusManualScanEstimateTimeoutResponse) FromJsonString(s string
 }
 
 // Predefined struct for user
+type DescribeVirusMonitorConfigRequestParams struct {
+
+}
+
+type DescribeVirusMonitorConfigRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeVirusMonitorConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVirusMonitorConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVirusMonitorConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVirusMonitorConfigResponseParams struct {
+	// 是否开启实时监控
+	EnableScan *bool `json:"EnableScan,omitnil,omitempty" name:"EnableScan"`
+
+	// true:包含路径 false:排除路径
+	IsIncludePath *bool `json:"IsIncludePath,omitnil,omitempty" name:"IsIncludePath"`
+
+	// 自选排除或扫描的地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanPath []*string `json:"ScanPath,omitnil,omitempty" name:"ScanPath"`
+
+	// 扫描路径模式：
+	// SCAN_PATH_ALL：全部路径
+	// SCAN_PATH_DEFAULT：默认路径
+	// SCAN_PATH_USER_DEFINE：用户自定义路径
+	ScanPathMode *string `json:"ScanPathMode,omitnil,omitempty" name:"ScanPathMode"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVirusMonitorConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVirusMonitorConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeVirusMonitorConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVirusMonitorConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeVirusMonitorSettingRequestParams struct {
 
 }
@@ -24155,6 +24451,89 @@ func (r *DescribeVirusSampleDownloadUrlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeVirusSampleDownloadUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVirusScanConfigRequestParams struct {
+
+}
+
+type DescribeVirusScanConfigRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeVirusScanConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVirusScanConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVirusScanConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVirusScanConfigResponseParams struct {
+	// 是否开启定期扫描
+	EnableScan *bool `json:"EnableScan,omitnil,omitempty" name:"EnableScan"`
+
+	// 检测周期每隔多少天
+	Cycle *uint64 `json:"Cycle,omitnil,omitempty" name:"Cycle"`
+
+	// 扫描开始时间
+	BeginScanAt *string `json:"BeginScanAt,omitnil,omitempty" name:"BeginScanAt"`
+
+	// 超时时长，单位小时
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// SCAN_NODE:扫描节点
+	// SCAN_CONTAINER:扫描容器
+	ScanRangeType *string `json:"ScanRangeType,omitnil,omitempty" name:"ScanRangeType"`
+
+	// 自选扫描范围的容器id或者节点id 
+	ScanIDs []*ScanRangeInfo `json:"ScanIDs,omitnil,omitempty" name:"ScanIDs"`
+
+	// 自选排除或扫描的地址
+	ScanPath []*string `json:"ScanPath,omitnil,omitempty" name:"ScanPath"`
+
+	// 扫描路径模式：
+	// SCAN_PATH_ALL：全部路径
+	// SCAN_PATH_DEFAULT：默认路径
+	// SCAN_PATH_USER_DEFINE：用户自定义路径
+	ScanPathMode *string `json:"ScanPathMode,omitnil,omitempty" name:"ScanPathMode"`
+
+	// true:包含路径
+	// false:排除路径
+	IsIncludePath *bool `json:"IsIncludePath,omitnil,omitempty" name:"IsIncludePath"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVirusScanConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVirusScanConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeVirusScanConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVirusScanConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -24576,6 +24955,94 @@ func (r *DescribeVirusTaskListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeVirusTaskListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVirusWhiteListRulesRequestParams struct {
+	// <p>分页大小，默认为10</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量，默认为0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方向，ASC/DESC，默认DESC</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段，支持 InsertTime/UpdateTime</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// <p>过滤</p>
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeVirusWhiteListRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>分页大小，默认为10</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移量，默认为0</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>排序方向，ASC/DESC，默认DESC</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// <p>排序字段，支持 InsertTime/UpdateTime</p>
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// <p>过滤</p>
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeVirusWhiteListRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVirusWhiteListRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVirusWhiteListRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVirusWhiteListRulesResponseParams struct {
+	// <p>总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>白名单规则列表</p>
+	List []*VirusWhiteListRuleInfo `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVirusWhiteListRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVirusWhiteListRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeVirusWhiteListRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVirusWhiteListRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -26975,78 +27442,82 @@ type FileAttributeInfo struct {
 }
 
 type HostInfo struct {
-	// 主机id
+	// <p>主机id</p>
 	HostID *string `json:"HostID,omitnil,omitempty" name:"HostID"`
 
-	// 主机ip即内网ip
+	// <p>主机ip即内网ip</p>
 	HostIP *string `json:"HostIP,omitnil,omitempty" name:"HostIP"`
 
-	// 主机名称
+	// <p>主机名称</p>
 	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 
-	// 业务组
+	// <p>业务组</p>
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
-	// docker 版本
+	// <p>docker 版本</p>
 	DockerVersion *string `json:"DockerVersion,omitnil,omitempty" name:"DockerVersion"`
 
-	// docker 文件系统类型
+	// <p>docker 文件系统类型</p>
 	DockerFileSystemDriver *string `json:"DockerFileSystemDriver,omitnil,omitempty" name:"DockerFileSystemDriver"`
 
-	// 镜像个数
+	// <p>镜像个数</p>
 	ImageCnt *uint64 `json:"ImageCnt,omitnil,omitempty" name:"ImageCnt"`
 
-	// 容器个数
+	// <p>容器个数</p>
 	ContainerCnt *uint64 `json:"ContainerCnt,omitnil,omitempty" name:"ContainerCnt"`
 
-	// agent运行状态
+	// <p>agent运行状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 是否是Containerd
+	// <p>是否是Containerd</p>
 	IsContainerd *bool `json:"IsContainerd,omitnil,omitempty" name:"IsContainerd"`
 
-	// 主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；
+	// <p>主机来源：[&quot;CVM&quot;, &quot;ECM&quot;, &quot;LH&quot;, &quot;BM&quot;]  中的之一为腾讯云服务器；[&quot;Other&quot;]之一非腾讯云服务器；</p>
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
-	// 外网ip
+	// <p>外网ip</p>
 	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
-	// 主机uuid
+	// <p>主机uuid</p>
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
-	// 主机实例ID
+	// <p>主机实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 地域ID
+	// <p>地域ID</p>
 	RegionID *int64 `json:"RegionID,omitnil,omitempty" name:"RegionID"`
 
-	// 所属项目
+	// <p>所属项目</p>
 	Project *ProjectInfo `json:"Project,omitnil,omitempty" name:"Project"`
 
-	// 标签
+	// <p>标签</p>
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 集群id
+	// <p>集群id</p>
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 集群接入状态
+	// <p>集群接入状态</p>
 	ClusterAccessedStatus *string `json:"ClusterAccessedStatus,omitnil,omitempty" name:"ClusterAccessedStatus"`
 
-	// 计费核数
+	// <p>集群接入子状态</p><p>枚举值：</p><ul><li>AccessedSubNone： 无</li><li>AccessedSubUninstallException： 卸载异常</li><li>AccessedSubTimeout： 接入超时</li><li>AccessedSubUninstallTimeout： 卸载超时</li><li>AccessedSubResourceException： 集群组件检查异常-Deployment/DaemonSet等异常</li><li>AccessedSubCAMPermissionDenied： CAM权限不够</li></ul>
+	ClusterAccessedSubStatus *string `json:"ClusterAccessedSubStatus,omitnil,omitempty" name:"ClusterAccessedSubStatus"`
+
+	// <p>失败具体原因描述</p>
+	ClusterAccessedErrorReason *string `json:"ClusterAccessedErrorReason,omitnil,omitempty" name:"ClusterAccessedErrorReason"`
+
+	// <p>计费核数</p>
 	ChargeCoresCnt *uint64 `json:"ChargeCoresCnt,omitnil,omitempty" name:"ChargeCoresCnt"`
 
-	// 防护状态:
-	// 已防护: Defended
-	// 未防护: UnDefended
+	// <p>防护状态:<br>已防护: Defended<br>未防护: UnDefended</p>
 	DefendStatus *string `json:"DefendStatus,omitnil,omitempty" name:"DefendStatus"`
 
-	// 核数
+	// <p>核数</p>
 	CoresCnt *uint64 `json:"CoresCnt,omitnil,omitempty" name:"CoresCnt"`
 
-	// 最近在线时间
+	// <p>最近在线时间</p>
 	LastOnlineTime *string `json:"LastOnlineTime,omitnil,omitempty" name:"LastOnlineTime"`
 }
 
@@ -32804,6 +33275,20 @@ type ScanIgnoreVul struct {
 	LocalImageCount *int64 `json:"LocalImageCount,omitnil,omitempty" name:"LocalImageCount"`
 }
 
+type ScanRangeInfo struct {
+	// true:选择全部；
+	// false:部分选择
+	IsAll *bool `json:"IsAll,omitnil,omitempty" name:"IsAll"`
+
+	// SCAN_NORMAL:普通节点；
+	// SCAN_SUPER:超级节点
+	// SCAN_CONTAINER:容器
+	RangeType *string `json:"RangeType,omitnil,omitempty" name:"RangeType"`
+
+	// 选择的ID
+	IDs []*string `json:"IDs,omitnil,omitempty" name:"IDs"`
+}
+
 type SearchTemplate struct {
 	// 检索名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -33263,61 +33748,65 @@ func (r *StopVulScanTaskResponse) FromJsonString(s string) error {
 }
 
 type SuperNodeListItem struct {
-	// 超级节点ID
+	// <p>超级节点ID</p>
 	NodeID *string `json:"NodeID,omitnil,omitempty" name:"NodeID"`
 
-	// 超级节点名称
+	// <p>超级节点名称</p>
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// 所属集群名
+	// <p>所属集群名</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 所属集群ID
+	// <p>所属集群ID</p>
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
-	// 节点状态:Running,Ready,Notready,Initializing,Failed,Error
+	// <p>节点状态:Running,Ready,Notready,Initializing,Failed,Error</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 子网ID
+	// <p>子网ID</p>
 	SubNetID *string `json:"SubNetID,omitnil,omitempty" name:"SubNetID"`
 
-	// 子网名称
+	// <p>子网名称</p>
 	SubNetName *string `json:"SubNetName,omitnil,omitempty" name:"SubNetName"`
 
-	// 子网网段
+	// <p>子网网段</p>
 	SubNetCidr *string `json:"SubNetCidr,omitnil,omitempty" name:"SubNetCidr"`
 
-	// 可用区ID
+	// <p>可用区ID</p>
 	ZoneID *string `json:"ZoneID,omitnil,omitempty" name:"ZoneID"`
 
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 关联pod数
+	// <p>关联pod数</p>
 	RelatePodCount *uint64 `json:"RelatePodCount,omitnil,omitempty" name:"RelatePodCount"`
 
-	// 关联容器数
+	// <p>关联容器数</p>
 	RelateContainerCount *uint64 `json:"RelateContainerCount,omitnil,omitempty" name:"RelateContainerCount"`
 
-	// agent安装状态UNINSTALL:未安装;INSTALLED:已安装;INSTALLING:安装中;
+	// <p>agent安装状态UNINSTALL:未安装;INSTALLED:已安装;INSTALLING:安装中;</p>
 	AgentStatus *string `json:"AgentStatus,omitnil,omitempty" name:"AgentStatus"`
 
-	// 节点唯一id
+	// <p>节点唯一id</p>
 	NodeUniqueID *string `json:"NodeUniqueID,omitnil,omitempty" name:"NodeUniqueID"`
 
-	// 集群接入状态
+	// <p>集群接入状态</p>
 	ClusterAccessedStatus *string `json:"ClusterAccessedStatus,omitnil,omitempty" name:"ClusterAccessedStatus"`
 
-	// 计费核数
+	// <p>计费核数</p>
 	ChargeCoresCnt *uint64 `json:"ChargeCoresCnt,omitnil,omitempty" name:"ChargeCoresCnt"`
 
-	// 防护状态:
-	// 已防护: Defended
-	// 未防护: UnDefended
+	// <p>防护状态:<br>已防护: Defended<br>未防护: UnDefended</p>
 	DefendStatus *string `json:"DefendStatus,omitnil,omitempty" name:"DefendStatus"`
+
+	// <p>集群接入子状态</p><p>枚举值：</p><ul><li>AccessedSubNone： 无</li><li>AccessedSubUninstallException： 卸载异常</li><li>AccessedSubTimeout： 接入超时</li><li>AccessedSubUninstallTimeout： 卸载超时</li><li>AccessedSubResourceException： 集群组件检查异常-Deployment/DaemonSet等异常</li><li>AccessedSubCAMPermissionDenied： CAM权限不够</li></ul>
+	ClusterAccessedSubStatus *string `json:"ClusterAccessedSubStatus,omitnil,omitempty" name:"ClusterAccessedSubStatus"`
+
+	// <p>失败具体原因描述</p>
+	ClusterAccessedErrorReason *string `json:"ClusterAccessedErrorReason,omitnil,omitempty" name:"ClusterAccessedErrorReason"`
 }
 
 type SuperNodePodListItem struct {
@@ -34591,6 +35080,35 @@ type VirusTendencyInfo struct {
 
 	// 隔离事件总数
 	IsolateEventCount *uint64 `json:"IsolateEventCount,omitnil,omitempty" name:"IsolateEventCount"`
+}
+
+type VirusWhiteListRuleInfo struct {
+	// <p>白名单id</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>md5加白内容</p>
+	Md5List []*string `json:"Md5List,omitnil,omitempty" name:"Md5List"`
+
+	// <p>镜像id</p>
+	ImageIds []*string `json:"ImageIds,omitnil,omitempty" name:"ImageIds"`
+
+	// <p>范围</p>
+	Scope *uint64 `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// <p>镜像数</p>
+	ImageCount *uint64 `json:"ImageCount,omitnil,omitempty" name:"ImageCount"`
+
+	// <p>md5数</p>
+	Md5Count *uint64 `json:"Md5Count,omitnil,omitempty" name:"Md5Count"`
+
+	// <p>标记</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>插入时间</p>
+	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
+
+	// <p>更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type VulAffectedComponentInfo struct {

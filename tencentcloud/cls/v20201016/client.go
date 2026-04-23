@@ -2713,6 +2713,80 @@ func (c *Client) CreateScheduledSqlWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateSearchViewRequest() (request *CreateSearchViewRequest) {
+    request = &CreateSearchViewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateSearchView")
+    
+    
+    return
+}
+
+func NewCreateSearchViewResponse() (response *CreateSearchViewResponse) {
+    response = &CreateSearchViewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSearchView
+// 新建查询视图
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_LOGSETNOTEXIST = "ResourceNotFound.LogsetNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CreateSearchView(request *CreateSearchViewRequest) (response *CreateSearchViewResponse, err error) {
+    return c.CreateSearchViewWithContext(context.Background(), request)
+}
+
+// CreateSearchView
+// 新建查询视图
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_LOGSETNOTEXIST = "ResourceNotFound.LogsetNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CreateSearchViewWithContext(ctx context.Context, request *CreateSearchViewRequest) (response *CreateSearchViewResponse, err error) {
+    if request == nil {
+        request = NewCreateSearchViewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateSearchView")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSearchView require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSearchViewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateShipperRequest() (request *CreateShipperRequest) {
     request = &CreateShipperRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5035,6 +5109,76 @@ func (c *Client) DeleteScheduledSqlWithContext(ctx context.Context, request *Del
     request.SetContext(ctx)
     
     response = NewDeleteScheduledSqlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSearchViewRequest() (request *DeleteSearchViewRequest) {
+    request = &DeleteSearchViewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteSearchView")
+    
+    
+    return
+}
+
+func NewDeleteSearchViewResponse() (response *DeleteSearchViewResponse) {
+    response = &DeleteSearchViewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteSearchView
+// 删除查询视图
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DeleteSearchView(request *DeleteSearchViewRequest) (response *DeleteSearchViewResponse, err error) {
+    return c.DeleteSearchViewWithContext(context.Background(), request)
+}
+
+// DeleteSearchView
+// 删除查询视图
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DeleteSearchViewWithContext(ctx context.Context, request *DeleteSearchViewRequest) (response *DeleteSearchViewResponse, err error) {
+    if request == nil {
+        request = NewDeleteSearchViewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteSearchView")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSearchView require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSearchViewResponse()
     err = c.Send(request, response)
     return
 }
@@ -8723,6 +8867,76 @@ func (c *Client) DescribeScheduledSqlInfoWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeSearchViewsRequest() (request *DescribeSearchViewsRequest) {
+    request = &DescribeSearchViewsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeSearchViews")
+    
+    
+    return
+}
+
+func NewDescribeSearchViewsResponse() (response *DescribeSearchViewsResponse) {
+    response = &DescribeSearchViewsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSearchViews
+// 获取查询视图列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_RECORDNOTEXIST = "ResourceNotFound.RecordNotExist"
+func (c *Client) DescribeSearchViews(request *DescribeSearchViewsRequest) (response *DescribeSearchViewsResponse, err error) {
+    return c.DescribeSearchViewsWithContext(context.Background(), request)
+}
+
+// DescribeSearchViews
+// 获取查询视图列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_RECORDNOTEXIST = "ResourceNotFound.RecordNotExist"
+func (c *Client) DescribeSearchViewsWithContext(ctx context.Context, request *DescribeSearchViewsRequest) (response *DescribeSearchViewsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSearchViewsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeSearchViews")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSearchViews require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSearchViewsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeShipperTasksRequest() (request *DescribeShipperTasksRequest) {
     request = &DescribeShipperTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11681,6 +11895,80 @@ func (c *Client) ModifyScheduledSqlWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyScheduledSqlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySearchViewRequest() (request *ModifySearchViewRequest) {
+    request = &ModifySearchViewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifySearchView")
+    
+    
+    return
+}
+
+func NewModifySearchViewResponse() (response *ModifySearchViewResponse) {
+    response = &ModifySearchViewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySearchView
+// 修改查询视图
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_LOGSETNOTEXIST = "ResourceNotFound.LogsetNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) ModifySearchView(request *ModifySearchViewRequest) (response *ModifySearchViewResponse, err error) {
+    return c.ModifySearchViewWithContext(context.Background(), request)
+}
+
+// ModifySearchView
+// 修改查询视图
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_LOGSETNOTEXIST = "ResourceNotFound.LogsetNotExist"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) ModifySearchViewWithContext(ctx context.Context, request *ModifySearchViewRequest) (response *ModifySearchViewResponse, err error) {
+    if request == nil {
+        request = NewModifySearchViewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifySearchView")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySearchView require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySearchViewResponse()
     err = c.Send(request, response)
     return
 }

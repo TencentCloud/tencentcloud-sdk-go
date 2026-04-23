@@ -366,6 +366,27 @@ type AutoCalloutTaskInfo struct {
 	MaxRingTimeoutSecond *int64 `json:"MaxRingTimeoutSecond,omitnil,omitempty" name:"MaxRingTimeoutSecond"`
 }
 
+type AvailableTimeConfig struct {
+	// <p>日期类型，默认为每天</p><p>枚举值：</p><ul><li>EveryDay： 每天</li><li>BusinessDay： 法定工作日</li><li>Holiday： 法定休息日</li><li>Custom： 自定义</li></ul>
+	DayType *string `json:"DayType,omitnil,omitempty" name:"DayType"`
+
+	// <p>仅在 DayType 为 Custom 时生效，指定适用的星期几</p><p>枚举值：</p><ul><li>Monday： 星期一</li><li>Tuesday： 星期二</li><li>Wednesday： 星期三</li><li>Thursday： 星期四</li><li>Friday： 星期五</li><li>Saturday： 星期六</li><li>Sunday： 星期日</li></ul>
+	DaysOfWeek []*string `json:"DaysOfWeek,omitnil,omitempty" name:"DaysOfWeek"`
+
+	// <p>该日期类型下的时间段列表</p>
+	TimeRanges []*TimeRange `json:"TimeRanges,omitnil,omitempty" name:"TimeRanges"`
+}
+
+type BasicAuth struct {
+
+	BasicToken *string `json:"BasicToken,omitnil,omitempty" name:"BasicToken"`
+}
+
+type BearerAuth struct {
+
+	BearerToken *string `json:"BearerToken,omitnil,omitempty" name:"BearerToken"`
+}
+
 // Predefined struct for user
 type BindNumberCallInInterfaceRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
@@ -1845,111 +1866,135 @@ func (r *CreateAgentCruiseDialingCampaignResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type CreateAutoCalloutTaskRequestParams struct {
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 任务起始时间戳，Unix 秒级时间戳
+	// <p>任务起始时间戳，Unix 秒级时间戳</p>
 	NotBefore *int64 `json:"NotBefore,omitnil,omitempty" name:"NotBefore"`
 
-	// 被叫号码列表
+	// <p>被叫号码列表</p>
 	Callees []*string `json:"Callees,omitnil,omitempty" name:"Callees"`
 
-	// 主叫号码列表
+	// <p>主叫号码列表</p>
 	Callers []*string `json:"Callers,omitnil,omitempty" name:"Callers"`
 
-	// 呼叫使用的 IVR Id，不填时需要填写 AIAgentId
+	// <p>呼叫使用的 IVR Id，不填时需要填写 AIAgentId</p>
 	IvrId *uint64 `json:"IvrId,omitnil,omitempty" name:"IvrId"`
 
-	// 任务名
+	// <p>任务名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 任务描述
+	// <p>任务描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 任务停止时间戳，Unix 秒级时间戳
+	// <p>任务停止时间戳，Unix 秒级时间戳</p>
 	NotAfter *int64 `json:"NotAfter,omitnil,omitempty" name:"NotAfter"`
 
-	// 最大尝试次数，1-3 次
+	// <p>最大尝试次数，1-3 次</p>
 	Tries *uint64 `json:"Tries,omitnil,omitempty" name:"Tries"`
 
-	// 自定义变量（仅高级版支持），CalleeAttributes 字段中使用相同变量会覆盖此处
+	// <p>自定义变量（仅高级版支持），CalleeAttributes 字段中使用相同变量会覆盖此处</p>
 	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
 
-	// 用户自定义数据，CalleeAttributes 字段中使用 UUI 会覆盖此处
+	// <p>用户自定义数据，CalleeAttributes 字段中使用 UUI 会覆盖此处</p>
 	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
 
-	// 被叫属性
+	// <p>被叫属性</p>
 	CalleeAttributes []*CalleeAttribute `json:"CalleeAttributes,omitnil,omitempty" name:"CalleeAttributes"`
 
-	// IANA 时区名称，参考 https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones
+	// <p>IANA 时区名称，参考 https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones</p>
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 可用时间段
+	// <p>可用时间段</p>
 	AvailableTime []*TimeRange `json:"AvailableTime,omitnil,omitempty" name:"AvailableTime"`
 
-	// 智能体 ID，不填写时需要填写 IvrId
+	// <p>智能体 ID，不填写时需要填写 IvrId</p>
 	AIAgentId *int64 `json:"AIAgentId,omitnil,omitempty" name:"AIAgentId"`
 
-	// 任务失败重试时间间隔，重试间隔 600秒～86400 秒
+	// <p>任务失败重试时间间隔，重试间隔 600秒～86400 秒</p>
 	RetryInterval *int64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
 
-	// 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+	// <p>最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数</p>
 	MaxRingTimeoutSecond *int64 `json:"MaxRingTimeoutSecond,omitnil,omitempty" name:"MaxRingTimeoutSecond"`
+
+	// <p>根据限定的挂断原因(可选挂断状态码:202,203,204,205,206,207,208,210,212,213,215,216,217,218,219,221,222,234)进行重试，只对使用AIAgentID的任务有效，挂断状态码说明</p><p><a href="https://cloud.tencent.com/document/product/679/123938">详见</a></p>
+	RetryHangupTypes []*string `json:"RetryHangupTypes,omitnil,omitempty" name:"RetryHangupTypes"`
+
+	// <p>根据限定的话后标签进行重试，只对使用对话模型的AIAgentID任务有效，标签信息可在智能体配置中查询</p>
+	RetryTags []*RetryTagItem `json:"RetryTags,omitnil,omitempty" name:"RetryTags"`
+
+	// <p>生效的工作时间配置。建议使用此字段代替AvailableTime 字段，当同时使用时，优先生效AvailableTime。</p>
+	AvailableWorkTimeConfig []*AvailableTimeConfig `json:"AvailableWorkTimeConfig,omitnil,omitempty" name:"AvailableWorkTimeConfig"`
+
+	// <p>触发策略</p>
+	TriggerStrategy []*TriggerStrategyItem `json:"TriggerStrategy,omitnil,omitempty" name:"TriggerStrategy"`
 }
 
 type CreateAutoCalloutTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 任务起始时间戳，Unix 秒级时间戳
+	// <p>任务起始时间戳，Unix 秒级时间戳</p>
 	NotBefore *int64 `json:"NotBefore,omitnil,omitempty" name:"NotBefore"`
 
-	// 被叫号码列表
+	// <p>被叫号码列表</p>
 	Callees []*string `json:"Callees,omitnil,omitempty" name:"Callees"`
 
-	// 主叫号码列表
+	// <p>主叫号码列表</p>
 	Callers []*string `json:"Callers,omitnil,omitempty" name:"Callers"`
 
-	// 呼叫使用的 IVR Id，不填时需要填写 AIAgentId
+	// <p>呼叫使用的 IVR Id，不填时需要填写 AIAgentId</p>
 	IvrId *uint64 `json:"IvrId,omitnil,omitempty" name:"IvrId"`
 
-	// 任务名
+	// <p>任务名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 任务描述
+	// <p>任务描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 任务停止时间戳，Unix 秒级时间戳
+	// <p>任务停止时间戳，Unix 秒级时间戳</p>
 	NotAfter *int64 `json:"NotAfter,omitnil,omitempty" name:"NotAfter"`
 
-	// 最大尝试次数，1-3 次
+	// <p>最大尝试次数，1-3 次</p>
 	Tries *uint64 `json:"Tries,omitnil,omitempty" name:"Tries"`
 
-	// 自定义变量（仅高级版支持），CalleeAttributes 字段中使用相同变量会覆盖此处
+	// <p>自定义变量（仅高级版支持），CalleeAttributes 字段中使用相同变量会覆盖此处</p>
 	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
 
-	// 用户自定义数据，CalleeAttributes 字段中使用 UUI 会覆盖此处
+	// <p>用户自定义数据，CalleeAttributes 字段中使用 UUI 会覆盖此处</p>
 	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
 
-	// 被叫属性
+	// <p>被叫属性</p>
 	CalleeAttributes []*CalleeAttribute `json:"CalleeAttributes,omitnil,omitempty" name:"CalleeAttributes"`
 
-	// IANA 时区名称，参考 https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones
+	// <p>IANA 时区名称，参考 https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones</p>
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 可用时间段
+	// <p>可用时间段</p>
 	AvailableTime []*TimeRange `json:"AvailableTime,omitnil,omitempty" name:"AvailableTime"`
 
-	// 智能体 ID，不填写时需要填写 IvrId
+	// <p>智能体 ID，不填写时需要填写 IvrId</p>
 	AIAgentId *int64 `json:"AIAgentId,omitnil,omitempty" name:"AIAgentId"`
 
-	// 任务失败重试时间间隔，重试间隔 600秒～86400 秒
+	// <p>任务失败重试时间间隔，重试间隔 600秒～86400 秒</p>
 	RetryInterval *int64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
 
-	// 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+	// <p>最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数</p>
 	MaxRingTimeoutSecond *int64 `json:"MaxRingTimeoutSecond,omitnil,omitempty" name:"MaxRingTimeoutSecond"`
+
+	// <p>根据限定的挂断原因(可选挂断状态码:202,203,204,205,206,207,208,210,212,213,215,216,217,218,219,221,222,234)进行重试，只对使用AIAgentID的任务有效，挂断状态码说明</p><p><a href="https://cloud.tencent.com/document/product/679/123938">详见</a></p>
+	RetryHangupTypes []*string `json:"RetryHangupTypes,omitnil,omitempty" name:"RetryHangupTypes"`
+
+	// <p>根据限定的话后标签进行重试，只对使用对话模型的AIAgentID任务有效，标签信息可在智能体配置中查询</p>
+	RetryTags []*RetryTagItem `json:"RetryTags,omitnil,omitempty" name:"RetryTags"`
+
+	// <p>生效的工作时间配置。建议使用此字段代替AvailableTime 字段，当同时使用时，优先生效AvailableTime。</p>
+	AvailableWorkTimeConfig []*AvailableTimeConfig `json:"AvailableWorkTimeConfig,omitnil,omitempty" name:"AvailableWorkTimeConfig"`
+
+	// <p>触发策略</p>
+	TriggerStrategy []*TriggerStrategyItem `json:"TriggerStrategy,omitnil,omitempty" name:"TriggerStrategy"`
 }
 
 func (r *CreateAutoCalloutTaskRequest) ToJsonString() string {
@@ -1981,6 +2026,10 @@ func (r *CreateAutoCalloutTaskRequest) FromJsonString(s string) error {
 	delete(f, "AIAgentId")
 	delete(f, "RetryInterval")
 	delete(f, "MaxRingTimeoutSecond")
+	delete(f, "RetryHangupTypes")
+	delete(f, "RetryTags")
+	delete(f, "AvailableWorkTimeConfig")
+	delete(f, "TriggerStrategy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoCalloutTaskRequest has unknown keys!", "")
 	}
@@ -1989,7 +2038,7 @@ func (r *CreateAutoCalloutTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAutoCalloutTaskResponseParams struct {
-	// 任务Id
+	// <p>任务Id</p>
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6638,6 +6687,57 @@ func (r *HangUpCallResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type HeaderParams struct {
+
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type HttpCallbackConfig struct {
+	// <p>http 标准 url</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>http header 参数</p>
+	HeaderParams []*HeaderParams `json:"HeaderParams,omitnil,omitempty" name:"HeaderParams"`
+
+	// <p>http 请求包参数</p>
+	Params []*HttpParams `json:"Params,omitnil,omitempty" name:"Params"`
+
+	// <p>对端输出值，由对端 url 返回的 json 包里包含该字段就行</p>
+	Returns []*ReturnKey `json:"Returns,omitnil,omitempty" name:"Returns"`
+
+	// <p>是否异步</p>
+	Async *bool `json:"Async,omitnil,omitempty" name:"Async"`
+
+	// <p>是否鉴权</p><p>枚举值：</p><ul><li>0： 不开启鉴权</li><li>1： 启用鉴权</li></ul>
+	AuthType *uint64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
+
+	// <p>basic token 鉴权</p>
+	BasicAuth *BasicAuth `json:"BasicAuth,omitnil,omitempty" name:"BasicAuth"`
+
+	// <p>bearer token 鉴权</p>
+	BearerAuth *BearerAuth `json:"BearerAuth,omitnil,omitempty" name:"BearerAuth"`
+
+	// <p>自定义鉴权</p>
+	CustomAuth *HttpParams `json:"CustomAuth,omitnil,omitempty" name:"CustomAuth"`
+
+	// <p>oauth2 鉴权</p>
+	Oauth2Auth *OauthConfig `json:"Oauth2Auth,omitnil,omitempty" name:"Oauth2Auth"`
+}
+
+type HttpParams struct {
+
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+
+	ValueType *string `json:"ValueType,omitnil,omitempty" name:"ValueType"`
+}
+
 type IMCdrInfo struct {
 	// 服务记录ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -7203,6 +7303,17 @@ type NumberInfo struct {
 
 	// <p>是否自携号码</p><p>枚举值：</p><ul><li>0： 非自携</li><li>1： 自携</li></ul>
 	CostType *int64 `json:"CostType,omitnil,omitempty" name:"CostType"`
+}
+
+type OauthConfig struct {
+
+	TokenURL *string `json:"TokenURL,omitnil,omitempty" name:"TokenURL"`
+
+
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+
+	ClientSecret *string `json:"ClientSecret,omitnil,omitempty" name:"ClientSecret"`
 }
 
 type OwnNumberApplyDetailItem struct {
@@ -7799,6 +7910,19 @@ func (r *ResumePredictiveDialingCampaignResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ResumePredictiveDialingCampaignResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RetryTagItem struct {
+	// <p>标签名称</p>
+	TagName *string `json:"TagName,omitnil,omitempty" name:"TagName"`
+
+	// <p>标签值</p>
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+}
+
+type ReturnKey struct {
+
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 }
 
 type SdkAppIdBuyInfo struct {
@@ -8606,6 +8730,20 @@ func (r *TransferToManualResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *TransferToManualResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TriggerStrategyItem struct {
+	// <p>http 接口相关参数</p>
+	InterfaceConfig *HttpCallbackConfig `json:"InterfaceConfig,omitnil,omitempty" name:"InterfaceConfig"`
+
+	// <p>挂断类型</p>
+	HangupTypes []*string `json:"HangupTypes,omitnil,omitempty" name:"HangupTypes"`
+
+	// <p>通话标签</p>
+	CallTags []*RetryTagItem `json:"CallTags,omitnil,omitempty" name:"CallTags"`
+
+	// <p>触发模式</p><p>枚举值：</p><ul><li>ONCE_PER_NUMBER： 每个号码仅第一次命中条件时触发</li><li>ALWAYS_ON_MATCH： 每次命中条件均触发</li></ul>
+	TriggerMode *string `json:"TriggerMode,omitnil,omitempty" name:"TriggerMode"`
 }
 
 // Predefined struct for user

@@ -4941,119 +4941,113 @@ type CynosdbInstance struct {
 }
 
 type CynosdbInstanceDetail struct {
-	// 用户Uin
+	// <p>用户Uin</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 用户AppId
+	// <p>用户AppId</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 地域
+	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例状态
-	// creating：创建中
-	// running：运行中
-	// isolating：隔离中
-	// isolated：已隔离
-	// activating：恢复中
-	// offlining：下线中
-	// offlined：已下线
+	// <p>实例状态<br>creating：创建中<br>running：运行中<br>isolating：隔离中<br>isolated：已隔离<br>activating：恢复中<br>offlining：下线中<br>offlined：已下线</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 实例状态中文描述
+	// <p>实例状态中文描述</p>
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
-	// serverless实例状态, 可能值：
-	// resume
-	// pause
+	// <p>serverless实例状态, 可能值：<br>resume<br>pause</p>
 	ServerlessStatus *string `json:"ServerlessStatus,omitnil,omitempty" name:"ServerlessStatus"`
 
-	// 数据库类型
+	// <p>数据库类型</p>
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
-	// 数据库版本
+	// <p>数据库版本</p>
 	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 
-	// Cpu，单位：核
+	// <p>Cpu，单位：核</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存，单位：GB
+	// <p>内存，单位：GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 存储量，单位：GB
+	// <p>存储量，单位：GB</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 实例类型
+	// <p>实例类型</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例当前角色
+	// <p>实例当前角色</p>
 	InstanceRole *string `json:"InstanceRole,omitnil,omitempty" name:"InstanceRole"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 付费模式
+	// <p>付费模式</p>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 实例过期时间
+	// <p>实例过期时间</p>
 	PeriodEndTime *string `json:"PeriodEndTime,omitnil,omitempty" name:"PeriodEndTime"`
 
-	// 网络类型
+	// <p>网络类型</p>
 	NetType *int64 `json:"NetType,omitnil,omitempty" name:"NetType"`
 
-	// VPC网络ID
+	// <p>VPC网络ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网ID
+	// <p>子网ID</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 实例内网IP
+	// <p>实例内网IP</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 实例内网端口
+	// <p>实例内网端口</p>
 	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// 实例外网域名
+	// <p>实例外网域名</p>
 	WanDomain *string `json:"WanDomain,omitnil,omitempty" name:"WanDomain"`
 
-	// 字符集
+	// <p>字符集</p>
 	Charset *string `json:"Charset,omitnil,omitempty" name:"Charset"`
 
-	// Cynos内核版本
+	// <p>Cynos内核版本</p>
 	CynosVersion *string `json:"CynosVersion,omitnil,omitempty" name:"CynosVersion"`
 
-	// 续费标志
+	// <p>续费标志</p>
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// serverless实例cpu下限
+	// <p>serverless实例cpu下限</p>
 	MinCpu *float64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
 
-	// serverless实例cpu上限
+	// <p>serverless实例cpu上限</p>
 	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
 
-	// Db类型:<li>NORMAL</li><li>SERVERLESS</li>
+	// <p>Db类型:<li>NORMAL</li><li>SERVERLESS</li></p>
 	DbMode *string `json:"DbMode,omitnil,omitempty" name:"DbMode"`
+
+	// <p>集群的读写实例所在可用区</p>
+	MasterZone *string `json:"MasterZone,omitnil,omitempty" name:"MasterZone"`
 }
 
 type CynosdbInstanceGroup struct {
@@ -17061,46 +17055,44 @@ func (r *ModifyClusterStorageResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBInstanceSecurityGroupsRequestParams struct {
-	// 网络组id(cynosdbmysql-grp-前缀开头)或集群id（例如 cynosdbmysql-xxxxxxxx前缀）,当通过实例IP地址三元组（UniqVpcId、Vip、Vport）配置安全组时，该字段必须设置为集群ID（例如 cynosdbmysql-xxxxxxxx前缀）。
+	// <p>网络组id(cynosdbmysql-grp-前缀开头)或集群id（例如 cynosdbmysql-xxxxxxxx前缀）,当通过实例IP地址三元组（UniqVpcId、Vip、Vport）配置安全组时，该字段必须设置为集群ID（例如 cynosdbmysql-xxxxxxxx前缀）。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 要修改的安全组ID列表，一个或者多个安全组ID组成的数组。
-	// 注意：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
+	// <p>要修改的安全组ID列表，一个或者多个安全组ID组成的数组。<br>注意：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例所属VPC网络ID,（UniqVpcId、Vip 和 Vport 三个参数需同时指定，用于唯一标识网络实例）
+	// <p>实例所属VPC网络ID,（UniqVpcId、Vip 和 Vport 三个参数需同时指定，用于唯一标识网络实例）</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 实例IP地址,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例
+	// <p>实例IP地址,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 实例端口,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例
+	// <p>实例端口,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例</p>
 	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 }
 
 type ModifyDBInstanceSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 网络组id(cynosdbmysql-grp-前缀开头)或集群id（例如 cynosdbmysql-xxxxxxxx前缀）,当通过实例IP地址三元组（UniqVpcId、Vip、Vport）配置安全组时，该字段必须设置为集群ID（例如 cynosdbmysql-xxxxxxxx前缀）。
+	// <p>网络组id(cynosdbmysql-grp-前缀开头)或集群id（例如 cynosdbmysql-xxxxxxxx前缀）,当通过实例IP地址三元组（UniqVpcId、Vip、Vport）配置安全组时，该字段必须设置为集群ID（例如 cynosdbmysql-xxxxxxxx前缀）。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 要修改的安全组ID列表，一个或者多个安全组ID组成的数组。
-	// 注意：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
+	// <p>要修改的安全组ID列表，一个或者多个安全组ID组成的数组。<br>注意：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例所属VPC网络ID,（UniqVpcId、Vip 和 Vport 三个参数需同时指定，用于唯一标识网络实例）
+	// <p>实例所属VPC网络ID,（UniqVpcId、Vip 和 Vport 三个参数需同时指定，用于唯一标识网络实例）</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 实例IP地址,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例
+	// <p>实例IP地址,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 实例端口,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例
+	// <p>实例端口,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例</p>
 	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 }
 

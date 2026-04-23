@@ -92,6 +92,9 @@ const (
 	// 修改策略失败。
 	FAILEDOPERATION_SERVERLESSSETSTRATEGYERROR = "FailedOperation.ServerlessSetStrategyError"
 
+	// 日志查询失败，请缩小查询范围。如果持续不成功，请联系客服进行处理。
+	FAILEDOPERATION_SERVICEACCESSERROR = "FailedOperation.ServiceAccessError"
+
 	// 规格信息{{1}}搜索失败
 	FAILEDOPERATION_SPECNOTFOUNDERROR = "FailedOperation.SpecNotFoundError"
 

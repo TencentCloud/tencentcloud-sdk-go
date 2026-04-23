@@ -86,6 +86,9 @@ const (
 	// 端口格式不合法。
 	INVALIDPARAMETER_PORTNOVALID = "InvalidParameter.PortNoValid"
 
+	// 正则参数格式错误。
+	INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+
 	// 进程名/目标IP/目标端口，不能同时为空。
 	INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = "InvalidParameter.ReverShellKeyFieldAllEmpty"
 

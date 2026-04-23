@@ -2397,35 +2397,37 @@ type Job struct {
 }
 
 type JobView struct {
-	// 作业ID
+	// <p>作业ID</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 作业名称
+	// <p>作业名称</p>
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
-	// 作业描述
+	// <p>作业描述</p>
 	JobDescription *string `json:"JobDescription,omitnil,omitempty" name:"JobDescription"`
 
-	// 作业优先级
+	// <p>作业创建者</p>
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// <p>作业优先级</p>
 	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
-	// 作业状态，包括CREATED, QUEING, STARTNG, RUNING, TERMINATING, TERMINATED, SUCCESS, 
-	// FAILED
+	// <p>作业状态，包括CREATED, QUEING, STARTNG, RUNING, TERMINATING, TERMINATED, SUCCESS,<br>FAILED</p>
 	JobState *string `json:"JobState,omitnil,omitempty" name:"JobState"`
 
-	// 作业所属集群ID
+	// <p>作业所属集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 作业所属队列名称
+	// <p>作业所属队列名称</p>
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
-	// 完成作业任务所需资源
+	// <p>完成作业任务所需资源</p>
 	OccupyResources *string `json:"OccupyResources,omitnil,omitempty" name:"OccupyResources"`
 
-	// 作业任务创建时间
+	// <p>作业任务创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 作业任务结束时间
+	// <p>作业任务结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 

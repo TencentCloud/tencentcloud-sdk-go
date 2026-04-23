@@ -8293,6 +8293,62 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDescribeTextToSpeechAsyncTaskRequest() (request *DescribeTextToSpeechAsyncTaskRequest) {
+    request = &DescribeTextToSpeechAsyncTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeTextToSpeechAsyncTask")
+    
+    
+    return
+}
+
+func NewDescribeTextToSpeechAsyncTaskResponse() (response *DescribeTextToSpeechAsyncTaskResponse) {
+    response = &DescribeTextToSpeechAsyncTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTextToSpeechAsyncTask
+// 查询异步语音合成任务结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+func (c *Client) DescribeTextToSpeechAsyncTask(request *DescribeTextToSpeechAsyncTaskRequest) (response *DescribeTextToSpeechAsyncTaskResponse, err error) {
+    return c.DescribeTextToSpeechAsyncTaskWithContext(context.Background(), request)
+}
+
+// DescribeTextToSpeechAsyncTask
+// 查询异步语音合成任务结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+func (c *Client) DescribeTextToSpeechAsyncTaskWithContext(ctx context.Context, request *DescribeTextToSpeechAsyncTaskRequest) (response *DescribeTextToSpeechAsyncTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeTextToSpeechAsyncTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeTextToSpeechAsyncTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTextToSpeechAsyncTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTextToSpeechAsyncTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTranscodeTemplatesRequest() (request *DescribeTranscodeTemplatesRequest) {
     request = &DescribeTranscodeTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12391,6 +12447,64 @@ func (c *Client) SyncDubbingWithContext(ctx context.Context, request *SyncDubbin
     request.SetContext(ctx)
     
     response = NewSyncDubbingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTextToSpeechAsyncRequest() (request *TextToSpeechAsyncRequest) {
+    request = &TextToSpeechAsyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "TextToSpeechAsync")
+    
+    
+    return
+}
+
+func NewTextToSpeechAsyncResponse() (response *TextToSpeechAsyncResponse) {
+    response = &TextToSpeechAsyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TextToSpeechAsync
+// 异步语音合成接口，支持长文本转语音
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) TextToSpeechAsync(request *TextToSpeechAsyncRequest) (response *TextToSpeechAsyncResponse, err error) {
+    return c.TextToSpeechAsyncWithContext(context.Background(), request)
+}
+
+// TextToSpeechAsync
+// 异步语音合成接口，支持长文本转语音
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CACHEINFO = "InvalidParameter.CacheInfo"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+func (c *Client) TextToSpeechAsyncWithContext(ctx context.Context, request *TextToSpeechAsyncRequest) (response *TextToSpeechAsyncResponse, err error) {
+    if request == nil {
+        request = NewTextToSpeechAsyncRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "TextToSpeechAsync")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextToSpeechAsync require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTextToSpeechAsyncResponse()
     err = c.Send(request, response)
     return
 }

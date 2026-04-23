@@ -15488,32 +15488,36 @@ type RegionPolicyObjectCount struct {
 }
 
 type RemoteWrite struct {
-	// 多写url
+	// <p>多写url</p>
 	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
 
-	// RelabelConfig
+	// <p>RelabelConfig</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	URLRelabelConfig *string `json:"URLRelabelConfig,omitnil,omitempty" name:"URLRelabelConfig"`
 
-	// 鉴权
+	// <p>鉴权</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BasicAuth *BasicAuth `json:"BasicAuth,omitnil,omitempty" name:"BasicAuth"`
 
-	// 最大block
+	// <p>最大block</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: MaxBlockSize is deprecated.
 	MaxBlockSize *string `json:"MaxBlockSize,omitnil,omitempty" name:"MaxBlockSize"`
 
-	// Label
+	// <p>Label</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: Label is deprecated.
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
-	// HTTP 额外添加的头
+	// <p>HTTP 额外添加的头</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Headers []*RemoteWriteHeader `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// <p>数据多写类型:<br>1- 只多写采集指标<br>2- 只多写预聚合指标<br>3- 同时多写采集和预聚合指标</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemoteWriteType *int64 `json:"RemoteWriteType,omitnil,omitempty" name:"RemoteWriteType"`
 }
 
 type RemoteWriteHeader struct {

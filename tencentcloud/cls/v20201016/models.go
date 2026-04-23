@@ -5413,6 +5413,105 @@ func (r *CreateScheduledSqlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateSearchViewRequestParams struct {
+	// <p>日志集id</p><p>标记视图所属该日志集，用于查询日志集下的查询视图配置</p>
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// <p>日志集所属地域</p><p>参数格式：ap-guangzhou</p>
+	LogsetRegion *string `json:"LogsetRegion,omitnil,omitempty" name:"LogsetRegion"`
+
+	// <p>视图名称</p><p>入参限制：最大支持255字符，不能包含&quot;|&quot;字符。</p>
+	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
+
+	// <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
+	ViewType *string `json:"ViewType,omitnil,omitempty" name:"ViewType"`
+
+	// <p>视图主题配置信息</p><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
+	Topics []*ViewSearchTopic `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// <p>配置描述信息</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>自定义视图id前缀</p><p>参数格式：<code>^[a-z0-9][a-z0-9_-]{1,61}[a-z0-9]$</code></p><p>配置成功之后ViewId格式: ${ViewIdPrefix}-view</p>
+	ViewIdPrefix *string `json:"ViewIdPrefix,omitnil,omitempty" name:"ViewIdPrefix"`
+}
+
+type CreateSearchViewRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>日志集id</p><p>标记视图所属该日志集，用于查询日志集下的查询视图配置</p>
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// <p>日志集所属地域</p><p>参数格式：ap-guangzhou</p>
+	LogsetRegion *string `json:"LogsetRegion,omitnil,omitempty" name:"LogsetRegion"`
+
+	// <p>视图名称</p><p>入参限制：最大支持255字符，不能包含&quot;|&quot;字符。</p>
+	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
+
+	// <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
+	ViewType *string `json:"ViewType,omitnil,omitempty" name:"ViewType"`
+
+	// <p>视图主题配置信息</p><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
+	Topics []*ViewSearchTopic `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// <p>配置描述信息</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>自定义视图id前缀</p><p>参数格式：<code>^[a-z0-9][a-z0-9_-]{1,61}[a-z0-9]$</code></p><p>配置成功之后ViewId格式: ${ViewIdPrefix}-view</p>
+	ViewIdPrefix *string `json:"ViewIdPrefix,omitnil,omitempty" name:"ViewIdPrefix"`
+}
+
+func (r *CreateSearchViewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSearchViewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LogsetId")
+	delete(f, "LogsetRegion")
+	delete(f, "ViewName")
+	delete(f, "ViewType")
+	delete(f, "Topics")
+	delete(f, "Description")
+	delete(f, "ViewIdPrefix")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSearchViewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSearchViewResponseParams struct {
+	// <p>视图ID</p>
+	ViewId *string `json:"ViewId,omitnil,omitempty" name:"ViewId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSearchViewResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSearchViewResponseParams `json:"Response"`
+}
+
+func (r *CreateSearchViewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSearchViewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateShipperRequestParams struct {
 	// <p>创建的投递规则所属的日志主题Id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
@@ -8101,6 +8200,60 @@ func (r *DeleteScheduledSqlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteScheduledSqlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSearchViewRequestParams struct {
+	// <p>视图ID</p>
+	ViewId *string `json:"ViewId,omitnil,omitempty" name:"ViewId"`
+}
+
+type DeleteSearchViewRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>视图ID</p>
+	ViewId *string `json:"ViewId,omitnil,omitempty" name:"ViewId"`
+}
+
+func (r *DeleteSearchViewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSearchViewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ViewId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSearchViewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSearchViewResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteSearchViewResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSearchViewResponseParams `json:"Response"`
+}
+
+func (r *DeleteSearchViewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSearchViewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -12774,6 +12927,80 @@ func (r *DescribeScheduledSqlInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeScheduledSqlInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSearchViewsRequestParams struct {
+	// <ul><li>viewId 按照【视图ID】进行过滤。 类型：String 必选：否  </li><li>viewName 按照【视图名称】进行过滤。 类型：String 必选：否  </li><li>logsetId 按照【日志集ID】进行过滤。 类型：String 必选：否<br>每次请求的Filters的上限为10，Filter.Values的上限为10。</li></ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页的偏移量，默认值为0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页单页限制数目，默认值为20，最大值100。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeSearchViewsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <ul><li>viewId 按照【视图ID】进行过滤。 类型：String 必选：否  </li><li>viewName 按照【视图名称】进行过滤。 类型：String 必选：否  </li><li>logsetId 按照【日志集ID】进行过滤。 类型：String 必选：否<br>每次请求的Filters的上限为10，Filter.Values的上限为10。</li></ul>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>分页的偏移量，默认值为0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页单页限制数目，默认值为20，最大值100。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeSearchViewsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSearchViewsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSearchViewsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSearchViewsResponseParams struct {
+	// <p>Splunk投递任务信息列表</p>
+	Infos []*SearchViewInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// <p>符合条件的任务总数。</p>
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSearchViewsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSearchViewsResponseParams `json:"Response"`
+}
+
+func (r *DescribeSearchViewsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSearchViewsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -18590,6 +18817,88 @@ func (r *ModifyScheduledSqlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifySearchViewRequestParams struct {
+	// <p>视图ID</p>
+	ViewId *string `json:"ViewId,omitnil,omitempty" name:"ViewId"`
+
+	// <p>视图名称</p><p>参数格式：<code>^[a-z0-9][a-z0-9_-]{1,61}[a-z0-9]$</code></p>
+	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
+
+	// <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul>
+	ViewType *string `json:"ViewType,omitnil,omitempty" name:"ViewType"`
+
+	// <p>视图主题配置信息</p>
+	Topics []*ViewSearchTopic `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// <p>配置描述信息</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type ModifySearchViewRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>视图ID</p>
+	ViewId *string `json:"ViewId,omitnil,omitempty" name:"ViewId"`
+
+	// <p>视图名称</p><p>参数格式：<code>^[a-z0-9][a-z0-9_-]{1,61}[a-z0-9]$</code></p>
+	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
+
+	// <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul>
+	ViewType *string `json:"ViewType,omitnil,omitempty" name:"ViewType"`
+
+	// <p>视图主题配置信息</p>
+	Topics []*ViewSearchTopic `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// <p>配置描述信息</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *ModifySearchViewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySearchViewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ViewId")
+	delete(f, "ViewName")
+	delete(f, "ViewType")
+	delete(f, "Topics")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySearchViewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySearchViewResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifySearchViewResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySearchViewResponseParams `json:"Response"`
+}
+
+func (r *ModifySearchViewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySearchViewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyShipperRequestParams struct {
 	// <p>投递规则Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/58745">获取投递任务列表</a>获取ShipperId。</li></ul>
 	ShipperId *string `json:"ShipperId,omitnil,omitempty" name:"ShipperId"`
@@ -20791,6 +21100,35 @@ type SearchLogTopics struct {
 	Infos []*SearchLogInfos `json:"Infos,omitnil,omitempty" name:"Infos"`
 }
 
+type SearchViewInfo struct {
+	// <p>视图ID</p>
+	ViewId *string `json:"ViewId,omitnil,omitempty" name:"ViewId"`
+
+	// <p>视图名称</p>
+	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
+
+	// <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul>
+	ViewType *string `json:"ViewType,omitnil,omitempty" name:"ViewType"`
+
+	// <p>日志集id</p><p>视图所属日志集</p>
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// <p>日志集所属地域</p><p>参数格式：ap-guangzhou</p>
+	LogsetRegion *string `json:"LogsetRegion,omitnil,omitempty" name:"LogsetRegion"`
+
+	// <p>视图日志主题信息</p>
+	Topics []*ViewSearchTopic `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// <p>视图描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>创建时间</p><p>单位：秒级别时间戳</p>
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p><p>单位：秒级别时间戳</p>
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
 // Predefined struct for user
 type SendConsumerHeartbeatRequestParams struct {
 	// 上报心跳的消费组标识
@@ -21421,6 +21759,17 @@ type ValueInfo struct {
 	// json子节点列表
 	// 注意：仅json类型字段可配置该参数
 	ChildNode []*KeyValueInfo `json:"ChildNode,omitnil,omitempty" name:"ChildNode"`
+}
+
+type ViewSearchTopic struct {
+	// <p>日志集与日志主题所属地域</p><p>参数格式：ap-guangzhou</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>日志集id</p>
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// <p>日志主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 }
 
 type WebCallback struct {

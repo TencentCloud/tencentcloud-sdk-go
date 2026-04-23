@@ -1147,6 +1147,144 @@ func (c *Client) AddNetworkFirewallPolicyYamlDetailWithContext(ctx context.Conte
     return
 }
 
+func NewAddOrModifyMaliciousConnectionWhiteListRequest() (request *AddOrModifyMaliciousConnectionWhiteListRequest) {
+    request = &AddOrModifyMaliciousConnectionWhiteListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "AddOrModifyMaliciousConnectionWhiteList")
+    
+    
+    return
+}
+
+func NewAddOrModifyMaliciousConnectionWhiteListResponse() (response *AddOrModifyMaliciousConnectionWhiteListResponse) {
+    response = &AddOrModifyMaliciousConnectionWhiteListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddOrModifyMaliciousConnectionWhiteList
+// 增加或修改恶意外连的白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRRULENOTFIND = "FailedOperation.ErrRuleNotFind"
+//  FAILEDOPERATION_RULENOTFIND = "FailedOperation.RuleNotFind"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_IPNOVALID = "InvalidParameter.IpNoValid"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) AddOrModifyMaliciousConnectionWhiteList(request *AddOrModifyMaliciousConnectionWhiteListRequest) (response *AddOrModifyMaliciousConnectionWhiteListResponse, err error) {
+    return c.AddOrModifyMaliciousConnectionWhiteListWithContext(context.Background(), request)
+}
+
+// AddOrModifyMaliciousConnectionWhiteList
+// 增加或修改恶意外连的白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRRULENOTFIND = "FailedOperation.ErrRuleNotFind"
+//  FAILEDOPERATION_RULENOTFIND = "FailedOperation.RuleNotFind"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_IPNOVALID = "InvalidParameter.IpNoValid"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REGEXRULEERROR = "InvalidParameter.RegexRuleError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) AddOrModifyMaliciousConnectionWhiteListWithContext(ctx context.Context, request *AddOrModifyMaliciousConnectionWhiteListRequest) (response *AddOrModifyMaliciousConnectionWhiteListResponse, err error) {
+    if request == nil {
+        request = NewAddOrModifyMaliciousConnectionWhiteListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "AddOrModifyMaliciousConnectionWhiteList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddOrModifyMaliciousConnectionWhiteList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddOrModifyMaliciousConnectionWhiteListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAddOrModifyVirusWhiteListRuleRequest() (request *AddOrModifyVirusWhiteListRuleRequest) {
+    request = &AddOrModifyVirusWhiteListRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "AddOrModifyVirusWhiteListRule")
+    
+    
+    return
+}
+
+func NewAddOrModifyVirusWhiteListRuleResponse() (response *AddOrModifyVirusWhiteListRuleResponse) {
+    response = &AddOrModifyVirusWhiteListRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddOrModifyVirusWhiteListRule
+// 新增或修改木马白名单规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
+func (c *Client) AddOrModifyVirusWhiteListRule(request *AddOrModifyVirusWhiteListRuleRequest) (response *AddOrModifyVirusWhiteListRuleResponse, err error) {
+    return c.AddOrModifyVirusWhiteListRuleWithContext(context.Background(), request)
+}
+
+// AddOrModifyVirusWhiteListRule
+// 新增或修改木马白名单规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
+func (c *Client) AddOrModifyVirusWhiteListRuleWithContext(ctx context.Context, request *AddOrModifyVirusWhiteListRuleRequest) (response *AddOrModifyVirusWhiteListRuleResponse, err error) {
+    if request == nil {
+        request = NewAddOrModifyVirusWhiteListRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "AddOrModifyVirusWhiteListRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddOrModifyVirusWhiteListRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddOrModifyVirusWhiteListRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckNetworkFirewallPolicyYamlRequest() (request *CheckNetworkFirewallPolicyYamlRequest) {
     request = &CheckNetworkFirewallPolicyYamlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4907,6 +5045,68 @@ func (c *Client) DeleteSearchTemplateWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDeleteSearchTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteVirusWhiteListRuleRequest() (request *DeleteVirusWhiteListRuleRequest) {
+    request = &DeleteVirusWhiteListRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DeleteVirusWhiteListRule")
+    
+    
+    return
+}
+
+func NewDeleteVirusWhiteListRuleResponse() (response *DeleteVirusWhiteListRuleResponse) {
+    response = &DeleteVirusWhiteListRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteVirusWhiteListRule
+// 删除木马白名单规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
+func (c *Client) DeleteVirusWhiteListRule(request *DeleteVirusWhiteListRuleRequest) (response *DeleteVirusWhiteListRuleResponse, err error) {
+    return c.DeleteVirusWhiteListRuleWithContext(context.Background(), request)
+}
+
+// DeleteVirusWhiteListRule
+// 删除木马白名单规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
+func (c *Client) DeleteVirusWhiteListRuleWithContext(ctx context.Context, request *DeleteVirusWhiteListRuleRequest) (response *DeleteVirusWhiteListRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteVirusWhiteListRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DeleteVirusWhiteListRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVirusWhiteListRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteVirusWhiteListRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -15907,6 +16107,60 @@ func (c *Client) DescribeVirusManualScanEstimateTimeoutWithContext(ctx context.C
     return
 }
 
+func NewDescribeVirusMonitorConfigRequest() (request *DescribeVirusMonitorConfigRequest) {
+    request = &DescribeVirusMonitorConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeVirusMonitorConfig")
+    
+    
+    return
+}
+
+func NewDescribeVirusMonitorConfigResponse() (response *DescribeVirusMonitorConfigResponse) {
+    response = &DescribeVirusMonitorConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVirusMonitorConfig
+// 运行时查询文件查杀实时监控设置信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVirusMonitorConfig(request *DescribeVirusMonitorConfigRequest) (response *DescribeVirusMonitorConfigResponse, err error) {
+    return c.DescribeVirusMonitorConfigWithContext(context.Background(), request)
+}
+
+// DescribeVirusMonitorConfig
+// 运行时查询文件查杀实时监控设置信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVirusMonitorConfigWithContext(ctx context.Context, request *DescribeVirusMonitorConfigRequest) (response *DescribeVirusMonitorConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeVirusMonitorConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVirusMonitorConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVirusMonitorConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVirusMonitorConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVirusMonitorSettingRequest() (request *DescribeVirusMonitorSettingRequest) {
     request = &DescribeVirusMonitorSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -16013,6 +16267,60 @@ func (c *Client) DescribeVirusSampleDownloadUrlWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewDescribeVirusSampleDownloadUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVirusScanConfigRequest() (request *DescribeVirusScanConfigRequest) {
+    request = &DescribeVirusScanConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeVirusScanConfig")
+    
+    
+    return
+}
+
+func NewDescribeVirusScanConfigResponse() (response *DescribeVirusScanConfigResponse) {
+    response = &DescribeVirusScanConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVirusScanConfig
+// 运行时查询文件查杀新设置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVirusScanConfig(request *DescribeVirusScanConfigRequest) (response *DescribeVirusScanConfigResponse, err error) {
+    return c.DescribeVirusScanConfigWithContext(context.Background(), request)
+}
+
+// DescribeVirusScanConfig
+// 运行时查询文件查杀新设置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVirusScanConfigWithContext(ctx context.Context, request *DescribeVirusScanConfigRequest) (response *DescribeVirusScanConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeVirusScanConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVirusScanConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVirusScanConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVirusScanConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -16285,6 +16593,68 @@ func (c *Client) DescribeVirusTaskListWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeVirusTaskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVirusWhiteListRulesRequest() (request *DescribeVirusWhiteListRulesRequest) {
+    request = &DescribeVirusWhiteListRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeVirusWhiteListRules")
+    
+    
+    return
+}
+
+func NewDescribeVirusWhiteListRulesResponse() (response *DescribeVirusWhiteListRulesResponse) {
+    response = &DescribeVirusWhiteListRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVirusWhiteListRules
+// 查询木马白名单规则列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
+func (c *Client) DescribeVirusWhiteListRules(request *DescribeVirusWhiteListRulesRequest) (response *DescribeVirusWhiteListRulesResponse, err error) {
+    return c.DescribeVirusWhiteListRulesWithContext(context.Background(), request)
+}
+
+// DescribeVirusWhiteListRules
+// 查询木马白名单规则列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
+func (c *Client) DescribeVirusWhiteListRulesWithContext(ctx context.Context, request *DescribeVirusWhiteListRulesRequest) (response *DescribeVirusWhiteListRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeVirusWhiteListRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcss", APIVersion, "DescribeVirusWhiteListRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVirusWhiteListRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVirusWhiteListRulesResponse()
     err = c.Send(request, response)
     return
 }

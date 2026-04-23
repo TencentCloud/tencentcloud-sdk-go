@@ -455,51 +455,51 @@ type AgentProcedureDebugging struct {
 }
 
 type AgentReference struct {
-	// 来源文档ID
+	// <p>来源文档ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocId *string `json:"DocId,omitnil,omitempty" name:"DocId"`
 
-	// id
+	// <p>id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 名称
+	// <p>名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 类型
+	// <p>类型</p><p>枚举值：</p><ul><li>1： 问答</li><li>2： 文档片段</li><li>4： 联网检索到的内容</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 链接
+	// <p>链接</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 文档业务ID
+	// <p>文档业务ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
 
-	// 文档名称
+	// <p>文档名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocName *string `json:"DocName,omitnil,omitempty" name:"DocName"`
 
-	// 问答业务ID
+	// <p>问答业务ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QaBizId *string `json:"QaBizId,omitnil,omitempty" name:"QaBizId"`
 
-	// 搜索引擎索引
+	// <p>搜索引擎索引</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Index *uint64 `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 标题
+	// <p>标题</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 
-	// 知识库名称
+	// <p>知识库名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KnowledgeName *string `json:"KnowledgeName,omitnil,omitempty" name:"KnowledgeName"`
 
-	// 知识库标识
+	// <p>知识库标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
 }
@@ -834,17 +834,17 @@ type AppModel struct {
 }
 
 type AppModelDetailInfo struct {
-	// 模型名称
-	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+	// <p>模型别名</p>
+	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
 
-	// 模型参数
-	ModelParams *ModelParams `json:"ModelParams,omitnil,omitempty" name:"ModelParams"`
-
-	// 限制
+	// <p>限制</p>
 	HistoryLimit *uint64 `json:"HistoryLimit,omitnil,omitempty" name:"HistoryLimit"`
 
-	// 模型别名
-	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
+	// <p>模型名称</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>模型参数</p>
+	ModelParams *ModelParams `json:"ModelParams,omitnil,omitempty" name:"ModelParams"`
 }
 
 type AsyncWorkflowMessage struct {
@@ -2064,37 +2064,39 @@ func (r *CreateQAResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRejectedQuestionRequestParams struct {
-	// 应用ID, 获取方式参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+	// <p>应用ID, 获取方式参看如何获取<a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a></p>
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 拒答问题
-	// 
+	// <p>拒答问题</p>
 	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
 
-	// 拒答问题来源， 1- 来源于不满意回复;  2 - 来源于手动添加
+	// <p>拒答问题来源， 1- 来源于不满意回复;  2 - 来源于手动添加</p>
 	BusinessSource *uint64 `json:"BusinessSource,omitnil,omitempty" name:"BusinessSource"`
 
-	// 拒答问题来源的数据源唯一id
-	// 
+	// <p>拒答问题来源的数据源唯一id</p>
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// <p>拒答生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效 默认值：2。</p>
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
 type CreateRejectedQuestionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID, 获取方式参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+	// <p>应用ID, 获取方式参看如何获取<a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a></p>
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 拒答问题
-	// 
+	// <p>拒答问题</p>
 	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
 
-	// 拒答问题来源， 1- 来源于不满意回复;  2 - 来源于手动添加
+	// <p>拒答问题来源， 1- 来源于不满意回复;  2 - 来源于手动添加</p>
 	BusinessSource *uint64 `json:"BusinessSource,omitnil,omitempty" name:"BusinessSource"`
 
-	// 拒答问题来源的数据源唯一id
-	// 
+	// <p>拒答问题来源的数据源唯一id</p>
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// <p>拒答生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效 默认值：2。</p>
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
 func (r *CreateRejectedQuestionRequest) ToJsonString() string {
@@ -2113,6 +2115,7 @@ func (r *CreateRejectedQuestionRequest) FromJsonString(s string) error {
 	delete(f, "Question")
 	delete(f, "BusinessSource")
 	delete(f, "BusinessId")
+	delete(f, "EnableScope")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRejectedQuestionRequest has unknown keys!", "")
 	}
@@ -2214,35 +2217,41 @@ func (r *CreateReleaseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSharedKnowledgeRequestParams struct {
-	// 共享知识库名称，字符数量范围：[1, 50]
+	// <p>共享知识库名称，字符数量范围：[1, 50]</p>
 	KnowledgeName *string `json:"KnowledgeName,omitnil,omitempty" name:"KnowledgeName"`
 
-	// 共享知识库描述，字符数量上限2000
+	// <p>共享知识库描述，字符数量上限2000</p>
 	KnowledgeDescription *string `json:"KnowledgeDescription,omitnil,omitempty" name:"KnowledgeDescription"`
 
-	// Embedding模型，字符数量上限128
+	// <p>Embedding模型，字符数量上限128</p>
 	//
 	// Deprecated: EmbeddingModel is deprecated.
 	EmbeddingModel *string `json:"EmbeddingModel,omitnil,omitempty" name:"EmbeddingModel"`
 
-	// 共享知识库类型，0普通，1公众号
+	// <p>共享知识库类型，0普通，1公众号</p>
 	KnowledgeType *int64 `json:"KnowledgeType,omitnil,omitempty" name:"KnowledgeType"`
+
+	// <p>ES存储配置</p>
+	EsConfig *ESConfig `json:"EsConfig,omitnil,omitempty" name:"EsConfig"`
 }
 
 type CreateSharedKnowledgeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 共享知识库名称，字符数量范围：[1, 50]
+	// <p>共享知识库名称，字符数量范围：[1, 50]</p>
 	KnowledgeName *string `json:"KnowledgeName,omitnil,omitempty" name:"KnowledgeName"`
 
-	// 共享知识库描述，字符数量上限2000
+	// <p>共享知识库描述，字符数量上限2000</p>
 	KnowledgeDescription *string `json:"KnowledgeDescription,omitnil,omitempty" name:"KnowledgeDescription"`
 
-	// Embedding模型，字符数量上限128
+	// <p>Embedding模型，字符数量上限128</p>
 	EmbeddingModel *string `json:"EmbeddingModel,omitnil,omitempty" name:"EmbeddingModel"`
 
-	// 共享知识库类型，0普通，1公众号
+	// <p>共享知识库类型，0普通，1公众号</p>
 	KnowledgeType *int64 `json:"KnowledgeType,omitnil,omitempty" name:"KnowledgeType"`
+
+	// <p>ES存储配置</p>
+	EsConfig *ESConfig `json:"EsConfig,omitnil,omitempty" name:"EsConfig"`
 }
 
 func (r *CreateSharedKnowledgeRequest) ToJsonString() string {
@@ -2261,6 +2270,7 @@ func (r *CreateSharedKnowledgeRequest) FromJsonString(s string) error {
 	delete(f, "KnowledgeDescription")
 	delete(f, "EmbeddingModel")
 	delete(f, "KnowledgeType")
+	delete(f, "EsConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSharedKnowledgeRequest has unknown keys!", "")
 	}
@@ -2269,7 +2279,7 @@ func (r *CreateSharedKnowledgeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSharedKnowledgeResponseParams struct {
-	// 共享知识库业务ID
+	// <p>共享知识库业务ID</p>
 	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5576,6 +5586,26 @@ type DuplicateFileHandle struct {
 	HandleType *uint64 `json:"HandleType,omitnil,omitempty" name:"HandleType"`
 }
 
+type ESConfig struct {
+	// <p>存储类型，0: 未知类型， 1:默认存储(平台提供)，2: 自定义存储(用户自建ES)</p>
+	StorageType *int64 `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// <p>ES集群名称(自定义存储时必填)</p>
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// <p>ES集群ID(自定义存储时必填)</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>ES用户名(自定义存储时必填)</p>
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
+
+	// <p>ES密码(自定义存储时必填)</p>
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// <p>允许修改存储方式</p>
+	CanModify *bool `json:"CanModify,omitnil,omitempty" name:"CanModify"`
+}
+
 // Predefined struct for user
 type ExportAttributeLabelRequestParams struct {
 	// 应用ID，获取方法参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
@@ -5900,6 +5930,19 @@ type FileInfoContent struct {
 	// <p>文件创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
+type FilterItem struct {
+	// 筛选内容。
+	// 例如筛选审核状态可以使用"AuditStatus"
+	FilterKey *string `json:"FilterKey,omitnil,omitempty" name:"FilterKey"`
+
+	// 筛选条件。
+	// 例如对于筛选内容"AuditStatus"，可使用筛选条件:
+	// "ContentFailed":"内容审核失败",
+	// "PictureFailed":"图片审核失败",
+	// "ContentAndPictureFailed":"图片和内容审核失败",
+	FilterValue []*string `json:"FilterValue,omitnil,omitempty" name:"FilterValue"`
 }
 
 type Filters struct {
@@ -9042,33 +9085,39 @@ func (r *ListRejectedQuestionPreviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListRejectedQuestionRequestParams struct {
-	// 应用ID, 获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
+	// <p>应用ID, 获取方法参看如何获取   <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。</p>
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码（必须大于0）
+	// <p>页码（必须大于0）</p><p>默认值：1</p>
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量（取值范围1-200）
+	// <p>每页数量（取值范围1-200）</p><p>默认值：15</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 查询内容
+	// <p>查询内容</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// <p>过滤条件：<br>生效： EnableScope: 1,2,3,4</p>
+	Filters []*FilterItem `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type ListRejectedQuestionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID, 获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
+	// <p>应用ID, 获取方法参看如何获取   <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。</p>
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码（必须大于0）
+	// <p>页码（必须大于0）</p><p>默认值：1</p>
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量（取值范围1-200）
+	// <p>每页数量（取值范围1-200）</p><p>默认值：15</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 查询内容
+	// <p>查询内容</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// <p>过滤条件：<br>生效： EnableScope: 1,2,3,4</p>
+	Filters []*FilterItem `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *ListRejectedQuestionRequest) ToJsonString() string {
@@ -9087,6 +9136,7 @@ func (r *ListRejectedQuestionRequest) FromJsonString(s string) error {
 	delete(f, "PageNumber")
 	delete(f, "PageSize")
 	delete(f, "Query")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListRejectedQuestionRequest has unknown keys!", "")
 	}
@@ -9095,10 +9145,10 @@ func (r *ListRejectedQuestionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListRejectedQuestionResponseParams struct {
-	// 总数
+	// <p>总数</p>
 	Total *string `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 拒答问题列表
+	// <p>拒答问题列表</p>
 	List []*RejectedQuestion `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10011,6 +10061,9 @@ type ListWorkflowRunsRequestParams struct {
 
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// 查询内容
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 }
 
 type ListWorkflowRunsRequest struct {
@@ -10033,6 +10086,9 @@ type ListWorkflowRunsRequest struct {
 
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// 查询内容
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 }
 
 func (r *ListWorkflowRunsRequest) ToJsonString() string {
@@ -10053,6 +10109,7 @@ func (r *ListWorkflowRunsRequest) FromJsonString(s string) error {
 	delete(f, "Page")
 	delete(f, "LoginUin")
 	delete(f, "LoginSubAccountUin")
+	delete(f, "Query")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListWorkflowRunsRequest has unknown keys!", "")
 	}
@@ -10088,161 +10145,159 @@ func (r *ListWorkflowRunsResponse) FromJsonString(s string) error {
 }
 
 type ModelInfo struct {
-	// 模型名称
+	// <p>模型名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 模型描述
+	// <p>模型描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelDesc *string `json:"ModelDesc,omitnil,omitempty" name:"ModelDesc"`
 
-	// 模型名称
+	// <p>模型名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
 
-	// 资源状态 1：资源可用；2：资源已用尽
+	// <p>资源状态 1：资源可用；2：资源已用尽</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceStatus *uint64 `json:"ResourceStatus,omitnil,omitempty" name:"ResourceStatus"`
 
-	// 提示词内容字符限制
+	// <p>提示词内容字符限制</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PromptWordsLimit *string `json:"PromptWordsLimit,omitnil,omitempty" name:"PromptWordsLimit"`
 
-	// 通过核心采样控制内容生成的多样性，较高的Top P值会导致生成更多样的内容
+	// <p>通过核心采样控制内容生成的多样性，较高的Top P值会导致生成更多样的内容</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopP *ModelParameter `json:"TopP,omitnil,omitempty" name:"TopP"`
 
-	// 温度控制随机性
+	// <p>温度控制随机性</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Temperature *ModelParameter `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 
-	// 最多能生成的token数量
+	// <p>最多能生成的token数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxTokens *ModelParameter `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
 
-	// 模型来源 Hunyuan：腾讯混元大模型,Industry：腾讯云行业大模型,Experience：新模型体验,Custom自定义模型
+	// <p>模型来源 Hunyuan：腾讯混元大模型,Industry：腾讯云行业大模型,Experience：新模型体验,Custom自定义模型</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 模型图标
+	// <p>模型图标</p>
 	Icon *string `json:"Icon,omitnil,omitempty" name:"Icon"`
 
-	// 是否免费
+	// <p>是否免费</p>
 	IsFree *bool `json:"IsFree,omitnil,omitempty" name:"IsFree"`
 
-	// 模型对话框可输入的上限
+	// <p>模型对话框可输入的上限</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputLenLimit *uint64 `json:"InputLenLimit,omitnil,omitempty" name:"InputLenLimit"`
 
-	// 支持工作流的类型 0:模型不支持; 1: 模型支持工作流； 2： 模型支持效果不佳；
+	// <p>支持工作流的类型 0:模型不支持; 1: 模型支持工作流； 2： 模型支持效果不佳；</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportWorkflowStatus *uint64 `json:"SupportWorkflowStatus,omitnil,omitempty" name:"SupportWorkflowStatus"`
 
-	// 模型类别 generate：生成模型，thought：思考模型
+	// <p>模型类别 generate：生成模型，thought：思考模型</p>
 	ModelCategory *string `json:"ModelCategory,omitnil,omitempty" name:"ModelCategory"`
 
-	// 是否默认模型
+	// <p>是否默认模型</p>
 	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 
-	// 角色提示词输入长度限制
+	// <p>角色提示词输入长度限制</p>
 	RoleLenLimit *uint64 `json:"RoleLenLimit,omitnil,omitempty" name:"RoleLenLimit"`
 
-	// 是否专属并发模型
+	// <p>是否专属并发模型</p>
 	IsExclusive *bool `json:"IsExclusive,omitnil,omitempty" name:"IsExclusive"`
 
-	// 模型支持智能通话效果
+	// <p>模型支持智能通话效果</p><p>枚举值：</p><ul><li>0： 模型不支持</li><li>1： 模型支持ai通话</li><li>2： 模型ai通话支持效果不佳</li></ul>
 	SupportAiCallStatus *uint64 `json:"SupportAiCallStatus,omitnil,omitempty" name:"SupportAiCallStatus"`
 
-	// 专属并发数
+	// <p>专属并发数</p>
 	Concurrency *uint64 `json:"Concurrency,omitnil,omitempty" name:"Concurrency"`
 
-	// 模型标签
+	// <p>模型标签</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelTags []*string `json:"ModelTags,omitnil,omitempty" name:"ModelTags"`
 
-	// 模型超参定义
+	// <p>模型超参定义</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelParams []*ModelParameter `json:"ModelParams,omitnil,omitempty" name:"ModelParams"`
 
-	// 提供商名称
+	// <p>提供商名称</p>
 	ProviderName *string `json:"ProviderName,omitnil,omitempty" name:"ProviderName"`
 
-	// 提供商别名
+	// <p>提供商别名</p>
 	ProviderAliasName *string `json:"ProviderAliasName,omitnil,omitempty" name:"ProviderAliasName"`
 
-	// 提供商类型 Self:提供商，Custom：自定义模型提供商，Third：第三方模型提供商
+	// <p>提供商类型 Self:提供商，Custom：自定义模型提供商，Third：第三方模型提供商</p>
 	ProviderType *string `json:"ProviderType,omitnil,omitempty" name:"ProviderType"`
 
-	// 是否关闭模型超参
+	// <p>是否关闭模型超参</p>
 	IsCloseModelParams *bool `json:"IsCloseModelParams,omitnil,omitempty" name:"IsCloseModelParams"`
 
-	// 是否支持深度思考
+	// <p>是否支持深度思考</p>
 	IsDeepThinking *bool `json:"IsDeepThinking,omitnil,omitempty" name:"IsDeepThinking"`
 }
 
 type ModelParameter struct {
-	// 超参名称
+	// <p>超参名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 类型
+	// <p>类型</p><p>枚举值：</p><ul><li>string： 字符类型</li><li>int： 整数类型</li><li>float： 浮点数类型</li><li>array： 数组类型</li></ul>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 默认值
+	// <p>默认值</p>
 	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
 
-	// 枚举值
+	// <p>枚举值</p>
 	EnumValues []*string `json:"EnumValues,omitnil,omitempty" name:"EnumValues"`
 
-	// 默认值
+	// <p>默认值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Default *float64 `json:"Default,omitnil,omitempty" name:"Default"`
 
-	// 最小值
+	// <p>最小值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Min *float64 `json:"Min,omitnil,omitempty" name:"Min"`
 
-	// 最大值
+	// <p>最大值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Max *float64 `json:"Max,omitnil,omitempty" name:"Max"`
 }
 
 type ModelParams struct {
-	// 温度
-	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
-
-	// Top_P
-	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
-
-	// 随机种子
-	Seed *int64 `json:"Seed,omitnil,omitempty" name:"Seed"`
-
-	// 存在惩罚
-	PresencePenalty *float64 `json:"PresencePenalty,omitnil,omitempty" name:"PresencePenalty"`
-
-	// 频率惩罚
-	FrequencyPenalty *float64 `json:"FrequencyPenalty,omitnil,omitempty" name:"FrequencyPenalty"`
-
-	// 重复惩罚
-	RepetitionPenalty *float64 `json:"RepetitionPenalty,omitnil,omitempty" name:"RepetitionPenalty"`
-
-	// 最大输出长度
-	MaxTokens *int64 `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
-
-	// 停止序列
-	StopSequences []*string `json:"StopSequences,omitnil,omitempty" name:"StopSequences"`
-
-	// 输出格式
-	ReplyFormat *string `json:"ReplyFormat,omitnil,omitempty" name:"ReplyFormat"`
-
-	// 深度思考值
-	// disabled
-	// enabled
+	// <p>深度思考值<br>disabled<br>enabled</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeepThinking *string `json:"DeepThinking,omitnil,omitempty" name:"DeepThinking"`
 
-	// 效果 disabled low medium high
+	// <p>频率惩罚</p>
+	FrequencyPenalty *float64 `json:"FrequencyPenalty,omitnil,omitempty" name:"FrequencyPenalty"`
+
+	// <p>最大输出长度</p>
+	MaxTokens *int64 `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
+
+	// <p>存在惩罚</p>
+	PresencePenalty *float64 `json:"PresencePenalty,omitnil,omitempty" name:"PresencePenalty"`
+
+	// <p>效果 disabled low medium high</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReasoningEffort *string `json:"ReasoningEffort,omitnil,omitempty" name:"ReasoningEffort"`
+
+	// <p>重复惩罚</p>
+	RepetitionPenalty *float64 `json:"RepetitionPenalty,omitnil,omitempty" name:"RepetitionPenalty"`
+
+	// <p>输出格式</p>
+	ReplyFormat *string `json:"ReplyFormat,omitnil,omitempty" name:"ReplyFormat"`
+
+	// <p>随机种子</p>
+	Seed *int64 `json:"Seed,omitnil,omitempty" name:"Seed"`
+
+	// <p>停止序列</p>
+	StopSequences []*string `json:"StopSequences,omitnil,omitempty" name:"StopSequences"`
+
+	// <p>温度</p>
+	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
+
+	// <p>Top_P</p>
+	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
 }
 
 // Predefined struct for user
@@ -11149,152 +11204,141 @@ type MsgFileInfo struct {
 }
 
 type MsgRecord struct {
-	// 内容
+	// <p>内容</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 当前记录所对应的 Session ID
+	// <p>当前记录所对应的 Session ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 记录ID
+	// <p>记录ID</p>
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
-	// 关联记录ID
+	// <p>关联记录ID</p>
 	RelatedRecordId *string `json:"RelatedRecordId,omitnil,omitempty" name:"RelatedRecordId"`
 
-	// 是否来自自己
+	// <p>是否来自自己</p>
 	IsFromSelf *bool `json:"IsFromSelf,omitnil,omitempty" name:"IsFromSelf"`
 
-	// 发送者名称
+	// <p>发送者名称</p>
 	FromName *string `json:"FromName,omitnil,omitempty" name:"FromName"`
 
-	// 发送者头像
+	// <p>发送者头像</p>
 	FromAvatar *string `json:"FromAvatar,omitnil,omitempty" name:"FromAvatar"`
 
-	// 时间戳
+	// <p>时间戳</p>
 	Timestamp *string `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
-	// 是否已读
+	// <p>是否已读</p>
 	HasRead *bool `json:"HasRead,omitnil,omitempty" name:"HasRead"`
 
-	// 评价
+	// <p>评价</p>
 	Score *uint64 `json:"Score,omitnil,omitempty" name:"Score"`
 
-	// 是否评分
+	// <p>是否评分</p>
 	CanRating *bool `json:"CanRating,omitnil,omitempty" name:"CanRating"`
 
-	// 是否展示反馈按钮
+	// <p>是否展示反馈按钮</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CanFeedback *bool `json:"CanFeedback,omitnil,omitempty" name:"CanFeedback"`
 
-	// 记录类型
+	// <p>记录类型</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 引用来源
+	// <p>引用来源</p>
 	References []*MsgRecordReference `json:"References,omitnil,omitempty" name:"References"`
 
-	// 评价原因
+	// <p>评价原因</p>
 	Reasons []*string `json:"Reasons,omitnil,omitempty" name:"Reasons"`
 
-	// 是否大模型
+	// <p>是否大模型</p>
 	IsLlmGenerated *bool `json:"IsLlmGenerated,omitnil,omitempty" name:"IsLlmGenerated"`
 
-	// 图片链接，可公有读
+	// <p>图片链接，可公有读</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageUrls []*string `json:"ImageUrls,omitnil,omitempty" name:"ImageUrls"`
 
-	// 当次 token 统计信息
+	// <p>当次 token 统计信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TokenStat *TokenStat `json:"TokenStat,omitnil,omitempty" name:"TokenStat"`
 
-	// 回复方式
-	// 1:大模型直接回复;
-	// 2:保守回复, 未知问题回复;
-	// 3:拒答问题回复;
-	// 4:敏感回复;
-	// 5:问答对直接回复, 已采纳问答对优先回复;
-	// 6:欢迎语回复;
-	// 7:并发超限回复;
-	// 8:全局干预知识;
-	// 9:任务流程过程回复, 当历史记录中 task_flow.type = 0 时, 为大模型回复;
-	// 10:任务流程答案回复;
-	// 11:搜索引擎回复;
-	// 12:知识润色后回复;
-	// 13:图片理解回复;
-	// 14:实时文档回复;
+	// <p>回复方式<br>1:大模型直接回复;<br>2:保守回复, 未知问题回复;<br>3:拒答问题回复;<br>4:敏感回复;<br>5:问答对直接回复, 已采纳问答对优先回复;<br>6:欢迎语回复;<br>7:并发超限回复;<br>8:全局干预知识;<br>9:任务流程过程回复, 当历史记录中 task_flow.type = 0 时, 为大模型回复;<br>10:任务流程答案回复;<br>11:搜索引擎回复;<br>12:知识润色后回复;<br>13:图片理解回复;<br>14:实时文档回复;</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplyMethod *uint64 `json:"ReplyMethod,omitnil,omitempty" name:"ReplyMethod"`
 
-	// 选项卡, 用于多轮对话
+	// <p>选项卡, 用于多轮对话</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OptionCards []*string `json:"OptionCards,omitnil,omitempty" name:"OptionCards"`
 
-	// 任务信息
+	// <p>任务信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskFlow *TaskFlowInfo `json:"TaskFlow,omitnil,omitempty" name:"TaskFlow"`
 
-	// 用户传入的文件信息
+	// <p>用户传入的文件信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileInfos []*FileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
-	// 参考来源引用位置信息
+	// <p>参考来源引用位置信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuoteInfos []*QuoteInfo `json:"QuoteInfos,omitnil,omitempty" name:"QuoteInfos"`
 
-	// Agent的思考过程信息
+	// <p>Agent的思考过程信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AgentThought *AgentThought `json:"AgentThought,omitnil,omitempty" name:"AgentThought"`
 
-	// 扩展信息
+	// <p>扩展信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraInfo *ExtraInfo `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
 
-	// 工作流信息
+	// <p>工作流信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkFlow *WorkflowInfo `json:"WorkFlow,omitnil,omitempty" name:"WorkFlow"`
 
-	// Widget信息
+	// <p>Widget信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Widgets []*Widget `json:"Widgets,omitnil,omitempty" name:"Widgets"`
 
-	// Widget动作信息
+	// <p>Widget动作信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WidgetAction *WidgetAction `json:"WidgetAction,omitnil,omitempty" name:"WidgetAction"`
 
-	// 音频信息
+	// <p>音频信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Audios []*Audio `json:"Audios,omitnil,omitempty" name:"Audios"`
+
+	// <p>标识选项卡为单选还是双选</p><p>枚举值：</p><ul><li>0： 单选</li><li>1： 双选</li></ul>
+	OptionMode *int64 `json:"OptionMode,omitnil,omitempty" name:"OptionMode"`
 }
 
 type MsgRecordReference struct {
-	// id
+	// <p>id</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 链接
+	// <p>链接</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 类型
+	// <p>类型</p><p>枚举值：</p><ul><li>1： 问答</li><li>2： 文档片段</li><li>4： 联网检索到的内容</li></ul>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 名称
+	// <p>名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 来源文档ID
+	// <p>来源文档ID</p>
 	DocId *string `json:"DocId,omitnil,omitempty" name:"DocId"`
 
-	// 知识库名称
+	// <p>知识库名称</p>
 	KnowledgeName *string `json:"KnowledgeName,omitnil,omitempty" name:"KnowledgeName"`
 
-	// 知识库业务id
+	// <p>知识库业务id</p>
 	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
 
-	// 文档业务id
+	// <p>文档业务id</p>
 	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
 
-	// 问答业务id
+	// <p>问答业务id</p>
 	QaBizId *string `json:"QaBizId,omitnil,omitempty" name:"QaBizId"`
 
-	// 文档索引id
+	// <p>文档索引id</p>
 	Index *uint64 `json:"Index,omitnil,omitempty" name:"Index"`
 }
 
@@ -11485,32 +11529,32 @@ type ParameterConfig struct {
 }
 
 type PluginToolReqParam struct {
-	// 参数名称
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 参数描述
-	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
-
-	// 参数类型，0:string, 1:int, 2:float，3:bool 4:object 5:array_string, 6:array_int, 7:array_float, 8:array_bool, 9:array_object, 99:null, 100:upspecified
-	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 参数是否必填
-	IsRequired *bool `json:"IsRequired,omitnil,omitempty" name:"IsRequired"`
+	// AnyOf类型参数
+	AnyOf []*PluginToolReqParam `json:"AnyOf,omitnil,omitempty" name:"AnyOf"`
 
 	// 参数默认值
 	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
 
-	// 子参数,ParamType 是OBJECT 或 ARRAY<>类型有用
-	SubParams []*PluginToolReqParam `json:"SubParams,omitnil,omitempty" name:"SubParams"`
+	// 参数描述
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
 	// 插件参数配置是否隐藏不可见，true-隐藏不可见，false-可见
 	GlobalHidden *bool `json:"GlobalHidden,omitnil,omitempty" name:"GlobalHidden"`
 
+	// 参数是否必填
+	IsRequired *bool `json:"IsRequired,omitnil,omitempty" name:"IsRequired"`
+
+	// 参数名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
 	// OneOf类型参数
 	OneOf []*PluginToolReqParam `json:"OneOf,omitnil,omitempty" name:"OneOf"`
 
-	// AnyOf类型参数
-	AnyOf []*PluginToolReqParam `json:"AnyOf,omitnil,omitempty" name:"AnyOf"`
+	// 子参数,ParamType 是OBJECT 或 ARRAY<>类型有用
+	SubParams []*PluginToolReqParam `json:"SubParams,omitnil,omitempty" name:"SubParams"`
+
+	// 参数类型，0:string, 1:int, 2:float，3:bool 4:object 5:array_string, 6:array_int, 7:array_float, 8:array_bool, 9:array_object, 99:null, 100:upspecified
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type Procedure struct {
@@ -12008,6 +12052,10 @@ type RejectedQuestion struct {
 	// 操作人
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 拒答生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
 type ReleaseConfigs struct {
@@ -12950,27 +12998,27 @@ type Stat struct {
 }
 
 type StatisticInfo struct {
-	// 模型名称
+	// <p>模型名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 首Token耗时
+	// <p>首Token耗时</p><p>单位：ms</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstTokenCost *uint64 `json:"FirstTokenCost,omitnil,omitempty" name:"FirstTokenCost"`
 
-	// 总耗时
+	// <p>总耗时</p><p>单位：ms</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCost *uint64 `json:"TotalCost,omitnil,omitempty" name:"TotalCost"`
 
-	// 输入Token数量
+	// <p>输入Token数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputTokens *uint64 `json:"InputTokens,omitnil,omitempty" name:"InputTokens"`
 
-	// 输出Token数量
+	// <p>输出Token数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputTokens *uint64 `json:"OutputTokens,omitnil,omitempty" name:"OutputTokens"`
 
-	// 总Token数量
+	// <p>总Token数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalTokens *uint64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
 }
@@ -13812,73 +13860,79 @@ type WidgetParam struct {
 }
 
 type WorkFlowSummary struct {
-	// 工作流ID
+	// <p>工作流ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 工作流名称
+	// <p>工作流名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
 
-	// 工作流运行ID
+	// <p>工作流运行ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
 
-	// 节点信息
+	// <p>节点信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunNodes []*WorkflowRunNodeInfo `json:"RunNodes,omitnil,omitempty" name:"RunNodes"`
 
-	// 选项卡
+	// <p>选项卡</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OptionCards []*string `json:"OptionCards,omitnil,omitempty" name:"OptionCards"`
 
-	// 多气泡的输出结果
+	// <p>多气泡的输出结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Outputs []*string `json:"Outputs,omitnil,omitempty" name:"Outputs"`
 
-	// 工作流发布时间，unix时间戳
+	// <p>工作流发布时间，unix时间戳</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowReleaseTime *string `json:"WorkflowReleaseTime,omitnil,omitempty" name:"WorkflowReleaseTime"`
 
-	// 中间消息
+	// <p>中间消息</p>
 	PendingMessages []*string `json:"PendingMessages,omitnil,omitempty" name:"PendingMessages"`
 
-	// 选项卡索引
+	// <p>选项卡索引</p>
 	OptionCardIndex *OptionCardIndex `json:"OptionCardIndex,omitnil,omitempty" name:"OptionCardIndex"`
 
-	// 工作流多气泡输出
+	// <p>工作流多气泡输出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Contents []*Content `json:"Contents,omitnil,omitempty" name:"Contents"`
+
+	// <p>标识选项卡为单选还是双选</p><p>枚举值：</p><ul><li>0： 单选</li><li>1： 多选</li></ul>
+	OptionMode *int64 `json:"OptionMode,omitnil,omitempty" name:"OptionMode"`
 }
 
 type WorkflowInfo struct {
-	// 工作流ID
+	// <p>工作流ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 工作流名称
+	// <p>工作流名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
 
-	// 工作流运行ID
+	// <p>工作流运行ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
 
-	// 选项卡
+	// <p>选项卡</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OptionCards []*string `json:"OptionCards,omitnil,omitempty" name:"OptionCards"`
 
-	// 多气泡的输出结果
+	// <p>多气泡的输出结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Outputs []*string `json:"Outputs,omitnil,omitempty" name:"Outputs"`
 
-	// 工作流发布时间，unix时间戳
+	// <p>工作流发布时间，unix时间戳</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowReleaseTime *string `json:"WorkflowReleaseTime,omitnil,omitempty" name:"WorkflowReleaseTime"`
 
-	// 工作流多气泡输出
+	// <p>工作流多气泡输出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Contents []*Content `json:"Contents,omitnil,omitempty" name:"Contents"`
+
+	// <p>标识选项卡为单选还是双选</p><p>枚举值：</p><ul><li>0： 单选</li><li>1： 多选</li></ul>
+	OptionMode *int64 `json:"OptionMode,omitnil,omitempty" name:"OptionMode"`
 }
 
 type WorkflowRef struct {
@@ -13997,7 +14051,7 @@ type WorkflowRunNodeInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
-	// <p>节点类型</p>
+	// <p>节点类型</p><p>枚举值：</p><ul><li>0： 未指定</li><li>1： 开始节点</li><li>2： 参数提取节点</li><li>3： 大模型节点</li><li>4： 知识问答节点</li><li>5： 知识检索节点</li><li>6： 标签提取节点</li><li>7： 代码执行节点</li><li>8： 工具节点</li><li>9： 逻辑判断节点</li><li>10： 消息节点</li><li>11： 选项卡节点</li><li>12： 循环节点</li><li>13： 意图识别节点</li><li>14： 工作流节点</li><li>15： 插件节点</li><li>16： 结束节点</li><li>17： 变量聚合节点</li><li>18： 批处理节点</li><li>19： 消息队列节点</li><li>20： 数据库节点</li><li>21： 变量赋值节点</li><li>22： 变量转换节点</li><li>23： Agent节点</li><li>24： 注释节点</li><li>25： 文件收集节点</li><li>26： 文本收集节点</li><li>27： Widget 节点</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeType *uint64 `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 
@@ -14005,7 +14059,7 @@ type WorkflowRunNodeInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// <p>状态</p>
+	// <p>状态</p><p>枚举值：</p><ul><li>0： 初始状态</li><li>1： 运行中</li><li>2： 运行成功</li><li>3： 运行失败</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
