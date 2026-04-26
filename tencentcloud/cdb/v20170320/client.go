@@ -3417,6 +3417,7 @@ func NewDescribeAuditLogsResponse() (response *DescribeAuditLogsResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYAUDITTASKFAILERROR = "FailedOperation.QueryAuditTaskFailError"
+//  FAILEDOPERATION_SERVICEACCESSERROR = "FailedOperation.ServiceAccessError"
 //  INTERNALERROR_AUDITDESCRIBELOGERROR = "InternalError.AuditDescribeLogError"
 //  INTERNALERROR_AUDITERROR = "InternalError.AuditError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -3442,6 +3443,7 @@ func (c *Client) DescribeAuditLogs(request *DescribeAuditLogsRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYAUDITTASKFAILERROR = "FailedOperation.QueryAuditTaskFailError"
+//  FAILEDOPERATION_SERVICEACCESSERROR = "FailedOperation.ServiceAccessError"
 //  INTERNALERROR_AUDITDESCRIBELOGERROR = "InternalError.AuditDescribeLogError"
 //  INTERNALERROR_AUDITERROR = "InternalError.AuditError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"

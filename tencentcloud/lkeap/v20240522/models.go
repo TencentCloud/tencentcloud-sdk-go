@@ -471,24 +471,20 @@ func (r *CreateQAResponse) FromJsonString(s string) error {
 }
 
 type CreateReconstructDocumentFlowConfig struct {
-	// Markdown文件中表格返回的形式
-	// 0，表格以MD形式返回
-	// 1，表格以HTML形式返回
-	// 默认为0
+	// <p>Markdown文件中表格返回的形式<br>0，表格以MD形式返回<br>1，表格以HTML形式返回<br>默认为0</p>
 	TableResultType *string `json:"TableResultType,omitnil,omitempty" name:"TableResultType"`
 
-	// 智能文档解析返回结果的格式
-	// 0：只返回全文MD；
-	// 1：只返回每一页的OCR原始Json；
-	// 2：只返回每一页的MD，
-	// 3：返回全文MD + 每一页的OCR原始Json；
-	// 4：返回全文MD + 每一页的MD
-	// 5: 返回全文md，每一页ocr原始json，每一页md
-	// 默认值为0
+	// <p>智能文档解析返回结果的格式<br>0：只返回全文MD；<br>1：只返回每一页的OCR原始Json；<br>2：只返回每一页的MD，<br>3：返回全文MD + 每一页的OCR原始Json；<br>4：返回全文MD + 每一页的MD<br>5: 返回全文md，每一页ocr原始json，每一页md<br>默认值为0</p>
 	ResultType *string `json:"ResultType,omitnil,omitempty" name:"ResultType"`
 
-	// 是否忽略失败页，返回已成功的页数据。默认为true。
+	// <p>是否忽略失败页，返回已成功的页数据。默认为true。</p>
 	IgnoreFailedPage *bool `json:"IgnoreFailedPage,omitnil,omitempty" name:"IgnoreFailedPage"`
+
+	// <p>Markdown文件中是否包含页码信息</p>
+	ReturnPageFormat *bool `json:"ReturnPageFormat,omitnil,omitempty" name:"ReturnPageFormat"`
+
+	// <p>自定义输出页码样式,{{p}}为页码占位符，开启ReturnPageFormat生效。未填默认样式:<page_num>page {{p}}</page_num></p>
+	PageFormat *string `json:"PageFormat,omitnil,omitempty" name:"PageFormat"`
 }
 
 // Predefined struct for user
@@ -608,50 +604,36 @@ func (r *CreateReconstructDocumentFlowResponse) FromJsonString(s string) error {
 }
 
 type CreateSplitDocumentFlowConfig struct {
-	// Markdown文件中表格返回的形式
-	// 0，表格以MD形式返回
-	// 1，表格以HTML形式返回
-	// 默认为
+	// <p>Markdown文件中表格返回的形式<br>0，表格以MD形式返回<br>1，表格以HTML形式返回<br>默认为</p>
 	//
 	// Deprecated: TableResultType is deprecated.
 	TableResultType *string `json:"TableResultType,omitnil,omitempty" name:"TableResultType"`
 
-	// 智能文档解析返回结果的格式
-	// 0：只返回全文MD；
-	// 1：只返回每一页的OCR原始Json；
-	// 2：只返回每一页的MD；
-	// 3：返回全文MD + 每一页的OCR原始Json；
-	// 4：返回全文MD + 每一页的MD；
-	// 5：返回全文md，每一页ocr原始json，每一页md。
-	// 
+	// <p>智能文档解析返回结果的格式<br>0：只返回全文MD；<br>1：只返回每一页的OCR原始Json；<br>2：只返回每一页的MD；<br>3：返回全文MD + 每一页的OCR原始Json；<br>4：返回全文MD + 每一页的MD；<br>5：返回全文md，每一页ocr原始json，每一页md。</p>
 	//
 	// Deprecated: ResultType is deprecated.
 	ResultType *string `json:"ResultType,omitnil,omitempty" name:"ResultType"`
 
-	// 是否开启mllm
+	// <p>是否开启mllm</p>
 	EnableMllm *bool `json:"EnableMllm,omitnil,omitempty" name:"EnableMllm"`
 
-	// 最大分片长度
+	// <p>最大分片长度</p>
 	MaxChunkSize *int64 `json:"MaxChunkSize,omitnil,omitempty" name:"MaxChunkSize"`
 
-	// 是否忽略返回失败页码
+	// <p>是否忽略返回失败页码</p>
 	IgnoreFailedPage *bool `json:"IgnoreFailedPage,omitnil,omitempty" name:"IgnoreFailedPage"`
 
-	// 智能文档解析返回结果的格式
-	// 0：只返回全文MD；
-	// 1：只返回每一页的OCR原始Json；
-	// 2：只返回每一页的MD；
-	// 3：返回全文MD + 每一页的OCR原始Json；
-	// 4：返回全文MD + 每一页的MD；
-	// 5：返回全文md，每一页ocr原始json，每一页md。
-	// 
+	// <p>智能文档解析返回结果的格式<br>0：只返回全文MD；<br>1：只返回每一页的OCR原始Json；<br>2：只返回每一页的MD；<br>3：返回全文MD + 每一页的OCR原始Json；<br>4：返回全文MD + 每一页的MD；<br>5：返回全文md，每一页ocr原始json，每一页md。</p>
 	SplitResultType *string `json:"SplitResultType,omitnil,omitempty" name:"SplitResultType"`
 
-	// Markdown文件中表格返回的形式
-	// 0，表格以MD形式返回
-	// 1，表格以HTML形式返回
-	// 默认为
+	// <p>Markdown文件中表格返回的形式<br>0，表格以MD形式返回<br>1，表格以HTML形式返回<br>默认为</p>
 	SplitTableResultType *string `json:"SplitTableResultType,omitnil,omitempty" name:"SplitTableResultType"`
+
+	// <p>Markdown文件中是否包含页码信息</p>
+	ReturnPageFormat *bool `json:"ReturnPageFormat,omitnil,omitempty" name:"ReturnPageFormat"`
+
+	// <p>自定义输出页码样式,{{p}}为页码占位符，开启ReturnPageFormat生效。未填默认样式:<page_num>page {{p}}</page_num></p>
+	PageFormat *string `json:"PageFormat,omitnil,omitempty" name:"PageFormat"`
 }
 
 // Predefined struct for user

@@ -3156,59 +3156,68 @@ func (r *GetServiceStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetServiceStatusResponseParams struct {
-	// KMS服务是否开通， true 表示已开通
+	// <p>KMS服务是否开通， true 表示已开通</p>
 	ServiceEnabled *bool `json:"ServiceEnabled,omitnil,omitempty" name:"ServiceEnabled"`
 
-	// 服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放
+	// <p>服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放</p>
 	InvalidType *int64 `json:"InvalidType,omitnil,omitempty" name:"InvalidType"`
 
-	// 0-普通版，1-旗舰版
+	// <p>0-普通版，1-旗舰版</p>
 	UserLevel *uint64 `json:"UserLevel,omitnil,omitempty" name:"UserLevel"`
 
-	// 旗舰版到期时间（Epoch Unix Timestamp）。
+	// <p>旗舰版到期时间（Epoch Unix Timestamp）。</p>
 	ProExpireTime *uint64 `json:"ProExpireTime,omitnil,omitempty" name:"ProExpireTime"`
 
-	// 旗舰版是否自动续费：0-不自动续费，1-自动续费
+	// <p>旗舰版是否自动续费：0-不自动续费，1-自动续费</p>
 	ProRenewFlag *uint64 `json:"ProRenewFlag,omitnil,omitempty" name:"ProRenewFlag"`
 
-	// 旗舰版购买记录的唯一性标识。如果未开通旗舰版，则返回值为空
+	// <p>旗舰版购买记录的唯一性标识。如果未开通旗舰版，则返回值为空</p>
 	ProResourceId *string `json:"ProResourceId,omitnil,omitempty" name:"ProResourceId"`
 
-	// 是否开通 KMS 托管版
+	// <p>是否开通 KMS 托管版</p>
 	ExclusiveVSMEnabled *bool `json:"ExclusiveVSMEnabled,omitnil,omitempty" name:"ExclusiveVSMEnabled"`
 
-	// 是否开通 KMS 独享版
+	// <p>是否开通 KMS 独享版</p>
 	ExclusiveHSMEnabled *bool `json:"ExclusiveHSMEnabled,omitnil,omitempty" name:"ExclusiveHSMEnabled"`
 
-	// KMS 订阅信息。
+	// <p>KMS 订阅信息。</p>
 	SubscriptionInfo *string `json:"SubscriptionInfo,omitnil,omitempty" name:"SubscriptionInfo"`
 
-	// 返回KMS用户密钥使用数量
+	// <p>返回KMS用户密钥使用数量</p>
 	CmkUserCount *uint64 `json:"CmkUserCount,omitnil,omitempty" name:"CmkUserCount"`
 
-	// 返回KMS用户密钥规格数量
+	// <p>返回KMS用户密钥规格数量</p>
 	CmkLimit *uint64 `json:"CmkLimit,omitnil,omitempty" name:"CmkLimit"`
 
-	// 返回独享集群组
+	// <p>返回独享集群组</p>
 	ExclusiveHSMList []*ExclusiveHSM `json:"ExclusiveHSMList,omitnil,omitempty" name:"ExclusiveHSMList"`
 
-	// 是否支持数据密钥托管。1:支持，0:不支持。
+	// <p>是否支持数据密钥托管。1:支持，0:不支持。</p>
 	IsAllowedDataKeyHosted *bool `json:"IsAllowedDataKeyHosted,omitnil,omitempty" name:"IsAllowedDataKeyHosted"`
 
-	// IsAllowedDataKeyHosted为1时有效，数据密钥的购买额度
+	// <p>IsAllowedDataKeyHosted为1时有效，数据密钥的购买额度</p>
 	DataKeyLimit *uint64 `json:"DataKeyLimit,omitnil,omitempty" name:"DataKeyLimit"`
 
-	// IsAllowedDataKeyHosted为1时有效，数据密钥免费额度。
+	// <p>IsAllowedDataKeyHosted为1时有效，数据密钥免费额度。</p>
 	FreeDataKeyLimit *uint64 `json:"FreeDataKeyLimit,omitnil,omitempty" name:"FreeDataKeyLimit"`
 
-	// IsAllowedDataKeyHosted为1时有效，已使用的数据密钥数量。
+	// <p>IsAllowedDataKeyHosted为1时有效，已使用的数据密钥数量。</p>
 	DataKeyUsedCount *uint64 `json:"DataKeyUsedCount,omitnil,omitempty" name:"DataKeyUsedCount"`
 
-	// 同步任务的目标地域信息
+	// <p>同步任务的目标地域信息</p>
 	SyncTaskList []*DestinationSyncConfig `json:"SyncTaskList,omitnil,omitempty" name:"SyncTaskList"`
 
-	// 是否支持同步任务。true:支持，false:不支持。
+	// <p>是否支持同步任务。true:支持，false:不支持。</p>
 	IsAllowedSync *bool `json:"IsAllowedSync,omitnil,omitempty" name:"IsAllowedSync"`
+
+	// <p>地域下的QPS</p>
+	QpsLimit *uint64 `json:"QpsLimit,omitnil,omitempty" name:"QpsLimit"`
+
+	// <p>总的QPS值</p>
+	QpsTotalLimit *uint64 `json:"QpsTotalLimit,omitnil,omitempty" name:"QpsTotalLimit"`
+
+	// <p>地域下的QPS</p>
+	RegionsQps []*RegionQps `json:"RegionsQps,omitnil,omitempty" name:"RegionsQps"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4426,6 +4435,14 @@ func (r *ReEncryptResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ReEncryptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RegionQps struct {
+	// <p>地域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>qps的大小</p>
+	Qps *uint64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 }
 
 // Predefined struct for user

@@ -1528,10 +1528,10 @@ type ContentInfo struct {
 }
 
 type Coord struct {
-	// 横坐标
+	// <p>横坐标。</p>
 	X *int64 `json:"X,omitnil,omitempty" name:"X"`
 
-	// 纵坐标
+	// <p>纵坐标。</p>
 	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 }
 
@@ -1927,10 +1927,10 @@ type DetectedWordCoordPoint struct {
 }
 
 type DetectedWords struct {
-	// 置信度 0 ~100
+	// <p>置信度 0 ~100。</p>
 	Confidence *int64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
 
-	// 候选字Character
+	// <p>候选字Character。</p>
 	Character *string `json:"Character,omitnil,omitempty" name:"Character"`
 }
 
@@ -5952,16 +5952,16 @@ type InvoiceSealInfo struct {
 }
 
 type ItemCoord struct {
-	// 左上角x
+	// <p>左上角x。</p>
 	X *int64 `json:"X,omitnil,omitempty" name:"X"`
 
-	// 左上角y
+	// <p>左上角y。</p>
 	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 
-	// 宽width
+	// <p>宽width。</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 高height
+	// <p>高height。</p>
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
@@ -11692,29 +11692,29 @@ func (r *TextDetectResponse) FromJsonString(s string) error {
 }
 
 type TextDetection struct {
-	// <p>识别出的文本行内容</p>
+	// <p>识别出的文本行内容。</p>
 	DetectedText *string `json:"DetectedText,omitnil,omitempty" name:"DetectedText"`
 
-	// <p>置信度 0 ~100</p>
+	// <p>置信度 0 ~100。</p>
 	Confidence *int64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
 
-	// <p>文本行坐标，以四个顶点坐标表示</p>
+	// <p>文本行坐标，以四个顶点坐标表示。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Polygon []*Coord `json:"Polygon,omitnil,omitempty" name:"Polygon"`
 
-	// <p>此字段为扩展字段。<br>GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。</p>
+	// <p>此字段为扩展字段。GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。</p>
 	AdvancedInfo *string `json:"AdvancedInfo,omitnil,omitempty" name:"AdvancedInfo"`
 
-	// <p>文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）</p>
+	// <p>文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）。</p>
 	ItemPolygon *ItemCoord `json:"ItemPolygon,omitnil,omitempty" name:"ItemPolygon"`
 
-	// <p>识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR</p>
+	// <p>识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR。</p>
 	Words []*DetectedWords `json:"Words,omitnil,omitempty" name:"Words"`
 
-	// <p>单字在原图中的四点坐标， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR</p>
+	// <p>单字在原图中的四点坐标， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR。</p>
 	WordCoordPoint []*DetectedWordCoordPoint `json:"WordCoordPoint,omitnil,omitempty" name:"WordCoordPoint"`
 
-	// <p>语种信息。zh:中文; en:英文; th:泰语; id:印尼语; ja:日语; ko:韩语; es:西班牙语; fr:法语; de:德语; pt:葡萄牙语; vi:越南语; ms:马来语; ru:俄语; it:意大利语; nl:荷兰语; sv:瑞典语; fi:芬兰语; no:挪威语; hu:匈牙利语; ar:阿拉伯语; hi:印地语</p>
+	// <p>语种信息。注：仅ConfigID配置为MulOCR时支持。zh:中文; en:英文; tha:泰语; may:印尼语; jap:日语; kor:韩语; spa:西班牙语; fre:法语; ger:德语; por:葡萄牙语; vie:越南语; may:马来语; rus:俄语; ita:意大利语; hol:荷兰语; swe:瑞典语; fin:芬兰语; nor:挪威语; hun:匈牙利语; ara:阿拉伯语; hi:印地语。</p>
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 

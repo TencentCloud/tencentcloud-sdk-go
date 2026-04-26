@@ -11120,6 +11120,9 @@ type ModifyRejectedQuestionRequestParams struct {
 	// 
 	// 
 	RejectedBizId *string `json:"RejectedBizId,omitnil,omitempty" name:"RejectedBizId"`
+
+	// 拒答生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
 type ModifyRejectedQuestionRequest struct {
@@ -11136,6 +11139,9 @@ type ModifyRejectedQuestionRequest struct {
 	// 
 	// 
 	RejectedBizId *string `json:"RejectedBizId,omitnil,omitempty" name:"RejectedBizId"`
+
+	// 拒答生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
+	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
 }
 
 func (r *ModifyRejectedQuestionRequest) ToJsonString() string {
@@ -11153,6 +11159,7 @@ func (r *ModifyRejectedQuestionRequest) FromJsonString(s string) error {
 	delete(f, "BotBizId")
 	delete(f, "Question")
 	delete(f, "RejectedBizId")
+	delete(f, "EnableScope")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRejectedQuestionRequest has unknown keys!", "")
 	}
@@ -13331,40 +13338,40 @@ type ToolAdvanceConfig struct {
 }
 
 type UnsatisfiedReply struct {
-	// 不满意回复ID
+	// <p>不满意回复ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplyBizId *string `json:"ReplyBizId,omitnil,omitempty" name:"ReplyBizId"`
 
-	// 消息记录ID
+	// <p>消息记录ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordBizId *string `json:"RecordBizId,omitnil,omitempty" name:"RecordBizId"`
 
-	// 用户问题
+	// <p>用户问题</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
 
-	// 问题回复
+	// <p>问题回复</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Answer *string `json:"Answer,omitnil,omitempty" name:"Answer"`
 
-	// 错误类型
+	// <p>错误类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reasons []*string `json:"Reasons,omitnil,omitempty" name:"Reasons"`
 
-	// 处理状态，0：待处理，1：已拒答，2：已忽略，3：已纠错
+	// <p>处理状态，0：待处理，1：已拒答，2：已忽略，3：已纠错</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 创建时间，秒级时间戳
+	// <p>创建时间，秒级时间戳</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间,秒级时间戳
+	// <p>更新时间,秒级时间戳</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 操作人
+	// <p>操作人</p>
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 自定义反馈
+	// <p>自定义反馈</p>
 	FeedbackContent *string `json:"FeedbackContent,omitnil,omitempty" name:"FeedbackContent"`
 }
 

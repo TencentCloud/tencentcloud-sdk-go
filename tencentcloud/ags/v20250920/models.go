@@ -39,14 +39,14 @@ type APIKeyInfo struct {
 
 // Predefined struct for user
 type AcquireSandboxInstanceTokenRequestParams struct {
-	// 沙箱实例ID，生成的访问Token将仅可用于访问此沙箱实例
+	// <p>沙箱实例ID，生成的访问Token将仅可用于访问此沙箱实例</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type AcquireSandboxInstanceTokenRequest struct {
 	*tchttp.BaseRequest
 	
-	// 沙箱实例ID，生成的访问Token将仅可用于访问此沙箱实例
+	// <p>沙箱实例ID，生成的访问Token将仅可用于访问此沙箱实例</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -71,11 +71,14 @@ func (r *AcquireSandboxInstanceTokenRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AcquireSandboxInstanceTokenResponseParams struct {
-	// 访问Token
+	// <p>访问Token</p>
 	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
 
-	// 过期时间
+	// <p>过期时间</p>
 	ExpiresAt *string `json:"ExpiresAt,omitnil,omitempty" name:"ExpiresAt"`
+
+	// <p>非管控面（envd）的访问Token</p>
+	TrafficToken *string `json:"TrafficToken,omitnil,omitempty" name:"TrafficToken"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1151,6 +1154,9 @@ type SandboxInstance struct {
 
 	// <p>沙箱实例元数据</p>
 	Metadata []*MetadataVar `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+
+	// <p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 默认，即 TOKEN 认证</li><li>TOKEN： Token认证，即所有端口访问都需携带TOKEN</li><li>NONE： 免认证，即所有端口访问无需携带TOKEN</li><li>PUBLIC： 公开模式，即ENVD管理端口（49983）访问需携带TOKEN，其他端口无需携带TOKEN</li></ul><p>默认值：DEFAULT</p>
+	AuthMode *string `json:"AuthMode,omitnil,omitempty" name:"AuthMode"`
 }
 
 type SandboxTool struct {
@@ -1223,7 +1229,7 @@ type StartSandboxInstanceRequestParams struct {
 	// <p>沙箱实例自定义配置</p>
 	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
 
-	// <p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 跟随系统策略</li><li>TOKEN： Token认证</li><li>NONE： 免认证 </li></ul><p>默认值：DEFAULT</p>
+	// <p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 默认，即 TOKEN 认证</li><li>TOKEN： Token认证，即所有端口访问都需携带TOKEN</li><li>NONE： 免认证，即所有端口访问无需携带TOKEN</li><li>PUBLIC： 公开模式，即ENVD管理端口（49983）访问需携带TOKEN，其他端口无需携带TOKEN</li></ul><p>默认值：DEFAULT</p>
 	AuthMode *string `json:"AuthMode,omitnil,omitempty" name:"AuthMode"`
 
 	// <p>沙箱元数据</p>
@@ -1251,7 +1257,7 @@ type StartSandboxInstanceRequest struct {
 	// <p>沙箱实例自定义配置</p>
 	CustomConfiguration *CustomConfiguration `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
 
-	// <p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 跟随系统策略</li><li>TOKEN： Token认证</li><li>NONE： 免认证 </li></ul><p>默认值：DEFAULT</p>
+	// <p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 默认，即 TOKEN 认证</li><li>TOKEN： Token认证，即所有端口访问都需携带TOKEN</li><li>NONE： 免认证，即所有端口访问无需携带TOKEN</li><li>PUBLIC： 公开模式，即ENVD管理端口（49983）访问需携带TOKEN，其他端口无需携带TOKEN</li></ul><p>默认值：DEFAULT</p>
 	AuthMode *string `json:"AuthMode,omitnil,omitempty" name:"AuthMode"`
 
 	// <p>沙箱元数据</p>

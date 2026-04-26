@@ -1193,174 +1193,158 @@ func (r *CreateMountLimitResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateNotebookRequestParams struct {
-	// 名称。不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+	// <p>名称。不超过60个字符，仅支持中英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以中英文、数字开头</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 计算资源付费模式 ，可选值为：
-	// PREPAID：预付费，即包年包月
-	// POSTPAID_BY_HOUR：按小时后付费
+	// <p>计算资源付费模式 ，可选值为：<br>PREPAID：预付费，即包年包月<br>POSTPAID_BY_HOUR：按小时后付费</p>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// 计算资源配置
+	// <p>计算资源配置</p>
 	ResourceConf *ResourceConf `json:"ResourceConf,omitnil,omitempty" name:"ResourceConf"`
 
-	// 是否上报日志
+	// <p>是否上报日志</p>
 	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
 
-	// 是否ROOT权限
+	// <p>是否ROOT权限</p>
 	RootAccess *bool `json:"RootAccess,omitnil,omitempty" name:"RootAccess"`
 
-	// 是否自动停止
+	// <p>是否自动停止</p>
 	AutoStopping *bool `json:"AutoStopping,omitnil,omitempty" name:"AutoStopping"`
 
-	// 是否访问公网
+	// <p>是否访问公网</p>
 	DirectInternetAccess *bool `json:"DirectInternetAccess,omitnil,omitempty" name:"DirectInternetAccess"`
 
-	// 资源组ID(for预付费)
+	// <p>资源组ID(for预付费)</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// Vpc-Id
+	// <p>Vpc-Id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网Id
+	// <p>子网Id</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 存储的类型。取值包含： 
-	// FREE：预付费的免费存储
-	// CLOUD_PREMIUM：高性能云硬盘
-	// CLOUD_SSD：SSD云硬盘
-	// CFS：CFS存储
-	// CFS_TURBO：CFS Turbo存储
-	// GooseFSx：GooseFSx存储
+	// <p>存储的类型。取值包含：<br>FREE：预付费的免费存储<br>CLOUD_PREMIUM：高性能云硬盘<br>CLOUD_SSD：SSD云硬盘<br>CFS：CFS存储<br>CFS_TURBO：CFS Turbo存储<br>GooseFSx：GooseFSx存储</p>
 	VolumeSourceType *string `json:"VolumeSourceType,omitnil,omitempty" name:"VolumeSourceType"`
 
-	// 云硬盘存储卷大小，单位GB
+	// <p>云硬盘存储卷大小，单位GB</p>
 	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitnil,omitempty" name:"VolumeSizeInGB"`
 
-	// CFS存储的配置
+	// <p>CFS存储的配置</p>
 	VolumeSourceCFS *CFSConfig `json:"VolumeSourceCFS,omitnil,omitempty" name:"VolumeSourceCFS"`
 
-	// 日志配置
+	// <p>日志配置</p>
 	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 
-	// 生命周期脚本的ID
+	// <p>生命周期脚本的ID</p>
 	LifecycleScriptId *string `json:"LifecycleScriptId,omitnil,omitempty" name:"LifecycleScriptId"`
 
-	// 默认GIT存储库的ID
+	// <p>默认GIT存储库的ID</p>
 	DefaultCodeRepoId *string `json:"DefaultCodeRepoId,omitnil,omitempty" name:"DefaultCodeRepoId"`
 
-	// 其他GIT存储库的ID，最多3个
+	// <p>其他GIT存储库的ID，最多3个</p>
 	AdditionalCodeRepoIds []*string `json:"AdditionalCodeRepoIds,omitnil,omitempty" name:"AdditionalCodeRepoIds"`
 
-	// 自动停止时间，单位小时
+	// <p>自动停止时间，单位小时</p>
 	AutomaticStopTime *uint64 `json:"AutomaticStopTime,omitnil,omitempty" name:"AutomaticStopTime"`
 
-	// 标签配置
+	// <p>标签配置</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 数据存储挂载配置
+	// <p>数据存储挂载配置</p>
 	DataConfigs []*DataConfig `json:"DataConfigs,omitnil,omitempty" name:"DataConfigs"`
 
-	// 镜像信息
+	// <p>镜像信息</p>
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// 镜像类型，包括SYSTEM、TCR、CCR
+	// <p>镜像类型，包括SYSTEM、TCR、CCR</p>
 	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
 
-	// SSH配置信息
+	// <p>SSH配置信息</p>
 	SSHConfig *SSHConfig `json:"SSHConfig,omitnil,omitempty" name:"SSHConfig"`
 
-	// GooseFS存储配置
+	// <p>GooseFS存储配置</p>
 	VolumeSourceGooseFS *GooseFS `json:"VolumeSourceGooseFS,omitnil,omitempty" name:"VolumeSourceGooseFS"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type CreateNotebookRequest struct {
 	*tchttp.BaseRequest
 	
-	// 名称。不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+	// <p>名称。不超过60个字符，仅支持中英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以中英文、数字开头</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 计算资源付费模式 ，可选值为：
-	// PREPAID：预付费，即包年包月
-	// POSTPAID_BY_HOUR：按小时后付费
+	// <p>计算资源付费模式 ，可选值为：<br>PREPAID：预付费，即包年包月<br>POSTPAID_BY_HOUR：按小时后付费</p>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// 计算资源配置
+	// <p>计算资源配置</p>
 	ResourceConf *ResourceConf `json:"ResourceConf,omitnil,omitempty" name:"ResourceConf"`
 
-	// 是否上报日志
+	// <p>是否上报日志</p>
 	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
 
-	// 是否ROOT权限
+	// <p>是否ROOT权限</p>
 	RootAccess *bool `json:"RootAccess,omitnil,omitempty" name:"RootAccess"`
 
-	// 是否自动停止
+	// <p>是否自动停止</p>
 	AutoStopping *bool `json:"AutoStopping,omitnil,omitempty" name:"AutoStopping"`
 
-	// 是否访问公网
+	// <p>是否访问公网</p>
 	DirectInternetAccess *bool `json:"DirectInternetAccess,omitnil,omitempty" name:"DirectInternetAccess"`
 
-	// 资源组ID(for预付费)
+	// <p>资源组ID(for预付费)</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// Vpc-Id
+	// <p>Vpc-Id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网Id
+	// <p>子网Id</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 存储的类型。取值包含： 
-	// FREE：预付费的免费存储
-	// CLOUD_PREMIUM：高性能云硬盘
-	// CLOUD_SSD：SSD云硬盘
-	// CFS：CFS存储
-	// CFS_TURBO：CFS Turbo存储
-	// GooseFSx：GooseFSx存储
+	// <p>存储的类型。取值包含：<br>FREE：预付费的免费存储<br>CLOUD_PREMIUM：高性能云硬盘<br>CLOUD_SSD：SSD云硬盘<br>CFS：CFS存储<br>CFS_TURBO：CFS Turbo存储<br>GooseFSx：GooseFSx存储</p>
 	VolumeSourceType *string `json:"VolumeSourceType,omitnil,omitempty" name:"VolumeSourceType"`
 
-	// 云硬盘存储卷大小，单位GB
+	// <p>云硬盘存储卷大小，单位GB</p>
 	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitnil,omitempty" name:"VolumeSizeInGB"`
 
-	// CFS存储的配置
+	// <p>CFS存储的配置</p>
 	VolumeSourceCFS *CFSConfig `json:"VolumeSourceCFS,omitnil,omitempty" name:"VolumeSourceCFS"`
 
-	// 日志配置
+	// <p>日志配置</p>
 	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 
-	// 生命周期脚本的ID
+	// <p>生命周期脚本的ID</p>
 	LifecycleScriptId *string `json:"LifecycleScriptId,omitnil,omitempty" name:"LifecycleScriptId"`
 
-	// 默认GIT存储库的ID
+	// <p>默认GIT存储库的ID</p>
 	DefaultCodeRepoId *string `json:"DefaultCodeRepoId,omitnil,omitempty" name:"DefaultCodeRepoId"`
 
-	// 其他GIT存储库的ID，最多3个
+	// <p>其他GIT存储库的ID，最多3个</p>
 	AdditionalCodeRepoIds []*string `json:"AdditionalCodeRepoIds,omitnil,omitempty" name:"AdditionalCodeRepoIds"`
 
-	// 自动停止时间，单位小时
+	// <p>自动停止时间，单位小时</p>
 	AutomaticStopTime *uint64 `json:"AutomaticStopTime,omitnil,omitempty" name:"AutomaticStopTime"`
 
-	// 标签配置
+	// <p>标签配置</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 数据存储挂载配置
+	// <p>数据存储挂载配置</p>
 	DataConfigs []*DataConfig `json:"DataConfigs,omitnil,omitempty" name:"DataConfigs"`
 
-	// 镜像信息
+	// <p>镜像信息</p>
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// 镜像类型，包括SYSTEM、TCR、CCR
+	// <p>镜像类型，包括SYSTEM、TCR、CCR</p>
 	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
 
-	// SSH配置信息
+	// <p>SSH配置信息</p>
 	SSHConfig *SSHConfig `json:"SSHConfig,omitnil,omitempty" name:"SSHConfig"`
 
-	// GooseFS存储配置
+	// <p>GooseFS存储配置</p>
 	VolumeSourceGooseFS *GooseFS `json:"VolumeSourceGooseFS,omitnil,omitempty" name:"VolumeSourceGooseFS"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -1409,7 +1393,7 @@ func (r *CreateNotebookRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateNotebookResponseParams struct {
-	// notebook标志
+	// <p>notebook标志</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2002,54 +1986,53 @@ type CrossTenantENIInfo struct {
 }
 
 type DataConfig struct {
-	// 映射路径
+	// <p>映射路径</p>
 	MappingPath *string `json:"MappingPath,omitnil,omitempty" name:"MappingPath"`
 
-	// 存储用途
-	// 可选值为 BUILTIN_CODE, BUILTIN_DATA, BUILTIN_MODEL, USER_DATA, USER_CODE, USER_MODEL, OUTPUT, OTHER
+	// <p>存储用途<br>可选值为 BUILTIN_CODE, BUILTIN_DATA, BUILTIN_MODEL, USER_DATA, USER_CODE, USER_MODEL, OUTPUT, OTHER</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceUsage *string `json:"DataSourceUsage,omitnil,omitempty" name:"DataSourceUsage"`
 
-	// DATASET、COS、CFS、CFSTurbo、GooseFSx、HDFS、WEDATA_HDFS
+	// <p>DATASET、COS、CFS、CFSTurbo、GooseFSx、HDFS、WEDATA_HDFS</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
 
-	// 来自数据集的数据
+	// <p>来自数据集的数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSetSource *DataSetConfig `json:"DataSetSource,omitnil,omitempty" name:"DataSetSource"`
 
-	// 来自cos的数据
+	// <p>来自cos的数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	COSSource *CosPathInfo `json:"COSSource,omitnil,omitempty" name:"COSSource"`
 
-	// 来自CFS的数据
+	// <p>来自CFS的数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CFSSource *CFSConfig `json:"CFSSource,omitnil,omitempty" name:"CFSSource"`
 
-	// 来自HDFS的数据
+	// <p>来自HDFS的数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HDFSSource *HDFSConfig `json:"HDFSSource,omitnil,omitempty" name:"HDFSSource"`
 
-	// 配置GooseFS的数据
+	// <p>配置GooseFS的数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GooseFSSource *GooseFS `json:"GooseFSSource,omitnil,omitempty" name:"GooseFSSource"`
 
-	// 配置TurboFS的数据
+	// <p>配置TurboFS的数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CFSTurboSource *CFSTurbo `json:"CFSTurboSource,omitnil,omitempty" name:"CFSTurboSource"`
 
-	// 来自本地磁盘的信息
+	// <p>来自本地磁盘的信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalDiskSource *LocalDisk `json:"LocalDiskSource,omitnil,omitempty" name:"LocalDiskSource"`
 
-	// CBS配置信息
+	// <p>CBS配置信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CBSSource *CBSConfig `json:"CBSSource,omitnil,omitempty" name:"CBSSource"`
 
-	// 主机路径信息
+	// <p>主机路径信息</p>
 	HostPathSource *HostPath `json:"HostPathSource,omitnil,omitempty" name:"HostPathSource"`
 
-	// 公有云数据源
+	// <p>公有云数据源</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicDataSource *PublicDataSourceFS `json:"PublicDataSource,omitnil,omitempty" name:"PublicDataSource"`
 }
@@ -7204,176 +7187,164 @@ func (r *ModifyModelServiceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNotebookRequestParams struct {
-	// notebook id
+	// <p>notebook id</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 名称。不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+	// <p>名称。不超过60个字符，仅支持中英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以中英文、数字开头</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// （不允许修改）计算资源付费模式 ，可选值为：
-	// PREPAID：预付费，即包年包月
-	// POSTPAID_BY_HOUR：按小时后付费
+	// <p>（不允许修改）计算资源付费模式 ，可选值为：<br>PREPAID：预付费，即包年包月<br>POSTPAID_BY_HOUR：按小时后付费</p>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// 计算资源配置
+	// <p>计算资源配置</p>
 	ResourceConf *ResourceConf `json:"ResourceConf,omitnil,omitempty" name:"ResourceConf"`
 
-	// 是否自动停止
+	// <p>是否自动停止</p>
 	AutoStopping *bool `json:"AutoStopping,omitnil,omitempty" name:"AutoStopping"`
 
-	// 是否访问公网
+	// <p>是否访问公网</p>
 	DirectInternetAccess *bool `json:"DirectInternetAccess,omitnil,omitempty" name:"DirectInternetAccess"`
 
-	// 是否ROOT权限
+	// <p>是否ROOT权限</p>
 	RootAccess *bool `json:"RootAccess,omitnil,omitempty" name:"RootAccess"`
 
-	// 是否上报日志
+	// <p>是否上报日志</p>
 	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
 
-	// 资源组ID(for预付费)
+	// <p>资源组ID(for预付费)</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// （不允许修改）Vpc-Id
+	// <p>（不允许修改）Vpc-Id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// （不允许修改）子网Id
+	// <p>（不允许修改）子网Id</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 存储卷大小，单位GB
+	// <p>存储卷大小，单位GB</p>
 	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitnil,omitempty" name:"VolumeSizeInGB"`
 
-	// （不允许修改）存储的类型。取值包含： 
-	//     FREE:    预付费的免费存储
-	//     CLOUD_PREMIUM： 高性能云硬盘
-	//     CLOUD_SSD： SSD云硬盘
-	//     CFS:     CFS存储，包含NFS和turbo
+	// <p>（不允许修改）存储的类型。取值包含：<br>    FREE:    预付费的免费存储<br>    CLOUD_PREMIUM： 高性能云硬盘<br>    CLOUD_SSD： SSD云硬盘<br>    CFS:     CFS存储，包含NFS和turbo</p>
 	VolumeSourceType *string `json:"VolumeSourceType,omitnil,omitempty" name:"VolumeSourceType"`
 
-	// （不允许修改）CFS存储的配置
+	// <p>（不允许修改）CFS存储的配置</p>
 	VolumeSourceCFS *CFSConfig `json:"VolumeSourceCFS,omitnil,omitempty" name:"VolumeSourceCFS"`
 
-	// 日志配置
+	// <p>日志配置</p>
 	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 
-	// 生命周期脚本的ID
+	// <p>生命周期脚本的ID</p>
 	LifecycleScriptId *string `json:"LifecycleScriptId,omitnil,omitempty" name:"LifecycleScriptId"`
 
-	// 默认GIT存储库的ID
+	// <p>默认GIT存储库的ID</p>
 	DefaultCodeRepoId *string `json:"DefaultCodeRepoId,omitnil,omitempty" name:"DefaultCodeRepoId"`
 
-	// 其他GIT存储库的ID，最多3个
+	// <p>其他GIT存储库的ID，最多3个</p>
 	AdditionalCodeRepoIds []*string `json:"AdditionalCodeRepoIds,omitnil,omitempty" name:"AdditionalCodeRepoIds"`
 
-	// 自动停止时间，单位小时
+	// <p>自动停止时间，单位小时</p>
 	AutomaticStopTime *int64 `json:"AutomaticStopTime,omitnil,omitempty" name:"AutomaticStopTime"`
 
-	// 标签配置
+	// <p>标签配置</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 数据配置，只支持WEDATA_HDFS
+	// <p>数据配置，只支持WEDATA_HDFS</p>
 	DataConfigs []*DataConfig `json:"DataConfigs,omitnil,omitempty" name:"DataConfigs"`
 
-	// 镜像信息
+	// <p>镜像信息</p>
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// 镜像类型，包括SYSTEM、TCR、CCR
+	// <p>镜像类型，包括SYSTEM、TCR、CCR</p>
 	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
 
-	// SSH配置
+	// <p>SSH配置</p>
 	SSHConfig *SSHConfig `json:"SSHConfig,omitnil,omitempty" name:"SSHConfig"`
 
-	// 自定义环境变量
+	// <p>自定义环境变量</p>
 	Envs []*EnvVar `json:"Envs,omitnil,omitempty" name:"Envs"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type ModifyNotebookRequest struct {
 	*tchttp.BaseRequest
 	
-	// notebook id
+	// <p>notebook id</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 名称。不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+	// <p>名称。不超过60个字符，仅支持中英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以中英文、数字开头</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// （不允许修改）计算资源付费模式 ，可选值为：
-	// PREPAID：预付费，即包年包月
-	// POSTPAID_BY_HOUR：按小时后付费
+	// <p>（不允许修改）计算资源付费模式 ，可选值为：<br>PREPAID：预付费，即包年包月<br>POSTPAID_BY_HOUR：按小时后付费</p>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// 计算资源配置
+	// <p>计算资源配置</p>
 	ResourceConf *ResourceConf `json:"ResourceConf,omitnil,omitempty" name:"ResourceConf"`
 
-	// 是否自动停止
+	// <p>是否自动停止</p>
 	AutoStopping *bool `json:"AutoStopping,omitnil,omitempty" name:"AutoStopping"`
 
-	// 是否访问公网
+	// <p>是否访问公网</p>
 	DirectInternetAccess *bool `json:"DirectInternetAccess,omitnil,omitempty" name:"DirectInternetAccess"`
 
-	// 是否ROOT权限
+	// <p>是否ROOT权限</p>
 	RootAccess *bool `json:"RootAccess,omitnil,omitempty" name:"RootAccess"`
 
-	// 是否上报日志
+	// <p>是否上报日志</p>
 	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
 
-	// 资源组ID(for预付费)
+	// <p>资源组ID(for预付费)</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// （不允许修改）Vpc-Id
+	// <p>（不允许修改）Vpc-Id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// （不允许修改）子网Id
+	// <p>（不允许修改）子网Id</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 存储卷大小，单位GB
+	// <p>存储卷大小，单位GB</p>
 	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitnil,omitempty" name:"VolumeSizeInGB"`
 
-	// （不允许修改）存储的类型。取值包含： 
-	//     FREE:    预付费的免费存储
-	//     CLOUD_PREMIUM： 高性能云硬盘
-	//     CLOUD_SSD： SSD云硬盘
-	//     CFS:     CFS存储，包含NFS和turbo
+	// <p>（不允许修改）存储的类型。取值包含：<br>    FREE:    预付费的免费存储<br>    CLOUD_PREMIUM： 高性能云硬盘<br>    CLOUD_SSD： SSD云硬盘<br>    CFS:     CFS存储，包含NFS和turbo</p>
 	VolumeSourceType *string `json:"VolumeSourceType,omitnil,omitempty" name:"VolumeSourceType"`
 
-	// （不允许修改）CFS存储的配置
+	// <p>（不允许修改）CFS存储的配置</p>
 	VolumeSourceCFS *CFSConfig `json:"VolumeSourceCFS,omitnil,omitempty" name:"VolumeSourceCFS"`
 
-	// 日志配置
+	// <p>日志配置</p>
 	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 
-	// 生命周期脚本的ID
+	// <p>生命周期脚本的ID</p>
 	LifecycleScriptId *string `json:"LifecycleScriptId,omitnil,omitempty" name:"LifecycleScriptId"`
 
-	// 默认GIT存储库的ID
+	// <p>默认GIT存储库的ID</p>
 	DefaultCodeRepoId *string `json:"DefaultCodeRepoId,omitnil,omitempty" name:"DefaultCodeRepoId"`
 
-	// 其他GIT存储库的ID，最多3个
+	// <p>其他GIT存储库的ID，最多3个</p>
 	AdditionalCodeRepoIds []*string `json:"AdditionalCodeRepoIds,omitnil,omitempty" name:"AdditionalCodeRepoIds"`
 
-	// 自动停止时间，单位小时
+	// <p>自动停止时间，单位小时</p>
 	AutomaticStopTime *int64 `json:"AutomaticStopTime,omitnil,omitempty" name:"AutomaticStopTime"`
 
-	// 标签配置
+	// <p>标签配置</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 数据配置，只支持WEDATA_HDFS
+	// <p>数据配置，只支持WEDATA_HDFS</p>
 	DataConfigs []*DataConfig `json:"DataConfigs,omitnil,omitempty" name:"DataConfigs"`
 
-	// 镜像信息
+	// <p>镜像信息</p>
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// 镜像类型，包括SYSTEM、TCR、CCR
+	// <p>镜像类型，包括SYSTEM、TCR、CCR</p>
 	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
 
-	// SSH配置
+	// <p>SSH配置</p>
 	SSHConfig *SSHConfig `json:"SSHConfig,omitnil,omitempty" name:"SSHConfig"`
 
-	// 自定义环境变量
+	// <p>自定义环境变量</p>
 	Envs []*EnvVar `json:"Envs,omitnil,omitempty" name:"Envs"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -7933,6 +7904,20 @@ type NumOrPercent struct {
 
 	// 数值
 	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type OperatorInfo struct {
+	// <p>操作者子账号 UIN</p>
+	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
+
+	// <p>操作者子账号名称</p>
+	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
+
+	// <p>是否为平台操作</p>
+	IsPlatformOperator *bool `json:"IsPlatformOperator,omitnil,omitempty" name:"IsPlatformOperator"`
+
+	// <p>操作类型</p>
+	OperationType *string `json:"OperationType,omitnil,omitempty" name:"OperationType"`
 }
 
 type Option struct {
@@ -9716,156 +9701,159 @@ type TrainingModelVersionDTO struct {
 }
 
 type TrainingTaskDetail struct {
-	// 训练任务ID
+	// <p>训练任务ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 训练任务名称
+	// <p>训练任务名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 主账号uin
+	// <p>主账号uin</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 子账号uin
+	// <p>子账号uin</p>
 	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
 
-	// 创建者名称
+	// <p>创建者名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
 
-	// 地域
+	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 训练框架名称，eg：SPARK、PYSARK、TENSORFLOW、PYTORCH
+	// <p>训练框架名称，eg：SPARK、PYSARK、TENSORFLOW、PYTORCH</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameworkName *string `json:"FrameworkName,omitnil,omitempty" name:"FrameworkName"`
 
-	// 训练框架版本
+	// <p>训练框架版本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameworkVersion *string `json:"FrameworkVersion,omitnil,omitempty" name:"FrameworkVersion"`
 
-	// 框架运行环境
+	// <p>框架运行环境</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameworkEnvironment *string `json:"FrameworkEnvironment,omitnil,omitempty" name:"FrameworkEnvironment"`
 
-	// 计费模式
+	// <p>计费模式</p>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// 预付费专用资源组
+	// <p>预付费专用资源组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// 资源配置
+	// <p>资源配置</p>
 	ResourceConfigInfos []*ResourceConfigInfo `json:"ResourceConfigInfos,omitnil,omitempty" name:"ResourceConfigInfos"`
 
-	// 标签
+	// <p>标签</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 训练模式，eg：PS_WORKER、DDP、MPI、HOROVOD
+	// <p>训练模式，eg：PS_WORKER、DDP、MPI、HOROVOD</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrainingMode *string `json:"TrainingMode,omitnil,omitempty" name:"TrainingMode"`
 
-	// 代码包
+	// <p>代码包</p>
 	CodePackagePath *CosPathInfo `json:"CodePackagePath,omitnil,omitempty" name:"CodePackagePath"`
 
-	// 启动命令信息
+	// <p>启动命令信息</p>
 	StartCmdInfo *StartCmdInfo `json:"StartCmdInfo,omitnil,omitempty" name:"StartCmdInfo"`
 
-	// 数据来源，eg：DATASET、COS
+	// <p>数据来源，eg：DATASET、COS</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSource *string `json:"DataSource,omitnil,omitempty" name:"DataSource"`
 
-	// 数据配置
+	// <p>数据配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataConfigs []*DataConfig `json:"DataConfigs,omitnil,omitempty" name:"DataConfigs"`
 
-	// 调优参数
+	// <p>调优参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TuningParameters *string `json:"TuningParameters,omitnil,omitempty" name:"TuningParameters"`
 
-	// 训练输出
+	// <p>训练输出</p>
 	Output *CosPathInfo `json:"Output,omitnil,omitempty" name:"Output"`
 
-	// 是否上报日志
+	// <p>是否上报日志</p>
 	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
 
-	// 日志配置
+	// <p>日志配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 
-	// VPC ID
+	// <p>VPC ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网ID
+	// <p>子网ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 自定义镜像信息
+	// <p>自定义镜像信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// 运行时长
+	// <p>运行时长</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuntimeInSeconds *uint64 `json:"RuntimeInSeconds,omitnil,omitempty" name:"RuntimeInSeconds"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 训练开始时间
+	// <p>训练开始时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
+	// <p>计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中</p>
 	ChargeStatus *string `json:"ChargeStatus,omitnil,omitempty" name:"ChargeStatus"`
 
-	// 最近一次实例ID
+	// <p>最近一次实例ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestInstanceId *string `json:"LatestInstanceId,omitnil,omitempty" name:"LatestInstanceId"`
 
-	// TensorBoard ID
+	// <p>TensorBoard ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TensorBoardId *string `json:"TensorBoardId,omitnil,omitempty" name:"TensorBoardId"`
 
-	// 备注
+	// <p>备注</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 失败原因
+	// <p>失败原因</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailureReason *string `json:"FailureReason,omitnil,omitempty" name:"FailureReason"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 训练结束时间
+	// <p>训练结束时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 计费金额信息，eg：2.00元/小时 (按量计费)
+	// <p>计费金额信息，eg：2.00元/小时 (按量计费)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingInfo *string `json:"BillingInfo,omitnil,omitempty" name:"BillingInfo"`
 
-	// 预付费专用资源组名称
+	// <p>预付费专用资源组名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 
-	// 任务信息
+	// <p>任务信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 任务状态，eg：STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成
+	// <p>任务状态，eg：STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 回调地址
+	// <p>回调地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
-	// 任务关联的代码仓库配置
+	// <p>任务关联的代码仓库配置</p>
 	CodeRepos []*CodeRepoConfig `json:"CodeRepos,omitnil,omitempty" name:"CodeRepos"`
 
-	// 暴露网络配置
+	// <p>暴露网络配置</p>
 	ExposeNetworkConfig *ExposeNetworkConfig `json:"ExposeNetworkConfig,omitnil,omitempty" name:"ExposeNetworkConfig"`
+
+	// <p>操作者信息</p>
+	OperatorInfo *OperatorInfo `json:"OperatorInfo,omitnil,omitempty" name:"OperatorInfo"`
 }
 
 type TrainingTaskSetItem struct {
@@ -9967,6 +9955,9 @@ type TrainingTaskSetItem struct {
 
 	// <p>环境变量</p>
 	Envs []*EnvVar `json:"Envs,omitnil,omitempty" name:"Envs"`
+
+	// <p>操作者信息</p>
+	LatestOperatorInfo *OperatorInfo `json:"LatestOperatorInfo,omitnil,omitempty" name:"LatestOperatorInfo"`
 }
 
 // Predefined struct for user

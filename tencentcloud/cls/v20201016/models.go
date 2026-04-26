@@ -5414,7 +5414,7 @@ func (r *CreateScheduledSqlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSearchViewRequestParams struct {
-	// <p>日志集id</p><p>标记视图所属该日志集，用于查询日志集下的查询视图配置</p>
+	// <p>日志集id</p><p>查询视图所属的日志集，仅用于管理查询视图，查询视图中包含的主题可与该日志集无关</p>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// <p>日志集所属地域</p><p>参数格式：ap-guangzhou</p>
@@ -5423,23 +5423,23 @@ type CreateSearchViewRequestParams struct {
 	// <p>视图名称</p><p>入参限制：最大支持255字符，不能包含&quot;|&quot;字符。</p>
 	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
 
-	// <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
+	// <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul><p>Topics字段中配置的主题类型应该与ViewType类型匹配</p>
 	ViewType *string `json:"ViewType,omitnil,omitempty" name:"ViewType"`
 
-	// <p>视图主题配置信息</p><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
+	// <p>查询视图中包含的主题，最大可包含10个主题</p><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
 	Topics []*ViewSearchTopic `json:"Topics,omitnil,omitempty" name:"Topics"`
 
-	// <p>配置描述信息</p>
-	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
-
-	// <p>自定义视图id前缀</p><p>参数格式：<code>^[a-z0-9][a-z0-9_-]{1,61}[a-z0-9]$</code></p><p>配置成功之后ViewId格式: ${ViewIdPrefix}-view</p>
+	// <p>自定义查询视图id前缀</p><p>参数格式：<code>^[a-z0-9][a-z0-9_-]{1,61}[a-z0-9]$</code></p><p>创建成功的查询视图 ViewId 格式为 ${ViewIdPrefix}-view</p>
 	ViewIdPrefix *string `json:"ViewIdPrefix,omitnil,omitempty" name:"ViewIdPrefix"`
+
+	// <p>描述信息</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type CreateSearchViewRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>日志集id</p><p>标记视图所属该日志集，用于查询日志集下的查询视图配置</p>
+	// <p>日志集id</p><p>查询视图所属的日志集，仅用于管理查询视图，查询视图中包含的主题可与该日志集无关</p>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// <p>日志集所属地域</p><p>参数格式：ap-guangzhou</p>
@@ -5448,17 +5448,17 @@ type CreateSearchViewRequest struct {
 	// <p>视图名称</p><p>入参限制：最大支持255字符，不能包含&quot;|&quot;字符。</p>
 	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
 
-	// <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
+	// <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul><p>Topics字段中配置的主题类型应该与ViewType类型匹配</p>
 	ViewType *string `json:"ViewType,omitnil,omitempty" name:"ViewType"`
 
-	// <p>视图主题配置信息</p><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
+	// <p>查询视图中包含的主题，最大可包含10个主题</p><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
 	Topics []*ViewSearchTopic `json:"Topics,omitnil,omitempty" name:"Topics"`
 
-	// <p>配置描述信息</p>
-	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
-
-	// <p>自定义视图id前缀</p><p>参数格式：<code>^[a-z0-9][a-z0-9_-]{1,61}[a-z0-9]$</code></p><p>配置成功之后ViewId格式: ${ViewIdPrefix}-view</p>
+	// <p>自定义查询视图id前缀</p><p>参数格式：<code>^[a-z0-9][a-z0-9_-]{1,61}[a-z0-9]$</code></p><p>创建成功的查询视图 ViewId 格式为 ${ViewIdPrefix}-view</p>
 	ViewIdPrefix *string `json:"ViewIdPrefix,omitnil,omitempty" name:"ViewIdPrefix"`
+
+	// <p>描述信息</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *CreateSearchViewRequest) ToJsonString() string {
@@ -5478,8 +5478,8 @@ func (r *CreateSearchViewRequest) FromJsonString(s string) error {
 	delete(f, "ViewName")
 	delete(f, "ViewType")
 	delete(f, "Topics")
-	delete(f, "Description")
 	delete(f, "ViewIdPrefix")
+	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSearchViewRequest has unknown keys!", "")
 	}
@@ -12978,7 +12978,7 @@ func (r *DescribeSearchViewsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSearchViewsResponseParams struct {
-	// <p>Splunk投递任务信息列表</p>
+	// <p>查询视图详细信息</p>
 	Infos []*SearchViewInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
 
 	// <p>符合条件的任务总数。</p>
@@ -18824,13 +18824,13 @@ type ModifySearchViewRequestParams struct {
 	// <p>视图名称</p><p>参数格式：<code>^[a-z0-9][a-z0-9_-]{1,61}[a-z0-9]$</code></p>
 	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
 
-	// <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul>
+	// <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
 	ViewType *string `json:"ViewType,omitnil,omitempty" name:"ViewType"`
 
-	// <p>视图主题配置信息</p>
+	// <p>查询视图中包含的主题，最大可包含10个主题</p>
 	Topics []*ViewSearchTopic `json:"Topics,omitnil,omitempty" name:"Topics"`
 
-	// <p>配置描述信息</p>
+	// <p>描述信息</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -18843,13 +18843,13 @@ type ModifySearchViewRequest struct {
 	// <p>视图名称</p><p>参数格式：<code>^[a-z0-9][a-z0-9_-]{1,61}[a-z0-9]$</code></p>
 	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
 
-	// <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul>
+	// <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
 	ViewType *string `json:"ViewType,omitnil,omitempty" name:"ViewType"`
 
-	// <p>视图主题配置信息</p>
+	// <p>查询视图中包含的主题，最大可包含10个主题</p>
 	Topics []*ViewSearchTopic `json:"Topics,omitnil,omitempty" name:"Topics"`
 
-	// <p>配置描述信息</p>
+	// <p>描述信息</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -21762,7 +21762,7 @@ type ValueInfo struct {
 }
 
 type ViewSearchTopic struct {
-	// <p>日志集与日志主题所属地域</p><p>参数格式：ap-guangzhou</p>
+	// <p>日志集与主题所属地域</p><p>参数格式：ap-guangzhou</p><p>同一查询视图内，包含的各个主题需为相同地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// <p>日志集id</p>

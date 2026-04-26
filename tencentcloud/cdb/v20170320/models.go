@@ -764,6 +764,10 @@ type AuditLog struct {
 
 	//  事务ID
 	TrxId *int64 `json:"TrxId,omitnil,omitempty" name:"TrxId"`
+
+	// 端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientPort *int64 `json:"ClientPort,omitnil,omitempty" name:"ClientPort"`
 }
 
 type AuditLogAggregationResult struct {

@@ -3151,6 +3151,9 @@ type CreateTriggerTaskSchedulerConfiguration struct {
 
 	// <p>是否允许下游依赖 1允许 0不允许</p><p>取值范围：[0, 1]</p><p>默认值：1</p>
 	AllowDownstreamDependency *int64 `json:"AllowDownstreamDependency,omitnil,omitempty" name:"AllowDownstreamDependency"`
+
+	// <p>调度类型: 0 正常调度 1 空跑调度</p><p>枚举值：</p><ul><li>0： 正常调度</li><li>1： 空跑调度</li></ul><p>默认值：0</p>
+	ScheduleType *int64 `json:"ScheduleType,omitnil,omitempty" name:"ScheduleType"`
 }
 
 // Predefined struct for user
@@ -8601,21 +8604,25 @@ func (r *GrantMemberProjectRoleResponse) FromJsonString(s string) error {
 }
 
 type InTaskParameter struct {
-	// 参数名
+	// <p>参数名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamKey *string `json:"ParamKey,omitnil,omitempty" name:"ParamKey"`
 
-	// 参数描述：格式为 项目标识.任务名称.参数名；例：project_wedata_1.sh_250820_104107.pp_out
+	// <p>参数描述：格式为 项目标识.任务名称.参数名；例：project_wedata_1.sh_250820_104107.pp_out</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamDesc *string `json:"ParamDesc,omitnil,omitempty" name:"ParamDesc"`
 
-	// 父任务ID
+	// <p>父任务ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FromTaskId *string `json:"FromTaskId,omitnil,omitempty" name:"FromTaskId"`
 
-	// 父任务参数key
+	// <p>父任务参数key</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FromParamKey *string `json:"FromParamKey,omitnil,omitempty" name:"FromParamKey"`
+
+	// <p>任务输入类型，默认使用TASK</p><p>枚举值：</p><ul><li>TASK： 来源为父任务</li><li>CONSTANT： 常量值，目前仅for-each节点支持</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type InstanceExecution struct {
@@ -21720,6 +21727,10 @@ type TriggerTaskSchedulerConfiguration struct {
 	// <p>是否允许下游依赖 1允许 0不允许</p><p>取值范围：[0, 1]</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowDownstreamDependency *int64 `json:"AllowDownstreamDependency,omitnil,omitempty" name:"AllowDownstreamDependency"`
+
+	// <p>调度类型: 0 正常调度 1 空跑调度</p><p>枚举值：</p><ul><li>0： 正常调度</li><li>1： 空跑调度</li></ul><p>默认值：0</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleType *int64 `json:"ScheduleType,omitnil,omitempty" name:"ScheduleType"`
 }
 
 type TriggerTaskVersion struct {

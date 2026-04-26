@@ -18083,7 +18083,7 @@ type OperateFlowRemarksRequestParams struct {
 	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// <p>操作类型，可取值如下:</p><ul><li>DELETE:  删除</li><li>ENABLE: 启用</li><li>DISABLE: 停用</li><li>COPY: 复制新建</li></ul>
+	// <p>指定对合同备注的操作</p><p>枚举值：</p><ul><li>CREATE： 创建合同备注</li><li>UPDATE： 更新合同备注</li><li>DELETE： 删除合同备注</li></ul>
 	OperateType *string `json:"OperateType,omitnil,omitempty" name:"OperateType"`
 
 	// <p>对应的合同流程id</p><p>目标合同为合同组时此参数不填</p>
@@ -18108,7 +18108,7 @@ type OperateFlowRemarksRequest struct {
 	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// <p>操作类型，可取值如下:</p><ul><li>DELETE:  删除</li><li>ENABLE: 启用</li><li>DISABLE: 停用</li><li>COPY: 复制新建</li></ul>
+	// <p>指定对合同备注的操作</p><p>枚举值：</p><ul><li>CREATE： 创建合同备注</li><li>UPDATE： 更新合同备注</li><li>DELETE： 删除合同备注</li></ul>
 	OperateType *string `json:"OperateType,omitnil,omitempty" name:"OperateType"`
 
 	// <p>对应的合同流程id</p><p>目标合同为合同组时此参数不填</p>
