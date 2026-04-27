@@ -2304,50 +2304,50 @@ func (r *CreateSharedKnowledgeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateVarRequestParams struct {
-	// 应用ID
+	// <p>应用ID，获取方法参看如何获取   <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。</p>
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
-	// 变量名称，不允许重复，最大支持50个字符
+	// <p>变量名称，不允许重复，最大支持50个字符，英文字母开头，支持英文数字与下划线”_”。</p>
 	VarName *string `json:"VarName,omitnil,omitempty" name:"VarName"`
 
-	// 变量描述，最大支持120个字符
+	// <p>变量描述，最大支持120个字符</p>
 	VarDesc *string `json:"VarDesc,omitnil,omitempty" name:"VarDesc"`
 
-	// 变量类型定义，支持类型如下：(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO);传输过程是json字符串，标签中仅支持"STRING"类型使用
+	// <p>变量类型定义，支持类型如下：(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO);传输过程是json字符串，标签中仅支持&quot;STRING&quot;类型使用</p>
 	VarType *string `json:"VarType,omitnil,omitempty" name:"VarType"`
 
-	// 自定义变量默认值
+	// <p>自定义变量默认值，<code>VarDefaultValue</code>xa0默认为空</p>
 	VarDefaultValue *string `json:"VarDefaultValue,omitnil,omitempty" name:"VarDefaultValue"`
 
-	// 自定义变量文件默认名称
+	// <p>自定义变量文件默认名称，<code>VarDefaultFileName</code>默认为空</p>
 	VarDefaultFileName *string `json:"VarDefaultFileName,omitnil,omitempty" name:"VarDefaultFileName"`
 
-	// 参数类型
+	// <p>变量模块类型</p><p>枚举值：</p><ul><li>0： API参数</li><li>1： 环境参数</li><li>2： 应用参数</li><li>3： 系统参数</li></ul>
 	VarModuleType *uint64 `json:"VarModuleType,omitnil,omitempty" name:"VarModuleType"`
 }
 
 type CreateVarRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// <p>应用ID，获取方法参看如何获取   <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。</p>
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
-	// 变量名称，不允许重复，最大支持50个字符
+	// <p>变量名称，不允许重复，最大支持50个字符，英文字母开头，支持英文数字与下划线”_”。</p>
 	VarName *string `json:"VarName,omitnil,omitempty" name:"VarName"`
 
-	// 变量描述，最大支持120个字符
+	// <p>变量描述，最大支持120个字符</p>
 	VarDesc *string `json:"VarDesc,omitnil,omitempty" name:"VarDesc"`
 
-	// 变量类型定义，支持类型如下：(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO);传输过程是json字符串，标签中仅支持"STRING"类型使用
+	// <p>变量类型定义，支持类型如下：(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO);传输过程是json字符串，标签中仅支持&quot;STRING&quot;类型使用</p>
 	VarType *string `json:"VarType,omitnil,omitempty" name:"VarType"`
 
-	// 自定义变量默认值
+	// <p>自定义变量默认值，<code>VarDefaultValue</code>xa0默认为空</p>
 	VarDefaultValue *string `json:"VarDefaultValue,omitnil,omitempty" name:"VarDefaultValue"`
 
-	// 自定义变量文件默认名称
+	// <p>自定义变量文件默认名称，<code>VarDefaultFileName</code>默认为空</p>
 	VarDefaultFileName *string `json:"VarDefaultFileName,omitnil,omitempty" name:"VarDefaultFileName"`
 
-	// 参数类型
+	// <p>变量模块类型</p><p>枚举值：</p><ul><li>0： API参数</li><li>1： 环境参数</li><li>2： 应用参数</li><li>3： 系统参数</li></ul>
 	VarModuleType *uint64 `json:"VarModuleType,omitnil,omitempty" name:"VarModuleType"`
 }
 
@@ -2378,7 +2378,7 @@ func (r *CreateVarRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateVarResponseParams struct {
-	// 变量ID
+	// <p>变量ID</p>
 	VarId *string `json:"VarId,omitnil,omitempty" name:"VarId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3097,26 +3097,26 @@ func (r *DeleteSharedKnowledgeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteVarRequestParams struct {
-	// 应用ID
+	// <p>应用ID，获取方法参看如何获取   <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。</p>
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
-	// 变量ID
+	// <p>变量 ID，可通过 CreateVar；DescribeVar；DescribeVarList 接口返回结果中获取。DeleteVar</p>
 	VarId *string `json:"VarId,omitnil,omitempty" name:"VarId"`
 
-	// 参数类型
+	// <p>变量模块类型</p><p>枚举值：</p><ul><li>0： API参数</li><li>1： 环境参数</li><li>2： 应用参数</li><li>3： 系统参数</li></ul><p>默认值：0</p>
 	VarModuleType *uint64 `json:"VarModuleType,omitnil,omitempty" name:"VarModuleType"`
 }
 
 type DeleteVarRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// <p>应用ID，获取方法参看如何获取   <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。</p>
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
-	// 变量ID
+	// <p>变量 ID，可通过 CreateVar；DescribeVar；DescribeVarList 接口返回结果中获取。DeleteVar</p>
 	VarId *string `json:"VarId,omitnil,omitempty" name:"VarId"`
 
-	// 参数类型
+	// <p>变量模块类型</p><p>枚举值：</p><ul><li>0： API参数</li><li>1： 环境参数</li><li>2： 应用参数</li><li>3： 系统参数</li></ul><p>默认值：0</p>
 	VarModuleType *uint64 `json:"VarModuleType,omitnil,omitempty" name:"VarModuleType"`
 }
 
@@ -4643,31 +4643,35 @@ type DescribeSearchStatsGraphRequestParams struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// uin列表
+	// 子账号标识列表，支持批量查询多个子账号。不填时查询主账号下所有子账号的汇总数据
 	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
 
-	// 子业务类型
+	// 子业务类型，用于筛选不同业务场景的调用统计
 	SubBizType *string `json:"SubBizType,omitnil,omitempty" name:"SubBizType"`
 
 	// 模型标识
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// 开始时间戳, 单位为秒(废弃)
+	//
+	// Deprecated: StartTime is deprecated.
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间戳, 单位为秒(废弃)
+	//
+	// Deprecated: EndTime is deprecated.
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用id列表
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
 
-	// 空间id
+	// 空间ID，用于限定查询范围。不填时查询所有空间的数据
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间。Unix 时间戳，单位是秒，默认为空。
 	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间。Unix 时间戳，单位是秒，默认为空。
 	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
@@ -4680,10 +4684,10 @@ type DescribeSearchStatsGraphRequest struct {
 	// 登录用户子账号(集成商模式必填)
 	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
 
-	// uin列表
+	// 子账号标识列表，支持批量查询多个子账号。不填时查询主账号下所有子账号的汇总数据
 	UinAccount []*string `json:"UinAccount,omitnil,omitempty" name:"UinAccount"`
 
-	// 子业务类型
+	// 子业务类型，用于筛选不同业务场景的调用统计
 	SubBizType *string `json:"SubBizType,omitnil,omitempty" name:"SubBizType"`
 
 	// 模型标识
@@ -4698,13 +4702,13 @@ type DescribeSearchStatsGraphRequest struct {
 	// 应用id列表
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
 
-	// 空间id
+	// 空间ID，用于限定查询范围。不填时查询所有空间的数据
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 
-	// 开始时间戳, 单位为秒
+	// 开始时间。Unix 时间戳，单位是秒，默认为空。
 	StatStartTime *int64 `json:"StatStartTime,omitnil,omitempty" name:"StatStartTime"`
 
-	// 结束时间戳, 单位为秒
+	// 结束时间。Unix 时间戳，单位是秒，默认为空。
 	StatEndTime *int64 `json:"StatEndTime,omitnil,omitempty" name:"StatEndTime"`
 }
 
@@ -4888,32 +4892,32 @@ func (r *DescribeSharedKnowledgeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeStorageCredentialRequestParams struct {
-	// 应用ID，参数非必填不代表不需要填写，下面不同的参数组合会获取到不同的权限，具体请参考 https://cloud.tencent.com/document/product/1759/116238
+	// <p>应用ID，参数非必填不代表不需要填写，下面不同的参数组合会获取到不同的权限，具体请参考 https://cloud.tencent.com/document/product/1759/116238</p>
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 文件类型,正常的文件名类型后缀，支持 docx、doc、pdf、txt、md、wps、pages、html、mhtml、epub、xml、json、log、xlsx、xls、csv、tsv、numbers、pptx、ppt、ppsx、ppsm、key、png、jpg、jpeg、gif、bmp、tiff、webp、heif、heic、jp2、eps、icns、im、pcx、ppm、xbm、xmind
+	// <p>文件类型,正常的文件名类型后缀，支持 docx、doc、pdf、txt、md、wps、pages、html、mhtml、epub、xml、json、log、xlsx、xls、csv、tsv、numbers、pptx、ppt、ppsx、ppsm、key、png、jpg、jpeg、gif、bmp、tiff、webp、heif、heic、jp2、eps、icns、im、pcx、ppm、xbm、xmind</p>
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// IsPublic用于上传文件或图片时选择场景，当上传对话端图片时IsPublic为true，上传文件（包括文档库文件/图片等和对话端文件）时IsPublic为false
+	// <p>IsPublic用于上传文件或图片时选择场景，当上传对话端图片时IsPublic为true，上传文件（包括文档库文件/图片等和对话端文件）时IsPublic为false</p>
 	IsPublic *bool `json:"IsPublic,omitnil,omitempty" name:"IsPublic"`
 
-	// 存储类型: offline:离线文件，realtime:实时文件；为空默认为offline
+	// <p>存储类型: offline:离线文件，realtime:实时文件；为空默认为offline</p>
 	TypeKey *string `json:"TypeKey,omitnil,omitempty" name:"TypeKey"`
 }
 
 type DescribeStorageCredentialRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID，参数非必填不代表不需要填写，下面不同的参数组合会获取到不同的权限，具体请参考 https://cloud.tencent.com/document/product/1759/116238
+	// <p>应用ID，参数非必填不代表不需要填写，下面不同的参数组合会获取到不同的权限，具体请参考 https://cloud.tencent.com/document/product/1759/116238</p>
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 文件类型,正常的文件名类型后缀，支持 docx、doc、pdf、txt、md、wps、pages、html、mhtml、epub、xml、json、log、xlsx、xls、csv、tsv、numbers、pptx、ppt、ppsx、ppsm、key、png、jpg、jpeg、gif、bmp、tiff、webp、heif、heic、jp2、eps、icns、im、pcx、ppm、xbm、xmind
+	// <p>文件类型,正常的文件名类型后缀，支持 docx、doc、pdf、txt、md、wps、pages、html、mhtml、epub、xml、json、log、xlsx、xls、csv、tsv、numbers、pptx、ppt、ppsx、ppsm、key、png、jpg、jpeg、gif、bmp、tiff、webp、heif、heic、jp2、eps、icns、im、pcx、ppm、xbm、xmind</p>
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// IsPublic用于上传文件或图片时选择场景，当上传对话端图片时IsPublic为true，上传文件（包括文档库文件/图片等和对话端文件）时IsPublic为false
+	// <p>IsPublic用于上传文件或图片时选择场景，当上传对话端图片时IsPublic为true，上传文件（包括文档库文件/图片等和对话端文件）时IsPublic为false</p>
 	IsPublic *bool `json:"IsPublic,omitnil,omitempty" name:"IsPublic"`
 
-	// 存储类型: offline:离线文件，realtime:实时文件；为空默认为offline
+	// <p>存储类型: offline:离线文件，realtime:实时文件；为空默认为offline</p>
 	TypeKey *string `json:"TypeKey,omitnil,omitempty" name:"TypeKey"`
 }
 
@@ -4941,40 +4945,40 @@ func (r *DescribeStorageCredentialRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeStorageCredentialResponseParams struct {
-	// 密钥信息
+	// <p>密钥信息</p>
 	Credentials *Credentials `json:"Credentials,omitnil,omitempty" name:"Credentials"`
 
-	// 失效时间
+	// <p>失效时间，为 Unix 时间戳</p><p>单位：秒</p>
 	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
-	// 开始时间
+	// <p>开始时间，为 Unix 时间戳</p><p>单位：秒</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 对象存储桶
+	// <p>对象存储桶</p>
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 对象存储可用区
+	// <p>对象存储可用区</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 文件存储目录
+	// <p>文件存储目录</p>
 	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
 
-	// 存储类型
+	// <p>存储类型</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 企业主账号
+	// <p>企业主账号</p>
 	CorpUin *string `json:"CorpUin,omitnil,omitempty" name:"CorpUin"`
 
-	// 图片存储目录
+	// <p>图片存储目录</p>
 	ImagePath *string `json:"ImagePath,omitnil,omitempty" name:"ImagePath"`
 
-	// 上传存储路径，到具体文件
+	// <p>上传存储路径，到具体文件</p>
 	UploadPath *string `json:"UploadPath,omitnil,omitempty" name:"UploadPath"`
 
-	// 文件上传地址，使用put请求上传文件到该地址
+	// <p>文件上传地址，使用put请求上传文件到该地址</p>
 	UploadUrl *string `json:"UploadUrl,omitnil,omitempty" name:"UploadUrl"`
 
-	// 文件的预签名地址，支持下载
+	// <p>文件的预签名地址，支持下载</p>
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6695,56 +6699,56 @@ func (r *GetTaskStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetVarListRequestParams struct {
-	// 应用ID
+	// <p>应用ID，获取方法参看如何获取   <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。</p>
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
-	// 变量ID数组
+	// <p>变量ID数组</p>
 	VarIds []*string `json:"VarIds,omitnil,omitempty" name:"VarIds"`
 
-	// 按变量名称关键词搜索
+	// <p>按变量名称关键词搜索</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 起始偏移量（默认0）
+	// <p>起始偏移量（默认0），取值范围 &gt; 0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限定数量（默认15）
+	// <p>限定数量（默认15），取值范围 1-200</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 按变量类型过滤，默认查询所有类型(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)
+	// <p>按变量类型过滤，默认查询所有类型(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)</p>
 	VarType *string `json:"VarType,omitnil,omitempty" name:"VarType"`
 
-	// 是否需要内部变量(默认false)
+	// <p>是否需要内部变量, 在结果中包含平台预置的“内置自定义变量” (默认false)。</p><ul><li>当&nbsp;<code>NeedInternalVar = true</code>&nbsp;且&nbsp;<code>VarModuleType</code>&nbsp;为&nbsp;<code>AllVar</code>&nbsp;或&nbsp;<code>ApiVar</code>&nbsp;时，返回列表会在用户变量之前拼入内置变量，并同样支持&nbsp;<code>Keyword</code>&nbsp;<code>VarType</code>&nbsp;<code>VarIds</code>&nbsp;过滤。</li><li>其他<code>VarModuleType</code>下，该开关不生效。</li></ul>
 	NeedInternalVar *bool `json:"NeedInternalVar,omitnil,omitempty" name:"NeedInternalVar"`
 
-	// 变量类型
+	// <p>变量模块类型</p><p>枚举值：</p><ul><li>0： API参数</li><li>1： 环境参数</li><li>2： 应用参数</li><li>3： 系统参数</li></ul><p>默认值：0</p>
 	VarModuleType *int64 `json:"VarModuleType,omitnil,omitempty" name:"VarModuleType"`
 }
 
 type GetVarListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// <p>应用ID，获取方法参看如何获取   <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。</p>
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
-	// 变量ID数组
+	// <p>变量ID数组</p>
 	VarIds []*string `json:"VarIds,omitnil,omitempty" name:"VarIds"`
 
-	// 按变量名称关键词搜索
+	// <p>按变量名称关键词搜索</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 起始偏移量（默认0）
+	// <p>起始偏移量（默认0），取值范围 &gt; 0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限定数量（默认15）
+	// <p>限定数量（默认15），取值范围 1-200</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 按变量类型过滤，默认查询所有类型(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)
+	// <p>按变量类型过滤，默认查询所有类型(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)</p>
 	VarType *string `json:"VarType,omitnil,omitempty" name:"VarType"`
 
-	// 是否需要内部变量(默认false)
+	// <p>是否需要内部变量, 在结果中包含平台预置的“内置自定义变量” (默认false)。</p><ul><li>当&nbsp;<code>NeedInternalVar = true</code>&nbsp;且&nbsp;<code>VarModuleType</code>&nbsp;为&nbsp;<code>AllVar</code>&nbsp;或&nbsp;<code>ApiVar</code>&nbsp;时，返回列表会在用户变量之前拼入内置变量，并同样支持&nbsp;<code>Keyword</code>&nbsp;<code>VarType</code>&nbsp;<code>VarIds</code>&nbsp;过滤。</li><li>其他<code>VarModuleType</code>下，该开关不生效。</li></ul>
 	NeedInternalVar *bool `json:"NeedInternalVar,omitnil,omitempty" name:"NeedInternalVar"`
 
-	// 变量类型
+	// <p>变量模块类型</p><p>枚举值：</p><ul><li>0： API参数</li><li>1： 环境参数</li><li>2： 应用参数</li><li>3： 系统参数</li></ul><p>默认值：0</p>
 	VarModuleType *int64 `json:"VarModuleType,omitnil,omitempty" name:"VarModuleType"`
 }
 
@@ -6776,10 +6780,10 @@ func (r *GetVarListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetVarListResponseParams struct {
-	// 变量总数
+	// <p>变量总数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 变量信息列表
+	// <p>变量信息列表</p>
 	List []*TaskFLowVar `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8320,83 +8324,81 @@ type ListDocItem struct {
 
 // Predefined struct for user
 type ListDocRequestParams struct {
-	// 应用ID, 获取方式参看 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
-	// 查询知识库下文档时，该参数填入知识库ID。
+	// <p>应用ID, 获取方式参看 <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。<br>查询知识库下文档时，该参数填入知识库ID。</p>
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码(必须大于0)
+	// <p>页码(必须大于0)</p>
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量(取值范围1-200)
+	// <p>每页数量(取值范围1-200)</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 查询内容
-	// 
-	// 输入特定标识 lke:system:untagged  将查询所有未关联标签的文档
+	// <p>查询内容</p><p>输入特定标识 lke:system:untagged  将查询所有未关联标签的文档</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功  7-审核中  8-审核失败 9-审核成功  10,12-导入成功  13-学习中  14-学习失败  15-更新中  16-更新失败  17-解析中  18-解析失败  19-导入失败   20-已过期 21-超量失效 22-超量失效恢复
+	// <p>文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功  7-审核中  8-审核失败 9-审核成功  10,12-导入成功  13-学习中  14-学习失败  15-更新中  16-更新失败  17-解析中  18-解析失败  19-导入失败   20-已过期 21-超量失效 22-超量失效恢复</p>
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 查询类型 filename 文档、 attribute 标签
+	// <p>查询类型 filename 文档、 attribute 标签</p>
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
 
-	// 分类ID, 可以通过调用ListDocCate接口,查看其返回结果获取
+	// <p>分类ID, 可以通过调用ListDocCate接口,查看其返回结果获取</p>
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 
-	// 文件类型分类筛选
+	// <p>文件类型分类筛选</p>
 	FileTypes []*string `json:"FileTypes,omitnil,omitempty" name:"FileTypes"`
 
-	// 文档列表筛选标识位
+	// <p>文档列表筛选标识位</p>
 	FilterFlag []*DocFilterFlag `json:"FilterFlag,omitnil,omitempty" name:"FilterFlag"`
 
-	// 是否只展示当前分类的数据 0不是，1是
+	// <p>是否只展示当前分类的数据 0不是，1是</p>
 	ShowCurrCate *uint64 `json:"ShowCurrCate,omitnil,omitempty" name:"ShowCurrCate"`
 
-	// 文档生效域；不检索默认为0。检索枚举值如下：
-	// 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
+	// <p>文档生效域；不检索默认为0。检索枚举值如下：<br>1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效</p>
 	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
+
+	// <p>文档更新时间范围</p>
+	UpdateTime *TimeRange `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type ListDocRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID, 获取方式参看 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
-	// 查询知识库下文档时，该参数填入知识库ID。
+	// <p>应用ID, 获取方式参看 <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。<br>查询知识库下文档时，该参数填入知识库ID。</p>
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码(必须大于0)
+	// <p>页码(必须大于0)</p>
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数量(取值范围1-200)
+	// <p>每页数量(取值范围1-200)</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 查询内容
-	// 
-	// 输入特定标识 lke:system:untagged  将查询所有未关联标签的文档
+	// <p>查询内容</p><p>输入特定标识 lke:system:untagged  将查询所有未关联标签的文档</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功  7-审核中  8-审核失败 9-审核成功  10,12-导入成功  13-学习中  14-学习失败  15-更新中  16-更新失败  17-解析中  18-解析失败  19-导入失败   20-已过期 21-超量失效 22-超量失效恢复
+	// <p>文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功  7-审核中  8-审核失败 9-审核成功  10,12-导入成功  13-学习中  14-学习失败  15-更新中  16-更新失败  17-解析中  18-解析失败  19-导入失败   20-已过期 21-超量失效 22-超量失效恢复</p>
 	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 查询类型 filename 文档、 attribute 标签
+	// <p>查询类型 filename 文档、 attribute 标签</p>
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
 
-	// 分类ID, 可以通过调用ListDocCate接口,查看其返回结果获取
+	// <p>分类ID, 可以通过调用ListDocCate接口,查看其返回结果获取</p>
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 
-	// 文件类型分类筛选
+	// <p>文件类型分类筛选</p>
 	FileTypes []*string `json:"FileTypes,omitnil,omitempty" name:"FileTypes"`
 
-	// 文档列表筛选标识位
+	// <p>文档列表筛选标识位</p>
 	FilterFlag []*DocFilterFlag `json:"FilterFlag,omitnil,omitempty" name:"FilterFlag"`
 
-	// 是否只展示当前分类的数据 0不是，1是
+	// <p>是否只展示当前分类的数据 0不是，1是</p>
 	ShowCurrCate *uint64 `json:"ShowCurrCate,omitnil,omitempty" name:"ShowCurrCate"`
 
-	// 文档生效域；不检索默认为0。检索枚举值如下：
-	// 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
+	// <p>文档生效域；不检索默认为0。检索枚举值如下：<br>1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效</p>
 	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
+
+	// <p>文档更新时间范围</p>
+	UpdateTime *TimeRange `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 func (r *ListDocRequest) ToJsonString() string {
@@ -8422,6 +8424,7 @@ func (r *ListDocRequest) FromJsonString(s string) error {
 	delete(f, "FilterFlag")
 	delete(f, "ShowCurrCate")
 	delete(f, "EnableScope")
+	delete(f, "UpdateTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListDocRequest has unknown keys!", "")
 	}
@@ -8430,10 +8433,10 @@ func (r *ListDocRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListDocResponseParams struct {
-	// 文档数量
+	// <p>文档数量</p>
 	Total *string `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 文档列表
+	// <p>文档列表</p>
 	List []*ListDocItem `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8637,109 +8640,105 @@ func (r *ListQACateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListQARequestParams struct {
-	// 应用ID
-	// 若要操作共享知识库，传KnowledgeBizId
+	// <p>应用ID<br>若要操作共享知识库，传KnowledgeBizId</p>
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码（取值范围>0）
+	// <p>页码（取值范围&gt;0）</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页大小(取值范围1-200)
+	// <p>每页大小(取值范围1-200)</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 查询问题
-	// 
-	// 输入特定标识 lke:system:untagged  将查询所有未关联标签的问答
+	// <p>查询问题</p><p>输入特定标识 lke:system:untagged  将查询所有未关联标签的问答</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 校验状态(1未校验2采纳3不采纳)
-	// 如果不填默认值为空数组，表示不筛选，返回所有状态
+	// <p>校验状态(1未校验2采纳3不采纳)<br>如果不填默认值为空数组，表示不筛选，返回所有状态</p>
 	AcceptStatus []*int64 `json:"AcceptStatus,omitnil,omitempty" name:"AcceptStatus"`
 
-	// 发布状态(2,4导入成功 7审核中 8审核失败 9人工申述中 11人工申述失败 12已过期 13超量失效 14超量失效恢复)
-	// 如果不填默认值为空数组，表示不筛选返回所有状态
+	// <p>发布状态(2,4导入成功 7审核中 8审核失败 9人工申述中 11人工申述失败 12已过期 13超量失效 14超量失效恢复)<br>如果不填默认值为空数组，表示不筛选返回所有状态</p>
 	ReleaseStatus []*int64 `json:"ReleaseStatus,omitnil,omitempty" name:"ReleaseStatus"`
 
-	// 文档ID
+	// <p>文档ID</p>
 	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
 
-	// 来源(1 文档生成 2 批量导入 3 手动添加)
-	// 不填默认值为0，表示不过滤，返回所有状态
+	// <p>来源(1 文档生成 2 批量导入 3 手动添加)<br>不填默认值为0，表示不过滤，返回所有状态</p>
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 查询答案
+	// <p>查询答案</p>
 	QueryAnswer *string `json:"QueryAnswer,omitnil,omitempty" name:"QueryAnswer"`
 
-	// 分类ID
+	// <p>分类ID</p>
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 
-	// QA业务ID列表
+	// <p>QA业务ID列表</p>
 	QaBizIds []*string `json:"QaBizIds,omitnil,omitempty" name:"QaBizIds"`
 
-	// 查询类型 filename 名称、 attribute 标签
-	// 如果不填默认值为"filename"
+	// <p>查询类型 filename 名称、 attribute 标签<br>如果不填默认值为&quot;filename&quot;</p>
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
 
-	// 是否只展示当前分类的数据 0不是，1是
+	// <p>是否只展示当前分类的数据 0不是，1是</p>
 	ShowCurrCate *uint64 `json:"ShowCurrCate,omitnil,omitempty" name:"ShowCurrCate"`
 
-	// 问答生效域检索，不检索不传。枚举值如下：
-	// 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。
+	// <p>问答生效域检索，不检索不传。枚举值如下：<br>1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。</p>
 	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
+
+	// <p>问答创建时间范围</p>
+	CreateTime *TimeRange `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>问答更新时间范围</p>
+	UpdateTime *TimeRange `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type ListQARequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
-	// 若要操作共享知识库，传KnowledgeBizId
+	// <p>应用ID<br>若要操作共享知识库，传KnowledgeBizId</p>
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 页码（取值范围>0）
+	// <p>页码（取值范围&gt;0）</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页大小(取值范围1-200)
+	// <p>每页大小(取值范围1-200)</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 查询问题
-	// 
-	// 输入特定标识 lke:system:untagged  将查询所有未关联标签的问答
+	// <p>查询问题</p><p>输入特定标识 lke:system:untagged  将查询所有未关联标签的问答</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 校验状态(1未校验2采纳3不采纳)
-	// 如果不填默认值为空数组，表示不筛选，返回所有状态
+	// <p>校验状态(1未校验2采纳3不采纳)<br>如果不填默认值为空数组，表示不筛选，返回所有状态</p>
 	AcceptStatus []*int64 `json:"AcceptStatus,omitnil,omitempty" name:"AcceptStatus"`
 
-	// 发布状态(2,4导入成功 7审核中 8审核失败 9人工申述中 11人工申述失败 12已过期 13超量失效 14超量失效恢复)
-	// 如果不填默认值为空数组，表示不筛选返回所有状态
+	// <p>发布状态(2,4导入成功 7审核中 8审核失败 9人工申述中 11人工申述失败 12已过期 13超量失效 14超量失效恢复)<br>如果不填默认值为空数组，表示不筛选返回所有状态</p>
 	ReleaseStatus []*int64 `json:"ReleaseStatus,omitnil,omitempty" name:"ReleaseStatus"`
 
-	// 文档ID
+	// <p>文档ID</p>
 	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
 
-	// 来源(1 文档生成 2 批量导入 3 手动添加)
-	// 不填默认值为0，表示不过滤，返回所有状态
+	// <p>来源(1 文档生成 2 批量导入 3 手动添加)<br>不填默认值为0，表示不过滤，返回所有状态</p>
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 查询答案
+	// <p>查询答案</p>
 	QueryAnswer *string `json:"QueryAnswer,omitnil,omitempty" name:"QueryAnswer"`
 
-	// 分类ID
+	// <p>分类ID</p>
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 
-	// QA业务ID列表
+	// <p>QA业务ID列表</p>
 	QaBizIds []*string `json:"QaBizIds,omitnil,omitempty" name:"QaBizIds"`
 
-	// 查询类型 filename 名称、 attribute 标签
-	// 如果不填默认值为"filename"
+	// <p>查询类型 filename 名称、 attribute 标签<br>如果不填默认值为&quot;filename&quot;</p>
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
 
-	// 是否只展示当前分类的数据 0不是，1是
+	// <p>是否只展示当前分类的数据 0不是，1是</p>
 	ShowCurrCate *uint64 `json:"ShowCurrCate,omitnil,omitempty" name:"ShowCurrCate"`
 
-	// 问答生效域检索，不检索不传。枚举值如下：
-	// 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。
+	// <p>问答生效域检索，不检索不传。枚举值如下：<br>1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。</p>
 	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
+
+	// <p>问答创建时间范围</p>
+	CreateTime *TimeRange `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>问答更新时间范围</p>
+	UpdateTime *TimeRange `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 func (r *ListQARequest) ToJsonString() string {
@@ -8768,6 +8767,8 @@ func (r *ListQARequest) FromJsonString(s string) error {
 	delete(f, "QueryType")
 	delete(f, "ShowCurrCate")
 	delete(f, "EnableScope")
+	delete(f, "CreateTime")
+	delete(f, "UpdateTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListQARequest has unknown keys!", "")
 	}
@@ -8776,22 +8777,22 @@ func (r *ListQARequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListQAResponseParams struct {
-	// 问答数量
+	// <p>问答数量</p>
 	Total *string `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 待校验问答数量
+	// <p>待校验问答数量</p>
 	WaitVerifyTotal *string `json:"WaitVerifyTotal,omitnil,omitempty" name:"WaitVerifyTotal"`
 
-	// 未采纳问答数量
+	// <p>未采纳问答数量</p>
 	NotAcceptedTotal *string `json:"NotAcceptedTotal,omitnil,omitempty" name:"NotAcceptedTotal"`
 
-	// 已采纳问答数量
+	// <p>已采纳问答数量</p>
 	AcceptedTotal *string `json:"AcceptedTotal,omitnil,omitempty" name:"AcceptedTotal"`
 
-	// 页码
+	// <p>页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 问答详情
+	// <p>问答详情</p>
 	List []*ListQaItem `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11687,45 +11688,50 @@ type QAList struct {
 }
 
 type QAQuery struct {
-	// 页码 从1开始
+	// <p>页码 从1开始</p>
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 页大小 默认15 最大100
+	// <p>页大小 默认15 最大100</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 应用ID
+	// <p>应用ID</p>
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 查询内容
+	// <p>查询内容</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 分类ID
+	// <p>分类ID</p>
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 
-	// 校验状态的枚举值
+	// <p>校验状态的枚举值</p>
 	AcceptStatus []*uint64 `json:"AcceptStatus,omitnil,omitempty" name:"AcceptStatus"`
 
-	// 发布状态的枚举值
+	// <p>发布状态的枚举值</p>
 	ReleaseStatus []*uint64 `json:"ReleaseStatus,omitnil,omitempty" name:"ReleaseStatus"`
 
-	// 文档ID
+	// <p>文档ID</p>
 	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
 
-	// QAID
+	// <p>QAID</p>
 	QaBizId *string `json:"QaBizId,omitnil,omitempty" name:"QaBizId"`
 
-	// 来源
+	// <p>来源</p>
 	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 查询答案
+	// <p>查询答案</p>
 	QueryAnswer *string `json:"QueryAnswer,omitnil,omitempty" name:"QueryAnswer"`
 
-	// 查询类型 filename 名称、 attribute 标签
+	// <p>查询类型 filename 名称、 attribute 标签</p>
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
 
-	// 问答生效域检索，不检索不传。枚举值如下：
-	// 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。
+	// <p>问答生效域检索，不检索不传。枚举值如下：<br>1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。</p>
 	EnableScope *int64 `json:"EnableScope,omitnil,omitempty" name:"EnableScope"`
+
+	// <p>创建时间范围</p>
+	CreateTime *TimeRange `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间范围</p>
+	UpdateTime *TimeRange `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type QaReference struct {
@@ -13268,6 +13274,14 @@ type TaskParams struct {
 	// 下载地址,需要通过cos桶临时密钥去下载
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosPath *string `json:"CosPath,omitnil,omitempty" name:"CosPath"`
+}
+
+type TimeRange struct {
+	// <p>开始时间</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+	Start *string `json:"Start,omitnil,omitempty" name:"Start"`
+
+	// <p>结束时间</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+	End *string `json:"End,omitnil,omitempty" name:"End"`
 }
 
 type TokenStat struct {

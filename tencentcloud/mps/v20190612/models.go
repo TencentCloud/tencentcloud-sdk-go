@@ -2522,28 +2522,24 @@ type AliasValueConf struct {
 }
 
 type AnimatedGraphicTaskInput struct {
-	// 视频转动图模板 ID。
+	// <p>视频转动图模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 动图在视频中的开始时间，单位为秒。
+	// <p>动图在视频中的开始时间，单位为秒。</p>
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
 
-	// 动图在视频中的结束时间，单位为秒。
+	// <p>动图在视频中的结束时间，单位为秒。</p>
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
 
-	// 转动图后文件的目标存储，不填则继承上层的 OutputStorage 值。
+	// <p>转动图后文件的目标存储，不填则继承上层的 OutputStorage 值。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
-	// 转动图后文件的输出路径，可以为相对路径或者绝对路径。
-	// 若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
-	// 相对路径示例：
-	// <li>文件名_{变量名}.{format}</li>
-	// <li>文件名.{format}</li>
-	// 绝对路径示例：
-	// <li>/自定义路径/文件名_{变量名}.{format}</li>
-	// 如果不填，则默认为相对路径：`{inputName}_animatedGraphic_{definition}.{format}`。
+	// <p>转动图后文件的输出路径，可以为相对路径或者绝对路径。<br>若需定义输出路径，路径需以<code>.{format}</code>结尾。变量名请参考 <a href="https://cloud.tencent.com/document/product/862/37039">文件名变量说明</a>。<br>相对路径示例：</p><li>文件名_{变量名}.{format}</li><li>文件名.{format}</li>绝对路径示例：<li>/自定义路径/文件名_{变量名}.{format}</li>如果不填，则默认为相对路径：<code>{inputName}_animatedGraphic_{definition}.{format}</code>。
 	OutputObjectPath *string `json:"OutputObjectPath,omitnil,omitempty" name:"OutputObjectPath"`
+
+	// <p>扩展参数。</p>
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
 type AnimatedGraphicsTemplate struct {
@@ -6491,6 +6487,12 @@ type CreateSmartSubtitleTemplateRequestParams struct {
 
 	// <p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写。开启多个翻译语言时，不允许填写。</p>
 	SubtitleEmbedId *int64 `json:"SubtitleEmbedId,omitnil,omitempty" name:"SubtitleEmbedId"`
+
+	// <p>说话人识别开关，可选值：<br>0：表示不开启说话人识别；<br>1：表示开启说话人识别；<br>默认不开启说话人识别。</p>
+	SpeakerMode *int64 `json:"SpeakerMode,omitnil,omitempty" name:"SpeakerMode"`
+
+	// <p>说话人识别输出到字幕文件，可选值：<br>0：表示不输出到字幕文件；<br>1：表示输出到vtt字幕文件<br>注意：使用此参数SpeakerMode的值不能为0；<br>默认不输出到字幕文件。</p>
+	SpeakerLabel *int64 `json:"SpeakerLabel,omitnil,omitempty" name:"SpeakerLabel"`
 }
 
 type CreateSmartSubtitleTemplateRequest struct {
@@ -6528,6 +6530,12 @@ type CreateSmartSubtitleTemplateRequest struct {
 
 	// <p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写。开启多个翻译语言时，不允许填写。</p>
 	SubtitleEmbedId *int64 `json:"SubtitleEmbedId,omitnil,omitempty" name:"SubtitleEmbedId"`
+
+	// <p>说话人识别开关，可选值：<br>0：表示不开启说话人识别；<br>1：表示开启说话人识别；<br>默认不开启说话人识别。</p>
+	SpeakerMode *int64 `json:"SpeakerMode,omitnil,omitempty" name:"SpeakerMode"`
+
+	// <p>说话人识别输出到字幕文件，可选值：<br>0：表示不输出到字幕文件；<br>1：表示输出到vtt字幕文件<br>注意：使用此参数SpeakerMode的值不能为0；<br>默认不输出到字幕文件。</p>
+	SpeakerLabel *int64 `json:"SpeakerLabel,omitnil,omitempty" name:"SpeakerLabel"`
 }
 
 func (r *CreateSmartSubtitleTemplateRequest) ToJsonString() string {
@@ -6553,6 +6561,8 @@ func (r *CreateSmartSubtitleTemplateRequest) FromJsonString(s string) error {
 	delete(f, "ProcessType")
 	delete(f, "SelectingSubtitleAreasConfig")
 	delete(f, "SubtitleEmbedId")
+	delete(f, "SpeakerMode")
+	delete(f, "SpeakerLabel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSmartSubtitleTemplateRequest has unknown keys!", "")
 	}
@@ -18034,29 +18044,25 @@ type ImageResizeConfig struct {
 }
 
 type ImageSpriteTaskInput struct {
-	// 雪碧图模板 ID。
+	// <p>雪碧图模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 截取雪碧图后文件的目标存储，不填则继承上层的 OutputStorage 值。
+	// <p>截取雪碧图后文件的目标存储，不填则继承上层的 OutputStorage 值。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
-	// 截取雪碧图后，雪碧图图片文件的输出路径，可以为相对路径或者绝对路径。
-	// 若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
-	// 相对路径示例：
-	// <li>文件名_{变量名}.{format}</li>
-	// <li>文件名.{format}</li>
-	// 绝对路径示例：
-	// <li>/自定义路径/文件名_{变量名}.{format}</li>
-	// 如果不填，则默认为相对路径：`{inputName}_imageSprite_{definition}_{number}.{format}`。
+	// <p>截取雪碧图后，雪碧图图片文件的输出路径，可以为相对路径或者绝对路径。<br>若需定义输出路径，路径需以<code>.{format}</code>结尾。变量名请参考 <a href="https://cloud.tencent.com/document/product/862/37039">文件名变量说明</a>。<br>相对路径示例：</p><li>文件名_{变量名}.{format}</li><li>文件名.{format}</li>绝对路径示例：<li>/自定义路径/文件名_{变量名}.{format}</li>如果不填，则默认为相对路径：<code>{inputName}_imageSprite_{definition}_{number}.{format}</code>。
 	OutputObjectPath *string `json:"OutputObjectPath,omitnil,omitempty" name:"OutputObjectPath"`
 
-	// 截取雪碧图后，Web VTT 文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_imageSprite_{definition}.{format}`。
+	// <p>截取雪碧图后，Web VTT 文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：<code>{inputName}_imageSprite_{definition}.{format}</code>。</p>
 	WebVttObjectName *string `json:"WebVttObjectName,omitnil,omitempty" name:"WebVttObjectName"`
 
-	// 截取雪碧图后输出路径中的`{number}`变量的规则。
+	// <p>截取雪碧图后输出路径中的<code>{number}</code>变量的规则。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectNumberFormat *NumberFormat `json:"ObjectNumberFormat,omitnil,omitempty" name:"ObjectNumberFormat"`
+
+	// <p>扩展参数。</p>
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
 type ImageSpriteTemplate struct {
@@ -21669,6 +21675,12 @@ type ModifySmartSubtitleTemplateRequestParams struct {
 
 	// <p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写。开启多个翻译语言时，不允许填写。</p>
 	SubtitleEmbedId *int64 `json:"SubtitleEmbedId,omitnil,omitempty" name:"SubtitleEmbedId"`
+
+	// <p>说话人识别开关，可选值：<br>0：表示不开启说话人识别；<br>1：表示开启说话人识别。</p>
+	SpeakerMode *int64 `json:"SpeakerMode,omitnil,omitempty" name:"SpeakerMode"`
+
+	// <p>说话人识别输出到字幕文件，可选值：<br>0：表示不输出到字幕文件；<br>1：表示输出到vtt字幕文件<br>注意：使用此参数SpeakerMode的值不能为0。</p>
+	SpeakerLabel *int64 `json:"SpeakerLabel,omitnil,omitempty" name:"SpeakerLabel"`
 }
 
 type ModifySmartSubtitleTemplateRequest struct {
@@ -21709,6 +21721,12 @@ type ModifySmartSubtitleTemplateRequest struct {
 
 	// <p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写。开启多个翻译语言时，不允许填写。</p>
 	SubtitleEmbedId *int64 `json:"SubtitleEmbedId,omitnil,omitempty" name:"SubtitleEmbedId"`
+
+	// <p>说话人识别开关，可选值：<br>0：表示不开启说话人识别；<br>1：表示开启说话人识别。</p>
+	SpeakerMode *int64 `json:"SpeakerMode,omitnil,omitempty" name:"SpeakerMode"`
+
+	// <p>说话人识别输出到字幕文件，可选值：<br>0：表示不输出到字幕文件；<br>1：表示输出到vtt字幕文件<br>注意：使用此参数SpeakerMode的值不能为0。</p>
+	SpeakerLabel *int64 `json:"SpeakerLabel,omitnil,omitempty" name:"SpeakerLabel"`
 }
 
 func (r *ModifySmartSubtitleTemplateRequest) ToJsonString() string {
@@ -21735,6 +21753,8 @@ func (r *ModifySmartSubtitleTemplateRequest) FromJsonString(s string) error {
 	delete(f, "ProcessType")
 	delete(f, "SelectingSubtitleAreasConfig")
 	delete(f, "SubtitleEmbedId")
+	delete(f, "SpeakerMode")
+	delete(f, "SpeakerLabel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySmartSubtitleTemplateRequest has unknown keys!", "")
 	}
@@ -24900,6 +24920,12 @@ type RawSmartSubtitleParameter struct {
 
 	// <p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写</p>
 	SubtitleEmbedId *int64 `json:"SubtitleEmbedId,omitnil,omitempty" name:"SubtitleEmbedId"`
+
+	// <p>说话人识别模式，可选值：<br>0：表示不开启说话人识别；<br>1：表示开启说话人识别；<br>默认值：0</p>
+	SpeakerMode *int64 `json:"SpeakerMode,omitnil,omitempty" name:"SpeakerMode"`
+
+	// <p>说话人识别输出到字幕文件，可选值：<br>0：表示不输出到字幕文件；<br>1：表示输出到vtt字幕文件<br>注意：使用此参数SpeakerMode的值不能为0；<br>默认值：0</p>
+	SpeakerLabel *int64 `json:"SpeakerLabel,omitnil,omitempty" name:"SpeakerLabel"`
 }
 
 type RawTranscodeParameter struct {
@@ -25720,29 +25746,25 @@ type SSAIUsageInfo struct {
 }
 
 type SampleSnapshotTaskInput struct {
-	// 采样截图模板 ID。
+	// <p>采样截图模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+	// <p>水印列表，支持多张图片或文字水印，最大可支持 10 张。</p>
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitnil,omitempty" name:"WatermarkSet"`
 
-	// 采样截图后文件的目标存储，不填则继承上层的 OutputStorage 值。
+	// <p>采样截图后文件的目标存储，不填则继承上层的 OutputStorage 值。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
-	// 采样截图后图片文件的输出路径，可以为相对路径或者绝对路径。
-	// 若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
-	// 相对路径示例：
-	// <li>文件名_{变量名}.{format}</li>
-	// <li>文件名.{format}</li>
-	// 绝对路径示例：
-	// <li>/自定义路径/文件名_{变量名}.{format}</li>
-	// 如果不填，则默认为相对路径：`{inputName}_sampleSnapshot_{definition}_{number}.{format}`。
+	// <p>采样截图后图片文件的输出路径，可以为相对路径或者绝对路径。<br>若需定义输出路径，路径需以<code>.{format}</code>结尾。变量名请参考 <a href="https://cloud.tencent.com/document/product/862/37039">文件名变量说明</a>。<br>相对路径示例：</p><li>文件名_{变量名}.{format}</li><li>文件名.{format}</li>绝对路径示例：<li>/自定义路径/文件名_{变量名}.{format}</li>如果不填，则默认为相对路径：<code>{inputName}_sampleSnapshot_{definition}_{number}.{format}</code>。
 	OutputObjectPath *string `json:"OutputObjectPath,omitnil,omitempty" name:"OutputObjectPath"`
 
-	// 采样截图后输出路径中的`{number}`变量的规则。
+	// <p>采样截图后输出路径中的<code>{number}</code>变量的规则。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectNumberFormat *NumberFormat `json:"ObjectNumberFormat,omitnil,omitempty" name:"ObjectNumberFormat"`
+
+	// <p>扩展参数。</p>
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
 type SampleSnapshotTemplate struct {
@@ -26501,13 +26523,15 @@ type SmartSubtitleTaskFullTextResult struct {
 }
 
 type SmartSubtitleTaskResultInput struct {
-	// 智能字幕模板 ID。
+	// <p>智能字幕模板 ID。</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 智能字幕自定义参数，当 Definition 填 0 时有效。
-	// 该参数用于高度定制场景，建议您优先使用 Definition 指定智能字幕参数。
+	// <p>智能字幕自定义参数，当 Definition 填 0 时有效。<br>该参数用于高度定制场景，建议您优先使用 Definition 指定智能字幕参数。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RawParameter *RawSmartSubtitleParameter `json:"RawParameter,omitnil,omitempty" name:"RawParameter"`
+
+	// <p>扩展参数。</p>
+	UserExtPara *string `json:"UserExtPara,omitnil,omitempty" name:"UserExtPara"`
 }
 
 type SmartSubtitleTaskTextResultOutput struct {
@@ -26593,131 +26617,72 @@ type SmartSubtitleTaskTransTextSegmentItem struct {
 }
 
 type SmartSubtitleTemplateItem struct {
-	// 智能字幕模板唯一标识
+	// <p>智能字幕模板唯一标识</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 智能字幕模板名称
+	// <p>智能字幕模板名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 智能字幕模板描述信息
+	// <p>智能字幕模板描述信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 模板类型，取值范围：
-	// * Preset：系统预置模板；
-	// * Custom：用户自定义模板。
+	// <p>模板类型，取值范围：</p><ul><li>Preset：系统预置模板；</li><li>Custom：用户自定义模板。</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// ASR热词库参数
+	// <p>ASR热词库参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrHotWordsConfigure *AsrHotWordsConfigure `json:"AsrHotWordsConfigure,omitnil,omitempty" name:"AsrHotWordsConfigure"`
 
-	// 模板关联热词库名称
+	// <p>模板关联热词库名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrHotWordsLibraryName *string `json:"AsrHotWordsLibraryName,omitnil,omitempty" name:"AsrHotWordsLibraryName"`
 
-	// 智能字幕视频源语言列表：
-	// 
-	// `zh`：简体中文
-	// `yue`：中文粵语
-	// `zh-PY`：中英粤
-	// `zh_medical`：中文医疗
-	// `zh_dialect`：中文方言
-	// `prime_zh`：中英方言
-	// `zh_en`：中英
-	// `en`：英语
-	// `ja`：日语
-	// `ko`：韩语
-	// `fr`：法语
-	// `es`：西班牙语
-	// `it`：意大利语
-	// `de`：德语
-	// `tr`：土耳其语
-	// `ru`：俄语
-	// `pt`：葡萄牙语（巴西）
-	// `pt-PT`：葡萄牙语（葡萄牙）
-	// `vi`：越南语
-	// `id`：印度尼西亚语
-	// `ms`：马来语
-	// `th`：泰语
-	// `ar`：阿拉伯语
-	// `hi`：印地语
-	// `fil`：菲律宾语
-	// `auto`：自动识别（仅在纯字幕翻译中支持）
+	// <p>智能字幕视频源语言列表：</p><p><code>zh</code>：简体中文<br><code>yue</code>：中文粵语<br><code>zh-PY</code>：中英粤<br><code>zh_medical</code>：中文医疗<br><code>zh_dialect</code>：中文方言<br><code>prime_zh</code>：中英方言<br><code>zh_en</code>：中英<br><code>en</code>：英语<br><code>ja</code>：日语<br><code>ko</code>：韩语<br><code>fr</code>：法语<br><code>es</code>：西班牙语<br><code>it</code>：意大利语<br><code>de</code>：德语<br><code>tr</code>：土耳其语<br><code>ru</code>：俄语<br><code>pt</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>vi</code>：越南语<br><code>id</code>：印度尼西亚语<br><code>ms</code>：马来语<br><code>th</code>：泰语<br><code>ar</code>：阿拉伯语<br><code>hi</code>：印地语<br><code>fil</code>：菲律宾语<br><code>auto</code>：自动识别（仅在纯字幕翻译中支持）</p>
 	VideoSrcLanguage *string `json:"VideoSrcLanguage,omitnil,omitempty" name:"VideoSrcLanguage"`
 
-	// 智能字幕文件格式
-	// - vtt: WebVTT 格式
-	// - srt: SRT格式
-	// - original：与源字幕文件一致（用于纯字幕翻译模板）
-	// - 不填或填空：不生成字幕文件
+	// <p>智能字幕文件格式</p><ul><li>vtt: WebVTT 格式</li><li>srt: SRT格式</li><li>original：与源字幕文件一致（用于纯字幕翻译模板）</li><li>不填或填空：不生成字幕文件</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
 
-	// 智能字幕字幕语言类型
-	// 0: 源语言
-	// 1: 翻译语言
-	// 2: 源语言+翻译语言
-	// 当TranslateSwitch为OFF时仅支持取0
-	// 当TranslateSwitch为ON时仅支持取1或2
+	// <p>智能字幕字幕语言类型<br>0: 源语言<br>1: 翻译语言<br>2: 源语言+翻译语言<br>当TranslateSwitch为OFF时仅支持取0<br>当TranslateSwitch为ON时仅支持取1或2</p>
 	SubtitleType *int64 `json:"SubtitleType,omitnil,omitempty" name:"SubtitleType"`
 
-	// 字幕翻译开关
-	// ON: 开启翻译
-	// OFF: 关闭翻译
+	// <p>字幕翻译开关<br>ON: 开启翻译<br>OFF: 关闭翻译</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranslateSwitch *string `json:"TranslateSwitch,omitnil,omitempty" name:"TranslateSwitch"`
 
-	// 字幕翻译目标语言
-	// 当TranslateSwitch为ON的时候生效
-	// `zh`：简体中文
-	// `zh-TW`：繁体中文
-	// `en`：英语
-	// `ja`：日语
-	// `ko`：韩语
-	// `fr`：法语
-	// `es`：西班牙语 
-	// `it`：意大利语
-	// `de`：德语
-	// `tr`：土耳其语
-	// `ru`：俄语
-	// `pt`：葡萄牙语（巴西）
-	// `pt-PT`：葡萄牙语（葡萄牙）
-	// `vi`：越南语
-	// `id`：印度尼西亚语 
-	// `ms`：马来语
-	// `th`：泰语
-	// `ar`：阿拉伯语
-	// `hi`：印地语
-	// `fil`：菲律宾语
-	// 
-	// 
-	// **注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
-	// 
+	// <p>字幕翻译目标语言<br>当TranslateSwitch为ON的时候生效<br><code>zh</code>：简体中文<br><code>zh-TW</code>：繁体中文<br><code>en</code>：英语<br><code>ja</code>：日语<br><code>ko</code>：韩语<br><code>fr</code>：法语<br><code>es</code>：西班牙语<br><code>it</code>：意大利语<br><code>de</code>：德语<br><code>tr</code>：土耳其语<br><code>ru</code>：俄语<br><code>pt</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>vi</code>：越南语<br><code>id</code>：印度尼西亚语<br><code>ms</code>：马来语<br><code>th</code>：泰语<br><code>ar</code>：阿拉伯语<br><code>hi</code>：印地语<br><code>fil</code>：菲律宾语</p><p><strong>注意</strong>：多语言方式，则使用 <code>/</code> 分割，如：<code>en/ja</code>，表示英语和日语。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranslateDstLanguage *string `json:"TranslateDstLanguage,omitnil,omitempty" name:"TranslateDstLanguage"`
 
-	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// <p>模板创建时间，使用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// <p>模板最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 智能字幕预设模板别名
+	// <p>智能字幕预设模板别名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
 
-	// 字幕处理类型：
-	// - 0：ASR识别字幕
-	// - 1：纯字幕翻译
-	// - 2:  OCR识别字幕
+	// <p>字幕处理类型：</p><ul><li>0：ASR识别字幕</li><li>1：纯字幕翻译</li><li>2:  OCR识别字幕</li></ul>
 	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 
-	// 字幕OCR提取框选区域配置信息
+	// <p>字幕OCR提取框选区域配置信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelectingSubtitleAreasConfig *SelectingSubtitleAreasConfig `json:"SelectingSubtitleAreasConfig,omitnil,omitempty" name:"SelectingSubtitleAreasConfig"`
+
+	// <p>字幕压制模板id</p>
+	SubtitleEmbedId *int64 `json:"SubtitleEmbedId,omitnil,omitempty" name:"SubtitleEmbedId"`
+
+	// <p>说话人识别模式，可选值：<br>0：表示不开启说话人识别；<br>1：表示开启说话人识别；<br>默认值：0</p>
+	SpeakerMode *int64 `json:"SpeakerMode,omitnil,omitempty" name:"SpeakerMode"`
+
+	// <p>说话人识别输出到字幕文件，可选值：<br>0：表示不输出到字幕文件；<br>1：表示输出到vtt字幕文件<br>注意：使用此参数SpeakerMode的值不能为0；<br>默认值：0</p>
+	SpeakerLabel *int64 `json:"SpeakerLabel,omitnil,omitempty" name:"SpeakerLabel"`
 }
 
 type SmartSubtitlesResult struct {
@@ -26780,37 +26745,31 @@ type SmartSubtitlesTaskInput struct {
 }
 
 type SnapshotByTimeOffsetTaskInput struct {
-	// 指定时间点截图模板 ID。
+	// <p>指定时间点截图模板 ID。</p>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 截图时间点列表，时间点支持 s、% 两种格式：
-	// <li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
-	// <li>当字符串以 % 结尾，表示时间点为视频时长的百分比大小，如10%表示时间点为视频前第10%的时间。</li>
+	// <p>截图时间点列表，时间点支持 s、% 两种格式：</p><li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li><li>当字符串以 % 结尾，表示时间点为视频时长的百分比大小，如10%表示时间点为视频前第10%的时间。</li>
 	ExtTimeOffsetSet []*string `json:"ExtTimeOffsetSet,omitnil,omitempty" name:"ExtTimeOffsetSet"`
 
-	// 截图时间点列表，单位为<font color=red>秒</font>。此参数已不再建议使用，建议您使用 ExtTimeOffsetSet 参数。
+	// <p>截图时间点列表，单位为<font color="red">秒</font>。此参数已不再建议使用，建议您使用 ExtTimeOffsetSet 参数。</p>
 	TimeOffsetSet []*float64 `json:"TimeOffsetSet,omitnil,omitempty" name:"TimeOffsetSet"`
 
-	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+	// <p>水印列表，支持多张图片或文字水印，最大可支持 10 张。</p>
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitnil,omitempty" name:"WatermarkSet"`
 
-	// 时间点截图后文件的目标存储，不填则继承上层的 OutputStorage 值。
+	// <p>时间点截图后文件的目标存储，不填则继承上层的 OutputStorage 值。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
 
-	// 时间点截图后图片文件的输出路径，可以为相对路径或者绝对路径。
-	// 若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
-	// 相对路径示例：
-	// <li>文件名_{变量名}.{format}</li>
-	// <li>文件名.{format}</li>
-	// 绝对路径示例：
-	// <li>/自定义路径/文件名_{变量名}.{format}</li>
-	// 如果不填，则默认为相对路径：`{inputName}_snapshotByTimeOffset_{definition}_{number}.{format}`。
+	// <p>时间点截图后图片文件的输出路径，可以为相对路径或者绝对路径。<br>若需定义输出路径，路径需以<code>.{format}</code>结尾。变量名请参考 <a href="https://cloud.tencent.com/document/product/862/37039">文件名变量说明</a>。<br>相对路径示例：</p><li>文件名_{变量名}.{format}</li><li>文件名.{format}</li>绝对路径示例：<li>/自定义路径/文件名_{变量名}.{format}</li>如果不填，则默认为相对路径：<code>{inputName}_snapshotByTimeOffset_{definition}_{number}.{format}</code>。
 	OutputObjectPath *string `json:"OutputObjectPath,omitnil,omitempty" name:"OutputObjectPath"`
 
-	// 时间点截图后输出路径中的`{number}`变量的规则。
+	// <p>时间点截图后输出路径中的<code>{number}</code>变量的规则。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectNumberFormat *NumberFormat `json:"ObjectNumberFormat,omitnil,omitempty" name:"ObjectNumberFormat"`
+
+	// <p>扩展参数。</p>
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
 type SnapshotByTimeOffsetTemplate struct {

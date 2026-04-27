@@ -2359,6 +2359,9 @@ type InstanceInfo struct {
 
 	// <p>keyvalue视图</p>
 	EnableConfigKeyValue *string `json:"EnableConfigKeyValue,omitnil,omitempty" name:"EnableConfigKeyValue"`
+
+	// <p>实例是否开启HTTPS</p><p>枚举值：</p><ul><li>true： 已开启HTTPS</li><li>false： 未开启HTTPS</li></ul>
+	HttpsEnabled *bool `json:"HttpsEnabled,omitnil,omitempty" name:"HttpsEnabled"`
 }
 
 type InstanceNode struct {

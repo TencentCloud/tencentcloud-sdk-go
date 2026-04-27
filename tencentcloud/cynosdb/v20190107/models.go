@@ -882,53 +882,56 @@ type BackupConfigInfo struct {
 }
 
 type BackupFileInfo struct {
-	// 快照文件ID，已废弃，请使用BackupId
+	// <p>快照文件ID，已废弃，请使用BackupId</p>
 	SnapshotId *uint64 `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 备份文件名
+	// <p>备份文件名</p>
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 备份文件大小
+	// <p>备份文件大小</p>
 	FileSize *uint64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
-	// 备份开始时间
+	// <p>备份开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 备份完成时间
+	// <p>备份完成时间</p>
 	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
 
-	// 备份类型：snapshot，快照备份；logic，逻辑备份
+	// <p>备份类型：snapshot，快照备份；logic，逻辑备份</p>
 	BackupType *string `json:"BackupType,omitnil,omitempty" name:"BackupType"`
 
-	// 备份方式：auto，自动备份；manual，手动备份
+	// <p>备份方式：auto，自动备份；manual，手动备份</p>
 	BackupMethod *string `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
-	// 备份文件状态：success：备份成功；fail：备份失败；creating：备份文件创建中；deleting：备份文件删除中
+	// <p>备份文件状态：success：备份成功；fail：备份失败；creating：备份文件创建中；deleting：备份文件删除中</p>
 	BackupStatus *string `json:"BackupStatus,omitnil,omitempty" name:"BackupStatus"`
 
-	// 备份文件时间
+	// <p>备份文件时间</p>
 	SnapshotTime *string `json:"SnapshotTime,omitnil,omitempty" name:"SnapshotTime"`
 
-	// 备份ID
+	// <p>备份ID</p>
 	BackupId *int64 `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 
-	// 快照类型，可选值：full，全量；increment，增量
+	// <p>快照类型，可选值：full，全量；increment，增量</p>
 	SnapShotType *string `json:"SnapShotType,omitnil,omitempty" name:"SnapShotType"`
 
-	// 备份文件备注
+	// <p>备份文件备注</p>
 	BackupName *string `json:"BackupName,omitnil,omitempty" name:"BackupName"`
 
-	// 投递状态
+	// <p>投递状态</p>
 	CopyStatus *string `json:"CopyStatus,omitnil,omitempty" name:"CopyStatus"`
 
-	// 秘钥id
+	// <p>秘钥id</p>
 	EncryptKeyId *string `json:"EncryptKeyId,omitnil,omitempty" name:"EncryptKeyId"`
 
-	// 秘钥地域
+	// <p>秘钥地域</p>
 	EncryptRegion *string `json:"EncryptRegion,omitnil,omitempty" name:"EncryptRegion"`
 
-	// 保险箱信息
+	// <p>保险箱信息</p>
 	VaultInfos []*VaultInfo `json:"VaultInfos,omitnil,omitempty" name:"VaultInfos"`
+
+	// <p>备份周期策略</p>
+	BackupPeriodStrategy *string `json:"BackupPeriodStrategy,omitnil,omitempty" name:"BackupPeriodStrategy"`
 }
 
 type BackupLimitClusterRestriction struct {
@@ -6037,6 +6040,9 @@ type DeliverSummary struct {
 
 	// 投递者名称
 	DeliverConsumerName *string `json:"DeliverConsumerName,omitnil,omitempty" name:"DeliverConsumerName"`
+
+	// 投递异常错误
+	DeliverError *string `json:"DeliverError,omitnil,omitempty" name:"DeliverError"`
 }
 
 // Predefined struct for user
@@ -6765,14 +6771,14 @@ func (r *DescribeAuditRuleWithInstanceIdsResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeBackupConfigRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 type DescribeBackupConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
@@ -6797,30 +6803,33 @@ func (r *DescribeBackupConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackupConfigResponseParams struct {
-	// 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+	// <p>表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
 	BackupTimeBeg *uint64 `json:"BackupTimeBeg,omitnil,omitempty" name:"BackupTimeBeg"`
 
-	// 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+	// <p>表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
 	BackupTimeEnd *uint64 `json:"BackupTimeEnd,omitnil,omitempty" name:"BackupTimeEnd"`
 
-	// 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800
+	// <p>表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600<em>24</em>7=604800</p>
 	ReserveDuration *uint64 `json:"ReserveDuration,omitnil,omitempty" name:"ReserveDuration"`
 
-	// 备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份
+	// <p>备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份</p>
 	BackupFreq []*string `json:"BackupFreq,omitnil,omitempty" name:"BackupFreq"`
 
-	// 备份方式，logic-逻辑备份，snapshot-快照备份
+	// <p>备份方式，logic-逻辑备份，snapshot-快照备份</p>
 	BackupType *string `json:"BackupType,omitnil,omitempty" name:"BackupType"`
 
-	// 跨地域逻辑备份配置修改时间
+	// <p>跨地域逻辑备份配置修改时间</p>
 	LogicCrossRegionsConfigUpdateTime *string `json:"LogicCrossRegionsConfigUpdateTime,omitnil,omitempty" name:"LogicCrossRegionsConfigUpdateTime"`
 
-	// 自动逻辑备份配置
+	// <p>自动逻辑备份配置</p>
 	LogicBackupConfig *LogicBackupConfigInfo `json:"LogicBackupConfig,omitnil,omitempty" name:"LogicBackupConfig"`
 
-	// 二级快照备份配置信息
+	// <p>二级快照备份配置信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotSecondaryBackupConfig *BackupConfigInfo `json:"SnapshotSecondaryBackupConfig,omitnil,omitempty" name:"SnapshotSecondaryBackupConfig"`
+
+	// <p>稀疏备份配置</p>
+	SparseBackupConfig *SparseBackupConfigRsp `json:"SparseBackupConfig,omitnil,omitempty" name:"SparseBackupConfig"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -15903,63 +15912,69 @@ func (r *ModifyAuditServiceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyBackupConfigRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+	// <p>表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
 	BackupTimeBeg *uint64 `json:"BackupTimeBeg,omitnil,omitempty" name:"BackupTimeBeg"`
 
-	// 表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+	// <p>表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
 	BackupTimeEnd *uint64 `json:"BackupTimeEnd,omitnil,omitempty" name:"BackupTimeEnd"`
 
-	// 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800，最大为158112000
+	// <p>表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600<em>24</em>7=604800，最大为158112000</p>
 	ReserveDuration *uint64 `json:"ReserveDuration,omitnil,omitempty" name:"ReserveDuration"`
 
-	// 该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份
+	// <p>该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份</p>
 	BackupFreq []*string `json:"BackupFreq,omitnil,omitempty" name:"BackupFreq"`
 
-	// 该参数目前不支持修改，无需填写。
+	// <p>该参数目前不支持修改，无需填写。</p>
 	BackupType *string `json:"BackupType,omitnil,omitempty" name:"BackupType"`
 
-	// 逻辑备份配置
+	// <p>逻辑备份配置</p>
 	LogicBackupConfig *LogicBackupConfigInfo `json:"LogicBackupConfig,omitnil,omitempty" name:"LogicBackupConfig"`
 
-	// 是否删除自动逻辑备份
+	// <p>是否删除自动逻辑备份</p>
 	DeleteAutoLogicBackup *bool `json:"DeleteAutoLogicBackup,omitnil,omitempty" name:"DeleteAutoLogicBackup"`
 
-	// 二级快照备份参数
+	// <p>二级快照备份参数</p>
 	SnapshotSecondaryBackupConfig *SnapshotBackupConfig `json:"SnapshotSecondaryBackupConfig,omitnil,omitempty" name:"SnapshotSecondaryBackupConfig"`
+
+	// <p>稀疏备份配置</p>
+	SparseBackupConfig *SparseBackupConfig `json:"SparseBackupConfig,omitnil,omitempty" name:"SparseBackupConfig"`
 }
 
 type ModifyBackupConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+	// <p>表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
 	BackupTimeBeg *uint64 `json:"BackupTimeBeg,omitnil,omitempty" name:"BackupTimeBeg"`
 
-	// 表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+	// <p>表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
 	BackupTimeEnd *uint64 `json:"BackupTimeEnd,omitnil,omitempty" name:"BackupTimeEnd"`
 
-	// 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800，最大为158112000
+	// <p>表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600<em>24</em>7=604800，最大为158112000</p>
 	ReserveDuration *uint64 `json:"ReserveDuration,omitnil,omitempty" name:"ReserveDuration"`
 
-	// 该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份
+	// <p>该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份</p>
 	BackupFreq []*string `json:"BackupFreq,omitnil,omitempty" name:"BackupFreq"`
 
-	// 该参数目前不支持修改，无需填写。
+	// <p>该参数目前不支持修改，无需填写。</p>
 	BackupType *string `json:"BackupType,omitnil,omitempty" name:"BackupType"`
 
-	// 逻辑备份配置
+	// <p>逻辑备份配置</p>
 	LogicBackupConfig *LogicBackupConfigInfo `json:"LogicBackupConfig,omitnil,omitempty" name:"LogicBackupConfig"`
 
-	// 是否删除自动逻辑备份
+	// <p>是否删除自动逻辑备份</p>
 	DeleteAutoLogicBackup *bool `json:"DeleteAutoLogicBackup,omitnil,omitempty" name:"DeleteAutoLogicBackup"`
 
-	// 二级快照备份参数
+	// <p>二级快照备份参数</p>
 	SnapshotSecondaryBackupConfig *SnapshotBackupConfig `json:"SnapshotSecondaryBackupConfig,omitnil,omitempty" name:"SnapshotSecondaryBackupConfig"`
+
+	// <p>稀疏备份配置</p>
+	SparseBackupConfig *SparseBackupConfig `json:"SparseBackupConfig,omitnil,omitempty" name:"SparseBackupConfig"`
 }
 
 func (r *ModifyBackupConfigRequest) ToJsonString() string {
@@ -15983,6 +15998,7 @@ func (r *ModifyBackupConfigRequest) FromJsonString(s string) error {
 	delete(f, "LogicBackupConfig")
 	delete(f, "DeleteAutoLogicBackup")
 	delete(f, "SnapshotSecondaryBackupConfig")
+	delete(f, "SparseBackupConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupConfigRequest has unknown keys!", "")
 	}
@@ -19072,6 +19088,14 @@ type Module struct {
 
 	// 模块名
 	ModuleName *string `json:"ModuleName,omitnil,omitempty" name:"ModuleName"`
+}
+
+type MonthDay struct {
+	// 月份信息
+	Month *int64 `json:"Month,omitnil,omitempty" name:"Month"`
+
+	// 日期信息
+	Day *int64 `json:"Day,omitnil,omitempty" name:"Day"`
 }
 
 type NetAddr struct {
@@ -22773,6 +22797,52 @@ type SnapshotBackupConfig struct {
 
 	// 保险箱信息
 	AutoCopyVaults []*CreateBackupVaultItem `json:"AutoCopyVaults,omitnil,omitempty" name:"AutoCopyVaults"`
+}
+
+type SparseBackupConfig struct {
+	// 稀疏备份开关：ON/OFF
+	SparseBackupSwitch *string `json:"SparseBackupSwitch,omitnil,omitempty" name:"SparseBackupSwitch"`
+
+	// 稀疏备份策略列表（1-3条）
+	SparseBackupConfigInfos []*SparseBackupConfigInfo `json:"SparseBackupConfigInfos,omitnil,omitempty" name:"SparseBackupConfigInfos"`
+}
+
+type SparseBackupConfigInfo struct {
+	// 操作类型:add,modify,remove
+	OpType *string `json:"OpType,omitnil,omitempty" name:"OpType"`
+
+	// 配置 ID
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// 周期策略类型：weekly/monthly/yearly
+	SparsePeriodConfig *string `json:"SparsePeriodConfig,omitnil,omitempty" name:"SparsePeriodConfig"`
+
+	// 周期时间配置
+	SparsePeriodTime *SparsePeriodTime `json:"SparsePeriodTime,omitnil,omitempty" name:"SparsePeriodTime"`
+
+	// 保留天数（7-7320天，最长20年）
+	SparseBackupSaveDays *int64 `json:"SparseBackupSaveDays,omitnil,omitempty" name:"SparseBackupSaveDays"`
+}
+
+type SparseBackupConfigRsp struct {
+	// 稀疏备份开关：ON/OFF
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparseBackupSwitch *string `json:"SparseBackupSwitch,omitnil,omitempty" name:"SparseBackupSwitch"`
+
+	// 稀疏备份策略列表（1-3条）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparseBackupConfigInfos []*SparseBackupConfigInfo `json:"SparseBackupConfigInfos,omitnil,omitempty" name:"SparseBackupConfigInfos"`
+}
+
+type SparsePeriodTime struct {
+	// 按周：星期几列表，1-7，1=周一，7=周日（仅 weekly 周期使用，最多7个）
+	WeekDays []*int64 `json:"WeekDays,omitnil,omitempty" name:"WeekDays"`
+
+	// 按月：日期列表，1-31（仅 monthly 周期使用，最多7个）
+	Days []*int64 `json:"Days,omitnil,omitempty" name:"Days"`
+
+	// 按年：月日组合列表（仅 yearly 周期使用，最多7个）
+	MonthDays []*MonthDay `json:"MonthDays,omitnil,omitempty" name:"MonthDays"`
 }
 
 // Predefined struct for user

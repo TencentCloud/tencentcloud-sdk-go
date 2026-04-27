@@ -940,6 +940,83 @@ type CLSNotice struct {
 }
 
 // Predefined struct for user
+type CheckAddressByPrometheusRequestParams struct {
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>探测地址</p>
+	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// <p>探测方式。tcp或http，默认是tcp</p>
+	ProbeProtocol *string `json:"ProbeProtocol,omitnil,omitempty" name:"ProbeProtocol"`
+}
+
+type CheckAddressByPrometheusRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>探测地址</p>
+	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// <p>探测方式。tcp或http，默认是tcp</p>
+	ProbeProtocol *string `json:"ProbeProtocol,omitnil,omitempty" name:"ProbeProtocol"`
+}
+
+func (r *CheckAddressByPrometheusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckAddressByPrometheusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Target")
+	delete(f, "ProbeProtocol")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckAddressByPrometheusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckAddressByPrometheusResponseParams struct {
+	// <p>实际探测的地址</p>
+	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+
+	// <p>探测是否成功</p>
+	Success *bool `json:"Success,omitnil,omitempty" name:"Success"`
+
+	// <p>探测失败时返回错误信息</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CheckAddressByPrometheusResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckAddressByPrometheusResponseParams `json:"Response"`
+}
+
+func (r *CheckAddressByPrometheusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckAddressByPrometheusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CleanGrafanaInstanceRequestParams struct {
 	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

@@ -3033,12 +3033,15 @@ func (r *DeleteTrainingTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBillingResourceGroupAttachedWorkspacesRequestParams struct {
-
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 type DescribeBillingResourceGroupAttachedWorkspacesRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 func (r *DescribeBillingResourceGroupAttachedWorkspacesRequest) ToJsonString() string {
@@ -3053,7 +3056,7 @@ func (r *DescribeBillingResourceGroupAttachedWorkspacesRequest) FromJsonString(s
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "TiProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillingResourceGroupAttachedWorkspacesRequest has unknown keys!", "")
 	}
@@ -3087,6 +3090,9 @@ type DescribeBillingResourceGroupRequestParams struct {
 	// 资源组id, 取值为创建资源组接口(CreateBillingResourceGroup)响应中的ResourceGroupId
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 过滤条件
 	// 注意: 
 	// 1. Filter.Name 只支持以下枚举值:
@@ -3116,6 +3122,9 @@ type DescribeBillingResourceGroupRequest struct {
 	
 	// 资源组id, 取值为创建资源组接口(CreateBillingResourceGroup)响应中的ResourceGroupId
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 过滤条件
 	// 注意: 
@@ -3154,6 +3163,7 @@ func (r *DescribeBillingResourceGroupRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ResourceGroupId")
+	delete(f, "TiProjectId")
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
@@ -3200,6 +3210,9 @@ func (r *DescribeBillingResourceGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBillingResourceGroupsRequestParams struct {
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// Filter.Name: 枚举值: ResourceGroupId (资源组id列表)                    ResourceGroupName (资源组名称列表)                    AvailableNodeCount（资源组中可用节点数量） Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询每次请求的Filters的上限为5，Filter.Values的上限为100
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -3224,6 +3237,9 @@ type DescribeBillingResourceGroupsRequestParams struct {
 type DescribeBillingResourceGroupsRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// Filter.Name: 枚举值: ResourceGroupId (资源组id列表)                    ResourceGroupName (资源组名称列表)                    AvailableNodeCount（资源组中可用节点数量） Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询每次请求的Filters的上限为5，Filter.Values的上限为100
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -3257,6 +3273,7 @@ func (r *DescribeBillingResourceGroupsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "TiProjectId")
 	delete(f, "Filters")
 	delete(f, "TagFilters")
 	delete(f, "Offset")
@@ -3305,6 +3322,9 @@ type DescribeBillingResourceInstanceRunningJobsRequestParams struct {
 
 	// 资源组节点id
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitnil,omitempty" name:"ResourceInstanceId"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 type DescribeBillingResourceInstanceRunningJobsRequest struct {
@@ -3315,6 +3335,9 @@ type DescribeBillingResourceInstanceRunningJobsRequest struct {
 
 	// 资源组节点id
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitnil,omitempty" name:"ResourceInstanceId"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 func (r *DescribeBillingResourceInstanceRunningJobsRequest) ToJsonString() string {
@@ -3331,6 +3354,7 @@ func (r *DescribeBillingResourceInstanceRunningJobsRequest) FromJsonString(s str
 	}
 	delete(f, "ResourceGroupId")
 	delete(f, "ResourceInstanceId")
+	delete(f, "TiProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillingResourceInstanceRunningJobsRequest has unknown keys!", "")
 	}
@@ -3550,6 +3574,9 @@ func (r *DescribeBuildInImagesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDataSourceRequestParams struct {
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 数据源id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
@@ -3557,6 +3584,9 @@ type DescribeDataSourceRequestParams struct {
 type DescribeDataSourceRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 数据源id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
@@ -3573,6 +3603,7 @@ func (r *DescribeDataSourceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "TiProjectId")
 	delete(f, "Id")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataSourceRequest has unknown keys!", "")
@@ -4576,26 +4607,28 @@ func (r *DescribeModelServiceGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeModelServiceGroupsRequestParams struct {
-	// 偏移量，默认为0
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>偏移量，默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100
+	// <p>返回数量，默认为20，最大值为100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+	// <p>输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+	// <p>排序的依据字段， 取值范围 &quot;CreateTime&quot; &quot;UpdateTime&quot;</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 分页参数，支持的分页过滤Name包括：
-	// ["ClusterId", "ServiceId", "ServiceGroupName", "ServiceGroupId","Status","CreatedBy","ModelVersionId"]
+	// <p>分页参数，支持的分页过滤Name包括：<br>[&quot;ClusterId&quot;, &quot;ServiceId&quot;, &quot;ServiceGroupName&quot;, &quot;ServiceGroupId&quot;,&quot;Status&quot;,&quot;CreatedBy&quot;,&quot;ModelVersionId&quot;]</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 标签过滤参数
+	// <p>标签过滤参数</p>
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
-	// 服务分类
+	// <p>服务分类</p>
 	//
 	// Deprecated: ServiceCategory is deprecated.
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
@@ -4604,26 +4637,28 @@ type DescribeModelServiceGroupsRequestParams struct {
 type DescribeModelServiceGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量，默认为0
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>偏移量，默认为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100
+	// <p>返回数量，默认为20，最大值为100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+	// <p>输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+	// <p>排序的依据字段， 取值范围 &quot;CreateTime&quot; &quot;UpdateTime&quot;</p>
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
-	// 分页参数，支持的分页过滤Name包括：
-	// ["ClusterId", "ServiceId", "ServiceGroupName", "ServiceGroupId","Status","CreatedBy","ModelVersionId"]
+	// <p>分页参数，支持的分页过滤Name包括：<br>[&quot;ClusterId&quot;, &quot;ServiceId&quot;, &quot;ServiceGroupName&quot;, &quot;ServiceGroupId&quot;,&quot;Status&quot;,&quot;CreatedBy&quot;,&quot;ModelVersionId&quot;]</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 标签过滤参数
+	// <p>标签过滤参数</p>
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
-	// 服务分类
+	// <p>服务分类</p>
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 }
 
@@ -4639,6 +4674,7 @@ func (r *DescribeModelServiceGroupsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "TiProjectId")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Order")
@@ -4654,13 +4690,16 @@ func (r *DescribeModelServiceGroupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeModelServiceGroupsResponseParams struct {
-	// 推理服务组数量。
+	// <p>推理服务组数量。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 服务组信息
+	// <p>服务组信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceGroups []*ServiceGroup `json:"ServiceGroups,omitnil,omitempty" name:"ServiceGroups"`
+
+	// <p>当前uin和region下全量服务组数量</p>
+	GlobalTotalCount *int64 `json:"GlobalTotalCount,omitnil,omitempty" name:"GlobalTotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5049,6 +5088,9 @@ func (r *DescribeMountLimitsResponse) FromJsonString(s string) error {
 type DescribeNotebookRequestParams struct {
 	// notebook id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 type DescribeNotebookRequest struct {
@@ -5056,6 +5098,9 @@ type DescribeNotebookRequest struct {
 	
 	// notebook id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 func (r *DescribeNotebookRequest) ToJsonString() string {
@@ -5071,6 +5116,7 @@ func (r *DescribeNotebookRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Id")
+	delete(f, "TiProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookRequest has unknown keys!", "")
 	}
@@ -5104,6 +5150,9 @@ func (r *DescribeNotebookResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNotebooksRequestParams struct {
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 偏移量，默认为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
@@ -5137,6 +5186,9 @@ type DescribeNotebooksRequestParams struct {
 type DescribeNotebooksRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 偏移量，默认为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
@@ -5179,6 +5231,7 @@ func (r *DescribeNotebooksRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "TiProjectId")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Order")
@@ -5595,6 +5648,9 @@ func (r *DescribeTrainingModelVersionsResponse) FromJsonString(s string) error {
 type DescribeTrainingTaskPodsRequestParams struct {
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 type DescribeTrainingTaskPodsRequest struct {
@@ -5602,6 +5658,9 @@ type DescribeTrainingTaskPodsRequest struct {
 	
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 func (r *DescribeTrainingTaskPodsRequest) ToJsonString() string {
@@ -5617,6 +5676,7 @@ func (r *DescribeTrainingTaskPodsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Id")
+	delete(f, "TiProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrainingTaskPodsRequest has unknown keys!", "")
 	}
@@ -5659,6 +5719,9 @@ type DescribeTrainingTaskRequestParams struct {
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 训练任务实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
@@ -5668,6 +5731,9 @@ type DescribeTrainingTaskRequest struct {
 	
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 训练任务实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5686,6 +5752,7 @@ func (r *DescribeTrainingTaskRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Id")
+	delete(f, "TiProjectId")
 	delete(f, "InstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrainingTaskRequest has unknown keys!", "")
@@ -5720,6 +5787,9 @@ func (r *DescribeTrainingTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTrainingTasksRequestParams struct {
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 过滤器，eg：[{ "Name": "Id", "Values": ["train-23091792777383936"] }]
 	// 
 	// 取值范围：
@@ -5751,6 +5821,9 @@ type DescribeTrainingTasksRequestParams struct {
 type DescribeTrainingTasksRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 过滤器，eg：[{ "Name": "Id", "Values": ["train-23091792777383936"] }]
 	// 
 	// 取值范围：
@@ -5791,6 +5864,7 @@ func (r *DescribeTrainingTasksRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "TiProjectId")
 	delete(f, "Filters")
 	delete(f, "TagFilters")
 	delete(f, "Offset")
@@ -7605,297 +7679,294 @@ type MultiModalContent struct {
 }
 
 type NotebookDetail struct {
-	// notebook  ID
+	// <p>notebook  ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// notebook 名称
+	// <p>notebook 名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 生命周期脚本
+	// <p>生命周期脚本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LifecycleScriptId *string `json:"LifecycleScriptId,omitnil,omitempty" name:"LifecycleScriptId"`
 
-	// Pod-Name
+	// <p>Pod-Name</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
 
-	// Update-Time
+	// <p>Update-Time</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 是否访问公网
+	// <p>是否访问公网</p>
 	DirectInternetAccess *bool `json:"DirectInternetAccess,omitnil,omitempty" name:"DirectInternetAccess"`
 
-	// 预付费专用资源组
+	// <p>预付费专用资源组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// 标签配置
+	// <p>标签配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否自动停止
+	// <p>是否自动停止</p>
 	AutoStopping *bool `json:"AutoStopping,omitnil,omitempty" name:"AutoStopping"`
 
-	// 其他GIT存储库，最多3个，单个
-	// 长度不超过512字符
+	// <p>其他GIT存储库，最多3个，单个<br>长度不超过512字符</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdditionalCodeRepoIds []*string `json:"AdditionalCodeRepoIds,omitnil,omitempty" name:"AdditionalCodeRepoIds"`
 
-	// 自动停止时间，单位小时
+	// <p>自动停止时间，单位小时</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutomaticStopTime *int64 `json:"AutomaticStopTime,omitnil,omitempty" name:"AutomaticStopTime"`
 
-	// 资源配置
+	// <p>资源配置</p>
 	ResourceConf *ResourceConf `json:"ResourceConf,omitnil,omitempty" name:"ResourceConf"`
 
-	// 默认GIT存储库，长度不超过512字符
+	// <p>默认GIT存储库，长度不超过512字符</p>
 	DefaultCodeRepoId *string `json:"DefaultCodeRepoId,omitnil,omitempty" name:"DefaultCodeRepoId"`
 
-	// 训练输出
+	// <p>训练输出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 是否上报日志
+	// <p>是否上报日志</p>
 	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
 
-	// 日志配置
+	// <p>日志配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
 
-	// VPC ID
+	// <p>VPC ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网ID
+	// <p>子网ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 任务状态
+	// <p>任务状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 运行时长
+	// <p>运行时长</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuntimeInSeconds *uint64 `json:"RuntimeInSeconds,omitnil,omitempty" name:"RuntimeInSeconds"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 训练开始时间
+	// <p>训练开始时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
+	// <p>计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeStatus *string `json:"ChargeStatus,omitnil,omitempty" name:"ChargeStatus"`
 
-	// 是否ROOT权限
+	// <p>是否ROOT权限</p>
 	RootAccess *bool `json:"RootAccess,omitnil,omitempty" name:"RootAccess"`
 
-	// 计贺金额信息，eg:2.00元/小时
+	// <p>计贺金额信息，eg:2.00元/小时</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingInfos []*string `json:"BillingInfos,omitnil,omitempty" name:"BillingInfos"`
 
-	// 存储卷大小 （单位时GB，最小10GB，必须是10G的倍数）
+	// <p>存储卷大小 （单位时GB，最小10GB，必须是10G的倍数）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitnil,omitempty" name:"VolumeSizeInGB"`
 
-	// 失败原因
+	// <p>失败原因</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailureReason *string `json:"FailureReason,omitnil,omitempty" name:"FailureReason"`
 
-	// 计算资源付费模式 (- PREPAID：预付费，即包年包月 - POSTPAID_BY_HOUR：按小时后付费)
+	// <p>计算资源付费模式 (- PREPAID：预付费，即包年包月 - POSTPAID_BY_HOUR：按小时后付费)</p>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// 后付费资源规格说明
+	// <p>后付费资源规格说明</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceTypeAlias *string `json:"InstanceTypeAlias,omitnil,omitempty" name:"InstanceTypeAlias"`
 
-	// 预付费资源组名称
+	// <p>预付费资源组名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 
-	// 存储的类型。取值包含： 
-	//     FREE:        预付费的免费存储
-	//     CLOUD_PREMIUM： 高性能云硬盘
-	//     CLOUD_SSD： SSD云硬盘
-	//     CFS:     CFS存储，包含NFS和turbo
+	// <p>存储的类型。取值包含：<br>    FREE:        预付费的免费存储<br>    CLOUD_PREMIUM： 高性能云硬盘<br>    CLOUD_SSD： SSD云硬盘<br>    CFS:     CFS存储，包含NFS和turbo</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeSourceType *string `json:"VolumeSourceType,omitnil,omitempty" name:"VolumeSourceType"`
 
-	// CFS存储的配置
+	// <p>CFS存储的配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeSourceCFS *CFSConfig `json:"VolumeSourceCFS,omitnil,omitempty" name:"VolumeSourceCFS"`
 
-	// 数据配置
+	// <p>数据配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataConfigs []*DataConfig `json:"DataConfigs,omitnil,omitempty" name:"DataConfigs"`
 
-	// notebook 信息
+	// <p>notebook 信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 数据源来源，eg：WeData_HDFS
+	// <p>数据源来源，eg：WeData_HDFS</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSource *string `json:"DataSource,omitnil,omitempty" name:"DataSource"`
 
-	// 镜像信息
+	// <p>镜像信息</p>
 	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
-	// 镜像类型
+	// <p>镜像类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
 
-	// SSH配置
+	// <p>SSH配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SSHConfig *SSHConfig `json:"SSHConfig,omitnil,omitempty" name:"SSHConfig"`
 
-	// GooseFS存储配置
+	// <p>GooseFS存储配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeSourceGooseFS *GooseFS `json:"VolumeSourceGooseFS,omitnil,omitempty" name:"VolumeSourceGooseFS"`
 
-	// 子用户ID
+	// <p>子用户ID</p>
 	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
 
-	// 调度节点ID
+	// <p>调度节点ID</p>
 	ResourceGroupInstanceId *string `json:"ResourceGroupInstanceId,omitnil,omitempty" name:"ResourceGroupInstanceId"`
 
-	// 子用户名称
+	// <p>子用户名称</p>
 	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
 
-	// 任务实例创建时间
+	// <p>任务实例创建时间</p>
 	JobCreateTime *string `json:"JobCreateTime,omitnil,omitempty" name:"JobCreateTime"`
 
-	// Appid
+	// <p>Appid</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 描述
+	// <p>描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>最后操作者信息</p>
+	LatestOperatorInfo *OperatorInfo `json:"LatestOperatorInfo,omitnil,omitempty" name:"LatestOperatorInfo"`
 }
 
 type NotebookSetItem struct {
-	// notebook ID
+	// <p>notebook ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// notebook 名称
+	// <p>notebook 名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 计费模式
+	// <p>计费模式</p>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// 资源配置
+	// <p>资源配置</p>
 	ResourceConf *ResourceConf `json:"ResourceConf,omitnil,omitempty" name:"ResourceConf"`
 
-	// 预付费资源组
+	// <p>预付费资源组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// 存储卷大小
+	// <p>存储卷大小</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitnil,omitempty" name:"VolumeSizeInGB"`
 
-	// 计费金额信息，eg：2.00元/小时 (for后付费)
+	// <p>计费金额信息，eg：2.00元/小时 (for后付费)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingInfos []*string `json:"BillingInfos,omitnil,omitempty" name:"BillingInfos"`
 
-	// 标签配置
+	// <p>标签配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 启动时间
+	// <p>启动时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 运行时间
+	// <p>运行时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuntimeInSeconds *uint64 `json:"RuntimeInSeconds,omitnil,omitempty" name:"RuntimeInSeconds"`
 
-	// 计费状态
+	// <p>计费状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeStatus *string `json:"ChargeStatus,omitnil,omitempty" name:"ChargeStatus"`
 
-	// 状态
+	// <p>状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 错误原因
+	// <p>错误原因</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailureReason *string `json:"FailureReason,omitnil,omitempty" name:"FailureReason"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// Pod名称
+	// <p>Pod名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
 
-	// 后付费资源规格名称
+	// <p>后付费资源规格名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceTypeAlias *string `json:"InstanceTypeAlias,omitnil,omitempty" name:"InstanceTypeAlias"`
 
-	// 预付费资源组名称
+	// <p>预付费资源组名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 
-	// 是否自动终止
+	// <p>是否自动终止</p>
 	AutoStopping *bool `json:"AutoStopping,omitnil,omitempty" name:"AutoStopping"`
 
-	// 自动停止时间
+	// <p>自动停止时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutomaticStopTime *uint64 `json:"AutomaticStopTime,omitnil,omitempty" name:"AutomaticStopTime"`
 
-	// 存储的类型。取值包含： 
-	//     FREE:        预付费的免费存储
-	//     CLOUD_PREMIUM： 高性能云硬盘
-	//     CLOUD_SSD： SSD云硬盘
-	//     CFS:     CFS存储，包含NFS和turbo
+	// <p>存储的类型。取值包含：<br>    FREE:        预付费的免费存储<br>    CLOUD_PREMIUM： 高性能云硬盘<br>    CLOUD_SSD： SSD云硬盘<br>    CFS:     CFS存储，包含NFS和turbo</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeSourceType *string `json:"VolumeSourceType,omitnil,omitempty" name:"VolumeSourceType"`
 
-	// CFS存储的配置
+	// <p>CFS存储的配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeSourceCFS *CFSConfig `json:"VolumeSourceCFS,omitnil,omitempty" name:"VolumeSourceCFS"`
 
-	// notebook 信息
+	// <p>notebook 信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// notebook用户类型
+	// <p>notebook用户类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserTypes []*string `json:"UserTypes,omitnil,omitempty" name:"UserTypes"`
 
-	// SSH配置
+	// <p>SSH配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SSHConfig *SSHConfig `json:"SSHConfig,omitnil,omitempty" name:"SSHConfig"`
 
-	// GooseFS存储配置
+	// <p>GooseFS存储配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeSourceGooseFS *GooseFS `json:"VolumeSourceGooseFS,omitnil,omitempty" name:"VolumeSourceGooseFS"`
 
-	// 子用户ID
+	// <p>子用户ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
 
-	// 子用户名称
+	// <p>子用户名称</p>
 	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
 
-	// AppId
+	// <p>AppId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 容器服务暴露端口配置
+	// <p>容器服务暴露端口配置</p>
 	ExposePortConfig *ExposePortConfig `json:"ExposePortConfig,omitnil,omitempty" name:"ExposePortConfig"`
 
-	// 描述
+	// <p>描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>操作者信息</p>
+	LatestOperatorInfo *OperatorInfo `json:"LatestOperatorInfo,omitnil,omitempty" name:"LatestOperatorInfo"`
 }
 
 type NumOrPercent struct {
@@ -8503,19 +8574,19 @@ type ResourceInfo struct {
 }
 
 type ResourceInstanceRunningJobInfo struct {
-	// pod名称
+	// <p>pod名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
 
-	// 任务类型
+	// <p>任务类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 任务id
+	// <p>任务id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务自定义名称
+	// <p>任务自定义名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 }

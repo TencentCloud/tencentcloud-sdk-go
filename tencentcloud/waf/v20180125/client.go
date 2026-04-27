@@ -9227,6 +9227,94 @@ func (c *Client) GenerateDealsAndPayNewWithContext(ctx context.Context, request 
     return
 }
 
+func NewGenerateLLMSecAnswerRequest() (request *GenerateLLMSecAnswerRequest) {
+    request = &GenerateLLMSecAnswerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "GenerateLLMSecAnswer")
+    
+    
+    return
+}
+
+func NewGenerateLLMSecAnswerResponse() (response *GenerateLLMSecAnswerResponse) {
+    response = &GenerateLLMSecAnswerResponse{} 
+    return
+
+}
+
+// GenerateLLMSecAnswer
+// 大模型安全代答生成接口。当用户输入或模型输出命中内容安全风险检测规则时，调用本接口由大模型实时生成安全合规的替代回答。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GenerateLLMSecAnswer(request *GenerateLLMSecAnswerRequest) (response *GenerateLLMSecAnswerResponse, err error) {
+    return c.GenerateLLMSecAnswerWithContext(context.Background(), request)
+}
+
+// GenerateLLMSecAnswer
+// 大模型安全代答生成接口。当用户输入或模型输出命中内容安全风险检测规则时，调用本接口由大模型实时生成安全合规的替代回答。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GenerateLLMSecAnswerWithContext(ctx context.Context, request *GenerateLLMSecAnswerRequest) (response *GenerateLLMSecAnswerResponse, err error) {
+    if request == nil {
+        request = NewGenerateLLMSecAnswerRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "GenerateLLMSecAnswer")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenerateLLMSecAnswer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGenerateLLMSecAnswerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetAttackDownloadRecordsRequest() (request *GetAttackDownloadRecordsRequest) {
     request = &GetAttackDownloadRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},

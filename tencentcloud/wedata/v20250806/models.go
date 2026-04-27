@@ -10450,44 +10450,44 @@ type ListLineagePage struct {
 
 // Predefined struct for user
 type ListLineageRequestParams struct {
-	// 实体唯一ID
+	// <p>实体唯一ID</p>
 	ResourceUniqueId *string `json:"ResourceUniqueId,omitnil,omitempty" name:"ResourceUniqueId"`
 
-	// 实体类型 TABLE|METRIC|MODEL|SERVICE|COLUMN
+	// <p>实体类型 TABLE|METRIC|MODEL|SERVICE|COLUMN</p>
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 血缘方向 INPUT｜OUTPUT
+	// <p>血缘方向 INPUT｜OUTPUT</p>
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 
-	// 页码
+	// <p>页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 来源：WEDATA|THIRD 默认WEDATA
+	// <p>来源：WEDATA|THIRD 默认WEDATA</p>
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 }
 
 type ListLineageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实体唯一ID
+	// <p>实体唯一ID</p>
 	ResourceUniqueId *string `json:"ResourceUniqueId,omitnil,omitempty" name:"ResourceUniqueId"`
 
-	// 实体类型 TABLE|METRIC|MODEL|SERVICE|COLUMN
+	// <p>实体类型 TABLE|METRIC|MODEL|SERVICE|COLUMN</p>
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 血缘方向 INPUT｜OUTPUT
+	// <p>血缘方向 INPUT｜OUTPUT</p>
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 
-	// 页码
+	// <p>页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 来源：WEDATA|THIRD 默认WEDATA
+	// <p>来源：WEDATA|THIRD 默认WEDATA</p>
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 }
 
@@ -10517,7 +10517,7 @@ func (r *ListLineageRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListLineageResponseParams struct {
-	// 分页数据
+	// <p>分页数据</p>
 	Data *ListLineagePage `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11285,38 +11285,38 @@ type ListProcessLineagePage struct {
 
 // Predefined struct for user
 type ListProcessLineageRequestParams struct {
-	// 任务唯一ID
+	// <p>任务唯一ID</p>
 	ProcessId *string `json:"ProcessId,omitnil,omitempty" name:"ProcessId"`
 
-	// 任务类型    //调度任务     SCHEDULE_TASK,     //集成任务     INTEGRATION_TASK,     //第三方上报     THIRD_REPORT,     //数据建模     TABLE_MODEL,     //模型创建指标     MODEL_METRIC,     //原子指标创建衍生指标     METRIC_METRIC,     //数据服务     DATA_SERVICE
+	// <p>任务类型    //调度任务     SCHEDULE_TASK,     //集成任务     INTEGRATION_TASK,     //第三方上报     THIRD_REPORT,     //数据建模     TABLE_MODEL,     //模型创建指标     MODEL_METRIC,     //原子指标创建衍生指标     METRIC_METRIC,     //数据服务     DATA_SERVICE</p>
 	ProcessType *string `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 
-	// 页码
+	// <p>页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 来源：WEDATA|THIRD 默认WEDATA
+	// <p>来源：WEDATA|THIRD 默认WEDATA</p>
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 }
 
 type ListProcessLineageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务唯一ID
+	// <p>任务唯一ID</p>
 	ProcessId *string `json:"ProcessId,omitnil,omitempty" name:"ProcessId"`
 
-	// 任务类型    //调度任务     SCHEDULE_TASK,     //集成任务     INTEGRATION_TASK,     //第三方上报     THIRD_REPORT,     //数据建模     TABLE_MODEL,     //模型创建指标     MODEL_METRIC,     //原子指标创建衍生指标     METRIC_METRIC,     //数据服务     DATA_SERVICE
+	// <p>任务类型    //调度任务     SCHEDULE_TASK,     //集成任务     INTEGRATION_TASK,     //第三方上报     THIRD_REPORT,     //数据建模     TABLE_MODEL,     //模型创建指标     MODEL_METRIC,     //原子指标创建衍生指标     METRIC_METRIC,     //数据服务     DATA_SERVICE</p>
 	ProcessType *string `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 
-	// 页码
+	// <p>页码</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 来源：WEDATA|THIRD 默认WEDATA
+	// <p>来源：WEDATA|THIRD 默认WEDATA</p>
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 }
 
@@ -11345,7 +11345,7 @@ func (r *ListProcessLineageRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListProcessLineageResponseParams struct {
-	// 分页数据
+	// <p>分页数据</p>
 	Data *ListProcessLineagePage `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

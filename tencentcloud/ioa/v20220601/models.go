@@ -2370,6 +2370,9 @@ type DescribeLocalAccountsPage struct {
 
 // Predefined struct for user
 type DescribeLocalAccountsRequestParams struct {
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
 	// 查询条件：过滤或排序
 	// 1、UserName，string类型，姓名
 	// 是否必填：否
@@ -2380,6 +2383,10 @@ type DescribeLocalAccountsRequestParams struct {
 	// 过滤支持：是，支持eq、like、ilike
 	// 排序支持：否
 	// 3、Phone，string类型，手机号
+	// 是否必填：否
+	// 过滤支持：是，支持eq、like、ilike
+	// 排序支持：否
+	// 4、Email，string类型，邮箱
 	// 是否必填：否
 	// 过滤支持：是，支持eq、like、ilike
 	// 排序支持：否
@@ -2395,6 +2402,9 @@ type DescribeLocalAccountsRequestParams struct {
 type DescribeLocalAccountsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
 	// 查询条件：过滤或排序
 	// 1、UserName，string类型，姓名
 	// 是否必填：否
@@ -2405,6 +2415,10 @@ type DescribeLocalAccountsRequest struct {
 	// 过滤支持：是，支持eq、like、ilike
 	// 排序支持：否
 	// 3、Phone，string类型，手机号
+	// 是否必填：否
+	// 过滤支持：是，支持eq、like、ilike
+	// 排序支持：否
+	// 4、Email，string类型，邮箱
 	// 是否必填：否
 	// 过滤支持：是，支持eq、like、ilike
 	// 排序支持：否
@@ -2429,6 +2443,7 @@ func (r *DescribeLocalAccountsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "DomainInstanceId")
 	delete(f, "Condition")
 	delete(f, "AccountGroupId")
 	delete(f, "ShowFlag")
@@ -2833,157 +2848,157 @@ func (r *DescribeVirtualDevicesResponse) FromJsonString(s string) error {
 }
 
 type DeviceDetail struct {
-	// 设备ID
+	// <p>设备ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 设备唯一标识码，在ioa中每个设备有唯一标识码
+	// <p>设备唯一标识码，在ioa中每个设备有唯一标识码</p>
 	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
 
-	// 终端名（设备名）
+	// <p>终端名（设备名）</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 设备所在分组ID
+	// <p>设备所在分组ID</p>
 	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// OS平台，0：Windows 、1： Linux、 2：macOS 、4： Android、 5: iOS。默认是0
+	// <p>OS平台，0：Windows 、1： Linux、 2：macOS 、4： Android、 5: iOS。默认是0</p>
 	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
 
-	// 设备IP地址（出口IP）
+	// <p>设备IP地址（出口IP）</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 在线状态，2：在线、0或者1:离线
+	// <p>在线状态，2：在线、0或者1:离线</p>
 	OnlineStatus *int64 `json:"OnlineStatus,omitnil,omitempty" name:"OnlineStatus"`
 
-	// 客户端版本号-大整数
+	// <p>客户端版本号-大整数</p>
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 客户端版本号-点分字符串
+	// <p>客户端版本号-点分字符串</p>
 	StrVersion *string `json:"StrVersion,omitnil,omitempty" name:"StrVersion"`
 
-	// 首次在线时间
+	// <p>首次在线时间</p>
 	Itime *string `json:"Itime,omitnil,omitempty" name:"Itime"`
 
-	// 最后一次在线时间
+	// <p>最后一次在线时间</p>
 	ConnActiveTime *string `json:"ConnActiveTime,omitnil,omitempty" name:"ConnActiveTime"`
 
-	// 设备是否加锁 ，1：锁定 0或者2：未锁定。
+	// <p>设备是否加锁 ，1：锁定 0或者2：未锁定。</p>
 	Locked *int64 `json:"Locked,omitnil,omitempty" name:"Locked"`
 
-	// 设备本地IP列表, 包括IP
+	// <p>设备本地IP列表, 包括IP</p>
 	LocalIpList *string `json:"LocalIpList,omitnil,omitempty" name:"LocalIpList"`
 
-	// 宿主机id（需要宿主机也安装iOA才能显示）
+	// <p>宿主机id（需要宿主机也安装iOA才能显示）</p>
 	HostId *int64 `json:"HostId,omitnil,omitempty" name:"HostId"`
 
-	// 设备所属分组名
+	// <p>设备所属分组名</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 设备所属分组路径
+	// <p>设备所属分组路径</p>
 	GroupNamePath *string `json:"GroupNamePath,omitnil,omitempty" name:"GroupNamePath"`
 
-	// 未修复高危漏洞数(只支持32位)
+	// <p>未修复高危漏洞数(只支持32位)</p>
 	CriticalVulListCount *int64 `json:"CriticalVulListCount,omitnil,omitempty" name:"CriticalVulListCount"`
 
-	// 操作系统名称
+	// <p>操作系统名称</p>
 	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
 
-	// 操作系统位数
+	// <p>操作系统位数</p>
 	OsBits *int64 `json:"OsBits,omitnil,omitempty" name:"OsBits"`
 
-	// 操作系统版本
+	// <p>操作系统版本</p>
 	OsVersion *string `json:"OsVersion,omitnil,omitempty" name:"OsVersion"`
 
-	// 操作系统语言
+	// <p>操作系统语言</p>
 	OsLanguage *string `json:"OsLanguage,omitnil,omitempty" name:"OsLanguage"`
 
-	// 操作系统安装时间
+	// <p>操作系统安装时间</p>
 	OsInstallDate *string `json:"OsInstallDate,omitnil,omitempty" name:"OsInstallDate"`
 
-	// 设备名，和Name相同
+	// <p>设备名，和Name相同</p>
 	ComputerName *string `json:"ComputerName,omitnil,omitempty" name:"ComputerName"`
 
-	// 登录域名
+	// <p>登录域名</p>
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
-	// MAC地址
+	// <p>MAC地址</p>
 	MacAddr *string `json:"MacAddr,omitnil,omitempty" name:"MacAddr"`
 
-	// 漏洞数
+	// <p>漏洞数</p>
 	VulCount *int64 `json:"VulCount,omitnil,omitempty" name:"VulCount"`
 
-	// 病毒风险数
+	// <p>病毒风险数</p>
 	RiskCount *int64 `json:"RiskCount,omitnil,omitempty" name:"RiskCount"`
 
-	// 病毒库版本
+	// <p>病毒库版本</p>
 	VirusVer *string `json:"VirusVer,omitnil,omitempty" name:"VirusVer"`
 
-	// 漏洞库版本
+	// <p>漏洞库版本</p>
 	VulVersion *string `json:"VulVersion,omitnil,omitempty" name:"VulVersion"`
 
-	// 系统修复引擎版本
+	// <p>系统修复引擎版本</p>
 	SysRepVersion *string `json:"SysRepVersion,omitnil,omitempty" name:"SysRepVersion"`
 
-	// 高危补丁列表
+	// <p>高危补丁列表</p>
 	VulCriticalList []*string `json:"VulCriticalList,omitnil,omitempty" name:"VulCriticalList"`
 
-	// 标签
+	// <p>标签</p>
 	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 终端用户名
+	// <p>终端用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 防火墙状态，不等于0表示开启
+	// <p>防火墙状态，不等于0表示开启</p>
 	FirewallStatus *int64 `json:"FirewallStatus,omitnil,omitempty" name:"FirewallStatus"`
 
-	// SN序列号
+	// <p>SN序列号</p>
 	SerialNum *string `json:"SerialNum,omitnil,omitempty" name:"SerialNum"`
 
-	// 设备管控策略版本
+	// <p>设备管控策略版本</p>
 	DeviceStrategyVer *string `json:"DeviceStrategyVer,omitnil,omitempty" name:"DeviceStrategyVer"`
 
-	// NGN策略版本
+	// <p>NGN策略版本</p>
 	NGNStrategyVer *string `json:"NGNStrategyVer,omitnil,omitempty" name:"NGNStrategyVer"`
 
-	// 最近登录账户的账号(账号系统用户账号)
+	// <p>最近登录账户的账号(账号系统用户账号)</p>
 	IOAUserName *string `json:"IOAUserName,omitnil,omitempty" name:"IOAUserName"`
 
-	// 设备管控新策略
+	// <p>设备管控新策略</p>
 	DeviceNewStrategyVer *string `json:"DeviceNewStrategyVer,omitnil,omitempty" name:"DeviceNewStrategyVer"`
 
-	// NGN策略新版本
+	// <p>NGN策略新版本</p>
 	NGNNewStrategyVer *string `json:"NGNNewStrategyVer,omitnil,omitempty" name:"NGNNewStrategyVer"`
 
-	// 宿主机名称（需要宿主机也安装iOA才能显示）
+	// <p>宿主机名称（需要宿主机也安装iOA才能显示）</p>
 	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 
-	// 主板序列号
+	// <p>主板序列号</p>
 	BaseBoardSn *string `json:"BaseBoardSn,omitnil,omitempty" name:"BaseBoardSn"`
 
-	// 绑定账户名称
+	// <p>绑定账户名称</p>
 	AccountUsers *string `json:"AccountUsers,omitnil,omitempty" name:"AccountUsers"`
 
-	// 身份策略版本
+	// <p>身份策略版本</p>
 	IdentityStrategyVer *string `json:"IdentityStrategyVer,omitnil,omitempty" name:"IdentityStrategyVer"`
 
-	// 身份策略新版本
+	// <p>身份策略新版本</p>
 	IdentityNewStrategyVer *string `json:"IdentityNewStrategyVer,omitnil,omitempty" name:"IdentityNewStrategyVer"`
 
-	// 最近登录账号部门
+	// <p>最近登录账号部门</p>
 	AccountGroupName *string `json:"AccountGroupName,omitnil,omitempty" name:"AccountGroupName"`
 
-	// 最近登录账户的姓名(账号系统用户姓名)
+	// <p>最近登录账户的姓名(账号系统用户姓名)</p>
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
-	// 账号组id
+	// <p>账号组id</p>
 	AccountGroupId *int64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 
-	// 是否开启录屏权限，仅macOS， 0： 未开启 、1： 开启
+	// <p>是否开启录屏权限，仅macOS， 0： 未开启 、1： 开启</p>
 	ScreenRecordingPermission *int64 `json:"ScreenRecordingPermission,omitnil,omitempty" name:"ScreenRecordingPermission"`
 
-	// 是否开启磁盘访问权限，仅macOS， 0： 未开启、 1： 开启
+	// <p>是否开启磁盘访问权限，仅macOS， 0： 未开启、 1： 开启</p>
 	DiskAccessPermission *int64 `json:"DiskAccessPermission,omitnil,omitempty" name:"DiskAccessPermission"`
 
-	// 终端备注名
+	// <p>终端备注名</p>
 	RemarkName *string `json:"RemarkName,omitnil,omitempty" name:"RemarkName"`
 }
 

@@ -160,6 +160,7 @@ func NewCreateCommandResponse() (response *CreateCommandResponse) {
 // 此接口用于创建命令。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TAGOPERATIONFAILED = "FailedOperation.TagOperationFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -197,6 +198,7 @@ func (c *Client) CreateCommand(request *CreateCommandRequest) (response *CreateC
 // 此接口用于创建命令。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TAGOPERATIONFAILED = "FailedOperation.TagOperationFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

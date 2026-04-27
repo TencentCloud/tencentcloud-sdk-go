@@ -20,6 +20,54 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type ApiKeyAuthApplyVO struct {
+	// <p>id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>企业id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorpId *string `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// <p>apiKey</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiKey *string `json:"ApiKey,omitnil,omitempty" name:"ApiKey"`
+
+	// <p>默认用户</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultUser *string `json:"DefaultUser,omitnil,omitempty" name:"DefaultUser"`
+
+	// <p>创建人</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedUser *string `json:"CreatedUser,omitnil,omitempty" name:"CreatedUser"`
+
+	// <p>创建时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// <p>更新人</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedUser *string `json:"UpdatedUser,omitnil,omitempty" name:"UpdatedUser"`
+
+	// <p>更新时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
+}
+
+type ApiKeyAuthApplyVOList struct {
+	// <p>总数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>页数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPages *int64 `json:"TotalPages,omitnil,omitempty" name:"TotalPages"`
+
+	// <p>列表数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*ApiKeyAuthApplyVO `json:"List,omitnil,omitempty" name:"List"`
+}
+
 // Predefined struct for user
 type ApplyEmbedIntervalRequestParams struct {
 	// 分享项目id
@@ -282,6 +330,76 @@ type CorpUserListData struct {
 
 	// 页数
 	TotalPages *int64 `json:"TotalPages,omitnil,omitempty" name:"TotalPages"`
+}
+
+// Predefined struct for user
+type CreateAuthApiKeyRequestParams struct {
+	// <p>默认用户</p>
+	DefaultUser *string `json:"DefaultUser,omitnil,omitempty" name:"DefaultUser"`
+}
+
+type CreateAuthApiKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>默认用户</p>
+	DefaultUser *string `json:"DefaultUser,omitnil,omitempty" name:"DefaultUser"`
+}
+
+func (r *CreateAuthApiKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAuthApiKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DefaultUser")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAuthApiKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAuthApiKeyResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// <p>&quot;&quot;</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// <p>&quot;success&quot;</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ApiKeyAuthApplyVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAuthApiKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAuthApiKeyResponseParams `json:"Response"`
+}
+
+func (r *CreateAuthApiKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAuthApiKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1786,6 +1904,76 @@ type DatasourceInfoData struct {
 }
 
 // Predefined struct for user
+type DeleteAuthApiKeyRequestParams struct {
+	// <p>ApiKey</p>
+	ApiKey *string `json:"ApiKey,omitnil,omitempty" name:"ApiKey"`
+}
+
+type DeleteAuthApiKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>ApiKey</p>
+	ApiKey *string `json:"ApiKey,omitnil,omitempty" name:"ApiKey"`
+}
+
+func (r *DeleteAuthApiKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAuthApiKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApiKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAuthApiKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAuthApiKeyResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// <p>&quot;&quot;</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// <p>&quot;success&quot;</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAuthApiKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAuthApiKeyResponseParams `json:"Response"`
+}
+
+func (r *DeleteAuthApiKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAuthApiKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteDatasourceRequestParams struct {
 	// 数据源id
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -2216,6 +2404,167 @@ func (r *DeleteUserRoleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteUserRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuthApiKeyInfoRequestParams struct {
+	// <p>ApiKey</p>
+	ApiKey *string `json:"ApiKey,omitnil,omitempty" name:"ApiKey"`
+}
+
+type DescribeAuthApiKeyInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>ApiKey</p>
+	ApiKey *string `json:"ApiKey,omitnil,omitempty" name:"ApiKey"`
+}
+
+func (r *DescribeAuthApiKeyInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuthApiKeyInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApiKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuthApiKeyInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuthApiKeyInfoResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// <p>&quot;&quot;</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// <p>&quot;success&quot;</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ApiKeyAuthApplyVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAuthApiKeyInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuthApiKeyInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuthApiKeyInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuthApiKeyInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuthApiKeyListRequestParams struct {
+	// <p>全部</p><p>默认值：false</p>
+	AllPage *bool `json:"AllPage,omitnil,omitempty" name:"AllPage"`
+
+	// <p>页码</p><p>默认值：0</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>分页大小</p><p>默认值：10</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>关键字过滤</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+}
+
+type DescribeAuthApiKeyListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>全部</p><p>默认值：false</p>
+	AllPage *bool `json:"AllPage,omitnil,omitempty" name:"AllPage"`
+
+	// <p>页码</p><p>默认值：0</p>
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// <p>分页大小</p><p>默认值：10</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>关键字过滤</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+}
+
+func (r *DescribeAuthApiKeyListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuthApiKeyListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AllPage")
+	delete(f, "PageNo")
+	delete(f, "PageSize")
+	delete(f, "Keyword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuthApiKeyListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuthApiKeyListResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// <p>{}</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// <p>信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ApiKeyAuthApplyVOList `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAuthApiKeyListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuthApiKeyListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuthApiKeyListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuthApiKeyListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3976,6 +4325,83 @@ type IdDTO struct {
 	// 3: 处理失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranStatus *int64 `json:"TranStatus,omitnil,omitempty" name:"TranStatus"`
+}
+
+// Predefined struct for user
+type ModifyAuthApiKeyRequestParams struct {
+	// <p>ApiKey</p>
+	ApiKey *string `json:"ApiKey,omitnil,omitempty" name:"ApiKey"`
+
+	// <p>默认用户</p>
+	DefaultUser *string `json:"DefaultUser,omitnil,omitempty" name:"DefaultUser"`
+}
+
+type ModifyAuthApiKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>ApiKey</p>
+	ApiKey *string `json:"ApiKey,omitnil,omitempty" name:"ApiKey"`
+
+	// <p>默认用户</p>
+	DefaultUser *string `json:"DefaultUser,omitnil,omitempty" name:"DefaultUser"`
+}
+
+func (r *ModifyAuthApiKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAuthApiKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApiKey")
+	delete(f, "DefaultUser")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAuthApiKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAuthApiKeyResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// <p>&quot;&quot;</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// <p>&quot;success&quot;</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ApiKeyAuthApplyVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAuthApiKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAuthApiKeyResponseParams `json:"Response"`
+}
+
+func (r *ModifyAuthApiKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAuthApiKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

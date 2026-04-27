@@ -205,6 +205,64 @@ func (c *Client) ClearEmbedTokenWithContext(ctx context.Context, request *ClearE
     return
 }
 
+func NewCreateAuthApiKeyRequest() (request *CreateAuthApiKeyRequest) {
+    request = &CreateAuthApiKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "CreateAuthApiKey")
+    
+    
+    return
+}
+
+func NewCreateAuthApiKeyResponse() (response *CreateAuthApiKeyResponse) {
+    response = &CreateAuthApiKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAuthApiKey
+// 创建ApiKey
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNAUTHORIZEDOPERATION_INACTIVE = "UnauthorizedOperation.Inactive"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) CreateAuthApiKey(request *CreateAuthApiKeyRequest) (response *CreateAuthApiKeyResponse, err error) {
+    return c.CreateAuthApiKeyWithContext(context.Background(), request)
+}
+
+// CreateAuthApiKey
+// 创建ApiKey
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNAUTHORIZEDOPERATION_INACTIVE = "UnauthorizedOperation.Inactive"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) CreateAuthApiKeyWithContext(ctx context.Context, request *CreateAuthApiKeyRequest) (response *CreateAuthApiKeyResponse, err error) {
+    if request == nil {
+        request = NewCreateAuthApiKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "CreateAuthApiKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAuthApiKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAuthApiKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDatasourceRequest() (request *CreateDatasourceRequest) {
     request = &CreateDatasourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -841,6 +899,64 @@ func (c *Client) CreateUserRoleProjectWithContext(ctx context.Context, request *
     return
 }
 
+func NewDeleteAuthApiKeyRequest() (request *DeleteAuthApiKeyRequest) {
+    request = &DeleteAuthApiKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "DeleteAuthApiKey")
+    
+    
+    return
+}
+
+func NewDeleteAuthApiKeyResponse() (response *DeleteAuthApiKeyResponse) {
+    response = &DeleteAuthApiKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAuthApiKey
+// 删除ApiKey
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNAUTHORIZEDOPERATION_INACTIVE = "UnauthorizedOperation.Inactive"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DeleteAuthApiKey(request *DeleteAuthApiKeyRequest) (response *DeleteAuthApiKeyResponse, err error) {
+    return c.DeleteAuthApiKeyWithContext(context.Background(), request)
+}
+
+// DeleteAuthApiKey
+// 删除ApiKey
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNAUTHORIZEDOPERATION_INACTIVE = "UnauthorizedOperation.Inactive"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DeleteAuthApiKeyWithContext(ctx context.Context, request *DeleteAuthApiKeyRequest) (response *DeleteAuthApiKeyResponse, err error) {
+    if request == nil {
+        request = NewDeleteAuthApiKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DeleteAuthApiKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAuthApiKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAuthApiKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDatasourceRequest() (request *DeleteDatasourceRequest) {
     request = &DeleteDatasourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1227,6 +1343,120 @@ func (c *Client) DeleteUserRoleProjectWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDeleteUserRoleProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAuthApiKeyInfoRequest() (request *DescribeAuthApiKeyInfoRequest) {
+    request = &DescribeAuthApiKeyInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "DescribeAuthApiKeyInfo")
+    
+    
+    return
+}
+
+func NewDescribeAuthApiKeyInfoResponse() (response *DescribeAuthApiKeyInfoResponse) {
+    response = &DescribeAuthApiKeyInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAuthApiKeyInfo
+// ApiKey信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNAUTHORIZEDOPERATION_INACTIVE = "UnauthorizedOperation.Inactive"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DescribeAuthApiKeyInfo(request *DescribeAuthApiKeyInfoRequest) (response *DescribeAuthApiKeyInfoResponse, err error) {
+    return c.DescribeAuthApiKeyInfoWithContext(context.Background(), request)
+}
+
+// DescribeAuthApiKeyInfo
+// ApiKey信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNAUTHORIZEDOPERATION_INACTIVE = "UnauthorizedOperation.Inactive"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DescribeAuthApiKeyInfoWithContext(ctx context.Context, request *DescribeAuthApiKeyInfoRequest) (response *DescribeAuthApiKeyInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuthApiKeyInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DescribeAuthApiKeyInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuthApiKeyInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuthApiKeyInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAuthApiKeyListRequest() (request *DescribeAuthApiKeyListRequest) {
+    request = &DescribeAuthApiKeyListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "DescribeAuthApiKeyList")
+    
+    
+    return
+}
+
+func NewDescribeAuthApiKeyListResponse() (response *DescribeAuthApiKeyListResponse) {
+    response = &DescribeAuthApiKeyListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAuthApiKeyList
+// ApiKey列表
+//
+// 可能返回的错误码:
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNAUTHORIZEDOPERATION_INACTIVE = "UnauthorizedOperation.Inactive"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
+func (c *Client) DescribeAuthApiKeyList(request *DescribeAuthApiKeyListRequest) (response *DescribeAuthApiKeyListResponse, err error) {
+    return c.DescribeAuthApiKeyListWithContext(context.Background(), request)
+}
+
+// DescribeAuthApiKeyList
+// ApiKey列表
+//
+// 可能返回的错误码:
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNAUTHORIZEDOPERATION_INACTIVE = "UnauthorizedOperation.Inactive"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
+func (c *Client) DescribeAuthApiKeyListWithContext(ctx context.Context, request *DescribeAuthApiKeyListRequest) (response *DescribeAuthApiKeyListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuthApiKeyListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DescribeAuthApiKeyList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuthApiKeyList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuthApiKeyListResponse()
     err = c.Send(request, response)
     return
 }
@@ -2181,6 +2411,64 @@ func (c *Client) ExportScreenPageWithContext(ctx context.Context, request *Expor
     request.SetContext(ctx)
     
     response = NewExportScreenPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAuthApiKeyRequest() (request *ModifyAuthApiKeyRequest) {
+    request = &ModifyAuthApiKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "ModifyAuthApiKey")
+    
+    
+    return
+}
+
+func NewModifyAuthApiKeyResponse() (response *ModifyAuthApiKeyResponse) {
+    response = &ModifyAuthApiKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAuthApiKey
+// 更新ApiKey
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNAUTHORIZEDOPERATION_INACTIVE = "UnauthorizedOperation.Inactive"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) ModifyAuthApiKey(request *ModifyAuthApiKeyRequest) (response *ModifyAuthApiKeyResponse, err error) {
+    return c.ModifyAuthApiKeyWithContext(context.Background(), request)
+}
+
+// ModifyAuthApiKey
+// 更新ApiKey
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNAUTHORIZEDOPERATION_INACTIVE = "UnauthorizedOperation.Inactive"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) ModifyAuthApiKeyWithContext(ctx context.Context, request *ModifyAuthApiKeyRequest) (response *ModifyAuthApiKeyResponse, err error) {
+    if request == nil {
+        request = NewModifyAuthApiKeyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "ModifyAuthApiKey")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAuthApiKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAuthApiKeyResponse()
     err = c.Send(request, response)
     return
 }

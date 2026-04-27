@@ -564,57 +564,59 @@ func (r *AlterDMSTableResponse) FromJsonString(s string) error {
 }
 
 type AnalysisTaskResults struct {
-	// 任务Id
+	// <p>任务Id</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 任务创建时间，毫秒时间戳
+	// <p>任务创建时间，毫秒时间戳</p>
 	InstanceStartTime *int64 `json:"InstanceStartTime,omitnil,omitempty" name:"InstanceStartTime"`
 
-	// 任务结束时间，毫秒时间戳
+	// <p>任务结束时间，毫秒时间戳</p>
 	InstanceCompleteTime *int64 `json:"InstanceCompleteTime,omitnil,omitempty" name:"InstanceCompleteTime"`
 
-	// 任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。
+	// <p>任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。</p>
 	State *int64 `json:"State,omitnil,omitempty" name:"State"`
 
-	// 任务SQL语句
+	// <p>任务SQL语句</p>
 	SQL *string `json:"SQL,omitnil,omitempty" name:"SQL"`
 
-	// 计算资源名字
+	// <p>计算资源名字</p>
 	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
 
-	// 单位毫秒，引擎内执行耗时, 反映真正用于计算所需的耗时，即从  Spark 任务第一个 Task  开始执行到任务结束之间的耗时。
-	// 具体的：会统计任务的每个 Spark Stage 第一个 Task 到最后一个 Task 完成时长之和，不包含任务开始的排队耗时（即剔除从任务提交到 Spark Task 开始执行之间的调度等其他耗时），也不包含任务执行过程中多个 Spark Stage 之间因 executor 资源不足而等待执行 Task 所消耗的时间。
+	// <p>单位毫秒，引擎内执行耗时, 反映真正用于计算所需的耗时，即从  Spark 任务第一个 Task  开始执行到任务结束之间的耗时。<br>具体的：会统计任务的每个 Spark Stage 第一个 Task 到最后一个 Task 完成时长之和，不包含任务开始的排队耗时（即剔除从任务提交到 Spark Task 开始执行之间的调度等其他耗时），也不包含任务执行过程中多个 Spark Stage 之间因 executor 资源不足而等待执行 Task 所消耗的时间。</p>
 	JobTimeSum *int64 `json:"JobTimeSum,omitnil,omitempty" name:"JobTimeSum"`
 
-	// 单位秒，累计 CPU* 秒 ( 累计 CPU * 时 = 累计 CPU* 秒/ 3600)，统计参与计算所用 Spark Executor 每个 core 的 CPU 执行时长总和
+	// <p>单位秒，累计 CPU* 秒 ( 累计 CPU * 时 = 累计 CPU* 秒/ 3600)，统计参与计算所用 Spark Executor 每个 core 的 CPU 执行时长总和</p>
 	TaskTimeSum *int64 `json:"TaskTimeSum,omitnil,omitempty" name:"TaskTimeSum"`
 
-	// 数据扫描总行数
+	// <p>数据扫描总行数</p>
 	InputRecordsSum *int64 `json:"InputRecordsSum,omitnil,omitempty" name:"InputRecordsSum"`
 
-	// 数据扫描总 bytes
+	// <p>数据扫描总 bytes</p>
 	InputBytesSum *int64 `json:"InputBytesSum,omitnil,omitempty" name:"InputBytesSum"`
 
-	// 输出总行数
+	// <p>输出总行数</p>
 	OutputRecordsSum *int64 `json:"OutputRecordsSum,omitnil,omitempty" name:"OutputRecordsSum"`
 
-	// 输出总 bytes
+	// <p>输出总 bytes</p>
 	OutputBytesSum *int64 `json:"OutputBytesSum,omitnil,omitempty" name:"OutputBytesSum"`
 
-	// shuffle read 总 bytes
+	// <p>shuffle read 总 bytes</p>
 	ShuffleReadBytesSum *int64 `json:"ShuffleReadBytesSum,omitnil,omitempty" name:"ShuffleReadBytesSum"`
 
-	// shuffle read 总行数
+	// <p>shuffle read 总行数</p>
 	ShuffleReadRecordsSum *int64 `json:"ShuffleReadRecordsSum,omitnil,omitempty" name:"ShuffleReadRecordsSum"`
 
-	// 洞察结果类型分类，一个 json 数组，有如下几种类型：SPARK-StageScheduleDelay（资源抢占）, SPARK-ShuffleFailure（Shuffle异常）, SPARK-SlowTask（慢task）, SPARK-DataSkew（数据倾斜）, SPARK-InsufficientResource（磁盘或内存不足）
+	// <p>洞察结果类型分类，一个 json 数组，有如下几种类型：SPARK-StageScheduleDelay（资源抢占）, SPARK-ShuffleFailure（Shuffle异常）, SPARK-SlowTask（慢task）, SPARK-DataSkew（数据倾斜）, SPARK-InsufficientResource（磁盘或内存不足）</p>
 	AnalysisStatus *string `json:"AnalysisStatus,omitnil,omitempty" name:"AnalysisStatus"`
 
-	// 任务输出文件总数
+	// <p>任务输出文件总数</p>
 	OutputFilesNum *int64 `json:"OutputFilesNum,omitnil,omitempty" name:"OutputFilesNum"`
 
-	// 任务输出小文件总数
+	// <p>任务输出小文件总数</p>
 	OutputSmallFilesNum *int64 `json:"OutputSmallFilesNum,omitnil,omitempty" name:"OutputSmallFilesNum"`
+
+	// <p>shuffle write 总 Bytes 大小</p><p>单位：Bytes</p><p>默认值：无</p>
+	ShuffleWriteBytesSum *int64 `json:"ShuffleWriteBytesSum,omitnil,omitempty" name:"ShuffleWriteBytesSum"`
 }
 
 type Asset struct {
@@ -17785,238 +17787,243 @@ type Task struct {
 }
 
 type TaskFullRespInfo struct {
-	// 任务所属Database的名称。
+	// <p>任务所属Database的名称。</p>
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
-	// 任务数据量。
+	// <p>任务数据量。</p>
 	DataAmount *int64 `json:"DataAmount,omitnil,omitempty" name:"DataAmount"`
 
-	// 任务Id。
+	// <p>任务Id。</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 计算耗时，单位： ms
+	// <p>计算耗时，单位： ms</p>
 	UsedTime *int64 `json:"UsedTime,omitnil,omitempty" name:"UsedTime"`
 
-	// 任务输出路径。
+	// <p>任务输出路径。</p>
 	OutputPath *string `json:"OutputPath,omitnil,omitempty" name:"OutputPath"`
 
-	// 任务创建时间。
+	// <p>任务创建时间。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。
+	// <p>任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。</p>
 	State *int64 `json:"State,omitnil,omitempty" name:"State"`
 
-	// 任务SQL类型，DDL|DML等
+	// <p>任务SQL类型，DDL|DML等</p>
 	SQLType *string `json:"SQLType,omitnil,omitempty" name:"SQLType"`
 
-	// 任务SQL语句
+	// <p>任务SQL语句</p>
 	SQL *string `json:"SQL,omitnil,omitempty" name:"SQL"`
 
-	// 结果是否过期。
+	// <p>结果是否过期。</p>
 	ResultExpired *bool `json:"ResultExpired,omitnil,omitempty" name:"ResultExpired"`
 
-	// 数据影响统计信息。
+	// <p>数据影响统计信息。</p>
 	RowAffectInfo *string `json:"RowAffectInfo,omitnil,omitempty" name:"RowAffectInfo"`
 
-	// 任务结果数据表。
+	// <p>任务结果数据表。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSet *string `json:"DataSet,omitnil,omitempty" name:"DataSet"`
 
-	// 失败信息, 例如：errorMessage。该字段已废弃。
+	// <p>失败信息, 例如：errorMessage。该字段已废弃。</p>
 	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 
-	// 任务执行进度num/100(%)
+	// <p>任务执行进度num/100(%)</p>
 	Percentage *int64 `json:"Percentage,omitnil,omitempty" name:"Percentage"`
 
-	// 任务执行输出信息。
+	// <p>任务执行输出信息。</p>
 	OutputMessage *string `json:"OutputMessage,omitnil,omitempty" name:"OutputMessage"`
 
-	// 执行SQL的引擎类型
+	// <p>执行SQL的引擎类型</p>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 任务进度明细
+	// <p>任务进度明细</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProgressDetail *string `json:"ProgressDetail,omitnil,omitempty" name:"ProgressDetail"`
 
-	// 任务结束时间
+	// <p>任务结束时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 计算资源id
+	// <p>计算资源id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
 
-	// 执行sql的子uin
+	// <p>执行sql的子uin</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateUin *string `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
 
-	// 计算资源名字
+	// <p>计算资源名字</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
 
-	// 导入类型是本地导入还是cos
+	// <p>导入类型是本地导入还是cos</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputType *string `json:"InputType,omitnil,omitempty" name:"InputType"`
 
-	// 导入配置
+	// <p>导入配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputConf *string `json:"InputConf,omitnil,omitempty" name:"InputConf"`
 
-	// 数据条数
+	// <p>数据条数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataNumber *int64 `json:"DataNumber,omitnil,omitempty" name:"DataNumber"`
 
-	// 查询数据能不能下载
+	// <p>查询数据能不能下载</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CanDownload *bool `json:"CanDownload,omitnil,omitempty" name:"CanDownload"`
 
-	// 用户别名
+	// <p>用户别名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserAlias *string `json:"UserAlias,omitnil,omitempty" name:"UserAlias"`
 
-	// spark应用作业名
+	// <p>spark应用作业名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SparkJobName *string `json:"SparkJobName,omitnil,omitempty" name:"SparkJobName"`
 
-	// spark应用作业Id
+	// <p>spark应用作业Id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SparkJobId *string `json:"SparkJobId,omitnil,omitempty" name:"SparkJobId"`
 
-	// spark应用入口jar文件
+	// <p>spark应用入口jar文件</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SparkJobFile *string `json:"SparkJobFile,omitnil,omitempty" name:"SparkJobFile"`
 
-	// spark ui url
+	// <p>spark ui url</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UiUrl *string `json:"UiUrl,omitnil,omitempty" name:"UiUrl"`
 
-	// 任务耗时，单位： ms
+	// <p>任务耗时，单位： ms</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalTime *int64 `json:"TotalTime,omitnil,omitempty" name:"TotalTime"`
 
-	// spark app job执行task的程序入口参数
+	// <p>spark app job执行task的程序入口参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CmdArgs *string `json:"CmdArgs,omitnil,omitempty" name:"CmdArgs"`
 
-	// 集群镜像大版本名称
+	// <p>集群镜像大版本名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageVersion *string `json:"ImageVersion,omitnil,omitempty" name:"ImageVersion"`
 
-	// driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+	// <p>driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DriverSize *string `json:"DriverSize,omitnil,omitempty" name:"DriverSize"`
 
-	// executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+	// <p>executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutorSize *string `json:"ExecutorSize,omitnil,omitempty" name:"ExecutorSize"`
 
-	// 指定executor数量，最小值为1，最大值小于集群规格
+	// <p>指定executor数量，最小值为1，最大值小于集群规格</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutorNums *uint64 `json:"ExecutorNums,omitnil,omitempty" name:"ExecutorNums"`
 
-	// 指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
+	// <p>指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutorMaxNumbers *uint64 `json:"ExecutorMaxNumbers,omitnil,omitempty" name:"ExecutorMaxNumbers"`
 
-	// 任务公共指标数据
+	// <p>任务公共指标数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CommonMetrics *CommonMetrics `json:"CommonMetrics,omitnil,omitempty" name:"CommonMetrics"`
 
-	// spark任务指标数据
+	// <p>spark任务指标数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SparkMonitorMetrics *SparkMonitorMetrics `json:"SparkMonitorMetrics,omitnil,omitempty" name:"SparkMonitorMetrics"`
 
-	// presto任务指标数据
+	// <p>presto任务指标数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrestoMonitorMetrics *PrestoMonitorMetrics `json:"PrestoMonitorMetrics,omitnil,omitempty" name:"PrestoMonitorMetrics"`
 
-	// 结果文件格式：默认为csv
+	// <p>结果文件格式：默认为csv</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultFormat *string `json:"ResultFormat,omitnil,omitempty" name:"ResultFormat"`
 
-	// 引擎类型，SparkSQL：SparkSQL 引擎；SparkBatch：Spark作业引擎；PrestoSQL：Presto引擎
+	// <p>引擎类型，SparkSQL：SparkSQL 引擎；SparkBatch：Spark作业引擎；PrestoSQL：Presto引擎</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineTypeDetail *string `json:"EngineTypeDetail,omitnil,omitempty" name:"EngineTypeDetail"`
 
-	// spark引擎资源组名称
+	// <p>spark引擎资源组名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 
-	// 任务来源信息,如thirdPartyApi,dataExploration, sparkAppTask等
+	// <p>任务来源信息,如thirdPartyApi,dataExploration, sparkAppTask等</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 子渠道信息，一般由第三方调用定义
+	// <p>子渠道信息，一般由第三方调用定义</p>
 	SourceExtra *string `json:"SourceExtra,omitnil,omitempty" name:"SourceExtra"`
 
-	// 创建人uin
+	// <p>创建人uin</p>
 	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
 
-	// 创建人名字
+	// <p>创建人名字</p>
 	CreatorAlias *string `json:"CreatorAlias,omitnil,omitempty" name:"CreatorAlias"`
 
-	// 引擎参数
+	// <p>引擎参数</p>
 	CustomizedConf *string `json:"CustomizedConf,omitnil,omitempty" name:"CustomizedConf"`
 
-	// 单位秒，累计 CPU* 秒 ( 累计 CPU * 时 = 累计 CPU* 秒/ 3600)，统计参与计算所用 Spark Executor 每个 core 的 CPU 执行时长总和
-	// 示例值：4329
+	// <p>单位秒，累计 CPU* 秒 ( 累计 CPU * 时 = 累计 CPU* 秒/ 3600)，统计参与计算所用 Spark Executor 每个 core 的 CPU 执行时长总和<br>示例值：4329</p>
 	TaskTimeSum *int64 `json:"TaskTimeSum,omitnil,omitempty" name:"TaskTimeSum"`
 
-	// 引擎执行时间
+	// <p>引擎执行时间</p>
 	StageStartTime *int64 `json:"StageStartTime,omitnil,omitempty" name:"StageStartTime"`
 
-	// 数据扫描条数
+	// <p>数据扫描条数</p>
 	InputRecordsSum *int64 `json:"InputRecordsSum,omitnil,omitempty" name:"InputRecordsSum"`
 
-	// 健康状态
+	// <p>健康状态</p>
 	AnalysisStatusType *int64 `json:"AnalysisStatusType,omitnil,omitempty" name:"AnalysisStatusType"`
 
-	// 输出总行数
+	// <p>输出总行数</p>
 	OutputRecordsSum *int64 `json:"OutputRecordsSum,omitnil,omitempty" name:"OutputRecordsSum"`
 
-	// 输出总大小
+	// <p>输出总大小</p>
 	OutputBytesSum *int64 `json:"OutputBytesSum,omitnil,omitempty" name:"OutputBytesSum"`
 
-	// 输出文件个数
+	// <p>输出文件个数</p>
 	OutputFilesNum *int64 `json:"OutputFilesNum,omitnil,omitempty" name:"OutputFilesNum"`
 
-	// 输出小文件个数
+	// <p>输出小文件个数</p>
 	OutputSmallFilesNum *int64 `json:"OutputSmallFilesNum,omitnil,omitempty" name:"OutputSmallFilesNum"`
 
-	// 数据shuffle行数
+	// <p>数据shuffle行数</p>
 	ShuffleReadRecordsSum *int64 `json:"ShuffleReadRecordsSum,omitnil,omitempty" name:"ShuffleReadRecordsSum"`
 
-	// 数据shuffle大小
+	// <p>数据shuffle大小</p>
 	ShuffleReadBytesSum *int64 `json:"ShuffleReadBytesSum,omitnil,omitempty" name:"ShuffleReadBytesSum"`
 
-	// spark作业id
+	// <p>spark作业id</p>
 	SparkAppId *string `json:"SparkAppId,omitnil,omitempty" name:"SparkAppId"`
 
-	// 任务大类，DLC2.0中任务区分为两大类，sql任务和作业任务
+	// <p>任务大类，DLC2.0中任务区分为两大类，sql任务和作业任务</p>
 	TaskCategory *string `json:"TaskCategory,omitnil,omitempty" name:"TaskCategory"`
 
-	// 任务名称
+	// <p>任务名称</p>
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 引擎类型，用做任务详情页跳转引擎tab
+	// <p>引擎类型，用做任务详情页跳转引擎tab</p>
 	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 
-	// 引擎是否支持洞察数据采集
+	// <p>引擎是否支持洞察数据采集</p>
 	EngineHasListenerConfig *bool `json:"EngineHasListenerConfig,omitnil,omitempty" name:"EngineHasListenerConfig"`
 
-	// spark引擎资源组id
+	// <p>spark引擎资源组id</p>
 	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 
-	// 任务计算耗时
+	// <p>任务计算耗时</p>
 	JobTimeSum *int64 `json:"JobTimeSum,omitnil,omitempty" name:"JobTimeSum"`
 
-	// 任务启动耗时
+	// <p>任务启动耗时</p>
 	LaunchTime *string `json:"LaunchTime,omitnil,omitempty" name:"LaunchTime"`
 
-	// Gpu Driver 规格
+	// <p>Gpu Driver 规格</p>
 	GpuDriverSize *int64 `json:"GpuDriverSize,omitnil,omitempty" name:"GpuDriverSize"`
 
-	// Gpu Executor 规格
+	// <p>Gpu Executor 规格</p>
 	GpuExecutorSize *int64 `json:"GpuExecutorSize,omitnil,omitempty" name:"GpuExecutorSize"`
+
+	// <p>ShuffleWrite数据量</p>
+	ShuffleWriteBytesSum *int64 `json:"ShuffleWriteBytesSum,omitnil,omitempty" name:"ShuffleWriteBytesSum"`
+
+	// <p>活跃core</p>
+	ActiveCore *int64 `json:"ActiveCore,omitnil,omitempty" name:"ActiveCore"`
 }
 
 type TaskMonitorInfo struct {

@@ -10758,51 +10758,57 @@ func (r *DescribeIpHitItemsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLLMContentSecCheckRequestParams struct {
-	//  服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则
+	// <p>服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// 要审核的内容
-	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
-
-	// 流量类型，是入向流量还是出向流量，入向：1，出向：2；入向和出向必填
+	// <p>流量类型，是入向流量还是出向流量，入向：1，出向：2；入向和出向必填</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 实例id，必传
+	// <p>实例id，必传</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 对话的id
+	// <p>要审核的内容</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>对话的id</p>
 	ChatId *string `json:"ChatId,omitnil,omitempty" name:"ChatId"`
 
-	// 标识用户的id，限速使用，不填，则限速会不生效
+	// <p>标识用户的id，限速使用，不填，则限速会不生效</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// token使用量，不填，会采用默认的token计算方法，计算的是模型的消耗，因为该值时在出向方向上添加，即Type=2
+	// <p>token使用量，不填，会采用默认的token计算方法，计算的是模型的消耗，因为该值时在出向方向上添加，即Type=2</p>
 	TokenUsage *uint64 `json:"TokenUsage,omitnil,omitempty" name:"TokenUsage"`
+
+	// <p>图片base64编码后的数据,body大小最大支持10M</p>
+	ImageEncode *string `json:"ImageEncode,omitnil,omitempty" name:"ImageEncode"`
 }
 
 type DescribeLLMContentSecCheckRequest struct {
 	*tchttp.BaseRequest
 	
-	//  服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则
+	// <p>服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
-	// 要审核的内容
-	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
-
-	// 流量类型，是入向流量还是出向流量，入向：1，出向：2；入向和出向必填
+	// <p>流量类型，是入向流量还是出向流量，入向：1，出向：2；入向和出向必填</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 实例id，必传
+	// <p>实例id，必传</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 对话的id
+	// <p>要审核的内容</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>对话的id</p>
 	ChatId *string `json:"ChatId,omitnil,omitempty" name:"ChatId"`
 
-	// 标识用户的id，限速使用，不填，则限速会不生效
+	// <p>标识用户的id，限速使用，不填，则限速会不生效</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// token使用量，不填，会采用默认的token计算方法，计算的是模型的消耗，因为该值时在出向方向上添加，即Type=2
+	// <p>token使用量，不填，会采用默认的token计算方法，计算的是模型的消耗，因为该值时在出向方向上添加，即Type=2</p>
 	TokenUsage *uint64 `json:"TokenUsage,omitnil,omitempty" name:"TokenUsage"`
+
+	// <p>图片base64编码后的数据,body大小最大支持10M</p>
+	ImageEncode *string `json:"ImageEncode,omitnil,omitempty" name:"ImageEncode"`
 }
 
 func (r *DescribeLLMContentSecCheckRequest) ToJsonString() string {
@@ -10818,12 +10824,13 @@ func (r *DescribeLLMContentSecCheckRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ServiceId")
-	delete(f, "Content")
 	delete(f, "Type")
 	delete(f, "InstanceId")
+	delete(f, "Content")
 	delete(f, "ChatId")
 	delete(f, "UserId")
 	delete(f, "TokenUsage")
+	delete(f, "ImageEncode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLLMContentSecCheckRequest has unknown keys!", "")
 	}
@@ -10832,7 +10839,7 @@ func (r *DescribeLLMContentSecCheckRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLLMContentSecCheckResponseParams struct {
-	// 检测结果
+	// <p>检测结果</p>
 	Data *LLMDetectResult `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14556,6 +14563,67 @@ func (r *GenerateDealsAndPayNewResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GenerateLLMSecAnswerRequestParams struct {
+	// <p>消息结构体内容</p>
+	Message *SSEClientMessage `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>消息id，传入 要回答的MsgID ，用于匹配自定义回答模板，最终可得到优化的代答结果</p>
+	MsgID *string `json:"MsgID,omitnil,omitempty" name:"MsgID"`
+}
+
+type GenerateLLMSecAnswerRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>消息结构体内容</p>
+	Message *SSEClientMessage `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>消息id，传入 要回答的MsgID ，用于匹配自定义回答模板，最终可得到优化的代答结果</p>
+	MsgID *string `json:"MsgID,omitnil,omitempty" name:"MsgID"`
+}
+
+func (r *GenerateLLMSecAnswerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateLLMSecAnswerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Message")
+	delete(f, "MsgID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateLLMSecAnswerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenerateLLMSecAnswerResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GenerateLLMSecAnswerResponse struct {
+	tchttp.BaseSSEResponse `json:"-"`
+	Response *GenerateLLMSecAnswerResponseParams `json:"Response"`
+}
+
+func (r *GenerateLLMSecAnswerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateLLMSecAnswerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetAttackDownloadRecordsRequestParams struct {
 
 }
@@ -15234,6 +15302,14 @@ type HybridPkg struct {
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
+type ImageResult struct {
+	// <p>命中类别标识</p>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>类别的名称</p>
+	CategoryName *string `json:"CategoryName,omitnil,omitempty" name:"CategoryName"`
+}
+
 // Predefined struct for user
 type ImportIpAccessControlRequestParams struct {
 	// 导入的IP黑白名单列表
@@ -15783,6 +15859,9 @@ type LLMDetectResult struct {
 
 	// <p>攻击payload</p>
 	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
+
+	// <p>图片检测结果</p>
+	ImageResult []*ImageResult `json:"ImageResult,omitnil,omitempty" name:"ImageResult"`
 }
 
 type LLMMonPkg struct {
@@ -22408,6 +22487,17 @@ type RuleType struct {
 
 	// 类型下的规则总数量
 	TotalRuleCount *int64 `json:"TotalRuleCount,omitnil,omitempty" name:"TotalRuleCount"`
+}
+
+type SSEClientMessage struct {
+	// <p>对话角色，填user</p>
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// <p>prompt内容</p>
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// <p>检测类型，0是文本内容代答，目前只支持0，可以不传，默认值是0</p><p>枚举值：</p><ul><li>0： 文件内容代答</li></ul>
+	ContentType *int64 `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 }
 
 type ScanIpInfo struct {

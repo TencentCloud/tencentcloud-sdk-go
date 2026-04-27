@@ -203,6 +203,60 @@ func (c *Client) BindingPolicyTagWithContext(ctx context.Context, request *Bindi
     return
 }
 
+func NewCheckAddressByPrometheusRequest() (request *CheckAddressByPrometheusRequest) {
+    request = &CheckAddressByPrometheusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "CheckAddressByPrometheus")
+    
+    
+    return
+}
+
+func NewCheckAddressByPrometheusResponse() (response *CheckAddressByPrometheusResponse) {
+    response = &CheckAddressByPrometheusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckAddressByPrometheus
+// 检查用户地址联通性
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) CheckAddressByPrometheus(request *CheckAddressByPrometheusRequest) (response *CheckAddressByPrometheusResponse, err error) {
+    return c.CheckAddressByPrometheusWithContext(context.Background(), request)
+}
+
+// CheckAddressByPrometheus
+// 检查用户地址联通性
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) CheckAddressByPrometheusWithContext(ctx context.Context, request *CheckAddressByPrometheusRequest) (response *CheckAddressByPrometheusResponse, err error) {
+    if request == nil {
+        request = NewCheckAddressByPrometheusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "monitor", APIVersion, "CheckAddressByPrometheus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckAddressByPrometheus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckAddressByPrometheusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCleanGrafanaInstanceRequest() (request *CleanGrafanaInstanceRequest) {
     request = &CleanGrafanaInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

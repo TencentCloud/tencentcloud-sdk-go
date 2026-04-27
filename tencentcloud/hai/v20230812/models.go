@@ -1650,28 +1650,28 @@ type LoginSetting struct {
 }
 
 type ModelDetail struct {
-	// 模型名称
+	// <p>模型名称</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 模型ID
+	// <p>模型ID</p>
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
-	// 应用描述	
+	// <p>应用描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 官方社区链接	
+	// <p>官方社区链接</p>
 	CommunityUrl *string `json:"CommunityUrl,omitnil,omitempty" name:"CommunityUrl"`
 
-	// 最佳实践链接
+	// <p>最佳实践链接</p>
 	GuideUrl *string `json:"GuideUrl,omitnil,omitempty" name:"GuideUrl"`
 
-	// 模型状态
+	// <p>模型状态</p>
 	ModelState *string `json:"ModelState,omitnil,omitempty" name:"ModelState"`
 
-	// 应用对应的标签，如机器学习
+	// <p>应用对应的标签，如机器学习</p>
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 配置环境
+	// <p>配置环境</p>
 	ConfigEnvironment *string `json:"ConfigEnvironment,omitnil,omitempty" name:"ConfigEnvironment"`
 }
 

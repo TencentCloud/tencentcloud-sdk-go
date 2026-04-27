@@ -3341,65 +3341,51 @@ func (r *CreateLivePadRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLivePadTemplateRequestParams struct {
-	// 模板名称。
-	// 长度上限：255字节。
-	// 仅支持中文、英文、数字、_、-。
+	// <p>模板名称。<br>长度上限：255字节。<br>仅支持中文、英文、数字、_、-。</p>
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
-	// 垫片内容。
+	// <p>垫片内容。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 描述信息。
-	// 长度上限：1024字节。
-	// 仅支持中文、英文、数字、_、-。
+	// <p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 断流等待时间。
-	// 取值范围：0-30000。
-	// 单位：ms。
+	// <p>断流等待时间。<br>取值范围：0-30000。<br>单位：ms。</p>
 	WaitDuration *uint64 `json:"WaitDuration,omitnil,omitempty" name:"WaitDuration"`
 
-	// 最大垫片时长。
-	// 取值范围：0 - 正无穷。
-	// 单位：ms。
+	// <p>最大垫片时长。<br>取值范围：0 - 正无穷。<br>单位：ms。</p>
 	MaxDuration *uint64 `json:"MaxDuration,omitnil,omitempty" name:"MaxDuration"`
 
-	// 垫片内容类型：
-	// 1：图片，2：视频。
-	// 默认值：1。
+	// <p>垫片内容类型：<br>1：图片，2：视频。<br>默认值：1。</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>断流垫片触发条件</p><p>枚举值：</p><ul><li>0： 主动及异常断流</li><li>1： 异常断流</li></ul><p>默认值：0</p>
+	TriggerCondition *uint64 `json:"TriggerCondition,omitnil,omitempty" name:"TriggerCondition"`
 }
 
 type CreateLivePadTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模板名称。
-	// 长度上限：255字节。
-	// 仅支持中文、英文、数字、_、-。
+	// <p>模板名称。<br>长度上限：255字节。<br>仅支持中文、英文、数字、_、-。</p>
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
-	// 垫片内容。
+	// <p>垫片内容。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 描述信息。
-	// 长度上限：1024字节。
-	// 仅支持中文、英文、数字、_、-。
+	// <p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 断流等待时间。
-	// 取值范围：0-30000。
-	// 单位：ms。
+	// <p>断流等待时间。<br>取值范围：0-30000。<br>单位：ms。</p>
 	WaitDuration *uint64 `json:"WaitDuration,omitnil,omitempty" name:"WaitDuration"`
 
-	// 最大垫片时长。
-	// 取值范围：0 - 正无穷。
-	// 单位：ms。
+	// <p>最大垫片时长。<br>取值范围：0 - 正无穷。<br>单位：ms。</p>
 	MaxDuration *uint64 `json:"MaxDuration,omitnil,omitempty" name:"MaxDuration"`
 
-	// 垫片内容类型：
-	// 1：图片，2：视频。
-	// 默认值：1。
+	// <p>垫片内容类型：<br>1：图片，2：视频。<br>默认值：1。</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>断流垫片触发条件</p><p>枚举值：</p><ul><li>0： 主动及异常断流</li><li>1： 异常断流</li></ul><p>默认值：0</p>
+	TriggerCondition *uint64 `json:"TriggerCondition,omitnil,omitempty" name:"TriggerCondition"`
 }
 
 func (r *CreateLivePadTemplateRequest) ToJsonString() string {
@@ -3420,6 +3406,7 @@ func (r *CreateLivePadTemplateRequest) FromJsonString(s string) error {
 	delete(f, "WaitDuration")
 	delete(f, "MaxDuration")
 	delete(f, "Type")
+	delete(f, "TriggerCondition")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLivePadTemplateRequest has unknown keys!", "")
 	}
@@ -3428,7 +3415,7 @@ func (r *CreateLivePadTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLivePadTemplateResponseParams struct {
-	// 模板Id。
+	// <p>模板Id。</p>
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -17829,67 +17816,57 @@ func (r *ModifyLiveDomainRefererResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLivePadTemplateRequestParams struct {
-	// 模板id。
+	// <p>模板id。</p>
 	TemplateId *uint64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 垫片内容。
+	// <p>垫片内容。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 断流等待时间。
-	// 取值范围：0-30000。
-	// 单位：ms。
+	// <p>断流等待时间。<br>取值范围：0-30000。<br>单位：ms。</p>
 	WaitDuration *uint64 `json:"WaitDuration,omitnil,omitempty" name:"WaitDuration"`
 
-	// 最大垫片时长。
-	// 取值范围：0 - 正无穷。
-	// 单位：ms。
+	// <p>最大垫片时长。<br>取值范围：0 - 正无穷。<br>单位：ms。</p>
 	MaxDuration *uint64 `json:"MaxDuration,omitnil,omitempty" name:"MaxDuration"`
 
-	// 模板名称。
-	// 长度上限：255字节。
-	// 仅支持中文、英文、数字、_、-。
+	// <p>模板名称。<br>长度上限：255字节。<br>仅支持中文、英文、数字、_、-。</p>
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
-	// 描述信息。
-	// 长度上限：1024字节。
-	// 仅支持中文、英文、数字、_、-。
+	// <p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 垫片内容类型： 1：图片，2：视频。 默认值：1。
+	// <p>垫片内容类型： 1：图片，2：视频。 默认值：1。</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>断流垫片触发条件</p><p>枚举值：</p><ul><li>0： 主动及异常断流</li><li>1： 异常断流</li></ul><p>默认值：0</p>
+	TriggerCondition *uint64 `json:"TriggerCondition,omitnil,omitempty" name:"TriggerCondition"`
 }
 
 type ModifyLivePadTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模板id。
+	// <p>模板id。</p>
 	TemplateId *uint64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 垫片内容。
+	// <p>垫片内容。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 断流等待时间。
-	// 取值范围：0-30000。
-	// 单位：ms。
+	// <p>断流等待时间。<br>取值范围：0-30000。<br>单位：ms。</p>
 	WaitDuration *uint64 `json:"WaitDuration,omitnil,omitempty" name:"WaitDuration"`
 
-	// 最大垫片时长。
-	// 取值范围：0 - 正无穷。
-	// 单位：ms。
+	// <p>最大垫片时长。<br>取值范围：0 - 正无穷。<br>单位：ms。</p>
 	MaxDuration *uint64 `json:"MaxDuration,omitnil,omitempty" name:"MaxDuration"`
 
-	// 模板名称。
-	// 长度上限：255字节。
-	// 仅支持中文、英文、数字、_、-。
+	// <p>模板名称。<br>长度上限：255字节。<br>仅支持中文、英文、数字、_、-。</p>
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
-	// 描述信息。
-	// 长度上限：1024字节。
-	// 仅支持中文、英文、数字、_、-。
+	// <p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 垫片内容类型： 1：图片，2：视频。 默认值：1。
+	// <p>垫片内容类型： 1：图片，2：视频。 默认值：1。</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>断流垫片触发条件</p><p>枚举值：</p><ul><li>0： 主动及异常断流</li><li>1： 异常断流</li></ul><p>默认值：0</p>
+	TriggerCondition *uint64 `json:"TriggerCondition,omitnil,omitempty" name:"TriggerCondition"`
 }
 
 func (r *ModifyLivePadTemplateRequest) ToJsonString() string {
@@ -17911,6 +17888,7 @@ func (r *ModifyLivePadTemplateRequest) FromJsonString(s string) error {
 	delete(f, "TemplateName")
 	delete(f, "Description")
 	delete(f, "Type")
+	delete(f, "TriggerCondition")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLivePadTemplateRequest has unknown keys!", "")
 	}

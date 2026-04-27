@@ -1174,57 +1174,69 @@ func (r *CreateSeedsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSubDomainRequestParams struct {
-	// 企业Id
+	// <p>企业Id</p>
 	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
 
-	// 子域名
+	// <p>子域名</p>
 	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
 
-	// Ip
+	// <p>Ip</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 国家
+	// <p>国家</p>
 	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
 
-	// 省
+	// <p>省</p>
 	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
 
-	// 城市
+	// <p>城市</p>
 	City *string `json:"City,omitnil,omitempty" name:"City"`
 
-	// Isp
+	// <p>Isp</p>
 	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
 
-	// 子公司
+	// <p>子公司</p>
 	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+
+	// <p>DNS解析类型。A、AAAA、CNAME等</p>
+	DnsType *string `json:"DnsType,omitnil,omitempty" name:"DnsType"`
+
+	// <p>DNS解析值。域名或者ip</p>
+	DnsValue *string `json:"DnsValue,omitnil,omitempty" name:"DnsValue"`
 }
 
 type CreateSubDomainRequest struct {
 	*tchttp.BaseRequest
 	
-	// 企业Id
+	// <p>企业Id</p>
 	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
 
-	// 子域名
+	// <p>子域名</p>
 	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
 
-	// Ip
+	// <p>Ip</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 国家
+	// <p>国家</p>
 	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
 
-	// 省
+	// <p>省</p>
 	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
 
-	// 城市
+	// <p>城市</p>
 	City *string `json:"City,omitnil,omitempty" name:"City"`
 
-	// Isp
+	// <p>Isp</p>
 	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
 
-	// 子公司
+	// <p>子公司</p>
 	EnterpriseUid *string `json:"EnterpriseUid,omitnil,omitempty" name:"EnterpriseUid"`
+
+	// <p>DNS解析类型。A、AAAA、CNAME等</p>
+	DnsType *string `json:"DnsType,omitnil,omitempty" name:"DnsType"`
+
+	// <p>DNS解析值。域名或者ip</p>
+	DnsValue *string `json:"DnsValue,omitnil,omitempty" name:"DnsValue"`
 }
 
 func (r *CreateSubDomainRequest) ToJsonString() string {
@@ -1247,6 +1259,8 @@ func (r *CreateSubDomainRequest) FromJsonString(s string) error {
 	delete(f, "City")
 	delete(f, "Isp")
 	delete(f, "EnterpriseUid")
+	delete(f, "DnsType")
+	delete(f, "DnsValue")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSubDomainRequest has unknown keys!", "")
 	}
@@ -1255,7 +1269,7 @@ func (r *CreateSubDomainRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSubDomainResponseParams struct {
-	// Id
+	// <p>Id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7384,50 +7398,56 @@ type DisplaySensitiveInfo struct {
 }
 
 type DisplaySubDomain struct {
-	// 主键ID
+	// <p>主键ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 子域名
+	// <p>子域名</p>
 	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
 
-	// Ip
+	// <p>Ip</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 国家
+	// <p>国家</p>
 	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
 
-	// 省份
+	// <p>省份</p>
 	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
 
-	// 城市
+	// <p>城市</p>
 	City *string `json:"City,omitnil,omitempty" name:"City"`
 
-	// 互联网服务提供商
+	// <p>互联网服务提供商</p>
 	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
 
-	// 公共字段
+	// <p>公共字段</p>
 	DisplayToolCommon *DisplayToolCommon `json:"DisplayToolCommon,omitnil,omitempty" name:"DisplayToolCommon"`
 
-	// 是否为云资产：0-非云资产 1-是云资产
+	// <p>是否为云资产：0-非云资产 1-是云资产</p>
 	IsCloudAsset *int64 `json:"IsCloudAsset,omitnil,omitempty" name:"IsCloudAsset"`
 
-	// 云资产是否下线：-1-已下线 0-正常
+	// <p>云资产是否下线：-1-已下线 0-正常</p>
 	CloudAssetStatus *int64 `json:"CloudAssetStatus,omitnil,omitempty" name:"CloudAssetStatus"`
 
-	// 可用率（百分比）
+	// <p>可用率（百分比）</p>
 	AvailabilityRate *int64 `json:"AvailabilityRate,omitnil,omitempty" name:"AvailabilityRate"`
 
-	// 可用状态 1:异常 0:正常
+	// <p>可用状态 1:异常 0:正常</p>
 	AvailabilityState *int64 `json:"AvailabilityState,omitnil,omitempty" name:"AvailabilityState"`
 
-	// 域名解析状态 1:异常 0:正常
+	// <p>域名解析状态 1:异常 0:正常</p>
 	AnalysisState *int64 `json:"AnalysisState,omitnil,omitempty" name:"AnalysisState"`
 
-	// 平均时延：单位ms
+	// <p>平均时延：单位ms</p>
 	AverageDelay *int64 `json:"AverageDelay,omitnil,omitempty" name:"AverageDelay"`
 
-	// 丢包率（百分比）
+	// <p>丢包率（百分比）</p>
 	LossRate *int64 `json:"LossRate,omitnil,omitempty" name:"LossRate"`
+
+	// <p>DNS解析类型</p><p>A、AAAA、MX、CNAME、NX</p>
+	DnsType *string `json:"DnsType,omitnil,omitempty" name:"DnsType"`
+
+	// <p>DNS解析值</p>
+	DnsValue *string `json:"DnsValue,omitnil,omitempty" name:"DnsValue"`
 }
 
 type DisplaySuspiciousAsset struct {
