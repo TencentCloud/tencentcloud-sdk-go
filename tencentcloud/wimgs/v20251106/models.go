@@ -22,14 +22,14 @@ import (
 
 // Predefined struct for user
 type SearchByTextRequestParams struct {
-	// 查询词
+	// <p>查询词</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 }
 
 type SearchByTextRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询词
+	// <p>查询词</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 }
 
@@ -54,20 +54,10 @@ func (r *SearchByTextRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SearchByTextResponseParams struct {
-	// 原始查询词
+	// <p>原始查询词</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 搜索结果图片列表，格式为json字符串。
-	// 
-	// - thumbnailUrl：缩略图地址。
-	// - thumbnailWidth：缩略图宽度。
-	// - thumbnailHeight：缩略图高度。
-	// - origPicUrl：原图地址。
-	// -  origPicWidth：原图宽度。
-	// - siteUrl：站点地址，原图来源网页URL。
-	// - siteName：站点名称。
-	// - title：标题，原图标题或原图来源网页标题。
-	// - date：内容发布时间。
+	// <p>搜索结果图片列表，格式为json字符串。</p><ul><li>thumbnailUrl：缩略图地址。</li><li>thumbnailWidth：缩略图宽度。</li><li>thumbnailHeight：缩略图高度。</li><li>origPicUrl：原图地址。</li><li>origPicWidth：原图宽度。</li><li>origPicHeight：原图高度。</li><li>siteUrl：站点地址，原图来源网页URL。</li><li>siteName：站点名称。</li><li>title：标题，原图标题或原图来源网页标题。</li><li>date：内容发布时间。</li></ul>
 	Images []*string `json:"Images,omitnil,omitempty" name:"Images"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

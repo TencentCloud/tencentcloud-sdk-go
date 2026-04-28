@@ -717,57 +717,63 @@ func (r *CreateInstanceCustomizedDomainResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type CreateInstanceRequestParams struct {
-	// 企业版实例名称
+	// <p>企业版实例名称</p>
 	RegistryName *string `json:"RegistryName,omitnil,omitempty" name:"RegistryName"`
 
-	// 企业版实例类型（basic 基础版；standard 标准版；premium 高级版）
+	// <p>企业版实例类型（basic 基础版；standard 标准版；premium 高级版）</p>
 	RegistryType *string `json:"RegistryType,omitnil,omitempty" name:"RegistryType"`
 
-	// 云标签描述
+	// <p>云标签描述</p>
 	TagSpecification *TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 
-	// 实例计费类型，0表示按量计费，1表示预付费，默认为按量计费
+	// <p>实例计费类型，0表示按量计费，1表示预付费，默认为按量计费</p>
 	RegistryChargeType *int64 `json:"RegistryChargeType,omitnil,omitempty" name:"RegistryChargeType"`
 
-	// 预付费自动续费标识和购买时长
+	// <p>预付费自动续费标识和购买时长</p>
 	RegistryChargePrepaid *RegistryChargePrepaid `json:"RegistryChargePrepaid,omitnil,omitempty" name:"RegistryChargePrepaid"`
 
-	// 是否同步TCR云标签至生成的COS Bucket
+	// <p>是否同步TCR云标签至生成的COS Bucket</p>
 	SyncTag *bool `json:"SyncTag,omitnil,omitempty" name:"SyncTag"`
 
-	// 是否开启Cos桶多AZ特性
+	// <p>是否开启Cos桶多AZ特性</p>
 	EnableCosMAZ *bool `json:"EnableCosMAZ,omitnil,omitempty" name:"EnableCosMAZ"`
 
-	// 是否开启实例删除保护
+	// <p>是否开启实例删除保护</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// <p>是否开启cos桶多版本控制</p>
+	EnableCosVersioning *bool `json:"EnableCosVersioning,omitnil,omitempty" name:"EnableCosVersioning"`
 }
 
 type CreateInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 企业版实例名称
+	// <p>企业版实例名称</p>
 	RegistryName *string `json:"RegistryName,omitnil,omitempty" name:"RegistryName"`
 
-	// 企业版实例类型（basic 基础版；standard 标准版；premium 高级版）
+	// <p>企业版实例类型（basic 基础版；standard 标准版；premium 高级版）</p>
 	RegistryType *string `json:"RegistryType,omitnil,omitempty" name:"RegistryType"`
 
-	// 云标签描述
+	// <p>云标签描述</p>
 	TagSpecification *TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 
-	// 实例计费类型，0表示按量计费，1表示预付费，默认为按量计费
+	// <p>实例计费类型，0表示按量计费，1表示预付费，默认为按量计费</p>
 	RegistryChargeType *int64 `json:"RegistryChargeType,omitnil,omitempty" name:"RegistryChargeType"`
 
-	// 预付费自动续费标识和购买时长
+	// <p>预付费自动续费标识和购买时长</p>
 	RegistryChargePrepaid *RegistryChargePrepaid `json:"RegistryChargePrepaid,omitnil,omitempty" name:"RegistryChargePrepaid"`
 
-	// 是否同步TCR云标签至生成的COS Bucket
+	// <p>是否同步TCR云标签至生成的COS Bucket</p>
 	SyncTag *bool `json:"SyncTag,omitnil,omitempty" name:"SyncTag"`
 
-	// 是否开启Cos桶多AZ特性
+	// <p>是否开启Cos桶多AZ特性</p>
 	EnableCosMAZ *bool `json:"EnableCosMAZ,omitnil,omitempty" name:"EnableCosMAZ"`
 
-	// 是否开启实例删除保护
+	// <p>是否开启实例删除保护</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// <p>是否开启cos桶多版本控制</p>
+	EnableCosVersioning *bool `json:"EnableCosVersioning,omitnil,omitempty" name:"EnableCosVersioning"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -790,6 +796,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "SyncTag")
 	delete(f, "EnableCosMAZ")
 	delete(f, "DeletionProtection")
+	delete(f, "EnableCosVersioning")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -798,7 +805,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateInstanceResponseParams struct {
-	// 企业版实例Id
+	// <p>企业版实例Id</p>
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8624,6 +8631,12 @@ type Registry struct {
 	// <p>是否支持AI特性</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AIFeature *bool `json:"AIFeature,omitnil,omitempty" name:"AIFeature"`
+
+	// <p>cos桶是否开启多AZ特性</p>
+	EnableCosMAZ *bool `json:"EnableCosMAZ,omitnil,omitempty" name:"EnableCosMAZ"`
+
+	// <p>cos桶是否开启版本控制</p>
+	EnableCosVersioning *bool `json:"EnableCosVersioning,omitnil,omitempty" name:"EnableCosVersioning"`
 }
 
 type RegistryChargePrepaid struct {

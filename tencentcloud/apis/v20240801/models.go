@@ -841,6 +841,21 @@ type CreateModelServiceRequestParams struct {
 
 	// <p>敏感数据检测配置</p>
 	SensitiveDataCheckConfig *SensitiveDataCheckConfigDTO `json:"SensitiveDataCheckConfig,omitnil,omitempty" name:"SensitiveDataCheckConfig"`
+
+	// <p>负载方式</p><p>枚举值：</p><ul><li>random： 随机</li><li>consistentHash： 会话保持</li></ul>
+	TargetSelect *string `json:"TargetSelect,omitnil,omitempty" name:"TargetSelect"`
+
+	// <p>会话判断方式</p><p>枚举值：</p><ul><li>fromClientIP： 客户端IP</li><li>fromHeader： 通过header值</li><li>autoDetect： 自动探测</li></ul>
+	FindHostKeyMethod *string `json:"FindHostKeyMethod,omitnil,omitempty" name:"FindHostKeyMethod"`
+
+	// <p>会话判定方式为fromHeader时会话的header名称</p>
+	HostKeyHeaderName *string `json:"HostKeyHeaderName,omitnil,omitempty" name:"HostKeyHeaderName"`
+
+	// <p>是否启用Fallback模型</p>
+	FallbackStatus *bool `json:"FallbackStatus,omitnil,omitempty" name:"FallbackStatus"`
+
+	// <p>Fallback模型配置</p>
+	FallbackModels []*TargetModelDTO `json:"FallbackModels,omitnil,omitempty" name:"FallbackModels"`
 }
 
 type CreateModelServiceRequest struct {
@@ -908,6 +923,21 @@ type CreateModelServiceRequest struct {
 
 	// <p>敏感数据检测配置</p>
 	SensitiveDataCheckConfig *SensitiveDataCheckConfigDTO `json:"SensitiveDataCheckConfig,omitnil,omitempty" name:"SensitiveDataCheckConfig"`
+
+	// <p>负载方式</p><p>枚举值：</p><ul><li>random： 随机</li><li>consistentHash： 会话保持</li></ul>
+	TargetSelect *string `json:"TargetSelect,omitnil,omitempty" name:"TargetSelect"`
+
+	// <p>会话判断方式</p><p>枚举值：</p><ul><li>fromClientIP： 客户端IP</li><li>fromHeader： 通过header值</li><li>autoDetect： 自动探测</li></ul>
+	FindHostKeyMethod *string `json:"FindHostKeyMethod,omitnil,omitempty" name:"FindHostKeyMethod"`
+
+	// <p>会话判定方式为fromHeader时会话的header名称</p>
+	HostKeyHeaderName *string `json:"HostKeyHeaderName,omitnil,omitempty" name:"HostKeyHeaderName"`
+
+	// <p>是否启用Fallback模型</p>
+	FallbackStatus *bool `json:"FallbackStatus,omitnil,omitempty" name:"FallbackStatus"`
+
+	// <p>Fallback模型配置</p>
+	FallbackModels []*TargetModelDTO `json:"FallbackModels,omitnil,omitempty" name:"FallbackModels"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -943,6 +973,11 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "PromptModerateConfig")
 	delete(f, "SensitiveDataCheckStatus")
 	delete(f, "SensitiveDataCheckConfig")
+	delete(f, "TargetSelect")
+	delete(f, "FindHostKeyMethod")
+	delete(f, "HostKeyHeaderName")
+	delete(f, "FallbackStatus")
+	delete(f, "FallbackModels")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -2608,6 +2643,26 @@ type DescribeModelServiceResponseVO struct {
 	// <p>敏感数据检测配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveDataCheckConfig *SensitiveDataCheckConfigDTO `json:"SensitiveDataCheckConfig,omitnil,omitempty" name:"SensitiveDataCheckConfig"`
+
+	// <p>负载方式</p><p>枚举值：</p><ul><li>random： 随机</li><li>consistentHash： 会话保持</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetSelect *string `json:"TargetSelect,omitnil,omitempty" name:"TargetSelect"`
+
+	// <p>会话判断方式</p><p>枚举值：</p><ul><li>fromClientIP： 从客户端IP判断</li><li>fromHeader： 从请求header判断</li><li>autoDetect： 自动探测</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FindHostKeyMethod *string `json:"FindHostKeyMethod,omitnil,omitempty" name:"FindHostKeyMethod"`
+
+	// <p>会话判断header名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostKeyHeaderName *string `json:"HostKeyHeaderName,omitnil,omitempty" name:"HostKeyHeaderName"`
+
+	// <p>是否开启备份模型</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FallbackStatus *bool `json:"FallbackStatus,omitnil,omitempty" name:"FallbackStatus"`
+
+	// <p>备份模型</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FallbackModels []*TargetModelDTO `json:"FallbackModels,omitnil,omitempty" name:"FallbackModels"`
 }
 
 // Predefined struct for user
@@ -3683,6 +3738,21 @@ type ModifyModelServiceRequestParams struct {
 
 	// <p>敏感数据检测配置</p>
 	SensitiveDataCheckConfig *SensitiveDataCheckConfigDTO `json:"SensitiveDataCheckConfig,omitnil,omitempty" name:"SensitiveDataCheckConfig"`
+
+	// <p>负载方式</p><p>枚举值：</p><ul><li>random： 随机</li><li>consistentHash： 会话保持</li></ul>
+	TargetSelect *string `json:"TargetSelect,omitnil,omitempty" name:"TargetSelect"`
+
+	// <p>会话判断方式</p><p>枚举值：</p><ul><li>fromClientIP： 从客户端IP判断</li><li>fromHeader： 从请求header判断</li><li>autoDetect： 自动探测</li></ul>
+	FindHostKeyMethod *string `json:"FindHostKeyMethod,omitnil,omitempty" name:"FindHostKeyMethod"`
+
+	// <p>会话判断header名称</p>
+	HostKeyHeaderName *string `json:"HostKeyHeaderName,omitnil,omitempty" name:"HostKeyHeaderName"`
+
+	// <p>是否开启备份模型</p>
+	FallbackStatus *bool `json:"FallbackStatus,omitnil,omitempty" name:"FallbackStatus"`
+
+	// <p>备份模型</p>
+	FallbackModels []*TargetModelDTO `json:"FallbackModels,omitnil,omitempty" name:"FallbackModels"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -3750,6 +3820,21 @@ type ModifyModelServiceRequest struct {
 
 	// <p>敏感数据检测配置</p>
 	SensitiveDataCheckConfig *SensitiveDataCheckConfigDTO `json:"SensitiveDataCheckConfig,omitnil,omitempty" name:"SensitiveDataCheckConfig"`
+
+	// <p>负载方式</p><p>枚举值：</p><ul><li>random： 随机</li><li>consistentHash： 会话保持</li></ul>
+	TargetSelect *string `json:"TargetSelect,omitnil,omitempty" name:"TargetSelect"`
+
+	// <p>会话判断方式</p><p>枚举值：</p><ul><li>fromClientIP： 从客户端IP判断</li><li>fromHeader： 从请求header判断</li><li>autoDetect： 自动探测</li></ul>
+	FindHostKeyMethod *string `json:"FindHostKeyMethod,omitnil,omitempty" name:"FindHostKeyMethod"`
+
+	// <p>会话判断header名称</p>
+	HostKeyHeaderName *string `json:"HostKeyHeaderName,omitnil,omitempty" name:"HostKeyHeaderName"`
+
+	// <p>是否开启备份模型</p>
+	FallbackStatus *bool `json:"FallbackStatus,omitnil,omitempty" name:"FallbackStatus"`
+
+	// <p>备份模型</p>
+	FallbackModels []*TargetModelDTO `json:"FallbackModels,omitnil,omitempty" name:"FallbackModels"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -3785,6 +3870,11 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "PromptModerateConfig")
 	delete(f, "SensitiveDataCheckStatus")
 	delete(f, "SensitiveDataCheckConfig")
+	delete(f, "TargetSelect")
+	delete(f, "FindHostKeyMethod")
+	delete(f, "HostKeyHeaderName")
+	delete(f, "FallbackStatus")
+	delete(f, "FallbackModels")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}

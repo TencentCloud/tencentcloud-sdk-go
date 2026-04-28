@@ -7439,6 +7439,67 @@ func (r *ModifyChcAttributeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyChcNetworkModeRequestParams struct {
+	// <p>CHC物理服务器id列表，如[&quot;chc-1a2b3c4d&quot;]</p>
+	ChcIds []*string `json:"ChcIds,omitnil,omitempty" name:"ChcIds"`
+
+	// <p>所要切换的网络模式</p><p>枚举值：</p><ul><li>DEPLOY： 部署网络模式</li><li>BUSINESS： 业务网络模式</li></ul>
+	NetworkMode *string `json:"NetworkMode,omitnil,omitempty" name:"NetworkMode"`
+}
+
+type ModifyChcNetworkModeRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>CHC物理服务器id列表，如[&quot;chc-1a2b3c4d&quot;]</p>
+	ChcIds []*string `json:"ChcIds,omitnil,omitempty" name:"ChcIds"`
+
+	// <p>所要切换的网络模式</p><p>枚举值：</p><ul><li>DEPLOY： 部署网络模式</li><li>BUSINESS： 业务网络模式</li></ul>
+	NetworkMode *string `json:"NetworkMode,omitnil,omitempty" name:"NetworkMode"`
+}
+
+func (r *ModifyChcNetworkModeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyChcNetworkModeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChcIds")
+	delete(f, "NetworkMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyChcNetworkModeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyChcNetworkModeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyChcNetworkModeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyChcNetworkModeResponseParams `json:"Response"`
+}
+
+func (r *ModifyChcNetworkModeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyChcNetworkModeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDisasterRecoverGroupAttributeRequestParams struct {
 	// <p>分散置放群组ID，可使用<a href="https://cloud.tencent.com/document/api/213/17810">DescribeDisasterRecoverGroups</a>接口获取。</p>
 	DisasterRecoverGroupId *string `json:"DisasterRecoverGroupId,omitnil,omitempty" name:"DisasterRecoverGroupId"`

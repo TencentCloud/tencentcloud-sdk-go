@@ -34,6 +34,7 @@ import (
 	amsv20201229 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ams/v20201229"
 	anicloudv20220923 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/anicloud/v20220923"
 	antiddosv20200309 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/antiddos/v20200309"
+	antiddosv20250903 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/antiddos/v20250903"
 	apev20200513 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ape/v20200513"
 	apiv20201106 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/api/v20201106"
 	apigatewayv20180808 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/apigateway/v20180808"
@@ -488,6 +489,19 @@ func TestAntiddosv20200309Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init antiddos_v20200309 client: %v", err)
+    }
+}
+
+func TestAntiddosv20250903Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := antiddosv20250903.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init antiddos_v20250903 client: %v", err)
     }
 }
 

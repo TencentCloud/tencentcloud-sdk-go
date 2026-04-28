@@ -2522,68 +2522,68 @@ func (r *DescribeConsumerGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMigrateDBInstancesRequestParams struct {
-	// 数据库类型，如mysql,percona,mariadb,tdsqlmysql,mariadb,postgresql,cynosdbmysql,redis,tendis,keewidb,tdstore,mongodb,clickhouse,sqlserver等。
+	// <p>数据库类型，如mysql,percona,mariadb,tdsqlmysql,mariadb,postgresql,cynosdbmysql,redis,tendis,keewidb,tdstore,mongodb,clickhouse,sqlserver等。</p>
 	DatabaseType *string `json:"DatabaseType,omitnil,omitempty" name:"DatabaseType"`
 
-	// 实例作为迁移的源还是目标,src(表示源)，dst(表示目标)
+	// <p>实例作为迁移的源还是目标,src(表示源)，dst(表示目标)</p>
 	MigrateRole *string `json:"MigrateRole,omitnil,omitempty" name:"MigrateRole"`
 
-	// 云数据库实例ID，可通过对应业务实例列表获取实例信息。
+	// <p>云数据库实例ID，可通过对应业务实例列表获取实例信息。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 云数据库名称，可通过对应业务实例列表获取实例信息。
+	// <p>云数据库名称，可通过对应业务实例列表获取实例信息。</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 返回数量限制
+	// <p>返回数量限制</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 资源所属账号 为空值或self(表示本账号内资源)、other(表示其他账户资源)
+	// <p>资源所属账号 为空值或self(表示本账号内资源)、other(表示其他账户资源)</p>
 	AccountMode *string `json:"AccountMode,omitnil,omitempty" name:"AccountMode"`
 
-	// 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
+	// <p>临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。</p>
 	TmpSecretId *string `json:"TmpSecretId,omitnil,omitempty" name:"TmpSecretId"`
 
-	// 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
+	// <p>临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。</p>
 	TmpSecretKey *string `json:"TmpSecretKey,omitnil,omitempty" name:"TmpSecretKey"`
 
-	// 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
+	// <p>临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。</p>
 	TmpToken *string `json:"TmpToken,omitnil,omitempty" name:"TmpToken"`
 }
 
 type DescribeMigrateDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据库类型，如mysql,percona,mariadb,tdsqlmysql,mariadb,postgresql,cynosdbmysql,redis,tendis,keewidb,tdstore,mongodb,clickhouse,sqlserver等。
+	// <p>数据库类型，如mysql,percona,mariadb,tdsqlmysql,mariadb,postgresql,cynosdbmysql,redis,tendis,keewidb,tdstore,mongodb,clickhouse,sqlserver等。</p>
 	DatabaseType *string `json:"DatabaseType,omitnil,omitempty" name:"DatabaseType"`
 
-	// 实例作为迁移的源还是目标,src(表示源)，dst(表示目标)
+	// <p>实例作为迁移的源还是目标,src(表示源)，dst(表示目标)</p>
 	MigrateRole *string `json:"MigrateRole,omitnil,omitempty" name:"MigrateRole"`
 
-	// 云数据库实例ID，可通过对应业务实例列表获取实例信息。
+	// <p>云数据库实例ID，可通过对应业务实例列表获取实例信息。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 云数据库名称，可通过对应业务实例列表获取实例信息。
+	// <p>云数据库名称，可通过对应业务实例列表获取实例信息。</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 返回数量限制
+	// <p>返回数量限制</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 资源所属账号 为空值或self(表示本账号内资源)、other(表示其他账户资源)
+	// <p>资源所属账号 为空值或self(表示本账号内资源)、other(表示其他账户资源)</p>
 	AccountMode *string `json:"AccountMode,omitnil,omitempty" name:"AccountMode"`
 
-	// 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
+	// <p>临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。</p>
 	TmpSecretId *string `json:"TmpSecretId,omitnil,omitempty" name:"TmpSecretId"`
 
-	// 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
+	// <p>临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。</p>
 	TmpSecretKey *string `json:"TmpSecretKey,omitnil,omitempty" name:"TmpSecretKey"`
 
-	// 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
+	// <p>临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。</p>
 	TmpToken *string `json:"TmpToken,omitnil,omitempty" name:"TmpToken"`
 }
 
@@ -2617,10 +2617,10 @@ func (r *DescribeMigrateDBInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMigrateDBInstancesResponseParams struct {
-	// 符合筛选条件的数量
+	// <p>符合筛选条件的数量</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 实例列表
+	// <p>实例列表</p>
 	Instances []*MigrateDBItem `json:"Instances,omitnil,omitempty" name:"Instances"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

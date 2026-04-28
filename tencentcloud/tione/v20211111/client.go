@@ -1959,6 +1959,64 @@ func (c *Client) DeleteTrainingTaskWithContext(ctx context.Context, request *Del
     return
 }
 
+func NewDescribeAnnotatedTaskListRequest() (request *DescribeAnnotatedTaskListRequest) {
+    request = &DescribeAnnotatedTaskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeAnnotatedTaskList")
+    
+    
+    return
+}
+
+func NewDescribeAnnotatedTaskListResponse() (response *DescribeAnnotatedTaskListResponse) {
+    response = &DescribeAnnotatedTaskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAnnotatedTaskList
+// 本接口（DescribeAnnotatedTaskList）用于查询用户标注任务详细信息列表；支持各种过滤条件；
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeAnnotatedTaskList(request *DescribeAnnotatedTaskListRequest) (response *DescribeAnnotatedTaskListResponse, err error) {
+    return c.DescribeAnnotatedTaskListWithContext(context.Background(), request)
+}
+
+// DescribeAnnotatedTaskList
+// 本接口（DescribeAnnotatedTaskList）用于查询用户标注任务详细信息列表；支持各种过滤条件；
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeAnnotatedTaskListWithContext(ctx context.Context, request *DescribeAnnotatedTaskListRequest) (response *DescribeAnnotatedTaskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAnnotatedTaskListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeAnnotatedTaskList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAnnotatedTaskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAnnotatedTaskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBillingResourceGroupRequest() (request *DescribeBillingResourceGroupRequest) {
     request = &DescribeBillingResourceGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4451,6 +4509,74 @@ func (c *Client) DescribeTrainingTasksWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeTrainingTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWorkspacesRequest() (request *DescribeWorkspacesRequest) {
+    request = &DescribeWorkspacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeWorkspaces")
+    
+    
+    return
+}
+
+func NewDescribeWorkspacesResponse() (response *DescribeWorkspacesResponse) {
+    response = &DescribeWorkspacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWorkspaces
+// 查询工作空间列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_QUERYBINDINGTAGSFAILED = "InternalError.QueryBindingTagsFailed"
+//  INTERNALERROR_QUERYPRICEFAILED = "InternalError.QueryPriceFailed"
+//  INTERNALERROR_QUERYRESOURCEGROUPNAMESFAILED = "InternalError.QueryResourceGroupNamesFailed"
+//  INTERNALERROR_QUERYRESOURCESPECFAILED = "InternalError.QueryResourceSpecFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+//  INVALIDPARAMETERVALUE_PAGELIMITEXCEEDED = "InvalidParameterValue.PageLimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeWorkspaces(request *DescribeWorkspacesRequest) (response *DescribeWorkspacesResponse, err error) {
+    return c.DescribeWorkspacesWithContext(context.Background(), request)
+}
+
+// DescribeWorkspaces
+// 查询工作空间列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_QUERYBINDINGTAGSFAILED = "InternalError.QueryBindingTagsFailed"
+//  INTERNALERROR_QUERYPRICEFAILED = "InternalError.QueryPriceFailed"
+//  INTERNALERROR_QUERYRESOURCEGROUPNAMESFAILED = "InternalError.QueryResourceGroupNamesFailed"
+//  INTERNALERROR_QUERYRESOURCESPECFAILED = "InternalError.QueryResourceSpecFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+//  INVALIDPARAMETERVALUE_PAGELIMITEXCEEDED = "InvalidParameterValue.PageLimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeWorkspacesWithContext(ctx context.Context, request *DescribeWorkspacesRequest) (response *DescribeWorkspacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkspacesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tione", APIVersion, "DescribeWorkspaces")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWorkspaces require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWorkspacesResponse()
     err = c.Send(request, response)
     return
 }

@@ -5759,6 +5759,63 @@ func (r *GetGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetIPWhitelistRequestParams struct {
+	// 空间ID
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+}
+
+type GetIPWhitelistRequest struct {
+	*tchttp.BaseRequest
+	
+	// 空间ID
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+}
+
+func (r *GetIPWhitelistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetIPWhitelistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetIPWhitelistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetIPWhitelistResponseParams struct {
+	// ip白名单
+	IpWhitelist []*string `json:"IpWhitelist,omitnil,omitempty" name:"IpWhitelist"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetIPWhitelistResponse struct {
+	*tchttp.BaseResponse
+	Response *GetIPWhitelistResponseParams `json:"Response"`
+}
+
+func (r *GetIPWhitelistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetIPWhitelistResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetProvisioningTaskStatusRequestParams struct {
 	// 空间ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`

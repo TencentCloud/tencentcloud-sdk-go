@@ -10458,14 +10458,14 @@ func (r *DescribeAssetImageBindRuleInfoResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeAssetImageDetailRequestParams struct {
-	// 镜像id
+	// <p>镜像id</p>
 	ImageID *string `json:"ImageID,omitnil,omitempty" name:"ImageID"`
 }
 
 type DescribeAssetImageDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 镜像id
+	// <p>镜像id</p>
 	ImageID *string `json:"ImageID,omitnil,omitempty" name:"ImageID"`
 }
 
@@ -10490,101 +10490,104 @@ func (r *DescribeAssetImageDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetImageDetailResponseParams struct {
-	// 镜像ID
+	// <p>镜像ID</p>
 	ImageID *string `json:"ImageID,omitnil,omitempty" name:"ImageID"`
 
-	// 镜像名称
+	// <p>镜像名称</p>
 	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
 
-	// 镜像摘要
+	// <p>镜像摘要</p>
 	ImageDigest *string `json:"ImageDigest,omitnil,omitempty" name:"ImageDigest"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 镜像大小
+	// <p>镜像大小</p>
 	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 关联主机个数(包含普通节点数和超级节点数)
+	// <p>关联主机个数(包含普通节点数和超级节点数)</p>
 	HostCnt *uint64 `json:"HostCnt,omitnil,omitempty" name:"HostCnt"`
 
-	// 关联容器个数
+	// <p>关联容器个数</p>
 	ContainerCnt *uint64 `json:"ContainerCnt,omitnil,omitempty" name:"ContainerCnt"`
 
-	// 超级节点数
+	// <p>超级节点数</p>
 	SuperNodeCnt *uint64 `json:"SuperNodeCnt,omitnil,omitempty" name:"SuperNodeCnt"`
 
-	// 最近扫描时间
+	// <p>最近扫描时间</p>
 	ScanTime *string `json:"ScanTime,omitnil,omitempty" name:"ScanTime"`
 
-	// 漏洞个数
+	// <p>漏洞个数</p>
 	VulCnt *uint64 `json:"VulCnt,omitnil,omitempty" name:"VulCnt"`
 
-	// 风险行为数
+	// <p>风险行为数</p>
 	RiskCnt *uint64 `json:"RiskCnt,omitnil,omitempty" name:"RiskCnt"`
 
-	// 敏感信息数
+	// <p>敏感信息数</p>
 	SensitiveInfoCnt *uint64 `json:"SensitiveInfoCnt,omitnil,omitempty" name:"SensitiveInfoCnt"`
 
-	// 是否信任镜像
+	// <p>是否信任镜像</p>
 	IsTrustImage *bool `json:"IsTrustImage,omitnil,omitempty" name:"IsTrustImage"`
 
-	// 镜像系统
+	// <p>镜像系统</p>
 	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
 
-	// agent镜像扫描错误
+	// <p>agent镜像扫描错误</p>
 	AgentError *string `json:"AgentError,omitnil,omitempty" name:"AgentError"`
 
-	// 后端镜像扫描错误
+	// <p>后端镜像扫描错误</p>
 	ScanError *string `json:"ScanError,omitnil,omitempty" name:"ScanError"`
 
-	// 系统架构
+	// <p>系统架构</p>
 	Architecture *string `json:"Architecture,omitnil,omitempty" name:"Architecture"`
 
-	// 作者
+	// <p>作者</p>
 	Author *string `json:"Author,omitnil,omitempty" name:"Author"`
 
-	// 构建历史
+	// <p>构建历史</p>
 	BuildHistory *string `json:"BuildHistory,omitnil,omitempty" name:"BuildHistory"`
 
-	// 木马扫描进度
+	// <p>木马扫描进度</p>
 	ScanVirusProgress *uint64 `json:"ScanVirusProgress,omitnil,omitempty" name:"ScanVirusProgress"`
 
-	// 漏洞扫进度
+	// <p>漏洞扫进度</p>
 	ScanVulProgress *uint64 `json:"ScanVulProgress,omitnil,omitempty" name:"ScanVulProgress"`
 
-	// 敏感信息扫描进度
+	// <p>敏感信息扫描进度</p>
 	ScanRiskProgress *uint64 `json:"ScanRiskProgress,omitnil,omitempty" name:"ScanRiskProgress"`
 
-	// 木马扫描错误
+	// <p>木马扫描错误</p>
 	ScanVirusError *string `json:"ScanVirusError,omitnil,omitempty" name:"ScanVirusError"`
 
-	// 漏洞扫描错误
+	// <p>漏洞扫描错误</p>
 	ScanVulError *string `json:"ScanVulError,omitnil,omitempty" name:"ScanVulError"`
 
-	// 敏感信息错误
+	// <p>敏感信息错误</p>
 	ScanRiskError *string `json:"ScanRiskError,omitnil,omitempty" name:"ScanRiskError"`
 
-	// 镜像扫描状态
+	// <p>镜像扫描状态</p>
 	ScanStatus *string `json:"ScanStatus,omitnil,omitempty" name:"ScanStatus"`
 
-	// 木马病毒数
+	// <p>木马病毒数</p>
 	VirusCnt *uint64 `json:"VirusCnt,omitnil,omitempty" name:"VirusCnt"`
 
-	// 镜像扫描状态
+	// <p>镜像扫描状态</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 剩余扫描时间
+	// <p>剩余扫描时间</p>
 	RemainScanTime *uint64 `json:"RemainScanTime,omitnil,omitempty" name:"RemainScanTime"`
 
-	// 授权为：1，未授权为：0
+	// <p>授权为：1，未授权为：0</p>
 	IsAuthorized *int64 `json:"IsAuthorized,omitnil,omitempty" name:"IsAuthorized"`
 
-	// 解决方案
+	// <p>解决方案</p>
 	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 
-	// 原因
+	// <p>原因</p>
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// <p>仓库Digests</p>
+	RepoDigests []*string `json:"RepoDigests,omitnil,omitempty" name:"RepoDigests"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

@@ -30,6 +30,90 @@ type AggregatePublicAlgoVersion struct {
 	PublicAlgoVersions []*PublicAlgoVersion `json:"PublicAlgoVersions,omitnil,omitempty" name:"PublicAlgoVersions"`
 }
 
+type AnnotationTaskInfo struct {
+	// <p>标注任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>标注任务名称</p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>数据集id</p>
+	DatasetId *string `json:"DatasetId,omitnil,omitempty" name:"DatasetId"`
+
+	// <p>数据集名称</p>
+	DatasetName *string `json:"DatasetName,omitnil,omitempty" name:"DatasetName"`
+
+	// <p>标注场景名称</p>
+	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
+
+	// <p>标注任务的label信息数组</p>
+	LabelValueList []*LabelValue `json:"LabelValueList,omitnil,omitempty" name:"LabelValueList"`
+
+	// <p>tag详情数组</p>
+	CamTagList []*CamTag `json:"CamTagList,omitnil,omitempty" name:"CamTagList"`
+
+	// <p>任务状态</p>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>创建任务失败原因说明</p>
+	AbnormalMsg *string `json:"AbnormalMsg,omitnil,omitempty" name:"AbnormalMsg"`
+
+	// <p>标注任务是否正在提交</p>
+	IsSubmitting *bool `json:"IsSubmitting,omitnil,omitempty" name:"IsSubmitting"`
+
+	// <p>任务详情描述</p>
+	TaskNote *string `json:"TaskNote,omitnil,omitempty" name:"TaskNote"`
+
+	// <p>数据集版本</p>
+	DataSetVersion *string `json:"DataSetVersion,omitnil,omitempty" name:"DataSetVersion"`
+
+	// <p>已经标注的图片数量</p>
+	NumAnnotated *uint64 `json:"NumAnnotated,omitnil,omitempty" name:"NumAnnotated"`
+
+	// <p>标注的总图片数量</p>
+	NumTotal *uint64 `json:"NumTotal,omitnil,omitempty" name:"NumTotal"`
+
+	// <p>创建任务的时间戳</p>
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>Ocr Tool Type</p>
+	OcrToolType *uint64 `json:"OcrToolType,omitnil,omitempty" name:"OcrToolType"`
+
+	// <p>Ocr Text Attribute Annotate Enable</p>
+	OcrTextAttributeAnnotateEnable *bool `json:"OcrTextAttributeAnnotateEnable,omitnil,omitempty" name:"OcrTextAttributeAnnotateEnable"`
+
+	// <p>导出格式</p>
+	ExportFormat *string `json:"ExportFormat,omitnil,omitempty" name:"ExportFormat"`
+
+	// <p>提交错误说明</p>
+	SubmittingErrorMsg *string `json:"SubmittingErrorMsg,omitnil,omitempty" name:"SubmittingErrorMsg"`
+
+	// <p>ocr任务类型：1-识别。2-智能结构化</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrAnnotationContentType *uint64 `json:"OcrAnnotationContentType,omitnil,omitempty" name:"OcrAnnotationContentType"`
+
+	// <p>OCR任务：是否启用辅助标注</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableAuxiliaryAnnotation *bool `json:"EnableAuxiliaryAnnotation,omitnil,omitempty" name:"EnableAuxiliaryAnnotation"`
+
+	// <p>数据集创建者UIN</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasetCreator *string `json:"DatasetCreator,omitnil,omitempty" name:"DatasetCreator"`
+
+	// <p>任务创建者UIN</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// <p>数据集创建者名称</p>
+	DatasetCreatorName *string `json:"DatasetCreatorName,omitnil,omitempty" name:"DatasetCreatorName"`
+
+	// <p>任务创建者名称</p>
+	CreatorName *string `json:"CreatorName,omitnil,omitempty" name:"CreatorName"`
+
+	// <p>标注任务状态枚举</p><p>枚举值：</p><ul><li>CREATING： 创建中</li><li>CREATE_SUCCESS： 创建成功，可标注</li><li>CREATE_FAILED： 创建失败</li><li>SUBMITTING： 提交中</li><li>SUBMIT_SUCCESS： 提交成功，需重启才可标注</li><li>SUBMIT_FAILED： 提交失败</li><li>ABNORMAL： 数据版本异常，需删除重建（大模型场景）</li></ul>
+	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
+}
+
 type Attribute struct {
 	// 为‘List’时属性值取Values 否则取Value
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -114,6 +198,14 @@ type CFSTurbo struct {
 	// CFSTurbo路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+}
+
+type CamTag struct {
+	// tag键值
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// tag值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 // Predefined struct for user
@@ -1729,6 +1821,9 @@ type CreateTrainingTaskRequestParams struct {
 	// <p>资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{&quot;Role&quot;:&quot;WORKER&quot;, &quot;InstanceType&quot;: &quot;TI.S.MEDIUM.POST&quot;, &quot;InstanceNum&quot;: 1}]</p>
 	ResourceConfigInfos []*ResourceConfigInfo `json:"ResourceConfigInfos,omitnil,omitempty" name:"ResourceConfigInfos"`
 
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// <p>训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH</p>
 	FrameworkName *string `json:"FrameworkName,omitnil,omitempty" name:"FrameworkName"`
 
@@ -1810,6 +1905,9 @@ type CreateTrainingTaskRequest struct {
 
 	// <p>资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{&quot;Role&quot;:&quot;WORKER&quot;, &quot;InstanceType&quot;: &quot;TI.S.MEDIUM.POST&quot;, &quot;InstanceNum&quot;: 1}]</p>
 	ResourceConfigInfos []*ResourceConfigInfo `json:"ResourceConfigInfos,omitnil,omitempty" name:"ResourceConfigInfos"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// <p>训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH</p>
 	FrameworkName *string `json:"FrameworkName,omitnil,omitempty" name:"FrameworkName"`
@@ -1896,6 +1994,7 @@ func (r *CreateTrainingTaskRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "ChargeType")
 	delete(f, "ResourceConfigInfos")
+	delete(f, "TiProjectId")
 	delete(f, "FrameworkName")
 	delete(f, "FrameworkVersion")
 	delete(f, "FrameworkEnvironment")
@@ -2981,6 +3080,9 @@ func (r *DeleteTrainingModelVersionResponse) FromJsonString(s string) error {
 type DeleteTrainingTaskRequestParams struct {
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 type DeleteTrainingTaskRequest struct {
@@ -2988,6 +3090,9 @@ type DeleteTrainingTaskRequest struct {
 	
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 func (r *DeleteTrainingTaskRequest) ToJsonString() string {
@@ -3003,6 +3108,7 @@ func (r *DeleteTrainingTaskRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Id")
+	delete(f, "TiProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTrainingTaskRequest has unknown keys!", "")
 	}
@@ -3028,6 +3134,102 @@ func (r *DeleteTrainingTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTrainingTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAnnotatedTaskListRequestParams struct {
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 页面大小，默认为10
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤条件数组，支持数据集ID，标注场景、任务状态、数据集名称、人物名称的过滤，后面两个支持模糊查询
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 标签过滤条件
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
+
+	// 排序方向：Asc Desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+}
+
+type DescribeAnnotatedTaskListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 页面大小，默认为10
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤条件数组，支持数据集ID，标注场景、任务状态、数据集名称、人物名称的过滤，后面两个支持模糊查询
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 标签过滤条件
+	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
+
+	// 排序方向：Asc Desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+}
+
+func (r *DescribeAnnotatedTaskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAnnotatedTaskListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "TagFilters")
+	delete(f, "Order")
+	delete(f, "OrderField")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAnnotatedTaskListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAnnotatedTaskListResponseParams struct {
+	// 任务列表总数量
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 标注任务详情列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskList []*AnnotationTaskInfo `json:"TaskList,omitnil,omitempty" name:"TaskList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAnnotatedTaskListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAnnotatedTaskListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAnnotatedTaskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAnnotatedTaskListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5905,6 +6107,101 @@ func (r *DescribeTrainingTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeWorkspacesRequestParams struct {
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>过滤条件</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>偏移量</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>数量</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>排序字段</p>
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// <p>排序方式</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+type DescribeWorkspacesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>过滤条件</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// <p>偏移量</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>数量</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>排序字段</p>
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// <p>排序方式</p>
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+func (r *DescribeWorkspacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkspacesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TiProjectId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderField")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkspacesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkspacesResponseParams struct {
+	// <p>总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>工作空间列表</p>
+	Workspaces []*Workspace `json:"Workspaces,omitnil,omitempty" name:"Workspaces"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeWorkspacesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWorkspacesResponseParams `json:"Response"`
+}
+
+func (r *DescribeWorkspacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkspacesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeviceImageInfo struct {
 	// 设备类型, 支持GPU等
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6383,6 +6680,14 @@ type IntranetCallInfo struct {
 	// 基于新网关的私有连接信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateLinkInfosV2 []*PrivateLinkInfo `json:"PrivateLinkInfosV2,omitnil,omitempty" name:"PrivateLinkInfosV2"`
+}
+
+type LabelValue struct {
+	// 标签名称
+	LabelName *string `json:"LabelName,omitnil,omitempty" name:"LabelName"`
+
+	// 标签的颜色
+	LabelColor *string `json:"LabelColor,omitnil,omitempty" name:"LabelColor"`
 }
 
 type LocalDisk struct {
@@ -8336,6 +8641,9 @@ type PublicDataSourceFS struct {
 
 // Predefined struct for user
 type PushTrainingMetricsRequestParams struct {
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 指标数据
 	Data []*MetricData `json:"Data,omitnil,omitempty" name:"Data"`
 }
@@ -8343,6 +8651,9 @@ type PushTrainingMetricsRequestParams struct {
 type PushTrainingMetricsRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 指标数据
 	Data []*MetricData `json:"Data,omitnil,omitempty" name:"Data"`
 }
@@ -8359,6 +8670,7 @@ func (r *PushTrainingMetricsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "TiProjectId")
 	delete(f, "Data")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PushTrainingMetricsRequest has unknown keys!", "")
@@ -8524,6 +8836,20 @@ type ResourceGroup struct {
 	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
+}
+
+type ResourceGroupInWorkspace struct {
+	// <p>资源组ID</p>
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// <p>资源组名称</p>
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
+
+	// <p>地域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>是否有运行中的任务/服务占用</p>
+	Occupied *bool `json:"Occupied,omitnil,omitempty" name:"Occupied"`
 }
 
 type ResourceGroupInfo struct {
@@ -9308,6 +9634,9 @@ func (r *StartNotebookResponse) FromJsonString(s string) error {
 type StartTrainingTaskRequestParams struct {
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 type StartTrainingTaskRequest struct {
@@ -9315,6 +9644,9 @@ type StartTrainingTaskRequest struct {
 	
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 func (r *StartTrainingTaskRequest) ToJsonString() string {
@@ -9330,6 +9662,7 @@ func (r *StartTrainingTaskRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Id")
+	delete(f, "TiProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartTrainingTaskRequest has unknown keys!", "")
 	}
@@ -9504,6 +9837,9 @@ func (r *StopNotebookResponse) FromJsonString(s string) error {
 type StopTrainingTaskRequestParams struct {
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 type StopTrainingTaskRequest struct {
@@ -9511,6 +9847,9 @@ type StopTrainingTaskRequest struct {
 	
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 func (r *StopTrainingTaskRequest) ToJsonString() string {
@@ -9526,6 +9865,7 @@ func (r *StopTrainingTaskRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Id")
+	delete(f, "TiProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopTrainingTaskRequest has unknown keys!", "")
 	}
@@ -10297,4 +10637,27 @@ type WorkloadStatus struct {
 	// 状态异常时，展示原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+}
+
+type Workspace struct {
+	// <p>项目ID</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
+	// <p>名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>绑定的资源组信息</p>
+	ResourceGroups []*ResourceGroupInWorkspace `json:"ResourceGroups,omitnil,omitempty" name:"ResourceGroups"`
+
+	// <p>当前用户对此空间拥有的权限</p>
+	ActionType []*string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+
+	// <p>工作空间状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }

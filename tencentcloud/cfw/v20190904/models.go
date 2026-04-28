@@ -409,35 +409,38 @@ type AssetZone struct {
 }
 
 type AssociatedInstanceInfo struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例类型，3是cvm实例,4是clb实例,5是eni实例,6是云数据库
+	// <p>实例类型，3是cvm实例,4是clb实例,5是eni实例,6是云数据库</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 私有网络ID
+	// <p>私有网络ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有网络名称
+	// <p>私有网络名称</p>
 	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
 
-	// 公网IP
+	// <p>公网IP</p>
 	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
-	// 内网IP
+	// <p>内网IP</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 关联安全组数量
+	// <p>关联安全组数量</p>
 	SecurityGroupCount *uint64 `json:"SecurityGroupCount,omitnil,omitempty" name:"SecurityGroupCount"`
 
-	// 关联安全组规则数量
+	// <p>关联安全组规则数量</p>
 	SecurityGroupRuleCount *uint64 `json:"SecurityGroupRuleCount,omitnil,omitempty" name:"SecurityGroupRuleCount"`
 
-	// 关联数据库代理Id
+	// <p>关联数据库代理Id</p>
 	CdbId *string `json:"CdbId,omitnil,omitempty" name:"CdbId"`
+
+	// <p>容器服务集群ID</p>
+	TkeClusterId *string `json:"TkeClusterId,omitnil,omitempty" name:"TkeClusterId"`
 }
 
 type AttachInsInfo struct {

@@ -682,6 +682,9 @@ type FileInfo struct {
 
 	// <p>网页地址</p>
 	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
+
+	// <p>文件能力标识列表</p>
+	Capabilities []*string `json:"Capabilities,omitnil,omitempty" name:"Capabilities"`
 }
 
 // Predefined struct for user
@@ -1021,53 +1024,59 @@ func (r *GetUploadJobDetailsResponse) FromJsonString(s string) error {
 }
 
 type KnowledgeBase struct {
-	// 知识库id
+	// <p>知识库id</p>
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 
-	// 知识库名称
+	// <p>知识库名称</p>
 	KnowledgeBaseName *string `json:"KnowledgeBaseName,omitnil,omitempty" name:"KnowledgeBaseName"`
 
-	// 知识库描述
+	// <p>知识库描述</p>
 	KnowledgeBaseDesc *string `json:"KnowledgeBaseDesc,omitnil,omitempty" name:"KnowledgeBaseDesc"`
 
-	// 创建者subuin
+	// <p>创建者subuin</p>
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 文件数量
+	// <p>文件数量</p>
 	FileNum *int64 `json:"FileNum,omitnil,omitempty" name:"FileNum"`
 
-	// 知识库关联的数据库列表，目前是只绑定一个数据源，数组预留拓展
+	// <p>知识库关联的数据库列表，目前是只绑定一个数据源，数组预留拓展</p>
 	DatasourceIds []*string `json:"DatasourceIds,omitnil,omitempty" name:"DatasourceIds"`
+
+	// <p>知识库任务配置</p>
+	Config *KnowledgeTaskConfig `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
 type KnowledgeTaskConfig struct {
-	// 切片类型  0:自定义切片，1：智能切片
+	// <p>切片类型  0:自定义切片，1：智能切片</p>
 	ChunkType *int64 `json:"ChunkType,omitnil,omitempty" name:"ChunkType"`
 
-	// /智能切片：最小值 1000，默认 4800 自定义切片：正整数即可,默认值 1000
+	// <p>/智能切片：最小值 1000，默认 4800 自定义切片：正整数即可,默认值 1000</p>
 	MaxChunkSize *int64 `json:"MaxChunkSize,omitnil,omitempty" name:"MaxChunkSize"`
 
-	//  切片分隔符,自定义切片使用：默认值为：["\n\n", "\n", "。", "！", "？", "，", ""]
+	// <p>切片分隔符,自定义切片使用：默认值为：[&quot;\n\n&quot;, &quot;\n&quot;, &quot;。&quot;, &quot;！&quot;, &quot;？&quot;, &quot;，&quot;, &quot;&quot;]</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Delimiters []*string `json:"Delimiters,omitnil,omitempty" name:"Delimiters"`
 
-	// 自定义切片使用:默认0 可重叠字符长度
+	// <p>自定义切片使用:默认0 可重叠字符长度</p>
 	ChunkOverlap *int64 `json:"ChunkOverlap,omitnil,omitempty" name:"ChunkOverlap"`
 
-	// 表格类文档解析
+	// <p>表格类文档解析</p>
 	Columns []*ColumnInfo `json:"Columns,omitnil,omitempty" name:"Columns"`
 
-	// 带检索的索引列表
+	// <p>带检索的索引列表</p>
 	Indexes []*int64 `json:"Indexes,omitnil,omitempty" name:"Indexes"`
 
-	// 0：不生成文档摘要，1：生成文档概要。默认0，当取1时，GenParaSummary必须也为1
+	// <p>0：不生成文档摘要，1：生成文档概要。默认0，当取1时，GenParaSummary必须也为1</p>
 	GenDocSummary *int64 `json:"GenDocSummary,omitnil,omitempty" name:"GenDocSummary"`
 
-	// 0：不生成段落摘要，1：生成段落概要。默认0
+	// <p>0：不生成段落摘要，1：生成段落概要。默认0</p>
 	GenParaSummary *int64 `json:"GenParaSummary,omitnil,omitempty" name:"GenParaSummary"`
+
+	// <p>0：不开启图片理解，1：开启图片理解。默认1</p><p>取值范围：[1, 10000]</p><p>默认值：1</p>
+	EnableImageUnderstanding *int64 `json:"EnableImageUnderstanding,omitnil,omitempty" name:"EnableImageUnderstanding"`
 }
 
 type ModelUserAuthority struct {
@@ -1180,51 +1189,57 @@ func (r *ModifyChunkResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyKnowledgeBaseRequestParams struct {
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 操作类型：Create，Update，Delete
+	// <p>操作类型：Create，Update，Delete</p>
 	OperateType *string `json:"OperateType,omitnil,omitempty" name:"OperateType"`
 
-	// 知识库id，update和delete时必填
+	// <p>知识库id，update和delete时必填</p>
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 
-	// 知识库名称，create和update时必填。只允许字母、数字、汉字、下划线
+	// <p>知识库名称，create和update时必填。只允许字母、数字、汉字、下划线</p>
 	KnowledgeBaseName *string `json:"KnowledgeBaseName,omitnil,omitempty" name:"KnowledgeBaseName"`
 
-	// 知识库描述，create和update时必填
+	// <p>知识库描述，create和update时必填</p>
 	KnowledgeBaseDesc *string `json:"KnowledgeBaseDesc,omitnil,omitempty" name:"KnowledgeBaseDesc"`
 
-	// 1仅自己使用，2指定用户，0全员
+	// <p>1仅自己使用，2指定用户，0全员</p>
 	UseScope *int64 `json:"UseScope,omitnil,omitempty" name:"UseScope"`
 
-	// 可使用用户列表
+	// <p>可使用用户列表</p>
 	AuthorityUins []*string `json:"AuthorityUins,omitnil,omitempty" name:"AuthorityUins"`
+
+	// <p>知识库任务配置</p>
+	Config *KnowledgeTaskConfig `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
 type ModifyKnowledgeBaseRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 操作类型：Create，Update，Delete
+	// <p>操作类型：Create，Update，Delete</p>
 	OperateType *string `json:"OperateType,omitnil,omitempty" name:"OperateType"`
 
-	// 知识库id，update和delete时必填
+	// <p>知识库id，update和delete时必填</p>
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 
-	// 知识库名称，create和update时必填。只允许字母、数字、汉字、下划线
+	// <p>知识库名称，create和update时必填。只允许字母、数字、汉字、下划线</p>
 	KnowledgeBaseName *string `json:"KnowledgeBaseName,omitnil,omitempty" name:"KnowledgeBaseName"`
 
-	// 知识库描述，create和update时必填
+	// <p>知识库描述，create和update时必填</p>
 	KnowledgeBaseDesc *string `json:"KnowledgeBaseDesc,omitnil,omitempty" name:"KnowledgeBaseDesc"`
 
-	// 1仅自己使用，2指定用户，0全员
+	// <p>1仅自己使用，2指定用户，0全员</p>
 	UseScope *int64 `json:"UseScope,omitnil,omitempty" name:"UseScope"`
 
-	// 可使用用户列表
+	// <p>可使用用户列表</p>
 	AuthorityUins []*string `json:"AuthorityUins,omitnil,omitempty" name:"AuthorityUins"`
+
+	// <p>知识库任务配置</p>
+	Config *KnowledgeTaskConfig `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
 func (r *ModifyKnowledgeBaseRequest) ToJsonString() string {
@@ -1246,6 +1261,7 @@ func (r *ModifyKnowledgeBaseRequest) FromJsonString(s string) error {
 	delete(f, "KnowledgeBaseDesc")
 	delete(f, "UseScope")
 	delete(f, "AuthorityUins")
+	delete(f, "Config")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyKnowledgeBaseRequest has unknown keys!", "")
 	}
@@ -1254,7 +1270,7 @@ func (r *ModifyKnowledgeBaseRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyKnowledgeBaseResponseParams struct {
-	// 知识库id
+	// <p>知识库id</p>
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1640,35 +1656,38 @@ type Record struct {
 }
 
 type Scene struct {
-	// 场景ID
+	// <p>场景ID</p>
 	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
 
-	// 场景名称
+	// <p>场景名称</p>
 	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
 
-	// 技能列表，包含：rag（知识检索）、data_analytics（数据分析）、data_prediction（数据预测）
+	// <p>技能列表，包含：rag（知识检索）、data_analytics（数据分析）、data_prediction（数据预测）</p>
 	Skills []*string `json:"Skills,omitnil,omitempty" name:"Skills"`
 
-	// 提示词文本
+	// <p>提示词文本</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 检索配置
+	// <p>检索配置</p>
 	SearchConfig *SearchConfig `json:"SearchConfig,omitnil,omitempty" name:"SearchConfig"`
 
-	// 示例问答列表
+	// <p>示例问答列表</p>
 	ExampleQAList []*ExampleQA `json:"ExampleQAList,omitnil,omitempty" name:"ExampleQAList"`
 
-	// 记录的创建时间
+	// <p>记录的创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 记录的最后更新时间
+	// <p>记录的最后更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 创建者Uin
+	// <p>创建者Uin</p>
 	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
+
+	// <p>知识</p>
+	Knowledge *string `json:"Knowledge,omitnil,omitempty" name:"Knowledge"`
 }
 
 type SearchConfig struct {

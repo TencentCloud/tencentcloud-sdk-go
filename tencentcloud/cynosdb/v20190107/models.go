@@ -10596,20 +10596,20 @@ func (r *DescribeLibraDBForwardConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLibraDBInstanceDetailRequestParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 只读分析引擎实例 ID
+	// <p>只读分析引擎实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeLibraDBInstanceDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 只读分析引擎实例 ID
+	// <p>只读分析引擎实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -10635,135 +10635,139 @@ func (r *DescribeLibraDBInstanceDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLibraDBInstanceDetailResponseParams struct {
-	// 主账号
+	// <p>主账号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 账号唯一ID
+	// <p>账号唯一ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 集群ID
+	// <p>集群ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 地域
+	// <p>地域</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 可用区
+	// <p>可用区</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例状态
+	// <p>实例状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 状态描述
+	// <p>状态描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
-	// Libra分析引擎版本
+	// <p>Libra分析引擎版本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibraDBVersion *string `json:"LibraDBVersion,omitnil,omitempty" name:"LibraDBVersion"`
 
-	// cpu核数
+	// <p>cpu核数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存大小
+	// <p>内存大小</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 存储大小
+	// <p>存储大小</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 存储类型
+	// <p>存储类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 实例类型
+	// <p>实例类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例角色
+	// <p>实例角色</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceRole *string `json:"InstanceRole,omitnil,omitempty" name:"InstanceRole"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 售卖方式
+	// <p>售卖方式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 售卖开始时间
+	// <p>售卖开始时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PeriodStartTime *string `json:"PeriodStartTime,omitnil,omitempty" name:"PeriodStartTime"`
 
-	// 售卖结束时间
+	// <p>售卖结束时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PeriodEndTime *string `json:"PeriodEndTime,omitnil,omitempty" name:"PeriodEndTime"`
 
-	// 续费标识
+	// <p>续费标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 网络类型
+	// <p>网络类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetType *int64 `json:"NetType,omitnil,omitempty" name:"NetType"`
 
-	// 私有网络ID
+	// <p>私有网络ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网ID
+	// <p>子网ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 虚拟IP
+	// <p>虚拟IP</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 端口
+	// <p>端口</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// 实例网络信息
+	// <p>实例网络信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceNetInfo *InstanceNetInfo `json:"InstanceNetInfo,omitnil,omitempty" name:"InstanceNetInfo"`
 
-	// 实例标签信息
+	// <p>实例标签信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 实例节点信息
+	// <p>实例节点信息</p>
 	NodeInfo []*LibraDBNodeInfo `json:"NodeInfo,omitnil,omitempty" name:"NodeInfo"`
 
-	// 实例节点个数
+	// <p>实例节点个数</p>
 	NodeCount *uint64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
+
+	// <p>分析实例升级版本之后信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnalysisUpgradeVersionInfo *UpgradeAnalysisInstanceVersionInfo `json:"AnalysisUpgradeVersionInfo,omitnil,omitempty" name:"AnalysisUpgradeVersionInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -14972,92 +14976,96 @@ type LibraClusterSet struct {
 }
 
 type LibraDBClusterDetail struct {
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 地域
+	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 状态
+	// <p>状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 状态描述
+	// <p>状态描述</p>
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
-	// 存储大小
+	// <p>存储大小</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// VPC名称
+	// <p>VPC名称</p>
 	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
 
-	// vpc唯一id
+	// <p>vpc唯一id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网名称
+	// <p>子网名称</p>
 	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
 
-	// 子网ID
+	// <p>子网ID</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 数据库版本
+	// <p>数据库版本</p>
 	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 
-	// 使用容量
+	// <p>使用容量</p>
 	UsedStorage *int64 `json:"UsedStorage,omitnil,omitempty" name:"UsedStorage"`
 
-	// vip地址
+	// <p>vip地址</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// vport端口
+	// <p>vport端口</p>
 	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// 集群只读实例的vip地址和vport端口
+	// <p>集群只读实例的vip地址和vport端口</p>
 	RoAddr []*RoAddr `json:"RoAddr,omitnil,omitempty" name:"RoAddr"`
 
-	// cynos版本
+	// <p>cynos版本</p>
 	CynosVersion *string `json:"CynosVersion,omitnil,omitempty" name:"CynosVersion"`
 
-	// 是否冻结
+	// <p>是否冻结</p>
 	IsFreeze *string `json:"IsFreeze,omitnil,omitempty" name:"IsFreeze"`
 
-	// 任务列表
+	// <p>任务列表</p>
 	Tasks []*ObjectTask `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
-	// 主可用区
+	// <p>主可用区</p>
 	MasterZone *string `json:"MasterZone,omitnil,omitempty" name:"MasterZone"`
 
-	// 实例集合
+	// <p>实例集合</p>
 	InstanceSet []*InstanceSet `json:"InstanceSet,omitnil,omitempty" name:"InstanceSet"`
 
-	// 付费模式
+	// <p>付费模式</p>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 到期时间
+	// <p>到期时间</p>
 	PeriodEndTime *string `json:"PeriodEndTime,omitnil,omitempty" name:"PeriodEndTime"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectID *int64 `json:"ProjectID,omitnil,omitempty" name:"ProjectID"`
 
-	// 自动续费标识
+	// <p>自动续费标识</p>
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 版本标签
+	// <p>版本标签</p>
 	CynosVersionTag *string `json:"CynosVersionTag,omitnil,omitempty" name:"CynosVersionTag"`
 
-	// 不支持添加ro yes-不支持添加ro， no/null/"" 支持添加ro
+	// <p>不支持添加ro yes-不支持添加ro， no/null/&quot;&quot; 支持添加ro</p>
 	NoSupportAddRo *string `json:"NoSupportAddRo,omitnil,omitempty" name:"NoSupportAddRo"`
 
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 物理可用区
+	// <p>物理可用区</p>
 	PhysicalZone *string `json:"PhysicalZone,omitnil,omitempty" name:"PhysicalZone"`
+
+	// <p>版本升级灰度信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnalysisUpgradeVersionInfo *UpgradeAnalysisInstanceVersionInfo `json:"AnalysisUpgradeVersionInfo,omitnil,omitempty" name:"AnalysisUpgradeVersionInfo"`
 }
 
 type LibraDBClusterSet struct {
@@ -23532,6 +23540,20 @@ func (r *UnbindClusterResourcePackagesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UnbindClusterResourcePackagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpgradeAnalysisInstanceVersionInfo struct {
+	// <p>ip</p>
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+
+	// <p>端口</p>
+	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
+
+	// <p>版本</p>
+	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
+
+	// <p>到期时间</p>
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 }
 
 // Predefined struct for user

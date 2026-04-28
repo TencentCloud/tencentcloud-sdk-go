@@ -25702,7 +25702,7 @@ type SSAIConf struct {
 	// <p>dash周期类型：SinglePeriod 或 MultiPeriod，默认 MultiPeriod</p>
 	DashOriginManifestType *string `json:"DashOriginManifestType,omitnil,omitempty" name:"DashOriginManifestType"`
 
-	// <p>Empty VAST时是否播放Slate，默认开启(true)</p>
+	// <p>广告为空时是否插入Slate，默认开启(true)</p>
 	SlateOnEmptyVast *bool `json:"SlateOnEmptyVast,omitnil,omitempty" name:"SlateOnEmptyVast"`
 
 	// <p>SCTE marker duration，默认180，范围0-3600</p>

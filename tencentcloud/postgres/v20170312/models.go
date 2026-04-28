@@ -1413,9 +1413,6 @@ func (r *CreateDatabaseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateInstancesRequestParams struct {
-	// <p>实例所属主可用区， 如：ap-guangzhou-3；若需要支持多可用区，在DBNodeSet.N字段中进行添加主可用区和备可用区信息；<br>可用区信息可以通过调用 <a href="https://cloud.tencent.com/document/api/409/16769">DescribeZones</a> 接口的返回值中的Zone字段来获取。</p>
-	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
-
 	// <p>售卖规格码。该参数可以通过调用<a href="https://cloud.tencent.com/document/api/409/89019">DescribeClasses</a>的返回值中的SpecCode字段来获取。</p>
 	SpecCode *string `json:"SpecCode,omitnil,omitempty" name:"SpecCode"`
 
@@ -1436,6 +1433,9 @@ type CreateInstancesRequestParams struct {
 
 	// <p>实例根账号用户名对应的密码，长度8 ~ 32位，推荐使用12位以上的密码;不能以&quot; / &quot;开头;<br>必须包含以下四项，字符种类:</p><li>小写字母： [a ~ z]</li><li>大写字母：[A ～ Z]</li><li>数字：0 - 9</li><li>特殊字符：()`~!@#$%^&amp;*-+=_|{}[]:;'&lt;&gt;,.?/</li>
 	AdminPassword *string `json:"AdminPassword,omitnil,omitempty" name:"AdminPassword"`
+
+	// <p>实例所属主可用区， 如：ap-guangzhou-3；若需要支持多可用区，在DBNodeSet.N字段中进行添加主可用区和备可用区信息；<br>可用区信息可以通过调用 <a href="https://cloud.tencent.com/document/api/409/16769">DescribeZones</a> 接口的返回值中的Zone字段来获取。</p>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// <p>PostgreSQL大版本号（该参数当前必传），版本信息可从<a href="https://cloud.tencent.com/document/api/409/89018">DescribeDBVersions</a>获取。目前支持10，11，12，13，14，15这几个大版本，详情见<a href="https://cloud.tencent.com/document/product/409/67018">内核版本概述</a>。<br>输入该参数时，会基于此大版本号创建对应的最新小版本的最新内核版本号实例。</p>
 	DBMajorVersion *string `json:"DBMajorVersion,omitnil,omitempty" name:"DBMajorVersion"`
@@ -1516,9 +1516,6 @@ type CreateInstancesRequestParams struct {
 type CreateInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>实例所属主可用区， 如：ap-guangzhou-3；若需要支持多可用区，在DBNodeSet.N字段中进行添加主可用区和备可用区信息；<br>可用区信息可以通过调用 <a href="https://cloud.tencent.com/document/api/409/16769">DescribeZones</a> 接口的返回值中的Zone字段来获取。</p>
-	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
-
 	// <p>售卖规格码。该参数可以通过调用<a href="https://cloud.tencent.com/document/api/409/89019">DescribeClasses</a>的返回值中的SpecCode字段来获取。</p>
 	SpecCode *string `json:"SpecCode,omitnil,omitempty" name:"SpecCode"`
 
@@ -1539,6 +1536,9 @@ type CreateInstancesRequest struct {
 
 	// <p>实例根账号用户名对应的密码，长度8 ~ 32位，推荐使用12位以上的密码;不能以&quot; / &quot;开头;<br>必须包含以下四项，字符种类:</p><li>小写字母： [a ~ z]</li><li>大写字母：[A ～ Z]</li><li>数字：0 - 9</li><li>特殊字符：()`~!@#$%^&amp;*-+=_|{}[]:;'&lt;&gt;,.?/</li>
 	AdminPassword *string `json:"AdminPassword,omitnil,omitempty" name:"AdminPassword"`
+
+	// <p>实例所属主可用区， 如：ap-guangzhou-3；若需要支持多可用区，在DBNodeSet.N字段中进行添加主可用区和备可用区信息；<br>可用区信息可以通过调用 <a href="https://cloud.tencent.com/document/api/409/16769">DescribeZones</a> 接口的返回值中的Zone字段来获取。</p>
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// <p>PostgreSQL大版本号（该参数当前必传），版本信息可从<a href="https://cloud.tencent.com/document/api/409/89018">DescribeDBVersions</a>获取。目前支持10，11，12，13，14，15这几个大版本，详情见<a href="https://cloud.tencent.com/document/product/409/67018">内核版本概述</a>。<br>输入该参数时，会基于此大版本号创建对应的最新小版本的最新内核版本号实例。</p>
 	DBMajorVersion *string `json:"DBMajorVersion,omitnil,omitempty" name:"DBMajorVersion"`
@@ -1628,7 +1628,6 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Zone")
 	delete(f, "SpecCode")
 	delete(f, "Storage")
 	delete(f, "InstanceCount")
@@ -1636,6 +1635,7 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Charset")
 	delete(f, "AdminName")
 	delete(f, "AdminPassword")
+	delete(f, "Zone")
 	delete(f, "DBMajorVersion")
 	delete(f, "DBVersion")
 	delete(f, "DBKernelVersion")
@@ -6499,14 +6499,14 @@ func (r *DescribeZonesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DestroyDBInstanceRequestParams struct {
-	// 待下线实例ID
+	// <p>待下线实例ID</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 }
 
 type DestroyDBInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待下线实例ID
+	// <p>待下线实例ID</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 }
 
@@ -6564,42 +6564,32 @@ type Detail struct {
 
 // Predefined struct for user
 type DisIsolateDBInstancesRequestParams struct {
-	// 实例ID列表。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。支持同时解隔离多个实例。
+	// <p>实例ID列表。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取。支持同时解隔离多个实例。</p>
 	DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitnil,omitempty" name:"DBInstanceIdSet"`
 
-	// 购买时长，单位：月。
-	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li>
-	// <li>后付费：该参数不生效</li>
+	// <p>购买时长，单位：月。</p><li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li><li>后付费：该参数不生效</li>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 是否使用代金券：
-	// <li>true：使用</li>
-	// <li>false：不使用</li>
-	// 默认值：false
+	// <p>是否使用代金券：</p><li>true：使用</li><li>false：不使用</li>默认值：false
 	AutoVoucher *bool `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 代金券id列表。
+	// <p>代金券id列表。</p>
 	VoucherIds []*string `json:"VoucherIds,omitnil,omitempty" name:"VoucherIds"`
 }
 
 type DisIsolateDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID列表。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。支持同时解隔离多个实例。
+	// <p>实例ID列表。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取。支持同时解隔离多个实例。</p>
 	DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitnil,omitempty" name:"DBInstanceIdSet"`
 
-	// 购买时长，单位：月。
-	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li>
-	// <li>后付费：该参数不生效</li>
+	// <p>购买时长，单位：月。</p><li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li><li>后付费：该参数不生效</li>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 是否使用代金券：
-	// <li>true：使用</li>
-	// <li>false：不使用</li>
-	// 默认值：false
+	// <p>是否使用代金券：</p><li>true：使用</li><li>false：不使用</li>默认值：false
 	AutoVoucher *bool `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 代金券id列表。
+	// <p>代金券id列表。</p>
 	VoucherIds []*string `json:"VoucherIds,omitnil,omitempty" name:"VoucherIds"`
 }
 
@@ -7060,14 +7050,14 @@ func (r *InquiryPriceUpgradeDBInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type IsolateDBInstancesRequestParams struct {
-	// 实例ID集合。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。注意：不推荐同时隔离多个实例。建议每次操作仅传入单个实例ID。
+	// <p>实例ID集合。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取。注意：不推荐同时隔离多个实例。建议每次操作仅传入单个实例ID。</p>
 	DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitnil,omitempty" name:"DBInstanceIdSet"`
 }
 
 type IsolateDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID集合。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。注意：不推荐同时隔离多个实例。建议每次操作仅传入单个实例ID。
+	// <p>实例ID集合。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取。注意：不推荐同时隔离多个实例。建议每次操作仅传入单个实例ID。</p>
 	DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitnil,omitempty" name:"DBInstanceIdSet"`
 }
 

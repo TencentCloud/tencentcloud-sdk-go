@@ -7482,85 +7482,85 @@ type ServerlessIndexSettingsField struct {
 }
 
 type ServerlessSpace struct {
-	// Serverless索引空间ID
+	// <p>Serverless索引空间ID</p>
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 
-	// Serverless索引空间名
+	// <p>Serverless索引空间名</p>
 	SpaceName *string `json:"SpaceName,omitnil,omitempty" name:"SpaceName"`
 
-	// Serverless索引空间状态，0正常，-1已删除
+	// <p>Serverless索引空间状态</p><p>枚举值：</p><ul><li>0： 创建中</li><li>1： 正常</li><li>2： 流程中</li><li>-3： 已删除</li><li>-4： 隔离中</li></ul>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 创建日期
+	// <p>创建日期</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 空间内索引数量
+	// <p>空间内索引数量</p>
 	IndexCount *int64 `json:"IndexCount,omitnil,omitempty" name:"IndexCount"`
 
-	// kibana公网uri
+	// <p>kibana公网uri</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaUrl *string `json:"KibanaUrl,omitnil,omitempty" name:"KibanaUrl"`
 
-	// kibana内网url
+	// <p>kibana内网url</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaPrivateUrl *string `json:"KibanaPrivateUrl,omitnil,omitempty" name:"KibanaPrivateUrl"`
 
-	// 空间内网访问地址
+	// <p>空间内网访问地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexAccessUrl *string `json:"IndexAccessUrl,omitnil,omitempty" name:"IndexAccessUrl"`
 
-	// 空间白名单
+	// <p>空间白名单</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaPublicAcl *EsAcl `json:"KibanaPublicAcl,omitnil,omitempty" name:"KibanaPublicAcl"`
 
-	// 空间检索分析域名
+	// <p>空间检索分析域名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaEmbedUrl *string `json:"KibanaEmbedUrl,omitnil,omitempty" name:"KibanaEmbedUrl"`
 
-	// 数据联路
+	// <p>数据联路</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiDataList *DiData `json:"DiDataList,omitnil,omitempty" name:"DiDataList"`
 
-	// 空间vpc信息
+	// <p>空间vpc信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcInfo []*VpcInfo `json:"VpcInfo,omitnil,omitempty" name:"VpcInfo"`
 
-	// 地域
+	// <p>地域</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 可用区
+	// <p>可用区</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// kibana公网开关，0关闭，1开启
+	// <p>kibana公网开关，0关闭，1开启</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableKibanaPublicAccess *int64 `json:"EnableKibanaPublicAccess,omitnil,omitempty" name:"EnableKibanaPublicAccess"`
 
-	// kibana内网开关，0关闭，1开启
+	// <p>kibana内网开关，0关闭，1开启</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableKibanaPrivateAccess *int64 `json:"EnableKibanaPrivateAccess,omitnil,omitempty" name:"EnableKibanaPrivateAccess"`
 
-	// 空间所属appid
+	// <p>空间所属appid</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// //默认en， 可选zh-CN
+	// <p>//默认en， 可选zh-CN</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaLanguage *string `json:"KibanaLanguage,omitnil,omitempty" name:"KibanaLanguage"`
 
-	// 0
+	// <p>0</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterType *int64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 空间标签信息
+	// <p>空间标签信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
 
-	// 是否开启mcp服务
+	// <p>是否开启mcp服务</p>
 	EnableMcpAccess *int64 `json:"EnableMcpAccess,omitnil,omitempty" name:"EnableMcpAccess"`
 
-	// mcp的访问地址
+	// <p>mcp的访问地址</p>
 	McpAccess *string `json:"McpAccess,omitnil,omitempty" name:"McpAccess"`
 }
 

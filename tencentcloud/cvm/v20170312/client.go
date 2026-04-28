@@ -6097,6 +6097,86 @@ func (c *Client) ModifyChcAttributeWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyChcNetworkModeRequest() (request *ModifyChcNetworkModeRequest) {
+    request = &ModifyChcNetworkModeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "ModifyChcNetworkMode")
+    
+    
+    return
+}
+
+func NewModifyChcNetworkModeResponse() (response *ModifyChcNetworkModeResponse) {
+    response = &ModifyChcNetworkModeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyChcNetworkMode
+// ModifyChcNetworkMode接口用于切换CHC物理服务器的网络模式，适用于客户使用自建pxe环境装机，调用此接口切换部署网络和业务网络。**调用此接口会影响到业务网络，请明确使用方法后再调用**。
+//
+// - 切换部署网络：传入参数NetworkMode=DEPLOY。只有当CHC服务器状态为“可生产”或“已生产”，并且配置了部署网络才可以切换，否则API直接报错。
+//
+// - 切换业务网络：传入参数NetworkMode=BUSINESS。只有当CHC服务器状态为“已生产”时才可以切换，否则API直接报错。
+//
+// 
+//
+// 切换网络模式是一个异步操作，可以通过DescribeChcHosts轮询查询设备的NetworkMode和操作状态来判断是否切换成功
+//
+// - 切换部署网络：chc物理服务器如下参数值为以下值是判断切换成功：NetworkMode=DEPLOY，LatestOperation=SwitchChcDeployNetwork, LatestOperationState=SUCCESS。
+//
+// - 切换业务网络：chc物理服务器如下参数值为以下值是判断切换成功：NetworkMode=BUSINESS，LatestOperation=SwitchChcBusinessNetwork, LatestOperationState=SUCCESS。
+//
+// 可能返回的错误码:
+//  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
+//  INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = "InvalidParameterValue.ChcHostsNotFound"
+//  OPERATIONDENIED_CHCDEPLOYCONFIGINVALID = "OperationDenied.ChcDeployConfigInvalid"
+//  OPERATIONDENIED_CHCHOSTSTATENOTSUPPORTED = "OperationDenied.ChcHostStateNotSupported"
+func (c *Client) ModifyChcNetworkMode(request *ModifyChcNetworkModeRequest) (response *ModifyChcNetworkModeResponse, err error) {
+    return c.ModifyChcNetworkModeWithContext(context.Background(), request)
+}
+
+// ModifyChcNetworkMode
+// ModifyChcNetworkMode接口用于切换CHC物理服务器的网络模式，适用于客户使用自建pxe环境装机，调用此接口切换部署网络和业务网络。**调用此接口会影响到业务网络，请明确使用方法后再调用**。
+//
+// - 切换部署网络：传入参数NetworkMode=DEPLOY。只有当CHC服务器状态为“可生产”或“已生产”，并且配置了部署网络才可以切换，否则API直接报错。
+//
+// - 切换业务网络：传入参数NetworkMode=BUSINESS。只有当CHC服务器状态为“已生产”时才可以切换，否则API直接报错。
+//
+// 
+//
+// 切换网络模式是一个异步操作，可以通过DescribeChcHosts轮询查询设备的NetworkMode和操作状态来判断是否切换成功
+//
+// - 切换部署网络：chc物理服务器如下参数值为以下值是判断切换成功：NetworkMode=DEPLOY，LatestOperation=SwitchChcDeployNetwork, LatestOperationState=SUCCESS。
+//
+// - 切换业务网络：chc物理服务器如下参数值为以下值是判断切换成功：NetworkMode=BUSINESS，LatestOperation=SwitchChcBusinessNetwork, LatestOperationState=SUCCESS。
+//
+// 可能返回的错误码:
+//  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
+//  INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = "InvalidParameterValue.ChcHostsNotFound"
+//  OPERATIONDENIED_CHCDEPLOYCONFIGINVALID = "OperationDenied.ChcDeployConfigInvalid"
+//  OPERATIONDENIED_CHCHOSTSTATENOTSUPPORTED = "OperationDenied.ChcHostStateNotSupported"
+func (c *Client) ModifyChcNetworkModeWithContext(ctx context.Context, request *ModifyChcNetworkModeRequest) (response *ModifyChcNetworkModeResponse, err error) {
+    if request == nil {
+        request = NewModifyChcNetworkModeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cvm", APIVersion, "ModifyChcNetworkMode")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyChcNetworkMode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyChcNetworkModeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDisasterRecoverGroupAttributeRequest() (request *ModifyDisasterRecoverGroupAttributeRequest) {
     request = &ModifyDisasterRecoverGroupAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},

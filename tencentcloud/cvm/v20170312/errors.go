@@ -821,6 +821,12 @@ const (
 	// 不支持该账户的操作。
 	OPERATIONDENIED_ACCOUNTNOTSUPPORTED = "OperationDenied.AccountNotSupported"
 
+	// CHC的部署配置非法。
+	OPERATIONDENIED_CHCDEPLOYCONFIGINVALID = "OperationDenied.ChcDeployConfigInvalid"
+
+	// chc物理服务器当前状态不支持此项操作
+	OPERATIONDENIED_CHCHOSTSTATENOTSUPPORTED = "OperationDenied.ChcHostStateNotSupported"
+
 	// 不允许未配置部署网络的CHC安装云上镜像。
 	OPERATIONDENIED_CHCINSTALLCLOUDIMAGEWITHOUTDEPLOYNETWORK = "OperationDenied.ChcInstallCloudImageWithoutDeployNetwork"
 

@@ -1535,125 +1535,6 @@ type Coord struct {
 	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 }
 
-// Predefined struct for user
-type CropEnhanceImageOCRRequestParams struct {
-	// <p>图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。</p>
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-
-	// <p>0表示关闭切边<br>1表示开启切边，默认为1</p>
-	Crop *int64 `json:"Crop,omitnil,omitempty" name:"Crop"`
-
-	// <p>0表示关闭弯曲矫正<br>1表示开启弯曲矫正，默认为1</p>
-	Deskew *int64 `json:"Deskew,omitnil,omitempty" name:"Deskew"`
-
-	// <p>0表示返回处理后的图和坐标，默认为0<br>1表示只返回坐标，不返回图片</p>
-	OnlyPosition *int64 `json:"OnlyPosition,omitnil,omitempty" name:"OnlyPosition"`
-
-	// <p>默认-1</p><ul><li>-1 不处理增强</li><li>1 增亮</li><li>2 增强并锐化</li><li>3 黑白</li><li>4 灰度</li><li>5 去阴影增强</li><li>6 点阵图</li></ul>
-	EnhanceType *int64 `json:"EnhanceType,omitnil,omitempty" name:"EnhanceType"`
-
-	// <p>0表示不矫正图像方向，默认为0  1表示矫正图像方向</p>
-	AdjustOrientation *int64 `json:"AdjustOrientation,omitnil,omitempty" name:"AdjustOrientation"`
-}
-
-type CropEnhanceImageOCRRequest struct {
-	*tchttp.BaseRequest
-	
-	// <p>图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。</p>
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-
-	// <p>0表示关闭切边<br>1表示开启切边，默认为1</p>
-	Crop *int64 `json:"Crop,omitnil,omitempty" name:"Crop"`
-
-	// <p>0表示关闭弯曲矫正<br>1表示开启弯曲矫正，默认为1</p>
-	Deskew *int64 `json:"Deskew,omitnil,omitempty" name:"Deskew"`
-
-	// <p>0表示返回处理后的图和坐标，默认为0<br>1表示只返回坐标，不返回图片</p>
-	OnlyPosition *int64 `json:"OnlyPosition,omitnil,omitempty" name:"OnlyPosition"`
-
-	// <p>默认-1</p><ul><li>-1 不处理增强</li><li>1 增亮</li><li>2 增强并锐化</li><li>3 黑白</li><li>4 灰度</li><li>5 去阴影增强</li><li>6 点阵图</li></ul>
-	EnhanceType *int64 `json:"EnhanceType,omitnil,omitempty" name:"EnhanceType"`
-
-	// <p>0表示不矫正图像方向，默认为0  1表示矫正图像方向</p>
-	AdjustOrientation *int64 `json:"AdjustOrientation,omitnil,omitempty" name:"AdjustOrientation"`
-}
-
-func (r *CropEnhanceImageOCRRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CropEnhanceImageOCRRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageBase64")
-	delete(f, "ImageUrl")
-	delete(f, "PdfPageNumber")
-	delete(f, "Crop")
-	delete(f, "Deskew")
-	delete(f, "OnlyPosition")
-	delete(f, "EnhanceType")
-	delete(f, "AdjustOrientation")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CropEnhanceImageOCRRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CropEnhanceImageOCRResponseParams struct {
-	// <p>处理后图的宽</p>
-	CroppedWidth *int64 `json:"CroppedWidth,omitnil,omitempty" name:"CroppedWidth"`
-
-	// <p>处理后图的高</p>
-	CroppedHeight *int64 `json:"CroppedHeight,omitnil,omitempty" name:"CroppedHeight"`
-
-	// <p>图像处理后的jpg图片，base64格式</p>
-	CroppedImage *string `json:"CroppedImage,omitnil,omitempty" name:"CroppedImage"`
-
-	// <p>切图区域的4个角点坐标, 是个长度为8的数组<br>[0,1,2,3,4,5,6,7]</p><p>(0,1) 左上角坐标<br>(2,3) 右上角坐标<br>(4,5) 右下角坐标<br>(6,7) 左下角坐标</p>
-	Position []*int64 `json:"Position,omitnil,omitempty" name:"Position"`
-
-	// <p>图像角度，AdjustOrientation =1时生效, 返回值如下  -1: 失败  0、90、180、270</p>
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Angle *int64 `json:"Angle,omitnil,omitempty" name:"Angle"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CropEnhanceImageOCRResponse struct {
-	*tchttp.BaseResponse
-	Response *CropEnhanceImageOCRResponseParams `json:"Response"`
-}
-
-func (r *CropEnhanceImageOCRResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CropEnhanceImageOCRResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CustomsDeclaration struct {
 	// 发票名称
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
@@ -2910,113 +2791,6 @@ func (r *EnterpriseLicenseOCRResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type EraseHandwrittenImageOCRRequestParams struct {
-	// 图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-
-	// 0表示关闭切边，默认为0
-	// 1表示开启切边
-	Crop *int64 `json:"Crop,omitnil,omitempty" name:"Crop"`
-
-	// 0表示关闭弯曲矫正，默认为0
-	// 1表示开启弯曲矫正
-	Deskew *int64 `json:"Deskew,omitnil,omitempty" name:"Deskew"`
-
-	// 0表示关闭增强锐化，默认为0
-	// 1表示开启增强锐化
-	Sharpen *int64 `json:"Sharpen,omitnil,omitempty" name:"Sharpen"`
-
-	// 0表示返回黑白图像
-	// 1表示返回彩色图像，默认为1
-	Grayscale *int64 `json:"Grayscale,omitnil,omitempty" name:"Grayscale"`
-}
-
-type EraseHandwrittenImageOCRRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-
-	// 0表示关闭切边，默认为0
-	// 1表示开启切边
-	Crop *int64 `json:"Crop,omitnil,omitempty" name:"Crop"`
-
-	// 0表示关闭弯曲矫正，默认为0
-	// 1表示开启弯曲矫正
-	Deskew *int64 `json:"Deskew,omitnil,omitempty" name:"Deskew"`
-
-	// 0表示关闭增强锐化，默认为0
-	// 1表示开启增强锐化
-	Sharpen *int64 `json:"Sharpen,omitnil,omitempty" name:"Sharpen"`
-
-	// 0表示返回黑白图像
-	// 1表示返回彩色图像，默认为1
-	Grayscale *int64 `json:"Grayscale,omitnil,omitempty" name:"Grayscale"`
-}
-
-func (r *EraseHandwrittenImageOCRRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *EraseHandwrittenImageOCRRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageBase64")
-	delete(f, "ImageUrl")
-	delete(f, "PdfPageNumber")
-	delete(f, "Crop")
-	delete(f, "Deskew")
-	delete(f, "Sharpen")
-	delete(f, "Grayscale")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EraseHandwrittenImageOCRRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type EraseHandwrittenImageOCRResponseParams struct {
-	// 图像处理后的jpg图片，base64格式
-	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type EraseHandwrittenImageOCRResponse struct {
-	*tchttp.BaseResponse
-	Response *EraseHandwrittenImageOCRResponseParams `json:"Response"`
-}
-
-func (r *EraseHandwrittenImageOCRResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *EraseHandwrittenImageOCRResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type EstateCertOCRRequestParams struct {
 	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
@@ -4224,6 +3998,9 @@ type GeneralAccurateOCRRequestParams struct {
 
 	// <p>配置ID支持： OCR -- 通用场景 MulOCR--多语种场景，默认值为OCR</p>
 	ConfigID *string `json:"ConfigID,omitnil,omitempty" name:"ConfigID"`
+
+	// <p>需要识别的文字类型，默认识别全部类型的文字。 0：自动识别全部类型文字 1：仅识别手写体文字 2：仅识别印刷体文字</p><p>当config id=OCR 且 iswords 是false 时 才生效</p>
+	WordsType *string `json:"WordsType,omitnil,omitempty" name:"WordsType"`
 }
 
 type GeneralAccurateOCRRequest struct {
@@ -4252,6 +4029,9 @@ type GeneralAccurateOCRRequest struct {
 
 	// <p>配置ID支持： OCR -- 通用场景 MulOCR--多语种场景，默认值为OCR</p>
 	ConfigID *string `json:"ConfigID,omitnil,omitempty" name:"ConfigID"`
+
+	// <p>需要识别的文字类型，默认识别全部类型的文字。 0：自动识别全部类型文字 1：仅识别手写体文字 2：仅识别印刷体文字</p><p>当config id=OCR 且 iswords 是false 时 才生效</p>
+	WordsType *string `json:"WordsType,omitnil,omitempty" name:"WordsType"`
 }
 
 func (r *GeneralAccurateOCRRequest) ToJsonString() string {
@@ -4274,6 +4054,7 @@ func (r *GeneralAccurateOCRRequest) FromJsonString(s string) error {
 	delete(f, "PdfPageNumber")
 	delete(f, "EnableDetectText")
 	delete(f, "ConfigID")
+	delete(f, "WordsType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneralAccurateOCRRequest has unknown keys!", "")
 	}
