@@ -5257,6 +5257,82 @@ func (c *Client) QuotaInvoiceOCRWithContext(ctx context.Context, request *QuotaI
     return
 }
 
+func NewRecognizeAgentRequest() (request *RecognizeAgentRequest) {
+    request = &RecognizeAgentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeAgent")
+    
+    
+    return
+}
+
+func NewRecognizeAgentResponse() (response *RecognizeAgentResponse) {
+    response = &RecognizeAgentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RecognizeAgent
+// 支持对输入图的内容进行判断、分类以及总结；支持用户对通用文字识别输出结构进行自定义。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
+//  FAILEDOPERATION_RESPONSEPARSEFAILED = "FailedOperation.ResponseParseFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeAgent(request *RecognizeAgentRequest) (response *RecognizeAgentResponse, err error) {
+    return c.RecognizeAgentWithContext(context.Background(), request)
+}
+
+// RecognizeAgent
+// 支持对输入图的内容进行判断、分类以及总结；支持用户对通用文字识别输出结构进行自定义。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
+//  FAILEDOPERATION_RESPONSEPARSEFAILED = "FailedOperation.ResponseParseFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeAgentWithContext(ctx context.Context, request *RecognizeAgentRequest) (response *RecognizeAgentResponse, err error) {
+    if request == nil {
+        request = NewRecognizeAgentRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "RecognizeAgent")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeAgent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecognizeAgentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecognizeContainerOCRRequest() (request *RecognizeContainerOCRRequest) {
     request = &RecognizeContainerOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9125,6 +9201,74 @@ func (c *Client) VerifyOfdVatInvoiceOCRWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewVerifyOfdVatInvoiceOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyScenePhotoRequest() (request *VerifyScenePhotoRequest) {
+    request = &VerifyScenePhotoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "VerifyScenePhoto")
+    
+    
+    return
+}
+
+func NewVerifyScenePhotoResponse() (response *VerifyScenePhotoResponse) {
+    response = &VerifyScenePhotoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// VerifyScenePhoto
+// 提供针对特定场景（如商户门头照、车牌等）图片的PS篡改、AIGC合成、图片质量检测能力，可应用于业务流程中对特定场景图片真实性、有效性校验的场景。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) VerifyScenePhoto(request *VerifyScenePhotoRequest) (response *VerifyScenePhotoResponse, err error) {
+    return c.VerifyScenePhotoWithContext(context.Background(), request)
+}
+
+// VerifyScenePhoto
+// 提供针对特定场景（如商户门头照、车牌等）图片的PS篡改、AIGC合成、图片质量检测能力，可应用于业务流程中对特定场景图片真实性、有效性校验的场景。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) VerifyScenePhotoWithContext(ctx context.Context, request *VerifyScenePhotoRequest) (response *VerifyScenePhotoResponse, err error) {
+    if request == nil {
+        request = NewVerifyScenePhotoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "VerifyScenePhoto")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyScenePhoto require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVerifyScenePhotoResponse()
     err = c.Send(request, response)
     return
 }

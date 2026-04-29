@@ -657,6 +657,57 @@ type CBSInstance struct {
 	ThroughputPerformance *int64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 }
 
+type CBSVolume struct {
+	// 存储卷名称
+	VolumeName *string `json:"VolumeName,omitnil,omitempty" name:"VolumeName"`
+
+	//  cbs 盘类型
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// cbs 大小（GB）
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// cbs 数量
+	DiskCount *int64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
+}
+
+type CFSTurboVolume struct {
+	// <p>存储卷名称</p>
+	VolumeName *string `json:"VolumeName,omitnil,omitempty" name:"VolumeName"`
+
+	// <p>文件系统 id</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// <p>CFSId</p>
+	FSId *string `json:"FSId,omitnil,omitempty" name:"FSId"`
+
+	// <p>挂载点 ip</p>
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// <p>cfs子目录</p>
+	SubPath *string `json:"SubPath,omitnil,omitempty" name:"SubPath"`
+
+	// <p>lustre挂载根目录，默认为/cfs</p>
+	RootDir *string `json:"RootDir,omitnil,omitempty" name:"RootDir"`
+}
+
+type CFSVolume struct {
+	// 存储卷名称
+	VolumeName *string `json:"VolumeName,omitnil,omitempty" name:"VolumeName"`
+
+	// 文件系统 id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// CFSId
+	FSId *string `json:"FSId,omitnil,omitempty" name:"FSId"`
+
+	// 挂载点 ip
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// cfs子目录
+	SubPath *string `json:"SubPath,omitnil,omitempty" name:"SubPath"`
+}
+
 type CLBSetting struct {
 	// CLB类型，PUBLIC_IP表示支持公网CLB和INTERNAL_IP表示支持内网CLB字段 
 	CLBType *string `json:"CLBType,omitnil,omitempty" name:"CLBType"`
@@ -675,6 +726,23 @@ type COSSettings struct {
 
 	// 日志存储在COS上的路径
 	LogOnCosPath *string `json:"LogOnCosPath,omitnil,omitempty" name:"LogOnCosPath"`
+}
+
+type COSVolume struct {
+	// 存储卷名称
+	VolumeName *string `json:"VolumeName,omitnil,omitempty" name:"VolumeName"`
+
+	// 密钥名称
+	Secret *string `json:"Secret,omitnil,omitempty" name:"Secret"`
+
+	// cos桶所在地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 存储桶名称
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// cos 子目录
+	SubPath *string `json:"SubPath,omitnil,omitempty" name:"SubPath"`
 }
 
 type CapacityGlobalConfig struct {
@@ -1716,6 +1784,91 @@ func (r *CreateClusterResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDynamicInstanceRequestParams struct {
+	// <p>EMR集群id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>支持DynamicInstance的服务名称</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>DynamicInstance类型</p><p>枚举值：</p><ul><li>RayCluster： RayCluster类型</li></ul>
+	DynamicInstanceType *string `json:"DynamicInstanceType,omitnil,omitempty" name:"DynamicInstanceType"`
+
+	// <p>表单创建信息</p>
+	DynamicInstanceForm *DynamicInstanceForm `json:"DynamicInstanceForm,omitnil,omitempty" name:"DynamicInstanceForm"`
+
+	// <p>yaml创建信息</p>
+	DynamicInstanceYaml *string `json:"DynamicInstanceYaml,omitnil,omitempty" name:"DynamicInstanceYaml"`
+}
+
+type CreateDynamicInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>EMR集群id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>支持DynamicInstance的服务名称</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>DynamicInstance类型</p><p>枚举值：</p><ul><li>RayCluster： RayCluster类型</li></ul>
+	DynamicInstanceType *string `json:"DynamicInstanceType,omitnil,omitempty" name:"DynamicInstanceType"`
+
+	// <p>表单创建信息</p>
+	DynamicInstanceForm *DynamicInstanceForm `json:"DynamicInstanceForm,omitnil,omitempty" name:"DynamicInstanceForm"`
+
+	// <p>yaml创建信息</p>
+	DynamicInstanceYaml *string `json:"DynamicInstanceYaml,omitnil,omitempty" name:"DynamicInstanceYaml"`
+}
+
+func (r *CreateDynamicInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDynamicInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ServiceName")
+	delete(f, "DynamicInstanceType")
+	delete(f, "DynamicInstanceForm")
+	delete(f, "DynamicInstanceYaml")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDynamicInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDynamicInstanceResponseParams struct {
+	// <p>异步流程id</p>
+	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDynamicInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDynamicInstanceResponseParams `json:"Response"`
+}
+
+func (r *CreateDynamicInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDynamicInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateGroupsSTDRequestParams struct {
 	// 集群名称
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -2234,6 +2387,19 @@ func (r *CreateSLInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateSLInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CustomImage struct {
+	// 镜像来源。支持企业版镜像（tcr）、个人版镜像（ccrPersonal）、个人版共有镜像（ccrAllPersonal)
+	ImageSourceType *string `json:"ImageSourceType,omitnil,omitempty" name:"ImageSourceType"`
+
+	// 镜像信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
+
+	// 镜像获取密钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImagePullSecret *ImagePullSecret `json:"ImagePullSecret,omitnil,omitempty" name:"ImagePullSecret"`
 }
 
 type CustomMetaDBInfo struct {
@@ -3394,6 +3560,63 @@ func (r *DescribeDAGInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDAGInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDynamicInstanceListRequestParams struct {
+	// emr 集群 id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeDynamicInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// emr 集群 id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDynamicInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDynamicInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDynamicInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDynamicInstanceListResponseParams struct {
+	// RayCluster 集群列表
+	DynamicInstanceList []*RayCluster `json:"DynamicInstanceList,omitnil,omitempty" name:"DynamicInstanceList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDynamicInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDynamicInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDynamicInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDynamicInstanceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7165,6 +7388,121 @@ type Dps struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type DynamicInstanceForm struct {
+	// <p>DynamicInstance名，长度限制1-64字符，只能包含小写字母</p>
+	DynamicInstanceName *string `json:"DynamicInstanceName,omitnil,omitempty" name:"DynamicInstanceName"`
+
+	// <p>命名空间</p>
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>是否支持高可用</p>
+	SupportHA *bool `json:"SupportHA,omitnil,omitempty" name:"SupportHA"`
+
+	// <p>自定义镜像信息</p>
+	CustomImage *CustomImage `json:"CustomImage,omitnil,omitempty" name:"CustomImage"`
+
+	// <p>资源组配置</p>
+	DynamicInstanceGroups []*DynamicInstanceGroup `json:"DynamicInstanceGroups,omitnil,omitempty" name:"DynamicInstanceGroups"`
+
+	// <p>是否支持存储配置</p>
+	SupportPV *bool `json:"SupportPV,omitnil,omitempty" name:"SupportPV"`
+
+	// <p>cbs存储卷列表</p>
+	CBSVolumes []*CBSVolume `json:"CBSVolumes,omitnil,omitempty" name:"CBSVolumes"`
+
+	// <p>cfs存储卷列表，只包含cfs，不包含cfs turbo</p>
+	CFSVolumes []*CFSVolume `json:"CFSVolumes,omitnil,omitempty" name:"CFSVolumes"`
+
+	// <p>cos存储卷列表</p>
+	COSVolumes []*COSVolume `json:"COSVolumes,omitnil,omitempty" name:"COSVolumes"`
+
+	// <p>挂载卷列表</p>
+	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
+
+	// <p>pod标签</p>
+	Labels []*TkeLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// <p>Tolerations定义</p>
+	Tolerations []*Toleration `json:"Tolerations,omitnil,omitempty" name:"Tolerations"`
+
+	// <p>环境变量</p>
+	Envs []*NameValue `json:"Envs,omitnil,omitempty" name:"Envs"`
+
+	// <p>依赖外部组件</p>
+	DependServices []*DependService `json:"DependServices,omitnil,omitempty" name:"DependServices"`
+
+	// <p>是否开启token鉴权</p>
+	SupportToken *bool `json:"SupportToken,omitnil,omitempty" name:"SupportToken"`
+
+	// <p>cfs trubo挂载列表，不包含标准版cfs</p>
+	CFSTurboVolumes []*CFSTurboVolume `json:"CFSTurboVolumes,omitnil,omitempty" name:"CFSTurboVolumes"`
+}
+
+type DynamicInstanceGroup struct {
+	// <p>资源组类型</p>
+	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
+
+	// <p>资源组名称</p>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>pod cpu核数</p>
+	PodCpu *uint64 `json:"PodCpu,omitnil,omitempty" name:"PodCpu"`
+
+	// <p>pod mem大小（GB）</p>
+	PodMem *uint64 `json:"PodMem,omitnil,omitempty" name:"PodMem"`
+
+	// <p>pod gpu类型</p>
+	PodGpuType *string `json:"PodGpuType,omitnil,omitempty" name:"PodGpuType"`
+
+	// <p>pod gpu块数</p>
+	PodGpu *uint64 `json:"PodGpu,omitnil,omitempty" name:"PodGpu"`
+
+	// <p>pod个数</p>
+	PodNum *uint64 `json:"PodNum,omitnil,omitempty" name:"PodNum"`
+
+	// <p>pod弹性最小个数</p>
+	MinPodNum *uint64 `json:"MinPodNum,omitnil,omitempty" name:"MinPodNum"`
+
+	// <p>pod弹性最大个数，当MaxPodNum &gt; MinPodNum时，默认表示开启弹性扩缩容，将在范围内扩缩容</p>
+	MaxPodNum *uint64 `json:"MaxPodNum,omitnil,omitempty" name:"MaxPodNum"`
+
+	// <p>是否支持存储配置</p>
+	SupportPV *bool `json:"SupportPV,omitnil,omitempty" name:"SupportPV"`
+
+	// <p>cbs存储卷列表</p>
+	CBSVolumes []*CBSVolume `json:"CBSVolumes,omitnil,omitempty" name:"CBSVolumes"`
+
+	// <p>cfs存储卷列表</p>
+	CFSVolumes []*CFSVolume `json:"CFSVolumes,omitnil,omitempty" name:"CFSVolumes"`
+
+	// <p>cos存储卷列表</p>
+	COSVolumes []*COSVolume `json:"COSVolumes,omitnil,omitempty" name:"COSVolumes"`
+
+	// <p>挂载卷列表</p>
+	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
+
+	// <p>pod标签</p>
+	Labels []*TkeLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// <p>Tolerations定义</p>
+	Tolerations []*Toleration `json:"Tolerations,omitnil,omitempty" name:"Tolerations"`
+
+	// <p>环境变量</p>
+	Envs []*NameValue `json:"Envs,omitnil,omitempty" name:"Envs"`
+
+	// <p>节点调度策略</p>
+	SchedulingPolicy *string `json:"SchedulingPolicy,omitnil,omitempty" name:"SchedulingPolicy"`
+
+	// <p>资源标签</p>
+	ResourceLabel *string `json:"ResourceLabel,omitnil,omitempty" name:"ResourceLabel"`
+
+	// <p>GPU资源厂商key</p>
+	PodGpuResourceKey *string `json:"PodGpuResourceKey,omitnil,omitempty" name:"PodGpuResourceKey"`
+
+	// <p>CFS Turbo 挂载列表</p>
+	CFSTurboVolumes []*CFSTurboVolume `json:"CFSTurboVolumes,omitnil,omitempty" name:"CFSTurboVolumes"`
+}
+
 type DynamicPodSpec struct {
 	// 需求最小cpu核数
 	RequestCpu *float64 `json:"RequestCpu,omitnil,omitempty" name:"RequestCpu"`
@@ -7652,6 +7990,41 @@ type HostPathVolumeSource struct {
 type HostVolumeContext struct {
 	// Pod挂载宿主机的目录。资源对宿主机的挂载点，指定的挂载点对应了宿主机的路径，该挂载点在Pod中作为数据存储目录使用
 	VolumePath *string `json:"VolumePath,omitnil,omitempty" name:"VolumePath"`
+}
+
+type ImageInfo struct {
+	// 镜像所属地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// tcr实例Id
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// 域名
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// 命名空间
+	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
+
+	// 镜像仓库名称
+	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
+
+	// 镜像版本
+	ImageVersion *string `json:"ImageVersion,omitnil,omitempty" name:"ImageVersion"`
+
+	// 镜像拉取策略
+	ImagePullPolicy *string `json:"ImagePullPolicy,omitnil,omitempty" name:"ImagePullPolicy"`
+
+	// 镜像地址
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+}
+
+type ImagePullSecret struct {
+	// 源密钥所在命名空间
+	SourceNamespace *string `json:"SourceNamespace,omitnil,omitempty" name:"SourceNamespace"`
+
+	// 密钥名称列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretNames []*string `json:"SecretNames,omitnil,omitempty" name:"SecretNames"`
 }
 
 type ImpalaQuery struct {
@@ -9257,6 +9630,142 @@ func (r *ModifyBootScriptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyDynamicInstanceForm struct {
+	// <p>更新作用域：<br>1：添加workerGroup（DynamicInstance级别）<br>2：更新存储配置（DynamicInstance级别）<br>3：更新标签配置（DynamicInstance级别）<br>4：更新高级配置（DynamicInstance级别）<br>5：更新PodCpu、PodMem（DynamicInstance-group级别）<br>6：更新PodNum、MinPodNum、MaxPodNum（DynamicInstance-group级别）<br>7：更新存储配置（DynamicInstance-group级别）<br>8：更新标签配置（DynamicInstance-group级别）</p>
+	ModifyScope *int64 `json:"ModifyScope,omitnil,omitempty" name:"ModifyScope"`
+
+	// <p>添加的workerGroup信息</p>
+	AddDynamicInstanceGroup *DynamicInstanceGroup `json:"AddDynamicInstanceGroup,omitnil,omitempty" name:"AddDynamicInstanceGroup"`
+
+	// <p>是否支持存储配置</p>
+	SupportPV *bool `json:"SupportPV,omitnil,omitempty" name:"SupportPV"`
+
+	// <p>cbs存储卷列表</p>
+	CBSVolumes []*CBSVolume `json:"CBSVolumes,omitnil,omitempty" name:"CBSVolumes"`
+
+	// <p>cfs存储卷列表，不包含cfs turbo列表</p>
+	CFSVolumes []*CFSVolume `json:"CFSVolumes,omitnil,omitempty" name:"CFSVolumes"`
+
+	// <p>cos存储卷列表</p>
+	COSVolumes []*COSVolume `json:"COSVolumes,omitnil,omitempty" name:"COSVolumes"`
+
+	// <p>挂载卷列表</p>
+	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
+
+	// <p>pod标签</p>
+	Labels []*TkeLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// <p>Tolerations定义</p>
+	Tolerations []*Toleration `json:"Tolerations,omitnil,omitempty" name:"Tolerations"`
+
+	// <p>环境变量</p>
+	Envs []*NameValue `json:"Envs,omitnil,omitempty" name:"Envs"`
+
+	// <p>依赖外部组件</p>
+	DependServices []*DependService `json:"DependServices,omitnil,omitempty" name:"DependServices"`
+
+	// <p>是否生成新token鉴权</p>
+	SupportNewToken *bool `json:"SupportNewToken,omitnil,omitempty" name:"SupportNewToken"`
+
+	// <p>DynamicInstance-group级别的更新信息</p>
+	ModifyDynamicInstanceGroup *DynamicInstanceGroup `json:"ModifyDynamicInstanceGroup,omitnil,omitempty" name:"ModifyDynamicInstanceGroup"`
+
+	// <p>cfs turbo挂载列表，不包含标准版</p>
+	CFSTurboVolumes []*CFSTurboVolume `json:"CFSTurboVolumes,omitnil,omitempty" name:"CFSTurboVolumes"`
+}
+
+// Predefined struct for user
+type ModifyDynamicInstanceRequestParams struct {
+	// <p>EMR集群id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>支持DynamicInstance的服务名称</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>DynamicInstance类型</p><p>枚举值：</p><ul><li>RayCluster： RayCluster类型</li></ul>
+	DynamicInstanceType *string `json:"DynamicInstanceType,omitnil,omitempty" name:"DynamicInstanceType"`
+
+	// <p>DynamicInstance的id</p>
+	DynamicInstanceId *uint64 `json:"DynamicInstanceId,omitnil,omitempty" name:"DynamicInstanceId"`
+
+	// <p>更新表单配置（每个更新域都传递最新的内容，要完整）</p>
+	DynamicInstanceForm *ModifyDynamicInstanceForm `json:"DynamicInstanceForm,omitnil,omitempty" name:"DynamicInstanceForm"`
+
+	// <p>更新YAML配置</p>
+	DynamicInstanceYaml *string `json:"DynamicInstanceYaml,omitnil,omitempty" name:"DynamicInstanceYaml"`
+}
+
+type ModifyDynamicInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>EMR集群id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>支持DynamicInstance的服务名称</p>
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>DynamicInstance类型</p><p>枚举值：</p><ul><li>RayCluster： RayCluster类型</li></ul>
+	DynamicInstanceType *string `json:"DynamicInstanceType,omitnil,omitempty" name:"DynamicInstanceType"`
+
+	// <p>DynamicInstance的id</p>
+	DynamicInstanceId *uint64 `json:"DynamicInstanceId,omitnil,omitempty" name:"DynamicInstanceId"`
+
+	// <p>更新表单配置（每个更新域都传递最新的内容，要完整）</p>
+	DynamicInstanceForm *ModifyDynamicInstanceForm `json:"DynamicInstanceForm,omitnil,omitempty" name:"DynamicInstanceForm"`
+
+	// <p>更新YAML配置</p>
+	DynamicInstanceYaml *string `json:"DynamicInstanceYaml,omitnil,omitempty" name:"DynamicInstanceYaml"`
+}
+
+func (r *ModifyDynamicInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDynamicInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ServiceName")
+	delete(f, "DynamicInstanceType")
+	delete(f, "DynamicInstanceId")
+	delete(f, "DynamicInstanceForm")
+	delete(f, "DynamicInstanceYaml")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDynamicInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDynamicInstanceResponseParams struct {
+	// <p>异步流程id</p>
+	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDynamicInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDynamicInstanceResponseParams `json:"Response"`
+}
+
+func (r *ModifyDynamicInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDynamicInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type ModifyGlobalConfigRequestParams struct {
 	// emr集群的英文id
@@ -10634,6 +11143,14 @@ type MultiZoneSetting struct {
 	ResourceSpec *NewResourceSpec `json:"ResourceSpec,omitnil,omitempty" name:"ResourceSpec"`
 }
 
+type NameValue struct {
+	// name
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// value
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type NewResourceSpec struct {
 	// 描述Master节点资源
 	MasterResourceSpec *Resource `json:"MasterResourceSpec,omitnil,omitempty" name:"MasterResourceSpec"`
@@ -11874,6 +12391,29 @@ type QuotaEntity struct {
 
 	// 可用区
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+}
+
+type RayCluster struct {
+	// <p>RayCluster 集群名</p>
+	RayClusterName *string `json:"RayClusterName,omitnil,omitempty" name:"RayClusterName"`
+
+	// <p>RayCluster 集群 id</p>
+	RayClusterId *int64 `json:"RayClusterId,omitnil,omitempty" name:"RayClusterId"`
+
+	// <p>pod 数量</p>
+	PodCount *int64 `json:"PodCount,omitnil,omitempty" name:"PodCount"`
+
+	// <p>集群创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>redis 实例数量</p>
+	RedisCount *int64 `json:"RedisCount,omitnil,omitempty" name:"RedisCount"`
+
+	// <p>创建类型</p><p>枚举值：</p><ul><li>1： 表单创建</li><li>2： yaml创建</li></ul>
+	SubmitType *int64 `json:"SubmitType,omitnil,omitempty" name:"SubmitType"`
+
+	// <p>head访问地址,也是dashboard地址</p>
+	DashboardUrl *string `json:"DashboardUrl,omitnil,omitempty" name:"DashboardUrl"`
 }
 
 type RenewInstancesInfo struct {
@@ -13927,6 +14467,77 @@ func (r *TerminateClusterNodesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type TerminateDynamicInstancesRequestParams struct {
+	// <p>EMR集群id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>DynamicInstance类型</p><p>枚举值：</p><ul><li>RayCluster： RayCluster类型</li></ul>
+	DynamicInstanceType *string `json:"DynamicInstanceType,omitnil,omitempty" name:"DynamicInstanceType"`
+
+	// <p>yaml创建信息</p>
+	DynamicInstanceIds []*uint64 `json:"DynamicInstanceIds,omitnil,omitempty" name:"DynamicInstanceIds"`
+}
+
+type TerminateDynamicInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>EMR集群id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>DynamicInstance类型</p><p>枚举值：</p><ul><li>RayCluster： RayCluster类型</li></ul>
+	DynamicInstanceType *string `json:"DynamicInstanceType,omitnil,omitempty" name:"DynamicInstanceType"`
+
+	// <p>yaml创建信息</p>
+	DynamicInstanceIds []*uint64 `json:"DynamicInstanceIds,omitnil,omitempty" name:"DynamicInstanceIds"`
+}
+
+func (r *TerminateDynamicInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateDynamicInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DynamicInstanceType")
+	delete(f, "DynamicInstanceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateDynamicInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TerminateDynamicInstancesResponseParams struct {
+	// <p>异步流程id</p>
+	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TerminateDynamicInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *TerminateDynamicInstancesResponseParams `json:"Response"`
+}
+
+func (r *TerminateDynamicInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateDynamicInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type TerminateInstanceRequestParams struct {
 	// <p>实例ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -14423,6 +15034,23 @@ type VirtualPrivateCloud struct {
 
 	// Subnet ID
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+}
+
+type VolumeMount struct {
+	// 挂载卷名称
+	MountName *string `json:"MountName,omitnil,omitempty" name:"MountName"`
+
+	// 挂载路径
+	MountPath *string `json:"MountPath,omitnil,omitempty" name:"MountPath"`
+
+	// 挂载类型
+	SubPathMode *string `json:"SubPathMode,omitnil,omitempty" name:"SubPathMode"`
+
+	// 子路径
+	SubPath *string `json:"SubPath,omitnil,omitempty" name:"SubPath"`
+
+	// 挂载模式，仅支持ReadWrite和OnlyRead
+	MountMode *string `json:"MountMode,omitnil,omitempty" name:"MountMode"`
 }
 
 type VolumeSetting struct {

@@ -1083,60 +1083,38 @@ func (r *DescribeCNInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCkSqlApisRequestParams struct {
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// api接口名称,GetClusters:获取集群cluster列表
-	// GetSystemUsers:获取系统用户列表
-	// CheckNodeCluster: 检查节点是否隶属一个cluster
-	// GetClusterDatabases: 获取一个cluster下的数据库列表
-	// GetClusterTables: 获取一个cluster下的数据库表列表
-	// GetPrivilegeUsers: 获取授权的用户列表
-	// GET_USER_CLUSTER_PRIVILEGES:获取用户cluster下的权限   
-	// GetUserClusterNewPrivileges:获取用户cluster下的权限 (新版）
-	// RevokeClusterUser:解绑cluster用户
-	// DeleteSystemUser:删除系统用户 —— 必须所有cluster先解绑
-	// GetUserOptionMessages:获取用户配置备注信息
-	// GET_USER_CONFIGS:获取用户配置列表  QUOTA、PROFILE、POLICY
+	// <p>api接口名称,GetClusters:获取集群cluster列表<br>GetSystemUsers:获取系统用户列表<br>CheckNodeCluster: 检查节点是否隶属一个cluster<br>GetClusterDatabases: 获取一个cluster下的数据库列表<br>GetClusterTables: 获取一个cluster下的数据库表列表<br>GetPrivilegeUsers: 获取授权的用户列表<br>GET_USER_CLUSTER_PRIVILEGES:获取用户cluster下的权限<br>GetUserClusterNewPrivileges:获取用户cluster下的权限 (新版）<br>RevokeClusterUser:解绑cluster用户<br>DeleteSystemUser:删除系统用户 —— 必须所有cluster先解绑<br>GetUserOptionMessages:获取用户配置备注信息<br>GET_USER_CONFIGS:获取用户配置列表  QUOTA、PROFILE、POLICY</p>
 	ApiType *string `json:"ApiType,omitnil,omitempty" name:"ApiType"`
 
-	// 集群名称，当ApiType取值为GET_SYSTEM_USERS，GET_PRIVILEGE_USERS，GET_CLUSTER_DATABASES，GET_CLUSTER_TABLES 时，此参数必填
+	// <p>clickhouse逻辑集群名称，可通过连接集群执行 <code>SHOW CLUSTERS</code> 查询获得。当 ApiType 取值为 GET_SYSTEM_USERS、GET_PRIVILEGE_USERS、GET_CLUSTER_DATABASES或GET_CLUSTER_TABLES 时，本参数必填。</p>
 	Cluster *string `json:"Cluster,omitnil,omitempty" name:"Cluster"`
 
-	// 用户名称，api与user相关的必填
+	// <p>用户名称，api与user相关的必填</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 账户的类型
+	// <p>账户的类型</p>
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
 }
 
 type DescribeCkSqlApisRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// api接口名称,GetClusters:获取集群cluster列表
-	// GetSystemUsers:获取系统用户列表
-	// CheckNodeCluster: 检查节点是否隶属一个cluster
-	// GetClusterDatabases: 获取一个cluster下的数据库列表
-	// GetClusterTables: 获取一个cluster下的数据库表列表
-	// GetPrivilegeUsers: 获取授权的用户列表
-	// GET_USER_CLUSTER_PRIVILEGES:获取用户cluster下的权限   
-	// GetUserClusterNewPrivileges:获取用户cluster下的权限 (新版）
-	// RevokeClusterUser:解绑cluster用户
-	// DeleteSystemUser:删除系统用户 —— 必须所有cluster先解绑
-	// GetUserOptionMessages:获取用户配置备注信息
-	// GET_USER_CONFIGS:获取用户配置列表  QUOTA、PROFILE、POLICY
+	// <p>api接口名称,GetClusters:获取集群cluster列表<br>GetSystemUsers:获取系统用户列表<br>CheckNodeCluster: 检查节点是否隶属一个cluster<br>GetClusterDatabases: 获取一个cluster下的数据库列表<br>GetClusterTables: 获取一个cluster下的数据库表列表<br>GetPrivilegeUsers: 获取授权的用户列表<br>GET_USER_CLUSTER_PRIVILEGES:获取用户cluster下的权限<br>GetUserClusterNewPrivileges:获取用户cluster下的权限 (新版）<br>RevokeClusterUser:解绑cluster用户<br>DeleteSystemUser:删除系统用户 —— 必须所有cluster先解绑<br>GetUserOptionMessages:获取用户配置备注信息<br>GET_USER_CONFIGS:获取用户配置列表  QUOTA、PROFILE、POLICY</p>
 	ApiType *string `json:"ApiType,omitnil,omitempty" name:"ApiType"`
 
-	// 集群名称，当ApiType取值为GET_SYSTEM_USERS，GET_PRIVILEGE_USERS，GET_CLUSTER_DATABASES，GET_CLUSTER_TABLES 时，此参数必填
+	// <p>clickhouse逻辑集群名称，可通过连接集群执行 <code>SHOW CLUSTERS</code> 查询获得。当 ApiType 取值为 GET_SYSTEM_USERS、GET_PRIVILEGE_USERS、GET_CLUSTER_DATABASES或GET_CLUSTER_TABLES 时，本参数必填。</p>
 	Cluster *string `json:"Cluster,omitnil,omitempty" name:"Cluster"`
 
-	// 用户名称，api与user相关的必填
+	// <p>用户名称，api与user相关的必填</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 账户的类型
+	// <p>账户的类型</p>
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
 }
 
@@ -1165,7 +1143,7 @@ func (r *DescribeCkSqlApisRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCkSqlApisResponseParams struct {
-	// 返回的查询数据，大部分情况是list，也可能是bool
+	// <p>返回的查询数据，大部分情况是list，也可能是bool</p>
 	ReturnData *string `json:"ReturnData,omitnil,omitempty" name:"ReturnData"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2627,44 +2605,44 @@ func (r *ModifyInstanceKeyValConfigsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUserNewPrivilegeRequestParams struct {
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// cluster名称
+	// <p>clickhouse逻辑集群名称，可通过连接集群执行 <code>SHOW CLUSTERS</code> 查询获得</p>
 	Cluster *string `json:"Cluster,omitnil,omitempty" name:"Cluster"`
 
-	// 用户名
+	// <p>用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 是否所有数据库表
+	// <p>是否所有数据库表</p>
 	AllDatabase *bool `json:"AllDatabase,omitnil,omitempty" name:"AllDatabase"`
 
-	// 全局权限
+	// <p>全局权限</p>
 	GlobalPrivileges []*string `json:"GlobalPrivileges,omitnil,omitempty" name:"GlobalPrivileges"`
 
-	// 数据库表权限
+	// <p>数据库表权限</p>
 	DatabasePrivilegeList []*DatabasePrivilegeInfo `json:"DatabasePrivilegeList,omitnil,omitempty" name:"DatabasePrivilegeList"`
 }
 
 type ModifyUserNewPrivilegeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// cluster名称
+	// <p>clickhouse逻辑集群名称，可通过连接集群执行 <code>SHOW CLUSTERS</code> 查询获得</p>
 	Cluster *string `json:"Cluster,omitnil,omitempty" name:"Cluster"`
 
-	// 用户名
+	// <p>用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 是否所有数据库表
+	// <p>是否所有数据库表</p>
 	AllDatabase *bool `json:"AllDatabase,omitnil,omitempty" name:"AllDatabase"`
 
-	// 全局权限
+	// <p>全局权限</p>
 	GlobalPrivileges []*string `json:"GlobalPrivileges,omitnil,omitempty" name:"GlobalPrivileges"`
 
-	// 数据库表权限
+	// <p>数据库表权限</p>
 	DatabasePrivilegeList []*DatabasePrivilegeInfo `json:"DatabasePrivilegeList,omitnil,omitempty" name:"DatabasePrivilegeList"`
 }
 

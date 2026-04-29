@@ -410,6 +410,9 @@ const (
 	// 文件发起静默签未开通白名单。
 	OPERATIONDENIED_BYFILESSERVERSIGNFORBID = "OperationDenied.ByFilesServerSignForbid"
 
+	// 抄送方存在相同抄送人，请检查修改后重试。
+	OPERATIONDENIED_CCUSERREPEAT = "OperationDenied.CcUserRepeat"
+
 	// 只支持下载单个。
 	OPERATIONDENIED_DOWNLOADMORETHANONE = "OperationDenied.DownLoadMoreThanOne"
 

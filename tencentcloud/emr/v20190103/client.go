@@ -703,6 +703,60 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateCl
     return
 }
 
+func NewCreateDynamicInstanceRequest() (request *CreateDynamicInstanceRequest) {
+    request = &CreateDynamicInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "CreateDynamicInstance")
+    
+    
+    return
+}
+
+func NewCreateDynamicInstanceResponse() (response *CreateDynamicInstanceResponse) {
+    response = &CreateDynamicInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDynamicInstance
+// 创建容器EMR-TKE集群DynamicInstance
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDDYNAMICINSTANCETYPE = "InvalidParameter.InvalidDynamicInstanceType"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) CreateDynamicInstance(request *CreateDynamicInstanceRequest) (response *CreateDynamicInstanceResponse, err error) {
+    return c.CreateDynamicInstanceWithContext(context.Background(), request)
+}
+
+// CreateDynamicInstance
+// 创建容器EMR-TKE集群DynamicInstance
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDDYNAMICINSTANCETYPE = "InvalidParameter.InvalidDynamicInstanceType"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) CreateDynamicInstanceWithContext(ctx context.Context, request *CreateDynamicInstanceRequest) (response *CreateDynamicInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateDynamicInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "CreateDynamicInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDynamicInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDynamicInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateGroupsSTDRequest() (request *CreateGroupsSTDRequest) {
     request = &CreateGroupsSTDRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -727,35 +781,8 @@ func NewCreateGroupsSTDResponse() (response *CreateGroupsSTDResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_GETCVMSERVERFAILED = "FailedOperation.GetCvmServerFailed"
-//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
-//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
-//  INTERNALERROR_TRADECGWERROR = "InternalError.TradeCgwError"
-//  INVALIDPARAMETER_HALESSMASTERCOUNT = "InvalidParameter.HALessMasterCount"
-//  INVALIDPARAMETER_INCORRECTMASTERCOUNT = "InvalidParameter.IncorrectMasterCount"
-//  INVALIDPARAMETER_INVALIDALLNODERESOURCESPEC = "InvalidParameter.InvalidAllNodeResourceSpec"
-//  INVALIDPARAMETER_INVALIDCOMPONENT = "InvalidParameter.InvalidComponent"
-//  INVALIDPARAMETER_INVALIDCORECOUNT = "InvalidParameter.InvalidCoreCount"
-//  INVALIDPARAMETER_INVALIDCOREDISKTYPE = "InvalidParameter.InvalidCoreDiskType"
-//  INVALIDPARAMETER_INVALIDCOSBUCKET = "InvalidParameter.InvalidCosBucket"
-//  INVALIDPARAMETER_INVALIDDEPENDSERVICEANDENABLEKERBEROSCONFLICT = "InvalidParameter.InvalidDependServiceAndEnableKerberosConflict"
-//  INVALIDPARAMETER_INVALIDDISKNUM = "InvalidParameter.InvalidDiskNum"
-//  INVALIDPARAMETER_INVALIDINSTANCECHARGETYPE = "InvalidParameter.InvalidInstanceChargeType"
-//  INVALIDPARAMETER_INVALIDINSTANCETYPE = "InvalidParameter.InvalidInstanceType"
-//  INVALIDPARAMETER_INVALIDLOADBALANCER = "InvalidParameter.InvalidLoadBalancer"
-//  INVALIDPARAMETER_INVALIDMASTERDISKTYPE = "InvalidParameter.InvalidMasterDiskType"
-//  INVALIDPARAMETER_INVALIDMETATYPE = "InvalidParameter.InvalidMetaType"
-//  INVALIDPARAMETER_INVALIDPASSWORD = "InvalidParameter.InvalidPassword"
-//  INVALIDPARAMETER_INVALIDPRODUCTVERSION = "InvalidParameter.InvalidProductVersion"
-//  INVALIDPARAMETER_INVALIDRENEWFLAG = "InvalidParameter.InvalidRenewFlag"
-//  INVALIDPARAMETER_INVALIDRESOURCESPEC = "InvalidParameter.InvalidResourceSpec"
-//  INVALIDPARAMETER_INVALIDSCRIPTBOOTSTRAPACTIONCONFIG = "InvalidParameter.InvalidScriptBootstrapActionConfig"
-//  INVALIDPARAMETER_INVALIDSOFTINFO = "InvalidParameter.InvalidSoftInfo"
-//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
-//  INVALIDPARAMETER_KERBEROSSUPPORT = "InvalidParameter.KerberosSupport"
-//  RESOURCEINSUFFICIENT_INSTANCEINSUFFICIENT = "ResourceInsufficient.InstanceInsufficient"
-//  RESOURCENOTFOUND_SUBNETNOTFOUND = "ResourceNotFound.SubnetNotFound"
-//  RESOURCESSOLDOUT_CVMSOLDOUT = "ResourcesSoldOut.CvmSoldOut"
+//  INVALIDPARAMETER_INVALIDDYNAMICINSTANCETYPE = "InvalidParameter.InvalidDynamicInstanceType"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 func (c *Client) CreateGroupsSTD(request *CreateGroupsSTDRequest) (response *CreateGroupsSTDResponse, err error) {
     return c.CreateGroupsSTDWithContext(context.Background(), request)
 }
@@ -765,35 +792,8 @@ func (c *Client) CreateGroupsSTD(request *CreateGroupsSTDRequest) (response *Cre
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_GETCVMSERVERFAILED = "FailedOperation.GetCvmServerFailed"
-//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
-//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
-//  INTERNALERROR_TRADECGWERROR = "InternalError.TradeCgwError"
-//  INVALIDPARAMETER_HALESSMASTERCOUNT = "InvalidParameter.HALessMasterCount"
-//  INVALIDPARAMETER_INCORRECTMASTERCOUNT = "InvalidParameter.IncorrectMasterCount"
-//  INVALIDPARAMETER_INVALIDALLNODERESOURCESPEC = "InvalidParameter.InvalidAllNodeResourceSpec"
-//  INVALIDPARAMETER_INVALIDCOMPONENT = "InvalidParameter.InvalidComponent"
-//  INVALIDPARAMETER_INVALIDCORECOUNT = "InvalidParameter.InvalidCoreCount"
-//  INVALIDPARAMETER_INVALIDCOREDISKTYPE = "InvalidParameter.InvalidCoreDiskType"
-//  INVALIDPARAMETER_INVALIDCOSBUCKET = "InvalidParameter.InvalidCosBucket"
-//  INVALIDPARAMETER_INVALIDDEPENDSERVICEANDENABLEKERBEROSCONFLICT = "InvalidParameter.InvalidDependServiceAndEnableKerberosConflict"
-//  INVALIDPARAMETER_INVALIDDISKNUM = "InvalidParameter.InvalidDiskNum"
-//  INVALIDPARAMETER_INVALIDINSTANCECHARGETYPE = "InvalidParameter.InvalidInstanceChargeType"
-//  INVALIDPARAMETER_INVALIDINSTANCETYPE = "InvalidParameter.InvalidInstanceType"
-//  INVALIDPARAMETER_INVALIDLOADBALANCER = "InvalidParameter.InvalidLoadBalancer"
-//  INVALIDPARAMETER_INVALIDMASTERDISKTYPE = "InvalidParameter.InvalidMasterDiskType"
-//  INVALIDPARAMETER_INVALIDMETATYPE = "InvalidParameter.InvalidMetaType"
-//  INVALIDPARAMETER_INVALIDPASSWORD = "InvalidParameter.InvalidPassword"
-//  INVALIDPARAMETER_INVALIDPRODUCTVERSION = "InvalidParameter.InvalidProductVersion"
-//  INVALIDPARAMETER_INVALIDRENEWFLAG = "InvalidParameter.InvalidRenewFlag"
-//  INVALIDPARAMETER_INVALIDRESOURCESPEC = "InvalidParameter.InvalidResourceSpec"
-//  INVALIDPARAMETER_INVALIDSCRIPTBOOTSTRAPACTIONCONFIG = "InvalidParameter.InvalidScriptBootstrapActionConfig"
-//  INVALIDPARAMETER_INVALIDSOFTINFO = "InvalidParameter.InvalidSoftInfo"
-//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
-//  INVALIDPARAMETER_KERBEROSSUPPORT = "InvalidParameter.KerberosSupport"
-//  RESOURCEINSUFFICIENT_INSTANCEINSUFFICIENT = "ResourceInsufficient.InstanceInsufficient"
-//  RESOURCENOTFOUND_SUBNETNOTFOUND = "ResourceNotFound.SubnetNotFound"
-//  RESOURCESSOLDOUT_CVMSOLDOUT = "ResourcesSoldOut.CvmSoldOut"
+//  INVALIDPARAMETER_INVALIDDYNAMICINSTANCETYPE = "InvalidParameter.InvalidDynamicInstanceType"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 func (c *Client) CreateGroupsSTDWithContext(ctx context.Context, request *CreateGroupsSTDRequest) (response *CreateGroupsSTDResponse, err error) {
     if request == nil {
         request = NewCreateGroupsSTDRequest()
@@ -1893,6 +1893,58 @@ func (c *Client) DescribeDAGInfoWithContext(ctx context.Context, request *Descri
     request.SetContext(ctx)
     
     response = NewDescribeDAGInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDynamicInstanceListRequest() (request *DescribeDynamicInstanceListRequest) {
+    request = &DescribeDynamicInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeDynamicInstanceList")
+    
+    
+    return
+}
+
+func NewDescribeDynamicInstanceListResponse() (response *DescribeDynamicInstanceListResponse) {
+    response = &DescribeDynamicInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDynamicInstanceList
+// 描述容器EMR-TKE集群DynamicInstance列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeDynamicInstanceList(request *DescribeDynamicInstanceListRequest) (response *DescribeDynamicInstanceListResponse, err error) {
+    return c.DescribeDynamicInstanceListWithContext(context.Background(), request)
+}
+
+// DescribeDynamicInstanceList
+// 描述容器EMR-TKE集群DynamicInstance列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeDynamicInstanceListWithContext(ctx context.Context, request *DescribeDynamicInstanceListRequest) (response *DescribeDynamicInstanceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDynamicInstanceListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "DescribeDynamicInstanceList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDynamicInstanceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDynamicInstanceListResponse()
     err = c.Send(request, response)
     return
 }
@@ -5415,6 +5467,60 @@ func (c *Client) ModifyBootScriptWithContext(ctx context.Context, request *Modif
     return
 }
 
+func NewModifyDynamicInstanceRequest() (request *ModifyDynamicInstanceRequest) {
+    request = &ModifyDynamicInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "ModifyDynamicInstance")
+    
+    
+    return
+}
+
+func NewModifyDynamicInstanceResponse() (response *ModifyDynamicInstanceResponse) {
+    response = &ModifyDynamicInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDynamicInstance
+// 更新容器EMR-TKE集群DynamicInstance
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDDYNAMICINSTANCETYPE = "InvalidParameter.InvalidDynamicInstanceType"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) ModifyDynamicInstance(request *ModifyDynamicInstanceRequest) (response *ModifyDynamicInstanceResponse, err error) {
+    return c.ModifyDynamicInstanceWithContext(context.Background(), request)
+}
+
+// ModifyDynamicInstance
+// 更新容器EMR-TKE集群DynamicInstance
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDDYNAMICINSTANCETYPE = "InvalidParameter.InvalidDynamicInstanceType"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) ModifyDynamicInstanceWithContext(ctx context.Context, request *ModifyDynamicInstanceRequest) (response *ModifyDynamicInstanceResponse, err error) {
+    if request == nil {
+        request = NewModifyDynamicInstanceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "ModifyDynamicInstance")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDynamicInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDynamicInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyGlobalConfigRequest() (request *ModifyGlobalConfigRequest) {
     request = &ModifyGlobalConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7289,6 +7395,60 @@ func (c *Client) TerminateClusterNodesWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewTerminateClusterNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateDynamicInstancesRequest() (request *TerminateDynamicInstancesRequest) {
+    request = &TerminateDynamicInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "TerminateDynamicInstances")
+    
+    
+    return
+}
+
+func NewTerminateDynamicInstancesResponse() (response *TerminateDynamicInstancesResponse) {
+    response = &TerminateDynamicInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TerminateDynamicInstances
+// 销毁容器EMR-TKE集群DynamicInstance
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDDYNAMICINSTANCETYPE = "InvalidParameter.InvalidDynamicInstanceType"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) TerminateDynamicInstances(request *TerminateDynamicInstancesRequest) (response *TerminateDynamicInstancesResponse, err error) {
+    return c.TerminateDynamicInstancesWithContext(context.Background(), request)
+}
+
+// TerminateDynamicInstances
+// 销毁容器EMR-TKE集群DynamicInstance
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDDYNAMICINSTANCETYPE = "InvalidParameter.InvalidDynamicInstanceType"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) TerminateDynamicInstancesWithContext(ctx context.Context, request *TerminateDynamicInstancesRequest) (response *TerminateDynamicInstancesResponse, err error) {
+    if request == nil {
+        request = NewTerminateDynamicInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "emr", APIVersion, "TerminateDynamicInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateDynamicInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTerminateDynamicInstancesResponse()
     err = c.Send(request, response)
     return
 }

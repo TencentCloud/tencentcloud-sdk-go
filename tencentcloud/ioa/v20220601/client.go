@@ -45,6 +45,84 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateBusinessResourceRequest() (request *CreateBusinessResourceRequest) {
+    request = &CreateBusinessResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "CreateBusinessResource")
+    
+    
+    return
+}
+
+func NewCreateBusinessResourceResponse() (response *CreateBusinessResourceResponse) {
+    response = &CreateBusinessResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBusinessResource
+// 创建业务资源，会对一些必填参数进行校验和参数合法性校验，创建业务资源时，先调用下校验相同业务资源接口，看资源是不是有冲突。创建时也会做校验，但没有返回对应的异常信息，私有化调用path为：capi/GatewayResource/CreateBusinessResource
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_NOTZEROTRUSTGATEWAY = "InternalError.NotZeroTrustGateway"
+//  INVALIDPARAMETER_DUPLICATERESOURCESEXIST = "InvalidParameter.DuplicateResourcesExist"
+//  INVALIDPARAMETER_DUPLICATERESOURCESNAME = "InvalidParameter.DuplicateResourcesName"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  INVALIDPARAMETER_RESOURCEACCESSMETHOD = "InvalidParameter.ResourceAccessMethod"
+//  INVALIDPARAMETER_RESOURCEDOMAINERR = "InvalidParameter.ResourceDomainErr"
+//  INVALIDPARAMETER_RESOURCEIPERROR = "InvalidParameter.ResourceIPError"
+//  INVALIDPARAMETER_RESOURCEIPSEGMENTERR = "InvalidParameter.ResourceIPSegmentErr"
+//  INVALIDPARAMETER_RESOURCELEVELSPARAMETER = "InvalidParameter.ResourceLevelsParameter"
+//  INVALIDPARAMETER_RESOURCEPORTERR = "InvalidParameter.ResourcePortErr"
+//  INVALIDPARAMETER_RESOURCEPROTOCOLTYPEERR = "InvalidParameter.ResourceProtocolTypeErr"
+//  INVALIDPARAMETER_RESOURCETYPEPARAMETER = "InvalidParameter.ResourceTypeParameter"
+//  RESOURCENOTFOUND_NOMODULEDATA = "ResourceNotFound.NoModuleData"
+//  UNAUTHORIZEDOPERATION_NOMODULEPERMISSIONS = "UnauthorizedOperation.NoModulePermissions"
+func (c *Client) CreateBusinessResource(request *CreateBusinessResourceRequest) (response *CreateBusinessResourceResponse, err error) {
+    return c.CreateBusinessResourceWithContext(context.Background(), request)
+}
+
+// CreateBusinessResource
+// 创建业务资源，会对一些必填参数进行校验和参数合法性校验，创建业务资源时，先调用下校验相同业务资源接口，看资源是不是有冲突。创建时也会做校验，但没有返回对应的异常信息，私有化调用path为：capi/GatewayResource/CreateBusinessResource
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_NOTZEROTRUSTGATEWAY = "InternalError.NotZeroTrustGateway"
+//  INVALIDPARAMETER_DUPLICATERESOURCESEXIST = "InvalidParameter.DuplicateResourcesExist"
+//  INVALIDPARAMETER_DUPLICATERESOURCESNAME = "InvalidParameter.DuplicateResourcesName"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  INVALIDPARAMETER_RESOURCEACCESSMETHOD = "InvalidParameter.ResourceAccessMethod"
+//  INVALIDPARAMETER_RESOURCEDOMAINERR = "InvalidParameter.ResourceDomainErr"
+//  INVALIDPARAMETER_RESOURCEIPERROR = "InvalidParameter.ResourceIPError"
+//  INVALIDPARAMETER_RESOURCEIPSEGMENTERR = "InvalidParameter.ResourceIPSegmentErr"
+//  INVALIDPARAMETER_RESOURCELEVELSPARAMETER = "InvalidParameter.ResourceLevelsParameter"
+//  INVALIDPARAMETER_RESOURCEPORTERR = "InvalidParameter.ResourcePortErr"
+//  INVALIDPARAMETER_RESOURCEPROTOCOLTYPEERR = "InvalidParameter.ResourceProtocolTypeErr"
+//  INVALIDPARAMETER_RESOURCETYPEPARAMETER = "InvalidParameter.ResourceTypeParameter"
+//  RESOURCENOTFOUND_NOMODULEDATA = "ResourceNotFound.NoModuleData"
+//  UNAUTHORIZEDOPERATION_NOMODULEPERMISSIONS = "UnauthorizedOperation.NoModulePermissions"
+func (c *Client) CreateBusinessResourceWithContext(ctx context.Context, request *CreateBusinessResourceRequest) (response *CreateBusinessResourceResponse, err error) {
+    if request == nil {
+        request = NewCreateBusinessResourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "CreateBusinessResource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBusinessResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBusinessResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDLPFileDetectTaskRequest() (request *CreateDLPFileDetectTaskRequest) {
     request = &CreateDLPFileDetectTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -575,6 +653,58 @@ func (c *Client) DescribeAggrSoftDeviceListWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeAggrSoftDeviceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBusinessResourcesRequest() (request *DescribeBusinessResourcesRequest) {
+    request = &DescribeBusinessResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeBusinessResources")
+    
+    
+    return
+}
+
+func NewDescribeBusinessResourcesResponse() (response *DescribeBusinessResourcesResponse) {
+    response = &DescribeBusinessResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBusinessResources
+// 获取业务资源列表,支持分页，如果分页信息不传递会有默认分页，支持排序，不传排序字段，按业务资源创建时间排序,私有化调用path为：capi/GatewayResource/DescribeBusinessResources
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeBusinessResources(request *DescribeBusinessResourcesRequest) (response *DescribeBusinessResourcesResponse, err error) {
+    return c.DescribeBusinessResourcesWithContext(context.Background(), request)
+}
+
+// DescribeBusinessResources
+// 获取业务资源列表,支持分页，如果分页信息不传递会有默认分页，支持排序，不传排序字段，按业务资源创建时间排序,私有化调用path为：capi/GatewayResource/DescribeBusinessResources
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeBusinessResourcesWithContext(ctx context.Context, request *DescribeBusinessResourcesRequest) (response *DescribeBusinessResourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeBusinessResourcesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeBusinessResources")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBusinessResources require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBusinessResourcesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1179,6 +1309,58 @@ func (c *Client) DescribeDevicesWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeDirectAccountGroupResourcesRequest() (request *DescribeDirectAccountGroupResourcesRequest) {
+    request = &DescribeDirectAccountGroupResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeDirectAccountGroupResources")
+    
+    
+    return
+}
+
+func NewDescribeDirectAccountGroupResourcesResponse() (response *DescribeDirectAccountGroupResourcesResponse) {
+    response = &DescribeDirectAccountGroupResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDirectAccountGroupResources
+// 列表账户组直接关联的资源，私有化调用path为：capi/Assets/DescribeDirectAccountGroupResources
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeDirectAccountGroupResources(request *DescribeDirectAccountGroupResourcesRequest) (response *DescribeDirectAccountGroupResourcesResponse, err error) {
+    return c.DescribeDirectAccountGroupResourcesWithContext(context.Background(), request)
+}
+
+// DescribeDirectAccountGroupResources
+// 列表账户组直接关联的资源，私有化调用path为：capi/Assets/DescribeDirectAccountGroupResources
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeDirectAccountGroupResourcesWithContext(ctx context.Context, request *DescribeDirectAccountGroupResourcesRequest) (response *DescribeDirectAccountGroupResourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDirectAccountGroupResourcesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeDirectAccountGroupResources")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDirectAccountGroupResources require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDirectAccountGroupResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLocalAccountsRequest() (request *DescribeLocalAccountsRequest) {
     request = &DescribeLocalAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1227,6 +1409,162 @@ func (c *Client) DescribeLocalAccountsWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeLocalAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourceGrantedAccountGroupsRequest() (request *DescribeResourceGrantedAccountGroupsRequest) {
+    request = &DescribeResourceGrantedAccountGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeResourceGrantedAccountGroups")
+    
+    
+    return
+}
+
+func NewDescribeResourceGrantedAccountGroupsResponse() (response *DescribeResourceGrantedAccountGroupsResponse) {
+    response = &DescribeResourceGrantedAccountGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeResourceGrantedAccountGroups
+// 列表账户组直接关联的资源，私有化调用path为：capi/NGN/DescribeResourceGrantedAccounts
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeResourceGrantedAccountGroups(request *DescribeResourceGrantedAccountGroupsRequest) (response *DescribeResourceGrantedAccountGroupsResponse, err error) {
+    return c.DescribeResourceGrantedAccountGroupsWithContext(context.Background(), request)
+}
+
+// DescribeResourceGrantedAccountGroups
+// 列表账户组直接关联的资源，私有化调用path为：capi/NGN/DescribeResourceGrantedAccounts
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeResourceGrantedAccountGroupsWithContext(ctx context.Context, request *DescribeResourceGrantedAccountGroupsRequest) (response *DescribeResourceGrantedAccountGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceGrantedAccountGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeResourceGrantedAccountGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceGrantedAccountGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceGrantedAccountGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourceGrantedAccountsRequest() (request *DescribeResourceGrantedAccountsRequest) {
+    request = &DescribeResourceGrantedAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeResourceGrantedAccounts")
+    
+    
+    return
+}
+
+func NewDescribeResourceGrantedAccountsResponse() (response *DescribeResourceGrantedAccountsResponse) {
+    response = &DescribeResourceGrantedAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeResourceGrantedAccounts
+// 列表账户组直接关联的资源，私有化调用path为：capi/NGN/DescribeResourceGrantedAccounts
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeResourceGrantedAccounts(request *DescribeResourceGrantedAccountsRequest) (response *DescribeResourceGrantedAccountsResponse, err error) {
+    return c.DescribeResourceGrantedAccountsWithContext(context.Background(), request)
+}
+
+// DescribeResourceGrantedAccounts
+// 列表账户组直接关联的资源，私有化调用path为：capi/NGN/DescribeResourceGrantedAccounts
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeResourceGrantedAccountsWithContext(ctx context.Context, request *DescribeResourceGrantedAccountsRequest) (response *DescribeResourceGrantedAccountsResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceGrantedAccountsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeResourceGrantedAccounts")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceGrantedAccounts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceGrantedAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourceGrantedVirtualGroupsRequest() (request *DescribeResourceGrantedVirtualGroupsRequest) {
+    request = &DescribeResourceGrantedVirtualGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeResourceGrantedVirtualGroups")
+    
+    
+    return
+}
+
+func NewDescribeResourceGrantedVirtualGroupsResponse() (response *DescribeResourceGrantedVirtualGroupsResponse) {
+    response = &DescribeResourceGrantedVirtualGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeResourceGrantedVirtualGroups
+// 列表账户组直接关联的资源，私有化调用path为：capi/NGN/DescribeResourceGrantedVirtualGroups
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeResourceGrantedVirtualGroups(request *DescribeResourceGrantedVirtualGroupsRequest) (response *DescribeResourceGrantedVirtualGroupsResponse, err error) {
+    return c.DescribeResourceGrantedVirtualGroupsWithContext(context.Background(), request)
+}
+
+// DescribeResourceGrantedVirtualGroups
+// 列表账户组直接关联的资源，私有化调用path为：capi/NGN/DescribeResourceGrantedVirtualGroups
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeResourceGrantedVirtualGroupsWithContext(ctx context.Context, request *DescribeResourceGrantedVirtualGroupsRequest) (response *DescribeResourceGrantedVirtualGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceGrantedVirtualGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeResourceGrantedVirtualGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceGrantedVirtualGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceGrantedVirtualGroupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1569,6 +1907,216 @@ func (c *Client) ExportSoftwareInformationListWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewExportSoftwareInformationListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGrantResourcesByAccountGroupsRequest() (request *GrantResourcesByAccountGroupsRequest) {
+    request = &GrantResourcesByAccountGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "GrantResourcesByAccountGroups")
+    
+    
+    return
+}
+
+func NewGrantResourcesByAccountGroupsResponse() (response *GrantResourcesByAccountGroupsResponse) {
+    response = &GrantResourcesByAccountGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GrantResourcesByAccountGroups
+// 添加资源授权到账号组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) GrantResourcesByAccountGroups(request *GrantResourcesByAccountGroupsRequest) (response *GrantResourcesByAccountGroupsResponse, err error) {
+    return c.GrantResourcesByAccountGroupsWithContext(context.Background(), request)
+}
+
+// GrantResourcesByAccountGroups
+// 添加资源授权到账号组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) GrantResourcesByAccountGroupsWithContext(ctx context.Context, request *GrantResourcesByAccountGroupsRequest) (response *GrantResourcesByAccountGroupsResponse, err error) {
+    if request == nil {
+        request = NewGrantResourcesByAccountGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "GrantResourcesByAccountGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GrantResourcesByAccountGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGrantResourcesByAccountGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGrantResourcesByAccountsRequest() (request *GrantResourcesByAccountsRequest) {
+    request = &GrantResourcesByAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "GrantResourcesByAccounts")
+    
+    
+    return
+}
+
+func NewGrantResourcesByAccountsResponse() (response *GrantResourcesByAccountsResponse) {
+    response = &GrantResourcesByAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GrantResourcesByAccounts
+// 添加资源授权到账号组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) GrantResourcesByAccounts(request *GrantResourcesByAccountsRequest) (response *GrantResourcesByAccountsResponse, err error) {
+    return c.GrantResourcesByAccountsWithContext(context.Background(), request)
+}
+
+// GrantResourcesByAccounts
+// 添加资源授权到账号组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) GrantResourcesByAccountsWithContext(ctx context.Context, request *GrantResourcesByAccountsRequest) (response *GrantResourcesByAccountsResponse, err error) {
+    if request == nil {
+        request = NewGrantResourcesByAccountsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "GrantResourcesByAccounts")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GrantResourcesByAccounts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGrantResourcesByAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGrantResourcesByVirtualGroupsRequest() (request *GrantResourcesByVirtualGroupsRequest) {
+    request = &GrantResourcesByVirtualGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "GrantResourcesByVirtualGroups")
+    
+    
+    return
+}
+
+func NewGrantResourcesByVirtualGroupsResponse() (response *GrantResourcesByVirtualGroupsResponse) {
+    response = &GrantResourcesByVirtualGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GrantResourcesByVirtualGroups
+// 添加资源授权到账号组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) GrantResourcesByVirtualGroups(request *GrantResourcesByVirtualGroupsRequest) (response *GrantResourcesByVirtualGroupsResponse, err error) {
+    return c.GrantResourcesByVirtualGroupsWithContext(context.Background(), request)
+}
+
+// GrantResourcesByVirtualGroups
+// 添加资源授权到账号组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) GrantResourcesByVirtualGroupsWithContext(ctx context.Context, request *GrantResourcesByVirtualGroupsRequest) (response *GrantResourcesByVirtualGroupsResponse, err error) {
+    if request == nil {
+        request = NewGrantResourcesByVirtualGroupsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "GrantResourcesByVirtualGroups")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GrantResourcesByVirtualGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGrantResourcesByVirtualGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDeviceTrustStatusRequest() (request *ModifyDeviceTrustStatusRequest) {
+    request = &ModifyDeviceTrustStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "ModifyDeviceTrustStatus")
+    
+    
+    return
+}
+
+func NewModifyDeviceTrustStatusResponse() (response *ModifyDeviceTrustStatusResponse) {
+    response = &ModifyDeviceTrustStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDeviceTrustStatus
+// 给接入设备加黑加白,私有化调用path为：capi/NGN/ModifyDeviceTrustStatus
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  UNSUPPORTEDOPERATION_DATABASEEXCEPTION = "UnsupportedOperation.DatabaseException"
+func (c *Client) ModifyDeviceTrustStatus(request *ModifyDeviceTrustStatusRequest) (response *ModifyDeviceTrustStatusResponse, err error) {
+    return c.ModifyDeviceTrustStatusWithContext(context.Background(), request)
+}
+
+// ModifyDeviceTrustStatus
+// 给接入设备加黑加白,私有化调用path为：capi/NGN/ModifyDeviceTrustStatus
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  UNSUPPORTEDOPERATION_DATABASEEXCEPTION = "UnsupportedOperation.DatabaseException"
+func (c *Client) ModifyDeviceTrustStatusWithContext(ctx context.Context, request *ModifyDeviceTrustStatusRequest) (response *ModifyDeviceTrustStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyDeviceTrustStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "ModifyDeviceTrustStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDeviceTrustStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDeviceTrustStatusResponse()
     err = c.Send(request, response)
     return
 }

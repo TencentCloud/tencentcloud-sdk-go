@@ -15966,8 +15966,32 @@ func (r *DescribeVideoSearchTaskDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVoicesRequestParams struct {
-	// <p>音色类别</p><p>枚举值：</p><ul><li>system： 系统音色</li></ul>
+	// <p>音色ID</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>音色类别</p><p>枚举值：</p><ul><li>system： 系统音色</li><li>clone： 克隆音色</li><li>design： 设计音色</li><li>all： 所有音色（默认）</li></ul>
 	VoiceType *string `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
+
+	// <p>音色名</p>
+	VoiceName *string `json:"VoiceName,omitnil,omitempty" name:"VoiceName"`
+
+	// <p>音色描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>性别</p><p>枚举值：</p><ul><li>male： 男</li><li>female： 女</li><li>unknown： 未知</li></ul>
+	Gender *string `json:"Gender,omitnil,omitempty" name:"Gender"`
+
+	// <p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+	Age *string `json:"Age,omitnil,omitempty" name:"Age"`
+
+	// <p>语言</p>
+	Languages []*string `json:"Languages,omitnil,omitempty" name:"Languages"`
+
+	// <p>标签</p>
+	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// <p>场景</p>
+	Scenes []*string `json:"Scenes,omitnil,omitempty" name:"Scenes"`
 
 	// <p>扩展参数，json字符串</p><p>其他筛选条件voiceName String 音色名，模糊匹配labels Array of String 标签，匹配包含这些标签的音色</p>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
@@ -15976,8 +16000,32 @@ type DescribeVoicesRequestParams struct {
 type DescribeVoicesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>音色类别</p><p>枚举值：</p><ul><li>system： 系统音色</li></ul>
+	// <p>音色ID</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>音色类别</p><p>枚举值：</p><ul><li>system： 系统音色</li><li>clone： 克隆音色</li><li>design： 设计音色</li><li>all： 所有音色（默认）</li></ul>
 	VoiceType *string `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
+
+	// <p>音色名</p>
+	VoiceName *string `json:"VoiceName,omitnil,omitempty" name:"VoiceName"`
+
+	// <p>音色描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>性别</p><p>枚举值：</p><ul><li>male： 男</li><li>female： 女</li><li>unknown： 未知</li></ul>
+	Gender *string `json:"Gender,omitnil,omitempty" name:"Gender"`
+
+	// <p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+	Age *string `json:"Age,omitnil,omitempty" name:"Age"`
+
+	// <p>语言</p>
+	Languages []*string `json:"Languages,omitnil,omitempty" name:"Languages"`
+
+	// <p>标签</p>
+	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// <p>场景</p>
+	Scenes []*string `json:"Scenes,omitnil,omitempty" name:"Scenes"`
 
 	// <p>扩展参数，json字符串</p><p>其他筛选条件voiceName String 音色名，模糊匹配labels Array of String 标签，匹配包含这些标签的音色</p>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
@@ -15995,7 +16043,15 @@ func (r *DescribeVoicesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "VoiceId")
 	delete(f, "VoiceType")
+	delete(f, "VoiceName")
+	delete(f, "Description")
+	delete(f, "Gender")
+	delete(f, "Age")
+	delete(f, "Languages")
+	delete(f, "Labels")
+	delete(f, "Scenes")
 	delete(f, "ExtParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVoicesRequest has unknown keys!", "")
@@ -16328,6 +16384,9 @@ type DesignVoiceAsyncRequestParams struct {
 	// <p>音色描述</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
+	// <p>音色属性</p>
+	VoiceProfile *VoiceProfile `json:"VoiceProfile,omitnil,omitempty" name:"VoiceProfile"`
+
 	// <p>扩展参数，json字符串</p>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
 }
@@ -16337,6 +16396,9 @@ type DesignVoiceAsyncRequest struct {
 	
 	// <p>音色描述</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>音色属性</p>
+	VoiceProfile *VoiceProfile `json:"VoiceProfile,omitnil,omitempty" name:"VoiceProfile"`
 
 	// <p>扩展参数，json字符串</p>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
@@ -16355,6 +16417,7 @@ func (r *DesignVoiceAsyncRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Prompt")
+	delete(f, "VoiceProfile")
 	delete(f, "ExtParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DesignVoiceAsyncRequest has unknown keys!", "")
@@ -27753,8 +27816,14 @@ type SyncDubbingRequestParams struct {
 	// <p>克隆音频语言，默认中文。<br>当前支持语言同TextLang</p>
 	AudioLang *string `json:"AudioLang,omitnil,omitempty" name:"AudioLang"`
 
+	// <p>音色属性</p>
+	VoiceProfile *VoiceProfile `json:"VoiceProfile,omitnil,omitempty" name:"VoiceProfile"`
+
 	// <p>输出相关参数</p><p>可以指定输出形式等</p>
 	Output *SyncDubbingOutputOption `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// <p>资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// <p>扩展参数，json字符串</p><p>synExt    Object    语音合成扩展参数<br>    -duration    Float    合成音频时长，单位秒，示例：5.2<br>    -sampleRate    Integer    合成音频采样率，默认16000，支持[8000,16000,22050,32000,44100]<br>    -pitch    Integer    音调，默认0原音色输出，取值[-12, 12]<br>cloneExt    Object    音色克隆扩展参数<br>    -timeRanges    Float[][]    指定克隆音频时间范围，默认[[0, 20]]，示例[[5.2, 10], [45, 59.8]]</p>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
@@ -27781,8 +27850,14 @@ type SyncDubbingRequest struct {
 	// <p>克隆音频语言，默认中文。<br>当前支持语言同TextLang</p>
 	AudioLang *string `json:"AudioLang,omitnil,omitempty" name:"AudioLang"`
 
+	// <p>音色属性</p>
+	VoiceProfile *VoiceProfile `json:"VoiceProfile,omitnil,omitempty" name:"VoiceProfile"`
+
 	// <p>输出相关参数</p><p>可以指定输出形式等</p>
 	Output *SyncDubbingOutputOption `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// <p>资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// <p>扩展参数，json字符串</p><p>synExt    Object    语音合成扩展参数<br>    -duration    Float    合成音频时长，单位秒，示例：5.2<br>    -sampleRate    Integer    合成音频采样率，默认16000，支持[8000,16000,22050,32000,44100]<br>    -pitch    Integer    音调，默认0原音色输出，取值[-12, 12]<br>cloneExt    Object    音色克隆扩展参数<br>    -timeRanges    Float[][]    指定克隆音频时间范围，默认[[0, 20]]，示例[[5.2, 10], [45, 59.8]]</p>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
@@ -27806,7 +27881,9 @@ func (r *SyncDubbingRequest) FromJsonString(s string) error {
 	delete(f, "AudioData")
 	delete(f, "AudioUrl")
 	delete(f, "AudioLang")
+	delete(f, "VoiceProfile")
 	delete(f, "Output")
+	delete(f, "ResourceId")
 	delete(f, "ExtParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncDubbingRequest has unknown keys!", "")
@@ -29629,6 +29706,9 @@ type VoiceInfo struct {
 	// <p>性别</p><p>枚举值：</p><ul><li>male： 男</li><li>famale： 女</li></ul>
 	Gender *string `json:"Gender,omitnil,omitempty" name:"Gender"`
 
+	// <p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+	Age *string `json:"Age,omitnil,omitempty" name:"Age"`
+
 	// <p>支持语种列表</p><p>如：en</p>
 	Languages []*string `json:"Languages,omitnil,omitempty" name:"Languages"`
 
@@ -29639,6 +29719,26 @@ type VoiceInfo struct {
 	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
 
 	// <p>推荐场景</p><p>如：教育</p>
+	Scenes []*string `json:"Scenes,omitnil,omitempty" name:"Scenes"`
+}
+
+type VoiceProfile struct {
+	// <p>音色名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>音色描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>性别</p><p>枚举值：</p><ul><li>male： 男性</li><li>female： 女性</li><li>unknown： 未知</li></ul>
+	Gender *string `json:"Gender,omitnil,omitempty" name:"Gender"`
+
+	// <p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+	Age *string `json:"Age,omitnil,omitempty" name:"Age"`
+
+	// <p>标签</p>
+	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// <p>使用场景</p>
 	Scenes []*string `json:"Scenes,omitnil,omitempty" name:"Scenes"`
 }
 

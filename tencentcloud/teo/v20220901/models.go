@@ -4569,7 +4569,7 @@ type CreatePurgeTaskRequestParams struct {
 	// Deprecated: EncodeUrl is deprecated.
 	EncodeUrl *bool `json:"EncodeUrl,omitnil,omitempty" name:"EncodeUrl"`
 
-	// 节点缓存清除类型取值为 purge_cache_tag 时附带的信息。
+	// 节点缓存清除类型取值为 purge_cache_tag 时，该参数必填，入参值为域名。
 	CacheTag *CacheTag `json:"CacheTag,omitnil,omitempty" name:"CacheTag"`
 }
 
@@ -4598,7 +4598,7 @@ type CreatePurgeTaskRequest struct {
 	// 若内容含有非 ASCII 字符集的字符，请开启此开关进行编码转换（编码规则遵循 RFC3986）。
 	EncodeUrl *bool `json:"EncodeUrl,omitnil,omitempty" name:"EncodeUrl"`
 
-	// 节点缓存清除类型取值为 purge_cache_tag 时附带的信息。
+	// 节点缓存清除类型取值为 purge_cache_tag 时，该参数必填，入参值为域名。
 	CacheTag *CacheTag `json:"CacheTag,omitnil,omitempty" name:"CacheTag"`
 }
 
@@ -5698,10 +5698,10 @@ type DDoSAttackEvent struct {
 	// 攻击状态。
 	AttackStatus *int64 `json:"AttackStatus,omitnil,omitempty" name:"AttackStatus"`
 
-	// 攻击最大带宽。
+	// 攻击最大带宽，单位为 bps。
 	AttackMaxBandWidth *int64 `json:"AttackMaxBandWidth,omitnil,omitempty" name:"AttackMaxBandWidth"`
 
-	// 攻击包速率峰值。
+	// 攻击包速率峰值，单位为 pps。
 	AttackPacketMaxRate *int64 `json:"AttackPacketMaxRate,omitnil,omitempty" name:"AttackPacketMaxRate"`
 
 	// 攻击开始时间，单位为s。

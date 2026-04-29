@@ -32,6 +32,9 @@ const (
 	// 数据库查询失败。
 	INTERNALERROR_DATABASEQUERYFAILED = "InternalError.DatabaseQueryFailed"
 
+	// 没有零信任网关数据。
+	INTERNALERROR_NOTZEROTRUSTGATEWAY = "InternalError.NotZeroTrustGateway"
+
 	// 内部未知错误。
 	INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 
@@ -47,6 +50,12 @@ const (
 	// 黑白名单选中有相同的终端设备
 	INVALIDPARAMETER_DUPLICATEIDINBLACKWHITELIST = "InvalidParameter.DuplicateIdInBlackWhiteList"
 
+	// 存在重复的资源数据。
+	INVALIDPARAMETER_DUPLICATERESOURCESEXIST = "InvalidParameter.DuplicateResourcesExist"
+
+	// 存在重复业务资源名称。
+	INVALIDPARAMETER_DUPLICATERESOURCESNAME = "InvalidParameter.DuplicateResourcesName"
+
 	// 参数错误有重复数据。
 	INVALIDPARAMETER_IDENTICALNAME = "InvalidParameter.IdenticalName"
 
@@ -55,6 +64,30 @@ const (
 
 	// 请求参数错误。
 	INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+
+	// 业务资源访问方式错误。
+	INVALIDPARAMETER_RESOURCEACCESSMETHOD = "InvalidParameter.ResourceAccessMethod"
+
+	// 业务资源域名不合法。
+	INVALIDPARAMETER_RESOURCEDOMAINERR = "InvalidParameter.ResourceDomainErr"
+
+	// 业务资源IP数据错误。
+	INVALIDPARAMETER_RESOURCEIPERROR = "InvalidParameter.ResourceIPError"
+
+	// 业务资源IP段数据错误。
+	INVALIDPARAMETER_RESOURCEIPSEGMENTERR = "InvalidParameter.ResourceIPSegmentErr"
+
+	// 业务资源优先级取值范围[1-65535]。
+	INVALIDPARAMETER_RESOURCELEVELSPARAMETER = "InvalidParameter.ResourceLevelsParameter"
+
+	// 业务资源端口错误。
+	INVALIDPARAMETER_RESOURCEPORTERR = "InvalidParameter.ResourcePortErr"
+
+	// 业务资源协议类型错误。
+	INVALIDPARAMETER_RESOURCEPROTOCOLTYPEERR = "InvalidParameter.ResourceProtocolTypeErr"
+
+	// 业务资源类型错误。
+	INVALIDPARAMETER_RESOURCETYPEPARAMETER = "InvalidParameter.ResourceTypeParameter"
 
 	// 没有找到对应的终端自定义分组
 	INVALIDPARAMETERVALUE_VIRTUALDEVICEGROUPNOTFOUND = "InvalidParameterValue.VirtualDeviceGroupNotFound"
@@ -71,15 +104,24 @@ const (
 	// 上次操作还未完成，请稍后重试。
 	REQUESTLIMITEXCEEDED_WAITFORTHELASTOPERATIONTOCOMPLETE = "RequestLimitExceeded.WaitForTheLastOperationToComplete"
 
+	// 没有模块数据。
+	RESOURCENOTFOUND_NOMODULEDATA = "ResourceNotFound.NoModuleData"
+
 	// 资源不存在。
 	RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 
 	// license无效
 	RESOURCEUNAVAILABLE_LICENSEINVALID = "ResourceUnavailable.LicenseInvalid"
 
+	// 没有模块权限。
+	UNAUTHORIZEDOPERATION_NOMODULEPERMISSIONS = "UnauthorizedOperation.NoModulePermissions"
+
 	// 没有业务资源权限。
 	UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
 
 	// 未授权的操作。
 	UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+
+	// 业务资源操作异常。
+	UNSUPPORTEDOPERATION_DATABASEEXCEPTION = "UnsupportedOperation.DatabaseException"
 )

@@ -972,6 +972,46 @@ type Checklist struct {
 	ConfigStatus *int64 `json:"ConfigStatus,omitnil,omitempty" name:"ConfigStatus"`
 }
 
+type ChecklistCategory struct {
+	// <p>合同风险审查清单分组名称，每个分组下可以包含多个检查点</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>合同风险审查清单检查点列表，每个检查点定义了一个具体的风险项</p>
+	Points []*ChecklistPoint `json:"Points,omitnil,omitempty" name:"Points"`
+}
+
+type ChecklistPoint struct {
+	// <p>合同风险审查清单检查点名称</p>
+	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// <p>合同风险审查清单检查点详细描述，说明具体风险信息</p>
+	Explanation *string `json:"Explanation,omitnil,omitempty" name:"Explanation"`
+
+	// <p>合同风险审查清单检查点对应的风险等级，一般分为 高风险、中风险、一般风险</p>
+	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
+	// <p>合同风险审查清单检查点ID，创建清单时无需填写</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>合同风险审查清单检查点是否不可缺失，若为true，相关条款未出现在内容中，视作风险</p>
+	IsIndispensable *bool `json:"IsIndispensable,omitnil,omitempty" name:"IsIndispensable"`
+
+	// <p>合同风险审查清单检查点是否要求和参考条款一致</p>
+	IsConsistentWithReferenceItem *bool `json:"IsConsistentWithReferenceItem,omitnil,omitempty" name:"IsConsistentWithReferenceItem"`
+
+	// <p>合同风险审查清单检查点参考条款，用于辅助审查</p>
+	ReferenceItem *string `json:"ReferenceItem,omitnil,omitempty" name:"ReferenceItem"`
+
+	// <p>合同风险审查清单检查点固定修改建议，优先级高于AiSuggestion</p>
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
+
+	// <p>合同风险审查清单检查点AI修改建议提示，会参考该配置生成对应的修改建议</p>
+	AiSuggestion *string `json:"AiSuggestion,omitnil,omitempty" name:"AiSuggestion"`
+
+	// <p>合同风险审查清单检查点表现标签，用于自定义不同的风险类型</p>
+	RiskPresentation []*string `json:"RiskPresentation,omitnil,omitempty" name:"RiskPresentation"`
+}
+
 type ComparisonDetail struct {
 	// 合同对比差异点唯一ID。
 	ComparisonPointId *string `json:"ComparisonPointId,omitnil,omitempty" name:"ComparisonPointId"`
@@ -12167,6 +12207,86 @@ func (r *DescribeContractDiffTaskWebUrlResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type DescribeContractReviewChecklistRequestParams struct {
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>需要获取的合同风险审查清单ID</p>
+	ChecklistId *string `json:"ChecklistId,omitnil,omitempty" name:"ChecklistId"`
+
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type DescribeContractReviewChecklistRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>需要获取的合同风险审查清单ID</p>
+	ChecklistId *string `json:"ChecklistId,omitnil,omitempty" name:"ChecklistId"`
+
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *DescribeContractReviewChecklistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContractReviewChecklistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "ChecklistId")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContractReviewChecklistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeContractReviewChecklistResponseParams struct {
+	// <p>获取的合同风险审查清单ID</p>
+	ChecklistId *string `json:"ChecklistId,omitnil,omitempty" name:"ChecklistId"`
+
+	// <p>获取的合同风险审查清单名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>获取的合同风险审查清单是否启用</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// <p>获取的合同风险审查清单审查点列表</p>
+	Categories []*ChecklistCategory `json:"Categories,omitnil,omitempty" name:"Categories"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeContractReviewChecklistResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeContractReviewChecklistResponseParams `json:"Response"`
+}
+
+func (r *DescribeContractReviewChecklistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContractReviewChecklistResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeContractReviewChecklistWebUrlRequestParams struct {
 	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
 	// 
@@ -17013,6 +17133,98 @@ type Identity struct {
 
 	// 查询日期(格式YYYY-MM-DD)
 	SearchDate *string `json:"SearchDate,omitnil,omitempty" name:"SearchDate"`
+}
+
+// Predefined struct for user
+type ImportContractReviewChecklistRequestParams struct {
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>导入的合同审查清单名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>导入的合同审查清单审查点列表</p>
+	Categories []*ChecklistCategory `json:"Categories,omitnil,omitempty" name:"Categories"`
+
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// <p>如果传值，则更新对应的合同审查清单，否则创建新的合同审查清单</p>
+	ChecklistID *string `json:"ChecklistID,omitnil,omitempty" name:"ChecklistID"`
+
+	// <p>设置为true则启动清单，否则禁用清单</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+type ImportContractReviewChecklistRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>导入的合同审查清单名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>导入的合同审查清单审查点列表</p>
+	Categories []*ChecklistCategory `json:"Categories,omitnil,omitempty" name:"Categories"`
+
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// <p>如果传值，则更新对应的合同审查清单，否则创建新的合同审查清单</p>
+	ChecklistID *string `json:"ChecklistID,omitnil,omitempty" name:"ChecklistID"`
+
+	// <p>设置为true则启动清单，否则禁用清单</p>
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+func (r *ImportContractReviewChecklistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportContractReviewChecklistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Name")
+	delete(f, "Categories")
+	delete(f, "Agent")
+	delete(f, "ChecklistID")
+	delete(f, "Enabled")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportContractReviewChecklistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImportContractReviewChecklistResponseParams struct {
+	// <p>导入成功的合同审查清单ID</p>
+	ChecklistId *string `json:"ChecklistId,omitnil,omitempty" name:"ChecklistId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ImportContractReviewChecklistResponse struct {
+	*tchttp.BaseResponse
+	Response *ImportContractReviewChecklistResponseParams `json:"Response"`
+}
+
+func (r *ImportContractReviewChecklistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportContractReviewChecklistResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type IntegrateRole struct {

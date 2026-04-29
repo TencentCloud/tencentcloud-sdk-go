@@ -9276,7 +9276,7 @@ func NewInvokeAISearchServiceResponse() (response *InvokeAISearchServiceResponse
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) InvokeAISearchService(request *InvokeAISearchServiceRequest) (response *InvokeAISearchServiceResponse, err error) {
     return c.InvokeAISearchServiceWithContext(context.Background(), request)
 }
@@ -9287,7 +9287,7 @@ func (c *Client) InvokeAISearchService(request *InvokeAISearchServiceRequest) (r
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) InvokeAISearchServiceWithContext(ctx context.Context, request *InvokeAISearchServiceRequest) (response *InvokeAISearchServiceResponse, err error) {
     if request == nil {
         request = NewInvokeAISearchServiceRequest()
@@ -9584,13 +9584,9 @@ func NewInvokeVideosKeywordsAnalyzerResponse() (response *InvokeVideosKeywordsAn
 // 获取某个时间段的视频内容关键字
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
-//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
-//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) InvokeVideosKeywordsAnalyzer(request *InvokeVideosKeywordsAnalyzerRequest) (response *InvokeVideosKeywordsAnalyzerResponse, err error) {
     return c.InvokeVideosKeywordsAnalyzerWithContext(context.Background(), request)
 }
@@ -9599,13 +9595,9 @@ func (c *Client) InvokeVideosKeywordsAnalyzer(request *InvokeVideosKeywordsAnaly
 // 获取某个时间段的视频内容关键字
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_WESEESERVICENOTENABLED = "FailedOperation.WeSeeServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
-//  RESOURCEUNAVAILABLE_WESEESERVICEISOLATED = "ResourceUnavailable.WeSeeServiceIsolated"
-//  UNAUTHORIZEDOPERATION_APICREATEAITASKNOTINWHITELIST = "UnauthorizedOperation.ApiCreateAITaskNotInWhitelist"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) InvokeVideosKeywordsAnalyzerWithContext(ctx context.Context, request *InvokeVideosKeywordsAnalyzerRequest) (response *InvokeVideosKeywordsAnalyzerResponse, err error) {
     if request == nil {
         request = NewInvokeVideosKeywordsAnalyzerRequest()

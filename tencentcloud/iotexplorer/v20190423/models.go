@@ -12855,6 +12855,13 @@ type InvokeAISearchServiceRequestParams struct {
 
 	// 指定向量搜索最相似的 Top K；仅当SearchMode为2时支持自定义设置，默认为100
 	VectorSearchTopK *int64 `json:"VectorSearchTopK,omitnil,omitempty" name:"VectorSearchTopK"`
+
+	// 搜索结果的排序方式，可选值：
+	// 
+	// - `CORRELATION`：按相关性（默认）
+	// - `TIME_ASC`：按时间升序
+	// - `TIME_DESC`：按时间降序
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 type InvokeAISearchServiceRequest struct {
@@ -12911,6 +12918,13 @@ type InvokeAISearchServiceRequest struct {
 
 	// 指定向量搜索最相似的 Top K；仅当SearchMode为2时支持自定义设置，默认为100
 	VectorSearchTopK *int64 `json:"VectorSearchTopK,omitnil,omitempty" name:"VectorSearchTopK"`
+
+	// 搜索结果的排序方式，可选值：
+	// 
+	// - `CORRELATION`：按相关性（默认）
+	// - `TIME_ASC`：按时间升序
+	// - `TIME_DESC`：按时间降序
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 func (r *InvokeAISearchServiceRequest) ToJsonString() string {
@@ -12938,6 +12952,7 @@ func (r *InvokeAISearchServiceRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "VectorSearchRadius")
 	delete(f, "VectorSearchTopK")
+	delete(f, "Order")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeAISearchServiceRequest has unknown keys!", "")
 	}
@@ -13580,8 +13595,11 @@ type InvokeVideosKeywordsAnalyzerRequestParams struct {
 	// 2. 时间区间必须控制在某一个自然天内，不支持跨天
 	EndTimeMs *int64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
 
-	// 返回的关键字最大数量，默认为5；最大不能超过10
+	// 返回的关键词的最大数量，默认为5；最大不能超过10
 	KeywordsMaxNum *uint64 `json:"KeywordsMaxNum,omitnil,omitempty" name:"KeywordsMaxNum"`
+
+	// 返回的关键词的语言类型，支持的类型有：en-US、zh-CN
+	KeywordsLang *string `json:"KeywordsLang,omitnil,omitempty" name:"KeywordsLang"`
 }
 
 type InvokeVideosKeywordsAnalyzerRequest struct {
@@ -13607,8 +13625,11 @@ type InvokeVideosKeywordsAnalyzerRequest struct {
 	// 2. 时间区间必须控制在某一个自然天内，不支持跨天
 	EndTimeMs *int64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
 
-	// 返回的关键字最大数量，默认为5；最大不能超过10
+	// 返回的关键词的最大数量，默认为5；最大不能超过10
 	KeywordsMaxNum *uint64 `json:"KeywordsMaxNum,omitnil,omitempty" name:"KeywordsMaxNum"`
+
+	// 返回的关键词的语言类型，支持的类型有：en-US、zh-CN
+	KeywordsLang *string `json:"KeywordsLang,omitnil,omitempty" name:"KeywordsLang"`
 }
 
 func (r *InvokeVideosKeywordsAnalyzerRequest) ToJsonString() string {
@@ -13628,6 +13649,7 @@ func (r *InvokeVideosKeywordsAnalyzerRequest) FromJsonString(s string) error {
 	delete(f, "StartTimeMs")
 	delete(f, "EndTimeMs")
 	delete(f, "KeywordsMaxNum")
+	delete(f, "KeywordsLang")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeVideosKeywordsAnalyzerRequest has unknown keys!", "")
 	}
@@ -13636,7 +13658,7 @@ func (r *InvokeVideosKeywordsAnalyzerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InvokeVideosKeywordsAnalyzerResponseParams struct {
-	// 基于搜索结果的总结
+	// 根据视频内容生成的关键词
 	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -245,6 +245,9 @@ const (
 	// 下载对象参数值无效。
 	INVALIDPARAMETER_INVALIDDOWNLOADOBJ = "InvalidParameter.InvalidDownloadObj"
 
+	// 无效的DynamicInstanceType参数。
+	INVALIDPARAMETER_INVALIDDYNAMICINSTANCETYPE = "InvalidParameter.InvalidDynamicInstanceType"
+
 	// 无效的EKS实例。
 	INVALIDPARAMETER_INVALIDEKSINSTANCE = "InvalidParameter.InvalidEksInstance"
 

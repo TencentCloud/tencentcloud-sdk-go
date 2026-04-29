@@ -10785,6 +10785,80 @@ func (c *Client) DescribeContractDiffTaskWebUrlWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeContractReviewChecklistRequest() (request *DescribeContractReviewChecklistRequest) {
+    request = &DescribeContractReviewChecklistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeContractReviewChecklist")
+    
+    
+    return
+}
+
+func NewDescribeContractReviewChecklistResponse() (response *DescribeContractReviewChecklistResponse) {
+    response = &DescribeContractReviewChecklistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeContractReviewChecklist
+// 此接口（DescribeContractReviewChecklist）用于获取已有的合同风险审查清单详情。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+func (c *Client) DescribeContractReviewChecklist(request *DescribeContractReviewChecklistRequest) (response *DescribeContractReviewChecklistResponse, err error) {
+    return c.DescribeContractReviewChecklistWithContext(context.Background(), request)
+}
+
+// DescribeContractReviewChecklist
+// 此接口（DescribeContractReviewChecklist）用于获取已有的合同风险审查清单详情。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+func (c *Client) DescribeContractReviewChecklistWithContext(ctx context.Context, request *DescribeContractReviewChecklistRequest) (response *DescribeContractReviewChecklistResponse, err error) {
+    if request == nil {
+        request = NewDescribeContractReviewChecklistRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeContractReviewChecklist")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeContractReviewChecklist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeContractReviewChecklistResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeContractReviewChecklistWebUrlRequest() (request *DescribeContractReviewChecklistWebUrlRequest) {
     request = &DescribeContractReviewChecklistWebUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14111,6 +14185,80 @@ func (c *Client) GetTaskResultApiWithContext(ctx context.Context, request *GetTa
     request.SetContext(ctx)
     
     response = NewGetTaskResultApiResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewImportContractReviewChecklistRequest() (request *ImportContractReviewChecklistRequest) {
+    request = &ImportContractReviewChecklistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "ImportContractReviewChecklist")
+    
+    
+    return
+}
+
+func NewImportContractReviewChecklistResponse() (response *ImportContractReviewChecklistResponse) {
+    response = &ImportContractReviewChecklistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImportContractReviewChecklist
+// 此接口（ImportRiskIdentificationChecklist）用于创建或更新合同审查清单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+func (c *Client) ImportContractReviewChecklist(request *ImportContractReviewChecklistRequest) (response *ImportContractReviewChecklistResponse, err error) {
+    return c.ImportContractReviewChecklistWithContext(context.Background(), request)
+}
+
+// ImportContractReviewChecklist
+// 此接口（ImportRiskIdentificationChecklist）用于创建或更新合同审查清单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+func (c *Client) ImportContractReviewChecklistWithContext(ctx context.Context, request *ImportContractReviewChecklistRequest) (response *ImportContractReviewChecklistResponse, err error) {
+    if request == nil {
+        request = NewImportContractReviewChecklistRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "ImportContractReviewChecklist")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportContractReviewChecklist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImportContractReviewChecklistResponse()
     err = c.Send(request, response)
     return
 }

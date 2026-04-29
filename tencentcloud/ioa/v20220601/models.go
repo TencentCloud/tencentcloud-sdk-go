@@ -185,6 +185,119 @@ type Condition struct {
 	RulePayloadMode *int64 `json:"RulePayloadMode,omitnil,omitempty" name:"RulePayloadMode"`
 }
 
+type CreateBusinessResourceData struct {
+	// 创建成功的业务资源数据id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceId *int64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+}
+
+// Predefined struct for user
+type CreateBusinessResourceRequestParams struct {
+	// 业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)
+	AreaId *int64 `json:"AreaId,omitnil,omitempty" name:"AreaId"`
+
+	// 业务资源协议类型, 1:UDP, 2:TCP, 3:所有协议(只支持32位)
+	Protocol *int64 `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 业务资源名称，同一个资源模块下面不可重复
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 业务资源类型:ip,domain,ip_section，对应ip、域名、ip段
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 业务资源端口 all,1-65535
+	ServicePort *string `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
+
+	// 业务资源优先级 1-65535(只支持32位)
+	Levels *int64 `json:"Levels,omitnil,omitempty" name:"Levels"`
+
+	// 业务资源地址(ip、域名、ip段)
+	ServiceAddress *string `json:"ServiceAddress,omitnil,omitempty" name:"ServiceAddress"`
+
+	// 是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)
+	DirectConn *int64 `json:"DirectConn,omitnil,omitempty" name:"DirectConn"`
+}
+
+type CreateBusinessResourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)
+	AreaId *int64 `json:"AreaId,omitnil,omitempty" name:"AreaId"`
+
+	// 业务资源协议类型, 1:UDP, 2:TCP, 3:所有协议(只支持32位)
+	Protocol *int64 `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 业务资源名称，同一个资源模块下面不可重复
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 业务资源类型:ip,domain,ip_section，对应ip、域名、ip段
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 业务资源端口 all,1-65535
+	ServicePort *string `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
+
+	// 业务资源优先级 1-65535(只支持32位)
+	Levels *int64 `json:"Levels,omitnil,omitempty" name:"Levels"`
+
+	// 业务资源地址(ip、域名、ip段)
+	ServiceAddress *string `json:"ServiceAddress,omitnil,omitempty" name:"ServiceAddress"`
+
+	// 是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)
+	DirectConn *int64 `json:"DirectConn,omitnil,omitempty" name:"DirectConn"`
+}
+
+func (r *CreateBusinessResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBusinessResourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AreaId")
+	delete(f, "Protocol")
+	delete(f, "ServiceName")
+	delete(f, "ServiceType")
+	delete(f, "ServicePort")
+	delete(f, "Levels")
+	delete(f, "ServiceAddress")
+	delete(f, "DirectConn")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBusinessResourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBusinessResourceResponseParams struct {
+	// 创建业务资源响应的数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CreateBusinessResourceData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBusinessResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBusinessResourceResponseParams `json:"Response"`
+}
+
+func (r *CreateBusinessResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBusinessResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateDLPFileDetectTaskData struct {
 	// 任务请求唯一Id
 	TaskRequestId []*string `json:"TaskRequestId,omitnil,omitempty" name:"TaskRequestId"`
@@ -791,6 +904,66 @@ func (r *DescribeAccountGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAccountResourcesData struct {
+	// 资源对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*DescribeAccountResourcesItems `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type DescribeAccountResourcesItems struct {
+	// 资源组id(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AreaId *uint64 `json:"AreaId,omitnil,omitempty" name:"AreaId"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 资源类型(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *uint64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源id(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *uint64 `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 一般同id字段相同(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FromSourceId *uint64 `json:"FromSourceId,omitnil,omitempty" name:"FromSourceId"`
+
+	// 是否继承过来的资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsInherited *bool `json:"IsInherited,omitnil,omitempty" name:"IsInherited"`
+
+	// 资源过期时间(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 账户组的namepath
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamePath *string `json:"NamePath,omitnil,omitempty" name:"NamePath"`
+
+	// 访问类型:0-NGN 1-web(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessType *int64 `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// 资源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
+
+	// 继承开关状态(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsInheritedSwitch *uint64 `json:"IsInheritedSwitch,omitnil,omitempty" name:"IsInheritedSwitch"`
+
+	// 关系id(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 资源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AreaName *string `json:"AreaName,omitnil,omitempty" name:"AreaName"`
+}
+
 type DescribeAggrSoftCategorySoftListData struct {
 	// 分页公共对象
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1085,6 +1258,298 @@ func (r *DescribeAggrSoftDeviceListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAggrSoftDeviceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBusinessResourceData struct {
+	// <p>业务资源id(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceId *int64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>业务资源名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// <p>资源类型:ip,domain,ip_section，对应ip，域名，ip段</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// <p>业务资源地址</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceAddress *string `json:"ServiceAddress,omitnil,omitempty" name:"ServiceAddress"`
+
+	// <p>业务资源端口 all,1-65535</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServicePort *string `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
+
+	// <p>业务资源创建时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>业务资源最后修改时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>说明字段</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>资源模块ID(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AreaId *int64 `json:"AreaId,omitnil,omitempty" name:"AreaId"`
+
+	// <p>零信任网关id(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SmartGateIds []*int64 `json:"SmartGateIds,omitnil,omitempty" name:"SmartGateIds"`
+
+	// <p>业务资源协议类型,3：所有,2：UDP，1：TCP(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *int64 `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// <p>业务资源等级(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Levels *int64 `json:"Levels,omitnil,omitempty" name:"Levels"`
+
+	// <p>零信任网关名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SmartGateNames *string `json:"SmartGateNames,omitnil,omitempty" name:"SmartGateNames"`
+
+	// <p>网关连通性(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DirectConn *int64 `json:"DirectConn,omitnil,omitempty" name:"DirectConn"`
+
+	// <p>网关连通性状态(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectState *int64 `json:"DetectState,omitnil,omitempty" name:"DetectState"`
+
+	// <p>网关连通性信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectInfo *string `json:"DetectInfo,omitnil,omitempty" name:"DetectInfo"`
+
+	// <p>网关连通性创建时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectTime *string `json:"DetectTime,omitnil,omitempty" name:"DetectTime"`
+
+	// <p>绑定的连接器组Id</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectorGroupId *string `json:"ConnectorGroupId,omitnil,omitempty" name:"ConnectorGroupId"`
+
+	// <p>绑定的连接器组的名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectorGroupName *string `json:"ConnectorGroupName,omitnil,omitempty" name:"ConnectorGroupName"`
+
+	// <p>资源连通性可达最后的检测时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReachableTime *string `json:"ReachableTime,omitnil,omitempty" name:"ReachableTime"`
+
+	// <p>资源连通性可达状态,0：未检测，1：未连通，2：已连通</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReachableState *int64 `json:"ReachableState,omitnil,omitempty" name:"ReachableState"`
+
+	// <p>访问类型:0-NGN 1-web(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessType *int64 `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// <p>web资源-后端协议</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackendScheme *string `json:"BackendScheme,omitnil,omitempty" name:"BackendScheme"`
+
+	// <p>web资源-后端路径</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackendPath *string `json:"BackendPath,omitnil,omitempty" name:"BackendPath"`
+
+	// <p>web资源-前端协议</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrontScheme *string `json:"FrontScheme,omitnil,omitempty" name:"FrontScheme"`
+
+	// <p>web资源-前端host</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrontHost *string `json:"FrontHost,omitnil,omitempty" name:"FrontHost"`
+
+	// <p>web资源-前端host(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrontPort *int64 `json:"FrontPort,omitnil,omitempty" name:"FrontPort"`
+
+	// <p>web资源-前端路径 默认&quot;/&quot;</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrontPath *string `json:"FrontPath,omitnil,omitempty" name:"FrontPath"`
+
+	// <p>web资源-是否禁用外网访问：0-可通过外网访问 1-不能通过外网访问(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisableFront *int64 `json:"DisableFront,omitnil,omitempty" name:"DisableFront"`
+
+	// <p>web资源-租户自定义域名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomDomain *string `json:"CustomDomain,omitnil,omitempty" name:"CustomDomain"`
+
+	// <p>web资源-自定义host</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomHost *string `json:"CustomHost,omitnil,omitempty" name:"CustomHost"`
+
+	// <p>web资源-Cname状态(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CnameStatus *int64 `json:"CnameStatus,omitnil,omitempty" name:"CnameStatus"`
+
+	// <p>web资源-关联证书ID(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertificateId *int64 `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
+
+	// <p>web资源类型：0-应用 1-API(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebGwResourceType *int64 `json:"WebGwResourceType,omitnil,omitempty" name:"WebGwResourceType"`
+
+	// <p>web资源-如果选择API类型资源，则需要配置密钥(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	APISecretId *int64 `json:"APISecretId,omitnil,omitempty" name:"APISecretId"`
+
+	// <p>所属资源组名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AreaName *string `json:"AreaName,omitnil,omitempty" name:"AreaName"`
+
+	// <p>web资源-前端协议是HTTPS类型，需要配置证书</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SSLCertId *string `json:"SSLCertId,omitnil,omitempty" name:"SSLCertId"`
+
+	// <p>web资源-是否启用依赖地址：0-不启用 1-启用(只支持32位)</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableDependentAddr *int64 `json:"EnableDependentAddr,omitnil,omitempty" name:"EnableDependentAddr"`
+
+	// <p>web资源-依赖地址的后端服务器地址</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DependentAddr *string `json:"DependentAddr,omitnil,omitempty" name:"DependentAddr"`
+
+	// <p>web免鉴权：1-鉴权 2-免鉴权</p>
+	WebGwNoAuth *int64 `json:"WebGwNoAuth,omitnil,omitempty" name:"WebGwNoAuth"`
+
+	// <p>通道类型</p><p>枚举值：</p><ul><li>vpc： vpc类型</li><li>native： 专线类型</li></ul><p>默认值：native</p>
+	ConnectorGroupType *string `json:"ConnectorGroupType,omitnil,omitempty" name:"ConnectorGroupType"`
+
+	// <p>域名后缀</p>
+	DomainSuffix *string `json:"DomainSuffix,omitnil,omitempty" name:"DomainSuffix"`
+}
+
+type DescribeBusinessResourcePageRsp struct {
+	// 业务资源列表数据对象集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*DescribeBusinessResourceData `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 分页公共对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *Paging `json:"Page,omitnil,omitempty" name:"Page"`
+}
+
+// Predefined struct for user
+type DescribeBusinessResourcesRequestParams struct {
+	// 资源模块Id
+	AreaId *int64 `json:"AreaId,omitnil,omitempty" name:"AreaId"`
+
+	// 搜索的业务资源名称
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 获取业务资源列表的开始时间，时间格式：2006-01-02
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 搜索关键字
+	Keywords *string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
+
+	// 获取业务资源列表的结束时间，时间格式：2006-01-02
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 滤条件、分页参数。分页内容不传，默认获取第1页，10条数据
+	// 排序条件
+	// <li>CreateTime - string - 是否必填：否 - 排序支持：是 - 按业务资源创建时间排序。</li>
+	// <li>Levels - int - 是否必填：否 - 排序支持：是 - 按业务资源优先级排序。</li>
+	// <li>ReachableState - int - 是否必填：否 - 排序支持：是 - 按业务资源连通性排序(私有化版本不支持)。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 资源类型
+	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// web资源前端地址
+	FrontAddr *string `json:"FrontAddr,omitnil,omitempty" name:"FrontAddr"`
+}
+
+type DescribeBusinessResourcesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源模块Id
+	AreaId *int64 `json:"AreaId,omitnil,omitempty" name:"AreaId"`
+
+	// 搜索的业务资源名称
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 获取业务资源列表的开始时间，时间格式：2006-01-02
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 搜索关键字
+	Keywords *string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
+
+	// 获取业务资源列表的结束时间，时间格式：2006-01-02
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 滤条件、分页参数。分页内容不传，默认获取第1页，10条数据
+	// 排序条件
+	// <li>CreateTime - string - 是否必填：否 - 排序支持：是 - 按业务资源创建时间排序。</li>
+	// <li>Levels - int - 是否必填：否 - 排序支持：是 - 按业务资源优先级排序。</li>
+	// <li>ReachableState - int - 是否必填：否 - 排序支持：是 - 按业务资源连通性排序(私有化版本不支持)。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 资源类型
+	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
+
+	// web资源前端地址
+	FrontAddr *string `json:"FrontAddr,omitnil,omitempty" name:"FrontAddr"`
+}
+
+func (r *DescribeBusinessResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBusinessResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AreaId")
+	delete(f, "ServiceName")
+	delete(f, "StartTime")
+	delete(f, "Keywords")
+	delete(f, "EndTime")
+	delete(f, "Condition")
+	delete(f, "AccessType")
+	delete(f, "FrontAddr")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBusinessResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBusinessResourcesResponseParams struct {
+	// 业务资源分页返回对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DescribeBusinessResourcePageRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBusinessResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBusinessResourcesResponseParams `json:"Response"`
+}
+
+func (r *DescribeBusinessResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBusinessResourcesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2293,6 +2758,64 @@ func (r *DescribeDevicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDirectAccountGroupResourcesRequestParams struct {
+	// 账户组Id(只支持32位)
+	AccountGroupId *uint64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+}
+
+type DescribeDirectAccountGroupResourcesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 账户组Id(只支持32位)
+	AccountGroupId *uint64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+}
+
+func (r *DescribeDirectAccountGroupResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDirectAccountGroupResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AccountGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDirectAccountGroupResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDirectAccountGroupResourcesResponseParams struct {
+	// 查询的数据集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DescribeAccountResourcesData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDirectAccountGroupResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDirectAccountGroupResourcesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDirectAccountGroupResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDirectAccountGroupResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeLocalAccountAccountGroupsData struct {
 	// 组Id(只支持32位)
 	AccountGroupId *int64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
@@ -2475,6 +2998,203 @@ func (r *DescribeLocalAccountsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLocalAccountsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceGrantedAccountGroupsData struct {
+	//  
+	Items []*GrantedAccountGroupItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+// Predefined struct for user
+type DescribeResourceGrantedAccountGroupsRequestParams struct {
+	// 资源或资源组Id;
+	ResourceId *uint64 `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+type DescribeResourceGrantedAccountGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源或资源组Id;
+	ResourceId *uint64 `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+func (r *DescribeResourceGrantedAccountGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceGrantedAccountGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceGrantedAccountGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourceGrantedAccountGroupsResponseParams struct {
+	// 查询的数据集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DescribeResourceGrantedAccountGroupsData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeResourceGrantedAccountGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeResourceGrantedAccountGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeResourceGrantedAccountGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceGrantedAccountGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceGrantedAccountsData struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	//  
+	Items []*GrantedAccountItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+// Predefined struct for user
+type DescribeResourceGrantedAccountsRequestParams struct {
+	// 账户组Id(只支持32位)
+	ResourceId *uint64 `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+type DescribeResourceGrantedAccountsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 账户组Id(只支持32位)
+	ResourceId *uint64 `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+func (r *DescribeResourceGrantedAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceGrantedAccountsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceGrantedAccountsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourceGrantedAccountsResponseParams struct {
+	// 查询的数据集合
+	Data *DescribeResourceGrantedAccountsData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeResourceGrantedAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeResourceGrantedAccountsResponseParams `json:"Response"`
+}
+
+func (r *DescribeResourceGrantedAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceGrantedAccountsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceGrantedVirtualGroupsData struct {
+	//  
+	Items []*GrantedVirtualGroupItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+// Predefined struct for user
+type DescribeResourceGrantedVirtualGroupsRequestParams struct {
+	// 资源ID
+	ResourceId *uint64 `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源类型
+	ResourceType *uint64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+}
+
+type DescribeResourceGrantedVirtualGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源ID
+	ResourceId *uint64 `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源类型
+	ResourceType *uint64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+}
+
+func (r *DescribeResourceGrantedVirtualGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceGrantedVirtualGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "ResourceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceGrantedVirtualGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourceGrantedVirtualGroupsResponseParams struct {
+	// 查询的数据集合
+	Data *DescribeResourceGrantedVirtualGroupsData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeResourceGrantedVirtualGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeResourceGrantedVirtualGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeResourceGrantedVirtualGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceGrantedVirtualGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3424,6 +4144,376 @@ type GetAccountGroupData struct {
 
 	// miniIAMId，MiniIAM源才有
 	MiniIamId *string `json:"MiniIamId,omitnil,omitempty" name:"MiniIamId"`
+}
+
+type GrantResourceOperationByAccountGroups struct {
+	// 操作类型: 1-增加授权 2-删除授权;
+	OperationType *uint64 `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+
+	// 资源或资源组Id
+	ResourceId *uint64 `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源类型 ,1:资源 2:资源组
+	ResourceType *uint64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 过期时间,时间戳(秒)
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 分组id
+	AccountGroupId *uint64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+}
+
+type GrantResourceOperationByAccounts struct {
+	// 操作类型: 1-增加授权 2-删除授权;
+	OperationType *uint64 `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+
+	// 资源或资源组Id
+	ResourceId *uint64 `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源类型 ,1:资源 2:资源组
+	ResourceType *uint64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 过期时间,时间戳(秒)
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 账号userid
+	AccountUserId *string `json:"AccountUserId,omitnil,omitempty" name:"AccountUserId"`
+
+	// 账号目录ID
+	MenuId *uint64 `json:"MenuId,omitnil,omitempty" name:"MenuId"`
+}
+
+type GrantResourceOperationByVirtualGroups struct {
+	// 操作类型: 1-增加授权 2-删除授权;
+	OperationType *uint64 `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+
+	// 资源或资源组Id
+	ResourceId *uint64 `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源类型 ,1:资源 2:资源组
+	ResourceType *uint64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 过期时间,时间戳(秒)
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 分组id
+	VirtualAccountGroupId *uint64 `json:"VirtualAccountGroupId,omitnil,omitempty" name:"VirtualAccountGroupId"`
+}
+
+// Predefined struct for user
+type GrantResourcesByAccountGroupsRequestParams struct {
+	//  
+	Operations []*GrantResourceOperationByAccountGroups `json:"Operations,omitnil,omitempty" name:"Operations"`
+}
+
+type GrantResourcesByAccountGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	//  
+	Operations []*GrantResourceOperationByAccountGroups `json:"Operations,omitnil,omitempty" name:"Operations"`
+}
+
+func (r *GrantResourcesByAccountGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GrantResourcesByAccountGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operations")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GrantResourcesByAccountGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GrantResourcesByAccountGroupsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GrantResourcesByAccountGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *GrantResourcesByAccountGroupsResponseParams `json:"Response"`
+}
+
+func (r *GrantResourcesByAccountGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GrantResourcesByAccountGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GrantResourcesByAccountsRequestParams struct {
+	//  
+	Operations []*GrantResourceOperationByAccounts `json:"Operations,omitnil,omitempty" name:"Operations"`
+}
+
+type GrantResourcesByAccountsRequest struct {
+	*tchttp.BaseRequest
+	
+	//  
+	Operations []*GrantResourceOperationByAccounts `json:"Operations,omitnil,omitempty" name:"Operations"`
+}
+
+func (r *GrantResourcesByAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GrantResourcesByAccountsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operations")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GrantResourcesByAccountsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GrantResourcesByAccountsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GrantResourcesByAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *GrantResourcesByAccountsResponseParams `json:"Response"`
+}
+
+func (r *GrantResourcesByAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GrantResourcesByAccountsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GrantResourcesByVirtualGroupsRequestParams struct {
+	//  
+	Operations []*GrantResourceOperationByVirtualGroups `json:"Operations,omitnil,omitempty" name:"Operations"`
+}
+
+type GrantResourcesByVirtualGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	//  
+	Operations []*GrantResourceOperationByVirtualGroups `json:"Operations,omitnil,omitempty" name:"Operations"`
+}
+
+func (r *GrantResourcesByVirtualGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GrantResourcesByVirtualGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operations")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GrantResourcesByVirtualGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GrantResourcesByVirtualGroupsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GrantResourcesByVirtualGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *GrantResourcesByVirtualGroupsResponseParams `json:"Response"`
+}
+
+func (r *GrantResourcesByVirtualGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GrantResourcesByVirtualGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GrantedAccountGroupItem struct {
+	// 账户组Id
+	AccountGroupId *uint64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+
+	// 分组名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 所属分组Id
+	IdPathArray []*uint64 `json:"IdPathArray,omitnil,omitempty" name:"IdPathArray"`
+
+	// 所属分组NamePathArray
+	NamePathArray []*string `json:"NamePathArray,omitnil,omitempty" name:"NamePathArray"`
+
+	// 目录id
+	AccountCount *uint64 `json:"AccountCount,omitnil,omitempty" name:"AccountCount"`
+
+	// 过期时间
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 关联id
+	RelationId *uint64 `json:"RelationId,omitnil,omitempty" name:"RelationId"`
+}
+
+type GrantedAccountItem struct {
+	// 账户Id
+	AccountId *uint64 `json:"AccountId,omitnil,omitempty" name:"AccountId"`
+
+	// 用户UserId
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 用户名称
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 所属分组Id
+	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 分组路劲GroupIdPathArray
+	GroupIdPathArray []*uint64 `json:"GroupIdPathArray,omitnil,omitempty" name:"GroupIdPathArray"`
+
+	// 所属分组NamePathArray
+	GroupNamePathArray []*string `json:"GroupNamePathArray,omitnil,omitempty" name:"GroupNamePathArray"`
+
+	// 目录id
+	MenuId *uint64 `json:"MenuId,omitnil,omitempty" name:"MenuId"`
+
+	// 过期时间
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 关联id
+	RelationId *uint64 `json:"RelationId,omitnil,omitempty" name:"RelationId"`
+}
+
+type GrantedVirtualGroupItem struct {
+	// 账户组Id
+	VirtualGroupId *uint64 `json:"VirtualGroupId,omitnil,omitempty" name:"VirtualGroupId"`
+
+	// 分组名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 描述信息
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 目录id
+	AccountCount *uint64 `json:"AccountCount,omitnil,omitempty" name:"AccountCount"`
+
+	// 过期时间
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 关联id
+	RelationId *uint64 `json:"RelationId,omitnil,omitempty" name:"RelationId"`
+}
+
+// Predefined struct for user
+type ModifyDeviceTrustStatusRequestParams struct {
+	// <p>设备状态，1表示拉黑，0表示加白</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>设备MID列表</p>
+	DeviceIDList []*string `json:"DeviceIDList,omitnil,omitempty" name:"DeviceIDList"`
+
+	// <p>设备拉黑有效期，UnixTime, 单位是 ms,0表示永久有效，默认值是0</p>
+	BlackStatusDeadline *int64 `json:"BlackStatusDeadline,omitnil,omitempty" name:"BlackStatusDeadline"`
+
+	// <p>DescribeAccuserList返回的Id 列表</p>
+	IdList []*int64 `json:"IdList,omitnil,omitempty" name:"IdList"`
+
+	// <p>默认值：0，根据id更新，1根据DeviceIDList</p>
+	UpdateFlags *int64 `json:"UpdateFlags,omitnil,omitempty" name:"UpdateFlags"`
+}
+
+type ModifyDeviceTrustStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>设备状态，1表示拉黑，0表示加白</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>设备MID列表</p>
+	DeviceIDList []*string `json:"DeviceIDList,omitnil,omitempty" name:"DeviceIDList"`
+
+	// <p>设备拉黑有效期，UnixTime, 单位是 ms,0表示永久有效，默认值是0</p>
+	BlackStatusDeadline *int64 `json:"BlackStatusDeadline,omitnil,omitempty" name:"BlackStatusDeadline"`
+
+	// <p>DescribeAccuserList返回的Id 列表</p>
+	IdList []*int64 `json:"IdList,omitnil,omitempty" name:"IdList"`
+
+	// <p>默认值：0，根据id更新，1根据DeviceIDList</p>
+	UpdateFlags *int64 `json:"UpdateFlags,omitnil,omitempty" name:"UpdateFlags"`
+}
+
+func (r *ModifyDeviceTrustStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceTrustStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Status")
+	delete(f, "DeviceIDList")
+	delete(f, "BlackStatusDeadline")
+	delete(f, "IdList")
+	delete(f, "UpdateFlags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDeviceTrustStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDeviceTrustStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDeviceTrustStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDeviceTrustStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyDeviceTrustStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceTrustStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyVirtualDeviceGroupsReqItem struct {

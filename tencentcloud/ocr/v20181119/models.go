@@ -1535,6 +1535,20 @@ type Coord struct {
 	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 }
 
+type CoordList struct {
+	// <p>左上角坐标。</p>
+	TopLeft *Coord `json:"TopLeft,omitnil,omitempty" name:"TopLeft"`
+
+	// <p>右上角坐标。</p>
+	TopRight *Coord `json:"TopRight,omitnil,omitempty" name:"TopRight"`
+
+	// <p>左下角坐标。</p>
+	BottomLeft *Coord `json:"BottomLeft,omitnil,omitempty" name:"BottomLeft"`
+
+	// <p>右下角坐标。</p>
+	BottomRight *Coord `json:"BottomRight,omitnil,omitempty" name:"BottomRight"`
+}
+
 type CustomsDeclaration struct {
 	// 发票名称
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
@@ -3451,6 +3465,26 @@ func (r *ExtractDocMultiResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ExtractDocMultiResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type FieldsInfo struct {
+	// <p>用户自定义的提取字段名。</p>
+	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
+
+	// <p>用户自定义的提取字段名的提示词。</p>
+	KeyPrompt *string `json:"KeyPrompt,omitnil,omitempty" name:"KeyPrompt"`
+
+	// <p>出参字段对应的值。</p><p>注意：此字段可能返回 null，表示取不到有效值。</p>
+	KeyValue *string `json:"KeyValue,omitnil,omitempty" name:"KeyValue"`
+
+	// <p>出参类型。</p><p>注：与入参对应同个值。</p>
+	KeyType *int64 `json:"KeyType,omitnil,omitempty" name:"KeyType"`
+
+	// <p>文本行坐标，以四个顶点坐标表示。</p><p>注：仅当入参EnableCoord不为null时生效，默认是false。</p>
+	Polygon *CoordList `json:"Polygon,omitnil,omitempty" name:"Polygon"`
+
+	// <p>嵌套FieldsInfo结构，仅当KeyType=1时有效。</p>
+	SubItems []*SubItemGroup `json:"SubItems,omitnil,omitempty" name:"SubItems"`
 }
 
 type FinanBillInfo struct {
@@ -5888,6 +5922,20 @@ type LineInfo struct {
 	Lines []*ItemInfo `json:"Lines,omitnil,omitempty" name:"Lines"`
 }
 
+type ListInfo struct {
+	// <p>推理任务的完整提示词。注：仅当QueryType=1/2/3时有效，否则返回为null。</p>
+	QueryInfo *string `json:"QueryInfo,omitnil,omitempty" name:"QueryInfo"`
+
+	// <p>根据QueryType对应任务的返回内容。注：仅当QueryType=1/2/3时有效，其他情况为null。</p>
+	Answer *string `json:"Answer,omitnil,omitempty" name:"Answer"`
+
+	// <p>结构化提取结果。注：仅当QueryType=4时有效，否则返回null。</p>
+	ExtractFields []*FieldsInfo `json:"ExtractFields,omitnil,omitempty" name:"ExtractFields"`
+
+	// <p>检测到的文本信息，包括内容、坐标以及旋转纠正后的坐标等，具体内容请参见 TextDetection。注：仅当QueryType=0时TextDetections不为空，否则返回null。</p>
+	TextDetections []*TextDetection `json:"TextDetections,omitnil,omitempty" name:"TextDetections"`
+}
+
 // Predefined struct for user
 type MLIDCardOCRRequestParams struct {
 	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。
@@ -8087,6 +8135,115 @@ type RailwayTicketInfo struct {
 }
 
 // Predefined struct for user
+type RecognizeAgentRequestParams struct {
+	// <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>图片/PDF的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// <p>需识别的PDF页码。仅支持PDF单页识别，当上传文件为PDF时有效。</p><p>默认值：1</p>
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
+
+	// <p>模型选择。</p><p>枚举值：</p><ul><li>0： 推理模型。</li><li>1： 识别、推理模型。</li></ul><p>默认值：0</p>
+	SelectModel *int64 `json:"SelectModel,omitnil,omitempty" name:"SelectModel"`
+
+	// <p>任务类型。</p><p>枚举值：</p><ul><li><p>0： 全文识别。识别且输出全文内容。</p></li><li><p>1： 判断。判断输入图的内容是否为Query中的内容，返回结果为是或否。如Query:&quot;增值税发票&quot;，该任务类型下，将判断输入图是否为增值税发票，返回&quot;是&quot;或&quot;否&quot;。</p></li><li><p>2： 分类。判断输入图属于Query中具体哪个分类项。如Query:[&quot;营业执照&quot;,&quot;合同&quot;,&quot;票据&quot;]，在该任务类型下，将判断输入图是否属于&quot;营业执照&quot;、&quot;合同&quot;、&quot;票据&quot;，返回&quot;营业执照&quot;/&quot;合同&quot;/&quot;票据&quot;或&quot;均不符合&quot;。</p></li><li><p>3： 总结提炼。总结输入图与Query相关的内容。如Query:&quot;工作经历&quot;，在该任务类型下，将输出输入图中和&quot;工作经历&quot;相关的内容，或&quot;无相关内容&quot;。</p></li><li><p>4： 信息提取。按照自定义字段提取Key-Value，且支持多层级提取，详见入参SchemaItems说明。入参可参考下面的接口示例QueryType=4场景</p></li></ul><p>默认值：0</p>
+	QueryType *int64 `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
+	// <p>自定义提取字段的结构，详见SchemaList结构。仅当QueryType=4时生效。</p><p>注：.N表示数组型参数。</p>
+	SchemaItems []*SchemaList `json:"SchemaItems,omitnil,omitempty" name:"SchemaItems"`
+
+	// <p>推理任务的提示词。与QueryType搭配使用，具体说明见QueryType描述。1）仅当QueryType=1/2/3时生效，且QueryType=1/3时，长度必须为1；2）QueryType=2，Query长度必须符合2≤x≤5。</p><p>注：.N表示数组型参数。</p>
+	Query []*string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// <p>是否需要返回坐标。</p><p>默认值：false</p><p>注：仅对QueryType=4时生效，且坐标位置为 Response.ExtractFields.Polygon。</p>
+	EnableCoord *bool `json:"EnableCoord,omitnil,omitempty" name:"EnableCoord"`
+}
+
+type RecognizeAgentRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>图片/PDF的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// <p>需识别的PDF页码。仅支持PDF单页识别，当上传文件为PDF时有效。</p><p>默认值：1</p>
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
+
+	// <p>模型选择。</p><p>枚举值：</p><ul><li>0： 推理模型。</li><li>1： 识别、推理模型。</li></ul><p>默认值：0</p>
+	SelectModel *int64 `json:"SelectModel,omitnil,omitempty" name:"SelectModel"`
+
+	// <p>任务类型。</p><p>枚举值：</p><ul><li><p>0： 全文识别。识别且输出全文内容。</p></li><li><p>1： 判断。判断输入图的内容是否为Query中的内容，返回结果为是或否。如Query:&quot;增值税发票&quot;，该任务类型下，将判断输入图是否为增值税发票，返回&quot;是&quot;或&quot;否&quot;。</p></li><li><p>2： 分类。判断输入图属于Query中具体哪个分类项。如Query:[&quot;营业执照&quot;,&quot;合同&quot;,&quot;票据&quot;]，在该任务类型下，将判断输入图是否属于&quot;营业执照&quot;、&quot;合同&quot;、&quot;票据&quot;，返回&quot;营业执照&quot;/&quot;合同&quot;/&quot;票据&quot;或&quot;均不符合&quot;。</p></li><li><p>3： 总结提炼。总结输入图与Query相关的内容。如Query:&quot;工作经历&quot;，在该任务类型下，将输出输入图中和&quot;工作经历&quot;相关的内容，或&quot;无相关内容&quot;。</p></li><li><p>4： 信息提取。按照自定义字段提取Key-Value，且支持多层级提取，详见入参SchemaItems说明。入参可参考下面的接口示例QueryType=4场景</p></li></ul><p>默认值：0</p>
+	QueryType *int64 `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
+	// <p>自定义提取字段的结构，详见SchemaList结构。仅当QueryType=4时生效。</p><p>注：.N表示数组型参数。</p>
+	SchemaItems []*SchemaList `json:"SchemaItems,omitnil,omitempty" name:"SchemaItems"`
+
+	// <p>推理任务的提示词。与QueryType搭配使用，具体说明见QueryType描述。1）仅当QueryType=1/2/3时生效，且QueryType=1/3时，长度必须为1；2）QueryType=2，Query长度必须符合2≤x≤5。</p><p>注：.N表示数组型参数。</p>
+	Query []*string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// <p>是否需要返回坐标。</p><p>默认值：false</p><p>注：仅对QueryType=4时生效，且坐标位置为 Response.ExtractFields.Polygon。</p>
+	EnableCoord *bool `json:"EnableCoord,omitnil,omitempty" name:"EnableCoord"`
+}
+
+func (r *RecognizeAgentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeAgentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "PdfPageNumber")
+	delete(f, "SelectModel")
+	delete(f, "QueryType")
+	delete(f, "SchemaItems")
+	delete(f, "Query")
+	delete(f, "EnableCoord")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeAgentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecognizeAgentResponseParams struct {
+	// <p>返回内容。详见ListInfo。</p>
+	Response []*ListInfo `json:"Response,omitnil,omitempty" name:"Response"`
+
+	// <p>图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。</p>
+	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RecognizeAgentResponse struct {
+	*tchttp.BaseResponse
+	Response *RecognizeAgentResponseParams `json:"Response"`
+}
+
+func (r *RecognizeAgentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeAgentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RecognizeContainerOCRRequestParams struct {
 	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
@@ -10100,6 +10257,31 @@ type SaleInventory struct {
 	Content []*OtherInvoiceItem `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
+type SceneWarnInfo struct {
+	// <p>是否存在该提示</p>
+	IsWarn *bool `json:"IsWarn,omitnil,omitempty" name:"IsWarn"`
+
+	// <p>风险程度（0-1）</p>
+	RiskConfidence *float64 `json:"RiskConfidence,omitnil,omitempty" name:"RiskConfidence"`
+
+	// <p>提示位置四点坐标，仅部分提示类型支持返回提示位置坐标</p>
+	Polygon []*Polygon `json:"Polygon,omitnil,omitempty" name:"Polygon"`
+}
+
+type SchemaList struct {
+	// <p>自定义需提取的字段名称。注：若需提取多个字段，可定义多个KeyName。</p>
+	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
+
+	// <p>字段类型。</p><p>枚举值：</p><ul><li>0： 表示KeyName为简单字段（如姓名、性别等）。</li><li>1： 表示KeyName为数组对象（如工作经历、教育经历列表）。</li></ul>
+	KeyType *int64 `json:"KeyType,omitnil,omitempty" name:"KeyType"`
+
+	// <p>补充提取字段的描述。</p>
+	KeyPrompt *string `json:"KeyPrompt,omitnil,omitempty" name:"KeyPrompt"`
+
+	// <p>嵌套SchemaList结构，最多支持嵌套三层。注：仅当KeyType=1时生效。</p>
+	SubItems []*SchemaList `json:"SubItems,omitnil,omitempty" name:"SubItems"`
+}
+
 type SealInfo struct {
 	// 印章主体内容
 	SealBody *string `json:"SealBody,omitnil,omitempty" name:"SealBody"`
@@ -10665,6 +10847,11 @@ type StructuralItem struct {
 
 	// 字段所在行号，下标从0开始，非行字段或未能识别行号的该值返回-1。
 	Row *int64 `json:"Row,omitnil,omitempty" name:"Row"`
+}
+
+type SubItemGroup struct {
+	// <p>子结构嵌套FieldsInfo结构</p>
+	Groups []*FieldsInfo `json:"Groups,omitnil,omitempty" name:"Groups"`
 }
 
 // Predefined struct for user
@@ -13787,6 +13974,92 @@ func (r *VerifyOfdVatInvoiceOCRResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *VerifyOfdVatInvoiceOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyScenePhotoRequestParams struct {
+	// <p>场景类型参数，如果场景无法细分请选用该大类的第一个子类，目前支持以下类型：<br><strong>经营场所照</strong><br>0101 门头照<br>0102 店内照<br>0103 流动经营照</p>
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M。</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+}
+
+type VerifyScenePhotoRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>场景类型参数，如果场景无法细分请选用该大类的第一个子类，目前支持以下类型：<br><strong>经营场所照</strong><br>0101 门头照<br>0102 店内照<br>0103 流动经营照</p>
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M。</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+}
+
+func (r *VerifyScenePhotoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyScenePhotoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Scene")
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyScenePhotoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyScenePhotoResponseParams struct {
+	// <p>区域篡改提示</p>
+	Tamper *SceneWarnInfo `json:"Tamper,omitnil,omitempty" name:"Tamper"`
+
+	// <p>AIGC合成提示</p>
+	Synthesis *SceneWarnInfo `json:"Synthesis,omitnil,omitempty" name:"Synthesis"`
+
+	// <p>屏幕翻拍提示</p>
+	RemakeScreen *SceneWarnInfo `json:"RemakeScreen,omitnil,omitempty" name:"RemakeScreen"`
+
+	// <p>截图提示</p>
+	Screenshot *SceneWarnInfo `json:"Screenshot,omitnil,omitempty" name:"Screenshot"`
+
+	// <p>文字水印提示</p>
+	TextWatermark *SceneWarnInfo `json:"TextWatermark,omitnil,omitempty" name:"TextWatermark"`
+
+	// <p>水印内容，当未检测到文字水印时不返回，返回多组水印时以 | 分隔。</p>
+	WatermarkContent *string `json:"WatermarkContent,omitnil,omitempty" name:"WatermarkContent"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type VerifyScenePhotoResponse struct {
+	*tchttp.BaseResponse
+	Response *VerifyScenePhotoResponseParams `json:"Response"`
+}
+
+func (r *VerifyScenePhotoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyScenePhotoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
