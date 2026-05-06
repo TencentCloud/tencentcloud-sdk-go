@@ -85,6 +85,72 @@ func (r *Convert3DFormatResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeHunyuanTo3DMotionJobRequestParams struct {
+	// <p>任务ID。</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DescribeHunyuanTo3DMotionJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务ID。</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DescribeHunyuanTo3DMotionJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHunyuanTo3DMotionJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHunyuanTo3DMotionJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHunyuanTo3DMotionJobResponseParams struct {
+	// <p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功 示例值：RUN。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>错误码。</p>
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>错误信息。</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// <p>生成文件的URL地址，有效期1天。</p>
+	ResultFile3Ds []*File3D `json:"ResultFile3Ds,omitnil,omitempty" name:"ResultFile3Ds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHunyuanTo3DMotionJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHunyuanTo3DMotionJobResponseParams `json:"Response"`
+}
+
+func (r *DescribeHunyuanTo3DMotionJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHunyuanTo3DMotionJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeHunyuanTo3DUVJobRequestParams struct {
 	// 任务ID。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -640,6 +706,105 @@ func (r *SubmitHunyuan3DPartJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SubmitHunyuan3DPartJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitHunyuanTo3DMotionJobRequestParams struct {
+	// <p>输入文本prompt，限定最大字符为128。</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>模型名称：HY-Motion-1.0，默认HY-Motion-1.0。</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>需重定向的模型地址，只能支持混元生3D动画生成的模型（动画模板的接口）</p>
+	RetargetFile *InputFile3D `json:"RetargetFile,omitnil,omitempty" name:"RetargetFile"`
+
+	// <p>生成动画的时长，默认5，范围：1-12（单位s）</p>
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// <p>默认true，返回的fbx是否带蒙皮mesh</p>
+	EnableMesh *bool `json:"EnableMesh,omitnil,omitempty" name:"EnableMesh"`
+
+	// <p>是否开启prompt扩写，开启后将补充完善输入的prompt。<br>默认false。</p>
+	EnableRewrite *bool `json:"EnableRewrite,omitnil,omitempty" name:"EnableRewrite"`
+
+	// <p>是否开启时长自动匹配，开启后将自动根据prompt匹配适合时长的动作数据<br>默认false。</p>
+	EnableDurationEst *bool `json:"EnableDurationEst,omitnil,omitempty" name:"EnableDurationEst"`
+}
+
+type SubmitHunyuanTo3DMotionJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>输入文本prompt，限定最大字符为128。</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>模型名称：HY-Motion-1.0，默认HY-Motion-1.0。</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>需重定向的模型地址，只能支持混元生3D动画生成的模型（动画模板的接口）</p>
+	RetargetFile *InputFile3D `json:"RetargetFile,omitnil,omitempty" name:"RetargetFile"`
+
+	// <p>生成动画的时长，默认5，范围：1-12（单位s）</p>
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// <p>默认true，返回的fbx是否带蒙皮mesh</p>
+	EnableMesh *bool `json:"EnableMesh,omitnil,omitempty" name:"EnableMesh"`
+
+	// <p>是否开启prompt扩写，开启后将补充完善输入的prompt。<br>默认false。</p>
+	EnableRewrite *bool `json:"EnableRewrite,omitnil,omitempty" name:"EnableRewrite"`
+
+	// <p>是否开启时长自动匹配，开启后将自动根据prompt匹配适合时长的动作数据<br>默认false。</p>
+	EnableDurationEst *bool `json:"EnableDurationEst,omitnil,omitempty" name:"EnableDurationEst"`
+}
+
+func (r *SubmitHunyuanTo3DMotionJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitHunyuanTo3DMotionJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Prompt")
+	delete(f, "Model")
+	delete(f, "RetargetFile")
+	delete(f, "Duration")
+	delete(f, "EnableMesh")
+	delete(f, "EnableRewrite")
+	delete(f, "EnableDurationEst")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitHunyuanTo3DMotionJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitHunyuanTo3DMotionJobResponseParams struct {
+	// <p>任务ID（有效期24小时）</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitHunyuanTo3DMotionJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitHunyuanTo3DMotionJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitHunyuanTo3DMotionJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitHunyuanTo3DMotionJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

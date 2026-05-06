@@ -89,6 +89,50 @@ func (c *Client) Convert3DFormatWithContext(ctx context.Context, request *Conver
     return
 }
 
+func NewDescribeHunyuanTo3DMotionJobRequest() (request *DescribeHunyuanTo3DMotionJobRequest) {
+    request = &DescribeHunyuanTo3DMotionJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ai3d", APIVersion, "DescribeHunyuanTo3DMotionJob")
+    
+    
+    return
+}
+
+func NewDescribeHunyuanTo3DMotionJobResponse() (response *DescribeHunyuanTo3DMotionJobResponse) {
+    response = &DescribeHunyuanTo3DMotionJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHunyuanTo3DMotionJob
+// 查询组件生成任务。
+func (c *Client) DescribeHunyuanTo3DMotionJob(request *DescribeHunyuanTo3DMotionJobRequest) (response *DescribeHunyuanTo3DMotionJobResponse, err error) {
+    return c.DescribeHunyuanTo3DMotionJobWithContext(context.Background(), request)
+}
+
+// DescribeHunyuanTo3DMotionJob
+// 查询组件生成任务。
+func (c *Client) DescribeHunyuanTo3DMotionJobWithContext(ctx context.Context, request *DescribeHunyuanTo3DMotionJobRequest) (response *DescribeHunyuanTo3DMotionJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeHunyuanTo3DMotionJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ai3d", APIVersion, "DescribeHunyuanTo3DMotionJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHunyuanTo3DMotionJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHunyuanTo3DMotionJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHunyuanTo3DUVJobRequest() (request *DescribeHunyuanTo3DUVJobRequest) {
     request = &DescribeHunyuanTo3DUVJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -457,6 +501,54 @@ func (c *Client) SubmitHunyuan3DPartJobWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewSubmitHunyuan3DPartJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitHunyuanTo3DMotionJobRequest() (request *SubmitHunyuanTo3DMotionJobRequest) {
+    request = &SubmitHunyuanTo3DMotionJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ai3d", APIVersion, "SubmitHunyuanTo3DMotionJob")
+    
+    
+    return
+}
+
+func NewSubmitHunyuanTo3DMotionJobResponse() (response *SubmitHunyuanTo3DMotionJobResponse) {
+    response = &SubmitHunyuanTo3DMotionJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitHunyuanTo3DMotionJob
+// 输入文本后，可根据文本描述生成对应的 3D人物 动作数据，输出带动画数据的FBX文件。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+func (c *Client) SubmitHunyuanTo3DMotionJob(request *SubmitHunyuanTo3DMotionJobRequest) (response *SubmitHunyuanTo3DMotionJobResponse, err error) {
+    return c.SubmitHunyuanTo3DMotionJobWithContext(context.Background(), request)
+}
+
+// SubmitHunyuanTo3DMotionJob
+// 输入文本后，可根据文本描述生成对应的 3D人物 动作数据，输出带动画数据的FBX文件。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+func (c *Client) SubmitHunyuanTo3DMotionJobWithContext(ctx context.Context, request *SubmitHunyuanTo3DMotionJobRequest) (response *SubmitHunyuanTo3DMotionJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitHunyuanTo3DMotionJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ai3d", APIVersion, "SubmitHunyuanTo3DMotionJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitHunyuanTo3DMotionJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitHunyuanTo3DMotionJobResponse()
     err = c.Send(request, response)
     return
 }

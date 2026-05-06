@@ -971,6 +971,9 @@ type CreateAndroidInstanceAcceleratorTokenRequestParams struct {
 
 	// 用户IP，可以根据该 IP 选择就近加速点。如果不填，将自动选择就近加速点。
 	UserIP *string `json:"UserIP,omitnil,omitempty" name:"UserIP"`
+
+	// 有效期，默认为 12 小时，最长为 7 天，建议设置不要过长，否则泄漏风险越大。支持 s（秒）、m（分）、h（小时）、d（天）等单位，比如 1d、24h、86400s 都表示一天，1h2m3s 表示一小时两分三秒
+	ExpirationDuration *string `json:"ExpirationDuration,omitnil,omitempty" name:"ExpirationDuration"`
 }
 
 type CreateAndroidInstanceAcceleratorTokenRequest struct {
@@ -981,6 +984,9 @@ type CreateAndroidInstanceAcceleratorTokenRequest struct {
 
 	// 用户IP，可以根据该 IP 选择就近加速点。如果不填，将自动选择就近加速点。
 	UserIP *string `json:"UserIP,omitnil,omitempty" name:"UserIP"`
+
+	// 有效期，默认为 12 小时，最长为 7 天，建议设置不要过长，否则泄漏风险越大。支持 s（秒）、m（分）、h（小时）、d（天）等单位，比如 1d、24h、86400s 都表示一天，1h2m3s 表示一小时两分三秒
+	ExpirationDuration *string `json:"ExpirationDuration,omitnil,omitempty" name:"ExpirationDuration"`
 }
 
 func (r *CreateAndroidInstanceAcceleratorTokenRequest) ToJsonString() string {
@@ -997,6 +1003,7 @@ func (r *CreateAndroidInstanceAcceleratorTokenRequest) FromJsonString(s string) 
 	}
 	delete(f, "AndroidInstanceIds")
 	delete(f, "UserIP")
+	delete(f, "ExpirationDuration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndroidInstanceAcceleratorTokenRequest has unknown keys!", "")
 	}

@@ -1,14 +1,27 @@
-# Release v1.3.91
+# Release v1.3.92
 
-## 云点播(vod) 版本：2024-07-18
+## 腾讯混元生3D(ai3d) 版本：2025-05-13
+
+### 第 14 次发布
+
+发布时间：2026-05-07 01:08:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeHunyuanTo3DMotionJob](https://cloud.tencent.com/document/api/1804/131257)
+* [SubmitHunyuanTo3DMotionJob](https://cloud.tencent.com/document/api/1804/131256)
 
 
 
-## 云点播(vod) 版本：2018-07-17
+## 云游戏(gs) 版本：2019-11-18
 
-### 第 252 次发布
+### 第 67 次发布
 
-发布时间：2026-05-01 03:44:21
+发布时间：2026-05-07 01:59:22
 
 本次发布包含了以下内容：
 
@@ -16,20 +29,28 @@
 
 修改接口：
 
-* [CreateAigcImageTask](https://cloud.tencent.com/document/api/266/126240)
+* [CreateAndroidInstanceAcceleratorToken](https://cloud.tencent.com/document/api/1162/125484)
 
-	* 新增入参：SceneType
+	* 新增入参：ExpirationDuration
 
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 149 次发布
+
+发布时间：2026-05-07 03:56:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [AigcImageTaskInput](https://cloud.tencent.com/document/api/266/31773#AigcImageTaskInput)
+* [LLMDetectResult](https://cloud.tencent.com/document/api/627/53609#LLMDetectResult)
 
-	* 新增成员：SceneType
-
-* [AigcVideoTaskOutputFileInfo](https://cloud.tencent.com/document/api/266/31773#AigcVideoTaskOutputFileInfo)
-
-	* 新增成员：FileContent, UsageType
+	* 新增成员：MsgID
 
 
 

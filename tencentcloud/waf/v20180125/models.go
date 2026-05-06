@@ -15862,6 +15862,9 @@ type LLMDetectResult struct {
 
 	// <p>图片检测结果</p>
 	ImageResult []*ImageResult `json:"ImageResult,omitnil,omitempty" name:"ImageResult"`
+
+	// <p>要代答的消息id，此消息id用于作为GenerateLLMSecAnswer接口的入参</p>
+	MsgID *string `json:"MsgID,omitnil,omitempty" name:"MsgID"`
 }
 
 type LLMMonPkg struct {
