@@ -47,6 +47,9 @@ const (
 	// 对密钥对的删除操作失败。
 	FAILEDOPERATION_DELETEKEYPAIRFAILED = "FailedOperation.DeleteKeyPairFailed"
 
+	// 资源删除操作失败。
+	FAILEDOPERATION_DELETERESOURCESFAILED = "FailedOperation.DeleteResourcesFailed"
+
 	// 查询镜像配额失败。
 	FAILEDOPERATION_DESCRIBEBLUEPRINTQUOTAFAILED = "FailedOperation.DescribeBlueprintQuotaFailed"
 

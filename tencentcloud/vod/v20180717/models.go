@@ -2063,6 +2063,9 @@ type AigcImageTaskInput struct {
 
 	// <p>模型随机种子。</p>
 	Seed *int64 `json:"Seed,omitnil,omitempty" name:"Seed"`
+
+	// <p>场景类型。取值如下：<li>当 ModelName 为 Hunyuan 时：   3d_panorama 表示全景图；</li><li>其他 ModelName 暂不支持。</li></p>
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
 }
 
 type AigcImageTaskInputFileInfo struct {
@@ -2407,30 +2410,35 @@ type AigcVideoTaskOutput struct {
 }
 
 type AigcVideoTaskOutputFileInfo struct {
-	// 存储模式。取值有： <li>Permanent：永久存储；</li> <li>Temporary：临时存储；</li>
-	// 默认值：Temporary
+	// <p>存储模式。取值有： <li>Permanent：永久存储；</li> <li>Temporary：临时存储；</li><br>默认值：Temporary</p>
 	StorageMode *string `json:"StorageMode,omitnil,omitempty" name:"StorageMode"`
 
-	// 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。当 StorageMode 为 Permanent 时有效。
+	// <p>输出文件名，最长 64 个字符。缺省由系统指定生成文件名。当 StorageMode 为 Permanent 时有效。</p>
 	MediaName *string `json:"MediaName,omitnil,omitempty" name:"MediaName"`
 
-	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。当 StorageMode 为 Permanent 时有效。
+	// <p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/7812">创建分类</a> 接口，创建分类，获得分类 ID。当 StorageMode 为 Permanent 时有效。</p>
 	ClassId *int64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
 
-	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	// <p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 文件类型，例如 mp4、flv 等。
+	// <p>文件类型，例如 mp4、flv 等。</p>
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 媒体文件播放地址。
+	// <p>媒体文件播放地址。</p>
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
-	// 媒体文件 ID。当 StorageMode 为 Permanent 时有效。
+	// <p>文件内容。当 UsageType 为 position_info 时有返回值。</p>
+	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
+
+	// <p>媒体文件 ID。当 StorageMode 为 Permanent 时有效。</p>
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
-	// 输出视频的元信息。当 StorageMode 为 Permanent 时有效。
+	// <p>输出视频的元信息。当 StorageMode 为 Permanent 时有效。</p>
 	MetaData *MediaMetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
+
+	// <p>文件的用途类型。</p><p>枚举值：</p><ul><li>scene_url： 3D 场景文件，FileUrl 字段有返回值。</li><li>point_url： 点云文件，FileUrl 字段有返回值。</li><li>mesh_url： 原始网格模型文，FileUrl 字段有返回值。</li><li>mesh_simplified_url： 简化后的网格模型文件，FileUrl 字段有返回值。</li><li>position_info： 场景空间位置信息，FileContent 字段有返回值。</li><li>image_url： 生成的图片，FileUrl 字段有返回值。</li></ul>
+	UsageType *string `json:"UsageType,omitnil,omitempty" name:"UsageType"`
 }
 
 type AnimatedGraphicTaskInput struct {
@@ -4974,6 +4982,9 @@ type CreateAigcImageTaskRequestParams struct {
 	// <p>输入的区域信息。可选值：</p><ul><li>Mainland：中国大陆；</li><li>Oversea：海外；</li><li>OverseaUSWest：海外-美西；</li></ul>
 	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
 
+	// <p>场景类型。取值如下：<li>当 ModelName 为 Hunyuan 时：   3d_panorama 表示全景图；</li><li>其他 ModelName 暂不支持。</li></p>
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
 	// <p>模型随机种子。</p>
 	Seed *int64 `json:"Seed,omitnil,omitempty" name:"Seed"`
 
@@ -5020,6 +5031,9 @@ type CreateAigcImageTaskRequest struct {
 	// <p>输入的区域信息。可选值：</p><ul><li>Mainland：中国大陆；</li><li>Oversea：海外；</li><li>OverseaUSWest：海外-美西；</li></ul>
 	InputRegion *string `json:"InputRegion,omitnil,omitempty" name:"InputRegion"`
 
+	// <p>场景类型。取值如下：<li>当 ModelName 为 Hunyuan 时：   3d_panorama 表示全景图；</li><li>其他 ModelName 暂不支持。</li></p>
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
 	// <p>模型随机种子。</p>
 	Seed *int64 `json:"Seed,omitnil,omitempty" name:"Seed"`
 
@@ -5057,6 +5071,7 @@ func (r *CreateAigcImageTaskRequest) FromJsonString(s string) error {
 	delete(f, "EnhancePrompt")
 	delete(f, "OutputConfig")
 	delete(f, "InputRegion")
+	delete(f, "SceneType")
 	delete(f, "Seed")
 	delete(f, "SessionId")
 	delete(f, "SessionContext")

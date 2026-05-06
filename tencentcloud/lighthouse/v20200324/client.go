@@ -1944,6 +1944,7 @@ func NewDeleteSnapshotsResponse() (response *DeleteSnapshotsResponse) {
 // 快照必须处于 NORMAL 状态，快照状态可以通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a> 接口查询，见输出参数中 SnapshotState 字段解释。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DELETERESOURCESFAILED = "FailedOperation.DeleteResourcesFailed"
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
 //  FAILEDOPERATION_SNAPSHOTOPERATIONFAILED = "FailedOperation.SnapshotOperationFailed"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
@@ -1965,6 +1966,7 @@ func (c *Client) DeleteSnapshots(request *DeleteSnapshotsRequest) (response *Del
 // 快照必须处于 NORMAL 状态，快照状态可以通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a> 接口查询，见输出参数中 SnapshotState 字段解释。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DELETERESOURCESFAILED = "FailedOperation.DeleteResourcesFailed"
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
 //  FAILEDOPERATION_SNAPSHOTOPERATIONFAILED = "FailedOperation.SnapshotOperationFailed"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"

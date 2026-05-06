@@ -1579,32 +1579,32 @@ type Context struct {
 
 // Predefined struct for user
 type CreateAppRequestParams struct {
-	// 应用类型；knowledge_qa-知识问答管理
+	// <p>应用类型；<code>&quot;knowledge_qa&quot;</code> 知识问答应用（包含标准模式 单工作流 Multi-Agent 等模式）</p>
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
-	// 应用基础配置
+	// <p>应用基础配置</p>
 	BaseConfig *BaseConfig `json:"BaseConfig,omitnil,omitempty" name:"BaseConfig"`
 
-	// 应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+	// <p>应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式,ClawAgent:Claw模式</p>
 	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
 
-	// 智能体类型 dialogue 对话式智能体，wechat 公众号智能体
+	// <p>智能体类型，用于区分应用最终以何种智能体形态对外服务（对话(&quot;dialogue&quot;) / 公众号(&quot;wechat&quot;)）。当前 ADP 创建页面不区分对话/公众号智能体，ADP 创建页默认走对话智能体。</p>
 	AgentType *string `json:"AgentType,omitnil,omitempty" name:"AgentType"`
 }
 
 type CreateAppRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用类型；knowledge_qa-知识问答管理
+	// <p>应用类型；<code>&quot;knowledge_qa&quot;</code> 知识问答应用（包含标准模式 单工作流 Multi-Agent 等模式）</p>
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
-	// 应用基础配置
+	// <p>应用基础配置</p>
 	BaseConfig *BaseConfig `json:"BaseConfig,omitnil,omitempty" name:"BaseConfig"`
 
-	// 应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+	// <p>应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式,ClawAgent:Claw模式</p>
 	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
 
-	// 智能体类型 dialogue 对话式智能体，wechat 公众号智能体
+	// <p>智能体类型，用于区分应用最终以何种智能体形态对外服务（对话(&quot;dialogue&quot;) / 公众号(&quot;wechat&quot;)）。当前 ADP 创建页面不区分对话/公众号智能体，ADP 创建页默认走对话智能体。</p>
 	AgentType *string `json:"AgentType,omitnil,omitempty" name:"AgentType"`
 }
 
@@ -1632,11 +1632,11 @@ func (r *CreateAppRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAppResponseParams struct {
-	// 应用ID
+	// <p>应用ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
-	// 判断账户应用列表权限是否是自定义的，用户交互提示
+	// <p>判断账户应用列表权限是否是自定义的，用户交互提示</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsCustomList *bool `json:"IsCustomList,omitnil,omitempty" name:"IsCustomList"`
 
