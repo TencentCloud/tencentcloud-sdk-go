@@ -12105,7 +12105,7 @@ func NewDescribeOriginStreamInfoResponse() (response *DescribeOriginStreamInfoRe
 }
 
 // DescribeOriginStreamInfo
-// 获取直播源站配置信息，支持直播原站格式。
+// 获取直播源站配置信息，支持直播源站格式。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -12122,7 +12122,7 @@ func (c *Client) DescribeOriginStreamInfo(request *DescribeOriginStreamInfoReque
 }
 
 // DescribeOriginStreamInfo
-// 获取直播源站配置信息，支持直播原站格式。
+// 获取直播源站配置信息，支持直播源站格式。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -15833,7 +15833,7 @@ func NewModifyOriginStreamInfoResponse() (response *ModifyOriginStreamInfoRespon
 }
 
 // ModifyOriginStreamInfo
-// 变更直播源站配置，支持直播原站格式。
+// 变更直播源站配置，支持直播源站格式。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -15850,7 +15850,7 @@ func (c *Client) ModifyOriginStreamInfo(request *ModifyOriginStreamInfoRequest) 
 }
 
 // ModifyOriginStreamInfo
-// 变更直播源站配置，支持直播原站格式。
+// 变更直播源站配置，支持直播源站格式。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

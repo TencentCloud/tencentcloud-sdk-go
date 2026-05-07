@@ -20,6 +20,65 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AIModel struct {
+	// 模型名
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 是否开启MCP
+	EnableMCP *bool `json:"EnableMCP,omitnil,omitempty" name:"EnableMCP"`
+
+	// 标签
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type AIModelGroup struct {
+	// <p>模型分组</p><p>枚举值：</p><ul><li>hunyuan-exp： 内置 hunyuan 分组，Models 中包含混元生文模型</li><li>hunyuan-image： 内置 hunyuan 分组，Models 中包含混元生图模型</li><li>deepseek： 内置 deepseek 分组，Models 中包含Deepseek生文模型</li><li>cloudbase： 内置 cloudbase 分组，Models 中包含云开发提供的模型，支持的所有模型可从 DescribeManagedAIModelList 获取</li><li>custom-xxxx： 自定义模型分组，Models 中包含用户自行配置的模型</li></ul>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>模型列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Models []*AIModel `json:"Models,omitnil,omitempty" name:"Models"`
+
+	// <p>模型类型</p><p>枚举值：</p><ul><li>builtin： 内置模型分组类别</li><li>custom： 用户自定义模型分组类别</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>原始模型类型</p><p>枚举值：</p><ul><li>builtin： 内置模型类型</li><li>custom： 用户自定义模型类型</li></ul>
+	OriginType *string `json:"OriginType,omitnil,omitempty" name:"OriginType"`
+
+	// <p>备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>模型地址</p>
+	BaseUrl *string `json:"BaseUrl,omitnil,omitempty" name:"BaseUrl"`
+
+	// <p>模型状态, 1: 开启, 2: 关闭</p>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>模型密钥</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Secret *AIModelSecret `json:"Secret,omitnil,omitempty" name:"Secret"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type AIModelSecret struct {
+	// 密钥来源
+	SecretSource *string `json:"SecretSource,omitnil,omitempty" name:"SecretSource"`
+
+	// 密钥ID, 和SecretKey一一对应
+	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
+
+	// 密钥Key, 和SecretId一一对应
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// ApiKey,SecretKey和ApiKey二选一
+	ApiKey *string `json:"ApiKey,omitnil,omitempty" name:"ApiKey"`
+}
+
 // Predefined struct for user
 type AddProviderRequestParams struct {
 	// 云开发环境 ID，用于唯一标识当前操作所属的云开发环境。
@@ -383,6 +442,105 @@ type ClusterDetail struct {
 
 	// serverless状态
 	ServerlessStatus *string `json:"ServerlessStatus,omitnil,omitempty" name:"ServerlessStatus"`
+}
+
+// Predefined struct for user
+type CreateAIModelRequestParams struct {
+	// <p>环境id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>分组名</p><p>入参限制：不允许以 cloudbase 为前缀</p>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>模型服务地址</p>
+	BaseUrl *string `json:"BaseUrl,omitnil,omitempty" name:"BaseUrl"`
+
+	// <p>模型名列表</p>
+	Models []*AIModel `json:"Models,omitnil,omitempty" name:"Models"`
+
+	// <p>分组备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>模型状态,  1: 开启, 2: 关闭</p>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>模型密钥</p>
+	Secret *AIModelSecret `json:"Secret,omitnil,omitempty" name:"Secret"`
+}
+
+type CreateAIModelRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>分组名</p><p>入参限制：不允许以 cloudbase 为前缀</p>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>模型服务地址</p>
+	BaseUrl *string `json:"BaseUrl,omitnil,omitempty" name:"BaseUrl"`
+
+	// <p>模型名列表</p>
+	Models []*AIModel `json:"Models,omitnil,omitempty" name:"Models"`
+
+	// <p>分组备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>模型状态,  1: 开启, 2: 关闭</p>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>模型密钥</p>
+	Secret *AIModelSecret `json:"Secret,omitnil,omitempty" name:"Secret"`
+}
+
+func (r *CreateAIModelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAIModelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "GroupName")
+	delete(f, "BaseUrl")
+	delete(f, "Models")
+	delete(f, "Remark")
+	delete(f, "Status")
+	delete(f, "Secret")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAIModelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAIModelResponseParams struct {
+	// <p>创建数量</p>
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAIModelResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAIModelResponseParams `json:"Response"`
+}
+
+func (r *CreateAIModelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAIModelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1661,6 +1819,70 @@ type DbInstance struct {
 }
 
 // Predefined struct for user
+type DeleteAIModelRequestParams struct {
+	// <p>环境id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>分组名列表</p>
+	GroupNames []*string `json:"GroupNames,omitnil,omitempty" name:"GroupNames"`
+}
+
+type DeleteAIModelRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>分组名列表</p>
+	GroupNames []*string `json:"GroupNames,omitnil,omitempty" name:"GroupNames"`
+}
+
+func (r *DeleteAIModelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAIModelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "GroupNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAIModelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAIModelResponseParams struct {
+	// <p>成功删除数量</p>
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAIModelResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAIModelResponseParams `json:"Response"`
+}
+
+func (r *DeleteAIModelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAIModelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteApiKeyRequestParams struct {
 	// 环境 ID，用于标识该密钥归属的云开发环境，不同环境之间的数据相互隔离
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -2119,6 +2341,64 @@ func (r *DeleteVmInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteVmInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIModelsRequestParams struct {
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+type DescribeAIModelsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+func (r *DescribeAIModelsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIModelsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIModelsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIModelsResponseParams struct {
+	// 模型列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AIModels []*AIModelGroup `json:"AIModels,omitnil,omitempty" name:"AIModels"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAIModelsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAIModelsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAIModelsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIModelsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3623,6 +3903,64 @@ func (r *DescribeLoginConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLoginConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeManagedAIModelListRequestParams struct {
+	// <p>环境id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+type DescribeManagedAIModelListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+func (r *DescribeManagedAIModelListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeManagedAIModelListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeManagedAIModelListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeManagedAIModelListResponseParams struct {
+	// <p>托管模型列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ManagedAIModelList []*ManagedAIModelGroup `json:"ManagedAIModelList,omitnil,omitempty" name:"ManagedAIModelList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeManagedAIModelListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeManagedAIModelListResponseParams `json:"Response"`
+}
+
+func (r *DescribeManagedAIModelListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeManagedAIModelListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5589,6 +5927,63 @@ type MFALoginConfig struct {
 	RequiredBindPhone *string `json:"RequiredBindPhone,omitnil,omitempty" name:"RequiredBindPhone"`
 }
 
+type ManagedAIModel struct {
+	// <p>模型名</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>是否开启MCP</p>
+	EnableMCP *bool `json:"EnableMCP,omitnil,omitempty" name:"EnableMCP"`
+
+	// <p>模型规格</p>
+	ModelSpec *ManagedAIModelSpec `json:"ModelSpec,omitnil,omitempty" name:"ModelSpec"`
+
+	// <p>模型计费信息</p>
+	ModelChargingInfo []*ManagedAIModelChargingInfo `json:"ModelChargingInfo,omitnil,omitempty" name:"ModelChargingInfo"`
+}
+
+type ManagedAIModelChargingInfo struct {
+	// <p>计费类型</p><p>枚举值：</p><ul><li>Uniform： 固定计费</li><li>Tiered： 分段计费</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>分组名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>输入 Token 价格</p>
+	InputPrice *string `json:"InputPrice,omitnil,omitempty" name:"InputPrice"`
+
+	// <p>输出 Token 价格</p>
+	OutputPrice *string `json:"OutputPrice,omitnil,omitempty" name:"OutputPrice"`
+
+	// <p>命中缓存价格</p>
+	CachePrice *string `json:"CachePrice,omitnil,omitempty" name:"CachePrice"`
+
+	// <p>计费单位</p>
+	InputOutputUnit *string `json:"InputOutputUnit,omitnil,omitempty" name:"InputOutputUnit"`
+}
+
+type ManagedAIModelGroup struct {
+	// <p>模型分组</p>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>模型列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Models []*ManagedAIModel `json:"Models,omitnil,omitempty" name:"Models"`
+
+	// <p>备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type ManagedAIModelSpec struct {
+	// <p>最大输入 Token</p>
+	MaxInputToken *string `json:"MaxInputToken,omitnil,omitempty" name:"MaxInputToken"`
+
+	// <p>最大输出 Token</p>
+	MaxOutputToken *string `json:"MaxOutputToken,omitnil,omitempty" name:"MaxOutputToken"`
+
+	// <p>上下文长度</p>
+	ContextLength *string `json:"ContextLength,omitnil,omitempty" name:"ContextLength"`
+}
+
 type MessageLocalized struct {
 	// 字符串
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
@@ -7328,6 +7723,105 @@ type TkeClusterInfo struct {
 
 	// 版本内网CLB所在子网Id
 	VersionClbSubnetId *string `json:"VersionClbSubnetId,omitnil,omitempty" name:"VersionClbSubnetId"`
+}
+
+// Predefined struct for user
+type UpdateAIModelRequestParams struct {
+	// <p>环境id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>分组名</p>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>模型地址</p><p>枚举值：</p><ul><li>http://default.tcb： 默认模型地址，custom模型切换为builtin模型时使用</li></ul>
+	BaseUrl *string `json:"BaseUrl,omitnil,omitempty" name:"BaseUrl"`
+
+	// <p>模型名列表</p><p>Models 列表更新采用全量替换</p>
+	Models []*AIModel `json:"Models,omitnil,omitempty" name:"Models"`
+
+	// <p>备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>模型状态, 1: 开启, 2: 关闭</p>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>模型密钥</p>
+	Secret *AIModelSecret `json:"Secret,omitnil,omitempty" name:"Secret"`
+}
+
+type UpdateAIModelRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境id</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>分组名</p>
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// <p>模型地址</p><p>枚举值：</p><ul><li>http://default.tcb： 默认模型地址，custom模型切换为builtin模型时使用</li></ul>
+	BaseUrl *string `json:"BaseUrl,omitnil,omitempty" name:"BaseUrl"`
+
+	// <p>模型名列表</p><p>Models 列表更新采用全量替换</p>
+	Models []*AIModel `json:"Models,omitnil,omitempty" name:"Models"`
+
+	// <p>备注</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// <p>模型状态, 1: 开启, 2: 关闭</p>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>模型密钥</p>
+	Secret *AIModelSecret `json:"Secret,omitnil,omitempty" name:"Secret"`
+}
+
+func (r *UpdateAIModelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAIModelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "GroupName")
+	delete(f, "BaseUrl")
+	delete(f, "Models")
+	delete(f, "Remark")
+	delete(f, "Status")
+	delete(f, "Secret")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAIModelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateAIModelResponseParams struct {
+	// <p>更新数量</p>
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateAIModelResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateAIModelResponseParams `json:"Response"`
+}
+
+func (r *UpdateAIModelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAIModelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

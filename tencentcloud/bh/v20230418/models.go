@@ -576,6 +576,74 @@ type AuthModeSetting struct {
 }
 
 // Predefined struct for user
+type BindDeviceAccountKubeconfigRequestParams struct {
+	// 容器账号Id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 容器账号凭据
+	Kubeconfig *string `json:"Kubeconfig,omitnil,omitempty" name:"Kubeconfig"`
+
+	// 托管维度。1-集群
+	ManageDimension *uint64 `json:"ManageDimension,omitnil,omitempty" name:"ManageDimension"`
+}
+
+type BindDeviceAccountKubeconfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 容器账号Id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 容器账号凭据
+	Kubeconfig *string `json:"Kubeconfig,omitnil,omitempty" name:"Kubeconfig"`
+
+	// 托管维度。1-集群
+	ManageDimension *uint64 `json:"ManageDimension,omitnil,omitempty" name:"ManageDimension"`
+}
+
+func (r *BindDeviceAccountKubeconfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindDeviceAccountKubeconfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Kubeconfig")
+	delete(f, "ManageDimension")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindDeviceAccountKubeconfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindDeviceAccountKubeconfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BindDeviceAccountKubeconfigResponse struct {
+	*tchttp.BaseResponse
+	Response *BindDeviceAccountKubeconfigResponseParams `json:"Response"`
+}
+
+func (r *BindDeviceAccountKubeconfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindDeviceAccountKubeconfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type BindDeviceAccountPasswordRequestParams struct {
 	// 主机账号ID
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`

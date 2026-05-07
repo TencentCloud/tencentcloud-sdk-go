@@ -13577,12 +13577,15 @@ func (r *DescribeMonitorReportResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOriginStreamInfoRequestParams struct {
-
+	// <p>域名。</p>
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 }
 
 type DescribeOriginStreamInfoRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>域名。</p>
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 }
 
 func (r *DescribeOriginStreamInfoRequest) ToJsonString() string {
@@ -13597,7 +13600,7 @@ func (r *DescribeOriginStreamInfoRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "DomainName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOriginStreamInfoRequest has unknown keys!", "")
 	}
@@ -13606,10 +13609,132 @@ func (r *DescribeOriginStreamInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOriginStreamInfoResponseParams struct {
-	// 缓存格式规则。 
-	// 0：默认格式。
-	// 1：云直播源站格式。
-	// 当 OriginStreamPlayType 为 customization 时候生效。
+	// <p>配置状态信息：0 配置中，1 成功，2 关闭中，3 关闭成功。</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>播放类型。</p>
+	CdnStreamPlayType []*string `json:"CdnStreamPlayType,omitnil,omitempty" name:"CdnStreamPlayType"`
+
+	// <p>原站配置类型：1 直播原站。<br>2 streamPackage。</p>
+	OriginStreamType *int64 `json:"OriginStreamType,omitnil,omitempty" name:"OriginStreamType"`
+
+	// <p>原站播放类型。</p>
+	OriginStreamPlayType *string `json:"OriginStreamPlayType,omitnil,omitempty" name:"OriginStreamPlayType"`
+
+	// <p>原站地址类型：1 ip，2 域名。</p>
+	OriginAddressType *int64 `json:"OriginAddressType,omitnil,omitempty" name:"OriginAddressType"`
+
+	// <p>原站地址信息，每项用分号分割域名（ip）、端口信息。<br>端口为空也要带上分号，表示取默认端口。</p>
+	OriginAddress []*string `json:"OriginAddress,omitnil,omitempty" name:"OriginAddress"`
+
+	// <p>超时时间，单位 ms。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginTimeout *int64 `json:"OriginTimeout,omitnil,omitempty" name:"OriginTimeout"`
+
+	// <p>重试次数，单位 次。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginRetryTimes *int64 `json:"OriginRetryTimes,omitnil,omitempty" name:"OriginRetryTimes"`
+
+	// <p>时间戳修正，可取值：on、off。<br>当原站播放协议为 rtmp、flv 时，传递该字段才会生效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeJitter *string `json:"TimeJitter,omitnil,omitempty" name:"TimeJitter"`
+
+	// <p>分片数，单位 个。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HlsPlayFragmentCount *int64 `json:"HlsPlayFragmentCount,omitnil,omitempty" name:"HlsPlayFragmentCount"`
+
+	// <p>分片时长，单位 ms。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HlsPlayFragmentDuration *int64 `json:"HlsPlayFragmentDuration,omitnil,omitempty" name:"HlsPlayFragmentDuration"`
+
+	// <p>是否透传 http 头信息，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PassThroughHttpHeader *string `json:"PassThroughHttpHeader,omitnil,omitempty" name:"PassThroughHttpHeader"`
+
+	// <p>是否透传相应，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PassThroughResponse *string `json:"PassThroughResponse,omitnil,omitempty" name:"PassThroughResponse"`
+
+	// <p>是否透传参数，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PassThroughParam *string `json:"PassThroughParam,omitnil,omitempty" name:"PassThroughParam"`
+
+	// <p>原站 host。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginHost *string `json:"OriginHost,omitnil,omitempty" name:"OriginHost"`
+
+	// <p>索引缓存，单位 ms。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexerCache *int64 `json:"IndexerCache,omitnil,omitempty" name:"IndexerCache"`
+
+	// <p>分片缓存，单位 ms。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FragmentCache *int64 `json:"FragmentCache,omitnil,omitempty" name:"FragmentCache"`
+
+	// <p>域名。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// <p>https 回源，可取值：on、off。<br>当原站播放协议为flv、hls时，传递此字段才会生效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsingHttps *string `json:"UsingHttps,omitnil,omitempty" name:"UsingHttps"`
+
+	// <p>是否遵循原站，可取值：on、off。<br>当原站播放协议为hls时，此字段才会生效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CacheFollowOrigin *string `json:"CacheFollowOrigin,omitnil,omitempty" name:"CacheFollowOrigin"`
+
+	// <p>状态码缓存，数组元素格式：<br>cacheKey:interval<br>cacheKey 可取值：cache_400_sec、cache_403_sec、cache_404_sec、cache_405_sec、cache_500_sec、cache_503_sec、cache_504_sec。<br>interval 单位 ms。<br>当原站播放协议为hls时，此字段才会生效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CacheStatusCode []*string `json:"CacheStatusCode,omitnil,omitempty" name:"CacheStatusCode"`
+
+	// <p>url改写， 格式为： url1&lt;|&gt;url2; 其中，&lt;|&gt; 为分隔符。<br>url1、url2 长度限制100，不可包含特殊字符。<br>当原站播放协议为hls时，此字段才会生效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UrlReplaceRules []*string `json:"UrlReplaceRules,omitnil,omitempty" name:"UrlReplaceRules"`
+
+	// <p>是否 options 支持，可取值：on、off。<br>当原站播放协议为hls时，此字段才会生效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OptionsRequest *string `json:"OptionsRequest,omitnil,omitempty" name:"OptionsRequest"`
+
+	// <p>是否 follow 301/302，可取值：on、off。<br>当原站播放协议为hls时，此字段才会生效。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FollowRedirect *string `json:"FollowRedirect,omitnil,omitempty" name:"FollowRedirect"`
+
+	// <p>源站类型 OriginStreamType 为 2 时，该字段有效。 代表源站地址 OriginAddress 对应的地区 region。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StreamPackageRegion []*string `json:"StreamPackageRegion,omitnil,omitempty" name:"StreamPackageRegion"`
+
+	// <p>客户名。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomerName *string `json:"CustomerName,omitnil,omitempty" name:"CustomerName"`
+
+	// <p>当 OriginStreamPlayType 为 hls 时生效，设置索引缓存保留指定参数列表，最多支持 30 组，每个参数小于等于 20 字符。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexerKeepParam []*string `json:"IndexerKeepParam,omitnil,omitempty" name:"IndexerKeepParam"`
+
+	// <p>当 OriginStreamPlayType 为 hls 时生效，设置分片缓存保留指定参数列表，最多支持 30 组，每个参数小于等于 20 字符。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FragmentKeepParam []*string `json:"FragmentKeepParam,omitnil,omitempty" name:"FragmentKeepParam"`
+
+	// <p>当 OriginStreamType = 2 时有效，表示 mediapackage 具体类型：<br>media_package =&gt; 仅配置普通频道。<br>media_package_pure_ad =&gt; 仅配置广告。<br>media_package_mix_ad =&gt; 同时配置普通频道和广告。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MediaPackageType *string `json:"MediaPackageType,omitnil,omitempty" name:"MediaPackageType"`
+
+	// <p>当 OriginStreamType = 2 且 MediaPackageType = media_package 时有效，表示 mediapackage 频道类型，可组合如下值：normal（频道）、ssai（广告）、linear_assembly（线性组装）。</p>
+	MediaPackageChannelTypes []*string `json:"MediaPackageChannelTypes,omitnil,omitempty" name:"MediaPackageChannelTypes"`
+
+	// <p>当 OriginStreamPlayType 为 hls 时生效，设置索引自定义 header，每一组参数、取值用空格分开。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexerHeader []*string `json:"IndexerHeader,omitnil,omitempty" name:"IndexerHeader"`
+
+	// <p>当 OriginStreamPlayType 为 hls 时生效，设置分片自定义 header，每一组参数、取值用空格分开。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FragmentHeader []*string `json:"FragmentHeader,omitnil,omitempty" name:"FragmentHeader"`
+
+	// <p>自定义规则列表。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomizationRules []*OriginStreamCustomizationRule `json:"CustomizationRules,omitnil,omitempty" name:"CustomizationRules"`
+
+	// <p>缓存格式规则。<br>0：默认格式。<br>1：云直播源站格式。<br>当 OriginStreamPlayType 为 customization 时候生效。</p>
 	CacheFormatRule *int64 `json:"CacheFormatRule,omitnil,omitempty" name:"CacheFormatRule"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19267,12 +19392,201 @@ func (r *ModifyLiveTranscodeTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyOriginStreamInfoRequestParams struct {
+	// <p>域名。</p>
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
+	// <p>源站播放协议，可取值：rtmp、flv、hls、dash、hls|dash、customization。</p>
+	OriginStreamPlayType *string `json:"OriginStreamPlayType,omitnil,omitempty" name:"OriginStreamPlayType"`
+
+	// <p>播放协议，可取值：rtmp、flv、hls、dash、hls|dash、customization。<br>自定义回源协议填写 customization。</p>
+	CdnStreamPlayType []*string `json:"CdnStreamPlayType,omitnil,omitempty" name:"CdnStreamPlayType"`
+
+	// <p>原站类型：<br>1 =&gt; 直播原站。<br>2 =&gt; mediaPackage。</p>
+	OriginStreamType *int64 `json:"OriginStreamType,omitnil,omitempty" name:"OriginStreamType"`
+
+	// <p>原站地址信息，每项用冒号分割域名（ip）、端口信息。<br>端口为空也要带上分号，表示取默认端口。<br>自定义回源协议填写 customization。</p>
+	OriginAddress []*string `json:"OriginAddress,omitnil,omitempty" name:"OriginAddress"`
+
+	// <p>原站地址类型：<br>1 =&gt; IP 类型。<br>2 =&gt; 域名类型。</p>
+	OriginAddressType *int64 `json:"OriginAddressType,omitnil,omitempty" name:"OriginAddressType"`
+
+	// <p>自定义名称</p>
+	CustomerName *string `json:"CustomerName,omitnil,omitempty" name:"CustomerName"`
+
+	// <p>原站 host。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+	OriginHost *string `json:"OriginHost,omitnil,omitempty" name:"OriginHost"`
+
+	// <p>超时时间，单位 ms，取值范围：1 ～ 60000，默认值：10000。</p>
+	OriginTimeout *int64 `json:"OriginTimeout,omitnil,omitempty" name:"OriginTimeout"`
+
+	// <p>重试次数，单位 次，取值范围：1 ～ 10，默认值：10。</p>
+	OriginRetryTimes *int64 `json:"OriginRetryTimes,omitnil,omitempty" name:"OriginRetryTimes"`
+
+	// <p>是否透传 http 头信息，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+	PassThroughHttpHeader *string `json:"PassThroughHttpHeader,omitnil,omitempty" name:"PassThroughHttpHeader"`
+
+	// <p>是否透传相应，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+	PassThroughResponse *string `json:"PassThroughResponse,omitnil,omitempty" name:"PassThroughResponse"`
+
+	// <p>是否透传参数，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+	PassThroughParam *string `json:"PassThroughParam,omitnil,omitempty" name:"PassThroughParam"`
+
+	// <p>索引缓存，单位 ms，取值范围：1 ～ 60000，默认值：10000。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+	IndexerCache *int64 `json:"IndexerCache,omitnil,omitempty" name:"IndexerCache"`
+
+	// <p>分片缓存，单位 ms，取值范围：1 ～ 60000，默认值：10000。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+	FragmentCache *int64 `json:"FragmentCache,omitnil,omitempty" name:"FragmentCache"`
+
+	// <p>分片数，单位 个，取值范围：1 ～ 10，默认值：3。</p>
+	HlsPlayFragmentCount *int64 `json:"HlsPlayFragmentCount,omitnil,omitempty" name:"HlsPlayFragmentCount"`
+
+	// <p>分片时长，单位 ms，取值范围：1 ～ 10000，默认值：3000。</p>
+	HlsPlayFragmentDuration *int64 `json:"HlsPlayFragmentDuration,omitnil,omitempty" name:"HlsPlayFragmentDuration"`
+
+	// <p>时间戳修正，可取值：on、off，默认值：off。<br>当原站播放协议为 rtmp、flv 时，传递该字段才会生效。</p>
+	TimeJitter *string `json:"TimeJitter,omitnil,omitempty" name:"TimeJitter"`
+
+	// <p>https 回源，可取值：on、off，默认值：off。<br>当原站播放协议为flv、hls时，传递此字段才会生效。</p>
+	UsingHttps *string `json:"UsingHttps,omitnil,omitempty" name:"UsingHttps"`
+
+	// <p>遵循原站，可取值：on、off，默认值：off。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+	CacheFollowOrigin *string `json:"CacheFollowOrigin,omitnil,omitempty" name:"CacheFollowOrigin"`
+
+	// <p>状态码缓存，数组元素格式：<br>cacheKey:interval<br>cacheKey 可取值：cache_400_sec、cache_403_sec、cache_404_sec、cache_405_sec、cache_500_sec、cache_503_sec、cache_504_sec。<br>interval 单位 ms。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+	CacheStatusCode []*string `json:"CacheStatusCode,omitnil,omitempty" name:"CacheStatusCode"`
+
+	// <p>url改写， 格式为： url1&lt;|&gt;url2; 其中，&lt;|&gt; 为分隔符。<br>url1、url2 长度限制100，不可包含特殊字符。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+	UrlReplaceRules []*string `json:"UrlReplaceRules,omitnil,omitempty" name:"UrlReplaceRules"`
+
+	// <p>options 支持，可取值：on、off，默认值：off。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+	OptionsRequest *string `json:"OptionsRequest,omitnil,omitempty" name:"OptionsRequest"`
+
+	// <p>follow 301/302，可取值：on、off，默认值：off。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+	FollowRedirect *string `json:"FollowRedirect,omitnil,omitempty" name:"FollowRedirect"`
+
+	// <p>当 OriginStreamPlayType 为 hls 时生效，设置索引缓存保留指定参数列表，最多支持 30 组，每个参数小于等于 20 字符。</p>
+	IndexerKeepParam []*string `json:"IndexerKeepParam,omitnil,omitempty" name:"IndexerKeepParam"`
+
+	// <p>当 OriginStreamPlayType 为 hls 时生效，设置分片缓存保留指定参数列表，最多支持 30 组，每个参数小于等于 20 字符。</p>
+	FragmentKeepParam []*string `json:"FragmentKeepParam,omitnil,omitempty" name:"FragmentKeepParam"`
+
+	// <p>当 OriginStreamType = 2 时有效，表示 mediapackage 具体类型：<br>media_package =&gt; 仅配置普通频道。<br>media_package_pure_ad =&gt; 仅配置广告。<br>media_package_mix_ad =&gt; 同时配置普通频道和广告。<br>注意：配置时候，优先使用 media_package。和 MediaPackageChannelTypes 字段配合使用。</p>
+	MediaPackageType *string `json:"MediaPackageType,omitnil,omitempty" name:"MediaPackageType"`
+
+	// <p>当 OriginStreamType = 2 且 MediaPackageType = media_package 时有效，表示 mediapackage 频道类型，可组合如下值：normal（频道）、ssai（广告）、linear_assembly（线性组装）。</p>
+	MediaPackageChannelTypes []*string `json:"MediaPackageChannelTypes,omitnil,omitempty" name:"MediaPackageChannelTypes"`
+
+	// <p>当 OriginStreamPlayType 为 hls 时生效，设置索引自定义 header，最大支持 10 组，每一组参数、取值用空格分开，允许字符规则如下：<br>头部参数：由大小写字母、数字及-组成，长度支持1 ～100个字符，黑名单：Host、Connection、Content-Length、Range。<br>头部取值：不支持中文、不支持以$开头，长度支持1 ～ 100个字符，不允许有空格。</p>
+	IndexerHeader []*string `json:"IndexerHeader,omitnil,omitempty" name:"IndexerHeader"`
+
+	// <p>当 OriginStreamPlayType 为 hls 时生效，设置分片自定义 header，最大支持 10 组，每一组参数、取值用空格分开，允许字符规则如下：<br>头部参数：由大小写字母、数字及-组成，长度支持1 ～100个字符，黑名单：Host、Connection、Content-Length、Range。<br>头部取值：不支持中文、不支持以$开头，长度支持1 ～ 100个字符，不允许有空格。</p>
+	FragmentHeader []*string `json:"FragmentHeader,omitnil,omitempty" name:"FragmentHeader"`
+
+	// <p>自定义回源规则列表，当 OriginStreamPlayType 为 customization 时候生效。</p>
+	CustomizationRules []*OriginStreamCustomizationRule `json:"CustomizationRules,omitnil,omitempty" name:"CustomizationRules"`
+
+	// <p>缓存格式规则。<br>0：默认格式。<br>1：云直播源站格式。<br>当 OriginStreamPlayType 为 customization 时候生效。</p>
+	CacheFormatRule *int64 `json:"CacheFormatRule,omitnil,omitempty" name:"CacheFormatRule"`
 }
 
 type ModifyOriginStreamInfoRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>域名。</p>
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// <p>源站播放协议，可取值：rtmp、flv、hls、dash、hls|dash、customization。</p>
+	OriginStreamPlayType *string `json:"OriginStreamPlayType,omitnil,omitempty" name:"OriginStreamPlayType"`
+
+	// <p>播放协议，可取值：rtmp、flv、hls、dash、hls|dash、customization。<br>自定义回源协议填写 customization。</p>
+	CdnStreamPlayType []*string `json:"CdnStreamPlayType,omitnil,omitempty" name:"CdnStreamPlayType"`
+
+	// <p>原站类型：<br>1 =&gt; 直播原站。<br>2 =&gt; mediaPackage。</p>
+	OriginStreamType *int64 `json:"OriginStreamType,omitnil,omitempty" name:"OriginStreamType"`
+
+	// <p>原站地址信息，每项用冒号分割域名（ip）、端口信息。<br>端口为空也要带上分号，表示取默认端口。<br>自定义回源协议填写 customization。</p>
+	OriginAddress []*string `json:"OriginAddress,omitnil,omitempty" name:"OriginAddress"`
+
+	// <p>原站地址类型：<br>1 =&gt; IP 类型。<br>2 =&gt; 域名类型。</p>
+	OriginAddressType *int64 `json:"OriginAddressType,omitnil,omitempty" name:"OriginAddressType"`
+
+	// <p>自定义名称</p>
+	CustomerName *string `json:"CustomerName,omitnil,omitempty" name:"CustomerName"`
+
+	// <p>原站 host。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+	OriginHost *string `json:"OriginHost,omitnil,omitempty" name:"OriginHost"`
+
+	// <p>超时时间，单位 ms，取值范围：1 ～ 60000，默认值：10000。</p>
+	OriginTimeout *int64 `json:"OriginTimeout,omitnil,omitempty" name:"OriginTimeout"`
+
+	// <p>重试次数，单位 次，取值范围：1 ～ 10，默认值：10。</p>
+	OriginRetryTimes *int64 `json:"OriginRetryTimes,omitnil,omitempty" name:"OriginRetryTimes"`
+
+	// <p>是否透传 http 头信息，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+	PassThroughHttpHeader *string `json:"PassThroughHttpHeader,omitnil,omitempty" name:"PassThroughHttpHeader"`
+
+	// <p>是否透传相应，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+	PassThroughResponse *string `json:"PassThroughResponse,omitnil,omitempty" name:"PassThroughResponse"`
+
+	// <p>是否透传参数，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+	PassThroughParam *string `json:"PassThroughParam,omitnil,omitempty" name:"PassThroughParam"`
+
+	// <p>索引缓存，单位 ms，取值范围：1 ～ 60000，默认值：10000。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+	IndexerCache *int64 `json:"IndexerCache,omitnil,omitempty" name:"IndexerCache"`
+
+	// <p>分片缓存，单位 ms，取值范围：1 ～ 60000，默认值：10000。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+	FragmentCache *int64 `json:"FragmentCache,omitnil,omitempty" name:"FragmentCache"`
+
+	// <p>分片数，单位 个，取值范围：1 ～ 10，默认值：3。</p>
+	HlsPlayFragmentCount *int64 `json:"HlsPlayFragmentCount,omitnil,omitempty" name:"HlsPlayFragmentCount"`
+
+	// <p>分片时长，单位 ms，取值范围：1 ～ 10000，默认值：3000。</p>
+	HlsPlayFragmentDuration *int64 `json:"HlsPlayFragmentDuration,omitnil,omitempty" name:"HlsPlayFragmentDuration"`
+
+	// <p>时间戳修正，可取值：on、off，默认值：off。<br>当原站播放协议为 rtmp、flv 时，传递该字段才会生效。</p>
+	TimeJitter *string `json:"TimeJitter,omitnil,omitempty" name:"TimeJitter"`
+
+	// <p>https 回源，可取值：on、off，默认值：off。<br>当原站播放协议为flv、hls时，传递此字段才会生效。</p>
+	UsingHttps *string `json:"UsingHttps,omitnil,omitempty" name:"UsingHttps"`
+
+	// <p>遵循原站，可取值：on、off，默认值：off。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+	CacheFollowOrigin *string `json:"CacheFollowOrigin,omitnil,omitempty" name:"CacheFollowOrigin"`
+
+	// <p>状态码缓存，数组元素格式：<br>cacheKey:interval<br>cacheKey 可取值：cache_400_sec、cache_403_sec、cache_404_sec、cache_405_sec、cache_500_sec、cache_503_sec、cache_504_sec。<br>interval 单位 ms。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+	CacheStatusCode []*string `json:"CacheStatusCode,omitnil,omitempty" name:"CacheStatusCode"`
+
+	// <p>url改写， 格式为： url1&lt;|&gt;url2; 其中，&lt;|&gt; 为分隔符。<br>url1、url2 长度限制100，不可包含特殊字符。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+	UrlReplaceRules []*string `json:"UrlReplaceRules,omitnil,omitempty" name:"UrlReplaceRules"`
+
+	// <p>options 支持，可取值：on、off，默认值：off。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+	OptionsRequest *string `json:"OptionsRequest,omitnil,omitempty" name:"OptionsRequest"`
+
+	// <p>follow 301/302，可取值：on、off，默认值：off。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+	FollowRedirect *string `json:"FollowRedirect,omitnil,omitempty" name:"FollowRedirect"`
+
+	// <p>当 OriginStreamPlayType 为 hls 时生效，设置索引缓存保留指定参数列表，最多支持 30 组，每个参数小于等于 20 字符。</p>
+	IndexerKeepParam []*string `json:"IndexerKeepParam,omitnil,omitempty" name:"IndexerKeepParam"`
+
+	// <p>当 OriginStreamPlayType 为 hls 时生效，设置分片缓存保留指定参数列表，最多支持 30 组，每个参数小于等于 20 字符。</p>
+	FragmentKeepParam []*string `json:"FragmentKeepParam,omitnil,omitempty" name:"FragmentKeepParam"`
+
+	// <p>当 OriginStreamType = 2 时有效，表示 mediapackage 具体类型：<br>media_package =&gt; 仅配置普通频道。<br>media_package_pure_ad =&gt; 仅配置广告。<br>media_package_mix_ad =&gt; 同时配置普通频道和广告。<br>注意：配置时候，优先使用 media_package。和 MediaPackageChannelTypes 字段配合使用。</p>
+	MediaPackageType *string `json:"MediaPackageType,omitnil,omitempty" name:"MediaPackageType"`
+
+	// <p>当 OriginStreamType = 2 且 MediaPackageType = media_package 时有效，表示 mediapackage 频道类型，可组合如下值：normal（频道）、ssai（广告）、linear_assembly（线性组装）。</p>
+	MediaPackageChannelTypes []*string `json:"MediaPackageChannelTypes,omitnil,omitempty" name:"MediaPackageChannelTypes"`
+
+	// <p>当 OriginStreamPlayType 为 hls 时生效，设置索引自定义 header，最大支持 10 组，每一组参数、取值用空格分开，允许字符规则如下：<br>头部参数：由大小写字母、数字及-组成，长度支持1 ～100个字符，黑名单：Host、Connection、Content-Length、Range。<br>头部取值：不支持中文、不支持以$开头，长度支持1 ～ 100个字符，不允许有空格。</p>
+	IndexerHeader []*string `json:"IndexerHeader,omitnil,omitempty" name:"IndexerHeader"`
+
+	// <p>当 OriginStreamPlayType 为 hls 时生效，设置分片自定义 header，最大支持 10 组，每一组参数、取值用空格分开，允许字符规则如下：<br>头部参数：由大小写字母、数字及-组成，长度支持1 ～100个字符，黑名单：Host、Connection、Content-Length、Range。<br>头部取值：不支持中文、不支持以$开头，长度支持1 ～ 100个字符，不允许有空格。</p>
+	FragmentHeader []*string `json:"FragmentHeader,omitnil,omitempty" name:"FragmentHeader"`
+
+	// <p>自定义回源规则列表，当 OriginStreamPlayType 为 customization 时候生效。</p>
+	CustomizationRules []*OriginStreamCustomizationRule `json:"CustomizationRules,omitnil,omitempty" name:"CustomizationRules"`
+
+	// <p>缓存格式规则。<br>0：默认格式。<br>1：云直播源站格式。<br>当 OriginStreamPlayType 为 customization 时候生效。</p>
+	CacheFormatRule *int64 `json:"CacheFormatRule,omitnil,omitempty" name:"CacheFormatRule"`
 }
 
 func (r *ModifyOriginStreamInfoRequest) ToJsonString() string {
@@ -19287,7 +19601,38 @@ func (r *ModifyOriginStreamInfoRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "DomainName")
+	delete(f, "OriginStreamPlayType")
+	delete(f, "CdnStreamPlayType")
+	delete(f, "OriginStreamType")
+	delete(f, "OriginAddress")
+	delete(f, "OriginAddressType")
+	delete(f, "CustomerName")
+	delete(f, "OriginHost")
+	delete(f, "OriginTimeout")
+	delete(f, "OriginRetryTimes")
+	delete(f, "PassThroughHttpHeader")
+	delete(f, "PassThroughResponse")
+	delete(f, "PassThroughParam")
+	delete(f, "IndexerCache")
+	delete(f, "FragmentCache")
+	delete(f, "HlsPlayFragmentCount")
+	delete(f, "HlsPlayFragmentDuration")
+	delete(f, "TimeJitter")
+	delete(f, "UsingHttps")
+	delete(f, "CacheFollowOrigin")
+	delete(f, "CacheStatusCode")
+	delete(f, "UrlReplaceRules")
+	delete(f, "OptionsRequest")
+	delete(f, "FollowRedirect")
+	delete(f, "IndexerKeepParam")
+	delete(f, "FragmentKeepParam")
+	delete(f, "MediaPackageType")
+	delete(f, "MediaPackageChannelTypes")
+	delete(f, "IndexerHeader")
+	delete(f, "FragmentHeader")
+	delete(f, "CustomizationRules")
+	delete(f, "CacheFormatRule")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyOriginStreamInfoRequest has unknown keys!", "")
 	}
@@ -19494,6 +19839,59 @@ type MonitorStreamPlayInfo struct {
 
 	// 请求数。
 	Request *uint64 `json:"Request,omitnil,omitempty" name:"Request"`
+}
+
+type OriginStreamCustomizationRule struct {
+	// <p>匹配规则，可选项如下：<br>.m3u8、.mpd、.ts、.mp4、.m4s、.m4a、.m4i、.m4v、.m4f、.aac、.webm。</p>
+	MatchRule *string `json:"MatchRule,omitnil,omitempty" name:"MatchRule"`
+
+	// <p>原站地址类型： 1 =&gt; IP 类型。 2 =&gt; 域名类型。</p>
+	OriginAddressType *int64 `json:"OriginAddressType,omitnil,omitempty" name:"OriginAddressType"`
+
+	// <p>原站 host。</p>
+	OriginHost *string `json:"OriginHost,omitnil,omitempty" name:"OriginHost"`
+
+	// <p>原站地址信息，每项用冒号分割域名（ip）、端口信息。 端口为空也要带上分号，表示取默认端口。</p>
+	OriginAddress []*string `json:"OriginAddress,omitnil,omitempty" name:"OriginAddress"`
+
+	// <p>是否透传 http 头信息，可取值：on、off。</p>
+	PassThroughHttpHeader *string `json:"PassThroughHttpHeader,omitnil,omitempty" name:"PassThroughHttpHeader"`
+
+	// <p>是否透传相应，可取值：on、off。</p>
+	PassThroughResponse *string `json:"PassThroughResponse,omitnil,omitempty" name:"PassThroughResponse"`
+
+	// <p>是否透传参数，可取值：on、off。</p>
+	PassThroughParam *string `json:"PassThroughParam,omitnil,omitempty" name:"PassThroughParam"`
+
+	// <p>url改写， 格式为： url1&lt;|&gt;url2; 其中，&lt;|&gt; 为分隔符。 url1、url2 长度限制100，不可包含特殊字符。</p>
+	UrlReplaceRules []*string `json:"UrlReplaceRules,omitnil,omitempty" name:"UrlReplaceRules"`
+
+	// <p>options 支持，可取值：on、off，默认值：off。</p>
+	OptionsRequest *string `json:"OptionsRequest,omitnil,omitempty" name:"OptionsRequest"`
+
+	// <p>回源超时时间，单位 ms，取值范围：1 ～ 60000，默认值：10000。</p>
+	OriginTimeout *int64 `json:"OriginTimeout,omitnil,omitempty" name:"OriginTimeout"`
+
+	// <p>重试次数，单位 次，取值范围：1 ～ 10。</p>
+	OriginRetryTimes *int64 `json:"OriginRetryTimes,omitnil,omitempty" name:"OriginRetryTimes"`
+
+	// <p>状态码缓存，数组元素格式： cacheKey:interval cacheKey 可取值：cache_400_sec、cache_403_sec、cache_404_sec、cache_405_sec、cache_500_sec、cache_503_sec、cache_504_sec。 interval 单位 s。</p>
+	CacheStatusCode []*string `json:"CacheStatusCode,omitnil,omitempty" name:"CacheStatusCode"`
+
+	// <p>缓存时间，单位 s，取值范围：0 ～ 31536000。</p>
+	Cache *int64 `json:"Cache,omitnil,omitempty" name:"Cache"`
+
+	// <p>缓存键。</p>
+	KeepParam []*string `json:"KeepParam,omitnil,omitempty" name:"KeepParam"`
+
+	// <p>设置索引自定义 header，最大支持 10 组，每一组参数、取值用空格分开，允许字符规则如下： 头部参数：由大小写字母、数字及-组成，长度支持1 ～100个字符，黑名单：Host、Connection、Content-Length、Range。 头部取值：不支持中文、不支持以$开头，长度支持1 ～ 100个字符，不允许有空格。</p>
+	HttpHeader []*string `json:"HttpHeader,omitnil,omitempty" name:"HttpHeader"`
+
+	// <p>自定义回源缓存随源配置。<br>0：不开启。<br>1：开启。</p>
+	CustomizationCacheFollowOrigin *int64 `json:"CustomizationCacheFollowOrigin,omitnil,omitempty" name:"CustomizationCacheFollowOrigin"`
+
+	// <p>缓存 Http 头部键。</p>
+	KeepHttpHeader []*string `json:"KeepHttpHeader,omitnil,omitempty" name:"KeepHttpHeader"`
 }
 
 type PadStreamInfo struct {

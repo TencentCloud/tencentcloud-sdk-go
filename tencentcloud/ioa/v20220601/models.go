@@ -4435,6 +4435,116 @@ type GrantedVirtualGroupItem struct {
 }
 
 // Predefined struct for user
+type ModifyBusinessResourceRequestParams struct {
+	// 业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)
+	AreaId *int64 `json:"AreaId,omitnil,omitempty" name:"AreaId"`
+
+	// 业务资源协议类型,3：所有,2：UDP，1：TCP(只支持32位)
+	Protocol *int64 `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 业务资源名称，同一个资源模块下面不可重复
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 业务资源优先级 1-65535(只支持32位)
+	Levels *int64 `json:"Levels,omitnil,omitempty" name:"Levels"`
+
+	// 业务资源类型:ip,domain,ip_section，对应ip、域名、ip段
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 业务资源端口 all,1-65535
+	ServicePort *string `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
+
+	// 修改业务资源的id(只支持32位)
+	ServiceId *int64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 业务资源地址(ip、域名、ip段)
+	ServiceAddress *string `json:"ServiceAddress,omitnil,omitempty" name:"ServiceAddress"`
+
+	// 是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)
+	DirectConn *int64 `json:"DirectConn,omitnil,omitempty" name:"DirectConn"`
+}
+
+type ModifyBusinessResourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)
+	AreaId *int64 `json:"AreaId,omitnil,omitempty" name:"AreaId"`
+
+	// 业务资源协议类型,3：所有,2：UDP，1：TCP(只支持32位)
+	Protocol *int64 `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 业务资源名称，同一个资源模块下面不可重复
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 业务资源优先级 1-65535(只支持32位)
+	Levels *int64 `json:"Levels,omitnil,omitempty" name:"Levels"`
+
+	// 业务资源类型:ip,domain,ip_section，对应ip、域名、ip段
+	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
+
+	// 业务资源端口 all,1-65535
+	ServicePort *string `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
+
+	// 修改业务资源的id(只支持32位)
+	ServiceId *int64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 业务资源地址(ip、域名、ip段)
+	ServiceAddress *string `json:"ServiceAddress,omitnil,omitempty" name:"ServiceAddress"`
+
+	// 是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)
+	DirectConn *int64 `json:"DirectConn,omitnil,omitempty" name:"DirectConn"`
+}
+
+func (r *ModifyBusinessResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBusinessResourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AreaId")
+	delete(f, "Protocol")
+	delete(f, "ServiceName")
+	delete(f, "Levels")
+	delete(f, "ServiceType")
+	delete(f, "ServicePort")
+	delete(f, "ServiceId")
+	delete(f, "ServiceAddress")
+	delete(f, "DirectConn")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBusinessResourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBusinessResourceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBusinessResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBusinessResourceResponseParams `json:"Response"`
+}
+
+func (r *ModifyBusinessResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBusinessResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDeviceTrustStatusRequestParams struct {
 	// <p>设备状态，1表示拉黑，0表示加白</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`

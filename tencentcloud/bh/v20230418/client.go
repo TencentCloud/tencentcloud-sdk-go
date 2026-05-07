@@ -217,6 +217,66 @@ func (c *Client) AddUserGroupMembersWithContext(ctx context.Context, request *Ad
     return
 }
 
+func NewBindDeviceAccountKubeconfigRequest() (request *BindDeviceAccountKubeconfigRequest) {
+    request = &BindDeviceAccountKubeconfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "BindDeviceAccountKubeconfig")
+    
+    
+    return
+}
+
+func NewBindDeviceAccountKubeconfigResponse() (response *BindDeviceAccountKubeconfigResponse) {
+    response = &BindDeviceAccountKubeconfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BindDeviceAccountKubeconfig
+// 绑定容器账号凭据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) BindDeviceAccountKubeconfig(request *BindDeviceAccountKubeconfigRequest) (response *BindDeviceAccountKubeconfigResponse, err error) {
+    return c.BindDeviceAccountKubeconfigWithContext(context.Background(), request)
+}
+
+// BindDeviceAccountKubeconfig
+// 绑定容器账号凭据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) BindDeviceAccountKubeconfigWithContext(ctx context.Context, request *BindDeviceAccountKubeconfigRequest) (response *BindDeviceAccountKubeconfigResponse, err error) {
+    if request == nil {
+        request = NewBindDeviceAccountKubeconfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bh", APIVersion, "BindDeviceAccountKubeconfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindDeviceAccountKubeconfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindDeviceAccountKubeconfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindDeviceAccountPasswordRequest() (request *BindDeviceAccountPasswordRequest) {
     request = &BindDeviceAccountPasswordRequest{
         BaseRequest: &tchttp.BaseRequest{},

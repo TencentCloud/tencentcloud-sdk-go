@@ -579,27 +579,33 @@ type DescribeSignListStatus struct {
 
 // Predefined struct for user
 type DescribeSmsSignListRequestParams struct {
-	// 签名 ID 数组。
-	// 注：默认数组最大长度100。
+	// <p>是否国际/港澳台短信：<br>0：表示国内短信。<br>1：表示国际/港澳台短信。</p>
+	International *uint64 `json:"International,omitnil,omitempty" name:"International"`
+
+	// <p>签名 ID 数组。<br>注：默认数组最大长度100。</p>
 	SignIdSet []*uint64 `json:"SignIdSet,omitnil,omitempty" name:"SignIdSet"`
 
-	// 是否国际/港澳台短信：
-	// 0：表示国内短信。
-	// 1：表示国际/港澳台短信。
-	International *uint64 `json:"International,omitnil,omitempty" name:"International"`
+	// <p>最大上限，最多100。注：默认为10，SignIdSet 为空时启用。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量。注：默认为0，SignIdSet 为空时启用。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeSmsSignListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 签名 ID 数组。
-	// 注：默认数组最大长度100。
+	// <p>是否国际/港澳台短信：<br>0：表示国内短信。<br>1：表示国际/港澳台短信。</p>
+	International *uint64 `json:"International,omitnil,omitempty" name:"International"`
+
+	// <p>签名 ID 数组。<br>注：默认数组最大长度100。</p>
 	SignIdSet []*uint64 `json:"SignIdSet,omitnil,omitempty" name:"SignIdSet"`
 
-	// 是否国际/港澳台短信：
-	// 0：表示国内短信。
-	// 1：表示国际/港澳台短信。
-	International *uint64 `json:"International,omitnil,omitempty" name:"International"`
+	// <p>最大上限，最多100。注：默认为10，SignIdSet 为空时启用。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移量。注：默认为0，SignIdSet 为空时启用。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeSmsSignListRequest) ToJsonString() string {
@@ -614,8 +620,10 @@ func (r *DescribeSmsSignListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "SignIdSet")
 	delete(f, "International")
+	delete(f, "SignIdSet")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSmsSignListRequest has unknown keys!", "")
 	}
@@ -624,7 +632,7 @@ func (r *DescribeSmsSignListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSmsSignListResponseParams struct {
-	// 获取签名信息响应
+	// <p>获取签名信息响应</p>
 	DescribeSignListStatusSet []*DescribeSignListStatus `json:"DescribeSignListStatusSet,omitnil,omitempty" name:"DescribeSignListStatusSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -4795,6 +4795,77 @@ func (r *EnableTransparentDataEncryptionResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type EnableWanServiceRequestParams struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 负载均衡ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
+
+	// 节点及监听端口信息。
+	NodeList []*WanServiceNodeList `json:"NodeList,omitnil,omitempty" name:"NodeList"`
+}
+
+type EnableWanServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 负载均衡ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
+
+	// 节点及监听端口信息。
+	NodeList []*WanServiceNodeList `json:"NodeList,omitnil,omitempty" name:"NodeList"`
+}
+
+func (r *EnableWanServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableWanServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "LoadBalancerId")
+	delete(f, "NodeList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableWanServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableWanServiceResponseParams struct {
+	// 异步任务ID。
+	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnableWanServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *EnableWanServiceResponseParams `json:"Response"`
+}
+
+func (r *EnableWanServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableWanServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type FBKeyValue struct {
 	// 指定按 Key 闪回的目标 Key （键） 。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -8093,4 +8164,12 @@ type UserInfo struct {
 
 	// 控制台密码更新时间
 	ConsolePassUpdateTime *string `json:"ConsolePassUpdateTime,omitnil,omitempty" name:"ConsolePassUpdateTime"`
+}
+
+type WanServiceNodeList struct {
+	// 实例节点的vip及端口信息。
+	VipVport *string `json:"VipVport,omitnil,omitempty" name:"VipVport"`
+
+	// CLB监听器监听端口，取值范围1~65535。
+	ListenerPort *string `json:"ListenerPort,omitnil,omitempty" name:"ListenerPort"`
 }

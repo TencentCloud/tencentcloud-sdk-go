@@ -1887,6 +1887,66 @@ func (c *Client) ModifyApmSampleConfigWithContext(ctx context.Context, request *
     return
 }
 
+func NewModifyApmServiceRequest() (request *ModifyApmServiceRequest) {
+    request = &ModifyApmServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "ModifyApmService")
+    
+    
+    return
+}
+
+func NewModifyApmServiceResponse() (response *ModifyApmServiceResponse) {
+    response = &ModifyApmServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyApmService
+// 修改apm应用信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_ACCESSCAMFAIL = "AuthFailure.AccessCAMFail"
+//  AUTHFAILURE_UNMARSHALRESPONSE = "AuthFailure.UnmarshalResponse"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEMOINSTANCENOTALLOWMODIFIED = "FailedOperation.DemoInstanceNotAllowModified"
+//  FAILEDOPERATION_SERVICENOTFOUND = "FailedOperation.ServiceNotFound"
+//  FAILEDOPERATION_SERVICENOTMATCHAPPIDERR = "FailedOperation.ServiceNotMatchAppIdErr"
+func (c *Client) ModifyApmService(request *ModifyApmServiceRequest) (response *ModifyApmServiceResponse, err error) {
+    return c.ModifyApmServiceWithContext(context.Background(), request)
+}
+
+// ModifyApmService
+// 修改apm应用信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_ACCESSCAMFAIL = "AuthFailure.AccessCAMFail"
+//  AUTHFAILURE_UNMARSHALRESPONSE = "AuthFailure.UnmarshalResponse"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEMOINSTANCENOTALLOWMODIFIED = "FailedOperation.DemoInstanceNotAllowModified"
+//  FAILEDOPERATION_SERVICENOTFOUND = "FailedOperation.ServiceNotFound"
+//  FAILEDOPERATION_SERVICENOTMATCHAPPIDERR = "FailedOperation.ServiceNotMatchAppIdErr"
+func (c *Client) ModifyApmServiceWithContext(ctx context.Context, request *ModifyApmServiceRequest) (response *ModifyApmServiceResponse, err error) {
+    if request == nil {
+        request = NewModifyApmServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apm", APIVersion, "ModifyApmService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApmService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyApmServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyGeneralApmApplicationConfigRequest() (request *ModifyGeneralApmApplicationConfigRequest) {
     request = &ModifyGeneralApmApplicationConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

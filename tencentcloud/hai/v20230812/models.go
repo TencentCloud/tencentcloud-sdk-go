@@ -93,10 +93,10 @@ type ComputeDetail struct {
 }
 
 type ComputeInfo struct {
-	// 资源类型及数量
+	// <p>资源类型及数量</p>
 	ComputeResources []*ComputeResource `json:"ComputeResources,omitnil,omitempty" name:"ComputeResources"`
 
-	// 副本数
+	// <p>副本数</p>
 	Replicas *int64 `json:"Replicas,omitnil,omitempty" name:"Replicas"`
 }
 

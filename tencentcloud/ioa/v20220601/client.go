@@ -2067,6 +2067,88 @@ func (c *Client) GrantResourcesByVirtualGroupsWithContext(ctx context.Context, r
     return
 }
 
+func NewModifyBusinessResourceRequest() (request *ModifyBusinessResourceRequest) {
+    request = &ModifyBusinessResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "ModifyBusinessResource")
+    
+    
+    return
+}
+
+func NewModifyBusinessResourceResponse() (response *ModifyBusinessResourceResponse) {
+    response = &ModifyBusinessResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyBusinessResource
+// 修改业务资源，会对一些必填参数进行校验和参数合法性校验，修改业务资源时，先调用下校验相同业务资源接口，看资源是不是有冲突。修改时也会做校验，但没有返回对应的异常信息,私有化调用path为：capi/GatewayResource/ModifyBusinessResource
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_NOTZEROTRUSTGATEWAY = "InternalError.NotZeroTrustGateway"
+//  INVALIDPARAMETER_DUPLICATERESOURCESEXIST = "InvalidParameter.DuplicateResourcesExist"
+//  INVALIDPARAMETER_DUPLICATERESOURCESNAME = "InvalidParameter.DuplicateResourcesName"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  INVALIDPARAMETER_RESOURCEACCESSMETHOD = "InvalidParameter.ResourceAccessMethod"
+//  INVALIDPARAMETER_RESOURCEDOMAINERR = "InvalidParameter.ResourceDomainErr"
+//  INVALIDPARAMETER_RESOURCEIPERROR = "InvalidParameter.ResourceIPError"
+//  INVALIDPARAMETER_RESOURCEIPSEGMENTERR = "InvalidParameter.ResourceIPSegmentErr"
+//  INVALIDPARAMETER_RESOURCELEVELSPARAMETER = "InvalidParameter.ResourceLevelsParameter"
+//  INVALIDPARAMETER_RESOURCEPORTERR = "InvalidParameter.ResourcePortErr"
+//  INVALIDPARAMETER_RESOURCEPROTOCOLTYPEERR = "InvalidParameter.ResourceProtocolTypeErr"
+//  INVALIDPARAMETER_RESOURCETYPEPARAMETER = "InvalidParameter.ResourceTypeParameter"
+//  RESOURCENOTFOUND_NOMODULEDATA = "ResourceNotFound.NoModuleData"
+//  RESOURCENOTFOUND_NORESOURCEDATA = "ResourceNotFound.NoResourceData"
+//  UNAUTHORIZEDOPERATION_NOMODULEPERMISSIONS = "UnauthorizedOperation.NoModulePermissions"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
+func (c *Client) ModifyBusinessResource(request *ModifyBusinessResourceRequest) (response *ModifyBusinessResourceResponse, err error) {
+    return c.ModifyBusinessResourceWithContext(context.Background(), request)
+}
+
+// ModifyBusinessResource
+// 修改业务资源，会对一些必填参数进行校验和参数合法性校验，修改业务资源时，先调用下校验相同业务资源接口，看资源是不是有冲突。修改时也会做校验，但没有返回对应的异常信息,私有化调用path为：capi/GatewayResource/ModifyBusinessResource
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_NOTZEROTRUSTGATEWAY = "InternalError.NotZeroTrustGateway"
+//  INVALIDPARAMETER_DUPLICATERESOURCESEXIST = "InvalidParameter.DuplicateResourcesExist"
+//  INVALIDPARAMETER_DUPLICATERESOURCESNAME = "InvalidParameter.DuplicateResourcesName"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  INVALIDPARAMETER_RESOURCEACCESSMETHOD = "InvalidParameter.ResourceAccessMethod"
+//  INVALIDPARAMETER_RESOURCEDOMAINERR = "InvalidParameter.ResourceDomainErr"
+//  INVALIDPARAMETER_RESOURCEIPERROR = "InvalidParameter.ResourceIPError"
+//  INVALIDPARAMETER_RESOURCEIPSEGMENTERR = "InvalidParameter.ResourceIPSegmentErr"
+//  INVALIDPARAMETER_RESOURCELEVELSPARAMETER = "InvalidParameter.ResourceLevelsParameter"
+//  INVALIDPARAMETER_RESOURCEPORTERR = "InvalidParameter.ResourcePortErr"
+//  INVALIDPARAMETER_RESOURCEPROTOCOLTYPEERR = "InvalidParameter.ResourceProtocolTypeErr"
+//  INVALIDPARAMETER_RESOURCETYPEPARAMETER = "InvalidParameter.ResourceTypeParameter"
+//  RESOURCENOTFOUND_NOMODULEDATA = "ResourceNotFound.NoModuleData"
+//  RESOURCENOTFOUND_NORESOURCEDATA = "ResourceNotFound.NoResourceData"
+//  UNAUTHORIZEDOPERATION_NOMODULEPERMISSIONS = "UnauthorizedOperation.NoModulePermissions"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
+func (c *Client) ModifyBusinessResourceWithContext(ctx context.Context, request *ModifyBusinessResourceRequest) (response *ModifyBusinessResourceResponse, err error) {
+    if request == nil {
+        request = NewModifyBusinessResourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "ModifyBusinessResource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBusinessResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBusinessResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDeviceTrustStatusRequest() (request *ModifyDeviceTrustStatusRequest) {
     request = &ModifyDeviceTrustStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

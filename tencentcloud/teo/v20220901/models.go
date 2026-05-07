@@ -4660,41 +4660,22 @@ type CreateRealtimeLogDeliveryTaskRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
+	// 数据投递区域，可选值：<ul><li>mainland：中国大陆境内；</li><li>overseas：全球（不含中国大陆）。</li></ul>
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 数据投递类型，可选值：<ul><li>domain：站点加速日志；</li><li>application：四层代理日志；</li><li>function：边缘函数运行日志；</li><li>web-rateLiming：速率限制和 CC 攻击防护日志；</li><li>web-attack：托管规则日志；</li><li>web-rule：自定义规则日志；</li><li>web-bot：Bot管理日志。</li></ul>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
 	// 实时日志投递任务的名称，格式为数字、英文、-和_组合，最多 200 个字符。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 实时日志投递任务类型，取值有：
-	// <li>cls: 推送到腾讯云 CLS；</li>
-	// <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li>
-	// <li>s3：推送到 AWS S3 兼容存储桶地址；</li>
-	// <li>log_analysis：推送到 EdgeOne 日志分析，该任务类型仅支持“站点加速日志”这一数据投递类型。</li>
+	// 实时日志投递任务类型，取值有：<ul><li>cls: 推送到腾讯云 CLS；</li><li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li><li>s3：推送到 AWS S3 兼容存储桶地址；</li><li>log_analysis：推送到 EdgeOne 日志分析，仅当 LogType = domain 或 web-attack 时支持。</li></ul>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 实时日志投递任务对应的实体列表。取值示例如下：
-	// <li>七层域名：domain.example.com</li>
-	// <li>四层代理实例：sid-2s69eb5wcms7</li>
-	// <li>边缘函数实例：test-zone-2mxigizoh9l9-1257626257</li>
+	// 实时日志投递任务对应的实体列表。取值示例如下：<ul><li>七层域名：domain.example.com</li><li>四层代理实例：sid-2s69eb5wcms7</li><li>边缘函数实例：test-zone-2mxigizoh9l9-1257626257</li></ul>
 	EntityList []*string `json:"EntityList,omitnil,omitempty" name:"EntityList"`
 
-	// 数据投递类型，取值有：
-	// <li>domain：站点加速日志；</li>
-	// <li>application：四层代理日志；</li>
-	// <li>function：边缘函数运行日志；</li>
-	// <li>web-rateLiming：速率限制和 CC 攻击防护日志；</li>
-	// <li>web-attack：托管规则日志；</li>
-	// <li>web-rule：自定义规则日志；</li>
-	// <li>web-bot：Bot管理日志。</li>
-	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
-
-	// 数据投递区域，取值有：
-	// <li>mainland：中国大陆境内；</li>
-	// <li>overseas：全球（不含中国大陆）。</li>
-	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
-
-	// 投递的预设字段列表。取值参考：
-	// <li>[站点加速日志（七层访问日志）](https://cloud.tencent.com/document/product/1552/105791)</li>
-	// <li>[四层代理日志](https://cloud.tencent.com/document/product/1552/105792)</li>
-	// <li>[边缘函数运行日志](https://cloud.tencent.com/document/product/1552/115585)</li>
+	// 投递的预设字段列表。取值参考：<ul><li>[站点加速日志（七层访问日志）](https://cloud.tencent.com/document/product/1552/105791)</li><li>[四层代理日志](https://cloud.tencent.com/document/product/1552/105792)</li><li>[边缘函数运行日志](https://cloud.tencent.com/document/product/1552/115585)</li></ul>
 	Fields []*string `json:"Fields,omitnil,omitempty" name:"Fields"`
 
 	// 投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie、请求正文中提取指定内容。自定义字段名称不能重复，且最多不能超过 200 个字段。单个实时日志推送任务最多添加 5 个请求正文类型的自定义字段。目前仅站点加速日志（LogType=domain）支持添加自定义字段。
@@ -4706,9 +4687,7 @@ type CreateRealtimeLogDeliveryTaskRequestParams struct {
 	// 采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填表示采样比例为 100%。
 	Sample *uint64 `json:"Sample,omitnil,omitempty" name:"Sample"`
 
-	// 日志投递的输出格式。不填表示为默认格式，默认格式逻辑如下：
-	// <li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li>
-	// <li>当 TaskType 取值为 s3 时，默认格式为 JSON Lines；</li>特别地，当 TaskType 取值为 cls 或 log_analysis 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。
+	// 日志投递的输出格式。不填表示为默认格式，默认格式逻辑如下：<ul><li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li><li>当 TaskType 取值为 s3 时，默认格式为 JSON Lines；</li></ul>特别地，当 TaskType 取值为 cls 或 log_analysis 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。
 	LogFormat *LogFormat `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
 
 	// CLS 的配置信息。当 TaskType 取值为 cls 时，该参数必填。
@@ -4727,41 +4706,22 @@ type CreateRealtimeLogDeliveryTaskRequest struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
+	// 数据投递区域，可选值：<ul><li>mainland：中国大陆境内；</li><li>overseas：全球（不含中国大陆）。</li></ul>
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 数据投递类型，可选值：<ul><li>domain：站点加速日志；</li><li>application：四层代理日志；</li><li>function：边缘函数运行日志；</li><li>web-rateLiming：速率限制和 CC 攻击防护日志；</li><li>web-attack：托管规则日志；</li><li>web-rule：自定义规则日志；</li><li>web-bot：Bot管理日志。</li></ul>
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
 	// 实时日志投递任务的名称，格式为数字、英文、-和_组合，最多 200 个字符。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 实时日志投递任务类型，取值有：
-	// <li>cls: 推送到腾讯云 CLS；</li>
-	// <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li>
-	// <li>s3：推送到 AWS S3 兼容存储桶地址；</li>
-	// <li>log_analysis：推送到 EdgeOne 日志分析，该任务类型仅支持“站点加速日志”这一数据投递类型。</li>
+	// 实时日志投递任务类型，取值有：<ul><li>cls: 推送到腾讯云 CLS；</li><li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li><li>s3：推送到 AWS S3 兼容存储桶地址；</li><li>log_analysis：推送到 EdgeOne 日志分析，仅当 LogType = domain 或 web-attack 时支持。</li></ul>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 实时日志投递任务对应的实体列表。取值示例如下：
-	// <li>七层域名：domain.example.com</li>
-	// <li>四层代理实例：sid-2s69eb5wcms7</li>
-	// <li>边缘函数实例：test-zone-2mxigizoh9l9-1257626257</li>
+	// 实时日志投递任务对应的实体列表。取值示例如下：<ul><li>七层域名：domain.example.com</li><li>四层代理实例：sid-2s69eb5wcms7</li><li>边缘函数实例：test-zone-2mxigizoh9l9-1257626257</li></ul>
 	EntityList []*string `json:"EntityList,omitnil,omitempty" name:"EntityList"`
 
-	// 数据投递类型，取值有：
-	// <li>domain：站点加速日志；</li>
-	// <li>application：四层代理日志；</li>
-	// <li>function：边缘函数运行日志；</li>
-	// <li>web-rateLiming：速率限制和 CC 攻击防护日志；</li>
-	// <li>web-attack：托管规则日志；</li>
-	// <li>web-rule：自定义规则日志；</li>
-	// <li>web-bot：Bot管理日志。</li>
-	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
-
-	// 数据投递区域，取值有：
-	// <li>mainland：中国大陆境内；</li>
-	// <li>overseas：全球（不含中国大陆）。</li>
-	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
-
-	// 投递的预设字段列表。取值参考：
-	// <li>[站点加速日志（七层访问日志）](https://cloud.tencent.com/document/product/1552/105791)</li>
-	// <li>[四层代理日志](https://cloud.tencent.com/document/product/1552/105792)</li>
-	// <li>[边缘函数运行日志](https://cloud.tencent.com/document/product/1552/115585)</li>
+	// 投递的预设字段列表。取值参考：<ul><li>[站点加速日志（七层访问日志）](https://cloud.tencent.com/document/product/1552/105791)</li><li>[四层代理日志](https://cloud.tencent.com/document/product/1552/105792)</li><li>[边缘函数运行日志](https://cloud.tencent.com/document/product/1552/115585)</li></ul>
 	Fields []*string `json:"Fields,omitnil,omitempty" name:"Fields"`
 
 	// 投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie、请求正文中提取指定内容。自定义字段名称不能重复，且最多不能超过 200 个字段。单个实时日志推送任务最多添加 5 个请求正文类型的自定义字段。目前仅站点加速日志（LogType=domain）支持添加自定义字段。
@@ -4773,9 +4733,7 @@ type CreateRealtimeLogDeliveryTaskRequest struct {
 	// 采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填表示采样比例为 100%。
 	Sample *uint64 `json:"Sample,omitnil,omitempty" name:"Sample"`
 
-	// 日志投递的输出格式。不填表示为默认格式，默认格式逻辑如下：
-	// <li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li>
-	// <li>当 TaskType 取值为 s3 时，默认格式为 JSON Lines；</li>特别地，当 TaskType 取值为 cls 或 log_analysis 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。
+	// 日志投递的输出格式。不填表示为默认格式，默认格式逻辑如下：<ul><li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li><li>当 TaskType 取值为 s3 时，默认格式为 JSON Lines；</li></ul>特别地，当 TaskType 取值为 cls 或 log_analysis 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。
 	LogFormat *LogFormat `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
 
 	// CLS 的配置信息。当 TaskType 取值为 cls 时，该参数必填。
@@ -4801,11 +4759,11 @@ func (r *CreateRealtimeLogDeliveryTaskRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ZoneId")
+	delete(f, "Area")
+	delete(f, "LogType")
 	delete(f, "TaskName")
 	delete(f, "TaskType")
 	delete(f, "EntityList")
-	delete(f, "LogType")
-	delete(f, "Area")
 	delete(f, "Fields")
 	delete(f, "CustomFields")
 	delete(f, "DeliveryConditions")
@@ -17148,7 +17106,7 @@ type ModifyApplicationProxyRuleRequestParams struct {
 	// <li>false：关闭。</li>不填为false。
 	SessionPersist *bool `json:"SessionPersist,omitnil,omitempty" name:"SessionPersist"`
 
-	// 会话保持的时间，只有当SessionPersist为true时，该值才会生效。
+	// 会话保持的时间，单位为秒，只有当SessionPersist为true时，该值才会生效。
 	SessionPersistTime *uint64 `json:"SessionPersistTime,omitnil,omitempty" name:"SessionPersistTime"`
 
 	// 源站端口，支持格式：
@@ -17206,7 +17164,7 @@ type ModifyApplicationProxyRuleRequest struct {
 	// <li>false：关闭。</li>不填为false。
 	SessionPersist *bool `json:"SessionPersist,omitnil,omitempty" name:"SessionPersist"`
 
-	// 会话保持的时间，只有当SessionPersist为true时，该值才会生效。
+	// 会话保持的时间，单位为秒，只有当SessionPersist为true时，该值才会生效。
 	SessionPersistTime *uint64 `json:"SessionPersistTime,omitnil,omitempty" name:"SessionPersistTime"`
 
 	// 源站端口，支持格式：

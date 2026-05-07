@@ -1547,7 +1547,7 @@ func NewUpdateServiceConfigsResponse() (response *UpdateServiceConfigsResponse) 
 }
 
 // UpdateServiceConfigs
-// 本接口(UpdateServiceConfigs)用于更新服务配置
+// 本接口(UpdateServiceConfigs)用于更新服务配置。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1561,7 +1561,7 @@ func (c *Client) UpdateServiceConfigs(request *UpdateServiceConfigsRequest) (res
 }
 
 // UpdateServiceConfigs
-// 本接口(UpdateServiceConfigs)用于更新服务配置
+// 本接口(UpdateServiceConfigs)用于更新服务配置。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

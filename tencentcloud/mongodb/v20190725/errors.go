@@ -254,6 +254,9 @@ const (
 	// 安全组ID无效。
 	INVALIDPARAMETERVALUE_SECURITYGROUPID = "InvalidParameterValue.SecurityGroupId"
 
+	// 当前实例已开通免密访问，或未绑定安全组，安全级别较低不允许打开外网访问服务。
+	INVALIDPARAMETERVALUE_SECURITYLEVELNOTALLOWOPENWANSERVICE = "InvalidParameterValue.SecurityLevelNotAllowOpenWanService"
+
 	// 设置的磁盘大小不得低于已用磁盘的1.2倍。
 	INVALIDPARAMETERVALUE_SETDISKLESSTHANUSED = "InvalidParameterValue.SetDiskLessThanUsed"
 

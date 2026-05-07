@@ -113,6 +113,9 @@ const (
 	// 请求参数错误。
 	INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
 
+	// 对应资源不存在。
+	INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
+
 	// 服务不存在。
 	INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
 

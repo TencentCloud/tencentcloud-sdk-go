@@ -2923,6 +2923,62 @@ func (c *Client) EnableTransparentDataEncryptionWithContext(ctx context.Context,
     return
 }
 
+func NewEnableWanServiceRequest() (request *EnableWanServiceRequest) {
+    request = &EnableWanServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "EnableWanService")
+    
+    
+    return
+}
+
+func NewEnableWanServiceResponse() (response *EnableWanServiceResponse) {
+    response = &EnableWanServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableWanService
+// 本接口(OpenWanService)用于开启当前实例的外网访问地址。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_SECURITYLEVELNOTALLOWOPENWANSERVICE = "InvalidParameterValue.SecurityLevelNotAllowOpenWanService"
+func (c *Client) EnableWanService(request *EnableWanServiceRequest) (response *EnableWanServiceResponse, err error) {
+    return c.EnableWanServiceWithContext(context.Background(), request)
+}
+
+// EnableWanService
+// 本接口(OpenWanService)用于开启当前实例的外网访问地址。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_SECURITYLEVELNOTALLOWOPENWANSERVICE = "InvalidParameterValue.SecurityLevelNotAllowOpenWanService"
+func (c *Client) EnableWanServiceWithContext(ctx context.Context, request *EnableWanServiceRequest) (response *EnableWanServiceResponse, err error) {
+    if request == nil {
+        request = NewEnableWanServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "EnableWanService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableWanService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableWanServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewFlashBackDBInstanceRequest() (request *FlashBackDBInstanceRequest) {
     request = &FlashBackDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
