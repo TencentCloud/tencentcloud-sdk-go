@@ -4,10 +4,11 @@ import (
 	"bufio"
 	"bytes"
 	"fmt"
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 	"io/ioutil"
 	"log"
 	"strconv"
+
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 
 	//"log"
 	"net/http"
@@ -191,6 +192,8 @@ func parseFromSSE(hr *http.Response, resp Response) error {
 		defer close(ch)
 
 		scanner := bufio.NewScanner(hr.Body)
+		const MB = 1024 * 1024
+		scanner.Buffer(nil, MB*32)
 		scanner.Split(bufio.ScanLines)
 
 		event := SSEvent{}
