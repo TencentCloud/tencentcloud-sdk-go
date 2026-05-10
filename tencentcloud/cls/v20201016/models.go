@@ -5272,6 +5272,246 @@ func (r *CreateRebuildIndexTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateRecordingRuleTaskRequestParams struct {
+	// <p>源指标主题id</p><p>取值参考：</p><ul><li><a href="https://cloud.tencent.com/document/api/614/56454">DescribeTopics</a></li><li><a href="https://console.cloud.tencent.com/cls/metric">指标主题</a></li></ul>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>目标指标主题id，可与 TopicId 相同</p>
+	DstTopicId *string `json:"DstTopicId,omitnil,omitempty" name:"DstTopicId"`
+
+	// <p>预聚合任务名称</p><p>入参限制：仅支持字母、数字、及下划线，不允许下划线开头，小于256个字符</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>任务状态； 1:开启；2:关闭</p>
+	EnableFlag *uint64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
+
+	// <p>任务执行开始时间 ,Unix时间戳</p><p>单位：ms</p>
+	ProcessStartTime *uint64 `json:"ProcessStartTime,omitnil,omitempty" name:"ProcessStartTime"`
+
+	// <p>调度周期(分钟)，支持范围(0,1440]分钟。</p>
+	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
+
+	// <p>执行延迟，建议设置为30秒，避免指标上报延迟导致预聚合任务计算结果不精确</p><p>单位：秒</p>
+	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
+
+	// <p>执行语句(PromQL)</p>
+	RecordingRuleContent *string `json:"RecordingRuleContent,omitnil,omitempty" name:"RecordingRuleContent"`
+
+	// <p>指标名称</p>
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// <p>指标自定义维度</p>
+	CustomMetricLabels []*MetricLabel `json:"CustomMetricLabels,omitnil,omitempty" name:"CustomMetricLabels"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+}
+
+type CreateRecordingRuleTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>源指标主题id</p><p>取值参考：</p><ul><li><a href="https://cloud.tencent.com/document/api/614/56454">DescribeTopics</a></li><li><a href="https://console.cloud.tencent.com/cls/metric">指标主题</a></li></ul>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>目标指标主题id，可与 TopicId 相同</p>
+	DstTopicId *string `json:"DstTopicId,omitnil,omitempty" name:"DstTopicId"`
+
+	// <p>预聚合任务名称</p><p>入参限制：仅支持字母、数字、及下划线，不允许下划线开头，小于256个字符</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>任务状态； 1:开启；2:关闭</p>
+	EnableFlag *uint64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
+
+	// <p>任务执行开始时间 ,Unix时间戳</p><p>单位：ms</p>
+	ProcessStartTime *uint64 `json:"ProcessStartTime,omitnil,omitempty" name:"ProcessStartTime"`
+
+	// <p>调度周期(分钟)，支持范围(0,1440]分钟。</p>
+	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
+
+	// <p>执行延迟，建议设置为30秒，避免指标上报延迟导致预聚合任务计算结果不精确</p><p>单位：秒</p>
+	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
+
+	// <p>执行语句(PromQL)</p>
+	RecordingRuleContent *string `json:"RecordingRuleContent,omitnil,omitempty" name:"RecordingRuleContent"`
+
+	// <p>指标名称</p>
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// <p>指标自定义维度</p>
+	CustomMetricLabels []*MetricLabel `json:"CustomMetricLabels,omitnil,omitempty" name:"CustomMetricLabels"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+}
+
+func (r *CreateRecordingRuleTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRecordingRuleTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "DstTopicId")
+	delete(f, "Name")
+	delete(f, "EnableFlag")
+	delete(f, "ProcessStartTime")
+	delete(f, "ProcessPeriod")
+	delete(f, "ProcessDelay")
+	delete(f, "RecordingRuleContent")
+	delete(f, "MetricName")
+	delete(f, "CustomMetricLabels")
+	delete(f, "HasServicesLog")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRecordingRuleTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRecordingRuleTaskResponseParams struct {
+	// <p>任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateRecordingRuleTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRecordingRuleTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateRecordingRuleTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRecordingRuleTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRecordingRuleYamlTaskRequestParams struct {
+	// <p>源指标主题id</p><p>取值参考：</p><ul><li><a href="https://cloud.tencent.com/document/api/614/56454">DescribeTopics</a></li><li><a href="https://console.cloud.tencent.com/cls/metric">指标主题</a></li></ul>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>目标指标主题id，可与 TopicId 相同</p>
+	DstTopicId *string `json:"DstTopicId,omitnil,omitempty" name:"DstTopicId"`
+
+	// <p>任务状态； 1:开启；2:关闭</p>
+	EnableFlag *uint64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
+
+	// <p>任务执行开始时间 ,Unix时间戳</p><p>单位：ms</p>
+	ProcessStartTime *uint64 `json:"ProcessStartTime,omitnil,omitempty" name:"ProcessStartTime"`
+
+	// <p>调度周期(分钟)，支持范围(0,1440]分钟。</p><p>单位：分钟</p><p>也可在YAML中使用 interval: duration 为每个group单独设置执行间隔</p>
+	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
+
+	// <p>执行延迟，建议设置为30秒，避免指标上报延迟导致预聚合任务计算结果不精确</p><p>单位：秒</p>
+	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
+
+	// <p>yaml配置名称</p>
+	YamlConfigName *string `json:"YamlConfigName,omitnil,omitempty" name:"YamlConfigName"`
+
+	// <p>yaml配置内容</p><p>兼容 Prometheus Recording Rules 配置文件，API调用时请注意字符串中的换行与缩进。</p>
+	YamlContent *string `json:"YamlContent,omitnil,omitempty" name:"YamlContent"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+}
+
+type CreateRecordingRuleYamlTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>源指标主题id</p><p>取值参考：</p><ul><li><a href="https://cloud.tencent.com/document/api/614/56454">DescribeTopics</a></li><li><a href="https://console.cloud.tencent.com/cls/metric">指标主题</a></li></ul>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>目标指标主题id，可与 TopicId 相同</p>
+	DstTopicId *string `json:"DstTopicId,omitnil,omitempty" name:"DstTopicId"`
+
+	// <p>任务状态； 1:开启；2:关闭</p>
+	EnableFlag *uint64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
+
+	// <p>任务执行开始时间 ,Unix时间戳</p><p>单位：ms</p>
+	ProcessStartTime *uint64 `json:"ProcessStartTime,omitnil,omitempty" name:"ProcessStartTime"`
+
+	// <p>调度周期(分钟)，支持范围(0,1440]分钟。</p><p>单位：分钟</p><p>也可在YAML中使用 interval: duration 为每个group单独设置执行间隔</p>
+	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
+
+	// <p>执行延迟，建议设置为30秒，避免指标上报延迟导致预聚合任务计算结果不精确</p><p>单位：秒</p>
+	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
+
+	// <p>yaml配置名称</p>
+	YamlConfigName *string `json:"YamlConfigName,omitnil,omitempty" name:"YamlConfigName"`
+
+	// <p>yaml配置内容</p><p>兼容 Prometheus Recording Rules 配置文件，API调用时请注意字符串中的换行与缩进。</p>
+	YamlContent *string `json:"YamlContent,omitnil,omitempty" name:"YamlContent"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+}
+
+func (r *CreateRecordingRuleYamlTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRecordingRuleYamlTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "DstTopicId")
+	delete(f, "EnableFlag")
+	delete(f, "ProcessStartTime")
+	delete(f, "ProcessPeriod")
+	delete(f, "ProcessDelay")
+	delete(f, "YamlConfigName")
+	delete(f, "YamlContent")
+	delete(f, "HasServicesLog")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRecordingRuleYamlTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRecordingRuleYamlTaskResponseParams struct {
+	// <p>Yaml配置id， 可以关联多子任务</p>
+	YamlId *string `json:"YamlId,omitnil,omitempty" name:"YamlId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateRecordingRuleYamlTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRecordingRuleYamlTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateRecordingRuleYamlTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRecordingRuleYamlTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateScheduledSqlRequestParams struct {
 	// 源日志主题ID- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
 	SrcTopicId *string `json:"SrcTopicId,omitnil,omitempty" name:"SrcTopicId"`
@@ -5823,145 +6063,111 @@ func (r *CreateSplunkDeliverResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTopicRequestParams struct {
-	// 日志集ID
-	// - 通过[获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
+	// <p>日志集ID</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/58624">获取日志集列表</a>获取日志集Id。</li></ul>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 主题名称
-	// 名称限制
-	// - 不能为空字符串
-	// - 不能包含字符'|'
-	// - 不能使用以下名称["cls_service_log","loglistener_status","loglistener_alarm","loglistener_business","cls_service_metric"]
+	// <p>主题名称<br>名称限制</p><ul><li>不能为空字符串</li><li>不能包含字符&#39;|&#39;</li><li>不能使用以下名称[&quot;cls_service_log&quot;,&quot;loglistener_status&quot;,&quot;loglistener_alarm&quot;,&quot;loglistener_business&quot;,&quot;cls_service_metric&quot;]</li></ul>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 主题分区个数。默认创建1个，最大支持创建10个分区。
+	// <p>主题分区个数。默认创建1个，最大支持创建10个分区。</p>
 	PartitionCount *int64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
 
-	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+	// <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否开启自动分裂，默认值为true
+	// <p>是否开启自动分裂，默认值为true</p>
 	AutoSplit *bool `json:"AutoSplit,omitnil,omitempty" name:"AutoSplit"`
 
-	// 开启自动分裂后，每个主题能够允许的最大分区数，默认值为50
+	// <p>开启自动分裂后，每个主题能够允许的最大分区数，默认值为50</p>
 	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil,omitempty" name:"MaxSplitPartitions"`
 
-	// 日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。指标主题不支持该配置。
+	// <p>日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。指标主题不支持该配置。</p>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 存储时间，单位天。
-	// - 日志主题：日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
-	// - 日志主题：日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
-	// - 指标主题：支持1至3600天，值为3640时代表永久保存。
+	// <p>存储时间，单位天。</p><ul><li>日志主题：日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。</li><li>日志主题：日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。</li><li>指标主题：支持1至3600天，值为3640时代表永久保存。</li></ul>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 主题描述
+	// <p>主题描述</p>
 	Describes *string `json:"Describes,omitnil,omitempty" name:"Describes"`
 
-	// 0：日志主题关闭日志沉降。
-	// 非0：日志主题开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。
-	// 仅在StorageType为 hot 时生效，指标主题不支持该配置。
+	// <p>0：日志主题关闭日志沉降。<br>非0：日志主题开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。<br>仅在StorageType为 hot 时生效，指标主题不支持该配置。</p>
 	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
-	// 加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。
-	// 0或者不传： 不加密
-	// 1：kms-cls 云产品密钥加密
-	// 
-	// 支持地域：ap-beijing,ap-guangzhou,ap-shanghai,ap-singapore,ap-bangkok,ap-jakarta,eu-frankfurt,ap-seoul,ap-tokyo
+	// <p>加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。<br>0或者不传： 不加密<br>1：kms-cls 云产品密钥加密</p><p>支持地域：ap-beijing,ap-guangzhou,ap-shanghai,ap-singapore,ap-bangkok,ap-jakarta,eu-frankfurt,ap-seoul,ap-tokyo</p>
 	Encryption *uint64 `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
-	// 主题类型
-	// - 0:日志主题，默认值
-	// - 1:指标主题
+	// <p>主题类型</p><ul><li>0:日志主题，默认值</li><li>1:指标主题</li></ul>
 	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 
-	// 主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。
-	// - 用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符
-	// - 尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。
-	// - 如果指定该字段，需保证全地域唯一
+	// <p>主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。</p><ul><li>用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符</li><li>尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。</li><li>如果指定该字段，需保证全地域唯一</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 免鉴权开关。 false：关闭； true：开启。默认为false。
-	// 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。指标主题不支持该配置。
+	// <p>免鉴权开关。 false：关闭； true：开启。默认为false。<br>开启后将支持指定操作匿名访问该日志主题。详情请参见<a href="https://cloud.tencent.com/document/product/614/41035">日志主题</a>。指标主题不支持该配置。</p>
 	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
 
-	// 主题扩展信息
+	// <p>主题扩展信息</p>
 	Extends *TopicExtendInfo `json:"Extends,omitnil,omitempty" name:"Extends"`
 
-	// 开启记录公网来源ip和服务端接收时间
+	// <p>开启记录公网来源ip和服务端接收时间</p>
 	IsSourceFrom *bool `json:"IsSourceFrom,omitnil,omitempty" name:"IsSourceFrom"`
+
+	// <p>计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul><p>默认值：0</p><p>通过接口调用时默认值为0，通过控制台调用时默认值为1</p>
+	BillingMode *uint64 `json:"BillingMode,omitnil,omitempty" name:"BillingMode"`
 }
 
 type CreateTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 日志集ID
-	// - 通过[获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
+	// <p>日志集ID</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/58624">获取日志集列表</a>获取日志集Id。</li></ul>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 主题名称
-	// 名称限制
-	// - 不能为空字符串
-	// - 不能包含字符'|'
-	// - 不能使用以下名称["cls_service_log","loglistener_status","loglistener_alarm","loglistener_business","cls_service_metric"]
+	// <p>主题名称<br>名称限制</p><ul><li>不能为空字符串</li><li>不能包含字符&#39;|&#39;</li><li>不能使用以下名称[&quot;cls_service_log&quot;,&quot;loglistener_status&quot;,&quot;loglistener_alarm&quot;,&quot;loglistener_business&quot;,&quot;cls_service_metric&quot;]</li></ul>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 主题分区个数。默认创建1个，最大支持创建10个分区。
+	// <p>主题分区个数。默认创建1个，最大支持创建10个分区。</p>
 	PartitionCount *int64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
 
-	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+	// <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 是否开启自动分裂，默认值为true
+	// <p>是否开启自动分裂，默认值为true</p>
 	AutoSplit *bool `json:"AutoSplit,omitnil,omitempty" name:"AutoSplit"`
 
-	// 开启自动分裂后，每个主题能够允许的最大分区数，默认值为50
+	// <p>开启自动分裂后，每个主题能够允许的最大分区数，默认值为50</p>
 	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil,omitempty" name:"MaxSplitPartitions"`
 
-	// 日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。指标主题不支持该配置。
+	// <p>日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。指标主题不支持该配置。</p>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 存储时间，单位天。
-	// - 日志主题：日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
-	// - 日志主题：日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
-	// - 指标主题：支持1至3600天，值为3640时代表永久保存。
+	// <p>存储时间，单位天。</p><ul><li>日志主题：日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。</li><li>日志主题：日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。</li><li>指标主题：支持1至3600天，值为3640时代表永久保存。</li></ul>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 主题描述
+	// <p>主题描述</p>
 	Describes *string `json:"Describes,omitnil,omitempty" name:"Describes"`
 
-	// 0：日志主题关闭日志沉降。
-	// 非0：日志主题开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。
-	// 仅在StorageType为 hot 时生效，指标主题不支持该配置。
+	// <p>0：日志主题关闭日志沉降。<br>非0：日志主题开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。<br>仅在StorageType为 hot 时生效，指标主题不支持该配置。</p>
 	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
-	// 加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。
-	// 0或者不传： 不加密
-	// 1：kms-cls 云产品密钥加密
-	// 
-	// 支持地域：ap-beijing,ap-guangzhou,ap-shanghai,ap-singapore,ap-bangkok,ap-jakarta,eu-frankfurt,ap-seoul,ap-tokyo
+	// <p>加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。<br>0或者不传： 不加密<br>1：kms-cls 云产品密钥加密</p><p>支持地域：ap-beijing,ap-guangzhou,ap-shanghai,ap-singapore,ap-bangkok,ap-jakarta,eu-frankfurt,ap-seoul,ap-tokyo</p>
 	Encryption *uint64 `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
-	// 主题类型
-	// - 0:日志主题，默认值
-	// - 1:指标主题
+	// <p>主题类型</p><ul><li>0:日志主题，默认值</li><li>1:指标主题</li></ul>
 	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 
-	// 主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。
-	// - 用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符
-	// - 尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。
-	// - 如果指定该字段，需保证全地域唯一
+	// <p>主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。</p><ul><li>用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符</li><li>尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。</li><li>如果指定该字段，需保证全地域唯一</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 免鉴权开关。 false：关闭； true：开启。默认为false。
-	// 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。指标主题不支持该配置。
+	// <p>免鉴权开关。 false：关闭； true：开启。默认为false。<br>开启后将支持指定操作匿名访问该日志主题。详情请参见<a href="https://cloud.tencent.com/document/product/614/41035">日志主题</a>。指标主题不支持该配置。</p>
 	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
 
-	// 主题扩展信息
+	// <p>主题扩展信息</p>
 	Extends *TopicExtendInfo `json:"Extends,omitnil,omitempty" name:"Extends"`
 
-	// 开启记录公网来源ip和服务端接收时间
+	// <p>开启记录公网来源ip和服务端接收时间</p>
 	IsSourceFrom *bool `json:"IsSourceFrom,omitnil,omitempty" name:"IsSourceFrom"`
+
+	// <p>计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul><p>默认值：0</p><p>通过接口调用时默认值为0，通过控制台调用时默认值为1</p>
+	BillingMode *uint64 `json:"BillingMode,omitnil,omitempty" name:"BillingMode"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -5992,6 +6198,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "IsWebTracking")
 	delete(f, "Extends")
 	delete(f, "IsSourceFrom")
+	delete(f, "BillingMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
 	}
@@ -6000,7 +6207,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTopicResponseParams struct {
-	// 主题ID
+	// <p>主题ID</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8139,6 +8346,128 @@ func (r *DeleteNoticeContentResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteNoticeContentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRecordingRuleTaskRequestParams struct {
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>源指标主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+}
+
+type DeleteRecordingRuleTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>源指标主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+}
+
+func (r *DeleteRecordingRuleTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRecordingRuleTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "TopicId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRecordingRuleTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRecordingRuleTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteRecordingRuleTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRecordingRuleTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteRecordingRuleTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRecordingRuleTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRecordingRuleYamlTaskRequestParams struct {
+	// <p>任务ID</p>
+	YamlId *string `json:"YamlId,omitnil,omitempty" name:"YamlId"`
+
+	// <p>源指标主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+}
+
+type DeleteRecordingRuleYamlTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务ID</p>
+	YamlId *string `json:"YamlId,omitnil,omitempty" name:"YamlId"`
+
+	// <p>源指标主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+}
+
+func (r *DeleteRecordingRuleYamlTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRecordingRuleYamlTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "YamlId")
+	delete(f, "TopicId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRecordingRuleYamlTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRecordingRuleYamlTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteRecordingRuleYamlTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRecordingRuleYamlTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteRecordingRuleYamlTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRecordingRuleYamlTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -12825,6 +13154,168 @@ func (r *DescribeRebuildIndexTasksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRebuildIndexTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecordingRuleTaskRequestParams struct {
+	// <p>源指标主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>分页的偏移量，默认值为0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页单页限制数目，默认值为20，最大值100。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <li>yamlId【关联yaml配置ID】进行过滤，模糊匹配。类型：String。必选：否</li> <li>taskName按照【任务名称】进行过滤，模糊匹配。类型：String。必选：否</li> <li>taskId按照【任务ID】进行过滤，模糊匹配。类型：String。必选：否</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeRecordingRuleTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>源指标主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>分页的偏移量，默认值为0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页单页限制数目，默认值为20，最大值100。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <li>yamlId【关联yaml配置ID】进行过滤，模糊匹配。类型：String。必选：否</li> <li>taskName按照【任务名称】进行过滤，模糊匹配。类型：String。必选：否</li> <li>taskId按照【任务ID】进行过滤，模糊匹配。类型：String。必选：否</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeRecordingRuleTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordingRuleTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordingRuleTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecordingRuleTaskResponseParams struct {
+	// <p>RecordingRule任务列表信息</p>
+	RecordingRuleTaskInfos []*RecordingRuleTaskInfo `json:"RecordingRuleTaskInfos,omitnil,omitempty" name:"RecordingRuleTaskInfos"`
+
+	// <p>任务总条数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRecordingRuleTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRecordingRuleTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeRecordingRuleTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordingRuleTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecordingRuleYamlTaskRequestParams struct {
+	// <p>源指标主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>分页的偏移量，默认值为0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页单页限制数目，默认值为20，最大值100。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <li>yamlConfigName【配置文件名称】进行过滤，模糊匹配。类型：String。必选：否</li> <li>yamlId按照【yamlID】进行过滤，模糊匹配。类型：String。必选：否</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeRecordingRuleYamlTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>源指标主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>分页的偏移量，默认值为0。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页单页限制数目，默认值为20，最大值100。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <li>yamlConfigName【配置文件名称】进行过滤，模糊匹配。类型：String。必选：否</li> <li>yamlId按照【yamlID】进行过滤，模糊匹配。类型：String。必选：否</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeRecordingRuleYamlTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordingRuleYamlTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordingRuleYamlTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecordingRuleYamlTaskResponseParams struct {
+	// <p>RecordingRule任务列表信息</p>
+	RecordingRuleYamlTaskInfos []*RecordingRuleYamlTaskInfo `json:"RecordingRuleYamlTaskInfos,omitnil,omitempty" name:"RecordingRuleYamlTaskInfos"`
+
+	// <p>任务总条数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRecordingRuleYamlTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRecordingRuleYamlTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeRecordingRuleYamlTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordingRuleYamlTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -18693,6 +19184,257 @@ func (r *ModifyNoticeContentResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyRecordingRuleTaskRequestParams struct {
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>源指标主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>目标指标主题id</p>
+	DstTopicId *string `json:"DstTopicId,omitnil,omitempty" name:"DstTopicId"`
+
+	// <p>任务名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>任务启动状态.   1开启,  2关闭</p>
+	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
+
+	// <p>调度开始时间,Unix时间戳，单位ms</p>
+	ProcessStartTime *int64 `json:"ProcessStartTime,omitnil,omitempty" name:"ProcessStartTime"`
+
+	// <p>调度周期(分钟)，支持范围(0,1440]分钟。</p>
+	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
+
+	// <p>执行延迟(秒)</p>
+	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
+
+	// <p>指标名称</p>
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// <p>执行语句(PromQL)</p>
+	RecordingRuleContent *string `json:"RecordingRuleContent,omitnil,omitempty" name:"RecordingRuleContent"`
+
+	// <p>自定义指标名称</p>
+	CustomMetricLabels []*MetricLabel `json:"CustomMetricLabels,omitnil,omitempty" name:"CustomMetricLabels"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+}
+
+type ModifyRecordingRuleTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务ID</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>源指标主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>目标指标主题id</p>
+	DstTopicId *string `json:"DstTopicId,omitnil,omitempty" name:"DstTopicId"`
+
+	// <p>任务名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>任务启动状态.   1开启,  2关闭</p>
+	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
+
+	// <p>调度开始时间,Unix时间戳，单位ms</p>
+	ProcessStartTime *int64 `json:"ProcessStartTime,omitnil,omitempty" name:"ProcessStartTime"`
+
+	// <p>调度周期(分钟)，支持范围(0,1440]分钟。</p>
+	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
+
+	// <p>执行延迟(秒)</p>
+	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
+
+	// <p>指标名称</p>
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// <p>执行语句(PromQL)</p>
+	RecordingRuleContent *string `json:"RecordingRuleContent,omitnil,omitempty" name:"RecordingRuleContent"`
+
+	// <p>自定义指标名称</p>
+	CustomMetricLabels []*MetricLabel `json:"CustomMetricLabels,omitnil,omitempty" name:"CustomMetricLabels"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+}
+
+func (r *ModifyRecordingRuleTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRecordingRuleTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "TopicId")
+	delete(f, "DstTopicId")
+	delete(f, "Name")
+	delete(f, "EnableFlag")
+	delete(f, "ProcessStartTime")
+	delete(f, "ProcessPeriod")
+	delete(f, "ProcessDelay")
+	delete(f, "MetricName")
+	delete(f, "RecordingRuleContent")
+	delete(f, "CustomMetricLabels")
+	delete(f, "HasServicesLog")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRecordingRuleTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRecordingRuleTaskResponseParams struct {
+	// <p>预聚合任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyRecordingRuleTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRecordingRuleTaskResponseParams `json:"Response"`
+}
+
+func (r *ModifyRecordingRuleTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRecordingRuleTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRecordingRuleYamlTaskRequestParams struct {
+	// <p>Yaml配置id</p>
+	YamlID *string `json:"YamlID,omitnil,omitempty" name:"YamlID"`
+
+	// <p>源指标主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>目标指标主题id</p>
+	DstTopicId *string `json:"DstTopicId,omitnil,omitempty" name:"DstTopicId"`
+
+	// <p>任务状态； 1:开启；2:关闭</p>
+	EnableFlag *uint64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
+
+	// <p>调度开始时间,Unix时间戳，单位ms</p>
+	ProcessStartTime *uint64 `json:"ProcessStartTime,omitnil,omitempty" name:"ProcessStartTime"`
+
+	// <p>调度周期(分钟)，支持范围(0,1440]分钟。</p>
+	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
+
+	// <p>执行延迟(秒)</p>
+	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
+
+	// <p>yaml配置名称</p>
+	YamlConfigName *string `json:"YamlConfigName,omitnil,omitempty" name:"YamlConfigName"`
+
+	// <p>yaml配置内容</p>
+	YamlContent *string `json:"YamlContent,omitnil,omitempty" name:"YamlContent"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+}
+
+type ModifyRecordingRuleYamlTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>Yaml配置id</p>
+	YamlID *string `json:"YamlID,omitnil,omitempty" name:"YamlID"`
+
+	// <p>源指标主题id</p>
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// <p>目标指标主题id</p>
+	DstTopicId *string `json:"DstTopicId,omitnil,omitempty" name:"DstTopicId"`
+
+	// <p>任务状态； 1:开启；2:关闭</p>
+	EnableFlag *uint64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
+
+	// <p>调度开始时间,Unix时间戳，单位ms</p>
+	ProcessStartTime *uint64 `json:"ProcessStartTime,omitnil,omitempty" name:"ProcessStartTime"`
+
+	// <p>调度周期(分钟)，支持范围(0,1440]分钟。</p>
+	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
+
+	// <p>执行延迟(秒)</p>
+	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
+
+	// <p>yaml配置名称</p>
+	YamlConfigName *string `json:"YamlConfigName,omitnil,omitempty" name:"YamlConfigName"`
+
+	// <p>yaml配置内容</p>
+	YamlContent *string `json:"YamlContent,omitnil,omitempty" name:"YamlContent"`
+
+	// <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+}
+
+func (r *ModifyRecordingRuleYamlTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRecordingRuleYamlTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "YamlID")
+	delete(f, "TopicId")
+	delete(f, "DstTopicId")
+	delete(f, "EnableFlag")
+	delete(f, "ProcessStartTime")
+	delete(f, "ProcessPeriod")
+	delete(f, "ProcessDelay")
+	delete(f, "YamlConfigName")
+	delete(f, "YamlContent")
+	delete(f, "HasServicesLog")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRecordingRuleYamlTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRecordingRuleYamlTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyRecordingRuleYamlTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRecordingRuleYamlTaskResponseParams `json:"Response"`
+}
+
+func (r *ModifyRecordingRuleYamlTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRecordingRuleYamlTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyScheduledSqlRequestParams struct {
 	// 任务ID，通过[获取定时SQL分析任务列表](https://cloud.tencent.com/document/product/614/95519)获取
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -19211,137 +19953,111 @@ func (r *ModifySplunkDeliverResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTopicRequestParams struct {
-	//  主题ID- 通过[获取主题列表](https://cloud.tencent.com/document/product/614/56454)获取主题Id。
+	// <p>主题ID- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取主题列表</a>获取主题Id。</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 主题名称
-	// 输入限制：
-	// - 不能为空字符串
-	// - 不能包含字符'|'
-	// - 不能使用以下名称["cls_service_log","loglistener_status","loglistener_alarm","loglistener_business","cls_service_metric"]
+	// <p>主题名称<br>输入限制：</p><ul><li>不能为空字符串</li><li>不能包含字符&#39;|&#39;</li><li>不能使用以下名称[&quot;cls_service_log&quot;,&quot;loglistener_status&quot;,&quot;loglistener_alarm&quot;,&quot;loglistener_business&quot;,&quot;cls_service_metric&quot;]</li></ul>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，并且不能有重复的键值对。
+	// <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，并且不能有重复的键值对。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 主题是否开启采集，true：开启采集；false：关闭采集。
-	// 控制台目前不支持修改此参数。
+	// <p>主题是否开启采集，true：开启采集；false：关闭采集。<br>控制台目前不支持修改此参数。</p>
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 是否开启自动分裂
+	// <p>是否开启自动分裂</p>
 	AutoSplit *bool `json:"AutoSplit,omitnil,omitempty" name:"AutoSplit"`
 
-	// 若开启最大分裂，该主题能够允许的最大分区数；
-	// 默认为50；必须为正数
+	// <p>若开启最大分裂，该主题能够允许的最大分区数；<br>默认为50；必须为正数</p>
 	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil,omitempty" name:"MaxSplitPartitions"`
 
-	// 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600。取值为3640时代表永久保存
+	// <p>生命周期，单位天，标准存储取值范围1~3600，低频存储取值范围7~3600。取值为3640时代表永久保存</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 存储类型：cold 低频存储，hot 标准存储
+	// <p>存储类型：cold 低频存储，hot 标准存储</p>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 主题描述
+	// <p>主题描述</p>
 	Describes *string `json:"Describes,omitnil,omitempty" name:"Describes"`
 
-	// 0：日志主题关闭日志沉降。
-	// 非0：日志主题开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。
-	// 仅在StorageType为 hot 时生效，指标主题不支持该配置。
+	// <p>0：日志主题关闭日志沉降。<br>非0：日志主题开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。<br>仅在StorageType为 hot 时生效，指标主题不支持该配置。</p>
 	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
-	// 免鉴权开关。 false：关闭； true：开启。
-	// 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
+	// <p>免鉴权开关。 false：关闭； true：开启。<br>开启后将支持指定操作匿名访问该日志主题。详情请参见<a href="https://cloud.tencent.com/document/product/614/41035">日志主题</a>。</p>
 	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
 
-	// 主题扩展信息
+	// <p>主题扩展信息</p>
 	Extends *TopicExtendInfo `json:"Extends,omitnil,omitempty" name:"Extends"`
 
-	// 主题分区数量。
-	// 默认为1；
-	// 取值范围及约束：
-	// - 当输入值<=0，系统自动调整为1。
-	// - 如果未传MaxSplitPartitions，需要PartitionCount<=50；
-	// - 如果传递了MaxSplitPartitions，需要PartitionCount<=MaxSplitPartitions；
+	// <p>主题分区数量。<br>默认为1；<br>取值范围及约束：</p><ul><li>当输入值&lt;=0，系统自动调整为1。</li><li>如果未传MaxSplitPartitions，需要PartitionCount&lt;=50；</li><li>如果传递了MaxSplitPartitions，需要PartitionCount&lt;=MaxSplitPartitions；</li></ul>
 	PartitionCount *uint64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
 
-	// 取消切换存储任务的id
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取取消切换存储任务的id【Topics中的TopicAsyncTaskID字段】。
+	// <p>取消切换存储任务的id</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取取消切换存储任务的id【Topics中的TopicAsyncTaskID字段】。</li></ul>
 	CancelTopicAsyncTaskID *string `json:"CancelTopicAsyncTaskID,omitnil,omitempty" name:"CancelTopicAsyncTaskID"`
 
-	// 加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。
-	// 只支持传入1：kms-cls 云产品秘钥加密
+	// <p>加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。<br>只支持传入1：kms-cls 云产品秘钥加密</p>
 	Encryption *uint64 `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
-	// 开启记录公网来源ip和服务端接收时间
+	// <p>开启记录公网来源ip和服务端接收时间</p>
 	IsSourceFrom *bool `json:"IsSourceFrom,omitnil,omitempty" name:"IsSourceFrom"`
+
+	// <p>计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+	BillingMode *uint64 `json:"BillingMode,omitnil,omitempty" name:"BillingMode"`
 }
 
 type ModifyTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	//  主题ID- 通过[获取主题列表](https://cloud.tencent.com/document/product/614/56454)获取主题Id。
+	// <p>主题ID- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取主题列表</a>获取主题Id。</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 主题名称
-	// 输入限制：
-	// - 不能为空字符串
-	// - 不能包含字符'|'
-	// - 不能使用以下名称["cls_service_log","loglistener_status","loglistener_alarm","loglistener_business","cls_service_metric"]
+	// <p>主题名称<br>输入限制：</p><ul><li>不能为空字符串</li><li>不能包含字符&#39;|&#39;</li><li>不能使用以下名称[&quot;cls_service_log&quot;,&quot;loglistener_status&quot;,&quot;loglistener_alarm&quot;,&quot;loglistener_business&quot;,&quot;cls_service_metric&quot;]</li></ul>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，并且不能有重复的键值对。
+	// <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，并且不能有重复的键值对。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 主题是否开启采集，true：开启采集；false：关闭采集。
-	// 控制台目前不支持修改此参数。
+	// <p>主题是否开启采集，true：开启采集；false：关闭采集。<br>控制台目前不支持修改此参数。</p>
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 是否开启自动分裂
+	// <p>是否开启自动分裂</p>
 	AutoSplit *bool `json:"AutoSplit,omitnil,omitempty" name:"AutoSplit"`
 
-	// 若开启最大分裂，该主题能够允许的最大分区数；
-	// 默认为50；必须为正数
+	// <p>若开启最大分裂，该主题能够允许的最大分区数；<br>默认为50；必须为正数</p>
 	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil,omitempty" name:"MaxSplitPartitions"`
 
-	// 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600。取值为3640时代表永久保存
+	// <p>生命周期，单位天，标准存储取值范围1~3600，低频存储取值范围7~3600。取值为3640时代表永久保存</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 存储类型：cold 低频存储，hot 标准存储
+	// <p>存储类型：cold 低频存储，hot 标准存储</p>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 主题描述
+	// <p>主题描述</p>
 	Describes *string `json:"Describes,omitnil,omitempty" name:"Describes"`
 
-	// 0：日志主题关闭日志沉降。
-	// 非0：日志主题开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。
-	// 仅在StorageType为 hot 时生效，指标主题不支持该配置。
+	// <p>0：日志主题关闭日志沉降。<br>非0：日志主题开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。<br>仅在StorageType为 hot 时生效，指标主题不支持该配置。</p>
 	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
-	// 免鉴权开关。 false：关闭； true：开启。
-	// 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
+	// <p>免鉴权开关。 false：关闭； true：开启。<br>开启后将支持指定操作匿名访问该日志主题。详情请参见<a href="https://cloud.tencent.com/document/product/614/41035">日志主题</a>。</p>
 	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
 
-	// 主题扩展信息
+	// <p>主题扩展信息</p>
 	Extends *TopicExtendInfo `json:"Extends,omitnil,omitempty" name:"Extends"`
 
-	// 主题分区数量。
-	// 默认为1；
-	// 取值范围及约束：
-	// - 当输入值<=0，系统自动调整为1。
-	// - 如果未传MaxSplitPartitions，需要PartitionCount<=50；
-	// - 如果传递了MaxSplitPartitions，需要PartitionCount<=MaxSplitPartitions；
+	// <p>主题分区数量。<br>默认为1；<br>取值范围及约束：</p><ul><li>当输入值&lt;=0，系统自动调整为1。</li><li>如果未传MaxSplitPartitions，需要PartitionCount&lt;=50；</li><li>如果传递了MaxSplitPartitions，需要PartitionCount&lt;=MaxSplitPartitions；</li></ul>
 	PartitionCount *uint64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
 
-	// 取消切换存储任务的id
-	// - 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取取消切换存储任务的id【Topics中的TopicAsyncTaskID字段】。
+	// <p>取消切换存储任务的id</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取取消切换存储任务的id【Topics中的TopicAsyncTaskID字段】。</li></ul>
 	CancelTopicAsyncTaskID *string `json:"CancelTopicAsyncTaskID,omitnil,omitempty" name:"CancelTopicAsyncTaskID"`
 
-	// 加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。
-	// 只支持传入1：kms-cls 云产品秘钥加密
+	// <p>加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。<br>只支持传入1：kms-cls 云产品秘钥加密</p>
 	Encryption *uint64 `json:"Encryption,omitnil,omitempty" name:"Encryption"`
 
-	// 开启记录公网来源ip和服务端接收时间
+	// <p>开启记录公网来源ip和服务端接收时间</p>
 	IsSourceFrom *bool `json:"IsSourceFrom,omitnil,omitempty" name:"IsSourceFrom"`
+
+	// <p>计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+	BillingMode *uint64 `json:"BillingMode,omitnil,omitempty" name:"BillingMode"`
 }
 
 func (r *ModifyTopicRequest) ToJsonString() string {
@@ -19372,6 +20088,7 @@ func (r *ModifyTopicRequest) FromJsonString(s string) error {
 	delete(f, "CancelTopicAsyncTaskID")
 	delete(f, "Encryption")
 	delete(f, "IsSourceFrom")
+	delete(f, "BillingMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTopicRequest has unknown keys!", "")
 	}
@@ -20432,6 +21149,107 @@ type RebuildIndexTaskInfo struct {
 
 	// 附加状态描述信息（目前仅描述失败时失败原因）
 	StatusMessage *string `json:"StatusMessage,omitnil,omitempty" name:"StatusMessage"`
+}
+
+type RecordingRuleTaskInfo struct {
+	// 预聚合任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 源日志主题id
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 预聚合任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 任务创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 任务更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 任务状态，1:运行 2:停止 3:异常-找不到源日志主题 4:异常-找不到目标主题
+	// 
+	// 5: 访问权限问题 6:内部故障 7:其他故障
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务启用状态，1开启,  2关闭
+	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
+
+	// 调度开始时间
+	ProcessStartTime *uint64 `json:"ProcessStartTime,omitnil,omitempty" name:"ProcessStartTime"`
+
+	// 调度周期(分钟)
+	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
+
+	// 执行延迟(秒)
+	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
+
+	// 是否开启投递服务日志。1：关闭，2：开启。
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// 预聚合检索语句
+	RecordingRuleContent *string `json:"RecordingRuleContent,omitnil,omitempty" name:"RecordingRuleContent"`
+
+	// 指标名称
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 自定义指标名称
+	CustomMetricLabels []*MetricLabel `json:"CustomMetricLabels,omitnil,omitempty" name:"CustomMetricLabels"`
+
+	// yaml配置文件id
+	YamlId *string `json:"YamlId,omitnil,omitempty" name:"YamlId"`
+
+	// yaml配置文件名称
+	YamlConfigName *string `json:"YamlConfigName,omitnil,omitempty" name:"YamlConfigName"`
+
+	// 目标日志主题id
+	DstTopicId *string `json:"DstTopicId,omitnil,omitempty" name:"DstTopicId"`
+}
+
+type RecordingRuleYamlTaskInfo struct {
+	// yaml配置文件id
+	YamlId *string `json:"YamlId,omitnil,omitempty" name:"YamlId"`
+
+	// 源日志主题id
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 写入描述的日志主题id
+	DstTopicId *string `json:"DstTopicId,omitnil,omitempty" name:"DstTopicId"`
+
+	// 任务创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 任务更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 任务状态，1:运行 2:停止 3:异常-找不到源日志主题 4:异常-找不到目标主题
+	// 
+	// 5: 访问权限问题 6:内部故障 7:其他故障
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务启用状态，1开启,  2关闭
+	EnableFlag *int64 `json:"EnableFlag,omitnil,omitempty" name:"EnableFlag"`
+
+	// 调度开始时间
+	ProcessStartTime *uint64 `json:"ProcessStartTime,omitnil,omitempty" name:"ProcessStartTime"`
+
+	// 调度周期(分钟)
+	ProcessPeriod *int64 `json:"ProcessPeriod,omitnil,omitempty" name:"ProcessPeriod"`
+
+	// 执行延迟(秒)
+	ProcessDelay *int64 `json:"ProcessDelay,omitnil,omitempty" name:"ProcessDelay"`
+
+	// 是否开启投递服务日志。1：关闭，2：开启。
+	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// yaml配置文件名称
+	YamlConfigName *string `json:"YamlConfigName,omitnil,omitempty" name:"YamlConfigName"`
+
+	// yaml配置文件内容
+	YamlContent *string `json:"YamlContent,omitnil,omitempty" name:"YamlContent"`
+
+	// yaml文件子任务数量
+	SubTaskCount *int64 `json:"SubTaskCount,omitnil,omitempty" name:"SubTaskCount"`
 }
 
 type Relabeling struct {
@@ -21526,98 +22344,89 @@ type TopicIdAndRegion struct {
 }
 
 type TopicInfo struct {
-	// 日志集ID
+	// <p>日志集ID</p>
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
-	// 主题ID
+	// <p>主题ID</p>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 主题名称
+	// <p>主题名称</p>
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 主题分区个数
+	// <p>主题分区个数</p>
 	PartitionCount *int64 `json:"PartitionCount,omitnil,omitempty" name:"PartitionCount"`
 
-	// 主题是否开启索引（主题类型需为日志主题）
+	// <p>主题是否开启索引（主题类型需为日志主题）</p>
 	Index *bool `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// AssumerUin非空则表示创建该日志主题的服务方Uin
+	// <p>AssumerUin非空则表示创建该日志主题的服务方Uin</p>
 	AssumerUin *uint64 `json:"AssumerUin,omitnil,omitempty" name:"AssumerUin"`
 
-	// 云产品标识，主题由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
+	// <p>云产品标识，主题由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE</p>
 	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
 
-	// 创建时间。格式：yyyy-MM-dd HH:mm:ss
+	// <p>创建时间。格式：yyyy-MM-dd HH:mm:ss</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 主题是否开启采集，true：开启采集；false：关闭采集。
-	// 创建日志主题时默认开启，可通过SDK调用ModifyTopic修改此字段。
-	// 控制台目前不支持修改此参数。
+	// <p>主题是否开启采集，true：开启采集；false：关闭采集。<br>创建日志主题时默认开启，可通过SDK调用ModifyTopic修改此字段。<br>控制台目前不支持修改此参数。</p>
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 主题绑定的标签信息
+	// <p>主题绑定的标签信息</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// RoleName非空则表示创建该日志主题的服务方使用的角色
+	// <p>RoleName非空则表示创建该日志主题的服务方使用的角色</p>
 	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
 
-	// 该主题是否开启自动分裂
+	// <p>该主题是否开启自动分裂</p>
 	AutoSplit *bool `json:"AutoSplit,omitnil,omitempty" name:"AutoSplit"`
 
-	// 若开启自动分裂的话，该主题能够允许的最大分区数
+	// <p>若开启自动分裂的话，该主题能够允许的最大分区数</p>
 	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil,omitempty" name:"MaxSplitPartitions"`
 
-	// 主题的存储类型
-	// 
-	// - hot: 标准存储
-	// - cold: 低频存储
+	// <p>主题的存储类型</p><ul><li>hot: 标准存储</li><li>cold: 低频存储</li></ul>
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 生命周期，单位天，可取值范围1~3600。取值为3640时代表永久保存
+	// <p>生命周期，单位天，可取值范围1~3600。取值为3640时代表永久保存</p>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 云产品二级标识，日志主题由其它云产品创建时，该字段会显示云产品名称及其日志类型的二级分类，例如TKE-Audit、TKE-Event。部分云产品仅有云产品标识(AssumerName)，无该字段。
+	// <p>云产品二级标识，日志主题由其它云产品创建时，该字段会显示云产品名称及其日志类型的二级分类，例如TKE-Audit、TKE-Event。部分云产品仅有云产品标识(AssumerName)，无该字段。</p>
 	SubAssumerName *string `json:"SubAssumerName,omitnil,omitempty" name:"SubAssumerName"`
 
-	// 主题描述
+	// <p>主题描述</p>
 	Describes *string `json:"Describes,omitnil,omitempty" name:"Describes"`
 
-	// 开启日志沉降，标准存储的生命周期， hotPeriod < Period。
-	// 标准存储为 hotPeriod, 低频存储则为 Period-hotPeriod。（主题类型需为日志主题）
-	// HotPeriod=0为没有开启日志沉降。
+	// <p>开启日志沉降，标准存储的生命周期， hotPeriod &lt; Period。<br>标准存储为 hotPeriod, 低频存储则为 Period-hotPeriod。（主题类型需为日志主题）<br>HotPeriod=0为没有开启日志沉降。</p>
 	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
-	// kms-cls服务秘钥id
+	// <p>kms-cls服务秘钥id</p>
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
 
-	// 主题类型。
-	// - 0: 日志主题 
-	// - 1: 指标主题
+	// <p>主题类型。</p><ul><li>0: 日志主题 </li><li>1: 指标主题</li></ul>
 	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 
-	// 免鉴权开关。 false：关闭； true：开启。
-	// 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
+	// <p>免鉴权开关。 false：关闭； true：开启。<br>开启后将支持指定操作匿名访问该日志主题。详情请参见<a href="https://cloud.tencent.com/document/product/614/41035">日志主题</a>。</p>
 	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
 
-	// 日志主题扩展信息
+	// <p>日志主题扩展信息</p>
 	Extends *TopicExtendInfo `json:"Extends,omitnil,omitempty" name:"Extends"`
 
-	// 异步迁移任务ID
+	// <p>异步迁移任务ID</p>
 	TopicAsyncTaskID *string `json:"TopicAsyncTaskID,omitnil,omitempty" name:"TopicAsyncTaskID"`
 
-	// 异步迁移状态
-	// - 1：进行中
-	// - 2：已完成
-	// - 3：失败
-	// - 4：已取消
+	// <p>异步迁移状态</p><ul><li>1：进行中</li><li>2：已完成</li><li>3：失败</li><li>4：已取消</li></ul>
 	MigrationStatus *uint64 `json:"MigrationStatus,omitnil,omitempty" name:"MigrationStatus"`
 
-	// 异步迁移完成后，预计生效日期
-	// 时间格式：yyyy-MM-dd HH:mm:ss
+	// <p>异步迁移完成后，预计生效日期<br>时间格式：yyyy-MM-dd HH:mm:ss</p>
 	EffectiveDate *string `json:"EffectiveDate,omitnil,omitempty" name:"EffectiveDate"`
 
-	// IsSourceFrom 开启记录公网来源ip和服务端接收时间
+	// <p>IsSourceFrom 开启记录公网来源ip和服务端接收时间</p>
 	IsSourceFrom *bool `json:"IsSourceFrom,omitnil,omitempty" name:"IsSourceFrom"`
+
+	// <p>当前计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+	BillingMode *uint64 `json:"BillingMode,omitnil,omitempty" name:"BillingMode"`
+
+	// <p>如果有异步任务，任务成功后的新计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+	NewBillingMode *uint64 `json:"NewBillingMode,omitnil,omitempty" name:"NewBillingMode"`
 }
 
 type TopicPartitionInfo struct {

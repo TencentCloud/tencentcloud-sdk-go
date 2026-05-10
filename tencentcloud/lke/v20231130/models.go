@@ -343,6 +343,21 @@ type AgentPluginInfo struct {
 
 	// <p>MCP类型</p><p>枚举值：</p><ul><li>0： SSE 模式</li><li>1： Streamable Http 模式</li></ul>
 	McpType *uint64 `json:"McpType,omitnil,omitempty" name:"McpType"`
+
+	// <p>OAuth授权主体</p><p>枚举值：</p><ul><li>0： 开发者授权</li><li>1： 使用者授权</li></ul>
+	AuthMode *int64 `json:"AuthMode,omitnil,omitempty" name:"AuthMode"`
+
+	// <p>授权方式</p><p>枚举值：</p><ul><li>0： 无鉴权</li><li>1： api key鉴权</li><li>2： 支持CAM授权</li><li>3： 支持Oauth2.0授权</li></ul>
+	AuthType *int64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
+
+	// <p>授权配置状态</p><p>枚举值：</p><ul><li>0： 不需要授权</li><li>1： 未配置</li><li>2： 已配置</li></ul>
+	AuthConfigStatus *int64 `json:"AuthConfigStatus,omitnil,omitempty" name:"AuthConfigStatus"`
+
+	// <p>插件用途类型</p><p>枚举值：</p><ul><li>0： 工具类</li><li>1： 连接器类</li></ul>
+	PluginClass *int64 `json:"PluginClass,omitnil,omitempty" name:"PluginClass"`
+
+	// <p>插件状态</p><p>枚举值：</p><ul><li>1： 成功</li><li>2： 不可用</li></ul>
+	PluginStatus *int64 `json:"PluginStatus,omitnil,omitempty" name:"PluginStatus"`
 }
 
 type AgentPluginQuery struct {
@@ -554,77 +569,81 @@ type AgentThought struct {
 }
 
 type AgentToolInfo struct {
-	// 插件id
+	// <p>插件id</p>
 	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
 
-	// 插件名称
+	// <p>插件名称</p>
 	PluginName *string `json:"PluginName,omitnil,omitempty" name:"PluginName"`
 
-	// 插件图标url
+	// <p>插件图标url</p>
 	IconUrl *string `json:"IconUrl,omitnil,omitempty" name:"IconUrl"`
 
-	// 0 自定义插件
-	// 1 官方插件
-	// 2 第三方插件 目前用于第三方实现的mcp server
+	// <p>0 自定义插件<br>1 官方插件<br>2 第三方插件 目前用于第三方实现的mcp server</p>
 	PluginType *uint64 `json:"PluginType,omitnil,omitempty" name:"PluginType"`
 
-	// 工具id
+	// <p>工具id</p>
 	ToolId *string `json:"ToolId,omitnil,omitempty" name:"ToolId"`
 
-	// 工具名称
+	// <p>工具名称</p>
 	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
 
-	// 工具描述
+	// <p>工具描述</p>
 	ToolDesc *string `json:"ToolDesc,omitnil,omitempty" name:"ToolDesc"`
 
-	// 输入参数
+	// <p>输入参数</p>
 	Inputs []*AgentToolReqParam `json:"Inputs,omitnil,omitempty" name:"Inputs"`
 
-	// 输出参数
+	// <p>输出参数</p>
 	Outputs []*AgentToolRspParam `json:"Outputs,omitnil,omitempty" name:"Outputs"`
 
-	// 创建方式，0:服务创建，1:代码创建，2:MCP创建	
+	// <p>创建方式，0:服务创建，1:代码创建，2:MCP创建</p>
 	CreateType *int64 `json:"CreateType,omitnil,omitempty" name:"CreateType"`
 
-	// MCP插件的配置信息
+	// <p>MCP插件的配置信息</p>
 	McpServer *AgentMCPServerInfo `json:"McpServer,omitnil,omitempty" name:"McpServer"`
 
-	// 该工具是否和知识库绑定
+	// <p>该工具是否和知识库绑定</p>
 	IsBindingKnowledge *bool `json:"IsBindingKnowledge,omitnil,omitempty" name:"IsBindingKnowledge"`
 
-	// 插件状态，1:可用，2:不可用	
+	// <p>插件状态，1:可用，2:不可用</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// header信息
+	// <p>header信息</p>
 	Headers []*AgentPluginHeader `json:"Headers,omitnil,omitempty" name:"Headers"`
 
-	// NON_STREAMING: 非流式  STREAMIN: 流式
+	// <p>NON_STREAMING: 非流式  STREAMIN: 流式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallingMethod *string `json:"CallingMethod,omitnil,omitempty" name:"CallingMethod"`
 
-	// query信息
+	// <p>query信息</p>
 	Query []*AgentPluginQuery `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 工具计费状态 0-不计费 1-可用 2-不可用（欠费、无资源等）
+	// <p>工具计费状态 0-不计费 1-可用 2-不可用（欠费、无资源等）</p>
 	FinanceStatus *int64 `json:"FinanceStatus,omitnil,omitempty" name:"FinanceStatus"`
 
-	// 工具来源: 0-来自插件，1-来自工作流
+	// <p>工具来源: 0-来自插件，1-来自工作流</p>
 	ToolSource *uint64 `json:"ToolSource,omitnil,omitempty" name:"ToolSource"`
 
-	// 计费状态；0-不计费，1-限时免费，2-官方收费
+	// <p>计费状态；0-不计费，1-限时免费，2-官方收费</p>
 	FinanceType *int64 `json:"FinanceType,omitnil,omitempty" name:"FinanceType"`
 
-	// 工具高级设置
+	// <p>工具高级设置</p>
 	ToolAdvanceConfig *ToolAdvanceConfig `json:"ToolAdvanceConfig,omitnil,omitempty" name:"ToolAdvanceConfig"`
 
-	// 授权模式； 0-开发者授权；1-使用者授权
+	// <p>授权模式； 0-开发者授权；1-使用者授权</p>
 	AuthMode *int64 `json:"AuthMode,omitnil,omitempty" name:"AuthMode"`
 
-	// 授权类型; 0-无鉴权；1-APIKey；2-CAM授权；3-Oauth2.0授权；
+	// <p>授权类型; 0-无鉴权；1-APIKey；2-CAM授权；3-Oauth2.0授权；</p>
 	AuthType *int64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 
-	// 工具授权配置状态；0：不需要授权，1：需要授权-未配置，2：需要授权-已配置
+	// <p>工具授权配置状态；0：不需要授权，1：需要授权-未配置，2：需要授权-已配置</p>
 	AuthConfigStatus *int64 `json:"AuthConfigStatus,omitnil,omitempty" name:"AuthConfigStatus"`
+
+	// <p>连接器工具 API 类型</p><p>枚举值：</p><ul><li>1： 只读</li><li>2： 写/删除</li></ul>
+	ToolAccessMode *int64 `json:"ToolAccessMode,omitnil,omitempty" name:"ToolAccessMode"`
+
+	// <p>是否禁用该工具</p>
+	IsDisabled *bool `json:"IsDisabled,omitnil,omitempty" name:"IsDisabled"`
 }
 
 type AgentToolReqParam struct {
@@ -13864,19 +13883,19 @@ type WidgetAction struct {
 }
 
 type WidgetParam struct {
-	// 参数名称
+	// <p>参数名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 参数类型
+	// <p>参数类型</p><p>枚举值：</p><ul><li>0： string</li><li>1： int</li><li>2： float</li><li>3： bool</li><li>4： object</li><li>5： array_string</li><li>6： array_int</li><li>7： array_float</li><li>8： array_bool</li><li>9： array_object</li><li>20： array_array</li></ul>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 子参数
+	// <p>子参数</p>
 	SubParams []*WidgetParam `json:"SubParams,omitnil,omitempty" name:"SubParams"`
 
-	// 默认值, Input未指定时，使用该值
+	// <p>默认值, Input未指定时，使用该值</p>
 	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
 
-	// 输入的值
+	// <p>输入的值</p>
 	Input *AgentInput `json:"Input,omitnil,omitempty" name:"Input"`
 }
 

@@ -6827,6 +6827,7 @@ func NewDescribeAssetImageListResponse() (response *DescribeAssetImageListRespon
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REQUESTTIMEOUT = "InvalidParameter.RequestTimeout"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageList(request *DescribeAssetImageListRequest) (response *DescribeAssetImageListResponse, err error) {
     return c.DescribeAssetImageListWithContext(context.Background(), request)
@@ -6839,6 +6840,7 @@ func (c *Client) DescribeAssetImageList(request *DescribeAssetImageListRequest) 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETER_REQUESTTIMEOUT = "InvalidParameter.RequestTimeout"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageListWithContext(ctx context.Context, request *DescribeAssetImageListRequest) (response *DescribeAssetImageListResponse, err error) {
     if request == nil {
@@ -6990,6 +6992,7 @@ func NewDescribeAssetImageRegistryListResponse() (response *DescribeAssetImageRe
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_REQUESTTIMEOUT = "InvalidParameter.RequestTimeout"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistryList(request *DescribeAssetImageRegistryListRequest) (response *DescribeAssetImageRegistryListResponse, err error) {
     return c.DescribeAssetImageRegistryListWithContext(context.Background(), request)
@@ -7001,6 +7004,7 @@ func (c *Client) DescribeAssetImageRegistryList(request *DescribeAssetImageRegis
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_REQUESTTIMEOUT = "InvalidParameter.RequestTimeout"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistryListWithContext(ctx context.Context, request *DescribeAssetImageRegistryListRequest) (response *DescribeAssetImageRegistryListResponse, err error) {
     if request == nil {

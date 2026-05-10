@@ -35,6 +35,9 @@ const (
 	// 没有零信任网关数据。
 	INTERNALERROR_NOTZEROTRUSTGATEWAY = "InternalError.NotZeroTrustGateway"
 
+	// 后台服务系统类型错误。
+	INTERNALERROR_SERVICETYPEERROR = "InternalError.ServiceTypeError"
+
 	// 内部未知错误。
 	INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 
@@ -109,6 +112,9 @@ const (
 
 	// 没有业务资源数据。
 	RESOURCENOTFOUND_NORESOURCEDATA = "ResourceNotFound.NoResourceData"
+
+	// 没有连接器分组信息。
+	RESOURCENOTFOUND_NOTCONNECTORGROUPINFO = "ResourceNotFound.NotConnectorGroupInfo"
 
 	// 资源不存在。
 	RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"

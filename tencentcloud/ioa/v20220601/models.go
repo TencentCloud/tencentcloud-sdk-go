@@ -152,6 +152,67 @@ type AggrSoftDeviceRow struct {
 	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
+// Predefined struct for user
+type BindBusinessResourceConnectorGroupRequestParams struct {
+	// 要绑定连接器的业务资源id，创建时候响应会返回，修改调用端自己获取传递
+	ServiceId *int64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 业务资源要绑定的连接器id
+	ConnectorGroupId *string `json:"ConnectorGroupId,omitnil,omitempty" name:"ConnectorGroupId"`
+}
+
+type BindBusinessResourceConnectorGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要绑定连接器的业务资源id，创建时候响应会返回，修改调用端自己获取传递
+	ServiceId *int64 `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 业务资源要绑定的连接器id
+	ConnectorGroupId *string `json:"ConnectorGroupId,omitnil,omitempty" name:"ConnectorGroupId"`
+}
+
+func (r *BindBusinessResourceConnectorGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindBusinessResourceConnectorGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "ConnectorGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindBusinessResourceConnectorGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindBusinessResourceConnectorGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BindBusinessResourceConnectorGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *BindBusinessResourceConnectorGroupResponseParams `json:"Response"`
+}
+
+func (r *BindBusinessResourceConnectorGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindBusinessResourceConnectorGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ComplexRule struct {
 	// 简单规则表达式
 	SimpleRules []*SimpleRule `json:"SimpleRules,omitnil,omitempty" name:"SimpleRules"`

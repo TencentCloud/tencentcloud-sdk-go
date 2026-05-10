@@ -2639,6 +2639,142 @@ func (c *Client) CreateRebuildIndexTaskWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreateRecordingRuleTaskRequest() (request *CreateRecordingRuleTaskRequest) {
+    request = &CreateRecordingRuleTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateRecordingRuleTask")
+    
+    
+    return
+}
+
+func NewCreateRecordingRuleTaskResponse() (response *CreateRecordingRuleTaskResponse) {
+    response = &CreateRecordingRuleTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRecordingRuleTask
+// 创建指标预聚合任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CreateRecordingRuleTask(request *CreateRecordingRuleTaskRequest) (response *CreateRecordingRuleTaskResponse, err error) {
+    return c.CreateRecordingRuleTaskWithContext(context.Background(), request)
+}
+
+// CreateRecordingRuleTask
+// 创建指标预聚合任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CreateRecordingRuleTaskWithContext(ctx context.Context, request *CreateRecordingRuleTaskRequest) (response *CreateRecordingRuleTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateRecordingRuleTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateRecordingRuleTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRecordingRuleTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRecordingRuleTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRecordingRuleYamlTaskRequest() (request *CreateRecordingRuleYamlTaskRequest) {
+    request = &CreateRecordingRuleYamlTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateRecordingRuleYamlTask")
+    
+    
+    return
+}
+
+func NewCreateRecordingRuleYamlTaskResponse() (response *CreateRecordingRuleYamlTaskResponse) {
+    response = &CreateRecordingRuleYamlTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRecordingRuleYamlTask
+// 通过yaml文件创建指标预聚合任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CreateRecordingRuleYamlTask(request *CreateRecordingRuleYamlTaskRequest) (response *CreateRecordingRuleYamlTaskResponse, err error) {
+    return c.CreateRecordingRuleYamlTaskWithContext(context.Background(), request)
+}
+
+// CreateRecordingRuleYamlTask
+// 通过yaml文件创建指标预聚合任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CreateRecordingRuleYamlTaskWithContext(ctx context.Context, request *CreateRecordingRuleYamlTaskRequest) (response *CreateRecordingRuleYamlTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateRecordingRuleYamlTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "CreateRecordingRuleYamlTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRecordingRuleYamlTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRecordingRuleYamlTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateScheduledSqlRequest() (request *CreateScheduledSqlRequest) {
     request = &CreateScheduledSqlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5035,6 +5171,146 @@ func (c *Client) DeleteNoticeContentWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDeleteNoticeContentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRecordingRuleTaskRequest() (request *DeleteRecordingRuleTaskRequest) {
+    request = &DeleteRecordingRuleTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteRecordingRuleTask")
+    
+    
+    return
+}
+
+func NewDeleteRecordingRuleTaskResponse() (response *DeleteRecordingRuleTaskResponse) {
+    response = &DeleteRecordingRuleTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRecordingRuleTask
+// 本接口用于删除预聚合分析任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DeleteRecordingRuleTask(request *DeleteRecordingRuleTaskRequest) (response *DeleteRecordingRuleTaskResponse, err error) {
+    return c.DeleteRecordingRuleTaskWithContext(context.Background(), request)
+}
+
+// DeleteRecordingRuleTask
+// 本接口用于删除预聚合分析任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DeleteRecordingRuleTaskWithContext(ctx context.Context, request *DeleteRecordingRuleTaskRequest) (response *DeleteRecordingRuleTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteRecordingRuleTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteRecordingRuleTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRecordingRuleTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRecordingRuleTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRecordingRuleYamlTaskRequest() (request *DeleteRecordingRuleYamlTaskRequest) {
+    request = &DeleteRecordingRuleYamlTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteRecordingRuleYamlTask")
+    
+    
+    return
+}
+
+func NewDeleteRecordingRuleYamlTaskResponse() (response *DeleteRecordingRuleYamlTaskResponse) {
+    response = &DeleteRecordingRuleYamlTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRecordingRuleYamlTask
+// 本接口用于删除yaml预聚合任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DeleteRecordingRuleYamlTask(request *DeleteRecordingRuleYamlTaskRequest) (response *DeleteRecordingRuleYamlTaskResponse, err error) {
+    return c.DeleteRecordingRuleYamlTaskWithContext(context.Background(), request)
+}
+
+// DeleteRecordingRuleYamlTask
+// 本接口用于删除yaml预聚合任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DeleteRecordingRuleYamlTaskWithContext(ctx context.Context, request *DeleteRecordingRuleYamlTaskRequest) (response *DeleteRecordingRuleYamlTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteRecordingRuleYamlTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DeleteRecordingRuleYamlTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRecordingRuleYamlTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRecordingRuleYamlTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -8795,6 +9071,146 @@ func (c *Client) DescribeRebuildIndexTasksWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeRecordingRuleTaskRequest() (request *DescribeRecordingRuleTaskRequest) {
+    request = &DescribeRecordingRuleTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeRecordingRuleTask")
+    
+    
+    return
+}
+
+func NewDescribeRecordingRuleTaskResponse() (response *DescribeRecordingRuleTaskResponse) {
+    response = &DescribeRecordingRuleTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRecordingRuleTask
+// 本接口用于获取预聚合任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeRecordingRuleTask(request *DescribeRecordingRuleTaskRequest) (response *DescribeRecordingRuleTaskResponse, err error) {
+    return c.DescribeRecordingRuleTaskWithContext(context.Background(), request)
+}
+
+// DescribeRecordingRuleTask
+// 本接口用于获取预聚合任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeRecordingRuleTaskWithContext(ctx context.Context, request *DescribeRecordingRuleTaskRequest) (response *DescribeRecordingRuleTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeRecordingRuleTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeRecordingRuleTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordingRuleTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRecordingRuleTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRecordingRuleYamlTaskRequest() (request *DescribeRecordingRuleYamlTaskRequest) {
+    request = &DescribeRecordingRuleYamlTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeRecordingRuleYamlTask")
+    
+    
+    return
+}
+
+func NewDescribeRecordingRuleYamlTaskResponse() (response *DescribeRecordingRuleYamlTaskResponse) {
+    response = &DescribeRecordingRuleYamlTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRecordingRuleYamlTask
+// 本接口用于获取yaml预聚合任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeRecordingRuleYamlTask(request *DescribeRecordingRuleYamlTaskRequest) (response *DescribeRecordingRuleYamlTaskResponse, err error) {
+    return c.DescribeRecordingRuleYamlTaskWithContext(context.Background(), request)
+}
+
+// DescribeRecordingRuleYamlTask
+// 本接口用于获取yaml预聚合任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeRecordingRuleYamlTaskWithContext(ctx context.Context, request *DescribeRecordingRuleYamlTaskRequest) (response *DescribeRecordingRuleYamlTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeRecordingRuleYamlTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "DescribeRecordingRuleYamlTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordingRuleYamlTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRecordingRuleYamlTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeScheduledSqlInfoRequest() (request *DescribeScheduledSqlInfoRequest) {
     request = &DescribeScheduledSqlInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11819,6 +12235,144 @@ func (c *Client) ModifyNoticeContentWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyNoticeContentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRecordingRuleTaskRequest() (request *ModifyRecordingRuleTaskRequest) {
+    request = &ModifyRecordingRuleTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyRecordingRuleTask")
+    
+    
+    return
+}
+
+func NewModifyRecordingRuleTaskResponse() (response *ModifyRecordingRuleTaskResponse) {
+    response = &ModifyRecordingRuleTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRecordingRuleTask
+// 本接口用于修改定时预聚合任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) ModifyRecordingRuleTask(request *ModifyRecordingRuleTaskRequest) (response *ModifyRecordingRuleTaskResponse, err error) {
+    return c.ModifyRecordingRuleTaskWithContext(context.Background(), request)
+}
+
+// ModifyRecordingRuleTask
+// 本接口用于修改定时预聚合任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) ModifyRecordingRuleTaskWithContext(ctx context.Context, request *ModifyRecordingRuleTaskRequest) (response *ModifyRecordingRuleTaskResponse, err error) {
+    if request == nil {
+        request = NewModifyRecordingRuleTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyRecordingRuleTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRecordingRuleTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRecordingRuleTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRecordingRuleYamlTaskRequest() (request *ModifyRecordingRuleYamlTaskRequest) {
+    request = &ModifyRecordingRuleYamlTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyRecordingRuleYamlTask")
+    
+    
+    return
+}
+
+func NewModifyRecordingRuleYamlTaskResponse() (response *ModifyRecordingRuleYamlTaskResponse) {
+    response = &ModifyRecordingRuleYamlTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRecordingRuleYamlTask
+// 通过yaml文件修改指标预聚合任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) ModifyRecordingRuleYamlTask(request *ModifyRecordingRuleYamlTaskRequest) (response *ModifyRecordingRuleYamlTaskResponse, err error) {
+    return c.ModifyRecordingRuleYamlTaskWithContext(context.Background(), request)
+}
+
+// ModifyRecordingRuleYamlTask
+// 通过yaml文件修改指标预聚合任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) ModifyRecordingRuleYamlTaskWithContext(ctx context.Context, request *ModifyRecordingRuleYamlTaskRequest) (response *ModifyRecordingRuleYamlTaskResponse, err error) {
+    if request == nil {
+        request = NewModifyRecordingRuleYamlTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "ModifyRecordingRuleYamlTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRecordingRuleYamlTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRecordingRuleYamlTaskResponse()
     err = c.Send(request, response)
     return
 }

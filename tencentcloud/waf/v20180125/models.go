@@ -22111,11 +22111,14 @@ type ProductInfo struct {
 }
 
 type PromptDetectResult struct {
-	// 检测结果
+	// <p>检测结果</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 置信度
+	// <p>置信度</p>
 	Confidence *uint64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+
+	// <p>检出类别</p>
+	Category []*string `json:"Category,omitnil,omitempty" name:"Category"`
 }
 
 type ProtectGroupDomainInfo struct {

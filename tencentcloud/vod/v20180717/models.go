@@ -1928,6 +1928,23 @@ type AiSampleWordInfo struct {
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
+type AigcAdvancedCustomElementInfo struct {
+	// <p>主体 ID。</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>主体名字。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>主体音色 ID。</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>主体描述。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>主体创建时间。格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
 type AigcAudioOutputConfig struct {
 	// <p>存储模式</p><p>枚举值：</p><ul><li>Temporary： 临时存储，生成的视频文件不会存储到云点播，可在事件通知中获取到临时访问的 URL，有效期 7 天</li><li>Permanent： 永久存储，生成的视频文件将存储到云点播，可在事件通知中获取到 FileId</li></ul><p>默认值：Temporary</p>
 	StorageMode *string `json:"StorageMode,omitnil,omitempty" name:"StorageMode"`
@@ -1946,6 +1963,28 @@ type AigcAudioOutputConfig struct {
 
 	// <p>输出音频格式，默认不填</p>
 	OutputAudioFormat *string `json:"OutputAudioFormat,omitnil,omitempty" name:"OutputAudioFormat"`
+}
+
+type AigcAudioReferenceAudioInfo struct {
+	// <p>可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。说明：1. 推荐使用小于7M的图片；2. 图片格式的取值为：jpeg，jpg, png, webp。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>音频文件的媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。当 Type 取值为 File 时，本参数有效。</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// <p>音频文件 URL，需要外网可访问。当 Type 取值为 Url 时，本参数有效。</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+type AigcAudioReferenceVideoInfo struct {
+	// <p>输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li></p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>视频文件的媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。当 Type 取值为 File 时，本参数有效。</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// <p>参考视频URL，需要外网可访问。当 Type 取值为 Url 时，本参数有效。</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 type AigcAudioTask struct {
@@ -2492,7 +2531,7 @@ type AigcVideoTaskInputFileInfo struct {
 	// <p>是否保留视频原声。当 Category 为 Video 时有效。取值如下：</p><li>Enabled：保留</li><li>Disabled：不保留</li>
 	KeepOriginalSound *string `json:"KeepOriginalSound,omitnil,omitempty" name:"KeepOriginalSound"`
 
-	// <p>用于区分输入是首帧或参考帧。可选值：</p><ul><li>FirstFrame：首帧；</li><li>Reference：参考帧；</li></ul><p><strong>注意，默认是FirstFrame</strong></p>
+	// <p>用于区分输入图像用于<strong>首（尾）帧生视频</strong>、<strong>图生视频</strong>或<strong>参考生视频</strong>。可选值：</p><ul><li>FirstFrame：用于首（尾）帧生视频 或 图生视频；</li><li>Reference：用于参考生视频；</li></ul><p><strong>注意，默认是FirstFrame</strong></p>
 	Usage *string `json:"Usage,omitnil,omitempty" name:"Usage"`
 }
 
@@ -2637,7 +2676,7 @@ type ApplyUploadRequestParams struct {
 	// <p>媒体后续任务处理操作，即完成媒体上传后，可自动发起任务流操作。参数值为任务流模板名，云点播支持 <a href="/document/product/266/33819">创建任务流模板</a> 并为模板命名。</p>
 	Procedure *string `json:"Procedure,omitnil,omitempty" name:"Procedure"`
 
-	// <p>媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 <a href="/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F">ISO 日期格式说明</a>。</p>
+	// <p>媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 <a href="/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// <p>指定上传园区，仅适用于对上传地域有特殊需求的用户。</p>
@@ -2677,7 +2716,7 @@ type ApplyUploadRequest struct {
 	// <p>媒体后续任务处理操作，即完成媒体上传后，可自动发起任务流操作。参数值为任务流模板名，云点播支持 <a href="/document/product/266/33819">创建任务流模板</a> 并为模板命名。</p>
 	Procedure *string `json:"Procedure,omitnil,omitempty" name:"Procedure"`
 
-	// <p>媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 <a href="/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F">ISO 日期格式说明</a>。</p>
+	// <p>媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 <a href="/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// <p>指定上传园区，仅适用于对上传地域有特殊需求的用户。</p>
@@ -3512,20 +3551,19 @@ type Canvas struct {
 }
 
 type CdnLogInfo struct {
-	// 日志所属日期， 格式为：yyyy-MM-dd ，如2018-03-01。
+	// <p>日志所属日期， 格式为：yyyy-MM-dd ，如2018-03-01。</p>
 	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 
-	// 日志名称，格式为：日期小时-域名
-	// 如 example.com。
+	// <p>日志名称，格式为：日期小时-域名<br>如 example.com。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 日志下载链接，24小时内下载有效。
+	// <p>日志下载链接，24小时内下载有效。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 日志起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// <p>日志起始时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 日志结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// <p>日志结束时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -3679,21 +3717,19 @@ type ComplexAdaptiveDynamicStreamingTask struct {
 }
 
 type ComplexAdaptiveDynamicStreamingTaskAudioInput struct {
-	// 音频源的媒体 ID。固定取该媒体中的首个音频流，视频流和其它音频流（如有）将被忽略。
+	// <p>音频源的媒体 ID。固定取该媒体源文件中的首个音频流，视频流和其它音频流（如有）将被忽略。</p>
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
-	// 输出的自适应码流中的音频流名称，长度限制为16个字符。
+	// <p>输出的自适应码流中的音频流名称，长度限制为16个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 输出的自适应码流中的音频流语言，长度限制为16个字符。要求符合 RFC5646 规范。
+	// <p>输出的自适应码流中的音频流语言，长度限制为16个字符。要求符合 RFC5646 规范。</p>
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 
-	// 是否设置为自适应码流的默认音频。取值：
-	// <li>YES：设置为默认音频；</li>
-	// <li>NO：不设置为默认音频（默认值）。</li>
+	// <p>是否设置为自适应码流的默认音频。取值：</p><li>YES：设置为默认音频；</li><li>NO：不设置为默认音频（默认值）。</li>
 	Default *string `json:"Default,omitnil,omitempty" name:"Default"`
 
-	// 音轨序号，表示选择音频源中的第几个音轨，从0开始计数。默认值为0，表示选择最靠前的音轨。
+	// <p>音轨序号，表示选择音频源中的第几个音轨，从0开始计数。默认值为0，表示选择最靠前的音轨。</p>
 	AudioTrackIdx *uint64 `json:"AudioTrackIdx,omitnil,omitempty" name:"AudioTrackIdx"`
 }
 
@@ -4828,6 +4864,112 @@ func (r *CreateAigcApiTokenResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateAigcAudioTaskRequestParams struct {
+	// <p>模型名称。</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p>
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
+	// <p>指定场景，目前支持sfx（音效）。</p>
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
+	// <p>生成音频的描述</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>参考视频信息</p>
+	VideoInfos []*AigcAudioReferenceVideoInfo `json:"VideoInfos,omitnil,omitempty" name:"VideoInfos"`
+
+	// <p>传入参考音频信息。</p><p>比如传入音频生成音乐时需要传入。</p>
+	AudioInfos []*AigcAudioReferenceAudioInfo `json:"AudioInfos,omitnil,omitempty" name:"AudioInfos"`
+
+	// <p>输出参数</p>
+	OutputConfig *AigcAudioOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
+
+	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例：<br>{"camera_control":{"type":"simple"}}</p>
+	AdditionalParameters *string `json:"AdditionalParameters,omitnil,omitempty" name:"AdditionalParameters"`
+}
+
+type CreateAigcAudioTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型名称。</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p>
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
+	// <p>指定场景，目前支持sfx（音效）。</p>
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
+	// <p>生成音频的描述</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>参考视频信息</p>
+	VideoInfos []*AigcAudioReferenceVideoInfo `json:"VideoInfos,omitnil,omitempty" name:"VideoInfos"`
+
+	// <p>传入参考音频信息。</p><p>比如传入音频生成音乐时需要传入。</p>
+	AudioInfos []*AigcAudioReferenceAudioInfo `json:"AudioInfos,omitnil,omitempty" name:"AudioInfos"`
+
+	// <p>输出参数</p>
+	OutputConfig *AigcAudioOutputConfig `json:"OutputConfig,omitnil,omitempty" name:"OutputConfig"`
+
+	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例：<br>{"camera_control":{"type":"simple"}}</p>
+	AdditionalParameters *string `json:"AdditionalParameters,omitnil,omitempty" name:"AdditionalParameters"`
+}
+
+func (r *CreateAigcAudioTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAigcAudioTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelName")
+	delete(f, "ModelVersion")
+	delete(f, "SceneType")
+	delete(f, "Prompt")
+	delete(f, "VideoInfos")
+	delete(f, "AudioInfos")
+	delete(f, "OutputConfig")
+	delete(f, "AdditionalParameters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAigcAudioTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAigcAudioTaskResponseParams struct {
+	// <p>任务创建成功后，返回的任务ID。<br>调用查询接口，轮询获取任务进度及生成结果。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAigcAudioTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAigcAudioTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateAigcAudioTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAigcAudioTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateAigcCustomElementRequestParams struct {
 	// 主体名称。不能超过20个字符
 	ElementName *string `json:"ElementName,omitnil,omitempty" name:"ElementName"`
@@ -5478,7 +5620,7 @@ type CreateAigcVideoTaskRequestParams struct {
 	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// <p>模型名称。取值：<br>Kling：可灵；<br>Vidu；<br>Hailuo：海螺；<br>Jimeng：即梦；<br>Hunyuan：混元；<br>Mingmou：明眸；<br>GV；<br>OS；<br>PixVerse;</p>
+	// <p>模型名称。取值：<br>Kling：可灵；<br>Vidu；<br>Hailuo：海螺；<br>Hunyuan：混元；<br>Mingmou：明眸；<br>GV；<br>OS；<br>PixVerse;</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// <p>模型版本。取值：<br>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；<br>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、2.6、O1、3.0、3.0-Omni；<br>当 ModelName 是 Jimeng，可选值为 3.0pro；<br>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo、q3、q3-pro、q3-turbo；<br>当 ModelName 是 GV，可选值为 3.1、3.1-fast；<br>当 ModelName 是 OS，可选值为 2.0；<br>当 ModelName 是 Hunyuan，可选值为 1.5；<br>当 ModelName 是 Mingmou，可选值为 1.0；<br>当 ModelName 是 PixVerse，可选值为 v5.6、v6、c1；</p>
@@ -5536,7 +5678,7 @@ type CreateAigcVideoTaskRequest struct {
 	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// <p>模型名称。取值：<br>Kling：可灵；<br>Vidu；<br>Hailuo：海螺；<br>Jimeng：即梦；<br>Hunyuan：混元；<br>Mingmou：明眸；<br>GV；<br>OS；<br>PixVerse;</p>
+	// <p>模型名称。取值：<br>Kling：可灵；<br>Vidu；<br>Hailuo：海螺；<br>Hunyuan：混元；<br>Mingmou：明眸；<br>GV；<br>OS；<br>PixVerse;</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// <p>模型版本。取值：<br>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；<br>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、2.6、O1、3.0、3.0-Omni；<br>当 ModelName 是 Jimeng，可选值为 3.0pro；<br>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo、q3、q3-pro、q3-turbo；<br>当 ModelName 是 GV，可选值为 3.1、3.1-fast；<br>当 ModelName 是 OS，可选值为 2.0；<br>当 ModelName 是 Hunyuan，可选值为 1.5；<br>当 ModelName 是 Mingmou，可选值为 1.0；<br>当 ModelName 是 PixVerse，可选值为 v5.6、v6、c1；</p>
@@ -7056,49 +7198,45 @@ func (r *CreateLLMComprehendTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMPSTemplateRequestParams struct {
-	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 需要创建的 MPS 模板的类型。取值：
-	// <li>Transcode: 创建转码模板，目前仅支持创建增强模板。</li>
-	// <li>AIAnalysis: 创建智能分析模板。</li>
-	// <li>SmartSubtitle: 创建智能字幕模板。</li>
-	// <li>SmartErase: 创建智能擦除模板。</li>
+	// <p>需要创建的 MPS 模板的类型。取值：</p><li>AIAnalysis: 创建智能分析模板。</li><li>SmartSubtitle: 创建智能字幕模板。</li><li>SmartErase: 创建智能擦除模板。</li>
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
-	// MPS 创建模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧创建用户自定义的 MPS 任务模板。
-	// 目前仅支持通过此方式创建以下任务类型的模板：
-	// 1. 音视频增强：仅支持填写“[创建转码模板](https://cloud.tencent.com/document/product/862/37605)”接口中的 Container 、Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数。其中 EnhanceConfig 此处必填，且 Container 目前暂不支持 hls。
-	// 2. 智能分析：仅支持填写“[创建内容分析模板](https://cloud.tencent.com/document/api/862/40249)”接口中的Name、Comment、ClassificationConfigure、TagConfigure、CoverConfigure、FrameTagConfigure几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
-	// 3. 智能字幕：仅支持填写“[创建智能字幕模板](https://cloud.tencent.com/document/api/862/117004)”接口中的Name、Comment、TranslateSwitch、VideoSrcLanguage、SubtitleFormat、SubtitleType、AsrHotWordsConfigure、TranslateDstLanguage、ProcessType几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
-	// 4. 智能擦除：仅支持填写“[创建智能擦除模板](https://cloud.tencent.com/document/api/862/123735)”接口中的Name、Comment、EraseType、EraseSubtitleConfig、EraseWatermarkConfig、ErasePrivacyConfig几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
-	// 
-	// 目前模板中仅支持配置以上参数，其他参数无需填写。若包含其它参数，系统将自动忽略。以上透传参数以JSON形式表示。
+	// <p>MPS 创建模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧创建用户自定义的 MPS 任务模板。<br>目前仅支持通过此方式创建以下任务类型的模板：</p><ol><li>智能分析：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/40249">创建内容分析模板</a>”接口中的Name、Comment、ClassificationConfigure、TagConfigure、CoverConfigure、FrameTagConfigure几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能字幕：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/117004">创建智能字幕模板</a>”接口中的Name、Comment、TranslateSwitch、VideoSrcLanguage、SubtitleFormat、SubtitleType、AsrHotWordsConfigure、TranslateDstLanguage、ProcessType几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能擦除：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/123735">创建智能擦除模板</a>”接口中的Name、Comment、EraseType、EraseSubtitleConfig、EraseWatermarkConfig、ErasePrivacyConfig几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li></ol><p>目前模板中仅支持配置以上参数，其他参数无需填写。若包含其它参数，系统将自动忽略。以上透传参数以JSON形式表示。</p>
 	MPSCreateTemplateParams *string `json:"MPSCreateTemplateParams,omitnil,omitempty" name:"MPSCreateTemplateParams"`
+
+	// <p>智能分析模板参数，MPSCreateTemplateParams为空时有效。</p>
+	AIAnalysisTemplate *MPSAIAnalysisTemplate `json:"AIAnalysisTemplate,omitnil,omitempty" name:"AIAnalysisTemplate"`
+
+	// <p>智能字幕模板参数，MPSCreateTemplateParams为空时有效。</p>
+	SmartSubtitleTemplate *MPSSmartSubtitleTemplate `json:"SmartSubtitleTemplate,omitnil,omitempty" name:"SmartSubtitleTemplate"`
+
+	// <p>智能擦除模板参数，MPSCreateTemplateParams为空时有效。</p>
+	SmartEraseTemplate *MPSSmartEraseTemplate `json:"SmartEraseTemplate,omitnil,omitempty" name:"SmartEraseTemplate"`
 }
 
 type CreateMPSTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[应用](/document/product/266/14574) ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 需要创建的 MPS 模板的类型。取值：
-	// <li>Transcode: 创建转码模板，目前仅支持创建增强模板。</li>
-	// <li>AIAnalysis: 创建智能分析模板。</li>
-	// <li>SmartSubtitle: 创建智能字幕模板。</li>
-	// <li>SmartErase: 创建智能擦除模板。</li>
+	// <p>需要创建的 MPS 模板的类型。取值：</p><li>AIAnalysis: 创建智能分析模板。</li><li>SmartSubtitle: 创建智能字幕模板。</li><li>SmartErase: 创建智能擦除模板。</li>
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
-	// MPS 创建模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧创建用户自定义的 MPS 任务模板。
-	// 目前仅支持通过此方式创建以下任务类型的模板：
-	// 1. 音视频增强：仅支持填写“[创建转码模板](https://cloud.tencent.com/document/product/862/37605)”接口中的 Container 、Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数。其中 EnhanceConfig 此处必填，且 Container 目前暂不支持 hls。
-	// 2. 智能分析：仅支持填写“[创建内容分析模板](https://cloud.tencent.com/document/api/862/40249)”接口中的Name、Comment、ClassificationConfigure、TagConfigure、CoverConfigure、FrameTagConfigure几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
-	// 3. 智能字幕：仅支持填写“[创建智能字幕模板](https://cloud.tencent.com/document/api/862/117004)”接口中的Name、Comment、TranslateSwitch、VideoSrcLanguage、SubtitleFormat、SubtitleType、AsrHotWordsConfigure、TranslateDstLanguage、ProcessType几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
-	// 4. 智能擦除：仅支持填写“[创建智能擦除模板](https://cloud.tencent.com/document/api/862/123735)”接口中的Name、Comment、EraseType、EraseSubtitleConfig、EraseWatermarkConfig、ErasePrivacyConfig几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
-	// 
-	// 目前模板中仅支持配置以上参数，其他参数无需填写。若包含其它参数，系统将自动忽略。以上透传参数以JSON形式表示。
+	// <p>MPS 创建模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧创建用户自定义的 MPS 任务模板。<br>目前仅支持通过此方式创建以下任务类型的模板：</p><ol><li>智能分析：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/40249">创建内容分析模板</a>”接口中的Name、Comment、ClassificationConfigure、TagConfigure、CoverConfigure、FrameTagConfigure几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能字幕：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/117004">创建智能字幕模板</a>”接口中的Name、Comment、TranslateSwitch、VideoSrcLanguage、SubtitleFormat、SubtitleType、AsrHotWordsConfigure、TranslateDstLanguage、ProcessType几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能擦除：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/123735">创建智能擦除模板</a>”接口中的Name、Comment、EraseType、EraseSubtitleConfig、EraseWatermarkConfig、ErasePrivacyConfig几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li></ol><p>目前模板中仅支持配置以上参数，其他参数无需填写。若包含其它参数，系统将自动忽略。以上透传参数以JSON形式表示。</p>
 	MPSCreateTemplateParams *string `json:"MPSCreateTemplateParams,omitnil,omitempty" name:"MPSCreateTemplateParams"`
+
+	// <p>智能分析模板参数，MPSCreateTemplateParams为空时有效。</p>
+	AIAnalysisTemplate *MPSAIAnalysisTemplate `json:"AIAnalysisTemplate,omitnil,omitempty" name:"AIAnalysisTemplate"`
+
+	// <p>智能字幕模板参数，MPSCreateTemplateParams为空时有效。</p>
+	SmartSubtitleTemplate *MPSSmartSubtitleTemplate `json:"SmartSubtitleTemplate,omitnil,omitempty" name:"SmartSubtitleTemplate"`
+
+	// <p>智能擦除模板参数，MPSCreateTemplateParams为空时有效。</p>
+	SmartEraseTemplate *MPSSmartEraseTemplate `json:"SmartEraseTemplate,omitnil,omitempty" name:"SmartEraseTemplate"`
 }
 
 func (r *CreateMPSTemplateRequest) ToJsonString() string {
@@ -7116,6 +7254,9 @@ func (r *CreateMPSTemplateRequest) FromJsonString(s string) error {
 	delete(f, "SubAppId")
 	delete(f, "TemplateType")
 	delete(f, "MPSCreateTemplateParams")
+	delete(f, "AIAnalysisTemplate")
+	delete(f, "SmartSubtitleTemplate")
+	delete(f, "SmartEraseTemplate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMPSTemplateRequest has unknown keys!", "")
 	}
@@ -7124,7 +7265,7 @@ func (r *CreateMPSTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMPSTemplateResponseParams struct {
-	// MPS 任务模板唯一标识。该模板独立于直接在 MPS 服务中创建的模板。
+	// <p>MPS 任务模板唯一标识。该模板独立于直接在 MPS 服务中创建的模板。</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9467,6 +9608,67 @@ func (r *DeleteAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string
 }
 
 // Predefined struct for user
+type DeleteAigcAdvancedCustomElementRequestParams struct {
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>AIGC 高级自定义主体的 ID</p>
+	ElementId *string `json:"ElementId,omitnil,omitempty" name:"ElementId"`
+}
+
+type DeleteAigcAdvancedCustomElementRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>AIGC 高级自定义主体的 ID</p>
+	ElementId *string `json:"ElementId,omitnil,omitempty" name:"ElementId"`
+}
+
+func (r *DeleteAigcAdvancedCustomElementRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAigcAdvancedCustomElementRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "ElementId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAigcAdvancedCustomElementRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAigcAdvancedCustomElementResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAigcAdvancedCustomElementResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAigcAdvancedCustomElementResponseParams `json:"Response"`
+}
+
+func (r *DeleteAigcAdvancedCustomElementResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAigcAdvancedCustomElementResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAigcApiTokenRequestParams struct {
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
@@ -11458,6 +11660,80 @@ func (r *DescribeAdaptiveDynamicStreamingTemplatesResponse) FromJsonString(s str
 }
 
 // Predefined struct for user
+type DescribeAigcAdvancedCustomElementsRequestParams struct {
+	// <p><b>点播<a href="https://cloud.tencent.com/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>分页返回的起始偏移量。将返回第 Offset 到第 Offset+Limit-1 条。</p><p>默认值：0</p><p>Offset 必须是 Limit 的整数倍。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页返回的记录条数。</p><p>取值范围：[1, 300]</p><p>默认值：10</p><p>Offset 必须是 Limit 的整数倍。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeAigcAdvancedCustomElementsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p><b>点播<a href="https://cloud.tencent.com/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>分页返回的起始偏移量。将返回第 Offset 到第 Offset+Limit-1 条。</p><p>默认值：0</p><p>Offset 必须是 Limit 的整数倍。</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>分页返回的记录条数。</p><p>取值范围：[1, 300]</p><p>默认值：10</p><p>Offset 必须是 Limit 的整数倍。</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAigcAdvancedCustomElementsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcAdvancedCustomElementsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAigcAdvancedCustomElementsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcAdvancedCustomElementsResponseParams struct {
+	// <p>AIGC 高级自定义主体信息。</p>
+	ElementSet []*AigcAdvancedCustomElementInfo `json:"ElementSet,omitnil,omitempty" name:"ElementSet"`
+
+	// <p>记录总数。</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAigcAdvancedCustomElementsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAigcAdvancedCustomElementsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAigcAdvancedCustomElementsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcAdvancedCustomElementsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAigcApiTokensRequestParams struct {
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
@@ -12454,44 +12730,44 @@ func (r *DescribeCLSTopicsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCdnLogsRequestParams struct {
-	// 域名。
+	// <p>域名。</p>
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
-	// 获取日志起始时间点，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// <p>获取日志起始时间点，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间需大于起始时间；使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// <p>结束时间需大于起始时间；使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 分页拉取的最大返回结果数。默认值：100；最大值：1000。
+	// <p>分页拉取的最大返回结果数。默认值：100；最大值：1000。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页拉取的起始偏移量。默认值：0。
+	// <p>分页拉取的起始偏移量。默认值：0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeCdnLogsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名。
+	// <p>域名。</p>
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
-	// 获取日志起始时间点，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// <p>获取日志起始时间点，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间需大于起始时间；使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// <p>结束时间需大于起始时间；使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 分页拉取的最大返回结果数。默认值：100；最大值：1000。
+	// <p>分页拉取的最大返回结果数。默认值：100；最大值：1000。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页拉取的起始偏移量。默认值：0。
+	// <p>分页拉取的起始偏移量。默认值：0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -12521,13 +12797,13 @@ func (r *DescribeCdnLogsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCdnLogsResponseParams struct {
-	// 日志下载链接总数量。
+	// <p>日志下载链接总数量。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 海外CDN节点的日志下载列表。如果域名没有开启海外加速，忽略该参数。
+	// <p>海外CDN节点的日志下载列表。如果域名没有开启海外加速，忽略该参数。</p>
 	OverseaCdnLogs []*CdnLogInfo `json:"OverseaCdnLogs,omitnil,omitempty" name:"OverseaCdnLogs"`
 
-	// 国内CDN节点的日志下载列表。
+	// <p>国内CDN节点的日志下载列表。</p>
 	DomesticCdnLogs []*CdnLogInfo `json:"DomesticCdnLogs,omitnil,omitempty" name:"DomesticCdnLogs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16759,47 +17035,42 @@ type DomainCLSTargetInfo struct {
 }
 
 type DomainDetailInfo struct {
-	// 域名名称。
+	// <p>域名名称。</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 加速地区信息。
+	// <p>加速地区信息。</p>
 	AccelerateAreaInfos []*AccelerateAreaInfo `json:"AccelerateAreaInfos,omitnil,omitempty" name:"AccelerateAreaInfos"`
 
-	// 部署状态，取值有：
-	// <li>Online：上线；</li>
-	// <li>Deploying：部署中；</li>
-	// <li>Locked: 锁定中，出现该状态时，无法对该域名进行部署变更。</li>
+	// <p>部署状态，取值有：</p><li>Online：上线；</li><li>Deploying：部署中；</li><li>Locked: 锁定中，出现该状态时，无法对该域名进行部署变更。</li>
 	DeployStatus *string `json:"DeployStatus,omitnil,omitempty" name:"DeployStatus"`
 
-	// HTTPS 配置信息。
+	// <p>HTTPS 配置信息。</p>
 	HTTPSConfig *DomainHTTPSConfig `json:"HTTPSConfig,omitnil,omitempty" name:"HTTPSConfig"`
 
-	// [Key 防盗链](https://cloud.tencent.com/document/product/266/14047)配置信息。
+	// <p><a href="https://cloud.tencent.com/document/product/266/14047">Key 防盗链</a>配置信息。</p>
 	UrlSignatureAuthPolicy *UrlSignatureAuthPolicy `json:"UrlSignatureAuthPolicy,omitnil,omitempty" name:"UrlSignatureAuthPolicy"`
 
-	// [Referer 防盗链](https://cloud.tencent.com/document/product/266/14046)配置信息。
+	// <p><a href="https://cloud.tencent.com/document/product/266/14046">Referer 防盗链</a>配置信息。</p>
 	RefererAuthPolicy *RefererAuthPolicy `json:"RefererAuthPolicy,omitnil,omitempty" name:"RefererAuthPolicy"`
 
-	// 域名添加到腾讯云点播系统中的时间。
-	// <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
+	// <p>域名添加到腾讯云点播系统中的时间。<li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</li></p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 域名 QUIC 配置信息。
+	// <p>域名 QUIC 配置信息。</p>
 	QUICConfig *DomainQUICConfig `json:"QUICConfig,omitnil,omitempty" name:"QUICConfig"`
 
-	// IP 访问限制配置信息。
+	// <p>IP 访问限制配置信息。</p>
 	IPFilterPolicy *IPFilterPolicy `json:"IPFilterPolicy,omitnil,omitempty" name:"IPFilterPolicy"`
 
-	// 域名类型，取值有： <li>VOD：使用 VOD 产品分发的域名；</li> <li>EdgeOne：使用 EdgeOne 产品分发的域名。</li>
+	// <p>域名类型，取值有： <li>VOD：使用 VOD 产品分发的域名；</li> <li>EdgeOne：使用 EdgeOne 产品分发的域名。</li></p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type DomainHTTPSConfig struct {
-	// 证书过期时间。
-	// <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
+	// <p>证书过期时间。<li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</li></p><p>参数格式：YYYY-MM-DDThh:mm:ss+08:00</p>
 	CertExpireTime *string `json:"CertExpireTime,omitnil,omitempty" name:"CertExpireTime"`
 
-	// 腾讯云 SSL 产品中的证书 ID。
+	// <p>腾讯云 SSL 产品中的证书 ID。</p>
 	CloudCertId *string `json:"CloudCertId,omitnil,omitempty" name:"CloudCertId"`
 }
 
@@ -19719,6 +19990,80 @@ type LowLightEnhanceInfo struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
+type MPSAIAnalysisConfigureInfo struct {
+	// <p>智能分类任务开关，可选值： <li>ON：开启智能分类任务；</li> <li>OFF：关闭智能分类任务。</li></p>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+}
+
+type MPSAIAnalysisTemplate struct {
+	// <p>视频内容分析模板名称，长度限制：64 个字符。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>视频内容分析模板描述信息，长度限制：256 个字符。</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>智能分类任务控制参数。</p>
+	ClassificationConfigure *MPSAIAnalysisConfigureInfo `json:"ClassificationConfigure,omitnil,omitempty" name:"ClassificationConfigure"`
+
+	// <p>智能标签任务控制参数。</p>
+	TagConfigure *MPSAIAnalysisConfigureInfo `json:"TagConfigure,omitnil,omitempty" name:"TagConfigure"`
+
+	// <p>智能封面任务控制参数。</p>
+	CoverConfigure *MPSAIAnalysisConfigureInfo `json:"CoverConfigure,omitnil,omitempty" name:"CoverConfigure"`
+
+	// <p>智能按帧标签任务控制参数。</p>
+	FrameTagConfigure *MPSAIAnalysisConfigureInfo `json:"FrameTagConfigure,omitnil,omitempty" name:"FrameTagConfigure"`
+
+	// <p>智能拆条任务控制参数。</p>
+	SplitConfigure *MPSAIAnalysisConfigureInfo `json:"SplitConfigure,omitnil,omitempty" name:"SplitConfigure"`
+
+	// <p>智能集锦任务控制参数。</p>
+	HighlightConfigure *MPSAIAnalysisConfigureInfo `json:"HighlightConfigure,omitnil,omitempty" name:"HighlightConfigure"`
+
+	// <p>智能片头片尾任务控制参数。</p>
+	OpeningAndEndingConfigure *MPSAIAnalysisConfigureInfo `json:"OpeningAndEndingConfigure,omitnil,omitempty" name:"OpeningAndEndingConfigure"`
+}
+
+type MPSAIAnalysisTemplateForUpdate struct {
+	// <p>视频内容分析模板唯一标识。</p>
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>视频内容分析模板名称，长度限制：64 个字符。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>视频内容分析模板描述信息，长度限制：256 个字符。</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>智能分类任务控制参数。</p>
+	ClassificationConfigure *MPSAIAnalysisConfigureInfo `json:"ClassificationConfigure,omitnil,omitempty" name:"ClassificationConfigure"`
+
+	// <p>智能标签任务控制参数。</p>
+	TagConfigure *MPSAIAnalysisConfigureInfo `json:"TagConfigure,omitnil,omitempty" name:"TagConfigure"`
+
+	// <p>智能封面任务控制参数。</p>
+	CoverConfigure *MPSAIAnalysisConfigureInfo `json:"CoverConfigure,omitnil,omitempty" name:"CoverConfigure"`
+
+	// <p>智能按帧标签任务控制参数。</p>
+	FrameTagConfigure *MPSAIAnalysisConfigureInfo `json:"FrameTagConfigure,omitnil,omitempty" name:"FrameTagConfigure"`
+
+	// <p>智能拆条任务控制参数。</p>
+	SplitConfigure *MPSAIAnalysisConfigureInfo `json:"SplitConfigure,omitnil,omitempty" name:"SplitConfigure"`
+
+	// <p>智能集锦任务控制参数。</p>
+	HighlightConfigure *MPSAIAnalysisConfigureInfo `json:"HighlightConfigure,omitnil,omitempty" name:"HighlightConfigure"`
+
+	// <p>智能片头片尾任务控制参数。</p>
+	OpeningAndEndingConfigure *MPSAIAnalysisConfigureInfo `json:"OpeningAndEndingConfigure,omitnil,omitempty" name:"OpeningAndEndingConfigure"`
+}
+
+type MPSAiAnalysisTaskInput struct {
+	// <p>视频内容分析模板 ID。</p>
+	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>扩展参数，其值为序列化的 json字符串。注意：此参数为定制需求参数，参考如下：<a href="https://cloud.tencent.com/document/product/862/101530">智能檫除</a><a href="https://cloud.tencent.com/document/product/862/112098">智能拆条</a><a href="https://cloud.tencent.com/document/product/862/107280">高光集锦</a><a href="https://cloud.tencent.com/document/product/862/112112">智能横转竖</a></p>
+	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
+}
+
 type MPSAiMediaInfo struct {
 	// MPS处理后的智能媒体信息列表
 	AiMediaList []*MPSAiMediaItem `json:"AiMediaList,omitnil,omitempty" name:"AiMediaList"`
@@ -19776,6 +20121,34 @@ type MPSAiMediaTask struct {
 	OutputText *string `json:"OutputText,omitnil,omitempty" name:"OutputText"`
 }
 
+type MPSEraseArea struct {
+	// <p>区域左上角X坐标。 如当Unit取1即使用百分比单位时，0.05表示区域左上角离整个画面左上角的横向距离为画面宽度的5%。</p>
+	LeftTopX *float64 `json:"LeftTopX,omitnil,omitempty" name:"LeftTopX"`
+
+	// <p>区域左上角Y坐标。 如当Unit取1即使用百分比单位时，0.1表示区域左上角离整个画面左上角的纵向距离为画面高度的10%。</p>
+	LeftTopY *float64 `json:"LeftTopY,omitnil,omitempty" name:"LeftTopY"`
+
+	// <p>区域右下角X坐标。 如当Unit取1即使用百分比单位时，0.75表示区域右下角离整个画面左上角的横向距离为画面宽度的75%。</p>
+	RightBottomX *float64 `json:"RightBottomX,omitnil,omitempty" name:"RightBottomX"`
+
+	// <p>区域右下角Y坐标。 如当Unit取1即使用百分比单位时，0.9表示区域右下角离整个画面左上角的纵向距离为画面高度的90%。</p>
+	RightBottomY *float64 `json:"RightBottomY,omitnil,omitempty" name:"RightBottomY"`
+
+	// <p>坐标单位 - 1 百分比 - 2 像素值</p>
+	Unit *uint64 `json:"Unit,omitnil,omitempty" name:"Unit"`
+}
+
+type MPSEraseTimeArea struct {
+	// <p>开始时间，单位:毫秒</p>
+	BeginMs *uint64 `json:"BeginMs,omitnil,omitempty" name:"BeginMs"`
+
+	// <p>结束时间，单位:毫秒</p>
+	EndMs *uint64 `json:"EndMs,omitnil,omitempty" name:"EndMs"`
+
+	// <p>时间段内擦除区域列表</p>
+	Areas []*MPSEraseArea `json:"Areas,omitnil,omitempty" name:"Areas"`
+}
+
 type MPSOutputFile struct {
 	// 文件类型。用于标识 MPS 视频处理任务执行结果中的特定返回文件。
 	// 取值：<li>AiAnalysis.DeLogo.Video: 智能擦除任务中产生的擦除后视频文件，默认以原文件类型存储；</li><li>AiAnalysis.DeLogo.OriginSubtitle: 智能擦除任务中基于画面提取的字幕文件；</li><li>AiAnalysis.DeLogo.TranslateSubtitle: 智能擦除任务中基于画面提取的字幕翻译文件。</li><li>MediaProcess.Transcode.Video: 音视频增强任务中增强后的音视频文件，默认以转码文件类型存储。</li>
@@ -19828,6 +20201,284 @@ type MPSOutputFileInfo struct {
 
 	// MPS输出文件的URL
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+type MPSOverrideEraseParameter struct {
+	// <p>擦除类型</p><ul><li>subtitle 去字幕</li><li>watermark 去水印</li><li>privacy 隐私保护</li></ul>
+	EraseType *string `json:"EraseType,omitnil,omitempty" name:"EraseType"`
+
+	// <p>字幕擦除配置；<br>当EraseType值为：subtitle，此字段为必填参数</p>
+	EraseSubtitleConfig *MPSUpdateSmartEraseSubtitleConfig `json:"EraseSubtitleConfig,omitnil,omitempty" name:"EraseSubtitleConfig"`
+
+	// <p>水印擦除配置；<br>当EraseType值为：watermark，此字段为必填参数</p>
+	EraseWatermarkConfig *MPSUpdateSmartEraseWatermarkConfig `json:"EraseWatermarkConfig,omitnil,omitempty" name:"EraseWatermarkConfig"`
+
+	// <p>隐私保护配置；<br>当EraseType值为：privacy，此字段为必填参数</p>
+	ErasePrivacyConfig *MPSSmartErasePrivacyConfig `json:"ErasePrivacyConfig,omitnil,omitempty" name:"ErasePrivacyConfig"`
+
+	// <p>擦除压制字幕模板id。</p>
+	SubtitleEmbedId *int64 `json:"SubtitleEmbedId,omitnil,omitempty" name:"SubtitleEmbedId"`
+}
+
+type MPSRawSmartEraseParameter struct {
+	// <p>擦除类型</p><ul><li>subtitle 去字幕</li><li>watermark 去水印</li><li>privacy 隐私保护</li></ul>
+	EraseType *string `json:"EraseType,omitnil,omitempty" name:"EraseType"`
+
+	// <p>字幕擦除配置；<br>当EraseType值为：subtitle，此字段为必填参数</p>
+	EraseSubtitleConfig *MPSSmartEraseSubtitleConfig `json:"EraseSubtitleConfig,omitnil,omitempty" name:"EraseSubtitleConfig"`
+
+	// <p>水印擦除配置；<br>当EraseType值为：watermark，此字段为必填参数</p>
+	EraseWatermarkConfig *MPSSmartEraseWatermarkConfig `json:"EraseWatermarkConfig,omitnil,omitempty" name:"EraseWatermarkConfig"`
+
+	// <p>隐私保护配置；<br>当EraseType值为：privacy，此字段为必填参数</p>
+	ErasePrivacyConfig *MPSSmartErasePrivacyConfig `json:"ErasePrivacyConfig,omitnil,omitempty" name:"ErasePrivacyConfig"`
+
+	// <p>擦除字幕压制模板id。</p>
+	SubtitleEmbedId *int64 `json:"SubtitleEmbedId,omitnil,omitempty" name:"SubtitleEmbedId"`
+
+	// <p>压制配置，默认开启1, 把字幕压制回原字幕位置。</p>
+	UseOriginalPos *int64 `json:"UseOriginalPos,omitnil,omitempty" name:"UseOriginalPos"`
+
+	// <p>压制配置，默认开启1, 开启后使用原字幕字号。</p>
+	UseOriginalSize *int64 `json:"UseOriginalSize,omitnil,omitempty" name:"UseOriginalSize"`
+}
+
+type MPSRawSmartSubtitleParameter struct {
+	// <p>智能字幕字幕语言类型。</p><p>枚举值：</p><ul><li>0： 源语言</li><li>1： 翻译语言</li><li>2： 源语言+翻译语言</li></ul><p>当TranslateSwitch为OFF时仅支持取0当TranslateSwitch为ON时仅支持取1或2</p>
+	SubtitleType *int64 `json:"SubtitleType,omitnil,omitempty" name:"SubtitleType"`
+
+	// <p>智能字幕视频源语言<br>OCR识别仅支持以下语言：<br><code>zh_en</code>：中英<br><code>multi</code>：其他<br>ASR识别和纯字幕翻译当前支持以下语言：<br><code>auto</code>：自动识别<br><code>zh</code>：简体中文<br><code>en</code>：英语<br><code>ja</code>：日语<br><code>ko</code>：韩语<br><code>zh-PY</code>：中英粤<br><code>zh_medical</code>：中文医疗<br><code>vi</code>：越南语<br><code>ms</code>：马来语<br><code>id</code>：印度尼西亚语<br><code>fil</code>：菲律宾语<br><code>th</code>：泰语<br><code>pt</code>：葡萄牙语<br><code>tr</code>：土耳其语<br><code>ar</code>：阿拉伯语<br><code>es</code>：西班牙语<br><code>hi</code>：印地语<br><code>fr</code>：法语<br><code>de</code>：德语<br><code>it</code>：意大利语<br><code>zh_dialect</code>：中文方言<br><code>zh_en</code>：中英<br><code>yue</code>：粤语<br><code>ru</code>：俄语<br><code>prime_zh</code>：中英方言<br><code>af-ZA</code>：南非荷兰语（南非）<br><code>sq-AL</code>：阿尔巴尼亚语（阿尔巴尼亚）<br><code>am-ET</code>：阿姆哈拉语（埃塞俄比亚）<br><code>ar-DZ</code>：阿拉伯语（阿尔及利亚）<br><code>ar-BH</code>：阿拉伯语（巴林）<br><code>ar-EG</code>：阿拉伯语（埃及）<br><code>ar-IQ</code>：阿拉伯语（伊拉克）<br><code>ar-IL</code>：阿拉伯语（以色列）<br><code>ar-JO</code>：阿拉伯语（约旦）<br><code>ar-KW</code>：阿拉伯语（科威特）<br><code>ar-LB</code>：阿拉伯语（黎巴嫩）<br><code>ar-MR</code>：阿拉伯语（毛里塔尼亚）<br><code>ar-MA</code>：阿拉伯语（摩洛哥）<br><code>ar-OM</code>：阿拉伯语（阿曼）<br><code>ar-QA</code>：阿拉伯语（卡塔尔）<br><code>ar-SA</code>：阿拉伯语（沙特阿拉伯）<br><code>ar-PS</code>：阿拉伯语（巴勒斯坦国）<br><code>ar-SY</code>：阿拉伯语（叙利亚）<br><code>ar-TN</code>：阿拉伯语（突尼斯）<br><code>ar-AE</code>：阿拉伯语（阿拉伯联合酋长国）<br><code>ar-YE</code>：阿拉伯语（也门）<br><code>hy-AM</code>：亚美尼亚语（亚美尼亚）<br><code>az-AZ</code>：阿塞拜疆语（阿塞拜疆）<br><code>eu-ES</code>：巴斯克语（西班牙）<br><code>bn-BD</code>：孟加拉语（孟加拉）<br><code>bn-IN</code>：孟加拉语（印度）<br><code>bs-BA</code>：波斯尼亚语（波斯尼亚和黑塞哥维那）<br><code>bg-BG</code>：保加利亚语（保加利亚）<br><code>my-MM</code>：缅甸语（缅甸）<br><code>ca-ES</code>：加泰罗尼亚语（西班牙）<br><code>hr-HR</code>：克罗地亚语（克罗地亚）<br><code>cs-CZ</code>：捷克语（捷克共和国）<br><code>da-DK</code>：丹麦语（丹麦）<br><code>nl-BE</code>：荷兰语（比利时）<br><code>nl-NL</code>：荷兰语（荷兰）<br><code>en-AU</code>：英语（澳大利亚）<br><code>en-CA</code>：英语（加拿大）<br><code>en-GH</code>：英语（加纳）<br><code>en-HK</code>：英语（中国香港）<br><code>en-IN</code>：英语（印度）<br><code>en-IE</code>：英语（爱尔兰）<br><code>en-KE</code>：英语（肯尼亚）<br><code>en-NZ</code>：英语（新西兰）<br><code>en-NG</code>：英语（尼日利亚）<br><code>en-PK</code>：英语（巴基斯坦）<br><code>en-PH</code>：英语（菲律宾）<br><code>en-SG</code>：英语（新加坡）<br><code>en-ZA</code>：英语（南非）<br><code>en-TZ</code>：英语（坦桑尼亚）<br><code>en-GB</code>：英语（英国）<br><code>en-US</code>：英语（美国）<br><code>et-EE</code>：爱沙尼亚语（爱沙尼亚）<br><code>fil-PH</code>：菲律宾语（菲律宾）<br><code>fi-FI</code>：芬兰语（芬兰）<br><code>fr-BE</code>：法语（比利时）<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fr-CH</code>：法语（瑞士）<br><code>gl-ES</code>：加利西亚语（西班牙）<br><code>ka-GE</code>：格鲁吉亚语（格鲁吉亚）<br><code>el-GR</code>：希腊语（希腊）<br><code>gu-IN</code>：古吉拉特语（印度）<br><code>iw-IL</code>：希伯来语（以色列）<br><code>hi-IN</code>：印地语（印度）<br><code>hu-HU</code>：匈牙利语（匈牙利）<br><code>is-IS</code>：冰岛语（冰岛）<br><code>id-ID</code>：印度尼西亚语（印度尼西亚）<br><code>it-IT</code>：意大利语（意大利）<br><code>it-CH</code>：意大利语（瑞士）<br><code>ja-JP</code>：日语（日本）<br><code>jv-ID</code>：爪哇语（印度尼西亚）<br><code>kn-IN</code>：卡纳达语（印度）<br><code>kk-KZ</code>：哈萨克语（哈萨克斯坦）<br><code>km-KH</code>：高棉语（柬埔寨）<br><code>rw-RW</code>：卢旺达语（卢旺达）<br><code>ko-KR</code>：韩语（韩国）<br><code>lo-LA</code>：老挝语（老挝）<br><code>lv-LV</code>：拉脱维亚语（拉脱维亚）<br><code>lt-LT</code>：立陶宛语（立陶宛）<br><code>mk-MK</code>：马其顿语（北马其顿）<br><code>ms-MY</code>：马来语（马来西亚）<br><code>ml-IN</code>：马拉雅拉姆语（印度）<br><code>mr-IN</code>：马拉地语（印度）<br><code>mn-MN</code>：蒙古语（蒙古）<br><code>ne-NP</code>：尼泊尔语（尼泊尔）<br><code>no-NO</code>：博克马尔挪威语（挪威）<br><code>fa-IR</code>：波斯语（伊朗）<br><code>pl-PL</code>：波兰语（波兰）<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>ro-RO</code>：罗马尼亚语（罗马尼亚）<br><code>ru-RU</code>：俄语（俄罗斯）<br><code>sr-RS</code>：塞尔维亚语（塞尔维亚）<br><code>si-LK</code>：僧伽罗语（斯里兰卡）<br><code>sk-SK</code>：斯洛伐克语（斯洛伐克）<br><code>sl-SI</code>：斯洛文尼亚语（斯洛文尼亚）<br><code>st-ZA</code>：南索托语（南非）<br><code>es-AR</code>：西班牙语（阿根廷）<br><code>es-BO</code>：西班牙语（玻利维亚）<br><code>es-CL</code>：西班牙语（智利）<br><code>es-CO</code>：西班牙语（哥伦比亚）<br><code>es-CR</code>：西班牙语（哥斯达黎加）<br><code>es-DO</code>：西班牙语（多米尼加共和国）<br><code>es-EC</code>：西班牙语（厄瓜多尔）<br><code>es-SV</code>：西班牙语（萨尔瓦多）<br><code>es-GT</code>：西班牙语（危地马拉）<br><code>es-HN</code>：西班牙语（洪都拉斯）<br><code>es-MX</code>：西班牙语（墨西哥）<br><code>es-NI</code>：西班牙语（尼加拉瓜）<br><code>es-PA</code>：西班牙语（巴拿马）<br><code>es-PY</code>：西班牙语（巴拉圭）<br><code>es-PE</code>：西班牙语（秘鲁）<br><code>es-PR</code>：西班牙语（波多黎各）<br><code>es-ES</code>：西班牙语（西班牙）<br><code>es-US</code>：西班牙语（美国）<br><code>es-UY</code>：西班牙语（乌拉圭）<br><code>es-VE</code>：西班牙语（委内瑞拉）<br><code>su-ID</code>：巽他语（印度尼西亚）<br><code>sw-KE</code>：斯瓦希里语（肯尼亚）<br><code>sw-TZ</code>：斯瓦希里语（坦桑尼亚）<br><code>sv-SE</code>：瑞典语（瑞典）<br><code>ta-IN</code>：泰米尔语（印度）<br><code>ta-MY</code>：泰米尔语（马来西亚）<br><code>ta-SG</code>：泰米尔语（新加坡）<br><code>ta-LK</code>：泰米尔语（斯里兰卡）<br><code>te-IN</code>：泰卢固语（印度）<br><code>th-TH</code>：泰语（泰国）<br><code>ts-ZA</code>：聪加语（南非）<br><code>tr-TR</code>：土耳其语（土耳其）<br><code>uk-UA</code>：乌克兰语（乌克兰）<br><code>ur-IN</code>：乌尔都语（印度）<br><code>ur-PK</code>：乌尔都语（巴基斯坦）<br><code>uz-UZ</code>：乌兹别克语（乌兹别克斯坦）<br><code>ve-ZA</code>：文达语（南非）<br><code>vi-VN</code>：越南语（越南）<br><code>xh-ZA</code>：科萨语（南非）<br><code>zu-ZA</code>：祖鲁语（南非）</p>
+	VideoSrcLanguage *string `json:"VideoSrcLanguage,omitnil,omitempty" name:"VideoSrcLanguage"`
+
+	// <p>智能字幕文件格式:</p><ul><li>ASR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li><li>不填或填空：不生成字幕文件</li></ul></li><li>纯字幕翻译处理类型下：<ul><li>original：与源文件一致</li><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li><li>OCR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li></ul><p><strong>注意</strong>：</p><ul><li>ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；</li><li>纯字幕翻译和OCR识别翻译方式下，不允许传空或不传</li><li>OCR类型的任务，在开启压制时，允许不传或传空</li></ul>
+	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
+
+	// <p>字幕翻译开关<br><code>ON</code>: 开启翻译<br><code>OFF</code>: 关闭翻译</p><p><strong>注意</strong>：纯字幕翻译方式下，不传默认是打开的，不允许传空或<code>OFF</code>；</p>
+	TranslateSwitch *string `json:"TranslateSwitch,omitnil,omitempty" name:"TranslateSwitch"`
+
+	// <p>字幕翻译目标语言<br>当TranslateSwitch为ON的时候生效，翻译语言列表：<br><code>ab</code>：阿布哈兹语<br><code>ace</code>：亚齐语<br><code>ach</code>：阿乔利语<br><code>af</code>：南非荷兰语<br><code>ak</code>：契维语（阿坎语）<br><code>am</code>：Amharic<br><code>ar</code>：阿拉伯语<br><code>as</code>：阿萨姆语<br><code>ay</code>：艾马拉语<br><code>az</code>：阿塞拜疆语<br><code>ba</code>：巴什基尔语<br><code>ban</code>：巴厘语<br><code>bbc</code>：巴塔克托巴语<br><code>bem</code>：Bemba<br><code>bew</code>：Betawi<br><code>bg</code>：保加利亚语<br><code>bho</code>：博杰普尔语<br><code>bik</code>：Bikol<br><code>bm</code>：班巴拉语<br><code>bn</code>：孟加拉语<br><code>br</code>：布列塔尼语<br><code>bs</code>：波斯尼亚语<br><code>btx</code>：巴塔克卡罗语<br><code>bts</code>：巴塔克西马隆贡语<br><code>bua</code>：布里亚特语<br><code>ca</code>：加泰罗尼亚语<br><code>ceb</code>：宿务语<br><code>cgg</code>：Kiga<br><code>chm</code>：草原马里语<br><code>ckb</code>：库尔德语（索拉尼语）<br><code>cnh</code>：哈卡钦语<br><code>co</code>：科西嘉语<br><code>crh</code>：克里米亚鞑靼语<br><code>crs</code>：塞舌尔克里奥尔语<br><code>cs</code>：捷克语<br><code>cv</code>：楚瓦什语<br><code>cy</code>：威尔士语<br><code>da</code>：丹麦语<br><code>de</code>：德语<br><code>din</code>：Dinka<br><code>doi</code>：多格来语<br><code>dov</code>：敦贝语<br><code>dv</code>：第维埃语<br><code>dz</code>：宗卡语<br><code>ee</code>：Ewe<br><code>el</code>：希腊语<br><code>en</code>：英语<br><code>eo</code>：世界语<br><code>es</code>：西班牙语<br><code>et</code>：爱沙尼亚语<br><code>eu</code>：巴斯克语<br><code>fa</code>：波斯语<br><code>ff</code>：富拉语<br><code>fi</code>：芬兰语<br><code>fil</code>：菲律宾语（塔加拉语）<br><code>fj</code>：斐济语<br><code>fr</code>：法语<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fy</code>：弗里斯兰语<br><code>ga</code>：爱尔兰语<br><code>gaa</code>：加 (Ga) 语<br><code>gd</code>：苏格兰盖尔语<br><code>gl</code>：加利西亚语<br><code>gn</code>：瓜拉尼语<br><code>gom</code>：贡根语<br><code>gu</code>：古吉拉特语<br><code>gv</code>：马恩岛语<br><code>ha</code>：Hausa<br><code>haw</code>：夏威夷语<br><code>he</code>：希伯来语<br><code>hi</code>：印地语<br><code>hil</code>：希利盖农语<br><code>hmn</code>：苗语<br><code>hr</code>：克罗地亚语<br><code>hrx</code>：洪斯吕克语<br><code>ht</code>：海地克里奥尔语<br><code>hu</code>：匈牙利语<br><code>hy</code>：亚美尼亚语<br><code>id</code>：印度尼西亚语<br><code>ig</code>：Igbo<br><code>ilo</code>：伊洛果语<br><code>is</code>：冰岛语<br><code>it</code>：意大利语<br><code>iw</code>：希伯来语<br><code>ja</code>：日语<br><code>jv</code>：爪哇语<br><code>ka</code>：格鲁吉亚语<br><code>kk</code>：哈萨克语<br><code>km</code>：高棉语<br><code>kn</code>：卡纳达语<br><code>ko</code>：韩语<br><code>kri</code>：Krio<br><code>ku</code>：库尔德语（库尔曼吉语）<br><code>ktu</code>：吉土巴语<br><code>ky</code>：吉尔吉斯语<br><code>la</code>：拉丁语<br><code>lb</code>：卢森堡语<br><code>lg</code>：干达语（卢干达语）<br><code>li</code>：林堡语<br><code>lij</code>：利古里亚语<br><code>lmo</code>：伦巴第语<br><code>ln</code>：林加拉语<br><code>lo</code>：老挝语<br><code>lt</code>：立陶宛语<br><code>ltg</code>：拉特加莱语<br><code>luo</code>：Luo<br><code>lus</code>：米佐语<br><code>lv</code>：拉脱维亚语<br><code>mai</code>：迈蒂利语<br><code>mak</code>：马卡萨<br><code>mg</code>：马尔加什语<br><code>mi</code>：毛利语<br><code>min</code>：米南语<br><code>mk</code>：马其顿语<br><code>ml</code>：马拉雅拉姆语<br><code>mn</code>：蒙古语<br><code>mr</code>：马拉地语<br><code>ms</code>：马来语<br><code>mt</code>：马耳他语<br><code>my</code>：缅甸语<br><code>ne</code>：尼泊尔语<br><code>new</code>：尼瓦尔语<br><code>nl</code>：荷兰语<br><code>no</code>：挪威语<br><code>nr</code>：恩德贝莱语（南部）<br><code>nso</code>：北索托语（塞佩蒂语）<br><code>nus</code>：努尔语<br><code>ny</code>：齐切瓦语（尼扬贾语）<br><code>oc</code>：奥克斯坦语<br><code>om</code>：Oromo<br><code>or</code>：奥里亚语<br><code>pa</code>：旁遮普语<br><code>pag</code>：邦阿西楠语<br><code>pam</code>：邦板牙语<br><code>pap</code>：Papiamento<br><code>pl</code>：波兰语<br><code>ps</code>：Pashto<br><code>pt</code>：葡萄牙语<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>qu</code>：克丘亚语<br><code>ro</code>：罗马尼亚语<br><code>rom</code>：罗姆语<br><code>rn</code>：Rundi<br><code>ru</code>：俄语<br><code>rw</code>：卢旺达语<br><code>sa</code>：梵语<br><code>scn</code>：西西里语<br><code>sd</code>：信德语<br><code>sg</code>：Sango<br><code>shn</code>：掸语<br><code>si</code>：僧伽罗语<br><code>sk</code>：斯洛伐克语<br><code>sl</code>：斯洛文尼亚语<br><code>sm</code>：萨摩亚语<br><code>sn</code>：修纳语<br><code>so</code>：索马里语<br><code>sq</code>：阿尔巴尼亚语<br><code>sr</code>：塞尔维亚语<br><code>ss</code>：斯瓦特语<br><code>st</code>：塞索托语<br><code>su</code>：巽他语<br><code>sv</code>：瑞典语<br><code>sw</code>：斯瓦希里语<br><code>szl</code>：西里西亚语<br><code>ta</code>：泰米尔语<br><code>te</code>：泰卢固语<br><code>tet</code>：德顿语<br><code>tg</code>：塔吉克语<br><code>th</code>：泰语<br><code>ti</code>：提格里尼亚语<br><code>tk</code>：土库曼语<br><code>tn</code>：茨瓦纳语<br><code>tr</code>：土耳其语<br><code>ts</code>：聪加语<br><code>tt</code>：鞑靼语<br><code>ug</code>：维吾尔语<br><code>uk</code>：乌克兰语<br><code>ur</code>：乌尔都语<br><code>uz</code>：乌兹别克语<br><code>vi</code>：越南语<br><code>xh</code>：科萨语<br><code>yi</code>：意第绪语<br><code>yo</code>：约鲁巴语<br><code>yua</code>：尤卡坦玛雅语<br><code>yue</code>：粤语<br><code>zh</code>：简体中文<br><code>zh-TW</code>：中文（繁体）<br><code>zu</code>：祖鲁语</p><p><strong>注意</strong>：多语言方式，则使用 <code>/</code> 分割，如：<code>en/ja</code>，表示英语和日语。</p>
+	TranslateDstLanguage *string `json:"TranslateDstLanguage,omitnil,omitempty" name:"TranslateDstLanguage"`
+
+	// <p>自定义参数</p>
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// <p>字幕处理类型：</p><ul><li>0：ASR识别字幕</li><li>1：纯字幕翻译</li><li>2：OCR识别字幕</li></ul><p><strong>注意</strong>：不传的情况下默认类型为 ASR识别字幕</p>
+	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
+}
+
+type MPSSelectingSubtitleAreasConfig struct {
+	// <p>自动选择自定义区域。 对选定区域，利用AI模型自动检测其中存在的选择目标并提取。</p>
+	AutoAreas []*MPSEraseArea `json:"AutoAreas,omitnil,omitempty" name:"AutoAreas"`
+
+	// <p>示例视频或图片的宽，单位像素值</p>
+	SampleWidth *uint64 `json:"SampleWidth,omitnil,omitempty" name:"SampleWidth"`
+
+	// <p>示例视频或图片的高，单位像素值</p>
+	SampleHeight *uint64 `json:"SampleHeight,omitnil,omitempty" name:"SampleHeight"`
+}
+
+type MPSSmartErasePrivacyConfig struct {
+	// <p>隐私保护擦除方式。</p><p>枚举值：</p><ul><li>blur： 模糊</li><li>mosaic： 马赛克</li></ul>
+	PrivacyModel *string `json:"PrivacyModel,omitnil,omitempty" name:"PrivacyModel"`
+
+	// <p>隐私保护目标，（在API Explorer上使用时无需传入数组，添加相应项并填入对应值即可）。</p><p>枚举值：</p><ul><li>face： 人脸</li><li>plate： 车牌</li></ul>
+	PrivacyTargets []*string `json:"PrivacyTargets,omitnil,omitempty" name:"PrivacyTargets"`
+}
+
+type MPSSmartEraseSubtitleConfig struct {
+	// <p>字幕擦除方式。<br><strong>自动擦除：</strong>通过AI模型自动识别视频中的字幕文本内容，进行无痕化擦除，生成新的视频。但画面干扰、特殊字幕样式可能会带来一定漏擦误擦问题，可以通过指定区域擦除处理。<br>当使用自动擦除时，若您不指定AutoAreas，将对默认区域（画面中下部）进行自动擦除；若指定AutoAreas，将改为对您指定的区域进行自动擦除。<br><strong>指定区域擦除：</strong>若您的字幕位置较固定，建议您直接指定擦除区域，最大程度减少漏擦的情况。<br>当您选择指定区域擦除时，请在CustomAreas中至少传入一个指定区域。</p><ul><li>auto 自动擦除</li><li>custom 指定区域擦除</li></ul>
+	SubtitleEraseMethod *string `json:"SubtitleEraseMethod,omitnil,omitempty" name:"SubtitleEraseMethod"`
+
+	// <p>字幕擦除模型。<br><strong>标准版（推荐）：</strong>若您的字幕样式标准，通常建议选择该版本，细节无痕化效果更好。<br><strong>区域版：</strong>若您的字幕存在花体、阴影、动效等特殊样式，建议选择区域版，擦除面积更大，但细节效果不如标准版。</p><ul><li>standard 标准模型</li><li>area 区域模型</li></ul>
+	SubtitleModel *string `json:"SubtitleModel,omitnil,omitempty" name:"SubtitleModel"`
+
+	// <p>是否开启OCR字幕提取，默认取OFF。<br>当且仅当SubtitleEraseMethod取auto时支持开启OCR字幕提取，开启后将识别自动擦除区域内出现时间最长且最稳定的文字区域为字幕区域，对字幕区域中的文字进行提取和擦除。</p><ul><li>ON 开启</li><li>OFF 关闭</li></ul>
+	OcrSwitch *string `json:"OcrSwitch,omitnil,omitempty" name:"OcrSwitch"`
+
+	// <p>字幕语言，用于指导OCR识别，默认取zh_en；仅当OcrSwitch取"ON"时生效。</p><ul><li>zh_en 中英文</li><li>multi 其他<br>其他具体支持识别如下语言：<br>中文、英文、日文、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语、印地语、阿拉伯语、印度-孟加拉语、印度-古吉拉特语、印度-卡纳达语 、印度-马拉亚拉姆语 、印度-泰米尔语、印度-泰卢固语、斯洛文尼亚语、波兰语、加泰罗尼亚语、波斯尼亚语、捷克语、爱沙尼亚语、克罗地亚语、旁遮普语、马拉地语、阿塞拜疆语、印尼语、卢森堡语 、立陶宛语、拉脱维亚语、马耳他语、斯洛伐克语、土耳其语、哈萨克语、希腊语、爱尔兰语、白俄罗斯语、高棉语、他加禄语、普什图语、波斯语、塔吉克斯坦语</li></ul>
+	SubtitleLang *string `json:"SubtitleLang,omitnil,omitempty" name:"SubtitleLang"`
+
+	// <p>字幕文件格式，默认取vtt；仅当OcrSwitch取"ON"时生效。</p><ul><li>srt srt格式</li><li>vtt WebVTT格式</li><li>当填写SubtitleEmbedId时可以取值空字符串，表示不输出字幕文件</li></ul>
+	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
+
+	// <p>是否开启字幕翻译，默认取OFF；仅当OcrSwitch取"ON"时生效。</p><ul><li>ON 开启</li><li>OFF 关闭</li></ul>
+	TransSwitch *string `json:"TransSwitch,omitnil,omitempty" name:"TransSwitch"`
+
+	// <p>字幕翻译目标语言，默认取en；仅当TransSwitch取"ON"时生效。<br>当前支持以下语言：<br>zh：简体中文<br>en：英语<br>ja：日语<br>ko：韩语<br>fr：法语<br>es：西班牙语<br>it：意大利语<br>de：德语<br>tr：土耳其语<br>ru：俄语<br>pt：葡萄牙语<br>vi：越南语<br>id：印度尼西亚语<br>ms：马来语<br>th：泰语<br>ar：阿拉伯语<br>hi：印地语</p>
+	TransDstLang *string `json:"TransDstLang,omitnil,omitempty" name:"TransDstLang"`
+
+	// <p>自动擦除自定义区域。<br>对选定区域，利用AI模型自动检测其中存在的擦除目标并擦除。<br>注意：当擦除方式选择custom时，此参数将不会生效；修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。</p>
+	AutoAreas []*MPSEraseArea `json:"AutoAreas,omitnil,omitempty" name:"AutoAreas"`
+
+	// <p>指定擦除自定义区域。<br>对选定区域，在选定时间段内不进行检测识别直接进行擦除。<br>注意：修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。</p>
+	CustomAreas []*MPSEraseTimeArea `json:"CustomAreas,omitnil,omitempty" name:"CustomAreas"`
+
+	// <p>压制配置，默认开启1, 把字幕压制回原字幕位置。只有开启OCR翻译时可以填写，取0时表示不开启压回原位</p>
+	UseOriginalPos *int64 `json:"UseOriginalPos,omitnil,omitempty" name:"UseOriginalPos"`
+
+	// <p>压制配置，默认开启1, 开启后使用原字幕字号。只有开启OCR翻译时可以填写，取0时表示不使用原字号</p>
+	UseOriginalSize *int64 `json:"UseOriginalSize,omitnil,omitempty" name:"UseOriginalSize"`
+}
+
+type MPSSmartEraseTaskInput struct {
+	// <p>智能擦除模板id。</p>
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>智能擦除自定义参数，当 Definition 填 0 时有效。 该参数用于高度定制场景，建议您优先使用 Definition 指定智能擦除参数。</p>
+	RawParameter *MPSRawSmartEraseParameter `json:"RawParameter,omitnil,omitempty" name:"RawParameter"`
+
+	// <p>智能擦除自定义参数，当 Definition 不填 0 时有效。 当填写了该结构中的部分擦除参数时，将使用填写的参数覆盖智能擦除模板中的参数。 该参数用于高度定制场景，建议您仅使用 Definition 指定智能擦除参数。</p>
+	OverrideParameter *MPSOverrideEraseParameter `json:"OverrideParameter,omitnil,omitempty" name:"OverrideParameter"`
+}
+
+type MPSSmartEraseTemplate struct {
+	// <p>智能擦除模板名称长度限制：64 个字符。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>擦除类型</p><ul><li>subtitle 去字幕</li><li>watermark 去水印</li><li>privacy 隐私保护</li></ul>
+	EraseType *string `json:"EraseType,omitnil,omitempty" name:"EraseType"`
+
+	// <p>智能擦除模板描述信息长度限制：256 个字符。</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>字幕擦除配置，EraseType取subtitle时必填且仅此时生效。</p>
+	EraseSubtitleConfig *MPSSmartEraseSubtitleConfig `json:"EraseSubtitleConfig,omitnil,omitempty" name:"EraseSubtitleConfig"`
+
+	// <p>水印擦除配置，EraseType取watermark时必填且仅此时生效。</p>
+	EraseWatermarkConfig *MPSSmartEraseWatermarkConfig `json:"EraseWatermarkConfig,omitnil,omitempty" name:"EraseWatermarkConfig"`
+
+	// <p>隐私保护配置，EraseType取privacy时必填且仅此时生效。</p>
+	ErasePrivacyConfig *MPSSmartErasePrivacyConfig `json:"ErasePrivacyConfig,omitnil,omitempty" name:"ErasePrivacyConfig"`
+
+	// <p>示例视频或图片的宽，单位像素值</p>
+	SampleWidth *uint64 `json:"SampleWidth,omitnil,omitempty" name:"SampleWidth"`
+
+	// <p>示例视频或图片的高，单位像素值</p>
+	SampleHeight *uint64 `json:"SampleHeight,omitnil,omitempty" name:"SampleHeight"`
+}
+
+type MPSSmartEraseTemplateForUpdate struct {
+	// <p>智能擦除模板唯一标识</p>
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>智能擦除模板名称长度限制：64 个字符。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>擦除类型</p><ul><li>subtitle 去字幕</li><li>watermark 去水印</li><li>privacy 隐私保护</li></ul>
+	EraseType *string `json:"EraseType,omitnil,omitempty" name:"EraseType"`
+
+	// <p>智能擦除模板描述信息长度限制：256 个字符。</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>字幕擦除配置，EraseType取subtitle或者EraseType不填，对应模板原EraseType为subtitle时生效。</p>
+	EraseSubtitleConfig *MPSSmartEraseSubtitleConfig `json:"EraseSubtitleConfig,omitnil,omitempty" name:"EraseSubtitleConfig"`
+
+	// <p>水印擦除配置，EraseType取watermark或者EraseType不填，对应模板原EraseType为watermark时生效。</p>
+	EraseWatermarkConfig *MPSSmartEraseWatermarkConfig `json:"EraseWatermarkConfig,omitnil,omitempty" name:"EraseWatermarkConfig"`
+
+	// <p>隐私保护配置，EraseType取privacy或者EraseType不填，对应模板原EraseType为privacy时生效。</p>
+	ErasePrivacyConfig *MPSSmartErasePrivacyConfig `json:"ErasePrivacyConfig,omitnil,omitempty" name:"ErasePrivacyConfig"`
+
+	// <p>示例视频或图片的宽，单位像素值</p>
+	SampleWidth *uint64 `json:"SampleWidth,omitnil,omitempty" name:"SampleWidth"`
+
+	// <p>示例视频或图片的高，单位像素值</p>
+	SampleHeight *uint64 `json:"SampleHeight,omitnil,omitempty" name:"SampleHeight"`
+}
+
+type MPSSmartEraseWatermarkConfig struct {
+	// <p>水印擦除方式。 <strong>自动擦除：</strong>通过A模型自动识别视频中的水印，擦除后生成新的视频。适用于动态水印。 当使用自动擦除时，若您不指定AutoAreas，将对视频全屏进行自动擦除；若指定AutoAreas，将改为对您指定的区域进行自动擦除。 <strong>指定区域擦除：</strong>针对位置较固定的静态水印，建议您直接指定擦除区域。 当您选择指定区域擦除时，请至少传入一个指定区域。 - auto 自动擦除 - custom 指定区域擦除</p>
+	WatermarkEraseMethod *string `json:"WatermarkEraseMethod,omitnil,omitempty" name:"WatermarkEraseMethod"`
+
+	// <p>水印擦除模型。 基础版：效果一般，性价比高，适合动画或背景较干净的视频。 高级版：效果更好，适合短剧等现实风格视频。 - basic 基础版 - advanced 高级版</p>
+	WatermarkModel *string `json:"WatermarkModel,omitnil,omitempty" name:"WatermarkModel"`
+
+	// <p>自动擦除自定义区域。 对选定区域，利用AI模型自动检测其中存在的擦除目标并擦除。 注意，当擦除方式为custom时，此参数将不会生效。清除区域请传入[]，不传时将保持模板区域信息不变。</p>
+	AutoAreas []*MPSEraseArea `json:"AutoAreas,omitnil,omitempty" name:"AutoAreas"`
+
+	// <p>指定擦除自定义区域。 对选定区域，在选定时间段内不进行检测识别直接进行擦除。 注意：清除区域请传入[]，不传时将保持模板区域信息不变。</p>
+	CustomAreas []*MPSEraseTimeArea `json:"CustomAreas,omitnil,omitempty" name:"CustomAreas"`
+}
+
+type MPSSmartSubtitleTemplate struct {
+	// <p>智能字幕模板名称<br>长度限制：64 个字符。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>智能字幕模板描述信息<br>长度限制：256 个字符。</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>智能字幕字幕语言类型<br>0: 源语言<br>1: 翻译语言<br>2: 源语言+翻译语言<br>当TranslateSwitch为OFF时仅支持取0<br>当TranslateSwitch为ON时仅支持取1或2</p>
+	SubtitleType *int64 `json:"SubtitleType,omitnil,omitempty" name:"SubtitleType"`
+
+	// <p>智能字幕视频源语言<br>OCR识别仅支持以下语言：<br><code>zh_en</code>：中英<br><code>multi</code>：其他<br>ASR识别和纯字幕翻译当前支持以下语言：<br><code>auto</code>：自动识别<br><code>zh</code>：简体中文<br><code>en</code>：英语<br><code>ja</code>：日语<br><code>ko</code>：韩语<br><code>zh-PY</code>：中英粤<br><code>zh_medical</code>：中文医疗<br><code>vi</code>：越南语<br><code>ms</code>：马来语<br><code>id</code>：印度尼西亚语<br><code>fil</code>：菲律宾语<br><code>th</code>：泰语<br><code>pt</code>：葡萄牙语<br><code>tr</code>：土耳其语<br><code>ar</code>：阿拉伯语<br><code>es</code>：西班牙语<br><code>hi</code>：印地语<br><code>fr</code>：法语<br><code>de</code>：德语<br><code>it</code>：意大利语<br><code>zh_dialect</code>：中文方言<br><code>zh_en</code>：中英<br><code>yue</code>：粤语<br><code>ru</code>：俄语<br><code>prime_zh</code>：中英方言<br><code>af-ZA</code>：南非荷兰语（南非）<br><code>sq-AL</code>：阿尔巴尼亚语（阿尔巴尼亚）<br><code>am-ET</code>：阿姆哈拉语（埃塞俄比亚）<br><code>ar-DZ</code>：阿拉伯语（阿尔及利亚）<br><code>ar-BH</code>：阿拉伯语（巴林）<br><code>ar-EG</code>：阿拉伯语（埃及）<br><code>ar-IQ</code>：阿拉伯语（伊拉克）<br><code>ar-IL</code>：阿拉伯语（以色列）<br><code>ar-JO</code>：阿拉伯语（约旦）<br><code>ar-KW</code>：阿拉伯语（科威特）<br><code>ar-LB</code>：阿拉伯语（黎巴嫩）<br><code>ar-MR</code>：阿拉伯语（毛里塔尼亚）<br><code>ar-MA</code>：阿拉伯语（摩洛哥）<br><code>ar-OM</code>：阿拉伯语（阿曼）<br><code>ar-QA</code>：阿拉伯语（卡塔尔）<br><code>ar-SA</code>：阿拉伯语（沙特阿拉伯）<br><code>ar-PS</code>：阿拉伯语（巴勒斯坦国）<br><code>ar-SY</code>：阿拉伯语（叙利亚）<br><code>ar-TN</code>：阿拉伯语（突尼斯）<br><code>ar-AE</code>：阿拉伯语（阿拉伯联合酋长国）<br><code>ar-YE</code>：阿拉伯语（也门）<br><code>hy-AM</code>：亚美尼亚语（亚美尼亚）<br><code>az-AZ</code>：阿塞拜疆语（阿塞拜疆）<br><code>eu-ES</code>：巴斯克语（西班牙）<br><code>bn-BD</code>：孟加拉语（孟加拉）<br><code>bn-IN</code>：孟加拉语（印度）<br><code>bs-BA</code>：波斯尼亚语（波斯尼亚和黑塞哥维那）<br><code>bg-BG</code>：保加利亚语（保加利亚）<br><code>my-MM</code>：缅甸语（缅甸）<br><code>ca-ES</code>：加泰罗尼亚语（西班牙）<br><code>hr-HR</code>：克罗地亚语（克罗地亚）<br><code>cs-CZ</code>：捷克语（捷克共和国）<br><code>da-DK</code>：丹麦语（丹麦）<br><code>nl-BE</code>：荷兰语（比利时）<br><code>nl-NL</code>：荷兰语（荷兰）<br><code>en-AU</code>：英语（澳大利亚）<br><code>en-CA</code>：英语（加拿大）<br><code>en-GH</code>：英语（加纳）<br><code>en-HK</code>：英语（中国香港）<br><code>en-IN</code>：英语（印度）<br><code>en-IE</code>：英语（爱尔兰）<br><code>en-KE</code>：英语（肯尼亚）<br><code>en-NZ</code>：英语（新西兰）<br><code>en-NG</code>：英语（尼日利亚）<br><code>en-PK</code>：英语（巴基斯坦）<br><code>en-PH</code>：英语（菲律宾）<br><code>en-SG</code>：英语（新加坡）<br><code>en-ZA</code>：英语（南非）<br><code>en-TZ</code>：英语（坦桑尼亚）<br><code>en-GB</code>：英语（英国）<br><code>en-US</code>：英语（美国）<br><code>et-EE</code>：爱沙尼亚语（爱沙尼亚）<br><code>fil-PH</code>：菲律宾语（菲律宾）<br><code>fi-FI</code>：芬兰语（芬兰）<br><code>fr-BE</code>：法语（比利时）<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fr-CH</code>：法语（瑞士）<br><code>gl-ES</code>：加利西亚语（西班牙）<br><code>ka-GE</code>：格鲁吉亚语（格鲁吉亚）<br><code>el-GR</code>：希腊语（希腊）<br><code>gu-IN</code>：古吉拉特语（印度）<br><code>iw-IL</code>：希伯来语（以色列）<br><code>hi-IN</code>：印地语（印度）<br><code>hu-HU</code>：匈牙利语（匈牙利）<br><code>is-IS</code>：冰岛语（冰岛）<br><code>id-ID</code>：印度尼西亚语（印度尼西亚）<br><code>it-IT</code>：意大利语（意大利）<br><code>it-CH</code>：意大利语（瑞士）<br><code>ja-JP</code>：日语（日本）<br><code>jv-ID</code>：爪哇语（印度尼西亚）<br><code>kn-IN</code>：卡纳达语（印度）<br><code>kk-KZ</code>：哈萨克语（哈萨克斯坦）<br><code>km-KH</code>：高棉语（柬埔寨）<br><code>rw-RW</code>：卢旺达语（卢旺达）<br><code>ko-KR</code>：韩语（韩国）<br><code>lo-LA</code>：老挝语（老挝）<br><code>lv-LV</code>：拉脱维亚语（拉脱维亚）<br><code>lt-LT</code>：立陶宛语（立陶宛）<br><code>mk-MK</code>：马其顿语（北马其顿）<br><code>ms-MY</code>：马来语（马来西亚）<br><code>ml-IN</code>：马拉雅拉姆语（印度）<br><code>mr-IN</code>：马拉地语（印度）<br><code>mn-MN</code>：蒙古语（蒙古）<br><code>ne-NP</code>：尼泊尔语（尼泊尔）<br><code>no-NO</code>：博克马尔挪威语（挪威）<br><code>fa-IR</code>：波斯语（伊朗）<br><code>pl-PL</code>：波兰语（波兰）<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>ro-RO</code>：罗马尼亚语（罗马尼亚）<br><code>ru-RU</code>：俄语（俄罗斯）<br><code>sr-RS</code>：塞尔维亚语（塞尔维亚）<br><code>si-LK</code>：僧伽罗语（斯里兰卡）<br><code>sk-SK</code>：斯洛伐克语（斯洛伐克）<br><code>sl-SI</code>：斯洛文尼亚语（斯洛文尼亚）<br><code>st-ZA</code>：南索托语（南非）<br><code>es-AR</code>：西班牙语（阿根廷）<br><code>es-BO</code>：西班牙语（玻利维亚）<br><code>es-CL</code>：西班牙语（智利）<br><code>es-CO</code>：西班牙语（哥伦比亚）<br><code>es-CR</code>：西班牙语（哥斯达黎加）<br><code>es-DO</code>：西班牙语（多米尼加共和国）<br><code>es-EC</code>：西班牙语（厄瓜多尔）<br><code>es-SV</code>：西班牙语（萨尔瓦多）<br><code>es-GT</code>：西班牙语（危地马拉）<br><code>es-HN</code>：西班牙语（洪都拉斯）<br><code>es-MX</code>：西班牙语（墨西哥）<br><code>es-NI</code>：西班牙语（尼加拉瓜）<br><code>es-PA</code>：西班牙语（巴拿马）<br><code>es-PY</code>：西班牙语（巴拉圭）<br><code>es-PE</code>：西班牙语（秘鲁）<br><code>es-PR</code>：西班牙语（波多黎各）<br><code>es-ES</code>：西班牙语（西班牙）<br><code>es-US</code>：西班牙语（美国）<br><code>es-UY</code>：西班牙语（乌拉圭）<br><code>es-VE</code>：西班牙语（委内瑞拉）<br><code>su-ID</code>：巽他语（印度尼西亚）<br><code>sw-KE</code>：斯瓦希里语（肯尼亚）<br><code>sw-TZ</code>：斯瓦希里语（坦桑尼亚）<br><code>sv-SE</code>：瑞典语（瑞典）<br><code>ta-IN</code>：泰米尔语（印度）<br><code>ta-MY</code>：泰米尔语（马来西亚）<br><code>ta-SG</code>：泰米尔语（新加坡）<br><code>ta-LK</code>：泰米尔语（斯里兰卡）<br><code>te-IN</code>：泰卢固语（印度）<br><code>th-TH</code>：泰语（泰国）<br><code>ts-ZA</code>：聪加语（南非）<br><code>tr-TR</code>：土耳其语（土耳其）<br><code>uk-UA</code>：乌克兰语（乌克兰）<br><code>ur-IN</code>：乌尔都语（印度）<br><code>ur-PK</code>：乌尔都语（巴基斯坦）<br><code>uz-UZ</code>：乌兹别克语（乌兹别克斯坦）<br><code>ve-ZA</code>：文达语（南非）<br><code>vi-VN</code>：越南语（越南）<br><code>xh-ZA</code>：科萨语（南非）<br><code>zu-ZA</code>：祖鲁语（南非）</p>
+	VideoSrcLanguage *string `json:"VideoSrcLanguage,omitnil,omitempty" name:"VideoSrcLanguage"`
+
+	// <p>智能字幕文件格式:</p><ul><li>ASR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li><li>不填或填空：不生成字幕文件</li></ul></li><li>纯字幕翻译处理类型下：<ul><li>original：与源文件一致</li><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li><li>OCR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li></ul><p><strong>注意</strong>：</p><ul><li>ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；</li><li>纯字幕翻译方式下，不允许传空或不传</li><li>OCR类型的任务，在开启压制时，允许不传或传空</li></ul>
+	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
+
+	// <p>字幕翻译开关<br><code>ON</code>: 开启翻译<br><code>OFF</code>: 关闭翻译</p><p><strong>注意</strong>：纯字幕翻译方式下，不传默认是打开的，不允许传空或<code>OFF</code>；</p>
+	TranslateSwitch *string `json:"TranslateSwitch,omitnil,omitempty" name:"TranslateSwitch"`
+
+	// <p>字幕翻译目标语言<br>当TranslateSwitch为ON的时候生效，翻译语言列表：<br><code>ab</code>：阿布哈兹语<br><code>ace</code>：亚齐语<br><code>ach</code>：阿乔利语<br><code>af</code>：南非荷兰语<br><code>ak</code>：契维语（阿坎语）<br><code>am</code>：Amharic<br><code>ar</code>：阿拉伯语<br><code>as</code>：阿萨姆语<br><code>ay</code>：艾马拉语<br><code>az</code>：阿塞拜疆语<br><code>ba</code>：巴什基尔语<br><code>ban</code>：巴厘语<br><code>bbc</code>：巴塔克托巴语<br><code>bem</code>：Bemba<br><code>bew</code>：Betawi<br><code>bg</code>：保加利亚语<br><code>bho</code>：博杰普尔语<br><code>bik</code>：Bikol<br><code>bm</code>：班巴拉语<br><code>bn</code>：孟加拉语<br><code>br</code>：布列塔尼语<br><code>bs</code>：波斯尼亚语<br><code>btx</code>：巴塔克卡罗语<br><code>bts</code>：巴塔克西马隆贡语<br><code>bua</code>：布里亚特语<br><code>ca</code>：加泰罗尼亚语<br><code>ceb</code>：宿务语<br><code>cgg</code>：Kiga<br><code>chm</code>：草原马里语<br><code>ckb</code>：库尔德语（索拉尼语）<br><code>cnh</code>：哈卡钦语<br><code>co</code>：科西嘉语<br><code>crh</code>：克里米亚鞑靼语<br><code>crs</code>：塞舌尔克里奥尔语<br><code>cs</code>：捷克语<br><code>cv</code>：楚瓦什语<br><code>cy</code>：威尔士语<br><code>da</code>：丹麦语<br><code>de</code>：德语<br><code>din</code>：Dinka<br><code>doi</code>：多格来语<br><code>dov</code>：敦贝语<br><code>dv</code>：第维埃语<br><code>dz</code>：宗卡语<br><code>ee</code>：Ewe<br><code>el</code>：希腊语<br><code>en</code>：英语<br><code>eo</code>：世界语<br><code>es</code>：西班牙语<br><code>et</code>：爱沙尼亚语<br><code>eu</code>：巴斯克语<br><code>fa</code>：波斯语<br><code>ff</code>：富拉语<br><code>fi</code>：芬兰语<br><code>fil</code>：菲律宾语（塔加拉语）<br><code>fj</code>：斐济语<br><code>fr</code>：法语<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fy</code>：弗里斯兰语<br><code>ga</code>：爱尔兰语<br><code>gaa</code>：加 (Ga) 语<br><code>gd</code>：苏格兰盖尔语<br><code>gl</code>：加利西亚语<br><code>gn</code>：瓜拉尼语<br><code>gom</code>：贡根语<br><code>gu</code>：古吉拉特语<br><code>gv</code>：马恩岛语<br><code>ha</code>：Hausa<br><code>haw</code>：夏威夷语<br><code>he</code>：希伯来语<br><code>hi</code>：印地语<br><code>hil</code>：希利盖农语<br><code>hmn</code>：苗语<br><code>hr</code>：克罗地亚语<br><code>hrx</code>：洪斯吕克语<br><code>ht</code>：海地克里奥尔语<br><code>hu</code>：匈牙利语<br><code>hy</code>：亚美尼亚语<br><code>id</code>：印度尼西亚语<br><code>ig</code>：Igbo<br><code>ilo</code>：伊洛果语<br><code>is</code>：冰岛语<br><code>it</code>：意大利语<br><code>iw</code>：希伯来语<br><code>ja</code>：日语<br><code>jv</code>：爪哇语<br><code>ka</code>：格鲁吉亚语<br><code>kk</code>：哈萨克语<br><code>km</code>：高棉语<br><code>kn</code>：卡纳达语<br><code>ko</code>：韩语<br><code>kri</code>：Krio<br><code>ku</code>：库尔德语（库尔曼吉语）<br><code>ktu</code>：吉土巴语<br><code>ky</code>：吉尔吉斯语<br><code>la</code>：拉丁语<br><code>lb</code>：卢森堡语<br><code>lg</code>：干达语（卢干达语）<br><code>li</code>：林堡语<br><code>lij</code>：利古里亚语<br><code>lmo</code>：伦巴第语<br><code>ln</code>：林加拉语<br><code>lo</code>：老挝语<br><code>lt</code>：立陶宛语<br><code>ltg</code>：拉特加莱语<br><code>luo</code>：Luo<br><code>lus</code>：米佐语<br><code>lv</code>：拉脱维亚语<br><code>mai</code>：迈蒂利语<br><code>mak</code>：马卡萨<br><code>mg</code>：马尔加什语<br><code>mi</code>：毛利语<br><code>min</code>：米南语<br><code>mk</code>：马其顿语<br><code>ml</code>：马拉雅拉姆语<br><code>mn</code>：蒙古语<br><code>mr</code>：马拉地语<br><code>ms</code>：马来语<br><code>mt</code>：马耳他语<br><code>my</code>：缅甸语<br><code>ne</code>：尼泊尔语<br><code>new</code>：尼瓦尔语<br><code>nl</code>：荷兰语<br><code>no</code>：挪威语<br><code>nr</code>：恩德贝莱语（南部）<br><code>nso</code>：北索托语（塞佩蒂语）<br><code>nus</code>：努尔语<br><code>ny</code>：齐切瓦语（尼扬贾语）<br><code>oc</code>：奥克斯坦语<br><code>om</code>：Oromo<br><code>or</code>：奥里亚语<br><code>pa</code>：旁遮普语<br><code>pag</code>：邦阿西楠语<br><code>pam</code>：邦板牙语<br><code>pap</code>：Papiamento<br><code>pl</code>：波兰语<br><code>ps</code>：Pashto<br><code>pt</code>：葡萄牙语<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>qu</code>：克丘亚语<br><code>ro</code>：罗马尼亚语<br><code>rom</code>：罗姆语<br><code>rn</code>：Rundi<br><code>ru</code>：俄语<br><code>rw</code>：卢旺达语<br><code>sa</code>：梵语<br><code>scn</code>：西西里语<br><code>sd</code>：信德语<br><code>sg</code>：Sango<br><code>shn</code>：掸语<br><code>si</code>：僧伽罗语<br><code>sk</code>：斯洛伐克语<br><code>sl</code>：斯洛文尼亚语<br><code>sm</code>：萨摩亚语<br><code>sn</code>：修纳语<br><code>so</code>：索马里语<br><code>sq</code>：阿尔巴尼亚语<br><code>sr</code>：塞尔维亚语<br><code>ss</code>：斯瓦特语<br><code>st</code>：塞索托语<br><code>su</code>：巽他语<br><code>sv</code>：瑞典语<br><code>sw</code>：斯瓦希里语<br><code>szl</code>：西里西亚语<br><code>ta</code>：泰米尔语<br><code>te</code>：泰卢固语<br><code>tet</code>：德顿语<br><code>tg</code>：塔吉克语<br><code>th</code>：泰语<br><code>ti</code>：提格里尼亚语<br><code>tk</code>：土库曼语<br><code>tn</code>：茨瓦纳语<br><code>tr</code>：土耳其语<br><code>ts</code>：聪加语<br><code>tt</code>：鞑靼语<br><code>ug</code>：维吾尔语<br><code>uk</code>：乌克兰语<br><code>ur</code>：乌尔都语<br><code>uz</code>：乌兹别克语<br><code>vi</code>：越南语<br><code>xh</code>：科萨语<br><code>yi</code>：意第绪语<br><code>yo</code>：约鲁巴语<br><code>yua</code>：尤卡坦玛雅语<br><code>yue</code>：粤语<br><code>zh</code>：简体中文<br><code>zh-TW</code>：中文（繁体）<br><code>zu</code>：祖鲁语</p><p><strong>注意</strong>：多语言方式，则使用 <code>/</code> 分割，如：<code>en/ja</code>，表示英语和日语。</p>
+	TranslateDstLanguage *string `json:"TranslateDstLanguage,omitnil,omitempty" name:"TranslateDstLanguage"`
+
+	// <p>字幕处理类型：</p><ul><li>0：ASR识别字幕</li><li>1：纯字幕翻译</li><li>2：OCR识别字幕</li></ul><p><strong>注意</strong>：不传的情况下默认类型为 ASR识别字幕</p>
+	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
+
+	// <p>字幕OCR提取框选区域配置</p>
+	SelectingSubtitleAreasConfig *MPSSelectingSubtitleAreasConfig `json:"SelectingSubtitleAreasConfig,omitnil,omitempty" name:"SelectingSubtitleAreasConfig"`
+
+	// <p>说话人识别开关，可选值：<br>0：表示不开启说话人识别；<br>1：表示开启说话人识别；<br>默认不开启说话人识别。</p>
+	SpeakerMode *int64 `json:"SpeakerMode,omitnil,omitempty" name:"SpeakerMode"`
+
+	// <p>说话人识别输出到字幕文件，可选值：<br>0：表示不输出到字幕文件；<br>1：表示输出到vtt字幕文件<br>注意：使用此参数SpeakerMode的值不能为0；<br>默认不输出到字幕文件。</p>
+	SpeakerLabel *int64 `json:"SpeakerLabel,omitnil,omitempty" name:"SpeakerLabel"`
+}
+
+type MPSSmartSubtitleTemplateForUpdate struct {
+	// <p>智能字幕模板唯一标识</p>
+	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>智能字幕模板名称<br>长度限制：64 个字符。</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>智能字幕模板描述信息<br>长度限制：256 个字符。</p>
+	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// <p>智能字幕字幕语言类型<br>0: 源语言<br>1: 翻译语言<br>2: 源语言+翻译语言<br>当TranslateSwitch为OFF时仅支持取0<br>当TranslateSwitch为ON时仅支持取1或2</p>
+	SubtitleType *int64 `json:"SubtitleType,omitnil,omitempty" name:"SubtitleType"`
+
+	// <p>智能字幕视频源语言<br>OCR识别仅支持以下语言：<br><code>zh_en</code>：中英<br><code>multi</code>：其他<br>ASR识别和纯字幕翻译当前支持以下语言：<br><code>auto</code>：自动识别<br><code>zh</code>：简体中文<br><code>en</code>：英语<br><code>ja</code>：日语<br><code>ko</code>：韩语<br><code>zh-PY</code>：中英粤<br><code>zh_medical</code>：中文医疗<br><code>vi</code>：越南语<br><code>ms</code>：马来语<br><code>id</code>：印度尼西亚语<br><code>fil</code>：菲律宾语<br><code>th</code>：泰语<br><code>pt</code>：葡萄牙语<br><code>tr</code>：土耳其语<br><code>ar</code>：阿拉伯语<br><code>es</code>：西班牙语<br><code>hi</code>：印地语<br><code>fr</code>：法语<br><code>de</code>：德语<br><code>it</code>：意大利语<br><code>zh_dialect</code>：中文方言<br><code>zh_en</code>：中英<br><code>yue</code>：粤语<br><code>ru</code>：俄语<br><code>prime_zh</code>：中英方言<br><code>af-ZA</code>：南非荷兰语（南非）<br><code>sq-AL</code>：阿尔巴尼亚语（阿尔巴尼亚）<br><code>am-ET</code>：阿姆哈拉语（埃塞俄比亚）<br><code>ar-DZ</code>：阿拉伯语（阿尔及利亚）<br><code>ar-BH</code>：阿拉伯语（巴林）<br><code>ar-EG</code>：阿拉伯语（埃及）<br><code>ar-IQ</code>：阿拉伯语（伊拉克）<br><code>ar-IL</code>：阿拉伯语（以色列）<br><code>ar-JO</code>：阿拉伯语（约旦）<br><code>ar-KW</code>：阿拉伯语（科威特）<br><code>ar-LB</code>：阿拉伯语（黎巴嫩）<br><code>ar-MR</code>：阿拉伯语（毛里塔尼亚）<br><code>ar-MA</code>：阿拉伯语（摩洛哥）<br><code>ar-OM</code>：阿拉伯语（阿曼）<br><code>ar-QA</code>：阿拉伯语（卡塔尔）<br><code>ar-SA</code>：阿拉伯语（沙特阿拉伯）<br><code>ar-PS</code>：阿拉伯语（巴勒斯坦国）<br><code>ar-SY</code>：阿拉伯语（叙利亚）<br><code>ar-TN</code>：阿拉伯语（突尼斯）<br><code>ar-AE</code>：阿拉伯语（阿拉伯联合酋长国）<br><code>ar-YE</code>：阿拉伯语（也门）<br><code>hy-AM</code>：亚美尼亚语（亚美尼亚）<br><code>az-AZ</code>：阿塞拜疆语（阿塞拜疆）<br><code>eu-ES</code>：巴斯克语（西班牙）<br><code>bn-BD</code>：孟加拉语（孟加拉）<br><code>bn-IN</code>：孟加拉语（印度）<br><code>bs-BA</code>：波斯尼亚语（波斯尼亚和黑塞哥维那）<br><code>bg-BG</code>：保加利亚语（保加利亚）<br><code>my-MM</code>：缅甸语（缅甸）<br><code>ca-ES</code>：加泰罗尼亚语（西班牙）<br><code>hr-HR</code>：克罗地亚语（克罗地亚）<br><code>cs-CZ</code>：捷克语（捷克共和国）<br><code>da-DK</code>：丹麦语（丹麦）<br><code>nl-BE</code>：荷兰语（比利时）<br><code>nl-NL</code>：荷兰语（荷兰）<br><code>en-AU</code>：英语（澳大利亚）<br><code>en-CA</code>：英语（加拿大）<br><code>en-GH</code>：英语（加纳）<br><code>en-HK</code>：英语（中国香港）<br><code>en-IN</code>：英语（印度）<br><code>en-IE</code>：英语（爱尔兰）<br><code>en-KE</code>：英语（肯尼亚）<br><code>en-NZ</code>：英语（新西兰）<br><code>en-NG</code>：英语（尼日利亚）<br><code>en-PK</code>：英语（巴基斯坦）<br><code>en-PH</code>：英语（菲律宾）<br><code>en-SG</code>：英语（新加坡）<br><code>en-ZA</code>：英语（南非）<br><code>en-TZ</code>：英语（坦桑尼亚）<br><code>en-GB</code>：英语（英国）<br><code>en-US</code>：英语（美国）<br><code>et-EE</code>：爱沙尼亚语（爱沙尼亚）<br><code>fil-PH</code>：菲律宾语（菲律宾）<br><code>fi-FI</code>：芬兰语（芬兰）<br><code>fr-BE</code>：法语（比利时）<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fr-CH</code>：法语（瑞士）<br><code>gl-ES</code>：加利西亚语（西班牙）<br><code>ka-GE</code>：格鲁吉亚语（格鲁吉亚）<br><code>el-GR</code>：希腊语（希腊）<br><code>gu-IN</code>：古吉拉特语（印度）<br><code>iw-IL</code>：希伯来语（以色列）<br><code>hi-IN</code>：印地语（印度）<br><code>hu-HU</code>：匈牙利语（匈牙利）<br><code>is-IS</code>：冰岛语（冰岛）<br><code>id-ID</code>：印度尼西亚语（印度尼西亚）<br><code>it-IT</code>：意大利语（意大利）<br><code>it-CH</code>：意大利语（瑞士）<br><code>ja-JP</code>：日语（日本）<br><code>jv-ID</code>：爪哇语（印度尼西亚）<br><code>kn-IN</code>：卡纳达语（印度）<br><code>kk-KZ</code>：哈萨克语（哈萨克斯坦）<br><code>km-KH</code>：高棉语（柬埔寨）<br><code>rw-RW</code>：卢旺达语（卢旺达）<br><code>ko-KR</code>：韩语（韩国）<br><code>lo-LA</code>：老挝语（老挝）<br><code>lv-LV</code>：拉脱维亚语（拉脱维亚）<br><code>lt-LT</code>：立陶宛语（立陶宛）<br><code>mk-MK</code>：马其顿语（北马其顿）<br><code>ms-MY</code>：马来语（马来西亚）<br><code>ml-IN</code>：马拉雅拉姆语（印度）<br><code>mr-IN</code>：马拉地语（印度）<br><code>mn-MN</code>：蒙古语（蒙古）<br><code>ne-NP</code>：尼泊尔语（尼泊尔）<br><code>no-NO</code>：博克马尔挪威语（挪威）<br><code>fa-IR</code>：波斯语（伊朗）<br><code>pl-PL</code>：波兰语（波兰）<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>ro-RO</code>：罗马尼亚语（罗马尼亚）<br><code>ru-RU</code>：俄语（俄罗斯）<br><code>sr-RS</code>：塞尔维亚语（塞尔维亚）<br><code>si-LK</code>：僧伽罗语（斯里兰卡）<br><code>sk-SK</code>：斯洛伐克语（斯洛伐克）<br><code>sl-SI</code>：斯洛文尼亚语（斯洛文尼亚）<br><code>st-ZA</code>：南索托语（南非）<br><code>es-AR</code>：西班牙语（阿根廷）<br><code>es-BO</code>：西班牙语（玻利维亚）<br><code>es-CL</code>：西班牙语（智利）<br><code>es-CO</code>：西班牙语（哥伦比亚）<br><code>es-CR</code>：西班牙语（哥斯达黎加）<br><code>es-DO</code>：西班牙语（多米尼加共和国）<br><code>es-EC</code>：西班牙语（厄瓜多尔）<br><code>es-SV</code>：西班牙语（萨尔瓦多）<br><code>es-GT</code>：西班牙语（危地马拉）<br><code>es-HN</code>：西班牙语（洪都拉斯）<br><code>es-MX</code>：西班牙语（墨西哥）<br><code>es-NI</code>：西班牙语（尼加拉瓜）<br><code>es-PA</code>：西班牙语（巴拿马）<br><code>es-PY</code>：西班牙语（巴拉圭）<br><code>es-PE</code>：西班牙语（秘鲁）<br><code>es-PR</code>：西班牙语（波多黎各）<br><code>es-ES</code>：西班牙语（西班牙）<br><code>es-US</code>：西班牙语（美国）<br><code>es-UY</code>：西班牙语（乌拉圭）<br><code>es-VE</code>：西班牙语（委内瑞拉）<br><code>su-ID</code>：巽他语（印度尼西亚）<br><code>sw-KE</code>：斯瓦希里语（肯尼亚）<br><code>sw-TZ</code>：斯瓦希里语（坦桑尼亚）<br><code>sv-SE</code>：瑞典语（瑞典）<br><code>ta-IN</code>：泰米尔语（印度）<br><code>ta-MY</code>：泰米尔语（马来西亚）<br><code>ta-SG</code>：泰米尔语（新加坡）<br><code>ta-LK</code>：泰米尔语（斯里兰卡）<br><code>te-IN</code>：泰卢固语（印度）<br><code>th-TH</code>：泰语（泰国）<br><code>ts-ZA</code>：聪加语（南非）<br><code>tr-TR</code>：土耳其语（土耳其）<br><code>uk-UA</code>：乌克兰语（乌克兰）<br><code>ur-IN</code>：乌尔都语（印度）<br><code>ur-PK</code>：乌尔都语（巴基斯坦）<br><code>uz-UZ</code>：乌兹别克语（乌兹别克斯坦）<br><code>ve-ZA</code>：文达语（南非）<br><code>vi-VN</code>：越南语（越南）<br><code>xh-ZA</code>：科萨语（南非）<br><code>zu-ZA</code>：祖鲁语（南非）</p>
+	VideoSrcLanguage *string `json:"VideoSrcLanguage,omitnil,omitempty" name:"VideoSrcLanguage"`
+
+	// <p>智能字幕文件格式:</p><ul><li>ASR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li><li>不填或填空：不生成字幕文件</li></ul></li><li>纯字幕翻译处理类型下：<ul><li>original：与源文件一致</li><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li><li>OCR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li></ul><p><strong>注意</strong>：</p><ul><li>ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；</li><li>纯字幕翻译方式下，不允许传空或不传</li><li>OCR类型的任务，在开启压制时，允许不传或传空</li></ul>
+	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
+
+	// <p>字幕翻译开关<br><code>ON</code>: 开启翻译<br><code>OFF</code>: 关闭翻译</p><p><strong>注意</strong>：纯字幕翻译方式下，不传默认是打开的，不允许传空或<code>OFF</code>；</p>
+	TranslateSwitch *string `json:"TranslateSwitch,omitnil,omitempty" name:"TranslateSwitch"`
+
+	// <p>字幕翻译目标语言<br>当TranslateSwitch为ON的时候生效，翻译语言列表：<br><code>ab</code>：阿布哈兹语<br><code>ace</code>：亚齐语<br><code>ach</code>：阿乔利语<br><code>af</code>：南非荷兰语<br><code>ak</code>：契维语（阿坎语）<br><code>am</code>：Amharic<br><code>ar</code>：阿拉伯语<br><code>as</code>：阿萨姆语<br><code>ay</code>：艾马拉语<br><code>az</code>：阿塞拜疆语<br><code>ba</code>：巴什基尔语<br><code>ban</code>：巴厘语<br><code>bbc</code>：巴塔克托巴语<br><code>bem</code>：Bemba<br><code>bew</code>：Betawi<br><code>bg</code>：保加利亚语<br><code>bho</code>：博杰普尔语<br><code>bik</code>：Bikol<br><code>bm</code>：班巴拉语<br><code>bn</code>：孟加拉语<br><code>br</code>：布列塔尼语<br><code>bs</code>：波斯尼亚语<br><code>btx</code>：巴塔克卡罗语<br><code>bts</code>：巴塔克西马隆贡语<br><code>bua</code>：布里亚特语<br><code>ca</code>：加泰罗尼亚语<br><code>ceb</code>：宿务语<br><code>cgg</code>：Kiga<br><code>chm</code>：草原马里语<br><code>ckb</code>：库尔德语（索拉尼语）<br><code>cnh</code>：哈卡钦语<br><code>co</code>：科西嘉语<br><code>crh</code>：克里米亚鞑靼语<br><code>crs</code>：塞舌尔克里奥尔语<br><code>cs</code>：捷克语<br><code>cv</code>：楚瓦什语<br><code>cy</code>：威尔士语<br><code>da</code>：丹麦语<br><code>de</code>：德语<br><code>din</code>：Dinka<br><code>doi</code>：多格来语<br><code>dov</code>：敦贝语<br><code>dv</code>：第维埃语<br><code>dz</code>：宗卡语<br><code>ee</code>：Ewe<br><code>el</code>：希腊语<br><code>en</code>：英语<br><code>eo</code>：世界语<br><code>es</code>：西班牙语<br><code>et</code>：爱沙尼亚语<br><code>eu</code>：巴斯克语<br><code>fa</code>：波斯语<br><code>ff</code>：富拉语<br><code>fi</code>：芬兰语<br><code>fil</code>：菲律宾语（塔加拉语）<br><code>fj</code>：斐济语<br><code>fr</code>：法语<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fy</code>：弗里斯兰语<br><code>ga</code>：爱尔兰语<br><code>gaa</code>：加 (Ga) 语<br><code>gd</code>：苏格兰盖尔语<br><code>gl</code>：加利西亚语<br><code>gn</code>：瓜拉尼语<br><code>gom</code>：贡根语<br><code>gu</code>：古吉拉特语<br><code>gv</code>：马恩岛语<br><code>ha</code>：Hausa<br><code>haw</code>：夏威夷语<br><code>he</code>：希伯来语<br><code>hi</code>：印地语<br><code>hil</code>：希利盖农语<br><code>hmn</code>：苗语<br><code>hr</code>：克罗地亚语<br><code>hrx</code>：洪斯吕克语<br><code>ht</code>：海地克里奥尔语<br><code>hu</code>：匈牙利语<br><code>hy</code>：亚美尼亚语<br><code>id</code>：印度尼西亚语<br><code>ig</code>：Igbo<br><code>ilo</code>：伊洛果语<br><code>is</code>：冰岛语<br><code>it</code>：意大利语<br><code>iw</code>：希伯来语<br><code>ja</code>：日语<br><code>jv</code>：爪哇语<br><code>ka</code>：格鲁吉亚语<br><code>kk</code>：哈萨克语<br><code>km</code>：高棉语<br><code>kn</code>：卡纳达语<br><code>ko</code>：韩语<br><code>kri</code>：Krio<br><code>ku</code>：库尔德语（库尔曼吉语）<br><code>ktu</code>：吉土巴语<br><code>ky</code>：吉尔吉斯语<br><code>la</code>：拉丁语<br><code>lb</code>：卢森堡语<br><code>lg</code>：干达语（卢干达语）<br><code>li</code>：林堡语<br><code>lij</code>：利古里亚语<br><code>lmo</code>：伦巴第语<br><code>ln</code>：林加拉语<br><code>lo</code>：老挝语<br><code>lt</code>：立陶宛语<br><code>ltg</code>：拉特加莱语<br><code>luo</code>：Luo<br><code>lus</code>：米佐语<br><code>lv</code>：拉脱维亚语<br><code>mai</code>：迈蒂利语<br><code>mak</code>：马卡萨<br><code>mg</code>：马尔加什语<br><code>mi</code>：毛利语<br><code>min</code>：米南语<br><code>mk</code>：马其顿语<br><code>ml</code>：马拉雅拉姆语<br><code>mn</code>：蒙古语<br><code>mr</code>：马拉地语<br><code>ms</code>：马来语<br><code>mt</code>：马耳他语<br><code>my</code>：缅甸语<br><code>ne</code>：尼泊尔语<br><code>new</code>：尼瓦尔语<br><code>nl</code>：荷兰语<br><code>no</code>：挪威语<br><code>nr</code>：恩德贝莱语（南部）<br><code>nso</code>：北索托语（塞佩蒂语）<br><code>nus</code>：努尔语<br><code>ny</code>：齐切瓦语（尼扬贾语）<br><code>oc</code>：奥克斯坦语<br><code>om</code>：Oromo<br><code>or</code>：奥里亚语<br><code>pa</code>：旁遮普语<br><code>pag</code>：邦阿西楠语<br><code>pam</code>：邦板牙语<br><code>pap</code>：Papiamento<br><code>pl</code>：波兰语<br><code>ps</code>：Pashto<br><code>pt</code>：葡萄牙语<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>qu</code>：克丘亚语<br><code>ro</code>：罗马尼亚语<br><code>rom</code>：罗姆语<br><code>rn</code>：Rundi<br><code>ru</code>：俄语<br><code>rw</code>：卢旺达语<br><code>sa</code>：梵语<br><code>scn</code>：西西里语<br><code>sd</code>：信德语<br><code>sg</code>：Sango<br><code>shn</code>：掸语<br><code>si</code>：僧伽罗语<br><code>sk</code>：斯洛伐克语<br><code>sl</code>：斯洛文尼亚语<br><code>sm</code>：萨摩亚语<br><code>sn</code>：修纳语<br><code>so</code>：索马里语<br><code>sq</code>：阿尔巴尼亚语<br><code>sr</code>：塞尔维亚语<br><code>ss</code>：斯瓦特语<br><code>st</code>：塞索托语<br><code>su</code>：巽他语<br><code>sv</code>：瑞典语<br><code>sw</code>：斯瓦希里语<br><code>szl</code>：西里西亚语<br><code>ta</code>：泰米尔语<br><code>te</code>：泰卢固语<br><code>tet</code>：德顿语<br><code>tg</code>：塔吉克语<br><code>th</code>：泰语<br><code>ti</code>：提格里尼亚语<br><code>tk</code>：土库曼语<br><code>tn</code>：茨瓦纳语<br><code>tr</code>：土耳其语<br><code>ts</code>：聪加语<br><code>tt</code>：鞑靼语<br><code>ug</code>：维吾尔语<br><code>uk</code>：乌克兰语<br><code>ur</code>：乌尔都语<br><code>uz</code>：乌兹别克语<br><code>vi</code>：越南语<br><code>xh</code>：科萨语<br><code>yi</code>：意第绪语<br><code>yo</code>：约鲁巴语<br><code>yua</code>：尤卡坦玛雅语<br><code>yue</code>：粤语<br><code>zh</code>：简体中文<br><code>zh-TW</code>：中文（繁体）<br><code>zu</code>：祖鲁语</p><p><strong>注意</strong>：多语言方式，则使用 <code>/</code> 分割，如：<code>en/ja</code>，表示英语和日语。</p>
+	TranslateDstLanguage *string `json:"TranslateDstLanguage,omitnil,omitempty" name:"TranslateDstLanguage"`
+
+	// <p>字幕处理类型：</p><ul><li>0：ASR识别字幕</li><li>1：纯字幕翻译</li><li>2：OCR识别字幕</li></ul><p><strong>注意</strong>：不传的情况下，默认是ASR方式</p>
+	ProcessType *uint64 `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
+
+	// <p>字幕OCR提取框选区域配置</p>
+	SelectingSubtitleAreasConfig *MPSSelectingSubtitleAreasConfig `json:"SelectingSubtitleAreasConfig,omitnil,omitempty" name:"SelectingSubtitleAreasConfig"`
+
+	// <p>说话人识别开关，可选值：<br>0：表示不开启说话人识别；<br>1：表示开启说话人识别。</p>
+	SpeakerMode *int64 `json:"SpeakerMode,omitnil,omitempty" name:"SpeakerMode"`
+
+	// <p>说话人识别输出到字幕文件，可选值：<br>0：表示不输出到字幕文件；<br>1：表示输出到vtt字幕文件<br>注意：使用此参数SpeakerMode的值不能为0。</p>
+	SpeakerLabel *int64 `json:"SpeakerLabel,omitnil,omitempty" name:"SpeakerLabel"`
+}
+
+type MPSSmartSubtitlesTaskInput struct {
+	// <p>智能字幕模板 ID。</p>
+	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
+
+	// <p>智能字幕自定义参数，当 Definition 填 0 时有效。 该参数用于高度定制场景，建议您优先使用 Definition 指定智能字幕参数。</p>
+	RawParameter *MPSRawSmartSubtitleParameter `json:"RawParameter,omitnil,omitempty" name:"RawParameter"`
 }
 
 type MPSSubTaskResult struct {
@@ -19901,6 +20552,49 @@ type MPSTemplate struct {
 
 	// MPS 任务模板详情内容。
 	MPSTemplateInfo *string `json:"MPSTemplateInfo,omitnil,omitempty" name:"MPSTemplateInfo"`
+}
+
+type MPSUpdateSmartEraseSubtitleConfig struct {
+	// <p>字幕擦除方式。 <strong>自动擦除：</strong>通过AI模型自动识别视频中的字幕文本内容，进行无痕化擦除，生成新的视频。但画面干扰、特殊字幕样式可能会带来一定漏擦误擦问题，可以通过指定区域擦除处理。 当使用自动擦除时，若您不指定AutoAreas，将对默认区域（画面中下部）进行自动擦除；若指定AutoAreas，将改为对您指定的区域进行自动擦除。 <strong>指定区域擦除：</strong>若您的字幕位置较固定，建议您直接指定擦除区域，最大程度减少漏擦的情况。 当您选择指定区域擦除时，请在CustomAreas中至少传入一个指定区域。 </p><ul><li>auto 自动擦除 -</li><li>custom 指定区域擦除</li></ul>
+	SubtitleEraseMethod *string `json:"SubtitleEraseMethod,omitnil,omitempty" name:"SubtitleEraseMethod"`
+
+	// <p>字幕擦除模型。 <strong>标准版（推荐）：</strong>若您的字幕样式标准，通常建议选择该版本，细节无痕化效果更好。 <strong>区域版：</strong>若您的字幕存在花体、阴影、动效等特殊样式，建议选择区域版，擦除面积更大，但细节效果不如标准版。 - standard 标准模型 - area 区域模型</p>
+	SubtitleModel *string `json:"SubtitleModel,omitnil,omitempty" name:"SubtitleModel"`
+
+	// <p>是否开启OCR字幕提取，默认取OFF。 当且仅当SubtitleEraseMethod取auto时支持开启OCR字幕提取，开启后将识别自动擦除区域内出现时间最长且最稳定的文字区域为字幕区域，对字幕区域中的文字进行提取和擦除。 </p><ul><li>ON 开启</li><li>OFF 关闭</li></ul>
+	OcrSwitch *string `json:"OcrSwitch,omitnil,omitempty" name:"OcrSwitch"`
+
+	// <p>字幕语言，用于指导OCR识别，默认取zh_en；<br>仅当OcrSwitch取&quot;ON&quot;时生效。 </p><ul><li>zh_en 中英文 </li><li>multi 其他 其他具体支持识别如下语言： 中文、英文、日文、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语、印地语、阿拉伯语、印度-孟加拉语、印度-古吉拉特语、印度-卡纳达语 、印度-马拉亚拉姆语 、印度-泰米尔语、印度-泰卢固语、斯洛文尼亚语、波兰语、加泰罗尼亚语、波斯尼亚语、捷克语、爱沙尼亚语、克罗地亚语、旁遮普语、马拉地语、阿塞拜疆语、印尼语、卢森堡语 、立陶宛语、拉脱维亚语、马耳他语、斯洛伐克语、土耳其语、哈萨克语、希腊语、爱尔兰语、白俄罗斯语、高棉语、他加禄语、普什图语、波斯语、塔吉克斯坦语</li></ul>
+	SubtitleLang *string `json:"SubtitleLang,omitnil,omitempty" name:"SubtitleLang"`
+
+	// <p>字幕文件格式，默认取vtt；仅当OcrSwitch取&quot;ON&quot;时生效。</p><ul><li>srt srt格式 </li><li>vtt WebVTT格式</li></ul>
+	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
+
+	// <p>是否开启字幕翻译，默认取OFF；仅当OcrSwitch取&quot;ON&quot;时生效。 </p><ul><li>ON 开启 </li><li>OFF 关闭</li></ul>
+	TransSwitch *string `json:"TransSwitch,omitnil,omitempty" name:"TransSwitch"`
+
+	// <p>字幕翻译目标语言，默认取en；仅当TransSwitch取&quot;ON&quot;时生效。当前支持以下语言：<br>zh：简体中文<br>en：英语<br>ja：日语<br>ko：韩语<br>fr：法语<br>es：西班牙语<br>it：意大利语<br>de：德语<br>tr：土耳其语<br>ru：俄语<br>pt：葡萄牙语<br>vi：越南语<br>id：印度尼西亚语<br>ms：马来语<br>th：泰语<br>ar：阿拉伯语<br>hi：印地语</p>
+	TransDstLang *string `json:"TransDstLang,omitnil,omitempty" name:"TransDstLang"`
+
+	// <p>自动擦除自定义区域。 对选定区域，利用AI模型自动检测其中存在的擦除目标并擦除。<br>注意：当擦除方式选择custom时，此参数将不会生效；修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。</p>
+	AutoAreas []*MPSEraseArea `json:"AutoAreas,omitnil,omitempty" name:"AutoAreas"`
+
+	// <p>指定擦除自定义区域。 对选定区域，在选定时间段内不进行检测识别直接进行擦除。 注意：修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。</p>
+	CustomAreas []*MPSEraseTimeArea `json:"CustomAreas,omitnil,omitempty" name:"CustomAreas"`
+}
+
+type MPSUpdateSmartEraseWatermarkConfig struct {
+	// <p>水印擦除方式。<br> <strong>自动擦除：</strong>通过A模型自动识别视频中的水印，擦除后生成新的视频。适用于动态水印。 当使用自动擦除时，若您不指定AutoAreas，将对视频全屏进行自动擦除；若指定AutoAreas，将改为对您指定的区域进行自动擦除。<br><strong>指定区域擦除：</strong>针对位置较固定的静态水印，建议您直接指定擦除区域。 当您选择指定区域擦除时，请至少传入一个指定区域。 - auto 自动擦除 - custom 指定区域擦除</p>
+	WatermarkEraseMethod *string `json:"WatermarkEraseMethod,omitnil,omitempty" name:"WatermarkEraseMethod"`
+
+	// <p>水印擦除模型。 基础版：效果一般，性价比高，适合动画或背景较干净的视频。 高级版：效果更好，适合短剧等现实风格视频。 </p><ul><li>basic 基础版 </li><li>advanced 高级版</li></ul>
+	WatermarkModel *string `json:"WatermarkModel,omitnil,omitempty" name:"WatermarkModel"`
+
+	// <p>自动擦除自定义区域。 对选定区域，利用AI模型自动检测其中存在的擦除目标并擦除。 注意，当擦除方式为custom时，此参数将不会生效。清除区域请传入[]，不传时将保持模板区域信息不变。</p>
+	AutoAreas []*MPSEraseArea `json:"AutoAreas,omitnil,omitempty" name:"AutoAreas"`
+
+	// <p>指定擦除自定义区域。 对选定区域，在选定时间段内不进行检测识别直接进行擦除。 注意：清除区域请传入[]，不传时将保持模板区域信息不变。</p>
+	CustomAreas []*MPSEraseTimeArea `json:"CustomAreas,omitnil,omitempty" name:"CustomAreas"`
 }
 
 // Predefined struct for user
@@ -22743,11 +23437,20 @@ type ModifyMPSTemplateRequestParams struct {
 	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// <p>需要修改的 MPS 模板的类型。</p><p>枚举值：</p><ul><li>Transcode： 转码模板，目前仅支持修改增强参数</li><li>AIAnalysis： 智能分析模板</li><li>SmartSubtitle： 智能字幕模板</li><li>SmartErase： 智能擦除模板</li></ul>
+	// <p>需要修改的 MPS 模板的类型。</p><p>枚举值：</p><ul><li>AIAnalysis： 智能分析模板</li><li>SmartSubtitle： 智能字幕模板</li><li>SmartErase： 智能擦除模板</li></ul>
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
 	// <p>MPS 修改模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧修改用户自定义的 MPS 任务模板。<br> 目前仅支持通过此方式修改以下任务类型的模板：</p><ol><li>音视频增强：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/37578">修改转码模板</a>”接口中的 Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能分析：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/40246">修改内容分析模板</a>”接口中的Name、Comment、ClassificationConfigure、TagConfigure、CoverConfigure、FrameTagConfigure几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能字幕：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/117001">修改智能字幕模板</a>”接口中的Name、Comment、TranslateSwitch、VideoSrcLanguage、SubtitleFormat、SubtitleType、AsrHotWordsConfigure、TranslateDstLanguage、ProcessType几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能擦除：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/123732">修改智能擦除模板</a>”接口中的Name、Comment、EraseType、EraseSubtitleConfig、EraseWatermarkConfig、ErasePrivacyConfig几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li></ol>
 	MPSModifyTemplateParams *string `json:"MPSModifyTemplateParams,omitnil,omitempty" name:"MPSModifyTemplateParams"`
+
+	// <p>智能分析模板参数，MPSModifyTemplateParams为空时有效。</p>
+	AIAnalysisTemplate *MPSAIAnalysisTemplateForUpdate `json:"AIAnalysisTemplate,omitnil,omitempty" name:"AIAnalysisTemplate"`
+
+	// <p>智能字幕模板参数，MPSModifyTemplateParams为空时有效。</p>
+	SmartSubtitleTemplate *MPSSmartSubtitleTemplateForUpdate `json:"SmartSubtitleTemplate,omitnil,omitempty" name:"SmartSubtitleTemplate"`
+
+	// <p>智能擦除模板参数，MPSModifyTemplateParams为空时有效。</p>
+	SmartEraseTemplate *MPSSmartEraseTemplateForUpdate `json:"SmartEraseTemplate,omitnil,omitempty" name:"SmartEraseTemplate"`
 }
 
 type ModifyMPSTemplateRequest struct {
@@ -22756,11 +23459,20 @@ type ModifyMPSTemplateRequest struct {
 	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// <p>需要修改的 MPS 模板的类型。</p><p>枚举值：</p><ul><li>Transcode： 转码模板，目前仅支持修改增强参数</li><li>AIAnalysis： 智能分析模板</li><li>SmartSubtitle： 智能字幕模板</li><li>SmartErase： 智能擦除模板</li></ul>
+	// <p>需要修改的 MPS 模板的类型。</p><p>枚举值：</p><ul><li>AIAnalysis： 智能分析模板</li><li>SmartSubtitle： 智能字幕模板</li><li>SmartErase： 智能擦除模板</li></ul>
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
 	// <p>MPS 修改模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧修改用户自定义的 MPS 任务模板。<br> 目前仅支持通过此方式修改以下任务类型的模板：</p><ol><li>音视频增强：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/37578">修改转码模板</a>”接口中的 Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能分析：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/40246">修改内容分析模板</a>”接口中的Name、Comment、ClassificationConfigure、TagConfigure、CoverConfigure、FrameTagConfigure几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能字幕：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/117001">修改智能字幕模板</a>”接口中的Name、Comment、TranslateSwitch、VideoSrcLanguage、SubtitleFormat、SubtitleType、AsrHotWordsConfigure、TranslateDstLanguage、ProcessType几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能擦除：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/123732">修改智能擦除模板</a>”接口中的Name、Comment、EraseType、EraseSubtitleConfig、EraseWatermarkConfig、ErasePrivacyConfig几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li></ol>
 	MPSModifyTemplateParams *string `json:"MPSModifyTemplateParams,omitnil,omitempty" name:"MPSModifyTemplateParams"`
+
+	// <p>智能分析模板参数，MPSModifyTemplateParams为空时有效。</p>
+	AIAnalysisTemplate *MPSAIAnalysisTemplateForUpdate `json:"AIAnalysisTemplate,omitnil,omitempty" name:"AIAnalysisTemplate"`
+
+	// <p>智能字幕模板参数，MPSModifyTemplateParams为空时有效。</p>
+	SmartSubtitleTemplate *MPSSmartSubtitleTemplateForUpdate `json:"SmartSubtitleTemplate,omitnil,omitempty" name:"SmartSubtitleTemplate"`
+
+	// <p>智能擦除模板参数，MPSModifyTemplateParams为空时有效。</p>
+	SmartEraseTemplate *MPSSmartEraseTemplateForUpdate `json:"SmartEraseTemplate,omitnil,omitempty" name:"SmartEraseTemplate"`
 }
 
 func (r *ModifyMPSTemplateRequest) ToJsonString() string {
@@ -22778,6 +23490,9 @@ func (r *ModifyMPSTemplateRequest) FromJsonString(s string) error {
 	delete(f, "SubAppId")
 	delete(f, "TemplateType")
 	delete(f, "MPSModifyTemplateParams")
+	delete(f, "AIAnalysisTemplate")
+	delete(f, "SmartSubtitleTemplate")
+	delete(f, "SmartEraseTemplate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMPSTemplateRequest has unknown keys!", "")
 	}
@@ -25150,57 +25865,47 @@ type PlayStatInfo struct {
 }
 
 type PlayerConfig struct {
-	// 播放器配置名字。
+	// <p>播放器配置名字。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 播放器配置类型，取值范围：
-	// <li>Preset：系统预置配置；</li>
-	// <li>Custom：用户自定义配置。</li>
+	// <p>播放器配置类型，取值范围：</p><li>Preset：系统预置配置；</li><li>Custom：用户自定义配置。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 播放的音视频类型，可选值有：
-	// <li>AdaptiveDynamicStream：自适应码流输出；</li>
-	// <li>Transcode：转码输出；</li>
-	// <li>Original：原始音视频。</li>
+	// <p>播放的音视频类型，可选值有：</p><li>AdaptiveDynamicStream：自适应码流输出；</li><li>Transcode：转码输出；</li><li>Original：原始音视频。</li>
 	AudioVideoType *string `json:"AudioVideoType,omitnil,omitempty" name:"AudioVideoType"`
 
-	// 播放 DRM 保护的自适应码流开关：
-	// <li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
-	// <li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
+	// <p>播放 DRM 保护的自适应码流开关：</p><li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li><li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
 	DrmSwitch *string `json:"DrmSwitch,omitnil,omitempty" name:"DrmSwitch"`
 
-	// 允许输出的未加密的自适应码流模板 ID。
+	// <p>允许输出的未加密的自适应码流模板 ID。</p>
 	AdaptiveDynamicStreamingDefinition *uint64 `json:"AdaptiveDynamicStreamingDefinition,omitnil,omitempty" name:"AdaptiveDynamicStreamingDefinition"`
 
-	// 允许输出的 DRM 自适应码流模板内容。
+	// <p>允许输出的 DRM 自适应码流模板内容。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DrmStreamingsInfo *DrmStreamingsInfo `json:"DrmStreamingsInfo,omitnil,omitempty" name:"DrmStreamingsInfo"`
 
-	// 允许输出的转码模板 ID。
+	// <p>允许输出的转码模板 ID。</p>
 	TranscodeDefinition *uint64 `json:"TranscodeDefinition,omitnil,omitempty" name:"TranscodeDefinition"`
 
-	// 允许输出的雪碧图模板 ID。
+	// <p>允许输出的雪碧图模板 ID。</p>
 	ImageSpriteDefinition *uint64 `json:"ImageSpriteDefinition,omitnil,omitempty" name:"ImageSpriteDefinition"`
 
-	// 播放器对不于不同分辨率的子流展示名字。
+	// <p>播放器对不于不同分辨率的子流展示名字。</p>
 	ResolutionNameSet []*ResolutionNameInfo `json:"ResolutionNameSet,omitnil,omitempty" name:"ResolutionNameSet"`
 
-	// 播放器配置创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// <p>播放器配置创建时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 播放器配置最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// <p>播放器配置最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 播放时使用的域名。值为 Default，表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的域名。
+	// <p>播放时使用的域名。值为 Default，表示使用<a href="https://cloud.tencent.com/document/product/266/33373">默认分发配置</a>中的域名。</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 播放时使用的 Scheme。取值范围：
-	// <li>Default：使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的 Scheme；</li>
-	// <li>HTTP；</li>
-	// <li>HTTPS。</li>
+	// <p>播放时使用的 Scheme。取值范围：</p><li>Default：使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的 Scheme；</li><li>HTTP；</li><li>HTTPS。</li>
 	Scheme *string `json:"Scheme,omitnil,omitempty" name:"Scheme"`
 
-	// 模板描述信息。
+	// <p>模板描述信息。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 }
 
@@ -25961,8 +26666,17 @@ type ProcessMediaByMPSRequestParams struct {
 	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// <p>该参数用于透传至媒体处理服务（MPS），以便从云点播侧发起 MPS 视频处理任务。<br>视频处理参数详情请参考：<a href="https://cloud.tencent.com/document/api/862/37578">MPS 发起媒体处理</a>。<br>填写说明：</p><ol><li>目前仅需要配置 MPS “发起媒体处理”接口中任务配置相关的参数，如 AiAnalysisTask 与 MediaProcessTask，其他参数无需填写。若包含其它参数，系统将自动忽略；</li><li>当前仅支持通过此方式发起智能擦除及音视频增强任务。若配置了其他任务类型的相关参数，系统将自动忽略这些参数；</li><li>音视频增强任务目前不支持使用预置模板发起，可通过 <a href="https://cloud.tencent.com/document/product/266/122580">CreateMPSTemplate</a> 接口创建自定义模板。</li></ol>
+	// <p>可选参数，该参数用于透传至媒体处理服务（MPS），以便从云点播侧发起 MPS 视频处理任务。不同类型的视频处理参数详情请参考 <a href="https://cloud.tencent.com/document/product/266/131209">使用MPS 媒体 AI 能力</a>，可通过<a href="https://cloud.tencent.com/document/product/266/122580">CreateMPSTemplate</a> 接口创建自定义模板。</p>
 	MPSProcessMediaParams *string `json:"MPSProcessMediaParams,omitnil,omitempty" name:"MPSProcessMediaParams"`
+
+	// <p>视频内容分析类型任务参数，MPSProcessMediaParams为空时有效。</p>
+	AiAnalysisTask *MPSAiAnalysisTaskInput `json:"AiAnalysisTask,omitnil,omitempty" name:"AiAnalysisTask"`
+
+	// <p>智能字幕类型任务参数，MPSProcessMediaParams为空时有效。</p>
+	SmartSubtitlesTask *MPSSmartSubtitlesTaskInput `json:"SmartSubtitlesTask,omitnil,omitempty" name:"SmartSubtitlesTask"`
+
+	// <p>智能擦除类型任务参数，MPSProcessMediaParams为空时有效。</p>
+	SmartEraseTask *MPSSmartEraseTaskInput `json:"SmartEraseTask,omitnil,omitempty" name:"SmartEraseTask"`
 
 	// <p>保留字段，特殊用途时使用。</p>
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
@@ -25977,8 +26691,17 @@ type ProcessMediaByMPSRequest struct {
 	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// <p>该参数用于透传至媒体处理服务（MPS），以便从云点播侧发起 MPS 视频处理任务。<br>视频处理参数详情请参考：<a href="https://cloud.tencent.com/document/api/862/37578">MPS 发起媒体处理</a>。<br>填写说明：</p><ol><li>目前仅需要配置 MPS “发起媒体处理”接口中任务配置相关的参数，如 AiAnalysisTask 与 MediaProcessTask，其他参数无需填写。若包含其它参数，系统将自动忽略；</li><li>当前仅支持通过此方式发起智能擦除及音视频增强任务。若配置了其他任务类型的相关参数，系统将自动忽略这些参数；</li><li>音视频增强任务目前不支持使用预置模板发起，可通过 <a href="https://cloud.tencent.com/document/product/266/122580">CreateMPSTemplate</a> 接口创建自定义模板。</li></ol>
+	// <p>可选参数，该参数用于透传至媒体处理服务（MPS），以便从云点播侧发起 MPS 视频处理任务。不同类型的视频处理参数详情请参考 <a href="https://cloud.tencent.com/document/product/266/131209">使用MPS 媒体 AI 能力</a>，可通过<a href="https://cloud.tencent.com/document/product/266/122580">CreateMPSTemplate</a> 接口创建自定义模板。</p>
 	MPSProcessMediaParams *string `json:"MPSProcessMediaParams,omitnil,omitempty" name:"MPSProcessMediaParams"`
+
+	// <p>视频内容分析类型任务参数，MPSProcessMediaParams为空时有效。</p>
+	AiAnalysisTask *MPSAiAnalysisTaskInput `json:"AiAnalysisTask,omitnil,omitempty" name:"AiAnalysisTask"`
+
+	// <p>智能字幕类型任务参数，MPSProcessMediaParams为空时有效。</p>
+	SmartSubtitlesTask *MPSSmartSubtitlesTaskInput `json:"SmartSubtitlesTask,omitnil,omitempty" name:"SmartSubtitlesTask"`
+
+	// <p>智能擦除类型任务参数，MPSProcessMediaParams为空时有效。</p>
+	SmartEraseTask *MPSSmartEraseTaskInput `json:"SmartEraseTask,omitnil,omitempty" name:"SmartEraseTask"`
 
 	// <p>保留字段，特殊用途时使用。</p>
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
@@ -25999,6 +26722,9 @@ func (r *ProcessMediaByMPSRequest) FromJsonString(s string) error {
 	delete(f, "FileId")
 	delete(f, "SubAppId")
 	delete(f, "MPSProcessMediaParams")
+	delete(f, "AiAnalysisTask")
+	delete(f, "SmartSubtitlesTask")
+	delete(f, "SmartEraseTask")
 	delete(f, "ExtInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessMediaByMPSRequest has unknown keys!", "")
@@ -26275,89 +27001,87 @@ func (r *ProcessMediaByUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ProcessMediaRequestParams struct {
-	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
-	// FileId和MediaStoragePath必须提供其中一个。
+	// <p>媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。<br>FileId和MediaStoragePath必须提供其中一个。</p>
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
-	// 媒体的存储路径。
-	// 只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
-	// FileId和MediaStoragePath必须提供其中一个。
+	// <p>媒体的存储路径。<br>只有<a href="https://cloud.tencent.com/document/product/266/126825">FileID + Path 模式</a>的子应用可以通过MediaStoragePath发起任务。<br>FileId和MediaStoragePath必须提供其中一个。</p>
 	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 视频处理类型任务参数。
+	// <p>视频处理类型任务参数。</p>
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitnil,omitempty" name:"MediaProcessTask"`
 
-	// 音视频内容审核类型任务参数 \*。
-	// <font color=red>\* 不建议使用</font>，推荐使用 [音视频审核(ReviewAudioVideo)](https://cloud.tencent.com/document/api/266/80283) 或 [图片审核(ReviewImage)](https://cloud.tencent.com/document/api/266/73217)。
+	// <p>音视频内容审核类型任务参数 *。<br><font color="red">* 不建议使用</font>，推荐使用 <a href="https://cloud.tencent.com/document/api/266/80283">音视频审核(ReviewAudioVideo)</a> 或 <a href="https://cloud.tencent.com/document/api/266/73217">图片审核(ReviewImage)</a>。</p>
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitnil,omitempty" name:"AiContentReviewTask"`
 
-	// 音视频内容分析类型任务参数。
+	// <p>音视频内容分析类型任务参数。</p>
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitnil,omitempty" name:"AiAnalysisTask"`
 
-	// 音视频内容识别类型任务参数。
+	// <p>音视频内容识别类型任务参数。</p>
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitnil,omitempty" name:"AiRecognitionTask"`
 
-	// 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	// <p>任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
 	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
 
-	// 任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。
+	// <p>任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。</p>
 	TasksNotifyMode *string `json:"TasksNotifyMode,omitnil,omitempty" name:"TasksNotifyMode"`
 
-	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	// <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 
-	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 保留字段，特殊用途时使用。
+	// <p>保留字段，特殊用途时使用。</p>
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// <p>FileID为空时有效，拉取Url生成新媒资产生新FileID，媒体处理产物将作为新媒资的附属产物。</p><p>注意：新媒资会产生存储费用</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 type ProcessMediaRequest struct {
 	*tchttp.BaseRequest
 	
-	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
-	// FileId和MediaStoragePath必须提供其中一个。
+	// <p>媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。<br>FileId和MediaStoragePath必须提供其中一个。</p>
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
-	// 媒体的存储路径。
-	// 只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
-	// FileId和MediaStoragePath必须提供其中一个。
+	// <p>媒体的存储路径。<br>只有<a href="https://cloud.tencent.com/document/product/266/126825">FileID + Path 模式</a>的子应用可以通过MediaStoragePath发起任务。<br>FileId和MediaStoragePath必须提供其中一个。</p>
 	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 视频处理类型任务参数。
+	// <p>视频处理类型任务参数。</p>
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitnil,omitempty" name:"MediaProcessTask"`
 
-	// 音视频内容审核类型任务参数 \*。
-	// <font color=red>\* 不建议使用</font>，推荐使用 [音视频审核(ReviewAudioVideo)](https://cloud.tencent.com/document/api/266/80283) 或 [图片审核(ReviewImage)](https://cloud.tencent.com/document/api/266/73217)。
+	// <p>音视频内容审核类型任务参数 *。<br><font color="red">* 不建议使用</font>，推荐使用 <a href="https://cloud.tencent.com/document/api/266/80283">音视频审核(ReviewAudioVideo)</a> 或 <a href="https://cloud.tencent.com/document/api/266/73217">图片审核(ReviewImage)</a>。</p>
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitnil,omitempty" name:"AiContentReviewTask"`
 
-	// 音视频内容分析类型任务参数。
+	// <p>音视频内容分析类型任务参数。</p>
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitnil,omitempty" name:"AiAnalysisTask"`
 
-	// 音视频内容识别类型任务参数。
+	// <p>音视频内容识别类型任务参数。</p>
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitnil,omitempty" name:"AiRecognitionTask"`
 
-	// 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	// <p>任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
 	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
 
-	// 任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。
+	// <p>任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。</p>
 	TasksNotifyMode *string `json:"TasksNotifyMode,omitnil,omitempty" name:"TasksNotifyMode"`
 
-	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	// <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 
-	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 保留字段，特殊用途时使用。
+	// <p>保留字段，特殊用途时使用。</p>
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// <p>FileID为空时有效，拉取Url生成新媒资产生新FileID，媒体处理产物将作为新媒资的附属产物。</p><p>注意：新媒资会产生存储费用</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 func (r *ProcessMediaRequest) ToJsonString() string {
@@ -26384,6 +27108,7 @@ func (r *ProcessMediaRequest) FromJsonString(s string) error {
 	delete(f, "SessionContext")
 	delete(f, "SessionId")
 	delete(f, "ExtInfo")
+	delete(f, "Url")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessMediaRequest has unknown keys!", "")
 	}
@@ -26392,7 +27117,7 @@ func (r *ProcessMediaRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ProcessMediaResponseParams struct {
-	// 任务 ID
+	// <p>任务 ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -26433,52 +27158,39 @@ type ProductImageConfig struct {
 }
 
 type ProductInstance struct {
-	// 预付费商品实例类型，取值有：
-	// <li>StarterPackage：点播新手包。</li>
-	// <li>MiniProgramPlugin：点播小程序插件。</li>
-	// <li>ResourcePackage：点播资源包。</li>
+	// <p>预付费商品实例类型，取值有：</p><li>StarterPackage：点播新手包。</li><li>MiniProgramPlugin：点播小程序插件。</li><li>ResourcePackage：点播资源包。</li>
 	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 
-	// 资源包实例起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// <p>资源包实例起始日期。使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 资源包实例过期日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// <p>资源包实例过期日期。使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 资源包实例ID。对应每个资源包，系统会分配相应的资源。续费或者升级资源包时，需要带上这个资源ID。
+	// <p>资源包实例ID。对应每个资源包，系统会分配相应的资源。续费或者升级资源包时，需要带上这个资源ID。</p>
 	ProductInstanceId *string `json:"ProductInstanceId,omitnil,omitempty" name:"ProductInstanceId"`
 
-	// 系统最近一次扣除资源包的日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
+	// <p>系统最近一次扣除资源包的日期。使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
 	LastConsumeDate *string `json:"LastConsumeDate,omitnil,omitempty" name:"LastConsumeDate"`
 
-	// 资源包绑定 License 状态，取值有：
-	// <li>0：未绑定。</li>
-	// <li>1：已绑定。</li>
+	// <p>资源包绑定 License 状态，取值有：</p><li>0：未绑定。</li><li>1：已绑定。</li>
 	BindStatus *int64 `json:"BindStatus,omitnil,omitempty" name:"BindStatus"`
 
-	// 预付费资源包实例中包含的资源包列表。
+	// <p>预付费资源包实例中包含的资源包列表。</p>
 	//
 	// Deprecated: ProductInstanceResourceSet is deprecated.
 	ProductInstanceResourceSet []*ProductInstanceRecource `json:"ProductInstanceResourceSet,omitnil,omitempty" name:"ProductInstanceResourceSet"`
 
-	// 预付费资源包实例中包含的资源包列表。
+	// <p>预付费资源包实例中包含的资源包列表。</p>
 	ResourceSet []*ProductInstanceResource `json:"ResourceSet,omitnil,omitempty" name:"ResourceSet"`
 
-	// 资源包实例的状态，取值有：
-	// <li>Effective：生效，可用于计费抵扣。</li>
-	// <li>Isolated：隔离，不可用于计费抵扣。</li>
+	// <p>资源包实例的状态，取值有：</p><li>Effective：生效，可用于计费抵扣。</li><li>Isolated：隔离，不可用于计费抵扣。</li>
 	ProductInstanceStatus *string `json:"ProductInstanceStatus,omitnil,omitempty" name:"ProductInstanceStatus"`
 
-	// 资源包实例的可退还状态，取值有：
-	// <li>FullRefund：可全额退款。</li>
-	// <li>Denied：不可退款。</li>
+	// <p>资源包实例的可退还状态，取值有：</p><li>FullRefund：可全额退款。</li><li>Denied：不可退款。</li>
 	RefundStatus *string `json:"RefundStatus,omitnil,omitempty" name:"RefundStatus"`
 
-	// 自动续费状态，取值有：
-	// <li>Never：不自动续费。</li>
-	// <li>Expire：到期自动续费。</li>
-	// <li>ExpireOrUseOut：到期或用完自动续费。</li>
-	// <li>NotSupport：不支持。</li>
+	// <p>自动续费状态，取值有：</p><li>Never：不自动续费。</li><li>Expire：到期自动续费。</li><li>ExpireOrUseOut：到期或用完自动续费。</li><li>NotSupport：不支持。</li>
 	RenewStatus *string `json:"RenewStatus,omitnil,omitempty" name:"RenewStatus"`
 }
 

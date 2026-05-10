@@ -1784,136 +1784,54 @@ func (r *ChannelCreateDynamicFlowApproverResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type ChannelCreateEmbedWebUrlRequestParams struct {
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	// 
-	// 此接口下面信息必填。
-	// <ul>
-	// <li>渠道应用标识:  Agent.AppId</li>
-	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-	// </ul>
-	// 第三方平台子客企业和员工必须已经经过实名认证
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 要生成WEB嵌入界面的类型, 可以选择的值如下: 
-	// 
-	// <ul>
-	// <li>CREATE_SEAL: 生成创建印章的嵌入页面</li>
-	// <li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li>
-	// <li>MODIFY_TEMPLATE：生成修改模板的嵌入页面</li>
-	// <li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li>
-	// <li>PREVIEW_FLOW：生成预览合同文档的嵌入页面（H5链接，支持移动端的浏览器中打开）</li>
-	// <li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面（仅支持PC的浏览器中打开）</li>
-	// <li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
-	// <li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
-	// <li>EXTEND_SERVICE：生成扩展服务的嵌入页面</li>
-	// </ul>
+	// <p>要生成WEB嵌入界面的类型, 可以选择的值如下: </p><ul><li>CREATE_SEAL: 生成创建印章的嵌入页面</li><li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li><li>MODIFY_TEMPLATE：生成修改模板的嵌入页面</li><li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li><li>PREVIEW_FLOW：生成预览合同文档的嵌入页面（H5链接，支持移动端的浏览器中打开）</li><li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面（仅支持PC的浏览器中打开）</li><li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li><li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li><li>EXTEND_SERVICE：生成扩展服务的嵌入页面</li></ul>
 	EmbedType *string `json:"EmbedType,omitnil,omitempty" name:"EmbedType"`
 
-	// WEB嵌入的业务资源ID
-	// 
-	// 当EmbedType取值
-	// <ul>
-	// <li>为MODIFY_TEMPLATE，PREVIEW_TEMPLATE必填，取值为模板id</li>
-	// <li>为CREATE_TEMPLATE，非必填，取值为资源id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/partnerApis/files/UploadFiles)*</li>
-	// <li>为PREVIEW_FLOW，PREVIEW_FLOW_DETAIL必填，取值为合同id</li>
-	// <li>为PREVIEW_SEAL_DETAIL必填，取值为印章id</li>
-	// </ul>
-	// 
-	// 
-	// 注意：
-	//  1. CREATE_TEMPLATE中的BusinessId仅支持PDF文件类型， 如果您的文件不是PDF， 请使用接口[创建文件转换任务](https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi) 和[查询转换任务状态](https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi) 来进行转换成PDF资源。
+	// <p>WEB嵌入的业务资源ID</p><p>当EmbedType取值</p><ul><li>为MODIFY_TEMPLATE，PREVIEW_TEMPLATE必填，取值为模板id</li><li>为CREATE_TEMPLATE，非必填，取值为资源id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/partnerApis/files/UploadFiles)*</li><li>为PREVIEW_FLOW，PREVIEW_FLOW_DETAIL必填，取值为合同id</li><li>为PREVIEW_SEAL_DETAIL必填，取值为印章id</li></ul><p>注意：</p><ol><li>CREATE_TEMPLATE中的BusinessId仅支持PDF文件类型， 如果您的文件不是PDF， 请使用接口<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi">创建文件转换任务</a> 和<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi">查询转换任务状态</a> 来进行转换成PDF资源。</li></ol>
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
-	// 是否隐藏控件，只有预览模板时生效
+	// <p>是否隐藏控件，只有预览模板时生效，目前字段已废弃，请使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes#embedurloption">嵌入式页面url个性化参数Option</a> 的ShowTemplateComponent来指定是否展示or隐藏控件</p>
+	//
+	// Deprecated: HiddenComponents is deprecated.
 	HiddenComponents *bool `json:"HiddenComponents,omitnil,omitempty" name:"HiddenComponents"`
 
-	// 渠道操作者信息
+	// <p>渠道操作者信息</p>
 	//
 	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 用户自定义参数
-	// <ul>
-	// <li>目前仅支持EmbedType=CREATE_TEMPLATE时传入</li>
-	// <li>指定后，创建，编辑，删除模板时，回调都会携带该userData</li>
-	// <li>支持的格式：json字符串的BASE64编码字符串</li>
-	// <li>示例：<ul>
-	//                  <li>json字符串：{"ComeFrom":"xxx"}，BASE64编码：eyJDb21lRnJvbSI6Inh4eCJ9</li>
-	//                  <li>eyJDb21lRnJvbSI6Inh4eCJ9，为符合要求的userData数据格式</li>
-	// </ul>
-	// </li>
-	// </ul>
+	// <p>用户自定义参数</p><ul><li>目前仅支持EmbedType=CREATE_TEMPLATE时传入</li><li>指定后，创建，编辑，删除模板时，回调都会携带该userData</li><li>支持的格式：json字符串的BASE64编码字符串</li><li>示例：<ul>                 <li>json字符串：{"ComeFrom":"xxx"}，BASE64编码：eyJDb21lRnJvbSI6Inh4eCJ9</li>                 <li>eyJDb21lRnJvbSI6Inh4eCJ9，为符合要求的userData数据格式</li></ul></li></ul>
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 
-	// 个性化参数，用于控制页面展示内容
+	// <p>个性化参数，用于控制页面展示内容</p>
 	Option *EmbedUrlOption `json:"Option,omitnil,omitempty" name:"Option"`
 }
 
 type ChannelCreateEmbedWebUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-	// 
-	// 此接口下面信息必填。
-	// <ul>
-	// <li>渠道应用标识:  Agent.AppId</li>
-	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-	// </ul>
-	// 第三方平台子客企业和员工必须已经经过实名认证
+	// <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 要生成WEB嵌入界面的类型, 可以选择的值如下: 
-	// 
-	// <ul>
-	// <li>CREATE_SEAL: 生成创建印章的嵌入页面</li>
-	// <li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li>
-	// <li>MODIFY_TEMPLATE：生成修改模板的嵌入页面</li>
-	// <li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li>
-	// <li>PREVIEW_FLOW：生成预览合同文档的嵌入页面（H5链接，支持移动端的浏览器中打开）</li>
-	// <li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面（仅支持PC的浏览器中打开）</li>
-	// <li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
-	// <li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
-	// <li>EXTEND_SERVICE：生成扩展服务的嵌入页面</li>
-	// </ul>
+	// <p>要生成WEB嵌入界面的类型, 可以选择的值如下: </p><ul><li>CREATE_SEAL: 生成创建印章的嵌入页面</li><li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li><li>MODIFY_TEMPLATE：生成修改模板的嵌入页面</li><li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li><li>PREVIEW_FLOW：生成预览合同文档的嵌入页面（H5链接，支持移动端的浏览器中打开）</li><li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面（仅支持PC的浏览器中打开）</li><li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li><li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li><li>EXTEND_SERVICE：生成扩展服务的嵌入页面</li></ul>
 	EmbedType *string `json:"EmbedType,omitnil,omitempty" name:"EmbedType"`
 
-	// WEB嵌入的业务资源ID
-	// 
-	// 当EmbedType取值
-	// <ul>
-	// <li>为MODIFY_TEMPLATE，PREVIEW_TEMPLATE必填，取值为模板id</li>
-	// <li>为CREATE_TEMPLATE，非必填，取值为资源id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/partnerApis/files/UploadFiles)*</li>
-	// <li>为PREVIEW_FLOW，PREVIEW_FLOW_DETAIL必填，取值为合同id</li>
-	// <li>为PREVIEW_SEAL_DETAIL必填，取值为印章id</li>
-	// </ul>
-	// 
-	// 
-	// 注意：
-	//  1. CREATE_TEMPLATE中的BusinessId仅支持PDF文件类型， 如果您的文件不是PDF， 请使用接口[创建文件转换任务](https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi) 和[查询转换任务状态](https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi) 来进行转换成PDF资源。
+	// <p>WEB嵌入的业务资源ID</p><p>当EmbedType取值</p><ul><li>为MODIFY_TEMPLATE，PREVIEW_TEMPLATE必填，取值为模板id</li><li>为CREATE_TEMPLATE，非必填，取值为资源id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/partnerApis/files/UploadFiles)*</li><li>为PREVIEW_FLOW，PREVIEW_FLOW_DETAIL必填，取值为合同id</li><li>为PREVIEW_SEAL_DETAIL必填，取值为印章id</li></ul><p>注意：</p><ol><li>CREATE_TEMPLATE中的BusinessId仅支持PDF文件类型， 如果您的文件不是PDF， 请使用接口<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi">创建文件转换任务</a> 和<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi">查询转换任务状态</a> 来进行转换成PDF资源。</li></ol>
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
-	// 是否隐藏控件，只有预览模板时生效
+	// <p>是否隐藏控件，只有预览模板时生效，目前字段已废弃，请使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes#embedurloption">嵌入式页面url个性化参数Option</a> 的ShowTemplateComponent来指定是否展示or隐藏控件</p>
 	HiddenComponents *bool `json:"HiddenComponents,omitnil,omitempty" name:"HiddenComponents"`
 
-	// 渠道操作者信息
+	// <p>渠道操作者信息</p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 用户自定义参数
-	// <ul>
-	// <li>目前仅支持EmbedType=CREATE_TEMPLATE时传入</li>
-	// <li>指定后，创建，编辑，删除模板时，回调都会携带该userData</li>
-	// <li>支持的格式：json字符串的BASE64编码字符串</li>
-	// <li>示例：<ul>
-	//                  <li>json字符串：{"ComeFrom":"xxx"}，BASE64编码：eyJDb21lRnJvbSI6Inh4eCJ9</li>
-	//                  <li>eyJDb21lRnJvbSI6Inh4eCJ9，为符合要求的userData数据格式</li>
-	// </ul>
-	// </li>
-	// </ul>
+	// <p>用户自定义参数</p><ul><li>目前仅支持EmbedType=CREATE_TEMPLATE时传入</li><li>指定后，创建，编辑，删除模板时，回调都会携带该userData</li><li>支持的格式：json字符串的BASE64编码字符串</li><li>示例：<ul>                 <li>json字符串：{"ComeFrom":"xxx"}，BASE64编码：eyJDb21lRnJvbSI6Inh4eCJ9</li>                 <li>eyJDb21lRnJvbSI6Inh4eCJ9，为符合要求的userData数据格式</li></ul></li></ul>
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 
-	// 个性化参数，用于控制页面展示内容
+	// <p>个性化参数，用于控制页面展示内容</p>
 	Option *EmbedUrlOption `json:"Option,omitnil,omitempty" name:"Option"`
 }
 
@@ -1944,7 +1862,7 @@ func (r *ChannelCreateEmbedWebUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateEmbedWebUrlResponseParams struct {
-	// 嵌入的web链接，5分钟有效
+	// <p>嵌入的web链接，5分钟有效</p>
 	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

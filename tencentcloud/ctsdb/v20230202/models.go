@@ -237,12 +237,15 @@ type Database struct {
 
 // Predefined struct for user
 type DescribeClusterDetailRequestParams struct {
-
+	// <p>实例ID</p>
+	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 }
 
 type DescribeClusterDetailRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>实例ID</p>
+	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 }
 
 func (r *DescribeClusterDetailRequest) ToJsonString() string {
@@ -257,7 +260,7 @@ func (r *DescribeClusterDetailRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ClusterID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterDetailRequest has unknown keys!", "")
 	}

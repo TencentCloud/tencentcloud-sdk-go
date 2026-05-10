@@ -11092,52 +11092,50 @@ func (r *DescribeAssetImageRegistryListExportResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type DescribeAssetImageRegistryListRequestParams struct {
-	// 需要返回的数量，默认为10，最大值为100
+	// <p>需要返回的数量，默认为10，最大值为100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤字段
-	// IsAuthorized是否授权，取值全部all，未授权0，已授权1
+	// <p>过滤字段<br>IsAuthorized是否授权，取值全部all，未授权0，已授权1</p>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
-	// 排序方式，asc，desc
+	// <p>排序方式，asc，desc</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 是否仅展示各repository最新的镜像, 默认为false
+	// <p>是否仅展示各repository最新的镜像, 默认为false</p>
 	OnlyShowLatest *bool `json:"OnlyShowLatest,omitnil,omitempty" name:"OnlyShowLatest"`
 
-	// 是否仅展示运行中容器镜像
+	// <p>是否仅展示运行中容器镜像</p>
 	IsRunning *bool `json:"IsRunning,omitnil,omitempty" name:"IsRunning"`
 }
 
 type DescribeAssetImageRegistryListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要返回的数量，默认为10，最大值为100
+	// <p>需要返回的数量，默认为10，最大值为100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0
+	// <p>偏移量，默认为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤字段
-	// IsAuthorized是否授权，取值全部all，未授权0，已授权1
+	// <p>过滤字段<br>IsAuthorized是否授权，取值全部all，未授权0，已授权1</p>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
-	// 排序方式，asc，desc
+	// <p>排序方式，asc，desc</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 是否仅展示各repository最新的镜像, 默认为false
+	// <p>是否仅展示各repository最新的镜像, 默认为false</p>
 	OnlyShowLatest *bool `json:"OnlyShowLatest,omitnil,omitempty" name:"OnlyShowLatest"`
 
-	// 是否仅展示运行中容器镜像
+	// <p>是否仅展示运行中容器镜像</p>
 	IsRunning *bool `json:"IsRunning,omitnil,omitempty" name:"IsRunning"`
 }
 
@@ -11168,10 +11166,10 @@ func (r *DescribeAssetImageRegistryListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetImageRegistryListResponseParams struct {
-	// 镜像仓库列表
+	// <p>镜像仓库列表</p>
 	List []*ImageRepoInfo `json:"List,omitnil,omitempty" name:"List"`
 
-	// 总数量
+	// <p>总数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

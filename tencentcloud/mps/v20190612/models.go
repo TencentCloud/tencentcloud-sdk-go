@@ -2443,6 +2443,9 @@ type AigcImageExtraParam struct {
 
 	// <p>是否添加图标水印。默认不加。1-添加，0-不添加。</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
 	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// <p>指定图片的输出格式，支持jpeg, png。</p>
+	OutputFormat *string `json:"OutputFormat,omitnil,omitempty" name:"OutputFormat"`
 }
 
 type AigcImageInfo struct {

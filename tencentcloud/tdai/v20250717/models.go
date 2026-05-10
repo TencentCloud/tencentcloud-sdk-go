@@ -138,6 +138,9 @@ type AgentInstance struct {
 
 	// <p>无</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>发货进度详情</p>
+	CreatingProgress *CreatingProgress `json:"CreatingProgress,omitnil,omitempty" name:"CreatingProgress"`
 }
 
 type ChatBrief struct {
@@ -501,6 +504,34 @@ func (r *CreateChatCompletionResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateChatCompletionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatingProgress struct {
+	// <p>总步骤数</p>
+	TotalSteps *int64 `json:"TotalSteps,omitnil,omitempty" name:"TotalSteps"`
+
+	// <p>当前步骤</p>
+	CurrentStep *int64 `json:"CurrentStep,omitnil,omitempty" name:"CurrentStep"`
+
+	// <p>步骤详情</p>
+	Steps []*CreatingStepInfo `json:"Steps,omitnil,omitempty" name:"Steps"`
+}
+
+type CreatingStepInfo struct {
+	// <p>步骤名称</p>
+	StepName *string `json:"StepName,omitnil,omitempty" name:"StepName"`
+
+	// <p>步骤描述</p>
+	StepDesc *string `json:"StepDesc,omitnil,omitempty" name:"StepDesc"`
+
+	// <p>步骤状态</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>完成时间</p>
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// <p>错误信息描述</p>
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 }
 
 // Predefined struct for user

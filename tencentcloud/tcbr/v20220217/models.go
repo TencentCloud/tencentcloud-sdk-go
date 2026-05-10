@@ -2642,23 +2642,32 @@ type VersionPodInstance struct {
 }
 
 type VolumeConf struct {
-	// 存储类型
+	// <p>存储类型</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 对象存储桶名称
+	// <p>对象存储桶名称</p>
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
 
-	// 存储连接地址
+	// <p>存储连接地址</p>
 	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 
-	// 存储连接用户密码
+	// <p>存储连接用户密码</p>
 	KeyID *string `json:"KeyID,omitnil,omitempty" name:"KeyID"`
 
-	// 存储挂载目的目录
+	// <p>存储挂载目的目录</p>
 	DstPath *string `json:"DstPath,omitnil,omitempty" name:"DstPath"`
 
-	// 存储挂载源目录
+	// <p>存储挂载源目录</p>
 	SrcPath *string `json:"SrcPath,omitnil,omitempty" name:"SrcPath"`
+
+	// <p>cfs 实例ip</p>
+	MountIP *string `json:"MountIP,omitnil,omitempty" name:"MountIP"`
+
+	// <p>默认读写</p>
+	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
+
+	// <p>CFS 实例 ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type VpcConf struct {

@@ -379,6 +379,9 @@ type CosPathInfo struct {
 
 // Predefined struct for user
 type CreateDataSourceRequestParams struct {
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 数据源名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
@@ -401,6 +404,9 @@ type CreateDataSourceRequestParams struct {
 type CreateDataSourceRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 数据源名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
@@ -432,6 +438,7 @@ func (r *CreateDataSourceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "TiProjectId")
 	delete(f, "Name")
 	delete(f, "Type")
 	delete(f, "Permission")
@@ -1223,6 +1230,9 @@ type CreateMountLimitRequestParams struct {
 	// 存储实例ID
 	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
 
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 限制开关是否开启，只有开启时才有限制，默认关闭
 	LimitMount *bool `json:"LimitMount,omitnil,omitempty" name:"LimitMount"`
 }
@@ -1235,6 +1245,9 @@ type CreateMountLimitRequest struct {
 
 	// 存储实例ID
 	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 限制开关是否开启，只有开启时才有限制，默认关闭
 	LimitMount *bool `json:"LimitMount,omitnil,omitempty" name:"LimitMount"`
@@ -1254,6 +1267,7 @@ func (r *CreateMountLimitRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Type")
 	delete(f, "StorageId")
+	delete(f, "TiProjectId")
 	delete(f, "LimitMount")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMountLimitRequest has unknown keys!", "")
@@ -2484,6 +2498,9 @@ type DefaultNginxGatewayCallInfo struct {
 
 // Predefined struct for user
 type DeleteDataSourceRequestParams struct {
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 数据源ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
@@ -2491,6 +2508,9 @@ type DeleteDataSourceRequestParams struct {
 type DeleteDataSourceRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 数据源ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
@@ -2507,6 +2527,7 @@ func (r *DeleteDataSourceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "TiProjectId")
 	delete(f, "Id")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDataSourceRequest has unknown keys!", "")
@@ -2834,6 +2855,9 @@ func (r *DeleteModelServiceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteMountLimitRequestParams struct {
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 数据源类型英文名
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
@@ -2844,6 +2868,9 @@ type DeleteMountLimitRequestParams struct {
 type DeleteMountLimitRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 数据源类型英文名
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
@@ -2863,6 +2890,7 @@ func (r *DeleteMountLimitRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "TiProjectId")
 	delete(f, "Type")
 	delete(f, "StorageId")
 	if len(f) > 0 {
@@ -3840,6 +3868,9 @@ func (r *DescribeDataSourceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDataSourcesRequestParams struct {
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -3862,6 +3893,9 @@ type DescribeDataSourcesRequestParams struct {
 type DescribeDataSourcesRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -3893,6 +3927,7 @@ func (r *DescribeDataSourcesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "TiProjectId")
 	delete(f, "Filters")
 	delete(f, "TagFilters")
 	delete(f, "Offset")
@@ -5065,6 +5100,9 @@ type DescribeMountInstanceRequestParams struct {
 	// 数据源类型英文名
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 存储实例ID
 	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
 }
@@ -5074,6 +5112,9 @@ type DescribeMountInstanceRequest struct {
 	
 	// 数据源类型英文名
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 存储实例ID
 	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
@@ -5092,6 +5133,7 @@ func (r *DescribeMountInstanceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Type")
+	delete(f, "TiProjectId")
 	delete(f, "StorageId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMountInstanceRequest has unknown keys!", "")
@@ -5129,6 +5171,9 @@ type DescribeMountInstancesRequestParams struct {
 	// 数据源类型英文名
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 偏移量
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
@@ -5141,6 +5186,9 @@ type DescribeMountInstancesRequest struct {
 	
 	// 数据源类型英文名
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 
 	// 偏移量
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -5162,6 +5210,7 @@ func (r *DescribeMountInstancesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Type")
+	delete(f, "TiProjectId")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
@@ -5200,6 +5249,9 @@ func (r *DescribeMountInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMountLimitsRequestParams struct {
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -5219,6 +5271,9 @@ type DescribeMountLimitsRequestParams struct {
 type DescribeMountLimitsRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -5247,6 +5302,7 @@ func (r *DescribeMountLimitsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "TiProjectId")
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
@@ -10373,6 +10429,9 @@ type TrainingTaskSetItem struct {
 
 // Predefined struct for user
 type UpdateDataSourceRequestParams struct {
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 数据源ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
@@ -10389,6 +10448,9 @@ type UpdateDataSourceRequestParams struct {
 type UpdateDataSourceRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// 数据源ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
@@ -10414,6 +10476,7 @@ func (r *UpdateDataSourceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "TiProjectId")
 	delete(f, "Id")
 	delete(f, "Name")
 	delete(f, "Permission")
@@ -10456,6 +10519,9 @@ type UpdateMountLimitRequestParams struct {
 
 	// 限制开关是否开启，只有开启时才有限制，默认关闭
 	LimitMount *bool `json:"LimitMount,omitnil,omitempty" name:"LimitMount"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 type UpdateMountLimitRequest struct {
@@ -10469,6 +10535,9 @@ type UpdateMountLimitRequest struct {
 
 	// 限制开关是否开启，只有开启时才有限制，默认关闭
 	LimitMount *bool `json:"LimitMount,omitnil,omitempty" name:"LimitMount"`
+
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
 }
 
 func (r *UpdateMountLimitRequest) ToJsonString() string {
@@ -10486,6 +10555,7 @@ func (r *UpdateMountLimitRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "StorageId")
 	delete(f, "LimitMount")
+	delete(f, "TiProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateMountLimitRequest has unknown keys!", "")
 	}

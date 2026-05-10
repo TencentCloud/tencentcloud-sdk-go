@@ -502,10 +502,10 @@ func (r *DeployInferServiceResponse) FromJsonString(s string) error {
 }
 
 type DeploymentConfig struct {
-	// 容器配置
+	// <p>容器配置</p>
 	Container *ContainerInfo `json:"Container,omitnil,omitempty" name:"Container"`
 
-	// 容器数量
+	// <p>容器数量</p>
 	ContainerCount *int64 `json:"ContainerCount,omitnil,omitempty" name:"ContainerCount"`
 }
 

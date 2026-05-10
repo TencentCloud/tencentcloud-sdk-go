@@ -3795,6 +3795,80 @@ func (r *DescribeProductSKUListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSharedSubscriptionClientRequestParams struct {
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 共享订阅组名
+	SharedName *string `json:"SharedName,omitnil,omitempty" name:"SharedName"`
+
+	// 订阅表达式
+	TopicFilter *string `json:"TopicFilter,omitnil,omitempty" name:"TopicFilter"`
+}
+
+type DescribeSharedSubscriptionClientRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 共享订阅组名
+	SharedName *string `json:"SharedName,omitnil,omitempty" name:"SharedName"`
+
+	// 订阅表达式
+	TopicFilter *string `json:"TopicFilter,omitnil,omitempty" name:"TopicFilter"`
+}
+
+func (r *DescribeSharedSubscriptionClientRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSharedSubscriptionClientRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SharedName")
+	delete(f, "TopicFilter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSharedSubscriptionClientRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSharedSubscriptionClientResponseParams struct {
+	// 共享订阅组下Client信息
+	Data []*SharedSubscriptionClient `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 查询总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSharedSubscriptionClientResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSharedSubscriptionClientResponseParams `json:"Response"`
+}
+
+func (r *DescribeSharedSubscriptionClientResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSharedSubscriptionClientResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSharedSubscriptionGroupsRequestParams struct {
 	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -3915,6 +3989,76 @@ func (r *DescribeSharedSubscriptionLagResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSharedSubscriptionLagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSharedSubscriptionsRequestParams struct {
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 共享订阅组名
+	SharedName *string `json:"SharedName,omitnil,omitempty" name:"SharedName"`
+}
+
+type DescribeSharedSubscriptionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 共享订阅组名
+	SharedName *string `json:"SharedName,omitnil,omitempty" name:"SharedName"`
+}
+
+func (r *DescribeSharedSubscriptionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSharedSubscriptionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SharedName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSharedSubscriptionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSharedSubscriptionsResponseParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 共享组名
+	SharedName *string `json:"SharedName,omitnil,omitempty" name:"SharedName"`
+
+	// 共享组下的订阅表达式列表
+	TopicFilter []*string `json:"TopicFilter,omitnil,omitempty" name:"TopicFilter"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSharedSubscriptionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSharedSubscriptionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeSharedSubscriptionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSharedSubscriptionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6248,6 +6392,20 @@ type SharedGroup struct {
 
 	// 上次更新时间，毫秒级时间戳 。
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type SharedSubscriptionClient struct {
+	// 客户端ID
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 共享订阅组名
+	SharedName *string `json:"SharedName,omitnil,omitempty" name:"SharedName"`
+
+	// 共享组下的订阅表达式列表
+	TopicFilter *string `json:"TopicFilter,omitnil,omitempty" name:"TopicFilter"`
+
+	// 在线状态
+	Online *bool `json:"Online,omitnil,omitempty" name:"Online"`
 }
 
 type SubscriptionUserProperty struct {

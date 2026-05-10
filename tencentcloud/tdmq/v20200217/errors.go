@@ -158,6 +158,12 @@ const (
 	// 必须先清除关联角色数据才能继续操作。
 	FAILEDOPERATION_ROLEINUSE = "FailedOperation.RoleInUse"
 
+	// 角色权限不足。
+	FAILEDOPERATION_ROLENOSYNCPERMISSION = "FailedOperation.RoleNoSyncPermission"
+
+	// 操作复制任务失败
+	FAILEDOPERATION_ROUTERRULE = "FailedOperation.RouterRule"
+
 	// 保存密钥失败。
 	FAILEDOPERATION_SAVESECRETKEY = "FailedOperation.SaveSecretKey"
 

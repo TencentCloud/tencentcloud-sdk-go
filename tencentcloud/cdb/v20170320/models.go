@@ -7653,228 +7653,224 @@ func (r *DescribeDBInstanceRebootTimeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstancesRequestParams struct {
-	// 项目 ID。
+	// <p>项目 ID。</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 实例类型，可取值：1 - 主实例，2 - 灾备实例，3 - 只读实例。
+	// <p>实例类型，可取值：1 - 主实例，2 - 灾备实例，3 - 只读实例。</p>
 	InstanceTypes []*uint64 `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 
-	// 实例的内网 IP 地址。
+	// <p>实例的内网 IP 地址。</p>
 	Vips []*string `json:"Vips,omitnil,omitempty" name:"Vips"`
 
-	// 实例状态，可取值：<br>0 - 创建中<br>1 - 运行中<br>4 - 正在进行隔离操作<br>5 - 已隔离（可在回收站恢复开机）
+	// <p>实例状态，可取值：<br>0 - 创建中<br>1 - 运行中<br>4 - 正在进行隔离操作<br>5 - 已隔离（可在回收站恢复开机）</p>
 	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 偏移量，默认值为 0。
+	// <p>偏移量，默认值为 0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 单次请求返回的数量，默认值为 20，最大值为 2000。
+	// <p>单次请求返回的数量，默认值为 20，最大值为 2000。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 安全组 ID。当使用安全组 ID 为过滤条件时，需指定 WithSecurityGroup 参数为 1。
+	// <p>安全组 ID。当使用安全组 ID 为过滤条件时，需指定 WithSecurityGroup 参数为 1。</p>
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 
-	// 付费类型，可取值：0 - 包年包月，1 - 小时计费。
+	// <p>付费类型，可取值：0 - 包年包月，1 - 小时计费。</p>
 	PayTypes []*uint64 `json:"PayTypes,omitnil,omitempty" name:"PayTypes"`
 
-	// 实例名称。
+	// <p>实例名称。</p>
 	InstanceNames []*string `json:"InstanceNames,omitnil,omitempty" name:"InstanceNames"`
 
-	// 实例任务状态，可能取值：<br>0 - 没有任务<br>1 - 升级中<br>2 - 数据导入中<br>3 - 开放Slave中<br>4 - 外网访问开通中<br>5 - 批量操作执行中<br>6 - 回档中<br>7 - 外网访问关闭中<br>8 - 密码修改中<br>9 - 实例名修改中<br>10 - 重启中<br>12 - 自建迁移中<br>13 - 删除库表中<br>14 - 灾备实例创建同步中<br>15 - 升级待切换<br>16 - 升级切换中<br>17 - 升级切换完成<br>19 - 参数设置待执行<br>34 - 原地升级待执行
+	// <p>实例任务状态，可能取值：<br>0 - 没有任务<br>1 - 升级中<br>2 - 数据导入中<br>3 - 开放Slave中<br>4 - 外网访问开通中<br>5 - 批量操作执行中<br>6 - 回档中<br>7 - 外网访问关闭中<br>8 - 密码修改中<br>9 - 实例名修改中<br>10 - 重启中<br>12 - 自建迁移中<br>13 - 删除库表中<br>14 - 灾备实例创建同步中<br>15 - 升级待切换<br>16 - 升级切换中<br>17 - 升级切换完成<br>19 - 参数设置待执行<br>34 - 原地升级待执行</p>
 	TaskStatus []*uint64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
-	// 实例数据库引擎版本，可能取值：5.1、5.5、5.6 和 5.7。
+	// <p>实例数据库引擎版本，可能取值：5.1、5.5、5.6 和 5.7。</p>
 	EngineVersions []*string `json:"EngineVersions,omitnil,omitempty" name:"EngineVersions"`
 
-	// 私有网络的 ID。
+	// <p>私有网络的 ID。</p>
 	VpcIds []*uint64 `json:"VpcIds,omitnil,omitempty" name:"VpcIds"`
 
-	// 可用区的 ID。
+	// <p>可用区的 ID。</p>
 	ZoneIds []*uint64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 子网 ID。
+	// <p>子网 ID。</p>
 	SubnetIds []*uint64 `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
-	// 是否锁定标记，可选值：0 - 不锁定，1 - 锁定，默认为0。
+	// <p>是否锁定标记，可选值：0 - 不锁定，1 - 锁定，默认为0。</p>
 	CdbErrors []*int64 `json:"CdbErrors,omitnil,omitempty" name:"CdbErrors"`
 
-	// 返回结果集排序的字段，目前支持："instanceId"，"instanceName"，"createTime"，"deadlineTime"。
+	// <p>返回结果集排序的字段，目前支持：&quot;instanceId&quot;，&quot;instanceName&quot;，&quot;createTime&quot;，&quot;deadlineTime&quot;。</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 返回结果集排序方式。目前支持值："ASC" - 表示升序，"DESC" - 表示降序，默认为 "DESC"。
+	// <p>返回结果集排序方式。目前支持值：&quot;ASC&quot; - 表示升序，&quot;DESC&quot; - 表示降序，默认为 &quot;DESC&quot;。</p>
 	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
 
-	// 是否以安全组 ID 为过滤条件。
-	// 说明：0表示否，1表示是。
+	// <p>是否以安全组 ID 为过滤条件。<br>说明：0表示否，1表示是。</p>
 	WithSecurityGroup *int64 `json:"WithSecurityGroup,omitnil,omitempty" name:"WithSecurityGroup"`
 
-	// 是否包含独享集群详细信息，可取值：0 - 不包含，1 - 包含。
+	// <p>是否包含独享集群详细信息，可取值：0 - 不包含，1 - 包含。</p>
 	WithExCluster *int64 `json:"WithExCluster,omitnil,omitempty" name:"WithExCluster"`
 
-	// 独享集群 ID。
+	// <p>独享集群 ID。</p>
 	ExClusterId *string `json:"ExClusterId,omitnil,omitempty" name:"ExClusterId"`
 
-	// 实例 ID。
+	// <p>实例 ID。</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 初始化标记，可取值：0 - 未初始化，1 - 初始化。
+	// <p>初始化标记，可取值：0 - 未初始化，1 - 初始化。</p>
 	InitFlag *int64 `json:"InitFlag,omitnil,omitempty" name:"InitFlag"`
 
-	// 是否包含灾备关系对应的实例，可取值：0 - 不包含，1 - 包含。默认取值为1。如果拉取主实例，则灾备关系的数据在DrInfo字段中， 如果拉取灾备实例， 则灾备关系的数据在MasterInfo字段中。灾备关系中只包含部分基本的数据，详细的数据需要自行调接口拉取。
+	// <p>是否包含灾备关系对应的实例，可取值：0 - 不包含，1 - 包含。默认取值为1。如果拉取主实例，则灾备关系的数据在DrInfo字段中， 如果拉取灾备实例， 则灾备关系的数据在MasterInfo字段中。灾备关系中只包含部分基本的数据，详细的数据需要自行调接口拉取。</p>
 	WithDr *int64 `json:"WithDr,omitnil,omitempty" name:"WithDr"`
 
-	// 是否包含只读实例，可取值：0 - 不包含，1 - 包含。默认取值为1。
+	// <p>是否包含只读实例，可取值：0 - 不包含，1 - 包含。默认取值为1。</p>
 	WithRo *int64 `json:"WithRo,omitnil,omitempty" name:"WithRo"`
 
-	// 是否包含主实例，可取值：0 - 不包含，1 - 包含。默认取值为1。
+	// <p>是否包含主实例，可取值：0 - 不包含，1 - 包含。默认取值为1。</p>
 	WithMaster *int64 `json:"WithMaster,omitnil,omitempty" name:"WithMaster"`
 
-	// 置放群组ID列表。
+	// <p>置放群组ID列表。</p>
 	DeployGroupIds []*string `json:"DeployGroupIds,omitnil,omitempty" name:"DeployGroupIds"`
 
-	// 是否以标签键为过滤条件。
+	// <p>是否以标签键为过滤条件。</p>
 	TagKeysForSearch []*string `json:"TagKeysForSearch,omitnil,omitempty" name:"TagKeysForSearch"`
 
-	// 金融围拢 ID 。
+	// <p>金融围拢 ID 。</p>
 	CageIds []*string `json:"CageIds,omitnil,omitempty" name:"CageIds"`
 
-	// 标签值
+	// <p>标签值</p>
 	TagValues []*string `json:"TagValues,omitnil,omitempty" name:"TagValues"`
 
-	// 私有网络字符型vpcId
+	// <p>私有网络字符型vpcId</p>
 	UniqueVpcIds []*string `json:"UniqueVpcIds,omitnil,omitempty" name:"UniqueVpcIds"`
 
-	// 私有网络字符型subnetId
+	// <p>私有网络字符型subnetId</p>
 	UniqSubnetIds []*string `json:"UniqSubnetIds,omitnil,omitempty" name:"UniqSubnetIds"`
 
-	// 标签键值
-	// 请注意，创建中的实例无法查询到标签。
+	// <p>标签键值<br>请注意，创建中的实例无法查询到标签。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 数据库代理 IP 。
+	// <p>数据库代理 IP 。</p>
 	ProxyVips []*string `json:"ProxyVips,omitnil,omitempty" name:"ProxyVips"`
 
-	// 数据库代理 ID 。
+	// <p>数据库代理 ID 。</p>
 	ProxyIds []*string `json:"ProxyIds,omitnil,omitempty" name:"ProxyIds"`
 
-	// 数据库引擎类型。可选值为：InnoDB、RocksDB。
+	// <p>数据库引擎类型。可选值为：InnoDB、RocksDB。</p>
 	EngineTypes []*string `json:"EngineTypes,omitnil,omitempty" name:"EngineTypes"`
 
-	// 是否获取云盘版实例节点信息，可填：true 或 false。默认为 false。
+	// <p>是否获取云盘版实例节点信息，可填：true 或 false。默认为 false。</p>
 	QueryClusterInfo *bool `json:"QueryClusterInfo,omitnil,omitempty" name:"QueryClusterInfo"`
 }
 
 type DescribeDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目 ID。
+	// <p>项目 ID。</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 实例类型，可取值：1 - 主实例，2 - 灾备实例，3 - 只读实例。
+	// <p>实例类型，可取值：1 - 主实例，2 - 灾备实例，3 - 只读实例。</p>
 	InstanceTypes []*uint64 `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 
-	// 实例的内网 IP 地址。
+	// <p>实例的内网 IP 地址。</p>
 	Vips []*string `json:"Vips,omitnil,omitempty" name:"Vips"`
 
-	// 实例状态，可取值：<br>0 - 创建中<br>1 - 运行中<br>4 - 正在进行隔离操作<br>5 - 已隔离（可在回收站恢复开机）
+	// <p>实例状态，可取值：<br>0 - 创建中<br>1 - 运行中<br>4 - 正在进行隔离操作<br>5 - 已隔离（可在回收站恢复开机）</p>
 	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 偏移量，默认值为 0。
+	// <p>偏移量，默认值为 0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 单次请求返回的数量，默认值为 20，最大值为 2000。
+	// <p>单次请求返回的数量，默认值为 20，最大值为 2000。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 安全组 ID。当使用安全组 ID 为过滤条件时，需指定 WithSecurityGroup 参数为 1。
+	// <p>安全组 ID。当使用安全组 ID 为过滤条件时，需指定 WithSecurityGroup 参数为 1。</p>
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 
-	// 付费类型，可取值：0 - 包年包月，1 - 小时计费。
+	// <p>付费类型，可取值：0 - 包年包月，1 - 小时计费。</p>
 	PayTypes []*uint64 `json:"PayTypes,omitnil,omitempty" name:"PayTypes"`
 
-	// 实例名称。
+	// <p>实例名称。</p>
 	InstanceNames []*string `json:"InstanceNames,omitnil,omitempty" name:"InstanceNames"`
 
-	// 实例任务状态，可能取值：<br>0 - 没有任务<br>1 - 升级中<br>2 - 数据导入中<br>3 - 开放Slave中<br>4 - 外网访问开通中<br>5 - 批量操作执行中<br>6 - 回档中<br>7 - 外网访问关闭中<br>8 - 密码修改中<br>9 - 实例名修改中<br>10 - 重启中<br>12 - 自建迁移中<br>13 - 删除库表中<br>14 - 灾备实例创建同步中<br>15 - 升级待切换<br>16 - 升级切换中<br>17 - 升级切换完成<br>19 - 参数设置待执行<br>34 - 原地升级待执行
+	// <p>实例任务状态，可能取值：<br>0 - 没有任务<br>1 - 升级中<br>2 - 数据导入中<br>3 - 开放Slave中<br>4 - 外网访问开通中<br>5 - 批量操作执行中<br>6 - 回档中<br>7 - 外网访问关闭中<br>8 - 密码修改中<br>9 - 实例名修改中<br>10 - 重启中<br>12 - 自建迁移中<br>13 - 删除库表中<br>14 - 灾备实例创建同步中<br>15 - 升级待切换<br>16 - 升级切换中<br>17 - 升级切换完成<br>19 - 参数设置待执行<br>34 - 原地升级待执行</p>
 	TaskStatus []*uint64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
-	// 实例数据库引擎版本，可能取值：5.1、5.5、5.6 和 5.7。
+	// <p>实例数据库引擎版本，可能取值：5.1、5.5、5.6 和 5.7。</p>
 	EngineVersions []*string `json:"EngineVersions,omitnil,omitempty" name:"EngineVersions"`
 
-	// 私有网络的 ID。
+	// <p>私有网络的 ID。</p>
 	VpcIds []*uint64 `json:"VpcIds,omitnil,omitempty" name:"VpcIds"`
 
-	// 可用区的 ID。
+	// <p>可用区的 ID。</p>
 	ZoneIds []*uint64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 子网 ID。
+	// <p>子网 ID。</p>
 	SubnetIds []*uint64 `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
-	// 是否锁定标记，可选值：0 - 不锁定，1 - 锁定，默认为0。
+	// <p>是否锁定标记，可选值：0 - 不锁定，1 - 锁定，默认为0。</p>
 	CdbErrors []*int64 `json:"CdbErrors,omitnil,omitempty" name:"CdbErrors"`
 
-	// 返回结果集排序的字段，目前支持："instanceId"，"instanceName"，"createTime"，"deadlineTime"。
+	// <p>返回结果集排序的字段，目前支持：&quot;instanceId&quot;，&quot;instanceName&quot;，&quot;createTime&quot;，&quot;deadlineTime&quot;。</p>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 返回结果集排序方式。目前支持值："ASC" - 表示升序，"DESC" - 表示降序，默认为 "DESC"。
+	// <p>返回结果集排序方式。目前支持值：&quot;ASC&quot; - 表示升序，&quot;DESC&quot; - 表示降序，默认为 &quot;DESC&quot;。</p>
 	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
 
-	// 是否以安全组 ID 为过滤条件。
-	// 说明：0表示否，1表示是。
+	// <p>是否以安全组 ID 为过滤条件。<br>说明：0表示否，1表示是。</p>
 	WithSecurityGroup *int64 `json:"WithSecurityGroup,omitnil,omitempty" name:"WithSecurityGroup"`
 
-	// 是否包含独享集群详细信息，可取值：0 - 不包含，1 - 包含。
+	// <p>是否包含独享集群详细信息，可取值：0 - 不包含，1 - 包含。</p>
 	WithExCluster *int64 `json:"WithExCluster,omitnil,omitempty" name:"WithExCluster"`
 
-	// 独享集群 ID。
+	// <p>独享集群 ID。</p>
 	ExClusterId *string `json:"ExClusterId,omitnil,omitempty" name:"ExClusterId"`
 
-	// 实例 ID。
+	// <p>实例 ID。</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 初始化标记，可取值：0 - 未初始化，1 - 初始化。
+	// <p>初始化标记，可取值：0 - 未初始化，1 - 初始化。</p>
 	InitFlag *int64 `json:"InitFlag,omitnil,omitempty" name:"InitFlag"`
 
-	// 是否包含灾备关系对应的实例，可取值：0 - 不包含，1 - 包含。默认取值为1。如果拉取主实例，则灾备关系的数据在DrInfo字段中， 如果拉取灾备实例， 则灾备关系的数据在MasterInfo字段中。灾备关系中只包含部分基本的数据，详细的数据需要自行调接口拉取。
+	// <p>是否包含灾备关系对应的实例，可取值：0 - 不包含，1 - 包含。默认取值为1。如果拉取主实例，则灾备关系的数据在DrInfo字段中， 如果拉取灾备实例， 则灾备关系的数据在MasterInfo字段中。灾备关系中只包含部分基本的数据，详细的数据需要自行调接口拉取。</p>
 	WithDr *int64 `json:"WithDr,omitnil,omitempty" name:"WithDr"`
 
-	// 是否包含只读实例，可取值：0 - 不包含，1 - 包含。默认取值为1。
+	// <p>是否包含只读实例，可取值：0 - 不包含，1 - 包含。默认取值为1。</p>
 	WithRo *int64 `json:"WithRo,omitnil,omitempty" name:"WithRo"`
 
-	// 是否包含主实例，可取值：0 - 不包含，1 - 包含。默认取值为1。
+	// <p>是否包含主实例，可取值：0 - 不包含，1 - 包含。默认取值为1。</p>
 	WithMaster *int64 `json:"WithMaster,omitnil,omitempty" name:"WithMaster"`
 
-	// 置放群组ID列表。
+	// <p>置放群组ID列表。</p>
 	DeployGroupIds []*string `json:"DeployGroupIds,omitnil,omitempty" name:"DeployGroupIds"`
 
-	// 是否以标签键为过滤条件。
+	// <p>是否以标签键为过滤条件。</p>
 	TagKeysForSearch []*string `json:"TagKeysForSearch,omitnil,omitempty" name:"TagKeysForSearch"`
 
-	// 金融围拢 ID 。
+	// <p>金融围拢 ID 。</p>
 	CageIds []*string `json:"CageIds,omitnil,omitempty" name:"CageIds"`
 
-	// 标签值
+	// <p>标签值</p>
 	TagValues []*string `json:"TagValues,omitnil,omitempty" name:"TagValues"`
 
-	// 私有网络字符型vpcId
+	// <p>私有网络字符型vpcId</p>
 	UniqueVpcIds []*string `json:"UniqueVpcIds,omitnil,omitempty" name:"UniqueVpcIds"`
 
-	// 私有网络字符型subnetId
+	// <p>私有网络字符型subnetId</p>
 	UniqSubnetIds []*string `json:"UniqSubnetIds,omitnil,omitempty" name:"UniqSubnetIds"`
 
-	// 标签键值
-	// 请注意，创建中的实例无法查询到标签。
+	// <p>标签键值<br>请注意，创建中的实例无法查询到标签。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 数据库代理 IP 。
+	// <p>数据库代理 IP 。</p>
 	ProxyVips []*string `json:"ProxyVips,omitnil,omitempty" name:"ProxyVips"`
 
-	// 数据库代理 ID 。
+	// <p>数据库代理 ID 。</p>
 	ProxyIds []*string `json:"ProxyIds,omitnil,omitempty" name:"ProxyIds"`
 
-	// 数据库引擎类型。可选值为：InnoDB、RocksDB。
+	// <p>数据库引擎类型。可选值为：InnoDB、RocksDB。</p>
 	EngineTypes []*string `json:"EngineTypes,omitnil,omitempty" name:"EngineTypes"`
 
-	// 是否获取云盘版实例节点信息，可填：true 或 false。默认为 false。
+	// <p>是否获取云盘版实例节点信息，可填：true 或 false。默认为 false。</p>
 	QueryClusterInfo *bool `json:"QueryClusterInfo,omitnil,omitempty" name:"QueryClusterInfo"`
 }
 
@@ -7934,10 +7930,10 @@ func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstancesResponseParams struct {
-	// 符合查询条件的实例总数。
+	// <p>符合查询条件的实例总数。</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 实例详细信息列表。
+	// <p>实例详细信息列表。</p>
 	Items []*InstanceInfo `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11486,165 +11482,165 @@ type InstanceDbAuditStatus struct {
 }
 
 type InstanceInfo struct {
-	// 外网状态，可能的返回值为：0-未开通外网；1-已开通外网；2-已关闭外网
+	// <p>外网状态，可能的返回值为：0-未开通外网；1-已开通外网；2-已关闭外网</p>
 	WanStatus *int64 `json:"WanStatus,omitnil,omitempty" name:"WanStatus"`
 
-	// 可用区信息
+	// <p>可用区信息</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 初始化标志，可能的返回值为：0-未初始化；1-已初始化
+	// <p>初始化标志，可能的返回值为：0-未初始化；1-已初始化</p>
 	InitFlag *int64 `json:"InitFlag,omitnil,omitempty" name:"InitFlag"`
 
-	// 只读vip信息。单独开通只读实例访问的只读实例才有该字段
+	// <p>只读vip信息。单独开通只读实例访问的只读实例才有该字段</p>
 	RoVipInfo *RoVipInfo `json:"RoVipInfo,omitnil,omitempty" name:"RoVipInfo"`
 
-	// 内存容量，单位为 MB
+	// <p>内存容量，单位为 MB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例状态，可能的返回值：0-创建中；1-运行中；4-正在进行隔离操作；5-已隔离
+	// <p>实例状态，可能的返回值：0-创建中；1-运行中；4-正在进行隔离操作；5-已隔离</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 私有网络 ID，例如：51102
+	// <p>私有网络 ID，例如：51102</p>
 	VpcId *int64 `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 备机信息
+	// <p>备机信息</p>
 	SlaveInfo *SlaveInfo `json:"SlaveInfo,omitnil,omitempty" name:"SlaveInfo"`
 
-	// 实例 ID
+	// <p>实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 硬盘容量，单位为 GB
+	// <p>硬盘容量，单位为 GB</p>
 	Volume *int64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
-	// 自动续费标志，可能的返回值：0-未开通自动续费；1-已开通自动续费；2-已关闭自动续费
+	// <p>自动续费标志，可能的返回值：0-未开通自动续费；1-已开通自动续费；2-已关闭自动续费</p>
 	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
-	// 数据复制方式。0 - 异步复制；1 - 半同步复制；2 - 强同步复制
+	// <p>数据复制方式。0 - 异步复制；1 - 半同步复制；2 - 强同步复制</p>
 	ProtectMode *int64 `json:"ProtectMode,omitnil,omitempty" name:"ProtectMode"`
 
-	// 只读组详细信息
+	// <p>只读组详细信息</p>
 	RoGroups []*RoGroup `json:"RoGroups,omitnil,omitempty" name:"RoGroups"`
 
-	// 子网 ID，例如：2333
+	// <p>子网 ID，例如：2333</p>
 	SubnetId *int64 `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 实例类型，可能的返回值：1-主实例；2-灾备实例；3-只读实例
+	// <p>实例类型，可能的返回值：1-主实例；2-灾备实例；3-只读实例</p>
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 项目 ID
+	// <p>项目 ID</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 地域信息
+	// <p>地域信息</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 实例到期时间
+	// <p>实例到期时间</p>
 	DeadlineTime *string `json:"DeadlineTime,omitnil,omitempty" name:"DeadlineTime"`
 
-	// 可用区部署方式。可能的值为：0 - 单可用区；1 - 多可用区
+	// <p>可用区部署方式。可能的值为：0 - 单可用区；1 - 多可用区</p>
 	DeployMode *int64 `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
 
-	// 实例任务状态。0 - 没有任务 ,1 - 升级中,2 - 数据导入中,3 - 开放Slave中,4 - 外网访问开通中,5 - 批量操作执行中,6 - 回档中,7 - 外网访问关闭中,8 - 密码修改中,9 - 实例名修改中,10 - 重启中,12 - 自建迁移中,13 - 删除库表中,14 - 灾备实例创建同步中,15 - 升级待切换,16 - 升级切换中,17 - 升级切换完成
+	// <p>实例任务状态。0 - 没有任务 ,1 - 升级中,2 - 数据导入中,3 - 开放Slave中,4 - 外网访问开通中,5 - 批量操作执行中,6 - 回档中,7 - 外网访问关闭中,8 - 密码修改中,9 - 实例名修改中,10 - 重启中,12 - 自建迁移中,13 - 删除库表中,14 - 灾备实例创建同步中,15 - 升级待切换,16 - 升级切换中,17 - 升级切换完成</p>
 	TaskStatus *int64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
-	// 主实例详细信息
+	// <p>主实例详细信息</p>
 	MasterInfo *MasterInfo `json:"MasterInfo,omitnil,omitempty" name:"MasterInfo"`
 
-	// 实例类型
+	// <p>实例类型</p>
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 内核版本
+	// <p>内核版本</p>
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 灾备实例详细信息
+	// <p>灾备实例详细信息</p>
 	DrInfo []*DrInfo `json:"DrInfo,omitnil,omitempty" name:"DrInfo"`
 
-	// 外网域名
+	// <p>外网域名</p>
 	WanDomain *string `json:"WanDomain,omitnil,omitempty" name:"WanDomain"`
 
-	// 外网端口号
+	// <p>外网端口号</p>
 	WanPort *int64 `json:"WanPort,omitnil,omitempty" name:"WanPort"`
 
-	// 付费类型，可能的返回值：0-包年包月；1-按量计费
+	// <p>付费类型，可能的返回值：0-包年包月；1-按量计费</p>
 	PayType *int64 `json:"PayType,omitnil,omitempty" name:"PayType"`
 
-	// 实例创建时间
+	// <p>实例创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 实例 IP
+	// <p>实例 IP</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 端口号
+	// <p>端口号</p>
 	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// 磁盘写入是否被锁定（实例数据写入量已经超过磁盘配额）。0 -未被锁定 1 -已被锁定
+	// <p>磁盘写入是否被锁定（实例数据写入量已经超过磁盘配额）。0 -未被锁定 1 -已被锁定</p>
 	CdbError *int64 `json:"CdbError,omitnil,omitempty" name:"CdbError"`
 
-	// 私有网络描述符，例如：“vpc-5v8wn9mg”
+	// <p>私有网络描述符，例如：“vpc-5v8wn9mg”</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 子网描述符，例如：“subnet-1typ0s7d”
+	// <p>子网描述符，例如：“subnet-1typ0s7d”</p>
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
-	// 物理 ID
+	// <p>物理 ID</p>
 	PhysicalId *string `json:"PhysicalId,omitnil,omitempty" name:"PhysicalId"`
 
-	// 核心数
+	// <p>核心数</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 每秒查询数量
+	// <p>每秒查询数量</p>
 	Qps *int64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
-	// 可用区中文名称
+	// <p>可用区中文名称</p>
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 
-	// 物理机型
+	// <p>物理机型</p>
 	DeviceClass *string `json:"DeviceClass,omitnil,omitempty" name:"DeviceClass"`
 
-	// 置放群组 ID
+	// <p>置放群组 ID</p>
 	DeployGroupId *string `json:"DeployGroupId,omitnil,omitempty" name:"DeployGroupId"`
 
-	// 可用区 ID
+	// <p>可用区 ID</p>
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 节点数
+	// <p>节点数</p>
 	InstanceNodes *int64 `json:"InstanceNodes,omitnil,omitempty" name:"InstanceNodes"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	TagList []*TagInfoItem `json:"TagList,omitnil,omitempty" name:"TagList"`
 
-	// 引擎类型
+	// <p>引擎类型</p>
 	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 
-	// 最大延迟阈值
+	// <p>最大延迟阈值</p>
 	MaxDelayTime *int64 `json:"MaxDelayTime,omitnil,omitempty" name:"MaxDelayTime"`
 
-	// 实例磁盘类型，仅云盘版和单节点（云盘）实例才会返回有效值。
-	// 说明：
-	// 1. 若返回："DiskType": "CLOUD_HSSD"，则表示该实例磁盘类型为增强型 SSD 云硬盘。
-	// 2. 若返回："DiskType": "CLOUD_SSD"，则表示该实例磁盘类型为 SSD 云硬盘。
-	// 3. 若返回："DiskType": ""，且参数 DeviceType 值为 UNIVERSAL 或 EXCLUSIVE，则表示该实例采用的是本地 SSD 盘。
+	// <p>实例磁盘类型，仅云盘版和单节点（云盘）实例才会返回有效值。<br>说明：</p><ol><li>若返回：&quot;DiskType&quot;: &quot;CLOUD_HSSD&quot;，则表示该实例磁盘类型为增强型 SSD 云硬盘。</li><li>若返回：&quot;DiskType&quot;: &quot;CLOUD_SSD&quot;，则表示该实例磁盘类型为 SSD 云硬盘。</li><li>若返回：&quot;DiskType&quot;: &quot;&quot;，且参数 DeviceType 值为 UNIVERSAL 或 EXCLUSIVE，则表示该实例采用的是本地 SSD 盘。</li></ol>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 当前扩容的CPU核心数。
+	// <p>当前扩容的CPU核心数。</p>
 	ExpandCpu *int64 `json:"ExpandCpu,omitnil,omitempty" name:"ExpandCpu"`
 
-	// 云盘版实例节点信息
+	// <p>云盘版实例节点信息</p>
 	ClusterInfo []*ClusterInfo `json:"ClusterInfo,omitnil,omitempty" name:"ClusterInfo"`
 
-	// 分析引擎节点列表
+	// <p>分析引擎节点列表</p>
 	AnalysisNodeInfos []*AnalysisNodeInfo `json:"AnalysisNodeInfos,omitnil,omitempty" name:"AnalysisNodeInfos"`
 
-	// 设备带宽，单位G。当DeviceClass不为空时此参数才有效。例：25-表示当前设备带宽为25G；10-表示当前设备带宽为10G。
+	// <p>设备带宽，单位G。当DeviceClass不为空时此参数才有效。例：25-表示当前设备带宽为25G；10-表示当前设备带宽为10G。</p>
 	DeviceBandwidth *uint64 `json:"DeviceBandwidth,omitnil,omitempty" name:"DeviceBandwidth"`
 
-	// 实例销毁保护状态，on表示开启保护，否则为关闭保护
+	// <p>实例销毁保护状态，on表示开启保护，否则为关闭保护</p>
 	DestroyProtect *string `json:"DestroyProtect,omitnil,omitempty" name:"DestroyProtect"`
 
-	// TDSQL引擎参数
+	// <p>TDSQL引擎参数</p>
 	CpuModel *string `json:"CpuModel,omitnil,omitempty" name:"CpuModel"`
+
+	// <p>分析引擎实例版本升级信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnalysisUpgradeVersionInfo *UpgradeAnalysisInstanceVersionInfo `json:"AnalysisUpgradeVersionInfo,omitnil,omitempty" name:"AnalysisUpgradeVersionInfo"`
 }
 
 type InstanceRebootTime struct {
@@ -11773,58 +11769,58 @@ type LogToCLSConfig struct {
 }
 
 type MasterInfo struct {
-	// 地域信息
+	// <p>地域信息</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 地域ID
+	// <p>地域ID</p>
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 可用区ID
+	// <p>可用区ID</p>
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 可用区信息
+	// <p>可用区信息</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例长ID
+	// <p>实例长ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 实例状态
+	// <p>实例状态</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例类型
+	// <p>实例类型</p>
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 任务状态
+	// <p>任务状态</p>
 	TaskStatus *int64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
-	// 内存容量
+	// <p>内存容量</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 硬盘容量
+	// <p>硬盘容量</p>
 	Volume *int64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
-	// 实例机型
+	// <p>实例机型</p>
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 每秒查询数
+	// <p>每秒查询数</p>
 	Qps *int64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
-	// 私有网络ID
+	// <p>私有网络ID</p>
 	VpcId *int64 `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网ID
+	// <p>子网ID</p>
 	SubnetId *int64 `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 独享集群ID
+	// <p>独享集群ID</p>
 	ExClusterId *string `json:"ExClusterId,omitnil,omitempty" name:"ExClusterId"`
 
-	// 独享集群名称
+	// <p>独享集群名称</p>
 	ExClusterName *string `json:"ExClusterName,omitnil,omitempty" name:"ExClusterName"`
 }
 
@@ -16258,10 +16254,10 @@ type SlaveConfig struct {
 }
 
 type SlaveInfo struct {
-	// 第一备机信息
+	// <p>第一备机信息</p>
 	First *SlaveInstanceInfo `json:"First,omitnil,omitempty" name:"First"`
 
-	// 第二备机信息
+	// <p>第二备机信息</p>
 	Second *SlaveInstanceInfo `json:"Second,omitnil,omitempty" name:"Second"`
 }
 
@@ -17286,6 +17282,20 @@ type TimeIntervalStrategy struct {
 	// 结束扩容时间。
 	// 说明：此值的格式为 Integer 的时间戳（秒级）。
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type UpgradeAnalysisInstanceVersionInfo struct {
+	// <p>版本升级灰度ip</p>
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+
+	// <p>版本升级灰度port</p>
+	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
+
+	// <p>升级之后版本</p>
+	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
+
+	// <p>实例升级灰度事件</p><p>单位：天</p>
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 }
 
 // Predefined struct for user

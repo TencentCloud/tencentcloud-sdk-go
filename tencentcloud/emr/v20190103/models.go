@@ -1622,6 +1622,9 @@ type CreateClusterRequestParams struct {
 
 	// <p>服务ui地址</p><p>枚举值：</p><ul><li>0： 服务ui地址，只返回1条服务ui地址</li><li>1： 服务ui地址，如果服务含有多个ui地址将全部返回，例如impala的Impalad、StateStore、Catalogd</li></ul><p>默认值：0</p>
 	WebUiVersion *int64 `json:"WebUiVersion,omitnil,omitempty" name:"WebUiVersion"`
+
+	// <p>系统盘是否加密</p>
+	EnableCbsSysEncryptFlag *bool `json:"EnableCbsSysEncryptFlag,omitnil,omitempty" name:"EnableCbsSysEncryptFlag"`
 }
 
 type CreateClusterRequest struct {
@@ -1710,6 +1713,9 @@ type CreateClusterRequest struct {
 
 	// <p>服务ui地址</p><p>枚举值：</p><ul><li>0： 服务ui地址，只返回1条服务ui地址</li><li>1： 服务ui地址，如果服务含有多个ui地址将全部返回，例如impala的Impalad、StateStore、Catalogd</li></ul><p>默认值：0</p>
 	WebUiVersion *int64 `json:"WebUiVersion,omitnil,omitempty" name:"WebUiVersion"`
+
+	// <p>系统盘是否加密</p>
+	EnableCbsSysEncryptFlag *bool `json:"EnableCbsSysEncryptFlag,omitnil,omitempty" name:"EnableCbsSysEncryptFlag"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -1752,6 +1758,7 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "SgIP")
 	delete(f, "PartitionNumber")
 	delete(f, "WebUiVersion")
+	delete(f, "EnableCbsSysEncryptFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}
@@ -2053,6 +2060,9 @@ type CreateInstanceRequestParams struct {
 
 	// <p>服务ui地址</p><p>枚举值：</p><ul><li>0： 服务ui地址，只返回1条服务ui地址</li><li>1： 服务ui地址，如果服务含有多个ui地址将全部返回，例如impala的Impalad、StateStore、Catalogd</li></ul><p>默认值：0</p>
 	WebUiVersion *int64 `json:"WebUiVersion,omitnil,omitempty" name:"WebUiVersion"`
+
+	// <p>是否开启集群维度cbs系统盘加密,0关闭1开启</p>
+	CbsSysEncrypt *int64 `json:"CbsSysEncrypt,omitnil,omitempty" name:"CbsSysEncrypt"`
 }
 
 type CreateInstanceRequest struct {
@@ -2177,6 +2187,9 @@ type CreateInstanceRequest struct {
 
 	// <p>服务ui地址</p><p>枚举值：</p><ul><li>0： 服务ui地址，只返回1条服务ui地址</li><li>1： 服务ui地址，如果服务含有多个ui地址将全部返回，例如impala的Impalad、StateStore、Catalogd</li></ul><p>默认值：0</p>
 	WebUiVersion *int64 `json:"WebUiVersion,omitnil,omitempty" name:"WebUiVersion"`
+
+	// <p>是否开启集群维度cbs系统盘加密,0关闭1开启</p>
+	CbsSysEncrypt *int64 `json:"CbsSysEncrypt,omitnil,omitempty" name:"CbsSysEncrypt"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -2231,6 +2244,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "SgIP")
 	delete(f, "PartitionNumber")
 	delete(f, "WebUiVersion")
+	delete(f, "CbsSysEncrypt")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}

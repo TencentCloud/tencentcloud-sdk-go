@@ -45,6 +45,66 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewBindBusinessResourceConnectorGroupRequest() (request *BindBusinessResourceConnectorGroupRequest) {
+    request = &BindBusinessResourceConnectorGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "BindBusinessResourceConnectorGroup")
+    
+    
+    return
+}
+
+func NewBindBusinessResourceConnectorGroupResponse() (response *BindBusinessResourceConnectorGroupResponse) {
+    response = &BindBusinessResourceConnectorGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BindBusinessResourceConnectorGroup
+// saas版本，创建/修改业务资源后，调用绑定连接器接口,私有化调用path为：capi/GatewayResource/BindBusinessResourceConnectorGroup
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_SERVICETYPEERROR = "InternalError.ServiceTypeError"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  RESOURCENOTFOUND_NORESOURCEDATA = "ResourceNotFound.NoResourceData"
+//  RESOURCENOTFOUND_NOTCONNECTORGROUPINFO = "ResourceNotFound.NotConnectorGroupInfo"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
+func (c *Client) BindBusinessResourceConnectorGroup(request *BindBusinessResourceConnectorGroupRequest) (response *BindBusinessResourceConnectorGroupResponse, err error) {
+    return c.BindBusinessResourceConnectorGroupWithContext(context.Background(), request)
+}
+
+// BindBusinessResourceConnectorGroup
+// saas版本，创建/修改业务资源后，调用绑定连接器接口,私有化调用path为：capi/GatewayResource/BindBusinessResourceConnectorGroup
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_SERVICETYPEERROR = "InternalError.ServiceTypeError"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  RESOURCENOTFOUND_NORESOURCEDATA = "ResourceNotFound.NoResourceData"
+//  RESOURCENOTFOUND_NOTCONNECTORGROUPINFO = "ResourceNotFound.NotConnectorGroupInfo"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
+func (c *Client) BindBusinessResourceConnectorGroupWithContext(ctx context.Context, request *BindBusinessResourceConnectorGroupRequest) (response *BindBusinessResourceConnectorGroupResponse, err error) {
+    if request == nil {
+        request = NewBindBusinessResourceConnectorGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "BindBusinessResourceConnectorGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindBusinessResourceConnectorGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindBusinessResourceConnectorGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBusinessResourceRequest() (request *CreateBusinessResourceRequest) {
     request = &CreateBusinessResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},

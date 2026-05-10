@@ -1879,6 +1879,9 @@ type DescribeAsyncTextToSpeechResponseParams struct {
 	// 字幕下载url
 	SubtitleDownloadUrl *string `json:"SubtitleDownloadUrl,omitnil,omitempty" name:"SubtitleDownloadUrl"`
 
+	// 音频时长
+	TotalDurationMs *uint64 `json:"TotalDurationMs,omitnil,omitempty" name:"TotalDurationMs"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -7443,6 +7446,9 @@ type TextToSpeechResponseParams struct {
 
 	// 字幕对齐数据
 	Alignments []*AlignmentItem `json:"Alignments,omitnil,omitempty" name:"Alignments"`
+
+	// 音频时长
+	TotalDurationMs *uint64 `json:"TotalDurationMs,omitnil,omitempty" name:"TotalDurationMs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

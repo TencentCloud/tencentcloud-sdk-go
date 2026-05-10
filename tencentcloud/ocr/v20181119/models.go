@@ -917,99 +917,6 @@ type BusInvoice struct {
 	TrainNumber *string `json:"TrainNumber,omitnil,omitempty" name:"TrainNumber"`
 }
 
-type BusInvoiceInfo struct {
-	// 识别出的字段名称(关键字)，支持以下字段：
-	// 发票代码、发票号码、日期、票价、始发地、目的地、姓名、时间、发票消费类型、身份证号、省、市、开票日期、乘车地点、检票口、客票类型、车型、座位号、车次。
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
-	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
-
-	// 文本行在旋转纠正之后的图像中的像素坐标。
-	Rect *Rect `json:"Rect,omitnil,omitempty" name:"Rect"`
-}
-
-// Predefined struct for user
-type BusInvoiceOCRRequestParams struct {
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
-	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-}
-
-type BusInvoiceOCRRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
-	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-}
-
-func (r *BusInvoiceOCRRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *BusInvoiceOCRRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageBase64")
-	delete(f, "ImageUrl")
-	delete(f, "IsPdf")
-	delete(f, "PdfPageNumber")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BusInvoiceOCRRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type BusInvoiceOCRResponseParams struct {
-	// 汽车票识别结果，具体内容请点击左侧链接。
-	BusInvoiceInfos []*BusInvoiceInfo `json:"BusInvoiceInfos,omitnil,omitempty" name:"BusInvoiceInfos"`
-
-	// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
-	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type BusInvoiceOCRResponse struct {
-	*tchttp.BaseResponse
-	Response *BusInvoiceOCRResponseParams `json:"Response"`
-}
-
-func (r *BusInvoiceOCRResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *BusInvoiceOCRResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type BusinessCardInfo struct {
 	// 识别出的字段名称（关键字，可能重复，比如多个手机），能识别的字段名为：
 	// 姓名、英文姓名、英文地址、公司、英文公司、职位、英文职位、部门、英文部门、手机、电话、传真、社交账号、QQ、MSN、微信、微博、邮箱、邮编、网址、公司账号、其他。
@@ -1981,99 +1888,6 @@ func (r *DriverLicenseOCRResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DriverLicenseOCRResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DutyPaidProofInfo struct {
-	// 识别出的字段名称(关键字)，支持以下字段：
-	// 税号 、纳税人识别号 、纳税人名称 、金额合计大写 、金额合计小写 、填发日期 、税务机关 、填票人。
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
-	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
-
-	// 文本行在旋转纠正之后的图像中的像素坐标。
-	Rect *Rect `json:"Rect,omitnil,omitempty" name:"Rect"`
-}
-
-// Predefined struct for user
-type DutyPaidProofOCRRequestParams struct {
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
-	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-}
-
-type DutyPaidProofOCRRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
-	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-}
-
-func (r *DutyPaidProofOCRRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DutyPaidProofOCRRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageBase64")
-	delete(f, "ImageUrl")
-	delete(f, "IsPdf")
-	delete(f, "PdfPageNumber")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DutyPaidProofOCRRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DutyPaidProofOCRResponseParams struct {
-	// 完税证明识别结果，具体内容请点击左侧链接。
-	DutyPaidProofInfos []*DutyPaidProofInfo `json:"DutyPaidProofInfos,omitnil,omitempty" name:"DutyPaidProofInfos"`
-
-	// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
-	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DutyPaidProofOCRResponse struct {
-	*tchttp.BaseResponse
-	Response *DutyPaidProofOCRResponseParams `json:"Response"`
-}
-
-func (r *DutyPaidProofOCRResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DutyPaidProofOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3485,157 +3299,6 @@ type FieldsInfo struct {
 
 	// <p>嵌套FieldsInfo结构，仅当KeyType=1时有效。</p>
 	SubItems []*SubItemGroup `json:"SubItems,omitnil,omitempty" name:"SubItems"`
-}
-
-type FinanBillInfo struct {
-	// 识别出的字段名称(关键字)，支持以下字段：
-	// 【进账单】
-	// 日期、出票全称、出票账号、出票开户行、收款人全称、收款人账号、收款开户行、大写金额、小写金额、票据种类、票据张数、票据号码；
-	// 【支票】
-	// 开户银行、支票种类、凭证号码2、日期、大写金额、小写金额、付款行编号、密码、凭证号码1；
-	// 【银行承兑汇票】或【商业承兑汇票】
-	// 出票日期、行号1、行号2、出票人全称、出票人账号、付款行全称、收款人全称、收款人账号、收款人开户行、出票金额大写、出票金额小写、汇票到期日、付款行行号、付款行地址。
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
-	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
-}
-
-// Predefined struct for user
-type FinanBillOCRRequestParams struct {
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-}
-
-type FinanBillOCRRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-}
-
-func (r *FinanBillOCRRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *FinanBillOCRRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageBase64")
-	delete(f, "ImageUrl")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FinanBillOCRRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type FinanBillOCRResponseParams struct {
-	// 金融票据整单识别结果，具体内容请点击左侧链接。
-	FinanBillInfos []*FinanBillInfo `json:"FinanBillInfos,omitnil,omitempty" name:"FinanBillInfos"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type FinanBillOCRResponse struct {
-	*tchttp.BaseResponse
-	Response *FinanBillOCRResponseParams `json:"Response"`
-}
-
-func (r *FinanBillOCRResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *FinanBillOCRResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type FinanBillSliceInfo struct {
-	// 识别出的字段名称(关键字)，支持以下字段：
-	// 大写金额、小写金额、账号、票号1、票号2、收款人、大写日期、同城交换号、地址-省份、地址-城市、付款行全称、支票密码、支票用途。
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
-	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
-}
-
-// Predefined struct for user
-type FinanBillSliceOCRRequestParams struct {
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-}
-
-type FinanBillSliceOCRRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-}
-
-func (r *FinanBillSliceOCRRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *FinanBillSliceOCRRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageBase64")
-	delete(f, "ImageUrl")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FinanBillSliceOCRRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type FinanBillSliceOCRResponseParams struct {
-	// 金融票据切片识别结果，具体内容请点击左侧链接。
-	FinanBillSliceInfos []*FinanBillSliceInfo `json:"FinanBillSliceInfos,omitnil,omitempty" name:"FinanBillSliceInfos"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type FinanBillSliceOCRResponse struct {
-	*tchttp.BaseResponse
-	Response *FinanBillSliceOCRResponseParams `json:"Response"`
-}
-
-func (r *FinanBillSliceOCRResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *FinanBillSliceOCRResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type FinancialBill struct {
@@ -5596,99 +5259,6 @@ type InvoiceDetectInfo struct {
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 }
 
-type InvoiceGeneralInfo struct {
-	// 识别出的字段名称(关键字)，支持以下字段识别（注：下划线表示一个字段）：
-	// 发票代码、发票号码、日期、合计金额(小写)、合计金额(大写)、购买方识别号、销售方识别号、校验码、购买方名称、销售方名称、时间、种类、发票消费类型、省、市、是否有公司印章、发票名称、<span style="text-decoration:underline">购买方地址、电话</span>、<span style="text-decoration:underline">销售方地址、电话</span>、购买方开户行及账号、销售方开户行及账号、经办人取票用户、经办人支付信息、经办人商户号、经办人订单号、<span style="text-decoration:underline">货物或应税劳务、服务名称</span>、数量、单价、税率、税额、金额、单位、规格型号、合计税额、合计金额、备注、收款人、复核、开票人、密码区、行业分类
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
-	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
-
-	// 文本行在旋转纠正之后的图像中的像素坐标。
-	Rect *Rect `json:"Rect,omitnil,omitempty" name:"Rect"`
-}
-
-// Predefined struct for user
-type InvoiceGeneralOCRRequestParams struct {
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
-	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-}
-
-type InvoiceGeneralOCRRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
-	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-}
-
-func (r *InvoiceGeneralOCRRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *InvoiceGeneralOCRRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageBase64")
-	delete(f, "ImageUrl")
-	delete(f, "IsPdf")
-	delete(f, "PdfPageNumber")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvoiceGeneralOCRRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type InvoiceGeneralOCRResponseParams struct {
-	// 通用机打发票识别结果，具体内容请点击左侧链接。
-	InvoiceGeneralInfos []*InvoiceGeneralInfo `json:"InvoiceGeneralInfos,omitnil,omitempty" name:"InvoiceGeneralInfos"`
-
-	// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
-	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type InvoiceGeneralOCRResponse struct {
-	*tchttp.BaseResponse
-	Response *InvoiceGeneralOCRResponseParams `json:"Response"`
-}
-
-func (r *InvoiceGeneralOCRResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *InvoiceGeneralOCRResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type InvoiceItem struct {
 	// 识别结果。
 	// OK：表示识别成功；FailedOperation.UnsupportedInvoice：表示不支持识别；
@@ -7332,40 +6902,26 @@ type PermanentResidencePermitInfo struct {
 
 // Predefined struct for user
 type PermitOCRRequestParams struct {
-	// 图片的 Base64 值。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 是否返回头像照片，默认为 false
+	// <p>是否返回头像照片，默认为 false</p>
 	CropPortrait *bool `json:"CropPortrait,omitnil,omitempty" name:"CropPortrait"`
 }
 
 type PermitOCRRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片的 Base64 值。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。
-	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 是否返回头像照片，默认为 false
+	// <p>是否返回头像照片，默认为 false</p>
 	CropPortrait *bool `json:"CropPortrait,omitnil,omitempty" name:"CropPortrait"`
 }
 
@@ -7392,34 +6948,34 @@ func (r *PermitOCRRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PermitOCRResponseParams struct {
-	// 姓名
+	// <p>姓名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 英文姓名
+	// <p>英文姓名</p>
 	EnglishName *string `json:"EnglishName,omitnil,omitempty" name:"EnglishName"`
 
-	// 证件号
+	// <p>证件号</p>
 	Number *string `json:"Number,omitnil,omitempty" name:"Number"`
 
-	// 性别
+	// <p>性别</p>
 	Sex *string `json:"Sex,omitnil,omitempty" name:"Sex"`
 
-	// 有效期限
+	// <p>有效期限</p>
 	ValidDate *string `json:"ValidDate,omitnil,omitempty" name:"ValidDate"`
 
-	// 签发机关
+	// <p>签发机关</p>
 	IssueAuthority *string `json:"IssueAuthority,omitnil,omitempty" name:"IssueAuthority"`
 
-	// 签发地点
+	// <p>签发地点</p>
 	IssueAddress *string `json:"IssueAddress,omitnil,omitempty" name:"IssueAddress"`
 
-	// 出生日期
+	// <p>出生日期</p>
 	Birthday *string `json:"Birthday,omitnil,omitempty" name:"Birthday"`
 
-	// 头像照片的base64
+	// <p>头像照片的base64</p>
 	PortraitImage *string `json:"PortraitImage,omitnil,omitempty" name:"PortraitImage"`
 
-	// 返回类型
+	// <p>返回类型</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7953,108 +7509,6 @@ type QuotaInvoice struct {
 
 	// 是否有公司印章（0：没有，1：有）
 	CompanySealMark *int64 `json:"CompanySealMark,omitnil,omitempty" name:"CompanySealMark"`
-}
-
-// Predefined struct for user
-type QuotaInvoiceOCRRequestParams struct {
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
-	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-}
-
-type QuotaInvoiceOCRRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
-	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-}
-
-func (r *QuotaInvoiceOCRRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *QuotaInvoiceOCRRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageBase64")
-	delete(f, "ImageUrl")
-	delete(f, "IsPdf")
-	delete(f, "PdfPageNumber")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QuotaInvoiceOCRRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type QuotaInvoiceOCRResponseParams struct {
-	// 发票号码
-	InvoiceNum *string `json:"InvoiceNum,omitnil,omitempty" name:"InvoiceNum"`
-
-	// 发票代码
-	InvoiceCode *string `json:"InvoiceCode,omitnil,omitempty" name:"InvoiceCode"`
-
-	// 大写金额
-	Rate *string `json:"Rate,omitnil,omitempty" name:"Rate"`
-
-	// 小写金额
-	RateNum *string `json:"RateNum,omitnil,omitempty" name:"RateNum"`
-
-	// 发票消费类型
-	InvoiceType *string `json:"InvoiceType,omitnil,omitempty" name:"InvoiceType"`
-
-	// 省
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
-
-	// 市
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	City *string `json:"City,omitnil,omitempty" name:"City"`
-
-	// 是否有公司印章（1有 0无 空为识别不出）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	HasStamp *string `json:"HasStamp,omitnil,omitempty" name:"HasStamp"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type QuotaInvoiceOCRResponse struct {
-	*tchttp.BaseResponse
-	Response *QuotaInvoiceOCRResponseParams `json:"Response"`
-}
-
-func (r *QuotaInvoiceOCRResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *QuotaInvoiceOCRResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type RailwayTicketInfo struct {
@@ -10396,99 +9850,6 @@ func (r *SealOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type ShipInvoiceInfo struct {
-	// 识别出的字段名称(关键字)，支持以下字段：
-	// 发票代码、发票号码、日期、票价、始发地、目的地、姓名、时间、发票消费类型、省、市、币种。
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
-	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
-
-	// 文本行在旋转纠正之后的图像中的像素坐标。
-	Rect *Rect `json:"Rect,omitnil,omitempty" name:"Rect"`
-}
-
-// Predefined struct for user
-type ShipInvoiceOCRRequestParams struct {
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
-	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-}
-
-type ShipInvoiceOCRRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
-	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-}
-
-func (r *ShipInvoiceOCRRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ShipInvoiceOCRRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageBase64")
-	delete(f, "ImageUrl")
-	delete(f, "IsPdf")
-	delete(f, "PdfPageNumber")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ShipInvoiceOCRRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ShipInvoiceOCRResponseParams struct {
-	// 轮船票识别结果，具体内容请点击左侧链接。
-	ShipInvoiceInfos []*ShipInvoiceInfo `json:"ShipInvoiceInfos,omitnil,omitempty" name:"ShipInvoiceInfos"`
-
-	// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
-	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type ShipInvoiceOCRResponse struct {
-	*tchttp.BaseResponse
-	Response *ShipInvoiceOCRResponseParams `json:"Response"`
-}
-
-func (r *ShipInvoiceOCRResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ShipInvoiceOCRResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ShippingInvoice struct {
 	// 发票名称
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
@@ -12011,99 +11372,6 @@ type TollInvoice struct {
 	QRCodeMark *int64 `json:"QRCodeMark,omitnil,omitempty" name:"QRCodeMark"`
 }
 
-type TollInvoiceInfo struct {
-	// 识别出的字段名称（关键字）。支持以下字段的识别：
-	// 发票代码、发票号码、日期、金额、入口、出口、时间、发票消费类型、高速标志。
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
-	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
-
-	// 文本行在旋转纠正之后的图像中的像素坐标。
-	Rect *Rect `json:"Rect,omitnil,omitempty" name:"Rect"`
-}
-
-// Predefined struct for user
-type TollInvoiceOCRRequestParams struct {
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
-	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-}
-
-type TollInvoiceOCRRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
-	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-}
-
-func (r *TollInvoiceOCRRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *TollInvoiceOCRRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageBase64")
-	delete(f, "ImageUrl")
-	delete(f, "IsPdf")
-	delete(f, "PdfPageNumber")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TollInvoiceOCRRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type TollInvoiceOCRResponseParams struct {
-	// 过路过桥费发票识别结果，具体内容请点击左侧链接。
-	TollInvoiceInfos []*TollInvoiceInfo `json:"TollInvoiceInfos,omitnil,omitempty" name:"TollInvoiceInfos"`
-
-	// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
-	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type TollInvoiceOCRResponse struct {
-	*tchttp.BaseResponse
-	Response *TollInvoiceOCRResponseParams `json:"Response"`
-}
-
-func (r *TollInvoiceOCRResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *TollInvoiceOCRResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type TrainTicket struct {
 	// 发票名称
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
@@ -13371,99 +12639,6 @@ func (r *VatInvoiceVerifyNewResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *VatInvoiceVerifyNewResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type VatRollInvoiceInfo struct {
-	// 识别出的字段名称(关键字)，支持以下字段：
-	// 发票代码、合计金额(小写)、合计金额(大写)、开票日期、发票号码、购买方识别号、销售方识别号、校验码、销售方名称、购买方名称、发票消费类型、省、市、是否有公司印章、单价、金额、数量、服务类型、品名、种类。
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
-	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
-
-	// 文本行在旋转纠正之后的图像中的像素坐标。
-	Rect *Rect `json:"Rect,omitnil,omitempty" name:"Rect"`
-}
-
-// Predefined struct for user
-type VatRollInvoiceOCRRequestParams struct {
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
-	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-}
-
-type VatRollInvoiceOCRRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
-	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
-
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
-	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
-}
-
-func (r *VatRollInvoiceOCRRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *VatRollInvoiceOCRRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageBase64")
-	delete(f, "ImageUrl")
-	delete(f, "IsPdf")
-	delete(f, "PdfPageNumber")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VatRollInvoiceOCRRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type VatRollInvoiceOCRResponseParams struct {
-	// 增值税发票（卷票）识别结果，具体内容请点击左侧链接。
-	VatRollInvoiceInfos []*VatRollInvoiceInfo `json:"VatRollInvoiceInfos,omitnil,omitempty" name:"VatRollInvoiceInfos"`
-
-	// 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
-	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type VatRollInvoiceOCRResponse struct {
-	*tchttp.BaseResponse
-	Response *VatRollInvoiceOCRResponseParams `json:"Response"`
-}
-
-func (r *VatRollInvoiceOCRResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *VatRollInvoiceOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

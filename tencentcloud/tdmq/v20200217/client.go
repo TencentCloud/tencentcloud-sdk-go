@@ -1357,6 +1357,58 @@ func (c *Client) CreateRocketMQRoleWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateRocketMQRouterRuleRequest() (request *CreateRocketMQRouterRuleRequest) {
+    request = &CreateRocketMQRouterRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateRocketMQRouterRule")
+    
+    
+    return
+}
+
+func NewCreateRocketMQRouterRuleResponse() (response *CreateRocketMQRouterRuleResponse) {
+    response = &CreateRocketMQRouterRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRocketMQRouterRule
+// 创建RocketMQ Router规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ROLENOSYNCPERMISSION = "FailedOperation.RoleNoSyncPermission"
+//  FAILEDOPERATION_ROUTERRULE = "FailedOperation.RouterRule"
+func (c *Client) CreateRocketMQRouterRule(request *CreateRocketMQRouterRuleRequest) (response *CreateRocketMQRouterRuleResponse, err error) {
+    return c.CreateRocketMQRouterRuleWithContext(context.Background(), request)
+}
+
+// CreateRocketMQRouterRule
+// 创建RocketMQ Router规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ROLENOSYNCPERMISSION = "FailedOperation.RoleNoSyncPermission"
+//  FAILEDOPERATION_ROUTERRULE = "FailedOperation.RouterRule"
+func (c *Client) CreateRocketMQRouterRuleWithContext(ctx context.Context, request *CreateRocketMQRouterRuleRequest) (response *CreateRocketMQRouterRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateRocketMQRouterRuleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmq", APIVersion, "CreateRocketMQRouterRule")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRocketMQRouterRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRocketMQRouterRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRocketMQTopicRequest() (request *CreateRocketMQTopicRequest) {
     request = &CreateRocketMQTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -16341,6 +16341,10 @@ func NewSubmitWorkflowResponse() (response *SubmitWorkflowResponse) {
 }
 
 // SubmitWorkflow
+// 接口已经废弃，调用会产生脏数据
+//
+// 
+//
 // 提交工作流。本接口已废弃，请使用接口BatchCreateTaskVersionAsync。
 //
 // 可能返回的错误码:
@@ -16353,6 +16357,10 @@ func (c *Client) SubmitWorkflow(request *SubmitWorkflowRequest) (response *Submi
 }
 
 // SubmitWorkflow
+// 接口已经废弃，调用会产生脏数据
+//
+// 
+//
 // 提交工作流。本接口已废弃，请使用接口BatchCreateTaskVersionAsync。
 //
 // 可能返回的错误码:
