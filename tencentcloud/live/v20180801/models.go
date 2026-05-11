@@ -5471,6 +5471,147 @@ func (r *CreateRecordTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateSceneVideoTaskRequestParams struct {
+	// <p>模型名称。</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>模型版本号。</p>
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
+	// <p>场景化类型。</p><p>枚举值：</p><ul><li>template_effect： 模板特效。</li></ul>
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
+	// <p>输入的Prompt。避免出现违规词汇，审核会进行拦截。</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>指定输出的视频时长。</p><p>部分场景不支持指定时长。</p>
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// <p>输入的首帧参考图片Url。需外网可访问。</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>输入的尾帧参考图片Url。</p>
+	LastImageUrl *string `json:"LastImageUrl,omitnil,omitempty" name:"LastImageUrl"`
+
+	// <p>多图参考生视频时，通过该参数指定多张参考图。</p>
+	ImageInfos []*SceneVideoReferenceImageInfo `json:"ImageInfos,omitnil,omitempty" name:"ImageInfos"`
+
+	// <p>视频编辑时，指定参考视频信息。</p>
+	VideoInfos []*SceneVideoReferenceVideoInfo `json:"VideoInfos,omitnil,omitempty" name:"VideoInfos"`
+
+	// <p>常规扩展参数。</p>
+	ExtraParameters *SceneVideoExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
+
+	// <p>模型扩展参数，用于透传到模型侧。</p>
+	AdditionalParameters *string `json:"AdditionalParameters,omitnil,omitempty" name:"AdditionalParameters"`
+
+	// <p>输出结果存储到私有cos，需授权响应角色权限。</p>
+	StoreCosParam *SceneStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
+
+	// <p>操作者名称。</p>
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type CreateSceneVideoTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型名称。</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>模型版本号。</p>
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
+	// <p>场景化类型。</p><p>枚举值：</p><ul><li>template_effect： 模板特效。</li></ul>
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
+	// <p>输入的Prompt。避免出现违规词汇，审核会进行拦截。</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>指定输出的视频时长。</p><p>部分场景不支持指定时长。</p>
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// <p>输入的首帧参考图片Url。需外网可访问。</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>输入的尾帧参考图片Url。</p>
+	LastImageUrl *string `json:"LastImageUrl,omitnil,omitempty" name:"LastImageUrl"`
+
+	// <p>多图参考生视频时，通过该参数指定多张参考图。</p>
+	ImageInfos []*SceneVideoReferenceImageInfo `json:"ImageInfos,omitnil,omitempty" name:"ImageInfos"`
+
+	// <p>视频编辑时，指定参考视频信息。</p>
+	VideoInfos []*SceneVideoReferenceVideoInfo `json:"VideoInfos,omitnil,omitempty" name:"VideoInfos"`
+
+	// <p>常规扩展参数。</p>
+	ExtraParameters *SceneVideoExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
+
+	// <p>模型扩展参数，用于透传到模型侧。</p>
+	AdditionalParameters *string `json:"AdditionalParameters,omitnil,omitempty" name:"AdditionalParameters"`
+
+	// <p>输出结果存储到私有cos，需授权响应角色权限。</p>
+	StoreCosParam *SceneStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
+
+	// <p>操作者名称。</p>
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+func (r *CreateSceneVideoTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSceneVideoTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelName")
+	delete(f, "ModelVersion")
+	delete(f, "SceneType")
+	delete(f, "Prompt")
+	delete(f, "Duration")
+	delete(f, "ImageUrl")
+	delete(f, "LastImageUrl")
+	delete(f, "ImageInfos")
+	delete(f, "VideoInfos")
+	delete(f, "ExtraParameters")
+	delete(f, "AdditionalParameters")
+	delete(f, "StoreCosParam")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSceneVideoTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSceneVideoTaskResponseParams struct {
+	// <p>输出的任务ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSceneVideoTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSceneVideoTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateSceneVideoTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSceneVideoTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateScreenshotTaskRequestParams struct {
 	// 流名称。
 	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
@@ -14798,6 +14939,75 @@ func (r *DescribeRecordTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSceneVideoTaskRequestParams struct {
+	// <p>任务ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeSceneVideoTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeSceneVideoTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSceneVideoTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSceneVideoTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSceneVideoTaskResponseParams struct {
+	// <p>一些特殊场景的返回信息。</p>
+	InfoList []*SceneVideoOutputInfo `json:"InfoList,omitnil,omitempty" name:"InfoList"`
+
+	// <p>任务状态。</p><p>枚举值：</p><ul><li>DONE： 任务结束。</li><li>RUN： 任务运行中。</li><li>WAIT： 任务准备中。</li><li>FAIL： 任务失败。</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>输出视频的分辨率。示例：720x1280。</p>
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// <p>错误信息。</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>输出的视频Url。默认过期时间:12小时，请尽快拉取并转存。也可以使用私有Cos桶长期存储。</p>
+	VideoUrls []*string `json:"VideoUrls,omitnil,omitempty" name:"VideoUrls"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSceneVideoTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSceneVideoTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeSceneVideoTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSceneVideoTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeScreenShotSheetNumListRequestParams struct {
 	// 起始时间点，接口查询支持两种时间格式：
 	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
@@ -20841,6 +21051,67 @@ type RuleInfo struct {
 
 	// 流名称。
 	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+}
+
+type SceneStoreCosParam struct {
+	// <p>Cos桶名称。</p>
+	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
+
+	// <p>Cos桶地域。</p>
+	CosBucketRegion *string `json:"CosBucketRegion,omitnil,omitempty" name:"CosBucketRegion"`
+
+	// <p>存储路径。</p>
+	CosBucketPath *string `json:"CosBucketPath,omitnil,omitempty" name:"CosBucketPath"`
+}
+
+type SceneVideoExtraParam struct {
+	// <p>指定输出分辨率。选项:720P, 1080P, 2K, 4K。</p>
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// <p>指定输出视频的宽高比，示例：16:9。</p>
+	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
+
+	// <p>错峰模型，仅支持的模型可使用。</p>
+	OffPeak *bool `json:"OffPeak,omitnil,omitempty" name:"OffPeak"`
+
+	// <p>自动添加水印，默认左上角添加 &quot;AI生成&quot; 标识。</p>
+	LogoAdd *bool `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// <p>使用音画同出。</p>
+	EnableAudio *bool `json:"EnableAudio,omitnil,omitempty" name:"EnableAudio"`
+
+	// <p>生成背景音乐。</p>
+	EnableBgm *bool `json:"EnableBgm,omitnil,omitempty" name:"EnableBgm"`
+
+	// <p>对输入的Prompt进行优化。</p>
+	EnablePromptEnhance *bool `json:"EnablePromptEnhance,omitnil,omitempty" name:"EnablePromptEnhance"`
+
+	// <p>回调URL。</p>
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
+}
+
+type SceneVideoOutputInfo struct {
+	// <p>输出信息。</p>
+	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// <p>输出类型。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type SceneVideoReferenceImageInfo struct {
+	// <p>输入的参考图Url，需外网可访问。</p>
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// <p>针对该参考图的Prompt描述，仅部分模型是支持。</p>
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// <p>参考类型。</p>
+	ReferenceType *string `json:"ReferenceType,omitnil,omitempty" name:"ReferenceType"`
+}
+
+type SceneVideoReferenceVideoInfo struct {
+	// <p>参考视频Url，需外网可访问。</p>
+	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 }
 
 type ScreenshotTask struct {

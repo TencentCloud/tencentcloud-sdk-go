@@ -3766,57 +3766,63 @@ type ColumnValueConfig struct {
 
 // Predefined struct for user
 type CommitIntegrationTaskRequestParams struct {
-	// 任务id
+	// <p>任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 0.仅提交，1.立即启动，2.停止线上作业，丢弃作业状态数据，重新启动运行，3.暂停线上作业，保留作业状态数据，继续运行，4.保留作业状态数据，继续运行
+	// <p>0.仅提交，1.立即启动，2.停止线上作业，丢弃作业状态数据，重新启动运行，3.暂停线上作业，保留作业状态数据，继续运行，4.保留作业状态数据，继续运行</p>
 	CommitType *int64 `json:"CommitType,omitnil,omitempty" name:"CommitType"`
 
-	// 实时任务 201   离线任务 202  默认实时任务
+	// <p>实时任务 201   离线任务 202  默认实时任务</p>
 	TaskType *uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 额外参数
+	// <p>额外参数</p>
 	ExtConfig []*RecordField `json:"ExtConfig,omitnil,omitempty" name:"ExtConfig"`
 
-	// 提交版本描述
+	// <p>提交版本描述</p>
 	VersionDesc *string `json:"VersionDesc,omitnil,omitempty" name:"VersionDesc"`
 
-	// 提交版本号
+	// <p>提交版本号</p>
 	InstanceVersion *int64 `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
 
-	// 前端操作类型描述
+	// <p>前端操作类型描述</p>
 	EventDesc *string `json:"EventDesc,omitnil,omitempty" name:"EventDesc"`
+
+	// <p>提交时任务状态</p><p>枚举值：</p><ul><li>3： 运行中</li></ul>
+	CurrentStatus *int64 `json:"CurrentStatus,omitnil,omitempty" name:"CurrentStatus"`
 }
 
 type CommitIntegrationTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务id
+	// <p>任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 0.仅提交，1.立即启动，2.停止线上作业，丢弃作业状态数据，重新启动运行，3.暂停线上作业，保留作业状态数据，继续运行，4.保留作业状态数据，继续运行
+	// <p>0.仅提交，1.立即启动，2.停止线上作业，丢弃作业状态数据，重新启动运行，3.暂停线上作业，保留作业状态数据，继续运行，4.保留作业状态数据，继续运行</p>
 	CommitType *int64 `json:"CommitType,omitnil,omitempty" name:"CommitType"`
 
-	// 实时任务 201   离线任务 202  默认实时任务
+	// <p>实时任务 201   离线任务 202  默认实时任务</p>
 	TaskType *uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 额外参数
+	// <p>额外参数</p>
 	ExtConfig []*RecordField `json:"ExtConfig,omitnil,omitempty" name:"ExtConfig"`
 
-	// 提交版本描述
+	// <p>提交版本描述</p>
 	VersionDesc *string `json:"VersionDesc,omitnil,omitempty" name:"VersionDesc"`
 
-	// 提交版本号
+	// <p>提交版本号</p>
 	InstanceVersion *int64 `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
 
-	// 前端操作类型描述
+	// <p>前端操作类型描述</p>
 	EventDesc *string `json:"EventDesc,omitnil,omitempty" name:"EventDesc"`
+
+	// <p>提交时任务状态</p><p>枚举值：</p><ul><li>3： 运行中</li></ul>
+	CurrentStatus *int64 `json:"CurrentStatus,omitnil,omitempty" name:"CurrentStatus"`
 }
 
 func (r *CommitIntegrationTaskRequest) ToJsonString() string {
@@ -3839,6 +3845,7 @@ func (r *CommitIntegrationTaskRequest) FromJsonString(s string) error {
 	delete(f, "VersionDesc")
 	delete(f, "InstanceVersion")
 	delete(f, "EventDesc")
+	delete(f, "CurrentStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CommitIntegrationTaskRequest has unknown keys!", "")
 	}
@@ -3847,10 +3854,10 @@ func (r *CommitIntegrationTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CommitIntegrationTaskResponseParams struct {
-	// 操作成功与否标识
+	// <p>操作成功与否标识</p>
 	Data *bool `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 数据结构
+	// <p>数据结构</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataDto *CommitTaskDataDto `json:"DataDto,omitnil,omitempty" name:"DataDto"`
 

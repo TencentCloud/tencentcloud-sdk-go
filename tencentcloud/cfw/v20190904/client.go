@@ -4685,6 +4685,62 @@ func (c *Client) DescribeSecurityGroupListWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeSerialRegionRequest() (request *DescribeSerialRegionRequest) {
+    request = &DescribeSerialRegionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeSerialRegion")
+    
+    
+    return
+}
+
+func NewDescribeSerialRegionResponse() (response *DescribeSerialRegionResponse) {
+    response = &DescribeSerialRegionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSerialRegion
+// 查询串行防火墙地域带宽分配信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeSerialRegion(request *DescribeSerialRegionRequest) (response *DescribeSerialRegionResponse, err error) {
+    return c.DescribeSerialRegionWithContext(context.Background(), request)
+}
+
+// DescribeSerialRegion
+// 查询串行防火墙地域带宽分配信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeSerialRegionWithContext(ctx context.Context, request *DescribeSerialRegionRequest) (response *DescribeSerialRegionResponse, err error) {
+    if request == nil {
+        request = NewDescribeSerialRegionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeSerialRegion")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSerialRegion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSerialRegionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSourceAssetRequest() (request *DescribeSourceAssetRequest) {
     request = &DescribeSourceAssetRequest{
         BaseRequest: &tchttp.BaseRequest{},

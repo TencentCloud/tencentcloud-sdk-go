@@ -8827,7 +8827,7 @@ func NewDesignVoiceAsyncResponse() (response *DesignVoiceAsyncResponse) {
 }
 
 // DesignVoiceAsync
-// 音色设计，根据prompt生成音色ID
+// 音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
@@ -8838,7 +8838,7 @@ func (c *Client) DesignVoiceAsync(request *DesignVoiceAsyncRequest) (response *D
 }
 
 // DesignVoiceAsync
-// 音色设计，根据prompt生成音色ID
+// 音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
@@ -8857,6 +8857,66 @@ func (c *Client) DesignVoiceAsyncWithContext(ctx context.Context, request *Desig
     request.SetContext(ctx)
     
     response = NewDesignVoiceAsyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDetectVideoSubtitleAreaRequest() (request *DetectVideoSubtitleAreaRequest) {
+    request = &DetectVideoSubtitleAreaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DetectVideoSubtitleArea")
+    
+    
+    return
+}
+
+func NewDetectVideoSubtitleAreaResponse() (response *DetectVideoSubtitleAreaResponse) {
+    response = &DetectVideoSubtitleAreaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DetectVideoSubtitleArea
+// 快速探测视频文件的硬字幕区域
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_RECOGNITIONERROR = "InternalError.RecognitionError"
+//  INVALIDPARAMETER_INPUTINFO = "InvalidParameter.InputInfo"
+//  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownloadError"
+//  RESOURCENOTFOUND_USERUNREGISTER = "ResourceNotFound.UserUnregister"
+func (c *Client) DetectVideoSubtitleArea(request *DetectVideoSubtitleAreaRequest) (response *DetectVideoSubtitleAreaResponse, err error) {
+    return c.DetectVideoSubtitleAreaWithContext(context.Background(), request)
+}
+
+// DetectVideoSubtitleArea
+// 快速探测视频文件的硬字幕区域
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_RECOGNITIONERROR = "InternalError.RecognitionError"
+//  INVALIDPARAMETER_INPUTINFO = "InvalidParameter.InputInfo"
+//  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownloadError"
+//  RESOURCENOTFOUND_USERUNREGISTER = "ResourceNotFound.UserUnregister"
+func (c *Client) DetectVideoSubtitleAreaWithContext(ctx context.Context, request *DetectVideoSubtitleAreaRequest) (response *DetectVideoSubtitleAreaResponse, err error) {
+    if request == nil {
+        request = NewDetectVideoSubtitleAreaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DetectVideoSubtitleArea")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectVideoSubtitleArea require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDetectVideoSubtitleAreaResponse()
     err = c.Send(request, response)
     return
 }
@@ -12413,7 +12473,7 @@ func NewSyncDubbingResponse() (response *SyncDubbingResponse) {
 }
 
 // SyncDubbing
-// 同步接口，返回克隆音色Id或合成音频结果
+// 同步接口，返回克隆音色ID或合成音频结果。克隆/设计音色数量上限默认100
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -12426,7 +12486,7 @@ func (c *Client) SyncDubbing(request *SyncDubbingRequest) (response *SyncDubbing
 }
 
 // SyncDubbing
-// 同步接口，返回克隆音色Id或合成音频结果
+// 同步接口，返回克隆音色ID或合成音频结果。克隆/设计音色数量上限默认100
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

@@ -6607,6 +6607,77 @@ func (r *DescribeSecurityGroupListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSerialRegionRequestParams struct {
+
+}
+
+type DescribeSerialRegionRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeSerialRegionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSerialRegionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSerialRegionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSerialRegionResponseParams struct {
+	// 串行地域带宽分配
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerialRegionLst []*SerialRegionInfo `json:"SerialRegionLst,omitnil,omitempty" name:"SerialRegionLst"`
+
+	// 剩余可分配通用带宽 单位M
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnUsedWidth *int64 `json:"UnUsedWidth,omitnil,omitempty" name:"UnUsedWidth"`
+
+	// 可配置实例个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnUsedQuota *int64 `json:"UnUsedQuota,omitnil,omitempty" name:"UnUsedQuota"`
+
+	// 旁路带宽数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BypassWidth *int64 `json:"BypassWidth,omitnil,omitempty" name:"BypassWidth"`
+
+	// 赠送的旁路带宽数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SendBypassWidth *int64 `json:"SendBypassWidth,omitnil,omitempty" name:"SendBypassWidth"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSerialRegionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSerialRegionResponseParams `json:"Response"`
+}
+
+func (r *DescribeSerialRegionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSerialRegionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSourceAssetRequestParams struct {
 	// ChooseType为1，查询已经分组的资产；ChooseType不为1查询没有分组的资产
 	ChooseType *string `json:"ChooseType,omitnil,omitempty" name:"ChooseType"`
@@ -12078,6 +12149,30 @@ type SequenceData struct {
 
 	// 修改后执行顺序
 	NewOrderIndex *uint64 `json:"NewOrderIndex,omitnil,omitempty" name:"NewOrderIndex"`
+}
+
+type SerialRegionInfo struct {
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 分配带宽值 单位Mbps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 弹性开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElasticSwitch *int64 `json:"ElasticSwitch,omitnil,omitempty" name:"ElasticSwitch"`
+
+	// 弹性带宽上限，单位Mbps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElasticBandwidth *int64 `json:"ElasticBandwidth,omitnil,omitempty" name:"ElasticBandwidth"`
+
+	// 七天入向峰值带宽，单位bps
+	InFlowMax *int64 `json:"InFlowMax,omitnil,omitempty" name:"InFlowMax"`
+
+	// 七天出向峰值带宽，单位bps
+	OutFlowMax *int64 `json:"OutFlowMax,omitnil,omitempty" name:"OutFlowMax"`
 }
 
 // Predefined struct for user

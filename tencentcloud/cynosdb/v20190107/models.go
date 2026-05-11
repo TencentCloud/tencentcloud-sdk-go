@@ -2742,332 +2742,284 @@ type CreateClustersData struct {
 
 // Predefined struct for user
 type CreateClustersRequestParams struct {
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 所属VPC网络ID
+	// <p>所属VPC网络ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 所属子网ID
+	// <p>所属子网ID</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 数据库类型，取值范围: 
-	// <li> MYSQL </li>
+	// <p>数据库类型</p><p>枚举值：</p><ul><li>MYSQL： MYSQL</li></ul>
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
-	// 数据库版本，取值范围: 
-	// <li> MYSQL可选值：5.7，8.0 </li>
+	// <p>数据库版本</p><p>枚举值：</p><ul><li>5.7： MySQL5.7版本</li><li>8.0： MySQL8.0版本</li></ul>
 	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 
-	// 所属项目ID
+	// <p>所属项目ID</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 当DbMode为NORMAL或不填时必选
-	// 普通实例Cpu核数
+	// <p>当DbMode为NORMAL或不填时必选<br>普通实例Cpu核数</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 当DbMode为NORMAL或不填时必选
-	// 普通实例内存,单位GB
+	// <p>当DbMode为NORMAL或不填时必选<br>普通实例内存,单位GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例数量，数量范围为(0,16]，默认值为2（即一个rw实例+一个ro实例），传递的n表示1个rw实例+n-1个ro实例（规格相同），如需要更精确的集群组成搭配，请使用InstanceInitInfos
+	// <p>实例数量，数量范围为(0,16]，默认值为2（即一个rw实例+一个ro实例），传递的n表示1个rw实例+n-1个ro实例（规格相同），如需要更精确的集群组成搭配，请使用InstanceInitInfos</p>
 	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
-	// 该参数无实际意义，已废弃。
-	// 存储大小，单位GB。
+	// <p>该参数无实际意义，已废弃。<br>存储大小，单位GB。</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
+	// <p>集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（&#39;-&#39;,&#39;_&#39;,&#39;.&#39;）</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 账号密码(8-64个字符，包含大小写英文字母、数字和符号~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/中的任意三种)
+	// <p>账号密码(8-64个字符，包含大小写英文字母、数字和符号~!@#$%^&amp;*_-+=`|(){}[]:;&#39;&lt;&gt;,.?/中的任意三种)</p>
 	AdminPassword *string `json:"AdminPassword,omitnil,omitempty" name:"AdminPassword"`
 
-	// 端口，默认3306，取值范围[0, 65535)
+	// <p>端口，默认3306，取值范围[0, 65535)</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 计费模式，支持值为0和1，默认值为0。
-	// 取值为0，表示按量计费。
-	// 取值为1，表示包年包月。
+	// <p>计费模式</p><p>枚举值：</p><ul><li>0： 表示按量计费</li><li>1： 表示包年包月</li></ul><p>默认值：0</p>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 购买集群数，可选值范围[1,50]，默认为1
+	// <p>购买集群数，可选值范围[1,50]，默认为1</p>
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 回档类型：
-	// noneRollback：不回档；
-	// snapRollback，快照回档；
-	// timeRollback，时间点回档
+	// <p>回档类型</p><p>枚举值：</p><ul><li>noneRollback： 不回档</li><li>snapRollback： 快照回档</li><li>timeRollback： 时间点回档</li></ul>
 	RollbackStrategy *string `json:"RollbackStrategy,omitnil,omitempty" name:"RollbackStrategy"`
 
-	// 快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效
+	// <p>快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效</p>
 	RollbackId *uint64 `json:"RollbackId,omitnil,omitempty" name:"RollbackId"`
 
-	// 回档时，传入源集群ID，用于查找源poolId
+	// <p>回档时，传入源集群ID，用于查找源poolId</p>
 	OriginalClusterId *string `json:"OriginalClusterId,omitnil,omitempty" name:"OriginalClusterId"`
 
-	// 时间点回档，指定时间；快照回档，快照时间
+	// <p>时间点回档，指定时间；快照回档，快照时间</p>
 	ExpectTime *string `json:"ExpectTime,omitnil,omitempty" name:"ExpectTime"`
 
-	// 该参数无实际意义，已废弃。
-	// 时间点回档，指定时间允许范围
+	// <p>该参数无实际意义，已废弃。<br>时间点回档，指定时间允许范围</p>
 	ExpectTimeThresh *uint64 `json:"ExpectTimeThresh,omitnil,omitempty" name:"ExpectTimeThresh"`
 
-	// 普通实例存储上限，单位GB
-	// 当DbType为MYSQL，且存储计费模式为预付费时，该参数需不大于cpu与memory对应存储规格上限
+	// <p>普通实例存储上限，单位GB<br>当DbType为MYSQL，且存储计费模式为预付费时，该参数需不大于cpu与memory对应存储规格上限</p>
 	StorageLimit *int64 `json:"StorageLimit,omitnil,omitempty" name:"StorageLimit"`
 
-	// 包年包月购买时长
+	// <p>包年包月购买时长</p>
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 包年包月购买时长单位，['s','d','m','y']
+	// <p>包年包月购买时长单位，[&#39;s&#39;,&#39;d&#39;,&#39;m&#39;,&#39;y&#39;]</p>
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
-	// 包年包月购买是否自动续费，默认为0。
-	// 0标识默认续费方式，1表示自动续费，2表示不自动续费。
+	// <p>包年包月购买是否自动续费</p><p>枚举值：</p><ul><li>0： 默认续费方式</li><li>1： 自动续费</li><li>2： 不自动续费</li></ul><p>默认值：0</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 是否自动选择代金券 1是 0否 默认为0
+	// <p>是否自动选择代金券 1是 0否 默认为0</p><p>枚举值：</p><ul><li>1： 是</li><li>0： 否</li></ul><p>默认值：0</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 实例数量（该参数已不再使用，只做存量兼容处理）
+	// <p>实例数量（该参数已不再使用，只做存量兼容处理）</p>
 	HaCount *int64 `json:"HaCount,omitnil,omitempty" name:"HaCount"`
 
-	// 订单来源
+	// <p>订单来源</p>
 	OrderSource *string `json:"OrderSource,omitnil,omitempty" name:"OrderSource"`
 
-	// 集群创建需要绑定的tag数组信息
+	// <p>集群创建需要绑定的tag数组信息</p>
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// Db类型
-	// 当DbType为MYSQL时可选(默认NORMAL)：
-	// <li>NORMAL</li>
-	// <li>SERVERLESS</li>
+	// <p>Db类型</p><p>枚举值：</p><ul><li>NORMAL： 普通实例</li><li>SERVERLESS： serverless实例</li></ul><p>默认值：NORMAL</p><p>当DbType为MYSQL时可选(默认NORMAL)</p>
 	DbMode *string `json:"DbMode,omitnil,omitempty" name:"DbMode"`
 
-	// 当DbMode为SERVERLESS时必填
-	// cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	// <p>当DbMode为SERVERLESS时必填<br>cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
 	MinCpu *float64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
 
-	// 当DbMode为SERVERLESS时必填：
-	// cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	// <p>当DbMode为SERVERLESS时必填：<br>cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
 	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
 
-	// 当DbMode为SERVERLESS时，指定集群是否自动暂停，可选范围
-	// <li>yes</li>
-	// <li>no</li>
-	// 默认值:yes
+	// <p>否自动暂停</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul><p>默认值：yes</p><p>DbMode为SERVERLESS生效</p>
 	AutoPause *string `json:"AutoPause,omitnil,omitempty" name:"AutoPause"`
 
-	// 当DbMode为SERVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]
-	// 默认值:600
+	// <p>当DbMode为SERVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]<br>默认值:600</p>
 	AutoPauseDelay *int64 `json:"AutoPauseDelay,omitnil,omitempty" name:"AutoPauseDelay"`
 
-	// 集群存储计费模式，按量计费：0，包年包月：1。默认按量计费
-	// 当DbType为MYSQL时，在集群计算计费模式为后付费（包括DbMode为SERVERLESS）时，存储计费模式仅可为按量计费
-	// 回档与克隆均不支持包年包月存储
+	// <p>集群存储计费模式，按量计费：0，包年包月：1。默认按量计费<br>当DbType为MYSQL时，在集群计算计费模式为后付费（包括DbMode为SERVERLESS）时，存储计费模式仅可为按量计费<br>回档与克隆均不支持包年包月存储</p>
 	StoragePayMode *int64 `json:"StoragePayMode,omitnil,omitempty" name:"StoragePayMode"`
 
-	// 安全组id数组
+	// <p>安全组id数组</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 告警策略Id数组
+	// <p>告警策略Id数组</p>
 	AlarmPolicyIds []*string `json:"AlarmPolicyIds,omitnil,omitempty" name:"AlarmPolicyIds"`
 
-	// 参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感
+	// <p>参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感</p>
 	ClusterParams []*ParamItem `json:"ClusterParams,omitnil,omitempty" name:"ClusterParams"`
 
-	// 交易模式，0-下单且支付，1-下单
+	// <p>交易模式</p><p>枚举值：</p><ul><li>0： 下单且支付</li><li>1： 下单</li></ul><p>默认值：0</p>
 	DealMode *int64 `json:"DealMode,omitnil,omitempty" name:"DealMode"`
 
-	// 参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID
+	// <p>参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID</p>
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 
-	// 多可用区地址
+	// <p>多可用区地址</p>
 	SlaveZone *string `json:"SlaveZone,omitnil,omitempty" name:"SlaveZone"`
 
-	// 实例初始化配置信息，主要用于购买集群时选不同规格实例
+	// <p>实例初始化配置信息，主要用于购买集群时选不同规格实例</p>
 	InstanceInitInfos []*InstanceInitInfo `json:"InstanceInitInfos,omitnil,omitempty" name:"InstanceInitInfos"`
 
-	// 全球数据库唯一标识
+	// <p>全球数据库唯一标识</p>
 	GdnId *string `json:"GdnId,omitnil,omitempty" name:"GdnId"`
 
-	// 数据库代理配置
+	// <p>数据库代理配置</p>
 	ProxyConfig *ProxyConfig `json:"ProxyConfig,omitnil,omitempty" name:"ProxyConfig"`
 
-	// 是否自动归档
+	// <p>是否自动归档</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul><p>默认值：no</p><p>仅当前集群主实例为SERVERLESS时，该参数生效</p>
 	AutoArchive *string `json:"AutoArchive,omitnil,omitempty" name:"AutoArchive"`
 
-	// 暂停后的归档处理时间
+	// <p>暂停后的归档处理时间</p><p>单位：时</p><p>默认值：12</p><p>仅当前集群主实例为SERVERLESS时，该参数生效</p>
 	AutoArchiveDelayHours *int64 `json:"AutoArchiveDelayHours,omitnil,omitempty" name:"AutoArchiveDelayHours"`
 
-	// 内核小版本号
+	// <p>内核小版本号</p>
 	CynosVersion *string `json:"CynosVersion,omitnil,omitempty" name:"CynosVersion"`
 }
 
 type CreateClustersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 所属VPC网络ID
+	// <p>所属VPC网络ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 所属子网ID
+	// <p>所属子网ID</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 数据库类型，取值范围: 
-	// <li> MYSQL </li>
+	// <p>数据库类型</p><p>枚举值：</p><ul><li>MYSQL： MYSQL</li></ul>
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
-	// 数据库版本，取值范围: 
-	// <li> MYSQL可选值：5.7，8.0 </li>
+	// <p>数据库版本</p><p>枚举值：</p><ul><li>5.7： MySQL5.7版本</li><li>8.0： MySQL8.0版本</li></ul>
 	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 
-	// 所属项目ID
+	// <p>所属项目ID</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 当DbMode为NORMAL或不填时必选
-	// 普通实例Cpu核数
+	// <p>当DbMode为NORMAL或不填时必选<br>普通实例Cpu核数</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 当DbMode为NORMAL或不填时必选
-	// 普通实例内存,单位GB
+	// <p>当DbMode为NORMAL或不填时必选<br>普通实例内存,单位GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例数量，数量范围为(0,16]，默认值为2（即一个rw实例+一个ro实例），传递的n表示1个rw实例+n-1个ro实例（规格相同），如需要更精确的集群组成搭配，请使用InstanceInitInfos
+	// <p>实例数量，数量范围为(0,16]，默认值为2（即一个rw实例+一个ro实例），传递的n表示1个rw实例+n-1个ro实例（规格相同），如需要更精确的集群组成搭配，请使用InstanceInitInfos</p>
 	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
-	// 该参数无实际意义，已废弃。
-	// 存储大小，单位GB。
+	// <p>该参数无实际意义，已废弃。<br>存储大小，单位GB。</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
+	// <p>集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（&#39;-&#39;,&#39;_&#39;,&#39;.&#39;）</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 账号密码(8-64个字符，包含大小写英文字母、数字和符号~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/中的任意三种)
+	// <p>账号密码(8-64个字符，包含大小写英文字母、数字和符号~!@#$%^&amp;*_-+=`|(){}[]:;&#39;&lt;&gt;,.?/中的任意三种)</p>
 	AdminPassword *string `json:"AdminPassword,omitnil,omitempty" name:"AdminPassword"`
 
-	// 端口，默认3306，取值范围[0, 65535)
+	// <p>端口，默认3306，取值范围[0, 65535)</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 计费模式，支持值为0和1，默认值为0。
-	// 取值为0，表示按量计费。
-	// 取值为1，表示包年包月。
+	// <p>计费模式</p><p>枚举值：</p><ul><li>0： 表示按量计费</li><li>1： 表示包年包月</li></ul><p>默认值：0</p>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 购买集群数，可选值范围[1,50]，默认为1
+	// <p>购买集群数，可选值范围[1,50]，默认为1</p>
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 回档类型：
-	// noneRollback：不回档；
-	// snapRollback，快照回档；
-	// timeRollback，时间点回档
+	// <p>回档类型</p><p>枚举值：</p><ul><li>noneRollback： 不回档</li><li>snapRollback： 快照回档</li><li>timeRollback： 时间点回档</li></ul>
 	RollbackStrategy *string `json:"RollbackStrategy,omitnil,omitempty" name:"RollbackStrategy"`
 
-	// 快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效
+	// <p>快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效</p>
 	RollbackId *uint64 `json:"RollbackId,omitnil,omitempty" name:"RollbackId"`
 
-	// 回档时，传入源集群ID，用于查找源poolId
+	// <p>回档时，传入源集群ID，用于查找源poolId</p>
 	OriginalClusterId *string `json:"OriginalClusterId,omitnil,omitempty" name:"OriginalClusterId"`
 
-	// 时间点回档，指定时间；快照回档，快照时间
+	// <p>时间点回档，指定时间；快照回档，快照时间</p>
 	ExpectTime *string `json:"ExpectTime,omitnil,omitempty" name:"ExpectTime"`
 
-	// 该参数无实际意义，已废弃。
-	// 时间点回档，指定时间允许范围
+	// <p>该参数无实际意义，已废弃。<br>时间点回档，指定时间允许范围</p>
 	ExpectTimeThresh *uint64 `json:"ExpectTimeThresh,omitnil,omitempty" name:"ExpectTimeThresh"`
 
-	// 普通实例存储上限，单位GB
-	// 当DbType为MYSQL，且存储计费模式为预付费时，该参数需不大于cpu与memory对应存储规格上限
+	// <p>普通实例存储上限，单位GB<br>当DbType为MYSQL，且存储计费模式为预付费时，该参数需不大于cpu与memory对应存储规格上限</p>
 	StorageLimit *int64 `json:"StorageLimit,omitnil,omitempty" name:"StorageLimit"`
 
-	// 包年包月购买时长
+	// <p>包年包月购买时长</p>
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 包年包月购买时长单位，['s','d','m','y']
+	// <p>包年包月购买时长单位，[&#39;s&#39;,&#39;d&#39;,&#39;m&#39;,&#39;y&#39;]</p>
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
-	// 包年包月购买是否自动续费，默认为0。
-	// 0标识默认续费方式，1表示自动续费，2表示不自动续费。
+	// <p>包年包月购买是否自动续费</p><p>枚举值：</p><ul><li>0： 默认续费方式</li><li>1： 自动续费</li><li>2： 不自动续费</li></ul><p>默认值：0</p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 是否自动选择代金券 1是 0否 默认为0
+	// <p>是否自动选择代金券 1是 0否 默认为0</p><p>枚举值：</p><ul><li>1： 是</li><li>0： 否</li></ul><p>默认值：0</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 实例数量（该参数已不再使用，只做存量兼容处理）
+	// <p>实例数量（该参数已不再使用，只做存量兼容处理）</p>
 	HaCount *int64 `json:"HaCount,omitnil,omitempty" name:"HaCount"`
 
-	// 订单来源
+	// <p>订单来源</p>
 	OrderSource *string `json:"OrderSource,omitnil,omitempty" name:"OrderSource"`
 
-	// 集群创建需要绑定的tag数组信息
+	// <p>集群创建需要绑定的tag数组信息</p>
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// Db类型
-	// 当DbType为MYSQL时可选(默认NORMAL)：
-	// <li>NORMAL</li>
-	// <li>SERVERLESS</li>
+	// <p>Db类型</p><p>枚举值：</p><ul><li>NORMAL： 普通实例</li><li>SERVERLESS： serverless实例</li></ul><p>默认值：NORMAL</p><p>当DbType为MYSQL时可选(默认NORMAL)</p>
 	DbMode *string `json:"DbMode,omitnil,omitempty" name:"DbMode"`
 
-	// 当DbMode为SERVERLESS时必填
-	// cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	// <p>当DbMode为SERVERLESS时必填<br>cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
 	MinCpu *float64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
 
-	// 当DbMode为SERVERLESS时必填：
-	// cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	// <p>当DbMode为SERVERLESS时必填：<br>cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
 	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
 
-	// 当DbMode为SERVERLESS时，指定集群是否自动暂停，可选范围
-	// <li>yes</li>
-	// <li>no</li>
-	// 默认值:yes
+	// <p>否自动暂停</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul><p>默认值：yes</p><p>DbMode为SERVERLESS生效</p>
 	AutoPause *string `json:"AutoPause,omitnil,omitempty" name:"AutoPause"`
 
-	// 当DbMode为SERVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]
-	// 默认值:600
+	// <p>当DbMode为SERVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]<br>默认值:600</p>
 	AutoPauseDelay *int64 `json:"AutoPauseDelay,omitnil,omitempty" name:"AutoPauseDelay"`
 
-	// 集群存储计费模式，按量计费：0，包年包月：1。默认按量计费
-	// 当DbType为MYSQL时，在集群计算计费模式为后付费（包括DbMode为SERVERLESS）时，存储计费模式仅可为按量计费
-	// 回档与克隆均不支持包年包月存储
+	// <p>集群存储计费模式，按量计费：0，包年包月：1。默认按量计费<br>当DbType为MYSQL时，在集群计算计费模式为后付费（包括DbMode为SERVERLESS）时，存储计费模式仅可为按量计费<br>回档与克隆均不支持包年包月存储</p>
 	StoragePayMode *int64 `json:"StoragePayMode,omitnil,omitempty" name:"StoragePayMode"`
 
-	// 安全组id数组
+	// <p>安全组id数组</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 告警策略Id数组
+	// <p>告警策略Id数组</p>
 	AlarmPolicyIds []*string `json:"AlarmPolicyIds,omitnil,omitempty" name:"AlarmPolicyIds"`
 
-	// 参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感
+	// <p>参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感</p>
 	ClusterParams []*ParamItem `json:"ClusterParams,omitnil,omitempty" name:"ClusterParams"`
 
-	// 交易模式，0-下单且支付，1-下单
+	// <p>交易模式</p><p>枚举值：</p><ul><li>0： 下单且支付</li><li>1： 下单</li></ul><p>默认值：0</p>
 	DealMode *int64 `json:"DealMode,omitnil,omitempty" name:"DealMode"`
 
-	// 参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID
+	// <p>参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID</p>
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 
-	// 多可用区地址
+	// <p>多可用区地址</p>
 	SlaveZone *string `json:"SlaveZone,omitnil,omitempty" name:"SlaveZone"`
 
-	// 实例初始化配置信息，主要用于购买集群时选不同规格实例
+	// <p>实例初始化配置信息，主要用于购买集群时选不同规格实例</p>
 	InstanceInitInfos []*InstanceInitInfo `json:"InstanceInitInfos,omitnil,omitempty" name:"InstanceInitInfos"`
 
-	// 全球数据库唯一标识
+	// <p>全球数据库唯一标识</p>
 	GdnId *string `json:"GdnId,omitnil,omitempty" name:"GdnId"`
 
-	// 数据库代理配置
+	// <p>数据库代理配置</p>
 	ProxyConfig *ProxyConfig `json:"ProxyConfig,omitnil,omitempty" name:"ProxyConfig"`
 
-	// 是否自动归档
+	// <p>是否自动归档</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul><p>默认值：no</p><p>仅当前集群主实例为SERVERLESS时，该参数生效</p>
 	AutoArchive *string `json:"AutoArchive,omitnil,omitempty" name:"AutoArchive"`
 
-	// 暂停后的归档处理时间
+	// <p>暂停后的归档处理时间</p><p>单位：时</p><p>默认值：12</p><p>仅当前集群主实例为SERVERLESS时，该参数生效</p>
 	AutoArchiveDelayHours *int64 `json:"AutoArchiveDelayHours,omitnil,omitempty" name:"AutoArchiveDelayHours"`
 
-	// 内核小版本号
+	// <p>内核小版本号</p>
 	CynosVersion *string `json:"CynosVersion,omitnil,omitempty" name:"CynosVersion"`
 }
 
@@ -3137,19 +3089,19 @@ func (r *CreateClustersRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateClustersResponseParams struct {
-	// 冻结流水ID
+	// <p>冻结流水ID</p>
 	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
 
-	// 订单号
+	// <p>订单号</p>
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
-	// 资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）
+	// <p>资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）</p>
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）
+	// <p>集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）</p>
 	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
 
-	// 大订单号
+	// <p>大订单号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BigDealIds []*string `json:"BigDealIds,omitnil,omitempty" name:"BigDealIds"`
 
@@ -4758,188 +4710,184 @@ type CynosdbErrorLogItem struct {
 }
 
 type CynosdbInstance struct {
-	// 用户Uin
+	// <p>用户Uin</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 用户AppId
+	// <p>用户AppId</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 地域
+	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例状态
+	// <p>实例状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 实例状态中文描述
+	// <p>实例状态中文描述</p>
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
-	// 实例形态，是否为serverless实例
+	// <p>实例形态，是否为serverless实例</p>
 	DbMode *string `json:"DbMode,omitnil,omitempty" name:"DbMode"`
 
-	// 数据库类型
+	// <p>数据库类型</p>
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
-	// 数据库版本
+	// <p>数据库版本</p>
 	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 
-	// Cpu，单位：核
+	// <p>Cpu，单位：核</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存，单位：GB
+	// <p>内存，单位：GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 存储量，单位：GB
+	// <p>存储量，单位：GB</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 实例类型
+	// <p>实例类型</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例当前角色
+	// <p>实例当前角色</p>
 	InstanceRole *string `json:"InstanceRole,omitnil,omitempty" name:"InstanceRole"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// VPC网络ID
+	// <p>VPC网络ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网ID
+	// <p>子网ID</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 实例内网IP
+	// <p>实例内网IP</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 实例内网端口
+	// <p>实例内网端口</p>
 	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// 付费模式
+	// <p>付费模式</p>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 实例过期时间
+	// <p>实例过期时间</p>
 	PeriodEndTime *string `json:"PeriodEndTime,omitnil,omitempty" name:"PeriodEndTime"`
 
-	// 销毁期限
+	// <p>销毁期限</p>
 	DestroyDeadlineText *string `json:"DestroyDeadlineText,omitnil,omitempty" name:"DestroyDeadlineText"`
 
-	// 隔离时间
+	// <p>隔离时间</p>
 	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
 
-	// 网络类型
+	// <p>网络类型</p>
 	NetType *int64 `json:"NetType,omitnil,omitempty" name:"NetType"`
 
-	// 外网域名
+	// <p>外网域名</p>
 	WanDomain *string `json:"WanDomain,omitnil,omitempty" name:"WanDomain"`
 
-	// 外网IP
+	// <p>外网IP</p>
 	WanIP *string `json:"WanIP,omitnil,omitempty" name:"WanIP"`
 
-	// 外网端口
+	// <p>外网端口</p>
 	WanPort *int64 `json:"WanPort,omitnil,omitempty" name:"WanPort"`
 
-	// 外网状态
+	// <p>外网状态</p>
 	WanStatus *string `json:"WanStatus,omitnil,omitempty" name:"WanStatus"`
 
-	// 实例销毁时间
+	// <p>实例销毁时间</p>
 	DestroyTime *string `json:"DestroyTime,omitnil,omitempty" name:"DestroyTime"`
 
-	// Cynos内核版本
+	// <p>Cynos内核版本</p>
 	CynosVersion *string `json:"CynosVersion,omitnil,omitempty" name:"CynosVersion"`
 
-	// 正在处理的任务
+	// <p>正在处理的任务</p>
 	ProcessingTask *string `json:"ProcessingTask,omitnil,omitempty" name:"ProcessingTask"`
 
-	// 续费标志
+	// <p>续费标志</p>
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// serverless实例cpu下限
+	// <p>serverless实例cpu下限</p>
 	MinCpu *float64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
 
-	// serverless实例cpu上限
+	// <p>serverless实例cpu上限</p>
 	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
 
-	// serverless实例状态, 可选值：
-	// resume
-	// pause
+	// <p>serverless实例状态, 可选值：<br>resume<br>pause</p>
 	ServerlessStatus *string `json:"ServerlessStatus,omitnil,omitempty" name:"ServerlessStatus"`
 
-	// 预付费存储Id
+	// <p>预付费存储Id</p>
 	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
 
-	// 存储付费类型
+	// <p>存储付费类型</p>
 	StoragePayMode *int64 `json:"StoragePayMode,omitnil,omitempty" name:"StoragePayMode"`
 
-	// 物理区
+	// <p>物理区</p>
 	PhysicalZone *string `json:"PhysicalZone,omitnil,omitempty" name:"PhysicalZone"`
 
-	// 商业类型
+	// <p>商业类型</p>
 	BusinessType *string `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
 
-	// 任务
+	// <p>任务</p>
 	Tasks []*ObjectTask `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
-	// 是否冻结
+	// <p>是否冻结</p>
 	IsFreeze *string `json:"IsFreeze,omitnil,omitempty" name:"IsFreeze"`
 
-	// 资源标签
+	// <p>资源标签</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 主可用区
+	// <p>主可用区</p>
 	MasterZone *string `json:"MasterZone,omitnil,omitempty" name:"MasterZone"`
 
-	// 备可用区
+	// <p>备可用区</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlaveZones []*string `json:"SlaveZones,omitnil,omitempty" name:"SlaveZones"`
 
-	// 实例网络信息
+	// <p>实例网络信息</p>
 	InstanceNetInfo []*InstanceNetInfo `json:"InstanceNetInfo,omitnil,omitempty" name:"InstanceNetInfo"`
 
-	// 实例绑定资源包信息（此处只返回计算资源包，即packageType=CCU）
+	// <p>实例绑定资源包信息（此处只返回计算资源包，即packageType=CCU）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourcePackages []*ResourcePackage `json:"ResourcePackages,omitnil,omitempty" name:"ResourcePackages"`
 
-	// 实例索引形态,可选值【mixedRowColumn（行列混存），onlyRowIndex（仅行存）】
+	// <p>实例索引形态,可选值【mixedRowColumn（行列混存），onlyRowIndex（仅行存）】</p>
 	InstanceIndexMode *string `json:"InstanceIndexMode,omitnil,omitempty" name:"InstanceIndexMode"`
 
-	// 当前实例支持的能力
+	// <p>当前实例支持的能力</p>
 	InstanceAbility *InstanceAbility `json:"InstanceAbility,omitnil,omitempty" name:"InstanceAbility"`
 
-	// 实例机器类型
-	// 1. common，通用型。
-	// 2. exclusive，独享型。
+	// <p>实例机器类型</p><ol><li>common，通用型。</li><li>exclusive，独享型。</li></ol>
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 实例存储类型
+	// <p>实例存储类型</p>
 	InstanceStorageType *string `json:"InstanceStorageType,omitnil,omitempty" name:"InstanceStorageType"`
 
-	// 未知字段
+	// <p>未知字段</p>
 	CynosVersionTag *string `json:"CynosVersionTag,omitnil,omitempty" name:"CynosVersionTag"`
 
-	// libradb 节点信息
+	// <p>libradb 节点信息</p>
 	NodeList []*string `json:"NodeList,omitnil,omitempty" name:"NodeList"`
 
-	// 全球数据库唯一标识
+	// <p>全球数据库唯一标识</p>
 	GdnId *string `json:"GdnId,omitnil,omitempty" name:"GdnId"`
 }
 
@@ -14370,33 +14318,31 @@ type InstanceCLSDeliveryInfo struct {
 }
 
 type InstanceInitInfo struct {
-	// 实例cpu
+	// <p>实例cpu</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 实例内存
+	// <p>实例内存</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例类型 rw/ro
+	// <p>实例类型 rw/ro</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例个数,范围[1,15]
+	// <p>实例个数,范围[1,15]</p>
 	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
-	// Serverless实例个数最小值，范围[1,15]
+	// <p>Serverless实例个数最小值，范围[1,15]</p>
 	MinRoCount *int64 `json:"MinRoCount,omitnil,omitempty" name:"MinRoCount"`
 
-	// Serverless实例个数最大值，范围[1,15]
+	// <p>Serverless实例个数最大值，范围[1,15]</p>
 	MaxRoCount *int64 `json:"MaxRoCount,omitnil,omitempty" name:"MaxRoCount"`
 
-	// Serverless实例最小规格
+	// <p>Serverless实例最小规格</p>
 	MinRoCpu *float64 `json:"MinRoCpu,omitnil,omitempty" name:"MinRoCpu"`
 
-	// Serverless实例最大规格
+	// <p>Serverless实例最大规格</p>
 	MaxRoCpu *float64 `json:"MaxRoCpu,omitnil,omitempty" name:"MaxRoCpu"`
 
-	// 实例机器类型
-	// 1. common，通用型。
-	// 2. exclusive，独享型。
+	// <p>实例机器类型</p><ol><li>common，通用型。</li><li>exclusive，独享型。</li></ol>
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 }
 
@@ -18641,96 +18587,92 @@ func (r *ModifyResourcePackagesDeductionPriorityResponse) FromJsonString(s strin
 
 // Predefined struct for user
 type ModifyServerlessStrategyRequestParams struct {
-	// serverless集群id
+	// <p>serverless集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群是否自动暂停，可选范围
-	// <li>yes</li>
-	// <li>no</li>
+	// <p>集群是否自动暂停，可选范围</p><li>yes</li><li>no</li>
 	AutoPause *string `json:"AutoPause,omitnil,omitempty" name:"AutoPause"`
 
-	// 集群自动暂停的延迟，单位秒，可选范围[600,691200]，默认600
+	// <p>集群自动暂停的延迟，单位秒，可选范围[600,691200]，默认600</p>
 	AutoPauseDelay *int64 `json:"AutoPauseDelay,omitnil,omitempty" name:"AutoPauseDelay"`
 
-	// 该参数暂时无效
+	// <p>该参数暂时无效</p>
 	AutoScaleUpDelay *int64 `json:"AutoScaleUpDelay,omitnil,omitempty" name:"AutoScaleUpDelay"`
 
-	// 该参数暂时无效
+	// <p>该参数暂时无效</p>
 	AutoScaleDownDelay *int64 `json:"AutoScaleDownDelay,omitnil,omitempty" name:"AutoScaleDownDelay"`
 
-	// cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	// <p>cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
 	MinCpu *float64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
 
-	// cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	// <p>cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
 	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
 
-	// 只读实例cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	// <p>只读实例cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
 	MinRoCpu *float64 `json:"MinRoCpu,omitnil,omitempty" name:"MinRoCpu"`
 
-	// 只读cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	// <p>只读cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
 	MaxRoCpu *float64 `json:"MaxRoCpu,omitnil,omitempty" name:"MaxRoCpu"`
 
-	// 只读节点最小个数
+	// <p>只读节点最小个数</p>
 	MinRoCount *int64 `json:"MinRoCount,omitnil,omitempty" name:"MinRoCount"`
 
-	// 只读节点最大个数
+	// <p>只读节点最大个数</p>
 	MaxRoCount *int64 `json:"MaxRoCount,omitnil,omitempty" name:"MaxRoCount"`
 
-	// 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
+	// <p>是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes</p>
 	AutoArchive *string `json:"AutoArchive,omitnil,omitempty" name:"AutoArchive"`
 
-	// 升级类型。 默认值：upgradeImmediate。 可选值： upgradeImmediate：立即完成修改 upgradeInMaintain：在维护时间窗口内完成修改
+	// <p>升级类型。 默认值：upgradeImmediate。 可选值： upgradeImmediate：立即完成修改 upgradeInMaintain：在维护时间窗口内完成修改</p>
 	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
 
-	// 新增的只读实例需要绑定的安全组列表。仅仅针对于在这次调整策略过程中新产生的只读实例绑定安全组，存量的实例不绑定。
+	// <p>新增的只读实例需要绑定的安全组列表。仅仅针对于在这次调整策略过程中新产生的只读实例绑定安全组，存量的实例不绑定。</p>
 	SecurityGroupIdsForNewRo []*string `json:"SecurityGroupIdsForNewRo,omitnil,omitempty" name:"SecurityGroupIdsForNewRo"`
 }
 
 type ModifyServerlessStrategyRequest struct {
 	*tchttp.BaseRequest
 	
-	// serverless集群id
+	// <p>serverless集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群是否自动暂停，可选范围
-	// <li>yes</li>
-	// <li>no</li>
+	// <p>集群是否自动暂停，可选范围</p><li>yes</li><li>no</li>
 	AutoPause *string `json:"AutoPause,omitnil,omitempty" name:"AutoPause"`
 
-	// 集群自动暂停的延迟，单位秒，可选范围[600,691200]，默认600
+	// <p>集群自动暂停的延迟，单位秒，可选范围[600,691200]，默认600</p>
 	AutoPauseDelay *int64 `json:"AutoPauseDelay,omitnil,omitempty" name:"AutoPauseDelay"`
 
-	// 该参数暂时无效
+	// <p>该参数暂时无效</p>
 	AutoScaleUpDelay *int64 `json:"AutoScaleUpDelay,omitnil,omitempty" name:"AutoScaleUpDelay"`
 
-	// 该参数暂时无效
+	// <p>该参数暂时无效</p>
 	AutoScaleDownDelay *int64 `json:"AutoScaleDownDelay,omitnil,omitempty" name:"AutoScaleDownDelay"`
 
-	// cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	// <p>cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
 	MinCpu *float64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
 
-	// cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	// <p>cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
 	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
 
-	// 只读实例cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	// <p>只读实例cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
 	MinRoCpu *float64 `json:"MinRoCpu,omitnil,omitempty" name:"MinRoCpu"`
 
-	// 只读cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	// <p>只读cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
 	MaxRoCpu *float64 `json:"MaxRoCpu,omitnil,omitempty" name:"MaxRoCpu"`
 
-	// 只读节点最小个数
+	// <p>只读节点最小个数</p>
 	MinRoCount *int64 `json:"MinRoCount,omitnil,omitempty" name:"MinRoCount"`
 
-	// 只读节点最大个数
+	// <p>只读节点最大个数</p>
 	MaxRoCount *int64 `json:"MaxRoCount,omitnil,omitempty" name:"MaxRoCount"`
 
-	// 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
+	// <p>是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes</p>
 	AutoArchive *string `json:"AutoArchive,omitnil,omitempty" name:"AutoArchive"`
 
-	// 升级类型。 默认值：upgradeImmediate。 可选值： upgradeImmediate：立即完成修改 upgradeInMaintain：在维护时间窗口内完成修改
+	// <p>升级类型。 默认值：upgradeImmediate。 可选值： upgradeImmediate：立即完成修改 upgradeInMaintain：在维护时间窗口内完成修改</p>
 	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
 
-	// 新增的只读实例需要绑定的安全组列表。仅仅针对于在这次调整策略过程中新产生的只读实例绑定安全组，存量的实例不绑定。
+	// <p>新增的只读实例需要绑定的安全组列表。仅仅针对于在这次调整策略过程中新产生的只读实例绑定安全组，存量的实例不绑定。</p>
 	SecurityGroupIdsForNewRo []*string `json:"SecurityGroupIdsForNewRo,omitnil,omitempty" name:"SecurityGroupIdsForNewRo"`
 }
 
@@ -18768,12 +18710,12 @@ func (r *ModifyServerlessStrategyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyServerlessStrategyResponseParams struct {
-	// 异步流程id
+	// <p>异步流程id</p>
 	//
 	// Deprecated: FlowId is deprecated.
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 任务id
+	// <p>任务id</p>
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20374,28 +20316,30 @@ type PolicyRule struct {
 }
 
 type ProxyConfig struct {
-	// 数据库代理组节点个数。该参数不再建议使用,建议使用ProxyZones
+	// <p>数据库代理组节点个数。该参数不再建议使用,建议使用ProxyZones</p>
+	//
+	// Deprecated: ProxyCount is deprecated.
 	ProxyCount *int64 `json:"ProxyCount,omitnil,omitempty" name:"ProxyCount"`
 
-	// cpu核数
+	// <p>cpu核数</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存
+	// <p>内存</p>
 	Mem *int64 `json:"Mem,omitnil,omitempty" name:"Mem"`
 
-	// 连接池类型:SessionConnectionPool(会话级别连接池 )
+	// <p>连接池类型:SessionConnectionPool(会话级别连接池 )</p>
 	ConnectionPoolType *string `json:"ConnectionPoolType,omitnil,omitempty" name:"ConnectionPoolType"`
 
-	// 是否开启连接池,yes-开启，no-不开启
+	// <p>是否开启连接池,yes-开启，no-不开启</p>
 	OpenConnectionPool *string `json:"OpenConnectionPool,omitnil,omitempty" name:"OpenConnectionPool"`
 
-	// 连接池阈值:单位（秒）
+	// <p>连接池阈值:单位（秒）</p>
 	ConnectionPoolTimeOut *int64 `json:"ConnectionPoolTimeOut,omitnil,omitempty" name:"ConnectionPoolTimeOut"`
 
-	// 描述说明
+	// <p>描述说明</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 数据库节点信息（该参数与ProxyCount需要任选一个输入）
+	// <p>数据库节点信息（该参数与ProxyCount需要任选一个输入）</p>
 	ProxyZones []*ProxyZone `json:"ProxyZones,omitnil,omitempty" name:"ProxyZones"`
 }
 
@@ -22531,25 +22475,25 @@ type SecurityGroup struct {
 }
 
 type ServerlessSpec struct {
-	// cpu最小值
+	// <p>cpu最小值</p>
 	MinCpu *float64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
 
-	// cpu最大值
+	// <p>cpu最大值</p>
 	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
 
-	// 最大存储空间
+	// <p>最大存储空间</p>
 	MaxStorageSize *int64 `json:"MaxStorageSize,omitnil,omitempty" name:"MaxStorageSize"`
 
-	// 是否为默认规格
+	// <p>是否为默认规格</p>
 	IsDefault *int64 `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 
-	// 是否有库存
+	// <p>是否有库存</p>
 	HasStock *bool `json:"HasStock,omitnil,omitempty" name:"HasStock"`
 
-	// 库存数量
+	// <p>库存数量</p>
 	StockCount *int64 `json:"StockCount,omitnil,omitempty" name:"StockCount"`
 
-	// 可用区库存信息
+	// <p>可用区库存信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneStockInfos []*ServerlessZoneStockInfo `json:"ZoneStockInfos,omitnil,omitempty" name:"ZoneStockInfos"`
 }

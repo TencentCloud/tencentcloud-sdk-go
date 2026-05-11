@@ -13835,27 +13835,33 @@ func (r *DescribePodInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProgramsRequestParams struct {
-	// 模糊查询数据集ID，数据集名称，不传入时查询全量
+	// <p>模糊查询数据集ID，数据集名称，不传入时查询全量</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 每页数量，默认值20
+	// <p>每页数量，默认值20</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 起始偏移量，默认值0
+	// <p>起始偏移量，默认值0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>模糊查询，传递模糊查询字段和对应的值</p>
+	SearchFilters *SearchFiltersProgram `json:"SearchFilters,omitnil,omitempty" name:"SearchFilters"`
 }
 
 type DescribeProgramsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模糊查询数据集ID，数据集名称，不传入时查询全量
+	// <p>模糊查询数据集ID，数据集名称，不传入时查询全量</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 每页数量，默认值20
+	// <p>每页数量，默认值20</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 起始偏移量，默认值0
+	// <p>起始偏移量，默认值0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>模糊查询，传递模糊查询字段和对应的值</p>
+	SearchFilters *SearchFiltersProgram `json:"SearchFilters,omitnil,omitempty" name:"SearchFilters"`
 }
 
 func (r *DescribeProgramsRequest) ToJsonString() string {
@@ -13873,6 +13879,7 @@ func (r *DescribeProgramsRequest) FromJsonString(s string) error {
 	delete(f, "SearchWord")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "SearchFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProgramsRequest has unknown keys!", "")
 	}
@@ -13881,7 +13888,7 @@ func (r *DescribeProgramsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProgramsResponseParams struct {
-	// 数据集列表
+	// <p>数据集列表</p>
 	Result *PagedProgram `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21707,6 +21714,14 @@ func (r *SearchBusinessLogResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SearchBusinessLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchFiltersProgram struct {
+	// <p>数据集ID</p>
+	ProgramId *string `json:"ProgramId,omitnil,omitempty" name:"ProgramId"`
+
+	// <p>数据集名称</p>
+	ProgramName *string `json:"ProgramName,omitnil,omitempty" name:"ProgramName"`
 }
 
 // Predefined struct for user

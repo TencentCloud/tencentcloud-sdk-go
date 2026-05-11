@@ -7471,6 +7471,62 @@ func (c *Client) DescribeProtectionModesWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeQClawContentSecCheckRequest() (request *DescribeQClawContentSecCheckRequest) {
+    request = &DescribeQClawContentSecCheckRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeQClawContentSecCheck")
+    
+    
+    return
+}
+
+func NewDescribeQClawContentSecCheckResponse() (response *DescribeQClawContentSecCheckResponse) {
+    response = &DescribeQClawContentSecCheckResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeQClawContentSecCheck
+// 大模型请求内容和响应内容审核接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+func (c *Client) DescribeQClawContentSecCheck(request *DescribeQClawContentSecCheckRequest) (response *DescribeQClawContentSecCheckResponse, err error) {
+    return c.DescribeQClawContentSecCheckWithContext(context.Background(), request)
+}
+
+// DescribeQClawContentSecCheck
+// 大模型请求内容和响应内容审核接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
+func (c *Client) DescribeQClawContentSecCheckWithContext(ctx context.Context, request *DescribeQClawContentSecCheckRequest) (response *DescribeQClawContentSecCheckResponse, err error) {
+    if request == nil {
+        request = NewDescribeQClawContentSecCheckRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeQClawContentSecCheck")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQClawContentSecCheck require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeQClawContentSecCheckResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRateLimitsV2Request() (request *DescribeRateLimitsV2Request) {
     request = &DescribeRateLimitsV2Request{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7494,11 +7550,10 @@ func NewDescribeRateLimitsV2Response() (response *DescribeRateLimitsV2Response) 
 // 查询限流规则列表接口
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
 func (c *Client) DescribeRateLimitsV2(request *DescribeRateLimitsV2Request) (response *DescribeRateLimitsV2Response, err error) {
     return c.DescribeRateLimitsV2WithContext(context.Background(), request)
 }
@@ -7507,11 +7562,10 @@ func (c *Client) DescribeRateLimitsV2(request *DescribeRateLimitsV2Request) (res
 // 查询限流规则列表接口
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  INVALIDPARAMETER_LLMCONTENTEMPTY = "InvalidParameter.LLMContentEmpty"
+//  INVALIDPARAMETER_LLMINTERNALERROR = "InvalidParameter.LLMInternalError"
+//  INVALIDPARAMETER_LLMINVALIDTYPE = "InvalidParameter.LLMInvalidType"
+//  INVALIDPARAMETER_LLMPARSEFAILED = "InvalidParameter.LLMParseFailed"
 func (c *Client) DescribeRateLimitsV2WithContext(ctx context.Context, request *DescribeRateLimitsV2Request) (response *DescribeRateLimitsV2Response, err error) {
     if request == nil {
         request = NewDescribeRateLimitsV2Request()

@@ -3611,6 +3611,76 @@ func (c *Client) CreateRecordTaskWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateSceneVideoTaskRequest() (request *CreateSceneVideoTaskRequest) {
+    request = &CreateSceneVideoTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateSceneVideoTask")
+    
+    
+    return
+}
+
+func NewCreateSceneVideoTaskResponse() (response *CreateSceneVideoTaskResponse) {
+    response = &CreateSceneVideoTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSceneVideoTask
+// 该接口用于创建场景化视频任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETCONFIGERROR = "InternalError.GetConfigError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_MAXIMUMRUNNINGTASK = "LimitExceeded.MaximumRunningTask"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCEUNAVAILABLE_INVALIDVODSTATUS = "ResourceUnavailable.InvalidVodStatus"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSceneVideoTask(request *CreateSceneVideoTaskRequest) (response *CreateSceneVideoTaskResponse, err error) {
+    return c.CreateSceneVideoTaskWithContext(context.Background(), request)
+}
+
+// CreateSceneVideoTask
+// 该接口用于创建场景化视频任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETCONFIGERROR = "InternalError.GetConfigError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_MAXIMUMRUNNINGTASK = "LimitExceeded.MaximumRunningTask"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCEUNAVAILABLE_INVALIDVODSTATUS = "ResourceUnavailable.InvalidVodStatus"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSceneVideoTaskWithContext(ctx context.Context, request *CreateSceneVideoTaskRequest) (response *CreateSceneVideoTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateSceneVideoTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "CreateSceneVideoTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSceneVideoTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSceneVideoTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateScreenshotTaskRequest() (request *CreateScreenshotTaskRequest) {
     request = &CreateScreenshotTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12765,6 +12835,72 @@ func (c *Client) DescribeRecordTaskWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeRecordTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSceneVideoTaskRequest() (request *DescribeSceneVideoTaskRequest) {
+    request = &DescribeSceneVideoTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeSceneVideoTask")
+    
+    
+    return
+}
+
+func NewDescribeSceneVideoTaskResponse() (response *DescribeSceneVideoTaskResponse) {
+    response = &DescribeSceneVideoTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSceneVideoTask
+// 该接口用于查询场景化视频任务进展及结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETCONFIGERROR = "InternalError.GetConfigError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSceneVideoTask(request *DescribeSceneVideoTaskRequest) (response *DescribeSceneVideoTaskResponse, err error) {
+    return c.DescribeSceneVideoTaskWithContext(context.Background(), request)
+}
+
+// DescribeSceneVideoTask
+// 该接口用于查询场景化视频任务进展及结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETCONFIGERROR = "InternalError.GetConfigError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSceneVideoTaskWithContext(ctx context.Context, request *DescribeSceneVideoTaskRequest) (response *DescribeSceneVideoTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeSceneVideoTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "live", APIVersion, "DescribeSceneVideoTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSceneVideoTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSceneVideoTaskResponse()
     err = c.Send(request, response)
     return
 }

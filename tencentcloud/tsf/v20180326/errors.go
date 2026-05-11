@@ -959,6 +959,9 @@ const (
 	// 数据集名非法。
 	INVALIDPARAMETERVALUE_INVALIDPROGRAMNAME = "InvalidParameterValue.InvalidProgramName"
 
+	// 部署组不存在或已被删除[部署组ID]
+	INVALIDPARAMETERVALUE_LANEGROUPNOTEXIST = "InvalidParameterValue.LaneGroupNotExist"
+
 	// 该泳道已关联全链路灰度发布规则,请先从规则中移除后删除
 	INVALIDPARAMETERVALUE_LANEINFOALREADYUSED = "InvalidParameterValue.LaneInfoAlreadyUsed"
 

@@ -365,59 +365,68 @@ type CommonIndexInfo struct {
 }
 
 type CosBackup struct {
-	// 是否开启cos自动备份
+	// <p>是否开启cos自动备份</p>
 	IsAutoBackup *bool `json:"IsAutoBackup,omitnil,omitempty" name:"IsAutoBackup"`
 
-	// 自动备份执行时间（精确到小时）, e.g. "22:00"
+	// <p>自动备份执行时间（精确到小时）, e.g. &quot;22:00&quot;</p>
 	BackupTime *string `json:"BackupTime,omitnil,omitempty" name:"BackupTime"`
 
-	// 备份快照前缀
+	// <p>备份快照前缀</p>
 	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
 
-	// 0 腾讯云仓库; 1 客户仓库
+	// <p>0 腾讯云仓库; 1 客户仓库</p>
 	EsRepositoryType *uint64 `json:"EsRepositoryType,omitnil,omitempty" name:"EsRepositoryType"`
 
-	// 托管快照仓库名称
+	// <p>托管快照仓库名称</p>
 	PaasEsRepository *string `json:"PaasEsRepository,omitnil,omitempty" name:"PaasEsRepository"`
 
-	// 客户快照仓库名称
+	// <p>客户快照仓库名称</p>
 	UserEsRepository *string `json:"UserEsRepository,omitnil,omitempty" name:"UserEsRepository"`
 
-	// cos存储文件夹目录
+	// <p>cos存储文件夹目录</p>
 	CosBasePath *string `json:"CosBasePath,omitnil,omitempty" name:"CosBasePath"`
 
-	// 快照存储周期 单位天
+	// <p>快照存储周期 单位天</p>
 	StorageDuration *uint64 `json:"StorageDuration,omitnil,omitempty" name:"StorageDuration"`
 
-	// 自动备份频率单位小时
+	// <p>自动备份频率单位小时</p>
 	AutoBackupInterval *uint64 `json:"AutoBackupInterval,omitnil,omitempty" name:"AutoBackupInterval"`
 
-	// 备份锁定 0 不锁定; 1 锁定
+	// <p>备份锁定 0 不锁定; 1 锁定</p>
 	CosRetention *uint64 `json:"CosRetention,omitnil,omitempty" name:"CosRetention"`
 
-	// 锁定截止日期 2022-12-10T08:34:48.000Z
+	// <p>锁定截止日期 2022-12-10T08:34:48.000Z</p>
 	RetainUntilDate *string `json:"RetainUntilDate,omitnil,omitempty" name:"RetainUntilDate"`
 
-	// 锁定宽限期
+	// <p>锁定宽限期</p>
 	RetentionGraceTime *uint64 `json:"RetentionGraceTime,omitnil,omitempty" name:"RetentionGraceTime"`
 
-	// 跨地域备份 0 不跨地域; 1 跨地域
+	// <p>跨地域备份 0 不跨地域; 1 跨地域</p>
 	RemoteCos *uint64 `json:"RemoteCos,omitnil,omitempty" name:"RemoteCos"`
 
-	// 跨地域备份地域名称 ap-guangzhou
+	// <p>跨地域备份地域名称 ap-guangzhou</p>
 	RemoteCosRegion *string `json:"RemoteCosRegion,omitnil,omitempty" name:"RemoteCosRegion"`
 
-	// 策略名称
+	// <p>策略名称</p>
 	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
 
-	// 备份索引列表，如果不填表示备份所有索引
+	// <p>备份索引列表，如果不填表示备份所有索引</p>
 	Indices *string `json:"Indices,omitnil,omitempty" name:"Indices"`
 
-	// cos多AZ备份 0 单AZ; 1 多AZ
+	// <p>cos多AZ备份 0 单AZ; 1 多AZ</p>
 	MultiAz *uint64 `json:"MultiAz,omitnil,omitempty" name:"MultiAz"`
 
-	// 策略创建时间
+	// <p>每节点写入仓库的最大速度 max_snapshot_bytes_per_sec, 默认40m</p>
+	MaxSnapshotPerSec *string `json:"MaxSnapshotPerSec,omitnil,omitempty" name:"MaxSnapshotPerSec"`
+
+	// <p>每节点读取仓库的最大速度 max_restore_bytes_per_sec, 710前默认40m, 710及以后默认无限制</p>
+	MaxRestorePerSec *string `json:"MaxRestorePerSec,omitnil,omitempty" name:"MaxRestorePerSec"`
+
+	// <p>策略创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type CosSnapShotInfo struct {
@@ -516,81 +525,87 @@ func (r *CreateAutoBackUpStrategyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateClusterSnapshotRequestParams struct {
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 快照名称
+	// <p>快照名称</p>
 	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
 
-	// 索引名称
+	// <p>索引名称</p>
 	Indices *string `json:"Indices,omitnil,omitempty" name:"Indices"`
 
-	// 0 腾讯云仓库; 1 客户仓库
+	// <p>0 腾讯云仓库; 1 客户仓库</p>
 	EsRepositoryType *uint64 `json:"EsRepositoryType,omitnil,omitempty" name:"EsRepositoryType"`
 
-	// 客户快照仓库名称
+	// <p>客户快照仓库名称</p>
 	UserEsRepository *string `json:"UserEsRepository,omitnil,omitempty" name:"UserEsRepository"`
 
-	// 快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天
+	// <p>快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天</p>
 	StorageDuration *uint64 `json:"StorageDuration,omitnil,omitempty" name:"StorageDuration"`
 
-	// 备份锁定 0 不锁定; 1 锁定
+	// <p>备份锁定 0 不锁定; 1 锁定</p>
 	CosRetention *uint64 `json:"CosRetention,omitnil,omitempty" name:"CosRetention"`
 
-	// 锁定截止日期 2022-12-10T08:34:48.000Z
+	// <p>锁定截止日期 2022-12-10T08:34:48.000Z</p>
 	RetainUntilDate *string `json:"RetainUntilDate,omitnil,omitempty" name:"RetainUntilDate"`
 
-	// 锁定宽限期,单位天
+	// <p>锁定宽限期,单位天</p>
 	RetentionGraceTime *uint64 `json:"RetentionGraceTime,omitnil,omitempty" name:"RetentionGraceTime"`
 
-	// 跨地域备份 0 不跨地域; 1 跨地域
+	// <p>跨地域备份 0 不跨地域; 1 跨地域</p>
 	RemoteCos *uint64 `json:"RemoteCos,omitnil,omitempty" name:"RemoteCos"`
 
-	// 跨地域备份地域名称 ap-guangzhou
+	// <p>跨地域备份地域名称 ap-guangzhou</p>
 	RemoteCosRegion *string `json:"RemoteCosRegion,omitnil,omitempty" name:"RemoteCosRegion"`
 
-	// cos多AZ备份 0 单AZ; 1 多AZ
+	// <p>cos多AZ备份 0 单AZ; 1 多AZ</p>
 	MultiAz *uint64 `json:"MultiAz,omitnil,omitempty" name:"MultiAz"`
+
+	// <p>快照创建速率（单位mb）</p>
+	MaxSnapshotPerSec *string `json:"MaxSnapshotPerSec,omitnil,omitempty" name:"MaxSnapshotPerSec"`
 }
 
 type CreateClusterSnapshotRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 快照名称
+	// <p>快照名称</p>
 	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
 
-	// 索引名称
+	// <p>索引名称</p>
 	Indices *string `json:"Indices,omitnil,omitempty" name:"Indices"`
 
-	// 0 腾讯云仓库; 1 客户仓库
+	// <p>0 腾讯云仓库; 1 客户仓库</p>
 	EsRepositoryType *uint64 `json:"EsRepositoryType,omitnil,omitempty" name:"EsRepositoryType"`
 
-	// 客户快照仓库名称
+	// <p>客户快照仓库名称</p>
 	UserEsRepository *string `json:"UserEsRepository,omitnil,omitempty" name:"UserEsRepository"`
 
-	// 快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天
+	// <p>快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天</p>
 	StorageDuration *uint64 `json:"StorageDuration,omitnil,omitempty" name:"StorageDuration"`
 
-	// 备份锁定 0 不锁定; 1 锁定
+	// <p>备份锁定 0 不锁定; 1 锁定</p>
 	CosRetention *uint64 `json:"CosRetention,omitnil,omitempty" name:"CosRetention"`
 
-	// 锁定截止日期 2022-12-10T08:34:48.000Z
+	// <p>锁定截止日期 2022-12-10T08:34:48.000Z</p>
 	RetainUntilDate *string `json:"RetainUntilDate,omitnil,omitempty" name:"RetainUntilDate"`
 
-	// 锁定宽限期,单位天
+	// <p>锁定宽限期,单位天</p>
 	RetentionGraceTime *uint64 `json:"RetentionGraceTime,omitnil,omitempty" name:"RetentionGraceTime"`
 
-	// 跨地域备份 0 不跨地域; 1 跨地域
+	// <p>跨地域备份 0 不跨地域; 1 跨地域</p>
 	RemoteCos *uint64 `json:"RemoteCos,omitnil,omitempty" name:"RemoteCos"`
 
-	// 跨地域备份地域名称 ap-guangzhou
+	// <p>跨地域备份地域名称 ap-guangzhou</p>
 	RemoteCosRegion *string `json:"RemoteCosRegion,omitnil,omitempty" name:"RemoteCosRegion"`
 
-	// cos多AZ备份 0 单AZ; 1 多AZ
+	// <p>cos多AZ备份 0 单AZ; 1 多AZ</p>
 	MultiAz *uint64 `json:"MultiAz,omitnil,omitempty" name:"MultiAz"`
+
+	// <p>快照创建速率（单位mb）</p>
+	MaxSnapshotPerSec *string `json:"MaxSnapshotPerSec,omitnil,omitempty" name:"MaxSnapshotPerSec"`
 }
 
 func (r *CreateClusterSnapshotRequest) ToJsonString() string {
@@ -617,6 +632,7 @@ func (r *CreateClusterSnapshotRequest) FromJsonString(s string) error {
 	delete(f, "RemoteCos")
 	delete(f, "RemoteCosRegion")
 	delete(f, "MultiAz")
+	delete(f, "MaxSnapshotPerSec")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterSnapshotRequest has unknown keys!", "")
 	}
@@ -625,7 +641,7 @@ func (r *CreateClusterSnapshotRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateClusterSnapshotResponseParams struct {
-	// 实例名称
+	// <p>实例名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
@@ -1984,15 +2000,27 @@ func (r *DeleteIndexResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteInstanceRequestParams struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>回收站锁定设置，true时不可手动销毁，到预设时间后自动销毁</p><p>默认值：false</p>
+	LockEnabled *bool `json:"LockEnabled,omitnil,omitempty" name:"LockEnabled"`
+
+	// <p>放入回收站的锁定时间</p><p>取值范围：[1, 7]</p><p>单位：天</p><p>默认值：1</p>
+	LockDuration *int64 `json:"LockDuration,omitnil,omitempty" name:"LockDuration"`
 }
 
 type DeleteInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>回收站锁定设置，true时不可手动销毁，到预设时间后自动销毁</p><p>默认值：false</p>
+	LockEnabled *bool `json:"LockEnabled,omitnil,omitempty" name:"LockEnabled"`
+
+	// <p>放入回收站的锁定时间</p><p>取值范围：[1, 7]</p><p>单位：天</p><p>默认值：1</p>
+	LockDuration *int64 `json:"LockDuration,omitnil,omitempty" name:"LockDuration"`
 }
 
 func (r *DeleteInstanceRequest) ToJsonString() string {
@@ -2008,6 +2036,8 @@ func (r *DeleteInstanceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "LockEnabled")
+	delete(f, "LockDuration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteInstanceRequest has unknown keys!", "")
 	}
@@ -5303,359 +5333,366 @@ func (r *InstallInstanceModelResponse) FromJsonString(s string) error {
 }
 
 type InstanceInfo struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 地域
+	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 用户ID
+	// <p>用户ID</p>
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 用户UIN
+	// <p>用户UIN</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 实例所属VPC的UID
+	// <p>实例所属VPC的UID</p>
 	VpcUid *string `json:"VpcUid,omitnil,omitempty" name:"VpcUid"`
 
-	// 实例所属子网的UID
+	// <p>实例所属子网的UID</p>
 	SubnetUid *string `json:"SubnetUid,omitnil,omitempty" name:"SubnetUid"`
 
-	// 实例状态，0:处理中,1:正常,-1:停止,-2:销毁中,-3:已销毁, -4:隔离中,2:创建集群时初始化中
+	// <p>实例状态，0:处理中,1:正常,-1:停止,-2:销毁中,-3:已销毁, -4:隔离中,2:创建集群时初始化中</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 自动续费标识。取值范围：
-	// RENEW_FLAG_AUTO：自动续费  
-	// RENEW_FLAG_MANUAL：不自动续费
-	// 默认取值：
-	// RENEW_FLAG_DEFAULT：不自动续费
-	// 若该参数指定为 RENEW_FLAG_AUTO，在账户余额充足的情况下，实例到期后将按月自动续费。
+	// <p>自动续费标识。取值范围：<br>RENEW_FLAG_AUTO：自动续费<br>RENEW_FLAG_MANUAL：不自动续费<br>默认取值：<br>RENEW_FLAG_DEFAULT：不自动续费<br>若该参数指定为 RENEW_FLAG_AUTO，在账户余额充足的情况下，实例到期后将按月自动续费。</p>
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 实例计费模式。取值范围：  PREPAID：表示预付费，即包年包月  POSTPAID_BY_HOUR：表示后付费，即按量计费  CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。
+	// <p>实例计费模式。取值范围：  PREPAID：表示预付费，即包年包月  POSTPAID_BY_HOUR：表示后付费，即按量计费  CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。</p>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// 包年包月购买时长,单位:月
+	// <p>包年包月购买时长,单位:月</p>
 	ChargePeriod *uint64 `json:"ChargePeriod,omitnil,omitempty" name:"ChargePeriod"`
 
-	// 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+	// <p>节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
 	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 
-	// 节点个数
+	// <p>节点个数</p>
 	NodeNum *uint64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
 
-	// 节点CPU核数
+	// <p>节点CPU核数</p>
 	CpuNum *uint64 `json:"CpuNum,omitnil,omitempty" name:"CpuNum"`
 
-	// 节点内存大小，单位GB
+	// <p>节点内存大小，单位GB</p>
 	MemSize *uint64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
 
-	// 节点磁盘类型
+	// <p>节点磁盘类型</p>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 节点磁盘大小，单位GB
+	// <p>节点磁盘大小，单位GB</p>
 	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// ES域名
+	// <p>ES域名</p>
 	EsDomain *string `json:"EsDomain,omitnil,omitempty" name:"EsDomain"`
 
-	// ES VIP
+	// <p>ES VIP</p>
 	EsVip *string `json:"EsVip,omitnil,omitempty" name:"EsVip"`
 
-	// ES端口
+	// <p>ES端口</p>
 	EsPort *uint64 `json:"EsPort,omitnil,omitempty" name:"EsPort"`
 
-	// Kibana访问url
+	// <p>Kibana访问url</p>
 	KibanaUrl *string `json:"KibanaUrl,omitnil,omitempty" name:"KibanaUrl"`
 
-	// ES版本号
+	// <p>ES版本号</p>
 	EsVersion *string `json:"EsVersion,omitnil,omitempty" name:"EsVersion"`
 
-	// ES配置项
+	// <p>ES配置项</p>
 	EsConfig *string `json:"EsConfig,omitnil,omitempty" name:"EsConfig"`
 
-	// Kibana访问控制配置
+	// <p>Kibana访问控制配置</p>
 	EsAcl *EsAcl `json:"EsAcl,omitnil,omitempty" name:"EsAcl"`
 
-	// 实例创建时间
+	// <p>实例创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 实例最后修改操作时间
+	// <p>实例最后修改操作时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 实例到期时间
+	// <p>实例到期时间</p>
 	Deadline *string `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
-	// 实例类型（实例类型标识，当前只有1,2两种）
+	// <p>实例类型（实例类型标识，当前只有1,2两种）</p>
 	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// Ik分词器配置
+	// <p>Ik分词器配置</p>
 	IkConfig *EsDictionaryInfo `json:"IkConfig,omitnil,omitempty" name:"IkConfig"`
 
-	// 专用主节点配置
+	// <p>专用主节点配置</p>
 	MasterNodeInfo *MasterNodeInfo `json:"MasterNodeInfo,omitnil,omitempty" name:"MasterNodeInfo"`
 
-	// cos自动备份配置
+	// <p>cos自动备份配置</p>
 	CosBackup *CosBackup `json:"CosBackup,omitnil,omitempty" name:"CosBackup"`
 
-	// 是否允许cos自动备份
+	// <p>是否允许cos自动备份</p>
 	AllowCosBackup *bool `json:"AllowCosBackup,omitnil,omitempty" name:"AllowCosBackup"`
 
-	// 实例拥有的标签列表
+	// <p>实例拥有的标签列表</p>
 	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
 
-	// License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum
+	// <p>License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum</p>
 	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
-	// 是否为冷热集群<li>true: 冷热集群</li><li>false: 非冷热集群</li>
+	// <p>是否为冷热集群<li>true: 冷热集群</li><li>false: 非冷热集群</li></p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableHotWarmMode *bool `json:"EnableHotWarmMode,omitnil,omitempty" name:"EnableHotWarmMode"`
 
-	// 温节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+	// <p>温节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarmNodeType *string `json:"WarmNodeType,omitnil,omitempty" name:"WarmNodeType"`
 
-	// 温节点个数
+	// <p>温节点个数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarmNodeNum *uint64 `json:"WarmNodeNum,omitnil,omitempty" name:"WarmNodeNum"`
 
-	// 温节点CPU核数
+	// <p>温节点CPU核数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarmCpuNum *uint64 `json:"WarmCpuNum,omitnil,omitempty" name:"WarmCpuNum"`
 
-	// 温节点内存内存大小，单位GB
+	// <p>温节点内存内存大小，单位GB</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarmMemSize *uint64 `json:"WarmMemSize,omitnil,omitempty" name:"WarmMemSize"`
 
-	// 温节点磁盘类型
+	// <p>温节点磁盘类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarmDiskType *string `json:"WarmDiskType,omitnil,omitempty" name:"WarmDiskType"`
 
-	// 温节点磁盘大小，单位GB
+	// <p>温节点磁盘大小，单位GB</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarmDiskSize *uint64 `json:"WarmDiskSize,omitnil,omitempty" name:"WarmDiskSize"`
 
-	// 集群节点信息列表
+	// <p>集群节点信息列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeInfoList []*NodeInfo `json:"NodeInfoList,omitnil,omitempty" name:"NodeInfoList"`
 
-	// Es公网地址
+	// <p>Es公网地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EsPublicUrl *string `json:"EsPublicUrl,omitnil,omitempty" name:"EsPublicUrl"`
 
-	// 多可用区网络信息
+	// <p>多可用区网络信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitnil,omitempty" name:"MultiZoneInfo"`
 
-	// 部署模式<li>0：单可用区</li><li>1：多可用区，北京、上海、上海金融、广州、南京、香港、新加坡、法兰克福（白名单控制）</li>
+	// <p>部署模式<li>0：单可用区</li><li>1：多可用区，北京、上海、上海金融、广州、南京、香港、新加坡、法兰克福（白名单控制）</li></p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployMode *uint64 `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
 
-	// ES公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li>
+	// <p>ES公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li></p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicAccess *string `json:"PublicAccess,omitnil,omitempty" name:"PublicAccess"`
 
-	// ES公网访问控制配置
+	// <p>ES公网访问控制配置</p>
 	EsPublicAcl *EsAcl `json:"EsPublicAcl,omitnil,omitempty" name:"EsPublicAcl"`
 
-	// Kibana内网地址
+	// <p>Kibana内网地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaPrivateUrl *string `json:"KibanaPrivateUrl,omitnil,omitempty" name:"KibanaPrivateUrl"`
 
-	// Kibana公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li>
+	// <p>Kibana公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li></p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaPublicAccess *string `json:"KibanaPublicAccess,omitnil,omitempty" name:"KibanaPublicAccess"`
 
-	// Kibana内网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li>
+	// <p>Kibana内网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li></p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaPrivateAccess *string `json:"KibanaPrivateAccess,omitnil,omitempty" name:"KibanaPrivateAccess"`
 
-	// 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
+	// <p>6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li></p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityType *uint64 `json:"SecurityType,omitnil,omitempty" name:"SecurityType"`
 
-	// 场景化模板类型：0、不开启；1、通用场景；2、日志场景；3、搜索场景
+	// <p>场景化模板类型：0、不开启；1、通用场景；2、日志场景；3、搜索场景</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneType *int64 `json:"SceneType,omitnil,omitempty" name:"SceneType"`
 
-	// Kibana配置项
+	// <p>Kibana配置项</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaConfig *string `json:"KibanaConfig,omitnil,omitempty" name:"KibanaConfig"`
 
-	// Kibana节点信息
+	// <p>Kibana节点信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaNodeInfo *KibanaNodeInfo `json:"KibanaNodeInfo,omitnil,omitempty" name:"KibanaNodeInfo"`
 
-	// 可视化节点配置
+	// <p>可视化节点配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebNodeTypeInfo *WebNodeTypeInfo `json:"WebNodeTypeInfo,omitnil,omitempty" name:"WebNodeTypeInfo"`
 
-	// JDK类型，oracle或kona
+	// <p>JDK类型，oracle或kona</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Jdk *string `json:"Jdk,omitnil,omitempty" name:"Jdk"`
 
-	// 集群网络通讯协议
+	// <p>集群网络通讯协议</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 安全组id
+	// <p>安全组id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroups []*string `json:"SecurityGroups,omitnil,omitempty" name:"SecurityGroups"`
 
-	// 冷节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+	// <p>冷节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColdNodeType *string `json:"ColdNodeType,omitnil,omitempty" name:"ColdNodeType"`
 
-	// 冷节点个数
+	// <p>冷节点个数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColdNodeNum *uint64 `json:"ColdNodeNum,omitnil,omitempty" name:"ColdNodeNum"`
 
-	// 冷节点CPU核数
+	// <p>冷节点CPU核数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColdCpuNum *uint64 `json:"ColdCpuNum,omitnil,omitempty" name:"ColdCpuNum"`
 
-	// 冷节点内存大小，单位GB
+	// <p>冷节点内存大小，单位GB</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColdMemSize *uint64 `json:"ColdMemSize,omitnil,omitempty" name:"ColdMemSize"`
 
-	// 冷节点磁盘类型
+	// <p>冷节点磁盘类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColdDiskType *string `json:"ColdDiskType,omitnil,omitempty" name:"ColdDiskType"`
 
-	// 冷节点磁盘大小，单位GB
+	// <p>冷节点磁盘大小，单位GB</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColdDiskSize *uint64 `json:"ColdDiskSize,omitnil,omitempty" name:"ColdDiskSize"`
 
-	// 冻节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+	// <p>冻节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrozenNodeType *string `json:"FrozenNodeType,omitnil,omitempty" name:"FrozenNodeType"`
 
-	// 冻节点个数
+	// <p>冻节点个数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrozenNodeNum *uint64 `json:"FrozenNodeNum,omitnil,omitempty" name:"FrozenNodeNum"`
 
-	// 冻节点CPU核数
+	// <p>冻节点CPU核数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrozenCpuNum *uint64 `json:"FrozenCpuNum,omitnil,omitempty" name:"FrozenCpuNum"`
 
-	// 冻节点内存大小，单位GB
+	// <p>冻节点内存大小，单位GB</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrozenMemSize *uint64 `json:"FrozenMemSize,omitnil,omitempty" name:"FrozenMemSize"`
 
-	// 冻节点磁盘类型
+	// <p>冻节点磁盘类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrozenDiskType *string `json:"FrozenDiskType,omitnil,omitempty" name:"FrozenDiskType"`
 
-	// 冻节点磁盘大小，单位GB
+	// <p>冻节点磁盘大小，单位GB</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrozenDiskSize *uint64 `json:"FrozenDiskSize,omitnil,omitempty" name:"FrozenDiskSize"`
 
-	// 集群健康状态 -1 未知；0 Green; 1 Yellow; 2 Red
+	// <p>集群健康状态 -1 未知；0 Green; 1 Yellow; 2 Red</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthStatus *int64 `json:"HealthStatus,omitnil,omitempty" name:"HealthStatus"`
 
-	// https集群内网url
+	// <p>https集群内网url</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EsPrivateUrl *string `json:"EsPrivateUrl,omitnil,omitempty" name:"EsPrivateUrl"`
 
-	// https集群内网域名
+	// <p>https集群内网域名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EsPrivateDomain *string `json:"EsPrivateDomain,omitnil,omitempty" name:"EsPrivateDomain"`
 
-	// 集群的配置组信息
+	// <p>集群的配置组信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EsConfigSets []*EsConfigSetInfo `json:"EsConfigSets,omitnil,omitempty" name:"EsConfigSets"`
 
-	// 集群可维护时间段
+	// <p>集群可维护时间段</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperationDuration *OperationDuration `json:"OperationDuration,omitnil,omitempty" name:"OperationDuration"`
 
-	// web节点列表
+	// <p>web节点列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OptionalWebServiceInfos []*OptionalWebServiceInfo `json:"OptionalWebServiceInfos,omitnil,omitempty" name:"OptionalWebServiceInfos"`
 
-	// 自治索引开关
+	// <p>自治索引开关</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoIndexEnabled *bool `json:"AutoIndexEnabled,omitnil,omitempty" name:"AutoIndexEnabled"`
 
-	// 是否支持存储计算分离
+	// <p>是否支持存储计算分离</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableHybridStorage *bool `json:"EnableHybridStorage,omitnil,omitempty" name:"EnableHybridStorage"`
 
-	// 流程进度
+	// <p>流程进度</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessPercent *float64 `json:"ProcessPercent,omitnil,omitempty" name:"ProcessPercent"`
 
-	// Kibana的alerting外网告警策略<li>OPEN：开启</li><li>CLOSE：关闭</li>
+	// <p>Kibana的alerting外网告警策略<li>OPEN：开启</li><li>CLOSE：关闭</li></p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaAlteringPublicAccess *string `json:"KibanaAlteringPublicAccess,omitnil,omitempty" name:"KibanaAlteringPublicAccess"`
 
-	// 本月是否有内核可以更新：false-无，true-有
+	// <p>本月是否有内核可以更新：false-无，true-有</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HasKernelUpgrade *bool `json:"HasKernelUpgrade,omitnil,omitempty" name:"HasKernelUpgrade"`
 
-	// cdcId，使用cdc子网时传递
+	// <p>cdcId，使用cdc子网时传递</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 
-	// kibana内网vip
+	// <p>kibana内网vip</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaPrivateVip *string `json:"KibanaPrivateVip,omitnil,omitempty" name:"KibanaPrivateVip"`
 
-	// 自定义kibana内网url
+	// <p>自定义kibana内网url</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomKibanaPrivateUrl *string `json:"CustomKibanaPrivateUrl,omitnil,omitempty" name:"CustomKibanaPrivateUrl"`
 
-	// 节点出站访问详细信息
+	// <p>节点出站访问详细信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutboundPublicAcls []*OutboundPublicAcl `json:"OutboundPublicAcls,omitnil,omitempty" name:"OutboundPublicAcls"`
 
-	// 网络连接方案
+	// <p>网络连接方案</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetConnectScheme *string `json:"NetConnectScheme,omitnil,omitempty" name:"NetConnectScheme"`
 
-	// 置放群组相关参数
+	// <p>置放群组相关参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisasterRecoverGroupAffinity *uint64 `json:"DisasterRecoverGroupAffinity,omitnil,omitempty" name:"DisasterRecoverGroupAffinity"`
 
-	// 子产品ID枚举值： 开源版："sp_es_io2"， 基础版："sp_es_basic"，白金版："sp_es_platinum"，企业版："sp_es_enterprise"，CDC白金版："sp_es_cdc_platinum"，日志增强版："sp_es_enlogging"，tsearch："sp_tsearch_io2"，logstash："sp_es_logstash" ，可以为空，为空的时候后台取LicenseType映射该字段
+	// <p>子产品ID枚举值： 开源版：&quot;sp_es_io2&quot;， 基础版：&quot;sp_es_basic&quot;，白金版：&quot;sp_es_platinum&quot;，企业版：&quot;sp_es_enterprise&quot;，CDC白金版：&quot;sp_es_cdc_platinum&quot;，日志增强版：&quot;sp_es_enlogging&quot;，tsearch：&quot;sp_tsearch_io2&quot;，logstash：&quot;sp_es_logstash&quot; ，可以为空，为空的时候后台取LicenseType映射该字段</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
 
-	// 存算分离cos用量，单位M
+	// <p>存算分离cos用量，单位M</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosBucketStorageSize *uint64 `json:"CosBucketStorageSize,omitnil,omitempty" name:"CosBucketStorageSize"`
 
-	// 读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离
+	// <p>读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadWriteMode *int64 `json:"ReadWriteMode,omitnil,omitempty" name:"ReadWriteMode"`
 
-	// 是否有置放群组异步调度任务
+	// <p>是否有置放群组异步调度任务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableScheduleRecoverGroup *bool `json:"EnableScheduleRecoverGroup,omitnil,omitempty" name:"EnableScheduleRecoverGroup"`
 
-	// 异步调度任务的时间
+	// <p>异步调度任务的时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableScheduleOperationDuration *EnableScheduleOperationDuration `json:"EnableScheduleOperationDuration,omitnil,omitempty" name:"EnableScheduleOperationDuration"`
 
-	// 开启集群保护：OPEN-开启，CLOSE-关闭
+	// <p>开启集群保护：OPEN-开启，CLOSE-关闭</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableDestroyProtection *string `json:"EnableDestroyProtection,omitnil,omitempty" name:"EnableDestroyProtection"`
 
-	// kibana内网访问地址
+	// <p>kibana内网访问地址</p>
 	ShowKibanaIpPort *string `json:"ShowKibanaIpPort,omitnil,omitempty" name:"ShowKibanaIpPort"`
 
-	// 是否为CDZLite可用区
+	// <p>是否为CDZLite可用区</p>
 	IsCdzLite *bool `json:"IsCdzLite,omitnil,omitempty" name:"IsCdzLite"`
 
-	// 集群内网tcp地址
+	// <p>集群内网tcp地址</p>
 	EsPrivateTcpUrl *string `json:"EsPrivateTcpUrl,omitnil,omitempty" name:"EsPrivateTcpUrl"`
+
+	// <p>是否在回收站内</p><p>默认值：false</p>
+	IsInRecycleBin *bool `json:"IsInRecycleBin,omitnil,omitempty" name:"IsInRecycleBin"`
+
+	// <p>回收站内是否锁定</p><p>默认值：false</p>
+	RecycleLockEnabled *bool `json:"RecycleLockEnabled,omitnil,omitempty" name:"RecycleLockEnabled"`
+
+	// <p>预计销毁的时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+	MayDestroyPoint *string `json:"MayDestroyPoint,omitnil,omitempty" name:"MayDestroyPoint"`
+
+	// <p>延迟销毁的时间</p><p>单位：天</p>
+	DelayDestroyInterval *int64 `json:"DelayDestroyInterval,omitnil,omitempty" name:"DelayDestroyInterval"`
 }
 
 type InstanceLog struct {
@@ -6437,36 +6474,39 @@ type NodeView struct {
 }
 
 type Operation struct {
-	// 操作唯一id
+	// <p>操作唯一id</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 操作开始时间
+	// <p>操作开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 操作类型
+	// <p>操作类型</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 操作详情
+	// <p>操作详情</p>
 	Detail *OperationDetail `json:"Detail,omitnil,omitempty" name:"Detail"`
 
-	// 操作结果
+	// <p>操作结果</p>
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 流程任务信息
+	// <p>流程任务信息</p>
 	Tasks []*TaskDetail `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
-	// 操作进度
+	// <p>操作进度</p>
 	Progress *float64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
-	// 回滚标记， 0未回滚 ，1回滚中，2已回滚
+	// <p>回滚标记， 0未回滚 ，1回滚中，2已回滚</p>
 	RollbackTag *int64 `json:"RollbackTag,omitnil,omitempty" name:"RollbackTag"`
 
-	// 操作者Uin
+	// <p>操作者Uin</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
 
-	// 自动扩容标识：0-非自动，1-自动
+	// <p>自动扩容标识：0-非自动，1-自动</p>
 	AutoScaleTag *uint64 `json:"AutoScaleTag,omitnil,omitempty" name:"AutoScaleTag"`
+
+	// <p>流程异常原因</p>
+	SuspendedReason *string `json:"SuspendedReason,omitnil,omitempty" name:"SuspendedReason"`
 }
 
 type OperationDetail struct {
@@ -6574,24 +6614,24 @@ type PodLabel struct {
 }
 
 type ProcessDetail struct {
-	// 已完成数量
+	// <p>已完成数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Completed *int64 `json:"Completed,omitnil,omitempty" name:"Completed"`
 
-	// 剩余数量
+	// <p>剩余数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remain *int64 `json:"Remain,omitnil,omitempty" name:"Remain"`
 
-	// 总数量
+	// <p>总数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 任务类型：
-	// 60：重启型任务
-	// 70：分片迁移型任务
-	// 80：节点变配任务
+	// <p>任务类型：<br>60：重启型任务<br>70：分片迁移型任务<br>80：节点变配任务</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// <p>预估剩余时间</p><p>单位：秒</p>
+	EstimatedTimeRemaining *int64 `json:"EstimatedTimeRemaining,omitnil,omitempty" name:"EstimatedTimeRemaining"`
 }
 
 // Predefined struct for user
@@ -7149,71 +7189,69 @@ func (r *RestartNodesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RestoreClusterSnapshotRequestParams struct {
-	// 集群实例Id，格式：es-xxxx
+	// <p>集群实例Id，格式：es-xxxx</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 仓库名称
+	// <p>仓库名称</p>
 	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
 
-	// 集群快照名称
+	// <p>集群快照名称</p>
 	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
 
-	// 目标集群实例Id，格式：es-xxxx，如果是恢复到本地，则和InstanceId一致
+	// <p>目标集群实例Id，格式：es-xxxx，如果是恢复到本地，则和InstanceId一致</p>
 	TargetInstanceId *string `json:"TargetInstanceId,omitnil,omitempty" name:"TargetInstanceId"`
 
-	// elastic用户名对应的密码信息
+	// <p>elastic用户名对应的密码信息</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 要在所有恢复的索引中添加或更改的设置的逗号分隔列表。使用此参数可以在恢复快照时覆盖索引设置。
+	// <p>要在所有恢复的索引中添加或更改的设置的逗号分隔列表。使用此参数可以在恢复快照时覆盖索引设置。</p>
 	IndexSettings *string `json:"IndexSettings,omitnil,omitempty" name:"IndexSettings"`
 
-	// 不应从快照还原的以逗号分隔的索引设置列表。
+	// <p>不应从快照还原的以逗号分隔的索引设置列表。</p>
 	IncludeGlobalState []*string `json:"IncludeGlobalState,omitnil,omitempty" name:"IncludeGlobalState"`
 
-	// 需要恢复的索引名称，非必填，为空则表示恢复所有
-	// 
-	// 支持传多个索引名称
+	// <p>需要恢复的索引名称，非必填，为空则表示恢复所有</p><p>支持传多个索引名称</p>
 	Indices *string `json:"Indices,omitnil,omitempty" name:"Indices"`
 
-	// 如果为 false，则如果快照中包含的一个或多个索引没有所有主分片可用，则整个恢复操作将失败。默认为 false,
-	// 
-	// 如果为 true，则允许恢复具有不可用分片的索引的部分快照。只有成功包含在快照中的分片才会被恢复。所有丢失的碎片将被重新创建为空
+	// <p>如果为 false，则如果快照中包含的一个或多个索引没有所有主分片可用，则整个恢复操作将失败。默认为 false,</p><p>如果为 true，则允许恢复具有不可用分片的索引的部分快照。只有成功包含在快照中的分片才会被恢复。所有丢失的碎片将被重新创建为空</p>
 	Partial *string `json:"Partial,omitnil,omitempty" name:"Partial"`
+
+	// <p>快照恢复速率（单位mb）</p>
+	MaxRestorePerSec *string `json:"MaxRestorePerSec,omitnil,omitempty" name:"MaxRestorePerSec"`
 }
 
 type RestoreClusterSnapshotRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群实例Id，格式：es-xxxx
+	// <p>集群实例Id，格式：es-xxxx</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 仓库名称
+	// <p>仓库名称</p>
 	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
 
-	// 集群快照名称
+	// <p>集群快照名称</p>
 	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
 
-	// 目标集群实例Id，格式：es-xxxx，如果是恢复到本地，则和InstanceId一致
+	// <p>目标集群实例Id，格式：es-xxxx，如果是恢复到本地，则和InstanceId一致</p>
 	TargetInstanceId *string `json:"TargetInstanceId,omitnil,omitempty" name:"TargetInstanceId"`
 
-	// elastic用户名对应的密码信息
+	// <p>elastic用户名对应的密码信息</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 要在所有恢复的索引中添加或更改的设置的逗号分隔列表。使用此参数可以在恢复快照时覆盖索引设置。
+	// <p>要在所有恢复的索引中添加或更改的设置的逗号分隔列表。使用此参数可以在恢复快照时覆盖索引设置。</p>
 	IndexSettings *string `json:"IndexSettings,omitnil,omitempty" name:"IndexSettings"`
 
-	// 不应从快照还原的以逗号分隔的索引设置列表。
+	// <p>不应从快照还原的以逗号分隔的索引设置列表。</p>
 	IncludeGlobalState []*string `json:"IncludeGlobalState,omitnil,omitempty" name:"IncludeGlobalState"`
 
-	// 需要恢复的索引名称，非必填，为空则表示恢复所有
-	// 
-	// 支持传多个索引名称
+	// <p>需要恢复的索引名称，非必填，为空则表示恢复所有</p><p>支持传多个索引名称</p>
 	Indices *string `json:"Indices,omitnil,omitempty" name:"Indices"`
 
-	// 如果为 false，则如果快照中包含的一个或多个索引没有所有主分片可用，则整个恢复操作将失败。默认为 false,
-	// 
-	// 如果为 true，则允许恢复具有不可用分片的索引的部分快照。只有成功包含在快照中的分片才会被恢复。所有丢失的碎片将被重新创建为空
+	// <p>如果为 false，则如果快照中包含的一个或多个索引没有所有主分片可用，则整个恢复操作将失败。默认为 false,</p><p>如果为 true，则允许恢复具有不可用分片的索引的部分快照。只有成功包含在快照中的分片才会被恢复。所有丢失的碎片将被重新创建为空</p>
 	Partial *string `json:"Partial,omitnil,omitempty" name:"Partial"`
+
+	// <p>快照恢复速率（单位mb）</p>
+	MaxRestorePerSec *string `json:"MaxRestorePerSec,omitnil,omitempty" name:"MaxRestorePerSec"`
 }
 
 func (r *RestoreClusterSnapshotRequest) ToJsonString() string {
@@ -7237,6 +7275,7 @@ func (r *RestoreClusterSnapshotRequest) FromJsonString(s string) error {
 	delete(f, "IncludeGlobalState")
 	delete(f, "Indices")
 	delete(f, "Partial")
+	delete(f, "MaxRestorePerSec")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestoreClusterSnapshotRequest has unknown keys!", "")
 	}
@@ -7245,7 +7284,7 @@ func (r *RestoreClusterSnapshotRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RestoreClusterSnapshotResponseParams struct {
-	// 集群实例id
+	// <p>集群实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7602,133 +7641,133 @@ type SettingDetail struct {
 }
 
 type Snapshots struct {
-	// 快照名称
+	// <p>快照名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
 
-	// 快照Uuid
+	// <p>快照Uuid</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
-	// 仓库名称
+	// <p>仓库名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Repository *string `json:"Repository,omitnil,omitempty" name:"Repository"`
 
-	// 该快照所属集群的版本号
+	// <p>该快照所属集群的版本号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 备份的索引列表
+	// <p>备份的索引列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Indices []*string `json:"Indices,omitnil,omitempty" name:"Indices"`
 
-	// 备份的datastream列表
+	// <p>备份的datastream列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataStreams []*string `json:"DataStreams,omitnil,omitempty" name:"DataStreams"`
 
-	// 备份的状态
-	// 
-	// FAILED            备份失败
-	// 
-	// IN_PROGRESS 备份执行中
-	// 
-	// PARTIAL          备份部分成功，部分失败，备份失败的索引和原因会在Failures字段中展示
-	// 
-	// SUCCESS     备份成功
+	// <p>备份的状态</p><p>FAILED            备份失败</p><p>IN_PROGRESS 备份执行中</p><p>PARTIAL          备份部分成功，部分失败，备份失败的索引和原因会在Failures字段中展示</p><p>SUCCESS     备份成功</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 快照备份的开始时间
+	// <p>快照备份的开始时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 快照备份的结束时间
+	// <p>快照备份的结束时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 快照备份的耗时时间
+	// <p>快照备份的耗时时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DurationInMillis *int64 `json:"DurationInMillis,omitnil,omitempty" name:"DurationInMillis"`
 
-	// 备份的总分片数
+	// <p>备份的总分片数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalShards *int64 `json:"TotalShards,omitnil,omitempty" name:"TotalShards"`
 
-	// 备份失败的分片数量
+	// <p>备份失败的分片数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedShards *int64 `json:"FailedShards,omitnil,omitempty" name:"FailedShards"`
 
-	// 备份成功的分片数量
+	// <p>备份成功的分片数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuccessfulShards *int64 `json:"SuccessfulShards,omitnil,omitempty" name:"SuccessfulShards"`
 
-	// 备份失败的索引分片和失败原因
+	// <p>备份失败的索引分片和失败原因</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Failures []*Failures `json:"Failures,omitnil,omitempty" name:"Failures"`
 
-	// 是否用户备份
+	// <p>是否用户备份</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserBackUp *string `json:"UserBackUp,omitnil,omitempty" name:"UserBackUp"`
 
-	// 0 腾讯云仓库; 1 客户仓库
+	// <p>0 腾讯云仓库; 1 客户仓库</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EsRepositoryType *uint64 `json:"EsRepositoryType,omitnil,omitempty" name:"EsRepositoryType"`
 
-	// 托管快照仓库名称
+	// <p>托管快照仓库名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PaasEsRepository *string `json:"PaasEsRepository,omitnil,omitempty" name:"PaasEsRepository"`
 
-	// 客户快照仓库名称
+	// <p>客户快照仓库名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserEsRepository *string `json:"UserEsRepository,omitnil,omitempty" name:"UserEsRepository"`
 
-	// 快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天
+	// <p>快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageDuration *uint64 `json:"StorageDuration,omitnil,omitempty" name:"StorageDuration"`
 
-	// 自动备份频率, 如果是0,则等效24
+	// <p>自动备份频率, 如果是0,则等效24</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoBackupInterval *uint64 `json:"AutoBackupInterval,omitnil,omitempty" name:"AutoBackupInterval"`
 
-	// 备份锁定 0 不锁定; 1 锁定
+	// <p>备份锁定 0 不锁定; 1 锁定</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosRetention *uint64 `json:"CosRetention,omitnil,omitempty" name:"CosRetention"`
 
-	// 锁定截止日期 2022-12-10T08:34:48.000Z
+	// <p>锁定截止日期 2022-12-10T08:34:48.000Z</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetainUntilDate *string `json:"RetainUntilDate,omitnil,omitempty" name:"RetainUntilDate"`
 
-	// 锁定宽限期,单位天
+	// <p>锁定宽限期,单位天</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetentionGraceTime *uint64 `json:"RetentionGraceTime,omitnil,omitempty" name:"RetentionGraceTime"`
 
-	// 是否已经备份锁定 0 不锁定; 1 锁定
+	// <p>是否已经备份锁定 0 不锁定; 1 锁定</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsLocked *uint64 `json:"IsLocked,omitnil,omitempty" name:"IsLocked"`
 
-	// 跨地域备份 0 不跨地域; 1 跨地域
+	// <p>跨地域备份 0 不跨地域; 1 跨地域</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoteCos *uint64 `json:"RemoteCos,omitnil,omitempty" name:"RemoteCos"`
 
-	// 跨地域备份地域名称 ap-guangzhou
+	// <p>跨地域备份地域名称 ap-guangzhou</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoteCosRegion *string `json:"RemoteCosRegion,omitnil,omitempty" name:"RemoteCosRegion"`
 
-	// 备份加密 0 不加密; 1 加密
+	// <p>备份加密 0 不加密; 1 加密</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosEncryption *uint64 `json:"CosEncryption,omitnil,omitempty" name:"CosEncryption"`
 
-	// kms密钥
+	// <p>kms密钥</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KmsKey *string `json:"KmsKey,omitnil,omitempty" name:"KmsKey"`
 
-	// 策略名称
+	// <p>策略名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
 
-	// cos多AZ备份 0 单AZ; 1 多AZ
+	// <p>cos多AZ备份 0 单AZ; 1 多AZ</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MultiAz *uint64 `json:"MultiAz,omitnil,omitempty" name:"MultiAz"`
+
+	// <p>每节点写入仓库的最大速度 max_snapshot_bytes_per_sec, 默认40m</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxSnapshotPerSec *string `json:"MaxSnapshotPerSec,omitnil,omitempty" name:"MaxSnapshotPerSec"`
+
+	// <p>实例ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 // Predefined struct for user

@@ -2986,6 +2986,175 @@ func (r *DescribeStreamIngestResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTRTCAIRecognitionUsageRequestParams struct {
+	// 查询开始时间，格式为YYYY-MM-DD HH:mm:ss。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD HH:mm:ss。单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 用量类型列表。
+	// - conversation AI 实时对话
+	// - asr 语音转文本
+	// - translation 实时翻译
+	// - tts 实时语音合成
+	AuType []*string `json:"AuType,omitnil,omitempty" name:"AuType"`
+
+	// 应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
+	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+}
+
+type DescribeTRTCAIRecognitionUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询开始时间，格式为YYYY-MM-DD HH:mm:ss。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD HH:mm:ss。单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 用量类型列表。
+	// - conversation AI 实时对话
+	// - asr 语音转文本
+	// - translation 实时翻译
+	// - tts 实时语音合成
+	AuType []*string `json:"AuType,omitnil,omitempty" name:"AuType"`
+
+	// 应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
+	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+}
+
+func (r *DescribeTRTCAIRecognitionUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTRTCAIRecognitionUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "AuType")
+	delete(f, "SdkAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTRTCAIRecognitionUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTRTCAIRecognitionUsageResponseParams struct {
+	// 用量类型列表
+	UsageKey []*string `json:"UsageKey,omitnil,omitempty" name:"UsageKey"`
+
+	// 用量列表
+	UsageList []*UsageList `json:"UsageList,omitnil,omitempty" name:"UsageList"`
+
+	// 总用量列表
+	TotalUsage []*float64 `json:"TotalUsage,omitnil,omitempty" name:"TotalUsage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTRTCAIRecognitionUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTRTCAIRecognitionUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribeTRTCAIRecognitionUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTRTCAIRecognitionUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTRTCDedicatedCloudAccUsageRequestParams struct {
+	// 查询开始时间，格式为YYYY-MM-DD HH:mm:ss。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD HH:mm:ss。单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+}
+
+type DescribeTRTCDedicatedCloudAccUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询开始时间，格式为YYYY-MM-DD HH:mm:ss。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD HH:mm:ss。单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+}
+
+func (r *DescribeTRTCDedicatedCloudAccUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTRTCDedicatedCloudAccUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "SdkAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTRTCDedicatedCloudAccUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTRTCDedicatedCloudAccUsageResponseParams struct {
+	// 用量指标名列表
+	UsageKey []*string `json:"UsageKey,omitnil,omitempty" name:"UsageKey"`
+
+	// 用量明细列表
+	UsageList []*UsageList `json:"UsageList,omitnil,omitempty" name:"UsageList"`
+
+	// 汇总用量列表
+	TotalUsage []*uint64 `json:"TotalUsage,omitnil,omitempty" name:"TotalUsage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTRTCDedicatedCloudAccUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTRTCDedicatedCloudAccUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribeTRTCDedicatedCloudAccUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTRTCDedicatedCloudAccUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTRTCMarketQualityDataRequestParams struct {
 	// 用户SdkAppId（如：1400xxxxxx）
 	SdkAppId *string `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -3396,6 +3565,97 @@ func (r *DescribeTRTCRealTimeScaleDataResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTRTCRealTimeScaleDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTRTCSegmentModerationUsageRequestParams struct {
+	// 查询开始时间，格式为YYYY-MM-DD HH:mm:ss。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD HH:mm:ss。单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 媒体类型，枚举值：audio（音频）、picture（图片）
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 使用场景（业务类型），枚举值：0 = AI 内容理解（审核场景）、1 = 音视频切片（云端切片场景）
+	Business *uint64 `json:"Business,omitnil,omitempty" name:"Business"`
+
+	// 应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+}
+
+type DescribeTRTCSegmentModerationUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询开始时间，格式为YYYY-MM-DD HH:mm:ss。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD HH:mm:ss。单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 媒体类型，枚举值：audio（音频）、picture（图片）
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 使用场景（业务类型），枚举值：0 = AI 内容理解（审核场景）、1 = 音视频切片（云端切片场景）
+	Business *uint64 `json:"Business,omitnil,omitempty" name:"Business"`
+
+	// 应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+}
+
+func (r *DescribeTRTCSegmentModerationUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTRTCSegmentModerationUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Type")
+	delete(f, "Business")
+	delete(f, "SdkAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTRTCSegmentModerationUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTRTCSegmentModerationUsageResponseParams struct {
+	// 用量指标名列表
+	UsageKey []*string `json:"UsageKey,omitnil,omitempty" name:"UsageKey"`
+
+	// 用量明细列表
+	UsageList []*UsageList `json:"UsageList,omitnil,omitempty" name:"UsageList"`
+
+	// 汇总用量列表
+	TotalUsage []*uint64 `json:"TotalUsage,omitnil,omitempty" name:"TotalUsage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTRTCSegmentModerationUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTRTCSegmentModerationUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribeTRTCSegmentModerationUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTRTCSegmentModerationUsageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8110,6 +8370,14 @@ func (r *UpdateVoicePrintResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpdateVoicePrintResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UsageList struct {
+	// 时间
+	TimeKey *string `json:"TimeKey,omitnil,omitempty" name:"TimeKey"`
+
+	// 用量数值
+	UsageValue []*float64 `json:"UsageValue,omitnil,omitempty" name:"UsageValue"`
 }
 
 type UserInformation struct {

@@ -8091,81 +8091,87 @@ func (r *DescribeGovernanceServiceContractsResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeGovernanceServicesRequestParams struct {
-	// 按照服务名过滤，精确匹配。
+	// <p>按照服务名过滤，精确匹配。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 按照命名空间过滤，精确匹配。
+	// <p>按照命名空间过滤，精确匹配。</p>
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 使用元数据过滤，目前只支持一组元组数，若传了多条，只会使用第一条元数据过滤。
+	// <p>使用元数据过滤，目前只支持一组元组数，若传了多条，只会使用第一条元数据过滤。</p>
 	Metadatas []*Metadata `json:"Metadatas,omitnil,omitempty" name:"Metadatas"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// tse 实例 id。
+	// <p>tse 实例 id。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 服务所属部门。
+	// <p>服务所属部门。</p>
 	Department *string `json:"Department,omitnil,omitempty" name:"Department"`
 
-	// 服务所属业务。
+	// <p>服务所属业务。</p>
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
 
-	// 服务中实例的ip，用来过滤服务。
+	// <p>服务中实例的ip，用来过滤服务。</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 是否只查询存在健康实例的服务
+	// <p>是否只查询存在健康实例的服务</p>
 	OnlyExistHealthyInstance *bool `json:"OnlyExistHealthyInstance,omitnil,omitempty" name:"OnlyExistHealthyInstance"`
 
-	// 是否开启同步到全局注册中心	
+	// <p>是否开启同步到全局注册中心</p>
 	SyncToGlobalRegistry *string `json:"SyncToGlobalRegistry,omitnil,omitempty" name:"SyncToGlobalRegistry"`
 
-	// 过滤筛选条件
+	// <p>过滤筛选条件</p>
 	StatusFilter []*Filter `json:"StatusFilter,omitnil,omitempty" name:"StatusFilter"`
+
+	// <p>服务类型</p><p>枚举值：</p><ul><li>0： 微服务（默认）</li><li>1： MCP Server</li><li>2： AI Agent</li></ul>
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type DescribeGovernanceServicesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 按照服务名过滤，精确匹配。
+	// <p>按照服务名过滤，精确匹配。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 按照命名空间过滤，精确匹配。
+	// <p>按照命名空间过滤，精确匹配。</p>
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 使用元数据过滤，目前只支持一组元组数，若传了多条，只会使用第一条元数据过滤。
+	// <p>使用元数据过滤，目前只支持一组元组数，若传了多条，只会使用第一条元数据过滤。</p>
 	Metadatas []*Metadata `json:"Metadatas,omitnil,omitempty" name:"Metadatas"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100。
+	// <p>返回数量，默认为20，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// tse 实例 id。
+	// <p>tse 实例 id。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 服务所属部门。
+	// <p>服务所属部门。</p>
 	Department *string `json:"Department,omitnil,omitempty" name:"Department"`
 
-	// 服务所属业务。
+	// <p>服务所属业务。</p>
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
 
-	// 服务中实例的ip，用来过滤服务。
+	// <p>服务中实例的ip，用来过滤服务。</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 是否只查询存在健康实例的服务
+	// <p>是否只查询存在健康实例的服务</p>
 	OnlyExistHealthyInstance *bool `json:"OnlyExistHealthyInstance,omitnil,omitempty" name:"OnlyExistHealthyInstance"`
 
-	// 是否开启同步到全局注册中心	
+	// <p>是否开启同步到全局注册中心</p>
 	SyncToGlobalRegistry *string `json:"SyncToGlobalRegistry,omitnil,omitempty" name:"SyncToGlobalRegistry"`
 
-	// 过滤筛选条件
+	// <p>过滤筛选条件</p>
 	StatusFilter []*Filter `json:"StatusFilter,omitnil,omitempty" name:"StatusFilter"`
+
+	// <p>服务类型</p><p>枚举值：</p><ul><li>0： 微服务（默认）</li><li>1： MCP Server</li><li>2： AI Agent</li></ul>
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 func (r *DescribeGovernanceServicesRequest) ToJsonString() string {
@@ -8192,6 +8198,7 @@ func (r *DescribeGovernanceServicesRequest) FromJsonString(s string) error {
 	delete(f, "OnlyExistHealthyInstance")
 	delete(f, "SyncToGlobalRegistry")
 	delete(f, "StatusFilter")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGovernanceServicesRequest has unknown keys!", "")
 	}
@@ -8200,10 +8207,10 @@ func (r *DescribeGovernanceServicesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGovernanceServicesResponseParams struct {
-	// 服务数总量。
+	// <p>服务数总量。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 服务信息详情。
+	// <p>服务信息详情。</p>
 	Content []*GovernanceService `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10018,68 +10025,71 @@ type GovernanceNamespaceInput struct {
 }
 
 type GovernanceService struct {
-	// 服务名称。
+	// <p>服务名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 命名空间名称。
+	// <p>命名空间名称。</p>
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 元数据信息数组。
+	// <p>元数据信息数组。</p>
 	Metadatas []*Metadata `json:"Metadatas,omitnil,omitempty" name:"Metadatas"`
 
-	// 描述信息。
+	// <p>描述信息。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 创建时间。
+	// <p>创建时间。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 修改时间。
+	// <p>修改时间。</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 服务所属部门。
+	// <p>服务所属部门。</p>
 	Department *string `json:"Department,omitnil,omitempty" name:"Department"`
 
-	// 服务所属业务。
+	// <p>服务所属业务。</p>
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
 
-	// 健康服务实例数
+	// <p>健康服务实例数</p>
 	HealthyInstanceCount *uint64 `json:"HealthyInstanceCount,omitnil,omitempty" name:"HealthyInstanceCount"`
 
-	// 服务实例总数
+	// <p>服务实例总数</p>
 	TotalInstanceCount *uint64 `json:"TotalInstanceCount,omitnil,omitempty" name:"TotalInstanceCount"`
 
-	// 服务ID
+	// <p>服务ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 是否可以编辑
+	// <p>是否可以编辑</p>
 	Editable *bool `json:"Editable,omitnil,omitempty" name:"Editable"`
 
-	// 可以编辑该资源的用户ID
+	// <p>可以编辑该资源的用户ID</p>
 	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
 
-	// 可以编辑该资源的用户组ID
+	// <p>可以编辑该资源的用户组ID</p>
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// 移除可以编辑该资源的用户ID
+	// <p>移除可以编辑该资源的用户ID</p>
 	RemoveUserIds []*string `json:"RemoveUserIds,omitnil,omitempty" name:"RemoveUserIds"`
 
-	// 移除可以编辑该资源的用户组ID
+	// <p>移除可以编辑该资源的用户组ID</p>
 	RemoveGroupIds []*string `json:"RemoveGroupIds,omitnil,omitempty" name:"RemoveGroupIds"`
 
-	// 该服务对哪些命名空间可见	
+	// <p>该服务对哪些命名空间可见</p>
 	ExportTo []*string `json:"ExportTo,omitnil,omitempty" name:"ExportTo"`
 
-	// 该服务信息摘要签名
+	// <p>该服务信息摘要签名</p>
 	Revision *string `json:"Revision,omitnil,omitempty" name:"Revision"`
 
-	// 是否开启同步到全局注册中心
+	// <p>是否开启同步到全局注册中心</p>
 	SyncToGlobalRegistry *bool `json:"SyncToGlobalRegistry,omitnil,omitempty" name:"SyncToGlobalRegistry"`
 
-	// 隔离实例数
+	// <p>隔离实例数</p>
 	IsolateInstanceCount *uint64 `json:"IsolateInstanceCount,omitnil,omitempty" name:"IsolateInstanceCount"`
 
-	// 服务健康状态
+	// <p>服务健康状态</p>
 	ServiceStatus *int64 `json:"ServiceStatus,omitnil,omitempty" name:"ServiceStatus"`
+
+	// <p>服务类型</p><p>枚举值：</p><ul><li>0： 微服务（默认）</li><li>1： MCP Server</li><li>2： AI Agent</li></ul>
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type GovernanceServiceContract struct {
@@ -10146,41 +10156,44 @@ type GovernanceServiceDestination struct {
 }
 
 type GovernanceServiceInput struct {
-	// 服务名。
+	// <p>服务名。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 服务所属命名空间。
+	// <p>服务所属命名空间。</p>
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 服务描述信息。
+	// <p>服务描述信息。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 服务元数据。
+	// <p>服务元数据。</p>
 	Metadatas []*Metadata `json:"Metadatas,omitnil,omitempty" name:"Metadatas"`
 
-	// 服务所属部门。
+	// <p>服务所属部门。</p>
 	Department *string `json:"Department,omitnil,omitempty" name:"Department"`
 
-	// 服务所属业务。
+	// <p>服务所属业务。</p>
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
 
-	// 被添加进来可以操作此命名空间的用户ID列表
+	// <p>被添加进来可以操作此命名空间的用户ID列表</p>
 	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
 
-	// 被添加进来可以操作此命名空间的用户组ID列表
+	// <p>被添加进来可以操作此命名空间的用户组ID列表</p>
 	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// 从操作此命名空间的用户组ID列表被移除的ID列表
+	// <p>从操作此命名空间的用户组ID列表被移除的ID列表</p>
 	RemoveUserIds []*string `json:"RemoveUserIds,omitnil,omitempty" name:"RemoveUserIds"`
 
-	// 从可以操作此命名空间的用户组ID列表中被移除的ID列表
+	// <p>从可以操作此命名空间的用户组ID列表中被移除的ID列表</p>
 	RemoveGroupIds []*string `json:"RemoveGroupIds,omitnil,omitempty" name:"RemoveGroupIds"`
 
-	// 该服务对哪些命名空间可见
+	// <p>该服务对哪些命名空间可见</p>
 	ExportTo []*string `json:"ExportTo,omitnil,omitempty" name:"ExportTo"`
 
-	// 是否开启同步到全局注册中心
+	// <p>是否开启同步到全局注册中心</p>
 	SyncToGlobalRegistry *bool `json:"SyncToGlobalRegistry,omitnil,omitempty" name:"SyncToGlobalRegistry"`
+
+	// <p>服务类型</p><p>枚举值：</p><ul><li>0： 微服务（默认）</li><li>1： MCP Server</li><li>2： AI Agent</li></ul><p>默认值：0</p>
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type InstancePort struct {
