@@ -2891,6 +2891,88 @@ func (c *Client) ModifyLifecyclePolicyWithContext(ctx context.Context, request *
     return
 }
 
+func NewOverrideCfsRulesRequest() (request *OverrideCfsRulesRequest) {
+    request = &OverrideCfsRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "OverrideCfsRules")
+    
+    
+    return
+}
+
+func NewOverrideCfsRulesResponse() (response *OverrideCfsRulesResponse) {
+    response = &OverrideCfsRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OverrideCfsRules
+// 本接口（OverrideCfsRules）用于批量覆盖式创建权限组规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PGROUPINUSE = "FailedOperation.PgroupInUse"
+//  FAILEDOPERATION_PGROUPISUPDATING = "FailedOperation.PgroupIsUpdating"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DUPLICATEDRULEAUTHCLIENTIP = "InvalidParameterValue.DuplicatedRuleAuthClientIp"
+//  INVALIDPARAMETERVALUE_INVALIDAUTHCLIENTIP = "InvalidParameterValue.InvalidAuthClientIp"
+//  INVALIDPARAMETERVALUE_INVALIDPGROUP = "InvalidParameterValue.InvalidPgroup"
+//  INVALIDPARAMETERVALUE_INVALIDPRIORITY = "InvalidParameterValue.InvalidPriority"
+//  INVALIDPARAMETERVALUE_INVALIDRWPERMISSION = "InvalidParameterValue.InvalidRwPermission"
+//  INVALIDPARAMETERVALUE_INVALIDUSERPERMISSION = "InvalidParameterValue.InvalidUserPermission"
+//  RESOURCEINSUFFICIENT_RULELIMITEXCEEDED = "ResourceInsufficient.RuleLimitExceeded"
+//  RESOURCENOTFOUND_PGROUPNOTFOUND = "ResourceNotFound.PgroupNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
+func (c *Client) OverrideCfsRules(request *OverrideCfsRulesRequest) (response *OverrideCfsRulesResponse, err error) {
+    return c.OverrideCfsRulesWithContext(context.Background(), request)
+}
+
+// OverrideCfsRules
+// 本接口（OverrideCfsRules）用于批量覆盖式创建权限组规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PGROUPINUSE = "FailedOperation.PgroupInUse"
+//  FAILEDOPERATION_PGROUPISUPDATING = "FailedOperation.PgroupIsUpdating"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DUPLICATEDRULEAUTHCLIENTIP = "InvalidParameterValue.DuplicatedRuleAuthClientIp"
+//  INVALIDPARAMETERVALUE_INVALIDAUTHCLIENTIP = "InvalidParameterValue.InvalidAuthClientIp"
+//  INVALIDPARAMETERVALUE_INVALIDPGROUP = "InvalidParameterValue.InvalidPgroup"
+//  INVALIDPARAMETERVALUE_INVALIDPRIORITY = "InvalidParameterValue.InvalidPriority"
+//  INVALIDPARAMETERVALUE_INVALIDRWPERMISSION = "InvalidParameterValue.InvalidRwPermission"
+//  INVALIDPARAMETERVALUE_INVALIDUSERPERMISSION = "InvalidParameterValue.InvalidUserPermission"
+//  RESOURCEINSUFFICIENT_RULELIMITEXCEEDED = "ResourceInsufficient.RuleLimitExceeded"
+//  RESOURCENOTFOUND_PGROUPNOTFOUND = "ResourceNotFound.PgroupNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
+func (c *Client) OverrideCfsRulesWithContext(ctx context.Context, request *OverrideCfsRulesRequest) (response *OverrideCfsRulesResponse, err error) {
+    if request == nil {
+        request = NewOverrideCfsRulesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfs", APIVersion, "OverrideCfsRules")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OverrideCfsRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOverrideCfsRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewScaleUpFileSystemRequest() (request *ScaleUpFileSystemRequest) {
     request = &ScaleUpFileSystemRequest{
         BaseRequest: &tchttp.BaseRequest{},

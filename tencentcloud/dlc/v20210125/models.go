@@ -10708,6 +10708,60 @@ func (r *DescribeSubUserAccessPolicyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTCLakeMetaInstanceRequestParams struct {
+
+}
+
+type DescribeTCLakeMetaInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeTCLakeMetaInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTCLakeMetaInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTCLakeMetaInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTCLakeMetaInstanceResponseParams struct {
+	// <p>开通状态</p><p>枚举值：</p><ul><li>Running： 开通成功</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTCLakeMetaInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTCLakeMetaInstanceResponseParams `json:"Response"`
+}
+
+func (r *DescribeTCLakeMetaInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTCLakeMetaInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTablePartitionsRequestParams struct {
 	// 数据目录名称
 	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
@@ -14202,6 +14256,63 @@ type IcebergTablePartition struct {
 
 	// 分区的location
 	Location *LocationInfo `json:"Location,omitnil,omitempty" name:"Location"`
+}
+
+// Predefined struct for user
+type InitializeTCLakeRequestParams struct {
+
+}
+
+type InitializeTCLakeRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *InitializeTCLakeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InitializeTCLakeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InitializeTCLakeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InitializeTCLakeResponseParams struct {
+	// <p>实例Id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>是否成功</p>
+	IsSuccess *bool `json:"IsSuccess,omitnil,omitempty" name:"IsSuccess"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InitializeTCLakeResponse struct {
+	*tchttp.BaseResponse
+	Response *InitializeTCLakeResponseParams `json:"Response"`
+}
+
+func (r *InitializeTCLakeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InitializeTCLakeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type IpPortPair struct {

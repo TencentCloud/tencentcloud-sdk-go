@@ -11141,50 +11141,44 @@ func (r *DescribePrometheusZonesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRecordingRulesRequestParams struct {
-	// Prometheus 实例 ID
+	// <p>Prometheus 实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 返回数量，默认为 20，最大值为 100
+	// <p>返回数量，默认为 20，最大值为 100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为 0
+	// <p>偏移量，默认为 0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 规则 ID
+	// <p>规则 ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 规则状态码，取值如下：
-	// <li>1=RuleDeleted</li>
-	// <li>2=RuleEnabled</li>
-	// <li>3=RuleDisabled</li>
+	// <p>规则状态码，取值如下：</p><li>1=RuleDeleted</li><li>2=RuleEnabled</li><li>3=RuleDisabled</li>
 	RuleState *int64 `json:"RuleState,omitnil,omitempty" name:"RuleState"`
 
-	// 规则名称
+	// <p>规则名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type DescribeRecordingRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// Prometheus 实例 ID
+	// <p>Prometheus 实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 返回数量，默认为 20，最大值为 100
+	// <p>返回数量，默认为 20，最大值为 100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为 0
+	// <p>偏移量，默认为 0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 规则 ID
+	// <p>规则 ID</p>
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 规则状态码，取值如下：
-	// <li>1=RuleDeleted</li>
-	// <li>2=RuleEnabled</li>
-	// <li>3=RuleDisabled</li>
+	// <p>规则状态码，取值如下：</p><li>1=RuleDeleted</li><li>2=RuleEnabled</li><li>3=RuleDisabled</li>
 	RuleState *int64 `json:"RuleState,omitnil,omitempty" name:"RuleState"`
 
-	// 规则名称
+	// <p>规则名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -11214,12 +11208,15 @@ func (r *DescribeRecordingRulesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRecordingRulesResponseParams struct {
-	// 规则组数量
+	// <p>规则组数量</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 规则组详情
+	// <p>规则组详情</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordingRuleSet []*RecordingRuleSet `json:"RecordingRuleSet,omitnil,omitempty" name:"RecordingRuleSet"`
+
+	// <p>预聚合规则数</p>
+	TotalRuleCount *int64 `json:"TotalRuleCount,omitnil,omitempty" name:"TotalRuleCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

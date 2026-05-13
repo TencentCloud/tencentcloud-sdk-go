@@ -45,6 +45,72 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAddDspmAssetManagerRequest() (request *AddDspmAssetManagerRequest) {
+    request = &AddDspmAssetManagerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "AddDspmAssetManager")
+    
+    
+    return
+}
+
+func NewAddDspmAssetManagerResponse() (response *AddDspmAssetManagerResponse) {
+    response = &AddDspmAssetManagerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddDspmAssetManager
+// 添加资产管理员
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddDspmAssetManager(request *AddDspmAssetManagerRequest) (response *AddDspmAssetManagerResponse, err error) {
+    return c.AddDspmAssetManagerWithContext(context.Background(), request)
+}
+
+// AddDspmAssetManager
+// 添加资产管理员
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddDspmAssetManagerWithContext(ctx context.Context, request *AddDspmAssetManagerRequest) (response *AddDspmAssetManagerResponse, err error) {
+    if request == nil {
+        request = NewAddDspmAssetManagerRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "AddDspmAssetManager")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddDspmAssetManager require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddDspmAssetManagerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddNewBindRoleUserRequest() (request *AddNewBindRoleUserRequest) {
     request = &AddNewBindRoleUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -66,12 +132,34 @@ func NewAddNewBindRoleUserResponse() (response *AddNewBindRoleUserResponse) {
 
 // AddNewBindRoleUser
 // csip角色授权绑定接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) AddNewBindRoleUser(request *AddNewBindRoleUserRequest) (response *AddNewBindRoleUserResponse, err error) {
     return c.AddNewBindRoleUserWithContext(context.Background(), request)
 }
 
 // AddNewBindRoleUser
 // csip角色授权绑定接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) AddNewBindRoleUserWithContext(ctx context.Context, request *AddNewBindRoleUserRequest) (response *AddNewBindRoleUserResponse, err error) {
     if request == nil {
         request = NewAddNewBindRoleUserRequest()
@@ -110,12 +198,34 @@ func NewCreateAccessKeyCheckTaskResponse() (response *CreateAccessKeyCheckTaskRe
 
 // CreateAccessKeyCheckTask
 // 检测AK 异步任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAccessKeyCheckTask(request *CreateAccessKeyCheckTaskRequest) (response *CreateAccessKeyCheckTaskResponse, err error) {
     return c.CreateAccessKeyCheckTaskWithContext(context.Background(), request)
 }
 
 // CreateAccessKeyCheckTask
 // 检测AK 异步任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAccessKeyCheckTaskWithContext(ctx context.Context, request *CreateAccessKeyCheckTaskRequest) (response *CreateAccessKeyCheckTaskResponse, err error) {
     if request == nil {
         request = NewCreateAccessKeyCheckTaskRequest()
@@ -154,12 +264,34 @@ func NewCreateAccessKeySyncTaskResponse() (response *CreateAccessKeySyncTaskResp
 
 // CreateAccessKeySyncTask
 // 发起AK资产同步任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAccessKeySyncTask(request *CreateAccessKeySyncTaskRequest) (response *CreateAccessKeySyncTaskResponse, err error) {
     return c.CreateAccessKeySyncTaskWithContext(context.Background(), request)
 }
 
 // CreateAccessKeySyncTask
 // 发起AK资产同步任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAccessKeySyncTaskWithContext(ctx context.Context, request *CreateAccessKeySyncTaskRequest) (response *CreateAccessKeySyncTaskResponse, err error) {
     if request == nil {
         request = NewCreateAccessKeySyncTaskRequest()
@@ -223,6 +355,630 @@ func (c *Client) CreateDomainAndIpWithContext(ctx context.Context, request *Crea
     request.SetContext(ctx)
     
     response = NewCreateDomainAndIpResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDspmAccessExportJobRequest() (request *CreateDspmAccessExportJobRequest) {
+    request = &CreateDspmAccessExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateDspmAccessExportJob")
+    
+    
+    return
+}
+
+func NewCreateDspmAccessExportJobResponse() (response *CreateDspmAccessExportJobResponse) {
+    response = &CreateDspmAccessExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDspmAccessExportJob
+// 创建Dspm访问记录导出任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateDspmAccessExportJob(request *CreateDspmAccessExportJobRequest) (response *CreateDspmAccessExportJobResponse, err error) {
+    return c.CreateDspmAccessExportJobWithContext(context.Background(), request)
+}
+
+// CreateDspmAccessExportJob
+// 创建Dspm访问记录导出任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateDspmAccessExportJobWithContext(ctx context.Context, request *CreateDspmAccessExportJobRequest) (response *CreateDspmAccessExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateDspmAccessExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateDspmAccessExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDspmAccessExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDspmAccessExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDspmApplyOrderRequest() (request *CreateDspmApplyOrderRequest) {
+    request = &CreateDspmApplyOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateDspmApplyOrder")
+    
+    
+    return
+}
+
+func NewCreateDspmApplyOrderResponse() (response *CreateDspmApplyOrderResponse) {
+    response = &CreateDspmApplyOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDspmApplyOrder
+// 创建Dspm申请单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDspmApplyOrder(request *CreateDspmApplyOrderRequest) (response *CreateDspmApplyOrderResponse, err error) {
+    return c.CreateDspmApplyOrderWithContext(context.Background(), request)
+}
+
+// CreateDspmApplyOrder
+// 创建Dspm申请单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDspmApplyOrderWithContext(ctx context.Context, request *CreateDspmApplyOrderRequest) (response *CreateDspmApplyOrderResponse, err error) {
+    if request == nil {
+        request = NewCreateDspmApplyOrderRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateDspmApplyOrder")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDspmApplyOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDspmApplyOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDspmApproveHistoryExportJobRequest() (request *CreateDspmApproveHistoryExportJobRequest) {
+    request = &CreateDspmApproveHistoryExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateDspmApproveHistoryExportJob")
+    
+    
+    return
+}
+
+func NewCreateDspmApproveHistoryExportJobResponse() (response *CreateDspmApproveHistoryExportJobResponse) {
+    response = &CreateDspmApproveHistoryExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDspmApproveHistoryExportJob
+// 创建Dspm审批历史导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDspmApproveHistoryExportJob(request *CreateDspmApproveHistoryExportJobRequest) (response *CreateDspmApproveHistoryExportJobResponse, err error) {
+    return c.CreateDspmApproveHistoryExportJobWithContext(context.Background(), request)
+}
+
+// CreateDspmApproveHistoryExportJob
+// 创建Dspm审批历史导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDspmApproveHistoryExportJobWithContext(ctx context.Context, request *CreateDspmApproveHistoryExportJobRequest) (response *CreateDspmApproveHistoryExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateDspmApproveHistoryExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateDspmApproveHistoryExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDspmApproveHistoryExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDspmApproveHistoryExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDspmAssetAccessTopologyExportJobRequest() (request *CreateDspmAssetAccessTopologyExportJobRequest) {
+    request = &CreateDspmAssetAccessTopologyExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateDspmAssetAccessTopologyExportJob")
+    
+    
+    return
+}
+
+func NewCreateDspmAssetAccessTopologyExportJobResponse() (response *CreateDspmAssetAccessTopologyExportJobResponse) {
+    response = &CreateDspmAssetAccessTopologyExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDspmAssetAccessTopologyExportJob
+// 创建Dspm资产访问拓扑导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDspmAssetAccessTopologyExportJob(request *CreateDspmAssetAccessTopologyExportJobRequest) (response *CreateDspmAssetAccessTopologyExportJobResponse, err error) {
+    return c.CreateDspmAssetAccessTopologyExportJobWithContext(context.Background(), request)
+}
+
+// CreateDspmAssetAccessTopologyExportJob
+// 创建Dspm资产访问拓扑导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDspmAssetAccessTopologyExportJobWithContext(ctx context.Context, request *CreateDspmAssetAccessTopologyExportJobRequest) (response *CreateDspmAssetAccessTopologyExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateDspmAssetAccessTopologyExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateDspmAssetAccessTopologyExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDspmAssetAccessTopologyExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDspmAssetAccessTopologyExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDspmAssetsExportJobRequest() (request *CreateDspmAssetsExportJobRequest) {
+    request = &CreateDspmAssetsExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateDspmAssetsExportJob")
+    
+    
+    return
+}
+
+func NewCreateDspmAssetsExportJobResponse() (response *CreateDspmAssetsExportJobResponse) {
+    response = &CreateDspmAssetsExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDspmAssetsExportJob
+// 创建Dspm资产列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDspmAssetsExportJob(request *CreateDspmAssetsExportJobRequest) (response *CreateDspmAssetsExportJobResponse, err error) {
+    return c.CreateDspmAssetsExportJobWithContext(context.Background(), request)
+}
+
+// CreateDspmAssetsExportJob
+// 创建Dspm资产列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDspmAssetsExportJobWithContext(ctx context.Context, request *CreateDspmAssetsExportJobRequest) (response *CreateDspmAssetsExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateDspmAssetsExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateDspmAssetsExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDspmAssetsExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDspmAssetsExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDspmExportTaskRequest() (request *CreateDspmExportTaskRequest) {
+    request = &CreateDspmExportTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateDspmExportTask")
+    
+    
+    return
+}
+
+func NewCreateDspmExportTaskResponse() (response *CreateDspmExportTaskResponse) {
+    response = &CreateDspmExportTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDspmExportTask
+// 创建日志导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDspmExportTask(request *CreateDspmExportTaskRequest) (response *CreateDspmExportTaskResponse, err error) {
+    return c.CreateDspmExportTaskWithContext(context.Background(), request)
+}
+
+// CreateDspmExportTask
+// 创建日志导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDspmExportTaskWithContext(ctx context.Context, request *CreateDspmExportTaskRequest) (response *CreateDspmExportTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateDspmExportTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateDspmExportTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDspmExportTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDspmExportTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDspmIdentifyInfoListExportJobRequest() (request *CreateDspmIdentifyInfoListExportJobRequest) {
+    request = &CreateDspmIdentifyInfoListExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateDspmIdentifyInfoListExportJob")
+    
+    
+    return
+}
+
+func NewCreateDspmIdentifyInfoListExportJobResponse() (response *CreateDspmIdentifyInfoListExportJobResponse) {
+    response = &CreateDspmIdentifyInfoListExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDspmIdentifyInfoListExportJob
+// 创建Dspm身份列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDspmIdentifyInfoListExportJob(request *CreateDspmIdentifyInfoListExportJobRequest) (response *CreateDspmIdentifyInfoListExportJobResponse, err error) {
+    return c.CreateDspmIdentifyInfoListExportJobWithContext(context.Background(), request)
+}
+
+// CreateDspmIdentifyInfoListExportJob
+// 创建Dspm身份列表导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDspmIdentifyInfoListExportJobWithContext(ctx context.Context, request *CreateDspmIdentifyInfoListExportJobRequest) (response *CreateDspmIdentifyInfoListExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateDspmIdentifyInfoListExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateDspmIdentifyInfoListExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDspmIdentifyInfoListExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDspmIdentifyInfoListExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDspmPersonalIdentifyRequest() (request *CreateDspmPersonalIdentifyRequest) {
+    request = &CreateDspmPersonalIdentifyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateDspmPersonalIdentify")
+    
+    
+    return
+}
+
+func NewCreateDspmPersonalIdentifyResponse() (response *CreateDspmPersonalIdentifyResponse) {
+    response = &CreateDspmPersonalIdentifyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDspmPersonalIdentify
+// 创建Dspm个人身份id
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateDspmPersonalIdentify(request *CreateDspmPersonalIdentifyRequest) (response *CreateDspmPersonalIdentifyResponse, err error) {
+    return c.CreateDspmPersonalIdentifyWithContext(context.Background(), request)
+}
+
+// CreateDspmPersonalIdentify
+// 创建Dspm个人身份id
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateDspmPersonalIdentifyWithContext(ctx context.Context, request *CreateDspmPersonalIdentifyRequest) (response *CreateDspmPersonalIdentifyResponse, err error) {
+    if request == nil {
+        request = NewCreateDspmPersonalIdentifyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateDspmPersonalIdentify")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDspmPersonalIdentify require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDspmPersonalIdentifyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDspmRiskExportJobRequest() (request *CreateDspmRiskExportJobRequest) {
+    request = &CreateDspmRiskExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateDspmRiskExportJob")
+    
+    
+    return
+}
+
+func NewCreateDspmRiskExportJobResponse() (response *CreateDspmRiskExportJobResponse) {
+    response = &CreateDspmRiskExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDspmRiskExportJob
+// 创建Dspm风险导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateDspmRiskExportJob(request *CreateDspmRiskExportJobRequest) (response *CreateDspmRiskExportJobResponse, err error) {
+    return c.CreateDspmRiskExportJobWithContext(context.Background(), request)
+}
+
+// CreateDspmRiskExportJob
+// 创建Dspm风险导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateDspmRiskExportJobWithContext(ctx context.Context, request *CreateDspmRiskExportJobRequest) (response *CreateDspmRiskExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateDspmRiskExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateDspmRiskExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDspmRiskExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDspmRiskExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDspmWhitelistStrategyRequest() (request *CreateDspmWhitelistStrategyRequest) {
+    request = &CreateDspmWhitelistStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateDspmWhitelistStrategy")
+    
+    
+    return
+}
+
+func NewCreateDspmWhitelistStrategyResponse() (response *CreateDspmWhitelistStrategyResponse) {
+    response = &CreateDspmWhitelistStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDspmWhitelistStrategy
+// 创建Dspm白名单策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateDspmWhitelistStrategy(request *CreateDspmWhitelistStrategyRequest) (response *CreateDspmWhitelistStrategyResponse, err error) {
+    return c.CreateDspmWhitelistStrategyWithContext(context.Background(), request)
+}
+
+// CreateDspmWhitelistStrategy
+// 创建Dspm白名单策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateDspmWhitelistStrategyWithContext(ctx context.Context, request *CreateDspmWhitelistStrategyRequest) (response *CreateDspmWhitelistStrategyResponse, err error) {
+    if request == nil {
+        request = NewCreateDspmWhitelistStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateDspmWhitelistStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDspmWhitelistStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDspmWhitelistStrategyResponse()
     err = c.Send(request, response)
     return
 }
@@ -391,6 +1147,416 @@ func (c *Client) DeleteDomainAndIpWithContext(ctx context.Context, request *Dele
     request.SetContext(ctx)
     
     response = NewDeleteDomainAndIpResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDspmApplyOrderRequest() (request *DeleteDspmApplyOrderRequest) {
+    request = &DeleteDspmApplyOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteDspmApplyOrder")
+    
+    
+    return
+}
+
+func NewDeleteDspmApplyOrderResponse() (response *DeleteDspmApplyOrderResponse) {
+    response = &DeleteDspmApplyOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDspmApplyOrder
+// 删除Dspm申请单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteDspmApplyOrder(request *DeleteDspmApplyOrderRequest) (response *DeleteDspmApplyOrderResponse, err error) {
+    return c.DeleteDspmApplyOrderWithContext(context.Background(), request)
+}
+
+// DeleteDspmApplyOrder
+// 删除Dspm申请单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteDspmApplyOrderWithContext(ctx context.Context, request *DeleteDspmApplyOrderRequest) (response *DeleteDspmApplyOrderResponse, err error) {
+    if request == nil {
+        request = NewDeleteDspmApplyOrderRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteDspmApplyOrder")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDspmApplyOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDspmApplyOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDspmAssetAccountRequest() (request *DeleteDspmAssetAccountRequest) {
+    request = &DeleteDspmAssetAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteDspmAssetAccount")
+    
+    
+    return
+}
+
+func NewDeleteDspmAssetAccountResponse() (response *DeleteDspmAssetAccountResponse) {
+    response = &DeleteDspmAssetAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDspmAssetAccount
+// 删除Dspm资产账号
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteDspmAssetAccount(request *DeleteDspmAssetAccountRequest) (response *DeleteDspmAssetAccountResponse, err error) {
+    return c.DeleteDspmAssetAccountWithContext(context.Background(), request)
+}
+
+// DeleteDspmAssetAccount
+// 删除Dspm资产账号
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteDspmAssetAccountWithContext(ctx context.Context, request *DeleteDspmAssetAccountRequest) (response *DeleteDspmAssetAccountResponse, err error) {
+    if request == nil {
+        request = NewDeleteDspmAssetAccountRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteDspmAssetAccount")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDspmAssetAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDspmAssetAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDspmBackupLogListRequest() (request *DeleteDspmBackupLogListRequest) {
+    request = &DeleteDspmBackupLogListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteDspmBackupLogList")
+    
+    
+    return
+}
+
+func NewDeleteDspmBackupLogListResponse() (response *DeleteDspmBackupLogListResponse) {
+    response = &DeleteDspmBackupLogListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDspmBackupLogList
+// 删除备份日志
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteDspmBackupLogList(request *DeleteDspmBackupLogListRequest) (response *DeleteDspmBackupLogListResponse, err error) {
+    return c.DeleteDspmBackupLogListWithContext(context.Background(), request)
+}
+
+// DeleteDspmBackupLogList
+// 删除备份日志
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteDspmBackupLogListWithContext(ctx context.Context, request *DeleteDspmBackupLogListRequest) (response *DeleteDspmBackupLogListResponse, err error) {
+    if request == nil {
+        request = NewDeleteDspmBackupLogListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteDspmBackupLogList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDspmBackupLogList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDspmBackupLogListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDspmExportTaskRequest() (request *DeleteDspmExportTaskRequest) {
+    request = &DeleteDspmExportTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteDspmExportTask")
+    
+    
+    return
+}
+
+func NewDeleteDspmExportTaskResponse() (response *DeleteDspmExportTaskResponse) {
+    response = &DeleteDspmExportTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDspmExportTask
+// 删除导出任务
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteDspmExportTask(request *DeleteDspmExportTaskRequest) (response *DeleteDspmExportTaskResponse, err error) {
+    return c.DeleteDspmExportTaskWithContext(context.Background(), request)
+}
+
+// DeleteDspmExportTask
+// 删除导出任务
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteDspmExportTaskWithContext(ctx context.Context, request *DeleteDspmExportTaskRequest) (response *DeleteDspmExportTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteDspmExportTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteDspmExportTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDspmExportTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDspmExportTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDspmPersonalIdentifyRequest() (request *DeleteDspmPersonalIdentifyRequest) {
+    request = &DeleteDspmPersonalIdentifyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteDspmPersonalIdentify")
+    
+    
+    return
+}
+
+func NewDeleteDspmPersonalIdentifyResponse() (response *DeleteDspmPersonalIdentifyResponse) {
+    response = &DeleteDspmPersonalIdentifyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDspmPersonalIdentify
+// 删除Dspm个人身份id
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteDspmPersonalIdentify(request *DeleteDspmPersonalIdentifyRequest) (response *DeleteDspmPersonalIdentifyResponse, err error) {
+    return c.DeleteDspmPersonalIdentifyWithContext(context.Background(), request)
+}
+
+// DeleteDspmPersonalIdentify
+// 删除Dspm个人身份id
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteDspmPersonalIdentifyWithContext(ctx context.Context, request *DeleteDspmPersonalIdentifyRequest) (response *DeleteDspmPersonalIdentifyResponse, err error) {
+    if request == nil {
+        request = NewDeleteDspmPersonalIdentifyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteDspmPersonalIdentify")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDspmPersonalIdentify require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDspmPersonalIdentifyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDspmRestoreLogListRequest() (request *DeleteDspmRestoreLogListRequest) {
+    request = &DeleteDspmRestoreLogListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteDspmRestoreLogList")
+    
+    
+    return
+}
+
+func NewDeleteDspmRestoreLogListResponse() (response *DeleteDspmRestoreLogListResponse) {
+    response = &DeleteDspmRestoreLogListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDspmRestoreLogList
+// 删除恢复日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteDspmRestoreLogList(request *DeleteDspmRestoreLogListRequest) (response *DeleteDspmRestoreLogListResponse, err error) {
+    return c.DeleteDspmRestoreLogListWithContext(context.Background(), request)
+}
+
+// DeleteDspmRestoreLogList
+// 删除恢复日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteDspmRestoreLogListWithContext(ctx context.Context, request *DeleteDspmRestoreLogListRequest) (response *DeleteDspmRestoreLogListResponse, err error) {
+    if request == nil {
+        request = NewDeleteDspmRestoreLogListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteDspmRestoreLogList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDspmRestoreLogList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDspmRestoreLogListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDspmWhitelistStrategyRequest() (request *DeleteDspmWhitelistStrategyRequest) {
+    request = &DeleteDspmWhitelistStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteDspmWhitelistStrategy")
+    
+    
+    return
+}
+
+func NewDeleteDspmWhitelistStrategyResponse() (response *DeleteDspmWhitelistStrategyResponse) {
+    response = &DeleteDspmWhitelistStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDspmWhitelistStrategy
+// 删除Dspm白名单策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteDspmWhitelistStrategy(request *DeleteDspmWhitelistStrategyRequest) (response *DeleteDspmWhitelistStrategyResponse, err error) {
+    return c.DeleteDspmWhitelistStrategyWithContext(context.Background(), request)
+}
+
+// DeleteDspmWhitelistStrategy
+// 删除Dspm白名单策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteDspmWhitelistStrategyWithContext(ctx context.Context, request *DeleteDspmWhitelistStrategyRequest) (response *DeleteDspmWhitelistStrategyResponse, err error) {
+    if request == nil {
+        request = NewDeleteDspmWhitelistStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteDspmWhitelistStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDspmWhitelistStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDspmWhitelistStrategyResponse()
     err = c.Send(request, response)
     return
 }
@@ -1655,6 +2821,72 @@ func (c *Client) DescribeAssetViewVulRiskListWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeAssumeRoleRequest() (request *DescribeAssumeRoleRequest) {
+    request = &DescribeAssumeRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeAssumeRole")
+    
+    
+    return
+}
+
+func NewDescribeAssumeRoleResponse() (response *DescribeAssumeRoleResponse) {
+    response = &DescribeAssumeRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAssumeRole
+// 查询是否绑定角色
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAssumeRole(request *DescribeAssumeRoleRequest) (response *DescribeAssumeRoleResponse, err error) {
+    return c.DescribeAssumeRoleWithContext(context.Background(), request)
+}
+
+// DescribeAssumeRole
+// 查询是否绑定角色
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAssumeRoleWithContext(ctx context.Context, request *DescribeAssumeRoleRequest) (response *DescribeAssumeRoleResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssumeRoleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeAssumeRole")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssumeRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssumeRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCFWAssetStatisticsRequest() (request *DescribeCFWAssetStatisticsRequest) {
     request = &DescribeCFWAssetStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1679,22 +2911,13 @@ func NewDescribeCFWAssetStatisticsResponse() (response *DescribeCFWAssetStatisti
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCFWAssetStatistics(request *DescribeCFWAssetStatisticsRequest) (response *DescribeCFWAssetStatisticsResponse, err error) {
     return c.DescribeCFWAssetStatisticsWithContext(context.Background(), request)
@@ -1705,22 +2928,13 @@ func (c *Client) DescribeCFWAssetStatistics(request *DescribeCFWAssetStatisticsR
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCFWAssetStatisticsWithContext(ctx context.Context, request *DescribeCFWAssetStatisticsRequest) (response *DescribeCFWAssetStatisticsResponse, err error) {
     if request == nil {
@@ -1763,22 +2977,13 @@ func NewDescribeCSIPRiskStatisticsResponse() (response *DescribeCSIPRiskStatisti
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCSIPRiskStatistics(request *DescribeCSIPRiskStatisticsRequest) (response *DescribeCSIPRiskStatisticsResponse, err error) {
     return c.DescribeCSIPRiskStatisticsWithContext(context.Background(), request)
@@ -1789,22 +2994,13 @@ func (c *Client) DescribeCSIPRiskStatistics(request *DescribeCSIPRiskStatisticsR
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCSIPRiskStatisticsWithContext(ctx context.Context, request *DescribeCSIPRiskStatisticsRequest) (response *DescribeCSIPRiskStatisticsResponse, err error) {
     if request == nil {
@@ -1847,22 +3043,13 @@ func NewDescribeCVMAssetInfoResponse() (response *DescribeCVMAssetInfoResponse) 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCVMAssetInfo(request *DescribeCVMAssetInfoRequest) (response *DescribeCVMAssetInfoResponse, err error) {
     return c.DescribeCVMAssetInfoWithContext(context.Background(), request)
@@ -1873,22 +3060,13 @@ func (c *Client) DescribeCVMAssetInfo(request *DescribeCVMAssetInfoRequest) (res
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCVMAssetInfoWithContext(ctx context.Context, request *DescribeCVMAssetInfoRequest) (response *DescribeCVMAssetInfoResponse, err error) {
     if request == nil {
@@ -1931,22 +3109,13 @@ func NewDescribeCVMAssetsResponse() (response *DescribeCVMAssetsResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCVMAssets(request *DescribeCVMAssetsRequest) (response *DescribeCVMAssetsResponse, err error) {
     return c.DescribeCVMAssetsWithContext(context.Background(), request)
@@ -1957,22 +3126,13 @@ func (c *Client) DescribeCVMAssets(request *DescribeCVMAssetsRequest) (response 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCVMAssetsWithContext(ctx context.Context, request *DescribeCVMAssetsRequest) (response *DescribeCVMAssetsResponse, err error) {
     if request == nil {
@@ -2015,22 +3175,13 @@ func NewDescribeCallRecordResponse() (response *DescribeCallRecordResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCallRecord(request *DescribeCallRecordRequest) (response *DescribeCallRecordResponse, err error) {
     return c.DescribeCallRecordWithContext(context.Background(), request)
@@ -2041,22 +3192,13 @@ func (c *Client) DescribeCallRecord(request *DescribeCallRecordRequest) (respons
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCallRecordWithContext(ctx context.Context, request *DescribeCallRecordRequest) (response *DescribeCallRecordResponse, err error) {
     if request == nil {
@@ -2099,22 +3241,13 @@ func NewDescribeCheckViewRisksResponse() (response *DescribeCheckViewRisksRespon
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCheckViewRisks(request *DescribeCheckViewRisksRequest) (response *DescribeCheckViewRisksResponse, err error) {
     return c.DescribeCheckViewRisksWithContext(context.Background(), request)
@@ -2125,22 +3258,13 @@ func (c *Client) DescribeCheckViewRisks(request *DescribeCheckViewRisksRequest) 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCheckViewRisksWithContext(ctx context.Context, request *DescribeCheckViewRisksRequest) (response *DescribeCheckViewRisksResponse, err error) {
     if request == nil {
@@ -2183,22 +3307,13 @@ func NewDescribeClusterAssetsResponse() (response *DescribeClusterAssetsResponse
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterAssets(request *DescribeClusterAssetsRequest) (response *DescribeClusterAssetsResponse, err error) {
     return c.DescribeClusterAssetsWithContext(context.Background(), request)
@@ -2209,22 +3324,13 @@ func (c *Client) DescribeClusterAssets(request *DescribeClusterAssetsRequest) (r
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterAssetsWithContext(ctx context.Context, request *DescribeClusterAssetsRequest) (response *DescribeClusterAssetsResponse, err error) {
     if request == nil {
@@ -2267,22 +3373,13 @@ func NewDescribeClusterPodAssetsResponse() (response *DescribeClusterPodAssetsRe
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterPodAssets(request *DescribeClusterPodAssetsRequest) (response *DescribeClusterPodAssetsResponse, err error) {
     return c.DescribeClusterPodAssetsWithContext(context.Background(), request)
@@ -2293,22 +3390,13 @@ func (c *Client) DescribeClusterPodAssets(request *DescribeClusterPodAssetsReque
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterPodAssetsWithContext(ctx context.Context, request *DescribeClusterPodAssetsRequest) (response *DescribeClusterPodAssetsResponse, err error) {
     if request == nil {
@@ -2351,22 +3439,13 @@ func NewDescribeConfigCheckRulesResponse() (response *DescribeConfigCheckRulesRe
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeConfigCheckRules(request *DescribeConfigCheckRulesRequest) (response *DescribeConfigCheckRulesResponse, err error) {
     return c.DescribeConfigCheckRulesWithContext(context.Background(), request)
@@ -2377,22 +3456,13 @@ func (c *Client) DescribeConfigCheckRules(request *DescribeConfigCheckRulesReque
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeConfigCheckRulesWithContext(ctx context.Context, request *DescribeConfigCheckRulesRequest) (response *DescribeConfigCheckRulesResponse, err error) {
     if request == nil {
@@ -2435,22 +3505,13 @@ func NewDescribeDbAssetInfoResponse() (response *DescribeDbAssetInfoResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDbAssetInfo(request *DescribeDbAssetInfoRequest) (response *DescribeDbAssetInfoResponse, err error) {
     return c.DescribeDbAssetInfoWithContext(context.Background(), request)
@@ -2461,22 +3522,13 @@ func (c *Client) DescribeDbAssetInfo(request *DescribeDbAssetInfoRequest) (respo
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDbAssetInfoWithContext(ctx context.Context, request *DescribeDbAssetInfoRequest) (response *DescribeDbAssetInfoResponse, err error) {
     if request == nil {
@@ -2519,22 +3571,13 @@ func NewDescribeDbAssetsResponse() (response *DescribeDbAssetsResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDbAssets(request *DescribeDbAssetsRequest) (response *DescribeDbAssetsResponse, err error) {
     return c.DescribeDbAssetsWithContext(context.Background(), request)
@@ -2545,22 +3588,13 @@ func (c *Client) DescribeDbAssets(request *DescribeDbAssetsRequest) (response *D
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDbAssetsWithContext(ctx context.Context, request *DescribeDbAssetsRequest) (response *DescribeDbAssetsResponse, err error) {
     if request == nil {
@@ -2603,22 +3637,13 @@ func NewDescribeDomainAssetsResponse() (response *DescribeDomainAssetsResponse) 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDomainAssets(request *DescribeDomainAssetsRequest) (response *DescribeDomainAssetsResponse, err error) {
     return c.DescribeDomainAssetsWithContext(context.Background(), request)
@@ -2629,22 +3654,13 @@ func (c *Client) DescribeDomainAssets(request *DescribeDomainAssetsRequest) (res
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDomainAssetsWithContext(ctx context.Context, request *DescribeDomainAssetsRequest) (response *DescribeDomainAssetsResponse, err error) {
     if request == nil {
@@ -2659,6 +3675,2854 @@ func (c *Client) DescribeDomainAssetsWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeDomainAssetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmAccessRecordRequest() (request *DescribeDspmAccessRecordRequest) {
+    request = &DescribeDspmAccessRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAccessRecord")
+    
+    
+    return
+}
+
+func NewDescribeDspmAccessRecordResponse() (response *DescribeDspmAccessRecordResponse) {
+    response = &DescribeDspmAccessRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAccessRecord
+// 查询Dspm访问记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmAccessRecord(request *DescribeDspmAccessRecordRequest) (response *DescribeDspmAccessRecordResponse, err error) {
+    return c.DescribeDspmAccessRecordWithContext(context.Background(), request)
+}
+
+// DescribeDspmAccessRecord
+// 查询Dspm访问记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmAccessRecordWithContext(ctx context.Context, request *DescribeDspmAccessRecordRequest) (response *DescribeDspmAccessRecordResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAccessRecordRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAccessRecord")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAccessRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAccessRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmAccessTopologyAccountsRequest() (request *DescribeDspmAccessTopologyAccountsRequest) {
+    request = &DescribeDspmAccessTopologyAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAccessTopologyAccounts")
+    
+    
+    return
+}
+
+func NewDescribeDspmAccessTopologyAccountsResponse() (response *DescribeDspmAccessTopologyAccountsResponse) {
+    response = &DescribeDspmAccessTopologyAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAccessTopologyAccounts
+// 查询Dspm访问拓扑账号列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmAccessTopologyAccounts(request *DescribeDspmAccessTopologyAccountsRequest) (response *DescribeDspmAccessTopologyAccountsResponse, err error) {
+    return c.DescribeDspmAccessTopologyAccountsWithContext(context.Background(), request)
+}
+
+// DescribeDspmAccessTopologyAccounts
+// 查询Dspm访问拓扑账号列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmAccessTopologyAccountsWithContext(ctx context.Context, request *DescribeDspmAccessTopologyAccountsRequest) (response *DescribeDspmAccessTopologyAccountsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAccessTopologyAccountsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAccessTopologyAccounts")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAccessTopologyAccounts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAccessTopologyAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmAccessTopologyAssetsRequest() (request *DescribeDspmAccessTopologyAssetsRequest) {
+    request = &DescribeDspmAccessTopologyAssetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAccessTopologyAssets")
+    
+    
+    return
+}
+
+func NewDescribeDspmAccessTopologyAssetsResponse() (response *DescribeDspmAccessTopologyAssetsResponse) {
+    response = &DescribeDspmAccessTopologyAssetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAccessTopologyAssets
+// 查询Dspm访问拓扑资产列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmAccessTopologyAssets(request *DescribeDspmAccessTopologyAssetsRequest) (response *DescribeDspmAccessTopologyAssetsResponse, err error) {
+    return c.DescribeDspmAccessTopologyAssetsWithContext(context.Background(), request)
+}
+
+// DescribeDspmAccessTopologyAssets
+// 查询Dspm访问拓扑资产列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmAccessTopologyAssetsWithContext(ctx context.Context, request *DescribeDspmAccessTopologyAssetsRequest) (response *DescribeDspmAccessTopologyAssetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAccessTopologyAssetsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAccessTopologyAssets")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAccessTopologyAssets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAccessTopologyAssetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmAccessTopologyIpsRequest() (request *DescribeDspmAccessTopologyIpsRequest) {
+    request = &DescribeDspmAccessTopologyIpsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAccessTopologyIps")
+    
+    
+    return
+}
+
+func NewDescribeDspmAccessTopologyIpsResponse() (response *DescribeDspmAccessTopologyIpsResponse) {
+    response = &DescribeDspmAccessTopologyIpsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAccessTopologyIps
+// 查询Dspm访问拓扑ip列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmAccessTopologyIps(request *DescribeDspmAccessTopologyIpsRequest) (response *DescribeDspmAccessTopologyIpsResponse, err error) {
+    return c.DescribeDspmAccessTopologyIpsWithContext(context.Background(), request)
+}
+
+// DescribeDspmAccessTopologyIps
+// 查询Dspm访问拓扑ip列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmAccessTopologyIpsWithContext(ctx context.Context, request *DescribeDspmAccessTopologyIpsRequest) (response *DescribeDspmAccessTopologyIpsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAccessTopologyIpsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAccessTopologyIps")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAccessTopologyIps require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAccessTopologyIpsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmApplyHistoryRequest() (request *DescribeDspmApplyHistoryRequest) {
+    request = &DescribeDspmApplyHistoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmApplyHistory")
+    
+    
+    return
+}
+
+func NewDescribeDspmApplyHistoryResponse() (response *DescribeDspmApplyHistoryResponse) {
+    response = &DescribeDspmApplyHistoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmApplyHistory
+// 查询Dspm申请历史
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmApplyHistory(request *DescribeDspmApplyHistoryRequest) (response *DescribeDspmApplyHistoryResponse, err error) {
+    return c.DescribeDspmApplyHistoryWithContext(context.Background(), request)
+}
+
+// DescribeDspmApplyHistory
+// 查询Dspm申请历史
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmApplyHistoryWithContext(ctx context.Context, request *DescribeDspmApplyHistoryRequest) (response *DescribeDspmApplyHistoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmApplyHistoryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmApplyHistory")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmApplyHistory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmApplyHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmApplyOrderListRequest() (request *DescribeDspmApplyOrderListRequest) {
+    request = &DescribeDspmApplyOrderListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmApplyOrderList")
+    
+    
+    return
+}
+
+func NewDescribeDspmApplyOrderListResponse() (response *DescribeDspmApplyOrderListResponse) {
+    response = &DescribeDspmApplyOrderListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmApplyOrderList
+// 查询Dspm申请单列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmApplyOrderList(request *DescribeDspmApplyOrderListRequest) (response *DescribeDspmApplyOrderListResponse, err error) {
+    return c.DescribeDspmApplyOrderListWithContext(context.Background(), request)
+}
+
+// DescribeDspmApplyOrderList
+// 查询Dspm申请单列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmApplyOrderListWithContext(ctx context.Context, request *DescribeDspmApplyOrderListRequest) (response *DescribeDspmApplyOrderListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmApplyOrderListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmApplyOrderList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmApplyOrderList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmApplyOrderListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmApproveHistoryRequest() (request *DescribeDspmApproveHistoryRequest) {
+    request = &DescribeDspmApproveHistoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmApproveHistory")
+    
+    
+    return
+}
+
+func NewDescribeDspmApproveHistoryResponse() (response *DescribeDspmApproveHistoryResponse) {
+    response = &DescribeDspmApproveHistoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmApproveHistory
+// 查询Dspm审批历史
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmApproveHistory(request *DescribeDspmApproveHistoryRequest) (response *DescribeDspmApproveHistoryResponse, err error) {
+    return c.DescribeDspmApproveHistoryWithContext(context.Background(), request)
+}
+
+// DescribeDspmApproveHistory
+// 查询Dspm审批历史
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmApproveHistoryWithContext(ctx context.Context, request *DescribeDspmApproveHistoryRequest) (response *DescribeDspmApproveHistoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmApproveHistoryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmApproveHistory")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmApproveHistory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmApproveHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmApproveOrderListRequest() (request *DescribeDspmApproveOrderListRequest) {
+    request = &DescribeDspmApproveOrderListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmApproveOrderList")
+    
+    
+    return
+}
+
+func NewDescribeDspmApproveOrderListResponse() (response *DescribeDspmApproveOrderListResponse) {
+    response = &DescribeDspmApproveOrderListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmApproveOrderList
+// 查询Dspm审批单列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmApproveOrderList(request *DescribeDspmApproveOrderListRequest) (response *DescribeDspmApproveOrderListResponse, err error) {
+    return c.DescribeDspmApproveOrderListWithContext(context.Background(), request)
+}
+
+// DescribeDspmApproveOrderList
+// 查询Dspm审批单列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmApproveOrderListWithContext(ctx context.Context, request *DescribeDspmApproveOrderListRequest) (response *DescribeDspmApproveOrderListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmApproveOrderListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmApproveOrderList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmApproveOrderList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmApproveOrderListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmAssetAccessTopologyRequest() (request *DescribeDspmAssetAccessTopologyRequest) {
+    request = &DescribeDspmAssetAccessTopologyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAssetAccessTopology")
+    
+    
+    return
+}
+
+func NewDescribeDspmAssetAccessTopologyResponse() (response *DescribeDspmAssetAccessTopologyResponse) {
+    response = &DescribeDspmAssetAccessTopologyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAssetAccessTopology
+// 查询Dspm资产访问拓扑
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmAssetAccessTopology(request *DescribeDspmAssetAccessTopologyRequest) (response *DescribeDspmAssetAccessTopologyResponse, err error) {
+    return c.DescribeDspmAssetAccessTopologyWithContext(context.Background(), request)
+}
+
+// DescribeDspmAssetAccessTopology
+// 查询Dspm资产访问拓扑
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmAssetAccessTopologyWithContext(ctx context.Context, request *DescribeDspmAssetAccessTopologyRequest) (response *DescribeDspmAssetAccessTopologyResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAssetAccessTopologyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAssetAccessTopology")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAssetAccessTopology require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAssetAccessTopologyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmAssetAccountIdentifyRequest() (request *DescribeDspmAssetAccountIdentifyRequest) {
+    request = &DescribeDspmAssetAccountIdentifyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAssetAccountIdentify")
+    
+    
+    return
+}
+
+func NewDescribeDspmAssetAccountIdentifyResponse() (response *DescribeDspmAssetAccountIdentifyResponse) {
+    response = &DescribeDspmAssetAccountIdentifyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAssetAccountIdentify
+// 查询Dspm资产账号身份信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssetAccountIdentify(request *DescribeDspmAssetAccountIdentifyRequest) (response *DescribeDspmAssetAccountIdentifyResponse, err error) {
+    return c.DescribeDspmAssetAccountIdentifyWithContext(context.Background(), request)
+}
+
+// DescribeDspmAssetAccountIdentify
+// 查询Dspm资产账号身份信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssetAccountIdentifyWithContext(ctx context.Context, request *DescribeDspmAssetAccountIdentifyRequest) (response *DescribeDspmAssetAccountIdentifyResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAssetAccountIdentifyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAssetAccountIdentify")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAssetAccountIdentify require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAssetAccountIdentifyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmAssetAccountPresetPrivilegesRequest() (request *DescribeDspmAssetAccountPresetPrivilegesRequest) {
+    request = &DescribeDspmAssetAccountPresetPrivilegesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAssetAccountPresetPrivileges")
+    
+    
+    return
+}
+
+func NewDescribeDspmAssetAccountPresetPrivilegesResponse() (response *DescribeDspmAssetAccountPresetPrivilegesResponse) {
+    response = &DescribeDspmAssetAccountPresetPrivilegesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAssetAccountPresetPrivileges
+// 查询Dspm资产账号预设特权信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssetAccountPresetPrivileges(request *DescribeDspmAssetAccountPresetPrivilegesRequest) (response *DescribeDspmAssetAccountPresetPrivilegesResponse, err error) {
+    return c.DescribeDspmAssetAccountPresetPrivilegesWithContext(context.Background(), request)
+}
+
+// DescribeDspmAssetAccountPresetPrivileges
+// 查询Dspm资产账号预设特权信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssetAccountPresetPrivilegesWithContext(ctx context.Context, request *DescribeDspmAssetAccountPresetPrivilegesRequest) (response *DescribeDspmAssetAccountPresetPrivilegesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAssetAccountPresetPrivilegesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAssetAccountPresetPrivileges")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAssetAccountPresetPrivileges require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAssetAccountPresetPrivilegesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmAssetAccountRecycledPrivilegesRequest() (request *DescribeDspmAssetAccountRecycledPrivilegesRequest) {
+    request = &DescribeDspmAssetAccountRecycledPrivilegesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAssetAccountRecycledPrivileges")
+    
+    
+    return
+}
+
+func NewDescribeDspmAssetAccountRecycledPrivilegesResponse() (response *DescribeDspmAssetAccountRecycledPrivilegesResponse) {
+    response = &DescribeDspmAssetAccountRecycledPrivilegesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAssetAccountRecycledPrivileges
+// 查询Dspm资产账号回收后特权信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssetAccountRecycledPrivileges(request *DescribeDspmAssetAccountRecycledPrivilegesRequest) (response *DescribeDspmAssetAccountRecycledPrivilegesResponse, err error) {
+    return c.DescribeDspmAssetAccountRecycledPrivilegesWithContext(context.Background(), request)
+}
+
+// DescribeDspmAssetAccountRecycledPrivileges
+// 查询Dspm资产账号回收后特权信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssetAccountRecycledPrivilegesWithContext(ctx context.Context, request *DescribeDspmAssetAccountRecycledPrivilegesRequest) (response *DescribeDspmAssetAccountRecycledPrivilegesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAssetAccountRecycledPrivilegesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAssetAccountRecycledPrivileges")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAssetAccountRecycledPrivileges require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAssetAccountRecycledPrivilegesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmAssetAccountsRequest() (request *DescribeDspmAssetAccountsRequest) {
+    request = &DescribeDspmAssetAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAssetAccounts")
+    
+    
+    return
+}
+
+func NewDescribeDspmAssetAccountsResponse() (response *DescribeDspmAssetAccountsResponse) {
+    response = &DescribeDspmAssetAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAssetAccounts
+// 查询Dspm资产账号列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssetAccounts(request *DescribeDspmAssetAccountsRequest) (response *DescribeDspmAssetAccountsResponse, err error) {
+    return c.DescribeDspmAssetAccountsWithContext(context.Background(), request)
+}
+
+// DescribeDspmAssetAccounts
+// 查询Dspm资产账号列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssetAccountsWithContext(ctx context.Context, request *DescribeDspmAssetAccountsRequest) (response *DescribeDspmAssetAccountsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAssetAccountsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAssetAccounts")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAssetAccounts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAssetAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmAssetDatabaseListRequest() (request *DescribeDspmAssetDatabaseListRequest) {
+    request = &DescribeDspmAssetDatabaseListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAssetDatabaseList")
+    
+    
+    return
+}
+
+func NewDescribeDspmAssetDatabaseListResponse() (response *DescribeDspmAssetDatabaseListResponse) {
+    response = &DescribeDspmAssetDatabaseListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAssetDatabaseList
+// 查询资产数据库信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDspmAssetDatabaseList(request *DescribeDspmAssetDatabaseListRequest) (response *DescribeDspmAssetDatabaseListResponse, err error) {
+    return c.DescribeDspmAssetDatabaseListWithContext(context.Background(), request)
+}
+
+// DescribeDspmAssetDatabaseList
+// 查询资产数据库信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDspmAssetDatabaseListWithContext(ctx context.Context, request *DescribeDspmAssetDatabaseListRequest) (response *DescribeDspmAssetDatabaseListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAssetDatabaseListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAssetDatabaseList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAssetDatabaseList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAssetDatabaseListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmAssetDatabasesRequest() (request *DescribeDspmAssetDatabasesRequest) {
+    request = &DescribeDspmAssetDatabasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAssetDatabases")
+    
+    
+    return
+}
+
+func NewDescribeDspmAssetDatabasesResponse() (response *DescribeDspmAssetDatabasesResponse) {
+    response = &DescribeDspmAssetDatabasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAssetDatabases
+// 查询Dspm资产数据库列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssetDatabases(request *DescribeDspmAssetDatabasesRequest) (response *DescribeDspmAssetDatabasesResponse, err error) {
+    return c.DescribeDspmAssetDatabasesWithContext(context.Background(), request)
+}
+
+// DescribeDspmAssetDatabases
+// 查询Dspm资产数据库列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssetDatabasesWithContext(ctx context.Context, request *DescribeDspmAssetDatabasesRequest) (response *DescribeDspmAssetDatabasesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAssetDatabasesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAssetDatabases")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAssetDatabases require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAssetDatabasesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmAssetFieldListRequest() (request *DescribeDspmAssetFieldListRequest) {
+    request = &DescribeDspmAssetFieldListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAssetFieldList")
+    
+    
+    return
+}
+
+func NewDescribeDspmAssetFieldListResponse() (response *DescribeDspmAssetFieldListResponse) {
+    response = &DescribeDspmAssetFieldListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAssetFieldList
+// 查询dspm资产字段信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDspmAssetFieldList(request *DescribeDspmAssetFieldListRequest) (response *DescribeDspmAssetFieldListResponse, err error) {
+    return c.DescribeDspmAssetFieldListWithContext(context.Background(), request)
+}
+
+// DescribeDspmAssetFieldList
+// 查询dspm资产字段信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDspmAssetFieldListWithContext(ctx context.Context, request *DescribeDspmAssetFieldListRequest) (response *DescribeDspmAssetFieldListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAssetFieldListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAssetFieldList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAssetFieldList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAssetFieldListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmAssetIdsRequest() (request *DescribeDspmAssetIdsRequest) {
+    request = &DescribeDspmAssetIdsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAssetIds")
+    
+    
+    return
+}
+
+func NewDescribeDspmAssetIdsResponse() (response *DescribeDspmAssetIdsResponse) {
+    response = &DescribeDspmAssetIdsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAssetIds
+// 查询Dspm资产id列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssetIds(request *DescribeDspmAssetIdsRequest) (response *DescribeDspmAssetIdsResponse, err error) {
+    return c.DescribeDspmAssetIdsWithContext(context.Background(), request)
+}
+
+// DescribeDspmAssetIds
+// 查询Dspm资产id列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssetIdsWithContext(ctx context.Context, request *DescribeDspmAssetIdsRequest) (response *DescribeDspmAssetIdsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAssetIdsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAssetIds")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAssetIds require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAssetIdsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmAssetLoginCredentialRequest() (request *DescribeDspmAssetLoginCredentialRequest) {
+    request = &DescribeDspmAssetLoginCredentialRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAssetLoginCredential")
+    
+    
+    return
+}
+
+func NewDescribeDspmAssetLoginCredentialResponse() (response *DescribeDspmAssetLoginCredentialResponse) {
+    response = &DescribeDspmAssetLoginCredentialResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAssetLoginCredential
+// 查询Dspm资产登录凭据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssetLoginCredential(request *DescribeDspmAssetLoginCredentialRequest) (response *DescribeDspmAssetLoginCredentialResponse, err error) {
+    return c.DescribeDspmAssetLoginCredentialWithContext(context.Background(), request)
+}
+
+// DescribeDspmAssetLoginCredential
+// 查询Dspm资产登录凭据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssetLoginCredentialWithContext(ctx context.Context, request *DescribeDspmAssetLoginCredentialRequest) (response *DescribeDspmAssetLoginCredentialResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAssetLoginCredentialRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAssetLoginCredential")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAssetLoginCredential require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAssetLoginCredentialResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmAssetSecurityAnalyseStatusRequest() (request *DescribeDspmAssetSecurityAnalyseStatusRequest) {
+    request = &DescribeDspmAssetSecurityAnalyseStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAssetSecurityAnalyseStatus")
+    
+    
+    return
+}
+
+func NewDescribeDspmAssetSecurityAnalyseStatusResponse() (response *DescribeDspmAssetSecurityAnalyseStatusResponse) {
+    response = &DescribeDspmAssetSecurityAnalyseStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAssetSecurityAnalyseStatus
+// 查询Dspm资产安全分析状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssetSecurityAnalyseStatus(request *DescribeDspmAssetSecurityAnalyseStatusRequest) (response *DescribeDspmAssetSecurityAnalyseStatusResponse, err error) {
+    return c.DescribeDspmAssetSecurityAnalyseStatusWithContext(context.Background(), request)
+}
+
+// DescribeDspmAssetSecurityAnalyseStatus
+// 查询Dspm资产安全分析状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssetSecurityAnalyseStatusWithContext(ctx context.Context, request *DescribeDspmAssetSecurityAnalyseStatusRequest) (response *DescribeDspmAssetSecurityAnalyseStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAssetSecurityAnalyseStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAssetSecurityAnalyseStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAssetSecurityAnalyseStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAssetSecurityAnalyseStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmAssetSupportedPrivilegesRequest() (request *DescribeDspmAssetSupportedPrivilegesRequest) {
+    request = &DescribeDspmAssetSupportedPrivilegesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAssetSupportedPrivileges")
+    
+    
+    return
+}
+
+func NewDescribeDspmAssetSupportedPrivilegesResponse() (response *DescribeDspmAssetSupportedPrivilegesResponse) {
+    response = &DescribeDspmAssetSupportedPrivilegesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAssetSupportedPrivileges
+// 查询Dspm资产支持的权限
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssetSupportedPrivileges(request *DescribeDspmAssetSupportedPrivilegesRequest) (response *DescribeDspmAssetSupportedPrivilegesResponse, err error) {
+    return c.DescribeDspmAssetSupportedPrivilegesWithContext(context.Background(), request)
+}
+
+// DescribeDspmAssetSupportedPrivileges
+// 查询Dspm资产支持的权限
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssetSupportedPrivilegesWithContext(ctx context.Context, request *DescribeDspmAssetSupportedPrivilegesRequest) (response *DescribeDspmAssetSupportedPrivilegesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAssetSupportedPrivilegesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAssetSupportedPrivileges")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAssetSupportedPrivileges require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAssetSupportedPrivilegesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmAssetTableListRequest() (request *DescribeDspmAssetTableListRequest) {
+    request = &DescribeDspmAssetTableListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAssetTableList")
+    
+    
+    return
+}
+
+func NewDescribeDspmAssetTableListResponse() (response *DescribeDspmAssetTableListResponse) {
+    response = &DescribeDspmAssetTableListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAssetTableList
+// 查询资产表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDspmAssetTableList(request *DescribeDspmAssetTableListRequest) (response *DescribeDspmAssetTableListResponse, err error) {
+    return c.DescribeDspmAssetTableListWithContext(context.Background(), request)
+}
+
+// DescribeDspmAssetTableList
+// 查询资产表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDspmAssetTableListWithContext(ctx context.Context, request *DescribeDspmAssetTableListRequest) (response *DescribeDspmAssetTableListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAssetTableListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAssetTableList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAssetTableList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAssetTableListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmAssetsRequest() (request *DescribeDspmAssetsRequest) {
+    request = &DescribeDspmAssetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmAssets")
+    
+    
+    return
+}
+
+func NewDescribeDspmAssetsResponse() (response *DescribeDspmAssetsResponse) {
+    response = &DescribeDspmAssetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmAssets
+// 查询Dspm资产列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssets(request *DescribeDspmAssetsRequest) (response *DescribeDspmAssetsResponse, err error) {
+    return c.DescribeDspmAssetsWithContext(context.Background(), request)
+}
+
+// DescribeDspmAssets
+// 查询Dspm资产列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmAssetsWithContext(ctx context.Context, request *DescribeDspmAssetsRequest) (response *DescribeDspmAssetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmAssetsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmAssets")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmAssets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmAssetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmBackupLogListRequest() (request *DescribeDspmBackupLogListRequest) {
+    request = &DescribeDspmBackupLogListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmBackupLogList")
+    
+    
+    return
+}
+
+func NewDescribeDspmBackupLogListResponse() (response *DescribeDspmBackupLogListResponse) {
+    response = &DescribeDspmBackupLogListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmBackupLogList
+// 查询备份日志列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmBackupLogList(request *DescribeDspmBackupLogListRequest) (response *DescribeDspmBackupLogListResponse, err error) {
+    return c.DescribeDspmBackupLogListWithContext(context.Background(), request)
+}
+
+// DescribeDspmBackupLogList
+// 查询备份日志列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmBackupLogListWithContext(ctx context.Context, request *DescribeDspmBackupLogListRequest) (response *DescribeDspmBackupLogListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmBackupLogListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmBackupLogList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmBackupLogList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmBackupLogListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmBackupSettingRequest() (request *DescribeDspmBackupSettingRequest) {
+    request = &DescribeDspmBackupSettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmBackupSetting")
+    
+    
+    return
+}
+
+func NewDescribeDspmBackupSettingResponse() (response *DescribeDspmBackupSettingResponse) {
+    response = &DescribeDspmBackupSettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmBackupSetting
+// 查询日志备份配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmBackupSetting(request *DescribeDspmBackupSettingRequest) (response *DescribeDspmBackupSettingResponse, err error) {
+    return c.DescribeDspmBackupSettingWithContext(context.Background(), request)
+}
+
+// DescribeDspmBackupSetting
+// 查询日志备份配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmBackupSettingWithContext(ctx context.Context, request *DescribeDspmBackupSettingRequest) (response *DescribeDspmBackupSettingResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmBackupSettingRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmBackupSetting")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmBackupSetting require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmBackupSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmDictionaryListRequest() (request *DescribeDspmDictionaryListRequest) {
+    request = &DescribeDspmDictionaryListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmDictionaryList")
+    
+    
+    return
+}
+
+func NewDescribeDspmDictionaryListResponse() (response *DescribeDspmDictionaryListResponse) {
+    response = &DescribeDspmDictionaryListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmDictionaryList
+// 查询dspm字典信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDspmDictionaryList(request *DescribeDspmDictionaryListRequest) (response *DescribeDspmDictionaryListResponse, err error) {
+    return c.DescribeDspmDictionaryListWithContext(context.Background(), request)
+}
+
+// DescribeDspmDictionaryList
+// 查询dspm字典信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDspmDictionaryListWithContext(ctx context.Context, request *DescribeDspmDictionaryListRequest) (response *DescribeDspmDictionaryListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmDictionaryListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmDictionaryList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmDictionaryList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmDictionaryListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmExportTaskRequest() (request *DescribeDspmExportTaskRequest) {
+    request = &DescribeDspmExportTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmExportTask")
+    
+    
+    return
+}
+
+func NewDescribeDspmExportTaskResponse() (response *DescribeDspmExportTaskResponse) {
+    response = &DescribeDspmExportTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmExportTask
+// 查询导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDspmExportTask(request *DescribeDspmExportTaskRequest) (response *DescribeDspmExportTaskResponse, err error) {
+    return c.DescribeDspmExportTaskWithContext(context.Background(), request)
+}
+
+// DescribeDspmExportTask
+// 查询导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDspmExportTaskWithContext(ctx context.Context, request *DescribeDspmExportTaskRequest) (response *DescribeDspmExportTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmExportTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmExportTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmExportTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmExportTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmIdentifyIdListRequest() (request *DescribeDspmIdentifyIdListRequest) {
+    request = &DescribeDspmIdentifyIdListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmIdentifyIdList")
+    
+    
+    return
+}
+
+func NewDescribeDspmIdentifyIdListResponse() (response *DescribeDspmIdentifyIdListResponse) {
+    response = &DescribeDspmIdentifyIdListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmIdentifyIdList
+// 查询Dspm身份id列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmIdentifyIdList(request *DescribeDspmIdentifyIdListRequest) (response *DescribeDspmIdentifyIdListResponse, err error) {
+    return c.DescribeDspmIdentifyIdListWithContext(context.Background(), request)
+}
+
+// DescribeDspmIdentifyIdList
+// 查询Dspm身份id列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmIdentifyIdListWithContext(ctx context.Context, request *DescribeDspmIdentifyIdListRequest) (response *DescribeDspmIdentifyIdListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmIdentifyIdListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmIdentifyIdList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmIdentifyIdList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmIdentifyIdListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmIdentifyInfoRequest() (request *DescribeDspmIdentifyInfoRequest) {
+    request = &DescribeDspmIdentifyInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmIdentifyInfo")
+    
+    
+    return
+}
+
+func NewDescribeDspmIdentifyInfoResponse() (response *DescribeDspmIdentifyInfoResponse) {
+    response = &DescribeDspmIdentifyInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmIdentifyInfo
+// 查询Dspm身份信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmIdentifyInfo(request *DescribeDspmIdentifyInfoRequest) (response *DescribeDspmIdentifyInfoResponse, err error) {
+    return c.DescribeDspmIdentifyInfoWithContext(context.Background(), request)
+}
+
+// DescribeDspmIdentifyInfo
+// 查询Dspm身份信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmIdentifyInfoWithContext(ctx context.Context, request *DescribeDspmIdentifyInfoRequest) (response *DescribeDspmIdentifyInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmIdentifyInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmIdentifyInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmIdentifyInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmIdentifyInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmIdentifyInfoListRequest() (request *DescribeDspmIdentifyInfoListRequest) {
+    request = &DescribeDspmIdentifyInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmIdentifyInfoList")
+    
+    
+    return
+}
+
+func NewDescribeDspmIdentifyInfoListResponse() (response *DescribeDspmIdentifyInfoListResponse) {
+    response = &DescribeDspmIdentifyInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmIdentifyInfoList
+// 查询Dspm身份信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmIdentifyInfoList(request *DescribeDspmIdentifyInfoListRequest) (response *DescribeDspmIdentifyInfoListResponse, err error) {
+    return c.DescribeDspmIdentifyInfoListWithContext(context.Background(), request)
+}
+
+// DescribeDspmIdentifyInfoList
+// 查询Dspm身份信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmIdentifyInfoListWithContext(ctx context.Context, request *DescribeDspmIdentifyInfoListRequest) (response *DescribeDspmIdentifyInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmIdentifyInfoListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmIdentifyInfoList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmIdentifyInfoList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmIdentifyInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmLogListRequest() (request *DescribeDspmLogListRequest) {
+    request = &DescribeDspmLogListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmLogList")
+    
+    
+    return
+}
+
+func NewDescribeDspmLogListResponse() (response *DescribeDspmLogListResponse) {
+    response = &DescribeDspmLogListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmLogList
+// 查询日志列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmLogList(request *DescribeDspmLogListRequest) (response *DescribeDspmLogListResponse, err error) {
+    return c.DescribeDspmLogListWithContext(context.Background(), request)
+}
+
+// DescribeDspmLogList
+// 查询日志列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmLogListWithContext(ctx context.Context, request *DescribeDspmLogListRequest) (response *DescribeDspmLogListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmLogListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmLogList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmLogList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmLogListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmPayInfoRequest() (request *DescribeDspmPayInfoRequest) {
+    request = &DescribeDspmPayInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmPayInfo")
+    
+    
+    return
+}
+
+func NewDescribeDspmPayInfoResponse() (response *DescribeDspmPayInfoResponse) {
+    response = &DescribeDspmPayInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmPayInfo
+// 获取已购Dspm订单信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmPayInfo(request *DescribeDspmPayInfoRequest) (response *DescribeDspmPayInfoResponse, err error) {
+    return c.DescribeDspmPayInfoWithContext(context.Background(), request)
+}
+
+// DescribeDspmPayInfo
+// 获取已购Dspm订单信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DASBAMOUNTNOTENOUGH = "FailedOperation.DasbAmountNotEnough"
+//  FAILEDOPERATION_DASBERRORCODE = "FailedOperation.DasbErrorCode"
+//  FAILEDOPERATION_DASBINVALIDSECRETID = "FailedOperation.DasbInvalidSecretId"
+//  FAILEDOPERATION_DASBINVALIDSECRETKEY = "FailedOperation.DasbInvalidSecretKey"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmPayInfoWithContext(ctx context.Context, request *DescribeDspmPayInfoRequest) (response *DescribeDspmPayInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmPayInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmPayInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmPayInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmPayInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmPersonApplyHistoryRequest() (request *DescribeDspmPersonApplyHistoryRequest) {
+    request = &DescribeDspmPersonApplyHistoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmPersonApplyHistory")
+    
+    
+    return
+}
+
+func NewDescribeDspmPersonApplyHistoryResponse() (response *DescribeDspmPersonApplyHistoryResponse) {
+    response = &DescribeDspmPersonApplyHistoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmPersonApplyHistory
+// 查询Dspm访客申请记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmPersonApplyHistory(request *DescribeDspmPersonApplyHistoryRequest) (response *DescribeDspmPersonApplyHistoryResponse, err error) {
+    return c.DescribeDspmPersonApplyHistoryWithContext(context.Background(), request)
+}
+
+// DescribeDspmPersonApplyHistory
+// 查询Dspm访客申请记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmPersonApplyHistoryWithContext(ctx context.Context, request *DescribeDspmPersonApplyHistoryRequest) (response *DescribeDspmPersonApplyHistoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmPersonApplyHistoryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmPersonApplyHistory")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmPersonApplyHistory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmPersonApplyHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmPersonalIdentifyListRequest() (request *DescribeDspmPersonalIdentifyListRequest) {
+    request = &DescribeDspmPersonalIdentifyListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmPersonalIdentifyList")
+    
+    
+    return
+}
+
+func NewDescribeDspmPersonalIdentifyListResponse() (response *DescribeDspmPersonalIdentifyListResponse) {
+    response = &DescribeDspmPersonalIdentifyListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmPersonalIdentifyList
+// 查询Dspm个人身份信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmPersonalIdentifyList(request *DescribeDspmPersonalIdentifyListRequest) (response *DescribeDspmPersonalIdentifyListResponse, err error) {
+    return c.DescribeDspmPersonalIdentifyListWithContext(context.Background(), request)
+}
+
+// DescribeDspmPersonalIdentifyList
+// 查询Dspm个人身份信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmPersonalIdentifyListWithContext(ctx context.Context, request *DescribeDspmPersonalIdentifyListRequest) (response *DescribeDspmPersonalIdentifyListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmPersonalIdentifyListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmPersonalIdentifyList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmPersonalIdentifyList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmPersonalIdentifyListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmRiskRequest() (request *DescribeDspmRiskRequest) {
+    request = &DescribeDspmRiskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmRisk")
+    
+    
+    return
+}
+
+func NewDescribeDspmRiskResponse() (response *DescribeDspmRiskResponse) {
+    response = &DescribeDspmRiskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmRisk
+// 查询Dspm风险记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmRisk(request *DescribeDspmRiskRequest) (response *DescribeDspmRiskResponse, err error) {
+    return c.DescribeDspmRiskWithContext(context.Background(), request)
+}
+
+// DescribeDspmRisk
+// 查询Dspm风险记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmRiskWithContext(ctx context.Context, request *DescribeDspmRiskRequest) (response *DescribeDspmRiskResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmRiskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmRisk")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmRisk require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmRiskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmRiskDetailRequest() (request *DescribeDspmRiskDetailRequest) {
+    request = &DescribeDspmRiskDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmRiskDetail")
+    
+    
+    return
+}
+
+func NewDescribeDspmRiskDetailResponse() (response *DescribeDspmRiskDetailResponse) {
+    response = &DescribeDspmRiskDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmRiskDetail
+// 查询Dspm风险详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmRiskDetail(request *DescribeDspmRiskDetailRequest) (response *DescribeDspmRiskDetailResponse, err error) {
+    return c.DescribeDspmRiskDetailWithContext(context.Background(), request)
+}
+
+// DescribeDspmRiskDetail
+// 查询Dspm风险详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmRiskDetailWithContext(ctx context.Context, request *DescribeDspmRiskDetailRequest) (response *DescribeDspmRiskDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmRiskDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmRiskDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmRiskDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmRiskDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmRiskStrategyRequest() (request *DescribeDspmRiskStrategyRequest) {
+    request = &DescribeDspmRiskStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmRiskStrategy")
+    
+    
+    return
+}
+
+func NewDescribeDspmRiskStrategyResponse() (response *DescribeDspmRiskStrategyResponse) {
+    response = &DescribeDspmRiskStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmRiskStrategy
+// 查询Dspm风险策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmRiskStrategy(request *DescribeDspmRiskStrategyRequest) (response *DescribeDspmRiskStrategyResponse, err error) {
+    return c.DescribeDspmRiskStrategyWithContext(context.Background(), request)
+}
+
+// DescribeDspmRiskStrategy
+// 查询Dspm风险策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmRiskStrategyWithContext(ctx context.Context, request *DescribeDspmRiskStrategyRequest) (response *DescribeDspmRiskStrategyResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmRiskStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmRiskStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmRiskStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmRiskStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmRiskStrategyGroupRequest() (request *DescribeDspmRiskStrategyGroupRequest) {
+    request = &DescribeDspmRiskStrategyGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmRiskStrategyGroup")
+    
+    
+    return
+}
+
+func NewDescribeDspmRiskStrategyGroupResponse() (response *DescribeDspmRiskStrategyGroupResponse) {
+    response = &DescribeDspmRiskStrategyGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmRiskStrategyGroup
+// 查询Dspm风险分组策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmRiskStrategyGroup(request *DescribeDspmRiskStrategyGroupRequest) (response *DescribeDspmRiskStrategyGroupResponse, err error) {
+    return c.DescribeDspmRiskStrategyGroupWithContext(context.Background(), request)
+}
+
+// DescribeDspmRiskStrategyGroup
+// 查询Dspm风险分组策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmRiskStrategyGroupWithContext(ctx context.Context, request *DescribeDspmRiskStrategyGroupRequest) (response *DescribeDspmRiskStrategyGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmRiskStrategyGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmRiskStrategyGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmRiskStrategyGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmRiskStrategyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmRiskTendencyRequest() (request *DescribeDspmRiskTendencyRequest) {
+    request = &DescribeDspmRiskTendencyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmRiskTendency")
+    
+    
+    return
+}
+
+func NewDescribeDspmRiskTendencyResponse() (response *DescribeDspmRiskTendencyResponse) {
+    response = &DescribeDspmRiskTendencyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmRiskTendency
+// 查询Dspm风险趋势
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmRiskTendency(request *DescribeDspmRiskTendencyRequest) (response *DescribeDspmRiskTendencyResponse, err error) {
+    return c.DescribeDspmRiskTendencyWithContext(context.Background(), request)
+}
+
+// DescribeDspmRiskTendency
+// 查询Dspm风险趋势
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmRiskTendencyWithContext(ctx context.Context, request *DescribeDspmRiskTendencyRequest) (response *DescribeDspmRiskTendencyResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmRiskTendencyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmRiskTendency")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmRiskTendency require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmRiskTendencyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmStatisticsRequest() (request *DescribeDspmStatisticsRequest) {
+    request = &DescribeDspmStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmStatistics")
+    
+    
+    return
+}
+
+func NewDescribeDspmStatisticsResponse() (response *DescribeDspmStatisticsResponse) {
+    response = &DescribeDspmStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmStatistics
+// 查询Dspm统计信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmStatistics(request *DescribeDspmStatisticsRequest) (response *DescribeDspmStatisticsResponse, err error) {
+    return c.DescribeDspmStatisticsWithContext(context.Background(), request)
+}
+
+// DescribeDspmStatistics
+// 查询Dspm统计信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmStatisticsWithContext(ctx context.Context, request *DescribeDspmStatisticsRequest) (response *DescribeDspmStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmStatisticsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmStatistics")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmSupportedAssetTypeRequest() (request *DescribeDspmSupportedAssetTypeRequest) {
+    request = &DescribeDspmSupportedAssetTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmSupportedAssetType")
+    
+    
+    return
+}
+
+func NewDescribeDspmSupportedAssetTypeResponse() (response *DescribeDspmSupportedAssetTypeResponse) {
+    response = &DescribeDspmSupportedAssetTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmSupportedAssetType
+// 查询Dspm支持的资产类型信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmSupportedAssetType(request *DescribeDspmSupportedAssetTypeRequest) (response *DescribeDspmSupportedAssetTypeResponse, err error) {
+    return c.DescribeDspmSupportedAssetTypeWithContext(context.Background(), request)
+}
+
+// DescribeDspmSupportedAssetType
+// 查询Dspm支持的资产类型信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDspmSupportedAssetTypeWithContext(ctx context.Context, request *DescribeDspmSupportedAssetTypeRequest) (response *DescribeDspmSupportedAssetTypeResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmSupportedAssetTypeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmSupportedAssetType")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmSupportedAssetType require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmSupportedAssetTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmSyncAssetsStatusRequest() (request *DescribeDspmSyncAssetsStatusRequest) {
+    request = &DescribeDspmSyncAssetsStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmSyncAssetsStatus")
+    
+    
+    return
+}
+
+func NewDescribeDspmSyncAssetsStatusResponse() (response *DescribeDspmSyncAssetsStatusResponse) {
+    response = &DescribeDspmSyncAssetsStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmSyncAssetsStatus
+// 查询Dspm同步资产状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmSyncAssetsStatus(request *DescribeDspmSyncAssetsStatusRequest) (response *DescribeDspmSyncAssetsStatusResponse, err error) {
+    return c.DescribeDspmSyncAssetsStatusWithContext(context.Background(), request)
+}
+
+// DescribeDspmSyncAssetsStatus
+// 查询Dspm同步资产状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmSyncAssetsStatusWithContext(ctx context.Context, request *DescribeDspmSyncAssetsStatusRequest) (response *DescribeDspmSyncAssetsStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmSyncAssetsStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmSyncAssetsStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmSyncAssetsStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmSyncAssetsStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmSyncUsersStatusRequest() (request *DescribeDspmSyncUsersStatusRequest) {
+    request = &DescribeDspmSyncUsersStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmSyncUsersStatus")
+    
+    
+    return
+}
+
+func NewDescribeDspmSyncUsersStatusResponse() (response *DescribeDspmSyncUsersStatusResponse) {
+    response = &DescribeDspmSyncUsersStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmSyncUsersStatus
+// 查询Dspm同步用户状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmSyncUsersStatus(request *DescribeDspmSyncUsersStatusRequest) (response *DescribeDspmSyncUsersStatusResponse, err error) {
+    return c.DescribeDspmSyncUsersStatusWithContext(context.Background(), request)
+}
+
+// DescribeDspmSyncUsersStatus
+// 查询Dspm同步用户状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmSyncUsersStatusWithContext(ctx context.Context, request *DescribeDspmSyncUsersStatusRequest) (response *DescribeDspmSyncUsersStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmSyncUsersStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmSyncUsersStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmSyncUsersStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmSyncUsersStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDspmWhitelistStrategyRequest() (request *DescribeDspmWhitelistStrategyRequest) {
+    request = &DescribeDspmWhitelistStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDspmWhitelistStrategy")
+    
+    
+    return
+}
+
+func NewDescribeDspmWhitelistStrategyResponse() (response *DescribeDspmWhitelistStrategyResponse) {
+    response = &DescribeDspmWhitelistStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDspmWhitelistStrategy
+// 查询Dspm白名单策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmWhitelistStrategy(request *DescribeDspmWhitelistStrategyRequest) (response *DescribeDspmWhitelistStrategyResponse, err error) {
+    return c.DescribeDspmWhitelistStrategyWithContext(context.Background(), request)
+}
+
+// DescribeDspmWhitelistStrategy
+// 查询Dspm白名单策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeDspmWhitelistStrategyWithContext(ctx context.Context, request *DescribeDspmWhitelistStrategyRequest) (response *DescribeDspmWhitelistStrategyResponse, err error) {
+    if request == nil {
+        request = NewDescribeDspmWhitelistStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeDspmWhitelistStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDspmWhitelistStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDspmWhitelistStrategyResponse()
     err = c.Send(request, response)
     return
 }
@@ -2687,23 +6551,10 @@ func NewDescribeExposeAssetCategoryResponse() (response *DescribeExposeAssetCate
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeExposeAssetCategory(request *DescribeExposeAssetCategoryRequest) (response *DescribeExposeAssetCategoryResponse, err error) {
     return c.DescribeExposeAssetCategoryWithContext(context.Background(), request)
 }
@@ -2713,23 +6564,10 @@ func (c *Client) DescribeExposeAssetCategory(request *DescribeExposeAssetCategor
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeExposeAssetCategoryWithContext(ctx context.Context, request *DescribeExposeAssetCategoryRequest) (response *DescribeExposeAssetCategoryResponse, err error) {
     if request == nil {
         request = NewDescribeExposeAssetCategoryRequest()
@@ -2771,23 +6609,10 @@ func NewDescribeExposePathResponse() (response *DescribeExposePathResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeExposePath(request *DescribeExposePathRequest) (response *DescribeExposePathResponse, err error) {
     return c.DescribeExposePathWithContext(context.Background(), request)
 }
@@ -2797,23 +6622,10 @@ func (c *Client) DescribeExposePath(request *DescribeExposePathRequest) (respons
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeExposePathWithContext(ctx context.Context, request *DescribeExposePathRequest) (response *DescribeExposePathResponse, err error) {
     if request == nil {
         request = NewDescribeExposePathRequest()
@@ -2855,23 +6667,10 @@ func NewDescribeExposuresResponse() (response *DescribeExposuresResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeExposures(request *DescribeExposuresRequest) (response *DescribeExposuresResponse, err error) {
     return c.DescribeExposuresWithContext(context.Background(), request)
 }
@@ -2881,23 +6680,10 @@ func (c *Client) DescribeExposures(request *DescribeExposuresRequest) (response 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeExposuresWithContext(ctx context.Context, request *DescribeExposuresRequest) (response *DescribeExposuresResponse, err error) {
     if request == nil {
         request = NewDescribeExposuresRequest()
@@ -2939,23 +6725,10 @@ func NewDescribeGatewayAssetsResponse() (response *DescribeGatewayAssetsResponse
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeGatewayAssets(request *DescribeGatewayAssetsRequest) (response *DescribeGatewayAssetsResponse, err error) {
     return c.DescribeGatewayAssetsWithContext(context.Background(), request)
 }
@@ -2965,23 +6738,10 @@ func (c *Client) DescribeGatewayAssets(request *DescribeGatewayAssetsRequest) (r
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeGatewayAssetsWithContext(ctx context.Context, request *DescribeGatewayAssetsRequest) (response *DescribeGatewayAssetsResponse, err error) {
     if request == nil {
         request = NewDescribeGatewayAssetsRequest()
@@ -3023,23 +6783,10 @@ func NewDescribeHighBaseLineRiskListResponse() (response *DescribeHighBaseLineRi
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeHighBaseLineRiskList(request *DescribeHighBaseLineRiskListRequest) (response *DescribeHighBaseLineRiskListResponse, err error) {
     return c.DescribeHighBaseLineRiskListWithContext(context.Background(), request)
 }
@@ -3049,23 +6796,10 @@ func (c *Client) DescribeHighBaseLineRiskList(request *DescribeHighBaseLineRiskL
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeHighBaseLineRiskListWithContext(ctx context.Context, request *DescribeHighBaseLineRiskListRequest) (response *DescribeHighBaseLineRiskListResponse, err error) {
     if request == nil {
         request = NewDescribeHighBaseLineRiskListRequest()
@@ -3107,23 +6841,10 @@ func NewDescribeKeySandboxCredentialResponse() (response *DescribeKeySandboxCred
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeKeySandboxCredential(request *DescribeKeySandboxCredentialRequest) (response *DescribeKeySandboxCredentialResponse, err error) {
     return c.DescribeKeySandboxCredentialWithContext(context.Background(), request)
 }
@@ -3133,23 +6854,10 @@ func (c *Client) DescribeKeySandboxCredential(request *DescribeKeySandboxCredent
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeKeySandboxCredentialWithContext(ctx context.Context, request *DescribeKeySandboxCredentialRequest) (response *DescribeKeySandboxCredentialResponse, err error) {
     if request == nil {
         request = NewDescribeKeySandboxCredentialRequest()
@@ -3191,23 +6899,10 @@ func NewDescribeKeySandboxCredentialListResponse() (response *DescribeKeySandbox
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeKeySandboxCredentialList(request *DescribeKeySandboxCredentialListRequest) (response *DescribeKeySandboxCredentialListResponse, err error) {
     return c.DescribeKeySandboxCredentialListWithContext(context.Background(), request)
 }
@@ -3217,23 +6912,10 @@ func (c *Client) DescribeKeySandboxCredentialList(request *DescribeKeySandboxCre
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeKeySandboxCredentialListWithContext(ctx context.Context, request *DescribeKeySandboxCredentialListRequest) (response *DescribeKeySandboxCredentialListResponse, err error) {
     if request == nil {
         request = NewDescribeKeySandboxCredentialListRequest()
@@ -3275,23 +6957,10 @@ func NewDescribeListenerListResponse() (response *DescribeListenerListResponse) 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeListenerList(request *DescribeListenerListRequest) (response *DescribeListenerListResponse, err error) {
     return c.DescribeListenerListWithContext(context.Background(), request)
 }
@@ -3301,23 +6970,10 @@ func (c *Client) DescribeListenerList(request *DescribeListenerListRequest) (res
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeListenerListWithContext(ctx context.Context, request *DescribeListenerListRequest) (response *DescribeListenerListResponse, err error) {
     if request == nil {
         request = NewDescribeListenerListRequest()
@@ -3359,23 +7015,10 @@ func NewDescribeNICAssetsResponse() (response *DescribeNICAssetsResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeNICAssets(request *DescribeNICAssetsRequest) (response *DescribeNICAssetsResponse, err error) {
     return c.DescribeNICAssetsWithContext(context.Background(), request)
 }
@@ -3385,23 +7028,10 @@ func (c *Client) DescribeNICAssets(request *DescribeNICAssetsRequest) (response 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeNICAssetsWithContext(ctx context.Context, request *DescribeNICAssetsRequest) (response *DescribeNICAssetsResponse, err error) {
     if request == nil {
         request = NewDescribeNICAssetsRequest()
@@ -3443,23 +7073,10 @@ func NewDescribeOrganizationInfoResponse() (response *DescribeOrganizationInfoRe
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOrganizationInfo(request *DescribeOrganizationInfoRequest) (response *DescribeOrganizationInfoResponse, err error) {
     return c.DescribeOrganizationInfoWithContext(context.Background(), request)
 }
@@ -3469,23 +7086,10 @@ func (c *Client) DescribeOrganizationInfo(request *DescribeOrganizationInfoReque
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOrganizationInfoWithContext(ctx context.Context, request *DescribeOrganizationInfoRequest) (response *DescribeOrganizationInfoResponse, err error) {
     if request == nil {
         request = NewDescribeOrganizationInfoRequest()
@@ -3527,23 +7131,10 @@ func NewDescribeOrganizationUserInfoResponse() (response *DescribeOrganizationUs
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOrganizationUserInfo(request *DescribeOrganizationUserInfoRequest) (response *DescribeOrganizationUserInfoResponse, err error) {
     return c.DescribeOrganizationUserInfoWithContext(context.Background(), request)
 }
@@ -3553,23 +7144,10 @@ func (c *Client) DescribeOrganizationUserInfo(request *DescribeOrganizationUserI
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOrganizationUserInfoWithContext(ctx context.Context, request *DescribeOrganizationUserInfoRequest) (response *DescribeOrganizationUserInfoResponse, err error) {
     if request == nil {
         request = NewDescribeOrganizationUserInfoRequest()
@@ -3611,23 +7189,10 @@ func NewDescribeOtherCloudAssetsResponse() (response *DescribeOtherCloudAssetsRe
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOtherCloudAssets(request *DescribeOtherCloudAssetsRequest) (response *DescribeOtherCloudAssetsResponse, err error) {
     return c.DescribeOtherCloudAssetsWithContext(context.Background(), request)
 }
@@ -3637,23 +7202,10 @@ func (c *Client) DescribeOtherCloudAssets(request *DescribeOtherCloudAssetsReque
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOtherCloudAssetsWithContext(ctx context.Context, request *DescribeOtherCloudAssetsRequest) (response *DescribeOtherCloudAssetsResponse, err error) {
     if request == nil {
         request = NewDescribeOtherCloudAssetsRequest()
@@ -3695,23 +7247,10 @@ func NewDescribePublicIpAssetsResponse() (response *DescribePublicIpAssetsRespon
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribePublicIpAssets(request *DescribePublicIpAssetsRequest) (response *DescribePublicIpAssetsResponse, err error) {
     return c.DescribePublicIpAssetsWithContext(context.Background(), request)
 }
@@ -3721,23 +7260,10 @@ func (c *Client) DescribePublicIpAssets(request *DescribePublicIpAssetsRequest) 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribePublicIpAssetsWithContext(ctx context.Context, request *DescribePublicIpAssetsRequest) (response *DescribePublicIpAssetsResponse, err error) {
     if request == nil {
         request = NewDescribePublicIpAssetsRequest()
@@ -3779,23 +7305,10 @@ func NewDescribeRepositoryImageAssetsResponse() (response *DescribeRepositoryIma
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRepositoryImageAssets(request *DescribeRepositoryImageAssetsRequest) (response *DescribeRepositoryImageAssetsResponse, err error) {
     return c.DescribeRepositoryImageAssetsWithContext(context.Background(), request)
 }
@@ -3805,23 +7318,10 @@ func (c *Client) DescribeRepositoryImageAssets(request *DescribeRepositoryImageA
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRepositoryImageAssetsWithContext(ctx context.Context, request *DescribeRepositoryImageAssetsRequest) (response *DescribeRepositoryImageAssetsResponse, err error) {
     if request == nil {
         request = NewDescribeRepositoryImageAssetsRequest()
@@ -3863,23 +7363,10 @@ func NewDescribeRiskCallRecordResponse() (response *DescribeRiskCallRecordRespon
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRiskCallRecord(request *DescribeRiskCallRecordRequest) (response *DescribeRiskCallRecordResponse, err error) {
     return c.DescribeRiskCallRecordWithContext(context.Background(), request)
 }
@@ -3889,23 +7376,10 @@ func (c *Client) DescribeRiskCallRecord(request *DescribeRiskCallRecordRequest) 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRiskCallRecordWithContext(ctx context.Context, request *DescribeRiskCallRecordRequest) (response *DescribeRiskCallRecordResponse, err error) {
     if request == nil {
         request = NewDescribeRiskCallRecordRequest()
@@ -3947,23 +7421,10 @@ func NewDescribeRiskCenterAssetViewCFGRiskListResponse() (response *DescribeRisk
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRiskCenterAssetViewCFGRiskList(request *DescribeRiskCenterAssetViewCFGRiskListRequest) (response *DescribeRiskCenterAssetViewCFGRiskListResponse, err error) {
     return c.DescribeRiskCenterAssetViewCFGRiskListWithContext(context.Background(), request)
 }
@@ -3973,23 +7434,10 @@ func (c *Client) DescribeRiskCenterAssetViewCFGRiskList(request *DescribeRiskCen
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRiskCenterAssetViewCFGRiskListWithContext(ctx context.Context, request *DescribeRiskCenterAssetViewCFGRiskListRequest) (response *DescribeRiskCenterAssetViewCFGRiskListResponse, err error) {
     if request == nil {
         request = NewDescribeRiskCenterAssetViewCFGRiskListRequest()
@@ -5999,6 +9447,90 @@ func (c *Client) DescribeUserCallRecordWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeUserDspmInfoListRequest() (request *DescribeUserDspmInfoListRequest) {
+    request = &DescribeUserDspmInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeUserDspmInfoList")
+    
+    
+    return
+}
+
+func NewDescribeUserDspmInfoListResponse() (response *DescribeUserDspmInfoListResponse) {
+    response = &DescribeUserDspmInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserDspmInfoList
+// 获取账号dspm信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserDspmInfoList(request *DescribeUserDspmInfoListRequest) (response *DescribeUserDspmInfoListResponse, err error) {
+    return c.DescribeUserDspmInfoListWithContext(context.Background(), request)
+}
+
+// DescribeUserDspmInfoList
+// 获取账号dspm信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserDspmInfoListWithContext(ctx context.Context, request *DescribeUserDspmInfoListRequest) (response *DescribeUserDspmInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserDspmInfoListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeUserDspmInfoList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserDspmInfoList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserDspmInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVULListRequest() (request *DescribeVULListRequest) {
     request = &DescribeVULListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6503,6 +10035,1036 @@ func (c *Client) DescribeVulViewVulRiskListWithContext(ctx context.Context, requ
     return
 }
 
+func NewDownloadDspmExportLogRequest() (request *DownloadDspmExportLogRequest) {
+    request = &DownloadDspmExportLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DownloadDspmExportLog")
+    
+    
+    return
+}
+
+func NewDownloadDspmExportLogResponse() (response *DownloadDspmExportLogResponse) {
+    response = &DownloadDspmExportLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DownloadDspmExportLog
+// 下载导出日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DownloadDspmExportLog(request *DownloadDspmExportLogRequest) (response *DownloadDspmExportLogResponse, err error) {
+    return c.DownloadDspmExportLogWithContext(context.Background(), request)
+}
+
+// DownloadDspmExportLog
+// 下载导出日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DownloadDspmExportLogWithContext(ctx context.Context, request *DownloadDspmExportLogRequest) (response *DownloadDspmExportLogResponse, err error) {
+    if request == nil {
+        request = NewDownloadDspmExportLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DownloadDspmExportLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadDspmExportLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDownloadDspmExportLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDspmAccessRecordRequest() (request *ModifyDspmAccessRecordRequest) {
+    request = &ModifyDspmAccessRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmAccessRecord")
+    
+    
+    return
+}
+
+func NewModifyDspmAccessRecordResponse() (response *ModifyDspmAccessRecordResponse) {
+    response = &ModifyDspmAccessRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmAccessRecord
+// 修改Dspm访问管理信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyDspmAccessRecord(request *ModifyDspmAccessRecordRequest) (response *ModifyDspmAccessRecordResponse, err error) {
+    return c.ModifyDspmAccessRecordWithContext(context.Background(), request)
+}
+
+// ModifyDspmAccessRecord
+// 修改Dspm访问管理信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyDspmAccessRecordWithContext(ctx context.Context, request *ModifyDspmAccessRecordRequest) (response *ModifyDspmAccessRecordResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmAccessRecordRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmAccessRecord")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmAccessRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmAccessRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDspmApproveStatusRequest() (request *ModifyDspmApproveStatusRequest) {
+    request = &ModifyDspmApproveStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmApproveStatus")
+    
+    
+    return
+}
+
+func NewModifyDspmApproveStatusResponse() (response *ModifyDspmApproveStatusResponse) {
+    response = &ModifyDspmApproveStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmApproveStatus
+// 修改Dspm审批单状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmApproveStatus(request *ModifyDspmApproveStatusRequest) (response *ModifyDspmApproveStatusResponse, err error) {
+    return c.ModifyDspmApproveStatusWithContext(context.Background(), request)
+}
+
+// ModifyDspmApproveStatus
+// 修改Dspm审批单状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmApproveStatusWithContext(ctx context.Context, request *ModifyDspmApproveStatusRequest) (response *ModifyDspmApproveStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmApproveStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmApproveStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmApproveStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmApproveStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDspmAssetAccountRequest() (request *ModifyDspmAssetAccountRequest) {
+    request = &ModifyDspmAssetAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmAssetAccount")
+    
+    
+    return
+}
+
+func NewModifyDspmAssetAccountResponse() (response *ModifyDspmAssetAccountResponse) {
+    response = &ModifyDspmAssetAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmAssetAccount
+// 修改Dspm资产账号信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmAssetAccount(request *ModifyDspmAssetAccountRequest) (response *ModifyDspmAssetAccountResponse, err error) {
+    return c.ModifyDspmAssetAccountWithContext(context.Background(), request)
+}
+
+// ModifyDspmAssetAccount
+// 修改Dspm资产账号信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmAssetAccountWithContext(ctx context.Context, request *ModifyDspmAssetAccountRequest) (response *ModifyDspmAssetAccountResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmAssetAccountRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmAssetAccount")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmAssetAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmAssetAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDspmAssetAccountPrivilegesRequest() (request *ModifyDspmAssetAccountPrivilegesRequest) {
+    request = &ModifyDspmAssetAccountPrivilegesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmAssetAccountPrivileges")
+    
+    
+    return
+}
+
+func NewModifyDspmAssetAccountPrivilegesResponse() (response *ModifyDspmAssetAccountPrivilegesResponse) {
+    response = &ModifyDspmAssetAccountPrivilegesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmAssetAccountPrivileges
+// 修改Dspm资产账号权限
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmAssetAccountPrivileges(request *ModifyDspmAssetAccountPrivilegesRequest) (response *ModifyDspmAssetAccountPrivilegesResponse, err error) {
+    return c.ModifyDspmAssetAccountPrivilegesWithContext(context.Background(), request)
+}
+
+// ModifyDspmAssetAccountPrivileges
+// 修改Dspm资产账号权限
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmAssetAccountPrivilegesWithContext(ctx context.Context, request *ModifyDspmAssetAccountPrivilegesRequest) (response *ModifyDspmAssetAccountPrivilegesResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmAssetAccountPrivilegesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmAssetAccountPrivileges")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmAssetAccountPrivileges require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmAssetAccountPrivilegesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDspmAssetDataScanTaskRequest() (request *ModifyDspmAssetDataScanTaskRequest) {
+    request = &ModifyDspmAssetDataScanTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmAssetDataScanTask")
+    
+    
+    return
+}
+
+func NewModifyDspmAssetDataScanTaskResponse() (response *ModifyDspmAssetDataScanTaskResponse) {
+    response = &ModifyDspmAssetDataScanTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmAssetDataScanTask
+// 修改Dspm资产数据扫描任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmAssetDataScanTask(request *ModifyDspmAssetDataScanTaskRequest) (response *ModifyDspmAssetDataScanTaskResponse, err error) {
+    return c.ModifyDspmAssetDataScanTaskWithContext(context.Background(), request)
+}
+
+// ModifyDspmAssetDataScanTask
+// 修改Dspm资产数据扫描任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmAssetDataScanTaskWithContext(ctx context.Context, request *ModifyDspmAssetDataScanTaskRequest) (response *ModifyDspmAssetDataScanTaskResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmAssetDataScanTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmAssetDataScanTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmAssetDataScanTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmAssetDataScanTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDspmAssetLogDeliverySwitchRequest() (request *ModifyDspmAssetLogDeliverySwitchRequest) {
+    request = &ModifyDspmAssetLogDeliverySwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmAssetLogDeliverySwitch")
+    
+    
+    return
+}
+
+func NewModifyDspmAssetLogDeliverySwitchResponse() (response *ModifyDspmAssetLogDeliverySwitchResponse) {
+    response = &ModifyDspmAssetLogDeliverySwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmAssetLogDeliverySwitch
+// 修改Dspm资产日志投递开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmAssetLogDeliverySwitch(request *ModifyDspmAssetLogDeliverySwitchRequest) (response *ModifyDspmAssetLogDeliverySwitchResponse, err error) {
+    return c.ModifyDspmAssetLogDeliverySwitchWithContext(context.Background(), request)
+}
+
+// ModifyDspmAssetLogDeliverySwitch
+// 修改Dspm资产日志投递开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmAssetLogDeliverySwitchWithContext(ctx context.Context, request *ModifyDspmAssetLogDeliverySwitchRequest) (response *ModifyDspmAssetLogDeliverySwitchResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmAssetLogDeliverySwitchRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmAssetLogDeliverySwitch")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmAssetLogDeliverySwitch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmAssetLogDeliverySwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDspmAssetSecurityAnalysisSwitchRequest() (request *ModifyDspmAssetSecurityAnalysisSwitchRequest) {
+    request = &ModifyDspmAssetSecurityAnalysisSwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmAssetSecurityAnalysisSwitch")
+    
+    
+    return
+}
+
+func NewModifyDspmAssetSecurityAnalysisSwitchResponse() (response *ModifyDspmAssetSecurityAnalysisSwitchResponse) {
+    response = &ModifyDspmAssetSecurityAnalysisSwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmAssetSecurityAnalysisSwitch
+// 修改Dspm资产日志投递开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmAssetSecurityAnalysisSwitch(request *ModifyDspmAssetSecurityAnalysisSwitchRequest) (response *ModifyDspmAssetSecurityAnalysisSwitchResponse, err error) {
+    return c.ModifyDspmAssetSecurityAnalysisSwitchWithContext(context.Background(), request)
+}
+
+// ModifyDspmAssetSecurityAnalysisSwitch
+// 修改Dspm资产日志投递开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmAssetSecurityAnalysisSwitchWithContext(ctx context.Context, request *ModifyDspmAssetSecurityAnalysisSwitchRequest) (response *ModifyDspmAssetSecurityAnalysisSwitchResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmAssetSecurityAnalysisSwitchRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmAssetSecurityAnalysisSwitch")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmAssetSecurityAnalysisSwitch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmAssetSecurityAnalysisSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDspmBackupSettingRequest() (request *ModifyDspmBackupSettingRequest) {
+    request = &ModifyDspmBackupSettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmBackupSetting")
+    
+    
+    return
+}
+
+func NewModifyDspmBackupSettingResponse() (response *ModifyDspmBackupSettingResponse) {
+    response = &ModifyDspmBackupSettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmBackupSetting
+// 修改日志备份设置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmBackupSetting(request *ModifyDspmBackupSettingRequest) (response *ModifyDspmBackupSettingResponse, err error) {
+    return c.ModifyDspmBackupSettingWithContext(context.Background(), request)
+}
+
+// ModifyDspmBackupSetting
+// 修改日志备份设置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmBackupSettingWithContext(ctx context.Context, request *ModifyDspmBackupSettingRequest) (response *ModifyDspmBackupSettingResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmBackupSettingRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmBackupSetting")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmBackupSetting require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmBackupSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDspmIdentifyInfoRequest() (request *ModifyDspmIdentifyInfoRequest) {
+    request = &ModifyDspmIdentifyInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmIdentifyInfo")
+    
+    
+    return
+}
+
+func NewModifyDspmIdentifyInfoResponse() (response *ModifyDspmIdentifyInfoResponse) {
+    response = &ModifyDspmIdentifyInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmIdentifyInfo
+// 修改Dspm身份信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmIdentifyInfo(request *ModifyDspmIdentifyInfoRequest) (response *ModifyDspmIdentifyInfoResponse, err error) {
+    return c.ModifyDspmIdentifyInfoWithContext(context.Background(), request)
+}
+
+// ModifyDspmIdentifyInfo
+// 修改Dspm身份信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmIdentifyInfoWithContext(ctx context.Context, request *ModifyDspmIdentifyInfoRequest) (response *ModifyDspmIdentifyInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmIdentifyInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmIdentifyInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmIdentifyInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmIdentifyInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDspmIpInfoRequest() (request *ModifyDspmIpInfoRequest) {
+    request = &ModifyDspmIpInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmIpInfo")
+    
+    
+    return
+}
+
+func NewModifyDspmIpInfoResponse() (response *ModifyDspmIpInfoResponse) {
+    response = &ModifyDspmIpInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmIpInfo
+// 修改DspmIp信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmIpInfo(request *ModifyDspmIpInfoRequest) (response *ModifyDspmIpInfoResponse, err error) {
+    return c.ModifyDspmIpInfoWithContext(context.Background(), request)
+}
+
+// ModifyDspmIpInfo
+// 修改DspmIp信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmIpInfoWithContext(ctx context.Context, request *ModifyDspmIpInfoRequest) (response *ModifyDspmIpInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmIpInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmIpInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmIpInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmIpInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDspmPersonalIdentifyRequest() (request *ModifyDspmPersonalIdentifyRequest) {
+    request = &ModifyDspmPersonalIdentifyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmPersonalIdentify")
+    
+    
+    return
+}
+
+func NewModifyDspmPersonalIdentifyResponse() (response *ModifyDspmPersonalIdentifyResponse) {
+    response = &ModifyDspmPersonalIdentifyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmPersonalIdentify
+// 修改Dspm个人身份id
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyDspmPersonalIdentify(request *ModifyDspmPersonalIdentifyRequest) (response *ModifyDspmPersonalIdentifyResponse, err error) {
+    return c.ModifyDspmPersonalIdentifyWithContext(context.Background(), request)
+}
+
+// ModifyDspmPersonalIdentify
+// 修改Dspm个人身份id
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyDspmPersonalIdentifyWithContext(ctx context.Context, request *ModifyDspmPersonalIdentifyRequest) (response *ModifyDspmPersonalIdentifyResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmPersonalIdentifyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmPersonalIdentify")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmPersonalIdentify require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmPersonalIdentifyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDspmRestoreLogTaskRequest() (request *ModifyDspmRestoreLogTaskRequest) {
+    request = &ModifyDspmRestoreLogTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmRestoreLogTask")
+    
+    
+    return
+}
+
+func NewModifyDspmRestoreLogTaskResponse() (response *ModifyDspmRestoreLogTaskResponse) {
+    response = &ModifyDspmRestoreLogTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmRestoreLogTask
+// 恢复备份日志
+//
+// 可能返回的错误码:
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmRestoreLogTask(request *ModifyDspmRestoreLogTaskRequest) (response *ModifyDspmRestoreLogTaskResponse, err error) {
+    return c.ModifyDspmRestoreLogTaskWithContext(context.Background(), request)
+}
+
+// ModifyDspmRestoreLogTask
+// 恢复备份日志
+//
+// 可能返回的错误码:
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmRestoreLogTaskWithContext(ctx context.Context, request *ModifyDspmRestoreLogTaskRequest) (response *ModifyDspmRestoreLogTaskResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmRestoreLogTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmRestoreLogTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmRestoreLogTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmRestoreLogTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDspmRiskInfoRequest() (request *ModifyDspmRiskInfoRequest) {
+    request = &ModifyDspmRiskInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmRiskInfo")
+    
+    
+    return
+}
+
+func NewModifyDspmRiskInfoResponse() (response *ModifyDspmRiskInfoResponse) {
+    response = &ModifyDspmRiskInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmRiskInfo
+// 修改Dspm风险信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmRiskInfo(request *ModifyDspmRiskInfoRequest) (response *ModifyDspmRiskInfoResponse, err error) {
+    return c.ModifyDspmRiskInfoWithContext(context.Background(), request)
+}
+
+// ModifyDspmRiskInfo
+// 修改Dspm风险信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDspmRiskInfoWithContext(ctx context.Context, request *ModifyDspmRiskInfoRequest) (response *ModifyDspmRiskInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmRiskInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmRiskInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmRiskInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmRiskInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDspmRiskStrategyRequest() (request *ModifyDspmRiskStrategyRequest) {
+    request = &ModifyDspmRiskStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmRiskStrategy")
+    
+    
+    return
+}
+
+func NewModifyDspmRiskStrategyResponse() (response *ModifyDspmRiskStrategyResponse) {
+    response = &ModifyDspmRiskStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmRiskStrategy
+// 修改Dspm风险策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyDspmRiskStrategy(request *ModifyDspmRiskStrategyRequest) (response *ModifyDspmRiskStrategyResponse, err error) {
+    return c.ModifyDspmRiskStrategyWithContext(context.Background(), request)
+}
+
+// ModifyDspmRiskStrategy
+// 修改Dspm风险策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyDspmRiskStrategyWithContext(ctx context.Context, request *ModifyDspmRiskStrategyRequest) (response *ModifyDspmRiskStrategyResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmRiskStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmRiskStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmRiskStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmRiskStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDspmWhitelistStrategyRequest() (request *ModifyDspmWhitelistStrategyRequest) {
+    request = &ModifyDspmWhitelistStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyDspmWhitelistStrategy")
+    
+    
+    return
+}
+
+func NewModifyDspmWhitelistStrategyResponse() (response *ModifyDspmWhitelistStrategyResponse) {
+    response = &ModifyDspmWhitelistStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDspmWhitelistStrategy
+// 修改Dspm白名单策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyDspmWhitelistStrategy(request *ModifyDspmWhitelistStrategyRequest) (response *ModifyDspmWhitelistStrategyResponse, err error) {
+    return c.ModifyDspmWhitelistStrategyWithContext(context.Background(), request)
+}
+
+// ModifyDspmWhitelistStrategy
+// 修改Dspm白名单策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyDspmWhitelistStrategyWithContext(ctx context.Context, request *ModifyDspmWhitelistStrategyRequest) (response *ModifyDspmWhitelistStrategyResponse, err error) {
+    if request == nil {
+        request = NewModifyDspmWhitelistStrategyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyDspmWhitelistStrategy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDspmWhitelistStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDspmWhitelistStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyOrganizationAccountStatusRequest() (request *ModifyOrganizationAccountStatusRequest) {
     request = &ModifyOrganizationAccountStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6527,23 +11089,10 @@ func NewModifyOrganizationAccountStatusResponse() (response *ModifyOrganizationA
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyOrganizationAccountStatus(request *ModifyOrganizationAccountStatusRequest) (response *ModifyOrganizationAccountStatusResponse, err error) {
     return c.ModifyOrganizationAccountStatusWithContext(context.Background(), request)
 }
@@ -6553,23 +11102,10 @@ func (c *Client) ModifyOrganizationAccountStatus(request *ModifyOrganizationAcco
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyOrganizationAccountStatusWithContext(ctx context.Context, request *ModifyOrganizationAccountStatusRequest) (response *ModifyOrganizationAccountStatusResponse, err error) {
     if request == nil {
         request = NewModifyOrganizationAccountStatusRequest()
@@ -6839,6 +11375,270 @@ func (c *Client) ModifyUebaRuleSwitchWithContext(ctx context.Context, request *M
     return
 }
 
+func NewResetDspmAssetAccountPasswordRequest() (request *ResetDspmAssetAccountPasswordRequest) {
+    request = &ResetDspmAssetAccountPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ResetDspmAssetAccountPassword")
+    
+    
+    return
+}
+
+func NewResetDspmAssetAccountPasswordResponse() (response *ResetDspmAssetAccountPasswordResponse) {
+    response = &ResetDspmAssetAccountPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResetDspmAssetAccountPassword
+// 重置Dspm资产账号密码
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ResetDspmAssetAccountPassword(request *ResetDspmAssetAccountPasswordRequest) (response *ResetDspmAssetAccountPasswordResponse, err error) {
+    return c.ResetDspmAssetAccountPasswordWithContext(context.Background(), request)
+}
+
+// ResetDspmAssetAccountPassword
+// 重置Dspm资产账号密码
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ResetDspmAssetAccountPasswordWithContext(ctx context.Context, request *ResetDspmAssetAccountPasswordRequest) (response *ResetDspmAssetAccountPasswordResponse, err error) {
+    if request == nil {
+        request = NewResetDspmAssetAccountPasswordRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ResetDspmAssetAccountPassword")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetDspmAssetAccountPassword require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetDspmAssetAccountPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRetryDspmExportLogRequest() (request *RetryDspmExportLogRequest) {
+    request = &RetryDspmExportLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "RetryDspmExportLog")
+    
+    
+    return
+}
+
+func NewRetryDspmExportLogResponse() (response *RetryDspmExportLogResponse) {
+    response = &RetryDspmExportLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RetryDspmExportLog
+// RetryExportLog
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RetryDspmExportLog(request *RetryDspmExportLogRequest) (response *RetryDspmExportLogResponse, err error) {
+    return c.RetryDspmExportLogWithContext(context.Background(), request)
+}
+
+// RetryDspmExportLog
+// RetryExportLog
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RetryDspmExportLogWithContext(ctx context.Context, request *RetryDspmExportLogRequest) (response *RetryDspmExportLogResponse, err error) {
+    if request == nil {
+        request = NewRetryDspmExportLogRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "RetryDspmExportLog")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RetryDspmExportLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRetryDspmExportLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRevertDspmAssetAccountRequest() (request *RevertDspmAssetAccountRequest) {
+    request = &RevertDspmAssetAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "RevertDspmAssetAccount")
+    
+    
+    return
+}
+
+func NewRevertDspmAssetAccountResponse() (response *RevertDspmAssetAccountResponse) {
+    response = &RevertDspmAssetAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RevertDspmAssetAccount
+// 恢复Dspm资产账号
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RevertDspmAssetAccount(request *RevertDspmAssetAccountRequest) (response *RevertDspmAssetAccountResponse, err error) {
+    return c.RevertDspmAssetAccountWithContext(context.Background(), request)
+}
+
+// RevertDspmAssetAccount
+// 恢复Dspm资产账号
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RevertDspmAssetAccountWithContext(ctx context.Context, request *RevertDspmAssetAccountRequest) (response *RevertDspmAssetAccountResponse, err error) {
+    if request == nil {
+        request = NewRevertDspmAssetAccountRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "RevertDspmAssetAccount")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RevertDspmAssetAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRevertDspmAssetAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSendDspmAssetLoginSmsCodeRequest() (request *SendDspmAssetLoginSmsCodeRequest) {
+    request = &SendDspmAssetLoginSmsCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "SendDspmAssetLoginSmsCode")
+    
+    
+    return
+}
+
+func NewSendDspmAssetLoginSmsCodeResponse() (response *SendDspmAssetLoginSmsCodeResponse) {
+    response = &SendDspmAssetLoginSmsCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SendDspmAssetLoginSmsCode
+// 发送Dspm资产访问验证码
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SendDspmAssetLoginSmsCode(request *SendDspmAssetLoginSmsCodeRequest) (response *SendDspmAssetLoginSmsCodeResponse, err error) {
+    return c.SendDspmAssetLoginSmsCodeWithContext(context.Background(), request)
+}
+
+// SendDspmAssetLoginSmsCode
+// 发送Dspm资产访问验证码
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SendDspmAssetLoginSmsCodeWithContext(ctx context.Context, request *SendDspmAssetLoginSmsCodeRequest) (response *SendDspmAssetLoginSmsCodeResponse, err error) {
+    if request == nil {
+        request = NewSendDspmAssetLoginSmsCodeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "SendDspmAssetLoginSmsCode")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendDspmAssetLoginSmsCode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSendDspmAssetLoginSmsCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopRiskCenterTaskRequest() (request *StopRiskCenterTaskRequest) {
     request = &StopRiskCenterTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6923,6 +11723,122 @@ func (c *Client) StopRiskCenterTaskWithContext(ctx context.Context, request *Sto
     return
 }
 
+func NewSyncDspmAssetsRequest() (request *SyncDspmAssetsRequest) {
+    request = &SyncDspmAssetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "SyncDspmAssets")
+    
+    
+    return
+}
+
+func NewSyncDspmAssetsResponse() (response *SyncDspmAssetsResponse) {
+    response = &SyncDspmAssetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SyncDspmAssets
+// 同步dspm支持的资产
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) SyncDspmAssets(request *SyncDspmAssetsRequest) (response *SyncDspmAssetsResponse, err error) {
+    return c.SyncDspmAssetsWithContext(context.Background(), request)
+}
+
+// SyncDspmAssets
+// 同步dspm支持的资产
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) SyncDspmAssetsWithContext(ctx context.Context, request *SyncDspmAssetsRequest) (response *SyncDspmAssetsResponse, err error) {
+    if request == nil {
+        request = NewSyncDspmAssetsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "SyncDspmAssets")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SyncDspmAssets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSyncDspmAssetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSyncDspmUsersRequest() (request *SyncDspmUsersRequest) {
+    request = &SyncDspmUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "SyncDspmUsers")
+    
+    
+    return
+}
+
+func NewSyncDspmUsersResponse() (response *SyncDspmUsersResponse) {
+    response = &SyncDspmUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SyncDspmUsers
+// 同步dspm用户列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) SyncDspmUsers(request *SyncDspmUsersRequest) (response *SyncDspmUsersResponse, err error) {
+    return c.SyncDspmUsersWithContext(context.Background(), request)
+}
+
+// SyncDspmUsers
+// 同步dspm用户列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) SyncDspmUsersWithContext(ctx context.Context, request *SyncDspmUsersRequest) (response *SyncDspmUsersResponse, err error) {
+    if request == nil {
+        request = NewSyncDspmUsersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "SyncDspmUsers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SyncDspmUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSyncDspmUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateAccessKeyAlarmStatusRequest() (request *UpdateAccessKeyAlarmStatusRequest) {
     request = &UpdateAccessKeyAlarmStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6947,23 +11863,10 @@ func NewUpdateAccessKeyAlarmStatusResponse() (response *UpdateAccessKeyAlarmStat
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateAccessKeyAlarmStatus(request *UpdateAccessKeyAlarmStatusRequest) (response *UpdateAccessKeyAlarmStatusResponse, err error) {
     return c.UpdateAccessKeyAlarmStatusWithContext(context.Background(), request)
 }
@@ -6973,23 +11876,10 @@ func (c *Client) UpdateAccessKeyAlarmStatus(request *UpdateAccessKeyAlarmStatusR
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateAccessKeyAlarmStatusWithContext(ctx context.Context, request *UpdateAccessKeyAlarmStatusRequest) (response *UpdateAccessKeyAlarmStatusResponse, err error) {
     if request == nil {
         request = NewUpdateAccessKeyAlarmStatusRequest()
@@ -7031,23 +11921,10 @@ func NewUpdateAccessKeyRemarkResponse() (response *UpdateAccessKeyRemarkResponse
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateAccessKeyRemark(request *UpdateAccessKeyRemarkRequest) (response *UpdateAccessKeyRemarkResponse, err error) {
     return c.UpdateAccessKeyRemarkWithContext(context.Background(), request)
 }
@@ -7057,23 +11934,10 @@ func (c *Client) UpdateAccessKeyRemark(request *UpdateAccessKeyRemarkRequest) (r
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateAccessKeyRemarkWithContext(ctx context.Context, request *UpdateAccessKeyRemarkRequest) (response *UpdateAccessKeyRemarkResponse, err error) {
     if request == nil {
         request = NewUpdateAccessKeyRemarkRequest()
@@ -7115,23 +11979,10 @@ func NewUpdateAlertStatusListResponse() (response *UpdateAlertStatusListResponse
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateAlertStatusList(request *UpdateAlertStatusListRequest) (response *UpdateAlertStatusListResponse, err error) {
     return c.UpdateAlertStatusListWithContext(context.Background(), request)
 }
@@ -7141,23 +11992,10 @@ func (c *Client) UpdateAlertStatusList(request *UpdateAlertStatusListRequest) (r
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateAlertStatusListWithContext(ctx context.Context, request *UpdateAlertStatusListRequest) (response *UpdateAlertStatusListResponse, err error) {
     if request == nil {
         request = NewUpdateAlertStatusListRequest()
@@ -7171,6 +12009,72 @@ func (c *Client) UpdateAlertStatusListWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewUpdateAlertStatusListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyDspmAssetLoginCodeRequest() (request *VerifyDspmAssetLoginCodeRequest) {
+    request = &VerifyDspmAssetLoginCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "VerifyDspmAssetLoginCode")
+    
+    
+    return
+}
+
+func NewVerifyDspmAssetLoginCodeResponse() (response *VerifyDspmAssetLoginCodeResponse) {
+    response = &VerifyDspmAssetLoginCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// VerifyDspmAssetLoginCode
+// 验证Dspm资产登录验证码
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) VerifyDspmAssetLoginCode(request *VerifyDspmAssetLoginCodeRequest) (response *VerifyDspmAssetLoginCodeResponse, err error) {
+    return c.VerifyDspmAssetLoginCodeWithContext(context.Background(), request)
+}
+
+// VerifyDspmAssetLoginCode
+// 验证Dspm资产登录验证码
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) VerifyDspmAssetLoginCodeWithContext(ctx context.Context, request *VerifyDspmAssetLoginCodeRequest) (response *VerifyDspmAssetLoginCodeResponse, err error) {
+    if request == nil {
+        request = NewVerifyDspmAssetLoginCodeRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "VerifyDspmAssetLoginCode")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyDspmAssetLoginCode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVerifyDspmAssetLoginCodeResponse()
     err = c.Send(request, response)
     return
 }

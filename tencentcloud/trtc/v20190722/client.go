@@ -4881,6 +4881,8 @@ func NewStartPublishCdnStreamResponse() (response *StartPublishCdnStreamResponse
 //
 // 启动一个混流转推任务，将  TRTC 房间的多路音视频流混成一路音视频流，编码后推到直播 CDN 或者回推到 TRTC 房间。也支持不转码直接转推 TRTC 房间的单路流。启动成功后，会返回一个 SdkAppid 维度唯一的任务 Id（TaskId）。您需要保存该 TaskId，后续需要依赖此 TaskId 更新和结束任务。可以参考文档： [功能说明](https://cloud.tencent.com/document/product/647/84721#b9a855f4-e38c-4616-9b07-fc44e0e8282a) 和 [常见问题](https://cloud.tencent.com/document/product/647/62620)
 //
+// 需要注意的是，TaskId调用时效性是30天，从成功启动转推并获得任务ID后开始计算，超时后无法调用更新和停止等接口，但是转推任务不会停止。最终任务会等所有参与混流转推的主播离开TRTC房间或切换成观众，并且超过MaxIdleTime时长后，自动停止。
+//
 // 
 //
 // 注意：
@@ -4914,6 +4916,8 @@ func (c *Client) StartPublishCdnStream(request *StartPublishCdnStreamRequest) (r
 // 接口说明：  
 //
 // 启动一个混流转推任务，将  TRTC 房间的多路音视频流混成一路音视频流，编码后推到直播 CDN 或者回推到 TRTC 房间。也支持不转码直接转推 TRTC 房间的单路流。启动成功后，会返回一个 SdkAppid 维度唯一的任务 Id（TaskId）。您需要保存该 TaskId，后续需要依赖此 TaskId 更新和结束任务。可以参考文档： [功能说明](https://cloud.tencent.com/document/product/647/84721#b9a855f4-e38c-4616-9b07-fc44e0e8282a) 和 [常见问题](https://cloud.tencent.com/document/product/647/62620)
+//
+// 需要注意的是，TaskId调用时效性是30天，从成功启动转推并获得任务ID后开始计算，超时后无法调用更新和停止等接口，但是转推任务不会停止。最终任务会等所有参与混流转推的主播离开TRTC房间或切换成观众，并且超过MaxIdleTime时长后，自动停止。
 //
 // 
 //

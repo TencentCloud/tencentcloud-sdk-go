@@ -90,38 +90,38 @@ func (r *CheckConnectorNameResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckSavepointRequestParams struct {
-	// 作业 id
+	// <p>作业 id</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 快照资源 id
+	// <p>快照资源 id</p>
 	SerialId *string `json:"SerialId,omitnil,omitempty" name:"SerialId"`
 
-	// 快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint
+	// <p>快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint</p>
 	RecordType *int64 `json:"RecordType,omitnil,omitempty" name:"RecordType"`
 
-	// 快照路径，目前只支持 cos 路径
+	// <p>快照路径，目前只支持 cos 路径</p>
 	SavepointPath *string `json:"SavepointPath,omitnil,omitempty" name:"SavepointPath"`
 
-	// 工作空间 id
+	// <p>工作空间 id</p>
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
 }
 
 type CheckSavepointRequest struct {
 	*tchttp.BaseRequest
 	
-	// 作业 id
+	// <p>作业 id</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 快照资源 id
+	// <p>快照资源 id</p>
 	SerialId *string `json:"SerialId,omitnil,omitempty" name:"SerialId"`
 
-	// 快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint
+	// <p>快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint</p>
 	RecordType *int64 `json:"RecordType,omitnil,omitempty" name:"RecordType"`
 
-	// 快照路径，目前只支持 cos 路径
+	// <p>快照路径，目前只支持 cos 路径</p>
 	SavepointPath *string `json:"SavepointPath,omitnil,omitempty" name:"SavepointPath"`
 
-	// 工作空间 id
+	// <p>工作空间 id</p>
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
 }
 
@@ -150,10 +150,10 @@ func (r *CheckSavepointRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckSavepointResponseParams struct {
-	// 资源 id
+	// <p>资源 id</p>
 	SerialId *string `json:"SerialId,omitnil,omitempty" name:"SerialId"`
 
-	// 1=可用，2=不可用
+	// <p>1=可用，2=不可用</p>
 	SavepointStatus *int64 `json:"SavepointStatus,omitnil,omitempty" name:"SavepointStatus"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1888,26 +1888,26 @@ func (r *DeleteJobsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteResourceConfigsRequestParams struct {
-	// 资源ID
+	// <p>资源ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 资源版本数组
+	// <p>资源版本数组</p>
 	ResourceConfigVersions []*int64 `json:"ResourceConfigVersions,omitnil,omitempty" name:"ResourceConfigVersions"`
 
-	// 工作空间 SerialId
+	// <p>工作空间 SerialId</p>
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
 }
 
 type DeleteResourceConfigsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源ID
+	// <p>资源ID</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 资源版本数组
+	// <p>资源版本数组</p>
 	ResourceConfigVersions []*int64 `json:"ResourceConfigVersions,omitnil,omitempty" name:"ResourceConfigVersions"`
 
-	// 工作空间 SerialId
+	// <p>工作空间 SerialId</p>
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
 }
 
@@ -3641,6 +3641,70 @@ func (r *DescribeVariablesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeWorkSpaceUsersRequestParams struct {
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// 子用户
+	AuthSubAccountUin *string `json:"AuthSubAccountUin,omitnil,omitempty" name:"AuthSubAccountUin"`
+}
+
+type DescribeWorkSpaceUsersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// 子用户
+	AuthSubAccountUin *string `json:"AuthSubAccountUin,omitnil,omitempty" name:"AuthSubAccountUin"`
+}
+
+func (r *DescribeWorkSpaceUsersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkSpaceUsersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkSpaceId")
+	delete(f, "AuthSubAccountUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkSpaceUsersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkSpaceUsersResponseParams struct {
+	// 空间用户列表
+	RoleAuths []*RoleAuth `json:"RoleAuths,omitnil,omitempty" name:"RoleAuths"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeWorkSpaceUsersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWorkSpaceUsersResponseParams `json:"Response"`
+}
+
+func (r *DescribeWorkSpaceUsersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkSpaceUsersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeWorkSpacesRequestParams struct {
 	// 偏移量，默认 0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -4439,15 +4503,15 @@ type LogContent struct {
 }
 
 type LogicalType struct {
-	// 类型
+	// <p>类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 是否允许为空
+	// <p>是否允许为空</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NullAble *bool `json:"NullAble,omitnil,omitempty" name:"NullAble"`
 
-	// 长度
+	// <p>长度</p><p>单位：字符数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Length *int64 `json:"Length,omitnil,omitempty" name:"Length"`
 }
@@ -5540,15 +5604,11 @@ type SetatsCvmInfo struct {
 }
 
 type SetatsDisk struct {
-	// 磁盘类型
-	// CLOUD_BSSD
-	// CLOUD_SSD
-	// CLOUD_HSSD
-	// CLOUD_PREMIUM
+	// <p>磁盘类型<br>CLOUD_BSSD<br>CLOUD_SSD<br>CLOUD_HSSD<br>CLOUD_PREMIUM</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 磁盘大小
+	// <p>磁盘大小</p><p>单位：GB</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 }

@@ -3596,6 +3596,20 @@ type Filter struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
+type InputPermissionGroupRules struct {
+	// 允许访问的客户端IP
+	AuthClientIp *string `json:"AuthClientIp,omitnil,omitempty" name:"AuthClientIp"`
+
+	// 读写权限, ro为只读，rw为读写
+	RWPermission *string `json:"RWPermission,omitnil,omitempty" name:"RWPermission"`
+
+	// 用户权限。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。
+	UserPermission *string `json:"UserPermission,omitnil,omitempty" name:"UserPermission"`
+
+	// 规则优先级，1-100。 其中 1 为最高，100为最低
+	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+}
+
 type LifecycleDataTaskInfo struct {
 	// 任务id
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -4123,6 +4137,70 @@ type MountInfo struct {
 
 	// 云联网中CFS Turbo使用的网段
 	CidrBlock *string `json:"CidrBlock,omitnil,omitempty" name:"CidrBlock"`
+}
+
+// Predefined struct for user
+type OverrideCfsRulesRequestParams struct {
+	// 权限组 ID
+	PermissionGroupId *string `json:"PermissionGroupId,omitnil,omitempty" name:"PermissionGroupId"`
+
+	// 权限组规则列表
+	RuleList []*InputPermissionGroupRules `json:"RuleList,omitnil,omitempty" name:"RuleList"`
+}
+
+type OverrideCfsRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 权限组 ID
+	PermissionGroupId *string `json:"PermissionGroupId,omitnil,omitempty" name:"PermissionGroupId"`
+
+	// 权限组规则列表
+	RuleList []*InputPermissionGroupRules `json:"RuleList,omitnil,omitempty" name:"RuleList"`
+}
+
+func (r *OverrideCfsRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OverrideCfsRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PermissionGroupId")
+	delete(f, "RuleList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OverrideCfsRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OverrideCfsRulesResponseParams struct {
+	// 权限组规则列表
+	RuleList []*PGroupRuleInfo `json:"RuleList,omitnil,omitempty" name:"RuleList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type OverrideCfsRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *OverrideCfsRulesResponseParams `json:"Response"`
+}
+
+func (r *OverrideCfsRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OverrideCfsRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PGroup struct {

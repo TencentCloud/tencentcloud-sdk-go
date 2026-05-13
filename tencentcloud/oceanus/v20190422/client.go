@@ -2257,6 +2257,64 @@ func (c *Client) DescribeVariablesWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeWorkSpaceUsersRequest() (request *DescribeWorkSpaceUsersRequest) {
+    request = &DescribeWorkSpaceUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "DescribeWorkSpaceUsers")
+    
+    
+    return
+}
+
+func NewDescribeWorkSpaceUsersResponse() (response *DescribeWorkSpaceUsersResponse) {
+    response = &DescribeWorkSpaceUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWorkSpaceUsers
+// 工作空间用户列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeWorkSpaceUsers(request *DescribeWorkSpaceUsersRequest) (response *DescribeWorkSpaceUsersResponse, err error) {
+    return c.DescribeWorkSpaceUsersWithContext(context.Background(), request)
+}
+
+// DescribeWorkSpaceUsers
+// 工作空间用户列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeWorkSpaceUsersWithContext(ctx context.Context, request *DescribeWorkSpaceUsersRequest) (response *DescribeWorkSpaceUsersResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkSpaceUsersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "oceanus", APIVersion, "DescribeWorkSpaceUsers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWorkSpaceUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWorkSpaceUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWorkSpacesRequest() (request *DescribeWorkSpacesRequest) {
     request = &DescribeWorkSpacesRequest{
         BaseRequest: &tchttp.BaseRequest{},

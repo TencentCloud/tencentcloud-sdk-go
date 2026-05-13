@@ -1478,6 +1478,12 @@ type Console struct {
 	// <p>自定义显示菜单</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Menus []*string `json:"Menus,omitnil,omitempty" name:"Menus"`
+
+	// <p>公网访问域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>内网访问域名</p>
+	IntranetDomain *string `json:"IntranetDomain,omitnil,omitempty" name:"IntranetDomain"`
 }
 
 type ConsoleAccount struct {
