@@ -2358,6 +2358,82 @@ func (r *GetGroupListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetHardwareInfoRequestParams struct {
+	// 厂商名称
+	Vendor *string `json:"Vendor,omitnil,omitempty" name:"Vendor"`
+
+	// 设备SN序列号
+	SN *string `json:"SN,omitnil,omitempty" name:"SN"`
+}
+
+type GetHardwareInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 厂商名称
+	Vendor *string `json:"Vendor,omitnil,omitempty" name:"Vendor"`
+
+	// 设备SN序列号
+	SN *string `json:"SN,omitnil,omitempty" name:"SN"`
+}
+
+func (r *GetHardwareInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetHardwareInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Vendor")
+	delete(f, "SN")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetHardwareInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetHardwareInfoResponseParams struct {
+	// license授权有效期 
+	// 0：月度授权 
+	// 1：永久授权 
+	// -1：未知
+	LicensePayMode *int64 `json:"LicensePayMode,omitnil,omitempty" name:"LicensePayMode"`
+
+	// 付费方 0：客户付费 1：厂商付费
+	Payer *int64 `json:"Payer,omitnil,omitempty" name:"Payer"`
+
+	// 硬件序列号
+	SN *string `json:"SN,omitnil,omitempty" name:"SN"`
+
+	// 厂商名称
+	Vendor *string `json:"Vendor,omitnil,omitempty" name:"Vendor"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetHardwareInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *GetHardwareInfoResponseParams `json:"Response"`
+}
+
+func (r *GetHardwareInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetHardwareInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetHardwareListRequestParams struct {
 	// 页码
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`

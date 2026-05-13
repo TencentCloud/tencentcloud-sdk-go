@@ -26,6 +26,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// AllocateId 对应环境已释放，不可再次使用
+	FAILEDOPERATION_ALLOCATEIDRELEASED = "FailedOperation.AllocateIdReleased"
+
 	// FailedOperation.CreateTable
 	FAILEDOPERATION_CREATETABLE = "FailedOperation.CreateTable"
 
@@ -101,6 +104,9 @@ const (
 	// 证书验证失败
 	INVALIDPARAMETER_CERTVERIFYFAILED = "InvalidParameter.CertVerifyFailed"
 
+	// Uin 未配置，不接受其分配请求
+	INVALIDPARAMETER_CUSTOMERNOTCONFIGURED = "InvalidParameter.CustomerNotConfigured"
+
 	// 环境ID非法。
 	INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
 
@@ -112,6 +118,12 @@ const (
 
 	// 请求参数错误。
 	INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+
+	// 资源标识参数未传
+	INVALIDPARAMETER_MISSINGIDENTIFIER = "InvalidParameter.MissingIdentifier"
+
+	// 必填参数缺失
+	INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 
 	// 对应资源不存在。
 	INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
@@ -206,11 +218,17 @@ const (
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"
 
+	// 该客户池子暂无空闲，需要稍后重试
+	RESOURCEINSUFFICIENT_ENVPOOLEMPTY = "ResourceInsufficient.EnvPoolEmpty"
+
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
 	// 连接器未找到,请创建连接器或检查连接器参数是否正确
 	RESOURCENOTFOUND_CONNECTOR = "ResourceNotFound.Connector"
+
+	// 环境不存在，未找到记录
+	RESOURCENOTFOUND_ENVNOTEXIST = "ResourceNotFound.EnvNotExist"
 
 	// HTTP访问服务域名不存在
 	RESOURCENOTFOUND_HTTPSERVICEDOMAIN = "ResourceNotFound.HTTPServiceDomain"

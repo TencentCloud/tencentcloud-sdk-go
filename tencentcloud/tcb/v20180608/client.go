@@ -115,6 +115,118 @@ func (c *Client) AddProviderWithContext(ctx context.Context, request *AddProvide
     return
 }
 
+func NewAllocateEnvRequest() (request *AllocateEnvRequest) {
+    request = &AllocateEnvRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "AllocateEnv")
+    
+    
+    return
+}
+
+func NewAllocateEnvResponse() (response *AllocateEnvResponse) {
+    response = &AllocateEnvResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AllocateEnv
+// 从环境池里立即取出1个环境
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ALLOCATEIDRELEASED = "FailedOperation.AllocateIdReleased"
+//  INVALIDPARAMETER_CUSTOMERNOTCONFIGURED = "InvalidParameter.CustomerNotConfigured"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT_ENVPOOLEMPTY = "ResourceInsufficient.EnvPoolEmpty"
+func (c *Client) AllocateEnv(request *AllocateEnvRequest) (response *AllocateEnvResponse, err error) {
+    return c.AllocateEnvWithContext(context.Background(), request)
+}
+
+// AllocateEnv
+// 从环境池里立即取出1个环境
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ALLOCATEIDRELEASED = "FailedOperation.AllocateIdReleased"
+//  INVALIDPARAMETER_CUSTOMERNOTCONFIGURED = "InvalidParameter.CustomerNotConfigured"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT_ENVPOOLEMPTY = "ResourceInsufficient.EnvPoolEmpty"
+func (c *Client) AllocateEnvWithContext(ctx context.Context, request *AllocateEnvRequest) (response *AllocateEnvResponse, err error) {
+    if request == nil {
+        request = NewAllocateEnvRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "AllocateEnv")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AllocateEnv require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAllocateEnvResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAssumeRoleForAllocatedEnvRequest() (request *AssumeRoleForAllocatedEnvRequest) {
+    request = &AssumeRoleForAllocatedEnvRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "AssumeRoleForAllocatedEnv")
+    
+    
+    return
+}
+
+func NewAssumeRoleForAllocatedEnvResponse() (response *AssumeRoleForAllocatedEnvResponse) {
+    response = &AssumeRoleForAllocatedEnvResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AssumeRoleForAllocatedEnv
+// 白名单接口，申请Tcb角色临时凭证
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) AssumeRoleForAllocatedEnv(request *AssumeRoleForAllocatedEnvRequest) (response *AssumeRoleForAllocatedEnvResponse, err error) {
+    return c.AssumeRoleForAllocatedEnvWithContext(context.Background(), request)
+}
+
+// AssumeRoleForAllocatedEnv
+// 白名单接口，申请Tcb角色临时凭证
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) AssumeRoleForAllocatedEnvWithContext(ctx context.Context, request *AssumeRoleForAllocatedEnvRequest) (response *AssumeRoleForAllocatedEnvResponse, err error) {
+    if request == nil {
+        request = NewAssumeRoleForAllocatedEnvRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "AssumeRoleForAllocatedEnv")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssumeRoleForAllocatedEnv require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAssumeRoleForAllocatedEnvResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckTcbServiceRequest() (request *CheckTcbServiceRequest) {
     request = &CheckTcbServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4687,6 +4799,58 @@ func (c *Client) ModifyUserWithContext(ctx context.Context, request *ModifyUserR
     request.SetContext(ctx)
     
     response = NewModifyUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReleaseEnvRequest() (request *ReleaseEnvRequest) {
+    request = &ReleaseEnvRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ReleaseEnv")
+    
+    
+    return
+}
+
+func NewReleaseEnvResponse() (response *ReleaseEnvResponse) {
+    response = &ReleaseEnvResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReleaseEnv
+// 从环境池里立即取出1个环境
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MISSINGIDENTIFIER = "InvalidParameter.MissingIdentifier"
+//  RESOURCENOTFOUND_ENVNOTEXIST = "ResourceNotFound.EnvNotExist"
+func (c *Client) ReleaseEnv(request *ReleaseEnvRequest) (response *ReleaseEnvResponse, err error) {
+    return c.ReleaseEnvWithContext(context.Background(), request)
+}
+
+// ReleaseEnv
+// 从环境池里立即取出1个环境
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MISSINGIDENTIFIER = "InvalidParameter.MissingIdentifier"
+//  RESOURCENOTFOUND_ENVNOTEXIST = "ResourceNotFound.EnvNotExist"
+func (c *Client) ReleaseEnvWithContext(ctx context.Context, request *ReleaseEnvRequest) (response *ReleaseEnvResponse, err error) {
+    if request == nil {
+        request = NewReleaseEnvRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ReleaseEnv")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReleaseEnv require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReleaseEnvResponse()
     err = c.Send(request, response)
     return
 }

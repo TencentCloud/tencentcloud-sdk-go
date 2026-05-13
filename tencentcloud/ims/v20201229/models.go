@@ -476,17 +476,20 @@ type ObjectResult struct {
 }
 
 type OcrHitInfo struct {
-	// 标识模型命中还是关键词命中
+	// <p>标识模型命中还是关键词命中</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 命中关键词
+	// <p>命中关键词</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 自定义词库名称
+	// <p>自定义词库名称</p>
 	LibName *string `json:"LibName,omitnil,omitempty" name:"LibName"`
 
-	// 位置信息
+	// <p>位置信息</p>
 	Positions []*Positions `json:"Positions,omitnil,omitempty" name:"Positions"`
+
+	// <p>命中标签</p>
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 }
 
 type OcrResult struct {

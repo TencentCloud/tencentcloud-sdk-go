@@ -1,35 +1,10 @@
-# Release v1.3.96
+# Release v1.3.97
 
-## 云联络中心(ccc) 版本：2020-02-10
+## 云防火墙(cfw) 版本：2019-09-04
 
-### 第 128 次发布
+### 第 100 次发布
 
-发布时间：2026-05-13 01:18:15
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeAICallInteractionRecords](https://cloud.tencent.com/document/api/679/131442)
-
-新增数据结构：
-
-* [AICallInteractionRound](https://cloud.tencent.com/document/api/679/47715#AICallInteractionRound)
-* [AICallLatencyMetrics](https://cloud.tencent.com/document/api/679/47715#AICallLatencyMetrics)
-* [AIRoundMessage](https://cloud.tencent.com/document/api/679/47715#AIRoundMessage)
-* [AIRoundPath](https://cloud.tencent.com/document/api/679/47715#AIRoundPath)
-* [AISpeakEvent](https://cloud.tencent.com/document/api/679/47715#AISpeakEvent)
-* [UserReplyEvent](https://cloud.tencent.com/document/api/679/47715#UserReplyEvent)
-
-
-
-## 文件存储(cfs) 版本：2019-07-19
-
-### 第 49 次发布
-
-发布时间：2026-05-13 01:23:44
+发布时间：2026-05-14 01:24:55
 
 本次发布包含了以下内容：
 
@@ -37,38 +12,19 @@
 
 新增接口：
 
-* [OverrideCfsRules](https://cloud.tencent.com/document/api/582/131443)
+* [DescribeEdgeIpSimple](https://cloud.tencent.com/document/api/1132/131587)
 
 新增数据结构：
 
-* [InputPermissionGroupRules](https://cloud.tencent.com/document/api/582/38175#InputPermissionGroupRules)
-
-
-
-## 日志服务(cls) 版本：2020-10-16
-
-### 第 160 次发布
-
-发布时间：2026-05-13 01:29:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Console](https://cloud.tencent.com/document/api/614/56471#Console)
-
-	* 新增成员：Domain, IntranetDomain
-
+* [EdgeIpInfoSimple](https://cloud.tencent.com/document/api/1132/49071#EdgeIpInfoSimple)
 
 
 
 ## 云安全一体化平台(csip) 版本：2022-11-21
 
-### 第 75 次发布
+### 第 76 次发布
 
-发布时间：2026-05-13 01:32:26
+发布时间：2026-05-14 01:33:19
 
 本次发布包含了以下内容：
 
@@ -76,204 +32,34 @@
 
 新增接口：
 
-* [AddDspmAssetManager](https://cloud.tencent.com/document/api/664/131532)
-* [CreateDspmAccessExportJob](https://cloud.tencent.com/document/api/664/131531)
-* [CreateDspmApplyOrder](https://cloud.tencent.com/document/api/664/131530)
-* [CreateDspmApproveHistoryExportJob](https://cloud.tencent.com/document/api/664/131529)
-* [CreateDspmAssetAccessTopologyExportJob](https://cloud.tencent.com/document/api/664/131528)
-* [CreateDspmAssetsExportJob](https://cloud.tencent.com/document/api/664/131527)
-* [CreateDspmExportTask](https://cloud.tencent.com/document/api/664/131459)
-* [CreateDspmIdentifyInfoListExportJob](https://cloud.tencent.com/document/api/664/131526)
-* [CreateDspmPersonalIdentify](https://cloud.tencent.com/document/api/664/131525)
-* [CreateDspmRiskExportJob](https://cloud.tencent.com/document/api/664/131524)
-* [CreateDspmWhitelistStrategy](https://cloud.tencent.com/document/api/664/131523)
-* [DeleteDspmApplyOrder](https://cloud.tencent.com/document/api/664/131522)
-* [DeleteDspmAssetAccount](https://cloud.tencent.com/document/api/664/131521)
-* [DeleteDspmBackupLogList](https://cloud.tencent.com/document/api/664/131458)
-* [DeleteDspmExportTask](https://cloud.tencent.com/document/api/664/131457)
-* [DeleteDspmPersonalIdentify](https://cloud.tencent.com/document/api/664/131520)
-* [DeleteDspmRestoreLogList](https://cloud.tencent.com/document/api/664/131456)
-* [DeleteDspmWhitelistStrategy](https://cloud.tencent.com/document/api/664/131519)
-* [DescribeAssumeRole](https://cloud.tencent.com/document/api/664/131518)
-* [DescribeDspmAccessRecord](https://cloud.tencent.com/document/api/664/131517)
-* [DescribeDspmAccessTopologyAccounts](https://cloud.tencent.com/document/api/664/131516)
-* [DescribeDspmAccessTopologyAssets](https://cloud.tencent.com/document/api/664/131515)
-* [DescribeDspmAccessTopologyIps](https://cloud.tencent.com/document/api/664/131514)
-* [DescribeDspmApplyHistory](https://cloud.tencent.com/document/api/664/131513)
-* [DescribeDspmApplyOrderList](https://cloud.tencent.com/document/api/664/131512)
-* [DescribeDspmApproveHistory](https://cloud.tencent.com/document/api/664/131511)
-* [DescribeDspmApproveOrderList](https://cloud.tencent.com/document/api/664/131510)
-* [DescribeDspmAssetAccessTopology](https://cloud.tencent.com/document/api/664/131509)
-* [DescribeDspmAssetAccountIdentify](https://cloud.tencent.com/document/api/664/131508)
-* [DescribeDspmAssetAccountPresetPrivileges](https://cloud.tencent.com/document/api/664/131507)
-* [DescribeDspmAssetAccountRecycledPrivileges](https://cloud.tencent.com/document/api/664/131506)
-* [DescribeDspmAssetAccounts](https://cloud.tencent.com/document/api/664/131505)
-* [DescribeDspmAssetDatabaseList](https://cloud.tencent.com/document/api/664/131504)
-* [DescribeDspmAssetDatabases](https://cloud.tencent.com/document/api/664/131503)
-* [DescribeDspmAssetFieldList](https://cloud.tencent.com/document/api/664/131502)
-* [DescribeDspmAssetIds](https://cloud.tencent.com/document/api/664/131501)
-* [DescribeDspmAssetLoginCredential](https://cloud.tencent.com/document/api/664/131500)
-* [DescribeDspmAssetSecurityAnalyseStatus](https://cloud.tencent.com/document/api/664/131499)
-* [DescribeDspmAssetSupportedPrivileges](https://cloud.tencent.com/document/api/664/131498)
-* [DescribeDspmAssetTableList](https://cloud.tencent.com/document/api/664/131497)
-* [DescribeDspmAssets](https://cloud.tencent.com/document/api/664/131496)
-* [DescribeDspmBackupLogList](https://cloud.tencent.com/document/api/664/131455)
-* [DescribeDspmBackupSetting](https://cloud.tencent.com/document/api/664/131454)
-* [DescribeDspmDictionaryList](https://cloud.tencent.com/document/api/664/131495)
-* [DescribeDspmExportTask](https://cloud.tencent.com/document/api/664/131453)
-* [DescribeDspmIdentifyIdList](https://cloud.tencent.com/document/api/664/131494)
-* [DescribeDspmIdentifyInfo](https://cloud.tencent.com/document/api/664/131493)
-* [DescribeDspmIdentifyInfoList](https://cloud.tencent.com/document/api/664/131492)
-* [DescribeDspmLogList](https://cloud.tencent.com/document/api/664/131452)
-* [DescribeDspmPayInfo](https://cloud.tencent.com/document/api/664/131446)
-* [DescribeDspmPersonApplyHistory](https://cloud.tencent.com/document/api/664/131491)
-* [DescribeDspmPersonalIdentifyList](https://cloud.tencent.com/document/api/664/131490)
-* [DescribeDspmRisk](https://cloud.tencent.com/document/api/664/131489)
-* [DescribeDspmRiskDetail](https://cloud.tencent.com/document/api/664/131488)
-* [DescribeDspmRiskStrategy](https://cloud.tencent.com/document/api/664/131487)
-* [DescribeDspmRiskStrategyGroup](https://cloud.tencent.com/document/api/664/131486)
-* [DescribeDspmRiskTendency](https://cloud.tencent.com/document/api/664/131485)
-* [DescribeDspmStatistics](https://cloud.tencent.com/document/api/664/131484)
-* [DescribeDspmSupportedAssetType](https://cloud.tencent.com/document/api/664/131483)
-* [DescribeDspmSyncAssetsStatus](https://cloud.tencent.com/document/api/664/131482)
-* [DescribeDspmSyncUsersStatus](https://cloud.tencent.com/document/api/664/131481)
-* [DescribeDspmWhitelistStrategy](https://cloud.tencent.com/document/api/664/131480)
-* [DescribeUserDspmInfoList](https://cloud.tencent.com/document/api/664/131445)
-* [DownloadDspmExportLog](https://cloud.tencent.com/document/api/664/131451)
-* [ModifyDspmAccessRecord](https://cloud.tencent.com/document/api/664/131479)
-* [ModifyDspmApproveStatus](https://cloud.tencent.com/document/api/664/131478)
-* [ModifyDspmAssetAccount](https://cloud.tencent.com/document/api/664/131477)
-* [ModifyDspmAssetAccountPrivileges](https://cloud.tencent.com/document/api/664/131476)
-* [ModifyDspmAssetDataScanTask](https://cloud.tencent.com/document/api/664/131475)
-* [ModifyDspmAssetLogDeliverySwitch](https://cloud.tencent.com/document/api/664/131474)
-* [ModifyDspmAssetSecurityAnalysisSwitch](https://cloud.tencent.com/document/api/664/131473)
-* [ModifyDspmBackupSetting](https://cloud.tencent.com/document/api/664/131450)
-* [ModifyDspmIdentifyInfo](https://cloud.tencent.com/document/api/664/131472)
-* [ModifyDspmIpInfo](https://cloud.tencent.com/document/api/664/131471)
-* [ModifyDspmPersonalIdentify](https://cloud.tencent.com/document/api/664/131470)
-* [ModifyDspmRestoreLogTask](https://cloud.tencent.com/document/api/664/131449)
-* [ModifyDspmRiskInfo](https://cloud.tencent.com/document/api/664/131469)
-* [ModifyDspmRiskStrategy](https://cloud.tencent.com/document/api/664/131468)
-* [ModifyDspmWhitelistStrategy](https://cloud.tencent.com/document/api/664/131467)
-* [ResetDspmAssetAccountPassword](https://cloud.tencent.com/document/api/664/131466)
-* [RetryDspmExportLog](https://cloud.tencent.com/document/api/664/131448)
-* [RevertDspmAssetAccount](https://cloud.tencent.com/document/api/664/131465)
-* [SendDspmAssetLoginSmsCode](https://cloud.tencent.com/document/api/664/131464)
-* [SyncDspmAssets](https://cloud.tencent.com/document/api/664/131463)
-* [SyncDspmUsers](https://cloud.tencent.com/document/api/664/131462)
-* [VerifyDspmAssetLoginCode](https://cloud.tencent.com/document/api/664/131461)
+* [CreateSkillScan](https://cloud.tencent.com/document/api/664/131590)
+* [DescribeSkillScanResult](https://cloud.tencent.com/document/api/664/131589)
 
 新增数据结构：
 
-* [AuditLogInfo](https://cloud.tencent.com/document/api/664/90825#AuditLogInfo)
-* [BackupLog](https://cloud.tencent.com/document/api/664/90825#BackupLog)
-* [DspmAccessRecord](https://cloud.tencent.com/document/api/664/90825#DspmAccessRecord)
-* [DspmAccessRecordId](https://cloud.tencent.com/document/api/664/90825#DspmAccessRecordId)
-* [DspmAccountCount](https://cloud.tencent.com/document/api/664/90825#DspmAccountCount)
-* [DspmApplyOrder](https://cloud.tencent.com/document/api/664/90825#DspmApplyOrder)
-* [DspmApproverOrder](https://cloud.tencent.com/document/api/664/90825#DspmApproverOrder)
-* [DspmApproverStep](https://cloud.tencent.com/document/api/664/90825#DspmApproverStep)
-* [DspmArea](https://cloud.tencent.com/document/api/664/90825#DspmArea)
-* [DspmAssetAccessTopologyItem](https://cloud.tencent.com/document/api/664/90825#DspmAssetAccessTopologyItem)
-* [DspmAssetAccount](https://cloud.tencent.com/document/api/664/90825#DspmAssetAccount)
-* [DspmAssetAccountIdentify](https://cloud.tencent.com/document/api/664/90825#DspmAssetAccountIdentify)
-* [DspmAssetCount](https://cloud.tencent.com/document/api/664/90825#DspmAssetCount)
-* [DspmAssetDataScanDetail](https://cloud.tencent.com/document/api/664/90825#DspmAssetDataScanDetail)
-* [DspmAssetDatabaseInfo](https://cloud.tencent.com/document/api/664/90825#DspmAssetDatabaseInfo)
-* [DspmAssetFieldInfo](https://cloud.tencent.com/document/api/664/90825#DspmAssetFieldInfo)
-* [DspmAssetInstance](https://cloud.tencent.com/document/api/664/90825#DspmAssetInstance)
-* [DspmAssetSecurityAnalyseStatus](https://cloud.tencent.com/document/api/664/90825#DspmAssetSecurityAnalyseStatus)
-* [DspmAssetTableInfo](https://cloud.tencent.com/document/api/664/90825#DspmAssetTableInfo)
-* [DspmAssetTypeCount](https://cloud.tencent.com/document/api/664/90825#DspmAssetTypeCount)
-* [DspmColumnPrivilege](https://cloud.tencent.com/document/api/664/90825#DspmColumnPrivilege)
-* [DspmDatabasePrivilege](https://cloud.tencent.com/document/api/664/90825#DspmDatabasePrivilege)
-* [DspmDbAccountPrivilege](https://cloud.tencent.com/document/api/664/90825#DspmDbAccountPrivilege)
-* [DspmDbAsset](https://cloud.tencent.com/document/api/664/90825#DspmDbAsset)
-* [DspmDbAssetId](https://cloud.tencent.com/document/api/664/90825#DspmDbAssetId)
-* [DspmDictionary](https://cloud.tencent.com/document/api/664/90825#DspmDictionary)
-* [DspmFrequency](https://cloud.tencent.com/document/api/664/90825#DspmFrequency)
-* [DspmIdentifyAssetStatistic](https://cloud.tencent.com/document/api/664/90825#DspmIdentifyAssetStatistic)
-* [DspmIdentifyCategoryDetail](https://cloud.tencent.com/document/api/664/90825#DspmIdentifyCategoryDetail)
-* [DspmIdentifyCount](https://cloud.tencent.com/document/api/664/90825#DspmIdentifyCount)
-* [DspmIdentifyIdItem](https://cloud.tencent.com/document/api/664/90825#DspmIdentifyIdItem)
-* [DspmIdentifyInfoItem](https://cloud.tencent.com/document/api/664/90825#DspmIdentifyInfoItem)
-* [DspmIdentifyRuleDetail](https://cloud.tencent.com/document/api/664/90825#DspmIdentifyRuleDetail)
-* [DspmIp](https://cloud.tencent.com/document/api/664/90825#DspmIp)
-* [DspmIpCount](https://cloud.tencent.com/document/api/664/90825#DspmIpCount)
-* [DspmPersonApplyHistoryItem](https://cloud.tencent.com/document/api/664/90825#DspmPersonApplyHistoryItem)
-* [DspmPersonIdentifyItem](https://cloud.tencent.com/document/api/664/90825#DspmPersonIdentifyItem)
-* [DspmPersonUser](https://cloud.tencent.com/document/api/664/90825#DspmPersonUser)
-* [DspmRisk](https://cloud.tencent.com/document/api/664/90825#DspmRisk)
-* [DspmRiskCount](https://cloud.tencent.com/document/api/664/90825#DspmRiskCount)
-* [DspmRiskStrategy](https://cloud.tencent.com/document/api/664/90825#DspmRiskStrategy)
-* [DspmRiskStrategyGroup](https://cloud.tencent.com/document/api/664/90825#DspmRiskStrategyGroup)
-* [DspmRiskTendency](https://cloud.tencent.com/document/api/664/90825#DspmRiskTendency)
-* [DspmScheduleConfig](https://cloud.tencent.com/document/api/664/90825#DspmScheduleConfig)
-* [DspmSecurityAnalyseStatusCount](https://cloud.tencent.com/document/api/664/90825#DspmSecurityAnalyseStatusCount)
-* [DspmSensitiveScanTaskConfig](https://cloud.tencent.com/document/api/664/90825#DspmSensitiveScanTaskConfig)
-* [DspmSupportedAssetType](https://cloud.tencent.com/document/api/664/90825#DspmSupportedAssetType)
-* [DspmTablePrivilege](https://cloud.tencent.com/document/api/664/90825#DspmTablePrivilege)
-* [DspmUinUser](https://cloud.tencent.com/document/api/664/90825#DspmUinUser)
-* [DspmWhitelistStrategy](https://cloud.tencent.com/document/api/664/90825#DspmWhitelistStrategy)
-* [ExportTask](https://cloud.tencent.com/document/api/664/90825#ExportTask)
-* [HitRules](https://cloud.tencent.com/document/api/664/90825#HitRules)
-* [InquireInfo](https://cloud.tencent.com/document/api/664/90825#InquireInfo)
-* [Location](https://cloud.tencent.com/document/api/664/90825#Location)
-* [RegionConfig](https://cloud.tencent.com/document/api/664/90825#RegionConfig)
-* [SensitiveDetail](https://cloud.tencent.com/document/api/664/90825#SensitiveDetail)
-* [TableField](https://cloud.tencent.com/document/api/664/90825#TableField)
-* [UserDspmInfo](https://cloud.tencent.com/document/api/664/90825#UserDspmInfo)
-
-
-
-## 专线接入(dc) 版本：2018-04-10
-
-### 第 39 次发布
-
-发布时间：2026-05-13 01:44:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateCloudAttachService](https://cloud.tencent.com/document/api/216/111671)
-
-	* 新增入参：Tags
-
+* [CommandPluginState](https://cloud.tencent.com/document/api/664/90825#CommandPluginState)
+* [SkillCapabilityTag](https://cloud.tencent.com/document/api/664/90825#SkillCapabilityTag)
+* [SkillRuleCatalogItem](https://cloud.tencent.com/document/api/664/90825#SkillRuleCatalogItem)
+* [SkillScanEngineResult](https://cloud.tencent.com/document/api/664/90825#SkillScanEngineResult)
+* [SkillScanItem](https://cloud.tencent.com/document/api/664/90825#SkillScanItem)
+* [SkillScanRuleHit](https://cloud.tencent.com/document/api/664/90825#SkillScanRuleHit)
+* [TrafficPluginState](https://cloud.tencent.com/document/api/664/90825#TrafficPluginState)
+* [TrafficRuleState](https://cloud.tencent.com/document/api/664/90825#TrafficRuleState)
 
 修改数据结构：
 
-* [CloudAttachInfo](https://cloud.tencent.com/document/api/216/18418#CloudAttachInfo)
+* [AIAgentAsset](https://cloud.tencent.com/document/api/664/90825#AIAgentAsset)
 
-	* 新增成员：ServiceType, VlanRange
-
-
-
-
-## 数据湖计算 DLC(dlc) 版本：2021-01-25
-
-### 第 158 次发布
-
-发布时间：2026-05-13 01:46:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeTCLakeMetaInstance](https://cloud.tencent.com/document/api/1342/131534)
-* [InitializeTCLake](https://cloud.tencent.com/document/api/1342/131533)
+	* 新增成员：TrafficPluginState, TrafficRuleState, CommandPluginState
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 257 次发布
+## 弹性 MapReduce(emr) 版本：2019-01-03
 
-发布时间：2026-05-13 01:56:58
+### 第 141 次发布
+
+发布时间：2026-05-14 01:54:08
 
 本次发布包含了以下内容：
 
@@ -281,45 +67,64 @@
 
 修改数据结构：
 
-* [CommonFlowApprover](https://cloud.tencent.com/document/api/1420/61525#CommonFlowApprover)
+* [NodeResource](https://cloud.tencent.com/document/api/589/33981#NodeResource)
 
-	* 新增成员：ComponentLimitType
+	* 新增成员：QuotaNum, QuotaUnit
 
+* [NodeSpecInstanceType](https://cloud.tencent.com/document/api/589/33981#NodeSpecInstanceType)
 
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 腾讯云可观测平台(monitor) 版本：2023-06-16
+	* 新增成员：QuotaNum, QuotaUnit
 
 
 
-## 腾讯云可观测平台(monitor) 版本：2018-07-24
 
-### 第 156 次发布
+## 图片内容安全(ims) 版本：2020-12-29
 
-发布时间：2026-05-13 02:23:58
+### 第 13 次发布
+
+发布时间：2026-05-14 02:04:52
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+修改数据结构：
 
-* [DescribeRecordingRules](https://cloud.tencent.com/document/api/248/76039)
+* [OcrHitInfo](https://cloud.tencent.com/document/api/1125/53274#OcrHitInfo)
 
-	* 新增出参：TotalRuleCount
-
-
+	* 新增成员：Label
 
 
-## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
-### 第 83 次发布
 
-发布时间：2026-05-13 02:34:13
+## 图片内容安全(ims) 版本：2020-07-13
+
+
+
+## 腾讯云智能体开发平台(lke) 版本：2023-11-30
+
+### 第 89 次发布
+
+发布时间：2026-05-14 02:17:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [UnsatisfiedReply](https://cloud.tencent.com/document/api/1759/105104#UnsatisfiedReply)
+
+	* 新增成员：Visitor
+
+
+
+
+## 多网聚合加速(mna) 版本：2021-01-19
+
+### 第 33 次发布
+
+发布时间：2026-05-14 02:23:17
 
 本次发布包含了以下内容：
 
@@ -327,48 +132,69 @@
 
 新增接口：
 
-* [DescribeWorkSpaceUsers](https://cloud.tencent.com/document/api/849/131535)
+* [GetHardwareInfo](https://cloud.tencent.com/document/api/1385/131591)
 
 
 
-## 云点播(vod) 版本：2024-07-18
+## 云开发 CloudBase(tcb) 版本：2018-06-08
 
+### 第 138 次发布
 
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 255 次发布
-
-发布时间：2026-05-13 03:46:04
+发布时间：2026-05-14 03:03:35
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [DescribeTaskDetail](https://cloud.tencent.com/document/api/266/33431)
+* [AllocateEnv](https://cloud.tencent.com/document/api/876/131594)
+* [AssumeRoleForAllocatedEnv](https://cloud.tencent.com/document/api/876/131593)
+* [ReleaseEnv](https://cloud.tencent.com/document/api/876/131592)
 
-	* 新增出参：CreateAigcAudioCloneTask
 
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 173 次发布
+
+发布时间：2026-05-14 03:15:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 新增数据结构：
 
-* [AigcAudioCloneInputFileInfo](https://cloud.tencent.com/document/api/266/31773#AigcAudioCloneInputFileInfo)
-* [CreateAigcAudioCloneInput](https://cloud.tencent.com/document/api/266/31773#CreateAigcAudioCloneInput)
-* [CreateAigcAudioCloneOutput](https://cloud.tencent.com/document/api/266/31773#CreateAigcAudioCloneOutput)
-* [CreateAigcAudioCloneTask](https://cloud.tencent.com/document/api/266/31773#CreateAigcAudioCloneTask)
+* [RabbitMQVHostBaseQuota](https://cloud.tencent.com/document/api/1179/46089#RabbitMQVHostBaseQuota)
 
 修改数据结构：
 
-* [AigcImageOutputConfig](https://cloud.tencent.com/document/api/266/31773#AigcImageOutputConfig)
+* [RabbitMQVirtualHostInfo](https://cloud.tencent.com/document/api/1179/46089#RabbitMQVirtualHostInfo)
 
-	* 新增成员：OutputFormat, LogoAdd
+	* 新增成员：Quota
 
-* [AigcVideoTaskInputFileInfo](https://cloud.tencent.com/document/api/266/31773#AigcVideoTaskInputFileInfo)
 
-	* 新增成员：Text
 
+
+## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 116 次发布
+
+发布时间：2026-05-14 03:25:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Workspace](https://cloud.tencent.com/document/api/851/75051#Workspace)
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
 
 
 

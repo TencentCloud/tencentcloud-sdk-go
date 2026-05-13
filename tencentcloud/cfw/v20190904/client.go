@@ -2953,6 +2953,64 @@ func (c *Client) DescribeDefenseSwitchWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeEdgeIpSimpleRequest() (request *DescribeEdgeIpSimpleRequest) {
+    request = &DescribeEdgeIpSimpleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeEdgeIpSimple")
+    
+    
+    return
+}
+
+func NewDescribeEdgeIpSimpleResponse() (response *DescribeEdgeIpSimpleResponse) {
+    response = &DescribeEdgeIpSimpleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEdgeIpSimple
+// 互联网边界防火墙开关列表(轻量)
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeEdgeIpSimple(request *DescribeEdgeIpSimpleRequest) (response *DescribeEdgeIpSimpleResponse, err error) {
+    return c.DescribeEdgeIpSimpleWithContext(context.Background(), request)
+}
+
+// DescribeEdgeIpSimple
+// 互联网边界防火墙开关列表(轻量)
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeEdgeIpSimpleWithContext(ctx context.Context, request *DescribeEdgeIpSimpleRequest) (response *DescribeEdgeIpSimpleResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeIpSimpleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cfw", APIVersion, "DescribeEdgeIpSimple")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeIpSimple require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeIpSimpleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEnterpriseSGRuleProgressRequest() (request *DescribeEnterpriseSGRuleProgressRequest) {
     request = &DescribeEnterpriseSGRuleProgressRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -11434,28 +11434,34 @@ type NodeRenewPriceDetail struct {
 }
 
 type NodeResource struct {
-	// 配置Id
+	// <p>配置Id</p>
 	ResourceConfigId *uint64 `json:"ResourceConfigId,omitnil,omitempty" name:"ResourceConfigId"`
 
-	// Resource
+	// <p>Resource</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *Resource `json:"Resource,omitnil,omitempty" name:"Resource"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 是否默认配置,DEFAULT,BACKUP
+	// <p>是否默认配置,DEFAULT,BACKUP</p>
 	IsDefault *string `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 
-	// 该类型剩余
+	// <p>该类型剩余</p>
 	MaxResourceNum *uint64 `json:"MaxResourceNum,omitnil,omitempty" name:"MaxResourceNum"`
 
-	// 支持的包销时长
+	// <p>支持的包销时长</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrepaidUnderwritePeriods []*int64 `json:"PrepaidUnderwritePeriods,omitnil,omitempty" name:"PrepaidUnderwritePeriods"`
+
+	// <p>配额数量</p>
+	QuotaNum *int64 `json:"QuotaNum,omitnil,omitempty" name:"QuotaNum"`
+
+	// <p>配额单位</p>
+	QuotaUnit *string `json:"QuotaUnit,omitnil,omitempty" name:"QuotaUnit"`
 }
 
 type NodeResourceSpec struct {
@@ -11550,72 +11556,78 @@ type NodeSpecFamily struct {
 }
 
 type NodeSpecInstanceType struct {
-	// 规格
+	// <p>规格</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 4
+	// <p>4</p>
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 8，单位G
+	// <p>8，单位G</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 排序，越小排的越前
+	// <p>排序，越小排的越前</p>
 	Order *int64 `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 数量
+	// <p>数量</p>
 	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
 
-	// 售罄原因
+	// <p>售罄原因</p>
 	SellOutReason *string `json:"SellOutReason,omitnil,omitempty" name:"SellOutReason"`
 
-	// 系统盘
+	// <p>系统盘</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SystemDisk []*NodeSpecDisk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
 
-	// 数据盘
+	// <p>数据盘</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataDisk []*NodeSpecDisk `json:"DataDisk,omitnil,omitempty" name:"DataDisk"`
 
-	// 本地数据盘
+	// <p>本地数据盘</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalDataDisk []*NodeSpecDisk `json:"LocalDataDisk,omitnil,omitempty" name:"LocalDataDisk"`
 
-	// 售罄原因
+	// <p>售罄原因</p>
 	SoldOutReason *string `json:"SoldOutReason,omitnil,omitempty" name:"SoldOutReason"`
 
-	// 机型类别
+	// <p>机型类别</p>
 	InstanceFamily *string `json:"InstanceFamily,omitnil,omitempty" name:"InstanceFamily"`
 
-	// 节点名称
+	// <p>节点名称</p>
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// 节点类型
+	// <p>节点类型</p>
 	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 
-	// 类别
+	// <p>类别</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 类别名称
+	// <p>类别名称</p>
 	TypeName *string `json:"TypeName,omitnil,omitempty" name:"TypeName"`
 
-	// 类别分类
+	// <p>类别分类</p>
 	FamilyName *string `json:"FamilyName,omitnil,omitempty" name:"FamilyName"`
 
-	// cpu类型
+	// <p>cpu类型</p>
 	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 
-	// 售罄 RunOut、库存少 Less、充足 Enough
+	// <p>售罄 RunOut、库存少 Less、充足 Enough</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 原价
+	// <p>原价</p>
 	OriginPrice *float64 `json:"OriginPrice,omitnil,omitempty" name:"OriginPrice"`
 
-	// 包销计费机型支持的购买时长
+	// <p>包销计费机型支持的购买时长</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrepaidUnderwritePeriods []*int64 `json:"PrepaidUnderwritePeriods,omitnil,omitempty" name:"PrepaidUnderwritePeriods"`
 
-	// GPU信息
+	// <p>GPU信息</p>
 	GpuDesc *string `json:"GpuDesc,omitnil,omitempty" name:"GpuDesc"`
+
+	// <p>配额数量</p>
+	QuotaNum *int64 `json:"QuotaNum,omitnil,omitempty" name:"QuotaNum"`
+
+	// <p>配额单位</p>
+	QuotaUnit *string `json:"QuotaUnit,omitnil,omitempty" name:"QuotaUnit"`
 }
 
 type NodeSpecType struct {

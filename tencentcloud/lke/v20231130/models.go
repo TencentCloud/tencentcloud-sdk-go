@@ -13406,6 +13406,9 @@ type UnsatisfiedReply struct {
 
 	// <p>自定义反馈</p>
 	FeedbackContent *string `json:"FeedbackContent,omitnil,omitempty" name:"FeedbackContent"`
+
+	// <p>用户</p>
+	Visitor *string `json:"Visitor,omitnil,omitempty" name:"Visitor"`
 }
 
 type UpdatePeriodInfo struct {

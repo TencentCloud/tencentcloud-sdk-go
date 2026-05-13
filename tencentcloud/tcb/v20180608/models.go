@@ -245,6 +245,73 @@ func (r *AddProviderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AllocateEnvRequestParams struct {
+	// <p>分配请求ID，会按这个值做幂等</p><p>入参限制：长度不超过64</p>
+	AllocateId *string `json:"AllocateId,omitnil,omitempty" name:"AllocateId"`
+
+	// <p>客户平台的应用标识，如果没有则不传</p>
+	ExternalAppId *string `json:"ExternalAppId,omitnil,omitempty" name:"ExternalAppId"`
+}
+
+type AllocateEnvRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>分配请求ID，会按这个值做幂等</p><p>入参限制：长度不超过64</p>
+	AllocateId *string `json:"AllocateId,omitnil,omitempty" name:"AllocateId"`
+
+	// <p>客户平台的应用标识，如果没有则不传</p>
+	ExternalAppId *string `json:"ExternalAppId,omitnil,omitempty" name:"ExternalAppId"`
+}
+
+func (r *AllocateEnvRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AllocateEnvRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AllocateId")
+	delete(f, "ExternalAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AllocateEnvRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AllocateEnvResponseParams struct {
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>回显    客户平台的应用标识，如果没有则不传</p>
+	ExternalAppId *string `json:"ExternalAppId,omitnil,omitempty" name:"ExternalAppId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AllocateEnvResponse struct {
+	*tchttp.BaseResponse
+	Response *AllocateEnvResponseParams `json:"Response"`
+}
+
+func (r *AllocateEnvResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AllocateEnvResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ApiKeyToken struct {
 	// API Key 的唯一标识符，由系统基于 UUID 自动生成的 Base64 URL 编码字符串。后续对该 API Key 进行删除、修改名称或精确查询操作时，均需使用该值作为定位参数
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
@@ -263,6 +330,77 @@ type ApiKeyToken struct {
 	// API Key 的创建时间，格式遵循 ISO 8601 标准。对于 api_key 类型：为该 Key 实际创建时的时间。对于 publish_key 类型：若环境下已存在 publish_key 记录，则返回首次创建的时间而非本次调用时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
+}
+
+// Predefined struct for user
+type AssumeRoleForAllocatedEnvRequestParams struct {
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+type AssumeRoleForAllocatedEnvRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+func (r *AssumeRoleForAllocatedEnvRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssumeRoleForAllocatedEnvRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssumeRoleForAllocatedEnvRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AssumeRoleForAllocatedEnvResponseParams struct {
+	// <p>SecretId</p>
+	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
+
+	// <p>SecretKey</p>
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// <p>Token值</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// <p>过期时间戳</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
+
+	// <p>是否从缓存中加载。标明该值是否实时从sts服务获取，还是从缓存中获取。调用方可不关心</p>
+	IsCache *bool `json:"IsCache,omitnil,omitempty" name:"IsCache"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AssumeRoleForAllocatedEnvResponse struct {
+	*tchttp.BaseResponse
+	Response *AssumeRoleForAllocatedEnvResponseParams `json:"Response"`
+}
+
+func (r *AssumeRoleForAllocatedEnvResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssumeRoleForAllocatedEnvResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type AuthDomain struct {
@@ -7275,6 +7413,67 @@ type ProviderResponseParametersMap struct {
 	// 用户角色/分组（groups）的映射字段名。对应 OIDC 标准中的 groups 字段，值为第三方平台返回的用户信息 JSON 中表示用户所属角色或分组的字段路径。支持字符串数组类型的返回值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Groups *string `json:"Groups,omitnil,omitempty" name:"Groups"`
+}
+
+// Predefined struct for user
+type ReleaseEnvRequestParams struct {
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>分配请求ID</p>
+	AllocateId *string `json:"AllocateId,omitnil,omitempty" name:"AllocateId"`
+}
+
+type ReleaseEnvRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>分配请求ID</p>
+	AllocateId *string `json:"AllocateId,omitnil,omitempty" name:"AllocateId"`
+}
+
+func (r *ReleaseEnvRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReleaseEnvRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "AllocateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReleaseEnvRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReleaseEnvResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ReleaseEnvResponse struct {
+	*tchttp.BaseResponse
+	Response *ReleaseEnvResponseParams `json:"Response"`
+}
+
+func (r *ReleaseEnvResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReleaseEnvResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

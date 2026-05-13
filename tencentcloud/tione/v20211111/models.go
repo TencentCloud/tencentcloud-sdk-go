@@ -10723,6 +10723,8 @@ type Workspace struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// <p>绑定的资源组信息</p>
+	//
+	// Deprecated: ResourceGroups is deprecated.
 	ResourceGroups []*ResourceGroupInWorkspace `json:"ResourceGroups,omitnil,omitempty" name:"ResourceGroups"`
 
 	// <p>当前用户对此空间拥有的权限</p>

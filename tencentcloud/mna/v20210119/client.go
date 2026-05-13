@@ -1487,6 +1487,62 @@ func (c *Client) GetGroupListWithContext(ctx context.Context, request *GetGroupL
     return
 }
 
+func NewGetHardwareInfoRequest() (request *GetHardwareInfoRequest) {
+    request = &GetHardwareInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetHardwareInfo")
+    
+    
+    return
+}
+
+func NewGetHardwareInfoResponse() (response *GetHardwareInfoResponse) {
+    response = &GetHardwareInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetHardwareInfo
+// 获取硬件设备信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_HARDWARENOTEXIST = "OperationDenied.HardwareNotExist"
+func (c *Client) GetHardwareInfo(request *GetHardwareInfoRequest) (response *GetHardwareInfoResponse, err error) {
+    return c.GetHardwareInfoWithContext(context.Background(), request)
+}
+
+// GetHardwareInfo
+// 获取硬件设备信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_HARDWARENOTEXIST = "OperationDenied.HardwareNotExist"
+func (c *Client) GetHardwareInfoWithContext(ctx context.Context, request *GetHardwareInfoRequest) (response *GetHardwareInfoResponse, err error) {
+    if request == nil {
+        request = NewGetHardwareInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mna", APIVersion, "GetHardwareInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetHardwareInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetHardwareInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetHardwareListRequest() (request *GetHardwareListRequest) {
     request = &GetHardwareListRequest{
         BaseRequest: &tchttp.BaseRequest{},

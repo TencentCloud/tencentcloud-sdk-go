@@ -14421,6 +14421,17 @@ type RabbitMQUserQuota struct {
 	UsedUser *int64 `json:"UsedUser,omitnil,omitempty" name:"UsedUser"`
 }
 
+type RabbitMQVHostBaseQuota struct {
+	// 单个 vhost 下允许的最大连接数
+	MaxConnectionPerVhost *int64 `json:"MaxConnectionPerVhost,omitnil,omitempty" name:"MaxConnectionPerVhost"`
+
+	// 单个 vhost 下允许的最大交换机数
+	MaxExchangePerVhost *int64 `json:"MaxExchangePerVhost,omitnil,omitempty" name:"MaxExchangePerVhost"`
+
+	// 单个 vhost 下允许的最大队列数
+	MaxQueuePerVhost *int64 `json:"MaxQueuePerVhost,omitnil,omitempty" name:"MaxQueuePerVhost"`
+}
+
 type RabbitMQVipInstance struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -14549,6 +14560,9 @@ type RabbitMQVirtualHostInfo struct {
 
 	// 修改时间时间戳
 	ModifyTs *uint64 `json:"ModifyTs,omitnil,omitempty" name:"ModifyTs"`
+
+	// 基础配额信息
+	Quota *RabbitMQVHostBaseQuota `json:"Quota,omitnil,omitempty" name:"Quota"`
 }
 
 type RabbitMQVirtualHostStatistics struct {

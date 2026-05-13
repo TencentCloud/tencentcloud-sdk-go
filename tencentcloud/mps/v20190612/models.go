@@ -7543,80 +7543,68 @@ func (r *CreateSubtitleEmbedTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTranscodeTemplateRequestParams struct {
-	// 封装格式，可选值：mp4、flv、hls、ts、webm、mkv、mxf、mov、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+	// <p>封装格式，可选值：mp4、flv、hls、ts、webm、mkv、mxf、mov、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。</p>
 	Container *string `json:"Container,omitnil,omitempty" name:"Container"`
 
-	// 转码模板名称，长度限制：64 个字符。
+	// <p>转码模板名称，长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 模板描述信息，长度限制：256 个字符。
+	// <p>模板描述信息，长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 是否去除视频数据，可选值：
-	// <li>0：保留</li>
-	// <li>1：去除</li>
-	// 默认值：0。
+	// <p>是否去除视频数据，可选值：</p><li>0：保留</li><li>1：去除</li>默认值：0。
 	RemoveVideo *int64 `json:"RemoveVideo,omitnil,omitempty" name:"RemoveVideo"`
 
-	// 是否去除音频数据，可选值：
-	// <li>0：保留</li>
-	// <li>1：去除</li>
-	// 默认值：0。
+	// <p>是否去除音频数据，可选值：</p><li>0：保留</li><li>1：去除</li>默认值：0。
 	RemoveAudio *int64 `json:"RemoveAudio,omitnil,omitempty" name:"RemoveAudio"`
 
-	// 视频流配置参数，当 RemoveVideo 为 0，该字段必填。
+	// <p>视频流配置参数，当 RemoveVideo 为 0，该字段必填。</p>
 	VideoTemplate *VideoTemplateInfo `json:"VideoTemplate,omitnil,omitempty" name:"VideoTemplate"`
 
-	// 音频流配置参数，当 RemoveAudio 为 0，该字段必填。
+	// <p>音频流配置参数，当 RemoveAudio 为 0，该字段必填。</p>
 	AudioTemplate *AudioTemplateInfo `json:"AudioTemplate,omitnil,omitempty" name:"AudioTemplate"`
 
-	// 极速高清转码参数。
+	// <p>极速高清转码参数。</p>
 	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitnil,omitempty" name:"TEHDConfig"`
 
-	// 音视频增强配置。
+	// <p>音视频增强配置。</p>
 	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
 
-	// 扩展参数，序列化的 json 字符串。
+	// <p>扩展参数，序列化的 json 字符串。</p>
 	StdExtInfo *string `json:"StdExtInfo,omitnil,omitempty" name:"StdExtInfo"`
 }
 
 type CreateTranscodeTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 封装格式，可选值：mp4、flv、hls、ts、webm、mkv、mxf、mov、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+	// <p>封装格式，可选值：mp4、flv、hls、ts、webm、mkv、mxf、mov、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。</p>
 	Container *string `json:"Container,omitnil,omitempty" name:"Container"`
 
-	// 转码模板名称，长度限制：64 个字符。
+	// <p>转码模板名称，长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 模板描述信息，长度限制：256 个字符。
+	// <p>模板描述信息，长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 是否去除视频数据，可选值：
-	// <li>0：保留</li>
-	// <li>1：去除</li>
-	// 默认值：0。
+	// <p>是否去除视频数据，可选值：</p><li>0：保留</li><li>1：去除</li>默认值：0。
 	RemoveVideo *int64 `json:"RemoveVideo,omitnil,omitempty" name:"RemoveVideo"`
 
-	// 是否去除音频数据，可选值：
-	// <li>0：保留</li>
-	// <li>1：去除</li>
-	// 默认值：0。
+	// <p>是否去除音频数据，可选值：</p><li>0：保留</li><li>1：去除</li>默认值：0。
 	RemoveAudio *int64 `json:"RemoveAudio,omitnil,omitempty" name:"RemoveAudio"`
 
-	// 视频流配置参数，当 RemoveVideo 为 0，该字段必填。
+	// <p>视频流配置参数，当 RemoveVideo 为 0，该字段必填。</p>
 	VideoTemplate *VideoTemplateInfo `json:"VideoTemplate,omitnil,omitempty" name:"VideoTemplate"`
 
-	// 音频流配置参数，当 RemoveAudio 为 0，该字段必填。
+	// <p>音频流配置参数，当 RemoveAudio 为 0，该字段必填。</p>
 	AudioTemplate *AudioTemplateInfo `json:"AudioTemplate,omitnil,omitempty" name:"AudioTemplate"`
 
-	// 极速高清转码参数。
+	// <p>极速高清转码参数。</p>
 	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitnil,omitempty" name:"TEHDConfig"`
 
-	// 音视频增强配置。
+	// <p>音视频增强配置。</p>
 	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
 
-	// 扩展参数，序列化的 json 字符串。
+	// <p>扩展参数，序列化的 json 字符串。</p>
 	StdExtInfo *string `json:"StdExtInfo,omitnil,omitempty" name:"StdExtInfo"`
 }
 
@@ -7650,7 +7638,7 @@ func (r *CreateTranscodeTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTranscodeTemplateResponseParams struct {
-	// 转码模板唯一标识。
+	// <p>转码模板唯一标识。</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -22870,76 +22858,68 @@ func (r *ModifySubtitleEmbedTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTranscodeTemplateRequestParams struct {
-	// 转码模板唯一标识。
+	// <p>转码模板唯一标识。</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+	// <p>封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。</p>
 	Container *string `json:"Container,omitnil,omitempty" name:"Container"`
 
-	// 转码模板名称，长度限制：64 个字符。
+	// <p>转码模板名称，长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 模板描述信息，长度限制：256 个字符。
+	// <p>模板描述信息，长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 是否去除视频数据，可选值：
-	// <li>0：保留</li>
-	// <li>1：去除</li>
+	// <p>是否去除视频数据，可选值：</p><li>0：保留</li><li>1：去除</li>
 	RemoveVideo *int64 `json:"RemoveVideo,omitnil,omitempty" name:"RemoveVideo"`
 
-	// 是否去除音频数据，可选值：
-	// <li>0：保留</li>
-	// <li>1：去除</li>
+	// <p>是否去除音频数据，可选值：</p><li>0：保留</li><li>1：去除</li>
 	RemoveAudio *int64 `json:"RemoveAudio,omitnil,omitempty" name:"RemoveAudio"`
 
-	// 视频流配置参数。
+	// <p>视频流配置参数。</p>
 	VideoTemplate *VideoTemplateInfoForUpdate `json:"VideoTemplate,omitnil,omitempty" name:"VideoTemplate"`
 
-	// 音频流配置参数。
+	// <p>音频流配置参数。</p>
 	AudioTemplate *AudioTemplateInfoForUpdate `json:"AudioTemplate,omitnil,omitempty" name:"AudioTemplate"`
 
-	// 极速高清转码参数。
+	// <p>极速高清转码参数。</p>
 	TEHDConfig *TEHDConfigForUpdate `json:"TEHDConfig,omitnil,omitempty" name:"TEHDConfig"`
 
-	// 音视频增强参数。
+	// <p>音视频增强参数。</p>
 	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
 }
 
 type ModifyTranscodeTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 转码模板唯一标识。
+	// <p>转码模板唯一标识。</p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+	// <p>封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。</p>
 	Container *string `json:"Container,omitnil,omitempty" name:"Container"`
 
-	// 转码模板名称，长度限制：64 个字符。
+	// <p>转码模板名称，长度限制：64 个字符。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 模板描述信息，长度限制：256 个字符。
+	// <p>模板描述信息，长度限制：256 个字符。</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 是否去除视频数据，可选值：
-	// <li>0：保留</li>
-	// <li>1：去除</li>
+	// <p>是否去除视频数据，可选值：</p><li>0：保留</li><li>1：去除</li>
 	RemoveVideo *int64 `json:"RemoveVideo,omitnil,omitempty" name:"RemoveVideo"`
 
-	// 是否去除音频数据，可选值：
-	// <li>0：保留</li>
-	// <li>1：去除</li>
+	// <p>是否去除音频数据，可选值：</p><li>0：保留</li><li>1：去除</li>
 	RemoveAudio *int64 `json:"RemoveAudio,omitnil,omitempty" name:"RemoveAudio"`
 
-	// 视频流配置参数。
+	// <p>视频流配置参数。</p>
 	VideoTemplate *VideoTemplateInfoForUpdate `json:"VideoTemplate,omitnil,omitempty" name:"VideoTemplate"`
 
-	// 音频流配置参数。
+	// <p>音频流配置参数。</p>
 	AudioTemplate *AudioTemplateInfoForUpdate `json:"AudioTemplate,omitnil,omitempty" name:"AudioTemplate"`
 
-	// 极速高清转码参数。
+	// <p>极速高清转码参数。</p>
 	TEHDConfig *TEHDConfigForUpdate `json:"TEHDConfig,omitnil,omitempty" name:"TEHDConfig"`
 
-	// 音视频增强参数。
+	// <p>音视频增强参数。</p>
 	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
 }
 
