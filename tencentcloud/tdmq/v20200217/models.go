@@ -17151,22 +17151,22 @@ type VpcConfig struct {
 }
 
 type VpcEndpointInfo struct {
-	// vpc的id
+	// <p>vpc的id</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网id
+	// <p>子网id</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// vpc接入点信息
+	// <p>vpc接入点信息</p>
 	VpcEndpoint *string `json:"VpcEndpoint,omitnil,omitempty" name:"VpcEndpoint"`
 
-	// vpc接入点状态 OFF/ON/CREATING/DELETING
+	// <p>vpc接入点状态 OFF/ON/CREATING/DELETING</p>
 	VpcDataStreamEndpointStatus *string `json:"VpcDataStreamEndpointStatus,omitnil,omitempty" name:"VpcDataStreamEndpointStatus"`
 
-	// TLS加密的数据流接入点
+	// <p>TLS加密的数据流接入点</p>
 	VpcTlsEndpoint *string `json:"VpcTlsEndpoint,omitnil,omitempty" name:"VpcTlsEndpoint"`
 
-	// VPC 接入点操作失败的错误信息
+	// <p>VPC 接入点操作失败的错误信息</p>
 	VpcErrorMessage *string `json:"VpcErrorMessage,omitnil,omitempty" name:"VpcErrorMessage"`
 }
 

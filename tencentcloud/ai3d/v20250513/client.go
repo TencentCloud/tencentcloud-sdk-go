@@ -89,6 +89,54 @@ func (c *Client) Convert3DFormatWithContext(ctx context.Context, request *Conver
     return
 }
 
+func NewDescribeAutoRiggingJobRequest() (request *DescribeAutoRiggingJobRequest) {
+    request = &DescribeAutoRiggingJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ai3d", APIVersion, "DescribeAutoRiggingJob")
+    
+    
+    return
+}
+
+func NewDescribeAutoRiggingJobResponse() (response *DescribeAutoRiggingJobResponse) {
+    response = &DescribeAutoRiggingJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAutoRiggingJob
+// 3D模型绑骨蒙皮接口，基于混元大模型，根据输入的人物或动物模型进行绑骨蒙皮，输出带骨骼信息的3D模型。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+func (c *Client) DescribeAutoRiggingJob(request *DescribeAutoRiggingJobRequest) (response *DescribeAutoRiggingJobResponse, err error) {
+    return c.DescribeAutoRiggingJobWithContext(context.Background(), request)
+}
+
+// DescribeAutoRiggingJob
+// 3D模型绑骨蒙皮接口，基于混元大模型，根据输入的人物或动物模型进行绑骨蒙皮，输出带骨骼信息的3D模型。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+func (c *Client) DescribeAutoRiggingJobWithContext(ctx context.Context, request *DescribeAutoRiggingJobRequest) (response *DescribeAutoRiggingJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeAutoRiggingJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ai3d", APIVersion, "DescribeAutoRiggingJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAutoRiggingJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAutoRiggingJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHunyuanTo3DMotionJobRequest() (request *DescribeHunyuanTo3DMotionJobRequest) {
     request = &DescribeHunyuanTo3DMotionJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -457,6 +505,54 @@ func (c *Client) QueryHunyuanTo3DRapidJobWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewQueryHunyuanTo3DRapidJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitAutoRiggingJobRequest() (request *SubmitAutoRiggingJobRequest) {
+    request = &SubmitAutoRiggingJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ai3d", APIVersion, "SubmitAutoRiggingJob")
+    
+    
+    return
+}
+
+func NewSubmitAutoRiggingJobResponse() (response *SubmitAutoRiggingJobResponse) {
+    response = &SubmitAutoRiggingJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitAutoRiggingJob
+// 3D模型绑骨蒙皮接口，基于混元大模型，根据输入的人物或动物模型进行绑骨蒙皮，输出带骨骼信息的3D模型。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+func (c *Client) SubmitAutoRiggingJob(request *SubmitAutoRiggingJobRequest) (response *SubmitAutoRiggingJobResponse, err error) {
+    return c.SubmitAutoRiggingJobWithContext(context.Background(), request)
+}
+
+// SubmitAutoRiggingJob
+// 3D模型绑骨蒙皮接口，基于混元大模型，根据输入的人物或动物模型进行绑骨蒙皮，输出带骨骼信息的3D模型。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+func (c *Client) SubmitAutoRiggingJobWithContext(ctx context.Context, request *SubmitAutoRiggingJobRequest) (response *SubmitAutoRiggingJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitAutoRiggingJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ai3d", APIVersion, "SubmitAutoRiggingJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitAutoRiggingJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitAutoRiggingJobResponse()
     err = c.Send(request, response)
     return
 }

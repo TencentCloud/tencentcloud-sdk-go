@@ -22,63 +22,69 @@ import (
 
 // Predefined struct for user
 type CreateSavingPlanOrderRequestParams struct {
-	// 地域编码
+	// <p>地域编码</p>
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 区域编码
+	// <p>区域编码</p>
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 预付费类型
+	// <p>预付费类型</p><p>枚举值：</p><ul><li>1： 全预费</li><li>2： 部分预付</li><li>3： 不预付</li></ul>
 	PrePayType *string `json:"PrePayType,omitnil,omitempty" name:"PrePayType"`
 
-	// 时长
+	// <p>时长</p>
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 时长单位
+	// <p>时长单位</p>
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
-	// 商品唯一标识
+	// <p>商品唯一标识</p>
 	CommodityCode *string `json:"CommodityCode,omitnil,omitempty" name:"CommodityCode"`
 
-	// 承诺时长内的小额金额（单位：元）
+	// <p>承诺时长内的小额金额（单位：元）</p>
 	PromiseUseAmount *int64 `json:"PromiseUseAmount,omitnil,omitempty" name:"PromiseUseAmount"`
 
-	// 节省计划的指定生效时间，若不传则为当前下单时间。传参数格式:"2023-10-01 00:00:00"，仅支持指定日期的0点时刻
+	// <p>节省计划的指定生效时间，若不传则为当前下单时间。传参数格式:&quot;2023-10-01 00:00:00&quot;，仅支持指定日期的0点时刻</p>
 	SpecifyEffectTime *string `json:"SpecifyEffectTime,omitnil,omitempty" name:"SpecifyEffectTime"`
 
-	// 可重入ID
+	// <p>可重入ID</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// <p>节省计划结算类型</p><p>枚举值：</p><ul><li>1： 小时结算包</li><li>2： 日结算包</li><li>3： 月结算包</li></ul><p>默认值：1</p><p>不填写是默认是小时结算包</p>
+	CommitmentPeriod *int64 `json:"CommitmentPeriod,omitnil,omitempty" name:"CommitmentPeriod"`
 }
 
 type CreateSavingPlanOrderRequest struct {
 	*tchttp.BaseRequest
 	
-	// 地域编码
+	// <p>地域编码</p>
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 区域编码
+	// <p>区域编码</p>
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 预付费类型
+	// <p>预付费类型</p><p>枚举值：</p><ul><li>1： 全预费</li><li>2： 部分预付</li><li>3： 不预付</li></ul>
 	PrePayType *string `json:"PrePayType,omitnil,omitempty" name:"PrePayType"`
 
-	// 时长
+	// <p>时长</p>
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 时长单位
+	// <p>时长单位</p>
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
-	// 商品唯一标识
+	// <p>商品唯一标识</p>
 	CommodityCode *string `json:"CommodityCode,omitnil,omitempty" name:"CommodityCode"`
 
-	// 承诺时长内的小额金额（单位：元）
+	// <p>承诺时长内的小额金额（单位：元）</p>
 	PromiseUseAmount *int64 `json:"PromiseUseAmount,omitnil,omitempty" name:"PromiseUseAmount"`
 
-	// 节省计划的指定生效时间，若不传则为当前下单时间。传参数格式:"2023-10-01 00:00:00"，仅支持指定日期的0点时刻
+	// <p>节省计划的指定生效时间，若不传则为当前下单时间。传参数格式:&quot;2023-10-01 00:00:00&quot;，仅支持指定日期的0点时刻</p>
 	SpecifyEffectTime *string `json:"SpecifyEffectTime,omitnil,omitempty" name:"SpecifyEffectTime"`
 
-	// 可重入ID
+	// <p>可重入ID</p>
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// <p>节省计划结算类型</p><p>枚举值：</p><ul><li>1： 小时结算包</li><li>2： 日结算包</li><li>3： 月结算包</li></ul><p>默认值：1</p><p>不填写是默认是小时结算包</p>
+	CommitmentPeriod *int64 `json:"CommitmentPeriod,omitnil,omitempty" name:"CommitmentPeriod"`
 }
 
 func (r *CreateSavingPlanOrderRequest) ToJsonString() string {
@@ -102,6 +108,7 @@ func (r *CreateSavingPlanOrderRequest) FromJsonString(s string) error {
 	delete(f, "PromiseUseAmount")
 	delete(f, "SpecifyEffectTime")
 	delete(f, "ClientToken")
+	delete(f, "CommitmentPeriod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSavingPlanOrderRequest has unknown keys!", "")
 	}
@@ -110,7 +117,7 @@ func (r *CreateSavingPlanOrderRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSavingPlanOrderResponseParams struct {
-	// 订单号
+	// <p>订单号</p>
 	BigDealId *string `json:"BigDealId,omitnil,omitempty" name:"BigDealId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

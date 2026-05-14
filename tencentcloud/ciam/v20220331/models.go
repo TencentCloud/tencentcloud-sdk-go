@@ -258,99 +258,105 @@ func (r *CreateUserGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserRequestParams struct {
-	// 用户目录ID
+	// <p>用户目录ID</p>
 	UserStoreId *string `json:"UserStoreId,omitnil,omitempty" name:"UserStoreId"`
 
-	// 手机号码
+	// <p>手机号码</p>
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
-	// 邮箱
+	// <p>邮箱</p>
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
-	// 密码
+	// <p>密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 用户名
+	// <p>用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 昵称
+	// <p>昵称</p>
 	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
 
-	// 地址
+	// <p>地址</p>
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
-	// 用户组ID
+	// <p>用户组ID</p>
 	UserGroup []*string `json:"UserGroup,omitnil,omitempty" name:"UserGroup"`
 
-	// 生日
+	// <p>生日</p>
 	Birthdate *int64 `json:"Birthdate,omitnil,omitempty" name:"Birthdate"`
 
-	// 自定义属性
+	// <p>自定义属性</p>
 	CustomizationAttributes []*MemberMap `json:"CustomizationAttributes,omitnil,omitempty" name:"CustomizationAttributes"`
 
-	// 索引字段1
+	// <p>索引字段1</p>
 	IndexedAttribute1 *string `json:"IndexedAttribute1,omitnil,omitempty" name:"IndexedAttribute1"`
 
-	// 索引字段2
+	// <p>索引字段2</p>
 	IndexedAttribute2 *string `json:"IndexedAttribute2,omitnil,omitempty" name:"IndexedAttribute2"`
 
-	// 索引字段3
+	// <p>索引字段3</p>
 	IndexedAttribute3 *string `json:"IndexedAttribute3,omitnil,omitempty" name:"IndexedAttribute3"`
 
-	// 索引字段4
+	// <p>索引字段4</p>
 	IndexedAttribute4 *string `json:"IndexedAttribute4,omitnil,omitempty" name:"IndexedAttribute4"`
 
-	// 索引字段5
+	// <p>索引字段5</p>
 	IndexedAttribute5 *string `json:"IndexedAttribute5,omitnil,omitempty" name:"IndexedAttribute5"`
+
+	// <p>用户所属组织机构ID</p>
+	UserOrg []*string `json:"UserOrg,omitnil,omitempty" name:"UserOrg"`
 }
 
 type CreateUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户目录ID
+	// <p>用户目录ID</p>
 	UserStoreId *string `json:"UserStoreId,omitnil,omitempty" name:"UserStoreId"`
 
-	// 手机号码
+	// <p>手机号码</p>
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
-	// 邮箱
+	// <p>邮箱</p>
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
-	// 密码
+	// <p>密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 用户名
+	// <p>用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 昵称
+	// <p>昵称</p>
 	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
 
-	// 地址
+	// <p>地址</p>
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
-	// 用户组ID
+	// <p>用户组ID</p>
 	UserGroup []*string `json:"UserGroup,omitnil,omitempty" name:"UserGroup"`
 
-	// 生日
+	// <p>生日</p>
 	Birthdate *int64 `json:"Birthdate,omitnil,omitempty" name:"Birthdate"`
 
-	// 自定义属性
+	// <p>自定义属性</p>
 	CustomizationAttributes []*MemberMap `json:"CustomizationAttributes,omitnil,omitempty" name:"CustomizationAttributes"`
 
-	// 索引字段1
+	// <p>索引字段1</p>
 	IndexedAttribute1 *string `json:"IndexedAttribute1,omitnil,omitempty" name:"IndexedAttribute1"`
 
-	// 索引字段2
+	// <p>索引字段2</p>
 	IndexedAttribute2 *string `json:"IndexedAttribute2,omitnil,omitempty" name:"IndexedAttribute2"`
 
-	// 索引字段3
+	// <p>索引字段3</p>
 	IndexedAttribute3 *string `json:"IndexedAttribute3,omitnil,omitempty" name:"IndexedAttribute3"`
 
-	// 索引字段4
+	// <p>索引字段4</p>
 	IndexedAttribute4 *string `json:"IndexedAttribute4,omitnil,omitempty" name:"IndexedAttribute4"`
 
-	// 索引字段5
+	// <p>索引字段5</p>
 	IndexedAttribute5 *string `json:"IndexedAttribute5,omitnil,omitempty" name:"IndexedAttribute5"`
+
+	// <p>用户所属组织机构ID</p>
+	UserOrg []*string `json:"UserOrg,omitnil,omitempty" name:"UserOrg"`
 }
 
 func (r *CreateUserRequest) ToJsonString() string {
@@ -380,6 +386,7 @@ func (r *CreateUserRequest) FromJsonString(s string) error {
 	delete(f, "IndexedAttribute3")
 	delete(f, "IndexedAttribute4")
 	delete(f, "IndexedAttribute5")
+	delete(f, "UserOrg")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserRequest has unknown keys!", "")
 	}
@@ -388,7 +395,7 @@ func (r *CreateUserRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserResponseParams struct {
-	// 创建的用户信息
+	// <p>创建的用户信息</p>
 	User *User `json:"User,omitnil,omitempty" name:"User"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -663,32 +670,26 @@ func (r *DeleteUsersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserByIdRequestParams struct {
-	// 用户目录ID
+	// <p>用户目录ID</p>
 	UserStoreId *string `json:"UserStoreId,omitnil,omitempty" name:"UserStoreId"`
 
-	// 用户ID
+	// <p>用户ID</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 返回信息是否为原文
-	// 
-	// <li> **false** </li>	默认，返回信息为脱敏信息
-	// <li> **true** </li>	返回用户信息原文
+	// <p>返回信息是否为原文</p><li> **false** </li>    默认，返回信息为脱敏信息<li> **true** </li>    返回用户信息原文
 	Original *bool `json:"Original,omitnil,omitempty" name:"Original"`
 }
 
 type DescribeUserByIdRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户目录ID
+	// <p>用户目录ID</p>
 	UserStoreId *string `json:"UserStoreId,omitnil,omitempty" name:"UserStoreId"`
 
-	// 用户ID
+	// <p>用户ID</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 返回信息是否为原文
-	// 
-	// <li> **false** </li>	默认，返回信息为脱敏信息
-	// <li> **true** </li>	返回用户信息原文
+	// <p>返回信息是否为原文</p><li> **false** </li>    默认，返回信息为脱敏信息<li> **true** </li>    返回用户信息原文
 	Original *bool `json:"Original,omitnil,omitempty" name:"Original"`
 }
 
@@ -715,7 +716,7 @@ func (r *DescribeUserByIdRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserByIdResponseParams struct {
-	// 用户信息
+	// <p>用户信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *User `json:"User,omitnil,omitempty" name:"User"`
 
@@ -1404,38 +1405,32 @@ func (r *ListUserGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListUserRequestParams struct {
-	// 用户目录ID
+	// <p>用户目录ID</p>
 	UserStoreId *string `json:"UserStoreId,omitnil,omitempty" name:"UserStoreId"`
 
-	// 分页数据
+	// <p>分页数据</p>
 	Pageable *Pageable `json:"Pageable,omitnil,omitempty" name:"Pageable"`
 
-	// Key可选值为condition、userGroupId
-	// 
-	// <li> **condition** </li>	Values = 查询条件，用户ID，用户名称，手机或邮箱
-	// <li> **userGroupId** </li>	Values = 用户组ID
+	// <p>Key可选值为condition、userGroup、userOrg、weComUserOrg<li> <strong>condition</strong> </li>    Values = 查询条件，用户ID，用户名称，手机或邮箱<li> <strong>userGroup</strong> </li>    Values = 用户组ID<li> <strong>userOrg</strong> </li>    Values = 用户所属机构ID<li> <strong>weComUserOrg</strong> </li>    Values = 用户所属企业微信机构ID</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 返回信息是否为原文
+	// <p>返回信息是否为原文</p>
 	Original *bool `json:"Original,omitnil,omitempty" name:"Original"`
 }
 
 type ListUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户目录ID
+	// <p>用户目录ID</p>
 	UserStoreId *string `json:"UserStoreId,omitnil,omitempty" name:"UserStoreId"`
 
-	// 分页数据
+	// <p>分页数据</p>
 	Pageable *Pageable `json:"Pageable,omitnil,omitempty" name:"Pageable"`
 
-	// Key可选值为condition、userGroupId
-	// 
-	// <li> **condition** </li>	Values = 查询条件，用户ID，用户名称，手机或邮箱
-	// <li> **userGroupId** </li>	Values = 用户组ID
+	// <p>Key可选值为condition、userGroup、userOrg、weComUserOrg<li> <strong>condition</strong> </li>    Values = 查询条件，用户ID，用户名称，手机或邮箱<li> <strong>userGroup</strong> </li>    Values = 用户组ID<li> <strong>userOrg</strong> </li>    Values = 用户所属机构ID<li> <strong>weComUserOrg</strong> </li>    Values = 用户所属企业微信机构ID</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 返回信息是否为原文
+	// <p>返回信息是否为原文</p>
 	Original *bool `json:"Original,omitnil,omitempty" name:"Original"`
 }
 
@@ -1463,14 +1458,14 @@ func (r *ListUserRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListUserResponseParams struct {
-	// 总条数
+	// <p>总条数</p>
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 分页对象
+	// <p>分页对象</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pageable *Pageable `json:"Pageable,omitnil,omitempty" name:"Pageable"`
 
-	// 用户列表
+	// <p>用户列表</p>
 	Content []*User `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1881,99 +1876,105 @@ func (r *UpdateUserGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateUserRequestParams struct {
-	// 用户ID
+	// <p>用户ID</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 用户目录ID
+	// <p>用户目录ID</p>
 	UserStoreId *string `json:"UserStoreId,omitnil,omitempty" name:"UserStoreId"`
 
-	// 用户名称
+	// <p>用户名称</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 手机号码
+	// <p>手机号码</p>
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
-	// 邮箱
+	// <p>邮箱</p>
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
-	// 昵称
+	// <p>昵称</p>
 	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
 
-	// 地址
+	// <p>地址</p>
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
-	// 用户组
+	// <p>用户组</p>
 	UserGroup []*string `json:"UserGroup,omitnil,omitempty" name:"UserGroup"`
 
-	// 生日
+	// <p>生日</p>
 	Birthdate *int64 `json:"Birthdate,omitnil,omitempty" name:"Birthdate"`
 
-	// 自定义属性
+	// <p>自定义属性</p>
 	CustomizationAttributes []*MemberMap `json:"CustomizationAttributes,omitnil,omitempty" name:"CustomizationAttributes"`
 
-	// 索引字段1
+	// <p>索引字段1</p>
 	IndexedAttribute1 *string `json:"IndexedAttribute1,omitnil,omitempty" name:"IndexedAttribute1"`
 
-	// 索引字段2
+	// <p>索引字段2</p>
 	IndexedAttribute2 *string `json:"IndexedAttribute2,omitnil,omitempty" name:"IndexedAttribute2"`
 
-	// 索引字段3
+	// <p>索引字段3</p>
 	IndexedAttribute3 *string `json:"IndexedAttribute3,omitnil,omitempty" name:"IndexedAttribute3"`
 
-	// 索引字段4
+	// <p>索引字段4</p>
 	IndexedAttribute4 *string `json:"IndexedAttribute4,omitnil,omitempty" name:"IndexedAttribute4"`
 
-	// 索引字段5
+	// <p>索引字段5</p>
 	IndexedAttribute5 *string `json:"IndexedAttribute5,omitnil,omitempty" name:"IndexedAttribute5"`
+
+	// <p>用户所属组织机构ID</p>
+	UserOrg []*string `json:"UserOrg,omitnil,omitempty" name:"UserOrg"`
 }
 
 type UpdateUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户ID
+	// <p>用户ID</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 用户目录ID
+	// <p>用户目录ID</p>
 	UserStoreId *string `json:"UserStoreId,omitnil,omitempty" name:"UserStoreId"`
 
-	// 用户名称
+	// <p>用户名称</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 手机号码
+	// <p>手机号码</p>
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
-	// 邮箱
+	// <p>邮箱</p>
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
-	// 昵称
+	// <p>昵称</p>
 	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
 
-	// 地址
+	// <p>地址</p>
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
-	// 用户组
+	// <p>用户组</p>
 	UserGroup []*string `json:"UserGroup,omitnil,omitempty" name:"UserGroup"`
 
-	// 生日
+	// <p>生日</p>
 	Birthdate *int64 `json:"Birthdate,omitnil,omitempty" name:"Birthdate"`
 
-	// 自定义属性
+	// <p>自定义属性</p>
 	CustomizationAttributes []*MemberMap `json:"CustomizationAttributes,omitnil,omitempty" name:"CustomizationAttributes"`
 
-	// 索引字段1
+	// <p>索引字段1</p>
 	IndexedAttribute1 *string `json:"IndexedAttribute1,omitnil,omitempty" name:"IndexedAttribute1"`
 
-	// 索引字段2
+	// <p>索引字段2</p>
 	IndexedAttribute2 *string `json:"IndexedAttribute2,omitnil,omitempty" name:"IndexedAttribute2"`
 
-	// 索引字段3
+	// <p>索引字段3</p>
 	IndexedAttribute3 *string `json:"IndexedAttribute3,omitnil,omitempty" name:"IndexedAttribute3"`
 
-	// 索引字段4
+	// <p>索引字段4</p>
 	IndexedAttribute4 *string `json:"IndexedAttribute4,omitnil,omitempty" name:"IndexedAttribute4"`
 
-	// 索引字段5
+	// <p>索引字段5</p>
 	IndexedAttribute5 *string `json:"IndexedAttribute5,omitnil,omitempty" name:"IndexedAttribute5"`
+
+	// <p>用户所属组织机构ID</p>
+	UserOrg []*string `json:"UserOrg,omitnil,omitempty" name:"UserOrg"`
 }
 
 func (r *UpdateUserRequest) ToJsonString() string {
@@ -2003,6 +2004,7 @@ func (r *UpdateUserRequest) FromJsonString(s string) error {
 	delete(f, "IndexedAttribute3")
 	delete(f, "IndexedAttribute4")
 	delete(f, "IndexedAttribute5")
+	delete(f, "UserOrg")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateUserRequest has unknown keys!", "")
 	}
@@ -2011,7 +2013,7 @@ func (r *UpdateUserRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateUserResponseParams struct {
-	// 更新之后的用户信息
+	// <p>更新之后的用户信息</p>
 	User *User `json:"User,omitnil,omitempty" name:"User"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2186,163 +2188,175 @@ func (r *UpdateUserStoreResponse) FromJsonString(s string) error {
 }
 
 type User struct {
-	// 用户ID
+	// <p>用户ID</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 用户名
+	// <p>用户名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 手机号
+	// <p>手机号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
-	// 邮箱
+	// <p>邮箱</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
-	// 上次登录时间
+	// <p>上次登录时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastSignOn *int64 `json:"LastSignOn,omitnil,omitempty" name:"LastSignOn"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreatedDate *int64 `json:"CreatedDate,omitnil,omitempty" name:"CreatedDate"`
 
-	// 状态
+	// <p>状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 用户来源
+	// <p>用户来源</p>
 	UserDataSourceEnum *string `json:"UserDataSourceEnum,omitnil,omitempty" name:"UserDataSourceEnum"`
 
-	// 昵称
+	// <p>昵称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
 
-	// 地址
+	// <p>地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
-	// 生日
+	// <p>生日</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Birthdate *int64 `json:"Birthdate,omitnil,omitempty" name:"Birthdate"`
 
-	// 用户组ID
+	// <p>用户组ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserGroups []*string `json:"UserGroups,omitnil,omitempty" name:"UserGroups"`
 
-	// 上次修改时间
+	// <p>用户组名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserGroupNames []*string `json:"UserGroupNames,omitnil,omitempty" name:"UserGroupNames"`
+
+	// <p>上次修改时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastModifiedDate *int64 `json:"LastModifiedDate,omitnil,omitempty" name:"LastModifiedDate"`
 
-	// 自定义属性
+	// <p>自定义属性</p>
 	CustomAttributes []*MemberMap `json:"CustomAttributes,omitnil,omitempty" name:"CustomAttributes"`
 
-	// 身份证号
+	// <p>身份证号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResidentIdentityCard *string `json:"ResidentIdentityCard,omitnil,omitempty" name:"ResidentIdentityCard"`
 
-	// QQ的OpenId
+	// <p>QQ的OpenId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QqOpenId *string `json:"QqOpenId,omitnil,omitempty" name:"QqOpenId"`
 
-	// QQ的UnionId
+	// <p>QQ的UnionId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QqUnionId *string `json:"QqUnionId,omitnil,omitempty" name:"QqUnionId"`
 
-	// 微信的WechatOpenId
+	// <p>微信的WechatOpenId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WechatOpenId *string `json:"WechatOpenId,omitnil,omitempty" name:"WechatOpenId"`
 
-	// 微信的WechatUnionId
+	// <p>微信的WechatUnionId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WechatUnionId *string `json:"WechatUnionId,omitnil,omitempty" name:"WechatUnionId"`
 
-	// 支付宝的AlipayUserId
+	// <p>支付宝的AlipayUserId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlipayUserId *string `json:"AlipayUserId,omitnil,omitempty" name:"AlipayUserId"`
 
-	// 企业微信的WeComUserId
+	// <p>企业微信的WeComUserId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WeComUserId *string `json:"WeComUserId,omitnil,omitempty" name:"WeComUserId"`
 
-	// 描述
+	// <p>描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 姓名
+	// <p>姓名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 坐标
+	// <p>坐标</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Locale *string `json:"Locale,omitnil,omitempty" name:"Locale"`
 
-	// 性别
+	// <p>性别</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Gender *string `json:"Gender,omitnil,omitempty" name:"Gender"`
 
-	// 实名核验方式
+	// <p>实名核验方式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityVerificationMethod *string `json:"IdentityVerificationMethod,omitnil,omitempty" name:"IdentityVerificationMethod"`
 
-	// 是否已经实名核验
+	// <p>是否已经实名核验</p>
 	IdentityVerified *bool `json:"IdentityVerified,omitnil,omitempty" name:"IdentityVerified"`
 
-	// 工作
+	// <p>工作</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Job *string `json:"Job,omitnil,omitempty" name:"Job"`
 
-	// 国家
+	// <p>国家</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nationality *string `json:"Nationality,omitnil,omitempty" name:"Nationality"`
 
-	// 是否主账号（进行过账号融合后，主账号为true，从账号为false）
+	// <p>是否主账号（进行过账号融合后，主账号为true，从账号为false）</p>
 	Primary *bool `json:"Primary,omitnil,omitempty" name:"Primary"`
 
-	// 时区
+	// <p>时区</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 是否已经首次登录
+	// <p>是否已经首次登录</p>
 	AlreadyFirstLogin *bool `json:"AlreadyFirstLogin,omitnil,omitempty" name:"AlreadyFirstLogin"`
 
-	// 租户id
+	// <p>租户id</p>
 	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
 
-	// 用户目录id
+	// <p>用户目录id</p>
 	UserStoreId *string `json:"UserStoreId,omitnil,omitempty" name:"UserStoreId"`
 
-	// 版本
+	// <p>版本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *int64 `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 锁定类型（分为管理员锁定，和登录策略锁定）
+	// <p>锁定类型（分为管理员锁定，和登录策略锁定）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LockType *string `json:"LockType,omitnil,omitempty" name:"LockType"`
 
-	// 锁定时间点
+	// <p>锁定时间点</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LockTime *int64 `json:"LockTime,omitnil,omitempty" name:"LockTime"`
 
-	// 索引字段1
+	// <p>索引字段1</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexedAttribute1 *string `json:"IndexedAttribute1,omitnil,omitempty" name:"IndexedAttribute1"`
 
-	// 索引字段2
+	// <p>索引字段2</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexedAttribute2 *string `json:"IndexedAttribute2,omitnil,omitempty" name:"IndexedAttribute2"`
 
-	// 索引字段3
+	// <p>索引字段3</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexedAttribute3 *string `json:"IndexedAttribute3,omitnil,omitempty" name:"IndexedAttribute3"`
 
-	// 索引字段4
+	// <p>索引字段4</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexedAttribute4 *string `json:"IndexedAttribute4,omitnil,omitempty" name:"IndexedAttribute4"`
 
-	// 索引字段5
+	// <p>索引字段5</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexedAttribute5 *string `json:"IndexedAttribute5,omitnil,omitempty" name:"IndexedAttribute5"`
+
+	// <p>用户所属组织机构ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserOrgs []*string `json:"UserOrgs,omitnil,omitempty" name:"UserOrgs"`
+
+	// <p>用户所属企业微信组织机构</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WeComUserOrgs []*int64 `json:"WeComUserOrgs,omitnil,omitempty" name:"WeComUserOrgs"`
 }
 
 type UserGroup struct {

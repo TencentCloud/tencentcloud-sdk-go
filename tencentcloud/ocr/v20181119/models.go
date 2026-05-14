@@ -10217,53 +10217,59 @@ type SubItemGroup struct {
 
 // Predefined struct for user
 type SubmitExtractDocAgentJobRequestParams struct {
-	// 图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前5页。
+	// <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前5页。</p>
 	//
 	// Deprecated: PdfPageNumber is deprecated.
 	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 
-	// 自定义抽取需要的字段名称、字段类型、字段提示词。
+	// <p>自定义抽取需要的字段名称、字段类型、字段提示词。</p>
 	ItemNames []*ItemNames `json:"ItemNames,omitnil,omitempty" name:"ItemNames"`
 
-	// 是否需要返回坐标，默认false。
+	// <p>是否需要返回坐标，默认false。</p>
 	EnableCoord *bool `json:"EnableCoord,omitnil,omitempty" name:"EnableCoord"`
 
-	// 起始页
+	// <p>起始页</p>
 	FileStartPageNumber *uint64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
 
-	// 结束页
+	// <p>结束页</p>
 	FileEndPageNumber *uint64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
+
+	// <p>model_hunyuan:选择混元底座视觉大模型精调抽取任务  model_youtu：选择优图底座多模态大模型精调抽取任务</p>
+	ModelConfig *string `json:"ModelConfig,omitnil,omitempty" name:"ModelConfig"`
 }
 
 type SubmitExtractDocAgentJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// <p>图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前5页。
+	// <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前5页。</p>
 	PdfPageNumber *int64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 
-	// 自定义抽取需要的字段名称、字段类型、字段提示词。
+	// <p>自定义抽取需要的字段名称、字段类型、字段提示词。</p>
 	ItemNames []*ItemNames `json:"ItemNames,omitnil,omitempty" name:"ItemNames"`
 
-	// 是否需要返回坐标，默认false。
+	// <p>是否需要返回坐标，默认false。</p>
 	EnableCoord *bool `json:"EnableCoord,omitnil,omitempty" name:"EnableCoord"`
 
-	// 起始页
+	// <p>起始页</p>
 	FileStartPageNumber *uint64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
 
-	// 结束页
+	// <p>结束页</p>
 	FileEndPageNumber *uint64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
+
+	// <p>model_hunyuan:选择混元底座视觉大模型精调抽取任务  model_youtu：选择优图底座多模态大模型精调抽取任务</p>
+	ModelConfig *string `json:"ModelConfig,omitnil,omitempty" name:"ModelConfig"`
 }
 
 func (r *SubmitExtractDocAgentJobRequest) ToJsonString() string {
@@ -10285,6 +10291,7 @@ func (r *SubmitExtractDocAgentJobRequest) FromJsonString(s string) error {
 	delete(f, "EnableCoord")
 	delete(f, "FileStartPageNumber")
 	delete(f, "FileEndPageNumber")
+	delete(f, "ModelConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitExtractDocAgentJobRequest has unknown keys!", "")
 	}
@@ -10293,7 +10300,7 @@ func (r *SubmitExtractDocAgentJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitExtractDocAgentJobResponseParams struct {
-	// 任务唯一ID。由服务端生成。
+	// <p>任务唯一ID。由服务端生成。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -8859,6 +8859,90 @@ func (c *Client) DescribeSearchBugInfoWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeSkillScanPayInfoRequest() (request *DescribeSkillScanPayInfoRequest) {
+    request = &DescribeSkillScanPayInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeSkillScanPayInfo")
+    
+    
+    return
+}
+
+func NewDescribeSkillScanPayInfoResponse() (response *DescribeSkillScanPayInfoResponse) {
+    response = &DescribeSkillScanPayInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSkillScanPayInfo
+// 查询 Skill 安全检测计费信息，包括订单状态、总配额、已消耗配额、到期时间、支付模式等。无订单时返回零值（仅含 TimeNow 和 BetaEndTime）。试用订单通过 ModifyTrialStatus(Module=9) 领取，正式订单通过计费系统创建。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSkillScanPayInfo(request *DescribeSkillScanPayInfoRequest) (response *DescribeSkillScanPayInfoResponse, err error) {
+    return c.DescribeSkillScanPayInfoWithContext(context.Background(), request)
+}
+
+// DescribeSkillScanPayInfo
+// 查询 Skill 安全检测计费信息，包括订单状态、总配额、已消耗配额、到期时间、支付模式等。无订单时返回零值（仅含 TimeNow 和 BetaEndTime）。试用订单通过 ModifyTrialStatus(Module=9) 领取，正式订单通过计费系统创建。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSkillScanPayInfoWithContext(ctx context.Context, request *DescribeSkillScanPayInfoRequest) (response *DescribeSkillScanPayInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeSkillScanPayInfoRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeSkillScanPayInfo")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSkillScanPayInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSkillScanPayInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSkillScanResultRequest() (request *DescribeSkillScanResultRequest) {
     request = &DescribeSkillScanResultRequest{
         BaseRequest: &tchttp.BaseRequest{},

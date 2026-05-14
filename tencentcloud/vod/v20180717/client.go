@@ -777,6 +777,68 @@ func (c *Client) CreateAigcApiTokenWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateAigcAudioCloneRequest() (request *CreateAigcAudioCloneRequest) {
+    request = &CreateAigcAudioCloneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateAigcAudioClone")
+    
+    
+    return
+}
+
+func NewCreateAigcAudioCloneResponse() (response *CreateAigcAudioCloneResponse) {
+    response = &CreateAigcAudioCloneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAigcAudioClone
+// 该接口用于创建 AIGC 音色复刻。注意，调用本接口会产生费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAigcAudioClone(request *CreateAigcAudioCloneRequest) (response *CreateAigcAudioCloneResponse, err error) {
+    return c.CreateAigcAudioCloneWithContext(context.Background(), request)
+}
+
+// CreateAigcAudioClone
+// 该接口用于创建 AIGC 音色复刻。注意，调用本接口会产生费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAigcAudioCloneWithContext(ctx context.Context, request *CreateAigcAudioCloneRequest) (response *CreateAigcAudioCloneResponse, err error) {
+    if request == nil {
+        request = NewCreateAigcAudioCloneRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "CreateAigcAudioClone")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAigcAudioClone require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAigcAudioCloneResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAigcAudioTaskRequest() (request *CreateAigcAudioTaskRequest) {
     request = &CreateAigcAudioTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -3158,69 +3158,75 @@ type CreateTriggerTaskSchedulerConfiguration struct {
 
 // Predefined struct for user
 type CreateTriggerWorkflowRequestParams struct {
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 工作流名称
+	// <p>工作流名称</p>
 	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
 
-	// 所属文件夹路径
+	// <p>所属文件夹路径</p>
 	ParentFolderPath *string `json:"ParentFolderPath,omitnil,omitempty" name:"ParentFolderPath"`
 
-	// 工作流描述
+	// <p>工作流描述</p>
 	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
 
-	// 工作流负责人ID
+	// <p>工作流负责人ID</p>
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 工作流参数
+	// <p>工作流参数</p>
 	WorkflowParams []*ParamInfo `json:"WorkflowParams,omitnil,omitempty" name:"WorkflowParams"`
 
-	// 统一调度信息
+	// <p>统一调度信息</p>
 	TriggerWorkflowSchedulerConfigurations []*WorkflowTriggerConfig `json:"TriggerWorkflowSchedulerConfigurations,omitnil,omitempty" name:"TriggerWorkflowSchedulerConfigurations"`
 
-	// BundleId项
+	// <p>BundleId项</p>
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
-	// Bundle信息
+	// <p>Bundle信息</p>
 	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
 
-	// 通用参数配置
+	// <p>通用参数配置</p>
 	GeneralTaskParams []*WorkflowGeneralTaskParam `json:"GeneralTaskParams,omitnil,omitempty" name:"GeneralTaskParams"`
+
+	// <p>工作流调度运行配置</p>
+	TriggerWorkflowRunConfiguration *WorkflowRunConfig `json:"TriggerWorkflowRunConfiguration,omitnil,omitempty" name:"TriggerWorkflowRunConfiguration"`
 }
 
 type CreateTriggerWorkflowRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 工作流名称
+	// <p>工作流名称</p>
 	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
 
-	// 所属文件夹路径
+	// <p>所属文件夹路径</p>
 	ParentFolderPath *string `json:"ParentFolderPath,omitnil,omitempty" name:"ParentFolderPath"`
 
-	// 工作流描述
+	// <p>工作流描述</p>
 	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
 
-	// 工作流负责人ID
+	// <p>工作流负责人ID</p>
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 工作流参数
+	// <p>工作流参数</p>
 	WorkflowParams []*ParamInfo `json:"WorkflowParams,omitnil,omitempty" name:"WorkflowParams"`
 
-	// 统一调度信息
+	// <p>统一调度信息</p>
 	TriggerWorkflowSchedulerConfigurations []*WorkflowTriggerConfig `json:"TriggerWorkflowSchedulerConfigurations,omitnil,omitempty" name:"TriggerWorkflowSchedulerConfigurations"`
 
-	// BundleId项
+	// <p>BundleId项</p>
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
-	// Bundle信息
+	// <p>Bundle信息</p>
 	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
 
-	// 通用参数配置
+	// <p>通用参数配置</p>
 	GeneralTaskParams []*WorkflowGeneralTaskParam `json:"GeneralTaskParams,omitnil,omitempty" name:"GeneralTaskParams"`
+
+	// <p>工作流调度运行配置</p>
+	TriggerWorkflowRunConfiguration *WorkflowRunConfig `json:"TriggerWorkflowRunConfiguration,omitnil,omitempty" name:"TriggerWorkflowRunConfiguration"`
 }
 
 func (r *CreateTriggerWorkflowRequest) ToJsonString() string {
@@ -3245,6 +3251,7 @@ func (r *CreateTriggerWorkflowRequest) FromJsonString(s string) error {
 	delete(f, "BundleId")
 	delete(f, "BundleInfo")
 	delete(f, "GeneralTaskParams")
+	delete(f, "TriggerWorkflowRunConfiguration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTriggerWorkflowRequest has unknown keys!", "")
 	}
@@ -3253,7 +3260,7 @@ func (r *CreateTriggerWorkflowRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTriggerWorkflowResponseParams struct {
-	// 返回工作流ID
+	// <p>返回工作流ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CreateTriggerWorkflowResult `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -21847,49 +21854,53 @@ type TriggerWorkflowBrief struct {
 }
 
 type TriggerWorkflowDetail struct {
-	// 工作流名称
+	// <p>工作流名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
 
-	// 责任人ID
+	// <p>责任人ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 创建人ID
+	// <p>创建人ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateUserUin *string `json:"CreateUserUin,omitnil,omitempty" name:"CreateUserUin"`
 
-	// 工作流参数数组
+	// <p>工作流参数数组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowParams []*ParamInfo `json:"WorkflowParams,omitnil,omitempty" name:"WorkflowParams"`
 
-	// 统一调度参数
+	// <p>统一调度参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerWorkflowSchedulerConfigurations []*WorkflowTriggerConfig `json:"TriggerWorkflowSchedulerConfigurations,omitnil,omitempty" name:"TriggerWorkflowSchedulerConfigurations"`
 
-	// 工作流描述
+	// <p>工作流描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
 
-	// 工作流所属路径
+	// <p>工作流所属路径</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// BundleId项
+	// <p>BundleId项</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
-	// BundleInfo项
+	// <p>BundleInfo项</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
 
-	// 通用参数
+	// <p>通用参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GeneralTaskParams []*WorkflowGeneralTaskParam `json:"GeneralTaskParams,omitnil,omitempty" name:"GeneralTaskParams"`
 
-	// Trigger 状态 启动ACTIVE，暂停PAUSED
+	// <p>Trigger 状态 启动ACTIVE，暂停PAUSED</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchedulerStatus *string `json:"SchedulerStatus,omitnil,omitempty" name:"SchedulerStatus"`
+
+	// <p>工作流运行参数配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerWorkflowRunConfiguration *WorkflowRunConfig `json:"TriggerWorkflowRunConfiguration,omitnil,omitempty" name:"TriggerWorkflowRunConfiguration"`
 }
 
 type TriggerWorkflowInfo struct {
@@ -23898,29 +23909,32 @@ func (r *UpdateTriggerTaskResponse) FromJsonString(s string) error {
 }
 
 type UpdateTriggerWorkflowPartially struct {
-	// 工作流名称
+	// <p>工作流名称</p>
 	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
 
-	// 责任人ID
+	// <p>责任人ID</p>
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 工作流参数数组
+	// <p>工作流参数数组</p>
 	WorkflowParams []*ParamInfo `json:"WorkflowParams,omitnil,omitempty" name:"WorkflowParams"`
 
-	// 统一调度参数
+	// <p>统一调度参数</p>
 	TriggerWorkflowSchedulerConfigurations []*WorkflowTriggerConfig `json:"TriggerWorkflowSchedulerConfigurations,omitnil,omitempty" name:"TriggerWorkflowSchedulerConfigurations"`
 
-	// 工作流描述
+	// <p>工作流描述</p>
 	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
 
-	// BundleId项
+	// <p>BundleId项</p>
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
-	// BundleInfo项
+	// <p>BundleInfo项</p>
 	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
 
-	// 通用参数
+	// <p>通用参数</p>
 	GeneralTaskParams []*WorkflowGeneralTaskParam `json:"GeneralTaskParams,omitnil,omitempty" name:"GeneralTaskParams"`
+
+	// <p>工作流运行参数配置</p>
+	TriggerWorkflowRunConfiguration *WorkflowRunConfig `json:"TriggerWorkflowRunConfiguration,omitnil,omitempty" name:"TriggerWorkflowRunConfiguration"`
 }
 
 // Predefined struct for user
@@ -24038,6 +24052,9 @@ type UpdateTriggerWorkflowRequestParams struct {
 
 	// 通用参数配置
 	GeneralTaskParams []*WorkflowGeneralTaskParam `json:"GeneralTaskParams,omitnil,omitempty" name:"GeneralTaskParams"`
+
+
+	TriggerWorkflowRunConfiguration *WorkflowRunConfig `json:"TriggerWorkflowRunConfiguration,omitnil,omitempty" name:"TriggerWorkflowRunConfiguration"`
 }
 
 type UpdateTriggerWorkflowRequest struct {
@@ -24072,6 +24089,8 @@ type UpdateTriggerWorkflowRequest struct {
 
 	// 通用参数配置
 	GeneralTaskParams []*WorkflowGeneralTaskParam `json:"GeneralTaskParams,omitnil,omitempty" name:"GeneralTaskParams"`
+
+	TriggerWorkflowRunConfiguration *WorkflowRunConfig `json:"TriggerWorkflowRunConfiguration,omitnil,omitempty" name:"TriggerWorkflowRunConfiguration"`
 }
 
 func (r *UpdateTriggerWorkflowRequest) ToJsonString() string {
@@ -24096,6 +24115,7 @@ func (r *UpdateTriggerWorkflowRequest) FromJsonString(s string) error {
 	delete(f, "BundleId")
 	delete(f, "BundleInfo")
 	delete(f, "GeneralTaskParams")
+	delete(f, "TriggerWorkflowRunConfiguration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateTriggerWorkflowRequest has unknown keys!", "")
 	}
@@ -24503,6 +24523,16 @@ type WorkflowPermissionPage struct {
 
 	// 授权信息列表
 	Items []*WorkflowPermission `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type WorkflowRunConfig struct {
+	// <p>工作流运行最大并发数，取值范围：[1, 1000]</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxConcurrentNum *uint64 `json:"MaxConcurrentNum,omitnil,omitempty" name:"MaxConcurrentNum"`
+
+	// <p>1：开启  0：关闭<br>当工作流达到最大并发上限时，若开启，新工作流运行排队等待，直到其他运行释放并发，最大等待时长为48小时，超过则自动跳过不再执行；若关闭，新工作流直接跳过结束。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueuingMode *uint64 `json:"QueuingMode,omitnil,omitempty" name:"QueuingMode"`
 }
 
 type WorkflowSchedulerConfiguration struct {

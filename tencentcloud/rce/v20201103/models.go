@@ -639,87 +639,73 @@ type InputImportNameListDataFront struct {
 }
 
 type InputManageMarketingRisk struct {
-	// 用户账号类型；默认开通QQOpenId、手机号MD5权限；如果需要使用微信OpenId入参，则需要"提交工单"或联系对接人进行资格审核，审核通过后方可正常使用微信开放账号。
-	// 1：QQ开放账号
-	// 2：微信开放账号
-	// 10004：手机号MD5，中国大陆11位手机号进行MD5加密，取32位小写值
-	// 10005：手机号SHA256，中国大陆11位手机号进行SHA256加密，取64位小写值
+	// <p>用户账号类型；默认开通QQOpenId、手机号MD5权限；如果需要使用微信OpenId入参，则需要&quot;提交工单&quot;或联系对接人进行资格审核，审核通过后方可正常使用微信开放账号。<br>1：QQ开放账号<br>2：微信开放账号<br>10004：手机号MD5，中国大陆11位手机号进行MD5加密，取32位小写值<br>10005：手机号SHA256，中国大陆11位手机号进行SHA256加密，取64位小写值</p>
 	Account *AccountInfo `json:"Account,omitnil,omitempty" name:"Account"`
 
-	// 场景码，用于识别和区分不同的业务场景，可在控制台上新建和管理
-	// 控制台链接：https://console.cloud.tencent.com/rce/risk/strategy/scene-root
-	// 活动防刷默认场景码：e_activity_antirush 
-	// 登录保护默认场景码：e_login_protection
-	// 注册保护默认场景码：e_register_protection
+	// <p>场景码，用于识别和区分不同的业务场景，可在控制台上新建和管理<br>控制台链接：https://console.cloud.tencent.com/rce/risk/strategy/scene-root<br>活动防刷默认场景码：e_activity_antirush<br>登录保护默认场景码：e_login_protection<br>注册保护默认场景码：e_register_protection</p>
 	SceneCode *string `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
 
-	// 用户外网ip（传入用户非外网ip会影响判断结果）。
+	// <p>用户外网ip（传入用户非外网ip会影响判断结果）。</p>
 	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 
-	// 用户操作时间戳，精确到秒。
+	// <p>用户操作时间戳，精确到秒。</p>
 	PostTime *uint64 `json:"PostTime,omitnil,omitempty" name:"PostTime"`
 
-	// 业务平台用户唯一标识，支持自定义。
+	// <p>业务平台用户唯一标识，支持自定义。</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 设备指纹DeviceToken值，集成设备指纹后获取；如果集成了相应的设备指纹，该字段必填。
+	// <p>设备指纹DeviceToken值，集成设备指纹后获取；如果集成了相应的设备指纹，该字段必填。</p>
 	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
 
-	// 设备指纹 BusinessId。
+	// <p>设备指纹 BusinessId。</p>
 	DeviceBusinessId *int64 `json:"DeviceBusinessId,omitnil,omitempty" name:"DeviceBusinessId"`
 
-	// 业务ID。网站或应用在多个业务中使用此服务，通过此ID区分统计数据。
+	// <p>业务ID。网站或应用在多个业务中使用此服务，通过此ID区分统计数据。</p>
 	BusinessId *uint64 `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
-	// 昵称，UTF-8 编码。
+	// <p>昵称，UTF-8 编码。</p>
 	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
 
-	// 用户邮箱地址。
+	// <p>用户邮箱地址。</p>
 	EmailAddress *string `json:"EmailAddress,omitnil,omitempty" name:"EmailAddress"`
 
-	// 是否识别设备异常：
-	// 0：不识别。
-	// 1：识别。
+	// <p>是否识别设备异常：<br>0：不识别。<br>1：识别。</p>
 	CheckDevice *int64 `json:"CheckDevice,omitnil,omitempty" name:"CheckDevice"`
 
-	// 用户HTTP请求中的Cookie进行2次hash的值，只要保证相同Cookie的hash值一致即可。
+	// <p>用户HTTP请求中的Cookie进行2次hash的值，只要保证相同Cookie的hash值一致即可。</p>
 	CookieHash *string `json:"CookieHash,omitnil,omitempty" name:"CookieHash"`
 
-	// 用户HTTP请求的Referer值。
+	// <p>用户HTTP请求的Referer值。</p>
 	Referer *string `json:"Referer,omitnil,omitempty" name:"Referer"`
 
-	// 用户HTTP请求的User-Agent值。
+	// <p>用户HTTP请求的User-Agent值。</p>
 	UserAgent *string `json:"UserAgent,omitnil,omitempty" name:"UserAgent"`
 
-	// 用户HTTP请求的X-Forwarded-For值。
+	// <p>用户HTTP请求的X-Forwarded-For值。</p>
 	XForwardedFor *string `json:"XForwardedFor,omitnil,omitempty" name:"XForwardedFor"`
 
-	// MAC地址或设备唯一标识。
+	// <p>MAC地址或设备唯一标识。</p>
 	MacAddress *string `json:"MacAddress,omitnil,omitempty" name:"MacAddress"`
 
-	// 手机制造商ID，如果手机注册，请带上此信息。
+	// <p>手机制造商ID，如果手机注册，请带上此信息。</p>
 	VendorId *string `json:"VendorId,omitnil,omitempty" name:"VendorId"`
 
-	// 设备类型(已不推荐使用)。
+	// <p>设备类型(已不推荐使用)。</p>
 	DeviceType *int64 `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 扩展字段。
+	// <p>扩展字段。</p>
 	Details []*InputDetails `json:"Details,omitnil,omitempty" name:"Details"`
 
-	// 邀请助力场景相关信息。
+	// <p>邀请助力场景相关信息。</p>
 	Sponsor *SponsorInfo `json:"Sponsor,omitnil,omitempty" name:"Sponsor"`
 
-	// 详情请跳转至OnlineScamInfo查看。
+	// <p>详情请跳转至OnlineScamInfo查看。</p>
 	OnlineScam *OnlineScamInfo `json:"OnlineScam,omitnil,omitempty" name:"OnlineScam"`
 
-	// 1：Android
-	// 2：iOS
-	// 3：H5
-	// 4：小程序
+	// <p>1：Android<br>2：iOS<br>3：H5<br>4：小程序<br>5：鸿蒙</p>
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
-	// 数据授权信息。
-	// 注意：新接入通用业务欺诈保护（RCE）服务的客户该字段【必传】。
+	// <p>数据授权信息。<br>注意：新接入通用业务欺诈保护（RCE）服务的客户该字段【必传】。</p>
 	DataAuthorization *DataAuthorizationInfo `json:"DataAuthorization,omitnil,omitempty" name:"DataAuthorization"`
 }
 
@@ -1219,22 +1205,17 @@ type OutputImportNameListDataFront struct {
 }
 
 type OutputManageMarketingRisk struct {
-	// 错误码，0 表示成功，非0表示失败错误码。
-	// 0：成功
-	// 1：错误
-	// 1002：参数错误
-	// 4300：未开通服务
-	// 4301：后端未创建对应产品
+	// <p>错误码，0 表示成功，非0表示失败错误码。<br>0：成功<br>1002：参数错误<br>4300：未开通服务<br>4301：后端未创建对应产品<br>6000：系统内部错误</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// UTF-8编码，出错消息。
+	// <p>UTF-8编码，出错消息。</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 业务详情。
+	// <p>业务详情。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *OutputManageMarketingRiskValue `json:"Value,omitnil,omitempty" name:"Value"`
 
-	// 控制台显示的req_id。
+	// <p>控制台显示的req_id。</p>
 	UUid *string `json:"UUid,omitnil,omitempty" name:"UUid"`
 }
 

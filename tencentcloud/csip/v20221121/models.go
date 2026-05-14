@@ -1235,56 +1235,59 @@ type AssetProcessItem struct {
 }
 
 type AssetRiskItem struct {
-	// 租户ID
+	// <p>租户ID</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 云厂商
+	// <p>云厂商</p>
 	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
 
-	// 云厂商名称
+	// <p>云厂商名称</p>
 	ProviderName *string `json:"ProviderName,omitnil,omitempty" name:"ProviderName"`
 
-	// 云账号名称
+	// <p>云账号名称</p>
 	CloudAccountName *string `json:"CloudAccountName,omitnil,omitempty" name:"CloudAccountName"`
 
-	// 云账号ID
+	// <p>云账号ID</p>
 	CloudAccountId *string `json:"CloudAccountId,omitnil,omitempty" name:"CloudAccountId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 首次发现时间
+	// <p>首次发现时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 风险状态
+	// <p>风险状态</p>
 	RiskStatus *int64 `json:"RiskStatus,omitnil,omitempty" name:"RiskStatus"`
 
-	// 风险名称
+	// <p>风险名称</p>
 	RiskTitle *string `json:"RiskTitle,omitnil,omitempty" name:"RiskTitle"`
 
-	// 检查类型
+	// <p>检查类型</p>
 	CheckType *string `json:"CheckType,omitnil,omitempty" name:"CheckType"`
 
-	// 风险等级
+	// <p>风险等级</p>
 	Severity *string `json:"Severity,omitnil,omitempty" name:"Severity"`
 
-	// 风险规则ID
+	// <p>风险规则ID</p>
 	RiskRuleId *string `json:"RiskRuleId,omitnil,omitempty" name:"RiskRuleId"`
 
-	// 处置分类
+	// <p>处置分类</p>
 	Classify *string `json:"Classify,omitnil,omitempty" name:"Classify"`
 
-	// 等保合规
+	// <p>等保合规</p>
 	StandardTerms []*StandardTerm `json:"StandardTerms,omitnil,omitempty" name:"StandardTerms"`
 
-	// 资产类型
+	// <p>资产类型</p>
 	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
+
+	// <p>资产类型图标</p>
+	AssetTypeIconURL *string `json:"AssetTypeIconURL,omitnil,omitempty" name:"AssetTypeIconURL"`
 }
 
 type AssetTag struct {
@@ -2310,50 +2313,53 @@ type CallRecord struct {
 }
 
 type CheckViewRiskItem struct {
-	// 检查项规则ID
+	// <p>检查项规则ID</p>
 	RiskRuleId *string `json:"RiskRuleId,omitnil,omitempty" name:"RiskRuleId"`
 
-	// 风险名称
+	// <p>风险名称</p>
 	RiskTitle *string `json:"RiskTitle,omitnil,omitempty" name:"RiskTitle"`
 
-	// 检查类型
+	// <p>检查类型</p>
 	CheckType *string `json:"CheckType,omitnil,omitempty" name:"CheckType"`
 
-	// 风险等级
+	// <p>风险等级</p>
 	Severity *string `json:"Severity,omitnil,omitempty" name:"Severity"`
 
-	// 存在1个风险项
+	// <p>存在1个风险项</p>
 	RiskDesc *string `json:"RiskDesc,omitnil,omitempty" name:"RiskDesc"`
 
-	// 首次发现时间
+	// <p>首次发现时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 风险更新时间
+	// <p>风险更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 云厂商
+	// <p>云厂商</p>
 	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
 
-	// 风险状态
+	// <p>风险状态</p>
 	RiskStatus *uint64 `json:"RiskStatus,omitnil,omitempty" name:"RiskStatus"`
 
-	// 受影响资产数量
+	// <p>受影响资产数量</p>
 	AssetCount *uint64 `json:"AssetCount,omitnil,omitempty" name:"AssetCount"`
 
-	// 风险数量
+	// <p>风险数量</p>
 	RiskCount *uint64 `json:"RiskCount,omitnil,omitempty" name:"RiskCount"`
 
-	// 资产类型
+	// <p>资产类型</p>
 	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 
-	// 事件类型
+	// <p>事件类型</p>
 	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
 
-	// 处置分类
+	// <p>处置分类</p>
 	Classify *string `json:"Classify,omitnil,omitempty" name:"Classify"`
 
-	// cspm规范条款
+	// <p>cspm规范条款</p>
 	StandardTerms []*StandardTerm `json:"StandardTerms,omitnil,omitempty" name:"StandardTerms"`
+
+	// <p>资产类型图标</p>
+	AssetTypeIconURL *string `json:"AssetTypeIconURL,omitnil,omitempty" name:"AssetTypeIconURL"`
 }
 
 type ClbListenerListInfo struct {
@@ -5453,7 +5459,7 @@ func (r *DescribeAlertListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetProcessListRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -5478,7 +5484,7 @@ type DescribeAssetProcessListRequestParams struct {
 type DescribeAssetProcessListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -5555,7 +5561,7 @@ func (r *DescribeAssetProcessListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetRiskListRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -5577,7 +5583,7 @@ type DescribeAssetRiskListRequestParams struct {
 type DescribeAssetRiskListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -5889,7 +5895,7 @@ func (r *DescribeCFWAssetStatisticsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCSIPRiskStatisticsRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -5899,7 +5905,7 @@ type DescribeCSIPRiskStatisticsRequestParams struct {
 type DescribeCSIPRiskStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -6208,7 +6214,7 @@ func (r *DescribeCallRecordResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCheckViewRisksRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -6230,7 +6236,7 @@ type DescribeCheckViewRisksRequestParams struct {
 type DescribeCheckViewRisksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -6476,7 +6482,7 @@ func (r *DescribeClusterPodAssetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConfigCheckRulesRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -6498,7 +6504,7 @@ type DescribeConfigCheckRulesRequestParams struct {
 type DescribeConfigCheckRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -10206,14 +10212,14 @@ func (r *DescribeDspmWhitelistStrategyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeExposeAssetCategoryRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
 type DescribeExposeAssetCategoryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 }
 
@@ -10263,7 +10269,7 @@ func (r *DescribeExposeAssetCategoryResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeExposePathRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 资产ID
@@ -10282,7 +10288,7 @@ type DescribeExposePathRequestParams struct {
 type DescribeExposePathRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 资产ID
@@ -10348,7 +10354,7 @@ func (r *DescribeExposePathResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeExposuresRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -10370,7 +10376,7 @@ type DescribeExposuresRequestParams struct {
 type DescribeExposuresRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -10522,7 +10528,7 @@ func (r *DescribeGatewayAssetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHighBaseLineRiskListRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -10550,7 +10556,7 @@ type DescribeHighBaseLineRiskListRequestParams struct {
 type DescribeHighBaseLineRiskListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -12180,7 +12186,7 @@ type DescribeRiskDetailListRequestParams struct {
 	// 风险规则ID
 	RiskRuleId *string `json:"RiskRuleId,omitnil,omitempty" name:"RiskRuleId"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -12208,7 +12214,7 @@ type DescribeRiskDetailListRequest struct {
 	// 风险规则ID
 	RiskRuleId *string `json:"RiskRuleId,omitnil,omitempty" name:"RiskRuleId"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -12753,6 +12759,102 @@ func (r *DescribeSearchBugInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSearchBugInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSkillScanPayInfoRequestParams struct {
+
+}
+
+type DescribeSkillScanPayInfoRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeSkillScanPayInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSkillScanPayInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSkillScanPayInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSkillScanPayInfoResponseParams struct {
+	// <p>订单所属租户 AppID</p>
+	AppID *uint64 `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// <p>订单状态<br>枚举值：<br>0：未购买<br>1：正常<br>2：隔离<br>6：试用中<br>7：已过期<br>8：试用到期</p>
+	OrderStatus *int64 `json:"OrderStatus,omitnil,omitempty" name:"OrderStatus"`
+
+	// <p>总配额</p>
+	TotalQuota *int64 `json:"TotalQuota,omitnil,omitempty" name:"TotalQuota"`
+
+	// <p>已消耗配额</p>
+	UsedCount *int64 `json:"UsedCount,omitnil,omitempty" name:"UsedCount"`
+
+	// <p>支付模式<br>枚举值：<br>0：后付费<br>1：预付费</p>
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// <p>自动续费标志<br>枚举值：<br>0：未设置<br>1：自动续费<br>2：不自动续费</p>
+	AutoRenew *uint64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
+
+	// <p>资源ID</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// <p>购买时长</p>
+	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// <p>时长单位</p>
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+
+	// <p>订单开始时间</p>
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// <p>订单到期时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>公测结束时间，固定为 2026-06-30 23:59:59</p>
+	BetaEndTime *string `json:"BetaEndTime,omitnil,omitempty" name:"BetaEndTime"`
+
+	// <p>服务器当前时间</p>
+	TimeNow *string `json:"TimeNow,omitnil,omitempty" name:"TimeNow"`
+
+	// <p>租户 Uin</p>
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// <p>租户昵称</p>
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSkillScanPayInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSkillScanPayInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeSkillScanPayInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSkillScanPayInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13860,7 +13962,7 @@ func (r *DescribeVpcAssetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVulRiskListRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -13888,7 +13990,7 @@ type DescribeVulRiskListRequestParams struct {
 type DescribeVulRiskListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 过滤内容
@@ -14683,32 +14785,38 @@ type DspmAssetDatabaseInfo struct {
 }
 
 type DspmAssetFieldInfo struct {
-	// 资产实例id
+	// <p>资产实例id</p>
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// schema名
+	// <p>schema名</p>
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
-	// 表名
+	// <p>表名</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// 字段名
+	// <p>字段名</p>
 	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
 
-	// 数据项id集合
+	// <p>数据项id集合</p>
 	RuleIds []*uint64 `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
 
-	// 数据项名称集合
+	// <p>数据项名称集合</p>
 	RuleNames []*string `json:"RuleNames,omitnil,omitempty" name:"RuleNames"`
 
-	// 分类id集合
+	// <p>分类id集合</p>
 	CategoryIds []*uint64 `json:"CategoryIds,omitnil,omitempty" name:"CategoryIds"`
 
-	// 分类名称集合
+	// <p>分类名称集合</p>
 	CategoryNames []*string `json:"CategoryNames,omitnil,omitempty" name:"CategoryNames"`
+
+	// <p>分类详情</p>
+	CategoryDetails []*DspmIdentifyCategoryDetail `json:"CategoryDetails,omitnil,omitempty" name:"CategoryDetails"`
+
+	// <p>字段注释</p>
+	FieldComment *string `json:"FieldComment,omitnil,omitempty" name:"FieldComment"`
 }
 
 type DspmAssetInstance struct {
@@ -14765,35 +14873,44 @@ type DspmAssetSecurityAnalyseStatus struct {
 }
 
 type DspmAssetTableInfo struct {
-	// 资产实例id
+	// <p>资产实例id</p>
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// schema名称
+	// <p>schema名称</p>
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
-	// 表名
+	// <p>表名</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// 字段数
+	// <p>字段数</p>
 	FieldCount *uint64 `json:"FieldCount,omitnil,omitempty" name:"FieldCount"`
 
-	// 敏感字段数
+	// <p>敏感字段数</p>
 	SensitiveFieldCount *uint64 `json:"SensitiveFieldCount,omitnil,omitempty" name:"SensitiveFieldCount"`
 
-	// 数据项id集合
+	// <p>数据项id集合</p>
 	RuleIds []*uint64 `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`
 
-	// 数据项名称集合
+	// <p>数据项名称集合</p>
 	RuleNames []*string `json:"RuleNames,omitnil,omitempty" name:"RuleNames"`
 
-	// 分类id集合
+	// <p>分类id集合</p>
 	CategoryIds []*uint64 `json:"CategoryIds,omitnil,omitempty" name:"CategoryIds"`
 
-	// 分类名称集合
+	// <p>分类名称集合</p>
 	CategoryNames []*string `json:"CategoryNames,omitnil,omitempty" name:"CategoryNames"`
+
+	// <p>分类详情</p>
+	CategoryDetails []*DspmIdentifyCategoryDetail `json:"CategoryDetails,omitnil,omitempty" name:"CategoryDetails"`
+
+	// <p>数据表id</p>
+	TableId *uint64 `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// <p>表注释</p>
+	TableComment *string `json:"TableComment,omitnil,omitempty" name:"TableComment"`
 }
 
 type DspmAssetTypeCount struct {
@@ -15622,113 +15739,119 @@ type ExposeAssetTypeItem struct {
 }
 
 type ExposesItem struct {
-	// 云厂商
+	// <p>云厂商</p>
 	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
 
-	// 云账号名称
+	// <p>云账号名称</p>
 	CloudAccountName *string `json:"CloudAccountName,omitnil,omitempty" name:"CloudAccountName"`
 
-	// 云账号
+	// <p>云账号</p>
 	CloudAccountId *string `json:"CloudAccountId,omitnil,omitempty" name:"CloudAccountId"`
 
-	// 域名
+	// <p>域名</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// IP
+	// <p>IP</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 端口或者端口范围
+	// <p>端口或者端口范围</p>
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 开放
+	// <p>开放</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 风险类型
+	// <p>风险类型</p>
 	RiskType *string `json:"RiskType,omitnil,omitempty" name:"RiskType"`
 
-	// acl类型
+	// <p>acl类型</p>
 	AclType *string `json:"AclType,omitnil,omitempty" name:"AclType"`
 
-	// acl列表
+	// <p>acl列表</p>
 	AclList *string `json:"AclList,omitnil,omitempty" name:"AclList"`
 
-	// 资产ID
+	// <p>资产ID</p>
 	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 资产类型
+	// <p>资产类型</p>
 	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 
-	// 端口服务数量
+	// <p>端口服务数量</p>
 	PortServiceCount *uint64 `json:"PortServiceCount,omitnil,omitempty" name:"PortServiceCount"`
 
-	// 高危端口数量
+	// <p>高危端口数量</p>
 	HighRiskPortServiceCount *uint64 `json:"HighRiskPortServiceCount,omitnil,omitempty" name:"HighRiskPortServiceCount"`
 
-	// web应用数量
+	// <p>web应用数量</p>
 	WebAppCount *uint64 `json:"WebAppCount,omitnil,omitempty" name:"WebAppCount"`
 
-	// 有风险web应用数量
+	// <p>有风险web应用数量</p>
 	RiskWebAppCount *uint64 `json:"RiskWebAppCount,omitnil,omitempty" name:"RiskWebAppCount"`
 
-	// 弱口令数量
+	// <p>弱口令数量</p>
 	WeakPasswordCount *uint64 `json:"WeakPasswordCount,omitnil,omitempty" name:"WeakPasswordCount"`
 
-	// 漏洞数量
+	// <p>漏洞数量</p>
 	VulCount *uint64 `json:"VulCount,omitnil,omitempty" name:"VulCount"`
 
-	// 首次发现时间
+	// <p>首次发现时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 最近更新时间
+	// <p>最近更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 实例类型名称
+	// <p>实例类型名称</p>
 	AssetTypeName *string `json:"AssetTypeName,omitnil,omitempty" name:"AssetTypeName"`
 
-	// 开放状态
+	// <p>开放状态</p>
 	DisplayStatus *string `json:"DisplayStatus,omitnil,omitempty" name:"DisplayStatus"`
 
-	// 端口状态
+	// <p>端口状态</p>
 	DisplayRiskType *string `json:"DisplayRiskType,omitnil,omitempty" name:"DisplayRiskType"`
 
-	// 扫描任务状态
+	// <p>扫描任务状态</p>
 	ScanTaskStatus *string `json:"ScanTaskStatus,omitnil,omitempty" name:"ScanTaskStatus"`
 
-	// uuid
+	// <p>uuid</p>
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
-	// 是否进行过安全体检
+	// <p>是否进行过安全体检</p>
 	HasScan *string `json:"HasScan,omitnil,omitempty" name:"HasScan"`
 
-	// 租户ID
+	// <p>租户ID</p>
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 租户ID字符串
+	// <p>租户ID字符串</p>
 	AppIdStr *string `json:"AppIdStr,omitnil,omitempty" name:"AppIdStr"`
 
-	// 记录ID
+	// <p>记录ID</p>
 	ExposureID *uint64 `json:"ExposureID,omitnil,omitempty" name:"ExposureID"`
 
-	// 端口开放数量
+	// <p>端口开放数量</p>
 	PortDetectCount *uint64 `json:"PortDetectCount,omitnil,omitempty" name:"PortDetectCount"`
 
-	// 端口开放结果
+	// <p>端口开放结果</p>
 	PortDetectResult *string `json:"PortDetectResult,omitnil,omitempty" name:"PortDetectResult"`
 
-	// 标签
+	// <p>标签</p>
 	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 备注
+	// <p>备注</p>
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 待治理风险数量
+	// <p>待治理风险数量</p>
 	ToGovernedRiskCount *uint64 `json:"ToGovernedRiskCount,omitnil,omitempty" name:"ToGovernedRiskCount"`
 
-	// 待治理风险内容
+	// <p>待治理风险内容</p>
 	ToGovernedRiskContent *string `json:"ToGovernedRiskContent,omitnil,omitempty" name:"ToGovernedRiskContent"`
+
+	// <p>资产类型图标</p>
+	AssetTypeIconURL *string `json:"AssetTypeIconURL,omitnil,omitempty" name:"AssetTypeIconURL"`
+
+	// <p>资产类型3D图标</p>
+	AssetTypeIconSolidURL *string `json:"AssetTypeIconSolidURL,omitnil,omitempty" name:"AssetTypeIconSolidURL"`
 }
 
 type Filter struct {

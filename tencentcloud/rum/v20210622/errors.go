@@ -20,11 +20,23 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE = "AuthFailure"
 
+	// 请求未CAM授权
+	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+
 	// DryRun 操作，代表请求将会是成功的，只是多传了 DryRun 参数。
 	DRYRUNOPERATION = "DryRunOperation"
 
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
+
+	// 计费相关 - 账户余额不足。
+	FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+
+	// 计费相关 - 账户没有付费权限。
+	FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+
+	// 计费相关 - 计费参数无效。
+	FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
 
 	// CLS调用失败
 	FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
@@ -37,6 +49,9 @@ const (
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
+
+	// 无效的过滤器
+	INVALIDFILTER = "InvalidFilter"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
@@ -52,6 +67,9 @@ const (
 
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
+
+	// 地域错误
+	REGIONERROR = "RegionError"
 
 	// 请求的次数超过了频率限制。
 	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"

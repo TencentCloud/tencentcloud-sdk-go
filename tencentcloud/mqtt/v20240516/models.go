@@ -5369,13 +5369,9 @@ type ModifyInstanceRequestParams struct {
 	// 客户端证书注册方式：
 	// JITP：自动注册
 	// API：手动通过API注册
-	//
-	// Deprecated: DeviceCertificateProvisionType is deprecated.
 	DeviceCertificateProvisionType *string `json:"DeviceCertificateProvisionType,omitnil,omitempty" name:"DeviceCertificateProvisionType"`
 
 	// 自动注册证书是否自动激活
-	//
-	// Deprecated: AutomaticActivation is deprecated.
 	AutomaticActivation *bool `json:"AutomaticActivation,omitnil,omitempty" name:"AutomaticActivation"`
 
 	// 授权策略开关

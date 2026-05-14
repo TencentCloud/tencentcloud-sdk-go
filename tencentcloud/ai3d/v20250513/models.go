@@ -85,6 +85,72 @@ func (r *Convert3DFormatResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAutoRiggingJobRequestParams struct {
+	// <p>任务ID。</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DescribeAutoRiggingJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务ID。</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DescribeAutoRiggingJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoRiggingJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAutoRiggingJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAutoRiggingJobResponseParams struct {
+	// <p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功 示例值：RUN。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>错误码。</p>
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>错误信息。</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// <p>生成文件的URL地址，有效期1天。</p>
+	ResultFile3Ds []*File3D `json:"ResultFile3Ds,omitnil,omitempty" name:"ResultFile3Ds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAutoRiggingJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAutoRiggingJobResponseParams `json:"Response"`
+}
+
+func (r *DescribeAutoRiggingJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoRiggingJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeHunyuanTo3DMotionJobRequestParams struct {
 	// <p>任务ID。</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -642,6 +708,70 @@ func (r *QueryHunyuanTo3DRapidJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryHunyuanTo3DRapidJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitAutoRiggingJobRequestParams struct {
+	// <p>3D人物模型文件，通过输入源模型生成3D人物模型动画。<br>人物模型需为标准T-Pose文件（双臂水平展开的人物站立姿态），3D模型文件必选其一，参考值：<br>FBX：3D模型文件，格式为FBX，文件大小不超过60Mb；<br>OBJ：3D模型文件，格式为OBJ，文件大小不超过60Mb；</p>
+	File3D *InputFile3D `json:"File3D,omitnil,omitempty" name:"File3D"`
+
+	// <p>预设动作类型，参考值：</p><ol><li>回旋踢  </li><li>左勾拳  </li><li>蓄力攻击  </li><li>蓄力出拳  </li><li>二连击打  </li><li>二连击打-2  </li><li>后撤  </li><li>受击  </li><li>受击-2  </li><li>受击-3  </li><li>受击倒地-1  </li><li>受击倒地-2  </li><li>落地  </li><li>沮丧  </li><li>割喉  </li><li>刺拳  </li><li>连续击打  </li><li>踢腿  </li><li>侧踢  </li><li>打太极  </li><li>后空翻  </li><li>蹲姿转体  </li><li>走路-1  </li><li>走路-2  </li><li>走路-3  </li><li>待机-1  </li><li>待机-2  </li><li>街舞  </li><li>扭扭舞  </li><li>左转弯  </li><li>右转弯  </li><li>慢跑  </li><li>慢跑-2  </li><li>奔跑  </li><li>冲刺跑-1  </li><li>冲刺跑-2  </li><li>冲刺跑-3  </li><li>原地跳-1  </li><li>滑铲  </li><li>向前大跳  </li><li>向前大跳-2  </li><li>跨越  </li><li>恐吓  </li><li>向前跌倒  </li><li>右转  </li><li>原地跳-2  </li><li>转身  </li><li>发送冲击波</li></ol>
+	MotionType *int64 `json:"MotionType,omitnil,omitempty" name:"MotionType"`
+}
+
+type SubmitAutoRiggingJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>3D人物模型文件，通过输入源模型生成3D人物模型动画。<br>人物模型需为标准T-Pose文件（双臂水平展开的人物站立姿态），3D模型文件必选其一，参考值：<br>FBX：3D模型文件，格式为FBX，文件大小不超过60Mb；<br>OBJ：3D模型文件，格式为OBJ，文件大小不超过60Mb；</p>
+	File3D *InputFile3D `json:"File3D,omitnil,omitempty" name:"File3D"`
+
+	// <p>预设动作类型，参考值：</p><ol><li>回旋踢  </li><li>左勾拳  </li><li>蓄力攻击  </li><li>蓄力出拳  </li><li>二连击打  </li><li>二连击打-2  </li><li>后撤  </li><li>受击  </li><li>受击-2  </li><li>受击-3  </li><li>受击倒地-1  </li><li>受击倒地-2  </li><li>落地  </li><li>沮丧  </li><li>割喉  </li><li>刺拳  </li><li>连续击打  </li><li>踢腿  </li><li>侧踢  </li><li>打太极  </li><li>后空翻  </li><li>蹲姿转体  </li><li>走路-1  </li><li>走路-2  </li><li>走路-3  </li><li>待机-1  </li><li>待机-2  </li><li>街舞  </li><li>扭扭舞  </li><li>左转弯  </li><li>右转弯  </li><li>慢跑  </li><li>慢跑-2  </li><li>奔跑  </li><li>冲刺跑-1  </li><li>冲刺跑-2  </li><li>冲刺跑-3  </li><li>原地跳-1  </li><li>滑铲  </li><li>向前大跳  </li><li>向前大跳-2  </li><li>跨越  </li><li>恐吓  </li><li>向前跌倒  </li><li>右转  </li><li>原地跳-2  </li><li>转身  </li><li>发送冲击波</li></ol>
+	MotionType *int64 `json:"MotionType,omitnil,omitempty" name:"MotionType"`
+}
+
+func (r *SubmitAutoRiggingJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitAutoRiggingJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "File3D")
+	delete(f, "MotionType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitAutoRiggingJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitAutoRiggingJobResponseParams struct {
+	// <p>任务ID（有效期24小时）</p>
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitAutoRiggingJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitAutoRiggingJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitAutoRiggingJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitAutoRiggingJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

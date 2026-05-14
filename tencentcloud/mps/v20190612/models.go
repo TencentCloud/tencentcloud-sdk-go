@@ -557,7 +557,10 @@ type AddBlindWatermarkConfig struct {
 }
 
 type AddOnImageInput struct {
-	// 图片路径。
+	// <p>图片类型。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>图片路径。</p>
 	Image *MediaInputInfo `json:"Image,omitnil,omitempty" name:"Image"`
 }
 
@@ -11158,6 +11161,9 @@ type DescribeDesignTaskResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
 
+	// <p>试听音频Url</p>
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+
 	// <p>扩展信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
@@ -16329,6 +16335,9 @@ type DesignVoiceAsyncRequestParams struct {
 	// <p>音色属性</p>
 	VoiceProfile *VoiceProfile `json:"VoiceProfile,omitnil,omitempty" name:"VoiceProfile"`
 
+	// <p>试听音频文本。长度不超过500</p>
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
 	// <p>扩展参数，json字符串</p>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
 }
@@ -16341,6 +16350,9 @@ type DesignVoiceAsyncRequest struct {
 
 	// <p>音色属性</p>
 	VoiceProfile *VoiceProfile `json:"VoiceProfile,omitnil,omitempty" name:"VoiceProfile"`
+
+	// <p>试听音频文本。长度不超过500</p>
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
 	// <p>扩展参数，json字符串</p>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
@@ -16360,6 +16372,7 @@ func (r *DesignVoiceAsyncRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Prompt")
 	delete(f, "VoiceProfile")
+	delete(f, "Text")
 	delete(f, "ExtParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DesignVoiceAsyncRequest has unknown keys!", "")

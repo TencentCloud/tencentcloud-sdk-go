@@ -29079,234 +29079,238 @@ type IntegrationTag struct {
 }
 
 type IntegrationTaskInfo struct {
-	// 任务名称
+	// <p>任务名称</p>
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 任务描述
+	// <p>任务描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 同步类型1.解决方案(整库迁移),2.单表同步
+	// <p>同步类型1.解决方案(整库迁移),2.单表同步</p>
 	SyncType *int64 `json:"SyncType,omitnil,omitempty" name:"SyncType"`
 
-	// 201.实时,202.离线
+	// <p>201.实时,202.离线</p>
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 任务所属工作流id
+	// <p>任务所属工作流id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 任务id
+	// <p>任务id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务调度id(oceanus or us等作业id)，非填项
+	// <p>任务调度id(oceanus or us等作业id)，非填项</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleTaskId *string `json:"ScheduleTaskId,omitnil,omitempty" name:"ScheduleTaskId"`
 
-	// inlong任务id
+	// <p>inlong任务id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupId *string `json:"TaskGroupId,omitnil,omitempty" name:"TaskGroupId"`
 
-	// 项目id
+	// <p>项目id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 创建人uin
+	// <p>创建人uin</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
 
-	// 操作人uin
+	// <p>操作人uin</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorUin *string `json:"OperatorUin,omitnil,omitempty" name:"OperatorUin"`
 
-	// owner uin
+	// <p>owner uin</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 应用id
+	// <p>应用id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 0:新建(任务开发态默认状态)|1:未开始|2:操作中|3:运行中|4:暂停|5:任务停止中|6:停止|7:执行失败|20:异常|21:未知|
+	// <p>0:新建(任务开发态默认状态)|1:未开始|2:操作中|3:运行中|4:暂停|5:任务停止中|6:停止|7:执行失败|20:异常|21:未知|</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 节点列表
+	// <p>节点列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nodes []*IntegrationNodeInfo `json:"Nodes,omitnil,omitempty" name:"Nodes"`
 
-	// 执行资源id
+	// <p>执行资源id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutorId *string `json:"ExecutorId,omitnil,omitempty" name:"ExecutorId"`
 
-	// 任务配置信息
+	// <p>任务配置信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Config []*RecordField `json:"Config,omitnil,omitempty" name:"Config"`
 
-	// 任务扩展配置信息
+	// <p>任务扩展配置信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtConfig []*RecordField `json:"ExtConfig,omitnil,omitempty" name:"ExtConfig"`
 
-	// 任务执行context信息
+	// <p>任务执行context信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecuteContext []*RecordField `json:"ExecuteContext,omitnil,omitempty" name:"ExecuteContext"`
 
-	// 节点映射
+	// <p>节点映射</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mappings []*IntegrationNodeMapping `json:"Mappings,omitnil,omitempty" name:"Mappings"`
 
-	// 任务配置模式，0:画布 1:表单 3:脚本
+	// <p>任务配置模式，0:画布 1:表单 3:脚本</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskMode *string `json:"TaskMode,omitnil,omitempty" name:"TaskMode"`
 
-	// 责任人
+	// <p>责任人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Incharge *string `json:"Incharge,omitnil,omitempty" name:"Incharge"`
 
-	// 离线新增参数
+	// <p>离线新增参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OfflineTaskAddEntity *OfflineTaskAddParam `json:"OfflineTaskAddEntity,omitnil,omitempty" name:"OfflineTaskAddEntity"`
 
-	// group name
+	// <p>group name</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutorGroupName *string `json:"ExecutorGroupName,omitnil,omitempty" name:"ExecutorGroupName"`
 
-	// inlong manager url
+	// <p>inlong manager url</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InLongManagerUrl *string `json:"InLongManagerUrl,omitnil,omitempty" name:"InLongManagerUrl"`
 
-	// stream id
+	// <p>stream id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InLongStreamId *string `json:"InLongStreamId,omitnil,omitempty" name:"InLongStreamId"`
 
-	// version
+	// <p>version</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InLongManagerVersion *string `json:"InLongManagerVersion,omitnil,omitempty" name:"InLongManagerVersion"`
 
-	// inlong dataproxy url
+	// <p>inlong dataproxy url</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataProxyUrl []*string `json:"DataProxyUrl,omitnil,omitempty" name:"DataProxyUrl"`
 
-	// 任务版本是否已提交运维
+	// <p>任务版本是否已提交运维</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Submit *bool `json:"Submit,omitnil,omitempty" name:"Submit"`
 
-	// 数据源类型：MYSQL|POSTGRE|ORACLE|SQLSERVER|FTP|HIVE|HDFS|ICEBERG|KAFKA|HBASE|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DLCV1|DORIS|CKAFKA|DTS_KAFKA|S3|CDW|LOCAL|TDSQLC|TDSQL|TDSQL_MYSQL|MONGODB|INFORMIX|SYBASE|REST_API|SuperSQL|PRESTO|DR_SUM|TiDB|StarRocks|Trino|Kyuubi|GDB|TCHOUSE_X|TCHOUSE_P|TDSQL_POSTGRE
+	// <p>数据源类型：MYSQL|POSTGRE|ORACLE|SQLSERVER|FTP|HIVE|HDFS|ICEBERG|KAFKA|HBASE|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DLCV1|DORIS|CKAFKA|DTS_KAFKA|S3|CDW|LOCAL|TDSQLC|TDSQL|TDSQL_MYSQL|MONGODB|INFORMIX|SYBASE|REST_API|SuperSQL|PRESTO|DR_SUM|TiDB|StarRocks|Trino|Kyuubi|GDB|TCHOUSE_X|TCHOUSE_P|TDSQL_POSTGRE</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputDatasourceType *string `json:"InputDatasourceType,omitnil,omitempty" name:"InputDatasourceType"`
 
-	// 数据源类型：MYSQL|POSTGRE|ORACLE|SQLSERVER|FTP|HIVE|HDFS|ICEBERG|KAFKA|HBASE|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DLCV1|DORIS|CKAFKA|DTS_KAFKA|S3|CDW|LOCAL|TDSQLC|TDSQL|TDSQL_MYSQL|MONGODB|INFORMIX|SYBASE|REST_API|SuperSQL|PRESTO|DR_SUM|TiDB|StarRocks|Trino|Kyuubi|GDB|TCHOUSE_X|TCHOUSE_P|TDSQL_POSTGRE
+	// <p>数据源类型：MYSQL|POSTGRE|ORACLE|SQLSERVER|FTP|HIVE|HDFS|ICEBERG|KAFKA|HBASE|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DLCV1|DORIS|CKAFKA|DTS_KAFKA|S3|CDW|LOCAL|TDSQLC|TDSQL|TDSQL_MYSQL|MONGODB|INFORMIX|SYBASE|REST_API|SuperSQL|PRESTO|DR_SUM|TiDB|StarRocks|Trino|Kyuubi|GDB|TCHOUSE_X|TCHOUSE_P|TDSQL_POSTGRE</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputDatasourceType *string `json:"OutputDatasourceType,omitnil,omitempty" name:"OutputDatasourceType"`
 
-	// 读取条数
+	// <p>读取条数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NumRecordsIn *int64 `json:"NumRecordsIn,omitnil,omitempty" name:"NumRecordsIn"`
 
-	// 写入条数
+	// <p>写入条数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NumRecordsOut *int64 `json:"NumRecordsOut,omitnil,omitempty" name:"NumRecordsOut"`
 
-	// 读取延迟
+	// <p>读取延迟</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReaderDelay *float64 `json:"ReaderDelay,omitnil,omitempty" name:"ReaderDelay"`
 
-	// 重启次数
+	// <p>重启次数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NumRestarts *int64 `json:"NumRestarts,omitnil,omitempty" name:"NumRestarts"`
 
-	// 任务创建时间
+	// <p>任务创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 任务更新时间
+	// <p>任务更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 任务最后一次运行时间
+	// <p>任务最后一次运行时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastRunTime *string `json:"LastRunTime,omitnil,omitempty" name:"LastRunTime"`
 
-	// 任务停止时间
+	// <p>任务停止时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StopTime *string `json:"StopTime,omitnil,omitempty" name:"StopTime"`
 
-	// 作业是否已提交
+	// <p>作业是否已提交</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HasVersion *bool `json:"HasVersion,omitnil,omitempty" name:"HasVersion"`
 
-	// 任务是否被锁定
+	// <p>任务是否被锁定</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Locked *bool `json:"Locked,omitnil,omitempty" name:"Locked"`
 
-	// 任务锁定人
+	// <p>任务锁定人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Locker *string `json:"Locker,omitnil,omitempty" name:"Locker"`
 
-	// 耗费资源量
+	// <p>耗费资源量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunningCu *float64 `json:"RunningCu,omitnil,omitempty" name:"RunningCu"`
 
-	// 该任务关联的告警规则
+	// <p>该任务关联的告警规则</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskAlarmRegularList []*string `json:"TaskAlarmRegularList,omitnil,omitempty" name:"TaskAlarmRegularList"`
 
-	// 实时任务资源分层情况： 0：进行中,1：成功 ,2：失败
+	// <p>实时任务资源分层情况： 0：进行中,1：成功 ,2：失败</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SwitchResource *int64 `json:"SwitchResource,omitnil,omitempty" name:"SwitchResource"`
 
-	// 实时任务读取阶段：0：全部全量,1：部分全量,2：全部增量
+	// <p>实时任务读取阶段：0：全部全量,1：部分全量,2：全部增量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadPhase *int64 `json:"ReadPhase,omitnil,omitempty" name:"ReadPhase"`
 
-	// 实时任务版本号
+	// <p>实时任务版本号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceVersion *int64 `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
 
-	// 离线任务导入到编排空间的任务id
+	// <p>离线任务导入到编排空间的任务id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ArrangeSpaceTaskId *string `json:"ArrangeSpaceTaskId,omitnil,omitempty" name:"ArrangeSpaceTaskId"`
 
-	// 离线任务状态区分1.未提交2.已提交3.已导出
+	// <p>离线任务状态区分1.未提交2.已提交3.已导出</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OfflineTaskStatus *int64 `json:"OfflineTaskStatus,omitnil,omitempty" name:"OfflineTaskStatus"`
 
-	// 导入到编排空间配置
+	// <p>导入到编排空间配置</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskImportInfo *TaskImportInfo `json:"TaskImportInfo,omitnil,omitempty" name:"TaskImportInfo"`
 
-	// 业务延迟
+	// <p>业务延迟</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessLatency *int64 `json:"BusinessLatency,omitnil,omitempty" name:"BusinessLatency"`
 
-	// 当前同步位点
+	// <p>当前同步位点</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentSyncPosition *int64 `json:"CurrentSyncPosition,omitnil,omitempty" name:"CurrentSyncPosition"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagList []*IntegrationTag `json:"TagList,omitnil,omitempty" name:"TagList"`
 
-	// 错误信息
+	// <p>错误信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 
-	// 任务子状态
+	// <p>任务子状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskSubType *int64 `json:"TaskSubType,omitnil,omitempty" name:"TaskSubType"`
 
-	// 是否存在SavePoint, 0-存在, 1-不存在, null 为未知
+	// <p>是否存在SavePoint, 0-存在, 1-不存在, null 为未知</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotExistsCheckPoint *int64 `json:"NotExistsCheckPoint,omitnil,omitempty" name:"NotExistsCheckPoint"`
 
-	// savepiontPath
+	// <p>savepiontPath</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SavePointId *string `json:"SavePointId,omitnil,omitempty" name:"SavePointId"`
 
-	// savepiontId
+	// <p>savepiontId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SavePointPath *string `json:"SavePointPath,omitnil,omitempty" name:"SavePointPath"`
+
+	// <p>最近一次操作信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastOperateInfo *LastOperateInfo `json:"LastOperateInfo,omitnil,omitempty" name:"LastOperateInfo"`
 }
 
 type JobLogErrorTip struct {
@@ -29696,6 +29700,26 @@ type LabelValueSelection struct {
 	// 标签值ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelValue *string `json:"LabelValue,omitnil,omitempty" name:"LabelValue"`
+}
+
+type LastOperateInfo struct {
+	// <p>任务事件</p>
+	TaskEvent *string `json:"TaskEvent,omitnil,omitempty" name:"TaskEvent"`
+
+	// <p>操作ID</p>
+	OperateId *string `json:"OperateId,omitnil,omitempty" name:"OperateId"`
+
+	// <p>错误信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// <p>创建时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// <p>更新时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 }
 
 type LifecycleInfo struct {

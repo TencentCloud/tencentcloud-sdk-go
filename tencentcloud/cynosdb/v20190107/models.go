@@ -9137,74 +9137,74 @@ func (r *DescribeInstanceParamsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceSlowQueriesRequestParams struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 事务开始最早时间
+	// <p>事务开始最早时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 事务开始最晚时间
+	// <p>事务开始最晚时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 限制条数
+	// <p>限制条数</p><p>建议控制 limit 大小，当 limit 过大时，由于平台返回结果大小限制，可能会造成截断</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 用户名
+	// <p>用户名</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 客户端host
+	// <p>客户端host</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 数据库名
+	// <p>数据库名</p>
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 
-	// 排序字段，可选值：QueryTime,LockTime,RowsExamined,RowsSent
+	// <p>排序字段</p><p>枚举值：</p><ul><li>QueryTime： 按照 SQL 语句的总执行时长排序</li><li>LockTime： 按照 SQL 语句在等待锁（如表锁、行锁）上消耗的时间排序</li><li>RowsExamined： 按照 SQL 语句在执行过程中扫描的行数排序</li><li>RowsSent： 按照 SQL 语句最终返回给客户端的结果行数排序</li><li>Timestamp： 按照慢查询语句发生的时间戳排序</li></ul>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序类型，可选值：asc,desc
+	// <p>排序类型，可选值：asc,desc</p>
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 
-	// sql语句
+	// <p>sql语句</p>
 	SqlText *string `json:"SqlText,omitnil,omitempty" name:"SqlText"`
 }
 
 type DescribeInstanceSlowQueriesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 事务开始最早时间
+	// <p>事务开始最早时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 事务开始最晚时间
+	// <p>事务开始最晚时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 限制条数
+	// <p>限制条数</p><p>建议控制 limit 大小，当 limit 过大时，由于平台返回结果大小限制，可能会造成截断</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 用户名
+	// <p>用户名</p>
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 客户端host
+	// <p>客户端host</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 数据库名
+	// <p>数据库名</p>
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 
-	// 排序字段，可选值：QueryTime,LockTime,RowsExamined,RowsSent
+	// <p>排序字段</p><p>枚举值：</p><ul><li>QueryTime： 按照 SQL 语句的总执行时长排序</li><li>LockTime： 按照 SQL 语句在等待锁（如表锁、行锁）上消耗的时间排序</li><li>RowsExamined： 按照 SQL 语句在执行过程中扫描的行数排序</li><li>RowsSent： 按照 SQL 语句最终返回给客户端的结果行数排序</li><li>Timestamp： 按照慢查询语句发生的时间戳排序</li></ul>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序类型，可选值：asc,desc
+	// <p>排序类型，可选值：asc,desc</p>
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 
-	// sql语句
+	// <p>sql语句</p>
 	SqlText *string `json:"SqlText,omitnil,omitempty" name:"SqlText"`
 }
 
@@ -9239,10 +9239,10 @@ func (r *DescribeInstanceSlowQueriesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceSlowQueriesResponseParams struct {
-	// 总条数
+	// <p>总条数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 慢查询记录
+	// <p>慢查询记录</p>
 	SlowQueries []*SlowQueriesItem `json:"SlowQueries,omitnil,omitempty" name:"SlowQueries"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
