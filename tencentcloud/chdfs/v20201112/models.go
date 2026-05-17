@@ -2047,22 +2047,22 @@ type MountPoint struct {
 }
 
 type RestoreTask struct {
-	// 回热任务ID
+	// <p>回热任务ID</p>
 	RestoreTaskId *uint64 `json:"RestoreTaskId,omitnil,omitempty" name:"RestoreTaskId"`
 
-	// 回热任务文件路径
+	// <p>回热任务文件路径，不支持目录和通配符</p>
 	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
 
-	// 回热任务类型（1：标准；2：极速；3：批量，暂时仅支持标准）
+	// <p>回热任务类型（1：标准；2：极速；3：批量，暂时仅支持标准）</p>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 指定恢复出的临时副本的有效时长（单位天）
+	// <p>指定恢复出的临时副本的有效时长（单位天）</p>
 	Days *uint64 `json:"Days,omitnil,omitempty" name:"Days"`
 
-	// 回热任务状态（1：绑定文件中；2：绑定文件完成；3：文件回热中；4：文件回热完成）
+	// <p>回热任务状态（1：绑定文件中；2：绑定文件完成；3：文件回热中；4：文件回热完成）</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 

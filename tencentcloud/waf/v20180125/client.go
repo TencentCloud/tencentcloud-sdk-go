@@ -12485,6 +12485,70 @@ func (c *Client) ModifyObjectsWithContext(ctx context.Context, request *ModifyOb
     return
 }
 
+func NewModifyOwaspDomainUpdateStatusRequest() (request *ModifyOwaspDomainUpdateStatusRequest) {
+    request = &ModifyOwaspDomainUpdateStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyOwaspDomainUpdateStatus")
+    
+    
+    return
+}
+
+func NewModifyOwaspDomainUpdateStatusResponse() (response *ModifyOwaspDomainUpdateStatusResponse) {
+    response = &ModifyOwaspDomainUpdateStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyOwaspDomainUpdateStatus
+// 修改域名新规则状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INTERNALERROR_SSACALLFAILED = "InternalError.SsaCallFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyOwaspDomainUpdateStatus(request *ModifyOwaspDomainUpdateStatusRequest) (response *ModifyOwaspDomainUpdateStatusResponse, err error) {
+    return c.ModifyOwaspDomainUpdateStatusWithContext(context.Background(), request)
+}
+
+// ModifyOwaspDomainUpdateStatus
+// 修改域名新规则状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INTERNALERROR_SSACALLFAILED = "InternalError.SsaCallFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyOwaspDomainUpdateStatusWithContext(ctx context.Context, request *ModifyOwaspDomainUpdateStatusRequest) (response *ModifyOwaspDomainUpdateStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyOwaspDomainUpdateStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "ModifyOwaspDomainUpdateStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyOwaspDomainUpdateStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyOwaspDomainUpdateStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyOwaspRuleStatusRequest() (request *ModifyOwaspRuleStatusRequest) {
     request = &ModifyOwaspRuleStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

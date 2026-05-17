@@ -6243,6 +6243,72 @@ func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeLicenseOverviewRequest() (request *DescribeLicenseOverviewRequest) {
+    request = &DescribeLicenseOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeLicenseOverview")
+    
+    
+    return
+}
+
+func NewDescribeLicenseOverviewResponse() (response *DescribeLicenseOverviewResponse) {
+    response = &DescribeLicenseOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLicenseOverview
+// 查询实例概览详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOINSTANCE = "UnauthorizedOperation.NoPermissionToStudioInstance"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_UNPAIDORDER = "UnsupportedOperation.UnpaidOrder"
+func (c *Client) DescribeLicenseOverview(request *DescribeLicenseOverviewRequest) (response *DescribeLicenseOverviewResponse, err error) {
+    return c.DescribeLicenseOverviewWithContext(context.Background(), request)
+}
+
+// DescribeLicenseOverview
+// 查询实例概览详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOINSTANCE = "UnauthorizedOperation.NoPermissionToStudioInstance"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_UNPAIDORDER = "UnsupportedOperation.UnpaidOrder"
+func (c *Client) DescribeLicenseOverviewWithContext(ctx context.Context, request *DescribeLicenseOverviewRequest) (response *DescribeLicenseOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeLicenseOverviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DescribeLicenseOverview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLicenseOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLicenseOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLoRaFrequencyRequest() (request *DescribeLoRaFrequencyRequest) {
     request = &DescribeLoRaFrequencyRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -15222,43 +15222,45 @@ func (r *DescribePrepaidProductsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProcedureTemplatesRequestParams struct {
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 任务流模板名字过滤条件，数组长度限制：100。
+	// <p>任务流模板名字过滤条件，数组长度限制：100。</p>
 	Names []*string `json:"Names,omitnil,omitempty" name:"Names"`
 
-	// 任务流模板类型过滤条件，可选值：
-	// <li>Preset：系统预置任务流模板；</li>
-	// <li>Custom：用户自定义任务流模板。</li>
+	// <p>任务流模板类型过滤条件，可选值：</p><li>Preset：系统预置任务流模板；</li><li>Custom：用户自定义任务流模板。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 分页偏移量，默认值：0。
+	// <p>分页偏移量，默认值：0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回记录条数，默认值：10，最大值：100。
+	// <p>返回记录条数，默认值：10，最大值：100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>指定字段对返回结果进行生序或者降序Sort.Field 目前只支持 CreateTime 。Sort.Order 为 desc（降序）或者 asc（升序）</p><p>入参限制：当前仅支持排序字段为CreateTime</p>
+	SortBy []*SortBy `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 }
 
 type DescribeProcedureTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 任务流模板名字过滤条件，数组长度限制：100。
+	// <p>任务流模板名字过滤条件，数组长度限制：100。</p>
 	Names []*string `json:"Names,omitnil,omitempty" name:"Names"`
 
-	// 任务流模板类型过滤条件，可选值：
-	// <li>Preset：系统预置任务流模板；</li>
-	// <li>Custom：用户自定义任务流模板。</li>
+	// <p>任务流模板类型过滤条件，可选值：</p><li>Preset：系统预置任务流模板；</li><li>Custom：用户自定义任务流模板。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 分页偏移量，默认值：0。
+	// <p>分页偏移量，默认值：0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回记录条数，默认值：10，最大值：100。
+	// <p>返回记录条数，默认值：10，最大值：100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>指定字段对返回结果进行生序或者降序Sort.Field 目前只支持 CreateTime 。Sort.Order 为 desc（降序）或者 asc（升序）</p><p>入参限制：当前仅支持排序字段为CreateTime</p>
+	SortBy []*SortBy `json:"SortBy,omitnil,omitempty" name:"SortBy"`
 }
 
 func (r *DescribeProcedureTemplatesRequest) ToJsonString() string {
@@ -15278,6 +15280,7 @@ func (r *DescribeProcedureTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "SortBy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProcedureTemplatesRequest has unknown keys!", "")
 	}
@@ -15286,10 +15289,10 @@ func (r *DescribeProcedureTemplatesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProcedureTemplatesResponseParams struct {
-	// 符合过滤条件的记录总数。
+	// <p>符合过滤条件的记录总数。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 任务流模板详情列表。
+	// <p>任务流模板详情列表。</p>
 	ProcedureTemplateSet []*ProcedureTemplate `json:"ProcedureTemplateSet,omitnil,omitempty" name:"ProcedureTemplateSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

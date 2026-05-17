@@ -673,57 +673,69 @@ func (r *CreateMcpServerResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateModelRequestParams struct {
-	// 实例
+	// <p>实例</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 模型名称
+	// <p>模型名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 协议类型：http/https
+	// <p>协议类型：http/https</p>
 	HttpProtocolType *string `json:"HttpProtocolType,omitnil,omitempty" name:"HttpProtocolType"`
 
-	// 目标路径
+	// <p>目标路径</p>
 	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
 
-	// 目标服务器
+	// <p>目标服务器</p>
 	TargetHosts []*TargetHostDTO `json:"TargetHosts,omitnil,omitempty" name:"TargetHosts"`
 
-	// 凭据ID
+	// <p>凭据ID</p>
 	CredentialID *string `json:"CredentialID,omitnil,omitempty" name:"CredentialID"`
 
-	// https时，是否检查证书合法
+	// <p>https时，是否检查证书合法</p>
 	CheckTargetCertsError *bool `json:"CheckTargetCertsError,omitnil,omitempty" name:"CheckTargetCertsError"`
 
-	// http协议版本：1.1/2.0
+	// <p>http协议版本：1.1/2.0</p>
 	HttpProtocolVersion *string `json:"HttpProtocolVersion,omitnil,omitempty" name:"HttpProtocolVersion"`
+
+	// <p>model ID</p>
+	ModelID *string `json:"ModelID,omitnil,omitempty" name:"ModelID"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type CreateModelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例
+	// <p>实例</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 模型名称
+	// <p>模型名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 协议类型：http/https
+	// <p>协议类型：http/https</p>
 	HttpProtocolType *string `json:"HttpProtocolType,omitnil,omitempty" name:"HttpProtocolType"`
 
-	// 目标路径
+	// <p>目标路径</p>
 	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
 
-	// 目标服务器
+	// <p>目标服务器</p>
 	TargetHosts []*TargetHostDTO `json:"TargetHosts,omitnil,omitempty" name:"TargetHosts"`
 
-	// 凭据ID
+	// <p>凭据ID</p>
 	CredentialID *string `json:"CredentialID,omitnil,omitempty" name:"CredentialID"`
 
-	// https时，是否检查证书合法
+	// <p>https时，是否检查证书合法</p>
 	CheckTargetCertsError *bool `json:"CheckTargetCertsError,omitnil,omitempty" name:"CheckTargetCertsError"`
 
-	// http协议版本：1.1/2.0
+	// <p>http协议版本：1.1/2.0</p>
 	HttpProtocolVersion *string `json:"HttpProtocolVersion,omitnil,omitempty" name:"HttpProtocolVersion"`
+
+	// <p>model ID</p>
+	ModelID *string `json:"ModelID,omitnil,omitempty" name:"ModelID"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *CreateModelRequest) ToJsonString() string {
@@ -746,6 +758,8 @@ func (r *CreateModelRequest) FromJsonString(s string) error {
 	delete(f, "CredentialID")
 	delete(f, "CheckTargetCertsError")
 	delete(f, "HttpProtocolVersion")
+	delete(f, "ModelID")
+	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelRequest has unknown keys!", "")
 	}
@@ -754,7 +768,7 @@ func (r *CreateModelRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateModelResponseParams struct {
-	// 结果集
+	// <p>结果集</p>
 	Data *ResultIDVO `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -856,6 +870,9 @@ type CreateModelServiceRequestParams struct {
 
 	// <p>Fallback模型配置</p>
 	FallbackModels []*TargetModelDTO `json:"FallbackModels,omitnil,omitempty" name:"FallbackModels"`
+
+	// <p>模型协议</p>
+	ModelProtocol *string `json:"ModelProtocol,omitnil,omitempty" name:"ModelProtocol"`
 }
 
 type CreateModelServiceRequest struct {
@@ -938,6 +955,9 @@ type CreateModelServiceRequest struct {
 
 	// <p>Fallback模型配置</p>
 	FallbackModels []*TargetModelDTO `json:"FallbackModels,omitnil,omitempty" name:"FallbackModels"`
+
+	// <p>模型协议</p>
+	ModelProtocol *string `json:"ModelProtocol,omitnil,omitempty" name:"ModelProtocol"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -978,6 +998,7 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "HostKeyHeaderName")
 	delete(f, "FallbackStatus")
 	delete(f, "FallbackModels")
+	delete(f, "ModelProtocol")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -2431,50 +2452,56 @@ func (r *DescribeModelResponse) FromJsonString(s string) error {
 }
 
 type DescribeModelResponseVO struct {
-	// 腾讯云AppID
+	// <p>腾讯云AppID</p>
 	AppID *int64 `json:"AppID,omitnil,omitempty" name:"AppID"`
 
-	// 腾讯云Uin
+	// <p>腾讯云Uin</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 模型ID
+	// <p>模型ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 模型名称
+	// <p>模型名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 凭据ID
+	// <p>凭据ID</p>
 	CredentialID *string `json:"CredentialID,omitnil,omitempty" name:"CredentialID"`
 
-	// 凭据名称
+	// <p>凭据名称</p>
 	CredentialName *string `json:"CredentialName,omitnil,omitempty" name:"CredentialName"`
 
-	// http协议类型
+	// <p>http协议类型</p>
 	HttpProtocolType *string `json:"HttpProtocolType,omitnil,omitempty" name:"HttpProtocolType"`
 
-	// https时，是否校验目标证书
+	// <p>https时，是否校验目标证书</p>
 	CheckTargetCertsError *bool `json:"CheckTargetCertsError,omitnil,omitempty" name:"CheckTargetCertsError"`
 
-	// http协议版本：1.1/2.0
+	// <p>http协议版本：1.1/2.0</p>
 	HttpProtocolVersion *string `json:"HttpProtocolVersion,omitnil,omitempty" name:"HttpProtocolVersion"`
 
-	// 目标路径
+	// <p>目标路径</p>
 	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
 
-	// 目标器列表
+	// <p>目标器列表</p>
 	TargetHosts []*TargetHostDTO `json:"TargetHosts,omitnil,omitempty" name:"TargetHosts"`
 
-	// 被模型服务使用的个数
+	// <p>被模型服务使用的个数</p>
 	ModelServiceCount *int64 `json:"ModelServiceCount,omitnil,omitempty" name:"ModelServiceCount"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 最后修改时间
+	// <p>最后修改时间</p>
 	LastUpdateTime *string `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
+
+	// <p>model ID</p>
+	ModelID *string `json:"ModelID,omitnil,omitempty" name:"ModelID"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 // Predefined struct for user
@@ -2663,67 +2690,77 @@ type DescribeModelServiceResponseVO struct {
 	// <p>备份模型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FallbackModels []*TargetModelDTO `json:"FallbackModels,omitnil,omitempty" name:"FallbackModels"`
+
+	// <p>模型类型</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelProtocol *string `json:"ModelProtocol,omitnil,omitempty" name:"ModelProtocol"`
 }
 
 // Predefined struct for user
 type DescribeModelServicesRequestParams struct {
-	// 实例
+	// <p>实例</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 分页参数
+	// <p>分页参数</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页限制
+	// <p>分页限制</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// ID列表
+	// <p>ID列表</p>
 	IDs []*string `json:"IDs,omitnil,omitempty" name:"IDs"`
 
-	// 排除的ID列表
+	// <p>排除的ID列表</p>
 	NotIDs []*string `json:"NotIDs,omitnil,omitempty" name:"NotIDs"`
 
-	// 状态：normal，disabled
+	// <p>状态：normal，disabled</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 关键词
+	// <p>关键词</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 模型ID
+	// <p>模型ID</p>
 	ModelID *string `json:"ModelID,omitnil,omitempty" name:"ModelID"`
 
-	// 排序
+	// <p>排序</p>
 	Sort *DescribeModelServicesSort `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// <p>模型类型，OpenAI或Anthropic</p>
+	ModelProtocol *string `json:"ModelProtocol,omitnil,omitempty" name:"ModelProtocol"`
 }
 
 type DescribeModelServicesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例
+	// <p>实例</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 分页参数
+	// <p>分页参数</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页限制
+	// <p>分页限制</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// ID列表
+	// <p>ID列表</p>
 	IDs []*string `json:"IDs,omitnil,omitempty" name:"IDs"`
 
-	// 排除的ID列表
+	// <p>排除的ID列表</p>
 	NotIDs []*string `json:"NotIDs,omitnil,omitempty" name:"NotIDs"`
 
-	// 状态：normal，disabled
+	// <p>状态：normal，disabled</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 关键词
+	// <p>关键词</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 模型ID
+	// <p>模型ID</p>
 	ModelID *string `json:"ModelID,omitnil,omitempty" name:"ModelID"`
 
-	// 排序
+	// <p>排序</p>
 	Sort *DescribeModelServicesSort `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// <p>模型类型，OpenAI或Anthropic</p>
+	ModelProtocol *string `json:"ModelProtocol,omitnil,omitempty" name:"ModelProtocol"`
 }
 
 func (r *DescribeModelServicesRequest) ToJsonString() string {
@@ -2747,6 +2784,7 @@ func (r *DescribeModelServicesRequest) FromJsonString(s string) error {
 	delete(f, "Keyword")
 	delete(f, "ModelID")
 	delete(f, "Sort")
+	delete(f, "ModelProtocol")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelServicesRequest has unknown keys!", "")
 	}
@@ -2755,7 +2793,7 @@ func (r *DescribeModelServicesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeModelServicesResponseParams struct {
-	// 结果集
+	// <p>结果集</p>
 	Data *DescribeModelServicesResponseVO `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3563,63 +3601,75 @@ func (r *ModifyMcpServerResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyModelRequestParams struct {
-	// 实例
+	// <p>实例</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 模型ID
+	// <p>模型ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 模型名称
+	// <p>模型名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 协议类型：http/https
+	// <p>协议类型：http/https</p>
 	HttpProtocolType *string `json:"HttpProtocolType,omitnil,omitempty" name:"HttpProtocolType"`
 
-	// 目标路径
+	// <p>目标路径</p>
 	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
 
-	// 目标服务器
+	// <p>目标服务器</p>
 	TargetHosts []*TargetHostDTO `json:"TargetHosts,omitnil,omitempty" name:"TargetHosts"`
 
-	// 凭据ID
+	// <p>凭据ID</p>
 	CredentialID *string `json:"CredentialID,omitnil,omitempty" name:"CredentialID"`
 
-	// https时，是否检查证书合法
+	// <p>https时，是否检查证书合法</p>
 	CheckTargetCertsError *bool `json:"CheckTargetCertsError,omitnil,omitempty" name:"CheckTargetCertsError"`
 
-	// http协议版本：1.1/2.0
+	// <p>http协议版本：1.1/2.0</p>
 	HttpProtocolVersion *string `json:"HttpProtocolVersion,omitnil,omitempty" name:"HttpProtocolVersion"`
+
+	// <p>model ID</p>
+	ModelID *string `json:"ModelID,omitnil,omitempty" name:"ModelID"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type ModifyModelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例
+	// <p>实例</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 模型ID
+	// <p>模型ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 模型名称
+	// <p>模型名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 协议类型：http/https
+	// <p>协议类型：http/https</p>
 	HttpProtocolType *string `json:"HttpProtocolType,omitnil,omitempty" name:"HttpProtocolType"`
 
-	// 目标路径
+	// <p>目标路径</p>
 	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
 
-	// 目标服务器
+	// <p>目标服务器</p>
 	TargetHosts []*TargetHostDTO `json:"TargetHosts,omitnil,omitempty" name:"TargetHosts"`
 
-	// 凭据ID
+	// <p>凭据ID</p>
 	CredentialID *string `json:"CredentialID,omitnil,omitempty" name:"CredentialID"`
 
-	// https时，是否检查证书合法
+	// <p>https时，是否检查证书合法</p>
 	CheckTargetCertsError *bool `json:"CheckTargetCertsError,omitnil,omitempty" name:"CheckTargetCertsError"`
 
-	// http协议版本：1.1/2.0
+	// <p>http协议版本：1.1/2.0</p>
 	HttpProtocolVersion *string `json:"HttpProtocolVersion,omitnil,omitempty" name:"HttpProtocolVersion"`
+
+	// <p>model ID</p>
+	ModelID *string `json:"ModelID,omitnil,omitempty" name:"ModelID"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *ModifyModelRequest) ToJsonString() string {
@@ -3643,6 +3693,8 @@ func (r *ModifyModelRequest) FromJsonString(s string) error {
 	delete(f, "CredentialID")
 	delete(f, "CheckTargetCertsError")
 	delete(f, "HttpProtocolVersion")
+	delete(f, "ModelID")
+	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelRequest has unknown keys!", "")
 	}
@@ -3651,7 +3703,7 @@ func (r *ModifyModelRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyModelResponseParams struct {
-	// 结果集
+	// <p>结果集</p>
 	Data *ResultIDVO `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3753,6 +3805,9 @@ type ModifyModelServiceRequestParams struct {
 
 	// <p>备份模型</p>
 	FallbackModels []*TargetModelDTO `json:"FallbackModels,omitnil,omitempty" name:"FallbackModels"`
+
+	// <p>模型类型</p>
+	ModelProtocol *string `json:"ModelProtocol,omitnil,omitempty" name:"ModelProtocol"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -3835,6 +3890,9 @@ type ModifyModelServiceRequest struct {
 
 	// <p>备份模型</p>
 	FallbackModels []*TargetModelDTO `json:"FallbackModels,omitnil,omitempty" name:"FallbackModels"`
+
+	// <p>模型类型</p>
+	ModelProtocol *string `json:"ModelProtocol,omitnil,omitempty" name:"ModelProtocol"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -3875,6 +3933,7 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "HostKeyHeaderName")
 	delete(f, "FallbackStatus")
 	delete(f, "FallbackModels")
+	delete(f, "ModelProtocol")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}
@@ -3943,13 +4002,17 @@ type PluginFormValueDTO struct {
 }
 
 type PromptModerateConfigDTO struct {
-	// 执行动作
+	// <p>执行动作</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
-	// 响应拦截内容
+	// <p>响应拦截内容</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InterceptMessage *string `json:"InterceptMessage,omitnil,omitempty" name:"InterceptMessage"`
+
+	// <p>检测上下文</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContextScope *string `json:"ContextScope,omitnil,omitempty" name:"ContextScope"`
 }
 
 type ResultIDVO struct {
@@ -3976,6 +4039,10 @@ type SensitiveDataCheckConfigDTO struct {
 	// <p>检测项</p><p>枚举值：</p><ul><li>birthday： 生日</li><li>email： 邮箱</li><li>identity_number： 身份证</li><li>phone_number： 电话号码</li><li>secret： 秘钥</li><li>password： 密码</li><li>private_key： 私钥</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckItems []*string `json:"CheckItems,omitnil,omitempty" name:"CheckItems"`
+
+	// <p>检测上下文</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContextScope *string `json:"ContextScope,omitnil,omitempty" name:"ContextScope"`
 }
 
 type StartEndTime struct {
@@ -4010,29 +4077,33 @@ type TargetModelDTO struct {
 }
 
 type TmsConfigDTO struct {
-	// 检测范围,请求/响应
+	// <p>检测范围,请求/响应</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scope []*string `json:"Scope,omitnil,omitempty" name:"Scope"`
 
-	// 检测形式
+	// <p>检测形式</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 执行动作
+	// <p>执行动作</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
-	// 合并请求检测event数，联动Mode字段sync
+	// <p>合并请求检测event数，联动Mode字段sync</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MergeCount *uint64 `json:"MergeCount,omitnil,omitempty" name:"MergeCount"`
 
-	// 风控策略
+	// <p>风控策略</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
-	// 响应拦截内容
+	// <p>响应拦截内容</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InterceptMessage *string `json:"InterceptMessage,omitnil,omitempty" name:"InterceptMessage"`
+
+	// <p>检测上下文</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContextScope *string `json:"ContextScope,omitnil,omitempty" name:"ContextScope"`
 }
 
 type TokenLimitConfigDTO struct {

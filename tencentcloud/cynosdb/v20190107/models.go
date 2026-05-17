@@ -4761,7 +4761,7 @@ type CynosdbInstance struct {
 	// <p>存储量，单位：GB</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// <p>实例类型</p>
+	// <p>实例类型</p><p>枚举值：</p><ul><li>rw： 读写实例</li><li>ro： 只读实例</li></ul>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// <p>实例当前角色</p>
@@ -21870,200 +21870,182 @@ type RollbackTimeRange struct {
 
 // Predefined struct for user
 type RollbackToNewClusterRequestParams struct {
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 回档时，传入源集群ID，用于查找源poolId
+	// <p>回档时，传入源集群ID，用于查找源poolId</p>
 	OriginalClusterId *string `json:"OriginalClusterId,omitnil,omitempty" name:"OriginalClusterId"`
 
-	// 所属VPC网络ID
+	// <p>所属VPC网络ID</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 所属子网ID
+	// <p>所属子网ID</p>
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
-	// 集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
+	// <p>集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（&#39;-&#39;,&#39;_&#39;,&#39;.&#39;）</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效
+	// <p>快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效</p>
 	RollbackId *uint64 `json:"RollbackId,omitnil,omitempty" name:"RollbackId"`
 
-	// 时间点回档，指定时间；快照回档，快照时间
+	// <p>时间点回档，指定时间；快照回档，快照时间</p>
 	ExpectTime *string `json:"ExpectTime,omitnil,omitempty" name:"ExpectTime"`
 
-	// 是否自动选择代金券 1是 0否 默认为0
+	// <p>是否自动选择代金券 1是 0否 默认为0</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 集群创建需要绑定的tag数组信息
+	// <p>集群创建需要绑定的tag数组信息</p>
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// Db类型
-	// 当DbType为MYSQL时可选(默认NORMAL)：
-	// <li>NORMAL</li>
-	// <li>SERVERLESS</li>
+	// <p>Db类型<br>当DbType为MYSQL时可选(默认NORMAL)：</p><li>NORMAL</li><li>SERVERLESS</li>
 	DbMode *string `json:"DbMode,omitnil,omitempty" name:"DbMode"`
 
-	// 当DbMode为SEVERLESS时必填
-	// cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	// <p>当DbMode为SEVERLESS时必填<br>cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
 	MinCpu *float64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
 
-	// 当DbMode为SEVERLESS时必填：
-	// cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	// <p>当DbMode为SEVERLESS时必填：<br>cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
 	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
 
-	// 当DbMode为SEVERLESS时，指定集群是否自动暂停，可选范围
-	// <li>yes</li>
-	// <li>no</li>
-	// 默认值:yes
+	// <p>当DbMode为SEVERLESS时，指定集群是否自动暂停，可选范围</p><li>yes</li><li>no</li>默认值:yes
 	AutoPause *string `json:"AutoPause,omitnil,omitempty" name:"AutoPause"`
 
-	// 当DbMode为SEVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]
-	// 默认值:600
+	// <p>当DbMode为SEVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]<br>默认值:600</p>
 	AutoPauseDelay *int64 `json:"AutoPauseDelay,omitnil,omitempty" name:"AutoPauseDelay"`
 
-	// 安全组id数组
+	// <p>安全组id数组</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 告警策略Id数组
+	// <p>告警策略Id数组</p>
 	AlarmPolicyIds []*string `json:"AlarmPolicyIds,omitnil,omitempty" name:"AlarmPolicyIds"`
 
-	// 参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感
+	// <p>参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感</p>
 	ClusterParams []*ParamItem `json:"ClusterParams,omitnil,omitempty" name:"ClusterParams"`
 
-	// 参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID
+	// <p>参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID</p>
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 
-	// 实例初始化配置信息，主要用于购买集群时选不同规格实例
+	// <p>实例初始化配置信息，主要用于购买集群时选不同规格实例</p>
 	InstanceInitInfos []*InstanceInitInfo `json:"InstanceInitInfos,omitnil,omitempty" name:"InstanceInitInfos"`
 
-	// 0-下单并支付 1-下单
+	// <p>0-下单并支付 1-下单</p>
 	DealMode *int64 `json:"DealMode,omitnil,omitempty" name:"DealMode"`
 
-	// 计算节点付费模式：0-按量计费，1-预付费
+	// <p>计算节点付费模式：0-按量计费，1-预付费</p>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 时间
+	// <p>时间</p>
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 单位
+	// <p>单位</p>
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
-	// 回档库信息
+	// <p>回档库信息</p>
 	RollbackDatabases []*RollbackDatabase `json:"RollbackDatabases,omitnil,omitempty" name:"RollbackDatabases"`
 
-	// 回档表信息
+	// <p>回档表信息</p>
 	RollbackTables []*RollbackTable `json:"RollbackTables,omitnil,omitempty" name:"RollbackTables"`
 
-	// 原ro实例信息
+	// <p>原ro实例信息</p>
 	OriginalROInstanceList []*string `json:"OriginalROInstanceList,omitnil,omitempty" name:"OriginalROInstanceList"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
+	// <p>是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes</p>
 	AutoArchive *string `json:"AutoArchive,omitnil,omitempty" name:"AutoArchive"`
 
-	// 是否从保存备份中恢复
+	// <p>是否从保存备份中恢复</p>
 	FromSaveBackup *bool `json:"FromSaveBackup,omitnil,omitempty" name:"FromSaveBackup"`
 }
 
 type RollbackToNewClusterRequest struct {
 	*tchttp.BaseRequest
 	
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 回档时，传入源集群ID，用于查找源poolId
+	// <p>回档时，传入源集群ID，用于查找源poolId</p>
 	OriginalClusterId *string `json:"OriginalClusterId,omitnil,omitempty" name:"OriginalClusterId"`
 
-	// 所属VPC网络ID
+	// <p>所属VPC网络ID</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// 所属子网ID
+	// <p>所属子网ID</p>
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
-	// 集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
+	// <p>集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（&#39;-&#39;,&#39;_&#39;,&#39;.&#39;）</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效
+	// <p>快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效</p>
 	RollbackId *uint64 `json:"RollbackId,omitnil,omitempty" name:"RollbackId"`
 
-	// 时间点回档，指定时间；快照回档，快照时间
+	// <p>时间点回档，指定时间；快照回档，快照时间</p>
 	ExpectTime *string `json:"ExpectTime,omitnil,omitempty" name:"ExpectTime"`
 
-	// 是否自动选择代金券 1是 0否 默认为0
+	// <p>是否自动选择代金券 1是 0否 默认为0</p>
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
-	// 集群创建需要绑定的tag数组信息
+	// <p>集群创建需要绑定的tag数组信息</p>
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// Db类型
-	// 当DbType为MYSQL时可选(默认NORMAL)：
-	// <li>NORMAL</li>
-	// <li>SERVERLESS</li>
+	// <p>Db类型<br>当DbType为MYSQL时可选(默认NORMAL)：</p><li>NORMAL</li><li>SERVERLESS</li>
 	DbMode *string `json:"DbMode,omitnil,omitempty" name:"DbMode"`
 
-	// 当DbMode为SEVERLESS时必填
-	// cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	// <p>当DbMode为SEVERLESS时必填<br>cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
 	MinCpu *float64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
 
-	// 当DbMode为SEVERLESS时必填：
-	// cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+	// <p>当DbMode为SEVERLESS时必填：<br>cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
 	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
 
-	// 当DbMode为SEVERLESS时，指定集群是否自动暂停，可选范围
-	// <li>yes</li>
-	// <li>no</li>
-	// 默认值:yes
+	// <p>当DbMode为SEVERLESS时，指定集群是否自动暂停，可选范围</p><li>yes</li><li>no</li>默认值:yes
 	AutoPause *string `json:"AutoPause,omitnil,omitempty" name:"AutoPause"`
 
-	// 当DbMode为SEVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]
-	// 默认值:600
+	// <p>当DbMode为SEVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]<br>默认值:600</p>
 	AutoPauseDelay *int64 `json:"AutoPauseDelay,omitnil,omitempty" name:"AutoPauseDelay"`
 
-	// 安全组id数组
+	// <p>安全组id数组</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 告警策略Id数组
+	// <p>告警策略Id数组</p>
 	AlarmPolicyIds []*string `json:"AlarmPolicyIds,omitnil,omitempty" name:"AlarmPolicyIds"`
 
-	// 参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感
+	// <p>参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感</p>
 	ClusterParams []*ParamItem `json:"ClusterParams,omitnil,omitempty" name:"ClusterParams"`
 
-	// 参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID
+	// <p>参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID</p>
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 
-	// 实例初始化配置信息，主要用于购买集群时选不同规格实例
+	// <p>实例初始化配置信息，主要用于购买集群时选不同规格实例</p>
 	InstanceInitInfos []*InstanceInitInfo `json:"InstanceInitInfos,omitnil,omitempty" name:"InstanceInitInfos"`
 
-	// 0-下单并支付 1-下单
+	// <p>0-下单并支付 1-下单</p>
 	DealMode *int64 `json:"DealMode,omitnil,omitempty" name:"DealMode"`
 
-	// 计算节点付费模式：0-按量计费，1-预付费
+	// <p>计算节点付费模式：0-按量计费，1-预付费</p>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 时间
+	// <p>时间</p>
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 单位
+	// <p>单位</p>
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
-	// 回档库信息
+	// <p>回档库信息</p>
 	RollbackDatabases []*RollbackDatabase `json:"RollbackDatabases,omitnil,omitempty" name:"RollbackDatabases"`
 
-	// 回档表信息
+	// <p>回档表信息</p>
 	RollbackTables []*RollbackTable `json:"RollbackTables,omitnil,omitempty" name:"RollbackTables"`
 
-	// 原ro实例信息
+	// <p>原ro实例信息</p>
 	OriginalROInstanceList []*string `json:"OriginalROInstanceList,omitnil,omitempty" name:"OriginalROInstanceList"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
+	// <p>是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes</p>
 	AutoArchive *string `json:"AutoArchive,omitnil,omitempty" name:"AutoArchive"`
 
-	// 是否从保存备份中恢复
+	// <p>是否从保存备份中恢复</p>
 	FromSaveBackup *bool `json:"FromSaveBackup,omitnil,omitempty" name:"FromSaveBackup"`
 }
 
@@ -22116,19 +22098,19 @@ func (r *RollbackToNewClusterRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RollbackToNewClusterResponseParams struct {
-	// 冻结流水ID
+	// <p>冻结流水ID</p>
 	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
 
-	// 订单号
+	// <p>订单号</p>
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
-	// 资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）
+	// <p>资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）</p>
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）
+	// <p>集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）</p>
 	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
 
-	// 大订单号
+	// <p>大订单号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BigDealIds []*string `json:"BigDealIds,omitnil,omitempty" name:"BigDealIds"`
 
