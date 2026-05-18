@@ -2215,26 +2215,26 @@ func (r *CreateGrafanaInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateGrafanaIntegrationRequestParams struct {
-	// Grafana 实例 ID，例如：grafana-abcdefgh
+	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 集成类型(接口DescribeGrafanaIntegrationOverviews返回的集成信息中的Code字段)
+	// <p>集成类型(接口DescribeGrafanaIntegrationOverviews返回的集成信息中的Code字段)</p>
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 
-	// 集成配置
+	// <p>集成配置</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 type CreateGrafanaIntegrationRequest struct {
 	*tchttp.BaseRequest
 	
-	// Grafana 实例 ID，例如：grafana-abcdefgh
+	// <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 集成类型(接口DescribeGrafanaIntegrationOverviews返回的集成信息中的Code字段)
+	// <p>集成类型(接口DescribeGrafanaIntegrationOverviews返回的集成信息中的Code字段)</p>
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 
-	// 集成配置
+	// <p>集成配置</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
@@ -2261,7 +2261,7 @@ func (r *CreateGrafanaIntegrationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateGrafanaIntegrationResponseParams struct {
-	// 集成 ID
+	// <p>集成 ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntegrationId *string `json:"IntegrationId,omitnil,omitempty" name:"IntegrationId"`
 
@@ -3464,99 +3464,6 @@ func (r *CreateSSOAccountResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateSSOAccountResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateServiceDiscoveryRequestParams struct {
-	// Prometheus 实例 ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// <li>类型为TKE：对应集成的腾讯云容器服务集群 ID</li>
-	KubeClusterId *string `json:"KubeClusterId,omitnil,omitempty" name:"KubeClusterId"`
-
-	// 用户 Kubernetes 集群类型：
-	// <li> 1 = 容器服务集群(TKE) </li>
-	KubeType *int64 `json:"KubeType,omitnil,omitempty" name:"KubeType"`
-
-	// 服务发现类型，取值如下：
-	// <li> 1 = ServiceMonitor</li>
-	// <li> 2 = PodMonitor</li>
-	// <li> 3 = JobMonitor</li>
-	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 服务发现配置信息，YAML 格式，[具体YAML参数内容请参考](https://cloud.tencent.com/document/product/1416/55995#service-monitor)
-	Yaml *string `json:"Yaml,omitnil,omitempty" name:"Yaml"`
-}
-
-type CreateServiceDiscoveryRequest struct {
-	*tchttp.BaseRequest
-	
-	// Prometheus 实例 ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// <li>类型为TKE：对应集成的腾讯云容器服务集群 ID</li>
-	KubeClusterId *string `json:"KubeClusterId,omitnil,omitempty" name:"KubeClusterId"`
-
-	// 用户 Kubernetes 集群类型：
-	// <li> 1 = 容器服务集群(TKE) </li>
-	KubeType *int64 `json:"KubeType,omitnil,omitempty" name:"KubeType"`
-
-	// 服务发现类型，取值如下：
-	// <li> 1 = ServiceMonitor</li>
-	// <li> 2 = PodMonitor</li>
-	// <li> 3 = JobMonitor</li>
-	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 服务发现配置信息，YAML 格式，[具体YAML参数内容请参考](https://cloud.tencent.com/document/product/1416/55995#service-monitor)
-	Yaml *string `json:"Yaml,omitnil,omitempty" name:"Yaml"`
-}
-
-func (r *CreateServiceDiscoveryRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateServiceDiscoveryRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "KubeClusterId")
-	delete(f, "KubeType")
-	delete(f, "Type")
-	delete(f, "Yaml")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateServiceDiscoveryRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateServiceDiscoveryResponseParams struct {
-	// 创建成功之后，返回对应服务发现信息
-	ServiceDiscovery *ServiceDiscoveryItem `json:"ServiceDiscovery,omitnil,omitempty" name:"ServiceDiscovery"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CreateServiceDiscoveryResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateServiceDiscoveryResponseParams `json:"Response"`
-}
-
-func (r *CreateServiceDiscoveryResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateServiceDiscoveryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11438,80 +11345,6 @@ func (r *DescribeSSOAccountResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSSOAccountResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeServiceDiscoveryRequestParams struct {
-	// Prometheus 实例 ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
-	KubeClusterId *string `json:"KubeClusterId,omitnil,omitempty" name:"KubeClusterId"`
-
-	// 用户 Kubernetes 集群类型：
-	// <li> 1 = 容器服务集群(TKE) </li>
-	KubeType *int64 `json:"KubeType,omitnil,omitempty" name:"KubeType"`
-}
-
-type DescribeServiceDiscoveryRequest struct {
-	*tchttp.BaseRequest
-	
-	// Prometheus 实例 ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
-	KubeClusterId *string `json:"KubeClusterId,omitnil,omitempty" name:"KubeClusterId"`
-
-	// 用户 Kubernetes 集群类型：
-	// <li> 1 = 容器服务集群(TKE) </li>
-	KubeType *int64 `json:"KubeType,omitnil,omitempty" name:"KubeType"`
-}
-
-func (r *DescribeServiceDiscoveryRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeServiceDiscoveryRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "KubeClusterId")
-	delete(f, "KubeType")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServiceDiscoveryRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeServiceDiscoveryResponseParams struct {
-	// 返回服务发现列表信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceDiscoverySet []*ServiceDiscoveryItem `json:"ServiceDiscoverySet,omitnil,omitempty" name:"ServiceDiscoverySet"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeServiceDiscoveryResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeServiceDiscoveryResponseParams `json:"Response"`
-}
-
-func (r *DescribeServiceDiscoveryResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeServiceDiscoveryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

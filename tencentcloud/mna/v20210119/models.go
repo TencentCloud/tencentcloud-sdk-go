@@ -848,44 +848,47 @@ type DestIpInfo struct {
 }
 
 type DeviceBaseInfo struct {
-	// 设备唯一ID
+	// <p>设备唯一ID</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 设备名称
+	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 设备创建的时间，单位：ms
+	// <p>设备创建的时间，单位：ms</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 设备最后在线时间，单位：ms
+	// <p>设备最后在线时间，单位：ms</p>
 	LastTime *string `json:"LastTime,omitnil,omitempty" name:"LastTime"`
 
-	// 设备的备注
+	// <p>设备的备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+	// <p>接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）</p>
 	AccessScope *int64 `json:"AccessScope,omitnil,omitempty" name:"AccessScope"`
 
-	// license授权有效期 0：月度授权 1：永久授权
+	// <p>license授权有效期 0：月度授权 1：永久授权</p>
 	LicensePayMode *int64 `json:"LicensePayMode,omitnil,omitempty" name:"LicensePayMode"`
 
-	// 付费方 0：厂商付费 1：客户付费
+	// <p>付费方 0：厂商付费 1：客户付费</p>
 	Payer *int64 `json:"Payer,omitnil,omitempty" name:"Payer"`
 
-	// 设备分组ID
+	// <p>设备分组ID</p>
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 设备分组名称
+	// <p>设备分组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 设备无流量包处理方式，0: 按量付费，1: 截断加速
+	// <p>设备无流量包处理方式，0: 按量付费，1: 截断加速</p>
 	FlowTrunc *int64 `json:"FlowTrunc,omitnil,omitempty" name:"FlowTrunc"`
 
-	// 设备sn
+	// <p>设备sn</p>
 	Sn *string `json:"Sn,omitnil,omitempty" name:"Sn"`
 
-	// 厂商
+	// <p>厂商</p>
 	Vendor *string `json:"Vendor,omitnil,omitempty" name:"Vendor"`
+
+	// <p>可接入地域列表。</p>
+	AllowedRegions []*string `json:"AllowedRegions,omitnil,omitempty" name:"AllowedRegions"`
 }
 
 type DeviceDetails struct {
@@ -2858,38 +2861,38 @@ func (r *GetNetMonitorByNameResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetNetMonitorRequestParams struct {
-	// 设备id
+	// <p>设备id</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 统计指标（上行速率："TxRate":bit/s，下行速率："RxRate":bit/s，丢包："Loss":%，时延："RTT":ms）
+	// <p>统计指标（上行速率：&quot;TxRate&quot;:bit/s，下行速率：&quot;RxRate&quot;:bit/s，丢包：&quot;Loss&quot;:%，时延：&quot;RTT&quot;:ms）</p>
 	Metrics *string `json:"Metrics,omitnil,omitempty" name:"Metrics"`
 
-	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	// <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
 	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 }
 
 type GetNetMonitorRequest struct {
 	*tchttp.BaseRequest
 	
-	// 设备id
+	// <p>设备id</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 统计指标（上行速率："TxRate":bit/s，下行速率："RxRate":bit/s，丢包："Loss":%，时延："RTT":ms）
+	// <p>统计指标（上行速率：&quot;TxRate&quot;:bit/s，下行速率：&quot;RxRate&quot;:bit/s，丢包：&quot;Loss&quot;:%，时延：&quot;RTT&quot;:ms）</p>
 	Metrics *string `json:"Metrics,omitnil,omitempty" name:"Metrics"`
 
-	// 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+	// <p>网关类型。0：公有云网关；1：自有网关。不传默认为0。</p>
 	GatewayType *int64 `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 }
 
@@ -2918,14 +2921,10 @@ func (r *GetNetMonitorRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetNetMonitorResponseParams struct {
-	// 监控数据
+	// <p>监控数据</p>
 	MonitorData []*MonitorData `json:"MonitorData,omitnil,omitempty" name:"MonitorData"`
 
-	// 接入区域。取值范围：['MC','AP','EU','AM']
-	// MC=中国大陆
-	// AP=亚太
-	// EU=欧洲
-	// AM=美洲
+	// <p>接入区域。取值范围：[&#39;MC&#39;,&#39;AP&#39;,&#39;EU&#39;,&#39;AM&#39;]<br>MC=中国大陆<br>AP=亚太<br>EU=欧洲<br>AM=美洲</p>
 	AccessRegion *string `json:"AccessRegion,omitnil,omitempty" name:"AccessRegion"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

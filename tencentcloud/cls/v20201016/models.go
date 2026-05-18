@@ -20225,19 +20225,13 @@ type MonitorNoticeRule struct {
 }
 
 type MonitorTime struct {
-	// 执行周期， 可选值：`Period`、`Fixed`、`Cron`。
-	// 
-	// - Period：固定频率
-	// - Fixed：固定时间
-	// - Cron：Cron表达式
+	// <p>执行周期， 可选值：<code>Period</code>、<code>Fixed</code>、<code>Cron</code>。</p><ul><li>Period：固定频率</li><li>Fixed：固定时间</li><li>Cron：Cron表达式</li></ul>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 执行的周期，或者定制执行的时间节点。单位为分钟，取值范围为1~1440。
-	// 当type为`Period`,`Fixed`时，time字段生效。
+	// <p>执行的周期，或者定制执行的时间节点。单位为分钟，取值范围为1~1440。<br>当type为<code>Period</code>,<code>Fixed</code>时，time字段生效。</p>
 	Time *int64 `json:"Time,omitnil,omitempty" name:"Time"`
 
-	// 执行的周期cron表达式。示例：`"*/1 * * * *"` 从左到右每个field的含义 Minutes field(分钟), Hours field(小时),Day of month field(日期),Month field(月份),Day of week field(星期)， 不支持秒级别。
-	// 当type为`Cron`时，CronExpression字段生效。
+	// <p>执行的周期cron表达式。示例：<code>0/1 * * * *</code> 从左到右每个field的含义 Minutes field(分钟), Hours field(小时),Day of month field(日期),Month field(月份),Day of week field(星期)， 不支持秒级别。当type为<code>Cron</code>时，CronExpression字段生效。</p>
 	CronExpression *string `json:"CronExpression,omitnil,omitempty" name:"CronExpression"`
 }
 

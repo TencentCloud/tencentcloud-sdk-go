@@ -687,7 +687,7 @@ func NewCreateVariableResponse() (response *CreateVariableResponse) {
 }
 
 // CreateVariable
-// 创建变量 
+// 创建变量
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -705,7 +705,7 @@ func (c *Client) CreateVariable(request *CreateVariableRequest) (response *Creat
 }
 
 // CreateVariable
-// 创建变量 
+// 创建变量
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

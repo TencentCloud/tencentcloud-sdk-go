@@ -10800,6 +10800,12 @@ type DescribeLLMContentSecCheckRequestParams struct {
 
 	// <p>图片base64编码后的数据,body大小最大支持10M</p>
 	ImageEncode *string `json:"ImageEncode,omitnil,omitempty" name:"ImageEncode"`
+
+	// <p>tool_call 场景工具名称</p>
+	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
+
+	// <p>tool_call 场景工具参数</p>
+	ToolArgs *string `json:"ToolArgs,omitnil,omitempty" name:"ToolArgs"`
 }
 
 type DescribeLLMContentSecCheckRequest struct {
@@ -10828,6 +10834,12 @@ type DescribeLLMContentSecCheckRequest struct {
 
 	// <p>图片base64编码后的数据,body大小最大支持10M</p>
 	ImageEncode *string `json:"ImageEncode,omitnil,omitempty" name:"ImageEncode"`
+
+	// <p>tool_call 场景工具名称</p>
+	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
+
+	// <p>tool_call 场景工具参数</p>
+	ToolArgs *string `json:"ToolArgs,omitnil,omitempty" name:"ToolArgs"`
 }
 
 func (r *DescribeLLMContentSecCheckRequest) ToJsonString() string {
@@ -10850,6 +10862,8 @@ func (r *DescribeLLMContentSecCheckRequest) FromJsonString(s string) error {
 	delete(f, "UserId")
 	delete(f, "TokenUsage")
 	delete(f, "ImageEncode")
+	delete(f, "ToolName")
+	delete(f, "ToolArgs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLLMContentSecCheckRequest has unknown keys!", "")
 	}

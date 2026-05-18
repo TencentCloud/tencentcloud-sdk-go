@@ -1794,6 +1794,9 @@ func NewGetNetMonitorResponse() (response *GetNetMonitorResponse) {
 //  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
 //  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TIMEFUTURE = "InvalidParameterValue.TimeFuture"
+//  INVALIDPARAMETERVALUE_TIMESPANEXCEEDED = "InvalidParameterValue.TimeSpanExceeded"
+//  INVALIDPARAMETERVALUE_TIMETOOEARLY = "InvalidParameterValue.TimeTooEarly"
 func (c *Client) GetNetMonitor(request *GetNetMonitorRequest) (response *GetNetMonitorResponse, err error) {
     return c.GetNetMonitorWithContext(context.Background(), request)
 }
@@ -1806,6 +1809,9 @@ func (c *Client) GetNetMonitor(request *GetNetMonitorRequest) (response *GetNetM
 //  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
 //  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TIMEFUTURE = "InvalidParameterValue.TimeFuture"
+//  INVALIDPARAMETERVALUE_TIMESPANEXCEEDED = "InvalidParameterValue.TimeSpanExceeded"
+//  INVALIDPARAMETERVALUE_TIMETOOEARLY = "InvalidParameterValue.TimeTooEarly"
 func (c *Client) GetNetMonitorWithContext(ctx context.Context, request *GetNetMonitorRequest) (response *GetNetMonitorResponse, err error) {
     if request == nil {
         request = NewGetNetMonitorRequest()
@@ -1850,6 +1856,9 @@ func NewGetNetMonitorByNameResponse() (response *GetNetMonitorByNameResponse) {
 //  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
 //  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TIMEFUTURE = "InvalidParameterValue.TimeFuture"
+//  INVALIDPARAMETERVALUE_TIMESPANEXCEEDED = "InvalidParameterValue.TimeSpanExceeded"
+//  INVALIDPARAMETERVALUE_TIMETOOEARLY = "InvalidParameterValue.TimeTooEarly"
 func (c *Client) GetNetMonitorByName(request *GetNetMonitorByNameRequest) (response *GetNetMonitorByNameResponse, err error) {
     return c.GetNetMonitorByNameWithContext(context.Background(), request)
 }
@@ -1862,6 +1871,9 @@ func (c *Client) GetNetMonitorByName(request *GetNetMonitorByNameRequest) (respo
 //  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
 //  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TIMEFUTURE = "InvalidParameterValue.TimeFuture"
+//  INVALIDPARAMETERVALUE_TIMESPANEXCEEDED = "InvalidParameterValue.TimeSpanExceeded"
+//  INVALIDPARAMETERVALUE_TIMETOOEARLY = "InvalidParameterValue.TimeTooEarly"
 func (c *Client) GetNetMonitorByNameWithContext(ctx context.Context, request *GetNetMonitorByNameRequest) (response *GetNetMonitorByNameResponse, err error) {
     if request == nil {
         request = NewGetNetMonitorByNameRequest()

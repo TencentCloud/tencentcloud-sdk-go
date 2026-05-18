@@ -796,15 +796,27 @@ func (r *DescribeDeviceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDeviceSessionDetailsRequestParams struct {
-	// 会话ID
+	// <p>会话ID</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>查询指标开始时间</p><p>单位：秒</p>
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询指标结束时间</p><p>单位：秒</p>
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type DescribeDeviceSessionDetailsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 会话ID
+	// <p>会话ID</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>查询指标开始时间</p><p>单位：秒</p>
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>查询指标结束时间</p><p>单位：秒</p>
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 func (r *DescribeDeviceSessionDetailsRequest) ToJsonString() string {
@@ -820,6 +832,8 @@ func (r *DescribeDeviceSessionDetailsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SessionId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceSessionDetailsRequest has unknown keys!", "")
 	}
@@ -828,7 +842,7 @@ func (r *DescribeDeviceSessionDetailsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDeviceSessionDetailsResponseParams struct {
-	// 按设备区分的会话详细数据
+	// <p>按设备区分的会话详细数据</p>
 	Details []*SessionDeviceDetail `json:"Details,omitnil,omitempty" name:"Details"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2579,116 +2593,119 @@ type RecentSessionInfo struct {
 }
 
 type SessionDeviceDetail struct {
-	// 设备类型：field或remote
+	// <p>设备类型：field或remote</p>
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 起始点位时间，单位：秒
+	// <p>起始点位时间，单位：秒</p>
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束点位时间，单位：秒
+	// <p>结束点位时间，单位：秒</p>
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 会话ID
+	// <p>会话ID</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 码率，单位：kbps
+	// <p>码率，单位：kbps</p>
 	Rate []*int64 `json:"Rate,omitnil,omitempty" name:"Rate"`
 
-	// 帧率
+	// <p>帧率</p>
 	Fps []*int64 `json:"Fps,omitnil,omitempty" name:"Fps"`
 
-	// 丢包率，单位：%
+	// <p>丢包率，单位：%</p>
 	Lost []*float64 `json:"Lost,omitnil,omitempty" name:"Lost"`
 
-	// 网络时延，单位：ms
+	// <p>网络时延，单位：ms</p>
 	NetworkLatency []*int64 `json:"NetworkLatency,omitnil,omitempty" name:"NetworkLatency"`
 
-	// 视频时延，单位：ms
+	// <p>视频时延，单位：ms</p>
 	VideoLatency []*int64 `json:"VideoLatency,omitnil,omitempty" name:"VideoLatency"`
 
-	// CPU使用率，单位：%
+	// <p>CPU使用率，单位：%</p>
 	CpuUsed []*float64 `json:"CpuUsed,omitnil,omitempty" name:"CpuUsed"`
 
-	// 内存使用率，单位：%
+	// <p>内存使用率，单位：%</p>
 	MemUsed []*float64 `json:"MemUsed,omitnil,omitempty" name:"MemUsed"`
 
-	// 时间偏移量，单位：秒
+	// <p>时间偏移量，单位：秒</p>
 	TimeOffset []*uint64 `json:"TimeOffset,omitnil,omitempty" name:"TimeOffset"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 设备ID
+	// <p>设备ID</p>
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// sdk版本
+	// <p>sdk版本</p>
 	Ver *string `json:"Ver,omitnil,omitempty" name:"Ver"`
 
-	// 模式(p2p/server)
+	// <p>模式(p2p/server)</p>
 	SdkMode *string `json:"SdkMode,omitnil,omitempty" name:"SdkMode"`
 
-	// 解码耗时，单位：ms
+	// <p>解码耗时，单位：ms</p>
 	DecodeCost []*int64 `json:"DecodeCost,omitnil,omitempty" name:"DecodeCost"`
 
-	// 【已废弃，使用RenderCost】
+	// <p>【已废弃，使用RenderCost】</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: RenderConst is deprecated.
 	RenderConst []*int64 `json:"RenderConst,omitnil,omitempty" name:"RenderConst"`
 
-	// 卡顿k100
+	// <p>卡顿k100</p>
 	K100 []*float64 `json:"K100,omitnil,omitempty" name:"K100"`
 
-	// 卡顿k150
+	// <p>卡顿k150</p>
 	K150 []*float64 `json:"K150,omitnil,omitempty" name:"K150"`
 
-	// nack请求数
+	// <p>nack请求数</p>
 	NACK []*int64 `json:"NACK,omitnil,omitempty" name:"NACK"`
 
-	// 服务端调控码率,单位：kbps
+	// <p>服务端调控码率,单位：kbps</p>
 	BitRateEstimate []*int64 `json:"BitRateEstimate,omitnil,omitempty" name:"BitRateEstimate"`
 
-	// 宽度
+	// <p>宽度</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 高度
+	// <p>高度</p>
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 
-	// 编码耗时，单位：ms
+	// <p>编码耗时，单位：ms</p>
 	EncodeCost []*int64 `json:"EncodeCost,omitnil,omitempty" name:"EncodeCost"`
 
-	// 采集耗时，单位：ms
+	// <p>采集耗时，单位：ms</p>
 	CaptureCost []*int64 `json:"CaptureCost,omitnil,omitempty" name:"CaptureCost"`
 
-	// 渲染耗时，单位：ms
+	// <p>渲染耗时，单位：ms</p>
 	RenderCost []*int64 `json:"RenderCost,omitnil,omitempty" name:"RenderCost"`
 
-	// 配置宽度
+	// <p>配置宽度</p>
 	ConfigWidth *int64 `json:"ConfigWidth,omitnil,omitempty" name:"ConfigWidth"`
 
-	// 配置高度
+	// <p>配置高度</p>
 	ConfigHeight *int64 `json:"ConfigHeight,omitnil,omitempty" name:"ConfigHeight"`
 
-	// 平均帧间隔
+	// <p>平均帧间隔</p>
 	FrameDelta []*int64 `json:"FrameDelta,omitnil,omitempty" name:"FrameDelta"`
 
-	// 最大帧间隔
+	// <p>最大帧间隔</p>
 	MaxFrameDelta []*int64 `json:"MaxFrameDelta,omitnil,omitempty" name:"MaxFrameDelta"`
 
-	// 总码率评估,单位：kbps
+	// <p>总码率评估,单位：kbps</p>
 	TotalBitrateEstimate []*int64 `json:"TotalBitrateEstimate,omitnil,omitempty" name:"TotalBitrateEstimate"`
 
-	// 帧间隔大于100ms的卡顿时长
+	// <p>帧间隔大于100ms的卡顿时长</p>
 	Lag100Duration []*int64 `json:"Lag100Duration,omitnil,omitempty" name:"Lag100Duration"`
 
-	// 帧间隔大于150ms的卡顿时长
+	// <p>帧间隔大于150ms的卡顿时长</p>
 	Lag150Duration []*int64 `json:"Lag150Duration,omitnil,omitempty" name:"Lag150Duration"`
 
-	// 是否开启多网：0 单网，1 多网
+	// <p>是否开启多网：0 单网，1 多网</p>
 	MultiMode *int64 `json:"MultiMode,omitnil,omitempty" name:"MultiMode"`
 
-	// 多网卡信息
+	// <p>多网卡信息</p>
 	MultiNet []*MultiNet `json:"MultiNet,omitnil,omitempty" name:"MultiNet"`
+
+	// <p>现场设备和远端设备消息通道往返延迟</p><p>单位：毫秒ms</p>
+	ControlLatency []*int64 `json:"ControlLatency,omitnil,omitempty" name:"ControlLatency"`
 }
 
 type SessionInfo struct {

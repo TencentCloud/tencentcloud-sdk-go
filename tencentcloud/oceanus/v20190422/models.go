@@ -1535,39 +1535,69 @@ func (r *CreateResourceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateVariableRequestParams struct {
-	// 变量名
+	// <p>变量名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 变量值
+	// <p>变量值</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
-	// 变量类型  1：显式   2：隐藏
+	// <p>变量类型  1：显式   2：隐藏</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 描述信息
+	// <p>描述信息</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 工作空间 SerialId
+	// <p>工作空间 SerialId</p>
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// <p>变量值类型</p><p>枚举值：</p><ul><li>0： 自定义变量</li><li>1： 凭据值</li></ul>
+	ValueType *int64 `json:"ValueType,omitnil,omitempty" name:"ValueType"`
+
+	// <p>凭据所在地域</p>
+	SecretRegion *string `json:"SecretRegion,omitnil,omitempty" name:"SecretRegion"`
+
+	// <p>凭据名称</p>
+	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
+
+	// <p>凭据版本</p>
+	SecretVersionId *string `json:"SecretVersionId,omitnil,omitempty" name:"SecretVersionId"`
+
+	// <p>凭据值md5</p>
+	SecretValueMd5 *string `json:"SecretValueMd5,omitnil,omitempty" name:"SecretValueMd5"`
 }
 
 type CreateVariableRequest struct {
 	*tchttp.BaseRequest
 	
-	// 变量名
+	// <p>变量名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 变量值
+	// <p>变量值</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
-	// 变量类型  1：显式   2：隐藏
+	// <p>变量类型  1：显式   2：隐藏</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 描述信息
+	// <p>描述信息</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 工作空间 SerialId
+	// <p>工作空间 SerialId</p>
 	WorkSpaceId *string `json:"WorkSpaceId,omitnil,omitempty" name:"WorkSpaceId"`
+
+	// <p>变量值类型</p><p>枚举值：</p><ul><li>0： 自定义变量</li><li>1： 凭据值</li></ul>
+	ValueType *int64 `json:"ValueType,omitnil,omitempty" name:"ValueType"`
+
+	// <p>凭据所在地域</p>
+	SecretRegion *string `json:"SecretRegion,omitnil,omitempty" name:"SecretRegion"`
+
+	// <p>凭据名称</p>
+	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
+
+	// <p>凭据版本</p>
+	SecretVersionId *string `json:"SecretVersionId,omitnil,omitempty" name:"SecretVersionId"`
+
+	// <p>凭据值md5</p>
+	SecretValueMd5 *string `json:"SecretValueMd5,omitnil,omitempty" name:"SecretValueMd5"`
 }
 
 func (r *CreateVariableRequest) ToJsonString() string {
@@ -1587,6 +1617,11 @@ func (r *CreateVariableRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "Remark")
 	delete(f, "WorkSpaceId")
+	delete(f, "ValueType")
+	delete(f, "SecretRegion")
+	delete(f, "SecretName")
+	delete(f, "SecretVersionId")
+	delete(f, "SecretValueMd5")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVariableRequest has unknown keys!", "")
 	}
@@ -1595,7 +1630,7 @@ func (r *CreateVariableRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateVariableResponseParams struct {
-	// 变量Id
+	// <p>变量Id</p>
 	VariableId *string `json:"VariableId,omitnil,omitempty" name:"VariableId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5583,6 +5618,12 @@ type Setats struct {
 
 	// <p>类型：0 公网，1 内网</p><p>枚举值：</p><ul><li>0： 公网</li><li>1： 内网</li></ul><p>默认值：0</p>
 	WebUIType *int64 `json:"WebUIType,omitnil,omitempty" name:"WebUIType"`
+
+	// <p>setats集群的名字</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>setats集群注释</p>
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type SetatsCvmInfo struct {
@@ -6032,31 +6073,43 @@ func (r *TriggerJobSavepointResponse) FromJsonString(s string) error {
 }
 
 type VariableItem struct {
-	// 变量id
+	// <p>变量id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SerialId *string `json:"SerialId,omitnil,omitempty" name:"SerialId"`
 
-	// 变量名
+	// <p>变量名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 变量值
+	// <p>变量值</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
-	// 变量值是否隐藏
+	// <p>变量值类型</p><p>枚举值：</p><ul><li>0： 自定义变量</li><li>1： 凭据值</li></ul>
+	ValueType *int64 `json:"ValueType,omitnil,omitempty" name:"ValueType"`
+
+	// <p>凭据所在地域</p>
+	SecretRegion *string `json:"SecretRegion,omitnil,omitempty" name:"SecretRegion"`
+
+	// <p>凭据名称</p>
+	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
+
+	// <p>凭据版本</p>
+	SecretVersionId *string `json:"SecretVersionId,omitnil,omitempty" name:"SecretVersionId"`
+
+	// <p>变量值是否隐藏</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 变量描述
+	// <p>变量描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 变量创建时间
+	// <p>变量创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 变量创建人
+	// <p>变量创建人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
 }

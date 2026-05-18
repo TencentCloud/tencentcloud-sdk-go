@@ -2030,56 +2030,59 @@ type TaskGroupInstancesExecuteRules struct {
 }
 
 type TaskListItem struct {
-	// 任务ID
+	// <p>任务ID</p>
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务标题
+	// <p>任务标题</p>
 	TaskTitle *string `json:"TaskTitle,omitnil,omitempty" name:"TaskTitle"`
 
-	// 任务描述
+	// <p>任务描述</p>
 	TaskDescription *string `json:"TaskDescription,omitnil,omitempty" name:"TaskDescription"`
 
-	// 任务标签
+	// <p>任务标签</p>
 	TaskTag *string `json:"TaskTag,omitnil,omitempty" name:"TaskTag"`
 
-	// 任务状态(1001 -- 未开始   1002 -- 进行中  1003 -- 暂停中   1004 -- 任务结束)
+	// <p>任务状态(1001 -- 未开始   1002 -- 进行中  1003 -- 暂停中   1004 -- 任务结束)</p>
 	TaskStatus *int64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
-	// 任务创建时间
+	// <p>任务创建时间</p>
 	TaskCreateTime *string `json:"TaskCreateTime,omitnil,omitempty" name:"TaskCreateTime"`
 
-	// 任务更新时间
+	// <p>任务更新时间</p>
 	TaskUpdateTime *string `json:"TaskUpdateTime,omitnil,omitempty" name:"TaskUpdateTime"`
 
-	// 0--未开始，1--进行中，2--已完成
+	// <p>0--未开始，1--进行中，2--已完成</p>
 	TaskPreCheckStatus *int64 `json:"TaskPreCheckStatus,omitnil,omitempty" name:"TaskPreCheckStatus"`
 
-	// 环境检查是否通过
+	// <p>环境检查是否通过</p>
 	TaskPreCheckSuccess *bool `json:"TaskPreCheckSuccess,omitnil,omitempty" name:"TaskPreCheckSuccess"`
 
-	// 演练是否符合预期 1-符合预期 2-不符合预期
+	// <p>演练是否符合预期 1-符合预期 2-不符合预期</p>
 	TaskExpect *int64 `json:"TaskExpect,omitnil,omitempty" name:"TaskExpect"`
 
-	// 关联应用ID
+	// <p>关联应用ID</p>
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 关联应用名称
+	// <p>关联应用名称</p>
 	ApplicationName *string `json:"ApplicationName,omitnil,omitempty" name:"ApplicationName"`
 
-	// 验证项ID
+	// <p>验证项ID</p>
 	VerifyId *uint64 `json:"VerifyId,omitnil,omitempty" name:"VerifyId"`
 
-	// 状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止
+	// <p>状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止</p>
 	TaskStatusType *uint64 `json:"TaskStatusType,omitnil,omitempty" name:"TaskStatusType"`
 
-	// 架构ID
+	// <p>架构ID</p>
 	ArchId *string `json:"ArchId,omitnil,omitempty" name:"ArchId"`
 
-	// 架构名称
+	// <p>架构名称</p>
 	ArchName *string `json:"ArchName,omitnil,omitempty" name:"ArchName"`
 
-	// 来源
+	// <p>来源</p>
 	TaskSource *int64 `json:"TaskSource,omitnil,omitempty" name:"TaskSource"`
+
+	// <p>云资源标签列表</p>
+	Tags []*TagWithDescribe `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type TaskMonitor struct {

@@ -194,9 +194,6 @@ const (
 	// 服务未启用，开通服务后方可使用。
 	FAILEDOPERATION_SERVICENOTENABLED = "FailedOperation.ServiceNotEnabled"
 
-	// 没有访问TKE权限。
-	FAILEDOPERATION_TKECLIENTAUTHFAIL = "FailedOperation.TKEClientAuthFail"
-
 	// TKE的endpoint不可访问。
 	FAILEDOPERATION_TKEENDPOINTSTATUSERROR = "FailedOperation.TKEEndpointStatusError"
 

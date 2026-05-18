@@ -183,6 +183,64 @@ func (c *Client) CreateBusinessResourceWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreateCompanyDirectoryConfigRequest() (request *CreateCompanyDirectoryConfigRequest) {
+    request = &CreateCompanyDirectoryConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "CreateCompanyDirectoryConfig")
+    
+    
+    return
+}
+
+func NewCreateCompanyDirectoryConfigResponse() (response *CreateCompanyDirectoryConfigResponse) {
+    response = &CreateCompanyDirectoryConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCompanyDirectoryConfig
+// 创建企业目录配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEQUERYFAILED = "InternalError.DatabaseQueryFailed"
+//  INTERNALERROR_DATABASEWRITEFAILED = "InternalError.DatabaseWriteFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  INVALIDPARAMETER_SAMEACCOUNTGROUPNAME = "InvalidParameter.SameAccountGroupName"
+//  LIMITEXCEEDED_COMPANYDIRECTORYMAXLIMIT = "LimitExceeded.CompanyDirectoryMaxLimit"
+func (c *Client) CreateCompanyDirectoryConfig(request *CreateCompanyDirectoryConfigRequest) (response *CreateCompanyDirectoryConfigResponse, err error) {
+    return c.CreateCompanyDirectoryConfigWithContext(context.Background(), request)
+}
+
+// CreateCompanyDirectoryConfig
+// 创建企业目录配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEQUERYFAILED = "InternalError.DatabaseQueryFailed"
+//  INTERNALERROR_DATABASEWRITEFAILED = "InternalError.DatabaseWriteFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  INVALIDPARAMETER_SAMEACCOUNTGROUPNAME = "InvalidParameter.SameAccountGroupName"
+//  LIMITEXCEEDED_COMPANYDIRECTORYMAXLIMIT = "LimitExceeded.CompanyDirectoryMaxLimit"
+func (c *Client) CreateCompanyDirectoryConfigWithContext(ctx context.Context, request *CreateCompanyDirectoryConfigRequest) (response *CreateCompanyDirectoryConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateCompanyDirectoryConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "CreateCompanyDirectoryConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCompanyDirectoryConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCompanyDirectoryConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDLPFileDetectTaskRequest() (request *CreateDLPFileDetectTaskRequest) {
     request = &CreateDLPFileDetectTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -765,6 +823,58 @@ func (c *Client) DescribeBusinessResourcesWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeBusinessResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCompanyDirectoryConfigRequest() (request *DescribeCompanyDirectoryConfigRequest) {
+    request = &DescribeCompanyDirectoryConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeCompanyDirectoryConfig")
+    
+    
+    return
+}
+
+func NewDescribeCompanyDirectoryConfigResponse() (response *DescribeCompanyDirectoryConfigResponse) {
+    response = &DescribeCompanyDirectoryConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCompanyDirectoryConfig
+// 获取企业目录配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEQUERYFAILED = "InternalError.DatabaseQueryFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeCompanyDirectoryConfig(request *DescribeCompanyDirectoryConfigRequest) (response *DescribeCompanyDirectoryConfigResponse, err error) {
+    return c.DescribeCompanyDirectoryConfigWithContext(context.Background(), request)
+}
+
+// DescribeCompanyDirectoryConfig
+// 获取企业目录配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEQUERYFAILED = "InternalError.DatabaseQueryFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+func (c *Client) DescribeCompanyDirectoryConfigWithContext(ctx context.Context, request *DescribeCompanyDirectoryConfigRequest) (response *DescribeCompanyDirectoryConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeCompanyDirectoryConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DescribeCompanyDirectoryConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCompanyDirectoryConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCompanyDirectoryConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -2205,6 +2315,62 @@ func (c *Client) ModifyBusinessResourceWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewModifyBusinessResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCompanyDirectoryConfigRequest() (request *ModifyCompanyDirectoryConfigRequest) {
+    request = &ModifyCompanyDirectoryConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "ModifyCompanyDirectoryConfig")
+    
+    
+    return
+}
+
+func NewModifyCompanyDirectoryConfigResponse() (response *ModifyCompanyDirectoryConfigResponse) {
+    response = &ModifyCompanyDirectoryConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCompanyDirectoryConfig
+// 编辑企业目录配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEQUERYFAILED = "InternalError.DatabaseQueryFailed"
+//  INTERNALERROR_DATABASEWRITEFAILED = "InternalError.DatabaseWriteFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  INVALIDPARAMETER_SAMEACCOUNTGROUPNAME = "InvalidParameter.SameAccountGroupName"
+func (c *Client) ModifyCompanyDirectoryConfig(request *ModifyCompanyDirectoryConfigRequest) (response *ModifyCompanyDirectoryConfigResponse, err error) {
+    return c.ModifyCompanyDirectoryConfigWithContext(context.Background(), request)
+}
+
+// ModifyCompanyDirectoryConfig
+// 编辑企业目录配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEQUERYFAILED = "InternalError.DatabaseQueryFailed"
+//  INTERNALERROR_DATABASEWRITEFAILED = "InternalError.DatabaseWriteFailed"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  INVALIDPARAMETER_SAMEACCOUNTGROUPNAME = "InvalidParameter.SameAccountGroupName"
+func (c *Client) ModifyCompanyDirectoryConfigWithContext(ctx context.Context, request *ModifyCompanyDirectoryConfigRequest) (response *ModifyCompanyDirectoryConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyCompanyDirectoryConfigRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "ModifyCompanyDirectoryConfig")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCompanyDirectoryConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCompanyDirectoryConfigResponse()
     err = c.Send(request, response)
     return
 }

@@ -32,6 +32,9 @@ const (
 	// 数据库查询失败。
 	INTERNALERROR_DATABASEQUERYFAILED = "InternalError.DatabaseQueryFailed"
 
+	// 数据库写入失败。
+	INTERNALERROR_DATABASEWRITEFAILED = "InternalError.DatabaseWriteFailed"
+
 	// 没有零信任网关数据。
 	INTERNALERROR_NOTZEROTRUSTGATEWAY = "InternalError.NotZeroTrustGateway"
 
@@ -92,8 +95,14 @@ const (
 	// 业务资源类型错误。
 	INVALIDPARAMETER_RESOURCETYPEPARAMETER = "InvalidParameter.ResourceTypeParameter"
 
+	// 存在同名用户组
+	INVALIDPARAMETER_SAMEACCOUNTGROUPNAME = "InvalidParameter.SameAccountGroupName"
+
 	// 没有找到对应的终端自定义分组
 	INVALIDPARAMETERVALUE_VIRTUALDEVICEGROUPNOTFOUND = "InvalidParameterValue.VirtualDeviceGroupNotFound"
+
+	// 可创建目录总数超过了上限
+	LIMITEXCEEDED_COMPANYDIRECTORYMAXLIMIT = "LimitExceeded.CompanyDirectoryMaxLimit"
 
 	// 缺少公共参数。
 	MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"

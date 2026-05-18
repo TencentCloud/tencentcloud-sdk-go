@@ -851,6 +851,72 @@ func (c *Client) GetUploadJobDetailsWithContext(ctx context.Context, request *Ge
     return
 }
 
+func NewGetUserInstanceListRequest() (request *GetUserInstanceListRequest) {
+    request = &GetUserInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dataagent", APIVersion, "GetUserInstanceList")
+    
+    
+    return
+}
+
+func NewGetUserInstanceListResponse() (response *GetUserInstanceListResponse) {
+    response = &GetUserInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetUserInstanceList
+// 获取实例信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetUserInstanceList(request *GetUserInstanceListRequest) (response *GetUserInstanceListResponse, err error) {
+    return c.GetUserInstanceListWithContext(context.Background(), request)
+}
+
+// GetUserInstanceList
+// 获取实例信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetUserInstanceListWithContext(ctx context.Context, request *GetUserInstanceListRequest) (response *GetUserInstanceListResponse, err error) {
+    if request == nil {
+        request = NewGetUserInstanceListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dataagent", APIVersion, "GetUserInstanceList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetUserInstanceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetUserInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyChunkRequest() (request *ModifyChunkRequest) {
     request = &ModifyChunkRequest{
         BaseRequest: &tchttp.BaseRequest{},

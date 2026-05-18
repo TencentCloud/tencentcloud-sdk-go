@@ -359,6 +359,126 @@ func (r *CreateBusinessResourceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCompanyDirectoryConfigRequestParams struct {
+	// <p>企业目录类型</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>企业目录名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>配置是通过 SM2 加密再 Hex 之后的数据</p>
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// <p>是否开启定时同步</p>
+	SyncEnable *bool `json:"SyncEnable,omitnil,omitempty" name:"SyncEnable"`
+
+	// <p>定时同步的策略，枚举值：支持每4小时（4hours）/每日定时（daily）/每周定时（weekly）</p>
+	SyncPolicy *string `json:"SyncPolicy,omitnil,omitempty" name:"SyncPolicy"`
+
+	// <p>JSON 字符串，针对不同类型的同步策略，提取对应不同的值</p>
+	SyncPolicyParams *string `json:"SyncPolicyParams,omitnil,omitempty" name:"SyncPolicyParams"`
+
+	// <p>是否同步创建认证源</p>
+	CreateAuthConfig *bool `json:"CreateAuthConfig,omitnil,omitempty" name:"CreateAuthConfig"`
+
+	// <p>是否在登录页展示</p>
+	DisplayOnLoginPage *bool `json:"DisplayOnLoginPage,omitnil,omitempty" name:"DisplayOnLoginPage"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>使用场景：API 创建，快速上手，普通配置等</p>
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
+}
+
+type CreateCompanyDirectoryConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>企业目录类型</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>企业目录名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>配置是通过 SM2 加密再 Hex 之后的数据</p>
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// <p>是否开启定时同步</p>
+	SyncEnable *bool `json:"SyncEnable,omitnil,omitempty" name:"SyncEnable"`
+
+	// <p>定时同步的策略，枚举值：支持每4小时（4hours）/每日定时（daily）/每周定时（weekly）</p>
+	SyncPolicy *string `json:"SyncPolicy,omitnil,omitempty" name:"SyncPolicy"`
+
+	// <p>JSON 字符串，针对不同类型的同步策略，提取对应不同的值</p>
+	SyncPolicyParams *string `json:"SyncPolicyParams,omitnil,omitempty" name:"SyncPolicyParams"`
+
+	// <p>是否同步创建认证源</p>
+	CreateAuthConfig *bool `json:"CreateAuthConfig,omitnil,omitempty" name:"CreateAuthConfig"`
+
+	// <p>是否在登录页展示</p>
+	DisplayOnLoginPage *bool `json:"DisplayOnLoginPage,omitnil,omitempty" name:"DisplayOnLoginPage"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>使用场景：API 创建，快速上手，普通配置等</p>
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
+}
+
+func (r *CreateCompanyDirectoryConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCompanyDirectoryConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "Name")
+	delete(f, "Config")
+	delete(f, "SyncEnable")
+	delete(f, "SyncPolicy")
+	delete(f, "SyncPolicyParams")
+	delete(f, "CreateAuthConfig")
+	delete(f, "DisplayOnLoginPage")
+	delete(f, "Description")
+	delete(f, "Scene")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCompanyDirectoryConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCompanyDirectoryConfigResponseParams struct {
+	// <p>创建企业目录配置的结果</p>
+	Data *DirectoryConfigResultData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCompanyDirectoryConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCompanyDirectoryConfigResponseParams `json:"Response"`
+}
+
+func (r *CreateCompanyDirectoryConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCompanyDirectoryConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateDLPFileDetectTaskData struct {
 	// 任务请求唯一Id
 	TaskRequestId []*string `json:"TaskRequestId,omitnil,omitempty" name:"TaskRequestId"`
@@ -1611,6 +1731,63 @@ func (r *DescribeBusinessResourcesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBusinessResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCompanyDirectoryConfigRequestParams struct {
+	// <p>企业目录 ID</p>
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DescribeCompanyDirectoryConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>企业目录 ID</p>
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DescribeCompanyDirectoryConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCompanyDirectoryConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCompanyDirectoryConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCompanyDirectoryConfigResponseParams struct {
+	// <p>企业目录配置详情</p>
+	Data *DirectoryConfigData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCompanyDirectoryConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCompanyDirectoryConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeCompanyDirectoryConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCompanyDirectoryConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3957,6 +4134,70 @@ type DeviceVirtualDeviceGroupsDetail struct {
 	Utime *string `json:"Utime,omitnil,omitempty" name:"Utime"`
 }
 
+type DirectoryConfigData struct {
+	// <p>企业目录 ID</p>
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>目录对应身份源类型</p><p>枚举值：</p><ul><li>WeCom： 企业微信</li><li>Lark： 飞书</li><li>DingTalk： 钉钉</li><li>MicrosoftEntraID： 微软 AAD</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>企业目录名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>使用 JSON 字符串表示的配置信息</p>
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// <p>是否开启了定时同步</p>
+	SyncEnable *bool `json:"SyncEnable,omitnil,omitempty" name:"SyncEnable"`
+
+	// <p>定时同步的策略</p><p>枚举值：</p><ul><li>4hours： 按创建时间开始的每 4 小时</li><li>daily： 每日</li><li>weekly： 每周</li></ul>
+	SyncPolicy *string `json:"SyncPolicy,omitnil,omitempty" name:"SyncPolicy"`
+
+	// <p>JSON 字符串，针对不同类型的同步策略，提取对应不同的值</p>
+	SyncPolicyParams *string `json:"SyncPolicyParams,omitnil,omitempty" name:"SyncPolicyParams"`
+
+	// <p>是否配置了同步创建认证配置</p>
+	CreateAuthConfig *bool `json:"CreateAuthConfig,omitnil,omitempty" name:"CreateAuthConfig"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>对应 Config 的配置 ID</p>
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// <p>是否在登录页展示</p>
+	DisplayOnLoginPage *bool `json:"DisplayOnLoginPage,omitnil,omitempty" name:"DisplayOnLoginPage"`
+}
+
+type DirectoryConfigResultData struct {
+	// <p>企业目录 ID</p>
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>企业目录名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>身份源配置 ID</p>
+	IdentifySourceId *string `json:"IdentifySourceId,omitnil,omitempty" name:"IdentifySourceId"`
+
+	// <p>是否同步创建了认证配置</p>
+	CreateAuthConfig *bool `json:"CreateAuthConfig,omitnil,omitempty" name:"CreateAuthConfig"`
+
+	// <p>认证源配置 ID</p>
+	AuthSourceId *string `json:"AuthSourceId,omitnil,omitempty" name:"AuthSourceId"`
+
+	// <p>认证配置 ID</p>
+	AuthConfigId *int64 `json:"AuthConfigId,omitnil,omitempty" name:"AuthConfigId"`
+
+	// <p>认证策略 ID</p>
+	AuthPolicyId *int64 `json:"AuthPolicyId,omitnil,omitempty" name:"AuthPolicyId"`
+
+	// <p>认证支持的平台, PC 或 Mobile</p>
+	AuthSupportPlatforms []*string `json:"AuthSupportPlatforms,omitnil,omitempty" name:"AuthSupportPlatforms"`
+
+	// <p>认证方式，授权认证/扫码认证 等</p>
+	AuthMethods []*string `json:"AuthMethods,omitnil,omitempty" name:"AuthMethods"`
+}
+
 // Predefined struct for user
 type ExportDeviceDownloadTaskRequestParams struct {
 	// 系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
@@ -4602,6 +4843,126 @@ func (r *ModifyBusinessResourceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyBusinessResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCompanyDirectoryConfigRequestParams struct {
+	// <p>企业目录类型</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>企业目录名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>使用 JSON 字符串表示的配置信息</p><p>调用此接口前，需要先调用DescribeCompanyDirectoryConfig获取完整的配置，然后对里面需要更新的配置进行修改，请求的时候必须传完整配置，否则可能导致配置缺失出现错误。如果是脱敏的信息，保持原样的脱敏格式提交，如果和脱敏格式不一致，会认为是新的配置值更新原有配置</p>
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// <p>是否开启定时同步</p>
+	SyncEnable *bool `json:"SyncEnable,omitnil,omitempty" name:"SyncEnable"`
+
+	// <p>定时同步的策略，枚举值：支持每4小时（4hours）/每日定时（daily）/每周定时（weekly）</p>
+	SyncPolicy *string `json:"SyncPolicy,omitnil,omitempty" name:"SyncPolicy"`
+
+	// <p>JSON 字符串，针对不同类型的同步策略，提取对应不同的值</p>
+	SyncPolicyParams *string `json:"SyncPolicyParams,omitnil,omitempty" name:"SyncPolicyParams"`
+
+	// <p>是否同步创建认证源</p>
+	CreateAuthConfig *bool `json:"CreateAuthConfig,omitnil,omitempty" name:"CreateAuthConfig"`
+
+	// <p>是否在登录页展示</p>
+	DisplayOnLoginPage *bool `json:"DisplayOnLoginPage,omitnil,omitempty" name:"DisplayOnLoginPage"`
+
+	// <p>企业目录 ID</p>
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type ModifyCompanyDirectoryConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>企业目录类型</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>企业目录名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>使用 JSON 字符串表示的配置信息</p><p>调用此接口前，需要先调用DescribeCompanyDirectoryConfig获取完整的配置，然后对里面需要更新的配置进行修改，请求的时候必须传完整配置，否则可能导致配置缺失出现错误。如果是脱敏的信息，保持原样的脱敏格式提交，如果和脱敏格式不一致，会认为是新的配置值更新原有配置</p>
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// <p>是否开启定时同步</p>
+	SyncEnable *bool `json:"SyncEnable,omitnil,omitempty" name:"SyncEnable"`
+
+	// <p>定时同步的策略，枚举值：支持每4小时（4hours）/每日定时（daily）/每周定时（weekly）</p>
+	SyncPolicy *string `json:"SyncPolicy,omitnil,omitempty" name:"SyncPolicy"`
+
+	// <p>JSON 字符串，针对不同类型的同步策略，提取对应不同的值</p>
+	SyncPolicyParams *string `json:"SyncPolicyParams,omitnil,omitempty" name:"SyncPolicyParams"`
+
+	// <p>是否同步创建认证源</p>
+	CreateAuthConfig *bool `json:"CreateAuthConfig,omitnil,omitempty" name:"CreateAuthConfig"`
+
+	// <p>是否在登录页展示</p>
+	DisplayOnLoginPage *bool `json:"DisplayOnLoginPage,omitnil,omitempty" name:"DisplayOnLoginPage"`
+
+	// <p>企业目录 ID</p>
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *ModifyCompanyDirectoryConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCompanyDirectoryConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "Name")
+	delete(f, "Config")
+	delete(f, "SyncEnable")
+	delete(f, "SyncPolicy")
+	delete(f, "SyncPolicyParams")
+	delete(f, "CreateAuthConfig")
+	delete(f, "DisplayOnLoginPage")
+	delete(f, "Id")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCompanyDirectoryConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCompanyDirectoryConfigResponseParams struct {
+	// <p>编辑企业目录配置的结果</p>
+	Data *DirectoryConfigResultData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyCompanyDirectoryConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCompanyDirectoryConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyCompanyDirectoryConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCompanyDirectoryConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

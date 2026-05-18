@@ -3764,51 +3764,57 @@ func (r *CreateAssetImageRegistryScanTaskOneKeyResponse) FromJsonString(s string
 
 // Predefined struct for user
 type CreateAssetImageRegistryScanTaskRequestParams struct {
-	// 是否扫描全部镜像
+	// <p>是否扫描全部镜像</p>
 	All *bool `json:"All,omitnil,omitempty" name:"All"`
 
-	// 扫描的镜像列表
+	// <p>扫描的镜像列表</p>
 	Images []*ImageInfo `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 扫描类型数组
+	// <p>扫描类型数组</p>
 	ScanType []*string `json:"ScanType,omitnil,omitempty" name:"ScanType"`
 
-	// 扫描的镜像列表
+	// <p>扫描的镜像列表</p>
 	Id []*uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 过滤条件
+	// <p>过滤条件</p>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 不需要扫描的镜像列表, 与Filters配合使用
+	// <p>不需要扫描的镜像列表, 与Filters配合使用</p>
 	ExcludeImageList []*uint64 `json:"ExcludeImageList,omitnil,omitempty" name:"ExcludeImageList"`
 
-	// 是否仅扫描各repository最新版的镜像, 与Filters配合使用
+	// <p>是否仅扫描各repository最新版的镜像, 与Filters配合使用</p>
 	OnlyScanLatest *bool `json:"OnlyScanLatest,omitnil,omitempty" name:"OnlyScanLatest"`
+
+	// <p>任务超时时长</p><p>单位：秒</p>
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 }
 
 type CreateAssetImageRegistryScanTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 是否扫描全部镜像
+	// <p>是否扫描全部镜像</p>
 	All *bool `json:"All,omitnil,omitempty" name:"All"`
 
-	// 扫描的镜像列表
+	// <p>扫描的镜像列表</p>
 	Images []*ImageInfo `json:"Images,omitnil,omitempty" name:"Images"`
 
-	// 扫描类型数组
+	// <p>扫描类型数组</p>
 	ScanType []*string `json:"ScanType,omitnil,omitempty" name:"ScanType"`
 
-	// 扫描的镜像列表
+	// <p>扫描的镜像列表</p>
 	Id []*uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 过滤条件
+	// <p>过滤条件</p>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 不需要扫描的镜像列表, 与Filters配合使用
+	// <p>不需要扫描的镜像列表, 与Filters配合使用</p>
 	ExcludeImageList []*uint64 `json:"ExcludeImageList,omitnil,omitempty" name:"ExcludeImageList"`
 
-	// 是否仅扫描各repository最新版的镜像, 与Filters配合使用
+	// <p>是否仅扫描各repository最新版的镜像, 与Filters配合使用</p>
 	OnlyScanLatest *bool `json:"OnlyScanLatest,omitnil,omitempty" name:"OnlyScanLatest"`
+
+	// <p>任务超时时长</p><p>单位：秒</p>
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 }
 
 func (r *CreateAssetImageRegistryScanTaskRequest) ToJsonString() string {
@@ -3830,6 +3836,7 @@ func (r *CreateAssetImageRegistryScanTaskRequest) FromJsonString(s string) error
 	delete(f, "Filters")
 	delete(f, "ExcludeImageList")
 	delete(f, "OnlyScanLatest")
+	delete(f, "Timeout")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAssetImageRegistryScanTaskRequest has unknown keys!", "")
 	}
@@ -3838,7 +3845,7 @@ func (r *CreateAssetImageRegistryScanTaskRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreateAssetImageRegistryScanTaskResponseParams struct {
-	// 返回的任务ID
+	// <p>返回的任务ID</p>
 	TaskID *uint64 `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

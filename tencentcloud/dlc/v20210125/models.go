@@ -18125,6 +18125,9 @@ type TaskFullRespInfo struct {
 
 	// <p>活跃core</p>
 	ActiveCore *int64 `json:"ActiveCore,omitnil,omitempty" name:"ActiveCore"`
+
+	// <p>排队时间</p><p>单位：毫秒</p>
+	QueueTime *int64 `json:"QueueTime,omitnil,omitempty" name:"QueueTime"`
 }
 
 type TaskMonitorInfo struct {

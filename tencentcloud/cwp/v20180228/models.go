@@ -18205,48 +18205,44 @@ func (r *DescribeJavaMemShellPluginListResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeLicenseBindListRequestParams struct {
-	// 授权ID
+	// <p>授权ID取DescribeLicenseList接口List对象下的LicenseId参数值</p>
 	LicenseId *uint64 `json:"LicenseId,omitnil,omitempty" name:"LicenseId"`
 
-	// 授权类型
+	// <p>授权类型</p><p>枚举值：</p><ul><li>0： 专业版-按量计费</li><li>1： 专业版-包年包月(主机安全)</li><li>2： 旗舰版-包年包月(主机安全)</li><li>3： 轻量版-LH-包年包月</li><li>6： 专业版-包年包月（云安全中心）</li><li>7： 旗舰版-包年包月（云安全中心）</li></ul>
 	LicenseType *uint64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
-	// 资源ID
+	// <p>资源ID,取DescribeLicenseList接口List对象下的ResourceId参数值</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// <li>InstanceID、IP、
-	// 
-	// MachineName 模糊查询</li>
+	// <li>InstanceID、IP、<p>MachineName 模糊查询</li></p>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 限制条数,默认10.
+	// <p>限制条数,默认10.</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量,默认0.
+	// <p>偏移量,默认0.</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeLicenseBindListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 授权ID
+	// <p>授权ID取DescribeLicenseList接口List对象下的LicenseId参数值</p>
 	LicenseId *uint64 `json:"LicenseId,omitnil,omitempty" name:"LicenseId"`
 
-	// 授权类型
+	// <p>授权类型</p><p>枚举值：</p><ul><li>0： 专业版-按量计费</li><li>1： 专业版-包年包月(主机安全)</li><li>2： 旗舰版-包年包月(主机安全)</li><li>3： 轻量版-LH-包年包月</li><li>6： 专业版-包年包月（云安全中心）</li><li>7： 旗舰版-包年包月（云安全中心）</li></ul>
 	LicenseType *uint64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
-	// 资源ID
+	// <p>资源ID,取DescribeLicenseList接口List对象下的ResourceId参数值</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// <li>InstanceID、IP、
-	// 
-	// MachineName 模糊查询</li>
+	// <li>InstanceID、IP、<p>MachineName 模糊查询</li></p>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 限制条数,默认10.
+	// <p>限制条数,默认10.</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量,默认0.
+	// <p>偏移量,默认0.</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -18276,10 +18272,10 @@ func (r *DescribeLicenseBindListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLicenseBindListResponseParams struct {
-	// 总条数
+	// <p>总条数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 绑定机器列表信息
+	// <p>绑定机器列表信息</p>
 	List []*LicenseBindDetail `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
