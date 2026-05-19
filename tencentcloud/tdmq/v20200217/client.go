@@ -4994,11 +4994,7 @@ func NewDescribeRabbitMQVipInstancesResponse() (response *DescribeRabbitMQVipIns
 // 查询用户已购的 RabbitMQ 托管版实例列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  FAILEDOPERATION_GETTAGS = "FailedOperation.GetTags"
 func (c *Client) DescribeRabbitMQVipInstances(request *DescribeRabbitMQVipInstancesRequest) (response *DescribeRabbitMQVipInstancesResponse, err error) {
     return c.DescribeRabbitMQVipInstancesWithContext(context.Background(), request)
 }
@@ -5007,11 +5003,7 @@ func (c *Client) DescribeRabbitMQVipInstances(request *DescribeRabbitMQVipInstan
 // 查询用户已购的 RabbitMQ 托管版实例列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  FAILEDOPERATION_GETTAGS = "FailedOperation.GetTags"
 func (c *Client) DescribeRabbitMQVipInstancesWithContext(ctx context.Context, request *DescribeRabbitMQVipInstancesRequest) (response *DescribeRabbitMQVipInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeRabbitMQVipInstancesRequest()
@@ -7789,6 +7781,7 @@ func NewModifyRabbitMQVipInstanceResponse() (response *ModifyRabbitMQVipInstance
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GETTAGS = "FailedOperation.GetTags"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyRabbitMQVipInstance(request *ModifyRabbitMQVipInstanceRequest) (response *ModifyRabbitMQVipInstanceResponse, err error) {
@@ -7800,6 +7793,7 @@ func (c *Client) ModifyRabbitMQVipInstance(request *ModifyRabbitMQVipInstanceReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GETTAGS = "FailedOperation.GetTags"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyRabbitMQVipInstanceWithContext(ctx context.Context, request *ModifyRabbitMQVipInstanceRequest) (response *ModifyRabbitMQVipInstanceResponse, err error) {

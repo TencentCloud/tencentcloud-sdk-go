@@ -956,30 +956,30 @@ type ComplianceConfigRule struct {
 }
 
 type CompliancePackRule struct {
-	// 规则名称
+	// <p>规则名称</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 风险等级
+	// <p>风险等级</p>
 	RiskLevel *uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 入参
+	// <p>入参</p>
 	InputParameter []*InputParameter `json:"InputParameter,omitnil,omitempty" name:"InputParameter"`
 
-	// 规则身份标识
+	// <p>规则身份标识</p>
 	Identifier *string `json:"Identifier,omitnil,omitempty" name:"Identifier"`
 
-	// 描述
+	// <p>描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 预设规则身份标识
+	// <p>预设规则身份标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitnil,omitempty" name:"ManagedRuleIdentifier"`
 
-	// 规则ID
+	// <p>规则ID</p>
 	ConfigRuleId *string `json:"ConfigRuleId,omitnil,omitempty" name:"ConfigRuleId"`
 
-	// 合规包ID
+	// <p>合规包ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompliancePackId *string `json:"CompliancePackId,omitnil,omitempty" name:"CompliancePackId"`
 }
@@ -1031,34 +1031,34 @@ type CompliancePackRules struct {
 }
 
 type ConfigCompliancePack struct {
-	// 合规包状态
+	// <p>合规包状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 合规包ID
+	// <p>合规包ID</p>
 	CompliancePackId *string `json:"CompliancePackId,omitnil,omitempty" name:"CompliancePackId"`
 
-	// 描述
+	// <p>描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 合规包名称
+	// <p>合规包名称</p>
 	CompliancePackName *string `json:"CompliancePackName,omitnil,omitempty" name:"CompliancePackName"`
 
-	// 风险等级
+	// <p>风险等级</p>
 	RiskLevel *uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 评估结果
+	// <p>评估结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplianceResult *string `json:"ComplianceResult,omitnil,omitempty" name:"ComplianceResult"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 不合规规则名
+	// <p>不合规规则名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoCompliantNames []*string `json:"NoCompliantNames,omitnil,omitempty" name:"NoCompliantNames"`
 
-	// 合规包规则数
+	// <p>合规包规则数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleCount *uint64 `json:"RuleCount,omitnil,omitempty" name:"RuleCount"`
 }
@@ -2486,14 +2486,14 @@ func (r *DescribeDiscoveredResourceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSystemCompliancePackRequestParams struct {
-	// 合规包ID
+	// <p>合规包ID</p>
 	CompliancePackId *string `json:"CompliancePackId,omitnil,omitempty" name:"CompliancePackId"`
 }
 
 type DescribeSystemCompliancePackRequest struct {
 	*tchttp.BaseRequest
 	
-	// 合规包ID
+	// <p>合规包ID</p>
 	CompliancePackId *string `json:"CompliancePackId,omitnil,omitempty" name:"CompliancePackId"`
 }
 
@@ -2518,19 +2518,19 @@ func (r *DescribeSystemCompliancePackRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSystemCompliancePackResponseParams struct {
-	// 合规包ID
+	// <p>合规包ID</p>
 	CompliancePackId *string `json:"CompliancePackId,omitnil,omitempty" name:"CompliancePackId"`
 
-	// 合规包名称
+	// <p>合规包名称</p>
 	CompliancePackName *string `json:"CompliancePackName,omitnil,omitempty" name:"CompliancePackName"`
 
-	// 合规包描述
+	// <p>合规包描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 风险等级
+	// <p>风险等级</p>
 	RiskLevel *uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 合规包规则列表
+	// <p>合规包规则列表</p>
 	ConfigRules []*CompliancePackRuleForManage `json:"ConfigRules,omitnil,omitempty" name:"ConfigRules"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4717,59 +4717,59 @@ type SystemCompliancePack struct {
 }
 
 type SystemConfigRule struct {
-	// 规则标识
+	// <p>规则标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Identifier *string `json:"Identifier,omitnil,omitempty" name:"Identifier"`
 
-	// 规则名
+	// <p>规则名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
-	// 规则参数
+	// <p>规则参数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputParameter []*InputParameterForManage `json:"InputParameter,omitnil,omitempty" name:"InputParameter"`
 
-	// 规则触发条件
+	// <p>规则触发条件</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceCondition []*SourceConditionForManage `json:"SourceCondition,omitnil,omitempty" name:"SourceCondition"`
 
-	// 支持的资源类型
+	// <p>支持的资源类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType []*string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 标签
+	// <p>标签</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label []*string `json:"Label,omitnil,omitempty" name:"Label"`
 
-	// 风险等级，1，2，3
+	// <p>风险等级，1，2，3</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevel *int64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 对应的函数
+	// <p>对应的函数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceFunction *string `json:"ServiceFunction,omitnil,omitempty" name:"ServiceFunction"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 触发类型
+	// <p>触发类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerType []*string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
 
-	// 描述
+	// <p>描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 使用次数
+	// <p>使用次数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReferenceCount *uint64 `json:"ReferenceCount,omitnil,omitempty" name:"ReferenceCount"`
 
-	// 规则类型
+	// <p>规则类型</p>
 	IdentifierType *string `json:"IdentifierType,omitnil,omitempty" name:"IdentifierType"`
 }
 

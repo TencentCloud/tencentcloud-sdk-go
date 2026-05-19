@@ -5910,6 +5910,63 @@ func (r *DescribeTrainingModelVersionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTrainingTaskPodUrlRequestParams struct {
+	// 任务实例名
+	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+}
+
+type DescribeTrainingTaskPodUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务实例名
+	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+}
+
+func (r *DescribeTrainingTaskPodUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTrainingTaskPodUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PodName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrainingTaskPodUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTrainingTaskPodUrlResponseParams struct {
+	// Pod登录URL
+	PodUrl *string `json:"PodUrl,omitnil,omitempty" name:"PodUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTrainingTaskPodUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTrainingTaskPodUrlResponseParams `json:"Response"`
+}
+
+func (r *DescribeTrainingTaskPodUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTrainingTaskPodUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTrainingTaskPodsRequestParams struct {
 	// 训练任务ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`

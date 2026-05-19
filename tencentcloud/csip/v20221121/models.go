@@ -22669,68 +22669,58 @@ type SkillScanEngineResult struct {
 }
 
 type SkillScanItem struct {
-	// Skill 名称
+	// <p>Skill 名称</p>
 	SkillName *string `json:"SkillName,omitnil,omitempty" name:"SkillName"`
 
-	// Skill 描述，帮助理解 Skill 的主要用途
+	// <p>Skill 描述，帮助理解 Skill 的主要用途</p>
 	SkillDescription *string `json:"SkillDescription,omitnil,omitempty" name:"SkillDescription"`
 
-	// ZIP 文件的 SHA256 Hash
-	// 参数格式：sha256:<64位hex>
+	// <p>ZIP 文件的 SHA256 Hash<br>参数格式：sha256:&lt;64位hex&gt;</p>
 	ContentHash *string `json:"ContentHash,omitnil,omitempty" name:"ContentHash"`
 
-	// 原始上传 ZIP 文件解压后的实际文件数，也是计费的范围，扫描成功后1个文件计为1次额度
+	// <p>原始上传 ZIP 文件解压后的实际文件数，也是计费的范围，扫描成功后1个文件计为1次额度</p>
 	UploadFileCount *int64 `json:"UploadFileCount,omitnil,omitempty" name:"UploadFileCount"`
 
-	// 综合风险等级
-	// 枚举值：
-	// malicious：恶意
-	// suspicious：可疑
-	// benign：可信
+	// <p>综合风险等级<br>枚举值：<br>malicious：恶意<br>suspicious：可疑<br>benign：可信</p>
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 风险主标签融合规则 ID（9xxxx），由服务端从命中的融合风险标签中生成；benign 且无规则命中时为空。展示名称可通过 RuleCatalog 获取
+	// <p>风险主标签融合规则 ID（9xxxx），由服务端从命中的融合风险标签中生成；benign 且无规则命中时为空。展示名称可通过 RuleCatalog 获取</p>
 	PrimaryRuleID *string `json:"PrimaryRuleID,omitnil,omitempty" name:"PrimaryRuleID"`
 
-	// 综合处置建议，用于指导调用方优先执行下线、隔离、修复、复检等动作。历史结果中可能为空。传 Language=en-US 时返回英文文案
+	// <p>综合处置建议，用于指导调用方优先执行下线、隔离、修复、复检等动作。历史结果中可能为空。传 Language=en-US 时返回英文文案</p>
 	Mitigation *string `json:"Mitigation,omitnil,omitempty" name:"Mitigation"`
 
-	// 风险综合描述，对本次检测发现的风险进行概括性说明。传 Language=en-US 时返回英文文案
+	// <p>风险综合描述，对本次检测发现的风险进行概括性说明。传 Language=en-US 时返回英文文案</p>
 	RiskDescription *string `json:"RiskDescription,omitnil,omitempty" name:"RiskDescription"`
 
-	// 安全评分
-	// 取值范围：[0, 100]
-	// 补充说明：100 为最安全
+	// <p>安全评分取值范围：[0, 100]补充说明：分数越高越安全</p>
 	SecurityScore *int64 `json:"SecurityScore,omitnil,omitempty" name:"SecurityScore"`
 
-	// 本次扫描使用的引擎版本号
+	// <p>本次扫描使用的引擎版本号</p>
 	EngineVersion *int64 `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// Skill 能力标签列表，描述 Skill 具备的能力特征或适用场景。不等同于风险标签，也不参与风险等级判定。传 Language=en-US 时 Name 切换为英文，ID 保持不变
+	// <p>Skill 能力标签列表，描述 Skill 具备的能力特征或适用场景。不等同于风险标签，也不参与风险等级判定。传 Language=en-US 时 Name 切换为英文，ID 保持不变</p>
 	CapabilityTags []*SkillCapabilityTag `json:"CapabilityTags,omitnil,omitempty" name:"CapabilityTags"`
 
-	// 融合规则目录全集，包含所有融合规则类别（9xxxx），调用方可据此展示分类标签，无需本地维护映射表。传 Language=en-US 时返回英文名称
+	// <p>融合规则目录全集，包含所有融合规则类别（9xxxx），调用方可据此展示分类标签，无需本地维护映射表。传 Language=en-US 时返回英文名称</p>
 	RuleCatalog []*SkillRuleCatalogItem `json:"RuleCatalog,omitnil,omitempty" name:"RuleCatalog"`
 
-	// 扫描结果详情，按子引擎分组。每个元素包含 ScanType（引擎类型）和 RuleList（命中规则列表）。规则中的 RuleID 使用融合编码（9xxxx），可与 RuleCatalog 交叉引用。传 Language=en-US 时 Description 返回英文文本
+	// <p>扫描结果详情，按子引擎分组。每个元素包含 ScanType（引擎类型）和 RuleList（命中规则列表）。规则中的 RuleID 使用融合编码（9xxxx），可与 RuleCatalog 交叉引用。传 Language=en-US 时 Description 返回英文文本</p>
 	ScanItems []*SkillScanEngineResult `json:"ScanItems,omitnil,omitempty" name:"ScanItems"`
 
-	// 综合安全审计报告地址（签名 URL）。有效期由请求参数 ReportURLExpireHours 控制
+	// <p>综合安全审计报告地址（签名 URL）。有效期由请求参数 ReportURLExpireHours 控制</p>
 	ReportURL *string `json:"ReportURL,omitnil,omitempty" name:"ReportURL"`
 
-	// 扫描完成时间。仅 Status=SUCCESS 时有值
-	// 参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+	// <p>扫描完成时间。仅 Status=SUCCESS 时有值<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
 	ScannedAt *string `json:"ScannedAt,omitnil,omitempty" name:"ScannedAt"`
 
-	// 任务创建时间。仅 Status=SCANNING 时有值
-	// 参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+	// <p>任务创建时间。仅 Status=SCANNING 时有值<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
-	// 失败时间。仅 Status=FAILED 时有值
-	// 参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+	// <p>失败时间。仅 Status=FAILED 时有值<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
 	FailedAt *string `json:"FailedAt,omitnil,omitempty" name:"FailedAt"`
 
-	// 失败原因描述。仅 Status=FAILED 时有值
+	// <p>失败原因描述。仅 Status=FAILED 时有值</p>
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 

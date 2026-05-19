@@ -11300,54 +11300,44 @@ func (r *DescribeProjectSecurityGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProxiesRequestParams struct {
-	// 集群 ID（该参数必传，例如 cynosdbmysql-2u2mh111）。
+	// <p>集群 ID（该参数必传，例如 cynosdbmysql-2u2mh111）。</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 返回数量，默认为 20，最大值为 100
+	// <p>返回数量，默认为 20，最大值为 100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 记录偏移量，默认值为0
+	// <p>记录偏移量，默认值为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序字段，取值范围：
-	// <li> CREATETIME：创建时间</li>
-	// <li> PERIODENDTIME：过期时间</li>
+	// <p>排序字段，取值范围：</p><li> CREATETIME：创建时间</li><li> PERIODENDTIME：过期时间</li>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序类型，取值范围：
-	// <li> ASC：升序排序 </li>
-	// <li> DESC：降序排序 </li>
+	// <p>排序类型，取值范围：</p><li> ASC：升序排序 </li><li> DESC：降序排序 </li>
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 
-	// 搜索条件，若存在多个 Filter 时，Filter 间的关系为逻辑与（AND）关系。
-	// 说明：此参数当前仅支持 Status 和 ProxyGroupId 两种过滤条件。
+	// <p>搜索条件，若存在多个 Filter 时，Filter 间的关系为逻辑与（AND）关系。<br>说明：此参数当前仅支持 Status 和 ProxyGroupId 两种过滤条件。</p>
 	Filters []*QueryParamFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeProxiesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群 ID（该参数必传，例如 cynosdbmysql-2u2mh111）。
+	// <p>集群 ID（该参数必传，例如 cynosdbmysql-2u2mh111）。</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 返回数量，默认为 20，最大值为 100
+	// <p>返回数量，默认为 20，最大值为 100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 记录偏移量，默认值为0
+	// <p>记录偏移量，默认值为0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序字段，取值范围：
-	// <li> CREATETIME：创建时间</li>
-	// <li> PERIODENDTIME：过期时间</li>
+	// <p>排序字段，取值范围：</p><li> CREATETIME：创建时间</li><li> PERIODENDTIME：过期时间</li>
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序类型，取值范围：
-	// <li> ASC：升序排序 </li>
-	// <li> DESC：降序排序 </li>
+	// <p>排序类型，取值范围：</p><li> ASC：升序排序 </li><li> DESC：降序排序 </li>
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 
-	// 搜索条件，若存在多个 Filter 时，Filter 间的关系为逻辑与（AND）关系。
-	// 说明：此参数当前仅支持 Status 和 ProxyGroupId 两种过滤条件。
+	// <p>搜索条件，若存在多个 Filter 时，Filter 间的关系为逻辑与（AND）关系。<br>说明：此参数当前仅支持 Status 和 ProxyGroupId 两种过滤条件。</p>
 	Filters []*QueryParamFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -11377,15 +11367,18 @@ func (r *DescribeProxiesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProxiesResponseParams struct {
-	// 数据库代理组数
+	// <p>数据库代理组数</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 数据库代理组列表
+	// <p>数据库代理组列表</p>
 	ProxyGroupInfos []*ProxyGroupInfo `json:"ProxyGroupInfos,omitnil,omitempty" name:"ProxyGroupInfos"`
 
-	// 数据库代理节点
+	// <p>数据库代理节点</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyNodeInfos []*ProxyNodeInfo `json:"ProxyNodeInfos,omitnil,omitempty" name:"ProxyNodeInfos"`
+
+	// <p>sql自动转发</p>
+	ColumnStoreProxyForward *string `json:"ColumnStoreProxyForward,omitnil,omitempty" name:"ColumnStoreProxyForward"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

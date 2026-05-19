@@ -12503,6 +12503,77 @@ func (r *DescribeSessionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSkillSecScanResultRequestParams struct {
+	// <p>服务ID</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>ZIP 文件的 SHA256 哈希值，格式为 sha256:hex_digest，请严格遵循文档中的zip打包规范</p>
+	ContentHash *string `json:"ContentHash,omitnil,omitempty" name:"ContentHash"`
+
+	// <p>返回语言。支持 zh / en，默认 zh</p>
+	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
+}
+
+type DescribeSkillSecScanResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务ID</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>ZIP 文件的 SHA256 哈希值，格式为 sha256:hex_digest，请严格遵循文档中的zip打包规范</p>
+	ContentHash *string `json:"ContentHash,omitnil,omitempty" name:"ContentHash"`
+
+	// <p>返回语言。支持 zh / en，默认 zh</p>
+	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
+}
+
+func (r *DescribeSkillSecScanResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSkillSecScanResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "ContentHash")
+	delete(f, "Lang")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSkillSecScanResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSkillSecScanResultResponseParams struct {
+	// <p>检测结果</p>
+	Data *SkillScanQueryData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSkillSecScanResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSkillSecScanResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeSkillSecScanResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSkillSecScanResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSpartaProtectionInfoRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -23244,6 +23315,99 @@ type SessionItem struct {
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 }
 
+type SkillRuleCatalogItem struct {
+	// <p>规则分类标识（如 static_analysis、ai_analysis）</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>规则分类中文名称</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type SkillScanCapabilityTag struct {
+	// <p>标签唯一ID</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>标签名称（如 network_access、file_system 等）</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type SkillScanItem struct {
+	// <p>子引擎类型：AI（AI 分析）/ STATIC（静态分析）</p>
+	ScanType *string `json:"ScanType,omitnil,omitempty" name:"ScanType"`
+
+	// <p>该引擎命中的规则列表</p>
+	RuleList []*SkillScanRuleHit `json:"RuleList,omitnil,omitempty" name:"RuleList"`
+}
+
+type SkillScanQueryData struct {
+	// <p>检测状态：success（检测完成，有结果）、scanning（检测进行中）、not_found（无记录）、failed（检测失败）</p><p>枚举值：</p><ul><li>success： 检测完成，有结果</li><li>scanning： 检测进行中</li><li>not_found： 无记录</li><li>failed： 检测失败</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>Skill 名称，用于页面展示、结果列表呈现和人工研判</p>
+	SkillName *string `json:"SkillName,omitnil,omitempty" name:"SkillName"`
+
+	// <p>Skill 描述，通常来自 Skill 元数据或说明信息，用于帮助调用方理解 Skill 的用途</p>
+	SkillDescription *string `json:"SkillDescription,omitnil,omitempty" name:"SkillDescription"`
+
+	// <p>ZIP 文件的 SHA256 哈希值，格式为 sha256:hex_digest</p>
+	ContentHash *string `json:"ContentHash,omitnil,omitempty" name:"ContentHash"`
+
+	// <p>风险等级：malicious（恶意）、suspicious（可疑）、benign（可信）</p>
+	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
+	// <p>综合处置建议字段，位于 data 顶层，用于给出本次检测结果的总体修复、缓解或人工处置建议</p>
+	Mitigation *string `json:"Mitigation,omitnil,omitempty" name:"Mitigation"`
+
+	// <p>安全评分（0-100，100 为最安全）</p><p>取值范围：[0, 100]</p>
+	SecurityScore *uint64 `json:"SecurityScore,omitnil,omitempty" name:"SecurityScore"`
+
+	// <p>本次扫描使用的引擎版本号</p>
+	EngineVersion *uint64 `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
+
+	// <p>Skill 的能力标签列表，对外固定返回格式为 [{id,name}]。该字段用于描述 Skill 具备的能力特征或适用场景，便于调用方做检索、展示或分类；不等同于风险标签，也不表示风险高低或命中规则结果。当 lang=en 时，仅 name 会切换为英文，id 保持不变</p>
+	CapabilityTags []*SkillScanCapabilityTag `json:"CapabilityTags,omitnil,omitempty" name:"CapabilityTags"`
+
+	// <p>融合规则目录全集，key 为融合 rule_id（9xxxx），value 为风险类别名称；包含所有融合规则类别，调用方可据此展示分类标签，无需本地维护映射表。传 lang=en 时返回英文名称。该对象是名称映射表，不表达主标签优先级</p>
+	RuleCatalog []*SkillRuleCatalogItem `json:"RuleCatalog,omitnil,omitempty" name:"RuleCatalog"`
+
+	// <p>扫描结果详情，按子引擎分组，每个元素包含 scan_type（引擎类型）和 rule_list（命中的规则列表）；规则中的 rule_id 使用融合编码（9xxxx），可与 rule_catalog 交叉引用。传 lang=en 时，description 返回英文文本</p>
+	ScanItems []*SkillScanItem `json:"ScanItems,omitnil,omitempty" name:"ScanItems"`
+
+	// <p>综合安全审计报告地址。调用方可通过 report_url_expire_hours 指定有效期，不传时默认返回 1 年有效期地址</p>
+	ReportUrl *string `json:"ReportUrl,omitnil,omitempty" name:"ReportUrl"`
+
+	// <p>扫描完成时间</p>
+	ScannedAt *string `json:"ScannedAt,omitnil,omitempty" name:"ScannedAt"`
+
+	// <p>任务创建时间</p>
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// <p>失败时间</p>
+	FailedAt *string `json:"FailedAt,omitnil,omitempty" name:"FailedAt"`
+
+	// <p>失败原因描述</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+}
+
+type SkillScanRuleHit struct {
+	// <p>规则唯一ID</p>
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// <p>规则描述（命中原因说明）</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type SkillScanUploadData struct {
+	// <p>文件的 SHA256 Hash，用于轮询查询接口</p>
+	ContentHash *string `json:"ContentHash,omitnil,omitempty" name:"ContentHash"`
+
+	// <p>固定为 scanning，表示任务已接收</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>可读的操作结果描述</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+}
+
 type SpartaProtectionPort struct {
 	// 分配的服务器id。首次接入的域名和端口该参数填0，已接入的域名和端口分配的id可以通过DescribeDomainDetailsSaas或DescribeDomains接口获取。
 	NginxServerId *uint64 `json:"NginxServerId,omitnil,omitempty" name:"NginxServerId"`
@@ -23999,6 +24163,77 @@ func (r *UpdateRateLimitV2Response) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateRateLimitV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UploadSkillSecScanRequestParams struct {
+	// <p>服务ID</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>zip压缩包base64编码后的数据</p>
+	FileData *string `json:"FileData,omitnil,omitempty" name:"FileData"`
+
+	// <p>skills文件压缩之后的文件名，.zip结尾</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+}
+
+type UploadSkillSecScanRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>服务ID</p>
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// <p>zip压缩包base64编码后的数据</p>
+	FileData *string `json:"FileData,omitnil,omitempty" name:"FileData"`
+
+	// <p>skills文件压缩之后的文件名，.zip结尾</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+}
+
+func (r *UploadSkillSecScanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadSkillSecScanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "FileData")
+	delete(f, "FileName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadSkillSecScanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UploadSkillSecScanResponseParams struct {
+	// <p>上传结果</p>
+	Data *SkillScanUploadData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UploadSkillSecScanResponse struct {
+	*tchttp.BaseResponse
+	Response *UploadSkillSecScanResponseParams `json:"Response"`
+}
+
+func (r *UploadSkillSecScanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadSkillSecScanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

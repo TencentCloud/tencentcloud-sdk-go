@@ -70,12 +70,14 @@ func NewCreateAccelerateAreasResponse() (response *CreateAccelerateAreasResponse
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_THIRDAREALISTENERPORTSEGMENT = "InvalidParameterValue.ThirdAreaListenerPortSegment"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNSUPPORTEDOPERATION_ACCELERATEREGIONREPEAT = "UnsupportedOperation.AccelerateRegionRepeat"
 //  UNSUPPORTEDOPERATION_EXISTACCEPTACLPOLICY = "UnsupportedOperation.ExistAcceptAclPolicy"
 //  UNSUPPORTEDOPERATION_EXISTDROPACCEPTACLRULE = "UnsupportedOperation.ExistDropAcceptAclRule"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 //  UNSUPPORTEDOPERATION_NOTSETCROSSBORDERTYPE = "UnsupportedOperation.NotSetCrossBorderType"
+//  UNSUPPORTEDOPERATION_THREENETWORKSACCELERATEAREAS = "UnsupportedOperation.ThreeNetworksAccelerateAreas"
 //  UNSUPPORTEDOPERATION_UNABLECREATETHIRDPARTYNODES = "UnsupportedOperation.UnableCreateThirdPartyNodes"
 //  UNSUPPORTEDOPERATION_UNABLECROSSBORDER = "UnsupportedOperation.UnableCrossBorder"
 func (c *Client) CreateAccelerateAreas(request *CreateAccelerateAreasRequest) (response *CreateAccelerateAreasResponse, err error) {
@@ -88,12 +90,14 @@ func (c *Client) CreateAccelerateAreas(request *CreateAccelerateAreasRequest) (r
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INPUTREPEAT = "InvalidParameter.InputRepeat"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_THIRDAREALISTENERPORTSEGMENT = "InvalidParameterValue.ThirdAreaListenerPortSegment"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNSUPPORTEDOPERATION_ACCELERATEREGIONREPEAT = "UnsupportedOperation.AccelerateRegionRepeat"
 //  UNSUPPORTEDOPERATION_EXISTACCEPTACLPOLICY = "UnsupportedOperation.ExistAcceptAclPolicy"
 //  UNSUPPORTEDOPERATION_EXISTDROPACCEPTACLRULE = "UnsupportedOperation.ExistDropAcceptAclRule"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 //  UNSUPPORTEDOPERATION_NOTSETCROSSBORDERTYPE = "UnsupportedOperation.NotSetCrossBorderType"
+//  UNSUPPORTEDOPERATION_THREENETWORKSACCELERATEAREAS = "UnsupportedOperation.ThreeNetworksAccelerateAreas"
 //  UNSUPPORTEDOPERATION_UNABLECREATETHIRDPARTYNODES = "UnsupportedOperation.UnableCreateThirdPartyNodes"
 //  UNSUPPORTEDOPERATION_UNABLECROSSBORDER = "UnsupportedOperation.UnableCrossBorder"
 func (c *Client) CreateAccelerateAreasWithContext(ctx context.Context, request *CreateAccelerateAreasRequest) (response *CreateAccelerateAreasResponse, err error) {
@@ -158,7 +162,9 @@ func NewCreateEndpointGroupResponse() (response *CreateEndpointGroupResponse) {
 //  MISSINGPARAMETER_ENABLEHEALTHCHECKPARAMETER = "MissingParameter.EnableHealthCheckParameter"
 //  UNSUPPORTEDOPERATION_EXISTACCEPTACLPOLICY = "UnsupportedOperation.ExistAcceptAclPolicy"
 //  UNSUPPORTEDOPERATION_EXISTDROPACCEPTACLRULE = "UnsupportedOperation.ExistDropAcceptAclRule"
+//  UNSUPPORTEDOPERATION_HTTPVERSIONINCONSISTENT = "UnsupportedOperation.HttpVersionInconsistent"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_INTERNALENDPOINTFEATURENOTENABLED = "UnsupportedOperation.InternalEndpointFeatureNotEnabled"
 //  UNSUPPORTEDOPERATION_IPV6NOTSUPPORT = "UnsupportedOperation.Ipv6NotSupport"
 //  UNSUPPORTEDOPERATION_NOTSETCROSSBORDERTYPE = "UnsupportedOperation.NotSetCrossBorderType"
 //  UNSUPPORTEDOPERATION_SAMEDOMAIN = "UnsupportedOperation.SameDomain"
@@ -197,7 +203,9 @@ func (c *Client) CreateEndpointGroup(request *CreateEndpointGroupRequest) (respo
 //  MISSINGPARAMETER_ENABLEHEALTHCHECKPARAMETER = "MissingParameter.EnableHealthCheckParameter"
 //  UNSUPPORTEDOPERATION_EXISTACCEPTACLPOLICY = "UnsupportedOperation.ExistAcceptAclPolicy"
 //  UNSUPPORTEDOPERATION_EXISTDROPACCEPTACLRULE = "UnsupportedOperation.ExistDropAcceptAclRule"
+//  UNSUPPORTEDOPERATION_HTTPVERSIONINCONSISTENT = "UnsupportedOperation.HttpVersionInconsistent"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_INTERNALENDPOINTFEATURENOTENABLED = "UnsupportedOperation.InternalEndpointFeatureNotEnabled"
 //  UNSUPPORTEDOPERATION_IPV6NOTSUPPORT = "UnsupportedOperation.Ipv6NotSupport"
 //  UNSUPPORTEDOPERATION_NOTSETCROSSBORDERTYPE = "UnsupportedOperation.NotSetCrossBorderType"
 //  UNSUPPORTEDOPERATION_SAMEDOMAIN = "UnsupportedOperation.SameDomain"
@@ -399,6 +407,8 @@ func NewCreateListenerResponse() (response *CreateListenerResponse) {
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 //  UNSUPPORTEDOPERATION_LISTENERPORTSEGMENT = "UnsupportedOperation.ListenerPortSegment"
+//  UNSUPPORTEDOPERATION_ONLYTCPLISTENERSUPPORTTOA = "UnsupportedOperation.OnlyTcpListenerSupportToa"
+//  UNSUPPORTEDOPERATION_TOAFEATURENOTENABLED = "UnsupportedOperation.TOAFeatureNotEnabled"
 func (c *Client) CreateListener(request *CreateListenerRequest) (response *CreateListenerResponse, err error) {
     return c.CreateListenerWithContext(context.Background(), request)
 }
@@ -430,6 +440,8 @@ func (c *Client) CreateListener(request *CreateListenerRequest) (response *Creat
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 //  UNSUPPORTEDOPERATION_LISTENERPORTSEGMENT = "UnsupportedOperation.ListenerPortSegment"
+//  UNSUPPORTEDOPERATION_ONLYTCPLISTENERSUPPORTTOA = "UnsupportedOperation.OnlyTcpListenerSupportToa"
+//  UNSUPPORTEDOPERATION_TOAFEATURENOTENABLED = "UnsupportedOperation.TOAFeatureNotEnabled"
 func (c *Client) CreateListenerWithContext(ctx context.Context, request *CreateListenerRequest) (response *CreateListenerResponse, err error) {
     if request == nil {
         request = NewCreateListenerRequest()
@@ -493,6 +505,8 @@ func NewDeleteAccelerateAreasResponse() (response *DeleteAccelerateAreasResponse
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 //  UNSUPPORTEDOPERATION_LISTENERPORTSEGMENT = "UnsupportedOperation.ListenerPortSegment"
+//  UNSUPPORTEDOPERATION_ONLYTCPLISTENERSUPPORTTOA = "UnsupportedOperation.OnlyTcpListenerSupportToa"
+//  UNSUPPORTEDOPERATION_TOAFEATURENOTENABLED = "UnsupportedOperation.TOAFeatureNotEnabled"
 func (c *Client) DeleteAccelerateAreas(request *DeleteAccelerateAreasRequest) (response *DeleteAccelerateAreasResponse, err error) {
     return c.DeleteAccelerateAreasWithContext(context.Background(), request)
 }
@@ -524,6 +538,8 @@ func (c *Client) DeleteAccelerateAreas(request *DeleteAccelerateAreasRequest) (r
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
 //  UNSUPPORTEDOPERATION_LISTENERPORTSEGMENT = "UnsupportedOperation.ListenerPortSegment"
+//  UNSUPPORTEDOPERATION_ONLYTCPLISTENERSUPPORTTOA = "UnsupportedOperation.OnlyTcpListenerSupportToa"
+//  UNSUPPORTEDOPERATION_TOAFEATURENOTENABLED = "UnsupportedOperation.TOAFeatureNotEnabled"
 func (c *Client) DeleteAccelerateAreasWithContext(ctx context.Context, request *DeleteAccelerateAreasRequest) (response *DeleteAccelerateAreasResponse, err error) {
     if request == nil {
         request = NewDeleteAccelerateAreasRequest()
@@ -566,6 +582,7 @@ func NewDeleteEndpointGroupsResponse() (response *DeleteEndpointGroupsResponse) 
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
 //  UNSUPPORTEDOPERATION_APPLICATIONLAYERENDPOINTGROUPNOTDELETE = "UnsupportedOperation.ApplicationLayerEndpointGroupNotDelete"
+//  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
 //  UNSUPPORTEDOPERATION_EXISTFORWARDINGRULE = "UnsupportedOperation.ExistForwardingRule"
 func (c *Client) DeleteEndpointGroups(request *DeleteEndpointGroupsRequest) (response *DeleteEndpointGroupsResponse, err error) {
     return c.DeleteEndpointGroupsWithContext(context.Background(), request)
@@ -577,6 +594,7 @@ func (c *Client) DeleteEndpointGroups(request *DeleteEndpointGroupsRequest) (res
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
 //  UNSUPPORTEDOPERATION_APPLICATIONLAYERENDPOINTGROUPNOTDELETE = "UnsupportedOperation.ApplicationLayerEndpointGroupNotDelete"
+//  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
 //  UNSUPPORTEDOPERATION_EXISTFORWARDINGRULE = "UnsupportedOperation.ExistForwardingRule"
 func (c *Client) DeleteEndpointGroupsWithContext(ctx context.Context, request *DeleteEndpointGroupsRequest) (response *DeleteEndpointGroupsResponse, err error) {
     if request == nil {
@@ -730,6 +748,7 @@ func NewDeleteListenerResponse() (response *DeleteListenerResponse) {
 // 删除监听器
 //
 // 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
 //  UNSUPPORTEDOPERATION_EXISTENDPOINTGROUP = "UnsupportedOperation.ExistEndpointGroup"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 func (c *Client) DeleteListener(request *DeleteListenerRequest) (response *DeleteListenerResponse, err error) {
@@ -740,6 +759,7 @@ func (c *Client) DeleteListener(request *DeleteListenerRequest) (response *Delet
 // 删除监听器
 //
 // 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
 //  UNSUPPORTEDOPERATION_EXISTENDPOINTGROUP = "UnsupportedOperation.ExistEndpointGroup"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 func (c *Client) DeleteListenerWithContext(ctx context.Context, request *DeleteListenerRequest) (response *DeleteListenerResponse, err error) {
@@ -782,6 +802,7 @@ func NewDescribeAccelerateAreasResponse() (response *DescribeAccelerateAreasResp
 // 查询加速地域
 //
 // 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
 //  UNSUPPORTEDOPERATION_EXISTENDPOINTGROUP = "UnsupportedOperation.ExistEndpointGroup"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 func (c *Client) DescribeAccelerateAreas(request *DescribeAccelerateAreasRequest) (response *DescribeAccelerateAreasResponse, err error) {
@@ -792,6 +813,7 @@ func (c *Client) DescribeAccelerateAreas(request *DescribeAccelerateAreasRequest
 // 查询加速地域
 //
 // 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
 //  UNSUPPORTEDOPERATION_EXISTENDPOINTGROUP = "UnsupportedOperation.ExistEndpointGroup"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 func (c *Client) DescribeAccelerateAreasWithContext(ctx context.Context, request *DescribeAccelerateAreasRequest) (response *DescribeAccelerateAreasResponse, err error) {
@@ -834,6 +856,7 @@ func NewDescribeAccelerateRegionsResponse() (response *DescribeAccelerateRegions
 // 查询可选加速区域
 //
 // 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
 //  UNSUPPORTEDOPERATION_EXISTENDPOINTGROUP = "UnsupportedOperation.ExistEndpointGroup"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 func (c *Client) DescribeAccelerateRegions(request *DescribeAccelerateRegionsRequest) (response *DescribeAccelerateRegionsResponse, err error) {
@@ -844,6 +867,7 @@ func (c *Client) DescribeAccelerateRegions(request *DescribeAccelerateRegionsReq
 // 查询可选加速区域
 //
 // 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_EXISTACCESSLOG = "UnsupportedOperation.ExistAccessLog"
 //  UNSUPPORTEDOPERATION_EXISTENDPOINTGROUP = "UnsupportedOperation.ExistEndpointGroup"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
 func (c *Client) DescribeAccelerateRegionsWithContext(ctx context.Context, request *DescribeAccelerateRegionsRequest) (response *DescribeAccelerateRegionsResponse, err error) {
@@ -1215,7 +1239,9 @@ func NewModifyEndpointGroupResponse() (response *ModifyEndpointGroupResponse) {
 //  INVALIDPARAMETERVALUE_SPECIFICCHARACTERS = "InvalidParameterValue.SpecificCharacters"
 //  MISSINGPARAMETER_CUSTOMCHECKTYPEPARAMETER = "MissingParameter.CustomCheckTypeParameter"
 //  UNSUPPORTEDOPERATION_DEFAULTENDPOINTGROUPMODIFY = "UnsupportedOperation.DefaultEndpointGroupModify"
+//  UNSUPPORTEDOPERATION_HTTPVERSIONINCONSISTENT = "UnsupportedOperation.HttpVersionInconsistent"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_INTERNALENDPOINTFEATURENOTENABLED = "UnsupportedOperation.InternalEndpointFeatureNotEnabled"
 //  UNSUPPORTEDOPERATION_IPV6NOTSUPPORT = "UnsupportedOperation.Ipv6NotSupport"
 //  UNSUPPORTEDOPERATION_SAMEDOMAIN = "UnsupportedOperation.SameDomain"
 //  UNSUPPORTEDOPERATION_SAMEPUBLICIP = "UnsupportedOperation.SamePublicIp"
@@ -1240,7 +1266,9 @@ func (c *Client) ModifyEndpointGroup(request *ModifyEndpointGroupRequest) (respo
 //  INVALIDPARAMETERVALUE_SPECIFICCHARACTERS = "InvalidParameterValue.SpecificCharacters"
 //  MISSINGPARAMETER_CUSTOMCHECKTYPEPARAMETER = "MissingParameter.CustomCheckTypeParameter"
 //  UNSUPPORTEDOPERATION_DEFAULTENDPOINTGROUPMODIFY = "UnsupportedOperation.DefaultEndpointGroupModify"
+//  UNSUPPORTEDOPERATION_HTTPVERSIONINCONSISTENT = "UnsupportedOperation.HttpVersionInconsistent"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_INTERNALENDPOINTFEATURENOTENABLED = "UnsupportedOperation.InternalEndpointFeatureNotEnabled"
 //  UNSUPPORTEDOPERATION_IPV6NOTSUPPORT = "UnsupportedOperation.Ipv6NotSupport"
 //  UNSUPPORTEDOPERATION_SAMEDOMAIN = "UnsupportedOperation.SameDomain"
 //  UNSUPPORTEDOPERATION_SAMEPUBLICIP = "UnsupportedOperation.SamePublicIp"
@@ -1418,7 +1446,10 @@ func NewModifyListenerResponse() (response *ModifyListenerResponse) {
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_DUPLICATEINSTANCESTATUS = "UnsupportedOperation.DuplicateInstanceStatus"
+//  UNSUPPORTEDOPERATION_HTTPVERSIONINCONSISTENT = "UnsupportedOperation.HttpVersionInconsistent"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_ONLYTCPLISTENERSUPPORTTOA = "UnsupportedOperation.OnlyTcpListenerSupportToa"
+//  UNSUPPORTEDOPERATION_TOAFEATURENOTENABLED = "UnsupportedOperation.TOAFeatureNotEnabled"
 func (c *Client) ModifyListener(request *ModifyListenerRequest) (response *ModifyListenerResponse, err error) {
     return c.ModifyListenerWithContext(context.Background(), request)
 }
@@ -1435,7 +1466,10 @@ func (c *Client) ModifyListener(request *ModifyListenerRequest) (response *Modif
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_DUPLICATEINSTANCESTATUS = "UnsupportedOperation.DuplicateInstanceStatus"
+//  UNSUPPORTEDOPERATION_HTTPVERSIONINCONSISTENT = "UnsupportedOperation.HttpVersionInconsistent"
 //  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_ONLYTCPLISTENERSUPPORTTOA = "UnsupportedOperation.OnlyTcpListenerSupportToa"
+//  UNSUPPORTEDOPERATION_TOAFEATURENOTENABLED = "UnsupportedOperation.TOAFeatureNotEnabled"
 func (c *Client) ModifyListenerWithContext(ctx context.Context, request *ModifyListenerRequest) (response *ModifyListenerResponse, err error) {
     if request == nil {
         request = NewModifyListenerRequest()

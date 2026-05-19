@@ -13986,64 +13986,66 @@ type RabbitMQBindingListInfo struct {
 }
 
 type RabbitMQClusterAccessInfo struct {
-	// 集群公网接入地址
+	// <p>集群公网接入地址</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicAccessEndpoint *string `json:"PublicAccessEndpoint,omitnil,omitempty" name:"PublicAccessEndpoint"`
 
-	// 集群控制台访问地址
+	// <p>集群 Web 控制台公网访问地址</p>
 	WebConsoleEndpoint *string `json:"WebConsoleEndpoint,omitnil,omitempty" name:"WebConsoleEndpoint"`
 
-	// 集群控制台登录用户名
+	// <p>集群 Web 控制台登录用户名</p>
 	WebConsoleUsername *string `json:"WebConsoleUsername,omitnil,omitempty" name:"WebConsoleUsername"`
 
-	// 集群控制台登录密码
+	// <p>集群 Web 控制台登录密码</p>
 	WebConsolePassword *string `json:"WebConsolePassword,omitnil,omitempty" name:"WebConsolePassword"`
 
-	// 已废弃
+	// <p>已废弃</p>
 	PublicAccessEndpointStatus *bool `json:"PublicAccessEndpointStatus,omitnil,omitempty" name:"PublicAccessEndpointStatus"`
 
-	// 已废弃
+	// <p>已废弃</p>
 	PublicControlConsoleSwitchStatus *bool `json:"PublicControlConsoleSwitchStatus,omitnil,omitempty" name:"PublicControlConsoleSwitchStatus"`
 
-	// 已废弃
+	// <p>已废弃</p>
 	VpcControlConsoleSwitchStatus *bool `json:"VpcControlConsoleSwitchStatus,omitnil,omitempty" name:"VpcControlConsoleSwitchStatus"`
 
-	// Vpc管控台访问地址，示例值，http://1.1.1.1:15672
+	// <p>Web 管控台 VPC 访问地址</p>
 	VpcWebConsoleEndpoint *string `json:"VpcWebConsoleEndpoint,omitnil,omitempty" name:"VpcWebConsoleEndpoint"`
 
-	// 公网管控台开关状态，示例值，OFF/ON/CREATING/DELETING
+	// <p>Web 控制台公网访问开关状态</p><p>枚举值：</p><ul><li>OFF： 已关闭</li><li>ON： 已开启</li><li>CREATING： 创建中</li><li>DELETING： 删除中</li><li>CREATE_FAILURE： 创建失败</li><li>DELETE_FAILURE： 删除失败</li></ul>
 	PublicWebConsoleSwitchStatus *string `json:"PublicWebConsoleSwitchStatus,omitnil,omitempty" name:"PublicWebConsoleSwitchStatus"`
 
-	// Vpc管控台开关状态，示例值，
-	// OFF/ON/CREATING/DELETING
+	// <p>Web 控制台 VPC 访问开关状态</p><p>枚举值：</p><ul><li>OFF： 已关闭</li><li>ON： 已开启</li><li>CREATING： 创建中</li><li>DELETING： 删除中</li><li>CREATE_FAILURE： 创建失败</li><li>DELETE_FAILURE： 删除失败</li></ul>
 	VpcWebConsoleSwitchStatus *string `json:"VpcWebConsoleSwitchStatus,omitnil,omitempty" name:"VpcWebConsoleSwitchStatus"`
 
-	// 公网管控台开关状态，示例值，OFF/ON/CREATING/DELETING
+	// <p>公网接入点开关状态</p><p>枚举值：</p><ul><li>OFF： 已关闭</li><li>ON： 已开启</li><li>CREATING： 创建中</li><li>DELETING： 删除中</li><li>CREATE_FAILURE： 创建失败</li><li>DELETE_FAILURE： 删除失败</li></ul>
 	PublicDataStreamStatus *string `json:"PublicDataStreamStatus,omitnil,omitempty" name:"PublicDataStreamStatus"`
 
-	// Prometheus信息
+	// <p>Prometheus信息</p>
 	PrometheusEndpointInfo *PrometheusEndpointInfo `json:"PrometheusEndpointInfo,omitnil,omitempty" name:"PrometheusEndpointInfo"`
 
-	// 公网域名接入点
+	// <p>公网域名接入点</p>
 	WebConsoleDomainEndpoint *string `json:"WebConsoleDomainEndpoint,omitnil,omitempty" name:"WebConsoleDomainEndpoint"`
 
-	// 控制面所使用的VPC信息
+	// <p>控制面所使用的VPC信息</p>
 	ControlPlaneEndpointInfo *VpcEndpointInfo `json:"ControlPlaneEndpointInfo,omitnil,omitempty" name:"ControlPlaneEndpointInfo"`
 
-	// TLS加密的数据流公网接入点
+	// <p>TLS加密的数据流公网接入点</p>
 	PublicTlsAccessEndpoint *string `json:"PublicTlsAccessEndpoint,omitnil,omitempty" name:"PublicTlsAccessEndpoint"`
 
-	// 公网IP是否复用
+	// <p>公网IP是否复用</p>
 	PublicIpReused *bool `json:"PublicIpReused,omitnil,omitempty" name:"PublicIpReused"`
 
-	// 公网控制台接入点操作的错误信息
+	// <p>Web 控制台公网访问操作的错误信息</p>
 	PublicWebConsoleErrorMessage *string `json:"PublicWebConsoleErrorMessage,omitnil,omitempty" name:"PublicWebConsoleErrorMessage"`
 
-	// 内网控制台接入点操作的错误信息
+	// <p>Web 控制台 VPC 访问操作的错误信息</p>
 	VpcWebConsoleErrorMessage *string `json:"VpcWebConsoleErrorMessage,omitnil,omitempty" name:"VpcWebConsoleErrorMessage"`
 
-	// 公网接入点操作的错误信息
+	// <p>公网接入点操作的错误信息</p>
 	PublicDataStreamErrorMessage *string `json:"PublicDataStreamErrorMessage,omitnil,omitempty" name:"PublicDataStreamErrorMessage"`
+
+	// <p>公网Stream接入点</p>
+	PublicStreamAccessEndpoint *string `json:"PublicStreamAccessEndpoint,omitnil,omitempty" name:"PublicStreamAccessEndpoint"`
 }
 
 type RabbitMQClusterInfo struct {
@@ -14374,43 +14376,50 @@ type RabbitMQQueueListInfo struct {
 }
 
 type RabbitMQUser struct {
-	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
+	// <p>实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 <a href="https://console.cloud.tencent.com/trabbitmq/cluster?rid=1">TDMQ RabbitMQ 控制台</a>查询。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名，登录时使用
+	// <p>用户名，登录时使用</p>
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// 密码，登录时使用
+	// <p>密码，登录时使用</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 用户描述
+	// <p>用户描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 用户标签，用于决定改用户访问RabbitMQ Management的权限范围
+	// <p>用户标签，用于决定改用户访问RabbitMQ Management的权限范围</p>
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 用户创建时间
+	// <p>用户创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 用户最后修改时间
+	// <p>用户最后修改时间</p>
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 用户类型，System：系统创建，User：用户创建
+	// <p>用户类型，System：系统创建，User：用户创建</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 单个用户最大可用连接数
+	// <p>单个用户最大可用连接数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxConnections *int64 `json:"MaxConnections,omitnil,omitempty" name:"MaxConnections"`
 
-	// 单个用户最大可用通道数
+	// <p>单个用户最大可用通道数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxChannels *int64 `json:"MaxChannels,omitnil,omitempty" name:"MaxChannels"`
 
-	// 创建时间时间戳
+	// <p>创建时间时间戳</p>
 	CreateTs *uint64 `json:"CreateTs,omitnil,omitempty" name:"CreateTs"`
 
-	// 修改时间时间戳
+	// <p>修改时间时间戳</p>
 	ModifyTs *uint64 `json:"ModifyTs,omitnil,omitempty" name:"ModifyTs"`
+
+	// <p>是否开启cam验证</p><p>默认值：false</p>
+	CamAuthEnabled *bool `json:"CamAuthEnabled,omitnil,omitempty" name:"CamAuthEnabled"`
+
+	// <p>cam凭据名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CamCredentialName *string `json:"CamCredentialName,omitnil,omitempty" name:"CamCredentialName"`
 }
 
 type RabbitMQUserQuota struct {
@@ -14433,86 +14442,79 @@ type RabbitMQVHostBaseQuota struct {
 }
 
 type RabbitMQVipInstance struct {
-	// 实例 ID
+	// <p>实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例版本
+	// <p>实例版本</p>
 	InstanceVersion *string `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
 
-	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
+	// <p>实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 节点数量
+	// <p>节点数量</p>
 	NodeCount *uint64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
 
-	// 实例配置规格名称
+	// <p>实例配置规格名称</p>
 	ConfigDisplay *string `json:"ConfigDisplay,omitnil,omitempty" name:"ConfigDisplay"`
 
-	// 峰值TPS
+	// <p>峰值TPS</p>
 	MaxTps *uint64 `json:"MaxTps,omitnil,omitempty" name:"MaxTps"`
 
-	// 峰值带宽，Mbps为单位
+	// <p>峰值带宽，Mbps为单位</p>
 	MaxBandWidth *uint64 `json:"MaxBandWidth,omitnil,omitempty" name:"MaxBandWidth"`
 
-	// 存储容量，GB为单位
+	// <p>存储容量，GB为单位</p>
 	MaxStorage *uint64 `json:"MaxStorage,omitnil,omitempty" name:"MaxStorage"`
 
-	// 实例到期时间，按量付费的资源该值为 0，毫秒为单位。unix 时间戳
+	// <p>实例到期时间，按量付费的资源该值为 0，毫秒为单位。unix 时间戳</p>
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+	// <p>自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 1 表示预付费，0 表示后付费
+	// <p>1 表示预付费，0 表示后付费</p>
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 备注信息
+	// <p>备注信息</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 集群的节点规格，对应的规格标识：
-	// 2C8G：rabbit-vip-profession-2c8g
-	// 4C16G：rabbit-vip-profession-4c16g
-	// 8C32G：rabbit-vip-profession-8c32g
-	// 16C32G：rabbit-vip-basic-4
-	// 16C64G：rabbit-vip-profession-16c64g
-	// 2C4G：rabbit-vip-basic-5
-	// 4C8G：rabbit-vip-basic-1
-	// 8C16G（已售罄）：rabbit-vip-basic-2
-	// 不传默认为 4C8G：rabbit-vip-basic-1
+	// <p>集群的节点规格，对应的规格标识：<br>2C8G：rabbit-vip-profession-2c8g<br>4C16G：rabbit-vip-profession-4c16g<br>8C32G：rabbit-vip-profession-8c32g<br>16C32G：rabbit-vip-basic-4<br>16C64G：rabbit-vip-profession-16c64g<br>2C4G：rabbit-vip-basic-5<br>4C8G：rabbit-vip-basic-1<br>8C16G（已售罄）：rabbit-vip-basic-2<br>不传默认为 4C8G：rabbit-vip-basic-1</p>
 	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
 
-	// 集群异常信息
+	// <p>集群异常信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExceptionInformation *string `json:"ExceptionInformation,omitnil,omitempty" name:"ExceptionInformation"`
 
-	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
-	// 为了和计费区分开，额外开启一个状态位，用于显示。
+	// <p>实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败<br>为了和计费区分开，额外开启一个状态位，用于显示。</p>
 	ClusterStatus *int64 `json:"ClusterStatus,omitnil,omitempty" name:"ClusterStatus"`
 
-	// 公网接入点
+	// <p>公网接入点</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicAccessEndpoint *string `json:"PublicAccessEndpoint,omitnil,omitempty" name:"PublicAccessEndpoint"`
 
-	// VPC 接入点列表
+	// <p>VPC 接入点列表</p>
 	Vpcs []*VpcEndpointInfo `json:"Vpcs,omitnil,omitempty" name:"Vpcs"`
 
-	// 创建时间，毫秒为单位。unix 时间戳
+	// <p>创建时间，毫秒为单位。unix 时间戳</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 实例类型，0 托管版、1 Serverless 版
+	// <p>实例类型</p><p>枚举值：</p><ul><li>0： 托管版实例</li></ul>
 	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 隔离时间，毫秒为单位。unix 时间戳
+	// <p>隔离时间，毫秒为单位。unix 时间戳</p>
 	IsolatedTime *uint64 `json:"IsolatedTime,omitnil,omitempty" name:"IsolatedTime"`
 
-	// 是否已开启删除保护
+	// <p>是否已开启删除保护</p>
 	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>公有数据流Stream接入点</p>
+	PublicStreamAccessEndpoint *string `json:"PublicStreamAccessEndpoint,omitnil,omitempty" name:"PublicStreamAccessEndpoint"`
 }
 
 type RabbitMQVirtualHostInfo struct {
@@ -17168,6 +17170,12 @@ type VpcEndpointInfo struct {
 
 	// <p>VPC 接入点操作失败的错误信息</p>
 	VpcErrorMessage *string `json:"VpcErrorMessage,omitnil,omitempty" name:"VpcErrorMessage"`
+
+	// <p>接入点ID</p>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>vpc Stream接入点</p>
+	VpcStreamEndpoint *string `json:"VpcStreamEndpoint,omitnil,omitempty" name:"VpcStreamEndpoint"`
 }
 
 type VpcInfo struct {

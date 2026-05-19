@@ -11789,44 +11789,44 @@ type EventCondition struct {
 
 // Predefined struct for user
 type ExportPrometheusReadOnlyDynamicAPIRequestParams struct {
-	// Prometheus 实例 ID
+	// <p>Prometheus 实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// HTTP 方法名 GET/POST/PUT/DELETE 等
+	// <p>HTTP 方法名 GET/POST/PUT/DELETE 等</p>
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
-	// HTTP 路径（包括 query string）
+	// <p>HTTP 路径（包括 query string）</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// HTTP 请求体，任何数据
+	// <p>HTTP 请求体，任何数据</p>
 	RequestBody *string `json:"RequestBody,omitnil,omitempty" name:"RequestBody"`
 
-	// HTTP 请求头
+	// <p>HTTP 请求头</p>
 	Headers []*PrometheusStringKeyValuePair `json:"Headers,omitnil,omitempty" name:"Headers"`
 
-	// 是否请求自监控数据。自监控仅支持 /api/v1/query 与 /api/v1/query_range 接口。
+	// <p>是否请求自监控数据。自监控仅支持 /api/v1/query 与 /api/v1/query_range 接口。</p>
 	SelfMonitor *bool `json:"SelfMonitor,omitnil,omitempty" name:"SelfMonitor"`
 }
 
 type ExportPrometheusReadOnlyDynamicAPIRequest struct {
 	*tchttp.BaseRequest
 	
-	// Prometheus 实例 ID
+	// <p>Prometheus 实例 ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// HTTP 方法名 GET/POST/PUT/DELETE 等
+	// <p>HTTP 方法名 GET/POST/PUT/DELETE 等</p>
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
-	// HTTP 路径（包括 query string）
+	// <p>HTTP 路径（包括 query string）</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// HTTP 请求体，任何数据
+	// <p>HTTP 请求体，任何数据</p>
 	RequestBody *string `json:"RequestBody,omitnil,omitempty" name:"RequestBody"`
 
-	// HTTP 请求头
+	// <p>HTTP 请求头</p>
 	Headers []*PrometheusStringKeyValuePair `json:"Headers,omitnil,omitempty" name:"Headers"`
 
-	// 是否请求自监控数据。自监控仅支持 /api/v1/query 与 /api/v1/query_range 接口。
+	// <p>是否请求自监控数据。自监控仅支持 /api/v1/query 与 /api/v1/query_range 接口。</p>
 	SelfMonitor *bool `json:"SelfMonitor,omitnil,omitempty" name:"SelfMonitor"`
 }
 
@@ -11856,7 +11856,7 @@ func (r *ExportPrometheusReadOnlyDynamicAPIRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type ExportPrometheusReadOnlyDynamicAPIResponseParams struct {
-	// HTTP 响应数据
+	// <p>HTTP 响应数据</p>
 	HTTP *PrometheusDynamicAPIResponseHTTP `json:"HTTP,omitnil,omitempty" name:"HTTP"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

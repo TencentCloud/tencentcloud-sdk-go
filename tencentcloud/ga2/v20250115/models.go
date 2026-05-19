@@ -1446,16 +1446,16 @@ func (r *DescribeListenersResponse) FromJsonString(s string) error {
 }
 
 type EndpointConfigurations struct {
-	// 域名类型。可选值'Domain', 'PublicIp'。
+	// <p>域名类型。可选值&#39;Domain&#39;, &#39;PublicIp&#39;。</p>
 	EndpointType *string `json:"EndpointType,omitnil,omitempty" name:"EndpointType"`
 
-	// 域名。
+	// <p>域名。</p>
 	EndpointService *string `json:"EndpointService,omitnil,omitempty" name:"EndpointService"`
 
-	// 权重。
+	// <p>权重。</p>
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// 健康检查状态；HEALTH：健康；UNHEALTH：不健康。
+	// <p>健康检查状态；HEALTH：健康；UNHEALTH：不健康。</p>
 	HealthCheckStatus *string `json:"HealthCheckStatus,omitnil,omitempty" name:"HealthCheckStatus"`
 }
 
@@ -2250,92 +2250,92 @@ func (r *ModifyGlobalAcceleratorResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyListenerRequestParams struct {
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 名称，最大长度不能超过60个字节。
+	// <p>名称，最大长度不能超过60个字节。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 描述信息，最大长度不能超过100个字节。
+	// <p>描述信息，最大长度不能超过100个字节。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 连接空闲等待时间。
+	// <p>连接空闲等待时间。</p>
 	IdleTimeout *uint64 `json:"IdleTimeout,omitnil,omitempty" name:"IdleTimeout"`
 
-	// 是否开启会话保持。
+	// <p>是否开启会话保持。</p>
 	ClientAffinity *string `json:"ClientAffinity,omitnil,omitempty" name:"ClientAffinity"`
 
-	// 会话保持时间。
+	// <p>会话保持时间。</p>
 	ClientAffinityTime *uint64 `json:"ClientAffinityTime,omitnil,omitempty" name:"ClientAffinityTime"`
 
-	// 请求超时时间。
+	// <p>请求超时时间。</p>
 	RequestTimeout *uint64 `json:"RequestTimeout,omitnil,omitempty" name:"RequestTimeout"`
 
-	// 是否打开七层获取源IP方式。
+	// <p>是否打开七层获取源IP方式。</p>
 	XForwardedForRealIp *bool `json:"XForwardedForRealIp,omitnil,omitempty" name:"XForwardedForRealIp"`
 
-	// 解析方式。UNIDIRECTIONAL：双向。MUTUAL：单向。
+	// <p>解析方式。UNIDIRECTIONAL：双向。MUTUAL：单向。</p>
 	CertificationType *string `json:"CertificationType,omitnil,omitempty" name:"CertificationType"`
 
-	// 加密算法套件。
+	// <p>加密算法套件。</p>
 	CipherPolicyId *string `json:"CipherPolicyId,omitnil,omitempty" name:"CipherPolicyId"`
 
-	// 服务器证书。
+	// <p>服务器证书。</p>
 	ServerCertificates []*string `json:"ServerCertificates,omitnil,omitempty" name:"ServerCertificates"`
 
-	// 客户端证书。
+	// <p>客户端证书。</p>
 	ClientCaCertificates []*string `json:"ClientCaCertificates,omitnil,omitempty" name:"ClientCaCertificates"`
 
-	// 四层获取源IP方式。
+	// <p>四层获取源IP方式。</p>
 	GetRealIpType *string `json:"GetRealIpType,omitnil,omitempty" name:"GetRealIpType"`
 }
 
 type ModifyListenerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 名称，最大长度不能超过60个字节。
+	// <p>名称，最大长度不能超过60个字节。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 描述信息，最大长度不能超过100个字节。
+	// <p>描述信息，最大长度不能超过100个字节。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 连接空闲等待时间。
+	// <p>连接空闲等待时间。</p>
 	IdleTimeout *uint64 `json:"IdleTimeout,omitnil,omitempty" name:"IdleTimeout"`
 
-	// 是否开启会话保持。
+	// <p>是否开启会话保持。</p>
 	ClientAffinity *string `json:"ClientAffinity,omitnil,omitempty" name:"ClientAffinity"`
 
-	// 会话保持时间。
+	// <p>会话保持时间。</p>
 	ClientAffinityTime *uint64 `json:"ClientAffinityTime,omitnil,omitempty" name:"ClientAffinityTime"`
 
-	// 请求超时时间。
+	// <p>请求超时时间。</p>
 	RequestTimeout *uint64 `json:"RequestTimeout,omitnil,omitempty" name:"RequestTimeout"`
 
-	// 是否打开七层获取源IP方式。
+	// <p>是否打开七层获取源IP方式。</p>
 	XForwardedForRealIp *bool `json:"XForwardedForRealIp,omitnil,omitempty" name:"XForwardedForRealIp"`
 
-	// 解析方式。UNIDIRECTIONAL：双向。MUTUAL：单向。
+	// <p>解析方式。UNIDIRECTIONAL：双向。MUTUAL：单向。</p>
 	CertificationType *string `json:"CertificationType,omitnil,omitempty" name:"CertificationType"`
 
-	// 加密算法套件。
+	// <p>加密算法套件。</p>
 	CipherPolicyId *string `json:"CipherPolicyId,omitnil,omitempty" name:"CipherPolicyId"`
 
-	// 服务器证书。
+	// <p>服务器证书。</p>
 	ServerCertificates []*string `json:"ServerCertificates,omitnil,omitempty" name:"ServerCertificates"`
 
-	// 客户端证书。
+	// <p>客户端证书。</p>
 	ClientCaCertificates []*string `json:"ClientCaCertificates,omitnil,omitempty" name:"ClientCaCertificates"`
 
-	// 四层获取源IP方式。
+	// <p>四层获取源IP方式。</p>
 	GetRealIpType *string `json:"GetRealIpType,omitnil,omitempty" name:"GetRealIpType"`
 }
 
@@ -2373,7 +2373,7 @@ func (r *ModifyListenerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyListenerResponseParams struct {
-	// 任务ID。
+	// <p>任务ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

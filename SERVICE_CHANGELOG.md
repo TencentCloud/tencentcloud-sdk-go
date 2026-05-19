@@ -1,10 +1,10 @@
-# Release v1.3.100
+# Release v1.3.101
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
-### 第 218 次发布
+### 第 166 次发布
 
-发布时间：2026-05-19 01:19:19
+发布时间：2026-05-20 01:40:20
 
 本次发布包含了以下内容：
 
@@ -12,137 +12,18 @@
 
 修改接口：
 
-* [AdjustCdbProxyAddress](https://cloud.tencent.com/document/api/236/90589)
+* [DescribeProxies](https://cloud.tencent.com/document/api/1003/94132)
 
-	* <font color="#dd0000">**修改入参**：</font>ApNodeAsRoNode, ApQueryToOtherNode
+	* 新增出参：ColumnStoreProxyForward
 
 
 
 
-## 智能顾问-混沌演练(cfg) 版本：2021-08-20
+## 知识引擎原子能力(lkeap) 版本：2024-05-22
 
-### 第 35 次发布
+### 第 21 次发布
 
-发布时间：2026-05-19 01:23:38
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [TaskListItem](https://cloud.tencent.com/document/api/1500/71784#TaskListItem)
-
-	* 新增成员：Tags
-
-
-
-
-## 暴露面管理服务(ctem) 版本：2023-11-28
-
-### 第 17 次发布
-
-发布时间：2026-05-19 01:34:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DisplayToolCommon](https://cloud.tencent.com/document/api/1755/120320#DisplayToolCommon)
-
-	* 新增成员：IsPlainTextInDemo
-
-
-
-
-## 腾讯云数据分析智能体(dataagent) 版本：2025-05-13
-
-### 第 16 次发布
-
-发布时间：2026-05-19 01:43:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [GetUserInstanceList](https://cloud.tencent.com/document/api/1800/131715)
-
-
-
-## 数据湖计算 DLC(dlc) 版本：2021-01-25
-
-### 第 159 次发布
-
-发布时间：2026-05-19 01:46:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [TaskFullRespInfo](https://cloud.tencent.com/document/api/1342/53778#TaskFullRespInfo)
-
-	* 新增成员：QueueTime
-
-
-
-
-## iOA 零信任安全管理系统(ioa) 版本：2022-06-01
-
-### 第 37 次发布
-
-发布时间：2026-05-19 02:04:34
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateCompanyDirectoryConfig](https://cloud.tencent.com/document/api/1092/131718)
-* [DescribeCompanyDirectoryConfig](https://cloud.tencent.com/document/api/1092/131717)
-* [ModifyCompanyDirectoryConfig](https://cloud.tencent.com/document/api/1092/131716)
-
-新增数据结构：
-
-* [DirectoryConfigData](https://cloud.tencent.com/document/api/1092/102488#DirectoryConfigData)
-* [DirectoryConfigResultData](https://cloud.tencent.com/document/api/1092/102488#DirectoryConfigResultData)
-
-
-
-## 多网聚合加速(mna) 版本：2021-01-19
-
-### 第 34 次发布
-
-发布时间：2026-05-19 02:23:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DeviceBaseInfo](https://cloud.tencent.com/document/api/1385/55846#DeviceBaseInfo)
-
-	* 新增成员：AllowedRegions
-
-
-
-
-## 腾讯云可观测平台(monitor) 版本：2023-06-16
-
-
-
-## 腾讯云可观测平台(monitor) 版本：2018-07-24
-
-### 第 157 次发布
-
-发布时间：2026-05-19 02:25:51
+发布时间：2026-05-20 02:16:45
 
 本次发布包含了以下内容：
 
@@ -150,163 +31,150 @@
 
 <font color="#dd0000">**删除接口**：</font>
 
-* CreateServiceDiscovery
-* DescribeServiceDiscovery
+* CreateAttributeLabel
+* CreateKnowledgeBase
+* CreateQA
+* DeleteAttributeLabels
+* DeleteDocs
+* DeleteKnowledgeBase
+* DeleteQAs
+* DescribeDoc
+* ImportQAs
+* ListAttributeLabels
+* ListDocs
+* ListQAs
+* ModifyAttributeLabel
+* ModifyQA
+* RetrieveKnowledge
+* UploadDoc
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* AttributeItem
+* AttributeLabelItem
+* AttributeLabelReferItem
+* DocItem
+* LabelItem
+* QaItem
+* RetrievalRecord
+* RetrievalRecordMetadata
+* RetrievalSetting
+* SegmentationConfig
 
 
 
-## 流计算 Oceanus(oceanus) 版本：2019-04-22
+## 媒体处理(mps) 版本：2019-06-12
 
-### 第 84 次发布
+### 第 204 次发布
 
-发布时间：2026-05-19 02:35:59
+发布时间：2026-05-20 02:25:46
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [CreateVariable](https://cloud.tencent.com/document/api/849/124030)
-
-	* 新增入参：ValueType, SecretRegion, SecretName, SecretVersionId, SecretValueMd5
-
 
 修改数据结构：
 
-* [Setats](https://cloud.tencent.com/document/api/849/52010#Setats)
+* [VoiceProfile](https://cloud.tencent.com/document/api/862/37615#VoiceProfile)
 
-	* 新增成员：Name, Remark
-
-* [VariableItem](https://cloud.tencent.com/document/api/849/52010#VariableItem)
-
-	* 新增成员：ValueType, SecretRegion, SecretName, SecretVersionId
+	* 新增成员：Languages
 
 
 
 
-## 容器安全服务(tcss) 版本：2020-11-01
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
-### 第 94 次发布
+### 第 174 次发布
 
-发布时间：2026-05-19 03:08:21
+发布时间：2026-05-20 03:11:38
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [CreateAssetImageRegistryScanTask](https://cloud.tencent.com/document/api/1285/65517)
-
-	* 新增入参：Timeout
-
-
-
-
-## 实时互动-工业能源版(trro) 版本：2022-03-25
-
-### 第 13 次发布
-
-发布时间：2026-05-19 03:36:34
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeDeviceSessionDetails](https://cloud.tencent.com/document/api/1584/89827)
-
-	* 新增入参：StartTime, EndTime
-
 
 修改数据结构：
 
-* [SessionDeviceDetail](https://cloud.tencent.com/document/api/1584/89828#SessionDeviceDetail)
+* [RabbitMQClusterAccessInfo](https://cloud.tencent.com/document/api/1179/46089#RabbitMQClusterAccessInfo)
 
-	* 新增成员：ControlLatency
+	* 新增成员：PublicStreamAccessEndpoint
 
+* [RabbitMQUser](https://cloud.tencent.com/document/api/1179/46089#RabbitMQUser)
+
+	* 新增成员：CamAuthEnabled, CamCredentialName
+
+* [RabbitMQVipInstance](https://cloud.tencent.com/document/api/1179/46089#RabbitMQVipInstance)
+
+	* 新增成员：PublicStreamAccessEndpoint
+
+* [VpcEndpointInfo](https://cloud.tencent.com/document/api/1179/46089#VpcEndpointInfo)
+
+	* 新增成员：Id, VpcStreamEndpoint
+
+
+
+
+## TDSQL(tdmysql) 版本：2021-11-22
+
+### 第 4 次发布
+
+发布时间：2026-05-20 03:14:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDatabaseObjects](https://cloud.tencent.com/document/api/1376/128303)
+
+	* 新增入参：Offset, Limit, TableRegexp
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 118 次发布
+
+发布时间：2026-05-20 03:22:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTrainingTaskPodUrl](https://cloud.tencent.com/document/api/851/131906)
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
 
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
 
-### 第 153 次发布
+### 第 154 次发布
 
-发布时间：2026-05-19 04:00:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeLLMContentSecCheck](https://cloud.tencent.com/document/api/627/129968)
-
-	* 新增入参：ToolName, ToolArgs
-
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2025-08-06
-
-### 第 19 次发布
-
-发布时间：2026-05-19 04:12:05
+发布时间：2026-05-20 03:56:56
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [ListTasks](https://cloud.tencent.com/document/api/1267/123623)
+* [DescribeSkillSecScanResult](https://cloud.tencent.com/document/api/627/131908)
+* [UploadSkillSecScan](https://cloud.tencent.com/document/api/627/131907)
 
-	* 新增入参：TaskFolderPathList, WorkflowFolderPathList, TaskNodeTypeList
+新增数据结构：
 
-* [ListTriggerTasks](https://cloud.tencent.com/document/api/1267/127250)
-
-	* 新增入参：TaskFolderPathList, WorkflowFolderPathList, TaskNodeTypeList
-
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
-
-### 第 193 次发布
-
-发布时间：2026-05-19 04:05:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateTaskVersionDs](https://cloud.tencent.com/document/api/1267/101692)
-
-	* 新增入参：MissingInstanceStrategy
-
-
-修改数据结构：
-
-* [DatasourceBaseInfo](https://cloud.tencent.com/document/api/1267/76336#DatasourceBaseInfo)
-
-	* 新增成员：Ip, Port
-
-* [TaskDsDTO](https://cloud.tencent.com/document/api/1267/76336#TaskDsDTO)
-
-	* 新增成员：LastUpdateTimestamp
-
-* [TestRunningRecord](https://cloud.tencent.com/document/api/1267/76336#TestRunningRecord)
-
-	* 新增成员：ScriptContentTruncated
-
-* [TestRunningSubRecord](https://cloud.tencent.com/document/api/1267/76336#TestRunningSubRecord)
-
-	* 新增成员：ScriptContentTruncated, SchemaInfoFilePath
-
+* [SkillRuleCatalogItem](https://cloud.tencent.com/document/api/627/53609#SkillRuleCatalogItem)
+* [SkillScanCapabilityTag](https://cloud.tencent.com/document/api/627/53609#SkillScanCapabilityTag)
+* [SkillScanItem](https://cloud.tencent.com/document/api/627/53609#SkillScanItem)
+* [SkillScanQueryData](https://cloud.tencent.com/document/api/627/53609#SkillScanQueryData)
+* [SkillScanRuleHit](https://cloud.tencent.com/document/api/627/53609#SkillScanRuleHit)
+* [SkillScanUploadData](https://cloud.tencent.com/document/api/627/53609#SkillScanUploadData)
 
 
 

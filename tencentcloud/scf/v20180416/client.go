@@ -272,7 +272,6 @@ func NewCreateCustomDomainResponse() (response *CreateCustomDomainResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_CNAME = "FailedOperation.CNAME"
 //  INVALIDPARAMETERVALUE_DOMAIN = "InvalidParameterValue.Domain"
-//  INVALIDPARAMETERVALUE_INVALIDCERTCONFIG = "InvalidParameterValue.InvalidCertConfig"
 func (c *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (response *CreateCustomDomainResponse, err error) {
     return c.CreateCustomDomainWithContext(context.Background(), request)
 }
@@ -283,7 +282,6 @@ func (c *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (respons
 // 可能返回的错误码:
 //  FAILEDOPERATION_CNAME = "FailedOperation.CNAME"
 //  INVALIDPARAMETERVALUE_DOMAIN = "InvalidParameterValue.Domain"
-//  INVALIDPARAMETERVALUE_INVALIDCERTCONFIG = "InvalidParameterValue.InvalidCertConfig"
 func (c *Client) CreateCustomDomainWithContext(ctx context.Context, request *CreateCustomDomainRequest) (response *CreateCustomDomainResponse, err error) {
     if request == nil {
         request = NewCreateCustomDomainRequest()

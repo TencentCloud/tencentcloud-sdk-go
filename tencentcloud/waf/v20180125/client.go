@@ -7739,6 +7739,64 @@ func (c *Client) DescribeSessionWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeSkillSecScanResultRequest() (request *DescribeSkillSecScanResultRequest) {
+    request = &DescribeSkillSecScanResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeSkillSecScanResult")
+    
+    
+    return
+}
+
+func NewDescribeSkillSecScanResultResponse() (response *DescribeSkillSecScanResultResponse) {
+    response = &DescribeSkillSecScanResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSkillSecScanResult
+// 根据文件Hash查询Skill安全检测结果
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SKILLSCANINVALIDPARAM = "InvalidParameter.SkillScanInvalidParam"
+//  INVALIDPARAMETER_SKILLSCANINVALIDREQUEST = "InvalidParameter.SkillScanInvalidRequest"
+//  INVALIDPARAMETER_SKILLSCANQUERYFAILED = "InvalidParameter.SkillScanQueryFailed"
+//  INVALIDPARAMETER_SKILLSCANSERVICEIDEMPTY = "InvalidParameter.SkillScanServiceIdEmpty"
+//  INVALIDPARAMETER_SKILLSCANSWITCHOFF = "InvalidParameter.SkillScanSwitchOff"
+func (c *Client) DescribeSkillSecScanResult(request *DescribeSkillSecScanResultRequest) (response *DescribeSkillSecScanResultResponse, err error) {
+    return c.DescribeSkillSecScanResultWithContext(context.Background(), request)
+}
+
+// DescribeSkillSecScanResult
+// 根据文件Hash查询Skill安全检测结果
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SKILLSCANINVALIDPARAM = "InvalidParameter.SkillScanInvalidParam"
+//  INVALIDPARAMETER_SKILLSCANINVALIDREQUEST = "InvalidParameter.SkillScanInvalidRequest"
+//  INVALIDPARAMETER_SKILLSCANQUERYFAILED = "InvalidParameter.SkillScanQueryFailed"
+//  INVALIDPARAMETER_SKILLSCANSERVICEIDEMPTY = "InvalidParameter.SkillScanServiceIdEmpty"
+//  INVALIDPARAMETER_SKILLSCANSWITCHOFF = "InvalidParameter.SkillScanSwitchOff"
+func (c *Client) DescribeSkillSecScanResultWithContext(ctx context.Context, request *DescribeSkillSecScanResultRequest) (response *DescribeSkillSecScanResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeSkillSecScanResultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeSkillSecScanResult")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSkillSecScanResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSkillSecScanResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSpartaProtectionInfoRequest() (request *DescribeSpartaProtectionInfoRequest) {
     request = &DescribeSpartaProtectionInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14335,6 +14393,80 @@ func (c *Client) UpdateRateLimitV2WithContext(ctx context.Context, request *Upda
     request.SetContext(ctx)
     
     response = NewUpdateRateLimitV2Response()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadSkillSecScanRequest() (request *UploadSkillSecScanRequest) {
+    request = &UploadSkillSecScanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "UploadSkillSecScan")
+    
+    
+    return
+}
+
+func NewUploadSkillSecScanResponse() (response *UploadSkillSecScanResponse) {
+    response = &UploadSkillSecScanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UploadSkillSecScan
+// 上传Skill ZIP文件，触发异步安全检测
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SKILLSCANAPIKEYDISABLED = "InvalidParameter.SkillScanApiKeyDisabled"
+//  INVALIDPARAMETER_SKILLSCANCREATESCANFAILED = "InvalidParameter.SkillScanCreateScanFailed"
+//  INVALIDPARAMETER_SKILLSCANINVALIDBASE64 = "InvalidParameter.SkillScanInvalidBase64"
+//  INVALIDPARAMETER_SKILLSCANINVALIDFILEFORMAT = "InvalidParameter.SkillScanInvalidFileFormat"
+//  INVALIDPARAMETER_SKILLSCANINVALIDPARAM = "InvalidParameter.SkillScanInvalidParam"
+//  INVALIDPARAMETER_SKILLSCANINVALIDREQUEST = "InvalidParameter.SkillScanInvalidRequest"
+//  INVALIDPARAMETER_SKILLSCANNOFILES = "InvalidParameter.SkillScanNoFiles"
+//  INVALIDPARAMETER_SKILLSCANQUERYFAILED = "InvalidParameter.SkillScanQueryFailed"
+//  INVALIDPARAMETER_SKILLSCANRATELIMITEXCEEDED = "InvalidParameter.SkillScanRateLimitExceeded"
+//  INVALIDPARAMETER_SKILLSCANSERVICEIDEMPTY = "InvalidParameter.SkillScanServiceIdEmpty"
+//  INVALIDPARAMETER_SKILLSCANSWITCHOFF = "InvalidParameter.SkillScanSwitchOff"
+//  INVALIDPARAMETER_SKILLSCANTRIGGERFAILED = "InvalidParameter.SkillScanTriggerFailed"
+//  INVALIDPARAMETER_SKILLSCANUNAUTHORIZED = "InvalidParameter.SkillScanUnauthorized"
+func (c *Client) UploadSkillSecScan(request *UploadSkillSecScanRequest) (response *UploadSkillSecScanResponse, err error) {
+    return c.UploadSkillSecScanWithContext(context.Background(), request)
+}
+
+// UploadSkillSecScan
+// 上传Skill ZIP文件，触发异步安全检测
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SKILLSCANAPIKEYDISABLED = "InvalidParameter.SkillScanApiKeyDisabled"
+//  INVALIDPARAMETER_SKILLSCANCREATESCANFAILED = "InvalidParameter.SkillScanCreateScanFailed"
+//  INVALIDPARAMETER_SKILLSCANINVALIDBASE64 = "InvalidParameter.SkillScanInvalidBase64"
+//  INVALIDPARAMETER_SKILLSCANINVALIDFILEFORMAT = "InvalidParameter.SkillScanInvalidFileFormat"
+//  INVALIDPARAMETER_SKILLSCANINVALIDPARAM = "InvalidParameter.SkillScanInvalidParam"
+//  INVALIDPARAMETER_SKILLSCANINVALIDREQUEST = "InvalidParameter.SkillScanInvalidRequest"
+//  INVALIDPARAMETER_SKILLSCANNOFILES = "InvalidParameter.SkillScanNoFiles"
+//  INVALIDPARAMETER_SKILLSCANQUERYFAILED = "InvalidParameter.SkillScanQueryFailed"
+//  INVALIDPARAMETER_SKILLSCANRATELIMITEXCEEDED = "InvalidParameter.SkillScanRateLimitExceeded"
+//  INVALIDPARAMETER_SKILLSCANSERVICEIDEMPTY = "InvalidParameter.SkillScanServiceIdEmpty"
+//  INVALIDPARAMETER_SKILLSCANSWITCHOFF = "InvalidParameter.SkillScanSwitchOff"
+//  INVALIDPARAMETER_SKILLSCANTRIGGERFAILED = "InvalidParameter.SkillScanTriggerFailed"
+//  INVALIDPARAMETER_SKILLSCANUNAUTHORIZED = "InvalidParameter.SkillScanUnauthorized"
+func (c *Client) UploadSkillSecScanWithContext(ctx context.Context, request *UploadSkillSecScanRequest) (response *UploadSkillSecScanResponse, err error) {
+    if request == nil {
+        request = NewUploadSkillSecScanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "UploadSkillSecScan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadSkillSecScan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUploadSkillSecScanResponse()
     err = c.Send(request, response)
     return
 }

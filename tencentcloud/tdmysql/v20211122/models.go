@@ -851,21 +851,39 @@ func (r *DescribeDBSecurityGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDatabaseObjectsRequestParams struct {
-	// 实例 ID，形如：tdsql3-42f40429.
+	// <p>实例 ID，形如：tdsql3-42f40429.</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 数据库名称，通过 DescribeDatabases 接口获取。
+	// <p>数据库名称，通过 DescribeDatabases 接口获取。</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// <p>分页索引</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页数量</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>数据表名称匹配表达式</p>
+	TableRegexp *string `json:"TableRegexp,omitnil,omitempty" name:"TableRegexp"`
 }
 
 type DescribeDatabaseObjectsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，形如：tdsql3-42f40429.
+	// <p>实例 ID，形如：tdsql3-42f40429.</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 数据库名称，通过 DescribeDatabases 接口获取。
+	// <p>数据库名称，通过 DescribeDatabases 接口获取。</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// <p>分页索引</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>每页数量</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>数据表名称匹配表达式</p>
+	TableRegexp *string `json:"TableRegexp,omitnil,omitempty" name:"TableRegexp"`
 }
 
 func (r *DescribeDatabaseObjectsRequest) ToJsonString() string {
@@ -882,6 +900,9 @@ func (r *DescribeDatabaseObjectsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "DbName")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "TableRegexp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabaseObjectsRequest has unknown keys!", "")
 	}
@@ -890,25 +911,25 @@ func (r *DescribeDatabaseObjectsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDatabaseObjectsResponseParams struct {
-	// 透传入参。
+	// <p>透传入参。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 数据库名称。
+	// <p>数据库名称。</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 表列表。
+	// <p>表列表。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tables []*DatabaseTable `json:"Tables,omitnil,omitempty" name:"Tables"`
 
-	// 视图列表。
+	// <p>视图列表。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Views []*DatabaseView `json:"Views,omitnil,omitempty" name:"Views"`
 
-	// 存储过程列表。
+	// <p>存储过程列表。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Procs []*DatabaseProcedure `json:"Procs,omitnil,omitempty" name:"Procs"`
 
-	// 函数列表。
+	// <p>函数列表。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Funcs []*DatabaseFunction `json:"Funcs,omitnil,omitempty" name:"Funcs"`
 
