@@ -6100,7 +6100,7 @@ type CreateTopicRequestParams struct {
 	// <p>开启记录公网来源ip和服务端接收时间</p>
 	IsSourceFrom *bool `json:"IsSourceFrom,omitnil,omitempty" name:"IsSourceFrom"`
 
-	// <p>计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul><p>默认值：0</p><p>通过接口调用时默认值为0，通过控制台调用时默认值为1</p>
+	// <p>计费模式</p><p>枚举值：</p><ul><li>0： 按使用功能计费</li><li>1： 按原始日志量计费（目前仅面向少部分客户支持）</li></ul><p>默认值：0</p>
 	BillingMode *uint64 `json:"BillingMode,omitnil,omitempty" name:"BillingMode"`
 }
 
@@ -6155,7 +6155,7 @@ type CreateTopicRequest struct {
 	// <p>开启记录公网来源ip和服务端接收时间</p>
 	IsSourceFrom *bool `json:"IsSourceFrom,omitnil,omitempty" name:"IsSourceFrom"`
 
-	// <p>计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul><p>默认值：0</p><p>通过接口调用时默认值为0，通过控制台调用时默认值为1</p>
+	// <p>计费模式</p><p>枚举值：</p><ul><li>0： 按使用功能计费</li><li>1： 按原始日志量计费（目前仅面向少部分客户支持）</li></ul><p>默认值：0</p>
 	BillingMode *uint64 `json:"BillingMode,omitnil,omitempty" name:"BillingMode"`
 }
 
@@ -19990,7 +19990,7 @@ type ModifyTopicRequestParams struct {
 	// <p>开启记录公网来源ip和服务端接收时间</p>
 	IsSourceFrom *bool `json:"IsSourceFrom,omitnil,omitempty" name:"IsSourceFrom"`
 
-	// <p>计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+	// <p>计费模式</p><p>枚举值：</p><ul><li>0： 按使用功能计费</li><li>1： 按原始日志量计费（目前仅面向少部分客户支持）</li></ul><p>默认值：0</p>
 	BillingMode *uint64 `json:"BillingMode,omitnil,omitempty" name:"BillingMode"`
 }
 
@@ -20045,7 +20045,7 @@ type ModifyTopicRequest struct {
 	// <p>开启记录公网来源ip和服务端接收时间</p>
 	IsSourceFrom *bool `json:"IsSourceFrom,omitnil,omitempty" name:"IsSourceFrom"`
 
-	// <p>计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+	// <p>计费模式</p><p>枚举值：</p><ul><li>0： 按使用功能计费</li><li>1： 按原始日志量计费（目前仅面向少部分客户支持）</li></ul><p>默认值：0</p>
 	BillingMode *uint64 `json:"BillingMode,omitnil,omitempty" name:"BillingMode"`
 }
 
@@ -22405,10 +22405,10 @@ type TopicInfo struct {
 	// <p>IsSourceFrom 开启记录公网来源ip和服务端接收时间</p>
 	IsSourceFrom *bool `json:"IsSourceFrom,omitnil,omitempty" name:"IsSourceFrom"`
 
-	// <p>当前计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+	// <p>当前计费模式</p><p>枚举值：</p><ul><li>0： 按使用功能计费</li><li>1： 按原始日志量计费（目前仅面向少部分客户支持）</li></ul>
 	BillingMode *uint64 `json:"BillingMode,omitnil,omitempty" name:"BillingMode"`
 
-	// <p>如果有异步任务，任务成功后的新计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+	// <p>如果有异步任务，任务成功后的新计费模式</p><p>枚举值：</p><ul><li>0： 按使用功能计费</li><li>1： 按原始日志量计费（目前仅面向少部分客户支持）</li></ul>
 	NewBillingMode *uint64 `json:"NewBillingMode,omitnil,omitempty" name:"NewBillingMode"`
 }
 

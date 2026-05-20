@@ -12615,6 +12615,7 @@ func NewGetCosTokenResponse() (response *GetCosTokenResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATAENGINEINSTANCENOTEXISTS = "InvalidParameter.DataEngineInstanceNotExists"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) GetCosToken(request *GetCosTokenRequest) (response *GetCosTokenResponse, err error) {
     return c.GetCosTokenWithContext(context.Background(), request)
@@ -12629,6 +12630,7 @@ func (c *Client) GetCosToken(request *GetCosTokenRequest) (response *GetCosToken
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATAENGINEINSTANCENOTEXISTS = "InvalidParameter.DataEngineInstanceNotExists"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) GetCosTokenWithContext(ctx context.Context, request *GetCosTokenRequest) (response *GetCosTokenResponse, err error) {
     if request == nil {

@@ -7583,6 +7583,10 @@ type DataSourceInfoPage struct {
 	// 总分页页码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalPageNumber *uint64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+
+	// 快照Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 }
 
 type DatabaseInfo struct {
@@ -11482,32 +11486,32 @@ func (r *DescribeDataSourceInfoListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDataSourceListRequestParams struct {
-	// 页码
+	// <p>页码</p>
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 返回数量
+	// <p>返回数量</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 排序配置
+	// <p>排序配置</p>
 	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
 
-	// 可选过滤条件，Filter可选配置(参考): "Name": { "type": "string", "description": "数据源名称" }, "Type": { "type": "string", "description": "类型" }, "ClusterId": { "type": "string", "description": "集群id" }, "CategoryId": { "type": "string", "description": "分类，项目或空间id" }
+	// <p>可选过滤条件，Filter可选配置(参考): &quot;Name&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;数据源名称&quot; }, &quot;Type&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;类型&quot; }, &quot;ClusterId&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;集群id&quot; }, &quot;CategoryId&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;分类，项目或空间id&quot; }</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeDataSourceListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 页码
+	// <p>页码</p>
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 返回数量
+	// <p>返回数量</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 排序配置
+	// <p>排序配置</p>
 	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
 
-	// 可选过滤条件，Filter可选配置(参考): "Name": { "type": "string", "description": "数据源名称" }, "Type": { "type": "string", "description": "类型" }, "ClusterId": { "type": "string", "description": "集群id" }, "CategoryId": { "type": "string", "description": "分类，项目或空间id" }
+	// <p>可选过滤条件，Filter可选配置(参考): &quot;Name&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;数据源名称&quot; }, &quot;Type&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;类型&quot; }, &quot;ClusterId&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;集群id&quot; }, &quot;CategoryId&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;分类，项目或空间id&quot; }</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -11535,7 +11539,7 @@ func (r *DescribeDataSourceListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDataSourceListResponseParams struct {
-	// 数据源列表
+	// <p>数据源列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *DataSourceInfoPage `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -14020,110 +14024,110 @@ func (r *DescribeInstanceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceLogDetailRequestParams struct {
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 任务id
+	// <p>任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 数据时间
+	// <p>数据时间</p>
 	CurRunDate *string `json:"CurRunDate,omitnil,omitempty" name:"CurRunDate"`
 
-	// 日志级别，Info/Debug/Warn/Error/All
+	// <p>日志级别，Info/Debug/Warn/Error/All</p>
 	LogLevelType *string `json:"LogLevelType,omitnil,omitempty" name:"LogLevelType"`
 
-	// 文件类型,Log/Code
+	// <p>文件类型,Log/Code</p>
 	ExecutionFileType *string `json:"ExecutionFileType,omitnil,omitempty" name:"ExecutionFileType"`
 
-	// 统一执行平台执行id, 注意: ExecutionJobId 跟 "BrokerIp+OriginFileName" 必须有一个不为空
+	// <p>统一执行平台执行id, 注意: ExecutionJobId 跟 &quot;BrokerIp+OriginFileName&quot; 必须有一个不为空</p>
 	ExecutionJobId *string `json:"ExecutionJobId,omitnil,omitempty" name:"ExecutionJobId"`
 
-	// 服务器Ip, 注意: "BrokerIp+OriginFileName"跟ExecutionJobId必须有一个不为空
+	// <p>服务器Ip, 注意: &quot;BrokerIp+OriginFileName&quot;跟ExecutionJobId必须有一个不为空</p>
 	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
 
-	// 文件Name, 注意: "BrokerIp+OriginFileName"跟ExecutionJobId必须有一个不为空
+	// <p>文件Name, 注意: &quot;BrokerIp+OriginFileName&quot;跟ExecutionJobId必须有一个不为空</p>
 	OriginFileName *string `json:"OriginFileName,omitnil,omitempty" name:"OriginFileName"`
 
-	// 起始行
+	// <p>起始行</p>
 	StartCount *int64 `json:"StartCount,omitnil,omitempty" name:"StartCount"`
 
-	// 每次查询行数
+	// <p>每次查询行数</p>
 	LineCount *int64 `json:"LineCount,omitnil,omitempty" name:"LineCount"`
 
-	// 查询日志扩展信息,通过统一执行平台接口分页查询日志时需要带上,第一页时为null
+	// <p>查询日志扩展信息,通过统一执行平台接口分页查询日志时需要带上,第一页时为null</p>
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 
 	// 请求来源，WEB 前端；CLIENT 客户端
 	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
 
-	// 生命周期为基础数据进行日志匹配
+	// <p>生命周期为基础数据进行日志匹配</p>
 	InstanceLifeDetailDtoList []*InstanceLifeDetailDto `json:"InstanceLifeDetailDtoList,omitnil,omitempty" name:"InstanceLifeDetailDtoList"`
 
-	// 当前生命周期
+	// <p>当前生命周期</p>
 	CurrentLifeRound *int64 `json:"CurrentLifeRound,omitnil,omitempty" name:"CurrentLifeRound"`
 
-	// 生命周期总数
+	// <p>生命周期总数</p>
 	MaxLifeRound *int64 `json:"MaxLifeRound,omitnil,omitempty" name:"MaxLifeRound"`
 
-	// 当前生命周期重试次数
+	// <p>当前生命周期重试次数</p>
 	Tries *int64 `json:"Tries,omitnil,omitempty" name:"Tries"`
 
-	// 动态加载日志
+	// <p>动态加载日志</p>
 	Dynamic *bool `json:"Dynamic,omitnil,omitempty" name:"Dynamic"`
 }
 
 type DescribeInstanceLogDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 任务id
+	// <p>任务id</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 数据时间
+	// <p>数据时间</p>
 	CurRunDate *string `json:"CurRunDate,omitnil,omitempty" name:"CurRunDate"`
 
-	// 日志级别，Info/Debug/Warn/Error/All
+	// <p>日志级别，Info/Debug/Warn/Error/All</p>
 	LogLevelType *string `json:"LogLevelType,omitnil,omitempty" name:"LogLevelType"`
 
-	// 文件类型,Log/Code
+	// <p>文件类型,Log/Code</p>
 	ExecutionFileType *string `json:"ExecutionFileType,omitnil,omitempty" name:"ExecutionFileType"`
 
-	// 统一执行平台执行id, 注意: ExecutionJobId 跟 "BrokerIp+OriginFileName" 必须有一个不为空
+	// <p>统一执行平台执行id, 注意: ExecutionJobId 跟 &quot;BrokerIp+OriginFileName&quot; 必须有一个不为空</p>
 	ExecutionJobId *string `json:"ExecutionJobId,omitnil,omitempty" name:"ExecutionJobId"`
 
-	// 服务器Ip, 注意: "BrokerIp+OriginFileName"跟ExecutionJobId必须有一个不为空
+	// <p>服务器Ip, 注意: &quot;BrokerIp+OriginFileName&quot;跟ExecutionJobId必须有一个不为空</p>
 	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
 
-	// 文件Name, 注意: "BrokerIp+OriginFileName"跟ExecutionJobId必须有一个不为空
+	// <p>文件Name, 注意: &quot;BrokerIp+OriginFileName&quot;跟ExecutionJobId必须有一个不为空</p>
 	OriginFileName *string `json:"OriginFileName,omitnil,omitempty" name:"OriginFileName"`
 
-	// 起始行
+	// <p>起始行</p>
 	StartCount *int64 `json:"StartCount,omitnil,omitempty" name:"StartCount"`
 
-	// 每次查询行数
+	// <p>每次查询行数</p>
 	LineCount *int64 `json:"LineCount,omitnil,omitempty" name:"LineCount"`
 
-	// 查询日志扩展信息,通过统一执行平台接口分页查询日志时需要带上,第一页时为null
+	// <p>查询日志扩展信息,通过统一执行平台接口分页查询日志时需要带上,第一页时为null</p>
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 
 	// 请求来源，WEB 前端；CLIENT 客户端
 	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
 
-	// 生命周期为基础数据进行日志匹配
+	// <p>生命周期为基础数据进行日志匹配</p>
 	InstanceLifeDetailDtoList []*InstanceLifeDetailDto `json:"InstanceLifeDetailDtoList,omitnil,omitempty" name:"InstanceLifeDetailDtoList"`
 
-	// 当前生命周期
+	// <p>当前生命周期</p>
 	CurrentLifeRound *int64 `json:"CurrentLifeRound,omitnil,omitempty" name:"CurrentLifeRound"`
 
-	// 生命周期总数
+	// <p>生命周期总数</p>
 	MaxLifeRound *int64 `json:"MaxLifeRound,omitnil,omitempty" name:"MaxLifeRound"`
 
-	// 当前生命周期重试次数
+	// <p>当前生命周期重试次数</p>
 	Tries *int64 `json:"Tries,omitnil,omitempty" name:"Tries"`
 
-	// 动态加载日志
+	// <p>动态加载日志</p>
 	Dynamic *bool `json:"Dynamic,omitnil,omitempty" name:"Dynamic"`
 }
 
@@ -14164,7 +14168,7 @@ func (r *DescribeInstanceLogDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceLogDetailResponseParams struct {
-	// 日志结果
+	// <p>日志结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *InstanceLogInfoOpsDto `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -14190,92 +14194,92 @@ func (r *DescribeInstanceLogDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceLogFileRequestParams struct {
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 任务ID
+	// <p>任务ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 实例数据时间
+	// <p>实例数据时间</p>
 	CurRunDate *string `json:"CurRunDate,omitnil,omitempty" name:"CurRunDate"`
 
 	// 请求来源，WEB 前端；CLIENT 客户端
 	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
 
-	// 执行机IP
+	// <p>执行机IP</p>
 	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
 
-	// 日志文件名
+	// <p>日志文件名</p>
 	OriginFileName *string `json:"OriginFileName,omitnil,omitempty" name:"OriginFileName"`
 
-	// 执行平台下发执行id
+	// <p>执行平台下发执行id</p>
 	ExecutionJobId *string `json:"ExecutionJobId,omitnil,omitempty" name:"ExecutionJobId"`
 
-	// 日志级别，Info/Debug/Warn/Error/All
+	// <p>日志级别，Info/Debug/Warn/Error/All</p>
 	LogLevelType *string `json:"LogLevelType,omitnil,omitempty" name:"LogLevelType"`
 
-	// 文件类型,Log/Code
+	// <p>文件类型,Log/Code</p>
 	ExecutionFileType *string `json:"ExecutionFileType,omitnil,omitempty" name:"ExecutionFileType"`
 
-	// 生命周期为基础数据进行日志匹配。Dynamic=true动态获取日志链路中使用
+	// <p>生命周期为基础数据进行日志匹配。Dynamic=true动态获取日志链路中使用</p>
 	InstanceLifeDetailDtoList []*InstanceLifeDetailDto `json:"InstanceLifeDetailDtoList,omitnil,omitempty" name:"InstanceLifeDetailDtoList"`
 
-	// 当前生命周期数
+	// <p>当前生命周期数</p>
 	CurrentLifeRound *int64 `json:"CurrentLifeRound,omitnil,omitempty" name:"CurrentLifeRound"`
 
-	// 最大生命周期数
+	// <p>最大生命周期数</p>
 	MaxLifeRound *int64 `json:"MaxLifeRound,omitnil,omitempty" name:"MaxLifeRound"`
 
-	// 当前生命周期重试次数
+	// <p>当前生命周期重试次数</p>
 	Tries *int64 `json:"Tries,omitnil,omitempty" name:"Tries"`
 
-	// 动态获取日志信息标识
+	// <p>动态获取日志信息标识</p>
 	Dynamic *bool `json:"Dynamic,omitnil,omitempty" name:"Dynamic"`
 }
 
 type DescribeInstanceLogFileRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 任务ID
+	// <p>任务ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 实例数据时间
+	// <p>实例数据时间</p>
 	CurRunDate *string `json:"CurRunDate,omitnil,omitempty" name:"CurRunDate"`
 
 	// 请求来源，WEB 前端；CLIENT 客户端
 	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
 
-	// 执行机IP
+	// <p>执行机IP</p>
 	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
 
-	// 日志文件名
+	// <p>日志文件名</p>
 	OriginFileName *string `json:"OriginFileName,omitnil,omitempty" name:"OriginFileName"`
 
-	// 执行平台下发执行id
+	// <p>执行平台下发执行id</p>
 	ExecutionJobId *string `json:"ExecutionJobId,omitnil,omitempty" name:"ExecutionJobId"`
 
-	// 日志级别，Info/Debug/Warn/Error/All
+	// <p>日志级别，Info/Debug/Warn/Error/All</p>
 	LogLevelType *string `json:"LogLevelType,omitnil,omitempty" name:"LogLevelType"`
 
-	// 文件类型,Log/Code
+	// <p>文件类型,Log/Code</p>
 	ExecutionFileType *string `json:"ExecutionFileType,omitnil,omitempty" name:"ExecutionFileType"`
 
-	// 生命周期为基础数据进行日志匹配。Dynamic=true动态获取日志链路中使用
+	// <p>生命周期为基础数据进行日志匹配。Dynamic=true动态获取日志链路中使用</p>
 	InstanceLifeDetailDtoList []*InstanceLifeDetailDto `json:"InstanceLifeDetailDtoList,omitnil,omitempty" name:"InstanceLifeDetailDtoList"`
 
-	// 当前生命周期数
+	// <p>当前生命周期数</p>
 	CurrentLifeRound *int64 `json:"CurrentLifeRound,omitnil,omitempty" name:"CurrentLifeRound"`
 
-	// 最大生命周期数
+	// <p>最大生命周期数</p>
 	MaxLifeRound *int64 `json:"MaxLifeRound,omitnil,omitempty" name:"MaxLifeRound"`
 
-	// 当前生命周期重试次数
+	// <p>当前生命周期重试次数</p>
 	Tries *int64 `json:"Tries,omitnil,omitempty" name:"Tries"`
 
-	// 动态获取日志信息标识
+	// <p>动态获取日志信息标识</p>
 	Dynamic *bool `json:"Dynamic,omitnil,omitempty" name:"Dynamic"`
 }
 
@@ -14313,7 +14317,7 @@ func (r *DescribeInstanceLogFileRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceLogFileResponseParams struct {
-	// 下载文件详情
+	// <p>下载文件详情</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *InstanceDownloadLogInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
@@ -26546,44 +26550,44 @@ func (r *GetBatchDetailErrorLogResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetCosTokenRequestParams struct {
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 请求域名
+	// <p>请求域名</p>
 	OriginDomain *string `json:"OriginDomain,omitnil,omitempty" name:"OriginDomain"`
 
-	// 是否需要跨域
+	// <p>是否需要跨域</p>
 	CrossFlag *bool `json:"CrossFlag,omitnil,omitempty" name:"CrossFlag"`
 
-	// 桶名
+	// <p>桶名</p>
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
 
-	// 远程地址
+	// <p>远程地址</p>
 	RemotePath *string `json:"RemotePath,omitnil,omitempty" name:"RemotePath"`
 
-	// 地域
+	// <p>地域</p>
 	RemoteRegion *string `json:"RemoteRegion,omitnil,omitempty" name:"RemoteRegion"`
 }
 
 type GetCosTokenRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 请求域名
+	// <p>请求域名</p>
 	OriginDomain *string `json:"OriginDomain,omitnil,omitempty" name:"OriginDomain"`
 
-	// 是否需要跨域
+	// <p>是否需要跨域</p>
 	CrossFlag *bool `json:"CrossFlag,omitnil,omitempty" name:"CrossFlag"`
 
-	// 桶名
+	// <p>桶名</p>
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
 
-	// 远程地址
+	// <p>远程地址</p>
 	RemotePath *string `json:"RemotePath,omitnil,omitempty" name:"RemotePath"`
 
-	// 地域
+	// <p>地域</p>
 	RemoteRegion *string `json:"RemoteRegion,omitnil,omitempty" name:"RemoteRegion"`
 }
 
@@ -26613,19 +26617,19 @@ func (r *GetCosTokenRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetCosTokenResponseParams struct {
-	// cos地域
+	// <p>cos地域</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// Token信息
+	// <p>Token信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Token *CosTokenResponse `json:"Token,omitnil,omitempty" name:"Token"`
 
-	// 桶名
+	// <p>桶名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
-	// 终止点（针对私有云环境）
+	// <p>终止点（针对私有云环境）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndPoint *string `json:"EndPoint,omitnil,omitempty" name:"EndPoint"`
 

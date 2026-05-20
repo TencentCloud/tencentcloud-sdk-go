@@ -15054,7 +15054,7 @@ type ExportZoneConfigRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 导出配置项的类型列表，不填表示导出所有类型的配置，当前支持的取值有：<li>L7AccelerationConfig：表示导出七层加速配置，对应控制台「站点加速-全局加速配置」和「站点加速-规则引擎」。</li><li>WebSecurity：表示导出 Web 防护配置。</li> 需注意：后续支持导出的类型会随着迭代增加，导出所有类型时需要注意导出文件大小，建议使用时指定需要导出的配置类型，以便控制请求响应包负载大小。
+	// 导出配置项的类型列表，不填表示导出所有类型的配置，当前支持的取值有：<li>L7AccelerationConfig：表示导出七层加速配置，对应控制台「站点加速-全局加速配置」和「站点加速-规则引擎」。</li><li>WebSecurity：表示导出 Web 防护配置。</li><li> AccelerationDomain：表示导出加速域名配置，对应控制台「域名服务-域名管理」和「域名服务-共享 CNAME 管理」。</li><li> Origin：表示导出源站配置，对应控制台「源站配置-源站组」和「源站配置-负载均衡」。</li> 需注意：后续支持导出的类型会随着迭代增加，导出所有类型时需要注意导出文件大小，建议使用时指定需要导出的配置类型，以便控制请求响应包负载大小。
 	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
 }
 
@@ -15064,7 +15064,7 @@ type ExportZoneConfigRequest struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 导出配置项的类型列表，不填表示导出所有类型的配置，当前支持的取值有：<li>L7AccelerationConfig：表示导出七层加速配置，对应控制台「站点加速-全局加速配置」和「站点加速-规则引擎」。</li><li>WebSecurity：表示导出 Web 防护配置。</li> 需注意：后续支持导出的类型会随着迭代增加，导出所有类型时需要注意导出文件大小，建议使用时指定需要导出的配置类型，以便控制请求响应包负载大小。
+	// 导出配置项的类型列表，不填表示导出所有类型的配置，当前支持的取值有：<li>L7AccelerationConfig：表示导出七层加速配置，对应控制台「站点加速-全局加速配置」和「站点加速-规则引擎」。</li><li>WebSecurity：表示导出 Web 防护配置。</li><li> AccelerationDomain：表示导出加速域名配置，对应控制台「域名服务-域名管理」和「域名服务-共享 CNAME 管理」。</li><li> Origin：表示导出源站配置，对应控制台「源站配置-源站组」和「源站配置-负载均衡」。</li> 需注意：后续支持导出的类型会随着迭代增加，导出所有类型时需要注意导出文件大小，建议使用时指定需要导出的配置类型，以便控制请求响应包负载大小。
 	Types []*string `json:"Types,omitnil,omitempty" name:"Types"`
 }
 
@@ -22362,6 +22362,7 @@ type RuleEngineAction struct {
 	// <li>Shield：源站卸载配置；</li>
 	// <li>TLSConfig：SSL/TLS 安全；</li>
 	// <li>ModifyOrigin：修改源站；</li>
+	// <li> SiteFailover：源站故障转移；</li>
 	// <li>HTTPUpstreamTimeout：七层回源超时配置；</li>
 	// <li>HttpResponse：HTTP 应答；</li>
 	// <li>ErrorPage：自定义错误页面；</li>
@@ -22489,6 +22490,10 @@ type RuleEngineAction struct {
 	// 修改源站配置参数，当 Name 取值为 ModifyOrigin 时，该参数必填。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyOriginParameters *ModifyOriginParameters `json:"ModifyOriginParameters,omitnil,omitempty" name:"ModifyOriginParameters"`
+
+	// 源站故障转移配置参数，当 Name 取值为 SiteFailover 时，该参数必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SiteFailoverParameters *SiteFailoverParameters `json:"SiteFailoverParameters,omitnil,omitempty" name:"SiteFailoverParameters"`
 
 	// 七层回源超时配置，当 Name 取值为 HTTPUpstreamTimeout 时，该参数必填。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -22947,6 +22952,73 @@ type SharedCNAMEInfo struct {
 type ShieldParameters struct {
 	// 源站卸载空间 ID。
 	ShieldSpaceId *string `json:"ShieldSpaceId,omitnil,omitempty" name:"ShieldSpaceId"`
+}
+
+type SiteFailover struct {
+	// 源站故障转移类型。取值有：
+	// <li>FailoverToHost:回源到指定 IP/域名；</li>
+	// <li> FailoverToCOS:回源到腾讯云 COS；</li>
+	// <li>FailoverToS3CompatibleObjectStorage:回源到 S3 兼容；</li>
+	// <li> FailoverRedirectToURL :重定向至指定 URL；</li>
+	// <li> FailoverCustomResponsePage:使用自定义响应页面。</li>
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 源站地址，根据 Mode 的取值分为以下情况：
+	// <li>当 Mode = FailoverToHost 时，该参数请填写 IPV4、IPV6 地址或域名；</li>
+	// <li>当 Mode = FailoverToCOS 时，该参数请填写 COS 桶的访问域名；</li>
+	// <li>当 Mode = FailoverToS3CompatibleObjectStorage，该参数请填写 S3 桶的访问域名。</li>
+	Origin *string `json:"Origin,omitnil,omitempty" name:"Origin"`
+
+	// 回源协议配置。当 Mode 取值为 FailoverToHost 时该参数必填。取值有：
+	// <li>http：使用 HTTP 协议；</li>
+	// <li>https：使用 HTTPS 协议；</li>
+	// <li>follow：协议跟随。</li>
+	OriginProtocol *string `json:"OriginProtocol,omitnil,omitempty" name:"OriginProtocol"`
+
+	// HTTP 回源端口，取值范围 1～65535。当回源协议 OriginProtocol 为 http 或者 follow 时该参数必填。
+	HTTPOriginPort *int64 `json:"HTTPOriginPort,omitnil,omitempty" name:"HTTPOriginPort"`
+
+	// HTTPS 回源端口，取值范围 1～65535。当回源协议 OriginProtocol 为 https 或者 follow 时该参数必填。
+	HTTPSOriginPort *int64 `json:"HTTPSOriginPort,omitnil,omitempty" name:"HTTPSOriginPort"`
+
+	// 回源Host Header 重写配置，
+	UpstreamHostHeader *HostHeaderParameters `json:"UpstreamHostHeader,omitnil,omitempty" name:"UpstreamHostHeader"`
+
+	// 回源 URL 重写配置。
+	UpstreamURLRewrite *UpstreamURLRewriteParameters `json:"UpstreamURLRewrite,omitnil,omitempty" name:"UpstreamURLRewrite"`
+
+	// 回源请求参数配置。
+	UpstreamRequestParameters *UpstreamRequestParameters `json:"UpstreamRequestParameters,omitnil,omitempty" name:"UpstreamRequestParameters"`
+
+	// HTTP2 回源配置参数。
+	UpstreamHTTP2Parameters *UpstreamHTTP2Parameters `json:"UpstreamHTTP2Parameters,omitnil,omitempty" name:"UpstreamHTTP2Parameters"`
+
+	// 指定是否允许访问私有对象存储源站，当源站类型 Mode = FailoverToCOS 或 FailoverToS3CompatibleObjectStorage 时该参数必填，取值有：
+	// <li>on：使用私有鉴权；</li>
+	// <li>off：不使用私有鉴权。</li>
+	PrivateAccess *string `json:"PrivateAccess,omitnil,omitempty" name:"PrivateAccess"`
+
+	// 私有鉴权使用参数，该参数仅当 Mode = FailoverToS3CompatibleObjectStorage 且 PrivateAccess = on 时会生效。
+	PrivateParameters *OriginPrivateParameters `json:"PrivateParameters,omitnil,omitempty" name:"PrivateParameters"`
+
+	// 重定向目标 URL。当 Mode 取值为 FailoverRedirectToURL 时该参数必填。
+	RedirectURL *string `json:"RedirectURL,omitnil,omitempty" name:"RedirectURL"`
+
+	// 响应页面 ID。当 Mode 取值为 FailoverCustomResponsePage 时该参数必填。
+	ResponsePageId *string `json:"ResponsePageId,omitnil,omitempty" name:"ResponsePageId"`
+
+	// 响应状态码。当 Mode 取值为 FailoverRedirectToURL 或 FailoverCustomResponsePage 时该参数必填。取值有：
+	// <li>当 Mode = FailoverRedirectToURL 时，该参数取值为 301、302、303、307、308 之一；</li>
+	// <li>当 Mode = FailoverCustomResponsePage 时，该参数取值为 400、403、404、405、414、416、451、500、501、502、503、504 之一。</li>
+	StatusCode *int64 `json:"StatusCode,omitnil,omitempty" name:"StatusCode"`
+}
+
+type SiteFailoverParameters struct {
+	// 源站故障转移条件状态码。当源站返回的响应状态码命中本字段返回时，才会按照SiteFailoverParams执行源站转移。该参数取值为 4xx、5xx 之一。
+	SiteFailoverStatusCodes []*int64 `json:"SiteFailoverStatusCodes,omitnil,omitempty" name:"SiteFailoverStatusCodes"`
+
+	// 源站故障转移配置参数列表。最小长度为1，最大长度为2。
+	SiteFailoverParams []*SiteFailover `json:"SiteFailoverParams,omitnil,omitempty" name:"SiteFailoverParams"`
 }
 
 type SkipCondition struct {

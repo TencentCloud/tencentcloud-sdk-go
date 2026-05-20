@@ -849,50 +849,50 @@ func (r *CreateAuditLogFileResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDBDiagReportTaskRequestParams struct {
-	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	// <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。TDSQL MySQL数据库类型，实例ID应填写为“实例ID&amp;分片ID”的格式。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间，如“2020-11-08T14:00:00+08:00”。
+	// <p>开始时间，如“2020-11-08T14:00:00+08:00”。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间，如“2020-11-09T14:00:00+08:00”。
+	// <p>结束时间，如“2020-11-09T14:00:00+08:00”。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 是否发送邮件: 0 - 否，1 - 是。
+	// <p>是否发送邮件: 0 - 否，1 - 是。</p>
 	SendMailFlag *int64 `json:"SendMailFlag,omitnil,omitempty" name:"SendMailFlag"`
 
-	// 接收邮件的联系人ID数组。
+	// <p>接收邮件的联系人ID数组。</p>
 	ContactPerson []*int64 `json:"ContactPerson,omitnil,omitempty" name:"ContactPerson"`
 
-	// 接收邮件的联系组ID数组。
+	// <p>接收邮件的联系组ID数组。</p>
 	ContactGroup []*int64 `json:"ContactGroup,omitnil,omitempty" name:"ContactGroup"`
 
-	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
+	// <p>服务产品类型，支持值：&quot;mysql&quot; - 云数据库 MySQL；&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;redis&quot; - 云数据库 Redis，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;mariadb&quot; - 云数据库 MariaDB，&quot;dcdb&quot; - 云数据库 TDSQL MySQL，默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
 type CreateDBDiagReportTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	// <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。TDSQL MySQL数据库类型，实例ID应填写为“实例ID&amp;分片ID”的格式。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间，如“2020-11-08T14:00:00+08:00”。
+	// <p>开始时间，如“2020-11-08T14:00:00+08:00”。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间，如“2020-11-09T14:00:00+08:00”。
+	// <p>结束时间，如“2020-11-09T14:00:00+08:00”。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 是否发送邮件: 0 - 否，1 - 是。
+	// <p>是否发送邮件: 0 - 否，1 - 是。</p>
 	SendMailFlag *int64 `json:"SendMailFlag,omitnil,omitempty" name:"SendMailFlag"`
 
-	// 接收邮件的联系人ID数组。
+	// <p>接收邮件的联系人ID数组。</p>
 	ContactPerson []*int64 `json:"ContactPerson,omitnil,omitempty" name:"ContactPerson"`
 
-	// 接收邮件的联系组ID数组。
+	// <p>接收邮件的联系组ID数组。</p>
 	ContactGroup []*int64 `json:"ContactGroup,omitnil,omitempty" name:"ContactGroup"`
 
-	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，"mariadb" - 云数据库 MariaDB，"dcdb" - 云数据库 TDSQL MySQL，默认为"mysql"。
+	// <p>服务产品类型，支持值：&quot;mysql&quot; - 云数据库 MySQL；&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;redis&quot; - 云数据库 Redis，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;mariadb&quot; - 云数据库 MariaDB，&quot;dcdb&quot; - 云数据库 TDSQL MySQL，默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -923,7 +923,7 @@ func (r *CreateDBDiagReportTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDBDiagReportTaskResponseParams struct {
-	// 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+	// <p>异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。</p>
 	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7059,32 +7059,32 @@ func (r *DescribeUserAutonomyProfileResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserSqlAdviceRequestParams struct {
-	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	// <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// SQL语句。
+	// <p>SQL语句。</p>
 	SqlText *string `json:"SqlText,omitnil,omitempty" name:"SqlText"`
 
-	// 库名。
+	// <p>库名。</p>
 	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
 
-	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL；"dbbrain-mysql" - 自建 MySQL，默认为"mysql"。
+	// <p>服务产品类型，支持值&quot;dcdb&quot; - 云数据库TDSQL MySQL；&quot;mysql&quot; - 云数据库 MySQL；&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL；&quot;dbbrain-mysql&quot; - 自建 MySQL，默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
 type DescribeUserSqlAdviceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+	// <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// SQL语句。
+	// <p>SQL语句。</p>
 	SqlText *string `json:"SqlText,omitnil,omitempty" name:"SqlText"`
 
-	// 库名。
+	// <p>库名。</p>
 	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
 
-	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL；"dbbrain-mysql" - 自建 MySQL，默认为"mysql"。
+	// <p>服务产品类型，支持值&quot;dcdb&quot; - 云数据库TDSQL MySQL；&quot;mysql&quot; - 云数据库 MySQL；&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL；&quot;dbbrain-mysql&quot; - 自建 MySQL，默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -7112,25 +7112,25 @@ func (r *DescribeUserSqlAdviceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserSqlAdviceResponseParams struct {
-	// SQL优化建议，可解析为JSON数组，无需优化时输出为空。
+	// <p>SQL优化建议，可解析为JSON数组，无需优化时输出为空。</p>
 	Advices *string `json:"Advices,omitnil,omitempty" name:"Advices"`
 
-	// SQL优化建议备注，可解析为String数组，无需优化时输出为空。
+	// <p>SQL优化建议备注，可解析为String数组，无需优化时输出为空。</p>
 	Comments *string `json:"Comments,omitnil,omitempty" name:"Comments"`
 
-	// SQL语句。
+	// <p>SQL语句。</p>
 	SqlText *string `json:"SqlText,omitnil,omitempty" name:"SqlText"`
 
-	// 库名。
+	// <p>库名。</p>
 	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
 
-	// 相关表的DDL信息，可解析为JSON数组。
+	// <p>相关表的DDL信息，可解析为JSON数组。</p>
 	Tables *string `json:"Tables,omitnil,omitempty" name:"Tables"`
 
-	// SQL执行计划，可解析为JSON，无需优化时输出为空。
+	// <p>SQL执行计划，可解析为JSON，无需优化时输出为空。</p>
 	SqlPlan *string `json:"SqlPlan,omitnil,omitempty" name:"SqlPlan"`
 
-	// SQL优化后的成本节约详情，可解析为JSON，无需优化时输出为空。
+	// <p>SQL优化后的成本节约详情，可解析为JSON，无需优化时输出为空。</p>
 	Cost *string `json:"Cost,omitnil,omitempty" name:"Cost"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

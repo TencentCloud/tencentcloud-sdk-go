@@ -542,6 +542,230 @@ func (r *AddInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddLibraDBInstancesRequestParams struct {
+	// 可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// Cpu核数
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 内存，单位为GB
+	Mem *int64 `json:"Mem,omitnil,omitempty" name:"Mem"`
+
+	// 磁盘大小
+	StorageSize *int64 `json:"StorageSize,omitnil,omitempty" name:"StorageSize"`
+
+	// 付费模式
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 同步对象列表
+	Objects *Objects `json:"Objects,omitnil,omitempty" name:"Objects"`
+
+	// 新增RO组时使用的Port，取值范围为[0,65535)
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 新增只读实例数，取值范围为(0,15]
+	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
+
+	// 实例名称，字符串长度范围为[0,64)，取值范围为大小写字母，0-9数字，'_','-','.'
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 副本数
+	ReplicasNum *int64 `json:"ReplicasNum,omitnil,omitempty" name:"ReplicasNum"`
+
+	// ReplicasNum>1或者ReplicasNum=1且Cpu>=32核的时候取值为'Exclusive'，其余场景取值'Common'
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 磁盘类型
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// 是否自动选择代金券 1是 0否 默认为0
+	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
+
+	// 订单来源，字符串长度范围为[0,64)
+	OrderSource *string `json:"OrderSource,omitnil,omitempty" name:"OrderSource"`
+
+	// 交易模式 0-下单并支付 1-下单
+	DealMode *int64 `json:"DealMode,omitnil,omitempty" name:"DealMode"`
+
+	// 所属VPC网络ID。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 所属子网ID，如果设置了VpcId，则SubnetId必填。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 安全组ID，新建只读实例时可以指定安全组。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// 分析引擎版本
+	LibraDBVersion *string `json:"LibraDBVersion,omitnil,omitempty" name:"LibraDBVersion"`
+
+	// 购买时长,与TimeUnit组合才能生效
+	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 购买时长单位, 与TimeSpan组合生效，可选:日:d,月:m
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+
+	// 源端实例id
+	SrcInstanceId *string `json:"SrcInstanceId,omitnil,omitempty" name:"SrcInstanceId"`
+}
+
+type AddLibraDBInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// Cpu核数
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 内存，单位为GB
+	Mem *int64 `json:"Mem,omitnil,omitempty" name:"Mem"`
+
+	// 磁盘大小
+	StorageSize *int64 `json:"StorageSize,omitnil,omitempty" name:"StorageSize"`
+
+	// 付费模式
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 同步对象列表
+	Objects *Objects `json:"Objects,omitnil,omitempty" name:"Objects"`
+
+	// 新增RO组时使用的Port，取值范围为[0,65535)
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 新增只读实例数，取值范围为(0,15]
+	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
+
+	// 实例名称，字符串长度范围为[0,64)，取值范围为大小写字母，0-9数字，'_','-','.'
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 副本数
+	ReplicasNum *int64 `json:"ReplicasNum,omitnil,omitempty" name:"ReplicasNum"`
+
+	// ReplicasNum>1或者ReplicasNum=1且Cpu>=32核的时候取值为'Exclusive'，其余场景取值'Common'
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 磁盘类型
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// 是否自动选择代金券 1是 0否 默认为0
+	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
+
+	// 订单来源，字符串长度范围为[0,64)
+	OrderSource *string `json:"OrderSource,omitnil,omitempty" name:"OrderSource"`
+
+	// 交易模式 0-下单并支付 1-下单
+	DealMode *int64 `json:"DealMode,omitnil,omitempty" name:"DealMode"`
+
+	// 所属VPC网络ID。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 所属子网ID，如果设置了VpcId，则SubnetId必填。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 安全组ID，新建只读实例时可以指定安全组。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// 分析引擎版本
+	LibraDBVersion *string `json:"LibraDBVersion,omitnil,omitempty" name:"LibraDBVersion"`
+
+	// 购买时长,与TimeUnit组合才能生效
+	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
+
+	// 购买时长单位, 与TimeSpan组合生效，可选:日:d,月:m
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+
+	// 源端实例id
+	SrcInstanceId *string `json:"SrcInstanceId,omitnil,omitempty" name:"SrcInstanceId"`
+}
+
+func (r *AddLibraDBInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddLibraDBInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zone")
+	delete(f, "ClusterId")
+	delete(f, "Cpu")
+	delete(f, "Mem")
+	delete(f, "StorageSize")
+	delete(f, "PayMode")
+	delete(f, "Objects")
+	delete(f, "Port")
+	delete(f, "GoodsNum")
+	delete(f, "InstanceName")
+	delete(f, "ReplicasNum")
+	delete(f, "InstanceType")
+	delete(f, "StorageType")
+	delete(f, "AutoVoucher")
+	delete(f, "OrderSource")
+	delete(f, "DealMode")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "SecurityGroupIds")
+	delete(f, "LibraDBVersion")
+	delete(f, "TimeSpan")
+	delete(f, "TimeUnit")
+	delete(f, "SrcInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddLibraDBInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddLibraDBInstancesResponseParams struct {
+	// 大订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BigDealIds []*string `json:"BigDealIds,omitnil,omitempty" name:"BigDealIds"`
+
+	// 冻结流水，一次开通一个冻结流水。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
+
+	// 后付费订单号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
+
+	// 发货资源id列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddLibraDBInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *AddLibraDBInstancesResponseParams `json:"Response"`
+}
+
+func (r *AddLibraDBInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddLibraDBInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Addr struct {
 	// IP地址
 	IP *string `json:"IP,omitnil,omitempty" name:"IP"`
@@ -2766,7 +2990,7 @@ type CreateClustersRequestParams struct {
 	// <p>当DbMode为NORMAL或不填时必选<br>普通实例内存,单位GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// <p>实例数量，数量范围为(0,16]，默认值为2（即一个rw实例+一个ro实例），传递的n表示1个rw实例+n-1个ro实例（规格相同），如需要更精确的集群组成搭配，请使用InstanceInitInfos</p>
+	// <p>实例数量</p><p>取值范围：[1, 16]</p><p>默认值：2</p><ul><li>取值为2，表示一个 rw 实例 + 一个 ro 实例。</li><li>传递的 n 表示1个 rw 实例 + n-1个 ro 实例（规格相同）。</li><li>如需要更精确的集群组成搭配，请使用 InstanceInitInfos。</li><li>此参数设置的数值适用于预置资源集群，如需设置 Serverless 集群的实例规格及数量，请使用 InstanceInitInfos.N 中的 InstanceInitInfo 结构。</li></ul>
 	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
 	// <p>该参数无实际意义，已废弃。<br>存储大小，单位GB。</p>
@@ -2876,6 +3100,9 @@ type CreateClustersRequestParams struct {
 
 	// <p>暂停后的归档处理时间</p><p>单位：时</p><p>默认值：12</p><p>仅当前集群主实例为SERVERLESS时，该参数生效</p>
 	AutoArchiveDelayHours *int64 `json:"AutoArchiveDelayHours,omitnil,omitempty" name:"AutoArchiveDelayHours"`
+
+	// <p>集群级别，可空。例如 P0, P1。（可忽略该字段）</p>
+	ClusterLevel *string `json:"ClusterLevel,omitnil,omitempty" name:"ClusterLevel"`
 
 	// <p>内核小版本号</p>
 	CynosVersion *string `json:"CynosVersion,omitnil,omitempty" name:"CynosVersion"`
@@ -2908,7 +3135,7 @@ type CreateClustersRequest struct {
 	// <p>当DbMode为NORMAL或不填时必选<br>普通实例内存,单位GB</p>
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// <p>实例数量，数量范围为(0,16]，默认值为2（即一个rw实例+一个ro实例），传递的n表示1个rw实例+n-1个ro实例（规格相同），如需要更精确的集群组成搭配，请使用InstanceInitInfos</p>
+	// <p>实例数量</p><p>取值范围：[1, 16]</p><p>默认值：2</p><ul><li>取值为2，表示一个 rw 实例 + 一个 ro 实例。</li><li>传递的 n 表示1个 rw 实例 + n-1个 ro 实例（规格相同）。</li><li>如需要更精确的集群组成搭配，请使用 InstanceInitInfos。</li><li>此参数设置的数值适用于预置资源集群，如需设置 Serverless 集群的实例规格及数量，请使用 InstanceInitInfos.N 中的 InstanceInitInfo 结构。</li></ul>
 	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
 	// <p>该参数无实际意义，已废弃。<br>存储大小，单位GB。</p>
@@ -3018,6 +3245,9 @@ type CreateClustersRequest struct {
 
 	// <p>暂停后的归档处理时间</p><p>单位：时</p><p>默认值：12</p><p>仅当前集群主实例为SERVERLESS时，该参数生效</p>
 	AutoArchiveDelayHours *int64 `json:"AutoArchiveDelayHours,omitnil,omitempty" name:"AutoArchiveDelayHours"`
+
+	// <p>集群级别，可空。例如 P0, P1。（可忽略该字段）</p>
+	ClusterLevel *string `json:"ClusterLevel,omitnil,omitempty" name:"ClusterLevel"`
 
 	// <p>内核小版本号</p>
 	CynosVersion *string `json:"CynosVersion,omitnil,omitempty" name:"CynosVersion"`
@@ -3080,6 +3310,7 @@ func (r *CreateClustersRequest) FromJsonString(s string) error {
 	delete(f, "ProxyConfig")
 	delete(f, "AutoArchive")
 	delete(f, "AutoArchiveDelayHours")
+	delete(f, "ClusterLevel")
 	delete(f, "CynosVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClustersRequest has unknown keys!", "")
@@ -19111,6 +19342,12 @@ type ObjectTask struct {
 
 	// 任务类型
 	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
+}
+
+type Objects struct {
+	// 包含数据库表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseTables *MigrateObject `json:"DatabaseTables,omitnil,omitempty" name:"DatabaseTables"`
 }
 
 // Predefined struct for user

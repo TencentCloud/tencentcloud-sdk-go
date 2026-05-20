@@ -2394,47 +2394,47 @@ func (r *DetachDisksResponse) FromJsonString(s string) error {
 }
 
 type DetailPrice struct {
-	// 描述计费项目名称。
-	PriceTitle *string `json:"PriceTitle,omitnil,omitempty" name:"PriceTitle"`
-
-	// 描述计费项目显示名称，用户控制台展示。
-	PriceName *string `json:"PriceName,omitnil,omitempty" name:"PriceName"`
-
-	// 预付费云盘预支费用的原价，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
-
-	// 预付费云盘预支费用的折扣价，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
-
-	// 后付费云盘原单价，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnitPrice *float64 `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
-
-	// 后付费云盘折扣单价，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitnil,omitempty" name:"UnitPriceDiscount"`
-
-	// 后付费云盘的计价单元，取值范围：HOUR：表示后付费云盘的计价单元是按小时计算。
+	// 后付费云硬盘的计价单元，取值范围：HOUR：表示后付费云硬盘的计价单元是按小时计算。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeUnit *string `json:"ChargeUnit,omitnil,omitempty" name:"ChargeUnit"`
 
-	// 高精度预付费云盘预支费用的原价，单位：元。
+	// 预付费云硬盘预支费用的折扣价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginalPriceHigh *string `json:"OriginalPriceHigh,omitnil,omitempty" name:"OriginalPriceHigh"`
+	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 
-	// 高精度预付费云盘预支费用的折扣价，单位：元。
+	// 高精度预付费云硬盘预支费用的折扣价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountPriceHigh *string `json:"DiscountPriceHigh,omitnil,omitempty" name:"DiscountPriceHigh"`
 
-	// 高精度后付费云盘原单价，单位：元。
+	// 预付费云硬盘预支费用的原价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnitPriceHigh *string `json:"UnitPriceHigh,omitnil,omitempty" name:"UnitPriceHigh"`
+	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
 
-	// 高精度后付费云盘折扣单价，单位：元。
+	// 高精度预付费云硬盘预支费用的原价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalPriceHigh *string `json:"OriginalPriceHigh,omitnil,omitempty" name:"OriginalPriceHigh"`
+
+	// 描述计费项目名称
+	PriceName *string `json:"PriceName,omitnil,omitempty" name:"PriceName"`
+
+	// 描述计费项目显示名称，用户控制台展示
+	PriceTitle *string `json:"PriceTitle,omitnil,omitempty" name:"PriceTitle"`
+
+	// 后付费云硬盘原单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPrice *float64 `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
+
+	// 后付费云硬盘折扣单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitnil,omitempty" name:"UnitPriceDiscount"`
+
+	// 高精度后付费云硬盘折扣单价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPriceDiscountHigh *string `json:"UnitPriceDiscountHigh,omitnil,omitempty" name:"UnitPriceDiscountHigh"`
+
+	// 高精度后付费云硬盘原单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPriceHigh *string `json:"UnitPriceHigh,omitnil,omitempty" name:"UnitPriceHigh"`
 }
 
 type Disk struct {
@@ -3798,23 +3798,23 @@ type Placement struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CageId *string `json:"CageId,omitnil,omitempty" name:"CageId"`
 
+	// 实例所属的独享集群ID。可通过 [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143) 获取。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
+
+	// 独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdcName *string `json:"CdcName,omitnil,omitempty" name:"CdcName"`
+
+	// 独享集群id。
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+
 	// 实例所属项目ID，可通过DescribeProject获取。不填默认为0，表示默认项目。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 实例所属项目名称，可通过[DescribeProject](/document/api/651/78725)获取。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
-
-	// 独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CdcName *string `json:"CdcName,omitnil,omitempty" name:"CdcName"`
-
-	// 实例所属的独享集群ID。可通过 [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143) 获取。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
-
-	// 独享集群id。
-	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 }
 
 type Policy struct {
@@ -3873,41 +3873,41 @@ type PrepayPrice struct {
 }
 
 type Price struct {
-	// 后付费云盘折扣单价，单位：元。
+	// 后付费云硬盘的计价单元，取值范围：HOUR：表示后付费云硬盘的计价单元是按小时计算。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitnil,omitempty" name:"UnitPriceDiscount"`
+	ChargeUnit *string `json:"ChargeUnit,omitnil,omitempty" name:"ChargeUnit"`
 
-	// 预付费云盘预支费用的折扣价，单位：元。
+	// 预付费云硬盘预支费用的折扣价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 
-	// 后付费云盘原单价，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnitPrice *float64 `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
-
-	// 高精度后付费云盘原单价, 单位：元
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnitPriceHigh *string `json:"UnitPriceHigh,omitnil,omitempty" name:"UnitPriceHigh"`
-
-	// 高精度预付费云盘预支费用的原价, 单位：元	。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginalPriceHigh *string `json:"OriginalPriceHigh,omitnil,omitempty" name:"OriginalPriceHigh"`
-
-	// 预付费云盘预支费用的原价，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
-
-	// 高精度预付费云盘预支费用的折扣价, 单位：元
+	// 高精度预付费云硬盘预支费用的折扣价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountPriceHigh *string `json:"DiscountPriceHigh,omitnil,omitempty" name:"DiscountPriceHigh"`
 
-	// 高精度后付费云盘折扣单价, 单位：元
+	// 预付费云硬盘预支费用的原价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
+
+	// 高精度预付费云硬盘预支费用的原价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalPriceHigh *string `json:"OriginalPriceHigh,omitnil,omitempty" name:"OriginalPriceHigh"`
+
+	// 后付费云硬盘原单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPrice *float64 `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
+
+	// 后付费云硬盘折扣单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitnil,omitempty" name:"UnitPriceDiscount"`
+
+	// 高精度后付费云硬盘折扣单价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPriceDiscountHigh *string `json:"UnitPriceDiscountHigh,omitnil,omitempty" name:"UnitPriceDiscountHigh"`
 
-	// 后付费云盘的计价单元，取值范围：<br><li>HOUR：表示后付费云盘的计价单元是按小时计算。</li>
+	// 高精度后付费云硬盘原单价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ChargeUnit *string `json:"ChargeUnit,omitnil,omitempty" name:"ChargeUnit"`
+	UnitPriceHigh *string `json:"UnitPriceHigh,omitnil,omitempty" name:"UnitPriceHigh"`
 }
 
 // Predefined struct for user

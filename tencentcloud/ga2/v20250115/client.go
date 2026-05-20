@@ -1147,6 +1147,56 @@ func (c *Client) DescribeListenersWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeTaskResultRequest() (request *DescribeTaskResultRequest) {
+    request = &DescribeTaskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "DescribeTaskResult")
+    
+    
+    return
+}
+
+func NewDescribeTaskResultResponse() (response *DescribeTaskResultResponse) {
+    response = &DescribeTaskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTaskResult
+// 查询异步任务结果
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TASKNOTFOUND = "InvalidParameterValue.TaskNotFound"
+func (c *Client) DescribeTaskResult(request *DescribeTaskResultRequest) (response *DescribeTaskResultResponse, err error) {
+    return c.DescribeTaskResultWithContext(context.Background(), request)
+}
+
+// DescribeTaskResult
+// 查询异步任务结果
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TASKNOTFOUND = "InvalidParameterValue.TaskNotFound"
+func (c *Client) DescribeTaskResultWithContext(ctx context.Context, request *DescribeTaskResultRequest) (response *DescribeTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskResultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "DescribeTaskResult")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAccelerateAreasRequest() (request *ModifyAccelerateAreasRequest) {
     request = &ModifyAccelerateAreasRequest{
         BaseRequest: &tchttp.BaseRequest{},

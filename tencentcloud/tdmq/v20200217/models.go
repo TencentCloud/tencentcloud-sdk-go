@@ -1605,53 +1605,57 @@ func (r *CreateRabbitMQBindingResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRabbitMQUserRequestParams struct {
-	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
+	// <p>实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 <a href="https://console.cloud.tencent.com/trabbitmq/cluster?rid=1">TDMQ RabbitMQ 控制台</a>查询。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名，登录时使用
+	// <p>用户名，登录时使用</p>
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// 密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&*_=|{}[]:;',.?/】中的两项
+	// <p>密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&amp;*_=|{}[]:;&#39;,.?/】中的两项</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 用户标签，用于决定改用户访问RabbitMQ Management的权限范围
-	// management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户
+	// <p>用户标签，用于决定改用户访问RabbitMQ Management的权限范围<br>management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户</p>
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 该用户的最大连接数，不填写则不限制
+	// <p>该用户的最大连接数，不填写则不限制</p>
 	MaxConnections *int64 `json:"MaxConnections,omitnil,omitempty" name:"MaxConnections"`
 
-	// 该用户的最大channel数，不填写则不限制
+	// <p>该用户的最大channel数，不填写则不限制</p>
 	MaxChannels *int64 `json:"MaxChannels,omitnil,omitempty" name:"MaxChannels"`
+
+	// <p>是否开启cam验证</p>
+	EnableCamAuth *bool `json:"EnableCamAuth,omitnil,omitempty" name:"EnableCamAuth"`
 }
 
 type CreateRabbitMQUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
+	// <p>实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 <a href="https://console.cloud.tencent.com/trabbitmq/cluster?rid=1">TDMQ RabbitMQ 控制台</a>查询。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名，登录时使用
+	// <p>用户名，登录时使用</p>
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// 密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&*_=|{}[]:;',.?/】中的两项
+	// <p>密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&amp;*_=|{}[]:;&#39;,.?/】中的两项</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 用户标签，用于决定改用户访问RabbitMQ Management的权限范围
-	// management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户
+	// <p>用户标签，用于决定改用户访问RabbitMQ Management的权限范围<br>management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户</p>
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 该用户的最大连接数，不填写则不限制
+	// <p>该用户的最大连接数，不填写则不限制</p>
 	MaxConnections *int64 `json:"MaxConnections,omitnil,omitempty" name:"MaxConnections"`
 
-	// 该用户的最大channel数，不填写则不限制
+	// <p>该用户的最大channel数，不填写则不限制</p>
 	MaxChannels *int64 `json:"MaxChannels,omitnil,omitempty" name:"MaxChannels"`
+
+	// <p>是否开启cam验证</p>
+	EnableCamAuth *bool `json:"EnableCamAuth,omitnil,omitempty" name:"EnableCamAuth"`
 }
 
 func (r *CreateRabbitMQUserRequest) ToJsonString() string {
@@ -1673,6 +1677,7 @@ func (r *CreateRabbitMQUserRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "MaxConnections")
 	delete(f, "MaxChannels")
+	delete(f, "EnableCamAuth")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRabbitMQUserRequest has unknown keys!", "")
 	}
@@ -1681,7 +1686,7 @@ func (r *CreateRabbitMQUserRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRabbitMQUserResponseParams struct {
-	// 用户名，登录时使用
+	// <p>用户名，登录时使用</p>
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12275,53 +12280,57 @@ func (r *ModifyRabbitMQPermissionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRabbitMQUserRequestParams struct {
-	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
+	// <p>实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 <a href="https://console.cloud.tencent.com/trabbitmq/cluster?rid=1">TDMQ RabbitMQ 控制台</a>查询。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名，形如rabbitmq。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。当前不支持修改admin的密码。
+	// <p>用户名，形如rabbitmq。有效的 User 名称可通过登录 <a href="https://console.cloud.tencent.com/trabbitmq/cluster?rid=1">TDMQ RabbitMQ 控制台</a>查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。当前不支持修改admin的密码。</p>
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// 密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&*_=|{}[]:;',.?/】中的两项
+	// <p>密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&amp;*_=|{}[]:;&#39;,.?/】中的两项</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 描述，不传则不修改
+	// <p>描述，不传则不修改</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 用户标签，用于决定改用户访问 RabbitMQ Management 的权限范围
-	// management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户
+	// <p>用户标签，用于决定改用户访问 RabbitMQ Management 的权限范围<br>management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户</p>
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 该用户的最大连接数，不传则不修改
+	// <p>该用户的最大连接数，不传则不修改</p>
 	MaxConnections *int64 `json:"MaxConnections,omitnil,omitempty" name:"MaxConnections"`
 
-	// 该用户的最大channel数，不传则不修改
+	// <p>该用户的最大channel数，不传则不修改</p>
 	MaxChannels *int64 `json:"MaxChannels,omitnil,omitempty" name:"MaxChannels"`
+
+	// <p>是否开启cam验证</p>
+	EnableCamAuth *bool `json:"EnableCamAuth,omitnil,omitempty" name:"EnableCamAuth"`
 }
 
 type ModifyRabbitMQUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
+	// <p>实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 <a href="https://console.cloud.tencent.com/trabbitmq/cluster?rid=1">TDMQ RabbitMQ 控制台</a>查询。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名，形如rabbitmq。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。当前不支持修改admin的密码。
+	// <p>用户名，形如rabbitmq。有效的 User 名称可通过登录 <a href="https://console.cloud.tencent.com/trabbitmq/cluster?rid=1">TDMQ RabbitMQ 控制台</a>查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。当前不支持修改admin的密码。</p>
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// 密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&*_=|{}[]:;',.?/】中的两项
+	// <p>密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&amp;*_=|{}[]:;&#39;,.?/】中的两项</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 描述，不传则不修改
+	// <p>描述，不传则不修改</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 用户标签，用于决定改用户访问 RabbitMQ Management 的权限范围
-	// management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户
+	// <p>用户标签，用于决定改用户访问 RabbitMQ Management 的权限范围<br>management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户</p>
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 该用户的最大连接数，不传则不修改
+	// <p>该用户的最大连接数，不传则不修改</p>
 	MaxConnections *int64 `json:"MaxConnections,omitnil,omitempty" name:"MaxConnections"`
 
-	// 该用户的最大channel数，不传则不修改
+	// <p>该用户的最大channel数，不传则不修改</p>
 	MaxChannels *int64 `json:"MaxChannels,omitnil,omitempty" name:"MaxChannels"`
+
+	// <p>是否开启cam验证</p>
+	EnableCamAuth *bool `json:"EnableCamAuth,omitnil,omitempty" name:"EnableCamAuth"`
 }
 
 func (r *ModifyRabbitMQUserRequest) ToJsonString() string {
@@ -12343,6 +12352,7 @@ func (r *ModifyRabbitMQUserRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "MaxConnections")
 	delete(f, "MaxChannels")
+	delete(f, "EnableCamAuth")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRabbitMQUserRequest has unknown keys!", "")
 	}

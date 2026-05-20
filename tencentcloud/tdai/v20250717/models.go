@@ -412,20 +412,38 @@ func (r *CreateAgentInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateChatCompletionRequestParams struct {
-	// 是否隐藏
+	// <p>输入内容</p>
+	InputContent *string `json:"InputContent,omitnil,omitempty" name:"InputContent"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>对话窗口ID，空值表示新的会话</p>
+	ChatId *string `json:"ChatId,omitnil,omitempty" name:"ChatId"`
+
+	// <p>是否隐藏</p>
 	IsHidden *bool `json:"IsHidden,omitnil,omitempty" name:"IsHidden"`
 
-	// 是否隐藏会话
+	// <p>是否隐藏会话</p>
 	IsChatHidden *bool `json:"IsChatHidden,omitnil,omitempty" name:"IsChatHidden"`
 }
 
 type CreateChatCompletionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 是否隐藏
+	// <p>输入内容</p>
+	InputContent *string `json:"InputContent,omitnil,omitempty" name:"InputContent"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>对话窗口ID，空值表示新的会话</p>
+	ChatId *string `json:"ChatId,omitnil,omitempty" name:"ChatId"`
+
+	// <p>是否隐藏</p>
 	IsHidden *bool `json:"IsHidden,omitnil,omitempty" name:"IsHidden"`
 
-	// 是否隐藏会话
+	// <p>是否隐藏会话</p>
 	IsChatHidden *bool `json:"IsChatHidden,omitnil,omitempty" name:"IsChatHidden"`
 }
 
@@ -441,6 +459,9 @@ func (r *CreateChatCompletionRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "InputContent")
+	delete(f, "InstanceId")
+	delete(f, "ChatId")
 	delete(f, "IsHidden")
 	delete(f, "IsChatHidden")
 	if len(f) > 0 {

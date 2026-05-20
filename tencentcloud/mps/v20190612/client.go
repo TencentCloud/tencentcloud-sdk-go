@@ -4719,6 +4719,66 @@ func (c *Client) DeleteTranscodeTemplateWithContext(ctx context.Context, request
     return
 }
 
+func NewDeleteVoiceRequest() (request *DeleteVoiceRequest) {
+    request = &DeleteVoiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteVoice")
+    
+    
+    return
+}
+
+func NewDeleteVoiceResponse() (response *DeleteVoiceResponse) {
+    response = &DeleteVoiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteVoice
+// 删除音色（通过音色克隆或设计创建的）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DeleteVoice(request *DeleteVoiceRequest) (response *DeleteVoiceResponse, err error) {
+    return c.DeleteVoiceWithContext(context.Background(), request)
+}
+
+// DeleteVoice
+// 删除音色（通过音色克隆或设计创建的）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DeleteVoiceWithContext(ctx context.Context, request *DeleteVoiceRequest) (response *DeleteVoiceResponse, err error) {
+    if request == nil {
+        request = NewDeleteVoiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DeleteVoice")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVoice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteVoiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteWatermarkTemplateRequest() (request *DeleteWatermarkTemplateRequest) {
     request = &DeleteWatermarkTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},

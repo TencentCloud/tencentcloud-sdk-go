@@ -735,6 +735,7 @@ func NewCreateRabbitMQUserResponse() (response *CreateRabbitMQUserResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) CreateRabbitMQUser(request *CreateRabbitMQUserRequest) (response *CreateRabbitMQUserResponse, err error) {
     return c.CreateRabbitMQUserWithContext(context.Background(), request)
 }
@@ -746,6 +747,7 @@ func (c *Client) CreateRabbitMQUser(request *CreateRabbitMQUserRequest) (respons
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) CreateRabbitMQUserWithContext(ctx context.Context, request *CreateRabbitMQUserRequest) (response *CreateRabbitMQUserResponse, err error) {
     if request == nil {
         request = NewCreateRabbitMQUserRequest()

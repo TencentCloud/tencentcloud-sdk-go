@@ -3192,56 +3192,56 @@ func (r *DescribeAcListsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAclRuleRequestParams struct {
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 需要查询的索引，特定场景使用，可不填
+	// <p>需要查询的索引，特定场景使用，可不填</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 过滤条件组合
+	// <p>过滤条件组合</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 检索的起始时间，可不传
+	// <p>检索的起始时间，可不传</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 检索的截止时间，可不传
+	// <p>检索的截止时间，可不传</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段，默认为sequence
+	// <p>排序所用到的字段，默认为sequence</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 type DescribeAclRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 需要查询的索引，特定场景使用，可不填
+	// <p>需要查询的索引，特定场景使用，可不填</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 过滤条件组合
+	// <p>过滤条件组合</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 检索的起始时间，可不传
+	// <p>检索的起始时间，可不传</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 检索的截止时间，可不传
+	// <p>检索的截止时间，可不传</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段，默认为sequence
+	// <p>排序所用到的字段，默认为sequence</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -3273,13 +3273,13 @@ func (r *DescribeAclRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAclRuleResponseParams struct {
-	// 总条数
+	// <p>总条数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// nat访问控制列表数据
+	// <p>nat访问控制列表数据</p>
 	Data []*DescAcItem `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 未过滤的总条数
+	// <p>未过滤的总条数</p>
 	AllTotal *uint64 `json:"AllTotal,omitnil,omitempty" name:"AllTotal"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5701,56 +5701,56 @@ func (r *DescribeNDRAssetIdentificationListResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeNatAcRuleRequestParams struct {
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 需要查询的索引，特定场景使用，可不填
+	// <p>需要查询的索引，特定场景使用，可不填</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 过滤条件组合，Direction 为0时表述查询出向规则，为1时表示查询入向规则
+	// <p>过滤条件组合，Direction 为0时表述查询出向规则，为1时表示查询入向规则</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 检索的起始时间，可不传
+	// <p>检索的起始时间，可不传</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 检索的截止时间，可不传
+	// <p>检索的截止时间，可不传</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段，默认为sequence
+	// <p>排序所用到的字段，默认为sequence</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 type DescribeNatAcRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 需要查询的索引，特定场景使用，可不填
+	// <p>需要查询的索引，特定场景使用，可不填</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 过滤条件组合，Direction 为0时表述查询出向规则，为1时表示查询入向规则
+	// <p>过滤条件组合，Direction 为0时表述查询出向规则，为1时表示查询入向规则</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 检索的起始时间，可不传
+	// <p>检索的起始时间，可不传</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 检索的截止时间，可不传
+	// <p>检索的截止时间，可不传</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段，默认为sequence
+	// <p>排序所用到的字段，默认为sequence</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -5782,13 +5782,13 @@ func (r *DescribeNatAcRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNatAcRuleResponseParams struct {
-	// 总条数
+	// <p>总条数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// nat访问控制列表数据
+	// <p>nat访问控制列表数据</p>
 	Data []*DescAcItem `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 未过滤的总条数
+	// <p>未过滤的总条数</p>
 	AllTotal *uint64 `json:"AllTotal,omitnil,omitempty" name:"AllTotal"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7364,56 +7364,56 @@ func (r *DescribeUnHandleEventTabListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVpcAcRuleRequestParams struct {
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 需要查询的索引，特定场景使用，可不填
+	// <p>需要查询的索引，特定场景使用，可不填</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 过滤条件组合
+	// <p>过滤条件组合</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 检索的起始时间，可不传
+	// <p>检索的起始时间，可不传</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 检索的截止时间，可不传
+	// <p>检索的截止时间，可不传</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// <p>排序所用到的字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 type DescribeVpcAcRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 需要查询的索引，特定场景使用，可不填
+	// <p>需要查询的索引，特定场景使用，可不填</p>
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
-	// 过滤条件组合
+	// <p>过滤条件组合</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 检索的起始时间，可不传
+	// <p>检索的起始时间，可不传</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 检索的截止时间，可不传
+	// <p>检索的截止时间，可不传</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// <p>排序所用到的字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -7445,10 +7445,10 @@ func (r *DescribeVpcAcRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVpcAcRuleResponseParams struct {
-	// 总条数
+	// <p>总条数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 内网间访问控制列表数据
+	// <p>内网间访问控制列表数据</p>
 	Data []*VpcRuleItem `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

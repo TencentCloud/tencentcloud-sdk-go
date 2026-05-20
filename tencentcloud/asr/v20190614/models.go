@@ -1815,7 +1815,7 @@ type SentenceDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EmotionalEnergy *float64 `json:"EmotionalEnergy,omitnil,omitempty" name:"EmotionalEnergy"`
 
-	// <p>本句与上一句之间的静音时长</p>
+	// <p>本句与上一句之间的静音时长（ms）</p><p>枚举值：</p><ul><li>0： 表示无静音间隔</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SilenceTime *int64 `json:"SilenceTime,omitnil,omitempty" name:"SilenceTime"`
 

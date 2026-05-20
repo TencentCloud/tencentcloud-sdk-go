@@ -43,7 +43,7 @@ type CreateTtsTaskRequestParams struct {
 	// <p>主语言类型：<li>1-中文（默认）</li><li>2-英文</li></p>
 	PrimaryLanguage *int64 `json:"PrimaryLanguage,omitnil,omitempty" name:"PrimaryLanguage"`
 
-	// <p>音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li></p>
+	// <p>音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li></p><p>枚举值：</p><ul><li>16000： 16kHz音频采样率</li></ul>
 	SampleRate *uint64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
 	// <p>返回音频格式，可取值：mp3（默认），wav，pcm</p>
@@ -89,7 +89,7 @@ type CreateTtsTaskRequest struct {
 	// <p>主语言类型：<li>1-中文（默认）</li><li>2-英文</li></p>
 	PrimaryLanguage *int64 `json:"PrimaryLanguage,omitnil,omitempty" name:"PrimaryLanguage"`
 
-	// <p>音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li></p>
+	// <p>音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li></p><p>枚举值：</p><ul><li>16000： 16kHz音频采样率</li></ul>
 	SampleRate *uint64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
 	// <p>返回音频格式，可取值：mp3（默认），wav，pcm</p>

@@ -119,6 +119,9 @@ const (
 	// 参数值 `%(value)s` 仅能含有字符 `%(key)s`。
 	INVALIDPARAMETERVALUE_SPECIFICCHARACTERS = "InvalidParameterValue.SpecificCharacters"
 
+	// 异步任务ID不存在。
+	INVALIDPARAMETERVALUE_TASKNOTFOUND = "InvalidParameterValue.TaskNotFound"
+
 	// 当前TCP协议系列监听器端口已和存量监听器端口重复。
 	INVALIDPARAMETERVALUE_TCPSERIESLISTENERPORTEQUAL = "InvalidParameterValue.TcpSeriesListenerPortEqual"
 

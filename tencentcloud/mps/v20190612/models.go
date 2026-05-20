@@ -9901,6 +9901,73 @@ func (r *DeleteTranscodeTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteVoiceRequestParams struct {
+	// <p>音色Id</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>扩展参数，json字符串</p>
+	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
+}
+
+type DeleteVoiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>音色Id</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>扩展参数，json字符串</p>
+	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
+}
+
+func (r *DeleteVoiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVoiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VoiceId")
+	delete(f, "ExtParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVoiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVoiceResponseParams struct {
+	// <p>错误码，成功时返回0</p>
+	ErrorCode *int64 `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>错误信息，成功时返回success</p>
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteVoiceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteVoiceResponseParams `json:"Response"`
+}
+
+func (r *DeleteVoiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVoiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteWatermarkTemplateRequestParams struct {
 	// 水印模板唯一标识。
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -27857,7 +27924,7 @@ type SyncDubbingRequestParams struct {
 	// <p>资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// <p>扩展参数，json字符串</p><p>synExt    Object    语音合成扩展参数<br>    -duration    Float    合成音频时长，单位秒，示例：5.2<br>    -sampleRate    Integer    合成音频采样率，默认16000，支持[8000,16000,22050,32000,44100]<br>    -pitch    Integer    音调，默认0原音色输出，取值[-12, 12]<br>cloneExt    Object    音色克隆扩展参数<br>    -timeRanges    Float[][]    指定克隆音频时间范围，默认[[0, 20]]，示例[[5.2, 10], [45, 59.8]]</p>
+	// <p>扩展参数，json字符串</p><p><strong>synExt</strong>    Object    语音合成扩展参数<br>  <strong>duration</strong>    Float    合成音频时长（单位秒），默认不控制时长。示例：5.2<br>  <strong>sampleRate</strong>    Integer    合成音频采样率，默认16000，支持[8000,16000,22050,24000,32000,44100]<br>  <strong>pitch</strong>    Integer    音调，默认0原音色输出，取值[-12, 12]<br><strong>cloneExt</strong>    Object    音色克隆扩展参数<br>  <strong>timeRanges</strong>    Float[][]    指定克隆音频时间范围（单位秒），默认取音频前20s。示例：[[5.2, 10], [45, 59.8]]</p>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
 }
 
@@ -27891,7 +27958,7 @@ type SyncDubbingRequest struct {
 	// <p>资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// <p>扩展参数，json字符串</p><p>synExt    Object    语音合成扩展参数<br>    -duration    Float    合成音频时长，单位秒，示例：5.2<br>    -sampleRate    Integer    合成音频采样率，默认16000，支持[8000,16000,22050,32000,44100]<br>    -pitch    Integer    音调，默认0原音色输出，取值[-12, 12]<br>cloneExt    Object    音色克隆扩展参数<br>    -timeRanges    Float[][]    指定克隆音频时间范围，默认[[0, 20]]，示例[[5.2, 10], [45, 59.8]]</p>
+	// <p>扩展参数，json字符串</p><p><strong>synExt</strong>    Object    语音合成扩展参数<br>  <strong>duration</strong>    Float    合成音频时长（单位秒），默认不控制时长。示例：5.2<br>  <strong>sampleRate</strong>    Integer    合成音频采样率，默认16000，支持[8000,16000,22050,24000,32000,44100]<br>  <strong>pitch</strong>    Integer    音调，默认0原音色输出，取值[-12, 12]<br><strong>cloneExt</strong>    Object    音色克隆扩展参数<br>  <strong>timeRanges</strong>    Float[][]    指定克隆音频时间范围（单位秒），默认取音频前20s。示例：[[5.2, 10], [45, 59.8]]</p>
 	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
 }
 
