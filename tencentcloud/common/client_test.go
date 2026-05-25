@@ -206,3 +206,113 @@ func TestClient_withRegionBreaker(t *testing.T) {
 		t.Errorf("want %d ,got %d", defaultMaxFailNum, c.rb.maxFailNum)
 	}
 }
+
+// breakerRT is a RoundTripper that always returns a successful empty
+// CVM-style response. It is the simplest fixture that exercises the full
+// Send → sendWithRegionBreaker → sendWithSignature → response-parse chain
+// while letting Send return nil err.
+type breakerRT struct {
+	calls int
+}
+
+func (s *breakerRT) RoundTrip(*http.Request) (*http.Response, error) {
+	s.calls++
+	return &http.Response{
+		StatusCode: 200,
+		Body:       ioutil.NopCloser(bytes.NewBufferString(successResp)),
+	}, nil
+}
+
+// newBreakerEnabledClient builds a Client wired through the same paths Send()
+// uses in production, with the regional breaker turned on. The returned Client
+// uses rt as its HTTP transport so test code can drive Send() without network.
+func newBreakerEnabledClient(rt http.RoundTripper) *Client {
+	cpf := profile.NewClientProfile()
+	cpf.DisableRegionBreaker = false
+	c := NewCommonClient(NewCredential("id", "key"), regions.Guangzhou, cpf)
+	c.WithHttpTransport(rt)
+	return c
+}
+
+// TestClient_breakerStaysClosedOnSuccesses is the end-to-end regression test
+// for report/feature_4_bug.md Bug 1 ("circuit breaker counts every successful
+// call as a failure"). It drives the full Client.Send path — including
+// sendWithRegionBreaker — against a mock transport that always returns 200,
+// and asserts the breaker remains closed after far more than maxFailNum
+// successes. With the bug present, the breaker would open after 5 successful
+// calls and the 6th call would be re-routed to ap-guangzhou.tencentcloudapi.com.
+func TestClient_breakerStaysClosedOnSuccesses(t *testing.T) {
+	rt := &breakerRT{}
+	c := newBreakerEnabledClient(rt)
+
+	const calls = 12 // > defaultMaxFailNum (5) and > the consecutive-failures threshold (6)
+	for i := 0; i < calls; i++ {
+		req := newTestRequest()
+		resp := tchttp.NewCommonResponse()
+		if err := c.Send(req, resp); err != nil {
+			t.Fatalf("call %d: unexpected error: %v", i, err)
+		}
+		// The breaker rewrites request.SetDomain only when the breaker is open.
+		// If the bug were present, calls 6..N would target the backup endpoint.
+		if got := req.GetDomain(); got != "" && got != "cvm.tencentcloudapi.com" {
+			// Allow the empty-domain default; reject anything with the backup host.
+			if got == "cvm.ap-guangzhou.tencentcloudapi.com" && c.GetRegion() != "ap-guangzhou" {
+				t.Fatalf("call %d: request was re-routed to backup endpoint %q (breaker opened spuriously)", i, got)
+			}
+		}
+	}
+
+	if rt.calls != calls {
+		t.Fatalf("transport saw %d calls, want %d", rt.calls, calls)
+	}
+
+	c.rb.mu.Lock()
+	st := c.rb.state
+	c.rb.mu.Unlock()
+	if st != StateClosed {
+		t.Fatalf("after %d successful calls, breaker state = %v, want StateClosed (Bug 1 regression)", calls, st)
+	}
+}
+
+// failingRT returns a transport-level error every call, simulating a region
+// outage. We use it to verify the breaker DOES open when calls genuinely fail
+// — i.e. that the fix didn't make the breaker permanently inert.
+type failingRT struct{ calls int }
+
+func (s *failingRT) RoundTrip(*http.Request) (*http.Response, error) {
+	s.calls++
+	return nil, retryErr{}
+}
+
+// TestClient_breakerOpensOnFailures is the dual of the previous test: with
+// the fixed classifier, transport-level failures must still trip the breaker
+// and re-route subsequent traffic to the backup endpoint. This guards against
+// an over-correction that would make the breaker never trip.
+func TestClient_breakerOpensOnFailures(t *testing.T) {
+	rt := &failingRT{}
+	c := newBreakerEnabledClient(rt)
+
+	// Drive enough failures to trip both the rate-based branch (5 failures, 100% rate)
+	// and the consecutive-failures branch (>5).
+	for i := 0; i < 7; i++ {
+		req := newTestRequest()
+		resp := tchttp.NewCommonResponse()
+		_ = c.Send(req, resp) // failures expected; we only care about breaker state
+	}
+
+	c.rb.mu.Lock()
+	st := c.rb.state
+	c.rb.mu.Unlock()
+	if st != StateOpen {
+		t.Fatalf("after 7 transport failures, breaker state = %v, want StateOpen", st)
+	}
+
+	// One more call should be re-routed to the backup endpoint.
+	req := newTestRequest()
+	resp := tchttp.NewCommonResponse()
+	_ = c.Send(req, resp)
+	if got := req.GetDomain(); got != "cvm."+c.rb.backupEndpoint {
+		t.Fatalf("after breaker tripped, request domain = %q, want %q (re-routed to backup)",
+			got, "cvm."+c.rb.backupEndpoint)
+	}
+}
