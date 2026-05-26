@@ -3578,6 +3578,133 @@ func (r *DescribeDAGInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDynamicInstanceDetailRequestParams struct {
+	// <p>EMR 集群 id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>Ray集群Id</p>
+	RayClusterId *int64 `json:"RayClusterId,omitnil,omitempty" name:"RayClusterId"`
+}
+
+type DescribeDynamicInstanceDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>EMR 集群 id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>Ray集群Id</p>
+	RayClusterId *int64 `json:"RayClusterId,omitnil,omitempty" name:"RayClusterId"`
+}
+
+func (r *DescribeDynamicInstanceDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDynamicInstanceDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RayClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDynamicInstanceDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDynamicInstanceDetailResponseParams struct {
+	// <p>ray集群名</p>
+	RayClusterName *string `json:"RayClusterName,omitnil,omitempty" name:"RayClusterName"`
+
+	// <p>ray集群ID</p>
+	RayClusterId *int64 `json:"RayClusterId,omitnil,omitempty" name:"RayClusterId"`
+
+	// <p>创建类型</p><p>枚举值：</p><ul><li>1： 表单创建</li><li>2： yaml创建</li></ul>
+	SubmitType *int64 `json:"SubmitType,omitnil,omitempty" name:"SubmitType"`
+
+	// <p>命名空间</p>
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>创建时间</p>
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>labels</p>
+	Labels []*NameValue `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// <p>Tolerations</p>
+	Tolerations []*Toleration `json:"Tolerations,omitnil,omitempty" name:"Tolerations"`
+
+	// <p>环境变量</p>
+	Env []*NameValue `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// <p>是否依赖 Kerberos 外部组件</p>
+	SupportExternalKerberosService *bool `json:"SupportExternalKerberosService,omitnil,omitempty" name:"SupportExternalKerberosService"`
+
+	// <p>依赖的Kerberos集群</p>
+	KerberosCluster *string `json:"KerberosCluster,omitnil,omitempty" name:"KerberosCluster"`
+
+	// <p>token</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// <p>HeadGroup</p>
+	HeadGroupSpec *DynamicInstanceGroupSpec `json:"HeadGroupSpec,omitnil,omitempty" name:"HeadGroupSpec"`
+
+	// <p>WorkerGroup</p>
+	WorkerGroupSpecs []*DynamicInstanceGroupSpec `json:"WorkerGroupSpecs,omitnil,omitempty" name:"WorkerGroupSpecs"`
+
+	// <p>是否开启存储配置</p>
+	StorageConfigEnabled *bool `json:"StorageConfigEnabled,omitnil,omitempty" name:"StorageConfigEnabled"`
+
+	// <p>Redis 实例信息</p>
+	RedisInstance *RedisInstance `json:"RedisInstance,omitnil,omitempty" name:"RedisInstance"`
+
+	// <p>镜像信息</p>
+	CustomImage *CustomImage `json:"CustomImage,omitnil,omitempty" name:"CustomImage"`
+
+	// <p>dashboard链接</p>
+	DashboardUrl *string `json:"DashboardUrl,omitnil,omitempty" name:"DashboardUrl"`
+
+	// <p>pod 总数</p>
+	TotalPodCount *int64 `json:"TotalPodCount,omitnil,omitempty" name:"TotalPodCount"`
+
+	// <p>是否高可用</p>
+	HighAvailability *bool `json:"HighAvailability,omitnil,omitempty" name:"HighAvailability"`
+
+	// <p>存储信息</p>
+	PersistentVolume *PersistentVolume `json:"PersistentVolume,omitnil,omitempty" name:"PersistentVolume"`
+
+	// <p>rayClusterYamlJson</p>
+	RayClusterYaml *string `json:"RayClusterYaml,omitnil,omitempty" name:"RayClusterYaml"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDynamicInstanceDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDynamicInstanceDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeDynamicInstanceDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDynamicInstanceDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDynamicInstanceListRequestParams struct {
 	// emr 集群 id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -7515,6 +7642,57 @@ type DynamicInstanceGroup struct {
 
 	// <p>CFS Turbo 挂载列表</p>
 	CFSTurboVolumes []*CFSTurboVolume `json:"CFSTurboVolumes,omitnil,omitempty" name:"CFSTurboVolumes"`
+}
+
+type DynamicInstanceGroupSpec struct {
+	// group 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// pod 数量
+	PodCount *int64 `json:"PodCount,omitnil,omitempty" name:"PodCount"`
+
+	// 最小节点数
+	MinNodes *int64 `json:"MinNodes,omitnil,omitempty" name:"MinNodes"`
+
+	// 最大节点数
+	MaxNodes *int64 `json:"MaxNodes,omitnil,omitempty" name:"MaxNodes"`
+
+	//  是否开启存储配置
+	StorageConfigEnabled *bool `json:"StorageConfigEnabled,omitnil,omitempty" name:"StorageConfigEnabled"`
+
+	// headGroup:head;
+	// workerGroup:worker
+	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
+
+	// CPU 核数
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 内存(GB)
+	MemSize *int64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
+
+	// GPU类型
+	GpuType *string `json:"GpuType,omitnil,omitempty" name:"GpuType"`
+
+	// GPU核数
+	Gpu *int64 `json:"Gpu,omitnil,omitempty" name:"Gpu"`
+
+	// 资源标签
+	ResourceLabels *string `json:"ResourceLabels,omitnil,omitempty" name:"ResourceLabels"`
+
+	// 环境变量
+	Env []*NameValue `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 标签
+	Labels []*NameValue `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// 容忍度
+	Tolerations []*Toleration `json:"Tolerations,omitnil,omitempty" name:"Tolerations"`
+
+	// 调度策略
+	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
+
+	// 卷目录
+	PersistentVolume *PersistentVolume `json:"PersistentVolume,omitnil,omitempty" name:"PersistentVolume"`
 }
 
 type DynamicPodSpec struct {
@@ -11814,6 +11992,29 @@ type Period struct {
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 }
 
+type PersistentVolume struct {
+	// <p>cbs 存储卷</p>
+	CBSVolumes []*CBSVolume `json:"CBSVolumes,omitnil,omitempty" name:"CBSVolumes"`
+
+	// <p>cfs存储卷</p>
+	CFSVolumes []*CFSVolume `json:"CFSVolumes,omitnil,omitempty" name:"CFSVolumes"`
+
+	// <p>cos 存储卷</p>
+	COSVolumes []*COSVolume `json:"COSVolumes,omitnil,omitempty" name:"COSVolumes"`
+
+	// <p>存储卷名称（yaml 提交的没有存储卷的类型）</p>
+	StorageVolumeName []*string `json:"StorageVolumeName,omitnil,omitempty" name:"StorageVolumeName"`
+
+	// <p>存储卷列表</p>
+	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
+
+	// <p>存储卷详情</p>
+	StorageVolumeDetail []*StorageVolumeDetail `json:"StorageVolumeDetail,omitnil,omitempty" name:"StorageVolumeDetail"`
+
+	// <p>cfs trubo存储卷</p>
+	CFSTurboVolumes []*CFSTurboVolume `json:"CFSTurboVolumes,omitnil,omitempty" name:"CFSTurboVolumes"`
+}
+
 type PersistentVolumeContext struct {
 	// 磁盘大小，单位为GB。
 	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
@@ -12440,6 +12641,17 @@ type RayCluster struct {
 
 	// <p>head访问地址,也是dashboard地址</p>
 	DashboardUrl *string `json:"DashboardUrl,omitnil,omitempty" name:"DashboardUrl"`
+}
+
+type RedisInstance struct {
+	// redis实例id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 实例 ip
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 实例端口
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
 type RenewInstancesInfo struct {
@@ -14242,6 +14454,17 @@ type StorageSummaryDistribution struct {
 	// 采样值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Dps []*Dps `json:"Dps,omitnil,omitempty" name:"Dps"`
+}
+
+type StorageVolumeDetail struct {
+	// 存储卷名称
+	VolumeName *string `json:"VolumeName,omitnil,omitempty" name:"VolumeName"`
+
+	// 存储卷类型
+	VolumeType *string `json:"VolumeType,omitnil,omitempty" name:"VolumeType"`
+
+	// 存储卷详情
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 }
 
 type StrategyConfig struct {

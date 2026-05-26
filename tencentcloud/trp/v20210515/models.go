@@ -2752,6 +2752,503 @@ func (r *DescribeCustomRulesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeFlavorKingCycleBrandImportantCityScanAnalysisRequestParams struct {
+	// <p>企业ID</p>
+	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// <p>日期类型</p>
+	TypeDate *string `json:"TypeDate,omitnil,omitempty" name:"TypeDate"`
+
+	// <p>溯源ID</p>
+	QueryDate *string `json:"QueryDate,omitnil,omitempty" name:"QueryDate"`
+}
+
+type DescribeFlavorKingCycleBrandImportantCityScanAnalysisRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>企业ID</p>
+	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// <p>日期类型</p>
+	TypeDate *string `json:"TypeDate,omitnil,omitempty" name:"TypeDate"`
+
+	// <p>溯源ID</p>
+	QueryDate *string `json:"QueryDate,omitnil,omitempty" name:"QueryDate"`
+}
+
+func (r *DescribeFlavorKingCycleBrandImportantCityScanAnalysisRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlavorKingCycleBrandImportantCityScanAnalysisRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CorpId")
+	delete(f, "TypeDate")
+	delete(f, "QueryDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlavorKingCycleBrandImportantCityScanAnalysisRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFlavorKingCycleBrandImportantCityScanAnalysisResponseParams struct {
+	// <p>数据</p>
+	Data []*FlavorKingCycleBrandImportantCityScanAnalysisCityItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFlavorKingCycleBrandImportantCityScanAnalysisResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFlavorKingCycleBrandImportantCityScanAnalysisResponseParams `json:"Response"`
+}
+
+func (r *DescribeFlavorKingCycleBrandImportantCityScanAnalysisResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlavorKingCycleBrandImportantCityScanAnalysisResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisRequestParams struct {
+	// <p>企业ID</p>
+	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// <p>日期类型</p>
+	TypeDate *string `json:"TypeDate,omitnil,omitempty" name:"TypeDate"`
+
+	// <p>溯源ID</p>
+	QueryDate *string `json:"QueryDate,omitnil,omitempty" name:"QueryDate"`
+
+	// <p>省份</p>
+	ProvinceList []*string `json:"ProvinceList,omitnil,omitempty" name:"ProvinceList"`
+}
+
+type DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>企业ID</p>
+	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// <p>日期类型</p>
+	TypeDate *string `json:"TypeDate,omitnil,omitempty" name:"TypeDate"`
+
+	// <p>溯源ID</p>
+	QueryDate *string `json:"QueryDate,omitnil,omitempty" name:"QueryDate"`
+
+	// <p>省份</p>
+	ProvinceList []*string `json:"ProvinceList,omitnil,omitempty" name:"ProvinceList"`
+}
+
+func (r *DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CorpId")
+	delete(f, "TypeDate")
+	delete(f, "QueryDate")
+	delete(f, "ProvinceList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisResponseParams struct {
+	// <p>数据</p>
+	Data []*FlavorKingCycleBrandImportantProvinceScanAnalysisProvinceItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisResponseParams `json:"Response"`
+}
+
+func (r *DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlavorKingCycleBrandImportantProvinceScanAnalysisResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisRequestParams struct {
+	// <p>企业ID</p>
+	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// <p>日期类型</p>
+	TypeDate *string `json:"TypeDate,omitnil,omitempty" name:"TypeDate"`
+
+	// <p>溯源ID</p>
+	QueryDate *string `json:"QueryDate,omitnil,omitempty" name:"QueryDate"`
+
+	// <p>省份</p>
+	ProvinceList []*string `json:"ProvinceList,omitnil,omitempty" name:"ProvinceList"`
+}
+
+type DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>企业ID</p>
+	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// <p>日期类型</p>
+	TypeDate *string `json:"TypeDate,omitnil,omitempty" name:"TypeDate"`
+
+	// <p>溯源ID</p>
+	QueryDate *string `json:"QueryDate,omitnil,omitempty" name:"QueryDate"`
+
+	// <p>省份</p>
+	ProvinceList []*string `json:"ProvinceList,omitnil,omitempty" name:"ProvinceList"`
+}
+
+func (r *DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CorpId")
+	delete(f, "TypeDate")
+	delete(f, "QueryDate")
+	delete(f, "ProvinceList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisResponseParams struct {
+	// <p>数据</p>
+	Data []*FlavorKingCycleBrandImportantProvinceUserAnalysisProvinceItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisResponseParams `json:"Response"`
+}
+
+func (r *DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlavorKingCycleBrandImportantProvinceUserAnalysisResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFlavorKingCycleBrandProvinceCityScanAnalysisRequestParams struct {
+	// <p>CorpId</p>
+	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// <p>溯源ID</p>
+	QueryDate *string `json:"QueryDate,omitnil,omitempty" name:"QueryDate"`
+}
+
+type DescribeFlavorKingCycleBrandProvinceCityScanAnalysisRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>CorpId</p>
+	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// <p>溯源ID</p>
+	QueryDate *string `json:"QueryDate,omitnil,omitempty" name:"QueryDate"`
+}
+
+func (r *DescribeFlavorKingCycleBrandProvinceCityScanAnalysisRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlavorKingCycleBrandProvinceCityScanAnalysisRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CorpId")
+	delete(f, "QueryDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlavorKingCycleBrandProvinceCityScanAnalysisRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFlavorKingCycleBrandProvinceCityScanAnalysisResponseParams struct {
+	// <p>数据</p>
+	Data []*FlavorKingCycleBrandProvinceCityScanAnalysisProvinceItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFlavorKingCycleBrandProvinceCityScanAnalysisResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFlavorKingCycleBrandProvinceCityScanAnalysisResponseParams `json:"Response"`
+}
+
+func (r *DescribeFlavorKingCycleBrandProvinceCityScanAnalysisResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlavorKingCycleBrandProvinceCityScanAnalysisResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFlavorKingCycleBrandProvinceScanAnalysisRequestParams struct {
+	// <p>企业ID</p>
+	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// <p>日期类型</p>
+	TypeDate *string `json:"TypeDate,omitnil,omitempty" name:"TypeDate"`
+
+	// <p>溯源ID</p>
+	QueryDate *string `json:"QueryDate,omitnil,omitempty" name:"QueryDate"`
+}
+
+type DescribeFlavorKingCycleBrandProvinceScanAnalysisRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>企业ID</p>
+	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// <p>日期类型</p>
+	TypeDate *string `json:"TypeDate,omitnil,omitempty" name:"TypeDate"`
+
+	// <p>溯源ID</p>
+	QueryDate *string `json:"QueryDate,omitnil,omitempty" name:"QueryDate"`
+}
+
+func (r *DescribeFlavorKingCycleBrandProvinceScanAnalysisRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlavorKingCycleBrandProvinceScanAnalysisRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CorpId")
+	delete(f, "TypeDate")
+	delete(f, "QueryDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlavorKingCycleBrandProvinceScanAnalysisRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFlavorKingCycleBrandProvinceScanAnalysisResponseParams struct {
+	// <p>数据</p>
+	Data *FlavorKingCycleBrandProvinceScanAnalysisResponse `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFlavorKingCycleBrandProvinceScanAnalysisResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFlavorKingCycleBrandProvinceScanAnalysisResponseParams `json:"Response"`
+}
+
+func (r *DescribeFlavorKingCycleBrandProvinceScanAnalysisResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlavorKingCycleBrandProvinceScanAnalysisResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFlavorKingCycleBrandScanAnalysisRequestParams struct {
+	// <p>企业ID</p>
+	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// <p>日期类型</p>
+	TypeDate *string `json:"TypeDate,omitnil,omitempty" name:"TypeDate"`
+
+	// <p>溯源ID</p>
+	QueryDate *string `json:"QueryDate,omitnil,omitempty" name:"QueryDate"`
+}
+
+type DescribeFlavorKingCycleBrandScanAnalysisRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>企业ID</p>
+	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// <p>日期类型</p>
+	TypeDate *string `json:"TypeDate,omitnil,omitempty" name:"TypeDate"`
+
+	// <p>溯源ID</p>
+	QueryDate *string `json:"QueryDate,omitnil,omitempty" name:"QueryDate"`
+}
+
+func (r *DescribeFlavorKingCycleBrandScanAnalysisRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlavorKingCycleBrandScanAnalysisRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CorpId")
+	delete(f, "TypeDate")
+	delete(f, "QueryDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlavorKingCycleBrandScanAnalysisRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFlavorKingCycleBrandScanAnalysisResponseParams struct {
+	// <p>响应</p>
+	Data *FlavorKingCycleBrandScanAnalysisResponse `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFlavorKingCycleBrandScanAnalysisResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFlavorKingCycleBrandScanAnalysisResponseParams `json:"Response"`
+}
+
+func (r *DescribeFlavorKingCycleBrandScanAnalysisResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlavorKingCycleBrandScanAnalysisResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFlavorKingCycleBrandScanMetricsRequestParams struct {
+	// <p>CorpId</p>
+	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// <p>溯源ID</p>
+	QueryDate *string `json:"QueryDate,omitnil,omitempty" name:"QueryDate"`
+}
+
+type DescribeFlavorKingCycleBrandScanMetricsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>CorpId</p>
+	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
+
+	// <p>溯源ID</p>
+	QueryDate *string `json:"QueryDate,omitnil,omitempty" name:"QueryDate"`
+}
+
+func (r *DescribeFlavorKingCycleBrandScanMetricsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlavorKingCycleBrandScanMetricsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CorpId")
+	delete(f, "QueryDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlavorKingCycleBrandScanMetricsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFlavorKingCycleBrandScanMetricsResponseParams struct {
+	// <p>数据</p>
+	Data []*FlavorKingCycleBrandScanMetricsItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFlavorKingCycleBrandScanMetricsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFlavorKingCycleBrandScanMetricsResponseParams `json:"Response"`
+}
+
+func (r *DescribeFlavorKingCycleBrandScanMetricsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlavorKingCycleBrandScanMetricsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeJobFileUrlRequestParams struct {
 	// 调度ID
 	JobId *uint64 `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -3968,6 +4465,57 @@ func (r *DescribeTraceDataListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DownloadGEORequestParams struct {
+
+}
+
+type DownloadGEORequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DownloadGEORequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadGEORequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadGEORequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DownloadGEOResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DownloadGEOResponse struct {
+	*tchttp.BaseResponse
+	Response *DownloadGEOResponseParams `json:"Response"`
+}
+
+func (r *DownloadGEOResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadGEOResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type EffectFeedbackRequestParams struct {
 	// 业务加密入参。
 	BusinessSecurityData *InputEncryptData `json:"BusinessSecurityData,omitnil,omitempty" name:"BusinessSecurityData"`
@@ -4030,6 +4578,277 @@ type Ext struct {
 	//
 	// Deprecated: Value is deprecated.
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type FlavorKingCycleBrandImportantCityScanAnalysisCityItem struct {
+	// <p>口味王分布</p>
+	Ratio *float64 `json:"Ratio,omitnil,omitempty" name:"Ratio"`
+
+	// <p>口味王市场份额</p>
+	MarketShare *float64 `json:"MarketShare,omitnil,omitempty" name:"MarketShare"`
+
+	// <p>其他品牌市场份额</p>
+	OtherMarketShare *float64 `json:"OtherMarketShare,omitnil,omitempty" name:"OtherMarketShare"`
+
+	// <p>上周期口味王分布</p>
+	LastCycleRatio *float64 `json:"LastCycleRatio,omitnil,omitempty" name:"LastCycleRatio"`
+
+	// <p>上周期口味王牌市场份额</p>
+	LastCycleMarketShare *float64 `json:"LastCycleMarketShare,omitnil,omitempty" name:"LastCycleMarketShare"`
+
+	// <p>上周期其他品牌市场份额</p>
+	LastCycleOtherMarketShare *float64 `json:"LastCycleOtherMarketShare,omitnil,omitempty" name:"LastCycleOtherMarketShare"`
+
+	// <p>口味王增长率</p>
+	GrowRatio *float64 `json:"GrowRatio,omitnil,omitempty" name:"GrowRatio"`
+
+	// <p>其他品牌增长率</p>
+	OtherGrowRatio *float64 `json:"OtherGrowRatio,omitnil,omitempty" name:"OtherGrowRatio"`
+
+	// <p>下属城市明细</p>
+	Regions []*FlavorKingCycleBrandImportantCityScanAnalysisRegionItem `json:"Regions,omitnil,omitempty" name:"Regions"`
+
+	// <p>城市</p>
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+}
+
+type FlavorKingCycleBrandImportantCityScanAnalysisRegionItem struct {
+	// <p>口味王分布</p>
+	Ratio *float64 `json:"Ratio,omitnil,omitempty" name:"Ratio"`
+
+	// <p>口味王市场份额</p>
+	MarketShare *float64 `json:"MarketShare,omitnil,omitempty" name:"MarketShare"`
+
+	// <p>其他品牌市场份额</p>
+	OtherMarketShare *float64 `json:"OtherMarketShare,omitnil,omitempty" name:"OtherMarketShare"`
+
+	// <p>上周期口味王分布</p>
+	LastCycleRatio *float64 `json:"LastCycleRatio,omitnil,omitempty" name:"LastCycleRatio"`
+
+	// <p>上周期口味王市场份额</p>
+	LastCycleMarketShare *float64 `json:"LastCycleMarketShare,omitnil,omitempty" name:"LastCycleMarketShare"`
+
+	// <p>上周期其他品牌市场份额</p>
+	LastCycleOtherMarketShare *float64 `json:"LastCycleOtherMarketShare,omitnil,omitempty" name:"LastCycleOtherMarketShare"`
+
+	// <p>口味王增长率</p>
+	GrowRatio *float64 `json:"GrowRatio,omitnil,omitempty" name:"GrowRatio"`
+
+	// <p>其他品牌增长率</p>
+	OtherGrowRatio *float64 `json:"OtherGrowRatio,omitnil,omitempty" name:"OtherGrowRatio"`
+
+	// <p>区</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+}
+
+type FlavorKingCycleBrandImportantProvinceScanAnalysisCityItem struct {
+	// <p>口味王分布</p>
+	Ratio *float64 `json:"Ratio,omitnil,omitempty" name:"Ratio"`
+
+	// <p>口味王市场份额</p>
+	MarketShare *float64 `json:"MarketShare,omitnil,omitempty" name:"MarketShare"`
+
+	// <p>其他品牌市场份额</p>
+	OtherMarketShare *float64 `json:"OtherMarketShare,omitnil,omitempty" name:"OtherMarketShare"`
+
+	// <p>上周期口味王分布</p>
+	LastCycleRatio *float64 `json:"LastCycleRatio,omitnil,omitempty" name:"LastCycleRatio"`
+
+	// <p>上周期口味王市场份额</p>
+	LastCycleMarketShare *float64 `json:"LastCycleMarketShare,omitnil,omitempty" name:"LastCycleMarketShare"`
+
+	// <p>上周期其他品牌市场份额</p>
+	LastCycleOtherMarketShare *float64 `json:"LastCycleOtherMarketShare,omitnil,omitempty" name:"LastCycleOtherMarketShare"`
+
+	// <p>口味王增长率</p>
+	GrowRatio *float64 `json:"GrowRatio,omitnil,omitempty" name:"GrowRatio"`
+
+	// <p>其他品牌增长率</p>
+	OtherGrowRatio *float64 `json:"OtherGrowRatio,omitnil,omitempty" name:"OtherGrowRatio"`
+
+	// <p>城市</p>
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+}
+
+type FlavorKingCycleBrandImportantProvinceScanAnalysisProvinceItem struct {
+	// <p>口味王分布</p>
+	Ratio *float64 `json:"Ratio,omitnil,omitempty" name:"Ratio"`
+
+	// <p>口味王市场份额</p>
+	MarketShare *float64 `json:"MarketShare,omitnil,omitempty" name:"MarketShare"`
+
+	// <p>其他品牌市场份额</p>
+	OtherMarketShare *float64 `json:"OtherMarketShare,omitnil,omitempty" name:"OtherMarketShare"`
+
+	// <p>上周期口味王分布</p>
+	LastCycleRatio *float64 `json:"LastCycleRatio,omitnil,omitempty" name:"LastCycleRatio"`
+
+	// <p>上周期口味王市场份额</p>
+	LastCycleMarketShare *float64 `json:"LastCycleMarketShare,omitnil,omitempty" name:"LastCycleMarketShare"`
+
+	// <p>上周期其他品牌市场份额</p>
+	LastCycleOtherMarketShare *float64 `json:"LastCycleOtherMarketShare,omitnil,omitempty" name:"LastCycleOtherMarketShare"`
+
+	// <p>口味王增长率</p>
+	GrowRatio *float64 `json:"GrowRatio,omitnil,omitempty" name:"GrowRatio"`
+
+	// <p>其他品牌增长率</p>
+	OtherGrowRatio *float64 `json:"OtherGrowRatio,omitnil,omitempty" name:"OtherGrowRatio"`
+
+	// <p>下属城市明细</p>
+	Cities []*FlavorKingCycleBrandImportantProvinceScanAnalysisCityItem `json:"Cities,omitnil,omitempty" name:"Cities"`
+
+	// <p>省份</p>
+	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
+}
+
+type FlavorKingCycleBrandImportantProvinceUserAnalysisCityItem struct {
+	// <p>口味王市场份额</p>
+	MarketShare *float64 `json:"MarketShare,omitnil,omitempty" name:"MarketShare"`
+
+	// <p>其他品牌市场份额</p>
+	OtherMarketShare *float64 `json:"OtherMarketShare,omitnil,omitempty" name:"OtherMarketShare"`
+
+	// <p>口味王增长率</p>
+	GrowRatio *float64 `json:"GrowRatio,omitnil,omitempty" name:"GrowRatio"`
+
+	// <p>其他品牌增长率</p>
+	OtherGrowRatio *float64 `json:"OtherGrowRatio,omitnil,omitempty" name:"OtherGrowRatio"`
+
+	// <p>城市</p>
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+}
+
+type FlavorKingCycleBrandImportantProvinceUserAnalysisProvinceItem struct {
+	// <p>口味王市场份额</p>
+	MarketShare *float64 `json:"MarketShare,omitnil,omitempty" name:"MarketShare"`
+
+	// <p>其他品牌市场份额</p>
+	OtherMarketShare *float64 `json:"OtherMarketShare,omitnil,omitempty" name:"OtherMarketShare"`
+
+	// <p>口味王增长率</p>
+	GrowRatio *float64 `json:"GrowRatio,omitnil,omitempty" name:"GrowRatio"`
+
+	// <p>其他品牌增长率</p>
+	OtherGrowRatio *float64 `json:"OtherGrowRatio,omitnil,omitempty" name:"OtherGrowRatio"`
+
+	// <p>下属城市明细</p>
+	Cities []*FlavorKingCycleBrandImportantProvinceUserAnalysisCityItem `json:"Cities,omitnil,omitempty" name:"Cities"`
+
+	// <p>省份</p>
+	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
+}
+
+type FlavorKingCycleBrandProvinceCityScanAnalysisCityItem struct {
+	// <p>口味王分布</p>
+	Ratio []*float64 `json:"Ratio,omitnil,omitempty" name:"Ratio"`
+
+	// <p>分区域数据</p>
+	Regions []*FlavorKingCycleBrandProvinceCityScanAnalysisRegionItem `json:"Regions,omitnil,omitempty" name:"Regions"`
+
+	// <p>城市</p>
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+}
+
+type FlavorKingCycleBrandProvinceCityScanAnalysisProvinceItem struct {
+	// <p>口味王分布</p>
+	Ratio []*float64 `json:"Ratio,omitnil,omitempty" name:"Ratio"`
+
+	// <p>下属城市明细</p>
+	Cities []*FlavorKingCycleBrandProvinceCityScanAnalysisCityItem `json:"Cities,omitnil,omitempty" name:"Cities"`
+
+	// <p>省份</p>
+	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
+}
+
+type FlavorKingCycleBrandProvinceCityScanAnalysisRegionItem struct {
+	// <p>口味王分布</p>
+	Ratio []*float64 `json:"Ratio,omitnil,omitempty" name:"Ratio"`
+
+	// <p>区域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+}
+
+type FlavorKingCycleBrandProvinceScanAnalysisDataItem struct {
+	// <p>口味王市场份额</p>
+	MarketShare *float64 `json:"MarketShare,omitnil,omitempty" name:"MarketShare"`
+
+	// <p>其他品牌市场份额</p>
+	OtherMarketShare *float64 `json:"OtherMarketShare,omitnil,omitempty" name:"OtherMarketShare"`
+
+	// <p>上周期口味王市场份额</p>
+	LastCycleMarketShare *float64 `json:"LastCycleMarketShare,omitnil,omitempty" name:"LastCycleMarketShare"`
+
+	// <p>上周期其他品牌市场份额</p>
+	OtherLastCycleMarketShare *float64 `json:"OtherLastCycleMarketShare,omitnil,omitempty" name:"OtherLastCycleMarketShare"`
+
+	// <p>口味王分布</p>
+	Ratio *float64 `json:"Ratio,omitnil,omitempty" name:"Ratio"`
+
+	// <p>上周期口味王分布</p>
+	LastCycleRatio *float64 `json:"LastCycleRatio,omitnil,omitempty" name:"LastCycleRatio"`
+
+	// <p>省份</p>
+	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
+
+	// <p>口味王环比</p>
+	GrowRatio *float64 `json:"GrowRatio,omitnil,omitempty" name:"GrowRatio"`
+
+	// <p>其他平台环比</p>
+	OtherGrowRatio *float64 `json:"OtherGrowRatio,omitnil,omitempty" name:"OtherGrowRatio"`
+}
+
+type FlavorKingCycleBrandProvinceScanAnalysisResponse struct {
+	// <p>口味王全国份额</p>
+	MarketShare *float64 `json:"MarketShare,omitnil,omitempty" name:"MarketShare"`
+
+	// <p>上周期口味王市场份额</p>
+	LastCycleMarketShare *float64 `json:"LastCycleMarketShare,omitnil,omitempty" name:"LastCycleMarketShare"`
+
+	// <p>口味王全国周环比</p>
+	Provinces []*FlavorKingCycleBrandProvinceScanAnalysisDataItem `json:"Provinces,omitnil,omitempty" name:"Provinces"`
+
+	// <p>口味王环比</p>
+	GrowRatio *float64 `json:"GrowRatio,omitnil,omitempty" name:"GrowRatio"`
+
+	// <p>其他品牌环比</p>
+	OtherGrowRatio *float64 `json:"OtherGrowRatio,omitnil,omitempty" name:"OtherGrowRatio"`
+}
+
+type FlavorKingCycleBrandScanAnalysisDataItem struct {
+	// <p>周期时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *string `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// <p>品牌</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrandName *string `json:"BrandName,omitnil,omitempty" name:"BrandName"`
+
+	// <p>品牌占比</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ratio *float64 `json:"Ratio,omitnil,omitempty" name:"Ratio"`
+}
+
+type FlavorKingCycleBrandScanAnalysisResponse struct {
+	// <p>总数</p>
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// <p>占比</p>
+	CycleRatio *float64 `json:"CycleRatio,omitnil,omitempty" name:"CycleRatio"`
+
+	// <p>环比</p>
+	CycleOverCycle *float64 `json:"CycleOverCycle,omitnil,omitempty" name:"CycleOverCycle"`
+
+	// <p>占比详情</p>
+	CycleRatioItems []*FlavorKingCycleBrandScanAnalysisDataItem `json:"CycleRatioItems,omitnil,omitempty" name:"CycleRatioItems"`
+}
+
+type FlavorKingCycleBrandScanMetricsItem struct {
+	// <p>日期范围</p>
+	Duration *string `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// <p>口味王分布</p>
+	Ratio *float64 `json:"Ratio,omitnil,omitempty" name:"Ratio"`
 }
 
 type InputEncryptData struct {
@@ -5306,6 +6125,15 @@ type ScanDetailItem struct {
 
 	// <p>码</p>
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// <p>Uid扩展字段</p>
+	ExtUid *string `json:"ExtUid,omitnil,omitempty" name:"ExtUid"`
+
+	// <p>维度</p><p>取值范围：[-90, 90]</p>
+	Latitude *float64 `json:"Latitude,omitnil,omitempty" name:"Latitude"`
+
+	// <p>精度</p><p>取值范围：[-180, 180]</p>
+	Longitude *float64 `json:"Longitude,omitnil,omitempty" name:"Longitude"`
 }
 
 type ScanLog struct {

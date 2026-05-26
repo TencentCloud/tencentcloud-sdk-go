@@ -3541,6 +3541,56 @@ func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserR
     return
 }
 
+func NewCreateUserRoleRequest() (request *CreateUserRoleRequest) {
+    request = &CreateUserRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateUserRole")
+    
+    
+    return
+}
+
+func NewCreateUserRoleResponse() (response *CreateUserRoleResponse) {
+    response = &CreateUserRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUserRole
+// 创建用户角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateUserRole(request *CreateUserRoleRequest) (response *CreateUserRoleResponse, err error) {
+    return c.CreateUserRoleWithContext(context.Background(), request)
+}
+
+// CreateUserRole
+// 创建用户角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateUserRoleWithContext(ctx context.Context, request *CreateUserRoleRequest) (response *CreateUserRoleResponse, err error) {
+    if request == nil {
+        request = NewCreateUserRoleRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "dlc", APIVersion, "CreateUserRole")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUserVpcConnectionRequest() (request *CreateUserVpcConnectionRequest) {
     request = &CreateUserVpcConnectionRequest{
         BaseRequest: &tchttp.BaseRequest{},

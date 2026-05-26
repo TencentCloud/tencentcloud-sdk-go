@@ -922,28 +922,23 @@ func (r *CancelUserAutoSignEnableUrlResponse) FromJsonString(s string) error {
 }
 
 type CcInfo struct {
-	// 被抄送方手机号码， 支持中国大陆手机号11位数字(无需加+86前缀或其他字符)。
-	// 请确认手机号所有方为此业务通知方。
+	// <p>被抄送方手机号码， 支持中国大陆手机号11位数字(无需加+86前缀或其他字符)。<br>请确认手机号所有方为此业务通知方。</p>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 被抄送方姓名。
-	// 抄送方的姓名将用于身份认证，请确保填写的姓名为抄送方的真实姓名，而非昵称等代名。
+	// <p>被抄送方姓名。<br>抄送方的姓名将用于身份认证，请确保填写的姓名为抄送方的真实姓名，而非昵称等代名。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 被抄送方类型, 可设置以下类型:
-	// <ul><li> **0** :个人抄送方</li>
-	// <li> **1** :企业员工抄送方</li></ul>
+	// <p>被抄送方类型, 可设置以下类型:</p><ul><li> **0** :个人抄送方</li><li> **1** :企业员工抄送方</li></ul>
 	CcType *int64 `json:"CcType,omitnil,omitempty" name:"CcType"`
 
-	// 被抄送方权限, 可设置如下权限:
-	// <ul><li> **0** :可查看合同内容</li>
-	// <li> **1** :可查看合同内容也可下载原文</li></ul>
+	// <p>被抄送方权限, 可设置如下权限:</p><ul><li> **0** :可查看合同内容</li><li> **1** :可查看合同内容也可下载原文</li></ul>
 	CcPermission *int64 `json:"CcPermission,omitnil,omitempty" name:"CcPermission"`
 
-	// 通知签署方经办人的方式,  有以下途径:
-	// <ul><li> **sms** :  (默认)短信</li>
-	// <li> **none** : 不通知</li></ul>
+	// <p>通知签署方经办人的方式,  有以下途径:</p><ul><li> **sms** :  (默认)短信</li><li> **none** : 不通知</li></ul>
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
+
+	// <p>被抄送方企业名称。<br>请确认该名称与企业营业执照中注册的名称一致。<br>如果名称中包含英文括号()，请使用中文括号（）代替。</p><p>注意:<br><font color="red">此为白名单功能，需要联系客户经理，开通白名单后才能使用。</font><br>使用文档 <a href="https://qian.tencent.com/developers/company/enterprise_inbox">签署方/抄送方仅指定企业名称发起合同</a></p>
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 }
 
 type Checklist struct {

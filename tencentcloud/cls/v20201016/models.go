@@ -5921,7 +5921,7 @@ type CreateSplunkDeliverRequestParams struct {
 	// <p>日志主题id</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// <p>splunk投递任务名称；<br>name有如下限制：</p><ul><li>不能为空</li><li>长度不大于64</li><li>只能包含aA-zZ、下划线、-、0-9</li></ul>
+	// <p>splunk投递任务名称；name有如下限制：- 不能为空- 长度不大于256- 只能包含aA-zZ、下划线、-、0-9</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>Splunk投递任务-目标配置-网络信息</p>
@@ -5961,7 +5961,7 @@ type CreateSplunkDeliverRequest struct {
 	// <p>日志主题id</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// <p>splunk投递任务名称；<br>name有如下限制：</p><ul><li>不能为空</li><li>长度不大于64</li><li>只能包含aA-zZ、下划线、-、0-9</li></ul>
+	// <p>splunk投递任务名称；name有如下限制：- 不能为空- 长度不大于256- 只能包含aA-zZ、下划线、-、0-9</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>Splunk投递任务-目标配置-网络信息</p>
@@ -19803,7 +19803,7 @@ type ModifySplunkDeliverRequestParams struct {
 	// <p>日志主题id</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// <p>投递任务名称<br>name有以下限制：</p><ul><li>不能为空</li><li>长度不大于64</li><li>只能包含aA-zZ、下划线、-、0-9</li></ul>
+	// <p>投递任务名称name有以下限制：- 不能为空- 长度不大于256- 只能包含aA-zZ、下划线、-、0-9</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>投递任务启用状态；0:禁用；1:启用</p>
@@ -19849,7 +19849,7 @@ type ModifySplunkDeliverRequest struct {
 	// <p>日志主题id</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// <p>投递任务名称<br>name有以下限制：</p><ul><li>不能为空</li><li>长度不大于64</li><li>只能包含aA-zZ、下划线、-、0-9</li></ul>
+	// <p>投递任务名称name有以下限制：- 不能为空- 长度不大于256- 只能包含aA-zZ、下划线、-、0-9</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// <p>投递任务启用状态；0:禁用；1:启用</p>

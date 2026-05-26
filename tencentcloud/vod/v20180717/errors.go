@@ -686,6 +686,9 @@ const (
 	// 播放列表长度太大。
 	LIMITEXCEEDED_PLAYLIST = "LimitExceeded.PlayList"
 
+	// 超出配额限制
+	LIMITEXCEEDED_QUOTA = "LimitExceeded.Quota"
+
 	// 播单列表长度超过上限。
 	LIMITEXCEEDED_ROUNDPLAYLIST = "LimitExceeded.RoundPlaylist"
 

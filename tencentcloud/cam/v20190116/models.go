@@ -3330,6 +3330,66 @@ func (r *GetGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetPasswordRulesRequestParams struct {
+
+}
+
+type GetPasswordRulesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *GetPasswordRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetPasswordRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetPasswordRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetPasswordRulesResponseParams struct {
+	// 密码规则
+	Rules *PassWordRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// 修改时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 修改人
+	Modifier *string `json:"Modifier,omitnil,omitempty" name:"Modifier"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetPasswordRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *GetPasswordRulesResponseParams `json:"Response"`
+}
+
+func (r *GetPasswordRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetPasswordRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetPolicyRequestParams struct {
 	// 策略Id。
 	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
@@ -5466,6 +5526,32 @@ type OffsiteFlag struct {
 	Tips *uint64 `json:"Tips,omitnil,omitempty" name:"Tips"`
 }
 
+type PassWordRule struct {
+	// 最小长度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinimumLength *int64 `json:"MinimumLength,omitnil,omitempty" name:"MinimumLength"`
+
+	// 必须包含的字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MustContain *string `json:"MustContain,omitnil,omitempty" name:"MustContain"`
+
+	// 强制修改周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ForcePasswordChange *int64 `json:"ForcePasswordChange,omitnil,omitempty" name:"ForcePasswordChange"`
+
+	// 重复使用次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReusePasswordLimit *int64 `json:"ReusePasswordLimit,omitnil,omitempty" name:"ReusePasswordLimit"`
+
+	// 密码重试次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetryPasswordLimit *int64 `json:"RetryPasswordLimit,omitnil,omitempty" name:"RetryPasswordLimit"`
+
+	// 密码过期失效 1：是，2：否（是：密码过期后，子用户无法登录，需要管理员重置密码。否：密码过期后，子用户可登录，登录后强制根据旧密码修改密码）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PasswordExpirationInvalidation *int64 `json:"PasswordExpirationInvalidation,omitnil,omitempty" name:"PasswordExpirationInvalidation"`
+}
+
 type PolicyVersionDetail struct {
 	// 策略版本号
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6467,6 +6553,60 @@ func (r *UpdateOIDCConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateOIDCConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdatePasswordRulesRequestParams struct {
+	// 密码规则
+	Rules *PassWordRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+}
+
+type UpdatePasswordRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 密码规则
+	Rules *PassWordRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+}
+
+func (r *UpdatePasswordRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdatePasswordRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Rules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdatePasswordRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdatePasswordRulesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdatePasswordRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdatePasswordRulesResponseParams `json:"Response"`
+}
+
+func (r *UpdatePasswordRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdatePasswordRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

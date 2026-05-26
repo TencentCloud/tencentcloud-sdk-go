@@ -826,6 +826,60 @@ func (r *DeleteL3ConnResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAccessRegionsRequestParams struct {
+
+}
+
+type DescribeAccessRegionsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeAccessRegionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessRegionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessRegionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccessRegionsResponseParams struct {
+	// <p>地域信息列表</p>
+	RegionList []*RegionInfo `json:"RegionList,omitnil,omitempty" name:"RegionList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAccessRegionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAccessRegionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAccessRegionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessRegionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DestIpInfo struct {
 	// 时间：s
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
@@ -3556,6 +3610,67 @@ type L3ConnInfo struct {
 }
 
 // Predefined struct for user
+type ModifyDeviceAccessRegionsRequestParams struct {
+	// <p>设备ID</p>
+	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
+
+	// <p>接入地域</p>
+	AllowedRegions []*string `json:"AllowedRegions,omitnil,omitempty" name:"AllowedRegions"`
+}
+
+type ModifyDeviceAccessRegionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>设备ID</p>
+	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
+
+	// <p>接入地域</p>
+	AllowedRegions []*string `json:"AllowedRegions,omitnil,omitempty" name:"AllowedRegions"`
+}
+
+func (r *ModifyDeviceAccessRegionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceAccessRegionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceIds")
+	delete(f, "AllowedRegions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDeviceAccessRegionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDeviceAccessRegionsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDeviceAccessRegionsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDeviceAccessRegionsResponseParams `json:"Response"`
+}
+
+func (r *ModifyDeviceAccessRegionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceAccessRegionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyPackageRenewFlagRequestParams struct {
 	// 流量包的唯一资源ID
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
@@ -3869,6 +3984,17 @@ func (r *OrderPerLicenseResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *OrderPerLicenseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RegionInfo struct {
+	// <p>地域 ID。</p>
+	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// <p>地域名称。</p>
+	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
+
+	// <p>地域英文缩写。</p>
+	RegionAbbr *string `json:"RegionAbbr,omitnil,omitempty" name:"RegionAbbr"`
 }
 
 // Predefined struct for user

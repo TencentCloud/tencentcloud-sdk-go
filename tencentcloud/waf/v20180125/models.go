@@ -23358,7 +23358,7 @@ type SkillScanQueryData struct {
 	// <p>综合处置建议字段，位于 data 顶层，用于给出本次检测结果的总体修复、缓解或人工处置建议</p>
 	Mitigation *string `json:"Mitigation,omitnil,omitempty" name:"Mitigation"`
 
-	// <p>安全评分（0-100，100 为最安全）</p><p>取值范围：[0, 100]</p>
+	// <p>安全评分（0-100，分数越高越安全）</p><p>取值范围：[0, 100]</p>
 	SecurityScore *uint64 `json:"SecurityScore,omitnil,omitempty" name:"SecurityScore"`
 
 	// <p>本次扫描使用的引擎版本号</p>

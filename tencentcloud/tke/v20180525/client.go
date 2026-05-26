@@ -8009,7 +8009,7 @@ func NewDescribeClusterVirtualNodeResponse() (response *DescribeClusterVirtualNo
 }
 
 // DescribeClusterVirtualNode
-// 查看超级节点列表
+// 查看超级节点列表，仅支持TKE标准集群
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
@@ -8023,7 +8023,7 @@ func (c *Client) DescribeClusterVirtualNode(request *DescribeClusterVirtualNodeR
 }
 
 // DescribeClusterVirtualNode
-// 查看超级节点列表
+// 查看超级节点列表，仅支持TKE标准集群
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"

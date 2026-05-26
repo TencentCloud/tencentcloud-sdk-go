@@ -919,6 +919,74 @@ type CreatePrivilegeCodeRspData struct {
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 }
 
+// Predefined struct for user
+type DeleteDeviceVirtualGroupRequestParams struct {
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 必填，终端自定义分组id
+	DeviceVirtualGroupId *int64 `json:"DeviceVirtualGroupId,omitnil,omitempty" name:"DeviceVirtualGroupId"`
+
+	// 必填，系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+}
+
+type DeleteDeviceVirtualGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 必填，终端自定义分组id
+	DeviceVirtualGroupId *int64 `json:"DeviceVirtualGroupId,omitnil,omitempty" name:"DeviceVirtualGroupId"`
+
+	// 必填，系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+}
+
+func (r *DeleteDeviceVirtualGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeviceVirtualGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainInstanceId")
+	delete(f, "DeviceVirtualGroupId")
+	delete(f, "OsType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDeviceVirtualGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDeviceVirtualGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDeviceVirtualGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDeviceVirtualGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteDeviceVirtualGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeviceVirtualGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeAccountGroupsData struct {
 	// 账号分组名全路径，点分格式
 	NamePath *string `json:"NamePath,omitnil,omitempty" name:"NamePath"`

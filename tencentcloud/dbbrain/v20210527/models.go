@@ -2981,52 +2981,50 @@ func (r *DescribeDBDiagEventResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBDiagEventsRequestParams struct {
-	// 开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
+	// <p>开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间，如“2021-05-27 01:00:00”，支持的最早查询时间为当前时间的前30天。
+	// <p>结束时间，如“2021-05-27 01:00:00”，支持的最早查询时间为当前时间的前30天。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 风险等级列表，取值按影响程度从高至低分别为：1 - 致命、2 -严重、3 - 告警、4 - 提示、5 -健康。
+	// <p>风险等级列表，取值按影响程度从高至低分别为：1 - 致命、2 -严重、3 - 告警、4 - 提示、5 -健康。</p>
 	Severities []*int64 `json:"Severities,omitnil,omitempty" name:"Severities"`
 
-	// 实例ID列表。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
-	// 查询TDSQL MySQL分布式实例:Instanceld：填写集群ID&Shard实例ID，如：dcdbt-157xxxk&shard-qxxxx
+	// <p>实例ID列表。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。<br>查询TDSQL MySQL分布式实例:Instanceld：填写集群ID&amp;Shard实例ID，如：dcdbt-157xxxk&amp;shard-qxxxx</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mariadb"-数据库mariadb    默认为"mysql"。
+	// <p>服务产品类型，支持值包括：&quot;mysql&quot; - 云数据库 MySQL，&quot;redis&quot; - 云数据库 Redis，&quot;mariadb&quot;-数据库mariadb，&quot;cynosdb&quot;-数据库 TDSQL-C, &quot;dcdb&quot;-数据库TDSQL MySQL    默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 偏移量，默认0。
+	// <p>偏移量，默认0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大值为50。
+	// <p>返回数量，默认20，最大值为50。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeDBDiagEventsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
+	// <p>开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间，如“2021-05-27 01:00:00”，支持的最早查询时间为当前时间的前30天。
+	// <p>结束时间，如“2021-05-27 01:00:00”，支持的最早查询时间为当前时间的前30天。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 风险等级列表，取值按影响程度从高至低分别为：1 - 致命、2 -严重、3 - 告警、4 - 提示、5 -健康。
+	// <p>风险等级列表，取值按影响程度从高至低分别为：1 - 致命、2 -严重、3 - 告警、4 - 提示、5 -健康。</p>
 	Severities []*int64 `json:"Severities,omitnil,omitempty" name:"Severities"`
 
-	// 实例ID列表。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
-	// 查询TDSQL MySQL分布式实例:Instanceld：填写集群ID&Shard实例ID，如：dcdbt-157xxxk&shard-qxxxx
+	// <p>实例ID列表。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。<br>查询TDSQL MySQL分布式实例:Instanceld：填写集群ID&amp;Shard实例ID，如：dcdbt-157xxxk&amp;shard-qxxxx</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mariadb"-数据库mariadb    默认为"mysql"。
+	// <p>服务产品类型，支持值包括：&quot;mysql&quot; - 云数据库 MySQL，&quot;redis&quot; - 云数据库 Redis，&quot;mariadb&quot;-数据库mariadb，&quot;cynosdb&quot;-数据库 TDSQL-C, &quot;dcdb&quot;-数据库TDSQL MySQL    默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 偏移量，默认0。
+	// <p>偏移量，默认0。</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认20，最大值为50。
+	// <p>返回数量，默认20，最大值为50。</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -3057,10 +3055,10 @@ func (r *DescribeDBDiagEventsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBDiagEventsResponseParams struct {
-	// 诊断事件的总数目。
+	// <p>诊断事件的总数目。</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 诊断事件的列表。
+	// <p>诊断事件的列表。</p>
 	Items []*DiagHistoryEventItem `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3659,26 +3657,26 @@ func (r *DescribeDiagDBInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHealthScoreRequestParams struct {
-	// 需要获取健康得分的实例ID。
+	// <p>需要获取健康得分的实例ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。如果是dcdb(TDSQL MySQL)，请使用 <code>{ClusterId}&amp;{InstanceId}</code> 拼接结果代替入参</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 获取健康得分的时间，时间格式如：2019-09-10 12:13:14。
+	// <p>获取健康得分的时间，时间格式如：2019-09-10 12:13:14。</p>
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+	// <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;redis&quot; - 云数据库 Redis，默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
 type DescribeHealthScoreRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要获取健康得分的实例ID。
+	// <p>需要获取健康得分的实例ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。如果是dcdb(TDSQL MySQL)，请使用 <code>{ClusterId}&amp;{InstanceId}</code> 拼接结果代替入参</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 获取健康得分的时间，时间格式如：2019-09-10 12:13:14。
+	// <p>获取健康得分的时间，时间格式如：2019-09-10 12:13:14。</p>
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+	// <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;redis&quot; - 云数据库 Redis，默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -3705,7 +3703,7 @@ func (r *DescribeHealthScoreRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHealthScoreResponseParams struct {
-	// 健康得分以及异常扣分项。
+	// <p>健康得分以及异常扣分项。</p>
 	Data *HealthScoreInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7201,13 +7199,13 @@ type EventInfo struct {
 	// 事件 ID 。
 	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 
-	// 诊断类型。
+	// 诊断类型。包含以下值：内存利用率，CPU利用率，磁盘空间利用率，复制，复制IO线程中断。
 	DiagType *string `json:"DiagType,omitnil,omitempty" name:"DiagType"`
 
-	// 开始时间。
+	// 开始时间。格式: "yyyy-MM-dd'T'HH:mm:ssXXX"
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间。格式: "yyyy-MM-dd'T'HH:mm:ssXXX"
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 概要。
@@ -7274,6 +7272,11 @@ type HealthScoreInfo struct {
 	HealthScore *int64 `json:"HealthScore,omitnil,omitempty" name:"HealthScore"`
 
 	// 健康等级, 如："HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK"。
+	// 其中：
+	// HEALTH - 健康
+	// SUB_HEALTH - 亚健康
+	// RISK - 危险
+	// HIGH_RISK - 高危
 	HealthLevel *string `json:"HealthLevel,omitnil,omitempty" name:"HealthLevel"`
 }
 

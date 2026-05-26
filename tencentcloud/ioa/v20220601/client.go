@@ -553,6 +553,70 @@ func (c *Client) CreatePrivilegeCodeWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewDeleteDeviceVirtualGroupRequest() (request *DeleteDeviceVirtualGroupRequest) {
+    request = &DeleteDeviceVirtualGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DeleteDeviceVirtualGroup")
+    
+    
+    return
+}
+
+func NewDeleteDeviceVirtualGroupResponse() (response *DeleteDeviceVirtualGroupResponse) {
+    response = &DeleteDeviceVirtualGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDeviceVirtualGroup
+// 删除终端自定义分组，私有化调用path为：/capi/Assets/Device/DeleteDeviceVirtualGroup
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
+func (c *Client) DeleteDeviceVirtualGroup(request *DeleteDeviceVirtualGroupRequest) (response *DeleteDeviceVirtualGroupResponse, err error) {
+    return c.DeleteDeviceVirtualGroupWithContext(context.Background(), request)
+}
+
+// DeleteDeviceVirtualGroup
+// 删除终端自定义分组，私有化调用path为：/capi/Assets/Device/DeleteDeviceVirtualGroup
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
+func (c *Client) DeleteDeviceVirtualGroupWithContext(ctx context.Context, request *DeleteDeviceVirtualGroupRequest) (response *DeleteDeviceVirtualGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteDeviceVirtualGroupRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ioa", APIVersion, "DeleteDeviceVirtualGroup")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDeviceVirtualGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDeviceVirtualGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAccountGroupsRequest() (request *DescribeAccountGroupsRequest) {
     request = &DescribeAccountGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

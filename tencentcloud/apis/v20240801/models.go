@@ -4107,11 +4107,15 @@ type TmsConfigDTO struct {
 }
 
 type TokenLimitConfigDTO struct {
-	// 单次请求上限，k
+	// <p>限流类型</p><p>枚举值：</p><ul><li>minute： 时间窗口</li><li>day： 自然日</li><li>month： 自然月</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>单次请求上限，k</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LimitRequestBody *uint64 `json:"LimitRequestBody,omitnil,omitempty" name:"LimitRequestBody"`
 
-	// 累次token总量消耗上限
+	// <p>累次token总量消耗上限</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LimitWindows []*LimitWindowsDTO `json:"LimitWindows,omitnil,omitempty" name:"LimitWindows"`
 }

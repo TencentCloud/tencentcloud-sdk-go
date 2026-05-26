@@ -213,6 +213,14 @@ type AssociateInstancesKeyPairsRequestParams struct {
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 绑定类型。可选值：
+	// ONLINE - 在线绑定，不需要关机。
+	// OFFLINE - 离线绑定，会对实例进行关机。
+	AssociateType *string `json:"AssociateType,omitnil,omitempty" name:"AssociateType"`
+
+	// 绑定的用户名。当 AssociateType 为 OFFLINE 时，不支持该参数。
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 }
 
 type AssociateInstancesKeyPairsRequest struct {
@@ -223,6 +231,14 @@ type AssociateInstancesKeyPairsRequest struct {
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 绑定类型。可选值：
+	// ONLINE - 在线绑定，不需要关机。
+	// OFFLINE - 离线绑定，会对实例进行关机。
+	AssociateType *string `json:"AssociateType,omitnil,omitempty" name:"AssociateType"`
+
+	// 绑定的用户名。当 AssociateType 为 OFFLINE 时，不支持该参数。
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 }
 
 func (r *AssociateInstancesKeyPairsRequest) ToJsonString() string {
@@ -239,6 +255,8 @@ func (r *AssociateInstancesKeyPairsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "KeyIds")
 	delete(f, "InstanceIds")
+	delete(f, "AssociateType")
+	delete(f, "Username")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateInstancesKeyPairsRequest has unknown keys!", "")
 	}
@@ -265,6 +283,14 @@ func (r *AssociateInstancesKeyPairsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *AssociateInstancesKeyPairsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type AssociatedInstanceInfo struct {
+	// <p>实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>密钥对绑定的用户。</p>
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 }
 
 // Predefined struct for user
@@ -5741,6 +5767,14 @@ type DisassociateInstancesKeyPairsRequestParams struct {
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 解绑定类型。可选值：
+	// ONLINE - 在线解绑定，不需要关机。
+	// OFFLINE - 离线解绑定，需要关机。
+	DisassociateType *string `json:"DisassociateType,omitnil,omitempty" name:"DisassociateType"`
+
+	// 解绑定的用户名。当 DisassociateType 为 OFFLINE 时，不支持该参数。
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 }
 
 type DisassociateInstancesKeyPairsRequest struct {
@@ -5751,6 +5785,14 @@ type DisassociateInstancesKeyPairsRequest struct {
 
 	// 实例 ID 列表。每次请求批量实例的上限为 100。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 解绑定类型。可选值：
+	// ONLINE - 在线解绑定，不需要关机。
+	// OFFLINE - 离线解绑定，需要关机。
+	DisassociateType *string `json:"DisassociateType,omitnil,omitempty" name:"DisassociateType"`
+
+	// 解绑定的用户名。当 DisassociateType 为 OFFLINE 时，不支持该参数。
+	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 }
 
 func (r *DisassociateInstancesKeyPairsRequest) ToJsonString() string {
@@ -5767,6 +5809,8 @@ func (r *DisassociateInstancesKeyPairsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "KeyIds")
 	delete(f, "InstanceIds")
+	delete(f, "DisassociateType")
+	delete(f, "Username")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisassociateInstancesKeyPairsRequest has unknown keys!", "")
 	}
@@ -7159,6 +7203,9 @@ type KeyPair struct {
 
 	// 密钥对关联的实例 ID 列表。
 	AssociatedInstanceIds []*string `json:"AssociatedInstanceIds,omitnil,omitempty" name:"AssociatedInstanceIds"`
+
+	// 密钥对关联的实例列表。
+	AssociatedInstanceSet []*AssociatedInstanceInfo `json:"AssociatedInstanceSet,omitnil,omitempty" name:"AssociatedInstanceSet"`
 
 	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ
 	// 注意：此字段可能返回 null，表示取不到有效值。

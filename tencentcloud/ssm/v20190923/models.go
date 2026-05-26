@@ -66,6 +66,9 @@ type CreateProductSecretRequestParams struct {
 
 	// <p>数据库账号类型，目前仅在创建sqlserver凭据场景会使用到，仅支持L3</p><p>枚举值：</p><ul><li>L3： 普通权限账号</li></ul>
 	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
+
+	// <p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥</li><li>1： 软件密钥</li></ul><p>默认值：0</p>
+	EncryptType *uint64 `json:"EncryptType,omitnil,omitempty" name:"EncryptType"`
 }
 
 type CreateProductSecretRequest struct {
@@ -115,6 +118,9 @@ type CreateProductSecretRequest struct {
 
 	// <p>数据库账号类型，目前仅在创建sqlserver凭据场景会使用到，仅支持L3</p><p>枚举值：</p><ul><li>L3： 普通权限账号</li></ul>
 	AccountType *string `json:"AccountType,omitnil,omitempty" name:"AccountType"`
+
+	// <p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥</li><li>1： 软件密钥</li></ul><p>默认值：0</p>
+	EncryptType *uint64 `json:"EncryptType,omitnil,omitempty" name:"EncryptType"`
 }
 
 func (r *CreateProductSecretRequest) ToJsonString() string {
@@ -144,6 +150,7 @@ func (r *CreateProductSecretRequest) FromJsonString(s string) error {
 	delete(f, "KmsHsmClusterId")
 	delete(f, "AccountRemark")
 	delete(f, "AccountType")
+	delete(f, "EncryptType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProductSecretRequest has unknown keys!", "")
 	}
@@ -186,55 +193,57 @@ func (r *CreateProductSecretResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSSHKeyPairSecretRequestParams struct {
-	// 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。
+	// <p>凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。</p>
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
-	// 密钥对创建后所属的项目ID。
+	// <p>密钥对创建后所属的项目ID。</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 描述信息，用于详细描述用途等，最大支持2048字节。
+	// <p>描述信息，用于详细描述用途等，最大支持2048字节。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 指定对凭据进行加密的KMS CMK。
-	// 如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。
-	// 您也可以指定在同region 下自行创建的KMS CMK进行加密。
+	// <p>指定对凭据进行加密的KMS CMK。<br>如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。<br>您也可以指定在同region 下自行创建的KMS CMK进行加密。</p>
 	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
 
-	// 标签列表。
+	// <p>标签列表。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 用户自定义输入的SSH密钥对的名称，可由数字，字母和下划线组成，只能以数字和字母开头，长度不超过25个字符。
+	// <p>用户自定义输入的SSH密钥对的名称，可由数字，字母和下划线组成，只能以数字和字母开头，长度不超过25个字符。</p>
 	SSHKeyName *string `json:"SSHKeyName,omitnil,omitempty" name:"SSHKeyName"`
 
-	// KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+	// <p>KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。</p>
 	KmsHsmClusterId *string `json:"KmsHsmClusterId,omitnil,omitempty" name:"KmsHsmClusterId"`
+
+	// <p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥</li><li>1： 软件密钥</li></ul><p>默认值：0</p>
+	EncryptType *uint64 `json:"EncryptType,omitnil,omitempty" name:"EncryptType"`
 }
 
 type CreateSSHKeyPairSecretRequest struct {
 	*tchttp.BaseRequest
 	
-	// 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。
+	// <p>凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。</p>
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
-	// 密钥对创建后所属的项目ID。
+	// <p>密钥对创建后所属的项目ID。</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 描述信息，用于详细描述用途等，最大支持2048字节。
+	// <p>描述信息，用于详细描述用途等，最大支持2048字节。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 指定对凭据进行加密的KMS CMK。
-	// 如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。
-	// 您也可以指定在同region 下自行创建的KMS CMK进行加密。
+	// <p>指定对凭据进行加密的KMS CMK。<br>如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。<br>您也可以指定在同region 下自行创建的KMS CMK进行加密。</p>
 	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
 
-	// 标签列表。
+	// <p>标签列表。</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 用户自定义输入的SSH密钥对的名称，可由数字，字母和下划线组成，只能以数字和字母开头，长度不超过25个字符。
+	// <p>用户自定义输入的SSH密钥对的名称，可由数字，字母和下划线组成，只能以数字和字母开头，长度不超过25个字符。</p>
 	SSHKeyName *string `json:"SSHKeyName,omitnil,omitempty" name:"SSHKeyName"`
 
-	// KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+	// <p>KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。</p>
 	KmsHsmClusterId *string `json:"KmsHsmClusterId,omitnil,omitempty" name:"KmsHsmClusterId"`
+
+	// <p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥</li><li>1： 软件密钥</li></ul><p>默认值：0</p>
+	EncryptType *uint64 `json:"EncryptType,omitnil,omitempty" name:"EncryptType"`
 }
 
 func (r *CreateSSHKeyPairSecretRequest) ToJsonString() string {
@@ -256,6 +265,7 @@ func (r *CreateSSHKeyPairSecretRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "SSHKeyName")
 	delete(f, "KmsHsmClusterId")
+	delete(f, "EncryptType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSSHKeyPairSecretRequest has unknown keys!", "")
 	}
@@ -264,19 +274,19 @@ func (r *CreateSSHKeyPairSecretRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSSHKeyPairSecretResponseParams struct {
-	// 创建的凭据名称。
+	// <p>创建的凭据名称。</p>
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
-	// 创建的SSH密钥ID。
+	// <p>创建的SSH密钥ID。</p>
 	SSHKeyID *string `json:"SSHKeyID,omitnil,omitempty" name:"SSHKeyID"`
 
-	// 创建的SSH密钥名称。
+	// <p>创建的SSH密钥名称。</p>
 	SSHKeyName *string `json:"SSHKeyName,omitnil,omitempty" name:"SSHKeyName"`
 
-	// 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+	// <p>标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误</p>
 	TagCode *uint64 `json:"TagCode,omitnil,omitempty" name:"TagCode"`
 
-	// 标签操作的返回信息。
+	// <p>标签操作的返回信息。</p>
 	TagMsg *string `json:"TagMsg,omitnil,omitempty" name:"TagMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -301,69 +311,75 @@ func (r *CreateSSHKeyPairSecretResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSecretRequestParams struct {
-	// 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。一旦创建不可修改。
+	// <p>凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。一旦创建不可修改。</p>
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
-	// 凭据版本，查询凭据信息时需要根据SecretName 和 VersionId进行查询，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。若为空，则使用默认的初始凭据版本号。可选，若为空或该凭据为云产品类凭据，则该版本号默认为 SSM_Current。
+	// <p>凭据版本，查询凭据信息时需要根据SecretName 和 VersionId进行查询，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。若为空，则使用默认的初始凭据版本号。可选，若为空或该凭据为云产品类凭据，则该版本号默认为 SSM_Current。</p>
 	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
 
-	// 描述信息，用于详细描述用途等，最大支持2048字节。
+	// <p>描述信息，用于详细描述用途等，最大支持2048字节。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 指定对凭据进行加密的KMS CMK。如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。您也可以指定在同region 下自行创建的KMS CMK进行加密。
+	// <p>指定对凭据进行加密的KMS CMK。如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。您也可以指定在同region 下自行创建的KMS CMK进行加密。</p>
 	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
 
-	// 凭据类型，默认为0自定义凭据。
+	// <p>凭据类型，默认为0自定义凭据。</p>
 	SecretType *uint64 `json:"SecretType,omitnil,omitempty" name:"SecretType"`
 
-	// 二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。
+	// <p>二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。</p>
 	SecretBinary *string `json:"SecretBinary,omitnil,omitempty" name:"SecretBinary"`
 
-	// 文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。
+	// <p>文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。</p>
 	SecretString *string `json:"SecretString,omitnil,omitempty" name:"SecretString"`
 
-	// JSON 格式字符串，用于指定特定凭据类型的额外配置。
+	// <p>JSON 格式字符串，用于指定特定凭据类型的额外配置。</p>
 	AdditionalConfig *string `json:"AdditionalConfig,omitnil,omitempty" name:"AdditionalConfig"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+	// <p>KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。</p>
 	KmsHsmClusterId *string `json:"KmsHsmClusterId,omitnil,omitempty" name:"KmsHsmClusterId"`
+
+	// <p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥加密</li><li>1： 软密钥加密</li></ul>
+	EncryptType *uint64 `json:"EncryptType,omitnil,omitempty" name:"EncryptType"`
 }
 
 type CreateSecretRequest struct {
 	*tchttp.BaseRequest
 	
-	// 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。一旦创建不可修改。
+	// <p>凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。一旦创建不可修改。</p>
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
-	// 凭据版本，查询凭据信息时需要根据SecretName 和 VersionId进行查询，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。若为空，则使用默认的初始凭据版本号。可选，若为空或该凭据为云产品类凭据，则该版本号默认为 SSM_Current。
+	// <p>凭据版本，查询凭据信息时需要根据SecretName 和 VersionId进行查询，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。若为空，则使用默认的初始凭据版本号。可选，若为空或该凭据为云产品类凭据，则该版本号默认为 SSM_Current。</p>
 	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
 
-	// 描述信息，用于详细描述用途等，最大支持2048字节。
+	// <p>描述信息，用于详细描述用途等，最大支持2048字节。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 指定对凭据进行加密的KMS CMK。如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。您也可以指定在同region 下自行创建的KMS CMK进行加密。
+	// <p>指定对凭据进行加密的KMS CMK。如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。您也可以指定在同region 下自行创建的KMS CMK进行加密。</p>
 	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
 
-	// 凭据类型，默认为0自定义凭据。
+	// <p>凭据类型，默认为0自定义凭据。</p>
 	SecretType *uint64 `json:"SecretType,omitnil,omitempty" name:"SecretType"`
 
-	// 二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。
+	// <p>二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。</p>
 	SecretBinary *string `json:"SecretBinary,omitnil,omitempty" name:"SecretBinary"`
 
-	// 文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。
+	// <p>文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。</p>
 	SecretString *string `json:"SecretString,omitnil,omitempty" name:"SecretString"`
 
-	// JSON 格式字符串，用于指定特定凭据类型的额外配置。
+	// <p>JSON 格式字符串，用于指定特定凭据类型的额外配置。</p>
 	AdditionalConfig *string `json:"AdditionalConfig,omitnil,omitempty" name:"AdditionalConfig"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+	// <p>KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。</p>
 	KmsHsmClusterId *string `json:"KmsHsmClusterId,omitnil,omitempty" name:"KmsHsmClusterId"`
+
+	// <p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥加密</li><li>1： 软密钥加密</li></ul>
+	EncryptType *uint64 `json:"EncryptType,omitnil,omitempty" name:"EncryptType"`
 }
 
 func (r *CreateSecretRequest) ToJsonString() string {
@@ -388,6 +404,7 @@ func (r *CreateSecretRequest) FromJsonString(s string) error {
 	delete(f, "AdditionalConfig")
 	delete(f, "Tags")
 	delete(f, "KmsHsmClusterId")
+	delete(f, "EncryptType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSecretRequest has unknown keys!", "")
 	}
@@ -396,16 +413,16 @@ func (r *CreateSecretRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSecretResponseParams struct {
-	// 新创建的凭据名称。
+	// <p>新创建的凭据名称。</p>
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
-	// 新创建的凭据版本。
+	// <p>新创建的凭据版本。</p>
 	VersionId *string `json:"VersionId,omitnil,omitempty" name:"VersionId"`
 
-	// 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
+	// <p>标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误</p>
 	TagCode *uint64 `json:"TagCode,omitnil,omitempty" name:"TagCode"`
 
-	// 标签操作的返回信息
+	// <p>标签操作的返回信息</p>
 	TagMsg *string `json:"TagMsg,omitnil,omitempty" name:"TagMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -763,14 +780,14 @@ func (r *DescribeRotationHistoryResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSecretRequestParams struct {
-	// 指定需要获取凭据详细信息的凭据名称。
+	// <p>指定需要获取凭据详细信息的凭据名称。</p>
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 }
 
 type DescribeSecretRequest struct {
 	*tchttp.BaseRequest
 	
-	// 指定需要获取凭据详细信息的凭据名称。
+	// <p>指定需要获取凭据详细信息的凭据名称。</p>
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 }
 
@@ -795,56 +812,62 @@ func (r *DescribeSecretRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSecretResponseParams struct {
-	// 凭据名称。
+	// <p>凭据名称。</p>
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
-	// 凭据描述信息。
+	// <p>凭据描述信息。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 用于加密的KMS CMK ID。
+	// <p>用于加密的KMS CMK ID。</p>
 	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
 
-	// 创建者UIN。
+	// <p>创建者UIN。</p>
 	CreateUin *uint64 `json:"CreateUin,omitnil,omitempty" name:"CreateUin"`
 
-	// 凭据状态：Enabled、Disabled、PendingDelete, Creating, Failed。
+	// <p>凭据状态：Enabled、Disabled、PendingDelete, Creating, Failed。</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 删除日期，uinx 时间戳，非计划删除状态的凭据为0。
+	// <p>删除日期，uinx 时间戳，非计划删除状态的凭据为0。</p>
 	DeleteTime *uint64 `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
 
-	// 创建日期。
+	// <p>创建日期。</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 0 --  用户自定义凭据类型；1 -- 数据库凭据类型；2 -- SSH密钥对凭据类型；3 -- 云API密钥（AKSK）凭据类型（使用此功能需要联系云助手单独开启白名单）；4 -- Redis类型凭据。
+	// <p>0 --  用户自定义凭据类型；1 -- 数据库凭据类型；2 -- SSH密钥对凭据类型；3 -- 云API密钥（AKSK）凭据类型（使用此功能需要联系云助手单独开启白名单）；4 -- Redis类型凭据。</p>
 	SecretType *int64 `json:"SecretType,omitnil,omitempty" name:"SecretType"`
 
-	// 云产品名称。
+	// <p>云产品名称。</p>
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
-	// 云产品实例ID。
+	// <p>云产品实例ID。</p>
 	ResourceID *string `json:"ResourceID,omitnil,omitempty" name:"ResourceID"`
 
-	// 是否开启轮转：True -- 开启轮转；False -- 关闭轮转。
+	// <p>是否开启轮转：True -- 开启轮转；False -- 关闭轮转。</p>
 	RotationStatus *bool `json:"RotationStatus,omitnil,omitempty" name:"RotationStatus"`
 
-	// 轮转周期，默认以天为单位。
+	// <p>轮转周期，默认以天为单位。</p>
 	RotationFrequency *int64 `json:"RotationFrequency,omitnil,omitempty" name:"RotationFrequency"`
 
-	// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。
+	// <p>当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。</p>
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
-	// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。
+	// <p>当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。</p>
 	ProjectID *int64 `json:"ProjectID,omitnil,omitempty" name:"ProjectID"`
 
-	// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
+	// <p>当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。</p>
 	AssociatedInstanceIDs []*string `json:"AssociatedInstanceIDs,omitnil,omitempty" name:"AssociatedInstanceIDs"`
 
-	// 当凭据类型为云API密钥对凭据时，此字段有效，用于表示此云API密钥对所属的用户UIN。
+	// <p>当凭据类型为云API密钥对凭据时，此字段有效，用于表示此云API密钥对所属的用户UIN。</p>
 	TargetUin *uint64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
 
-	// 凭据额外配置
+	// <p>凭据额外配置</p>
 	AdditionalConfig *string `json:"AdditionalConfig,omitnil,omitempty" name:"AdditionalConfig"`
+
+	// <p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥加密</li><li>1： 软密钥加密</li></ul><p>默认值：0</p>
+	EncryptType *uint64 `json:"EncryptType,omitnil,omitempty" name:"EncryptType"`
+
+	// <p>凭据更新状态</p>
+	EncryptSwitching *bool `json:"EncryptSwitching,omitnil,omitempty" name:"EncryptSwitching"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1398,87 +1421,63 @@ func (r *ListSecretVersionIdsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListSecretsRequestParams struct {
-	// 查询列表的起始位置，以0开始，不设置默认为0。
+	// <p>查询列表的起始位置，以0开始，不设置默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 单次查询返回的最大数量，0或不设置则使用默认值 20。
+	// <p>单次查询返回的最大数量，0或不设置则使用默认值 20。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 根据创建时间的排序方式，0或者不设置则使用降序排序， 1 表示升序排序。
+	// <p>根据创建时间的排序方式，0或者不设置则使用降序排序， 1 表示升序排序。</p>
 	OrderType *uint64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 根据凭据状态进行过滤。
-	// 默认为0表示查询全部。
-	// 1 --  表示查询Enabled 凭据列表。
-	// 2 --  表示查询Disabled 凭据列表。
-	// 3 --  表示查询PendingDelete 凭据列表。
-	// 4 --  表示PendingCreate。
-	// 5 --  表示CreateFailed。
-	// 其中状态PendingCreate和CreateFailed只有在SecretType为云产品凭据时生效
+	// <p>根据凭据状态进行过滤。<br>默认为0表示查询全部。<br>1 --  表示查询Enabled 凭据列表。<br>2 --  表示查询Disabled 凭据列表。<br>3 --  表示查询PendingDelete 凭据列表。<br>4 --  表示PendingCreate。<br>5 --  表示CreateFailed。<br>其中状态PendingCreate和CreateFailed只有在SecretType为云产品凭据时生效</p>
 	State *uint64 `json:"State,omitnil,omitempty" name:"State"`
 
-	// 根据凭据名称进行过滤，为空表示不过滤。
+	// <p>根据凭据名称进行过滤，为空表示不过滤。</p>
 	SearchSecretName *string `json:"SearchSecretName,omitnil,omitempty" name:"SearchSecretName"`
 
-	// 标签过滤条件。
+	// <p>标签过滤条件。</p>
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
-	// 0  -- 表示用户自定义凭据，默认为0。
-	// 1  -- 表示用户云产品凭据。
-	// 2 -- 表示SSH密钥对凭据。
-	// 3 -- 表示云API密钥对凭据。
+	// <p>0  -- 表示用户自定义凭据，默认为0。<br>1  -- 表示用户云产品凭据。<br>2 -- 表示SSH密钥对凭据。<br>3 -- 表示云API密钥对凭据。</p>
 	SecretType *uint64 `json:"SecretType,omitnil,omitempty" name:"SecretType"`
 
-	// 此参数仅在SecretType参数值为1时生效，
-	// 当SecretType值为1时：
-	// 如果ProductName值为空，则表示查询所有类型的云产品凭据；
-	// 如果ProductName值为某个指定的云产品值如Mysql时，则表示查询Mysql数据库凭据；
-	// 如果ProductName值为多个云产品值，如：Mysql,Tdsql-mysql,Tdsql_C_Mysql（多个值以英文逗号,分隔开）则表示查询三种云产品类型的凭据；
-	// 支持的云产品列表请通过接口：DescribeSupportedProducts进行查询。
+	// <p>此参数仅在SecretType参数值为1时生效，<br>当SecretType值为1时：<br>如果ProductName值为空，则表示查询所有类型的云产品凭据；<br>如果ProductName值为某个指定的云产品值如Mysql时，则表示查询Mysql数据库凭据；<br>如果ProductName值为多个云产品值，如：Mysql,Tdsql-mysql,Tdsql_C_Mysql（多个值以英文逗号,分隔开）则表示查询三种云产品类型的凭据；<br>支持的云产品列表请通过接口：DescribeSupportedProducts进行查询。</p>
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// <p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥加密</li><li>1： 软密钥加密</li></ul><p>默认值：0</p>
+	EncryptType *uint64 `json:"EncryptType,omitnil,omitempty" name:"EncryptType"`
 }
 
 type ListSecretsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询列表的起始位置，以0开始，不设置默认为0。
+	// <p>查询列表的起始位置，以0开始，不设置默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 单次查询返回的最大数量，0或不设置则使用默认值 20。
+	// <p>单次查询返回的最大数量，0或不设置则使用默认值 20。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 根据创建时间的排序方式，0或者不设置则使用降序排序， 1 表示升序排序。
+	// <p>根据创建时间的排序方式，0或者不设置则使用降序排序， 1 表示升序排序。</p>
 	OrderType *uint64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 根据凭据状态进行过滤。
-	// 默认为0表示查询全部。
-	// 1 --  表示查询Enabled 凭据列表。
-	// 2 --  表示查询Disabled 凭据列表。
-	// 3 --  表示查询PendingDelete 凭据列表。
-	// 4 --  表示PendingCreate。
-	// 5 --  表示CreateFailed。
-	// 其中状态PendingCreate和CreateFailed只有在SecretType为云产品凭据时生效
+	// <p>根据凭据状态进行过滤。<br>默认为0表示查询全部。<br>1 --  表示查询Enabled 凭据列表。<br>2 --  表示查询Disabled 凭据列表。<br>3 --  表示查询PendingDelete 凭据列表。<br>4 --  表示PendingCreate。<br>5 --  表示CreateFailed。<br>其中状态PendingCreate和CreateFailed只有在SecretType为云产品凭据时生效</p>
 	State *uint64 `json:"State,omitnil,omitempty" name:"State"`
 
-	// 根据凭据名称进行过滤，为空表示不过滤。
+	// <p>根据凭据名称进行过滤，为空表示不过滤。</p>
 	SearchSecretName *string `json:"SearchSecretName,omitnil,omitempty" name:"SearchSecretName"`
 
-	// 标签过滤条件。
+	// <p>标签过滤条件。</p>
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
 
-	// 0  -- 表示用户自定义凭据，默认为0。
-	// 1  -- 表示用户云产品凭据。
-	// 2 -- 表示SSH密钥对凭据。
-	// 3 -- 表示云API密钥对凭据。
+	// <p>0  -- 表示用户自定义凭据，默认为0。<br>1  -- 表示用户云产品凭据。<br>2 -- 表示SSH密钥对凭据。<br>3 -- 表示云API密钥对凭据。</p>
 	SecretType *uint64 `json:"SecretType,omitnil,omitempty" name:"SecretType"`
 
-	// 此参数仅在SecretType参数值为1时生效，
-	// 当SecretType值为1时：
-	// 如果ProductName值为空，则表示查询所有类型的云产品凭据；
-	// 如果ProductName值为某个指定的云产品值如Mysql时，则表示查询Mysql数据库凭据；
-	// 如果ProductName值为多个云产品值，如：Mysql,Tdsql-mysql,Tdsql_C_Mysql（多个值以英文逗号,分隔开）则表示查询三种云产品类型的凭据；
-	// 支持的云产品列表请通过接口：DescribeSupportedProducts进行查询。
+	// <p>此参数仅在SecretType参数值为1时生效，<br>当SecretType值为1时：<br>如果ProductName值为空，则表示查询所有类型的云产品凭据；<br>如果ProductName值为某个指定的云产品值如Mysql时，则表示查询Mysql数据库凭据；<br>如果ProductName值为多个云产品值，如：Mysql,Tdsql-mysql,Tdsql_C_Mysql（多个值以英文逗号,分隔开）则表示查询三种云产品类型的凭据；<br>支持的云产品列表请通过接口：DescribeSupportedProducts进行查询。</p>
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// <p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥加密</li><li>1： 软密钥加密</li></ul><p>默认值：0</p>
+	EncryptType *uint64 `json:"EncryptType,omitnil,omitempty" name:"EncryptType"`
 }
 
 func (r *ListSecretsRequest) ToJsonString() string {
@@ -1501,6 +1500,7 @@ func (r *ListSecretsRequest) FromJsonString(s string) error {
 	delete(f, "TagFilters")
 	delete(f, "SecretType")
 	delete(f, "ProductName")
+	delete(f, "EncryptType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListSecretsRequest has unknown keys!", "")
 	}
@@ -1509,10 +1509,10 @@ func (r *ListSecretsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListSecretsResponseParams struct {
-	// 根据State和SearchSecretName 筛选的凭据总数。
+	// <p>根据State和SearchSecretName 筛选的凭据总数。</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 返回凭据信息列表。
+	// <p>返回凭据信息列表。</p>
 	SecretMetadatas []*SecretMetadata `json:"SecretMetadatas,omitnil,omitempty" name:"SecretMetadatas"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1803,66 +1803,68 @@ func (r *RotateProductSecretResponse) FromJsonString(s string) error {
 }
 
 type SecretMetadata struct {
-	// 凭据名称
+	// <p>凭据名称</p>
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
-	// 凭据的描述信息
+	// <p>凭据的描述信息</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 用于加密凭据的KMS KeyId
+	// <p>用于加密凭据的KMS KeyId</p>
 	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
 
-	// 创建者UIN
+	// <p>创建者UIN</p>
 	CreateUin *uint64 `json:"CreateUin,omitnil,omitempty" name:"CreateUin"`
 
-	// 凭据状态：Enabled、Disabled、PendingDelete、Creating、Failed
+	// <p>凭据状态：Enabled、Disabled、PendingDelete、Creating、Failed</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 凭据删除日期，对于status为PendingDelete 的有效，unix时间戳
+	// <p>凭据删除日期，对于status为PendingDelete 的有效，unix时间戳</p>
 	DeleteTime *uint64 `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
 
-	// 凭据创建时间，unix时间戳
+	// <p>凭据创建时间，unix时间戳</p>
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 用于加密凭据的KMS CMK类型，DEFAULT 表示SecretsManager 创建的默认密钥， CUSTOMER 表示用户指定的密钥
+	// <p>用于加密凭据的KMS CMK类型，DEFAULT 表示SecretsManager 创建的默认密钥， CUSTOMER 表示用户指定的密钥</p>
 	KmsKeyType *string `json:"KmsKeyType,omitnil,omitempty" name:"KmsKeyType"`
 
-	// 1:--开启轮转；0--禁止轮转
+	// <p>1:--开启轮转；0--禁止轮转</p>
 	RotationStatus *int64 `json:"RotationStatus,omitnil,omitempty" name:"RotationStatus"`
 
-	// 下一次轮转开始时间，uinx 时间戳
+	// <p>下一次轮转开始时间，uinx 时间戳</p>
 	NextRotationTime *uint64 `json:"NextRotationTime,omitnil,omitempty" name:"NextRotationTime"`
 
-	// 0 -- 用户自定义凭据；
-	// 1 -- 云产品凭据；
-	// 2 -- SSH密钥对凭据；
-	// 3 -- 云API密钥对凭据；
-	// 4 -- Redis类型凭据；
+	// <p>0 -- 用户自定义凭据；<br>1 -- 云产品凭据；<br>2 -- SSH密钥对凭据；<br>3 -- 云API密钥对凭据；<br>4 -- Redis类型凭据；</p>
 	SecretType *int64 `json:"SecretType,omitnil,omitempty" name:"SecretType"`
 
-	// 云产品名称，仅在SecretType为1，即凭据类型为云产品凭据时生效
+	// <p>云产品名称，仅在SecretType为1，即凭据类型为云产品凭据时生效</p>
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
-	// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。
+	// <p>当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。</p>
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
-	// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。
+	// <p>当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。</p>
 	ProjectID *int64 `json:"ProjectID,omitnil,omitempty" name:"ProjectID"`
 
-	// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
+	// <p>当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。</p>
 	AssociatedInstanceIDs []*string `json:"AssociatedInstanceIDs,omitnil,omitempty" name:"AssociatedInstanceIDs"`
 
-	// 当凭据类型为云API密钥对凭据时，此字段有效，用于表示云API密钥对所属的用户UIN。
+	// <p>当凭据类型为云API密钥对凭据时，此字段有效，用于表示云API密钥对所属的用户UIN。</p>
 	TargetUin *uint64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
 
-	// 轮转的频率，以天作为单位，在轮转开启状态下生效。
+	// <p>轮转的频率，以天作为单位，在轮转开启状态下生效。</p>
 	RotationFrequency *int64 `json:"RotationFrequency,omitnil,omitempty" name:"RotationFrequency"`
 
-	// 云产品凭据对应的云产品实例 ID 号。
+	// <p>云产品凭据对应的云产品实例 ID 号。</p>
 	ResourceID *string `json:"ResourceID,omitnil,omitempty" name:"ResourceID"`
 
-	// 用户指定的轮转开始时间。
+	// <p>用户指定的轮转开始时间。</p>
 	RotationBeginTime *string `json:"RotationBeginTime,omitnil,omitempty" name:"RotationBeginTime"`
+
+	// <p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥加密</li><li>1： 软密钥加密</li></ul><p>默认值：0</p>
+	EncryptType *uint64 `json:"EncryptType,omitnil,omitempty" name:"EncryptType"`
+
+	// <p>凭据密钥加密切换中</p>
+	EncryptSwitching *bool `json:"EncryptSwitching,omitnil,omitempty" name:"EncryptSwitching"`
 }
 
 type Tag struct {

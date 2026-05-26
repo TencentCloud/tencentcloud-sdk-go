@@ -18415,71 +18415,80 @@ func (r *DescribeLicenseGeneralRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLicenseGeneralResponseParams struct {
-	// 总授权数 (包含隔离,过期等不可用状态)
+	// <p>总授权数 (包含隔离,过期等不可用状态)</p>
 	LicenseCnt *uint64 `json:"LicenseCnt,omitnil,omitempty" name:"LicenseCnt"`
 
-	// 可用授权数
+	// <p>可用授权数</p>
 	AvailableLicenseCnt *uint64 `json:"AvailableLicenseCnt,omitnil,omitempty" name:"AvailableLicenseCnt"`
 
-	// 可用专业版授权数(包含后付费).
+	// <p>可用专业版授权数(包含后付费).</p>
 	AvailableProVersionLicenseCnt *uint64 `json:"AvailableProVersionLicenseCnt,omitnil,omitempty" name:"AvailableProVersionLicenseCnt"`
 
-	// 可用旗舰版授权数
+	// <p>可用旗舰版授权数</p>
 	AvailableFlagshipVersionLicenseCnt *uint64 `json:"AvailableFlagshipVersionLicenseCnt,omitnil,omitempty" name:"AvailableFlagshipVersionLicenseCnt"`
 
-	// 即将到期授权数 (15天内到期的)
+	// <p>即将到期授权数 (15天内到期的)</p>
 	NearExpiryLicenseCnt *uint64 `json:"NearExpiryLicenseCnt,omitnil,omitempty" name:"NearExpiryLicenseCnt"`
 
-	// 已到期授权数(不包含已删除的记录)
+	// <p>已到期授权数(不包含已删除的记录)</p>
 	ExpireLicenseCnt *uint64 `json:"ExpireLicenseCnt,omitnil,omitempty" name:"ExpireLicenseCnt"`
 
-	// 自动升级开关状态,默认 false,  true 开启, false 关闭
+	// <p>自动升级开关状态,默认 false,  true 开启, false 关闭</p>
 	AutoOpenStatus *bool `json:"AutoOpenStatus,omitnil,omitempty" name:"AutoOpenStatus"`
 
-	// PROVERSION_POSTPAY 专业版-后付费, PROVERSION_PREPAY 专业版-预付费, FLAGSHIP_PREPAY 旗舰版-预付费
+	// <p>PROVERSION_POSTPAY 专业版-后付费, PROVERSION_PREPAY 专业版-预付费, FLAGSHIP_PREPAY 旗舰版-预付费</p>
 	ProtectType *string `json:"ProtectType,omitnil,omitempty" name:"ProtectType"`
 
-	// 历史是否开通过自动升级开关
+	// <p>历史是否开通过自动升级开关</p>
 	IsOpenStatusHistory *bool `json:"IsOpenStatusHistory,omitnil,omitempty" name:"IsOpenStatusHistory"`
 
-	// 已使用授权数
+	// <p>已使用授权数</p>
 	UsedLicenseCnt *uint64 `json:"UsedLicenseCnt,omitnil,omitempty" name:"UsedLicenseCnt"`
 
-	// 未到期授权数
+	// <p>未到期授权数</p>
 	NotExpiredLicenseCnt *uint64 `json:"NotExpiredLicenseCnt,omitnil,omitempty" name:"NotExpiredLicenseCnt"`
 
-	// 旗舰版总授权数(有效订单)
+	// <p>旗舰版总授权数(有效订单)</p>
 	FlagshipVersionLicenseCnt *uint64 `json:"FlagshipVersionLicenseCnt,omitnil,omitempty" name:"FlagshipVersionLicenseCnt"`
 
-	// 专业版总授权数(有效订单)
+	// <p>专业版总授权数(有效订单)</p>
 	ProVersionLicenseCnt *uint64 `json:"ProVersionLicenseCnt,omitnil,omitempty" name:"ProVersionLicenseCnt"`
 
-	// 轻量版总授权数(有效订单的授权数)
+	// <p>轻量版总授权数(有效订单的授权数)</p>
 	CwpVersionLicenseCnt *uint64 `json:"CwpVersionLicenseCnt,omitnil,omitempty" name:"CwpVersionLicenseCnt"`
 
-	// 可用惠普版授权数
+	// <p>可用惠普版授权数</p>
 	AvailableLHLicenseCnt *uint64 `json:"AvailableLHLicenseCnt,omitnil,omitempty" name:"AvailableLHLicenseCnt"`
 
-	// 自动加购开关, true 开启, false 关闭
+	// <p>自动加购开关, true 开启, false 关闭</p>
 	AutoRepurchaseSwitch *bool `json:"AutoRepurchaseSwitch,omitnil,omitempty" name:"AutoRepurchaseSwitch"`
 
-	// 自动加购订单是否自动续费 ,true 开启, false 关闭
+	// <p>自动加购订单是否自动续费 ,true 开启, false 关闭</p>
 	AutoRepurchaseRenewSwitch *bool `json:"AutoRepurchaseRenewSwitch,omitnil,omitempty" name:"AutoRepurchaseRenewSwitch"`
 
-	// 已销毁订单数
+	// <p>已销毁订单数</p>
 	DestroyOrderNum *uint64 `json:"DestroyOrderNum,omitnil,omitempty" name:"DestroyOrderNum"`
 
-	// 自动加购是否自动续费开关,true 开启,false 关闭
+	// <p>自动加购是否自动续费开关,true 开启,false 关闭</p>
 	RepurchaseRenewSwitch *bool `json:"RepurchaseRenewSwitch,omitnil,omitempty" name:"RepurchaseRenewSwitch"`
 
-	// 是否自动新增机器绑定rasp防护,false 关闭 true 开启
+	// <p>是否自动新增机器绑定rasp防护,false 关闭 true 开启</p>
 	AutoBindRaspSwitch *bool `json:"AutoBindRaspSwitch,omitnil,omitempty" name:"AutoBindRaspSwitch"`
 
-	// 是否自动新增机器开启rasp防护,false 关闭 true 开启
+	// <p>是否自动新增机器开启rasp防护,false 关闭 true 开启</p>
 	AutoOpenRaspSwitch *bool `json:"AutoOpenRaspSwitch,omitnil,omitempty" name:"AutoOpenRaspSwitch"`
 
-	// 是否自动缩容开关开启
+	// <p>是否自动缩容开关开启</p>
 	AutoDowngradeSwitch *bool `json:"AutoDowngradeSwitch,omitnil,omitempty" name:"AutoDowngradeSwitch"`
+
+	// <p>可使用的AI防护版授权数</p>
+	AvailableAISecurityLicenseCnt *uint64 `json:"AvailableAISecurityLicenseCnt,omitnil,omitempty" name:"AvailableAISecurityLicenseCnt"`
+
+	// <p>AI 防护版总授权数</p>
+	AISecurityVersionLicenseCnt *uint64 `json:"AISecurityVersionLicenseCnt,omitnil,omitempty" name:"AISecurityVersionLicenseCnt"`
+
+	// <p>应用防护授权数+旗舰版授权数相加后的可使用授权数</p>
+	ApplicationAvailableLicenseCnt *uint64 `json:"ApplicationAvailableLicenseCnt,omitnil,omitempty" name:"ApplicationAvailableLicenseCnt"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -18670,14 +18679,14 @@ func (r *DescribeLicenseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLicenseWhiteConfigRequestParams struct {
-	// 规则名称,例如: cwp
+	// <p>规则名称,例如: cwp</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 }
 
 type DescribeLicenseWhiteConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则名称,例如: cwp
+	// <p>规则名称,例如: cwp</p>
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 }
 
@@ -18702,17 +18711,20 @@ func (r *DescribeLicenseWhiteConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLicenseWhiteConfigResponseParams struct {
-	// 旗舰版 配置信息
+	// <p>旗舰版 配置信息</p>
 	FlagShip *VersionWhiteConfig `json:"FlagShip,omitnil,omitempty" name:"FlagShip"`
 
-	// 专业版 配置信息
+	// <p>专业版 配置信息</p>
 	Professional *VersionWhiteConfig `json:"Professional,omitnil,omitempty" name:"Professional"`
 
-	// 轻量版 配置信息
+	// <p>轻量版 配置信息</p>
 	PrattWhitney *VersionWhiteConfig `json:"PrattWhitney,omitnil,omitempty" name:"PrattWhitney"`
 
-	// 重保授权包 配置信息
+	// <p>重保授权包 配置信息</p>
 	RASP *VersionWhiteConfig `json:"RASP,omitnil,omitempty" name:"RASP"`
+
+	// <p>日志分析配置信息</p>
+	LOG *VersionWhiteConfig `json:"LOG,omitnil,omitempty" name:"LOG"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

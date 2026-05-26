@@ -227,6 +227,70 @@ func (c *Client) AssumeRoleForAllocatedEnvWithContext(ctx context.Context, reque
     return
 }
 
+func NewBindStorageSourceRequest() (request *BindStorageSourceRequest) {
+    request = &BindStorageSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "BindStorageSource")
+    
+    
+    return
+}
+
+func NewBindStorageSourceResponse() (response *BindStorageSourceResponse) {
+    response = &BindStorageSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BindStorageSource
+// 为云存储绑定外部云存储源。
+//
+// 将一个用户自有的 COS桶 作为外部存储源绑定到指定云开发环境的云存储。绑定后，该环境的云存储文件操作将指向此桶，通过 BasePath 路径前缀实现与其他环境的数据隔离。
+//
+// 每个环境仅允许绑定 1 个外部云存储源。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONCONFLICT = "FailedOperation.OperationConflict"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
+//  RESOURCENOTFOUND_USERNOTEXISTS = "ResourceNotFound.UserNotExists"
+func (c *Client) BindStorageSource(request *BindStorageSourceRequest) (response *BindStorageSourceResponse, err error) {
+    return c.BindStorageSourceWithContext(context.Background(), request)
+}
+
+// BindStorageSource
+// 为云存储绑定外部云存储源。
+//
+// 将一个用户自有的 COS桶 作为外部存储源绑定到指定云开发环境的云存储。绑定后，该环境的云存储文件操作将指向此桶，通过 BasePath 路径前缀实现与其他环境的数据隔离。
+//
+// 每个环境仅允许绑定 1 个外部云存储源。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONCONFLICT = "FailedOperation.OperationConflict"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
+//  RESOURCENOTFOUND_USERNOTEXISTS = "ResourceNotFound.UserNotExists"
+func (c *Client) BindStorageSourceWithContext(ctx context.Context, request *BindStorageSourceRequest) (response *BindStorageSourceResponse, err error) {
+    if request == nil {
+        request = NewBindStorageSourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "BindStorageSource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindStorageSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindStorageSourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckTcbServiceRequest() (request *CheckTcbServiceRequest) {
     request = &CheckTcbServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4745,6 +4809,76 @@ func (c *Client) ModifySafeRuleWithContext(ctx context.Context, request *ModifyS
     return
 }
 
+func NewModifyStorageSourceRequest() (request *ModifyStorageSourceRequest) {
+    request = &ModifyStorageSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyStorageSource")
+    
+    
+    return
+}
+
+func NewModifyStorageSourceResponse() (response *ModifyStorageSourceResponse) {
+    response = &ModifyStorageSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyStorageSource
+// 修改指定云开发环境已绑定的外部云存储源配置。
+//
+// 修改之后，大约3~5分钟生效。
+//
+// 
+//
+// 注意⚠️
+//
+// 本接口仅更新存储源绑定关系，不会迁移您的数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONCONFLICT = "FailedOperation.OperationConflict"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
+func (c *Client) ModifyStorageSource(request *ModifyStorageSourceRequest) (response *ModifyStorageSourceResponse, err error) {
+    return c.ModifyStorageSourceWithContext(context.Background(), request)
+}
+
+// ModifyStorageSource
+// 修改指定云开发环境已绑定的外部云存储源配置。
+//
+// 修改之后，大约3~5分钟生效。
+//
+// 
+//
+// 注意⚠️
+//
+// 本接口仅更新存储源绑定关系，不会迁移您的数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONCONFLICT = "FailedOperation.OperationConflict"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
+func (c *Client) ModifyStorageSourceWithContext(ctx context.Context, request *ModifyStorageSourceRequest) (response *ModifyStorageSourceResponse, err error) {
+    if request == nil {
+        request = NewModifyStorageSourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyStorageSource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyStorageSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyStorageSourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyUserRequest() (request *ModifyUserRequest) {
     request = &ModifyUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5147,6 +5281,74 @@ func (c *Client) SearchClsLogWithContext(ctx context.Context, request *SearchCls
     request.SetContext(ctx)
     
     response = NewSearchClsLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnbindStorageSourceRequest() (request *UnbindStorageSourceRequest) {
+    request = &UnbindStorageSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "UnbindStorageSource")
+    
+    
+    return
+}
+
+func NewUnbindStorageSourceResponse() (response *UnbindStorageSourceResponse) {
+    response = &UnbindStorageSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UnbindStorageSource
+// 从指定云开发环境中解绑已绑定的外部云存储源。解绑后，该环境将不再关联外部 存储源，云存储功能恢复为未绑定状态。
+//
+// 解绑操作仅移除 CloudBase 侧的绑定关系，不会删除桶本身及桶内数据，桶仍由用户自行管理。
+//
+// 
+//
+// 注意⚠️
+//
+// 解绑之后，会导致云存储不可用，请谨慎操作。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
+func (c *Client) UnbindStorageSource(request *UnbindStorageSourceRequest) (response *UnbindStorageSourceResponse, err error) {
+    return c.UnbindStorageSourceWithContext(context.Background(), request)
+}
+
+// UnbindStorageSource
+// 从指定云开发环境中解绑已绑定的外部云存储源。解绑后，该环境将不再关联外部 存储源，云存储功能恢复为未绑定状态。
+//
+// 解绑操作仅移除 CloudBase 侧的绑定关系，不会删除桶本身及桶内数据，桶仍由用户自行管理。
+//
+// 
+//
+// 注意⚠️
+//
+// 解绑之后，会导致云存储不可用，请谨慎操作。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
+func (c *Client) UnbindStorageSourceWithContext(ctx context.Context, request *UnbindStorageSourceRequest) (response *UnbindStorageSourceResponse, err error) {
+    if request == nil {
+        request = NewUnbindStorageSourceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "UnbindStorageSource")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindStorageSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnbindStorageSourceResponse()
     err = c.Send(request, response)
     return
 }

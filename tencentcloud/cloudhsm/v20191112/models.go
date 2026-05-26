@@ -508,14 +508,14 @@ func (r *DescribeVpcResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVsmAttributesRequestParams struct {
-	// 资源Id
+	// <p>资源Id</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 type DescribeVsmAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源Id
+	// <p>资源Id</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
@@ -540,77 +540,80 @@ func (r *DescribeVsmAttributesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVsmAttributesResponseParams struct {
-	// 资源Id
+	// <p>资源Id</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 资源名称
+	// <p>资源名称</p>
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
-	// 资源状态，1表示资源为正常，2表示资源处于隔离状态
+	// <p>资源状态，1表示资源为正常，2表示资源处于隔离状态</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 资源IP
+	// <p>资源IP</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 资源所属Vpc
+	// <p>资源所属Vpc</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 资源所属子网
+	// <p>资源所属子网</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 资源所属HSM的规格
+	// <p>资源所属HSM的规格</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 资源类型，17表示EVSM，33表示GVSM，49表示SVSM
+	// <p>资源类型，17表示EVSM，33表示GVSM，49表示SVSM</p>
 	VsmType *int64 `json:"VsmType,omitnil,omitempty" name:"VsmType"`
 
-	// 地域Id，返回腾讯云地域代码，如广州为1，北京为8
+	// <p>地域Id，返回腾讯云地域代码，如广州为1，北京为8</p>
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 区域Id，返回腾讯云每个地域的可用区代码
+	// <p>区域Id，返回腾讯云每个地域的可用区代码</p>
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 资源过期时间，以时间戳形式展示。
+	// <p>资源过期时间，以时间戳形式展示。</p>
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 安全组详情信息,如果未配置字段返回null
+	// <p>安全组详情信息,如果未配置字段返回null</p>
 	SgList []*UsgRuleDetail `json:"SgList,omitnil,omitempty" name:"SgList"`
 
-	// 子网名
+	// <p>子网名</p>
 	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
 
-	// 地域名
+	// <p>地域名</p>
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
-	// 区域名
+	// <p>区域名</p>
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 
-	// 实例是否已经过期
+	// <p>实例是否已经过期</p>
 	Expired *bool `json:"Expired,omitnil,omitempty" name:"Expired"`
 
-	// 为正数表示实例距离过期时间剩余秒数，为负数表示实例已经过期多少秒
+	// <p>为正数表示实例距离过期时间剩余秒数，为负数表示实例已经过期多少秒</p>
 	RemainSeconds *int64 `json:"RemainSeconds,omitnil,omitempty" name:"RemainSeconds"`
 
-	// 私有虚拟网络名称
+	// <p>私有虚拟网络名称</p>
 	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
 
-	// VPC的IPv4 CIDR
+	// <p>VPC的IPv4 CIDR</p>
 	VpcCidrBlock *string `json:"VpcCidrBlock,omitnil,omitempty" name:"VpcCidrBlock"`
 
-	// 子网的CIDR
+	// <p>子网的CIDR</p>
 	SubnetCidrBlock *string `json:"SubnetCidrBlock,omitnil,omitempty" name:"SubnetCidrBlock"`
 
-	// 资源所关联的标签Tag
+	// <p>资源所关联的标签Tag</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 资源续费标识，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
+	// <p>资源续费标识，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 厂商
+	// <p>厂商</p>
 	Manufacturer *string `json:"Manufacturer,omitnil,omitempty" name:"Manufacturer"`
 
-	// 0-关闭，1-开启
+	// <p>0-关闭，1-开启</p>
 	PqcFlag *int64 `json:"PqcFlag,omitnil,omitempty" name:"PqcFlag"`
+
+	// <p>环境</p><p>默认值：cloud</p><p>cloud或者cdc</p>
+	DeployEnv *string `json:"DeployEnv,omitnil,omitempty" name:"DeployEnv"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1160,82 +1163,83 @@ func (r *ModifyVsmAttributesResponse) FromJsonString(s string) error {
 }
 
 type ResourceInfo struct {
-	// 资源Id
+	// <p>资源Id</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 资源名称
+	// <p>资源名称</p>
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
-	// 资源状态，1-正常，2-隔离，3-销毁
+	// <p>资源状态，1-正常，2-隔离，3-销毁</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 资源IP
+	// <p>资源IP</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 资源所属Vpc
+	// <p>资源所属Vpc</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 资源所属子网
+	// <p>资源所属子网</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 资源所属HSM规格
+	// <p>资源所属HSM规格</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 云加密机类型id
+	// <p>云加密机类型id</p>
 	VsmType *int64 `json:"VsmType,omitnil,omitempty" name:"VsmType"`
 
-	// 地域Id
+	// <p>地域Id</p>
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 区域Id
+	// <p>区域Id</p>
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 过期时间（Epoch Unix Timestamp）
+	// <p>过期时间（Epoch Unix Timestamp）</p>
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 地域名
+	// <p>地域名</p>
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
-	// 区域名
+	// <p>区域名</p>
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 
-	// 实例的安全组列表
+	// <p>实例的安全组列表</p>
 	SgList []*SgUnit `json:"SgList,omitnil,omitempty" name:"SgList"`
 
-	// 子网名称
+	// <p>子网名称</p>
 	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
 
-	// 当前实例是否已经过期
+	// <p>当前实例是否已经过期</p>
 	Expired *bool `json:"Expired,omitnil,omitempty" name:"Expired"`
 
-	// 为正数表示实例距离过期时间还剩余多少秒，为负数表示已经过期多少秒
+	// <p>为正数表示实例距离过期时间还剩余多少秒，为负数表示已经过期多少秒</p>
 	RemainSeconds *int64 `json:"RemainSeconds,omitnil,omitempty" name:"RemainSeconds"`
 
-	// Vpc名称
+	// <p>Vpc名称</p>
 	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
 
-	// 创建者Uin账号
+	// <p>创建者Uin账号</p>
 	CreateUin *string `json:"CreateUin,omitnil,omitempty" name:"CreateUin"`
 
-	// 自动续费状态标识， 0-手动续费，1-自动续费，2-到期不续
+	// <p>自动续费状态标识， 0-手动续费，1-自动续费，2-到期不续</p>
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 标签列表
+	// <p>标签列表</p>
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 厂商
+	// <p>厂商</p>
 	Manufacturer *string `json:"Manufacturer,omitnil,omitempty" name:"Manufacturer"`
 
-	// 告警状态，0：停用，1：启用
+	// <p>告警状态，0：停用，1：启用</p>
 	AlarmStatus *int64 `json:"AlarmStatus,omitnil,omitempty" name:"AlarmStatus"`
 
-	// 0不支持
-	// 1关闭
-	// 2开启
+	// <p>0不支持<br>1关闭<br>2开启</p>
 	PqcStatus *int64 `json:"PqcStatus,omitnil,omitempty" name:"PqcStatus"`
 
-	// 0关闭，1开启
+	// <p>0关闭，1开启</p>
 	PqcFlag *int64 `json:"PqcFlag,omitnil,omitempty" name:"PqcFlag"`
+
+	// <p>环境</p><p>默认值：cloud</p><p>cloud或者cdc</p>
+	DeployEnv *string `json:"DeployEnv,omitnil,omitempty" name:"DeployEnv"`
 }
 
 type SgUnit struct {

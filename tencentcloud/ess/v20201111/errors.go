@@ -248,6 +248,9 @@ const (
 	// 不合法的合同过期时间
 	INVALIDPARAMETER_FLOWAPPROVERDEADLINE = "InvalidParameter.FlowApproverDeadline"
 
+	// FlowApprovers不能为空或超出数量限制
+	INVALIDPARAMETER_FLOWAPPROVERS = "InvalidParameter.FlowApprovers"
+
 	// 不合法的签署流程回调链接，请修改后重试。
 	INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
 

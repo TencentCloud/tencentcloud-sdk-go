@@ -4590,153 +4590,142 @@ type CrossRegionBackupItem struct {
 }
 
 type CynosdbCluster struct {
-	// 集群状态， 可选值如下:
-	// creating: 创建中
-	// running:运行中
-	// isolating:隔离中
-	// isolated:已隔离
-	// activating:解隔离中
-	// offlining:下线中
-	// offlined:已下线
-	// deleting:删除中
-	// deleted:已删除
+	// <p>集群状态， 可选值如下:<br>creating: 创建中<br>running:运行中<br>isolating:隔离中<br>isolated:已隔离<br>activating:解隔离中<br>offlining:下线中<br>offlined:已下线<br>deleting:删除中<br>deleted:已删除</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 地域
+	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 数据库版本
+	// <p>数据库版本</p>
 	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 实例数
+	// <p>实例数</p>
 	InstanceNum *int64 `json:"InstanceNum,omitnil,omitempty" name:"InstanceNum"`
 
-	// 用户uin
+	// <p>用户uin</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 引擎类型
+	// <p>引擎类型</p>
 	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
 
-	// 用户appid
+	// <p>用户appid</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 集群状态描述
+	// <p>集群状态描述</p>
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
-	// 集群创建时间
+	// <p>集群创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 付费模式。0-按量计费，1-包年包月
+	// <p>付费模式。0-按量计费，1-包年包月</p>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 截止时间
+	// <p>截止时间</p>
 	PeriodEndTime *string `json:"PeriodEndTime,omitnil,omitempty" name:"PeriodEndTime"`
 
-	// 集群读写vip
+	// <p>集群读写vip</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 集群读写vport
+	// <p>集群读写vport</p>
 	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectID *int64 `json:"ProjectID,omitnil,omitempty" name:"ProjectID"`
 
-	// 私有网络ID
+	// <p>私有网络ID</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网ID
+	// <p>子网ID</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// cynos内核版本
+	// <p>cynos内核版本</p>
 	CynosVersion *string `json:"CynosVersion,omitnil,omitempty" name:"CynosVersion"`
 
-	// cynos版本标签
+	// <p>cynos版本标签</p>
 	CynosVersionTag *string `json:"CynosVersionTag,omitnil,omitempty" name:"CynosVersionTag"`
 
-	// 存储容量
+	// <p>存储容量</p>
 	StorageLimit *int64 `json:"StorageLimit,omitnil,omitempty" name:"StorageLimit"`
 
-	// 续费标志
+	// <p>续费标志</p>
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 正在处理的任务
+	// <p>正在处理的任务</p>
 	ProcessingTask *string `json:"ProcessingTask,omitnil,omitempty" name:"ProcessingTask"`
 
-	// 集群的任务数组
+	// <p>集群的任务数组</p>
 	Tasks []*ObjectTask `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
-	// 集群绑定的tag数组
+	// <p>集群绑定的tag数组</p>
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// Db类型(NORMAL, SERVERLESS)
+	// <p>Db类型(NORMAL, SERVERLESS)</p>
 	DbMode *string `json:"DbMode,omitnil,omitempty" name:"DbMode"`
 
-	// 当Db类型为SERVERLESS时，serverless集群状态，可选值:
-	// resume
-	// pause
+	// <p>当Db类型为SERVERLESS时，serverless集群状态，可选值:<br>resume<br>pause</p>
 	ServerlessStatus *string `json:"ServerlessStatus,omitnil,omitempty" name:"ServerlessStatus"`
 
-	// 集群预付费存储值大小
+	// <p>集群预付费存储值大小</p>
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 集群存储为预付费时的存储ID，用于预付费存储变配
+	// <p>集群存储为预付费时的存储ID，用于预付费存储变配</p>
 	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
 
-	// 集群存储付费模式。0-按量计费，1-包年包月
+	// <p>集群存储付费模式。0-按量计费，1-包年包月</p>
 	StoragePayMode *int64 `json:"StoragePayMode,omitnil,omitempty" name:"StoragePayMode"`
 
-	// 集群计算规格对应的最小存储值
+	// <p>集群计算规格对应的最小存储值</p>
 	MinStorageSize *int64 `json:"MinStorageSize,omitnil,omitempty" name:"MinStorageSize"`
 
-	// 集群计算规格对应的最大存储值
+	// <p>集群计算规格对应的最大存储值</p>
 	MaxStorageSize *int64 `json:"MaxStorageSize,omitnil,omitempty" name:"MaxStorageSize"`
 
-	// 集群网络信息
+	// <p>集群网络信息</p>
 	NetAddrs []*NetAddr `json:"NetAddrs,omitnil,omitempty" name:"NetAddrs"`
 
-	// 物理可用区
+	// <p>物理可用区</p>
 	PhysicalZone *string `json:"PhysicalZone,omitnil,omitempty" name:"PhysicalZone"`
 
-	// 主可用区
+	// <p>主可用区</p>
 	MasterZone *string `json:"MasterZone,omitnil,omitempty" name:"MasterZone"`
 
-	// 是否有从可用区
+	// <p>是否有从可用区</p>
 	HasSlaveZone *string `json:"HasSlaveZone,omitnil,omitempty" name:"HasSlaveZone"`
 
-	// 从可用区
+	// <p>从可用区</p>
 	SlaveZones []*string `json:"SlaveZones,omitnil,omitempty" name:"SlaveZones"`
 
-	// 商业类型
+	// <p>商业类型</p>
 	BusinessType *string `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
 
-	// 是否冻结
+	// <p>是否冻结</p>
 	IsFreeze *string `json:"IsFreeze,omitnil,omitempty" name:"IsFreeze"`
 
-	// 订单来源
+	// <p>订单来源</p>
 	OrderSource *string `json:"OrderSource,omitnil,omitempty" name:"OrderSource"`
 
-	// 能力
+	// <p>能力</p>
 	Ability *Ability `json:"Ability,omitnil,omitempty" name:"Ability"`
 
-	// 实例绑定资源包信息（此处只返回存储资源包，即packageType=DISK）	
+	// <p>实例绑定资源包信息（此处只返回存储资源包，即packageType=DISK）</p>
 	ResourcePackages []*ResourcePackage `json:"ResourcePackages,omitnil,omitempty" name:"ResourcePackages"`
 
-	// 全球数据库唯一标识
+	// <p>全球数据库唯一标识</p>
 	GdnId *string `json:"GdnId,omitnil,omitempty" name:"GdnId"`
 
-	// 集群角色。主集群- primary，从集群 - standby，如果 GdnId为空，该字段无效。
+	// <p>集群角色。主集群- primary，从集群 - standby，如果 GdnId为空，该字段无效。</p>
 	GdnRole *string `json:"GdnRole,omitnil,omitempty" name:"GdnRole"`
 }
 
@@ -20380,43 +20369,46 @@ type ParamItem struct {
 }
 
 type ParamItemDetail struct {
-	// 当前值
+	// <p>当前值</p>
 	CurrentValue *string `json:"CurrentValue,omitnil,omitempty" name:"CurrentValue"`
 
-	// 默认值
+	// <p>默认值</p>
 	Default *string `json:"Default,omitnil,omitempty" name:"Default"`
 
-	// 参数的可选枚举值。如果为非枚举值，则为空
+	// <p>参数的可选枚举值。如果为非枚举值，则为空</p>
 	EnumValue []*string `json:"EnumValue,omitnil,omitempty" name:"EnumValue"`
 
-	// 1：全局参数，0：非全局参数
+	// <p>1：全局参数，0：非全局参数</p>
 	IsGlobal *int64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 
-	// 最大值
+	// <p>最大值</p>
 	Max *string `json:"Max,omitnil,omitempty" name:"Max"`
 
-	// 最小值
+	// <p>最小值</p>
 	Min *string `json:"Min,omitnil,omitempty" name:"Min"`
 
-	// 修改参数后，是否需要重启数据库以使参数生效。0-不需要重启，1-需要重启。
+	// <p>修改参数后，是否需要重启数据库以使参数生效。0-不需要重启，1-需要重启。</p>
 	NeedReboot *int64 `json:"NeedReboot,omitnil,omitempty" name:"NeedReboot"`
 
-	// 参数名称
+	// <p>参数名称</p>
 	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
 
-	// 参数类型：integer，enum，float，string，func
+	// <p>参数类型：integer，enum，float，string，func</p>
 	ParamType *string `json:"ParamType,omitnil,omitempty" name:"ParamType"`
 
-	// 参数描述
+	// <p>参数是否可修改</p>
+	ModifiableInfo *ModifiableInfo `json:"ModifiableInfo,omitnil,omitempty" name:"ModifiableInfo"`
+
+	// <p>参数描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 类型是否为公式
+	// <p>类型是否为公式</p>
 	IsFunc *bool `json:"IsFunc,omitnil,omitempty" name:"IsFunc"`
 
-	// 参数配置公式
+	// <p>参数配置公式</p>
 	Func *string `json:"Func,omitnil,omitempty" name:"Func"`
 
-	// 支持公式的参数的默认公式样式
+	// <p>支持公式的参数的默认公式样式</p>
 	FuncPattern *string `json:"FuncPattern,omitnil,omitempty" name:"FuncPattern"`
 }
 

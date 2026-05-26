@@ -1132,48 +1132,43 @@ type AnalyseConditionDetail struct {
 }
 
 type AnalyseConditions struct {
-	// 产品名称代码
+	// <p>产品名称代码</p>
 	BusinessCodes *string `json:"BusinessCodes,omitnil,omitempty" name:"BusinessCodes"`
 
-	// 子产品名称代码
+	// <p>子产品名称代码</p>
 	ProductCodes *string `json:"ProductCodes,omitnil,omitempty" name:"ProductCodes"`
 
-	// 组件类型代码
+	// <p>组件类型代码</p>
 	ComponentCode *string `json:"ComponentCode,omitnil,omitempty" name:"ComponentCode"`
 
-	// 可用区ID：资源所属可用区ID
+	// <p>可用区ID：资源所属可用区ID</p>
 	ZoneIds *string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 地域ID:资源所属地域ID
+	// <p>地域ID:资源所属地域ID</p>
 	RegionIds *string `json:"RegionIds,omitnil,omitempty" name:"RegionIds"`
 
-	// 项目ID:资源所属项目ID
+	// <p>项目ID:资源所属项目ID</p>
 	ProjectIds *string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
 
-	// 计费模式 prePay(表示包年包月)/postPay(表示按量计费)
+	// <p>计费模式 prePay(表示包年包月)/postPay(表示按量计费)</p>
 	PayModes *string `json:"PayModes,omitnil,omitempty" name:"PayModes"`
 
-	// 交易类型，查询交易类型（请使用交易类型code入参）
+	// <p>交易类型，查询交易类型（请使用交易类型code入参）</p>
 	ActionTypes *string `json:"ActionTypes,omitnil,omitempty" name:"ActionTypes"`
 
-	// 分账标签键
+	// <p>分账标签</p>
 	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 费用类型，查询费用类型（请使用费用类型code入参)入参枚举如下：
-	// cashPayAmount:现金 
-	// incentivePayAmount:赠送金 
-	// voucherPayAmount:优惠券 
-	// tax:税金 
-	// costBeforeTax:税前价
+	// <p>费用类型，查询费用类型（请使用费用类型code入参)入参枚举如下：<br>cashPayAmount:现金<br>incentivePayAmount:赠送金<br>voucherPayAmount:优惠券<br>tax:税金<br>costBeforeTax:税前价</p>
 	FeeType *string `json:"FeeType,omitnil,omitempty" name:"FeeType"`
 
-	// 查询成本分析数据的用户UIN
+	// <p>查询成本分析数据的用户UIN</p>
 	PayerUins *string `json:"PayerUins,omitnil,omitempty" name:"PayerUins"`
 
-	// 使用资源的用户UIN
+	// <p>使用资源的用户UIN</p>
 	OwnerUins *string `json:"OwnerUins,omitnil,omitempty" name:"OwnerUins"`
 
-	// 消耗类型，查询消耗类型（请使用消耗类型code入参）
+	// <p>消耗类型，查询消耗类型（请使用消耗类型code入参）</p>
 	ConsumptionTypes *string `json:"ConsumptionTypes,omitnil,omitempty" name:"ConsumptionTypes"`
 }
 
@@ -7625,100 +7620,74 @@ func (r *DescribeCostDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCostExplorerSummaryRequestParams struct {
-	// 周期开始时间，格式为yyyy-mm-dd hh:ii:ss
+	// <p>周期开始时间，格式为yyyy-mm-dd hh:ii:ss</p>
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 周期结束时间，格式为yyyy-mm-dd hh:ii:ss
+	// <p>周期结束时间，格式为yyyy-mm-dd hh:ii:ss</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 账单类型：1-费用账单、2-消耗账单
+	// <p>账单类型：1-费用账单、2-消耗账单</p>
 	BillType *string `json:"BillType,omitnil,omitempty" name:"BillType"`
 
-	// 统计周期：日-day，月-month；
+	// <p>统计周期：日-day，月-month；</p>
 	PeriodType *string `json:"PeriodType,omitnil,omitempty" name:"PeriodType"`
 
-	// 分类维度（数据汇总维度），查询分类维度（请使用分类维度code入参）入参枚举值：
-	// default=仅总计
-	// feeType=费用类型
-	// billType=账单类型
-	// business=产品
-	// product=子产品
-	// region=地域
-	// zone=可用区
-	// actionType=交易类型
-	// payMode =计费模式
-	// tags=标签
-	// project =项目
-	// payerUin=支付者账号
-	// ownerUin=使用者账号
+	// <p>分类维度（数据汇总维度），查询分类维度（请使用分类维度code入参）入参枚举值：<br>default=仅总计<br>feeType=费用类型<br>billType=账单类型<br>business=产品<br>product=子产品<br>region=地域<br>zone=可用区<br>actionType=交易类型<br>payMode =计费模式<br>tags=标签<br>project =项目<br>payerUin=支付者账号<br>ownerUin=使用者账号</p>
 	Dimensions *string `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
 
-	// 费用类型：cost-折后总费用，totalCost-原价费用
+	// <p>费用类型：cost-折后总费用，totalCost-原价费用</p>
 	FeeType *string `json:"FeeType,omitnil,omitempty" name:"FeeType"`
 
-	// 数量，每页最大值为100
+	// <p>数量，每页最大值为100</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 起始页，当PageNo=1表示第一页， PageNo=2表示第二页，依次类推。
+	// <p>起始页，当PageNo=1表示第一页， PageNo=2表示第二页，依次类推。</p>
 	PageNo *uint64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
-	// 分账标签值
+	// <p>分账标签键</p>
 	TagKeyStr *string `json:"TagKeyStr,omitnil,omitempty" name:"TagKeyStr"`
 
-	// 是否需要筛选框， 1-表示需要， 0-表示不需要，若不传默认不需要。
+	// <p>是否需要筛选框， 1-表示需要， 0-表示不需要，若不传默认不需要。</p>
 	NeedConditionValue *string `json:"NeedConditionValue,omitnil,omitempty" name:"NeedConditionValue"`
 
-	// 筛选参数
+	// <p>筛选参数</p>
 	Conditions *AnalyseConditions `json:"Conditions,omitnil,omitempty" name:"Conditions"`
 }
 
 type DescribeCostExplorerSummaryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 周期开始时间，格式为yyyy-mm-dd hh:ii:ss
+	// <p>周期开始时间，格式为yyyy-mm-dd hh:ii:ss</p>
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 周期结束时间，格式为yyyy-mm-dd hh:ii:ss
+	// <p>周期结束时间，格式为yyyy-mm-dd hh:ii:ss</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 账单类型：1-费用账单、2-消耗账单
+	// <p>账单类型：1-费用账单、2-消耗账单</p>
 	BillType *string `json:"BillType,omitnil,omitempty" name:"BillType"`
 
-	// 统计周期：日-day，月-month；
+	// <p>统计周期：日-day，月-month；</p>
 	PeriodType *string `json:"PeriodType,omitnil,omitempty" name:"PeriodType"`
 
-	// 分类维度（数据汇总维度），查询分类维度（请使用分类维度code入参）入参枚举值：
-	// default=仅总计
-	// feeType=费用类型
-	// billType=账单类型
-	// business=产品
-	// product=子产品
-	// region=地域
-	// zone=可用区
-	// actionType=交易类型
-	// payMode =计费模式
-	// tags=标签
-	// project =项目
-	// payerUin=支付者账号
-	// ownerUin=使用者账号
+	// <p>分类维度（数据汇总维度），查询分类维度（请使用分类维度code入参）入参枚举值：<br>default=仅总计<br>feeType=费用类型<br>billType=账单类型<br>business=产品<br>product=子产品<br>region=地域<br>zone=可用区<br>actionType=交易类型<br>payMode =计费模式<br>tags=标签<br>project =项目<br>payerUin=支付者账号<br>ownerUin=使用者账号</p>
 	Dimensions *string `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
 
-	// 费用类型：cost-折后总费用，totalCost-原价费用
+	// <p>费用类型：cost-折后总费用，totalCost-原价费用</p>
 	FeeType *string `json:"FeeType,omitnil,omitempty" name:"FeeType"`
 
-	// 数量，每页最大值为100
+	// <p>数量，每页最大值为100</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 起始页，当PageNo=1表示第一页， PageNo=2表示第二页，依次类推。
+	// <p>起始页，当PageNo=1表示第一页， PageNo=2表示第二页，依次类推。</p>
 	PageNo *uint64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
-	// 分账标签值
+	// <p>分账标签键</p>
 	TagKeyStr *string `json:"TagKeyStr,omitnil,omitempty" name:"TagKeyStr"`
 
-	// 是否需要筛选框， 1-表示需要， 0-表示不需要，若不传默认不需要。
+	// <p>是否需要筛选框， 1-表示需要， 0-表示不需要，若不传默认不需要。</p>
 	NeedConditionValue *string `json:"NeedConditionValue,omitnil,omitempty" name:"NeedConditionValue"`
 
-	// 筛选参数
+	// <p>筛选参数</p>
 	Conditions *AnalyseConditions `json:"Conditions,omitnil,omitempty" name:"Conditions"`
 }
 
@@ -7753,19 +7722,19 @@ func (r *DescribeCostExplorerSummaryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCostExplorerSummaryResponseParams struct {
-	// 数据条数
+	// <p>数据条数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 表头信息
+	// <p>表头信息</p>
 	Header *AnalyseHeaderDetail `json:"Header,omitnil,omitempty" name:"Header"`
 
-	// 数据明细
+	// <p>数据明细</p>
 	Detail []*AnalyseDetail `json:"Detail,omitnil,omitempty" name:"Detail"`
 
-	// 数据总计
+	// <p>数据总计</p>
 	TotalDetail *AnalyseDetail `json:"TotalDetail,omitnil,omitempty" name:"TotalDetail"`
 
-	// 筛选框
+	// <p>筛选框</p>
 	ConditionValue *AnalyseConditionDetail `json:"ConditionValue,omitnil,omitempty" name:"ConditionValue"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

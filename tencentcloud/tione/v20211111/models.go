@@ -2148,6 +2148,9 @@ type DataConfig struct {
 	// <p>公有云数据源</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicDataSource *PublicDataSourceFS `json:"PublicDataSource,omitnil,omitempty" name:"PublicDataSource"`
+
+	// <p>是否是只读存储</p>
+	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 }
 
 type DataPoint struct {
@@ -6448,28 +6451,31 @@ type GatewayConfig struct {
 }
 
 type GooseFS struct {
-	// goosefs实例id
+	// <p>goosefs实例id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// GooseFS类型，包括GooseFS和GooseFSx
+	// <p>GooseFS类型，包括GooseFS和GooseFSx</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// GooseFSx实例需要挂载的路径
+	// <p>GooseFSx实例需要挂载的路径</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// GooseFS命名空间
+	// <p>GooseFS命名空间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NameSpace *string `json:"NameSpace,omitnil,omitempty" name:"NameSpace"`
+
+	// <p>客户端的挂载参数，逗号分隔的参数名</p>
+	MountOptions *string `json:"MountOptions,omitnil,omitempty" name:"MountOptions"`
 }
 
 type GooseFSx struct {
-	// goosefsx实例id
+	// <p>goosefsx实例id</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// GooseFSx实例需要挂载的路径
+	// <p>GooseFSx实例需要挂载的路径</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 }
 

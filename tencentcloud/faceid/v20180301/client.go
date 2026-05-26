@@ -1493,6 +1493,60 @@ func (c *Client) GetLiveCodeWithContext(ctx context.Context, request *GetLiveCod
     return
 }
 
+func NewGetNFCTokenRequest() (request *GetNFCTokenRequest) {
+    request = &GetNFCTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("faceid", APIVersion, "GetNFCToken")
+    
+    
+    return
+}
+
+func NewGetNFCTokenResponse() (response *GetNFCTokenResponse) {
+    response = &GetNFCTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetNFCToken
+// NFC核验服务，获取NFC识别请求对应的Token信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.UnKnown"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) GetNFCToken(request *GetNFCTokenRequest) (response *GetNFCTokenResponse, err error) {
+    return c.GetNFCTokenWithContext(context.Background(), request)
+}
+
+// GetNFCToken
+// NFC核验服务，获取NFC识别请求对应的Token信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.UnKnown"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) GetNFCTokenWithContext(ctx context.Context, request *GetNFCTokenRequest) (response *GetNFCTokenResponse, err error) {
+    if request == nil {
+        request = NewGetNFCTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "GetNFCToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetNFCToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetNFCTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetWeChatBillDetailsRequest() (request *GetWeChatBillDetailsRequest) {
     request = &GetWeChatBillDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1543,6 +1597,64 @@ func (c *Client) GetWeChatBillDetailsWithContext(ctx context.Context, request *G
     request.SetContext(ctx)
     
     response = NewGetWeChatBillDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetWxNFCResultRequest() (request *GetWxNFCResultRequest) {
+    request = &GetWxNFCResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("faceid", APIVersion, "GetWxNFCResult")
+    
+    
+    return
+}
+
+func NewGetWxNFCResultResponse() (response *GetWxNFCResultResponse) {
+    response = &GetWxNFCResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetWxNFCResult
+// 获取到证件NFC数据，接口传入NFC SDK返回的Token（十分钟内有效），可返回对应NFC获取的证件信息。支持身份证类证件（二代身份证、港澳居住证、台湾居住证、外国人永居证）以及旅行类证件（港澳通行证、台湾通行证、台胞证、回乡证）的NFC识别及核验。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDTOKENPARAMETER = "FailedOperation.InvalidTokenParameter"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.UnKnown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetWxNFCResult(request *GetWxNFCResultRequest) (response *GetWxNFCResultResponse, err error) {
+    return c.GetWxNFCResultWithContext(context.Background(), request)
+}
+
+// GetWxNFCResult
+// 获取到证件NFC数据，接口传入NFC SDK返回的Token（十分钟内有效），可返回对应NFC获取的证件信息。支持身份证类证件（二代身份证、港澳居住证、台湾居住证、外国人永居证）以及旅行类证件（港澳通行证、台湾通行证、台胞证、回乡证）的NFC识别及核验。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDTOKENPARAMETER = "FailedOperation.InvalidTokenParameter"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWN = "InternalError.UnKnown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetWxNFCResultWithContext(ctx context.Context, request *GetWxNFCResultRequest) (response *GetWxNFCResultResponse, err error) {
+    if request == nil {
+        request = NewGetWxNFCResultRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "faceid", APIVersion, "GetWxNFCResult")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetWxNFCResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetWxNFCResultResponse()
     err = c.Send(request, response)
     return
 }

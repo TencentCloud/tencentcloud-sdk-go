@@ -26,8 +26,14 @@ const (
 	// CAM鉴权请求参数检查失败。
 	AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
 
+	// 白名单鉴权错误。
+	AUTHFAILURE_UINWHITELISTCHECKERROR = "AuthFailure.UinWhiteListCheckError"
+
 	// CAM鉴权失败。
 	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+
+	// 绑定标签失败。
+	DRYRUNOPERATION_ADDTAGDRYRUNERROR = "DryRunOperation.AddTagDryrunError"
 
 	// FailedOperation.AddInstanceInfoFailed
 	FAILEDOPERATION_ADDINSTANCEINFOFAILED = "FailedOperation.AddInstanceInfoFailed"
@@ -35,20 +41,47 @@ const (
 	// FailedOperation.AuthNoStrategy
 	FAILEDOPERATION_AUTHNOSTRATEGY = "FailedOperation.AuthNoStrategy"
 
+	// 当前实例版本不支持该接口。
+	FAILEDOPERATION_CHECKSUPPORTACTIONERROR = "FailedOperation.CheckSupportActionError"
+
 	// FailedOperation.ClearInstanceInfoFailed
 	FAILEDOPERATION_CLEARINSTANCEINFOFAILED = "FailedOperation.ClearInstanceInfoFailed"
 
 	// 创建任务失败。
 	FAILEDOPERATION_CREATEFLOWERROR = "FailedOperation.CreateFlowError"
 
+	// 添加实例数据失败。
+	FAILEDOPERATION_DBCREATEINSTANCEERROR = "FailedOperation.DBCreateInstanceError"
+
 	// 查询实例数据失败。
 	FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
+
+	// 查询用户权限错误。
+	FAILEDOPERATION_DBQUERYPRIVILEGESERROR = "FailedOperation.DBQueryPrivilegesError"
+
+	// 查询tag绑定实例数据失败。
+	FAILEDOPERATION_DBQUERYTAGERROR = "FailedOperation.DBQueryTagError"
+
+	// 查询用户数据失败。
+	FAILEDOPERATION_DBQUERYUSERERROR = "FailedOperation.DBQueryUserError"
+
+	// 查询售卖可用区失败。
+	FAILEDOPERATION_DBQUERYZONEERROR = "FailedOperation.DBQueryZoneError"
 
 	// 更新实例名称数据失败。
 	FAILEDOPERATION_DBUPDATEINSTANCEERROR = "FailedOperation.DBUpdateInstanceError"
 
+	// DB数量超出限制。
+	FAILEDOPERATION_DBCOUNTLIMITERROR = "FailedOperation.DbCountLimitError"
+
+	// 查询全量备份列表错误。
+	FAILEDOPERATION_DESCRIBEFULLBACKUPLISTERROR = "FailedOperation.DescribeFullBackupListError"
+
 	// FailedOperation.DisassociateSecurityGroupsFailed
 	FAILEDOPERATION_DISASSOCIATESECURITYGROUPSFAILED = "FailedOperation.DisassociateSecurityGroupsFailed"
+
+	// 实例横向扩容失败。
+	FAILEDOPERATION_EXPANDINSTANCEERROR = "FailedOperation.ExpandInstanceError"
 
 	// FailedOperation.GetSecurityGroupDetailFailed
 	FAILEDOPERATION_GETSECURITYGROUPDETAILFAILED = "FailedOperation.GetSecurityGroupDetailFailed"
@@ -74,11 +107,20 @@ const (
 	// 查询数据库错误。
 	FAILEDOPERATION_QUERYDBERROR = "FailedOperation.QueryDBError"
 
+	// 查询用户失败。
+	FAILEDOPERATION_QUERYUSERERROR = "FailedOperation.QueryUserError"
+
 	// FailedOperation.SetRuleLocationFailed
 	FAILEDOPERATION_SETRULELOCATIONFAILED = "FailedOperation.SetRuleLocationFailed"
 
+	// table数量超出限制。
+	FAILEDOPERATION_TABLECOUNTLIMITERROR = "FailedOperation.TableCountLimitError"
+
 	// FailedOperation.UpdateInstanceInfoFailed
 	FAILEDOPERATION_UPDATEINSTANCEINFOFAILED = "FailedOperation.UpdateInstanceInfoFailed"
+
+	// 更新权限错误。
+	FAILEDOPERATION_UPDATEPRIVILEGESERROR = "FailedOperation.UpdatePrivilegesError"
 
 	// 数据库访问错误。
 	INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
@@ -119,6 +161,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 创建实例参数错误。
+	INVALIDPARAMETER_CREATEINSTANCEPARAMERROR = "InvalidParameter.CreateInstanceParamError"
+
 	// 备份策略参数不合法
 	INVALIDPARAMETER_ILLEGALBACKUPPOLICYPARAMSERR = "InvalidParameter.IllegalBackupPolicyParamsErr"
 
@@ -143,20 +188,62 @@ const (
 	// 参数值无效或超出范围。
 	INVALIDPARAMETERVALUE_BIZINVALIDPARAMETERVALUEERROR = "InvalidParameterValue.BizInvalidParameterValueError"
 
+	// 查询磁盘大小错误。
+	INVALIDPARAMETERVALUE_CHECKCLONEINSTANCEDISKERROR = "InvalidParameterValue.CheckCloneInstanceDiskError"
+
+	// 磁盘大小校验错误。
+	INVALIDPARAMETERVALUE_CHECKDISKERROR = "InvalidParameterValue.CheckDiskError"
+
+	// host校验失败。
+	INVALIDPARAMETERVALUE_CHECKHOSTERROR = "InvalidParameterValue.CheckHostError"
+
 	// 实例版本校验错误。
 	INVALIDPARAMETERVALUE_CHECKINSTANCEVERSIONERROR = "InvalidParameterValue.CheckInstanceVersionError"
 
 	// 名称校验失败。
 	INVALIDPARAMETERVALUE_CHECKNAMEERROR = "InvalidParameterValue.CheckNameError"
 
+	// 实例规格校验错误。
+	INVALIDPARAMETERVALUE_CHECKSPECERROR = "InvalidParameterValue.CheckSpecError"
+
+	// vpc校验错误。
+	INVALIDPARAMETERVALUE_CHECKVPCERROR = "InvalidParameterValue.CheckVpcError"
+
+	// 实例过滤参数错误。
+	INVALIDPARAMETERVALUE_INSTANCEFILTERKEYERROR = "InvalidParameterValue.InstanceFilterKeyError"
+
 	// 参数错误。
 	INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+
+	// 创建实例副本数不符合规范。
+	INVALIDPARAMETERVALUE_NODEREPLICASINVALIDERROR = "InvalidParameterValue.NodeReplicasInvalidError"
+
+	// 绑定tag数超限。
+	LIMITEXCEEDED_ADDTAGCOUNTERROR = "LimitExceeded.AddTagCountError"
+
+	// 批量创建实例数超过限制个数。
+	LIMITEXCEEDED_OUTOFINSTANCECNTLIMITERROR = "LimitExceeded.OutOfInstanceCntLimitError"
+
+	// 拉取实例超过限制个数。
+	LIMITEXCEEDED_OUTOFINSTANCECOUNTLIMITERROR = "LimitExceeded.OutOfInstanceCountLimitError"
+
+	// 规格超过限制。
+	LIMITEXCEEDED_OUTOFLIMITERROR = "LimitExceeded.OutOfLimitError"
+
+	// 副本数超过限制。
+	LIMITEXCEEDED_OUTOFNODEREPLICASLIMITERROR = "LimitExceeded.OutOfNodeReplicasLimitError"
+
+	// 规格超过限制。
+	LIMITEXCEEDED_OUTOFSPECLIMITERROR = "LimitExceeded.OutOfSpecLimitError"
 
 	// 缺少参数错误
 	MISSINGPARAMETER_MISSINGPARAMETERERROR = "MissingParameter.MissingParameterError"
 
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
+
+	// 暂不支持实例规格缩容操作。
+	OPERATIONDENIED_CHECKDECREASESPECERROR = "OperationDenied.CheckDecreaseSpecError"
 
 	// 创建备份任务个数超过阈值
 	OPERATIONDENIED_CREATEBACKUPTASKTHRESHOLDERR = "OperationDenied.CreateBackupTaskThresholdErr"
@@ -190,4 +277,7 @@ const (
 
 	// UnauthorizedOperation.PermissionDenied
 	UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+
+	// 获取最大节点数错误。
+	UNSUPPORTEDOPERATION_GETMAXNODENUMERROR = "UnsupportedOperation.GetMaxNodeNumError"
 )

@@ -857,6 +857,9 @@ const (
 	// 不支持的操作，不支持将未绑定到实例的密钥对从实例解绑。
 	UNSUPPORTEDOPERATION_KEYPAIRNOTBOUNDTOINSTANCE = "UnsupportedOperation.KeyPairNotBoundToInstance"
 
+	// 解绑定密钥对使用的用户名和绑定时的不一致。
+	UNSUPPORTEDOPERATION_KEYPAIRUNBINDUSERNAMEMISMATCH = "UnsupportedOperation.KeyPairUnbindUsernameMismatch"
+
 	// 不支持的操作，实例最近一次的操作尚未完成。
 	UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
 

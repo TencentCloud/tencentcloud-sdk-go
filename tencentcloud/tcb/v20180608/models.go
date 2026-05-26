@@ -474,6 +474,67 @@ type BanConfig struct {
 }
 
 // Predefined struct for user
+type BindStorageSourceRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 存储源
+	StorageConfig *ExternalStorage `json:"StorageConfig,omitnil,omitempty" name:"StorageConfig"`
+}
+
+type BindStorageSourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 存储源
+	StorageConfig *ExternalStorage `json:"StorageConfig,omitnil,omitempty" name:"StorageConfig"`
+}
+
+func (r *BindStorageSourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindStorageSourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "StorageConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindStorageSourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindStorageSourceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BindStorageSourceResponse struct {
+	*tchttp.BaseResponse
+	Response *BindStorageSourceResponseParams `json:"Response"`
+}
+
+func (r *BindStorageSourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindStorageSourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CheckTcbServiceRequestParams struct {
 
 }
@@ -3631,40 +3692,38 @@ func (r *DescribeEnvLimitResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEnvsRequestParams struct {
-	// 环境ID，如果传了这个参数则只返回该环境的相关信息
+	// <p>环境ID，如果传了这个参数则只返回该环境的相关信息</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 指定Channels字段为可见渠道列表或不可见渠道列表
-	// 如只想获取渠道A的环境 就填写IsVisible= true,Channels = ["A"], 过滤渠道A拉取其他渠道环境时填写IsVisible= false,Channels = ["A"]
+	// <p>指定Channels字段为可见渠道列表或不可见渠道列表<br>如只想获取渠道A的环境 就填写IsVisible= true,Channels = [&quot;A&quot;], 过滤渠道A拉取其他渠道环境时填写IsVisible= false,Channels = [&quot;A&quot;]</p>
 	IsVisible *bool `json:"IsVisible,omitnil,omitempty" name:"IsVisible"`
 
-	// 渠道列表，代表可见或不可见渠道由IsVisible参数指定
+	// <p>渠道列表，代表可见或不可见渠道由IsVisible参数指定</p>
 	Channels []*string `json:"Channels,omitnil,omitempty" name:"Channels"`
 
-	// 分页参数，单页限制个数
+	// <p>分页参数，单页限制个数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页参数，偏移量
+	// <p>分页参数，偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeEnvsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 环境ID，如果传了这个参数则只返回该环境的相关信息
+	// <p>环境ID，如果传了这个参数则只返回该环境的相关信息</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 指定Channels字段为可见渠道列表或不可见渠道列表
-	// 如只想获取渠道A的环境 就填写IsVisible= true,Channels = ["A"], 过滤渠道A拉取其他渠道环境时填写IsVisible= false,Channels = ["A"]
+	// <p>指定Channels字段为可见渠道列表或不可见渠道列表<br>如只想获取渠道A的环境 就填写IsVisible= true,Channels = [&quot;A&quot;], 过滤渠道A拉取其他渠道环境时填写IsVisible= false,Channels = [&quot;A&quot;]</p>
 	IsVisible *bool `json:"IsVisible,omitnil,omitempty" name:"IsVisible"`
 
-	// 渠道列表，代表可见或不可见渠道由IsVisible参数指定
+	// <p>渠道列表，代表可见或不可见渠道由IsVisible参数指定</p>
 	Channels []*string `json:"Channels,omitnil,omitempty" name:"Channels"`
 
-	// 分页参数，单页限制个数
+	// <p>分页参数，单页限制个数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页参数，偏移量
+	// <p>分页参数，偏移量</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -3693,10 +3752,10 @@ func (r *DescribeEnvsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEnvsResponseParams struct {
-	// 环境信息列表
+	// <p>环境信息列表</p>
 	EnvList []*EnvInfo `json:"EnvList,omitnil,omitempty" name:"EnvList"`
 
-	// 环境个数
+	// <p>环境个数</p>
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5269,6 +5328,12 @@ type EnvInfo struct {
 
 	// <p>回收标志，默认为空</p>
 	Recycle *string `json:"Recycle,omitnil,omitempty" name:"Recycle"`
+
+	// <p>环境meta信息列表</p>
+	Meta []*KVPair `json:"Meta,omitnil,omitempty" name:"Meta"`
+
+	// <p>pg信息</p>
+	PostgreSQL []*PostgreSQLInfo `json:"PostgreSQL,omitnil,omitempty" name:"PostgreSQL"`
 }
 
 // Predefined struct for user
@@ -6907,6 +6972,67 @@ func (r *ModifySafeRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyStorageSourceRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 存储源
+	StorageConfig *ExternalStorage `json:"StorageConfig,omitnil,omitempty" name:"StorageConfig"`
+}
+
+type ModifyStorageSourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 存储源
+	StorageConfig *ExternalStorage `json:"StorageConfig,omitnil,omitempty" name:"StorageConfig"`
+}
+
+func (r *ModifyStorageSourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStorageSourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "StorageConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStorageSourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStorageSourceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyStorageSourceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyStorageSourceResponseParams `json:"Response"`
+}
+
+func (r *ModifyStorageSourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStorageSourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyUserRequestParams struct {
 	// 环境id
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -7194,6 +7320,23 @@ type PermissionInfo struct {
 
 	// 自定义规则
 	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
+}
+
+type PostgreSQLInfo struct {
+	// <p>数据库名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>实例id</p>
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// <p>实例状态</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>地域</p>
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// <p>数据库引擎版本</p>
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
 
 type Provider struct {
@@ -7892,6 +8035,60 @@ type TkeClusterInfo struct {
 
 	// 版本内网CLB所在子网Id
 	VersionClbSubnetId *string `json:"VersionClbSubnetId,omitnil,omitempty" name:"VersionClbSubnetId"`
+}
+
+// Predefined struct for user
+type UnbindStorageSourceRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+type UnbindStorageSourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+}
+
+func (r *UnbindStorageSourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindStorageSourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindStorageSourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnbindStorageSourceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UnbindStorageSourceResponse struct {
+	*tchttp.BaseResponse
+	Response *UnbindStorageSourceResponseParams `json:"Response"`
+}
+
+func (r *UnbindStorageSourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindStorageSourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

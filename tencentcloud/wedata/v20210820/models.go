@@ -2652,7 +2652,7 @@ func (r *BatchSuspendIntegrationTasksResponse) FromJsonString(s string) error {
 }
 
 type BatchTaskOperateNew struct {
-	// 操作Id
+	// <p>操作Id</p><p>可使用JobId字段通过ListBatchDetail接口 查询异步操作结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobId *uint64 `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
@@ -27255,27 +27255,27 @@ func (r *GetPaginationTaskScriptResponse) FromJsonString(s string) error {
 }
 
 type GetPaginationTaskScriptResponseInfo struct {
-	// 项目编号
+	// <p>项目编号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 任务编号
+	// <p>任务编号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 页内尺寸
+	// <p>页内尺寸</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 页码
+	// <p>页码</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 
-	// 总页数
+	// <p>总页数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PageTotal *int64 `json:"PageTotal,omitnil,omitempty" name:"PageTotal"`
 
-	// 分页内容
+	// <p>分页内容</p><p>分页拉取全部代码内容后，先拼接，再Base64解码获取完整脚本内容</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Base64ScriptContent *string `json:"Base64ScriptContent,omitnil,omitempty" name:"Base64ScriptContent"`
 }
