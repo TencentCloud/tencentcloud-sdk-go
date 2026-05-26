@@ -1010,6 +1010,10 @@ type Cluster struct {
 	// <p>集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行</p>
 	IsHighAvailability *bool `json:"IsHighAvailability,omitnil,omitempty" name:"IsHighAvailability"`
 
+	// <p>集群分类：tke=标准TKE集群，agent=Agent集群</p><p>默认值：tke</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterCategory *string `json:"ClusterCategory,omitnil,omitempty" name:"ClusterCategory"`
+
 	// <p>开启后会下发Gatekeeper和网络策略</p>
 	SecurityModeConfig *SecurityModeConfig `json:"SecurityModeConfig,omitnil,omitempty" name:"SecurityModeConfig"`
 }
@@ -23256,6 +23260,19 @@ type Step struct {
 	Detail *string `json:"Detail,omitnil,omitempty" name:"Detail"`
 }
 
+type SubnetAllocation struct {
+	// <p>子网 ID</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>分配比例（百分比），所有 Ratio 之和必须等于 100</p>
+	Ratio *uint64 `json:"Ratio,omitnil,omitempty" name:"Ratio"`
+}
+
+type SubnetAllocationPolicy struct {
+	// <p>子网分配列表</p>
+	Allocations []*SubnetAllocation `json:"Allocations,omitnil,omitempty" name:"Allocations"`
+}
+
 type SubnetInfos struct {
 	// 子网id
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
@@ -24989,29 +25006,29 @@ type VirtualNode struct {
 }
 
 type VirtualNodePool struct {
-	// 节点池ID
+	// <p>节点池ID</p>
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
-	// 子网列表
+	// <p>子网列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
-	// 节点池名称
+	// <p>节点池名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 节点池生命周期
-	// - creating：创建中
-	// - normal：正常
-	// - updating：更新中
+	// <p>节点池生命周期</p><ul><li>creating：创建中</li><li>normal：正常</li><li>updating：更新中</li></ul>
 	LifeState *string `json:"LifeState,omitnil,omitempty" name:"LifeState"`
 
-	// 虚拟节点label
+	// <p>虚拟节点label</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// 虚拟节点taint
+	// <p>虚拟节点taint</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
+
+	// <p>子网分配策略</p>
+	SubnetAllocationPolicy *SubnetAllocationPolicy `json:"SubnetAllocationPolicy,omitnil,omitempty" name:"SubnetAllocationPolicy"`
 }
 
 type VirtualNodeSpec struct {

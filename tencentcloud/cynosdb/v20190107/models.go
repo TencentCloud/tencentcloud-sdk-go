@@ -20,6 +20,17 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AIOptimizerStatus struct {
+	// <p>状态。closing-关闭中，closed-关闭，opening-开启中，training-训练中，trained-训练完成，train_failed-训练失败。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>开启时间</p>
+	OpenTime *string `json:"OpenTime,omitnil,omitempty" name:"OpenTime"`
+
+	// <p>训练进度</p>
+	TrainingProgress *int64 `json:"TrainingProgress,omitnil,omitempty" name:"TrainingProgress"`
+}
+
 type Ability struct {
 	// 是否支持从可用区
 	IsSupportSlaveZone *string `json:"IsSupportSlaveZone,omitnil,omitempty" name:"IsSupportSlaveZone"`
@@ -2173,63 +2184,62 @@ func (r *CloseWanResponse) FromJsonString(s string) error {
 }
 
 type ClusterInstanceDetail struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 引擎类型
+	// <p>引擎类型</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例状态
+	// <p>实例状态</p>
 	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
-	// 实例状态描述
+	// <p>实例状态描述</p>
 	InstanceStatusDesc *string `json:"InstanceStatusDesc,omitnil,omitempty" name:"InstanceStatusDesc"`
 
-	// cpu核数
+	// <p>cpu核数</p>
 	InstanceCpu *int64 `json:"InstanceCpu,omitnil,omitempty" name:"InstanceCpu"`
 
-	// 内存
+	// <p>内存</p>
 	InstanceMemory *int64 `json:"InstanceMemory,omitnil,omitempty" name:"InstanceMemory"`
 
-	// 硬盘
+	// <p>硬盘</p>
 	InstanceStorage *int64 `json:"InstanceStorage,omitnil,omitempty" name:"InstanceStorage"`
 
-	// 实例角色
+	// <p>实例角色</p>
 	InstanceRole *string `json:"InstanceRole,omitnil,omitempty" name:"InstanceRole"`
 
-	// 执行开始时间(距离0点的秒数)	
+	// <p>执行开始时间(距离0点的秒数)</p>
 	MaintainStartTime *int64 `json:"MaintainStartTime,omitnil,omitempty" name:"MaintainStartTime"`
 
-	// 持续的时间(单位：秒)	
+	// <p>持续的时间(单位：秒)</p>
 	MaintainDuration *int64 `json:"MaintainDuration,omitnil,omitempty" name:"MaintainDuration"`
 
-	// 可以执行的时间，枚举值：["Mon","Tue","Wed","Thu","Fri", "Sat", "Sun"]
+	// <p>可以执行的时间，枚举值：[&quot;Mon&quot;,&quot;Tue&quot;,&quot;Wed&quot;,&quot;Thu&quot;,&quot;Fri&quot;, &quot;Sat&quot;, &quot;Sun&quot;]</p>
 	MaintainWeekDays []*string `json:"MaintainWeekDays,omitnil,omitempty" name:"MaintainWeekDays"`
 
-	// serverless实例子状态
+	// <p>serverless实例子状态</p>
 	ServerlessStatus *string `json:"ServerlessStatus,omitnil,omitempty" name:"ServerlessStatus"`
 
-	// 实例任务信息
+	// <p>实例任务信息</p>
 	InstanceTasks []*ObjectTask `json:"InstanceTasks,omitnil,omitempty" name:"InstanceTasks"`
 
-	// 实例机器类型
-	// 1. common，通用型。
-	// 2. exclusive，独享型。
+	// <p>实例机器类型</p><ol><li>common，通用型。</li><li>exclusive，独享型。</li></ol>
 	InstanceDeviceType *string `json:"InstanceDeviceType,omitnil,omitempty" name:"InstanceDeviceType"`
 
-	// 实例存储类型
-	// 说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。
+	// <p>实例存储类型<br>说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。</p>
 	InstanceStorageType *string `json:"InstanceStorageType,omitnil,omitempty" name:"InstanceStorageType"`
 
-	// 数据库类型
+	// <p>数据库类型</p>
 	DbMode *string `json:"DbMode,omitnil,omitempty" name:"DbMode"`
 
-	// 节点列表
-	// 说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。
+	// <p>节点列表<br>说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。</p>
 	NodeList []*string `json:"NodeList,omitnil,omitempty" name:"NodeList"`
+
+	// <p>AI优化器状态</p>
+	AIOptimizerStatus *AIOptimizerStatus `json:"AIOptimizerStatus,omitnil,omitempty" name:"AIOptimizerStatus"`
 }
 
 type ClusterParamModifyLog struct {
@@ -2298,20 +2308,20 @@ type ClusterTaskId struct {
 
 // Predefined struct for user
 type CopyBackupToVaultRequestParams struct {
-	// 目标保险箱ID，备份文件将复制到此保险箱
+	// <p>目标保险箱ID，备份文件将复制到此保险箱</p>
 	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
 
-	// 备份文件ID列表，支持批量复制多个备份文件
+	// <p>备份文件ID列表，支持批量复制多个备份文件</p>
 	BackupIds []*int64 `json:"BackupIds,omitnil,omitempty" name:"BackupIds"`
 }
 
 type CopyBackupToVaultRequest struct {
 	*tchttp.BaseRequest
 	
-	// 目标保险箱ID，备份文件将复制到此保险箱
+	// <p>目标保险箱ID，备份文件将复制到此保险箱</p>
 	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
 
-	// 备份文件ID列表，支持批量复制多个备份文件
+	// <p>备份文件ID列表，支持批量复制多个备份文件</p>
 	BackupIds []*int64 `json:"BackupIds,omitnil,omitempty" name:"BackupIds"`
 }
 
@@ -2337,7 +2347,7 @@ func (r *CopyBackupToVaultRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CopyBackupToVaultResponseParams struct {
-	// 任务ID
+	// <p>任务ID</p>
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -22964,28 +22974,28 @@ type SparseBackupConfig struct {
 }
 
 type SparseBackupConfigInfo struct {
-	// 操作类型:add,modify,remove
+	// <p>操作类型:add,modify,remove</p>
 	OpType *string `json:"OpType,omitnil,omitempty" name:"OpType"`
 
-	// 配置 ID
+	// <p>配置 ID</p>
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
-	// 周期策略类型：weekly/monthly/yearly
+	// <p>周期策略类型：weekly/monthly/yearly</p>
 	SparsePeriodConfig *string `json:"SparsePeriodConfig,omitnil,omitempty" name:"SparsePeriodConfig"`
 
-	// 周期时间配置
+	// <p>周期时间配置</p>
 	SparsePeriodTime *SparsePeriodTime `json:"SparsePeriodTime,omitnil,omitempty" name:"SparsePeriodTime"`
 
-	// 保留天数（7-7320天，最长20年）
+	// <p>保留天数（7-7320天，最长20年）</p>
 	SparseBackupSaveDays *int64 `json:"SparseBackupSaveDays,omitnil,omitempty" name:"SparseBackupSaveDays"`
 }
 
 type SparseBackupConfigRsp struct {
-	// 稀疏备份开关：ON/OFF
+	// <p>稀疏备份开关：ON/OFF</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SparseBackupSwitch *string `json:"SparseBackupSwitch,omitnil,omitempty" name:"SparseBackupSwitch"`
 
-	// 稀疏备份策略列表（1-3条）
+	// <p>稀疏备份策略列表（1-3条）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SparseBackupConfigInfos []*SparseBackupConfigInfo `json:"SparseBackupConfigInfos,omitnil,omitempty" name:"SparseBackupConfigInfos"`
 }
