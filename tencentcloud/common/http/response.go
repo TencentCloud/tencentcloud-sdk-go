@@ -4,16 +4,23 @@ import (
 	"bufio"
 	"bytes"
 	"fmt"
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 	"io/ioutil"
 	"log"
 	"strconv"
+
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 
 	//"log"
 	"net/http"
 
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 )
+
+// SSEScannerBufferMaxBytes is the upper bound for a single SSE line. The
+// underlying bufio.Scanner allocates lazily, so idle streams pay no extra
+// memory. Override this before issuing SSE requests if upstream payloads can
+// exceed the default .
+var SSEScannerBufferMaxBytes = bufio.MaxScanTokenSize
 
 type Response interface {
 	ParseErrorFromHTTPResponse(body []byte) error
@@ -191,6 +198,7 @@ func parseFromSSE(hr *http.Response, resp Response) error {
 		defer close(ch)
 
 		scanner := bufio.NewScanner(hr.Body)
+		scanner.Buffer(nil, SSEScannerBufferMaxBytes)
 		scanner.Split(bufio.ScanLines)
 
 		event := SSEvent{}
