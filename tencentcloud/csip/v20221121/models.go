@@ -2621,63 +2621,71 @@ type CosAssetFileIdentifyInfo struct {
 }
 
 type CosAssetInfo struct {
-	// appid
+	// <p>appid</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// cos桶名
+	// <p>cos桶名</p>
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
 
-	// cos region名
+	// <p>cos region名</p>
 	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
-	// 地域码值
+	// <p>地域码值</p>
 	BucketRegionCode *string `json:"BucketRegionCode,omitnil,omitempty" name:"BucketRegionCode"`
 
-	// cos桶备注
+	// <p>cos桶备注</p>
 	BucketMarker *string `json:"BucketMarker,omitnil,omitempty" name:"BucketMarker"`
 
-	// cos桶主账号所属者
+	// <p>cos桶主账号所属者</p>
 	BucketOwnerUin *string `json:"BucketOwnerUin,omitnil,omitempty" name:"BucketOwnerUin"`
 
-	// cos主账号所属者昵称
+	// <p>cos主账号所属者昵称</p>
 	BucketOwnerNickName *string `json:"BucketOwnerNickName,omitnil,omitempty" name:"BucketOwnerNickName"`
 
-	// cos桶标签详情
+	// <p>cos桶标签详情</p>
 	BucketTagInfo *string `json:"BucketTagInfo,omitnil,omitempty" name:"BucketTagInfo"`
 
-	// 安全建议
-	// 1 暂无异常
-	// 2 建议加固
-	// 3 立即处理
+	// <p>安全建议<br>1 暂无异常<br>2 建议加固<br>3 立即处理</p>
 	BucketSecuritySuggestion *int64 `json:"BucketSecuritySuggestion,omitnil,omitempty" name:"BucketSecuritySuggestion"`
 
-	// 告警列表
+	// <p>告警列表</p>
 	BucketAlarmList []*CosRiskAlarmInfo `json:"BucketAlarmList,omitnil,omitempty" name:"BucketAlarmList"`
 
-	// 风险列表
+	// <p>风险列表</p>
 	BucketRiskList []*CosRiskAlarmInfo `json:"BucketRiskList,omitnil,omitempty" name:"BucketRiskList"`
 
-	// 调用源ip数
+	// <p>调用源ip数</p>
 	BucketInvokeSourceIpCount *int64 `json:"BucketInvokeSourceIpCount,omitnil,omitempty" name:"BucketInvokeSourceIpCount"`
 
-	// 访问策略
+	// <p>访问策略</p>
 	BucketAccessWay *CosBucketAccessWay `json:"BucketAccessWay,omitnil,omitempty" name:"BucketAccessWay"`
 
-	// 创建时间Unix时间单位毫秒
+	// <p>创建时间Unix时间单位毫秒</p>
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 最后访问时间Unix时间单位毫秒
+	// <p>最后访问时间Unix时间单位毫秒</p>
 	LastAccessTime *int64 `json:"LastAccessTime,omitnil,omitempty" name:"LastAccessTime"`
 
-	// 存储桶id
+	// <p>存储桶id</p>
 	BucketId *uint64 `json:"BucketId,omitnil,omitempty" name:"BucketId"`
 
-	// 0 关闭
-	// 1 开启
+	// <p>0 关闭<br>1 开启</p>
 	MonitorStatus *uint64 `json:"MonitorStatus,omitnil,omitempty" name:"MonitorStatus"`
 
-	// 数据识别扫描信息
+	// <p>数据识别扫描信息</p>
 	DataScanInfo *CosAssetDataScanDetail `json:"DataScanInfo,omitnil,omitempty" name:"DataScanInfo"`
+
+	// <p>存储桶Az类型</p><p>枚举值：</p><ul><li>MAZ： 多az</li><li>SAZ： 单az</li></ul>
+	BucketAzType *string `json:"BucketAzType,omitnil,omitempty" name:"BucketAzType"`
+
+	// <p>存储桶存储大小</p><p>默认值：0</p>
+	BucketStorageSize *int64 `json:"BucketStorageSize,omitnil,omitempty" name:"BucketStorageSize"`
+
+	// <p>存储桶对象个数</p><p>默认值：0</p>
+	BucketObjectCount *int64 `json:"BucketObjectCount,omitnil,omitempty" name:"BucketObjectCount"`
+
+	// <p>存储桶敏感识别采样率</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+	IdentifySampleRate *float64 `json:"IdentifySampleRate,omitnil,omitempty" name:"IdentifySampleRate"`
 }
 
 type CosAssetSyncTaskInfo struct {
@@ -2692,74 +2700,83 @@ type CosAssetSyncTaskInfo struct {
 }
 
 type CosAuditPayInfo struct {
-	// APPID
+	// <p>APPID</p>
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 订单状态 0未购买 1正常，2隔离，3销毁，6试用中，7到期
+	// <p>订单状态 0未购买 1正常，2隔离，3销毁，6试用中，7到期</p>
 	OrderStatus *uint64 `json:"OrderStatus,omitnil,omitempty" name:"OrderStatus"`
 
-	// 已购对象存储数量
+	// <p>已购对象存储数量</p>
 	BucketNum *uint64 `json:"BucketNum,omitnil,omitempty" name:"BucketNum"`
 
-	// 支付模式，0-后付费 1-预付费
+	// <p>支付模式，0-后付费 1-预付费</p>
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 是否单独购买，1-单独购买，2-被其它账号共享
+	// <p>是否单独购买，1-单独购买，2-被其它账号共享</p>
 	IsSelfBuy *uint64 `json:"IsSelfBuy,omitnil,omitempty" name:"IsSelfBuy"`
 
-	// 订单开始时间
+	// <p>订单开始时间</p>
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
-	// 订单到期时间
+	// <p>订单到期时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 0-用户未设置,1-用户设置自动续费,2-用户设置不自动续费
+	// <p>0-用户未设置,1-用户设置自动续费,2-用户设置不自动续费</p>
 	AutoRenew *uint64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
-	// 订单时长
+	// <p>订单时长</p>
 	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 时长单位
+	// <p>时长单位</p>
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
-	// 资源id 
+	// <p>资源id</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 公测结束时间
+	// <p>公测结束时间</p>
 	BetaEndTime *string `json:"BetaEndTime,omitnil,omitempty" name:"BetaEndTime"`
 
-	// 系统当前时间
+	// <p>系统当前时间</p>
 	TimeNow *string `json:"TimeNow,omitnil,omitempty" name:"TimeNow"`
 
-	// 是否分享给其它账号，1-是，2-否
+	// <p>是否分享给其它账号，1-是，2-否</p>
 	IsShareToOther *uint64 `json:"IsShareToOther,omitnil,omitempty" name:"IsShareToOther"`
 
-	// uin
+	// <p>uin</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 昵称
+	// <p>昵称</p>
 	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
 
-	// 共享的bucketIdSet 
+	// <p>共享的bucketIdSet</p>
 	BindBucket []*CosBucketId `json:"BindBucket,omitnil,omitempty" name:"BindBucket"`
 
-	// 共享的appid
+	// <p>共享的appid</p>
 	SharedAppIdSet []*uint64 `json:"SharedAppIdSet,omitnil,omitempty" name:"SharedAppIdSet"`
 
-	// 是否已经开启后付费
+	// <p>是否已经开启后付费</p>
 	PostPayStatus *uint64 `json:"PostPayStatus,omitnil,omitempty" name:"PostPayStatus"`
 
-	// 0：未做过试用期试用   1 ：做过试用期试用
+	// <p>0：未做过试用期试用   1 ：做过试用期试用</p>
 	IsTestUser *uint64 `json:"IsTestUser,omitnil,omitempty" name:"IsTestUser"`
 
-	// 剩余可用数
+	// <p>剩余可用数</p>
 	AvailableBucketNum *uint64 `json:"AvailableBucketNum,omitnil,omitempty" name:"AvailableBucketNum"`
 
-	// 已开启的监测存储桶数
+	// <p>已开启的监测存储桶数</p>
 	MonitorBucketNum *uint64 `json:"MonitorBucketNum,omitnil,omitempty" name:"MonitorBucketNum"`
 
-	// 总的存储桶数
+	// <p>总的存储桶数</p>
 	TotalBucketNum *uint64 `json:"TotalBucketNum,omitnil,omitempty" name:"TotalBucketNum"`
+
+	// <p>后付费产品开关状态</p>
+	PostProductStatusList []*uint64 `json:"PostProductStatusList,omitnil,omitempty" name:"PostProductStatusList"`
+
+	// <p>后付费产品购买状态</p>
+	PostProductBuyStatusList []*uint64 `json:"PostProductBuyStatusList,omitnil,omitempty" name:"PostProductBuyStatusList"`
+
+	// <p>新后付费资源id</p>
+	NewPostPayResourceId *string `json:"NewPostPayResourceId,omitnil,omitempty" name:"NewPostPayResourceId"`
 }
 
 type CosBucketAccessWay struct {
@@ -2779,35 +2796,47 @@ type CosBucketAccessWay struct {
 }
 
 type CosBucketBillingInfo struct {
-	// appid
+	// <p>appid</p>
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// uin
+	// <p>uin</p>
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 昵称
+	// <p>昵称</p>
 	OwnerNickName *string `json:"OwnerNickName,omitnil,omitempty" name:"OwnerNickName"`
 
-	// 存储桶数量
+	// <p>存储桶数量</p>
 	BucketCount *uint64 `json:"BucketCount,omitnil,omitempty" name:"BucketCount"`
 
-	// 0 未购买 1  已单独购买 2 已被共享
+	// <p>0 未购买 1  已单独购买 2 已被共享</p>
 	BuyStatus *uint64 `json:"BuyStatus,omitnil,omitempty" name:"BuyStatus"`
 
-	// 共享账号appid
+	// <p>共享账号appid</p>
 	ShareFromAppId *uint64 `json:"ShareFromAppId,omitnil,omitempty" name:"ShareFromAppId"`
 
-	// 共享账号uin
+	// <p>共享账号uin</p>
 	ShareFromUin *string `json:"ShareFromUin,omitnil,omitempty" name:"ShareFromUin"`
 
-	// 共享账号昵称
+	// <p>共享账号昵称</p>
 	ShareFromNickName *string `json:"ShareFromNickName,omitnil,omitempty" name:"ShareFromNickName"`
 
-	// 监控的存储桶数
+	// <p>监控的存储桶数</p>
 	MonitorBucketCount *uint64 `json:"MonitorBucketCount,omitnil,omitempty" name:"MonitorBucketCount"`
 
-	// 0 关闭 1 开启
+	// <p>0 关闭 1 开启</p>
 	IsAutoMonitor *uint64 `json:"IsAutoMonitor,omitnil,omitempty" name:"IsAutoMonitor"`
+
+	// <p>是否启用白名单日志功能</p>
+	LogFeatureWhitelist *bool `json:"LogFeatureWhitelist,omitnil,omitempty" name:"LogFeatureWhitelist"`
+
+	// <p>是否存在新的后付费订单</p>
+	IsHaveNewPostOrder *bool `json:"IsHaveNewPostOrder,omitnil,omitempty" name:"IsHaveNewPostOrder"`
+
+	// <p>是否存在旧后付费订单</p>
+	IsHaveOldPostOrder *bool `json:"IsHaveOldPostOrder,omitnil,omitempty" name:"IsHaveOldPostOrder"`
+
+	// <p>后付费产品列表</p>
+	PostProductList []*int64 `json:"PostProductList,omitnil,omitempty" name:"PostProductList"`
 }
 
 type CosBucketId struct {
@@ -3413,27 +3442,45 @@ func (r *CreateCosAssetSyncTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCosObjectScanTaskRequestParams struct {
-	// <p>1: 敏感数据识别 2:恶意文件扫描</p>
+	// <p>1: 敏感数据识别 2:恶意文件扫描 3:批量扫描敏感数据</p>
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// <p>存储桶列表</p>
 	BucketSet []*string `json:"BucketSet,omitnil,omitempty" name:"BucketSet"`
+
+	// <p>任务参数</p>
+	TaskArgs *string `json:"TaskArgs,omitnil,omitempty" name:"TaskArgs"`
+
+	// <p>是否全部扫描</p>
+	IsScanAll *bool `json:"IsScanAll,omitnil,omitempty" name:"IsScanAll"`
+
+	// <p>扫描时需要剔除的存储桶</p>
+	DeleteBucketSet []*string `json:"DeleteBucketSet,omitnil,omitempty" name:"DeleteBucketSet"`
 }
 
 type CreateCosObjectScanTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// <p>1: 敏感数据识别 2:恶意文件扫描</p>
+	// <p>1: 敏感数据识别 2:恶意文件扫描 3:批量扫描敏感数据</p>
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// <p>存储桶列表</p>
 	BucketSet []*string `json:"BucketSet,omitnil,omitempty" name:"BucketSet"`
+
+	// <p>任务参数</p>
+	TaskArgs *string `json:"TaskArgs,omitnil,omitempty" name:"TaskArgs"`
+
+	// <p>是否全部扫描</p>
+	IsScanAll *bool `json:"IsScanAll,omitnil,omitempty" name:"IsScanAll"`
+
+	// <p>扫描时需要剔除的存储桶</p>
+	DeleteBucketSet []*string `json:"DeleteBucketSet,omitnil,omitempty" name:"DeleteBucketSet"`
 }
 
 func (r *CreateCosObjectScanTaskRequest) ToJsonString() string {
@@ -3451,6 +3498,9 @@ func (r *CreateCosObjectScanTaskRequest) FromJsonString(s string) error {
 	delete(f, "TaskType")
 	delete(f, "MemberId")
 	delete(f, "BucketSet")
+	delete(f, "TaskArgs")
+	delete(f, "IsScanAll")
+	delete(f, "DeleteBucketSet")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCosObjectScanTaskRequest has unknown keys!", "")
 	}
@@ -3459,6 +3509,9 @@ func (r *CreateCosObjectScanTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCosObjectScanTaskResponseParams struct {
+	// <p>任务id</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4061,194 +4114,194 @@ func (r *CreateDspmAssetsExportJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDspmExportTaskRequestParams struct {
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 风险等级(0-安全,1-低风险,2-中风险,3-高风险,-1-全部)
+	// <p>风险等级(0-安全,1-低风险,2-中风险,3-高风险,-1-全部)</p>
 	DangerLevel *int64 `json:"DangerLevel,omitnil,omitempty" name:"DangerLevel"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 数据库端口
+	// <p>数据库端口</p>
 	DbPort *int64 `json:"DbPort,omitnil,omitempty" name:"DbPort"`
 
-	// 数据库 IP
+	// <p>数据库 IP</p>
 	DbIp *string `json:"DbIp,omitnil,omitempty" name:"DbIp"`
 
-	// 资产 ID
+	// <p>资产 ID</p>
 	AssetsId *int64 `json:"AssetsId,omitnil,omitempty" name:"AssetsId"`
 
-	// 会话 ID
+	// <p>会话 ID</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 客户端 IP
+	// <p>客户端 IP</p>
 	ClientSideIp *string `json:"ClientSideIp,omitnil,omitempty" name:"ClientSideIp"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 命中规则
+	// <p>命中规则</p>
 	HitRule *int64 `json:"HitRule,omitnil,omitempty" name:"HitRule"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 模糊查询
+	// <p>模糊查询</p>
 	FuzzySearch *string `json:"FuzzySearch,omitnil,omitempty" name:"FuzzySearch"`
 
-	// 用户名
+	// <p>用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 客户端
+	// <p>客户端</p>
 	ClientName *string `json:"ClientName,omitnil,omitempty" name:"ClientName"`
 
-	// 流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两都都传或不传则返回所有
+	// <p>流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两都传或不传则返回所有</p>
 	SourceTypes []*string `json:"SourceTypes,omitnil,omitempty" name:"SourceTypes"`
 
-	// 表名，长度限制64，多个表名查询的话可以用空格连接	
+	// <p>表名，长度限制64，多个表名查询的话可以用空格连接</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// 字段名，长度限制64，多个字段名查询的话可以用空格连接
+	// <p>字段名，长度限制64，多个字段名查询的话可以用空格连接</p>
 	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
 
-	// SQL 主要类型，DDL, DML, DCL, TCL	
+	// <p>SQL 主要类型，DDL, DML, DCL, TCL</p>
 	SqlMainTypes []*string `json:"SqlMainTypes,omitnil,omitempty" name:"SqlMainTypes"`
 
-	// 操作类型	
+	// <p>操作类型</p>
 	SqlType *string `json:"SqlType,omitnil,omitempty" name:"SqlType"`
 
-	// 影响行数最小值	
+	// <p>影响行数最小值</p>
 	RowNumMin *int64 `json:"RowNumMin,omitnil,omitempty" name:"RowNumMin"`
 
-	// 影响行数最大值	
+	// <p>影响行数最大值</p>
 	RowNumMax *int64 `json:"RowNumMax,omitnil,omitempty" name:"RowNumMax"`
 
-	// 数据库类型	
+	// <p>数据库类型</p>
 	DbTypes []*string `json:"DbTypes,omitnil,omitempty" name:"DbTypes"`
 
-	// 返回码	
+	// <p>返回码</p>
 	RetNo *int64 `json:"RetNo,omitnil,omitempty" name:"RetNo"`
 
-	// 客户端工具	
+	// <p>客户端工具</p>
 	ClientDriverName *string `json:"ClientDriverName,omitnil,omitempty" name:"ClientDriverName"`
 
-	// 客户端端口	
+	// <p>客户端端口</p>
 	ClientPort *int64 `json:"ClientPort,omitnil,omitempty" name:"ClientPort"`
 
-	// 审计日志 ID
+	// <p>审计日志 ID</p>
 	LogId *string `json:"LogId,omitnil,omitempty" name:"LogId"`
 
-	// 风险等级数组(0-安全,1-低风险,2-中风险,3-高风险), 如果要全部，则需要将所有的值都传入。如果为空，则会参考：DangerLevel 入参
+	// <p>风险等级数组(0-安全,1-低风险,2-中风险,3-高风险), 如果要全部，则需要将所有的值都传入。如果为空，则会参考：DangerLevel 入参</p>
 	DangerLevels []*int64 `json:"DangerLevels,omitnil,omitempty" name:"DangerLevels"`
 
-	// 字段分类
+	// <p>字段分类</p>
 	SensitiveCategoryRule *string `json:"SensitiveCategoryRule,omitnil,omitempty" name:"SensitiveCategoryRule"`
 
-	// 字段分级
+	// <p>字段分级</p>
 	SensitiveLevelRisk *string `json:"SensitiveLevelRisk,omitnil,omitempty" name:"SensitiveLevelRisk"`
 
-	// 事务Id
+	// <p>事务Id</p>
 	TrxId *int64 `json:"TrxId,omitnil,omitempty" name:"TrxId"`
 
-	// clientMac
+	// <p>clientMac</p>
 	ClientMac *string `json:"ClientMac,omitnil,omitempty" name:"ClientMac"`
 }
 
 type CreateDspmExportTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集团账号的成员id
+	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 风险等级(0-安全,1-低风险,2-中风险,3-高风险,-1-全部)
+	// <p>风险等级(0-安全,1-低风险,2-中风险,3-高风险,-1-全部)</p>
 	DangerLevel *int64 `json:"DangerLevel,omitnil,omitempty" name:"DangerLevel"`
 
-	// 数据库名称
+	// <p>数据库名称</p>
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
-	// 数据库端口
+	// <p>数据库端口</p>
 	DbPort *int64 `json:"DbPort,omitnil,omitempty" name:"DbPort"`
 
-	// 数据库 IP
+	// <p>数据库 IP</p>
 	DbIp *string `json:"DbIp,omitnil,omitempty" name:"DbIp"`
 
-	// 资产 ID
+	// <p>资产 ID</p>
 	AssetsId *int64 `json:"AssetsId,omitnil,omitempty" name:"AssetsId"`
 
-	// 会话 ID
+	// <p>会话 ID</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 客户端 IP
+	// <p>客户端 IP</p>
 	ClientSideIp *string `json:"ClientSideIp,omitnil,omitempty" name:"ClientSideIp"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 命中规则
+	// <p>命中规则</p>
 	HitRule *int64 `json:"HitRule,omitnil,omitempty" name:"HitRule"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 模糊查询
+	// <p>模糊查询</p>
 	FuzzySearch *string `json:"FuzzySearch,omitnil,omitempty" name:"FuzzySearch"`
 
-	// 用户名
+	// <p>用户名</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 客户端
+	// <p>客户端</p>
 	ClientName *string `json:"ClientName,omitnil,omitempty" name:"ClientName"`
 
-	// 流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两都都传或不传则返回所有
+	// <p>流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两都传或不传则返回所有</p>
 	SourceTypes []*string `json:"SourceTypes,omitnil,omitempty" name:"SourceTypes"`
 
-	// 表名，长度限制64，多个表名查询的话可以用空格连接	
+	// <p>表名，长度限制64，多个表名查询的话可以用空格连接</p>
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
-	// 字段名，长度限制64，多个字段名查询的话可以用空格连接
+	// <p>字段名，长度限制64，多个字段名查询的话可以用空格连接</p>
 	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
 
-	// SQL 主要类型，DDL, DML, DCL, TCL	
+	// <p>SQL 主要类型，DDL, DML, DCL, TCL</p>
 	SqlMainTypes []*string `json:"SqlMainTypes,omitnil,omitempty" name:"SqlMainTypes"`
 
-	// 操作类型	
+	// <p>操作类型</p>
 	SqlType *string `json:"SqlType,omitnil,omitempty" name:"SqlType"`
 
-	// 影响行数最小值	
+	// <p>影响行数最小值</p>
 	RowNumMin *int64 `json:"RowNumMin,omitnil,omitempty" name:"RowNumMin"`
 
-	// 影响行数最大值	
+	// <p>影响行数最大值</p>
 	RowNumMax *int64 `json:"RowNumMax,omitnil,omitempty" name:"RowNumMax"`
 
-	// 数据库类型	
+	// <p>数据库类型</p>
 	DbTypes []*string `json:"DbTypes,omitnil,omitempty" name:"DbTypes"`
 
-	// 返回码	
+	// <p>返回码</p>
 	RetNo *int64 `json:"RetNo,omitnil,omitempty" name:"RetNo"`
 
-	// 客户端工具	
+	// <p>客户端工具</p>
 	ClientDriverName *string `json:"ClientDriverName,omitnil,omitempty" name:"ClientDriverName"`
 
-	// 客户端端口	
+	// <p>客户端端口</p>
 	ClientPort *int64 `json:"ClientPort,omitnil,omitempty" name:"ClientPort"`
 
-	// 审计日志 ID
+	// <p>审计日志 ID</p>
 	LogId *string `json:"LogId,omitnil,omitempty" name:"LogId"`
 
-	// 风险等级数组(0-安全,1-低风险,2-中风险,3-高风险), 如果要全部，则需要将所有的值都传入。如果为空，则会参考：DangerLevel 入参
+	// <p>风险等级数组(0-安全,1-低风险,2-中风险,3-高风险), 如果要全部，则需要将所有的值都传入。如果为空，则会参考：DangerLevel 入参</p>
 	DangerLevels []*int64 `json:"DangerLevels,omitnil,omitempty" name:"DangerLevels"`
 
-	// 字段分类
+	// <p>字段分类</p>
 	SensitiveCategoryRule *string `json:"SensitiveCategoryRule,omitnil,omitempty" name:"SensitiveCategoryRule"`
 
-	// 字段分级
+	// <p>字段分级</p>
 	SensitiveLevelRisk *string `json:"SensitiveLevelRisk,omitnil,omitempty" name:"SensitiveLevelRisk"`
 
-	// 事务Id
+	// <p>事务Id</p>
 	TrxId *int64 `json:"TrxId,omitnil,omitempty" name:"TrxId"`
 
-	// clientMac
+	// <p>clientMac</p>
 	ClientMac *string `json:"ClientMac,omitnil,omitempty" name:"ClientMac"`
 }
 

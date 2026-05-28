@@ -1,37 +1,10 @@
-# Release v1.3.104
+# Release v1.3.105
 
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 169 次发布
+### 第 220 次发布
 
-发布时间：2026-05-27 01:40:45
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [AIOptimizerStatus](https://cloud.tencent.com/document/api/1003/48097#AIOptimizerStatus)
-
-修改数据结构：
-
-* [ClusterInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#ClusterInstanceDetail)
-
-	* 新增成员：AIOptimizerStatus
-
-
-
-
-## Elasticsearch Service(es) 版本：2025-01-01
-
-
-
-## Elasticsearch Service(es) 版本：2018-04-16
-
-### 第 101 次发布
-
-发布时间：2026-05-27 01:53:56
+发布时间：2026-05-28 01:19:21
 
 本次发布包含了以下内容：
 
@@ -39,41 +12,77 @@
 
 修改接口：
 
-* [CreateInstance](https://cloud.tencent.com/document/api/845/30633)
+* [DescribeInstanceUpgradeType](https://cloud.tencent.com/document/api/236/107630)
 
-	* 新增入参：AlarmPolicyIds
+	* 新增入参：DstFourthZone
 
+* [UpgradeDBInstance](https://cloud.tencent.com/document/api/236/15876)
 
-修改数据结构：
-
-* [NodeInfo](https://cloud.tencent.com/document/api/845/30634#NodeInfo)
-
-	* 新增成员：KmsKeyId, KmsKeyName
+	* 新增入参：FourthZone
 
 
 
 
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
+## 负载均衡(clb) 版本：2018-03-17
 
-### 第 140 次发布
+### 第 149 次发布
 
-发布时间：2026-05-27 02:04:24
+发布时间：2026-05-28 01:27:48
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**预下线接口**：</font>
+修改数据结构：
 
-* DescribeVideoLicense
+* [TargetGroupInfo](https://cloud.tencent.com/document/api/214/30694#TargetGroupInfo)
+
+	* 新增成员：SnatEnable
 
 
 
-## 消息队列 MQTT 版(mqtt) 版本：2024-05-16
 
-### 第 29 次发布
+## 云安全一体化平台(csip) 版本：2022-11-21
 
-发布时间：2026-05-27 02:24:24
+### 第 79 次发布
+
+发布时间：2026-05-28 01:32:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCosObjectScanTask](https://cloud.tencent.com/document/api/664/131697)
+
+	* 新增入参：TaskArgs, IsScanAll, DeleteBucketSet
+
+	* 新增出参：TaskId
+
+
+修改数据结构：
+
+* [CosAssetInfo](https://cloud.tencent.com/document/api/664/90825#CosAssetInfo)
+
+	* 新增成员：BucketAzType, BucketStorageSize, BucketObjectCount, IdentifySampleRate
+
+* [CosAuditPayInfo](https://cloud.tencent.com/document/api/664/90825#CosAuditPayInfo)
+
+	* 新增成员：PostProductStatusList, PostProductBuyStatusList, NewPostPayResourceId
+
+* [CosBucketBillingInfo](https://cloud.tencent.com/document/api/664/90825#CosBucketBillingInfo)
+
+	* 新增成员：LogFeatureWhitelist, IsHaveNewPostOrder, IsHaveOldPostOrder, PostProductList
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 170 次发布
+
+发布时间：2026-05-28 01:41:24
 
 本次发布包含了以下内容：
 
@@ -81,20 +90,21 @@
 
 新增接口：
 
-* [DescribeSharedSubscriptionGroupsWithSubscriptions](https://cloud.tencent.com/document/api/1778/132176)
-* [ModifyX509Config](https://cloud.tencent.com/document/api/1778/132175)
+* [AddServerlessRoInstances](https://cloud.tencent.com/document/api/1003/132223)
+* [DescribeSQLExecutionPlan](https://cloud.tencent.com/document/api/1003/132225)
 
 新增数据结构：
 
-* [SharedSubscriptionGroupWithSubscriptions](https://cloud.tencent.com/document/api/1778/111031#SharedSubscriptionGroupWithSubscriptions)
+* [ExecutionPlanDetail](https://cloud.tencent.com/document/api/1003/48097#ExecutionPlanDetail)
+* [ExplainRow](https://cloud.tencent.com/document/api/1003/48097#ExplainRow)
 
 
 
-## 腾讯云数据库 AI 服务(tdai) 版本：2025-07-17
+## 全球加速(ga2) 版本：2025-01-15
 
-### 第 14 次发布
+### 第 5 次发布
 
-发布时间：2026-05-27 02:46:03
+发布时间：2026-05-28 01:59:23
 
 本次发布包含了以下内容：
 
@@ -102,30 +112,22 @@
 
 新增接口：
 
-* [CreateMemoryPlusSpace](https://cloud.tencent.com/document/api/1813/132186)
-* [DescribeMemoryPlusRecord](https://cloud.tencent.com/document/api/1813/132185)
-* [DescribeMemoryPlusSpace](https://cloud.tencent.com/document/api/1813/132184)
-* [DescribeMemoryPlusSpaces](https://cloud.tencent.com/document/api/1813/132183)
-* [DescribeServiceAccessKey](https://cloud.tencent.com/document/api/1813/132182)
-* [DestroyMemoryPlusSpace](https://cloud.tencent.com/document/api/1813/132181)
-* [IsolateMemoryPlusSpace](https://cloud.tencent.com/document/api/1813/132180)
-* [ModifyMemoryPlusSpace](https://cloud.tencent.com/document/api/1813/132179)
-* [RecoverMemoryPlusSpace](https://cloud.tencent.com/document/api/1813/132178)
+* [CreateForwardingPolicy](https://cloud.tencent.com/document/api/1817/132229)
+* [DeleteForwardingPolicy](https://cloud.tencent.com/document/api/1817/132228)
+* [DescribeForwardingPolicy](https://cloud.tencent.com/document/api/1817/132227)
+* [ModifyForwardingPolicy](https://cloud.tencent.com/document/api/1817/132226)
 
 新增数据结构：
 
-* [MemoryPlusInfo](https://cloud.tencent.com/document/api/1813/123239#MemoryPlusInfo)
-* [ResourceTag](https://cloud.tencent.com/document/api/1813/123239#ResourceTag)
-* [VDBDocument](https://cloud.tencent.com/document/api/1813/123239#VDBDocument)
-* [VDBFieldMap](https://cloud.tencent.com/document/api/1813/123239#VDBFieldMap)
+* [ForwardingPolicySet](https://cloud.tencent.com/document/api/1817/130045#ForwardingPolicySet)
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-09-01
+## 高性能应用服务(hai) 版本：2023-08-12
 
-### 第 146 次发布
+### 第 23 次发布
 
-发布时间：2026-05-27 02:49:48
+发布时间：2026-05-28 02:02:24
 
 本次发布包含了以下内容：
 
@@ -133,26 +135,41 @@
 
 修改数据结构：
 
-* [RateLimitingRule](https://cloud.tencent.com/document/api/1552/80721#RateLimitingRule)
+* [ServiceDetail](https://cloud.tencent.com/document/api/1721/101518#ServiceDetail)
 
-	* 新增成员：Mode
+	* 新增成员：SecurityType, RoleComputeSet, TargetReplicas
 
+* [TemplateDetail](https://cloud.tencent.com/document/api/1721/101518#TemplateDetail)
 
-
-
-## 边缘安全加速平台(teo) 版本：2022-01-06
-
-
-
-## 容器服务(tke) 版本：2022-05-01
+	* 新增成员：RoleComputeSet
 
 
 
-## 容器服务(tke) 版本：2018-05-25
 
-### 第 229 次发布
+## SSL 证书(ssl) 版本：2019-12-05
 
-发布时间：2026-05-27 02:54:15
+### 第 98 次发布
+
+发布时间：2026-05-28 02:38:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCertificateDetail](https://cloud.tencent.com/document/api/400/41673)
+
+	* 新增出参：HostingStatus
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 142 次发布
+
+发布时间：2026-05-28 02:41:04
 
 本次发布包含了以下内容：
 
@@ -160,27 +177,23 @@
 
 新增数据结构：
 
-* [SubnetAllocation](https://cloud.tencent.com/document/api/457/31866#SubnetAllocation)
-* [SubnetAllocationPolicy](https://cloud.tencent.com/document/api/457/31866#SubnetAllocationPolicy)
+* [SMSProviderTemplateConfig](https://cloud.tencent.com/document/api/876/34822#SMSProviderTemplateConfig)
+* [SMSTemplateParams](https://cloud.tencent.com/document/api/876/34822#SMSTemplateParams)
 
 修改数据结构：
 
-* [Cluster](https://cloud.tencent.com/document/api/457/31866#Cluster)
+* [VerificationConfig](https://cloud.tencent.com/document/api/876/34822#VerificationConfig)
 
-	* 新增成员：ClusterCategory
-
-* [VirtualNodePool](https://cloud.tencent.com/document/api/457/31866#VirtualNodePool)
-
-	* 新增成员：SubnetAllocationPolicy
+	* 新增成员：TemplateProvider
 
 
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
 
-### 第 155 次发布
+### 第 156 次发布
 
-发布时间：2026-05-27 03:12:20
+发布时间：2026-05-28 03:12:16
 
 本次发布包含了以下内容：
 
@@ -188,73 +201,9 @@
 
 修改接口：
 
-* [AddSpartaProtection](https://cloud.tencent.com/document/api/627/72689)
+* [DescribeIpAccessControl](https://cloud.tencent.com/document/api/627/72645)
 
-	* 新增入参：Tags
-
-* [CreateHost](https://cloud.tencent.com/document/api/627/89906)
-
-	* 新增入参：Tags
-
-* [CreateProtectGroup](https://cloud.tencent.com/document/api/627/130906)
-
-	* 新增入参：Tags
-
-* [DescribeApiSecSensitiveRuleList](https://cloud.tencent.com/document/api/627/129030)
-
-	* 新增入参：IsQueryApiSensitiveWhiteRule
-
-	* 新增出参：ApiSecSensitiveWhiteRule
-
-* [ModifyApiSecSensitiveRule](https://cloud.tencent.com/document/api/627/125861)
-
-	* 新增入参：ApiSecSensitiveWhiteRuleNameList, ApiSecSensitiveWhiteRuleRule
-
-* [ModifyObject](https://cloud.tencent.com/document/api/627/100164)
-
-	* 新增入参：Tags
-
-
-新增数据结构：
-
-* [ApiSecSensitiveWhiteField](https://cloud.tencent.com/document/api/627/53609#ApiSecSensitiveWhiteField)
-* [ApiSecSensitiveWhiteRule](https://cloud.tencent.com/document/api/627/53609#ApiSecSensitiveWhiteRule)
-* [TagInfo](https://cloud.tencent.com/document/api/627/53609#TagInfo)
-* [ToolCallResult](https://cloud.tencent.com/document/api/627/53609#ToolCallResult)
-
-修改数据结构：
-
-* [ClbDomainsInfo](https://cloud.tencent.com/document/api/627/53609#ClbDomainsInfo)
-
-	* 新增成员：TagInfos
-
-* [ClbObject](https://cloud.tencent.com/document/api/627/53609#ClbObject)
-
-	* 新增成员：TagInfos, PreciseDomainDetails, WafAccessStatus
-
-* [DomainInfo](https://cloud.tencent.com/document/api/627/53609#DomainInfo)
-
-	* 新增成员：ModifyTime, IsREIP, REIPObjectId, TagInfos, LLMStatus
-
-* [DomainsPartInfo](https://cloud.tencent.com/document/api/627/53609#DomainsPartInfo)
-
-	* 新增成员：ModifyTime, TagInfos, Ipv6Status
-
-* [InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo)
-
-	* 新增成员：TagInfos
-
-* [LLMDetectResult](https://cloud.tencent.com/document/api/627/53609#LLMDetectResult)
-
-	* 新增成员：ToolCallResult
-
-* [ProtectGroupInfo](https://cloud.tencent.com/document/api/627/53609#ProtectGroupInfo)
-
-	* 新增成员：TagInfos, BoundTemplate
-
-* [UserDomainInfo](https://cloud.tencent.com/document/api/627/53609#UserDomainInfo)
-
-	* 新增成员：IsREIP
+	* 新增入参：IpList
 
 
 

@@ -9857,6 +9857,9 @@ type TargetGroupInfo struct {
 
 	// <p>IP版本。</p>
 	IpVersion *string `json:"IpVersion,omitnil,omitempty" name:"IpVersion"`
+
+	// <p>是否开启SNAT</p>
+	SnatEnable *bool `json:"SnatEnable,omitnil,omitempty" name:"SnatEnable"`
 }
 
 type TargetGroupInstance struct {

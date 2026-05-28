@@ -8313,7 +8313,7 @@ type InstanceAttributesResponse struct {
 	// <p>售卖类型,0:标准版,1:专业版</p>
 	Cvm *int64 `json:"Cvm,omitnil,omitempty" name:"Cvm"`
 
-	// <p>实例类型  枚举列表:<br>profession  :专业版<br>standards2  :标准版<br>premium   :高级版<br>serverless  :serverless版</p>
+	// <p>实例类型</p><p>枚举值：</p><ul><li>profession： 专业版</li><li>premium： 高级版</li><li>serverless： serverless版</li><li>其他： 标准版（如:standards2/standard，该版本已停售）</li></ul>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// <p>表示该实例支持的特性。FEATURE_SUBNET_ACL:表示acl策略支持设置子网。</p>

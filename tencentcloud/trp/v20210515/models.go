@@ -4593,7 +4593,7 @@ type FlavorKingCycleBrandImportantCityScanAnalysisCityItem struct {
 	// <p>上周期口味王分布</p>
 	LastCycleRatio *float64 `json:"LastCycleRatio,omitnil,omitempty" name:"LastCycleRatio"`
 
-	// <p>上周期口味王牌市场份额</p>
+	// <p>上周期口味王品牌市场份额</p>
 	LastCycleMarketShare *float64 `json:"LastCycleMarketShare,omitnil,omitempty" name:"LastCycleMarketShare"`
 
 	// <p>上周期其他品牌市场份额</p>

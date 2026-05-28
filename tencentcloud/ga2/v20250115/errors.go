@@ -86,6 +86,9 @@ const (
 	// 只能是可打印ASCII字符。
 	INVALIDPARAMETERVALUE_ASCIICHARACTERS = "InvalidParameterValue.AsciiCharacters"
 
+	// 七层转发策略域名和存量重复。
+	INVALIDPARAMETERVALUE_FORWARDINGPOLICYHOSTCONFLICT = "InvalidParameterValue.ForwardingPolicyHostConflict"
+
 	// 七层转发规则Path和存量重复。
 	INVALIDPARAMETERVALUE_FORWARDINGRULEPATHCONFLICT = "InvalidParameterValue.ForwardingRulePathConflict"
 

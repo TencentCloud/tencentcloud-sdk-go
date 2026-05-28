@@ -499,6 +499,56 @@ func (c *Client) AddLibraDBInstancesWithContext(ctx context.Context, request *Ad
     return
 }
 
+func NewAddServerlessRoInstancesRequest() (request *AddServerlessRoInstancesRequest) {
+    request = &AddServerlessRoInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "AddServerlessRoInstances")
+    
+    
+    return
+}
+
+func NewAddServerlessRoInstancesResponse() (response *AddServerlessRoInstancesResponse) {
+    response = &AddServerlessRoInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddServerlessRoInstances
+// 添加serverless集群只读实例
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+func (c *Client) AddServerlessRoInstances(request *AddServerlessRoInstancesRequest) (response *AddServerlessRoInstancesResponse, err error) {
+    return c.AddServerlessRoInstancesWithContext(context.Background(), request)
+}
+
+// AddServerlessRoInstances
+// 添加serverless集群只读实例
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+func (c *Client) AddServerlessRoInstancesWithContext(ctx context.Context, request *AddServerlessRoInstancesRequest) (response *AddServerlessRoInstancesResponse, err error) {
+    if request == nil {
+        request = NewAddServerlessRoInstancesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "AddServerlessRoInstances")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddServerlessRoInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddServerlessRoInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAssociateSecurityGroupsRequest() (request *AssociateSecurityGroupsRequest) {
     request = &AssociateSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8159,6 +8209,70 @@ func (c *Client) DescribeRollbackTimeRangeWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeRollbackTimeRangeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSQLExecutionPlanRequest() (request *DescribeSQLExecutionPlanRequest) {
+    request = &DescribeSQLExecutionPlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeSQLExecutionPlan")
+    
+    
+    return
+}
+
+func NewDescribeSQLExecutionPlanResponse() (response *DescribeSQLExecutionPlanResponse) {
+    response = &DescribeSQLExecutionPlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSQLExecutionPlan
+// 本接口(DescribeSQLExecutionPlan)用于查询执行计划详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  RESOURCENOTFOUND_RESOURCEERROR = "ResourceNotFound.ResourceError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeSQLExecutionPlan(request *DescribeSQLExecutionPlanRequest) (response *DescribeSQLExecutionPlanResponse, err error) {
+    return c.DescribeSQLExecutionPlanWithContext(context.Background(), request)
+}
+
+// DescribeSQLExecutionPlan
+// 本接口(DescribeSQLExecutionPlan)用于查询执行计划详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  RESOURCENOTFOUND_RESOURCEERROR = "ResourceNotFound.ResourceError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeSQLExecutionPlanWithContext(ctx context.Context, request *DescribeSQLExecutionPlanRequest) (response *DescribeSQLExecutionPlanResponse, err error) {
+    if request == nil {
+        request = NewDescribeSQLExecutionPlanRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cynosdb", APIVersion, "DescribeSQLExecutionPlan")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSQLExecutionPlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSQLExecutionPlanResponse()
     err = c.Send(request, response)
     return
 }

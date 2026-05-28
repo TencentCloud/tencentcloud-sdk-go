@@ -777,6 +777,160 @@ func (r *AddLibraDBInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddServerlessRoInstancesRequestParams struct {
+	// <p>集群Id</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>ro实例最小规格</p>
+	MinCpu *float64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
+
+	// <p>ro实例最大规格</p>
+	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
+
+	// <p>ro实例名称</p>
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// <p>所属VPC网络ID</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>所属子网ID，如果设置了VpcId，则SubnetId必填</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>新增RO组时使用的Port，取值范围为[0,65535)</p>
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// <p>安全组ID，新建只读实例时可以指定安全组</p>
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// <p>是否自动暂停</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul>
+	AutoPause *string `json:"AutoPause,omitnil,omitempty" name:"AutoPause"`
+
+	// <p>自动暂停时间</p><p>单位：秒</p>
+	AutoPauseDelay *int64 `json:"AutoPauseDelay,omitnil,omitempty" name:"AutoPauseDelay"`
+
+	// <p>实例参数</p>
+	InstanceParams []*ModifyParamItem `json:"InstanceParams,omitnil,omitempty" name:"InstanceParams"`
+
+	// <p>参数模板</p>
+	ParamTemplateId *int64 `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
+
+	// <p>新增的只读实例数量</p>
+	RoCount *int64 `json:"RoCount,omitnil,omitempty" name:"RoCount"`
+}
+
+type AddServerlessRoInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群Id</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>ro实例最小规格</p>
+	MinCpu *float64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
+
+	// <p>ro实例最大规格</p>
+	MaxCpu *float64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
+
+	// <p>ro实例名称</p>
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// <p>所属VPC网络ID</p>
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// <p>所属子网ID，如果设置了VpcId，则SubnetId必填</p>
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// <p>新增RO组时使用的Port，取值范围为[0,65535)</p>
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// <p>安全组ID，新建只读实例时可以指定安全组</p>
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// <p>是否自动暂停</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul>
+	AutoPause *string `json:"AutoPause,omitnil,omitempty" name:"AutoPause"`
+
+	// <p>自动暂停时间</p><p>单位：秒</p>
+	AutoPauseDelay *int64 `json:"AutoPauseDelay,omitnil,omitempty" name:"AutoPauseDelay"`
+
+	// <p>实例参数</p>
+	InstanceParams []*ModifyParamItem `json:"InstanceParams,omitnil,omitempty" name:"InstanceParams"`
+
+	// <p>参数模板</p>
+	ParamTemplateId *int64 `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
+
+	// <p>新增的只读实例数量</p>
+	RoCount *int64 `json:"RoCount,omitnil,omitempty" name:"RoCount"`
+}
+
+func (r *AddServerlessRoInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddServerlessRoInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "MinCpu")
+	delete(f, "MaxCpu")
+	delete(f, "InstanceName")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "Port")
+	delete(f, "SecurityGroupIds")
+	delete(f, "AutoPause")
+	delete(f, "AutoPauseDelay")
+	delete(f, "InstanceParams")
+	delete(f, "ParamTemplateId")
+	delete(f, "RoCount")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddServerlessRoInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddServerlessRoInstancesResponseParams struct {
+	// <p>冻结流水，一次开通一个冻结流水</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
+
+	// <p>后付费订单号</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
+
+	// <p>发货资源id列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// <p>大订单号</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BigDealIds []*string `json:"BigDealIds,omitnil,omitempty" name:"BigDealIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddServerlessRoInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *AddServerlessRoInstancesResponseParams `json:"Response"`
+}
+
+func (r *AddServerlessRoInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddServerlessRoInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Addr struct {
 	// IP地址
 	IP *string `json:"IP,omitnil,omitempty" name:"IP"`
@@ -12490,6 +12644,85 @@ func (r *DescribeRollbackTimeRangeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSQLExecutionPlanRequestParams struct {
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>SQL模板ID</p>
+	TemplateID *string `json:"TemplateID,omitnil,omitempty" name:"TemplateID"`
+
+	// <p>计划详情序列号</p>
+	PlanDetailId *int64 `json:"PlanDetailId,omitnil,omitempty" name:"PlanDetailId"`
+}
+
+type DescribeSQLExecutionPlanRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>集群ID</p>
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// <p>实例ID</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>SQL模板ID</p>
+	TemplateID *string `json:"TemplateID,omitnil,omitempty" name:"TemplateID"`
+
+	// <p>计划详情序列号</p>
+	PlanDetailId *int64 `json:"PlanDetailId,omitnil,omitempty" name:"PlanDetailId"`
+}
+
+func (r *DescribeSQLExecutionPlanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSQLExecutionPlanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "InstanceId")
+	delete(f, "TemplateID")
+	delete(f, "PlanDetailId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSQLExecutionPlanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSQLExecutionPlanResponseParams struct {
+	// <p>执行计划详情</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlanDetail *ExecutionPlanDetail `json:"PlanDetail,omitnil,omitempty" name:"PlanDetail"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSQLExecutionPlanResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSQLExecutionPlanResponseParams `json:"Response"`
+}
+
+func (r *DescribeSQLExecutionPlanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSQLExecutionPlanResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSSLStatusRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -13474,6 +13707,82 @@ type ExchangeRoGroupInfo struct {
 
 	// 目标RO组信息
 	DstRoGroupInfo *RollbackRoGroupInfo `json:"DstRoGroupInfo,omitnil,omitempty" name:"DstRoGroupInfo"`
+}
+
+type ExecutionPlanDetail struct {
+	// <p>模板ID</p>
+	TemplateID *string `json:"TemplateID,omitnil,omitempty" name:"TemplateID"`
+
+	// <p>数据库名</p>
+	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
+
+	// <p>原始SQL样例</p>
+	SQLSample *string `json:"SQLSample,omitnil,omitempty" name:"SQLSample"`
+
+	// <p>改写后SQL样例</p>
+	SQLSampleRewritten *string `json:"SQLSampleRewritten,omitnil,omitempty" name:"SQLSampleRewritten"`
+
+	// <p>优化前执行计划- 列表</p>
+	TablePlanBefore []*ExplainRow `json:"TablePlanBefore,omitnil,omitempty" name:"TablePlanBefore"`
+
+	// <p>优化后执行计划 - 列表</p>
+	TablePlanAfter []*ExplainRow `json:"TablePlanAfter,omitnil,omitempty" name:"TablePlanAfter"`
+
+	// <p>优化前树形执行计划</p>
+	TreePlanBefore *string `json:"TreePlanBefore,omitnil,omitempty" name:"TreePlanBefore"`
+
+	// <p>优化后树形执行计划</p>
+	TreePlanAfter *string `json:"TreePlanAfter,omitnil,omitempty" name:"TreePlanAfter"`
+
+	// <p>优化前查询时间</p>
+	QueryTimeBefore *float64 `json:"QueryTimeBefore,omitnil,omitempty" name:"QueryTimeBefore"`
+
+	// <p>优化后查询时间</p>
+	QueryTimeAfter *float64 `json:"QueryTimeAfter,omitnil,omitempty" name:"QueryTimeAfter"`
+
+	// <p>优化前扫描行数</p>
+	SQLScanRowsBefore *int64 `json:"SQLScanRowsBefore,omitnil,omitempty" name:"SQLScanRowsBefore"`
+
+	// <p>优化后扫描行数</p>
+	SQLScanRowsAfter *int64 `json:"SQLScanRowsAfter,omitnil,omitempty" name:"SQLScanRowsAfter"`
+}
+
+type ExplainRow struct {
+	// <p>查询的序列号</p>
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>查询的类型，常见值：SIMPLE（简单查询，不含子查询或 UNION）、PRIMARY（最外层查询）、SUBQUERY（子查询中的第一个 SELECT）、DERIVED（派生表/FROM 子句中的子查询）、UNION（UNION 中第二个及之后的 SELECT）、UNION RESULT（UNION 的结果集）。</p>
+	SelectType *string `json:"SelectType,omitnil,omitempty" name:"SelectType"`
+
+	// <p>数据表名</p>
+	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
+
+	// <p>查询匹配的分区</p>
+	Partitions *string `json:"Partitions,omitnil,omitempty" name:"Partitions"`
+
+	// <p>访问类型（非常重要，衡量查询效率的关键指标），从优到差排列：system &gt; const &gt; eq_ref &gt; ref &gt; fulltext &gt; ref_or_null &gt; index_merge &gt; unique_subquery &gt; index_subquery &gt; range &gt; index &gt; ALL。常见值说明： • system：表只有一行记录（系统表） • const：通过主键或唯一索引匹配一行，常见于 WHERE pk = 1 • eq_ref：连接时使用主键或唯一索引，每个索引值只匹配一行 • ref：使用非唯一索引查找，可能匹配多行 • range：索引范围扫描，如 BETWEEN、&gt;、&lt;、IN • index：全索引扫描（遍历整棵索引树） • ALL：全表扫描（最差，需优化）</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>查询中可能使用到的索引。为 NULL 表示没有可用索引。</p>
+	PossibleKeys *string `json:"PossibleKeys,omitnil,omitempty" name:"PossibleKeys"`
+
+	// <p>实际使用的索引。为 NULL 表示未使用任何索引。</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>实际使用的索引长度（字节数）。可用来判断联合索引中实际使用了哪几个列。值越短说明使用的索引列越少。</p>
+	KeyLen *string `json:"KeyLen,omitnil,omitempty" name:"KeyLen"`
+
+	// <p>显示哪些列或常量与 key 列中的索引进行比较。常见值：const（常量）、某个列名、func（函数结果）。</p>
+	Ref *string `json:"Ref,omitnil,omitempty" name:"Ref"`
+
+	// <p>预估要扫描的行数</p>
+	Rows *int64 `json:"Rows,omitnil,omitempty" name:"Rows"`
+
+	// <p>表示经过表条件过滤后，剩余行数占 rows 的百分比估算。100% 表示没有额外过滤，值越高越好。</p>
+	Filtered *float64 `json:"Filtered,omitnil,omitempty" name:"Filtered"`
+
+	// <p>附加信息（非常重要），常见值： • Using index：覆盖索引，无需回表（好） • Using where：在存储引擎返回行后再用 WHERE 过滤 • Using temporary：使用了临时表（常见于 GROUP BY/ORDER BY，需优化） • Using filesort：使用了文件排序而非索引排序（需优化） • Using index condition：使用了索引下推（ICP）</p>
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 }
 
 // Predefined struct for user

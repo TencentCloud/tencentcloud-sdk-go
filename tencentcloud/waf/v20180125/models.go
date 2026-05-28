@@ -10466,115 +10466,121 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIpAccessControlRequestParams struct {
-	// 域名，当操作对象为全局规则时，Domain参数应填写为"global"
+	// <p>域名，当操作对象为全局规则时，Domain参数应填写为&quot;global&quot;</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 计数标识
+	// <p>计数标识</p>
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 动作，40表示查询白名单，42表示查询黑名单
+	// <p>动作，40表示查询白名单，42表示查询黑名单</p>
 	ActionType *uint64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
-	// 最小有效时间的时间戳
+	// <p>最小有效时间的时间戳</p>
 	//
 	// Deprecated: VtsMin is deprecated.
 	VtsMin *uint64 `json:"VtsMin,omitnil,omitempty" name:"VtsMin"`
 
-	// 最大有效时间的时间戳
+	// <p>最大有效时间的时间戳</p>
 	//
 	// Deprecated: VtsMax is deprecated.
 	VtsMax *uint64 `json:"VtsMax,omitnil,omitempty" name:"VtsMax"`
 
-	// 最小创建时间的时间戳
+	// <p>最小创建时间的时间戳</p>
 	CtsMin *uint64 `json:"CtsMin,omitnil,omitempty" name:"CtsMin"`
 
-	// 最大创建时间的时间戳
+	// <p>最大创建时间的时间戳</p>
 	CtsMax *uint64 `json:"CtsMax,omitnil,omitempty" name:"CtsMax"`
 
-	// 分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
+	// <p>分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整</p>
 	OffSet *uint64 `json:"OffSet,omitnil,omitempty" name:"OffSet"`
 
-	// 每页返回的数量，默认为20
+	// <p>每页返回的数量，默认为20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 用于按数据来源过滤黑白名单记录，非必填（默认为空字符串，表示不过滤/查询全部）。 "" (空字符串)	，不按来源过滤，返回所有记录（默认值） custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则 batch-group（防护对象组），防护对象组维度添加的黑白名单规则
+	// <p>用于按数据来源过滤黑白名单记录，非必填（默认为空字符串，表示不过滤/查询全部）。 &quot;&quot; (空字符串)    ，不按来源过滤，返回所有记录（默认值） custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护    ），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则 batch-group（防护对象组），防护对象组维度添加的黑白名单规则</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 排序参数
+	// <p>排序参数</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// IP
+	// <p>IP</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 生效状态，1表示生效中，2表示过期，0表示全部
+	// <p>生效状态，1表示生效中，2表示过期，0表示全部</p>
 	ValidStatus *int64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
 
-	// 最小有效时间的时间戳
+	// <p>最小有效时间的时间戳</p>
 	ValidTimeStampMin *string `json:"ValidTimeStampMin,omitnil,omitempty" name:"ValidTimeStampMin"`
 
-	// 最大有效时间的时间戳
+	// <p>最大有效时间的时间戳</p>
 	ValidTimeStampMax *string `json:"ValidTimeStampMax,omitnil,omitempty" name:"ValidTimeStampMax"`
 
-	// 规则ID
+	// <p>规则ID</p>
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 0表示全部，1表示永久生效，2表示定时生效，3表示周粒度生效，4表示月粒度生效
+	// <p>0表示全部，1表示永久生效，2表示定时生效，3表示周粒度生效，4表示月粒度生效</p>
 	TimerType *int64 `json:"TimerType,omitnil,omitempty" name:"TimerType"`
+
+	// <p>查询的ip列表</p>
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
 }
 
 type DescribeIpAccessControlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名，当操作对象为全局规则时，Domain参数应填写为"global"
+	// <p>域名，当操作对象为全局规则时，Domain参数应填写为&quot;global&quot;</p>
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 计数标识
+	// <p>计数标识</p>
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 动作，40表示查询白名单，42表示查询黑名单
+	// <p>动作，40表示查询白名单，42表示查询黑名单</p>
 	ActionType *uint64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
-	// 最小有效时间的时间戳
+	// <p>最小有效时间的时间戳</p>
 	VtsMin *uint64 `json:"VtsMin,omitnil,omitempty" name:"VtsMin"`
 
-	// 最大有效时间的时间戳
+	// <p>最大有效时间的时间戳</p>
 	VtsMax *uint64 `json:"VtsMax,omitnil,omitempty" name:"VtsMax"`
 
-	// 最小创建时间的时间戳
+	// <p>最小创建时间的时间戳</p>
 	CtsMin *uint64 `json:"CtsMin,omitnil,omitempty" name:"CtsMin"`
 
-	// 最大创建时间的时间戳
+	// <p>最大创建时间的时间戳</p>
 	CtsMax *uint64 `json:"CtsMax,omitnil,omitempty" name:"CtsMax"`
 
-	// 分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
+	// <p>分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整</p>
 	OffSet *uint64 `json:"OffSet,omitnil,omitempty" name:"OffSet"`
 
-	// 每页返回的数量，默认为20
+	// <p>每页返回的数量，默认为20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 用于按数据来源过滤黑白名单记录，非必填（默认为空字符串，表示不过滤/查询全部）。 "" (空字符串)	，不按来源过滤，返回所有记录（默认值） custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则 batch-group（防护对象组），防护对象组维度添加的黑白名单规则
+	// <p>用于按数据来源过滤黑白名单记录，非必填（默认为空字符串，表示不过滤/查询全部）。 &quot;&quot; (空字符串)    ，不按来源过滤，返回所有记录（默认值） custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护    ），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则 batch-group（防护对象组），防护对象组维度添加的黑白名单规则</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 排序参数
+	// <p>排序参数</p>
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// IP
+	// <p>IP</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 生效状态，1表示生效中，2表示过期，0表示全部
+	// <p>生效状态，1表示生效中，2表示过期，0表示全部</p>
 	ValidStatus *int64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
 
-	// 最小有效时间的时间戳
+	// <p>最小有效时间的时间戳</p>
 	ValidTimeStampMin *string `json:"ValidTimeStampMin,omitnil,omitempty" name:"ValidTimeStampMin"`
 
-	// 最大有效时间的时间戳
+	// <p>最大有效时间的时间戳</p>
 	ValidTimeStampMax *string `json:"ValidTimeStampMax,omitnil,omitempty" name:"ValidTimeStampMax"`
 
-	// 规则ID
+	// <p>规则ID</p>
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 0表示全部，1表示永久生效，2表示定时生效，3表示周粒度生效，4表示月粒度生效
+	// <p>0表示全部，1表示永久生效，2表示定时生效，3表示周粒度生效，4表示月粒度生效</p>
 	TimerType *int64 `json:"TimerType,omitnil,omitempty" name:"TimerType"`
+
+	// <p>查询的ip列表</p>
+	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
 }
 
 func (r *DescribeIpAccessControlRequest) ToJsonString() string {
@@ -10606,6 +10612,7 @@ func (r *DescribeIpAccessControlRequest) FromJsonString(s string) error {
 	delete(f, "ValidTimeStampMax")
 	delete(f, "RuleId")
 	delete(f, "TimerType")
+	delete(f, "IpList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIpAccessControlRequest has unknown keys!", "")
 	}
@@ -10614,10 +10621,10 @@ func (r *DescribeIpAccessControlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIpAccessControlResponseParams struct {
-	// 输出
+	// <p>输出</p>
 	Data *IpAccessControlData `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 已经使用的IP黑白名单的IP总数
+	// <p>已经使用的IP黑白名单的IP总数</p>
 	UsedTotal *uint64 `json:"UsedTotal,omitnil,omitempty" name:"UsedTotal"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

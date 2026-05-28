@@ -2067,6 +2067,15 @@ type ServiceDetail struct {
 
 	// 服务超参数配置
 	HyperParam *HyperParam `json:"HyperParam,omitnil,omitempty" name:"HyperParam"`
+
+
+	SecurityType *string `json:"SecurityType,omitnil,omitempty" name:"SecurityType"`
+
+
+	RoleComputeSet []*ComputeDetail `json:"RoleComputeSet,omitnil,omitempty" name:"RoleComputeSet"`
+
+
+	TargetReplicas *uint64 `json:"TargetReplicas,omitnil,omitempty" name:"TargetReplicas"`
 }
 
 type ServiceMetaData struct {
@@ -2255,6 +2264,9 @@ type TemplateDetail struct {
 
 	// 当前部署模板所支持的增强功能
 	SupportFunc []*string `json:"SupportFunc,omitnil,omitempty" name:"SupportFunc"`
+
+
+	RoleComputeSet []*ComputeDetail `json:"RoleComputeSet,omitnil,omitempty" name:"RoleComputeSet"`
 }
 
 // Predefined struct for user

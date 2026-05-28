@@ -231,6 +231,64 @@ func (c *Client) CreateEndpointGroupWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateForwardingPolicyRequest() (request *CreateForwardingPolicyRequest) {
+    request = &CreateForwardingPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "CreateForwardingPolicy")
+    
+    
+    return
+}
+
+func NewCreateForwardingPolicyResponse() (response *CreateForwardingPolicyResponse) {
+    response = &CreateForwardingPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateForwardingPolicy
+// 创建七层转发策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_FORWARDINGPOLICYHOSTCONFLICT = "InvalidParameterValue.ForwardingPolicyHostConflict"
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+//  UNSUPPORTEDOPERATION_TRANSPORTLAYERUNSUPPORTEDOPERATEFORWARDINGPOLICY = "UnsupportedOperation.TransportLayerUnsupportedOperateForwardingPolicy"
+func (c *Client) CreateForwardingPolicy(request *CreateForwardingPolicyRequest) (response *CreateForwardingPolicyResponse, err error) {
+    return c.CreateForwardingPolicyWithContext(context.Background(), request)
+}
+
+// CreateForwardingPolicy
+// 创建七层转发策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_FORWARDINGPOLICYHOSTCONFLICT = "InvalidParameterValue.ForwardingPolicyHostConflict"
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_INSTANCESTATENOTALLOWEDOPERATE = "UnsupportedOperation.InstanceStateNotAllowedOperate"
+//  UNSUPPORTEDOPERATION_TRANSPORTLAYERUNSUPPORTEDOPERATEFORWARDINGPOLICY = "UnsupportedOperation.TransportLayerUnsupportedOperateForwardingPolicy"
+func (c *Client) CreateForwardingPolicyWithContext(ctx context.Context, request *CreateForwardingPolicyRequest) (response *CreateForwardingPolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateForwardingPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "CreateForwardingPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateForwardingPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateForwardingPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateForwardingRuleRequest() (request *CreateForwardingRuleRequest) {
     request = &CreateForwardingRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -613,6 +671,62 @@ func (c *Client) DeleteEndpointGroupsWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDeleteForwardingPolicyRequest() (request *DeleteForwardingPolicyRequest) {
+    request = &DeleteForwardingPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "DeleteForwardingPolicy")
+    
+    
+    return
+}
+
+func NewDeleteForwardingPolicyResponse() (response *DeleteForwardingPolicyResponse) {
+    response = &DeleteForwardingPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteForwardingPolicy
+// 删除七层转发策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_DEFAULTFORWARDINGPOLICYOPERATE = "UnsupportedOperation.DefaultForwardingPolicyOperate"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_TRANSPORTLAYERUNSUPPORTEDOPERATEFORWARDINGPOLICY = "UnsupportedOperation.TransportLayerUnsupportedOperateForwardingPolicy"
+func (c *Client) DeleteForwardingPolicy(request *DeleteForwardingPolicyRequest) (response *DeleteForwardingPolicyResponse, err error) {
+    return c.DeleteForwardingPolicyWithContext(context.Background(), request)
+}
+
+// DeleteForwardingPolicy
+// 删除七层转发策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  UNSUPPORTEDOPERATION_DEFAULTFORWARDINGPOLICYOPERATE = "UnsupportedOperation.DefaultForwardingPolicyOperate"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_TRANSPORTLAYERUNSUPPORTEDOPERATEFORWARDINGPOLICY = "UnsupportedOperation.TransportLayerUnsupportedOperateForwardingPolicy"
+func (c *Client) DeleteForwardingPolicyWithContext(ctx context.Context, request *DeleteForwardingPolicyRequest) (response *DeleteForwardingPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteForwardingPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "DeleteForwardingPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteForwardingPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteForwardingPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteForwardingRuleRequest() (request *DeleteForwardingRuleRequest) {
     request = &DeleteForwardingRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -991,6 +1105,58 @@ func (c *Client) DescribeEndpointGroupsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeForwardingPolicyRequest() (request *DescribeForwardingPolicyRequest) {
+    request = &DescribeForwardingPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "DescribeForwardingPolicy")
+    
+    
+    return
+}
+
+func NewDescribeForwardingPolicyResponse() (response *DescribeForwardingPolicyResponse) {
+    response = &DescribeForwardingPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeForwardingPolicy
+// 查看七层转发策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTOUTOFRANGE = "InvalidParameter.InputOutOfRange"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+func (c *Client) DescribeForwardingPolicy(request *DescribeForwardingPolicyRequest) (response *DescribeForwardingPolicyResponse, err error) {
+    return c.DescribeForwardingPolicyWithContext(context.Background(), request)
+}
+
+// DescribeForwardingPolicy
+// 查看七层转发策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTOUTOFRANGE = "InvalidParameter.InputOutOfRange"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+func (c *Client) DescribeForwardingPolicyWithContext(ctx context.Context, request *DescribeForwardingPolicyRequest) (response *DescribeForwardingPolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeForwardingPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "DescribeForwardingPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeForwardingPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeForwardingPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeForwardingRuleRequest() (request *DescribeForwardingRuleRequest) {
     request = &DescribeForwardingRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1335,6 +1501,64 @@ func (c *Client) ModifyEndpointGroupWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyEndpointGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyForwardingPolicyRequest() (request *ModifyForwardingPolicyRequest) {
+    request = &ModifyForwardingPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ga2", APIVersion, "ModifyForwardingPolicy")
+    
+    
+    return
+}
+
+func NewModifyForwardingPolicyResponse() (response *ModifyForwardingPolicyResponse) {
+    response = &ModifyForwardingPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyForwardingPolicy
+// 修改七层转发策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_DEFAULTFORWARDINGPOLICYOPERATE = "UnsupportedOperation.DefaultForwardingPolicyOperate"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_TRANSPORTLAYERUNSUPPORTEDOPERATEFORWARDINGPOLICY = "UnsupportedOperation.TransportLayerUnsupportedOperateForwardingPolicy"
+func (c *Client) ModifyForwardingPolicy(request *ModifyForwardingPolicyRequest) (response *ModifyForwardingPolicyResponse, err error) {
+    return c.ModifyForwardingPolicyWithContext(context.Background(), request)
+}
+
+// ModifyForwardingPolicy
+// 修改七层转发策略
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INSTANCEMISMATCH = "InvalidParameterValue.InstanceMismatch"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_DEFAULTFORWARDINGPOLICYOPERATE = "UnsupportedOperation.DefaultForwardingPolicyOperate"
+//  UNSUPPORTEDOPERATION_INSTANCENOTRUNNING = "UnsupportedOperation.InstanceNotRunning"
+//  UNSUPPORTEDOPERATION_TRANSPORTLAYERUNSUPPORTEDOPERATEFORWARDINGPOLICY = "UnsupportedOperation.TransportLayerUnsupportedOperateForwardingPolicy"
+func (c *Client) ModifyForwardingPolicyWithContext(ctx context.Context, request *ModifyForwardingPolicyRequest) (response *ModifyForwardingPolicyResponse, err error) {
+    if request == nil {
+        request = NewModifyForwardingPolicyRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ga2", APIVersion, "ModifyForwardingPolicy")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyForwardingPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyForwardingPolicyResponse()
     err = c.Send(request, response)
     return
 }

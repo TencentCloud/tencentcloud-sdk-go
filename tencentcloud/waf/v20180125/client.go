@@ -6643,7 +6643,7 @@ func NewDescribeObjectsResponse() (response *DescribeObjectsResponse) {
 }
 
 // DescribeObjects
-// 查看防护对象列表
+// 查看CLB/TSE防护对象列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_MONGOOPERATIONFAILED = "FailedOperation.MongoOperationFailed"
@@ -6654,7 +6654,7 @@ func (c *Client) DescribeObjects(request *DescribeObjectsRequest) (response *Des
 }
 
 // DescribeObjects
-// 查看防护对象列表
+// 查看CLB/TSE防护对象列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_MONGOOPERATIONFAILED = "FailedOperation.MongoOperationFailed"

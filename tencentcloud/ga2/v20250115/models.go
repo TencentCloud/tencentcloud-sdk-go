@@ -213,6 +213,80 @@ func (r *CreateEndpointGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateForwardingPolicyRequestParams struct {
+	// 全球加速实例ID。
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 监听器ID。
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// 域名。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+}
+
+type CreateForwardingPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 全球加速实例ID。
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 监听器ID。
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// 域名。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+}
+
+func (r *CreateForwardingPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateForwardingPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlobalAcceleratorId")
+	delete(f, "ListenerId")
+	delete(f, "Host")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateForwardingPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateForwardingPolicyResponseParams struct {
+	// 异步任务ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 七层转发策略ID。
+	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateForwardingPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateForwardingPolicyResponseParams `json:"Response"`
+}
+
+func (r *CreateForwardingPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateForwardingPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateForwardingRuleRequestParams struct {
 	// 全球加速实例ID。
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
@@ -717,6 +791,77 @@ func (r *DeleteEndpointGroupsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteForwardingPolicyRequestParams struct {
+	// 全球加速实例ID。
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 监听器ID。
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// 策略ID。
+	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
+}
+
+type DeleteForwardingPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 全球加速实例ID。
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 监听器ID。
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// 策略ID。
+	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
+}
+
+func (r *DeleteForwardingPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteForwardingPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlobalAcceleratorId")
+	delete(f, "ListenerId")
+	delete(f, "ForwardingPolicyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteForwardingPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteForwardingPolicyResponseParams struct {
+	// 异步任务ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteForwardingPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteForwardingPolicyResponseParams `json:"Response"`
+}
+
+func (r *DeleteForwardingPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteForwardingPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteForwardingRuleRequestParams struct {
 	// 全球加速实例ID。
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
@@ -1203,6 +1348,87 @@ func (r *DescribeEndpointGroupsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeForwardingPolicyRequestParams struct {
+	// 全球加速实例ID。
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 监听器ID。
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeForwardingPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 全球加速实例ID。
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 监听器ID。
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeForwardingPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeForwardingPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlobalAcceleratorId")
+	delete(f, "ListenerId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeForwardingPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeForwardingPolicyResponseParams struct {
+	// 符合条件的策略信息。
+	ForwardingPolicySet []*ForwardingPolicySet `json:"ForwardingPolicySet,omitnil,omitempty" name:"ForwardingPolicySet"`
+
+	// 符合条件的实例个数。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeForwardingPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeForwardingPolicyResponseParams `json:"Response"`
+}
+
+func (r *DescribeForwardingPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeForwardingPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeForwardingRuleRequestParams struct {
 	// 全球加速实例ID。
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
@@ -1678,6 +1904,23 @@ type Filter struct {
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
+type ForwardingPolicySet struct {
+	// 全球加速实例ID。
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 监听器ID。
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// 策略ID。
+	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
+
+	// 域名。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 是否为默认域名。
+	DefaultHostFlag *bool `json:"DefaultHostFlag,omitnil,omitempty" name:"DefaultHostFlag"`
+}
+
 type ForwardingRuleSet struct {
 	// 七层转发规则条件信息。
 	RuleCondition []*RuleCondition `json:"RuleCondition,omitnil,omitempty" name:"RuleCondition"`
@@ -2097,6 +2340,84 @@ func (r *ModifyEndpointGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyEndpointGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyForwardingPolicyRequestParams struct {
+	// 全球加速实例ID。
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 监听器ID。
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// 策略ID。
+	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
+
+	// 域名。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+}
+
+type ModifyForwardingPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 全球加速实例ID。
+	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
+
+	// 监听器ID。
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// 策略ID。
+	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
+
+	// 域名。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+}
+
+func (r *ModifyForwardingPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyForwardingPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GlobalAcceleratorId")
+	delete(f, "ListenerId")
+	delete(f, "ForwardingPolicyId")
+	delete(f, "Host")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyForwardingPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyForwardingPolicyResponseParams struct {
+	// 异步任务ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyForwardingPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyForwardingPolicyResponseParams `json:"Response"`
+}
+
+func (r *ModifyForwardingPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyForwardingPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
