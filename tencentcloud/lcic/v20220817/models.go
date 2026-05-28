@@ -4635,26 +4635,29 @@ func (r *EndRoomResponse) FromJsonString(s string) error {
 }
 
 type EventDataInfo struct {
-	// 事件发生的房间号。
+	// <p>事件发生的房间号。</p>
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 事件发生的用户。
+	// <p>事件发生的用户。</p>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 用户设备类型。0: Unknown; 1: Windows; 2: macOS; 3: Android; 4: iOS; 5: Web; 6: Mobile webpage; 7: Weixin Mini Program.
+	// <p>用户设备类型。0: Unknown; 1: Windows; 2: macOS; 3: Android; 4: iOS; 5: Web; 6: Mobile webpage; 7: Weixin Mini Program.</p>
 	Device *uint64 `json:"Device,omitnil,omitempty" name:"Device"`
 
-	// 录制时长。单位：秒
+	// <p>录制时长。单位：秒</p>
 	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 录制文件大小
+	// <p>录制文件大小</p>
 	RecordSize *uint64 `json:"RecordSize,omitnil,omitempty" name:"RecordSize"`
 
-	// 录制url
+	// <p>录制url</p>
 	RecordUrl *string `json:"RecordUrl,omitnil,omitempty" name:"RecordUrl"`
 
-	// MemberQuit事件，对应Reason（0:主动退出 1:被踢 2:永久被踢 4:失去心跳下线 5:房间结束，成员自动退出）
+	// <p>MemberQuit事件，对应Reason（0:主动退出 1:被踢 2:永久被踢 4:失去心跳下线 5:房间结束，成员自动退出）</p>
 	Reason *uint64 `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// <p>角色</p><p>枚举值：</p><ul><li>0： 学生</li><li>1： 老师</li><li>2： 助教</li><li>3： 巡课/督导</li></ul>
+	Role *uint64 `json:"Role,omitnil,omitempty" name:"Role"`
 }
 
 type EventInfo struct {
@@ -6830,20 +6833,20 @@ func (r *SendRoomNotificationMessageResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SetAppCustomContentRequestParams struct {
-	// 自定义内容。
+	// <p>自定义内容。</p>
 	CustomContent []*AppCustomContent `json:"CustomContent,omitnil,omitempty" name:"CustomContent"`
 
-	// 应用ID。
+	// <p>应用ID。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 }
 
 type SetAppCustomContentRequest struct {
 	*tchttp.BaseRequest
 	
-	// 自定义内容。
+	// <p>自定义内容。</p>
 	CustomContent []*AppCustomContent `json:"CustomContent,omitnil,omitempty" name:"CustomContent"`
 
-	// 应用ID。
+	// <p>应用ID。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 }
 

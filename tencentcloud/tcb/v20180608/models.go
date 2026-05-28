@@ -4260,6 +4260,97 @@ func (r *DescribeMySQLTaskStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePGUserMigrationRequestParams struct {
+	// <p>云开发环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>版本号</p><p>参数格式：14位时间格式</p><p>入参限制：纯数字</p>
+	MigrationVersion *string `json:"MigrationVersion,omitnil,omitempty" name:"MigrationVersion"`
+}
+
+type DescribePGUserMigrationRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>云开发环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>版本号</p><p>参数格式：14位时间格式</p><p>入参限制：纯数字</p>
+	MigrationVersion *string `json:"MigrationVersion,omitnil,omitempty" name:"MigrationVersion"`
+}
+
+func (r *DescribePGUserMigrationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePGUserMigrationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "MigrationVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePGUserMigrationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePGUserMigrationResponseParams struct {
+	// <p>版本号</p><p>参数格式：纯数字，14位时间格式</p>
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>版本名</p><p>参数格式：只允许小写字母和下划线</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>要执行的migration sql 语句</p>
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// <p>回滚的sql 语句</p>
+	Rollback *string `json:"Rollback,omitnil,omitempty" name:"Rollback"`
+
+	// <p>migration query 语句的checksum值</p><p>由服务端自动生成，同版本 checksum 不一致会拒绝执行</p>
+	Checksum *string `json:"Checksum,omitnil,omitempty" name:"Checksum"`
+
+	// <p>用于标记调用来源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>用于标记该条migration由谁创建，目前默认调用的用户uin</p>
+	CreatedBy *string `json:"CreatedBy,omitnil,omitempty" name:"CreatedBy"`
+
+	// <p>该migration创建时间</p>
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// <p>该migration应用时间</p>
+	AppliedAt *string `json:"AppliedAt,omitnil,omitempty" name:"AppliedAt"`
+
+	// <p>该migration执行耗时</p><p>单位：毫秒</p>
+	DurationMs *int64 `json:"DurationMs,omitnil,omitempty" name:"DurationMs"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePGUserMigrationResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePGUserMigrationResponseParams `json:"Response"`
+}
+
+func (r *DescribePGUserMigrationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePGUserMigrationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeQuotaDataRequestParams struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -4396,6 +4487,85 @@ func (r *DescribeQuotaDataResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeQuotaDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourcePermissionRequestParams struct {
+	// 环境 ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 资源类型：`function`-云函数、`storage`-云存储、`table`-SQL型数据库表、`collection`-文档型数据库表 `<br>`示例值：`table`。
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源标识列表。云函数不传或传空数组、云存储传存储桶名、数据库表传表名，不能超过100条。
+	Resources []*string `json:"Resources,omitnil,omitempty" name:"Resources"`
+}
+
+type DescribeResourcePermissionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境 ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 资源类型：`function`-云函数、`storage`-云存储、`table`-SQL型数据库表、`collection`-文档型数据库表 `<br>`示例值：`table`。
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源标识列表。云函数不传或传空数组、云存储传存储桶名、数据库表传表名，不能超过100条。
+	Resources []*string `json:"Resources,omitnil,omitempty" name:"Resources"`
+}
+
+func (r *DescribeResourcePermissionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourcePermissionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ResourceType")
+	delete(f, "Resources")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourcePermissionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourcePermissionResponseParams struct {
+	// 查询资源权限返回结果
+	Data *DescribeResourcePermissionResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeResourcePermissionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeResourcePermissionResponseParams `json:"Response"`
+}
+
+func (r *DescribeResourcePermissionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourcePermissionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourcePermissionResult struct {
+	// 查询到的资源总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 资源权限列表
+	PermissionList []*ResourcePermission `json:"PermissionList,omitnil,omitempty" name:"PermissionList"`
 }
 
 // Predefined struct for user
@@ -5888,6 +6058,83 @@ type KVPair struct {
 }
 
 // Predefined struct for user
+type ListPGUserMigrationsRequestParams struct {
+	// <p>云开发环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>查询条数</p><p>取值范围：[1, 500]</p><p>默认值：100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移</p><p>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type ListPGUserMigrationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>云开发环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>查询条数</p><p>取值范围：[1, 500]</p><p>默认值：100</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>分页偏移</p><p>默认值：0</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *ListPGUserMigrationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListPGUserMigrationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListPGUserMigrationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListPGUserMigrationsResponseParams struct {
+	// <p>总数量</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>已应用最新版本号</p><p>参数格式：纯数字，14位时间格式</p>
+	LatestVersion *string `json:"LatestVersion,omitnil,omitempty" name:"LatestVersion"`
+
+	// <p>已应用migration列表</p>
+	Migrations []*MigrationSummary `json:"Migrations,omitnil,omitempty" name:"Migrations"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListPGUserMigrationsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListPGUserMigrationsResponseParams `json:"Response"`
+}
+
+func (r *ListPGUserMigrationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListPGUserMigrationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ListTablesRequestParams struct {
 	// 每页返回数量（0-1000)
 	MgoLimit *int64 `json:"MgoLimit,omitnil,omitempty" name:"MgoLimit"`
@@ -6193,6 +6440,83 @@ type MgoKeySchema struct {
 
 	// 是否稀疏索引
 	MgoIsSparse *bool `json:"MgoIsSparse,omitnil,omitempty" name:"MgoIsSparse"`
+}
+
+type MigrationConflict struct {
+	// <p>migration 版本号</p><p>参数格式：纯数字，14位时间格式</p>
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>migration 版本名</p><p>参数格式：仅允许小写字母和下划线</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>数据库已应用migration的版本名</p><p>参数格式：仅允许小写字母和下划线</p>
+	RemoteName *string `json:"RemoteName,omitnil,omitempty" name:"RemoteName"`
+
+	// <p>本次sql计算出来的checksum</p>
+	LocalChecksum *string `json:"LocalChecksum,omitnil,omitempty" name:"LocalChecksum"`
+
+	// <p>已应用的migration，数据库存储的checksum</p>
+	RemoteChecksum *string `json:"RemoteChecksum,omitnil,omitempty" name:"RemoteChecksum"`
+
+	// <p>归入该分组的原因</p>
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// <p>冲突信息</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+}
+
+type MigrationInput struct {
+	// <p>migration 版本号</p><p>参数格式：纯数字，14位时间格式</p>
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>migration 版本名</p><p>入参限制：仅允许小写字母和下划线</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>migration 应用 sql 语句</p>
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// <p>migration 回滚 sql 语句</p>
+	Rollback *string `json:"Rollback,omitnil,omitempty" name:"Rollback"`
+}
+
+type MigrationPlanItem struct {
+	// <p>migration 版本号</p><p>参数格式：纯数字，14位时间格式</p>
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>migration 版本名</p><p>参数格式：仅允许小写字母和下划线</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>migration query sql checksum</p><p>服务端自动生成，同版本不同checksum会拒绝执行</p>
+	Checksum *string `json:"Checksum,omitnil,omitempty" name:"Checksum"`
+
+	// <p>状态</p><p>枚举值：</p><ul><li>applied： 已应用</li><li>pending： 待执行</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>标记请求来源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>被归入该分组的原因，比如not_applied、checksum_matched</p>
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+}
+
+type MigrationSummary struct {
+	// <p>migration 版本号</p><p>参数格式：纯数字，14位时间格式</p>
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// <p>migration 版本名</p><p>参数格式：仅允许小写字母和下划线</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>migration query sql 语句checksum</p><p>服务端自动生成，同版本不同checksum会拒绝执行</p>
+	Checksum *string `json:"Checksum,omitnil,omitempty" name:"Checksum"`
+
+	// <p>应用时间</p>
+	AppliedAt *string `json:"AppliedAt,omitnil,omitempty" name:"AppliedAt"`
+
+	// <p>请求来源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>migration 创建时间</p>
+	CreatedBy *string `json:"CreatedBy,omitnil,omitempty" name:"CreatedBy"`
 }
 
 // Predefined struct for user
@@ -6883,6 +7207,96 @@ func (r *ModifyProviderResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyResourcePermissionRequestParams struct {
+	// 环境 ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 资源类型：`function`-云函数、`storage`-云存储、`table`-SQL型数据库表、`collection`-文档型数据库表。
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 权限级别。可选值：- SQL型数据库表：`READONLY`-读取全部数据，修改本人数据；`PRIVATE`-读取和修改本人数据；`ADMINWRITE`-读取全部数据，不可修改数据；`ADMINONLY`-无权限 。- 文档型数据库表：`READONLY`-读取全部数据，修改本人数据；`PRIVATE`-读取和修改本人数据；`ADMINWRITE`-读取全部数据，不可修改数据；`ADMINONLY`-无权限；`CUSTOM`-自定义安全规则 。- 云函数：`CUSTOM`-自定义安全规则 。- 云存储（权限标签）：`READONLY`-所有用户可读，仅创建者和管理员可写；`PRIVATE`-仅创建者及管理员可读写；`ADMINWRITE`-所有用户可读，仅管理员可写；`ADMINONLY`-仅管理员可读写；`CUSTOM`-自定义安全规则。
+	Permission *string `json:"Permission,omitnil,omitempty" name:"Permission"`
+
+	// 资源标识。云函数可不传、云存储传存储桶名、数据库表传表名。
+	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 自定义安全规则配置，当Permission为 `CUSTOM`时必传。JSON字符串格式的规则表达式。配置参考：[云函数安全规则](https://docs.cloudbase.net/cloud-function/security-rules)、[云存储安全规则](https://docs.cloudbase.net/storage/security-rules)、[文档型数据库安全规则](https://docs.cloudbase.net/database/security-rules)。
+	SecurityRule *string `json:"SecurityRule,omitnil,omitempty" name:"SecurityRule"`
+}
+
+type ModifyResourcePermissionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境 ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 资源类型：`function`-云函数、`storage`-云存储、`table`-SQL型数据库表、`collection`-文档型数据库表。
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 权限级别。可选值：- SQL型数据库表：`READONLY`-读取全部数据，修改本人数据；`PRIVATE`-读取和修改本人数据；`ADMINWRITE`-读取全部数据，不可修改数据；`ADMINONLY`-无权限 。- 文档型数据库表：`READONLY`-读取全部数据，修改本人数据；`PRIVATE`-读取和修改本人数据；`ADMINWRITE`-读取全部数据，不可修改数据；`ADMINONLY`-无权限；`CUSTOM`-自定义安全规则 。- 云函数：`CUSTOM`-自定义安全规则 。- 云存储（权限标签）：`READONLY`-所有用户可读，仅创建者和管理员可写；`PRIVATE`-仅创建者及管理员可读写；`ADMINWRITE`-所有用户可读，仅管理员可写；`ADMINONLY`-仅管理员可读写；`CUSTOM`-自定义安全规则。
+	Permission *string `json:"Permission,omitnil,omitempty" name:"Permission"`
+
+	// 资源标识。云函数可不传、云存储传存储桶名、数据库表传表名。
+	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 自定义安全规则配置，当Permission为 `CUSTOM`时必传。JSON字符串格式的规则表达式。配置参考：[云函数安全规则](https://docs.cloudbase.net/cloud-function/security-rules)、[云存储安全规则](https://docs.cloudbase.net/storage/security-rules)、[文档型数据库安全规则](https://docs.cloudbase.net/database/security-rules)。
+	SecurityRule *string `json:"SecurityRule,omitnil,omitempty" name:"SecurityRule"`
+}
+
+func (r *ModifyResourcePermissionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourcePermissionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ResourceType")
+	delete(f, "Permission")
+	delete(f, "Resource")
+	delete(f, "SecurityRule")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyResourcePermissionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyResourcePermissionResponseParams struct {
+	// 修改结果
+	Data *ModifyResourcePermissionResult `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyResourcePermissionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyResourcePermissionResponseParams `json:"Response"`
+}
+
+func (r *ModifyResourcePermissionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourcePermissionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyResourcePermissionResult struct {
+	// 是否成功
+	Success *bool `json:"Success,omitnil,omitempty" name:"Success"`
+}
+
+// Predefined struct for user
 type ModifySafeRuleRequestParams struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -7339,6 +7753,86 @@ type PostgreSQLInfo struct {
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
 
+// Predefined struct for user
+type PreviewPGUserMigrationsRequestParams struct {
+	// <p>云开发环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>预览要执行的migration 列表</p>
+	Migrations []*MigrationInput `json:"Migrations,omitnil,omitempty" name:"Migrations"`
+
+	// <p>标记请求来源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+}
+
+type PreviewPGUserMigrationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>云开发环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>预览要执行的migration 列表</p>
+	Migrations []*MigrationInput `json:"Migrations,omitnil,omitempty" name:"Migrations"`
+
+	// <p>标记请求来源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+}
+
+func (r *PreviewPGUserMigrationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PreviewPGUserMigrationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "Migrations")
+	delete(f, "Source")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PreviewPGUserMigrationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PreviewPGUserMigrationsResponseParams struct {
+	// <p>将要执行的migration列表</p>
+	Pending []*MigrationPlanItem `json:"Pending,omitnil,omitempty" name:"Pending"`
+
+	// <p>已经应用的migration列表</p>
+	Applied []*MigrationPlanItem `json:"Applied,omitnil,omitempty" name:"Applied"`
+
+	// <p>版本相同但 checksum 不一致冲突的migration列表</p>
+	Conflicts []*MigrationConflict `json:"Conflicts,omitnil,omitempty" name:"Conflicts"`
+
+	// <p>是否可直接执行；当前仅表示没有 checksum 冲突</p>
+	Executable *bool `json:"Executable,omitnil,omitempty" name:"Executable"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PreviewPGUserMigrationsResponse struct {
+	*tchttp.BaseResponse
+	Response *PreviewPGUserMigrationsResponseParams `json:"Response"`
+}
+
+func (r *PreviewPGUserMigrationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PreviewPGUserMigrationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Provider struct {
 	// 身份源的唯一标识符，用于在系统内区分不同的身份源。格式要求：2~32 位，仅支持小写英文字母和数字，不可包含空格或特殊字符。创建后不可修改
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -7529,6 +8023,91 @@ type ProviderResponseParametersMap struct {
 }
 
 // Predefined struct for user
+type PushPGUserMigrationsRequestParams struct {
+	// <p>云开发环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>结构化 SQL migration 列表；每项包含 Query SQL 内容</p>
+	Migrations []*MigrationInput `json:"Migrations,omitnil,omitempty" name:"Migrations"`
+
+	// <p>等待获取数据库锁的最长时间</p><p>单位：毫秒</p><p>默认值：5000</p>
+	LockTimeoutMs *int64 `json:"LockTimeoutMs,omitnil,omitempty" name:"LockTimeoutMs"`
+
+	// <p>单条 SQL 执行最长时间，超过后由 PostgreSQL 取消该语句</p><p>单位：毫秒</p><p>默认值：300000</p>
+	StatementTimeoutMs *int64 `json:"StatementTimeoutMs,omitnil,omitempty" name:"StatementTimeoutMs"`
+
+	// <p>标记请求来源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+}
+
+type PushPGUserMigrationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>云开发环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>结构化 SQL migration 列表；每项包含 Query SQL 内容</p>
+	Migrations []*MigrationInput `json:"Migrations,omitnil,omitempty" name:"Migrations"`
+
+	// <p>等待获取数据库锁的最长时间</p><p>单位：毫秒</p><p>默认值：5000</p>
+	LockTimeoutMs *int64 `json:"LockTimeoutMs,omitnil,omitempty" name:"LockTimeoutMs"`
+
+	// <p>单条 SQL 执行最长时间，超过后由 PostgreSQL 取消该语句</p><p>单位：毫秒</p><p>默认值：300000</p>
+	StatementTimeoutMs *int64 `json:"StatementTimeoutMs,omitnil,omitempty" name:"StatementTimeoutMs"`
+
+	// <p>标记请求来源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+}
+
+func (r *PushPGUserMigrationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PushPGUserMigrationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "Migrations")
+	delete(f, "LockTimeoutMs")
+	delete(f, "StatementTimeoutMs")
+	delete(f, "Source")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PushPGUserMigrationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PushPGUserMigrationsResponseParams struct {
+	// <p>任务ID</p><p>可通过DescribeTaskResult 接口查询进度</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PushPGUserMigrationsResponse struct {
+	*tchttp.BaseResponse
+	Response *PushPGUserMigrationsResponseParams `json:"Response"`
+}
+
+func (r *PushPGUserMigrationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PushPGUserMigrationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ReleaseEnvRequestParams struct {
 	// <p>环境ID</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
@@ -7656,6 +8235,203 @@ func (r *RenewEnvResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RenewEnvResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RepairPGUserMigrationHistoryRequestParams struct {
+	// <p>云开发环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>migration版本</p><p>参数格式：14位时间格式</p><p>入参限制：纯数字</p>
+	MigrationVersion *string `json:"MigrationVersion,omitnil,omitempty" name:"MigrationVersion"`
+
+	// <p>migration 版本名</p><p>入参限制：限制小写字母和下划线</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>状态</p><p>枚举值：</p><ul><li>applied： 已应用</li><li>reverted： 表示删除 history 记录</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>修复原因</p>
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// <p>applied的时候填写，记录应用的sql语句</p>
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+}
+
+type RepairPGUserMigrationHistoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>云开发环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>migration版本</p><p>参数格式：14位时间格式</p><p>入参限制：纯数字</p>
+	MigrationVersion *string `json:"MigrationVersion,omitnil,omitempty" name:"MigrationVersion"`
+
+	// <p>migration 版本名</p><p>入参限制：限制小写字母和下划线</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>状态</p><p>枚举值：</p><ul><li>applied： 已应用</li><li>reverted： 表示删除 history 记录</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>修复原因</p>
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// <p>applied的时候填写，记录应用的sql语句</p>
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+}
+
+func (r *RepairPGUserMigrationHistoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RepairPGUserMigrationHistoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "MigrationVersion")
+	delete(f, "Name")
+	delete(f, "Status")
+	delete(f, "Reason")
+	delete(f, "Query")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RepairPGUserMigrationHistoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RepairPGUserMigrationHistoryResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RepairPGUserMigrationHistoryResponse struct {
+	*tchttp.BaseResponse
+	Response *RepairPGUserMigrationHistoryResponseParams `json:"Response"`
+}
+
+func (r *RepairPGUserMigrationHistoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RepairPGUserMigrationHistoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResourcePermission struct {
+	// 资源类型。
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源标识
+	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 权限级别。取值：READONLY、PRIVATE、ADMINWRITE、ADMINONLY、CUSTOM。
+	Permission *string `json:"Permission,omitnil,omitempty" name:"Permission"`
+
+	// 自定义安全规则配置，当 Permission 为 CUSTOM 时返回。
+	SecurityRule *string `json:"SecurityRule,omitnil,omitempty" name:"SecurityRule"`
+}
+
+// Predefined struct for user
+type RollbackPGUserMigrationsRequestParams struct {
+	// <p>云开发环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>要回滚的条数</p><p>按照逆序回滚最近N条migration</p>
+	LastN *int64 `json:"LastN,omitnil,omitempty" name:"LastN"`
+
+	// <p>等待获取数据库锁的最长时间</p><p>单位：毫秒</p><p>默认值：5000</p>
+	LockTimeoutMs *int64 `json:"LockTimeoutMs,omitnil,omitempty" name:"LockTimeoutMs"`
+
+	// <p>单条 SQL 执行最长时间，超过后由 PostgreSQL 取消该语句</p><p>单位：毫秒</p><p>默认值：300000</p>
+	StatementTimeoutMs *int64 `json:"StatementTimeoutMs,omitnil,omitempty" name:"StatementTimeoutMs"`
+
+	// <p>标记API调用来源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+}
+
+type RollbackPGUserMigrationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>云开发环境ID</p>
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>要回滚的条数</p><p>按照逆序回滚最近N条migration</p>
+	LastN *int64 `json:"LastN,omitnil,omitempty" name:"LastN"`
+
+	// <p>等待获取数据库锁的最长时间</p><p>单位：毫秒</p><p>默认值：5000</p>
+	LockTimeoutMs *int64 `json:"LockTimeoutMs,omitnil,omitempty" name:"LockTimeoutMs"`
+
+	// <p>单条 SQL 执行最长时间，超过后由 PostgreSQL 取消该语句</p><p>单位：毫秒</p><p>默认值：300000</p>
+	StatementTimeoutMs *int64 `json:"StatementTimeoutMs,omitnil,omitempty" name:"StatementTimeoutMs"`
+
+	// <p>标记API调用来源</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+}
+
+func (r *RollbackPGUserMigrationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RollbackPGUserMigrationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "LastN")
+	delete(f, "LockTimeoutMs")
+	delete(f, "StatementTimeoutMs")
+	delete(f, "Source")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollbackPGUserMigrationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RollbackPGUserMigrationsResponseParams struct {
+	// <p>任务ID</p><p>可通过DescribeTaskResult 接口查询进度</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>已成功回滚并删除 history 的 migration</p>
+	RolledBack []*MigrationSummary `json:"RolledBack,omitnil,omitempty" name:"RolledBack"`
+
+	// <p>未提供 Rollback SQL、视为成功并删除 history 的 migration</p>
+	SkippedRollbackSql []*MigrationSummary `json:"SkippedRollbackSql,omitnil,omitempty" name:"SkippedRollbackSql"`
+
+	// <p>执行 Rollback SQL 失败的 migration，可为空</p>
+	Failed *MigrationSummary `json:"Failed,omitnil,omitempty" name:"Failed"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RollbackPGUserMigrationsResponse struct {
+	*tchttp.BaseResponse
+	Response *RollbackPGUserMigrationsResponseParams `json:"Response"`
+}
+
+func (r *RollbackPGUserMigrationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RollbackPGUserMigrationsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

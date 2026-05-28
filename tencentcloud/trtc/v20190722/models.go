@@ -5073,29 +5073,30 @@ type MixUserInfo struct {
 }
 
 type ModerationParams struct {
-	// 审核任务类型， 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核4:音频流式审核 5:音频流式+视频截帧审核  默认值1 （流式审核需要供应商支持才生效）
+	// 审核任务类型， 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核  默认值1 
 	ModerationType *uint64 `json:"ModerationType,omitnil,omitempty" name:"ModerationType"`
 
 	// 房间内持续没有用户（主播）上行推流的状态超过MaxIdleTime的时长，自动停止切片，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于1800秒(0.5小时)。示例值：30 
 	MaxIdleTime *uint64 `json:"MaxIdleTime,omitnil,omitempty" name:"MaxIdleTime"`
 
-	// 音频切片时长，默认15s 示例值：15
+	// 音频切片时长，默认15s 示例值：15, 范围15-60s
 	SliceAudio *uint64 `json:"SliceAudio,omitnil,omitempty" name:"SliceAudio"`
 
-	// 视频截帧间隔时长，默认5s
+	// 视频截帧间隔时长，默认5s, 范围1-60s
 	SliceVideo *uint64 `json:"SliceVideo,omitnil,omitempty" name:"SliceVideo"`
 
 	// 供应商枚举，
+	// trtc : trtc内容理解（支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
 	// tianyu : 天御内容安全 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
 	// ace  : ACE内容安全 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
 	// shumei : 数美审核（支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
 	// yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
 	ModerationSupplier *string `json:"ModerationSupplier,omitnil,omitempty" name:"ModerationSupplier"`
 
-	// 第三方审核商送审需要配置信息
+	// 第三方审核商送审需要配置信息, ModerationSupplier为trtc时，这个参数可以不需要初始化
 	ModerationSupplierParam *ModerationSupplierParam `json:"ModerationSupplierParam,omitnil,omitempty" name:"ModerationSupplierParam"`
 
-	// 是否保存文件  0不保存文件 1保存所有文件 2仅保存命中文件
+	// 是否保存文件:  0不保存文件 1保存所有文件 2仅保存命中文件
 	SaveModerationFile *uint64 `json:"SaveModerationFile,omitnil,omitempty" name:"SaveModerationFile"`
 
 	// 是否回调所有审核结果:

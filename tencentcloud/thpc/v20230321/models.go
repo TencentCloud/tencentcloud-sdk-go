@@ -645,6 +645,17 @@ type ComputeNodeOverview struct {
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 }
 
+type CosOption struct {
+	// <p>文件系统本地挂载路径。</p>
+	LocalPath *string `json:"LocalPath,omitnil,omitempty" name:"LocalPath"`
+
+	// <p>COS桶地址，可以在COS桶详情页查看。</p>
+	RemotePath *string `json:"RemotePath,omitnil,omitempty" name:"RemotePath"`
+
+	// <p>cosfs2挂载工具支持的参数。</p>
+	MountParamsOption *string `json:"MountParamsOption,omitnil,omitempty" name:"MountParamsOption"`
+}
+
 // Predefined struct for user
 type CreateClusterRequestParams struct {
 	// <p>集群中实例所在的位置。</p>
@@ -2309,14 +2320,17 @@ type Filter struct {
 }
 
 type GooseFSOption struct {
-	// 文件系统本地挂载路径。
+	// <p>文件系统本地挂载路径。</p>
 	LocalPath *string `json:"LocalPath,omitnil,omitempty" name:"LocalPath"`
 
-	// 文件系统远程挂载路径。
+	// <p>文件系统远程挂载路径。</p>
 	RemotePath *string `json:"RemotePath,omitnil,omitempty" name:"RemotePath"`
 
-	// 文件系统master的ip和端口。
+	// <p>文件系统master的ip和端口，此参数和FileSystemId互斥。</p>
 	Masters []*string `json:"Masters,omitnil,omitempty" name:"Masters"`
+
+	// <p>GooseFS的文件ID；此参数和Masters 互斥。</p>
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
 type GooseFSOptionOverview struct {
@@ -3329,14 +3343,17 @@ type StorageMount struct {
 }
 
 type StorageOption struct {
-	// 集群挂载CFS文件系统选项。
+	// <p>集群挂载CFS文件系统选项。</p>
 	CFSOptions []*CFSOption `json:"CFSOptions,omitnil,omitempty" name:"CFSOptions"`
 
-	// 集群挂载GooseFS文件系统选项。
+	// <p>集群挂载GooseFS文件系统选项。</p>
 	GooseFSOptions []*GooseFSOption `json:"GooseFSOptions,omitnil,omitempty" name:"GooseFSOptions"`
 
-	// 集群挂载GooseFSx文件系统选项。
+	// <p>集群挂载GooseFSx文件系统选项。</p>
 	GooseFSxOptions []*GooseFSxOption `json:"GooseFSxOptions,omitnil,omitempty" name:"GooseFSxOptions"`
+
+	// <p>集群挂载COS文件系统选项。</p>
+	CosOptions []*CosOption `json:"CosOptions,omitnil,omitempty" name:"CosOptions"`
 }
 
 type StorageOptionOverview struct {

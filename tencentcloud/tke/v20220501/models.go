@@ -1860,44 +1860,44 @@ type ManuallyAdded struct {
 
 // Predefined struct for user
 type ModifyClusterMachineRequestParams struct {
-	// 集群 ID
+	// <p>集群 ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 节点名列表
+	// <p>节点名列表</p>
 	MachineNames []*string `json:"MachineNames,omitnil,omitempty" name:"MachineNames"`
 
-	// machine的display name
+	// <p>machine的display name</p>
 	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
 
-	// 系统盘的信息
+	// <p>系统盘的信息</p>
 	SystemDisk *Disk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
 
-	// 安全组列表
+	// <p>安全组列表</p>
 	SecurityGroupIDs []*string `json:"SecurityGroupIDs,omitnil,omitempty" name:"SecurityGroupIDs"`
 
-	// 节点预付费信息
+	// <p>节点预付费信息</p>
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 }
 
 type ModifyClusterMachineRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群 ID
+	// <p>集群 ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 节点名列表
+	// <p>节点名列表</p>
 	MachineNames []*string `json:"MachineNames,omitnil,omitempty" name:"MachineNames"`
 
-	// machine的display name
+	// <p>machine的display name</p>
 	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
 
-	// 系统盘的信息
+	// <p>系统盘的信息</p>
 	SystemDisk *Disk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
 
-	// 安全组列表
+	// <p>安全组列表</p>
 	SecurityGroupIDs []*string `json:"SecurityGroupIDs,omitnil,omitempty" name:"SecurityGroupIDs"`
 
-	// 节点预付费信息
+	// <p>节点预付费信息</p>
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 }
 

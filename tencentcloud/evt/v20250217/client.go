@@ -242,12 +242,22 @@ func NewPutMessageResponse() (response *PutMessageResponse) {
 
 // PutMessage
 // 推送事件数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATASOURCEEVENTPLUGINNOTCONFIGURED = "FailedOperation.DatasourceEventPluginNotConfigured"
+//  FAILEDOPERATION_MESSAGECONFIGNOTCONFIGURED = "FailedOperation.MessageConfigNotConfigured"
+//  INVALIDPARAMETERVALUE_DATASOURCETRIGGERBYEVENTIDNOTSUPPORTED = "InvalidParameterValue.DatasourceTriggerByEventIdNotSupported"
 func (c *Client) PutMessage(request *PutMessageRequest) (response *PutMessageResponse, err error) {
     return c.PutMessageWithContext(context.Background(), request)
 }
 
 // PutMessage
 // 推送事件数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATASOURCEEVENTPLUGINNOTCONFIGURED = "FailedOperation.DatasourceEventPluginNotConfigured"
+//  FAILEDOPERATION_MESSAGECONFIGNOTCONFIGURED = "FailedOperation.MessageConfigNotConfigured"
+//  INVALIDPARAMETERVALUE_DATASOURCETRIGGERBYEVENTIDNOTSUPPORTED = "InvalidParameterValue.DatasourceTriggerByEventIdNotSupported"
 func (c *Client) PutMessageWithContext(ctx context.Context, request *PutMessageRequest) (response *PutMessageResponse, err error) {
     if request == nil {
         request = NewPutMessageRequest()

@@ -347,6 +347,9 @@ type PutMessageRequestParams struct {
 
 	// <p>数据推送来源，会在生成的单据中展示数据来源</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>插件ID</p>
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
 }
 
 type PutMessageRequest struct {
@@ -360,6 +363,9 @@ type PutMessageRequest struct {
 
 	// <p>数据推送来源，会在生成的单据中展示数据来源</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>插件ID</p>
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
 }
 
 func (r *PutMessageRequest) ToJsonString() string {
@@ -377,6 +383,7 @@ func (r *PutMessageRequest) FromJsonString(s string) error {
 	delete(f, "EventId")
 	delete(f, "Data")
 	delete(f, "Source")
+	delete(f, "PluginId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PutMessageRequest has unknown keys!", "")
 	}

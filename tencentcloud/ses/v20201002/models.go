@@ -21,43 +21,43 @@ import (
 )
 
 type AbuseReport struct {
-	// 发送时间
+	// <p>发送时间</p>
 	DeliverTime *string `json:"DeliverTime,omitnil,omitempty" name:"DeliverTime"`
 
-	// 发信地址
+	// <p>发信地址</p>
 	OriginalMailFrom *string `json:"OriginalMailFrom,omitnil,omitempty" name:"OriginalMailFrom"`
 
-	// 收信地址
+	// <p>收信地址</p>
 	OriginalRcptTo *string `json:"OriginalRcptTo,omitnil,omitempty" name:"OriginalRcptTo"`
 
-	// 发信域名
+	// <p>发信域名</p>
 	FromDomain *string `json:"FromDomain,omitnil,omitempty" name:"FromDomain"`
 
-	// 投诉时间
+	// <p>投诉时间</p>
 	ComplainTime *string `json:"ComplainTime,omitnil,omitempty" name:"ComplainTime"`
 
-	// 收信域名
+	// <p>收信域名</p>
 	Mta *string `json:"Mta,omitnil,omitempty" name:"Mta"`
 
-	// 来源ip
+	// <p>来源ip</p>
 	SourceIp *string `json:"SourceIp,omitnil,omitempty" name:"SourceIp"`
 
-	// 数据时间
+	// <p>数据时间</p>
 	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
-	// 模板id
+	// <p>模板ID</p>
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// bulkId
+	// <p>bulkId</p>
 	BulkId *string `json:"BulkId,omitnil,omitempty" name:"BulkId"`
 
-	// 邮件Message-Id
+	// <p>邮件Message-Id</p>
 	MessageId *string `json:"MessageId,omitnil,omitempty" name:"MessageId"`
 
-	// 投诉时间
+	// <p>投诉时间</p>
 	AbuseTime *string `json:"AbuseTime,omitnil,omitempty" name:"AbuseTime"`
 
-	// 邮件主题
+	// <p>邮件主题</p>
 	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
 }
 

@@ -3267,6 +3267,58 @@ func (c *Client) DescribeMySQLTaskStatusWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribePGUserMigrationRequest() (request *DescribePGUserMigrationRequest) {
+    request = &DescribePGUserMigrationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribePGUserMigration")
+    
+    
+    return
+}
+
+func NewDescribePGUserMigrationResponse() (response *DescribePGUserMigrationResponse) {
+    response = &DescribePGUserMigrationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePGUserMigration
+// 本接口（DescribePGUserMigration）用于查询目标环境指定 migration 详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) DescribePGUserMigration(request *DescribePGUserMigrationRequest) (response *DescribePGUserMigrationResponse, err error) {
+    return c.DescribePGUserMigrationWithContext(context.Background(), request)
+}
+
+// DescribePGUserMigration
+// 本接口（DescribePGUserMigration）用于查询目标环境指定 migration 详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) DescribePGUserMigrationWithContext(ctx context.Context, request *DescribePGUserMigrationRequest) (response *DescribePGUserMigrationResponse, err error) {
+    if request == nil {
+        request = NewDescribePGUserMigrationRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribePGUserMigration")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePGUserMigration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePGUserMigrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeQuotaDataRequest() (request *DescribeQuotaDataRequest) {
     request = &DescribeQuotaDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3325,6 +3377,76 @@ func (c *Client) DescribeQuotaDataWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeQuotaDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourcePermissionRequest() (request *DescribeResourcePermissionRequest) {
+    request = &DescribeResourcePermissionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeResourcePermission")
+    
+    
+    return
+}
+
+func NewDescribeResourcePermissionResponse() (response *DescribeResourcePermissionResponse) {
+    response = &DescribeResourcePermissionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeResourcePermission
+// 查询资源基础权限。
+//
+// 
+//
+// 查询云函数、云存储和数据库表的基础权限配置。支持单个资源查询和批量查询。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTEXIST = "ResourceNotFound.ResourceNotExist"
+func (c *Client) DescribeResourcePermission(request *DescribeResourcePermissionRequest) (response *DescribeResourcePermissionResponse, err error) {
+    return c.DescribeResourcePermissionWithContext(context.Background(), request)
+}
+
+// DescribeResourcePermission
+// 查询资源基础权限。
+//
+// 
+//
+// 查询云函数、云存储和数据库表的基础权限配置。支持单个资源查询和批量查询。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTEXIST = "ResourceNotFound.ResourceNotExist"
+func (c *Client) DescribeResourcePermissionWithContext(ctx context.Context, request *DescribeResourcePermissionRequest) (response *DescribeResourcePermissionResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourcePermissionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeResourcePermission")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourcePermission require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourcePermissionResponse()
     err = c.Send(request, response)
     return
 }
@@ -4155,6 +4277,58 @@ func (c *Client) InquireVmPriceWithContext(ctx context.Context, request *Inquire
     return
 }
 
+func NewListPGUserMigrationsRequest() (request *ListPGUserMigrationsRequest) {
+    request = &ListPGUserMigrationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ListPGUserMigrations")
+    
+    
+    return
+}
+
+func NewListPGUserMigrationsResponse() (response *ListPGUserMigrationsResponse) {
+    response = &ListPGUserMigrationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListPGUserMigrations
+// 本接口（ListPGUserMigrations）用于查询目标环境已应用的用户 migration 列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) ListPGUserMigrations(request *ListPGUserMigrationsRequest) (response *ListPGUserMigrationsResponse, err error) {
+    return c.ListPGUserMigrationsWithContext(context.Background(), request)
+}
+
+// ListPGUserMigrations
+// 本接口（ListPGUserMigrations）用于查询目标环境已应用的用户 migration 列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) ListPGUserMigrationsWithContext(ctx context.Context, request *ListPGUserMigrationsRequest) (response *ListPGUserMigrationsResponse, err error) {
+    if request == nil {
+        request = NewListPGUserMigrationsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ListPGUserMigrations")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListPGUserMigrations require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListPGUserMigrationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListTablesRequest() (request *ListTablesRequest) {
     request = &ListTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4749,6 +4923,76 @@ func (c *Client) ModifyProviderWithContext(ctx context.Context, request *ModifyP
     return
 }
 
+func NewModifyResourcePermissionRequest() (request *ModifyResourcePermissionRequest) {
+    request = &ModifyResourcePermissionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyResourcePermission")
+    
+    
+    return
+}
+
+func NewModifyResourcePermissionResponse() (response *ModifyResourcePermissionResponse) {
+    response = &ModifyResourcePermissionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyResourcePermission
+// 修改资源基础权限。
+//
+// 
+//
+// 修改云函数、云存储和数据库表的基础权限配置。支持预定义权限级别和自定义安全规则两种方式配置资源访问权限。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyResourcePermission(request *ModifyResourcePermissionRequest) (response *ModifyResourcePermissionResponse, err error) {
+    return c.ModifyResourcePermissionWithContext(context.Background(), request)
+}
+
+// ModifyResourcePermission
+// 修改资源基础权限。
+//
+// 
+//
+// 修改云函数、云存储和数据库表的基础权限配置。支持预定义权限级别和自定义安全规则两种方式配置资源访问权限。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyResourcePermissionWithContext(ctx context.Context, request *ModifyResourcePermissionRequest) (response *ModifyResourcePermissionResponse, err error) {
+    if request == nil {
+        request = NewModifyResourcePermissionRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "ModifyResourcePermission")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyResourcePermission require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyResourcePermissionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySafeRuleRequest() (request *ModifySafeRuleRequest) {
     request = &ModifySafeRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4949,6 +5193,110 @@ func (c *Client) ModifyUserWithContext(ctx context.Context, request *ModifyUserR
     return
 }
 
+func NewPreviewPGUserMigrationsRequest() (request *PreviewPGUserMigrationsRequest) {
+    request = &PreviewPGUserMigrationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "PreviewPGUserMigrations")
+    
+    
+    return
+}
+
+func NewPreviewPGUserMigrationsResponse() (response *PreviewPGUserMigrationsResponse) {
+    response = &PreviewPGUserMigrationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PreviewPGUserMigrations
+// 本接口（PreviewPGUserMigrations）用于预览SQL migrations 在远端的执行计划，不实际执行SQL。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) PreviewPGUserMigrations(request *PreviewPGUserMigrationsRequest) (response *PreviewPGUserMigrationsResponse, err error) {
+    return c.PreviewPGUserMigrationsWithContext(context.Background(), request)
+}
+
+// PreviewPGUserMigrations
+// 本接口（PreviewPGUserMigrations）用于预览SQL migrations 在远端的执行计划，不实际执行SQL。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) PreviewPGUserMigrationsWithContext(ctx context.Context, request *PreviewPGUserMigrationsRequest) (response *PreviewPGUserMigrationsResponse, err error) {
+    if request == nil {
+        request = NewPreviewPGUserMigrationsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "PreviewPGUserMigrations")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PreviewPGUserMigrations require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPreviewPGUserMigrationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPushPGUserMigrationsRequest() (request *PushPGUserMigrationsRequest) {
+    request = &PushPGUserMigrationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "PushPGUserMigrations")
+    
+    
+    return
+}
+
+func NewPushPGUserMigrationsResponse() (response *PushPGUserMigrationsResponse) {
+    response = &PushPGUserMigrationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PushPGUserMigrations
+// 本接口（PushPGUserMigrations）用于批量应用Migrations。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) PushPGUserMigrations(request *PushPGUserMigrationsRequest) (response *PushPGUserMigrationsResponse, err error) {
+    return c.PushPGUserMigrationsWithContext(context.Background(), request)
+}
+
+// PushPGUserMigrations
+// 本接口（PushPGUserMigrations）用于批量应用Migrations。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) PushPGUserMigrationsWithContext(ctx context.Context, request *PushPGUserMigrationsRequest) (response *PushPGUserMigrationsResponse, err error) {
+    if request == nil {
+        request = NewPushPGUserMigrationsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "PushPGUserMigrations")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PushPGUserMigrations require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPushPGUserMigrationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReleaseEnvRequest() (request *ReleaseEnvRequest) {
     request = &ReleaseEnvRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5057,6 +5405,110 @@ func (c *Client) RenewEnvWithContext(ctx context.Context, request *RenewEnvReque
     request.SetContext(ctx)
     
     response = NewRenewEnvResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRepairPGUserMigrationHistoryRequest() (request *RepairPGUserMigrationHistoryRequest) {
+    request = &RepairPGUserMigrationHistoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "RepairPGUserMigrationHistory")
+    
+    
+    return
+}
+
+func NewRepairPGUserMigrationHistoryResponse() (response *RepairPGUserMigrationHistoryResponse) {
+    response = &RepairPGUserMigrationHistoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RepairPGUserMigrationHistory
+// 本接口（RepairPGUserMigrationHistory）用于受控修复 history，只修改 user_schema_migrations，不执行 SQL。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) RepairPGUserMigrationHistory(request *RepairPGUserMigrationHistoryRequest) (response *RepairPGUserMigrationHistoryResponse, err error) {
+    return c.RepairPGUserMigrationHistoryWithContext(context.Background(), request)
+}
+
+// RepairPGUserMigrationHistory
+// 本接口（RepairPGUserMigrationHistory）用于受控修复 history，只修改 user_schema_migrations，不执行 SQL。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) RepairPGUserMigrationHistoryWithContext(ctx context.Context, request *RepairPGUserMigrationHistoryRequest) (response *RepairPGUserMigrationHistoryResponse, err error) {
+    if request == nil {
+        request = NewRepairPGUserMigrationHistoryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "RepairPGUserMigrationHistory")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RepairPGUserMigrationHistory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRepairPGUserMigrationHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRollbackPGUserMigrationsRequest() (request *RollbackPGUserMigrationsRequest) {
+    request = &RollbackPGUserMigrationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "RollbackPGUserMigrations")
+    
+    
+    return
+}
+
+func NewRollbackPGUserMigrationsResponse() (response *RollbackPGUserMigrationsResponse) {
+    response = &RollbackPGUserMigrationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RollbackPGUserMigrations
+// 本接口（RollbackPGUserMigrations）用于按最近 N 条已应用 migration 倒序执行 rollback。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) RollbackPGUserMigrations(request *RollbackPGUserMigrationsRequest) (response *RollbackPGUserMigrationsResponse, err error) {
+    return c.RollbackPGUserMigrationsWithContext(context.Background(), request)
+}
+
+// RollbackPGUserMigrations
+// 本接口（RollbackPGUserMigrations）用于按最近 N 条已应用 migration 倒序执行 rollback。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYS_ERR = "InternalError.SYS_ERR"
+//  INVALIDPARAMETER_INVALID_PARAM = "InvalidParameter.INVALID_PARAM"
+func (c *Client) RollbackPGUserMigrationsWithContext(ctx context.Context, request *RollbackPGUserMigrationsRequest) (response *RollbackPGUserMigrationsResponse, err error) {
+    if request == nil {
+        request = NewRollbackPGUserMigrationsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "RollbackPGUserMigrations")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RollbackPGUserMigrations require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRollbackPGUserMigrationsResponse()
     err = c.Send(request, response)
     return
 }

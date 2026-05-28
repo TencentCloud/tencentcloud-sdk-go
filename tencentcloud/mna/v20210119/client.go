@@ -2559,7 +2559,7 @@ func NewReportOrderResponse() (response *ReportOrderResponse) {
 }
 
 // ReportOrder
-// 用户上报自定义的订单信息，多网聚合加速服务将相关信息进行保存
+// 用户上报自定义的订单信息，多网聚合加速（腾讯云聚通）服务将相关信息进行保存
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TRANSACTIONEXCEPTION = "FailedOperation.TransactionException"
@@ -2578,7 +2578,7 @@ func (c *Client) ReportOrder(request *ReportOrderRequest) (response *ReportOrder
 }
 
 // ReportOrder
-// 用户上报自定义的订单信息，多网聚合加速服务将相关信息进行保存
+// 用户上报自定义的订单信息，多网聚合加速（腾讯云聚通）服务将相关信息进行保存
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TRANSACTIONEXCEPTION = "FailedOperation.TransactionException"

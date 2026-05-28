@@ -557,6 +557,12 @@ const (
 	// 路由表非空。
 	INVALIDPARAMETER_ROUTETABLENOTEMPTY = "InvalidParameter.RouteTableNotEmpty"
 
+	// SubnetAllocationPolicy 与 SubnetIds/VirtualNodes 互斥，不可同时传入。
+	INVALIDPARAMETER_SUBNETALLOCATIONPOLICYCONFLICT = "InvalidParameter.SubnetAllocationPolicyConflict"
+
+	// SubnetAllocationPolicy 参数校验失败，请确保 Allocations 非空、SubnetId 不重复、Ratio 为正整数且总和等于 100。
+	INVALIDPARAMETER_SUBNETALLOCATIONPOLICYINVALID = "InvalidParameter.SubnetAllocationPolicyInvalid"
+
 	// 子网不合法。
 	INVALIDPARAMETER_SUBNETINVALIDERROR = "InvalidParameter.SubnetInvalidError"
 

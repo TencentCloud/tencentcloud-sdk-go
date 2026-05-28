@@ -1,33 +1,10 @@
-# Release v1.3.105
+# Release v1.3.106
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 云防火墙(cfw) 版本：2019-09-04
 
-### 第 220 次发布
+### 第 101 次发布
 
-发布时间：2026-05-28 01:19:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeInstanceUpgradeType](https://cloud.tencent.com/document/api/236/107630)
-
-	* 新增入参：DstFourthZone
-
-* [UpgradeDBInstance](https://cloud.tencent.com/document/api/236/15876)
-
-	* 新增入参：FourthZone
-
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 149 次发布
-
-发布时间：2026-05-28 01:27:48
+发布时间：2026-05-29 01:25:13
 
 本次发布包含了以下内容：
 
@@ -35,18 +12,54 @@
 
 修改数据结构：
 
-* [TargetGroupInfo](https://cloud.tencent.com/document/api/214/30694#TargetGroupInfo)
+* [CcnAssociatedInstance](https://cloud.tencent.com/document/api/1132/49071#CcnAssociatedInstance)
 
-	* 新增成员：SnatEnable
-
-
+	* 新增成员：IsCrossInstance
 
 
-## 云安全一体化平台(csip) 版本：2022-11-21
 
-### 第 79 次发布
 
-发布时间：2026-05-28 01:32:43
+## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 78 次发布
+
+发布时间：2026-05-28 12:13:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* AttachDisks
+* CreateDisks
+* DeleteSnapshots
+* DescribeDisks
+* DescribeSnapshots
+* DetachDisks
+* TerminateDisks
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* Disk
+* DiskChargePrepaid
+* Placement
+* Snapshot
+
+修改数据结构：
+
+* [Position](https://cloud.tencent.com/document/api/1108/42574#Position)
+
+	* <font color="#dd0000">**修改成员**：</font>Ipv6Supported
+
+
+
+
+## 事件中心(evt) 版本：2025-02-17
+
+### 第 7 次发布
+
+发布时间：2026-05-29 02:03:11
 
 本次发布包含了以下内容：
 
@@ -54,35 +67,20 @@
 
 修改接口：
 
-* [CreateCosObjectScanTask](https://cloud.tencent.com/document/api/664/131697)
+* [PutMessage](https://cloud.tencent.com/document/api/1808/126898)
 
-	* 新增入参：TaskArgs, IsScanAll, DeleteBucketSet
+	* 新增入参：PluginId
 
-	* 新增出参：TaskId
-
-
-修改数据结构：
-
-* [CosAssetInfo](https://cloud.tencent.com/document/api/664/90825#CosAssetInfo)
-
-	* 新增成员：BucketAzType, BucketStorageSize, BucketObjectCount, IdentifySampleRate
-
-* [CosAuditPayInfo](https://cloud.tencent.com/document/api/664/90825#CosAuditPayInfo)
-
-	* 新增成员：PostProductStatusList, PostProductBuyStatusList, NewPostPayResourceId
-
-* [CosBucketBillingInfo](https://cloud.tencent.com/document/api/664/90825#CosBucketBillingInfo)
-
-	* 新增成员：LogFeatureWhitelist, IsHaveNewPostOrder, IsHaveOldPostOrder, PostProductList
+	* <font color="#dd0000">**修改入参**：</font>EventId
 
 
 
 
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+## 智能导诊(ig) 版本：2021-05-18
 
-### 第 170 次发布
+### 第 2 次发布
 
-发布时间：2026-05-28 01:41:24
+发布时间：2026-05-28 11:33:44
 
 本次发布包含了以下内容：
 
@@ -90,44 +88,35 @@
 
 新增接口：
 
-* [AddServerlessRoInstances](https://cloud.tencent.com/document/api/1003/132223)
-* [DescribeSQLExecutionPlan](https://cloud.tencent.com/document/api/1003/132225)
+* [GetLLMDiagnosisDrug](https://cloud.tencent.com/document/api/1273/128049)
+* [GetLLMDiagnosisDrugChat](https://cloud.tencent.com/document/api/1273/128048)
+* [GetLLMDiagnosisHealth](https://cloud.tencent.com/document/api/1273/128047)
+* [GetLLMReportInterpretation](https://cloud.tencent.com/document/api/1273/128046)
+* [QueryDrugInstructions](https://cloud.tencent.com/document/api/1273/128045)
 
 新增数据结构：
 
-* [ExecutionPlanDetail](https://cloud.tencent.com/document/api/1003/48097#ExecutionPlanDetail)
-* [ExplainRow](https://cloud.tencent.com/document/api/1003/48097#ExplainRow)
+* [DrugCardInfo](https://cloud.tencent.com/document/api/1273/128050#DrugCardInfo)
+* [DrugInstructionInfo](https://cloud.tencent.com/document/api/1273/128050#DrugInstructionInfo)
+* [GuessQuestion](https://cloud.tencent.com/document/api/1273/128050#GuessQuestion)
+* [HealthFollowUpQuestion](https://cloud.tencent.com/document/api/1273/128050#HealthFollowUpQuestion)
+* [HighlightWordInfo](https://cloud.tencent.com/document/api/1273/128050#HighlightWordInfo)
+* [LLMDiagnosisDrugData](https://cloud.tencent.com/document/api/1273/128050#LLMDiagnosisDrugData)
+* [LLMDiagnosisHealthData](https://cloud.tencent.com/document/api/1273/128050#LLMDiagnosisHealthData)
+* [LLMReportInterpretationData](https://cloud.tencent.com/document/api/1273/128050#LLMReportInterpretationData)
+* [ReferResourceInfo](https://cloud.tencent.com/document/api/1273/128050#ReferResourceInfo)
+* [ReportFileInfoReq](https://cloud.tencent.com/document/api/1273/128050#ReportFileInfoReq)
+* [ReportFileInfoRsp](https://cloud.tencent.com/document/api/1273/128050#ReportFileInfoRsp)
+* [StandardDrugCardInfo](https://cloud.tencent.com/document/api/1273/128050#StandardDrugCardInfo)
+* [StandardDrugInstructionInfo](https://cloud.tencent.com/document/api/1273/128050#StandardDrugInstructionInfo)
 
 
 
-## 全球加速(ga2) 版本：2025-01-15
+## 实时互动-教育版(lcic) 版本：2022-08-17
 
-### 第 5 次发布
+### 第 85 次发布
 
-发布时间：2026-05-28 01:59:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateForwardingPolicy](https://cloud.tencent.com/document/api/1817/132229)
-* [DeleteForwardingPolicy](https://cloud.tencent.com/document/api/1817/132228)
-* [DescribeForwardingPolicy](https://cloud.tencent.com/document/api/1817/132227)
-* [ModifyForwardingPolicy](https://cloud.tencent.com/document/api/1817/132226)
-
-新增数据结构：
-
-* [ForwardingPolicySet](https://cloud.tencent.com/document/api/1817/130045#ForwardingPolicySet)
-
-
-
-## 高性能应用服务(hai) 版本：2023-08-12
-
-### 第 23 次发布
-
-发布时间：2026-05-28 02:02:24
+发布时间：2026-05-29 02:19:37
 
 本次发布包含了以下内容：
 
@@ -135,41 +124,51 @@
 
 修改数据结构：
 
-* [ServiceDetail](https://cloud.tencent.com/document/api/1721/101518#ServiceDetail)
+* [EventDataInfo](https://cloud.tencent.com/document/api/1639/81423#EventDataInfo)
 
-	* 新增成员：SecurityType, RoleComputeSet, TargetReplicas
-
-* [TemplateDetail](https://cloud.tencent.com/document/api/1721/101518#TemplateDetail)
-
-	* 新增成员：RoleComputeSet
-
-
-
-
-## SSL 证书(ssl) 版本：2019-12-05
-
-### 第 98 次发布
-
-发布时间：2026-05-28 02:38:15
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeCertificateDetail](https://cloud.tencent.com/document/api/400/41673)
-
-	* 新增出参：HostingStatus
+	* 新增成员：Role
 
 
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
-### 第 142 次发布
+### 第 143 次发布
 
-发布时间：2026-05-28 02:41:04
+发布时间：2026-05-29 02:49:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribePGUserMigration](https://cloud.tencent.com/document/api/876/132262)
+* [DescribeResourcePermission](https://cloud.tencent.com/document/api/876/132256)
+* [ListPGUserMigrations](https://cloud.tencent.com/document/api/876/132261)
+* [ModifyResourcePermission](https://cloud.tencent.com/document/api/876/132255)
+* [PreviewPGUserMigrations](https://cloud.tencent.com/document/api/876/132260)
+* [PushPGUserMigrations](https://cloud.tencent.com/document/api/876/132259)
+* [RepairPGUserMigrationHistory](https://cloud.tencent.com/document/api/876/132258)
+* [RollbackPGUserMigrations](https://cloud.tencent.com/document/api/876/132257)
+
+新增数据结构：
+
+* [DescribeResourcePermissionResult](https://cloud.tencent.com/document/api/876/34822#DescribeResourcePermissionResult)
+* [MigrationConflict](https://cloud.tencent.com/document/api/876/34822#MigrationConflict)
+* [MigrationInput](https://cloud.tencent.com/document/api/876/34822#MigrationInput)
+* [MigrationPlanItem](https://cloud.tencent.com/document/api/876/34822#MigrationPlanItem)
+* [MigrationSummary](https://cloud.tencent.com/document/api/876/34822#MigrationSummary)
+* [ModifyResourcePermissionResult](https://cloud.tencent.com/document/api/876/34822#ModifyResourcePermissionResult)
+* [ResourcePermission](https://cloud.tencent.com/document/api/876/34822#ResourcePermission)
+
+
+
+## 高性能计算平台(thpc) 版本：2023-03-21
+
+### 第 37 次发布
+
+发布时间：2026-05-29 03:03:00
 
 本次发布包含了以下内容：
 
@@ -177,23 +176,40 @@
 
 新增数据结构：
 
-* [SMSProviderTemplateConfig](https://cloud.tencent.com/document/api/876/34822#SMSProviderTemplateConfig)
-* [SMSTemplateParams](https://cloud.tencent.com/document/api/876/34822#SMSTemplateParams)
+* [CosOption](https://cloud.tencent.com/document/api/1527/89579#CosOption)
 
 修改数据结构：
 
-* [VerificationConfig](https://cloud.tencent.com/document/api/876/34822#VerificationConfig)
+* [GooseFSOption](https://cloud.tencent.com/document/api/1527/89579#GooseFSOption)
 
-	* 新增成员：TemplateProvider
+	* 新增成员：FileSystemId
+
+	* <font color="#dd0000">**修改成员**：</font>Masters
+
+* [StorageOption](https://cloud.tencent.com/document/api/1527/89579#StorageOption)
+
+	* 新增成员：CosOptions
 
 
 
 
-## Web 应用防火墙(waf) 版本：2018-01-25
+## 高性能计算平台(thpc) 版本：2022-04-01
 
-### 第 156 次发布
 
-发布时间：2026-05-28 03:12:16
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
+## 容器服务(tke) 版本：2022-05-01
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 230 次发布
+
+发布时间：2026-05-29 03:05:07
 
 本次发布包含了以下内容：
 
@@ -201,9 +217,36 @@
 
 修改接口：
 
-* [DescribeIpAccessControl](https://cloud.tencent.com/document/api/627/72645)
+* [CreateClusterVirtualNodePool](https://cloud.tencent.com/document/api/457/85354)
 
-	* 新增入参：IpList
+	* 新增入参：SubnetAllocationPolicy, AgentPlugin
+
+
+新增数据结构：
+
+* [AgentPluginConfig](https://cloud.tencent.com/document/api/457/31866#AgentPluginConfig)
+
+
+
+## 云点播(vod) 版本：2024-07-18
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 259 次发布
+
+发布时间：2026-05-29 03:16:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAigcUsageData](https://cloud.tencent.com/document/api/266/126446)
+
+	* 新增入参：APIKey
 
 
 
