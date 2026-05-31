@@ -12743,6 +12743,60 @@ func (c *Client) UpdateProjectWithContext(ctx context.Context, request *UpdatePr
     return
 }
 
+func NewUpdateVoiceRequest() (request *UpdateVoiceRequest) {
+    request = &UpdateVoiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "UpdateVoice")
+    
+    
+    return
+}
+
+func NewUpdateVoiceResponse() (response *UpdateVoiceResponse) {
+    response = &UpdateVoiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateVoice
+// 更新音色信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_PROJECTNAMEDUPLICATE = "InvalidParameterValue.ProjectNameDuplicate"
+//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
+//  INVALIDPARAMETERVALUE_USERUNREGISTER = "InvalidParameterValue.UserUnRegister"
+func (c *Client) UpdateVoice(request *UpdateVoiceRequest) (response *UpdateVoiceResponse, err error) {
+    return c.UpdateVoiceWithContext(context.Background(), request)
+}
+
+// UpdateVoice
+// 更新音色信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_PROJECTNAMEDUPLICATE = "InvalidParameterValue.ProjectNameDuplicate"
+//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
+//  INVALIDPARAMETERVALUE_USERUNREGISTER = "InvalidParameterValue.UserUnRegister"
+func (c *Client) UpdateVoiceWithContext(ctx context.Context, request *UpdateVoiceRequest) (response *UpdateVoiceResponse, err error) {
+    if request == nil {
+        request = NewUpdateVoiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "UpdateVoice")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateVoice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateVoiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewWithdrawsWatermarkRequest() (request *WithdrawsWatermarkRequest) {
     request = &WithdrawsWatermarkRequest{
         BaseRequest: &tchttp.BaseRequest{},

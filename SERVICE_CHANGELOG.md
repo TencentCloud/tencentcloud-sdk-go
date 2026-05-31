@@ -1,65 +1,10 @@
-# Release v1.3.106
+# Release v1.3.107
 
-## 云防火墙(cfw) 版本：2019-09-04
+## 应用性能监控(apm) 版本：2021-06-22
 
-### 第 101 次发布
+### 第 61 次发布
 
-发布时间：2026-05-29 01:25:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [CcnAssociatedInstance](https://cloud.tencent.com/document/api/1132/49071#CcnAssociatedInstance)
-
-	* 新增成员：IsCrossInstance
-
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 78 次发布
-
-发布时间：2026-05-28 12:13:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* AttachDisks
-* CreateDisks
-* DeleteSnapshots
-* DescribeDisks
-* DescribeSnapshots
-* DetachDisks
-* TerminateDisks
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* Disk
-* DiskChargePrepaid
-* Placement
-* Snapshot
-
-修改数据结构：
-
-* [Position](https://cloud.tencent.com/document/api/1108/42574#Position)
-
-	* <font color="#dd0000">**修改成员**：</font>Ipv6Supported
-
-
-
-
-## 事件中心(evt) 版本：2025-02-17
-
-### 第 7 次发布
-
-发布时间：2026-05-29 02:03:11
+发布时间：2026-06-01 01:12:32
 
 本次发布包含了以下内容：
 
@@ -67,20 +12,64 @@
 
 修改接口：
 
-* [PutMessage](https://cloud.tencent.com/document/api/1808/126898)
+* [CreateApmPrometheusRule](https://cloud.tencent.com/document/api/1463/125082)
 
-	* 新增入参：PluginId
+	* 新增入参：AppendResourceAttributes
 
-	* <font color="#dd0000">**修改入参**：</font>EventId
+* [ModifyApmPrometheusRule](https://cloud.tencent.com/document/api/1463/125075)
+
+	* 新增入参：AppendResourceAttributes
+
+
+修改数据结构：
+
+* [ApmPrometheusRules](https://cloud.tencent.com/document/api/1463/64927#ApmPrometheusRules)
+
+	* 新增成员：AppendResourceAttributes
 
 
 
 
-## 智能导诊(ig) 版本：2021-05-18
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-### 第 2 次发布
+### 第 141 次发布
 
-发布时间：2026-05-28 11:33:44
+发布时间：2026-05-29 15:03:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListTWeSeeTasks](https://cloud.tencent.com/document/api/1081/132116)
+
+	* 新增入参：ServiceTypes, FileURLExpireTime
+
+
+新增数据结构：
+
+* [SeeDetectContinuousConfig](https://cloud.tencent.com/document/api/1081/34988#SeeDetectContinuousConfig)
+* [SeeDetectContinuousResult](https://cloud.tencent.com/document/api/1081/34988#SeeDetectContinuousResult)
+
+修改数据结构：
+
+* [SeeTaskInfo](https://cloud.tencent.com/document/api/1081/34988#SeeTaskInfo)
+
+	* 新增成员：DetectContinuousResult
+
+* [VisionSummaryConfig](https://cloud.tencent.com/document/api/1081/34988#VisionSummaryConfig)
+
+	* 新增成员：DetectContinuous
+
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 206 次发布
+
+发布时间：2026-05-29 16:43:39
 
 本次发布包含了以下内容：
 
@@ -88,35 +77,19 @@
 
 新增接口：
 
-* [GetLLMDiagnosisDrug](https://cloud.tencent.com/document/api/1273/128049)
-* [GetLLMDiagnosisDrugChat](https://cloud.tencent.com/document/api/1273/128048)
-* [GetLLMDiagnosisHealth](https://cloud.tencent.com/document/api/1273/128047)
-* [GetLLMReportInterpretation](https://cloud.tencent.com/document/api/1273/128046)
-* [QueryDrugInstructions](https://cloud.tencent.com/document/api/1273/128045)
+* [UpdateVoice](https://cloud.tencent.com/document/api/862/132316)
 
 新增数据结构：
 
-* [DrugCardInfo](https://cloud.tencent.com/document/api/1273/128050#DrugCardInfo)
-* [DrugInstructionInfo](https://cloud.tencent.com/document/api/1273/128050#DrugInstructionInfo)
-* [GuessQuestion](https://cloud.tencent.com/document/api/1273/128050#GuessQuestion)
-* [HealthFollowUpQuestion](https://cloud.tencent.com/document/api/1273/128050#HealthFollowUpQuestion)
-* [HighlightWordInfo](https://cloud.tencent.com/document/api/1273/128050#HighlightWordInfo)
-* [LLMDiagnosisDrugData](https://cloud.tencent.com/document/api/1273/128050#LLMDiagnosisDrugData)
-* [LLMDiagnosisHealthData](https://cloud.tencent.com/document/api/1273/128050#LLMDiagnosisHealthData)
-* [LLMReportInterpretationData](https://cloud.tencent.com/document/api/1273/128050#LLMReportInterpretationData)
-* [ReferResourceInfo](https://cloud.tencent.com/document/api/1273/128050#ReferResourceInfo)
-* [ReportFileInfoReq](https://cloud.tencent.com/document/api/1273/128050#ReportFileInfoReq)
-* [ReportFileInfoRsp](https://cloud.tencent.com/document/api/1273/128050#ReportFileInfoRsp)
-* [StandardDrugCardInfo](https://cloud.tencent.com/document/api/1273/128050#StandardDrugCardInfo)
-* [StandardDrugInstructionInfo](https://cloud.tencent.com/document/api/1273/128050#StandardDrugInstructionInfo)
+* [VoiceUpdateFields](https://cloud.tencent.com/document/api/862/37615#VoiceUpdateFields)
 
 
 
-## 实时互动-教育版(lcic) 版本：2022-08-17
+## 自动化助手(tat) 版本：2020-10-28
 
-### 第 85 次发布
+### 第 29 次发布
 
-发布时间：2026-05-29 02:19:37
+发布时间：2026-06-01 02:42:07
 
 本次发布包含了以下内容：
 
@@ -124,51 +97,18 @@
 
 修改数据结构：
 
-* [EventDataInfo](https://cloud.tencent.com/document/api/1639/81423#EventDataInfo)
+* [Invoker](https://cloud.tencent.com/document/api/1340/52687#Invoker)
 
-	* 新增成员：Role
+	* 新增成员：Tags
 
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 143 次发布
-
-发布时间：2026-05-29 02:49:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribePGUserMigration](https://cloud.tencent.com/document/api/876/132262)
-* [DescribeResourcePermission](https://cloud.tencent.com/document/api/876/132256)
-* [ListPGUserMigrations](https://cloud.tencent.com/document/api/876/132261)
-* [ModifyResourcePermission](https://cloud.tencent.com/document/api/876/132255)
-* [PreviewPGUserMigrations](https://cloud.tencent.com/document/api/876/132260)
-* [PushPGUserMigrations](https://cloud.tencent.com/document/api/876/132259)
-* [RepairPGUserMigrationHistory](https://cloud.tencent.com/document/api/876/132258)
-* [RollbackPGUserMigrations](https://cloud.tencent.com/document/api/876/132257)
-
-新增数据结构：
-
-* [DescribeResourcePermissionResult](https://cloud.tencent.com/document/api/876/34822#DescribeResourcePermissionResult)
-* [MigrationConflict](https://cloud.tencent.com/document/api/876/34822#MigrationConflict)
-* [MigrationInput](https://cloud.tencent.com/document/api/876/34822#MigrationInput)
-* [MigrationPlanItem](https://cloud.tencent.com/document/api/876/34822#MigrationPlanItem)
-* [MigrationSummary](https://cloud.tencent.com/document/api/876/34822#MigrationSummary)
-* [ModifyResourcePermissionResult](https://cloud.tencent.com/document/api/876/34822#ModifyResourcePermissionResult)
-* [ResourcePermission](https://cloud.tencent.com/document/api/876/34822#ResourcePermission)
 
 
 
 ## 高性能计算平台(thpc) 版本：2023-03-21
 
-### 第 37 次发布
+### 第 38 次发布
 
-发布时间：2026-05-29 03:03:00
+发布时间：2026-06-01 02:54:48
 
 本次发布包含了以下内容：
 
@@ -176,19 +116,15 @@
 
 新增数据结构：
 
-* [CosOption](https://cloud.tencent.com/document/api/1527/89579#CosOption)
+* [CosOptionOverview](https://cloud.tencent.com/document/api/1527/89579#CosOptionOverview)
 
 修改数据结构：
 
-* [GooseFSOption](https://cloud.tencent.com/document/api/1527/89579#GooseFSOption)
-
-	* 新增成员：FileSystemId
-
-	* <font color="#dd0000">**修改成员**：</font>Masters
-
-* [StorageOption](https://cloud.tencent.com/document/api/1527/89579#StorageOption)
+* [StorageOptionOverview](https://cloud.tencent.com/document/api/1527/89579#StorageOptionOverview)
 
 	* 新增成员：CosOptions
+
+	* <font color="#dd0000">**修改成员**：</font>GooseFSxOptions
 
 
 
@@ -207,9 +143,9 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
-### 第 230 次发布
+### 第 231 次发布
 
-发布时间：2026-05-29 03:05:07
+发布时间：2026-06-01 02:56:44
 
 本次发布包含了以下内容：
 
@@ -217,14 +153,142 @@
 
 修改接口：
 
-* [CreateClusterVirtualNodePool](https://cloud.tencent.com/document/api/457/85354)
+* [ModifyClusterVirtualNodePool](https://cloud.tencent.com/document/api/457/85348)
 
-	* 新增入参：SubnetAllocationPolicy, AgentPlugin
+	* 新增入参：SubnetAllocationPolicy
+
+
+
+
+## TokenHub(tokenhub) 版本：2026-03-22
+
+### 第 2 次发布
+
+发布时间：2026-06-01 02:59:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeApiKey](https://cloud.tencent.com/document/api/1823/132345)
+* [DescribeApiKeyList](https://cloud.tencent.com/document/api/1823/132344)
+* [DescribeTokenPlanApiKeyUsageDetail](https://cloud.tencent.com/document/api/1823/132342)
+* [DescribeUsageRankList](https://cloud.tencent.com/document/api/1823/132340)
+
+新增数据结构：
+
+* [ApiKeyDetail](https://cloud.tencent.com/document/api/1823/132279#ApiKeyDetail)
+* [BindingItem](https://cloud.tencent.com/document/api/1823/132279#BindingItem)
+* [UsageRankItem](https://cloud.tencent.com/document/api/1823/132279#UsageRankItem)
+* [UsageSeries](https://cloud.tencent.com/document/api/1823/132279#UsageSeries)
+* [UsageStats](https://cloud.tencent.com/document/api/1823/132279#UsageStats)
+
+### 第 1 次发布
+
+发布时间：2026-05-29 10:58:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateTokenPlanApiKeys](https://cloud.tencent.com/document/api/1823/132278)
+* [CreateTokenPlanTeamOrderAndBuy](https://cloud.tencent.com/document/api/1823/132267)
+* [DeleteTokenPlanApiKey](https://cloud.tencent.com/document/api/1823/132277)
+* [DescribeTokenPlan](https://cloud.tencent.com/document/api/1823/132270)
+* [DescribeTokenPlanApiKey](https://cloud.tencent.com/document/api/1823/132276)
+* [DescribeTokenPlanApiKeyList](https://cloud.tencent.com/document/api/1823/132275)
+* [DescribeTokenPlanApiKeySecret](https://cloud.tencent.com/document/api/1823/132274)
+* [DescribeTokenPlanList](https://cloud.tencent.com/document/api/1823/132269)
+* [ModifyTokenPlanApiKey](https://cloud.tencent.com/document/api/1823/132273)
+* [ModifyTokenPlanApiKeySecret](https://cloud.tencent.com/document/api/1823/132272)
+* [RenewTokenPlanTeamOrder](https://cloud.tencent.com/document/api/1823/132266)
+* [UpgradeTokenPlanTeamOrder](https://cloud.tencent.com/document/api/1823/132265)
+
+新增数据结构：
+
+* [BatchCreateFailedItem](https://cloud.tencent.com/document/api/1823/132279#BatchCreateFailedItem)
+* [CreateApiKeysResultItem](https://cloud.tencent.com/document/api/1823/132279#CreateApiKeysResultItem)
+* [RequestFilter](https://cloud.tencent.com/document/api/1823/132279#RequestFilter)
+* [RequestSort](https://cloud.tencent.com/document/api/1823/132279#RequestSort)
+* [SubPackageBalance](https://cloud.tencent.com/document/api/1823/132279#SubPackageBalance)
+* [TokenPlanApiKeyInfo](https://cloud.tencent.com/document/api/1823/132279#TokenPlanApiKeyInfo)
+* [TokenPlanApiKeyListItem](https://cloud.tencent.com/document/api/1823/132279#TokenPlanApiKeyListItem)
+* [TokenPlanListItem](https://cloud.tencent.com/document/api/1823/132279#TokenPlanListItem)
+* [TokenPlanPackageInfo](https://cloud.tencent.com/document/api/1823/132279#TokenPlanPackageInfo)
+* [TokenSummary](https://cloud.tencent.com/document/api/1823/132279#TokenSummary)
+* [TokenSummaryBillingItem](https://cloud.tencent.com/document/api/1823/132279#TokenSummaryBillingItem)
+
+
+
+## TSF-Polaris&ZK&网关(tse) 版本：2020-12-07
+
+### 第 109 次发布
+
+发布时间：2026-06-01 03:02:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloudNativeAPIGatewayLLMModelAPI](https://cloud.tencent.com/document/api/1364/131968)
+
+	* 新增入参：TagFilter, LogConfig
+
+* [CreateCloudNativeAPIGatewayLLMModelService](https://cloud.tencent.com/document/api/1364/131967)
+
+	* 新增入参：QuotaLimit, Tags
+
+* [DescribeCloudNativeAPIGatewaySecretKeyList](https://cloud.tencent.com/document/api/1364/131951)
+
+	* 新增入参：ResourceType
+
+* [ModifyCloudNativeAPIGatewayLLMModelAPI](https://cloud.tencent.com/document/api/1364/131947)
+
+	* 新增入参：TagFilter, LogConfig
+
+* [ModifyCloudNativeAPIGatewayLLMModelService](https://cloud.tencent.com/document/api/1364/131946)
+
+	* 新增入参：QuotaLimit, Tags
 
 
 新增数据结构：
 
-* [AgentPluginConfig](https://cloud.tencent.com/document/api/457/31866#AgentPluginConfig)
+* [AIGWCustomDesensitizeRule](https://cloud.tencent.com/document/api/1364/54942#AIGWCustomDesensitizeRule)
+* [AIGWForwardDesensitizeConfig](https://cloud.tencent.com/document/api/1364/54942#AIGWForwardDesensitizeConfig)
+* [AIGWIntentRoute](https://cloud.tencent.com/document/api/1364/54942#AIGWIntentRoute)
+* [AIGWIntentRouteRule](https://cloud.tencent.com/document/api/1364/54942#AIGWIntentRouteRule)
+* [AIGWLLMQuotaFallbackTrigger](https://cloud.tencent.com/document/api/1364/54942#AIGWLLMQuotaFallbackTrigger)
+* [AIGWLLMQuotaLimit](https://cloud.tencent.com/document/api/1364/54942#AIGWLLMQuotaLimit)
+* [AIGWLatencyPriorityConfig](https://cloud.tencent.com/document/api/1364/54942#AIGWLatencyPriorityConfig)
+* [AIGWLatencyPriorityRouteRule](https://cloud.tencent.com/document/api/1364/54942#AIGWLatencyPriorityRouteRule)
+* [AIGWLogConfig](https://cloud.tencent.com/document/api/1364/54942#AIGWLogConfig)
+* [AIGWLogDesensitizeConfig](https://cloud.tencent.com/document/api/1364/54942#AIGWLogDesensitizeConfig)
+* [AIGWTagFilter](https://cloud.tencent.com/document/api/1364/54942#AIGWTagFilter)
+
+修改数据结构：
+
+* [AIGWCrossServiceFallbackConfig](https://cloud.tencent.com/document/api/1364/54942#AIGWCrossServiceFallbackConfig)
+
+	* 新增成员：QuotaFallbackTrigger
+
+* [CloudNativeAPIGatewayLLMModelAPI](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayLLMModelAPI)
+
+	* 新增成员：TagFilter, LogConfig, LogDesensitizeConfig, ForwardDesensitizeConfig
+
+* [CloudNativeAPIGatewayLLMModelService](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayLLMModelService)
+
+	* 新增成员：QuotaLimit, Tags, SecretKeyIds
+
+* [CloudNativeAPIGatewayLLMModelServiceRoute](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayLLMModelServiceRoute)
+
+	* 新增成员：IntentRouteConfig, LatencyPriorityConfig
+
 
 
 
@@ -234,9 +298,9 @@
 
 ## 云点播(vod) 版本：2018-07-17
 
-### 第 259 次发布
+### 第 260 次发布
 
-发布时间：2026-05-29 03:16:59
+发布时间：2026-06-01 03:07:54
 
 本次发布包含了以下内容：
 
@@ -244,9 +308,9 @@
 
 修改接口：
 
-* [DescribeAigcUsageData](https://cloud.tencent.com/document/api/266/126446)
+* [ProcessMedia](https://cloud.tencent.com/document/api/266/33427)
 
-	* 新增入参：APIKey
+	* 新增入参：OutputAsIndependentMedia
 
 
 

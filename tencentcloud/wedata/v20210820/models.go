@@ -41845,7 +41845,7 @@ type TaskDsDTO struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
-	// <p>创建者帐号</p>
+	// <p>创建者账号</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnId *string `json:"OwnId,omitnil,omitempty" name:"OwnId"`
 

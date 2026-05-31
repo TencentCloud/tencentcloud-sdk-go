@@ -2500,6 +2500,9 @@ type Invoker struct {
 
 	// 修改时间。格式为：YYYY-MM-DDThh:mm:ssZ
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
+
+	// 标签信息。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type InvokerRecord struct {

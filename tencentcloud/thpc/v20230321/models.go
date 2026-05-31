@@ -656,6 +656,17 @@ type CosOption struct {
 	MountParamsOption *string `json:"MountParamsOption,omitnil,omitempty" name:"MountParamsOption"`
 }
 
+type CosOptionOverview struct {
+	// <p>文件系统本地挂载路径。</p>
+	LocalPath *string `json:"LocalPath,omitnil,omitempty" name:"LocalPath"`
+
+	// <p>COS桶地址。</p>
+	RemotePath *string `json:"RemotePath,omitnil,omitempty" name:"RemotePath"`
+
+	// <p>COS挂载参数</p>
+	MountOption *string `json:"MountOption,omitnil,omitempty" name:"MountOption"`
+}
+
 // Predefined struct for user
 type CreateClusterRequestParams struct {
 	// <p>集群中实例所在的位置。</p>
@@ -2323,7 +2334,7 @@ type GooseFSOption struct {
 	// <p>文件系统本地挂载路径。</p>
 	LocalPath *string `json:"LocalPath,omitnil,omitempty" name:"LocalPath"`
 
-	// <p>文件系统远程挂载路径。</p>
+	// <p>文件系统远程挂载路径; 远端路径为GooseFS控制台看到的命名空间的url;命名空间文档参考https://cloud.tencent.com/document/product/1424/117877</p>
 	RemotePath *string `json:"RemotePath,omitnil,omitempty" name:"RemotePath"`
 
 	// <p>文件系统master的ip和端口，此参数和FileSystemId互斥。</p>
@@ -3357,14 +3368,17 @@ type StorageOption struct {
 }
 
 type StorageOptionOverview struct {
-	// CFS存储选项概览信息列表。
+	// <p>CFS存储选项概览信息列表。</p>
 	CFSOptions []*CFSOptionOverview `json:"CFSOptions,omitnil,omitempty" name:"CFSOptions"`
 
-	// GooseFS存储选项概览信息列表。
+	// <p>GooseFS存储选项概览信息列表。</p>
 	GooseFSOptions []*GooseFSOptionOverview `json:"GooseFSOptions,omitnil,omitempty" name:"GooseFSOptions"`
 
-	// GooseFSx存储选项概览信息列表。
+	// <p>GooseFSx存储选项概览信息列表。</p>
 	GooseFSxOptions []*GooseFSxOptionOverview `json:"GooseFSxOptions,omitnil,omitempty" name:"GooseFSxOptions"`
+
+	// <p>COS存储选项概览信息列表。</p>
+	CosOptions []*CosOptionOverview `json:"CosOptions,omitnil,omitempty" name:"CosOptions"`
 }
 
 // Predefined struct for user

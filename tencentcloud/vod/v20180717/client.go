@@ -1172,6 +1172,7 @@ func NewCreateAigcVideoRedrawTaskResponse() (response *CreateAigcVideoRedrawTask
 //  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
 //  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
 //  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_QUOTA = "LimitExceeded.Quota"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateAigcVideoRedrawTask(request *CreateAigcVideoRedrawTaskRequest) (response *CreateAigcVideoRedrawTaskResponse, err error) {
     return c.CreateAigcVideoRedrawTaskWithContext(context.Background(), request)
@@ -1189,6 +1190,7 @@ func (c *Client) CreateAigcVideoRedrawTask(request *CreateAigcVideoRedrawTaskReq
 //  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
 //  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
 //  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_QUOTA = "LimitExceeded.Quota"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateAigcVideoRedrawTaskWithContext(ctx context.Context, request *CreateAigcVideoRedrawTaskRequest) (response *CreateAigcVideoRedrawTaskResponse, err error) {
     if request == nil {
@@ -1238,6 +1240,7 @@ func NewCreateAigcVideoTaskResponse() (response *CreateAigcVideoTaskResponse) {
 //  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
 //  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
 //  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_QUOTA = "LimitExceeded.Quota"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateAigcVideoTask(request *CreateAigcVideoTaskRequest) (response *CreateAigcVideoTaskResponse, err error) {
     return c.CreateAigcVideoTaskWithContext(context.Background(), request)
@@ -1255,6 +1258,7 @@ func (c *Client) CreateAigcVideoTask(request *CreateAigcVideoTaskRequest) (respo
 //  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
 //  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
 //  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_QUOTA = "LimitExceeded.Quota"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateAigcVideoTaskWithContext(ctx context.Context, request *CreateAigcVideoTaskRequest) (response *CreateAigcVideoTaskResponse, err error) {
     if request == nil {
@@ -2923,6 +2927,7 @@ func NewCreateSceneAigcVideoTaskResponse() (response *CreateSceneAigcVideoTaskRe
 //  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
 //  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
 //  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_QUOTA = "LimitExceeded.Quota"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateSceneAigcVideoTask(request *CreateSceneAigcVideoTaskRequest) (response *CreateSceneAigcVideoTaskResponse, err error) {
     return c.CreateSceneAigcVideoTaskWithContext(context.Background(), request)
@@ -2941,6 +2946,7 @@ func (c *Client) CreateSceneAigcVideoTask(request *CreateSceneAigcVideoTaskReque
 //  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
 //  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
 //  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  LIMITEXCEEDED_QUOTA = "LimitExceeded.Quota"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateSceneAigcVideoTaskWithContext(ctx context.Context, request *CreateSceneAigcVideoTaskRequest) (response *CreateSceneAigcVideoTaskResponse, err error) {
     if request == nil {

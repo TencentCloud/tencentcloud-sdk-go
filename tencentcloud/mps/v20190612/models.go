@@ -29020,6 +29020,83 @@ type UpdateSmartEraseWatermarkConfig struct {
 	CustomAreas []*EraseTimeArea `json:"CustomAreas,omitnil,omitempty" name:"CustomAreas"`
 }
 
+// Predefined struct for user
+type UpdateVoiceRequestParams struct {
+	// <p>音色Id</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>更新音色字段</p>
+	VoiceFields *VoiceUpdateFields `json:"VoiceFields,omitnil,omitempty" name:"VoiceFields"`
+
+	// <p>扩展参数，json字符串</p>
+	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
+}
+
+type UpdateVoiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>音色Id</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>更新音色字段</p>
+	VoiceFields *VoiceUpdateFields `json:"VoiceFields,omitnil,omitempty" name:"VoiceFields"`
+
+	// <p>扩展参数，json字符串</p>
+	ExtParam *string `json:"ExtParam,omitnil,omitempty" name:"ExtParam"`
+}
+
+func (r *UpdateVoiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateVoiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VoiceId")
+	delete(f, "VoiceFields")
+	delete(f, "ExtParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateVoiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateVoiceResponseParams struct {
+	// <p>错误码，正确时返回0</p>
+	ErrorCode *int64 `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// <p>错误信息，正确时返回success</p>
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>更新后的音色信息</p>
+	Voice *VoiceInfo `json:"Voice,omitnil,omitempty" name:"Voice"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateVoiceResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateVoiceResponseParams `json:"Response"`
+}
+
+func (r *UpdateVoiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateVoiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type UrlInputInfo struct {
 	// 视频的 URL。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
@@ -29835,6 +29912,32 @@ type VoiceProfile struct {
 
 	// <p>使用场景</p>
 	Scenes []*string `json:"Scenes,omitnil,omitempty" name:"Scenes"`
+}
+
+type VoiceUpdateFields struct {
+	// <p>音色名</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>音色描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>性别</p><p>枚举值：</p><ul><li>male： 男</li><li>female： 女</li><li>unknown： 未知</li></ul>
+	Gender *string `json:"Gender,omitnil,omitempty" name:"Gender"`
+
+	// <p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+	Age *string `json:"Age,omitnil,omitempty" name:"Age"`
+
+	// <p>语言</p>
+	Languages []*string `json:"Languages,omitnil,omitempty" name:"Languages"`
+
+	// <p>标签</p>
+	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// <p>场景</p>
+	Scenes []*string `json:"Scenes,omitnil,omitempty" name:"Scenes"`
+
+	// <p>试听音频</p>
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
 }
 
 type VolumeBalanceConfig struct {

@@ -668,28 +668,31 @@ type ApmMetricRecord struct {
 }
 
 type ApmPrometheusRules struct {
-	// 指标匹配规则ID
+	// <p>指标匹配规则ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 指标匹配规则名
+	// <p>指标匹配规则名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 规则生效的应用。生效于全部应用就传空字符串
+	// <p>规则生效的应用。生效于全部应用就传空字符串</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 指标匹配规则状态：1(启用)、2（不启用）
+	// <p>指标匹配规则状态：1(启用)、2（不启用）</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 指标匹配规则
+	// <p>指标匹配规则</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricNameRule *string `json:"MetricNameRule,omitnil,omitempty" name:"MetricNameRule"`
 
-	// 匹配类型：0精准匹配，1前缀匹配，2后缀匹配
+	// <p>匹配类型：0精准匹配，1前缀匹配，2后缀匹配</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricMatchType *int64 `json:"MetricMatchType,omitnil,omitempty" name:"MetricMatchType"`
+
+	// <p>是否追加资源属性</p>
+	AppendResourceAttributes *bool `json:"AppendResourceAttributes,omitnil,omitempty" name:"AppendResourceAttributes"`
 }
 
 type ApmSampleConfig struct {
@@ -908,39 +911,45 @@ func (r *CreateApmInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateApmPrometheusRuleRequestParams struct {
-	// 指标匹配规则名
+	// <p>指标匹配规则名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 规则生效的应用。作用全部应用就传空字符串
+	// <p>规则生效的应用。作用全部应用就传空字符串</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 指标匹配类型：0精准匹配，1前缀匹配，2后缀匹配
+	// <p>指标匹配类型：0精准匹配，1前缀匹配，2后缀匹配</p>
 	MetricMatchType *int64 `json:"MetricMatchType,omitnil,omitempty" name:"MetricMatchType"`
 
-	// 客户定义的命中指标名规则。
+	// <p>客户定义的命中指标名规则。</p>
 	MetricNameRule *string `json:"MetricNameRule,omitnil,omitempty" name:"MetricNameRule"`
 
-	// 业务系统ID
+	// <p>业务系统ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>是否追加资源属性</p>
+	AppendResourceAttributes *bool `json:"AppendResourceAttributes,omitnil,omitempty" name:"AppendResourceAttributes"`
 }
 
 type CreateApmPrometheusRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 指标匹配规则名
+	// <p>指标匹配规则名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 规则生效的应用。作用全部应用就传空字符串
+	// <p>规则生效的应用。作用全部应用就传空字符串</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 指标匹配类型：0精准匹配，1前缀匹配，2后缀匹配
+	// <p>指标匹配类型：0精准匹配，1前缀匹配，2后缀匹配</p>
 	MetricMatchType *int64 `json:"MetricMatchType,omitnil,omitempty" name:"MetricMatchType"`
 
-	// 客户定义的命中指标名规则。
+	// <p>客户定义的命中指标名规则。</p>
 	MetricNameRule *string `json:"MetricNameRule,omitnil,omitempty" name:"MetricNameRule"`
 
-	// 业务系统ID
+	// <p>业务系统ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>是否追加资源属性</p>
+	AppendResourceAttributes *bool `json:"AppendResourceAttributes,omitnil,omitempty" name:"AppendResourceAttributes"`
 }
 
 func (r *CreateApmPrometheusRuleRequest) ToJsonString() string {
@@ -960,6 +969,7 @@ func (r *CreateApmPrometheusRuleRequest) FromJsonString(s string) error {
 	delete(f, "MetricMatchType")
 	delete(f, "MetricNameRule")
 	delete(f, "InstanceId")
+	delete(f, "AppendResourceAttributes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApmPrometheusRuleRequest has unknown keys!", "")
 	}
@@ -968,7 +978,7 @@ func (r *CreateApmPrometheusRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateApmPrometheusRuleResponseParams struct {
-	// 指标匹配规则的ID
+	// <p>指标匹配规则的ID</p>
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4213,51 +4223,57 @@ func (r *ModifyApmInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyApmPrometheusRuleRequestParams struct {
-	// 规则ID
+	// <p>规则ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 业务系统ID
+	// <p>业务系统ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 所要修改的规则名
+	// <p>所要修改的规则名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 规则状态：1(启用)、2（不启用）、3（删除）
+	// <p>规则状态：1(启用)、2（不启用）、3（删除）</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 规则生效的应用。生效于全部应用就传空（这个如果不修改也要传旧的规则）
+	// <p>规则生效的应用。生效于全部应用就传空（这个如果不修改也要传旧的规则）</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 匹配类型：0精准匹配，1前缀匹配，2后缀匹配（这个如果不修改也要传旧的规则）
+	// <p>匹配类型：0精准匹配，1前缀匹配，2后缀匹配（这个如果不修改也要传旧的规则）</p>
 	MetricMatchType *int64 `json:"MetricMatchType,omitnil,omitempty" name:"MetricMatchType"`
 
-	// 客户定义的命中指标名规则。
+	// <p>客户定义的命中指标名规则。</p>
 	MetricNameRule *string `json:"MetricNameRule,omitnil,omitempty" name:"MetricNameRule"`
+
+	// <p>是否追加资源属性</p>
+	AppendResourceAttributes *bool `json:"AppendResourceAttributes,omitnil,omitempty" name:"AppendResourceAttributes"`
 }
 
 type ModifyApmPrometheusRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则ID
+	// <p>规则ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 业务系统ID
+	// <p>业务系统ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 所要修改的规则名
+	// <p>所要修改的规则名</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 规则状态：1(启用)、2（不启用）、3（删除）
+	// <p>规则状态：1(启用)、2（不启用）、3（删除）</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 规则生效的应用。生效于全部应用就传空（这个如果不修改也要传旧的规则）
+	// <p>规则生效的应用。生效于全部应用就传空（这个如果不修改也要传旧的规则）</p>
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
-	// 匹配类型：0精准匹配，1前缀匹配，2后缀匹配（这个如果不修改也要传旧的规则）
+	// <p>匹配类型：0精准匹配，1前缀匹配，2后缀匹配（这个如果不修改也要传旧的规则）</p>
 	MetricMatchType *int64 `json:"MetricMatchType,omitnil,omitempty" name:"MetricMatchType"`
 
-	// 客户定义的命中指标名规则。
+	// <p>客户定义的命中指标名规则。</p>
 	MetricNameRule *string `json:"MetricNameRule,omitnil,omitempty" name:"MetricNameRule"`
+
+	// <p>是否追加资源属性</p>
+	AppendResourceAttributes *bool `json:"AppendResourceAttributes,omitnil,omitempty" name:"AppendResourceAttributes"`
 }
 
 func (r *ModifyApmPrometheusRuleRequest) ToJsonString() string {
@@ -4279,6 +4295,7 @@ func (r *ModifyApmPrometheusRuleRequest) FromJsonString(s string) error {
 	delete(f, "ServiceName")
 	delete(f, "MetricMatchType")
 	delete(f, "MetricNameRule")
+	delete(f, "AppendResourceAttributes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmPrometheusRuleRequest has unknown keys!", "")
 	}

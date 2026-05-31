@@ -19620,51 +19620,57 @@ func (r *ModifyClusterTagsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyClusterVirtualNodePoolRequestParams struct {
-	// 集群ID，通过DescribeClusters接口获取
+	// <p>集群ID，通过DescribeClusters接口获取</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 节点池ID，通过DescribeNodePools接口获取
+	// <p>节点池ID，通过DescribeNodePools接口获取</p>
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
-	// 节点池名称，必须修改至少一个参数
+	// <p>节点池名称，必须修改至少一个参数</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 安全组ID列表，必须修改至少一个参数
+	// <p>安全组ID列表，必须修改至少一个参数</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 虚拟节点label，必须修改至少一个参数
+	// <p>虚拟节点label，必须修改至少一个参数</p>
 	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// 虚拟节点taint，必须修改至少一个参数
+	// <p>虚拟节点taint，必须修改至少一个参数</p>
 	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
 
-	// 删除保护开关，必须修改至少一个参数
+	// <p>删除保护开关，必须修改至少一个参数</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// <p>子网分配策略</p>
+	SubnetAllocationPolicy *SubnetAllocationPolicy `json:"SubnetAllocationPolicy,omitnil,omitempty" name:"SubnetAllocationPolicy"`
 }
 
 type ModifyClusterVirtualNodePoolRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID，通过DescribeClusters接口获取
+	// <p>集群ID，通过DescribeClusters接口获取</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 节点池ID，通过DescribeNodePools接口获取
+	// <p>节点池ID，通过DescribeNodePools接口获取</p>
 	NodePoolId *string `json:"NodePoolId,omitnil,omitempty" name:"NodePoolId"`
 
-	// 节点池名称，必须修改至少一个参数
+	// <p>节点池名称，必须修改至少一个参数</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 安全组ID列表，必须修改至少一个参数
+	// <p>安全组ID列表，必须修改至少一个参数</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 虚拟节点label，必须修改至少一个参数
+	// <p>虚拟节点label，必须修改至少一个参数</p>
 	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// 虚拟节点taint，必须修改至少一个参数
+	// <p>虚拟节点taint，必须修改至少一个参数</p>
 	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
 
-	// 删除保护开关，必须修改至少一个参数
+	// <p>删除保护开关，必须修改至少一个参数</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// <p>子网分配策略</p>
+	SubnetAllocationPolicy *SubnetAllocationPolicy `json:"SubnetAllocationPolicy,omitnil,omitempty" name:"SubnetAllocationPolicy"`
 }
 
 func (r *ModifyClusterVirtualNodePoolRequest) ToJsonString() string {
@@ -19686,6 +19692,7 @@ func (r *ModifyClusterVirtualNodePoolRequest) FromJsonString(s string) error {
 	delete(f, "Labels")
 	delete(f, "Taints")
 	delete(f, "DeletionProtection")
+	delete(f, "SubnetAllocationPolicy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterVirtualNodePoolRequest has unknown keys!", "")
 	}

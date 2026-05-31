@@ -76,7 +76,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.106
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.107
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/controlcenter v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
@@ -225,6 +225,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tkgdq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tms v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tmt v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tokenhub v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tourism v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trabbit v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trocket v0.0.0
@@ -481,6 +482,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tkgdq => ../tencentcloud/tkgdq
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tms => ../tencentcloud/tms
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tmt => ../tencentcloud/tmt
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tokenhub => ../tencentcloud/tokenhub
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tourism => ../tencentcloud/tourism
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trabbit => ../tencentcloud/trabbit
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trocket => ../tencentcloud/trocket

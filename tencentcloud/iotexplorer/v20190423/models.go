@@ -15362,8 +15362,9 @@ type ListTWeSeeTasksRequestParams struct {
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 算法类目。可能取值：
+	// 算法类目。可选值：
 	// - `COMPREHENSION`：视觉理解
+	// - `HIGHLIGHT`：视频浓缩
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 
 	// 分页拉取数量
@@ -15371,6 +15372,17 @@ type ListTWeSeeTasksRequestParams struct {
 
 	// 分页拉取偏移
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 算法类型。
+	// 
+	// 当 ServiceCategory 为 `COMPREHENSION` 时，可选值包括：
+	// - `VID_COMP`：视频理解
+	// - `IMG_COMP`：图片理解
+	// - `CONT_PERSON_MOTIONLESS`：静姿检测
+	// 
+	// 当 ServiceCategory 为 `HIGHLIGHT` 时，可选值包括：
+	// - `COMP_HIGHLIGHT`：视频浓缩
+	ServiceTypes []*string `json:"ServiceTypes,omitnil,omitempty" name:"ServiceTypes"`
 
 	// 通道 ID
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
@@ -15387,6 +15399,9 @@ type ListTWeSeeTasksRequestParams struct {
 	// - `2`：空结果
 	// - `3`：有效结果
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 下载 URL 的过期时间（秒级 UNIX 时间戳）。若传入该参数，则响应中将包含所有文件的下载 URL
+	FileURLExpireTime *int64 `json:"FileURLExpireTime,omitnil,omitempty" name:"FileURLExpireTime"`
 }
 
 type ListTWeSeeTasksRequest struct {
@@ -15398,8 +15413,9 @@ type ListTWeSeeTasksRequest struct {
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 算法类目。可能取值：
+	// 算法类目。可选值：
 	// - `COMPREHENSION`：视觉理解
+	// - `HIGHLIGHT`：视频浓缩
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 
 	// 分页拉取数量
@@ -15407,6 +15423,17 @@ type ListTWeSeeTasksRequest struct {
 
 	// 分页拉取偏移
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 算法类型。
+	// 
+	// 当 ServiceCategory 为 `COMPREHENSION` 时，可选值包括：
+	// - `VID_COMP`：视频理解
+	// - `IMG_COMP`：图片理解
+	// - `CONT_PERSON_MOTIONLESS`：静姿检测
+	// 
+	// 当 ServiceCategory 为 `HIGHLIGHT` 时，可选值包括：
+	// - `COMP_HIGHLIGHT`：视频浓缩
+	ServiceTypes []*string `json:"ServiceTypes,omitnil,omitempty" name:"ServiceTypes"`
 
 	// 通道 ID
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
@@ -15423,6 +15450,9 @@ type ListTWeSeeTasksRequest struct {
 	// - `2`：空结果
 	// - `3`：有效结果
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 下载 URL 的过期时间（秒级 UNIX 时间戳）。若传入该参数，则响应中将包含所有文件的下载 URL
+	FileURLExpireTime *int64 `json:"FileURLExpireTime,omitnil,omitempty" name:"FileURLExpireTime"`
 }
 
 func (r *ListTWeSeeTasksRequest) ToJsonString() string {
@@ -15442,10 +15472,12 @@ func (r *ListTWeSeeTasksRequest) FromJsonString(s string) error {
 	delete(f, "ServiceCategory")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "ServiceTypes")
 	delete(f, "ChannelId")
 	delete(f, "StartTimeMs")
 	delete(f, "EndTimeMs")
 	delete(f, "Status")
+	delete(f, "FileURLExpireTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTWeSeeTasksRequest has unknown keys!", "")
 	}
@@ -19306,6 +19338,26 @@ type SeeComprehensionResult struct {
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 }
 
+type SeeDetectContinuousConfig struct {
+	// 检测标签。可选值：
+	// - `person_motionless`：人物静止
+	DetectType *string `json:"DetectType,omitnil,omitempty" name:"DetectType"`
+
+	// 启用检测的按日周期起始时间分钟数。取值范围：0 ~ 1440
+	DailyStartTime *int64 `json:"DailyStartTime,omitnil,omitempty" name:"DailyStartTime"`
+
+	// 启用检测的按日周期结束时间分钟数。取值范围：0 ~ 1440
+	DailyEndTime *int64 `json:"DailyEndTime,omitnil,omitempty" name:"DailyEndTime"`
+
+	// 检测间隔分钟数。取值范围：5 ~ 60。
+	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+}
+
+type SeeDetectContinuousResult struct {
+	// 检测标签是否在当前区间内持续
+	IsContinuousInRange *bool `json:"IsContinuousInRange,omitnil,omitempty" name:"IsContinuousInRange"`
+}
+
 type SeeEventIdFilterConfig struct {
 	// 包含的云存事件 ID 集合
 	IncludeOnly []*string `json:"IncludeOnly,omitnil,omitempty" name:"IncludeOnly"`
@@ -19346,12 +19398,14 @@ type SeeTaskInfo struct {
 	// 算法类目。可能取值：
 	// 
 	// - `COMPREHENSION`：视觉理解
+	// - `HIGHLIGHT`：视频浓缩
 	ServiceCategory *string `json:"ServiceCategory,omitnil,omitempty" name:"ServiceCategory"`
 
 	// 算法类型。可能取值：
 	// 
 	// - `VID_COMP`：视频理解
 	// - `IMG_COMP`：图片理解
+	// - `COMP_HIGHLIGHT`：视频浓缩
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 套餐规格。可能取值：
@@ -19365,6 +19419,9 @@ type SeeTaskInfo struct {
 
 	// 视频语义浓缩结果（适用于视频语义浓缩）
 	CompHighlightResult *SeeCompHighlightResult `json:"CompHighlightResult,omitnil,omitempty" name:"CompHighlightResult"`
+
+	// 标签持续检测结果
+	DetectContinuousResult *SeeDetectContinuousResult `json:"DetectContinuousResult,omitnil,omitempty" name:"DetectContinuousResult"`
 
 	// 完成该任务所消耗的基础能力额度
 	CostBasic *int64 `json:"CostBasic,omitnil,omitempty" name:"CostBasic"`
@@ -21197,6 +21254,9 @@ type VisionSummaryConfig struct {
 
 	// 自定义检测标签
 	CustomDetectQueries []*VisionCustomDetectQuery `json:"CustomDetectQueries,omitnil,omitempty" name:"CustomDetectQueries"`
+
+	// 标签持续检测配置
+	DetectContinuous []*SeeDetectContinuousConfig `json:"DetectContinuous,omitnil,omitempty" name:"DetectContinuous"`
 }
 
 type WXDeviceInfo struct {

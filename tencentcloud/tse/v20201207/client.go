@@ -65,7 +65,7 @@ func NewAddCloudNativeAPIGatewayConsumerGroupAuthResponse() (response *AddCloudN
 }
 
 // AddCloudNativeAPIGatewayConsumerGroupAuth
-// 添加消费者组授权
+// 为资源（模型 API / MCP Server）添加消费者组授权。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -95,7 +95,7 @@ func (c *Client) AddCloudNativeAPIGatewayConsumerGroupAuth(request *AddCloudNati
 }
 
 // AddCloudNativeAPIGatewayConsumerGroupAuth
-// 添加消费者组授权
+// 为资源（模型 API / MCP Server）添加消费者组授权。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -157,7 +157,7 @@ func NewAddCloudNativeAPIGatewayConsumerInGroupResponse() (response *AddCloudNat
 }
 
 // AddCloudNativeAPIGatewayConsumerInGroup
-// 将消费者添加到指定的消费者组中
+// 将消费者添加到消费者组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -187,7 +187,7 @@ func (c *Client) AddCloudNativeAPIGatewayConsumerInGroup(request *AddCloudNative
 }
 
 // AddCloudNativeAPIGatewayConsumerInGroup
-// 将消费者添加到指定的消费者组中
+// 将消费者添加到消费者组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -809,7 +809,7 @@ func NewCreateCloudNativeAPIGatewayConsumerResponse() (response *CreateCloudNati
 }
 
 // CreateCloudNativeAPIGatewayConsumer
-// 创建云原生网关的消费者，支持多种密钥生成方式
+// 创建消费者。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -839,7 +839,7 @@ func (c *Client) CreateCloudNativeAPIGatewayConsumer(request *CreateCloudNativeA
 }
 
 // CreateCloudNativeAPIGatewayConsumer
-// 创建云原生网关的消费者，支持多种密钥生成方式
+// 创建消费者。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -901,7 +901,7 @@ func NewCreateCloudNativeAPIGatewayConsumerGroupResponse() (response *CreateClou
 }
 
 // CreateCloudNativeAPIGatewayConsumerGroup
-// 创建云原生网关的消费者组
+// 创建消费者组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -931,7 +931,7 @@ func (c *Client) CreateCloudNativeAPIGatewayConsumerGroup(request *CreateCloudNa
 }
 
 // CreateCloudNativeAPIGatewayConsumerGroup
-// 创建云原生网关的消费者组
+// 创建消费者组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -993,7 +993,7 @@ func NewCreateCloudNativeAPIGatewayLLMModelAPIResponse() (response *CreateCloudN
 }
 
 // CreateCloudNativeAPIGatewayLLMModelAPI
-// 创建AI网关模型 API
+// 创建 LLM 模型 API。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1014,7 +1014,7 @@ func (c *Client) CreateCloudNativeAPIGatewayLLMModelAPI(request *CreateCloudNati
 }
 
 // CreateCloudNativeAPIGatewayLLMModelAPI
-// 创建AI网关模型 API
+// 创建 LLM 模型 API。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1383,7 +1383,7 @@ func NewCreateCloudNativeAPIGatewaySecretKeyResponse() (response *CreateCloudNat
 }
 
 // CreateCloudNativeAPIGatewaySecretKey
-// 创建云原生网关密钥
+// 创建消费者密钥。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1413,7 +1413,7 @@ func (c *Client) CreateCloudNativeAPIGatewaySecretKey(request *CreateCloudNative
 }
 
 // CreateCloudNativeAPIGatewaySecretKey
-// 创建云原生网关密钥
+// 创建消费者密钥。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3063,7 +3063,7 @@ func NewDeleteCloudNativeAPIGatewayConsumerResponse() (response *DeleteCloudNati
 }
 
 // DeleteCloudNativeAPIGatewayConsumer
-// 删除指定的云原生网关消费者
+// 删除消费者（被绑定到消费者组/密钥时需先解绑）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3093,7 +3093,7 @@ func (c *Client) DeleteCloudNativeAPIGatewayConsumer(request *DeleteCloudNativeA
 }
 
 // DeleteCloudNativeAPIGatewayConsumer
-// 删除指定的云原生网关消费者
+// 删除消费者（被绑定到消费者组/密钥时需先解绑）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3155,7 +3155,7 @@ func NewDeleteCloudNativeAPIGatewayConsumerGroupResponse() (response *DeleteClou
 }
 
 // DeleteCloudNativeAPIGatewayConsumerGroup
-// 删除云原生网关消费者组的信息
+// 删除消费者组（被授权资源占用时返回 CheckItems）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3185,7 +3185,7 @@ func (c *Client) DeleteCloudNativeAPIGatewayConsumerGroup(request *DeleteCloudNa
 }
 
 // DeleteCloudNativeAPIGatewayConsumerGroup
-// 删除云原生网关消费者组的信息
+// 删除消费者组（被授权资源占用时返回 CheckItems）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3341,7 +3341,7 @@ func NewDeleteCloudNativeAPIGatewayLLMModelAPIResponse() (response *DeleteCloudN
 }
 
 // DeleteCloudNativeAPIGatewayLLMModelAPI
-// 删除 LLM 模型 API 信息
+// 删除 LLM 模型 API。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3362,7 +3362,7 @@ func (c *Client) DeleteCloudNativeAPIGatewayLLMModelAPI(request *DeleteCloudNati
 }
 
 // DeleteCloudNativeAPIGatewayLLMModelAPI
-// 删除 LLM 模型 API 信息
+// 删除 LLM 模型 API。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3415,7 +3415,7 @@ func NewDeleteCloudNativeAPIGatewayLLMModelServiceResponse() (response *DeleteCl
 }
 
 // DeleteCloudNativeAPIGatewayLLMModelService
-// 删除 LLM 模型服务信息
+// 删除 LLM 模型服务（被模型 API 绑定时需先解绑）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3436,7 +3436,7 @@ func (c *Client) DeleteCloudNativeAPIGatewayLLMModelService(request *DeleteCloud
 }
 
 // DeleteCloudNativeAPIGatewayLLMModelService
-// 删除 LLM 模型服务信息
+// 删除 LLM 模型服务（被模型 API 绑定时需先解绑）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3727,7 +3727,7 @@ func NewDeleteCloudNativeAPIGatewaySecretKeyResponse() (response *DeleteCloudNat
 }
 
 // DeleteCloudNativeAPIGatewaySecretKey
-// 删除云原生网关密钥
+// 删除消费者密钥（被绑定时需先解绑）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3757,7 +3757,7 @@ func (c *Client) DeleteCloudNativeAPIGatewaySecretKey(request *DeleteCloudNative
 }
 
 // DeleteCloudNativeAPIGatewaySecretKey
-// 删除云原生网关密钥
+// 删除消费者密钥（被绑定时需先解绑）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5587,7 +5587,7 @@ func NewDescribeCloudNativeAPIGatewayConsumerResponse() (response *DescribeCloud
 }
 
 // DescribeCloudNativeAPIGatewayConsumer
-// 查询指定的云原生网关消费者
+// 查询消费者详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5617,7 +5617,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayConsumer(request *DescribeCloudNat
 }
 
 // DescribeCloudNativeAPIGatewayConsumer
-// 查询指定的云原生网关消费者
+// 查询消费者详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5679,7 +5679,7 @@ func NewDescribeCloudNativeAPIGatewayConsumerGroupResponse() (response *Describe
 }
 
 // DescribeCloudNativeAPIGatewayConsumerGroup
-// 查看云原生网关消费者组的信息
+// 查询消费者组详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5709,7 +5709,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayConsumerGroup(request *DescribeClo
 }
 
 // DescribeCloudNativeAPIGatewayConsumerGroup
-// 查看云原生网关消费者组的信息
+// 查询消费者组详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5771,7 +5771,7 @@ func NewDescribeCloudNativeAPIGatewayConsumerGroupListResponse() (response *Desc
 }
 
 // DescribeCloudNativeAPIGatewayConsumerGroupList
-// 获取消费者组列表
+// 查询消费者组列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5801,7 +5801,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayConsumerGroupList(request *Describ
 }
 
 // DescribeCloudNativeAPIGatewayConsumerGroupList
-// 获取消费者组列表
+// 查询消费者组列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5863,7 +5863,7 @@ func NewDescribeCloudNativeAPIGatewayConsumerListResponse() (response *DescribeC
 }
 
 // DescribeCloudNativeAPIGatewayConsumerList
-// 查询云原生网关消费者列表
+// 查询消费者列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5893,7 +5893,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayConsumerList(request *DescribeClou
 }
 
 // DescribeCloudNativeAPIGatewayConsumerList
-// 查询云原生网关消费者列表
+// 查询消费者列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6101,7 +6101,7 @@ func NewDescribeCloudNativeAPIGatewayLLMModelAPIResponse() (response *DescribeCl
 }
 
 // DescribeCloudNativeAPIGatewayLLMModelAPI
-// 查询单个 LLM 模型 API 信息
+// 查询单个 LLM 模型 API 详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6122,7 +6122,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayLLMModelAPI(request *DescribeCloud
 }
 
 // DescribeCloudNativeAPIGatewayLLMModelAPI
-// 查询单个 LLM 模型 API 信息
+// 查询单个 LLM 模型 API 详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6175,7 +6175,7 @@ func NewDescribeCloudNativeAPIGatewayLLMModelAPIsResponse() (response *DescribeC
 }
 
 // DescribeCloudNativeAPIGatewayLLMModelAPIs
-// 查询 LLM 模型 API 列表
+// 查询 LLM 模型 API 列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6196,7 +6196,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayLLMModelAPIs(request *DescribeClou
 }
 
 // DescribeCloudNativeAPIGatewayLLMModelAPIs
-// 查询 LLM 模型 API 列表
+// 查询 LLM 模型 API 列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6249,7 +6249,7 @@ func NewDescribeCloudNativeAPIGatewayLLMModelServiceResponse() (response *Descri
 }
 
 // DescribeCloudNativeAPIGatewayLLMModelService
-// 查询单个 LLM 模型服务列表
+// 查询单个 LLM 模型服务详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6270,7 +6270,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayLLMModelService(request *DescribeC
 }
 
 // DescribeCloudNativeAPIGatewayLLMModelService
-// 查询单个 LLM 模型服务列表
+// 查询单个 LLM 模型服务详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6323,7 +6323,7 @@ func NewDescribeCloudNativeAPIGatewayLLMModelServicesResponse() (response *Descr
 }
 
 // DescribeCloudNativeAPIGatewayLLMModelServices
-// 查询 LLM 模型服务列表
+// 查询 LLM 模型服务列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6344,7 +6344,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayLLMModelServices(request *Describe
 }
 
 // DescribeCloudNativeAPIGatewayLLMModelServices
-// 查询 LLM 模型服务列表
+// 查询 LLM 模型服务列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6703,7 +6703,7 @@ func NewDescribeCloudNativeAPIGatewaySecretKeyResponse() (response *DescribeClou
 }
 
 // DescribeCloudNativeAPIGatewaySecretKey
-// 查询密钥详情
+// 查询密钥详情（SecretValue 字段会被掩码）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6733,7 +6733,7 @@ func (c *Client) DescribeCloudNativeAPIGatewaySecretKey(request *DescribeCloudNa
 }
 
 // DescribeCloudNativeAPIGatewaySecretKey
-// 查询密钥详情
+// 查询密钥详情（SecretValue 字段会被掩码）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6795,7 +6795,7 @@ func NewDescribeCloudNativeAPIGatewaySecretKeyListResponse() (response *Describe
 }
 
 // DescribeCloudNativeAPIGatewaySecretKeyList
-// 获取密钥列表
+// 查询密钥列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6825,7 +6825,7 @@ func (c *Client) DescribeCloudNativeAPIGatewaySecretKeyList(request *DescribeClo
 }
 
 // DescribeCloudNativeAPIGatewaySecretKeyList
-// 获取密钥列表
+// 查询密钥列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6887,7 +6887,7 @@ func NewDescribeCloudNativeAPIGatewaySecretKeyValueResponse() (response *Describ
 }
 
 // DescribeCloudNativeAPIGatewaySecretKeyValue
-// 查询密钥值
+// 查询密钥明文值（KMS 类型密钥不可获取）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6917,7 +6917,7 @@ func (c *Client) DescribeCloudNativeAPIGatewaySecretKeyValue(request *DescribeCl
 }
 
 // DescribeCloudNativeAPIGatewaySecretKeyValue
-// 查询密钥值
+// 查询密钥明文值（KMS 类型密钥不可获取）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -9675,7 +9675,7 @@ func NewModifyCloudNativeAPIGatewayConsumerResponse() (response *ModifyCloudNati
 }
 
 // ModifyCloudNativeAPIGatewayConsumer
-// 修改云原生网关消费者的信息
+// 修改消费者。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -9705,7 +9705,7 @@ func (c *Client) ModifyCloudNativeAPIGatewayConsumer(request *ModifyCloudNativeA
 }
 
 // ModifyCloudNativeAPIGatewayConsumer
-// 修改云原生网关消费者的信息
+// 修改消费者。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -9767,7 +9767,7 @@ func NewModifyCloudNativeAPIGatewayConsumerGroupResponse() (response *ModifyClou
 }
 
 // ModifyCloudNativeAPIGatewayConsumerGroup
-// 修改云原生网关消费者组的信息
+// 修改消费者组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -9797,7 +9797,7 @@ func (c *Client) ModifyCloudNativeAPIGatewayConsumerGroup(request *ModifyCloudNa
 }
 
 // ModifyCloudNativeAPIGatewayConsumerGroup
-// 修改云原生网关消费者组的信息
+// 修改消费者组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -9859,7 +9859,7 @@ func NewModifyCloudNativeAPIGatewayLLMModelAPIResponse() (response *ModifyCloudN
 }
 
 // ModifyCloudNativeAPIGatewayLLMModelAPI
-// 修改 LLM 模型 API 信息
+// 修改 LLM 模型 API。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -9880,7 +9880,7 @@ func (c *Client) ModifyCloudNativeAPIGatewayLLMModelAPI(request *ModifyCloudNati
 }
 
 // ModifyCloudNativeAPIGatewayLLMModelAPI
-// 修改 LLM 模型 API 信息
+// 修改 LLM 模型 API。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -10193,7 +10193,7 @@ func NewModifyCloudNativeAPIGatewaySecretKeyStatusResponse() (response *ModifyCl
 }
 
 // ModifyCloudNativeAPIGatewaySecretKeyStatus
-// 修改密钥状态
+// 修改密钥启用状态。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -10223,7 +10223,7 @@ func (c *Client) ModifyCloudNativeAPIGatewaySecretKeyStatus(request *ModifyCloud
 }
 
 // ModifyCloudNativeAPIGatewaySecretKeyStatus
-// 修改密钥状态
+// 修改密钥启用状态。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -11457,7 +11457,7 @@ func NewRemoveCloudNativeAPIGatewayConsumerGroupAuthResponse() (response *Remove
 }
 
 // RemoveCloudNativeAPIGatewayConsumerGroupAuth
-// 云原生网关移除消费者组授权
+// 从资源（模型 API / MCP Server）移除消费者组授权。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -11487,7 +11487,7 @@ func (c *Client) RemoveCloudNativeAPIGatewayConsumerGroupAuth(request *RemoveClo
 }
 
 // RemoveCloudNativeAPIGatewayConsumerGroupAuth
-// 云原生网关移除消费者组授权
+// 从资源（模型 API / MCP Server）移除消费者组授权。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -11549,7 +11549,7 @@ func NewRemoveCloudNativeAPIGatewayConsumerInGroupResponse() (response *RemoveCl
 }
 
 // RemoveCloudNativeAPIGatewayConsumerInGroup
-// 从指定的消费者组中移除消费者
+// 将消费者从消费者组移除。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -11579,7 +11579,7 @@ func (c *Client) RemoveCloudNativeAPIGatewayConsumerInGroup(request *RemoveCloud
 }
 
 // RemoveCloudNativeAPIGatewayConsumerInGroup
-// 从指定的消费者组中移除消费者
+// 将消费者从消费者组移除。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -20051,96 +20051,58 @@ type UploadFile struct {
 
 // Predefined struct for user
 type UploadFilesRequestParams struct {
-	// 文件对应业务类型,可以选择的类型如下<ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>   ["yDRSRUUgygj6rq2wUuO4zjEyBZ2NHiyT"]
+	// <p>文件对应业务类型,可以选择的类型如下<ul><li> <strong>TEMPLATE</strong> : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> <strong>DOCUMENT</strong> : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> <strong>SEAL</strong> : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li><li> <strong>ARCHIVE</strong> : 此文件用于归档文件夹，文件类型支持.pdf/.zip格式</li></ul>   [&quot;yDRSRUUgygj6rq2wUuO4zjEyBZ2NHiyT&quot;]</p><p>枚举值：</p><ul><li>TEMPLATE： 此上传的文件用户生成合同模板</li><li>DOCUMENT： 此文件用来发起合同流程</li><li>SEAL： 此文件用于印章的生成</li><li>ARCHIVE： 此文件用于归档文件夹</li></ul>
 	BusinessType *string `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
 
-	// 执行本接口操作的员工信息。其中OperatorId为必填字段，即用户的UserId。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。其中OperatorId为必填字段，即用户的UserId。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Caller *Caller `json:"Caller,omitnil,omitempty" name:"Caller"`
 
-	// 请上传文件内容数组，最多可上传20个文件。
-	// 
-	// <b>所有文件必须符合<font color="red">FileType</font>指定的文件类型。</b>
+	// <p>请上传文件内容数组，最多可上传20个文件。</p><p><b>所有文件必须符合<font color="red">FileType</font>指定的文件类型。</b></p>
 	FileInfos []*UploadFile `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
-	// 文件类型， 默认通过文件内容和文件后缀一起解析得到文件类型，调用接口时可以显示的指定上传文件的类型。
-	// 可支持的指定类型如下:
-	// <ul><li>pdf</li>
-	// <li>doc</li>
-	// <li>docx</li>
-	// <li>xls</li>
-	// <li>xlsx</li>
-	// <li>html</li>
-	// <li>jpg</li>
-	// <li>jpeg</li>
-	// <li>png</li></ul>
-	// 如：pdf 表示上传的文件 张三入职合同.pdf的文件类型是 pdf
+	// <p>文件类型， 默认通过文件内容和文件后缀一起解析得到文件类型，调用接口时可以显示的指定上传文件的类型。<br>可支持的指定类型如下:</p><ul><li>pdf</li><li>doc</li><li>docx</li><li>xls</li><li>xlsx</li><li>html</li><li>jpg</li><li>jpeg</li><li>png</li></ul>如：pdf 表示上传的文件 张三入职合同.pdf的文件类型是 pdf
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 此参数仅对上传的PDF文件有效。其主要作用是确定是否将PDF中的灰色矩阵置为白色。
-	// <ul><li>**true**：将灰色矩阵置为白色。</li>
-	// <li>**false**：无需处理，不会将灰色矩阵置为白色（默认）。</li></ul>
-	// 
-	// 注: `该参数仅在关键字定位时，需要去除关键字所在的灰框场景下使用。`
+	// <p>此参数仅对上传的PDF文件有效。其主要作用是确定是否将PDF中的灰色矩阵置为白色。</p><ul><li>**true**：将灰色矩阵置为白色。</li><li>**false**：无需处理，不会将灰色矩阵置为白色（默认）。</li></ul><p>注: <code>该参数仅在关键字定位时，需要去除关键字所在的灰框场景下使用。</code></p>
 	CoverRect *bool `json:"CoverRect,omitnil,omitempty" name:"CoverRect"`
 
-	// 该字段已不再使用
+	// <p>该字段已不再使用</p>
 	CustomIds []*string `json:"CustomIds,omitnil,omitempty" name:"CustomIds"`
 
-	// 不再使用，上传文件链接数组，最多支持20个URL
+	// <p>不再使用，上传文件链接数组，最多支持20个URL</p>
 	//
 	// Deprecated: FileUrls is deprecated.
 	FileUrls *string `json:"FileUrls,omitnil,omitempty" name:"FileUrls"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 }
 
 type UploadFilesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件对应业务类型,可以选择的类型如下<ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>   ["yDRSRUUgygj6rq2wUuO4zjEyBZ2NHiyT"]
+	// <p>文件对应业务类型,可以选择的类型如下<ul><li> <strong>TEMPLATE</strong> : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li> <strong>DOCUMENT</strong> : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li> <strong>SEAL</strong> : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li><li> <strong>ARCHIVE</strong> : 此文件用于归档文件夹，文件类型支持.pdf/.zip格式</li></ul>   [&quot;yDRSRUUgygj6rq2wUuO4zjEyBZ2NHiyT&quot;]</p><p>枚举值：</p><ul><li>TEMPLATE： 此上传的文件用户生成合同模板</li><li>DOCUMENT： 此文件用来发起合同流程</li><li>SEAL： 此文件用于印章的生成</li><li>ARCHIVE： 此文件用于归档文件夹</li></ul>
 	BusinessType *string `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
 
-	// 执行本接口操作的员工信息。其中OperatorId为必填字段，即用户的UserId。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。其中OperatorId为必填字段，即用户的UserId。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Caller *Caller `json:"Caller,omitnil,omitempty" name:"Caller"`
 
-	// 请上传文件内容数组，最多可上传20个文件。
-	// 
-	// <b>所有文件必须符合<font color="red">FileType</font>指定的文件类型。</b>
+	// <p>请上传文件内容数组，最多可上传20个文件。</p><p><b>所有文件必须符合<font color="red">FileType</font>指定的文件类型。</b></p>
 	FileInfos []*UploadFile `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
 
-	// 文件类型， 默认通过文件内容和文件后缀一起解析得到文件类型，调用接口时可以显示的指定上传文件的类型。
-	// 可支持的指定类型如下:
-	// <ul><li>pdf</li>
-	// <li>doc</li>
-	// <li>docx</li>
-	// <li>xls</li>
-	// <li>xlsx</li>
-	// <li>html</li>
-	// <li>jpg</li>
-	// <li>jpeg</li>
-	// <li>png</li></ul>
-	// 如：pdf 表示上传的文件 张三入职合同.pdf的文件类型是 pdf
+	// <p>文件类型， 默认通过文件内容和文件后缀一起解析得到文件类型，调用接口时可以显示的指定上传文件的类型。<br>可支持的指定类型如下:</p><ul><li>pdf</li><li>doc</li><li>docx</li><li>xls</li><li>xlsx</li><li>html</li><li>jpg</li><li>jpeg</li><li>png</li></ul>如：pdf 表示上传的文件 张三入职合同.pdf的文件类型是 pdf
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 此参数仅对上传的PDF文件有效。其主要作用是确定是否将PDF中的灰色矩阵置为白色。
-	// <ul><li>**true**：将灰色矩阵置为白色。</li>
-	// <li>**false**：无需处理，不会将灰色矩阵置为白色（默认）。</li></ul>
-	// 
-	// 注: `该参数仅在关键字定位时，需要去除关键字所在的灰框场景下使用。`
+	// <p>此参数仅对上传的PDF文件有效。其主要作用是确定是否将PDF中的灰色矩阵置为白色。</p><ul><li>**true**：将灰色矩阵置为白色。</li><li>**false**：无需处理，不会将灰色矩阵置为白色（默认）。</li></ul><p>注: <code>该参数仅在关键字定位时，需要去除关键字所在的灰框场景下使用。</code></p>
 	CoverRect *bool `json:"CoverRect,omitnil,omitempty" name:"CoverRect"`
 
-	// 该字段已不再使用
+	// <p>该字段已不再使用</p>
 	CustomIds []*string `json:"CustomIds,omitnil,omitempty" name:"CustomIds"`
 
-	// 不再使用，上传文件链接数组，最多支持20个URL
+	// <p>不再使用，上传文件链接数组，最多支持20个URL</p>
 	FileUrls *string `json:"FileUrls,omitnil,omitempty" name:"FileUrls"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 }
 
@@ -20172,12 +20134,10 @@ func (r *UploadFilesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UploadFilesResponseParams struct {
-	// 文件资源ID数组，每个文件资源ID为32位字符串。
-	// 建议开发者保存此资源ID，后续创建合同或创建合同流程需此资源ID。
-	// 注:`有效期一个小时（超过一小时后系统不定期清理，会有部分时间差）, 有效期内此文件id可以反复使用, 超过有效期无法使用`
+	// <p>文件资源ID数组，每个文件资源ID为32位字符串。<br>建议开发者保存此资源ID，后续创建合同或创建合同流程需此资源ID。<br>注:<code>有效期一个小时（超过一小时后系统不定期清理，会有部分时间差）, 有效期内此文件id可以反复使用, 超过有效期无法使用</code></p>
 	FileIds []*string `json:"FileIds,omitnil,omitempty" name:"FileIds"`
 
-	// 上传成功文件数量
+	// <p>上传成功文件数量</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
