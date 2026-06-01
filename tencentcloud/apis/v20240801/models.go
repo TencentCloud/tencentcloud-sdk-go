@@ -305,39 +305,45 @@ func (r *CreateAgentAppModelServicesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAgentAppRequestParams struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 名称
+	// <p>名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 认证类型
+	// <p>认证类型</p>
 	AuthType *string `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 
-	// OAuth2资源服务器ID
+	// <p>OAuth2资源服务器ID</p>
 	OAuth2ResourceServerID *string `json:"OAuth2ResourceServerID,omitnil,omitempty" name:"OAuth2ResourceServerID"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>API认证列表</p>
+	ConnectorIDs []*string `json:"ConnectorIDs,omitnil,omitempty" name:"ConnectorIDs"`
 }
 
 type CreateAgentAppRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 名称
+	// <p>名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 认证类型
+	// <p>认证类型</p>
 	AuthType *string `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 
-	// OAuth2资源服务器ID
+	// <p>OAuth2资源服务器ID</p>
 	OAuth2ResourceServerID *string `json:"OAuth2ResourceServerID,omitnil,omitempty" name:"OAuth2ResourceServerID"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>API认证列表</p>
+	ConnectorIDs []*string `json:"ConnectorIDs,omitnil,omitempty" name:"ConnectorIDs"`
 }
 
 func (r *CreateAgentAppRequest) ToJsonString() string {
@@ -357,6 +363,7 @@ func (r *CreateAgentAppRequest) FromJsonString(s string) error {
 	delete(f, "AuthType")
 	delete(f, "OAuth2ResourceServerID")
 	delete(f, "Description")
+	delete(f, "ConnectorIDs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAgentAppRequest has unknown keys!", "")
 	}
@@ -379,7 +386,7 @@ type CreateAgentAppResp struct {
 
 // Predefined struct for user
 type CreateAgentAppResponseParams struct {
-	// app id
+	// <p>app id</p>
 	Data *CreateAgentAppResp `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1677,52 +1684,58 @@ func (r *DescribeAgentAppRequest) FromJsonString(s string) error {
 }
 
 type DescribeAgentAppResp struct {
-	// 租户appID
+	// <p>租户appID</p>
 	AppID *int64 `json:"AppID,omitnil,omitempty" name:"AppID"`
 
-	// 租户ID
+	// <p>租户ID</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 应用ID
+	// <p>应用ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 名称
+	// <p>名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 状态
+	// <p>状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 修改时间
+	// <p>修改时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 认证类型
+	// <p>认证类型</p>
 	AuthType *string `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 
-	// apiKeys列表，脱敏
+	// <p>apiKeys列表，脱敏</p>
 	ApiKeys []*string `json:"ApiKeys,omitnil,omitempty" name:"ApiKeys"`
 
-	// secretKey列表，脱敏
+	// <p>secretKey列表，脱敏</p>
 	SecretKeys []*AgentAppSecretKeyVO `json:"SecretKeys,omitnil,omitempty" name:"SecretKeys"`
 
-	// OAuth2 Resource Server ID
+	// <p>OAuth2 Resource Server ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OAuth2ResourceServerID *string `json:"OAuth2ResourceServerID,omitnil,omitempty" name:"OAuth2ResourceServerID"`
 
-	// 绑定mcpServer数量
+	// <p>绑定mcpServer数量</p>
 	McpServersNum *int64 `json:"McpServersNum,omitnil,omitempty" name:"McpServersNum"`
 
-	// 绑定的模型服务数量
+	// <p>绑定的模型服务数量</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelServicesNum *int64 `json:"ModelServicesNum,omitnil,omitempty" name:"ModelServicesNum"`
+
+	// <p>API认证列表</p>
+	ConnectorIDs []*string `json:"ConnectorIDs,omitnil,omitempty" name:"ConnectorIDs"`
+
+	// <p>关联API数量</p>
+	ServicesNum *int64 `json:"ServicesNum,omitnil,omitempty" name:"ServicesNum"`
 }
 
 // Predefined struct for user
@@ -1922,44 +1935,50 @@ func (r *DescribeAgentCredentialRequest) FromJsonString(s string) error {
 }
 
 type DescribeAgentCredentialResp struct {
-	// 租户应用ID
+	// <p>租户应用ID</p>
 	AppID *int64 `json:"AppID,omitnil,omitempty" name:"AppID"`
 
-	// 租户ID
+	// <p>租户ID</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 凭据ID
+	// <p>凭据ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 凭据名称
+	// <p>凭据名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 状态
+	// <p>状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 关联应用数
+	// <p>关联应用数</p>
+	//
+	// Deprecated: RelateAgentAppNum is deprecated.
 	RelateAgentAppNum *int64 `json:"RelateAgentAppNum,omitnil,omitempty" name:"RelateAgentAppNum"`
 
-	// 关联mcp数
+	// <p>关联mcp数</p>
 	RelateMcpServerNum *int64 `json:"RelateMcpServerNum,omitnil,omitempty" name:"RelateMcpServerNum"`
 
-	// 关联模型数
+	// <p>关联模型数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelateModelNum *int64 `json:"RelateModelNum,omitnil,omitempty" name:"RelateModelNum"`
 
-	// 凭据内容
+	// <p>关联服务数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelateServiceNum *int64 `json:"RelateServiceNum,omitnil,omitempty" name:"RelateServiceNum"`
+
+	// <p>凭据内容</p>
 	Content *AgentCredentialContentDTO `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 修改时间
+	// <p>修改时间</p>
 	LastUpdateTime *string `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
 
-	// 类型
+	// <p>类型</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -3233,39 +3252,45 @@ func (r *ModifyAgentAppModelServicesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAgentAppRequestParams struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 应用ID
+	// <p>应用ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 名称
+	// <p>名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// OAuth2资源服务器ID
+	// <p>OAuth2资源服务器ID</p>
 	OAuth2ResourceServerID *string `json:"OAuth2ResourceServerID,omitnil,omitempty" name:"OAuth2ResourceServerID"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>凭据ID</p>
+	ConnectorIDs []*string `json:"ConnectorIDs,omitnil,omitempty" name:"ConnectorIDs"`
 }
 
 type ModifyAgentAppRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 应用ID
+	// <p>应用ID</p>
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 名称
+	// <p>名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// OAuth2资源服务器ID
+	// <p>OAuth2资源服务器ID</p>
 	OAuth2ResourceServerID *string `json:"OAuth2ResourceServerID,omitnil,omitempty" name:"OAuth2ResourceServerID"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>凭据ID</p>
+	ConnectorIDs []*string `json:"ConnectorIDs,omitnil,omitempty" name:"ConnectorIDs"`
 }
 
 func (r *ModifyAgentAppRequest) ToJsonString() string {
@@ -3285,6 +3310,7 @@ func (r *ModifyAgentAppRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "OAuth2ResourceServerID")
 	delete(f, "Description")
+	delete(f, "ConnectorIDs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAgentAppRequest has unknown keys!", "")
 	}
@@ -3293,7 +3319,7 @@ func (r *ModifyAgentAppRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAgentAppResponseParams struct {
-	// app id
+	// <p>app id</p>
 	Data *ResultIDVO `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

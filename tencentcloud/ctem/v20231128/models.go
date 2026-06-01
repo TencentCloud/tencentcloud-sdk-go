@@ -255,111 +255,135 @@ func (r *CreateAssetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCustomerRequestParams struct {
-	// 企业名称
+	// <p>企业名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
+	// <p>资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息</p>
 	ScanType *string `json:"ScanType,omitnil,omitempty" name:"ScanType"`
 
-	// 百分比取值范围为30-100
+	// <p>百分比取值范围为30-100</p>
 	Percent *int64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
-	// 周期测绘时间
+	// <p>周期测绘时间</p>
 	ScanCron *string `json:"ScanCron,omitnil,omitempty" name:"ScanCron"`
 
-	// 是否立即启动
+	// <p>是否立即启动</p>
 	IsScanNow *bool `json:"IsScanNow,omitnil,omitempty" name:"IsScanNow"`
 
-	// 是否启用周期测绘
+	// <p>是否启用周期测绘</p>
 	EnableCron *bool `json:"EnableCron,omitnil,omitempty" name:"EnableCron"`
 
-	// 是否扫描子公司
+	// <p>是否扫描子公司</p>
 	EnableScanSubEnterprise *bool `json:"EnableScanSubEnterprise,omitnil,omitempty" name:"EnableScanSubEnterprise"`
 
-	// 是否授权
+	// <p>是否授权</p>
 	EnableAuth *bool `json:"EnableAuth,omitnil,omitempty" name:"EnableAuth"`
 
-	// 授权开始时间
+	// <p>授权开始时间</p>
 	AuthStartAt *string `json:"AuthStartAt,omitnil,omitempty" name:"AuthStartAt"`
 
-	// 授权结束时间
+	// <p>授权结束时间</p>
 	AuthEndAt *string `json:"AuthEndAt,omitnil,omitempty" name:"AuthEndAt"`
 
-	// 授权文件id
+	// <p>授权文件id</p>
 	AuthFile *string `json:"AuthFile,omitnil,omitempty" name:"AuthFile"`
 
-	// 测绘时间配置项，采用json字符串格式
+	// <p>测绘时间配置项，采用json字符串格式</p>
 	ScanTime *string `json:"ScanTime,omitnil,omitempty" name:"ScanTime"`
 
-	// 企业相关的关键字
+	// <p>企业相关的关键字</p>
 	Keywords *string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
-	// 图标
+	// <p>图标</p>
 	Icon *string `json:"Icon,omitnil,omitempty" name:"Icon"`
 
-	// 并发设置
+	// <p>并发设置</p>
 	Qps *int64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
-	// 限制子公司层级，-1表示不限制
+	// <p>限制子公司层级，-1表示不限制</p>
 	SubCompanyLevel *int64 `json:"SubCompanyLevel,omitnil,omitempty" name:"SubCompanyLevel"`
 
-	// 是否以企业名称为起点做完整扫描(包含手动上传),如只想扫描特定的某几个域名，则传false。
+	// <p>是否以企业名称为起点做完整扫描(包含手动上传),如只想扫描特定的某几个域名，则传false。</p>
 	IsIncludeFullScan *bool `json:"IsIncludeFullScan,omitnil,omitempty" name:"IsIncludeFullScan"`
+
+	// <p>端口扫描 QPS，默认 100，下限 10，保守值 200，上限 5000</p><p>默认值：100</p>
+	PortScanQps *int64 `json:"PortScanQps,omitnil,omitempty" name:"PortScanQps"`
+
+	// <p>单 IP 任务并发数，默认 1，下限 1，保守值 3，上限 10</p><p>默认值：1</p>
+	SingleIPTaskLimit *int64 `json:"SingleIPTaskLimit,omitnil,omitempty" name:"SingleIPTaskLimit"`
+
+	// <p>任一速率超过保守值时必须为 true，否则参数错误</p>
+	HighRiskAck *bool `json:"HighRiskAck,omitnil,omitempty" name:"HighRiskAck"`
+
+	// <p>知情同意勾选清单，用于审计回放</p>
+	ScanRateAckChecklist []*string `json:"ScanRateAckChecklist,omitnil,omitempty" name:"ScanRateAckChecklist"`
 }
 
 type CreateCustomerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 企业名称
+	// <p>企业名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
+	// <p>资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息</p>
 	ScanType *string `json:"ScanType,omitnil,omitempty" name:"ScanType"`
 
-	// 百分比取值范围为30-100
+	// <p>百分比取值范围为30-100</p>
 	Percent *int64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
-	// 周期测绘时间
+	// <p>周期测绘时间</p>
 	ScanCron *string `json:"ScanCron,omitnil,omitempty" name:"ScanCron"`
 
-	// 是否立即启动
+	// <p>是否立即启动</p>
 	IsScanNow *bool `json:"IsScanNow,omitnil,omitempty" name:"IsScanNow"`
 
-	// 是否启用周期测绘
+	// <p>是否启用周期测绘</p>
 	EnableCron *bool `json:"EnableCron,omitnil,omitempty" name:"EnableCron"`
 
-	// 是否扫描子公司
+	// <p>是否扫描子公司</p>
 	EnableScanSubEnterprise *bool `json:"EnableScanSubEnterprise,omitnil,omitempty" name:"EnableScanSubEnterprise"`
 
-	// 是否授权
+	// <p>是否授权</p>
 	EnableAuth *bool `json:"EnableAuth,omitnil,omitempty" name:"EnableAuth"`
 
-	// 授权开始时间
+	// <p>授权开始时间</p>
 	AuthStartAt *string `json:"AuthStartAt,omitnil,omitempty" name:"AuthStartAt"`
 
-	// 授权结束时间
+	// <p>授权结束时间</p>
 	AuthEndAt *string `json:"AuthEndAt,omitnil,omitempty" name:"AuthEndAt"`
 
-	// 授权文件id
+	// <p>授权文件id</p>
 	AuthFile *string `json:"AuthFile,omitnil,omitempty" name:"AuthFile"`
 
-	// 测绘时间配置项，采用json字符串格式
+	// <p>测绘时间配置项，采用json字符串格式</p>
 	ScanTime *string `json:"ScanTime,omitnil,omitempty" name:"ScanTime"`
 
-	// 企业相关的关键字
+	// <p>企业相关的关键字</p>
 	Keywords *string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
-	// 图标
+	// <p>图标</p>
 	Icon *string `json:"Icon,omitnil,omitempty" name:"Icon"`
 
-	// 并发设置
+	// <p>并发设置</p>
 	Qps *int64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
-	// 限制子公司层级，-1表示不限制
+	// <p>限制子公司层级，-1表示不限制</p>
 	SubCompanyLevel *int64 `json:"SubCompanyLevel,omitnil,omitempty" name:"SubCompanyLevel"`
 
-	// 是否以企业名称为起点做完整扫描(包含手动上传),如只想扫描特定的某几个域名，则传false。
+	// <p>是否以企业名称为起点做完整扫描(包含手动上传),如只想扫描特定的某几个域名，则传false。</p>
 	IsIncludeFullScan *bool `json:"IsIncludeFullScan,omitnil,omitempty" name:"IsIncludeFullScan"`
+
+	// <p>端口扫描 QPS，默认 100，下限 10，保守值 200，上限 5000</p><p>默认值：100</p>
+	PortScanQps *int64 `json:"PortScanQps,omitnil,omitempty" name:"PortScanQps"`
+
+	// <p>单 IP 任务并发数，默认 1，下限 1，保守值 3，上限 10</p><p>默认值：1</p>
+	SingleIPTaskLimit *int64 `json:"SingleIPTaskLimit,omitnil,omitempty" name:"SingleIPTaskLimit"`
+
+	// <p>任一速率超过保守值时必须为 true，否则参数错误</p>
+	HighRiskAck *bool `json:"HighRiskAck,omitnil,omitempty" name:"HighRiskAck"`
+
+	// <p>知情同意勾选清单，用于审计回放</p>
+	ScanRateAckChecklist []*string `json:"ScanRateAckChecklist,omitnil,omitempty" name:"ScanRateAckChecklist"`
 }
 
 func (r *CreateCustomerRequest) ToJsonString() string {
@@ -391,6 +415,10 @@ func (r *CreateCustomerRequest) FromJsonString(s string) error {
 	delete(f, "Qps")
 	delete(f, "SubCompanyLevel")
 	delete(f, "IsIncludeFullScan")
+	delete(f, "PortScanQps")
+	delete(f, "SingleIPTaskLimit")
+	delete(f, "HighRiskAck")
+	delete(f, "ScanRateAckChecklist")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomerRequest has unknown keys!", "")
 	}
@@ -781,39 +809,63 @@ func (r *CreateHttpResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateJobRecordRequestParams struct {
-	// 企业ID
+	// <p>企业ID</p>
 	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
 
-	// 任务类型：即时任务
+	// <p>任务类型：即时任务</p>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
+	// <p>资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息</p>
 	ScanType *string `json:"ScanType,omitnil,omitempty" name:"ScanType"`
 
-	// qps设置
+	// <p>qps设置</p>
 	Qps *int64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
-	// 是否包含完整扫描
+	// <p>是否包含完整扫描</p>
 	IsIncludeFullScan *bool `json:"IsIncludeFullScan,omitnil,omitempty" name:"IsIncludeFullScan"`
+
+	// <p>端口扫描 QPS，默认 100，下限 10，保守值 200，上限 5000</p><p>默认值：100</p>
+	PortScanQps *int64 `json:"PortScanQps,omitnil,omitempty" name:"PortScanQps"`
+
+	// <p>单 IP 任务并发数，默认 1，下限 1，保守值 3，上限 10</p><p>默认值：1</p>
+	SingleIPTaskLimit *int64 `json:"SingleIPTaskLimit,omitnil,omitempty" name:"SingleIPTaskLimit"`
+
+	// <p>任一速率超过保守值时必须为 true，否则参数错误</p>
+	HighRiskAck *bool `json:"HighRiskAck,omitnil,omitempty" name:"HighRiskAck"`
+
+	// <p>知情同意勾选清单，用于审计回放</p>
+	ScanRateAckChecklist []*string `json:"ScanRateAckChecklist,omitnil,omitempty" name:"ScanRateAckChecklist"`
 }
 
 type CreateJobRecordRequest struct {
 	*tchttp.BaseRequest
 	
-	// 企业ID
+	// <p>企业ID</p>
 	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
 
-	// 任务类型：即时任务
+	// <p>任务类型：即时任务</p>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
+	// <p>资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息</p>
 	ScanType *string `json:"ScanType,omitnil,omitempty" name:"ScanType"`
 
-	// qps设置
+	// <p>qps设置</p>
 	Qps *int64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
-	// 是否包含完整扫描
+	// <p>是否包含完整扫描</p>
 	IsIncludeFullScan *bool `json:"IsIncludeFullScan,omitnil,omitempty" name:"IsIncludeFullScan"`
+
+	// <p>端口扫描 QPS，默认 100，下限 10，保守值 200，上限 5000</p><p>默认值：100</p>
+	PortScanQps *int64 `json:"PortScanQps,omitnil,omitempty" name:"PortScanQps"`
+
+	// <p>单 IP 任务并发数，默认 1，下限 1，保守值 3，上限 10</p><p>默认值：1</p>
+	SingleIPTaskLimit *int64 `json:"SingleIPTaskLimit,omitnil,omitempty" name:"SingleIPTaskLimit"`
+
+	// <p>任一速率超过保守值时必须为 true，否则参数错误</p>
+	HighRiskAck *bool `json:"HighRiskAck,omitnil,omitempty" name:"HighRiskAck"`
+
+	// <p>知情同意勾选清单，用于审计回放</p>
+	ScanRateAckChecklist []*string `json:"ScanRateAckChecklist,omitnil,omitempty" name:"ScanRateAckChecklist"`
 }
 
 func (r *CreateJobRecordRequest) ToJsonString() string {
@@ -833,6 +885,10 @@ func (r *CreateJobRecordRequest) FromJsonString(s string) error {
 	delete(f, "ScanType")
 	delete(f, "Qps")
 	delete(f, "IsIncludeFullScan")
+	delete(f, "PortScanQps")
+	delete(f, "SingleIPTaskLimit")
+	delete(f, "HighRiskAck")
+	delete(f, "ScanRateAckChecklist")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobRecordRequest has unknown keys!", "")
 	}
@@ -841,7 +897,7 @@ func (r *CreateJobRecordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateJobRecordResponseParams struct {
-	// 任务Id
+	// <p>任务Id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1625,75 +1681,81 @@ func (r *CreateWechatOfficialAccountResponse) FromJsonString(s string) error {
 }
 
 type Customer struct {
-	// 企业ID
+	// <p>企业ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 企业名称
+	// <p>企业名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 股权占比
+	// <p>股权占比</p>
 	Percent *int64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
-	// 资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
+	// <p>资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息</p>
 	ScanType *string `json:"ScanType,omitnil,omitempty" name:"ScanType"`
 
-	// 创建账号
+	// <p>创建账号</p>
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
-	// 腾讯云客户AppId
+	// <p>腾讯云客户AppId</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 腾讯云客户Uin
+	// <p>腾讯云客户Uin</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateAt *string `json:"UpdateAt,omitnil,omitempty" name:"UpdateAt"`
 
-	// 周期测绘时间
+	// <p>周期测绘时间</p>
 	ScanCron *string `json:"ScanCron,omitnil,omitempty" name:"ScanCron"`
 
-	// 是否启用周期测绘
+	// <p>是否启用周期测绘</p>
 	EnableCron *bool `json:"EnableCron,omitnil,omitempty" name:"EnableCron"`
 
-	// 是否扫描子公司
+	// <p>是否扫描子公司</p>
 	EnableScanSubEnterprise *bool `json:"EnableScanSubEnterprise,omitnil,omitempty" name:"EnableScanSubEnterprise"`
 
-	// 是否授权
+	// <p>是否授权</p>
 	EnableAuth *bool `json:"EnableAuth,omitnil,omitempty" name:"EnableAuth"`
 
-	// 授权开始时间
+	// <p>授权开始时间</p>
 	AuthStartAt *string `json:"AuthStartAt,omitnil,omitempty" name:"AuthStartAt"`
 
-	// 授权结束时间
+	// <p>授权结束时间</p>
 	AuthEndAt *string `json:"AuthEndAt,omitnil,omitempty" name:"AuthEndAt"`
 
-	// 授权文件id
+	// <p>授权文件id</p>
 	AuthFile *string `json:"AuthFile,omitnil,omitempty" name:"AuthFile"`
 
-	// 测绘时间配置项
+	// <p>测绘时间配置项</p>
 	ScanTime *string `json:"ScanTime,omitnil,omitempty" name:"ScanTime"`
 
-	// 图标
+	// <p>图标</p>
 	Icon *string `json:"Icon,omitnil,omitempty" name:"Icon"`
 
-	// 关键字
+	// <p>关键字</p>
 	Keywords *string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
-	// Qps设置，10-500，默认100
+	// <p>Qps设置，10-500，默认100</p>
 	Qps *int64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
-	// 子公司拓展层次
+	// <p>子公司拓展层次</p>
 	SubCompanyLevel *int64 `json:"SubCompanyLevel,omitnil,omitempty" name:"SubCompanyLevel"`
 
-	// 是否包含完整扫描
+	// <p>是否包含完整扫描</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsIncludeFullScan *bool `json:"IsIncludeFullScan,omitnil,omitempty" name:"IsIncludeFullScan"`
 
-	// 是否识别集团成员
+	// <p>是否识别集团成员</p>
 	EnableGroupMemberDiscovered *bool `json:"EnableGroupMemberDiscovered,omitnil,omitempty" name:"EnableGroupMemberDiscovered"`
+
+	// <p>单 IP 任务并发数，默认 1，下限 1，保守值 3，上限 10</p>
+	SingleIPTaskLimit *int64 `json:"SingleIPTaskLimit,omitnil,omitempty" name:"SingleIPTaskLimit"`
+
+	// <p>端口扫描 QPS，默认 100，下限 10，保守值 200，上限 5000</p>
+	PortScanQps *int64 `json:"PortScanQps,omitnil,omitempty" name:"PortScanQps"`
 }
 
 // Predefined struct for user
@@ -6618,38 +6680,41 @@ func (r *DescribeWechatOfficialAccountsResponse) FromJsonString(s string) error 
 }
 
 type DisplayApiSec struct {
-	// 主键ID
+	// <p>主键ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 公共字段
+	// <p>公共字段</p>
 	DisplayToolCommon *DisplayToolCommon `json:"DisplayToolCommon,omitnil,omitempty" name:"DisplayToolCommon"`
 
-	// Url
+	// <p>Url</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// Host地址
+	// <p>Host地址</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// Path路径
+	// <p>Path路径</p>
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 方法：POST、GET、DELETE等
+	// <p>方法：POST、GET、DELETE等</p>
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
-	// 修复状态：unrepaired:未修复，repaired:已修复, ignore:已忽略,checking:复测中
+	// <p>修复状态：unrepaired:未修复，repaired:已修复, ignore:已忽略,checking:复测中</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 请求体
+	// <p>请求体</p>
 	Request *string `json:"Request,omitnil,omitempty" name:"Request"`
 
-	// 响应体
+	// <p>响应体</p>
 	Response *string `json:"Response,omitnil,omitempty" name:"Response"`
 
-	// 是否风险API
+	// <p>是否风险API</p>
 	IsRiskAPI *bool `json:"IsRiskAPI,omitnil,omitempty" name:"IsRiskAPI"`
+
+	// <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+	AggregationCount *int64 `json:"AggregationCount,omitnil,omitempty" name:"AggregationCount"`
 }
 
 type DisplayApp struct {
@@ -6732,44 +6797,47 @@ type DisplayAsset struct {
 }
 
 type DisplayConfig struct {
-	// 主键Id
+	// <p>主键Id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 地址
+	// <p>地址</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 站点标题
+	// <p>站点标题</p>
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 响应长度
+	// <p>响应长度</p>
 	ContentLength *int64 `json:"ContentLength,omitnil,omitempty" name:"ContentLength"`
 
-	// 公共字段
+	// <p>公共字段</p>
 	DisplayToolCommon *DisplayToolCommon `json:"DisplayToolCommon,omitnil,omitempty" name:"DisplayToolCommon"`
 
-	// Ip数据
+	// <p>Ip数据</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// AI评分
+	// <p>AI评分</p>
 	AIRating *int64 `json:"AIRating,omitnil,omitempty" name:"AIRating"`
 
-	// AI分析
+	// <p>AI分析</p>
 	AIAnalysis *string `json:"AIAnalysis,omitnil,omitempty" name:"AIAnalysis"`
 
-	// 风险等级: 1-低危, 2-中危, 3-高危, 4-危级, 5-误报
+	// <p>风险等级: 1-低危, 2-中危, 3-高危, 4-危级, 5-误报</p>
 	RiskLevel *int64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 建议
+	// <p>建议</p>
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
-	// 是否为云资产
+	// <p>是否为云资产</p>
 	IsCloudAsset *int64 `json:"IsCloudAsset,omitnil,omitempty" name:"IsCloudAsset"`
 
-	// 云资产状态，-1为下线
+	// <p>云资产状态，-1为下线</p>
 	CloudAssetStatus *int64 `json:"CloudAssetStatus,omitnil,omitempty" name:"CloudAssetStatus"`
+
+	// <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+	AggregationCount *int64 `json:"AggregationCount,omitnil,omitempty" name:"AggregationCount"`
 }
 
 type DisplayDarkWeb struct {
@@ -7005,66 +7073,69 @@ type DisplayGithub struct {
 }
 
 type DisplayHttp struct {
-	// 主键ID
+	// <p>主键ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 公共字段
+	// <p>公共字段</p>
 	DisplayToolCommon *DisplayToolCommon `json:"DisplayToolCommon,omitnil,omitempty" name:"DisplayToolCommon"`
 
-	// Url
+	// <p>Url</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 标题
+	// <p>标题</p>
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 
-	// 报文长度
+	// <p>报文长度</p>
 	ContentLength *int64 `json:"ContentLength,omitnil,omitempty" name:"ContentLength"`
 
-	// 报文内容
+	// <p>报文内容</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 截图缩略图URL
+	// <p>截图缩略图URL</p>
 	ScreenshotThumbUrl *string `json:"ScreenshotThumbUrl,omitnil,omitempty" name:"ScreenshotThumbUrl"`
 
-	// 截图URL
+	// <p>截图URL</p>
 	ScreenshotUrl *string `json:"ScreenshotUrl,omitnil,omitempty" name:"ScreenshotUrl"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// Api地址
+	// <p>Api地址</p>
 	Api *string `json:"Api,omitnil,omitempty" name:"Api"`
 
-	// 解析的IP
+	// <p>解析的IP</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 证书信息
+	// <p>证书信息</p>
 	Ssl *string `json:"Ssl,omitnil,omitempty" name:"Ssl"`
 
-	// ssl证书过期时间
+	// <p>ssl证书过期时间</p>
 	SslExpiredTime *string `json:"SslExpiredTime,omitnil,omitempty" name:"SslExpiredTime"`
 
-	// 资产是否发生变动
+	// <p>资产是否发生变动</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsChange *bool `json:"IsChange,omitnil,omitempty" name:"IsChange"`
 
-	// 是否为云资产：0-非云资产 1-是云资产
+	// <p>是否为云资产：0-非云资产 1-是云资产</p>
 	IsCloudAsset *int64 `json:"IsCloudAsset,omitnil,omitempty" name:"IsCloudAsset"`
 
-	// 云资产是否下线：-1-已下线 0-正常
+	// <p>云资产是否下线：-1-已下线 0-正常</p>
 	CloudAssetStatus *int64 `json:"CloudAssetStatus,omitnil,omitempty" name:"CloudAssetStatus"`
 
-	// 可用率（百分比）
+	// <p>可用率（百分比）</p>
 	AvailabilityRate *int64 `json:"AvailabilityRate,omitnil,omitempty" name:"AvailabilityRate"`
 
-	// 可用状态 1:异常 0:正常
+	// <p>可用状态 1:异常 0:正常</p>
 	AvailabilityState *int64 `json:"AvailabilityState,omitnil,omitempty" name:"AvailabilityState"`
 
-	// 平均响应时间：单位ms
+	// <p>平均响应时间：单位ms</p>
 	ResponseTime *int64 `json:"ResponseTime,omitnil,omitempty" name:"ResponseTime"`
 
-	// 域名解析状态 1:异常 0:正常
+	// <p>域名解析状态 1:异常 0:正常</p>
 	AnalysisState *int64 `json:"AnalysisState,omitnil,omitempty" name:"AnalysisState"`
+
+	// <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+	AggregationCount *int64 `json:"AggregationCount,omitnil,omitempty" name:"AggregationCount"`
 }
 
 type DisplayJobRecord struct {
@@ -7246,38 +7317,41 @@ type DisplayLeakageEmail struct {
 }
 
 type DisplayManage struct {
-	// 主键ID
+	// <p>主键ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 公共字段
+	// <p>公共字段</p>
 	DisplayToolCommon *DisplayToolCommon `json:"DisplayToolCommon,omitnil,omitempty" name:"DisplayToolCommon"`
 
-	// Url
+	// <p>Url</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 标题
+	// <p>标题</p>
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 
-	// Icon
+	// <p>Icon</p>
 	Icon *string `json:"Icon,omitnil,omitempty" name:"Icon"`
 
-	// 缩略图
+	// <p>缩略图</p>
 	Screenshot *string `json:"Screenshot,omitnil,omitempty" name:"Screenshot"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 后台Host
+	// <p>后台Host</p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 状态：not_converged:未收敛, converged:已收敛, ignore:已忽略
+	// <p>状态：not_converged:未收敛, converged:已收敛, ignore:已忽略</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 是否为云资产：0-非云资产 1-是云资产
+	// <p>是否为云资产：0-非云资产 1-是云资产</p>
 	IsCloudAsset *int64 `json:"IsCloudAsset,omitnil,omitempty" name:"IsCloudAsset"`
 
-	// 云资产是否下线：-1-已下线 0-正常
+	// <p>云资产是否下线：-1-已下线 0-正常</p>
 	CloudAssetStatus *int64 `json:"CloudAssetStatus,omitnil,omitempty" name:"CloudAssetStatus"`
+
+	// <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+	AggregationCount *int64 `json:"AggregationCount,omitnil,omitempty" name:"AggregationCount"`
 }
 
 type DisplayNetDisk struct {
@@ -7304,47 +7378,50 @@ type DisplayNetDisk struct {
 }
 
 type DisplayPort struct {
-	// 主键ID
+	// <p>主键ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 公共字段
+	// <p>公共字段</p>
 	DisplayToolCommon *DisplayToolCommon `json:"DisplayToolCommon,omitnil,omitempty" name:"DisplayToolCommon"`
 
-	// IP或域名地址
+	// <p>IP或域名地址</p>
 	Asset *string `json:"Asset,omitnil,omitempty" name:"Asset"`
 
-	// 解析的IP
+	// <p>解析的IP</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 端口
+	// <p>端口</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 是否高危
+	// <p>是否高危</p>
 	IsHighRisk *bool `json:"IsHighRisk,omitnil,omitempty" name:"IsHighRisk"`
 
-	// 组件名称
+	// <p>组件名称</p>
 	App *string `json:"App,omitnil,omitempty" name:"App"`
 
-	// 服务名称
+	// <p>服务名称</p>
 	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
 
-	// 端口响应详情
+	// <p>端口响应详情</p>
 	Banner *string `json:"Banner,omitnil,omitempty" name:"Banner"`
 
-	// 上次检测时间
+	// <p>上次检测时间</p>
 	LastCheckTime *string `json:"LastCheckTime,omitnil,omitempty" name:"LastCheckTime"`
 
-	// 状态，close:连接超时，端口可能已关闭，open:端口开放, checking:复测中, ignore:已忽略
+	// <p>状态，close:连接超时，端口可能已关闭，open:端口开放, checking:复测中, ignore:已忽略</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 是否为云资产：0-非云资产 1-是云资产
+	// <p>是否为云资产：0-非云资产 1-是云资产</p>
 	IsCloudAsset *int64 `json:"IsCloudAsset,omitnil,omitempty" name:"IsCloudAsset"`
 
-	// 云资产是否下线：-1-已下线 0-正常
+	// <p>云资产是否下线：-1-已下线 0-正常</p>
 	CloudAssetStatus *int64 `json:"CloudAssetStatus,omitnil,omitempty" name:"CloudAssetStatus"`
 
-	// 域名解析状态 1:异常 0:正常
+	// <p>域名解析状态 1:异常 0:正常</p>
 	AnalysisState *int64 `json:"AnalysisState,omitnil,omitempty" name:"AnalysisState"`
+
+	// <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+	AggregationCount *int64 `json:"AggregationCount,omitnil,omitempty" name:"AggregationCount"`
 }
 
 type DisplaySeed struct {
@@ -7375,26 +7452,29 @@ type DisplaySeed struct {
 }
 
 type DisplaySensitiveInfo struct {
-	// 主键Id
+	// <p>主键Id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 类型
+	// <p>类型</p>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 来源
+	// <p>来源</p>
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 值
+	// <p>值</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
-	// 公共字段
+	// <p>公共字段</p>
 	DisplayToolCommon *DisplayToolCommon `json:"DisplayToolCommon,omitnil,omitempty" name:"DisplayToolCommon"`
 
-	// 是否为云资产：0-非云资产 1-是云资产
+	// <p>是否为云资产：0-非云资产 1-是云资产</p>
 	IsCloudAsset *int64 `json:"IsCloudAsset,omitnil,omitempty" name:"IsCloudAsset"`
 
-	// 云资产是否下线：-1-已下线 0-正常
+	// <p>云资产是否下线：-1-已下线 0-正常</p>
 	CloudAssetStatus *int64 `json:"CloudAssetStatus,omitnil,omitempty" name:"CloudAssetStatus"`
+
+	// <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+	AggregationCount *int64 `json:"AggregationCount,omitnil,omitempty" name:"AggregationCount"`
 }
 
 type DisplaySubDomain struct {
@@ -7448,62 +7528,68 @@ type DisplaySubDomain struct {
 
 	// <p>DNS解析值</p>
 	DnsValue *string `json:"DnsValue,omitnil,omitempty" name:"DnsValue"`
+
+	// <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+	AggregationCount *int64 `json:"AggregationCount,omitnil,omitempty" name:"AggregationCount"`
 }
 
 type DisplaySuspiciousAsset struct {
-	// 主键ID
+	// <p>主键ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 公共字段
+	// <p>公共字段</p>
 	DisplayToolCommon *DisplayToolCommon `json:"DisplayToolCommon,omitnil,omitempty" name:"DisplayToolCommon"`
 
-	// Url
+	// <p>Url</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 标题
+	// <p>标题</p>
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 
-	// 报文长度
+	// <p>报文长度</p>
 	ContentLength *int64 `json:"ContentLength,omitnil,omitempty" name:"ContentLength"`
 
-	// 报文内容
+	// <p>报文内容</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 截图缩略图URL
+	// <p>截图缩略图URL</p>
 	ScreenshotThumbUrl *string `json:"ScreenshotThumbUrl,omitnil,omitempty" name:"ScreenshotThumbUrl"`
 
-	// 截图URL
+	// <p>截图URL</p>
 	ScreenshotUrl *string `json:"ScreenshotUrl,omitnil,omitempty" name:"ScreenshotUrl"`
 
-	// 状态码
+	// <p>状态码</p>
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// Api
+	// <p>Api</p>
 	Api *string `json:"Api,omitnil,omitempty" name:"Api"`
 
-	// 解析的IP
+	// <p>解析的IP</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 证书信息
+	// <p>证书信息</p>
 	Ssl *string `json:"Ssl,omitnil,omitempty" name:"Ssl"`
 
-	// ssl证书过期时间
+	// <p>ssl证书过期时间</p>
 	SslExpiredTime *string `json:"SslExpiredTime,omitnil,omitempty" name:"SslExpiredTime"`
 
-	// 来源类型
+	// <p>来源类型</p>
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// 来源值
+	// <p>来源值</p>
 	SourceValue *string `json:"SourceValue,omitnil,omitempty" name:"SourceValue"`
 
-	// 是否信任
+	// <p>是否信任</p>
 	Trusted *bool `json:"Trusted,omitnil,omitempty" name:"Trusted"`
 
-	// 所属者
+	// <p>所属者</p>
 	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
 
-	// 根域名
+	// <p>根域名</p>
 	RootDomain *string `json:"RootDomain,omitnil,omitempty" name:"RootDomain"`
+
+	// <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
+	AggregationCount *int64 `json:"AggregationCount,omitnil,omitempty" name:"AggregationCount"`
 }
 
 type DisplayToolCommon struct {
@@ -7839,111 +7925,135 @@ type JobRecordProgress struct {
 
 // Predefined struct for user
 type ModifyCustomerRequestParams struct {
-	// 企业名称
+	// <p>企业名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 百分比取值范围为30-100
+	// <p>百分比取值范围为30-100</p>
 	Percent *int64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
-	// 资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
+	// <p>资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息</p>
 	ScanType *string `json:"ScanType,omitnil,omitempty" name:"ScanType"`
 
-	// 企业ID
+	// <p>企业ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 周期测绘时间
+	// <p>周期测绘时间</p>
 	ScanCron *string `json:"ScanCron,omitnil,omitempty" name:"ScanCron"`
 
-	// 是否立即启动
+	// <p>是否立即启动</p>
 	IsScanNow *bool `json:"IsScanNow,omitnil,omitempty" name:"IsScanNow"`
 
-	// 是否启用周期测绘
+	// <p>是否启用周期测绘</p>
 	EnableCron *bool `json:"EnableCron,omitnil,omitempty" name:"EnableCron"`
 
-	// 是否扫描子公司
+	// <p>是否扫描子公司</p>
 	EnableScanSubEnterprise *bool `json:"EnableScanSubEnterprise,omitnil,omitempty" name:"EnableScanSubEnterprise"`
 
-	// 是否授权
+	// <p>是否授权</p>
 	EnableAuth *bool `json:"EnableAuth,omitnil,omitempty" name:"EnableAuth"`
 
-	// 授权开始时间
+	// <p>授权开始时间</p>
 	AuthStartAt *string `json:"AuthStartAt,omitnil,omitempty" name:"AuthStartAt"`
 
-	// 授权结束时间
+	// <p>授权结束时间</p>
 	AuthEndAt *string `json:"AuthEndAt,omitnil,omitempty" name:"AuthEndAt"`
 
-	// 授权文件id
+	// <p>授权文件id</p>
 	AuthFile *string `json:"AuthFile,omitnil,omitempty" name:"AuthFile"`
 
-	// 测绘时间配置项，采用json字符串格式
+	// <p>测绘时间配置项，采用json字符串格式</p>
 	ScanTime *string `json:"ScanTime,omitnil,omitempty" name:"ScanTime"`
 
-	// 企业图标
+	// <p>企业图标</p>
 	Icon *string `json:"Icon,omitnil,omitempty" name:"Icon"`
 
-	// 并发
+	// <p>并发</p>
 	Qps *int64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
-	// 子公司拓展层次
+	// <p>子公司拓展层次</p>
 	SubCompanyLevel *int64 `json:"SubCompanyLevel,omitnil,omitempty" name:"SubCompanyLevel"`
 
-	// 是否包含完整的扫描
+	// <p>是否包含完整的扫描</p>
 	IsIncludeFullScan *bool `json:"IsIncludeFullScan,omitnil,omitempty" name:"IsIncludeFullScan"`
+
+	// <p>端口扫描 QPS，默认 100，下限 10，保守值 200，上限 5000</p><p>默认值：100</p>
+	PortScanQps *int64 `json:"PortScanQps,omitnil,omitempty" name:"PortScanQps"`
+
+	// <p>单 IP 任务并发数，默认 1，下限 1，保守值 3，上限 10</p><p>默认值：1</p>
+	SingleIPTaskLimit *int64 `json:"SingleIPTaskLimit,omitnil,omitempty" name:"SingleIPTaskLimit"`
+
+	// <p>任一速率超过保守值时必须为 true，否则参数错误</p>
+	HighRiskAck *bool `json:"HighRiskAck,omitnil,omitempty" name:"HighRiskAck"`
+
+	// <p>知情同意勾选清单，用于审计回放</p>
+	ScanRateAckChecklist []*string `json:"ScanRateAckChecklist,omitnil,omitempty" name:"ScanRateAckChecklist"`
 }
 
 type ModifyCustomerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 企业名称
+	// <p>企业名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 百分比取值范围为30-100
+	// <p>百分比取值范围为30-100</p>
 	Percent *int64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
-	// 资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息
+	// <p>资产收集、漏洞信息、弱口令、目录爆破、暗网泄露、Github泄露、文库网盘泄露、敏感信息泄露，其中资产收集必包含，多个用英文逗号隔离，例如：资产收集,漏洞信息</p>
 	ScanType *string `json:"ScanType,omitnil,omitempty" name:"ScanType"`
 
-	// 企业ID
+	// <p>企业ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 周期测绘时间
+	// <p>周期测绘时间</p>
 	ScanCron *string `json:"ScanCron,omitnil,omitempty" name:"ScanCron"`
 
-	// 是否立即启动
+	// <p>是否立即启动</p>
 	IsScanNow *bool `json:"IsScanNow,omitnil,omitempty" name:"IsScanNow"`
 
-	// 是否启用周期测绘
+	// <p>是否启用周期测绘</p>
 	EnableCron *bool `json:"EnableCron,omitnil,omitempty" name:"EnableCron"`
 
-	// 是否扫描子公司
+	// <p>是否扫描子公司</p>
 	EnableScanSubEnterprise *bool `json:"EnableScanSubEnterprise,omitnil,omitempty" name:"EnableScanSubEnterprise"`
 
-	// 是否授权
+	// <p>是否授权</p>
 	EnableAuth *bool `json:"EnableAuth,omitnil,omitempty" name:"EnableAuth"`
 
-	// 授权开始时间
+	// <p>授权开始时间</p>
 	AuthStartAt *string `json:"AuthStartAt,omitnil,omitempty" name:"AuthStartAt"`
 
-	// 授权结束时间
+	// <p>授权结束时间</p>
 	AuthEndAt *string `json:"AuthEndAt,omitnil,omitempty" name:"AuthEndAt"`
 
-	// 授权文件id
+	// <p>授权文件id</p>
 	AuthFile *string `json:"AuthFile,omitnil,omitempty" name:"AuthFile"`
 
-	// 测绘时间配置项，采用json字符串格式
+	// <p>测绘时间配置项，采用json字符串格式</p>
 	ScanTime *string `json:"ScanTime,omitnil,omitempty" name:"ScanTime"`
 
-	// 企业图标
+	// <p>企业图标</p>
 	Icon *string `json:"Icon,omitnil,omitempty" name:"Icon"`
 
-	// 并发
+	// <p>并发</p>
 	Qps *int64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
-	// 子公司拓展层次
+	// <p>子公司拓展层次</p>
 	SubCompanyLevel *int64 `json:"SubCompanyLevel,omitnil,omitempty" name:"SubCompanyLevel"`
 
-	// 是否包含完整的扫描
+	// <p>是否包含完整的扫描</p>
 	IsIncludeFullScan *bool `json:"IsIncludeFullScan,omitnil,omitempty" name:"IsIncludeFullScan"`
+
+	// <p>端口扫描 QPS，默认 100，下限 10，保守值 200，上限 5000</p><p>默认值：100</p>
+	PortScanQps *int64 `json:"PortScanQps,omitnil,omitempty" name:"PortScanQps"`
+
+	// <p>单 IP 任务并发数，默认 1，下限 1，保守值 3，上限 10</p><p>默认值：1</p>
+	SingleIPTaskLimit *int64 `json:"SingleIPTaskLimit,omitnil,omitempty" name:"SingleIPTaskLimit"`
+
+	// <p>任一速率超过保守值时必须为 true，否则参数错误</p>
+	HighRiskAck *bool `json:"HighRiskAck,omitnil,omitempty" name:"HighRiskAck"`
+
+	// <p>知情同意勾选清单，用于审计回放</p>
+	ScanRateAckChecklist []*string `json:"ScanRateAckChecklist,omitnil,omitempty" name:"ScanRateAckChecklist"`
 }
 
 func (r *ModifyCustomerRequest) ToJsonString() string {
@@ -7975,6 +8085,10 @@ func (r *ModifyCustomerRequest) FromJsonString(s string) error {
 	delete(f, "Qps")
 	delete(f, "SubCompanyLevel")
 	delete(f, "IsIncludeFullScan")
+	delete(f, "PortScanQps")
+	delete(f, "SingleIPTaskLimit")
+	delete(f, "HighRiskAck")
+	delete(f, "ScanRateAckChecklist")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomerRequest has unknown keys!", "")
 	}
@@ -7983,7 +8097,7 @@ func (r *ModifyCustomerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyCustomerResponseParams struct {
-	// 企业ID
+	// <p>企业ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

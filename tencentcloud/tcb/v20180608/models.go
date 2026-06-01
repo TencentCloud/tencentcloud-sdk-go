@@ -2829,15 +2829,33 @@ func (r *DescribeBaasPackageListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBillingInfoRequestParams struct {
-	// 环境ID
+	// <p>环境ID</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>环境列表，当环境列表不为空时，查询的环境以该参数为准</p>
+	EnvIds []*string `json:"EnvIds,omitnil,omitempty" name:"EnvIds"`
+
+	// <p>每页条数（用于拉取列表时分页）</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeBillingInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 环境ID
+	// <p>环境ID</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// <p>环境列表，当环境列表不为空时，查询的环境以该参数为准</p>
+	EnvIds []*string `json:"EnvIds,omitnil,omitempty" name:"EnvIds"`
+
+	// <p>每页条数（用于拉取列表时分页）</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>偏移</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeBillingInfoRequest) ToJsonString() string {
@@ -2853,6 +2871,9 @@ func (r *DescribeBillingInfoRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "EnvId")
+	delete(f, "EnvIds")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillingInfoRequest has unknown keys!", "")
 	}
@@ -2861,8 +2882,11 @@ func (r *DescribeBillingInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBillingInfoResponseParams struct {
-	// 环境计费信息列表
+	// <p>环境计费信息列表</p>
 	EnvBillingInfoList []*EnvBillingInfoItem `json:"EnvBillingInfoList,omitnil,omitempty" name:"EnvBillingInfoList"`
+
+	// <p>总个数</p>
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5364,62 +5388,55 @@ type EmailTemplateConfig struct {
 }
 
 type EnvBillingInfoItem struct {
-	// 环境ID
+	// <p>环境ID</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// tcb产品套餐ID，参考DescribePackages接口的返回值。
+	// <p>tcb产品套餐ID，参考DescribePackages接口的返回值。</p>
 	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
-	// 自动续费标记
+	// <p>自动续费标记</p>
 	IsAutoRenew *bool `json:"IsAutoRenew,omitnil,omitempty" name:"IsAutoRenew"`
 
-	// 状态。包含以下取值：
-	// <li> 空字符串：初始化中</li>
-	// <li> NORMAL：正常</li>
-	// <li> ISOLATE：隔离</li>
+	// <p>状态。包含以下取值：</p><li> 空字符串：初始化中</li><li> NORMAL：正常</li><li> ISOLATE：隔离</li>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 支付方式。包含以下取值：
-	// <li> PREPAYMENT：预付费</li>
-	// <li> POSTPAID：后付费</li>
+	// <p>支付方式。包含以下取值：</p><li> PREPAYMENT：预付费</li><li> POSTPAID：后付费</li>
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 隔离时间，最近一次隔离的时间
+	// <p>隔离时间，最近一次隔离的时间</p>
 	IsolatedTime *string `json:"IsolatedTime,omitnil,omitempty" name:"IsolatedTime"`
 
-	// 过期时间，套餐即将到期的时间
+	// <p>过期时间，套餐即将到期的时间</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 创建时间，第一次接入计费方案的时间。
+	// <p>创建时间，第一次接入计费方案的时间。</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间，计费信息最近一次更新的时间。
+	// <p>更新时间，计费信息最近一次更新的时间。</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// true表示从未升级过付费版。
+	// <p>true表示从未升级过付费版。</p>
 	IsAlwaysFree *bool `json:"IsAlwaysFree,omitnil,omitempty" name:"IsAlwaysFree"`
 
-	// 付费渠道。
-	// <li> miniapp：小程序</li>
-	// <li> qcloud：腾讯云</li>
+	// <p>付费渠道。</p><li> miniapp：小程序</li><li> qcloud：腾讯云</li>
 	PaymentChannel *string `json:"PaymentChannel,omitnil,omitempty" name:"PaymentChannel"`
 
-	// 最新的订单信息
+	// <p>最新的订单信息</p>
 	OrderInfo *OrderInfo `json:"OrderInfo,omitnil,omitempty" name:"OrderInfo"`
 
-	// 免费配额信息。
+	// <p>免费配额信息。</p>
 	FreeQuota *string `json:"FreeQuota,omitnil,omitempty" name:"FreeQuota"`
 
-	// 是否开启 `超过套餐额度部分转按量付费`
+	// <p>是否开启 <code>超过套餐额度部分转按量付费</code></p>
 	EnableOverrun *bool `json:"EnableOverrun,omitnil,omitempty" name:"EnableOverrun"`
 
-	// 环境套餐类型
+	// <p>环境套餐类型</p>
 	ExtPackageType *string `json:"ExtPackageType,omitnil,omitempty" name:"ExtPackageType"`
 
-	// 是否付费期环境，可取值：yes/no。
+	// <p>是否付费期环境，可取值：yes/no。</p>
 	EnvCharged *string `json:"EnvCharged,omitnil,omitempty" name:"EnvCharged"`
 
-	// 是否已激活，可取值：yes/no。
+	// <p>是否已激活，可取值：yes/no。</p>
 	EnvActivated *string `json:"EnvActivated,omitnil,omitempty" name:"EnvActivated"`
 }
 

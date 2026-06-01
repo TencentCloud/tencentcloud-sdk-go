@@ -21,7 +21,15 @@ import (
 )
 
 type AccessControlRule struct {
-	// 访问方式：public - 公网，internal - 内网
+	// <p>网段或IP，支持IPv4或IPv6。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CidrBlocks []*string `json:"CidrBlocks,omitnil,omitempty" name:"CidrBlocks"`
+
+	// <p>ACCEPT 或 DROP。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// <p>访问方式：public - 公网，internal - 内网</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
 }

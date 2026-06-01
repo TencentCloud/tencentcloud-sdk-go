@@ -2191,7 +2191,9 @@ func NewDescribeBillingInfoResponse() (response *DescribeBillingInfoResponse) {
 }
 
 // DescribeBillingInfo
-// 获取计费相关信息
+// 获取云开发环境的计费相关信息。
+//
+// 包括环境的 状态、当前套餐、购买时间、到期时间 等。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2204,7 +2206,9 @@ func (c *Client) DescribeBillingInfo(request *DescribeBillingInfoRequest) (respo
 }
 
 // DescribeBillingInfo
-// 获取计费相关信息
+// 获取云开发环境的计费相关信息。
+//
+// 包括环境的 状态、当前套餐、购买时间、到期时间 等。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

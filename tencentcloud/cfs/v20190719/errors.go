@@ -62,6 +62,9 @@ const (
 	// 获取用户费用状态失败。
 	INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
 
+	// InternalError.InternalError
+	INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+
 	// 超时。
 	INTERNALERROR_TIMEOUT = "InternalError.Timeout"
 
@@ -79,6 +82,9 @@ const (
 
 	// 定期小时 参数值错误。
 	INVALIDPARAMETER_INVALIDPARAMHOUR = "InvalidParameter.InvalidParamHour"
+
+	// InvalidParameter.InvalidParameter
+	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 
 	// 无效的快照策略状态。
 	INVALIDPARAMETER_INVALIDSNAPPOLICYSTATUS = "InvalidParameter.InvalidSnapPolicyStatus"
@@ -112,6 +118,9 @@ const (
 
 	// 用于保证请求幂等性的字符串长度超过限制（不能超过64字节）。
 	INVALIDPARAMETERVALUE_CLIENTTOKENLIMITEXCEEDED = "InvalidParameterValue.ClientTokenLimitExceeded"
+
+	// 数据检索定时规则冲突
+	INVALIDPARAMETERVALUE_DATARETRIEVALSCHEDULECONFLICT = "InvalidParameterValue.DataRetrievalScheduleConflict"
 
 	// 权限组名称重复。
 	INVALIDPARAMETERVALUE_DUPLICATEDPGROUPNAME = "InvalidParameterValue.DuplicatedPgroupName"
@@ -158,6 +167,9 @@ const (
 	// 参数值错误：数据流动目标路径无效
 	INVALIDPARAMETERVALUE_INVALIDDATAFLOWTARGETPATH = "InvalidParameterValue.InvalidDataFlowTargetPath"
 
+	// 无效的数据检索ID
+	INVALIDPARAMETERVALUE_INVALIDDATARETRIEVALID = "InvalidParameterValue.InvalidDataRetrievalId"
+
 	// 快照跨地域复制参数不支持该地域
 	INVALIDPARAMETERVALUE_INVALIDDESTINATIONREGIONS = "InvalidParameterValue.InvalidDestinationRegions"
 
@@ -199,6 +211,9 @@ const (
 
 	// IntervalDays 参数值错误
 	INVALIDPARAMETERVALUE_INVALIDPARAMINTERVALDAYS = "InvalidParameterValue.InvalidParamIntervalDays"
+
+	// InvalidParameterValue.InvalidParameterValue
+	INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 
 	// 权限组不属于该用户。
 	INVALIDPARAMETERVALUE_INVALIDPGROUP = "InvalidParameterValue.InvalidPgroup"
@@ -392,11 +407,20 @@ const (
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
+	// MissingParameter.MissingParameter
+	MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
+
+	// ResourceInUse.DataRetrievalHasTask
+	RESOURCEINUSE_DATARETRIEVALHASTASK = "ResourceInUse.DataRetrievalHasTask"
+
+	// 任务正在运行中，不可做其他操作
+	RESOURCEINUSE_DATARETRIEVALTASKRUNNING = "ResourceInUse.DataRetrievalTaskRunning"
 
 	// 资源不足：数据流动数超限
 	RESOURCEINSUFFICIENT_DATAFLOWLIMITEXCEEDED = "ResourceInsufficient.DataFlowLimitExceeded"
@@ -440,6 +464,9 @@ const (
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
+	// ResourceNotFound.DataRetrievalNotFound
+	RESOURCENOTFOUND_DATARETRIEVALNOTFOUND = "ResourceNotFound.DataRetrievalNotFound"
+
 	// 该文件系统不存在。
 	RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
 
@@ -466,6 +493,9 @@ const (
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+
+	// UnauthorizedOperation.UnauthorizedOperation
+	UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"

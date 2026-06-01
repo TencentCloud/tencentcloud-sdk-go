@@ -544,6 +544,17 @@ type BlueprintPrice struct {
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 }
 
+type BlueprintShareAcrossAccountInfo struct {
+	// 镜像ID。
+	BlueprintId *string `json:"BlueprintId,omitnil,omitempty" name:"BlueprintId"`
+
+	// 镜像共享的账户ID。
+	AccountId *string `json:"AccountId,omitnil,omitempty" name:"AccountId"`
+
+	// 镜像共享时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 格式为： YYYY-MM-DDThh:mm:ssZ。
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+}
+
 type Bundle struct {
 	// 套餐 ID。
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
@@ -2330,6 +2341,95 @@ func (r *DescribeBlueprintsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBlueprintsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBlueprintsShareAcrossAccountInfosRequestParams struct {
+	// 镜像 ID 列表。可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
+	BlueprintIds []*string `json:"BlueprintIds,omitnil,omitempty" name:"BlueprintIds"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤器列表。
+	// <li>account-id</li>按照【[账号 ID](https://console.cloud.tencent.com/developer)】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeBlueprintsShareAcrossAccountInfosRequest struct {
+	*tchttp.BaseRequest
+	
+	// 镜像 ID 列表。可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
+	BlueprintIds []*string `json:"BlueprintIds,omitnil,omitempty" name:"BlueprintIds"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤器列表。
+	// <li>account-id</li>按照【[账号 ID](https://console.cloud.tencent.com/developer)】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeBlueprintsShareAcrossAccountInfosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlueprintsShareAcrossAccountInfosRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BlueprintIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBlueprintsShareAcrossAccountInfosRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBlueprintsShareAcrossAccountInfosResponseParams struct {
+	// 符合条件的镜像共享信息数量。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 镜像共享信息列表。
+	BlueprintShareAcrossAccountInfoSet []*BlueprintShareAcrossAccountInfo `json:"BlueprintShareAcrossAccountInfoSet,omitnil,omitempty" name:"BlueprintShareAcrossAccountInfoSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBlueprintsShareAcrossAccountInfosResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBlueprintsShareAcrossAccountInfosResponseParams `json:"Response"`
+}
+
+func (r *DescribeBlueprintsShareAcrossAccountInfosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlueprintsShareAcrossAccountInfosResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

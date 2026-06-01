@@ -21988,52 +21988,50 @@ type MediaTranscodeInfo struct {
 }
 
 type MediaTranscodeItem struct {
-	// 转码后的视频文件地址。
+	// <p>转码后的视频文件地址。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/266/33476)。
-	// <font color=red>注意：取值 0 表示原始文件。</font> 
+	// <p>转码规格 ID，参见<a href="https://cloud.tencent.com/document/product/266/33476">转码参数模板</a>。<br><font color="red">注意：取值 0 表示原始文件。</font></p>
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// 视频流码率平均值与音频流码率平均值之和， 单位：bps。
+	// <p>视频流码率平均值与音频流码率平均值之和， 单位：bps。</p>
 	Bitrate *int64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
-	// 视频流高度的最大值，单位：px。
+	// <p>视频流高度的最大值，单位：px。</p>
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 
-	// 视频流宽度的最大值，单位：px。
+	// <p>视频流宽度的最大值，单位：px。</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 媒体文件总大小，单位：字节。
-	// <li>当媒体文件为 HLS 时，大小是 m3u8 和 ts 文件大小的总和。</li>
+	// <p>媒体文件总大小，单位：字节。</p><li>当媒体文件为 HLS 时，大小是 m3u8 和 ts 文件大小的总和。</li>
 	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 视频时长，单位：秒。
+	// <p>视频时长，单位：秒。</p>
 	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
-	// 视频的 md5 值。
+	// <p>视频的 md5 值。</p>
 	Md5 *string `json:"Md5,omitnil,omitempty" name:"Md5"`
 
-	// 容器类型，例如 m4a，mp4 等。
+	// <p>容器类型，例如 m4a，mp4 等。</p>
 	Container *string `json:"Container,omitnil,omitempty" name:"Container"`
 
-	// 视频流信息。
+	// <p>视频流信息。</p>
 	VideoStreamSet []*MediaVideoStreamItem `json:"VideoStreamSet,omitnil,omitempty" name:"VideoStreamSet"`
 
-	// 音频流信息。
+	// <p>音频流信息。</p>
 	AudioStreamSet []*MediaAudioStreamItem `json:"AudioStreamSet,omitnil,omitempty" name:"AudioStreamSet"`
 
-	// 数字水印类型。可选值：
-	// <li>Trace 表示经过溯源水印处理；</li>
-	// <li>CopyRight 表示经过版权水印处理；</li>
-	// <li>None 表示没有经过数字水印处理。</li>
+	// <p>数字水印类型。可选值：</p><li>Trace 表示经过溯源水印处理；</li><li>CopyRight 表示经过版权水印处理；</li><li>None 表示没有经过数字水印处理。</li>
 	DigitalWatermarkType *string `json:"DigitalWatermarkType,omitnil,omitempty" name:"DigitalWatermarkType"`
 
-	// 版权信息。
+	// <p>版权信息。</p>
 	CopyRightWatermarkText *string `json:"CopyRightWatermarkText,omitnil,omitempty" name:"CopyRightWatermarkText"`
 
-	// 数字水印模板id。
+	// <p>数字水印模板id。</p>
 	BlindWatermarkDefinition *int64 `json:"BlindWatermarkDefinition,omitnil,omitempty" name:"BlindWatermarkDefinition"`
+
+	// <p>转码生成的新FileId，请求开启独立媒资输出时有效。</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 }
 
 type MediaTransitionItem struct {

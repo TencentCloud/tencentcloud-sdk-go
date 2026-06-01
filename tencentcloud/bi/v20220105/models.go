@@ -1407,12 +1407,21 @@ func (r *CreateProjectResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserGroupMemberRequestParams struct {
+	// <p>用户组id</p>
+	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
+	// <p>用户id集合</p>
+	UserIdList []*string `json:"UserIdList,omitnil,omitempty" name:"UserIdList"`
 }
 
 type CreateUserGroupMemberRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>用户组id</p>
+	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// <p>用户id集合</p>
+	UserIdList []*string `json:"UserIdList,omitnil,omitempty" name:"UserIdList"`
 }
 
 func (r *CreateUserGroupMemberRequest) ToJsonString() string {
@@ -1427,7 +1436,8 @@ func (r *CreateUserGroupMemberRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "GroupId")
+	delete(f, "UserIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserGroupMemberRequest has unknown keys!", "")
 	}
@@ -1439,6 +1449,18 @@ type CreateUserGroupMemberResponseParams struct {
 	// 自定义错误信息对象
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// <p>额外信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// <p>结果信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1462,26 +1484,38 @@ func (r *CreateUserGroupMemberResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserGroupRequestParams struct {
-	// 用户组名称
+	// <p>组管理员</p>
+	AdminUserId *string `json:"AdminUserId,omitnil,omitempty" name:"AdminUserId"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>用户组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 位置
+	// <p>位置</p>
 	Location *int64 `json:"Location,omitnil,omitempty" name:"Location"`
 
-	// 父用户组id
+	// <p>父用户组id</p>
 	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 }
 
 type CreateUserGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户组名称
+	// <p>组管理员</p>
+	AdminUserId *string `json:"AdminUserId,omitnil,omitempty" name:"AdminUserId"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>用户组名称</p>
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 位置
+	// <p>位置</p>
 	Location *int64 `json:"Location,omitnil,omitempty" name:"Location"`
 
-	// 父用户组id
+	// <p>父用户组id</p>
 	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 }
 
@@ -1497,6 +1531,8 @@ func (r *CreateUserGroupRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "AdminUserId")
+	delete(f, "Description")
 	delete(f, "GroupName")
 	delete(f, "Location")
 	delete(f, "ParentId")
@@ -1511,6 +1547,18 @@ type CreateUserGroupResponseParams struct {
 	// 自定义错误信息对象
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// <p>额外信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// <p>结果信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *UserGroupVO `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -2139,20 +2187,20 @@ func (r *DeleteProjectResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteUserGroupMemberRequestParams struct {
-	// 用户组id
+	// <p>用户组id</p>
 	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 用户id集合
+	// <p>用户id集合</p>
 	UserIdList []*string `json:"UserIdList,omitnil,omitempty" name:"UserIdList"`
 }
 
 type DeleteUserGroupMemberRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户组id
+	// <p>用户组id</p>
 	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 用户id集合
+	// <p>用户id集合</p>
 	UserIdList []*string `json:"UserIdList,omitnil,omitempty" name:"UserIdList"`
 }
 
@@ -2182,6 +2230,18 @@ type DeleteUserGroupMemberResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
+	// <p>额外信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// <p>结果信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2204,14 +2264,14 @@ func (r *DeleteUserGroupMemberResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteUserGroupRequestParams struct {
-	// 用户组id
+	// <p>用户组id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type DeleteUserGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户组id
+	// <p>用户组id</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
@@ -2239,6 +2299,18 @@ type DeleteUserGroupResponseParams struct {
 	// 自定义错误信息对象
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// <p>额外信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// <p>结果信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3495,44 +3567,44 @@ func (r *DescribeUserGroupInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserGroupMemberListRequestParams struct {
-	// 用户组id集合
+	// <p>用户组id集合</p>
 	GroupIds []*int64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// asc正序,desc倒序
+	// <p>asc正序,desc倒序</p>
 	CreatedOnOrder *string `json:"CreatedOnOrder,omitnil,omitempty" name:"CreatedOnOrder"`
 
-	// 搜索关键字
+	// <p>搜索关键字</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 分页页码
+	// <p>分页页码</p>
 	PageNo *uint64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
-	// 是否需要分页
+	// <p>是否需要分页</p>
 	AllPage *bool `json:"AllPage,omitnil,omitempty" name:"AllPage"`
 }
 
 type DescribeUserGroupMemberListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户组id集合
+	// <p>用户组id集合</p>
 	GroupIds []*int64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// asc正序,desc倒序
+	// <p>asc正序,desc倒序</p>
 	CreatedOnOrder *string `json:"CreatedOnOrder,omitnil,omitempty" name:"CreatedOnOrder"`
 
-	// 搜索关键字
+	// <p>搜索关键字</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 分页页码
+	// <p>分页页码</p>
 	PageNo *uint64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
-	// 是否需要分页
+	// <p>是否需要分页</p>
 	AllPage *bool `json:"AllPage,omitnil,omitempty" name:"AllPage"`
 }
 
@@ -3566,6 +3638,18 @@ type DescribeUserGroupMemberListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
+	// <p>额外信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// <p>结果信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DescribeUserGroupMemberPageListContainer `json:"Data,omitnil,omitempty" name:"Data"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3584,6 +3668,20 @@ func (r *DescribeUserGroupMemberListResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeUserGroupMemberListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserGroupMemberPageListContainer struct {
+	// 列表数据集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*UserGroupMemberVO `json:"List,omitnil,omitempty" name:"List"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPages *int64 `json:"TotalPages,omitnil,omitempty" name:"TotalPages"`
 }
 
 // Predefined struct for user
@@ -5367,14 +5465,14 @@ func (r *ModifyUserDetailInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUserGroupRequestParams struct {
-	// 用户组更新list
+	// <p>用户组更新list</p>
 	UpdateList []*UserGroupUpdateDTO `json:"UpdateList,omitnil,omitempty" name:"UpdateList"`
 }
 
 type ModifyUserGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户组更新list
+	// <p>用户组更新list</p>
 	UpdateList []*UserGroupUpdateDTO `json:"UpdateList,omitnil,omitempty" name:"UpdateList"`
 }
 
@@ -5402,6 +5500,18 @@ type ModifyUserGroupResponseParams struct {
 	// 自定义错误信息对象
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// <p>额外信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// <p>结果信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*UserGroupVO `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5900,56 +6010,56 @@ type ProjectListData struct {
 
 // Predefined struct for user
 type QueryUserGroupMemberRequestParams struct {
-	// 用户组id集合
+	// <p>用户组id集合</p>
 	GroupIds []*int64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// 搜索关键字
+	// <p>搜索关键字</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 分页页码
+	// <p>分页页码</p>
 	PageNo *uint64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
-	// 是否需要分页
+	// <p>是否需要分页</p>
 	AllPage *bool `json:"AllPage,omitnil,omitempty" name:"AllPage"`
 
-	// 用户组节点信息
+	// <p>用户组节点信息</p>
 	Nodes []*UserGroupTreeNodeDTO `json:"Nodes,omitnil,omitempty" name:"Nodes"`
 
-	// 标签值
+	// <p>标签值</p>
 	TagValueList []*ResourceTagValue `json:"TagValueList,omitnil,omitempty" name:"TagValueList"`
 
-	// 需要过滤的用户组
+	// <p>需要过滤的用户组</p>
 	FilterGroupIds []*int64 `json:"FilterGroupIds,omitnil,omitempty" name:"FilterGroupIds"`
 }
 
 type QueryUserGroupMemberRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户组id集合
+	// <p>用户组id集合</p>
 	GroupIds []*int64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 
-	// 搜索关键字
+	// <p>搜索关键字</p>
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 分页页码
+	// <p>分页页码</p>
 	PageNo *uint64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
-	// 是否需要分页
+	// <p>是否需要分页</p>
 	AllPage *bool `json:"AllPage,omitnil,omitempty" name:"AllPage"`
 
-	// 用户组节点信息
+	// <p>用户组节点信息</p>
 	Nodes []*UserGroupTreeNodeDTO `json:"Nodes,omitnil,omitempty" name:"Nodes"`
 
-	// 标签值
+	// <p>标签值</p>
 	TagValueList []*ResourceTagValue `json:"TagValueList,omitnil,omitempty" name:"TagValueList"`
 
-	// 需要过滤的用户组
+	// <p>需要过滤的用户组</p>
 	FilterGroupIds []*int64 `json:"FilterGroupIds,omitnil,omitempty" name:"FilterGroupIds"`
 }
 
@@ -5984,6 +6094,18 @@ type QueryUserGroupMemberResponseParams struct {
 	// 自定义错误信息对象
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// <p>额外信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// <p>结果信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// <p>数据</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DescribeUserGroupMemberPageListContainer `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6224,6 +6346,24 @@ type UserGroupDTO struct {
 	Location *int64 `json:"Location,omitnil,omitempty" name:"Location"`
 }
 
+type UserGroupMemberVO struct {
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 用户id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 创建人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedBy *string `json:"CreatedBy,omitnil,omitempty" name:"CreatedBy"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedOn *string `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
+}
+
 type UserGroupPageTreeVO struct {
 	// 列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6319,6 +6459,54 @@ type UserGroupUpdateDTO struct {
 
 	// 父节点名称
 	ParentName *string `json:"ParentName,omitnil,omitempty" name:"ParentName"`
+}
+
+type UserGroupUserInfoVO struct {
+	// 用户id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 用户名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+}
+
+type UserGroupVO struct {
+	// 用户组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 用户组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 所属用户组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+
+	// 所属用户组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentName *string `json:"ParentName,omitnil,omitempty" name:"ParentName"`
+
+	// 是否默认用户组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDefault *int64 `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+
+	// 用户组管理员
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminUserId *string `json:"AdminUserId,omitnil,omitempty" name:"AdminUserId"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 排序位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *int64 `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// 用户信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserList []*UserGroupUserInfoVO `json:"UserList,omitnil,omitempty" name:"UserList"`
 }
 
 type UserIdAndUserName struct {
