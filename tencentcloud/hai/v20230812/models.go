@@ -218,6 +218,9 @@ type CreateInferServiceByTemplateRequestParams struct {
 
 	// <p>网络设置</p>
 	NetworkSetting *NetworkSetting `json:"NetworkSetting,omitnil,omitempty" name:"NetworkSetting"`
+
+	// <p>推理服务安全类型</p><p>枚举值：</p><ul><li>STANDARD： 标准推理服务</li><li>CONFIDENTIAL： 可信推理服务</li></ul>
+	SecurityType *string `json:"SecurityType,omitnil,omitempty" name:"SecurityType"`
 }
 
 type CreateInferServiceByTemplateRequest struct {
@@ -240,6 +243,9 @@ type CreateInferServiceByTemplateRequest struct {
 
 	// <p>网络设置</p>
 	NetworkSetting *NetworkSetting `json:"NetworkSetting,omitnil,omitempty" name:"NetworkSetting"`
+
+	// <p>推理服务安全类型</p><p>枚举值：</p><ul><li>STANDARD： 标准推理服务</li><li>CONFIDENTIAL： 可信推理服务</li></ul>
+	SecurityType *string `json:"SecurityType,omitnil,omitempty" name:"SecurityType"`
 }
 
 func (r *CreateInferServiceByTemplateRequest) ToJsonString() string {
@@ -260,6 +266,7 @@ func (r *CreateInferServiceByTemplateRequest) FromJsonString(s string) error {
 	delete(f, "ServiceChargeType")
 	delete(f, "HyperParam")
 	delete(f, "NetworkSetting")
+	delete(f, "SecurityType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInferServiceByTemplateRequest has unknown keys!", "")
 	}
@@ -1222,26 +1229,26 @@ func (r *DescribeServicesCallInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeServicesRequestParams struct {
-	// 服务列表
+	// <p>服务列表</p>
 	ServiceIds []*string `json:"ServiceIds,omitnil,omitempty" name:"ServiceIds"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeServicesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务列表
+	// <p>服务列表</p>
 	ServiceIds []*string `json:"ServiceIds,omitnil,omitempty" name:"ServiceIds"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -1268,10 +1275,10 @@ func (r *DescribeServicesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeServicesResponseParams struct {
-	// 总数
+	// <p>总数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 服务列表
+	// <p>服务列表</p>
 	ServiceInfoSet []*ServiceDetail `json:"ServiceInfoSet,omitnil,omitempty" name:"ServiceInfoSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

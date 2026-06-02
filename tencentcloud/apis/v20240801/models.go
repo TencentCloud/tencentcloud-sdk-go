@@ -102,6 +102,55 @@ type AgentAppSecretKeyVO struct {
 	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 }
 
+type AgentAppServiceDTO struct {
+	// <p>ID</p>
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// <p>是否限流</p>
+	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
+
+	// <p>限流配置</p>
+	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
+
+	// <p>是否要认证</p>
+	NeedAuth *bool `json:"NeedAuth,omitnil,omitempty" name:"NeedAuth"`
+
+	// <p>凭据ID</p>
+	AgentCredentialID *string `json:"AgentCredentialID,omitnil,omitempty" name:"AgentCredentialID"`
+}
+
+type AgentAppServiceVO struct {
+	// <p>ID</p>
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// <p>应用ID</p>
+	AgentAppID *string `json:"AgentAppID,omitnil,omitempty" name:"AgentAppID"`
+
+	// <p>服务ID</p>
+	ServiceID *string `json:"ServiceID,omitnil,omitempty" name:"ServiceID"`
+
+	// <p>是否限流</p>
+	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
+
+	// <p>限流配置</p>
+	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
+
+	// <p>服务详情</p>
+	ServiceVO *ServiceVO `json:"ServiceVO,omitnil,omitempty" name:"ServiceVO"`
+
+	// <p>关联时间</p>
+	RelateTime *string `json:"RelateTime,omitnil,omitempty" name:"RelateTime"`
+
+	// <p>是否需要认证</p>
+	NeedAuth *bool `json:"NeedAuth,omitnil,omitempty" name:"NeedAuth"`
+
+	// <p>凭据ID</p>
+	AgentCredentialID *string `json:"AgentCredentialID,omitnil,omitempty" name:"AgentCredentialID"`
+
+	// <p>凭据详情</p>
+	AgentCredentialVO *DescribeAgentCredentialResp `json:"AgentCredentialVO,omitnil,omitempty" name:"AgentCredentialVO"`
+}
+
 type AgentCredentialContentDTO struct {
 	// 如果认证类型为sts时，该项必填
 	STSSystem *string `json:"STSSystem,omitnil,omitempty" name:"STSSystem"`
@@ -159,6 +208,16 @@ type BindMcpSecurityRuleVO struct {
 
 	// icon类型
 	IconType *string `json:"IconType,omitnil,omitempty" name:"IconType"`
+}
+
+type CompoundCondition struct {
+	// <p>是否启用</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// <p>匹配信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rules []*SimpleCondition `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 // Predefined struct for user
@@ -406,6 +465,77 @@ func (r *CreateAgentAppResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAgentAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAgentAppServicesRequestParams struct {
+	// <p>实例ID</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>应用ID</p>
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// <p>服务详情</p>
+	Services []*AgentAppServiceDTO `json:"Services,omitnil,omitempty" name:"Services"`
+}
+
+type CreateAgentAppServicesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>应用ID</p>
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// <p>服务详情</p>
+	Services []*AgentAppServiceDTO `json:"Services,omitnil,omitempty" name:"Services"`
+}
+
+func (r *CreateAgentAppServicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAgentAppServicesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceID")
+	delete(f, "ID")
+	delete(f, "Services")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAgentAppServicesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAgentAppServicesResponseParams struct {
+	// <p>app id</p>
+	Data *ResultIDVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAgentAppServicesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAgentAppServicesResponseParams `json:"Response"`
+}
+
+func (r *CreateAgentAppServicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAgentAppServicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1038,6 +1168,67 @@ func (r *CreateModelServiceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateServiceRequestParams struct {
+
+}
+
+type CreateServiceRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *CreateServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateServiceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateServiceResponseParams `json:"Response"`
+}
+
+func (r *CreateServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CustomMatch struct {
+	// <p>请求头  匹配条件</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeadersMatch *CompoundCondition `json:"HeadersMatch,omitnil,omitempty" name:"HeadersMatch"`
+
+	// <p>请求参数 匹配条件</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryMatch *CompoundCondition `json:"QueryMatch,omitnil,omitempty" name:"QueryMatch"`
+}
+
+// Predefined struct for user
 type DeleteAgentAppMcpServersRequestParams struct {
 	// 实例ID
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
@@ -1240,6 +1431,77 @@ func (r *DeleteAgentAppResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAgentAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAgentAppServicesRequestParams struct {
+	// <p>实例ID</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>应用ID</p>
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// <p>服务IDs</p>
+	ServiceIDs []*string `json:"ServiceIDs,omitnil,omitempty" name:"ServiceIDs"`
+}
+
+type DeleteAgentAppServicesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>应用ID</p>
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// <p>服务IDs</p>
+	ServiceIDs []*string `json:"ServiceIDs,omitnil,omitempty" name:"ServiceIDs"`
+}
+
+func (r *DeleteAgentAppServicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAgentAppServicesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceID")
+	delete(f, "ID")
+	delete(f, "ServiceIDs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAgentAppServicesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAgentAppServicesResponseParams struct {
+	// <p>app id</p>
+	Data *ResultIDVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAgentAppServicesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAgentAppServicesResponseParams `json:"Response"`
+}
+
+func (r *DeleteAgentAppServicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAgentAppServicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1483,6 +1745,67 @@ func (r *DeleteModelServiceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteModelServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteServiceRequestParams struct {
+	// 实例ID
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// 业务ID
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+type DeleteServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// 业务ID
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+func (r *DeleteServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceID")
+	delete(f, "ID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteServiceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteServiceResponseParams `json:"Response"`
+}
+
+func (r *DeleteServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1761,6 +2084,127 @@ func (r *DescribeAgentAppResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeAgentAppResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAgentAppServicesRequestParams struct {
+	// <p>实例ID</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>数据量</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>IDs</p>
+	IDs []*string `json:"IDs,omitnil,omitempty" name:"IDs"`
+
+	// <p>应用IDs</p>
+	AgentAppIDs []*string `json:"AgentAppIDs,omitnil,omitempty" name:"AgentAppIDs"`
+
+	// <p>服务IDs</p>
+	ServiceIDs []*string `json:"ServiceIDs,omitnil,omitempty" name:"ServiceIDs"`
+
+	// <p>关键字</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>偏移量</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>是否有凭据</p>
+	AgentCredentialExist *bool `json:"AgentCredentialExist,omitnil,omitempty" name:"AgentCredentialExist"`
+
+	// <p>凭据ID</p>
+	AgentCredentialIDs []*string `json:"AgentCredentialIDs,omitnil,omitempty" name:"AgentCredentialIDs"`
+}
+
+type DescribeAgentAppServicesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例ID</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>数据量</p>
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>IDs</p>
+	IDs []*string `json:"IDs,omitnil,omitempty" name:"IDs"`
+
+	// <p>应用IDs</p>
+	AgentAppIDs []*string `json:"AgentAppIDs,omitnil,omitempty" name:"AgentAppIDs"`
+
+	// <p>服务IDs</p>
+	ServiceIDs []*string `json:"ServiceIDs,omitnil,omitempty" name:"ServiceIDs"`
+
+	// <p>关键字</p>
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// <p>偏移量</p>
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>是否有凭据</p>
+	AgentCredentialExist *bool `json:"AgentCredentialExist,omitnil,omitempty" name:"AgentCredentialExist"`
+
+	// <p>凭据ID</p>
+	AgentCredentialIDs []*string `json:"AgentCredentialIDs,omitnil,omitempty" name:"AgentCredentialIDs"`
+}
+
+func (r *DescribeAgentAppServicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentAppServicesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceID")
+	delete(f, "Limit")
+	delete(f, "IDs")
+	delete(f, "AgentAppIDs")
+	delete(f, "ServiceIDs")
+	delete(f, "Keyword")
+	delete(f, "Offset")
+	delete(f, "AgentCredentialExist")
+	delete(f, "AgentCredentialIDs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentAppServicesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAgentAppServicesResponseParams struct {
+	// <p>app id</p>
+	Data *DescribeAgentAppServicesVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAgentAppServicesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAgentAppServicesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAgentAppServicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentAppServicesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAgentAppServicesVO struct {
+	// <p>总数</p>
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// <p>数据列表</p>
+	Items []*AgentAppServiceVO `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
 // Predefined struct for user
@@ -2982,6 +3426,140 @@ type DescribeModelsSort struct {
 	Name *int64 `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
+// Predefined struct for user
+type DescribeServiceRequestParams struct {
+	// 实例ID
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// 业务ID
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+type DescribeServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// 业务ID
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+func (r *DescribeServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceID")
+	delete(f, "ID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServiceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeServiceResponseParams `json:"Response"`
+}
+
+func (r *DescribeServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServicesRequestParams struct {
+
+}
+
+type DescribeServicesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeServicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServicesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServicesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServicesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeServicesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeServicesResponseParams `json:"Response"`
+}
+
+func (r *DescribeServicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServicesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type FieldValueDTO struct {
+	// <p>属性</p>
+	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
+
+	// <p>值</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type HealthCheckConfigDTO struct {
+	// 健康检查路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheckPath *string `json:"HealthCheckPath,omitnil,omitempty" name:"HealthCheckPath"`
+
+	// 状态码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValidHealthCheckStatusCode []*int64 `json:"ValidHealthCheckStatusCode,omitnil,omitempty" name:"ValidHealthCheckStatusCode"`
+
+	// 请求的超时时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheckTimeout *int64 `json:"HealthCheckTimeout,omitnil,omitempty" name:"HealthCheckTimeout"`
+}
+
 type IDNameVO struct {
 	// 业务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3991,6 +4569,292 @@ func (r *ModifyModelServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyServiceRequestParams struct {
+	// <p>实例</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>里约应用ID</p>
+	//
+	// Deprecated: PaasID is deprecated.
+	PaasID *string `json:"PaasID,omitnil,omitempty" name:"PaasID"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>标签</p>
+	LabelIDs []*string `json:"LabelIDs,omitnil,omitempty" name:"LabelIDs"`
+
+	// <p>目录</p>
+	CategoryIDs []*string `json:"CategoryIDs,omitnil,omitempty" name:"CategoryIDs"`
+
+	// <p>鉴权方式</p>
+	//
+	// Deprecated: AuthType is deprecated.
+	AuthType *string `json:"AuthType,omitnil,omitempty" name:"AuthType"`
+
+	// <p>签名</p>
+	//
+	// Deprecated: SignType is deprecated.
+	SignType *string `json:"SignType,omitnil,omitempty" name:"SignType"`
+
+	// <p>登录方式</p>
+	//
+	// Deprecated: LoginTypes is deprecated.
+	LoginTypes []*string `json:"LoginTypes,omitnil,omitempty" name:"LoginTypes"`
+
+	// <p>负载方式</p>
+	TargetSelect *string `json:"TargetSelect,omitnil,omitempty" name:"TargetSelect"`
+
+	// <p>公开路径</p>
+	PubPath *string `json:"PubPath,omitnil,omitempty" name:"PubPath"`
+
+	// <p>请求方法</p>
+	RequestMethod *string `json:"RequestMethod,omitnil,omitempty" name:"RequestMethod"`
+
+	// <p>是否https</p>
+	HttpProtocolType *string `json:"HttpProtocolType,omitnil,omitempty" name:"HttpProtocolType"`
+
+	// <p>证书检查</p>
+	CheckTargetCertsError *bool `json:"CheckTargetCertsError,omitnil,omitempty" name:"CheckTargetCertsError"`
+
+	// <p>http协议类型</p>
+	HttpProtocolVersion *string `json:"HttpProtocolVersion,omitnil,omitempty" name:"HttpProtocolVersion"`
+
+	// <p>版本号</p>
+	Versions []*VersionDTO `json:"Versions,omitnil,omitempty" name:"Versions"`
+
+	// <p>目标路径</p>
+	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
+
+	// <p>入参</p>
+	RequestParamsValidatorStatus *bool `json:"RequestParamsValidatorStatus,omitnil,omitempty" name:"RequestParamsValidatorStatus"`
+
+	// <p>入参</p>
+	RequestParamsValidatorJsonInfoT *string `json:"RequestParamsValidatorJsonInfoT,omitnil,omitempty" name:"RequestParamsValidatorJsonInfoT"`
+
+	// <p>出参</p>
+	ResponseParamsValidatorStatus *bool `json:"ResponseParamsValidatorStatus,omitnil,omitempty" name:"ResponseParamsValidatorStatus"`
+
+	// <p>出参</p>
+	ResponseParamsValidatorJsonInfoT *string `json:"ResponseParamsValidatorJsonInfoT,omitnil,omitempty" name:"ResponseParamsValidatorJsonInfoT"`
+
+	// <p>流量控制</p>
+	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
+
+	// <p>流量控制</p>
+	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
+
+	// <p>健康检查</p>
+	HealthCheckStatus *bool `json:"HealthCheckStatus,omitnil,omitempty" name:"HealthCheckStatus"`
+
+	// <p>健康检查</p>
+	HealthCheckConfig *HealthCheckConfigDTO `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
+
+	// <p>格式转换</p>
+	SourceTypeStatus *bool `json:"SourceTypeStatus,omitnil,omitempty" name:"SourceTypeStatus"`
+
+	// <p>格式转换</p>
+	SourceTypeConfig *SourceTypeConfigDTO `json:"SourceTypeConfig,omitnil,omitempty" name:"SourceTypeConfig"`
+
+	// <p>IP白名单</p>
+	IpWhiteStatus *bool `json:"IpWhiteStatus,omitnil,omitempty" name:"IpWhiteStatus"`
+
+	// <p>IP白名单</p>
+	IpWhiteList []*string `json:"IpWhiteList,omitnil,omitempty" name:"IpWhiteList"`
+
+	// <p>IP黑名单</p>
+	IpBlackStatus *bool `json:"IpBlackStatus,omitnil,omitempty" name:"IpBlackStatus"`
+
+	// <p>IP黑名单</p>
+	IpBlackList []*string `json:"IpBlackList,omitnil,omitempty" name:"IpBlackList"`
+
+	// <p>插件</p>
+	PluginConfigs []*PluginConfigDTO `json:"PluginConfigs,omitnil,omitempty" name:"PluginConfigs"`
+
+	// <p>服务ID</p>
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+type ModifyServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例</p>
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>里约应用ID</p>
+	PaasID *string `json:"PaasID,omitnil,omitempty" name:"PaasID"`
+
+	// <p>描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>标签</p>
+	LabelIDs []*string `json:"LabelIDs,omitnil,omitempty" name:"LabelIDs"`
+
+	// <p>目录</p>
+	CategoryIDs []*string `json:"CategoryIDs,omitnil,omitempty" name:"CategoryIDs"`
+
+	// <p>鉴权方式</p>
+	AuthType *string `json:"AuthType,omitnil,omitempty" name:"AuthType"`
+
+	// <p>签名</p>
+	SignType *string `json:"SignType,omitnil,omitempty" name:"SignType"`
+
+	// <p>登录方式</p>
+	LoginTypes []*string `json:"LoginTypes,omitnil,omitempty" name:"LoginTypes"`
+
+	// <p>负载方式</p>
+	TargetSelect *string `json:"TargetSelect,omitnil,omitempty" name:"TargetSelect"`
+
+	// <p>公开路径</p>
+	PubPath *string `json:"PubPath,omitnil,omitempty" name:"PubPath"`
+
+	// <p>请求方法</p>
+	RequestMethod *string `json:"RequestMethod,omitnil,omitempty" name:"RequestMethod"`
+
+	// <p>是否https</p>
+	HttpProtocolType *string `json:"HttpProtocolType,omitnil,omitempty" name:"HttpProtocolType"`
+
+	// <p>证书检查</p>
+	CheckTargetCertsError *bool `json:"CheckTargetCertsError,omitnil,omitempty" name:"CheckTargetCertsError"`
+
+	// <p>http协议类型</p>
+	HttpProtocolVersion *string `json:"HttpProtocolVersion,omitnil,omitempty" name:"HttpProtocolVersion"`
+
+	// <p>版本号</p>
+	Versions []*VersionDTO `json:"Versions,omitnil,omitempty" name:"Versions"`
+
+	// <p>目标路径</p>
+	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
+
+	// <p>入参</p>
+	RequestParamsValidatorStatus *bool `json:"RequestParamsValidatorStatus,omitnil,omitempty" name:"RequestParamsValidatorStatus"`
+
+	// <p>入参</p>
+	RequestParamsValidatorJsonInfoT *string `json:"RequestParamsValidatorJsonInfoT,omitnil,omitempty" name:"RequestParamsValidatorJsonInfoT"`
+
+	// <p>出参</p>
+	ResponseParamsValidatorStatus *bool `json:"ResponseParamsValidatorStatus,omitnil,omitempty" name:"ResponseParamsValidatorStatus"`
+
+	// <p>出参</p>
+	ResponseParamsValidatorJsonInfoT *string `json:"ResponseParamsValidatorJsonInfoT,omitnil,omitempty" name:"ResponseParamsValidatorJsonInfoT"`
+
+	// <p>流量控制</p>
+	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
+
+	// <p>流量控制</p>
+	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
+
+	// <p>健康检查</p>
+	HealthCheckStatus *bool `json:"HealthCheckStatus,omitnil,omitempty" name:"HealthCheckStatus"`
+
+	// <p>健康检查</p>
+	HealthCheckConfig *HealthCheckConfigDTO `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
+
+	// <p>格式转换</p>
+	SourceTypeStatus *bool `json:"SourceTypeStatus,omitnil,omitempty" name:"SourceTypeStatus"`
+
+	// <p>格式转换</p>
+	SourceTypeConfig *SourceTypeConfigDTO `json:"SourceTypeConfig,omitnil,omitempty" name:"SourceTypeConfig"`
+
+	// <p>IP白名单</p>
+	IpWhiteStatus *bool `json:"IpWhiteStatus,omitnil,omitempty" name:"IpWhiteStatus"`
+
+	// <p>IP白名单</p>
+	IpWhiteList []*string `json:"IpWhiteList,omitnil,omitempty" name:"IpWhiteList"`
+
+	// <p>IP黑名单</p>
+	IpBlackStatus *bool `json:"IpBlackStatus,omitnil,omitempty" name:"IpBlackStatus"`
+
+	// <p>IP黑名单</p>
+	IpBlackList []*string `json:"IpBlackList,omitnil,omitempty" name:"IpBlackList"`
+
+	// <p>插件</p>
+	PluginConfigs []*PluginConfigDTO `json:"PluginConfigs,omitnil,omitempty" name:"PluginConfigs"`
+
+	// <p>服务ID</p>
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+}
+
+func (r *ModifyServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceID")
+	delete(f, "Name")
+	delete(f, "PaasID")
+	delete(f, "Description")
+	delete(f, "LabelIDs")
+	delete(f, "CategoryIDs")
+	delete(f, "AuthType")
+	delete(f, "SignType")
+	delete(f, "LoginTypes")
+	delete(f, "TargetSelect")
+	delete(f, "PubPath")
+	delete(f, "RequestMethod")
+	delete(f, "HttpProtocolType")
+	delete(f, "CheckTargetCertsError")
+	delete(f, "HttpProtocolVersion")
+	delete(f, "Versions")
+	delete(f, "TargetPath")
+	delete(f, "RequestParamsValidatorStatus")
+	delete(f, "RequestParamsValidatorJsonInfoT")
+	delete(f, "ResponseParamsValidatorStatus")
+	delete(f, "ResponseParamsValidatorJsonInfoT")
+	delete(f, "InvokeLimitConfigStatus")
+	delete(f, "InvokeLimitConfig")
+	delete(f, "HealthCheckStatus")
+	delete(f, "HealthCheckConfig")
+	delete(f, "SourceTypeStatus")
+	delete(f, "SourceTypeConfig")
+	delete(f, "IpWhiteStatus")
+	delete(f, "IpWhiteList")
+	delete(f, "IpBlackStatus")
+	delete(f, "IpBlackList")
+	delete(f, "PluginConfigs")
+	delete(f, "ID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyServiceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyServiceResponseParams `json:"Response"`
+}
+
+func (r *ModifyServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type PluginConfigDTO struct {
 	// 状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4071,6 +4935,390 @@ type SensitiveDataCheckConfigDTO struct {
 	ContextScope *string `json:"ContextScope,omitnil,omitempty" name:"ContextScope"`
 }
 
+type ServiceDatabaseOrderParam struct {
+	// <p>字段名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
+
+	// <p>排序 asc desc</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+}
+
+type ServiceDatabaseReqParam struct {
+	// <p>表字段名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
+
+	// <p>操作符</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>参数名/常量</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Val *string `json:"Val,omitnil,omitempty" name:"Val"`
+
+	// <p>参数类型</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValType *string `json:"ValType,omitnil,omitempty" name:"ValType"`
+
+	// <p>内部字段</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternalField *bool `json:"InternalField,omitnil,omitempty" name:"InternalField"`
+}
+
+type ServiceDatabaseRespParam struct {
+	// <p>源字段名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
+
+	// <p>目标字段名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type ServiceVO struct {
+	// <p>实例</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// <p>名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>里约应用ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: PaasID is deprecated.
+	PaasID *string `json:"PaasID,omitnil,omitempty" name:"PaasID"`
+
+	// <p>描述</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>标签</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelIDs []*string `json:"LabelIDs,omitnil,omitempty" name:"LabelIDs"`
+
+	// <p>目录</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CategoryIDs []*string `json:"CategoryIDs,omitnil,omitempty" name:"CategoryIDs"`
+
+	// <p>鉴权方式</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: AuthType is deprecated.
+	AuthType *string `json:"AuthType,omitnil,omitempty" name:"AuthType"`
+
+	// <p>签名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: SignType is deprecated.
+	SignType *string `json:"SignType,omitnil,omitempty" name:"SignType"`
+
+	// <p>登录方式</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: LoginTypes is deprecated.
+	LoginTypes []*string `json:"LoginTypes,omitnil,omitempty" name:"LoginTypes"`
+
+	// <p>负载方式</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetSelect *string `json:"TargetSelect,omitnil,omitempty" name:"TargetSelect"`
+
+	// <p>公开路径</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PubPath *string `json:"PubPath,omitnil,omitempty" name:"PubPath"`
+
+	// <p>请求方法</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestMethod *string `json:"RequestMethod,omitnil,omitempty" name:"RequestMethod"`
+
+	// <p>目标服务器</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetHosts []*TargetHostDTO `json:"TargetHosts,omitnil,omitempty" name:"TargetHosts"`
+
+	// <p>是否https</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpProtocolType *string `json:"HttpProtocolType,omitnil,omitempty" name:"HttpProtocolType"`
+
+	// <p>证书检查</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckTargetCertsError *bool `json:"CheckTargetCertsError,omitnil,omitempty" name:"CheckTargetCertsError"`
+
+	// <p>http协议类型</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpProtocolVersion *string `json:"HttpProtocolVersion,omitnil,omitempty" name:"HttpProtocolVersion"`
+
+	// <p>版本号</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Versions []*VersionDTO `json:"Versions,omitnil,omitempty" name:"Versions"`
+
+	// <p>目标路径</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
+
+	// <p>入参</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestParamsValidatorStatus *bool `json:"RequestParamsValidatorStatus,omitnil,omitempty" name:"RequestParamsValidatorStatus"`
+
+	// <p>入参</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestParamsValidatorJsonInfoT *string `json:"RequestParamsValidatorJsonInfoT,omitnil,omitempty" name:"RequestParamsValidatorJsonInfoT"`
+
+	// <p>出参</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResponseParamsValidatorStatus *bool `json:"ResponseParamsValidatorStatus,omitnil,omitempty" name:"ResponseParamsValidatorStatus"`
+
+	// <p>出参</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResponseParamsValidatorJsonInfoT *string `json:"ResponseParamsValidatorJsonInfoT,omitnil,omitempty" name:"ResponseParamsValidatorJsonInfoT"`
+
+	// <p>流量控制</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvokeLimitConfigStatus *bool `json:"InvokeLimitConfigStatus,omitnil,omitempty" name:"InvokeLimitConfigStatus"`
+
+	// <p>流量控制</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvokeLimitConfig *InvokeLimitConfigDTO `json:"InvokeLimitConfig,omitnil,omitempty" name:"InvokeLimitConfig"`
+
+	// <p>健康检查</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheckStatus *bool `json:"HealthCheckStatus,omitnil,omitempty" name:"HealthCheckStatus"`
+
+	// <p>健康检查</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheckConfig *HealthCheckConfigDTO `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
+
+	// <p>格式转换</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceTypeStatus *bool `json:"SourceTypeStatus,omitnil,omitempty" name:"SourceTypeStatus"`
+
+	// <p>格式转换</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceTypeConfig *SourceTypeConfigDTO `json:"SourceTypeConfig,omitnil,omitempty" name:"SourceTypeConfig"`
+
+	// <p>是否开启Token限流</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: TokenLimitStatus is deprecated.
+	TokenLimitStatus *bool `json:"TokenLimitStatus,omitnil,omitempty" name:"TokenLimitStatus"`
+
+	// <p>Token限流配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: TokenLimitConfig is deprecated.
+	TokenLimitConfig *TokenLimitConfigDTO `json:"TokenLimitConfig,omitnil,omitempty" name:"TokenLimitConfig"`
+
+	// <p>是否开启内容安全</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: TmsStatus is deprecated.
+	TmsStatus *bool `json:"TmsStatus,omitnil,omitempty" name:"TmsStatus"`
+
+	// <p>内容安全配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: TmsConfig is deprecated.
+	TmsConfig *TmsConfigDTO `json:"TmsConfig,omitnil,omitempty" name:"TmsConfig"`
+
+	// <p>IP白名单</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpWhiteStatus *bool `json:"IpWhiteStatus,omitnil,omitempty" name:"IpWhiteStatus"`
+
+	// <p>IP白名单</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpWhiteList []*string `json:"IpWhiteList,omitnil,omitempty" name:"IpWhiteList"`
+
+	// <p>IP黑名单</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpBlackStatus *bool `json:"IpBlackStatus,omitnil,omitempty" name:"IpBlackStatus"`
+
+	// <p>IP黑名单</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpBlackList []*string `json:"IpBlackList,omitnil,omitempty" name:"IpBlackList"`
+
+	// <p>插件</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PluginConfigs []*PluginConfigDTO `json:"PluginConfigs,omitnil,omitempty" name:"PluginConfigs"`
+
+	// <p>服务ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// <p>状态</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>预览地址</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>app</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	App *IDNameVO `json:"App,omitnil,omitempty" name:"App"`
+
+	// <p>目录</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Catalogs []*IDNameVO `json:"Catalogs,omitnil,omitempty" name:"Catalogs"`
+
+	// <p>标签</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Labels []*IDNameVO `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// <p>认证方式</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Logins []*IDNameVO `json:"Logins,omitnil,omitempty" name:"Logins"`
+
+	// <p>授权数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthAppNum *int64 `json:"AuthAppNum,omitnil,omitempty" name:"AuthAppNum"`
+
+	// <p>创建时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>最后修改时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTime *string `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
+
+	// <p>应用ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppID *int64 `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// <p>用户ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// <p>域名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>是否开启报文记录</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpenMessageLogStatus *bool `json:"OpenMessageLogStatus,omitnil,omitempty" name:"OpenMessageLogStatus"`
+
+	// <p>订阅页面的当前用户是否订阅了该API</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: CurrPaasIDSubscriptionID is deprecated.
+	CurrPaasIDSubscriptionID *string `json:"CurrPaasIDSubscriptionID,omitnil,omitempty" name:"CurrPaasIDSubscriptionID"`
+
+	// <p>目标服务类型 Restful Database Mock</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetServiceType *string `json:"TargetServiceType,omitnil,omitempty" name:"TargetServiceType"`
+
+	// <p>SQL模板</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlTemplate *SqlTemplate `json:"SqlTemplate,omitnil,omitempty" name:"SqlTemplate"`
+
+	// <p>目标Host类型 0 默认 1 vpc</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetHostType *int64 `json:"TargetHostType,omitnil,omitempty" name:"TargetHostType"`
+
+	// <p>后端服务类型 0 自定义 原始数据:ip/域名或vpc 1 后端服务 服务组</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetServiceHostType *uint64 `json:"TargetServiceHostType,omitnil,omitempty" name:"TargetServiceHostType"`
+
+	// <p>后端服务组ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetServerGroupID *string `json:"TargetServerGroupID,omitnil,omitempty" name:"TargetServerGroupID"`
+
+	// <p>后端服务组</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetServerGroup *TargetServerGroupDTO `json:"TargetServerGroup,omitnil,omitempty" name:"TargetServerGroup"`
+
+	// <p>自定义host</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomHttpHost *string `json:"CustomHttpHost,omitnil,omitempty" name:"CustomHttpHost"`
+
+	// <p>Http 请求host类型 useRequestHost 保持源请求host targetHost 修正为源站host  customHost 自定义host</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpHostType *string `json:"HttpHostType,omitnil,omitempty" name:"HttpHostType"`
+
+	// <p>mock响应状态码</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MockStatusCode *int64 `json:"MockStatusCode,omitnil,omitempty" name:"MockStatusCode"`
+
+	// <p>mock响应body</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MockBody *string `json:"MockBody,omitnil,omitempty" name:"MockBody"`
+
+	// <p>mock响应头</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MockHeaders []*FieldValueDTO `json:"MockHeaders,omitnil,omitempty" name:"MockHeaders"`
+
+	// <p>路径匹配类型: prefix 前缀匹配(不送默认); absolute 绝对匹配; regex正则匹配;</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PathMatchType *string `json:"PathMatchType,omitnil,omitempty" name:"PathMatchType"`
+
+	// <p>自定义匹配条件</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomMatch *CustomMatch `json:"CustomMatch,omitnil,omitempty" name:"CustomMatch"`
+
+	// <p>请求的超时时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// <p>绑定的mcp server数量</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	McpServerNum *int64 `json:"McpServerNum,omitnil,omitempty" name:"McpServerNum"`
+}
+
+type SimpleCondition struct {
+	// <p>字段名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>匹配方式: eq 等于;ne 不等于;regex 正则;</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// <p>字段值 或正则表达式</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type SourceTypeConfigDTO struct {
+	// json xml urlencoded amf0 amf3 hessian1 hessian2
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReqSourceType *string `json:"ReqSourceType,omitnil,omitempty" name:"ReqSourceType"`
+
+	// json xml urlencoded amf0 amf3 hessian1 hessian2
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReqTargetType *string `json:"ReqTargetType,omitnil,omitempty" name:"ReqTargetType"`
+
+	// json xml urlencoded amf0 amf3 hessian1 hessian2
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResSourceType *string `json:"ResSourceType,omitnil,omitempty" name:"ResSourceType"`
+
+	// json xml urlencoded amf0 amf3 hessian1 hessian2
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResTargetType *string `json:"ResTargetType,omitnil,omitempty" name:"ResTargetType"`
+}
+
+type SqlTemplate struct {
+	// <p>配置方式  script  脚本 wizard 向导</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbConfigMode *string `json:"DbConfigMode,omitnil,omitempty" name:"DbConfigMode"`
+
+	// <p>数据源ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSourceID *string `json:"DataSourceID,omitnil,omitempty" name:"DataSourceID"`
+
+	// <p>Sql代码</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// <p>向导模式配置</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WizardConfig *WizardConfig `json:"WizardConfig,omitnil,omitempty" name:"WizardConfig"`
+}
+
 type StartEndTime struct {
 	// 开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4100,6 +5348,32 @@ type TargetModelDTO struct {
 
 	// 权重
 	Rank *int64 `json:"Rank,omitnil,omitempty" name:"Rank"`
+}
+
+type TargetServerGroupDTO struct {
+	// <p>后端服务组ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// <p>名称</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>目标服务器列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetHosts []*TargetHostDTO `json:"TargetHosts,omitnil,omitempty" name:"TargetHosts"`
+
+	// <p>目标Host类型 0 默认 1 vpc</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetHostType *int64 `json:"TargetHostType,omitnil,omitempty" name:"TargetHostType"`
+
+	// <p>关联的服务数量</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceCount *uint64 `json:"ServiceCount,omitnil,omitempty" name:"ServiceCount"`
+
+	// <p>创建时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type TmsConfigDTO struct {
@@ -4173,4 +5447,40 @@ type ToolConfigVO struct {
 
 	// 绑定安全规则（响应）
 	McpSecurityRules []*BindMcpSecurityRuleVO `json:"McpSecurityRules,omitnil,omitempty" name:"McpSecurityRules"`
+}
+
+type VersionDTO struct {
+	// Version版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 目标路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
+}
+
+type WizardConfig struct {
+	// <p>表名</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbTable *string `json:"DbTable,omitnil,omitempty" name:"DbTable"`
+
+	// <p>是否分页</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbEnablePaging *bool `json:"DbEnablePaging,omitnil,omitempty" name:"DbEnablePaging"`
+
+	// <p>请求参数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbReqParams []*ServiceDatabaseReqParam `json:"DbReqParams,omitnil,omitempty" name:"DbReqParams"`
+
+	// <p>响应参数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbRespParams []*ServiceDatabaseRespParam `json:"DbRespParams,omitnil,omitempty" name:"DbRespParams"`
+
+	// <p>排序参数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbOrdParams []*ServiceDatabaseOrderParam `json:"DbOrdParams,omitnil,omitempty" name:"DbOrdParams"`
+
+	// <p>是否开启出参映射</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbEnableMappingResp *bool `json:"DbEnableMappingResp,omitnil,omitempty" name:"DbEnableMappingResp"`
 }

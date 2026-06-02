@@ -31,6 +31,11 @@ type AIOptimizerStatus struct {
 	TrainingProgress *int64 `json:"TrainingProgress,omitnil,omitempty" name:"TrainingProgress"`
 }
 
+type AIOptimizerTaskData struct {
+	// <p>模板ID</p>
+	TemplateID *string `json:"TemplateID,omitnil,omitempty" name:"TemplateID"`
+}
+
 type Ability struct {
 	// 是否支持从可用区
 	IsSupportSlaveZone *string `json:"IsSupportSlaveZone,omitnil,omitempty" name:"IsSupportSlaveZone"`
@@ -1500,133 +1505,136 @@ type BinlogItem struct {
 }
 
 type BizTaskInfo struct {
-	// 任务id
+	// <p>任务id</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 用户appid
+	// <p>用户appid</p>
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 集群id
+	// <p>集群id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 地域
+	// <p>地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 任务创建时间
+	// <p>任务创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 延迟执行时间
+	// <p>延迟执行时间</p>
 	DelayTime *string `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
 
-	// 任务失败信息
+	// <p>任务失败信息</p>
 	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 
-	// 异步任务流id
+	// <p>异步任务流id</p>
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 任务输入信息
+	// <p>任务输入信息</p>
 	Input *string `json:"Input,omitnil,omitempty" name:"Input"`
 
-	// 实例组id
+	// <p>实例组id</p>
 	//
 	// Deprecated: InstanceGrpId is deprecated.
 	InstanceGrpId *string `json:"InstanceGrpId,omitnil,omitempty" name:"InstanceGrpId"`
 
-	// 实例组id
+	// <p>实例组id</p>
 	InstanceGroupId *string `json:"InstanceGroupId,omitnil,omitempty" name:"InstanceGroupId"`
 
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 任务操作对象id
+	// <p>任务操作对象id</p>
 	ObjectId *string `json:"ObjectId,omitnil,omitempty" name:"ObjectId"`
 
-	// 任务操作对象类型
+	// <p>任务操作对象类型</p>
 	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
 
-	// 操作者uin
+	// <p>操作者uin</p>
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 任务输出信息
+	// <p>任务输出信息</p>
 	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
 
-	// 任务状态
+	// <p>任务状态</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 任务类型
+	// <p>任务类型</p>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 触发本任务的父任务ID
+	// <p>触发本任务的父任务ID</p>
 	TriggerTaskId *int64 `json:"TriggerTaskId,omitnil,omitempty" name:"TriggerTaskId"`
 
-	// 更新时间
+	// <p>更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 任务开始时间
+	// <p>任务开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 任务结束时间
+	// <p>任务结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 集群名称
+	// <p>集群名称</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 任务进度
+	// <p>任务进度</p>
 	Process *int64 `json:"Process,omitnil,omitempty" name:"Process"`
 
-	// 修改参数任务信息
+	// <p>修改参数任务信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: ModifyParamsData is deprecated.
 	ModifyParamsData []*ModifyParamsData `json:"ModifyParamsData,omitnil,omitempty" name:"ModifyParamsData"`
 
-	// 创建集群任务信息
+	// <p>创建集群任务信息</p>
 	CreateClustersData *CreateClustersData `json:"CreateClustersData,omitnil,omitempty" name:"CreateClustersData"`
 
-	// 集群回档任务信息
+	// <p>集群回档任务信息</p>
 	RollbackData *RollbackData `json:"RollbackData,omitnil,omitempty" name:"RollbackData"`
 
-	// 实例变配任务信息
+	// <p>实例变配任务信息</p>
 	ModifyInstanceData *ModifyInstanceData `json:"ModifyInstanceData,omitnil,omitempty" name:"ModifyInstanceData"`
 
-	// 手动备份任务信息
+	// <p>手动备份任务信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ManualBackupData *ManualBackupData `json:"ManualBackupData,omitnil,omitempty" name:"ManualBackupData"`
 
-	// 修改内核版本任务信息
+	// <p>修改内核版本任务信息</p>
 	ModifyDbVersionData *ModifyDbVersionData `json:"ModifyDbVersionData,omitnil,omitempty" name:"ModifyDbVersionData"`
 
-	// 集群可用区信息
+	// <p>集群可用区信息</p>
 	ClusterSlaveData *ClusterSlaveData `json:"ClusterSlaveData,omitnil,omitempty" name:"ClusterSlaveData"`
 
-	// 转换集群日志
+	// <p>转换集群日志</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SwitchClusterLogBin *SwitchClusterLogBin `json:"SwitchClusterLogBin,omitnil,omitempty" name:"SwitchClusterLogBin"`
 
-	// 修改实例参数数据
+	// <p>修改实例参数数据</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyInstanceParamsData *BizTaskModifyParamsData `json:"ModifyInstanceParamsData,omitnil,omitempty" name:"ModifyInstanceParamsData"`
 
-	// 维护时间
+	// <p>维护时间</p>
 	TaskMaintainInfo *TaskMaintainInfo `json:"TaskMaintainInfo,omitnil,omitempty" name:"TaskMaintainInfo"`
 
-	// 实例日志投递信息
+	// <p>实例日志投递信息</p>
 	InstanceCLSDeliveryInfos []*InstanceCLSDeliveryInfo `json:"InstanceCLSDeliveryInfos,omitnil,omitempty" name:"InstanceCLSDeliveryInfos"`
 
-	// 任务进度信息
+	// <p>任务进度信息</p>
 	TaskProgressInfo *TaskProgressInfo `json:"TaskProgressInfo,omitnil,omitempty" name:"TaskProgressInfo"`
 
-	// 全球数据库网络任务
+	// <p>全球数据库网络任务</p>
 	GdnTaskInfo *GdnTaskInfo `json:"GdnTaskInfo,omitnil,omitempty" name:"GdnTaskInfo"`
 
-	// 保险箱id
+	// <p>保险箱id</p>
 	VaultId *string `json:"VaultId,omitnil,omitempty" name:"VaultId"`
 
-	// 保险箱名称
+	// <p>保险箱名称</p>
 	VaultName *string `json:"VaultName,omitnil,omitempty" name:"VaultName"`
+
+	// <p>AI优化器任务信息</p>
+	AIOptimizerTaskData *AIOptimizerTaskData `json:"AIOptimizerTaskData,omitnil,omitempty" name:"AIOptimizerTaskData"`
 }
 
 type BizTaskModifyInstanceParam struct {

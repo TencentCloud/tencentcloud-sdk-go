@@ -14427,10 +14427,10 @@ type JobLogResult struct {
 }
 
 type KVPair struct {
-	// 配置的key值
+	// <p>配置的key值</p>
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 配置的value值
+	// <p>配置的value值</p>
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 

@@ -1666,9 +1666,6 @@ func (r *DescribeDBSArchiveLogsResponse) FromJsonString(s string) error {
 type DescribeDBSAvailableRecoveryTimeRequestParams struct {
 	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// <p>备份集ID,值来自 DescribeDBSBackupSets 接口返回</p>
-	BackupSetId *int64 `json:"BackupSetId,omitnil,omitempty" name:"BackupSetId"`
 }
 
 type DescribeDBSAvailableRecoveryTimeRequest struct {
@@ -1676,9 +1673,6 @@ type DescribeDBSAvailableRecoveryTimeRequest struct {
 	
 	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// <p>备份集ID,值来自 DescribeDBSBackupSets 接口返回</p>
-	BackupSetId *int64 `json:"BackupSetId,omitnil,omitempty" name:"BackupSetId"`
 }
 
 func (r *DescribeDBSAvailableRecoveryTimeRequest) ToJsonString() string {
@@ -1694,7 +1688,6 @@ func (r *DescribeDBSAvailableRecoveryTimeRequest) FromJsonString(s string) error
 		return err
 	}
 	delete(f, "InstanceId")
-	delete(f, "BackupSetId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBSAvailableRecoveryTimeRequest has unknown keys!", "")
 	}

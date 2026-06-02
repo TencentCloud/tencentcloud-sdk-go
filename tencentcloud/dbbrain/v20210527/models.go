@@ -3551,6 +3551,77 @@ func (r *DescribeDBSpaceStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDatabaseAutonomyStatusRequestParams struct {
+	// <p>实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>服务产品类型。取值：mongodb（云数据库 MongoDB）。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>自治功能类型。取值：AutoIndexAdvice（索引推荐）。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type DescribeDatabaseAutonomyStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>服务产品类型。取值：mongodb（云数据库 MongoDB）。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>自治功能类型。取值：AutoIndexAdvice（索引推荐）。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *DescribeDatabaseAutonomyStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseAutonomyStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabaseAutonomyStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabaseAutonomyStatusResponseParams struct {
+	// <p>自治功能开关状态。取值：0（关闭）、1（开启）。</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDatabaseAutonomyStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDatabaseAutonomyStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeDatabaseAutonomyStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseAutonomyStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDiagDBInstancesRequestParams struct {
 	// 是否是DBbrain支持的实例，固定传 true。
 	IsSupported *bool `json:"IsSupported,omitnil,omitempty" name:"IsSupported"`
@@ -9124,6 +9195,84 @@ func (r *UpdateAgentSwitchResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateAgentSwitchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateDatabaseAutonomyStatusRequestParams struct {
+	// <p>实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>服务产品类型。取值：mongodb（云数据库 MongoDB）。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>自治功能类型。取值：AutoIndexAdvice（索引推荐）。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>开关状态。取值：0（关闭）、1（开启）。</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type UpdateDatabaseAutonomyStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例 ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>服务产品类型。取值：mongodb（云数据库 MongoDB）。</p>
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// <p>自治功能类型。取值：AutoIndexAdvice（索引推荐）。</p>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>开关状态。取值：0（关闭）、1（开启）。</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *UpdateDatabaseAutonomyStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDatabaseAutonomyStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	delete(f, "Type")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDatabaseAutonomyStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateDatabaseAutonomyStatusResponseParams struct {
+	// <p>操作结果状态。取值：1（操作成功）。</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateDatabaseAutonomyStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateDatabaseAutonomyStatusResponseParams `json:"Response"`
+}
+
+func (r *UpdateDatabaseAutonomyStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDatabaseAutonomyStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

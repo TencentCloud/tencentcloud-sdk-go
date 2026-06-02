@@ -125,7 +125,7 @@ type ApproverInfo struct {
 	// <p>签署方经办人的证件号码，应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil,omitempty" name:"ApproverIdCardNumber"`
 
-	// <p>通知签署方经办人的方式,  有以下途径:</p><ul><li>  **sms**  :  (默认)短信</li><li>  **email**  :  邮箱</li><li>  **all**  :  短信+邮箱</li><li>   **none**   : 不通知</li></ul><p>注意：<br><code>如果使用的是通过文件发起合同（CreateFlowByFiles），NotifyType必须 是 sms 才会发送短信</code></p><p>枚举值：</p><ul><li>sms： 短信通知</li><li>email： 邮件通知</li><li>all： 短信+邮件通知</li><li>none： 不做任何形式的通知</li></ul>
+	// <p>通知签署方经办人的方式,  有以下途径:</p><ul><li>  **SMS**  :  (默认)短信</li><li>  **EMAIL**  :  邮箱</li><li>  **ALL**  :  短信+邮箱</li><li>   **NONE**   : 不通知</li></ul><p>注意：<br><code>如果使用的是通过文件发起合同（CreateFlowByFiles），NotifyType必须 是 sms 才会发送短信</code></p><p>枚举值：</p><ul><li>SMS： 短信通知</li><li>EMAIL： 邮件通知</li><li>ALL： 短信+邮件通知</li><li>NONE： 不做任何形式的通知</li></ul>
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
 	// <p>收据场景设置签署人角色类型, 可以设置如下<b>类型</b>:</p><ul><li> **1**  :收款人</li><li>   **2**   :开具人</li><li>   **3** :见证人</li></ul>注: <code>收据场景为白名单功能，使用前请联系对接的客户经理沟通。</code>
@@ -16510,7 +16510,7 @@ type FlowCreateApprover struct {
 	// <p>签署意愿确认渠道，默认为WEIXINAPP:人脸识别</p><p>注: &lt;font color=&quot;red&quot;&gt;不再使用, <code>用ApproverSignTypes签署人签署合同时的认证方式代替, 新客户可请用ApproverSignTypes来设置</code></p>
 	VerifyChannel []*string `json:"VerifyChannel,omitnil,omitempty" name:"VerifyChannel"`
 
-	// <p>通知签署方经办人的方式,  有以下途径:</p><ul><li>  **sms**  :  (默认)短信</li><li>  **email**  :  邮件</li><li>  **all**  :  邮件+短信</li><li>   **none**   : 不通知</li></ul><p>注: <code>既是发起方又是签署方时，不给此签署方发送短信</code></p><p>枚举值：</p><ul><li>sms： 短信通知</li><li>email： 邮件通知</li><li>all： 邮件通知+短信通知</li><li>none： 不做任何形式的通知</li></ul>
+	// <p>通知签署方经办人的方式,  有以下途径:</p><ul><li>  **SMS**  :  (默认)短信</li><li>  **EMAIL**  :  邮件</li><li>  **ALL**  :  邮件+短信</li><li>   **NONE**   : 不通知</li></ul><p>注: <code>既是发起方又是签署方时，不给此签署方发送短信</code></p><p>枚举值：</p><ul><li>SMS： 短信通知</li><li>EMAIL： 邮件通知</li><li>ALL： 邮件通知+短信通知</li><li>NONE： 不做任何形式的通知</li></ul>
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
 	// <p>合同强制需要阅读全文，无需传此参数</p>

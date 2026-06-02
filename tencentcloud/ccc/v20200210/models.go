@@ -5275,20 +5275,20 @@ func (r *DescribePSTNActiveSessionListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePredictiveDialingCampaignRequestParams struct {
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 任务 ID
+	// <p>任务 ID</p>
 	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
 }
 
 type DescribePredictiveDialingCampaignRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 任务 ID
+	// <p>任务 ID</p>
 	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
 }
 
@@ -5314,38 +5314,50 @@ func (r *DescribePredictiveDialingCampaignRequest) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribePredictiveDialingCampaignResponseParams struct {
-	// 任务 ID
+	// <p>任务 ID</p>
 	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
 
-	// 任务名称
+	// <p>任务名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 被叫呼叫顺序 0 随机 1 顺序
+	// <p>被叫呼叫顺序 0 随机 1 顺序</p>
 	CallOrder *int64 `json:"CallOrder,omitnil,omitempty" name:"CallOrder"`
 
-	// 使用的座席技能组 ID
+	// <p>使用的座席技能组 ID</p>
 	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
 
-	// 指定的 IVR ID
+	// <p>指定的 IVR ID</p>
 	IVRId *int64 `json:"IVRId,omitnil,omitempty" name:"IVRId"`
 
-	// 相同应用内多个任务运行优先级，从高到底 1 - 5
+	// <p>相同应用内多个任务运行优先级，从高到底 1 - 5</p>
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
-	// 预期呼损率，百分比，5 - 50
+	// <p>预期呼损率，百分比，5 - 50</p>
 	ExpectedAbandonRate *int64 `json:"ExpectedAbandonRate,omitnil,omitempty" name:"ExpectedAbandonRate"`
 
-	// 呼叫重试次数，0 - 2
+	// <p>呼叫重试次数，0 - 2</p>
 	RetryTimes *int64 `json:"RetryTimes,omitnil,omitempty" name:"RetryTimes"`
 
-	// 呼叫重试间隔时间，单位秒，60 - 86400
+	// <p>呼叫重试间隔时间，单位秒，60 - 86400</p>
 	RetryInterval *int64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
 
-	// 任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+	// <p>任务启动时间，Unix 时间戳，到此时间后会自动启动任务</p>
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+	// <p>任务结束时间，Unix 时间戳，到此时间后会自动终止任务</p>
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// <p>自定义变量</p>
+	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
+
+	// <p>UUI</p>
+	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
+
+	// <p>任务状态</p><p>枚举值：</p><ul><li>0： 待开始 </li><li>1： 进行中</li><li>2： 已暂停</li><li>3： 已终止</li><li>4： 已完成</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>任务状态原因 0 正常 1 手动结束 2 超时结束</p>
+	StatusReason *int64 `json:"StatusReason,omitnil,omitempty" name:"StatusReason"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5395,39 +5407,45 @@ type DescribePredictiveDialingCampaignsElement struct {
 
 // Predefined struct for user
 type DescribePredictiveDialingCampaignsRequestParams struct {
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 分页尺寸，最大为 100
+	// <p>分页尺寸，最大为 100</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 分页页码，从 0 开始
+	// <p>分页页码，从 0 开始</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 查询任务列表名称关键字
+	// <p>查询任务列表名称关键字</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 查询任务列表技能组 ID
+	// <p>查询任务列表技能组 ID</p>
 	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
+
+	// <p>任务 ID</p>
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
 }
 
 type DescribePredictiveDialingCampaignsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	// <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 分页尺寸，最大为 100
+	// <p>分页尺寸，最大为 100</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 分页页码，从 0 开始
+	// <p>分页页码，从 0 开始</p>
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 查询任务列表名称关键字
+	// <p>查询任务列表名称关键字</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 查询任务列表技能组 ID
+	// <p>查询任务列表技能组 ID</p>
 	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
+
+	// <p>任务 ID</p>
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
 }
 
 func (r *DescribePredictiveDialingCampaignsRequest) ToJsonString() string {
@@ -5447,6 +5465,7 @@ func (r *DescribePredictiveDialingCampaignsRequest) FromJsonString(s string) err
 	delete(f, "PageNumber")
 	delete(f, "Name")
 	delete(f, "SkillGroupId")
+	delete(f, "CampaignId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePredictiveDialingCampaignsRequest has unknown keys!", "")
 	}
@@ -5455,10 +5474,10 @@ func (r *DescribePredictiveDialingCampaignsRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribePredictiveDialingCampaignsResponseParams struct {
-	// 数据总量
+	// <p>数据总量</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 数据
+	// <p>数据</p>
 	CampaignList []*DescribePredictiveDialingCampaignsElement `json:"CampaignList,omitnil,omitempty" name:"CampaignList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

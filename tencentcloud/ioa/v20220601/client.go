@@ -1563,7 +1563,7 @@ func NewDescribeDirectAccountGroupResourcesResponse() (response *DescribeDirectA
 }
 
 // DescribeDirectAccountGroupResources
-// 列表账户组直接关联的资源，私有化调用path为：capi/Assets/DescribeDirectAccountGroupResources
+// 列表账户组直接关联的资源，私有化调用path为：capi/NGN/DescribeDirectAccountGroupResources
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
@@ -1573,7 +1573,7 @@ func (c *Client) DescribeDirectAccountGroupResources(request *DescribeDirectAcco
 }
 
 // DescribeDirectAccountGroupResources
-// 列表账户组直接关联的资源，私有化调用path为：capi/Assets/DescribeDirectAccountGroupResources
+// 列表账户组直接关联的资源，私有化调用path为：capi/NGN/DescribeDirectAccountGroupResources
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"

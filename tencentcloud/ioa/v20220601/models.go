@@ -3308,7 +3308,7 @@ func (r *DescribeLocalAccountsResponse) FromJsonString(s string) error {
 }
 
 type DescribeResourceGrantedAccountGroupsData struct {
-	//  
+	// <p>授权信息</p>
 	Items []*GrantedAccountGroupItem `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
@@ -3371,10 +3371,10 @@ func (r *DescribeResourceGrantedAccountGroupsResponse) FromJsonString(s string) 
 }
 
 type DescribeResourceGrantedAccountsData struct {
-	// 总数
+	// <p>总数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	//  
+	// <p>授权信息</p>
 	Items []*GrantedAccountItem `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
@@ -3436,7 +3436,7 @@ func (r *DescribeResourceGrantedAccountsResponse) FromJsonString(s string) error
 }
 
 type DescribeResourceGrantedVirtualGroupsData struct {
-	//  
+	// <p>授权信息</p>
 	Items []*GrantedVirtualGroupItem `json:"Items,omitnil,omitempty" name:"Items"`
 }
 

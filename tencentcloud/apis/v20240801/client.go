@@ -177,6 +177,50 @@ func (c *Client) CreateAgentAppModelServicesWithContext(ctx context.Context, req
     return
 }
 
+func NewCreateAgentAppServicesRequest() (request *CreateAgentAppServicesRequest) {
+    request = &CreateAgentAppServicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apis", APIVersion, "CreateAgentAppServices")
+    
+    
+    return
+}
+
+func NewCreateAgentAppServicesResponse() (response *CreateAgentAppServicesResponse) {
+    response = &CreateAgentAppServicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAgentAppServices
+// 应用关联API
+func (c *Client) CreateAgentAppServices(request *CreateAgentAppServicesRequest) (response *CreateAgentAppServicesResponse, err error) {
+    return c.CreateAgentAppServicesWithContext(context.Background(), request)
+}
+
+// CreateAgentAppServices
+// 应用关联API
+func (c *Client) CreateAgentAppServicesWithContext(ctx context.Context, request *CreateAgentAppServicesRequest) (response *CreateAgentAppServicesResponse, err error) {
+    if request == nil {
+        request = NewCreateAgentAppServicesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apis", APIVersion, "CreateAgentAppServices")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAgentAppServices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAgentAppServicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAgentCredentialRequest() (request *CreateAgentCredentialRequest) {
     request = &CreateAgentCredentialRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -353,6 +397,50 @@ func (c *Client) CreateModelServiceWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateServiceRequest() (request *CreateServiceRequest) {
+    request = &CreateServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apis", APIVersion, "CreateService")
+    
+    
+    return
+}
+
+func NewCreateServiceResponse() (response *CreateServiceResponse) {
+    response = &CreateServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateService
+// 创建服务
+func (c *Client) CreateService(request *CreateServiceRequest) (response *CreateServiceResponse, err error) {
+    return c.CreateServiceWithContext(context.Background(), request)
+}
+
+// CreateService
+// 创建服务
+func (c *Client) CreateServiceWithContext(ctx context.Context, request *CreateServiceRequest) (response *CreateServiceResponse, err error) {
+    if request == nil {
+        request = NewCreateServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apis", APIVersion, "CreateService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAgentAppRequest() (request *DeleteAgentAppRequest) {
     request = &DeleteAgentAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -481,6 +569,50 @@ func (c *Client) DeleteAgentAppModelServicesWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDeleteAgentAppModelServicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAgentAppServicesRequest() (request *DeleteAgentAppServicesRequest) {
+    request = &DeleteAgentAppServicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apis", APIVersion, "DeleteAgentAppServices")
+    
+    
+    return
+}
+
+func NewDeleteAgentAppServicesResponse() (response *DeleteAgentAppServicesResponse) {
+    response = &DeleteAgentAppServicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAgentAppServices
+// 应用API关联解除
+func (c *Client) DeleteAgentAppServices(request *DeleteAgentAppServicesRequest) (response *DeleteAgentAppServicesResponse, err error) {
+    return c.DeleteAgentAppServicesWithContext(context.Background(), request)
+}
+
+// DeleteAgentAppServices
+// 应用API关联解除
+func (c *Client) DeleteAgentAppServicesWithContext(ctx context.Context, request *DeleteAgentAppServicesRequest) (response *DeleteAgentAppServicesResponse, err error) {
+    if request == nil {
+        request = NewDeleteAgentAppServicesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apis", APIVersion, "DeleteAgentAppServices")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAgentAppServices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAgentAppServicesResponse()
     err = c.Send(request, response)
     return
 }
@@ -661,6 +793,50 @@ func (c *Client) DeleteModelServiceWithContext(ctx context.Context, request *Del
     return
 }
 
+func NewDeleteServiceRequest() (request *DeleteServiceRequest) {
+    request = &DeleteServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apis", APIVersion, "DeleteService")
+    
+    
+    return
+}
+
+func NewDeleteServiceResponse() (response *DeleteServiceResponse) {
+    response = &DeleteServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteService
+// 删除服务
+func (c *Client) DeleteService(request *DeleteServiceRequest) (response *DeleteServiceResponse, err error) {
+    return c.DeleteServiceWithContext(context.Background(), request)
+}
+
+// DeleteService
+// 删除服务
+func (c *Client) DeleteServiceWithContext(ctx context.Context, request *DeleteServiceRequest) (response *DeleteServiceResponse, err error) {
+    if request == nil {
+        request = NewDeleteServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apis", APIVersion, "DeleteService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAgentAppRequest() (request *DescribeAgentAppRequest) {
     request = &DescribeAgentAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -789,6 +965,50 @@ func (c *Client) DescribeAgentAppModelServicesWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeAgentAppModelServicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAgentAppServicesRequest() (request *DescribeAgentAppServicesRequest) {
+    request = &DescribeAgentAppServicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apis", APIVersion, "DescribeAgentAppServices")
+    
+    
+    return
+}
+
+func NewDescribeAgentAppServicesResponse() (response *DescribeAgentAppServicesResponse) {
+    response = &DescribeAgentAppServicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAgentAppServices
+// 创建app
+func (c *Client) DescribeAgentAppServices(request *DescribeAgentAppServicesRequest) (response *DescribeAgentAppServicesResponse, err error) {
+    return c.DescribeAgentAppServicesWithContext(context.Background(), request)
+}
+
+// DescribeAgentAppServices
+// 创建app
+func (c *Client) DescribeAgentAppServicesWithContext(ctx context.Context, request *DescribeAgentAppServicesRequest) (response *DescribeAgentAppServicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentAppServicesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apis", APIVersion, "DescribeAgentAppServices")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgentAppServices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAgentAppServicesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1189,6 +1409,94 @@ func (c *Client) DescribeModelsWithContext(ctx context.Context, request *Describ
     return
 }
 
+func NewDescribeServiceRequest() (request *DescribeServiceRequest) {
+    request = &DescribeServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apis", APIVersion, "DescribeService")
+    
+    
+    return
+}
+
+func NewDescribeServiceResponse() (response *DescribeServiceResponse) {
+    response = &DescribeServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeService
+// 查询服务详情
+func (c *Client) DescribeService(request *DescribeServiceRequest) (response *DescribeServiceResponse, err error) {
+    return c.DescribeServiceWithContext(context.Background(), request)
+}
+
+// DescribeService
+// 查询服务详情
+func (c *Client) DescribeServiceWithContext(ctx context.Context, request *DescribeServiceRequest) (response *DescribeServiceResponse, err error) {
+    if request == nil {
+        request = NewDescribeServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apis", APIVersion, "DescribeService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeServicesRequest() (request *DescribeServicesRequest) {
+    request = &DescribeServicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apis", APIVersion, "DescribeServices")
+    
+    
+    return
+}
+
+func NewDescribeServicesResponse() (response *DescribeServicesResponse) {
+    response = &DescribeServicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeServices
+// 查询服务列表
+func (c *Client) DescribeServices(request *DescribeServicesRequest) (response *DescribeServicesResponse, err error) {
+    return c.DescribeServicesWithContext(context.Background(), request)
+}
+
+// DescribeServices
+// 查询服务列表
+func (c *Client) DescribeServicesWithContext(ctx context.Context, request *DescribeServicesRequest) (response *DescribeServicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeServicesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apis", APIVersion, "DescribeServices")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeServicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAgentAppRequest() (request *ModifyAgentAppRequest) {
     request = &ModifyAgentAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1449,6 +1757,50 @@ func (c *Client) ModifyModelServiceWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyModelServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyServiceRequest() (request *ModifyServiceRequest) {
+    request = &ModifyServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apis", APIVersion, "ModifyService")
+    
+    
+    return
+}
+
+func NewModifyServiceResponse() (response *ModifyServiceResponse) {
+    response = &ModifyServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyService
+// 修改服务
+func (c *Client) ModifyService(request *ModifyServiceRequest) (response *ModifyServiceResponse, err error) {
+    return c.ModifyServiceWithContext(context.Background(), request)
+}
+
+// ModifyService
+// 修改服务
+func (c *Client) ModifyServiceWithContext(ctx context.Context, request *ModifyServiceRequest) (response *ModifyServiceResponse, err error) {
+    if request == nil {
+        request = NewModifyServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "apis", APIVersion, "ModifyService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyServiceResponse()
     err = c.Send(request, response)
     return
 }
