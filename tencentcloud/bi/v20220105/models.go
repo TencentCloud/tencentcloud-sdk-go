@@ -20,6 +20,80 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type ApiDatasourceConfig struct {
+	// API数据源解析结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldsJsonData *string `json:"FieldsJsonData,omitnil,omitempty" name:"FieldsJsonData"`
+
+	// 连接类型1:直连 2:抽取
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectionType *uint64 `json:"ConnectionType,omitnil,omitempty" name:"ConnectionType"`
+
+	// 抽取频率配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrequencyConfig *FrequencyConfig `json:"FrequencyConfig,omitnil,omitempty" name:"FrequencyConfig"`
+
+	// 请求URL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 1:GET 2:POST
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestMethod *uint64 `json:"RequestMethod,omitnil,omitempty" name:"RequestMethod"`
+
+	// 请求头
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestHeader *string `json:"RequestHeader,omitnil,omitempty" name:"RequestHeader"`
+
+	// 请求参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestParams *string `json:"RequestParams,omitnil,omitempty" name:"RequestParams"`
+
+	// 请求体
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestBody *string `json:"RequestBody,omitnil,omitempty" name:"RequestBody"`
+
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 1: 无鉴权 2:BASIC_AUTH
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthorizationType *uint64 `json:"AuthorizationType,omitnil,omitempty" name:"AuthorizationType"`
+
+	// 表id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *uint64 `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 路径DbName映射
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JsonPathDbNameMap *string `json:"JsonPathDbNameMap,omitnil,omitempty" name:"JsonPathDbNameMap"`
+
+	// 鉴权API
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthApi *string `json:"AuthApi,omitnil,omitempty" name:"AuthApi"`
+
+	// 应用Key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
+
+	// 应用密钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppSecret *string `json:"AppSecret,omitnil,omitempty" name:"AppSecret"`
+
+	// 数据密钥Key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// 数据密钥初始化向量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretIv *string `json:"SecretIv,omitnil,omitempty" name:"SecretIv"`
+}
+
 type ApiKeyAuthApplyVO struct {
 	// <p>id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -399,6 +473,223 @@ func (r *CreateAuthApiKeyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAuthApiKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDataTableRequestParams struct {
+	// 后端提供字典：数据表类型，1、数据库建表，2、SQL建表，3、Excel上传，4、API接入，5、腾讯文档，6、云数据库，7、手工输入，8、关联查询
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 数据表名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 无
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 所属文件夹
+	FoldId *uint64 `json:"FoldId,omitnil,omitempty" name:"FoldId"`
+
+	// 数据源Id
+	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 物理表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// sql语句
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// excel地址
+	ExcelUrl *string `json:"ExcelUrl,omitnil,omitempty" name:"ExcelUrl"`
+
+	// 字段配置
+	Fields []*TableField `json:"Fields,omitnil,omitempty" name:"Fields"`
+
+	// 多表关联使用: 1:数据源原表,2:本地表,3:Excel表,4:API表
+	TableNodeType *uint64 `json:"TableNodeType,omitnil,omitempty" name:"TableNodeType"`
+
+	// 多表关联的原始表信息
+	Tables []*JoinSourceTable `json:"Tables,omitnil,omitempty" name:"Tables"`
+
+	// 多表关联的关联信息
+	Joins []*JoinRelation `json:"Joins,omitnil,omitempty" name:"Joins"`
+
+	// 补充信息，如api数据源信息，腾讯文档接入信息等
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 是否是异步
+	AsyncRequest *bool `json:"AsyncRequest,omitnil,omitempty" name:"AsyncRequest"`
+
+	// 依赖的异步事务id
+	ParentTranId *string `json:"ParentTranId,omitnil,omitempty" name:"ParentTranId"`
+
+	// API数据源配置
+	ApiDatasourceConfig *ApiDatasourceConfig `json:"ApiDatasourceConfig,omitnil,omitempty" name:"ApiDatasourceConfig"`
+
+	// 1
+	ParamList []*ParamCreateDTO `json:"ParamList,omitnil,omitempty" name:"ParamList"`
+
+	// dlc高级参数
+	DlcExtInfo *string `json:"DlcExtInfo,omitnil,omitempty" name:"DlcExtInfo"`
+
+	// 是否查询数据库
+	QueryDbData *string `json:"QueryDbData,omitnil,omitempty" name:"QueryDbData"`
+
+	// 数据表备注
+	TableComment *string `json:"TableComment,omitnil,omitempty" name:"TableComment"`
+
+	// 是否查询字段备注
+	QueryFieldRemark *int64 `json:"QueryFieldRemark,omitnil,omitempty" name:"QueryFieldRemark"`
+
+	// 字段备注列表
+	FieldRemarkList []*FieldRemarkDTO `json:"FieldRemarkList,omitnil,omitempty" name:"FieldRemarkList"`
+}
+
+type CreateDataTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 后端提供字典：数据表类型，1、数据库建表，2、SQL建表，3、Excel上传，4、API接入，5、腾讯文档，6、云数据库，7、手工输入，8、关联查询
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 数据表名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 无
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 所属文件夹
+	FoldId *uint64 `json:"FoldId,omitnil,omitempty" name:"FoldId"`
+
+	// 数据源Id
+	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 物理表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// sql语句
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// excel地址
+	ExcelUrl *string `json:"ExcelUrl,omitnil,omitempty" name:"ExcelUrl"`
+
+	// 字段配置
+	Fields []*TableField `json:"Fields,omitnil,omitempty" name:"Fields"`
+
+	// 多表关联使用: 1:数据源原表,2:本地表,3:Excel表,4:API表
+	TableNodeType *uint64 `json:"TableNodeType,omitnil,omitempty" name:"TableNodeType"`
+
+	// 多表关联的原始表信息
+	Tables []*JoinSourceTable `json:"Tables,omitnil,omitempty" name:"Tables"`
+
+	// 多表关联的关联信息
+	Joins []*JoinRelation `json:"Joins,omitnil,omitempty" name:"Joins"`
+
+	// 补充信息，如api数据源信息，腾讯文档接入信息等
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 是否是异步
+	AsyncRequest *bool `json:"AsyncRequest,omitnil,omitempty" name:"AsyncRequest"`
+
+	// 依赖的异步事务id
+	ParentTranId *string `json:"ParentTranId,omitnil,omitempty" name:"ParentTranId"`
+
+	// API数据源配置
+	ApiDatasourceConfig *ApiDatasourceConfig `json:"ApiDatasourceConfig,omitnil,omitempty" name:"ApiDatasourceConfig"`
+
+	// 1
+	ParamList []*ParamCreateDTO `json:"ParamList,omitnil,omitempty" name:"ParamList"`
+
+	// dlc高级参数
+	DlcExtInfo *string `json:"DlcExtInfo,omitnil,omitempty" name:"DlcExtInfo"`
+
+	// 是否查询数据库
+	QueryDbData *string `json:"QueryDbData,omitnil,omitempty" name:"QueryDbData"`
+
+	// 数据表备注
+	TableComment *string `json:"TableComment,omitnil,omitempty" name:"TableComment"`
+
+	// 是否查询字段备注
+	QueryFieldRemark *int64 `json:"QueryFieldRemark,omitnil,omitempty" name:"QueryFieldRemark"`
+
+	// 字段备注列表
+	FieldRemarkList []*FieldRemarkDTO `json:"FieldRemarkList,omitnil,omitempty" name:"FieldRemarkList"`
+}
+
+func (r *CreateDataTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDataTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "Name")
+	delete(f, "ProjectId")
+	delete(f, "FoldId")
+	delete(f, "DatasourceId")
+	delete(f, "TableName")
+	delete(f, "Sql")
+	delete(f, "ExcelUrl")
+	delete(f, "Fields")
+	delete(f, "TableNodeType")
+	delete(f, "Tables")
+	delete(f, "Joins")
+	delete(f, "ExtInfo")
+	delete(f, "AsyncRequest")
+	delete(f, "ParentTranId")
+	delete(f, "ApiDatasourceConfig")
+	delete(f, "ParamList")
+	delete(f, "DlcExtInfo")
+	delete(f, "QueryDbData")
+	delete(f, "TableComment")
+	delete(f, "QueryFieldRemark")
+	delete(f, "FieldRemarkList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDataTableResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// 成功返回数据表的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *IdDTO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// 错误提示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDataTableResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDataTableResponseParams `json:"Response"`
+}
+
+func (r *CreateDataTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDataTableResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3508,6 +3799,145 @@ func (r *DescribeResourceUserGroupPageListResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
+type DescribeSourceFieldListRequestParams struct {
+	// 数据源Id
+	DataSourceId *int64 `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
+
+	// 表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// sql内容
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// 项目id
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 是否是异步
+	AsyncRequest *bool `json:"AsyncRequest,omitnil,omitempty" name:"AsyncRequest"`
+
+	// 异步事务id
+	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
+
+	// 11
+	ParamList []*ParamCreateDTO `json:"ParamList,omitnil,omitempty" name:"ParamList"`
+
+	// DLC扩展参数
+	DlcExtInfo *string `json:"DlcExtInfo,omitnil,omitempty" name:"DlcExtInfo"`
+
+	// 是否查询数据库
+	QueryDbData *string `json:"QueryDbData,omitnil,omitempty" name:"QueryDbData"`
+
+	// 数据表 Id
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 后端提供字典：数据表类型，1、数据库建表，2、SQL建表，3、Excel上传，4、API接入，5、腾讯文档，6、云数据库，7、手工输入，8、关联查询
+	TableType *uint64 `json:"TableType,omitnil,omitempty" name:"TableType"`
+}
+
+type DescribeSourceFieldListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源Id
+	DataSourceId *int64 `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
+
+	// 表名
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// sql内容
+	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
+
+	// 项目id
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 是否是异步
+	AsyncRequest *bool `json:"AsyncRequest,omitnil,omitempty" name:"AsyncRequest"`
+
+	// 异步事务id
+	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
+
+	// 11
+	ParamList []*ParamCreateDTO `json:"ParamList,omitnil,omitempty" name:"ParamList"`
+
+	// DLC扩展参数
+	DlcExtInfo *string `json:"DlcExtInfo,omitnil,omitempty" name:"DlcExtInfo"`
+
+	// 是否查询数据库
+	QueryDbData *string `json:"QueryDbData,omitnil,omitempty" name:"QueryDbData"`
+
+	// 数据表 Id
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 后端提供字典：数据表类型，1、数据库建表，2、SQL建表，3、Excel上传，4、API接入，5、腾讯文档，6、云数据库，7、手工输入，8、关联查询
+	TableType *uint64 `json:"TableType,omitnil,omitempty" name:"TableType"`
+}
+
+func (r *DescribeSourceFieldListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSourceFieldListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataSourceId")
+	delete(f, "TableName")
+	delete(f, "Sql")
+	delete(f, "ProjectId")
+	delete(f, "AsyncRequest")
+	delete(f, "TranId")
+	delete(f, "ParamList")
+	delete(f, "DlcExtInfo")
+	delete(f, "QueryDbData")
+	delete(f, "TableId")
+	delete(f, "TableType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSourceFieldListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSourceFieldListResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// 额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// 信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 表中字段的列表
+	Data *TableColumnListData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSourceFieldListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSourceFieldListResponseParams `json:"Response"`
+}
+
+func (r *DescribeSourceFieldListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSourceFieldListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUserGroupInfoRequestParams struct {
 	// 用户组id
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -4258,6 +4688,26 @@ type EmbedTokenInfo struct {
 	ConfigParam *string `json:"ConfigParam,omitnil,omitempty" name:"ConfigParam"`
 }
 
+type EmptyValue struct {
+	// 空值展示样式类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 空值展示样式类型对应具体的展示字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Custom *string `json:"Custom,omitnil,omitempty" name:"Custom"`
+}
+
+type EmptyValueConfig struct {
+	// 数值类字段空值样式配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Number *EmptyValue `json:"Number,omitnil,omitempty" name:"Number"`
+
+	// 字符串字段空置样式配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	String *EmptyValue `json:"String,omitnil,omitempty" name:"String"`
+}
+
 type ErrorInfo struct {
 	// 错误说明字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4399,6 +4849,46 @@ func (r *ExportScreenPageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type FieldRemarkDTO struct {
+	// 字段名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
+
+	// 字段备注列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comment []*string `json:"Comment,omitnil,omitempty" name:"Comment"`
+}
+
+type FrequencyConfig struct {
+	// 周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Frequency *string `json:"Frequency,omitnil,omitempty" name:"Frequency"`
+
+	// 日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Dates []*int64 `json:"Dates,omitnil,omitempty" name:"Dates"`
+
+	// 时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// 间隔时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntervalTime *uint64 `json:"IntervalTime,omitnil,omitempty" name:"IntervalTime"`
+
+	// 1:SECOND,2:MINUTE,3:HOUR,4:DAY
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntervalTimeUnit *uint64 `json:"IntervalTimeUnit,omitnil,omitempty" name:"IntervalTimeUnit"`
+
+	// 小时列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hours []*int64 `json:"Hours,omitnil,omitempty" name:"Hours"`
+
+	// 分钟列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Minute []*int64 `json:"Minute,omitnil,omitempty" name:"Minute"`
+}
+
 type IdDTO struct {
 	// 请求id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4423,6 +4913,76 @@ type IdDTO struct {
 	// 3: 处理失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranStatus *int64 `json:"TranStatus,omitnil,omitempty" name:"TranStatus"`
+}
+
+type JoinRelation struct {
+	// 表关联关系id,前端使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JoinId *string `json:"JoinId,omitnil,omitempty" name:"JoinId"`
+
+	// 原表节点id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceTableNodeId *string `json:"SourceTableNodeId,omitnil,omitempty" name:"SourceTableNodeId"`
+
+	// 目标表节点id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetTableNodeId *string `json:"TargetTableNodeId,omitnil,omitempty" name:"TargetTableNodeId"`
+
+	// 多表关联的关联类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JoinType *string `json:"JoinType,omitnil,omitempty" name:"JoinType"`
+
+	// 多表关联的字段列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fields []*JoinRelationField `json:"Fields,omitnil,omitempty" name:"Fields"`
+}
+
+type JoinRelationField struct {
+	// 字段关联关系id,前端使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldJoinId *string `json:"FieldJoinId,omitnil,omitempty" name:"FieldJoinId"`
+
+	// 原表字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceField *TableField `json:"SourceField,omitnil,omitempty" name:"SourceField"`
+
+	// 目标表字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetField *TableField `json:"TargetField,omitnil,omitempty" name:"TargetField"`
+}
+
+type JoinSourceTable struct {
+	// 1:数据源原表,2:本地表,3:Excel表,4:API表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableNodeType *uint64 `json:"TableNodeType,omitnil,omitempty" name:"TableNodeType"`
+
+	// 原始表节点Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableNodeId *string `json:"TableNodeId,omitnil,omitempty" name:"TableNodeId"`
+
+	// 父节点id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentId *string `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+
+	// 非必填, 数据源原表没有ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *string `json:"TableId,omitnil,omitempty" name:"TableId"`
+
+	// 必填,数据源原表用原始表名, 其他类型用BI的逻辑表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 原始表需要展示的字段列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fields []*TableField `json:"Fields,omitnil,omitempty" name:"Fields"`
+
+	// 数据源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *uint64 `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 非必填,前端展示的数据源别名,excel建表需要
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableAlias *string `json:"TableAlias,omitnil,omitempty" name:"TableAlias"`
 }
 
 // Predefined struct for user
@@ -5807,6 +6367,32 @@ type PageScreenVO struct {
 	WidgetId *string `json:"WidgetId,omitnil,omitempty" name:"WidgetId"`
 }
 
+type ParamCreateDTO struct {
+	// 参数名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
+
+	// 默认值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
+
+	// 参数类型，string/datetime/number
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamType *string `json:"ParamType,omitnil,omitempty" name:"ParamType"`
+
+	// 格式化类型，yyyy-MM-dd HH:mm:ss.SSS（只有时间必填）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FormatRule *string `json:"FormatRule,omitnil,omitempty" name:"FormatRule"`
+
+	// 复杂类型，格式化的另一种表达，例如YYYY-MM
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComplexType *string `json:"ComplexType,omitnil,omitempty" name:"ComplexType"`
+
+	// 作用域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
+}
+
 type PermissionComponent struct {
 	// 权限值
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6314,6 +6900,204 @@ type RowColumnTagValue struct {
 	// 标签值列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type TableColumn struct {
+	// 列名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// 列的别名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
+
+	// 列的类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
+
+	// 段类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldType *string `json:"FieldType,omitnil,omitempty" name:"FieldType"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mark *string `json:"Mark,omitnil,omitempty" name:"Mark"`
+
+	// excel名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExcelName *string `json:"ExcelName,omitnil,omitempty" name:"ExcelName"`
+
+	// 关联的字典表Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DictId *int64 `json:"DictId,omitnil,omitempty" name:"DictId"`
+
+	// 关联的字典表表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DictName *string `json:"DictName,omitnil,omitempty" name:"DictName"`
+
+	// 多表关联新增字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableNodeId *string `json:"TableNodeId,omitnil,omitempty" name:"TableNodeId"`
+
+	// 字段所属的表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 用户设置的带格式的目标复杂格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldComplexType *string `json:"FieldComplexType,omitnil,omitempty" name:"FieldComplexType"`
+
+	// 格式规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FormatRule *string `json:"FormatRule,omitnil,omitempty" name:"FormatRule"`
+
+	// 数据字段是否过滤空值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsFilter *bool `json:"IsFilter,omitnil,omitempty" name:"IsFilter"`
+
+	// 计算字段类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalcType *string `json:"CalcType,omitnil,omitempty" name:"CalcType"`
+
+	// 计算字段的公式内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalcFormula *string `json:"CalcFormula,omitnil,omitempty" name:"CalcFormula"`
+
+	// 计算字段的中文公式内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalcDesc *string `json:"CalcDesc,omitnil,omitempty" name:"CalcDesc"`
+
+	// Api数据源json路径名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JsonPathName *string `json:"JsonPathName,omitnil,omitempty" name:"JsonPathName"`
+
+	// 地理类型标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+
+	// 自定义地图Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GeoJsonId *uint64 `json:"GeoJsonId,omitnil,omitempty" name:"GeoJsonId"`
+
+	// 空值展示样式配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmptyValueConfig *EmptyValueConfig `json:"EmptyValueConfig,omitnil,omitempty" name:"EmptyValueConfig"`
+
+	// 原列名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbFieldName *string `json:"DbFieldName,omitnil,omitempty" name:"DbFieldName"`
+
+	// 是否是复制字段操作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCopyOperation *bool `json:"IsCopyOperation,omitnil,omitempty" name:"IsCopyOperation"`
+
+	// 是否从普通字段复制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCopyFromNormal *bool `json:"IsCopyFromNormal,omitnil,omitempty" name:"IsCopyFromNormal"`
+}
+
+type TableColumnListData struct {
+	// 表中的列的列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*TableColumn `json:"List,omitnil,omitempty" name:"List"`
+
+	// 异步事务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
+
+	// 异步事务状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TranStatus *int64 `json:"TranStatus,omitnil,omitempty" name:"TranStatus"`
+}
+
+type TableField struct {
+	// db里的字段column名
+	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// bi展示名
+	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
+
+	// db里的字段类型
+	DbType *string `json:"DbType,omitnil,omitempty" name:"DbType"`
+
+	// BI归类后的抽象字段类型,比如字符串,数字,时间
+	FieldType *string `json:"FieldType,omitnil,omitempty" name:"FieldType"`
+
+	// 字段组合计算公式后生成的复杂明细类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldComplexType *string `json:"FieldComplexType,omitnil,omitempty" name:"FieldComplexType"`
+
+	// 字段描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mark *string `json:"Mark,omitnil,omitempty" name:"Mark"`
+
+	// 字段计算公式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FormatRule *string `json:"FormatRule,omitnil,omitempty" name:"FormatRule"`
+
+	// 数据字段是否过滤空值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsFilter *bool `json:"IsFilter,omitnil,omitempty" name:"IsFilter"`
+
+	// 计算字段类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalcType *string `json:"CalcType,omitnil,omitempty" name:"CalcType"`
+
+	// 计算字段的公式内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalcFormula *string `json:"CalcFormula,omitnil,omitempty" name:"CalcFormula"`
+
+	// 计算字段的中文公式内容, 前端展示使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalcDesc *string `json:"CalcDesc,omitnil,omitempty" name:"CalcDesc"`
+
+	// 关联字典表id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DictId *uint64 `json:"DictId,omitnil,omitempty" name:"DictId"`
+
+	// 关联字典表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DictName *string `json:"DictName,omitnil,omitempty" name:"DictName"`
+
+	// 非必填, 多表关联新增字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableNodeId *string `json:"TableNodeId,omitnil,omitempty" name:"TableNodeId"`
+
+	// excel
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExcelName *string `json:"ExcelName,omitnil,omitempty" name:"ExcelName"`
+
+	// 非必填,多表关联新增字段,字段所属的表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// api数据源路径名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JsonPathName *string `json:"JsonPathName,omitnil,omitempty" name:"JsonPathName"`
+
+	// 地理字段标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Granularity *string `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+
+	// 地图id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GeoJsonId *uint64 `json:"GeoJsonId,omitnil,omitempty" name:"GeoJsonId"`
+
+	// 空值展示样式配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmptyValueConfig *EmptyValueConfig `json:"EmptyValueConfig,omitnil,omitempty" name:"EmptyValueConfig"`
+
+	// 原列名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbFieldName *string `json:"DbFieldName,omitnil,omitempty" name:"DbFieldName"`
+
+	// 是否是复制字段操作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCopyOperation *bool `json:"IsCopyOperation,omitnil,omitempty" name:"IsCopyOperation"`
+
+	// 是否从普通字段复制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCopyFromNormal *bool `json:"IsCopyFromNormal,omitnil,omitempty" name:"IsCopyFromNormal"`
 }
 
 type UserGroupDTO struct {

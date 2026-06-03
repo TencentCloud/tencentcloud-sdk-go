@@ -7498,33 +7498,33 @@ func (r *ModifyImmutableTagRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstanceRequestParams struct {
-	// 实例ID
+	// <p>实例ID</p>
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
-	// 实例的规格,
-	// 基础版：basic
-	// 标准版：standard
-	// 高级版：premium
+	// <p>实例的规格,<br>基础版：basic<br>标准版：standard<br>高级版：premium</p>
 	RegistryType *string `json:"RegistryType,omitnil,omitempty" name:"RegistryType"`
 
-	// 实例删除保护，false为关闭
+	// <p>实例删除保护，false为关闭</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// <p>实例是否开启多版本控制，false为关闭</p>
+	EnableCosVersioning *bool `json:"EnableCosVersioning,omitnil,omitempty" name:"EnableCosVersioning"`
 }
 
 type ModifyInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// <p>实例ID</p>
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
-	// 实例的规格,
-	// 基础版：basic
-	// 标准版：standard
-	// 高级版：premium
+	// <p>实例的规格,<br>基础版：basic<br>标准版：standard<br>高级版：premium</p>
 	RegistryType *string `json:"RegistryType,omitnil,omitempty" name:"RegistryType"`
 
-	// 实例删除保护，false为关闭
+	// <p>实例删除保护，false为关闭</p>
 	DeletionProtection *bool `json:"DeletionProtection,omitnil,omitempty" name:"DeletionProtection"`
+
+	// <p>实例是否开启多版本控制，false为关闭</p>
+	EnableCosVersioning *bool `json:"EnableCosVersioning,omitnil,omitempty" name:"EnableCosVersioning"`
 }
 
 func (r *ModifyInstanceRequest) ToJsonString() string {
@@ -7542,6 +7542,7 @@ func (r *ModifyInstanceRequest) FromJsonString(s string) error {
 	delete(f, "RegistryId")
 	delete(f, "RegistryType")
 	delete(f, "DeletionProtection")
+	delete(f, "EnableCosVersioning")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceRequest has unknown keys!", "")
 	}

@@ -328,6 +328,49 @@ func (r *ArchiveDynamicFlowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ArchiveFlowApproverInfo struct {
+	// <p>个人签署人姓名，如果传入，必须是证件上的真实中文名；中文名最长 25 个字符；</p>
+	ApproverName *string `json:"ApproverName,omitnil,omitempty" name:"ApproverName"`
+
+	// <p>参与者类型，用于区分个人或企业，可选类型如下:<br><strong>0</strong>：企业<br><strong>1</strong>：个人</p>
+	ApproverType *int64 `json:"ApproverType,omitnil,omitempty" name:"ApproverType"`
+
+	// <p>企业签署方名称。长度不超过 200 个字符。<br>如果名称中包含英文括号()，请使用中文括号（）代替。<br>如果签署方是企业签署方(approverType = 0 )， 则企业名称必填。</p>
+	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
+
+	// <p>签署人手机号，必须是合法手机号。</p>
+	ApproverMobile *string `json:"ApproverMobile,omitnil,omitempty" name:"ApproverMobile"`
+
+	// <p>签署人邮箱， 必须是合法邮箱格式。</p>
+	ApproverEmail *string `json:"ApproverEmail,omitnil,omitempty" name:"ApproverEmail"`
+
+	// <p>签署方经办人的证件类型，支持以下类型，样式可以参考<a href="https://qian.tencent.com/developers/partner/id_card_support/" target="_blank">常见个人证件类型介绍</a></p><ul><li>ID_CARD 中国大陆居民身份证  (默认值)</li><li>HONGKONG_AND_MACAO 港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)</li><li>OTHER_CARD_TYPE 其他证件</li></ul>
+	ApproverIdCardType *string `json:"ApproverIdCardType,omitnil,omitempty" name:"ApproverIdCardType"`
+
+	// <p>签署方经办人的证件号码，应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil,omitempty" name:"ApproverIdCardNumber"`
+
+	// <p>当前参与者的签署时间，Unix 秒级时间戳。</p>
+	ApproveTime *int64 `json:"ApproveTime,omitnil,omitempty" name:"ApproveTime"`
+}
+
+type ArchiveFlowResult struct {
+	// <p>归档合同id</p>
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// <p>合同处理结果</p><p>枚举值：</p><ul><li>0： 成功</li><li>1： 失败</li></ul>
+	ArchiveFlowStatus *int64 `json:"ArchiveFlowStatus,omitnil,omitempty" name:"ArchiveFlowStatus"`
+
+	// <p>业务自定义id</p>
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// <p>资源ID列表</p>
+	ResourceIdList []*string `json:"ResourceIdList,omitnil,omitempty" name:"ResourceIdList"`
+
+	// <p>错误信息</p>
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+}
+
 type AuthInfoDetail struct {
 	// 扩展服务类型，和入参一致
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -1433,6 +1476,105 @@ type ContractSummaryInfo struct {
 	// 主体信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Identity *Identity `json:"Identity,omitnil,omitempty" name:"Identity"`
+}
+
+type CreateArchiveFlow struct {
+	// <p>合同文件的资源id，使用<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a> 上传文件返回resourceId，目前一个合同只能支持一个资源ID。</p>
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// <p>合同名称，不传时系统会使用合同资源文件名作为合同名称；最终合同名称不能为空；长度不能超过200，只能由中文、字母、数字和下划线组成。</p>
+	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
+
+	// <p>合同类型，自定义文本字符串，长度不能超过200。</p>
+	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
+
+	// <p>调用方业务系统中的合同业务编号，可以用于外部系统和归档合同做关联，长度不超过 128 字节</p>
+	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
+
+	// <p>合同发起方/创建人名称，用于归档合同展示和检索，长度不超过 32 字符</p>
+	CreatorName *string `json:"CreatorName,omitnil,omitempty" name:"CreatorName"`
+
+	// <p>签署人信息列表，用于记录合同由哪些个人或企业签署，最多 50 个参与者。</p>
+	ApproverInfo []*ArchiveFlowApproverInfo `json:"ApproverInfo,omitnil,omitempty" name:"ApproverInfo"`
+
+	// <p>关注人信息列表，用于记录合同关注对象，最多 50 个关注者。</p>
+	CcInfo []*ArchiveFlowApproverInfo `json:"CcInfo,omitnil,omitempty" name:"CcInfo"`
+
+	// <p>调用方自定义透传数据，可用于保存业务扩展信息，长度不超过 20480 字节。</p>
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// <p>合同描述/备注信息，长度不超过 1000 个字符</p>
+	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
+
+	// <p>合同签署完成时间，Unix 秒级时间戳</p>
+	ApproveTime *int64 `json:"ApproveTime,omitnil,omitempty" name:"ApproveTime"`
+
+	// <p>合同发起时间/合同原始创建时间，Unix 秒级时间戳</p>
+	CustomCreatedOn *int64 `json:"CustomCreatedOn,omitnil,omitempty" name:"CustomCreatedOn"`
+}
+
+// Predefined struct for user
+type CreateArchiveFlowTaskRequestParams struct {
+	// <p>执行本接口操作的员工信息。注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>归档合同列表，一次最多支持50个合同</p>
+	ArchiveFlows []*CreateArchiveFlow `json:"ArchiveFlows,omitnil,omitempty" name:"ArchiveFlows"`
+}
+
+type CreateArchiveFlowTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>执行本接口操作的员工信息。注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>归档合同列表，一次最多支持50个合同</p>
+	ArchiveFlows []*CreateArchiveFlow `json:"ArchiveFlows,omitnil,omitempty" name:"ArchiveFlows"`
+}
+
+func (r *CreateArchiveFlowTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateArchiveFlowTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "ArchiveFlows")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateArchiveFlowTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateArchiveFlowTaskResponseParams struct {
+	// <p>归档任务ID，后续使用 <a href="">查询归档任务状态</a>接口获取归档任务执行结果</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateArchiveFlowTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateArchiveFlowTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateArchiveFlowTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateArchiveFlowTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -11467,6 +11609,73 @@ type Department struct {
 
 	// 部门名称。
 	DepartmentName *string `json:"DepartmentName,omitnil,omitempty" name:"DepartmentName"`
+}
+
+// Predefined struct for user
+type DescribeArchiveFlowTaskRequestParams struct {
+	// <p>执行本接口操作的员工信息。注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>任务id，<a href="">创建归档任务</a>时返回</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeArchiveFlowTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>执行本接口操作的员工信息。注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>任务id，<a href="">创建归档任务</a>时返回</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeArchiveFlowTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeArchiveFlowTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeArchiveFlowTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeArchiveFlowTaskResponseParams struct {
+	// <p>任务状态</p><p>枚举值：</p><ul><li>0： 待处理</li><li>1： 处理中</li><li>2： 任务完成</li><li>3： 任务完成(存在失败)</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>每条合同的处理结果，与创建任务的archive_flows列表顺序一致</p>
+	ArchiveFlowResults []*ArchiveFlowResult `json:"ArchiveFlowResults,omitnil,omitempty" name:"ArchiveFlowResults"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeArchiveFlowTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeArchiveFlowTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeArchiveFlowTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeArchiveFlowTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

@@ -1,26 +1,10 @@
-# Release v1.3.109
+# Release v1.3.110
 
-## API 网关(apigateway) 版本：2018-08-08
+## 商业智能分析 BI(bi) 版本：2022-01-05
 
-### 第 52 次发布
+### 第 36 次发布
 
-发布时间：2026-06-03 01:09:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**预下线接口**：</font>
-
-* DescribeApiApp
-
-
-
-## AI Agent 安全网关(apis) 版本：2024-08-01
-
-### 第 9 次发布
-
-发布时间：2026-06-03 01:10:53
+发布时间：2026-06-04 01:14:19
 
 本次发布包含了以下内容：
 
@@ -28,42 +12,56 @@
 
 新增接口：
 
-* [CreateAgentAppServices](https://cloud.tencent.com/document/api/1627/132422)
-* [CreateService](https://cloud.tencent.com/document/api/1627/132419)
-* [DeleteAgentAppServices](https://cloud.tencent.com/document/api/1627/132421)
-* [DeleteService](https://cloud.tencent.com/document/api/1627/132418)
-* [DescribeAgentAppServices](https://cloud.tencent.com/document/api/1627/132420)
-* [DescribeService](https://cloud.tencent.com/document/api/1627/132417)
-* [DescribeServices](https://cloud.tencent.com/document/api/1627/132416)
-* [ModifyService](https://cloud.tencent.com/document/api/1627/132415)
+* [CreateDataTable](https://cloud.tencent.com/document/api/590/132476)
+* [DescribeSourceFieldList](https://cloud.tencent.com/document/api/590/132475)
 
 新增数据结构：
 
-* [AgentAppServiceDTO](https://cloud.tencent.com/document/api/1627/129635#AgentAppServiceDTO)
-* [AgentAppServiceVO](https://cloud.tencent.com/document/api/1627/129635#AgentAppServiceVO)
-* [CompoundCondition](https://cloud.tencent.com/document/api/1627/129635#CompoundCondition)
-* [CustomMatch](https://cloud.tencent.com/document/api/1627/129635#CustomMatch)
-* [DescribeAgentAppServicesVO](https://cloud.tencent.com/document/api/1627/129635#DescribeAgentAppServicesVO)
-* [FieldValueDTO](https://cloud.tencent.com/document/api/1627/129635#FieldValueDTO)
-* [HealthCheckConfigDTO](https://cloud.tencent.com/document/api/1627/129635#HealthCheckConfigDTO)
-* [ServiceDatabaseOrderParam](https://cloud.tencent.com/document/api/1627/129635#ServiceDatabaseOrderParam)
-* [ServiceDatabaseReqParam](https://cloud.tencent.com/document/api/1627/129635#ServiceDatabaseReqParam)
-* [ServiceDatabaseRespParam](https://cloud.tencent.com/document/api/1627/129635#ServiceDatabaseRespParam)
-* [ServiceVO](https://cloud.tencent.com/document/api/1627/129635#ServiceVO)
-* [SimpleCondition](https://cloud.tencent.com/document/api/1627/129635#SimpleCondition)
-* [SourceTypeConfigDTO](https://cloud.tencent.com/document/api/1627/129635#SourceTypeConfigDTO)
-* [SqlTemplate](https://cloud.tencent.com/document/api/1627/129635#SqlTemplate)
-* [TargetServerGroupDTO](https://cloud.tencent.com/document/api/1627/129635#TargetServerGroupDTO)
-* [VersionDTO](https://cloud.tencent.com/document/api/1627/129635#VersionDTO)
-* [WizardConfig](https://cloud.tencent.com/document/api/1627/129635#WizardConfig)
+* [ApiDatasourceConfig](https://cloud.tencent.com/document/api/590/73726#ApiDatasourceConfig)
+* [EmptyValue](https://cloud.tencent.com/document/api/590/73726#EmptyValue)
+* [EmptyValueConfig](https://cloud.tencent.com/document/api/590/73726#EmptyValueConfig)
+* [FieldRemarkDTO](https://cloud.tencent.com/document/api/590/73726#FieldRemarkDTO)
+* [FrequencyConfig](https://cloud.tencent.com/document/api/590/73726#FrequencyConfig)
+* [JoinRelation](https://cloud.tencent.com/document/api/590/73726#JoinRelation)
+* [JoinRelationField](https://cloud.tencent.com/document/api/590/73726#JoinRelationField)
+* [JoinSourceTable](https://cloud.tencent.com/document/api/590/73726#JoinSourceTable)
+* [ParamCreateDTO](https://cloud.tencent.com/document/api/590/73726#ParamCreateDTO)
+* [TableColumn](https://cloud.tencent.com/document/api/590/73726#TableColumn)
+* [TableColumnListData](https://cloud.tencent.com/document/api/590/73726#TableColumnListData)
+* [TableField](https://cloud.tencent.com/document/api/590/73726#TableField)
 
 
 
-## 云联络中心(ccc) 版本：2020-02-10
+## 消息队列 CKafka 版(ckafka) 版本：2019-08-19
 
-### 第 129 次发布
+### 第 146 次发布
 
-发布时间：2026-06-03 01:18:29
+发布时间：2026-06-04 01:26:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateMetaAndDataSyncDatahubTask](https://cloud.tencent.com/document/api/597/132480)
+* [CreateMetaDataAndOffsetSyncDatahubTask](https://cloud.tencent.com/document/api/597/132479)
+* [CreateMetaSyncDatahubTask](https://cloud.tencent.com/document/api/597/132478)
+
+修改接口：
+
+* [CreateUser](https://cloud.tencent.com/document/api/597/40859)
+
+	* <font color="#dd0000">**修改入参**：</font>Password
+
+
+
+
+## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 80 次发布
+
+发布时间：2026-06-04 01:32:40
 
 本次发布包含了以下内容：
 
@@ -71,73 +69,44 @@
 
 修改接口：
 
-* [DescribePredictiveDialingCampaign](https://cloud.tencent.com/document/api/679/104032)
+* [DescribeCheckViewRisks](https://cloud.tencent.com/document/api/664/120049)
 
-	* 新增出参：Variables, UUI, Status, StatusReason
+	* 新增出参：ProviderList
 
-* [DescribePredictiveDialingCampaigns](https://cloud.tencent.com/document/api/679/104031)
+* [DescribeRiskRuleDetail](https://cloud.tencent.com/document/api/664/120047)
 
-	* 新增入参：CampaignId
+	* 新增出参：AssetType
 
-
-
-
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 221 次发布
-
-发布时间：2026-06-03 01:19:27
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ModifyDBInstanceLogToCLS](https://cloud.tencent.com/document/api/236/100575)
-
-	* 新增入参：ResourceTags
-
-
-
-
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
-
-### 第 171 次发布
-
-发布时间：2026-06-03 01:41:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [AIOptimizerTaskData](https://cloud.tencent.com/document/api/1003/48097#AIOptimizerTaskData)
 
 修改数据结构：
 
-* [BizTaskInfo](https://cloud.tencent.com/document/api/1003/48097#BizTaskInfo)
+* [AssetRiskItem](https://cloud.tencent.com/document/api/664/90825#AssetRiskItem)
 
-	* 新增成员：AIOptimizerTaskData
+	* 新增成员：AssetTypeName
+
+* [RiskDetailItem](https://cloud.tencent.com/document/api/664/90825#RiskDetailItem)
+
+	* 新增成员：AssetType
 
 
 
 
 ## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
 
-### 第 55 次发布
+### 第 56 次发布
 
-发布时间：2026-06-03 01:44:15
+发布时间：2026-06-04 01:44:18
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [DescribeDatabaseAutonomyStatus](https://cloud.tencent.com/document/api/1130/132425)
-* [UpdateDatabaseAutonomyStatus](https://cloud.tencent.com/document/api/1130/132424)
+* [SessionItem](https://cloud.tencent.com/document/api/1130/57812#SessionItem)
+
+	* 新增成员：IsInternalIp
+
 
 
 
@@ -145,49 +114,34 @@
 
 
 
-## 高性能应用服务(hai) 版本：2023-08-12
+## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 24 次发布
+### 第 296 次发布
 
-发布时间：2026-06-03 02:03:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateInferServiceByTemplate](https://cloud.tencent.com/document/api/1721/129388)
-
-	* 新增入参：SecurityType
-
-
-
-
-## 人脸识别(iai) 版本：2020-03-03
-
-### 第 14 次发布
-
-发布时间：2026-06-03 02:04:38
+发布时间：2026-06-04 01:56:57
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [GroupInfo](https://cloud.tencent.com/document/api/867/45020#GroupInfo)
+* [CreateArchiveFlowTask](https://cloud.tencent.com/document/api/1323/132483)
+* [DescribeArchiveFlowTask](https://cloud.tencent.com/document/api/1323/132482)
 
-	* 新增成员：UpdateTimestamp
+新增数据结构：
+
+* [ArchiveFlowApproverInfo](https://cloud.tencent.com/document/api/1323/70369#ArchiveFlowApproverInfo)
+* [ArchiveFlowResult](https://cloud.tencent.com/document/api/1323/70369#ArchiveFlowResult)
+* [CreateArchiveFlow](https://cloud.tencent.com/document/api/1323/70369#CreateArchiveFlow)
 
 
 
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-## 人脸识别(iai) 版本：2018-03-01
+### 第 142 次发布
 
-### 第 23 次发布
-
-发布时间：2026-06-03 02:04:15
+发布时间：2026-06-03 18:33:04
 
 本次发布包含了以下内容：
 
@@ -195,35 +149,43 @@
 
 修改数据结构：
 
-* [GroupInfo](https://cloud.tencent.com/document/api/867/32807#GroupInfo)
+* [VisionSummaryConfig](https://cloud.tencent.com/document/api/1081/34988#VisionSummaryConfig)
 
-	* 新增成员：UpdateTimestamp
-
-
+	* 新增成员：SummaryPrompt
 
 
-## 文字识别(ocr) 版本：2018-11-19
 
-### 第 248 次发布
 
-发布时间：2026-06-03 02:28:42
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 207 次发布
+
+发布时间：2026-06-04 02:22:39
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口**：</font>
+新增数据结构：
 
-* RecognizeOnlineTaxiItineraryOCR
-* TaxiInvoiceOCR
+* [LLMDetectionIssue](https://cloud.tencent.com/document/api/862/37615#LLMDetectionIssue)
+* [LLMDetectionReport](https://cloud.tencent.com/document/api/862/37615#LLMDetectionReport)
+* [LLMDetectionResultItem](https://cloud.tencent.com/document/api/862/37615#LLMDetectionResultItem)
+
+修改数据结构：
+
+* [QualityControlData](https://cloud.tencent.com/document/api/862/37615#QualityControlData)
+
+	* 新增成员：LLMDetectionReport
 
 
 
-## TDSQL(tdmysql) 版本：2021-11-22
 
-### 第 6 次发布
+## 容器镜像服务(tcr) 版本：2019-09-24
 
-发布时间：2026-06-03 02:50:15
+### 第 79 次发布
+
+发布时间：2026-06-04 02:42:30
 
 本次发布包含了以下内容：
 
@@ -231,9 +193,73 @@
 
 修改接口：
 
-* [DescribeDBSAvailableRecoveryTime](https://cloud.tencent.com/document/api/1376/128298)
+* [ModifyInstance](https://cloud.tencent.com/document/api/1141/60996)
 
-	* <font color="#dd0000">**删除入参**：</font>BackupSetId
+	* 新增入参：EnableCosVersioning
+
+
+
+
+## TokenHub(tokenhub) 版本：2026-03-22
+
+### 第 3 次发布
+
+发布时间：2026-06-04 02:57:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTokenPlanApiKeyUsageDetail](https://cloud.tencent.com/document/api/1823/132342)
+
+	* 新增入参：TeamId, From, To, Sort, Limit, Context, ApiKeyId, ApiKeyName, ModelName
+
+	* 新增出参：Context, ListOver, List, ProductType
+
+
+新增数据结构：
+
+* [UsageDetailItem](https://cloud.tencent.com/document/api/1823/132279#UsageDetailItem)
+
+
+
+## 云点播(vod) 版本：2024-07-18
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 262 次发布
+
+发布时间：2026-06-04 03:05:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAigcAdvancedCustomElement](https://cloud.tencent.com/document/api/266/129121)
+
+	* 新增入参：DisableModeration
+
+* [CreateAigcCustomVoice](https://cloud.tencent.com/document/api/266/129120)
+
+	* 新增入参：DisableModeration
+
+
+新增数据结构：
+
+* [SPEKEDrm](https://cloud.tencent.com/document/api/266/31773#SPEKEDrm)
+* [ThirdPartyDrmInfo](https://cloud.tencent.com/document/api/266/31773#ThirdPartyDrmInfo)
+
+修改数据结构：
+
+* [AdaptiveDynamicStreamingTaskInput](https://cloud.tencent.com/document/api/266/31773#AdaptiveDynamicStreamingTaskInput)
+
+	* 新增成员：DrmInfo
 
 
 

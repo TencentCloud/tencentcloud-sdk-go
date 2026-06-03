@@ -757,12 +757,63 @@ func (r *DescribeTokenPlanApiKeySecretResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTokenPlanApiKeyUsageDetailRequestParams struct {
+	// 套餐 ID。可通过DescribeTokenPlanList接口获取。
+	TeamId *string `json:"TeamId,omitnil,omitempty" name:"TeamId"`
 
+	// 起始时间，RFC3339 格式。不传默认为结束时间前 15 分钟。
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 结束时间，RFC3339 格式。不传默认为当前时间。
+	To *string `json:"To,omitnil,omitempty" name:"To"`
+
+	// 排序方式。取值：asc（升序）、desc（降序），默认为 desc。
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// 返回条数，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 翻页上下文，首次查询不传，后续传入上次返回的 Context，直到 ListOver 为 true。
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// 按 API Key ID 精确过滤。最大 128 字符。与 ApiKeyName 至少需传入其一，都传时以 ApiKeyId 为准。可通过 DescribeTokenPlanApiKeyList 接口获取。
+	ApiKeyId *string `json:"ApiKeyId,omitnil,omitempty" name:"ApiKeyId"`
+
+	// 按 API Key 名称模糊过滤。最大 64 字符。与 ApiKeyId 至少需传入其一，都传时以 ApiKeyId 为准。
+	ApiKeyName *string `json:"ApiKeyName,omitnil,omitempty" name:"ApiKeyName"`
+
+	// 按模型 ID (Model ID) 精确过滤。需要按模型名称过滤时传入该字段。
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 }
 
 type DescribeTokenPlanApiKeyUsageDetailRequest struct {
 	*tchttp.BaseRequest
 	
+	// 套餐 ID。可通过DescribeTokenPlanList接口获取。
+	TeamId *string `json:"TeamId,omitnil,omitempty" name:"TeamId"`
+
+	// 起始时间，RFC3339 格式。不传默认为结束时间前 15 分钟。
+	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 结束时间，RFC3339 格式。不传默认为当前时间。
+	To *string `json:"To,omitnil,omitempty" name:"To"`
+
+	// 排序方式。取值：asc（升序）、desc（降序），默认为 desc。
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// 返回条数，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 翻页上下文，首次查询不传，后续传入上次返回的 Context，直到 ListOver 为 true。
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// 按 API Key ID 精确过滤。最大 128 字符。与 ApiKeyName 至少需传入其一，都传时以 ApiKeyId 为准。可通过 DescribeTokenPlanApiKeyList 接口获取。
+	ApiKeyId *string `json:"ApiKeyId,omitnil,omitempty" name:"ApiKeyId"`
+
+	// 按 API Key 名称模糊过滤。最大 64 字符。与 ApiKeyId 至少需传入其一，都传时以 ApiKeyId 为准。
+	ApiKeyName *string `json:"ApiKeyName,omitnil,omitempty" name:"ApiKeyName"`
+
+	// 按模型 ID (Model ID) 精确过滤。需要按模型名称过滤时传入该字段。
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 }
 
 func (r *DescribeTokenPlanApiKeyUsageDetailRequest) ToJsonString() string {
@@ -777,7 +828,15 @@ func (r *DescribeTokenPlanApiKeyUsageDetailRequest) FromJsonString(s string) err
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "TeamId")
+	delete(f, "From")
+	delete(f, "To")
+	delete(f, "Sort")
+	delete(f, "Limit")
+	delete(f, "Context")
+	delete(f, "ApiKeyId")
+	delete(f, "ApiKeyName")
+	delete(f, "ModelName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTokenPlanApiKeyUsageDetailRequest has unknown keys!", "")
 	}
@@ -786,6 +845,18 @@ func (r *DescribeTokenPlanApiKeyUsageDetailRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeTokenPlanApiKeyUsageDetailResponseParams struct {
+	// 翻页上下文，传入下一次请求的 Context 参数继续翻页。
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// 是否已到末尾，为 true 时无需继续翻页。
+	ListOver *bool `json:"ListOver,omitnil,omitempty" name:"ListOver"`
+
+	// 调用明细列表。
+	List []*UsageDetailItem `json:"List,omitnil,omitempty" name:"List"`
+
+	// 	 套餐类型。取值：enterprise（企业版专业套餐）、enterprise-auto（企业版轻享套餐）
+	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1704,6 +1775,58 @@ func (r *UpgradeTokenPlanTeamOrderResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpgradeTokenPlanTeamOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UsageDetailItem struct {
+	// 主账号 UIN。
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 模型名称。
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// APIKey ID。
+	ApiKeyId *string `json:"ApiKeyId,omitnil,omitempty" name:"ApiKeyId"`
+
+	// APIKey 名称。
+	ApiKeyName *string `json:"ApiKeyName,omitnil,omitempty" name:"ApiKeyName"`
+
+	// 请求 ID。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+
+	// 请求时间（RFC3339 格式）。
+	RequestTime *string `json:"RequestTime,omitnil,omitempty" name:"RequestTime"`
+
+	// 输入 token 数。
+	InputToken *int64 `json:"InputToken,omitnil,omitempty" name:"InputToken"`
+
+	// 缓存 token 数。
+	CacheToken *int64 `json:"CacheToken,omitnil,omitempty" name:"CacheToken"`
+
+	// 输出 token 数。
+	OutputToken *int64 `json:"OutputToken,omitnil,omitempty" name:"OutputToken"`
+
+	// 总 token 数。
+	TotalToken *int64 `json:"TotalToken,omitnil,omitempty" name:"TotalToken"`
+
+	// 未命中缓存输入消耗额度。单位说明如下：
+	// - 套餐类型为专业套餐（enterprise），单位取值为积分；
+	// - 套餐类型轻享套餐（enterprise-auto），单位取值为 token。
+	InputQuota *string `json:"InputQuota,omitnil,omitempty" name:"InputQuota"`
+
+	// 缓存消耗额度。单位说明如下：
+	// - 套餐类型为专业套餐（enterprise），单位取值为积分；
+	// - 套餐类型轻享套餐（enterprise-auto），单位取值为 token。
+	CacheQuota *string `json:"CacheQuota,omitnil,omitempty" name:"CacheQuota"`
+
+	// 输出消耗额度。单位说明如下：
+	// - 套餐类型为专业套餐（enterprise），单位取值为积分；
+	// - 套餐类型轻享套餐（enterprise-auto），单位取值为 token。
+	OutputQuota *string `json:"OutputQuota,omitnil,omitempty" name:"OutputQuota"`
+
+	// 总消耗额度。单位说明如下：
+	// - 套餐类型为专业套餐（enterprise），单位取值为积分；
+	// - 套餐类型轻享套餐（enterprise-auto），单位取值为 token。
+	TotalQuota *string `json:"TotalQuota,omitnil,omitempty" name:"TotalQuota"`
 }
 
 type UsageRankItem struct {

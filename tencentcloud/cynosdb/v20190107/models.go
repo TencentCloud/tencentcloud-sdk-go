@@ -4182,154 +4182,116 @@ func (r *CreateParamTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateProxyEndPointRequestParams struct {
-	// 集群 ID。
+	// <p>集群 ID。</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 私有网络 ID，默认与集群私有网络 ID 保持一致。
+	// <p>私有网络 ID。</p>
 	UniqueVpcId *string `json:"UniqueVpcId,omitnil,omitempty" name:"UniqueVpcId"`
 
-	// 私有网络子网 ID，默认与集群子网 ID 保持一致。
+	// <p>私有网络子网 ID。</p>
 	UniqueSubnetId *string `json:"UniqueSubnetId,omitnil,omitempty" name:"UniqueSubnetId"`
 
-	// 连接池类型：SessionConnectionPool（会话级别连接池）。
+	// <p>连接池类型：SessionConnectionPool（会话级别连接池）。</p>
 	ConnectionPoolType *string `json:"ConnectionPoolType,omitnil,omitempty" name:"ConnectionPoolType"`
 
-	// 是否开启连接池。
-	// yes：表示开启。
-	// no：表示不开启。
+	// <p>是否开启连接池。<br>yes：表示开启。<br>no：表示不开启。</p>
 	OpenConnectionPool *string `json:"OpenConnectionPool,omitnil,omitempty" name:"OpenConnectionPool"`
 
-	// 连接池阈值：单位（秒），可选范围：0 - 300秒。
+	// <p>连接池阈值：单位（秒），可选范围：0 - 300秒。</p>
 	ConnectionPoolTimeOut *int64 `json:"ConnectionPoolTimeOut,omitnil,omitempty" name:"ConnectionPoolTimeOut"`
 
-	// 绑定的安全组 ID 数组。
+	// <p>绑定的安全组 ID 数组。</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 描述说明。
+	// <p>描述说明。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 想要绑定的 vip 信息，需与 UniqueVpcId 对应。
+	// <p>想要绑定的 vip 信息，需与 UniqueVpcId 对应。</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 权重模式：
-	// system：系统分配。
-	// custom：自定义。
+	// <p>权重模式：<br>system：系统分配。<br>custom：自定义。</p>
 	WeightMode *string `json:"WeightMode,omitnil,omitempty" name:"WeightMode"`
 
-	// 是否自动添加只读实例。
-	// yes：表示自动添加只读实例。
-	// no：表示不自动添加只读实例。
+	// <p>是否自动添加只读实例。<br>yes：表示自动添加只读实例。<br>no：表示不自动添加只读实例。</p>
 	AutoAddRo *string `json:"AutoAddRo,omitnil,omitempty" name:"AutoAddRo"`
 
-	// 是否开启故障转移。
-	// yes：表示开启，开启后，当数据库代理出现故障时，连接地址将会路由到主实例。
-	// no：表示不开启。
-	// 说明：
-	// 仅当 RwType 参数值为 READWRITE 时，才支持设置此项。
+	// <p>是否开启故障转移。<br>yes：表示开启，开启后，当数据库代理出现故障时，连接地址将会路由到主实例。<br>no：表示不开启。<br>说明：<br>仅当 RwType 参数值为 READWRITE 时，才支持设置此项。</p>
 	FailOver *string `json:"FailOver,omitnil,omitempty" name:"FailOver"`
 
-	// 一致性类型：
-	// eventual：最终一致性。
-	// global：全局一致性。
-	// session：会话一致性。
-	// 说明：
-	// 仅当 RwType 参数值为 READWRITE 时，才支持设置此项。
+	// <p>一致性类型：<br>eventual：最终一致性。<br>global：全局一致性。<br>session：会话一致性。<br>说明：<br>仅当 RwType 参数值为 READWRITE 时，才支持设置此项。</p>
 	ConsistencyType *string `json:"ConsistencyType,omitnil,omitempty" name:"ConsistencyType"`
 
-	// 读写属性：
-	// READWRITE：表示读写分离。当此参数值为 READWRITE 时，才支持设置 FailOver、ConsistencyType 参数。
-	// READONLY：表示只读。
+	// <p>读写属性：<br>READWRITE：表示读写分离。当此参数值为 READWRITE 时，才支持设置 FailOver、ConsistencyType 参数。<br>READONLY：表示只读。</p>
 	RwType *string `json:"RwType,omitnil,omitempty" name:"RwType"`
 
-	// 一致性超时时间。取值范围：0 ~ 1000000（微秒）。设置为0时，表示若只读实例出现延迟导致一致性策略不满足时，请求将一直等待。
+	// <p>一致性超时时间。取值范围：0 ~ 1000000（微秒）。设置为0时，表示若只读实例出现延迟导致一致性策略不满足时，请求将一直等待。</p>
 	ConsistencyTimeOut *int64 `json:"ConsistencyTimeOut,omitnil,omitempty" name:"ConsistencyTimeOut"`
 
-	// 是否开启事务拆分。开启后，在一个事务中拆分读和写到不同的实例上去执行。
+	// <p>是否开启事务拆分。开启后，在一个事务中拆分读和写到不同的实例上去执行。</p>
 	TransSplit *bool `json:"TransSplit,omitnil,omitempty" name:"TransSplit"`
 
-	// 接入模式：
-	// nearby：就近访问。
-	// balance：均衡分配。
+	// <p>接入模式：<br>nearby：就近访问。<br>balance：均衡分配。</p>
 	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
 
-	// 实例权重。
+	// <p>实例权重。</p>
 	InstanceWeights []*ProxyInstanceWeight `json:"InstanceWeights,omitnil,omitempty" name:"InstanceWeights"`
 }
 
 type CreateProxyEndPointRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群 ID。
+	// <p>集群 ID。</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 私有网络 ID，默认与集群私有网络 ID 保持一致。
+	// <p>私有网络 ID。</p>
 	UniqueVpcId *string `json:"UniqueVpcId,omitnil,omitempty" name:"UniqueVpcId"`
 
-	// 私有网络子网 ID，默认与集群子网 ID 保持一致。
+	// <p>私有网络子网 ID。</p>
 	UniqueSubnetId *string `json:"UniqueSubnetId,omitnil,omitempty" name:"UniqueSubnetId"`
 
-	// 连接池类型：SessionConnectionPool（会话级别连接池）。
+	// <p>连接池类型：SessionConnectionPool（会话级别连接池）。</p>
 	ConnectionPoolType *string `json:"ConnectionPoolType,omitnil,omitempty" name:"ConnectionPoolType"`
 
-	// 是否开启连接池。
-	// yes：表示开启。
-	// no：表示不开启。
+	// <p>是否开启连接池。<br>yes：表示开启。<br>no：表示不开启。</p>
 	OpenConnectionPool *string `json:"OpenConnectionPool,omitnil,omitempty" name:"OpenConnectionPool"`
 
-	// 连接池阈值：单位（秒），可选范围：0 - 300秒。
+	// <p>连接池阈值：单位（秒），可选范围：0 - 300秒。</p>
 	ConnectionPoolTimeOut *int64 `json:"ConnectionPoolTimeOut,omitnil,omitempty" name:"ConnectionPoolTimeOut"`
 
-	// 绑定的安全组 ID 数组。
+	// <p>绑定的安全组 ID 数组。</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 描述说明。
+	// <p>描述说明。</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 想要绑定的 vip 信息，需与 UniqueVpcId 对应。
+	// <p>想要绑定的 vip 信息，需与 UniqueVpcId 对应。</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 权重模式：
-	// system：系统分配。
-	// custom：自定义。
+	// <p>权重模式：<br>system：系统分配。<br>custom：自定义。</p>
 	WeightMode *string `json:"WeightMode,omitnil,omitempty" name:"WeightMode"`
 
-	// 是否自动添加只读实例。
-	// yes：表示自动添加只读实例。
-	// no：表示不自动添加只读实例。
+	// <p>是否自动添加只读实例。<br>yes：表示自动添加只读实例。<br>no：表示不自动添加只读实例。</p>
 	AutoAddRo *string `json:"AutoAddRo,omitnil,omitempty" name:"AutoAddRo"`
 
-	// 是否开启故障转移。
-	// yes：表示开启，开启后，当数据库代理出现故障时，连接地址将会路由到主实例。
-	// no：表示不开启。
-	// 说明：
-	// 仅当 RwType 参数值为 READWRITE 时，才支持设置此项。
+	// <p>是否开启故障转移。<br>yes：表示开启，开启后，当数据库代理出现故障时，连接地址将会路由到主实例。<br>no：表示不开启。<br>说明：<br>仅当 RwType 参数值为 READWRITE 时，才支持设置此项。</p>
 	FailOver *string `json:"FailOver,omitnil,omitempty" name:"FailOver"`
 
-	// 一致性类型：
-	// eventual：最终一致性。
-	// global：全局一致性。
-	// session：会话一致性。
-	// 说明：
-	// 仅当 RwType 参数值为 READWRITE 时，才支持设置此项。
+	// <p>一致性类型：<br>eventual：最终一致性。<br>global：全局一致性。<br>session：会话一致性。<br>说明：<br>仅当 RwType 参数值为 READWRITE 时，才支持设置此项。</p>
 	ConsistencyType *string `json:"ConsistencyType,omitnil,omitempty" name:"ConsistencyType"`
 
-	// 读写属性：
-	// READWRITE：表示读写分离。当此参数值为 READWRITE 时，才支持设置 FailOver、ConsistencyType 参数。
-	// READONLY：表示只读。
+	// <p>读写属性：<br>READWRITE：表示读写分离。当此参数值为 READWRITE 时，才支持设置 FailOver、ConsistencyType 参数。<br>READONLY：表示只读。</p>
 	RwType *string `json:"RwType,omitnil,omitempty" name:"RwType"`
 
-	// 一致性超时时间。取值范围：0 ~ 1000000（微秒）。设置为0时，表示若只读实例出现延迟导致一致性策略不满足时，请求将一直等待。
+	// <p>一致性超时时间。取值范围：0 ~ 1000000（微秒）。设置为0时，表示若只读实例出现延迟导致一致性策略不满足时，请求将一直等待。</p>
 	ConsistencyTimeOut *int64 `json:"ConsistencyTimeOut,omitnil,omitempty" name:"ConsistencyTimeOut"`
 
-	// 是否开启事务拆分。开启后，在一个事务中拆分读和写到不同的实例上去执行。
+	// <p>是否开启事务拆分。开启后，在一个事务中拆分读和写到不同的实例上去执行。</p>
 	TransSplit *bool `json:"TransSplit,omitnil,omitempty" name:"TransSplit"`
 
-	// 接入模式：
-	// nearby：就近访问。
-	// balance：均衡分配。
+	// <p>接入模式：<br>nearby：就近访问。<br>balance：均衡分配。</p>
 	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
 
-	// 实例权重。
+	// <p>实例权重。</p>
 	InstanceWeights []*ProxyInstanceWeight `json:"InstanceWeights,omitnil,omitempty" name:"InstanceWeights"`
 }
 
@@ -4371,13 +4333,13 @@ func (r *CreateProxyEndPointRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateProxyEndPointResponseParams struct {
-	// 异步流程 ID。
+	// <p>异步流程 ID。</p>
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 异步任务 ID。
+	// <p>异步任务 ID。</p>
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 数据库代理组 ID。
+	// <p>数据库代理组 ID。</p>
 	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18742,126 +18704,110 @@ func (r *ModifyProxyDescResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyProxyRwSplitRequestParams struct {
-	// 集群ID，例如cynosdbmysql-asd123
+	// <p>集群ID，例如cynosdbmysql-asd123</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 数据库代理组ID，例如cynosdbmysql-proxy-qwe123
+	// <p>数据库代理组ID，例如cynosdbmysql-proxy-qwe123</p>
 	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
 
-	// 一致性类型；“eventual"-最终一致性, "session"-会话一致性, "global"-全局一致性
+	// <p>一致性类型；“eventual&quot;-最终一致性, &quot;session&quot;-会话一致性, &quot;global&quot;-全局一致性</p>
 	ConsistencyType *string `json:"ConsistencyType,omitnil,omitempty" name:"ConsistencyType"`
 
-	// 一致性超时时间。
-	// 取值范围：0~1000000（微秒）,设置0则表示若只读实例出现延迟, 导致一致性策略不满足, 请求将一直等待。
+	// <p>一致性超时时间。<br>取值范围：0~1000000（微秒）,设置0则表示若只读实例出现延迟, 导致一致性策略不满足, 请求将一直等待。</p>
 	ConsistencyTimeOut *string `json:"ConsistencyTimeOut,omitnil,omitempty" name:"ConsistencyTimeOut"`
 
-	// 读写权重分配模式；系统自动分配："system"， 自定义："custom"
+	// <p>读写权重分配模式；系统自动分配：&quot;system&quot;， 自定义：&quot;custom&quot;</p>
 	WeightMode *string `json:"WeightMode,omitnil,omitempty" name:"WeightMode"`
 
-	// 实例只读权重。
+	// <p>实例只读权重。</p>
 	InstanceWeights []*ProxyInstanceWeight `json:"InstanceWeights,omitnil,omitempty" name:"InstanceWeights"`
 
-	// 是否开启故障转移，代理出现故障后，连接地址将路由到主实例，取值："yes" , "no"
+	// <p>是否开启故障转移，代理出现故障后，连接地址将路由到主实例，取值：&quot;yes&quot; , &quot;no&quot;</p>
 	FailOver *string `json:"FailOver,omitnil,omitempty" name:"FailOver"`
 
-	// 是否自动添加只读实例，取值："yes" , "no"
+	// <p>是否自动添加只读实例，取值：&quot;yes&quot; , &quot;no&quot;</p>
 	AutoAddRo *string `json:"AutoAddRo,omitnil,omitempty" name:"AutoAddRo"`
 
-	// 是否打开读写分离。
-	// 该参数已废弃，请通过RwType设置读写属性。
+	// <p>是否打开读写分离。<br>该参数已废弃，请通过RwType设置读写属性。</p>
 	OpenRw *string `json:"OpenRw,omitnil,omitempty" name:"OpenRw"`
 
-	// 读写类型：
-	// READWRITE,READONLY
+	// <p>读写类型：<br>READWRITE,READONLY</p>
 	RwType *string `json:"RwType,omitnil,omitempty" name:"RwType"`
 
-	// 事务拆分。
-	// 在一个事务中拆分读和写到不同的实例上去执行。
+	// <p>事务拆分。<br>在一个事务中拆分读和写到不同的实例上去执行。</p>
 	TransSplit *bool `json:"TransSplit,omitnil,omitempty" name:"TransSplit"`
 
-	// 连接模式：
-	// nearby,balance
+	// <p>连接模式：<br>nearby,balance</p>
 	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
 
-	// 是否打开连接池：
-	// yes,no
+	// <p>是否打开连接池：<br>yes,no</p>
 	OpenConnectionPool *string `json:"OpenConnectionPool,omitnil,omitempty" name:"OpenConnectionPool"`
 
-	// 连接池类型：
-	// SessionConnectionPool
+	// <p>连接池类型：<br>SessionConnectionPool</p>
 	ConnectionPoolType *string `json:"ConnectionPoolType,omitnil,omitempty" name:"ConnectionPoolType"`
 
-	// 连接池时间。
-	// 可选范围:0~300（秒）
+	// <p>连接池时间。<br>可选范围:0~300（秒）</p>
 	ConnectionPoolTimeOut *int64 `json:"ConnectionPoolTimeOut,omitnil,omitempty" name:"ConnectionPoolTimeOut"`
 
-	// 是否将libra节点当作普通RO节点
+	// <p>是否将libra节点当作普通RO节点</p>
 	ApNodeAsRoNode *bool `json:"ApNodeAsRoNode,omitnil,omitempty" name:"ApNodeAsRoNode"`
 
-	// libra节点故障，是否转发给其他节点
+	// <p>libra节点故障，是否转发给其他节点</p>
 	ApQueryToOtherNode *bool `json:"ApQueryToOtherNode,omitnil,omitempty" name:"ApQueryToOtherNode"`
 }
 
 type ModifyProxyRwSplitRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID，例如cynosdbmysql-asd123
+	// <p>集群ID，例如cynosdbmysql-asd123</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 数据库代理组ID，例如cynosdbmysql-proxy-qwe123
+	// <p>数据库代理组ID，例如cynosdbmysql-proxy-qwe123</p>
 	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
 
-	// 一致性类型；“eventual"-最终一致性, "session"-会话一致性, "global"-全局一致性
+	// <p>一致性类型；“eventual&quot;-最终一致性, &quot;session&quot;-会话一致性, &quot;global&quot;-全局一致性</p>
 	ConsistencyType *string `json:"ConsistencyType,omitnil,omitempty" name:"ConsistencyType"`
 
-	// 一致性超时时间。
-	// 取值范围：0~1000000（微秒）,设置0则表示若只读实例出现延迟, 导致一致性策略不满足, 请求将一直等待。
+	// <p>一致性超时时间。<br>取值范围：0~1000000（微秒）,设置0则表示若只读实例出现延迟, 导致一致性策略不满足, 请求将一直等待。</p>
 	ConsistencyTimeOut *string `json:"ConsistencyTimeOut,omitnil,omitempty" name:"ConsistencyTimeOut"`
 
-	// 读写权重分配模式；系统自动分配："system"， 自定义："custom"
+	// <p>读写权重分配模式；系统自动分配：&quot;system&quot;， 自定义：&quot;custom&quot;</p>
 	WeightMode *string `json:"WeightMode,omitnil,omitempty" name:"WeightMode"`
 
-	// 实例只读权重。
+	// <p>实例只读权重。</p>
 	InstanceWeights []*ProxyInstanceWeight `json:"InstanceWeights,omitnil,omitempty" name:"InstanceWeights"`
 
-	// 是否开启故障转移，代理出现故障后，连接地址将路由到主实例，取值："yes" , "no"
+	// <p>是否开启故障转移，代理出现故障后，连接地址将路由到主实例，取值：&quot;yes&quot; , &quot;no&quot;</p>
 	FailOver *string `json:"FailOver,omitnil,omitempty" name:"FailOver"`
 
-	// 是否自动添加只读实例，取值："yes" , "no"
+	// <p>是否自动添加只读实例，取值：&quot;yes&quot; , &quot;no&quot;</p>
 	AutoAddRo *string `json:"AutoAddRo,omitnil,omitempty" name:"AutoAddRo"`
 
-	// 是否打开读写分离。
-	// 该参数已废弃，请通过RwType设置读写属性。
+	// <p>是否打开读写分离。<br>该参数已废弃，请通过RwType设置读写属性。</p>
 	OpenRw *string `json:"OpenRw,omitnil,omitempty" name:"OpenRw"`
 
-	// 读写类型：
-	// READWRITE,READONLY
+	// <p>读写类型：<br>READWRITE,READONLY</p>
 	RwType *string `json:"RwType,omitnil,omitempty" name:"RwType"`
 
-	// 事务拆分。
-	// 在一个事务中拆分读和写到不同的实例上去执行。
+	// <p>事务拆分。<br>在一个事务中拆分读和写到不同的实例上去执行。</p>
 	TransSplit *bool `json:"TransSplit,omitnil,omitempty" name:"TransSplit"`
 
-	// 连接模式：
-	// nearby,balance
+	// <p>连接模式：<br>nearby,balance</p>
 	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
 
-	// 是否打开连接池：
-	// yes,no
+	// <p>是否打开连接池：<br>yes,no</p>
 	OpenConnectionPool *string `json:"OpenConnectionPool,omitnil,omitempty" name:"OpenConnectionPool"`
 
-	// 连接池类型：
-	// SessionConnectionPool
+	// <p>连接池类型：<br>SessionConnectionPool</p>
 	ConnectionPoolType *string `json:"ConnectionPoolType,omitnil,omitempty" name:"ConnectionPoolType"`
 
-	// 连接池时间。
-	// 可选范围:0~300（秒）
+	// <p>连接池时间。<br>可选范围:0~300（秒）</p>
 	ConnectionPoolTimeOut *int64 `json:"ConnectionPoolTimeOut,omitnil,omitempty" name:"ConnectionPoolTimeOut"`
 
-	// 是否将libra节点当作普通RO节点
+	// <p>是否将libra节点当作普通RO节点</p>
 	ApNodeAsRoNode *bool `json:"ApNodeAsRoNode,omitnil,omitempty" name:"ApNodeAsRoNode"`
 
-	// libra节点故障，是否转发给其他节点
+	// <p>libra节点故障，是否转发给其他节点</p>
 	ApQueryToOtherNode *bool `json:"ApQueryToOtherNode,omitnil,omitempty" name:"ApQueryToOtherNode"`
 }
 
@@ -18902,10 +18848,10 @@ func (r *ModifyProxyRwSplitRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyProxyRwSplitResponseParams struct {
-	// 异步FlowId
+	// <p>异步FlowId</p>
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 异步任务ID
+	// <p>异步任务ID</p>
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20995,40 +20941,40 @@ type ProxyGroupInfo struct {
 }
 
 type ProxyGroupRwInfo struct {
-	// 一致性类型 eventual-最终一致性,global-全局一致性,session-会话一致性
+	// <p>一致性类型 eventual-最终一致性,global-全局一致性,session-会话一致性</p>
 	ConsistencyType *string `json:"ConsistencyType,omitnil,omitempty" name:"ConsistencyType"`
 
-	// 一致性超时时间
+	// <p>一致性超时时间</p>
 	ConsistencyTimeOut *int64 `json:"ConsistencyTimeOut,omitnil,omitempty" name:"ConsistencyTimeOut"`
 
-	// 权重模式 system-系统分配，custom-自定义
+	// <p>权重模式 system-系统分配，custom-自定义</p>
 	WeightMode *string `json:"WeightMode,omitnil,omitempty" name:"WeightMode"`
 
-	// 是否开启故障转移
+	// <p>是否开启故障转移</p>
 	FailOver *string `json:"FailOver,omitnil,omitempty" name:"FailOver"`
 
-	// 是否自动添加只读实例，yes-是，no-不自动添加
+	// <p>是否自动添加只读实例，yes-是，no-不自动添加</p>
 	AutoAddRo *string `json:"AutoAddRo,omitnil,omitempty" name:"AutoAddRo"`
 
-	// 实例权重数组
+	// <p>实例权重数组</p>
 	InstanceWeights []*ProxyInstanceWeight `json:"InstanceWeights,omitnil,omitempty" name:"InstanceWeights"`
 
-	// 是否开通读写节点，yse-是，no-否
+	// <p>是否开通读写节点，yse-是，no-否</p>
 	OpenRw *string `json:"OpenRw,omitnil,omitempty" name:"OpenRw"`
 
-	// 读写属性，可选值：READWRITE,READONLY
+	// <p>读写属性，可选值：READWRITE,READONLY</p>
 	RwType *string `json:"RwType,omitnil,omitempty" name:"RwType"`
 
-	// 事务拆分
+	// <p>事务拆分</p>
 	TransSplit *bool `json:"TransSplit,omitnil,omitempty" name:"TransSplit"`
 
-	// 连接模式，可选值：balance，nearby
+	// <p>连接模式，可选值：balance，nearby</p>
 	AccessMode *string `json:"AccessMode,omitnil,omitempty" name:"AccessMode"`
 
-	// 是否将libra节点当作普通RO节点
+	// <p>是否将libra节点当作普通RO节点</p>
 	ApNodeAsRoNode *bool `json:"ApNodeAsRoNode,omitnil,omitempty" name:"ApNodeAsRoNode"`
 
-	// libra节点故障，是否转发给其他节点
+	// <p>libra节点故障，是否转发给其他节点</p>
 	ApQueryToOtherNode *bool `json:"ApQueryToOtherNode,omitnil,omitempty" name:"ApQueryToOtherNode"`
 }
 

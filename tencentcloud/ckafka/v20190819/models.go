@@ -2017,6 +2017,331 @@ func (r *CreateInstancePreResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateMetaAndDataSyncDatahubTaskRequestParams struct {
+	// <p>任务名称</p><p>64字符内</p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>同步源连接</p><p>参数格式：resource-test</p>
+	SourceResourceId *string `json:"SourceResourceId,omitnil,omitempty" name:"SourceResourceId"`
+
+	// <p>同步目标连接</p><p>参数格式：resource-test</p>
+	TargetResourceId *string `json:"TargetResourceId,omitnil,omitempty" name:"TargetResourceId"`
+
+	// <p>标签列表</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp</p><p>枚举值：</p><ul><li>earliest： 最开始位置</li><li>latest： 最新位置</li><li>timestamp： 时间点位置</li></ul>
+	OffsetType *string `json:"OffsetType,omitnil,omitempty" name:"OffsetType"`
+
+	// <p>正则匹配Topic列表</p><p>与TopicList参数二选一</p>
+	TopicRegularExpression *string `json:"TopicRegularExpression,omitnil,omitempty" name:"TopicRegularExpression"`
+
+	// <p>多选topic列表</p><p>与TopicRegularExpression参数二选一</p>
+	TopicList []*string `json:"TopicList,omitnil,omitempty" name:"TopicList"`
+
+	// <p>Topic 前缀</p>
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+
+	// <p>Topic前缀分隔符</p><p>仅支持 &quot;.&quot; / &quot;-&quot; / &quot;_&quot;</p>
+	Separator *string `json:"Separator,omitnil,omitempty" name:"Separator"`
+
+	// <p>连接器任务描述</p><p>128字符内</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type CreateMetaAndDataSyncDatahubTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务名称</p><p>64字符内</p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>同步源连接</p><p>参数格式：resource-test</p>
+	SourceResourceId *string `json:"SourceResourceId,omitnil,omitempty" name:"SourceResourceId"`
+
+	// <p>同步目标连接</p><p>参数格式：resource-test</p>
+	TargetResourceId *string `json:"TargetResourceId,omitnil,omitempty" name:"TargetResourceId"`
+
+	// <p>标签列表</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp</p><p>枚举值：</p><ul><li>earliest： 最开始位置</li><li>latest： 最新位置</li><li>timestamp： 时间点位置</li></ul>
+	OffsetType *string `json:"OffsetType,omitnil,omitempty" name:"OffsetType"`
+
+	// <p>正则匹配Topic列表</p><p>与TopicList参数二选一</p>
+	TopicRegularExpression *string `json:"TopicRegularExpression,omitnil,omitempty" name:"TopicRegularExpression"`
+
+	// <p>多选topic列表</p><p>与TopicRegularExpression参数二选一</p>
+	TopicList []*string `json:"TopicList,omitnil,omitempty" name:"TopicList"`
+
+	// <p>Topic 前缀</p>
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+
+	// <p>Topic前缀分隔符</p><p>仅支持 &quot;.&quot; / &quot;-&quot; / &quot;_&quot;</p>
+	Separator *string `json:"Separator,omitnil,omitempty" name:"Separator"`
+
+	// <p>连接器任务描述</p><p>128字符内</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *CreateMetaAndDataSyncDatahubTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMetaAndDataSyncDatahubTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskName")
+	delete(f, "SourceResourceId")
+	delete(f, "TargetResourceId")
+	delete(f, "Tags")
+	delete(f, "OffsetType")
+	delete(f, "TopicRegularExpression")
+	delete(f, "TopicList")
+	delete(f, "Prefix")
+	delete(f, "Separator")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMetaAndDataSyncDatahubTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMetaAndDataSyncDatahubTaskResponseParams struct {
+	// <p>返回结果</p>
+	Result *CreateDatahubTaskRes `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMetaAndDataSyncDatahubTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMetaAndDataSyncDatahubTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateMetaAndDataSyncDatahubTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMetaAndDataSyncDatahubTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMetaDataAndOffsetSyncDatahubTaskRequestParams struct {
+	// <p>任务名称</p><p>参数格式：task-test</p><p>64字符内</p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>同步源连接</p><p>参数格式：resource-test</p>
+	SourceResourceId *string `json:"SourceResourceId,omitnil,omitempty" name:"SourceResourceId"`
+
+	// <p>同步目标链接</p><p>参数格式：resource-test</p>
+	TargetResourceId *string `json:"TargetResourceId,omitnil,omitempty" name:"TargetResourceId"`
+
+	// <p>连接器任务描述</p><p>128字符内</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>Offset类型，最开始位置earliest，最新位置latest</p><p>枚举值：</p><ul><li>earliest： 最开始位置</li><li>latest： 最新位置</li></ul>
+	OffsetType *string `json:"OffsetType,omitnil,omitempty" name:"OffsetType"`
+
+	// <p>正则匹配Topic列表</p><p>与TopicList参数二选一</p>
+	TopicRegularExpression *string `json:"TopicRegularExpression,omitnil,omitempty" name:"TopicRegularExpression"`
+
+	// <p>多选topic列表</p><p>与TopicRegularExpression参数二选一</p>
+	TopicList []*string `json:"TopicList,omitnil,omitempty" name:"TopicList"`
+
+	// <p>Topic 前缀</p>
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+
+	// <p>Topic前缀分隔符</p><p>仅支持 &quot;.&quot; / &quot;-&quot; / &quot;_&quot;</p>
+	Separator *string `json:"Separator,omitnil,omitempty" name:"Separator"`
+
+	// <p>标签列表</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type CreateMetaDataAndOffsetSyncDatahubTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>任务名称</p><p>参数格式：task-test</p><p>64字符内</p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>同步源连接</p><p>参数格式：resource-test</p>
+	SourceResourceId *string `json:"SourceResourceId,omitnil,omitempty" name:"SourceResourceId"`
+
+	// <p>同步目标链接</p><p>参数格式：resource-test</p>
+	TargetResourceId *string `json:"TargetResourceId,omitnil,omitempty" name:"TargetResourceId"`
+
+	// <p>连接器任务描述</p><p>128字符内</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>Offset类型，最开始位置earliest，最新位置latest</p><p>枚举值：</p><ul><li>earliest： 最开始位置</li><li>latest： 最新位置</li></ul>
+	OffsetType *string `json:"OffsetType,omitnil,omitempty" name:"OffsetType"`
+
+	// <p>正则匹配Topic列表</p><p>与TopicList参数二选一</p>
+	TopicRegularExpression *string `json:"TopicRegularExpression,omitnil,omitempty" name:"TopicRegularExpression"`
+
+	// <p>多选topic列表</p><p>与TopicRegularExpression参数二选一</p>
+	TopicList []*string `json:"TopicList,omitnil,omitempty" name:"TopicList"`
+
+	// <p>Topic 前缀</p>
+	Prefix *string `json:"Prefix,omitnil,omitempty" name:"Prefix"`
+
+	// <p>Topic前缀分隔符</p><p>仅支持 &quot;.&quot; / &quot;-&quot; / &quot;_&quot;</p>
+	Separator *string `json:"Separator,omitnil,omitempty" name:"Separator"`
+
+	// <p>标签列表</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *CreateMetaDataAndOffsetSyncDatahubTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMetaDataAndOffsetSyncDatahubTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskName")
+	delete(f, "SourceResourceId")
+	delete(f, "TargetResourceId")
+	delete(f, "Description")
+	delete(f, "OffsetType")
+	delete(f, "TopicRegularExpression")
+	delete(f, "TopicList")
+	delete(f, "Prefix")
+	delete(f, "Separator")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMetaDataAndOffsetSyncDatahubTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMetaDataAndOffsetSyncDatahubTaskResponseParams struct {
+	// <p>返回结果</p>
+	Result *CreateDatahubTaskRes `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMetaDataAndOffsetSyncDatahubTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMetaDataAndOffsetSyncDatahubTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateMetaDataAndOffsetSyncDatahubTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMetaDataAndOffsetSyncDatahubTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMetaSyncDatahubTaskRequestParams struct {
+	// <p>连接器任务名称</p><p>64字符内</p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>同步源连接</p><p>参数格式：resource-test</p>
+	SourceResourceId *string `json:"SourceResourceId,omitnil,omitempty" name:"SourceResourceId"`
+
+	// <p>同步目标连接</p><p>参数格式：resource-test</p>
+	TargetResourceId *string `json:"TargetResourceId,omitnil,omitempty" name:"TargetResourceId"`
+
+	// <p>连接器任务描述</p><p>128字符内</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>标签列表</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type CreateMetaSyncDatahubTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>连接器任务名称</p><p>64字符内</p>
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// <p>同步源连接</p><p>参数格式：resource-test</p>
+	SourceResourceId *string `json:"SourceResourceId,omitnil,omitempty" name:"SourceResourceId"`
+
+	// <p>同步目标连接</p><p>参数格式：resource-test</p>
+	TargetResourceId *string `json:"TargetResourceId,omitnil,omitempty" name:"TargetResourceId"`
+
+	// <p>连接器任务描述</p><p>128字符内</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>标签列表</p>
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *CreateMetaSyncDatahubTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMetaSyncDatahubTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskName")
+	delete(f, "SourceResourceId")
+	delete(f, "TargetResourceId")
+	delete(f, "Description")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMetaSyncDatahubTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMetaSyncDatahubTaskResponseParams struct {
+	// <p>返回结果</p>
+	Result *CreateDatahubTaskRes `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMetaSyncDatahubTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMetaSyncDatahubTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateMetaSyncDatahubTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMetaSyncDatahubTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePartitionRequestParams struct {
 	// ckafka集群实例Id，可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -2807,26 +3132,26 @@ func (r *CreateTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserRequestParams struct {
-	// ckafka集群实例Id，可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+	// <p>ckafka集群实例Id，可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名称
+	// <p>用户名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 用户密码
+	// <p>用户密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 }
 
 type CreateUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id，可通过[DescribeInstances](https://cloud.tencent.com/document/product/597/40835)接口获取
+	// <p>ckafka集群实例Id，可通过<a href="https://cloud.tencent.com/document/product/597/40835">DescribeInstances</a>接口获取</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名称
+	// <p>用户名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 用户密码
+	// <p>用户密码</p>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 }
 
@@ -2853,7 +3178,7 @@ func (r *CreateUserRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserResponseParams struct {
-	// 返回结果
+	// <p>返回结果</p>
 	Result *JgwOperateResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5225,44 +5550,44 @@ func (r *DescribeDatahubTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDatahubTopicsRequestParams struct {
-	// 搜索词
+	// <p>搜索词</p><p>对Name或TopicName或TopicId字段进行模糊匹配</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 本次查询的偏移位置，默认为0
+	// <p>本次查询的偏移位置，默认为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 本次返回结果的最大个数，默认为50，最大值为50
+	// <p>本次返回结果的最大个数</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否从连接查询topic列表
+	// <p>是否从连接查询topic列表</p><p>默认值：false</p>
 	QueryFromConnectResource *bool `json:"QueryFromConnectResource,omitnil,omitempty" name:"QueryFromConnectResource"`
 
-	// 连接的ID
+	// <p>连接的ID</p>
 	ConnectResourceId *string `json:"ConnectResourceId,omitnil,omitempty" name:"ConnectResourceId"`
 
-	// topic资源表达式
+	// <p>topic资源表达式</p>
 	TopicRegularExpression *string `json:"TopicRegularExpression,omitnil,omitempty" name:"TopicRegularExpression"`
 }
 
 type DescribeDatahubTopicsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 搜索词
+	// <p>搜索词</p><p>对Name或TopicName或TopicId字段进行模糊匹配</p>
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 本次查询的偏移位置，默认为0
+	// <p>本次查询的偏移位置，默认为0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 本次返回结果的最大个数，默认为50，最大值为50
+	// <p>本次返回结果的最大个数</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 是否从连接查询topic列表
+	// <p>是否从连接查询topic列表</p><p>默认值：false</p>
 	QueryFromConnectResource *bool `json:"QueryFromConnectResource,omitnil,omitempty" name:"QueryFromConnectResource"`
 
-	// 连接的ID
+	// <p>连接的ID</p>
 	ConnectResourceId *string `json:"ConnectResourceId,omitnil,omitempty" name:"ConnectResourceId"`
 
-	// topic资源表达式
+	// <p>topic资源表达式</p>
 	TopicRegularExpression *string `json:"TopicRegularExpression,omitnil,omitempty" name:"TopicRegularExpression"`
 }
 
@@ -5300,7 +5625,7 @@ type DescribeDatahubTopicsResp struct {
 
 // Predefined struct for user
 type DescribeDatahubTopicsResponseParams struct {
-	// 主题列表
+	// <p>主题列表</p>
 	Result *DescribeDatahubTopicsResp `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7477,32 +7802,32 @@ func (r *FetchDatahubMessageByOffsetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type FetchLatestDatahubMessageListRequestParams struct {
-	// 弹性topic名称
+	// <p>弹性topic名称</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/86863">DescribeDatahubTopics</a></p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 分区id
+	// <p>分区id</p>
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 位点信息
+	// <p>位点信息</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 最大查询条数，最小1，最大100
+	// <p>最大查询条数</p><p>取值范围：[1, 100]</p>
 	MessageCount *int64 `json:"MessageCount,omitnil,omitempty" name:"MessageCount"`
 }
 
 type FetchLatestDatahubMessageListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 弹性topic名称
+	// <p>弹性topic名称</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/86863">DescribeDatahubTopics</a></p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 分区id
+	// <p>分区id</p>
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 
-	// 位点信息
+	// <p>位点信息</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 最大查询条数，最小1，最大100
+	// <p>最大查询条数</p><p>取值范围：[1, 100]</p>
 	MessageCount *int64 `json:"MessageCount,omitnil,omitempty" name:"MessageCount"`
 }
 
@@ -7530,7 +7855,7 @@ func (r *FetchLatestDatahubMessageListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type FetchLatestDatahubMessageListResponseParams struct {
-	// 返回结果。
+	// <p>返回结果。</p>
 	Result []*ConsumerRecord `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11638,38 +11963,38 @@ type TransformsParam struct {
 
 // Predefined struct for user
 type UpgradeBrokerVersionRequestParams struct {
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 1.平滑升配.2.垂直升配
+	// <p>版本升级类型</p><p>枚举值：</p><ul><li>1： 小版本迁移升级(推荐)</li></ul>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 版本号
+	// <p>版本号</p>
 	SourceVersion *string `json:"SourceVersion,omitnil,omitempty" name:"SourceVersion"`
 
-	// 版本号
+	// <p>版本号</p>
 	TargetVersion *string `json:"TargetVersion,omitnil,omitempty" name:"TargetVersion"`
 
-	// 延迟时间
+	// <p>延迟时间</p>
 	DelayTimeStamp *string `json:"DelayTimeStamp,omitnil,omitempty" name:"DelayTimeStamp"`
 }
 
 type UpgradeBrokerVersionRequest struct {
 	*tchttp.BaseRequest
 	
-	// ckafka集群实例Id
+	// <p>ckafka集群实例Id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 1.平滑升配.2.垂直升配
+	// <p>版本升级类型</p><p>枚举值：</p><ul><li>1： 小版本迁移升级(推荐)</li></ul>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 版本号
+	// <p>版本号</p>
 	SourceVersion *string `json:"SourceVersion,omitnil,omitempty" name:"SourceVersion"`
 
-	// 版本号
+	// <p>版本号</p>
 	TargetVersion *string `json:"TargetVersion,omitnil,omitempty" name:"TargetVersion"`
 
-	// 延迟时间
+	// <p>延迟时间</p>
 	DelayTimeStamp *string `json:"DelayTimeStamp,omitnil,omitempty" name:"DelayTimeStamp"`
 }
 
@@ -11698,7 +12023,7 @@ func (r *UpgradeBrokerVersionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpgradeBrokerVersionResponseParams struct {
-	// 升配结果
+	// <p>升配结果</p>
 	Result *JgwOperateResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11727,16 +12052,16 @@ type UrlDecodeParam struct {
 }
 
 type User struct {
-	// 用户id
+	// <p>用户id</p>
 	UserId *int64 `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 用户名称
+	// <p>用户名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 最后更新时间
+	// <p>最后更新时间</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 

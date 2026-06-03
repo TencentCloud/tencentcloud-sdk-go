@@ -547,6 +547,114 @@ func (c *Client) CancelUserAutoSignEnableUrlWithContext(ctx context.Context, req
     return
 }
 
+func NewCreateArchiveFlowTaskRequest() (request *CreateArchiveFlowTaskRequest) {
+    request = &CreateArchiveFlowTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateArchiveFlowTask")
+    
+    
+    return
+}
+
+func NewCreateArchiveFlowTaskResponse() (response *CreateArchiveFlowTaskResponse) {
+    response = &CreateArchiveFlowTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateArchiveFlowTask
+// 创建合同归档任务
+//
+// 
+//
+// 合同归档接口用于将外部系统生成的合同、线下签署完成的合同或历史存量合同归档至腾讯电子签系统，实现合同统一管理。
+//
+// 
+//
+// 调用方提交合同文件资源、合同基础信息、签署方信息等数据后，系统将异步创建归档任务进行处理。归档成功后，系统会生成唯一的归档合同 ID（ArchivedFlowId），用于后续合同查询和管理。
+//
+// 
+//
+// 合同归档流程：
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/1c99715285540088b97a0435895736a1.png)
+//
+// 1. 使用<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a> 上传文件返回resourceId
+//
+// 2. 根据resourceId调用CreateArchiveFlowTask创建合同归档任务返回任务id
+//
+// 3. 通过任务ID查询合同归档任务状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_MQ = "InternalError.Mq"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SENSITIVE = "InvalidParameter.Sensitive"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateArchiveFlowTask(request *CreateArchiveFlowTaskRequest) (response *CreateArchiveFlowTaskResponse, err error) {
+    return c.CreateArchiveFlowTaskWithContext(context.Background(), request)
+}
+
+// CreateArchiveFlowTask
+// 创建合同归档任务
+//
+// 
+//
+// 合同归档接口用于将外部系统生成的合同、线下签署完成的合同或历史存量合同归档至腾讯电子签系统，实现合同统一管理。
+//
+// 
+//
+// 调用方提交合同文件资源、合同基础信息、签署方信息等数据后，系统将异步创建归档任务进行处理。归档成功后，系统会生成唯一的归档合同 ID（ArchivedFlowId），用于后续合同查询和管理。
+//
+// 
+//
+// 合同归档流程：
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/1c99715285540088b97a0435895736a1.png)
+//
+// 1. 使用<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a> 上传文件返回resourceId
+//
+// 2. 根据resourceId调用CreateArchiveFlowTask创建合同归档任务返回任务id
+//
+// 3. 通过任务ID查询合同归档任务状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_MQ = "InternalError.Mq"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SENSITIVE = "InvalidParameter.Sensitive"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateArchiveFlowTaskWithContext(ctx context.Context, request *CreateArchiveFlowTaskRequest) (response *CreateArchiveFlowTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateArchiveFlowTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateArchiveFlowTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateArchiveFlowTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateArchiveFlowTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBatchAdminChangeInvitationsRequest() (request *CreateBatchAdminChangeInvitationsRequest) {
     request = &CreateBatchAdminChangeInvitationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10317,6 +10425,64 @@ func (c *Client) DeleteSingleSignOnEmployeesWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDeleteSingleSignOnEmployeesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeArchiveFlowTaskRequest() (request *DescribeArchiveFlowTaskRequest) {
+    request = &DescribeArchiveFlowTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeArchiveFlowTask")
+    
+    
+    return
+}
+
+func NewDescribeArchiveFlowTaskResponse() (response *DescribeArchiveFlowTaskResponse) {
+    response = &DescribeArchiveFlowTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeArchiveFlowTask
+// 查询归档任务的执行结果， 用于获取合同归档任务的当前处理状态及执行结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeArchiveFlowTask(request *DescribeArchiveFlowTaskRequest) (response *DescribeArchiveFlowTaskResponse, err error) {
+    return c.DescribeArchiveFlowTaskWithContext(context.Background(), request)
+}
+
+// DescribeArchiveFlowTask
+// 查询归档任务的执行结果， 用于获取合同归档任务的当前处理状态及执行结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeArchiveFlowTaskWithContext(ctx context.Context, request *DescribeArchiveFlowTaskRequest) (response *DescribeArchiveFlowTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeArchiveFlowTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "DescribeArchiveFlowTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeArchiveFlowTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeArchiveFlowTaskResponse()
     err = c.Send(request, response)
     return
 }

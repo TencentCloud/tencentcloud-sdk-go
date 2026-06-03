@@ -1288,6 +1288,9 @@ type AssetRiskItem struct {
 
 	// <p>资产类型图标</p>
 	AssetTypeIconURL *string `json:"AssetTypeIconURL,omitnil,omitempty" name:"AssetTypeIconURL"`
+
+	// <p>资产类型</p>
+	AssetTypeName *string `json:"AssetTypeName,omitnil,omitempty" name:"AssetTypeName"`
 }
 
 type AssetTag struct {
@@ -7496,19 +7499,19 @@ type DescribeCheckViewRisksRequestParams struct {
 	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 过滤内容
+	// <p>过滤内容</p>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序类型
+	// <p>排序类型</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -7518,19 +7521,19 @@ type DescribeCheckViewRisksRequest struct {
 	// <p>集团账号的成员id</p>
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
-	// 过滤内容
+	// <p>过滤内容</p>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页大小
+	// <p>分页大小</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// <p>偏移量</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序类型
+	// <p>排序类型</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
+	// <p>排序字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -7560,17 +7563,20 @@ func (r *DescribeCheckViewRisksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCheckViewRisksResponseParams struct {
-	// 检查视角下风险数量
+	// <p>检查视角下风险数量</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 检查视角下风险列表
+	// <p>检查视角下风险列表</p>
 	CheckViewRiskList []*CheckViewRiskItem `json:"CheckViewRiskList,omitnil,omitempty" name:"CheckViewRiskList"`
 
-	// 检查视角下cspm规范标签列表
+	// <p>检查视角下cspm规范标签列表</p>
 	StandardNameList []*StandardItem `json:"StandardNameList,omitnil,omitempty" name:"StandardNameList"`
 
-	// 资产类型集合
+	// <p>资产类型集合</p>
 	AssetTypeList []*AttributeOptionSet `json:"AssetTypeList,omitnil,omitempty" name:"AssetTypeList"`
+
+	// <p>云厂商类型集合</p>
+	ProviderList []*AttributeOptionSet `json:"ProviderList,omitnil,omitempty" name:"ProviderList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -15723,14 +15729,14 @@ func (r *DescribeRiskItemListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRiskRuleDetailRequestParams struct {
-	// 风险规则ID
+	// <p>风险规则ID</p>
 	RiskRuleId *string `json:"RiskRuleId,omitnil,omitempty" name:"RiskRuleId"`
 }
 
 type DescribeRiskRuleDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 风险规则ID
+	// <p>风险规则ID</p>
 	RiskRuleId *string `json:"RiskRuleId,omitnil,omitempty" name:"RiskRuleId"`
 }
 
@@ -15755,20 +15761,23 @@ func (r *DescribeRiskRuleDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRiskRuleDetailResponseParams struct {
-	// 风险规则ID
+	// <p>风险规则ID</p>
 	RiskRuleId *string `json:"RiskRuleId,omitnil,omitempty" name:"RiskRuleId"`
 
-	// 云厂商
+	// <p>云厂商</p>
 	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
 
-	// 风险名称
+	// <p>风险名称</p>
 	RiskName *string `json:"RiskName,omitnil,omitempty" name:"RiskName"`
 
-	// 风险危害
+	// <p>风险危害</p>
 	RiskInfluence *string `json:"RiskInfluence,omitnil,omitempty" name:"RiskInfluence"`
 
-	// 修复指引
+	// <p>修复指引</p>
 	RiskFixAdvice *string `json:"RiskFixAdvice,omitnil,omitempty" name:"RiskFixAdvice"`
+
+	// <p>资产类型</p>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -22207,6 +22216,9 @@ type RiskDetailItem struct {
 
 	// <p>用户AppID</p>
 	AppID *uint64 `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// <p>资产类型</p>
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 type RiskRuleInfo struct {

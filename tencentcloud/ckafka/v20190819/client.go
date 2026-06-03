@@ -971,6 +971,198 @@ func (c *Client) CreateInstancePreWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateMetaAndDataSyncDatahubTaskRequest() (request *CreateMetaAndDataSyncDatahubTaskRequest) {
+    request = &CreateMetaAndDataSyncDatahubTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "CreateMetaAndDataSyncDatahubTask")
+    
+    
+    return
+}
+
+func NewCreateMetaAndDataSyncDatahubTaskResponse() (response *CreateMetaAndDataSyncDatahubTaskResponse) {
+    response = &CreateMetaAndDataSyncDatahubTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMetaAndDataSyncDatahubTask
+// 连接器实例同步任务-元数据、消息同步
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateMetaAndDataSyncDatahubTask(request *CreateMetaAndDataSyncDatahubTaskRequest) (response *CreateMetaAndDataSyncDatahubTaskResponse, err error) {
+    return c.CreateMetaAndDataSyncDatahubTaskWithContext(context.Background(), request)
+}
+
+// CreateMetaAndDataSyncDatahubTask
+// 连接器实例同步任务-元数据、消息同步
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateMetaAndDataSyncDatahubTaskWithContext(ctx context.Context, request *CreateMetaAndDataSyncDatahubTaskRequest) (response *CreateMetaAndDataSyncDatahubTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateMetaAndDataSyncDatahubTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CreateMetaAndDataSyncDatahubTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMetaAndDataSyncDatahubTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMetaAndDataSyncDatahubTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateMetaDataAndOffsetSyncDatahubTaskRequest() (request *CreateMetaDataAndOffsetSyncDatahubTaskRequest) {
+    request = &CreateMetaDataAndOffsetSyncDatahubTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "CreateMetaDataAndOffsetSyncDatahubTask")
+    
+    
+    return
+}
+
+func NewCreateMetaDataAndOffsetSyncDatahubTaskResponse() (response *CreateMetaDataAndOffsetSyncDatahubTaskResponse) {
+    response = &CreateMetaDataAndOffsetSyncDatahubTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMetaDataAndOffsetSyncDatahubTask
+// 连接器实例同步任务-同步元数据、消息数据、消费微点
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateMetaDataAndOffsetSyncDatahubTask(request *CreateMetaDataAndOffsetSyncDatahubTaskRequest) (response *CreateMetaDataAndOffsetSyncDatahubTaskResponse, err error) {
+    return c.CreateMetaDataAndOffsetSyncDatahubTaskWithContext(context.Background(), request)
+}
+
+// CreateMetaDataAndOffsetSyncDatahubTask
+// 连接器实例同步任务-同步元数据、消息数据、消费微点
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateMetaDataAndOffsetSyncDatahubTaskWithContext(ctx context.Context, request *CreateMetaDataAndOffsetSyncDatahubTaskRequest) (response *CreateMetaDataAndOffsetSyncDatahubTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateMetaDataAndOffsetSyncDatahubTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CreateMetaDataAndOffsetSyncDatahubTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMetaDataAndOffsetSyncDatahubTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMetaDataAndOffsetSyncDatahubTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateMetaSyncDatahubTaskRequest() (request *CreateMetaSyncDatahubTaskRequest) {
+    request = &CreateMetaSyncDatahubTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "CreateMetaSyncDatahubTask")
+    
+    
+    return
+}
+
+func NewCreateMetaSyncDatahubTaskResponse() (response *CreateMetaSyncDatahubTaskResponse) {
+    response = &CreateMetaSyncDatahubTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMetaSyncDatahubTask
+// 连接器实例同步任务-元数据同步
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateMetaSyncDatahubTask(request *CreateMetaSyncDatahubTaskRequest) (response *CreateMetaSyncDatahubTaskResponse, err error) {
+    return c.CreateMetaSyncDatahubTaskWithContext(context.Background(), request)
+}
+
+// CreateMetaSyncDatahubTask
+// 连接器实例同步任务-元数据同步
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateMetaSyncDatahubTaskWithContext(ctx context.Context, request *CreateMetaSyncDatahubTaskRequest) (response *CreateMetaSyncDatahubTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateMetaSyncDatahubTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ckafka", APIVersion, "CreateMetaSyncDatahubTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMetaSyncDatahubTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMetaSyncDatahubTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePartitionRequest() (request *CreatePartitionRequest) {
     request = &CreatePartitionRequest{
         BaseRequest: &tchttp.BaseRequest{},

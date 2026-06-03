@@ -6675,62 +6675,62 @@ func (r *ListGroupMembersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListGroupsRequestParams struct {
-	// 空间 ID。
+	// <p>空间 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
+	// <p>查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。</p>
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 
-	// 每页的最大数据条数。  取值范围：1~100。  默认值：10。
+	// <p>每页的最大数据条数。  取值范围：1~100。  默认值：10。</p>
 	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 过滤条件。  格式：<Attribute> <Operator> <Value>，不区分大小写。目前，<Attribute>只支持GroupName，<Operator>只支持eq（Equals）和sw（Start With）。  示例：Filter = "GroupName sw test"，表示查询名称以 test 开头的全部用户组。Filter = "GroupName eq testgroup"，表示查询名称为 testgroup 的用户组。
+	// <p>过滤条件，用户组名称</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 用户组的类型  Manual：手动创建，Synchronized：外部导入。
+	// <p>用户组的类型  Manual：手动创建，Synchronized：外部导入。</p>
 	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
 
-	// 筛选的用户，该用户关联的用户组会返回IsSelected=1
+	// <p>筛选的用户，该用户关联的用户组会返回IsSelected=1</p>
 	FilterUsers []*string `json:"FilterUsers,omitnil,omitempty" name:"FilterUsers"`
 
-	// 排序的字段，目前只支持CreateTime，默认是CreateTime字段
+	// <p>排序的字段，目前只支持CreateTime，默认是CreateTime字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序类型：Desc 倒序 Asc  正序，需要您和SortField一起设置
+	// <p>排序类型：Desc 倒序 Asc  正序，需要您和SortField一起设置</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 翻页offset. 不要与NextToken同时使用，优先使用NextToken
+	// <p>翻页offset. 不要与NextToken同时使用，优先使用NextToken</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type ListGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 空间 ID。
+	// <p>空间 ID。</p>
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
+	// <p>查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。</p>
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 
-	// 每页的最大数据条数。  取值范围：1~100。  默认值：10。
+	// <p>每页的最大数据条数。  取值范围：1~100。  默认值：10。</p>
 	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 过滤条件。  格式：<Attribute> <Operator> <Value>，不区分大小写。目前，<Attribute>只支持GroupName，<Operator>只支持eq（Equals）和sw（Start With）。  示例：Filter = "GroupName sw test"，表示查询名称以 test 开头的全部用户组。Filter = "GroupName eq testgroup"，表示查询名称为 testgroup 的用户组。
+	// <p>过滤条件，用户组名称</p>
 	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
 
-	// 用户组的类型  Manual：手动创建，Synchronized：外部导入。
+	// <p>用户组的类型  Manual：手动创建，Synchronized：外部导入。</p>
 	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
 
-	// 筛选的用户，该用户关联的用户组会返回IsSelected=1
+	// <p>筛选的用户，该用户关联的用户组会返回IsSelected=1</p>
 	FilterUsers []*string `json:"FilterUsers,omitnil,omitempty" name:"FilterUsers"`
 
-	// 排序的字段，目前只支持CreateTime，默认是CreateTime字段
+	// <p>排序的字段，目前只支持CreateTime，默认是CreateTime字段</p>
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
-	// 排序类型：Desc 倒序 Asc  正序，需要您和SortField一起设置
+	// <p>排序类型：Desc 倒序 Asc  正序，需要您和SortField一起设置</p>
 	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
 
-	// 翻页offset. 不要与NextToken同时使用，优先使用NextToken
+	// <p>翻页offset. 不要与NextToken同时使用，优先使用NextToken</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -6763,19 +6763,19 @@ func (r *ListGroupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListGroupsResponseParams struct {
-	// 查询返回结果下一页的令牌。  说明 只有IsTruncated为true时，才显示该参数。
+	// <p>查询返回结果下一页的令牌。  说明 只有IsTruncated为true时，才显示该参数。</p>
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
 
-	// 用户组列表。
+	// <p>用户组列表。</p>
 	Groups []*GroupInfo `json:"Groups,omitnil,omitempty" name:"Groups"`
 
-	// 每页的最大数据条数。
+	// <p>每页的最大数据条数。</p>
 	MaxResults *int64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
 
-	// 符合请求参数条件的数据总条数。
+	// <p>符合请求参数条件的数据总条数。</p>
 	TotalCounts *int64 `json:"TotalCounts,omitnil,omitempty" name:"TotalCounts"`
 
-	// 返回结果是否被截断。取值：  true：已截断。 false：未截断。
+	// <p>返回结果是否被截断。取值：  true：已截断。 false：未截断。</p>
 	IsTruncated *bool `json:"IsTruncated,omitnil,omitempty" name:"IsTruncated"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

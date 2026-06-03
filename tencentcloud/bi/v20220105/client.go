@@ -263,6 +263,86 @@ func (c *Client) CreateAuthApiKeyWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateDataTableRequest() (request *CreateDataTableRequest) {
+    request = &CreateDataTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "CreateDataTable")
+    
+    
+    return
+}
+
+func NewCreateDataTableResponse() (response *CreateDataTableResponse) {
+    response = &CreateDataTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDataTable
+// 添加数据表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) CreateDataTable(request *CreateDataTableRequest) (response *CreateDataTableResponse, err error) {
+    return c.CreateDataTableWithContext(context.Background(), request)
+}
+
+// CreateDataTable
+// 添加数据表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) CreateDataTableWithContext(ctx context.Context, request *CreateDataTableRequest) (response *CreateDataTableResponse, err error) {
+    if request == nil {
+        request = NewCreateDataTableRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "CreateDataTable")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDataTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDataTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDatasourceRequest() (request *CreateDatasourceRequest) {
     request = &CreateDatasourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1965,6 +2045,62 @@ func (c *Client) DescribeResourceUserGroupPageListWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewDescribeResourceUserGroupPageListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSourceFieldListRequest() (request *DescribeSourceFieldListRequest) {
+    request = &DescribeSourceFieldListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "DescribeSourceFieldList")
+    
+    
+    return
+}
+
+func NewDescribeSourceFieldListResponse() (response *DescribeSourceFieldListResponse) {
+    response = &DescribeSourceFieldListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSourceFieldList
+// 原始数据表字段接口信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DescribeSourceFieldList(request *DescribeSourceFieldListRequest) (response *DescribeSourceFieldListResponse, err error) {
+    return c.DescribeSourceFieldListWithContext(context.Background(), request)
+}
+
+// DescribeSourceFieldList
+// 原始数据表字段接口信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNSUPPORTEDOPERATION_BIERROR = "UnsupportedOperation.BIError"
+func (c *Client) DescribeSourceFieldListWithContext(ctx context.Context, request *DescribeSourceFieldListRequest) (response *DescribeSourceFieldListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSourceFieldListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "DescribeSourceFieldList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSourceFieldList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSourceFieldListResponse()
     err = c.Send(request, response)
     return
 }

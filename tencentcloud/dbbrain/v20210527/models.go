@@ -8786,14 +8786,17 @@ type SecLogExportTaskInfo struct {
 }
 
 type SessionItem struct {
-	// 访问来源。
+	// <p>访问来源。</p>
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 当前访问来源活跃连接数
+	// <p>当前访问来源活跃连接数</p>
 	ActiveConn *string `json:"ActiveConn,omitnil,omitempty" name:"ActiveConn"`
 
-	// 当前访问来源总连接数
+	// <p>当前访问来源总连接数</p>
 	AllConn *int64 `json:"AllConn,omitnil,omitempty" name:"AllConn"`
+
+	// <p>是否为内网ip</p>
+	IsInternalIp *bool `json:"IsInternalIp,omitnil,omitempty" name:"IsInternalIp"`
 }
 
 type SlowLogAgg struct {

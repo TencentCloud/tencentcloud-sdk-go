@@ -18396,6 +18396,57 @@ type InputAddress struct {
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
+type LLMDetectionIssue struct {
+	// <p>问题分类标签。</p>
+	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// <p>问题描述。</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>该问题的质量得分，范围 [0, 100]。</p>
+	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// <p>该问题的判断置信度，范围 [0, 100]。</p>
+	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+
+	// <p>问题起始时间（毫秒）。</p>
+	StartTimeMs *int64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
+
+	// <p>问题结束时间（毫秒）</p>
+	EndTimeMs *int64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
+
+	// <p>附加数据（JSON 格式），如严重程度等补充信息。</p>
+	ExtraData *string `json:"ExtraData,omitnil,omitempty" name:"ExtraData"`
+}
+
+type LLMDetectionReport struct {
+	// <p>检测结果数量。</p>
+	ResultCount *int64 `json:"ResultCount,omitnil,omitempty" name:"ResultCount"`
+
+	// <p>各检测项结果列表。</p>
+	ResultSet []*LLMDetectionResultItem `json:"ResultSet,omitnil,omitempty" name:"ResultSet"`
+}
+
+type LLMDetectionResultItem struct {
+	// <p>检测分类。</p><p>枚举值：</p><ul><li>AIGCQualityCharacteristics： AIGC 质量特征</li></ul>
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// <p>检测分组。</p><p>枚举值：</p><ul><li>AIGCAuthenticity： AIGC 真实性，包括人体合理性、物理合理性、跨帧一致性等</li><li>AIGCTechQuality： AIGC 技术质量，包括画幅、黑边、强行竖屏等</li></ul>
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// <p>检测类型名称。</p><p>枚举值：</p><ul><li>BodyPoseCheck： 人体姿态合理性，属于 AIGCAuthenticity</li><li>BodyDetailCheck： 人体细节合理性，包括手指数、五官对称等，属于 AIGCAuthenticity</li><li>PhysicRulesCheck： 物理规律合理性，包括透视、光影、重力等，属于 AIGCAuthenticity</li><li>ObjectConsistencyCheck： 跨帧物体一致性，属于 AIGCAuthenticity</li><li>FormatCheck： 画幅、黑边、强行竖屏等格式问题，属于 AIGCTechQuality</li></ul>
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// <p>整体质量得分，范围 [0, 100]，越高越好。</p>
+	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// <p>判断置信度，范围 [0, 100]，越高表示越确定。</p>
+	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+
+	// <p>检测发现的问题列表，无问题时为空。</p>
+	IssueSet []*LLMDetectionIssue `json:"IssueSet,omitnil,omitempty" name:"IssueSet"`
+}
+
 type LinearAssemblyChannelInfo struct {
 	// <p>线性组装频道名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -24700,6 +24751,9 @@ type QualityControlData struct {
 
 	// <p>格式诊断检出异常项。</p>
 	ContainerDiagnoseResultSet []*ContainerDiagnoseResultItem `json:"ContainerDiagnoseResultSet,omitnil,omitempty" name:"ContainerDiagnoseResultSet"`
+
+	// <p>LLM大模型AIGC质量检测结果。</p>
+	LLMDetectionReport *LLMDetectionReport `json:"LLMDetectionReport,omitnil,omitempty" name:"LLMDetectionReport"`
 }
 
 type QualityControlItem struct {

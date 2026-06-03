@@ -1204,68 +1204,50 @@ func (r *CreateExportTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateInstanceAccountRequestParams struct {
-	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+	// <p>实例 ID，请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 自定义的访问数据库的账号名称。
-	// - 仅由字母、数字、下划线、中划线组成。
-	// - 长度不能大于32位。
+	// <p>自定义的访问数据库的账号名称。</p><ul><li>仅由字母、数字、下划线、中划线组成。</li><li>长度不能大于32位。</li></ul>
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
-	// 设置自定义账号的密码。密码复杂度要求如下：
-	// - 字符个数为[8,64]。
-	// - 至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的两种。
-	// - 不能以"/"开头。
+	// <p>设置自定义账号的密码。密码复杂度要求如下：</p><ul><li>字符个数为[8,64]。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的两种。</li><li>不能以&quot;/&quot;开头。</li></ul>
 	AccountPassword *string `json:"AccountPassword,omitnil,omitempty" name:"AccountPassword"`
 
-	// 指定账号的读请求路由分发至主节点或副本节点。未开启副本只读，不支持选择副本节点。
-	// - master：主节点
-	// - replication：副本节点
+	// <p>指定账号的读请求路由分发至主节点或副本节点。未开启副本只读，不支持选择副本节点。</p><ul><li>master：主节点</li><li>replication：副本节点</li></ul>
 	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitnil,omitempty" name:"ReadonlyPolicy"`
 
-	// 账户读写权限，支持选择只读与读写权限。
-	// - r：只读。
-	// - rw: 读写。
+	// <p>账户读写权限，支持选择只读与读写权限。</p><ul><li>r：只读。</li><li>rw: 读写。</li></ul>
 	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 
-	// 账号备注描述信息，长度为[0,64] 字节，支持中文。
+	// <p>账号备注描述信息，长度为[0,64] 字节，支持中文。</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 是否加密密码
+	// <p>是否启用密码加密传输。</p><ul><li>true：加密。</li><li>false：不加密（默认值）。</li></ul>
 	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
 type CreateInstanceAccountRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+	// <p>实例 ID，请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 自定义的访问数据库的账号名称。
-	// - 仅由字母、数字、下划线、中划线组成。
-	// - 长度不能大于32位。
+	// <p>自定义的访问数据库的账号名称。</p><ul><li>仅由字母、数字、下划线、中划线组成。</li><li>长度不能大于32位。</li></ul>
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
-	// 设置自定义账号的密码。密码复杂度要求如下：
-	// - 字符个数为[8,64]。
-	// - 至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的两种。
-	// - 不能以"/"开头。
+	// <p>设置自定义账号的密码。密码复杂度要求如下：</p><ul><li>字符个数为[8,64]。</li><li>至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&amp;*-+=_|{}[]:;&lt;&gt;,.?/ 中的两种。</li><li>不能以&quot;/&quot;开头。</li></ul>
 	AccountPassword *string `json:"AccountPassword,omitnil,omitempty" name:"AccountPassword"`
 
-	// 指定账号的读请求路由分发至主节点或副本节点。未开启副本只读，不支持选择副本节点。
-	// - master：主节点
-	// - replication：副本节点
+	// <p>指定账号的读请求路由分发至主节点或副本节点。未开启副本只读，不支持选择副本节点。</p><ul><li>master：主节点</li><li>replication：副本节点</li></ul>
 	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitnil,omitempty" name:"ReadonlyPolicy"`
 
-	// 账户读写权限，支持选择只读与读写权限。
-	// - r：只读。
-	// - rw: 读写。
+	// <p>账户读写权限，支持选择只读与读写权限。</p><ul><li>r：只读。</li><li>rw: 读写。</li></ul>
 	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 
-	// 账号备注描述信息，长度为[0,64] 字节，支持中文。
+	// <p>账号备注描述信息，长度为[0,64] 字节，支持中文。</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 是否加密密码
+	// <p>是否启用密码加密传输。</p><ul><li>true：加密。</li><li>false：不加密（默认值）。</li></ul>
 	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
@@ -1296,7 +1278,7 @@ func (r *CreateInstanceAccountRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateInstanceAccountResponseParams struct {
-	// 任务ID。
+	// <p>任务ID。</p>
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1399,7 +1381,7 @@ type CreateInstancesRequestParams struct {
 	// <p>告警策略 ID 数组。</p><ul><li>请登录<a href="https://console.cloud.tencent.com/monitor/alarm/policy">腾讯云可观测平台-告警管理-策略管理</a>获取告警策略 ID。</li><li>若不配置该参数，则绑定默认告警策略。默认告警策略具体信息，请登录<a href="https://console.cloud.tencent.com/monitor/alarm/policy">腾讯云可观测平台-告警管理-策略管理</a>查看。</li></ul>
 	AlarmPolicyList []*string `json:"AlarmPolicyList,omitnil,omitempty" name:"AlarmPolicyList"`
 
-	// <p>是否加密密码</p>
+	// <p>是否启用密码加密传输。</p><ul><li>true：加密。</li><li>false：不加密（默认值）。</li></ul>
 	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
@@ -1484,7 +1466,7 @@ type CreateInstancesRequest struct {
 	// <p>告警策略 ID 数组。</p><ul><li>请登录<a href="https://console.cloud.tencent.com/monitor/alarm/policy">腾讯云可观测平台-告警管理-策略管理</a>获取告警策略 ID。</li><li>若不配置该参数，则绑定默认告警策略。默认告警策略具体信息，请登录<a href="https://console.cloud.tencent.com/monitor/alarm/policy">腾讯云可观测平台-告警管理-策略管理</a>查看。</li></ul>
 	AlarmPolicyList []*string `json:"AlarmPolicyList,omitnil,omitempty" name:"AlarmPolicyList"`
 
-	// <p>是否加密密码</p>
+	// <p>是否启用密码加密传输。</p><ul><li>true：加密。</li><li>false：不加密（默认值）。</li></ul>
 	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
@@ -7692,207 +7674,189 @@ type InstanceSecurityGroupDetail struct {
 }
 
 type InstanceSet struct {
-	// 实例名称。
+	// <p>实例名称。</p>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例 ID。
+	// <p>实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户AppId。AppId是与账号ID有唯一对应关系的应用 ID，部分腾讯云产品会使用此 AppId。
+	// <p>用户AppId。AppId是与账号ID有唯一对应关系的应用 ID，部分腾讯云产品会使用此 AppId。</p>
 	Appid *int64 `json:"Appid,omitnil,omitempty" name:"Appid"`
 
-	// 项目 ID。
+	// <p>项目 ID。</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 地域 ID。<ul><li>1：广州。</li><li>4：上海。</li><li>5：中国香港。</li><li>7：上海金融。</li> <li>8：北京。</li> <li>9：新加坡。</li> <li>11：深圳金融。</li> <li>15：美西（硅谷）。</li><li>16：成都。</li><li>17：法兰克福。</li><li>18：首尔。</li><li>19：重庆。</li><li>22：美东（弗吉尼亚）。</li><li>23：曼谷。</li><li>25：东京。</li></ul>
+	// <p>地域 ID。<ul><li>1：广州。</li><li>4：上海。</li><li>5：中国香港。</li><li>7：上海金融。</li> <li>8：北京。</li> <li>9：新加坡。</li> <li>11：深圳金融。</li> <li>15：美西（硅谷）。</li><li>16：成都。</li><li>17：法兰克福。</li><li>18：首尔。</li><li>19：重庆。</li><li>22：美东（弗吉尼亚）。</li><li>23：曼谷。</li><li>25：东京。</li></ul></p>
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 区域 ID。
+	// <p>区域 ID。</p>
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// vpc网络 ID，例如75101。
+	// <p>vpc网络 ID，例如75101。</p>
 	VpcId *int64 `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// vpc网络下子网ID，如：46315。
+	// <p>vpc网络下子网ID，如：46315。</p>
 	SubnetId *int64 `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 实例当前状态。<ul><li>0：待初始化。</li><li>1：实例在流程中。</li><li>2：实例运行中。</li><li>-2：实例已隔离。</li><li>-3：实例待删除。</li></ul>
+	// <p>实例当前状态。<ul><li>0：待初始化。</li><li>1：实例在流程中。</li><li>2：实例运行中。</li><li>-2：实例已隔离。</li><li>-3：实例待删除。</li></ul></p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 实例 VIP。
+	// <p>实例 VIP。</p>
 	WanIp *string `json:"WanIp,omitnil,omitempty" name:"WanIp"`
 
-	// 实例端口号。
+	// <p>实例端口号。</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 实例创建时间。格式如：2020-01-15 10:20:00。
+	// <p>实例创建时间。格式如：2020-01-15 10:20:00。</p>
 	Createtime *string `json:"Createtime,omitnil,omitempty" name:"Createtime"`
 
-	// 实例内存容量大小。单位：MB，1MB=1024KB。
+	// <p>实例内存容量大小。单位：MB，1MB=1024KB。</p>
 	Size *float64 `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 该字段已废弃。请使用腾讯云可观测平台API 接口 [GetMonitorData](https://cloud.tencent.com/document/product/248/31014) 获取实例已使用的内存容量。
+	// <p>该字段已废弃。请使用腾讯云可观测平台API 接口 <a href="https://cloud.tencent.com/document/product/248/31014">GetMonitorData</a> 获取实例已使用的内存容量。</p>
 	//
 	// Deprecated: SizeUsed is deprecated.
 	SizeUsed *float64 `json:"SizeUsed,omitnil,omitempty" name:"SizeUsed"`
 
-	// 实例类型。
-	// - 2：Redis 2.8 内存版（标准架构）。
-	// - 3：CKV 3.2 内存版（标准架构）。
-	// - 4：CKV 3.2 内存版（集群架构）。
-	// - 5：Redis 2.8 内存版（单机）。
-	// - 6：Redis 4.0 内存版（标准架构）。
-	// - 7：Redis 4.0 内存版（集群架构）。
-	// - 8：Redis 5.0 内存版（标准架构）。
-	// - 9：Redis 5.0 内存版（集群架构）。
-	// - 15：Redis 6.2 内存版（标准架构）。
-	// - 16：Redis 6.2 内存版（集群架构）。
-	// - 17：Redis 7.0 内存版（标准架构）。
-	// - 18：Redis 7.0 内存版（集群架构）。
-	// - 200:Memcached 1.6 内存版（集群架构）。
+	// <p>实例类型。</p><p>枚举值：</p><ul><li>2： Redis 2.8 内存版（标准架构）。</li><li>3： CKV 3.2 内存版（标准架构）。</li><li>4： CKV 3.2 内存版（集群架构）。</li><li>5： Redis 2.8 内存版（单机）。</li><li>6： Redis 4.0 内存版（标准架构）。</li><li>7： Redis 4.0 内存版（集群架构）。</li><li>8： Redis 5.0 内存版（标准架构）。</li><li>9： Redis 5.0 内存版（集群架构）。</li><li>15： Redis 6.2 内存版（标准架构）。</li><li>16： Redis 6.2 内存版（集群架构）。</li><li>17： Redis 7.0 内存版（标准架构）。</li><li>18： Redis 7.0 内存版（集群架构）。</li><li>19： Valkey 8.0 内存版（标准架构）。</li><li>20： Valkey 8.0 内存版（集群架构）。</li><li>200： Memcached 1.6 内存版（集群架构）。</li></ul>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 实例是否设置自动续费标识。<ul><li>1：设置自动续费。</li><li>0：未设置自动续费。</li></ul>
+	// <p>实例是否设置自动续费标识。<ul><li>1：设置自动续费。</li><li>0：未设置自动续费。</li></ul></p>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 包年包月计费实例到期的时间。
+	// <p>包年包月计费实例到期的时间。</p>
 	DeadlineTime *string `json:"DeadlineTime,omitnil,omitempty" name:"DeadlineTime"`
 
-	// 引擎：社区版Redis、腾讯云CKV。
+	// <p>引擎：社区版Redis、腾讯云CKV。</p>
 	Engine *string `json:"Engine,omitnil,omitempty" name:"Engine"`
 
-	// 产品类型。<ul><li>standalone：标准版。</li><li>cluster ：集群版。</li></ul>
+	// <p>产品类型。<ul><li>standalone：标准版。</li><li>cluster ：集群版。</li></ul></p>
 	ProductType *string `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 
-	// vpc网络id，例如vpc-fk33jsf43kgv。
+	// <p>vpc网络id，例如vpc-fk33jsf43kgv。</p>
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// vpc网络下子网id，例如：subnet-fd3j6l35mm0。
+	// <p>vpc网络下子网id，例如：subnet-fd3j6l35mm0。</p>
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
-	// 计费模式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul>
+	// <p>计费模式。<ul><li>0：按量计费。</li><li>1：包年包月。</li></ul></p>
 	BillingMode *int64 `json:"BillingMode,omitnil,omitempty" name:"BillingMode"`
 
-	// 实例运行状态描述：如”实例运行中“。
+	// <p>实例运行状态描述：如”实例运行中“。</p>
 	InstanceTitle *string `json:"InstanceTitle,omitnil,omitempty" name:"InstanceTitle"`
 
-	// 已隔离实例默认下线时间。按量计费实例隔离后默认两小时后下线，包年包月默认7天后下线。格式如：2020-02-15 10:20:00。
+	// <p>已隔离实例默认下线时间。按量计费实例隔离后默认两小时后下线，包年包月默认7天后下线。格式如：2020-02-15 10:20:00。</p>
 	OfflineTime *string `json:"OfflineTime,omitnil,omitempty" name:"OfflineTime"`
 
-	// 流程中的实例返回的子状态。
-	// - 0：磁盘读写状态。
-	// - 1：磁盘超限只读状态。
+	// <p>流程中的实例返回的子状态。</p><ul><li>0：磁盘读写状态。</li><li>1：磁盘超限只读状态。</li></ul>
 	SubStatus *int64 `json:"SubStatus,omitnil,omitempty" name:"SubStatus"`
 
-	// 反亲和性标签。
+	// <p>反亲和性标签。</p>
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 实例节点信息。
+	// <p>实例节点信息。</p>
 	InstanceNode []*InstanceNode `json:"InstanceNode,omitnil,omitempty" name:"InstanceNode"`
 
-	// 分片大小。
+	// <p>分片大小。</p>
 	RedisShardSize *int64 `json:"RedisShardSize,omitnil,omitempty" name:"RedisShardSize"`
 
-	// 分片数量。
+	// <p>分片数量。</p>
 	RedisShardNum *int64 `json:"RedisShardNum,omitnil,omitempty" name:"RedisShardNum"`
 
-	// 副本数量。
+	// <p>副本数量。</p>
 	RedisReplicasNum *int64 `json:"RedisReplicasNum,omitnil,omitempty" name:"RedisReplicasNum"`
 
-	// 计费 ID。
+	// <p>计费 ID。</p>
 	PriceId *int64 `json:"PriceId,omitnil,omitempty" name:"PriceId"`
 
-	// 实例隔离开始的时间。
+	// <p>实例隔离开始的时间。</p>
 	CloseTime *string `json:"CloseTime,omitnil,omitempty" name:"CloseTime"`
 
-	// 从节点读取权重。
-	// - 0：表示关闭副本只读。
-	// - 100：表示开启副本只读。
+	// <p>从节点读取权重。</p><ul><li>0：表示关闭副本只读。</li><li>100：表示开启副本只读。</li></ul>
 	SlaveReadWeight *int64 `json:"SlaveReadWeight,omitnil,omitempty" name:"SlaveReadWeight"`
 
-	// 实例关联的标签信息。
+	// <p>实例关联的标签信息。</p>
 	InstanceTags []*InstanceTagInfo `json:"InstanceTags,omitnil,omitempty" name:"InstanceTags"`
 
-	// 项目名称。
+	// <p>项目名称。</p>
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
-	// 是否为免密实例。<ul><li>true：免密实例。</li><li>false：非免密实例。</li></ul>
+	// <p>是否为免密实例。<ul><li>true：免密实例。</li><li>false：非免密实例。</li></ul></p>
 	NoAuth *bool `json:"NoAuth,omitnil,omitempty" name:"NoAuth"`
 
-	// 客户端连接数。
+	// <p>客户端连接数。</p>
 	ClientLimit *int64 `json:"ClientLimit,omitnil,omitempty" name:"ClientLimit"`
 
-	// DTS状态（内部参数，用户可忽略）。
+	// <p>DTS状态（内部参数，用户可忽略）。</p>
 	DtsStatus *int64 `json:"DtsStatus,omitnil,omitempty" name:"DtsStatus"`
 
-	// 分片带宽上限，单位MB。
+	// <p>分片带宽上限，单位MB。</p>
 	NetLimit *int64 `json:"NetLimit,omitnil,omitempty" name:"NetLimit"`
 
-	// 免密实例标识（内部参数，用户可忽略）。
+	// <p>免密实例标识（内部参数，用户可忽略）。</p>
 	PasswordFree *int64 `json:"PasswordFree,omitnil,omitempty" name:"PasswordFree"`
 
-	// 该参数存在命名不规范问题，建议用参数IPv6取代。内部参数，用户可忽略。
+	// <p>该参数存在命名不规范问题，建议用参数IPv6取代。内部参数，用户可忽略。</p>
 	Vip6 *string `json:"Vip6,omitnil,omitempty" name:"Vip6"`
 
-	// 内部参数，用户可忽略。
+	// <p>内部参数，用户可忽略。</p>
 	IPv6 *string `json:"IPv6,omitnil,omitempty" name:"IPv6"`
 
-	// 实例只读标识（内部参数，用户可忽略）。
+	// <p>实例只读标识（内部参数，用户可忽略）。</p>
 	ReadOnly *int64 `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 
-	// 内部参数，用户可忽略。
+	// <p>内部参数，用户可忽略。</p>
 	RemainBandwidthDuration *string `json:"RemainBandwidthDuration,omitnil,omitempty" name:"RemainBandwidthDuration"`
 
-	// Redis实例请忽略该参数。
+	// <p>Redis实例请忽略该参数。</p>
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 监控版本。<ul><li>1m：1分钟粒度监控。目前该监控粒度已下线，具体信息，请参见[云数据库 Redis 1分钟粒度下线公告](https://cloud.tencent.com/document/product/239/80653)。</li><li>5s：5秒粒度监控。</li></ul>
+	// <p>监控版本。<ul><li>1m：1分钟粒度监控。目前该监控粒度已下线，具体信息，请参见<a href="https://cloud.tencent.com/document/product/239/80653">云数据库 Redis 1分钟粒度下线公告</a>。</li><li>5s：5秒粒度监控。</li></ul></p>
 	MonitorVersion *string `json:"MonitorVersion,omitnil,omitempty" name:"MonitorVersion"`
 
-	// 客户端最大连接数可设置的最小值。
+	// <p>客户端最大连接数可设置的最小值。</p>
 	ClientLimitMin *int64 `json:"ClientLimitMin,omitnil,omitempty" name:"ClientLimitMin"`
 
-	// 客户端最大连接数可设置的最大值。
+	// <p>客户端最大连接数可设置的最大值。</p>
 	ClientLimitMax *int64 `json:"ClientLimitMax,omitnil,omitempty" name:"ClientLimitMax"`
 
-	// 实例的节点详细信息。
-	// 只有多可用区实例会返回。
+	// <p>实例的节点详细信息。<br>只有多可用区实例会返回。</p>
 	NodeSet []*RedisNodeInfo `json:"NodeSet,omitnil,omitempty" name:"NodeSet"`
 
-	// 实例所在的地域信息，比如ap-guangzhou。
+	// <p>实例所在的地域信息，比如ap-guangzhou。</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 外网地址。
+	// <p>外网地址。</p>
 	WanAddress *string `json:"WanAddress,omitnil,omitempty" name:"WanAddress"`
 
-	// 北极星服务地址，内部使用。
+	// <p>北极星服务地址，内部使用。</p>
 	PolarisServer *string `json:"PolarisServer,omitnil,omitempty" name:"PolarisServer"`
 
-	// CDC Redis集群ID。
+	// <p>CDC Redis集群ID。</p>
 	RedisClusterId *string `json:"RedisClusterId,omitnil,omitempty" name:"RedisClusterId"`
 
-	// CDC 集群ID。
+	// <p>CDC 集群ID。</p>
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 
-	// 产品版本。<ul><li>local：本地盘。</li><li>cloud：云盘版。</li><li>cdc：CDC 集群版本。</li></ul>
+	// <p>产品版本。<ul><li>local：本地盘。</li><li>cloud：云盘版。</li><li>cdc：CDC 集群版本。</li></ul></p>
 	ProductVersion *string `json:"ProductVersion,omitnil,omitempty" name:"ProductVersion"`
 
-	// 实例当前Proxy版本。
+	// <p>实例当前Proxy版本。</p>
 	CurrentProxyVersion *string `json:"CurrentProxyVersion,omitnil,omitempty" name:"CurrentProxyVersion"`
 
-	// 实例当前Cache小版本。如果实例加入全球复制组，显示全球复制的内核版本。
+	// <p>实例当前Cache小版本。如果实例加入全球复制组，显示全球复制的内核版本。</p>
 	CurrentRedisVersion *string `json:"CurrentRedisVersion,omitnil,omitempty" name:"CurrentRedisVersion"`
 
-	// 实例可升级Proxy版本。
+	// <p>实例可升级Proxy版本。</p>
 	UpgradeProxyVersion *string `json:"UpgradeProxyVersion,omitnil,omitempty" name:"UpgradeProxyVersion"`
 
-	// 实例可升级Cache小版本。
+	// <p>实例可升级Cache小版本。</p>
 	UpgradeRedisVersion *string `json:"UpgradeRedisVersion,omitnil,omitempty" name:"UpgradeRedisVersion"`
 
-	// 备份模式：- SecondLevelBackup   秒级备份- NormalLevelBackup    普通备份
+	// <p>备份模式。</p><ul><li>SecondLevelBackup：秒级备份。</li><li>NormalLevelBackup：普通备份。</li></ul>
 	BackupMode *string `json:"BackupMode,omitnil,omitempty" name:"BackupMode"`
 
-	// 删除保护开关，0关闭，1开启
+	// <p>实例销毁保护开关。</p><ul><li>0：关闭。</li><li>1：开启。</li></ul>
 	DeleteProtectionSwitch *int64 `json:"DeleteProtectionSwitch,omitnil,omitempty" name:"DeleteProtectionSwitch"`
 }
 
@@ -8711,74 +8675,56 @@ func (r *ModifyDBInstanceSecurityGroupsResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type ModifyInstanceAccountRequestParams struct {
-	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+	// <p>实例 ID，请登录<a href="https://console.cloud.tencent.com/redis/instance/list">Redis控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 指定需修改的账号。
-	// - root：指在创建 Redis 数据库实例时自动生成的账号。用户无法修改其读写权限，仅可修改其请求路由策略。
-	// - 自定义的账号：用户在实例创建成功后手动创建的账号。用户可以随时修改其读写权限与请求路由策略。
+	// <p>指定需修改的账号。</p><ul><li>root：指在创建 Redis 数据库实例时自动生成的账号。用户无法修改其读写权限，仅可修改其请求路由策略。</li><li>自定义的账号：用户在实例创建成功后手动创建的账号。用户可以随时修改其读写权限与请求路由策略。</li></ul>
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
-	// 指定所修改账号访问的密码。
+	// <p>指定所修改账号访问的密码。</p>
 	AccountPassword *string `json:"AccountPassword,omitnil,omitempty" name:"AccountPassword"`
 
-	// 账号描述信息
+	// <p>账号描述信息</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 指定所修改账号读写请求路由的策略。
-	// - master：表示读写请求路由至主节点。
-	// - replication：表示读写请求路由至从节点。
+	// <p>指定所修改账号读写请求路由的策略。</p><ul><li>master：表示读写请求路由至主节点。</li><li>replication：表示读写请求路由至从节点。</li></ul>
 	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitnil,omitempty" name:"ReadonlyPolicy"`
 
-	// 指定所修改账号的读写权限。
-	// - r：只读。
-	// - w：只写。
-	// - rw：读写。
+	// <p>指定所修改账号的读写权限。</p><ul><li>r：只读。</li><li>w：只写。</li><li>rw：读写。</li></ul>
 	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 
-	// 指定是否将默认账号（root）设置为免密账号。自定义账号不支持免密访问。
-	// - true：默认账号（root）设置为免密账号。
-	// - false：默认账号（root）不设置为免密账号。
+	// <p>指定是否将默认账号（root）设置为免密账号。自定义账号不支持免密访问。</p><ul><li>true：默认账号（root）设置为免密账号。</li><li>false：默认账号（root）不设置为免密账号。</li></ul>
 	NoAuth *bool `json:"NoAuth,omitnil,omitempty" name:"NoAuth"`
 
-	// 指定所修改的账号是否加密密码
+	// <p>是否启用密码加密传输。</p><ul><li>true：加密。</li><li>false：不加密（默认值）。</li></ul>
 	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
 type ModifyInstanceAccountRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，请登录[Redis控制台](https://console.cloud.tencent.com/redis/instance/list)在实例列表复制实例 ID。
+	// <p>实例 ID，请登录<a href="https://console.cloud.tencent.com/redis/instance/list">Redis控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 指定需修改的账号。
-	// - root：指在创建 Redis 数据库实例时自动生成的账号。用户无法修改其读写权限，仅可修改其请求路由策略。
-	// - 自定义的账号：用户在实例创建成功后手动创建的账号。用户可以随时修改其读写权限与请求路由策略。
+	// <p>指定需修改的账号。</p><ul><li>root：指在创建 Redis 数据库实例时自动生成的账号。用户无法修改其读写权限，仅可修改其请求路由策略。</li><li>自定义的账号：用户在实例创建成功后手动创建的账号。用户可以随时修改其读写权限与请求路由策略。</li></ul>
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
-	// 指定所修改账号访问的密码。
+	// <p>指定所修改账号访问的密码。</p>
 	AccountPassword *string `json:"AccountPassword,omitnil,omitempty" name:"AccountPassword"`
 
-	// 账号描述信息
+	// <p>账号描述信息</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 指定所修改账号读写请求路由的策略。
-	// - master：表示读写请求路由至主节点。
-	// - replication：表示读写请求路由至从节点。
+	// <p>指定所修改账号读写请求路由的策略。</p><ul><li>master：表示读写请求路由至主节点。</li><li>replication：表示读写请求路由至从节点。</li></ul>
 	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitnil,omitempty" name:"ReadonlyPolicy"`
 
-	// 指定所修改账号的读写权限。
-	// - r：只读。
-	// - w：只写。
-	// - rw：读写。
+	// <p>指定所修改账号的读写权限。</p><ul><li>r：只读。</li><li>w：只写。</li><li>rw：读写。</li></ul>
 	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 
-	// 指定是否将默认账号（root）设置为免密账号。自定义账号不支持免密访问。
-	// - true：默认账号（root）设置为免密账号。
-	// - false：默认账号（root）不设置为免密账号。
+	// <p>指定是否将默认账号（root）设置为免密账号。自定义账号不支持免密访问。</p><ul><li>true：默认账号（root）设置为免密账号。</li><li>false：默认账号（root）不设置为免密账号。</li></ul>
 	NoAuth *bool `json:"NoAuth,omitnil,omitempty" name:"NoAuth"`
 
-	// 指定所修改的账号是否加密密码
+	// <p>是否启用密码加密传输。</p><ul><li>true：加密。</li><li>false：不加密（默认值）。</li></ul>
 	EncryptPassword *bool `json:"EncryptPassword,omitnil,omitempty" name:"EncryptPassword"`
 }
 
@@ -8810,7 +8756,7 @@ func (r *ModifyInstanceAccountRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstanceAccountResponseParams struct {
-	// 任务ID。
+	// <p>任务ID。</p>
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
