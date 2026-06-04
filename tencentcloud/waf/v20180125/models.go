@@ -22348,20 +22348,23 @@ type QPSPackageNew struct {
 }
 
 type QpsData struct {
-	// 弹性qps默认值
+	// <p>弹性qps默认值</p>
 	ElasticBillingDefault *uint64 `json:"ElasticBillingDefault,omitnil,omitempty" name:"ElasticBillingDefault"`
 
-	// 弹性qps最小值
+	// <p>弹性qps最小值</p>
 	ElasticBillingMin *uint64 `json:"ElasticBillingMin,omitnil,omitempty" name:"ElasticBillingMin"`
 
-	// 弹性qps最大值
+	// <p>弹性qps最大值</p>
 	ElasticBillingMax *uint64 `json:"ElasticBillingMax,omitnil,omitempty" name:"ElasticBillingMax"`
 
-	// 业务扩展包最大qps
+	// <p>业务扩展包最大qps</p>
 	QPSExtendMax *uint64 `json:"QPSExtendMax,omitnil,omitempty" name:"QPSExtendMax"`
 
-	// 境外业务扩展包最大qps
+	// <p>境外业务扩展包最大qps</p>
 	QPSExtendIntlMax *uint64 `json:"QPSExtendIntlMax,omitnil,omitempty" name:"QPSExtendIntlMax"`
+
+	// <p>预付费/后付费QPS扩容比</p>
+	ElasticPrepaidRatio *float64 `json:"ElasticPrepaidRatio,omitnil,omitempty" name:"ElasticPrepaidRatio"`
 }
 
 // Predefined struct for user

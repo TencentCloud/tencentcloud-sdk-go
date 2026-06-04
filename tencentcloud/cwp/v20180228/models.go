@@ -38577,114 +38577,113 @@ type LoginWhiteLists struct {
 }
 
 type Machine struct {
-	// 主机名称。
+	// <p>主机名称。</p>
 	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
 
-	// 主机系统。
+	// <p>主机系统。</p>
 	MachineOs *string `json:"MachineOs,omitnil,omitempty" name:"MachineOs"`
 
-	// 主机状态。 <li>OFFLINE: 离线 </li> <li>ONLINE: 在线</li> <li>SHUTDOWN: 已关机</li> <li>UNINSTALLED: 未防护</li>	
+	// <p>主机状态。 <li>OFFLINE: 离线 </li> <li>ONLINE: 在线</li> <li>SHUTDOWN: 已关机</li> <li>UNINSTALLED: 未防护</li></p>
 	MachineStatus *string `json:"MachineStatus,omitnil,omitempty" name:"MachineStatus"`
 
-	// ONLINE 防护中; OFFLINE 已离线;UNINStALLED 未安装
+	// <p>ONLINE 防护中; OFFLINE 已离线;UNINStALLED 未安装</p>
 	AgentStatus *string `json:"AgentStatus,omitnil,omitempty" name:"AgentStatus"`
 
-	// RUNNING 运行中; STOPED 已关机; EXPIRED 待回收	
+	// <p>RUNNING 运行中; STOPED 已关机; EXPIRED 待回收</p>
 	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
-	// 主机安全Uuid，若客户端长时间不在线将返回空字符。
+	// <p>主机安全Uuid，若客户端长时间不在线将返回空字符。</p>
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
-	// CVM或BM机器唯一Uuid。
+	// <p>CVM或BM机器唯一Uuid。</p>
 	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
 
-	// 漏洞数。
+	// <p>漏洞数。</p>
 	VulNum *int64 `json:"VulNum,omitnil,omitempty" name:"VulNum"`
 
-	// 主机IP。
+	// <p>主机IP。</p>
 	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
 
-	// 是否是专业版。
-	// <li>true： 是</li>
-	// <li>false：否</li>
+	// <p>是否是专业版。</p><li>true： 是</li><li>false：否</li>
 	IsProVersion *bool `json:"IsProVersion,omitnil,omitempty" name:"IsProVersion"`
 
-	// 主机外网IP。
+	// <p>主机外网IP。</p>
 	MachineWanIp *string `json:"MachineWanIp,omitnil,omitempty" name:"MachineWanIp"`
 
-	// 主机状态。
-	// <li>POSTPAY: 表示后付费，即按量计费  </li>
-	// <li>PREPAY: 表示预付费，即包年包月</li>
+	// <p>主机状态。</p><li>POSTPAY: 表示后付费，即按量计费  </li><li>PREPAY: 表示预付费，即包年包月</li>
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 木马数。
+	// <p>木马数。</p>
 	MalwareNum *int64 `json:"MalwareNum,omitnil,omitempty" name:"MalwareNum"`
 
-	// 标签信息
+	// <p>标签信息</p>
 	Tag []*MachineTag `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 基线风险数。
+	// <p>基线风险数。</p>
 	BaselineNum *int64 `json:"BaselineNum,omitnil,omitempty" name:"BaselineNum"`
 
-	// 网络风险数。
+	// <p>网络风险数。</p>
 	CyberAttackNum *int64 `json:"CyberAttackNum,omitnil,omitempty" name:"CyberAttackNum"`
 
-	// 风险状态。
-	// <li>SAFE：安全</li>
-	// <li>RISK：风险</li>
-	// <li>UNKNOWN：未知</li>
+	// <p>风险状态。</p><li>SAFE：安全</li><li>RISK：风险</li><li>UNKNOWN：未知</li>
 	SecurityStatus *string `json:"SecurityStatus,omitnil,omitempty" name:"SecurityStatus"`
 
-	// 入侵事件数
+	// <p>入侵事件数</p>
 	InvasionNum *int64 `json:"InvasionNum,omitnil,omitempty" name:"InvasionNum"`
 
-	// 地域信息
+	// <p>地域信息</p>
 	RegionInfo *RegionInfo `json:"RegionInfo,omitnil,omitempty" name:"RegionInfo"`
 
-	// 实例状态 TERMINATED_PRO_VERSION 已销毁
+	// <p>实例状态 TERMINATED_PRO_VERSION 已销毁</p>
 	InstanceState *string `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
 
-	// 防篡改 授权状态 1 授权 0 未授权
+	// <p>防篡改 授权状态 1 授权 0 未授权</p>
 	LicenseStatus *uint64 `json:"LicenseStatus,omitnil,omitempty" name:"LicenseStatus"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 是否有资产扫描接口，0无，1有
+	// <p>是否有资产扫描接口，0无，1有</p>
 	HasAssetScan *uint64 `json:"HasAssetScan,omitnil,omitempty" name:"HasAssetScan"`
 
-	// 机器所属专区类型 CVM 云服务器, BM 黑石, ECM 边缘计算, LH 轻量应用服务器 ,Other 混合云专区
+	// <p>机器所属专区类型 CVM 云服务器, BM 黑石, ECM 边缘计算, LH 轻量应用服务器 ,Other 混合云专区</p>
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
-	// 内核版本
+	// <p>内核版本</p>
 	KernelVersion *string `json:"KernelVersion,omitnil,omitempty" name:"KernelVersion"`
 
-	// 防护版本：BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 轻量版
+	// <p>防护版本：BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 轻量版</p>
 	ProtectType *string `json:"ProtectType,omitnil,omitempty" name:"ProtectType"`
 
-	// 云标签信息
+	// <p>云标签信息</p>
 	CloudTags []*Tags `json:"CloudTags,omitnil,omitempty" name:"CloudTags"`
 
-	// 是否15天内新增的主机 0：非15天内新增的主机，1：15天内增加的主机
+	// <p>是否15天内新增的主机 0：非15天内新增的主机，1：15天内增加的主机</p>
 	IsAddedOnTheFifteen *uint64 `json:"IsAddedOnTheFifteen,omitnil,omitempty" name:"IsAddedOnTheFifteen"`
 
-	// 主机ip列表
+	// <p>主机ip列表</p>
 	IpList *string `json:"IpList,omitnil,omitempty" name:"IpList"`
 
-	// 所属网络
+	// <p>所属网络</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 附加信息
+	// <p>附加信息</p>
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitnil,omitempty" name:"MachineExtraInfo"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 备注信息
+	// <p>备注信息</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 主机安全agent版本
+	// <p>主机安全agent版本</p>
 	AgentVersion *string `json:"AgentVersion,omitnil,omitempty" name:"AgentVersion"`
+
+	// <p>机器对应APPID</p>
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>安全中心付费版本</p>
+	CSIPProtectType *string `json:"CSIPProtectType,omitnil,omitempty" name:"CSIPProtectType"`
 }
 
 type MachineClearHistory struct {

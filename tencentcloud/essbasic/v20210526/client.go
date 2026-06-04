@@ -2589,7 +2589,7 @@ func NewChannelCreateFlowRemindsResponse() (response *ChannelCreateFlowRemindsRe
 //
 // 1. 合同中当前状态为 **待签署** 的签署人是催办的对象
 //
-// 2. **每个合同只能催办一次**
+// 2. **每个合同每个人只能催办一次**
 //
 // 
 //
@@ -2619,7 +2619,7 @@ func (c *Client) ChannelCreateFlowReminds(request *ChannelCreateFlowRemindsReque
 //
 // 1. 合同中当前状态为 **待签署** 的签署人是催办的对象
 //
-// 2. **每个合同只能催办一次**
+// 2. **每个合同每个人只能催办一次**
 //
 // 
 //

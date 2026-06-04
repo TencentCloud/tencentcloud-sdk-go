@@ -5561,7 +5561,7 @@ func NewCreateFlowRemindsResponse() (response *CreateFlowRemindsResponse) {
 //
 // 2. 合同中当前状态为 **待签署** 的签署人是催办的对象
 //
-// 3. **每个合同只能催办一次**
+// 3. **每个合同的每个签署方只能催办一次**
 //
 // 
 //
@@ -5597,7 +5597,7 @@ func (c *Client) CreateFlowReminds(request *CreateFlowRemindsRequest) (response 
 //
 // 2. 合同中当前状态为 **待签署** 的签署人是催办的对象
 //
-// 3. **每个合同只能催办一次**
+// 3. **每个合同的每个签署方只能催办一次**
 //
 // 
 //

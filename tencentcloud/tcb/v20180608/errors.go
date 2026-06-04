@@ -44,6 +44,9 @@ const (
 	// 数据库元信息异常。
 	FAILEDOPERATION_DATABASESCHEMAERROR = "FailedOperation.DatabaseSchemaError"
 
+	// 数据库sql解析异常
+	FAILEDOPERATION_DATABASESQLSYNTAXERROR = "FailedOperation.DatabaseSqlSyntaxError"
+
 	// FailedOperation.DuplicatedData
 	FAILEDOPERATION_DUPLICATEDDATA = "FailedOperation.DuplicatedData"
 
@@ -244,6 +247,9 @@ const (
 
 	// Database role not found.
 	RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+
+	// 数据库Schema名不存在
+	RESOURCENOTFOUND_SCHEMANOTFOUND = "ResourceNotFound.SchemaNotFound"
 
 	// 请求的云托管服务未找到
 	RESOURCENOTFOUND_SERVERNOTFOUND = "ResourceNotFound.ServerNotFound"

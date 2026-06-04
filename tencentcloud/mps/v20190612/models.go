@@ -3340,7 +3340,7 @@ type BlindWatermarkConfig struct {
 }
 
 type BlindWatermarkEmbedInfo struct {
-	// 盲水印文字，经过URL安全的Base64编码的4Byte数据。Base64解码之后，少于4Byte将会填充0x00到4Byte，超过4Byte将会截断为4Byte。
+	// <p>盲水印文字，经过URL安全的Base64编码的数据。Base64解码之后，少于12Byte将会填充0x00到12Byte，超过12Byte将会截断为12Byte。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EmbedText *string `json:"EmbedText,omitnil,omitempty" name:"EmbedText"`
 }
