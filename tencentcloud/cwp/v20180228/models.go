@@ -5995,14 +5995,14 @@ func (r *DeleteLoginWhiteListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteMachineClearHistoryRequestParams struct {
-	// 需要删除的记录id值,最大长度100个
+	// <p>需要删除的记录id值,最大长度100个</p>
 	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type DeleteMachineClearHistoryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要删除的记录id值,最大长度100个
+	// <p>需要删除的记录id值,最大长度100个</p>
 	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
@@ -12542,10 +12542,10 @@ func (r *DescribeBanModeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBanModeResponseParams struct {
-	// 阻断模式，STANDARD_MODE：标准阻断，DEEP_MODE：深度阻断
+	// <p>阻断模式，STANDARD_MODE：标准阻断，DEEP_MODE：深度阻断</p>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 标准阻断模式的配置
+	// <p>标准阻断模式的配置</p>
 	StandardModeConfig *StandardModeConfig `json:"StandardModeConfig,omitnil,omitempty" name:"StandardModeConfig"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12656,22 +12656,22 @@ func (r *DescribeBanStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBanStatusResponseParams struct {
-	// (已废弃) 阻断开关状态: 0 -- 关闭  1 -- 高级阻断 2 -- 基础阻断(只阻断情报库黑ip)
+	// <p>(已废弃) 阻断开关状态: 0 -- 关闭  1 -- 高级阻断 2 -- 基础阻断(只阻断情报库黑ip)</p>
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 是否弹窗提示信息 false: 关闭，true: 开启
+	// <p>是否弹窗提示信息 false: 关闭，true: 开启</p>
 	ShowTips *bool `json:"ShowTips,omitnil,omitempty" name:"ShowTips"`
 
-	// 是否开启智能过白模式
+	// <p>是否开启智能过白模式</p>
 	OpenSmartMode *bool `json:"OpenSmartMode,omitnil,omitempty" name:"OpenSmartMode"`
 
-	// 是否开启情报IP阻断
+	// <p>是否开启情报IP阻断</p>
 	BanBlackIp *bool `json:"BanBlackIp,omitnil,omitempty" name:"BanBlackIp"`
 
-	// 是否开启漏洞IP阻断
+	// <p>是否开启漏洞IP阻断</p>
 	BanVulIp *bool `json:"BanVulIp,omitnil,omitempty" name:"BanVulIp"`
 
-	// 是否开启规则阻断
+	// <p>是否开启规则阻断</p>
 	BanByRule *bool `json:"BanByRule,omitnil,omitempty" name:"BanByRule"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15847,7 +15847,7 @@ func (r *DescribeBruteAttackRulesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBruteAttackRulesResponseParams struct {
-	// 爆破阻断规则列表
+	// <p>爆破阻断规则列表</p>
 	Rules []*BruteAttackRuleList `json:"Rules,omitnil,omitempty" name:"Rules"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19369,28 +19369,28 @@ func (r *DescribeLoginTypeGlobalConfRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLoginTypeGlobalConfResponseParams struct {
-	// 是否开启防卸载 <li>0 否</li> <li>1 是</li> <li>9 未设置,和0一样是未开启</li>
+	// <p>是否开启防卸载 <li>0 否</li> <li>1 是</li> <li>9 未设置,和0一样是未开启</li></p>
 	Enable *uint64 `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 开启范围 <li>0 自选主机</li> <li>1 全部主机</li>
+	// <p>开启范围 <li>0 自选主机</li> <li>1 全部主机</li></p>
 	Scope *uint64 `json:"Scope,omitnil,omitempty" name:"Scope"`
 
-	// 正选主机配置数
+	// <p>正选主机配置数</p>
 	IncludeHostCount *uint64 `json:"IncludeHostCount,omitnil,omitempty" name:"IncludeHostCount"`
 
-	// 反选主机配置数
+	// <p>反选主机配置数</p>
 	ExcludeHostCount *uint64 `json:"ExcludeHostCount,omitnil,omitempty" name:"ExcludeHostCount"`
 
-	// 正选quuid配置列表
+	// <p>正选quuid配置列表</p>
 	IncludeQuuid []*string `json:"IncludeQuuid,omitnil,omitempty" name:"IncludeQuuid"`
 
-	// 反选quuid配置列表
+	// <p>反选quuid配置列表</p>
 	ExcludeQuuid []*string `json:"ExcludeQuuid,omitnil,omitempty" name:"ExcludeQuuid"`
 
-	// 已开启机器数
+	// <p>已开启机器数</p>
 	EnableCount *uint64 `json:"EnableCount,omitnil,omitempty" name:"EnableCount"`
 
-	// 未启机器数
+	// <p>未启机器数</p>
 	DisableCount *uint64 `json:"DisableCount,omitnil,omitempty" name:"DisableCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19418,16 +19418,16 @@ type DescribeLoginTypeHostRequestParams struct {
 	// <li>Name - string - 是否必填：否 - 主机名</li> <li>InstanceId - string - 是否必填：否 - 实例ID</li> <li>PublicIp - string - 是否必填：否 - 公网IP</li> <li>PrivateIp - string - 是否必填：否 - 私网IP</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 限制条数,默认10,最大100
+	// <p>限制条数,默认10,最大100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量,默认0
+	// <p>偏移量,默认0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序方式: [ASC:升序|DESC:降序]
+	// <p>排序方式: [ASC:升序|DESC:降序]</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 可选排序列: [Id]
+	// <p>可选排序列: [Id]</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -19437,16 +19437,16 @@ type DescribeLoginTypeHostRequest struct {
 	// <li>Name - string - 是否必填：否 - 主机名</li> <li>InstanceId - string - 是否必填：否 - 实例ID</li> <li>PublicIp - string - 是否必填：否 - 公网IP</li> <li>PrivateIp - string - 是否必填：否 - 私网IP</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 限制条数,默认10,最大100
+	// <p>限制条数,默认10,最大100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量,默认0
+	// <p>偏移量,默认0</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序方式: [ASC:升序|DESC:降序]
+	// <p>排序方式: [ASC:升序|DESC:降序]</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 可选排序列: [Id]
+	// <p>可选排序列: [Id]</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -19475,10 +19475,10 @@ func (r *DescribeLoginTypeHostRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLoginTypeHostResponseParams struct {
-	// 总数
+	// <p>总数</p>
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 主机列表
+	// <p>主机列表</p>
 	List []*ClientSettingHost `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19740,46 +19740,38 @@ func (r *DescribeLoginWhiteListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMachineClearHistoryRequestParams struct {
-	// 筛选条件
-	// 多个条件筛选时 Keywords,TimeBetween,取交集
-	// <li> Keywords 实例名称/内网/公网IP</li>
-	// <li> TimeBetween 时间区间</li>
+	// <p>筛选条件<br>多个条件筛选时 Keywords,TimeBetween,取交集</p><li> Keywords 实例名称/内网/公网IP</li><li> TimeBetween 时间区间</li>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 限制条数,默认10 ,最大100
+	// <p>限制条数,默认10 ,最大100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量,默认0
+	// <p>偏移量,默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 正序, ASC , 倒序 DESC , 默认ASC
+	// <p>正序, ASC , 倒序 DESC , 默认ASC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// AgentLastOfflineTime 客户端最后离线时间
-	// AutoClearTime 清理时间
+	// <p>AgentLastOfflineTime 客户端最后离线时间<br>AutoClearTime 清理时间</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 type DescribeMachineClearHistoryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 筛选条件
-	// 多个条件筛选时 Keywords,TimeBetween,取交集
-	// <li> Keywords 实例名称/内网/公网IP</li>
-	// <li> TimeBetween 时间区间</li>
+	// <p>筛选条件<br>多个条件筛选时 Keywords,TimeBetween,取交集</p><li> Keywords 实例名称/内网/公网IP</li><li> TimeBetween 时间区间</li>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 限制条数,默认10 ,最大100
+	// <p>限制条数,默认10 ,最大100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量,默认0
+	// <p>偏移量,默认0</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 正序, ASC , 倒序 DESC , 默认ASC
+	// <p>正序, ASC , 倒序 DESC , 默认ASC</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// AgentLastOfflineTime 客户端最后离线时间
-	// AutoClearTime 清理时间
+	// <p>AgentLastOfflineTime 客户端最后离线时间<br>AutoClearTime 清理时间</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -19808,10 +19800,10 @@ func (r *DescribeMachineClearHistoryRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMachineClearHistoryResponseParams struct {
-	// 总条数
+	// <p>总条数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 列表数据
+	// <p>列表数据</p>
 	List []*MachineClearHistory `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20420,7 +20412,7 @@ func (r *DescribeMachineOsListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMachineOsListResponseParams struct {
-	// 操作系统列表
+	// <p>操作系统列表</p>
 	List []*OsName `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20729,79 +20721,51 @@ func (r *DescribeMachineSnapshotResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMachinesRequestParams struct {
-	// 机器所属专区类型 
-	// CVM 云服务器
-	// BM 黑石
-	// ECM 边缘计算
-	// LH 轻量应用服务器
-	// Other 混合云专区
+	// <p>机器所属专区类型<br>CVM 云服务器<br>BM 黑石<br>ECM 边缘计算<br>LH 轻量应用服务器<br>Other 混合云专区</p>
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
-	// 机器所属地域。如：ap-guangzhou，ap-shanghai，非腾讯云主机使用：ap-others
+	// <p>机器所属地域。如：ap-guangzhou，ap-shanghai，非腾讯云主机使用：ap-others</p>
 	MachineRegion *string `json:"MachineRegion,omitnil,omitempty" name:"MachineRegion"`
 
-	// 返回数量，默认为10，最大值为100。
+	// <p>返回数量，默认为10，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件。
-	// <li>Ips - String - 是否必填：否 - 通过ip查询 </li>
-	// <li>Names - String - 是否必填：否 - 通过实例名查询 </li>
-	// <li>InstanceIds - String - 是否必填：否 - 通过实例id查询 </li>
-	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship : 旗舰版 | ProtectedMachines: 专业版+旗舰版）</li>
-	// <li>Risk - String 是否必填: 否 - 风险主机( yes ) </li>
-	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
-	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询</li>
-	// <li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li>
-	// <li>AddedOnTheFifteen- String 是否必填: 否 - 是否只查询15天内新增的主机( 1：是) </li>
-	// <li> TagId- String 是否必填: 否 - 查询指定标签关联的主机列表 </li>
-	// <li> AgentStatus- String 是否必填: 否 - ALL 全部; ONLINE 防护中; OFFLINE 已离线;UNINSTALLED 未安装</li>
-	// <li> MachineStatus- String 是否必填: 否 - ALL 全部; RUNNING 运行中; STOPPED 已关机; EXPIRED 待回收</li>
+	// <p>过滤条件。</p><li>Ips - String - 是否必填：否 - 通过ip查询 </li><li>Names - String - 是否必填：否 - 通过实例名查询 </li><li>InstanceIds - String - 是否必填：否 - 通过实例id查询 </li><li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship : 旗舰版 | ProtectedMachines: 专业版+旗舰版）</li><li>Risk - String 是否必填: 否 - 风险主机( yes ) </li><li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )每个过滤条件只支持一个值，暂不支持多个值“或”关系查询</li><li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li><li>AddedOnTheFifteen- String 是否必填: 否 - 是否只查询15天内新增的主机( 1：是) </li><li> TagId- String 是否必填: 否 - 查询指定标签关联的主机列表 </li><li> AgentStatus- String 是否必填: 否 - ALL 全部; ONLINE 防护中; OFFLINE 已离线;UNINSTALLED 未安装</li><li> MachineStatus- String 是否必填: 否 - ALL 全部; RUNNING 运行中; STOPPED 已关机; EXPIRED 待回收</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 机器所属业务ID列表
+	// <p>机器所属业务ID列表</p>
 	ProjectIds []*uint64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
+
+	// <p>机器对应的APPID</p>
+	MachineAppId *uint64 `json:"MachineAppId,omitnil,omitempty" name:"MachineAppId"`
 }
 
 type DescribeMachinesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器所属专区类型 
-	// CVM 云服务器
-	// BM 黑石
-	// ECM 边缘计算
-	// LH 轻量应用服务器
-	// Other 混合云专区
+	// <p>机器所属专区类型<br>CVM 云服务器<br>BM 黑石<br>ECM 边缘计算<br>LH 轻量应用服务器<br>Other 混合云专区</p>
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
-	// 机器所属地域。如：ap-guangzhou，ap-shanghai，非腾讯云主机使用：ap-others
+	// <p>机器所属地域。如：ap-guangzhou，ap-shanghai，非腾讯云主机使用：ap-others</p>
 	MachineRegion *string `json:"MachineRegion,omitnil,omitempty" name:"MachineRegion"`
 
-	// 返回数量，默认为10，最大值为100。
+	// <p>返回数量，默认为10，最大值为100。</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件。
-	// <li>Ips - String - 是否必填：否 - 通过ip查询 </li>
-	// <li>Names - String - 是否必填：否 - 通过实例名查询 </li>
-	// <li>InstanceIds - String - 是否必填：否 - 通过实例id查询 </li>
-	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship : 旗舰版 | ProtectedMachines: 专业版+旗舰版）</li>
-	// <li>Risk - String 是否必填: 否 - 风险主机( yes ) </li>
-	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
-	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询</li>
-	// <li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li>
-	// <li>AddedOnTheFifteen- String 是否必填: 否 - 是否只查询15天内新增的主机( 1：是) </li>
-	// <li> TagId- String 是否必填: 否 - 查询指定标签关联的主机列表 </li>
-	// <li> AgentStatus- String 是否必填: 否 - ALL 全部; ONLINE 防护中; OFFLINE 已离线;UNINSTALLED 未安装</li>
-	// <li> MachineStatus- String 是否必填: 否 - ALL 全部; RUNNING 运行中; STOPPED 已关机; EXPIRED 待回收</li>
+	// <p>过滤条件。</p><li>Ips - String - 是否必填：否 - 通过ip查询 </li><li>Names - String - 是否必填：否 - 通过实例名查询 </li><li>InstanceIds - String - 是否必填：否 - 通过实例id查询 </li><li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship : 旗舰版 | ProtectedMachines: 专业版+旗舰版）</li><li>Risk - String 是否必填: 否 - 风险主机( yes ) </li><li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )每个过滤条件只支持一个值，暂不支持多个值“或”关系查询</li><li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li><li>AddedOnTheFifteen- String 是否必填: 否 - 是否只查询15天内新增的主机( 1：是) </li><li> TagId- String 是否必填: 否 - 查询指定标签关联的主机列表 </li><li> AgentStatus- String 是否必填: 否 - ALL 全部; ONLINE 防护中; OFFLINE 已离线;UNINSTALLED 未安装</li><li> MachineStatus- String 是否必填: 否 - ALL 全部; RUNNING 运行中; STOPPED 已关机; EXPIRED 待回收</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 机器所属业务ID列表
+	// <p>机器所属业务ID列表</p>
 	ProjectIds []*uint64 `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
+
+	// <p>机器对应的APPID</p>
+	MachineAppId *uint64 `json:"MachineAppId,omitnil,omitempty" name:"MachineAppId"`
 }
 
 func (r *DescribeMachinesRequest) ToJsonString() string {
@@ -20822,6 +20786,7 @@ func (r *DescribeMachinesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Filters")
 	delete(f, "ProjectIds")
+	delete(f, "MachineAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMachinesRequest has unknown keys!", "")
 	}
@@ -20830,10 +20795,10 @@ func (r *DescribeMachinesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMachinesResponseParams struct {
-	// 主机列表
+	// <p>主机列表</p>
 	Machines []*Machine `json:"Machines,omitnil,omitempty" name:"Machines"`
 
-	// 主机数量
+	// <p>主机数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21392,12 +21357,15 @@ func (r *DescribeMalwareRiskWarningResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMalwareTimingScanSettingRequestParams struct {
-
+	// <p>产品类型 0-主机安全(默认) 1-安全中心</p>
+	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
 
 type DescribeMalwareTimingScanSettingRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>产品类型 0-主机安全(默认) 1-安全中心</p>
+	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
 
 func (r *DescribeMalwareTimingScanSettingRequest) ToJsonString() string {
@@ -21412,7 +21380,7 @@ func (r *DescribeMalwareTimingScanSettingRequest) FromJsonString(s string) error
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ProductType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMalwareTimingScanSettingRequest has unknown keys!", "")
 	}
@@ -21421,67 +21389,67 @@ func (r *DescribeMalwareTimingScanSettingRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeMalwareTimingScanSettingResponseParams struct {
-	// 检测模式 0 全盘检测  1快速检测
+	// <p>检测模式 0 全盘检测  1快速检测</p>
 	CheckPattern *uint64 `json:"CheckPattern,omitnil,omitempty" name:"CheckPattern"`
 
-	// 检测周期 开始时间
+	// <p>检测周期 开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 检测周期 超时结束时间
+	// <p>检测周期 超时结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 是否全部服务器 1 全部 2 自选
+	// <p>是否全部服务器 1 全部 2 自选</p>
 	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 
-	// 自选服务器时必须 主机quuid的string数组
+	// <p>自选服务器时必须 主机quuid的string数组</p>
 	QuuidList []*string `json:"QuuidList,omitnil,omitempty" name:"QuuidList"`
 
-	// 监控模式 0 标准 1深度
+	// <p>监控模式 0 标准 1深度</p>
 	MonitoringPattern *uint64 `json:"MonitoringPattern,omitnil,omitempty" name:"MonitoringPattern"`
 
-	// 周期 1每天
+	// <p>周期 1每天</p>
 	Cycle *uint64 `json:"Cycle,omitnil,omitempty" name:"Cycle"`
 
-	// 定时检测开关 0 关闭1 开启
+	// <p>定时检测开关 0 关闭1 开启</p>
 	EnableScan *int64 `json:"EnableScan,omitnil,omitempty" name:"EnableScan"`
 
-	// 唯一ID
+	// <p>唯一ID</p>
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 实时监控0 关闭 1开启
+	// <p>实时监控0 关闭 1开启</p>
 	RealTimeMonitoring *int64 `json:"RealTimeMonitoring,omitnil,omitempty" name:"RealTimeMonitoring"`
 
-	// 是否自动隔离：1-是，0-否
+	// <p>是否自动隔离：1-是，0-否</p>
 	AutoIsolation *uint64 `json:"AutoIsolation,omitnil,omitempty" name:"AutoIsolation"`
 
-	// 一键扫描超时时长，如：1800秒（s）
+	// <p>一键扫描超时时长，如：1800秒（s）</p>
 	ClickTimeout *uint64 `json:"ClickTimeout,omitnil,omitempty" name:"ClickTimeout"`
 
-	// 是否杀掉进程 1杀掉 0不杀掉 只有开启自动隔离才生效
+	// <p>是否杀掉进程 1杀掉 0不杀掉 只有开启自动隔离才生效</p>
 	KillProcess *uint64 `json:"KillProcess,omitnil,omitempty" name:"KillProcess"`
 
-	// 1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
+	// <p>1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）</p>
 	EngineType *uint64 `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 
-	// 启发引擎 0 关闭 1开启
+	// <p>启发引擎 0 关闭 1开启</p>
 	EnableInspiredEngine *uint64 `json:"EnableInspiredEngine,omitnil,omitempty" name:"EnableInspiredEngine"`
 
-	// 是否开启恶意进程查杀[0:未开启,1:开启]
+	// <p>是否开启恶意进程查杀[0:未开启,1:开启]</p>
 	EnableMemShellScan *uint64 `json:"EnableMemShellScan,omitnil,omitempty" name:"EnableMemShellScan"`
 
-	// 防护模式 0 标准 1 重保
+	// <p>防护模式 0 标准 1 重保</p>
 	ProtectMode *uint64 `json:"ProtectMode,omitnil,omitempty" name:"ProtectMode"`
 
-	// 查杀范围 0 脚本类之外的恶意文件，1全部恶意文件
+	// <p>查杀范围 0 脚本类之外的恶意文件，1全部恶意文件</p>
 	ProtectFileScope *uint64 `json:"ProtectFileScope,omitnil,omitempty" name:"ProtectFileScope"`
 
-	// 执行清理开关 0未开启 1开启
+	// <p>执行清理开关 0未开启 1开启</p>
 	DoClean *uint64 `json:"DoClean,omitnil,omitempty" name:"DoClean"`
 
-	// 自选的隔离主机集合
+	// <p>自选的隔离主机集合</p>
 	QuaraUuids []*string `json:"QuaraUuids,omitnil,omitempty" name:"QuaraUuids"`
 
-	// 用户选择的隔离范围，0：默认全隔离 1：用户自选
+	// <p>用户选择的隔离范围，0：默认全隔离 1：用户自选</p>
 	QuaraScope *uint64 `json:"QuaraScope,omitnil,omitempty" name:"QuaraScope"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21803,12 +21771,15 @@ func (r *DescribeMemShellRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNetAttackSettingRequestParams struct {
-
+	// <p>产品类型 0-主机安全 1-安全中心</p>
+	ProductType *uint64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
 
 type DescribeNetAttackSettingRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>产品类型 0-主机安全 1-安全中心</p>
+	ProductType *uint64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
 
 func (r *DescribeNetAttackSettingRequest) ToJsonString() string {
@@ -21823,7 +21794,7 @@ func (r *DescribeNetAttackSettingRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ProductType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNetAttackSettingRequest has unknown keys!", "")
 	}
@@ -21832,22 +21803,22 @@ func (r *DescribeNetAttackSettingRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNetAttackSettingResponseParams struct {
-	// 0 关闭网络攻击检测，1开启网络攻击检测
+	// <p>0 关闭网络攻击检测，1开启网络攻击检测</p>
 	NetAttackEnable *uint64 `json:"NetAttackEnable,omitnil,omitempty" name:"NetAttackEnable"`
 
-	// 0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略
+	// <p>0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略</p>
 	NetAttackAlarmStatus *uint64 `json:"NetAttackAlarmStatus,omitnil,omitempty" name:"NetAttackAlarmStatus"`
 
-	// 1 全部旗舰版主机，0 InstanceIds列表主机
+	// <p>1 全部旗舰版主机，0 InstanceIds列表主机</p>
 	Scope *uint64 `json:"Scope,omitnil,omitempty" name:"Scope"`
 
-	// 自选主机
+	// <p>自选主机</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 自选排除主机
+	// <p>自选排除主机</p>
 	ExcludeInstanceIds []*string `json:"ExcludeInstanceIds,omitnil,omitempty" name:"ExcludeInstanceIds"`
 
-	// 新增资产自动包含 0 不包含 1包含
+	// <p>新增资产自动包含 0 不包含 1包含</p>
 	AutoInclude *uint64 `json:"AutoInclude,omitnil,omitempty" name:"AutoInclude"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -25098,12 +25069,15 @@ func (r *DescribeReverseShellRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeReverseShellSystemPolicyConfigRequestParams struct {
-
+	// <p>产品类型 0-主机安全(默认) 1-安全中心</p>
+	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
 
 type DescribeReverseShellSystemPolicyConfigRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>产品类型 0-主机安全(默认) 1-安全中心</p>
+	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
 
 func (r *DescribeReverseShellSystemPolicyConfigRequest) ToJsonString() string {
@@ -25118,7 +25092,7 @@ func (r *DescribeReverseShellSystemPolicyConfigRequest) FromJsonString(s string)
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ProductType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReverseShellSystemPolicyConfigRequest has unknown keys!", "")
 	}
@@ -25127,10 +25101,10 @@ func (r *DescribeReverseShellSystemPolicyConfigRequest) FromJsonString(s string)
 
 // Predefined struct for user
 type DescribeReverseShellSystemPolicyConfigResponseParams struct {
-	// 内网告警展示
+	// <p>内网告警展示</p>
 	InnerNetAlarmShow *bool `json:"InnerNetAlarmShow,omitnil,omitempty" name:"InnerNetAlarmShow"`
 
-	// 内网ip展示
+	// <p>内网ip展示</p>
 	InnerIPShow *bool `json:"InnerIPShow,omitnil,omitempty" name:"InnerIPShow"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -37619,13 +37593,13 @@ type FileTamperRuleInfo struct {
 }
 
 type Filter struct {
-	// 过滤键的名称。
+	// <p>过滤键的名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 一个或者多个过滤值。
+	// <p>一个或者多个过滤值。</p>
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 
-	// 模糊搜索
+	// <p>模糊搜索</p>
 	ExactMatch *bool `json:"ExactMatch,omitnil,omitempty" name:"ExactMatch"`
 }
 
@@ -39325,20 +39299,20 @@ func (r *ModifyAutoOpenProVersionConfigResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type ModifyBanModeRequestParams struct {
-	// 阻断模式，STANDARD_MODE：标准阻断，DEEP_MODE：深度阻断
+	// <p>阻断模式，STANDARD_MODE：标准阻断，DEEP_MODE：深度阻断</p>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 阻断时间，用于标准阻断模式
+	// <p>阻断时间，用于标准阻断模式</p>
 	Ttl *uint64 `json:"Ttl,omitnil,omitempty" name:"Ttl"`
 }
 
 type ModifyBanModeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 阻断模式，STANDARD_MODE：标准阻断，DEEP_MODE：深度阻断
+	// <p>阻断模式，STANDARD_MODE：标准阻断，DEEP_MODE：深度阻断</p>
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
-	// 阻断时间，用于标准阻断模式
+	// <p>阻断时间，用于标准阻断模式</p>
 	Ttl *uint64 `json:"Ttl,omitnil,omitempty" name:"Ttl"`
 }
 
@@ -39995,14 +39969,14 @@ func (r *ModifyBashPolicyStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyBruteAttackRulesRequestParams struct {
-	// 暴力破解判断规则
+	// <p>暴力破解判断规则</p>
 	Rules []*BruteAttackRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 type ModifyBruteAttackRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 暴力破解判断规则
+	// <p>暴力破解判断规则</p>
 	Rules []*BruteAttackRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
@@ -41382,14 +41356,14 @@ func (r *ModifyLoginWhiteRecordResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyMachineAutoClearConfigRequestParams struct {
-	// 清理规则时间, 0 表示关闭, 单位为天, 最大为 30天
+	// <p>清理规则时间, 0 表示关闭, 单位为天, 最大为 30天</p>
 	ClearRule *uint64 `json:"ClearRule,omitnil,omitempty" name:"ClearRule"`
 }
 
 type ModifyMachineAutoClearConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 清理规则时间, 0 表示关闭, 单位为天, 最大为 30天
+	// <p>清理规则时间, 0 表示关闭, 单位为天, 最大为 30天</p>
 	ClearRule *uint64 `json:"ClearRule,omitnil,omitempty" name:"ClearRule"`
 }
 
@@ -41565,125 +41539,129 @@ func (r *ModifyMaliciousRequestWhiteListResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type ModifyMalwareTimingScanSettingsRequestParams struct {
-	// 检测模式 0 全盘检测  1快速检测
+	// <p>检测模式 0 全盘检测  1快速检测</p>
 	CheckPattern *uint64 `json:"CheckPattern,omitnil,omitempty" name:"CheckPattern"`
 
-	// 检测周期 开始时间，如：02:00:00
+	// <p>检测周期 开始时间，如：02:00:00</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 检测周期 超时结束时间，如：04:00:00
+	// <p>检测周期 超时结束时间，如：04:00:00</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 是否全部服务器 1 全部 2 自选
+	// <p>是否全部服务器 1 全部 2 自选</p>
 	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 
-	// 定时检测开关 0 关闭 1开启
+	// <p>定时检测开关 0 关闭 1开启</p>
 	EnableScan *uint64 `json:"EnableScan,omitnil,omitempty" name:"EnableScan"`
 
-	// 监控模式 0 标准 1深度
+	// <p>监控模式 0 标准 1深度</p>
 	MonitoringPattern *uint64 `json:"MonitoringPattern,omitnil,omitempty" name:"MonitoringPattern"`
 
-	// 扫描周期 默认每天 1
+	// <p>扫描周期 默认每天 1</p>
 	Cycle *uint64 `json:"Cycle,omitnil,omitempty" name:"Cycle"`
 
-	// 实时监控 0 关闭 1开启
+	// <p>实时监控 0 关闭 1开启</p>
 	RealTimeMonitoring *uint64 `json:"RealTimeMonitoring,omitnil,omitempty" name:"RealTimeMonitoring"`
 
-	// 自选服务器时必须 主机quuid的string数组
+	// <p>自选服务器时必须 主机quuid的string数组</p>
 	QuuidList []*string `json:"QuuidList,omitnil,omitempty" name:"QuuidList"`
 
-	// 是否自动隔离 1隔离 0 不隔离
+	// <p>是否自动隔离 1隔离 0 不隔离</p>
 	AutoIsolation *uint64 `json:"AutoIsolation,omitnil,omitempty" name:"AutoIsolation"`
 
-	// 是否杀掉进程 1杀掉 0不杀掉
+	// <p>是否杀掉进程 1杀掉 0不杀掉</p>
 	KillProcess *uint64 `json:"KillProcess,omitnil,omitempty" name:"KillProcess"`
 
-	// 1 清理, 0 不清理
-	// <li>本操作会修复被篡改的系统命令，计划任务等系统文件，操作中请确保yum/apt 可用</li>
+	// <p>1 清理, 0 不清理</p><li>本操作会修复被篡改的系统命令，计划任务等系统文件，操作中请确保yum/apt 可用</li>
 	DoClean *uint64 `json:"DoClean,omitnil,omitempty" name:"DoClean"`
 
-	// 1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
+	// <p>1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）</p>
 	EngineType *uint64 `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 
-	// 启发引擎开关 0 关闭 1开启
+	// <p>启发引擎开关 0 关闭 1开启</p>
 	EnableInspiredEngine *uint64 `json:"EnableInspiredEngine,omitnil,omitempty" name:"EnableInspiredEngine"`
 
-	// 是否开启恶意进程查杀[0:未开启,1:开启]
+	// <p>是否开启恶意进程查杀[0:未开启,1:开启]</p>
 	EnableMemShellScan *uint64 `json:"EnableMemShellScan,omitnil,omitempty" name:"EnableMemShellScan"`
 
-	// 防护模式 0 标准 1重保
+	// <p>防护模式 0 标准 1重保</p>
 	ProtectMode *uint64 `json:"ProtectMode,omitnil,omitempty" name:"ProtectMode"`
 
-	// 查杀范围 0 脚本类之外的恶意文件，1全部恶意文件
+	// <p>查杀范围 0 脚本类之外的恶意文件，1全部恶意文件</p>
 	ProtectFileScope *uint64 `json:"ProtectFileScope,omitnil,omitempty" name:"ProtectFileScope"`
 
-	// 自选的隔离主机集合
+	// <p>自选的隔离主机集合</p>
 	QuaraUuids []*string `json:"QuaraUuids,omitnil,omitempty" name:"QuaraUuids"`
 
-	// 用户选择的隔离范围，0：默认全隔离 1：用户自选
+	// <p>用户选择的隔离范围，0：默认全隔离 1：用户自选</p>
 	QuaraScope *uint64 `json:"QuaraScope,omitnil,omitempty" name:"QuaraScope"`
+
+	// <p>产品类型 0-主机安全(默认) 1-安全中心</p>
+	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
 
 type ModifyMalwareTimingScanSettingsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 检测模式 0 全盘检测  1快速检测
+	// <p>检测模式 0 全盘检测  1快速检测</p>
 	CheckPattern *uint64 `json:"CheckPattern,omitnil,omitempty" name:"CheckPattern"`
 
-	// 检测周期 开始时间，如：02:00:00
+	// <p>检测周期 开始时间，如：02:00:00</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 检测周期 超时结束时间，如：04:00:00
+	// <p>检测周期 超时结束时间，如：04:00:00</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 是否全部服务器 1 全部 2 自选
+	// <p>是否全部服务器 1 全部 2 自选</p>
 	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 
-	// 定时检测开关 0 关闭 1开启
+	// <p>定时检测开关 0 关闭 1开启</p>
 	EnableScan *uint64 `json:"EnableScan,omitnil,omitempty" name:"EnableScan"`
 
-	// 监控模式 0 标准 1深度
+	// <p>监控模式 0 标准 1深度</p>
 	MonitoringPattern *uint64 `json:"MonitoringPattern,omitnil,omitempty" name:"MonitoringPattern"`
 
-	// 扫描周期 默认每天 1
+	// <p>扫描周期 默认每天 1</p>
 	Cycle *uint64 `json:"Cycle,omitnil,omitempty" name:"Cycle"`
 
-	// 实时监控 0 关闭 1开启
+	// <p>实时监控 0 关闭 1开启</p>
 	RealTimeMonitoring *uint64 `json:"RealTimeMonitoring,omitnil,omitempty" name:"RealTimeMonitoring"`
 
-	// 自选服务器时必须 主机quuid的string数组
+	// <p>自选服务器时必须 主机quuid的string数组</p>
 	QuuidList []*string `json:"QuuidList,omitnil,omitempty" name:"QuuidList"`
 
-	// 是否自动隔离 1隔离 0 不隔离
+	// <p>是否自动隔离 1隔离 0 不隔离</p>
 	AutoIsolation *uint64 `json:"AutoIsolation,omitnil,omitempty" name:"AutoIsolation"`
 
-	// 是否杀掉进程 1杀掉 0不杀掉
+	// <p>是否杀掉进程 1杀掉 0不杀掉</p>
 	KillProcess *uint64 `json:"KillProcess,omitnil,omitempty" name:"KillProcess"`
 
-	// 1 清理, 0 不清理
-	// <li>本操作会修复被篡改的系统命令，计划任务等系统文件，操作中请确保yum/apt 可用</li>
+	// <p>1 清理, 0 不清理</p><li>本操作会修复被篡改的系统命令，计划任务等系统文件，操作中请确保yum/apt 可用</li>
 	DoClean *uint64 `json:"DoClean,omitnil,omitempty" name:"DoClean"`
 
-	// 1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
+	// <p>1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）</p>
 	EngineType *uint64 `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 
-	// 启发引擎开关 0 关闭 1开启
+	// <p>启发引擎开关 0 关闭 1开启</p>
 	EnableInspiredEngine *uint64 `json:"EnableInspiredEngine,omitnil,omitempty" name:"EnableInspiredEngine"`
 
-	// 是否开启恶意进程查杀[0:未开启,1:开启]
+	// <p>是否开启恶意进程查杀[0:未开启,1:开启]</p>
 	EnableMemShellScan *uint64 `json:"EnableMemShellScan,omitnil,omitempty" name:"EnableMemShellScan"`
 
-	// 防护模式 0 标准 1重保
+	// <p>防护模式 0 标准 1重保</p>
 	ProtectMode *uint64 `json:"ProtectMode,omitnil,omitempty" name:"ProtectMode"`
 
-	// 查杀范围 0 脚本类之外的恶意文件，1全部恶意文件
+	// <p>查杀范围 0 脚本类之外的恶意文件，1全部恶意文件</p>
 	ProtectFileScope *uint64 `json:"ProtectFileScope,omitnil,omitempty" name:"ProtectFileScope"`
 
-	// 自选的隔离主机集合
+	// <p>自选的隔离主机集合</p>
 	QuaraUuids []*string `json:"QuaraUuids,omitnil,omitempty" name:"QuaraUuids"`
 
-	// 用户选择的隔离范围，0：默认全隔离 1：用户自选
+	// <p>用户选择的隔离范围，0：默认全隔离 1：用户自选</p>
 	QuaraScope *uint64 `json:"QuaraScope,omitnil,omitempty" name:"QuaraScope"`
+
+	// <p>产品类型 0-主机安全(默认) 1-安全中心</p>
+	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
 
 func (r *ModifyMalwareTimingScanSettingsRequest) ToJsonString() string {
@@ -41717,6 +41695,7 @@ func (r *ModifyMalwareTimingScanSettingsRequest) FromJsonString(s string) error 
 	delete(f, "ProtectFileScope")
 	delete(f, "QuaraUuids")
 	delete(f, "QuaraScope")
+	delete(f, "ProductType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMalwareTimingScanSettingsRequest has unknown keys!", "")
 	}
@@ -41857,45 +41836,51 @@ func (r *ModifyMalwareWhiteListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNetAttackSettingRequestParams struct {
-	// 0 关闭网络攻击检测，1开启网络攻击检测
+	// <p>0 关闭网络攻击检测，1开启网络攻击检测</p>
 	NetAttackEnable *uint64 `json:"NetAttackEnable,omitnil,omitempty" name:"NetAttackEnable"`
 
-	// 0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略
+	// <p>0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略</p>
 	NetAttackAlarmStatus *uint64 `json:"NetAttackAlarmStatus,omitnil,omitempty" name:"NetAttackAlarmStatus"`
 
-	// 1 全部旗舰版主机，0 Quuids列表主机
+	// <p>1 全部旗舰版主机，0 Quuids列表主机</p>
 	Scope *uint64 `json:"Scope,omitnil,omitempty" name:"Scope"`
 
-	// 自选主机
+	// <p>自选主机</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 自选排除的主机
+	// <p>自选排除的主机</p>
 	ExcludeInstanceIds []*string `json:"ExcludeInstanceIds,omitnil,omitempty" name:"ExcludeInstanceIds"`
 
-	// 新增资产自动包含 0 不包含 1包含
+	// <p>新增资产自动包含 0 不包含 1包含</p>
 	AutoInclude *uint64 `json:"AutoInclude,omitnil,omitempty" name:"AutoInclude"`
+
+	// <p>产品类型 0-主机安全 1-安全中心</p>
+	ProductType *uint64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
 
 type ModifyNetAttackSettingRequest struct {
 	*tchttp.BaseRequest
 	
-	// 0 关闭网络攻击检测，1开启网络攻击检测
+	// <p>0 关闭网络攻击检测，1开启网络攻击检测</p>
 	NetAttackEnable *uint64 `json:"NetAttackEnable,omitnil,omitempty" name:"NetAttackEnable"`
 
-	// 0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略
+	// <p>0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略</p>
 	NetAttackAlarmStatus *uint64 `json:"NetAttackAlarmStatus,omitnil,omitempty" name:"NetAttackAlarmStatus"`
 
-	// 1 全部旗舰版主机，0 Quuids列表主机
+	// <p>1 全部旗舰版主机，0 Quuids列表主机</p>
 	Scope *uint64 `json:"Scope,omitnil,omitempty" name:"Scope"`
 
-	// 自选主机
+	// <p>自选主机</p>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 自选排除的主机
+	// <p>自选排除的主机</p>
 	ExcludeInstanceIds []*string `json:"ExcludeInstanceIds,omitnil,omitempty" name:"ExcludeInstanceIds"`
 
-	// 新增资产自动包含 0 不包含 1包含
+	// <p>新增资产自动包含 0 不包含 1包含</p>
 	AutoInclude *uint64 `json:"AutoInclude,omitnil,omitempty" name:"AutoInclude"`
+
+	// <p>产品类型 0-主机安全 1-安全中心</p>
+	ProductType *uint64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 }
 
 func (r *ModifyNetAttackSettingRequest) ToJsonString() string {
@@ -41916,6 +41901,7 @@ func (r *ModifyNetAttackSettingRequest) FromJsonString(s string) error {
 	delete(f, "InstanceIds")
 	delete(f, "ExcludeInstanceIds")
 	delete(f, "AutoInclude")
+	delete(f, "ProductType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNetAttackSettingRequest has unknown keys!", "")
 	}

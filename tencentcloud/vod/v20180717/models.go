@@ -5103,13 +5103,16 @@ type CreateAigcAudioCloneTask struct {
 
 // Predefined struct for user
 type CreateAigcAudioTaskRequestParams struct {
+	// <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
 	// <p>模型名称。</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// <p>指定场景，目前支持sfx（音效）。</p>
+	// <p>指定场景，目前支持sfx（音效）、music（音乐）。</p>
 	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
 
 	// <p>生成音频的描述</p>
@@ -5131,13 +5134,16 @@ type CreateAigcAudioTaskRequestParams struct {
 type CreateAigcAudioTaskRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
 	// <p>模型名称。</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
 	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// <p>指定场景，目前支持sfx（音效）。</p>
+	// <p>指定场景，目前支持sfx（音效）、music（音乐）。</p>
 	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
 
 	// <p>生成音频的描述</p>
@@ -5168,6 +5174,7 @@ func (r *CreateAigcAudioTaskRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "SubAppId")
 	delete(f, "ModelName")
 	delete(f, "ModelVersion")
 	delete(f, "SceneType")
@@ -12122,6 +12129,9 @@ type DescribeAigcUsageDataRequestParams struct {
 
 	// <p>API Key</p>
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
+
+	// <p>API Key</p>
+	APIKeys []*string `json:"APIKeys,omitnil,omitempty" name:"APIKeys"`
 }
 
 type DescribeAigcUsageDataRequest struct {
@@ -12141,6 +12151,9 @@ type DescribeAigcUsageDataRequest struct {
 
 	// <p>API Key</p>
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
+
+	// <p>API Key</p>
+	APIKeys []*string `json:"APIKeys,omitnil,omitempty" name:"APIKeys"`
 }
 
 func (r *DescribeAigcUsageDataRequest) ToJsonString() string {
@@ -12160,6 +12173,7 @@ func (r *DescribeAigcUsageDataRequest) FromJsonString(s string) error {
 	delete(f, "AigcType")
 	delete(f, "SubAppId")
 	delete(f, "APIKey")
+	delete(f, "APIKeys")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAigcUsageDataRequest has unknown keys!", "")
 	}

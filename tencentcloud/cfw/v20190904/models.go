@@ -616,29 +616,28 @@ type CcnSwitchInfo struct {
 }
 
 type CfwInsStatus struct {
-	// 防火墙实例id
+	// <p>防火墙实例id</p>
 	CfwInsId *string `json:"CfwInsId,omitnil,omitempty" name:"CfwInsId"`
 
-	// 防火墙类型，nat：nat防火墙；ew：vpc间防火墙
+	// <p>防火墙类型，nat：nat防火墙；ew：vpc间防火墙</p>
 	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 
-	// 实例所属地域
+	// <p>实例所属地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 实例运行状态，Running：正常运行；BypassAutoFix：bypass修复；Updating：升级中；Expand：扩容中；BypassManual：手动触发bypass中；BypassAuto：自动触发bypass中
+	// <p>实例运行状态，Running：正常运行；BypassAutoFix：bypass修复；Updating：升级中；Expand：扩容中；BypassManual：手动触发bypass中；BypassAuto：自动触发bypass中；BypassTcDrop：丢包触发bypass中</p><p>枚举值：</p><ul><li>Running： 正常运行</li><li>BypassAutoFix： 自动bypass已修复</li><li>Updating： 实例升级中</li><li>Expand： 实例扩容中</li><li>BypassManual： 手动触发bypass中</li><li>BypassAuto： 自动触发bypass中</li><li>BypassTcDrop： 丢包触发bypass中</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 事件时间
+	// <p>事件时间</p>
 	EventTime *string `json:"EventTime,omitnil,omitempty" name:"EventTime"`
 
-	// 恢复时间
+	// <p>恢复时间</p>
 	RecoverTime *string `json:"RecoverTime,omitnil,omitempty" name:"RecoverTime"`
 
-	// 实例名称
+	// <p>实例名称</p>
 	CfwInsName *string `json:"CfwInsName,omitnil,omitempty" name:"CfwInsName"`
 
-	// Normal: 正常模式
-	// OnlyRoute: 透明模式
+	// <p>Normal: 正常模式<br>OnlyRoute: 透明模式</p>
 	TrafficMode *string `json:"TrafficMode,omitnil,omitempty" name:"TrafficMode"`
 }
 
@@ -1961,49 +1960,49 @@ func (r *CreateNatFwInstanceWithDomainResponse) FromJsonString(s string) error {
 }
 
 type CreateNatRuleItem struct {
-	// 访问源示例： net：IP/CIDR(192.168.0.2)
+	// <p>访问源示例： net：IP/CIDR(192.168.0.2)</p>
 	SourceContent *string `json:"SourceContent,omitnil,omitempty" name:"SourceContent"`
 
-	// 访问源类型：入向规则时类型可以为 ip,net,template,location；出向规则时可以为 ip,net,template,instance,group,tag
+	// <p>访问源类型：入向规则时类型可以为 ip,net,template,location；出向规则时可以为 ip,net,template,instance,group,tag</p>
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// 访问目的示例： net：IP/CIDR(192.168.0.2) domain：域名规则，例如*.qq.com
+	// <p>访问目的示例： net：IP/CIDR(192.168.0.2) domain：域名规则，例如*.qq.com</p>
 	TargetContent *string `json:"TargetContent,omitnil,omitempty" name:"TargetContent"`
 
-	// 访问目的类型：入向规则时类型可以为ip,net,template,instance,group,tag；出向规则时可以为  ip,net,domain,template,location
+	// <p>访问目的类型：入向规则时类型可以为ip,net,template,instance,group,tag；出向规则时可以为  ip,net,domain,template,location</p>
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
-	// 协议，可选的值： TCP UDP ICMP ANY HTTP HTTPS HTTP/HTTPS SMTP SMTPS SMTP/SMTPS FTP DNS
+	// <p>协议，可选的值： TCP UDP ICMP ANY HTTP HTTPS HTTP/HTTPS SMTP SMTPS SMTP/SMTPS FTP DNS</p>
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 访问控制策略中设置的流量通过云防火墙的方式。取值： accept：放行 drop：拒绝 log：观察
+	// <p>访问控制策略中设置的流量通过云防火墙的方式。取值： accept：放行 drop：拒绝 log：观察</p>
 	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
 
-	// 访问控制策略的端口。取值： -1/-1：全部端口 80：80端口
+	// <p>访问控制策略的端口。取值： -1/-1：全部端口 80：80端口</p>
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 规则方向：1，入站；0，出站
+	// <p>规则方向：1，入站；0，出站</p>
 	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 
-	// 规则序号
+	// <p>规则序号</p>
 	OrderIndex *int64 `json:"OrderIndex,omitnil,omitempty" name:"OrderIndex"`
 
-	// 规则状态，true表示启用，false表示禁用
+	// <p>规则状态，true表示启用，false表示禁用</p>
 	Enable *string `json:"Enable,omitnil,omitempty" name:"Enable"`
 
-	// 规则对应的唯一id，创建规则时无需填写
+	// <p>规则对应的唯一id，创建规则AddNatAcRule时无需填写；修改规则ModifyNatAcRule时必须填写</p><p>创建规则AddNatAcRule时无需填写；修改规则ModifyNatAcRule时必须填写</p>
 	Uuid *int64 `json:"Uuid,omitnil,omitempty" name:"Uuid"`
 
-	// 描述
+	// <p>描述</p>
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 端口协议组ID
+	// <p>端口协议组ID</p>
 	ParamTemplateId *string `json:"ParamTemplateId,omitnil,omitempty" name:"ParamTemplateId"`
 
-	// 内部id
+	// <p>内部id</p>
 	InternalUuid *int64 `json:"InternalUuid,omitnil,omitempty" name:"InternalUuid"`
 
-	// 规则生效的范围：ALL，全局生效；ap-guangzhou，生效的地域；cfwnat-xxx，生效基于实例维度
+	// <p>规则生效的范围：ALL，全局生效；ap-guangzhou，生效的地域；cfwnat-xxx，生效基于实例维度</p>
 	Scope *string `json:"Scope,omitnil,omitempty" name:"Scope"`
 }
 

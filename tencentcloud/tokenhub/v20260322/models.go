@@ -548,6 +548,57 @@ func (r *DescribeApiKeyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeModelListRequestParams struct {
+
+}
+
+type DescribeModelListRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeModelListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelListResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeModelListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelListResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTokenPlanApiKeyListRequestParams struct {
 	// 套餐 ID。可通过DescribeTokenPlanList接口获取。
 	TeamId *string `json:"TeamId,omitnil,omitempty" name:"TeamId"`

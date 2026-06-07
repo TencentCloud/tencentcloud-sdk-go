@@ -3999,32 +3999,32 @@ type RegionInfo struct {
 
 // Predefined struct for user
 type ReportOrderRequestParams struct {
-	// 订单编号唯一标识符
+	// <p>订单编号唯一标识符</p>
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 用量类型
+	// <p>用量类型</p>
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
-	// 上报月份，默认当前月
+	// <p>上报月份，默认当前月</p>
 	ReportMonth *string `json:"ReportMonth,omitnil,omitempty" name:"ReportMonth"`
 }
 
 type ReportOrderRequest struct {
 	*tchttp.BaseRequest
 	
-	// 订单编号唯一标识符
+	// <p>订单编号唯一标识符</p>
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
-	// 项目id
+	// <p>项目id</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 用量类型
+	// <p>用量类型</p>
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
-	// 上报月份，默认当前月
+	// <p>上报月份，默认当前月</p>
 	ReportMonth *string `json:"ReportMonth,omitnil,omitempty" name:"ReportMonth"`
 }
 
@@ -4052,7 +4052,7 @@ func (r *ReportOrderRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ReportOrderResponseParams struct {
-	// 订单信息
+	// <p>订单信息</p>
 	OrderInfo *OrderInfo `json:"OrderInfo,omitnil,omitempty" name:"OrderInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

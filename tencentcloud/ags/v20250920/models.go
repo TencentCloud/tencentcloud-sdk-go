@@ -1051,10 +1051,10 @@ type ProbeConfiguration struct {
 }
 
 type ResourceConfiguration struct {
-	// cpu 资源量
+	// <p>cpu 资源量</p>
 	CPU *string `json:"CPU,omitnil,omitempty" name:"CPU"`
 
-	// 内存资源量
+	// <p>内存资源量</p>
 	Memory *string `json:"Memory,omitnil,omitempty" name:"Memory"`
 }
 

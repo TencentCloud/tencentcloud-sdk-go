@@ -23515,32 +23515,32 @@ func (r *SwitchClusterVpcResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SwitchClusterZoneRequestParams struct {
-	// 集群Id
+	// <p>集群Id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 当前可用区
+	// <p>当前可用区</p>
 	OldZone *string `json:"OldZone,omitnil,omitempty" name:"OldZone"`
 
-	// 要切换到的可用区
+	// <p>要切换到的可用区</p>
 	NewZone *string `json:"NewZone,omitnil,omitempty" name:"NewZone"`
 
-	// 维护期间执行-yes,立即执行-no
+	// <p>维护期间执行-yes,立即执行-no</p>
 	IsInMaintainPeriod *string `json:"IsInMaintainPeriod,omitnil,omitempty" name:"IsInMaintainPeriod"`
 }
 
 type SwitchClusterZoneRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群Id
+	// <p>集群Id</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 当前可用区
+	// <p>当前可用区</p>
 	OldZone *string `json:"OldZone,omitnil,omitempty" name:"OldZone"`
 
-	// 要切换到的可用区
+	// <p>要切换到的可用区</p>
 	NewZone *string `json:"NewZone,omitnil,omitempty" name:"NewZone"`
 
-	// 维护期间执行-yes,立即执行-no
+	// <p>维护期间执行-yes,立即执行-no</p>
 	IsInMaintainPeriod *string `json:"IsInMaintainPeriod,omitnil,omitempty" name:"IsInMaintainPeriod"`
 }
 
@@ -23568,7 +23568,10 @@ func (r *SwitchClusterZoneRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SwitchClusterZoneResponseParams struct {
-	// 异步FlowId
+	// <p>任务id</p>
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>异步FlowId</p>
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

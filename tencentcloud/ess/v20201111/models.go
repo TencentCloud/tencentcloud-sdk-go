@@ -7949,94 +7949,68 @@ func (r *CreateOrganizationAuthUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateOrganizationBatchSignUrlRequestParams struct {
-	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
-	// 支持填入集团子公司经办人 userId 代发合同。
-	// 
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。使用此接口时，必须填写userId。<br>支持填入集团子公司经办人 userId 代发合同。</p><p>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 请指定需执行批量签署的流程ID，数量范围为1-100。您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。用户将利用链接对这些合同实施批量操作。  注：生成动态签署方领取时此参数必传。 
+	// <p>请指定需执行批量签署的流程ID，数量范围为1-100。您可登录腾讯电子签控制台，浏览 &quot;合同&quot;-&gt;&quot;合同中心&quot; 以查阅某一合同的FlowId（在页面中显示为合同ID）。用户将利用链接对这些合同实施批量操作。  注：生成动态签署方领取时此参数必传。</p>
 	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 员工在腾讯电子签平台的独特身份标识，为32位字符串。
-	// 您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的UserId（在页面中显示为用户ID）。
-	// UserId必须是传入合同（FlowId）中的签署人。
-	// 
-	// <ul>
-	// <li>1. 若UserId为空，Name和Mobile 必须提供。</li>
-	// <li>2. 若UserId 与 Name，Mobile均存在，将优先采用UserId对应的员工。</li>
-	// </ul>
+	// <p>员工在腾讯电子签平台的独特身份标识，为32位字符串。<br>您可登录腾讯电子签控制台，在 &quot;更多能力&quot;-&gt;&quot;组织管理&quot; 中查阅某位员工的UserId（在页面中显示为用户ID）。<br>UserId必须是传入合同（FlowId）中的签署人。</p><ul><li>1. 若UserId为空，Name和Mobile 必须提供。</li><li>2. 若UserId 与 Name，Mobile均存在，将优先采用UserId对应的员工。</li></ul>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 员工姓名，必须与手机号码一起使用。
-	// 如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
+	// <p>员工姓名，必须与手机号码一起使用。<br>如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 员工手机号，必须与姓名一起使用。
-	//  如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
+	// <p>员工手机号，必须与姓名一起使用。<br> 如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。</p>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。您可以通过查询合同接口（DescribeFlowInfo）查询此参数。若传了此参数，则可以不传 UserId, Name, Mobile等参数  注：生成动态签署方领取时此参数必传。
+	// <p>为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。您可以通过查询合同接口（DescribeFlowInfo）查询此参数。若传了此参数，则可以不传 UserId, Name, Mobile等参数  注：生成动态签署方领取时此参数必传。</p>
 	RecipientIds []*string `json:"RecipientIds,omitnil,omitempty" name:"RecipientIds"`
 
-	// 合同组Id，传入此参数则可以不传FlowIds
+	// <p>合同组Id，传入此参数则可以不传FlowIds</p>
 	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
-	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。`
+	// <p>是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul></p>
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 
-	// 动态签署方领取链接配置。
+	// <p>动态签署方领取链接配置。</p>
 	DynamicSignOption *DynamicSignOption `json:"DynamicSignOption,omitnil,omitempty" name:"DynamicSignOption"`
 }
 
 type CreateOrganizationBatchSignUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
-	// 支持填入集团子公司经办人 userId 代发合同。
-	// 
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	// <p>执行本接口操作的员工信息。使用此接口时，必须填写userId。<br>支持填入集团子公司经办人 userId 代发合同。</p><p>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 请指定需执行批量签署的流程ID，数量范围为1-100。您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。用户将利用链接对这些合同实施批量操作。  注：生成动态签署方领取时此参数必传。 
+	// <p>请指定需执行批量签署的流程ID，数量范围为1-100。您可登录腾讯电子签控制台，浏览 &quot;合同&quot;-&gt;&quot;合同中心&quot; 以查阅某一合同的FlowId（在页面中显示为合同ID）。用户将利用链接对这些合同实施批量操作。  注：生成动态签署方领取时此参数必传。</p>
 	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
 	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
 
-	// 员工在腾讯电子签平台的独特身份标识，为32位字符串。
-	// 您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的UserId（在页面中显示为用户ID）。
-	// UserId必须是传入合同（FlowId）中的签署人。
-	// 
-	// <ul>
-	// <li>1. 若UserId为空，Name和Mobile 必须提供。</li>
-	// <li>2. 若UserId 与 Name，Mobile均存在，将优先采用UserId对应的员工。</li>
-	// </ul>
+	// <p>员工在腾讯电子签平台的独特身份标识，为32位字符串。<br>您可登录腾讯电子签控制台，在 &quot;更多能力&quot;-&gt;&quot;组织管理&quot; 中查阅某位员工的UserId（在页面中显示为用户ID）。<br>UserId必须是传入合同（FlowId）中的签署人。</p><ul><li>1. 若UserId为空，Name和Mobile 必须提供。</li><li>2. 若UserId 与 Name，Mobile均存在，将优先采用UserId对应的员工。</li></ul>
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 员工姓名，必须与手机号码一起使用。
-	// 如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
+	// <p>员工姓名，必须与手机号码一起使用。<br>如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 员工手机号，必须与姓名一起使用。
-	//  如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
+	// <p>员工手机号，必须与姓名一起使用。<br> 如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。</p>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
-	// 为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。您可以通过查询合同接口（DescribeFlowInfo）查询此参数。若传了此参数，则可以不传 UserId, Name, Mobile等参数  注：生成动态签署方领取时此参数必传。
+	// <p>为签署方经办人在签署合同中的参与方ID，必须与参数FlowIds数组一一对应。您可以通过查询合同接口（DescribeFlowInfo）查询此参数。若传了此参数，则可以不传 UserId, Name, Mobile等参数  注：生成动态签署方领取时此参数必传。</p>
 	RecipientIds []*string `json:"RecipientIds,omitnil,omitempty" name:"RecipientIds"`
 
-	// 合同组Id，传入此参数则可以不传FlowIds
+	// <p>合同组Id，传入此参数则可以不传FlowIds</p>
 	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
-	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`当前合同组不支持批量拒签功能。请对合同组中的每个子合同逐一执行拒签操作，以达到拒签整个合同组的效果。`
+	// <p>是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul></p>
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 
-	// 动态签署方领取链接配置。
+	// <p>动态签署方领取链接配置。</p>
 	DynamicSignOption *DynamicSignOption `json:"DynamicSignOption,omitnil,omitempty" name:"DynamicSignOption"`
 }
 
@@ -8070,10 +8044,10 @@ func (r *CreateOrganizationBatchSignUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateOrganizationBatchSignUrlResponseParams struct {
-	// 批量签署入口链接，用户可使用这个链接跳转到控制台页面对合同进行签署操作。
+	// <p>批量签署入口链接，用户可使用这个链接跳转到控制台页面对合同进行签署操作。</p>
 	SignUrl *string `json:"SignUrl,omitnil,omitempty" name:"SignUrl"`
 
-	// 链接过期截止时间，格式为Unix标准时间戳（秒），默认为7天后截止。
+	// <p>链接过期截止时间，格式为Unix标准时间戳（秒），默认为7天后截止。</p>
 	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

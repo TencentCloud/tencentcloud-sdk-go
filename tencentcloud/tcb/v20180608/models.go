@@ -4910,51 +4910,57 @@ func (r *DescribeTablesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserListRequestParams struct {
-	// 环境id
+	// <p>环境id</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 页码，从1开始，默认1
+	// <p>页码，从1开始，默认1</p>
 	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
-	// 每页数量，默认20，最大100
+	// <p>每页数量，默认20，最大100</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 用户名，模糊查询
+	// <p>用户名，模糊查询</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 用户昵称，模糊查询
+	// <p>用户昵称，模糊查询</p>
 	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
 
-	// 手机号，模糊查询
+	// <p>手机号，模糊查询</p>
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 邮箱，模糊查询
+	// <p>邮箱，模糊查询</p>
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// <p>用户id列表，根据id过滤用户</p>
+	UidList []*string `json:"UidList,omitnil,omitempty" name:"UidList"`
 }
 
 type DescribeUserListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 环境id
+	// <p>环境id</p>
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 页码，从1开始，默认1
+	// <p>页码，从1开始，默认1</p>
 	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
 
-	// 每页数量，默认20，最大100
+	// <p>每页数量，默认20，最大100</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 用户名，模糊查询
+	// <p>用户名，模糊查询</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 用户昵称，模糊查询
+	// <p>用户昵称，模糊查询</p>
 	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
 
-	// 手机号，模糊查询
+	// <p>手机号，模糊查询</p>
 	Phone *string `json:"Phone,omitnil,omitempty" name:"Phone"`
 
-	// 邮箱，模糊查询
+	// <p>邮箱，模糊查询</p>
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
+
+	// <p>用户id列表，根据id过滤用户</p>
+	UidList []*string `json:"UidList,omitnil,omitempty" name:"UidList"`
 }
 
 func (r *DescribeUserListRequest) ToJsonString() string {
@@ -4976,6 +4982,7 @@ func (r *DescribeUserListRequest) FromJsonString(s string) error {
 	delete(f, "NickName")
 	delete(f, "Phone")
 	delete(f, "Email")
+	delete(f, "UidList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserListRequest has unknown keys!", "")
 	}
@@ -4992,7 +4999,7 @@ type DescribeUserListResp struct {
 
 // Predefined struct for user
 type DescribeUserListResponseParams struct {
-	// 结果返回
+	// <p>结果返回</p>
 	Data *DescribeUserListResp `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

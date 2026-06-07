@@ -5553,23 +5553,57 @@ func NewCreateFlowRemindsResponse() (response *CreateFlowRemindsResponse) {
 }
 
 // CreateFlowReminds
-// 指定需要批量催办的签署流程ID，批量催办合同，最多100个。需要符合以下条件的合同才可被催办：
+// 指定需要批量催办的签署流程ID，批量催办合同，最多100个
+//
+// ##### 需要符合以下条件的合同才可被催办：
+//
+// <ol>
+//
+// <li>发起合同时，**设置了签署人通知类型：SMS,EMAIL,ALL**</li>
+//
+// <li>合同中当前状态为 **待签署** 的签署人是催办的对象</li>
+//
+// <li>**每个合同的每个签署方最多3次*</li>
+//
+// </ol>
 //
 // 
 //
-// 1. 发起合同时，**签署人的NotifyType需设置为sms**
+// ##### 催办的规则和效果：
 //
-// 2. 合同中当前状态为 **待签署** 的签署人是催办的对象
-//
-// 3. **每个合同的每个签署方只能催办一次**
+// ###### 规则
 //
 // 
 //
-// **催办的效果**: 对方会收到如下的短信通知
+// - 指定RemindTypes，会触发符合签署人NotifyType的通知类型
+//
+//     -  这里EMAIL类型例外，如果指定了RemindEmailInfos，那么就会按照指定的email来通知，不管签署人NotifyType是否设置了EMAIL通知类型
+//
+//         - 如果指定了RemindEmailInfos，那么就会按照指定的email来通知
+//
+// - 若未指定RemindTypes，则按照发起合同时设置的签署人原始通知类型处理
+//
+// 
+//
+// ###### 效果
+//
+// 
+//
+// 
+//
+// <li>对方会收到如下的短信通知</li>
 //
 // 
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/3caf94b7f540fa5736270d38528d3a7b.png)
+//
+// 
+//
+// <li>对方会收到如下的邮件通知</li>
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/0841ccbd8db9747760b17914dcc166c6.png)
 //
 // 
 //
@@ -5589,23 +5623,57 @@ func (c *Client) CreateFlowReminds(request *CreateFlowRemindsRequest) (response 
 }
 
 // CreateFlowReminds
-// 指定需要批量催办的签署流程ID，批量催办合同，最多100个。需要符合以下条件的合同才可被催办：
+// 指定需要批量催办的签署流程ID，批量催办合同，最多100个
+//
+// ##### 需要符合以下条件的合同才可被催办：
+//
+// <ol>
+//
+// <li>发起合同时，**设置了签署人通知类型：SMS,EMAIL,ALL**</li>
+//
+// <li>合同中当前状态为 **待签署** 的签署人是催办的对象</li>
+//
+// <li>**每个合同的每个签署方最多3次*</li>
+//
+// </ol>
 //
 // 
 //
-// 1. 发起合同时，**签署人的NotifyType需设置为sms**
+// ##### 催办的规则和效果：
 //
-// 2. 合同中当前状态为 **待签署** 的签署人是催办的对象
-//
-// 3. **每个合同的每个签署方只能催办一次**
+// ###### 规则
 //
 // 
 //
-// **催办的效果**: 对方会收到如下的短信通知
+// - 指定RemindTypes，会触发符合签署人NotifyType的通知类型
+//
+//     -  这里EMAIL类型例外，如果指定了RemindEmailInfos，那么就会按照指定的email来通知，不管签署人NotifyType是否设置了EMAIL通知类型
+//
+//         - 如果指定了RemindEmailInfos，那么就会按照指定的email来通知
+//
+// - 若未指定RemindTypes，则按照发起合同时设置的签署人原始通知类型处理
+//
+// 
+//
+// ###### 效果
+//
+// 
+//
+// 
+//
+// <li>对方会收到如下的短信通知</li>
 //
 // 
 //
 // ![image](https://qcloudimg.tencent-cloud.cn/raw/3caf94b7f540fa5736270d38528d3a7b.png)
+//
+// 
+//
+// <li>对方会收到如下的邮件通知</li>
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/0841ccbd8db9747760b17914dcc166c6.png)
 //
 // 
 //

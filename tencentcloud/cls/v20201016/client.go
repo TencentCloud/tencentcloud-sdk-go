@@ -10107,6 +10107,68 @@ func (c *Client) GetAlarmLogWithContext(ctx context.Context, request *GetAlarmLo
     return
 }
 
+func NewGetClsServiceRequest() (request *GetClsServiceRequest) {
+    request = &GetClsServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "GetClsService")
+    
+    
+    return
+}
+
+func NewGetClsServiceResponse() (response *GetClsServiceResponse) {
+    response = &GetClsServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetClsService
+// 查询日志服务是否开通
+//
+// API 中 Region 填写任意一个地域均可，建议使用广州(ap-guangzhou)
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) GetClsService(request *GetClsServiceRequest) (response *GetClsServiceResponse, err error) {
+    return c.GetClsServiceWithContext(context.Background(), request)
+}
+
+// GetClsService
+// 查询日志服务是否开通
+//
+// API 中 Region 填写任意一个地域均可，建议使用广州(ap-guangzhou)
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) GetClsServiceWithContext(ctx context.Context, request *GetClsServiceRequest) (response *GetClsServiceResponse, err error) {
+    if request == nil {
+        request = NewGetClsServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "GetClsService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetClsService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetClsServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetMetricLabelValuesRequest() (request *GetMetricLabelValuesRequest) {
     request = &GetMetricLabelValuesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12913,6 +12975,68 @@ func (c *Client) OpenClawServiceWithContext(ctx context.Context, request *OpenCl
     request.SetContext(ctx)
     
     response = NewOpenClawServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOpenClsServiceRequest() (request *OpenClsServiceRequest) {
+    request = &OpenClsServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "OpenClsService")
+    
+    
+    return
+}
+
+func NewOpenClsServiceResponse() (response *OpenClsServiceResponse) {
+    response = &OpenClsServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OpenClsService
+// 开通日志服务
+//
+// API 中 Region 填写任意一个地域均可开通所有地域的 CLS，建议使用广州(ap-guangzhou)
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) OpenClsService(request *OpenClsServiceRequest) (response *OpenClsServiceResponse, err error) {
+    return c.OpenClsServiceWithContext(context.Background(), request)
+}
+
+// OpenClsService
+// 开通日志服务
+//
+// API 中 Region 填写任意一个地域均可开通所有地域的 CLS，建议使用广州(ap-guangzhou)
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) OpenClsServiceWithContext(ctx context.Context, request *OpenClsServiceRequest) (response *OpenClsServiceResponse, err error) {
+    if request == nil {
+        request = NewOpenClsServiceRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cls", APIVersion, "OpenClsService")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OpenClsService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOpenClsServiceResponse()
     err = c.Send(request, response)
     return
 }

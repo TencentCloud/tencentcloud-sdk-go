@@ -371,6 +371,72 @@ func (c *Client) DescribeApiKeyListWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeModelListRequest() (request *DescribeModelListRequest) {
+    request = &DescribeModelListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "DescribeModelList")
+    
+    
+    return
+}
+
+func NewDescribeModelListResponse() (response *DescribeModelListResponse) {
+    response = &DescribeModelListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeModelList
+// 查询模型列表。
+//
+// 
+//
+// 支持按模型 ID、模型名称、模型能力等条件筛选，支持分页和排序。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeModelList(request *DescribeModelListRequest) (response *DescribeModelListResponse, err error) {
+    return c.DescribeModelListWithContext(context.Background(), request)
+}
+
+// DescribeModelList
+// 查询模型列表。
+//
+// 
+//
+// 支持按模型 ID、模型名称、模型能力等条件筛选，支持分页和排序。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeModelListWithContext(ctx context.Context, request *DescribeModelListRequest) (response *DescribeModelListResponse, err error) {
+    if request == nil {
+        request = NewDescribeModelListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "DescribeModelList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModelList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeModelListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTokenPlanRequest() (request *DescribeTokenPlanRequest) {
     request = &DescribeTokenPlanRequest{
         BaseRequest: &tchttp.BaseRequest{},
