@@ -28399,293 +28399,305 @@ type InstanceNodeInfo struct {
 }
 
 type InstanceOpsDto struct {
-	// 任务ID
+	// <p>任务ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 任务名称
+	// <p>任务名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 工作流ID
+	// <p>工作流ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
 
-	// 工作流名称
+	// <p>工作流名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
 
-	// 负责人
+	// <p>负责人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InCharge *string `json:"InCharge,omitnil,omitempty" name:"InCharge"`
 
-	// 周期类型
+	// <p>周期类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
 
-	// 数据时间
+	// <p>数据时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurRunDate *string `json:"CurRunDate,omitnil,omitempty" name:"CurRunDate"`
 
-	// 下一个数据时间
+	// <p>下一个数据时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NextCurDate *string `json:"NextCurDate,omitnil,omitempty" name:"NextCurDate"`
 
-	// 运行优先级
+	// <p>运行优先级</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunPriority *uint64 `json:"RunPriority,omitnil,omitempty" name:"RunPriority"`
 
-	// 尝试运行次数
+	// <p>尝试运行次数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TryLimit *uint64 `json:"TryLimit,omitnil,omitempty" name:"TryLimit"`
 
-	// 当前运行次数
+	// <p>当前运行次数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tries *uint64 `json:"Tries,omitnil,omitempty" name:"Tries"`
 
-	// 重跑总次数
+	// <p>重跑总次数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalRunNum *uint64 `json:"TotalRunNum,omitnil,omitempty" name:"TotalRunNum"`
 
-	// 是否补录
+	// <p>是否补录</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DoFlag *uint64 `json:"DoFlag,omitnil,omitempty" name:"DoFlag"`
 
-	// 是否是重跑
+	// <p>是否是重跑</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RedoFlag *uint64 `json:"RedoFlag,omitnil,omitempty" name:"RedoFlag"`
 
-	// 实例状态
+	// <p>实例状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 运行节点
+	// <p>运行节点</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuntimeBroker *string `json:"RuntimeBroker,omitnil,omitempty" name:"RuntimeBroker"`
 
-	// 失败的原因
+	// <p>失败的原因</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorDesc *string `json:"ErrorDesc,omitnil,omitempty" name:"ErrorDesc"`
 
-	// 任务类型
+	// <p>任务类型</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskType *TaskTypeOpsDto `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
-	// 依赖判断完成时间
+	// <p>依赖判断完成时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependenceFulfillTime *string `json:"DependenceFulfillTime,omitnil,omitempty" name:"DependenceFulfillTime"`
 
-	// 首次依赖判断通过时间
+	// <p>首次依赖判断通过时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstDependenceFulfillTime *string `json:"FirstDependenceFulfillTime,omitnil,omitempty" name:"FirstDependenceFulfillTime"`
 
-	// 首次启动时间
+	// <p>首次启动时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstStartTime *string `json:"FirstStartTime,omitnil,omitempty" name:"FirstStartTime"`
 
-	// 开始启动时间
+	// <p>开始启动时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 运行完成时间
+	// <p>运行完成时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 耗费时间
+	// <p>耗费时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CostTime *string `json:"CostTime,omitnil,omitempty" name:"CostTime"`
 
-	// 耗费时间(ms)
+	// <p>耗费时间(ms)</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CostMillisecond *uint64 `json:"CostMillisecond,omitnil,omitempty" name:"CostMillisecond"`
 
-	// 最大运行耗时
+	// <p>最大运行耗时</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxCostTime *uint64 `json:"MaxCostTime,omitnil,omitempty" name:"MaxCostTime"`
 
-	// 最小运行耗时
+	// <p>最小运行耗时</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinCostTime *uint64 `json:"MinCostTime,omitnil,omitempty" name:"MinCostTime"`
 
-	// 平均运行耗时
+	// <p>平均运行耗时</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AvgCostTime *float64 `json:"AvgCostTime,omitnil,omitempty" name:"AvgCostTime"`
 
-	// 最近日志
+	// <p>最近日志</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastLog *string `json:"LastLog,omitnil,omitempty" name:"LastLog"`
 
-	// 调度时间
+	// <p>调度时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchedulerDateTime *string `json:"SchedulerDateTime,omitnil,omitempty" name:"SchedulerDateTime"`
 
-	// 上次调度时间
+	// <p>上次调度时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastSchedulerDateTime *string `json:"LastSchedulerDateTime,omitnil,omitempty" name:"LastSchedulerDateTime"`
 
-	// 最后更新事件
+	// <p>最后更新事件</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastUpdate *string `json:"LastUpdate,omitnil,omitempty" name:"LastUpdate"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 分支，依赖关系 and、or
+	// <p>分支，依赖关系 and、or</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependencyRel *string `json:"DependencyRel,omitnil,omitempty" name:"DependencyRel"`
 
-	// 执行空间
+	// <p>执行空间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionSpace *string `json:"ExecutionSpace,omitnil,omitempty" name:"ExecutionSpace"`
 
-	// 忽略事件
+	// <p>忽略事件</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IgnoreEvent *bool `json:"IgnoreEvent,omitnil,omitempty" name:"IgnoreEvent"`
 
-	// 虚拟任务实例
+	// <p>虚拟任务实例</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualFlag *bool `json:"VirtualFlag,omitnil,omitempty" name:"VirtualFlag"`
 
-	// 文件夹ID
+	// <p>文件夹ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
 
-	// 文件夹名称
+	// <p>文件夹名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
 
-	// 递归实例信息
+	// <p>递归实例信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SonList *string `json:"SonList,omitnil,omitempty" name:"SonList"`
 
-	// 产品业务名称
+	// <p>产品业务名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
-	// 资源组
+	// <p>资源组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroup *string `json:"ResourceGroup,omitnil,omitempty" name:"ResourceGroup"`
 
-	// 资源组指定执行节点
+	// <p>资源组指定执行节点</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitnil,omitempty" name:"ResourceInstanceId"`
 
-	// 资源队列
+	// <p>资源队列</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	YarnQueue *string `json:"YarnQueue,omitnil,omitempty" name:"YarnQueue"`
 
-	// 调度计划
+	// <p>调度计划</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchedulerDesc *string `json:"SchedulerDesc,omitnil,omitempty" name:"SchedulerDesc"`
 
-	// 最近提交时间
+	// <p>最近提交时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstSubmitTime *string `json:"FirstSubmitTime,omitnil,omitempty" name:"FirstSubmitTime"`
 
-	// 首次执行时间
+	// <p>首次执行时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstRunTime *string `json:"FirstRunTime,omitnil,omitempty" name:"FirstRunTime"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 项目标识
+	// <p>项目标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectIdent *string `json:"ProjectIdent,omitnil,omitempty" name:"ProjectIdent"`
 
-	// 项目名称
+	// <p>项目名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
-	// 租户id
+	// <p>租户id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
 
-	// 实例标识
+	// <p>实例标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceKey *string `json:"InstanceKey,omitnil,omitempty" name:"InstanceKey"`
 
-	// 资源组id
+	// <p>资源组id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutorGroupId *string `json:"ExecutorGroupId,omitnil,omitempty" name:"ExecutorGroupId"`
 
-	// 资源组名称
+	// <p>资源组名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutorGroupName *string `json:"ExecutorGroupName,omitnil,omitempty" name:"ExecutorGroupName"`
 
-	// 关联实例信息。
+	// <p>关联实例信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelatedInstanceList []*InstanceOpsDto `json:"RelatedInstanceList,omitnil,omitempty" name:"RelatedInstanceList"`
 
-	// 关联实例信息数量，不和RelatedInstanceList强关联。
+	// <p>关联实例信息数量，不和RelatedInstanceList强关联。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelatedInstanceSize *int64 `json:"RelatedInstanceSize,omitnil,omitempty" name:"RelatedInstanceSize"`
 
-	// ownerId
+	// <p>ownerId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerId *string `json:"OwnerId,omitnil,omitempty" name:"OwnerId"`
 
-	// 用户id
+	// <p>用户id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 实例生命周期
+	// <p>实例生命周期</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceLifeCycleOpsDto *InstanceLifeCycleOpsDto `json:"InstanceLifeCycleOpsDto,omitnil,omitempty" name:"InstanceLifeCycleOpsDto"`
 
-	// 自动重试次数
+	// <p>自动重试次数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetryAttempts *uint64 `json:"RetryAttempts,omitnil,omitempty" name:"RetryAttempts"`
 
-	// 紧急去除的依赖父实例列表
+	// <p>紧急去除的依赖父实例列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeletedFatherList []*string `json:"DeletedFatherList,omitnil,omitempty" name:"DeletedFatherList"`
 
-	// 循环依赖关联的实例
+	// <p>循环依赖关联的实例</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CirculateInstanceList []*InstanceOpsDto `json:"CirculateInstanceList,omitnil,omitempty" name:"CirculateInstanceList"`
 
-	// 并发策略, 0: 等待并发, 1: kill自身
+	// <p>并发策略, 0: 等待并发, 1: kill自身</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConcurrentStrategy *uint64 `json:"ConcurrentStrategy,omitnil,omitempty" name:"ConcurrentStrategy"`
 
-	// 调度运行方式, 0: 周期调度, 1: 空跑调度
+	// <p>调度运行方式, 0: 周期调度, 1: 空跑调度</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleRunType *uint64 `json:"ScheduleRunType,omitnil,omitempty" name:"ScheduleRunType"`
 
-	// 允许重跑类型，ALL 表示无论实例运行成功还是失败都允许重跑，NONE表示无论成功或者失败都不允许重跑，FAILURE 表示只有运行失败才能重跑
+	// <p>允许重跑类型，ALL 表示无论实例运行成功还是失败都允许重跑，NONE表示无论成功或者失败都不允许重跑，FAILURE 表示只有运行失败才能重跑</p>
 	AllowRedoType *string `json:"AllowRedoType,omitnil,omitempty" name:"AllowRedoType"`
 
-	// 实例生命周期
+	// <p>实例生命周期</p>
 	InstanceCycleType *string `json:"InstanceCycleType,omitnil,omitempty" name:"InstanceCycleType"`
 
-	// 实例执行计划描述
+	// <p>实例执行计划描述</p>
 	InstanceSchedulerDesc *string `json:"InstanceSchedulerDesc,omitnil,omitempty" name:"InstanceSchedulerDesc"`
 
-	// 当前用户对该实例的权限列表
+	// <p>当前用户对该实例的权限列表</p>
 	Privileges []*string `json:"Privileges,omitnil,omitempty" name:"Privileges"`
 
-	// 任务执行id
+	// <p>任务执行id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskExecutionId *string `json:"TaskExecutionId,omitnil,omitempty" name:"TaskExecutionId"`
 
-	// dlc taskid
+	// <p>dlc taskid</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DlcTaskId *string `json:"DlcTaskId,omitnil,omitempty" name:"DlcTaskId"`
 
-	// dlc jobid
+	// <p>dlc jobid</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DlcSparkJobId *string `json:"DlcSparkJobId,omitnil,omitempty" name:"DlcSparkJobId"`
 
-	// 扩展属性
+	// <p>扩展属性</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ext *StrToStrMap `json:"Ext,omitnil,omitempty" name:"Ext"`
 
-	// 事件列表
+	// <p>事件列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelatedEventList []*EventCaseAuditLogOptDto `json:"RelatedEventList,omitnil,omitempty" name:"RelatedEventList"`
+
+	// <p>代理任务ID（仅 嵌套场景使用，非 嵌套 场景为 null）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyTaskId *string `json:"ProxyTaskId,omitnil,omitempty" name:"ProxyTaskId"`
+
+	// <p>嵌套工作流名称（仅 嵌套场景使用，非 嵌套 场景为 null）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowRunName *string `json:"WorkflowRunName,omitnil,omitempty" name:"WorkflowRunName"`
+
+	// <p>代理任务类型（仅 嵌套场景使用，非 嵌套 场景为 null）</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyTaskType *TaskTypeOpsDto `json:"ProxyTaskType,omitnil,omitempty" name:"ProxyTaskType"`
 }
 
 type InstanceOpsInfoPage struct {
@@ -30826,77 +30838,100 @@ type MakePlanTaskOpsDtoCollection struct {
 }
 
 type ManualTriggerRecordOpsDto struct {
-	// 运行触发记录ID
+	// <p>运行触发记录ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
 
-	// 用户提交运行时配置的运行名称
+	// <p>用户提交运行时配置的运行名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerName *string `json:"TriggerName,omitnil,omitempty" name:"TriggerName"`
 
-	// 用户提交运行的备注
+	// <p>用户提交运行的备注</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 数据时间列表
+	// <p>数据时间列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatetimeList []*string `json:"DatetimeList,omitnil,omitempty" name:"DatetimeList"`
 
-	// 任务数
+	// <p>任务数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskCnt *uint64 `json:"TaskCnt,omitnil,omitempty" name:"TaskCnt"`
 
-	// 实例数
+	// <p>实例数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceCnt *uint64 `json:"InstanceCnt,omitnil,omitempty" name:"InstanceCnt"`
 
-	// 已完成的实例数
+	// <p>已完成的实例数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishedInstanceCnt *uint64 `json:"FinishedInstanceCnt,omitnil,omitempty" name:"FinishedInstanceCnt"`
 
-	// 成功的实例数
+	// <p>成功的实例数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuccessInstanceCnt *uint64 `json:"SuccessInstanceCnt,omitnil,omitempty" name:"SuccessInstanceCnt"`
 
-	// 记录运行状态
-	//  INIT, RUNNING, FINISHED
+	// <p>记录运行状态<br> INIT, RUNNING, FINISHED</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 用户提交运行时的入参，主要用于前端反显和记录原始提交信息
+	// <p>用户提交运行时的入参，主要用于前端反显和记录原始提交信息</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerParams *string `json:"TriggerParams,omitnil,omitempty" name:"TriggerParams"`
 
-	// 用户主账号ID
+	// <p>用户主账号ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 用户ID
+	// <p>用户ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserUin *string `json:"UserUin,omitnil,omitempty" name:"UserUin"`
 
-	// 用户展示名
+	// <p>用户展示名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 租户ID
+	// <p>租户ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
 
-	// 项目ID
+	// <p>项目ID</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 数据实例时间的时区
+	// <p>数据实例时间的时区</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
 
-	// 时间类型，DATA_TIME：数据时间、SCHEDULE_TIME：计划调度时间, 为空时会被当成DATA_TIME处理
+	// <p>时间类型，DATA_TIME：数据时间、SCHEDULE_TIME：计划调度时间, 为空时会被当成DATA_TIME处理</p>
 	TimeType *string `json:"TimeType,omitnil,omitempty" name:"TimeType"`
+
+	// <p>触发类型</p><p>枚举值：</p><ul><li>SUB_PROCESS_TRIGGER： 由嵌套工作流 SP 任务触发</li><li>SUB_PROCESS_MAKEUP： 由嵌套工作流 SP 任务补录触发</li><li>MANUAL_RUN_BY_USER： 手动触发</li></ul>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerSource *string `json:"TriggerSource,omitnil,omitempty" name:"TriggerSource"`
+
+	// <p>触发实例ID</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerSourceId *string `json:"TriggerSourceId,omitnil,omitempty" name:"TriggerSourceId"`
+
+	// <p>父嵌套工作流任务 ID。仅 <code>triggerSource</code> 以 <code>SUB_PROCESS_</code> 开头时有值</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentSpTaskId *string `json:"ParentSpTaskId,omitnil,omitempty" name:"ParentSpTaskId"`
+
+	// <p>父嵌套工作流任务实例名称（即任务名称）。</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentSpInstanceName *string `json:"ParentSpInstanceName,omitnil,omitempty" name:"ParentSpInstanceName"`
+
+	// <p>父嵌套工作流任务实例数据时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentSpInstanceDataTime *string `json:"ParentSpInstanceDataTime,omitnil,omitempty" name:"ParentSpInstanceDataTime"`
+
+	// <p>数据时间列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleTimeList []*string `json:"ScheduleTimeList,omitnil,omitempty" name:"ScheduleTimeList"`
 }
 
 type ManualTriggerRecordOpsDtoPage struct {
@@ -45176,75 +45211,79 @@ type WorkflowDsDTO struct {
 }
 
 type WorkflowExtOpsDto struct {
-	// 任务数量count
+	// <p>任务数量count</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskCount *uint64 `json:"TaskCount,omitnil,omitempty" name:"TaskCount"`
 
-	// 文件名
+	// <p>文件名</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
 
-	// 工作流id
+	// <p>工作流id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkFlowId *string `json:"WorkFlowId,omitnil,omitempty" name:"WorkFlowId"`
 
-	// 责任人
+	// <p>责任人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
 
-	// 责任人userId
+	// <p>责任人userId</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerId *string `json:"OwnerId,omitnil,omitempty" name:"OwnerId"`
 
-	// 项目id
+	// <p>项目id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 项目标识
+	// <p>项目标识</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectIdent *string `json:"ProjectIdent,omitnil,omitempty" name:"ProjectIdent"`
 
-	// 项目名称
+	// <p>项目名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
-	// 工作流描述
+	// <p>工作流描述</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkFlowDesc *string `json:"WorkFlowDesc,omitnil,omitempty" name:"WorkFlowDesc"`
 
-	// 工作流名称
+	// <p>工作流名称</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkFlowName *string `json:"WorkFlowName,omitnil,omitempty" name:"WorkFlowName"`
 
-	// 工作流文件id
+	// <p>工作流文件id</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
 
-	// 工作流状态
+	// <p>工作流状态</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 工作流创建时间
+	// <p>工作流创建时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 最近更新时间
+	// <p>最近更新时间</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 最近更新人
+	// <p>最近更新人</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyUser *string `json:"ModifyUser,omitnil,omitempty" name:"ModifyUser"`
 
-	// 工作流类型，周期cycle，手动manual
+	// <p>工作流类型，周期cycle，手动manual</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowType *string `json:"WorkflowType,omitnil,omitempty" name:"WorkflowType"`
 
-	// bundle客户端绑定唯一id
+	// <p>bundle客户端绑定唯一id</p>
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
-	// bundle客户端扩展信息，json格式
+	// <p>bundle客户端扩展信息，json格式</p>
 	BundleInfo *string `json:"BundleInfo,omitnil,omitempty" name:"BundleInfo"`
+
+	// <p>引用该手动工作流的嵌套工作流任务ID列表</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NestedBySpTaskIds []*string `json:"NestedBySpTaskIds,omitnil,omitempty" name:"NestedBySpTaskIds"`
 }
 
 type WorkflowExtOpsDtoPage struct {

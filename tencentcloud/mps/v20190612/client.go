@@ -611,6 +611,56 @@ func (c *Client) CreateAdaptiveDynamicStreamingTemplateWithContext(ctx context.C
     return
 }
 
+func NewCreateAigcAudioTaskRequest() (request *CreateAigcAudioTaskRequest) {
+    request = &CreateAigcAudioTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateAigcAudioTask")
+    
+    
+    return
+}
+
+func NewCreateAigcAudioTaskResponse() (response *CreateAigcAudioTaskResponse) {
+    response = &CreateAigcAudioTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAigcAudioTask
+// 调用该接口，用于创建AI生音频任务。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_VIOLATIONCONTENT = "InvalidParameter.ViolationContent"
+func (c *Client) CreateAigcAudioTask(request *CreateAigcAudioTaskRequest) (response *CreateAigcAudioTaskResponse, err error) {
+    return c.CreateAigcAudioTaskWithContext(context.Background(), request)
+}
+
+// CreateAigcAudioTask
+// 调用该接口，用于创建AI生音频任务。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_VIOLATIONCONTENT = "InvalidParameter.ViolationContent"
+func (c *Client) CreateAigcAudioTaskWithContext(ctx context.Context, request *CreateAigcAudioTaskRequest) (response *CreateAigcAudioTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAigcAudioTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "CreateAigcAudioTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAigcAudioTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAigcAudioTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAigcImageTaskRequest() (request *CreateAigcImageTaskRequest) {
     request = &CreateAigcImageTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5119,6 +5169,66 @@ func (c *Client) DescribeAdaptiveDynamicStreamingTemplatesWithContext(ctx contex
     request.SetContext(ctx)
     
     response = NewDescribeAdaptiveDynamicStreamingTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAigcAudioTaskRequest() (request *DescribeAigcAudioTaskRequest) {
+    request = &DescribeAigcAudioTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeAigcAudioTask")
+    
+    
+    return
+}
+
+func NewDescribeAigcAudioTaskResponse() (response *DescribeAigcAudioTaskResponse) {
+    response = &DescribeAigcAudioTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAigcAudioTask
+// 调用该接口，用于查询AIGC生视频任务的进度以及获取生成结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAigcAudioTask(request *DescribeAigcAudioTaskRequest) (response *DescribeAigcAudioTaskResponse, err error) {
+    return c.DescribeAigcAudioTaskWithContext(context.Background(), request)
+}
+
+// DescribeAigcAudioTask
+// 调用该接口，用于查询AIGC生视频任务的进度以及获取生成结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAigcAudioTaskWithContext(ctx context.Context, request *DescribeAigcAudioTaskRequest) (response *DescribeAigcAudioTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeAigcAudioTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DescribeAigcAudioTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAigcAudioTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAigcAudioTaskResponse()
     err = c.Send(request, response)
     return
 }

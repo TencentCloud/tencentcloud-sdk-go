@@ -1173,15 +1173,21 @@ func (r *CreateBackupPlanResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBaseBackupRequestParams struct {
-	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	// <p>实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// <p>备份方式</p><p>枚举值：</p><ul><li>physical： 物理备份</li><li>logical： 逻辑备份</li><li>snapshot： 快照备份</li></ul>
+	BackupMethod *string `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 }
 
 type CreateBaseBackupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	// <p>实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// <p>备份方式</p><p>枚举值：</p><ul><li>physical： 物理备份</li><li>logical： 逻辑备份</li><li>snapshot： 快照备份</li></ul>
+	BackupMethod *string `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 }
 
 func (r *CreateBaseBackupRequest) ToJsonString() string {
@@ -1197,6 +1203,7 @@ func (r *CreateBaseBackupRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DBInstanceId")
+	delete(f, "BackupMethod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBaseBackupRequest has unknown keys!", "")
 	}
@@ -1205,7 +1212,7 @@ func (r *CreateBaseBackupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBaseBackupResponseParams struct {
-	// 数据备份集ID
+	// <p>数据备份集ID</p>
 	BaseBackupId *string `json:"BaseBackupId,omitnil,omitempty" name:"BaseBackupId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7551,57 +7558,63 @@ func (r *ModifyBackupDownloadRestrictionResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type ModifyBackupPlanRequestParams struct {
-	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	// <p>实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 实例最早开始备份时间
+	// <p>实例最早开始备份时间</p>
 	MinBackupStartTime *string `json:"MinBackupStartTime,omitnil,omitempty" name:"MinBackupStartTime"`
 
-	// 实例最晚开始备份时间
+	// <p>实例最晚开始备份时间</p>
 	MaxBackupStartTime *string `json:"MaxBackupStartTime,omitnil,omitempty" name:"MaxBackupStartTime"`
 
-	// 实例备份保留时长，取值范围为7-1830，单位是天
+	// <p>实例备份保留时长，取值范围为7-1830，单位是天</p>
 	BaseBackupRetentionPeriod *uint64 `json:"BaseBackupRetentionPeriod,omitnil,omitempty" name:"BaseBackupRetentionPeriod"`
 
-	// 实例备份周期，若是星期维度，格式为小写星期英文单词，且至少设置两天备份；若是按月维度，格式为数字字符，如["1","2"]。
+	// <p>实例备份周期，若是星期维度，格式为小写星期英文单词，且至少设置两天备份；若是按月维度，格式为数字字符，如[&quot;1&quot;,&quot;2&quot;]。</p>
 	BackupPeriod []*string `json:"BackupPeriod,omitnil,omitempty" name:"BackupPeriod"`
 
-	// 实例日志备份保留时长，取值范围为7-1830，单位是天
+	// <p>实例日志备份保留时长，取值范围为7-1830，单位是天</p>
 	LogBackupRetentionPeriod *uint64 `json:"LogBackupRetentionPeriod,omitnil,omitempty" name:"LogBackupRetentionPeriod"`
 
-	// 备份计划ID，用于指明要修改哪个备份计划，不传则是修改默认备份计划。
+	// <p>备份计划ID，用于指明要修改哪个备份计划，不传则是修改默认备份计划。</p>
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 
-	// 要修改的备份计划名称。
+	// <p>要修改的备份计划名称。</p>
 	PlanName *string `json:"PlanName,omitnil,omitempty" name:"PlanName"`
+
+	// <p>备份方式</p><p>枚举值：</p><ul><li>physical： 物理备份</li><li>logical： 逻辑备份</li><li>snapshot： 快照备份</li></ul>
+	BackupMethod *string `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 }
 
 type ModifyBackupPlanRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+	// <p>实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 实例最早开始备份时间
+	// <p>实例最早开始备份时间</p>
 	MinBackupStartTime *string `json:"MinBackupStartTime,omitnil,omitempty" name:"MinBackupStartTime"`
 
-	// 实例最晚开始备份时间
+	// <p>实例最晚开始备份时间</p>
 	MaxBackupStartTime *string `json:"MaxBackupStartTime,omitnil,omitempty" name:"MaxBackupStartTime"`
 
-	// 实例备份保留时长，取值范围为7-1830，单位是天
+	// <p>实例备份保留时长，取值范围为7-1830，单位是天</p>
 	BaseBackupRetentionPeriod *uint64 `json:"BaseBackupRetentionPeriod,omitnil,omitempty" name:"BaseBackupRetentionPeriod"`
 
-	// 实例备份周期，若是星期维度，格式为小写星期英文单词，且至少设置两天备份；若是按月维度，格式为数字字符，如["1","2"]。
+	// <p>实例备份周期，若是星期维度，格式为小写星期英文单词，且至少设置两天备份；若是按月维度，格式为数字字符，如[&quot;1&quot;,&quot;2&quot;]。</p>
 	BackupPeriod []*string `json:"BackupPeriod,omitnil,omitempty" name:"BackupPeriod"`
 
-	// 实例日志备份保留时长，取值范围为7-1830，单位是天
+	// <p>实例日志备份保留时长，取值范围为7-1830，单位是天</p>
 	LogBackupRetentionPeriod *uint64 `json:"LogBackupRetentionPeriod,omitnil,omitempty" name:"LogBackupRetentionPeriod"`
 
-	// 备份计划ID，用于指明要修改哪个备份计划，不传则是修改默认备份计划。
+	// <p>备份计划ID，用于指明要修改哪个备份计划，不传则是修改默认备份计划。</p>
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 
-	// 要修改的备份计划名称。
+	// <p>要修改的备份计划名称。</p>
 	PlanName *string `json:"PlanName,omitnil,omitempty" name:"PlanName"`
+
+	// <p>备份方式</p><p>枚举值：</p><ul><li>physical： 物理备份</li><li>logical： 逻辑备份</li><li>snapshot： 快照备份</li></ul>
+	BackupMethod *string `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 }
 
 func (r *ModifyBackupPlanRequest) ToJsonString() string {
@@ -7624,6 +7637,7 @@ func (r *ModifyBackupPlanRequest) FromJsonString(s string) error {
 	delete(f, "LogBackupRetentionPeriod")
 	delete(f, "PlanId")
 	delete(f, "PlanName")
+	delete(f, "BackupMethod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupPlanRequest has unknown keys!", "")
 	}

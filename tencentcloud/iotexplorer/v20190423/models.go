@@ -13987,126 +13987,92 @@ type InstanceDetail struct {
 
 // Predefined struct for user
 type InvokeAISearchServiceRequestParams struct {
-	// 产品ID
+	// <p>产品ID</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 设备名称
+	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 自然语言查询
+	// <p>自然语言查询</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 搜索结果总结的语言类型，支持的类型有：en-US、zh-CN、id-ID、th-TH
+	// <p>搜索结果总结的语言类型，支持的类型有：en-US、zh-CN、id-ID、th-TH</p>
 	SummaryLang *string `json:"SummaryLang,omitnil,omitempty" name:"SummaryLang"`
 
-	// 通道ID
+	// <p>通道ID</p>
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 是否需要返回总结，默认为True；  开启后会加大接口响应时长
+	// <p>是否需要返回总结，默认为True；  开启后会加大接口响应时长</p>
 	EnableSummary *bool `json:"EnableSummary,omitnil,omitempty" name:"EnableSummary"`
 
-	// 开始时间。
-	// 
-	// 注：
-	// 1. 单位为毫秒（ms）
-	// 2. 如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后1天内的数据， 反之EndTimeMs也一样）
-	// 3. 只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为"过去三天关于猫咪的视频"， 则会将"过去三天忽略"）
+	// <p>开始时间。</p><p>注：</p><ol><li>单位为毫秒（ms）</li><li>如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后1天内的数据， 反之EndTimeMs也一样）</li><li>只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为&quot;过去三天关于猫咪的视频&quot;， 则会将&quot;过去三天忽略&quot;）</li></ol>
 	StartTimeMs *int64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
 
-	// 结束时间。
-	// 
-	// 注：
-	// 1. 单位为毫秒（ms）
-	// 2. 如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后1天内的数据， 反之EndTimeMs也一样）
-	// 3. 只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为"过去三天关于猫咪的视频"， 则会将"过去三天忽略"）
+	// <p>结束时间。</p><p>注：</p><ol><li>单位为毫秒（ms）</li><li>如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后1天内的数据， 反之EndTimeMs也一样）</li><li>只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为&quot;过去三天关于猫咪的视频&quot;， 则会将&quot;过去三天忽略&quot;）</li></ol>
 	EndTimeMs *int64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
 
-	// 时区。默认值：Asia/Shanghai
-	// 
-	// 注：
-	// 符合iana标准 https://www.iana.org/time-zones，例如Asia/Shanghai、Asia/Bangkok
+	// <p>时区。默认值：Asia/Shanghai</p><p>注：<br>符合iana标准 https://www.iana.org/time-zones，例如Asia/Shanghai、Asia/Bangkok</p>
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 取值为1表示高级搜索，取值为2表示简单搜索，默认为1
+	// <p>取值为1表示高级搜索，取值为2表示简单搜索，默认为1</p>
 	SearchMode *int64 `json:"SearchMode,omitnil,omitempty" name:"SearchMode"`
 
-	// 最终输出的条数；仅当SearchMode为2时支持自定义设置，默认为50
+	// <p>最终输出的条数；仅当SearchMode为2时支持自定义设置，默认为50</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 向量搜索的相似度搜索半径，取值范围[-1, 1]；仅当SearchMode为2时支持自定义设置，默认为0.5
+	// <p>向量搜索的相似度搜索半径，取值范围[-1, 1]；仅当SearchMode为2时支持自定义设置，默认为0.5</p>
 	VectorSearchRadius *float64 `json:"VectorSearchRadius,omitnil,omitempty" name:"VectorSearchRadius"`
 
-	// 指定向量搜索最相似的 Top K；仅当SearchMode为2时支持自定义设置，默认为100
+	// <p>指定向量搜索最相似的 Top K；仅当SearchMode为2时支持自定义设置，默认为100</p>
 	VectorSearchTopK *int64 `json:"VectorSearchTopK,omitnil,omitempty" name:"VectorSearchTopK"`
 
-	// 搜索结果的排序方式，可选值：
-	// 
-	// - `CORRELATION`：按相关性（默认）
-	// - `TIME_ASC`：按时间升序
-	// - `TIME_DESC`：按时间降序
+	// <p>搜索结果的排序方式，可选值：</p><ul><li><code>CORRELATION</code>：按相关性（默认）</li><li><code>TIME_ASC</code>：按时间升序</li><li><code>TIME_DESC</code>：按时间降序</li></ul>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 type InvokeAISearchServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品ID
+	// <p>产品ID</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 设备名称
+	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 自然语言查询
+	// <p>自然语言查询</p>
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 搜索结果总结的语言类型，支持的类型有：en-US、zh-CN、id-ID、th-TH
+	// <p>搜索结果总结的语言类型，支持的类型有：en-US、zh-CN、id-ID、th-TH</p>
 	SummaryLang *string `json:"SummaryLang,omitnil,omitempty" name:"SummaryLang"`
 
-	// 通道ID
+	// <p>通道ID</p>
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 是否需要返回总结，默认为True；  开启后会加大接口响应时长
+	// <p>是否需要返回总结，默认为True；  开启后会加大接口响应时长</p>
 	EnableSummary *bool `json:"EnableSummary,omitnil,omitempty" name:"EnableSummary"`
 
-	// 开始时间。
-	// 
-	// 注：
-	// 1. 单位为毫秒（ms）
-	// 2. 如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后1天内的数据， 反之EndTimeMs也一样）
-	// 3. 只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为"过去三天关于猫咪的视频"， 则会将"过去三天忽略"）
+	// <p>开始时间。</p><p>注：</p><ol><li>单位为毫秒（ms）</li><li>如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后1天内的数据， 反之EndTimeMs也一样）</li><li>只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为&quot;过去三天关于猫咪的视频&quot;， 则会将&quot;过去三天忽略&quot;）</li></ol>
 	StartTimeMs *int64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
 
-	// 结束时间。
-	// 
-	// 注：
-	// 1. 单位为毫秒（ms）
-	// 2. 如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后1天内的数据， 反之EndTimeMs也一样）
-	// 3. 只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为"过去三天关于猫咪的视频"， 则会将"过去三天忽略"）
+	// <p>结束时间。</p><p>注：</p><ol><li>单位为毫秒（ms）</li><li>如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后1天内的数据， 反之EndTimeMs也一样）</li><li>只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为&quot;过去三天关于猫咪的视频&quot;， 则会将&quot;过去三天忽略&quot;）</li></ol>
 	EndTimeMs *int64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
 
-	// 时区。默认值：Asia/Shanghai
-	// 
-	// 注：
-	// 符合iana标准 https://www.iana.org/time-zones，例如Asia/Shanghai、Asia/Bangkok
+	// <p>时区。默认值：Asia/Shanghai</p><p>注：<br>符合iana标准 https://www.iana.org/time-zones，例如Asia/Shanghai、Asia/Bangkok</p>
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 
-	// 取值为1表示高级搜索，取值为2表示简单搜索，默认为1
+	// <p>取值为1表示高级搜索，取值为2表示简单搜索，默认为1</p>
 	SearchMode *int64 `json:"SearchMode,omitnil,omitempty" name:"SearchMode"`
 
-	// 最终输出的条数；仅当SearchMode为2时支持自定义设置，默认为50
+	// <p>最终输出的条数；仅当SearchMode为2时支持自定义设置，默认为50</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 向量搜索的相似度搜索半径，取值范围[-1, 1]；仅当SearchMode为2时支持自定义设置，默认为0.5
+	// <p>向量搜索的相似度搜索半径，取值范围[-1, 1]；仅当SearchMode为2时支持自定义设置，默认为0.5</p>
 	VectorSearchRadius *float64 `json:"VectorSearchRadius,omitnil,omitempty" name:"VectorSearchRadius"`
 
-	// 指定向量搜索最相似的 Top K；仅当SearchMode为2时支持自定义设置，默认为100
+	// <p>指定向量搜索最相似的 Top K；仅当SearchMode为2时支持自定义设置，默认为100</p>
 	VectorSearchTopK *int64 `json:"VectorSearchTopK,omitnil,omitempty" name:"VectorSearchTopK"`
 
-	// 搜索结果的排序方式，可选值：
-	// 
-	// - `CORRELATION`：按相关性（默认）
-	// - `TIME_ASC`：按时间升序
-	// - `TIME_DESC`：按时间降序
+	// <p>搜索结果的排序方式，可选值：</p><ul><li><code>CORRELATION</code>：按相关性（默认）</li><li><code>TIME_ASC</code>：按时间升序</li><li><code>TIME_DESC</code>：按时间降序</li></ul>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
@@ -14144,13 +14110,13 @@ func (r *InvokeAISearchServiceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InvokeAISearchServiceResponseParams struct {
-	// 基于搜索结果的总结
+	// <p>基于搜索结果的总结</p>
 	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
 
-	// 视频结果集
+	// <p>视频结果集</p>
 	Targets []*TargetInfo `json:"Targets,omitnil,omitempty" name:"Targets"`
 
-	// 视频回放URL
+	// <p>视频回放URL</p>
 	VideoURL *string `json:"VideoURL,omitnil,omitempty" name:"VideoURL"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20122,31 +20088,31 @@ type TalkTTSConfigInfo struct {
 }
 
 type TargetInfo struct {
-	// 视频唯一ID
+	// <p>视频唯一ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 产品ID
+	// <p>产品ID</p>
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 设备名称
+	// <p>设备名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 视频起始时间（毫秒级Unix时间戳）
+	// <p>视频起始时间（毫秒级Unix时间戳）</p>
 	StartTimeMs *int64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
 
-	// 视频结束时间（毫秒级Unix时间戳）
+	// <p>视频结束时间（毫秒级Unix时间戳）</p>
 	EndTimeMs *int64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
 
-	// 用户自定义事件ID，后续扩展使用
+	// <p>用户自定义事件ID，后续扩展使用</p>
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
 
-	// 视频内容摘要
+	// <p>视频内容摘要</p>
 	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
 
-	// 通道ID
+	// <p>通道ID</p>
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 缩略图路径
+	// <p>缩略图路径</p>
 	Thumbnail *string `json:"Thumbnail,omitnil,omitempty" name:"Thumbnail"`
 }
 

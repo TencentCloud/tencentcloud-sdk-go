@@ -95,6 +95,12 @@ const (
 	// 无效的文件系统快照策略名称。
 	INVALIDPARAMETER_INVALIDSNAPSHOTPOLICYNAME = "InvalidParameter.InvalidSnapshotPolicyName"
 
+	// ListPath 与 TaskPath 同时传入或同时为空
+	INVALIDPARAMETER_LISTPATHANDTASKPATHCONFLICT = "InvalidParameter.ListPathAndTaskPathConflict"
+
+	// 数据清单路径必须以 /cfs 开头
+	INVALIDPARAMETER_LISTPATHINVALIDPREFIX = "InvalidParameter.ListPathInvalidPrefix"
+
 	// 缺少策略相关参数。
 	INVALIDPARAMETER_MISSINGPOLICYPARAM = "InvalidParameter.MissingPolicyParam"
 
@@ -292,6 +298,12 @@ const (
 
 	// 无效的可用区或可用区ID。
 	INVALIDPARAMETERVALUE_INVALIDZONEORZONEID = "InvalidParameterValue.InvalidZoneOrZoneId"
+
+	// 清单文件格式不正确，请以 /cfs/ 开头写入完整的文件路径
+	INVALIDPARAMETERVALUE_LISTPATHFILEINVALID = "InvalidParameterValue.ListPathFileInvalid"
+
+	// ListPath 指向的清单文件在 CFS 内不存在
+	INVALIDPARAMETERVALUE_LISTPATHFILENOTFOUND = "InvalidParameterValue.ListPathFileNotFound"
 
 	// FileSystemId缺失。
 	INVALIDPARAMETERVALUE_MISSINGFILESYSTEMID = "InvalidParameterValue.MissingFileSystemId"

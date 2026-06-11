@@ -2437,6 +2437,48 @@ type AiSampleWordInfo struct {
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
+type AiTryOnConfig struct {
+	// <p>换装模型，取值：</p><ul><li>WAND-tryon-1.0-lite</li><li>WAND-tryon-1.0-flash</li><li>WAND-tryon-1.0-pro</li></ul>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>换装指令。</p><p>为空时使用内置指令。</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>输出图片分辨率，取值：</p><ul><li>1K</li><li>2K</li><li>4K</li></ul><p>默认值：1K</p>
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+}
+
+type AigcAudioExtraParam struct {
+	// <p>资源id，根据具体需要填写。</p>
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+type AigcAudioOutputAudioInfo struct {
+	// <p>音频URl。</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>音频时长。</p>
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+}
+
+type AigcAudioOutputVideoInfo struct {
+	// <p>视频URL。</p>
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// <p>视频时长。</p>
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+}
+
+type AigcAudioReferenceAudioInfo struct {
+	// <p>参考音频URL信息。需外网可访问。</p>
+	AudioUrl *string `json:"AudioUrl,omitnil,omitempty" name:"AudioUrl"`
+}
+
+type AigcAudioReferenceVideoInfo struct {
+	// <p>参考视频url。需要外网可访问。</p>
+	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
+}
+
 type AigcImageExtraParam struct {
 	// <p>指定所生成视频的宽高比。</p><p>不同模型支持的宽高比:</p><ol><li>Kling 2.1支持：16:9、9:16、1:1、4:3、3:4、3:2、2:3、21:9。</li><li>Kling 3.0支持：16:9、9:16、1:1、4:3、3:4、3:2、2:3、21:9。</li><li>Kling 3.0-Omni支持：16:9、9:16、1:1、4:3、3:4、3:2、2:3、21:9。</li><li>Kling O1支持：16:9、9:16、1:1、4:3、3:4、3:2、2:3、21:9。</li><li>Vidu q2支持：16:9、9:16、1:1、3:4、4:3、21:9、2:3、3:2。</li><li>MJ v7的宽高比需要在 prompt 中进行指定。</li></ol><p>注：具体模型的宽高比参数，可查看相应模型官网获取更完整描述。</p>
 	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
@@ -4408,6 +4450,133 @@ func (r *CreateAdaptiveDynamicStreamingTemplateResponse) FromJsonString(s string
 }
 
 // Predefined struct for user
+type CreateAigcAudioTaskRequestParams struct {
+	// <p>模型名称。生音乐当前支持的模型: GL、MinimaxMusic。</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。<br>模型GL支持的版本号：2.0、3.0-clip、3.0-pro。<br>模型MinimaxMusic支持的版本号：2.0、2.5、2.6。</p>
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
+	// <p>指定场景生音频。音乐: music。</p>
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
+	// <p>生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>参考视频信息。仅部分模型支持。</p>
+	VideoInfos []*AigcAudioReferenceVideoInfo `json:"VideoInfos,omitnil,omitempty" name:"VideoInfos"`
+
+	// <p>传入参考音频信息。</p><p>比如传入音频生成音乐时需要传入。</p>
+	AudioInfos []*AigcAudioReferenceAudioInfo `json:"AudioInfos,omitnil,omitempty" name:"AudioInfos"`
+
+	// <p>输出音频格式，默认不填。mp3、wav。</p>
+	OutputAudioFormat *string `json:"OutputAudioFormat,omitnil,omitempty" name:"OutputAudioFormat"`
+
+	// <p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
+	StoreCosParam *AigcStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
+
+	// <p>用于传入要求的额外参数。</p>
+	ExtraParameters *AigcAudioExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
+
+	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p>
+	AdditionalParameters *string `json:"AdditionalParameters,omitnil,omitempty" name:"AdditionalParameters"`
+
+	// <p>接口操作者名称。</p>
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type CreateAigcAudioTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>模型名称。生音乐当前支持的模型: GL、MinimaxMusic。</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。<br>模型GL支持的版本号：2.0、3.0-clip、3.0-pro。<br>模型MinimaxMusic支持的版本号：2.0、2.5、2.6。</p>
+	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
+
+	// <p>指定场景生音频。音乐: music。</p>
+	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
+
+	// <p>生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// <p>参考视频信息。仅部分模型支持。</p>
+	VideoInfos []*AigcAudioReferenceVideoInfo `json:"VideoInfos,omitnil,omitempty" name:"VideoInfos"`
+
+	// <p>传入参考音频信息。</p><p>比如传入音频生成音乐时需要传入。</p>
+	AudioInfos []*AigcAudioReferenceAudioInfo `json:"AudioInfos,omitnil,omitempty" name:"AudioInfos"`
+
+	// <p>输出音频格式，默认不填。mp3、wav。</p>
+	OutputAudioFormat *string `json:"OutputAudioFormat,omitnil,omitempty" name:"OutputAudioFormat"`
+
+	// <p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
+	StoreCosParam *AigcStoreCosParam `json:"StoreCosParam,omitnil,omitempty" name:"StoreCosParam"`
+
+	// <p>用于传入要求的额外参数。</p>
+	ExtraParameters *AigcAudioExtraParam `json:"ExtraParameters,omitnil,omitempty" name:"ExtraParameters"`
+
+	// <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p>
+	AdditionalParameters *string `json:"AdditionalParameters,omitnil,omitempty" name:"AdditionalParameters"`
+
+	// <p>接口操作者名称。</p>
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+func (r *CreateAigcAudioTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAigcAudioTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelName")
+	delete(f, "ModelVersion")
+	delete(f, "SceneType")
+	delete(f, "Prompt")
+	delete(f, "VideoInfos")
+	delete(f, "AudioInfos")
+	delete(f, "OutputAudioFormat")
+	delete(f, "StoreCosParam")
+	delete(f, "ExtraParameters")
+	delete(f, "AdditionalParameters")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAigcAudioTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAigcAudioTaskResponseParams struct {
+	// <p>任务创建成功后，返回的任务ID。<br>调用查询接口，轮询获取任务进度及生成结果。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAigcAudioTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAigcAudioTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateAigcAudioTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAigcAudioTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateAigcImageTaskRequestParams struct {
 	// <p>模型名称。<br>当前支持的模型列表：<br>Hunyuan，<br>Qwen，<br>Vidu，<br>Kling，<br>MJ。</p>
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
@@ -4542,7 +4711,7 @@ type CreateAigcVideoTaskRequestParams struct {
 	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hunyuan，可选 [1.5]。</li><li>Hailuo，可选 [02、2.3、2.3-fast]。</li><li>Kling，可选 [1.6、2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu，可选 [q2、q2-pro、q2-turbo、q3-pro、q3-turbo、q3、q3-mix]。</li><li>PixVerse，可选 [v5.6、v6、c1]。</li><li>H2，可选 [1.0]。</li></ol>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// <p>指定场景生视频。<br>注意：仅部分模型支持指定场景。</p><ol><li>Kling支持：动作控制，motion_control；数字人，avatar_i2v；对口型，lip_sync。</li><li>Mingmou支持：横转竖，land2port。</li><li>Vidu支持：特效模板，template_effect。</li></ol>
+	// <p>指定场景生成视频。<br>注意：仅部分模型支持指定场景。</p><ol><li>Kling支持：动作控制，motion_control；数字人，avatar_i2v；对口型，lip_sync。</li><li>Mingmou支持：横转竖，land2port。</li><li>Vidu支持：特效模板，template_effect。</li><li>Hunyuan支持: 3d世界模型, 3d_scene；涉及的返回文件非视频。</li></ol>
 	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
 
 	// <p>生成视频的描述。当未传入图片时，此参数必填。</p>
@@ -4591,7 +4760,7 @@ type CreateAigcVideoTaskRequest struct {
 	// <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hunyuan，可选 [1.5]。</li><li>Hailuo，可选 [02、2.3、2.3-fast]。</li><li>Kling，可选 [1.6、2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu，可选 [q2、q2-pro、q2-turbo、q3-pro、q3-turbo、q3、q3-mix]。</li><li>PixVerse，可选 [v5.6、v6、c1]。</li><li>H2，可选 [1.0]。</li></ol>
 	ModelVersion *string `json:"ModelVersion,omitnil,omitempty" name:"ModelVersion"`
 
-	// <p>指定场景生视频。<br>注意：仅部分模型支持指定场景。</p><ol><li>Kling支持：动作控制，motion_control；数字人，avatar_i2v；对口型，lip_sync。</li><li>Mingmou支持：横转竖，land2port。</li><li>Vidu支持：特效模板，template_effect。</li></ol>
+	// <p>指定场景生成视频。<br>注意：仅部分模型支持指定场景。</p><ol><li>Kling支持：动作控制，motion_control；数字人，avatar_i2v；对口型，lip_sync。</li><li>Mingmou支持：横转竖，land2port。</li><li>Vidu支持：特效模板，template_effect。</li><li>Hunyuan支持: 3d世界模型, 3d_scene；涉及的返回文件非视频。</li></ol>
 	SceneType *string `json:"SceneType,omitnil,omitempty" name:"SceneType"`
 
 	// <p>生成视频的描述。当未传入图片时，此参数必填。</p>
@@ -10411,6 +10580,72 @@ func (r *DescribeAdaptiveDynamicStreamingTemplatesResponse) ToJsonString() strin
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAdaptiveDynamicStreamingTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcAudioTaskRequestParams struct {
+	// <p>创建AIGC生视频任务时，返回的任务ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeAigcAudioTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>创建AIGC生视频任务时，返回的任务ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeAigcAudioTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcAudioTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAigcAudioTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcAudioTaskResponseParams struct {
+	// <p>任务当前状态。 WAIT：等待中， RUN：执行中， FAIL：任务失败， DONE：任务成功。</p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>当任务状态为 FAIL时，返回失败信息。</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>输出的音频信息。</p>
+	AudioInfos []*AigcAudioOutputAudioInfo `json:"AudioInfos,omitnil,omitempty" name:"AudioInfos"`
+
+	// <p>输出的视频信息，仅视频配音等场景会输出。</p>
+	VideoInfos []*AigcAudioOutputVideoInfo `json:"VideoInfos,omitnil,omitempty" name:"VideoInfos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAigcAudioTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAigcAudioTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeAigcAudioTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcAudioTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -18293,27 +18528,30 @@ type ImageSpriteTemplate struct {
 }
 
 type ImageTaskInput struct {
-	// 图片编码配置。
+	// <p>图片编码配置。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncodeConfig *ImageEncodeConfig `json:"EncodeConfig,omitnil,omitempty" name:"EncodeConfig"`
 
-	// 图片增强配置。
+	// <p>图片增强配置。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnhanceConfig *ImageEnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
 
-	// 图片擦除配置。
+	// <p>图片擦除配置。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EraseConfig *ImageEraseConfig `json:"EraseConfig,omitnil,omitempty" name:"EraseConfig"`
 
-	// 盲水印配置。
+	// <p>盲水印配置。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlindWatermarkConfig *BlindWatermarkConfig `json:"BlindWatermarkConfig,omitnil,omitempty" name:"BlindWatermarkConfig"`
 
-	// 美颜配置。
+	// <p>美颜配置。</p>
 	BeautyConfig *BeautyConfig `json:"BeautyConfig,omitnil,omitempty" name:"BeautyConfig"`
 
-	// 图片基础转换能力。
+	// <p>图片基础转换能力。</p>
 	TransformConfig *ImageTransformConfig `json:"TransformConfig,omitnil,omitempty" name:"TransformConfig"`
+
+	// <p>Ai 换装配置。</p>
+	AiTryOnConfig *AiTryOnConfig `json:"AiTryOnConfig,omitnil,omitempty" name:"AiTryOnConfig"`
 }
 
 type ImageTransformConfig struct {

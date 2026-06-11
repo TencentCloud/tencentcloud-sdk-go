@@ -900,12 +900,16 @@ func NewCreateLifecycleDataTaskResponse() (response *CreateLifecycleDataTaskResp
 // 支持主动沉降/预热接口
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_LISTPATHANDTASKPATHCONFLICT = "InvalidParameter.ListPathAndTaskPathConflict"
+//  INVALIDPARAMETER_LISTPATHINVALIDPREFIX = "InvalidParameter.ListPathInvalidPrefix"
 //  INVALIDPARAMETERVALUE_INVALIDDATAFLOWID = "InvalidParameterValue.InvalidDataFlowId"
 //  INVALIDPARAMETERVALUE_INVALIDDATAFLOWSOURCESTORAGETYPE = "InvalidParameterValue.InvalidDataFlowSourceStorageType"
 //  INVALIDPARAMETERVALUE_INVALIDDATAFLOWTARGETPATH = "InvalidParameterValue.InvalidDataFlowTargetPath"
 //  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
 //  INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
 //  INVALIDPARAMETERVALUE_INVALIDLIFECYCLEDATATASKTYPE = "InvalidParameterValue.InvalidLifecycleDataTaskType"
+//  INVALIDPARAMETERVALUE_LISTPATHFILEINVALID = "InvalidParameterValue.ListPathFileInvalid"
+//  INVALIDPARAMETERVALUE_LISTPATHFILENOTFOUND = "InvalidParameterValue.ListPathFileNotFound"
 //  INVALIDPARAMETERVALUE_WAITINGTASKLIMITEXCEEDED = "InvalidParameterValue.WaitingTaskLimitExceeded"
 func (c *Client) CreateLifecycleDataTask(request *CreateLifecycleDataTaskRequest) (response *CreateLifecycleDataTaskResponse, err error) {
     return c.CreateLifecycleDataTaskWithContext(context.Background(), request)
@@ -915,12 +919,16 @@ func (c *Client) CreateLifecycleDataTask(request *CreateLifecycleDataTaskRequest
 // 支持主动沉降/预热接口
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_LISTPATHANDTASKPATHCONFLICT = "InvalidParameter.ListPathAndTaskPathConflict"
+//  INVALIDPARAMETER_LISTPATHINVALIDPREFIX = "InvalidParameter.ListPathInvalidPrefix"
 //  INVALIDPARAMETERVALUE_INVALIDDATAFLOWID = "InvalidParameterValue.InvalidDataFlowId"
 //  INVALIDPARAMETERVALUE_INVALIDDATAFLOWSOURCESTORAGETYPE = "InvalidParameterValue.InvalidDataFlowSourceStorageType"
 //  INVALIDPARAMETERVALUE_INVALIDDATAFLOWTARGETPATH = "InvalidParameterValue.InvalidDataFlowTargetPath"
 //  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
 //  INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
 //  INVALIDPARAMETERVALUE_INVALIDLIFECYCLEDATATASKTYPE = "InvalidParameterValue.InvalidLifecycleDataTaskType"
+//  INVALIDPARAMETERVALUE_LISTPATHFILEINVALID = "InvalidParameterValue.ListPathFileInvalid"
+//  INVALIDPARAMETERVALUE_LISTPATHFILENOTFOUND = "InvalidParameterValue.ListPathFileNotFound"
 //  INVALIDPARAMETERVALUE_WAITINGTASKLIMITEXCEEDED = "InvalidParameterValue.WaitingTaskLimitExceeded"
 func (c *Client) CreateLifecycleDataTaskWithContext(ctx context.Context, request *CreateLifecycleDataTaskRequest) (response *CreateLifecycleDataTaskResponse, err error) {
     if request == nil {

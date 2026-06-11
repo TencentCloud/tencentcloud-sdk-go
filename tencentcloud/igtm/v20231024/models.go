@@ -2210,17 +2210,17 @@ type InstancePackage struct {
 }
 
 type MainAddressPool struct {
-	// 集合中的地址池id与权重，数组
+	// <p>集合中的地址池id与权重，数组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressPools []*MainPoolWeight `json:"AddressPools,omitnil,omitempty" name:"AddressPools"`
 
-	// 地址池集合id
+	// <p>地址池集合id</p>
 	MainAddressPoolId *uint64 `json:"MainAddressPoolId,omitnil,omitempty" name:"MainAddressPoolId"`
 
-	// 切换阀值，不能大于主力集合内地址总数
+	// <p>切换阈值，不能大于主力集合内地址总数</p>
 	MinSurviveNum *uint64 `json:"MinSurviveNum,omitnil,omitempty" name:"MinSurviveNum"`
 
-	// 切换策略:ALL解析所有地址；WEIGHT：负载均衡。当为ALL时，解析地址的权重值为1；当为WEIGHT时；权重为地址池权重*地址权重
+	// <p>切换策略:ALL解析所有地址；WEIGHT：负载均衡。当为ALL时，解析地址的权重值为1；当为WEIGHT时；权重为地址池权重*地址权重</p>
 	TrafficStrategy *string `json:"TrafficStrategy,omitnil,omitempty" name:"TrafficStrategy"`
 }
 
@@ -2235,39 +2235,45 @@ type MainPoolWeight struct {
 
 // Predefined struct for user
 type ModifyAddressPoolRequestParams struct {
-	// 地址池id
+	// <p>地址池id</p>
 	PoolId *uint64 `json:"PoolId,omitnil,omitempty" name:"PoolId"`
 
-	// 地址池名称，不允许重复
+	// <p>地址池名称，不允许重复</p>
 	PoolName *string `json:"PoolName,omitnil,omitempty" name:"PoolName"`
 
-	// 流量策略: WEIGHT负载均衡，ALL解析全部
+	// <p>流量策略: WEIGHT负载均衡，ALL解析全部</p>
 	TrafficStrategy *string `json:"TrafficStrategy,omitnil,omitempty" name:"TrafficStrategy"`
 
-	// 监控器id，当监控器已关联策略时，此字段必传
+	// <p>监控器id，当监控器已关联策略时，此字段必传</p>
 	MonitorId *uint64 `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 
-	// 地址列表，全量更新逻辑，对于存量不需要修改的地址信息也需要带上(其中参数里的AddressId需传入正确的值)，否则会被删除。
+	// <p>地址列表，全量更新逻辑，对于存量不需要修改的地址信息也需要带上(其中参数里的AddressId需传入正确的值)，否则会被删除。</p>
 	AddressSet []*Address `json:"AddressSet,omitnil,omitempty" name:"AddressSet"`
+
+	// <p>是否保留资源</p><p>枚举值：</p><ul><li>false： 全量操作，会有删除逻辑</li><li>true： 不会删除原有资源</li></ul>
+	KeepResource *bool `json:"KeepResource,omitnil,omitempty" name:"KeepResource"`
 }
 
 type ModifyAddressPoolRequest struct {
 	*tchttp.BaseRequest
 	
-	// 地址池id
+	// <p>地址池id</p>
 	PoolId *uint64 `json:"PoolId,omitnil,omitempty" name:"PoolId"`
 
-	// 地址池名称，不允许重复
+	// <p>地址池名称，不允许重复</p>
 	PoolName *string `json:"PoolName,omitnil,omitempty" name:"PoolName"`
 
-	// 流量策略: WEIGHT负载均衡，ALL解析全部
+	// <p>流量策略: WEIGHT负载均衡，ALL解析全部</p>
 	TrafficStrategy *string `json:"TrafficStrategy,omitnil,omitempty" name:"TrafficStrategy"`
 
-	// 监控器id，当监控器已关联策略时，此字段必传
+	// <p>监控器id，当监控器已关联策略时，此字段必传</p>
 	MonitorId *uint64 `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 
-	// 地址列表，全量更新逻辑，对于存量不需要修改的地址信息也需要带上(其中参数里的AddressId需传入正确的值)，否则会被删除。
+	// <p>地址列表，全量更新逻辑，对于存量不需要修改的地址信息也需要带上(其中参数里的AddressId需传入正确的值)，否则会被删除。</p>
 	AddressSet []*Address `json:"AddressSet,omitnil,omitempty" name:"AddressSet"`
+
+	// <p>是否保留资源</p><p>枚举值：</p><ul><li>false： 全量操作，会有删除逻辑</li><li>true： 不会删除原有资源</li></ul>
+	KeepResource *bool `json:"KeepResource,omitnil,omitempty" name:"KeepResource"`
 }
 
 func (r *ModifyAddressPoolRequest) ToJsonString() string {
@@ -2287,6 +2293,7 @@ func (r *ModifyAddressPoolRequest) FromJsonString(s string) error {
 	delete(f, "TrafficStrategy")
 	delete(f, "MonitorId")
 	delete(f, "AddressSet")
+	delete(f, "KeepResource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAddressPoolRequest has unknown keys!", "")
 	}
@@ -2295,7 +2302,7 @@ func (r *ModifyAddressPoolRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAddressPoolResponseParams struct {
-	// 是否修改成功
+	// <p>是否修改成功</p>
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2624,63 +2631,69 @@ func (r *ModifyPackageAutoRenewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyStrategyRequestParams struct {
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 策略id
+	// <p>策略id</p>
 	StrategyId *uint64 `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
 
-	// 解析线路，需要全量传参
+	// <p>解析线路，需要全量传参</p>
 	Source []*Source `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 主力地址池集合，需要全量传参
+	// <p>主力地址池集合，需要全量传参</p>
 	MainAddressPoolSet []*MainAddressPool `json:"MainAddressPoolSet,omitnil,omitempty" name:"MainAddressPoolSet"`
 
-	// 兜底地址池集合，需要全量传参
+	// <p>兜底地址池集合，需要全量传参</p>
 	FallbackAddressPoolSet []*MainAddressPool `json:"FallbackAddressPoolSet,omitnil,omitempty" name:"FallbackAddressPoolSet"`
 
-	// 策略名称，不允许重复
+	// <p>策略名称，不允许重复</p>
 	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
 
-	// 策略开启状态：ENABLED开启；DISABLED关闭
+	// <p>策略开启状态：ENABLED开启；DISABLED关闭</p>
 	IsEnabled *string `json:"IsEnabled,omitnil,omitempty" name:"IsEnabled"`
 
-	// 是否开启策略强制保留默认线路 disabled, enabled，默认不开启且只有一个策略能开启
+	// <p>是否开启策略强制保留默认线路 disabled, enabled，默认不开启且只有一个策略能开启</p>
 	KeepDomainRecords *string `json:"KeepDomainRecords,omitnil,omitempty" name:"KeepDomainRecords"`
 
-	// 调度模式：AUTO默认；STOP仅暂停不切换
+	// <p>调度模式：AUTO默认；STOP仅暂停不切换</p>
 	SwitchPoolType *string `json:"SwitchPoolType,omitnil,omitempty" name:"SwitchPoolType"`
+
+	// <p>是否保留资源</p><p>枚举值：</p><ul><li>false： 全量操作，会有删除逻辑</li><li>true： 不会删除原有资源</li></ul>
+	KeepResource *bool `json:"KeepResource,omitnil,omitempty" name:"KeepResource"`
 }
 
 type ModifyStrategyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 策略id
+	// <p>策略id</p>
 	StrategyId *uint64 `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
 
-	// 解析线路，需要全量传参
+	// <p>解析线路，需要全量传参</p>
 	Source []*Source `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 主力地址池集合，需要全量传参
+	// <p>主力地址池集合，需要全量传参</p>
 	MainAddressPoolSet []*MainAddressPool `json:"MainAddressPoolSet,omitnil,omitempty" name:"MainAddressPoolSet"`
 
-	// 兜底地址池集合，需要全量传参
+	// <p>兜底地址池集合，需要全量传参</p>
 	FallbackAddressPoolSet []*MainAddressPool `json:"FallbackAddressPoolSet,omitnil,omitempty" name:"FallbackAddressPoolSet"`
 
-	// 策略名称，不允许重复
+	// <p>策略名称，不允许重复</p>
 	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
 
-	// 策略开启状态：ENABLED开启；DISABLED关闭
+	// <p>策略开启状态：ENABLED开启；DISABLED关闭</p>
 	IsEnabled *string `json:"IsEnabled,omitnil,omitempty" name:"IsEnabled"`
 
-	// 是否开启策略强制保留默认线路 disabled, enabled，默认不开启且只有一个策略能开启
+	// <p>是否开启策略强制保留默认线路 disabled, enabled，默认不开启且只有一个策略能开启</p>
 	KeepDomainRecords *string `json:"KeepDomainRecords,omitnil,omitempty" name:"KeepDomainRecords"`
 
-	// 调度模式：AUTO默认；STOP仅暂停不切换
+	// <p>调度模式：AUTO默认；STOP仅暂停不切换</p>
 	SwitchPoolType *string `json:"SwitchPoolType,omitnil,omitempty" name:"SwitchPoolType"`
+
+	// <p>是否保留资源</p><p>枚举值：</p><ul><li>false： 全量操作，会有删除逻辑</li><li>true： 不会删除原有资源</li></ul>
+	KeepResource *bool `json:"KeepResource,omitnil,omitempty" name:"KeepResource"`
 }
 
 func (r *ModifyStrategyRequest) ToJsonString() string {
@@ -2704,6 +2717,7 @@ func (r *ModifyStrategyRequest) FromJsonString(s string) error {
 	delete(f, "IsEnabled")
 	delete(f, "KeepDomainRecords")
 	delete(f, "SwitchPoolType")
+	delete(f, "KeepResource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStrategyRequest has unknown keys!", "")
 	}
@@ -2712,7 +2726,7 @@ func (r *ModifyStrategyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyStrategyResponseParams struct {
-	// 是否成功
+	// <p>是否成功</p>
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

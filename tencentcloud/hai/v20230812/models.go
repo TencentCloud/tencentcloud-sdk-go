@@ -425,39 +425,45 @@ func (r *DeleteServiceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeployInferServiceRequestParams struct {
-	// 服务元数据信息，如服务名
+	// <p>服务元数据信息，如服务名</p>
 	ServiceMetaData *ServiceMetaData `json:"ServiceMetaData,omitnil,omitempty" name:"ServiceMetaData"`
 
-	// 资源相关信息
+	// <p>资源相关信息</p>
 	ComputeInfo *ComputeInfo `json:"ComputeInfo,omitnil,omitempty" name:"ComputeInfo"`
 
-	// 服务部署信息
+	// <p>服务部署信息</p>
 	DeploymentConfigs []*DeploymentConfig `json:"DeploymentConfigs,omitnil,omitempty" name:"DeploymentConfigs"`
 
-	// 服务超参数配置
+	// <p>服务超参数配置</p>
 	HyperParam *HyperParam `json:"HyperParam,omitnil,omitempty" name:"HyperParam"`
 
-	// 网络设置
+	// <p>网络设置</p>
 	NetworkSetting *NetworkSetting `json:"NetworkSetting,omitnil,omitempty" name:"NetworkSetting"`
+
+	// <p>安全类型</p><p>枚举值：</p><ul><li>STANDARD： 标准推理</li><li>CONFIDENTIAL： 可信推理</li></ul>
+	SecurityType *string `json:"SecurityType,omitnil,omitempty" name:"SecurityType"`
 }
 
 type DeployInferServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务元数据信息，如服务名
+	// <p>服务元数据信息，如服务名</p>
 	ServiceMetaData *ServiceMetaData `json:"ServiceMetaData,omitnil,omitempty" name:"ServiceMetaData"`
 
-	// 资源相关信息
+	// <p>资源相关信息</p>
 	ComputeInfo *ComputeInfo `json:"ComputeInfo,omitnil,omitempty" name:"ComputeInfo"`
 
-	// 服务部署信息
+	// <p>服务部署信息</p>
 	DeploymentConfigs []*DeploymentConfig `json:"DeploymentConfigs,omitnil,omitempty" name:"DeploymentConfigs"`
 
-	// 服务超参数配置
+	// <p>服务超参数配置</p>
 	HyperParam *HyperParam `json:"HyperParam,omitnil,omitempty" name:"HyperParam"`
 
-	// 网络设置
+	// <p>网络设置</p>
 	NetworkSetting *NetworkSetting `json:"NetworkSetting,omitnil,omitempty" name:"NetworkSetting"`
+
+	// <p>安全类型</p><p>枚举值：</p><ul><li>STANDARD： 标准推理</li><li>CONFIDENTIAL： 可信推理</li></ul>
+	SecurityType *string `json:"SecurityType,omitnil,omitempty" name:"SecurityType"`
 }
 
 func (r *DeployInferServiceRequest) ToJsonString() string {
@@ -477,6 +483,7 @@ func (r *DeployInferServiceRequest) FromJsonString(s string) error {
 	delete(f, "DeploymentConfigs")
 	delete(f, "HyperParam")
 	delete(f, "NetworkSetting")
+	delete(f, "SecurityType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployInferServiceRequest has unknown keys!", "")
 	}
@@ -485,7 +492,7 @@ func (r *DeployInferServiceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeployInferServiceResponseParams struct {
-	// 服务ID
+	// <p>服务ID</p>
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

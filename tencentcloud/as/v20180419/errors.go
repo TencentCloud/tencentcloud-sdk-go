@@ -296,6 +296,9 @@ const (
 	// 负载均衡器四层监听器的后端端口重复。
 	INVALIDPARAMETERVALUE_TARGETPORTDUPLICATED = "InvalidParameterValue.TargetPortDuplicated"
 
+	// 七层负载均衡器中目标端口重复
+	INVALIDPARAMETERVALUE_TARGETPORTDUPLICATEDINFORWARDLB = "InvalidParameterValue.TargetPortDuplicatedInForwardLb"
+
 	// 不支持执行目标追踪策略。
 	INVALIDPARAMETERVALUE_TARGETTRACKINGSCALINGPOLICY = "InvalidParameterValue.TargetTrackingScalingPolicy"
 

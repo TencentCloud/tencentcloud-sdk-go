@@ -1931,6 +1931,17 @@ type AiSampleWordInfo struct {
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
+type AiTryOnConfig struct {
+	// <p>换装模型。</p><p>枚举值：</p><ul><li>WAND-tryon-1.0-lite： 轻量档，速度优先。</li><li>WAND-tryon-1.0-flash： 均衡档，兼顾效果与时延。</li><li>WAND-tryon-1.0-pro： 高质量档，效果优先。</li></ul>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>输入需要更换的衣物图片列表。支持1-4张图片。</p>
+	ClothesFileInfos []*SceneAigcImageTaskInputFileInfo `json:"ClothesFileInfos,omitnil,omitempty" name:"ClothesFileInfos"`
+
+	// <p>换装指令Prompt。</p>
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+}
+
 type AigcAdvancedCustomElementInfo struct {
 	// <p>主体 ID。</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -2165,13 +2176,16 @@ type AigcImageOutputConfig struct {
 }
 
 type AigcImageSceneInfo struct {
-	// <p>AI生图场景类型，可选值：</p><ul><li>change_clothes：常规场景换衣。</li><li>change_clothes_under：特殊场景换衣。</li><li>change_clothes_top_wear：上半身换衣。</li><li>change_clothes_bottom_wear：下半身换衣。</li><li>change_clothes_full_wear：全身换衣。</li><li>product_image：AI生商品图。</li><li>outpainting: AI扩图。</li></ul>
+	// <p>AI生图场景类型，可选值：</p><ul><li><code>ai_try_on</code>：AI 换装。</li><li><code>product_image</code>：AI 生商品图。</li><li><code>outpainting</code>: AI 扩图。</li></ul><p>下列 <code>Type</code> 已废弃，后续不再更新：</p><ul><li><code>change_clothes</code></li><li><code>change_clothes_under</code></li><li><code>change_clothes_top_wear</code></li><li><code>change_clothes_bottom_wear</code></li><li><code>change_clothes_full_wear</code></li></ul>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// <p>当 Type 下列类型时，则该项为必填，表示AI 换衣生图配置参数：</p><ul><li>change_clothes</li><li>change_clothes_under</li><li>change_clothes_full_wear</li><li>change_clothes_top_wear</li><li>change_clothes_bottom_wear</li></ul>
+	// <p>当 Type 为 ai_try_on 时必填，表示 AI 换装配置参数。</p>
+	AiTryOnConfig *AiTryOnConfig `json:"AiTryOnConfig,omitnil,omitempty" name:"AiTryOnConfig"`
+
+	// <p><strong>已废弃，请使用AiTryOnConfig。</strong>当 Type 下列类型时，则该项为必填，表示AI 换衣生图配置参数：</p><ul><li>change_clothes</li><li>change_clothes_under</li></ul>
 	ChangeClothesConfig *ChangeClothesConfig `json:"ChangeClothesConfig,omitnil,omitempty" name:"ChangeClothesConfig"`
 
-	// <p>当 Type 为 product_image 时有效，表示AI 生商品图配置参数。</p>
+	// <p>当 Type 为 product_image 时必填，表示AI 生商品图配置参数。</p>
 	ProductImageConfig *ProductImageConfig `json:"ProductImageConfig,omitnil,omitempty" name:"ProductImageConfig"`
 }
 
@@ -20173,100 +20187,92 @@ type LiveRealTimeClipMediaSegmentInfo struct {
 
 // Predefined struct for user
 type LiveRealTimeClipRequestParams struct {
-	// 推流直播码。
+	// <p>推流直播码。</p>
 	StreamId *string `json:"StreamId,omitnil,omitempty" name:"StreamId"`
 
-	// 流剪辑的开始时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	// <p>流剪辑的开始时间，格式参照 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 流剪辑的结束时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	// <p>流剪辑的结束时间，格式参照 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 是否固化。0 不固化，1 固化。默认不固化。
+	// <p>是否固化。0 不固化，1 固化。默认不固化。</p>
 	IsPersistence *int64 `json:"IsPersistence,omitnil,omitempty" name:"IsPersistence"`
 
-	// 剪辑固化后的视频存储过期时间。格式参照 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。
+	// <p>剪辑固化后的视频存储过期时间。格式参照 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
+	// <p>剪辑固化后的视频点播任务流处理，详见<a href="https://cloud.tencent.com/document/product/266/9759">上传指定任务流</a>。仅 IsPersistence 为 1 时有效。</p>
 	Procedure *string `json:"Procedure,omitnil,omitempty" name:"Procedure"`
 
-	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-	// <li>默认值：0，表示其他分类。</li>
-	// 仅 IsPersistence 为 1 时有效。
+	// <p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/31772">创建分类</a> 接口，创建分类，获得分类 ID。</p><li>默认值：0，表示其他分类。</li>仅 IsPersistence 为 1 时有效。
 	ClassId *int64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
 
-	// 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。
+	// <p>来源上下文，用于透传用户请求信息，<a href="/document/product/266/7830">上传完成回调</a> 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。</p>
 	SourceContext *string `json:"SourceContext,omitnil,omitempty" name:"SourceContext"`
 
-	// 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。
+	// <p>会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，<a href="/document/product/266/9636">任务流状态变更回调</a> 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 
-	// 是否需要返回剪辑后的视频元信息。0 不需要，1 需要。默认不需要。
+	// <p>是否需要返回剪辑后的视频元信息。0 不需要，1 需要。默认不需要。</p>
 	MetaDataRequired *uint64 `json:"MetaDataRequired,omitnil,omitempty" name:"MetaDataRequired"`
 
-	// 云点播中添加的用于时移播放的域名，必须在云直播已经[关联录制模板和开通时移服务](https://cloud.tencent.com/document/product/266/52220#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E)。**如果本接口的首次调用时间在 2021-01-01T00:00:00Z 之后，则此字段为必选字段。**
+	// <p>云点播中添加的用于时移播放的域名，必须在云直播已经<a href="https://cloud.tencent.com/document/product/266/52220#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E">关联录制模板和开通时移服务</a>。<strong>如果本接口的首次调用时间在 2021-01-01T00:00:00Z 之后，则此字段为必选字段。</strong></p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 剪辑的直播流信息：
-	// <li>默认剪辑直播原始流。</li>
-	// <li>当StreamInfo中指定的Type为Transcoding，则剪辑TemplateId对应的直播转码流。</li>
+	// <p>剪辑的直播流信息：</p><li>默认剪辑直播原始流。</li><li>当StreamInfo中指定的Type为Transcoding，则剪辑TemplateId对应的直播转码流。</li>
 	StreamInfo *LiveRealTimeClipStreamInfo `json:"StreamInfo,omitnil,omitempty" name:"StreamInfo"`
 
-	// 系统保留字段，请勿填写。
+	// <p>系统保留字段，请勿填写。</p>
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
 type LiveRealTimeClipRequest struct {
 	*tchttp.BaseRequest
 	
-	// 推流直播码。
+	// <p>推流直播码。</p>
 	StreamId *string `json:"StreamId,omitnil,omitempty" name:"StreamId"`
 
-	// 流剪辑的开始时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	// <p>流剪辑的开始时间，格式参照 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 流剪辑的结束时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	// <p>流剪辑的结束时间，格式参照 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 是否固化。0 不固化，1 固化。默认不固化。
+	// <p>是否固化。0 不固化，1 固化。默认不固化。</p>
 	IsPersistence *int64 `json:"IsPersistence,omitnil,omitempty" name:"IsPersistence"`
 
-	// 剪辑固化后的视频存储过期时间。格式参照 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。
+	// <p>剪辑固化后的视频存储过期时间。格式参照 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
+	// <p>剪辑固化后的视频点播任务流处理，详见<a href="https://cloud.tencent.com/document/product/266/9759">上传指定任务流</a>。仅 IsPersistence 为 1 时有效。</p>
 	Procedure *string `json:"Procedure,omitnil,omitempty" name:"Procedure"`
 
-	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-	// <li>默认值：0，表示其他分类。</li>
-	// 仅 IsPersistence 为 1 时有效。
+	// <p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/31772">创建分类</a> 接口，创建分类，获得分类 ID。</p><li>默认值：0，表示其他分类。</li>仅 IsPersistence 为 1 时有效。
 	ClassId *int64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
 
-	// 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。
+	// <p>来源上下文，用于透传用户请求信息，<a href="/document/product/266/7830">上传完成回调</a> 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。</p>
 	SourceContext *string `json:"SourceContext,omitnil,omitempty" name:"SourceContext"`
 
-	// 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。
+	// <p>会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，<a href="/document/product/266/9636">任务流状态变更回调</a> 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 
-	// 是否需要返回剪辑后的视频元信息。0 不需要，1 需要。默认不需要。
+	// <p>是否需要返回剪辑后的视频元信息。0 不需要，1 需要。默认不需要。</p>
 	MetaDataRequired *uint64 `json:"MetaDataRequired,omitnil,omitempty" name:"MetaDataRequired"`
 
-	// 云点播中添加的用于时移播放的域名，必须在云直播已经[关联录制模板和开通时移服务](https://cloud.tencent.com/document/product/266/52220#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E)。**如果本接口的首次调用时间在 2021-01-01T00:00:00Z 之后，则此字段为必选字段。**
+	// <p>云点播中添加的用于时移播放的域名，必须在云直播已经<a href="https://cloud.tencent.com/document/product/266/52220#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E">关联录制模板和开通时移服务</a>。<strong>如果本接口的首次调用时间在 2021-01-01T00:00:00Z 之后，则此字段为必选字段。</strong></p>
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 剪辑的直播流信息：
-	// <li>默认剪辑直播原始流。</li>
-	// <li>当StreamInfo中指定的Type为Transcoding，则剪辑TemplateId对应的直播转码流。</li>
+	// <p>剪辑的直播流信息：</p><li>默认剪辑直播原始流。</li><li>当StreamInfo中指定的Type为Transcoding，则剪辑TemplateId对应的直播转码流。</li>
 	StreamInfo *LiveRealTimeClipStreamInfo `json:"StreamInfo,omitnil,omitempty" name:"StreamInfo"`
 
-	// 系统保留字段，请勿填写。
+	// <p>系统保留字段，请勿填写。</p>
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
@@ -20304,20 +20310,20 @@ func (r *LiveRealTimeClipRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type LiveRealTimeClipResponseParams struct {
-	// 剪辑后的视频播放 URL。
+	// <p>剪辑后的视频播放 URL。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 剪辑固化后的视频的媒体文件的唯一标识。
+	// <p>剪辑固化后的视频的媒体文件的唯一标识。</p>
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
-	// 剪辑固化后的视频任务流 ID。
+	// <p>剪辑固化后的视频任务流 ID。</p>
 	VodTaskId *string `json:"VodTaskId,omitnil,omitempty" name:"VodTaskId"`
 
-	// 剪辑后的视频元信息。
+	// <p>剪辑后的视频元信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaData *MediaMetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
 
-	// <span id="p_segmentset">剪辑后的视频片段信息。</span>
+	// <p><span id="p_segmentset">剪辑后的视频片段信息。</span></p>
 	SegmentSet []*LiveRealTimeClipMediaSegmentInfo `json:"SegmentSet,omitnil,omitempty" name:"SegmentSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -27787,108 +27793,98 @@ func (r *PullEventsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PullUploadRequestParams struct {
-	// 要拉取的媒体 URL，暂不支持拉取 Dash 格式（可以支持 HLS）。
-	// 支持的扩展名详见[媒体类型](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)。请确保媒体 URL 可以访问。
+	// <p>要拉取的媒体 URL，暂不支持拉取 Dash 格式（可以支持 HLS）。<br>支持的扩展名详见<a href="https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B">媒体类型</a>。请确保媒体 URL 可以访问。</p>
 	MediaUrl *string `json:"MediaUrl,omitnil,omitempty" name:"MediaUrl"`
 
-	// 媒体文件类型（扩展名），支持的类型详见[媒体类型](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)。
-	// 如果 MediaType 不填或取值为空字符串，将根据 MediaUrl 自动获取文件类型。
+	// <p>媒体文件类型（扩展名），支持的类型详见<a href="https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B">媒体类型</a>。<br>如果 MediaType 不填或取值为空字符串，将根据 MediaUrl 自动获取文件类型。</p>
 	MediaType *string `json:"MediaType,omitnil,omitempty" name:"MediaType"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 媒体名称。
+	// <p>媒体名称。</p>
 	MediaName *string `json:"MediaName,omitnil,omitempty" name:"MediaName"`
 
-	// 要拉取的视频封面 URL。支持的文件格式：gif、jpeg（jpg）、png。
+	// <p>要拉取的视频封面 URL。支持的文件格式：gif、jpeg（jpg）、png。</p>
 	CoverUrl *string `json:"CoverUrl,omitnil,omitempty" name:"CoverUrl"`
 
-	// 媒体后续任务操作，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。
+	// <p>媒体后续任务操作，详见<a href="https://cloud.tencent.com/document/product/266/9759">上传指定任务流</a>。</p>
 	Procedure *string `json:"Procedure,omitnil,omitempty" name:"Procedure"`
 
-	// 媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	// <p>媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 指定上传园区，仅适用于对上传地域有特殊需求的用户：
-	// <li>不填默认上传至您的[默认地域](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)。</li>
-	// <li>若指定上传园区，请先确认[上传存储设置](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)已经开启相应的存储地域。</li>
+	// <p>指定上传园区，仅适用于对上传地域有特殊需求的用户：</p><li>不填默认上传至您的[默认地域](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)。</li><li>若指定上传园区，请先确认[上传存储设置](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)已经开启相应的存储地域。</li>
 	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
 
-	// 分类ID，用于对媒体进行分类管理，可通过[创建分类](https://cloud.tencent.com/document/product/266/7812)接口，创建分类，获得分类 ID。
+	// <p>分类ID，用于对媒体进行分类管理，可通过<a href="https://cloud.tencent.com/document/product/266/31772">创建分类</a>接口，创建分类，获得分类 ID。</p>
 	ClassId *int64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
 
-	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	// <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
 	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
 
-	// 来源上下文，用于透传用户请求信息，当指定 Procedure 任务后，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	// <p>来源上下文，用于透传用户请求信息，当指定 Procedure 任务后，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 
-	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 保留字段，特殊用途时使用。
+	// <p>保留字段，特殊用途时使用。</p>
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 
-	// 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。
+	// <p>来源上下文，用于透传用户请求信息，<a href="/document/product/266/7830">上传完成回调</a> 将返回该字段值，最长 250 个字符。</p>
 	SourceContext *string `json:"SourceContext,omitnil,omitempty" name:"SourceContext"`
 
-	// 媒体存储路径，以/开头。
-	// 只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以指定存储路径。
+	// <p>媒体存储路径，以/开头。<br>只有<a href="https://cloud.tencent.com/document/product/266/126825">FileID + Path 模式</a>的子应用可以指定存储路径。</p>
 	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 }
 
 type PullUploadRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要拉取的媒体 URL，暂不支持拉取 Dash 格式（可以支持 HLS）。
-	// 支持的扩展名详见[媒体类型](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)。请确保媒体 URL 可以访问。
+	// <p>要拉取的媒体 URL，暂不支持拉取 Dash 格式（可以支持 HLS）。<br>支持的扩展名详见<a href="https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B">媒体类型</a>。请确保媒体 URL 可以访问。</p>
 	MediaUrl *string `json:"MediaUrl,omitnil,omitempty" name:"MediaUrl"`
 
-	// 媒体文件类型（扩展名），支持的类型详见[媒体类型](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)。
-	// 如果 MediaType 不填或取值为空字符串，将根据 MediaUrl 自动获取文件类型。
+	// <p>媒体文件类型（扩展名），支持的类型详见<a href="https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B">媒体类型</a>。<br>如果 MediaType 不填或取值为空字符串，将根据 MediaUrl 自动获取文件类型。</p>
 	MediaType *string `json:"MediaType,omitnil,omitempty" name:"MediaType"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 媒体名称。
+	// <p>媒体名称。</p>
 	MediaName *string `json:"MediaName,omitnil,omitempty" name:"MediaName"`
 
-	// 要拉取的视频封面 URL。支持的文件格式：gif、jpeg（jpg）、png。
+	// <p>要拉取的视频封面 URL。支持的文件格式：gif、jpeg（jpg）、png。</p>
 	CoverUrl *string `json:"CoverUrl,omitnil,omitempty" name:"CoverUrl"`
 
-	// 媒体后续任务操作，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。
+	// <p>媒体后续任务操作，详见<a href="https://cloud.tencent.com/document/product/266/9759">上传指定任务流</a>。</p>
 	Procedure *string `json:"Procedure,omitnil,omitempty" name:"Procedure"`
 
-	// 媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	// <p>媒体文件过期时间，格式按照 ISO 8601 标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 指定上传园区，仅适用于对上传地域有特殊需求的用户：
-	// <li>不填默认上传至您的[默认地域](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)。</li>
-	// <li>若指定上传园区，请先确认[上传存储设置](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)已经开启相应的存储地域。</li>
+	// <p>指定上传园区，仅适用于对上传地域有特殊需求的用户：</p><li>不填默认上传至您的[默认地域](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)。</li><li>若指定上传园区，请先确认[上传存储设置](https://cloud.tencent.com/document/product/266/14059?from=11329#.E5.AD.98.E5.82.A8.E5.9C.B0.E5.9F.9F.E6.AD.A5.E9.AA.A4)已经开启相应的存储地域。</li>
 	StorageRegion *string `json:"StorageRegion,omitnil,omitempty" name:"StorageRegion"`
 
-	// 分类ID，用于对媒体进行分类管理，可通过[创建分类](https://cloud.tencent.com/document/product/266/7812)接口，创建分类，获得分类 ID。
+	// <p>分类ID，用于对媒体进行分类管理，可通过<a href="https://cloud.tencent.com/document/product/266/31772">创建分类</a>接口，创建分类，获得分类 ID。</p>
 	ClassId *int64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
 
-	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	// <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
 	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
 
-	// 来源上下文，用于透传用户请求信息，当指定 Procedure 任务后，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	// <p>来源上下文，用于透传用户请求信息，当指定 Procedure 任务后，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 
-	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	// <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 保留字段，特殊用途时使用。
+	// <p>保留字段，特殊用途时使用。</p>
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 
-	// 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。
+	// <p>来源上下文，用于透传用户请求信息，<a href="/document/product/266/7830">上传完成回调</a> 将返回该字段值，最长 250 个字符。</p>
 	SourceContext *string `json:"SourceContext,omitnil,omitempty" name:"SourceContext"`
 
-	// 媒体存储路径，以/开头。
-	// 只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以指定存储路径。
+	// <p>媒体存储路径，以/开头。<br>只有<a href="https://cloud.tencent.com/document/product/266/126825">FileID + Path 模式</a>的子应用可以指定存储路径。</p>
 	MediaStoragePath *string `json:"MediaStoragePath,omitnil,omitempty" name:"MediaStoragePath"`
 }
 
@@ -27927,7 +27923,7 @@ func (r *PullUploadRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PullUploadResponseParams struct {
-	// 拉取上传视频的任务 ID，可以通过该 ID 查询拉取上传任务的状态。
+	// <p>拉取上传视频的任务 ID，可以通过该 ID 查询拉取上传任务的状态。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -30260,7 +30256,7 @@ type SceneAigcImageOutputConfig struct {
 	// <p>指定所生成图片的宽高比。输入格式为 W:H。<br>本字段在以下场景有效：</p><ul><li>生商品图场景，可选值为：1:1、3:2、2:3、3:4、4:3、4:5、5:4、16:9、9:16、21:9</li><li>AI扩图场景。可选值为：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9、21:9，可以配合 ImageWidth 和 ImageHeight 使用，规则如下： <ol><li>仅指定 AspectRatio 时，根据原图输入进行自适应调整。</li><li>指定 AspectRatio 和 ImageWidth 时，ImageHeight  由两者计算得出，反亦是如此。</li><li>当AspectRatio、ImageWidth、ImageHeight 同时指定的时候，优先使用ImageWidth、ImageHeight。</li></ol></li></ul>
 	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
 
-	// <p>输出图片编码格式参数。<strong>仅AI换衣场景有效。</strong></p>
+	// <p>输出图片编码格式参数。</p>
 	EncodeConfig *ImageSceneAigcEncodeConfig `json:"EncodeConfig,omitnil,omitempty" name:"EncodeConfig"`
 
 	// <p>输出图像宽度，<strong>仅AI扩图场景有效</strong>。</p>
@@ -30269,7 +30265,7 @@ type SceneAigcImageOutputConfig struct {
 	// <p>输出图像高度，<strong>仅AI扩图场景有效</strong>。</p>
 	ImageHeight *uint64 `json:"ImageHeight,omitnil,omitempty" name:"ImageHeight"`
 
-	// <p>输出分辨率。仅change_clothes、change_clothes_under场景有效。可选值：1K、2K、4K。</p>
+	// <p>输出分辨率。仅<code>ai_try_on</code>场景有效。可选值：1K、2K、4K。</p>
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 }
 
@@ -31101,92 +31097,88 @@ type SimpleAesEdkPair struct {
 
 // Predefined struct for user
 type SimpleHlsClipRequestParams struct {
-	// 需要裁剪的腾讯云点播 HLS 视频 URL。
+	// <p>需要裁剪的腾讯云点播 HLS 视频 URL。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 裁剪的开始偏移时间，单位秒。默认 0，即从视频开头开始裁剪。负数表示距离视频结束多少秒开始裁剪。例如 -10 表示从倒数第 10 秒开始裁剪。
+	// <p>裁剪的开始偏移时间，单位秒。默认 0，即从视频开头开始裁剪。负数表示距离视频结束多少秒开始裁剪。例如 -10 表示从倒数第 10 秒开始裁剪。</p>
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
 
-	// 裁剪的结束偏移时间，单位秒。默认 0，即裁剪到视频尾部。负数表示距离视频结束多少秒结束裁剪。例如 -10 表示到倒数第 10 秒结束裁剪。
+	// <p>裁剪的结束偏移时间，单位秒。默认 0，即裁剪到视频尾部。负数表示距离视频结束多少秒结束裁剪。例如 -10 表示到倒数第 10 秒结束裁剪。</p>
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
 
-	// 是否固化。0 不固化，1 固化。默认不固化。
+	// <p>是否固化。0 不固化，1 固化。默认不固化。</p>
 	IsPersistence *int64 `json:"IsPersistence,omitnil,omitempty" name:"IsPersistence"`
 
-	// 剪辑固化后的视频存储过期时间。格式参照 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。
+	// <p>剪辑固化后的视频存储过期时间。格式参照 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
+	// <p>剪辑固化后的视频点播任务流处理，详见<a href="https://cloud.tencent.com/document/product/266/9759">上传指定任务流</a>。仅 IsPersistence 为 1 时有效。</p>
 	Procedure *string `json:"Procedure,omitnil,omitempty" name:"Procedure"`
 
-	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-	// <li>默认值：0，表示其他分类。</li>
-	// 仅 IsPersistence 为 1 时有效。
+	// <p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/31772">创建分类</a> 接口，创建分类，获得分类 ID。</p><li>默认值：0，表示其他分类。</li>仅 IsPersistence 为 1 时有效。
 	ClassId *int64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
 
-	// 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。
+	// <p>来源上下文，用于透传用户请求信息，<a href="/document/product/266/7830">上传完成回调</a> 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。</p>
 	SourceContext *string `json:"SourceContext,omitnil,omitempty" name:"SourceContext"`
 
-	// 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。
+	// <p>会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，<a href="/document/product/266/9636">任务流状态变更回调</a> 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 
-	// 该字段已废弃。
+	// <p>该字段已废弃。</p>
 	//
 	// Deprecated: Precision is deprecated.
 	Precision *string `json:"Precision,omitnil,omitempty" name:"Precision"`
 
-	// 输出视频类型，取值有：<li>hls: 输出 hls 文件。</li>默认取值 hls。
+	// <p>输出视频类型，取值有：<li>hls: 输出 hls 文件。</li>默认取值 hls。</p>
 	OutputMediaType *string `json:"OutputMediaType,omitnil,omitempty" name:"OutputMediaType"`
 
-	// 保留字段，特殊用途时使用。 示例值：""
+	// <p>保留字段，特殊用途时使用。 示例值：&quot;&quot;</p>
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
 type SimpleHlsClipRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要裁剪的腾讯云点播 HLS 视频 URL。
+	// <p>需要裁剪的腾讯云点播 HLS 视频 URL。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 
-	// 裁剪的开始偏移时间，单位秒。默认 0，即从视频开头开始裁剪。负数表示距离视频结束多少秒开始裁剪。例如 -10 表示从倒数第 10 秒开始裁剪。
+	// <p>裁剪的开始偏移时间，单位秒。默认 0，即从视频开头开始裁剪。负数表示距离视频结束多少秒开始裁剪。例如 -10 表示从倒数第 10 秒开始裁剪。</p>
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
 
-	// 裁剪的结束偏移时间，单位秒。默认 0，即裁剪到视频尾部。负数表示距离视频结束多少秒结束裁剪。例如 -10 表示到倒数第 10 秒结束裁剪。
+	// <p>裁剪的结束偏移时间，单位秒。默认 0，即裁剪到视频尾部。负数表示距离视频结束多少秒结束裁剪。例如 -10 表示到倒数第 10 秒结束裁剪。</p>
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
 
-	// 是否固化。0 不固化，1 固化。默认不固化。
+	// <p>是否固化。0 不固化，1 固化。默认不固化。</p>
 	IsPersistence *int64 `json:"IsPersistence,omitnil,omitempty" name:"IsPersistence"`
 
-	// 剪辑固化后的视频存储过期时间。格式参照 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。
+	// <p>剪辑固化后的视频存储过期时间。格式参照 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
+	// <p>剪辑固化后的视频点播任务流处理，详见<a href="https://cloud.tencent.com/document/product/266/9759">上传指定任务流</a>。仅 IsPersistence 为 1 时有效。</p>
 	Procedure *string `json:"Procedure,omitnil,omitempty" name:"Procedure"`
 
-	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-	// <li>默认值：0，表示其他分类。</li>
-	// 仅 IsPersistence 为 1 时有效。
+	// <p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/31772">创建分类</a> 接口，创建分类，获得分类 ID。</p><li>默认值：0，表示其他分类。</li>仅 IsPersistence 为 1 时有效。
 	ClassId *int64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
 
-	// 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。
+	// <p>来源上下文，用于透传用户请求信息，<a href="/document/product/266/7830">上传完成回调</a> 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。</p>
 	SourceContext *string `json:"SourceContext,omitnil,omitempty" name:"SourceContext"`
 
-	// 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。
+	// <p>会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，<a href="/document/product/266/9636">任务流状态变更回调</a> 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。</p>
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 
-	// 该字段已废弃。
+	// <p>该字段已废弃。</p>
 	Precision *string `json:"Precision,omitnil,omitempty" name:"Precision"`
 
-	// 输出视频类型，取值有：<li>hls: 输出 hls 文件。</li>默认取值 hls。
+	// <p>输出视频类型，取值有：<li>hls: 输出 hls 文件。</li>默认取值 hls。</p>
 	OutputMediaType *string `json:"OutputMediaType,omitnil,omitempty" name:"OutputMediaType"`
 
-	// 保留字段，特殊用途时使用。 示例值：""
+	// <p>保留字段，特殊用途时使用。 示例值：&quot;&quot;</p>
 	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
@@ -31223,16 +31215,16 @@ func (r *SimpleHlsClipRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SimpleHlsClipResponseParams struct {
-	// 裁剪后的视频地址。
+	// <p>裁剪后的视频地址。</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 裁剪后的视频元信息。目前`Size`，`Rotate`，`VideoDuration`，`AudioDuration` 几个字段暂时缺省，没有真实数据。
+	// <p>裁剪后的视频元信息。目前<code>Size</code>，<code>Rotate</code>，<code>VideoDuration</code>，<code>AudioDuration</code> 几个字段暂时缺省，没有真实数据。</p>
 	MetaData *MediaMetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
 
-	// 剪辑固化后的视频的媒体文件的唯一标识。
+	// <p>剪辑固化后的视频的媒体文件的唯一标识。</p>
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
-	// 剪辑固化后的视频任务流 ID。
+	// <p>剪辑固化后的视频任务流 ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

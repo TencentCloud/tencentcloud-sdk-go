@@ -1262,113 +1262,119 @@ type Inbound struct {
 }
 
 type InstanceInfo struct {
-	// 实例ID。
+	// <p>实例ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例自定义名称。
+	// <p>实例自定义名称。</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 用户APPID。
+	// <p>用户APPID。</p>
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
-	// 地域。
+	// <p>地域。</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 可用区。
+	// <p>可用区。</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 产品。
+	// <p>产品。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
-	// 网络信息。
+	// <p>网络信息。</p>
 	Networks []*Network `json:"Networks,omitnil,omitempty" name:"Networks"`
 
-	// 分片信息。
+	// <p>分片信息。</p>
 	ShardNum *uint64 `json:"ShardNum,omitnil,omitempty" name:"ShardNum"`
 
-	// 副本数。
+	// <p>副本数。</p>
 	ReplicaNum *uint64 `json:"ReplicaNum,omitnil,omitempty" name:"ReplicaNum"`
 
-	// CPU.
+	// <p>CPU.</p>
 	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存。
+	// <p>内存。</p>
 	Memory *float64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 磁盘。
+	// <p>磁盘。</p>
 	Disk *uint64 `json:"Disk,omitnil,omitempty" name:"Disk"`
 
-	// 健康得分。
+	// <p>健康得分。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: HealthScore is deprecated.
 	HealthScore *float64 `json:"HealthScore,omitnil,omitempty" name:"HealthScore"`
 
-	// 异常告警。
+	// <p>异常告警。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: Warning is deprecated.
 	Warning *int64 `json:"Warning,omitnil,omitempty" name:"Warning"`
 
-	// 所属项目。
+	// <p>所属项目。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: Project is deprecated.
 	Project *string `json:"Project,omitnil,omitempty" name:"Project"`
 
-	// 所属标签。
+	// <p>所属标签。</p>
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 创建时间。
+	// <p>创建时间。</p>
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
-	// 资源状态。
+	// <p>资源状态。</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 引擎名称。
+	// <p>引擎名称。</p>
 	EngineName *string `json:"EngineName,omitnil,omitempty" name:"EngineName"`
 
-	// 引擎版本。
+	// <p>引擎版本。</p>
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// api版本
+	// <p>api版本</p>
 	ApiVersion *string `json:"ApiVersion,omitnil,omitempty" name:"ApiVersion"`
 
-	// 计费模式。
+	// <p>计费模式。</p>
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 差异化扩展信息, json格式。
+	// <p>差异化扩展信息, json格式。</p>
 	Extend *string `json:"Extend,omitnil,omitempty" name:"Extend"`
 
-	// 过期时间。
+	// <p>过期时间。</p>
 	ExpiredAt *string `json:"ExpiredAt,omitnil,omitempty" name:"ExpiredAt"`
 
-	// 是否不过期(永久)。
+	// <p>是否不过期(永久)。</p>
 	IsNoExpired *bool `json:"IsNoExpired,omitnil,omitempty" name:"IsNoExpired"`
 
-	// 产品版本，0-标准版，1-容量增强版
+	// <p>产品版本，0-标准版，1-容量增强版</p>
 	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 
-	// 实例类型
+	// <p>实例类型</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 节点类型
+	// <p>节点类型</p>
 	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 
-	// 外网地址。
+	// <p>外网地址。</p>
 	WanAddress *string `json:"WanAddress,omitnil,omitempty" name:"WanAddress"`
 
-	// 隔离时间
+	// <p>隔离时间</p>
 	IsolateAt *string `json:"IsolateAt,omitnil,omitempty" name:"IsolateAt"`
 
-	// 是否自动续费。0: 不自动续费(可以支持特权不停服)；1:自动续费；2:到期不续费.
+	// <p>是否自动续费。0: 不自动续费(可以支持特权不停服)；1:自动续费；2:到期不续费.</p>
 	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
-	// 任务状态：0-无任务；1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中
+	// <p>任务状态：0-无任务；1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中</p>
 	TaskStatus *int64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
-	// 绑定的安全组id
+	// <p>绑定的安全组id</p>
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// <p>可升级版本号</p>
+	UpgradeVersion *string `json:"UpgradeVersion,omitnil,omitempty" name:"UpgradeVersion"`
+
+	// <p>是否为内部实例</p>
+	IsInternal *bool `json:"IsInternal,omitnil,omitempty" name:"IsInternal"`
 }
 
 // Predefined struct for user
@@ -1561,23 +1567,26 @@ func (r *ModifyInstanceMaintenanceWindowResponse) FromJsonString(s string) error
 }
 
 type Network struct {
-	// VpcId(VPC网络下有效)
+	// <p>VpcId(VPC网络下有效)</p>
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网Id(VPC网络下有效)。
+	// <p>子网Id(VPC网络下有效)。</p>
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 内网访问IP。
+	// <p>内网访问IP。</p>
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 内网访问Port。
+	// <p>内网访问Port。</p>
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 旧 ip 保留时长，单位天
+	// <p>旧 ip 保留时长，单位天</p>
 	PreserveDuration *int64 `json:"PreserveDuration,omitnil,omitempty" name:"PreserveDuration"`
 
-	// 旧 ip 到期时间
+	// <p>旧 ip 到期时间</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// <p>是否是ssl网络</p>
+	IsSSL *bool `json:"IsSSL,omitnil,omitempty" name:"IsSSL"`
 }
 
 type NodeInfo struct {

@@ -357,12 +357,21 @@ func (r *AttachDisksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AttachRemoteDisksRequestParams struct {
+	// <p>指定待挂载单副本SSD硬盘的CVM实例。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// <p>一个或多个待挂载的单副本SSD硬盘ID。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
 }
 
 type AttachRemoteDisksRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>指定待挂载单副本SSD硬盘的CVM实例。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>一个或多个待挂载的单副本SSD硬盘ID。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
 }
 
 func (r *AttachRemoteDisksRequest) ToJsonString() string {
@@ -377,7 +386,8 @@ func (r *AttachRemoteDisksRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "RemoteDiskIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachRemoteDisksRequest has unknown keys!", "")
 	}
@@ -1067,12 +1077,51 @@ func (r *CreateDisksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRemoteDisksRequestParams struct {
+	// <p>单副本SSD硬盘计费类型。 </p><p>枚举值：</p><ul><li>PREPAID： 预付费，即包年包月</li><li>POSTPAID_BY_HOUR： 按小时后付费</li></ul>
+	DiskChargeType *string `json:"DiskChargeType,omitnil,omitempty" name:"DiskChargeType"`
 
+	// <p>单副本SSD硬盘大小，单位为GiB。</p><p>取值范围：[2000, 7000]</p>
+	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// <p>待挂载单副本SSD硬盘的CVM实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>实例所在的位置。通过该参数可以指定实例所属可用区，所属项目。若不指定项目，将在默认项目下进行创建。</p>
+	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
+
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数指定包年包月单副本SSD硬盘的购买时长、是否设置自动续费等属性。 创建预付费单副本SSD硬盘该参数必传，创建按小时后付费单副本SSD硬盘无需传该参数。</p>
+	DiskChargePrepaid *RemoteDiskChargePrepaid `json:"DiskChargePrepaid,omitnil,omitempty" name:"DiskChargePrepaid"`
+
+	// <p>创建单副本SSD硬盘数量，不传则默认为1。</p>
+	DiskCount *uint64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
+
+	// <p>单副本SSD的显示名称。</p>
+	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
 }
 
 type CreateRemoteDisksRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>单副本SSD硬盘计费类型。 </p><p>枚举值：</p><ul><li>PREPAID： 预付费，即包年包月</li><li>POSTPAID_BY_HOUR： 按小时后付费</li></ul>
+	DiskChargeType *string `json:"DiskChargeType,omitnil,omitempty" name:"DiskChargeType"`
+
+	// <p>单副本SSD硬盘大小，单位为GiB。</p><p>取值范围：[2000, 7000]</p>
+	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// <p>待挂载单副本SSD硬盘的CVM实例ID。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>实例所在的位置。通过该参数可以指定实例所属可用区，所属项目。若不指定项目，将在默认项目下进行创建。</p>
+	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
+
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数指定包年包月单副本SSD硬盘的购买时长、是否设置自动续费等属性。 创建预付费单副本SSD硬盘该参数必传，创建按小时后付费单副本SSD硬盘无需传该参数。</p>
+	DiskChargePrepaid *RemoteDiskChargePrepaid `json:"DiskChargePrepaid,omitnil,omitempty" name:"DiskChargePrepaid"`
+
+	// <p>创建单副本SSD硬盘数量，不传则默认为1。</p>
+	DiskCount *uint64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
+
+	// <p>单副本SSD的显示名称。</p>
+	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
 }
 
 func (r *CreateRemoteDisksRequest) ToJsonString() string {
@@ -1087,7 +1136,13 @@ func (r *CreateRemoteDisksRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "DiskChargeType")
+	delete(f, "DiskSize")
+	delete(f, "InstanceId")
+	delete(f, "Placement")
+	delete(f, "DiskChargePrepaid")
+	delete(f, "DiskCount")
+	delete(f, "DiskName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRemoteDisksRequest has unknown keys!", "")
 	}
@@ -2185,12 +2240,15 @@ func (r *DescribeRemoteDiskConfigQuotaResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRemoteDisksDeniedActionsRequestParams struct {
-
+	// <p>单副本SSD硬盘ID列表。每次批量请求单副本SSD硬盘的上限为 100。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
 }
 
 type DescribeRemoteDisksDeniedActionsRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>单副本SSD硬盘ID列表。每次批量请求单副本SSD硬盘的上限为 100。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
 }
 
 func (r *DescribeRemoteDisksDeniedActionsRequest) ToJsonString() string {
@@ -2205,7 +2263,7 @@ func (r *DescribeRemoteDisksDeniedActionsRequest) FromJsonString(s string) error
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RemoteDiskIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRemoteDisksDeniedActionsRequest has unknown keys!", "")
 	}
@@ -2656,12 +2714,27 @@ func (r *DetachDisksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetachRemoteDisksRequestParams struct {
+	// <p>指定从特定CVM实例上卸载单副本SSD硬盘。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// <p>一个或多个将要卸载的单副本SSD硬盘ID。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
+
+	// <p>强制解挂，内部使用。</p>
+	ForceDetach *bool `json:"ForceDetach,omitnil,omitempty" name:"ForceDetach"`
 }
 
 type DetachRemoteDisksRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>指定从特定CVM实例上卸载单副本SSD硬盘。</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>一个或多个将要卸载的单副本SSD硬盘ID。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
+
+	// <p>强制解挂，内部使用。</p>
+	ForceDetach *bool `json:"ForceDetach,omitnil,omitempty" name:"ForceDetach"`
 }
 
 func (r *DetachRemoteDisksRequest) ToJsonString() string {
@@ -2676,7 +2749,9 @@ func (r *DetachRemoteDisksRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "RemoteDiskIds")
+	delete(f, "ForceDetach")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachRemoteDisksRequest has unknown keys!", "")
 	}
@@ -3122,12 +3197,33 @@ func (r *InitializeDisksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquirePriceCreateRemoteDisksRequestParams struct {
+	// <p>单副本SSD硬盘计费类型。</p><p>枚举值：</p><ul><li>PREPAID： 预付费，即包年包月</li><li>POSTPAID_BY_HOUR： 按小时后付费</li></ul>
+	DiskChargeType *string `json:"DiskChargeType,omitnil,omitempty" name:"DiskChargeType"`
 
+	// <p>单副本SSD硬盘大小，单位为GiB。</p><p>取值范围：[2000, 7000]</p>
+	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。 创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。</p>
+	DiskChargePrepaid *RemoteDiskChargePrepaid `json:"DiskChargePrepaid,omitnil,omitempty" name:"DiskChargePrepaid"`
+
+	// <p>购买单副本SSD硬盘的数量。不填则默认为1。</p>
+	DiskCount *uint64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
 }
 
 type InquirePriceCreateRemoteDisksRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>单副本SSD硬盘计费类型。</p><p>枚举值：</p><ul><li>PREPAID： 预付费，即包年包月</li><li>POSTPAID_BY_HOUR： 按小时后付费</li></ul>
+	DiskChargeType *string `json:"DiskChargeType,omitnil,omitempty" name:"DiskChargeType"`
+
+	// <p>单副本SSD硬盘大小，单位为GiB。</p><p>取值范围：[2000, 7000]</p>
+	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。 创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。</p>
+	DiskChargePrepaid *RemoteDiskChargePrepaid `json:"DiskChargePrepaid,omitnil,omitempty" name:"DiskChargePrepaid"`
+
+	// <p>购买单副本SSD硬盘的数量。不填则默认为1。</p>
+	DiskCount *uint64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
 }
 
 func (r *InquirePriceCreateRemoteDisksRequest) ToJsonString() string {
@@ -3142,7 +3238,10 @@ func (r *InquirePriceCreateRemoteDisksRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "DiskChargeType")
+	delete(f, "DiskSize")
+	delete(f, "DiskChargePrepaid")
+	delete(f, "DiskCount")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceCreateRemoteDisksRequest has unknown keys!", "")
 	}
@@ -3301,12 +3400,21 @@ func (r *InquirePriceModifyDiskExtraPerformanceResponse) FromJsonString(s string
 
 // Predefined struct for user
 type InquirePriceRenewRemoteDisksRequestParams struct {
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。</p>
+	DiskChargePrepaidSet []*RemoteDiskChargePrepaid `json:"DiskChargePrepaidSet,omitnil,omitempty" name:"DiskChargePrepaidSet"`
 
+	// <p>一个或多个单副本SSD硬盘ID。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
 }
 
 type InquirePriceRenewRemoteDisksRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。</p>
+	DiskChargePrepaidSet []*RemoteDiskChargePrepaid `json:"DiskChargePrepaidSet,omitnil,omitempty" name:"DiskChargePrepaidSet"`
+
+	// <p>一个或多个单副本SSD硬盘ID。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
 }
 
 func (r *InquirePriceRenewRemoteDisksRequest) ToJsonString() string {
@@ -3321,7 +3429,8 @@ func (r *InquirePriceRenewRemoteDisksRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "DiskChargePrepaidSet")
+	delete(f, "RemoteDiskIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceRenewRemoteDisksRequest has unknown keys!", "")
 	}
@@ -4063,12 +4172,27 @@ func (r *ModifyDisksRenewFlagResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRemoteDiskAttributesRequestParams struct {
+	// <p>一个或多个待操作的单副本SSD硬盘ID。如果传入多个单副本SSD硬盘ID，只支持所有硬盘修改为同一属性。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
 
+	// <p>新的单副本SSD硬盘名称</p>
+	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
+
+	// <p>新的单副本SSD硬盘项目ID。</p>
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type ModifyRemoteDiskAttributesRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>一个或多个待操作的单副本SSD硬盘ID。如果传入多个单副本SSD硬盘ID，只支持所有硬盘修改为同一属性。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
+
+	// <p>新的单副本SSD硬盘名称</p>
+	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
+
+	// <p>新的单副本SSD硬盘项目ID。</p>
+	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 func (r *ModifyRemoteDiskAttributesRequest) ToJsonString() string {
@@ -4083,7 +4207,9 @@ func (r *ModifyRemoteDiskAttributesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RemoteDiskIds")
+	delete(f, "DiskName")
+	delete(f, "ProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRemoteDiskAttributesRequest has unknown keys!", "")
 	}
@@ -4375,6 +4501,23 @@ type Price struct {
 	UnitPriceHigh *string `json:"UnitPriceHigh,omitnil,omitempty" name:"UnitPriceHigh"`
 }
 
+type RemoteDiskChargePrepaid struct {
+	// 购买单副本SSD硬盘的时长，默认单位为月，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 需要将单副本SSD硬盘的到期时间与挂载的子机对齐时，可传入该参数。该参数表示子机当前的到期时间，此时Period如果传入，则表示子机需要续费的时长，单副本SSD硬盘会自动按对齐到子机续费后的到期时间续费。
+	CurInstanceDeadline *string `json:"CurInstanceDeadline,omitnil,omitempty" name:"CurInstanceDeadline"`
+
+	// 自动续费标识。取值范围：
+	// <ul>
+	//   <li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+	//   <li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
+	//   <li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
+	// </ul>
+	// 默认取值：NOTIFY_AND_MANUAL_RENEW。
+	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+}
+
 // Predefined struct for user
 type RenewDiskRequestParams struct {
 	// <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云硬盘的续费时长。<br>在云硬盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时云硬盘会按对齐到实例续费后的到期时间来续费。</p>
@@ -4438,12 +4581,21 @@ func (r *RenewDiskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RenewRemoteDiskRequestParams struct {
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月单副本SSD硬盘的续费时长。 在云硬盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时单副本SSD硬盘会按对齐到实例续费后的到期时间来续费。</p>
+	DiskChargePrepaid *RemoteDiskChargePrepaid `json:"DiskChargePrepaid,omitnil,omitempty" name:"DiskChargePrepaid"`
 
+	// <p>单副本SSD硬盘ID。</p>
+	RemoteDiskId *string `json:"RemoteDiskId,omitnil,omitempty" name:"RemoteDiskId"`
 }
 
 type RenewRemoteDiskRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月单副本SSD硬盘的续费时长。 在云硬盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时单副本SSD硬盘会按对齐到实例续费后的到期时间来续费。</p>
+	DiskChargePrepaid *RemoteDiskChargePrepaid `json:"DiskChargePrepaid,omitnil,omitempty" name:"DiskChargePrepaid"`
+
+	// <p>单副本SSD硬盘ID。</p>
+	RemoteDiskId *string `json:"RemoteDiskId,omitnil,omitempty" name:"RemoteDiskId"`
 }
 
 func (r *RenewRemoteDiskRequest) ToJsonString() string {
@@ -4458,7 +4610,8 @@ func (r *RenewRemoteDiskRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "DiskChargePrepaid")
+	delete(f, "RemoteDiskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewRemoteDiskRequest has unknown keys!", "")
 	}
@@ -4867,12 +5020,15 @@ func (r *TerminateDisksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type TerminateRemoteDisksRequestParams struct {
-
+	// <p>一个或多个单副本SSD硬盘ID。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
 }
 
 type TerminateRemoteDisksRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>一个或多个单副本SSD硬盘ID。</p>
+	RemoteDiskIds []*string `json:"RemoteDiskIds,omitnil,omitempty" name:"RemoteDiskIds"`
 }
 
 func (r *TerminateRemoteDisksRequest) ToJsonString() string {
@@ -4887,7 +5043,7 @@ func (r *TerminateRemoteDisksRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RemoteDiskIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateRemoteDisksRequest has unknown keys!", "")
 	}
