@@ -2514,15 +2514,15 @@ type DeleteBlockIgnoreRuleNewRequestParams struct {
 	// 是否删除全部
 	DeleteAll *int64 `json:"DeleteAll,omitnil,omitempty" name:"DeleteAll"`
 
+	// blocklist 封禁列表 whitelist 白名单列表
+	ShowType *string `json:"ShowType,omitnil,omitempty" name:"ShowType"`
+
 	// 规则列表
 	Rules []*BanAndAllowRuleDel `json:"Rules,omitnil,omitempty" name:"Rules"`
 
 	// 封禁：1，放通：100，
 	// 主要用于全部删除时区分列表类型
 	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
-
-	// blocklist 封禁列表 whitelist 白名单列表
-	ShowType *string `json:"ShowType,omitnil,omitempty" name:"ShowType"`
 }
 
 type DeleteBlockIgnoreRuleNewRequest struct {
@@ -2531,15 +2531,15 @@ type DeleteBlockIgnoreRuleNewRequest struct {
 	// 是否删除全部
 	DeleteAll *int64 `json:"DeleteAll,omitnil,omitempty" name:"DeleteAll"`
 
+	// blocklist 封禁列表 whitelist 白名单列表
+	ShowType *string `json:"ShowType,omitnil,omitempty" name:"ShowType"`
+
 	// 规则列表
 	Rules []*BanAndAllowRuleDel `json:"Rules,omitnil,omitempty" name:"Rules"`
 
 	// 封禁：1，放通：100，
 	// 主要用于全部删除时区分列表类型
 	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
-
-	// blocklist 封禁列表 whitelist 白名单列表
-	ShowType *string `json:"ShowType,omitnil,omitempty" name:"ShowType"`
 }
 
 func (r *DeleteBlockIgnoreRuleNewRequest) ToJsonString() string {
@@ -2555,9 +2555,9 @@ func (r *DeleteBlockIgnoreRuleNewRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DeleteAll")
+	delete(f, "ShowType")
 	delete(f, "Rules")
 	delete(f, "RuleType")
-	delete(f, "ShowType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBlockIgnoreRuleNewRequest has unknown keys!", "")
 	}
@@ -5186,50 +5186,50 @@ func (r *DescribeFwEdgeIpsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFwGroupInstanceInfoRequestParams struct {
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件组合
+	// <p>过滤条件组合</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 检索的起始时间，可不传
+	// <p>检索的起始时间，可不传</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 检索的截止时间，可不传
+	// <p>检索的截止时间，可不传</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// <p>排序所用到的字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 type DescribeFwGroupInstanceInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 每页条数
+	// <p>每页条数</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移值
+	// <p>偏移值</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件组合
+	// <p>过滤条件组合</p>
 	Filters []*CommonFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 检索的起始时间，可不传
+	// <p>检索的起始时间，可不传</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 检索的截止时间，可不传
+	// <p>检索的截止时间，可不传</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	// <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序所用到的字段
+	// <p>排序所用到的字段</p>
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -5260,10 +5260,10 @@ func (r *DescribeFwGroupInstanceInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFwGroupInstanceInfoResponseParams struct {
-	// 防火墙(组)详细信息
+	// <p>防火墙(组)详细信息</p>
 	VpcFwGroupLst []*VpcFwGroupInfo `json:"VpcFwGroupLst,omitnil,omitempty" name:"VpcFwGroupLst"`
 
-	// 防火墙(组)个数
+	// <p>防火墙(组)个数</p>
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8232,45 +8232,51 @@ type EnterpriseSecurityGroupRuleRuleInfo struct {
 
 // Predefined struct for user
 type ExpandCfwVerticalRequestParams struct {
-	// nat：nat防火墙，ew：东西向防火墙
+	// <p>nat：nat防火墙，ew：东西向防火墙</p>
 	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 
-	// 带宽值
+	// <p>带宽值</p>
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 防火墙实例id
+	// <p>防火墙实例id</p>
 	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
 
-	// 弹性开关 1打开 0 关闭
+	// <p>弹性开关 1打开 0 关闭</p>
 	ElasticSwitch *int64 `json:"ElasticSwitch,omitnil,omitempty" name:"ElasticSwitch"`
 
-	// 弹性带宽上限，单位Mbps
+	// <p>弹性带宽上限，单位Mbps</p>
 	ElasticBandwidth *int64 `json:"ElasticBandwidth,omitnil,omitempty" name:"ElasticBandwidth"`
 
-	// 按量计费标签
+	// <p>按量计费标签</p>
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>按流量弹性开关</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+	ElasticTrafficSwitch *int64 `json:"ElasticTrafficSwitch,omitnil,omitempty" name:"ElasticTrafficSwitch"`
 }
 
 type ExpandCfwVerticalRequest struct {
 	*tchttp.BaseRequest
 	
-	// nat：nat防火墙，ew：东西向防火墙
+	// <p>nat：nat防火墙，ew：东西向防火墙</p>
 	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 
-	// 带宽值
+	// <p>带宽值</p>
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 防火墙实例id
+	// <p>防火墙实例id</p>
 	CfwInstance *string `json:"CfwInstance,omitnil,omitempty" name:"CfwInstance"`
 
-	// 弹性开关 1打开 0 关闭
+	// <p>弹性开关 1打开 0 关闭</p>
 	ElasticSwitch *int64 `json:"ElasticSwitch,omitnil,omitempty" name:"ElasticSwitch"`
 
-	// 弹性带宽上限，单位Mbps
+	// <p>弹性带宽上限，单位Mbps</p>
 	ElasticBandwidth *int64 `json:"ElasticBandwidth,omitnil,omitempty" name:"ElasticBandwidth"`
 
-	// 按量计费标签
+	// <p>按量计费标签</p>
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// <p>按流量弹性开关</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+	ElasticTrafficSwitch *int64 `json:"ElasticTrafficSwitch,omitnil,omitempty" name:"ElasticTrafficSwitch"`
 }
 
 func (r *ExpandCfwVerticalRequest) ToJsonString() string {
@@ -8291,6 +8297,7 @@ func (r *ExpandCfwVerticalRequest) FromJsonString(s string) error {
 	delete(f, "ElasticSwitch")
 	delete(f, "ElasticBandwidth")
 	delete(f, "Tags")
+	delete(f, "ElasticTrafficSwitch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExpandCfwVerticalRequest has unknown keys!", "")
 	}
@@ -11546,96 +11553,95 @@ type NatFwSwitchDetailS struct {
 }
 
 type NatInstanceInfo struct {
-	// nat实例id
+	// <p>nat实例id</p>
 	NatinsId *string `json:"NatinsId,omitnil,omitempty" name:"NatinsId"`
 
-	// nat实例名称
+	// <p>nat实例名称</p>
 	NatinsName *string `json:"NatinsName,omitnil,omitempty" name:"NatinsName"`
 
-	// 实例所在地域
+	// <p>实例所在地域</p>
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 0: 新增模式，1:接入模式
+	// <p>0: 新增模式，1:接入模式</p>
 	FwMode *int64 `json:"FwMode,omitnil,omitempty" name:"FwMode"`
 
-	// 实例带宽大小 Mbps
+	// <p>实例带宽大小 Mbps</p>
 	BandWidth *int64 `json:"BandWidth,omitnil,omitempty" name:"BandWidth"`
 
-	// 入向带宽峰值 bps
+	// <p>入向带宽峰值 bps</p>
 	InFlowMax *int64 `json:"InFlowMax,omitnil,omitempty" name:"InFlowMax"`
 
-	// 出向带宽峰值 bps
+	// <p>出向带宽峰值 bps</p>
 	OutFlowMax *uint64 `json:"OutFlowMax,omitnil,omitempty" name:"OutFlowMax"`
 
-	// 地域中文信息
+	// <p>地域中文信息</p>
 	RegionZh *string `json:"RegionZh,omitnil,omitempty" name:"RegionZh"`
 
-	// 公网ip数组
+	// <p>公网ip数组</p>
 	EipAddress []*string `json:"EipAddress,omitnil,omitempty" name:"EipAddress"`
 
-	// 内外使用ip数组
+	// <p>内外使用ip数组</p>
 	VpcIp []*string `json:"VpcIp,omitnil,omitempty" name:"VpcIp"`
 
-	// 实例关联子网数组
+	// <p>实例关联子网数组</p>
 	Subnets []*string `json:"Subnets,omitnil,omitempty" name:"Subnets"`
 
-	// 0 :正常 1：正在初始化
+	// <p>0 :正常 1：正在初始化</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 地域区域信息
+	// <p>地域区域信息</p>
 	RegionDetail *string `json:"RegionDetail,omitnil,omitempty" name:"RegionDetail"`
 
-	// 实例所在可用区
+	// <p>实例所在可用区</p>
 	ZoneZh *string `json:"ZoneZh,omitnil,omitempty" name:"ZoneZh"`
 
-	// 实例所在可用区
+	// <p>实例所在可用区</p>
 	ZoneZhBak *string `json:"ZoneZhBak,omitnil,omitempty" name:"ZoneZhBak"`
 
-	// 已使用规则数
+	// <p>已使用规则数</p>
 	RuleUsed *uint64 `json:"RuleUsed,omitnil,omitempty" name:"RuleUsed"`
 
-	// 实例的规则限制最大规格数
+	// <p>实例的规则限制最大规格数</p>
 	RuleMax *uint64 `json:"RuleMax,omitnil,omitempty" name:"RuleMax"`
 
-	// 实例引擎版本
+	// <p>实例引擎版本</p>
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// 引擎是否可升级：0，不可升级；1，可升级
+	// <p>引擎是否可升级：0，不可升级；1，可升级</p>
 	UpdateEnable *int64 `json:"UpdateEnable,omitnil,omitempty" name:"UpdateEnable"`
 
-	// 是的需要升级引擎 支持 nat拨测 1需要 0不需要
+	// <p>是的需要升级引擎 支持 nat拨测 1需要 0不需要</p>
 	NeedProbeEngineUpdate *int64 `json:"NeedProbeEngineUpdate,omitnil,omitempty" name:"NeedProbeEngineUpdate"`
 
-	// 引擎运行模式，Normal:正常, OnlyRoute:透明模式
+	// <p>引擎运行模式，Normal:正常, OnlyRoute:透明模式</p>
 	TrafficMode *string `json:"TrafficMode,omitnil,omitempty" name:"TrafficMode"`
 
-	// 实例主所在可用区
+	// <p>实例主所在可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 实例备所在可用区
+	// <p>实例备所在可用区</p>
 	ZoneBak *string `json:"ZoneBak,omitnil,omitempty" name:"ZoneBak"`
 
-	// 引擎预约升级时间
+	// <p>引擎预约升级时间</p>
 	ReserveTime *string `json:"ReserveTime,omitnil,omitempty" name:"ReserveTime"`
 
-	// 引擎预约升级版本
+	// <p>引擎预约升级版本</p>
 	ReserveVersion *string `json:"ReserveVersion,omitnil,omitempty" name:"ReserveVersion"`
 
-	// 引擎预约升级版本状态 stable:稳定版；previewed:预览版
+	// <p>引擎预约升级版本状态 stable:稳定版；previewed:预览版</p>
 	ReserveVersionState *string `json:"ReserveVersionState,omitnil,omitempty" name:"ReserveVersionState"`
 
-	// 弹性开关
-	// 1 打开
-	// 0 关闭
+	// <p>弹性开关<br>1 打开<br>0 关闭</p>
 	ElasticSwitch *int64 `json:"ElasticSwitch,omitnil,omitempty" name:"ElasticSwitch"`
 
-	// 弹性带宽，单位Mbps
+	// <p>弹性带宽，单位Mbps</p>
 	ElasticBandwidth *int64 `json:"ElasticBandwidth,omitnil,omitempty" name:"ElasticBandwidth"`
 
-	// 是否首次开通按量付费
-	// 1 是
-	// 0 不是
+	// <p>是否首次开通按量付费<br>1 是<br>0 不是</p>
 	IsFirstAfterPay *int64 `json:"IsFirstAfterPay,omitnil,omitempty" name:"IsFirstAfterPay"`
+
+	// <p>按流量弹性开关</p><p>默认值：0</p>
+	ElasticTrafficSwitch *int64 `json:"ElasticTrafficSwitch,omitnil,omitempty" name:"ElasticTrafficSwitch"`
 }
 
 type NatSwitchListData struct {
@@ -12862,27 +12868,30 @@ type SequenceData struct {
 }
 
 type SerialRegionInfo struct {
-	// 地域
+	// <p>地域</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 分配带宽值 单位Mbps
+	// <p>分配带宽值 单位Mbps</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 弹性开关
+	// <p>弹性开关</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElasticSwitch *int64 `json:"ElasticSwitch,omitnil,omitempty" name:"ElasticSwitch"`
 
-	// 弹性带宽上限，单位Mbps
+	// <p>弹性带宽上限，单位Mbps</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElasticBandwidth *int64 `json:"ElasticBandwidth,omitnil,omitempty" name:"ElasticBandwidth"`
 
-	// 七天入向峰值带宽，单位bps
+	// <p>七天入向峰值带宽，单位bps</p>
 	InFlowMax *int64 `json:"InFlowMax,omitnil,omitempty" name:"InFlowMax"`
 
-	// 七天出向峰值带宽，单位bps
+	// <p>七天出向峰值带宽，单位bps</p>
 	OutFlowMax *int64 `json:"OutFlowMax,omitnil,omitempty" name:"OutFlowMax"`
+
+	// <p>边界按流量弹性开关</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+	ElasticTrafficSwitch *int64 `json:"ElasticTrafficSwitch,omitnil,omitempty" name:"ElasticTrafficSwitch"`
 }
 
 // Predefined struct for user
@@ -13625,97 +13634,98 @@ type VpcFwInstance struct {
 }
 
 type VpcFwInstanceInfo struct {
-	// VPC防火墙实例名称
+	// <p>VPC防火墙实例名称</p>
 	FwInsName *string `json:"FwInsName,omitnil,omitempty" name:"FwInsName"`
 
-	// VPC防火墙实例ID
+	// <p>VPC防火墙实例ID</p>
 	FwInsId *string `json:"FwInsId,omitnil,omitempty" name:"FwInsId"`
 
-	// VPC防火墙实例模式 0: 旧VPC模式防火墙 1: CCN模式防火墙
+	// <p>VPC防火墙实例模式 0: 旧VPC模式防火墙 1: CCN模式防火墙</p>
 	FwMode *int64 `json:"FwMode,omitnil,omitempty" name:"FwMode"`
 
-	// VPC防火墙接入网络实例个数
+	// <p>VPC防火墙接入网络实例个数</p>
 	JoinInsNum *int64 `json:"JoinInsNum,omitnil,omitempty" name:"JoinInsNum"`
 
-	// VPC防火墙开关个数
+	// <p>VPC防火墙开关个数</p>
 	FwSwitchNum *int64 `json:"FwSwitchNum,omitnil,omitempty" name:"FwSwitchNum"`
 
-	// VPC防火墙状态 0:正常 ， 1：创建中 2: 变更中
+	// <p>VPC防火墙状态 0:正常 ， 1：创建中 2: 变更中</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// VPC防火墙创建时间
+	// <p>VPC防火墙创建时间</p>
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 
-	// VPC 相关云联网ID列表
+	// <p>VPC 相关云联网ID列表</p>
 	CcnId []*string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
-	// VPC 相关云联网名称列表
+	// <p>VPC 相关云联网名称列表</p>
 	CcnName []*string `json:"CcnName,omitnil,omitempty" name:"CcnName"`
 
-	// VPC 相关对等连接ID列表
+	// <p>VPC 相关对等连接ID列表</p>
 	PeerConnectionId []*string `json:"PeerConnectionId,omitnil,omitempty" name:"PeerConnectionId"`
 
-	// VPC 相关对等连接名称列表
+	// <p>VPC 相关对等连接名称列表</p>
 	PeerConnectionName []*string `json:"PeerConnectionName,omitnil,omitempty" name:"PeerConnectionName"`
 
-	// VPC防火墙CVM的列表
+	// <p>VPC防火墙CVM的列表</p>
 	FwCvmLst []*VpcFwCvmInsInfo `json:"FwCvmLst,omitnil,omitempty" name:"FwCvmLst"`
 
-	// VPC防火墙接入网络实例类型列表
+	// <p>VPC防火墙接入网络实例类型列表</p>
 	JoinInsLst []*VpcFwJoinInstanceType `json:"JoinInsLst,omitnil,omitempty" name:"JoinInsLst"`
 
-	// 防火墙网关信息
+	// <p>防火墙网关信息</p>
 	FwGateway []*FwGateway `json:"FwGateway,omitnil,omitempty" name:"FwGateway"`
 
-	// 防火墙(组)ID
+	// <p>防火墙(组)ID</p>
 	FwGroupId *string `json:"FwGroupId,omitnil,omitempty" name:"FwGroupId"`
 
-	// 已使用规则数
+	// <p>已使用规则数</p>
 	RuleUsed *int64 `json:"RuleUsed,omitnil,omitempty" name:"RuleUsed"`
 
-	// 最大规则数
+	// <p>最大规则数</p>
 	RuleMax *int64 `json:"RuleMax,omitnil,omitempty" name:"RuleMax"`
 
-	// 防火墙实例带宽
+	// <p>防火墙实例带宽</p>
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 用户VPC墙总带宽
+	// <p>用户VPC墙总带宽</p>
 	UserVpcWidth *int64 `json:"UserVpcWidth,omitnil,omitempty" name:"UserVpcWidth"`
 
-	// 接入的vpc列表
+	// <p>接入的vpc列表</p>
 	JoinInsIdLst []*string `json:"JoinInsIdLst,omitnil,omitempty" name:"JoinInsIdLst"`
 
-	// 内网间峰值带宽 (单位 bps )
+	// <p>内网间峰值带宽 (单位 bps )</p>
 	FlowMax *int64 `json:"FlowMax,omitnil,omitempty" name:"FlowMax"`
 
-	// 实例引擎版本
+	// <p>实例引擎版本</p>
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// 引擎是否可升级：0，不可升级；1，可升级
+	// <p>引擎是否可升级：0，不可升级；1，可升级</p>
 	UpdateEnable *int64 `json:"UpdateEnable,omitnil,omitempty" name:"UpdateEnable"`
 
-	// 引擎运行模式，Normal:正常, OnlyRoute:透明模式
+	// <p>引擎运行模式，Normal:正常, OnlyRoute:透明模式</p>
 	TrafficMode *string `json:"TrafficMode,omitnil,omitempty" name:"TrafficMode"`
 
-	// 引擎预约升级时间
+	// <p>引擎预约升级时间</p>
 	ReserveTime *string `json:"ReserveTime,omitnil,omitempty" name:"ReserveTime"`
 
-	// 预约引擎升级版本
+	// <p>预约引擎升级版本</p>
 	ReserveVersion *string `json:"ReserveVersion,omitnil,omitempty" name:"ReserveVersion"`
 
-	// 引擎预约升级版本状态
+	// <p>引擎预约升级版本状态</p>
 	ReserveVersionState *string `json:"ReserveVersionState,omitnil,omitempty" name:"ReserveVersionState"`
 
-	// 弹性开关 1打开 0关闭
+	// <p>弹性开关 1打开 0关闭</p>
 	ElasticSwitch *int64 `json:"ElasticSwitch,omitnil,omitempty" name:"ElasticSwitch"`
 
-	// 弹性带宽，单位Mbps
+	// <p>弹性带宽，单位Mbps</p>
 	ElasticBandwidth *int64 `json:"ElasticBandwidth,omitnil,omitempty" name:"ElasticBandwidth"`
 
-	// 是否首次开通按量付费
-	// 1 是
-	// 0 不是
+	// <p>是否首次开通按量付费<br>1 是<br>0 不是</p>
 	IsFirstAfterPay *int64 `json:"IsFirstAfterPay,omitnil,omitempty" name:"IsFirstAfterPay"`
+
+	// <p>按流量弹性开关</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+	ElasticTrafficSwitch *int64 `json:"ElasticTrafficSwitch,omitnil,omitempty" name:"ElasticTrafficSwitch"`
 }
 
 type VpcFwInstanceShow struct {

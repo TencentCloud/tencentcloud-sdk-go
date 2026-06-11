@@ -6442,12 +6442,15 @@ func (r *DescribeTasksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeZonesRequestParams struct {
-
+	// <p>实例存储类型，根据磁盘类型返回支持的可用区</p><p>枚举值：</p><ul><li>PHYSICAL_LOCAL_SSD： 物理机本地ssd硬盘</li><li>CLOUD_PREMIUM： 高性能云硬盘</li><li>CLOUD_SSD： ssd云硬盘</li><li>CLOUD_HSSD： 增强型ssd云硬盘</li></ul><p>默认值：PHYSICAL_LOCAL_SSD</p>
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
 type DescribeZonesRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>实例存储类型，根据磁盘类型返回支持的可用区</p><p>枚举值：</p><ul><li>PHYSICAL_LOCAL_SSD： 物理机本地ssd硬盘</li><li>CLOUD_PREMIUM： 高性能云硬盘</li><li>CLOUD_SSD： ssd云硬盘</li><li>CLOUD_HSSD： 增强型ssd云硬盘</li></ul><p>默认值：PHYSICAL_LOCAL_SSD</p>
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 }
 
 func (r *DescribeZonesRequest) ToJsonString() string {
@@ -6462,7 +6465,7 @@ func (r *DescribeZonesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "StorageType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeZonesRequest has unknown keys!", "")
 	}
@@ -6471,10 +6474,10 @@ func (r *DescribeZonesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeZonesResponseParams struct {
-	// 返回的结果数量。
+	// <p>返回的结果数量。</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 可用区信息集合。
+	// <p>可用区信息集合。</p>
 	ZoneSet []*ZoneInfo `json:"ZoneSet,omitnil,omitempty" name:"ZoneSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

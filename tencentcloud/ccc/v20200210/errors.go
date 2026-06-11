@@ -29,6 +29,9 @@ const (
 	// AI套餐包过期，请续费或重新购买
 	FAILEDOPERATION_AILICENSEHASEXPIRED = "FailedOperation.AILicenseHasExpired"
 
+	// 智能体并发超上限
+	FAILEDOPERATION_ACQUIREQUOTA = "FailedOperation.AcquireQuota"
+
 	// 外呼失败。
 	FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
 

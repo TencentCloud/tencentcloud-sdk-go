@@ -296,6 +296,7 @@ func NewCreateFolderResponse() (response *CreateFolderResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATEDFOLDERNAME = "InvalidParameter.DuplicatedFolderName"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) CreateFolder(request *CreateFolderRequest) (response *CreateFolderResponse, err error) {
@@ -308,6 +309,7 @@ func (c *Client) CreateFolder(request *CreateFolderRequest) (response *CreateFol
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATEDFOLDERNAME = "InvalidParameter.DuplicatedFolderName"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) CreateFolderWithContext(ctx context.Context, request *CreateFolderRequest) (response *CreateFolderResponse, err error) {
@@ -2552,6 +2554,7 @@ func NewModifyFolderResponse() (response *ModifyFolderResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATEDFOLDERNAME = "InvalidParameter.DuplicatedFolderName"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) ModifyFolder(request *ModifyFolderRequest) (response *ModifyFolderResponse, err error) {
@@ -2564,6 +2567,7 @@ func (c *Client) ModifyFolder(request *ModifyFolderRequest) (response *ModifyFol
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATEDFOLDERNAME = "InvalidParameter.DuplicatedFolderName"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) ModifyFolderWithContext(ctx context.Context, request *ModifyFolderRequest) (response *ModifyFolderResponse, err error) {

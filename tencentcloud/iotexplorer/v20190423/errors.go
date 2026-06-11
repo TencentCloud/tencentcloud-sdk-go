@@ -395,6 +395,9 @@ const (
 	// 设备数量超过限制。
 	LIMITEXCEEDED_DEVICEEXCEEDLIMIT = "LimitExceeded.DeviceExceedLimit"
 
+	// 设备激活码数量超限
+	LIMITEXCEEDED_DEVICELICENSELIMITEXCEEDED = "LimitExceeded.DeviceLicenseLimitExceeded"
+
 	// 固件数量超出限制。
 	LIMITEXCEEDED_FIRMWAREEXCEEDLIMIT = "LimitExceeded.FirmwareExceedLimit"
 

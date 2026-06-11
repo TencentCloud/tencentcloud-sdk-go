@@ -3088,27 +3088,27 @@ func (r *UpdateEmailTemplateResponse) FromJsonString(s string) error {
 }
 
 type Volume struct {
-	// 日期
+	// <p>日期</p>
 	SendDate *string `json:"SendDate,omitnil,omitempty" name:"SendDate"`
 
-	// 邮件请求数量
+	// <p>邮件请求数量</p>
 	RequestCount *uint64 `json:"RequestCount,omitnil,omitempty" name:"RequestCount"`
 
-	// 腾讯云通过数量
+	// <p>腾讯云通过数量</p>
 	AcceptedCount *uint64 `json:"AcceptedCount,omitnil,omitempty" name:"AcceptedCount"`
 
-	// 送达数量
+	// <p>送达数量</p>
 	DeliveredCount *uint64 `json:"DeliveredCount,omitnil,omitempty" name:"DeliveredCount"`
 
-	// 打开邮件的用户数量，根据收件人去重
+	// <p>打开邮件总次数</p>
 	OpenedCount *uint64 `json:"OpenedCount,omitnil,omitempty" name:"OpenedCount"`
 
-	// 点击了邮件中的链接数量用户数量
+	// <p>点击了邮件中的链接数量用户数量</p>
 	ClickedCount *uint64 `json:"ClickedCount,omitnil,omitempty" name:"ClickedCount"`
 
-	// 退信数量
+	// <p>退信数量</p>
 	BounceCount *uint64 `json:"BounceCount,omitnil,omitempty" name:"BounceCount"`
 
-	// 取消订阅的用户数量
+	// <p>取消订阅的用户数量</p>
 	UnsubscribeCount *uint64 `json:"UnsubscribeCount,omitnil,omitempty" name:"UnsubscribeCount"`
 }

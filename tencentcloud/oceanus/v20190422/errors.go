@@ -119,6 +119,9 @@ const (
 	// 该变量名称已存在。
 	INVALIDPARAMETER_CREATEVARIABLEEXISTS = "InvalidParameter.CreateVariableExists"
 
+	// 文件夹名称重复
+	INVALIDPARAMETER_DUPLICATEDFOLDERNAME = "InvalidParameter.DuplicatedFolderName"
+
 	// 空间命名重复。
 	INVALIDPARAMETER_DUPLICATEDSPACENAME = "InvalidParameter.DuplicatedSpaceName"
 

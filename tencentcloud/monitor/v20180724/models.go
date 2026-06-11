@@ -1177,6 +1177,20 @@ type ConditionsTemp struct {
 	EventCondition *AlarmPolicyEventCondition `json:"EventCondition,omitnil,omitempty" name:"EventCondition"`
 }
 
+type CoverStaffInfo struct {
+	// 轮班人员id组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CoverStaffIDs []*string `json:"CoverStaffIDs,omitnil,omitempty" name:"CoverStaffIDs"`
+
+	// 轮班开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CoverStartTime *int64 `json:"CoverStartTime,omitnil,omitempty" name:"CoverStartTime"`
+
+	// 轮班结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CoverEndTime *int64 `json:"CoverEndTime,omitnil,omitempty" name:"CoverEndTime"`
+}
+
 // Predefined struct for user
 type CreateAlarmNoticeRequestParams struct {
 	// <p>模块名，这里填“monitor”</p>
@@ -2375,6 +2389,133 @@ func (r *CreateGrafanaNotificationChannelResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateGrafanaNotificationChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOnCallFormRequestParams struct {
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 值班表名称
+	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
+
+	// 值班人员id组
+	StaffInfos []*StaffInfo `json:"StaffInfos,omitnil,omitempty" name:"StaffInfos"`
+
+	// 轮转类型
+	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
+
+	// 换班时间
+	ShiftTime *string `json:"ShiftTime,omitnil,omitempty" name:"ShiftTime"`
+
+	// 有效期开始时间，单位s
+	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitnil,omitempty" name:"EffectiveStartTime"`
+
+	// 有效期结束时间，单位s
+	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitnil,omitempty" name:"EffectiveEndTime"`
+
+	// 时区(-12 - 12)
+	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 值班表描述
+	OnCallFormDesc *string `json:"OnCallFormDesc,omitnil,omitempty" name:"OnCallFormDesc"`
+
+	// 轮班信息
+	CoverStaffInfos []*CoverStaffInfo `json:"CoverStaffInfos,omitnil,omitempty" name:"CoverStaffInfos"`
+
+	// 模板绑定的标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type CreateOnCallFormRequest struct {
+	*tchttp.BaseRequest
+	
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 值班表名称
+	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
+
+	// 值班人员id组
+	StaffInfos []*StaffInfo `json:"StaffInfos,omitnil,omitempty" name:"StaffInfos"`
+
+	// 轮转类型
+	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
+
+	// 换班时间
+	ShiftTime *string `json:"ShiftTime,omitnil,omitempty" name:"ShiftTime"`
+
+	// 有效期开始时间，单位s
+	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitnil,omitempty" name:"EffectiveStartTime"`
+
+	// 有效期结束时间，单位s
+	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitnil,omitempty" name:"EffectiveEndTime"`
+
+	// 时区(-12 - 12)
+	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 值班表描述
+	OnCallFormDesc *string `json:"OnCallFormDesc,omitnil,omitempty" name:"OnCallFormDesc"`
+
+	// 轮班信息
+	CoverStaffInfos []*CoverStaffInfo `json:"CoverStaffInfos,omitnil,omitempty" name:"CoverStaffInfos"`
+
+	// 模板绑定的标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *CreateOnCallFormRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOnCallFormRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "OnCallFormName")
+	delete(f, "StaffInfos")
+	delete(f, "RotationType")
+	delete(f, "ShiftTime")
+	delete(f, "EffectiveStartTime")
+	delete(f, "EffectiveEndTime")
+	delete(f, "TimeZone")
+	delete(f, "OnCallFormDesc")
+	delete(f, "CoverStaffInfos")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOnCallFormRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOnCallFormResponseParams struct {
+	// 值班表id
+	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateOnCallFormResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOnCallFormResponseParams `json:"Response"`
+}
+
+func (r *CreateOnCallFormResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOnCallFormResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4009,6 +4150,73 @@ func (r *DeleteGrafanaNotificationChannelResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteGrafanaNotificationChannelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOnCallFormsRequestParams struct {
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 要删除的值班表id
+	OnCallFormIDs []*string `json:"OnCallFormIDs,omitnil,omitempty" name:"OnCallFormIDs"`
+}
+
+type DeleteOnCallFormsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 要删除的值班表id
+	OnCallFormIDs []*string `json:"OnCallFormIDs,omitnil,omitempty" name:"OnCallFormIDs"`
+}
+
+func (r *DeleteOnCallFormsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOnCallFormsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "OnCallFormIDs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteOnCallFormsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOnCallFormsResponseParams struct {
+	// 失败删除的排班id
+	FailedOnCallFormIDs []*string `json:"FailedOnCallFormIDs,omitnil,omitempty" name:"FailedOnCallFormIDs"`
+
+	// 成功删除的排班id
+	SuccessOnCallFormIDs []*string `json:"SuccessOnCallFormIDs,omitnil,omitempty" name:"SuccessOnCallFormIDs"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteOnCallFormsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteOnCallFormsResponseParams `json:"Response"`
+}
+
+func (r *DeleteOnCallFormsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOnCallFormsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7870,6 +8078,172 @@ func (r *DescribeNotificationContentTemplateSupportsResponse) ToJsonString() str
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNotificationContentTemplateSupportsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOnCallFormRequestParams struct {
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 值班id
+	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
+}
+
+type DescribeOnCallFormRequest struct {
+	*tchttp.BaseRequest
+	
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 值班id
+	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
+}
+
+func (r *DescribeOnCallFormRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOnCallFormRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "OnCallFormID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOnCallFormRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOnCallFormResponseParams struct {
+	// 值班详情
+	OnCallForm *OneOnCallForm `json:"OnCallForm,omitnil,omitempty" name:"OnCallForm"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOnCallFormResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOnCallFormResponseParams `json:"Response"`
+}
+
+func (r *DescribeOnCallFormResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOnCallFormResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOnCallFormsRequestParams struct {
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 分页查询起始位
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询页数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 支持userId进行检索
+	OnCallFormStaffIDs []*string `json:"OnCallFormStaffIDs,omitnil,omitempty" name:"OnCallFormStaffIDs"`
+
+	// 值班类型
+	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
+
+	// 排序方式
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 支持id、name进行检索
+	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
+}
+
+type DescribeOnCallFormsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 分页查询起始位
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询页数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 支持userId进行检索
+	OnCallFormStaffIDs []*string `json:"OnCallFormStaffIDs,omitnil,omitempty" name:"OnCallFormStaffIDs"`
+
+	// 值班类型
+	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
+
+	// 排序方式
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 支持id、name进行检索
+	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
+}
+
+func (r *DescribeOnCallFormsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOnCallFormsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OnCallFormStaffIDs")
+	delete(f, "RotationType")
+	delete(f, "Order")
+	delete(f, "OnCallFormName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOnCallFormsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOnCallFormsResponseParams struct {
+	// 排班信息
+	OnCallForms []*OnCallForm `json:"OnCallForms,omitnil,omitempty" name:"OnCallForms"`
+
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOnCallFormsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOnCallFormsResponseParams `json:"Response"`
+}
+
+func (r *DescribeOnCallFormsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOnCallFormsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14232,6 +14606,94 @@ type NotificationContentTemplateSupportDetail struct {
 	Example *string `json:"Example,omitnil,omitempty" name:"Example"`
 }
 
+type OnCallForm struct {
+	// 排班id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
+
+	// 排班名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
+
+	// 排班描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnCallFormDesc *string `json:"OnCallFormDesc,omitnil,omitempty" name:"OnCallFormDesc"`
+
+	// 轮值类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
+
+	// 换班时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShiftTime *string `json:"ShiftTime,omitnil,omitempty" name:"ShiftTime"`
+
+	// 有效期开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitnil,omitempty" name:"EffectiveStartTime"`
+
+	// 有效期结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitnil,omitempty" name:"EffectiveEndTime"`
+
+	// 时区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 当前值班人员
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrOnCallStaffs []*string `json:"CurrOnCallStaffs,omitnil,omitempty" name:"CurrOnCallStaffs"`
+
+	// 模板绑定的标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type OneOnCallForm struct {
+	// 值班id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
+
+	// 值班名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
+
+	// 值班描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnCallFormDesc *string `json:"OnCallFormDesc,omitnil,omitempty" name:"OnCallFormDesc"`
+
+	// 值班人员
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StaffInfos []*StaffInfo `json:"StaffInfos,omitnil,omitempty" name:"StaffInfos"`
+
+	// 轮班类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
+
+	// 换班时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShiftTime *string `json:"ShiftTime,omitnil,omitempty" name:"ShiftTime"`
+
+	// 值班有效期开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitnil,omitempty" name:"EffectiveStartTime"`
+
+	// 值班有效期结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitnil,omitempty" name:"EffectiveEndTime"`
+
+	// 时区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 替班信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CoverStaffInfos []*CoverStaffInfo `json:"CoverStaffInfos,omitnil,omitempty" name:"CoverStaffInfos"`
+
+	// 模板绑定的标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
 type Operator struct {
 	// 运算符标识
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -14407,13 +14869,13 @@ type PrometheusAgent struct {
 }
 
 type PrometheusAgentInfo struct {
-	// 集群类型。可填入tke、eks、tkeedge、tdcc、external，分别代表标准集群、弹性集群、边缘集群、注册集群、外部集群
+	// <p>集群类型。可填入tke、eks、tkeedge、tdcc、external，分别代表标准集群、弹性集群、边缘集群、注册集群、外部集群</p>
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 集成容器服务中关联的集群ID
+	// <p>集成容器服务中关联的集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 该参数未使用，不需要填写
+	// <p>该参数未使用，不需要填写</p>
 	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
 }
 
@@ -15880,6 +16342,12 @@ type SingleOrderedDataPoint struct {
 	Order *uint64 `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
+type StaffInfo struct {
+	// 值班人员id组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StaffIDs []*string `json:"StaffIDs,omitnil,omitempty" name:"StaffIDs"`
+}
+
 // Predefined struct for user
 type SyncPrometheusTempRequestParams struct {
 	// 实例id
@@ -17257,6 +17725,133 @@ func (r *UpdateGrafanaWhiteListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateGrafanaWhiteListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateOnCallFormRequestParams struct {
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 值班表id
+	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
+
+	// 值班表名称
+	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
+
+	// 值班人员id组
+	StaffInfos []*StaffInfo `json:"StaffInfos,omitnil,omitempty" name:"StaffInfos"`
+
+	// 轮转类型
+	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
+
+	// 换班时间
+	ShiftTime *string `json:"ShiftTime,omitnil,omitempty" name:"ShiftTime"`
+
+	// 有效期开始时间，单位s
+	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitnil,omitempty" name:"EffectiveStartTime"`
+
+	// 有效期结束时间，单位s
+	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitnil,omitempty" name:"EffectiveEndTime"`
+
+	// 时区(-12 - 12)
+	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 值班表描述
+	OnCallFormDesc *string `json:"OnCallFormDesc,omitnil,omitempty" name:"OnCallFormDesc"`
+
+	// 轮班信息
+	CoverStaffInfos []*CoverStaffInfo `json:"CoverStaffInfos,omitnil,omitempty" name:"CoverStaffInfos"`
+}
+
+type UpdateOnCallFormRequest struct {
+	*tchttp.BaseRequest
+	
+	// 固定值，为"monitor"
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 值班表id
+	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
+
+	// 值班表名称
+	OnCallFormName *string `json:"OnCallFormName,omitnil,omitempty" name:"OnCallFormName"`
+
+	// 值班人员id组
+	StaffInfos []*StaffInfo `json:"StaffInfos,omitnil,omitempty" name:"StaffInfos"`
+
+	// 轮转类型
+	RotationType *string `json:"RotationType,omitnil,omitempty" name:"RotationType"`
+
+	// 换班时间
+	ShiftTime *string `json:"ShiftTime,omitnil,omitempty" name:"ShiftTime"`
+
+	// 有效期开始时间，单位s
+	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitnil,omitempty" name:"EffectiveStartTime"`
+
+	// 有效期结束时间，单位s
+	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitnil,omitempty" name:"EffectiveEndTime"`
+
+	// 时区(-12 - 12)
+	TimeZone *float64 `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 值班表描述
+	OnCallFormDesc *string `json:"OnCallFormDesc,omitnil,omitempty" name:"OnCallFormDesc"`
+
+	// 轮班信息
+	CoverStaffInfos []*CoverStaffInfo `json:"CoverStaffInfos,omitnil,omitempty" name:"CoverStaffInfos"`
+}
+
+func (r *UpdateOnCallFormRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateOnCallFormRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "OnCallFormID")
+	delete(f, "OnCallFormName")
+	delete(f, "StaffInfos")
+	delete(f, "RotationType")
+	delete(f, "ShiftTime")
+	delete(f, "EffectiveStartTime")
+	delete(f, "EffectiveEndTime")
+	delete(f, "TimeZone")
+	delete(f, "OnCallFormDesc")
+	delete(f, "CoverStaffInfos")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateOnCallFormRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateOnCallFormResponseParams struct {
+	// 值班表id
+	OnCallFormID *string `json:"OnCallFormID,omitnil,omitempty" name:"OnCallFormID"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateOnCallFormResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateOnCallFormResponseParams `json:"Response"`
+}
+
+func (r *UpdateOnCallFormResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateOnCallFormResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

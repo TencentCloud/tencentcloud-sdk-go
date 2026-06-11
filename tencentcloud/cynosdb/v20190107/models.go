@@ -4235,6 +4235,9 @@ type CreateProxyEndPointRequestParams struct {
 
 	// <p>实例权重。</p>
 	InstanceWeights []*ProxyInstanceWeight `json:"InstanceWeights,omitnil,omitempty" name:"InstanceWeights"`
+
+	// <p>负载均衡模式</p><p>枚举值：</p><ul><li>static： 静态负载</li><li>dynamic： 动态负载</li></ul>
+	LoadBalanceMode *string `json:"LoadBalanceMode,omitnil,omitempty" name:"LoadBalanceMode"`
 }
 
 type CreateProxyEndPointRequest struct {
@@ -4293,6 +4296,9 @@ type CreateProxyEndPointRequest struct {
 
 	// <p>实例权重。</p>
 	InstanceWeights []*ProxyInstanceWeight `json:"InstanceWeights,omitnil,omitempty" name:"InstanceWeights"`
+
+	// <p>负载均衡模式</p><p>枚举值：</p><ul><li>static： 静态负载</li><li>dynamic： 动态负载</li></ul>
+	LoadBalanceMode *string `json:"LoadBalanceMode,omitnil,omitempty" name:"LoadBalanceMode"`
 }
 
 func (r *CreateProxyEndPointRequest) ToJsonString() string {
@@ -4325,6 +4331,7 @@ func (r *CreateProxyEndPointRequest) FromJsonString(s string) error {
 	delete(f, "TransSplit")
 	delete(f, "AccessMode")
 	delete(f, "InstanceWeights")
+	delete(f, "LoadBalanceMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProxyEndPointRequest has unknown keys!", "")
 	}
@@ -12835,15 +12842,21 @@ func (r *DescribeSaveBackupClustersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeServerlessInstanceSpecsRequestParams struct {
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// <p>集群级别</p>
+	ClusterLevel *string `json:"ClusterLevel,omitnil,omitempty" name:"ClusterLevel"`
 }
 
 type DescribeServerlessInstanceSpecsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 可用区
+	// <p>可用区</p>
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// <p>集群级别</p>
+	ClusterLevel *string `json:"ClusterLevel,omitnil,omitempty" name:"ClusterLevel"`
 }
 
 func (r *DescribeServerlessInstanceSpecsRequest) ToJsonString() string {
@@ -12859,6 +12872,7 @@ func (r *DescribeServerlessInstanceSpecsRequest) FromJsonString(s string) error 
 		return err
 	}
 	delete(f, "Zone")
+	delete(f, "ClusterLevel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServerlessInstanceSpecsRequest has unknown keys!", "")
 	}
@@ -12867,7 +12881,7 @@ func (r *DescribeServerlessInstanceSpecsRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeServerlessInstanceSpecsResponseParams struct {
-	// Serverless实例可选规格
+	// <p>Serverless实例可选规格</p>
 	Specs []*ServerlessSpec `json:"Specs,omitnil,omitempty" name:"Specs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18754,6 +18768,9 @@ type ModifyProxyRwSplitRequestParams struct {
 
 	// <p>libra节点故障，是否转发给其他节点</p>
 	ApQueryToOtherNode *bool `json:"ApQueryToOtherNode,omitnil,omitempty" name:"ApQueryToOtherNode"`
+
+	// <p>负载均衡模式</p><p>枚举值：</p><ul><li>static： 静态负载</li><li>dynamic： 动态负载</li></ul>
+	LoadBalanceMode *string `json:"LoadBalanceMode,omitnil,omitempty" name:"LoadBalanceMode"`
 }
 
 type ModifyProxyRwSplitRequest struct {
@@ -18809,6 +18826,9 @@ type ModifyProxyRwSplitRequest struct {
 
 	// <p>libra节点故障，是否转发给其他节点</p>
 	ApQueryToOtherNode *bool `json:"ApQueryToOtherNode,omitnil,omitempty" name:"ApQueryToOtherNode"`
+
+	// <p>负载均衡模式</p><p>枚举值：</p><ul><li>static： 静态负载</li><li>dynamic： 动态负载</li></ul>
+	LoadBalanceMode *string `json:"LoadBalanceMode,omitnil,omitempty" name:"LoadBalanceMode"`
 }
 
 func (r *ModifyProxyRwSplitRequest) ToJsonString() string {
@@ -18840,6 +18860,7 @@ func (r *ModifyProxyRwSplitRequest) FromJsonString(s string) error {
 	delete(f, "ConnectionPoolTimeOut")
 	delete(f, "ApNodeAsRoNode")
 	delete(f, "ApQueryToOtherNode")
+	delete(f, "LoadBalanceMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyProxyRwSplitRequest has unknown keys!", "")
 	}
@@ -20976,6 +20997,9 @@ type ProxyGroupRwInfo struct {
 
 	// <p>libra节点故障，是否转发给其他节点</p>
 	ApQueryToOtherNode *bool `json:"ApQueryToOtherNode,omitnil,omitempty" name:"ApQueryToOtherNode"`
+
+	// <p>自动负载</p><p>枚举值：</p><ul><li>static： 静态负载</li><li>dynamic： 动态负载</li></ul>
+	LoadBalanceMode *string `json:"LoadBalanceMode,omitnil,omitempty" name:"LoadBalanceMode"`
 }
 
 type ProxyInstanceWeight struct {

@@ -4333,6 +4333,60 @@ func (c *Client) OpenAuditServiceWithContext(ctx context.Context, request *OpenA
     return
 }
 
+func NewPromoteDBInstanceToActiveRequest() (request *PromoteDBInstanceToActiveRequest) {
+    request = &PromoteDBInstanceToActiveRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "PromoteDBInstanceToActive")
+    
+    
+    return
+}
+
+func NewPromoteDBInstanceToActiveResponse() (response *PromoteDBInstanceToActiveResponse) {
+    response = &PromoteDBInstanceToActiveResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PromoteDBInstanceToActive
+// 本接口（PromoteDBInstanceToActive）用于灾备实例转正
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+//  INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
+func (c *Client) PromoteDBInstanceToActive(request *PromoteDBInstanceToActiveRequest) (response *PromoteDBInstanceToActiveResponse, err error) {
+    return c.PromoteDBInstanceToActiveWithContext(context.Background(), request)
+}
+
+// PromoteDBInstanceToActive
+// 本接口（PromoteDBInstanceToActive）用于灾备实例转正
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+//  INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
+func (c *Client) PromoteDBInstanceToActiveWithContext(ctx context.Context, request *PromoteDBInstanceToActiveRequest) (response *PromoteDBInstanceToActiveResponse, err error) {
+    if request == nil {
+        request = NewPromoteDBInstanceToActiveRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "PromoteDBInstanceToActive")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PromoteDBInstanceToActive require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPromoteDBInstanceToActiveResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRenameInstanceRequest() (request *RenameInstanceRequest) {
     request = &RenameInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

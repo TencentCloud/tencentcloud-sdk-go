@@ -2311,7 +2311,7 @@ type AigcVideoOutputConfig struct {
 	// <p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// <p>生成视频的时长，单位：秒。</p><li>当 ModelName 是 Kling，可选值为 5、10，默认为 5；</li><li>当 ModelName 是 Hailuo，可选值为 6、10，默认为 6；</li><li>当 ModelName 是 Vidu，可指定1-10；</li><li>当 ModelName 是 GV，可选值为 8，默认为 8；</li><li>当 ModelName 是 OS，可选值为 4、8、12，默认为 8；</li><li>当 ModelName 是 PixVerse，可指定1-15，默认为5；</li>
+	// <p>生成视频的时长，单位：秒。</p><li>当 ModelName 是 Kling，可选值为3-15，默认为 5；</li><li>当 ModelName 是 Hailuo，可选值为 6、10，默认为 6；</li><li>当 ModelName 是 Vidu，可指定1-10；</li><li>当 ModelName 是 GV，可选值为 8，默认为 8；</li><li>当 ModelName 是 OS，可选值为 4、8、12，默认为 8；</li><li>当 ModelName 是 PixVerse，可指定1-15，默认为5；</li>
 	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// <p>生成视频的分辨率。</p><li>当 ModelName 是 Kling，可选值为 720P、1080P，默认为 720P；</li><li>当 ModelName 是 Hailuo，可选值为 768P、1080P，默认为 768P；</li><li>当 ModelName 是 Vidu，可选值为 720P、1080P，默认为 720P；</li><li>当 ModelName 是 GV，可选值为 720P、1080P，默认为 720P；</li><li>当 ModelName 是 OS，可选值为 720P；</li><li>当 ModelName 是 PixVerse，可选值为 540p、720p、1080p、2k、4k，默认为720p；</li>
@@ -12049,6 +12049,133 @@ func (r *DescribeAigcApiTokensResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeAigcFaceInfoAsyncInput struct {
+	// <p>需要获取人脸信息的输入视频信息。</p>
+	FileInfos []*AigcFaceInputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
+}
+
+type DescribeAigcFaceInfoAsyncOutput struct {
+	// <p>人脸信息。</p>
+	FaceInfoSet []*AigcFaceInfo `json:"FaceInfoSet,omitnil,omitempty" name:"FaceInfoSet"`
+}
+
+// Predefined struct for user
+type DescribeAigcFaceInfoAsyncRequestParams struct {
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>需要获取人脸信息的输入视频信息，最多包含一个文件。</p>
+	FileInfos []*AigcFaceInputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
+
+	// <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
+	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+
+	// <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
+	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
+}
+
+type DescribeAigcFaceInfoAsyncRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// <p>需要获取人脸信息的输入视频信息，最多包含一个文件。</p>
+	FileInfos []*AigcFaceInputFileInfo `json:"FileInfos,omitnil,omitempty" name:"FileInfos"`
+
+	// <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
+	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+
+	// <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
+	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
+}
+
+func (r *DescribeAigcFaceInfoAsyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcFaceInfoAsyncRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "FileInfos")
+	delete(f, "SessionId")
+	delete(f, "SessionContext")
+	delete(f, "TasksPriority")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAigcFaceInfoAsyncRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAigcFaceInfoAsyncResponseParams struct {
+	// <p>任务 ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAigcFaceInfoAsyncResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAigcFaceInfoAsyncResponseParams `json:"Response"`
+}
+
+func (r *DescribeAigcFaceInfoAsyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAigcFaceInfoAsyncResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAigcFaceInfoAsyncTask struct {
+	// <p>任务 ID。</p>
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// <p>任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li></p>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。</p>
+	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
+
+	// <p>扩展错误码。</p><p>参数格式：扩展错误码。</p><p>枚举值：</p><ul><li>RequestLimitExceeded： 调用超出并发限制。</li><li>InvalidParameterValue： 参数错误。</li><li>InternalError： 内部错误。</li><li>FailedOperation： 操作失败。</li></ul>
+	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
+
+	// <p>错误信息。</p>
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// <p>任务进度，取值范围 [0-100] 。</p>
+	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// <p>异步获取 AIGC 人脸信息任务的输入信息。</p>
+	Input *DescribeAigcFaceInfoAsyncInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// <p>异步获取 AIGC 人脸信息任务的输出信息。</p>
+	Output *DescribeAigcFaceInfoAsyncOutput `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// <p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+}
+
 // Predefined struct for user
 type DescribeAigcFaceInfoRequestParams struct {
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
@@ -16580,7 +16707,7 @@ func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskDetailResponseParams struct {
-	// <p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElement：创建自定义主体任务</li><li>CreateAigcCustomVoice：创建自定义音色任务</li><li>CreateAigcSubject：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li><li>CreateAigcAudioClone：AIGC 声音复刻任务</li></p>
+	// <p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElement：创建自定义主体任务</li><li>CreateAigcCustomVoice：创建自定义音色任务</li><li>CreateAigcSubject：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li><li>CreateAigcAudioClone：AIGC 声音复刻任务</li><li>DescribeAigcFaceInfoAsync：异步获取 AIGC 人脸信息任务</li></p>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// <p>任务状态，取值：</p><li>WAITING：等待中；</li><li>PROCESSING：处理中；</li><li>FINISH：已完成；</li><li>ABORTED：已终止。</li>
@@ -16716,14 +16843,17 @@ type DescribeTaskDetailResponseParams struct {
 	// <p>创建主体信息，仅当 TaskType 为 CreateAigcSubject，该字段有值。</p>
 	CreateAigcSubjectTask *CreateAigcSubjectTask `json:"CreateAigcSubjectTask,omitnil,omitempty" name:"CreateAigcSubjectTask"`
 
-	// <p>AIGC 视频转绘信息，仅当 TaskType 为AigcVideoRedrawTask，该字段有值。</p>
+	// <p>AIGC 视频转绘信息，仅当 TaskType 为 AigcVideoRedrawTask，该字段有值。</p>
 	AigcVideoRedrawTask *AigcVideoRedrawTask `json:"AigcVideoRedrawTask,omitnil,omitempty" name:"AigcVideoRedrawTask"`
 
-	// <p>AIGC音效信息，仅当TaskType为AigcAudioTask时，该字段有值。</p>
+	// <p>AIGC音效信息，仅当 TaskType 为 AigcAudioTask，该字段有值。</p>
 	AigcAudioTask *AigcAudioTask `json:"AigcAudioTask,omitnil,omitempty" name:"AigcAudioTask"`
 
-	// <p>AIGC 声音复刻信息，仅当 TaskType 为CreateAigcAudioClone，该字段有值。</p>
+	// <p>AIGC 声音复刻信息，仅当 TaskType 为 CreateAigcAudioClone，该字段有值。</p>
 	CreateAigcAudioCloneTask *CreateAigcAudioCloneTask `json:"CreateAigcAudioCloneTask,omitnil,omitempty" name:"CreateAigcAudioCloneTask"`
+
+	// <p>异步获取 AIGC 人脸信息，仅当 TaskType 为 DescribeAigcFaceInfoAsync，该字段有值。</p>
+	DescribeAigcFaceInfoAsyncTask *DescribeAigcFaceInfoAsyncTask `json:"DescribeAigcFaceInfoAsyncTask,omitnil,omitempty" name:"DescribeAigcFaceInfoAsyncTask"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -17972,165 +18102,146 @@ func (r *EnhanceMediaQualityResponse) FromJsonString(s string) error {
 }
 
 type EventContent struct {
-	// 事件句柄，调用方必须调用 ConfirmEvents 来确认消息已经收到，确认有效时间 30 秒。失效后，事件可重新被获取。
+	// <p>事件句柄，调用方必须调用 ConfirmEvents 来确认消息已经收到，确认有效时间 30 秒。失效后，事件可重新被获取。</p>
 	EventHandle *string `json:"EventHandle,omitnil,omitempty" name:"EventHandle"`
 
-	// <b>支持事件类型：</b>
-	// <li>NewFileUpload：视频上传完成；</li>
-	// <li>ProcedureStateChanged：任务流状态变更；</li>
-	// <li>FileDeleted：视频删除完成；</li>
-	// <li>RestoreMediaComplete：视频取回完成；</li>
-	// <li>PullComplete：视频转拉完成；</li>
-	// <li>EditMediaComplete：视频编辑完成；</li>
-	// <li>SplitMediaComplete：视频拆分完成；</li>
-	// <li>ComposeMediaComplete：制作媒体文件完成；</li>
-	// <li>WechatMiniProgramPublishComplete：微信小程序发布完成。</li>
-	// <li>RemoveWatermark：智能去除水印完成。</li>
-	// <li>RebuildMediaComplete：音画质重生完成事件（不推荐使用）。</li>
-	// <li>ReviewAudioVideoComplete：音视频审核完成；</li>
-	// <li>ExtractTraceWatermarkComplete：提取溯源水印完成；</li>
-	// <li>ExtractCopyRightWatermarkComplete：提取版权水印完成；</li>
-	// <li>DescribeFileAttributesComplete：获取文件属性完成；</li>
-	// <li>QualityInspectComplete：音画质检测完成；</li>
-	// <li>QualityEnhanceComplete：音画质重生任务完成；</li>
-	// <li>PersistenceComplete：剪辑固化完成；</li>
-	// <li>ComplexAdaptiveDynamicStreamingComplete：复杂自适应码流任务完成。</li>
-	// <li>ProcessMediaByMPSComplete：MPS视频处理完成。</li>
-	// <li>AigcImageTaskComplete：AIGC 生图任务完成。</li>
-	// <li>AigcVideoTaskComplete：AIGC 生视频任务完成。</li>
-	// <b>兼容 2017 版的事件类型：</b>
-	// <li>TranscodeComplete：视频转码完成；</li>
-	// <li>ConcatComplete：视频拼接完成；</li>
-	// <li>ClipComplete：视频剪辑完成；</li>
-	// <li>CreateImageSpriteComplete：视频截取雪碧图完成；</li>
-	// <li>CreateSnapshotByTimeOffsetComplete：视频按时间点截图完成。</li>
+	// <p><b>支持事件类型：</b></p><li>NewFileUpload：视频上传完成；</li><li>ProcedureStateChanged：任务流状态变更；</li><li>FileDeleted：视频删除完成；</li><li>RestoreMediaComplete：视频取回完成；</li><li>PullComplete：视频转拉完成；</li><li>EditMediaComplete：视频编辑完成；</li><li>SplitMediaComplete：视频拆分完成；</li><li>ComposeMediaComplete：制作媒体文件完成；</li><li>WechatMiniProgramPublishComplete：微信小程序发布完成。</li><li>RemoveWatermark：智能去除水印完成。</li><li>RebuildMediaComplete：音画质重生完成事件（不推荐使用）。</li><li>ReviewAudioVideoComplete：音视频审核完成；</li><li>ExtractTraceWatermarkComplete：提取溯源水印完成；</li><li>ExtractCopyRightWatermarkComplete：提取版权水印完成；</li><li>DescribeFileAttributesComplete：获取文件属性完成；</li><li>QualityInspectComplete：音画质检测完成；</li><li>QualityEnhanceComplete：音画质重生任务完成；</li><li>PersistenceComplete：剪辑固化完成；</li><li>ComplexAdaptiveDynamicStreamingComplete：复杂自适应码流任务完成。</li><li>ProcessMediaByMPSComplete：MPS视频处理完成。</li><li>AigcImageTaskComplete：AIGC 生图任务完成。</li><li>AigcVideoTaskComplete：AIGC 生视频任务完成。</li><li>DescribeAigcFaceInfoAsyncComplete：异步获取 AIGC 人脸信息任务完成。</li><b>兼容 2017 版的事件类型：</b><li>TranscodeComplete：视频转码完成；</li><li>ConcatComplete：视频拼接完成；</li><li>ClipComplete：视频剪辑完成；</li><li>CreateImageSpriteComplete：视频截取雪碧图完成；</li><li>CreateSnapshotByTimeOffsetComplete：视频按时间点截图完成。</li>
 	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
 
-	// 视频上传完成事件，当事件类型为 NewFileUpload 时有效。
+	// <p>视频上传完成事件，当事件类型为 NewFileUpload 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileUploadEvent *FileUploadTask `json:"FileUploadEvent,omitnil,omitempty" name:"FileUploadEvent"`
 
-	// 任务流状态变更事件，当事件类型为 ProcedureStateChanged 时有效。
+	// <p>任务流状态变更事件，当事件类型为 ProcedureStateChanged 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcedureStateChangeEvent *ProcedureTask `json:"ProcedureStateChangeEvent,omitnil,omitempty" name:"ProcedureStateChangeEvent"`
 
-	// 文件删除事件，当事件类型为 FileDeleted 时有效。
+	// <p>文件删除事件，当事件类型为 FileDeleted 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileDeleteEvent *FileDeleteTask `json:"FileDeleteEvent,omitnil,omitempty" name:"FileDeleteEvent"`
 
-	// 视频转拉完成事件，当事件类型为 PullComplete 时有效。
+	// <p>视频转拉完成事件，当事件类型为 PullComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PullCompleteEvent *PullUploadTask `json:"PullCompleteEvent,omitnil,omitempty" name:"PullCompleteEvent"`
 
-	// 视频编辑完成事件，当事件类型为 EditMediaComplete 时有效。
+	// <p>视频编辑完成事件，当事件类型为 EditMediaComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EditMediaCompleteEvent *EditMediaTask `json:"EditMediaCompleteEvent,omitnil,omitempty" name:"EditMediaCompleteEvent"`
 
-	// 视频拆分完成事件，当事件类型为 SplitMediaComplete 时有效。
+	// <p>视频拆分完成事件，当事件类型为 SplitMediaComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SplitMediaCompleteEvent *SplitMediaTask `json:"SplitMediaCompleteEvent,omitnil,omitempty" name:"SplitMediaCompleteEvent"`
 
-	// 制作媒体文件任务完成事件，当事件类型为 ComposeMediaComplete 时有效。
+	// <p>制作媒体文件任务完成事件，当事件类型为 ComposeMediaComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComposeMediaCompleteEvent *ComposeMediaTask `json:"ComposeMediaCompleteEvent,omitnil,omitempty" name:"ComposeMediaCompleteEvent"`
 
-	// 视频剪辑完成事件，当事件类型为 ClipComplete 时有效。
+	// <p>视频剪辑完成事件，当事件类型为 ClipComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClipCompleteEvent *ClipTask2017 `json:"ClipCompleteEvent,omitnil,omitempty" name:"ClipCompleteEvent"`
 
-	// 视频转码完成事件，当事件类型为 TranscodeComplete 时有效。
+	// <p>视频转码完成事件，当事件类型为 TranscodeComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeCompleteEvent *TranscodeTask2017 `json:"TranscodeCompleteEvent,omitnil,omitempty" name:"TranscodeCompleteEvent"`
 
-	// 视频截取雪碧图完成事件，当事件类型为 CreateImageSpriteComplete 时有效。
+	// <p>视频截取雪碧图完成事件，当事件类型为 CreateImageSpriteComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateImageSpriteCompleteEvent *CreateImageSpriteTask2017 `json:"CreateImageSpriteCompleteEvent,omitnil,omitempty" name:"CreateImageSpriteCompleteEvent"`
 
-	// 视频拼接完成事件，当事件类型为 ConcatComplete 时有效。
+	// <p>视频拼接完成事件，当事件类型为 ConcatComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConcatCompleteEvent *ConcatTask2017 `json:"ConcatCompleteEvent,omitnil,omitempty" name:"ConcatCompleteEvent"`
 
-	// 视频按时间点截图完成事件，当事件类型为 CreateSnapshotByTimeOffsetComplete 时有效。
+	// <p>视频按时间点截图完成事件，当事件类型为 CreateSnapshotByTimeOffsetComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotByTimeOffsetCompleteEvent *SnapshotByTimeOffsetTask2017 `json:"SnapshotByTimeOffsetCompleteEvent,omitnil,omitempty" name:"SnapshotByTimeOffsetCompleteEvent"`
 
-	// 微信发布完成事件，当事件类型为 WechatPublishComplete 时有效。
+	// <p>微信发布完成事件，当事件类型为 WechatPublishComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WechatPublishCompleteEvent *WechatPublishTask `json:"WechatPublishCompleteEvent,omitnil,omitempty" name:"WechatPublishCompleteEvent"`
 
-	// 微信小程序发布任务完成事件，当事件类型为 WechatMiniProgramPublishComplete 时有效。
+	// <p>微信小程序发布任务完成事件，当事件类型为 WechatMiniProgramPublishComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WechatMiniProgramPublishCompleteEvent *WechatMiniProgramPublishTask `json:"WechatMiniProgramPublishCompleteEvent,omitnil,omitempty" name:"WechatMiniProgramPublishCompleteEvent"`
 
-	// 智能去除水印完成事件，当事件类型为 RemoveWatermark 有效。
+	// <p>智能去除水印完成事件，当事件类型为 RemoveWatermark 有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoveWatermarkCompleteEvent *RemoveWatermarkTask `json:"RemoveWatermarkCompleteEvent,omitnil,omitempty" name:"RemoveWatermarkCompleteEvent"`
 
-	// 视频取回完成事件，当事件类型为 RestoreMediaComplete 时有效。
+	// <p>视频取回完成事件，当事件类型为 RestoreMediaComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RestoreMediaCompleteEvent *RestoreMediaTask `json:"RestoreMediaCompleteEvent,omitnil,omitempty" name:"RestoreMediaCompleteEvent"`
 
-	// 音画质重生完成事件，当事件类型为 RebuildMediaComplete 时有效。
+	// <p>音画质重生完成事件，当事件类型为 RebuildMediaComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RebuildMediaCompleteEvent *RebuildMediaTask `json:"RebuildMediaCompleteEvent,omitnil,omitempty" name:"RebuildMediaCompleteEvent"`
 
-	// 溯源水印提取完成事件，当事件类型为 ExtractTraceWatermarkComplete 时有效。
+	// <p>溯源水印提取完成事件，当事件类型为 ExtractTraceWatermarkComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtractTraceWatermarkCompleteEvent *ExtractTraceWatermarkTask `json:"ExtractTraceWatermarkCompleteEvent,omitnil,omitempty" name:"ExtractTraceWatermarkCompleteEvent"`
 
-	// 版权水印提取完成事件，当事件类型为 ExtractCopyRightWatermarkComplete 时有效。
+	// <p>版权水印提取完成事件，当事件类型为 ExtractCopyRightWatermarkComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtractCopyRightWatermarkCompleteEvent *ExtractCopyRightWatermarkTask `json:"ExtractCopyRightWatermarkCompleteEvent,omitnil,omitempty" name:"ExtractCopyRightWatermarkCompleteEvent"`
 
-	// 音视频审核完成事件，当事件类型为 ReviewAudioVideoComplete 时有效。
+	// <p>音视频审核完成事件，当事件类型为 ReviewAudioVideoComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReviewAudioVideoCompleteEvent *ReviewAudioVideoTask `json:"ReviewAudioVideoCompleteEvent,omitnil,omitempty" name:"ReviewAudioVideoCompleteEvent"`
 
-	// 该字段已无效。
+	// <p>该字段已无效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReduceMediaBitrateCompleteEvent *ReduceMediaBitrateTask `json:"ReduceMediaBitrateCompleteEvent,omitnil,omitempty" name:"ReduceMediaBitrateCompleteEvent"`
 
-	// 获取文件属性完成事件，当事件类型为 DescribeFileAttributesComplete 时有效。
+	// <p>获取文件属性完成事件，当事件类型为 DescribeFileAttributesComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DescribeFileAttributesCompleteEvent *DescribeFileAttributesTask `json:"DescribeFileAttributesCompleteEvent,omitnil,omitempty" name:"DescribeFileAttributesCompleteEvent"`
 
-	// 音画质检测完成事件，当事件类型为 QualityInspectComplete 时有效。
+	// <p>音画质检测完成事件，当事件类型为 QualityInspectComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QualityInspectCompleteEvent *QualityInspectTask `json:"QualityInspectCompleteEvent,omitnil,omitempty" name:"QualityInspectCompleteEvent"`
 
-	// 音画质重生完成事件，当事件类型为 QualityEnhanceComplete 时有效。
+	// <p>音画质重生完成事件，当事件类型为 QualityEnhanceComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QualityEnhanceCompleteEvent *QualityEnhanceTask `json:"QualityEnhanceCompleteEvent,omitnil,omitempty" name:"QualityEnhanceCompleteEvent"`
 
-	// 媒体转推状态变化事件，当事件类型为 MediaCastStatusChanged 时有效。
+	// <p>媒体转推状态变化事件，当事件类型为 MediaCastStatusChanged 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaCastStatusChangedEvent *MediaCastEvent `json:"MediaCastStatusChangedEvent,omitnil,omitempty" name:"MediaCastStatusChangedEvent"`
 
-	// 剪辑固化完成事件，当事件类型为 PersistenceComplete 时有效。
+	// <p>剪辑固化完成事件，当事件类型为 PersistenceComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PersistenceCompleteEvent *PersistenceCompleteTask `json:"PersistenceCompleteEvent,omitnil,omitempty" name:"PersistenceCompleteEvent"`
 
-	// 自适应码流任务信息，仅当 EventType 为ComplexAdaptiveDynamicStreamingComplete 时有效。
+	// <p>自适应码流任务信息，仅当 EventType 为ComplexAdaptiveDynamicStreamingComplete 时有效。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplexAdaptiveDynamicStreamingCompleteEvent *ComplexAdaptiveDynamicStreamingTask `json:"ComplexAdaptiveDynamicStreamingCompleteEvent,omitnil,omitempty" name:"ComplexAdaptiveDynamicStreamingCompleteEvent"`
 
-	// MPS 视频处理任务信息，仅当 EventType 为 ProcessMediaByMPSComplete 时有效。
+	// <p>MPS 视频处理任务信息，仅当 EventType 为 ProcessMediaByMPSComplete 时有效。</p>
 	ProcessMediaByMPSCompleteEvent *ProcessMediaByMPS `json:"ProcessMediaByMPSCompleteEvent,omitnil,omitempty" name:"ProcessMediaByMPSCompleteEvent"`
 
-	// AIGC 生图任务信息，仅当 EventType 为 AigcImageTaskComplete 时有效。
+	// <p>AIGC 生图任务信息，仅当 EventType 为 AigcImageTaskComplete 时有效。</p>
 	AigcImageCompleteEvent *AigcImageTask `json:"AigcImageCompleteEvent,omitnil,omitempty" name:"AigcImageCompleteEvent"`
 
-	// AIGC 生视频任务信息，仅当 EventType 为 AigcVideoTaskComplete 时有效。
+	// <p>AIGC 生视频任务信息，仅当 EventType 为 AigcVideoTaskComplete 时有效。</p>
 	AigcVideoCompleteEvent *AigcVideoTask `json:"AigcVideoCompleteEvent,omitnil,omitempty" name:"AigcVideoCompleteEvent"`
 
-	// 提取数字水印信息，仅当 EventType 为 ExtractBlindWatermarkComplete 时有效。
+	// <p>提取数字水印信息，仅当 EventType 为 ExtractBlindWatermarkComplete 时有效。</p>
 	ExtractBlindWatermarkComplete *ExtractBlindWatermarkTask `json:"ExtractBlindWatermarkComplete,omitnil,omitempty" name:"ExtractBlindWatermarkComplete"`
 
-	// AIGC 场景化生图任务信息，仅当 EventType 为 SceneAigcImageCompleteEvent 时有效。
+	// <p>AIGC 场景化生图任务信息，仅当 EventType 为 SceneAigcImageCompleteEvent 时有效。</p>
 	SceneAigcImageCompleteEvent *SceneAigcImageTask `json:"SceneAigcImageCompleteEvent,omitnil,omitempty" name:"SceneAigcImageCompleteEvent"`
 
-	// 图片异步处理任务信息，仅当 EventType 为 ProcessImageAsyncCompleteEvent 时有效。
+	// <p>图片异步处理任务信息，仅当 EventType 为 ProcessImageAsyncCompleteEvent 时有效。</p>
 	ProcessImageAsyncCompleteEvent *ProcessImageAsyncTask `json:"ProcessImageAsyncCompleteEvent,omitnil,omitempty" name:"ProcessImageAsyncCompleteEvent"`
+
+	// <p>AIGC 自定义主体信息，仅当 EventType 为 CreateAigcAdvancedCustomElementCompleteEvent，该字段有值。</p>
+	CreateAigcAdvancedCustomElementCompleteEvent *CreateAigcAdvancedCustomElementTask `json:"CreateAigcAdvancedCustomElementCompleteEvent,omitnil,omitempty" name:"CreateAigcAdvancedCustomElementCompleteEvent"`
+
+	// <p>AIGC 自定义音色信息，仅当 EventType 为 CreateAigcCustomVoiceCompleteEvent，该字段有值。</p>
+	CreateAigcCustomVoiceCompleteEvent *CreateAigcCustomVoiceTask `json:"CreateAigcCustomVoiceCompleteEvent,omitnil,omitempty" name:"CreateAigcCustomVoiceCompleteEvent"`
+
+	// <p>异步获取 AIGC 人脸信息，仅当 EventType 为 DescribeAigcFaceInfoAsyncComplete，该字段有值。</p>
+	DescribeAigcFaceInfoAsyncCompleteEvent *DescribeAigcFaceInfoAsyncTask `json:"DescribeAigcFaceInfoAsyncCompleteEvent,omitnil,omitempty" name:"DescribeAigcFaceInfoAsyncCompleteEvent"`
 }
 
 // Predefined struct for user

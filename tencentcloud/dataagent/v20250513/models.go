@@ -199,68 +199,68 @@ func (r *AddSceneResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChatAIRequestParams struct {
-	// 会话ID
+	// <p>会话ID</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 问题内容
+	// <p>问题内容</p>
 	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
 
-	// 上下文
+	// <p>上下文</p>
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
-	// 模型
+	// <p>模型</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 是否深度思考
+	// <p>是否深度思考</p>
 	DeepThinking *bool `json:"DeepThinking,omitnil,omitempty" name:"DeepThinking"`
 
-	// 数据源id
+	// <p>数据源id</p>
 	DataSourceIds []*string `json:"DataSourceIds,omitnil,omitempty" name:"DataSourceIds"`
 
-	// agent类型
+	// <p>agent类型</p>
 	AgentType *string `json:"AgentType,omitnil,omitempty" name:"AgentType"`
 
-	// 需要重新生成答案的记录ID
+	// <p>需要重新生成答案的记录ID</p>
 	OldRecordId *string `json:"OldRecordId,omitnil,omitempty" name:"OldRecordId"`
 
-	// 知识库id列表
+	// <p>知识库id列表</p>
 	KnowledgeBaseIds []*string `json:"KnowledgeBaseIds,omitnil,omitempty" name:"KnowledgeBaseIds"`
 }
 
 type ChatAIRequest struct {
 	*tchttp.BaseRequest
 	
-	// 会话ID
+	// <p>会话ID</p>
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 问题内容
+	// <p>问题内容</p>
 	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
 
-	// 上下文
+	// <p>上下文</p>
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
-	// 模型
+	// <p>模型</p>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 是否深度思考
+	// <p>是否深度思考</p>
 	DeepThinking *bool `json:"DeepThinking,omitnil,omitempty" name:"DeepThinking"`
 
-	// 数据源id
+	// <p>数据源id</p>
 	DataSourceIds []*string `json:"DataSourceIds,omitnil,omitempty" name:"DataSourceIds"`
 
-	// agent类型
+	// <p>agent类型</p>
 	AgentType *string `json:"AgentType,omitnil,omitempty" name:"AgentType"`
 
-	// 需要重新生成答案的记录ID
+	// <p>需要重新生成答案的记录ID</p>
 	OldRecordId *string `json:"OldRecordId,omitnil,omitempty" name:"OldRecordId"`
 
-	// 知识库id列表
+	// <p>知识库id列表</p>
 	KnowledgeBaseIds []*string `json:"KnowledgeBaseIds,omitnil,omitempty" name:"KnowledgeBaseIds"`
 }
 
@@ -315,17 +315,20 @@ func (r *ChatAIResponse) FromJsonString(s string) error {
 }
 
 type Chunk struct {
-	// 切片ID
+	// <p>切片ID</p>
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 切片内容
+	// <p>切片内容</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 切片的字数
+	// <p>切片的字数</p>
 	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 切片概要
+	// <p>切片概要</p>
 	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// <p>分段类型</p><p>枚举值：</p><ul><li>0： 自动分段</li><li>1： 新建分段</li></ul>
+	ChunkSource *int64 `json:"ChunkSource,omitnil,omitempty" name:"ChunkSource"`
 }
 
 type ColumnInfo struct {
@@ -664,6 +667,9 @@ type FileInfo struct {
 
 	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p>
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// <p>分片策略</p>
 	ChunkConfig *KnowledgeTaskConfig `json:"ChunkConfig,omitnil,omitempty" name:"ChunkConfig"`
@@ -1128,6 +1134,9 @@ type KnowledgeTaskConfig struct {
 
 	// <p>0：不开启图片理解，1：开启图片理解。默认1</p><p>取值范围：[1, 10000]</p><p>默认值：1</p>
 	EnableImageUnderstanding *int64 `json:"EnableImageUnderstanding,omitnil,omitempty" name:"EnableImageUnderstanding"`
+
+	// <p>是否开启表格结构化提取</p><p>枚举值：</p><ul><li>0： 不开启表格提取</li><li>1： 开启表格提取</li></ul><p>默认值：1</p>
+	EnableExtractDb *int64 `json:"EnableExtractDb,omitnil,omitempty" name:"EnableExtractDb"`
 }
 
 type ModelUserAuthority struct {
@@ -1158,38 +1167,44 @@ type ModelUserAuthority struct {
 
 // Predefined struct for user
 type ModifyChunkRequestParams struct {
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 文件ID
+	// <p>文件ID</p>
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
-	// 切片ID
+	// <p>切片ID</p>
 	ChunkId *string `json:"ChunkId,omitnil,omitempty" name:"ChunkId"`
 
-	// 编辑后的文本
+	// <p>编辑后的文本</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 知识库id
+	// <p>分段概要</p>
+	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// <p>知识库id</p>
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 }
 
 type ModifyChunkRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// <p>实例ID</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 文件ID
+	// <p>文件ID</p>
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
-	// 切片ID
+	// <p>切片ID</p>
 	ChunkId *string `json:"ChunkId,omitnil,omitempty" name:"ChunkId"`
 
-	// 编辑后的文本
+	// <p>编辑后的文本</p>
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
-	// 知识库id
+	// <p>分段概要</p>
+	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// <p>知识库id</p>
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 }
 
@@ -1209,6 +1224,7 @@ func (r *ModifyChunkRequest) FromJsonString(s string) error {
 	delete(f, "FileId")
 	delete(f, "ChunkId")
 	delete(f, "Content")
+	delete(f, "Summary")
 	delete(f, "KnowledgeBaseId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyChunkRequest has unknown keys!", "")
@@ -1428,26 +1444,26 @@ func (r *ModifyUserAuthorityResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type QueryChunkListRequestParams struct {
-	// 表示第一页
+	// <p>表示第一页</p>
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 默认一页展示 10 条
+	// <p>默认一页展示 10 条</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 知识库id
+	// <p>知识库id</p>
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 }
 
 type QueryChunkListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 表示第一页
+	// <p>表示第一页</p>
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 默认一页展示 10 条
+	// <p>默认一页展示 10 条</p>
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 知识库id
+	// <p>知识库id</p>
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 }
 
@@ -1474,10 +1490,16 @@ func (r *QueryChunkListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type QueryChunkListResponseParams struct {
-	// 总数
+	// <p>总数</p>
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 分片信息
+	// <p>文档的自动分段数</p>
+	AutoTotal *int64 `json:"AutoTotal,omitnil,omitempty" name:"AutoTotal"`
+
+	// <p>文档的手动新建分段数</p>
+	ManualTotal *int64 `json:"ManualTotal,omitnil,omitempty" name:"ManualTotal"`
+
+	// <p>分片信息</p>
 	Chunks []*Chunk `json:"Chunks,omitnil,omitempty" name:"Chunks"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

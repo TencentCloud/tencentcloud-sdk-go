@@ -1292,6 +1292,7 @@ func NewCreateDeviceResponse() (response *CreateDeviceResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_DEVICEALREADYEXIST = "InvalidParameterValue.DeviceAlreadyExist"
 //  LIMITEXCEEDED_DEVICEEXCEEDLIMIT = "LimitExceeded.DeviceExceedLimit"
+//  LIMITEXCEEDED_DEVICELICENSELIMITEXCEEDED = "LimitExceeded.DeviceLicenseLimitExceeded"
 //  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
@@ -1320,6 +1321,7 @@ func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDev
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_DEVICEALREADYEXIST = "InvalidParameterValue.DeviceAlreadyExist"
 //  LIMITEXCEEDED_DEVICEEXCEEDLIMIT = "LimitExceeded.DeviceExceedLimit"
+//  LIMITEXCEEDED_DEVICELICENSELIMITEXCEEDED = "LimitExceeded.DeviceLicenseLimitExceeded"
 //  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
@@ -1403,6 +1405,60 @@ func (c *Client) CreateDeviceChannelWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateDevicePublishSDPAnswerRequest() (request *CreateDevicePublishSDPAnswerRequest) {
+    request = &CreateDevicePublishSDPAnswerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateDevicePublishSDPAnswer")
+    
+    
+    return
+}
+
+func NewCreateDevicePublishSDPAnswerResponse() (response *CreateDevicePublishSDPAnswerResponse) {
+    response = &CreateDevicePublishSDPAnswerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDevicePublishSDPAnswer
+// 创建设备推流SDP应答，此接口调用前需要先调用CreateDeviceSDPAnswer接口以保证设备处于拉流状态，接口返回是另外一路webrtc推流SDP信息，可以用来进行标准的WHIP推流
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDevicePublishSDPAnswer(request *CreateDevicePublishSDPAnswerRequest) (response *CreateDevicePublishSDPAnswerResponse, err error) {
+    return c.CreateDevicePublishSDPAnswerWithContext(context.Background(), request)
+}
+
+// CreateDevicePublishSDPAnswer
+// 创建设备推流SDP应答，此接口调用前需要先调用CreateDeviceSDPAnswer接口以保证设备处于拉流状态，接口返回是另外一路webrtc推流SDP信息，可以用来进行标准的WHIP推流
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDevicePublishSDPAnswerWithContext(ctx context.Context, request *CreateDevicePublishSDPAnswerRequest) (response *CreateDevicePublishSDPAnswerResponse, err error) {
+    if request == nil {
+        request = NewCreateDevicePublishSDPAnswerRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "CreateDevicePublishSDPAnswer")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDevicePublishSDPAnswer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDevicePublishSDPAnswerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDeviceSDPAnswerRequest() (request *CreateDeviceSDPAnswerRequest) {
     request = &CreateDeviceSDPAnswerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1423,7 +1479,7 @@ func NewCreateDeviceSDPAnswerResponse() (response *CreateDeviceSDPAnswerResponse
 }
 
 // CreateDeviceSDPAnswer
-// 创建设备SDP应答
+// 创建设备SDP应答，调用此接口后，后台会对传入参数的设备进行拉流，并返回webrtc answer SDP返回，可以进行WHEP协议拉流。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1434,7 +1490,7 @@ func (c *Client) CreateDeviceSDPAnswer(request *CreateDeviceSDPAnswerRequest) (r
 }
 
 // CreateDeviceSDPAnswer
-// 创建设备SDP应答
+// 创建设备SDP应答，调用此接口后，后台会对传入参数的设备进行拉流，并返回webrtc answer SDP返回，可以进行WHEP协议拉流。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3087,6 +3143,60 @@ func (c *Client) DeleteDeviceWithContext(ctx context.Context, request *DeleteDev
     request.SetContext(ctx)
     
     response = NewDeleteDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDeviceSDPRequest() (request *DeleteDeviceSDPRequest) {
+    request = &DeleteDeviceSDPRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteDeviceSDP")
+    
+    
+    return
+}
+
+func NewDeleteDeviceSDPResponse() (response *DeleteDeviceSDPResponse) {
+    response = &DeleteDeviceSDPResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDeviceSDP
+// 删除设备SDP应答，此接口调用是手动结束设备后台推拉流信息，快速响应挂断需求。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteDeviceSDP(request *DeleteDeviceSDPRequest) (response *DeleteDeviceSDPResponse, err error) {
+    return c.DeleteDeviceSDPWithContext(context.Background(), request)
+}
+
+// DeleteDeviceSDP
+// 删除设备SDP应答，此接口调用是手动结束设备后台推拉流信息，快速响应挂断需求。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteDeviceSDPWithContext(ctx context.Context, request *DeleteDeviceSDPRequest) (response *DeleteDeviceSDPResponse, err error) {
+    if request == nil {
+        request = NewDeleteDeviceSDPRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "iotexplorer", APIVersion, "DeleteDeviceSDP")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDeviceSDP require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDeviceSDPResponse()
     err = c.Send(request, response)
     return
 }

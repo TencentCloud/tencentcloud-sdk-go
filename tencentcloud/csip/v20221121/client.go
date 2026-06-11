@@ -1249,6 +1249,166 @@ func (c *Client) CreateDspmWhitelistStrategyWithContext(ctx context.Context, req
     return
 }
 
+func NewCreateIaCAccessTokenRequest() (request *CreateIaCAccessTokenRequest) {
+    request = &CreateIaCAccessTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateIaCAccessToken")
+    
+    
+    return
+}
+
+func NewCreateIaCAccessTokenResponse() (response *CreateIaCAccessTokenResponse) {
+    response = &CreateIaCAccessTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateIaCAccessToken
+// 创建IaC检测接入Token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateIaCAccessToken(request *CreateIaCAccessTokenRequest) (response *CreateIaCAccessTokenResponse, err error) {
+    return c.CreateIaCAccessTokenWithContext(context.Background(), request)
+}
+
+// CreateIaCAccessToken
+// 创建IaC检测接入Token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateIaCAccessTokenWithContext(ctx context.Context, request *CreateIaCAccessTokenRequest) (response *CreateIaCAccessTokenResponse, err error) {
+    if request == nil {
+        request = NewCreateIaCAccessTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateIaCAccessToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateIaCAccessToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateIaCAccessTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateIaCFileExportJobRequest() (request *CreateIaCFileExportJobRequest) {
+    request = &CreateIaCFileExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateIaCFileExportJob")
+    
+    
+    return
+}
+
+func NewCreateIaCFileExportJobResponse() (response *CreateIaCFileExportJobResponse) {
+    response = &CreateIaCFileExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateIaCFileExportJob
+// 创建IaC检测文件导出任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateIaCFileExportJob(request *CreateIaCFileExportJobRequest) (response *CreateIaCFileExportJobResponse, err error) {
+    return c.CreateIaCFileExportJobWithContext(context.Background(), request)
+}
+
+// CreateIaCFileExportJob
+// 创建IaC检测文件导出任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateIaCFileExportJobWithContext(ctx context.Context, request *CreateIaCFileExportJobRequest) (response *CreateIaCFileExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateIaCFileExportJobRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateIaCFileExportJob")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateIaCFileExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateIaCFileExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateIaCFileReScanTaskRequest() (request *CreateIaCFileReScanTaskRequest) {
+    request = &CreateIaCFileReScanTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateIaCFileReScanTask")
+    
+    
+    return
+}
+
+func NewCreateIaCFileReScanTaskResponse() (response *CreateIaCFileReScanTaskResponse) {
+    response = &CreateIaCFileReScanTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateIaCFileReScanTask
+// 创建IaC检测文件重新扫描任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateIaCFileReScanTask(request *CreateIaCFileReScanTaskRequest) (response *CreateIaCFileReScanTaskResponse, err error) {
+    return c.CreateIaCFileReScanTaskWithContext(context.Background(), request)
+}
+
+// CreateIaCFileReScanTask
+// 创建IaC检测文件重新扫描任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateIaCFileReScanTaskWithContext(ctx context.Context, request *CreateIaCFileReScanTaskRequest) (response *CreateIaCFileReScanTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateIaCFileReScanTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "CreateIaCFileReScanTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateIaCFileReScanTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateIaCFileReScanTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRiskCenterScanTaskRequest() (request *CreateRiskCenterScanTaskRequest) {
     request = &CreateRiskCenterScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2037,6 +2197,110 @@ func (c *Client) DeleteDspmWhitelistStrategyWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDeleteDspmWhitelistStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteIaCAccessTokenRequest() (request *DeleteIaCAccessTokenRequest) {
+    request = &DeleteIaCAccessTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteIaCAccessToken")
+    
+    
+    return
+}
+
+func NewDeleteIaCAccessTokenResponse() (response *DeleteIaCAccessTokenResponse) {
+    response = &DeleteIaCAccessTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteIaCAccessToken
+// 删除IaC检测接入Token
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteIaCAccessToken(request *DeleteIaCAccessTokenRequest) (response *DeleteIaCAccessTokenResponse, err error) {
+    return c.DeleteIaCAccessTokenWithContext(context.Background(), request)
+}
+
+// DeleteIaCAccessToken
+// 删除IaC检测接入Token
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteIaCAccessTokenWithContext(ctx context.Context, request *DeleteIaCAccessTokenRequest) (response *DeleteIaCAccessTokenResponse, err error) {
+    if request == nil {
+        request = NewDeleteIaCAccessTokenRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteIaCAccessToken")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteIaCAccessToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteIaCAccessTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteIaCFileRequest() (request *DeleteIaCFileRequest) {
+    request = &DeleteIaCFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DeleteIaCFile")
+    
+    
+    return
+}
+
+func NewDeleteIaCFileResponse() (response *DeleteIaCFileResponse) {
+    response = &DeleteIaCFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteIaCFile
+// 删除IaC检测文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteIaCFile(request *DeleteIaCFileRequest) (response *DeleteIaCFileResponse, err error) {
+    return c.DeleteIaCFileWithContext(context.Background(), request)
+}
+
+// DeleteIaCFile
+// 删除IaC检测文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteIaCFileWithContext(ctx context.Context, request *DeleteIaCFileRequest) (response *DeleteIaCFileResponse, err error) {
+    if request == nil {
+        request = NewDeleteIaCFileRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DeleteIaCFile")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteIaCFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteIaCFileResponse()
     err = c.Send(request, response)
     return
 }
@@ -9155,6 +9419,216 @@ func (c *Client) DescribeHighBaseLineRiskListWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeIaCFileListRequest() (request *DescribeIaCFileListRequest) {
+    request = &DescribeIaCFileListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeIaCFileList")
+    
+    
+    return
+}
+
+func NewDescribeIaCFileListResponse() (response *DescribeIaCFileListResponse) {
+    response = &DescribeIaCFileListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIaCFileList
+// 获取IaC检测文件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeIaCFileList(request *DescribeIaCFileListRequest) (response *DescribeIaCFileListResponse, err error) {
+    return c.DescribeIaCFileListWithContext(context.Background(), request)
+}
+
+// DescribeIaCFileList
+// 获取IaC检测文件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeIaCFileListWithContext(ctx context.Context, request *DescribeIaCFileListRequest) (response *DescribeIaCFileListResponse, err error) {
+    if request == nil {
+        request = NewDescribeIaCFileListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeIaCFileList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIaCFileList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIaCFileListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIaCFileOverviewRequest() (request *DescribeIaCFileOverviewRequest) {
+    request = &DescribeIaCFileOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeIaCFileOverview")
+    
+    
+    return
+}
+
+func NewDescribeIaCFileOverviewResponse() (response *DescribeIaCFileOverviewResponse) {
+    response = &DescribeIaCFileOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIaCFileOverview
+// 获取IaC检测文件概览
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeIaCFileOverview(request *DescribeIaCFileOverviewRequest) (response *DescribeIaCFileOverviewResponse, err error) {
+    return c.DescribeIaCFileOverviewWithContext(context.Background(), request)
+}
+
+// DescribeIaCFileOverview
+// 获取IaC检测文件概览
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeIaCFileOverviewWithContext(ctx context.Context, request *DescribeIaCFileOverviewRequest) (response *DescribeIaCFileOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeIaCFileOverviewRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeIaCFileOverview")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIaCFileOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIaCFileOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIaCFileReportRequest() (request *DescribeIaCFileReportRequest) {
+    request = &DescribeIaCFileReportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeIaCFileReport")
+    
+    
+    return
+}
+
+func NewDescribeIaCFileReportResponse() (response *DescribeIaCFileReportResponse) {
+    response = &DescribeIaCFileReportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIaCFileReport
+// 获取IaC检测文件报告
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeIaCFileReport(request *DescribeIaCFileReportRequest) (response *DescribeIaCFileReportResponse, err error) {
+    return c.DescribeIaCFileReportWithContext(context.Background(), request)
+}
+
+// DescribeIaCFileReport
+// 获取IaC检测文件报告
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeIaCFileReportWithContext(ctx context.Context, request *DescribeIaCFileReportRequest) (response *DescribeIaCFileReportResponse, err error) {
+    if request == nil {
+        request = NewDescribeIaCFileReportRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeIaCFileReport")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIaCFileReport require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIaCFileReportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIaCTokenListRequest() (request *DescribeIaCTokenListRequest) {
+    request = &DescribeIaCTokenListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeIaCTokenList")
+    
+    
+    return
+}
+
+func NewDescribeIaCTokenListResponse() (response *DescribeIaCTokenListResponse) {
+    response = &DescribeIaCTokenListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeIaCTokenList
+// 获取IaC检测接入Token列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeIaCTokenList(request *DescribeIaCTokenListRequest) (response *DescribeIaCTokenListResponse, err error) {
+    return c.DescribeIaCTokenListWithContext(context.Background(), request)
+}
+
+// DescribeIaCTokenList
+// 获取IaC检测接入Token列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeIaCTokenListWithContext(ctx context.Context, request *DescribeIaCTokenListRequest) (response *DescribeIaCTokenListResponse, err error) {
+    if request == nil {
+        request = NewDescribeIaCTokenListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "DescribeIaCTokenList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIaCTokenList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIaCTokenListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeIpInvokeRecordRequest() (request *DescribeIpInvokeRecordRequest) {
     request = &DescribeIpInvokeRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14235,6 +14709,60 @@ func (c *Client) ModifyDspmWhitelistStrategyWithContext(ctx context.Context, req
     return
 }
 
+func NewModifyIaCTokenPeriodRequest() (request *ModifyIaCTokenPeriodRequest) {
+    request = &ModifyIaCTokenPeriodRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "ModifyIaCTokenPeriod")
+    
+    
+    return
+}
+
+func NewModifyIaCTokenPeriodResponse() (response *ModifyIaCTokenPeriodResponse) {
+    response = &ModifyIaCTokenPeriodResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyIaCTokenPeriod
+// 修改IaC检测接入Token存储周期
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyIaCTokenPeriod(request *ModifyIaCTokenPeriodRequest) (response *ModifyIaCTokenPeriodResponse, err error) {
+    return c.ModifyIaCTokenPeriodWithContext(context.Background(), request)
+}
+
+// ModifyIaCTokenPeriod
+// 修改IaC检测接入Token存储周期
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyIaCTokenPeriodWithContext(ctx context.Context, request *ModifyIaCTokenPeriodRequest) (response *ModifyIaCTokenPeriodResponse, err error) {
+    if request == nil {
+        request = NewModifyIaCTokenPeriodRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "csip", APIVersion, "ModifyIaCTokenPeriod")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyIaCTokenPeriod require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyIaCTokenPeriodResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyOrganizationAccountStatusRequest() (request *ModifyOrganizationAccountStatusRequest) {
     request = &ModifyOrganizationAccountStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14258,11 +14786,9 @@ func NewModifyOrganizationAccountStatusResponse() (response *ModifyOrganizationA
 // 修改集团账号状态
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  OPERATIONDENIED = "OperationDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyOrganizationAccountStatus(request *ModifyOrganizationAccountStatusRequest) (response *ModifyOrganizationAccountStatusResponse, err error) {
     return c.ModifyOrganizationAccountStatusWithContext(context.Background(), request)
 }
@@ -14271,11 +14797,9 @@ func (c *Client) ModifyOrganizationAccountStatus(request *ModifyOrganizationAcco
 // 修改集团账号状态
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  OPERATIONDENIED = "OperationDenied"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyOrganizationAccountStatusWithContext(ctx context.Context, request *ModifyOrganizationAccountStatusRequest) (response *ModifyOrganizationAccountStatusResponse, err error) {
     if request == nil {
         request = NewModifyOrganizationAccountStatusRequest()

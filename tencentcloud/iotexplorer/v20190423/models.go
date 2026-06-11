@@ -1939,6 +1939,77 @@ func (r *CreateDeviceChannelResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDevicePublishSDPAnswerRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// SDP提议
+	SDPOffer *string `json:"SDPOffer,omitnil,omitempty" name:"SDPOffer"`
+}
+
+type CreateDevicePublishSDPAnswerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// SDP提议
+	SDPOffer *string `json:"SDPOffer,omitnil,omitempty" name:"SDPOffer"`
+}
+
+func (r *CreateDevicePublishSDPAnswerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDevicePublishSDPAnswerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "SDPOffer")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDevicePublishSDPAnswerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDevicePublishSDPAnswerResponseParams struct {
+	// SDP应答
+	SDPAnswer *string `json:"SDPAnswer,omitnil,omitempty" name:"SDPAnswer"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDevicePublishSDPAnswerResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDevicePublishSDPAnswerResponseParams `json:"Response"`
+}
+
+func (r *CreateDevicePublishSDPAnswerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDevicePublishSDPAnswerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDeviceRequestParams struct {
 	// 产品ID。
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -2054,6 +2125,9 @@ type CreateDeviceSDPAnswerRequestParams struct {
 
 	// SDP提议
 	SDPOffer *string `json:"SDPOffer,omitnil,omitempty" name:"SDPOffer"`
+
+	// 客户自定义拉流标识
+	RequesterTag *string `json:"RequesterTag,omitnil,omitempty" name:"RequesterTag"`
 }
 
 type CreateDeviceSDPAnswerRequest struct {
@@ -2067,6 +2141,9 @@ type CreateDeviceSDPAnswerRequest struct {
 
 	// SDP提议
 	SDPOffer *string `json:"SDPOffer,omitnil,omitempty" name:"SDPOffer"`
+
+	// 客户自定义拉流标识
+	RequesterTag *string `json:"RequesterTag,omitnil,omitempty" name:"RequesterTag"`
 }
 
 func (r *CreateDeviceSDPAnswerRequest) ToJsonString() string {
@@ -2084,6 +2161,7 @@ func (r *CreateDeviceSDPAnswerRequest) FromJsonString(s string) error {
 	delete(f, "ProductId")
 	delete(f, "DeviceName")
 	delete(f, "SDPOffer")
+	delete(f, "RequesterTag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDeviceSDPAnswerRequest has unknown keys!", "")
 	}
@@ -4621,6 +4699,67 @@ func (r *DeleteDeviceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDeviceSDPRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+}
+
+type DeleteDeviceSDPRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+}
+
+func (r *DeleteDeviceSDPRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeviceSDPRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDeviceSDPRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDeviceSDPResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDeviceSDPResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDeviceSDPResponseParams `json:"Response"`
+}
+
+func (r *DeleteDeviceSDPResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeviceSDPResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

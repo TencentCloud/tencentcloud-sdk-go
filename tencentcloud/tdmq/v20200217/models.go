@@ -13786,98 +13786,105 @@ type PulsarNetworkAccessPointInfo struct {
 }
 
 type PulsarProClusterInfo struct {
-	// 集群Id。
+	// <p>集群Id。</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 集群名称。
+	// <p>集群名称。</p>
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 说明信息。
+	// <p>说明信息。</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 创建时间
+	// <p>创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 集群状态，0:创建中，1:正常，2:隔离
+	// <p>集群状态，0:创建中，1:正常，2:隔离</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 集群版本
+	// <p>集群版本</p>
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 节点分布情况
+	// <p>节点分布情况</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeDistribution []*InstanceNodeDistribution `json:"NodeDistribution,omitnil,omitempty" name:"NodeDistribution"`
 
-	// 最大储存容量，单位：MB
+	// <p>最大储存容量，单位：MB</p>
 	MaxStorage *uint64 `json:"MaxStorage,omitnil,omitempty" name:"MaxStorage"`
 
-	// 是否可以修改路由
+	// <p>是否可以修改路由</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CanEditRoute *bool `json:"CanEditRoute,omitnil,omitempty" name:"CanEditRoute"`
 
-	// 代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储
+	// <p>代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingLabelVersion *string `json:"BillingLabelVersion,omitnil,omitempty" name:"BillingLabelVersion"`
 
-	// 实例到期时间戳，毫秒级精度。
+	// <p>实例到期时间戳，毫秒级精度。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 是否开启自动创建主题
-	// true就是开启了，false是关闭
+	// <p>是否开启自动创建主题<br>true就是开启了，false是关闭</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoCreateTopicStatus *bool `json:"AutoCreateTopicStatus,omitnil,omitempty" name:"AutoCreateTopicStatus"`
 
-	// 自动创建主题的默认分区数，如果没开启就是0
+	// <p>自动创建主题的默认分区数，如果没开启就是0</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultPartitionNumber *int64 `json:"DefaultPartitionNumber,omitnil,omitempty" name:"DefaultPartitionNumber"`
 
-	// 用户自定义的租户别名，如果没有，会复用专业集群 ID
+	// <p>用户自定义的租户别名，如果没有，会复用专业集群 ID</p>
 	Tenant *string `json:"Tenant,omitnil,omitempty" name:"Tenant"`
 
-	// 删除保护开关标识
+	// <p>删除保护开关标识</p>
 	DeleteProtection *int64 `json:"DeleteProtection,omitnil,omitempty" name:"DeleteProtection"`
+
+	// <p>是否开启弹性tps</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul>
+	ElasticTpsEnabled *int64 `json:"ElasticTpsEnabled,omitnil,omitempty" name:"ElasticTpsEnabled"`
+
+	// <p>是否开启数据加密</p><p>枚举值：</p><ul><li>0： 关闭数据加密</li><li>1： 开启数据加密</li></ul>
+	EncryptionStatus *int64 `json:"EncryptionStatus,omitnil,omitempty" name:"EncryptionStatus"`
 }
 
 type PulsarProClusterSpecInfo struct {
-	// 集群规格名称
+	// <p>集群规格名称</p>
 	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
 
-	// 峰值tps
+	// <p>峰值tps</p>
 	MaxTps *uint64 `json:"MaxTps,omitnil,omitempty" name:"MaxTps"`
 
-	// 峰值带宽。单位：mbps
+	// <p>峰值带宽。单位：mbps</p>
 	MaxBandWidth *uint64 `json:"MaxBandWidth,omitnil,omitempty" name:"MaxBandWidth"`
 
-	// 最大命名空间个数
+	// <p>最大命名空间个数</p>
 	MaxNamespaces *uint64 `json:"MaxNamespaces,omitnil,omitempty" name:"MaxNamespaces"`
 
-	// 可以创建的最大主题数
+	// <p>可以创建的最大主题数</p>
 	MaxTopics *uint64 `json:"MaxTopics,omitnil,omitempty" name:"MaxTopics"`
 
-	// 规格外弹性TPS
+	// <p>规格外弹性TPS</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScalableTps *uint64 `json:"ScalableTps,omitnil,omitempty" name:"ScalableTps"`
 
-	// 32或者128
-	// 当前集群topic的最大分区数
+	// <p>32或者128<br>当前集群topic的最大分区数</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxPartitions *uint64 `json:"MaxPartitions,omitnil,omitempty" name:"MaxPartitions"`
 
-	// 最大延迟消息数量。0代表没有限制	
+	// <p>最大延迟消息数量。0代表没有限制</p>
 	MaxDelayedMessages *int64 `json:"MaxDelayedMessages,omitnil,omitempty" name:"MaxDelayedMessages"`
 
-	// 可以创建的最大主题分区数
+	// <p>可以创建的最大主题分区数</p>
 	MaxTopicsPartitioned *int64 `json:"MaxTopicsPartitioned,omitnil,omitempty" name:"MaxTopicsPartitioned"`
 
-	// 单broker最大链接数
+	// <p>单broker最大链接数</p>
 	BrokerMaxConnections *int64 `json:"BrokerMaxConnections,omitnil,omitempty" name:"BrokerMaxConnections"`
 
-	// 单IP最大链接数
+	// <p>单IP最大链接数</p>
 	BrokerMaxConnectionsPerIp *int64 `json:"BrokerMaxConnectionsPerIp,omitnil,omitempty" name:"BrokerMaxConnectionsPerIp"`
 
-	// 弹性存储集群最大存储规格；固定存储该值为0
+	// <p>弹性存储集群最大存储规格；固定存储该值为0</p>
 	MaximumElasticStorage *int64 `json:"MaximumElasticStorage,omitnil,omitempty" name:"MaximumElasticStorage"`
+
+	// <p>当前集群可使用的全量TPS，包括弹性TPS</p>
+	TotalTps *int64 `json:"TotalTps,omitnil,omitempty" name:"TotalTps"`
 }
 
 type PulsarProInstance struct {

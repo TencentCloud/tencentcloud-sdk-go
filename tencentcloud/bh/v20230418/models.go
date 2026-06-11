@@ -490,62 +490,89 @@ func (r *AddUserGroupMembersResponse) FromJsonString(s string) error {
 }
 
 type AppAsset struct {
-	// 应用资产id
+	// <p>应用资产id</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 实例id
+	// <p>实例id</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 资产名称
+	// <p>资产名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 应用服务器id
+	// <p>应用服务器id</p>
 	DeviceId *uint64 `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
-	// 应用服务器账号id
+	// <p>应用服务器账号id</p>
 	DeviceAccountId *uint64 `json:"DeviceAccountId,omitnil,omitempty" name:"DeviceAccountId"`
 
-	// 应用资产类型。1-web应用
+	// <p>应用资产类型。1-web应用</p>
 	Kind *uint64 `json:"Kind,omitnil,omitempty" name:"Kind"`
 
-	// 客户端工具路径
+	// <p>客户端工具路径</p>
 	ClientAppPath *string `json:"ClientAppPath,omitnil,omitempty" name:"ClientAppPath"`
 
-	// 客户端工具类型
+	// <p>客户端工具类型</p>
 	ClientAppKind *string `json:"ClientAppKind,omitnil,omitempty" name:"ClientAppKind"`
 
-	// 应用资产url
+	// <p>应用资产url</p>
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 托管状态。0-未托管，1-已托管
+	// <p>托管状态</p><p>枚举值：</p><ul><li>0： 未托管</li><li>1： 已托管</li></ul>
 	BindStatus *uint64 `json:"BindStatus,omitnil,omitempty" name:"BindStatus"`
 
-	// 应用服务器实例id
+	// <p>应用服务器实例id</p>
 	DeviceInstanceId *string `json:"DeviceInstanceId,omitnil,omitempty" name:"DeviceInstanceId"`
 
-	// 应用服务器名称
+	// <p>应用服务器名称</p>
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
-	// 应用服务器账号名称
+	// <p>应用服务器账号名称</p>
 	DeviceAccountName *string `json:"DeviceAccountName,omitnil,omitempty" name:"DeviceAccountName"`
 
-	// 堡垒机实例id
+	// <p>堡垒机实例id</p>
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 堡垒机实例信息
+	// <p>堡垒机实例信息</p>
 	Resource *Resource `json:"Resource,omitnil,omitempty" name:"Resource"`
 
-	// 网络域id
+	// <p>网络域id</p>
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
-	// 网络域名称
+	// <p>网络域名称</p>
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
-	// 资产组信息
+	// <p>资产组信息</p>
 	GroupSet []*Group `json:"GroupSet,omitnil,omitempty" name:"GroupSet"`
 
-	// 资产所属部门
+	// <p>资产所属部门</p>
 	Department *Department `json:"Department,omitnil,omitempty" name:"Department"`
+
+	// <p>账号数量</p>
+	AccountCount *uint64 `json:"AccountCount,omitnil,omitempty" name:"AccountCount"`
+
+	// <p>代填类型</p><p>枚举值：</p><ul><li>0： 不支持代填</li><li>1： 元素定位代填</li></ul>
+	AgentInputType *uint64 `json:"AgentInputType,omitnil,omitempty" name:"AgentInputType"`
+
+	// <p>是否自动提交</p><p>枚举值：</p><ul><li>0： 不自动提交</li><li>1： 自动提交</li></ul>
+	AgentInputSubmit *uint64 `json:"AgentInputSubmit,omitnil,omitempty" name:"AgentInputSubmit"`
+
+	// <p>用户名输入框选择器类型</p><p>枚举值：</p><ul><li>id： html标签id属性</li><li>name： html标签name属性</li><li>selector： css选择器</li><li>xpath： xpath</li></ul>
+	UserNameType *string `json:"UserNameType,omitnil,omitempty" name:"UserNameType"`
+
+	// <p>用户名输入框选择器属性</p>
+	UserNameValue *string `json:"UserNameValue,omitnil,omitempty" name:"UserNameValue"`
+
+	// <p>密码输入框选择器类型</p><p>枚举值：</p><ul><li>id： html标签id属性</li><li>name： html标签name属性</li><li>selector： css选择器</li><li>xpath： xpath</li></ul>
+	PasswordType *string `json:"PasswordType,omitnil,omitempty" name:"PasswordType"`
+
+	// <p>密码输入框选择器属性</p>
+	PasswordValue *string `json:"PasswordValue,omitnil,omitempty" name:"PasswordValue"`
+
+	// <p>提交按钮选择器类型，为空表示不支持自动提交</p><p>枚举值：</p><ul><li>id： html标签id属性</li><li>name： html标签name属性</li><li>selector： css选择器</li><li>xpath： xpath</li></ul>
+	SubmitType *string `json:"SubmitType,omitnil,omitempty" name:"SubmitType"`
+
+	// <p>提交按钮选择器属性值</p>
+	SubmitValue *string `json:"SubmitValue,omitnil,omitempty" name:"SubmitValue"`
 }
 
 type AssetSyncFlags struct {

@@ -214,7 +214,7 @@ type Cluster struct {
 	// <p>集群创建时间</p>
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// <p>最后一次操作集群的时间</p>
+	// <p>最后一次操作集群的时间</p><p>默认值：-</p>
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// <p>CU 数量</p>
@@ -242,7 +242,7 @@ type Cluster struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// <p>集群隔离时间; 没隔离时间，则为 -</p>
+	// <p>集群隔离时间; 没隔离时间，则为 -</p><p>默认值：-</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolatedTime *string `json:"IsolatedTime,omitnil,omitempty" name:"IsolatedTime"`
 
@@ -402,6 +402,17 @@ type Cluster struct {
 
 	// <p>单作业最大可配置 CU 数</p>
 	MaxCuPerJob *int64 `json:"MaxCuPerJob,omitnil,omitempty" name:"MaxCuPerJob"`
+
+	// <p>元数据服务信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HiveMetastore *HiveMetastoreInfo `json:"HiveMetastore,omitnil,omitempty" name:"HiveMetastore"`
+
+	// <p>安全组</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// <p>弹性网卡方案，0：POD弹性网卡，1：Node弹性网卡。</p><p>枚举值：</p><ul><li>0： POD弹性网卡</li><li>1： Node弹性网卡</li></ul>
+	NetEniType *int64 `json:"NetEniType,omitnil,omitempty" name:"NetEniType"`
 }
 
 type ClusterGroupSetItem struct {
@@ -4091,6 +4102,50 @@ type HadoopYarnItem struct {
 	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
 }
 
+type HiveMetastoreInfo struct {
+	// <p>hms serialId</p>
+	HiveMetastoreSerialId *string `json:"HiveMetastoreSerialId,omitnil,omitempty" name:"HiveMetastoreSerialId"`
+
+	// <p>集群SerialId</p>
+	ClusterGroupSerialId *string `json:"ClusterGroupSerialId,omitnil,omitempty" name:"ClusterGroupSerialId"`
+
+	// <p>状态枚举</p><p>枚举值：</p><ul><li>3： 运行中</li><li>1： 初始化中</li><li>2： 部署中</li><li>-2： 已删除</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>使用核数</p><p>单位：cu</p>
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// <p>使用内存资源</p><p>单位：GB</p>
+	MemGB *int64 `json:"MemGB,omitnil,omitempty" name:"MemGB"`
+
+	// <p>副本数</p>
+	Replica *int64 `json:"Replica,omitnil,omitempty" name:"Replica"`
+
+	// <p>hms 访问uri</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HiveUri *string `json:"HiveUri,omitnil,omitempty" name:"HiveUri"`
+
+	// <p>命名空间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HiveNamespace *string `json:"HiveNamespace,omitnil,omitempty" name:"HiveNamespace"`
+
+	// <p>创建时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// <p>更新时间</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// <p>Warehouse地址</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HiveMetastoreWarehouseDir *string `json:"HiveMetastoreWarehouseDir,omitnil,omitempty" name:"HiveMetastoreWarehouseDir"`
+
+	// <p>高级参数</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Config []*Property `json:"Config,omitnil,omitempty" name:"Config"`
+}
+
 type JobConfig struct {
 	// <p>作业Id</p>
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -5619,10 +5674,10 @@ type Setats struct {
 	// <p>类型：0 公网，1 内网</p><p>枚举值：</p><ul><li>0： 公网</li><li>1： 内网</li></ul><p>默认值：0</p>
 	WebUIType *int64 `json:"WebUIType,omitnil,omitempty" name:"WebUIType"`
 
-	// <p>setats集群的名字</p>
+	// <p>Setats集群名字</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// <p>setats集群注释</p>
+	// <p>Setats集群描述</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 

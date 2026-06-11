@@ -20,195 +20,6 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
-type AIConfig struct {
-	// AI 分析类型。可选值为 Facemask(口罩识别)、Chefhat(厨师帽识别)、Smoking(抽烟检测)、Chefcloth(厨师服识别)、PhoneCall(接打电话识别)、Pet(宠物识别)、Body(人体识别)和Car(车辆车牌识别)等
-	DetectType *string `json:"DetectType,omitnil,omitempty" name:"DetectType"`
-
-	// 截图频率。可选值1～20秒
-	TimeInterval *uint64 `json:"TimeInterval,omitnil,omitempty" name:"TimeInterval"`
-
-	// 模板生效的时间段。最多包含5组时间段
-	OperTimeSlot []*OperTimeSlot `json:"OperTimeSlot,omitnil,omitempty" name:"OperTimeSlot"`
-}
-
-type AITaskInfo struct {
-	// AI 任务 ID
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// AI 任务名称
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// AI 任务描述
-	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
-
-	// AI 任务状态。"on"代表开启了 AI 分析任务，"off"代表停止 AI 分析任务
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 通道 ID 列表
-	ChannelList []*string `json:"ChannelList,omitnil,omitempty" name:"ChannelList"`
-
-	// AI 结果回调地址
-	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
-
-	// AI 配置列表
-	Templates []*AITemplates `json:"Templates,omitnil,omitempty" name:"Templates"`
-
-	// 创建时间
-	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
-
-	// 更新时间
-	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
-}
-
-type AITaskResultData struct {
-	// AI 任务 ID
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 在 BeginTime 和 EndTime 时间之内，有识别结果的 AI 调用次数（分页依据此数值）
-	AIResultCount *uint64 `json:"AIResultCount,omitnil,omitempty" name:"AIResultCount"`
-
-	// AI 任务执行结果详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AIResults *AITaskResultInfo `json:"AIResults,omitnil,omitempty" name:"AIResults"`
-}
-
-type AITaskResultInfo struct {
-	// 人体识别结果列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Body []*BodyAIResultInfo `json:"Body,omitnil,omitempty" name:"Body"`
-
-	// 宠物识别结果列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Pet []*PetAIResultInfo `json:"Pet,omitnil,omitempty" name:"Pet"`
-
-	// 车辆车牌识别结果列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Car []*CarAIResultInfo `json:"Car,omitnil,omitempty" name:"Car"`
-
-	// 厨师帽结果列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ChefHat []*ChefHatAIResultInfo `json:"ChefHat,omitnil,omitempty" name:"ChefHat"`
-
-	// 厨师服结果列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ChefCloth []*ChefClothAIResultInfo `json:"ChefCloth,omitnil,omitempty" name:"ChefCloth"`
-
-	// 口罩识别结果列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	FaceMask []*FaceMaskAIResultInfo `json:"FaceMask,omitnil,omitempty" name:"FaceMask"`
-
-	// 抽烟检测结果列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Smoking []*SmokingAIResultInfo `json:"Smoking,omitnil,omitempty" name:"Smoking"`
-
-	// 接打电话识别结果列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PhoneCall []*PhoneCallAIResultInfo `json:"PhoneCall,omitnil,omitempty" name:"PhoneCall"`
-}
-
-type AITemplates struct {
-	// AI 类别。可选值 AI(AI 分析)和 Snapshot(截图)，Templates 列表中只能出现一种类型。
-	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
-
-	// AI 分析配置。和"SnapshotConfig"二选一。
-	AIConfig *AIConfig `json:"AIConfig,omitnil,omitempty" name:"AIConfig"`
-
-	// 截图配置。和"AIConfig"二选一。
-	SnapshotConfig *SnapshotConfig `json:"SnapshotConfig,omitnil,omitempty" name:"SnapshotConfig"`
-}
-
-// Predefined struct for user
-type AddAITaskRequestParams struct {
-	// AI 任务名称。仅支持中文、英文、数字、_、-，长度不超过32个字符
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 通道 ID 列表。不能添加存在于其他 AI 任务的通道，限制1000个通道。
-	ChannelList []*string `json:"ChannelList,omitnil,omitempty" name:"ChannelList"`
-
-	// AI 配置列表
-	Templates []*AITemplates `json:"Templates,omitnil,omitempty" name:"Templates"`
-
-	// AI 任务描述。仅支持中文、英文、数字、_、-，长度不超过128个字符
-	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
-
-	// AI 结果回调地址
-	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
-
-	// 是否立即开启 AI 任务。"true"代表立即开启 AI 任务，"false"代表暂不开启 AI 任务，默认为 false。
-	IsStartTheTask *bool `json:"IsStartTheTask,omitnil,omitempty" name:"IsStartTheTask"`
-}
-
-type AddAITaskRequest struct {
-	*tchttp.BaseRequest
-	
-	// AI 任务名称。仅支持中文、英文、数字、_、-，长度不超过32个字符
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 通道 ID 列表。不能添加存在于其他 AI 任务的通道，限制1000个通道。
-	ChannelList []*string `json:"ChannelList,omitnil,omitempty" name:"ChannelList"`
-
-	// AI 配置列表
-	Templates []*AITemplates `json:"Templates,omitnil,omitempty" name:"Templates"`
-
-	// AI 任务描述。仅支持中文、英文、数字、_、-，长度不超过128个字符
-	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
-
-	// AI 结果回调地址
-	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
-
-	// 是否立即开启 AI 任务。"true"代表立即开启 AI 任务，"false"代表暂不开启 AI 任务，默认为 false。
-	IsStartTheTask *bool `json:"IsStartTheTask,omitnil,omitempty" name:"IsStartTheTask"`
-}
-
-func (r *AddAITaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *AddAITaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Name")
-	delete(f, "ChannelList")
-	delete(f, "Templates")
-	delete(f, "Desc")
-	delete(f, "CallbackUrl")
-	delete(f, "IsStartTheTask")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddAITaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type AddAITaskResponseParams struct {
-	// AI任务信息
-	Data *AITaskInfo `json:"Data,omitnil,omitempty" name:"Data"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type AddAITaskResponse struct {
-	*tchttp.BaseResponse
-	Response *AddAITaskResponseParams `json:"Response"`
-}
-
-func (r *AddAITaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *AddAITaskResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type AddDeviceData struct {
 	// 设备iD
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
@@ -1172,17 +983,6 @@ func (r *AddUserDeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type BaseAIResultInfo struct {
-	// 名称。返回值有人体识别结果名称(person)、宠物识别结果名称(cat和dog) 、车辆车牌识别结果名称(vehicle)
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 置信度
-	Score *uint64 `json:"Score,omitnil,omitempty" name:"Score"`
-
-	// 截图中坐标信息
-	Location *Location `json:"Location,omitnil,omitempty" name:"Location"`
-}
-
 // Predefined struct for user
 type BatchDeleteVideoDownloadTaskRequestParams struct {
 	// 本地录像下载任务 ID 列表
@@ -1314,17 +1114,6 @@ type BitRateInfo struct {
 	Bitrate *float64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 }
 
-type BodyAIResultInfo struct {
-	// 时间字符串
-	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
-
-	// 截图 URL
-	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
-
-	// 人体信息
-	BodyInfo []*BaseAIResultInfo `json:"BodyInfo,omitnil,omitempty" name:"BodyInfo"`
-}
-
 // Predefined struct for user
 type CallISAPIRequestParams struct {
 	// 设备ID
@@ -1396,32 +1185,6 @@ func (r *CallISAPIResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type CarAIResultInfo struct {
-	// 车系
-	Serial *string `json:"Serial,omitnil,omitempty" name:"Serial"`
-
-	// 车辆品牌
-	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
-
-	// 车辆类型
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 车辆颜色
-	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
-
-	// 置信度，0 - 100
-	Confidence *int64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
-
-	// 年份，识别不出年份时返回0
-	Year *int64 `json:"Year,omitnil,omitempty" name:"Year"`
-
-	// 车牌信息
-	PlateContent *PlateContent `json:"PlateContent,omitnil,omitempty" name:"PlateContent"`
-
-	// 截图中坐标信息
-	Location *Location `json:"Location,omitnil,omitempty" name:"Location"`
-}
-
 type ChannelAttrInfo struct {
 	// 设备通道所属的设备ID
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
@@ -1442,28 +1205,6 @@ type ChannelInfo struct {
 
 	// 设备通道ID，一个设备通道只允许被一个上云计划添加
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
-}
-
-type ChefClothAIResultInfo struct {
-	// 时间字符串
-	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
-
-	// 截图 URL
-	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
-
-	// 厨师服信息
-	ChefClothInfoInfo []*BaseAIResultInfo `json:"ChefClothInfoInfo,omitnil,omitempty" name:"ChefClothInfoInfo"`
-}
-
-type ChefHatAIResultInfo struct {
-	// 时间字符串
-	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
-
-	// 截图 URL
-	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
-
-	// 厨师帽信息
-	ChefHatInfo []*BaseAIResultInfo `json:"ChefHatInfo,omitnil,omitempty" name:"ChefHatInfo"`
 }
 
 // Predefined struct for user
@@ -2046,60 +1787,6 @@ func (r *CreateVideoDownloadTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DeleteAITaskRequestParams struct {
-	// AI任务ID
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-type DeleteAITaskRequest struct {
-	*tchttp.BaseRequest
-	
-	// AI任务ID
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-func (r *DeleteAITaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteAITaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "TaskId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAITaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteAITaskResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DeleteAITaskResponse struct {
-	*tchttp.BaseResponse
-	Response *DeleteAITaskResponseParams `json:"Response"`
-}
-
-func (r *DeleteAITaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteAITaskResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DeleteDomainRequestParams struct {
 	// 域名 ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -2636,174 +2323,6 @@ func (r *DeleteUserDeviceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteUserDeviceResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeAITaskRequestParams struct {
-	// AI任务ID
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-type DescribeAITaskRequest struct {
-	*tchttp.BaseRequest
-	
-	// AI任务ID
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-func (r *DescribeAITaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAITaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "TaskId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAITaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeAITaskResponseParams struct {
-	// AI任务详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *AITaskInfo `json:"Data,omitnil,omitempty" name:"Data"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeAITaskResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeAITaskResponseParams `json:"Response"`
-}
-
-func (r *DescribeAITaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAITaskResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeAITaskResultRequestParams struct {
-	// AI 任务 ID
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 通道ID
-	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
-
-	// 桶内文件的路径。
-	Object *string `json:"Object,omitnil,omitempty" name:"Object"`
-
-	// AI 任务识别类型。可选值为 Facemask(口罩识别)、Chefhat(厨师帽识别)、Smoking(抽烟检测)、Chefcloth(厨师服识别)、PhoneCall(接打电话识别)、Pet(宠物识别)、Body(人体识别)和 Car(车辆车牌识别)
-	DetectType *string `json:"DetectType,omitnil,omitempty" name:"DetectType"`
-
-	// 开始时间时间。秒级时间戳。开始时间和结束时间跨度小于等于30天
-	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
-
-	// 结束时间时间。秒级时间戳。开始时间和结束时间跨度小于等于30天
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// 页码。默认为1
-	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
-
-	// 每页 AI 识别结果数量。可选值1～100，默认为10（按时间倒序显示识别结果）
-	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
-}
-
-type DescribeAITaskResultRequest struct {
-	*tchttp.BaseRequest
-	
-	// AI 任务 ID
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 通道ID
-	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
-
-	// 桶内文件的路径。
-	Object *string `json:"Object,omitnil,omitempty" name:"Object"`
-
-	// AI 任务识别类型。可选值为 Facemask(口罩识别)、Chefhat(厨师帽识别)、Smoking(抽烟检测)、Chefcloth(厨师服识别)、PhoneCall(接打电话识别)、Pet(宠物识别)、Body(人体识别)和 Car(车辆车牌识别)
-	DetectType *string `json:"DetectType,omitnil,omitempty" name:"DetectType"`
-
-	// 开始时间时间。秒级时间戳。开始时间和结束时间跨度小于等于30天
-	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
-
-	// 结束时间时间。秒级时间戳。开始时间和结束时间跨度小于等于30天
-	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// 页码。默认为1
-	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
-
-	// 每页 AI 识别结果数量。可选值1～100，默认为10（按时间倒序显示识别结果）
-	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
-}
-
-func (r *DescribeAITaskResultRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAITaskResultRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "TaskId")
-	delete(f, "ChannelId")
-	delete(f, "Object")
-	delete(f, "DetectType")
-	delete(f, "BeginTime")
-	delete(f, "EndTime")
-	delete(f, "PageNumber")
-	delete(f, "PageSize")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAITaskResultRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeAITaskResultResponseParams struct {
-	// AI识别结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *AITaskResultData `json:"Data,omitnil,omitempty" name:"Data"`
-
-	// AI识别结果数量
-	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeAITaskResultResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeAITaskResultResponseParams `json:"Response"`
-}
-
-func (r *DescribeAITaskResultResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAITaskResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4883,17 +4402,6 @@ func (r *DescribeVideoDownloadUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type FaceMaskAIResultInfo struct {
-	// 时间字符串
-	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
-
-	// 截图 URL
-	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
-
-	// 口罩信息
-	FaceMaskInfo []*BaseAIResultInfo `json:"FaceMaskInfo,omitnil,omitempty" name:"FaceMaskInfo"`
-}
-
 type GBDeviceSnapInfo struct {
 	// 文件名称
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
@@ -4997,94 +4505,6 @@ type LifeCycleData struct {
 
 	// 云文件冷存储时长， 单位天，0表示不设置，设置时最小60天，Expiration字段加Transition字段不超过3650天
 	Expiration *int64 `json:"Expiration,omitnil,omitempty" name:"Expiration"`
-}
-
-type ListAITaskData struct {
-	// AI任务列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*AITaskInfo `json:"List,omitnil,omitempty" name:"List"`
-}
-
-// Predefined struct for user
-type ListAITasksRequestParams struct {
-	// 是否包含通道列表。"true"代表包含通道列表，"false"代表不包含通道列表，默认为 false
-	IsContainChannelList *bool `json:"IsContainChannelList,omitnil,omitempty" name:"IsContainChannelList"`
-
-	// 是否包含AI配置。"true"代表包含任务配置，"false"代表不包含任务配置，默认为 false。
-	IsContainTemplate *bool `json:"IsContainTemplate,omitnil,omitempty" name:"IsContainTemplate"`
-
-	// 页码。默认为1
-	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
-
-	// 每页数量。可选值1～200，默认为20
-	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
-}
-
-type ListAITasksRequest struct {
-	*tchttp.BaseRequest
-	
-	// 是否包含通道列表。"true"代表包含通道列表，"false"代表不包含通道列表，默认为 false
-	IsContainChannelList *bool `json:"IsContainChannelList,omitnil,omitempty" name:"IsContainChannelList"`
-
-	// 是否包含AI配置。"true"代表包含任务配置，"false"代表不包含任务配置，默认为 false。
-	IsContainTemplate *bool `json:"IsContainTemplate,omitnil,omitempty" name:"IsContainTemplate"`
-
-	// 页码。默认为1
-	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
-
-	// 每页数量。可选值1～200，默认为20
-	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
-}
-
-func (r *ListAITasksRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ListAITasksRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "IsContainChannelList")
-	delete(f, "IsContainTemplate")
-	delete(f, "PageNumber")
-	delete(f, "PageSize")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAITasksRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ListAITasksResponseParams struct {
-	// AI 任务数量
-	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// AI任务列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *ListAITaskData `json:"Data,omitnil,omitempty" name:"Data"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type ListAITasksResponse struct {
-	*tchttp.BaseResponse
-	Response *ListAITasksResponseParams `json:"Response"`
-}
-
-func (r *ListAITasksResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ListAITasksResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListDeviceInfo struct {
@@ -6640,28 +6060,6 @@ func (r *ListVideoDownloadTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type Location struct {
-	// 左上角 X 坐标轴
-	X *int64 `json:"X,omitnil,omitempty" name:"X"`
-
-	// 左上角 Y 坐标轴
-	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
-
-	// 方框宽
-	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
-
-	// 方框高
-	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
-}
-
-type OperTimeSlot struct {
-	// 开始时间。格式为"hh:mm:ss"，且 Start 必须小于 End
-	Start *string `json:"Start,omitnil,omitempty" name:"Start"`
-
-	// 结束时间。格式为"hh:mm:ss"，且 Start 必须小于 End
-	End *string `json:"End,omitnil,omitempty" name:"End"`
-}
-
 type OrganizationChannelInfo struct {
 	// 设备通道所属的设备ID
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
@@ -6677,42 +6075,6 @@ type OrganizationChannelInfo struct {
 
 	// 该通道是否在上云计划中，如果是，则不能在添加到其他上云计划|true：在上云计划中，false：不在上云计划中
 	InPlan *bool `json:"InPlan,omitnil,omitempty" name:"InPlan"`
-}
-
-type PetAIResultInfo struct {
-	// 时间字符串
-	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
-
-	// 截图 URL
-	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
-
-	// 宠物信息
-	PetInfo []*BaseAIResultInfo `json:"PetInfo,omitnil,omitempty" name:"PetInfo"`
-}
-
-type PhoneCallAIResultInfo struct {
-	// 时间字符串
-	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
-
-	// 截图 URL
-	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
-
-	// 打电话信息
-	PhoneCallInfo []*BaseAIResultInfo `json:"PhoneCallInfo,omitnil,omitempty" name:"PhoneCallInfo"`
-}
-
-type PlateContent struct {
-	// 车牌号信息
-	Plate *string `json:"Plate,omitnil,omitempty" name:"Plate"`
-
-	// 车牌的颜色
-	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
-
-	// 车牌的种类，例如普通蓝牌
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 截图中坐标信息
-	Location *Location `json:"Location,omitnil,omitempty" name:"Location"`
 }
 
 type PlayRecordData struct {
@@ -7181,25 +6543,6 @@ type SetForbidplayChannelParam struct {
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 }
 
-type SmokingAIResultInfo struct {
-	// 时间字符串
-	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
-
-	// 截图 URL
-	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
-
-	// 抽烟信息
-	SmokingInfo []*BaseAIResultInfo `json:"SmokingInfo,omitnil,omitempty" name:"SmokingInfo"`
-}
-
-type SnapshotConfig struct {
-	// 截图频率。可选值1～20秒
-	TimeInterval *uint64 `json:"TimeInterval,omitnil,omitempty" name:"TimeInterval"`
-
-	// 模板生效的时间段。最多包含5组时间段
-	OperTimeSlot []*OperTimeSlot `json:"OperTimeSlot,omitnil,omitempty" name:"OperTimeSlot"`
-}
-
 type SubTaskData struct {
 	// 子任务ID
 	SubTaskId *string `json:"SubTaskId,omitnil,omitempty" name:"SubTaskId"`
@@ -7315,166 +6658,6 @@ type Timeline struct {
 
 	// 分片结束时间
 	End *int64 `json:"End,omitnil,omitempty" name:"End"`
-}
-
-// Predefined struct for user
-type UpdateAITaskRequestParams struct {
-	// AI 任务 ID
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// AI 任务名称。仅支持中文、英文、数字、_、-，长度不超过32个字符
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// AI 任务描述。仅支持中文、英文、数字、_、-，长度不超过128个字符
-	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
-
-	// 通道 ID 列表。不能添加存在于其他 AI 任务的通道，限制1000个通道。
-	ChannelList []*string `json:"ChannelList,omitnil,omitempty" name:"ChannelList"`
-
-	// AI 结果回调地址
-	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
-
-	// 是否立即开启 AI 任务。"true"代表立即开启 AI 任务，"false"代表暂不开启 AI 任务，默认为 false。
-	IsStartTheTask *bool `json:"IsStartTheTask,omitnil,omitempty" name:"IsStartTheTask"`
-
-	// AI 配置列表
-	Templates []*AITemplates `json:"Templates,omitnil,omitempty" name:"Templates"`
-}
-
-type UpdateAITaskRequest struct {
-	*tchttp.BaseRequest
-	
-	// AI 任务 ID
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// AI 任务名称。仅支持中文、英文、数字、_、-，长度不超过32个字符
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// AI 任务描述。仅支持中文、英文、数字、_、-，长度不超过128个字符
-	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
-
-	// 通道 ID 列表。不能添加存在于其他 AI 任务的通道，限制1000个通道。
-	ChannelList []*string `json:"ChannelList,omitnil,omitempty" name:"ChannelList"`
-
-	// AI 结果回调地址
-	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
-
-	// 是否立即开启 AI 任务。"true"代表立即开启 AI 任务，"false"代表暂不开启 AI 任务，默认为 false。
-	IsStartTheTask *bool `json:"IsStartTheTask,omitnil,omitempty" name:"IsStartTheTask"`
-
-	// AI 配置列表
-	Templates []*AITemplates `json:"Templates,omitnil,omitempty" name:"Templates"`
-}
-
-func (r *UpdateAITaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *UpdateAITaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "TaskId")
-	delete(f, "Name")
-	delete(f, "Desc")
-	delete(f, "ChannelList")
-	delete(f, "CallbackUrl")
-	delete(f, "IsStartTheTask")
-	delete(f, "Templates")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAITaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type UpdateAITaskResponseParams struct {
-	// AI任务信息
-	Data *AITaskInfo `json:"Data,omitnil,omitempty" name:"Data"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type UpdateAITaskResponse struct {
-	*tchttp.BaseResponse
-	Response *UpdateAITaskResponseParams `json:"Response"`
-}
-
-func (r *UpdateAITaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *UpdateAITaskResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type UpdateAITaskStatusRequestParams struct {
-	// AI 任务 ID
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// AI 任务状态。"on"代表开启了 AI 分析任务，"off"代表停止AI分析任务
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-}
-
-type UpdateAITaskStatusRequest struct {
-	*tchttp.BaseRequest
-	
-	// AI 任务 ID
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// AI 任务状态。"on"代表开启了 AI 分析任务，"off"代表停止AI分析任务
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-}
-
-func (r *UpdateAITaskStatusRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *UpdateAITaskStatusRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "TaskId")
-	delete(f, "Status")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAITaskStatusRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type UpdateAITaskStatusResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type UpdateAITaskStatusResponse struct {
-	*tchttp.BaseResponse
-	Response *UpdateAITaskStatusResponseParams `json:"Response"`
-}
-
-func (r *UpdateAITaskStatusResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *UpdateAITaskStatusResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateDeviceData struct {

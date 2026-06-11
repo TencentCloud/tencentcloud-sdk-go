@@ -5795,6 +5795,72 @@ func (c *Client) DescribeAigcFaceInfoWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeAigcFaceInfoAsyncRequest() (request *DescribeAigcFaceInfoAsyncRequest) {
+    request = &DescribeAigcFaceInfoAsyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeAigcFaceInfoAsync")
+    
+    
+    return
+}
+
+func NewDescribeAigcFaceInfoAsyncResponse() (response *DescribeAigcFaceInfoAsyncResponse) {
+    response = &DescribeAigcFaceInfoAsyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAigcFaceInfoAsync
+// 该接口用于异步获取 AIGC 人脸信息。注意，调用本接口会产生人脸识别费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAigcFaceInfoAsync(request *DescribeAigcFaceInfoAsyncRequest) (response *DescribeAigcFaceInfoAsyncResponse, err error) {
+    return c.DescribeAigcFaceInfoAsyncWithContext(context.Background(), request)
+}
+
+// DescribeAigcFaceInfoAsync
+// 该接口用于异步获取 AIGC 人脸信息。注意，调用本接口会产生人脸识别费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAigcFaceInfoAsyncWithContext(ctx context.Context, request *DescribeAigcFaceInfoAsyncRequest) (response *DescribeAigcFaceInfoAsyncResponse, err error) {
+    if request == nil {
+        request = NewDescribeAigcFaceInfoAsyncRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "vod", APIVersion, "DescribeAigcFaceInfoAsync")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAigcFaceInfoAsync require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAigcFaceInfoAsyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAigcUsageDataRequest() (request *DescribeAigcUsageDataRequest) {
     request = &DescribeAigcUsageDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

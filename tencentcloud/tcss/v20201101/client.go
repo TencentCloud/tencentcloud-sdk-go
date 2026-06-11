@@ -2769,7 +2769,7 @@ func NewCreateK8sApiAbnormalRuleInfoResponse() (response *CreateK8sApiAbnormalRu
 }
 
 // CreateK8sApiAbnormalRuleInfo
-// 创建k8sapi异常事件规则
+// 创建k8sapi异常事件规则。RuleInfoList中的Action仅支持RULE_MODE_ALERT（告警），不再支持RULE_MODE_RELEASE/PASS（放行）。EventID参数已移除，事件加白请使用白名单接口ModifyK8sApiAbnormalWhitelist。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2779,7 +2779,7 @@ func (c *Client) CreateK8sApiAbnormalRuleInfo(request *CreateK8sApiAbnormalRuleI
 }
 
 // CreateK8sApiAbnormalRuleInfo
-// 创建k8sapi异常事件规则
+// 创建k8sapi异常事件规则。RuleInfoList中的Action仅支持RULE_MODE_ALERT（告警），不再支持RULE_MODE_RELEASE/PASS（放行）。EventID参数已移除，事件加白请使用白名单接口ModifyK8sApiAbnormalWhitelist。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -11617,7 +11617,7 @@ func NewDescribeK8sApiAbnormalRuleListResponse() (response *DescribeK8sApiAbnorm
 }
 
 // DescribeK8sApiAbnormalRuleList
-// 查询k8sapi异常请求规则列表
+// 查询k8sapi异常请求规则列表。支持按集群名称（ClusterName）和集群ID（ClusterID）模糊查找规则，全集群规则（is_all=1）始终返回。响应新增RuleInfoList（子规则内容）、RuleActions（执行动作去重列表）、EffectAllCluster字段。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -11627,7 +11627,7 @@ func (c *Client) DescribeK8sApiAbnormalRuleList(request *DescribeK8sApiAbnormalR
 }
 
 // DescribeK8sApiAbnormalRuleList
-// 查询k8sapi异常请求规则列表
+// 查询k8sapi异常请求规则列表。支持按集群名称（ClusterName）和集群ID（ClusterID）模糊查找规则，全集群规则（is_all=1）始终返回。响应新增RuleInfoList（子规则内容）、RuleActions（执行动作去重列表）、EffectAllCluster字段。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -19237,7 +19237,7 @@ func NewModifyK8sApiAbnormalRuleInfoResponse() (response *ModifyK8sApiAbnormalRu
 }
 
 // ModifyK8sApiAbnormalRuleInfo
-// 修改k8sapi异常规则信息
+// 修改k8sapi异常规则信息。RuleInfoList中的Action仅支持RULE_MODE_ALERT（告警），不再支持RULE_MODE_RELEASE/PASS（放行）。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -19247,7 +19247,7 @@ func (c *Client) ModifyK8sApiAbnormalRuleInfo(request *ModifyK8sApiAbnormalRuleI
 }
 
 // ModifyK8sApiAbnormalRuleInfo
-// 修改k8sapi异常规则信息
+// 修改k8sapi异常规则信息。RuleInfoList中的Action仅支持RULE_MODE_ALERT（告警），不再支持RULE_MODE_RELEASE/PASS（放行）。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

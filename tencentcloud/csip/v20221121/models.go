@@ -91,93 +91,86 @@ type AccessCredentialOutput struct {
 }
 
 type AccessKeyAlarm struct {
-	// 告警名称
+	// <p>告警名称</p>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 告警等级
-	// 0-无效 1-提示 2-低危 3-中危 4-高危 5-严重
+	// <p>告警等级<br>0-无效 1-提示 2-低危 3-中危 4-高危 5-严重</p>
 	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
 
-	// 告警记录ID
+	// <p>告警记录ID</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 告警规则ID
+	// <p>告警规则ID</p>
 	AlarmRuleID *int64 `json:"AlarmRuleID,omitnil,omitempty" name:"AlarmRuleID"`
 
-	// 告警类型
-	// 0 异常调用
-	// 1 泄漏监测
+	// <p>告警类型<br>0 异常调用<br>1 泄漏监测</p>
 	AlarmType *int64 `json:"AlarmType,omitnil,omitempty" name:"AlarmType"`
 
-	// 访问密钥
+	// <p>访问密钥</p>
 	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
 
-	// 访问密钥ID
+	// <p>访问密钥ID</p>
 	AccessKeyID *uint64 `json:"AccessKeyID,omitnil,omitempty" name:"AccessKeyID"`
 
-	// 访问密钥备注
+	// <p>访问密钥备注</p>
 	AccessKeyRemark *string `json:"AccessKeyRemark,omitnil,omitempty" name:"AccessKeyRemark"`
 
-	// 最后告警时间
+	// <p>最后告警时间</p>
 	LastAlarmTime *string `json:"LastAlarmTime,omitnil,omitempty" name:"LastAlarmTime"`
 
-	// 告警状态
-	// 0-未处理 1-已处理 2-已忽略
+	// <p>告警状态<br>0-未处理 1-已处理 2-已忽略</p>
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 聚合日期
+	// <p>聚合日期</p>
 	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 
-	// 告警标签
+	// <p>告警标签</p>
 	Tag []*string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
-	// 所属主账号Uin
+	// <p>所属主账号Uin</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 所属主账号昵称
+	// <p>所属主账号昵称</p>
 	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
 
-	// 所属子账号Uin
+	// <p>所属子账号Uin</p>
 	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
 
-	// 所属子账号昵称
+	// <p>所属子账号昵称</p>
 	SubNickname *string `json:"SubNickname,omitnil,omitempty" name:"SubNickname"`
 
-	// 账号类型
-	// 0 主账号AK 1 子账号AK 2 临时密钥
+	// <p>账号类型<br>0 主账号AK 1 子账号AK 2 临时密钥</p>
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 所属appid
+	// <p>所属appid</p>
 	AppID *int64 `json:"AppID,omitnil,omitempty" name:"AppID"`
 
-	// 泄漏证据
+	// <p>泄漏证据</p>
 	LeakEvidence []*string `json:"LeakEvidence,omitnil,omitempty" name:"LeakEvidence"`
 
-	// 是否支持编辑信任账号
+	// <p>是否支持编辑信任账号</p>
 	IsSupportEditWhiteAccount *bool `json:"IsSupportEditWhiteAccount,omitnil,omitempty" name:"IsSupportEditWhiteAccount"`
 
-	// 告警证据
+	// <p>告警证据</p>
 	Evidence *string `json:"Evidence,omitnil,omitempty" name:"Evidence"`
 
-	// 告警规则标识
+	// <p>告警规则标识</p>
 	RuleKey *string `json:"RuleKey,omitnil,omitempty" name:"RuleKey"`
 
-	// 云厂商类型 0:腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云
+	// <p>云厂商类型 0:腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云</p>
 	CloudType *int64 `json:"CloudType,omitnil,omitempty" name:"CloudType"`
 
-	// 告警AI分析状态
-	// -1 分析失败
-	// 0 未分析
-	// 1 分析中
-	// 2 分析成功，真实告警
-	// 3 分析成功，可疑告警
+	// <p>告警AI分析状态<br>-1 分析失败<br>0 未分析<br>1 分析中<br>2 分析成功，真实告警<br>3 分析成功，可疑告警</p>
 	AIStatus *int64 `json:"AIStatus,omitnil,omitempty" name:"AIStatus"`
 
-	// 首次告警时间戳（秒级）
+	// <p>首次告警时间戳（秒级）</p>
 	FirstAlarmTimestamp *int64 `json:"FirstAlarmTimestamp,omitnil,omitempty" name:"FirstAlarmTimestamp"`
 
-	// 最后告警时间戳（秒级）
+	// <p>最后告警时间戳（秒级）</p>
 	LastAlarmTimestamp *int64 `json:"LastAlarmTimestamp,omitnil,omitempty" name:"LastAlarmTimestamp"`
+
+	// <p>ai分析失败描述，未失败为空字符串</p>
+	AIFailedReason *string `json:"AIFailedReason,omitnil,omitempty" name:"AIFailedReason"`
 }
 
 type AccessKeyAlarmCount struct {
@@ -2020,6 +2013,32 @@ type CFGViewCFGRisk struct {
 	// 帮助文档
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CFGHelpURL *string `json:"CFGHelpURL,omitnil,omitempty" name:"CFGHelpURL"`
+}
+
+type CICDToken struct {
+	// <p>ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>appid</p>
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>CI/CD名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>用于接入的Token</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// <p>扫描结果存储时长</p>
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// <p>已扫描文件</p>
+	FileCnt *uint64 `json:"FileCnt,omitnil,omitempty" name:"FileCnt"`
+
+	// <p>最近扫描状态</p>
+	LastScanStatus *string `json:"LastScanStatus,omitnil,omitempty" name:"LastScanStatus"`
+
+	// <p>最近扫描时间</p>
+	LastScanTime *string `json:"LastScanTime,omitnil,omitempty" name:"LastScanTime"`
 }
 
 type CVMAssetVO struct {
@@ -4695,6 +4714,195 @@ func (r *CreateDspmWhitelistStrategyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateIaCAccessTokenRequestParams struct {
+	// <p>CI/CD名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>扫描结果存储时长(30/60/90/120/150/180天)</p>
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+}
+
+type CreateIaCAccessTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>CI/CD名称</p>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// <p>扫描结果存储时长(30/60/90/120/150/180天)</p>
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+}
+
+func (r *CreateIaCAccessTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIaCAccessTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Period")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIaCAccessTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateIaCAccessTokenResponseParams struct {
+	// <p>接入Token</p>
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateIaCAccessTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateIaCAccessTokenResponseParams `json:"Response"`
+}
+
+func (r *CreateIaCAccessTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIaCAccessTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateIaCFileExportJobRequestParams struct {
+	// <p>过滤条件</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type CreateIaCFileExportJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>过滤条件</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *CreateIaCFileExportJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIaCFileExportJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filter")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIaCFileExportJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateIaCFileExportJobResponseParams struct {
+	// <p>任务ID</p>
+	JobID *string `json:"JobID,omitnil,omitempty" name:"JobID"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateIaCFileExportJobResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateIaCFileExportJobResponseParams `json:"Response"`
+}
+
+func (r *CreateIaCFileExportJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIaCFileExportJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateIaCFileReScanTaskRequestParams struct {
+	// <p>文件ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type CreateIaCFileReScanTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>文件ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *CreateIaCFileReScanTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIaCFileReScanTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIaCFileReScanTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateIaCFileReScanTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateIaCFileReScanTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateIaCFileReScanTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateIaCFileReScanTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIaCFileReScanTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateRiskCenterScanTaskRequestParams struct {
 	// 任务名称
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
@@ -5755,6 +5963,114 @@ func (r *DeleteDspmWhitelistStrategyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteDspmWhitelistStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteIaCAccessTokenRequestParams struct {
+	// <p>删除ID列表</p>
+	Id []*uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DeleteIaCAccessTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>删除ID列表</p>
+	Id []*uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DeleteIaCAccessTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIaCAccessTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteIaCAccessTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteIaCAccessTokenResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteIaCAccessTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteIaCAccessTokenResponseParams `json:"Response"`
+}
+
+func (r *DeleteIaCAccessTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIaCAccessTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteIaCFileRequestParams struct {
+	// <p>删除ID列表</p>
+	Id []*uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DeleteIaCFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>删除ID列表</p>
+	Id []*uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DeleteIaCFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIaCFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteIaCFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteIaCFileResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteIaCFileResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteIaCFileResponseParams `json:"Response"`
+}
+
+func (r *DeleteIaCFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIaCFileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13754,6 +14070,287 @@ func (r *DescribeHighBaseLineRiskListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeIaCFileListRequestParams struct {
+	// <p>过滤条件</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeIaCFileListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>过滤条件</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeIaCFileListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIaCFileListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filter")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIaCFileListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIaCFileListResponseParams struct {
+	// <p>列表</p>
+	List []*IaCFile `json:"List,omitnil,omitempty" name:"List"`
+
+	// <p>总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeIaCFileListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIaCFileListResponseParams `json:"Response"`
+}
+
+func (r *DescribeIaCFileListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIaCFileListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIaCFileOverviewRequestParams struct {
+	// <p>开始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeIaCFileOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>开始时间</p>
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// <p>结束时间</p>
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeIaCFileOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIaCFileOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIaCFileOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIaCFileOverviewResponseParams struct {
+	// <p>文件数量</p>
+	TotalFile *uint64 `json:"TotalFile,omitnil,omitempty" name:"TotalFile"`
+
+	// <p>风险文件数量(1:Dockerfile,2:Terraform,3:KubernetesYaml)</p>
+	RiskFile []*KeyValueInt `json:"RiskFile,omitnil,omitempty" name:"RiskFile"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeIaCFileOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIaCFileOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeIaCFileOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIaCFileOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIaCFileReportRequestParams struct {
+	// <p>资产ID</p>
+	AssetId *uint64 `json:"AssetId,omitnil,omitempty" name:"AssetId"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+type DescribeIaCFileReportRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>资产ID</p>
+	AssetId *uint64 `json:"AssetId,omitnil,omitempty" name:"AssetId"`
+
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeIaCFileReportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIaCFileReportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AssetId")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIaCFileReportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIaCFileReportResponseParams struct {
+	// <p>检测文件</p>
+	File *string `json:"File,omitnil,omitempty" name:"File"`
+
+	// <p>检测状态(0:待扫描,1:检测中,2:已完成,3:检测异常)</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>检测时间</p>
+	ScanTime *string `json:"ScanTime,omitnil,omitempty" name:"ScanTime"`
+
+	// <p>风险列表</p>
+	Risks []*IaCFileRisk `json:"Risks,omitnil,omitempty" name:"Risks"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeIaCFileReportResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIaCFileReportResponseParams `json:"Response"`
+}
+
+func (r *DescribeIaCFileReportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIaCFileReportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIaCTokenListRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type DescribeIaCTokenListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// <p>过滤条件</p>
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+func (r *DescribeIaCTokenListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIaCTokenListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIaCTokenListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIaCTokenListResponseParams struct {
+	// <p>列表</p>
+	List []*CICDToken `json:"List,omitnil,omitempty" name:"List"`
+
+	// <p>总数</p>
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeIaCTokenListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIaCTokenListResponseParams `json:"Response"`
+}
+
+func (r *DescribeIaCTokenListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIaCTokenListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeIpInvokeRecordDetailRequestParams struct {
 	// 过滤器
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
@@ -19550,6 +20147,61 @@ type HitRules struct {
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 }
 
+type IaCFile struct {
+	// <p>ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>appid</p>
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// <p>文件ID</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// <p>文件名称</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>CI/CD名称</p>
+	CICDName *string `json:"CICDName,omitnil,omitempty" name:"CICDName"`
+
+	// <p>文件路径</p>
+	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
+
+	// <p>文件类型(1:Dockerfile,2:Terraform,3:KubernetesYaml)</p>
+	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// <p>风险总计数量</p>
+	RiskTotalCnt *uint64 `json:"RiskTotalCnt,omitnil,omitempty" name:"RiskTotalCnt"`
+
+	// <p>风险等级数量(0:低危,1:中危,2:高危,3:严重)</p>
+	RiskLevelCnt []*KeyValueInt `json:"RiskLevelCnt,omitnil,omitempty" name:"RiskLevelCnt"`
+
+	// <p>扫描时间</p>
+	ScanTime *string `json:"ScanTime,omitnil,omitempty" name:"ScanTime"`
+
+	// <p>检测状态(0:待扫描,1:检测中,2:已完成,3:检测异常)</p>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>扫描失败类型(0:无失败, 1:检测超时, 2:文件格式解析失败, 3:检测失败)</p>
+	FailType *int64 `json:"FailType,omitnil,omitempty" name:"FailType"`
+}
+
+type IaCFileRisk struct {
+	// <p>风险等级(0:低危,1:中危,2:高危,3:严重)</p>
+	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// <p>风险所在行数</p>
+	Line *uint64 `json:"Line,omitnil,omitempty" name:"Line"`
+
+	// <p>规则名称</p>
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// <p>问题描述</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>修复建议</p>
+	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
+}
+
 type InquireInfo struct {
 	// 计费项名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -19696,6 +20348,14 @@ type KeyValue struct {
 
 	// 值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type KeyValueInt struct {
+	// <p>键</p>
+	Key *int64 `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>值</p>
+	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type Location struct {
@@ -21031,6 +21691,67 @@ func (r *ModifyDspmWhitelistStrategyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDspmWhitelistStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIaCTokenPeriodRequestParams struct {
+	// <p>ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>扫描结果存储周期</p>
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+}
+
+type ModifyIaCTokenPeriodRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>ID</p>
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// <p>扫描结果存储周期</p>
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+}
+
+func (r *ModifyIaCTokenPeriodRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIaCTokenPeriodRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Period")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyIaCTokenPeriodRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIaCTokenPeriodResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyIaCTokenPeriodResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyIaCTokenPeriodResponseParams `json:"Response"`
+}
+
+func (r *ModifyIaCTokenPeriodResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIaCTokenPeriodResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -22989,59 +23710,62 @@ func (r *StopRiskCenterTaskResponse) FromJsonString(s string) error {
 }
 
 type SubUserInfo struct {
-	// 主键ID，无业务意义仅作为唯一键
+	// <p>主键ID，无业务意义仅作为唯一键</p>
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 子账号Appid
+	// <p>子账号Appid</p>
 	AppID *string `json:"AppID,omitnil,omitempty" name:"AppID"`
 
-	// 子账号UIn
+	// <p>子账号UIn</p>
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 子账号名称
+	// <p>子账号名称</p>
 	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
 
-	// 主账号Appid
+	// <p>主账号Appid</p>
 	OwnerAppID *string `json:"OwnerAppID,omitnil,omitempty" name:"OwnerAppID"`
 
-	// 主账号Uin
+	// <p>主账号Uin</p>
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
-	// 主账号名称
+	// <p>主账号名称</p>
 	OwnerNickName *string `json:"OwnerNickName,omitnil,omitempty" name:"OwnerNickName"`
 
-	// 所属主账号memberId信息
+	// <p>所属主账号memberId信息</p>
 	OwnerMemberID *string `json:"OwnerMemberID,omitnil,omitempty" name:"OwnerMemberID"`
 
-	// 账户类型，0为腾讯云账户，1为AWS账户
+	// <p>账户类型，0为腾讯云账户，1为AWS账户</p>
 	CloudType *int64 `json:"CloudType,omitnil,omitempty" name:"CloudType"`
 
-	// 可访问服务数量
+	// <p>可访问服务数量</p>
 	ServiceCount *int64 `json:"ServiceCount,omitnil,omitempty" name:"ServiceCount"`
 
-	// 可访问接口数量
+	// <p>可访问接口数量</p>
 	InterfaceCount *int64 `json:"InterfaceCount,omitnil,omitempty" name:"InterfaceCount"`
 
-	// 可访问资源数量
+	// <p>可访问资源数量</p>
 	AssetCount *int64 `json:"AssetCount,omitnil,omitempty" name:"AssetCount"`
 
-	// 访问/行为日志数量
+	// <p>访问/行为日志数量</p>
 	LogCount *int64 `json:"LogCount,omitnil,omitempty" name:"LogCount"`
 
-	// 权限配置风险
+	// <p>权限配置风险</p>
 	ConfigRiskCount *int64 `json:"ConfigRiskCount,omitnil,omitempty" name:"ConfigRiskCount"`
 
-	// 危险行为告警
+	// <p>危险行为告警</p>
 	ActionRiskCount *int64 `json:"ActionRiskCount,omitnil,omitempty" name:"ActionRiskCount"`
 
-	// 是否接入操作审计日志
+	// <p>是否接入操作审计日志</p>
 	IsAccessCloudAudit *bool `json:"IsAccessCloudAudit,omitnil,omitempty" name:"IsAccessCloudAudit"`
 
-	// 是否配置风险的安全体检
+	// <p>是否配置风险的安全体检</p>
 	IsAccessCheck *bool `json:"IsAccessCheck,omitnil,omitempty" name:"IsAccessCheck"`
 
-	// 是否配置用户行为管理策略
+	// <p>是否配置用户行为管理策略</p>
 	IsAccessUeba *bool `json:"IsAccessUeba,omitnil,omitempty" name:"IsAccessUeba"`
+
+	// <p>创建时间（Unix时间戳）</p>
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type SubnetAsset struct {

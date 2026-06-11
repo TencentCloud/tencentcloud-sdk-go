@@ -1706,6 +1706,38 @@ type ApiDetailSampleHistory struct {
 	FullReqLog *string `json:"FullReqLog,omitnil,omitempty" name:"FullReqLog"`
 }
 
+type ApiEvent struct {
+	// 事件id
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 事件类型
+	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
+
+	// 事件等级，100,200,300对应低中高
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 处置状态，1:新发现，2，确认中，3，已确认，4，已下线，5，已忽略
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 发现时间
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 更新时间
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 关联的api
+	ApiName *string `json:"ApiName,omitnil,omitempty" name:"ApiName"`
+
+	// 请求方式
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// 事件来源，custom标识自定义
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+}
+
 type ApiGuardContent struct {
 	// <p>prompt</p>
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
@@ -1797,6 +1829,41 @@ type ApiPkg struct {
 	IsAPISecurityTrial *int64 `json:"IsAPISecurityTrial,omitnil,omitempty" name:"IsAPISecurityTrial"`
 }
 
+type ApiSecAttackSource struct {
+	// 攻击来源ip
+	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
+
+	// 威胁等级
+	EventLevel *string `json:"EventLevel,omitnil,omitempty" name:"EventLevel"`
+
+	// BOT标签
+	BotLabel *string `json:"BotLabel,omitnil,omitempty" name:"BotLabel"`
+
+	// 变更时间
+	Timestamp *uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 地理位置
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+
+	// 开始时间
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 关联事件数量
+	EventCount *int64 `json:"EventCount,omitnil,omitempty" name:"EventCount"`
+
+	// 攻击数量
+	AttackCount *int64 `json:"AttackCount,omitnil,omitempty" name:"AttackCount"`
+
+	// 缺失参数名，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段
+	MissUserName *string `json:"MissUserName,omitnil,omitempty" name:"MissUserName"`
+
+	// 当是水平越权和垂直越权时，返回此字段
+	AttackDetail []*string `json:"AttackDetail,omitnil,omitempty" name:"AttackDetail"`
+
+	// 缺失密码参数，当事件类型是缺失参数名，缺失参数名和密码时，返回此字段
+	MissPassword *string `json:"MissPassword,omitnil,omitempty" name:"MissPassword"`
+}
+
 type ApiSecCustomEventRule struct {
 	// 规则名称
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
@@ -1847,6 +1914,20 @@ type ApiSecCustomSensitiveRule struct {
 
 	// 规则是否泛化，默认0表示不泛化
 	IsPan *int64 `json:"IsPan,omitnil,omitempty" name:"IsPan"`
+}
+
+type ApiSecEventChange struct {
+	// 变更人
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 变更的状态
+	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 时间戳
+	Timestamp *uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type ApiSecExcludeRule struct {
@@ -7128,6 +7209,190 @@ func (r *DescribeApiListVersionTwoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeApiListVersionTwoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApiSecEventDetailRequestParams struct {
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>API安全事件ID</p>
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+}
+
+type DescribeApiSecEventDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>域名</p>
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// <p>API安全事件ID</p>
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+}
+
+func (r *DescribeApiSecEventDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiSecEventDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "EventId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApiSecEventDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApiSecEventDetailResponseParams struct {
+	// <p>事件描述信息</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// <p>事件基本信息</p>
+	EventInfo *ApiEvent `json:"EventInfo,omitnil,omitempty" name:"EventInfo"`
+
+	// <p>攻击源详情</p>
+	AttackSource []*ApiSecAttackSource `json:"AttackSource,omitnil,omitempty" name:"AttackSource"`
+
+	// <p>变更历史</p>
+	ChangeHistory []*ApiSecEventChange `json:"ChangeHistory,omitnil,omitempty" name:"ChangeHistory"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApiSecEventDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApiSecEventDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeApiSecEventDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiSecEventDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApiSecEventListRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 是否查询数量，默认不查询，为true则进行查询
+	NeedTotalCount *bool `json:"NeedTotalCount,omitnil,omitempty" name:"NeedTotalCount"`
+
+	// 过滤条件
+	Filters []*ApiDataFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 查询当前的页
+	PageIndex *uint64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
+
+	// 每一页显示多少条数据
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 排序，第一个元素为排序的key，第二个元素为排序规则，其中1 为升序排列，而-1 是用于降序排列
+	Sort []*string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// 查询开始时间
+	StartTs *uint64 `json:"StartTs,omitnil,omitempty" name:"StartTs"`
+
+	// 查询结束时间
+	EndTs *uint64 `json:"EndTs,omitnil,omitempty" name:"EndTs"`
+}
+
+type DescribeApiSecEventListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 是否查询数量，默认不查询，为true则进行查询
+	NeedTotalCount *bool `json:"NeedTotalCount,omitnil,omitempty" name:"NeedTotalCount"`
+
+	// 过滤条件
+	Filters []*ApiDataFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 查询当前的页
+	PageIndex *uint64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
+
+	// 每一页显示多少条数据
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 排序，第一个元素为排序的key，第二个元素为排序规则，其中1 为升序排列，而-1 是用于降序排列
+	Sort []*string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// 查询开始时间
+	StartTs *uint64 `json:"StartTs,omitnil,omitempty" name:"StartTs"`
+
+	// 查询结束时间
+	EndTs *uint64 `json:"EndTs,omitnil,omitempty" name:"EndTs"`
+}
+
+func (r *DescribeApiSecEventListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiSecEventListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "NeedTotalCount")
+	delete(f, "Filters")
+	delete(f, "PageIndex")
+	delete(f, "PageSize")
+	delete(f, "Sort")
+	delete(f, "StartTs")
+	delete(f, "EndTs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApiSecEventListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApiSecEventListResponseParams struct {
+	// 事件列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*ApiEvent `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 事件总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeApiSecEventListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApiSecEventListResponseParams `json:"Response"`
+}
+
+func (r *DescribeApiSecEventListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApiSecEventListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

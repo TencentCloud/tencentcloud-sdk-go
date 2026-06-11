@@ -2413,26 +2413,26 @@ func (r *DescribeOIDCConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRoleListRequestParams struct {
-	// 页码，从1开始
+	// <p>页码，从1开始</p>
 	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 每页行数，不能大于200
+	// <p>每页行数，不能大于200</p>
 	Rp *uint64 `json:"Rp,omitnil,omitempty" name:"Rp"`
 
-	// 标签筛选
+	// <p>标签筛选</p>
 	Tags []*RoleTags `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type DescribeRoleListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 页码，从1开始
+	// <p>页码，从1开始</p>
 	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 每页行数，不能大于200
+	// <p>每页行数，不能大于200</p>
 	Rp *uint64 `json:"Rp,omitnil,omitempty" name:"Rp"`
 
-	// 标签筛选
+	// <p>标签筛选</p>
 	Tags []*RoleTags `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -2459,10 +2459,10 @@ func (r *DescribeRoleListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRoleListResponseParams struct {
-	// 角色详情列表。
+	// <p>角色详情列表。</p>
 	List []*RoleInfo `json:"List,omitnil,omitempty" name:"List"`
 
-	// 角色总数
+	// <p>角色总数</p>
 	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

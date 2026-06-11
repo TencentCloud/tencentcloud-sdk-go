@@ -7182,6 +7182,70 @@ type ParamType struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+// Predefined struct for user
+type PromoteDBInstanceToActiveRequestParams struct {
+	// 灾备实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主实例id
+	MasterId *string `json:"MasterId,omitnil,omitempty" name:"MasterId"`
+}
+
+type PromoteDBInstanceToActiveRequest struct {
+	*tchttp.BaseRequest
+	
+	// 灾备实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主实例id
+	MasterId *string `json:"MasterId,omitnil,omitempty" name:"MasterId"`
+}
+
+func (r *PromoteDBInstanceToActiveRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PromoteDBInstanceToActiveRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "MasterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PromoteDBInstanceToActiveRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PromoteDBInstanceToActiveResponseParams struct {
+	// 任务id
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PromoteDBInstanceToActiveResponse struct {
+	*tchttp.BaseResponse
+	Response *PromoteDBInstanceToActiveResponseParams `json:"Response"`
+}
+
+func (r *PromoteDBInstanceToActiveResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PromoteDBInstanceToActiveResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RemoveNodeList struct {
 	// 需要删除的节点角色。
 	// - SECONDARY：Mongod 从节点。
@@ -7903,31 +7967,33 @@ func (r *SetDBInstanceDeletionProtectionResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type SetInstanceMaintenanceRequestParams struct {
-	// 指定实例ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// <p>指定实例ID。例如：cmgo-p8vn****。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 维护时间窗开始时间。取值范围为"00:00-23:00"的任意整点或半点，如00:00或00:30。
+	// <p>维护时间窗开始时间。取值范围为&quot;00:00-23:00&quot;的任意整点或半点，如00:00或00:30。</p>
 	MaintenanceStart *string `json:"MaintenanceStart,omitnil,omitempty" name:"MaintenanceStart"`
 
-	// 维护时间窗结束时间。
-	// - 取值范围为"00:00-23:00"的任意整点或半点，维护时间持续时长最小为30分钟，最大为3小时。
-	// - 结束时间务必是基于开始时间向后的时间。
+	// <p>维护时间窗结束时间。</p><ul><li>取值范围为&quot;00:00-23:00&quot;的任意整点或半点，维护时间持续时长最小为30分钟，最大为3小时。</li><li>结束时间务必是基于开始时间向后的时间。</li></ul>
 	MaintenanceEnd *string `json:"MaintenanceEnd,omitnil,omitempty" name:"MaintenanceEnd"`
+
+	// <p>指定每周内维护时间窗口的具体日期。  格式：请输入 1-7 之间的数字代表周一到周日（例如：1 代表周一），多个日期请用英文逗号 , 分隔。 示例：输入 1,3,5 表示维护窗口周期在每周的周一、周三、周五。 默认值：不设置，则默认为全周期 (1,2,3,4,5,6,7)。</p>
+	MaintenanceDays *string `json:"MaintenanceDays,omitnil,omitempty" name:"MaintenanceDays"`
 }
 
 type SetInstanceMaintenanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 指定实例ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// <p>指定实例ID。例如：cmgo-p8vn****。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 维护时间窗开始时间。取值范围为"00:00-23:00"的任意整点或半点，如00:00或00:30。
+	// <p>维护时间窗开始时间。取值范围为&quot;00:00-23:00&quot;的任意整点或半点，如00:00或00:30。</p>
 	MaintenanceStart *string `json:"MaintenanceStart,omitnil,omitempty" name:"MaintenanceStart"`
 
-	// 维护时间窗结束时间。
-	// - 取值范围为"00:00-23:00"的任意整点或半点，维护时间持续时长最小为30分钟，最大为3小时。
-	// - 结束时间务必是基于开始时间向后的时间。
+	// <p>维护时间窗结束时间。</p><ul><li>取值范围为&quot;00:00-23:00&quot;的任意整点或半点，维护时间持续时长最小为30分钟，最大为3小时。</li><li>结束时间务必是基于开始时间向后的时间。</li></ul>
 	MaintenanceEnd *string `json:"MaintenanceEnd,omitnil,omitempty" name:"MaintenanceEnd"`
+
+	// <p>指定每周内维护时间窗口的具体日期。  格式：请输入 1-7 之间的数字代表周一到周日（例如：1 代表周一），多个日期请用英文逗号 , 分隔。 示例：输入 1,3,5 表示维护窗口周期在每周的周一、周三、周五。 默认值：不设置，则默认为全周期 (1,2,3,4,5,6,7)。</p>
+	MaintenanceDays *string `json:"MaintenanceDays,omitnil,omitempty" name:"MaintenanceDays"`
 }
 
 func (r *SetInstanceMaintenanceRequest) ToJsonString() string {
@@ -7945,6 +8011,7 @@ func (r *SetInstanceMaintenanceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "MaintenanceStart")
 	delete(f, "MaintenanceEnd")
+	delete(f, "MaintenanceDays")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetInstanceMaintenanceRequest has unknown keys!", "")
 	}

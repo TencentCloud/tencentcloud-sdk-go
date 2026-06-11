@@ -16958,6 +16958,9 @@ type Extenders struct {
 
 	// <p>节点缓存能力</p>
 	NodeCacheCapable *bool `json:"NodeCacheCapable,omitnil,omitempty" name:"NodeCacheCapable"`
+
+	// <p>extender 是否可忽略</p>
+	Ignorable *bool `json:"Ignorable,omitnil,omitempty" name:"Ignorable"`
 }
 
 type ExtensionAddon struct {

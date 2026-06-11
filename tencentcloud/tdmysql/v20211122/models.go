@@ -552,6 +552,9 @@ type CreateCloneInstanceRequestParams struct {
 
 	// <p>实例模式，normal：标准型；enhanced:加强型</p>
 	InstanceMode *string `json:"InstanceMode,omitnil,omitempty" name:"InstanceMode"`
+
+	// <p>安全组id列表</p>
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }
 
 type CreateCloneInstanceRequest struct {
@@ -616,6 +619,9 @@ type CreateCloneInstanceRequest struct {
 
 	// <p>实例模式，normal：标准型；enhanced:加强型</p>
 	InstanceMode *string `json:"InstanceMode,omitnil,omitempty" name:"InstanceMode"`
+
+	// <p>安全组id列表</p>
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }
 
 func (r *CreateCloneInstanceRequest) ToJsonString() string {
@@ -650,6 +656,7 @@ func (r *CreateCloneInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Zones")
 	delete(f, "FullReplications")
 	delete(f, "InstanceMode")
+	delete(f, "SecurityGroupIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloneInstanceRequest has unknown keys!", "")
 	}
@@ -777,6 +784,18 @@ type CreateDBInstancesRequestParams struct {
 
 	// <p>svls实例的ccu变配配置</p>
 	AutoScaleConfig *AutoScalingConfig `json:"AutoScaleConfig,omitnil,omitempty" name:"AutoScaleConfig"`
+
+	// <p>绑定安全组列表</p>
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// <p>root用户名,当前版本默认为dbaadmin，传值也会重置为dbaadmin</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>dbaadmin密码</p>
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// <p>是否开启透明加密，0：不开启，1：开启</p>
+	EncryptionEnable *int64 `json:"EncryptionEnable,omitnil,omitempty" name:"EncryptionEnable"`
 }
 
 type CreateDBInstancesRequest struct {
@@ -871,6 +890,18 @@ type CreateDBInstancesRequest struct {
 
 	// <p>svls实例的ccu变配配置</p>
 	AutoScaleConfig *AutoScalingConfig `json:"AutoScaleConfig,omitnil,omitempty" name:"AutoScaleConfig"`
+
+	// <p>绑定安全组列表</p>
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// <p>root用户名,当前版本默认为dbaadmin，传值也会重置为dbaadmin</p>
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// <p>dbaadmin密码</p>
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// <p>是否开启透明加密，0：不开启，1：开启</p>
+	EncryptionEnable *int64 `json:"EncryptionEnable,omitnil,omitempty" name:"EncryptionEnable"`
 }
 
 func (r *CreateDBInstancesRequest) ToJsonString() string {
@@ -915,6 +946,10 @@ func (r *CreateDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "TemplateId")
 	delete(f, "SQLMode")
 	delete(f, "AutoScaleConfig")
+	delete(f, "SecurityGroupIds")
+	delete(f, "UserName")
+	delete(f, "Password")
+	delete(f, "EncryptionEnable")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstancesRequest has unknown keys!", "")
 	}
@@ -1391,6 +1426,12 @@ type DescribeDBInstanceDetailResponseParams struct {
 	// <p>维护窗口配置</p>
 	MaintenanceWindow *MaintenanceWindowInfo `json:"MaintenanceWindow,omitnil,omitempty" name:"MaintenanceWindow"`
 
+	// <p>是否开启透明加密，0：未开启；1：已开启</p>
+	EncryptionEnable *int64 `json:"EncryptionEnable,omitnil,omitempty" name:"EncryptionEnable"`
+
+	// <p>真实使用的kms地域，用于后续调用kms服务</p>
+	EncryptionKmsRegion *string `json:"EncryptionKmsRegion,omitnil,omitempty" name:"EncryptionKmsRegion"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1413,27 +1454,33 @@ func (r *DescribeDBInstanceDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstancesRequestParams struct {
-	// 过滤参数
+	// <p>过滤参数</p>
 	Filters []*InstanceFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 最大返回个数，默认为20，上限为100
+	// <p>最大返回个数，默认为20，上限为100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，取Limit整数倍
+	// <p>偏移量，取Limit整数倍</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>指定查询引擎类型</p><p>枚举值：</p><ul><li>libra： 列存引擎</li></ul>
+	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 }
 
 type DescribeDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤参数
+	// <p>过滤参数</p>
 	Filters []*InstanceFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 最大返回个数，默认为20，上限为100
+	// <p>最大返回个数，默认为20，上限为100</p>
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，取Limit整数倍
+	// <p>偏移量，取Limit整数倍</p>
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>指定查询引擎类型</p><p>枚举值：</p><ul><li>libra： 列存引擎</li></ul>
+	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -1451,6 +1498,7 @@ func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "EngineType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstancesRequest has unknown keys!", "")
 	}
@@ -1459,10 +1507,10 @@ func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstancesResponseParams struct {
-	// 返回实例列表信息
+	// <p>返回实例列表信息</p>
 	Instances []*InstanceInfo `json:"Instances,omitnil,omitempty" name:"Instances"`
 
-	// 满足条件总数量
+	// <p>满足条件总数量</p>
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3256,6 +3304,9 @@ type InstanceInfo struct {
 
 	// <p>分析引擎关系信息</p>
 	AnalysisRelationInfos []*AnalysisRelationInfo `json:"AnalysisRelationInfos,omitnil,omitempty" name:"AnalysisRelationInfos"`
+
+	// <p>分析引擎实例信息</p>
+	AnalysisInstanceInfo *AnalysisInstanceInfo `json:"AnalysisInstanceInfo,omitnil,omitempty" name:"AnalysisInstanceInfo"`
 }
 
 type InstanceNode struct {

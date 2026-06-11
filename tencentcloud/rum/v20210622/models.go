@@ -12394,74 +12394,77 @@ type ScoreInfo struct {
 }
 
 type ScoreInfoV2 struct {
-	// 项目id
+	// <p>项目id</p>
 	ProjectID *int64 `json:"ProjectID,omitnil,omitempty" name:"ProjectID"`
 
-	// 项目总分
+	// <p>项目总分</p>
 	Score *float64 `json:"Score,omitnil,omitempty" name:"Score"`
 
-	// API性能评分
+	// <p>API性能评分</p>
 	ApiPerformanceScore *float64 `json:"ApiPerformanceScore,omitnil,omitempty" name:"ApiPerformanceScore"`
 
-	// API可用性评分
+	// <p>API可用性评分</p>
 	ApiAvailableScore *float64 `json:"ApiAvailableScore,omitnil,omitempty" name:"ApiAvailableScore"`
 
-	// API调用总数
+	// <p>API调用总数</p>
 	ApiNum *int64 `json:"ApiNum,omitnil,omitempty" name:"ApiNum"`
 
-	// API失败次数
+	// <p>API失败次数</p>
 	ApiFail *int64 `json:"ApiFail,omitnil,omitempty" name:"ApiFail"`
 
-	// API平均持续时间
+	// <p>API平均持续时间</p>
 	ApiDuration *float64 `json:"ApiDuration,omitnil,omitempty" name:"ApiDuration"`
 
-	// 页面性能评分
+	// <p>页面性能评分</p>
 	PagePerformanceScore *float64 `json:"PagePerformanceScore,omitnil,omitempty" name:"PagePerformanceScore"`
 
-	// 页面浏览量
+	// <p>页面浏览量</p>
 	PagePv *int64 `json:"PagePv,omitnil,omitempty" name:"PagePv"`
 
-	// 独立访客数
+	// <p>独立访客数</p>
 	PageUv *int64 `json:"PageUv,omitnil,omitempty" name:"PageUv"`
 
-	// 页面错误数
+	// <p>页面错误数</p>
 	PageError *int64 `json:"PageError,omitnil,omitempty" name:"PageError"`
 
-	// 首屏时间
+	// <p>首屏时间</p>
 	PageDuration *float64 `json:"PageDuration,omitnil,omitempty" name:"PageDuration"`
 
-	// 平均 LCP
+	// <p>平均 LCP</p>
 	PageLCP *float64 `json:"PageLCP,omitnil,omitempty" name:"PageLCP"`
 
-	// 平均 FID
+	// <p>平均 FID</p>
 	PageFID *float64 `json:"PageFID,omitnil,omitempty" name:"PageFID"`
 
-	// 平均 CLS
+	// <p>平均 CLS</p>
 	PageCLS *float64 `json:"PageCLS,omitnil,omitempty" name:"PageCLS"`
 
-	// 平均 FCP
+	// <p>平均 FCP</p>
 	PageFCP *float64 `json:"PageFCP,omitnil,omitempty" name:"PageFCP"`
 
-	// 平均 INP
+	// <p>平均 INP</p>
 	PageINP *float64 `json:"PageINP,omitnil,omitempty" name:"PageINP"`
 
-	// JavaScript错误评分
+	// <p>JavaScript错误评分</p>
 	JsErrorScore *float64 `json:"JsErrorScore,omitnil,omitempty" name:"JsErrorScore"`
 
-	// 静态资源可用性评分
+	// <p>静态资源可用性评分</p>
 	StaticAvailableScore *float64 `json:"StaticAvailableScore,omitnil,omitempty" name:"StaticAvailableScore"`
 
-	// 静态资源性能评分
+	// <p>静态资源性能评分</p>
 	StaticPerformanceScore *float64 `json:"StaticPerformanceScore,omitnil,omitempty" name:"StaticPerformanceScore"`
 
-	// 静态资源请求总数
+	// <p>静态资源请求总数</p>
 	StaticNum *int64 `json:"StaticNum,omitnil,omitempty" name:"StaticNum"`
 
-	// 静态资源加载失败数
+	// <p>静态资源加载失败数</p>
 	StaticFail *int64 `json:"StaticFail,omitnil,omitempty" name:"StaticFail"`
 
-	// 静态资源加载时间
+	// <p>静态资源加载时间</p>
 	StaticDuration *float64 `json:"StaticDuration,omitnil,omitempty" name:"StaticDuration"`
+
+	// <p>忽略的配置项</p>
+	Exclusion *string `json:"Exclusion,omitnil,omitempty" name:"Exclusion"`
 }
 
 // Predefined struct for user

@@ -20,12 +20,6 @@ const (
 	// 操作失败
 	FAILEDOPERATION = "FailedOperation"
 
-	// AI任务状态已经是Off
-	FAILEDOPERATION_AITASKSTATUSISOFF = "FailedOperation.AITaskStatusIsOff"
-
-	// 不允许删除或更改状态为On的AI任务
-	FAILEDOPERATION_AITASKSTATUSISON = "FailedOperation.AITaskStatusIsOn"
-
 	// 数据库错误
 	FAILEDOPERATION_DATABASEERROR = "FailedOperation.DatabaseError"
 
@@ -89,24 +83,6 @@ const (
 	// 存在不满足（上云时间段=前一天的录像时间段/上云倍速）的设定，请检查并确认
 	INVALIDPARAMETERVALUE_BAKTIMENOTENOUGH = "InvalidParameterValue.BakTimeNotEnough"
 
-	// CallbackURL包含特殊字符
-	INVALIDPARAMETERVALUE_CALLBACKURLCONTAINILLEGALCHARACTER = "InvalidParameterValue.CallbackURLContainIllegalCharacter"
-
-	// 包含已存在其他AI任务的ChannelId
-	INVALIDPARAMETERVALUE_CHANNELIDALREADYEXISTSINOTHERAITASKS = "InvalidParameterValue.ChannelIdAlreadyExistsInOtherAITasks"
-
-	// ChannelId不能为空
-	INVALIDPARAMETERVALUE_CHANNELIDMUSTBENOTEMPTY = "InvalidParameterValue.ChannelIdMustBeNotEmpty"
-
-	// ChannelList包含特殊字符
-	INVALIDPARAMETERVALUE_CHANNELLISTCONTAINILLEGALCHARACTER = "InvalidParameterValue.ChannelListContainIllegalCharacter"
-
-	// ChannelList不能为空
-	INVALIDPARAMETERVALUE_CHANNELLISTMUSTBENOTEMPTY = "InvalidParameterValue.ChannelListMustBeNotEmpty"
-
-	// ChannelList的数量必须小于1000
-	INVALIDPARAMETERVALUE_CHANNELNUMBERMUSTBELESSTHANONETHOUSAND = "InvalidParameterValue.ChannelNumberMustBeLessThanOneThousand"
-
 	// 通道数量超过限制范围
 	INVALIDPARAMETERVALUE_CHANNELSEXCEEDSRANGE = "InvalidParameterValue.ChannelsExceedsRange"
 
@@ -140,9 +116,6 @@ const (
 	// 结束时间不能为空
 	INVALIDPARAMETERVALUE_ENDTIMEZERO = "InvalidParameterValue.EndTimeZero"
 
-	// OperTimeSlot值有重复
-	INVALIDPARAMETERVALUE_HASDUPLICATEOPERTIMESLOT = "InvalidParameterValue.HasDuplicateOperTimeSlot"
-
 	// 通道ID包含了非法字符
 	INVALIDPARAMETERVALUE_ILLEGALCHANNELID = "InvalidParameterValue.IllegalChannelId"
 
@@ -161,23 +134,8 @@ const (
 	// 码流类型包含非法字符(仅支持英文、数字、_、-)
 	INVALIDPARAMETERVALUE_ILLEGALSTREAMTYPE = "InvalidParameterValue.IllegalStreamType"
 
-	// 无效的AI任务描述信息
-	INVALIDPARAMETERVALUE_INVALIDAITASKDESC = "InvalidParameterValue.InvalidAITaskDesc"
-
-	// 无效的AI任务ID
-	INVALIDPARAMETERVALUE_INVALIDAITASKID = "InvalidParameterValue.InvalidAITaskID"
-
-	// 无效的AI任务名称
-	INVALIDPARAMETERVALUE_INVALIDAITASKNAME = "InvalidParameterValue.InvalidAITaskName"
-
-	// 无效的AI任务状态
-	INVALIDPARAMETERVALUE_INVALIDAITASKSTATUS = "InvalidParameterValue.InvalidAITaskStatus"
-
 	// 无效的设备接入协议
 	INVALIDPARAMETERVALUE_INVALIDACCESSPROTOCOL = "InvalidParameterValue.InvalidAccessProtocol"
-
-	// 无效的开始或结束时间
-	INVALIDPARAMETERVALUE_INVALIDBEGINANDENDTIME = "InvalidParameterValue.InvalidBeginAndEndTime"
 
 	// 无效的开始时间
 	INVALIDPARAMETERVALUE_INVALIDBEGINTIME = "InvalidParameterValue.InvalidBeginTime"
@@ -196,9 +154,6 @@ const (
 
 	// 描述填写有误
 	INVALIDPARAMETERVALUE_INVALIDDESCRIPTION = "InvalidParameterValue.InvalidDescription"
-
-	// 无效的AI分析类型
-	INVALIDPARAMETERVALUE_INVALIDDETECTTYPE = "InvalidParameterValue.InvalidDetectType"
 
 	// 无效的设备ID
 	INVALIDPARAMETERVALUE_INVALIDDEVICEID = "InvalidParameterValue.InvalidDeviceId"
@@ -247,9 +202,6 @@ const (
 
 	// 名称为空或填写有误
 	INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
-
-	// 无效的OperTimeSlot格式
-	INVALIDPARAMETERVALUE_INVALIDOPERTIMESLOTFORMAT = "InvalidParameterValue.InvalidOperTimeSlotFormat"
 
 	// 组织名称为空或填写有误
 	INVALIDPARAMETERVALUE_INVALIDORGNAME = "InvalidParameterValue.InvalidOrgName"
@@ -305,14 +257,8 @@ const (
 	// 无效的模板ID
 	INVALIDPARAMETERVALUE_INVALIDTEMPLATEID = "InvalidParameterValue.InvalidTemplateId"
 
-	// 无效的TemplateTag
-	INVALIDPARAMETERVALUE_INVALIDTEMPLATETAG = "InvalidParameterValue.InvalidTemplateTag"
-
 	// 时间格式错误
 	INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = "InvalidParameterValue.InvalidTimeFormat"
-
-	// 无效的截图频率
-	INVALIDPARAMETERVALUE_INVALIDTIMEINTERVAL = "InvalidParameterValue.InvalidTimeInterval"
 
 	// 无效时间片段取值
 	INVALIDPARAMETERVALUE_INVALIDTIMESECTIONVALUE = "InvalidParameterValue.InvalidTimeSectionValue"
@@ -331,18 +277,6 @@ const (
 
 	// 时间不能跨天
 	INVALIDPARAMETERVALUE_NONSAMEDAY = "InvalidParameterValue.NonSameDay"
-
-	// Object包含非法字符
-	INVALIDPARAMETERVALUE_OBJECTCONTAINILLEGALCHARACTER = "InvalidParameterValue.ObjectContainIllegalCharacter"
-
-	// OperTimeSlot包含特殊字符
-	INVALIDPARAMETERVALUE_OPERTIMESLOTCONTAINILLEGALCHARACTER = "InvalidParameterValue.OperTimeSlotContainIllegalCharacter"
-
-	// OperTimeSlot容量必须小于5
-	INVALIDPARAMETERVALUE_OPERTIMESLOTNUMBERMUSTBELESSTHANFIVE = "InvalidParameterValue.OperTimeSlotNumberMustBeLessThanFive"
-
-	// OperTimeSlot开始时间必须小于结束时间
-	INVALIDPARAMETERVALUE_OPERTIMESLOTSTARTMUSTBELESSTHANEND = "InvalidParameterValue.OperTimeSlotStartMustBeLessThanEnd"
 
 	// 组织名称不能重复
 	INVALIDPARAMETERVALUE_ORGNAMEREPEAT = "InvalidParameterValue.OrgNameRepeat"
@@ -380,14 +314,8 @@ const (
 	// 开始时间不能为空
 	INVALIDPARAMETERVALUE_STARTTIMEZERO = "InvalidParameterValue.StartTimeZero"
 
-	// AI任务状态不能为空
-	INVALIDPARAMETERVALUE_STATUSMUSTBENOTEMPTY = "InvalidParameterValue.StatusMustBeNotEmpty"
-
 	// 不支持任务类型
 	INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTED = "InvalidParameterValue.TaskTypeNotSupported"
-
-	// TemplateTag必须一致
-	INVALIDPARAMETERVALUE_TEMPLATETAGMUSTBECONSISTENT = "InvalidParameterValue.TemplateTagMustBeConsistent"
 
 	// 时间间隔不能小于10分钟
 	INVALIDPARAMETERVALUE_TIMELESSTHANTENMINUTES = "InvalidParameterValue.TimeLessThanTenMinutes"
@@ -493,9 +421,6 @@ const (
 
 	// 资源不存在
 	RESOURCENOTFOUND = "ResourceNotFound"
-
-	// AI任务不存在
-	RESOURCENOTFOUND_AITASKNOTEXISTED = "ResourceNotFound.AITaskNotExisted"
 
 	// 通道不存在
 	RESOURCENOTFOUND_CHANNELNOTEXIST = "ResourceNotFound.ChannelNotExist"

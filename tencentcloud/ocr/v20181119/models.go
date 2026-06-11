@@ -5955,6 +5955,12 @@ type MarkInfo struct {
 
 	// <p>题目级正确答案（步骤批改时使用，包含完整解题步骤）</p>
 	RightAnswer *string `json:"RightAnswer,omitnil,omitempty" name:"RightAnswer"`
+
+	// <p>学科（如语文、数学、英语）</p>
+	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
+
+	// <p>题型（如选择题、填空题、计算题、应用题、判断题、作文题）</p>
+	QuestionType *string `json:"QuestionType,omitnil,omitempty" name:"QuestionType"`
 }
 
 type MedicalInvoice struct {

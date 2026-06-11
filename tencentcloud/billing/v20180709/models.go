@@ -9053,6 +9053,115 @@ func (r *DescribeGatherRuleDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeOrgMemberAccountBalanceData struct {
+	// <p>成员账号Uin</p>
+	MemberUin *string `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
+
+	// <p>成员名称</p>
+	MemberName *string `json:"MemberName,omitnil,omitempty" name:"MemberName"`
+
+	// <p>是否为信用账户</p>
+	IsCreditAccount *bool `json:"IsCreditAccount,omitnil,omitempty" name:"IsCreditAccount"`
+
+	// <p>当前真实可用余额</p><p>单位：分</p>
+	RealBalance *float64 `json:"RealBalance,omitnil,omitempty" name:"RealBalance"`
+
+	// <p>现金账户余额</p><p>单位：分</p>
+	CashAccountBalance *float64 `json:"CashAccountBalance,omitnil,omitempty" name:"CashAccountBalance"`
+
+	// <p>信用额度</p><p>单位：分</p><p>信用额度 = 基础信用额度 + 临时信用额度</p>
+	CreditAmount *float64 `json:"CreditAmount,omitnil,omitempty" name:"CreditAmount"`
+
+	// <p>临时信用额度</p><p>单位：分</p>
+	TempCredit *float64 `json:"TempCredit,omitnil,omitempty" name:"TempCredit"`
+
+	// <p>基础信用额度</p><p>单位：分</p>
+	BasicCreditAmount *float64 `json:"BasicCreditAmount,omitnil,omitempty" name:"BasicCreditAmount"`
+
+	// <p>欠费金额</p><p>单位：分</p>
+	OweAmount *float64 `json:"OweAmount,omitnil,omitempty" name:"OweAmount"`
+}
+
+// Predefined struct for user
+type DescribeOrgMemberAccountBalanceRequestParams struct {
+	// <p>页码</p><p>默认值：1</p><p>取值范围≥1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>单页大小</p><p>取值范围：[1, 10]</p><p>默认值：10</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>成员uin列表</p><p>入参限制：元素必须为纯数字字符串，并且元素个数不能大于10</p><p>为空时返回当前组织内所有成员的账户余额信息，不为空时返回指定成员的账户余额信息</p>
+	MemberUins []*string `json:"MemberUins,omitnil,omitempty" name:"MemberUins"`
+}
+
+type DescribeOrgMemberAccountBalanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>页码</p><p>默认值：1</p><p>取值范围≥1</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// <p>单页大小</p><p>取值范围：[1, 10]</p><p>默认值：10</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>成员uin列表</p><p>入参限制：元素必须为纯数字字符串，并且元素个数不能大于10</p><p>为空时返回当前组织内所有成员的账户余额信息，不为空时返回指定成员的账户余额信息</p>
+	MemberUins []*string `json:"MemberUins,omitnil,omitempty" name:"MemberUins"`
+}
+
+func (r *DescribeOrgMemberAccountBalanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrgMemberAccountBalanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "MemberUins")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrgMemberAccountBalanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrgMemberAccountBalanceResponseParams struct {
+	// <p>成员账户余额列表</p>
+	Data []*DescribeOrgMemberAccountBalanceData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// <p>总记录数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>当前页实际返回数量</p>
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>当前页码</p>
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOrgMemberAccountBalanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOrgMemberAccountBalanceResponseParams `json:"Response"`
+}
+
+func (r *DescribeOrgMemberAccountBalanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrgMemberAccountBalanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type DescribeRenewInstancesRequestParams struct {
 	// 每页的最大实例条数。 取值范围：1~100。

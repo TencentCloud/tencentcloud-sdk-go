@@ -211,56 +211,56 @@ type AsrParam struct {
 
 // Predefined struct for user
 type AsyncTextToSpeechRequestParams struct {
-	// 需要转语音的文字内容，最大允许50000字符，注意 1汉字=2字符
+	// <p>需要转语音的文字内容，最大允许50000字符，注意 1汉字=2字符</p>
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 文本转语音的声音配置
+	// <p>文本转语音的声音配置</p>
 	Voice *Voice `json:"Voice,omitnil,omitempty" name:"Voice"`
 
-	// TRTC的SdkAppId
+	// <p>TRTC的SdkAppId</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 文本转语音的输出音频的格式
+	// <p>文本转语音的输出音频的格式</p>
 	AudioFormat *AudioFormat `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
 
-	// TTS的模型，当前固定为：flow_01_turbo
+	// <p>TTS的模型，当前固定为：flow_02_turbo</p><p>枚举值：</p><ul><li>flow_02_turbo： flow_02_turbo</li></ul>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+	// <p>多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。</p>
 	PronunciationDict []*PronunciationDict `json:"PronunciationDict,omitnil,omitempty" name:"PronunciationDict"`
 
-	// 默认为0，0表示不生成字幕，1表示生成字幕
+	// <p>默认为0，0表示不生成字幕，1表示生成字幕</p>
 	AlignmentMode *uint64 `json:"AlignmentMode,omitnil,omitempty" name:"AlignmentMode"`
 
-	// 需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：  zh（中文） en（英文） yue（粤语） ja（日语） ko（韩语） ar（阿拉伯语） id（印尼语） th（泰语）
+	// <p>需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：  zh（中文） en（英文） yue（粤语） ja（日语） ko（韩语） ar（阿拉伯语） id（印尼语） th（泰语）</p>
 	LanguageCode *string `json:"LanguageCode,omitnil,omitempty" name:"LanguageCode"`
 }
 
 type AsyncTextToSpeechRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要转语音的文字内容，最大允许50000字符，注意 1汉字=2字符
+	// <p>需要转语音的文字内容，最大允许50000字符，注意 1汉字=2字符</p>
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 文本转语音的声音配置
+	// <p>文本转语音的声音配置</p>
 	Voice *Voice `json:"Voice,omitnil,omitempty" name:"Voice"`
 
-	// TRTC的SdkAppId
+	// <p>TRTC的SdkAppId</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 文本转语音的输出音频的格式
+	// <p>文本转语音的输出音频的格式</p>
 	AudioFormat *AudioFormat `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
 
-	// TTS的模型，当前固定为：flow_01_turbo
+	// <p>TTS的模型，当前固定为：flow_02_turbo</p><p>枚举值：</p><ul><li>flow_02_turbo： flow_02_turbo</li></ul>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+	// <p>多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。</p>
 	PronunciationDict []*PronunciationDict `json:"PronunciationDict,omitnil,omitempty" name:"PronunciationDict"`
 
-	// 默认为0，0表示不生成字幕，1表示生成字幕
+	// <p>默认为0，0表示不生成字幕，1表示生成字幕</p>
 	AlignmentMode *uint64 `json:"AlignmentMode,omitnil,omitempty" name:"AlignmentMode"`
 
-	// 需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：  zh（中文） en（英文） yue（粤语） ja（日语） ko（韩语） ar（阿拉伯语） id（印尼语） th（泰语）
+	// <p>需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：  zh（中文） en（英文） yue（粤语） ja（日语） ko（韩语） ar（阿拉伯语） id（印尼语） th（泰语）</p>
 	LanguageCode *string `json:"LanguageCode,omitnil,omitempty" name:"LanguageCode"`
 }
 
@@ -292,7 +292,7 @@ func (r *AsyncTextToSpeechRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AsyncTextToSpeechResponseParams struct {
-	// 任务ID
+	// <p>任务ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1037,45 +1037,51 @@ func (r *CreateCloudSliceTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCloudTranscriptionRequestParams struct {
-	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转录的房间所对应的SdkAppId相同。
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和转录的房间所对应的SdkAppId相同。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，转录的TRTC房间所对应的RoomId。注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#roomid">RoomId</a>，转录的TRTC房间所对应的RoomId。注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。</p>
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 房间信息RoomType，必须和转录的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。
+	// <p>房间信息RoomType，必须和转录的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。</p>
 	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
 
-	// 转录服务加入TRTC房间的参数。
+	// <p>转录服务加入TRTC房间的参数。</p>
 	TranscriptionParam *TranscriptionParam `json:"TranscriptionParam,omitnil,omitempty" name:"TranscriptionParam"`
 
-	// 转录服务ASR使用的参数。
+	// <p>转录服务ASR使用的参数。</p>
 	AsrParam *AsrParam `json:"AsrParam,omitnil,omitempty" name:"AsrParam"`
 
-	// 转录服务翻译使用的参数。
+	// <p>转录服务翻译使用的参数。</p>
 	TranslationParam *TranslationParam `json:"TranslationParam,omitnil,omitempty" name:"TranslationParam"`
+
+	// <p>转录服务TTS使用的参数。</p>
+	TTSParam []*TTSParam `json:"TTSParam,omitnil,omitempty" name:"TTSParam"`
 }
 
 type CreateCloudTranscriptionRequest struct {
 	*tchttp.BaseRequest
 	
-	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转录的房间所对应的SdkAppId相同。
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和转录的房间所对应的SdkAppId相同。</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，转录的TRTC房间所对应的RoomId。注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。
+	// <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#roomid">RoomId</a>，转录的TRTC房间所对应的RoomId。注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。</p>
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
-	// 房间信息RoomType，必须和转录的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。
+	// <p>房间信息RoomType，必须和转录的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。</p>
 	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
 
-	// 转录服务加入TRTC房间的参数。
+	// <p>转录服务加入TRTC房间的参数。</p>
 	TranscriptionParam *TranscriptionParam `json:"TranscriptionParam,omitnil,omitempty" name:"TranscriptionParam"`
 
-	// 转录服务ASR使用的参数。
+	// <p>转录服务ASR使用的参数。</p>
 	AsrParam *AsrParam `json:"AsrParam,omitnil,omitempty" name:"AsrParam"`
 
-	// 转录服务翻译使用的参数。
+	// <p>转录服务翻译使用的参数。</p>
 	TranslationParam *TranslationParam `json:"TranslationParam,omitnil,omitempty" name:"TranslationParam"`
+
+	// <p>转录服务TTS使用的参数。</p>
+	TTSParam []*TTSParam `json:"TTSParam,omitnil,omitempty" name:"TTSParam"`
 }
 
 func (r *CreateCloudTranscriptionRequest) ToJsonString() string {
@@ -1096,6 +1102,7 @@ func (r *CreateCloudTranscriptionRequest) FromJsonString(s string) error {
 	delete(f, "TranscriptionParam")
 	delete(f, "AsrParam")
 	delete(f, "TranslationParam")
+	delete(f, "TTSParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudTranscriptionRequest has unknown keys!", "")
 	}
@@ -1104,7 +1111,7 @@ func (r *CreateCloudTranscriptionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCloudTranscriptionResponseParams struct {
-	// 用于唯一标识转录任务，由腾讯云服务端生成，后续查询和停止请求都需要携带TaskID参数。
+	// <p>用于唯一标识转录任务，由腾讯云服务端生成，后续查询和停止请求都需要携带TaskID参数。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7561,6 +7568,37 @@ type TTSConfig struct {
 	Volume *float64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 }
 
+type TTSParam struct {
+	// <p>tts模型</p>
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// <p>tts语言，必须在TranslationParam 的TargetLang列表中。</p>
+	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
+
+	// <p>需要TTS播报的主播用户，该主播用户必须在订阅白名单里并且不在订阅黑名单里。</p>
+	TargetUser *TranscriptionUserInfoParams `json:"TargetUser,omitnil,omitempty" name:"TargetUser"`
+
+	// <p>TTS 音频回推到房间的机器人用户。</p>
+	TTSRobotUser *TranscriptionUserInfoParams `json:"TTSRobotUser,omitnil,omitempty" name:"TTSRobotUser"`
+
+	// <p>TTS的声音配置参数。</p>
+	Voice *TTSVoice `json:"Voice,omitnil,omitempty" name:"Voice"`
+}
+
+type TTSVoice struct {
+	// <p>音色 ID。</p>
+	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
+
+	// <p>语速调节，0.5 为半速慢放，2.0 为两倍速快放，1.0 为正常语速，区间：[0.5, 2.0]，默认1.0。</p>
+	Speed *float64 `json:"Speed,omitnil,omitempty" name:"Speed"`
+
+	// <p>音量调节，0 为静音，10 为最大音量，建议保持默认值 1.0，区间：[0, 10]，默认1.0。</p>
+	Volume *float64 `json:"Volume,omitnil,omitempty" name:"Volume"`
+
+	// <p>音高调节，负值声音更低沉，正值声音更尖锐，0 为原始音高，区间 [-12, 12]，默认0。</p>
+	Pitch *int64 `json:"Pitch,omitnil,omitempty" name:"Pitch"`
+}
+
 type TencentVod struct {
 	// 媒体后续任务处理操作，即完成媒体上传后，可自动发起任务流操作。参数值为任务流模板名，云点播支持 创建任务流模板 并为模板命名。
 	Procedure *string `json:"Procedure,omitnil,omitempty" name:"Procedure"`
@@ -7592,6 +7630,14 @@ type TencentVod struct {
 	UserDefineRecordId *string `json:"UserDefineRecordId,omitnil,omitempty" name:"UserDefineRecordId"`
 }
 
+type TermPair struct {
+	// <p>源术语。</p>
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// <p>目标术语翻译结果。</p>
+	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
+}
+
 type Terminology struct {
 	// 源术语
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
@@ -7600,83 +7646,81 @@ type Terminology struct {
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 }
 
+type TerminologyItem struct {
+	// <p>翻译目标语言。</p>
+	TargetLang *string `json:"TargetLang,omitnil,omitempty" name:"TargetLang"`
+
+	// <p>翻译目标语言对应的翻译术语配置。</p>
+	Terminology []*TermPair `json:"Terminology,omitnil,omitempty" name:"Terminology"`
+}
+
 // Predefined struct for user
 type TextToSpeechRequestParams struct {
-	// 需要转语音的文字内容，长度范围：[1, 255]
+	// <p>需要转语音的文字内容，长度范围：[1, 255]</p>
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 文本转语音的声音配置
+	// <p>文本转语音的声音配置</p>
 	Voice *Voice `json:"Voice,omitnil,omitempty" name:"Voice"`
 
-	// TRTC的SdkAppId
+	// <p>TRTC的SdkAppId</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 文本转语音的输出音频的格式
+	// <p>文本转语音的输出音频的格式</p>
 	AudioFormat *AudioFormat `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
 
-	// TTS的API密钥
+	// <p>TTS的API密钥</p>
 	//
 	// Deprecated: APIKey is deprecated.
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
 
-	// TTS的模型，当前固定为：flow_01_turbo
+	// <p>TTS的模型，当前固定为：flow_02_turbo</p><p>枚举值：</p><ul><li>flow_02_turbo： flow_02_turbo</li></ul>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	//  需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：
-	// - zh（中文）
-	// - en（英文）
-	// - yue（粤语）
-	// - ja（日语）
-	// - ko（韩语）
-	// - ar（阿拉伯语）
-	// - id（印尼语）
-	// - th（泰语）
+	// <p>需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：</p><ul><li>zh（中文）</li><li>en（英文）</li><li>yue（粤语）</li><li>ja（日语）</li><li>ko（韩语）</li><li>ar（阿拉伯语）</li><li>id（印尼语）</li><li>th（泰语）</li></ul>
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 
-	// 多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+	// <p>多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。</p>
 	PronunciationDict []*PronunciationDict `json:"PronunciationDict,omitnil,omitempty" name:"PronunciationDict"`
 
-	// 默认为0，0表示不生成字幕，1表示生成字幕
+	// <p>默认为0，0表示不生成字幕，1表示生成字幕</p>
 	AlignmentMode *uint64 `json:"AlignmentMode,omitnil,omitempty" name:"AlignmentMode"`
+
+	// <p>json字符串，用于拓展用法</p>
+	ExtraParams *string `json:"ExtraParams,omitnil,omitempty" name:"ExtraParams"`
 }
 
 type TextToSpeechRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要转语音的文字内容，长度范围：[1, 255]
+	// <p>需要转语音的文字内容，长度范围：[1, 255]</p>
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 文本转语音的声音配置
+	// <p>文本转语音的声音配置</p>
 	Voice *Voice `json:"Voice,omitnil,omitempty" name:"Voice"`
 
-	// TRTC的SdkAppId
+	// <p>TRTC的SdkAppId</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 文本转语音的输出音频的格式
+	// <p>文本转语音的输出音频的格式</p>
 	AudioFormat *AudioFormat `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
 
-	// TTS的API密钥
+	// <p>TTS的API密钥</p>
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
 
-	// TTS的模型，当前固定为：flow_01_turbo
+	// <p>TTS的模型，当前固定为：flow_02_turbo</p><p>枚举值：</p><ul><li>flow_02_turbo： flow_02_turbo</li></ul>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	//  需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：
-	// - zh（中文）
-	// - en（英文）
-	// - yue（粤语）
-	// - ja（日语）
-	// - ko（韩语）
-	// - ar（阿拉伯语）
-	// - id（印尼语）
-	// - th（泰语）
+	// <p>需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：</p><ul><li>zh（中文）</li><li>en（英文）</li><li>yue（粤语）</li><li>ja（日语）</li><li>ko（韩语）</li><li>ar（阿拉伯语）</li><li>id（印尼语）</li><li>th（泰语）</li></ul>
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 
-	// 多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+	// <p>多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。</p>
 	PronunciationDict []*PronunciationDict `json:"PronunciationDict,omitnil,omitempty" name:"PronunciationDict"`
 
-	// 默认为0，0表示不生成字幕，1表示生成字幕
+	// <p>默认为0，0表示不生成字幕，1表示生成字幕</p>
 	AlignmentMode *uint64 `json:"AlignmentMode,omitnil,omitempty" name:"AlignmentMode"`
+
+	// <p>json字符串，用于拓展用法</p>
+	ExtraParams *string `json:"ExtraParams,omitnil,omitempty" name:"ExtraParams"`
 }
 
 func (r *TextToSpeechRequest) ToJsonString() string {
@@ -7700,6 +7744,7 @@ func (r *TextToSpeechRequest) FromJsonString(s string) error {
 	delete(f, "Language")
 	delete(f, "PronunciationDict")
 	delete(f, "AlignmentMode")
+	delete(f, "ExtraParams")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToSpeechRequest has unknown keys!", "")
 	}
@@ -7708,13 +7753,13 @@ func (r *TextToSpeechRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type TextToSpeechResponseParams struct {
-	// Base64编码的音频数据
+	// <p>Base64编码的音频数据</p>
 	Audio *string `json:"Audio,omitnil,omitempty" name:"Audio"`
 
-	// 字幕对齐数据
+	// <p>字幕对齐数据</p>
 	Alignments []*AlignmentItem `json:"Alignments,omitnil,omitempty" name:"Alignments"`
 
-	// 音频时长
+	// <p>音频时长</p>
 	TotalDurationMs *uint64 `json:"TotalDurationMs,omitnil,omitempty" name:"TotalDurationMs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7739,81 +7784,71 @@ func (r *TextToSpeechResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type TextToSpeechSSERequestParams struct {
-	// 需要转语音的文字内容，长度范围：[1, 255]
+	// <p>需要转语音的文字内容，长度范围：[1, 255]</p>
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 文本转语音的声音配置
+	// <p>文本转语音的声音配置</p>
 	Voice *Voice `json:"Voice,omitnil,omitempty" name:"Voice"`
 
-	// TRTC的SdkAppId
+	// <p>TRTC的SdkAppId</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 文本转语音的输出音频的格式
+	// <p>文本转语音的输出音频的格式</p>
 	AudioFormat *AudioFormat `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
 
-	// TTS的API密钥
+	// <p>TTS的API密钥</p>
 	//
 	// Deprecated: APIKey is deprecated.
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
 
-	// TTS的模型，当前固定为：flow_01_turbo
+	// <p>TTS的模型，当前固定为：flow_02_turbo</p><p>枚举值：</p><ul><li>flow_02_turbo： flow_02_turbo</li></ul>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	//  需要合成的语言（ISO 639-1），默认自动识别，支持如下语言：
-	// - zh（中文）
-	// - en（英文）
-	// - yue（粤语）
-	// - ja（日语）
-	// - ko（韩语）
-	// - ar（阿拉伯语）
-	// - id（印尼语）
-	// - th（泰语）
+	// <p>需要合成的语言（ISO 639-1），默认自动识别，支持如下语言：</p><ul><li>zh（中文）</li><li>en（英文）</li><li>yue（粤语）</li><li>ja（日语）</li><li>ko（韩语）</li><li>ar（阿拉伯语）</li><li>id（印尼语）</li><li>th（泰语）</li></ul>
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 
-	// 多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+	// <p>多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。</p>
 	PronunciationDict []*PronunciationDict `json:"PronunciationDict,omitnil,omitempty" name:"PronunciationDict"`
 
-	// 默认为0，0表示不生成字幕，1表示生成字幕
+	// <p>默认为0，0表示不生成字幕，1表示生成字幕</p>
 	AlignmentMode *uint64 `json:"AlignmentMode,omitnil,omitempty" name:"AlignmentMode"`
+
+	// <p>json字符串，用于拓展用法</p>
+	ExtraParams *string `json:"ExtraParams,omitnil,omitempty" name:"ExtraParams"`
 }
 
 type TextToSpeechSSERequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要转语音的文字内容，长度范围：[1, 255]
+	// <p>需要转语音的文字内容，长度范围：[1, 255]</p>
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
-	// 文本转语音的声音配置
+	// <p>文本转语音的声音配置</p>
 	Voice *Voice `json:"Voice,omitnil,omitempty" name:"Voice"`
 
-	// TRTC的SdkAppId
+	// <p>TRTC的SdkAppId</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 文本转语音的输出音频的格式
+	// <p>文本转语音的输出音频的格式</p>
 	AudioFormat *AudioFormat `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
 
-	// TTS的API密钥
+	// <p>TTS的API密钥</p>
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
 
-	// TTS的模型，当前固定为：flow_01_turbo
+	// <p>TTS的模型，当前固定为：flow_02_turbo</p><p>枚举值：</p><ul><li>flow_02_turbo： flow_02_turbo</li></ul>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	//  需要合成的语言（ISO 639-1），默认自动识别，支持如下语言：
-	// - zh（中文）
-	// - en（英文）
-	// - yue（粤语）
-	// - ja（日语）
-	// - ko（韩语）
-	// - ar（阿拉伯语）
-	// - id（印尼语）
-	// - th（泰语）
+	// <p>需要合成的语言（ISO 639-1），默认自动识别，支持如下语言：</p><ul><li>zh（中文）</li><li>en（英文）</li><li>yue（粤语）</li><li>ja（日语）</li><li>ko（韩语）</li><li>ar（阿拉伯语）</li><li>id（印尼语）</li><li>th（泰语）</li></ul>
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 
-	// 多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+	// <p>多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。</p>
 	PronunciationDict []*PronunciationDict `json:"PronunciationDict,omitnil,omitempty" name:"PronunciationDict"`
 
-	// 默认为0，0表示不生成字幕，1表示生成字幕
+	// <p>默认为0，0表示不生成字幕，1表示生成字幕</p>
 	AlignmentMode *uint64 `json:"AlignmentMode,omitnil,omitempty" name:"AlignmentMode"`
+
+	// <p>json字符串，用于拓展用法</p>
+	ExtraParams *string `json:"ExtraParams,omitnil,omitempty" name:"ExtraParams"`
 }
 
 func (r *TextToSpeechSSERequest) ToJsonString() string {
@@ -7837,6 +7872,7 @@ func (r *TextToSpeechSSERequest) FromJsonString(s string) error {
 	delete(f, "Language")
 	delete(f, "PronunciationDict")
 	delete(f, "AlignmentMode")
+	delete(f, "ExtraParams")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToSpeechSSERequest has unknown keys!", "")
 	}
@@ -7954,8 +7990,11 @@ type TranslationConfig struct {
 }
 
 type TranslationParam struct {
-	// 翻译的目标语言，示例值["en", "ja"]。目标语种列表[中文 "zh"，英语 "en"，越南语 "vi"，日语 "ja"，韩语 "ko"，印度尼西亚语 "id"，泰语 "th"，葡萄牙语 "pt"，阿拉伯语 "ar"，西班牙语 "es"，法语 "fr"，马来语 "ms"，德语 "de"，意大利语 "it"，俄语 "ru"]。
+	// <p>翻译的目标语言，示例值[&quot;en&quot;, &quot;ja&quot;]。目标语种列表[中文 &quot;zh&quot;，英语 &quot;en&quot;，越南语 &quot;vi&quot;，日语 &quot;ja&quot;，韩语 &quot;ko&quot;，印度尼西亚语 &quot;id&quot;，泰语 &quot;th&quot;，葡萄牙语 &quot;pt&quot;，阿拉伯语 &quot;ar&quot;，西班牙语 &quot;es&quot;，法语 &quot;fr&quot;，马来语 &quot;ms&quot;，德语 &quot;de&quot;，意大利语 &quot;it&quot;，俄语 &quot;ru&quot;]。</p>
 	TargetLang []*string `json:"TargetLang,omitnil,omitempty" name:"TargetLang"`
+
+	// <p>翻译术语表配置。</p>
+	Terminologies []*TerminologyItem `json:"Terminologies,omitnil,omitempty" name:"Terminologies"`
 }
 
 type TrtcUsage struct {
@@ -8474,67 +8513,70 @@ type VideoParams struct {
 }
 
 type Voice struct {
-	//  音色 ID，可从音色列表获取，或使用声音克隆生成的自定义音色 ID
+	// <p>音色 ID，可从音色列表获取，或使用声音克隆生成的自定义音色 ID</p>
 	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
 
-	// 语速调节，0.5 为半速慢放，2.0 为两倍速快放，1.0 为正常语速，区间：[0.5, 2.0]，默认1.0
+	// <p>语速调节，0.5 为半速慢放，2.0 为两倍速快放，1.0 为正常语速，区间：[0.5, 2.0]，默认1.0</p>
 	Speed *float64 `json:"Speed,omitnil,omitempty" name:"Speed"`
 
-	//  音量调节，0 为静音，10 为最大音量，建议保持默认值 1.0，区间：[0, 10]，默认1.0
+	// <p>音量调节，0 为静音，10 为最大音量，建议保持默认值 1.0，区间：[0, 10]，默认1.0</p>
 	Volume *float64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
-	//  音高调节，负值声音更低沉，正值声音更尖锐，0 为原始音高，区间 [-12, 12],  默认0
+	// <p>音高调节，负值声音更低沉，正值声音更尖锐，0 为原始音高，区间 [-12, 12],  默认0</p>
 	Pitch *int64 `json:"Pitch,omitnil,omitempty" name:"Pitch"`
+
+	// <p>情绪控制，目前仅flow_01_ex模型支持</p><p>枚举值：</p><ul><li>happy： 高兴</li><li>sad： 悲伤</li><li>angry： 愤怒</li><li>fearful： 害怕</li><li>disgusted： 厌恶</li><li>surprised： 惊讶</li><li>calm： 中性</li><li>fluent： 生动</li><li>whisper： 低语</li></ul>
+	Emotion *string `json:"Emotion,omitnil,omitempty" name:"Emotion"`
 }
 
 // Predefined struct for user
 type VoiceCloneRequestParams struct {
-	// TRTC的SdkAppId
+	// <p>TRTC的SdkAppId</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 声音克隆的名称, 只允许使用数字、字母、下划线，不能超过36位
+	// <p>声音克隆的名称, 只允许使用数字、字母、下划线，不能超过36位</p>
 	VoiceName *string `json:"VoiceName,omitnil,omitempty" name:"VoiceName"`
 
-	// 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在6秒～180秒之间
+	// <p>声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在6秒～180秒之间</p>
 	PromptAudio *string `json:"PromptAudio,omitnil,omitempty" name:"PromptAudio"`
 
-	// TTS的API密钥
+	// <p>TTS的API密钥</p>
 	//
 	// Deprecated: APIKey is deprecated.
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
 
-	// 声音克隆的参考文本，为参考音频对应的文字。
+	// <p>声音克隆的参考文本，为参考音频对应的文字。</p>
 	PromptText *string `json:"PromptText,omitnil,omitempty" name:"PromptText"`
 
-	// TTS的模型：flow_01_turbo，flow_01_ex
+	// <p>TTS的模型：flow_02_turbo，flow_01_ex</p><p>枚举值：</p><ul><li>flow_02_turbo： flow_02_turbo</li><li>flow_01_ex： flow_01_ex</li></ul>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 语言参数，默认为空， 参考： (ISO 639-1) 
+	// <p>语言参数，默认为空， 参考： (ISO 639-1)</p>
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 
 type VoiceCloneRequest struct {
 	*tchttp.BaseRequest
 	
-	// TRTC的SdkAppId
+	// <p>TRTC的SdkAppId</p>
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 声音克隆的名称, 只允许使用数字、字母、下划线，不能超过36位
+	// <p>声音克隆的名称, 只允许使用数字、字母、下划线，不能超过36位</p>
 	VoiceName *string `json:"VoiceName,omitnil,omitempty" name:"VoiceName"`
 
-	// 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在6秒～180秒之间
+	// <p>声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在6秒～180秒之间</p>
 	PromptAudio *string `json:"PromptAudio,omitnil,omitempty" name:"PromptAudio"`
 
-	// TTS的API密钥
+	// <p>TTS的API密钥</p>
 	APIKey *string `json:"APIKey,omitnil,omitempty" name:"APIKey"`
 
-	// 声音克隆的参考文本，为参考音频对应的文字。
+	// <p>声音克隆的参考文本，为参考音频对应的文字。</p>
 	PromptText *string `json:"PromptText,omitnil,omitempty" name:"PromptText"`
 
-	// TTS的模型：flow_01_turbo，flow_01_ex
+	// <p>TTS的模型：flow_02_turbo，flow_01_ex</p><p>枚举值：</p><ul><li>flow_02_turbo： flow_02_turbo</li><li>flow_01_ex： flow_01_ex</li></ul>
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 语言参数，默认为空， 参考： (ISO 639-1) 
+	// <p>语言参数，默认为空， 参考： (ISO 639-1)</p>
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 }
 
@@ -8565,7 +8607,7 @@ func (r *VoiceCloneRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type VoiceCloneResponseParams struct {
-	// 克隆出的音色ID，可以用此id进行语音合成
+	// <p>克隆出的音色ID，可以用此id进行语音合成</p>
 	VoiceId *string `json:"VoiceId,omitnil,omitempty" name:"VoiceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

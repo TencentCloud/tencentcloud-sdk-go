@@ -399,6 +399,94 @@ func (c *Client) AttachDisksWithContext(ctx context.Context, request *AttachDisk
     return
 }
 
+func NewAttachRemoteDisksRequest() (request *AttachRemoteDisksRequest) {
+    request = &AttachRemoteDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "AttachRemoteDisks")
+    
+    
+    return
+}
+
+func NewAttachRemoteDisksResponse() (response *AttachRemoteDisksResponse) {
+    response = &AttachRemoteDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AttachRemoteDisks
+// 本接口用于挂载一个或多个弹性单副本SSD硬盘到指定的云服务器实例上。仅支持弹性盘类型。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INTERNALERROR_RESOURCEOPFAILED = "InternalError.ResourceOpFailed"
+//  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
+//  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
+//  INVALIDDISK_TYPEERROR = "InvalidDisk.TypeError"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  LIMITEXCEEDED_INSTANCEATTACHEDDISK = "LimitExceeded.InstanceAttachedDisk"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEBUSY = "ResourceBusy"
+//  RESOURCEINUSE_DISKMIGRATING = "ResourceInUse.DiskMigrating"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCEUNAVAILABLE_ATTACHED = "ResourceUnavailable.Attached"
+//  RESOURCEUNAVAILABLE_NOTPORTABLE = "ResourceUnavailable.NotPortable"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  RESOURCEUNAVAILABLE_TYPEERROR = "ResourceUnavailable.TypeError"
+//  RESOURCEUNAVAILABLE_ZONENOTMATCH = "ResourceUnavailable.ZoneNotMatch"
+func (c *Client) AttachRemoteDisks(request *AttachRemoteDisksRequest) (response *AttachRemoteDisksResponse, err error) {
+    return c.AttachRemoteDisksWithContext(context.Background(), request)
+}
+
+// AttachRemoteDisks
+// 本接口用于挂载一个或多个弹性单副本SSD硬盘到指定的云服务器实例上。仅支持弹性盘类型。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INTERNALERROR_RESOURCEOPFAILED = "InternalError.ResourceOpFailed"
+//  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
+//  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
+//  INVALIDDISK_TYPEERROR = "InvalidDisk.TypeError"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  LIMITEXCEEDED_INSTANCEATTACHEDDISK = "LimitExceeded.InstanceAttachedDisk"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEBUSY = "ResourceBusy"
+//  RESOURCEINUSE_DISKMIGRATING = "ResourceInUse.DiskMigrating"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCEUNAVAILABLE_ATTACHED = "ResourceUnavailable.Attached"
+//  RESOURCEUNAVAILABLE_NOTPORTABLE = "ResourceUnavailable.NotPortable"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  RESOURCEUNAVAILABLE_TYPEERROR = "ResourceUnavailable.TypeError"
+//  RESOURCEUNAVAILABLE_ZONENOTMATCH = "ResourceUnavailable.ZoneNotMatch"
+func (c *Client) AttachRemoteDisksWithContext(ctx context.Context, request *AttachRemoteDisksRequest) (response *AttachRemoteDisksResponse, err error) {
+    if request == nil {
+        request = NewAttachRemoteDisksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "AttachRemoteDisks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AttachRemoteDisks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAttachRemoteDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindAutoSnapshotPolicyRequest() (request *BindAutoSnapshotPolicyRequest) {
     request = &BindAutoSnapshotPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -865,6 +953,92 @@ func (c *Client) CreateDisksWithContext(ctx context.Context, request *CreateDisk
     request.SetContext(ctx)
     
     response = NewCreateDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRemoteDisksRequest() (request *CreateRemoteDisksRequest) {
+    request = &CreateRemoteDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "CreateRemoteDisks")
+    
+    
+    return
+}
+
+func NewCreateRemoteDisksResponse() (response *CreateRemoteDisksResponse) {
+    response = &CreateRemoteDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateRemoteDisks
+// 本接口用于创建弹性单副本SSD硬盘并自动挂载到指定实例。弹性盘在创建时就需要绑定目标实例，计费回调后由CBS自身完成装箱+挂载的全流程。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETER_DISKCONFIGNOTSUPPORTED = "InvalidParameter.DiskConfigNotSupported"
+//  INVALIDPARAMETER_INVALIDCLIENTTOKEN = "InvalidParameter.InvalidClientToken"
+//  INVALIDPARAMETER_PROJECTIDNOTEXIST = "InvalidParameter.ProjectIdNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDSNAPSHOTID_NOTFOUND = "InvalidSnapshotId.NotFound"
+//  LIMITEXCEEDED_INSTANCEATTACHEDDISK = "LimitExceeded.InstanceAttachedDisk"
+//  LIMITEXCEEDED_TAGQUOTALIMITEXCEEDED = "LimitExceeded.TagQuotaLimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEBUSY = "ResourceBusy"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  TRADEDEALCONFLICT = "TradeDealConflict"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOTCERTIFICATION = "UnauthorizedOperation.NotCertification"
+//  UNAUTHORIZEDOPERATION_NOTHAVEPAYMENTRIGHT = "UnauthorizedOperation.NotHavePaymentRight"
+//  UNAUTHORIZEDOPERATION_ROLENOTEXISTS = "UnauthorizedOperation.RoleNotExists"
+func (c *Client) CreateRemoteDisks(request *CreateRemoteDisksRequest) (response *CreateRemoteDisksResponse, err error) {
+    return c.CreateRemoteDisksWithContext(context.Background(), request)
+}
+
+// CreateRemoteDisks
+// 本接口用于创建弹性单副本SSD硬盘并自动挂载到指定实例。弹性盘在创建时就需要绑定目标实例，计费回调后由CBS自身完成装箱+挂载的全流程。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETER_DISKCONFIGNOTSUPPORTED = "InvalidParameter.DiskConfigNotSupported"
+//  INVALIDPARAMETER_INVALIDCLIENTTOKEN = "InvalidParameter.InvalidClientToken"
+//  INVALIDPARAMETER_PROJECTIDNOTEXIST = "InvalidParameter.ProjectIdNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDSNAPSHOTID_NOTFOUND = "InvalidSnapshotId.NotFound"
+//  LIMITEXCEEDED_INSTANCEATTACHEDDISK = "LimitExceeded.InstanceAttachedDisk"
+//  LIMITEXCEEDED_TAGQUOTALIMITEXCEEDED = "LimitExceeded.TagQuotaLimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEBUSY = "ResourceBusy"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  TRADEDEALCONFLICT = "TradeDealConflict"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOTCERTIFICATION = "UnauthorizedOperation.NotCertification"
+//  UNAUTHORIZEDOPERATION_NOTHAVEPAYMENTRIGHT = "UnauthorizedOperation.NotHavePaymentRight"
+//  UNAUTHORIZEDOPERATION_ROLENOTEXISTS = "UnauthorizedOperation.RoleNotExists"
+func (c *Client) CreateRemoteDisksWithContext(ctx context.Context, request *CreateRemoteDisksRequest) (response *CreateRemoteDisksResponse, err error) {
+    if request == nil {
+        request = NewCreateRemoteDisksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "CreateRemoteDisks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRemoteDisks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRemoteDisksResponse()
     err = c.Send(request, response)
     return
 }
@@ -1781,6 +1955,174 @@ func (c *Client) DescribeInstancesDiskNumWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeRemoteDiskConfigQuotaRequest() (request *DescribeRemoteDiskConfigQuotaRequest) {
+    request = &DescribeRemoteDiskConfigQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "DescribeRemoteDiskConfigQuota")
+    
+    
+    return
+}
+
+func NewDescribeRemoteDiskConfigQuotaResponse() (response *DescribeRemoteDiskConfigQuotaResponse) {
+    response = &DescribeRemoteDiskConfigQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRemoteDiskConfigQuota
+// 本接口用于查询单副本SSD硬盘机型搭配配额。可根据机型族、机型规格、可用区、付费方式等条件过滤查询结果。
+//
+// 可能返回的错误码:
+//  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRemoteDiskConfigQuota(request *DescribeRemoteDiskConfigQuotaRequest) (response *DescribeRemoteDiskConfigQuotaResponse, err error) {
+    return c.DescribeRemoteDiskConfigQuotaWithContext(context.Background(), request)
+}
+
+// DescribeRemoteDiskConfigQuota
+// 本接口用于查询单副本SSD硬盘机型搭配配额。可根据机型族、机型规格、可用区、付费方式等条件过滤查询结果。
+//
+// 可能返回的错误码:
+//  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRemoteDiskConfigQuotaWithContext(ctx context.Context, request *DescribeRemoteDiskConfigQuotaRequest) (response *DescribeRemoteDiskConfigQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeRemoteDiskConfigQuotaRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DescribeRemoteDiskConfigQuota")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRemoteDiskConfigQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRemoteDiskConfigQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRemoteDisksRequest() (request *DescribeRemoteDisksRequest) {
+    request = &DescribeRemoteDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "DescribeRemoteDisks")
+    
+    
+    return
+}
+
+func NewDescribeRemoteDisksResponse() (response *DescribeRemoteDisksResponse) {
+    response = &DescribeRemoteDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRemoteDisks
+// 本接口用于查询已购买的单副本SSD硬盘列表。可根据单副本SSD硬盘ID、类型、状态等条件过滤查询结果。
+//
+// 可能返回的错误码:
+//  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRemoteDisks(request *DescribeRemoteDisksRequest) (response *DescribeRemoteDisksResponse, err error) {
+    return c.DescribeRemoteDisksWithContext(context.Background(), request)
+}
+
+// DescribeRemoteDisks
+// 本接口用于查询已购买的单副本SSD硬盘列表。可根据单副本SSD硬盘ID、类型、状态等条件过滤查询结果。
+//
+// 可能返回的错误码:
+//  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRemoteDisksWithContext(ctx context.Context, request *DescribeRemoteDisksRequest) (response *DescribeRemoteDisksResponse, err error) {
+    if request == nil {
+        request = NewDescribeRemoteDisksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DescribeRemoteDisks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRemoteDisks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRemoteDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRemoteDisksDeniedActionsRequest() (request *DescribeRemoteDisksDeniedActionsRequest) {
+    request = &DescribeRemoteDisksDeniedActionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "DescribeRemoteDisksDeniedActions")
+    
+    
+    return
+}
+
+func NewDescribeRemoteDisksDeniedActionsResponse() (response *DescribeRemoteDisksDeniedActionsResponse) {
+    response = &DescribeRemoteDisksDeniedActionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRemoteDisksDeniedActions
+// 本接口用于查询一个或多个单副本SSD硬盘的操作限制列表。
+//
+// 可能返回的错误码:
+//  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRemoteDisksDeniedActions(request *DescribeRemoteDisksDeniedActionsRequest) (response *DescribeRemoteDisksDeniedActionsResponse, err error) {
+    return c.DescribeRemoteDisksDeniedActionsWithContext(context.Background(), request)
+}
+
+// DescribeRemoteDisksDeniedActions
+// 本接口用于查询一个或多个单副本SSD硬盘的操作限制列表。
+//
+// 可能返回的错误码:
+//  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRemoteDisksDeniedActionsWithContext(ctx context.Context, request *DescribeRemoteDisksDeniedActionsRequest) (response *DescribeRemoteDisksDeniedActionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRemoteDisksDeniedActionsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DescribeRemoteDisksDeniedActions")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRemoteDisksDeniedActions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRemoteDisksDeniedActionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSnapshotGroupsRequest() (request *DescribeSnapshotGroupsRequest) {
     request = &DescribeSnapshotGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2115,6 +2457,94 @@ func (c *Client) DetachDisksWithContext(ctx context.Context, request *DetachDisk
     return
 }
 
+func NewDetachRemoteDisksRequest() (request *DetachRemoteDisksRequest) {
+    request = &DetachRemoteDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "DetachRemoteDisks")
+    
+    
+    return
+}
+
+func NewDetachRemoteDisksResponse() (response *DetachRemoteDisksResponse) {
+    response = &DetachRemoteDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DetachRemoteDisks
+// 本接口用于从云服务器实例上卸载一个或多个弹性单副本SSD硬盘。仅支持弹性盘类型。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INTERNALERROR_RESOURCEOPFAILED = "InternalError.ResourceOpFailed"
+//  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
+//  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
+//  INVALIDDISK_TYPEERROR = "InvalidDisk.TypeError"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEBUSY = "ResourceBusy"
+//  RESOURCEINUSE_DISKMIGRATING = "ResourceInUse.DiskMigrating"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCEUNAVAILABLE_NOTPORTABLE = "ResourceUnavailable.NotPortable"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  RESOURCEUNAVAILABLE_TYPEERROR = "ResourceUnavailable.TypeError"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_DETACHPOD = "UnsupportedOperation.DetachPod"
+func (c *Client) DetachRemoteDisks(request *DetachRemoteDisksRequest) (response *DetachRemoteDisksResponse, err error) {
+    return c.DetachRemoteDisksWithContext(context.Background(), request)
+}
+
+// DetachRemoteDisks
+// 本接口用于从云服务器实例上卸载一个或多个弹性单副本SSD硬盘。仅支持弹性盘类型。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INTERNALERROR_RESOURCEOPFAILED = "InternalError.ResourceOpFailed"
+//  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
+//  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
+//  INVALIDDISK_TYPEERROR = "InvalidDisk.TypeError"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEBUSY = "ResourceBusy"
+//  RESOURCEINUSE_DISKMIGRATING = "ResourceInUse.DiskMigrating"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCEUNAVAILABLE_NOTPORTABLE = "ResourceUnavailable.NotPortable"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  RESOURCEUNAVAILABLE_TYPEERROR = "ResourceUnavailable.TypeError"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_DETACHPOD = "UnsupportedOperation.DetachPod"
+func (c *Client) DetachRemoteDisksWithContext(ctx context.Context, request *DetachRemoteDisksRequest) (response *DetachRemoteDisksResponse, err error) {
+    if request == nil {
+        request = NewDetachRemoteDisksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "DetachRemoteDisks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetachRemoteDisks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDetachRemoteDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetSnapOverviewRequest() (request *GetSnapOverviewRequest) {
     request = &GetSnapOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2243,6 +2673,58 @@ func (c *Client) InitializeDisksWithContext(ctx context.Context, request *Initia
     return
 }
 
+func NewInquirePriceCreateRemoteDisksRequest() (request *InquirePriceCreateRemoteDisksRequest) {
+    request = &InquirePriceCreateRemoteDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "InquirePriceCreateRemoteDisks")
+    
+    
+    return
+}
+
+func NewInquirePriceCreateRemoteDisksResponse() (response *InquirePriceCreateRemoteDisksResponse) {
+    response = &InquirePriceCreateRemoteDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InquirePriceCreateRemoteDisks
+// 该接口用于查询创建弹性单副本SSD硬盘的价格。支持预付费和后付费两种计费类型的询价。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  RESOURCEBUSY = "ResourceBusy"
+func (c *Client) InquirePriceCreateRemoteDisks(request *InquirePriceCreateRemoteDisksRequest) (response *InquirePriceCreateRemoteDisksResponse, err error) {
+    return c.InquirePriceCreateRemoteDisksWithContext(context.Background(), request)
+}
+
+// InquirePriceCreateRemoteDisks
+// 该接口用于查询创建弹性单副本SSD硬盘的价格。支持预付费和后付费两种计费类型的询价。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  RESOURCEBUSY = "ResourceBusy"
+func (c *Client) InquirePriceCreateRemoteDisksWithContext(ctx context.Context, request *InquirePriceCreateRemoteDisksRequest) (response *InquirePriceCreateRemoteDisksResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceCreateRemoteDisksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "InquirePriceCreateRemoteDisks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquirePriceCreateRemoteDisks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquirePriceCreateRemoteDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquirePriceModifyDiskBackupQuotaRequest() (request *InquirePriceModifyDiskBackupQuotaRequest) {
     request = &InquirePriceModifyDiskBackupQuotaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2353,6 +2835,64 @@ func (c *Client) InquirePriceModifyDiskExtraPerformanceWithContext(ctx context.C
     request.SetContext(ctx)
     
     response = NewInquirePriceModifyDiskExtraPerformanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquirePriceRenewRemoteDisksRequest() (request *InquirePriceRenewRemoteDisksRequest) {
+    request = &InquirePriceRenewRemoteDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "InquirePriceRenewRemoteDisks")
+    
+    
+    return
+}
+
+func NewInquirePriceRenewRemoteDisksResponse() (response *InquirePriceRenewRemoteDisksResponse) {
+    response = &InquirePriceRenewRemoteDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InquirePriceRenewRemoteDisks
+// 该接口用于查询续费弹性单副本SSD硬盘的价格。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_EXPIRE = "ResourceUnavailable.Expire"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+func (c *Client) InquirePriceRenewRemoteDisks(request *InquirePriceRenewRemoteDisksRequest) (response *InquirePriceRenewRemoteDisksResponse, err error) {
+    return c.InquirePriceRenewRemoteDisksWithContext(context.Background(), request)
+}
+
+// InquirePriceRenewRemoteDisks
+// 该接口用于查询续费弹性单副本SSD硬盘的价格。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_EXPIRE = "ResourceUnavailable.Expire"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+func (c *Client) InquirePriceRenewRemoteDisksWithContext(ctx context.Context, request *InquirePriceRenewRemoteDisksRequest) (response *InquirePriceRenewRemoteDisksResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceRenewRemoteDisksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "InquirePriceRenewRemoteDisks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquirePriceRenewRemoteDisks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquirePriceRenewRemoteDisksResponse()
     err = c.Send(request, response)
     return
 }
@@ -2991,6 +3531,66 @@ func (c *Client) ModifyDisksRenewFlagWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyRemoteDiskAttributesRequest() (request *ModifyRemoteDiskAttributesRequest) {
+    request = &ModifyRemoteDiskAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "ModifyRemoteDiskAttributes")
+    
+    
+    return
+}
+
+func NewModifyRemoteDiskAttributesResponse() (response *ModifyRemoteDiskAttributesResponse) {
+    response = &ModifyRemoteDiskAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRemoteDiskAttributes
+// 本接口用于修改单副本SSD硬盘的属性，包括硬盘名称和项目ID。
+//
+// 可能返回的错误码:
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+func (c *Client) ModifyRemoteDiskAttributes(request *ModifyRemoteDiskAttributesRequest) (response *ModifyRemoteDiskAttributesResponse, err error) {
+    return c.ModifyRemoteDiskAttributesWithContext(context.Background(), request)
+}
+
+// ModifyRemoteDiskAttributes
+// 本接口用于修改单副本SSD硬盘的属性，包括硬盘名称和项目ID。
+//
+// 可能返回的错误码:
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+func (c *Client) ModifyRemoteDiskAttributesWithContext(ctx context.Context, request *ModifyRemoteDiskAttributesRequest) (response *ModifyRemoteDiskAttributesResponse, err error) {
+    if request == nil {
+        request = NewModifyRemoteDiskAttributesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "ModifyRemoteDiskAttributes")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRemoteDiskAttributes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRemoteDiskAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySnapshotAttributeRequest() (request *ModifySnapshotAttributeRequest) {
     request = &ModifySnapshotAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3233,6 +3833,82 @@ func (c *Client) RenewDiskWithContext(ctx context.Context, request *RenewDiskReq
     return
 }
 
+func NewRenewRemoteDiskRequest() (request *RenewRemoteDiskRequest) {
+    request = &RenewRemoteDiskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "RenewRemoteDisk")
+    
+    
+    return
+}
+
+func NewRenewRemoteDiskResponse() (response *RenewRemoteDiskResponse) {
+    response = &RenewRemoteDiskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RenewRemoteDisk
+// 该接口用于续费弹性单副本SSD硬盘。用户发起续费下单后，由计费系统完成扣费和到期时间更新。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDDISK_BUSY = "InvalidDisk.Busy"
+//  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
+//  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_NOTPORTABLE = "ResourceUnavailable.NotPortable"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  TRADEDEALCONFLICT = "TradeDealConflict"
+func (c *Client) RenewRemoteDisk(request *RenewRemoteDiskRequest) (response *RenewRemoteDiskResponse, err error) {
+    return c.RenewRemoteDiskWithContext(context.Background(), request)
+}
+
+// RenewRemoteDisk
+// 该接口用于续费弹性单副本SSD硬盘。用户发起续费下单后，由计费系统完成扣费和到期时间更新。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDDISK_BUSY = "InvalidDisk.Busy"
+//  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
+//  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_NOTPORTABLE = "ResourceUnavailable.NotPortable"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  TRADEDEALCONFLICT = "TradeDealConflict"
+func (c *Client) RenewRemoteDiskWithContext(ctx context.Context, request *RenewRemoteDiskRequest) (response *RenewRemoteDiskResponse, err error) {
+    if request == nil {
+        request = NewRenewRemoteDiskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "RenewRemoteDisk")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewRemoteDisk require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRenewRemoteDiskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResizeDiskRequest() (request *ResizeDiskRequest) {
     request = &ResizeDiskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3327,6 +4003,170 @@ func (c *Client) ResizeDiskWithContext(ctx context.Context, request *ResizeDiskR
     return
 }
 
+func NewSwitchParameterCreateRemoteDisksRequest() (request *SwitchParameterCreateRemoteDisksRequest) {
+    request = &SwitchParameterCreateRemoteDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "SwitchParameterCreateRemoteDisks")
+    
+    
+    return
+}
+
+func NewSwitchParameterCreateRemoteDisksResponse() (response *SwitchParameterCreateRemoteDisksResponse) {
+    response = &SwitchParameterCreateRemoteDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SwitchParameterCreateRemoteDisks
+// 该接口用于获取创建弹性单副本SSD硬盘的订单参数，生成的订单参数由前端透传到计费系统用于发货。创建时必须指定云服务器实例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDDISK_BUSY = "InvalidDisk.Busy"
+//  INVALIDDISK_EXPIRE = "InvalidDisk.Expire"
+//  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETER_DISKCONFIGNOTSUPPORTED = "InvalidParameter.DiskConfigNotSupported"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCEUNAVAILABLE_EXPIRE = "ResourceUnavailable.Expire"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  RESOURCEUNAVAILABLE_SNAPSHOTCREATING = "ResourceUnavailable.SnapshotCreating"
+//  TRADEDEALCONFLICT = "TradeDealConflict"
+//  UNAUTHORIZEDOPERATION_NOTHAVEPAYMENTRIGHT = "UnauthorizedOperation.NotHavePaymentRight"
+//  UNSUPPORTEDOPERATION_INSTANCENOTSTOPPED = "UnsupportedOperation.InstanceNotStopped"
+func (c *Client) SwitchParameterCreateRemoteDisks(request *SwitchParameterCreateRemoteDisksRequest) (response *SwitchParameterCreateRemoteDisksResponse, err error) {
+    return c.SwitchParameterCreateRemoteDisksWithContext(context.Background(), request)
+}
+
+// SwitchParameterCreateRemoteDisks
+// 该接口用于获取创建弹性单副本SSD硬盘的订单参数，生成的订单参数由前端透传到计费系统用于发货。创建时必须指定云服务器实例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDDISK_BUSY = "InvalidDisk.Busy"
+//  INVALIDDISK_EXPIRE = "InvalidDisk.Expire"
+//  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETER_DISKCONFIGNOTSUPPORTED = "InvalidParameter.DiskConfigNotSupported"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCEUNAVAILABLE_EXPIRE = "ResourceUnavailable.Expire"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  RESOURCEUNAVAILABLE_SNAPSHOTCREATING = "ResourceUnavailable.SnapshotCreating"
+//  TRADEDEALCONFLICT = "TradeDealConflict"
+//  UNAUTHORIZEDOPERATION_NOTHAVEPAYMENTRIGHT = "UnauthorizedOperation.NotHavePaymentRight"
+//  UNSUPPORTEDOPERATION_INSTANCENOTSTOPPED = "UnsupportedOperation.InstanceNotStopped"
+func (c *Client) SwitchParameterCreateRemoteDisksWithContext(ctx context.Context, request *SwitchParameterCreateRemoteDisksRequest) (response *SwitchParameterCreateRemoteDisksResponse, err error) {
+    if request == nil {
+        request = NewSwitchParameterCreateRemoteDisksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "SwitchParameterCreateRemoteDisks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SwitchParameterCreateRemoteDisks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSwitchParameterCreateRemoteDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSwitchParameterRenewRemoteDisksRequest() (request *SwitchParameterRenewRemoteDisksRequest) {
+    request = &SwitchParameterRenewRemoteDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "SwitchParameterRenewRemoteDisks")
+    
+    
+    return
+}
+
+func NewSwitchParameterRenewRemoteDisksResponse() (response *SwitchParameterRenewRemoteDisksResponse) {
+    response = &SwitchParameterRenewRemoteDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SwitchParameterRenewRemoteDisks
+// 该接口用于获取续费弹性单副本SSD硬盘的订单参数，生成的订单参数由前端透传到计费系统用于续费。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDDISK_BUSY = "InvalidDisk.Busy"
+//  INVALIDDISK_EXPIRE = "InvalidDisk.Expire"
+//  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETER_DISKCONFIGNOTSUPPORTED = "InvalidParameter.DiskConfigNotSupported"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCEUNAVAILABLE_EXPIRE = "ResourceUnavailable.Expire"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  RESOURCEUNAVAILABLE_SNAPSHOTCREATING = "ResourceUnavailable.SnapshotCreating"
+//  TRADEDEALCONFLICT = "TradeDealConflict"
+//  UNAUTHORIZEDOPERATION_NOTHAVEPAYMENTRIGHT = "UnauthorizedOperation.NotHavePaymentRight"
+//  UNSUPPORTEDOPERATION_INSTANCENOTSTOPPED = "UnsupportedOperation.InstanceNotStopped"
+func (c *Client) SwitchParameterRenewRemoteDisks(request *SwitchParameterRenewRemoteDisksRequest) (response *SwitchParameterRenewRemoteDisksResponse, err error) {
+    return c.SwitchParameterRenewRemoteDisksWithContext(context.Background(), request)
+}
+
+// SwitchParameterRenewRemoteDisks
+// 该接口用于获取续费弹性单副本SSD硬盘的订单参数，生成的订单参数由前端透传到计费系统用于续费。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDDISK_BUSY = "InvalidDisk.Busy"
+//  INVALIDDISK_EXPIRE = "InvalidDisk.Expire"
+//  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETER_DISKCONFIGNOTSUPPORTED = "InvalidParameter.DiskConfigNotSupported"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCEUNAVAILABLE_EXPIRE = "ResourceUnavailable.Expire"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  RESOURCEUNAVAILABLE_SNAPSHOTCREATING = "ResourceUnavailable.SnapshotCreating"
+//  TRADEDEALCONFLICT = "TradeDealConflict"
+//  UNAUTHORIZEDOPERATION_NOTHAVEPAYMENTRIGHT = "UnauthorizedOperation.NotHavePaymentRight"
+//  UNSUPPORTEDOPERATION_INSTANCENOTSTOPPED = "UnsupportedOperation.InstanceNotStopped"
+func (c *Client) SwitchParameterRenewRemoteDisksWithContext(ctx context.Context, request *SwitchParameterRenewRemoteDisksRequest) (response *SwitchParameterRenewRemoteDisksResponse, err error) {
+    if request == nil {
+        request = NewSwitchParameterRenewRemoteDisksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "SwitchParameterRenewRemoteDisks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SwitchParameterRenewRemoteDisks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSwitchParameterRenewRemoteDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTerminateDisksRequest() (request *TerminateDisksRequest) {
     request = &TerminateDisksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3415,6 +4255,82 @@ func (c *Client) TerminateDisksWithContext(ctx context.Context, request *Termina
     request.SetContext(ctx)
     
     response = NewTerminateDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateRemoteDisksRequest() (request *TerminateRemoteDisksRequest) {
+    request = &TerminateRemoteDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "TerminateRemoteDisks")
+    
+    
+    return
+}
+
+func NewTerminateRemoteDisksResponse() (response *TerminateRemoteDisksResponse) {
+    response = &TerminateRemoteDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TerminateRemoteDisks
+// 本接口用于销毁一个或多个弹性单副本SSD硬盘。仅支持弹性盘类型，且要求硬盘处于 INITED 或 UNINIT 状态。
+//
+// 可能返回的错误码:
+//  INSUFFICIENTREFUNDQUOTA = "InsufficientRefundQuota"
+//  INTERNALERROR_FAILQUERYRESOURCE = "InternalError.FailQueryResource"
+//  INVALIDDISK_EXPIRE = "InvalidDisk.Expire"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEBUSY = "ResourceBusy"
+//  RESOURCEINSUFFICIENT_OVERREFUNDQUOTA = "ResourceInsufficient.OverRefundQuota"
+//  RESOURCEUNAVAILABLE_EXPIRE = "ResourceUnavailable.Expire"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTREFUND = "ResourceUnavailable.NotSupportRefund"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  RESOURCEUNAVAILABLE_REPEATREFUND = "ResourceUnavailable.RepeatRefund"
+//  TRADEDEALCONFLICT = "TradeDealConflict"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) TerminateRemoteDisks(request *TerminateRemoteDisksRequest) (response *TerminateRemoteDisksResponse, err error) {
+    return c.TerminateRemoteDisksWithContext(context.Background(), request)
+}
+
+// TerminateRemoteDisks
+// 本接口用于销毁一个或多个弹性单副本SSD硬盘。仅支持弹性盘类型，且要求硬盘处于 INITED 或 UNINIT 状态。
+//
+// 可能返回的错误码:
+//  INSUFFICIENTREFUNDQUOTA = "InsufficientRefundQuota"
+//  INTERNALERROR_FAILQUERYRESOURCE = "InternalError.FailQueryResource"
+//  INVALIDDISK_EXPIRE = "InvalidDisk.Expire"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEBUSY = "ResourceBusy"
+//  RESOURCEINSUFFICIENT_OVERREFUNDQUOTA = "ResourceInsufficient.OverRefundQuota"
+//  RESOURCEUNAVAILABLE_EXPIRE = "ResourceUnavailable.Expire"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTREFUND = "ResourceUnavailable.NotSupportRefund"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  RESOURCEUNAVAILABLE_REPEATREFUND = "ResourceUnavailable.RepeatRefund"
+//  TRADEDEALCONFLICT = "TradeDealConflict"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) TerminateRemoteDisksWithContext(ctx context.Context, request *TerminateRemoteDisksRequest) (response *TerminateRemoteDisksResponse, err error) {
+    if request == nil {
+        request = NewTerminateRemoteDisksRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "cbs", APIVersion, "TerminateRemoteDisks")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateRemoteDisks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTerminateRemoteDisksResponse()
     err = c.Send(request, response)
     return
 }

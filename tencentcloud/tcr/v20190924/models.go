@@ -2101,6 +2101,67 @@ type CustomizedDomainInfo struct {
 }
 
 // Predefined struct for user
+type DeleteAIModelRequestParams struct {
+	// <p>TCR实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>模型删除</p>
+	Items []*DeleteModelItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type DeleteAIModelRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TCR实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>模型删除</p>
+	Items []*DeleteModelItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+func (r *DeleteAIModelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAIModelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "Items")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAIModelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAIModelResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAIModelResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAIModelResponseParams `json:"Response"`
+}
+
+func (r *DeleteAIModelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAIModelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteApplicationTriggerPersonalRequestParams struct {
 	// 触发器名称
 	TriggerName *string `json:"TriggerName,omitnil,omitempty" name:"TriggerName"`
@@ -2742,6 +2803,17 @@ func (r *DeleteInternalEndpointDnsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DeleteInternalEndpointDnsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteModelItem struct {
+
+	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
+
+
+	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
+
+
+	Reference *string `json:"Reference,omitnil,omitempty" name:"Reference"`
 }
 
 // Predefined struct for user
@@ -3464,6 +3536,67 @@ func (r *DeleteSignaturePolicyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteSkillRequestParams struct {
+	// <p>TCR实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>删除技能列表</p>
+	Items []*SkillType `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type DeleteSkillRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TCR实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>删除技能列表</p>
+	Items []*SkillType `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+func (r *DeleteSkillRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSkillRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "Items")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSkillRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSkillResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteSkillResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSkillResponseParams `json:"Response"`
+}
+
+func (r *DeleteSkillResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSkillResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteTagRetentionRuleRequestParams struct {
 	// 主实例iD
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
@@ -3589,6 +3722,84 @@ func (r *DeleteWebhookTriggerResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteWebhookTriggerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIModelVersionDetailRequestParams struct {
+	// <p>TCR实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>命名空间</p>
+	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
+
+	// <p>仓库名</p>
+	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
+
+	// <p>版本</p>
+	Reference *string `json:"Reference,omitnil,omitempty" name:"Reference"`
+}
+
+type DescribeAIModelVersionDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TCR实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>命名空间</p>
+	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
+
+	// <p>仓库名</p>
+	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
+
+	// <p>版本</p>
+	Reference *string `json:"Reference,omitnil,omitempty" name:"Reference"`
+}
+
+func (r *DescribeAIModelVersionDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIModelVersionDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "NamespaceName")
+	delete(f, "RepositoryName")
+	delete(f, "Reference")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIModelVersionDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAIModelVersionDetailResponseParams struct {
+	// <p>模型详情</p>
+	Model *ModelDetail `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAIModelVersionDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAIModelVersionDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeAIModelVersionDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAIModelVersionDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6120,6 +6331,148 @@ func (r *DescribeServiceAccountsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSkillDetailRequestParams struct {
+	// <p>TCR实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>技能名称</p>
+	SkillName *string `json:"SkillName,omitnil,omitempty" name:"SkillName"`
+
+	// <p>技能版本</p>
+	SkillVersion *string `json:"SkillVersion,omitnil,omitempty" name:"SkillVersion"`
+}
+
+type DescribeSkillDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TCR实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>技能名称</p>
+	SkillName *string `json:"SkillName,omitnil,omitempty" name:"SkillName"`
+
+	// <p>技能版本</p>
+	SkillVersion *string `json:"SkillVersion,omitnil,omitempty" name:"SkillVersion"`
+}
+
+func (r *DescribeSkillDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSkillDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "SkillName")
+	delete(f, "SkillVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSkillDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSkillDetailResponseParams struct {
+	// <p>技能详情</p>
+	Skill *Skill `json:"Skill,omitnil,omitempty" name:"Skill"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSkillDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSkillDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeSkillDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSkillDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSkillDownloadInfoRequestParams struct {
+	// <p>TCR实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>技能名称</p>
+	SkillName *string `json:"SkillName,omitnil,omitempty" name:"SkillName"`
+
+	// <p>技能版本</p>
+	SkillVersion *string `json:"SkillVersion,omitnil,omitempty" name:"SkillVersion"`
+}
+
+type DescribeSkillDownloadInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TCR实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>技能名称</p>
+	SkillName *string `json:"SkillName,omitnil,omitempty" name:"SkillName"`
+
+	// <p>技能版本</p>
+	SkillVersion *string `json:"SkillVersion,omitnil,omitempty" name:"SkillVersion"`
+}
+
+func (r *DescribeSkillDownloadInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSkillDownloadInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "SkillName")
+	delete(f, "SkillVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSkillDownloadInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSkillDownloadInfoResponseParams struct {
+	// <p>下载链接</p>
+	PreSignedDownloadURL *string `json:"PreSignedDownloadURL,omitnil,omitempty" name:"PreSignedDownloadURL"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSkillDownloadInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSkillDownloadInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeSkillDownloadInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSkillDownloadInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTagRetentionExecutionRequestParams struct {
 	// 主实例iD
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
@@ -6992,6 +7345,372 @@ type Limit struct {
 }
 
 // Predefined struct for user
+type ListAIModelVersionsRequestParams struct {
+	// <p>TCR实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>命名空间</p>
+	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
+
+	// <p>仓库名称</p>
+	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
+
+	// <p>偏移量</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>限制</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type ListAIModelVersionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TCR实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>命名空间</p>
+	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
+
+	// <p>仓库名称</p>
+	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
+
+	// <p>偏移量</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>限制</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *ListAIModelVersionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIModelVersionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "NamespaceName")
+	delete(f, "RepositoryName")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAIModelVersionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIModelVersionsResponseParams struct {
+	// <p>总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>版本列表</p>
+	VersionList []*VersionList `json:"VersionList,omitnil,omitempty" name:"VersionList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListAIModelVersionsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListAIModelVersionsResponseParams `json:"Response"`
+}
+
+func (r *ListAIModelVersionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIModelVersionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIModelsRequestParams struct {
+	// <p>TCR实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>命名空间</p>
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>模型名称</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>偏移量</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>最大限制</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>模糊搜索</p>
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
+}
+
+type ListAIModelsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TCR实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>命名空间</p>
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// <p>模型名称</p>
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// <p>偏移量</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>最大限制</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <p>模糊搜索</p>
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
+}
+
+func (r *ListAIModelsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIModelsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "Namespace")
+	delete(f, "ModelName")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAIModelsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAIModelsResponseParams struct {
+	// <p>总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>模型列表</p>
+	ModelList []*ModelList `json:"ModelList,omitnil,omitempty" name:"ModelList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListAIModelsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListAIModelsResponseParams `json:"Response"`
+}
+
+func (r *ListAIModelsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAIModelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListSkillVersionsRequestParams struct {
+	// <p>TCR实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>技能名称</p>
+	SkillName *string `json:"SkillName,omitnil,omitempty" name:"SkillName"`
+
+	// <p>偏移量</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>最大限制</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type ListSkillVersionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TCR实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>技能名称</p>
+	SkillName *string `json:"SkillName,omitnil,omitempty" name:"SkillName"`
+
+	// <p>偏移量</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>最大限制</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *ListSkillVersionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListSkillVersionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "SkillName")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListSkillVersionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListSkillVersionsResponseParams struct {
+	// <p>总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>Skill版本列表</p>
+	VersionList []*SkillVersionList `json:"VersionList,omitnil,omitempty" name:"VersionList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListSkillVersionsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListSkillVersionsResponseParams `json:"Response"`
+}
+
+func (r *ListSkillVersionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListSkillVersionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListSkillsRequestParams struct {
+	// <p>TCR实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>模糊查询</p>
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
+
+	// <p>技能名称</p>
+	SkillName *string `json:"SkillName,omitnil,omitempty" name:"SkillName"`
+
+	// <p>技能类型</p><p>枚举值：</p><ul><li>MCP Server： MCP Server 类型</li></ul>
+	SkillType *string `json:"SkillType,omitnil,omitempty" name:"SkillType"`
+
+	// <p>状态</p><p>枚举值：</p><ul><li>active： 活跃</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>偏移量</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>限制</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type ListSkillsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>TCR实例ID</p>
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// <p>模糊查询</p>
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
+
+	// <p>技能名称</p>
+	SkillName *string `json:"SkillName,omitnil,omitempty" name:"SkillName"`
+
+	// <p>技能类型</p><p>枚举值：</p><ul><li>MCP Server： MCP Server 类型</li></ul>
+	SkillType *string `json:"SkillType,omitnil,omitempty" name:"SkillType"`
+
+	// <p>状态</p><p>枚举值：</p><ul><li>active： 活跃</li></ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>偏移量</p>
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// <p>限制</p>
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *ListSkillsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListSkillsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "SearchKey")
+	delete(f, "SkillName")
+	delete(f, "SkillType")
+	delete(f, "Status")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListSkillsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListSkillsResponseParams struct {
+	// <p>总数</p>
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// <p>技能类型</p>
+	SkillList []*SkillList `json:"SkillList,omitnil,omitempty" name:"SkillList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListSkillsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListSkillsResponseParams `json:"Response"`
+}
+
+func (r *ListSkillsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListSkillsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ManageExternalEndpointRequestParams struct {
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
@@ -7295,6 +8014,67 @@ func (r *ManageReplicationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ManageReplicationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModelDetail struct {
+
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+
+	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
+
+
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+
+	Digest *string `json:"Digest,omitnil,omitempty" name:"Digest"`
+
+
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+
+	Framework *string `json:"Framework,omitnil,omitempty" name:"Framework"`
+
+
+	Precision *string `json:"Precision,omitnil,omitempty" name:"Precision"`
+
+
+	FileFormat *string `json:"FileFormat,omitnil,omitempty" name:"FileFormat"`
+
+
+	ParamSize *string `json:"ParamSize,omitnil,omitempty" name:"ParamSize"`
+
+
+	Family *string `json:"Family,omitnil,omitempty" name:"Family"`
+
+
+	IsRecommended *bool `json:"IsRecommended,omitnil,omitempty" name:"IsRecommended"`
+
+
+	PushTime *string `json:"PushTime,omitnil,omitempty" name:"PushTime"`
+}
+
+type ModelList struct {
+
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+
+	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
+
+
+	LatestVersion *string `json:"LatestVersion,omitnil,omitempty" name:"LatestVersion"`
+
+
+	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
+
+
+	ImageSize *string `json:"ImageSize,omitnil,omitempty" name:"ImageSize"`
+
+
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+
+	Digest *string `json:"Digest,omitnil,omitempty" name:"Digest"`
 }
 
 // Predefined struct for user
@@ -9082,6 +9862,74 @@ type ServiceAccount struct {
 	Permissions []*Permission `json:"Permissions,omitnil,omitempty" name:"Permissions"`
 }
 
+type Skill struct {
+
+	SkillName *string `json:"SkillName,omitnil,omitempty" name:"SkillName"`
+
+
+	SkillVersion *string `json:"SkillVersion,omitnil,omitempty" name:"SkillVersion"`
+
+
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+
+	SkillType *string `json:"SkillType,omitnil,omitempty" name:"SkillType"`
+
+
+	Runtime *string `json:"Runtime,omitnil,omitempty" name:"Runtime"`
+
+
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type SkillList struct {
+
+	SkillName *string `json:"SkillName,omitnil,omitempty" name:"SkillName"`
+
+
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+
+	SkillType *string `json:"SkillType,omitnil,omitempty" name:"SkillType"`
+
+
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+
+	LatestVersion *string `json:"LatestVersion,omitnil,omitempty" name:"LatestVersion"`
+
+
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type SkillType struct {
+
+	SkillName *string `json:"SkillName,omitnil,omitempty" name:"SkillName"`
+
+
+	SkillVersion *string `json:"SkillVersion,omitnil,omitempty" name:"SkillVersion"`
+}
+
+type SkillVersionList struct {
+
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+
+	PushTime *string `json:"PushTime,omitnil,omitempty" name:"PushTime"`
+}
+
 type Tag struct {
 	// 云标签的key
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -9534,6 +10382,20 @@ func (r *ValidateRepositoryExistPersonalResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ValidateRepositoryExistPersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type VersionList struct {
+
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+
+	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+
+	IsRecommended *bool `json:"IsRecommended,omitnil,omitempty" name:"IsRecommended"`
+
+
+	PushTime *string `json:"PushTime,omitnil,omitempty" name:"PushTime"`
 }
 
 type VpcAndDomainInfo struct {

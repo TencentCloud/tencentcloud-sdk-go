@@ -38,32 +38,26 @@ type AccountStatistics struct {
 
 // Predefined struct for user
 type AddLoginWhiteListsRequestParams struct {
-	// 异地登录白名单实体
+	// <p>异地登录白名单实体</p>
 	HostLoginWhiteObj *HostLoginWhiteObj `json:"HostLoginWhiteObj,omitnil,omitempty" name:"HostLoginWhiteObj"`
 
-	// 事件同步处理方式：
-	//   "" -- 不操作
-	//   "All" -- 将符合此配置的所有事件记录加白
-	//   "Id" -- 将EventId对应的事件记录加白
+	// <p>事件同步处理方式：<br>  &quot;&quot; -- 不操作<br>  &quot;All&quot; -- 将符合此配置的所有事件记录加白<br>  &quot;Id&quot; -- 将EventId对应的事件记录加白</p>
 	ProcessType *string `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 
-	// 异地登录事件ID，当ProcessType为Id时此项必填
+	// <p>异地登录事件ID，当ProcessType为Id时此项必填</p>
 	EventId *uint64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 }
 
 type AddLoginWhiteListsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 异地登录白名单实体
+	// <p>异地登录白名单实体</p>
 	HostLoginWhiteObj *HostLoginWhiteObj `json:"HostLoginWhiteObj,omitnil,omitempty" name:"HostLoginWhiteObj"`
 
-	// 事件同步处理方式：
-	//   "" -- 不操作
-	//   "All" -- 将符合此配置的所有事件记录加白
-	//   "Id" -- 将EventId对应的事件记录加白
+	// <p>事件同步处理方式：<br>  &quot;&quot; -- 不操作<br>  &quot;All&quot; -- 将符合此配置的所有事件记录加白<br>  &quot;Id&quot; -- 将EventId对应的事件记录加白</p>
 	ProcessType *string `json:"ProcessType,omitnil,omitempty" name:"ProcessType"`
 
-	// 异地登录事件ID，当ProcessType为Id时此项必填
+	// <p>异地登录事件ID，当ProcessType为Id时此项必填</p>
 	EventId *uint64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 }
 
@@ -90,7 +84,7 @@ func (r *AddLoginWhiteListsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddLoginWhiteListsResponseParams struct {
-	// 重复添加的提示列表
+	// <p>重复添加的提示列表</p>
 	DuplicateHosts []*DuplicateHosts `json:"DuplicateHosts,omitnil,omitempty" name:"DuplicateHosts"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5941,14 +5935,14 @@ func (r *DeleteLogExportResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLoginWhiteListRequestParams struct {
-	// 白名单ID (最大 100 条)
+	// <p>白名单ID (最大 100 条)</p>
 	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
 type DeleteLoginWhiteListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 白名单ID (最大 100 条)
+	// <p>白名单ID (最大 100 条)</p>
 	Ids []*uint64 `json:"Ids,omitnil,omitempty" name:"Ids"`
 }
 
@@ -19503,26 +19497,26 @@ func (r *DescribeLoginTypeHostResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLoginWhiteCombinedListRequestParams struct {
-	// 需要返回的数量，默认为10，最大值为100
+	// <p>需要返回的数量，默认为10，最大值为100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件。<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li><li>UserName - String - 是否必填：否 - 用户名筛选</li><li>SrcIP - String - 是否必填：否 - 来源IP筛选</li><li>Location - String - 是否必填：否 - 登录地筛选</li><li>ModifyBeginTime - String - 是否必填：否 - 按照修改时间段筛选，开始时间</li><li>ModifyEndTime - String - 是否必填：否 - 按照修改时间段筛选，结束时间</li>
+	// <p>过滤条件。<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li><li>UserName - String - 是否必填：否 - 用户名筛选</li><li>SrcIP - String - 是否必填：否 - 来源IP筛选</li><li>Location - String - 是否必填：否 - 登录地筛选</li><li>ModifyBeginTime - String - 是否必填：否 - 按照修改时间段筛选，开始时间</li><li>ModifyEndTime - String - 是否必填：否 - 按照修改时间段筛选，结束时间</li></p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeLoginWhiteCombinedListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要返回的数量，默认为10，最大值为100
+	// <p>需要返回的数量，默认为10，最大值为100</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件。<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li><li>UserName - String - 是否必填：否 - 用户名筛选</li><li>SrcIP - String - 是否必填：否 - 来源IP筛选</li><li>Location - String - 是否必填：否 - 登录地筛选</li><li>ModifyBeginTime - String - 是否必填：否 - 按照修改时间段筛选，开始时间</li><li>ModifyEndTime - String - 是否必填：否 - 按照修改时间段筛选，结束时间</li>
+	// <p>过滤条件。<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li><li>UserName - String - 是否必填：否 - 用户名筛选</li><li>SrcIP - String - 是否必填：否 - 来源IP筛选</li><li>Location - String - 是否必填：否 - 登录地筛选</li><li>ModifyBeginTime - String - 是否必填：否 - 按照修改时间段筛选，开始时间</li><li>ModifyEndTime - String - 是否必填：否 - 按照修改时间段筛选，结束时间</li></p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -19549,10 +19543,10 @@ func (r *DescribeLoginWhiteCombinedListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLoginWhiteCombinedListResponseParams struct {
-	// 总数量
+	// <p>总数量</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 合并后的白名单列表
+	// <p>合并后的白名单列表</p>
 	LoginWhiteCombinedInfos []*LoginWhiteCombinedInfo `json:"LoginWhiteCombinedInfos,omitnil,omitempty" name:"LoginWhiteCombinedInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19577,32 +19571,32 @@ func (r *DescribeLoginWhiteCombinedListResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeLoginWhiteHostListRequestParams struct {
-	// 白名单ID
+	// <p>白名单ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 需要返回的数量，最大值为1000
+	// <p>需要返回的数量，最大值为1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	// <p>过滤条件 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li></p>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeLoginWhiteHostListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 白名单ID
+	// <p>白名单ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 需要返回的数量，最大值为1000
+	// <p>需要返回的数量，最大值为1000</p>
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量，默认为0。
+	// <p>偏移量，默认为0。</p>
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	// <p>过滤条件 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li></p>
 	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -19630,10 +19624,10 @@ func (r *DescribeLoginWhiteHostListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLoginWhiteHostListResponseParams struct {
-	// 总数
+	// <p>总数</p>
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 服务器列表
+	// <p>服务器列表</p>
 	Hosts []*HostDesc `json:"Hosts,omitnil,omitempty" name:"Hosts"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19993,74 +19987,74 @@ func (r *DescribeMachineGeneralRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMachineGeneralResponseParams struct {
-	// 资产总数
+	// <p>资产总数</p>
 	MachineCnt *uint64 `json:"MachineCnt,omitnil,omitempty" name:"MachineCnt"`
 
-	// 腾讯云服务商机器数
+	// <p>腾讯云服务商机器数</p>
 	//
 	// Deprecated: TencentCloudMachineCnt is deprecated.
 	TencentCloudMachineCnt *uint64 `json:"TencentCloudMachineCnt,omitnil,omitempty" name:"TencentCloudMachineCnt"`
 
-	// 阿里云服务商机器数
+	// <p>阿里云服务商机器数</p>
 	//
 	// Deprecated: AliCloudMachineCnt is deprecated.
 	AliCloudMachineCnt *uint64 `json:"AliCloudMachineCnt,omitnil,omitempty" name:"AliCloudMachineCnt"`
 
-	// 百度云服务商机器数
+	// <p>百度云服务商机器数</p>
 	//
 	// Deprecated: BaiduCloudMachineCnt is deprecated.
 	BaiduCloudMachineCnt *uint64 `json:"BaiduCloudMachineCnt,omitnil,omitempty" name:"BaiduCloudMachineCnt"`
 
-	// IDC机器数
+	// <p>IDC机器数</p>
 	//
 	// Deprecated: IDCMachineCnt is deprecated.
 	IDCMachineCnt *uint64 `json:"IDCMachineCnt,omitnil,omitempty" name:"IDCMachineCnt"`
 
-	// 其他云服务商机器数
+	// <p>其他云服务商机器数</p>
 	//
 	// Deprecated: OtherCloudMachineCnt is deprecated.
 	OtherCloudMachineCnt *uint64 `json:"OtherCloudMachineCnt,omitnil,omitempty" name:"OtherCloudMachineCnt"`
 
-	// 已防护机器数
+	// <p>已防护机器数</p>
 	ProtectMachineCnt *uint64 `json:"ProtectMachineCnt,omitnil,omitempty" name:"ProtectMachineCnt"`
 
-	// 已防护基础版机器数
+	// <p>已防护基础版机器数</p>
 	BaseMachineCnt *uint64 `json:"BaseMachineCnt,omitnil,omitempty" name:"BaseMachineCnt"`
 
-	// 已防护专业版机器数
+	// <p>已防护专业版机器数</p>
 	SpecialtyMachineCnt *uint64 `json:"SpecialtyMachineCnt,omitnil,omitempty" name:"SpecialtyMachineCnt"`
 
-	// 已防护旗舰版机器数
+	// <p>已防护旗舰版机器数</p>
 	FlagshipMachineCnt *uint64 `json:"FlagshipMachineCnt,omitnil,omitempty" name:"FlagshipMachineCnt"`
 
-	// 存在风险的机器数
+	// <p>存在风险的机器数</p>
 	RiskMachineCnt *uint64 `json:"RiskMachineCnt,omitnil,omitempty" name:"RiskMachineCnt"`
 
-	// 比较昨日风险机器数
+	// <p>比较昨日风险机器数</p>
 	CompareYesterdayRiskMachineCnt *int64 `json:"CompareYesterdayRiskMachineCnt,omitnil,omitempty" name:"CompareYesterdayRiskMachineCnt"`
 
-	// 比较昨日未防护机器数
+	// <p>比较昨日未防护机器数</p>
 	CompareYesterdayNotProtectMachineCnt *int64 `json:"CompareYesterdayNotProtectMachineCnt,omitnil,omitempty" name:"CompareYesterdayNotProtectMachineCnt"`
 
-	// 比较昨日即将到期的机器数
+	// <p>比较昨日即将到期的机器数</p>
 	CompareYesterdayDeadlineMachineCnt *int64 `json:"CompareYesterdayDeadlineMachineCnt,omitnil,omitempty" name:"CompareYesterdayDeadlineMachineCnt"`
 
-	// 即将到期的机器数
+	// <p>即将到期的机器数</p>
 	DeadlineMachineCnt *uint64 `json:"DeadlineMachineCnt,omitnil,omitempty" name:"DeadlineMachineCnt"`
 
-	// 未防护机器数
+	// <p>未防护机器数</p>
 	NotProtectMachineCnt *uint64 `json:"NotProtectMachineCnt,omitnil,omitempty" name:"NotProtectMachineCnt"`
 
-	// 已防护轻量机器数（Lighthouse机器）
+	// <p>已防护轻量机器数（Lighthouse机器）</p>
 	LHGeneralDiscountCnt *uint64 `json:"LHGeneralDiscountCnt,omitnil,omitempty" name:"LHGeneralDiscountCnt"`
 
-	// 比较昨日新增的主机数
+	// <p>比较昨日新增的主机数</p>
 	CompareYesterdayMachineCnt *int64 `json:"CompareYesterdayMachineCnt,omitnil,omitempty" name:"CompareYesterdayMachineCnt"`
 
-	// 自动清理时间,最大720小时,最小0, 默认0 ,0=关闭
+	// <p>自动清理时间,最大720小时,最小0, 默认0 ,0=关闭</p>
 	MachineDestroyAfterOfflineHours *uint64 `json:"MachineDestroyAfterOfflineHours,omitnil,omitempty" name:"MachineDestroyAfterOfflineHours"`
 
-	// 云服务器类型数组
+	// <p>云服务器类型数组</p>
 	CloudFrom []*CloudFromCnt `json:"CloudFrom,omitnil,omitempty" name:"CloudFrom"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -36608,14 +36602,14 @@ func (r *ExportSecurityTrendsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportTasksRequestParams struct {
-	// 任务ID
+	// <p>任务ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type ExportTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID
+	// <p>任务ID</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -36640,11 +36634,14 @@ func (r *ExportTasksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportTasksResponseParams struct {
-	// PENDING：正在生成下载链接，FINISHED：下载链接已生成，ERROR：网络异常等异常情况
+	// <p>PENDING：正在生成下载链接，FINISHED：下载链接已生成，ERROR：网络异常等异常情况</p>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 下载链接
+	// <p>下载链接</p>
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
+
+	// <p>文件名称</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -41246,62 +41243,62 @@ func (r *ModifyLoginWhiteInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLoginWhiteRecordRequestParams struct {
-	// 白名单用户（多个用户逗号隔开）
+	// <p>白名单用户（多个用户逗号隔开）</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 更新后记录的白名单维度信息
+	// <p>更新后记录的白名单维度信息</p>
 	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 是否对所有服务器生效，0-否，1-是
+	// <p>是否对所有服务器生效，0-否，1-是</p>
 	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 
-	// 白名单ID
+	// <p>白名单ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 服务器列表
+	// <p>服务器列表</p>
 	Hosts []*HostInfo `json:"Hosts,omitnil,omitempty" name:"Hosts"`
 
-	// 地域列表
+	// <p>地域列表</p>
 	Places []*Place `json:"Places,omitnil,omitempty" name:"Places"`
 }
 
 type ModifyLoginWhiteRecordRequest struct {
 	*tchttp.BaseRequest
 	
-	// 白名单用户（多个用户逗号隔开）
+	// <p>白名单用户（多个用户逗号隔开）</p>
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
-	// 更新后记录的白名单维度信息
+	// <p>更新后记录的白名单维度信息</p>
 	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
 
-	// 开始时间
+	// <p>开始时间</p>
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// <p>结束时间</p>
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 备注
+	// <p>备注</p>
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 是否对所有服务器生效，0-否，1-是
+	// <p>是否对所有服务器生效，0-否，1-是</p>
 	IsGlobal *uint64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 
-	// 白名单ID
+	// <p>白名单ID</p>
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 服务器列表
+	// <p>服务器列表</p>
 	Hosts []*HostInfo `json:"Hosts,omitnil,omitempty" name:"Hosts"`
 
-	// 地域列表
+	// <p>地域列表</p>
 	Places []*Place `json:"Places,omitnil,omitempty" name:"Places"`
 }
 

@@ -288,63 +288,75 @@ func (r *CreateForwardingPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateForwardingRuleRequestParams struct {
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 策略ID。
+	// <p>策略ID。</p>
 	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
 
-	// 七层转发规则条件信息。
+	// <p>七层转发规则条件信息。</p>
 	RuleConditions []*RuleCondition `json:"RuleConditions,omitnil,omitempty" name:"RuleConditions"`
 
-	// 七层转发规则行为信息。
+	// <p>七层转发规则行为信息。</p>
 	RuleActions []*RuleAction `json:"RuleActions,omitnil,omitempty" name:"RuleActions"`
 
-	// 回源Header信息。
+	// <p>回源Header信息。</p>
 	OriginHeaders []*OriginHeader `json:"OriginHeaders,omitnil,omitempty" name:"OriginHeaders"`
 
-	// 是否开启回源sni。
+	// <p>是否开启回源sni。</p>
 	EnableOriginSni *bool `json:"EnableOriginSni,omitnil,omitempty" name:"EnableOriginSni"`
 
-	// 回源sni。
+	// <p>回源sni。</p>
 	OriginSni *string `json:"OriginSni,omitnil,omitempty" name:"OriginSni"`
 
-	// 回源host。
+	// <p>回源host。</p>
 	OriginHost *string `json:"OriginHost,omitnil,omitempty" name:"OriginHost"`
+
+	// <p>源站响应头</p>
+	ResponseHeaders []*ResponseHeaders `json:"ResponseHeaders,omitnil,omitempty" name:"ResponseHeaders"`
+
+	// <p>删除源站响应头</p>
+	HideResponseHeaders []*HideResponseHeaders `json:"HideResponseHeaders,omitnil,omitempty" name:"HideResponseHeaders"`
 }
 
 type CreateForwardingRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 策略ID。
+	// <p>策略ID。</p>
 	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
 
-	// 七层转发规则条件信息。
+	// <p>七层转发规则条件信息。</p>
 	RuleConditions []*RuleCondition `json:"RuleConditions,omitnil,omitempty" name:"RuleConditions"`
 
-	// 七层转发规则行为信息。
+	// <p>七层转发规则行为信息。</p>
 	RuleActions []*RuleAction `json:"RuleActions,omitnil,omitempty" name:"RuleActions"`
 
-	// 回源Header信息。
+	// <p>回源Header信息。</p>
 	OriginHeaders []*OriginHeader `json:"OriginHeaders,omitnil,omitempty" name:"OriginHeaders"`
 
-	// 是否开启回源sni。
+	// <p>是否开启回源sni。</p>
 	EnableOriginSni *bool `json:"EnableOriginSni,omitnil,omitempty" name:"EnableOriginSni"`
 
-	// 回源sni。
+	// <p>回源sni。</p>
 	OriginSni *string `json:"OriginSni,omitnil,omitempty" name:"OriginSni"`
 
-	// 回源host。
+	// <p>回源host。</p>
 	OriginHost *string `json:"OriginHost,omitnil,omitempty" name:"OriginHost"`
+
+	// <p>源站响应头</p>
+	ResponseHeaders []*ResponseHeaders `json:"ResponseHeaders,omitnil,omitempty" name:"ResponseHeaders"`
+
+	// <p>删除源站响应头</p>
+	HideResponseHeaders []*HideResponseHeaders `json:"HideResponseHeaders,omitnil,omitempty" name:"HideResponseHeaders"`
 }
 
 func (r *CreateForwardingRuleRequest) ToJsonString() string {
@@ -368,6 +380,8 @@ func (r *CreateForwardingRuleRequest) FromJsonString(s string) error {
 	delete(f, "EnableOriginSni")
 	delete(f, "OriginSni")
 	delete(f, "OriginHost")
+	delete(f, "ResponseHeaders")
+	delete(f, "HideResponseHeaders")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateForwardingRuleRequest has unknown keys!", "")
 	}
@@ -376,10 +390,10 @@ func (r *CreateForwardingRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateForwardingRuleResponseParams struct {
-	// 异步任务ID。
+	// <p>异步任务ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 七层转发规则ID。
+	// <p>七层转发规则ID。</p>
 	ForwardingRuleId *string `json:"ForwardingRuleId,omitnil,omitempty" name:"ForwardingRuleId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -543,6 +557,9 @@ type CreateListenerRequestParams struct {
 
 	// <p>客户端证书。</p>
 	ClientCaCertificates []*string `json:"ClientCaCertificates,omitnil,omitempty" name:"ClientCaCertificates"`
+
+	// <p>HTTPS监听器支持选择版本</p><p>枚举值：</p><ul><li>HTTP/1.1： HTTP/1.1</li><li>HTTP/2： HTTP/2</li></ul>
+	HttpVersion *string `json:"HttpVersion,omitnil,omitempty" name:"HttpVersion"`
 }
 
 type CreateListenerRequest struct {
@@ -592,6 +609,9 @@ type CreateListenerRequest struct {
 
 	// <p>客户端证书。</p>
 	ClientCaCertificates []*string `json:"ClientCaCertificates,omitnil,omitempty" name:"ClientCaCertificates"`
+
+	// <p>HTTPS监听器支持选择版本</p><p>枚举值：</p><ul><li>HTTP/1.1： HTTP/1.1</li><li>HTTP/2： HTTP/2</li></ul>
+	HttpVersion *string `json:"HttpVersion,omitnil,omitempty" name:"HttpVersion"`
 }
 
 func (r *CreateListenerRequest) ToJsonString() string {
@@ -621,6 +641,7 @@ func (r *CreateListenerRequest) FromJsonString(s string) error {
 	delete(f, "CipherPolicyId")
 	delete(f, "ServerCertificates")
 	delete(f, "ClientCaCertificates")
+	delete(f, "HttpVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateListenerRequest has unknown keys!", "")
 	}
@@ -1808,6 +1829,9 @@ type EndpointGroupConfiguration struct {
 
 	// <p>HPPTS加密算法套件</p>
 	CipherPolicyId *string `json:"CipherPolicyId,omitnil,omitempty" name:"CipherPolicyId"`
+
+	// <p>HTTPS回源协议支持选择[&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;]</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
+	HttpVersion *string `json:"HttpVersion,omitnil,omitempty" name:"HttpVersion"`
 }
 
 type EndpointGroupConfigurationSet struct {
@@ -1894,6 +1918,9 @@ type EndpointGroupConfigurationSet struct {
 
 	// <p>HPPTS加密算法套件</p>
 	CipherPolicyId *string `json:"CipherPolicyId,omitnil,omitempty" name:"CipherPolicyId"`
+
+	// <p>仅HTTPS回源协议支持选择[&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;]</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
+	HttpVersion *string `json:"HttpVersion,omitnil,omitempty" name:"HttpVersion"`
 }
 
 type Filter struct {
@@ -1993,6 +2020,14 @@ type GlobalAcceleratorSet struct {
 
 	// <p>标签信息。</p>
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
+}
+
+type HideResponseHeaders struct {
+	// <p>key</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>value</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type IpAddressInfoSet struct {
@@ -2202,6 +2237,9 @@ type ModifyEndpointGroupRequestParams struct {
 
 	// <p>HPPTS加密算法套件</p>
 	CipherPolicyId *string `json:"CipherPolicyId,omitnil,omitempty" name:"CipherPolicyId"`
+
+	// <p>仅HTTPS回源协议支持选择[&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;]</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
+	HttpVersion *string `json:"HttpVersion,omitnil,omitempty" name:"HttpVersion"`
 }
 
 type ModifyEndpointGroupRequest struct {
@@ -2275,6 +2313,9 @@ type ModifyEndpointGroupRequest struct {
 
 	// <p>HPPTS加密算法套件</p>
 	CipherPolicyId *string `json:"CipherPolicyId,omitnil,omitempty" name:"CipherPolicyId"`
+
+	// <p>仅HTTPS回源协议支持选择[&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;]</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
+	HttpVersion *string `json:"HttpVersion,omitnil,omitempty" name:"HttpVersion"`
 }
 
 func (r *ModifyEndpointGroupRequest) ToJsonString() string {
@@ -2312,6 +2353,7 @@ func (r *ModifyEndpointGroupRequest) FromJsonString(s string) error {
 	delete(f, "ForwardProtocol")
 	delete(f, "PortOverrides")
 	delete(f, "CipherPolicyId")
+	delete(f, "HttpVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEndpointGroupRequest has unknown keys!", "")
 	}
@@ -2423,69 +2465,81 @@ func (r *ModifyForwardingPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyForwardingRuleRequestParams struct {
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 策略ID。
+	// <p>策略ID。</p>
 	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
 
-	// 七层转发规则ID。
+	// <p>七层转发规则ID。</p>
 	ForwardingRuleId *string `json:"ForwardingRuleId,omitnil,omitempty" name:"ForwardingRuleId"`
 
-	// 七层转发规则条件信息。
+	// <p>七层转发规则条件信息。</p>
 	RuleConditions []*RuleCondition `json:"RuleConditions,omitnil,omitempty" name:"RuleConditions"`
 
-	// 七层转发规则行为信息。
+	// <p>七层转发规则行为信息。</p>
 	RuleActions []*RuleAction `json:"RuleActions,omitnil,omitempty" name:"RuleActions"`
 
-	// 回源Header信息。
+	// <p>回源Header信息。</p>
 	OriginHeaders []*OriginHeader `json:"OriginHeaders,omitnil,omitempty" name:"OriginHeaders"`
 
-	// 是否开启回源sni。
+	// <p>是否开启回源sni。</p>
 	EnableOriginSni *bool `json:"EnableOriginSni,omitnil,omitempty" name:"EnableOriginSni"`
 
-	// 回源sni。
+	// <p>回源sni。</p>
 	OriginSni *string `json:"OriginSni,omitnil,omitempty" name:"OriginSni"`
 
-	// 回源host。
+	// <p>回源host。</p>
 	OriginHost *string `json:"OriginHost,omitnil,omitempty" name:"OriginHost"`
+
+	// <p>源站响应头</p>
+	ResponseHeaders []*ResponseHeaders `json:"ResponseHeaders,omitnil,omitempty" name:"ResponseHeaders"`
+
+	// <p>删除源站响应头</p>
+	HideResponseHeaders []*HideResponseHeaders `json:"HideResponseHeaders,omitnil,omitempty" name:"HideResponseHeaders"`
 }
 
 type ModifyForwardingRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 全球加速实例ID。
+	// <p>全球加速实例ID。</p>
 	GlobalAcceleratorId *string `json:"GlobalAcceleratorId,omitnil,omitempty" name:"GlobalAcceleratorId"`
 
-	// 监听器ID。
+	// <p>监听器ID。</p>
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 策略ID。
+	// <p>策略ID。</p>
 	ForwardingPolicyId *string `json:"ForwardingPolicyId,omitnil,omitempty" name:"ForwardingPolicyId"`
 
-	// 七层转发规则ID。
+	// <p>七层转发规则ID。</p>
 	ForwardingRuleId *string `json:"ForwardingRuleId,omitnil,omitempty" name:"ForwardingRuleId"`
 
-	// 七层转发规则条件信息。
+	// <p>七层转发规则条件信息。</p>
 	RuleConditions []*RuleCondition `json:"RuleConditions,omitnil,omitempty" name:"RuleConditions"`
 
-	// 七层转发规则行为信息。
+	// <p>七层转发规则行为信息。</p>
 	RuleActions []*RuleAction `json:"RuleActions,omitnil,omitempty" name:"RuleActions"`
 
-	// 回源Header信息。
+	// <p>回源Header信息。</p>
 	OriginHeaders []*OriginHeader `json:"OriginHeaders,omitnil,omitempty" name:"OriginHeaders"`
 
-	// 是否开启回源sni。
+	// <p>是否开启回源sni。</p>
 	EnableOriginSni *bool `json:"EnableOriginSni,omitnil,omitempty" name:"EnableOriginSni"`
 
-	// 回源sni。
+	// <p>回源sni。</p>
 	OriginSni *string `json:"OriginSni,omitnil,omitempty" name:"OriginSni"`
 
-	// 回源host。
+	// <p>回源host。</p>
 	OriginHost *string `json:"OriginHost,omitnil,omitempty" name:"OriginHost"`
+
+	// <p>源站响应头</p>
+	ResponseHeaders []*ResponseHeaders `json:"ResponseHeaders,omitnil,omitempty" name:"ResponseHeaders"`
+
+	// <p>删除源站响应头</p>
+	HideResponseHeaders []*HideResponseHeaders `json:"HideResponseHeaders,omitnil,omitempty" name:"HideResponseHeaders"`
 }
 
 func (r *ModifyForwardingRuleRequest) ToJsonString() string {
@@ -2510,6 +2564,8 @@ func (r *ModifyForwardingRuleRequest) FromJsonString(s string) error {
 	delete(f, "EnableOriginSni")
 	delete(f, "OriginSni")
 	delete(f, "OriginHost")
+	delete(f, "ResponseHeaders")
+	delete(f, "HideResponseHeaders")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyForwardingRuleRequest has unknown keys!", "")
 	}
@@ -2518,7 +2574,7 @@ func (r *ModifyForwardingRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyForwardingRuleResponseParams struct {
-	// 异步任务ID。
+	// <p>异步任务ID。</p>
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2802,6 +2858,14 @@ type PortRanges struct {
 	// 终点端口。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ToPort *uint64 `json:"ToPort,omitnil,omitempty" name:"ToPort"`
+}
+
+type ResponseHeaders struct {
+	// <p>key</p>
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// <p>value</p>
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type RuleAction struct {

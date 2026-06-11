@@ -87,6 +87,9 @@ type BindingItem struct {
 
 	// 资源类型。取值：endpoint（服务）、model（模型）。
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type CreateApiKeysResultItem struct {

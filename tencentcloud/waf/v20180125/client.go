@@ -3881,6 +3881,108 @@ func (c *Client) DescribeApiListVersionTwoWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeApiSecEventDetailRequest() (request *DescribeApiSecEventDetailRequest) {
+    request = &DescribeApiSecEventDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeApiSecEventDetail")
+    
+    
+    return
+}
+
+func NewDescribeApiSecEventDetailResponse() (response *DescribeApiSecEventDetailResponse) {
+    response = &DescribeApiSecEventDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApiSecEventDetail
+// API安全事件详情查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MONGOOPERATIONFAILED = "FailedOperation.MongoOperationFailed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApiSecEventDetail(request *DescribeApiSecEventDetailRequest) (response *DescribeApiSecEventDetailResponse, err error) {
+    return c.DescribeApiSecEventDetailWithContext(context.Background(), request)
+}
+
+// DescribeApiSecEventDetail
+// API安全事件详情查询接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MONGOOPERATIONFAILED = "FailedOperation.MongoOperationFailed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApiSecEventDetailWithContext(ctx context.Context, request *DescribeApiSecEventDetailRequest) (response *DescribeApiSecEventDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiSecEventDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeApiSecEventDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApiSecEventDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApiSecEventDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApiSecEventListRequest() (request *DescribeApiSecEventListRequest) {
+    request = &DescribeApiSecEventListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeApiSecEventList")
+    
+    
+    return
+}
+
+func NewDescribeApiSecEventListResponse() (response *DescribeApiSecEventListResponse) {
+    response = &DescribeApiSecEventListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeApiSecEventList
+// api安全事件列表
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApiSecEventList(request *DescribeApiSecEventListRequest) (response *DescribeApiSecEventListResponse, err error) {
+    return c.DescribeApiSecEventListWithContext(context.Background(), request)
+}
+
+// DescribeApiSecEventList
+// api安全事件列表
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApiSecEventListWithContext(ctx context.Context, request *DescribeApiSecEventListRequest) (response *DescribeApiSecEventListResponse, err error) {
+    if request == nil {
+        request = NewDescribeApiSecEventListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "waf", APIVersion, "DescribeApiSecEventList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApiSecEventList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApiSecEventListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApiSecSensitiveRuleListRequest() (request *DescribeApiSecSensitiveRuleListRequest) {
     request = &DescribeApiSecSensitiveRuleListRequest{
         BaseRequest: &tchttp.BaseRequest{},
