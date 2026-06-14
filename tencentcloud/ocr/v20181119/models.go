@@ -8248,106 +8248,6 @@ func (r *RecognizeGeneralInvoiceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type RecognizeHealthCodeOCRRequestParams struct {
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 需要识别的健康码类型列表，为空或不填表示默认为自动识别。
-	// 0:自动识别
-	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
-}
-
-type RecognizeHealthCodeOCRRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-
-	// 需要识别的健康码类型列表，为空或不填表示默认为自动识别。
-	// 0:自动识别
-	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
-}
-
-func (r *RecognizeHealthCodeOCRRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RecognizeHealthCodeOCRRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageBase64")
-	delete(f, "ImageUrl")
-	delete(f, "Type")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeHealthCodeOCRRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type RecognizeHealthCodeOCRResponseParams struct {
-	// 持码人姓名，如：王*（允许返回空值）
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 持码人身份证号，如：11**************01（允许返回空值）
-	IDNumber *string `json:"IDNumber,omitnil,omitempty" name:"IDNumber"`
-
-	// 健康码更新时间（允许返回空值）
-	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
-
-	// 健康码颜色：绿色、黄色、红色（允许返回空值）
-	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
-
-	// 核酸检测间隔时长（允许返回空值）
-	TestingInterval *string `json:"TestingInterval,omitnil,omitempty" name:"TestingInterval"`
-
-	// 核酸检测结果：阴性、阳性、暂无核酸检测记录（允许返回空值）
-	TestingResult *string `json:"TestingResult,omitnil,omitempty" name:"TestingResult"`
-
-	// 核酸检测时间（允许返回空值）
-	TestingTime *string `json:"TestingTime,omitnil,omitempty" name:"TestingTime"`
-
-	// 疫苗接种信息，返回接种针数或接种情况（允许返回空值）
-	Vaccination *string `json:"Vaccination,omitnil,omitempty" name:"Vaccination"`
-
-	// 场所名称（允许返回空值）
-	SpotName *string `json:"SpotName,omitnil,omitempty" name:"SpotName"`
-
-	// 疫苗接种时间
-	VaccinationTime *string `json:"VaccinationTime,omitnil,omitempty" name:"VaccinationTime"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type RecognizeHealthCodeOCRResponse struct {
-	*tchttp.BaseResponse
-	Response *RecognizeHealthCodeOCRResponseParams `json:"Response"`
-}
-
-func (r *RecognizeHealthCodeOCRResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RecognizeHealthCodeOCRResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type RecognizeMedicalInvoiceOCRRequestParams struct {
 	// 图片的Base64 值。支持的文件格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载文件经Base64编码后不超过 10M。文件下载时间不超过 3 秒。输入参数 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
@@ -8847,82 +8747,6 @@ func (r *RecognizeThaiIDCardOCRResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RecognizeThaiIDCardOCRResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type RecognizeTravelCardOCRRequestParams struct {
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-}
-
-type RecognizeTravelCardOCRRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
-
-	// 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
-}
-
-func (r *RecognizeTravelCardOCRRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RecognizeTravelCardOCRRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageBase64")
-	delete(f, "ImageUrl")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeTravelCardOCRRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type RecognizeTravelCardOCRResponseParams struct {
-	// 行程卡更新时间，格式为：XXXX.XX.XX XX:XX:XX
-	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
-
-	// 行程卡颜色：绿色、黄色、红色
-	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
-
-	// 7天内到达或途经的城市（自2022年7月8日起，通信行程卡查询结果的覆盖时间范围由“14天”调整为“7天”）
-	ReachedCity []*string `json:"ReachedCity,omitnil,omitempty" name:"ReachedCity"`
-
-	// 7天内到达或途径存在中高风险地区的城市（自2022年6月29日起，通信行程卡取消“星号”标记，改字段将返回空值）
-	RiskArea []*string `json:"RiskArea,omitnil,omitempty" name:"RiskArea"`
-
-	// 电话号码
-	Telephone *string `json:"Telephone,omitnil,omitempty" name:"Telephone"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type RecognizeTravelCardOCRResponse struct {
-	*tchttp.BaseResponse
-	Response *RecognizeTravelCardOCRResponseParams `json:"Response"`
-}
-
-func (r *RecognizeTravelCardOCRResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RecognizeTravelCardOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -12630,6 +12454,90 @@ func (r *VehicleRegCertOCRResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *VehicleRegCertOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyBizLicenseEnterprise3RequestParams struct {
+	// <p>统一社会信用代码</p>
+	CreditCode *string `json:"CreditCode,omitnil,omitempty" name:"CreditCode"`
+
+	// <p>企业名称</p>
+	EntName *string `json:"EntName,omitnil,omitempty" name:"EntName"`
+
+	// <p>法人代表</p>
+	LrName *string `json:"LrName,omitnil,omitempty" name:"LrName"`
+
+	// <p>核验类型 </p><p>枚举值：</p><ul><li>ENT_2META： 企业名称 、统一社会信用代码</li><li>ENT_3META： 企业名称 、统一社会信用代码 、法人代表名称</li></ul>
+	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
+}
+
+type VerifyBizLicenseEnterprise3Request struct {
+	*tchttp.BaseRequest
+	
+	// <p>统一社会信用代码</p>
+	CreditCode *string `json:"CreditCode,omitnil,omitempty" name:"CreditCode"`
+
+	// <p>企业名称</p>
+	EntName *string `json:"EntName,omitnil,omitempty" name:"EntName"`
+
+	// <p>法人代表</p>
+	LrName *string `json:"LrName,omitnil,omitempty" name:"LrName"`
+
+	// <p>核验类型 </p><p>枚举值：</p><ul><li>ENT_2META： 企业名称 、统一社会信用代码</li><li>ENT_3META： 企业名称 、统一社会信用代码 、法人代表名称</li></ul>
+	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
+}
+
+func (r *VerifyBizLicenseEnterprise3Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyBizLicenseEnterprise3Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CreditCode")
+	delete(f, "EntName")
+	delete(f, "LrName")
+	delete(f, "VerifyType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyBizLicenseEnterprise3Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyBizLicenseEnterprise3ResponseParams struct {
+	// <p>0 成功，计费<br>1 系统异常，不计费<br>2 查询无结果，不计费</p>
+	StatusCode *int64 `json:"StatusCode,omitnil,omitempty" name:"StatusCode"`
+
+	// <p>验证结果<br>1：三要素完全匹配<br>0：三要素不完全匹配<br>仅StatusCode为0时返回</p>
+	VerifyResult *int64 `json:"VerifyResult,omitnil,omitempty" name:"VerifyResult"`
+
+	// <p>企业状态</p><p>枚举值：</p><ul><li>1： 开业（在营）/ 在营</li><li>2： 迁出 / 非在营</li><li>3： 注销</li><li>4： 吊销</li><li>5： 撤销</li><li>6： 停业</li><li>7： 撤销登记</li><li>0： 其他</li><li>/： 无法查询</li></ul><p>企业状态  当VerifyType参数为ENT_2META时，可返回：  0-7,  /   当VerifyType参数为ENT_3META时，可返回  1，2</p>
+	OperatingStatus *string `json:"OperatingStatus,omitnil,omitempty" name:"OperatingStatus"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type VerifyBizLicenseEnterprise3Response struct {
+	*tchttp.BaseResponse
+	Response *VerifyBizLicenseEnterprise3ResponseParams `json:"Response"`
+}
+
+func (r *VerifyBizLicenseEnterprise3Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyBizLicenseEnterprise3Response) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

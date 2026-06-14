@@ -45,6 +45,140 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateGlossaryRequest() (request *CreateGlossaryRequest) {
+    request = &CreateGlossaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "CreateGlossary")
+    
+    
+    return
+}
+
+func NewCreateGlossaryResponse() (response *CreateGlossaryResponse) {
+    response = &CreateGlossaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateGlossary
+// 创建术语库。
+//
+// 
+//
+// 在当前应用下创建一个新的翻译术语库，用于自定义源语言到目标语言的术语映射。创建成功后返回术语库 ID，可通过该 ID 进一步管理术语条目。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) CreateGlossary(request *CreateGlossaryRequest) (response *CreateGlossaryResponse, err error) {
+    return c.CreateGlossaryWithContext(context.Background(), request)
+}
+
+// CreateGlossary
+// 创建术语库。
+//
+// 
+//
+// 在当前应用下创建一个新的翻译术语库，用于自定义源语言到目标语言的术语映射。创建成功后返回术语库 ID，可通过该 ID 进一步管理术语条目。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) CreateGlossaryWithContext(ctx context.Context, request *CreateGlossaryRequest) (response *CreateGlossaryResponse, err error) {
+    if request == nil {
+        request = NewCreateGlossaryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "CreateGlossary")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGlossary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGlossaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateGlossaryEntriesRequest() (request *CreateGlossaryEntriesRequest) {
+    request = &CreateGlossaryEntriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "CreateGlossaryEntries")
+    
+    
+    return
+}
+
+func NewCreateGlossaryEntriesResponse() (response *CreateGlossaryEntriesResponse) {
+    response = &CreateGlossaryEntriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateGlossaryEntries
+// 批量创建术语条目。
+//
+// 
+//
+// 在指定术语库下批量创建术语条目。单次最多创建 100 条。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_GLOSSARYNOTFOUND = "ResourceNotFound.GlossaryNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) CreateGlossaryEntries(request *CreateGlossaryEntriesRequest) (response *CreateGlossaryEntriesResponse, err error) {
+    return c.CreateGlossaryEntriesWithContext(context.Background(), request)
+}
+
+// CreateGlossaryEntries
+// 批量创建术语条目。
+//
+// 
+//
+// 在指定术语库下批量创建术语条目。单次最多创建 100 条。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_GLOSSARYNOTFOUND = "ResourceNotFound.GlossaryNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) CreateGlossaryEntriesWithContext(ctx context.Context, request *CreateGlossaryEntriesRequest) (response *CreateGlossaryEntriesResponse, err error) {
+    if request == nil {
+        request = NewCreateGlossaryEntriesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "CreateGlossaryEntries")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGlossaryEntries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGlossaryEntriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTokenPlanApiKeysRequest() (request *CreateTokenPlanApiKeysRequest) {
     request = &CreateTokenPlanApiKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -177,6 +311,140 @@ func (c *Client) CreateTokenPlanTeamOrderAndBuyWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewCreateTokenPlanTeamOrderAndBuyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGlossaryRequest() (request *DeleteGlossaryRequest) {
+    request = &DeleteGlossaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "DeleteGlossary")
+    
+    
+    return
+}
+
+func NewDeleteGlossaryResponse() (response *DeleteGlossaryResponse) {
+    response = &DeleteGlossaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGlossary
+// 删除术语库。
+//
+// 
+//
+// 删除指定的术语库及其下所有术语条目。删除操作幂等，对不存在的术语库返回成功。调用接口后，若通过 DescribeGlossaries 接口查询不到对应术语库，则表示删除成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DeleteGlossary(request *DeleteGlossaryRequest) (response *DeleteGlossaryResponse, err error) {
+    return c.DeleteGlossaryWithContext(context.Background(), request)
+}
+
+// DeleteGlossary
+// 删除术语库。
+//
+// 
+//
+// 删除指定的术语库及其下所有术语条目。删除操作幂等，对不存在的术语库返回成功。调用接口后，若通过 DescribeGlossaries 接口查询不到对应术语库，则表示删除成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DeleteGlossaryWithContext(ctx context.Context, request *DeleteGlossaryRequest) (response *DeleteGlossaryResponse, err error) {
+    if request == nil {
+        request = NewDeleteGlossaryRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "DeleteGlossary")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGlossary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGlossaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGlossaryEntriesRequest() (request *DeleteGlossaryEntriesRequest) {
+    request = &DeleteGlossaryEntriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "DeleteGlossaryEntries")
+    
+    
+    return
+}
+
+func NewDeleteGlossaryEntriesResponse() (response *DeleteGlossaryEntriesResponse) {
+    response = &DeleteGlossaryEntriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGlossaryEntries
+// 批量删除术语条目。
+//
+// 
+//
+// 在指定术语库下批量删除术语条目。单次最多删除 200 条。若术语库不存在或不属于当前应用，返回 ResourceNotFound 错误。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_GLOSSARYNOTFOUND = "ResourceNotFound.GlossaryNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DeleteGlossaryEntries(request *DeleteGlossaryEntriesRequest) (response *DeleteGlossaryEntriesResponse, err error) {
+    return c.DeleteGlossaryEntriesWithContext(context.Background(), request)
+}
+
+// DeleteGlossaryEntries
+// 批量删除术语条目。
+//
+// 
+//
+// 在指定术语库下批量删除术语条目。单次最多删除 200 条。若术语库不存在或不属于当前应用，返回 ResourceNotFound 错误。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_GLOSSARYNOTFOUND = "ResourceNotFound.GlossaryNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DeleteGlossaryEntriesWithContext(ctx context.Context, request *DeleteGlossaryEntriesRequest) (response *DeleteGlossaryEntriesResponse, err error) {
+    if request == nil {
+        request = NewDeleteGlossaryEntriesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "DeleteGlossaryEntries")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGlossaryEntries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGlossaryEntriesResponse()
     err = c.Send(request, response)
     return
 }
@@ -367,6 +635,138 @@ func (c *Client) DescribeApiKeyListWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeApiKeyListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGlossariesRequest() (request *DescribeGlossariesRequest) {
+    request = &DescribeGlossariesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "DescribeGlossaries")
+    
+    
+    return
+}
+
+func NewDescribeGlossariesResponse() (response *DescribeGlossariesResponse) {
+    response = &DescribeGlossariesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGlossaries
+// 查询术语库列表。
+//
+// 
+//
+// 查询当前应用下的术语库列表。支持分页、过滤和排序。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeGlossaries(request *DescribeGlossariesRequest) (response *DescribeGlossariesResponse, err error) {
+    return c.DescribeGlossariesWithContext(context.Background(), request)
+}
+
+// DescribeGlossaries
+// 查询术语库列表。
+//
+// 
+//
+// 查询当前应用下的术语库列表。支持分页、过滤和排序。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeGlossariesWithContext(ctx context.Context, request *DescribeGlossariesRequest) (response *DescribeGlossariesResponse, err error) {
+    if request == nil {
+        request = NewDescribeGlossariesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "DescribeGlossaries")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGlossaries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGlossariesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGlossaryEntriesRequest() (request *DescribeGlossaryEntriesRequest) {
+    request = &DescribeGlossaryEntriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "DescribeGlossaryEntries")
+    
+    
+    return
+}
+
+func NewDescribeGlossaryEntriesResponse() (response *DescribeGlossaryEntriesResponse) {
+    response = &DescribeGlossaryEntriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGlossaryEntries
+// 查询术语条目列表。
+//
+// 
+//
+// 查询指定术语库下的术语条目。支持分页。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_GLOSSARYNOTFOUND = "ResourceNotFound.GlossaryNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeGlossaryEntries(request *DescribeGlossaryEntriesRequest) (response *DescribeGlossaryEntriesResponse, err error) {
+    return c.DescribeGlossaryEntriesWithContext(context.Background(), request)
+}
+
+// DescribeGlossaryEntries
+// 查询术语条目列表。
+//
+// 
+//
+// 查询指定术语库下的术语条目。支持分页。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_GLOSSARYNOTFOUND = "ResourceNotFound.GlossaryNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeGlossaryEntriesWithContext(ctx context.Context, request *DescribeGlossaryEntriesRequest) (response *DescribeGlossaryEntriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeGlossaryEntriesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "DescribeGlossaryEntries")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGlossaryEntries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGlossaryEntriesResponse()
     err = c.Send(request, response)
     return
 }
@@ -905,6 +1305,74 @@ func (c *Client) DescribeUsageRankListWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeUsageRankListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyGlossaryEntriesRequest() (request *ModifyGlossaryEntriesRequest) {
+    request = &ModifyGlossaryEntriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tokenhub", APIVersion, "ModifyGlossaryEntries")
+    
+    
+    return
+}
+
+func NewModifyGlossaryEntriesResponse() (response *ModifyGlossaryEntriesResponse) {
+    response = &ModifyGlossaryEntriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyGlossaryEntries
+// 批量修改术语条目。
+//
+// 
+//
+// 在指定术语库下批量修改术语条目。单次最多修改 200 条。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_GLOSSARYNOTFOUND = "ResourceNotFound.GlossaryNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyGlossaryEntries(request *ModifyGlossaryEntriesRequest) (response *ModifyGlossaryEntriesResponse, err error) {
+    return c.ModifyGlossaryEntriesWithContext(context.Background(), request)
+}
+
+// ModifyGlossaryEntries
+// 批量修改术语条目。
+//
+// 
+//
+// 在指定术语库下批量修改术语条目。单次最多修改 200 条。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
+//  RESOURCENOTFOUND_GLOSSARYNOTFOUND = "ResourceNotFound.GlossaryNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyGlossaryEntriesWithContext(ctx context.Context, request *ModifyGlossaryEntriesRequest) (response *ModifyGlossaryEntriesResponse, err error) {
+    if request == nil {
+        request = NewModifyGlossaryEntriesRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tokenhub", APIVersion, "ModifyGlossaryEntries")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGlossaryEntries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGlossaryEntriesResponse()
     err = c.Send(request, response)
     return
 }

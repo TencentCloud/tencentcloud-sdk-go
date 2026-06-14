@@ -197,6 +197,95 @@ func (r *AddSceneResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AppendDocument struct {
+	// <p>文件名称</p>
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// <p>文件id</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// <p>文件url</p>
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// <p>文件大小</p>
+	FileSize *float64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+}
+
+// Predefined struct for user
+type AppendKnowledgeTaskRequestParams struct {
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>知识库id</p>
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// <p>文件id</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// <p>追加的文档列表</p>
+	Documents []*AppendDocument `json:"Documents,omitnil,omitempty" name:"Documents"`
+}
+
+type AppendKnowledgeTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>知识库id</p>
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// <p>文件id</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// <p>追加的文档列表</p>
+	Documents []*AppendDocument `json:"Documents,omitnil,omitempty" name:"Documents"`
+}
+
+func (r *AppendKnowledgeTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AppendKnowledgeTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "KnowledgeBaseId")
+	delete(f, "FileId")
+	delete(f, "Documents")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AppendKnowledgeTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AppendKnowledgeTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AppendKnowledgeTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *AppendKnowledgeTaskResponseParams `json:"Response"`
+}
+
+func (r *AppendKnowledgeTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AppendKnowledgeTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type ChatAIRequestParams struct {
 	// <p>会话ID</p>
@@ -691,6 +780,20 @@ type FileInfo struct {
 
 	// <p>文件能力标识列表</p>
 	Capabilities []*string `json:"Capabilities,omitnil,omitempty" name:"Capabilities"`
+}
+
+type FileTaskStatus struct {
+	// <p>文件id</p>
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// <p>状态</p><p>枚举值：</p><ul><li>0： 处理中</li><li>1： 可用</li><li>-1： 错误</li></ul>
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>是否已拉取过状态</p><p>枚举值：</p><ul><li>0： 未被拉取过状态</li><li>1： 已被拉取过状态</li></ul>
+	IsTerminated *uint64 `json:"IsTerminated,omitnil,omitempty" name:"IsTerminated"`
+
+	// <p>错误信息，状态-1时不为空</p>
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 }
 
 // Predefined struct for user
@@ -1519,6 +1622,77 @@ func (r *QueryChunkListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryChunkListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryKnowledgeTaskRequestParams struct {
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>知识库id</p>
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// <p>文件id列表</p>
+	FileIds []*string `json:"FileIds,omitnil,omitempty" name:"FileIds"`
+}
+
+type QueryKnowledgeTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>实例id</p>
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// <p>知识库id</p>
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// <p>文件id列表</p>
+	FileIds []*string `json:"FileIds,omitnil,omitempty" name:"FileIds"`
+}
+
+func (r *QueryKnowledgeTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryKnowledgeTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "KnowledgeBaseId")
+	delete(f, "FileIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryKnowledgeTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryKnowledgeTaskResponseParams struct {
+	// <p>文档任务详情对象</p>
+	FileList []*FileTaskStatus `json:"FileList,omitnil,omitempty" name:"FileList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryKnowledgeTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryKnowledgeTaskResponseParams `json:"Response"`
+}
+
+func (r *QueryKnowledgeTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryKnowledgeTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

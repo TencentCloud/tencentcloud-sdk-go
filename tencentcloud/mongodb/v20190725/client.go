@@ -745,6 +745,58 @@ func (c *Client) CreateLogDownloadTaskWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateSlowLogPatternDownloadTaskRequest() (request *CreateSlowLogPatternDownloadTaskRequest) {
+    request = &CreateSlowLogPatternDownloadTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "CreateSlowLogPatternDownloadTask")
+    
+    
+    return
+}
+
+func NewCreateSlowLogPatternDownloadTaskResponse() (response *CreateSlowLogPatternDownloadTaskResponse) {
+    response = &CreateSlowLogPatternDownloadTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSlowLogPatternDownloadTask
+// 创建慢日志统计下载任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) CreateSlowLogPatternDownloadTask(request *CreateSlowLogPatternDownloadTaskRequest) (response *CreateSlowLogPatternDownloadTaskResponse, err error) {
+    return c.CreateSlowLogPatternDownloadTaskWithContext(context.Background(), request)
+}
+
+// CreateSlowLogPatternDownloadTask
+// 创建慢日志统计下载任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) CreateSlowLogPatternDownloadTaskWithContext(ctx context.Context, request *CreateSlowLogPatternDownloadTaskRequest) (response *CreateSlowLogPatternDownloadTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateSlowLogPatternDownloadTaskRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "CreateSlowLogPatternDownloadTask")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSlowLogPatternDownloadTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSlowLogPatternDownloadTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccountUserRequest() (request *DeleteAccountUserRequest) {
     request = &DeleteAccountUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1775,6 +1827,58 @@ func (c *Client) DescribeDBInstanceDealWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeDBInstanceDealResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDBInstanceLogToCLSRequest() (request *DescribeDBInstanceLogToCLSRequest) {
+    request = &DescribeDBInstanceLogToCLSRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeDBInstanceLogToCLS")
+    
+    
+    return
+}
+
+func NewDescribeDBInstanceLogToCLSResponse() (response *DescribeDBInstanceLogToCLSResponse) {
+    response = &DescribeDBInstanceLogToCLSResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBInstanceLogToCLS
+// 获取日志投递的相关配置信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATEERROR = "InternalError.DBOperateError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) DescribeDBInstanceLogToCLS(request *DescribeDBInstanceLogToCLSRequest) (response *DescribeDBInstanceLogToCLSResponse, err error) {
+    return c.DescribeDBInstanceLogToCLSWithContext(context.Background(), request)
+}
+
+// DescribeDBInstanceLogToCLS
+// 获取日志投递的相关配置信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATEERROR = "InternalError.DBOperateError"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) DescribeDBInstanceLogToCLSWithContext(ctx context.Context, request *DescribeDBInstanceLogToCLSRequest) (response *DescribeDBInstanceLogToCLSResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstanceLogToCLSRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "DescribeDBInstanceLogToCLS")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBInstanceLogToCLS require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBInstanceLogToCLSResponse()
     err = c.Send(request, response)
     return
 }
@@ -3259,6 +3363,70 @@ func (c *Client) FlushInstanceRouterConfigWithContext(ctx context.Context, reque
     return
 }
 
+func NewIncreaseDBInstanceConnectionLimitRequest() (request *IncreaseDBInstanceConnectionLimitRequest) {
+    request = &IncreaseDBInstanceConnectionLimitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "IncreaseDBInstanceConnectionLimit")
+    
+    
+    return
+}
+
+func NewIncreaseDBInstanceConnectionLimitResponse() (response *IncreaseDBInstanceConnectionLimitResponse) {
+    response = &IncreaseDBInstanceConnectionLimitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// IncreaseDBInstanceConnectionLimit
+// 终止实例流程
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONNECTIONUPDATEERROR = "FailedOperation.ConnectionUpdateError"
+//  FAILEDOPERATION_CONNECTIONUPDATEUSEDOFF = "FailedOperation.ConnectionUpdateUsedOff"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+//  INTERNALERROR_DBOPERATEERROR = "InternalError.DBOperateError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CHECKAPPIDFAILED = "InvalidParameterValue.CheckAppIdFailed"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
+func (c *Client) IncreaseDBInstanceConnectionLimit(request *IncreaseDBInstanceConnectionLimitRequest) (response *IncreaseDBInstanceConnectionLimitResponse, err error) {
+    return c.IncreaseDBInstanceConnectionLimitWithContext(context.Background(), request)
+}
+
+// IncreaseDBInstanceConnectionLimit
+// 终止实例流程
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONNECTIONUPDATEERROR = "FailedOperation.ConnectionUpdateError"
+//  FAILEDOPERATION_CONNECTIONUPDATEUSEDOFF = "FailedOperation.ConnectionUpdateUsedOff"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+//  INTERNALERROR_DBOPERATEERROR = "InternalError.DBOperateError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CHECKAPPIDFAILED = "InvalidParameterValue.CheckAppIdFailed"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
+func (c *Client) IncreaseDBInstanceConnectionLimitWithContext(ctx context.Context, request *IncreaseDBInstanceConnectionLimitRequest) (response *IncreaseDBInstanceConnectionLimitResponse, err error) {
+    if request == nil {
+        request = NewIncreaseDBInstanceConnectionLimitRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "IncreaseDBInstanceConnectionLimit")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("IncreaseDBInstanceConnectionLimit require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewIncreaseDBInstanceConnectionLimitResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquirePriceCreateDBInstancesRequest() (request *InquirePriceCreateDBInstancesRequest) {
     request = &InquirePriceCreateDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3753,6 +3921,62 @@ func (c *Client) ModifyBackupExpireTimeWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewModifyBackupExpireTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDBInstanceLogToCLSRequest() (request *ModifyDBInstanceLogToCLSRequest) {
+    request = &ModifyDBInstanceLogToCLSRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "ModifyDBInstanceLogToCLS")
+    
+    
+    return
+}
+
+func NewModifyDBInstanceLogToCLSResponse() (response *ModifyDBInstanceLogToCLSResponse) {
+    response = &ModifyDBInstanceLogToCLSResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDBInstanceLogToCLS
+// 开启或关闭MongoDB慢日志、错误日志、操作日志投递CLS
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) ModifyDBInstanceLogToCLS(request *ModifyDBInstanceLogToCLSRequest) (response *ModifyDBInstanceLogToCLSResponse, err error) {
+    return c.ModifyDBInstanceLogToCLSWithContext(context.Background(), request)
+}
+
+// ModifyDBInstanceLogToCLS
+// 开启或关闭MongoDB慢日志、错误日志、操作日志投递CLS
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+func (c *Client) ModifyDBInstanceLogToCLSWithContext(ctx context.Context, request *ModifyDBInstanceLogToCLSRequest) (response *ModifyDBInstanceLogToCLSResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceLogToCLSRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mongodb", APIVersion, "ModifyDBInstanceLogToCLS")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBInstanceLogToCLS require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBInstanceLogToCLSResponse()
     err = c.Send(request, response)
     return
 }

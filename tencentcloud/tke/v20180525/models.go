@@ -2460,74 +2460,74 @@ func (r *CreateClusterReleaseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateClusterRequestParams struct {
-	// 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
+	// <p>集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。</p>
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 集群容器网络配置信息
+	// <p>集群容器网络配置信息</p>
 	ClusterCIDRSettings *ClusterCIDRSettings `json:"ClusterCIDRSettings,omitnil,omitempty" name:"ClusterCIDRSettings"`
 
-	// CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。总机型(包括地域)数量不超过10个，相同机型(地域)购买多台机器可以通过设置参数中RunInstances中InstanceCount来实现。
+	// <p>CVM创建透传参数，json化字符串格式，详见<a href="https://cloud.tencent.com/document/product/213/15730">CVM创建实例</a>接口。总机型(包括地域)数量不超过10个，相同机型(地域)购买多台机器可以通过设置参数中RunInstances中InstanceCount来实现。</p>
 	RunInstancesForNode []*RunInstancesForNode `json:"RunInstancesForNode,omitnil,omitempty" name:"RunInstancesForNode"`
 
-	// 集群的基本配置信息
+	// <p>集群的基本配置信息</p>
 	ClusterBasicSettings *ClusterBasicSettings `json:"ClusterBasicSettings,omitnil,omitempty" name:"ClusterBasicSettings"`
 
-	// 集群高级配置信息
+	// <p>集群高级配置信息</p>
 	ClusterAdvancedSettings *ClusterAdvancedSettings `json:"ClusterAdvancedSettings,omitnil,omitempty" name:"ClusterAdvancedSettings"`
 
-	// 节点高级配置信息
+	// <p>节点高级配置信息</p>
 	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitnil,omitempty" name:"InstanceAdvancedSettings"`
 
-	// 已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过100，不支持添加竞价实例。
+	// <p>已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过 50，不支持添加竞价实例。</p>
 	ExistedInstancesForNode []*ExistedInstancesForNode `json:"ExistedInstancesForNode,omitnil,omitempty" name:"ExistedInstancesForNode"`
 
-	// CVM类型和其对应的数据盘挂载配置信息
+	// <p>CVM类型和其对应的数据盘挂载配置信息</p>
 	InstanceDataDiskMountSettings []*InstanceDataDiskMountSetting `json:"InstanceDataDiskMountSettings,omitnil,omitempty" name:"InstanceDataDiskMountSettings"`
 
-	// 需要安装的扩展组件信息
+	// <p>需要安装的扩展组件信息</p>
 	ExtensionAddons []*ExtensionAddon `json:"ExtensionAddons,omitnil,omitempty" name:"ExtensionAddons"`
 
-	// 本地专用集群Id
+	// <p>本地专用集群Id</p>
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 
-	// 屏蔽安装指定Addon组件，填写相应的AddonName
+	// <p>屏蔽安装指定Addon组件，填写相应的AddonName</p>
 	DisableAddons []*string `json:"DisableAddons,omitnil,omitempty" name:"DisableAddons"`
 }
 
 type CreateClusterRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
+	// <p>集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。</p>
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// 集群容器网络配置信息
+	// <p>集群容器网络配置信息</p>
 	ClusterCIDRSettings *ClusterCIDRSettings `json:"ClusterCIDRSettings,omitnil,omitempty" name:"ClusterCIDRSettings"`
 
-	// CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。总机型(包括地域)数量不超过10个，相同机型(地域)购买多台机器可以通过设置参数中RunInstances中InstanceCount来实现。
+	// <p>CVM创建透传参数，json化字符串格式，详见<a href="https://cloud.tencent.com/document/product/213/15730">CVM创建实例</a>接口。总机型(包括地域)数量不超过10个，相同机型(地域)购买多台机器可以通过设置参数中RunInstances中InstanceCount来实现。</p>
 	RunInstancesForNode []*RunInstancesForNode `json:"RunInstancesForNode,omitnil,omitempty" name:"RunInstancesForNode"`
 
-	// 集群的基本配置信息
+	// <p>集群的基本配置信息</p>
 	ClusterBasicSettings *ClusterBasicSettings `json:"ClusterBasicSettings,omitnil,omitempty" name:"ClusterBasicSettings"`
 
-	// 集群高级配置信息
+	// <p>集群高级配置信息</p>
 	ClusterAdvancedSettings *ClusterAdvancedSettings `json:"ClusterAdvancedSettings,omitnil,omitempty" name:"ClusterAdvancedSettings"`
 
-	// 节点高级配置信息
+	// <p>节点高级配置信息</p>
 	InstanceAdvancedSettings *InstanceAdvancedSettings `json:"InstanceAdvancedSettings,omitnil,omitempty" name:"InstanceAdvancedSettings"`
 
-	// 已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过100，不支持添加竞价实例。
+	// <p>已存在实例的配置信息。所有实例必须在同一个VPC中，最大数量不超过 50，不支持添加竞价实例。</p>
 	ExistedInstancesForNode []*ExistedInstancesForNode `json:"ExistedInstancesForNode,omitnil,omitempty" name:"ExistedInstancesForNode"`
 
-	// CVM类型和其对应的数据盘挂载配置信息
+	// <p>CVM类型和其对应的数据盘挂载配置信息</p>
 	InstanceDataDiskMountSettings []*InstanceDataDiskMountSetting `json:"InstanceDataDiskMountSettings,omitnil,omitempty" name:"InstanceDataDiskMountSettings"`
 
-	// 需要安装的扩展组件信息
+	// <p>需要安装的扩展组件信息</p>
 	ExtensionAddons []*ExtensionAddon `json:"ExtensionAddons,omitnil,omitempty" name:"ExtensionAddons"`
 
-	// 本地专用集群Id
+	// <p>本地专用集群Id</p>
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 
-	// 屏蔽安装指定Addon组件，填写相应的AddonName
+	// <p>屏蔽安装指定Addon组件，填写相应的AddonName</p>
 	DisableAddons []*string `json:"DisableAddons,omitnil,omitempty" name:"DisableAddons"`
 }
 
@@ -2562,7 +2562,7 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateClusterResponseParams struct {
-	// 集群ID
+	// <p>集群ID</p>
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -17927,47 +17927,46 @@ type Instance struct {
 }
 
 type InstanceAdvancedSettings struct {
-	// 该节点属于podCIDR大小自定义模式时，可指定节点上运行的pod数量上限
+	// <p>该节点属于podCIDR大小自定义模式时，可指定节点上运行的pod数量上限</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DesiredPodNumber *int64 `json:"DesiredPodNumber,omitnil,omitempty" name:"DesiredPodNumber"`
 
-	// GPU驱动相关参数,相关的GPU参数获取:https://cloud.tencent.com/document/api/213/15715
+	// <p>GPU驱动相关参数,相关的GPU参数获取:https://cloud.tencent.com/document/api/213/15715</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GPUArgs *GPUArgs `json:"GPUArgs,omitnil,omitempty" name:"GPUArgs"`
 
-	// base64 编码的用户脚本，在初始化节点之前执行，目前只对添加已有节点生效
+	// <p>base64 编码的用户脚本，在初始化节点之前执行，目前只对添加已有节点生效</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreStartUserScript *string `json:"PreStartUserScript,omitnil,omitempty" name:"PreStartUserScript"`
 
-	// 节点污点
+	// <p>节点污点</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
 
-	// 数据盘挂载点, 默认不挂载数据盘. 已格式化的 ext3，ext4，xfs 文件系统的数据盘将直接挂载，其他文件系统或未格式化的数据盘将自动格式化为ext4 (tlinux系统格式化成xfs)并挂载，请注意备份数据! 无数据盘或有多块数据盘的云主机此设置不生效。
-	// 注意：多盘场景请使用下方的DataDisks数据结构，设置对应的云盘类型、云盘大小、挂载路径、是否格式化等信息。
+	// <p>数据盘挂载点, 默认不挂载数据盘. 已格式化的 ext3，ext4，xfs 文件系统的数据盘将直接挂载，其他文件系统或未格式化的数据盘将自动格式化为ext4 (tlinux系统格式化成xfs)并挂载，请注意备份数据! 无数据盘或有多块数据盘的云主机此设置不生效。<br>注意：多盘场景请使用下方的DataDisks数据结构，设置对应的云盘类型、云盘大小、挂载路径、是否格式化等信息。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MountTarget *string `json:"MountTarget,omitnil,omitempty" name:"MountTarget"`
 
-	// dockerd --graph 指定值。若未指定此参数，将使用内置默认路径 /var/lib/docker 作为存储根目录。
+	// <p>dockerd --graph 指定值。若未指定此参数，将使用内置默认路径 /var/lib/docker 作为存储根目录。</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DockerGraphPath *string `json:"DockerGraphPath,omitnil,omitempty" name:"DockerGraphPath"`
 
-	// base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看, 如果要求节点需要在进行初始化完成后才可加入调度, 可配合 unschedulable 参数使用, 在 userScript 最后初始化完成后, 添加 kubectl uncordon nodename --kubeconfig=/root/.kube/config 命令使节点加入调度
+	// <p>base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看, 如果要求节点需要在进行初始化完成后才可加入调度, 可配合 unschedulable 参数使用, 在 userScript 最后初始化完成后, 添加 kubectl uncordon nodename --kubeconfig=/root/.kube/config 命令使节点加入调度</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserScript *string `json:"UserScript,omitnil,omitempty" name:"UserScript"`
 
-	// 设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.
+	// <p>设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.</p>
 	Unschedulable *int64 `json:"Unschedulable,omitnil,omitempty" name:"Unschedulable"`
 
-	// 节点Label数组
+	// <p>节点Label数组</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Labels []*Label `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// 多盘数据盘挂载信息：新建节点时请确保购买CVM的参数传递了购买多个数据盘的信息，如CreateClusterInstances API的RunInstancesPara下的DataDisks也需要设置购买多个数据盘, 具体可以参考CreateClusterInstances接口的添加集群节点(多块数据盘)样例；添加已有节点时，请确保填写的分区信息在节点上真实存在
+	// <p>多盘数据盘挂载信息：新建节点时请确保购买CVM的参数传递了购买多个数据盘的信息，如CreateClusterInstances API的RunInstancesPara下的DataDisks也需要设置购买多个数据盘, 具体可以参考CreateClusterInstances接口的添加集群节点(多块数据盘)样例；添加已有节点时，请确保填写的分区信息在节点上真实存在</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataDisks []*DataDisk `json:"DataDisks,omitnil,omitempty" name:"DataDisks"`
 
-	// 节点相关的自定义参数信息
+	// <p>节点相关的自定义参数信息</p>
 	ExtraArgs *InstanceExtraArgs `json:"ExtraArgs,omitnil,omitempty" name:"ExtraArgs"`
 }
 

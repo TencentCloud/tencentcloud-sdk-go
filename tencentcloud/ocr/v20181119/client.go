@@ -6195,92 +6195,6 @@ func (c *Client) RecognizeGeneralInvoiceWithContext(ctx context.Context, request
     return
 }
 
-func NewRecognizeHealthCodeOCRRequest() (request *RecognizeHealthCodeOCRRequest) {
-    request = &RecognizeHealthCodeOCRRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeHealthCodeOCR")
-    
-    
-    return
-}
-
-func NewRecognizeHealthCodeOCRResponse() (response *RecognizeHealthCodeOCRResponse) {
-    response = &RecognizeHealthCodeOCRResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// RecognizeHealthCodeOCR
-// 产品规划
-//
-// 
-//
-// 本接口支持北京、上海、广东、江苏、吉林、黑龙江、天津、辽宁、浙江、河南、四川、贵州、山东、安徽、福建、江西、湖北、湖南等省份健康码的识别，包括持码人姓名、持码人身份证号、健康码更新时间、健康码颜色、核酸检测结果、核酸检测间隔时长、核酸检测时间，疫苗接种信息，八个字段的识别结果输出。不同省市健康码显示的字段信息有所不同，上述字段的识别结果可能为空，以图片上具体展示的信息为准。
-//
-// 
-//
-// 默认接口请求频率限制：10次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) RecognizeHealthCodeOCR(request *RecognizeHealthCodeOCRRequest) (response *RecognizeHealthCodeOCRResponse, err error) {
-    return c.RecognizeHealthCodeOCRWithContext(context.Background(), request)
-}
-
-// RecognizeHealthCodeOCR
-// 产品规划
-//
-// 
-//
-// 本接口支持北京、上海、广东、江苏、吉林、黑龙江、天津、辽宁、浙江、河南、四川、贵州、山东、安徽、福建、江西、湖北、湖南等省份健康码的识别，包括持码人姓名、持码人身份证号、健康码更新时间、健康码颜色、核酸检测结果、核酸检测间隔时长、核酸检测时间，疫苗接种信息，八个字段的识别结果输出。不同省市健康码显示的字段信息有所不同，上述字段的识别结果可能为空，以图片上具体展示的信息为准。
-//
-// 
-//
-// 默认接口请求频率限制：10次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) RecognizeHealthCodeOCRWithContext(ctx context.Context, request *RecognizeHealthCodeOCRRequest) (response *RecognizeHealthCodeOCRResponse, err error) {
-    if request == nil {
-        request = NewRecognizeHealthCodeOCRRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "RecognizeHealthCodeOCR")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("RecognizeHealthCodeOCR require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewRecognizeHealthCodeOCRResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewRecognizeMedicalInvoiceOCRRequest() (request *RecognizeMedicalInvoiceOCRRequest) {
     request = &RecognizeMedicalInvoiceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6681,94 +6595,6 @@ func (c *Client) RecognizeThaiIDCardOCRWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewRecognizeThaiIDCardOCRResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewRecognizeTravelCardOCRRequest() (request *RecognizeTravelCardOCRRequest) {
-    request = &RecognizeTravelCardOCRRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeTravelCardOCR")
-    
-    
-    return
-}
-
-func NewRecognizeTravelCardOCRResponse() (response *RecognizeTravelCardOCRResponse) {
-    response = &RecognizeTravelCardOCRResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// RecognizeTravelCardOCR
-// 产品规划
-//
-// 
-//
-// 本接口支持通信大数据行程卡识别，包括行程卡颜色、更新时间、途经地、存在中高风险地区的城市、电话号码，五个字段的识别结果输出。
-//
-// 
-//
-// 默认接口请求频率限制：20次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) RecognizeTravelCardOCR(request *RecognizeTravelCardOCRRequest) (response *RecognizeTravelCardOCRResponse, err error) {
-    return c.RecognizeTravelCardOCRWithContext(context.Background(), request)
-}
-
-// RecognizeTravelCardOCR
-// 产品规划
-//
-// 
-//
-// 本接口支持通信大数据行程卡识别，包括行程卡颜色、更新时间、途经地、存在中高风险地区的城市、电话号码，五个字段的识别结果输出。
-//
-// 
-//
-// 默认接口请求频率限制：20次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) RecognizeTravelCardOCRWithContext(ctx context.Context, request *RecognizeTravelCardOCRRequest) (response *RecognizeTravelCardOCRResponse, err error) {
-    if request == nil {
-        request = NewRecognizeTravelCardOCRRequest()
-    }
-    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "RecognizeTravelCardOCR")
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("RecognizeTravelCardOCR require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewRecognizeTravelCardOCRResponse()
     err = c.Send(request, response)
     return
 }
@@ -8113,6 +7939,64 @@ func (c *Client) VehicleRegCertOCRWithContext(ctx context.Context, request *Vehi
     request.SetContext(ctx)
     
     response = NewVehicleRegCertOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyBizLicenseEnterprise3Request() (request *VerifyBizLicenseEnterprise3Request) {
+    request = &VerifyBizLicenseEnterprise3Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "VerifyBizLicenseEnterprise3")
+    
+    
+    return
+}
+
+func NewVerifyBizLicenseEnterprise3Response() (response *VerifyBizLicenseEnterprise3Response) {
+    response = &VerifyBizLicenseEnterprise3Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// VerifyBizLicenseEnterprise3
+// 提供比对核验企业名称、统一社会信用代码、法人姓名一致性的服务，助力快速核验企业资质。
+//
+// 注意：核验准确率在99%以上，存在个别特殊情况下核验结果不准确，请选用前知悉。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINERECOGNIZETIMEOUT = "FailedOperation.EngineRecognizeTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+func (c *Client) VerifyBizLicenseEnterprise3(request *VerifyBizLicenseEnterprise3Request) (response *VerifyBizLicenseEnterprise3Response, err error) {
+    return c.VerifyBizLicenseEnterprise3WithContext(context.Background(), request)
+}
+
+// VerifyBizLicenseEnterprise3
+// 提供比对核验企业名称、统一社会信用代码、法人姓名一致性的服务，助力快速核验企业资质。
+//
+// 注意：核验准确率在99%以上，存在个别特殊情况下核验结果不准确，请选用前知悉。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENGINERECOGNIZETIMEOUT = "FailedOperation.EngineRecognizeTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+func (c *Client) VerifyBizLicenseEnterprise3WithContext(ctx context.Context, request *VerifyBizLicenseEnterprise3Request) (response *VerifyBizLicenseEnterprise3Response, err error) {
+    if request == nil {
+        request = NewVerifyBizLicenseEnterprise3Request()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ocr", APIVersion, "VerifyBizLicenseEnterprise3")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyBizLicenseEnterprise3 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVerifyBizLicenseEnterprise3Response()
     err = c.Send(request, response)
     return
 }

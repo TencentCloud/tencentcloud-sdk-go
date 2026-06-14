@@ -15480,57 +15480,63 @@ func (r *DescribeLineageInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeManualTriggerRecordPageRequestParams struct {
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 触发运行名称
+	// <p>触发运行名称</p>
 	TriggerName *string `json:"TriggerName,omitnil,omitempty" name:"TriggerName"`
 
-	// 工作流过滤关键字，工作流名称 or 工作流ID
+	// <p>工作流过滤关键字，工作流名称 or 工作流ID</p>
 	WorkflowKeyword *string `json:"WorkflowKeyword,omitnil,omitempty" name:"WorkflowKeyword"`
 
-	// 触发运行提交人过滤，多个提交人用英文逗号分割
+	// <p>触发运行提交人过滤，多个提交人用英文逗号分割</p>
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
-	// 触发提交创建时间过滤，起始时间
+	// <p>触发提交创建时间过滤，起始时间</p>
 	TriggerStartTime *string `json:"TriggerStartTime,omitnil,omitempty" name:"TriggerStartTime"`
 
-	// 触发提交创建时间过滤，结束时间
+	// <p>触发提交创建时间过滤，结束时间</p>
 	TriggerEndTime *string `json:"TriggerEndTime,omitnil,omitempty" name:"TriggerEndTime"`
 
-	// 页码，整型
+	// <p>页码，整型</p>
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数目，整型
+	// <p>每页数目，整型</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>触发ID</p>
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
 }
 
 type DescribeManualTriggerRecordPageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目ID
+	// <p>项目ID</p>
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 触发运行名称
+	// <p>触发运行名称</p>
 	TriggerName *string `json:"TriggerName,omitnil,omitempty" name:"TriggerName"`
 
-	// 工作流过滤关键字，工作流名称 or 工作流ID
+	// <p>工作流过滤关键字，工作流名称 or 工作流ID</p>
 	WorkflowKeyword *string `json:"WorkflowKeyword,omitnil,omitempty" name:"WorkflowKeyword"`
 
-	// 触发运行提交人过滤，多个提交人用英文逗号分割
+	// <p>触发运行提交人过滤，多个提交人用英文逗号分割</p>
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
-	// 触发提交创建时间过滤，起始时间
+	// <p>触发提交创建时间过滤，起始时间</p>
 	TriggerStartTime *string `json:"TriggerStartTime,omitnil,omitempty" name:"TriggerStartTime"`
 
-	// 触发提交创建时间过滤，结束时间
+	// <p>触发提交创建时间过滤，结束时间</p>
 	TriggerEndTime *string `json:"TriggerEndTime,omitnil,omitempty" name:"TriggerEndTime"`
 
-	// 页码，整型
+	// <p>页码，整型</p>
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页数目，整型
+	// <p>每页数目，整型</p>
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// <p>触发ID</p>
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
 }
 
 func (r *DescribeManualTriggerRecordPageRequest) ToJsonString() string {
@@ -15553,6 +15559,7 @@ func (r *DescribeManualTriggerRecordPageRequest) FromJsonString(s string) error 
 	delete(f, "TriggerEndTime")
 	delete(f, "PageNumber")
 	delete(f, "PageSize")
+	delete(f, "TriggerId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeManualTriggerRecordPageRequest has unknown keys!", "")
 	}
@@ -15565,7 +15572,7 @@ type DescribeManualTriggerRecordPageResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
 
-	// 详情结果
+	// <p>详情结果</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *ManualTriggerRecordOpsDtoPage `json:"Data,omitnil,omitempty" name:"Data"`
 

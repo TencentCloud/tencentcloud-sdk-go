@@ -19367,50 +19367,22 @@ type SeeCompHighlightResult struct {
 }
 
 type SeeComprehensionConfig struct {
-	// 拓展的目标及事件检测类别
+	// <p>拓展的目标及事件检测类别</p>
 	DetectTypes []*string `json:"DetectTypes,omitnil,omitempty" name:"DetectTypes"`
 
-	// 使该视频 / 图片录入搜索库，后续可进行搜索
+	// <p>使该视频 / 图片录入搜索库，后续可进行搜索</p>
 	EnableSearch *bool `json:"EnableSearch,omitnil,omitempty" name:"EnableSearch"`
 
-	// 主输出语言，可选值包括：
-	// - `zh` 中文（默认值）
-	// - `en` 英语
-	// - `ja` 日语
-	// - `ko` 韩文
-	// - `pt-BR` 葡萄牙语（巴西）
-	// - `th` 泰语
-	// - `ms` 马来语
+	// <p>主输出语言，可选值包括：</p><ul><li><code>zh</code> 中文（默认值）</li><li><code>en</code> 英语</li><li><code>ja</code> 日语</li><li><code>ko</code> 韩文</li><li><code>pt-BR</code> 葡萄牙语（巴西）</li><li><code>th</code> 泰语</li><li><code>ms</code> 马来语</li></ul>
 	OutputLang *string `json:"OutputLang,omitnil,omitempty" name:"OutputLang"`
 
-	// 次选输出语言，可选值包括：
-	// - `zh` 中文
-	// - `en` 英语
-	// - `ja` 日语
-	// - `ko` 韩文
-	// - `pt-BR` 葡萄牙语（巴西）
-	// - `th` 泰语
-	// - `ms` 马来语
+	// <p>次选输出语言，可选值包括：</p><ul><li><code>zh</code> 中文</li><li><code>en</code> 英语</li><li><code>ja</code> 日语</li><li><code>ko</code> 韩文</li><li><code>pt-BR</code> 葡萄牙语（巴西）</li><li><code>th</code> 泰语</li><li><code>ms</code> 马来语</li></ul>
 	AlternativeOutputLang *string `json:"AlternativeOutputLang,omitnil,omitempty" name:"AlternativeOutputLang"`
 
-	// 多摄像头布局定义。可选值包括：
-	// 
-	// - 单摄（默认值）：`Single`
-	// 
-	// - 双摄（纵向排列）- 全部画面：`Vertical,Num=2,Index=0;1`
-	// - 双摄（纵向排列）- 画面1：`Vertical,Num=2,Index=0`
-	// - 双摄（纵向排列）- 画面2：`Vertical,Num=2,Index=1`
-	// 
-	// - 三摄（纵向排列）- 全部画面：`Vertical,Num=3,Index=0;1;2`
-	// - 三摄（纵向排列）- 画面1：`Vertical,Num=3,Index=0`
-	// - 三摄（纵向排列）- 画面2：`Vertical,Num=3,Index=1`
-	// - 三摄（纵向排列）- 画面3：`Vertical,Num=3,Index=2`
-	// - 三摄（纵向排列）- 画面1+2：`Vertical,Num=3,Index=0;1`
-	// - 三摄（纵向排列）- 画面1+3：`Vertical,Num=3,Index=0;2`
-	// - 三摄（纵向排列）- 画面2+3：`Vertical,Num=3,Index=1;2`
+	// <p>多摄像头布局定义。可选值包括：</p><ul><li><p>单摄（默认值）：<code>Single</code></p></li><li><p>双摄（纵向排列）- 全部画面：<code>Vertical,Num=2,Index=0;1</code></p></li><li><p>双摄（纵向排列）- 画面1：<code>Vertical,Num=2,Index=0</code></p></li><li><p>双摄（纵向排列）- 画面2：<code>Vertical,Num=2,Index=1</code></p></li><li><p>三摄（纵向排列）- 全部画面：<code>Vertical,Num=3,Index=0;1;2</code></p></li><li><p>三摄（纵向排列）- 画面1：<code>Vertical,Num=3,Index=0</code></p></li><li><p>三摄（纵向排列）- 画面2：<code>Vertical,Num=3,Index=1</code></p></li><li><p>三摄（纵向排列）- 画面3：<code>Vertical,Num=3,Index=2</code></p></li><li><p>三摄（纵向排列）- 画面1+2：<code>Vertical,Num=3,Index=0;1</code></p></li><li><p>三摄（纵向排列）- 画面1+3：<code>Vertical,Num=3,Index=0;2</code></p></li><li><p>三摄（纵向排列）- 画面2+3：<code>Vertical,Num=3,Index=1;2</code></p></li></ul>
 	MultiCameraLayout *string `json:"MultiCameraLayout,omitnil,omitempty" name:"MultiCameraLayout"`
 
-	// 最大处理的输入视频时长，单位：秒（仅对视频输入生效）
+	// <p>最大处理的输入视频时长，单位：秒（仅对视频输入生效）</p>
 	MaxDuration *int64 `json:"MaxDuration,omitnil,omitempty" name:"MaxDuration"`
 }
 
