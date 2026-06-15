@@ -2817,6 +2817,60 @@ func (c *Client) ModifyProjectWithContext(ctx context.Context, request *ModifyPr
     return
 }
 
+func NewModifyResourceUserRequest() (request *ModifyResourceUserRequest) {
+    request = &ModifyResourceUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "ModifyResourceUser")
+    
+    
+    return
+}
+
+func NewModifyResourceUserResponse() (response *ModifyResourceUserResponse) {
+    response = &ModifyResourceUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyResourceUser
+// 按用户资源修改
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+func (c *Client) ModifyResourceUser(request *ModifyResourceUserRequest) (response *ModifyResourceUserResponse, err error) {
+    return c.ModifyResourceUserWithContext(context.Background(), request)
+}
+
+// ModifyResourceUser
+// 按用户资源修改
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+func (c *Client) ModifyResourceUserWithContext(ctx context.Context, request *ModifyResourceUserRequest) (response *ModifyResourceUserResponse, err error) {
+    if request == nil {
+        request = NewModifyResourceUserRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "ModifyResourceUser")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyResourceUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyResourceUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyResourceUserGroupRequest() (request *ModifyResourceUserGroupRequest) {
     request = &ModifyResourceUserGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

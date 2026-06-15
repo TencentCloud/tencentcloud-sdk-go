@@ -3472,26 +3472,26 @@ func (r *DescribeDBPerfTimeSeriesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBSpaceStatusRequestParams struct {
-	// 实例 ID 。
+	// <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。(备注，dcdb的InstanceId 要求使用 <code>ClusterId&amp;InstanceId</code>代替)</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 时间段天数，截止日期为当日，默认为7天。
+	// <p>时间段天数，截止日期为当日，默认为7天。</p>
 	RangeDays *int64 `json:"RangeDays,omitnil,omitempty" name:"RangeDays"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
+	// <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB  for MySQL，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;dcdb&quot; -（TDSQL MySQL 版）、&quot;mariadb&quot; -（TDSQL MariaDB 版）默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
 type DescribeDBSpaceStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID 。
+	// <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。(备注，dcdb的InstanceId 要求使用 <code>ClusterId&amp;InstanceId</code>代替)</p>
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 时间段天数，截止日期为当日，默认为7天。
+	// <p>时间段天数，截止日期为当日，默认为7天。</p>
 	RangeDays *int64 `json:"RangeDays,omitnil,omitempty" name:"RangeDays"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
+	// <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB  for MySQL，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;dcdb&quot; -（TDSQL MySQL 版）、&quot;mariadb&quot; -（TDSQL MariaDB 版）默认为&quot;mysql&quot;。</p>
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -3518,16 +3518,16 @@ func (r *DescribeDBSpaceStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBSpaceStatusResponseParams struct {
-	// 磁盘增长量(MB)。
+	// <p>磁盘增长量(MB)。</p>
 	Growth *int64 `json:"Growth,omitnil,omitempty" name:"Growth"`
 
-	// 磁盘剩余(MB)。
+	// <p>磁盘剩余(MB)。</p>
 	Remain *int64 `json:"Remain,omitnil,omitempty" name:"Remain"`
 
-	// 磁盘总量(MB)。
+	// <p>磁盘总量(MB)。</p>
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 预计可用天数。
+	// <p>预计可用天数。</p>
 	AvailableDays *int64 `json:"AvailableDays,omitnil,omitempty" name:"AvailableDays"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

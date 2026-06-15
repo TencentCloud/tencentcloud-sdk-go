@@ -7783,6 +7783,9 @@ type CreateOrganizationAuthUrlRequestParams struct {
 
 	// <p>指定企业认证的授权方式 支持多选:</p><ul><li><strong>1</strong>: 上传营业执照</li><li><strong>2</strong>: 腾讯云快速认证</li><li><strong>3</strong>: 腾讯商户号授权<font color="red">（仅支持小程序端）</font></li></ul><p>注意：<br>1.如果没有指定，则默认是1,仅有上传营业执照。<br>2.H5 仅支持上传营业执照。</p>
 	AuthorizationMethod []*uint64 `json:"AuthorizationMethod,omitnil,omitempty" name:"AuthorizationMethod"`
+
+	// <p>企业认证页面隐藏上传营业执照<br><img src="https://qcloudimg.tencent-cloud.cn/raw/cf827ce0e2043d8cc85e0735c9cfa3fc.png" alt="image"><br><img src="https://qcloudimg.tencent-cloud.cn/raw/f908cabe71238c78ee8fafc70888a344.png" alt="image"></p>
+	HideBizLicense *bool `json:"HideBizLicense,omitnil,omitempty" name:"HideBizLicense"`
 }
 
 type CreateOrganizationAuthUrlRequest struct {
@@ -7871,6 +7874,9 @@ type CreateOrganizationAuthUrlRequest struct {
 
 	// <p>指定企业认证的授权方式 支持多选:</p><ul><li><strong>1</strong>: 上传营业执照</li><li><strong>2</strong>: 腾讯云快速认证</li><li><strong>3</strong>: 腾讯商户号授权<font color="red">（仅支持小程序端）</font></li></ul><p>注意：<br>1.如果没有指定，则默认是1,仅有上传营业执照。<br>2.H5 仅支持上传营业执照。</p>
 	AuthorizationMethod []*uint64 `json:"AuthorizationMethod,omitnil,omitempty" name:"AuthorizationMethod"`
+
+	// <p>企业认证页面隐藏上传营业执照<br><img src="https://qcloudimg.tencent-cloud.cn/raw/cf827ce0e2043d8cc85e0735c9cfa3fc.png" alt="image"><br><img src="https://qcloudimg.tencent-cloud.cn/raw/f908cabe71238c78ee8fafc70888a344.png" alt="image"></p>
+	HideBizLicense *bool `json:"HideBizLicense,omitnil,omitempty" name:"HideBizLicense"`
 }
 
 func (r *CreateOrganizationAuthUrlRequest) ToJsonString() string {
@@ -7913,6 +7919,7 @@ func (r *CreateOrganizationAuthUrlRequest) FromJsonString(s string) error {
 	delete(f, "OrganizationIdCardType")
 	delete(f, "OrganizationIdCardTypeSame")
 	delete(f, "AuthorizationMethod")
+	delete(f, "HideBizLicense")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationAuthUrlRequest has unknown keys!", "")
 	}

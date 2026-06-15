@@ -1,32 +1,10 @@
-# Release v1.3.116
+# Release v1.3.117
 
-## 腾讯云数据分析智能体(dataagent) 版本：2025-05-13
+## 商业智能分析 BI(bi) 版本：2022-01-05
 
-### 第 18 次发布
+### 第 37 次发布
 
-发布时间：2026-06-15 01:25:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AppendKnowledgeTask](https://cloud.tencent.com/document/api/1800/132874)
-* [QueryKnowledgeTask](https://cloud.tencent.com/document/api/1800/132873)
-
-新增数据结构：
-
-* [AppendDocument](https://cloud.tencent.com/document/api/1800/125016#AppendDocument)
-* [FileTaskStatus](https://cloud.tencent.com/document/api/1800/125016#FileTaskStatus)
-
-
-
-## 云数据库 MongoDB(mongodb) 版本：2019-07-25
-
-### 第 72 次发布
-
-发布时间：2026-06-15 01:42:34
+发布时间：2026-06-16 01:10:53
 
 本次发布包含了以下内容：
 
@@ -34,145 +12,34 @@
 
 新增接口：
 
-* [CreateSlowLogPatternDownloadTask](https://cloud.tencent.com/document/api/240/132879)
-* [DescribeDBInstanceLogToCLS](https://cloud.tencent.com/document/api/240/132877)
-* [IncreaseDBInstanceConnectionLimit](https://cloud.tencent.com/document/api/240/132878)
-* [ModifyDBInstanceLogToCLS](https://cloud.tencent.com/document/api/240/132876)
+* [ModifyResourceUser](https://cloud.tencent.com/document/api/590/132903)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 298 次发布
+
+发布时间：2026-06-16 01:30:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改接口：
 
-* [CreateBackupDBInstance](https://cloud.tencent.com/document/api/240/46599)
+* [CreateOrganizationAuthUrl](https://cloud.tencent.com/document/api/1323/105134)
 
-	* 新增入参：BackupRetentionDays
+	* 新增入参：HideBizLicense
 
-
-新增数据结构：
-
-* [LogToCLSConfig](https://cloud.tencent.com/document/api/240/38576#LogToCLSConfig)
-
-
-
-## 云数据库 MongoDB(mongodb) 版本：2018-04-08
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 252 次发布
-
-发布时间：2026-06-15 01:45:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* RecognizeHealthCodeOCR
-* RecognizeTravelCardOCR
-
-### 第 251 次发布
-
-发布时间：2026-06-12 18:08:41
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [VerifyBizLicenseEnterprise3](https://cloud.tencent.com/document/api/866/132862)
-
-
-
-## TokenHub(tokenhub) 版本：2026-03-22
-
-### 第 6 次发布
-
-发布时间：2026-06-15 01:59:15
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateGlossary](https://cloud.tencent.com/document/api/1823/132887)
-* [CreateGlossaryEntries](https://cloud.tencent.com/document/api/1823/132886)
-* [DeleteGlossary](https://cloud.tencent.com/document/api/1823/132885)
-* [DeleteGlossaryEntries](https://cloud.tencent.com/document/api/1823/132884)
-* [DescribeGlossaries](https://cloud.tencent.com/document/api/1823/132883)
-* [DescribeGlossaryEntries](https://cloud.tencent.com/document/api/1823/132882)
-* [ModifyGlossaryEntries](https://cloud.tencent.com/document/api/1823/132881)
-
-新增数据结构：
-
-* [DeleteGlossaryEntryInput](https://cloud.tencent.com/document/api/1823/132279#DeleteGlossaryEntryInput)
-* [GlossaryEntryInput](https://cloud.tencent.com/document/api/1823/132279#GlossaryEntryInput)
-* [GlossaryEntryItem](https://cloud.tencent.com/document/api/1823/132279#GlossaryEntryItem)
-* [GlossaryItem](https://cloud.tencent.com/document/api/1823/132279#GlossaryItem)
-* [ModifyGlossaryEntryInput](https://cloud.tencent.com/document/api/1823/132279#ModifyGlossaryEntryInput)
 
 
 
 ## TSF-应用管理&Consul(tsf) 版本：2018-03-26
 
-### 第 141 次发布
+### 第 142 次发布
 
-发布时间：2026-06-15 02:01:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* ContinueRunFailedTaskBatch
-* CreateTask
-* CreateTaskFlow
-* DeleteServerlessGroup
-* DeleteTask
-* DescribeFlowLastBatchState
-* DescribeTaskDetail
-* DescribeTaskLastStatus
-* DescribeTaskRecords
-* DisableTask
-* DisableTaskFlow
-* EnableTask
-* EnableTaskFlow
-* ExecuteTask
-* ExecuteTaskFlow
-* ModifyTask
-* RedoTask
-* RedoTaskBatch
-* RedoTaskExecute
-* RedoTaskFlowBatch
-* StopTaskBatch
-* StopTaskExecute
-* TerminateTaskFlowBatch
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* AdvanceSettings
-* ShardArgument
-* TaskFlowEdge
-* TaskFlowLastBatchState
-* TaskLastExecuteStatus
-* TaskRecord
-* TaskRecordPage
-* TaskRule
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2025-08-06
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
-
-### 第 196 次发布
-
-发布时间：2026-06-15 02:07:01
+发布时间：2026-06-16 02:00:46
 
 本次发布包含了以下内容：
 
@@ -180,9 +47,64 @@
 
 修改接口：
 
-* [DescribeManualTriggerRecordPage](https://cloud.tencent.com/document/api/1267/120020)
+* [CreateMicroservice](https://cloud.tencent.com/document/api/649/36087)
 
-	* 新增入参：TriggerId
+	* 新增入参：ServiceType, ServiceUrl, Protocol, ServiceDiscovery
+
+* [CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/api/649/85860)
+
+	* 新增入参：ServiceType, ServiceUrl, Protocol, ServiceDiscovery
+
+* [DeployContainerApplication](https://cloud.tencent.com/document/api/649/120669)
+
+	* 新增入参：DoNotStart
+
+* [DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)
+
+	* 新增入参：GroupIdList
+
+* [DescribeGatewayApis](https://cloud.tencent.com/document/api/649/63178)
+
+	* 新增入参：ExtendFieldList, ApiOnlineStatus
+
+* [DescribeMsApiList](https://cloud.tencent.com/document/api/649/45536)
+
+	* 新增入参：BatchApiParamList
+
+* [UpdateHealthCheckSettings](https://cloud.tencent.com/document/api/649/50019)
+
+	* 新增入参：LivenessAutoRestart
+
+
+新增数据结构：
+
+* [ApiParam](https://cloud.tencent.com/document/api/649/36099#ApiParam)
+
+修改数据结构：
+
+* [ApiDetailInfo](https://cloud.tencent.com/document/api/649/36099#ApiDetailInfo)
+
+	* 新增成员：ApiOnlineStatus
+
+* [ExclusiveInstance](https://cloud.tencent.com/document/api/649/36099#ExclusiveInstance)
+
+	* 新增成员：ApplicationId
+
+* [GatewayPlugin](https://cloud.tencent.com/document/api/649/36099#GatewayPlugin)
+
+	* 新增成员：BindDisabled
+
+* [MsApiArray](https://cloud.tencent.com/document/api/649/36099#MsApiArray)
+
+	* 新增成员：ApiId, SrcTypeName
+
+* [TsfPageBusinessLogV2](https://cloud.tencent.com/document/api/649/36099#TsfPageBusinessLogV2)
+
+	* 新增成员：Compressed
+
+* [VmGroup](https://cloud.tencent.com/document/api/649/36099#VmGroup)
+
+	* 新增成员：LivenessAutoRestart
 
 
 
