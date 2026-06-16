@@ -5415,6 +5415,174 @@ func (c *Client) CreateFlowGroupByTemplatesWithContext(ctx context.Context, requ
     return
 }
 
+func NewCreateFlowGroupRemindsRequest() (request *CreateFlowGroupRemindsRequest) {
+    request = &CreateFlowGroupRemindsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateFlowGroupReminds")
+    
+    
+    return
+}
+
+func NewCreateFlowGroupRemindsResponse() (response *CreateFlowGroupRemindsResponse) {
+    response = &CreateFlowGroupRemindsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateFlowGroupReminds
+// 指定需要批量催办的合同组签署流程ID，按合同组维度进行催办
+//
+// ##### 需要符合以下条件的合同才可被催办：
+//
+// <ol>
+//
+// <li>发起合同时，**设置了经办人通知方式**</li>
+//
+// <li>子合同中当前状态为 **待签署、待填写** 的签署人是催办的对象</li>
+//
+// <li>**每个合同的每个签署方最多3次*</li>
+//
+// </ol>
+//
+// 
+//
+// **注意**
+//
+// - 催办结果会以签署方维度列出（不同公司下的同个员工会被视为两个不同的签署方，同一人分别作为个人签署方与企业签署方也会被视为两个不同的签署方）
+//
+// - 合同组只支持短信方式催办
+//
+// 
+//
+// ##### 催办的效果：
+//
+// 
+//
+// ###### 效果
+//
+// 
+//
+// 
+//
+// 
+//
+// 
+//
+// 
+//
+// <li>对方会收到如下的短信通知</li>
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/3caf94b7f540fa5736270d38528d3a7b.png)
+//
+// 
+//
+// 
+//
+// 
+//
+// 注：`合同催办是白名单功能，请联系客户经理申请开白后使用`
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateFlowGroupReminds(request *CreateFlowGroupRemindsRequest) (response *CreateFlowGroupRemindsResponse, err error) {
+    return c.CreateFlowGroupRemindsWithContext(context.Background(), request)
+}
+
+// CreateFlowGroupReminds
+// 指定需要批量催办的合同组签署流程ID，按合同组维度进行催办
+//
+// ##### 需要符合以下条件的合同才可被催办：
+//
+// <ol>
+//
+// <li>发起合同时，**设置了经办人通知方式**</li>
+//
+// <li>子合同中当前状态为 **待签署、待填写** 的签署人是催办的对象</li>
+//
+// <li>**每个合同的每个签署方最多3次*</li>
+//
+// </ol>
+//
+// 
+//
+// **注意**
+//
+// - 催办结果会以签署方维度列出（不同公司下的同个员工会被视为两个不同的签署方，同一人分别作为个人签署方与企业签署方也会被视为两个不同的签署方）
+//
+// - 合同组只支持短信方式催办
+//
+// 
+//
+// ##### 催办的效果：
+//
+// 
+//
+// ###### 效果
+//
+// 
+//
+// 
+//
+// 
+//
+// 
+//
+// 
+//
+// <li>对方会收到如下的短信通知</li>
+//
+// 
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/3caf94b7f540fa5736270d38528d3a7b.png)
+//
+// 
+//
+// 
+//
+// 
+//
+// 注：`合同催办是白名单功能，请联系客户经理申请开白后使用`
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateFlowGroupRemindsWithContext(ctx context.Context, request *CreateFlowGroupRemindsRequest) (response *CreateFlowGroupRemindsResponse, err error) {
+    if request == nil {
+        request = NewCreateFlowGroupRemindsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "ess", APIVersion, "CreateFlowGroupReminds")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFlowGroupReminds require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFlowGroupRemindsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFlowGroupSignReviewRequest() (request *CreateFlowGroupSignReviewRequest) {
     request = &CreateFlowGroupSignReviewRequest{
         BaseRequest: &tchttp.BaseRequest{},

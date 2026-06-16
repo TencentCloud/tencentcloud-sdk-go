@@ -11646,24 +11646,27 @@ type NodeResource struct {
 }
 
 type NodeResourceSpec struct {
-	// 规格类型，如S2.MEDIUM8
+	// <p>规格类型，如S2.MEDIUM8</p>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 系统盘，系统盘个数不超过1块
+	// <p>系统盘，系统盘个数不超过1块</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SystemDisk []*DiskSpecInfo `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
 
-	// 需要绑定的标签列表
+	// <p>需要绑定的标签列表</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 云数据盘，云数据盘总个数不超过15块
+	// <p>云数据盘，云数据盘总个数不超过15块</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataDisk []*DiskSpecInfo `json:"DataDisk,omitnil,omitempty" name:"DataDisk"`
 
-	// 本地数据盘
+	// <p>本地数据盘</p>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalDataDisk []*DiskSpecInfo `json:"LocalDataDisk,omitnil,omitempty" name:"LocalDataDisk"`
+
+	// <p>节点配置信息，目前仅提供给terraform平台校验参数使用</p>
+	SoftwareConfig []*ServiceDeploy `json:"SoftwareConfig,omitnil,omitempty" name:"SoftwareConfig"`
 }
 
 type NodeSelector struct {
@@ -13908,6 +13911,14 @@ type ServiceBasicRestartInfo struct {
 
 	// 如果没传，则表示所有进程
 	ComponentInfoList []*ComponentBasicRestartInfo `json:"ComponentInfoList,omitnil,omitempty" name:"ComponentInfoList"`
+}
+
+type ServiceDeploy struct {
+	// <p>组件名称</p>
+	SoftwareName *string `json:"SoftwareName,omitnil,omitempty" name:"SoftwareName"`
+
+	// <p>组件下角色名称</p>
+	Roles []*string `json:"Roles,omitnil,omitempty" name:"Roles"`
 }
 
 type ServiceDeployInfo struct {

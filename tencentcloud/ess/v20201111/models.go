@@ -5479,6 +5479,77 @@ func (r *CreateFlowGroupByTemplatesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateFlowGroupRemindsRequestParams struct {
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>合同(流程)组的合同组Id</p>
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
+
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type CreateFlowGroupRemindsRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// <p>合同(流程)组的合同组Id</p>
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
+
+	// <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *CreateFlowGroupRemindsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowGroupRemindsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "FlowGroupId")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowGroupRemindsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFlowGroupRemindsResponseParams struct {
+	// <p>合同组催办接口返回的详细信息。</p>
+	RemindFlowGroupRecords []*RemindFlowGroupRecord `json:"RemindFlowGroupRecords,omitnil,omitempty" name:"RemindFlowGroupRecords"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateFlowGroupRemindsResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFlowGroupRemindsResponseParams `json:"Response"`
+}
+
+func (r *CreateFlowGroupRemindsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowGroupRemindsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateFlowGroupSignReviewRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -19334,6 +19405,38 @@ type RemindEmailInfo struct {
 
 	// <p>指定邮箱地址，催办时使用此邮箱替代 DB 中存储的邮箱</p>
 	ApproverEmail *string `json:"ApproverEmail,omitnil,omitempty" name:"ApproverEmail"`
+}
+
+type RemindFlowGroupDetail struct {
+	// <p>该签署人在合同中的签署顺序</p>
+	ApproverOrder *int64 `json:"ApproverOrder,omitnil,omitempty" name:"ApproverOrder"`
+
+	// <p>签署人对应的签署id</p>
+	SignId *string `json:"SignId,omitnil,omitempty" name:"SignId"`
+
+	// <p>催办状态</p><p>枚举值：</p><ul><li>0： 成功</li><li>2： 无需催办</li><li>5： 超过次数限制</li></ul>
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// <p>描述当前催办结果的原因</p>
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+}
+
+type RemindFlowGroupRecord struct {
+	// <p>对应签署人出现的合同列表</p>
+	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
+
+	// <p>对应签署人出现的合同名</p>
+	FlowNames []*string `json:"FlowNames,omitnil,omitempty" name:"FlowNames"`
+
+	// <p>签署人姓名</p>
+	ApproverName *string `json:"ApproverName,omitnil,omitempty" name:"ApproverName"`
+
+	// <p>签署人手机号</p>
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
+
+	// <p>催办合同组下签署人维度详细信息</p>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemindMessageList []*RemindFlowGroupDetail `json:"RemindMessageList,omitnil,omitempty" name:"RemindMessageList"`
 }
 
 type RemindFlowRecords struct {

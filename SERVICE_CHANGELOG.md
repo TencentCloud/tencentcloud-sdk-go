@@ -1,10 +1,10 @@
-# Release v1.3.117
+# Release v1.3.118
 
-## 商业智能分析 BI(bi) 版本：2022-01-05
+## 云数据库独享集群(dbdc) 版本：2020-10-29
 
-### 第 37 次发布
+### 第 7 次发布
 
-发布时间：2026-06-16 01:10:53
+发布时间：2026-06-17 01:25:17
 
 本次发布包含了以下内容：
 
@@ -12,100 +12,130 @@
 
 新增接口：
 
-* [ModifyResourceUser](https://cloud.tencent.com/document/api/590/132903)
+* [AddNodesToDBCustomCluster](https://cloud.tencent.com/document/api/1322/132932)
+* [CheckRoleAuthorized](https://cloud.tencent.com/document/api/1322/132931)
+* [CreateDBCustomCluster](https://cloud.tencent.com/document/api/1322/132930)
+* [CreateDBCustomNodes](https://cloud.tencent.com/document/api/1322/132929)
+* [DescribeDBCustomClusterDetail](https://cloud.tencent.com/document/api/1322/132928)
+* [DescribeDBCustomClusterKubeconfig](https://cloud.tencent.com/document/api/1322/132927)
+* [DescribeDBCustomClusterNodes](https://cloud.tencent.com/document/api/1322/132926)
+* [DescribeDBCustomClusters](https://cloud.tencent.com/document/api/1322/132925)
+* [DescribeDBCustomImages](https://cloud.tencent.com/document/api/1322/132924)
+* [DescribeDBCustomNodes](https://cloud.tencent.com/document/api/1322/132923)
+* [DescribeDBCustomTaskStatus](https://cloud.tencent.com/document/api/1322/132922)
+* [DestroyDBCustomCluster](https://cloud.tencent.com/document/api/1322/132921)
+* [DestroyDBCustomNode](https://cloud.tencent.com/document/api/1322/132920)
+* [IsolateDBCustomNode](https://cloud.tencent.com/document/api/1322/132919)
+* [ModifyDBCustomClusterTags](https://cloud.tencent.com/document/api/1322/132918)
+* [ModifyDBCustomNodeTags](https://cloud.tencent.com/document/api/1322/132917)
+* [RemoveNodesFromDBCustomCluster](https://cloud.tencent.com/document/api/1322/132916)
+* [RenewDBCustomNode](https://cloud.tencent.com/document/api/1322/132915)
+
+新增数据结构：
+
+* [ApiServerNetwork](https://cloud.tencent.com/document/api/1322/74754#ApiServerNetwork)
+* [ContainerNetwork](https://cloud.tencent.com/document/api/1322/74754#ContainerNetwork)
+* [DBCustomCluster](https://cloud.tencent.com/document/api/1322/74754#DBCustomCluster)
+* [DBCustomClusterNode](https://cloud.tencent.com/document/api/1322/74754#DBCustomClusterNode)
+* [DBCustomImage](https://cloud.tencent.com/document/api/1322/74754#DBCustomImage)
+* [DBCustomNode](https://cloud.tencent.com/document/api/1322/74754#DBCustomNode)
+* [DataDisk](https://cloud.tencent.com/document/api/1322/74754#DataDisk)
+* [Filter](https://cloud.tencent.com/document/api/1322/74754#Filter)
+* [LoginSettings](https://cloud.tencent.com/document/api/1322/74754#LoginSettings)
+* [SystemDisk](https://cloud.tencent.com/document/api/1322/74754#SystemDisk)
+* [Tag](https://cloud.tencent.com/document/api/1322/74754#Tag)
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 144 次发布
+
+发布时间：2026-06-17 01:29:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [ServiceDeploy](https://cloud.tencent.com/document/api/589/33981#ServiceDeploy)
+
+修改数据结构：
+
+* [NodeResourceSpec](https://cloud.tencent.com/document/api/589/33981#NodeResourceSpec)
+
+	* 新增成员：SoftwareConfig
+
 
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 298 次发布
+### 第 299 次发布
 
-发布时间：2026-06-16 01:30:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateOrganizationAuthUrl](https://cloud.tencent.com/document/api/1323/105134)
-
-	* 新增入参：HideBizLicense
-
-
-
-
-## TSF-应用管理&Consul(tsf) 版本：2018-03-26
-
-### 第 142 次发布
-
-发布时间：2026-06-16 02:00:46
+发布时间：2026-06-17 01:30:56
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateMicroservice](https://cloud.tencent.com/document/api/649/36087)
-
-	* 新增入参：ServiceType, ServiceUrl, Protocol, ServiceDiscovery
-
-* [CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/api/649/85860)
-
-	* 新增入参：ServiceType, ServiceUrl, Protocol, ServiceDiscovery
-
-* [DeployContainerApplication](https://cloud.tencent.com/document/api/649/120669)
-
-	* 新增入参：DoNotStart
-
-* [DescribeContainerGroups](https://cloud.tencent.com/document/api/649/36068)
-
-	* 新增入参：GroupIdList
-
-* [DescribeGatewayApis](https://cloud.tencent.com/document/api/649/63178)
-
-	* 新增入参：ExtendFieldList, ApiOnlineStatus
-
-* [DescribeMsApiList](https://cloud.tencent.com/document/api/649/45536)
-
-	* 新增入参：BatchApiParamList
-
-* [UpdateHealthCheckSettings](https://cloud.tencent.com/document/api/649/50019)
-
-	* 新增入参：LivenessAutoRestart
-
+* [CreateFlowGroupReminds](https://cloud.tencent.com/document/api/1323/132933)
 
 新增数据结构：
 
-* [ApiParam](https://cloud.tencent.com/document/api/649/36099#ApiParam)
+* [RemindFlowGroupDetail](https://cloud.tencent.com/document/api/1323/70369#RemindFlowGroupDetail)
+* [RemindFlowGroupRecord](https://cloud.tencent.com/document/api/1323/70369#RemindFlowGroupRecord)
 
-修改数据结构：
 
-* [ApiDetailInfo](https://cloud.tencent.com/document/api/649/36099#ApiDetailInfo)
 
-	* 新增成员：ApiOnlineStatus
+## 云开发 CloudBase(tcb) 版本：2018-06-08
 
-* [ExclusiveInstance](https://cloud.tencent.com/document/api/649/36099#ExclusiveInstance)
+### 第 146 次发布
 
-	* 新增成员：ApplicationId
+发布时间：2026-06-17 01:51:19
 
-* [GatewayPlugin](https://cloud.tencent.com/document/api/649/36099#GatewayPlugin)
+本次发布包含了以下内容：
 
-	* 新增成员：BindDisabled
+改善已有的文档。
 
-* [MsApiArray](https://cloud.tencent.com/document/api/649/36099#MsApiArray)
+新增接口：
 
-	* 新增成员：ApiId, SrcTypeName
+* [DescribeCloudAppList](https://cloud.tencent.com/document/api/876/132936)
+* [DescribeCreditsUsage](https://cloud.tencent.com/document/api/876/132935)
+* [DescribeCreditsUsageDetail](https://cloud.tencent.com/document/api/876/132934)
 
-* [TsfPageBusinessLogV2](https://cloud.tencent.com/document/api/649/36099#TsfPageBusinessLogV2)
+新增数据结构：
 
-	* 新增成员：Compressed
+* [CloudAppServiceItem](https://cloud.tencent.com/document/api/876/34822#CloudAppServiceItem)
+* [EnvPkgCreditsUsage](https://cloud.tencent.com/document/api/876/34822#EnvPkgCreditsUsage)
+* [MetricUsage](https://cloud.tencent.com/document/api/876/34822#MetricUsage)
+* [ValueDetail](https://cloud.tencent.com/document/api/876/34822#ValueDetail)
 
-* [VmGroup](https://cloud.tencent.com/document/api/649/36099#VmGroup)
 
-	* 新增成员：LivenessAutoRestart
 
+## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 121 次发布
+
+发布时间：2026-06-17 01:57:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateModelService](https://cloud.tencent.com/document/api/851/82291)
+
+	* 新增入参：TiProjectId
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
 
 
 

@@ -2297,6 +2297,62 @@ func (c *Client) DescribeClientWithContext(ctx context.Context, request *Describ
     return
 }
 
+func NewDescribeCloudAppListRequest() (request *DescribeCloudAppListRequest) {
+    request = &DescribeCloudAppListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCloudAppList")
+    
+    
+    return
+}
+
+func NewDescribeCloudAppListResponse() (response *DescribeCloudAppListResponse) {
+    response = &DescribeCloudAppListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudAppList
+// 查询云应用服务列表信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudAppList(request *DescribeCloudAppListRequest) (response *DescribeCloudAppListResponse, err error) {
+    return c.DescribeCloudAppListWithContext(context.Background(), request)
+}
+
+// DescribeCloudAppList
+// 查询云应用服务列表信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudAppListWithContext(ctx context.Context, request *DescribeCloudAppListRequest) (response *DescribeCloudAppListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudAppListRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCloudAppList")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudAppList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudAppListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudBaseBuildServiceRequest() (request *DescribeCloudBaseBuildServiceRequest) {
     request = &DescribeCloudBaseBuildServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2513,6 +2569,150 @@ func (c *Client) DescribeCreateMySQLResultWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeCreateMySQLResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCreditsUsageRequest() (request *DescribeCreditsUsageRequest) {
+    request = &DescribeCreditsUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCreditsUsage")
+    
+    
+    return
+}
+
+func NewDescribeCreditsUsageResponse() (response *DescribeCreditsUsageResponse) {
+    response = &DescribeCreditsUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCreditsUsage
+// 查询资源点模式下的资源点用量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
+//  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVERNOTFOUND = "ResourceNotFound.ServerNotFound"
+//  RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
+func (c *Client) DescribeCreditsUsage(request *DescribeCreditsUsageRequest) (response *DescribeCreditsUsageResponse, err error) {
+    return c.DescribeCreditsUsageWithContext(context.Background(), request)
+}
+
+// DescribeCreditsUsage
+// 查询资源点模式下的资源点用量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
+//  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVERNOTFOUND = "ResourceNotFound.ServerNotFound"
+//  RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
+func (c *Client) DescribeCreditsUsageWithContext(ctx context.Context, request *DescribeCreditsUsageRequest) (response *DescribeCreditsUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeCreditsUsageRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCreditsUsage")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCreditsUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCreditsUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCreditsUsageDetailRequest() (request *DescribeCreditsUsageDetailRequest) {
+    request = &DescribeCreditsUsageDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCreditsUsageDetail")
+    
+    
+    return
+}
+
+func NewDescribeCreditsUsageDetailResponse() (response *DescribeCreditsUsageDetailResponse) {
+    response = &DescribeCreditsUsageDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCreditsUsageDetail
+// 查询资源点模式下的资源点用量及原始用量明细
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
+//  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVERNOTFOUND = "ResourceNotFound.ServerNotFound"
+//  RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
+func (c *Client) DescribeCreditsUsageDetail(request *DescribeCreditsUsageDetailRequest) (response *DescribeCreditsUsageDetailResponse, err error) {
+    return c.DescribeCreditsUsageDetailWithContext(context.Background(), request)
+}
+
+// DescribeCreditsUsageDetail
+// 查询资源点模式下的资源点用量及原始用量明细
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
+//  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SERVERNOTFOUND = "ResourceNotFound.ServerNotFound"
+//  RESOURCENOTFOUND_VERSIONNOTFOUND = "ResourceNotFound.VersionNotFound"
+//  RESOURCEUNAVAILABLE_RESOURCEBANNED = "ResourceUnavailable.ResourceBanned"
+//  RESOURCEUNAVAILABLE_RESOURCEFROZEN = "ResourceUnavailable.ResourceFrozen"
+//  RESOURCEUNAVAILABLE_RESOURCEISOLATED = "ResourceUnavailable.ResourceIsolated"
+func (c *Client) DescribeCreditsUsageDetailWithContext(ctx context.Context, request *DescribeCreditsUsageDetailRequest) (response *DescribeCreditsUsageDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCreditsUsageDetailRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tcb", APIVersion, "DescribeCreditsUsageDetail")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCreditsUsageDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCreditsUsageDetailResponse()
     err = c.Send(request, response)
     return
 }

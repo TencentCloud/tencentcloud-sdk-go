@@ -822,6 +822,9 @@ func (r *CreateModelServiceAuthTokenResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateModelServiceRequestParams struct {
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// <p>新增版本时需要填写</p>
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
@@ -961,6 +964,9 @@ type CreateModelServiceRequestParams struct {
 type CreateModelServiceRequest struct {
 	*tchttp.BaseRequest
 	
+	// <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+	TiProjectId *string `json:"TiProjectId,omitnil,omitempty" name:"TiProjectId"`
+
 	// <p>新增版本时需要填写</p>
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
 
@@ -1109,6 +1115,7 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "TiProjectId")
 	delete(f, "ServiceGroupId")
 	delete(f, "ServiceGroupName")
 	delete(f, "ServiceDescription")
