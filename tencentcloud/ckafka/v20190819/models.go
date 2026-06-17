@@ -2978,7 +2978,7 @@ type CreateTopicRequestParams struct {
 	// <p>最小同步副本数</p><p>默认值：1</p><p>最小值为1</p>
 	MinInsyncReplicas *int64 `json:"MinInsyncReplicas,omitnil,omitempty" name:"MinInsyncReplicas"`
 
-	// <p>是否允许未同步的副本选为leader，0:不允许，1:允许，默认不允许</p>
+	// <p>是否允许未同步的副本选为leader，0:不允许，1:允许，默认取实例维度的值</p>
 	UncleanLeaderElectionEnable *int64 `json:"UncleanLeaderElectionEnable,omitnil,omitempty" name:"UncleanLeaderElectionEnable"`
 
 	// <p>可选参数，消息保留时间</p><p>取值范围：[60000, 7776000000]</p><p>单位：毫秒</p><p>默认值：7200000</p>
@@ -3036,7 +3036,7 @@ type CreateTopicRequest struct {
 	// <p>最小同步副本数</p><p>默认值：1</p><p>最小值为1</p>
 	MinInsyncReplicas *int64 `json:"MinInsyncReplicas,omitnil,omitempty" name:"MinInsyncReplicas"`
 
-	// <p>是否允许未同步的副本选为leader，0:不允许，1:允许，默认不允许</p>
+	// <p>是否允许未同步的副本选为leader，0:不允许，1:允许，默认取实例维度的值</p>
 	UncleanLeaderElectionEnable *int64 `json:"UncleanLeaderElectionEnable,omitnil,omitempty" name:"UncleanLeaderElectionEnable"`
 
 	// <p>可选参数，消息保留时间</p><p>取值范围：[60000, 7776000000]</p><p>单位：毫秒</p><p>默认值：7200000</p>

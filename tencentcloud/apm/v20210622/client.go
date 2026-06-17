@@ -580,6 +580,7 @@ func NewDescribeApmInstancesResponse() (response *DescribeApmInstancesResponse) 
 //  AUTHFAILURE_UNMARSHALRESPONSE = "AuthFailure.UnmarshalResponse"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCESSTAGFAIL = "FailedOperation.AccessTagFail"
+//  FAILEDOPERATION_OPERATIONNOTALLOWED = "FailedOperation.OperationNotAllowed"
 //  FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
 func (c *Client) DescribeApmInstances(request *DescribeApmInstancesRequest) (response *DescribeApmInstancesResponse, err error) {
     return c.DescribeApmInstancesWithContext(context.Background(), request)
@@ -593,6 +594,7 @@ func (c *Client) DescribeApmInstances(request *DescribeApmInstancesRequest) (res
 //  AUTHFAILURE_UNMARSHALRESPONSE = "AuthFailure.UnmarshalResponse"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCESSTAGFAIL = "FailedOperation.AccessTagFail"
+//  FAILEDOPERATION_OPERATIONNOTALLOWED = "FailedOperation.OperationNotAllowed"
 //  FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
 func (c *Client) DescribeApmInstancesWithContext(ctx context.Context, request *DescribeApmInstancesRequest) (response *DescribeApmInstancesResponse, err error) {
     if request == nil {
@@ -638,6 +640,7 @@ func NewDescribeApmPrometheusRuleResponse() (response *DescribeApmPrometheusRule
 //  AUTHFAILURE_UNMARSHALRESPONSE = "AuthFailure.UnmarshalResponse"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCESSTAGFAIL = "FailedOperation.AccessTagFail"
+//  FAILEDOPERATION_OPERATIONNOTALLOWED = "FailedOperation.OperationNotAllowed"
 //  FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
 func (c *Client) DescribeApmPrometheusRule(request *DescribeApmPrometheusRuleRequest) (response *DescribeApmPrometheusRuleResponse, err error) {
     return c.DescribeApmPrometheusRuleWithContext(context.Background(), request)
@@ -651,6 +654,7 @@ func (c *Client) DescribeApmPrometheusRule(request *DescribeApmPrometheusRuleReq
 //  AUTHFAILURE_UNMARSHALRESPONSE = "AuthFailure.UnmarshalResponse"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCESSTAGFAIL = "FailedOperation.AccessTagFail"
+//  FAILEDOPERATION_OPERATIONNOTALLOWED = "FailedOperation.OperationNotAllowed"
 //  FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
 func (c *Client) DescribeApmPrometheusRuleWithContext(ctx context.Context, request *DescribeApmPrometheusRuleRequest) (response *DescribeApmPrometheusRuleResponse, err error) {
     if request == nil {

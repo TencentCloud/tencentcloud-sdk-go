@@ -9091,6 +9091,68 @@ func (c *Client) DetectVideoSubtitleAreaWithContext(ctx context.Context, request
     return
 }
 
+func NewDetectVideoWatermarkRequest() (request *DetectVideoWatermarkRequest) {
+    request = &DetectVideoWatermarkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DetectVideoWatermark")
+    
+    
+    return
+}
+
+func NewDetectVideoWatermarkResponse() (response *DetectVideoWatermarkResponse) {
+    response = &DetectVideoWatermarkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DetectVideoWatermark
+// 快速探测视频文件是否包含水印
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_RECOGNITIONERROR = "InternalError.RecognitionError"
+//  INVALIDPARAMETER_INPUTINFO = "InvalidParameter.InputInfo"
+//  INVALIDPARAMETERVALUE_DURATIONTOOLONG = "InvalidParameterValue.DurationTooLong"
+//  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownloadError"
+//  RESOURCENOTFOUND_USERUNREGISTER = "ResourceNotFound.UserUnregister"
+func (c *Client) DetectVideoWatermark(request *DetectVideoWatermarkRequest) (response *DetectVideoWatermarkResponse, err error) {
+    return c.DetectVideoWatermarkWithContext(context.Background(), request)
+}
+
+// DetectVideoWatermark
+// 快速探测视频文件是否包含水印
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_RECOGNITIONERROR = "InternalError.RecognitionError"
+//  INVALIDPARAMETER_INPUTINFO = "InvalidParameter.InputInfo"
+//  INVALIDPARAMETERVALUE_DURATIONTOOLONG = "InvalidParameterValue.DurationTooLong"
+//  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownloadError"
+//  RESOURCENOTFOUND_USERUNREGISTER = "ResourceNotFound.UserUnregister"
+func (c *Client) DetectVideoWatermarkWithContext(ctx context.Context, request *DetectVideoWatermarkRequest) (response *DetectVideoWatermarkResponse, err error) {
+    if request == nil {
+        request = NewDetectVideoWatermarkRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "mps", APIVersion, "DetectVideoWatermark")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectVideoWatermark require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDetectVideoWatermarkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisableScheduleRequest() (request *DisableScheduleRequest) {
     request = &DisableScheduleRequest{
         BaseRequest: &tchttp.BaseRequest{},

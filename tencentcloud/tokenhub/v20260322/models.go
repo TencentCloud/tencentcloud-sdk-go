@@ -68,6 +68,12 @@ type ApiKeyDetail struct {
 
 	// 当Platform为maas时该字段为空
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// Token 限额信息多维度列表。未配置限额时不返回该字段。
+	QuotaSet []*QuotaInfo `json:"QuotaSet,omitnil,omitempty" name:"QuotaSet"`
+
+	// Token 限额状态。空字符串表示未配置任何限额包；active 表示已配置且当前可用；inactive 表示已配置但额度耗尽
+	QuotaStatus *string `json:"QuotaStatus,omitnil,omitempty" name:"QuotaStatus"`
 }
 
 type BatchCreateFailedItem struct {
@@ -797,6 +803,12 @@ type DescribeApiKeyResponseParams struct {
 
 	// 当Platform为maas时该字段为空
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// Token 限额多维度信息。未配置限额时不返回该字段。
+	QuotaSet []*QuotaInfo `json:"QuotaSet,omitnil,omitempty" name:"QuotaSet"`
+
+	// Token 限额状态。空字符串表示未配置任何限额包；active 表示已配置且当前可用；inactive 表示已配置但额度耗尽
+	QuotaStatus *string `json:"QuotaStatus,omitnil,omitempty" name:"QuotaStatus"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1989,6 +2001,29 @@ func (r *ModifyTokenPlanApiKeySecretResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyTokenPlanApiKeySecretResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type QuotaInfo struct {
+	// 限额包 ID。
+	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
+
+	// 限额包状态。取值：1（正常）、3（已耗尽）、4（已销毁）。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 限额周期。取值：d（按日）、m（按月）、lifetime（总额度，不重置）。
+	CycleUnit *string `json:"CycleUnit,omitnil,omitempty" name:"CycleUnit"`
+
+	// 维度当期限额总量（Token 数）。使用字符串避免大数精度丢失。
+	CycleCredits *string `json:"CycleCredits,omitnil,omitempty" name:"CycleCredits"`
+
+	// 维度当期已使用量（Token 数）。使用字符串避免大数精度丢失。
+	CycleUsed *string `json:"CycleUsed,omitnil,omitempty" name:"CycleUsed"`
+
+	// 限额生效起始时间。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 限额过期时间。
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 }
 
 // Predefined struct for user

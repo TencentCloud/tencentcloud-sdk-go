@@ -4541,7 +4541,7 @@ func NewDescribeDNSConfigResponse() (response *DescribeDNSConfigResponse) {
 }
 
 // DescribeDNSConfig
-// 列出 Grafana DNS 配置
+// 列出 Grafana DNS 配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4550,7 +4550,7 @@ func (c *Client) DescribeDNSConfig(request *DescribeDNSConfigRequest) (response 
 }
 
 // DescribeDNSConfig
-// 列出 Grafana DNS 配置
+// 列出 Grafana DNS 配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4763,7 +4763,7 @@ func NewDescribeGrafanaChannelsResponse() (response *DescribeGrafanaChannelsResp
 }
 
 // DescribeGrafanaChannels
-// 列出 Grafana 所有告警通道
+// 列出 Grafana 所有告警通道。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4772,7 +4772,7 @@ func (c *Client) DescribeGrafanaChannels(request *DescribeGrafanaChannelsRequest
 }
 
 // DescribeGrafanaChannels
-// 列出 Grafana 所有告警通道
+// 列出 Grafana 所有告警通道。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7861,7 +7861,7 @@ func NewDescribeSSOAccountResponse() (response *DescribeSSOAccountResponse) {
 }
 
 // DescribeSSOAccount
-// 列出当前grafana实例的所有授权账号
+// 列出当前grafana实例的所有授权账号.
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7870,7 +7870,7 @@ func (c *Client) DescribeSSOAccount(request *DescribeSSOAccountRequest) (respons
 }
 
 // DescribeSSOAccount
-// 列出当前grafana实例的所有授权账号
+// 列出当前grafana实例的所有授权账号.
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -16790,6 +16790,76 @@ func (r *DetectVideoSubtitleAreaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetectVideoWatermarkRequestParams struct {
+	// <p>输入信息，当前仅支持 URL、COS</p>
+	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
+
+	// <p>扩展参数，默认不填</p>
+	UserExtPara *string `json:"UserExtPara,omitnil,omitempty" name:"UserExtPara"`
+}
+
+type DetectVideoWatermarkRequest struct {
+	*tchttp.BaseRequest
+	
+	// <p>输入信息，当前仅支持 URL、COS</p>
+	InputInfo *MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
+
+	// <p>扩展参数，默认不填</p>
+	UserExtPara *string `json:"UserExtPara,omitnil,omitempty" name:"UserExtPara"`
+}
+
+func (r *DetectVideoWatermarkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetectVideoWatermarkRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InputInfo")
+	delete(f, "UserExtPara")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectVideoWatermarkRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DetectVideoWatermarkResponseParams struct {
+	// <p>是否存在水印的置信度</p><p>取值范围：[0, 100]</p>
+	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+
+	// <p>视频中是否存在水印</p>
+	HasWatermark *bool `json:"HasWatermark,omitnil,omitempty" name:"HasWatermark"`
+
+	// <p>关于水印的一些描述性说明</p>
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DetectVideoWatermarkResponse struct {
+	*tchttp.BaseResponse
+	Response *DetectVideoWatermarkResponseParams `json:"Response"`
+}
+
+func (r *DetectVideoWatermarkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetectVideoWatermarkResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DiagnoseResult struct {
 	// 诊断出的异常类别，取值范围：
 	// DecodeParamException：解码参数异常

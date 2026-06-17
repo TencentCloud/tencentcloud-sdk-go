@@ -5570,6 +5570,7 @@ func NewTextToSpeechResponse() (response *TextToSpeechResponse) {
 //  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
 //  INVALIDPARAMETER_VOLUME = "InvalidParameter.Volume"
 //  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
+//  MISSINGPARAMETER_TEXT = "MissingParameter.Text"
 //  UNSUPPORTEDOPERATION_INTERNALERROR = "UnsupportedOperation.InternalError"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
 func (c *Client) TextToSpeech(request *TextToSpeechRequest) (response *TextToSpeechResponse, err error) {
@@ -5588,6 +5589,7 @@ func (c *Client) TextToSpeech(request *TextToSpeechRequest) (response *TextToSpe
 //  INVALIDPARAMETER_VOICEID = "InvalidParameter.VoiceId"
 //  INVALIDPARAMETER_VOLUME = "InvalidParameter.Volume"
 //  MISSINGPARAMETER_APIKEY = "MissingParameter.APIKey"
+//  MISSINGPARAMETER_TEXT = "MissingParameter.Text"
 //  UNSUPPORTEDOPERATION_INTERNALERROR = "UnsupportedOperation.InternalError"
 //  UNSUPPORTEDOPERATION_NOTALLOWED = "UnsupportedOperation.NotAllowed"
 func (c *Client) TextToSpeechWithContext(ctx context.Context, request *TextToSpeechRequest) (response *TextToSpeechResponse, err error) {

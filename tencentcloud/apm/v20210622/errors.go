@@ -128,6 +128,9 @@ const (
 	// 接口名不能为空
 	FAILEDOPERATION_OPERATIONNAMEISEMPTY = "FailedOperation.OperationNameIsEmpty"
 
+	// 操作不允许
+	FAILEDOPERATION_OPERATIONNOTALLOWED = "FailedOperation.OperationNotAllowed"
+
 	// 关联产品ID不可用
 	FAILEDOPERATION_PEERIDNOTAVAILABLE = "FailedOperation.PeerIdNotAvailable"
 

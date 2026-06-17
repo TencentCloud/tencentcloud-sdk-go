@@ -413,6 +413,9 @@ const (
 	// 缺少TaskId参数。
 	MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
 
+	// 缺失Text字段
+	MISSINGPARAMETER_TEXT = "MissingParameter.Text"
+
 	// 缺少转录参数TranscriptionParam。
 	MISSINGPARAMETER_TRANSCRIPTIONPARAM = "MissingParameter.TranscriptionParam"
 
