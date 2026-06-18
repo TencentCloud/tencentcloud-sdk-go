@@ -50,13 +50,14 @@ func (c *counter) onFailure() {
 	c.all++
 	c.failures++
 	c.consecutiveSuccesses = 0
-	c.consecutiveSuccesses = 0
+	c.consecutiveFailures++
 }
 
 func (c *counter) clear() {
 	c.all = 0
 	c.failures = 0
 	c.consecutiveSuccesses = 0
+	c.consecutiveFailures = 0
 }
 
 // State is a type that represents a state of CircuitBreaker.

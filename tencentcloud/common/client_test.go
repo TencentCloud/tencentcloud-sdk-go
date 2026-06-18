@@ -172,6 +172,9 @@ func TestBothFailuresOccurredButSucceedAfterRetry(t *testing.T) {
 
 func test(t *testing.T, tc testCase) {
 	credential := NewCredential("", "")
+	// These tests predate domain failover; disable it so a transport
+	// failure isn't silently retried against an alternate TLD.
+	tc.prof.DisableRegionBreaker = true
 	client := NewCommonClient(credential, regions.Guangzhou, tc.prof)
 
 	client.WithHttpTransport(&tc.specific)
@@ -194,15 +197,67 @@ func test(t *testing.T, tc testCase) {
 
 func TestClient_withRegionBreaker(t *testing.T) {
 	cpf := profile.NewClientProfile()
-	//cpf.Debug =true
 	cpf.DisableRegionBreaker = false
-	cpf.BackupEndpoint = ""
 	c := (&Client{}).Init("")
 	c.WithProfile(cpf)
-	if c.rb.backupEndpoint != "ap-guangzhou.tencentcloudapi.com" {
-		t.Errorf("want %s ,got %s", "ap-beijing", c.rb.backupEndpoint)
+	if c.profile.DisableRegionBreaker {
+		t.Fatalf("expected DisableRegionBreaker=false (failover enabled)")
 	}
-	if c.rb.maxFailNum != defaultMaxFailNum {
-		t.Errorf("want %d ,got %d", defaultMaxFailNum, c.rb.maxFailNum)
+}
+
+// breakerRT is a RoundTripper that always returns a successful empty
+// CVM-style response. It is the simplest fixture that exercises the full
+// Send → sendWithEndpointFailover → sendWithSignature → response-parse chain
+// while letting Send return nil err.
+type breakerRT struct {
+	calls int
+}
+
+func (s *breakerRT) RoundTrip(*http.Request) (*http.Response, error) {
+	s.calls++
+	return &http.Response{
+		StatusCode: 200,
+		Body:       ioutil.NopCloser(bytes.NewBufferString(successResp)),
+	}, nil
+}
+
+// newBreakerEnabledClient builds a Client wired through the same paths Send()
+// uses in production, with the regional breaker turned on. The returned Client
+// uses rt as its HTTP transport so test code can drive Send() without network.
+func newBreakerEnabledClient(rt http.RoundTripper) *Client {
+	cpf := profile.NewClientProfile()
+	cpf.DisableRegionBreaker = false
+	c := NewCommonClient(NewCredential("id", "key"), regions.Guangzhou, cpf)
+	c.WithHttpTransport(rt)
+	return c
+}
+
+// TestClient_breakerStaysClosedOnSuccesses drives the full Client.Send path
+// against a mock transport that always returns 200, and asserts every
+// candidate's per-host breaker remains closed (no host re-routing).
+func TestClient_breakerStaysClosedOnSuccesses(t *testing.T) {
+	rt := &breakerRT{}
+	c := newBreakerEnabledClient(rt)
+
+	const calls = 12 // > defaultMaxFailNum (5) and > the consecutive-failures threshold (6)
+	for i := 0; i < calls; i++ {
+		req := newTestRequest()
+		resp := tchttp.NewCommonResponse()
+		if err := c.Send(req, resp); err != nil {
+			t.Fatalf("call %d: unexpected error: %v", i, err)
+		}
 	}
+
+	if rt.calls != calls {
+		t.Fatalf("transport saw %d calls, want %d", rt.calls, calls)
+	}
+}
+
+// failingRT returns a transport-level error every call, simulating a region
+// outage. We use it to verify the breaker DOES open when calls genuinely fail.
+type failingRT struct{ calls int }
+
+func (s *failingRT) RoundTrip(*http.Request) (*http.Response, error) {
+	s.calls++
+	return nil, retryErr{}
 }

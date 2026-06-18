@@ -33,7 +33,7 @@ func (c *Client) sendWithNetworkFailureRetry(req *http.Request, retryable bool) 
 			}
 		}
 
-		resp, err = c.sendHttp(req)
+		resp, err = c.sendWithEndpointFailover(req)
 
 		// retry when error occurred and retryable and not the last retry
 		// should not sleep on last retry even if it's retryable
