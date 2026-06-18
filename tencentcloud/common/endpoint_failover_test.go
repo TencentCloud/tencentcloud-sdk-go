@@ -15,8 +15,150 @@ import (
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
 )
 
+// Tests for EndpointFailover.
+//
+// How tests are organized
+//
+// Each test scenario is run against every domain family (N1/N2/N3) via a
+// `for _, f := range families` loop inside the test method. This gives
+// M × N coverage while keeping the code DRY.
+//
+// Scenarios that do NOT depend on the domain family (e.g. pure helper
+// methods like isKnownTencentCloudHost) use a single test method without
+// the family loop.
+//
+// Adding a new test case
+//
+//  1. Choose the right section. Find the scenario group that best matches
+//     (see the M-numbered list below), or add a new group at the bottom.
+//  2. If family-dependent: Copy the pattern of an existing test in that
+//     section — wrap the test body in `for _, f := range families` and use
+//     f.originHost, f.firstFailover, etc. Include f.name in assertion
+//     messages for debugging.
+//  3. If family-independent: Write a plain test function without the loop.
+//  4. Use existing helpers:
+//     - newClient(family) — creates a Client for a family
+//     - installStub(client) — installs transportStub
+//     - tripBreakerFor(host, timeoutMs) — trips a breaker
+//     - tripAllBreakersFor(family, timeoutMs) — trips all 3
+//  5. Script the transportStub: Use stub.programOk(), stub.programFailure(err),
+//     stub.programJsonOk(json), stub.programResponse(code, body), or
+//     stub.programResponseWithCt(code, body, contentType).
+//  6. Assert transport hits: Check len(stub.hostsSeen) and stub.hostsSeen[i].
+//  7. Assign a scenario number. Pick the next available M number and update
+//     the list below so the index stays current.
+//
+// Domain families (N)
+//
+//	N1: Normal — tencentcloudapi.{com,cn,com.cn}
+//	N2: AI — ai.tencentcloudapi.{com,cn,com.cn}
+//	N3: Internal — internal.tencentcloudapi.{com,cn,com.cn}
+//
+// Test scenarios (M)
+//
+// Pure helpers
+//
+//	 1. isKnownTencentCloudHost — host classification
+//	 2. hostWithTld / serviceOf — utility helpers
+//
+// Pass-through
+//
+//	 3. Non-TencentCloud host — passthrough
+//	 4. Unknown TLD — passthrough
+//	 5. Non-POST request — passthrough
+//	 6. Non-failover IOException — propagate without retry
+//
+// Failover triggers
+//
+//	 7. UnknownHostException
+//	 8. SSLPeerUnverifiedException
+//	 9. SSLHandshakeException
+//	10. ConnectException
+//	11. NoRouteToHostException
+//	12. PortUnreachableException
+//	13. SocketTimeoutException
+//	14. HTTP non-200 response (UnhealthyResponseException)
+//	15. 200 + invalid JSON body
+//	16. 200 + empty body
+//
+// Response after failover
+//
+//	17. API response delivered intact after selecting alternate host
+//
+// Circuit breaker lifecycle
+//
+//	18. Sustained failure opens breaker
+//	19. Open breaker short-circuits host
+//	20. Open → HalfOpen after cooldown
+//	21. HalfOpen probe success → Closed
+//	22. HalfOpen probe failure → re-Open
+//	23. All breakers open → fallback to origin host
+//
+// Failure reporting & isolation
+//
+//	24. One transport attempt per request (no same-request retry)
+//	25. Failure preserves original exception type and message
+//	26. Breaker skip mixed with real failure
+//	27. Failure does not pollute next request
+//	28. Breaker state isolated across origin hosts
+//
+// Request re-signing
+//
+//	29. TC3 V3 re-sign (POST)
+//	29a. TC3 resign preserves body and content-type
+//	30. TC3 V3 GET re-sign
+//	31. Hmac V1 re-sign
+//	32. SKIP V3 — rewrite Host only
+//	33. Re-sign uses current credential (SecretId/Key rotation)
+//	34. X-TC-Token rotation
+//	34a. X-TC-Token dropped when cleared
+//
+// Response type handling
+//
+//	35. SSE (text/event-stream) — no failover
+//	36. No Content-Type — no failover
+//	37. 200 + JSON business error — no failover
+//
+// backupEndpoint mode
+//
+//	38. backupEndpoint failover behavior
+//	38a-38d. backupEndpoint detail scenarios
+//
+// TLD boundary & region-pinned
+//
+//	39. hostWithTld from .cn / .com.cn origins
+//	40. hostWithTld preserves region prefix
+//
+// Passthrough details
+//
+//	41. Non-TencentCloud host DNS miss — no retry
+//	42. Non-TencentCloud host + backupEndpoint — no retry
+//
+// Endpoint eligibility
+//
+//	43. .cn origin eligible for failover
+//	44. Region-pinned host eligible for failover
+//	45. setEnableDomainFailover(false) at runtime — no effect
+//
+// TLD family rotation
+//
+//	46. AI family stays within ai.tencentcloudapi
+//	47. Internal family stays within internal.tencentcloudapi
+//	48. Region-pinned failover preserves prefix
+//
+// Re-sign details
+//
+//	49. TC3 resign preserves body bytes and Content-Type
+//	50. X-TC-Token dropped when cleared
+//
+// backupEndpoint details
+//
+//	51. Origin DNS miss — no same-request retry to backup
+//	52. Non-failover IOException propagates directly
+//	53. No backupEndpoint — DNS miss behavior
+
 // =====================================================================
-// Domain families — matching Java's Family model
+//  Domain families
 // =====================================================================
 
 type family struct {
@@ -28,26 +170,26 @@ type family struct {
 }
 
 var (
-	fNormal = family{
+	n1 = family{
 		name: "Normal", originHost: "cvm.tencentcloudapi.com",
 		firstFailover: "cvm.tencentcloudapi.cn", secondFailover: "cvm.tencentcloudapi.com.cn",
 		allTldHosts: []string{"cvm.tencentcloudapi.com", "cvm.tencentcloudapi.cn", "cvm.tencentcloudapi.com.cn"},
 	}
-	fAI = family{
+	n2 = family{
 		name: "AI", originHost: "hunyuan.ai.tencentcloudapi.com",
 		firstFailover: "hunyuan.ai.tencentcloudapi.cn", secondFailover: "hunyuan.ai.tencentcloudapi.com.cn",
 		allTldHosts: []string{"hunyuan.ai.tencentcloudapi.com", "hunyuan.ai.tencentcloudapi.cn", "hunyuan.ai.tencentcloudapi.com.cn"},
 	}
-	fInternal = family{
+	n3 = family{
 		name: "Internal", originHost: "cvm.internal.tencentcloudapi.com",
 		firstFailover: "cvm.internal.tencentcloudapi.cn", secondFailover: "cvm.internal.tencentcloudapi.com.cn",
 		allTldHosts: []string{"cvm.internal.tencentcloudapi.com", "cvm.internal.tencentcloudapi.cn", "cvm.internal.tencentcloudapi.com.cn"},
 	}
-	families = []family{fNormal, fAI, fInternal}
+	families = []family{n1, n2, n3}
 )
 
 // =====================================================================
-// TransportStub — matching Java's TransportStub interceptor
+//  TransportStub — matching Java's TransportStub interceptor
 // =====================================================================
 
 const failoverSuccessResp = `{"Response": {"RequestId": "req-ok"}}`
@@ -122,7 +264,7 @@ func (s *transportStub) RoundTrip(req *http.Request) (*http.Response, error) {
 }
 
 // =====================================================================
-// Error types for transport failures
+//  Error types for transport failures
 // =====================================================================
 
 type dnsErr struct{ msg string }
@@ -142,7 +284,7 @@ type timeoutErr struct{ msg string }
 func (e timeoutErr) Error() string { return e.msg }
 
 // =====================================================================
-// Helpers
+//  Helpers
 // =====================================================================
 
 func newCvmRequest() *requestWithClientToken {
@@ -197,17 +339,24 @@ func runFailoverClient(rt http.RoundTripper) *Client {
 }
 
 // =====================================================================
-// M1: isKnownTencentCloudHost — host classification
+//  M1: isKnownTencentCloudHost — host classification
 // =====================================================================
 
 func Test_isKnownTencentCloudHost(t *testing.T) {
+	// Normal family (tencentcloudapi.com / .cn / .com.cn)
 	known := []string{
 		"cvm.tencentcloudapi.com", "cvm.tencentcloudapi.cn", "cvm.tencentcloudapi.com.cn",
+		// intl prefix maps to the normal family.
 		"cvm.intl.tencentcloudapi.com",
+		// Region-pinned.
 		"cvm.ap-shanghai.tencentcloudapi.com", "cvm.ap-shanghai.tencentcloudapi.cn", "cvm.ap-shanghai.tencentcloudapi.com.cn",
+		// AI family (ai.tencentcloudapi.com / .cn / .com.cn)
 		"hunyuan.ai.tencentcloudapi.com", "hunyuan.ai.tencentcloudapi.cn", "hunyuan.ai.tencentcloudapi.com.cn",
+		// Region-pinned.
 		"hunyuan.ap-guangzhou.ai.tencentcloudapi.com",
+		// Internal family (internal.tencentcloudapi.com / .cn / .com.cn)
 		"cvm.internal.tencentcloudapi.com", "cvm.internal.tencentcloudapi.cn", "cvm.internal.tencentcloudapi.com.cn",
+		// Region-pinned.
 		"cvm.ap-guangzhou.internal.tencentcloudapi.com",
 	}
 	for _, h := range known {
@@ -216,9 +365,14 @@ func Test_isKnownTencentCloudHost(t *testing.T) {
 		}
 	}
 
+	// Empty prefix (no service label)
 	unknown := []string{
 		"tencentcloudapi.com", "tencentcloudapi.cn", "tencentcloudapi.com.cn",
-		".tencentcloudapi.com", ".foo.tencentcloudapi.com", "foo..tencentcloudapi.com",
+		// Leading dot in prefix
+		".tencentcloudapi.com",
+		// Double-dot
+		"cvm..tencentcloudapi.com",
+		// Non-Tencent domains
 		"example.com", "cvm.tencentcloudapi.woa.com", "proxy.internal", "192.168.0.1",
 	}
 	for _, h := range unknown {
@@ -232,11 +386,11 @@ func Test_isKnownTencentCloudHost(t *testing.T) {
 }
 
 // =====================================================================
-// M2: hostWithTld — utility helpers
+//  M2: hostWithTld / serviceOf — utility helpers
 // =====================================================================
 
 func Test_hostWithTldBuildsCorrectHosts(t *testing.T) {
-	c := newClient(fNormal)
+	c := newClient(n1)
 
 	// Verify each TLD index via candidateFor on a tripped breaker.
 	tripBreakerFor("cvm.tencentcloudapi.com", time.Hour)
@@ -252,8 +406,12 @@ func Test_hostWithTldBuildsCorrectHosts(t *testing.T) {
 	}
 }
 
+// =====================================================================
+//  M2a: hostWithTld — boundary origins (.cn, .com.cn, region-pinned)
+// =====================================================================
+
 func Test_hostWithTldFromCnAndComCnOrigins(t *testing.T) {
-	c := newClient(fNormal)
+	c := newClient(n1)
 	c.profile.HttpProfile.Endpoint = "cvm.tencentcloudapi.cn"
 	tripBreakerFor("cvm.tencentcloudapi.cn", time.Hour)
 	cand := defaultEndpointFailover.candidateFor(c.profile, "cvm.tencentcloudapi.cn")
@@ -270,7 +428,7 @@ func Test_hostWithTldFromCnAndComCnOrigins(t *testing.T) {
 }
 
 func Test_hostWithTldPreservesRegionInPrefix(t *testing.T) {
-	c := newClient(fNormal)
+	c := newClient(n1)
 
 	tripBreakerFor("cvm.ap-guangzhou.tencentcloudapi.com", time.Hour)
 	cand := defaultEndpointFailover.candidateFor(c.profile, "cvm.ap-guangzhou.tencentcloudapi.com")
@@ -280,7 +438,7 @@ func Test_hostWithTldPreservesRegionInPrefix(t *testing.T) {
 }
 
 // =====================================================================
-// M3: Non-TencentCloud host — passthrough
+//  M3: Non-TencentCloud host — passthrough (family loop)
 // =====================================================================
 
 func Test_passthroughNonTencentCloudHost(t *testing.T) {
@@ -301,6 +459,10 @@ func Test_passthroughNonTencentCloudHost(t *testing.T) {
 	}
 }
 
+// =====================================================================
+//  M3a: Non-TencentCloud host — DNS miss + backup details
+// =====================================================================
+
 func Test_nonTencentHostDnsMissPropagatesWithoutRetry(t *testing.T) {
 	for _, f := range families {
 		c := newClient(f)
@@ -318,10 +480,10 @@ func Test_nonTencentHostDnsMissPropagatesWithoutRetry(t *testing.T) {
 }
 
 // =====================================================================
-// M4-M6: Failover triggers — IOException types
+//  M7-M13: Failover IOException types (family loop)
 // =====================================================================
 
-func Test_failoverOnTransportErrors(t *testing.T) {
+func Test_failoverOnDnsError(t *testing.T) {
 	for _, f := range families {
 		c := newClient(f)
 		s := installStub(c)
@@ -360,7 +522,7 @@ func Test_failoverOnTlsErrors(t *testing.T) {
 }
 
 // =====================================================================
-// M14-M16: Protocol-level failover
+//  M14-M16: Protocol-level failover (family loop)
 // =====================================================================
 
 func Test_non200ResponseRecordsFailureWithoutRetry(t *testing.T) {
@@ -418,12 +580,12 @@ func Test_emptyBodyRecordsFailure(t *testing.T) {
 }
 
 // =====================================================================
-// M16a-M16b: TLD family rotation
+//  M16a-M16b: TLD family rotation (AI/Internal don't cross families)
 // =====================================================================
 
 func Test_aiFamilyRotationStaysWithinFamily(t *testing.T) {
-	c := newClient(fAI)
-	tripBreakerFor(fAI.originHost, time.Hour)
+	c := newClient(n2)
+	tripBreakerFor(n2.originHost, time.Hour)
 	s := installStub(c)
 	s.programOk()
 
@@ -433,8 +595,8 @@ func Test_aiFamilyRotationStaysWithinFamily(t *testing.T) {
 	if len(s.hostsSeen) != 1 {
 		t.Fatalf("expected 1 attempt, got %d", len(s.hostsSeen))
 	}
-	if s.hostsSeen[0] != fAI.firstFailover {
-		t.Fatalf("host = %s, want %s", s.hostsSeen[0], fAI.firstFailover)
+	if s.hostsSeen[0] != n2.firstFailover {
+		t.Fatalf("host = %s, want %s", s.hostsSeen[0], n2.firstFailover)
 	}
 	if !strings.Contains(s.hostsSeen[0], "ai.tencentcloudapi") {
 		t.Fatal("must stay within ai.tencentcloudapi family")
@@ -442,8 +604,8 @@ func Test_aiFamilyRotationStaysWithinFamily(t *testing.T) {
 }
 
 func Test_internalFamilyRotationStaysWithinFamily(t *testing.T) {
-	c := newClient(fInternal)
-	tripBreakerFor(fInternal.originHost, time.Hour)
+	c := newClient(n3)
+	tripBreakerFor(n3.originHost, time.Hour)
 	s := installStub(c)
 	s.programOk()
 
@@ -453,8 +615,8 @@ func Test_internalFamilyRotationStaysWithinFamily(t *testing.T) {
 	if len(s.hostsSeen) != 1 {
 		t.Fatalf("expected 1 attempt, got %d", len(s.hostsSeen))
 	}
-	if s.hostsSeen[0] != fInternal.firstFailover {
-		t.Fatalf("host = %s, want %s", s.hostsSeen[0], fInternal.firstFailover)
+	if s.hostsSeen[0] != n3.firstFailover {
+		t.Fatalf("host = %s, want %s", s.hostsSeen[0], n3.firstFailover)
 	}
 	if !strings.Contains(s.hostsSeen[0], "internal.tencentcloudapi") {
 		t.Fatal("must stay within internal.tencentcloudapi family")
@@ -485,7 +647,7 @@ func Test_regionPinnedHostFailoverPreservesPrefix(t *testing.T) {
 }
 
 // =====================================================================
-// M17: API response delivered after failover
+//  M17: API response delivered after failover (family loop)
 // =====================================================================
 
 func Test_apiResponseDeliveredAfterFailover(t *testing.T) {
@@ -509,7 +671,7 @@ func Test_apiResponseDeliveredAfterFailover(t *testing.T) {
 }
 
 // =====================================================================
-// M18: Sustained failure opens breaker
+//  M18: Sustained failure opens breaker (family loop)
 // =====================================================================
 
 func Test_breakerOpensAfterSustainedFailure(t *testing.T) {
@@ -549,7 +711,7 @@ func Test_breakerOpensAfterSustainedFailure(t *testing.T) {
 }
 
 // =====================================================================
-// M19: Open breaker short-circuits host
+//  M19: Open breaker short-circuits host (family loop)
 // =====================================================================
 
 func Test_openBreakerShortCircuitsHost(t *testing.T) {
@@ -572,7 +734,7 @@ func Test_openBreakerShortCircuitsHost(t *testing.T) {
 }
 
 // =====================================================================
-// M20: Open → HalfOpen after cooldown
+//  M20: Open → HalfOpen after cooldown (family loop)
 // =====================================================================
 
 func Test_breakerTransitionsOpenToHalfOpenAfterCooldown(t *testing.T) {
@@ -597,7 +759,7 @@ func Test_breakerTransitionsOpenToHalfOpenAfterCooldown(t *testing.T) {
 }
 
 // =====================================================================
-// M21: HalfOpen probe success → Closed
+//  M21: HalfOpen probe success → Closed (family loop)
 // =====================================================================
 
 func Test_breakerReClosesAfterHalfOpenSuccess(t *testing.T) {
@@ -625,7 +787,7 @@ func Test_breakerReClosesAfterHalfOpenSuccess(t *testing.T) {
 			t.Fatalf("%s: host = %s, want %s", f.name, s.hostsSeen[0], f.originHost)
 		}
 
-		// Should be Closed now.
+		// Should be Closed now — multiple requests go through.
 		for i := 0; i < 10; i++ {
 			if _, err := b.beforeRequest(); err != nil {
 				t.Fatalf("%s: should be Closed after HalfOpen success: %v", f.name, err)
@@ -635,7 +797,7 @@ func Test_breakerReClosesAfterHalfOpenSuccess(t *testing.T) {
 }
 
 // =====================================================================
-// M22: HalfOpen probe failure → re-Open
+//  M22: HalfOpen probe failure → re-Open (family loop)
 // =====================================================================
 
 func Test_breakerReOpensWhenHalfOpenProbeFails(t *testing.T) {
@@ -684,7 +846,7 @@ func Test_breakerReOpensWhenHalfOpenProbeFails(t *testing.T) {
 }
 
 // =====================================================================
-// M23: All breakers open → fallback to origin host
+//  M23: All breakers open → fallback to origin host (family loop)
 // =====================================================================
 
 func Test_allBreakersOpenFallsBackToOriginHost(t *testing.T) {
@@ -707,7 +869,7 @@ func Test_allBreakersOpenFallsBackToOriginHost(t *testing.T) {
 }
 
 // =====================================================================
-// M24: One transport attempt per request
+//  M24: One transport attempt per request (family loop)
 // =====================================================================
 
 func Test_endpointFailureSurfacesAttemptFailure(t *testing.T) {
@@ -730,7 +892,7 @@ func Test_endpointFailureSurfacesAttemptFailure(t *testing.T) {
 }
 
 // =====================================================================
-// M25: Failure preserves original exception type
+//  M25: Failure preserves original exception type and message (family loop)
 // =====================================================================
 
 func Test_failurePreservesAttemptCauseType(t *testing.T) {
@@ -753,7 +915,7 @@ func Test_failurePreservesAttemptCauseType(t *testing.T) {
 }
 
 // =====================================================================
-// M26: Breaker skip mixed with real failure
+//  M26: Breaker skip mixed with real failure (family loop)
 // =====================================================================
 
 func Test_failureMixesPriorBreakerSkipsWithRealFailure(t *testing.T) {
@@ -777,7 +939,7 @@ func Test_failureMixesPriorBreakerSkipsWithRealFailure(t *testing.T) {
 }
 
 // =====================================================================
-// M27: Failure does not pollute next request
+//  M27: Failure does not pollute next request (family loop)
 // =====================================================================
 
 func Test_failoverDoesNotPolluteNextRequest(t *testing.T) {
@@ -805,11 +967,11 @@ func Test_failoverDoesNotPolluteNextRequest(t *testing.T) {
 }
 
 // =====================================================================
-// M28: Breaker state isolated across origin hosts
+//  M28: Breaker state isolated across origin hosts (family loop)
 // =====================================================================
 
 func Test_breakerStateIsolatedAcrossOriginHosts(t *testing.T) {
-	pairs := [][2]family{{fNormal, fAI}, {fNormal, fInternal}}
+	pairs := [][2]family{{n1, n2}, {n1, n3}}
 	for _, pair := range pairs {
 		a, b := pair[0], pair[1]
 
@@ -832,7 +994,7 @@ func Test_breakerStateIsolatedAcrossOriginHosts(t *testing.T) {
 }
 
 // =====================================================================
-// M35: SSE — no failover
+//  M35: SSE — no failover (family loop)
 // =====================================================================
 
 func Test_sseStreamResponseIsNotJsonValidated(t *testing.T) {
@@ -849,7 +1011,7 @@ func Test_sseStreamResponseIsNotJsonValidated(t *testing.T) {
 }
 
 // =====================================================================
-// M36: No Content-Type — no failover
+//  M36: No Content-Type — no failover (family loop)
 // =====================================================================
 
 func Test_responseWithoutContentTypeIsNotJsonValidated(t *testing.T) {
@@ -866,7 +1028,7 @@ func Test_responseWithoutContentTypeIsNotJsonValidated(t *testing.T) {
 }
 
 // =====================================================================
-// M37: 200 + JSON business error — no failover
+//  M37: 200 + JSON business error — no failover (family loop)
 // =====================================================================
 
 func Test_businessSdkErrorDoesNotTriggerFailover(t *testing.T) {
@@ -886,7 +1048,7 @@ func Test_businessSdkErrorDoesNotTriggerFailover(t *testing.T) {
 }
 
 // =====================================================================
-// M38: backupEndpoint failover behavior
+//  M38: backupEndpoint failover behavior (family loop)
 // =====================================================================
 
 func Test_backupEndpointFailover(t *testing.T) {
@@ -930,7 +1092,7 @@ func Test_backupEndpointFailover(t *testing.T) {
 }
 
 // =====================================================================
-// M38a-M38d: backupEndpoint detail scenarios
+//  M38a-M38d: backupEndpoint detail scenarios (family loop)
 // =====================================================================
 
 func Test_backupEndpointOriginDnsMissDoesNotRetrySameRequest(t *testing.T) {
@@ -1001,7 +1163,7 @@ func Test_noBackupEndpointDnsMissDoesNotRetrySameRequest(t *testing.T) {
 }
 
 // =====================================================================
-// Endpoint eligibility
+//  M43-M44: Endpoint eligibility (family loop)
 // =====================================================================
 
 func Test_cnOriginIsEligibleForFailover(t *testing.T) {
@@ -1054,7 +1216,7 @@ func Test_regionPinnedHostIsEligibleForFailover(t *testing.T) {
 }
 
 // =====================================================================
-// Happy path & disabled
+//  Happy path & disabled
 // =====================================================================
 
 func Test_happyPathOneAttempt(t *testing.T) {
