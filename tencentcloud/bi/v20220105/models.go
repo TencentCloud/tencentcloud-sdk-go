@@ -477,6 +477,76 @@ func (r *CreateAuthApiKeyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateCorpTagRequestParams struct {
+	// 标签名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type CreateCorpTagRequest struct {
+	*tchttp.BaseRequest
+	
+	// 标签名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+func (r *CreateCorpTagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCorpTagRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCorpTagRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCorpTagResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// 扩展
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// 消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DataId `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCorpTagResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCorpTagResponseParams `json:"Response"`
+}
+
+func (r *CreateCorpTagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCorpTagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDataTableRequestParams struct {
 	// 后端提供字典：数据表类型，1、数据库建表，2、SQL建表，3、Excel上传，4、API接入，5、腾讯文档，6、云数据库，7、手工输入，8、关联查询
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
@@ -1608,6 +1678,103 @@ func (r *CreateProjectResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTagTableRequestParams struct {
+	// 标签表名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 标签表关联的项目id
+	AutoImportProjectId *int64 `json:"AutoImportProjectId,omitnil,omitempty" name:"AutoImportProjectId"`
+
+	// 标签表关联的数据表id
+	AutoImportTableId *int64 `json:"AutoImportTableId,omitnil,omitempty" name:"AutoImportTableId"`
+
+	// uin对应字段
+	AutoImportUinField *string `json:"AutoImportUinField,omitnil,omitempty" name:"AutoImportUinField"`
+}
+
+type CreateTagTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 标签表名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 标签表关联的项目id
+	AutoImportProjectId *int64 `json:"AutoImportProjectId,omitnil,omitempty" name:"AutoImportProjectId"`
+
+	// 标签表关联的数据表id
+	AutoImportTableId *int64 `json:"AutoImportTableId,omitnil,omitempty" name:"AutoImportTableId"`
+
+	// uin对应字段
+	AutoImportUinField *string `json:"AutoImportUinField,omitnil,omitempty" name:"AutoImportUinField"`
+}
+
+func (r *CreateTagTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTagTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "AutoImportProjectId")
+	delete(f, "AutoImportTableId")
+	delete(f, "AutoImportUinField")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTagTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTagTableResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// 数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CreateTagTableVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 扩展
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// 信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTagTableResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTagTableResponseParams `json:"Response"`
+}
+
+func (r *CreateTagTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTagTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTagTableVO struct {
+	// 标签表id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 // Predefined struct for user
@@ -4448,6 +4615,139 @@ func (r *DescribeUserRoleProjectListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type EditCorpTagRequestParams struct {
+	// 标签ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 标签名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 导入标签的模式(manual/auto)
+	ImportType *string `json:"ImportType,omitnil,omitempty" name:"ImportType"`
+
+	// 自动导入标签表的id
+	AutoImportTagTableId *int64 `json:"AutoImportTagTableId,omitnil,omitempty" name:"AutoImportTagTableId"`
+
+	// 自动导入标签的关联字段
+	AutoImportField *string `json:"AutoImportField,omitnil,omitempty" name:"AutoImportField"`
+
+	// 是否异步请求
+	AsyncRequest *bool `json:"AsyncRequest,omitnil,omitempty" name:"AsyncRequest"`
+
+	// 自动导入标签表的表名
+	AutoImportTagTableName *string `json:"AutoImportTagTableName,omitnil,omitempty" name:"AutoImportTagTableName"`
+
+	// 事务id
+	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
+}
+
+type EditCorpTagRequest struct {
+	*tchttp.BaseRequest
+	
+	// 标签ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 标签名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 导入标签的模式(manual/auto)
+	ImportType *string `json:"ImportType,omitnil,omitempty" name:"ImportType"`
+
+	// 自动导入标签表的id
+	AutoImportTagTableId *int64 `json:"AutoImportTagTableId,omitnil,omitempty" name:"AutoImportTagTableId"`
+
+	// 自动导入标签的关联字段
+	AutoImportField *string `json:"AutoImportField,omitnil,omitempty" name:"AutoImportField"`
+
+	// 是否异步请求
+	AsyncRequest *bool `json:"AsyncRequest,omitnil,omitempty" name:"AsyncRequest"`
+
+	// 自动导入标签表的表名
+	AutoImportTagTableName *string `json:"AutoImportTagTableName,omitnil,omitempty" name:"AutoImportTagTableName"`
+
+	// 事务id
+	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
+}
+
+func (r *EditCorpTagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EditCorpTagRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "ImportType")
+	delete(f, "AutoImportTagTableId")
+	delete(f, "AutoImportField")
+	delete(f, "AsyncRequest")
+	delete(f, "AutoImportTagTableName")
+	delete(f, "TranId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EditCorpTagRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EditCorpTagResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// 扩展
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// 消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *EditTagVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EditCorpTagResponse struct {
+	*tchttp.BaseResponse
+	Response *EditCorpTagResponseParams `json:"Response"`
+}
+
+func (r *EditCorpTagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EditCorpTagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EditTagVO struct {
+	// 事务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
+
+	// 事务状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TranStatus *int64 `json:"TranStatus,omitnil,omitempty" name:"TranStatus"`
+
+	// 标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
 type EmbedTokenInfo struct {
 	// 信息标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5785,6 +6085,110 @@ func (r *ModifyResourceUserResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyTagTableRequestParams struct {
+	// 标签表名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 标签表关联的项目id
+	AutoImportProjectId *int64 `json:"AutoImportProjectId,omitnil,omitempty" name:"AutoImportProjectId"`
+
+	// 标签表关联的数据表id
+	AutoImportTableId *int64 `json:"AutoImportTableId,omitnil,omitempty" name:"AutoImportTableId"`
+
+	// uin对应字段
+	AutoImportUinField *string `json:"AutoImportUinField,omitnil,omitempty" name:"AutoImportUinField"`
+
+	// 标签表id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type ModifyTagTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 标签表名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 标签表关联的项目id
+	AutoImportProjectId *int64 `json:"AutoImportProjectId,omitnil,omitempty" name:"AutoImportProjectId"`
+
+	// 标签表关联的数据表id
+	AutoImportTableId *int64 `json:"AutoImportTableId,omitnil,omitempty" name:"AutoImportTableId"`
+
+	// uin对应字段
+	AutoImportUinField *string `json:"AutoImportUinField,omitnil,omitempty" name:"AutoImportUinField"`
+
+	// 标签表id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *ModifyTagTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTagTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "AutoImportProjectId")
+	delete(f, "AutoImportTableId")
+	delete(f, "AutoImportUinField")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTagTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTagTableResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// 数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ModifyTagTableVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 扩展
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// 信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyTagTableResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyTagTableResponseParams `json:"Response"`
+}
+
+func (r *ModifyTagTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTagTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyTagTableVO struct {
+	// 标签表id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+// Predefined struct for user
 type ModifyUserDetailInfoRequestParams struct {
 	// 用户ID
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
@@ -6243,6 +6647,83 @@ func (r *ModifyUserRoleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyUserRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUserTagRequestParams struct {
+	// 用户ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 标签信息
+	TagList []*UserTagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
+}
+
+type ModifyUserTagRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 标签信息
+	TagList []*UserTagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
+}
+
+func (r *ModifyUserTagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserTagRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserId")
+	delete(f, "TagList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserTagRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUserTagResponseParams struct {
+	// 自定义错误信息对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
+
+	// 消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// 数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyUserTagResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyUserTagResponseParams `json:"Response"`
+}
+
+func (r *ModifyUserTagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserTagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7453,6 +7934,32 @@ type UserRoleListDataUserRoleInfo struct {
 	// 用户组信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserGroupList []*UserGroupDTO `json:"UserGroupList,omitnil,omitempty" name:"UserGroupList"`
+}
+
+type UserTagInfo struct {
+	// 标签ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 标签名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 是否被托管
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsExternalManage *bool `json:"IsExternalManage,omitnil,omitempty" name:"IsExternalManage"`
+
+	// 标签托管平台
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ManagePlatform *string `json:"ManagePlatform,omitnil,omitempty" name:"ManagePlatform"`
+
+	// 导入类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImportType *string `json:"ImportType,omitnil,omitempty" name:"ImportType"`
 }
 
 type UserVO struct {

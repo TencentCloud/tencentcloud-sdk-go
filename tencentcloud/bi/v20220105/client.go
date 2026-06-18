@@ -263,6 +263,56 @@ func (c *Client) CreateAuthApiKeyWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateCorpTagRequest() (request *CreateCorpTagRequest) {
+    request = &CreateCorpTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "CreateCorpTag")
+    
+    
+    return
+}
+
+func NewCreateCorpTagResponse() (response *CreateCorpTagResponse) {
+    response = &CreateCorpTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCorpTag
+// 创建企业标签
+//
+// 可能返回的错误码:
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+func (c *Client) CreateCorpTag(request *CreateCorpTagRequest) (response *CreateCorpTagResponse, err error) {
+    return c.CreateCorpTagWithContext(context.Background(), request)
+}
+
+// CreateCorpTag
+// 创建企业标签
+//
+// 可能返回的错误码:
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+func (c *Client) CreateCorpTagWithContext(ctx context.Context, request *CreateCorpTagRequest) (response *CreateCorpTagResponse, err error) {
+    if request == nil {
+        request = NewCreateCorpTagRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "CreateCorpTag")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCorpTag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCorpTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDataTableRequest() (request *CreateDataTableRequest) {
     request = &CreateDataTableRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -711,6 +761,84 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreatePr
     request.SetContext(ctx)
     
     response = NewCreateProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateTagTableRequest() (request *CreateTagTableRequest) {
+    request = &CreateTagTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "CreateTagTable")
+    
+    
+    return
+}
+
+func NewCreateTagTableResponse() (response *CreateTagTableResponse) {
+    response = &CreateTagTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTagTable
+// 创建标签表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTagTable(request *CreateTagTableRequest) (response *CreateTagTableResponse, err error) {
+    return c.CreateTagTableWithContext(context.Background(), request)
+}
+
+// CreateTagTable
+// 创建标签表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTagTableWithContext(ctx context.Context, request *CreateTagTableRequest) (response *CreateTagTableResponse, err error) {
+    if request == nil {
+        request = NewCreateTagTableRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "CreateTagTable")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTagTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTagTableResponse()
     err = c.Send(request, response)
     return
 }
@@ -2483,6 +2611,58 @@ func (c *Client) DescribeUserRoleProjectListWithContext(ctx context.Context, req
     return
 }
 
+func NewEditCorpTagRequest() (request *EditCorpTagRequest) {
+    request = &EditCorpTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "EditCorpTag")
+    
+    
+    return
+}
+
+func NewEditCorpTagResponse() (response *EditCorpTagResponse) {
+    response = &EditCorpTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EditCorpTag
+// 编辑企业标签(异步)
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+func (c *Client) EditCorpTag(request *EditCorpTagRequest) (response *EditCorpTagResponse, err error) {
+    return c.EditCorpTagWithContext(context.Background(), request)
+}
+
+// EditCorpTag
+// 编辑企业标签(异步)
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+func (c *Client) EditCorpTagWithContext(ctx context.Context, request *EditCorpTagRequest) (response *EditCorpTagResponse, err error) {
+    if request == nil {
+        request = NewEditCorpTagRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "EditCorpTag")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EditCorpTag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEditCorpTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExportScreenPageRequest() (request *ExportScreenPageRequest) {
     request = &ExportScreenPageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2979,6 +3159,60 @@ func (c *Client) ModifyResourceUserGroupResourceWithContext(ctx context.Context,
     return
 }
 
+func NewModifyTagTableRequest() (request *ModifyTagTableRequest) {
+    request = &ModifyTagTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "ModifyTagTable")
+    
+    
+    return
+}
+
+func NewModifyTagTableResponse() (response *ModifyTagTableResponse) {
+    response = &ModifyTagTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTagTable
+// 编辑标签表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+func (c *Client) ModifyTagTable(request *ModifyTagTableRequest) (response *ModifyTagTableResponse, err error) {
+    return c.ModifyTagTableWithContext(context.Background(), request)
+}
+
+// ModifyTagTable
+// 编辑标签表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+func (c *Client) ModifyTagTableWithContext(ctx context.Context, request *ModifyTagTableRequest) (response *ModifyTagTableResponse, err error) {
+    if request == nil {
+        request = NewModifyTagTableRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "ModifyTagTable")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTagTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTagTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyUserDetailInfoRequest() (request *ModifyUserDetailInfoRequest) {
     request = &ModifyUserDetailInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3213,6 +3447,58 @@ func (c *Client) ModifyUserRoleProjectWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyUserRoleProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyUserTagRequest() (request *ModifyUserTagRequest) {
+    request = &ModifyUserTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "ModifyUserTag")
+    
+    
+    return
+}
+
+func NewModifyUserTagResponse() (response *ModifyUserTagResponse) {
+    response = &ModifyUserTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyUserTag
+// 修改用户标签值
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+func (c *Client) ModifyUserTag(request *ModifyUserTagRequest) (response *ModifyUserTagResponse, err error) {
+    return c.ModifyUserTagWithContext(context.Background(), request)
+}
+
+// ModifyUserTag
+// 修改用户标签值
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+func (c *Client) ModifyUserTagWithContext(ctx context.Context, request *ModifyUserTagRequest) (response *ModifyUserTagResponse, err error) {
+    if request == nil {
+        request = NewModifyUserTagRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "bi", APIVersion, "ModifyUserTag")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserTag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserTagResponse()
     err = c.Send(request, response)
     return
 }

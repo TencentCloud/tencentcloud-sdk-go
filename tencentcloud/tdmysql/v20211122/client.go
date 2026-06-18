@@ -331,6 +331,66 @@ func (c *Client) CreateDBSBackupWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewCreateUsersRequest() (request *CreateUsersRequest) {
+    request = &CreateUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "CreateUsers")
+    
+    
+    return
+}
+
+func NewCreateUsersResponse() (response *CreateUsersResponse) {
+    response = &CreateUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUsers
+// 本接口（CreateUsers）用于批量创建用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
+//  OPERATIONDENIED_CREATEBACKUPTASKTHRESHOLDERR = "OperationDenied.CreateBackupTaskThresholdErr"
+//  OPERATIONDENIED_MANUALBACKUPQUOTAPERDAYEXCEEDEDERR = "OperationDenied.ManualBackupQuotaPerDayExceededErr"
+//  OPERATIONDENIED_MANUALBACKUPSETQUOTAEXCEEDEDERR = "OperationDenied.ManualBackupSetQuotaExceededErr"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+func (c *Client) CreateUsers(request *CreateUsersRequest) (response *CreateUsersResponse, err error) {
+    return c.CreateUsersWithContext(context.Background(), request)
+}
+
+// CreateUsers
+// 本接口（CreateUsers）用于批量创建用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
+//  OPERATIONDENIED_CREATEBACKUPTASKTHRESHOLDERR = "OperationDenied.CreateBackupTaskThresholdErr"
+//  OPERATIONDENIED_MANUALBACKUPQUOTAPERDAYEXCEEDEDERR = "OperationDenied.ManualBackupQuotaPerDayExceededErr"
+//  OPERATIONDENIED_MANUALBACKUPSETQUOTAEXCEEDEDERR = "OperationDenied.ManualBackupSetQuotaExceededErr"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+func (c *Client) CreateUsersWithContext(ctx context.Context, request *CreateUsersRequest) (response *CreateUsersResponse, err error) {
+    if request == nil {
+        request = NewCreateUsersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "CreateUsers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDBSBackupSetsRequest() (request *DeleteDBSBackupSetsRequest) {
     request = &DeleteDBSBackupSetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -385,6 +445,64 @@ func (c *Client) DeleteDBSBackupSetsWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDeleteDBSBackupSetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteUsersRequest() (request *DeleteUsersRequest) {
+    request = &DeleteUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "DeleteUsers")
+    
+    
+    return
+}
+
+func NewDeleteUsersResponse() (response *DeleteUsersResponse) {
+    response = &DeleteUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteUsers
+// 本接口（DeleteUsers）用于批量删除用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_DELETERUNNINGBACKUPTASKERR = "OperationDenied.DeleteRunningBackupTaskErr"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+func (c *Client) DeleteUsers(request *DeleteUsersRequest) (response *DeleteUsersResponse, err error) {
+    return c.DeleteUsersWithContext(context.Background(), request)
+}
+
+// DeleteUsers
+// 本接口（DeleteUsers）用于批量删除用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_ROUTERNOTFOUND = "InternalError.RouterNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_DELETERUNNINGBACKUPTASKERR = "OperationDenied.DeleteRunningBackupTaskErr"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+func (c *Client) DeleteUsersWithContext(ctx context.Context, request *DeleteUsersRequest) (response *DeleteUsersResponse, err error) {
+    if request == nil {
+        request = NewDeleteUsersRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DeleteUsers")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteUsersResponse()
     err = c.Send(request, response)
     return
 }
@@ -1181,6 +1299,110 @@ func (c *Client) DescribeFlowWithContext(ctx context.Context, request *DescribeF
     return
 }
 
+func NewDescribeInstanceSSLStatusRequest() (request *DescribeInstanceSSLStatusRequest) {
+    request = &DescribeInstanceSSLStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "DescribeInstanceSSLStatus")
+    
+    
+    return
+}
+
+func NewDescribeInstanceSSLStatusResponse() (response *DescribeInstanceSSLStatusResponse) {
+    response = &DescribeInstanceSSLStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceSSLStatus
+// 本接口（DescribeInstanceSSLStatus）提供实例SSL状态查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
+//  FAILEDOPERATION_QUERYDBERROR = "FailedOperation.QueryDBError"
+func (c *Client) DescribeInstanceSSLStatus(request *DescribeInstanceSSLStatusRequest) (response *DescribeInstanceSSLStatusResponse, err error) {
+    return c.DescribeInstanceSSLStatusWithContext(context.Background(), request)
+}
+
+// DescribeInstanceSSLStatus
+// 本接口（DescribeInstanceSSLStatus）提供实例SSL状态查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
+//  FAILEDOPERATION_QUERYDBERROR = "FailedOperation.QueryDBError"
+func (c *Client) DescribeInstanceSSLStatusWithContext(ctx context.Context, request *DescribeInstanceSSLStatusRequest) (response *DescribeInstanceSSLStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceSSLStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DescribeInstanceSSLStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceSSLStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceSSLStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMaintenanceWindowRequest() (request *DescribeMaintenanceWindowRequest) {
+    request = &DescribeMaintenanceWindowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "DescribeMaintenanceWindow")
+    
+    
+    return
+}
+
+func NewDescribeMaintenanceWindowResponse() (response *DescribeMaintenanceWindowResponse) {
+    response = &DescribeMaintenanceWindowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMaintenanceWindow
+// 查询维护时间窗口配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+func (c *Client) DescribeMaintenanceWindow(request *DescribeMaintenanceWindowRequest) (response *DescribeMaintenanceWindowResponse, err error) {
+    return c.DescribeMaintenanceWindowWithContext(context.Background(), request)
+}
+
+// DescribeMaintenanceWindow
+// 查询维护时间窗口配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+func (c *Client) DescribeMaintenanceWindowWithContext(ctx context.Context, request *DescribeMaintenanceWindowRequest) (response *DescribeMaintenanceWindowResponse, err error) {
+    if request == nil {
+        request = NewDescribeMaintenanceWindowRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DescribeMaintenanceWindow")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMaintenanceWindow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMaintenanceWindowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSaleInfoRequest() (request *DescribeSaleInfoRequest) {
     request = &DescribeSaleInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1227,6 +1449,56 @@ func (c *Client) DescribeSaleInfoWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeSaleInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSlowLogsRequest() (request *DescribeSlowLogsRequest) {
+    request = &DescribeSlowLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "DescribeSlowLogs")
+    
+    
+    return
+}
+
+func NewDescribeSlowLogsResponse() (response *DescribeSlowLogsResponse) {
+    response = &DescribeSlowLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSlowLogs
+// 本接口提供查询慢日志功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYZONEERROR = "FailedOperation.DBQueryZoneError"
+func (c *Client) DescribeSlowLogs(request *DescribeSlowLogsRequest) (response *DescribeSlowLogsResponse, err error) {
+    return c.DescribeSlowLogsWithContext(context.Background(), request)
+}
+
+// DescribeSlowLogs
+// 本接口提供查询慢日志功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYZONEERROR = "FailedOperation.DBQueryZoneError"
+func (c *Client) DescribeSlowLogsWithContext(ctx context.Context, request *DescribeSlowLogsRequest) (response *DescribeSlowLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSlowLogsRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "DescribeSlowLogs")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSlowLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSlowLogsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1735,6 +2007,64 @@ func (c *Client) ModifyDBInstanceSecurityGroupsWithContext(ctx context.Context, 
     return
 }
 
+func NewModifyDBInstanceVPortRequest() (request *ModifyDBInstanceVPortRequest) {
+    request = &ModifyDBInstanceVPortRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "ModifyDBInstanceVPort")
+    
+    
+    return
+}
+
+func NewModifyDBInstanceVPortResponse() (response *ModifyDBInstanceVPortResponse) {
+    response = &ModifyDBInstanceVPortResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDBInstanceVPort
+// 本接口(ModifyDBInstanceVPort)修改实例VPC端口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBUPDATEINSTANCEERROR = "FailedOperation.DBUpdateInstanceError"
+//  FAILEDOPERATION_LOCKINSTANCEERROR = "FailedOperation.LockInstanceError"
+//  INVALIDPARAMETERVALUE_CHECKVPCERROR = "InvalidParameterValue.CheckVpcError"
+//  INVALIDPARAMETERVALUE_VPORTRANGEERROR = "InvalidParameterValue.VportRangeError"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+func (c *Client) ModifyDBInstanceVPort(request *ModifyDBInstanceVPortRequest) (response *ModifyDBInstanceVPortResponse, err error) {
+    return c.ModifyDBInstanceVPortWithContext(context.Background(), request)
+}
+
+// ModifyDBInstanceVPort
+// 本接口(ModifyDBInstanceVPort)修改实例VPC端口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBUPDATEINSTANCEERROR = "FailedOperation.DBUpdateInstanceError"
+//  FAILEDOPERATION_LOCKINSTANCEERROR = "FailedOperation.LockInstanceError"
+//  INVALIDPARAMETERVALUE_CHECKVPCERROR = "InvalidParameterValue.CheckVpcError"
+//  INVALIDPARAMETERVALUE_VPORTRANGEERROR = "InvalidParameterValue.VportRangeError"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+func (c *Client) ModifyDBInstanceVPortWithContext(ctx context.Context, request *ModifyDBInstanceVPortRequest) (response *ModifyDBInstanceVPortResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceVPortRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "ModifyDBInstanceVPort")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBInstanceVPort require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBInstanceVPortResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBParametersRequest() (request *ModifyDBParametersRequest) {
     request = &ModifyDBParametersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1987,6 +2317,218 @@ func (c *Client) ModifyInstanceNameWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyInstanceNetworkRequest() (request *ModifyInstanceNetworkRequest) {
+    request = &ModifyInstanceNetworkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "ModifyInstanceNetwork")
+    
+    
+    return
+}
+
+func NewModifyInstanceNetworkResponse() (response *ModifyInstanceNetworkResponse) {
+    response = &ModifyInstanceNetworkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInstanceNetwork
+// 本接口（ModifyInstanceNetwork）用于修改实例所属网络
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLYVIPFAILED = "FailedOperation.ApplyVipFailed"
+//  FAILEDOPERATION_LOCKINSTANCEERROR = "FailedOperation.LockInstanceError"
+//  FAILEDOPERATION_WANSTATUSABNORMAL = "FailedOperation.WanStatusAbnormal"
+//  INTERNALERROR_CHECKVIPSTATUSFAILED = "InternalError.CheckVipStatusFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_VPCOPERATIONFAILED = "InternalError.VpcOperationFailed"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_SUBNETUNAVAILABLE = "InvalidParameter.SubnetUnavailable"
+//  INVALIDPARAMETER_VIPNOTINSUBNET = "InvalidParameter.VipNotInSubnet"
+//  INVALIDPARAMETER_VIPUSED = "InvalidParameter.VipUsed"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyInstanceNetwork(request *ModifyInstanceNetworkRequest) (response *ModifyInstanceNetworkResponse, err error) {
+    return c.ModifyInstanceNetworkWithContext(context.Background(), request)
+}
+
+// ModifyInstanceNetwork
+// 本接口（ModifyInstanceNetwork）用于修改实例所属网络
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLYVIPFAILED = "FailedOperation.ApplyVipFailed"
+//  FAILEDOPERATION_LOCKINSTANCEERROR = "FailedOperation.LockInstanceError"
+//  FAILEDOPERATION_WANSTATUSABNORMAL = "FailedOperation.WanStatusAbnormal"
+//  INTERNALERROR_CHECKVIPSTATUSFAILED = "InternalError.CheckVipStatusFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_VPCOPERATIONFAILED = "InternalError.VpcOperationFailed"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_SUBNETUNAVAILABLE = "InvalidParameter.SubnetUnavailable"
+//  INVALIDPARAMETER_VIPNOTINSUBNET = "InvalidParameter.VipNotInSubnet"
+//  INVALIDPARAMETER_VIPUSED = "InvalidParameter.VipUsed"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyInstanceNetworkWithContext(ctx context.Context, request *ModifyInstanceNetworkRequest) (response *ModifyInstanceNetworkResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceNetworkRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "ModifyInstanceNetwork")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceNetwork require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceNetworkResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceSSLStatusRequest() (request *ModifyInstanceSSLStatusRequest) {
+    request = &ModifyInstanceSSLStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "ModifyInstanceSSLStatus")
+    
+    
+    return
+}
+
+func NewModifyInstanceSSLStatusResponse() (response *ModifyInstanceSSLStatusResponse) {
+    response = &ModifyInstanceSSLStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInstanceSSLStatus
+// 本接口（ModifyInstanceSSLStatus）提供开关实例SSL的功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLYVIPFAILED = "FailedOperation.ApplyVipFailed"
+//  FAILEDOPERATION_LOCKINSTANCEERROR = "FailedOperation.LockInstanceError"
+//  FAILEDOPERATION_WANSTATUSABNORMAL = "FailedOperation.WanStatusAbnormal"
+//  INTERNALERROR_CHECKVIPSTATUSFAILED = "InternalError.CheckVipStatusFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_VPCOPERATIONFAILED = "InternalError.VpcOperationFailed"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_SUBNETUNAVAILABLE = "InvalidParameter.SubnetUnavailable"
+//  INVALIDPARAMETER_VIPNOTINSUBNET = "InvalidParameter.VipNotInSubnet"
+//  INVALIDPARAMETER_VIPUSED = "InvalidParameter.VipUsed"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyInstanceSSLStatus(request *ModifyInstanceSSLStatusRequest) (response *ModifyInstanceSSLStatusResponse, err error) {
+    return c.ModifyInstanceSSLStatusWithContext(context.Background(), request)
+}
+
+// ModifyInstanceSSLStatus
+// 本接口（ModifyInstanceSSLStatus）提供开关实例SSL的功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLYVIPFAILED = "FailedOperation.ApplyVipFailed"
+//  FAILEDOPERATION_LOCKINSTANCEERROR = "FailedOperation.LockInstanceError"
+//  FAILEDOPERATION_WANSTATUSABNORMAL = "FailedOperation.WanStatusAbnormal"
+//  INTERNALERROR_CHECKVIPSTATUSFAILED = "InternalError.CheckVipStatusFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_VPCOPERATIONFAILED = "InternalError.VpcOperationFailed"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_SUBNETUNAVAILABLE = "InvalidParameter.SubnetUnavailable"
+//  INVALIDPARAMETER_VIPNOTINSUBNET = "InvalidParameter.VipNotInSubnet"
+//  INVALIDPARAMETER_VIPUSED = "InvalidParameter.VipUsed"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyInstanceSSLStatusWithContext(ctx context.Context, request *ModifyInstanceSSLStatusRequest) (response *ModifyInstanceSSLStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceSSLStatusRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "ModifyInstanceSSLStatus")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceSSLStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceSSLStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMaintenanceWindowRequest() (request *ModifyMaintenanceWindowRequest) {
+    request = &ModifyMaintenanceWindowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "ModifyMaintenanceWindow")
+    
+    
+    return
+}
+
+func NewModifyMaintenanceWindowResponse() (response *ModifyMaintenanceWindowResponse) {
+    response = &ModifyMaintenanceWindowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMaintenanceWindow
+// 新增/修改实例维护时间窗口配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
+//  FAILEDOPERATION_DBUPSERTMAINTENANCEWINDOWERROR = "FailedOperation.DBUpsertMaintenanceWindowError"
+//  INVALIDPARAMETERVALUE_MAINTENANCEWINDOWPARAMERROR = "InvalidParameterValue.MaintenanceWindowParamError"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+func (c *Client) ModifyMaintenanceWindow(request *ModifyMaintenanceWindowRequest) (response *ModifyMaintenanceWindowResponse, err error) {
+    return c.ModifyMaintenanceWindowWithContext(context.Background(), request)
+}
+
+// ModifyMaintenanceWindow
+// 新增/修改实例维护时间窗口配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYINSTANCEERROR = "FailedOperation.DBQueryInstanceError"
+//  FAILEDOPERATION_DBUPSERTMAINTENANCEWINDOWERROR = "FailedOperation.DBUpsertMaintenanceWindowError"
+//  INVALIDPARAMETERVALUE_MAINTENANCEWINDOWPARAMERROR = "InvalidParameterValue.MaintenanceWindowParamError"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+func (c *Client) ModifyMaintenanceWindowWithContext(ctx context.Context, request *ModifyMaintenanceWindowRequest) (response *ModifyMaintenanceWindowResponse, err error) {
+    if request == nil {
+        request = NewModifyMaintenanceWindowRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "ModifyMaintenanceWindow")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMaintenanceWindow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMaintenanceWindowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyUserPrivilegesRequest() (request *ModifyUserPrivilegesRequest) {
     request = &ModifyUserPrivilegesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2039,6 +2581,72 @@ func (c *Client) ModifyUserPrivilegesWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyUserPrivilegesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetUserPasswordRequest() (request *ResetUserPasswordRequest) {
+    request = &ResetUserPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmysql", APIVersion, "ResetUserPassword")
+    
+    
+    return
+}
+
+func NewResetUserPasswordResponse() (response *ResetUserPasswordResponse) {
+    response = &ResetUserPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResetUserPassword
+// 本接口（ResetUserPassword）提供重置用户密码功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DBQUERYUSERERROR = "FailedOperation.DBQueryUserError"
+//  FAILEDOPERATION_DBUPDATEUSERERROR = "FailedOperation.DBUpdateUserError"
+//  FAILEDOPERATION_QUERYUSERERROR = "FailedOperation.QueryUserError"
+//  INVALIDPARAMETERVALUE_CHECKPASSWDERROR = "InvalidParameterValue.CheckPasswdError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_RESETUSERPASSWORDERROR = "OperationDenied.ResetUserPasswordError"
+func (c *Client) ResetUserPassword(request *ResetUserPasswordRequest) (response *ResetUserPasswordResponse, err error) {
+    return c.ResetUserPasswordWithContext(context.Background(), request)
+}
+
+// ResetUserPassword
+// 本接口（ResetUserPassword）提供重置用户密码功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMAUTHERROR = "AuthFailure.CamAuthError"
+//  AUTHFAILURE_CHECKCAMAUTHERROR = "AuthFailure.CheckCamAuthError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DBQUERYUSERERROR = "FailedOperation.DBQueryUserError"
+//  FAILEDOPERATION_DBUPDATEUSERERROR = "FailedOperation.DBUpdateUserError"
+//  FAILEDOPERATION_QUERYUSERERROR = "FailedOperation.QueryUserError"
+//  INVALIDPARAMETERVALUE_CHECKPASSWDERROR = "InvalidParameterValue.CheckPasswdError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_RESETUSERPASSWORDERROR = "OperationDenied.ResetUserPasswordError"
+func (c *Client) ResetUserPasswordWithContext(ctx context.Context, request *ResetUserPasswordRequest) (response *ResetUserPasswordResponse, err error) {
+    if request == nil {
+        request = NewResetUserPasswordRequest()
+    }
+    c.InitBaseRequest(&request.BaseRequest, "tdmysql", APIVersion, "ResetUserPassword")
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetUserPassword require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetUserPasswordResponse()
     err = c.Send(request, response)
     return
 }
