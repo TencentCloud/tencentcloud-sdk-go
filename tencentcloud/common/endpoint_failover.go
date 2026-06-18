@@ -258,7 +258,7 @@ func (f *EndpointFailover) rewriteHost(orig *http.Request, targetHost string) *h
 
 func (f *EndpointFailover) resignV3(orig *http.Request, targetHost string, cred CredentialIface, unsignedPayload bool) *http.Request {
 	secId, secKey, token := cred.GetCredential()
-	bodyBytes := readBody(orig)
+	bodyBytes := f.readBody(orig)
 	contentType := orig.Header.Get("Content-Type")
 	if contentType == "" {
 		contentType = "application/x-www-form-urlencoded"
@@ -321,9 +321,9 @@ func (f *EndpointFailover) resignV1(orig *http.Request, originHost, targetHost s
 
 	var params map[string]string
 	if orig.Method == "GET" {
-		params = parseQueryParams(orig.URL.RawQuery)
+		params = f.parseQueryParams(orig.URL.RawQuery)
 	} else {
-		params = parseFormParams(string(readBody(orig)))
+		params = f.parseFormParams(string(f.readBody(orig)))
 	}
 	delete(params, "Signature")
 	params["SecretId"] = secId
@@ -395,7 +395,7 @@ func (f *EndpointFailover) resignV1(orig *http.Request, originHost, targetHost s
 	return req
 }
 
-func readBody(req *http.Request) []byte {
+func (f *EndpointFailover) readBody(req *http.Request) []byte {
 	if req.Body == nil {
 		return nil
 	}
@@ -405,7 +405,7 @@ func readBody(req *http.Request) []byte {
 	return b
 }
 
-func parseQueryParams(rawQuery string) map[string]string {
+func (f *EndpointFailover) parseQueryParams(rawQuery string) map[string]string {
 	m := map[string]string{}
 	if rawQuery == "" {
 		return m
@@ -422,7 +422,7 @@ func parseQueryParams(rawQuery string) map[string]string {
 	return m
 }
 
-func parseFormParams(body string) map[string]string {
+func (f *EndpointFailover) parseFormParams(body string) map[string]string {
 	m := map[string]string{}
 	for _, pair := range strings.Split(body, "&") {
 		kv := strings.SplitN(pair, "=", 2)
@@ -447,7 +447,7 @@ func (c *Client) sendWithEndpointFailover(req *http.Request) (*http.Response, er
 }
 
 // isBreakerSuccess is used by circuit_breaker_test.go.
-func isBreakerSuccess(err error) bool {
+func (f *EndpointFailover) isBreakerSuccess(err error) bool {
 	if err == nil {
 		return true
 	}
