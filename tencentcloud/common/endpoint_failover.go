@@ -18,10 +18,9 @@ import (
 
 // EndpointFailover manages per-host circuit breakers for endpoint failover.
 type EndpointFailover struct {
-	mu                   sync.Mutex
-	breakers             map[string]*circuitBreaker
-	DisableRegionBreaker bool
-	tldFamilies          [][]string
+	mu          sync.Mutex
+	breakers    map[string]*circuitBreaker
+	tldFamilies [][]string
 }
 
 var defaultEndpointFailover = &EndpointFailover{
@@ -152,7 +151,7 @@ func (f *EndpointFailover) backupEndpointOf(p *profile.ClientProfile) string {
 // ----------------------------------------------------------------------
 
 func (f *EndpointFailover) send(req *http.Request, profile *profile.ClientProfile, cred CredentialIface, signMethod string, unsignedPayload bool, sendHttp func(*http.Request) (*http.Response, error)) (*http.Response, error) {
-	if f.DisableRegionBreaker {
+	if profile != nil && profile.DisableRegionBreaker {
 		return sendHttp(req)
 	}
 
@@ -426,9 +425,7 @@ func (f *EndpointFailover) parseFormParams(body string) map[string]string {
 // ----------------------------------------------------------------------
 
 func (c *Client) sendWithEndpointFailover(req *http.Request) (*http.Response, error) {
-	fo := defaultEndpointFailover
-	fo.DisableRegionBreaker = c.profile.DisableRegionBreaker
-	return fo.send(req, c.profile, c.credential, c.signMethod, c.unsignedPayload, c.sendHttp)
+	return defaultEndpointFailover.send(req, c.profile, c.credential, c.signMethod, c.unsignedPayload, c.sendHttp)
 }
 
 // isBreakerSuccess is used by circuit_breaker_test.go.
