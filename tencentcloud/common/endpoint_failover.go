@@ -16,10 +16,7 @@ import (
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 )
 
-const (
-	breakerTimeoutMs           = 60 * time.Second
-	defaultHalfOpenMaxRequests = 1
-)
+const defaultHalfOpenMaxRequests = 1
 
 // tldFamilies enumerates the Tencent Cloud TLD families for TLD-rotation mode.
 // Families are ordered more-specific first so matchFamily returns the first hit.
@@ -66,7 +63,7 @@ func (f *EndpointFailover) breakerFor(host string) *circuitBreaker {
 		maxFailNum:        defaultMaxFailNum,
 		maxFailPercentage: defaultMaxFailPercentage,
 		windowInterval:    defaultWindowLength,
-		timeout:           breakerTimeoutMs,
+		timeout:           defaultTimeout,
 		maxRequests:       defaultHalfOpenMaxRequests,
 	})
 	f.breakers[host] = b
