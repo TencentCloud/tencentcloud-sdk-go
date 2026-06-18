@@ -18,12 +18,21 @@ import (
 
 const defaultHalfOpenMaxRequests = 1
 
-// tldFamilies enumerates the Tencent Cloud TLD families for TLD-rotation mode.
-// Families are ordered more-specific first so matchFamily returns the first hit.
-var tldFamilies = [][]string{
-	{"ai.tencentcloudapi.com", "ai.tencentcloudapi.cn", "ai.tencentcloudapi.com.cn"},
-	{"internal.tencentcloudapi.com", "internal.tencentcloudapi.cn", "internal.tencentcloudapi.com.cn"},
-	{"tencentcloudapi.com", "tencentcloudapi.cn", "tencentcloudapi.com.cn"},
+// EndpointFailover manages per-host circuit breakers for endpoint failover.
+type EndpointFailover struct {
+	mu                   sync.Mutex
+	breakers             map[string]*circuitBreaker
+	DisableRegionBreaker bool
+	tldFamilies          [][]string
+}
+
+var defaultEndpointFailover = &EndpointFailover{
+	breakers: map[string]*circuitBreaker{},
+	tldFamilies: [][]string{
+		{"ai.tencentcloudapi.com", "ai.tencentcloudapi.cn", "ai.tencentcloudapi.com.cn"},
+		{"internal.tencentcloudapi.com", "internal.tencentcloudapi.cn", "internal.tencentcloudapi.com.cn"},
+		{"tencentcloudapi.com", "tencentcloudapi.cn", "tencentcloudapi.com.cn"},
+	},
 }
 
 type tldMatch struct {
@@ -37,19 +46,6 @@ type candidate struct {
 	host    string
 	breaker *circuitBreaker
 	gen     uint64
-}
-
-// EndpointFailover manages per-host circuit breakers for endpoint failover.
-// A single instance is shared across all Client instances via the package-level
-// DefaultEndpointFailover variable.
-type EndpointFailover struct {
-	mu                   sync.Mutex
-	breakers             map[string]*circuitBreaker
-	DisableRegionBreaker bool
-}
-
-var DefaultEndpointFailover = &EndpointFailover{
-	breakers: map[string]*circuitBreaker{},
 }
 
 // breakerFor returns the circuit breaker for host, creating one if needed.
@@ -78,7 +74,7 @@ func (f *EndpointFailover) tldMatchOf(host string) *tldMatch {
 	if host == "" {
 		return nil
 	}
-	for fi, family := range tldFamilies {
+	for fi, family := range f.tldFamilies {
 		for ti, suffix := range family {
 			if !strings.HasSuffix(host, "."+suffix) {
 				continue
@@ -438,7 +434,7 @@ func (f *EndpointFailover) parseFormParams(body string) map[string]string {
 // ----------------------------------------------------------------------
 
 func (c *Client) sendWithEndpointFailover(req *http.Request) (*http.Response, error) {
-	fo := DefaultEndpointFailover
+	fo := defaultEndpointFailover
 	fo.DisableRegionBreaker = c.profile.DisableRegionBreaker
 	return fo.send(req, c.profile, c.credential, c.signMethod, c.unsignedPayload, c.sendHttp)
 }

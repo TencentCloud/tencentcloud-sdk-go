@@ -20,7 +20,7 @@ import (
 // =====================================================================
 
 func Test_tldMatchOf_plainCom(t *testing.T) {
-	m := DefaultEndpointFailover.tldMatchOf("cvm.tencentcloudapi.com")
+	m := defaultEndpointFailover.tldMatchOf("cvm.tencentcloudapi.com")
 	if m == nil {
 		t.Fatal("expected non-nil match")
 	}
@@ -30,35 +30,35 @@ func Test_tldMatchOf_plainCom(t *testing.T) {
 }
 
 func Test_tldMatchOf_plainCn(t *testing.T) {
-	m := DefaultEndpointFailover.tldMatchOf("cvm.tencentcloudapi.cn")
+	m := defaultEndpointFailover.tldMatchOf("cvm.tencentcloudapi.cn")
 	if m == nil || m.tldIdx != 1 {
 		t.Fatalf("got %+v, want tldIdx=1", m)
 	}
 }
 
 func Test_tldMatchOf_plainComCn(t *testing.T) {
-	m := DefaultEndpointFailover.tldMatchOf("cvm.tencentcloudapi.com.cn")
+	m := defaultEndpointFailover.tldMatchOf("cvm.tencentcloudapi.com.cn")
 	if m == nil || m.tldIdx != 2 {
 		t.Fatalf("got %+v, want tldIdx=2", m)
 	}
 }
 
 func Test_tldMatchOf_aiFamily(t *testing.T) {
-	m := DefaultEndpointFailover.tldMatchOf("hunyuan.ai.tencentcloudapi.com")
+	m := defaultEndpointFailover.tldMatchOf("hunyuan.ai.tencentcloudapi.com")
 	if m == nil || m.familyIdx != 0 || m.tldIdx != 0 || m.fullPrefix != "hunyuan" {
 		t.Fatalf("got %+v, want familyIdx=0 tldIdx=0 fullPrefix=hunyuan", m)
 	}
 }
 
 func Test_tldMatchOf_internalFamily(t *testing.T) {
-	m := DefaultEndpointFailover.tldMatchOf("cvm.internal.tencentcloudapi.com")
+	m := defaultEndpointFailover.tldMatchOf("cvm.internal.tencentcloudapi.com")
 	if m == nil || m.familyIdx != 1 || m.fullPrefix != "cvm" {
 		t.Fatalf("got %+v, want familyIdx=1 fullPrefix=cvm", m)
 	}
 }
 
 func Test_tldMatchOf_regionPinned(t *testing.T) {
-	m := DefaultEndpointFailover.tldMatchOf("cvm.ap-guangzhou.tencentcloudapi.com")
+	m := defaultEndpointFailover.tldMatchOf("cvm.ap-guangzhou.tencentcloudapi.com")
 	if m == nil {
 		t.Fatal("expected non-nil match for region-pinned host")
 	}
@@ -72,26 +72,26 @@ func Test_tldMatchOf_regionPinned(t *testing.T) {
 }
 
 func Test_tldMatchOf_unknownHost(t *testing.T) {
-	if m := DefaultEndpointFailover.tldMatchOf("example.com"); m != nil {
+	if m := defaultEndpointFailover.tldMatchOf("example.com"); m != nil {
 		t.Fatalf("expected nil for example.com, got %+v", m)
 	}
 }
 
 func Test_tldMatchOf_emptyHost(t *testing.T) {
-	if m := DefaultEndpointFailover.tldMatchOf(""); m != nil {
+	if m := defaultEndpointFailover.tldMatchOf(""); m != nil {
 		t.Fatalf("expected nil for empty host, got %+v", m)
 	}
 }
 
 func Test_tldMatchOf_woaSuffixIsUnknown(t *testing.T) {
-	if m := DefaultEndpointFailover.tldMatchOf("cvm.tencentcloudapi.woa.com"); m != nil {
+	if m := defaultEndpointFailover.tldMatchOf("cvm.tencentcloudapi.woa.com"); m != nil {
 		t.Fatalf("expected nil for non-Tencent suffix, got %+v", m)
 	}
 }
 
 func Test_tldMatchOf_doubleDotIsRejected(t *testing.T) {
 	// Malformed hostnames with ".." in the prefix must not match.
-	if m := DefaultEndpointFailover.tldMatchOf("cvm..tencentcloudapi.com"); m != nil {
+	if m := defaultEndpointFailover.tldMatchOf("cvm..tencentcloudapi.com"); m != nil {
 		t.Fatalf("expected nil for double-dot host, got %+v", m)
 	}
 }
@@ -111,7 +111,7 @@ func Test_candidateFor_backupEndpointOriginAllowed(t *testing.T) {
 	c := newFailoverEnabledClient()
 	c.profile.BackupEndpoint = "ap-guangzhou.tencentcloudapi.com"
 
-	cand := DefaultEndpointFailover.candidateFor(c.profile, "cvm.ap-shanghai.tencentcloudapi.com")
+	cand := defaultEndpointFailover.candidateFor(c.profile, "cvm.ap-shanghai.tencentcloudapi.com")
 	if cand == nil {
 		t.Fatal("expected origin candidate when breakers are healthy")
 	}
@@ -123,9 +123,9 @@ func Test_candidateFor_backupEndpointOriginAllowed(t *testing.T) {
 func Test_candidateFor_backupEndpointOriginOpenReturnsBackup(t *testing.T) {
 	c := newFailoverEnabledClient()
 	c.profile.BackupEndpoint = "ap-guangzhou.tencentcloudapi.com"
-	tripBreakerForTest(DefaultEndpointFailover.breakerFor("cvm.ap-shanghai.tencentcloudapi.com"))
+	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.ap-shanghai.tencentcloudapi.com"))
 
-	cand := DefaultEndpointFailover.candidateFor(c.profile, "cvm.ap-shanghai.tencentcloudapi.com")
+	cand := defaultEndpointFailover.candidateFor(c.profile, "cvm.ap-shanghai.tencentcloudapi.com")
 	if cand == nil {
 		t.Fatal("expected backup candidate when origin breaker is open")
 	}
@@ -136,7 +136,7 @@ func Test_candidateFor_backupEndpointOriginOpenReturnsBackup(t *testing.T) {
 
 func Test_candidateFor_plainHostReturnsOrigin(t *testing.T) {
 	c := newFailoverEnabledClient()
-	cand := DefaultEndpointFailover.candidateFor(c.profile, "cvm.tencentcloudapi.com")
+	cand := defaultEndpointFailover.candidateFor(c.profile, "cvm.tencentcloudapi.com")
 	if cand == nil {
 		t.Fatal("expected origin candidate")
 	}
@@ -147,7 +147,7 @@ func Test_candidateFor_plainHostReturnsOrigin(t *testing.T) {
 
 func Test_candidateFor_aiFamilyStaysInFamily(t *testing.T) {
 	c := newFailoverEnabledClient()
-	cand := DefaultEndpointFailover.candidateFor(c.profile, "hunyuan.ai.tencentcloudapi.com")
+	cand := defaultEndpointFailover.candidateFor(c.profile, "hunyuan.ai.tencentcloudapi.com")
 	if cand == nil {
 		t.Fatal("expected candidate in ai. family")
 	}
@@ -158,7 +158,7 @@ func Test_candidateFor_aiFamilyStaysInFamily(t *testing.T) {
 
 func Test_candidateFor_internalFamilyStaysInFamily(t *testing.T) {
 	c := newFailoverEnabledClient()
-	cand := DefaultEndpointFailover.candidateFor(c.profile, "cvm.internal.tencentcloudapi.com")
+	cand := defaultEndpointFailover.candidateFor(c.profile, "cvm.internal.tencentcloudapi.com")
 	if cand == nil {
 		t.Fatal("expected candidate in internal. family")
 	}
@@ -169,7 +169,7 @@ func Test_candidateFor_internalFamilyStaysInFamily(t *testing.T) {
 
 func Test_candidateFor_regionPinnedOrigin(t *testing.T) {
 	c := newFailoverEnabledClient()
-	cand := DefaultEndpointFailover.candidateFor(c.profile, "cvm.ap-guangzhou.tencentcloudapi.com")
+	cand := defaultEndpointFailover.candidateFor(c.profile, "cvm.ap-guangzhou.tencentcloudapi.com")
 	if cand == nil {
 		t.Fatal("expected candidate for region-pinned host")
 	}
@@ -180,7 +180,7 @@ func Test_candidateFor_regionPinnedOrigin(t *testing.T) {
 
 func Test_candidateFor_regionPinnedAiFamily(t *testing.T) {
 	c := newFailoverEnabledClient()
-	cand := DefaultEndpointFailover.candidateFor(c.profile, "hunyuan.ap-guangzhou.ai.tencentcloudapi.com")
+	cand := defaultEndpointFailover.candidateFor(c.profile, "hunyuan.ap-guangzhou.ai.tencentcloudapi.com")
 	if cand == nil {
 		t.Fatal("expected candidate for region-pinned ai host")
 	}
@@ -191,7 +191,7 @@ func Test_candidateFor_regionPinnedAiFamily(t *testing.T) {
 
 func Test_candidateFor_unknownHostReturnsNil(t *testing.T) {
 	c := newFailoverEnabledClient()
-	if cand := DefaultEndpointFailover.candidateFor(c.profile, "example.com"); cand != nil {
+	if cand := defaultEndpointFailover.candidateFor(c.profile, "example.com"); cand != nil {
 		t.Fatalf("unknown host should return nil, got %+v", cand)
 	}
 }
@@ -331,7 +331,7 @@ func Test_failover_cyclicRotationFromCn(t *testing.T) {
 	cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.cn"
 	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
 
-	tripBreakerForTest(DefaultEndpointFailover.breakerFor("cvm.tencentcloudapi.cn"))
+	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.tencentcloudapi.cn"))
 
 	rt := &scriptedRT{}
 	rt.programOk()
@@ -353,7 +353,7 @@ func Test_failover_cyclicRotationFromComCn(t *testing.T) {
 	cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com.cn"
 	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
 
-	tripBreakerForTest(DefaultEndpointFailover.breakerFor("cvm.tencentcloudapi.com.cn"))
+	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.tencentcloudapi.com.cn"))
 
 	rt := &scriptedRT{}
 	rt.programOk()
@@ -441,7 +441,7 @@ func Test_failover_breakerOpenOnComShortCircuits(t *testing.T) {
 	rt := &scriptedRT{}
 	c.WithHttpTransport(rt)
 
-	tripBreakerForTest(DefaultEndpointFailover.breakerFor("cvm.tencentcloudapi.com"))
+	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.tencentcloudapi.com"))
 
 	rt.programOk()
 	if err := c.Send(newCvmRequest(), tchttp.NewCommonResponse()); err != nil {
@@ -597,7 +597,7 @@ func Test_failover_openBreakerUsesNextAiFamilyHost(t *testing.T) {
 	cpf.HttpProfile.Endpoint = "hunyuan.ai.tencentcloudapi.com"
 	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
 
-	tripBreakerForTest(DefaultEndpointFailover.breakerFor("hunyuan.ai.tencentcloudapi.com"))
+	tripBreakerForTest(defaultEndpointFailover.breakerFor("hunyuan.ai.tencentcloudapi.com"))
 
 	rt := &scriptedRT{}
 	rt.programOk()
@@ -618,7 +618,7 @@ func Test_failover_openBreakerUsesNextInternalFamilyHost(t *testing.T) {
 	cpf.HttpProfile.Endpoint = "cvm.internal.tencentcloudapi.com"
 	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
 
-	tripBreakerForTest(DefaultEndpointFailover.breakerFor("cvm.internal.tencentcloudapi.com"))
+	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.internal.tencentcloudapi.com"))
 
 	rt := &scriptedRT{}
 	rt.programOk()
@@ -659,7 +659,7 @@ func Test_failover_apiResponseDeliveredAfterSelectingAlternateHost(t *testing.T)
 	cpf := profile.NewClientProfile()
 	cpf.DisableRegionBreaker = false
 	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-	tripBreakerForTest(DefaultEndpointFailover.breakerFor("cvm.tencentcloudapi.com"))
+	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.tencentcloudapi.com"))
 
 	rt := &scriptedRT{}
 	rt.programResponse(200, `{"Response":{"RequestId":"req-xyz"}}`)
@@ -751,7 +751,7 @@ func Test_failover_breakerSkipPlusCandidateFailure(t *testing.T) {
 	cpf := profile.NewClientProfile()
 	cpf.DisableRegionBreaker = false
 	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-	tripBreakerForTest(DefaultEndpointFailover.breakerFor("cvm.tencentcloudapi.com"))
+	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.tencentcloudapi.com"))
 
 	rt := &scriptedRT{}
 	rt.programErr(tlsErr{"cn tls fail"})
@@ -776,7 +776,7 @@ func Test_failover_allBreakersOpenFallsThroughToOrigin(t *testing.T) {
 	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
 
 	for _, h := range []string{"cvm.tencentcloudapi.com", "cvm.tencentcloudapi.cn", "cvm.tencentcloudapi.com.cn"} {
-		tripBreakerForTest(DefaultEndpointFailover.breakerFor(h))
+		tripBreakerForTest(defaultEndpointFailover.breakerFor(h))
 	}
 
 	rt := &scriptedRT{}
@@ -815,7 +815,7 @@ func Test_failover_failureDoesNotPolluteNextRequestErrors(t *testing.T) {
 
 // Breaker Open → HalfOpen after cooldown.
 func Test_failover_breakerTransitionsOpenToHalfOpenAfterCooldown(t *testing.T) {
-	b := DefaultEndpointFailover.breakerFor("test-cooldown.tencentcloudapi.com")
+	b := defaultEndpointFailover.breakerFor("test-cooldown.tencentcloudapi.com")
 	b.mu.Lock()
 	b.state = StateOpen
 	b.expiry = time.Now().Add(50 * time.Millisecond)
@@ -835,7 +835,7 @@ func Test_failover_breakerTransitionsOpenToHalfOpenAfterCooldown(t *testing.T) {
 
 // HalfOpen success → Closed.
 func Test_failover_breakerReClosesAfterHalfOpenSuccess(t *testing.T) {
-	b := DefaultEndpointFailover.breakerFor("test-close.tencentcloudapi.com")
+	b := defaultEndpointFailover.breakerFor("test-close.tencentcloudapi.com")
 	b.mu.Lock()
 	b.state = StateOpen
 	b.expiry = time.Now().Add(50 * time.Millisecond)
@@ -856,7 +856,7 @@ func Test_failover_breakerReClosesAfterHalfOpenSuccess(t *testing.T) {
 
 // HalfOpen failure → Open.
 func Test_failover_breakerReOpensWhenHalfOpenProbeFails(t *testing.T) {
-	b := DefaultEndpointFailover.breakerFor("test-reopen.tencentcloudapi.com")
+	b := defaultEndpointFailover.breakerFor("test-reopen.tencentcloudapi.com")
 	b.mu.Lock()
 	b.state = StateOpen
 	b.expiry = time.Now().Add(50 * time.Millisecond)
@@ -877,7 +877,7 @@ func Test_failover_breakerReOpensWhenHalfOpenProbeFails(t *testing.T) {
 
 // Breaker state isolated across hosts.
 func Test_failover_breakerStateIsolatedAcrossOriginHosts(t *testing.T) {
-	tripBreakerForTest(DefaultEndpointFailover.breakerFor("cvm.tencentcloudapi.com"))
+	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.tencentcloudapi.com"))
 
 	cpf := profile.NewClientProfile()
 	cpf.DisableRegionBreaker = false
@@ -941,7 +941,7 @@ func Test_failover_backupEndpoint_breakerOpen_skipsOriginGoesToBackup(t *testing
 	cpf.DisableRegionBreaker = false
 	cpf.BackupEndpoint = "ap-guangzhou.tencentcloudapi.com"
 	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-	tripBreakerForTest(DefaultEndpointFailover.breakerFor("cvm.tencentcloudapi.com"))
+	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.tencentcloudapi.com"))
 
 	rt := &scriptedRT{}
 	rt.programOk()
@@ -978,7 +978,7 @@ func Test_failover_regionPinnedBreakerOpenRotatesToCn(t *testing.T) {
 	cpf.DisableRegionBreaker = false
 	cpf.HttpProfile.Endpoint = "cvm.ap-guangzhou.tencentcloudapi.com"
 	c := NewCommonClient(NewCredential("AKIDTEST", "SKTEST"), regions.Guangzhou, cpf)
-	tripBreakerForTest(DefaultEndpointFailover.breakerFor("cvm.ap-guangzhou.tencentcloudapi.com"))
+	tripBreakerForTest(defaultEndpointFailover.breakerFor("cvm.ap-guangzhou.tencentcloudapi.com"))
 
 	rt := &scriptedRT{}
 	rt.programOk()
@@ -1006,7 +1006,7 @@ func tripBreakerForTest(b *circuitBreaker) {
 }
 
 func resetBreakers() {
-	DefaultEndpointFailover.mu.Lock()
-	DefaultEndpointFailover.breakers = map[string]*circuitBreaker{}
-	DefaultEndpointFailover.mu.Unlock()
+	defaultEndpointFailover.mu.Lock()
+	defaultEndpointFailover.breakers = map[string]*circuitBreaker{}
+	defaultEndpointFailover.mu.Unlock()
 }

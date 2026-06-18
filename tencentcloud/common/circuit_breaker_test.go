@@ -142,8 +142,8 @@ func Test_circuitBreaker_tripsOnSixConsecutiveFailures(t *testing.T) {
 // report/feature_4_bug.md: nil err must be classified as success, otherwise every
 // successful API call counts as a failure to the circuit breaker.
 func Test_isBreakerSuccess_nilErrIsSuccess(t *testing.T) {
-	if !DefaultEndpointFailover.isBreakerSuccess(nil) {
-		t.Fatal("DefaultEndpointFailover.isBreakerSuccess(nil) = false, want true (nil error is a successful call)")
+	if !defaultEndpointFailover.isBreakerSuccess(nil) {
+		t.Fatal("defaultEndpointFailover.isBreakerSuccess(nil) = false, want true (nil error is a successful call)")
 	}
 }
 
@@ -152,8 +152,8 @@ func Test_isBreakerSuccess_nilErrIsSuccess(t *testing.T) {
 // as success unless it is an InternalError (which marks the region itself unhealthy).
 func Test_isBreakerSuccess_sdkErrorWithRequestIdIsSuccess(t *testing.T) {
 	e := tcerr.NewTencentCloudSDKError("AuthFailure.SignatureExpire", "expired", "req-123")
-	if !DefaultEndpointFailover.isBreakerSuccess(e) {
-		t.Fatal("DefaultEndpointFailover.isBreakerSuccess(AuthFailure with RequestId) = false, want true")
+	if !defaultEndpointFailover.isBreakerSuccess(e) {
+		t.Fatal("defaultEndpointFailover.isBreakerSuccess(AuthFailure with RequestId) = false, want true")
 	}
 }
 
@@ -161,8 +161,8 @@ func Test_isBreakerSuccess_sdkErrorWithRequestIdIsSuccess(t *testing.T) {
 // fault; treat as a failure for breaker accounting.
 func Test_isBreakerSuccess_internalErrorIsFailure(t *testing.T) {
 	e := tcerr.NewTencentCloudSDKError("InternalError", "boom", "req-123")
-	if DefaultEndpointFailover.isBreakerSuccess(e) {
-		t.Fatal("DefaultEndpointFailover.isBreakerSuccess(InternalError) = true, want false")
+	if defaultEndpointFailover.isBreakerSuccess(e) {
+		t.Fatal("defaultEndpointFailover.isBreakerSuccess(InternalError) = true, want false")
 	}
 }
 
@@ -171,16 +171,16 @@ func Test_isBreakerSuccess_internalErrorIsFailure(t *testing.T) {
 // network failure mid-flight, etc.), so the breaker should consider it a failure.
 func Test_isBreakerSuccess_sdkErrorWithoutRequestIdIsFailure(t *testing.T) {
 	e := tcerr.NewTencentCloudSDKError("ClientError.NetworkError", "boom", "")
-	if DefaultEndpointFailover.isBreakerSuccess(e) {
-		t.Fatal("DefaultEndpointFailover.isBreakerSuccess(SDKError without RequestId) = true, want false")
+	if defaultEndpointFailover.isBreakerSuccess(e) {
+		t.Fatal("defaultEndpointFailover.isBreakerSuccess(SDKError without RequestId) = true, want false")
 	}
 }
 
 // Test_isBreakerSuccess_nonSDKErrorIsFailure: arbitrary network/transport error must
 // be a failure.
 func Test_isBreakerSuccess_nonSDKErrorIsFailure(t *testing.T) {
-	if DefaultEndpointFailover.isBreakerSuccess(errors.New("connection refused")) {
-		t.Fatal("DefaultEndpointFailover.isBreakerSuccess(non-SDK error) = true, want false")
+	if defaultEndpointFailover.isBreakerSuccess(errors.New("connection refused")) {
+		t.Fatal("defaultEndpointFailover.isBreakerSuccess(non-SDK error) = true, want false")
 	}
 }
 
@@ -195,7 +195,7 @@ func Test_circuitBreaker_doesNotOpenOnSuccesses(t *testing.T) {
 			t.Fatalf("iteration %d: breaker opened spuriously, err=%v", i, err)
 		}
 		// Simulate a successful call: nil error -> isBreakerSuccess returns true.
-		cb.afterRequest(gen, DefaultEndpointFailover.isBreakerSuccess(nil))
+		cb.afterRequest(gen, defaultEndpointFailover.isBreakerSuccess(nil))
 	}
 	// Confirm state is still closed.
 	cb.mu.Lock()
