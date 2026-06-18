@@ -151,10 +151,6 @@ func (f *EndpointFailover) backupEndpointOf(p *profile.ClientProfile) string {
 // ----------------------------------------------------------------------
 
 func (f *EndpointFailover) send(req *http.Request, profile *profile.ClientProfile, cred CredentialIface, signMethod string, unsignedPayload bool, sendHttp func(*http.Request) (*http.Response, error)) (*http.Response, error) {
-	if profile != nil && profile.DisableRegionBreaker {
-		return sendHttp(req)
-	}
-
 	originHost := req.Host
 	if originHost == "" {
 		originHost = req.URL.Host
@@ -425,6 +421,9 @@ func (f *EndpointFailover) parseFormParams(body string) map[string]string {
 // ----------------------------------------------------------------------
 
 func (c *Client) sendWithEndpointFailover(req *http.Request) (*http.Response, error) {
+	if c.profile.DisableRegionBreaker {
+		return c.sendHttp(req)
+	}
 	return defaultEndpointFailover.send(req, c.profile, c.credential, c.signMethod, c.unsignedPayload, c.sendHttp)
 }
 
